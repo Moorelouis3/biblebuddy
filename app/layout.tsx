@@ -15,13 +15,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "The Bible Buddy",
   description: "Your guided Bible reading companion",
+  icons: {
+    icon: "/icon.png",        // Browser tab icon
+    shortcut: "/icon.png",    // Quick access icon
+    apple: "/icon.png",       // iPhone/iPad home screen icon
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
