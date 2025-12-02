@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { ChatLouis } from "../components/ChatLouis"; // ✅ ADD CHAT LOUIS
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -16,23 +18,25 @@ export const metadata: Metadata = {
   title: "The Bible Buddy",
   description: "Your guided Bible reading companion",
   icons: {
-    icon: "/icon.png",        // Browser tab icon
-    shortcut: "/icon.png",    // Quick access icon
-    apple: "/icon.png",       // iPhone/iPad home screen icon
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50`}
       >
         {children}
+
+        {/* ✅ CHAT LOUIS ON EVERY PAGE */}
+        <ChatLouis />
       </body>
     </html>
   );
