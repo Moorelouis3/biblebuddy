@@ -11,7 +11,11 @@ export default function MosesBuddyPage() {
   }
 
   function goBackToBuddies() {
-    router.push("/reading/bible-buddies");
+    router.push("/bible-buddies");
+  }
+
+  function goToDashboard() {
+    router.push("/dashboard");
   }
 
   return (
@@ -35,224 +39,286 @@ export default function MosesBuddyPage() {
           </h1>
 
           <p className="text-sm md:text-base text-gray-700 mb-6">
-            The Man God Drew Out
+            The reluctant leader God used to set His people free
           </p>
 
           {/* Banner Image */}
           <Image
             src="/bible-buddies/mosesbanner.png"
-            alt="Moses leading Israel through the Red Sea"
+            alt="Moses standing before the Red Sea with staff raised"
             width={1600}
             height={700}
-            className="w-full h-56 md:h-64 object-cover rounded-xl border border-blue-100 mb-8"
+            className="w-full h-auto object-contain rounded-xl border border-blue-100 mb-8"
           />
 
           {/* Hero section */}
           <section className="mb-8 md:mb-10">
             <div className="space-y-3 text-sm md:text-base leading-relaxed text-gray-800">
-              <p>Moses enters Scripture in the middle of a genocide.</p>
-
               <p>
-                Pharaoh has ordered every Hebrew baby boy to be killed. Mothers
-                hide their newborns in fear. Fathers pray for miracles. Israel
-                cries out for deliverance.
+                Moses&apos; story begins in a world where his people are slaves.
               </p>
 
               <p>
-                In the middle of that darkness a woman makes a desperate choice.
-                She places her three-month-old son in a basket, sets it among
-                the reeds of the Nile, and lets him go.
+                Pharaoh fears the growing strength of Israel and orders every
+                Hebrew baby boy to be killed.
               </p>
 
               <p>
-                That baby is Moses. The child God protects while his world is
-                being torn apart.
+                In the middle of this darkness, a Hebrew mother places her baby
+                in a basket and sets him gently in the Nile, trusting God more
+                than her eyes can see.
+              </p>
+
+              <p>
+                That baby is Moses. The child God will one day use to confront
+                kings and split seas.
               </p>
             </div>
           </section>
 
-          {/* Moses the child who should have died */}
+          {/* Moses the Baby in the Basket */}
           <section className="mb-8 md:mb-10">
             <h2 className="text-lg md:text-xl font-semibold flex items-center gap-2 mb-3 text-gray-900">
-              <span>👶</span>
-              <span>Moses the Child Who Should Have Died</span>
+              <span>🧺</span>
+              <span>Moses the Baby in the Basket</span>
             </h2>
 
             <div className="space-y-3 text-sm md:text-base leading-relaxed text-gray-800">
               <p>
-                The Nile carries Moses straight into the hands of Pharaoh’s
-                daughter.
+                Pharaoh&apos;s daughter finds the basket among the reeds and
+                opens it.
               </p>
 
               <p>
-                She opens the basket, sees the crying child, and her heart
-                breaks. She adopts him as her own.
+                She sees a crying baby and feels compassion. Instead of
+                ordering his death, she chooses to raise him as her own.
               </p>
 
-              <p>Moses grows up in two worlds:</p>
-
-              <ul className="list-disc list-inside space-y-1">
-                <li>Hebrew by blood</li>
-                <li>Egyptian by culture</li>
-                <li>Trained in the wisdom of Egypt</li>
-                <li>Raised in royalty</li>
-                <li>
-                  Groomed for leadership without knowing God was shaping him for
-                  a calling far greater than a throne
-                </li>
-              </ul>
+              <p>
+                Moses grows up between two worlds, born a Hebrew, raised in an
+                Egyptian palace.
+              </p>
 
               <p>
-                Moses becomes a man caught between identities — living in a
-                palace while belonging to a people in chains.
+                He learns the language, culture, and wisdom of Egypt, but the
+                blood of Israel still runs through his veins.
               </p>
             </div>
           </section>
 
-          {/* Moses the runaway */}
+          {/* Moses Who Ran Away */}
           <section className="mb-8 md:mb-10">
             <h2 className="text-lg md:text-xl font-semibold flex items-center gap-2 mb-3 text-gray-900">
-              <span>⚔️</span>
-              <span>Moses the Runaway</span>
+              <span>🏃‍♂️</span>
+              <span>Moses the Man Who Ran Away</span>
             </h2>
 
             <div className="space-y-3 text-sm md:text-base leading-relaxed text-gray-800">
-              <p>Everything changes when Moses is around forty.</p>
-
               <p>
-                He sees an Egyptian beating a Hebrew slave. Something snaps
-                inside him. Moses kills the Egyptian and hides the body.
+                One day, Moses sees an Egyptian beating a Hebrew slave.
               </p>
 
               <p>
-                When Pharaoh finds out, Moses becomes a fugitive. He runs into
-                the wilderness and disappears from the story for forty years.
+                Anger explodes. Moses kills the Egyptian and hides the body.
               </p>
 
               <p>
-                Forty years of silence. Forty years of humility. Forty years as a
-                shepherd in Midian.
+                The next day, his secret is exposed. Pharaoh wants him dead.
               </p>
 
-              <p>This is where God breaks the prince and builds the prophet.</p>
+              <p>
+                Moses runs, leaving behind the palace, the power, and the life
+                he once knew.
+              </p>
+
+              <p>
+                He ends up in the wilderness of Midian, becomes a shepherd, and
+                builds a quiet, hidden life.
+              </p>
+
+              <p>
+                For forty years, Moses watches sheep instead of nations, waiting
+                with no idea that God is not finished with him.
+              </p>
             </div>
           </section>
 
-          {/* Moses who met God in the flame */}
+          {/* Moses at the Burning Bush */}
           <section className="mb-8 md:mb-10">
             <h2 className="text-lg md:text-xl font-semibold flex items-center gap-2 mb-3 text-gray-900">
               <span>🔥</span>
-              <span>Moses Who Met God in the Flame</span>
+              <span>Moses at the Burning Bush</span>
             </h2>
 
             <div className="space-y-3 text-sm md:text-base leading-relaxed text-gray-800">
-              <p>Then the moment comes.</p>
-
               <p>
-                Moses sees a bush on fire, but the flames do not consume it. He
-                steps closer. God calls his name:
+                On an ordinary day in the wilderness, Moses sees something
+                extraordinary, a bush on fire that does not burn up.
               </p>
 
-              <p className="italic">“Moses… Moses.”</p>
-
-              <p>God reveals His identity, His holiness, and His mission.</p>
-
               <p>
-                Moses is terrified. He argues. He says he cannot speak well. He
-                says he is not qualified.
+                As he comes closer, a voice calls his name, &quot;Moses,
+                Moses.&quot;
               </p>
 
-              <p>God responds with the only promise Moses will ever need:</p>
-
-              <p className="font-semibold">“I will be with you.”</p>
+              <p>
+                God tells him to take off his sandals. He is standing on holy
+                ground.
+              </p>
 
               <p>
-                The mission is simple: go back to Egypt, face Pharaoh, and tell
-                him to let My people go.
+                God reveals His heart, &quot;I have seen the misery of My
+                people. I have heard their cries. I have come down to rescue
+                them.&quot;
+              </p>
+
+              <p>
+                Then God says something Moses never expected, &quot;I am
+                sending you to Pharaoh.&quot;
+              </p>
+
+              <p>
+                Moses feels unqualified, insecure, and afraid. He says, &quot;Who
+                am I? I am not a good speaker.&quot;
+              </p>
+
+              <p>
+                God&apos;s answer is simple and powerful, &quot;I will be with
+                you.&quot;
               </p>
             </div>
           </section>
 
-          {/* Moses the Deliverer */}
+          {/* Moses the Deliverer of Israel */}
           <section className="mb-8 md:mb-10">
             <h2 className="text-lg md:text-xl font-semibold flex items-center gap-2 mb-3 text-gray-900">
               <span>🌊</span>
-              <span>Moses the Deliverer</span>
+              <span>Moses the Deliverer of Israel</span>
             </h2>
 
             <div className="space-y-3 text-sm md:text-base leading-relaxed text-gray-800">
               <p>
-                With the authority of God, Moses returns to the nation that
-                raised him.
+                Moses returns to Egypt with his brother Aaron as his helper and
+                spokesperson.
               </p>
 
               <p>
-                Ten plagues fall on Egypt. Judgment comes on Pharaoh. Israel
-                walks free.
+                He stands before Pharaoh with a message that shakes the throne,
+                &quot;Let My people go.&quot;
               </p>
 
               <p>
-                Then Moses raises his staff over the Red Sea — and the waters
-                split open. Israel walks through on dry ground while walls of
-                ocean stand beside them.
+                Pharaoh refuses. God sends ten plagues, each one exposing the
+                weakness of Egypt&apos;s gods and the power of the Lord.
               </p>
 
-              <p>Moses becomes the visible representative of the invisible God.</p>
+              <p>
+                Finally, after the Passover night, Pharaoh breaks and lets
+                Israel go.
+              </p>
 
               <p>
-                He leads Israel through the wilderness, receives the Law at
-                Sinai, establishes the covenant, builds the tabernacle, and
-                shepherds a stubborn nation for forty years.
+                Moses leads the people out, but Pharaoh changes his mind and
+                chases them to the edge of the Red Sea.
+              </p>
+
+              <p>
+                Trapped between water and the army, the people panic. Moses
+                raises his staff as God commands.
+              </p>
+
+              <p>
+                The sea splits. A path opens. Israel walks through on dry land.
+              </p>
+
+              <p>
+                When the Egyptians follow, the waters crash back. God rescues
+                His people and crushes their oppressors.
               </p>
             </div>
           </section>
 
-          {/* Moses the writer of the Law */}
+          {/* Moses the Lawgiver and Friend of God */}
           <section className="mb-8 md:mb-10">
             <h2 className="text-lg md:text-xl font-semibold flex items-center gap-2 mb-3 text-gray-900">
               <span>📜</span>
-              <span>Moses the Writer of the Law</span>
+              <span>Moses the Lawgiver and Friend of God</span>
             </h2>
 
             <div className="space-y-3 text-sm md:text-base leading-relaxed text-gray-800">
-              <p>Moses writes:</p>
-
-              <ul className="list-disc list-inside space-y-1">
-                <li>Genesis</li>
-                <li>Exodus</li>
-                <li>Leviticus</li>
-                <li>Numbers</li>
-                <li>Deuteronomy</li>
-                <li>Psalm 90</li>
-              </ul>
+              <p>
+                In the wilderness, Moses climbs Mount Sinai and meets with God.
+              </p>
 
               <p>
-                He becomes the first historian, theologian, and preacher of
-                Israel. For the next fifteen hundred years, the people of God
-                stand on the foundation he wrote.
+                God gives him the Ten Commandments, not just rules, but a
+                covenant, a way for Israel to live as God&apos;s people.
+              </p>
+
+              <p>
+                Scripture says God spoke with Moses &quot;face to face, as a man
+                speaks with his friend.&quot;
+              </p>
+
+              <p>
+                Moses carries the weight of leading a nation that often grumbles,
+                complains, and disobeys.
+              </p>
+
+              <p>
+                Yet again and again, he intercedes for them, begging God to show
+                mercy instead of judgment.
+              </p>
+
+              <p>
+                Moses is not perfect. He struggles with anger and frustration.
+                He makes mistakes that keep him from entering the Promised Land.
+              </p>
+
+              <p>
+                But through it all, he walks closely with God in a way few ever
+                have.
               </p>
             </div>
           </section>
 
-          {/* Moses final days */}
+          {/* Moses' Final Days */}
           <section className="mb-8 md:mb-10">
             <h2 className="text-lg md:text-xl font-semibold flex items-center gap-2 mb-3 text-gray-900">
               <span>⛰️</span>
-              <span>Moses Final Days</span>
+              <span>Moses&apos; Final Days</span>
             </h2>
 
             <div className="space-y-3 text-sm md:text-base leading-relaxed text-gray-800">
-              <p>After forty years of leading Israel, Moses climbs Mount Nebo.</p>
+              <p>
+                At the end of his life, God leads Moses up a mountain and shows
+                him the Promised Land from a distance.
+              </p>
 
-              <p>He sees the Promised Land — but he cannot enter it.</p>
+              <p>
+                Moses will not enter it, but he sees the fulfillment of the
+                promise he carried for so many years.
+              </p>
 
-              <p>Moses dies on the mountain with God Himself burying him.</p>
+              <p>
+                He blesses the tribes of Israel, reminds them of God&apos;s
+                faithfulness, and encourages them to obey the Lord with all
+                their hearts.
+              </p>
 
-              <p>No grave. No monument. Just a life poured out in obedience.</p>
+              <p>
+                Then Moses dies, and Scripture says God Himself buries him.
+              </p>
+
+              <p>
+                Later, the Bible describes him like this, &quot;There has never
+                arisen another prophet like Moses, whom the Lord knew face to
+                face.&quot;
+              </p>
             </div>
           </section>
 
-          {/* Final thought */}
+          {/* Final Thought */}
           <section className="mb-2 md:mb-3">
             <h2 className="text-lg md:text-xl font-semibold flex items-center gap-2 mb-3 text-gray-900">
               <span>✨</span>
@@ -261,24 +327,24 @@ export default function MosesBuddyPage() {
 
             <div className="space-y-3 text-sm md:text-base leading-relaxed text-gray-800">
               <p>
-                Moses is not remembered for being perfect. He is remembered for
-                being faithful.
+                Moses is the Bible buddy for anyone who feels unqualified but
+                called.
               </p>
 
-              <p>The man God drew out of the water.</p>
-
-              <p>The man God drew out of obscurity.</p>
-
-              <p>The man God used to draw His people out of slavery.</p>
+              <p>
+                The baby rescued from the river. The runaway God brought back.
+                The leader who doubted his voice but trusted God&apos;s presence.
+              </p>
 
               <p>
-                If you want a model for leadership, obedience, courage, and
-                intimacy with God, Moses is the one to study.
+                If you want to learn courage in calling, faith in hard seasons,
+                and what it looks like to walk closely with God in real life,
+                Moses is the one to study.
               </p>
             </div>
           </section>
 
-          {/* footer button */}
+          {/* footer buttons */}
           <div className="mt-6 pt-4 border-t border-blue-100 flex items-center justify-between gap-3">
             <button
               type="button"
@@ -290,10 +356,10 @@ export default function MosesBuddyPage() {
 
             <button
               type="button"
-              onClick={handleClose}
-              className="text-sm md:text-base font-medium text-blue-700 hover:underline"
+              onClick={goToDashboard}
+              className="px-4 py-2 rounded-full text-sm md:text-base font-semibold bg-white text-blue-700 border border-blue-200 shadow-sm hover:bg-blue-50 transition"
             >
-              Close
+              Back to Dashboard
             </button>
           </div>
         </div>

@@ -49,7 +49,7 @@ const BUDDIES: Buddy[] = [
   {
     id: "moses",
     name: "Moses",
-    tag: "Deliverer & Lawgiver",
+    tag: "Deliverer and Lawgiver",
     image: "/bible-buddies/Moses.png",
     era: "Around 1400 BC",
     role: "Prophet, Leader of Israel",
@@ -57,7 +57,7 @@ const BUDDIES: Buddy[] = [
     keyVerse: "Exodus 3:10–12",
   },
   {
-    id: "john-baptist",
+    id: "johnthebaptist",
     name: "John the Baptist",
     tag: "Voice in the Wilderness",
     image: "/bible-buddies/John%20the%20Baptist.png",
@@ -78,7 +78,16 @@ const BUDDIES: Buddy[] = [
   },
 ];
 
-const PAGE_SIZE = 12; // 4 x 3 grid per “page”
+const PAGE_SIZE = 12;
+
+const getBuddyDetailHref = (buddy: Buddy) => {
+  // detail pages you already built
+  if (["joseph", "abraham", "moses", "paul", "johnthebaptist", "david"].includes(buddy.id)) {
+    return `/bible-buddies/${buddy.id}`;
+  }
+  // others can come later
+  return "#";
+};
 
 export default function BibleBuddiesPage() {
   const [selectedBuddy, setSelectedBuddy] = useState<Buddy | null>(null);
@@ -89,21 +98,6 @@ export default function BibleBuddiesPage() {
 
   const hasPrev = pageIndex > 0;
   const hasNext = start + PAGE_SIZE < BUDDIES.length;
-
-  // helper to get the correct “read more” link
-  const getBuddyDetailHref = (buddy: Buddy) => {
-    if (buddy.id === "moses") {
-      return "/bible-buddies/bible-buddies-pages/moses";
-    }
-    if (buddy.id === "paul") {
-      return "/bible-buddies/bible-buddies-pages/paul";
-    }
-     if (buddy.id === "joseph") {
-      return "/bible-buddies/bible-buddies-pages/joseph"
-    }
-    // for now others don’t have detail pages yet
-    return "#";
-  };
 
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
@@ -137,7 +131,7 @@ export default function BibleBuddiesPage() {
             </p>
           </div>
 
-          {/* GRID – 3 per row on desktop */}
+          {/* GRID */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
             {currentPageBuddies.map((buddy) => (
               <button
@@ -146,7 +140,6 @@ export default function BibleBuddiesPage() {
                 onClick={() => setSelectedBuddy(buddy)}
                 className="group bg-gray-50 border border-gray-200 rounded-2xl px-3 py-4 sm:px-4 sm:py-5 flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-[3px] transition"
               >
-                {/* IMAGE */}
                 <div className="flex items-center justify-center w-full h-28 sm:h-32 md:h-36 rounded-2xl overflow-hidden bg-white">
                   <Image
                     src={buddy.image}
@@ -182,9 +175,9 @@ export default function BibleBuddiesPage() {
               type="button"
               disabled={!hasPrev}
               onClick={() => hasPrev && setPageIndex(pageIndex - 1)}
-              className={`${
+              className={
                 hasPrev ? "hover:underline" : "text-gray-300 cursor-default"
-              }`}
+              }
             >
               Previous buddies
             </button>
@@ -193,9 +186,9 @@ export default function BibleBuddiesPage() {
               type="button"
               disabled={!hasNext}
               onClick={() => hasNext && setPageIndex(pageIndex + 1)}
-              className={`${
+              className={
                 hasNext ? "hover:underline" : "text-gray-300 cursor-default"
-              }`}
+              }
             >
               Next buddies
             </button>
@@ -203,11 +196,10 @@ export default function BibleBuddiesPage() {
         </div>
       </main>
 
-      {/* MODAL OVERLAY */}
+      {/* MODAL */}
       {selectedBuddy && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3">
           <div className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-black/60 shadow-2xl shadow-black/70 p-6 sm:p-7 md:p-8">
-            {/* Close button */}
             <button
               type="button"
               onClick={() => setSelectedBuddy(null)}
@@ -216,7 +208,6 @@ export default function BibleBuddiesPage() {
               ✕
             </button>
 
-            {/* Content */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-4">
               <div className="flex items-center justify-center w-32 h-32 sm:w-40 sm:h-40 mx-auto sm:mx-0 rounded-2xl overflow-hidden bg-gray-50">
                 <Image

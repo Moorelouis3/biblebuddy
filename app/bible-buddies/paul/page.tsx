@@ -11,7 +11,11 @@ export default function PaulBuddyPage() {
   }
 
   function goBackToBuddies() {
-    router.push("/reading/bible-buddies");
+    router.push("/bible-buddies");
+  }
+
+  function goToDashboard() {
+    router.push("/dashboard");
   }
 
   return (
@@ -44,7 +48,7 @@ export default function PaulBuddyPage() {
             alt="Saul on the Damascus road seeing the light of Jesus"
             width={1600}
             height={700}
-            className="w-full h-56 md:h-64 object-cover rounded-xl border border-blue-100 mb-8"
+            className="w-full h-auto object-contain rounded-xl border border-blue-100 mb-8"
           />
 
           {/* Intro: From Persecutor to Preacher */}
@@ -72,8 +76,7 @@ export default function PaulBuddyPage() {
 
               <p>
                 After the resurrection, Jesus personally appeared to Paul and sent
-                him out to preach the gospel to the Gentiles
-                {" "}
+                him out to preach the gospel to the Gentiles{" "}
                 <span className="italic">(Acts 9:3–6)</span>.
               </p>
 
@@ -99,13 +102,11 @@ export default function PaulBuddyPage() {
 
               <ul className="list-disc list-inside space-y-1">
                 <li>
-                  Raised as a strict Pharisee
-                  {" "}
+                  Raised as a strict Pharisee{" "}
                   <span className="italic">(Philippians 3:5–6)</span>
                 </li>
                 <li>
-                  Trained under Gamaliel, a respected Jewish teacher
-                  {" "}
+                  Trained under Gamaliel, a respected Jewish teacher{" "}
                   <span className="italic">(Acts 22:3)</span>
                 </li>
                 <li>Passionate about the Law and protecting Jewish tradition</li>
@@ -114,8 +115,7 @@ export default function PaulBuddyPage() {
               <p>
                 Saul believed Christians were dangerous heretics that needed to be
                 silenced. He hunted them, approved of their executions, and stood
-                by as Stephen was stoned to death
-                {" "}
+                by as Stephen was stoned to death{" "}
                 <span className="italic">
                   (Acts 7:57–60, Acts 8:1–3)
                 </span>
@@ -176,16 +176,14 @@ export default function PaulBuddyPage() {
             <div className="space-y-3 text-sm md:text-base leading-relaxed text-gray-800">
               <p>
                 God sent a disciple named Ananias to pray for Saul and restore his
-                sight
-                {" "}
+                sight{" "}
                 <span className="italic">(Acts 9:10–18)</span>.
               </p>
 
               <ul className="list-disc list-inside space-y-1">
                 <li>Saul was baptized.</li>
                 <li>
-                  He started preaching that Jesus is the Son of God
-                  {" "}
+                  He started preaching that Jesus is the Son of God{" "}
                   <span className="italic">(Acts 9:20–22)</span>.
                 </li>
                 <li>
@@ -236,23 +234,17 @@ export default function PaulBuddyPage() {
 
             <div className="space-y-3 text-sm md:text-base leading-relaxed text-gray-800">
               <p>
-                Paul was not only saved, he was sent. The word
-                {" "}
-                <span className="italic">apostle</span>
-                {" "}
-                means “one who is sent out.”
+                Paul was not only saved, he was sent. The word{" "}
+                <span className="italic">apostle</span> means “one who is sent out.”
               </p>
 
               <p>
-                Jesus personally called Paul to preach the gospel
-                {" "}
+                Jesus personally called Paul to preach the gospel{" "}
                 <span className="italic">(Galatians 1:11–12)</span>. In many of
-                his letters he introduces himself with the same line:
-                {" "}
+                his letters he introduces himself with the same line:{" "}
                 <span className="italic">
                   “Paul, an apostle of Christ Jesus…”
-                </span>
-                {" "}
+                </span>{" "}
                 (Romans 1:1, Galatians 1:1).
               </p>
 
@@ -288,12 +280,10 @@ export default function PaulBuddyPage() {
 
               <p>
                 He endured beatings, shipwrecks, and prison yet he kept going. His
-                life verse could be summed up in his own words:
-                {" "}
+                life verse could be summed up in his own words:{" "}
                 <span className="italic">
                   “To live is Christ, to die is gain”
-                </span>
-                {" "}
+                </span>{" "}
                 (Philippians 1:21).
               </p>
             </div>
@@ -314,10 +304,8 @@ export default function PaulBuddyPage() {
 
               <p>
                 Over time, those letters were recognized as inspired by the Holy
-                Spirit
-                {" "}
-                <span className="italic">(2 Timothy 3:16)</span>
-                {" "}
+                Spirit{" "}
+                <span className="italic">(2 Timothy 3:16)</span>{" "}
                 and became part of Scripture.
               </p>
 
@@ -354,8 +342,7 @@ export default function PaulBuddyPage() {
                 <li>
                   <span className="font-semibold">
                     1 and 2 Timothy, Titus, Philemon
-                  </span>
-                  {" "}
+                  </span>{" "}
                   – letters to leaders and a friend.
                 </li>
               </ul>
@@ -392,7 +379,7 @@ export default function PaulBuddyPage() {
             </div>
           </section>
 
-          {/* footer button */}
+          {/* footer buttons */}
           <div className="mt-6 pt-4 border-t border-blue-100 flex items-center justify-between gap-3">
             <button
               type="button"
@@ -404,10 +391,10 @@ export default function PaulBuddyPage() {
 
             <button
               type="button"
-              onClick={handleClose}
-              className="text-sm md:text-base font-medium text-blue-700 hover:underline"
+              onClick={goToDashboard}
+              className="px-4 py-2 rounded-full text-sm md:text-base font-semibold bg-white text-blue-700 border border-blue-200 shadow-sm hover:bg-blue-50 transition"
             >
-              Close
+              Back to Dashboard
             </button>
           </div>
         </div>
