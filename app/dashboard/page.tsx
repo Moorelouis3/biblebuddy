@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { LouisAvatar } from "../../components/LouisAvatar";
 
 export default function DashboardPage() {
   const userName = "Louis";
@@ -28,31 +27,20 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
-      {/* HEADER */}
-      <header className="w-full pt-4 pb-4 border-b border-gray-200 bg-white/60 backdrop-blur">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <h1 className="text-2xl sm:text-3xl font-bold">
-            The Bible Buddy
-          </h1>
-          <p className="text-gray-600 text-xs sm:text-sm mt-1">
-            Your guided path through Scripture
-          </p>
-        </div>
-      </header>
-
       {/* MAIN CONTENT – CENTERED COLUMN ONLY */}
-      <div className="max-w-lg mx-auto px-4 mt-6">
-        {/* LOUIS GREETING */}
-        <div className="flex items-center gap-3 mb-4">
-          <LouisAvatar mood="wave" size={70} />
-          <div>
-            <p className="text-xl font-semibold">Welcome back, {userName}!</p>
-            <p className="text-sm text-gray-700">{louisMessage}</p>
-          </div>
+      <div className="max-w-lg mx-auto px-4 mt-8">
+        {/* GREETING (NO AVATAR) */}
+        <div className="mb-4">
+          <p className="text-2xl font-semibold text-center">
+            Welcome back, {userName}!
+          </p>
+          <p className="text-sm text-gray-700 text-center mt-1">
+            {louisMessage}
+          </p>
         </div>
 
         {/* CTA TEXT */}
-        <p className="text-sm text-gray-500 mt-6 mb-4 text-center">
+        <p className="text-sm text-gray-500 mt-4 mb-4 text-center">
           What do you want to focus on today? Choose one of the options below.
         </p>
 

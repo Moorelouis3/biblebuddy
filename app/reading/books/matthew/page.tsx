@@ -1,20 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
+import { getMatthewCurrentStep } from "../../../../lib/readingProgress";
 
 const MATTHEW_CHAPTERS = 28; // real chapters 1–28
 const CHAPTERS_PER_PAGE = 12;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
 
 export default function MatthewPage() {
-  // 0 = overview is your current step, 1 = you are on Matthew 1, etc.
-  const [currentChapter] = useState(0);
+  // currentChapter is now loaded from readingProgress helper
+  const [currentChapter, setCurrentChapter] = useState(0);
   const [chapterPage, setChapterPage] = useState(0);
 
   // collapsed or open Louis bubble
   const [summaryCollapsed, setSummaryCollapsed] = useState(false);
+
+  // load current step from localStorage (via helper)
+  useEffect(() => {
+    const step = getMatthewCurrentStep(TOTAL_ITEMS);
+    setCurrentChapter(step);
+  }, []);
 
   // how many chapters you have finished, not counting the overview
   const finishedChapters = Math.max(0, currentChapter - 1);
