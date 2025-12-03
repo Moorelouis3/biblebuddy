@@ -1,13 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { redirect } from "next/navigation";
 
 export default function LandingPage() {
-  // 🚀 Redirect only on Vercel (production)
-  if (process.env.NODE_ENV === "production") {
-    redirect("/dashboard");
-  }
-
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* TOP BAR */}
