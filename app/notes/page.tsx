@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LouisAvatar } from "../../components/LouisAvatar";
+import { supabase } from "../../lib/supabaseClient";
 
 type Note = {
-  id: string;
+  id: number;
   book: string;
   chapter: number;
   verseFrom: number | null;
@@ -58,14 +59,54 @@ const emptyForm = {
 
 type ModalMode = "create" | "view" | "edit" | null;
 
+// helper: map DB row -> UI Note
+function mapRowToNote(row: any): Note {
+  return {
+    id: row.id,
+    book: row.book,
+    chapter: row.chapter,
+    verseFrom: row.verse_from ?? 1,
+    verseTo: row.verse_to ?? 1,
+    passage: row.passage ?? "",
+    research: row.research ?? "",
+    observe: row.observe ?? "",
+    write: row.write ?? "",
+    createdAt: row.created_at,
+  };
+}
+
 export default function NotesPage() {
   const [notes, setNotes] = useState<Note[]>([]);
   const [bookFilter, setBookFilter] = useState<string>("All books");
 
   const [modalMode, setModalMode] = useState<ModalMode>(null);
-  const [editingNoteId, setEditingNoteId] = useState<string | null>(null);
+  const [editingNoteId, setEditingNoteId] = useState<number | null>(null);
   const [form, setForm] = useState<typeof emptyForm>(emptyForm);
   const [currentNote, setCurrentNote] = useState<Note | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [saving, setSaving] = useState(false);
+
+  // load notes from Supabase on mount
+  useEffect(() => {
+    async function loadNotes() {
+      setIsLoading(true);
+      const { data, error } = await supabase
+        .from("notes")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error loading notes:", error);
+        setIsLoading(false);
+        return;
+      }
+
+      setNotes((data || []).map(mapRowToNote));
+      setIsLoading(false);
+    }
+
+    loadNotes();
+  }, []);
 
   const filteredNotes =
     bookFilter === "All books"
@@ -110,55 +151,113 @@ export default function NotesPage() {
     }));
   }
 
-  function handleSave() {
+  async function handleSave() {
     if (!form.book || form.chapter <= 0) return;
 
-    const now = new Date();
-    const createdAt = now.toLocaleString();
+    setSaving(true);
 
-    if (editingNoteId && modalMode === "edit") {
-      setNotes((prev) =>
-        prev.map((n) =>
-          n.id === editingNoteId
-            ? {
-                ...n,
-                book: form.book,
-                chapter: form.chapter,
-                verseFrom: form.verseFrom,
-                verseTo: form.verseTo,
-                passage: form.passage,
-                research: form.research,
-                observe: form.observe,
-                write: form.write,
-              }
-            : n
-        )
-      );
-    } else {
-      const newNote: Note = {
-        id: crypto.randomUUID(),
-        book: form.book,
-        chapter: form.chapter,
-        verseFrom: form.verseFrom,
-        verseTo: form.verseTo,
-        passage: form.passage,
-        research: form.research,
-        observe: form.observe,
-        write: form.write,
-        createdAt,
-      };
+    // make sure user is logged in
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-      setNotes((prev) => [newNote, ...prev]);
+    if (!user) {
+      setSaving(false);
+      alert("Please log in to save notes.");
+      return;
     }
 
-    setModalMode(null);
-    setCurrentNote(null);
+    try {
+      if (editingNoteId && modalMode === "edit") {
+        // UPDATE existing note
+        const { error } = await supabase
+          .from("notes")
+          .update({
+            book: form.book,
+            chapter: form.chapter,
+            verse_from: form.verseFrom,
+            verse_to: form.verseTo,
+            passage: form.passage,
+            research: form.research,
+            observe: form.observe,
+            write: form.write,
+          })
+          .eq("id", editingNoteId);
+
+        if (error) {
+          console.error("Error updating note:", error);
+          alert("Something went wrong while updating your note.");
+          return;
+        }
+
+        // update local state
+        setNotes((prev) =>
+          prev.map((n) =>
+            n.id === editingNoteId
+              ? {
+                  ...n,
+                  book: form.book,
+                  chapter: form.chapter,
+                  verseFrom: form.verseFrom,
+                  verseTo: form.verseTo,
+                  passage: form.passage,
+                  research: form.research,
+                  observe: form.observe,
+                  write: form.write,
+                }
+              : n
+          )
+        );
+      } else {
+        // INSERT new note
+        const { data, error } = await supabase
+          .from("notes")
+          .insert({
+            user_id: user.id,
+            book: form.book,
+            chapter: form.chapter,
+            verse_from: form.verseFrom,
+            verse_to: form.verseTo,
+            passage: form.passage,
+            research: form.research,
+            observe: form.observe,
+            write: form.write,
+          })
+          .select()
+          .single();
+
+        if (error) {
+          console.error("Error inserting note:", error);
+          alert("Something went wrong while saving your note.");
+          return;
+        }
+
+        const newNote = mapRowToNote(data);
+        setNotes((prev) => [newNote, ...prev]);
+      }
+
+      setModalMode(null);
+      setCurrentNote(null);
+    } finally {
+      setSaving(false);
+    }
   }
 
-  function handleDelete() {
+  async function handleDelete() {
     if (!editingNoteId) return;
     const yes = window.confirm("Delete this note? This cannot be undone.");
     if (!yes) return;
+
+    const { error } = await supabase
+      .from("notes")
+      .delete()
+      .eq("id", editingNoteId);
+
+    if (error) {
+      console.error("Error deleting note:", error);
+      alert("Something went wrong while deleting your note.");
+      return;
+    }
 
     setNotes((prev) => prev.filter((n) => n.id !== editingNoteId));
     setModalMode(null);
@@ -222,7 +321,9 @@ export default function NotesPage() {
         </div>
 
         {/* NOTES GRID */}
-        {filteredNotes.length === 0 ? (
+        {isLoading ? (
+          <div className="mt-6 text-sm text-gray-600">Loading notes...</div>
+        ) : filteredNotes.length === 0 ? (
           <div className="mt-6 text-sm text-gray-600">
             No notes yet. Click{" "}
             <button
@@ -283,9 +384,8 @@ export default function NotesPage() {
                 ✕
               </button>
 
-              {/* inner column to keep text narrow */}
               <div className="mx-auto max-w-xl">
-                {/* VIEW MODE (READ ONLY) */}
+                {/* VIEW MODE */}
                 {modalMode === "view" && currentNote && (
                   <>
                     <h2 className="text-2xl font-bold mb-1">
@@ -370,7 +470,7 @@ export default function NotesPage() {
                   </>
                 )}
 
-                {/* CREATE / EDIT MODE (FORM) */}
+                {/* CREATE / EDIT MODE */}
                 {(modalMode === "create" || modalMode === "edit") && (
                   <>
                     <h2 className="text-xl font-bold mb-4">
@@ -541,9 +641,10 @@ export default function NotesPage() {
                       <button
                         type="button"
                         onClick={handleSave}
-                        className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm"
+                        disabled={saving}
+                        className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm disabled:opacity-60"
                       >
-                        Save note
+                        {saving ? "Saving..." : "Save note"}
                       </button>
                     </div>
                   </>
