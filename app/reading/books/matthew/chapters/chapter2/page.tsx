@@ -241,13 +241,7 @@ export default function MatthewChapter2Page() {
               </div>
             </Link>
 
-            <Image
-              src="/Bible/Matthew/chapters/Chapter2/Click.png"
-              alt="Next step: click the notes button"
-              width={200}
-              height={200}
-              className="w-16 h-16"
-            />
+
           </div>
         </div>
       </div>

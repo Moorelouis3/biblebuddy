@@ -110,12 +110,7 @@ export default function BibleBuddiesPage() {
               Pick a Buddy to learn their story.
             </p>
           </div>
-          <Link
-            href="/"
-            className="text-xs sm:text-sm text-blue-600 hover:underline"
-          >
-            ← Back home
-          </Link>
+
         </div>
       </header>
 

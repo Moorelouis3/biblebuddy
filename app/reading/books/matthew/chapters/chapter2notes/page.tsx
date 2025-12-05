@@ -3,42 +3,42 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { markMatthewStepDone } from "../../../../../../lib/readingProgress";
+
+// overview + 28 chapters
+const MATTHEW_TOTAL_ITEMS = 28 + 1;
 
 export default function MatthewChapter2NotesPage() {
   const router = useRouter();
   const [isFinished, setIsFinished] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
-  async function handleMarkFinished() {
+  function handleMarkFinished() {
+    if (isSaving) return;
+
     try {
       setIsSaving(true);
 
-      // update this path to match your real progress API
-      await fetch("/api/progress/matthew/2/complete", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ completed: true }),
-      });
+      // chapter 2 is step index 2 (overview 0, chapter 1 = 1, chapter 2 = 2)
+      markMatthewStepDone(MATTHEW_TOTAL_ITEMS, 2);
 
       setIsFinished(true);
 
-      // send them back to the Matthew books page
+      // send them back to the Matthew overview with chapters
       router.push("/reading/books/matthew");
     } catch (err) {
       console.error("Error marking chapter two finished", err);
-      // optional: toast here
     } finally {
       setIsSaving(false);
     }
   }
 
   function goToMatthewChapterTwo() {
-    // update this path if your chapter route is different
     router.push("/reading/books/matthew/chapters/chapter2");
   }
 
   function goHome() {
-    router.push("/");
+    router.push("/dashboard");
   }
 
   return (
@@ -272,8 +272,8 @@ export default function MatthewChapter2NotesPage() {
               </p>
 
               <p>
-                Joseph did not wait. In the middle of the night he woke up,
-                took Mary and Jesus, and started walking. Egypt was far, but
+                Joseph did not wait. In the middle of the night he woke up, took
+                Mary and Jesus, and started walking. Egypt was far, but
                 obedience was more important than comfort.
               </p>
 
@@ -429,7 +429,9 @@ export default function MatthewChapter2NotesPage() {
                   : "bg-blue-600 text-white hover:bg-blue-700"
               }`}
             >
-              {isFinished ? "Chapter two finished" : "Mark Matthew 2 as finished"}
+              {isFinished
+                ? "Chapter two finished"
+                : "Mark Matthew 2 as finished"}
             </button>
           </div>
         </div>

@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { LouisAvatar } from "../../components/LouisAvatar";
-import { getUnlockedBooks } from "../../lib/readingProgress";
+import { isBookUnlocked } from "../../lib/readingProgress";
 
 const BOOKS = [
   "Matthew",
@@ -44,15 +44,11 @@ const BOOKS = [
 
 const BOOKS_PER_PAGE = 12;
 
+// overview + 28 chapters
+const MATTHEW_TOTAL_ITEMS = 28 + 1;
+
 export default function ReadingPage() {
   const [bookPage, setBookPage] = useState(0);
-  const [unlockedBooks, setUnlockedBooks] = useState<string[]>(["Matthew"]);
-
-  // load unlocked books from readingProgress helper
-  useEffect(() => {
-    const unlocked = getUnlockedBooks(BOOKS);
-    setUnlockedBooks(unlocked);
-  }, []);
 
   // book pagination
   const startIndex = bookPage * BOOKS_PER_PAGE;
@@ -61,11 +57,11 @@ export default function ReadingPage() {
   const hasNextPage = startIndex + BOOKS_PER_PAGE < BOOKS.length;
 
   return (
-    <div className="min-h-screen py-8 px-4">
+    <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         {/* PAGE HEADER */}
         <h1 className="text-3xl font-bold mb-1">Bible Reading Plan</h1>
-        <p className="mb-4">
+        <p className="text-gray-700 mb-4">
           We walk together one book and one chapter at a time.
         </p>
 
@@ -74,16 +70,16 @@ export default function ReadingPage() {
           {/* LOUIS TALKING */}
           <div className="mt-1 mb-4 flex items-start gap-3">
             <LouisAvatar mood="bible" size={56} />
-            <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm">
+            <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
               <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
               <p className="mb-2">
                 This is the Bible Reading Plan section of the app. From here we
                 pick one book at a time and walk through it together.
               </p>
               <p>
-                We start in <span className="font-semibold">Matthew</span>. As
-                you finish each book, the next one unlocks so nothing feels
-                overwhelming.
+                We start in <span className="font-semibold">Matthew</span>. All
+                the other books stay locked until you finish the current book,
+                so nothing feels overwhelming.
               </p>
             </div>
           </div>
@@ -92,44 +88,38 @@ export default function ReadingPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-2">
               {visibleBooks.map((book) => {
-                const unlocked = unlockedBooks.includes(book);
+                const unlocked = isBookUnlocked(book, MATTHEW_TOTAL_ITEMS);
 
                 const baseClasses =
                   "relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm";
 
-                // UNLOCKED BOOKS
                 if (unlocked) {
-                  // only Matthew has a path right now
-                  if (book === "Matthew") {
-                    return (
-                      <Link
-                        key={book}
-                        href="/reading/books/matthew"
-                        className={`${baseClasses} bg-orange-100 border-orange-300 pulse-matthew`}
-                      >
-                        <p className="font-semibold">{book}</p>
-                        <p className="text-[11px] mt-1">
-                          Start here with Jesus. This is your first path.
-                        </p>
-                      </Link>
-                    );
-                  }
+                  const href =
+                    book === "Matthew"
+                      ? "/reading/books/matthew"
+                      : "#"; // later you can link Mark etc.
 
-                  // future unlocked books – no page yet, but show they are open
                   return (
-                    <div
+                    <Link
                       key={book}
-                      className={`${baseClasses} bg-orange-100 border-orange-300`}
+                      href={href}
+                      className={`${baseClasses} ${
+                        book === "Matthew"
+                          ? "bg-orange-100 border-orange-300 pulse-matthew"
+                          : "bg-white border-blue-200"
+                      }`}
                     >
                       <p className="font-semibold">{book}</p>
                       <p className="text-[11px] mt-1">
-                        This book is unlocked. Content is coming soon.
+                        {book === "Matthew"
+                          ? "Start here with Jesus. This is your first path."
+                          : "This book is now unlocked."}
                       </p>
-                    </div>
+                    </Link>
                   );
                 }
 
-                // LOCKED BOOKS (no link)
+                // locked books (no link)
                 return (
                   <div
                     key={book}
@@ -137,7 +127,7 @@ export default function ReadingPage() {
                   >
                     <p className="font-semibold">{book}</p>
                     <p className="text-[11px] mt-1">
-                      Locked until you finish the previous book.
+                      Locked until you finish Matthew.
                     </p>
                     <div className="absolute right-2 top-2 text-black/70">
                       🔒

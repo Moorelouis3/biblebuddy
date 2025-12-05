@@ -50,7 +50,8 @@ export function ChatLouis() {
     } catch (err) {
       const errorMessage: Message = {
         role: "assistant",
-        content: "Sorry, something went wrong. Please try again in a moment.",
+        content:
+          "Sorry, something went wrong. Please try again in a moment.",
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
@@ -67,7 +68,6 @@ export function ChatLouis() {
         aria-label="Chat with Louis"
       >
         <div className="w-20 h-20 rounded-full bg-black/5 flex items-center justify-center">
-          {/* avatar is already circular; we just size its container */}
           <LouisAvatar mood="bible" size={64} />
         </div>
       </button>
@@ -95,13 +95,17 @@ export function ChatLouis() {
             {messages.map((m, i) => (
               <div
                 key={i}
-                className={m.role === "user" ? "text-right" : "text-left"}
+                className={
+                  m.role === "user"
+                    ? "flex justify-end"
+                    : "flex justify-start"
+                }
               >
                 <span
                   className={
                     m.role === "user"
-                      ? "inline-block bg-blue-600 text-white px-3 py-2 rounded-2xl text-xs"
-                      : "inline-block bg-gray-100 text-gray-800 px-3 py-2 rounded-2xl text-xs"
+                      ? "inline-block bg-blue-600 text-white px-3 py-2 rounded-2xl text-xs max-w-[90%] whitespace-pre-line leading-relaxed"
+                      : "inline-block bg-gray-100 text-gray-800 px-3 py-2 rounded-2xl text-xs max-w-[90%] whitespace-pre-line leading-relaxed"
                   }
                 >
                   {m.content}

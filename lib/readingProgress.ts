@@ -1,142 +1,127 @@
-// /lib/readingProgress.ts
+// lib/readingProgress.ts
+// Pure helper functions for reading progress – no JSX here.
 
-const STORAGE_KEY = "bb_reading_progress_v1";
+const STORAGE_KEY = "biblebuddy_reading_progress";
 
 type ReadingProgress = {
-  matthewCurrentStep: number; // 0 = overview, 1 = Matthew 1, etc
+  matthewCurrentStep: number; // 0 = overview, 1 = ch1, 2 = ch2, ...
   streak: number;
-  lastReadDate: string | null; // "YYYY-MM-DD"
-  unlockedBooks: string[];
+  lastCompletedDate: string | null; // "2025-12-04"
 };
 
-const DEFAULT_PROGRESS: ReadingProgress = {
-  matthewCurrentStep: 0,
-  streak: 0,
-  lastReadDate: null,
-  unlockedBooks: ["Matthew"],
-};
-
-function isBrowser() {
-  return typeof window !== "undefined" && typeof localStorage !== "undefined";
+function getDefaultProgress(): ReadingProgress {
+  return {
+    matthewCurrentStep: 0,
+    streak: 0,
+    lastCompletedDate: null,
+  };
 }
 
 function loadProgress(): ReadingProgress {
-  if (!isBrowser()) return { ...DEFAULT_PROGRESS };
+  if (typeof window === "undefined") {
+    return getDefaultProgress();
+  }
 
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { ...DEFAULT_PROGRESS };
+    if (!raw) return getDefaultProgress();
 
     const parsed = JSON.parse(raw) as Partial<ReadingProgress>;
-
     return {
-      ...DEFAULT_PROGRESS,
-      ...parsed,
-      unlockedBooks: parsed.unlockedBooks ?? ["Matthew"],
+      matthewCurrentStep: parsed.matthewCurrentStep ?? 0,
+      streak: parsed.streak ?? 0,
+      lastCompletedDate: parsed.lastCompletedDate ?? null,
     };
   } catch {
-    return { ...DEFAULT_PROGRESS };
+    return getDefaultProgress();
   }
 }
 
 function saveProgress(data: ReadingProgress) {
-  if (!isBrowser()) return;
+  if (typeof window === "undefined") return;
+
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch {
-    // ignore storage errors
+    // ignore storage errors for now
   }
 }
 
-function isSameDay(a: string | null, b: string | null) {
-  if (!a || !b) return false;
-  return a === b;
-}
-
-// ─────────────────────────────────────────────
-// PUBLIC HELPERS
-// ─────────────────────────────────────────────
-
-export function getMatthewCurrentStep(totalItems: number): number {
-  const data = loadProgress();
-  let step = data.matthewCurrentStep ?? 0;
-
-  if (step < 0) step = 0;
-  if (step >= totalItems) step = totalItems - 1;
-
+function clampStep(step: number, totalSteps: number): number {
+  if (step < 0) return 0;
+  if (step >= totalSteps) return totalSteps - 1;
   return step;
 }
 
-export function isBookUnlocked(bookName: string): boolean {
-  const data = loadProgress();
-  return data.unlockedBooks.includes(bookName);
+function todayIso(): string {
+  const d = new Date();
+  return d.toISOString().slice(0, 10); // "YYYY-MM-DD"
+}
+
+function yesterdayIso(): string {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return d.toISOString().slice(0, 10);
 }
 
 /**
- * Used by the Reading Plan grid to know which
- * books should be clickable.
- *
- * It keeps the original order of `allBooks`,
- * only returning the ones that are unlocked.
+ * Get the user's current Matthew step index.
+ * 0 = overview, 1 = Matthew 1, 2 = Matthew 2, ...
  */
-export function getUnlockedBooks(allBooks: string[]): string[] {
-  const data = loadProgress();
-  const unlockedList = data.unlockedBooks && data.unlockedBooks.length
-    ? data.unlockedBooks
-    : ["Matthew"];
-
-  return allBooks.filter((book) => unlockedList.includes(book));
+export function getMatthewCurrentStep(totalSteps: number): number {
+  const progress = loadProgress();
+  return clampStep(progress.matthewCurrentStep, totalSteps);
 }
 
 /**
- * Mark one Matthew step as done and update
- * current step, streak and unlocked books.
- *
- * totalItems is overview plus chapters
- * stepIndex is the index that was just finished
+ * Mark a Matthew step as done and update streak.
+ * stepIndex is the index you just finished (0 = overview, 1 = ch1, etc.)
  */
 export function markMatthewStepDone(
-  totalItems: number,
+  totalSteps: number,
   stepIndex: number
-): ReadingProgress {
-  const data = loadProgress();
+): void {
+  if (typeof window === "undefined") return;
 
-  // update streak
-  const today = new Date();
-  const todayStr = today.toISOString().slice(0, 10); // YYYY-MM-DD
-  const yesterday = new Date(today);
-  yesterday.setDate(today.getDate() - 1);
-  const yesterdayStr = yesterday.toISOString().slice(0, 10);
+  const progress = loadProgress();
 
-  if (!data.lastReadDate) {
-    data.streak = 1;
-  } else if (isSameDay(data.lastReadDate, todayStr)) {
-    // already counted today, keep streak as is
-  } else if (data.lastReadDate === yesterdayStr) {
-    data.streak = (data.streak || 0) + 1;
+  // Move current step forward (next step becomes active)
+  const nextStep = clampStep(stepIndex + 1, totalSteps);
+  if (nextStep > progress.matthewCurrentStep) {
+    progress.matthewCurrentStep = nextStep;
+  }
+
+  // Streak logic
+  const today = todayIso();
+  const yesterday = yesterdayIso();
+
+  if (progress.lastCompletedDate === today) {
+    // already counted today, do nothing to streak
+  } else if (progress.lastCompletedDate === yesterday) {
+    progress.streak += 1;
   } else {
-    data.streak = 1;
+    progress.streak = 1;
   }
 
-  data.lastReadDate = todayStr;
+  progress.lastCompletedDate = today;
+  saveProgress(progress);
+}
 
-  // move Matthew step forward
-  const currentStep = data.matthewCurrentStep ?? 0;
+/**
+ * Simple unlock logic for books.
+ * Matthew is always unlocked.
+ * Mark unlocks when Matthew is fully finished.
+ */
+export function isBookUnlocked(book: string, matthewTotalSteps: number): boolean {
+  const progress = loadProgress();
 
-  if (stepIndex >= currentStep && stepIndex < totalItems - 1) {
-    data.matthewCurrentStep = stepIndex + 1;
-  } else if (stepIndex >= totalItems - 1) {
-    data.matthewCurrentStep = totalItems - 1;
+  if (book === "Matthew") return true;
+
+  if (book === "Mark") {
+    // if currentStep is at or beyond last index, Matthew is done
+    return progress.matthewCurrentStep >= matthewTotalSteps - 1;
   }
 
-  // unlock Mark when final Matthew step is done
-  const lastIndex = totalItems - 1;
-  if (data.matthewCurrentStep >= lastIndex) {
-    if (!data.unlockedBooks.includes("Mark")) {
-      data.unlockedBooks.push("Mark");
-    }
-  }
-
-  saveProgress(data);
-  return data;
+  // everything else locked for now
+  return false;
 }

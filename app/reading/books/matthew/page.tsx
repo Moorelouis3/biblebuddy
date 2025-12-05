@@ -66,39 +66,16 @@ export default function MatthewPage() {
               ) : (
                 <div className="space-y-3">
                   <p>
-                    Most people think you should start the Bible in Genesis
-                    because it is the first book, but we are going to start in
-                    Matthew.
+Matthew is the best place to begin because you meet Jesus right away.
+He shows a Jewish audience living under Roman pressure that Jesus is the promised King and Savior.
+Start with the Matthew overview, then we will walk through the chapters together.
                   </p>
 
-                  <p>
-                    Here you meet Jesus right away and you see the new covenant
-                    clearly from the beginning.
-                  </p>
-
-                  <p>
-                    Matthew writes for a Jewish crowd that is living under Roman
-                    pressure and he shows them that Jesus is the King and Savior
-                    they have been waiting for.
-                  </p>
-
-                  <p>
-                    Start with the Matthew overview then we can move into
-                    Matthew 1 together.
-                  </p>
+                  
                 </div>
               )}
 
-              {/* hide/open toggle at bottom right */}
-              <div className="mt-3 flex justify-end">
-                <button
-                  type="button"
-                  onClick={() => setSummaryCollapsed((v) => !v)}
-                  className="text-[11px] text-blue-600 hover:underline"
-                >
-                  {summaryCollapsed ? "Open" : "Hide"}
-                </button>
-              </div>
+  
             </div>
           </div>
 
