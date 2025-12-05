@@ -1,4 +1,3 @@
-// app/signup/page.tsx
 "use client";
 
 import { FormEvent, useState } from "react";
@@ -10,7 +9,6 @@ export default function SignupPage() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -21,28 +19,49 @@ export default function SignupPage() {
     setMessage(null);
     setError(null);
 
+    // 1. SIGN USER UP
     const { data, error } = await supabase.auth.signUp({
       email: email.trim(),
       password: password.trim(),
       options: {
         data: {
-          firstName: firstName.trim(),
-          lastName: lastName.trim(),
+          first_name: firstName.trim(),
+          last_name: lastName.trim(),
         },
       },
     });
 
-    setLoading(false);
-
     if (error) {
       setError(error.message);
+      setLoading(false);
       return;
     }
 
-    setMessage(
-      "Account created. Check your email to confirm, then you can log in."
-    );
+    // 2. GET THE USER ID
+    const user = data.user;
+    if (!user) {
+      setError("Signup failed: no user returned.");
+      setLoading(false);
+      return;
+    }
 
+    // 3. INSERT INTO user_signups TABLE
+    const { error: insertError } = await supabase
+      .from("user_signups")
+      .insert({
+        user_id: user.id,
+        email: user.email,
+      });
+
+    if (insertError) {
+      console.error("Failed inserting signup:", insertError);
+      setError("Signup created but analytics insert failed.");
+      setLoading(false);
+      return;
+    }
+
+    setLoading(false);
+    setMessage("Account created! Check your email to confirm.");
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -60,82 +79,55 @@ export default function SignupPage() {
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* FIRST NAME */}
+
           <div>
             <label className="block text-xs font-semibold text-gray-700 mb-1">
               First name
             </label>
-            <input
-              type="text"
-              required
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="John"
+            <input type="text" required className="input"
+              value={firstName} onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
 
-          {/* LAST NAME */}
           <div>
             <label className="block text-xs font-semibold text-gray-700 mb-1">
               Last name
             </label>
-            <input
-              type="text"
-              required
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Doe"
+            <input type="text" required className="input"
+              value={lastName} onChange={(e) => setLastName(e.target.value)}
             />
           </div>
 
-          {/* EMAIL */}
           <div>
             <label className="block text-xs font-semibold text-gray-700 mb-1">
               Email
             </label>
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="you@example.com"
+            <input type="email" required className="input"
+              value={email} onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
-          {/* PASSWORD */}
           <div>
             <label className="block text-xs font-semibold text-gray-700 mb-1">
               Password
             </label>
-            <input
-              type="password"
-              required
-              minLength={6}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="At least 6 characters"
+            <input type="password" required minLength={6} className="input"
+              value={password} onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
-          {/* ERRORS */}
           {error && (
             <p className="text-xs text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
               {error}
             </p>
           )}
 
-          {/* SUCCESS MESSAGE */}
           {message && (
             <p className="text-xs text-green-700 bg-green-50 border border-green-100 rounded-lg px-3 py-2">
               {message}
             </p>
           )}
 
-          {/* BUTTON */}
           <button
             type="submit"
             disabled={loading}
@@ -145,13 +137,9 @@ export default function SignupPage() {
           </button>
         </form>
 
-        {/* LOGIN LINK */}
         <p className="text-xs text-gray-600 mt-4 text-center">
           Already have an account?{" "}
-          <Link
-            href="/login"
-            className="font-semibold text-blue-600 hover:underline"
-          >
+          <Link href="/login" className="font-semibold text-blue-600 hover:underline">
             Log in
           </Link>
         </p>

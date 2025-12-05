@@ -11,18 +11,25 @@ const HIDDEN_ROUTES = ["/", "/login", "/signup"];
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
 
   useEffect(() => {
     const getSession = async () => {
       const { data } = await supabase.auth.getSession();
-      setIsLoggedIn(!!data.session);
+      const session = data.session;
+
+      setIsLoggedIn(!!session);
+      setUserEmail(session?.user?.email ?? null);
     };
+
     getSession();
 
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         setIsLoggedIn(!!session);
+        setUserEmail(session?.user?.email ?? null);
       }
     );
 
@@ -40,7 +47,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      {/* NAVBAR (hide on landing / login / signup) */}
+      {/* NAVBAR (hidden on landing/login/signup) */}
       {!isBarePage && (
         <header className="w-full bg-gray-50">
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
@@ -52,6 +59,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             </Link>
 
             <nav className="flex items-center gap-3 text-xs sm:text-sm">
+              {/* PUBLIC LINK */}
               <Link
                 href="https://joinhopenation.com"
                 target="_blank"
@@ -60,6 +68,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 Join Our Free Community
               </Link>
 
+              {/* HOME LINK */}
               <Link
                 href="/dashboard"
                 className={`px-3 py-1 rounded-full ${
@@ -71,6 +80,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 Home
               </Link>
 
+              {/* 🔥 ADMIN-ONLY ANALYTICS BUTTON */}
+              {isLoggedIn && userEmail === "moorelouis3@gmail.com" && (
+                <Link
+                  href="admin/analytics"
+                  className={`px-3 py-1 rounded-full ${
+                    pathname?.startsWith("/analytics")
+                      ? "bg-sky-100 text-black"
+                      : "text-black hover:bg-gray-100"
+                  }`}
+                >
+                  Analytics
+                </Link>
+              )}
+
+              {/* LOGOUT */}
               {isLoggedIn && (
                 <button
                   type="button"
@@ -90,7 +114,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         {children}
       </main>
 
-      {/* CHAT LOUIS (hidden on landing / login / signup) */}
+      {/* CHAT LOUIS */}
       {!isBarePage && <ChatLouis />}
     </>
   );
