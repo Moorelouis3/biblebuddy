@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import AppShell from "@/components/AppShell"; // ✅ NEW
+import AppShell from "@/components/AppShell";
+import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,8 +34,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50`}
       >
-        {/* ✅ Wrap EVERYTHING in AppShell */}
+        {/* Your full app shell */}
         <AppShell>{children}</AppShell>
+
+        {/* ✅ VERCEL ANALYTICS */}
+        <Analytics />
       </body>
     </html>
   );
