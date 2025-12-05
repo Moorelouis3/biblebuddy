@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 import AppShell from "@/components/AppShell"; // ✅ NEW
 
@@ -35,6 +36,7 @@ export default function RootLayout({
       >
         {/* ✅ Wrap EVERYTHING in AppShell */}
         <AppShell>{children}</AppShell>
+        <Analytics />
       </body>
     </html>
   );
