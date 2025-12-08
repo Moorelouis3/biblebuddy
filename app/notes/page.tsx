@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { supabase } from "../../lib/supabaseClient";
+import NewNoteModal from "../../components/NewNoteModal";
 
 type Note = {
   id: string;
@@ -105,6 +106,7 @@ export default function NotesPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(true);
   const [savingNote, setSavingNote] = useState(false);
+  const [showNewNoteModal, setShowNewNoteModal] = useState(false);
 
   // LOAD USER + NOTES
   useEffect(() => {
@@ -370,10 +372,10 @@ export default function NotesPage() {
           </div>
 
           <button
-            onClick={openNewNote}
+            onClick={() => setShowNewNoteModal(true)}
             className="rounded-full bg-blue-600 text-white px-4 py-2 text-sm font-semibold shadow hover:bg-blue-700"
           >
-            New note
+            + New Note
           </button>
         </div>
 
@@ -672,6 +674,12 @@ export default function NotesPage() {
             </div>
           </div>
         )}
+
+        {/* New Note Modal */}
+        <NewNoteModal
+          isOpen={showNewNoteModal}
+          onClose={() => setShowNewNoteModal(false)}
+        />
       </div>
     </div>
   );

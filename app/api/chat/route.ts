@@ -1,9 +1,19 @@
 // app/api/chat/route.ts
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+if (!process.env.OPENAI_API_KEY) {
+  console.error("⚠️ OPENAI_API_KEY is not set in environment variables!");
+}
+
+// Initialize OpenAI client only if API key exists
+let openai: OpenAI | null = null;
+if (process.env.OPENAI_API_KEY) {
+  openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+} else {
+  console.error("⚠️ OPENAI_API_KEY is not set in environment variables!");
+}
 
 // Helper to force line breaks and short paragraphs
 function formatReply(text: string): string {
@@ -26,18 +36,49 @@ function formatReply(text: string): string {
 }
 
 export async function POST(req: Request) {
+  // Check if OpenAI is initialized
+  if (!openai) {
+    return new Response(
+      JSON.stringify({
+        reply: "OpenAI API key is not configured. Please check your environment variables.",
+        error: "OPENAI_API_KEY not set",
+      }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+
   try {
-    const body = await req.json();
+    let body;
+    try {
+      body = await req.json();
+    } catch (err) {
+      console.error("Failed to parse request body:", err);
+      return new Response(
+        JSON.stringify({
+          reply: "Invalid request format",
+        }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
 
     // messages coming from the front end chat
     const userMessages = body.messages ?? [];
+    const growMode = body.growMode ?? false;
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4.1-mini",
-      messages: [
-        {
-          role: "system",
-          content: `
+    console.log("Received request:", {
+      messageCount: userMessages.length,
+      growMode,
+      firstMessage: userMessages[0],
+    });
+
+    // Build system message with GROW context if needed
+    let systemContent = `
 You are Little Louis, the friendly Bible study companion inside the Bible Buddy app.
 
 You are the AI version of Louis Moore.
@@ -302,13 +343,93 @@ If a question is not about the Bible, answer kindly but point them back to growi
 
 Remember:
 Little Louis always speaks in short, clear paragraphs with blank lines between them.
-        `,
-        },
-        ...userMessages,
-      ],
-      temperature: 0.6,
-      max_tokens: 400,
+        `;
+
+    // Add GROW-specific instructions if in GROW mode
+    if (growMode) {
+      systemContent += `
+
+GROW NOTE MODE:
+You are helping the user create a GROW note through conversation.
+
+1. First, ask them what passage they want to study (e.g., "Matthew 5:1-12")
+2. Then guide them through each step:
+   - G (Get the passage): Ask them to write what the passage is about
+   - R (Research): Help them research and ask questions about the passage
+   - O (Observe): Guide them to observe patterns, connections, and insights
+   - W (Write): Encourage them to write personal application and reflection
+
+Be conversational and guide them naturally through each step. After they complete all four sections, suggest reviewing their note.
+`;
+    }
+
+    // Validate messages format
+    if (!Array.isArray(userMessages)) {
+      console.error("Invalid messages: not an array", userMessages);
+      throw new Error("Invalid messages format: must be an array");
+    }
+
+    if (userMessages.length === 0) {
+      console.error("Invalid messages: empty array");
+      throw new Error("Invalid messages format: array cannot be empty");
+    }
+
+    // Validate each message has required fields
+    for (let i = 0; i < userMessages.length; i++) {
+      const msg = userMessages[i];
+      if (!msg || typeof msg !== "object") {
+        console.error(`Invalid message at index ${i}:`, msg);
+        throw new Error(`Invalid message format at index ${i}: must be an object`);
+      }
+      if (!msg.role || typeof msg.role !== "string") {
+        console.error(`Invalid message role at index ${i}:`, msg);
+        throw new Error(`Invalid message format at index ${i}: missing or invalid role`);
+      }
+      if (!msg.content || typeof msg.content !== "string") {
+        console.error(`Invalid message content at index ${i}:`, msg);
+        throw new Error(`Invalid message format at index ${i}: missing or invalid content`);
+      }
+      if (!["user", "assistant", "system"].includes(msg.role)) {
+        console.error(`Invalid message role value at index ${i}:`, msg.role);
+        throw new Error(`Invalid message role at index ${i}: ${msg.role}`);
+      }
+    }
+
+    console.log("Sending to OpenAI:", {
+      messageCount: userMessages.length,
+      growMode,
+      model: "gpt-4o-mini",
     });
+
+    const messagesToSend = [
+      {
+        role: "system" as const,
+        content: systemContent,
+      },
+      ...userMessages,
+    ];
+
+    console.log("Sending to OpenAI with", messagesToSend.length, "messages");
+
+    let completion;
+    try {
+      completion = await openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        messages: messagesToSend,
+        temperature: 0.6,
+        max_tokens: 400,
+      });
+    } catch (openaiError: any) {
+      console.error("OpenAI API error:", openaiError);
+      console.error("OpenAI error details:", {
+        message: openaiError?.message,
+        status: openaiError?.status,
+        code: openaiError?.code,
+      });
+      throw new Error(
+        `OpenAI API error: ${openaiError?.message || "Unknown error"}`
+      );
+    }
 
     const rawReply =
       completion.choices[0]?.message?.content ??
@@ -320,17 +441,50 @@ Little Louis always speaks in short, clear paragraphs with blank lines between t
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
-  } catch (err) {
-    console.error("Chat route error", err);
-    return new Response(
-      JSON.stringify({
-        reply:
-          "Sorry, something went wrong while I tried to answer. Please try again in a moment.",
-      }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+  } catch (err: any) {
+    console.error("=== CHAT ROUTE ERROR ===");
+    console.error("Error:", err);
+    console.error("Error name:", err?.name);
+    console.error("Error message:", err?.message);
+    console.error("Error stack:", err?.stack);
+    console.error("Error type:", typeof err);
+    console.error("========================");
+    
+    // Return more detailed error in development
+    const errorMessage = process.env.NODE_ENV === "development" 
+      ? `Error: ${err?.message || err?.toString() || "Unknown error"}`
+      : "Sorry, something went wrong while I tried to answer. Please try again in a moment.";
+    
+    try {
+      return new Response(
+        JSON.stringify({
+          reply: errorMessage,
+          error: process.env.NODE_ENV === "development" ? {
+            message: err?.message || err?.toString(),
+            name: err?.name,
+            type: typeof err,
+          } : undefined,
+        }),
+        {
+          status: 500,
+          headers: { 
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
+    } catch (responseError) {
+      console.error("Failed to create error response:", responseError);
+      return new Response(
+        JSON.stringify({
+          reply: "Internal server error",
+          error: "Failed to format error response",
+        }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
   }
 }

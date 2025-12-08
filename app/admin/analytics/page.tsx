@@ -15,6 +15,7 @@ export default function AnalyticsPage() {
   const [logs, setLogs] = useState<any[]>([]);
   const [newLog, setNewLog] = useState("");
   const [savingLog, setSavingLog] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     loadStats();
@@ -66,19 +67,40 @@ export default function AnalyticsPage() {
   }
 
   // Submit log
-  async function addLog() {
+  async function addLog(e?: React.FormEvent) {
+    e?.preventDefault();
     if (!newLog.trim() || savingLog) return;
 
     setSavingLog(true);
+    setErrorMessage(null);
 
-    await supabase.from("admin_logs").insert({
-      message: newLog,
-      admin_email: "moorelouis3@gmail.com",
-    });
+    try {
+      const res = await fetch("/admin/add-log", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: newLog,
+          admin_email: "moorelouis3@gmail.com",
+        }),
+      });
 
-    setNewLog("");
-    setSavingLog(false);
-    loadLogs();
+      const json = await res.json();
+
+      if (!res.ok) {
+        throw new Error(json.error || "Failed to save log");
+      }
+
+      setNewLog("");
+      setSavingLog(false);
+      setErrorMessage(null);
+      loadLogs();
+    } catch (error: any) {
+      console.error("Error saving log:", error);
+      setErrorMessage(error.message || "Failed to save log. Please try again.");
+      setSavingLog(false);
+    }
   }
 
   return (
@@ -118,21 +140,32 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Add New Log */}
-      <textarea
-        value={newLog}
-        onChange={(e) => setNewLog(e.target.value)}
-        className="w-full p-3 border rounded-xl mb-3"
-        rows={3}
-        placeholder="Write what you did today…"
-      />
+      <form onSubmit={addLog}>
+        <textarea
+          value={newLog}
+          onChange={(e) => {
+            setNewLog(e.target.value);
+            setErrorMessage(null);
+          }}
+          className="w-full p-3 border rounded-xl mb-3"
+          rows={3}
+          placeholder="Write what you did today…"
+        />
 
-      <button
-        onClick={addLog}
-        className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700"
-        disabled={savingLog}
-      >
-        {savingLog ? "Saving..." : "Add Log Entry"}
-      </button>
+        {errorMessage && (
+          <div className="mb-3 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+            {errorMessage}
+          </div>
+        )}
+
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={savingLog || !newLog.trim()}
+        >
+          {savingLog ? "Saving..." : "Add Log Entry"}
+        </button>
+      </form>
 
       <p className="text-xs text-gray-500 mt-6">
         Admin view only (moorelouis3@gmail.com)
