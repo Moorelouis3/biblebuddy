@@ -196,19 +196,29 @@ export default function GrowNotePage() {
         
         // Look for research/questions in assistant messages (R step)
         // Get the formatted conversational paragraph version from AI responses
-        if (msg.content.includes("You asked about") || msg.content.includes("You also wondered") || 
-            (msg.content.includes("You") && msg.content.includes("asked") && msg.content.includes("Here's what"))) {
-          // This is the AI's formatted research section - use this, not raw user questions
-          if (!research || research.length < msg.content.length) {
-            research = msg.content;
-            // Remove intro text and unwanted phrases
-            research = research
-              .replace(/Now let's move to R[^\n]*\n?/i, "")
-              .replace(/This is where you ask questions[^\n]*\n?/i, "")
-              .replace(/That's a great question!/gi, "")
-              .replace(/That is a great question!/gi, "")
-              .replace(/Looking at the verse above[^\n]*\n?/i, "")
-              .trim();
+        // Collect all R step responses that answer questions
+        if (msg.content.includes("You asked about") || 
+            msg.content.includes("You also wondered") || 
+            msg.content.includes("You wanted to know") ||
+            (msg.content.includes("You") && msg.content.includes("asked") && msg.content.includes("Here's what")) ||
+            (msg.content.includes("Here's what") && msg.content.includes("means"))) {
+          // This is the AI's formatted research section - collect all of them
+          let researchText = msg.content;
+          // Remove intro text and unwanted phrases
+          researchText = researchText
+            .replace(/Now let's move to R[^\n]*\n?/i, "")
+            .replace(/This is where you ask questions[^\n]*\n?/i, "")
+            .replace(/That's a great question!/gi, "")
+            .replace(/That is a great question!/gi, "")
+            .replace(/Looking at the verse above[^\n]*\n?/i, "")
+            .replace(/Do you have more questions[^\n]*\n?/gi, "")
+            .trim();
+          
+          // Combine multiple research responses
+          if (research) {
+            research = research + "\n\n" + researchText;
+          } else {
+            research = researchText;
           }
         }
         
@@ -228,10 +238,50 @@ export default function GrowNotePage() {
         }
       }
       
-      // If no formatted reflection found, DO NOT use raw user input - that's wrong!
-      // The reflection should be the AI's formatted version, not raw user text
+      // If no formatted reflection found, try to extract from the reflection text shown in chat
+      // Look for the formatted reflection that was displayed to the user (the one before "Are you happy")
       if (!reflection) {
-        console.warn("Could not find formatted reflection - note may be incomplete");
+        // Check the last few assistant messages for formatted reflection text
+        for (let i = assistantMessages.length - 1; i >= Math.max(0, assistantMessages.length - 5); i--) {
+          const msg = assistantMessages[i].content;
+          // Look for the reflection that's shown before "Are you happy" question
+          // It should be the formatted version with proper paragraphs
+          if (msg.includes("Are you happy with how I formatted")) {
+            // Extract everything before "Are you happy"
+            const parts = msg.split(/Are you happy with how I formatted/i);
+            if (parts[0] && parts[0].trim().length > 50) {
+              reflection = parts[0]
+                .replace(/Here's how it looks now[^:]*:\s*/i, "")
+                .replace(/Here's what you wrote[^:]*:\s*/i, "")
+                .replace(/polished into a smooth journal entry[^:]*:\s*/i, "")
+                .replace(/^---\s*/gm, "")
+                .trim();
+              if (reflection.length > 50) {
+                break;
+              }
+            }
+          }
+          // Also check for reflection patterns in longer messages
+          if ((msg.includes("This reminded me") || msg.includes("I can see") || msg.includes("I learned") || 
+               msg.includes("I realized") || msg.includes("I understand")) && 
+              msg.length > 100 && 
+              !msg.includes("Questions & Research") &&
+              !msg.includes("Passage Text")) {
+            // Extract everything before "Are you happy" or "Click"
+            const reflectionPart = msg.split(/Are you happy|Click.*Save|Would you like/i)[0].trim();
+            // Remove any intro text
+            const cleaned = reflectionPart
+              .replace(/Here's how it looks now[^:]*:\s*/i, "")
+              .replace(/Here's what you wrote[^:]*:\s*/i, "")
+              .replace(/polished into a smooth journal entry[^:]*:\s*/i, "")
+              .replace(/^---\s*/gm, "")
+              .trim();
+            if (cleaned.length > 50) {
+              reflection = cleaned;
+              break;
+            }
+          }
+        }
       }
     }
     
@@ -254,8 +304,33 @@ export default function GrowNotePage() {
         .join("\n\n");
     }
 
-    // Ensure we have at least book and reflection
-    if (!book || !reflection) {
+    // Ensure we have at least book
+    if (!book) {
+      console.error("Could not find book/passage reference");
+      return null;
+    }
+    
+    // If we don't have reflection, try one more time to get it from the last assistant message
+    if (!reflection) {
+      // Look for any formatted reflection in the last few assistant messages
+      for (let i = assistantMessages.length - 1; i >= Math.max(0, assistantMessages.length - 3); i--) {
+        const msg = assistantMessages[i].content;
+        // Look for formatted reflection patterns
+        if (msg.includes("This reminded me") || msg.includes("I can see") || 
+            (msg.length > 100 && msg.includes(".") && !msg.includes("Are you happy"))) {
+          // This might be the formatted reflection
+          const reflectionPart = msg.split(/Are you happy|Would you like|Click.*Save/i)[0].trim();
+          if (reflectionPart.length > 50) {
+            reflection = reflectionPart;
+            break;
+          }
+        }
+      }
+    }
+    
+    // If still no reflection, we can't save
+    if (!reflection) {
+      console.error("Could not find formatted reflection");
       return null;
     }
 
