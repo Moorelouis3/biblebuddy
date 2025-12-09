@@ -287,29 +287,38 @@ export default function GrowNotePage() {
 
       setMessages((prev) => [...prev, assistantMessage]);
 
+      // Check if user just said "done" (after W step)
+      const userJustSaidDone = trimmed.toLowerCase() === "done";
+      
       // Check if assistant is asking to save the note
       const lowerContent = assistantMessage.content.toLowerCase();
-      if (
+      const isAskingToSave = 
         lowerContent.includes("would you like to save") ||
         lowerContent.includes("save this as your grow note") ||
         lowerContent.includes("save this note") ||
         lowerContent.includes("save your grow note") ||
         lowerContent.includes("ready to save") ||
-        (lowerContent.includes("save") && lowerContent.includes("grow"))
-      ) {
-        setShowSaveButton(true);
-      }
+        (lowerContent.includes("save") && lowerContent.includes("grow"));
       
-      // Also check if we've completed W step (user said "done" after reflection)
-      // and the AI has provided the formatted note
-      if (assistantMessage.content.includes("GROW Study Notes") || 
-          assistantMessage.content.includes("📖 GROW Study Notes") ||
-          (assistantMessage.content.includes("📌 **Passage Text**") &&
-           assistantMessage.content.includes("📌 **Journal Reflection**"))) {
-        // If formatted note is shown, show save button after a short delay
-        setTimeout(() => {
-          setShowSaveButton(true);
-        }, 500);
+      // Check if assistant has provided the formatted note
+      const hasFormattedNote = 
+        assistantMessage.content.includes("GROW Study Notes") || 
+        assistantMessage.content.includes("📖 GROW Study Notes") ||
+        (assistantMessage.content.includes("📌 **Passage Text**") &&
+         assistantMessage.content.includes("📌 **Journal Reflection**"));
+      
+      // Check if we've completed W step by looking at conversation
+      // If user said "done" and we have enough messages (completed all steps)
+      const allMessages = [...newMessages, assistantMessage];
+      const userMessages = allMessages.filter((m) => m.role === "user");
+      const hasCompletedSteps = userMessages.length >= 4; // G, R, O, W steps
+      
+      // Show save button if:
+      // 1. AI is asking to save, OR
+      // 2. User said "done" and AI provided formatted note, OR
+      // 3. User said "done" and we've completed all GROW steps
+      if (isAskingToSave || (userJustSaidDone && hasFormattedNote) || (userJustSaidDone && hasCompletedSteps)) {
+        setShowSaveButton(true);
       }
     } catch (err: any) {
       console.error("Error in handleSend:", err);
@@ -327,11 +336,16 @@ export default function GrowNotePage() {
   }
 
   async function handleSave() {
-    if (!userId) return;
+    if (!userId) {
+      alert("You must be logged in to save notes.");
+      return;
+    }
     setSaving(true);
 
     try {
+      console.log("Starting save process...");
       const parsed = parseFormattedNote();
+      console.log("Parsed note:", parsed);
       
       if (!parsed) {
         alert("Could not parse note. Please make sure you completed the GROW process.");
@@ -360,7 +374,18 @@ export default function GrowNotePage() {
         return;
       }
 
-      const { error } = await supabase.from("notes").insert({
+      console.log("Saving to Supabase:", {
+        user_id: userId,
+        book: parsed.book,
+        chapter: parsed.chapter,
+        verse_from: parsed.verseFrom,
+        verse_to: parsed.verseTo,
+        passage: parsed.passage?.substring(0, 50) + "...",
+        research: parsed.research?.substring(0, 50) + "...",
+        write: parsed.write?.substring(0, 50) + "...",
+      });
+
+      const { data, error } = await supabase.from("notes").insert({
         user_id: userId,
         book: parsed.book,
         chapter: parsed.chapter,
@@ -370,7 +395,7 @@ export default function GrowNotePage() {
         research: parsed.research,
         observe: parsed.observe,
         write: parsed.write,
-      });
+      }).select();
 
       if (error) {
         console.error("Error saving note:", error);
@@ -379,6 +404,7 @@ export default function GrowNotePage() {
         return;
       }
 
+      console.log("Note saved successfully:", data);
       router.push("/notes");
     } catch (error: any) {
       console.error("Error:", error);
