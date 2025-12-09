@@ -62,15 +62,15 @@ export default function GrowNotePage() {
       if (msg.role === "assistant") {
         const content = msg.content;
         // Check if this is the final formatted note (with or without pin emojis)
+        // Look for the full structure with all three sections
+        const hasPassageText = content.includes("**Passage Text**") || content.includes("Passage Text");
+        const hasQuestions = content.includes("**Questions & Research**") || content.includes("Questions & Research");
+        const hasReflection = content.includes("**Journal Reflection**") || content.includes("Journal Reflection");
+        
         if (
           content.includes("GROW Study Notes") ||
           content.includes("📖 GROW Study Notes") ||
-          (content.includes("**Passage Text**") &&
-            content.includes("**Questions & Research**") &&
-            content.includes("**Journal Reflection**")) ||
-          (content.includes("Passage Text") &&
-            content.includes("Questions & Research") &&
-            content.includes("Journal Reflection"))
+          (hasPassageText && hasQuestions && hasReflection)
         ) {
           return content;
         }
@@ -134,21 +134,33 @@ export default function GrowNotePage() {
       }
 
       // Extract Passage Text section (remove pin emoji and unwanted phrases if present)
-      const passageTextMatch = cleaned.match(/\*\*Passage Text\*\*[\s\S]*?(?=\*\*Questions|$)/i);
+      // Try with ** markers first, then without
+      let passageTextMatch = cleaned.match(/\*\*Passage Text\*\*[\s\S]*?(?=\*\*Questions|$)/i);
+      if (!passageTextMatch) {
+        passageTextMatch = cleaned.match(/Passage Text[\s\S]*?(?=Questions|$)/i);
+      }
       passageText = passageTextMatch
-        ? passageTextMatch[0].replace(/\*\*Passage Text\*\*/i, "").replace(/📌/g, "").replace(/Great choice!/gi, "").trim()
+        ? passageTextMatch[0].replace(/(?:\*\*)?Passage Text(?:\*\*)?/i, "").replace(/📌/g, "").replace(/Great choice!/gi, "").trim()
         : "";
 
       // Extract Questions & Research section (remove pin emoji and unwanted text if present)
-      const researchMatch = cleaned.match(/\*\*Questions & Research\*\*[\s\S]*?(?=\*\*Journal|$)/i);
+      // Try with ** markers first, then without
+      let researchMatch = cleaned.match(/\*\*Questions & Research\*\*[\s\S]*?(?=\*\*Journal|$)/i);
+      if (!researchMatch) {
+        researchMatch = cleaned.match(/Questions & Research[\s\S]*?(?=Journal|$)/i);
+      }
       research = researchMatch
-        ? researchMatch[0].replace(/\*\*Questions & Research\*\*/i, "").replace(/📌/g, "").replace(/If you have more questions or thoughts, feel free to ask anytime!/gi, "").replace(/That's a great question!/gi, "").replace(/That is a great question!/gi, "").trim()
+        ? researchMatch[0].replace(/(?:\*\*)?Questions & Research(?:\*\*)?/i, "").replace(/📌/g, "").replace(/If you have more questions or thoughts, feel free to ask anytime!/gi, "").replace(/That's a great question!/gi, "").replace(/That is a great question!/gi, "").trim()
         : "";
 
       // Extract Journal Reflection section (stop at equals signs, "Would you like", or "Are you happy")
-      const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|Would you like|Are you happy|$)/i);
+      // Try with ** markers first, then without
+      let reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|Would you like|Are you happy|$)/i);
+      if (!reflectionMatch) {
+        reflectionMatch = cleaned.match(/Journal Reflection([\s\S]*?)(?=\n*=+|Would you like|Are you happy|$)/i);
+      }
       reflection = reflectionMatch
-        ? reflectionMatch[1].replace(/\*\*Journal Reflection\*\*/i, "").replace(/📌/g, "").trim()
+        ? reflectionMatch[1].replace(/(?:\*\*)?Journal Reflection(?:\*\*)?/i, "").replace(/📌/g, "").trim()
         : "";
       
       // If no reflection found in formatted structure, try to get it from different formats
@@ -204,20 +216,22 @@ export default function GrowNotePage() {
         // The AI should have shown a formatted version
         if (msg.content.includes("Here's how it looks now") || 
             msg.content.includes("Here's what you wrote") ||
-            msg.content.includes("polished into a smooth journal entry")) {
+            msg.content.includes("polished into a smooth journal entry") ||
+            msg.content.includes("Here's your reflection")) {
           // Extract the formatted reflection
-          const formattedMatch = msg.content.match(/(?:Here's how it looks now|Here's what you wrote|polished into a smooth journal entry)[^:]*:([\s\S]*?)(?:Are you happy|Would you like|$)/i);
+          const formattedMatch = msg.content.match(/(?:Here's how it looks now|Here's what you wrote|polished into a smooth journal entry|Here's your reflection)[^:]*:([\s\S]*?)(?:Are you happy|Would you like|Click.*Save|$)/i);
           if (formattedMatch) {
             reflection = formattedMatch[1].trim();
             // Clean up
-            reflection = reflection.replace(/^---\s*/gm, "").trim();
+            reflection = reflection.replace(/^---\s*/gm, "").replace(/^Here's how it looks now[^:]*:\s*/i, "").trim();
           }
         }
       }
       
-      // If no formatted reflection found, get from last user message (W step) as fallback
-      if (!reflection && userMessages.length > 0) {
-        reflection = userMessages[userMessages.length - 1]?.content || "";
+      // If no formatted reflection found, DO NOT use raw user input - that's wrong!
+      // The reflection should be the AI's formatted version, not raw user text
+      if (!reflection) {
+        console.warn("Could not find formatted reflection - note may be incomplete");
       }
     }
     

@@ -476,9 +476,26 @@ Make it more understandable and polished while preserving their personal voice a
 DO NOT add any equals sign lines (====) at the end of the note.
 DO NOT include "Are you happy" questions in the saved note - that should only appear in the chat.
 
-CRITICAL: You MUST include the full formatted note structure in your response (even though it won't be displayed to the user). The app needs to extract it to save all sections.
+CRITICAL: You MUST include the full formatted note structure in your response BEFORE asking if they're happy. Use this exact format:
 
-After including the full formatted note structure, then ask:
+=====================================================================
+📖 GROW Study Notes  
+Passage: [Book + Chapter + Verses]  
+Date: [today's date]
+=====================================================================
+
+**Passage Text**
+[The actual Bible verses with verse numbers like [01], [02], etc.]
+
+**Questions & Research**
+[Your conversational paragraph format of their questions and your answers]
+
+**Journal Reflection**
+[Your formatted, polished version of their reflection in first person]
+
+=====================================================================
+
+After including the full formatted note structure above, then ask:
 
 "Are you happy with how I formatted your reflection? Click 'Save Note Now' if you are, or 'No, keep editing' if you want to make changes."
 
