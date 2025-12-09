@@ -720,21 +720,24 @@ export default function GrowNotePage() {
     
     // If still no reflection, we can't save
     if (!reflection) {
-      console.error("Could not find formatted reflection.");
+      console.error("=== REFLECTION NOT FOUND ===");
       console.log("Messages with 'are you happy':", messages.filter(m => m.content.toLowerCase().includes("are you happy")).map(m => ({
         role: m.role,
-        contentPreview: m.content.substring(0, 500),
+        fullContent: m.content,
         hasHappy: true
       })));
-      console.log("All assistant messages:", assistantMessages.map(m => ({
+      console.log("All assistant messages:", assistantMessages.map((m, i) => ({
+        index: i,
         contentLength: m.content.length,
-        preview: m.content.substring(0, 200),
+        fullContent: m.content,
         hasHappy: m.content.toLowerCase().includes("are you happy")
       })));
-      console.log("All user messages:", userMessages.map(m => ({
+      console.log("All user messages:", userMessages.map((m, i) => ({
+        index: i,
         contentLength: m.content.length,
-        preview: m.content.substring(0, 200)
+        fullContent: m.content
       })));
+      console.log("=============================");
       return null;
     }
     
@@ -951,17 +954,20 @@ export default function GrowNotePage() {
       console.log("Messages with 'are you happy':", messages.filter(m => m.content.toLowerCase().includes("are you happy")).length);
       
       const parsed = parseFormattedNote();
+      console.log("=== PARSING DEBUG ===");
       console.log("Parsed note:", parsed);
-      console.log("Has book:", !!parsed?.book);
-      console.log("Has passage:", !!parsed?.passage);
-      console.log("Has research:", !!parsed?.research);
-      console.log("Has reflection:", !!parsed?.write);
+      console.log("Has book:", !!parsed?.book, parsed?.book);
+      console.log("Has passage:", !!parsed?.passage, parsed?.passage?.substring(0, 50));
+      console.log("Has research:", !!parsed?.research, parsed?.research?.substring(0, 50));
+      console.log("Has reflection:", !!parsed?.write, parsed?.write?.substring(0, 100));
+      console.log("All messages:", messages.map(m => ({ role: m.role, preview: m.content.substring(0, 100) })));
+      console.log("====================");
       
       if (!parsed) {
-        // Show more helpful error message
+        // Show more helpful error message with debug info
         const hasHappyMessage = messages.some(m => m.content.toLowerCase().includes("are you happy"));
         const errorMsg = hasHappyMessage 
-          ? "Could not parse note. The reflection might not be formatted correctly. Please try completing the W step again."
+          ? "Could not parse note. The reflection might not be formatted correctly. Please check the browser console (F12) for details."
           : "Could not parse note. Please make sure you completed the GROW process and reached the W (Write) step.";
         alert(errorMsg);
         setSaving(false);
@@ -989,14 +995,21 @@ export default function GrowNotePage() {
         return;
       }
 
+      // Ensure we have at least reflection and book (required fields)
+      if (!parsed.write || parsed.write.trim().length === 0) {
+        alert("Could not find your reflection. Please make sure you completed the W (Write) step and the AI showed your formatted reflection.");
+        setSaving(false);
+        return;
+      }
+
       console.log("Saving to Supabase:", {
         user_id: userId,
         book: parsed.book,
         chapter: parsed.chapter,
         verse_from: parsed.verseFrom,
         verse_to: parsed.verseTo,
-        passage: parsed.passage?.substring(0, 50) + "...",
-        research: parsed.research?.substring(0, 50) + "...",
+        passage: parsed.passage?.substring(0, 50) + "..." || "EMPTY",
+        research: parsed.research?.substring(0, 50) + "..." || "EMPTY",
         write: parsed.write?.substring(0, 50) + "...",
       });
 
