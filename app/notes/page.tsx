@@ -490,7 +490,20 @@ export default function NotesPage() {
 
                   <div className="mt-6 flex justify-end gap-3">
                     <button
-                      onClick={() => setModalMode("edit")}
+                      onClick={() => {
+                        // Redirect to grow page with note data for editing
+                        const noteData = encodeURIComponent(JSON.stringify({
+                          id: currentNote.id,
+                          book: currentNote.book,
+                          chapter: currentNote.chapter,
+                          verseFrom: currentNote.verseFrom,
+                          verseTo: currentNote.verseTo,
+                          passage: currentNote.passage,
+                          research: currentNote.research,
+                          write: currentNote.write
+                        }));
+                        window.location.href = `/notes/grow?edit=${noteData}`;
+                      }}
                       className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold"
                     >
                       Edit

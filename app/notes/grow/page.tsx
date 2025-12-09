@@ -22,6 +22,7 @@ export default function GrowNotePage() {
   const [saving, setSaving] = useState(false);
   const [showReview, setShowReview] = useState(false);
   const [showSaveButton, setShowSaveButton] = useState(false);
+  const [editingNoteId, setEditingNoteId] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,14 +40,61 @@ export default function GrowNotePage() {
     }
     loadUser();
 
-    // Start with welcome message
-    setMessages([
-      {
-        role: "assistant",
-        content:
-          "Ready to dive into the Word? Tell me the passage, and we'll start your GROW process.",
-      },
-    ]);
+    // Check if we're editing a note
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const editData = params.get("edit");
+      
+      if (editData) {
+        try {
+          const noteData = JSON.parse(decodeURIComponent(editData));
+          setEditingNoteId(noteData.id);
+          
+          // Build context about the current note
+          let noteContext = `Passage: ${noteData.book} ${noteData.chapter}:${noteData.verseFrom}${noteData.verseTo !== noteData.verseFrom ? `-${noteData.verseTo}` : ""}\n\n`;
+          if (noteData.passage) {
+            noteContext += `Current Passage Text:\n${noteData.passage}\n\n`;
+          }
+          if (noteData.research) {
+            noteContext += `Current Questions & Research:\n${noteData.research}\n\n`;
+          }
+          if (noteData.write) {
+            noteContext += `Current Reflection:\n${noteData.write}\n\n`;
+          }
+          
+          // Start with edit message
+          setMessages([
+            {
+              role: "assistant",
+              content: `I see you want to edit your note for ${noteData.book} ${noteData.chapter}:${noteData.verseFrom}${noteData.verseTo !== noteData.verseFrom ? `-${noteData.verseTo}` : ""}.\n\nWhat would you like to change? You can ask me to rewrite your reflection, update your questions, or modify any part of your note.`,
+            },
+            {
+              role: "user",
+              content: `Here's my current note:\n\n${noteContext}`,
+            },
+          ]);
+        } catch (e) {
+          console.error("Error parsing edit data:", e);
+          // Fall back to normal welcome
+          setMessages([
+            {
+              role: "assistant",
+              content:
+                "Ready to dive into the Word? Tell me the passage, and we'll start your GROW process.",
+            },
+          ]);
+        }
+      } else {
+        // Start with welcome message
+        setMessages([
+          {
+            role: "assistant",
+            content:
+              "Ready to dive into the Word? Tell me the passage, and we'll start your GROW process.",
+          },
+        ]);
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -925,27 +973,68 @@ export default function GrowNotePage() {
         write: parsed.write?.substring(0, 50) + "...",
       });
 
-      const { data, error } = await supabase.from("notes").insert({
-        user_id: userId,
-        book: parsed.book,
-        chapter: parsed.chapter,
-        verse_from: parsed.verseFrom,
-        verse_to: parsed.verseTo,
-        passage: parsed.passage,
-        research: parsed.research,
-        observe: parsed.observe,
-        write: parsed.write,
-      }).select();
+      // If editing, update existing note; otherwise insert new one
+      if (editingNoteId) {
+        const { data, error } = await supabase
+          .from("notes")
+          .update({
+            book: parsed.book,
+            chapter: parsed.chapter,
+            verse_from: parsed.verseFrom,
+            verse_to: parsed.verseTo,
+            passage: parsed.passage,
+            research: parsed.research,
+            observe: parsed.observe,
+            write: parsed.write,
+          })
+          .eq("id", Number(editingNoteId))
+          .eq("user_id", userId)
+          .select();
 
-      if (error) {
-        console.error("Error saving note:", error);
-        alert(`Failed to save note: ${error.message}`);
-        setSaving(false);
-        return;
+        if (error) {
+          console.error("Error updating note:", error);
+          const errorMsg = error.message || "Unknown error";
+          // Check if it's a length issue
+          if (errorMsg.includes("value too long") || errorMsg.includes("exceeds maximum")) {
+            alert(`Failed to update note: One of the fields is too long. Please try shortening your reflection or passage text.`);
+          } else {
+            alert(`Failed to update note: ${errorMsg}`);
+          }
+          setSaving(false);
+          return;
+        }
+
+        console.log("Note updated successfully:", data);
+        router.push("/notes");
+      } else {
+        const { data, error } = await supabase.from("notes").insert({
+          user_id: userId,
+          book: parsed.book,
+          chapter: parsed.chapter,
+          verse_from: parsed.verseFrom,
+          verse_to: parsed.verseTo,
+          passage: parsed.passage,
+          research: parsed.research,
+          observe: parsed.observe,
+          write: parsed.write,
+        }).select();
+
+        if (error) {
+          console.error("Error saving note:", error);
+          const errorMsg = error.message || "Unknown error";
+          // Check if it's a length issue
+          if (errorMsg.includes("value too long") || errorMsg.includes("exceeds maximum")) {
+            alert(`Failed to save note: One of the fields is too long. Please try shortening your reflection or passage text.`);
+          } else {
+            alert(`Failed to save note: ${errorMsg}`);
+          }
+          setSaving(false);
+          return;
+        }
+
+        console.log("Note saved successfully:", data);
+        router.push("/notes");
       }
-
-      console.log("Note saved successfully:", data);
-      router.push("/notes");
     } catch (error: any) {
       console.error("Error:", error);
       alert(`Failed to save note: ${error.message || "Unknown error"}`);
