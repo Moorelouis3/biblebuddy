@@ -9,8 +9,8 @@ if (!process.env.OPENAI_API_KEY) {
 let openai: OpenAI | null = null;
 if (process.env.OPENAI_API_KEY) {
   openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
+  apiKey: process.env.OPENAI_API_KEY,
+});
 } else {
   console.error("⚠️ OPENAI_API_KEY is not set in environment variables!");
 }
@@ -428,18 +428,20 @@ STEP W — WRITE (Journal)
 Explain:
 "W stands for Write. This is where we turn what you learned into a personal journal entry."
 
-Ask ALL of these questions at once — not one at a time:
+Instruct them to write how they feel about the verse. Give them 3-4 example starter questions like:
+- "What does this passage mean to you personally?"
+- "How does this relate to your life right now?"
+- "What is God teaching you through this?"
+- "What stands out to you most in this passage?"
 
-1. "In your own words, what is this passage saying?"
-2. "What does this passage reveal about God?"
-3. "What does this passage reveal about you or your life right now?"
-4. "Is there anything God is teaching, correcting, or encouraging you through this passage?"
-
-Then tell them:
+Tell them:
 "Don't worry about spelling or formatting. Just write from your heart.  
-When you are finished, say **done**."
+Write at least 6 sentences - we want these Bible studies to be helpful, so really think about it."
 
-When they say **done**, you move to FINAL NOTES.
+When they submit their reflection:
+- Count the sentences. If it's less than 6 sentences, ask them to write more.
+- If they submit a short response a second time, say: "You need to dig deeper please. We want these Bible studies to be helpful - really think about what this passage means to you."
+- Only when they have at least 6 sentences, move to showing them their cleaned up reflection.
 
 -----------------------------------------------------
 FINAL OUTPUT — Create Their Full GROW Note
@@ -454,23 +456,24 @@ Passage: [Book + Chapter + Verses]
 Date: [today's date]
 =====================================================================
 
-📌 **Passage Text**
+**Passage Text**
 (Insert the actual Bible verses they studied.)
 
-📌 **Questions & Research**
+**Questions & Research**
 Format this as conversational paragraphs, like Lil Louis is talking about the questions the user had and giving answers.  
 Write in a simple, conversational tone. For example: "You asked about [question]. Here's what that means: [answer]. You also wondered [another question]. Let me explain: [answer]."  
 Make it flow naturally as if Lil Louis is having a conversation about their questions.
 
-📌 **Journal Reflection**
+**Journal Reflection**
 Rewrite the user's writing into smooth, well-formatted paragraphs with proper line breaks.  
 CRITICAL: Write in FIRST PERSON (I, me, my) - this is THEIR personal reflection, so use "I learned", "I realized", "I understand", NOT "you learned" or "you realized".  
 Break longer reflections into multiple paragraphs for better readability.  
 Make it more understandable and polished while preserving their personal voice and perspective in first person.
 
 DO NOT add any equals sign lines (====) at the end of the note.
+DO NOT include "Are you happy with this note?" in the saved reflection - that question should only appear in the chat, not in the saved note.
 
-After showing the formatted note, ALWAYS ask:
+After showing ONLY the cleaned up reflection (not the whole note), ALWAYS ask:
 
 "Are you happy with this note?"
 
@@ -534,8 +537,8 @@ END OF GROW MODE INSTRUCTIONS
       {
         role: "system" as const,
         content: systemContent,
-      },
-      ...userMessages,
+        },
+        ...userMessages,
     ];
 
     console.log("Sending to OpenAI with", messagesToSend.length, "messages");
@@ -545,9 +548,9 @@ END OF GROW MODE INSTRUCTIONS
       completion = await openai.chat.completions.create({
         model: "gpt-4o-mini",
         messages: messagesToSend,
-        temperature: 0.6,
-        max_tokens: 400,
-      });
+      temperature: 0.6,
+      max_tokens: 400,
+    });
     } catch (openaiError: any) {
       console.error("OpenAI API error:", openaiError);
       console.error("OpenAI error details:", {
@@ -604,16 +607,16 @@ END OF GROW MODE INSTRUCTIONS
       );
     } catch (responseError) {
       console.error("Failed to create error response:", responseError);
-      return new Response(
-        JSON.stringify({
+    return new Response(
+      JSON.stringify({
           reply: "Internal server error",
           error: "Failed to format error response",
-        }),
-        {
-          status: 500,
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     }
   }
 }

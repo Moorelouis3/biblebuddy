@@ -139,20 +139,20 @@ export default function GrowNotePage() {
       }
     }
 
-    // Extract Passage Text section
+    // Extract Passage Text section (remove pin emoji if present)
     const passageTextMatch = cleaned.match(/\*\*Passage Text\*\*[\s\S]*?(?=\*\*Questions|$)/i);
-    const passageText = passageTextMatch
-      ? passageTextMatch[0].replace(/\*\*Passage Text\*\*/i, "").trim()
+    let passageText = passageTextMatch
+      ? passageTextMatch[0].replace(/\*\*Passage Text\*\*/i, "").replace(/📌/g, "").trim()
       : "";
 
-    // Extract Questions & Research section
+    // Extract Questions & Research section (remove pin emoji if present)
     const researchMatch = cleaned.match(/\*\*Questions & Research\*\*[\s\S]*?(?=\*\*Journal|$)/i);
-    const research = researchMatch
-      ? researchMatch[0].replace(/\*\*Questions & Research\*\*/i, "").trim()
+    let research = researchMatch
+      ? researchMatch[0].replace(/\*\*Questions & Research\*\*/i, "").replace(/📌/g, "").trim()
       : "";
 
-    // Extract Journal Reflection section (stop at equals signs or "Would you like")
-    const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|Would you like|$)/i);
+    // Extract Journal Reflection section (stop at equals signs, "Would you like", or "Are you happy")
+    const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|Would you like|Are you happy|$)/i);
     let reflection = reflectionMatch
       ? reflectionMatch[1].replace(/\*\*Journal Reflection\*\*/i, "").trim()
       : "";
@@ -160,12 +160,12 @@ export default function GrowNotePage() {
     // If no reflection found in formatted structure, try to get it from different formats
     if (!reflection) {
       // Look for polished journal entry text
-      const polishedMatch = cleaned.match(/polished into a smooth journal entry:([\s\S]*?)(?=Would you like|$)/i);
+      const polishedMatch = cleaned.match(/polished into a smooth journal entry:([\s\S]*?)(?=Would you like|Are you happy|$)/i);
       if (polishedMatch) {
         reflection = polishedMatch[1].trim();
       } else {
         // Look for "Here's what you wrote" pattern
-        const heresMatch = cleaned.match(/Here's what you wrote[^:]*:([\s\S]*?)(?=Would you like|$)/i);
+        const heresMatch = cleaned.match(/Here's what you wrote[^:]*:([\s\S]*?)(?=Would you like|Are you happy|$)/i);
         if (heresMatch) {
           reflection = heresMatch[1].trim();
         } else {
@@ -179,8 +179,13 @@ export default function GrowNotePage() {
       }
     }
     
-    // Remove any equals sign lines and trailing separators
-    reflection = reflection.replace(/^=+$/gm, "").replace(/\n=+\s*$/g, "").replace(/^-+$/gm, "").trim();
+    // Remove any equals sign lines, trailing separators, and "Are you happy" question
+    reflection = reflection
+      .replace(/^=+$/gm, "")
+      .replace(/\n=+\s*$/g, "")
+      .replace(/^-+$/gm, "")
+      .replace(/Are you happy with this note\?/gi, "")
+      .trim();
 
     return {
       book,
