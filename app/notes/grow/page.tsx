@@ -56,17 +56,21 @@ export default function GrowNotePage() {
   function extractFormattedNote() {
     // Look for the final formatted GROW note in assistant messages
     // It should contain "GROW Study Notes" or the formatted structure
+    // Check all assistant messages, not just the last one
     for (let i = messages.length - 1; i >= 0; i--) {
       const msg = messages[i];
       if (msg.role === "assistant") {
         const content = msg.content;
-        // Check if this is the final formatted note
+        // Check if this is the final formatted note (with or without pin emojis)
         if (
           content.includes("GROW Study Notes") ||
           content.includes("📖 GROW Study Notes") ||
-          (content.includes("📌 **Passage Text**") &&
-            content.includes("📌 **Questions & Research**") &&
-            content.includes("📌 **Journal Reflection**"))
+          (content.includes("**Passage Text**") &&
+            content.includes("**Questions & Research**") &&
+            content.includes("**Journal Reflection**")) ||
+          (content.includes("Passage Text") &&
+            content.includes("Questions & Research") &&
+            content.includes("Journal Reflection"))
         ) {
           return content;
         }
@@ -156,6 +160,17 @@ export default function GrowNotePage() {
     let reflection = reflectionMatch
       ? reflectionMatch[1].replace(/\*\*Journal Reflection\*\*/i, "").replace(/📌/g, "").trim()
       : "";
+    
+    // Ensure reflection has proper line breaks - split into paragraphs
+    if (reflection) {
+      // If it's one big block, try to split it into paragraphs
+      // Look for sentence endings followed by capital letters (new sentences)
+      reflection = reflection
+        .replace(/([.!?])\s+([A-Z])/g, "$1\n\n$2") // Add double line breaks between sentences
+        .split(/\n\s*\n/)
+        .filter(p => p.trim())
+        .join("\n\n");
+    }
     
     // If no reflection found in formatted structure, try to get it from different formats
     if (!reflection) {
