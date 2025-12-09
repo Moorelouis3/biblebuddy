@@ -154,7 +154,7 @@ export default function GrowNotePage() {
     // Extract Journal Reflection section (stop at equals signs, "Would you like", or "Are you happy")
     const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|Would you like|Are you happy|$)/i);
     let reflection = reflectionMatch
-      ? reflectionMatch[1].replace(/\*\*Journal Reflection\*\*/i, "").trim()
+      ? reflectionMatch[1].replace(/\*\*Journal Reflection\*\*/i, "").replace(/📌/g, "").trim()
       : "";
     
     // If no reflection found in formatted structure, try to get it from different formats

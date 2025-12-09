@@ -471,9 +471,9 @@ Break longer reflections into multiple paragraphs for better readability.
 Make it more understandable and polished while preserving their personal voice and perspective in first person.
 
 DO NOT add any equals sign lines (====) at the end of the note.
-DO NOT include "Are you happy with this note?" in the saved reflection - that question should only appear in the chat, not in the saved note.
+DO NOT include "Are you happy with this note?" in the saved note - that question should only appear in the chat, not in the saved note.
 
-After showing ONLY the cleaned up reflection (not the whole note), ALWAYS ask:
+After showing the formatted note with all sections (Passage Text, Questions & Research, Journal Reflection), ALWAYS ask:
 
 "Are you happy with this note?"
 
