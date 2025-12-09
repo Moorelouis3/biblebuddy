@@ -133,15 +133,23 @@ export default function GrowNotePage() {
         }
       }
 
-      // Extract Passage Text section (remove pin emoji and unwanted phrases if present)
+      // Extract Passage Text section - ONLY the Bible verses, nothing else
       // Try with ** markers first, then without
       let passageTextMatch = cleaned.match(/\*\*Passage Text\*\*[\s\S]*?(?=\*\*Questions|$)/i);
       if (!passageTextMatch) {
         passageTextMatch = cleaned.match(/Passage Text[\s\S]*?(?=Questions|$)/i);
       }
-      passageText = passageTextMatch
-        ? passageTextMatch[0].replace(/(?:\*\*)?Passage Text(?:\*\*)?/i, "").replace(/📌/g, "").replace(/Great choice!/gi, "").trim()
-        : "";
+      if (passageTextMatch) {
+        passageText = passageTextMatch[0].replace(/(?:\*\*)?Passage Text(?:\*\*)?/i, "").replace(/📌/g, "").replace(/Great choice!/gi, "").trim();
+        // Remove ALL instructions and keep ONLY verses with [01], [02] format
+        const lines = passageText.split('\n');
+        const verseLines = lines.filter(line => {
+          const trimmed = line.trim();
+          // Keep only lines that start with [##] (verse numbers)
+          return trimmed.match(/^\[\d+\]/);
+        });
+        passageText = verseLines.join('\n').trim();
+      }
 
       // Extract Questions & Research section (remove pin emoji and unwanted text if present)
       // Try with ** markers first, then without
@@ -209,37 +217,52 @@ export default function GrowNotePage() {
       // Look for passage text in assistant messages (G step)
       for (const msg of assistantMessages) {
         if (msg.content.includes("[01]") || msg.content.includes("Here is the passage")) {
-          // Extract passage text with verse numbers
-          const passageMatch = msg.content.match(/(?:Here is the passage[^\n]*\n)?([\s\S]*?)(?:Let me know when|Now let|When you are finished)/i);
-          if (passageMatch) {
-            passageText = passageMatch[1].trim();
-            // Clean up - remove intro text and unwanted phrases
-            passageText = passageText
-              .replace(/Here is the passage[^\n]*\n?/i, "")
-              .replace(/Great choice!/gi, "")
-              .trim();
+          // Extract ONLY the verses with [01], [02] format - nothing else
+          const lines = msg.content.split('\n');
+          const verseLines = lines.filter(line => {
+            const trimmed = line.trim();
+            // Keep ONLY lines that start with [##] (verse numbers)
+            return trimmed.match(/^\[\d+\]/);
+          });
+          if (verseLines.length > 0) {
+            passageText = verseLines.join('\n').trim();
           }
         }
         
         // Look for research/questions in assistant messages (R step)
-        // Get the formatted conversational paragraph version from AI responses
-        // Collect all R step responses that answer questions
+        // Get ONLY the conversational paragraph format where Lil Louis reminds them of questions and answers
         if (msg.content.includes("You asked about") || 
             msg.content.includes("You also wondered") || 
             msg.content.includes("You wanted to know") ||
             (msg.content.includes("You") && msg.content.includes("asked") && msg.content.includes("Here's what")) ||
             (msg.content.includes("Here's what") && msg.content.includes("means"))) {
-          // This is the AI's formatted research section - collect all of them
+          // Extract ONLY the question/answer content, remove ALL instructions
           let researchText = msg.content;
-          // Remove intro text and unwanted phrases
+          // Remove ALL intro text, instructions, and prompts
           researchText = researchText
-            .replace(/Now let's move to R[^\n]*\n?/i, "")
-            .replace(/This is where you ask questions[^\n]*\n?/i, "")
+            .replace(/Now let's move to R[^\n]*\n?/gi, "")
+            .replace(/This is where you ask questions[^\n]*\n?/gi, "")
             .replace(/That's a great question!/gi, "")
             .replace(/That is a great question!/gi, "")
-            .replace(/Looking at the verse above[^\n]*\n?/i, "")
+            .replace(/Looking at the verse above[^\n]*\n?/gi, "")
             .replace(/Do you have more questions[^\n]*\n?/gi, "")
+            .replace(/What words, phrases[^\n]*\n?/gi, "")
+            .replace(/Ask anything[^\n]*\n?/gi, "")
+            .replace(/or can we move to O\?/gi, "")
             .trim();
+          
+          // Filter out instruction lines - keep only question/answer content
+          const lines = researchText.split('\n');
+          const contentLines = lines.filter(line => {
+            const trimmed = line.trim();
+            // Skip empty lines and instruction prompts
+            if (!trimmed || 
+                trimmed.match(/^(Now let's|This is|Looking at|What words|Ask anything|Do you have more)/i)) {
+              return false;
+            }
+            return true;
+          });
+          researchText = contentLines.join('\n').trim();
           
           // Combine multiple research responses
           if (research) {
@@ -250,25 +273,36 @@ export default function GrowNotePage() {
         }
         
         // Look for formatted reflection in assistant messages (after W step)
-        // The AI should have shown a formatted version with "**Journal Reflection**"
-        if (msg.content.includes("**Journal Reflection**") || msg.content.includes("Let me format it for you")) {
-          // Extract only the content after "**Journal Reflection**"
+        // Extract the EXACT formatted version shown before "Are you happy"
+        if (msg.content.includes("**Journal Reflection**") || 
+            msg.content.includes("Let me format it for you") ||
+            msg.content.includes("Are you happy with how I formatted")) {
+          // Extract the formatted reflection - the clean version shown to user
           let reflectionPart = "";
           if (msg.content.includes("**Journal Reflection**")) {
+            // Get content after **Journal Reflection** and before "Are you happy"
             const match = msg.content.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?:Are you happy|Click.*Save|$)/i);
             if (match) {
               reflectionPart = match[1].trim();
             }
           } else if (msg.content.includes("Let me format it for you")) {
-            // Extract everything after "Let me format it for you" and the "**Journal Reflection**" header
+            // Extract after "Let me format it for you" and "**Journal Reflection**" header
             const match = msg.content.match(/Let me format it for you[^\n]*\n\s*\*\*Journal Reflection\*\*([\s\S]*?)(?:Are you happy|Click.*Save|$)/i);
             if (match) {
               reflectionPart = match[1].trim();
             }
+          } else if (msg.content.includes("Are you happy with how I formatted")) {
+            // Extract everything before "Are you happy" - this is the formatted version shown
+            const parts = msg.content.split(/Are you happy with how I formatted/i);
+            if (parts[0] && parts[0].trim().length > 50) {
+              reflectionPart = parts[0].trim();
+              // Remove "**Journal Reflection**" header if present
+              reflectionPart = reflectionPart.replace(/\*\*Journal Reflection\*\*/i, "").trim();
+            }
           }
           
           if (reflectionPart) {
-            // Clean up - remove ALL conversation text and keep only the reflection paragraphs
+            // Clean up - remove ALL conversation text, keep ONLY the formatted reflection
             reflection = reflectionPart
               .replace(/Thank you for sharing[^\n]*\n?/gi, "")
               .replace(/You have some great insights[^\n]*\n?/gi, "")
@@ -279,14 +313,14 @@ export default function GrowNotePage() {
               .replace(/^---\s*/gm, "")
               .trim();
             
-            // Filter out conversation lines - only keep actual reflection content
+            // Filter out conversation lines - keep ONLY the reflection paragraphs
             const lines = reflection.split('\n');
             const filteredLines = lines.filter(line => {
               const trimmed = line.trim();
-              // Skip empty lines, separator lines, and conversation prompts
+              // Skip empty lines, separator lines, and ALL conversation prompts
               if (!trimmed || 
                   trimmed === '---' || 
-                  trimmed.match(/^(Thank you|You have|Now, let's|Here's what|This is|Let me)/i)) {
+                  trimmed.match(/^(Thank you|You have|Now, let's|Here's what|This is|Let me|Are you)/i)) {
                 return false;
               }
               return true;
