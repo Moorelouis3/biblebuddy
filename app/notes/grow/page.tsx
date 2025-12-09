@@ -145,10 +145,10 @@ export default function GrowNotePage() {
       ? passageTextMatch[0].replace(/\*\*Passage Text\*\*/i, "").replace(/📌/g, "").trim()
       : "";
 
-    // Extract Questions & Research section (remove pin emoji if present)
+    // Extract Questions & Research section (remove pin emoji and unwanted text if present)
     const researchMatch = cleaned.match(/\*\*Questions & Research\*\*[\s\S]*?(?=\*\*Journal|$)/i);
     let research = researchMatch
-      ? researchMatch[0].replace(/\*\*Questions & Research\*\*/i, "").replace(/📌/g, "").trim()
+      ? researchMatch[0].replace(/\*\*Questions & Research\*\*/i, "").replace(/📌/g, "").replace(/If you have more questions or thoughts, feel free to ask anytime!/gi, "").trim()
       : "";
 
     // Extract Journal Reflection section (stop at equals signs, "Would you like", or "Are you happy")
@@ -292,10 +292,10 @@ export default function GrowNotePage() {
 
       setMessages((prev) => [...prev, assistantMessage]);
 
-      // Check if assistant is asking if user is happy with the note
-      // This should happen AFTER the AI shows the formatted/cleaned up version
+      // Check if assistant is asking if user is happy with the formatted reflection
       const lowerContent = assistantMessage.content.toLowerCase();
       const isAskingIfHappy = 
+        lowerContent.includes("are you happy with how i formatted") ||
         lowerContent.includes("are you happy with this note") ||
         lowerContent.includes("happy with this") ||
         lowerContent.includes("would you like to save") ||
@@ -304,8 +304,7 @@ export default function GrowNotePage() {
         lowerContent.includes("save your grow note") ||
         lowerContent.includes("ready to save");
       
-      // Only show save button when AI explicitly asks if they're happy with the note
-      // This happens AFTER the formatted note is shown
+      // Only show save button when AI explicitly asks if they're happy
       if (isAskingIfHappy) {
         setShowSaveButton(true);
       }
