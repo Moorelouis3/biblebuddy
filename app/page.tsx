@@ -7,7 +7,7 @@ export default function LandingPage() {
       {/* TOP BAR */}
       <header className="w-full max-w-6xl mx-auto flex items-center justify-between px-4 py-4 md:py-6">
         <div className="text-2xl font-bold text-sky-600 tracking-tight">
-          The Bible Buddy
+          Bible Buddy
         </div>
         <div className="text-xs md:text-sm text-gray-500">
           Powered by{" "}

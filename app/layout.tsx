@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Bible Buddy",
+  title: "Bible Buddy",
   description: "Your guided Bible reading companion",
   icons: {
     icon: "/favicon.ico",

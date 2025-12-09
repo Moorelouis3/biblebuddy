@@ -55,7 +55,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               href="/dashboard"
               className="text-sm font-semibold text-black"
             >
-              The Bible Buddy
+              Bible Buddy
             </Link>
 
             <nav className="flex items-center gap-3 text-xs sm:text-sm">
