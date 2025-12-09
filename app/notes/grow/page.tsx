@@ -133,16 +133,16 @@ export default function GrowNotePage() {
         }
       }
 
-      // Extract Passage Text section (remove pin emoji if present)
+      // Extract Passage Text section (remove pin emoji and unwanted phrases if present)
       const passageTextMatch = cleaned.match(/\*\*Passage Text\*\*[\s\S]*?(?=\*\*Questions|$)/i);
       passageText = passageTextMatch
-        ? passageTextMatch[0].replace(/\*\*Passage Text\*\*/i, "").replace(/📌/g, "").trim()
+        ? passageTextMatch[0].replace(/\*\*Passage Text\*\*/i, "").replace(/📌/g, "").replace(/Great choice!/gi, "").trim()
         : "";
 
       // Extract Questions & Research section (remove pin emoji and unwanted text if present)
       const researchMatch = cleaned.match(/\*\*Questions & Research\*\*[\s\S]*?(?=\*\*Journal|$)/i);
       research = researchMatch
-        ? researchMatch[0].replace(/\*\*Questions & Research\*\*/i, "").replace(/📌/g, "").replace(/If you have more questions or thoughts, feel free to ask anytime!/gi, "").trim()
+        ? researchMatch[0].replace(/\*\*Questions & Research\*\*/i, "").replace(/📌/g, "").replace(/If you have more questions or thoughts, feel free to ask anytime!/gi, "").replace(/That's a great question!/gi, "").replace(/That is a great question!/gi, "").trim()
         : "";
 
       // Extract Journal Reflection section (stop at equals signs, "Would you like", or "Are you happy")
@@ -174,24 +174,49 @@ export default function GrowNotePage() {
           const passageMatch = msg.content.match(/(?:Here is the passage[^\n]*\n)?([\s\S]*?)(?:Let me know when|Now let|When you are finished)/i);
           if (passageMatch) {
             passageText = passageMatch[1].trim();
-            // Clean up
-            passageText = passageText.replace(/Here is the passage[^\n]*\n?/i, "").trim();
+            // Clean up - remove intro text and unwanted phrases
+            passageText = passageText
+              .replace(/Here is the passage[^\n]*\n?/i, "")
+              .replace(/Great choice!/gi, "")
+              .trim();
           }
         }
         
         // Look for research/questions in assistant messages (R step)
-        if (msg.content.includes("You asked about") || msg.content.includes("You also wondered")) {
-          // This is likely the research section
-          if (!research) {
+        // Get the formatted conversational paragraph version from AI responses
+        if (msg.content.includes("You asked about") || msg.content.includes("You also wondered") || 
+            (msg.content.includes("You") && msg.content.includes("asked") && msg.content.includes("Here's what"))) {
+          // This is the AI's formatted research section - use this, not raw user questions
+          if (!research || research.length < msg.content.length) {
             research = msg.content;
-            // Remove intro text
-            research = research.replace(/Now let's move to R[^\n]*\n?/i, "").replace(/This is where you ask questions[^\n]*\n?/i, "").trim();
+            // Remove intro text and unwanted phrases
+            research = research
+              .replace(/Now let's move to R[^\n]*\n?/i, "")
+              .replace(/This is where you ask questions[^\n]*\n?/i, "")
+              .replace(/That's a great question!/gi, "")
+              .replace(/That is a great question!/gi, "")
+              .replace(/Looking at the verse above[^\n]*\n?/i, "")
+              .trim();
+          }
+        }
+        
+        // Look for formatted reflection in assistant messages (after W step)
+        // The AI should have shown a formatted version
+        if (msg.content.includes("Here's how it looks now") || 
+            msg.content.includes("Here's what you wrote") ||
+            msg.content.includes("polished into a smooth journal entry")) {
+          // Extract the formatted reflection
+          const formattedMatch = msg.content.match(/(?:Here's how it looks now|Here's what you wrote|polished into a smooth journal entry)[^:]*:([\s\S]*?)(?:Are you happy|Would you like|$)/i);
+          if (formattedMatch) {
+            reflection = formattedMatch[1].trim();
+            // Clean up
+            reflection = reflection.replace(/^---\s*/gm, "").trim();
           }
         }
       }
       
-      // Get reflection from last user message (W step)
-      if (userMessages.length > 0) {
+      // If no formatted reflection found, get from last user message (W step) as fallback
+      if (!reflection && userMessages.length > 0) {
         reflection = userMessages[userMessages.length - 1]?.content || "";
       }
     }
