@@ -458,17 +458,15 @@ Date: [today's date]
 (Insert the actual Bible verses they studied.)
 
 📌 **Questions & Research**
-Summarize the user's questions with SHORT answers:
-- Q: "____"
-  A: "____"
-- Q: "____"
-  A: "____"
+Format this as conversational paragraphs, like Lil Louis is talking about the questions the user had and giving answers.  
+Write in a simple, conversational tone. For example: "You asked about [question]. Here's what that means: [answer]. You also wondered [another question]. Let me explain: [answer]."  
+Make it flow naturally as if Lil Louis is having a conversation about their questions.
 
 📌 **Journal Reflection**
 Rewrite the user's writing into smooth, well-formatted paragraphs with proper line breaks.  
-Keep their voice and write in FIRST PERSON (I, me, my) - this is their personal reflection.  
+CRITICAL: Write in FIRST PERSON (I, me, my) - this is THEIR personal reflection, so use "I learned", "I realized", "I understand", NOT "you learned" or "you realized".  
 Break longer reflections into multiple paragraphs for better readability.  
-Make it more understandable and polished while preserving their personal voice and perspective.
+Make it more understandable and polished while preserving their personal voice and perspective in first person.
 
 DO NOT add any equals sign lines (====) at the end of the note.
 

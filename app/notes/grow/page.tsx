@@ -555,18 +555,18 @@ export default function GrowNotePage() {
           {showSaveButton ? (
             <div className="flex items-center gap-3">
               <button
-                onClick={() => setShowSaveButton(false)}
-                className="px-6 py-3 bg-red-600 text-white rounded-full font-semibold hover:bg-red-700"
-              >
-                No, keep editing
-              </button>
-              <button
                 onClick={handleSave}
                 disabled={saving}
                 className="px-6 py-3 bg-blue-600 text-white rounded-full font-semibold disabled:opacity-60 disabled:cursor-not-allowed hover:bg-blue-700 flex items-center gap-2"
               >
                 <span>←</span>
                 <span>{saving ? "Saving..." : "Save Note Now"}</span>
+              </button>
+              <button
+                onClick={() => setShowSaveButton(false)}
+                className="px-6 py-3 bg-red-600 text-white rounded-full font-semibold hover:bg-red-700"
+              >
+                No, keep editing
               </button>
             </div>
           ) : (
