@@ -434,48 +434,56 @@ export default function NotesPage() {
                     Saved {formatDisplayDate(currentNote.createdAt)}
                   </p>
 
-                  <div className="space-y-4 text-sm">
+                  <div className="space-y-6 text-sm">
                     {currentNote.passage && (
                       <section>
-                        <h3 className="font-semibold text-blue-700 text-xs">
-                          G – Get the passage
-                        </h3>
-                        <p className="whitespace-pre-line">
-                          {currentNote.passage}
-                        </p>
+                        <h1 className="text-2xl font-bold mb-4">📖 Passage</h1>
+                        <div className="space-y-2">
+                          {currentNote.passage.split("\n").filter(l => l.trim()).map((line, idx) => (
+                            <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
+                              {line}
+                            </p>
+                          ))}
+                        </div>
                       </section>
                     )}
 
                     {currentNote.research && (
                       <section>
-                        <h3 className="font-semibold text-blue-700 text-xs">
-                          R – Research
-                        </h3>
-                        <p className="whitespace-pre-line">
-                          {currentNote.research}
-                        </p>
+                        <h1 className="text-2xl font-bold mb-4">❓ Questions</h1>
+                        <div className="space-y-4">
+                          {currentNote.research.split("\n").filter(l => l.trim()).map((line, idx) => (
+                            <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
+                              {line}
+                            </p>
+                          ))}
+                        </div>
                       </section>
                     )}
 
                     {currentNote.observe && (
                       <section>
-                        <h3 className="font-semibold text-blue-700 text-xs">
-                          O – Observe
-                        </h3>
-                        <p className="whitespace-pre-line">
-                          {currentNote.observe}
-                        </p>
+                        <h1 className="text-2xl font-bold mb-4">👀 Observe</h1>
+                        <div className="space-y-4">
+                          {currentNote.observe.split("\n").filter(l => l.trim()).map((line, idx) => (
+                            <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
+                              {line}
+                            </p>
+                          ))}
+                        </div>
                       </section>
                     )}
 
                     {currentNote.write && (
                       <section>
-                        <h3 className="font-semibold text-blue-700 text-xs">
-                          W – Write
-                        </h3>
-                        <p className="whitespace-pre-line">
-                          {currentNote.write}
-                        </p>
+                        <h1 className="text-2xl font-bold mb-4">✍️ Reflection</h1>
+                        <div className="space-y-4">
+                          {currentNote.write.split(/\n\s*\n/).filter(p => p.trim()).map((para, idx) => (
+                            <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
+                              {para.trim()}
+                            </p>
+                          ))}
+                        </div>
                       </section>
                     )}
                   </div>

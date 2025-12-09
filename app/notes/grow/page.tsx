@@ -117,11 +117,13 @@ export default function GrowNotePage() {
       ? researchMatch[0].replace(/\*\*Questions & Research\*\*/i, "").trim()
       : "";
 
-    // Extract Journal Reflection section
-    const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*[\s\S]*?$/i);
-    const reflection = reflectionMatch
-      ? reflectionMatch[0].replace(/\*\*Journal Reflection\*\*/i, "").trim()
+    // Extract Journal Reflection section (stop at equals signs)
+    const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|$)/i);
+    let reflection = reflectionMatch
+      ? reflectionMatch[1].replace(/\*\*Journal Reflection\*\*/i, "").trim()
       : "";
+    // Remove any equals sign lines
+    reflection = reflection.replace(/^=+$/gm, "").trim();
 
     return {
       book,
@@ -339,10 +341,12 @@ export default function GrowNotePage() {
         );
       }
 
-      // Extract and render Journal Reflection section
-      const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)$/i);
+      // Extract and render Journal Reflection section (stop at equals signs)
+      const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|$)/i);
       if (reflectionMatch) {
-        const reflectionContent = reflectionMatch[1].trim();
+        let reflectionContent = reflectionMatch[1].trim();
+        // Remove any equals sign lines
+        reflectionContent = reflectionContent.replace(/^=+$/gm, "").trim();
         // Split into paragraphs for better formatting
         const paragraphs = reflectionContent.split(/\n\s*\n/).filter(p => p.trim());
         elements.push(
@@ -483,14 +487,6 @@ export default function GrowNotePage() {
             >
               Send
             </button>
-            {messages.filter((m) => m.role === "user").length >= 2 && (
-              <button
-                onClick={() => setShowReview(true)}
-                className="px-4 py-3 border border-gray-300 rounded-full font-semibold hover:bg-gray-50 text-sm"
-              >
-                Review
-              </button>
-            )}
           </div>
         </div>
       </div>

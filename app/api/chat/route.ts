@@ -465,8 +465,10 @@ Summarize the user's questions with SHORT answers:
   A: "____"
 
 📌 **Journal Reflection**
-Rewrite the user's writing into a smooth, storytelling-style paragraph.  
-Keep their voice, but clean it up.
+Rewrite the user's writing into smooth, well-formatted paragraphs with proper line breaks.  
+Keep their voice and write in FIRST PERSON (I, me, my) - this is their personal reflection.  
+Break longer reflections into multiple paragraphs for better readability.  
+Make it more understandable and polished while preserving their personal voice and perspective.
 
 =====================================================================
 
