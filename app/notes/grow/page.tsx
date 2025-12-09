@@ -283,15 +283,21 @@ export default function GrowNotePage() {
       
       // If no reflection found in formatted structure, try to get it from different formats
       if (!reflection) {
-        // Look for polished journal entry text
-        const polishedMatch = cleaned.match(/polished into a smooth journal entry:([\s\S]*?)(?=Would you like|Are you happy|$)/i);
-        if (polishedMatch) {
-          reflection = polishedMatch[1].trim();
+        // Look for "Here's how I formatted your reflection" pattern
+        const howFormattedMatch = cleaned.match(/Here's how I formatted your reflection[^:]*:([\s\S]*?)(?=Are you happy|Would you like|Click|$)/i);
+        if (howFormattedMatch) {
+          reflection = howFormattedMatch[1].trim();
         } else {
-          // Look for "Here's what you wrote" pattern
-          const heresMatch = cleaned.match(/Here's what you wrote[^:]*:([\s\S]*?)(?=Would you like|Are you happy|$)/i);
-          if (heresMatch) {
-            reflection = heresMatch[1].trim();
+          // Look for polished journal entry text
+          const polishedMatch = cleaned.match(/polished into a smooth journal entry:([\s\S]*?)(?=Would you like|Are you happy|$)/i);
+          if (polishedMatch) {
+            reflection = polishedMatch[1].trim();
+          } else {
+            // Look for "Here's what you wrote" pattern
+            const heresMatch = cleaned.match(/Here's what you wrote[^:]*:([\s\S]*?)(?=Would you like|Are you happy|$)/i);
+            if (heresMatch) {
+              reflection = heresMatch[1].trim();
+            }
           }
         }
       }
@@ -324,6 +330,8 @@ export default function GrowNotePage() {
             .replace(/Let me format it for you[^\n]*\n?/gi, "")
             .replace(/Here's what you wrote[^:]*:\s*/gi, "")
             .replace(/Here is your formatted reflection[^:]*:\s*/gi, "")
+            .replace(/Here's how I formatted your reflection[^:]*:\s*/gi, "")
+            .replace(/Here's how I formatted[^:]*:\s*/gi, "")
             .replace(/I've formatted your reflection[^:]*:\s*/gi, "")
             .replace(/^---\s*/gm, "")
             .replace(/^=+\s*$/gm, "")
@@ -334,7 +342,8 @@ export default function GrowNotePage() {
           const filteredLines = lines.filter(line => {
             const trimmed = line.trim();
             if (!trimmed) return false;
-            if (trimmed.match(/^(Thank you|You have|Now, let's|Here's what|This is|Let me|Are you|Click)/i)) {
+            // Skip headers and prompts
+            if (trimmed.match(/^(Thank you|You have|Now, let's|Here's what|Here's how|This is|Let me|Are you|Click|Here is)/i)) {
               return false;
             }
             return true;
@@ -428,12 +437,26 @@ export default function GrowNotePage() {
         // Extract the EXACT formatted version shown before "Are you happy"
         if (msg.content.includes("**Journal Reflection**") || 
             msg.content.includes("Let me format it for you") ||
+            msg.content.includes("Here's how I formatted your reflection") ||
+            msg.content.includes("Here's how I formatted") ||
             msg.content.includes("Are you happy with how I formatted")) {
           // Extract the formatted reflection - the clean version shown to user
           let reflectionPart = "";
           if (msg.content.includes("**Journal Reflection**")) {
             // Get content after **Journal Reflection** and before "Are you happy"
             const match = msg.content.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?:Are you happy|Click.*Save|$)/i);
+            if (match) {
+              reflectionPart = match[1].trim();
+            }
+          } else if (msg.content.includes("Here's how I formatted your reflection")) {
+            // Extract after "Here's how I formatted your reflection:" and before "Are you happy"
+            const match = msg.content.match(/Here's how I formatted your reflection[^:]*:([\s\S]*?)(?:Are you happy|Click.*Save|$)/i);
+            if (match) {
+              reflectionPart = match[1].trim();
+            }
+          } else if (msg.content.includes("Here's how I formatted")) {
+            // Extract after "Here's how I formatted:" and before "Are you happy"
+            const match = msg.content.match(/Here's how I formatted[^:]*:([\s\S]*?)(?:Are you happy|Click.*Save|$)/i);
             if (match) {
               reflectionPart = match[1].trim();
             }
@@ -460,6 +483,8 @@ export default function GrowNotePage() {
               .replace(/You have some great insights[^\n]*\n?/gi, "")
               .replace(/Now, let's make sure[^\n]*\n?/gi, "")
               .replace(/Here's what you wrote[^:]*:\s*/gi, "")
+              .replace(/Here's how I formatted your reflection[^:]*:\s*/gi, "")
+              .replace(/Here's how I formatted[^:]*:\s*/gi, "")
               .replace(/This is a wonderful reflection[^\n]*\n?/gi, "")
               .replace(/Let me format it for you[^\n]*\n?/gi, "")
               .replace(/^---\s*/gm, "")
@@ -472,7 +497,7 @@ export default function GrowNotePage() {
               // Skip empty lines, separator lines, and ALL conversation prompts
               if (!trimmed || 
                   trimmed === '---' || 
-                  trimmed.match(/^(Thank you|You have|Now, let's|Here's what|This is|Let me|Are you)/i)) {
+                  trimmed.match(/^(Thank you|You have|Now, let's|Here's what|Here's how|This is|Let me|Are you)/i)) {
                 return false;
               }
               return true;
@@ -527,7 +552,7 @@ export default function GrowNotePage() {
                 // Skip empty lines, separator lines, and conversation prompts
                 if (!trimmed || 
                     trimmed === '---' || 
-                    trimmed.match(/^(Thank you|You have|Now, let's|Here's what|This is|Let me)/i)) {
+                    trimmed.match(/^(Thank you|You have|Now, let's|Here's what|Here's how|This is|Let me)/i)) {
                   return false;
                 }
                 return true;
@@ -644,6 +669,8 @@ export default function GrowNotePage() {
             .replace(/You have some great insights[^\n]*\n?/gi, "")
             .replace(/Let me format it for you[^\n]*\n?/gi, "")
             .replace(/Here's what you wrote[^:]*:\s*/gi, "")
+            .replace(/Here's how I formatted your reflection[^:]*:\s*/gi, "")
+            .replace(/Here's how I formatted[^:]*:\s*/gi, "")
             .trim();
           
           // Get just the text lines (not empty, not headers)
