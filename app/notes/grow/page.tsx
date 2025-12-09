@@ -287,37 +287,21 @@ export default function GrowNotePage() {
 
       setMessages((prev) => [...prev, assistantMessage]);
 
-      // Check if user just said "done" (after W step)
-      const userJustSaidDone = trimmed.toLowerCase() === "done";
-      
-      // Check if assistant is asking to save the note
+      // Check if assistant is asking if user is happy with the note
+      // This should happen AFTER the AI shows the formatted/cleaned up version
       const lowerContent = assistantMessage.content.toLowerCase();
-      const isAskingToSave = 
+      const isAskingIfHappy = 
+        lowerContent.includes("are you happy with this note") ||
+        lowerContent.includes("happy with this") ||
         lowerContent.includes("would you like to save") ||
         lowerContent.includes("save this as your grow note") ||
         lowerContent.includes("save this note") ||
         lowerContent.includes("save your grow note") ||
-        lowerContent.includes("ready to save") ||
-        (lowerContent.includes("save") && lowerContent.includes("grow"));
+        lowerContent.includes("ready to save");
       
-      // Check if assistant has provided the formatted note
-      const hasFormattedNote = 
-        assistantMessage.content.includes("GROW Study Notes") || 
-        assistantMessage.content.includes("📖 GROW Study Notes") ||
-        (assistantMessage.content.includes("📌 **Passage Text**") &&
-         assistantMessage.content.includes("📌 **Journal Reflection**"));
-      
-      // Check if we've completed W step by looking at conversation
-      // If user said "done" and we have enough messages (completed all steps)
-      const allMessages = [...newMessages, assistantMessage];
-      const userMessages = allMessages.filter((m) => m.role === "user");
-      const hasCompletedSteps = userMessages.length >= 4; // G, R, O, W steps
-      
-      // Show save button if:
-      // 1. AI is asking to save, OR
-      // 2. User said "done" and AI provided formatted note, OR
-      // 3. User said "done" and we've completed all GROW steps
-      if (isAskingToSave || (userJustSaidDone && hasFormattedNote) || (userJustSaidDone && hasCompletedSteps)) {
+      // Only show save button when AI explicitly asks if they're happy with the note
+      // This happens AFTER the formatted note is shown
+      if (isAskingIfHappy) {
         setShowSaveButton(true);
       }
     } catch (err: any) {
