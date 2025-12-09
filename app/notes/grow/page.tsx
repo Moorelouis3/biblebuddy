@@ -157,13 +157,20 @@ export default function GrowNotePage() {
 
       // Extract Questions & Research section (remove pin emoji and unwanted text if present)
       // Try with ** markers first, then without
-      let researchMatch = cleaned.match(/\*\*Questions & Research\*\*[\s\S]*?(?=\*\*Journal|$)/i);
+      let researchMatch = cleaned.match(/\*\*Questions & Research\*\*([\s\S]*?)(?=\*\*Journal|$)/i);
       if (!researchMatch) {
-        researchMatch = cleaned.match(/Questions & Research[\s\S]*?(?=Journal|$)/i);
+        researchMatch = cleaned.match(/Questions & Research([\s\S]*?)(?=Journal|$)/i);
       }
-      research = researchMatch
-        ? researchMatch[0].replace(/(?:\*\*)?Questions & Research(?:\*\*)?/i, "").replace(/📌/g, "").replace(/If you have more questions or thoughts, feel free to ask anytime!/gi, "").replace(/That's a great question!/gi, "").replace(/That is a great question!/gi, "").trim()
-        : "";
+      if (researchMatch) {
+        research = researchMatch[1] // Use captured group instead of full match
+          .replace(/📌/g, "")
+          .replace(/If you have more questions or thoughts, feel free to ask anytime!/gi, "")
+          .replace(/That's a great question!/gi, "")
+          .replace(/That is a great question!/gi, "")
+          .replace(/Do you have more questions[^\n]*\n?/gi, "")
+          .replace(/Can we move to O\?/gi, "")
+          .trim();
+      }
 
       // Extract Journal Reflection section (stop at equals signs, "Would you like", or "Are you happy")
       // Try with ** markers first, then without
@@ -298,7 +305,8 @@ export default function GrowNotePage() {
     
     // If we don't have passage text or research, extract from conversation history
     // (This helps even if we have a formatted note but it's missing some parts)
-    if (!passageText || !research) {
+    // Only extract if we don't already have good research (at least 50 chars)
+    if (!passageText || (!research || research.length < 50)) {
       // Look for passage text in assistant messages (G step)
       for (const msg of assistantMessages) {
         if (msg.content.includes("[01]") || msg.content.includes("Here is the passage")) {
@@ -315,15 +323,21 @@ export default function GrowNotePage() {
         }
         
         // Look for research/questions in assistant messages (R step)
-        // Get ONLY the conversational paragraph format where Lil Louis reminds them of questions and answers
-        if ((!research || research.length < 50) && 
-            (msg.content.includes("You asked about") || 
-             msg.content.includes("You also wondered") || 
-             msg.content.includes("You wanted to know") ||
-             (msg.content.includes("You") && msg.content.includes("asked") && msg.content.includes("Here's what")) ||
-             (msg.content.includes("Here's what") && msg.content.includes("means")))) {
-          // Extract ONLY the question/answer content, remove ALL instructions
+        // Get the conversational paragraph format where Lil Louis answers questions
+        // Look for messages that answer questions (not just the intro to R step)
+        const isResearchResponse = msg.content.includes("You asked about") || 
+                                    msg.content.includes("You also wondered") || 
+                                    msg.content.includes("You wanted to know") ||
+                                    msg.content.includes("You wondered") ||
+                                    (msg.content.includes("You") && msg.content.includes("asked") && msg.content.includes("Here's what")) ||
+                                    (msg.content.includes("Here's what") && msg.content.includes("means")) ||
+                                    (msg.content.includes("That") && msg.content.includes("means") && msg.content.length > 50);
+        
+        // Only extract if we don't already have good research from formatted note
+        if (isResearchResponse && (!research || research.length < 50)) {
+          // Extract the question/answer content, remove ALL instructions
           let researchText = msg.content;
+          
           // Remove ALL intro text, instructions, and prompts
           researchText = researchText
             .replace(/Now let's move to R[^\n]*\n?/gi, "")
@@ -335,6 +349,7 @@ export default function GrowNotePage() {
             .replace(/What words, phrases[^\n]*\n?/gi, "")
             .replace(/Ask anything[^\n]*\n?/gi, "")
             .replace(/or can we move to O\?/gi, "")
+            .replace(/Can we move to O\?/gi, "")
             .trim();
           
           // Filter out instruction lines - keep only question/answer content
@@ -343,18 +358,21 @@ export default function GrowNotePage() {
             const trimmed = line.trim();
             // Skip empty lines and instruction prompts
             if (!trimmed || 
-                trimmed.match(/^(Now let's|This is|Looking at|What words|Ask anything|Do you have more)/i)) {
+                trimmed.match(/^(Now let's|This is|Looking at|What words|Ask anything|Do you have more|Can we move)/i)) {
               return false;
             }
             return true;
           });
           researchText = contentLines.join('\n').trim();
           
-          // Combine multiple research responses
-          if (research && research.length > 0) {
-            research = research + "\n\n" + researchText;
-          } else {
-            research = researchText;
+          // If we have substantial content, add it
+          if (researchText.length > 30) {
+            // Combine multiple research responses with proper spacing
+            if (research && research.length > 0) {
+              research = research + "\n\n" + researchText;
+            } else {
+              research = researchText;
+            }
           }
         }
         
