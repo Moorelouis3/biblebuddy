@@ -613,24 +613,39 @@ export default function GrowNotePage() {
       const fullNoteMatch = content.match(fullNotePattern);
       
       if (fullNoteMatch && fullNoteMatch.index !== undefined) {
-        // Return only the part before the full note structure
-        return content.substring(0, fullNoteMatch.index).trim();
+        // Return only the part before the full note structure (reflection + question)
+        const visiblePart = content.substring(0, fullNoteMatch.index).trim();
+        // Make sure we include the question
+        if (visiblePart.includes("Are you happy") || visiblePart.includes("Save Note Now")) {
+          return visiblePart;
+        }
       }
       
       // Alternative: look for "**Passage Text**" as the start of the full structure
-      // But only if it appears after we've already shown the reflection
       const passageTextPattern = /\*\*Passage Text\*\*/i;
       const passageTextIndex = content.search(passageTextPattern);
       
       if (passageTextIndex > 0) {
-        // Check if there's substantial content before the full structure
-        // (meaning we've shown the reflection first)
-        const beforeStructure = content.substring(0, passageTextIndex);
+        // Get everything before the full structure
+        const beforeStructure = content.substring(0, passageTextIndex).trim();
         
-        // If there's meaningful content before (reflection + question), use it
-        if (beforeStructure.length > 100 || beforeStructure.includes("Are you happy")) {
-          return beforeStructure.trim();
+        // Make sure we have the reflection and question
+        if (beforeStructure.includes("Are you happy") || beforeStructure.length > 50) {
+          return beforeStructure;
         }
+      }
+      
+      // If we can't find the structure start, try to find "Are you happy" and show everything up to that plus a bit after
+      const happyIndex = content.toLowerCase().indexOf("are you happy");
+      if (happyIndex > 0) {
+        // Get the question and a bit after it, but stop before the full structure
+        const questionEnd = content.indexOf("=====================================================================", happyIndex);
+        if (questionEnd > happyIndex) {
+          return content.substring(0, questionEnd).trim();
+        }
+        // If no structure found after, get up to 500 chars after "are you happy"
+        const endIndex = Math.min(happyIndex + 500, content.length);
+        return content.substring(0, endIndex).trim();
       }
     }
     
@@ -716,27 +731,15 @@ export default function GrowNotePage() {
       // Check if assistant is asking if user is happy with the formatted reflection
       const lowerContent = assistantMessage.content.toLowerCase();
       const isAskingIfHappy = 
-        lowerContent.includes("are you happy with how i formatted") ||
-        lowerContent.includes("are you happy with this note") ||
-        lowerContent.includes("happy with this") ||
-        lowerContent.includes("happy with how") ||
-        lowerContent.includes("would you like to save") ||
-        lowerContent.includes("save this as your grow note") ||
-        lowerContent.includes("save this note") ||
-        lowerContent.includes("save your grow note") ||
-        lowerContent.includes("ready to save") ||
+        lowerContent.includes("are you happy") ||
         lowerContent.includes("click 'save note now'") ||
-        lowerContent.includes("click \"save note now\"");
+        lowerContent.includes("click \"save note now\"") ||
+        lowerContent.includes("save note now") ||
+        lowerContent.includes("no, keep editing");
       
-      // Also check if the message contains the full formatted note structure (indicates W step is complete)
-      const hasFormattedNote = 
-        lowerContent.includes("📖 grow study notes") ||
-        (lowerContent.includes("**passage text**") && 
-         lowerContent.includes("**questions & research**") && 
-         lowerContent.includes("**journal reflection**"));
-      
-      // Show save button when AI explicitly asks if they're happy OR when full formatted note is present
-      if (isAskingIfHappy || hasFormattedNote) {
+      // Show save button when AI asks if they're happy
+      if (isAskingIfHappy) {
+        console.log("Showing save button - detected happy question");
         setShowSaveButton(true);
       }
     } catch (err: any) {
