@@ -1,10 +1,6 @@
 "use client";
 
-// Disable static prerendering for this page since it relies on search params and client-only state.
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "../../../lib/supabaseClient";
 
@@ -30,7 +26,7 @@ const MAX_VERSE = 176;
 
 const EMOJIS = ["🙏", "❤️", "✨", "🌟", "💫", "🔥", "💪", "🎯", "📖", "✝️", "🕊️", "⭐", "💡", "🎉", "🙌", "😊", "😇", "🤗", "💯", "🎁"];
 
-export default function AdvancedNotePage() {
+function AdvancedNotePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const noteId = searchParams.get("id");
@@ -429,5 +425,17 @@ export default function AdvancedNotePage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function AdvancedNotePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-gray-600">Loading...</div>
+      </div>
+    }>
+      <AdvancedNotePageContent />
+    </Suspense>
   );
 }
