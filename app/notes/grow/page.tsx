@@ -77,7 +77,28 @@ export default function GrowNotePage() {
 
   function parseFormattedNote() {
     const formattedNote = extractFormattedNote();
-    if (!formattedNote) return null;
+    if (!formattedNote) {
+      // Fallback: try to extract from conversation messages
+      const userMessages = messages.filter((m) => m.role === "user");
+      if (userMessages.length > 0) {
+        // Try to get passage from first message
+        const firstMsg = userMessages[0].content;
+        const passageMatch = firstMsg.match(/([A-Za-z\s]+?)\s+(\d+):(\d+)(?:-(\d+))?/);
+        if (passageMatch) {
+          return {
+            book: passageMatch[1].trim(),
+            chapter: parseInt(passageMatch[2]) || 1,
+            verseFrom: parseInt(passageMatch[3]) || 1,
+            verseTo: parseInt(passageMatch[4]) || parseInt(passageMatch[3]) || 1,
+            passage: "",
+            research: "",
+            observe: "",
+            write: userMessages[userMessages.length - 1]?.content || "",
+          };
+        }
+      }
+      return null;
+    }
 
     // Parse the formatted note to extract components
     const cleaned = formattedNote
@@ -86,7 +107,19 @@ export default function GrowNotePage() {
 
     // Extract passage reference (e.g., "Passage: Proverbs 25:28")
     const passageMatch = cleaned.match(/Passage:\s*([^\n]+)/i);
-    const passageRef = passageMatch ? passageMatch[1].trim() : "";
+    let passageRef = passageMatch ? passageMatch[1].trim() : "";
+
+    // If no passage found in formatted note, try to find it in messages
+    if (!passageRef) {
+      const userMessages = messages.filter((m) => m.role === "user");
+      if (userMessages.length > 0) {
+        const firstMsg = userMessages[0].content;
+        const match = firstMsg.match(/([A-Za-z\s]+?)\s+(\d+):(\d+)(?:-(\d+))?/);
+        if (match) {
+          passageRef = `${match[1].trim()} ${match[2]}:${match[3]}${match[4] ? `-${match[4]}` : ""}`;
+        }
+      }
+    }
 
     // Parse book, chapter, verse from passage reference
     // Format: "Proverbs 25:28" or "Matthew 5:1-12"
@@ -118,13 +151,36 @@ export default function GrowNotePage() {
       ? researchMatch[0].replace(/\*\*Questions & Research\*\*/i, "").trim()
       : "";
 
-    // Extract Journal Reflection section (stop at equals signs)
-    const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|$)/i);
+    // Extract Journal Reflection section (stop at equals signs or "Would you like")
+    const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|Would you like|$)/i);
     let reflection = reflectionMatch
       ? reflectionMatch[1].replace(/\*\*Journal Reflection\*\*/i, "").trim()
       : "";
+    
+    // If no reflection found in formatted structure, try to get it from different formats
+    if (!reflection) {
+      // Look for polished journal entry text
+      const polishedMatch = cleaned.match(/polished into a smooth journal entry:([\s\S]*?)(?=Would you like|$)/i);
+      if (polishedMatch) {
+        reflection = polishedMatch[1].trim();
+      } else {
+        // Look for "Here's what you wrote" pattern
+        const heresMatch = cleaned.match(/Here's what you wrote[^:]*:([\s\S]*?)(?=Would you like|$)/i);
+        if (heresMatch) {
+          reflection = heresMatch[1].trim();
+        } else {
+          // Fallback: get the last user message as reflection (from W step)
+          const userMessages = messages.filter((m) => m.role === "user");
+          if (userMessages.length > 0) {
+            // The last user message is likely the W step reflection
+            reflection = userMessages[userMessages.length - 1]?.content || "";
+          }
+        }
+      }
+    }
+    
     // Remove any equals sign lines and trailing separators
-    reflection = reflection.replace(/^=+$/gm, "").replace(/\n=+\s*$/g, "").trim();
+    reflection = reflection.replace(/^=+$/gm, "").replace(/\n=+\s*$/g, "").replace(/^-+$/gm, "").trim();
 
     return {
       book,
@@ -262,8 +318,29 @@ export default function GrowNotePage() {
     try {
       const parsed = parseFormattedNote();
       
-      if (!parsed || !parsed.book) {
+      if (!parsed) {
         alert("Could not parse note. Please make sure you completed the GROW process.");
+        setSaving(false);
+        return;
+      }
+
+      // If book is missing, try to extract from first user message
+      if (!parsed.book) {
+        const userMessages = messages.filter((m) => m.role === "user");
+        if (userMessages.length > 0) {
+          const firstMsg = userMessages[0].content;
+          const match = firstMsg.match(/([A-Za-z\s]+?)\s+(\d+):(\d+)(?:-(\d+))?/);
+          if (match) {
+            parsed.book = match[1].trim();
+            parsed.chapter = parseInt(match[2]) || 1;
+            parsed.verseFrom = parseInt(match[3]) || 1;
+            parsed.verseTo = parseInt(match[4]) || parsed.verseFrom;
+          }
+        }
+      }
+
+      if (!parsed.book) {
+        alert("Could not find passage reference. Please make sure you provided a Bible passage.");
         setSaving(false);
         return;
       }
@@ -477,6 +554,12 @@ export default function GrowNotePage() {
         <div className="border-t border-gray-200 px-6 py-4">
           {showSaveButton ? (
             <div className="flex items-center gap-3">
+              <button
+                onClick={() => setShowSaveButton(false)}
+                className="px-6 py-3 bg-red-600 text-white rounded-full font-semibold hover:bg-red-700"
+              >
+                No, keep editing
+              </button>
               <button
                 onClick={handleSave}
                 disabled={saving}
