@@ -366,23 +366,25 @@ export default function AdvancedNotePage() {
                 😊
               </button>
               {showEmojiPicker && (
-                <div className="absolute top-full left-0 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg p-3 z-10 w-64">
-                  <div className="grid grid-cols-5 gap-2">
-                    {EMOJIS.map((emoji) => (
-                      <button
-                        key={emoji}
-                        onClick={() => insertEmoji(emoji)}
-                        className="text-2xl hover:bg-gray-100 rounded p-1"
-                      >
-                        {emoji}
-                      </button>
-                    ))}
+                <>
+                  <div className="absolute top-full left-0 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg p-3 z-10 w-64">
+                    <div className="grid grid-cols-5 gap-2">
+                      {EMOJIS.map((emoji) => (
+                        <button
+                          key={emoji}
+                          onClick={() => insertEmoji(emoji)}
+                          className="text-2xl hover:bg-gray-100 rounded p-1"
+                        >
+                          {emoji}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="fixed inset-0 z-0"
-                  onClick={() => setShowEmojiPicker(false)}
-                />
+                  <div
+                    className="fixed inset-0 z-0"
+                    onClick={() => setShowEmojiPicker(false)}
+                  />
+                </>
               )}
             </div>
 
