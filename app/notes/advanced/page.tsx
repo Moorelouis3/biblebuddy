@@ -1,5 +1,9 @@
 "use client";
 
+// Disable static prerendering for this page since it relies on search params and client-only state.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 import { useState, useEffect, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "../../../lib/supabaseClient";
