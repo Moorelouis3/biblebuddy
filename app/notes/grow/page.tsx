@@ -286,8 +286,8 @@ export default function GrowNotePage() {
           });
           reflectionCandidate = filteredLines.join('\n').trim();
           
-          // If it's substantial, use it
-          if (reflectionCandidate.length >= 30) {
+          // If it's substantial, use it (lowered threshold to 20 chars)
+          if (reflectionCandidate.length >= 20) {
             reflection = reflectionCandidate;
             console.log("Found reflection from message with 'are you happy':", reflection.substring(0, 100));
             break;
@@ -548,9 +548,77 @@ export default function GrowNotePage() {
           });
           reflectionCandidate = lines.join('\n').trim();
           
-          if (reflectionCandidate.length >= 30) {
+          if (reflectionCandidate.length >= 20) {
             reflection = reflectionCandidate;
             console.log("Final fallback - found reflection:", reflection.substring(0, 100));
+            break;
+          }
+        }
+      }
+    }
+    
+    // If still no reflection, try one more desperate attempt - get ANY text before "Are you happy"
+    if (!reflection) {
+      for (let i = assistantMessages.length - 1; i >= 0; i--) {
+        const msg = assistantMessages[i].content;
+        const lowerMsg = msg.toLowerCase();
+        
+        if (lowerMsg.includes("are you happy")) {
+          const happyIndex = lowerMsg.indexOf("are you happy");
+          const beforeHappy = msg.substring(0, happyIndex).trim();
+          
+          // Remove structure markers
+          const cleaned = beforeHappy
+            .replace(/📖 GROW Study Notes.*$/i, "")
+            .replace(/=====================================================================.*$/i, "")
+            .replace(/\*\*Passage Text\*\*.*$/i, "")
+            .replace(/\*\*Questions & Research\*\*.*$/i, "")
+            .replace(/\*\*Journal Reflection\*\*/i, "")
+            .replace(/Thank you for sharing[^\n]*\n?/gi, "")
+            .replace(/You have some great insights[^\n]*\n?/gi, "")
+            .replace(/Let me format it for you[^\n]*\n?/gi, "")
+            .replace(/Here's what you wrote[^:]*:\s*/gi, "")
+            .trim();
+          
+          // Get just the text lines (not empty, not headers)
+          const lines = cleaned.split('\n').filter(l => {
+            const t = l.trim();
+            return t && 
+                   t.length > 5 && 
+                   !t.match(/^(Thank you|You have|Now, let's|Here's what|This is|Let me|Are you|Click|Passage|Questions|Journal)/i) &&
+                   !t.match(/^=+$/) &&
+                   !t.match(/^📖/);
+          });
+          
+          if (lines.length > 0) {
+            reflection = lines.join('\n').trim();
+            console.log("Desperate attempt - found reflection:", reflection.substring(0, 100));
+            break;
+          }
+        }
+      }
+    }
+    
+    // Last resort: if we still don't have reflection, try to get the user's original reflection
+    // (the last user message before the "are you happy" message)
+    if (!reflection) {
+      // Find the index of the message with "are you happy" in the full messages array
+      let happyMessageIndex = -1;
+      for (let i = messages.length - 1; i >= 0; i--) {
+        if (messages[i].role === "assistant" && messages[i].content.toLowerCase().includes("are you happy")) {
+          happyMessageIndex = i;
+          break;
+        }
+      }
+      
+      // If we found the happy message, look for the user message right before it
+      if (happyMessageIndex > 0) {
+        // Go backwards from the happy message to find the last user message
+        for (let i = happyMessageIndex - 1; i >= 0; i--) {
+          if (messages[i].role === "user" && messages[i].content.length > 20) {
+            // This is likely the user's reflection
+            reflection = messages[i].content.trim();
+            console.log("Using user's original reflection as fallback:", reflection.substring(0, 100));
             break;
           }
         }
@@ -562,13 +630,17 @@ export default function GrowNotePage() {
       console.error("Could not find formatted reflection.");
       console.log("Messages with 'are you happy':", messages.filter(m => m.content.toLowerCase().includes("are you happy")).map(m => ({
         role: m.role,
-        contentPreview: m.content.substring(0, 200),
+        contentPreview: m.content.substring(0, 500),
         hasHappy: true
       })));
       console.log("All assistant messages:", assistantMessages.map(m => ({
         contentLength: m.content.length,
-        preview: m.content.substring(0, 150),
+        preview: m.content.substring(0, 200),
         hasHappy: m.content.toLowerCase().includes("are you happy")
+      })));
+      console.log("All user messages:", userMessages.map(m => ({
+        contentLength: m.content.length,
+        preview: m.content.substring(0, 200)
       })));
       return null;
     }
