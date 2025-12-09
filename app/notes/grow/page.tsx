@@ -80,127 +80,145 @@ export default function GrowNotePage() {
   }
 
   function parseFormattedNote() {
+    // First try to get formatted note
     const formattedNote = extractFormattedNote();
-    if (!formattedNote) {
-      // Fallback: try to extract from conversation messages
-      const userMessages = messages.filter((m) => m.role === "user");
-      if (userMessages.length > 0) {
-        // Try to get passage from first message
-        const firstMsg = userMessages[0].content;
-        const passageMatch = firstMsg.match(/([A-Za-z\s]+?)\s+(\d+):(\d+)(?:-(\d+))?/);
-        if (passageMatch) {
-          return {
-            book: passageMatch[1].trim(),
-            chapter: parseInt(passageMatch[2]) || 1,
-            verseFrom: parseInt(passageMatch[3]) || 1,
-            verseTo: parseInt(passageMatch[4]) || parseInt(passageMatch[3]) || 1,
-            passage: "",
-            research: "",
-            observe: "",
-            write: userMessages[userMessages.length - 1]?.content || "",
-          };
-        }
-      }
-      return null;
-    }
-
-    // Parse the formatted note to extract components
-    const cleaned = formattedNote
-      .replace(/Would you like to save this as your GROW Note\?/gi, "")
-      .trim();
-
-    // Extract passage reference (e.g., "Passage: Proverbs 25:28")
-    const passageMatch = cleaned.match(/Passage:\s*([^\n]+)/i);
-    let passageRef = passageMatch ? passageMatch[1].trim() : "";
-
-    // If no passage found in formatted note, try to find it in messages
-    if (!passageRef) {
-      const userMessages = messages.filter((m) => m.role === "user");
-      if (userMessages.length > 0) {
-        const firstMsg = userMessages[0].content;
-        const match = firstMsg.match(/([A-Za-z\s]+?)\s+(\d+):(\d+)(?:-(\d+))?/);
-        if (match) {
-          passageRef = `${match[1].trim()} ${match[2]}:${match[3]}${match[4] ? `-${match[4]}` : ""}`;
-        }
-      }
-    }
-
-    // Parse book, chapter, verse from passage reference
-    // Format: "Proverbs 25:28" or "Matthew 5:1-12"
+    
+    // Extract passage reference from first user message
+    const userMessages = messages.filter((m) => m.role === "user");
+    const assistantMessages = messages.filter((m) => m.role === "assistant");
+    
     let book = "";
     let chapter = 1;
     let verseFrom = 1;
     let verseTo = 1;
-
-    if (passageRef) {
-      // Match book name (can be multiple words) and chapter:verse
-      const match = passageRef.match(/([A-Za-z\s]+?)\s+(\d+):(\d+)(?:-(\d+))?/);
-      if (match) {
-        book = match[1].trim();
-        chapter = parseInt(match[2]) || 1;
-        verseFrom = parseInt(match[3]) || 1;
-        verseTo = parseInt(match[4]) || verseFrom;
+    let passageText = "";
+    let research = "";
+    let reflection = "";
+    
+    // Get passage reference from first user message
+    if (userMessages.length > 0) {
+      const firstMsg = userMessages[0].content;
+      const passageMatch = firstMsg.match(/([A-Za-z\s]+?)\s+(\d+):(\d+)(?:-(\d+))?/);
+      if (passageMatch) {
+        book = passageMatch[1].trim();
+        chapter = parseInt(passageMatch[2]) || 1;
+        verseFrom = parseInt(passageMatch[3]) || 1;
+        verseTo = parseInt(passageMatch[4]) || verseFrom;
       }
     }
-
-    // Extract Passage Text section (remove pin emoji if present)
-    const passageTextMatch = cleaned.match(/\*\*Passage Text\*\*[\s\S]*?(?=\*\*Questions|$)/i);
-    let passageText = passageTextMatch
-      ? passageTextMatch[0].replace(/\*\*Passage Text\*\*/i, "").replace(/📌/g, "").trim()
-      : "";
-
-    // Extract Questions & Research section (remove pin emoji and unwanted text if present)
-    const researchMatch = cleaned.match(/\*\*Questions & Research\*\*[\s\S]*?(?=\*\*Journal|$)/i);
-    let research = researchMatch
-      ? researchMatch[0].replace(/\*\*Questions & Research\*\*/i, "").replace(/📌/g, "").replace(/If you have more questions or thoughts, feel free to ask anytime!/gi, "").trim()
-      : "";
-
-    // Extract Journal Reflection section (stop at equals signs, "Would you like", or "Are you happy")
-    const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|Would you like|Are you happy|$)/i);
-    let reflection = reflectionMatch
-      ? reflectionMatch[1].replace(/\*\*Journal Reflection\*\*/i, "").replace(/📌/g, "").trim()
-      : "";
     
-    // Ensure reflection has proper line breaks - split into paragraphs
+    if (formattedNote) {
+      // Parse the formatted note to extract components
+      const cleaned = formattedNote
+        .replace(/Would you like to save this as your GROW Note\?/gi, "")
+        .trim();
+
+      // Extract passage reference (e.g., "Passage: Proverbs 25:28")
+      const passageMatch = cleaned.match(/Passage:\s*([^\n]+)/i);
+      let passageRef = passageMatch ? passageMatch[1].trim() : "";
+
+      // If no passage found in formatted note, use the one we already extracted
+      if (!passageRef && book) {
+        passageRef = `${book} ${chapter}:${verseFrom}${verseTo !== verseFrom ? `-${verseTo}` : ""}`;
+      }
+
+      // Update book/chapter/verse from passage reference if found
+      if (passageRef && !book) {
+        const match = passageRef.match(/([A-Za-z\s]+?)\s+(\d+):(\d+)(?:-(\d+))?/);
+        if (match) {
+          book = match[1].trim();
+          chapter = parseInt(match[2]) || 1;
+          verseFrom = parseInt(match[3]) || 1;
+          verseTo = parseInt(match[4]) || verseFrom;
+        }
+      }
+
+      // Extract Passage Text section (remove pin emoji if present)
+      const passageTextMatch = cleaned.match(/\*\*Passage Text\*\*[\s\S]*?(?=\*\*Questions|$)/i);
+      passageText = passageTextMatch
+        ? passageTextMatch[0].replace(/\*\*Passage Text\*\*/i, "").replace(/📌/g, "").trim()
+        : "";
+
+      // Extract Questions & Research section (remove pin emoji and unwanted text if present)
+      const researchMatch = cleaned.match(/\*\*Questions & Research\*\*[\s\S]*?(?=\*\*Journal|$)/i);
+      research = researchMatch
+        ? researchMatch[0].replace(/\*\*Questions & Research\*\*/i, "").replace(/📌/g, "").replace(/If you have more questions or thoughts, feel free to ask anytime!/gi, "").trim()
+        : "";
+
+      // Extract Journal Reflection section (stop at equals signs, "Would you like", or "Are you happy")
+      const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|Would you like|Are you happy|$)/i);
+      reflection = reflectionMatch
+        ? reflectionMatch[1].replace(/\*\*Journal Reflection\*\*/i, "").replace(/📌/g, "").trim()
+        : "";
+      
+      // If no reflection found in formatted structure, try to get it from different formats
+      if (!reflection) {
+        // Look for polished journal entry text
+        const polishedMatch = cleaned.match(/polished into a smooth journal entry:([\s\S]*?)(?=Would you like|Are you happy|$)/i);
+        if (polishedMatch) {
+          reflection = polishedMatch[1].trim();
+        } else {
+          // Look for "Here's what you wrote" pattern
+          const heresMatch = cleaned.match(/Here's what you wrote[^:]*:([\s\S]*?)(?=Would you like|Are you happy|$)/i);
+          if (heresMatch) {
+            reflection = heresMatch[1].trim();
+          }
+        }
+      }
+    } else {
+      // If no formatted note, extract from conversation history
+      // Look for passage text in assistant messages (G step)
+      for (const msg of assistantMessages) {
+        if (msg.content.includes("[01]") || msg.content.includes("Here is the passage")) {
+          // Extract passage text with verse numbers
+          const passageMatch = msg.content.match(/(?:Here is the passage[^\n]*\n)?([\s\S]*?)(?:Let me know when|Now let|When you are finished)/i);
+          if (passageMatch) {
+            passageText = passageMatch[1].trim();
+            // Clean up
+            passageText = passageText.replace(/Here is the passage[^\n]*\n?/i, "").trim();
+          }
+        }
+        
+        // Look for research/questions in assistant messages (R step)
+        if (msg.content.includes("You asked about") || msg.content.includes("You also wondered")) {
+          // This is likely the research section
+          if (!research) {
+            research = msg.content;
+            // Remove intro text
+            research = research.replace(/Now let's move to R[^\n]*\n?/i, "").replace(/This is where you ask questions[^\n]*\n?/i, "").trim();
+          }
+        }
+      }
+      
+      // Get reflection from last user message (W step)
+      if (userMessages.length > 0) {
+        reflection = userMessages[userMessages.length - 1]?.content || "";
+      }
+    }
+    
+    // Format reflection with proper line breaks
     if (reflection) {
-      // If it's one big block, try to split it into paragraphs
-      // Look for sentence endings followed by capital letters (new sentences)
+      // Remove unwanted text
+      reflection = reflection
+        .replace(/^=+$/gm, "")
+        .replace(/\n=+\s*$/g, "")
+        .replace(/^-+$/gm, "")
+        .replace(/Are you happy with this note\?/gi, "")
+        .replace(/Are you happy with how i formatted/gi, "")
+        .trim();
+      
+      // Ensure proper paragraph breaks
       reflection = reflection
         .replace(/([.!?])\s+([A-Z])/g, "$1\n\n$2") // Add double line breaks between sentences
         .split(/\n\s*\n/)
         .filter(p => p.trim())
         .join("\n\n");
     }
-    
-    // If no reflection found in formatted structure, try to get it from different formats
-    if (!reflection) {
-      // Look for polished journal entry text
-      const polishedMatch = cleaned.match(/polished into a smooth journal entry:([\s\S]*?)(?=Would you like|Are you happy|$)/i);
-      if (polishedMatch) {
-        reflection = polishedMatch[1].trim();
-      } else {
-        // Look for "Here's what you wrote" pattern
-        const heresMatch = cleaned.match(/Here's what you wrote[^:]*:([\s\S]*?)(?=Would you like|Are you happy|$)/i);
-        if (heresMatch) {
-          reflection = heresMatch[1].trim();
-        } else {
-          // Fallback: get the last user message as reflection (from W step)
-          const userMessages = messages.filter((m) => m.role === "user");
-          if (userMessages.length > 0) {
-            // The last user message is likely the W step reflection
-            reflection = userMessages[userMessages.length - 1]?.content || "";
-          }
-        }
-      }
+
+    // Ensure we have at least book and reflection
+    if (!book || !reflection) {
+      return null;
     }
-    
-    // Remove any equals sign lines, trailing separators, and "Are you happy" question
-    reflection = reflection
-      .replace(/^=+$/gm, "")
-      .replace(/\n=+\s*$/g, "")
-      .replace(/^-+$/gm, "")
-      .replace(/Are you happy with this note\?/gi, "")
-      .trim();
 
     return {
       book,
