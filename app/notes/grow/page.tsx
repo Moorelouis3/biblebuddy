@@ -21,6 +21,7 @@ export default function GrowNotePage() {
   const [displayName, setDisplayName] = useState("");
   const [saving, setSaving] = useState(false);
   const [showReview, setShowReview] = useState(false);
+  const [showSaveButton, setShowSaveButton] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -122,8 +123,8 @@ export default function GrowNotePage() {
     let reflection = reflectionMatch
       ? reflectionMatch[1].replace(/\*\*Journal Reflection\*\*/i, "").trim()
       : "";
-    // Remove any equals sign lines
-    reflection = reflection.replace(/^=+$/gm, "").trim();
+    // Remove any equals sign lines and trailing separators
+    reflection = reflection.replace(/^=+$/gm, "").replace(/\n=+\s*$/g, "").trim();
 
     return {
       book,
@@ -141,9 +142,11 @@ export default function GrowNotePage() {
     // Try to get the formatted note from AI
     const formattedNote = extractFormattedNote();
     if (formattedNote) {
-      // Remove the "Would you like to save" question if present
+      // Remove the "Would you like to save" question and equals sign lines
       return formattedNote
         .replace(/Would you like to save this as your GROW Note\?/gi, "")
+        .replace(/^=+$/gm, "")
+        .replace(/\n=+\s*$/g, "")
         .trim();
     }
 
@@ -228,14 +231,14 @@ export default function GrowNotePage() {
 
       setMessages((prev) => [...prev, assistantMessage]);
 
-      // Check if assistant suggests review or we have enough content
+      // Check if assistant is asking to save the note
       const lowerContent = assistantMessage.content.toLowerCase();
       if (
-        lowerContent.includes("review") ||
-        lowerContent.includes("save") ||
-        newMessages.filter((m) => m.role === "user").length >= 5
+        lowerContent.includes("would you like to save") ||
+        lowerContent.includes("save this as your grow note") ||
+        lowerContent.includes("save this note")
       ) {
-        // Don't auto-show, but allow manual review
+        setShowSaveButton(true);
       }
     } catch (err: any) {
       console.error("Error in handleSend:", err);
@@ -298,9 +301,11 @@ export default function GrowNotePage() {
 
     // Parse the formatted note to display beautifully
     function renderFormattedNote(content: string) {
-      // Clean up the content - remove "Would you like to save" question
+      // Clean up the content - remove "Would you like to save" question and equals signs
       let cleaned = content
         .replace(/Would you like to save this as your GROW Note\?/gi, "")
+        .replace(/^=+$/gm, "")
+        .replace(/\n=+\s*$/g, "")
         .trim();
 
       const elements: React.ReactElement[] = [];
@@ -345,8 +350,8 @@ export default function GrowNotePage() {
       const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|$)/i);
       if (reflectionMatch) {
         let reflectionContent = reflectionMatch[1].trim();
-        // Remove any equals sign lines
-        reflectionContent = reflectionContent.replace(/^=+$/gm, "").trim();
+        // Remove any equals sign lines and trailing separators
+        reflectionContent = reflectionContent.replace(/^=+$/gm, "").replace(/\n=+\s*$/g, "").trim();
         // Split into paragraphs for better formatting
         const paragraphs = reflectionContent.split(/\n\s*\n/).filter(p => p.trim());
         elements.push(
@@ -470,24 +475,37 @@ export default function GrowNotePage() {
 
         {/* Input */}
         <div className="border-t border-gray-200 px-6 py-4">
-          <div className="flex gap-3">
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) =>
-                e.key === "Enter" && !isSending && handleSend()
-              }
-              placeholder="Type your message..."
-              className="flex-1 border border-gray-300 rounded-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-            <button
-              onClick={handleSend}
-              disabled={isSending || !input.trim()}
-              className="px-6 py-3 bg-blue-600 text-white rounded-full font-semibold disabled:opacity-60 disabled:cursor-not-allowed hover:bg-blue-700"
-            >
-              Send
-            </button>
-          </div>
+          {showSaveButton ? (
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleSave}
+                disabled={saving}
+                className="px-6 py-3 bg-blue-600 text-white rounded-full font-semibold disabled:opacity-60 disabled:cursor-not-allowed hover:bg-blue-700 flex items-center gap-2"
+              >
+                <span>←</span>
+                <span>{saving ? "Saving..." : "Save Note Now"}</span>
+              </button>
+            </div>
+          ) : (
+            <div className="flex gap-3">
+              <input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) =>
+                  e.key === "Enter" && !isSending && handleSend()
+                }
+                placeholder="Type your message..."
+                className="flex-1 border border-gray-300 rounded-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
+              <button
+                onClick={handleSend}
+                disabled={isSending || !input.trim()}
+                className="px-6 py-3 bg-blue-600 text-white rounded-full font-semibold disabled:opacity-60 disabled:cursor-not-allowed hover:bg-blue-700"
+              >
+                Send
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

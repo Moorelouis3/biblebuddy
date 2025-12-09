@@ -470,7 +470,7 @@ Keep their voice and write in FIRST PERSON (I, me, my) - this is their personal 
 Break longer reflections into multiple paragraphs for better readability.  
 Make it more understandable and polished while preserving their personal voice and perspective.
 
-=====================================================================
+DO NOT add any equals sign lines (====) at the end of the note.
 
 At the END of the message, ALWAYS ask:
 
