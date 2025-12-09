@@ -292,9 +292,24 @@ export default function GrowNotePage() {
       if (
         lowerContent.includes("would you like to save") ||
         lowerContent.includes("save this as your grow note") ||
-        lowerContent.includes("save this note")
+        lowerContent.includes("save this note") ||
+        lowerContent.includes("save your grow note") ||
+        lowerContent.includes("ready to save") ||
+        (lowerContent.includes("save") && lowerContent.includes("grow"))
       ) {
         setShowSaveButton(true);
+      }
+      
+      // Also check if we've completed W step (user said "done" after reflection)
+      // and the AI has provided the formatted note
+      if (assistantMessage.content.includes("GROW Study Notes") || 
+          assistantMessage.content.includes("📖 GROW Study Notes") ||
+          (assistantMessage.content.includes("📌 **Passage Text**") &&
+           assistantMessage.content.includes("📌 **Journal Reflection**"))) {
+        // If formatted note is shown, show save button after a short delay
+        setTimeout(() => {
+          setShowSaveButton(true);
+        }, 500);
       }
     } catch (err: any) {
       console.error("Error in handleSend:", err);
