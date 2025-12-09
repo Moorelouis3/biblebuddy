@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { supabase } from "../../lib/supabaseClient";
 import NewNoteModal from "../../components/NewNoteModal";
@@ -16,8 +15,6 @@ type Note = {
   research: string;
   observe: string;
   write: string;
-  content?: string;
-  noteType?: string;
   createdAt: string;
 };
 
@@ -97,7 +94,6 @@ function formatDisplayDate(isoString: string) {
 }
 
 export default function NotesPage() {
-  const router = useRouter();
   const [notes, setNotes] = useState<Note[]>([]);
   const [bookFilter, setBookFilter] = useState("All books");
   const [dateSort, setDateSort] = useState<"newest" | "oldest">("newest");
@@ -129,7 +125,7 @@ export default function NotesPage() {
         const { data, error } = await supabase
           .from("notes")
           .select(
-            "id, book, chapter, verse_from, verse_to, passage, research, observe, write, content, note_type, created_at"
+            "id, book, chapter, verse_from, verse_to, passage, research, observe, write, created_at"
           )
           .eq("user_id", user.id)
           .order("created_at", { ascending: false });
@@ -151,8 +147,6 @@ export default function NotesPage() {
             research: row.research ?? "",
             observe: row.observe ?? "",
             write: row.write ?? "",
-            content: row.content ?? "",
-            noteType: row.note_type ?? "GROW",
             createdAt: row.created_at
           })) ?? [];
 
@@ -440,90 +434,67 @@ export default function NotesPage() {
                     Saved {formatDisplayDate(currentNote.createdAt)}
                   </p>
 
-                  {/* Advanced Note - show HTML content */}
-                  {currentNote.noteType === "ADVANCED" && currentNote.content && (
-                    <div 
-                      className="prose max-w-none"
-                      dangerouslySetInnerHTML={{ __html: currentNote.content }}
-                    />
-                  )}
+                  <div className="space-y-6 text-sm">
+                    {currentNote.passage && (
+                      <section>
+                        <h1 className="text-2xl font-bold mb-4">📖 Passage</h1>
+                        <div className="space-y-2">
+                          {currentNote.passage.split("\n").filter(l => l.trim()).map((line, idx) => (
+                            <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
+                              {line}
+                            </p>
+                          ))}
+                        </div>
+                      </section>
+                    )}
 
-                  {/* GROW Note - show sections */}
-                  {currentNote.noteType !== "ADVANCED" && (
-                    <div className="space-y-6 text-sm">
-                      {currentNote.passage && (
-                        <section>
-                          <h1 className="text-2xl font-bold mb-4">📖 Passage</h1>
-                          <div className="space-y-2">
-                            {currentNote.passage.split("\n").filter(l => l.trim()).map((line, idx) => (
-                              <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
-                                {line}
-                              </p>
-                            ))}
-                          </div>
-                        </section>
-                      )}
+                    {currentNote.research && (
+                      <section>
+                        <h1 className="text-2xl font-bold mb-4">❓ Questions</h1>
+                        <div className="space-y-4">
+                          {currentNote.research.split("\n").filter(l => l.trim()).map((line, idx) => (
+                            <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
+                              {line}
+                            </p>
+                          ))}
+                        </div>
+                      </section>
+                    )}
 
-                      {currentNote.research && (
-                        <section>
-                          <h1 className="text-2xl font-bold mb-4">❓ Questions</h1>
-                          <div className="space-y-4">
-                            {currentNote.research.split("\n").filter(l => l.trim()).map((line, idx) => (
-                              <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
-                                {line}
-                              </p>
-                            ))}
-                          </div>
-                        </section>
-                      )}
+                    {currentNote.observe && (
+                      <section>
+                        <h1 className="text-2xl font-bold mb-4">👀 Observe</h1>
+                        <div className="space-y-4">
+                          {currentNote.observe.split("\n").filter(l => l.trim()).map((line, idx) => (
+                            <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
+                              {line}
+                            </p>
+                          ))}
+                        </div>
+                      </section>
+                    )}
 
-                      {currentNote.observe && (
-                        <section>
-                          <h1 className="text-2xl font-bold mb-4">👀 Observe</h1>
-                          <div className="space-y-4">
-                            {currentNote.observe.split("\n").filter(l => l.trim()).map((line, idx) => (
-                              <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
-                                {line}
-                              </p>
-                            ))}
-                          </div>
-                        </section>
-                      )}
-
-                      {currentNote.write && (
-                        <section>
-                          <h1 className="text-2xl font-bold mb-4">✍️ Reflection</h1>
-                          <div className="space-y-4">
-                            {currentNote.write.split(/\n\s*\n/).filter(p => p.trim()).map((para, idx) => (
-                              <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
-                                {para.trim()}
-                              </p>
-                            ))}
-                          </div>
-                        </section>
-                      )}
-                    </div>
-                  )}
+                    {currentNote.write && (
+                      <section>
+                        <h1 className="text-2xl font-bold mb-4">✍️ Reflection</h1>
+                        <div className="space-y-4">
+                          {currentNote.write.split(/\n\s*\n/).filter(p => p.trim()).map((para, idx) => (
+                            <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
+                              {para.trim()}
+                            </p>
+                          ))}
+                        </div>
+                      </section>
+                    )}
+                  </div>
 
                   <div className="mt-6 flex justify-end gap-3">
-                    {currentNote.noteType === "ADVANCED" ? (
-                      <button
-                        onClick={() => {
-                          closeModal();
-                          router.push(`/notes/advanced?id=${currentNote.id}`);
-                        }}
-                        className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold"
-                      >
-                        Edit
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => setModalMode("edit")}
-                        className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold"
-                      >
-                        Edit
-                      </button>
-                    )}
+                    <button
+                      onClick={() => setModalMode("edit")}
+                      className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold"
+                    >
+                      Edit
+                    </button>
                     <button
                       onClick={handleDelete}
                       className="px-4 py-2 rounded-full bg-red-600 text-white text-sm font-semibold"

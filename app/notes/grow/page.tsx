@@ -470,6 +470,46 @@ export default function GrowNotePage() {
     return `📖 GROW Study Notes\nPassage: ${passage}\n\nNote content from conversation.`;
   }
 
+  function filterMessageForDisplay(content: string): string {
+    // If the message contains the full formatted note structure, show only the reflection part
+    // and the question, hiding the full note structure
+    const hasFullNote = content.includes("📖 GROW Study Notes") || 
+                        (content.includes("**Passage Text**") && 
+                         content.includes("**Questions & Research**") && 
+                         content.includes("**Journal Reflection**"));
+    
+    if (hasFullNote) {
+      // Find where the full formatted note structure starts
+      // Look for the pattern: "=====================================================================" followed by "📖 GROW Study Notes"
+      const fullNotePattern = /(?:^|\n)={10,}\s*\n\s*📖 GROW Study Notes/i;
+      const fullNoteMatch = content.match(fullNotePattern);
+      
+      if (fullNoteMatch && fullNoteMatch.index !== undefined) {
+        // Return only the part before the full note structure
+        return content.substring(0, fullNoteMatch.index).trim();
+      }
+      
+      // Alternative: look for "**Passage Text**" as the start of the full structure
+      // But only if it appears after we've already shown the reflection
+      const passageTextPattern = /\*\*Passage Text\*\*/i;
+      const passageTextIndex = content.search(passageTextPattern);
+      
+      if (passageTextIndex > 0) {
+        // Check if there's substantial content before the full structure
+        // (meaning we've shown the reflection first)
+        const beforeStructure = content.substring(0, passageTextIndex);
+        
+        // If there's meaningful content before (reflection + question), use it
+        if (beforeStructure.length > 100 || beforeStructure.includes("Are you happy")) {
+          return beforeStructure.trim();
+        }
+      }
+    }
+    
+    // If no full note structure, return content as-is
+    return content;
+  }
+
   async function handleSend() {
     const trimmed = input.trim();
     if (!trimmed) return;
@@ -551,14 +591,24 @@ export default function GrowNotePage() {
         lowerContent.includes("are you happy with how i formatted") ||
         lowerContent.includes("are you happy with this note") ||
         lowerContent.includes("happy with this") ||
+        lowerContent.includes("happy with how") ||
         lowerContent.includes("would you like to save") ||
         lowerContent.includes("save this as your grow note") ||
         lowerContent.includes("save this note") ||
         lowerContent.includes("save your grow note") ||
-        lowerContent.includes("ready to save");
+        lowerContent.includes("ready to save") ||
+        lowerContent.includes("click 'save note now'") ||
+        lowerContent.includes("click \"save note now\"");
       
-      // Only show save button when AI explicitly asks if they're happy
-      if (isAskingIfHappy) {
+      // Also check if the message contains the full formatted note structure (indicates W step is complete)
+      const hasFormattedNote = 
+        lowerContent.includes("📖 grow study notes") ||
+        (lowerContent.includes("**passage text**") && 
+         lowerContent.includes("**questions & research**") && 
+         lowerContent.includes("**journal reflection**"));
+      
+      // Show save button when AI explicitly asks if they're happy OR when full formatted note is present
+      if (isAskingIfHappy || hasFormattedNote) {
         setShowSaveButton(true);
       }
     } catch (err: any) {
@@ -798,29 +848,36 @@ export default function GrowNotePage() {
 
         {/* Messages */}
         <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
-          {messages.map((m, i) => (
-            <div
-              key={i}
-              className={
-                m.role === "user"
-                  ? "flex justify-end"
-                  : "flex justify-start items-start gap-3"
-              }
-            >
-              {m.role === "assistant" && (
-                <LouisAvatar mood="bible" size={32} />
-              )}
-              <span
+          {messages.map((m, i) => {
+            // Filter assistant messages to hide full formatted note structure
+            const displayContent = m.role === "assistant" 
+              ? filterMessageForDisplay(m.content)
+              : m.content;
+            
+            return (
+              <div
+                key={i}
                 className={
                   m.role === "user"
-                    ? "inline-block bg-blue-600 text-white px-4 py-3 rounded-2xl max-w-[80%] whitespace-pre-line leading-relaxed"
-                    : "inline-block bg-gray-100 text-gray-800 px-4 py-3 rounded-2xl max-w-[80%] whitespace-pre-line leading-relaxed"
+                    ? "flex justify-end"
+                    : "flex justify-start items-start gap-3"
                 }
               >
-                {m.content}
-              </span>
-            </div>
-          ))}
+                {m.role === "assistant" && (
+                  <LouisAvatar mood="bible" size={32} />
+                )}
+                <span
+                  className={
+                    m.role === "user"
+                      ? "inline-block bg-blue-600 text-white px-4 py-3 rounded-2xl max-w-[80%] whitespace-pre-line leading-relaxed"
+                      : "inline-block bg-gray-100 text-gray-800 px-4 py-3 rounded-2xl max-w-[80%] whitespace-pre-line leading-relaxed"
+                  }
+                >
+                  {displayContent}
+                </span>
+              </div>
+            );
+          })}
           {isSending && (
             <div className="flex justify-start items-start gap-3">
               <LouisAvatar mood="think" size={32} />

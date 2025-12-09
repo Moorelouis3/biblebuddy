@@ -45,11 +45,8 @@ export default function NewNoteModal({ isOpen, onClose }: NewNoteModalProps) {
           </button>
 
           <button
-            onClick={() => {
-              onClose();
-              router.push("/notes/advanced");
-            }}
-            className="w-full px-6 py-4 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+            disabled
+            className="w-full px-6 py-4 rounded-xl bg-gray-200 text-gray-500 font-semibold cursor-not-allowed"
           >
             Advanced Note
           </button>
