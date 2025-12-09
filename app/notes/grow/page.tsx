@@ -74,6 +74,67 @@ export default function GrowNotePage() {
     return null;
   }
 
+  function parseFormattedNote() {
+    const formattedNote = extractFormattedNote();
+    if (!formattedNote) return null;
+
+    // Parse the formatted note to extract components
+    const cleaned = formattedNote
+      .replace(/Would you like to save this as your GROW Note\?/gi, "")
+      .trim();
+
+    // Extract passage reference (e.g., "Passage: Proverbs 25:28")
+    const passageMatch = cleaned.match(/Passage:\s*([^\n]+)/i);
+    const passageRef = passageMatch ? passageMatch[1].trim() : "";
+
+    // Parse book, chapter, verse from passage reference
+    // Format: "Proverbs 25:28" or "Matthew 5:1-12"
+    let book = "";
+    let chapter = 1;
+    let verseFrom = 1;
+    let verseTo = 1;
+
+    if (passageRef) {
+      // Match book name (can be multiple words) and chapter:verse
+      const match = passageRef.match(/([A-Za-z\s]+?)\s+(\d+):(\d+)(?:-(\d+))?/);
+      if (match) {
+        book = match[1].trim();
+        chapter = parseInt(match[2]) || 1;
+        verseFrom = parseInt(match[3]) || 1;
+        verseTo = parseInt(match[4]) || verseFrom;
+      }
+    }
+
+    // Extract Passage Text section
+    const passageTextMatch = cleaned.match(/\*\*Passage Text\*\*[\s\S]*?(?=\*\*Questions|$)/i);
+    const passageText = passageTextMatch
+      ? passageTextMatch[0].replace(/\*\*Passage Text\*\*/i, "").trim()
+      : "";
+
+    // Extract Questions & Research section
+    const researchMatch = cleaned.match(/\*\*Questions & Research\*\*[\s\S]*?(?=\*\*Journal|$)/i);
+    const research = researchMatch
+      ? researchMatch[0].replace(/\*\*Questions & Research\*\*/i, "").trim()
+      : "";
+
+    // Extract Journal Reflection section
+    const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*[\s\S]*?$/i);
+    const reflection = reflectionMatch
+      ? reflectionMatch[0].replace(/\*\*Journal Reflection\*\*/i, "").trim()
+      : "";
+
+    return {
+      book,
+      chapter,
+      verseFrom,
+      verseTo,
+      passage: passageText,
+      research,
+      observe: "", // O step is not saved separately
+      write: reflection,
+    };
+  }
+
   function formatContent() {
     // Try to get the formatted note from AI
     const formattedNote = extractFormattedNote();
@@ -194,26 +255,37 @@ export default function GrowNotePage() {
     setSaving(true);
 
     try {
-      const content = formatContent();
+      const parsed = parseFormattedNote();
+      
+      if (!parsed || !parsed.book) {
+        alert("Could not parse note. Please make sure you completed the GROW process.");
+        setSaving(false);
+        return;
+      }
 
       const { error } = await supabase.from("notes").insert({
         user_id: userId,
-        display_name: displayName,
-        content: content,
-        note_type: "GROW",
+        book: parsed.book,
+        chapter: parsed.chapter,
+        verse_from: parsed.verseFrom,
+        verse_to: parsed.verseTo,
+        passage: parsed.passage,
+        research: parsed.research,
+        observe: parsed.observe,
+        write: parsed.write,
       });
 
       if (error) {
         console.error("Error saving note:", error);
-        alert("Failed to save note. Please try again.");
+        alert(`Failed to save note: ${error.message}`);
         setSaving(false);
         return;
       }
 
       router.push("/notes");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error:", error);
-      alert("Failed to save note. Please try again.");
+      alert(`Failed to save note: ${error.message || "Unknown error"}`);
       setSaving(false);
     }
   }
@@ -229,108 +301,78 @@ export default function GrowNotePage() {
         .replace(/Would you like to save this as your GROW Note\?/gi, "")
         .trim();
 
-      // Split into paragraphs (double line breaks)
-      const paragraphs = cleaned.split(/\n\s*\n/).filter(p => p.trim());
-      
       const elements: React.ReactElement[] = [];
-      let currentSection: string[] = [];
-      let inSection = false;
-
-      for (const para of paragraphs) {
-        const trimmed = para.trim();
-        
-        // Skip separator lines
-        if (trimmed.match(/^=+$/)) {
-          if (currentSection.length > 0) {
-            elements.push(
-              <div key={elements.length} className="mb-8">
-                {currentSection.map((text, idx) => (
-                  <p key={idx} className="mb-4 text-gray-700 leading-relaxed whitespace-pre-line">
-                    {text}
-                  </p>
-                ))}
-              </div>
-            );
-            currentSection = [];
-          }
-          continue;
-        }
-
-        // Detect main title
-        if (trimmed.includes("GROW Study Notes") || trimmed.includes("📖 GROW Study Notes")) {
-          if (currentSection.length > 0) {
-            elements.push(
-              <div key={elements.length} className="mb-8">
-                {currentSection.map((text, idx) => (
-                  <p key={idx} className="mb-4 text-gray-700 leading-relaxed whitespace-pre-line">
-                    {text}
-                  </p>
-                ))}
-              </div>
-            );
-            currentSection = [];
-          }
-          const title = trimmed.replace(/📖\s*/, "").replace(/\*\*/g, "");
-          elements.push(
-            <div key={elements.length} className="mb-6">
-              <h3 className="text-2xl font-bold">{title}</h3>
+      
+      // Extract and render Passage Text section
+      const passageMatch = cleaned.match(/\*\*Passage Text\*\*([\s\S]*?)(?=\*\*Questions|$)/i);
+      if (passageMatch) {
+        const passageContent = passageMatch[1].trim();
+        elements.push(
+          <div key="passage" className="mb-8">
+            <h1 className="text-2xl font-bold mb-4">📖 Passage</h1>
+            <div className="space-y-2">
+              {passageContent.split("\n").filter(l => l.trim()).map((line, idx) => (
+                <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
+                  {line}
+                </p>
+              ))}
             </div>
-          );
-          continue;
-        }
-
-        // Detect section headers
-        if (trimmed.includes("📌 **Passage Text**") || 
-            trimmed.includes("📌 **Questions & Research**") || 
-            trimmed.includes("📌 **Journal Reflection**")) {
-          if (currentSection.length > 0) {
-            elements.push(
-              <div key={elements.length} className="mb-8">
-                {currentSection.map((text, idx) => (
-                  <p key={idx} className="mb-4 text-gray-700 leading-relaxed whitespace-pre-line">
-                    {text}
-                  </p>
-                ))}
-              </div>
-            );
-            currentSection = [];
-          }
-          const header = trimmed.replace(/📌\s*/, "").replace(/\*\*/g, "");
-          elements.push(
-            <div key={elements.length} className="mb-4 mt-6">
-              <h4 className="font-semibold text-lg">{header}</h4>
-            </div>
-          );
-          inSection = true;
-          continue;
-        }
-
-        // Regular content
-        if (trimmed) {
-          currentSection.push(trimmed);
-        }
+          </div>
+        );
       }
 
-      // Add remaining content
-      if (currentSection.length > 0) {
+      // Extract and render Questions & Research section
+      const researchMatch = cleaned.match(/\*\*Questions & Research\*\*([\s\S]*?)(?=\*\*Journal|$)/i);
+      if (researchMatch) {
+        const researchContent = researchMatch[1].trim();
         elements.push(
-          <div key={elements.length} className="mb-8">
-            {currentSection.map((text, idx) => (
-              <p key={idx} className="mb-4 text-gray-700 leading-relaxed whitespace-pre-line">
-                {text}
+          <div key="research" className="mb-8">
+            <h1 className="text-2xl font-bold mb-4">❓ Questions</h1>
+            <div className="space-y-4">
+              {researchContent.split("\n").filter(l => l.trim()).map((line, idx) => (
+                <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
+                  {line}
+                </p>
+              ))}
+            </div>
+          </div>
+        );
+      }
+
+      // Extract and render Journal Reflection section
+      const reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)$/i);
+      if (reflectionMatch) {
+        const reflectionContent = reflectionMatch[1].trim();
+        // Split into paragraphs for better formatting
+        const paragraphs = reflectionContent.split(/\n\s*\n/).filter(p => p.trim());
+        elements.push(
+          <div key="reflection" className="mb-8">
+            <h1 className="text-2xl font-bold mb-4">✍️ Reflection</h1>
+            <div className="space-y-4">
+              {paragraphs.map((para, idx) => (
+                <p key={idx} className="text-gray-700 leading-relaxed whitespace-pre-line">
+                  {para}
+                </p>
+              ))}
+            </div>
+          </div>
+        );
+      }
+
+      // If no sections found, render as plain text
+      if (elements.length === 0) {
+        return (
+          <div className="text-gray-600">
+            {cleaned.split("\n").map((line, idx) => (
+              <p key={idx} className="mb-3 leading-relaxed whitespace-pre-line">
+                {line || "\u00A0"}
               </p>
             ))}
           </div>
         );
       }
 
-      return elements.length > 0 ? elements : (
-        <div className="text-gray-600 italic">
-          {cleaned.split("\n").map((line, idx) => (
-            <p key={idx} className="mb-3 leading-relaxed">{line || "\u00A0"}</p>
-          ))}
-        </div>
-      );
+      return elements;
     }
 
     return (
