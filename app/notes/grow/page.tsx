@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabaseClient";
 import { LouisAvatar } from "../../../components/LouisAvatar";
@@ -52,80 +52,42 @@ export default function GrowNotePage() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  function extractGrowData() {
-    let passage = "";
-    let gText = "";
-    let rText = "";
-    let oText = "";
-    let wText = "";
-
-    // Extract passage from first user message (should be the passage reference)
-    const userMessages = messages.filter((m) => m.role === "user");
-    if (userMessages.length > 0) {
-      passage = userMessages[0]?.content || "";
-    }
-
-    // Look for GROW step indicators in assistant messages and extract corresponding user responses
-    let currentStep = "";
-    for (let i = 0; i < messages.length; i++) {
+  function extractFormattedNote() {
+    // Look for the final formatted GROW note in assistant messages
+    // It should contain "GROW Study Notes" or the formatted structure
+    for (let i = messages.length - 1; i >= 0; i--) {
       const msg = messages[i];
       if (msg.role === "assistant") {
-        const content = msg.content.toLowerCase();
-        if (content.includes("get the passage") || content.includes("g –") || content.includes("g:")) {
-          currentStep = "g";
-        } else if (content.includes("research") && !content.includes("get")) {
-          currentStep = "r";
-        } else if (content.includes("observe")) {
-          currentStep = "o";
-        } else if (content.includes("write") && !content.includes("observe")) {
-          currentStep = "w";
-        }
-      } else if (msg.role === "user" && currentStep && i > 0) {
-        // This is a user response to a GROW step
-        if (currentStep === "g") {
-          gText = msg.content;
-        } else if (currentStep === "r") {
-          rText = msg.content;
-        } else if (currentStep === "o") {
-          oText = msg.content;
-        } else if (currentStep === "w") {
-          wText = msg.content;
+        const content = msg.content;
+        // Check if this is the final formatted note
+        if (
+          content.includes("GROW Study Notes") ||
+          content.includes("📖 GROW Study Notes") ||
+          (content.includes("📌 **Passage Text**") &&
+            content.includes("📌 **Questions & Research**") &&
+            content.includes("📌 **Journal Reflection**"))
+        ) {
+          return content;
         }
       }
     }
-
-    // Fallback: if we can't extract properly, use sequential user messages
-    if (!gText && userMessages.length > 1) {
-      gText = userMessages[1]?.content || "";
-    }
-    if (!rText && userMessages.length > 2) {
-      rText = userMessages[2]?.content || "";
-    }
-    if (!oText && userMessages.length > 3) {
-      oText = userMessages[3]?.content || "";
-    }
-    if (!wText && userMessages.length > 4) {
-      wText = userMessages[4]?.content || "";
-    }
-
-    return { passage, gText, rText, oText, wText };
+    return null;
   }
 
   function formatContent() {
-    const { passage, gText, rText, oText, wText } = extractGrowData();
-    return `📖 ${passage}
+    // Try to get the formatted note from AI
+    const formattedNote = extractFormattedNote();
+    if (formattedNote) {
+      // Remove the "Would you like to save" question if present
+      return formattedNote
+        .replace(/Would you like to save this as your GROW Note\?/gi, "")
+        .trim();
+    }
 
-G – Get the Passage
-${gText}
-
-R – Research
-${rText}
-
-O – Observe
-${oText}
-
-W – Write
-${wText}`;
+    // Fallback: extract from conversation if formatted note not found
+    const userMessages = messages.filter((m) => m.role === "user");
+    const passage = userMessages[0]?.content || "";
+    return `📖 GROW Study Notes\nPassage: ${passage}\n\nNote content from conversation.`;
   }
 
   async function handleSend() {
@@ -257,7 +219,120 @@ ${wText}`;
   }
 
   if (showReview) {
-    const { passage, gText, rText, oText, wText } = extractGrowData();
+    const formattedNote = extractFormattedNote();
+    const noteContent = formattedNote || "No formatted note found. Please complete the GROW process.";
+
+    // Parse the formatted note to display beautifully
+    function renderFormattedNote(content: string) {
+      // Clean up the content - remove "Would you like to save" question
+      let cleaned = content
+        .replace(/Would you like to save this as your GROW Note\?/gi, "")
+        .trim();
+
+      // Split into paragraphs (double line breaks)
+      const paragraphs = cleaned.split(/\n\s*\n/).filter(p => p.trim());
+      
+      const elements: React.ReactElement[] = [];
+      let currentSection: string[] = [];
+      let inSection = false;
+
+      for (const para of paragraphs) {
+        const trimmed = para.trim();
+        
+        // Skip separator lines
+        if (trimmed.match(/^=+$/)) {
+          if (currentSection.length > 0) {
+            elements.push(
+              <div key={elements.length} className="mb-8">
+                {currentSection.map((text, idx) => (
+                  <p key={idx} className="mb-4 text-gray-700 leading-relaxed whitespace-pre-line">
+                    {text}
+                  </p>
+                ))}
+              </div>
+            );
+            currentSection = [];
+          }
+          continue;
+        }
+
+        // Detect main title
+        if (trimmed.includes("GROW Study Notes") || trimmed.includes("📖 GROW Study Notes")) {
+          if (currentSection.length > 0) {
+            elements.push(
+              <div key={elements.length} className="mb-8">
+                {currentSection.map((text, idx) => (
+                  <p key={idx} className="mb-4 text-gray-700 leading-relaxed whitespace-pre-line">
+                    {text}
+                  </p>
+                ))}
+              </div>
+            );
+            currentSection = [];
+          }
+          const title = trimmed.replace(/📖\s*/, "").replace(/\*\*/g, "");
+          elements.push(
+            <div key={elements.length} className="mb-6">
+              <h3 className="text-2xl font-bold">{title}</h3>
+            </div>
+          );
+          continue;
+        }
+
+        // Detect section headers
+        if (trimmed.includes("📌 **Passage Text**") || 
+            trimmed.includes("📌 **Questions & Research**") || 
+            trimmed.includes("📌 **Journal Reflection**")) {
+          if (currentSection.length > 0) {
+            elements.push(
+              <div key={elements.length} className="mb-8">
+                {currentSection.map((text, idx) => (
+                  <p key={idx} className="mb-4 text-gray-700 leading-relaxed whitespace-pre-line">
+                    {text}
+                  </p>
+                ))}
+              </div>
+            );
+            currentSection = [];
+          }
+          const header = trimmed.replace(/📌\s*/, "").replace(/\*\*/g, "");
+          elements.push(
+            <div key={elements.length} className="mb-4 mt-6">
+              <h4 className="font-semibold text-lg">{header}</h4>
+            </div>
+          );
+          inSection = true;
+          continue;
+        }
+
+        // Regular content
+        if (trimmed) {
+          currentSection.push(trimmed);
+        }
+      }
+
+      // Add remaining content
+      if (currentSection.length > 0) {
+        elements.push(
+          <div key={elements.length} className="mb-8">
+            {currentSection.map((text, idx) => (
+              <p key={idx} className="mb-4 text-gray-700 leading-relaxed whitespace-pre-line">
+                {text}
+              </p>
+            ))}
+          </div>
+        );
+      }
+
+      return elements.length > 0 ? elements : (
+        <div className="text-gray-600 italic">
+          {cleaned.split("\n").map((line, idx) => (
+            <p key={idx} className="mb-3 leading-relaxed">{line || "\u00A0"}</p>
+          ))}
+        </div>
+      );
+    }
+
     return (
       <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-xl">
@@ -267,42 +342,10 @@ ${wText}`;
                 <h2 className="text-2xl font-bold mb-2">Review</h2>
                 <p className="text-gray-600 text-sm">Review your GROW note</p>
               </div>
-              <div className="bg-gray-50 rounded-xl p-6 space-y-4">
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">📖 {passage}</h3>
+              <div className="bg-gray-50 rounded-xl p-6">
+                <div className="prose prose-sm max-w-none">
+                  {renderFormattedNote(noteContent)}
                 </div>
-                {gText && (
-                  <div>
-                    <h4 className="font-semibold text-blue-700 mb-1">
-                      G – Get the Passage
-                    </h4>
-                    <p className="whitespace-pre-line text-gray-700">{gText}</p>
-                  </div>
-                )}
-                {rText && (
-                  <div>
-                    <h4 className="font-semibold text-blue-700 mb-1">
-                      R – Research
-                    </h4>
-                    <p className="whitespace-pre-line text-gray-700">{rText}</p>
-                  </div>
-                )}
-                {oText && (
-                  <div>
-                    <h4 className="font-semibold text-blue-700 mb-1">
-                      O – Observe
-                    </h4>
-                    <p className="whitespace-pre-line text-gray-700">{oText}</p>
-                  </div>
-                )}
-                {wText && (
-                  <div>
-                    <h4 className="font-semibold text-blue-700 mb-1">
-                      W – Write
-                    </h4>
-                    <p className="whitespace-pre-line text-gray-700">{wText}</p>
-                  </div>
-                )}
               </div>
               <div className="flex justify-between">
                 <button
