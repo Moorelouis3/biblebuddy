@@ -163,6 +163,33 @@ export default function GrowNotePage() {
         ? reflectionMatch[1].replace(/(?:\*\*)?Journal Reflection(?:\*\*)?/i, "").replace(/📌/g, "").trim()
         : "";
       
+      // Clean up - remove ALL conversation text before the actual reflection
+      if (reflection) {
+        reflection = reflection
+          .replace(/Thank you for sharing[^\n]*\n?/gi, "")
+          .replace(/You have some great insights[^\n]*\n?/gi, "")
+          .replace(/Now, let's make sure[^\n]*\n?/gi, "")
+          .replace(/Here's what you wrote[^:]*:\s*/gi, "")
+          .replace(/This is a wonderful reflection[^\n]*\n?/gi, "")
+          .replace(/Let me format it for you[^\n]*\n?/gi, "")
+          .replace(/You have some great insights here[^\n]*\n?/gi, "")
+          .replace(/Now, let's make sure it's at least 6 sentences[^\n]*\n?/gi, "")
+          .trim();
+        
+        // Only keep lines that look like actual reflection content (not conversation)
+        // Remove lines that are just conversation prompts
+        const lines = reflection.split('\n');
+        const filteredLines = lines.filter(line => {
+          const trimmed = line.trim();
+          // Skip empty lines, conversation prompts, and separator lines
+          if (!trimmed || trimmed === '---' || trimmed.match(/^(Thank you|You have|Now, let's|Here's what|This is|Let me)/i)) {
+            return false;
+          }
+          return true;
+        });
+        reflection = filteredLines.join('\n').trim();
+      }
+      
       // If no reflection found in formatted structure, try to get it from different formats
       if (!reflection) {
         // Look for polished journal entry text
@@ -223,17 +250,48 @@ export default function GrowNotePage() {
         }
         
         // Look for formatted reflection in assistant messages (after W step)
-        // The AI should have shown a formatted version
-        if (msg.content.includes("Here's how it looks now") || 
-            msg.content.includes("Here's what you wrote") ||
-            msg.content.includes("polished into a smooth journal entry") ||
-            msg.content.includes("Here's your reflection")) {
-          // Extract the formatted reflection
-          const formattedMatch = msg.content.match(/(?:Here's how it looks now|Here's what you wrote|polished into a smooth journal entry|Here's your reflection)[^:]*:([\s\S]*?)(?:Are you happy|Would you like|Click.*Save|$)/i);
-          if (formattedMatch) {
-            reflection = formattedMatch[1].trim();
-            // Clean up
-            reflection = reflection.replace(/^---\s*/gm, "").replace(/^Here's how it looks now[^:]*:\s*/i, "").trim();
+        // The AI should have shown a formatted version with "**Journal Reflection**"
+        if (msg.content.includes("**Journal Reflection**") || msg.content.includes("Let me format it for you")) {
+          // Extract only the content after "**Journal Reflection**"
+          let reflectionPart = "";
+          if (msg.content.includes("**Journal Reflection**")) {
+            const match = msg.content.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?:Are you happy|Click.*Save|$)/i);
+            if (match) {
+              reflectionPart = match[1].trim();
+            }
+          } else if (msg.content.includes("Let me format it for you")) {
+            // Extract everything after "Let me format it for you" and the "**Journal Reflection**" header
+            const match = msg.content.match(/Let me format it for you[^\n]*\n\s*\*\*Journal Reflection\*\*([\s\S]*?)(?:Are you happy|Click.*Save|$)/i);
+            if (match) {
+              reflectionPart = match[1].trim();
+            }
+          }
+          
+          if (reflectionPart) {
+            // Clean up - remove ALL conversation text and keep only the reflection paragraphs
+            reflection = reflectionPart
+              .replace(/Thank you for sharing[^\n]*\n?/gi, "")
+              .replace(/You have some great insights[^\n]*\n?/gi, "")
+              .replace(/Now, let's make sure[^\n]*\n?/gi, "")
+              .replace(/Here's what you wrote[^:]*:\s*/gi, "")
+              .replace(/This is a wonderful reflection[^\n]*\n?/gi, "")
+              .replace(/Let me format it for you[^\n]*\n?/gi, "")
+              .replace(/^---\s*/gm, "")
+              .trim();
+            
+            // Filter out conversation lines - only keep actual reflection content
+            const lines = reflection.split('\n');
+            const filteredLines = lines.filter(line => {
+              const trimmed = line.trim();
+              // Skip empty lines, separator lines, and conversation prompts
+              if (!trimmed || 
+                  trimmed === '---' || 
+                  trimmed.match(/^(Thank you|You have|Now, let's|Here's what|This is|Let me)/i)) {
+                return false;
+              }
+              return true;
+            });
+            reflection = filteredLines.join('\n').trim();
           }
         }
       }
@@ -244,41 +302,55 @@ export default function GrowNotePage() {
         // Check the last few assistant messages for formatted reflection text
         for (let i = assistantMessages.length - 1; i >= Math.max(0, assistantMessages.length - 5); i--) {
           const msg = assistantMessages[i].content;
-          // Look for the reflection that's shown before "Are you happy" question
-          // It should be the formatted version with proper paragraphs
-          if (msg.includes("Are you happy with how I formatted")) {
-            // Extract everything before "Are you happy"
-            const parts = msg.split(/Are you happy with how I formatted/i);
-            if (parts[0] && parts[0].trim().length > 50) {
-              reflection = parts[0]
-                .replace(/Here's how it looks now[^:]*:\s*/i, "")
-                .replace(/Here's what you wrote[^:]*:\s*/i, "")
-                .replace(/polished into a smooth journal entry[^:]*:\s*/i, "")
+          
+          // Look for the formatted reflection - it should be after "**Journal Reflection**" or "Let me format it for you"
+          if (msg.includes("**Journal Reflection**") || msg.includes("Let me format it for you")) {
+            // Extract the reflection part after "**Journal Reflection**"
+            let reflectionPart = "";
+            if (msg.includes("**Journal Reflection**")) {
+              const match = msg.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?:Are you happy|Click.*Save|$)/i);
+              if (match) {
+                reflectionPart = match[1].trim();
+              }
+            } else if (msg.includes("Let me format it for you")) {
+              // Extract everything after "Let me format it for you" and before "Are you happy"
+              const match = msg.match(/Let me format it for you[^\n]*\n([\s\S]*?)(?:Are you happy|Click.*Save|$)/i);
+              if (match) {
+                reflectionPart = match[1].trim();
+                // Remove "**Journal Reflection**" header if present
+                reflectionPart = reflectionPart.replace(/\*\*Journal Reflection\*\*/i, "").trim();
+              }
+            }
+            
+            if (reflectionPart) {
+              // Clean up - remove ALL conversation text and keep only the reflection paragraphs
+              reflection = reflectionPart
+                .replace(/Thank you for sharing[^\n]*\n?/gi, "")
+                .replace(/You have some great insights[^\n]*\n?/gi, "")
+                .replace(/Now, let's make sure[^\n]*\n?/gi, "")
+                .replace(/Here's what you wrote[^:]*:\s*/gi, "")
+                .replace(/This is a wonderful reflection[^\n]*\n?/gi, "")
+                .replace(/Let me format it for you[^\n]*\n?/gi, "")
                 .replace(/^---\s*/gm, "")
                 .trim();
+              
+              // Filter out conversation lines - only keep actual reflection content
+              const lines = reflection.split('\n');
+              const filteredLines = lines.filter(line => {
+                const trimmed = line.trim();
+                // Skip empty lines, separator lines, and conversation prompts
+                if (!trimmed || 
+                    trimmed === '---' || 
+                    trimmed.match(/^(Thank you|You have|Now, let's|Here's what|This is|Let me)/i)) {
+                  return false;
+                }
+                return true;
+              });
+              reflection = filteredLines.join('\n').trim();
+              
               if (reflection.length > 50) {
                 break;
               }
-            }
-          }
-          // Also check for reflection patterns in longer messages
-          if ((msg.includes("This reminded me") || msg.includes("I can see") || msg.includes("I learned") || 
-               msg.includes("I realized") || msg.includes("I understand")) && 
-              msg.length > 100 && 
-              !msg.includes("Questions & Research") &&
-              !msg.includes("Passage Text")) {
-            // Extract everything before "Are you happy" or "Click"
-            const reflectionPart = msg.split(/Are you happy|Click.*Save|Would you like/i)[0].trim();
-            // Remove any intro text
-            const cleaned = reflectionPart
-              .replace(/Here's how it looks now[^:]*:\s*/i, "")
-              .replace(/Here's what you wrote[^:]*:\s*/i, "")
-              .replace(/polished into a smooth journal entry[^:]*:\s*/i, "")
-              .replace(/^---\s*/gm, "")
-              .trim();
-            if (cleaned.length > 50) {
-              reflection = cleaned;
-              break;
             }
           }
         }
