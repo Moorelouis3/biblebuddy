@@ -67,10 +67,14 @@ export default function GrowNotePage() {
         const hasQuestions = content.includes("**Questions & Research**") || content.includes("Questions & Research");
         const hasReflection = content.includes("**Journal Reflection**") || content.includes("Journal Reflection");
         
+        // Also check if message contains "Are you happy" which indicates W step completion
+        const hasHappyQuestion = content.toLowerCase().includes("are you happy");
+        
         if (
           content.includes("GROW Study Notes") ||
           content.includes("📖 GROW Study Notes") ||
-          (hasPassageText && hasQuestions && hasReflection)
+          (hasPassageText && hasQuestions && hasReflection) ||
+          (hasHappyQuestion && (hasReflection || content.length > 200))
         ) {
           return content;
         }
@@ -163,13 +167,37 @@ export default function GrowNotePage() {
 
       // Extract Journal Reflection section (stop at equals signs, "Would you like", or "Are you happy")
       // Try with ** markers first, then without
-      let reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|Would you like|Are you happy|$)/i);
+      let reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|Would you like|Are you happy|Click.*Save|$)/i);
       if (!reflectionMatch) {
-        reflectionMatch = cleaned.match(/Journal Reflection([\s\S]*?)(?=\n*=+|Would you like|Are you happy|$)/i);
+        reflectionMatch = cleaned.match(/Journal Reflection([\s\S]*?)(?=\n*=+|Would you like|Are you happy|Click.*Save|$)/i);
       }
       reflection = reflectionMatch
         ? reflectionMatch[1].replace(/(?:\*\*)?Journal Reflection(?:\*\*)?/i, "").replace(/📌/g, "").trim()
         : "";
+      
+      // If reflection not found in formatted structure, look for it BEFORE the full structure
+      // The new format shows reflection first, then full structure
+      if (!reflection) {
+        // Find where the full structure starts
+        const fullNoteStart = cleaned.search(/📖 GROW Study Notes|=====================================================================\s*📖 GROW Study Notes|\*\*Passage Text\*\*/i);
+        if (fullNoteStart > 100) {
+          // Get everything before the full structure - this should contain the reflection
+          const beforeStructure = cleaned.substring(0, fullNoteStart);
+          // Look for reflection-like content (first person, personal reflection)
+          if (beforeStructure.length > 50 && (beforeStructure.includes("I ") || beforeStructure.includes("I'm") || beforeStructure.includes("I've"))) {
+            // Extract the reflection part, stopping at "Are you happy"
+            const reflectionPart = beforeStructure.split(/Are you happy/i)[0].trim();
+            if (reflectionPart.length > 50) {
+              reflection = reflectionPart
+                .replace(/Thank you for sharing[^\n]*\n?/gi, "")
+                .replace(/You have some great insights[^\n]*\n?/gi, "")
+                .replace(/Let me format it for you[^\n]*\n?/gi, "")
+                .replace(/Here's what you wrote[^:]*:\s*/gi, "")
+                .trim();
+            }
+          }
+        }
+      }
       
       // Clean up - remove ALL conversation text before the actual reflection
       if (reflection) {
@@ -212,8 +240,11 @@ export default function GrowNotePage() {
           }
         }
       }
-    } else {
-      // If no formatted note, extract from conversation history
+    }
+    
+    // If we don't have passage text or research, extract from conversation history
+    // (This helps even if we have a formatted note but it's missing some parts)
+    if (!passageText || !research) {
       // Look for passage text in assistant messages (G step)
       for (const msg of assistantMessages) {
         if (msg.content.includes("[01]") || msg.content.includes("Here is the passage")) {
@@ -224,18 +255,19 @@ export default function GrowNotePage() {
             // Keep ONLY lines that start with [##] (verse numbers)
             return trimmed.match(/^\[\d+\]/);
           });
-          if (verseLines.length > 0) {
+          if (verseLines.length > 0 && !passageText) {
             passageText = verseLines.join('\n').trim();
           }
         }
         
         // Look for research/questions in assistant messages (R step)
         // Get ONLY the conversational paragraph format where Lil Louis reminds them of questions and answers
-        if (msg.content.includes("You asked about") || 
-            msg.content.includes("You also wondered") || 
-            msg.content.includes("You wanted to know") ||
-            (msg.content.includes("You") && msg.content.includes("asked") && msg.content.includes("Here's what")) ||
-            (msg.content.includes("Here's what") && msg.content.includes("means"))) {
+        if ((!research || research.length < 50) && 
+            (msg.content.includes("You asked about") || 
+             msg.content.includes("You also wondered") || 
+             msg.content.includes("You wanted to know") ||
+             (msg.content.includes("You") && msg.content.includes("asked") && msg.content.includes("Here's what")) ||
+             (msg.content.includes("Here's what") && msg.content.includes("means")))) {
           // Extract ONLY the question/answer content, remove ALL instructions
           let researchText = msg.content;
           // Remove ALL intro text, instructions, and prompts
@@ -265,7 +297,7 @@ export default function GrowNotePage() {
           researchText = contentLines.join('\n').trim();
           
           // Combine multiple research responses
-          if (research) {
+          if (research && research.length > 0) {
             research = research + "\n\n" + researchText;
           } else {
             research = researchText;
@@ -419,11 +451,39 @@ export default function GrowNotePage() {
     // If we don't have reflection, try one more time to get it from the last assistant message
     if (!reflection) {
       // Look for any formatted reflection in the last few assistant messages
-      for (let i = assistantMessages.length - 1; i >= Math.max(0, assistantMessages.length - 3); i--) {
+      for (let i = assistantMessages.length - 1; i >= Math.max(0, assistantMessages.length - 5); i--) {
         const msg = assistantMessages[i].content;
+        
+        // Check if this message has "Are you happy" - the reflection should be before it
+        if (msg.toLowerCase().includes("are you happy")) {
+          // Split at "Are you happy" and get the part before it
+          const parts = msg.split(/Are you happy/i);
+          if (parts[0] && parts[0].trim().length > 50) {
+            let reflectionPart = parts[0].trim();
+            
+            // Remove any headers or intro text
+            reflectionPart = reflectionPart
+              .replace(/\*\*Journal Reflection\*\*/i, "")
+              .replace(/Thank you for sharing[^\n]*\n?/gi, "")
+              .replace(/You have some great insights[^\n]*\n?/gi, "")
+              .replace(/Let me format it for you[^\n]*\n?/gi, "")
+              .replace(/Here's what you wrote[^:]*:\s*/gi, "")
+              .trim();
+            
+            // Check if it looks like a reflection (has first person pronouns or is substantial)
+            if (reflectionPart.length > 50 && 
+                (reflectionPart.includes("I ") || reflectionPart.includes("I'm") || 
+                 reflectionPart.includes("I've") || reflectionPart.includes("I can") ||
+                 reflectionPart.split(/[.!?]/).length >= 3)) {
+              reflection = reflectionPart;
+              break;
+            }
+          }
+        }
+        
         // Look for formatted reflection patterns
         if (msg.includes("This reminded me") || msg.includes("I can see") || 
-            (msg.length > 100 && msg.includes(".") && !msg.includes("Are you happy"))) {
+            (msg.length > 100 && msg.includes(".") && !msg.toLowerCase().includes("are you happy"))) {
           // This might be the formatted reflection
           const reflectionPart = msg.split(/Are you happy|Would you like|Click.*Save/i)[0].trim();
           if (reflectionPart.length > 50) {
@@ -434,9 +494,77 @@ export default function GrowNotePage() {
       }
     }
     
+    // If still no reflection, try to get it from the visible part of messages (before full structure)
+    if (!reflection) {
+      // Look through all assistant messages for content that appears before "Are you happy"
+      for (let i = assistantMessages.length - 1; i >= 0; i--) {
+        const msg = assistantMessages[i].content;
+        const lowerMsg = msg.toLowerCase();
+        
+        // If message has "are you happy", get everything before it
+        if (lowerMsg.includes("are you happy")) {
+          const happyIndex = lowerMsg.indexOf("are you happy");
+          let beforeHappy = msg.substring(0, happyIndex).trim();
+          
+          // Find where the full structure might start (if present)
+          const structureStart = beforeHappy.search(/📖 GROW Study Notes|=====================================================================|\*\*Passage Text\*\*/i);
+          let reflectionCandidate = beforeHappy;
+          
+          if (structureStart > 0 && structureStart < beforeHappy.length) {
+            reflectionCandidate = beforeHappy.substring(0, structureStart).trim();
+          }
+          
+          // Clean it up - remove headers and intro text
+          reflectionCandidate = reflectionCandidate
+            .replace(/\*\*Journal Reflection\*\*/i, "")
+            .replace(/Journal Reflection/i, "")
+            .replace(/Thank you for sharing[^\n]*\n?/gi, "")
+            .replace(/You have some great insights[^\n]*\n?/gi, "")
+            .replace(/Let me format it for you[^\n]*\n?/gi, "")
+            .replace(/Here's what you wrote[^:]*:\s*/gi, "")
+            .replace(/Here is your formatted reflection[^:]*:\s*/gi, "")
+            .replace(/I've formatted your reflection[^:]*:\s*/gi, "")
+            .replace(/^---\s*/gm, "")
+            .replace(/^=+\s*$/gm, "")
+            .trim();
+          
+          // Split into lines and filter out empty lines and conversation prompts
+          const lines = reflectionCandidate.split('\n');
+          const filteredLines = lines.filter(line => {
+            const trimmed = line.trim();
+            if (!trimmed) return false;
+            // Skip conversation prompts
+            if (trimmed.match(/^(Thank you|You have|Now, let's|Here's what|This is|Let me|Are you|Click)/i)) {
+              return false;
+            }
+            return true;
+          });
+          reflectionCandidate = filteredLines.join('\n').trim();
+          
+          // If it's substantial (at least 30 chars and has sentences), use it
+          if (reflectionCandidate.length >= 30) {
+            // Count sentences
+            const sentenceCount = (reflectionCandidate.match(/[.!?]+/g) || []).length;
+            // Check if it has first person or looks like a reflection
+            const hasFirstPerson = reflectionCandidate.includes("I ") || 
+                                   reflectionCandidate.includes("I'm") || 
+                                   reflectionCandidate.includes("I've") ||
+                                   reflectionCandidate.includes("I can") ||
+                                   reflectionCandidate.includes("I feel");
+            
+            if (sentenceCount >= 1 || hasFirstPerson || reflectionCandidate.length > 100) {
+              reflection = reflectionCandidate;
+              console.log("Found reflection from message before 'are you happy':", reflection.substring(0, 100));
+              break;
+            }
+          }
+        }
+      }
+    }
+    
     // If still no reflection, we can't save
     if (!reflection) {
-      console.error("Could not find formatted reflection");
+      console.error("Could not find formatted reflection. Messages:", messages.map(m => ({ role: m.role, contentLength: m.content.length, hasHappy: m.content.toLowerCase().includes("are you happy") })));
       return null;
     }
 
@@ -635,11 +763,23 @@ export default function GrowNotePage() {
 
     try {
       console.log("Starting save process...");
+      console.log("Total messages:", messages.length);
+      console.log("Messages with 'are you happy':", messages.filter(m => m.content.toLowerCase().includes("are you happy")).length);
+      
       const parsed = parseFormattedNote();
       console.log("Parsed note:", parsed);
+      console.log("Has book:", !!parsed?.book);
+      console.log("Has passage:", !!parsed?.passage);
+      console.log("Has research:", !!parsed?.research);
+      console.log("Has reflection:", !!parsed?.write);
       
       if (!parsed) {
-        alert("Could not parse note. Please make sure you completed the GROW process.");
+        // Show more helpful error message
+        const hasHappyMessage = messages.some(m => m.content.toLowerCase().includes("are you happy"));
+        const errorMsg = hasHappyMessage 
+          ? "Could not parse note. The reflection might not be formatted correctly. Please try completing the W step again."
+          : "Could not parse note. Please make sure you completed the GROW process and reached the W (Write) step.";
+        alert(errorMsg);
         setSaving(false);
         return;
       }
