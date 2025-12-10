@@ -23,15 +23,26 @@ export default function LoginPage() {
       password: password.trim(),
     });
 
-    setLoading(false);
-
     if (error) {
+      setLoading(false);
       setError(error.message);
       return;
     }
 
-    // success – send them to the main dashboard
-    router.push("/dashboard"); // or "/" or "/dashboard" – whatever your home route is
+    // Wait for session to be fully established
+    // Verify session exists before redirecting
+    const { data: sessionData } = await supabase.auth.getSession();
+    if (!sessionData?.session) {
+      setLoading(false);
+      setError("Login failed: session not established");
+      return;
+    }
+
+    setLoading(false);
+
+    // Use window.location for full page reload to ensure cookies are set
+    // This prevents middleware from running before cookies are available
+    window.location.href = "/dashboard";
   }
 
   return (
@@ -100,3 +111,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

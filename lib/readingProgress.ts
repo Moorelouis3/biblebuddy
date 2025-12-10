@@ -7,6 +7,8 @@ type ReadingProgress = {
   matthewCurrentStep: number; // 0 = overview, 1 = ch1, 2 = ch2, ...
   streak: number;
   lastCompletedDate: string | null; // "2025-12-04"
+  // Dynamic book progress: { "matthew": { currentChapter: 1, completedChapters: [1, 2] }, ... }
+  bookProgress: Record<string, { currentChapter: number; completedChapters: number[] }>;
 };
 
 function getDefaultProgress(): ReadingProgress {
@@ -14,6 +16,7 @@ function getDefaultProgress(): ReadingProgress {
     matthewCurrentStep: 0,
     streak: 0,
     lastCompletedDate: null,
+    bookProgress: {},
   };
 }
 
@@ -31,6 +34,7 @@ function loadProgress(): ReadingProgress {
       matthewCurrentStep: parsed.matthewCurrentStep ?? 0,
       streak: parsed.streak ?? 0,
       lastCompletedDate: parsed.lastCompletedDate ?? null,
+      bookProgress: parsed.bookProgress ?? {},
     };
   } catch {
     return getDefaultProgress();
@@ -124,4 +128,123 @@ export function isBookUnlocked(book: string, matthewTotalSteps: number): boolean
 
   // everything else locked for now
   return false;
+}
+
+/**
+ * Get the current chapter for a book (0 = overview, 1 = ch1, 2 = ch2, ...)
+ * For backward compatibility, if book is "matthew" and no dynamic progress exists,
+ * it falls back to matthewCurrentStep.
+ */
+export function getBookCurrentStep(book: string, totalChapters: number): number {
+  const progress = loadProgress();
+  const bookKey = book.toLowerCase();
+
+  // Backward compatibility: if Matthew and no dynamic progress, use old system
+  if (bookKey === "matthew" && (!progress.bookProgress || !progress.bookProgress[bookKey])) {
+    return clampStep(progress.matthewCurrentStep, totalChapters);
+  }
+
+  // Use dynamic book progress
+  const bookData = progress.bookProgress[bookKey];
+  if (!bookData) {
+    return 0; // Start at overview (0) or first chapter (1) depending on your system
+  }
+
+  return clampStep(bookData.currentChapter, totalChapters);
+}
+
+/**
+ * Mark a chapter as done for any book.
+ * This unlocks the next chapter automatically.
+ */
+export function markChapterDone(book: string, chapter: number): void {
+  if (typeof window === "undefined") return;
+
+  const progress = loadProgress();
+  const bookKey = book.toLowerCase();
+
+  // Initialize book progress if it doesn't exist
+  if (!progress.bookProgress) {
+    progress.bookProgress = {};
+  }
+  if (!progress.bookProgress[bookKey]) {
+    progress.bookProgress[bookKey] = {
+      currentChapter: 0,
+      completedChapters: [],
+    };
+  }
+
+  const bookData = progress.bookProgress[bookKey];
+
+  // Mark chapter as completed if not already
+  if (!bookData.completedChapters.includes(chapter)) {
+    bookData.completedChapters.push(chapter);
+    bookData.completedChapters.sort((a, b) => a - b);
+  }
+
+  // Unlock next chapter (currentChapter becomes the next one)
+  // If this is chapter 1, currentChapter becomes 2 (unlocking chapter 2)
+  const nextChapter = chapter + 1;
+  if (nextChapter > bookData.currentChapter) {
+    bookData.currentChapter = nextChapter;
+  }
+
+  // Streak logic (same as before)
+  const today = todayIso();
+  const yesterday = yesterdayIso();
+
+  if (progress.lastCompletedDate === today) {
+    // already counted today, do nothing to streak
+  } else if (progress.lastCompletedDate === yesterday) {
+    progress.streak += 1;
+  } else {
+    progress.streak = 1;
+  }
+
+  progress.lastCompletedDate = today;
+  saveProgress(progress);
+}
+
+/**
+ * Check if a specific chapter is unlocked for a book.
+ */
+export function isChapterUnlocked(book: string, chapter: number): boolean {
+  const progress = loadProgress();
+  const bookKey = book.toLowerCase();
+
+  // Backward compatibility for Matthew
+  if (bookKey === "matthew" && (!progress.bookProgress || !progress.bookProgress[bookKey])) {
+    // Use old system: chapter is unlocked if it's <= currentStep
+    // Assuming chapter 0 is overview, chapter 1 is Matthew 1, etc.
+    return chapter <= progress.matthewCurrentStep;
+  }
+
+  const bookData = progress.bookProgress[bookKey];
+  if (!bookData) {
+    // If no progress, only chapter 0 (overview) or 1 is unlocked
+    return chapter <= 1;
+  }
+
+  // Chapter is unlocked if it's <= currentChapter
+  return chapter <= bookData.currentChapter;
+}
+
+/**
+ * Check if a chapter is completed.
+ */
+export function isChapterCompleted(book: string, chapter: number): boolean {
+  const progress = loadProgress();
+  const bookKey = book.toLowerCase();
+
+  // Backward compatibility for Matthew
+  if (bookKey === "matthew" && (!progress.bookProgress || !progress.bookProgress[bookKey])) {
+    return chapter < progress.matthewCurrentStep;
+  }
+
+  const bookData = progress.bookProgress[bookKey];
+  if (!bookData) {
+    return false;
+  }
+
+  return bookData.completedChapters.includes(chapter);
 }

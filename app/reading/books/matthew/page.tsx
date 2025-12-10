@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
-import { getMatthewCurrentStep } from "../../../../lib/readingProgress";
+import { getMatthewCurrentStep, getBookCurrentStep, isChapterUnlocked, isChapterCompleted } from "../../../../lib/readingProgress";
 
 const MATTHEW_CHAPTERS = 28; // real chapters 1–28
 const CHAPTERS_PER_PAGE = 12;
@@ -18,8 +18,9 @@ export default function MatthewPage() {
   const [summaryCollapsed, setSummaryCollapsed] = useState(false);
 
   // load current step from localStorage (via helper)
+  // Try new dynamic system first, fall back to old system for backward compatibility
   useEffect(() => {
-    const step = getMatthewCurrentStep(TOTAL_ITEMS);
+    const step = getBookCurrentStep("matthew", TOTAL_ITEMS);
     setCurrentChapter(step);
   }, []);
 
@@ -100,9 +101,10 @@ Start with the Matthew overview, then we will walk through the chapters together
           <div className="space-y-4 mt-1">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
               {visibleChapters.map((chapter) => {
-                const unlocked = chapter <= currentChapter;
-                const done = chapter < currentChapter;
-                const current = chapter === currentChapter;
+                // Use dynamic system, with fallback for backward compatibility
+                const unlocked = isChapterUnlocked("matthew", chapter) || chapter <= currentChapter;
+                const done = isChapterCompleted("matthew", chapter) || chapter < currentChapter;
+                const current = chapter === currentChapter && !done;
 
                 let stateClasses =
                   "bg-gray-100 border-gray-300 text-gray-400 opacity-80 cursor-default";
@@ -157,17 +159,17 @@ Start with the Matthew overview, then we will walk through the chapters together
                   );
                 }
 
-                // links: overview has its own page, chapters use chapter1, chapter2, etc.
+                // links: overview has its own page, chapters use dynamic route
                 const href =
                   chapter === 0
                     ? "/reading/books/matthew/chapters/overview"
-                    : `/reading/books/matthew/chapters/chapter${chapter}`;
+                    : `/Bible/matthew/${chapter}`;
 
                 return (
                   <Link
                     key={chapter}
                     href={href}
-                    className={`relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm ${stateClasses}`}
+                    className={`relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm block ${stateClasses}`}
                   >
                     {content}
                   </Link>
@@ -208,13 +210,12 @@ Start with the Matthew overview, then we will walk through the chapters together
               </button>
             </div>
 
-            <button
-              type="button"
-              onClick={() => (window.location.href = "/reading")}
-              className="text-xs sm:text-sm text-blue-600 hover:underline mt-1"
+            <Link
+              href="/reading"
+              className="text-xs sm:text-sm text-blue-600 hover:underline mt-1 inline-block"
             >
               Change book
-            </button>
+            </Link>
           </div>
         </div>
       </div>

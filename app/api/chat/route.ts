@@ -563,7 +563,7 @@ END OF GROW MODE INSTRUCTIONS
         model: "gpt-4o-mini",
         messages: messagesToSend,
       temperature: 0.6,
-      max_tokens: 400,
+      max_tokens: 2000,
     });
     } catch (openaiError: any) {
       console.error("OpenAI API error:", openaiError);

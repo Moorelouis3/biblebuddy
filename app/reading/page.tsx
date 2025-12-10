@@ -103,7 +103,7 @@ export default function ReadingPage() {
                     <Link
                       key={book}
                       href={href}
-                      className={`${baseClasses} ${
+                      className={`${baseClasses} block ${
                         book === "Matthew"
                           ? "bg-orange-100 border-orange-300 pulse-matthew"
                           : "bg-white border-blue-200"

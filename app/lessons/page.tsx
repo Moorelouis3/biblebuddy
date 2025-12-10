@@ -4,19 +4,22 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-type ActiveLesson = "intro" | "lesson1" | "lesson2" | null;
-type LessonKey = "intro" | "lesson1" | "lesson2";
+type ActiveLesson = "lesson0" | "lesson1" | "lesson2" | "lesson3" | "lesson4" | "lesson5" | null;
+type LessonKey = "lesson0" | "lesson1" | "lesson2" | "lesson3" | "lesson4" | "lesson5";
 
 type LessonCompletion = Record<LessonKey, boolean>;
 
-const STORAGE_KEY = "howToStudyBibleLessons";
+const STORAGE_KEY = "howToUseBibleBuddyLessons";
 
 export default function LessonsPage() {
   const [activeLesson, setActiveLesson] = useState<ActiveLesson>(null);
   const [completed, setCompleted] = useState<LessonCompletion>({
-    intro: false,
+    lesson0: false,
     lesson1: false,
     lesson2: false,
+    lesson3: false,
+    lesson4: false,
+    lesson5: false,
   });
 
   // load completion state from localStorage
@@ -44,9 +47,12 @@ export default function LessonsPage() {
     setActiveLesson(null);
   }
 
-  const introDone = completed.intro;
+  const lesson0Done = completed.lesson0;
   const lesson1Done = completed.lesson1;
   const lesson2Done = completed.lesson2;
+  const lesson3Done = completed.lesson3;
+  const lesson4Done = completed.lesson4;
+  const lesson5Done = completed.lesson5;
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-50 to-slate-100">
@@ -60,10 +66,10 @@ export default function LessonsPage() {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h1 className="text-2xl font-semibold text-slate-900">
-                How to Study the Bible
+                How to Use BibleBuddy
               </h1>
               <p className="text-sm text-slate-500">
-                A short course to help you start reading the Bible with understanding.
+                A simple guide to help you learn BibleBuddy and grow in your Bible habit.
               </p>
             </div>
 
@@ -78,28 +84,28 @@ export default function LessonsPage() {
 
           {/* lesson cards */}
           <div className="space-y-4">
-            {/* Lesson 0 Intro */}
+            {/* Lesson 0 Welcome! Meet Little Louis */}
             <button
               type="button"
-              onClick={() => setActiveLesson("intro")}
+              onClick={() => setActiveLesson("lesson0")}
               className="w-full text-left group"
             >
               <div
                 className={`flex items-center justify-between rounded-2xl px-4 py-3 border transition ${
-                  introDone
+                  lesson0Done
                     ? "bg-slate-50 border-slate-200 opacity-70"
                     : "bg-orange-50 border-orange-100 hover:shadow-md hover:bg-orange-100/60"
                 }`}
               >
                 <div>
                   <p className="text-sm font-semibold text-slate-900">
-                    Lesson 0 • Intro
+                    Lesson 0 • Welcome to BibleBuddy
                   </p>
                   <p className="text-xs text-slate-600 mt-1">
-                    Read this before starting the course. Check out this quick message first.
+                    Meet your Bible Buddy and learn how this app guides you.
                   </p>
                 </div>
-                {introDone ? (
+                {lesson0Done ? (
                   <span className="text-xs text-emerald-700 bg-emerald-100 border border-emerald-200 rounded-full px-2 py-0.5">
                     Done
                   </span>
@@ -111,7 +117,7 @@ export default function LessonsPage() {
               </div>
             </button>
 
-            {/* Lesson 1 What exactly is the Bible */}
+            {/* Lesson 1 Your Bible Reading Plan */}
             <button
               type="button"
               onClick={() => setActiveLesson("lesson1")}
@@ -126,10 +132,10 @@ export default function LessonsPage() {
               >
                 <div>
                   <p className="text-sm font-semibold text-slate-900">
-                    Lesson 1 • What exactly is the Bible?
+                    Lesson 1 • Your Bible Reading Plan
                   </p>
                   <p className="text-xs text-slate-600 mt-1">
-                    The Bible is not a normal book. Let us break down what it really is.
+                    The easiest way to read the Bible without getting overwhelmed.
                   </p>
                 </div>
                 {lesson1Done ? (
@@ -144,7 +150,7 @@ export default function LessonsPage() {
               </div>
             </button>
 
-            {/* Lesson 2 Why study the Bible */}
+            {/* Lesson 2 Bible Chapter Notes */}
             <button
               type="button"
               onClick={() => setActiveLesson("lesson2")}
@@ -159,10 +165,10 @@ export default function LessonsPage() {
               >
                 <div>
                   <p className="text-sm font-semibold text-slate-900">
-                    Lesson 2 • Why study the Bible?
+                    Lesson 2 • Bible Chapter Notes
                   </p>
                   <p className="text-xs text-slate-600 mt-1">
-                    A real look at why serious Bible study matters for your peace, faith, and daily life.
+                    Understand what you read with simple explanations.
                   </p>
                 </div>
                 {lesson2Done ? (
@@ -177,28 +183,110 @@ export default function LessonsPage() {
               </div>
             </button>
 
-            {/* Lesson 3 placeholder which Bible is best */}
-            <button className="w-full text-left group" type="button">
-              <div className="flex items-center justify-between rounded-2xl bg-pink-50 border border-pink-100 px-4 py-3 opacity-70">
+            {/* Lesson 3 Taking Notes With GROW */}
+            <button
+              type="button"
+              onClick={() => setActiveLesson("lesson3")}
+              className="w-full text-left group"
+            >
+              <div
+                className={`flex items-center justify-between rounded-2xl px-4 py-3 border transition ${
+                  lesson3Done
+                    ? "bg-slate-50 border-slate-200 opacity-70"
+                    : "bg-green-50 border-green-100 hover:shadow-md hover:bg-green-100/60"
+                }`}
+              >
                 <div>
                   <p className="text-sm font-semibold text-slate-900">
-                    Lesson 3 • Which Bible is best for you?
+                    Lesson 3 • The GROW Notes Method
                   </p>
                   <p className="text-xs text-slate-600 mt-1">
-                    Coming soon. We will talk about different translations and how to choose one.
+                    Take meaningful Bible notes — even as a beginner.
                   </p>
                 </div>
-                <span className="text-xs text-slate-400 border border-slate-300 rounded-full px-2 py-0.5">
-                  Soon
-                </span>
+                {lesson3Done ? (
+                  <span className="text-xs text-emerald-700 bg-emerald-100 border border-emerald-200 rounded-full px-2 py-0.5">
+                    Done
+                  </span>
+                ) : (
+                  <span className="text-slate-400 text-lg group-hover:text-slate-600">
+                    ›
+                  </span>
+                )}
+              </div>
+            </button>
+
+            {/* Lesson 4 Ask Little Louis (AI Helper) */}
+            <button
+              type="button"
+              onClick={() => setActiveLesson("lesson4")}
+              className="w-full text-left group"
+            >
+              <div
+                className={`flex items-center justify-between rounded-2xl px-4 py-3 border transition ${
+                  lesson4Done
+                    ? "bg-slate-50 border-slate-200 opacity-70"
+                    : "bg-pink-50 border-pink-100 hover:shadow-md hover:bg-pink-100/60"
+                }`}
+              >
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">
+                    Lesson 4 • Ask Little Louis (Bible AI Helper)
+                  </p>
+                  <p className="text-xs text-slate-600 mt-1">
+                    Your personal biblical assistant.
+                  </p>
+                </div>
+                {lesson4Done ? (
+                  <span className="text-xs text-emerald-700 bg-emerald-100 border border-emerald-200 rounded-full px-2 py-0.5">
+                    Done
+                  </span>
+                ) : (
+                  <span className="text-slate-400 text-lg group-hover:text-slate-600">
+                    ›
+                  </span>
+                )}
+              </div>
+            </button>
+
+            {/* Lesson 5 Building a Daily Bible Habit */}
+            <button
+              type="button"
+              onClick={() => setActiveLesson("lesson5")}
+              className="w-full text-left group"
+            >
+              <div
+                className={`flex items-center justify-between rounded-2xl px-4 py-3 border transition ${
+                  lesson5Done
+                    ? "bg-slate-50 border-slate-200 opacity-70"
+                    : "bg-indigo-50 border-indigo-100 hover:shadow-md hover:bg-indigo-100/60"
+                }`}
+              >
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">
+                    Lesson 5 • Building Your Daily Bible Habit
+                  </p>
+                  <p className="text-xs text-slate-600 mt-1">
+                    A simple 20–30 minute routine that helps you grow.
+                  </p>
+                </div>
+                {lesson5Done ? (
+                  <span className="text-xs text-emerald-700 bg-emerald-100 border border-emerald-200 rounded-full px-2 py-0.5">
+                    Done
+                  </span>
+                ) : (
+                  <span className="text-slate-400 text-lg group-hover:text-slate-600">
+                    ›
+                  </span>
+                )}
               </div>
             </button>
           </div>
         </div>
       </div>
 
-      {/* INTRO MODAL */}
-      {activeLesson === "intro" && (
+      {/* LESSON 0 MODAL */}
+      {activeLesson === "lesson0" && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
           <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-2xl p-6 md:p-8">
             {/* close button */}
@@ -211,52 +299,61 @@ export default function LessonsPage() {
             </button>
 
             <h2 className="text-xl font-semibold text-slate-900 mb-1">
-              INTRO ✨
+              ✨ Lesson 0 • Welcome to BibleBuddy
             </h2>
             <p className="text-xs text-slate-500 mb-4">
-              Read this before starting the course.
+              Meet your Bible Buddy and learn how this app guides you.
             </p>
 
             {/* callout body */}
             <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 md:px-6 md:py-5 text-sm leading-relaxed text-slate-800 space-y-4">
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">👋🏾 Welcome to BibleBuddy</h3>
+              
               <p>
-                Building your relationship with God starts with{" "}
-                <span className="font-semibold">His Word</span>.
-              </p>
-
-              <p>
-                No one can do that part for you. Your faith grows when{" "}
-                <span className="italic">you</span> open the Bible and learn how
-                to understand it.
+                I'm <strong>Little Louis — your Bible Buddy</strong>, here to help you build a strong, simple, consistent Bible reading habit.
               </p>
 
               <p>
-                Many people struggle with Scripture because they were never
-                shown <span className="italic">how</span> to read it. The Bible
-                is deep, layered, and written in a world very different from
-                ours, so feeling confused at first is completely normal.
+                Most people want to read Scripture, but they get overwhelmed:
+              </p>
+
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li>Where do I start?</li>
+                <li>What do I read first?</li>
+                <li>How do I understand what I'm reading?</li>
+                <li>How do I stay consistent?</li>
+              </ul>
+
+              <p>
+                BibleBuddy removes all that confusion.
               </p>
 
               <p>
-                This course will give you a simple way to slow down, read with
-                understanding, and begin seeing what God is saying to you
-                personally. Every lesson in this course is designed to make the
-                Bible clearer and more meaningful as you grow.
+                I sit beside you, guide you step-by-step, and help you grow closer to God — one chapter at a time.
               </p>
 
-              <div className="space-y-1">
-                <p>Take your time.</p>
-                <p>Read slowly.</p>
-                <p>Take notes.</p>
-                <p>Finish the course, and then begin your reading plan.</p>
-              </div>
+              <hr className="my-4 border-slate-300" />
 
-              <p className="font-semibold mt-2">
-                Now let us begin with a simple but powerful question.
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">✨ What You'll Learn in This Short Guide</h3>
+
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li>how your daily Bible reading plan works</li>
+                <li>how Bible chapter notes help you understand what you read</li>
+                <li>how to take meaningful notes with the GROW method</li>
+                <li>how to use Little Louis AI anytime you're stuck</li>
+                <li>how to build a habit that actually lasts</li>
+              </ul>
+
+              <hr className="my-4 border-slate-300" />
+
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">🙌 You're Not Doing This Alone</h3>
+
+              <p>
+                I'm here with you every day.
               </p>
 
-              <p className="font-bold text-slate-900">
-                What exactly is the Bible?
+              <p>
+                Tap <strong>Next Lesson</strong> to continue.
               </p>
             </div>
 
@@ -271,7 +368,7 @@ export default function LessonsPage() {
 
               <button
                 type="button"
-                onClick={() => markLessonDone("intro")}
+                onClick={() => markLessonDone("lesson0")}
                 className="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
               >
                 Mark as done
@@ -295,84 +392,61 @@ export default function LessonsPage() {
             </button>
 
             <h2 className="text-xl font-semibold text-slate-900 mb-1">
-              Lesson 1 • What exactly is the Bible?
+              ✨ Lesson 1 • Your Bible Reading Plan
             </h2>
             <p className="text-xs text-slate-500 mb-4">
-              The Bible is not a normal book. Let us break down what it really is.
+              The easiest way to read the Bible without getting overwhelmed.
             </p>
 
             {/* callout body */}
             <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 md:px-6 md:py-5 text-sm leading-relaxed text-slate-800 space-y-4">
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">📘 Your Bible Reading Plan</h3>
+
               <p>
-                The Bible is more than a book. It is{" "}
-                <span className="font-semibold">God’s Word</span>, given to help
-                us understand who He is, what He has done, and how He calls us
-                to live. It is the foundation of the Christian faith and the
-                primary way God speaks to His people today.
+                Most people get stuck because they don't know where to start.
               </p>
 
               <p>
-                The Bible was written over{" "}
-                <span className="font-semibold">1500 years</span>, by more than{" "}
-                <span className="font-semibold">40 authors</span>, across{" "}
-                <span className="font-semibold">three continents</span>, in{" "}
-                <span className="font-semibold">three languages</span>. These
-                authors came from different backgrounds, kings, prophets,
-                fishermen, shepherds, yet their writings come together as{" "}
-                <span className="font-semibold">one united story</span>. That
-                unity is not human skill. It is God’s plan.
+                BibleBuddy removes the guesswork with a simple path:
               </p>
+
+              <p className="font-semibold">
+                <strong>Matthew → Mark → Luke → John → Acts → Romans → Genesis → Exodus → Leviticus → Numbers → Deuteronomy → the rest of the Bible</strong>
+              </p>
+
+              <hr className="my-4 border-slate-300" />
+
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">🧠 Why This Order Works</h3>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2"><strong>1. You start with Jesus — the foundation of everything.</strong></h4>
+              <p>
+                His life helps you understand the entire Bible.
+              </p>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2"><strong>2. Then you learn how the church began (Acts)</strong></h4>
+              <p>
+                And how to live out your faith (Romans).
+              </p>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2"><strong>3. THEN the Old Testament becomes much clearer.</strong></h4>
+              <p>
+                Once you understand Jesus, the history leading up to Him makes sense.
+              </p>
+
+              <hr className="my-4 border-slate-300" />
+
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">🟦 How to Use It</h3>
+
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li>Tap <strong>Continue Reading</strong></li>
+                <li>Read <strong>one chapter</strong></li>
+                <li>Go slow</li>
+                <li>Let it sink in</li>
+                <li>Keep moving forward</li>
+              </ul>
 
               <p>
-                At the center of the Bible is a single message.
-                <br />
-                <span className="font-semibold">
-                  God’s plan to rescue humanity.
-                </span>
-                <br />
-                From Genesis to Revelation, Scripture shows God creating,
-                redeeming, restoring, and inviting us into a relationship with
-                Him through Jesus.
-              </p>
-
-              <div>
-                <p className="mb-1">
-                  The Bible contains many different types of writing.
-                </p>
-                <ul className="list-disc list-inside space-y-0.5">
-                  <li>stories</li>
-                  <li>poetry</li>
-                  <li>laws</li>
-                  <li>wisdom</li>
-                  <li>letters</li>
-                  <li>prophecy</li>
-                </ul>
-              </div>
-
-              <p>
-                Each part has a purpose. Some books teach us God’s commands.
-                Some show us Israel’s history. Some give practical wisdom. The
-                four Gospels reveal the life and ministry of Jesus Christ.
-              </p>
-
-              <p>
-                What makes the Bible different from any other book is this.{" "}
-                <span className="font-semibold">It is alive.</span> As you read,
-                God uses His Word to guide you, convict you, encourage you, and
-                shape your life. You can read the same passage at different
-                times and see something new, because God meets you where you
-                are.
-              </p>
-
-              <p>
-                If you are looking for direction, peace, healing, or clarity,
-                the Bible will speak to you. Not all at once and not instantly,
-                but consistently as you return to it with an open heart.
-              </p>
-
-              <p className="mt-2">
-                Now that you understand what the Bible is, we can move to the
-                next step.
+                You'll never wonder "What should I read today?" again.
               </p>
             </div>
 
@@ -412,60 +486,48 @@ export default function LessonsPage() {
             </button>
 
             <h2 className="text-xl font-semibold text-slate-900 mb-1">
-              Lesson 2 • Why study the Bible?
+              ✨ Lesson 2 • Bible Chapter Notes
             </h2>
             <p className="text-xs text-slate-500 mb-4">
-              Why going deep in Scripture matters for your peace, your faith, and your everyday life.
+              Understand what you read with simple explanations.
             </p>
 
             {/* callout body */}
             <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 md:px-6 md:py-5 text-sm leading-relaxed text-slate-800 space-y-4">
-              <p>
-                For a long time you carried loneliness, anxiety, and an empty feeling that nothing in this world could fix. When you gave your life to God and began to understand who He really is, that weight started to lift. The peace you had always chased finally became real.
-              </p>
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">📚 Bible Chapter Notes</h3>
 
               <p>
-                That is why serious Bible study matters. When God has done something for you that no person or achievement could ever do, you naturally want to know Him more. You want a real relationship, not just a quick prayer now and then. That relationship grows through His Word.
-              </p>
-
-              <p className="font-semibold">
-                Reason one. To understand God’s story.
+                Every Bible chapter in BibleBuddy includes simple, clear notes to help you understand what you read — written in everyday language.
               </p>
 
               <p>
-                If you want a relationship with God, you need to know who He is and what He has done. Podcasts, sermons, and videos can help, but they are highlights. The Bible is the full story. It is not a random collection of scenes. It is one connected story that reveals who God is, what He wants, and His plan for us.
+                I break each chapter down so you see:
               </p>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2">💡 The Main Idea</h4>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2">🎬 What's Happening</h4>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2">❤️ Why It Matters</h4>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2">🔗 How It Connects to the Big Story of Scripture</h4>
+
+              <hr className="my-4 border-slate-300" />
+
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">🤝 How to Use It</h3>
 
               <p>
-                Imagine watching only a few clips from a movie instead of the whole thing. You would miss the big picture and have no context. In the same way, dipping in and out of random verses will never show you the full story of God. Studying the Bible from Genesis to Revelation shows how everything fits together and where your life fits in His plan.
+                After you finish reading a chapter:
               </p>
 
-              <p className="font-semibold">
-                Reason two. To know God’s Word, not just His story.
-              </p>
-
-              <p>
-                The Bible is not only a story. It is God’s instruction, His wisdom, and His standard for how life is meant to be lived. Inside Scripture He shows you how to worship, how to treat people, how to handle money, sex, anger, forgiveness, and so much more.
-              </p>
+              <ol className="list-decimal list-inside space-y-1 ml-2">
+                <li>Tap <strong>Read Notes</strong></li>
+                <li>I'll walk you through the meaning step-by-step</li>
+                <li>Scripture becomes clearer, deeper, and easier to understand</li>
+              </ol>
 
               <p>
-                You cannot grow a real relationship with God while ignoring what He actually says. A pastor can point you in the right direction and a video can explain a passage, but nothing replaces you opening the Bible yourself and wrestling with His words. This book is God speaking directly to you, not through a manager or a middle man. Studying it shows you what matters to Him and what He expects from you as His child.
-              </p>
-
-              <p className="font-semibold">
-                Reason three. To get guidance for real life.
-              </p>
-
-              <p>
-                Giving your life to Jesus is not the finish line. It is the starting line. Old habits, temptations, and patterns do not disappear overnight. You will face pressure, pushback, and spiritual attack. You need more than motivation. You need guidance from God on how to think, how to respond, and how to keep walking with Him when it gets hard.
-              </p>
-
-              <p>
-                Scripture gives that guidance. When you feel lost, angry, hurt, tempted, or ready to quit, the Bible shows you how to process those feelings in a way that honors God. It becomes the place you go first, instead of self help videos or random advice online. Over time you begin to see that there is always an answer in His Word, even when that answer is challenging.
-              </p>
-
-              <p className="mt-2">
-                So why study the Bible. Because understanding God’s story gives your life meaning. Knowing His Word builds a real relationship with Him. And letting Scripture guide you day by day shapes how you live in every situation. This course will help you learn how to study that Word for yourself, not just listen to others talk about it.
+                It's like having a Bible study friend sitting next to you.
               </p>
             </div>
 
@@ -490,6 +552,284 @@ export default function LessonsPage() {
           </div>
         </div>
       )}
+
+      {/* LESSON 3 MODAL */}
+      {activeLesson === "lesson3" && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-2xl p-6 md:p-8">
+            {/* close button */}
+            <button
+              type="button"
+              onClick={() => setActiveLesson(null)}
+              className="absolute right-4 top-3 text-sm text-slate-400 hover:text-slate-700"
+            >
+              ✕
+            </button>
+
+            <h2 className="text-xl font-semibold text-slate-900 mb-1">
+              ✨ Lesson 3 • The GROW Notes Method
+            </h2>
+            <p className="text-xs text-slate-500 mb-4">
+              Take meaningful Bible notes — even as a beginner.
+            </p>
+
+            {/* callout body */}
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 md:px-6 md:py-5 text-sm leading-relaxed text-slate-800 space-y-4">
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">🌱 The GROW Bible Notes Method</h3>
+
+              <p>
+                Most people never learned how to take Bible study notes, so they feel unorganized or unsure.
+              </p>
+
+              <p>
+                BibleBuddy fixes that with a simple, beginner-friendly system.
+              </p>
+
+              <hr className="my-4 border-slate-300" />
+
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">✍🏾 The GROW Method</h3>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2"><strong>G — Get the Passage</strong></h4>
+              <p>
+                What stood out.
+              </p>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2"><strong>R — Research</strong></h4>
+              <p>
+                Any questions you have.
+              </p>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2"><strong>O — Observe</strong></h4>
+              <p>
+                Connections or insights you notice.
+              </p>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2"><strong>W — Write</strong></h4>
+              <p>
+                What God is teaching you personally.
+              </p>
+
+              <hr className="my-4 border-slate-300" />
+
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">📒 How It Works</h3>
+
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li>Tap <strong>Take Notes</strong></li>
+                <li>Answer the guided questions</li>
+                <li>I format everything neatly</li>
+                <li>All your notes stay organized forever</li>
+              </ul>
+
+              <p>
+                This helps your faith grow deeper every time you read.
+              </p>
+            </div>
+
+            {/* actions */}
+            <div className="mt-6 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={() => setActiveLesson(null)}
+                className="text-sm font-medium text-slate-500 hover:text-slate-700"
+              >
+                Back to lessons
+              </button>
+
+              <button
+                type="button"
+                onClick={() => markLessonDone("lesson3")}
+                className="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+              >
+                Mark as done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* LESSON 4 MODAL */}
+      {activeLesson === "lesson4" && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-2xl p-6 md:p-8">
+            {/* close button */}
+            <button
+              type="button"
+              onClick={() => setActiveLesson(null)}
+              className="absolute right-4 top-3 text-sm text-slate-400 hover:text-slate-700"
+            >
+              ✕
+            </button>
+
+            <h2 className="text-xl font-semibold text-slate-900 mb-1">
+              ✨ Lesson 4 • Ask Little Louis (Bible AI Helper)
+            </h2>
+            <p className="text-xs text-slate-500 mb-4">
+              Your personal biblical assistant.
+            </p>
+
+            {/* callout body */}
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 md:px-6 md:py-5 text-sm leading-relaxed text-slate-800 space-y-4">
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">🤖 Ask Little Louis</h3>
+
+              <p>
+                Anytime you're confused, curious, or stuck — just ask me.
+              </p>
+
+              <p>
+                I explain the Bible in simple, clear, beginner-friendly ways.
+              </p>
+
+              <hr className="my-4 border-slate-300" />
+
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">💬 You Can Ask Things Like:</h3>
+
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li>"What does this verse mean?"</li>
+                <li>"Why did Jesus say this?"</li>
+                <li>"Who is this person in the Old Testament?"</li>
+                <li>"Why was this important?"</li>
+                <li>"How do I deal with temptation or fear?"</li>
+              </ul>
+
+              <hr className="my-4 border-slate-300" />
+
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">🧡 Why It Helps</h3>
+
+              <p>
+                You don't need to Google random answers or hope someone explains it correctly.
+              </p>
+
+              <p>
+                You already have a Bible helper inside the app — me.
+              </p>
+
+              <p>
+                I'm here whenever you need clarity or guidance.
+              </p>
+            </div>
+
+            {/* actions */}
+            <div className="mt-6 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={() => setActiveLesson(null)}
+                className="text-sm font-medium text-slate-500 hover:text-slate-700"
+              >
+                Back to lessons
+              </button>
+
+              <button
+                type="button"
+                onClick={() => markLessonDone("lesson4")}
+                className="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+              >
+                Mark as done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* LESSON 5 MODAL */}
+      {activeLesson === "lesson5" && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-2xl p-6 md:p-8">
+            {/* close button */}
+            <button
+              type="button"
+              onClick={() => setActiveLesson(null)}
+              className="absolute right-4 top-3 text-sm text-slate-400 hover:text-slate-700"
+            >
+              ✕
+            </button>
+
+            <h2 className="text-xl font-semibold text-slate-900 mb-1">
+              ✨ Lesson 5 • Building Your Daily Bible Habit
+            </h2>
+            <p className="text-xs text-slate-500 mb-4">
+              A simple 20–30 minute routine that helps you grow.
+            </p>
+
+            {/* callout body */}
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 md:px-6 md:py-5 text-sm leading-relaxed text-slate-800 space-y-4">
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">🔥 Building Your Daily Habit</h3>
+
+              <p>
+                Your spiritual life grows through consistency — not perfection.
+              </p>
+
+              <p>
+                BibleBuddy gives you a simple routine that's easy to follow.
+              </p>
+
+              <hr className="my-4 border-slate-300" />
+
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">📅 Your Daily Routine</h3>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2"><strong>1. Read one chapter</strong></h4>
+              <p>
+                Use the Continue Reading button.
+              </p>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2"><strong>2. Read my notes</strong></h4>
+              <p>
+                Understand the meaning and context.
+              </p>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2"><strong>3. Take your own notes (optional but powerful)</strong></h4>
+              <p>
+                The GROW method helps you process what God is teaching you.
+              </p>
+
+              <h4 className="font-semibold text-slate-800 mt-3 mb-2"><strong>4. If you're confused… ask me.</strong></h4>
+              <p>
+                I'm here anytime.
+              </p>
+
+              <hr className="my-4 border-slate-300" />
+
+              <h3 className="font-semibold text-slate-900 mt-4 mb-2">🌱 The Goal</h3>
+
+              <p>
+                Not speed.
+              </p>
+
+              <p>
+                Not perfection.
+              </p>
+
+              <p>
+                Just showing up daily and letting God shape you through His Word.
+              </p>
+
+              <p>
+                I'll be with you every step of the way.
+              </p>
+            </div>
+
+            {/* actions */}
+            <div className="mt-6 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={() => setActiveLesson(null)}
+                className="text-sm font-medium text-slate-500 hover:text-slate-700"
+              >
+                Back to lessons
+              </button>
+
+              <button
+                type="button"
+                onClick={() => markLessonDone("lesson5")}
+                className="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+              >
+                Mark as done
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
+
