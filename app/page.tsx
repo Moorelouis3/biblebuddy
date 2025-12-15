@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
 export default function LandingPage() {
   const router = useRouter();
+  const [isChecking, setIsChecking] = useState(true);
 
   // Check for existing session on mount and redirect if logged in
   useEffect(() => {
@@ -15,7 +16,9 @@ export default function LandingPage() {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
         router.push("/dashboard");
+        return;
       }
+      setIsChecking(false);
     };
     checkSession();
 
@@ -23,6 +26,8 @@ export default function LandingPage() {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session) {
         router.push("/dashboard");
+      } else {
+        setIsChecking(false);
       }
     });
 
@@ -30,6 +35,16 @@ export default function LandingPage() {
       subscription.unsubscribe();
     };
   }, [router]);
+
+  // Don't render content until we've checked for session (prevents flash)
+  if (isChecking) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-gray-500">Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* TOP BAR */}
