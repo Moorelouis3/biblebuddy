@@ -91,17 +91,18 @@ export default function LoginPage() {
 
     // Log the login to app_logins table (fire-and-forget, don't block on error)
     const userId = sessionData.session.user.id;
-    supabase
-      .from("app_logins")
-      .insert({ user_id: userId })
-      .then(({ error }) => {
+    (async () => {
+      try {
+        const { error } = await supabase
+          .from("app_logins")
+          .insert({ user_id: userId });
         if (error) {
           console.error("Failed to log login:", error);
         }
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error("Error logging login:", err);
-      });
+      }
+    })();
 
     setLoading(false);
 
