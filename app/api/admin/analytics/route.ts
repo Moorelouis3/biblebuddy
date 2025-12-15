@@ -22,34 +22,7 @@ export async function GET() {
   });
 
   try {
-    // 1. Logins in last 24 hours (distinct user_id)
-    const { count: logins24h } = await supabase
-      .from("app_logins")
-      .select("user_id", { count: "exact", head: true })
-      .gte("created_at", new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString());
-
-    // Get distinct user_ids for last 24 hours
-    const { data: logins24hData } = await supabase
-      .from("app_logins")
-      .select("user_id")
-      .gte("created_at", new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString());
-    const logins_last_24h = new Set(logins24hData?.map((l) => l.user_id) || []).size;
-
-    // 2. Logins in last 7 days (distinct user_id)
-    const { data: logins7dData } = await supabase
-      .from("app_logins")
-      .select("user_id")
-      .gte("created_at", new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString());
-    const logins_last_7_days = new Set(logins7dData?.map((l) => l.user_id) || []).size;
-
-    // 3. Logins in last 30 days (distinct user_id)
-    const { data: logins30dData } = await supabase
-      .from("app_logins")
-      .select("user_id")
-      .gte("created_at", new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString());
-    const logins_last_30_days = new Set(logins30dData?.map((l) => l.user_id) || []).size;
-
-    // 4. Signups in last 30 days (from auth.users)
+    // Fetch all users from auth.users using service role key
     const res = await fetch(`${url}/auth/v1/admin/users`, {
       headers: {
         apiKey: serviceKey,
@@ -59,14 +32,41 @@ export async function GET() {
     const usersJson = await res.json();
     const users = usersJson.users ?? [];
 
-    const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+    // Calculate time thresholds in UTC
+    const now = new Date();
+    const dayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+    const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const monthAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+
+    // 1. Logins in last 24 hours (using last_sign_in_at)
+    const logins_last_24h = users.filter((user: any) => {
+      if (!user.last_sign_in_at) return false;
+      const lastSignIn = new Date(user.last_sign_in_at);
+      return lastSignIn >= dayAgo;
+    }).length;
+
+    // 2. Logins in last 7 days (using last_sign_in_at)
+    const logins_last_7_days = users.filter((user: any) => {
+      if (!user.last_sign_in_at) return false;
+      const lastSignIn = new Date(user.last_sign_in_at);
+      return lastSignIn >= weekAgo;
+    }).length;
+
+    // 3. Logins in last 30 days (using last_sign_in_at)
+    const logins_last_30_days = users.filter((user: any) => {
+      if (!user.last_sign_in_at) return false;
+      const lastSignIn = new Date(user.last_sign_in_at);
+      return lastSignIn >= monthAgo;
+    }).length;
+
+    // 4. Signups in last 30 days (from auth.users created_at)
     const signups_last_30_days = users.filter((user: any) => {
       const createdAt = user.created_at
         ? new Date(user.created_at)
         : user.identities?.length > 0
         ? new Date(user.identities[0].created_at)
         : new Date(0);
-      return createdAt >= thirtyDaysAgo;
+      return createdAt >= monthAgo;
     }).length;
 
     // 5. Total users (from auth.users)
