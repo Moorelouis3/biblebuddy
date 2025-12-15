@@ -1,7 +1,7 @@
 // app/login/page.tsx
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
@@ -12,6 +12,57 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showResetPassword, setShowResetPassword] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
+  const [resetLoading, setResetLoading] = useState(false);
+  const [resetSuccess, setResetSuccess] = useState(false);
+
+  // Check for existing session on mount and redirect if logged in
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        router.push("/dashboard");
+      }
+    };
+    checkSession();
+
+    // Listen for auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        router.push("/dashboard");
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [router]);
+
+  async function handleResetPassword(e: FormEvent) {
+    e.preventDefault();
+    if (!resetEmail.trim()) {
+      setError("Please enter your email address");
+      return;
+    }
+
+    setResetLoading(true);
+    setError(null);
+    setResetSuccess(false);
+
+    const { error } = await supabase.auth.resetPasswordForEmail(resetEmail.trim(), {
+      redirectTo: `${window.location.origin}/login`,
+    });
+
+    setResetLoading(false);
+
+    if (error) {
+      setError(error.message);
+    } else {
+      setResetSuccess(true);
+      setResetEmail("");
+    }
+  }
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -37,6 +88,20 @@ export default function LoginPage() {
       setError("Login failed: session not established");
       return;
     }
+
+    // Log the login to app_logins table (fire-and-forget, don't block on error)
+    const userId = sessionData.session.user.id;
+    supabase
+      .from("app_logins")
+      .insert({ user_id: userId })
+      .then(({ error }) => {
+        if (error) {
+          console.error("Failed to log login:", error);
+        }
+      })
+      .catch((err) => {
+        console.error("Error logging login:", err);
+      });
 
     setLoading(false);
 
@@ -81,21 +146,87 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+            <button
+              type="button"
+              onClick={() => {
+                setShowResetPassword(true);
+                setError(null);
+                setResetSuccess(false);
+              }}
+              className="text-xs text-blue-600 hover:underline mt-1"
+            >
+              Forgot your password?
+            </button>
           </div>
 
-          {error && (
-            <p className="text-xs text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
-              {error}
-            </p>
-          )}
+          {showResetPassword ? (
+            <div className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={resetEmail}
+                  onChange={(e) => setResetEmail(e.target.value)}
+                  className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="you@example.com"
+                />
+              </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-full bg-blue-600 text-white text-sm font-semibold py-2.5 mt-2 shadow-sm hover:bg-blue-700 disabled:opacity-60"
-          >
-            {loading ? "Logging in..." : "Log in"}
-          </button>
+              {error && (
+                <p className="text-xs text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
+                  {error}
+                </p>
+              )}
+
+              {resetSuccess && (
+                <p className="text-xs text-green-600 bg-green-50 border border-green-100 rounded-lg px-3 py-2">
+                  Check your email for a password reset link.
+                </p>
+              )}
+
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowResetPassword(false);
+                    setResetEmail("");
+                    setError(null);
+                    setResetSuccess(false);
+                  }}
+                  className="flex-1 rounded-full bg-gray-200 text-gray-700 text-sm font-semibold py-2.5 shadow-sm hover:bg-gray-300"
+                >
+                  Back to Login
+                </button>
+                <button
+                  type="button"
+                  onClick={handleResetPassword}
+                  disabled={resetLoading}
+                  className="flex-1 rounded-full bg-blue-600 text-white text-sm font-semibold py-2.5 shadow-sm hover:bg-blue-700 disabled:opacity-60"
+                >
+                  {resetLoading ? "Sending..." : "Send Reset Link"}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+              {error && (
+                <p className="text-xs text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
+                  {error}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full rounded-full bg-blue-600 text-white text-sm font-semibold py-2.5 mt-2 shadow-sm hover:bg-blue-700 disabled:opacity-60"
+              >
+                {loading ? "Logging in..." : "Log in"}
+              </button>
+            </>
+          )}
         </form>
 
         <p className="text-xs text-gray-600 mt-4 text-center">
