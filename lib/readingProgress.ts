@@ -112,18 +112,35 @@ export function markMatthewStepDone(
 }
 
 /**
+ * Check if all 28 chapters of Matthew are completed.
+ */
+export function isMatthewComplete(): boolean {
+  const progress = loadProgress();
+  const bookKey = "matthew";
+
+  // Check if using dynamic system
+  if (progress.bookProgress && progress.bookProgress[bookKey]) {
+    const bookData = progress.bookProgress[bookKey];
+    // All 28 chapters (1-28) are completed if currentChapter > 28 or we have all 28 in completedChapters
+    const completedCount = bookData.completedChapters.filter((ch) => ch >= 1 && ch <= 28).length;
+    return completedCount >= 28 || bookData.currentChapter > 28;
+  }
+
+  // Backward compatibility: old system
+  // matthewCurrentStep 29 means all 28 chapters + overview are done
+  return progress.matthewCurrentStep >= 29;
+}
+
+/**
  * Simple unlock logic for books.
  * Matthew is always unlocked.
- * Mark unlocks when Matthew is fully finished.
+ * Mark unlocks when Matthew is fully finished (all 28 chapters completed).
  */
 export function isBookUnlocked(book: string, matthewTotalSteps: number): boolean {
-  const progress = loadProgress();
-
   if (book === "Matthew") return true;
 
   if (book === "Mark") {
-    // if currentStep is at or beyond last index, Matthew is done
-    return progress.matthewCurrentStep >= matthewTotalSteps - 1;
+    return isMatthewComplete();
   }
 
   // everything else locked for now

@@ -3,45 +3,50 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
-import { getMatthewCurrentStep, getBookCurrentStep, isChapterUnlocked, isChapterCompleted } from "../../../../lib/readingProgress";
+import { getBookCurrentStep, isChapterUnlocked, isChapterCompleted, getCompletedChapters } from "../../../../lib/readingProgress";
 
 const MATTHEW_CHAPTERS = 28; // real chapters 1–28
 const CHAPTERS_PER_PAGE = 12;
-const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
 
 export default function MatthewPage() {
   // currentChapter is now loaded from readingProgress helper
-  const [currentChapter, setCurrentChapter] = useState(0);
+  const [currentChapter, setCurrentChapter] = useState(1);
   const [chapterPage, setChapterPage] = useState(0);
+  const [completedChapters, setCompletedChapters] = useState<number[]>([]);
 
   // collapsed or open Louis bubble
   const [summaryCollapsed, setSummaryCollapsed] = useState(false);
 
-  // load current step from localStorage (via helper)
-  // Try new dynamic system first, fall back to old system for backward compatibility
+  // load current step and completed chapters from localStorage (via helper)
   useEffect(() => {
-    const step = getBookCurrentStep("matthew", TOTAL_ITEMS);
-    setCurrentChapter(step);
+    const step = getBookCurrentStep("matthew", MATTHEW_CHAPTERS + 1);
+    // If using dynamic system, currentChapter represents the next chapter to read (1-29)
+    // If step is 0, we start at chapter 1
+    setCurrentChapter(step === 0 ? 1 : step);
+
+    // Get completed chapters using the helper
+    const completed = getCompletedChapters("matthew", MATTHEW_CHAPTERS);
+    setCompletedChapters(completed);
   }, []);
 
-  // how many chapters you have finished, not counting the overview
-  const finishedChapters = Math.max(0, currentChapter - 1);
-  const progressPercent =
-    (finishedChapters / MATTHEW_CHAPTERS) * 100;
+  // Calculate finished chapters and progress
+  // All chapters from 1 to (currentChapter - 1) are finished, plus any explicitly completed
+  const finishedChapters = completedChapters.length;
+  const progressPercent = Math.min(100, (finishedChapters / MATTHEW_CHAPTERS) * 100);
 
-  // chapter pagination
+  // chapter pagination - only show chapters 1-28 (no overview)
   const chapterStartIndex = chapterPage * CHAPTERS_PER_PAGE;
   const visibleChapterCount = Math.min(
     CHAPTERS_PER_PAGE,
-    TOTAL_ITEMS - chapterStartIndex
+    MATTHEW_CHAPTERS - chapterStartIndex
   );
   const visibleChapters = Array.from(
     { length: visibleChapterCount },
-    (_, i) => chapterStartIndex + i
+    (_, i) => chapterStartIndex + i + 1 // Start from chapter 1, not 0
   );
   const hasPrevChapterPage = chapterPage > 0;
   const hasNextChapterPage =
-    chapterStartIndex + CHAPTERS_PER_PAGE < TOTAL_ITEMS;
+    chapterStartIndex + CHAPTERS_PER_PAGE < MATTHEW_CHAPTERS;
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -103,7 +108,7 @@ Start with the Matthew overview, then we will walk through the chapters together
               {visibleChapters.map((chapter) => {
                 // Use dynamic system, with fallback for backward compatibility
                 const unlocked = isChapterUnlocked("matthew", chapter) || chapter <= currentChapter;
-                const done = isChapterCompleted("matthew", chapter) || chapter < currentChapter;
+                const done = isChapterCompleted("matthew", chapter) || completedChapters.includes(chapter);
                 const current = chapter === currentChapter && !done;
 
                 let stateClasses =
@@ -117,30 +122,19 @@ Start with the Matthew overview, then we will walk through the chapters together
                     "bg-blue-100 border-blue-300 text-blue-800 cursor-pointer";
                 }
 
-                // label and description
-                let title = `Matthew ${chapter}`;
-                let description = "";
-
-                if (chapter === 0) {
-                  title = "Matthew overview";
-                  description = current
-                    ? "Start here. This is your first step."
-                    : done
-                    ? "Finished. You can move on to Matthew 1."
-                    : "Locked until you start this path.";
-                } else {
-                  description = done
-                    ? "Finished."
-                    : current
-                    ? "This is your next chapter."
-                    : "Locked until you finish the previous chapter.";
-                }
+                // label and description (no overview, only chapters 1-28)
+                const title = `Matthew ${chapter}`;
+                const description = done
+                  ? "Finished."
+                  : current
+                  ? "This is your next chapter."
+                  : "Locked until you finish the previous chapter.";
 
                 const content = (
                   <>
                     <p className="font-semibold">{title}</p>
                     <p className="text-[11px] mt-1">{description}</p>
-                    {chapter > 0 && !unlocked && (
+                    {!unlocked && (
                       <div className="absolute right-2 top-2 text-black/70">
                         🔒
                       </div>
@@ -159,11 +153,8 @@ Start with the Matthew overview, then we will walk through the chapters together
                   );
                 }
 
-                // links: overview has its own page, chapters use dynamic route
-                const href =
-                  chapter === 0
-                    ? "/reading/books/matthew/chapters/overview"
-                    : `/Bible/matthew/${chapter}`;
+                // All chapters use dynamic route (no overview)
+                const href = `/Bible/matthew/${chapter}`;
 
                 return (
                   <Link
