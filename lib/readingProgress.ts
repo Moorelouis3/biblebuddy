@@ -248,3 +248,31 @@ export function isChapterCompleted(book: string, chapter: number): boolean {
 
   return bookData.completedChapters.includes(chapter);
 }
+
+/**
+ * Get list of completed chapters for a book.
+ * Returns array of chapter numbers that have been completed.
+ */
+export function getCompletedChapters(book: string, maxChapters: number): number[] {
+  const progress = loadProgress();
+  const bookKey = book.toLowerCase();
+  const completed: number[] = [];
+
+  // Backward compatibility for Matthew
+  if (bookKey === "matthew" && (!progress.bookProgress || !progress.bookProgress[bookKey])) {
+    // If currentStep is 18, chapters 1-17 are completed (step 0 is overview, so we start from 1)
+    for (let i = 1; i < progress.matthewCurrentStep && i <= maxChapters; i++) {
+      completed.push(i);
+    }
+    return completed;
+  }
+
+  // Use dynamic book progress
+  const bookData = progress.bookProgress[bookKey];
+  if (!bookData) {
+    return [];
+  }
+
+  // Return sorted array of completed chapters
+  return bookData.completedChapters.filter((ch) => ch >= 1 && ch <= maxChapters).sort((a, b) => a - b);
+}
