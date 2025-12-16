@@ -273,6 +273,24 @@ export function getCompletedChapters(book: string, maxChapters: number): number[
     return [];
   }
 
-  // Return sorted array of completed chapters
-  return bookData.completedChapters.filter((ch) => ch >= 1 && ch <= maxChapters).sort((a, b) => a - b);
+  // Get all chapters that should be considered completed
+  // Include: all chapters from 1 up to (currentChapter - 1), plus any explicitly in completedChapters
+  const completedSet = new Set<number>();
+  
+  // Add all chapters up to currentChapter - 1 (if currentChapter > 1)
+  if (bookData.currentChapter > 1) {
+    for (let i = 1; i < bookData.currentChapter && i <= maxChapters; i++) {
+      completedSet.add(i);
+    }
+  }
+  
+  // Also add any chapters explicitly marked as completed
+  bookData.completedChapters.forEach((ch) => {
+    if (ch >= 1 && ch <= maxChapters) {
+      completedSet.add(ch);
+    }
+  });
+
+  // Return sorted array
+  return Array.from(completedSet).sort((a, b) => a - b);
 }
