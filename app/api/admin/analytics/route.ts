@@ -22,57 +22,49 @@ export async function GET() {
   });
 
   try {
-    // Fetch all users from auth.users using service role key
-    const res = await fetch(`${url}/auth/v1/admin/users`, {
-      headers: {
-        apiKey: serviceKey,
-        Authorization: `Bearer ${serviceKey}`,
-      },
-    });
-    const usersJson = await res.json();
-    const users = usersJson.users ?? [];
+    // 1. Fetch authentication statistics from Postgres via RPC.
+    //    You must create this function in your Supabase SQL editor:
+    //
+    //    create or replace function get_auth_user_stats()
+    //    returns table (
+    //      total_users bigint,
+    //      signups_last_30_days bigint,
+    //      logins_last_24h bigint,
+    //      logins_last_7_days bigint,
+    //      logins_last_30_days bigint
+    //    )
+    //    language sql
+    //    security definer
+    //    set search_path = public
+    //    as $$
+    //      select
+    //        count(*) as total_users,
+    //        count(*) filter (where created_at >= now() - interval '30 days') as signups_last_30_days,
+    //        count(*) filter (where last_sign_in_at >= now() - interval '24 hours') as logins_last_24h,
+    //        count(*) filter (where last_sign_in_at >= now() - interval '7 days') as logins_last_7_days,
+    //        count(*) filter (where last_sign_in_at >= now() - interval '30 days') as logins_last_30_days
+    //      from auth.users;
+    //    $$;
+    //
+    const { data: authStats, error: authStatsError } = await supabase.rpc(
+      "get_auth_user_stats"
+    );
 
-    // Calculate time thresholds in UTC
-    const now = new Date();
-    const dayAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
-    const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-    const monthAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+    if (authStatsError) {
+      console.error("Error fetching auth user stats:", authStatsError);
+      throw authStatsError;
+    }
 
-    // 1. Logins in last 24 hours (using last_sign_in_at)
-    const logins_last_24h = users.filter((user: any) => {
-      if (!user.last_sign_in_at) return false;
-      const lastSignIn = new Date(user.last_sign_in_at);
-      return lastSignIn >= dayAgo;
-    }).length;
+    // Normalise RPC result (can be single object or array)
+    const stats = Array.isArray(authStats) ? authStats[0] : authStats;
 
-    // 2. Logins in last 7 days (using last_sign_in_at)
-    const logins_last_7_days = users.filter((user: any) => {
-      if (!user.last_sign_in_at) return false;
-      const lastSignIn = new Date(user.last_sign_in_at);
-      return lastSignIn >= weekAgo;
-    }).length;
+    const logins_last_24h = Number(stats?.logins_last_24h ?? 0);
+    const logins_last_7_days = Number(stats?.logins_last_7_days ?? 0);
+    const logins_last_30_days = Number(stats?.logins_last_30_days ?? 0);
+    const signups_last_30_days = Number(stats?.signups_last_30_days ?? 0);
+    const total_users = Number(stats?.total_users ?? 0);
 
-    // 3. Logins in last 30 days (using last_sign_in_at)
-    const logins_last_30_days = users.filter((user: any) => {
-      if (!user.last_sign_in_at) return false;
-      const lastSignIn = new Date(user.last_sign_in_at);
-      return lastSignIn >= monthAgo;
-    }).length;
-
-    // 4. Signups in last 30 days (from auth.users created_at)
-    const signups_last_30_days = users.filter((user: any) => {
-      const createdAt = user.created_at
-        ? new Date(user.created_at)
-        : user.identities?.length > 0
-        ? new Date(user.identities[0].created_at)
-        : new Date(0);
-      return createdAt >= monthAgo;
-    }).length;
-
-    // 5. Total users (from auth.users)
-    const total_users = users.length;
-
-    // 6. Total notes (keep existing logic)
+    // 2. Total notes (keep existing logic)
     const { count: total_notes } = await supabase
       .from("notes")
       .select("*", { count: "exact", head: true });
@@ -93,4 +85,5 @@ export async function GET() {
     );
   }
 }
+
 
