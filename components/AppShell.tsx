@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { ChatLouis } from "./ChatLouis";
 
-const HIDDEN_ROUTES = ["/", "/login", "/signup"];
+const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

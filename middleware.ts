@@ -23,15 +23,17 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // If protected BUT user is coming from login or callback
+  // If protected BUT user is coming from login, signup, or password reset
   // Allow Supabase auth flow to finish
   const referer = req.headers.get("referer") || "";
   const fromAuth =
     req.nextUrl.pathname.startsWith("/auth") ||
+    req.nextUrl.pathname.startsWith("/reset-password") ||
     req.url.includes("access_token") ||
     req.url.includes("refresh_token") ||
     referer.includes("/login") ||
-    referer.includes("/signup");
+    referer.includes("/signup") ||
+    referer.includes("/reset-password");
 
   if (fromAuth) {
     return NextResponse.next();
