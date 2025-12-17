@@ -103,10 +103,8 @@ export default function ReadingPage() {
                   "relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm";
 
                 if (unlocked) {
-                  const href =
-                    book === "Matthew"
-                      ? "/reading/books/matthew"
-                      : "#"; // later you can link Mark etc.
+                  // Create route for any book (e.g., "Mark" -> "/reading/books/mark")
+                  const href = `/reading/books/${book.toLowerCase()}`;
 
                   // Determine styling: active = orange, complete = blue, default = white
                   let cardClasses = "bg-white border-blue-200";
