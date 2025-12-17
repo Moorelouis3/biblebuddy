@@ -278,31 +278,31 @@ export default function BibleChapterPage() {
 You are Little Louis. Generate beginner friendly notes for ${bookDisplayName} chapter ${chapterNum} using this exact template and rules.
 
 TEMPLATE
-🧠 Big Idea of the Chapter
+# 🧠 Big Idea of the Chapter
 One short paragraph explaining the heart of the chapter in simple English.
 
-🎬 What's Happening…
+# 🎬 What's Happening…
 Include three or four cinematic story movements. Each movement follows:
 [Emoji] **Story Moment Title** (ALWAYS bold the story moment title with **)
 A short paragraph of three to four sentences explaining what happens and why it matters. Smooth, simple, friendly language. Do not use hyphens. Do not break the story into too many pieces. Keep it beginner friendly and emotional.
 IMPORTANT: Every subsection title under "What's Happening" MUST be wrapped in **bold** markdown. Example: 🌳 **Family Tree of Jesus** (not just 🌳 Family Tree of Jesus).
 
-📌 Key Themes
+# 📌 Key Themes
 List two or three themes. Each theme is one short sentence.
 
-🔗 Connections to the Bigger Story
+# 🔗 Connections to the Bigger Story
 List one or two simple connections to prophecy, covenant, or Jesus mission. Extremely beginner friendly.
 
-🙌 Simple Life Application
+# 🙌 Simple Life Application
 A short paragraph of three to four sentences explaining what this chapter shows about God, about Jesus, and about what the reader is invited to believe or do.
 
-🏁 One Sentence Summary
+# 🏁 One Sentence Summary
 A final strong sentence that captures the message.
 
 RULES
-DO NOT include a top-level header like "${bookDisplayName} Chapter ${chapterNum} Notes" or any chapter title at the beginning. Start directly with "🧠 Big Idea of the Chapter".
+DO NOT include a top-level header like "${bookDisplayName} Chapter ${chapterNum} Notes" or any chapter title at the beginning. Start directly with "# 🧠 Big Idea of the Chapter".
 Keep emojis in the headers. Use proper markdown formatting:
-- "Big Idea of the Chapter" should be **bold** (not h1)
+- "Big Idea of the Chapter" should be formatted as # (h1)
 - "What's Happening" should be formatted as # (h1)
 - "Key Themes" should be formatted as # (h1)
 - "Connections to the Bigger Story" should be formatted as # (h1)
