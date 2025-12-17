@@ -67,6 +67,25 @@ export default function AdvancedNotePage() {
     },
   });
 
+  // Load note data if editing
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const editData = params.get("edit");
+    
+    if (editData) {
+      try {
+        const noteData = JSON.parse(decodeURIComponent(editData));
+        setNoteId(noteData.id);
+        setTitle(noteData.title || "");
+        if (editor && noteData.content) {
+          editor.commands.setContent(noteData.content);
+        }
+      } catch (err) {
+        console.error("Error parsing edit data:", err);
+      }
+    }
+  }, [editor]);
+
   useEffect(() => {
     return () => {
       if (editor) {
@@ -101,21 +120,41 @@ export default function AdvancedNotePage() {
         throw new Error("Not authenticated");
       }
 
-      // Save advanced note - store HTML content in the 'write' field and title in 'passage' field
-      // This allows it to work with existing table structure
-      const { error: saveError } = await supabase
-        .from("notes")
-        .insert({
-          user_id: user.id,
-          book: "Advanced",
-          chapter: 0,
-          verse_from: null,
-          verse_to: null,
-          passage: title.trim(), // Store title in passage field
-          research: "", // Empty
-          observe: "", // Empty  
-          write: content, // Store HTML content in write field
-        });
+      // Save or update advanced note
+      if (noteId) {
+        // Update existing note
+        const { error: updateError } = await supabase
+          .from("notes")
+          .update({
+            passage: title.trim(),
+            write: content,
+          })
+          .eq("id", Number(noteId))
+          .eq("user_id", user.id);
+
+        if (updateError) {
+          throw updateError;
+        }
+      } else {
+        // Create new note
+        const { error: saveError } = await supabase
+          .from("notes")
+          .insert({
+            user_id: user.id,
+            book: "Advanced",
+            chapter: 0,
+            verse_from: null,
+            verse_to: null,
+            passage: title.trim(), // Store title in passage field
+            research: "", // Empty for advanced notes
+            observe: "", // Empty for advanced notes
+            write: content, // Store HTML content in write field
+          });
+
+        if (saveError) {
+          throw saveError;
+        }
+      }
 
       if (saveError) {
         throw saveError;

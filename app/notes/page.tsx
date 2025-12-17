@@ -62,6 +62,11 @@ type ModalMode = "create" | "view" | "edit" | null;
 type FormState = typeof emptyForm;
 
 function formatReference(note: Note) {
+  // Advanced notes use the title from passage field
+  if (note.book === "Advanced") {
+    return note.passage || "Advanced Note";
+  }
+  
   let ref = `${note.book} ${note.chapter}`;
   if (note.verseFrom) {
     if (note.verseTo && note.verseTo !== note.verseFrom) {
@@ -435,7 +440,8 @@ export default function NotesPage() {
                   </p>
 
                   <div className="space-y-6 text-sm">
-                    {currentNote.passage && (
+                    {/* Only show Passage section for GROW notes, not Advanced */}
+                    {currentNote.book !== "Advanced" && currentNote.passage && (
                       <section>
                         <h1 className="text-2xl font-bold mb-4">📖 Passage</h1>
                         <div className="space-y-2">
@@ -448,7 +454,7 @@ export default function NotesPage() {
                       </section>
                     )}
 
-                    {currentNote.research && (
+                    {currentNote.book !== "Advanced" && currentNote.research && (
                       <section>
                         <h1 className="text-2xl font-bold mb-4">❓ Questions</h1>
                         <div className="space-y-4">
@@ -461,7 +467,7 @@ export default function NotesPage() {
                       </section>
                     )}
 
-                    {currentNote.observe && (
+                    {currentNote.book !== "Advanced" && currentNote.observe && (
                       <section>
                         <h1 className="text-2xl font-bold mb-4">👀 Observe</h1>
                         <div className="space-y-4">
@@ -474,7 +480,18 @@ export default function NotesPage() {
                       </section>
                     )}
 
-                    {currentNote.write && (
+                    {/* Advanced Notes - render HTML content */}
+                    {currentNote.book === "Advanced" && currentNote.write && (
+                      <section>
+                        <div 
+                          className="prose prose-sm max-w-none"
+                          dangerouslySetInnerHTML={{ __html: currentNote.write }}
+                        />
+                      </section>
+                    )}
+
+                    {/* GROW Notes - render write field as text */}
+                    {currentNote.book !== "Advanced" && currentNote.write && (
                       <section>
                         <h1 className="text-2xl font-bold mb-4">✍️ Reflection</h1>
                         <div className="space-y-4">
@@ -489,25 +506,42 @@ export default function NotesPage() {
                   </div>
 
                   <div className="mt-6 flex justify-end gap-3">
-                    <button
-                      onClick={() => {
-                        // Redirect to grow page with note data for editing
-                        const noteData = encodeURIComponent(JSON.stringify({
-                          id: currentNote.id,
-                          book: currentNote.book,
-                          chapter: currentNote.chapter,
-                          verseFrom: currentNote.verseFrom,
-                          verseTo: currentNote.verseTo,
-                          passage: currentNote.passage,
-                          research: currentNote.research,
-                          write: currentNote.write
-                        }));
-                        window.location.href = `/notes/grow?edit=${noteData}`;
-                      }}
-                      className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold"
-                    >
-                      Edit
-                    </button>
+                    {currentNote.book === "Advanced" ? (
+                      <button
+                        onClick={() => {
+                          // Redirect to advanced page with note data for editing
+                          const noteData = encodeURIComponent(JSON.stringify({
+                            id: currentNote.id,
+                            title: currentNote.passage,
+                            content: currentNote.write
+                          }));
+                          window.location.href = `/notes/advanced?edit=${noteData}`;
+                        }}
+                        className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold"
+                      >
+                        Edit
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          // Redirect to grow page with note data for editing
+                          const noteData = encodeURIComponent(JSON.stringify({
+                            id: currentNote.id,
+                            book: currentNote.book,
+                            chapter: currentNote.chapter,
+                            verseFrom: currentNote.verseFrom,
+                            verseTo: currentNote.verseTo,
+                            passage: currentNote.passage,
+                            research: currentNote.research,
+                            write: currentNote.write
+                          }));
+                          window.location.href = `/notes/grow?edit=${noteData}`;
+                        }}
+                        className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold"
+                      >
+                        Edit
+                      </button>
+                    )}
                     <button
                       onClick={handleDelete}
                       className="px-4 py-2 rounded-full bg-red-600 text-white text-sm font-semibold"
