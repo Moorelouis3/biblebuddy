@@ -422,8 +422,8 @@ export default function AdvancedNotePage() {
           </div>
         </div>
 
-        {/* Toolbar */}
-        <div className="mb-2 bg-white border border-gray-200 rounded-t-xl p-2 flex flex-wrap gap-2">
+        {/* Toolbar - Sticky at top */}
+        <div className="sticky top-0 z-50 mb-2 bg-white border border-gray-200 rounded-t-xl p-2 flex flex-wrap gap-2 shadow-sm">
           {/* Text formatting */}
           <button
             onClick={() => editor.chain().focus().toggleBold().run()}
