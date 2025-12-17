@@ -5,7 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { supabase } from "../../../../lib/supabaseClient";
-import { markChapterDone, isChapterCompleted } from "../../../../lib/readingProgress";
+import { markChapterDone, isChapterCompleted, getBookTotalChapters } from "../../../../lib/readingProgress";
 import confetti from "canvas-confetti";
 
 type Verse = {
