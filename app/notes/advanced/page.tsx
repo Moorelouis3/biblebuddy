@@ -111,6 +111,7 @@ const BIBLE_BOOKS: Record<string, number> = {
 };
 
 const BOOK_NAMES = Object.keys(BIBLE_BOOKS);
+const MAX_CHAPTER = 150; // Psalms has 150 chapters, the highest in any book
 const MAX_VERSE = 176; // Psalms 119 has 176 verses, the highest in any chapter
 
 export default function AdvancedNotePage() {
@@ -145,15 +146,13 @@ export default function AdvancedNotePage() {
     },
   });
 
-  // Get max chapters for selected book
-  const maxChapters = BIBLE_BOOKS[book] || 28;
-
-  // When book changes, reset chapter if it exceeds max
+  // When book changes, reset chapter if it exceeds that book's max
   useEffect(() => {
-    if (chapter > maxChapters) {
+    const bookMaxChapters = BIBLE_BOOKS[book] || 28;
+    if (chapter > bookMaxChapters) {
       setChapter(1);
     }
-  }, [book, maxChapters]);
+  }, [book, chapter]);
 
   // When chapter changes, reset verses if they exceed max
   useEffect(() => {
@@ -362,7 +361,7 @@ export default function AdvancedNotePage() {
               onChange={(e) => setChapter(Number(e.target.value))}
               className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
             >
-              {Array.from({ length: maxChapters }, (_, i) => i + 1).map((ch) => (
+              {Array.from({ length: MAX_CHAPTER }, (_, i) => i + 1).map((ch) => (
                 <option key={ch} value={ch}>
                   {ch}
                 </option>
