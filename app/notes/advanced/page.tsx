@@ -510,6 +510,15 @@ export default function AdvancedNotePage() {
             U
           </button>
 
+          {/* Undo */}
+          <button
+            onClick={() => editor.chain().focus().undo().run()}
+            disabled={!editor.can().chain().focus().undo().run()}
+            className="px-3 py-1.5 rounded text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            ↺ Undo
+          </button>
+
           <div className="w-px h-6 bg-gray-300 mx-1" />
 
         {/* Headers */}
@@ -639,6 +648,13 @@ export default function AdvancedNotePage() {
       <style jsx global>{`
         .ProseMirror {
           outline: none;
+        }
+        .ProseMirror blockquote {
+          background: #fef3c7; /* amber-100 */
+          border-left: 4px solid #f59e0b; /* amber-500 */
+          padding: 0.75rem 1rem;
+          border-radius: 0.5rem;
+          margin: 1rem 0;
         }
         .ProseMirror img {
           max-width: 100%;
