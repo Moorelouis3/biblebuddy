@@ -182,7 +182,17 @@ export default function AdvancedNotePage() {
         if (noteData.verseFrom) setVerseFrom(noteData.verseFrom);
         if (noteData.verseTo) setVerseTo(noteData.verseTo);
         if (editor && noteData.write) {
-          editor.commands.setContent(noteData.write);
+          // If the content is plain text (not HTML), convert it to HTML paragraphs
+          const content = noteData.write;
+          const isHtml = /<[a-z][\s\S]*>/i.test(content);
+          if (isHtml) {
+            editor.commands.setContent(content);
+          } else {
+            // Convert plain text to HTML paragraphs
+            const paragraphs = content.split(/\n\s*\n/).filter(p => p.trim());
+            const htmlContent = paragraphs.map(p => `<p>${p.trim().split('\n').join('<br>')}</p>`).join('');
+            editor.commands.setContent(htmlContent || '<p></p>');
+          }
         }
       } catch (err) {
         console.error("Error parsing edit data:", err);

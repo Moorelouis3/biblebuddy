@@ -500,46 +500,23 @@ export default function NotesPage() {
                   </div>
 
                   <div className="mt-6 flex justify-end gap-3">
-                    {/* Check if this is an advanced note (has HTML content) */}
-                    {currentNote.write && /<[a-z][\s\S]*>/i.test(currentNote.write) ? (
-                      <button
-                        onClick={() => {
-                          // Redirect to advanced page with note data for editing
-                          const noteData = encodeURIComponent(JSON.stringify({
-                            id: currentNote.id,
-                            book: currentNote.book,
-                            chapter: currentNote.chapter,
-                            verseFrom: currentNote.verseFrom,
-                            verseTo: currentNote.verseTo,
-                            write: currentNote.write
-                          }));
-                          window.location.href = `/notes/advanced?edit=${noteData}`;
-                        }}
-                        className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold"
-                      >
-                        Edit
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => {
-                          // Redirect to grow page with note data for editing
-                          const noteData = encodeURIComponent(JSON.stringify({
-                            id: currentNote.id,
-                            book: currentNote.book,
-                            chapter: currentNote.chapter,
-                            verseFrom: currentNote.verseFrom,
-                            verseTo: currentNote.verseTo,
-                            passage: currentNote.passage,
-                            research: currentNote.research,
-                            write: currentNote.write
-                          }));
-                          window.location.href = `/notes/grow?edit=${noteData}`;
-                        }}
-                        className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold"
-                      >
-                        Edit
-                      </button>
-                    )}
+                    <button
+                      onClick={() => {
+                        // Always redirect to advanced editor for all notes
+                        const noteData = encodeURIComponent(JSON.stringify({
+                          id: currentNote.id,
+                          book: currentNote.book,
+                          chapter: currentNote.chapter,
+                          verseFrom: currentNote.verseFrom,
+                          verseTo: currentNote.verseTo,
+                          write: currentNote.write || ""
+                        }));
+                        window.location.href = `/notes/advanced?edit=${noteData}`;
+                      }}
+                      className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold"
+                    >
+                      Edit
+                    </button>
                     <button
                       onClick={handleDelete}
                       className="px-4 py-2 rounded-full bg-red-600 text-white text-sm font-semibold"
