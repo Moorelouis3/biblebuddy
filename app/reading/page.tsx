@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { LouisAvatar } from "../../components/LouisAvatar";
-import { isBookUnlocked } from "../../lib/readingProgress";
+import { isBookUnlocked, isBookComplete, getCurrentBook } from "../../lib/readingProgress";
 
 const BOOKS = [
   "Matthew",
@@ -49,12 +49,19 @@ const MATTHEW_TOTAL_ITEMS = 28 + 1;
 
 export default function ReadingPage() {
   const [bookPage, setBookPage] = useState(0);
+  const [currentActiveBook, setCurrentActiveBook] = useState<string | null>(null);
 
   // book pagination
   const startIndex = bookPage * BOOKS_PER_PAGE;
   const visibleBooks = BOOKS.slice(startIndex, startIndex + BOOKS_PER_PAGE);
   const hasPrevPage = bookPage > 0;
   const hasNextPage = startIndex + BOOKS_PER_PAGE < BOOKS.length;
+
+  // Determine current active book
+  useEffect(() => {
+    const active = getCurrentBook(BOOKS);
+    setCurrentActiveBook(active);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -89,6 +96,8 @@ export default function ReadingPage() {
             <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-2">
               {visibleBooks.map((book) => {
                 const unlocked = isBookUnlocked(book, MATTHEW_TOTAL_ITEMS);
+                const isComplete = isBookComplete(book);
+                const isActive = currentActiveBook === book;
 
                 const baseClasses =
                   "relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm";
@@ -99,20 +108,28 @@ export default function ReadingPage() {
                       ? "/reading/books/matthew"
                       : "#"; // later you can link Mark etc.
 
+                  // Determine styling: active = orange, complete = blue, default = white
+                  let cardClasses = "bg-white border-blue-200";
+                  if (isActive) {
+                    cardClasses = "bg-orange-100 border-orange-300 pulse-active-book";
+                  } else if (isComplete) {
+                    cardClasses = "bg-blue-100 border-blue-300";
+                  }
+
                   return (
                     <Link
                       key={book}
                       href={href}
-                      className={`${baseClasses} block ${
-                        book === "Matthew"
-                          ? "bg-orange-100 border-orange-300 pulse-matthew"
-                          : "bg-white border-blue-200"
-                      }`}
+                      className={`${baseClasses} block ${cardClasses}`}
                     >
                       <p className="font-semibold">{book}</p>
                       <p className="text-[11px] mt-1">
-                        {book === "Matthew"
-                          ? "Start here with Jesus. This is your first path."
+                        {isActive
+                          ? book === "Matthew"
+                            ? "Start here with Jesus. This is your first path."
+                            : "This is your current book."
+                          : isComplete
+                          ? "Completed. You've finished this book."
                           : "This book is now unlocked."}
                       </p>
                     </Link>
@@ -169,7 +186,7 @@ export default function ReadingPage() {
 
           {/* animations */}
           <style jsx>{`
-            .pulse-matthew {
+            .pulse-active-book {
               animation: pulseScale 1.6s ease-in-out infinite;
               transform-origin: center;
             }

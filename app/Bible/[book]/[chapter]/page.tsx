@@ -767,21 +767,18 @@ function CongratsModalWithConfetti() {
     triggerConfetti();
   }, []);
 
-  function getBookTotalChapters(bookName: string): number {
-    const bookLower = bookName.toLowerCase();
-    if (bookLower === "matthew") return 28;
-    if (bookLower === "mark") return 16;
-    if (bookLower === "luke") return 24;
-    if (bookLower === "john") return 21;
-    if (bookLower === "acts") return 28;
-    if (bookLower === "romans") return 16;
-    return 28;
-  }
+  const totalChapters = getBookTotalChapters(book);
+  const isLastChapter = chapter >= totalChapters;
+  
+  // Get next book name
+  const BOOKS = ["Matthew", "Mark", "Luke", "John", "Acts", "Romans"];
+  const currentBookIndex = BOOKS.findIndex(b => b.toLowerCase() === book.toLowerCase());
+  const nextBook = currentBookIndex >= 0 && currentBookIndex < BOOKS.length - 1 ? BOOKS[currentBookIndex + 1] : null;
 
   function handleContinueToNextChapter() {
-    const totalChapters = getBookTotalChapters(book);
-    if (chapter >= totalChapters) {
-      router.push(backLink);
+    if (isLastChapter) {
+      // Go to reading plan page to start next book
+      router.push("/reading");
     } else {
       router.push(`/Bible/${book}/${chapter + 1}`);
     }
@@ -840,13 +837,13 @@ function CongratsModalWithConfetti() {
               Read {bookDisplayName} {chapter} Notes
             </button>
 
-            {/* CENTER: Continue to Next Chapter */}
+            {/* CENTER: Continue to Next Chapter or Start Next Book */}
             <button
               type="button"
               onClick={handleContinueToNextChapter}
               className="px-4 py-4 rounded-2xl text-sm md:text-base font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition text-center"
             >
-              Continue to Next Chapter
+              {isLastChapter && nextBook ? `Start ${nextBook}` : "Continue to Next Chapter"}
             </button>
 
             {/* RIGHT: Take Notes */}

@@ -112,23 +112,73 @@ export function markMatthewStepDone(
 }
 
 /**
- * Check if all 28 chapters of Matthew are completed.
+ * Get total chapters for a book.
  */
-export function isMatthewComplete(): boolean {
+export function getBookTotalChapters(bookName: string): number {
+  const bookLower = bookName.toLowerCase();
+  if (bookLower === "matthew") return 28;
+  if (bookLower === "mark") return 16;
+  if (bookLower === "luke") return 24;
+  if (bookLower === "john") return 21;
+  if (bookLower === "acts") return 28;
+  if (bookLower === "romans") return 16;
+  return 28; // default
+}
+
+/**
+ * Check if a book is complete (all chapters finished).
+ */
+export function isBookComplete(bookName: string): boolean {
   const progress = loadProgress();
-  const bookKey = "matthew";
+  const bookKey = bookName.toLowerCase();
+  const totalChapters = getBookTotalChapters(bookName);
 
   // Check if using dynamic system
   if (progress.bookProgress && progress.bookProgress[bookKey]) {
     const bookData = progress.bookProgress[bookKey];
-    // All 28 chapters (1-28) are completed if currentChapter > 28 or we have all 28 in completedChapters
-    const completedCount = bookData.completedChapters.filter((ch) => ch >= 1 && ch <= 28).length;
-    return completedCount >= 28 || bookData.currentChapter > 28;
+    // All chapters are completed if currentChapter > totalChapters or we have all chapters in completedChapters
+    const completedCount = bookData.completedChapters.filter((ch) => ch >= 1 && ch <= totalChapters).length;
+    return completedCount >= totalChapters || bookData.currentChapter > totalChapters;
   }
 
-  // Backward compatibility: old system
-  // matthewCurrentStep 29 means all 28 chapters + overview are done
-  return progress.matthewCurrentStep >= 29;
+  // Backward compatibility for Matthew: old system
+  if (bookKey === "matthew") {
+    // matthewCurrentStep 29 means all 28 chapters + overview are done
+    return progress.matthewCurrentStep >= 29;
+  }
+
+  return false;
+}
+
+/**
+ * Check if all 28 chapters of Matthew are completed.
+ */
+export function isMatthewComplete(): boolean {
+  return isBookComplete("matthew");
+}
+
+/**
+ * Get the current/active book (the book the user is currently reading).
+ * Returns the first unlocked book that is not yet complete.
+ */
+export function getCurrentBook(books: string[]): string | null {
+  for (const book of books) {
+    const progress = loadProgress();
+    const bookKey = book.toLowerCase();
+    
+    // Check if book is unlocked
+    const isUnlocked = book === "Matthew" || isMatthewComplete();
+    if (!isUnlocked) continue;
+    
+    // Check if book is complete
+    const isComplete = isBookComplete(book);
+    if (!isComplete) {
+      return book; // This is the current active book
+    }
+  }
+  
+  // All unlocked books are complete, return the last one or null
+  return null;
 }
 
 /**
