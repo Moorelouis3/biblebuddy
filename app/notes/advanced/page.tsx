@@ -60,6 +60,7 @@ export default function AdvancedNotePage() {
       }),
     ],
     content: "",
+    immediatelyRender: false, // Required for SSR to avoid hydration mismatches
     editorProps: {
       attributes: {
         class: "prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none min-h-[400px] p-4",
