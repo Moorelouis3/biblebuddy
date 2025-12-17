@@ -89,10 +89,8 @@ export default function BibleStudyNotesPage() {
                   "relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm";
 
                 if (unlocked) {
-                  const href =
-                    book === "Matthew"
-                      ? "/bible-study-notes/matthew"
-                      : "#"; // later you can link Mark etc.
+                  // Create route for any book (e.g., "Mark" -> "/bible-study-notes/mark")
+                  const href = `/bible-study-notes/${book.toLowerCase()}`;
 
                   return (
                     <Link
