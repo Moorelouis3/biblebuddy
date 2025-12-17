@@ -62,11 +62,6 @@ type ModalMode = "create" | "view" | "edit" | null;
 type FormState = typeof emptyForm;
 
 function formatReference(note: Note) {
-  // Advanced notes use the title from passage field
-  if (note.book === "Advanced") {
-    return note.passage || "Advanced Note";
-  }
-  
   let ref = `${note.book} ${note.chapter}`;
   if (note.verseFrom) {
     if (note.verseTo && note.verseTo !== note.verseFrom) {
@@ -440,8 +435,7 @@ export default function NotesPage() {
                   </p>
 
                   <div className="space-y-6 text-sm">
-                    {/* Only show Passage section for GROW notes, not Advanced */}
-                    {currentNote.book !== "Advanced" && currentNote.passage && (
+                    {currentNote.passage && (
                       <section>
                         <h1 className="text-2xl font-bold mb-4">📖 Passage</h1>
                         <div className="space-y-2">
@@ -481,17 +475,17 @@ export default function NotesPage() {
                     )}
 
                     {/* Advanced Notes - render HTML content */}
-                    {currentNote.book === "Advanced" && currentNote.write && (
+                    {currentNote.write && /<[a-z][\s\S]*>/i.test(currentNote.write) && (
                       <section>
                         <div 
-                          className="prose prose-sm max-w-none"
+                          className="prose prose-sm max-w-none [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:mb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:mb-3 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:mb-2 [&_p]:mb-4 [&_p]:text-gray-700 [&_img]:max-w-full [&_img]:rounded-lg [&_ul]:list-disc [&_ul]:list-inside [&_ol]:list-decimal [&_ol]:list-inside"
                           dangerouslySetInnerHTML={{ __html: currentNote.write }}
                         />
                       </section>
                     )}
 
                     {/* GROW Notes - render write field as text */}
-                    {currentNote.book !== "Advanced" && currentNote.write && (
+                    {currentNote.write && !/<[a-z][\s\S]*>/i.test(currentNote.write) && (
                       <section>
                         <h1 className="text-2xl font-bold mb-4">✍️ Reflection</h1>
                         <div className="space-y-4">
@@ -506,14 +500,18 @@ export default function NotesPage() {
                   </div>
 
                   <div className="mt-6 flex justify-end gap-3">
-                    {currentNote.book === "Advanced" ? (
+                    {/* Check if this is an advanced note (has HTML content) */}
+                    {currentNote.write && /<[a-z][\s\S]*>/i.test(currentNote.write) ? (
                       <button
                         onClick={() => {
                           // Redirect to advanced page with note data for editing
                           const noteData = encodeURIComponent(JSON.stringify({
                             id: currentNote.id,
-                            title: currentNote.passage,
-                            content: currentNote.write
+                            book: currentNote.book,
+                            chapter: currentNote.chapter,
+                            verseFrom: currentNote.verseFrom,
+                            verseTo: currentNote.verseTo,
+                            write: currentNote.write
                           }));
                           window.location.href = `/notes/advanced?edit=${noteData}`;
                         }}
