@@ -200,7 +200,7 @@ export default function AdvancedNotePage() {
         const { data, error } = await supabase
           .from("notes")
           .select("id, book, chapter, verse_from, verse_to, write")
-          .eq("id", Number(editId))
+          .eq("id", editId)
           .single();
 
         if (error || !data) {
