@@ -173,49 +173,82 @@ export default function AdvancedNotePage() {
 
   // Load note data if editing
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
+    if (typeof window === "undefined") return;
+
     const params = new URLSearchParams(window.location.search);
     const editId = params.get("edit");
-    
-    if (editId) {
+
+    if (!editId) return;
+
+    async function loadNote() {
       try {
-        // Try to get note data from sessionStorage first
-        const storedData = sessionStorage.getItem('editNoteData');
-        let noteData;
-        
+        // 1) Try sessionStorage (fast path from Notes page)
+        const storedData = sessionStorage.getItem("editNoteData");
         if (storedData) {
-          noteData = JSON.parse(storedData);
-          // Clear it after use
-          sessionStorage.removeItem('editNoteData');
+          const noteData = JSON.parse(storedData);
+          sessionStorage.removeItem("editNoteData");
           setEditNoteData(noteData);
-          
           setNoteId(noteData.id);
           if (noteData.book) setBook(noteData.book);
           if (noteData.chapter) setChapter(noteData.chapter);
           if (noteData.verseFrom) setVerseFrom(noteData.verseFrom);
           if (noteData.verseTo) setVerseTo(noteData.verseTo);
+          return;
         }
+
+        // 2) Fallback: fetch from Supabase by ID (for live app / direct links)
+        const { data, error } = await supabase
+          .from("notes")
+          .select("id, book, chapter, verse_from, verse_to, write")
+          .eq("id", Number(editId))
+          .single();
+
+        if (error || !data) {
+          console.error("Error loading note for editing:", error);
+          return;
+        }
+
+        const normalized = {
+          id: data.id,
+          book: data.book,
+          chapter: data.chapter,
+          verseFrom: data.verse_from,
+          verseTo: data.verse_to,
+          write: data.write || "",
+        };
+
+        setEditNoteData(normalized);
+        setNoteId(normalized.id);
+        if (normalized.book) setBook(normalized.book);
+        if (normalized.chapter) setChapter(normalized.chapter);
+        if (normalized.verseFrom) setVerseFrom(normalized.verseFrom);
+        if (normalized.verseTo) setVerseTo(normalized.verseTo);
       } catch (err) {
-        console.error("Error parsing edit data:", err);
+        console.error("Error loading edit note data:", err);
       }
     }
+
+    loadNote();
   }, []);
 
   // Set editor content when editor is ready and note data is loaded
   useEffect(() => {
-    if (editor && editNoteData && editNoteData.write) {
-      // If the content is plain text (not HTML), convert it to HTML paragraphs
-      const content = editNoteData.write;
-      const isHtml = /<[a-z][\s\S]*>/i.test(content);
-      if (isHtml) {
-        editor.commands.setContent(content);
-      } else {
-        // Convert plain text to HTML paragraphs
-        const paragraphs = content.split(/\n\s*\n/).filter((p: string) => p.trim());
-        const htmlContent = paragraphs.map((p: string) => `<p>${p.trim().split('\n').join('<br>')}</p>`).join('');
-        editor.commands.setContent(htmlContent || '<p></p>');
-      }
+    if (!editor || !editNoteData) return;
+
+    const content: string = editNoteData.write || "";
+    if (!content) return;
+
+    const isHtml = /<[a-z][\s\S]*>/i.test(content);
+    if (isHtml) {
+      editor.commands.setContent(content);
+    } else {
+      const paragraphs = content
+        .split(/\n\s*\n/)
+        .filter((p: string) => p.trim());
+      const htmlContent = paragraphs
+        .map((p: string) => `<p>${p.trim().split("\n").join("<br>")}</p>`)
+        .join("");
+      editor.commands.setContent(htmlContent || "<p></p>");
     }
   }, [editor, editNoteData]);
 
@@ -479,7 +512,7 @@ export default function AdvancedNotePage() {
 
           <div className="w-px h-6 bg-gray-300 mx-1" />
 
-          {/* Headers */}
+        {/* Headers */}
           <button
             onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
             className={`px-3 py-1.5 rounded text-sm font-semibold ${
@@ -512,6 +545,20 @@ export default function AdvancedNotePage() {
           </button>
 
           <div className="w-px h-6 bg-gray-300 mx-1" />
+
+        {/* Quote */}
+        <button
+          onClick={() => editor.chain().focus().toggleBlockquote().run()}
+          className={`px-3 py-1.5 rounded text-sm ${
+            editor.isActive("blockquote")
+              ? "bg-blue-100 text-blue-700"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+          }`}
+        >
+          ❝ Quote
+        </button>
+
+        <div className="w-px h-6 bg-gray-300 mx-1" />
 
           {/* Lists */}
           <button
