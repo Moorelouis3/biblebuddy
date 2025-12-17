@@ -40,10 +40,86 @@ const ResizableImage = Image.extend({
   },
 });
 
+// Complete Bible books with chapter counts
+const BIBLE_BOOKS: Record<string, number> = {
+  "Genesis": 50,
+  "Exodus": 40,
+  "Leviticus": 27,
+  "Numbers": 36,
+  "Deuteronomy": 34,
+  "Joshua": 24,
+  "Judges": 21,
+  "Ruth": 4,
+  "1 Samuel": 31,
+  "2 Samuel": 24,
+  "1 Kings": 22,
+  "2 Kings": 25,
+  "1 Chronicles": 29,
+  "2 Chronicles": 36,
+  "Ezra": 10,
+  "Nehemiah": 13,
+  "Esther": 10,
+  "Job": 42,
+  "Psalms": 150,
+  "Proverbs": 31,
+  "Ecclesiastes": 12,
+  "Song of Solomon": 8,
+  "Isaiah": 66,
+  "Jeremiah": 52,
+  "Lamentations": 5,
+  "Ezekiel": 48,
+  "Daniel": 12,
+  "Hosea": 14,
+  "Joel": 3,
+  "Amos": 9,
+  "Obadiah": 1,
+  "Jonah": 4,
+  "Micah": 7,
+  "Nahum": 3,
+  "Habakkuk": 3,
+  "Zephaniah": 3,
+  "Haggai": 2,
+  "Zechariah": 14,
+  "Malachi": 4,
+  "Matthew": 28,
+  "Mark": 16,
+  "Luke": 24,
+  "John": 21,
+  "Acts": 28,
+  "Romans": 16,
+  "1 Corinthians": 16,
+  "2 Corinthians": 13,
+  "Galatians": 6,
+  "Ephesians": 6,
+  "Philippians": 4,
+  "Colossians": 4,
+  "1 Thessalonians": 5,
+  "2 Thessalonians": 3,
+  "1 Timothy": 6,
+  "2 Timothy": 4,
+  "Titus": 3,
+  "Philemon": 1,
+  "Hebrews": 13,
+  "James": 5,
+  "1 Peter": 5,
+  "2 Peter": 3,
+  "1 John": 5,
+  "2 John": 1,
+  "3 John": 1,
+  "Jude": 1,
+  "Revelation": 22,
+};
+
+const BOOK_NAMES = Object.keys(BIBLE_BOOKS);
+const MAX_VERSE = 176; // Psalms 119 has 176 verses, the highest in any chapter
+
 export default function AdvancedNotePage() {
   const router = useRouter();
   const [noteId, setNoteId] = useState<string | null>(null);
-  const [title, setTitle] = useState("");
+  const [book, setBook] = useState("Matthew");
+  const [chapter, setChapter] = useState(1);
+  const [verseFrom, setVerseFrom] = useState(1);
+  const [verseTo, setVerseTo] = useState(1);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -69,6 +145,30 @@ export default function AdvancedNotePage() {
     },
   });
 
+  // Get max chapters for selected book
+  const maxChapters = BIBLE_BOOKS[book] || 28;
+
+  // When book changes, reset chapter if it exceeds max
+  useEffect(() => {
+    if (chapter > maxChapters) {
+      setChapter(1);
+    }
+  }, [book, maxChapters]);
+
+  // When chapter changes, reset verses if they exceed max
+  useEffect(() => {
+    if (verseFrom > MAX_VERSE) {
+      setVerseFrom(1);
+    }
+    if (verseTo > MAX_VERSE) {
+      setVerseTo(1);
+    }
+    // Ensure verseTo >= verseFrom
+    if (verseTo < verseFrom) {
+      setVerseTo(verseFrom);
+    }
+  }, [chapter, verseFrom, verseTo]);
+
   // Load note data if editing
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -78,9 +178,12 @@ export default function AdvancedNotePage() {
       try {
         const noteData = JSON.parse(decodeURIComponent(editData));
         setNoteId(noteData.id);
-        setTitle(noteData.title || "");
-        if (editor && noteData.content) {
-          editor.commands.setContent(noteData.content);
+        if (noteData.book) setBook(noteData.book);
+        if (noteData.chapter) setChapter(noteData.chapter);
+        if (noteData.verseFrom) setVerseFrom(noteData.verseFrom);
+        if (noteData.verseTo) setVerseTo(noteData.verseTo);
+        if (editor && noteData.write) {
+          editor.commands.setContent(noteData.write);
         }
       } catch (err) {
         console.error("Error parsing edit data:", err);
@@ -97,11 +200,6 @@ export default function AdvancedNotePage() {
   }, [editor]);
 
   async function handleSave() {
-    if (!title.trim()) {
-      setError("Please enter a title");
-      return;
-    }
-
     if (!editor) {
       setError("Editor not ready");
       return;
@@ -110,6 +208,26 @@ export default function AdvancedNotePage() {
     const content = editor.getHTML();
     if (!content || content === "<p></p>") {
       setError("Please add some content");
+      return;
+    }
+
+    if (!book) {
+      setError("Please select a book");
+      return;
+    }
+
+    if (!chapter || chapter < 1) {
+      setError("Please select a chapter");
+      return;
+    }
+
+    if (!verseFrom || verseFrom < 1) {
+      setError("Please select a verse");
+      return;
+    }
+
+    if (verseTo < verseFrom) {
+      setError("Verse 'to' must be greater than or equal to verse 'from'");
       return;
     }
 
@@ -122,14 +240,20 @@ export default function AdvancedNotePage() {
         throw new Error("Not authenticated");
       }
 
-      // Save or update advanced note
+      // Save or update note - same structure as GROW notes
       if (noteId) {
         // Update existing note
         const { error: updateError } = await supabase
           .from("notes")
           .update({
-            passage: title.trim(),
-            write: content,
+            book: book,
+            chapter: chapter,
+            verse_from: verseFrom,
+            verse_to: verseTo,
+            passage: "", // Empty for advanced notes
+            research: "", // Empty for advanced notes
+            observe: "", // Empty for advanced notes
+            write: content, // HTML content from editor
           })
           .eq("id", Number(noteId))
           .eq("user_id", user.id);
@@ -143,23 +267,19 @@ export default function AdvancedNotePage() {
           .from("notes")
           .insert({
             user_id: user.id,
-            book: "Advanced",
-            chapter: 0,
-            verse_from: null,
-            verse_to: null,
-            passage: title.trim(), // Store title in passage field
+            book: book,
+            chapter: chapter,
+            verse_from: verseFrom,
+            verse_to: verseTo,
+            passage: "", // Empty for advanced notes
             research: "", // Empty for advanced notes
             observe: "", // Empty for advanced notes
-            write: content, // Store HTML content in write field
+            write: content, // HTML content from editor
           });
 
         if (saveError) {
           throw saveError;
         }
-      }
-
-      if (saveError) {
-        throw saveError;
       }
 
       router.push("/notes");
@@ -212,18 +332,85 @@ export default function AdvancedNotePage() {
           </button>
         </div>
 
-        {/* Title Input */}
-        <div className="mb-4">
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Title
-          </label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Enter note title..."
-            className="w-full rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-          />
+        {/* Dropdowns */}
+        <div className="mb-4 bg-white rounded-xl border border-gray-200 p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Book Dropdown */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Book
+            </label>
+            <select
+              value={book}
+              onChange={(e) => setBook(e.target.value)}
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+            >
+              {BOOK_NAMES.map((bookName) => (
+                <option key={bookName} value={bookName}>
+                  {bookName}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Chapter Dropdown */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Chapter
+            </label>
+            <select
+              value={chapter}
+              onChange={(e) => setChapter(Number(e.target.value))}
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+            >
+              {Array.from({ length: maxChapters }, (_, i) => i + 1).map((ch) => (
+                <option key={ch} value={ch}>
+                  {ch}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Verse From Dropdown */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Verse From
+            </label>
+            <select
+              value={verseFrom}
+              onChange={(e) => {
+                const newFrom = Number(e.target.value);
+                setVerseFrom(newFrom);
+                if (verseTo < newFrom) {
+                  setVerseTo(newFrom);
+                }
+              }}
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+            >
+              {Array.from({ length: MAX_VERSE }, (_, i) => i + 1).map((v) => (
+                <option key={v} value={v}>
+                  {v}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Verse To Dropdown */}
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Verse To
+            </label>
+            <select
+              value={verseTo}
+              onChange={(e) => setVerseTo(Number(e.target.value))}
+              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+            >
+              {Array.from({ length: MAX_VERSE }, (_, i) => i + 1).map((v) => (
+                <option key={v} value={v} disabled={v < verseFrom}>
+                  {v}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         {/* Toolbar */}
@@ -330,10 +517,9 @@ export default function AdvancedNotePage() {
             📷 Image
           </button>
 
-          {/* Emoji button - opens emoji picker or allows pasting */}
+          {/* Emoji button */}
           <button
             onClick={() => {
-              // Insert emoji at cursor - user can type emojis or paste them
               const emoji = prompt("Type or paste an emoji:");
               if (emoji && editor) {
                 editor.chain().focus().insertContent(emoji).run();
@@ -425,4 +611,3 @@ export default function AdvancedNotePage() {
     </div>
   );
 }
-
