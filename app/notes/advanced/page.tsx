@@ -189,8 +189,8 @@ export default function AdvancedNotePage() {
             editor.commands.setContent(content);
           } else {
             // Convert plain text to HTML paragraphs
-            const paragraphs = content.split(/\n\s*\n/).filter(p => p.trim());
-            const htmlContent = paragraphs.map(p => `<p>${p.trim().split('\n').join('<br>')}</p>`).join('');
+            const paragraphs = content.split(/\n\s*\n/).filter((p: string) => p.trim());
+            const htmlContent = paragraphs.map((p: string) => `<p>${p.trim().split('\n').join('<br>')}</p>`).join('');
             editor.commands.setContent(htmlContent || '<p></p>');
           }
         }
