@@ -523,6 +523,16 @@ export default function AdvancedNotePage() {
 
         {/* Headers */}
           <button
+            onClick={() => editor.chain().focus().setParagraph().run()}
+            className={`px-3 py-1.5 rounded text-sm font-semibold ${
+              !editor.isActive("heading")
+                ? "bg-blue-100 text-blue-700"
+                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+            }`}
+          >
+            Text
+          </button>
+          <button
             onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
             className={`px-3 py-1.5 rounded text-sm font-semibold ${
               editor.isActive("heading", { level: 1 })
