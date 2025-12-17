@@ -42,6 +42,7 @@ const ResizableImage = Image.extend({
 
 export default function AdvancedNotePage() {
   const router = useRouter();
+  const [noteId, setNoteId] = useState<string | null>(null);
   const [title, setTitle] = useState("");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
