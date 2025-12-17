@@ -504,16 +504,17 @@ export default function NotesPage() {
                   <div className="mt-6 flex justify-end gap-3">
                     <button
                       onClick={() => {
-                        // Always redirect to advanced editor for all notes
-                        const noteData = encodeURIComponent(JSON.stringify({
+                        // Store note data in sessionStorage and navigate with just the ID
+                        const noteData = {
                           id: currentNote.id,
                           book: currentNote.book,
                           chapter: currentNote.chapter,
                           verseFrom: currentNote.verseFrom,
                           verseTo: currentNote.verseTo,
                           write: currentNote.write || ""
-                        }));
-                        router.push(`/notes/advanced?edit=${noteData}`);
+                        };
+                        sessionStorage.setItem('editNoteData', JSON.stringify(noteData));
+                        router.push('/notes/advanced?edit=' + currentNote.id);
                       }}
                       className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold"
                     >

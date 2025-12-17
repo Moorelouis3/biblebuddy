@@ -170,12 +170,27 @@ export default function AdvancedNotePage() {
 
   // Load note data if editing
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const editData = params.get("edit");
+    if (typeof window === 'undefined') return;
     
-    if (editData) {
+    const params = new URLSearchParams(window.location.search);
+    const editId = params.get("edit");
+    
+    if (editId) {
       try {
-        const noteData = JSON.parse(decodeURIComponent(editData));
+        // Try to get note data from sessionStorage first
+        const storedData = sessionStorage.getItem('editNoteData');
+        let noteData;
+        
+        if (storedData) {
+          noteData = JSON.parse(storedData);
+          // Clear it after use
+          sessionStorage.removeItem('editNoteData');
+        } else {
+          // Fallback: fetch from Supabase if not in sessionStorage
+          // This handles direct URL access or if sessionStorage was cleared
+          return;
+        }
+        
         setNoteId(noteData.id);
         if (noteData.book) setBook(noteData.book);
         if (noteData.chapter) setChapter(noteData.chapter);
