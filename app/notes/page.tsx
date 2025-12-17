@@ -504,17 +504,24 @@ export default function NotesPage() {
                   <div className="mt-6 flex justify-end gap-3">
                     <button
                       onClick={() => {
-                        // Store note data in sessionStorage and navigate with just the ID
-                        const noteData = {
-                          id: currentNote.id,
-                          book: currentNote.book,
-                          chapter: currentNote.chapter,
-                          verseFrom: currentNote.verseFrom,
-                          verseTo: currentNote.verseTo,
-                          write: currentNote.write || ""
-                        };
-                        sessionStorage.setItem('editNoteData', JSON.stringify(noteData));
-                        router.push('/notes/advanced?edit=' + currentNote.id);
+                        // Try to store note data in sessionStorage for fast loading.
+                        // If it fails (e.g., too large), still navigate and let the advanced
+                        // editor load the content directly from Supabase by ID.
+                        try {
+                          const noteData = {
+                            id: currentNote.id,
+                            book: currentNote.book,
+                            chapter: currentNote.chapter,
+                            verseFrom: currentNote.verseFrom,
+                            verseTo: currentNote.verseTo,
+                            write: currentNote.write || "",
+                          };
+                          sessionStorage.setItem("editNoteData", JSON.stringify(noteData));
+                        } catch (e) {
+                          console.warn("Could not cache edit note data in sessionStorage:", e);
+                        }
+
+                        router.push("/notes/advanced?edit=" + currentNote.id);
                       }}
                       className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold"
                     >
