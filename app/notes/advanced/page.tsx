@@ -168,6 +168,9 @@ export default function AdvancedNotePage() {
     }
   }, [chapter, verseFrom, verseTo]);
 
+  // Store note data when editing
+  const [editNoteData, setEditNoteData] = useState<any>(null);
+
   // Load note data if editing
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -185,35 +188,36 @@ export default function AdvancedNotePage() {
           noteData = JSON.parse(storedData);
           // Clear it after use
           sessionStorage.removeItem('editNoteData');
-        } else {
-          // Fallback: fetch from Supabase if not in sessionStorage
-          // This handles direct URL access or if sessionStorage was cleared
-          return;
-        }
-        
-        setNoteId(noteData.id);
-        if (noteData.book) setBook(noteData.book);
-        if (noteData.chapter) setChapter(noteData.chapter);
-        if (noteData.verseFrom) setVerseFrom(noteData.verseFrom);
-        if (noteData.verseTo) setVerseTo(noteData.verseTo);
-        if (editor && noteData.write) {
-          // If the content is plain text (not HTML), convert it to HTML paragraphs
-          const content = noteData.write;
-          const isHtml = /<[a-z][\s\S]*>/i.test(content);
-          if (isHtml) {
-            editor.commands.setContent(content);
-          } else {
-            // Convert plain text to HTML paragraphs
-            const paragraphs = content.split(/\n\s*\n/).filter((p: string) => p.trim());
-            const htmlContent = paragraphs.map((p: string) => `<p>${p.trim().split('\n').join('<br>')}</p>`).join('');
-            editor.commands.setContent(htmlContent || '<p></p>');
-          }
+          setEditNoteData(noteData);
+          
+          setNoteId(noteData.id);
+          if (noteData.book) setBook(noteData.book);
+          if (noteData.chapter) setChapter(noteData.chapter);
+          if (noteData.verseFrom) setVerseFrom(noteData.verseFrom);
+          if (noteData.verseTo) setVerseTo(noteData.verseTo);
         }
       } catch (err) {
         console.error("Error parsing edit data:", err);
       }
     }
-  }, [editor]);
+  }, []);
+
+  // Set editor content when editor is ready and note data is loaded
+  useEffect(() => {
+    if (editor && editNoteData && editNoteData.write) {
+      // If the content is plain text (not HTML), convert it to HTML paragraphs
+      const content = editNoteData.write;
+      const isHtml = /<[a-z][\s\S]*>/i.test(content);
+      if (isHtml) {
+        editor.commands.setContent(content);
+      } else {
+        // Convert plain text to HTML paragraphs
+        const paragraphs = content.split(/\n\s*\n/).filter((p: string) => p.trim());
+        const htmlContent = paragraphs.map((p: string) => `<p>${p.trim().split('\n').join('<br>')}</p>`).join('');
+        editor.commands.setContent(htmlContent || '<p></p>');
+      }
+    }
+  }, [editor, editNoteData]);
 
   useEffect(() => {
     return () => {
