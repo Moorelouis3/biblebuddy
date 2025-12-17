@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { supabase } from "../../lib/supabaseClient";
 import NewNoteModal from "../../components/NewNoteModal";
@@ -94,6 +95,7 @@ function formatDisplayDate(isoString: string) {
 }
 
 export default function NotesPage() {
+  const router = useRouter();
   const [notes, setNotes] = useState<Note[]>([]);
   const [bookFilter, setBookFilter] = useState("All books");
   const [dateSort, setDateSort] = useState<"newest" | "oldest">("newest");
@@ -511,7 +513,7 @@ export default function NotesPage() {
                           verseTo: currentNote.verseTo,
                           write: currentNote.write || ""
                         }));
-                        window.location.href = `/notes/advanced?edit=${noteData}`;
+                        router.push(`/notes/advanced?edit=${noteData}`);
                       }}
                       className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold"
                     >
