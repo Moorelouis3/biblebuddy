@@ -609,13 +609,23 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           ))}
         </div>
 
-        {/* MARK AS FINISHED BUTTON */}
-        <div className="flex flex-col items-center gap-4 mb-6">
+        {/* ACTION BUTTONS ROW */}
+        <div className="w-full max-w-3xl mx-auto flex flex-col md:flex-row items-center md:items-stretch md:justify-between gap-3 mb-4">
+          {/* LEFT: Read Notes */}
+          <button
+            type="button"
+            onClick={() => router.push(`/reading-plan/${book}/${chapter}/notes`)}
+            className="w-full md:w-auto px-4 py-3 rounded-full text-sm md:text-base font-semibold bg-white text-blue-700 border-2 border-blue-200 shadow-sm hover:bg-blue-50 hover:border-blue-300 transition text-center"
+          >
+            Read {bookDisplayName} {chapter} Notes
+          </button>
+
+          {/* CENTER: Mark as Finished */}
           <button
             type="button"
             onClick={handleMarkFinished}
             disabled={isSaving || isCompleted}
-            className={`px-6 py-3 rounded-full text-base font-semibold shadow-sm transition ${
+            className={`w-full md:w-auto px-6 py-3 rounded-full text-base font-semibold shadow-sm transition ${
               isCompleted
                 ? "bg-gray-400 text-white cursor-not-allowed"
                 : isSaving
@@ -630,7 +640,18 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               : `Mark ${bookDisplayName} ${chapter} as finished`}
           </button>
 
-          {/* Go Back to Bible Books Button */}
+          {/* RIGHT: Take Notes */}
+          <button
+            type="button"
+            onClick={() => router.push(`/notes?book=${book}&chapter=${chapter}`)}
+            className="w-full md:w-auto px-4 py-3 rounded-full text-sm md:text-base font-semibold bg-white text-blue-700 border-2 border-blue-200 shadow-sm hover:bg-blue-50 hover:border-blue-300 transition text-center"
+          >
+            Take Notes on {bookDisplayName} {chapter}
+          </button>
+        </div>
+
+        {/* Go Back to Bible Books Button */}
+        <div className="flex flex-col items-center gap-4 mb-6">
           <Link
             href={backLink}
             className="text-sm text-blue-600 hover:underline"
@@ -826,33 +847,15 @@ function CongratsModalWithConfetti() {
             </p>
           </div>
 
-          {/* Three Action Buttons */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            {/* LEFT: Read Notes */}
-            <button
-              type="button"
-              onClick={handleReadNotes}
-              className="px-4 py-4 rounded-2xl text-sm md:text-base font-semibold bg-white text-blue-700 border-2 border-blue-200 shadow-sm hover:bg-blue-50 hover:border-blue-300 transition text-center"
-            >
-              Read {bookDisplayName} {chapter} Notes
-            </button>
-
-            {/* CENTER: Continue to Next Chapter or Start Next Book */}
+          {/* Action Buttons */}
+          <div className="grid grid-cols-1 gap-4 mb-6">
+            {/* Continue to Next Chapter or Start Next Book */}
             <button
               type="button"
               onClick={handleContinueToNextChapter}
               className="px-4 py-4 rounded-2xl text-sm md:text-base font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition text-center"
             >
               {isLastChapter && nextBook ? `Start ${nextBook}` : "Continue to Next Chapter"}
-            </button>
-
-            {/* RIGHT: Take Notes */}
-            <button
-              type="button"
-              onClick={handleTakeNotes}
-              className="px-4 py-4 rounded-2xl text-sm md:text-base font-semibold bg-white text-blue-700 border-2 border-blue-200 shadow-sm hover:bg-blue-50 hover:border-blue-300 transition text-center"
-            >
-              Take Notes on {bookDisplayName} {chapter}
             </button>
           </div>
 
