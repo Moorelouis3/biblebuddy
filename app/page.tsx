@@ -54,7 +54,14 @@ export default function LandingPage() {
         </div>
         <div className="text-xs md:text-sm text-gray-500">
           Powered by{" "}
-          <span className="font-semibold text-gray-800">Hope Nation</span>
+          <Link
+            href="https://joinhopenation.com"
+            className="font-semibold text-gray-800 underline hover:text-gray-900"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Hope Nation
+          </Link>
         </div>
       </header>
 
