@@ -100,8 +100,14 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
             new RegExp(`.*${bookDisplayName}.*[Cc]hapter.*${chapter}.*`, "i")
           ));
 
-      // If we find the Big Idea section (🧠), start including lines
-      if (trimmedLine.startsWith("🧠")) {
+      // If we find the Big Idea section (🧠), start including lines.
+      // Support both:
+      // - "🧠 Big Idea of the Chapter"
+      // - "# 🧠 Big Idea of the Chapter"
+      const isBigIdeaHeader =
+        trimmedLine.startsWith("🧠") || /^#+\s*🧠/.test(trimmedLine);
+
+      if (isBigIdeaHeader) {
         foundBigIdea = true;
         skipUntilBigIdea = false;
         cleanedLines.push(line);
@@ -122,12 +128,18 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     cleaned = cleanedLines.join("\n").trim();
 
     // Final safety check: ensure it starts with Big Idea
-    if (!cleaned.startsWith("🧠")) {
+    if (!cleaned.startsWith("🧠") && !cleaned.startsWith("#")) {
       const bigIdeaIndex = cleaned.indexOf("🧠");
       if (bigIdeaIndex > 0) {
         cleaned = cleaned.substring(bigIdeaIndex);
       }
     }
+
+    // Normalize the Big Idea header so it is always H1: "# 🧠 Big Idea of the Chapter"
+    cleaned = cleaned.replace(
+      /^#+\s*🧠/m,
+      "# 🧠"
+    );
 
     return cleaned.trim();
   }
@@ -146,7 +158,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       // 1) Check Supabase for existing notes FIRST
       const { data: existing, error: existingError } = await supabase
         .from("bible_notes")
-        .select("notes_text")
+        .select("id, notes_text")
         .eq("book", book)
         .eq("chapter", chapter)
         .maybeSingle();
@@ -155,7 +167,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         console.warn("Error checking bible_notes", existingError);
       }
 
-      if (existing?.notes_text) {
+      if (existing?.notes_text && existing.notes_text.trim().length > 0) {
         // Found in Supabase - use it, DO NOT call OpenAI
         // Clean it in case it was generated with old format
         const cleaned = cleanNotesText(existing.notes_text);
@@ -203,16 +215,22 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
       setNotesText(generated);
 
-      // 3) Save to Supabase ONCE - check first to prevent duplicates
-      const { data: existingCheck } = await supabase
-        .from("bible_notes")
-        .select("id")
-        .eq("book", book)
-        .eq("chapter", chapter)
-        .maybeSingle();
+      // 3) Save to Supabase:
+      // - If a row exists (even with empty notes_text), UPDATE it
+      // - Otherwise INSERT a new row
+      if (existing?.id) {
+        const { error: updateError } = await supabase
+          .from("bible_notes")
+          .update({ notes_text: generated })
+          .eq("id", existing.id);
 
-      if (!existingCheck) {
-        // Only insert if it doesn't exist
+        if (updateError) {
+          console.error("Error updating notes in bible_notes:", updateError);
+          setNotesError(`Notes generated but could not save: ${updateError.message}`);
+        } else {
+          console.log("Successfully updated notes in Supabase for existing row:", existing.id);
+        }
+      } else {
         const { data: insertData, error: insertError } = await supabase
           .from("bible_notes")
           .insert([
@@ -231,8 +249,6 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         } else {
           console.log("Successfully saved notes to Supabase:", insertData);
         }
-      } else {
-        console.log("Notes already exist in Supabase, skipping insert");
       }
     } catch (err: any) {
       console.error("Error loading or generating notes", err);
