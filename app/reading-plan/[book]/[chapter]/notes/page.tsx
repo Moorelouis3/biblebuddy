@@ -213,11 +213,15 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       // Clean up: remove any top-level headers that AI might have generated
       generated = cleanNotesText(generated);
 
+      // IMPORTANT: Display notes immediately after generation
+      // Saving happens AFTER displaying - don't let save failures block rendering
       setNotesText(generated);
+      setLoadingNotes(false); // Stop loading so notes display immediately
 
-      // 3) Save to Supabase:
+      // 3) Attempt to save to Supabase AFTER displaying notes:
       // - If a row exists (even with empty notes_text), UPDATE it
       // - Otherwise INSERT a new row
+      // Save failures should only show a warning, not prevent display
       if (existing?.id) {
         const { error: updateError } = await supabase
           .from("bible_notes")
@@ -226,7 +230,8 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
         if (updateError) {
           console.error("Error updating notes in bible_notes:", updateError);
-          setNotesError(`Notes generated but could not save: ${updateError.message}`);
+          // Non-blocking warning - notes are already displayed
+          setNotesError(`Note: Could not save to database: ${updateError.message}`);
         } else {
           console.log("Successfully updated notes in Supabase for existing row:", existing.id);
         }
@@ -244,8 +249,8 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
         if (insertError) {
           console.error("Error saving notes to bible_notes:", insertError);
-          // Don't throw - we still want to show the notes even if save fails
-          setNotesError(`Notes generated but could not save: ${insertError.message}`);
+          // Non-blocking warning - notes are already displayed
+          setNotesError(`Note: Could not save to database: ${insertError.message}`);
         } else {
           console.log("Successfully saved notes to Supabase:", insertData);
         }
@@ -291,34 +296,44 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                 <p className="text-gray-600">Generating notes...</p>
               )}
 
-              {notesError && (
-                <p className="text-red-600">{notesError}</p>
+              {/* Display notes if they exist - errors should not block display */}
+              {!loadingNotes && notesText && (
+                <>
+                  {/* Non-blocking warning if save failed */}
+                  {notesError && (
+                    <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                      <p className="text-yellow-800 text-sm">{notesError}</p>
+                    </div>
+                  )}
+                  <div className="prose prose-sm md:prose-base max-w-none">
+                    <ReactMarkdown
+                      components={{
+                        h1: ({ node, ...props }) => (
+                          <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
+                        ),
+                        p: ({ node, ...props }) => (
+                          <p className="mb-4 leading-relaxed" {...props} />
+                        ),
+                        strong: ({ node, ...props }) => (
+                          <strong className="font-bold" {...props} />
+                        ),
+                        ul: ({ node, ...props }) => (
+                          <ul className="list-disc list-inside mb-4 space-y-2" {...props} />
+                        ),
+                        li: ({ node, ...props }) => (
+                          <li className="ml-4" {...props} />
+                        ),
+                      }}
+                    >
+                      {notesText}
+                    </ReactMarkdown>
+                  </div>
+                </>
               )}
 
-              {!loadingNotes && !notesError && notesText && (
-                <div className="prose prose-sm md:prose-base max-w-none">
-                  <ReactMarkdown
-                    components={{
-                      h1: ({ node, ...props }) => (
-                        <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
-                      ),
-                      p: ({ node, ...props }) => (
-                        <p className="mb-4 leading-relaxed" {...props} />
-                      ),
-                      strong: ({ node, ...props }) => (
-                        <strong className="font-bold" {...props} />
-                      ),
-                      ul: ({ node, ...props }) => (
-                        <ul className="list-disc list-inside mb-4 space-y-2" {...props} />
-                      ),
-                      li: ({ node, ...props }) => (
-                        <li className="ml-4" {...props} />
-                      ),
-                    }}
-                  >
-                    {notesText}
-                  </ReactMarkdown>
-                </div>
+              {/* Show error only if no notes are available */}
+              {!loadingNotes && !notesText && notesError && (
+                <p className="text-red-600">{notesError}</p>
               )}
             </div>
           </section>
