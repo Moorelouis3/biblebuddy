@@ -21,11 +21,11 @@ DROP POLICY IF EXISTS "Users can insert their own bible_notes" ON public.bible_n
 -- =====================================================
 -- STEP 3: Create the INSERT policy
 -- =====================================================
+-- Note: For INSERT policies, only WITH CHECK is allowed (not USING)
 CREATE POLICY "Allow authenticated inserts"
 ON public.bible_notes
 FOR INSERT
 TO authenticated
-USING (true)
 WITH CHECK (true);
 
 -- =====================================================

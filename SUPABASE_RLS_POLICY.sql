@@ -17,11 +17,11 @@ ALTER TABLE public.bible_notes ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Allow authenticated inserts" ON public.bible_notes;
 
 -- Create the INSERT policy
+-- Note: For INSERT policies, only WITH CHECK is allowed (not USING)
 CREATE POLICY "Allow authenticated inserts"
 ON public.bible_notes
 FOR INSERT
 TO authenticated
-USING (true)
 WITH CHECK (true);
 
 -- =====================================================
