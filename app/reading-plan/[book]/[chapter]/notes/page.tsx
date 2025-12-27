@@ -345,7 +345,6 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                       {notesText}
                     </ReactMarkdown>
                   </div>
-                </>
               )}
 
               {/* Show error only if no notes are available */}
