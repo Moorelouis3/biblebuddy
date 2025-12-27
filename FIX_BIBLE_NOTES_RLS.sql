@@ -16,16 +16,19 @@ ALTER TABLE public.bible_notes ENABLE ROW LEVEL SECURITY;
 -- STEP 2: Drop any existing INSERT policy that might conflict
 -- =====================================================
 DROP POLICY IF EXISTS "Allow authenticated inserts" ON public.bible_notes;
+DROP POLICY IF EXISTS "Allow anon inserts" ON public.bible_notes;
 DROP POLICY IF EXISTS "Users can insert their own bible_notes" ON public.bible_notes;
 
 -- =====================================================
--- STEP 3: Create the INSERT policy
+-- STEP 3: Create the INSERT policy for anon role
 -- =====================================================
+-- Note: Inserts are running as 'anon' role, not 'authenticated'
+-- Since notes are global (not user-specific), allow anon inserts
 -- Note: For INSERT policies, only WITH CHECK is allowed (not USING)
-CREATE POLICY "Allow authenticated inserts"
+CREATE POLICY "Allow anon inserts"
 ON public.bible_notes
 FOR INSERT
-TO authenticated
+TO anon
 WITH CHECK (true);
 
 -- =====================================================
