@@ -239,6 +239,14 @@ export default function BibleChapterPage() {
     summaryLoadingRef.current = true;
 
     try {
+      // Get user ID for RLS
+      const { data: userData, error: userError } = await supabase.auth.getUser();
+      if (userError || !userData?.user) {
+        console.error("Error getting user:", userError);
+        return "";
+      }
+      const userId = userData.user.id;
+
       // Step 1: Check if notes exist in Supabase
       // IMPORTANT: Use lowercase book name for query
       const bookKey = bookName.toLowerCase().trim();
@@ -366,6 +374,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                 book: bookKey,
                 chapter: chapterNum,
                 notes_text: generated,
+                user_id: userId,
               },
             ]);
 

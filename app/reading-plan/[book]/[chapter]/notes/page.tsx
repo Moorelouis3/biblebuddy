@@ -155,6 +155,17 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       setLoadingNotes(true);
       setNotesError(null);
 
+      // Get user ID for RLS
+      const { data: userData, error: userError } = await supabase.auth.getUser();
+      if (userError || !userData?.user) {
+        console.error("Error getting user:", userError);
+        setNotesError("Authentication error. Please log in again.");
+        setLoadingNotes(false);
+        loadingRef.current = false;
+        return;
+      }
+      const userId = userData.user.id;
+
       // 1) Check Supabase for existing notes FIRST
       const { data: existing, error: existingError } = await supabase
         .from("bible_notes")
@@ -238,6 +249,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               book,
               chapter,
               notes_text: generated,
+              user_id: userId,
             },
           ])
           .select();
