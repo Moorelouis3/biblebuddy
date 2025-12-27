@@ -221,7 +221,6 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       // 3) Attempt to save to Supabase AFTER displaying notes:
       // - If a row exists (even with empty notes_text), UPDATE it
       // - Otherwise INSERT a new row
-      // Save failures should only show a warning, not prevent display
       if (existing?.id) {
         const { error: updateError } = await supabase
           .from("bible_notes")
@@ -230,13 +229,11 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
         if (updateError) {
           console.error("Error updating notes in bible_notes:", updateError);
-          // Non-blocking warning - notes are already displayed
-          setNotesError(`Note: Could not save to database: ${updateError.message}`);
         } else {
           console.log("Successfully updated notes in Supabase for existing row:", existing.id);
         }
       } else {
-        const { data: insertData, error: insertError } = await supabase
+        const { error: insertError } = await supabase
           .from("bible_notes")
           .insert([
             {
@@ -244,16 +241,40 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               chapter,
               notes_text: generated,
             },
-          ])
-          .select();
+          ]);
 
         if (insertError) {
           console.error("Error saving notes to bible_notes:", insertError);
-          // Non-blocking warning - notes are already displayed
-          setNotesError(`Note: Could not save to database: ${insertError.message}`);
         } else {
-          console.log("Successfully saved notes to Supabase:", insertData);
+          console.log("Successfully inserted notes into Supabase");
         }
+      }
+
+      // 4) Re-fetch from database after insert/update attempt to verify actual state
+      // UI state should be derived from database, not from insert response
+      const { data: savedRow, error: fetchError } = await supabase
+        .from("bible_notes")
+        .select("notes_text")
+        .eq("book", book)
+        .eq("chapter", chapter)
+        .maybeSingle();
+
+      if (fetchError) {
+        console.warn("Error re-fetching notes after save:", fetchError);
+      }
+
+      // 5) If row exists in database after save attempt, use database state
+      // This ensures UI is in sync with actual database state
+      if (savedRow?.notes_text && savedRow.notes_text.trim().length > 0) {
+        // Row exists in DB - use database state, clear any errors
+        const cleaned = cleanNotesText(savedRow.notes_text);
+        setNotesText(cleaned);
+        setNotesError(null); // Clear error since row exists in DB
+        console.log("Notes successfully saved and verified in database");
+      } else {
+        // Row doesn't exist in DB after save attempt - show non-blocking warning
+        // Notes are already displayed, so this is just a warning
+        setNotesError(`Note: Could not verify save to database. Notes may not persist.`);
       }
     } catch (err: any) {
       console.error("Error loading or generating notes", err);
