@@ -265,6 +265,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
       // 5) If row exists in database after save attempt, use database state
       // This ensures UI is in sync with actual database state
+      // Note: Verification failures are logged internally, not shown to users
       if (savedRow?.notes_text && savedRow.notes_text.trim().length > 0) {
         // Row exists in DB - use database state, clear any errors
         const cleaned = cleanNotesText(savedRow.notes_text);
@@ -272,9 +273,11 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         setNotesError(null); // Clear error since row exists in DB
         console.log("Notes successfully saved and verified in database");
       } else {
-        // Row doesn't exist in DB after save attempt - show non-blocking warning
-        // Notes are already displayed, so this is just a warning
-        setNotesError(`Note: Could not verify save to database. Notes may not persist.`);
+        // Row doesn't exist in DB after save attempt - log internally only
+        // Do NOT show warning to users - persistence is an internal concern
+        console.warn("Notes verification failed: Row not found in database after save attempt", { book, chapter });
+        // Keep the generated notes displayed - don't set an error
+        // Verification failures will be visible to admins on Analytics page
       }
     } catch (err: any) {
       console.error("Error loading or generating notes", err);
@@ -317,16 +320,9 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                 <p className="text-gray-600">Generating notes...</p>
               )}
 
-              {/* Display notes if they exist - errors should not block display */}
+              {/* Display notes if they exist - no persistence warnings shown to users */}
               {!loadingNotes && notesText && (
-                <>
-                  {/* Non-blocking warning if save failed */}
-                  {notesError && (
-                    <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                      <p className="text-yellow-800 text-sm">{notesError}</p>
-                    </div>
-                  )}
-                  <div className="prose prose-sm md:prose-base max-w-none">
+                <div className="prose prose-sm md:prose-base max-w-none">
                     <ReactMarkdown
                       components={{
                         h1: ({ node, ...props }) => (

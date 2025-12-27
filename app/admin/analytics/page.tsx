@@ -10,6 +10,7 @@ export default function AnalyticsPage() {
   const [signups30d, setSignups30d] = useState(0);
   const [totalUsers, setTotalUsers] = useState(0);
   const [noteCount, setNoteCount] = useState(0);
+  const [hasVerificationIssues, setHasVerificationIssues] = useState(false);
 
   // Admin logs
   const [logs, setLogs] = useState<any[]>([]);
@@ -38,6 +39,7 @@ export default function AnalyticsPage() {
     setSignups30d(json.signups_last_30_days ?? 0);
     setTotalUsers(json.total_users ?? 0);
     setNoteCount(json.total_notes ?? 0);
+    setHasVerificationIssues(json.has_verification_issues ?? false);
   }
 
   // Load update logs
@@ -90,6 +92,15 @@ export default function AnalyticsPage() {
   return (
     <div className="max-w-3xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">Analytics Dashboard</h1>
+
+      {/* VERIFICATION ISSUES WARNING */}
+      {hasVerificationIssues && (
+        <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-xl">
+          <p className="text-yellow-800 text-sm font-medium">
+            Some generated notes could not be verified as persisted.
+          </p>
+        </div>
+      )}
 
       {/* STATS GRID */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10">

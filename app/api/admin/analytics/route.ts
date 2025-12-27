@@ -69,6 +69,22 @@ export async function GET() {
       .from("notes")
       .select("*", { count: "exact", head: true });
 
+    // 3. Check for bible_notes verification issues
+    // Check for rows with empty or null notes_text as indicator of potential verification failures
+    const { count: bible_notes_total } = await supabase
+      .from("bible_notes")
+      .select("*", { count: "exact", head: true });
+
+    const { count: bible_notes_with_content } = await supabase
+      .from("bible_notes")
+      .select("*", { count: "exact", head: true })
+      .not("notes_text", "is", null);
+
+    // If there are rows but some have null notes_text, there might be verification issues
+    const total = bible_notes_total ?? 0;
+    const withContent = bible_notes_with_content ?? 0;
+    const has_verification_issues = total > 0 && total > withContent;
+
     return NextResponse.json({
       logins_last_24h,
       logins_last_7_days,
@@ -76,6 +92,7 @@ export async function GET() {
       signups_last_30_days,
       total_users,
       total_notes: total_notes ?? 0,
+      has_verification_issues,
     });
   } catch (error: any) {
     console.error("Error fetching analytics:", error);
