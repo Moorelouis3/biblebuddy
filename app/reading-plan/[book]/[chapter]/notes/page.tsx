@@ -218,21 +218,44 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       setNotesText(generated);
       setLoadingNotes(false); // Stop loading so notes display immediately
 
-      // 3) Attempt to save to Supabase AFTER displaying notes:
-      // - If a row exists (even with empty notes_text), UPDATE it
-      // - Otherwise INSERT a new row
-      if (existing?.id) {
+      // 3) Before saving, check ONE MORE TIME if row exists (race condition protection)
+      // Another request might have created it while we were generating
+      const { data: existingAfterGen, error: checkAfterGenError } = await supabase
+        .from("bible_notes")
+        .select("id, notes_text")
+        .eq("book", book)
+        .eq("chapter", chapter)
+        .maybeSingle();
+
+      if (checkAfterGenError && checkAfterGenError.code !== 'PGRST116') {
+        console.warn("Error checking bible_notes after generation:", checkAfterGenError);
+      }
+
+      // 4) If row exists now, use it (don't insert duplicate)
+      if (existingAfterGen?.notes_text && existingAfterGen.notes_text.trim().length > 0) {
+        // Another request created it - use existing row instead
+        console.log("Notes were created by another request, using existing row");
+        const cleaned = cleanNotesText(existingAfterGen.notes_text);
+        setNotesText(cleaned);
+        return;
+      }
+
+      // 5) No row exists - insert new one
+      // Use existing?.id only if we had a row with empty notes_text (shouldn't happen, but safe)
+      if (existingAfterGen?.id) {
+        // Row exists but is empty - update it
         const { error: updateError } = await supabase
           .from("bible_notes")
           .update({ notes_text: generated })
-          .eq("id", existing.id);
+          .eq("id", existingAfterGen.id);
 
         if (updateError) {
           console.error("Error updating notes in bible_notes:", updateError);
         } else {
-          console.log("Successfully updated notes in Supabase for existing row:", existing.id);
+          console.log("Successfully updated notes in Supabase for existing row:", existingAfterGen.id);
         }
       } else {
+        // No row exists - insert new one
         const { error: insertError } = await supabase
           .from("bible_notes")
           .insert([
@@ -244,13 +267,29 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           ]);
 
         if (insertError) {
+          // If insert fails due to duplicate (unique constraint), fetch existing row
+          if (insertError.code === '23505') {
+            console.log("Insert failed due to duplicate key, fetching existing row");
+            const { data: existingRow, error: fetchError } = await supabase
+              .from("bible_notes")
+              .select("notes_text")
+              .eq("book", book)
+              .eq("chapter", chapter)
+              .maybeSingle();
+
+            if (!fetchError && existingRow?.notes_text) {
+              const cleaned = cleanNotesText(existingRow.notes_text);
+              setNotesText(cleaned);
+              return;
+            }
+          }
           console.error("Error saving notes to bible_notes:", insertError);
         } else {
           console.log("Successfully inserted notes into Supabase");
         }
       }
 
-      // 4) Re-fetch from database after insert/update attempt to verify actual state
+      // 6) Re-fetch from database after insert/update attempt to verify actual state
       // UI state should be derived from database, not from insert response
       const { data: savedRow, error: fetchError } = await supabase
         .from("bible_notes")
@@ -263,9 +302,8 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         console.warn("Error re-fetching notes after save:", fetchError);
       }
 
-      // 5) If row exists in database after save attempt, use database state
+      // 7) If row exists in database after save attempt, use database state
       // This ensures UI is in sync with actual database state
-      // Note: Verification failures are logged internally, not shown to users
       if (savedRow?.notes_text && savedRow.notes_text.trim().length > 0) {
         // Row exists in DB - use database state, clear any errors
         const cleaned = cleanNotesText(savedRow.notes_text);
@@ -274,7 +312,6 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         console.log("Notes successfully saved and verified in database");
       } else {
         // Row doesn't exist in DB after save attempt - log internally only
-        // Do NOT show warning to users - persistence is an internal concern
         console.warn("Notes verification failed: Row not found in database after save attempt", { book, chapter });
         // Keep the generated notes displayed - don't set an error
         // Verification failures will be visible to admins on Analytics page

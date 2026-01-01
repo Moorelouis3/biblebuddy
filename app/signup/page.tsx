@@ -10,14 +10,14 @@ export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setLoading(true);
-    setMessage(null);
     setError(null);
+    setShowSuccessModal(false);
 
     // 1. SIGN USER UP
     const { data, error } = await supabase.auth.signUp({
@@ -45,27 +45,32 @@ export default function SignupPage() {
       return;
     }
 
-    // 3. INSERT INTO user_signups TABLE
-    const { error: insertError } = await supabase
-      .from("user_signups")
-      .insert({
-        user_id: user.id,
-        email: user.email,
-      });
+    // 3. INSERT INTO user_signups TABLE (non-blocking, analytics only)
+    // This should never block signup or show errors to users
+    try {
+      const { error: insertError } = await supabase
+        .from("user_signups")
+        .insert({
+          user_id: user.id,
+          email: user.email,
+        });
 
-    if (insertError) {
-      console.error("Failed inserting signup:", insertError);
-      setError("Signup created but analytics insert failed.");
-      setLoading(false);
-      return;
+      if (insertError) {
+        // Log to console only - do NOT show to user
+        console.error("Analytics insert failed (non-blocking):", insertError);
+      }
+    } catch (analyticsError) {
+      // Log to console only - do NOT show to user
+      console.error("Analytics insert error (non-blocking):", analyticsError);
     }
 
+    // 4. SIGNUP SUCCEEDED - Clear form and show success modal
     setLoading(false);
-    setMessage("Account created! Check your email to confirm.");
     setFirstName("");
     setLastName("");
     setEmail("");
     setPassword("");
+    setShowSuccessModal(true);
   }
 
   return (
@@ -122,12 +127,6 @@ export default function SignupPage() {
             </p>
           )}
 
-          {message && (
-            <p className="text-xs text-green-700 bg-green-50 border border-green-100 rounded-lg px-3 py-2">
-              {message}
-            </p>
-          )}
-
           <button
             type="submit"
             disabled={loading}
@@ -144,6 +143,41 @@ export default function SignupPage() {
           </Link>
         </p>
       </div>
+
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl w-full max-w-md p-6 relative shadow-xl">
+            <div className="text-center">
+              <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
+                <svg
+                  className="h-6 w-6 text-green-600"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <h2 className="text-2xl font-bold mb-2 text-gray-900">
+                Account created successfully!
+              </h2>
+              <p className="text-sm text-gray-600 mb-6">
+                Please check your email to confirm your account before logging in.
+              </p>
+              <button
+                onClick={() => setShowSuccessModal(false)}
+                className="w-full px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+              >
+                Got it
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

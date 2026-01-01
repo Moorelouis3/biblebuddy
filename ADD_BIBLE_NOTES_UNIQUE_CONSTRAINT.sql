@@ -1,0 +1,54 @@
+-- =====================================================
+-- Add Unique Constraint on (book, chapter) for bible_notes table
+-- =====================================================
+-- 
+-- PURPOSE: Prevent duplicate rows for the same book + chapter combination
+-- 
+-- This constraint ensures that:
+-- - Only ONE row can exist per (book, chapter) pair
+-- - Prevents duplicate inserts even if application logic fails
+-- - Makes bible_notes a true shared cache
+--
+-- =====================================================
+-- STEP 1: Check for existing duplicate rows (optional cleanup)
+-- =====================================================
+-- If you have duplicates, you may want to clean them up first:
+-- 
+-- SELECT book, chapter, COUNT(*) as count
+-- FROM public.bible_notes
+-- GROUP BY book, chapter
+-- HAVING COUNT(*) > 1;
+--
+-- You can delete duplicates keeping only the most recent one:
+-- DELETE FROM public.bible_notes
+-- WHERE id NOT IN (
+--   SELECT DISTINCT ON (book, chapter) id
+--   FROM public.bible_notes
+--   ORDER BY book, chapter, created_at DESC
+-- );
+--
+-- =====================================================
+-- STEP 2: Add the unique constraint
+-- =====================================================
+-- This will fail if duplicates exist, so clean them up first if needed
+CREATE UNIQUE INDEX IF NOT EXISTS bible_notes_book_chapter_unique 
+ON public.bible_notes (book, chapter);
+
+-- =====================================================
+-- ALTERNATIVE: If you prefer a named constraint instead of index
+-- =====================================================
+-- Uncomment below if you want a named constraint (requires no duplicates first):
+--
+-- ALTER TABLE public.bible_notes
+-- ADD CONSTRAINT bible_notes_book_chapter_unique 
+-- UNIQUE (book, chapter);
+
+-- =====================================================
+-- NOTES:
+-- =====================================================
+-- 1. This creates a unique index/constraint on (book, chapter)
+-- 2. Attempting to insert a duplicate will fail with error code 23505
+-- 3. The application code handles this error by fetching the existing row
+-- 4. Run this in the Supabase SQL Editor: https://supabase.com/dashboard/project/_/sql
+-- 5. If you have existing duplicates, clean them up first (see STEP 1)
+
