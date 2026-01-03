@@ -101,6 +101,7 @@ export default function DashboardPage() {
   // Preloaded reading plan data
   const [totalCompletedChapters, setTotalCompletedChapters] = useState<number>(0);
   const [currentBook, setCurrentBook] = useState<string | null>(null);
+  const [isLoadingLevel, setIsLoadingLevel] = useState<boolean>(true);
   const [levelInfo, setLevelInfo] = useState<{
     level: number;
     chaptersRead: number;
@@ -135,9 +136,14 @@ export default function DashboardPage() {
   useEffect(() => {
     async function preloadReadingPlanData() {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      if (!user) {
+        setIsLoadingLevel(false);
+        return;
+      }
 
       try {
+        setIsLoadingLevel(true);
+        
         // Get current active book
         const activeBook = await getCurrentBook(user.id, BOOKS);
         setCurrentBook(activeBook);
@@ -223,6 +229,8 @@ export default function DashboardPage() {
         });
       } catch (err) {
         console.error("Error preloading reading plan data:", err);
+      } finally {
+        setIsLoadingLevel(false);
       }
     }
 
@@ -310,31 +318,52 @@ export default function DashboardPage() {
         {/* DASHBOARD CARDS */}
         <div className="flex flex-col gap-4">
           {/* BIBLE READING PROGRESS CARD */}
-          {levelInfo && (
-            <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-              <h2 className="text-xl font-semibold mb-2">📘 Level {levelInfo.level}</h2>
-              <p className="text-gray-700 text-sm mb-4">
-                Keep going. You're building a daily habit.
-              </p>
-              
-              {/* Progress Bar */}
-              <div className="mb-3">
-                <div className="h-3 rounded-full bg-gray-200 overflow-hidden">
-                  <div
-                    className="h-full bg-blue-500 rounded-full transition-all duration-300"
-                    style={{ width: `${levelInfo.progressPercent}%` }}
-                  />
-                </div>
-              </div>
+          <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            {isLoadingLevel ? (
+              // Loading skeleton
+              <>
+                <div className="animate-pulse">
+                  <div className="h-6 bg-gray-200 rounded w-32 mb-2"></div>
+                  <div className="h-4 bg-gray-200 rounded w-48 mb-4"></div>
+                  
+                  {/* Progress Bar Skeleton */}
+                  <div className="mb-3">
+                    <div className="h-3 rounded-full bg-gray-200 overflow-hidden">
+                      <div className="h-full bg-gray-300 rounded-full w-1/3"></div>
+                    </div>
+                  </div>
 
-              {/* Progress Text */}
-              <p className="text-sm text-gray-600">
-                {levelInfo.level < 10
-                  ? `${levelInfo.chaptersNeededForNext} more chapters to reach Level ${levelInfo.nextLevel}`
-                  : "Bible completed 🎉"}
-              </p>
-            </div>
-          )}
+                  {/* Progress Text Skeleton */}
+                  <div className="h-4 bg-gray-200 rounded w-48"></div>
+                </div>
+              </>
+            ) : levelInfo ? (
+              // Actual content
+              <>
+                <h2 className="text-xl font-semibold mb-2">📘 Level {levelInfo.level}</h2>
+                <p className="text-gray-700 text-sm mb-4">
+                  Keep going. You're building a daily habit.
+                </p>
+                
+                {/* Progress Bar */}
+                <div className="mb-3">
+                  <div className="h-3 rounded-full bg-gray-200 overflow-hidden">
+                    <div
+                      className="h-full bg-blue-500 rounded-full transition-all duration-300"
+                      style={{ width: `${levelInfo.progressPercent}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Progress Text */}
+                <p className="text-sm text-gray-600">
+                  {levelInfo.level < 10
+                    ? `${levelInfo.chaptersNeededForNext} more chapters to reach Level ${levelInfo.nextLevel}`
+                    : "Bible completed 🎉"}
+                </p>
+              </>
+            ) : null}
+          </div>
 
           {/* YOUR BIBLE READING PLAN */}
           <Link href="/reading">
