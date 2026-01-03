@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { supabase } from "../../../../lib/supabaseClient";
-import { markChapterDone, isChapterCompleted, getBookTotalChapters } from "../../../../lib/readingProgress";
+import { markChapterDone, isChapterCompleted, getBookTotalChapters, getCompletedChapters } from "../../../../lib/readingProgress";
 import confetti from "canvas-confetti";
 
 type Verse = {
@@ -730,30 +730,165 @@ function CongratsModalWithConfetti() {
 
   const backLink = `/reading/books/${book.toLowerCase()}`;
 
-  // Motivational messages
-  const motivationalMessages = [
-    "Great job — your consistency is paying off!",
-    "Another chapter down! Keep going!",
-    "God sees your effort. Stay committed!",
-    "Amazing progress! Let's keep moving.",
-    "You're building something beautiful, one chapter at a time.",
-    "Every chapter brings you closer. Well done!",
-    "Your dedication is inspiring. Keep it up!",
-    "One more step forward. You've got this!",
-    "Progress over perfection. You're doing great!",
-    "Each chapter is a victory. Celebrate this one!",
-    "You're growing stronger with every chapter.",
-    "Consistency is key, and you're showing it!",
-    "God is proud of your commitment.",
-    "You're on the right path. Keep walking!",
-    "Every chapter matters. This one counts!",
+  // All 66 books for level calculation
+  const BOOKS = [
+    "Matthew", "Mark", "Luke", "John", "Acts",
+    "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+    "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+    "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther",
+    "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon",
+    "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel",
+    "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk",
+    "Zephaniah", "Haggai", "Zechariah", "Malachi",
+    "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+    "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+    "1 Timothy", "2 Timothy", "Titus", "Philemon",
+    "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude",
+    "Revelation",
   ];
 
-  const [randomMessage] = useState(() => {
-    return motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
-  });
-
+  // Level progress state
+  const [levelInfo, setLevelInfo] = useState<{
+    level: number;
+    chaptersRead: number;
+    chaptersNeededForNext: number;
+    nextLevel: number;
+    leveledUp: boolean;
+    previousLevel: number;
+  } | null>(null);
+  const [showLevelUpModal, setShowLevelUpModal] = useState(false);
   const [showModal, setShowModal] = useState(true);
+
+  // Calculate level progress
+  useEffect(() => {
+    async function calculateLevelProgress() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      try {
+        // Get total completed chapters count across all books
+        let totalCount = 0;
+        for (const bookName of BOOKS) {
+          const completed = await getCompletedChapters(user.id, bookName);
+          totalCount += completed.length;
+        }
+
+        // Calculate level based on chapters read
+        const chaptersRead = totalCount;
+        let level = 1;
+        let previousLevel = 1;
+
+        if (chaptersRead >= 1000 && chaptersRead <= 1188) {
+          level = 9;
+        } else if (chaptersRead >= 700 && chaptersRead <= 999) {
+          level = 8;
+        } else if (chaptersRead >= 400 && chaptersRead <= 699) {
+          level = 7;
+        } else if (chaptersRead >= 200 && chaptersRead <= 399) {
+          level = 6;
+        } else if (chaptersRead >= 100 && chaptersRead <= 199) {
+          level = 5;
+        } else if (chaptersRead >= 50 && chaptersRead <= 99) {
+          level = 4;
+        } else if (chaptersRead >= 30 && chaptersRead <= 49) {
+          level = 3;
+        } else if (chaptersRead >= 10 && chaptersRead <= 29) {
+          level = 2;
+        } else {
+          level = 1;
+        }
+
+        // Calculate previous level (before this chapter was completed)
+        const previousChaptersRead = chaptersRead - 1;
+        if (previousChaptersRead >= 1000 && previousChaptersRead <= 1188) {
+          previousLevel = 9;
+        } else if (previousChaptersRead >= 700 && previousChaptersRead <= 999) {
+          previousLevel = 8;
+        } else if (previousChaptersRead >= 400 && previousChaptersRead <= 699) {
+          previousLevel = 7;
+        } else if (previousChaptersRead >= 200 && previousChaptersRead <= 399) {
+          previousLevel = 6;
+        } else if (previousChaptersRead >= 100 && previousChaptersRead <= 199) {
+          previousLevel = 5;
+        } else if (previousChaptersRead >= 50 && previousChaptersRead <= 99) {
+          previousLevel = 4;
+        } else if (previousChaptersRead >= 30 && previousChaptersRead <= 49) {
+          previousLevel = 3;
+        } else if (previousChaptersRead >= 10 && previousChaptersRead <= 29) {
+          previousLevel = 2;
+        } else {
+          previousLevel = 1;
+        }
+
+        // Check if user leveled up
+        const leveledUp = level > previousLevel;
+
+        // Calculate next level info
+        const nextLevel = level < 10 ? level + 1 : 10;
+        const nextLevelStart = nextLevel === 10 ? 1189 : 
+          nextLevel === 9 ? 1000 :
+          nextLevel === 8 ? 700 :
+          nextLevel === 7 ? 400 :
+          nextLevel === 6 ? 200 :
+          nextLevel === 5 ? 100 :
+          nextLevel === 4 ? 50 :
+          nextLevel === 3 ? 30 :
+          nextLevel === 2 ? 10 : 0;
+        const chaptersNeededForNext = Math.max(0, nextLevelStart - chaptersRead);
+
+        setLevelInfo({
+          level,
+          chaptersRead,
+          chaptersNeededForNext,
+          nextLevel,
+          leveledUp,
+          previousLevel,
+        });
+
+        // Show level-up modal if user leveled up
+        if (leveledUp) {
+          setShowLevelUpModal(true);
+        }
+      } catch (err) {
+        console.error("Error calculating level progress:", err);
+      }
+    }
+
+    calculateLevelProgress();
+  }, []);
+
+  // Motivational messages with level progress
+  const motivationalMessages = [
+    "Just {chaptersRemaining} more chapters until you level up.",
+    "You're closer than you think. {chaptersRemaining} chapters to go.",
+    "Keep reading. Only {chaptersRemaining} chapters until the next level.",
+    "Momentum matters. {chaptersRemaining} chapters left to level up.",
+    "Stay consistent. {chaptersRemaining} chapters until your next milestone.",
+    "You're building something real. {chaptersRemaining} chapters to go.",
+    "Small steps add up. {chaptersRemaining} chapters until the next level.",
+    "Don't stop now. {chaptersRemaining} chapters away from leveling up.",
+    "You're making progress. {chaptersRemaining} chapters left.",
+    "Keep showing up. {chaptersRemaining} chapters to reach the next level.",
+    "Every chapter counts. {chaptersRemaining} more to level up.",
+    "You're on a roll. {chaptersRemaining} chapters until the next level.",
+    "Discipline beats motivation. {chaptersRemaining} chapters to go.",
+    "You're walking it out. {chaptersRemaining} chapters remain.",
+    "One chapter at a time. {chaptersRemaining} until you level up.",
+    "Progress over perfection. {chaptersRemaining} chapters left.",
+    "You didn't come this far to stop. {chaptersRemaining} chapters to go.",
+    "Faithfulness compounds. {chaptersRemaining} chapters until the next level.",
+    "You're closer today than yesterday. {chaptersRemaining} chapters left.",
+    "Keep going. Your next level is {chaptersRemaining} chapters away.",
+  ];
+
+  // Calculate random message when levelInfo is available
+  const randomMessage = useMemo(() => {
+    if (!levelInfo || levelInfo.level >= 10) {
+      return "Great job — your consistency is paying off!";
+    }
+    const template = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
+    return template.replace("{chaptersRemaining}", levelInfo.chaptersNeededForNext.toString());
+  }, [levelInfo]);
 
   // Trigger confetti when component mounts
   useEffect(() => {
@@ -841,7 +976,6 @@ function CongratsModalWithConfetti() {
   const isLastChapter = chapter >= totalChapters;
   
   // Get next book name
-  const BOOKS = ["Matthew", "Mark", "Luke", "John", "Acts", "Romans"];
   const currentBookIndex = BOOKS.findIndex(b => b.toLowerCase() === book.toLowerCase());
   const nextBook = currentBookIndex >= 0 && currentBookIndex < BOOKS.length - 1 ? BOOKS[currentBookIndex + 1] : null;
 
@@ -892,7 +1026,7 @@ function CongratsModalWithConfetti() {
               Congratulations! You just finished another chapter!
             </h1>
             <p className="text-base md:text-lg text-gray-700 mt-3 text-center">
-              {randomMessage}
+              {levelInfo ? randomMessage : "Great job — your consistency is paying off!"}
             </p>
           </div>
 
