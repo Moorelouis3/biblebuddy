@@ -194,14 +194,9 @@ export async function getBookCurrentStep(userId: string, book: string, totalChap
  */
 export async function getCurrentBook(userId: string, books: string[]): Promise<string | null> {
   try {
-    // Check if Matthew is complete
-    const matthewComplete = await isBookComplete(userId, "Matthew");
-
     for (const book of books) {
-      const bookKey = book.toLowerCase();
-
       // Check if book is unlocked
-      const isUnlocked = book === "Matthew" || matthewComplete;
+      const isUnlocked = await isBookUnlocked(userId, book);
       if (!isUnlocked) continue;
 
       // Check if book is complete
