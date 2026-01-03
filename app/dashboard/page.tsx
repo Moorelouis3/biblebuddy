@@ -320,21 +320,35 @@ export default function DashboardPage() {
           {/* BIBLE READING PROGRESS CARD */}
           <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
             {isLoadingLevel ? (
-              // Loading skeleton
+              // Loading skeleton with animated dots
               <>
-                <div className="animate-pulse">
-                  <div className="h-6 bg-gray-200 rounded w-32 mb-2"></div>
-                  <div className="h-4 bg-gray-200 rounded w-48 mb-4"></div>
-                  
-                  {/* Progress Bar Skeleton */}
-                  <div className="mb-3">
-                    <div className="h-3 rounded-full bg-gray-200 overflow-hidden">
-                      <div className="h-full bg-gray-300 rounded-full w-1/3"></div>
-                    </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <h2 className="text-xl font-semibold">📘 Loading</h2>
+                  <div className="flex gap-1 items-center h-6">
+                    <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_infinite]">.</span>
+                    <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_0.2s_infinite]">.</span>
+                    <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_0.4s_infinite]">.</span>
                   </div>
+                </div>
+                <p className="text-gray-700 text-sm mb-4">
+                  Keep going. You're building a daily habit.
+                </p>
+                
+                {/* Progress Bar Skeleton */}
+                <div className="mb-3">
+                  <div className="h-3 rounded-full bg-gray-200 overflow-hidden">
+                    <div className="h-full bg-blue-300 rounded-full w-1/3 animate-pulse"></div>
+                  </div>
+                </div>
 
-                  {/* Progress Text Skeleton */}
-                  <div className="h-4 bg-gray-200 rounded w-48"></div>
+                {/* Progress Text Skeleton */}
+                <div className="flex items-center gap-1">
+                  <div className="h-4 bg-gray-200 rounded w-32"></div>
+                  <div className="flex gap-1 items-center">
+                    <span className="text-gray-500 text-sm animate-[bounce_1.4s_ease-in-out_infinite]">.</span>
+                    <span className="text-gray-500 text-sm animate-[bounce_1.4s_ease-in-out_0.2s_infinite]">.</span>
+                    <span className="text-gray-500 text-sm animate-[bounce_1.4s_ease-in-out_0.4s_infinite]">.</span>
+                  </div>
                 </div>
               </>
             ) : levelInfo ? (
