@@ -113,9 +113,9 @@ Start with the Matthew overview, then we will walk through the chapters together
           <div className="space-y-4 mt-1">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
               {visibleChapters.map((chapter) => {
-                // Use dynamic system, with fallback for backward compatibility
-                const unlocked = isChapterUnlocked("matthew", chapter) || chapter <= currentChapter;
-                const done = isChapterCompleted("matthew", chapter) || completedChapters.includes(chapter);
+                // Use completedChapters array to determine state
+                const unlocked = completedChapters.includes(chapter - 1) || chapter === 1 || chapter <= currentChapter;
+                const done = completedChapters.includes(chapter);
                 const current = chapter === currentChapter && !done;
 
                 let stateClasses =
