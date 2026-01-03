@@ -6,17 +6,19 @@ import { LouisAvatar } from "../../components/LouisAvatar";
 import { isBookUnlocked } from "../../lib/readingProgress";
 
 const BOOKS = [
+  // Gospels & Acts
   "Matthew",
   "Mark",
   "Luke",
   "John",
   "Acts",
-  "Romans",
+  // Law (Torah)
   "Genesis",
   "Exodus",
   "Leviticus",
   "Numbers",
   "Deuteronomy",
+  // History
   "Joshua",
   "Judges",
   "Ruth",
@@ -29,17 +31,56 @@ const BOOKS = [
   "Ezra",
   "Nehemiah",
   "Esther",
+  // Wisdom & Poetry
   "Job",
   "Psalms",
   "Proverbs",
   "Ecclesiastes",
   "Song of Solomon",
+  // Major Prophets
   "Isaiah",
   "Jeremiah",
   "Lamentations",
   "Ezekiel",
   "Daniel",
+  // Minor Prophets
   "Hosea",
+  "Joel",
+  "Amos",
+  "Obadiah",
+  "Jonah",
+  "Micah",
+  "Nahum",
+  "Habakkuk",
+  "Zephaniah",
+  "Haggai",
+  "Zechariah",
+  "Malachi",
+  // Paul's Letters
+  "Romans",
+  "1 Corinthians",
+  "2 Corinthians",
+  "Galatians",
+  "Ephesians",
+  "Philippians",
+  "Colossians",
+  "1 Thessalonians",
+  "2 Thessalonians",
+  "1 Timothy",
+  "2 Timothy",
+  "Titus",
+  "Philemon",
+  // General Epistles
+  "Hebrews",
+  "James",
+  "1 Peter",
+  "2 Peter",
+  "1 John",
+  "2 John",
+  "3 John",
+  "Jude",
+  // Revelation
+  "Revelation",
 ];
 
 const BOOKS_PER_PAGE = 12;
