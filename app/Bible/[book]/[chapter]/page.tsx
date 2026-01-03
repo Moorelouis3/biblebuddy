@@ -717,7 +717,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       </div>
 
       {/* CONGRATULATIONS MODAL */}
-      {showCongratsModal && (
+      {showCongratsModal && levelInfoForModal && (
         <CongratsModalWithConfetti levelInfo={levelInfoForModal} />
       )}
     </div>
@@ -733,7 +733,7 @@ function CongratsModalWithConfetti({
     chaptersNeededForNext: number;
     nextLevel: number;
     leveledUp: boolean;
-  } | null;
+  };
 }) {
   const params = useParams();
   const router = useRouter();
