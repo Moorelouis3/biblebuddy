@@ -747,7 +747,7 @@ function CongratsModalWithConfetti({
 
   const backLink = `/reading/books/${book.toLowerCase()}`;
 
-  const [showLevelUpModal, setShowLevelUpModal] = useState(levelInfo.leveledUp);
+  const [showLevelUpModal, setShowLevelUpModal] = useState(levelInfo?.leveledUp ?? false);
   const [showModal, setShowModal] = useState(true);
 
   // All 66 books for next book detection
