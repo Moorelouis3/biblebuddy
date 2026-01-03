@@ -717,7 +717,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       </div>
 
       {/* CONGRATULATIONS MODAL */}
-      {showCongratsModal && levelInfoForModal && (
+      {showCongratsModal && (
         <CongratsModalWithConfetti levelInfo={levelInfoForModal} />
       )}
     </div>
