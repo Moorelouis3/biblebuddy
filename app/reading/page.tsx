@@ -240,6 +240,13 @@ export default function ReadingPage() {
                 }
 
                 // locked books (no link)
+                // Find the previous book in the reading plan order
+                const bookIndex = BOOKS.findIndex(b => b === book);
+                const previousBook = bookIndex > 0 ? BOOKS[bookIndex - 1] : null;
+                const lockedSubtitle = previousBook 
+                  ? `Locked until you finish ${previousBook}.`
+                  : "Locked.";
+
                 return (
                   <div
                     key={book}
@@ -247,7 +254,7 @@ export default function ReadingPage() {
                   >
                     <p className="font-semibold">{book}</p>
                     <p className="text-[11px] mt-1">
-                      Locked until you finish Matthew.
+                      {lockedSubtitle}
                     </p>
                     <div className="absolute right-2 top-2 text-black/70">
                       🔒
