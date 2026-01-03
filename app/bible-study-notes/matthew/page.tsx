@@ -17,11 +17,26 @@ export default function MatthewBibleStudyNotesPage() {
   const [loadingNotes, setLoadingNotes] = useState(false);
   const [notesError, setNotesError] = useState<string | null>(null);
 
+  const [userId, setUserId] = useState<string | null>(null);
+
   useEffect(() => {
-    // Get completed chapters for Matthew
-    const completed = getCompletedChapters("matthew", MATTHEW_CHAPTERS);
-    setCompletedChapters(completed);
+    async function getUser() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        setUserId(user.id);
+      }
+    }
+    getUser();
   }, []);
+
+  useEffect(() => {
+    async function loadCompletedChapters() {
+      if (!userId) return;
+      const completed = await getCompletedChapters(userId, "matthew");
+      setCompletedChapters(completed);
+    }
+    loadCompletedChapters();
+  }, [userId]);
 
   useEffect(() => {
     // Load notes when a chapter is selected
@@ -176,8 +191,8 @@ export default function MatthewBibleStudyNotesPage() {
           <div className="space-y-4 mt-1">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
               {visibleChapters.map((chapter) => {
-                const unlocked = isChapterUnlocked("matthew", chapter);
-                const done = isChapterCompleted("matthew", chapter) || completedChapters.includes(chapter);
+                const unlocked = userId ? (completedChapters.includes(chapter - 1) || chapter === 1) : false;
+                const done = completedChapters.includes(chapter);
                 
                 // Only allow clicking on completed chapters (green ones)
                 const canViewNotes = done;
