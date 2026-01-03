@@ -54,6 +54,7 @@ export default function ReadingPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [bookStates, setBookStates] = useState<Record<string, { unlocked: boolean; complete: boolean }>>({});
   const [loading, setLoading] = useState(true);
+  const [showLoadingOverlay, setShowLoadingOverlay] = useState(true);
 
   // book pagination
   const startIndex = bookPage * BOOKS_PER_PAGE;
@@ -79,6 +80,9 @@ export default function ReadingPage() {
     async function loadBookStates() {
       if (!userId) return;
 
+      const startTime = Date.now();
+      const minDelay = 3000; // 3 seconds minimum
+
       try {
         setLoading(true);
 
@@ -98,6 +102,13 @@ export default function ReadingPage() {
         console.error("Error loading book states:", err);
       } finally {
         setLoading(false);
+        
+        // Hide loading overlay after minimum 3 seconds from start
+        const elapsed = Date.now() - startTime;
+        const remaining = Math.max(0, minDelay - elapsed);
+        setTimeout(() => {
+          setShowLoadingOverlay(false);
+        }, remaining);
       }
     }
 
@@ -107,7 +118,17 @@ export default function ReadingPage() {
   }, [userId]);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className="min-h-screen bg-gray-50 py-8 px-4 relative">
+      {/* Loading Overlay */}
+      {showLoadingOverlay && (
+        <div className="fixed inset-0 bg-gray-50 bg-opacity-95 z-50 flex items-center justify-center transition-opacity duration-300">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p className="text-gray-700 text-lg font-medium">Loading Your Reading Plan</p>
+          </div>
+        </div>
+      )}
+      
       <div className="max-w-4xl mx-auto">
         {/* PAGE HEADER */}
         <h1 className="text-3xl font-bold mb-1">Bible Reading Plan</h1>
