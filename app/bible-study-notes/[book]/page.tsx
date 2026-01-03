@@ -38,17 +38,26 @@ export default function BookBibleStudyNotesPage() {
   const [notesText, setNotesText] = useState<string>("");
   const [loadingNotes, setLoadingNotes] = useState(false);
   const [notesError, setNotesError] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function getUser() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        setUserId(user.id);
+      }
+    }
+    getUser();
+  }, []);
 
   useEffect(() => {
     async function loadCompletedChapters() {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const completed = await getCompletedChapters(user.id, bookKey);
-        setCompletedChapters(completed);
-      }
+      if (!userId) return;
+      const completed = await getCompletedChapters(userId, bookKey);
+      setCompletedChapters(completed);
     }
     loadCompletedChapters();
-  }, [bookKey]);
+  }, [userId, bookKey]);
 
   useEffect(() => {
     // Load notes when a chapter is selected
