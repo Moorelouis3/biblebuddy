@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { LouisAvatar } from "../../components/LouisAvatar";
-import { isBookUnlocked, isBookComplete, getCurrentBook } from "../../lib/readingProgress";
+import { isBookUnlocked, isBookComplete, getCurrentBook, getCompletedChapters } from "../../lib/readingProgress";
 import { supabase } from "../../lib/supabaseClient";
 
 const BOOKS = [
