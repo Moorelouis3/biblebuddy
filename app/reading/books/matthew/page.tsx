@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { getBookCurrentStep, isChapterUnlocked, isChapterCompleted, getCompletedChapters } from "../../../../lib/readingProgress";
+import { supabase } from "../../../../lib/supabaseClient";
 
 const MATTHEW_CHAPTERS = 28; // real chapters 1–28
 const CHAPTERS_PER_PAGE = 12;
@@ -26,13 +27,13 @@ export default function MatthewPage() {
         // If using dynamic system, currentChapter represents the next chapter to read (1-29)
         // If step is 0, we start at chapter 1
         setCurrentChapter(step === 0 ? 1 : step);
+
+        // Get completed chapters using the helper
+        const completed = await getCompletedChapters(user.id, "matthew");
+        setCompletedChapters(completed);
       }
     }
     loadProgress();
-
-    // Get completed chapters using the helper
-    const completed = getCompletedChapters("matthew", MATTHEW_CHAPTERS);
-    setCompletedChapters(completed);
   }, []);
 
   // Calculate finished chapters and progress
