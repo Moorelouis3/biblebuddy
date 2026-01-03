@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { LouisAvatar } from "../../components/LouisAvatar";
-import { isBookUnlocked, isBookComplete, getCurrentBook, getCompletedChapters } from "../../lib/readingProgress";
+import { isBookUnlocked, isBookComplete, getCurrentBook, getCompletedChapters, getTotalCompletedChapters } from "../../lib/readingProgress";
 import { supabase } from "../../lib/supabaseClient";
 
 const BOOKS = [
@@ -178,14 +178,11 @@ export default function ReadingPage() {
       if (!showStatsModal || !userId) return;
 
       try {
-        // Count completed chapters across all books
-        let totalChaptersCompleted = 0;
+        // Count completed chapters across all books (using shared function)
+        const totalChaptersCompleted = await getTotalCompletedChapters(userId, BOOKS);
         let totalBooksCompleted = 0;
 
         for (const book of BOOKS) {
-          const completed = await getCompletedChapters(userId, book);
-          totalChaptersCompleted += completed.length;
-          
           // Check if book is complete (all chapters done)
           const isComplete = await isBookComplete(userId, book);
           if (isComplete) {

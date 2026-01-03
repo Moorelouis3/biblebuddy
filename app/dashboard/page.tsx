@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
-import { getCurrentBook, getCompletedChapters, isBookComplete } from "../../lib/readingProgress";
+import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -171,12 +171,8 @@ export default function DashboardPage() {
         const activeBook = await getCurrentBook(user.id, BOOKS);
         setCurrentBook(activeBook);
 
-        // Get total completed chapters count across all books
-        let totalCount = 0;
-        for (const book of BOOKS) {
-          const completed = await getCompletedChapters(user.id, book);
-          totalCount += completed.length;
-        }
+        // Get total completed chapters count across all books (using shared function)
+        const totalCount = await getTotalCompletedChapters(user.id, BOOKS);
         setTotalCompletedChapters(totalCount);
 
         // Calculate level based on chapters read

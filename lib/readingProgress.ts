@@ -123,6 +123,24 @@ export async function getCompletedChapters(userId: string, book: string): Promis
 }
 
 /**
+ * Get total completed chapters across all books for a user
+ * This is the shared function used by both dashboard and Bible Study Stats
+ */
+export async function getTotalCompletedChapters(userId: string, books: string[]): Promise<number> {
+  try {
+    let totalCount = 0;
+    for (const book of books) {
+      const completed = await getCompletedChapters(userId, book);
+      totalCount += completed.length;
+    }
+    return totalCount;
+  } catch (err) {
+    console.error(`[READING_PROGRESS] Error in getTotalCompletedChapters:`, err);
+    return 0;
+  }
+}
+
+/**
  * Check if a book is complete for a specific user
  */
 export async function isBookComplete(userId: string, bookName: string): Promise<boolean> {
