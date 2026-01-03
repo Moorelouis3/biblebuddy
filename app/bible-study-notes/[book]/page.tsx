@@ -203,8 +203,8 @@ export default function BookBibleStudyNotesPage() {
           <div className="space-y-4 mt-1">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
               {visibleChapters.map((chapter) => {
-                const unlocked = isChapterUnlocked(bookKey, chapter);
-                const done = isChapterCompleted(bookKey, chapter) || completedChapters.includes(chapter);
+                const unlocked = userId ? (completedChapters.includes(chapter - 1) || chapter === 1) : false;
+                const done = completedChapters.includes(chapter);
                 
                 // Only allow clicking on completed chapters (green ones)
                 const canViewNotes = done;
