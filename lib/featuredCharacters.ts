@@ -43,122 +43,48 @@ export async function getFeaturedCharactersForMatthew(): Promise<FeaturedCharact
 }
 
 /**
- * Create a map of character names/aliases to character data for efficient lookup
+ * Create a map of all search terms (names + aliases) to character data
  */
-export function createCharacterMap(characters: FeaturedCharacter[]): Map<string, FeaturedCharacter> {
+export function createCharacterSearchMap(characters: FeaturedCharacter[]): Map<string, FeaturedCharacter> {
   const map = new Map<string, FeaturedCharacter>();
   
   for (const char of characters) {
-    // Add the main name (case-insensitive key)
+    // Add the main name (lowercase key for case-insensitive matching)
     map.set(char.name.toLowerCase(), char);
     
-    // Add all aliases (case-insensitive keys)
+    // Add all aliases (lowercase keys)
     for (const alias of char.aliases || []) {
-      map.set(alias.toLowerCase(), char);
+      if (alias && alias.trim()) {
+        map.set(alias.toLowerCase(), char);
+      }
     }
   }
   
   return map;
 }
 
-export type TextPart = 
-  | { type: "text"; content: string }
-  | { type: "character"; content: string; character: FeaturedCharacter; startIndex: number };
-
 /**
- * Match character names in text and return an array of parts
- * Returns an array of text parts and character parts for rendering
+ * Get all search terms sorted by length (longest first) for proper matching
  */
-export function highlightCharactersInText(
-  text: string,
-  characterMap: Map<string, FeaturedCharacter>
-): TextPart[] {
-  if (!text || characterMap.size === 0) {
-    return [{ type: "text", content: text }];
-  }
-
-  const result: TextPart[] = [];
-  let lastIndex = 0;
+export function getSearchTerms(characters: FeaturedCharacter[]): Array<{ term: string; character: FeaturedCharacter }> {
+  const terms: Array<{ term: string; character: FeaturedCharacter }> = [];
   
-  // Create a sorted array of all search terms (names + aliases) by length (longest first)
-  // This ensures we match longer names before shorter ones (e.g., "John the Baptist" before "John")
-  const searchTerms: Array<{ term: string; character: FeaturedCharacter }> = [];
-  characterMap.forEach((char) => {
-    searchTerms.push({ term: char.name, character: char });
-    (char.aliases || []).forEach((alias) => {
-      searchTerms.push({ term: alias, character: char });
-    });
-  });
-  
-  // Sort by length descending
-  searchTerms.sort((a, b) => b.term.length - a.term.length);
-  
-  // Find all matches with their positions
-  const matches: Array<{ start: number; end: number; character: FeaturedCharacter; term: string }> = [];
-  
-  for (const { term, character } of searchTerms) {
-    const regex = new RegExp(`\\b${escapeRegex(term)}\\b`, "gi");
-    let match;
-    let searchText = text; // Create a copy for this search
-    while ((match = regex.exec(searchText)) !== null) {
-      const start = match.index;
-      const end = start + match[0].length;
-      
-      // Check if this match overlaps with an existing match (prefer longer matches)
-      const overlaps = matches.some(
-        (m) => (start >= m.start && start < m.end) || (end > m.start && end <= m.end) || (start <= m.start && end >= m.end)
-      );
-      
-      if (!overlaps) {
-        matches.push({ start, end, character, term: match[0] });
+  for (const char of characters) {
+    terms.push({ term: char.name, character: char });
+    for (const alias of char.aliases || []) {
+      if (alias && alias.trim()) {
+        terms.push({ term: alias, character: char });
       }
     }
   }
   
-  // Sort matches by position
-  matches.sort((a, b) => a.start - b.start);
-  
-  // Remove overlapping matches (keep first/longest)
-  const nonOverlappingMatches: typeof matches = [];
-  for (const match of matches) {
-    const overlaps = nonOverlappingMatches.some(
-      (m) => (match.start >= m.start && match.start < m.end) || (match.end > m.start && match.end <= m.end)
-    );
-    if (!overlaps) {
-      nonOverlappingMatches.push(match);
-    }
-  }
-  
-  // Build result array
-  for (const match of nonOverlappingMatches) {
-    // Add text before match
-    if (match.start > lastIndex) {
-      result.push({ type: "text", content: text.substring(lastIndex, match.start) });
-    }
-    
-    // Add character match
-    result.push({
-      type: "character",
-      content: match.term,
-      character: match.character,
-      startIndex: match.start,
-    });
-    
-    lastIndex = match.end;
-  }
-  
-  // Add remaining text
-  if (lastIndex < text.length) {
-    result.push({ type: "text", content: text.substring(lastIndex) });
-  }
-  
-  return result.length > 0 ? result : [{ type: "text", content: text }];
+  // Sort by length descending (match longer names first, e.g., "John the Baptist" before "John")
+  return terms.sort((a, b) => b.term.length - a.term.length);
 }
 
 /**
  * Escape special regex characters
  */
-function escapeRegex(str: string): string {
+export function escapeRegex(str: string): string {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
-

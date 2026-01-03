@@ -7,8 +7,9 @@ import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { supabase } from "../../../../lib/supabaseClient";
 import { markChapterDone, isChapterCompleted, getBookTotalChapters, getCompletedChapters } from "../../../../lib/readingProgress";
 import confetti from "canvas-confetti";
-import { getFeaturedCharactersForMatthew, createCharacterMap, highlightCharactersInText, FeaturedCharacter, TextPart } from "../../../../lib/featuredCharacters";
+import { getFeaturedCharactersForMatthew, FeaturedCharacter } from "../../../../lib/featuredCharacters";
 import { FeaturedCharacterModal } from "../../../../components/FeaturedCharacterModal";
+import { useFeaturedCharacters } from "../../../../hooks/useFeaturedCharacters";
 
 type Verse = {
   num: number;
@@ -61,8 +62,8 @@ export default function BibleChapterPage() {
   
   // Featured Characters state (Matthew only)
   const [featuredCharacters, setFeaturedCharacters] = useState<FeaturedCharacter[]>([]);
-  const [characterMap, setCharacterMap] = useState<Map<string, FeaturedCharacter>>(new Map());
   const [selectedCharacter, setSelectedCharacter] = useState<FeaturedCharacter | null>(null);
+  const verseContainerRef = useRef<HTMLDivElement>(null);
 
   // Normalize book name for API (e.g., "1 Samuel" -> "1samuel", "Matthew" -> "matthew")
   function normalizeBookName(bookName: string): string {
@@ -204,7 +205,6 @@ export default function BibleChapterPage() {
       try {
         const characters = await getFeaturedCharactersForMatthew();
         setFeaturedCharacters(characters);
-        setCharacterMap(createCharacterMap(characters));
       } catch (err) {
         console.error("[BIBLE_CHAPTER] Error loading featured characters:", err);
         // Fail silently - feature is optional
@@ -213,6 +213,15 @@ export default function BibleChapterPage() {
 
     loadFeaturedCharacters();
   }, [book]);
+
+  // Apply featured character highlighting via DOM manipulation (Matthew only)
+  const bookLower = book.toLowerCase().trim();
+  useFeaturedCharacters({
+    characters: featuredCharacters,
+    containerRef: verseContainerRef,
+    enabled: bookLower === "matthew" && featuredCharacters.length > 0,
+    onCharacterClick: (character) => setSelectedCharacter(character),
+  });
 
   // Check if chapter is already completed
   useEffect(() => {
@@ -671,7 +680,10 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         </div>
 
         {/* VERSE BLOCK */}
-        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 mb-6 max-h-[60vh] overflow-y-auto">
+        <div 
+          ref={verseContainerRef}
+          className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 mb-6 max-h-[60vh] overflow-y-auto"
+        >
           {sections.map((section) => (
             <div key={section.id} className="mb-8 last:mb-0">
               <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
@@ -680,40 +692,14 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               </h2>
 
               <div className="space-y-5">
-                {section.verses.map((verse) => {
-                  // Only highlight characters for Matthew
-                  const bookLower = book.toLowerCase().trim();
-                  const textParts: TextPart[] = bookLower === "matthew" && characterMap.size > 0
-                    ? highlightCharactersInText(verse.text, characterMap)
-                    : [{ type: "text", content: verse.text }];
-                  
-                  return (
-                    <p key={verse.num} className="leading-relaxed">
-                      <span className="inline-flex items-center justify-center rounded-md bg-blue-500 text-white text-[11px] font-semibold px-2 py-[2px] mr-3">
-                        {verse.num.toString().padStart(2, "0")}
-                      </span>
-                      {textParts.map((part, idx) => {
-                        if (part.type === "text") {
-                          return <span key={idx}>{part.content}</span>;
-                        } else {
-                          return (
-                            <span
-                              key={idx}
-                              className="featured-character underline cursor-pointer text-blue-700 hover:text-blue-900"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setSelectedCharacter(part.character);
-                              }}
-                              data-character-id={part.character.id}
-                            >
-                              {part.content}
-                            </span>
-                          );
-                        }
-                      })}
-                    </p>
-                  );
-                })}
+                {section.verses.map((verse) => (
+                  <p key={verse.num} className="leading-relaxed">
+                    <span className="inline-flex items-center justify-center rounded-md bg-blue-500 text-white text-[11px] font-semibold px-2 py-[2px] mr-3">
+                      {verse.num.toString().padStart(2, "0")}
+                    </span>
+                    {verse.text}
+                  </p>
+                ))}
               </div>
             </div>
           ))}
