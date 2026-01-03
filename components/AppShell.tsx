@@ -80,6 +80,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 Home
               </Link>
 
+              {/* HOW TO USE BIBLEBUDDY LINK */}
+              <Link
+                href="/lessons"
+                className={`px-3 py-1 rounded-full ${
+                  pathname?.startsWith("/lessons")
+                    ? "bg-sky-100 text-black"
+                    : "text-black hover:bg-gray-100"
+                }`}
+              >
+                How to Use BibleBuddy
+              </Link>
+
               {/* 🔥 ADMIN-ONLY ANALYTICS BUTTON */}
               {isLoggedIn && userEmail === "moorelouis3@gmail.com" && (
                 <Link

@@ -747,8 +747,15 @@ function CongratsModalWithConfetti({
 
   const backLink = `/reading/books/${book.toLowerCase()}`;
 
-  const [showLevelUpModal, setShowLevelUpModal] = useState(levelInfo?.leveledUp ?? false);
+  const [showLevelUpModal, setShowLevelUpModal] = useState(false);
   const [showModal, setShowModal] = useState(true);
+
+  // Show level-up overlay when levelInfo indicates a level up
+  useEffect(() => {
+    if (levelInfo?.leveledUp) {
+      setShowLevelUpModal(true);
+    }
+  }, [levelInfo?.leveledUp]);
 
   // All 66 books for next book detection
   const BOOKS = [
@@ -920,50 +927,128 @@ function CongratsModalWithConfetti({
   if (!showModal) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/70 flex items-start justify-center overflow-y-auto p-4 py-10">
-      <div className="relative w-full max-w-3xl md:max-w-4xl rounded-[32px] bg-white shadow-2xl shadow-black/30 ring-1 ring-black/10 p-2 md:p-3 mb-10 mt-10">
+    <>
+      {/* LEVEL UP OVERLAY */}
+      {showLevelUpModal && levelInfo && (
+        <LevelUpOverlay
+          level={levelInfo.level}
+          onClose={() => setShowLevelUpModal(false)}
+        />
+      )}
+
+      {/* CONGRATULATIONS MODAL */}
+      <div className="fixed inset-0 z-50 bg-black/70 flex items-start justify-center overflow-y-auto p-4 py-10">
+        <div className="relative w-full max-w-3xl md:max-w-4xl rounded-[32px] bg-white shadow-2xl shadow-black/30 ring-1 ring-black/10 p-2 md:p-3 mb-10 mt-10">
+          {/* Close button */}
+          <button
+            onClick={() => setShowModal(false)}
+            className="absolute right-4 top-3 text-sm text-gray-500 hover:text-gray-800"
+          >
+            ✕
+          </button>
+
+          {/* Inner light blue column */}
+          <div className="rounded-3xl bg-blue-50 px-4 md:px-6 py-5 md:py-7">
+            {/* Header with Louis */}
+            <div className="flex flex-col items-center mb-6">
+              <LouisAvatar mood="stareyes" size={80} />
+              <h1 className="text-2xl md:text-3xl font-bold mt-4 text-center text-gray-900">
+                Congratulations! You just finished another chapter!
+              </h1>
+              <p className="text-base md:text-lg text-gray-700 mt-3 text-center">
+                {levelInfo ? randomMessage : "Great job — your consistency is paying off!"}
+              </p>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="grid grid-cols-1 gap-4 mb-6">
+              {/* Continue to Next Chapter or Start Next Book */}
+              <button
+                type="button"
+                onClick={handleContinueToNextChapter}
+                className="px-4 py-4 rounded-2xl text-sm md:text-base font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition text-center"
+              >
+                {isLastChapter && nextBook ? `Start ${nextBook}` : "Continue to Next Chapter"}
+              </button>
+            </div>
+
+            {/* Go Back Home Button */}
+            <div className="flex justify-center">
+              <button
+                type="button"
+                onClick={handleGoHome}
+                className="text-sm md:text-base font-medium text-blue-700 hover:underline"
+              >
+                Go Back Home
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+// Full-screen level-up overlay component
+function LevelUpOverlay({
+  level,
+  onClose,
+}: {
+  level: number;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    const duration = 2000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 99999 };
+
+    function randomInRange(min: number, max: number) {
+      return Math.random() * (max - min) + min;
+    }
+
+    const interval: NodeJS.Timeout = setInterval(function () {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+      });
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+      });
+    }, 250);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4">
+      <div className="relative text-center text-white">
         {/* Close button */}
         <button
-          onClick={() => setShowModal(false)}
-          className="absolute right-4 top-3 text-sm text-gray-500 hover:text-gray-800"
+          onClick={onClose}
+          className="absolute -top-4 -right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white text-xl font-bold transition"
+          aria-label="Close"
         >
-          ✕
+          ❌
         </button>
 
-        {/* Inner light blue column */}
-        <div className="rounded-3xl bg-blue-50 px-4 md:px-6 py-5 md:py-7">
-          {/* Header with Louis */}
-          <div className="flex flex-col items-center mb-6">
-            <LouisAvatar mood="stareyes" size={80} />
-            <h1 className="text-2xl md:text-3xl font-bold mt-4 text-center text-gray-900">
-              Congratulations! You just finished another chapter!
-            </h1>
-            <p className="text-base md:text-lg text-gray-700 mt-3 text-center">
-              {levelInfo ? randomMessage : "Great job — your consistency is paying off!"}
-            </p>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="grid grid-cols-1 gap-4 mb-6">
-            {/* Continue to Next Chapter or Start Next Book */}
-            <button
-              type="button"
-              onClick={handleContinueToNextChapter}
-              className="px-4 py-4 rounded-2xl text-sm md:text-base font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition text-center"
-            >
-              {isLastChapter && nextBook ? `Start ${nextBook}` : "Continue to Next Chapter"}
-            </button>
-          </div>
-
-          {/* Go Back Home Button */}
-          <div className="flex justify-center">
-            <button
-              type="button"
-              onClick={handleGoHome}
-              className="text-sm md:text-base font-medium text-blue-700 hover:underline"
-            >
-              Go Back Home
-            </button>
+        {/* Level Up Content */}
+        <div className="animate-in zoom-in duration-700">
+          <h2 className="text-6xl md:text-7xl font-extrabold mb-4 animate-in zoom-in duration-1000">
+            Level {level} Unlocked! 🎉
+          </h2>
+          <div className="text-2xl md:text-3xl font-semibold text-blue-300 animate-pulse">
+            Amazing progress!
           </div>
         </div>
       </div>
