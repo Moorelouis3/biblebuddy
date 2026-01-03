@@ -219,19 +219,47 @@ export async function getCurrentBook(userId: string, books: string[]): Promise<s
   }
 }
 
+// Reading plan book order (same as in app/reading/page.tsx)
+const BOOKS_ORDER = [
+  "Matthew", "Mark", "Luke", "John", "Acts",
+  "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+  "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+  "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther",
+  "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon",
+  "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel",
+  "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk",
+  "Zephaniah", "Haggai", "Zechariah", "Malachi",
+  "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+  "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+  "1 Timothy", "2 Timothy", "Titus", "Philemon",
+  "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude",
+  "Revelation",
+];
+
 /**
  * Check if a book is unlocked for a specific user
  */
 export async function isBookUnlocked(userId: string, book: string): Promise<boolean> {
-  if (book === "Matthew") return true;
+  const bookKey = book.toLowerCase().trim();
+  
+  // Matthew is always unlocked (first book)
+  if (bookKey === "matthew") return true;
 
-  if (book === "Mark") {
-    const matthewComplete = await isBookComplete(userId, "Matthew");
-    return matthewComplete;
-  }
-
-  // Everything else locked for now
-  return false;
+  // Find the book's index in the reading plan
+  const bookIndex = BOOKS_ORDER.findIndex(b => b.toLowerCase().trim() === bookKey);
+  
+  // If book not found in plan, it's locked
+  if (bookIndex === -1) return false;
+  
+  // If it's the first book (Matthew), it's unlocked (already handled above, but double-check)
+  if (bookIndex === 0) return true;
+  
+  // Book is unlocked if the previous book in the reading plan is complete
+  const previousBook = BOOKS_ORDER[bookIndex - 1];
+  if (!previousBook) return false;
+  
+  const previousBookComplete = await isBookComplete(userId, previousBook);
+  return previousBookComplete;
 }
 
 /**
