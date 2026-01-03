@@ -92,6 +92,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 How to Use BibleBuddy
               </Link>
 
+              {/* SETTINGS LINK */}
+              <Link
+                href="/settings"
+                className={`px-3 py-1 rounded-full ${
+                  pathname?.startsWith("/settings")
+                    ? "bg-sky-100 text-black"
+                    : "text-black hover:bg-gray-100"
+                }`}
+              >
+                Settings
+              </Link>
+
               {/* 🔥 ADMIN-ONLY ANALYTICS BUTTON */}
               {isLoggedIn && userEmail === "moorelouis3@gmail.com" && (
                 <Link
