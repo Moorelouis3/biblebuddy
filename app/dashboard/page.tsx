@@ -444,7 +444,7 @@ export default function DashboardPage() {
           </Link>
 
           {/* GET MORE BIBLE STUDY HELP CARD */}
-          <Link href="https://joinhopenation.net" target="_blank">
+          <Link href="https://joinhopenation.com/" target="_blank">
             <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
               <h2 className="text-xl font-semibold mb-1">📘 Get more Bible study help</h2>
               <p className="text-gray-700 text-sm mb-2">Join our free community</p>
