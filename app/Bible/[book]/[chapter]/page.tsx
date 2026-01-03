@@ -750,6 +750,23 @@ function CongratsModalWithConfetti({
   const [showLevelUpModal, setShowLevelUpModal] = useState(levelInfo.leveledUp);
   const [showModal, setShowModal] = useState(true);
 
+  // All 66 books for next book detection
+  const BOOKS = [
+    "Matthew", "Mark", "Luke", "John", "Acts",
+    "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+    "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+    "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther",
+    "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon",
+    "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel",
+    "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk",
+    "Zephaniah", "Haggai", "Zechariah", "Malachi",
+    "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+    "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+    "1 Timothy", "2 Timothy", "Titus", "Philemon",
+    "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude",
+    "Revelation",
+  ];
+
   // Motivational messages with level progress
   const motivationalMessages = [
     "Just {chaptersRemaining} more chapters until you level up.",
