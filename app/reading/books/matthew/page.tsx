@@ -17,12 +17,18 @@ export default function MatthewPage() {
   // collapsed or open Louis bubble
   const [summaryCollapsed, setSummaryCollapsed] = useState(false);
 
-  // load current step and completed chapters from localStorage (via helper)
+  // load current step and completed chapters from database
   useEffect(() => {
-    const step = getBookCurrentStep("matthew", MATTHEW_CHAPTERS + 1);
-    // If using dynamic system, currentChapter represents the next chapter to read (1-29)
-    // If step is 0, we start at chapter 1
-    setCurrentChapter(step === 0 ? 1 : step);
+    async function loadProgress() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const step = await getBookCurrentStep(user.id, "matthew", MATTHEW_CHAPTERS + 1);
+        // If using dynamic system, currentChapter represents the next chapter to read (1-29)
+        // If step is 0, we start at chapter 1
+        setCurrentChapter(step === 0 ? 1 : step);
+      }
+    }
+    loadProgress();
 
     // Get completed chapters using the helper
     const completed = getCompletedChapters("matthew", MATTHEW_CHAPTERS);
