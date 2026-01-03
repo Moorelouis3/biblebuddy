@@ -93,9 +93,16 @@ export default function ReadingPage() {
   const [bookPage, setBookPage] = useState(0);
   const [currentActiveBook, setCurrentActiveBook] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
+  const [userName, setUserName] = useState<string>("buddy");
   const [bookStates, setBookStates] = useState<Record<string, { unlocked: boolean; complete: boolean }>>({});
   const [loading, setLoading] = useState(true);
   const [showLoadingOverlay, setShowLoadingOverlay] = useState(true);
+  const [showStatsModal, setShowStatsModal] = useState(false);
+  const [stats, setStats] = useState<{
+    booksCompleted: number;
+    chaptersCompleted: number;
+    bibleCompletionPercent: number;
+  } | null>(null);
 
   // book pagination
   const startIndex = bookPage * BOOKS_PER_PAGE;
