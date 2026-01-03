@@ -7,6 +7,8 @@ import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { supabase } from "../../../../lib/supabaseClient";
 import { markChapterDone, isChapterCompleted, getBookTotalChapters, getCompletedChapters } from "../../../../lib/readingProgress";
 import confetti from "canvas-confetti";
+import { getFeaturedCharactersForMatthew, createCharacterMap, highlightCharactersInText, FeaturedCharacter, TextPart } from "../../../../lib/featuredCharacters";
+import { FeaturedCharacterModal } from "../../../../components/FeaturedCharacterModal";
 
 type Verse = {
   num: number;
@@ -56,6 +58,11 @@ export default function BibleChapterPage() {
     nextLevel: number;
     leveledUp: boolean;
   } | null>(null);
+  
+  // Featured Characters state (Matthew only)
+  const [featuredCharacters, setFeaturedCharacters] = useState<FeaturedCharacter[]>([]);
+  const [characterMap, setCharacterMap] = useState<Map<string, FeaturedCharacter>>(new Map());
+  const [selectedCharacter, setSelectedCharacter] = useState<FeaturedCharacter | null>(null);
 
   // Normalize book name for API (e.g., "1 Samuel" -> "1samuel", "Matthew" -> "matthew")
   function normalizeBookName(bookName: string): string {
@@ -184,6 +191,28 @@ export default function BibleChapterPage() {
     }
     getUser();
   }, []);
+
+  // Load featured characters for Matthew only
+  useEffect(() => {
+    async function loadFeaturedCharacters() {
+      // Only load for Matthew book
+      const bookLower = book.toLowerCase().trim();
+      if (bookLower !== "matthew") {
+        return;
+      }
+
+      try {
+        const characters = await getFeaturedCharactersForMatthew();
+        setFeaturedCharacters(characters);
+        setCharacterMap(createCharacterMap(characters));
+      } catch (err) {
+        console.error("[BIBLE_CHAPTER] Error loading featured characters:", err);
+        // Fail silently - feature is optional
+      }
+    }
+
+    loadFeaturedCharacters();
+  }, [book]);
 
   // Check if chapter is already completed
   useEffect(() => {
@@ -651,14 +680,40 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               </h2>
 
               <div className="space-y-5">
-                {section.verses.map((verse) => (
-                  <p key={verse.num} className="leading-relaxed">
-                    <span className="inline-flex items-center justify-center rounded-md bg-blue-500 text-white text-[11px] font-semibold px-2 py-[2px] mr-3">
-                      {verse.num.toString().padStart(2, "0")}
-                    </span>
-                    {verse.text}
-                  </p>
-                ))}
+                {section.verses.map((verse) => {
+                  // Only highlight characters for Matthew
+                  const bookLower = book.toLowerCase().trim();
+                  const textParts: TextPart[] = bookLower === "matthew" && characterMap.size > 0
+                    ? highlightCharactersInText(verse.text, characterMap)
+                    : [{ type: "text", content: verse.text }];
+                  
+                  return (
+                    <p key={verse.num} className="leading-relaxed">
+                      <span className="inline-flex items-center justify-center rounded-md bg-blue-500 text-white text-[11px] font-semibold px-2 py-[2px] mr-3">
+                        {verse.num.toString().padStart(2, "0")}
+                      </span>
+                      {textParts.map((part, idx) => {
+                        if (part.type === "text") {
+                          return <span key={idx}>{part.content}</span>;
+                        } else {
+                          return (
+                            <span
+                              key={idx}
+                              className="featured-character underline cursor-pointer text-blue-700 hover:text-blue-900"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setSelectedCharacter(part.character);
+                              }}
+                              data-character-id={part.character.id}
+                            >
+                              {part.content}
+                            </span>
+                          );
+                        }
+                      })}
+                    </p>
+                  );
+                })}
               </div>
             </div>
           ))}
@@ -720,6 +775,12 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       {showCongratsModal && (
         <CongratsModalWithConfetti levelInfo={levelInfoForModal ?? undefined} />
       )}
+
+      {/* FEATURED CHARACTER MODAL */}
+      <FeaturedCharacterModal
+        character={selectedCharacter}
+        onClose={() => setSelectedCharacter(null)}
+      />
     </div>
   );
 }
