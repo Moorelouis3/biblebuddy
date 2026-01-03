@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
-import { getCurrentBook, getCompletedChapters } from "../../lib/readingProgress";
+import { getCurrentBook, getCompletedChapters, isBookComplete } from "../../lib/readingProgress";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -101,6 +101,15 @@ export default function DashboardPage() {
   // Preloaded reading plan data
   const [totalCompletedChapters, setTotalCompletedChapters] = useState<number>(0);
   const [currentBook, setCurrentBook] = useState<string | null>(null);
+  const [levelInfo, setLevelInfo] = useState<{
+    level: number;
+    chaptersRead: number;
+    levelStart: number;
+    levelEnd: number;
+    progressPercent: number;
+    chaptersNeededForNext: number;
+    nextLevel: number;
+  } | null>(null);
 
   // load user first name from Supabase
   useEffect(() => {
@@ -140,6 +149,78 @@ export default function DashboardPage() {
           totalCount += completed.length;
         }
         setTotalCompletedChapters(totalCount);
+
+        // Calculate level based on chapters read
+        const chaptersRead = totalCount;
+        let level = 1;
+        let levelStart = 0;
+        let levelEnd = 9;
+
+        if (chaptersRead >= 1000 && chaptersRead <= 1188) {
+          level = 9;
+          levelStart = 1000;
+          levelEnd = 1188;
+        } else if (chaptersRead >= 700 && chaptersRead <= 999) {
+          level = 8;
+          levelStart = 700;
+          levelEnd = 999;
+        } else if (chaptersRead >= 400 && chaptersRead <= 699) {
+          level = 7;
+          levelStart = 400;
+          levelEnd = 699;
+        } else if (chaptersRead >= 200 && chaptersRead <= 399) {
+          level = 6;
+          levelStart = 200;
+          levelEnd = 399;
+        } else if (chaptersRead >= 100 && chaptersRead <= 199) {
+          level = 5;
+          levelStart = 100;
+          levelEnd = 199;
+        } else if (chaptersRead >= 50 && chaptersRead <= 99) {
+          level = 4;
+          levelStart = 50;
+          levelEnd = 99;
+        } else if (chaptersRead >= 30 && chaptersRead <= 49) {
+          level = 3;
+          levelStart = 30;
+          levelEnd = 49;
+        } else if (chaptersRead >= 10 && chaptersRead <= 29) {
+          level = 2;
+          levelStart = 10;
+          levelEnd = 29;
+        } else {
+          level = 1;
+          levelStart = 0;
+          levelEnd = 9;
+        }
+
+        // Calculate progress within current level
+        const progressInLevel = chaptersRead - levelStart;
+        const levelSpan = levelEnd - levelStart + 1;
+        const progressPercent = Math.min(100, Math.max(0, (progressInLevel / levelSpan) * 100));
+
+        // Calculate next level info
+        const nextLevel = level < 10 ? level + 1 : 10;
+        const nextLevelStart = nextLevel === 10 ? 1189 : 
+          nextLevel === 9 ? 1000 :
+          nextLevel === 8 ? 700 :
+          nextLevel === 7 ? 400 :
+          nextLevel === 6 ? 200 :
+          nextLevel === 5 ? 100 :
+          nextLevel === 4 ? 50 :
+          nextLevel === 3 ? 30 :
+          nextLevel === 2 ? 10 : 0;
+        const chaptersNeededForNext = Math.max(0, nextLevelStart - chaptersRead);
+
+        setLevelInfo({
+          level,
+          chaptersRead,
+          levelStart,
+          levelEnd,
+          progressPercent,
+          chaptersNeededForNext,
+          nextLevel,
+        });
       } catch (err) {
         console.error("Error preloading reading plan data:", err);
       }
@@ -234,6 +315,33 @@ export default function DashboardPage() {
 
         {/* DASHBOARD CARDS */}
         <div className="flex flex-col gap-4">
+          {/* BIBLE READING PROGRESS CARD */}
+          {levelInfo && (
+            <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+              <h2 className="text-xl font-semibold mb-2">📘 Level {levelInfo.level}</h2>
+              <p className="text-gray-700 text-sm mb-4">
+                Keep going. You're building a daily habit.
+              </p>
+              
+              {/* Progress Bar */}
+              <div className="mb-3">
+                <div className="h-3 rounded-full bg-gray-200 overflow-hidden">
+                  <div
+                    className="h-full bg-blue-500 rounded-full transition-all duration-300"
+                    style={{ width: `${levelInfo.progressPercent}%` }}
+                  />
+                </div>
+              </div>
+
+              {/* Progress Text */}
+              <p className="text-sm text-gray-600">
+                {levelInfo.level < 10
+                  ? `${levelInfo.chaptersNeededForNext} more chapters to reach Level ${levelInfo.nextLevel}`
+                  : "Bible completed 🎉"}
+              </p>
+            </div>
+          )}
+
           {/* HOW TO USE BIBLEBUDDY COURSE */}
           <Link href="/lessons">
             <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
