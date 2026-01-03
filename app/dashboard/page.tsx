@@ -286,30 +286,24 @@ export default function DashboardPage() {
     ? "Start your Bible reading plan here"
     : "Continue reading your Bible here";
 
-  // Louis message with streak
-  let louisMessage = "";
-
-  if (daysSinceLastReading === 0 && streakDays > 1) {
-    louisMessage = `You are on a ${streakDays} day Bible reading streak. Let us keep it going.`;
-  } else if (daysSinceLastReading === 0 && streakDays === 1) {
-    louisMessage = "You showed up today. This is the start of your new Bible streak.";
-  } else if (daysSinceLastReading > 0 && streakDays > 1) {
-    louisMessage = `You were on a ${streakDays} day streak. It has been ${daysSinceLastReading} days since your last time here. No shame, let us start fresh today.`;
-  } else {
-    louisMessage = `It has been ${daysSinceLastReading} days since your last time here. No shame, let us pick up where you left off.`;
-  }
-
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
       {/* MAIN CONTENT – CENTERED COLUMN ONLY */}
       <div className="max-w-lg mx-auto px-4 mt-8">
+        {/* TOP NAVIGATION */}
+        <div className="flex justify-end gap-4 mb-4">
+          <Link href="/lessons" className="text-sm text-blue-600 hover:underline">
+            How To Use
+          </Link>
+          <Link href="/dashboard" className="text-sm text-blue-600 hover:underline">
+            Home
+          </Link>
+        </div>
+
         {/* GREETING */}
         <div className="mb-4">
           <p className="text-2xl font-semibold text-center">
             Welcome back, {userName}!
-          </p>
-          <p className="text-sm text-gray-700 text-center mt-1">
-            {louisMessage}
           </p>
         </div>
 
