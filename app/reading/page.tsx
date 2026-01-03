@@ -110,12 +110,19 @@ export default function ReadingPage() {
   const hasPrevPage = bookPage > 0;
   const hasNextPage = startIndex + BOOKS_PER_PAGE < BOOKS.length;
 
-  // Get user ID
+  // Get user ID and name
   useEffect(() => {
     async function getUser() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         setUserId(user.id);
+        const meta: any = user.user_metadata || {};
+        const first =
+          meta.firstName ||
+          meta.first_name ||
+          (user.email ? user.email.split("@")[0] : null) ||
+          "friend";
+        setUserName(first);
       } else {
         setLoading(false);
       }
@@ -164,6 +171,42 @@ export default function ReadingPage() {
       loadBookStates();
     }
   }, [userId]);
+
+  // Load stats when modal opens
+  useEffect(() => {
+    async function loadStats() {
+      if (!showStatsModal || !userId) return;
+
+      try {
+        // Count completed chapters across all books
+        let totalChaptersCompleted = 0;
+        let totalBooksCompleted = 0;
+
+        for (const book of BOOKS) {
+          const completed = await getCompletedChapters(userId, book);
+          totalChaptersCompleted += completed.length;
+          
+          // Check if book is complete (all chapters done)
+          const isComplete = await isBookComplete(userId, book);
+          if (isComplete) {
+            totalBooksCompleted++;
+          }
+        }
+
+        const bibleCompletionPercent = (totalChaptersCompleted / 1189) * 100;
+
+        setStats({
+          booksCompleted: totalBooksCompleted,
+          chaptersCompleted: totalChaptersCompleted,
+          bibleCompletionPercent: Math.round(bibleCompletionPercent * 10) / 10, // Round to 1 decimal
+        });
+      } catch (err) {
+        console.error("Error loading stats:", err);
+      }
+    }
+
+    loadStats();
+  }, [showStatsModal, userId]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4 relative">
@@ -284,9 +327,13 @@ export default function ReadingPage() {
                 Previous books
               </button>
 
-              <Link href="/dashboard" className="hover:underline">
-                Home
-              </Link>
+              <button
+                type="button"
+                onClick={() => setShowStatsModal(true)}
+                className="hover:underline cursor-pointer"
+              >
+                📘 Your Bible Study Stats
+              </button>
 
               <button
                 type="button"
@@ -325,6 +372,77 @@ export default function ReadingPage() {
           `}</style>
         </div>
       </div>
+
+      {/* Stats Modal */}
+      {showStatsModal && (
+        <div
+          className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4"
+          onClick={() => setShowStatsModal(false)}
+        >
+          <div
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 md:p-8 relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setShowStatsModal(false)}
+              className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 text-xl"
+            >
+              ✕
+            </button>
+
+            {/* Header */}
+            <div className="mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+                📊 {userName}, here's your Bible Study Stats
+              </h2>
+            </div>
+
+            {/* Stats */}
+            {stats ? (
+              <div className="space-y-4">
+                {/* Books Progress */}
+                <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                  <p className="text-sm text-gray-600 mb-1">📖 Books completed</p>
+                  <p className="text-2xl font-bold text-gray-900">
+                    {stats.booksCompleted} / 66
+                  </p>
+                </div>
+
+                {/* Chapters Progress */}
+                <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+                  <p className="text-sm text-gray-600 mb-1">📄 Chapters read</p>
+                  <p className="text-2xl font-bold text-gray-900">
+                    {stats.chaptersCompleted} / 1189
+                  </p>
+                </div>
+
+                {/* Bible Completion Percentage */}
+                <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
+                  <p className="text-sm text-gray-600 mb-1">🔥 Bible completion</p>
+                  <p className="text-2xl font-bold text-gray-900">
+                    {stats.bibleCompletionPercent.toFixed(1)}%
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-8">
+                <p className="text-gray-500">Loading stats...</p>
+              </div>
+            )}
+
+            {/* Close button at bottom */}
+            <div className="mt-6 flex justify-end">
+              <button
+                onClick={() => setShowStatsModal(false)}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
