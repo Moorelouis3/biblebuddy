@@ -49,6 +49,7 @@ export default function BibleChapterPage() {
   const [isCompleted, setIsCompleted] = useState(false);
   const [chapterSummary, setChapterSummary] = useState<string>("");
   const summaryLoadingRef = useRef(false);
+  const [userId, setUserId] = useState<string | null>(null);
 
   // Normalize book name for API (e.g., "1 Samuel" -> "1samuel", "Matthew" -> "matthew")
   function normalizeBookName(bookName: string): string {
@@ -167,13 +168,27 @@ export default function BibleChapterPage() {
     }
   }, [book, chapter]);
 
+  // Get user ID
+  useEffect(() => {
+    async function getUser() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        setUserId(user.id);
+      }
+    }
+    getUser();
+  }, []);
+
   // Check if chapter is already completed
   useEffect(() => {
-    if (book && chapter) {
-      const completed = isChapterCompleted(book, chapter);
-      setIsCompleted(completed);
+    async function checkCompleted() {
+      if (book && chapter && userId) {
+        const completed = await isChapterCompleted(userId, book, chapter);
+        setIsCompleted(completed);
+      }
     }
-  }, [book, chapter]);
+    checkCompleted();
+  }, [book, chapter, userId]);
 
   // Extract Big Idea summary from notes text
   function extractBigIdeaSummary(notesText: string): string {
@@ -522,15 +537,20 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     }, 250);
   }
 
-  function handleMarkFinished() {
+  async function handleMarkFinished() {
     if (isSaving || isCompleted) return;
+
+    if (!userId) {
+      console.error("User ID not available");
+      return;
+    }
 
     try {
       setIsSaving(true);
-      setIsCompleted(true);
 
-      // Mark chapter as done - this will unlock the next chapter
-      markChapterDone(book, chapter);
+      // Mark chapter as done in database - this will unlock the next chapter
+      await markChapterDone(userId, book, chapter);
+      setIsCompleted(true);
 
       // Trigger confetti animation immediately
       triggerConfetti();

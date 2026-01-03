@@ -40,10 +40,15 @@ export default function BookBibleStudyNotesPage() {
   const [notesError, setNotesError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Get completed chapters for this book
-    const completed = getCompletedChapters(bookKey, totalChapters);
-    setCompletedChapters(completed);
-  }, [bookKey, totalChapters]);
+    async function loadCompletedChapters() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const completed = await getCompletedChapters(user.id, bookKey);
+        setCompletedChapters(completed);
+      }
+    }
+    loadCompletedChapters();
+  }, [bookKey]);
 
   useEffect(() => {
     // Load notes when a chapter is selected

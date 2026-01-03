@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { markMatthewStepDone } from "../../../../../../lib/readingProgress";
+// import { markMatthewStepDone } from "../../../../../../lib/readingProgress"; // Legacy - using database now
 
 // overview + 28 chapters
 const MATTHEW_TOTAL_ITEMS = 28 + 1;
@@ -19,8 +19,8 @@ export default function MatthewChapter2NotesPage() {
     try {
       setIsSaving(true);
 
-      // chapter 2 is step index 2 (overview 0, chapter 1 = 1, chapter 2 = 2)
-      markMatthewStepDone(MATTHEW_TOTAL_ITEMS, 2);
+      // chapter 2 is step index 2 (legacy - using database now)
+      // markMatthewStepDone(MATTHEW_TOTAL_ITEMS, 2);
 
       setIsFinished(true);
 

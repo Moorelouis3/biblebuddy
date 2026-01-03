@@ -3,7 +3,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getMatthewCurrentStep } from "../../lib/readingProgress";
 import { supabase } from "../../lib/supabaseClient";
 
 const MATTHEW_CHAPTERS = 28;
@@ -40,10 +39,10 @@ export default function DashboardPage() {
     loadUser();
   }, []);
 
-  // load reading progress from localStorage
+  // load reading progress from localStorage (legacy - not used for new reading plan)
   useEffect(() => {
-    const step = getMatthewCurrentStep(TOTAL_ITEMS);
-    setCurrentMatthewStep(step);
+    // Removed - using database-based progress now
+    setCurrentMatthewStep(0);
   }, []);
 
   // simple local streak system stored in localStorage

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { LouisAvatar } from "../../../../../../components/LouisAvatar";
-import { markMatthewStepDone } from "../../../../../../lib/readingProgress";
+// import { markMatthewStepDone } from "../../../../../../lib/readingProgress"; // Legacy - using database now
 
 // total Matthew items (overview + 28 chapters)
 const MATTHEW_TOTAL_ITEMS = 28 + 1;
@@ -18,8 +18,8 @@ export default function MatthewOverviewPage() {
   async function handleDoneClick() {
     // first click: mark completed, update reading progress, show Louis popup
     if (!completed) {
-      // overview is step index 0
-      markMatthewStepDone(MATTHEW_TOTAL_ITEMS, 0);
+      // overview is step index 0 (legacy - using database now)
+      // markMatthewStepDone(MATTHEW_TOTAL_ITEMS, 0);
 
       setCompleted(true);
       setShowPrompt(true);

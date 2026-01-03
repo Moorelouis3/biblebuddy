@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { getBookCurrentStep, isChapterUnlocked, isChapterCompleted, getCompletedChapters, getBookTotalChapters } from "../../../../lib/readingProgress";
+import { supabase } from "../../../../lib/supabaseClient";
 
 const CHAPTERS_PER_PAGE = 12;
 
@@ -40,25 +41,53 @@ export default function BookPage() {
 
   const totalChapters = getBookTotalChapters(bookDisplayName);
 
-  // currentChapter is now loaded from readingProgress helper
+  // currentChapter is now loaded from database
   const [currentChapter, setCurrentChapter] = useState(1);
   const [chapterPage, setChapterPage] = useState(0);
   const [completedChapters, setCompletedChapters] = useState<number[]>([]);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   // collapsed or open Louis bubble
   const [summaryCollapsed, setSummaryCollapsed] = useState(false);
 
-  // load current step and completed chapters from localStorage (via helper)
+  // Get user ID
   useEffect(() => {
-    const step = getBookCurrentStep(bookKey, totalChapters + 1);
-    // If using dynamic system, currentChapter represents the next chapter to read (1-29)
-    // If step is 0, we start at chapter 1
-    setCurrentChapter(step === 0 ? 1 : step);
+    async function getUser() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        setUserId(user.id);
+      } else {
+        setLoading(false);
+      }
+    }
+    getUser();
+  }, []);
 
-    // Get completed chapters using the helper
-    const completed = getCompletedChapters(bookKey, totalChapters);
-    setCompletedChapters(completed);
-  }, [bookKey, totalChapters]);
+  // load current step and completed chapters from database
+  useEffect(() => {
+    async function loadProgress() {
+      if (!userId) return;
+
+      try {
+        setLoading(true);
+
+        const step = await getBookCurrentStep(userId, bookKey, totalChapters);
+        setCurrentChapter(step === 0 ? 1 : step);
+
+        const completed = await getCompletedChapters(userId, bookKey);
+        setCompletedChapters(completed);
+      } catch (err) {
+        console.error("Error loading progress:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (userId) {
+      loadProgress();
+    }
+  }, [userId, bookKey, totalChapters]);
 
   // Calculate finished chapters and progress
   // All chapters from 1 to (currentChapter - 1) are finished, plus any explicitly completed
@@ -131,9 +160,9 @@ export default function BookPage() {
           <div className="space-y-4 mt-1">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
               {visibleChapters.map((chapter) => {
-                // Use dynamic system, with fallback for backward compatibility
-                const unlocked = isChapterUnlocked(bookKey, chapter) || chapter <= currentChapter;
-                const done = isChapterCompleted(bookKey, chapter) || completedChapters.includes(chapter);
+                // Use completedChapters array (already loaded from database)
+                const unlocked = chapter === 1 || completedChapters.includes(chapter - 1) || chapter <= currentChapter;
+                const done = completedChapters.includes(chapter);
                 const current = chapter === currentChapter && !done;
 
                 let stateClasses =
@@ -238,5 +267,3 @@ export default function BookPage() {
     </div>
   );
 }
-
-

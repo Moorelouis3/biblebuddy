@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import { isBookUnlocked, isBookComplete, getCurrentBook } from "../../lib/readingProgress";
+import { supabase } from "../../lib/supabaseClient";
 
 const BOOKS = [
   "Matthew",
@@ -50,6 +51,9 @@ const MATTHEW_TOTAL_ITEMS = 28 + 1;
 export default function ReadingPage() {
   const [bookPage, setBookPage] = useState(0);
   const [currentActiveBook, setCurrentActiveBook] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [bookStates, setBookStates] = useState<Record<string, { unlocked: boolean; complete: boolean }>>({});
+  const [loading, setLoading] = useState(true);
 
   // book pagination
   const startIndex = bookPage * BOOKS_PER_PAGE;
@@ -57,11 +61,50 @@ export default function ReadingPage() {
   const hasPrevPage = bookPage > 0;
   const hasNextPage = startIndex + BOOKS_PER_PAGE < BOOKS.length;
 
-  // Determine current active book
+  // Get user ID
   useEffect(() => {
-    const active = getCurrentBook(BOOKS);
-    setCurrentActiveBook(active);
+    async function getUser() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        setUserId(user.id);
+      } else {
+        setLoading(false);
+      }
+    }
+    getUser();
   }, []);
+
+  // Load book states from database
+  useEffect(() => {
+    async function loadBookStates() {
+      if (!userId) return;
+
+      try {
+        setLoading(true);
+
+        // Get current active book
+        const active = await getCurrentBook(userId, BOOKS);
+        setCurrentActiveBook(active);
+
+        // Get states for all books
+        const states: Record<string, { unlocked: boolean; complete: boolean }> = {};
+        for (const book of BOOKS) {
+          const unlocked = await isBookUnlocked(userId, book);
+          const complete = await isBookComplete(userId, book);
+          states[book] = { unlocked, complete };
+        }
+        setBookStates(states);
+      } catch (err) {
+        console.error("Error loading book states:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (userId) {
+      loadBookStates();
+    }
+  }, [userId]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -95,8 +138,8 @@ export default function ReadingPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-2">
               {visibleBooks.map((book) => {
-                const unlocked = isBookUnlocked(book, MATTHEW_TOTAL_ITEMS);
-                const isComplete = isBookComplete(book);
+                const unlocked = bookStates[book]?.unlocked ?? false;
+                const isComplete = bookStates[book]?.complete ?? false;
                 const isActive = currentActiveBook === book;
 
                 const baseClasses =
