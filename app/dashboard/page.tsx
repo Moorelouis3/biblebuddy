@@ -144,6 +144,29 @@ export default function DashboardPage() {
       try {
         setIsLoadingLevel(true);
         
+        // Check localStorage cache first
+        const cacheKey = `bb_level_data_${user.id}`;
+        const cacheTimestampKey = `bb_level_data_timestamp_${user.id}`;
+        const cachedData = typeof window !== "undefined" ? window.localStorage.getItem(cacheKey) : null;
+        const cachedTimestamp = typeof window !== "undefined" ? window.localStorage.getItem(cacheTimestampKey) : null;
+        
+        // Use cache if less than 5 minutes old
+        if (cachedData && cachedTimestamp) {
+          const cacheAge = Date.now() - Number(cachedTimestamp);
+          if (cacheAge < 5 * 60 * 1000) { // 5 minutes
+            try {
+              const parsed = JSON.parse(cachedData);
+              setLevelInfo(parsed.levelInfo);
+              setTotalCompletedChapters(parsed.totalCompletedChapters);
+              setCurrentBook(parsed.currentBook);
+              setIsLoadingLevel(false);
+              return; // Use cached data
+            } catch (e) {
+              // Cache parse error, continue to fetch fresh data
+            }
+          }
+        }
+        
         // Get current active book
         const activeBook = await getCurrentBook(user.id, BOOKS);
         setCurrentBook(activeBook);
