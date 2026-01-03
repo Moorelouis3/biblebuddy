@@ -4,12 +4,50 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
+import { getCurrentBook, getCompletedChapters } from "../../lib/readingProgress";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
 
 const STREAK_KEY = "bbReadingStreakDays";
 const LAST_DATE_KEY = "bbReadingLastDate";
+
+const BOOKS = [
+  "Matthew",
+  "Mark",
+  "Luke",
+  "John",
+  "Acts",
+  "Romans",
+  "Genesis",
+  "Exodus",
+  "Leviticus",
+  "Numbers",
+  "Deuteronomy",
+  "Joshua",
+  "Judges",
+  "Ruth",
+  "1 Samuel",
+  "2 Samuel",
+  "1 Kings",
+  "2 Kings",
+  "1 Chronicles",
+  "2 Chronicles",
+  "Ezra",
+  "Nehemiah",
+  "Esther",
+  "Job",
+  "Psalms",
+  "Proverbs",
+  "Ecclesiastes",
+  "Song of Solomon",
+  "Isaiah",
+  "Jeremiah",
+  "Lamentations",
+  "Ezekiel",
+  "Daniel",
+  "Hosea",
+];
 
 export default function DashboardPage() {
   const [userName, setUserName] = useState<string>("buddy");
@@ -18,6 +56,10 @@ export default function DashboardPage() {
   const [daysSinceLastReading, setDaysSinceLastReading] = useState<number>(0);
 
   const [currentMatthewStep, setCurrentMatthewStep] = useState(0);
+  
+  // Preloaded reading plan data
+  const [totalCompletedChapters, setTotalCompletedChapters] = useState<number>(0);
+  const [currentBook, setCurrentBook] = useState<string | null>(null);
 
   // load user first name from Supabase
   useEffect(() => {
@@ -39,10 +81,30 @@ export default function DashboardPage() {
     loadUser();
   }, []);
 
-  // load reading progress from localStorage (legacy - not used for new reading plan)
+  // Preload reading plan data (read-only, for dashboard display)
   useEffect(() => {
-    // Removed - using database-based progress now
-    setCurrentMatthewStep(0);
+    async function preloadReadingPlanData() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      try {
+        // Get current active book
+        const activeBook = await getCurrentBook(user.id, BOOKS);
+        setCurrentBook(activeBook);
+
+        // Get total completed chapters count across all books
+        let totalCount = 0;
+        for (const book of BOOKS) {
+          const completed = await getCompletedChapters(user.id, book);
+          totalCount += completed.length;
+        }
+        setTotalCompletedChapters(totalCount);
+      } catch (err) {
+        console.error("Error preloading reading plan data:", err);
+      }
+    }
+
+    preloadReadingPlanData();
   }, []);
 
   // simple local streak system stored in localStorage
@@ -97,16 +159,10 @@ export default function DashboardPage() {
     setDaysSinceLastReading(diffDays > 0 ? diffDays : 0);
   }, []);
 
-  // subtitle for reading card
-  let readingSubtitle: string;
-
-  if (currentMatthewStep === 0) {
-    readingSubtitle = "Start your Bible reading plan here.";
-  } else if (currentMatthewStep === 1) {
-    readingSubtitle = "Continue Matthew 1.";
-  } else {
-    readingSubtitle = `Continue Matthew ${currentMatthewStep}.`;
-  }
+  // subtitle for reading card (based on preloaded progress)
+  const readingSubtitle = totalCompletedChapters === 0
+    ? "Start your Bible reading plan here"
+    : "Continue reading your Bible here";
 
   // Louis message with streak
   let louisMessage = "";
@@ -150,18 +206,8 @@ export default function DashboardPage() {
           {/* YOUR BIBLE READING PLAN */}
           <Link href="/reading">
             <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">📅 Your Bible reading plan</h2>
+              <h2 className="text-xl font-semibold">📖 Your Bible reading plan</h2>
               <p className="text-gray-700 mt-1">{readingSubtitle}</p>
-            </div>
-          </Link>
-
-          {/* BIBLE STUDY NOTES */}
-          <Link href="/bible-study-notes">
-            <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">📖 Bible study notes</h2>
-              <p className="text-gray-700 mt-1">
-                Review study notes for chapters you've completed.
-              </p>
             </div>
           </Link>
 
