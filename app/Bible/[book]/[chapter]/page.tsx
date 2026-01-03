@@ -733,7 +733,7 @@ function CongratsModalWithConfetti({
     chaptersNeededForNext: number;
     nextLevel: number;
     leveledUp: boolean;
-  };
+  } | null;
 }) {
   const params = useParams();
   const router = useRouter();
