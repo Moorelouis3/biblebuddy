@@ -59,15 +59,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             </Link>
 
             <nav className="flex items-center gap-3 text-xs sm:text-sm">
-              {/* PUBLIC LINK */}
-              <Link
-                href="https://joinhopenation.com"
-                target="_blank"
-                className="px-3 py-1 rounded-full text-black hover:bg-gray-100"
-              >
-                Join Our Free Community
-              </Link>
-
               {/* HOME LINK */}
               <Link
                 href="/dashboard"
