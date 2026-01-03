@@ -50,6 +50,12 @@ export default function BibleChapterPage() {
   const [chapterSummary, setChapterSummary] = useState<string>("");
   const summaryLoadingRef = useRef(false);
   const [userId, setUserId] = useState<string | null>(null);
+  const [levelInfoForModal, setLevelInfoForModal] = useState<{
+    level: number;
+    chaptersNeededForNext: number;
+    nextLevel: number;
+    leveledUp: boolean;
+  } | null>(null);
 
   // Normalize book name for API (e.g., "1 Samuel" -> "1samuel", "Matthew" -> "matthew")
   function normalizeBookName(bookName: string): string {
@@ -711,13 +717,24 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       </div>
 
       {/* CONGRATULATIONS MODAL */}
-      {showCongratsModal && <CongratsModalWithConfetti />}
+      {showCongratsModal && levelInfoForModal && (
+        <CongratsModalWithConfetti levelInfo={levelInfoForModal} />
+      )}
     </div>
   );
 }
 
 // Separate component to trigger confetti when modal mounts
-function CongratsModalWithConfetti() {
+function CongratsModalWithConfetti({
+  levelInfo,
+}: {
+  levelInfo: {
+    level: number;
+    chaptersNeededForNext: number;
+    nextLevel: number;
+    leveledUp: boolean;
+  };
+}) {
   const params = useParams();
   const router = useRouter();
   const book = String(params.book);
@@ -730,132 +747,8 @@ function CongratsModalWithConfetti() {
 
   const backLink = `/reading/books/${book.toLowerCase()}`;
 
-  // All 66 books for level calculation
-  const BOOKS = [
-    "Matthew", "Mark", "Luke", "John", "Acts",
-    "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
-    "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
-    "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther",
-    "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon",
-    "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel",
-    "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk",
-    "Zephaniah", "Haggai", "Zechariah", "Malachi",
-    "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
-    "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
-    "1 Timothy", "2 Timothy", "Titus", "Philemon",
-    "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude",
-    "Revelation",
-  ];
-
-  // Level progress state
-  const [levelInfo, setLevelInfo] = useState<{
-    level: number;
-    chaptersRead: number;
-    chaptersNeededForNext: number;
-    nextLevel: number;
-    leveledUp: boolean;
-    previousLevel: number;
-  } | null>(null);
-  const [showLevelUpModal, setShowLevelUpModal] = useState(false);
+  const [showLevelUpModal, setShowLevelUpModal] = useState(levelInfo.leveledUp);
   const [showModal, setShowModal] = useState(true);
-
-  // Calculate level progress
-  useEffect(() => {
-    async function calculateLevelProgress() {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-
-      try {
-        // Get total completed chapters count across all books
-        let totalCount = 0;
-        for (const bookName of BOOKS) {
-          const completed = await getCompletedChapters(user.id, bookName);
-          totalCount += completed.length;
-        }
-
-        // Calculate level based on chapters read
-        const chaptersRead = totalCount;
-        let level = 1;
-        let previousLevel = 1;
-
-        if (chaptersRead >= 1000 && chaptersRead <= 1188) {
-          level = 9;
-        } else if (chaptersRead >= 700 && chaptersRead <= 999) {
-          level = 8;
-        } else if (chaptersRead >= 400 && chaptersRead <= 699) {
-          level = 7;
-        } else if (chaptersRead >= 200 && chaptersRead <= 399) {
-          level = 6;
-        } else if (chaptersRead >= 100 && chaptersRead <= 199) {
-          level = 5;
-        } else if (chaptersRead >= 50 && chaptersRead <= 99) {
-          level = 4;
-        } else if (chaptersRead >= 30 && chaptersRead <= 49) {
-          level = 3;
-        } else if (chaptersRead >= 10 && chaptersRead <= 29) {
-          level = 2;
-        } else {
-          level = 1;
-        }
-
-        // Calculate previous level (before this chapter was completed)
-        const previousChaptersRead = chaptersRead - 1;
-        if (previousChaptersRead >= 1000 && previousChaptersRead <= 1188) {
-          previousLevel = 9;
-        } else if (previousChaptersRead >= 700 && previousChaptersRead <= 999) {
-          previousLevel = 8;
-        } else if (previousChaptersRead >= 400 && previousChaptersRead <= 699) {
-          previousLevel = 7;
-        } else if (previousChaptersRead >= 200 && previousChaptersRead <= 399) {
-          previousLevel = 6;
-        } else if (previousChaptersRead >= 100 && previousChaptersRead <= 199) {
-          previousLevel = 5;
-        } else if (previousChaptersRead >= 50 && previousChaptersRead <= 99) {
-          previousLevel = 4;
-        } else if (previousChaptersRead >= 30 && previousChaptersRead <= 49) {
-          previousLevel = 3;
-        } else if (previousChaptersRead >= 10 && previousChaptersRead <= 29) {
-          previousLevel = 2;
-        } else {
-          previousLevel = 1;
-        }
-
-        // Check if user leveled up
-        const leveledUp = level > previousLevel;
-
-        // Calculate next level info
-        const nextLevel = level < 10 ? level + 1 : 10;
-        const nextLevelStart = nextLevel === 10 ? 1189 : 
-          nextLevel === 9 ? 1000 :
-          nextLevel === 8 ? 700 :
-          nextLevel === 7 ? 400 :
-          nextLevel === 6 ? 200 :
-          nextLevel === 5 ? 100 :
-          nextLevel === 4 ? 50 :
-          nextLevel === 3 ? 30 :
-          nextLevel === 2 ? 10 : 0;
-        const chaptersNeededForNext = Math.max(0, nextLevelStart - chaptersRead);
-
-        setLevelInfo({
-          level,
-          chaptersRead,
-          chaptersNeededForNext,
-          nextLevel,
-          leveledUp,
-          previousLevel,
-        });
-
-        // Show level-up modal if user leveled up
-        if (leveledUp) {
-          setShowLevelUpModal(true);
-        }
-      } catch (err) {
-        console.error("Error calculating level progress:", err);
-      }
-    }
-
-    calculateLevelProgress();
-  }, []);
 
   // Motivational messages with level progress
   const motivationalMessages = [
@@ -881,9 +774,9 @@ function CongratsModalWithConfetti() {
     "Keep going. Your next level is {chaptersRemaining} chapters away.",
   ];
 
-  // Calculate random message when levelInfo is available
+  // Calculate random message using props (instant, no async delay)
   const randomMessage = useMemo(() => {
-    if (!levelInfo || levelInfo.level >= 10) {
+    if (levelInfo.level >= 10) {
       return "Great job — your consistency is paying off!";
     }
     const template = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
