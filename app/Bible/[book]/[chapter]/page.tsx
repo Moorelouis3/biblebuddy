@@ -717,8 +717,8 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       </div>
 
       {/* CONGRATULATIONS MODAL */}
-      {showCongratsModal && levelInfoForModal && (
-        <CongratsModalWithConfetti levelInfo={levelInfoForModal} />
+      {showCongratsModal && (
+        <CongratsModalWithConfetti levelInfo={levelInfoForModal ?? undefined} />
       )}
     </div>
   );
@@ -728,7 +728,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 function CongratsModalWithConfetti({
   levelInfo,
 }: {
-  levelInfo: {
+  levelInfo?: {
     level: number;
     chaptersNeededForNext: number;
     nextLevel: number;
@@ -793,6 +793,9 @@ function CongratsModalWithConfetti({
 
   // Calculate random message using props (instant, no async delay)
   const randomMessage = useMemo(() => {
+    if (!levelInfo) {
+      return "Great job — your consistency is paying off!";
+    }
     if (levelInfo.level >= 10) {
       return "Great job — your consistency is paying off!";
     }

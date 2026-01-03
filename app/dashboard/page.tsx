@@ -298,16 +298,6 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-gray-50 pb-12">
       {/* MAIN CONTENT – CENTERED COLUMN ONLY */}
       <div className="max-w-lg mx-auto px-4 mt-8">
-        {/* TOP NAVIGATION */}
-        <div className="flex justify-end gap-4 mb-4">
-          <Link href="/lessons" className="text-sm text-blue-600 hover:underline">
-            How To Use
-          </Link>
-          <Link href="/dashboard" className="text-sm text-blue-600 hover:underline">
-            Home
-          </Link>
-        </div>
-
         {/* GREETING */}
         <div className="mb-4">
           <p className="text-2xl font-semibold text-center">
