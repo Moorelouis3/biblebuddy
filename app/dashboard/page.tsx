@@ -241,7 +241,7 @@ export default function DashboardPage() {
           nextLevel === 2 ? 10 : 0;
         const chaptersNeededForNext = Math.max(0, nextLevelStart - chaptersRead);
 
-        setLevelInfo({
+        const levelInfoData = {
           level,
           chaptersRead,
           levelStart,
@@ -249,7 +249,22 @@ export default function DashboardPage() {
           progressPercent,
           chaptersNeededForNext,
           nextLevel,
-        });
+        };
+
+        setLevelInfo(levelInfoData);
+
+        // Save to cache
+        if (typeof window !== "undefined") {
+          const cacheKey = `bb_level_data_${user.id}`;
+          const cacheTimestampKey = `bb_level_data_timestamp_${user.id}`;
+          const cacheData = {
+            levelInfo: levelInfoData,
+            totalCompletedChapters: totalCount,
+            currentBook: activeBook,
+          };
+          window.localStorage.setItem(cacheKey, JSON.stringify(cacheData));
+          window.localStorage.setItem(cacheTimestampKey, String(Date.now()));
+        }
       } catch (err) {
         console.error("Error preloading reading plan data:", err);
       } finally {
