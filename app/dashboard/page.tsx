@@ -336,16 +336,6 @@ export default function DashboardPage() {
             </div>
           )}
 
-          {/* HOW TO USE BIBLEBUDDY COURSE */}
-          <Link href="/lessons">
-            <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">📘 How to Use BibleBuddy</h2>
-              <p className="text-gray-700 mt-1">
-                A simple guide to help you learn BibleBuddy and grow in your Bible study.
-              </p>
-            </div>
-          </Link>
-
           {/* YOUR BIBLE READING PLAN */}
           <Link href="/reading">
             <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
