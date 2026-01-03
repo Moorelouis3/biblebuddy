@@ -172,10 +172,12 @@ export default function DashboardPage() {
         setCurrentBook(activeBook);
 
         // Get total completed chapters count across all books (using shared function)
+        // This is the SAME function used by Bible Study Stats modal
         const totalCount = await getTotalCompletedChapters(user.id, BOOKS);
+        console.log("[DASHBOARD] Total completed chapters:", totalCount);
         setTotalCompletedChapters(totalCount);
 
-        // Calculate level based on chapters read
+        // Calculate level based on chapters read (same source as Bible Study Stats)
         const chaptersRead = totalCount;
         let level = 1;
         let levelStart = 0;
@@ -246,6 +248,16 @@ export default function DashboardPage() {
           chaptersNeededForNext,
           nextLevel,
         };
+
+        console.log("[DASHBOARD] Level calculation:", {
+          chaptersRead,
+          level,
+          levelStart,
+          levelEnd,
+          progressPercent,
+          chaptersNeededForNext,
+          nextLevel,
+        });
 
         setLevelInfo(levelInfoData);
 
