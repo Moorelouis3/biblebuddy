@@ -47,6 +47,8 @@ const MATTHEW_TOTAL_ITEMS = 28 + 1;
 
 export default function BibleStudyNotesPage() {
   const [bookPage, setBookPage] = useState(0);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [bookStates, setBookStates] = useState<Record<string, { unlocked: boolean }>>({});
 
   // book pagination
   const startIndex = bookPage * BOOKS_PER_PAGE;
@@ -83,7 +85,7 @@ export default function BibleStudyNotesPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-2">
               {visibleBooks.map((book) => {
-                const unlocked = isBookUnlocked(book, MATTHEW_TOTAL_ITEMS);
+                const unlocked = bookStates[book]?.unlocked ?? false;
 
                 const baseClasses =
                   "relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm";
