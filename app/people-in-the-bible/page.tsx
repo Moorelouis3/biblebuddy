@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { type BiblePerson } from "../../lib/biblePeople";
 import ReactMarkdown from "react-markdown";
+import { supabase } from "../../lib/supabaseClient";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -463,7 +464,33 @@ export default function PeopleInTheBiblePage() {
         setLoadingNotes(true);
         setNotesError(null);
 
-        // Generate notes using ChatGPT
+        const personNameKey = selectedPerson.name.toLowerCase().trim();
+
+        // STEP 1: Check database FIRST (mandatory short-circuit)
+        const { data: existing, error: existingError } = await supabase
+          .from("bible_people_notes")
+          .select("notes_text")
+          .eq("person_name", personNameKey)
+          .maybeSingle();
+
+        if (existingError && existingError.code !== 'PGRST116') {
+          console.error("[bible_people_notes] Error checking bible_people_notes:", existingError);
+        }
+
+        // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
+        // DO NOT continue to generation - this prevents duplicate ChatGPT calls
+        if (existing?.notes_text && existing.notes_text.trim().length > 0) {
+          console.log(`[bible_people_notes] Found existing notes for ${selectedPerson.name}, returning immediately (ChatGPT will NOT be called)`);
+          setPersonNotes(existing.notes_text);
+          setLoadingNotes(false);
+          return;
+        }
+
+        // GUARANTEE: If we reach here, notes do NOT exist in database
+        // This is the ONLY path where ChatGPT should be called
+        let notesText = "";
+
+        // STEP 2: Generate notes using ChatGPT
         // Determine gender for pronoun usage (simple heuristic - can be improved)
         const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti|Bernice|Drusilla|Euodia|Syntyche|Chloe|Nympha|Tryphaena|Tryphosa|Julia|Claudia|Persis)/i.test(selectedPerson.name);
         const pronoun = isFemale ? "Her" : "Him";
@@ -567,14 +594,66 @@ FINAL RULES:
         }
 
         const json = await response.json();
-        let generated = (json?.reply as string) ?? "";
+        const generated = (json?.reply as string) ?? "";
 
         if (!generated || generated.trim().length === 0) {
           throw new Error("Generated notes are empty.");
         }
 
-        // Display the generated notes directly (no database saving)
-        setPersonNotes(generated);
+        // STEP 3: Race condition protection - check again before saving
+        const { data: existingCheck, error: checkError } = await supabase
+          .from("bible_people_notes")
+          .select("notes_text")
+          .eq("person_name", personNameKey)
+          .maybeSingle();
+
+        if (checkError && checkError.code !== 'PGRST116') {
+          console.error("[bible_people_notes] Error checking for duplicates:", checkError);
+        }
+
+        // MANDATORY: If row exists now, use it and DO NOT save (another request created it)
+        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
+          console.log(`[bible_people_notes] Notes were created by another request for ${selectedPerson.name}, using existing (skipping save)`);
+          notesText = existingCheck.notes_text;
+        } else {
+          // No row exists - upsert to handle race conditions gracefully
+          console.log(`[bible_people_notes] Upserting notes for ${selectedPerson.name}`);
+          const { error: upsertError } = await supabase
+            .from("bible_people_notes")
+            .upsert(
+              {
+                person_name: personNameKey,
+                notes_text: generated,
+              },
+              {
+                onConflict: "person_name",
+              }
+            );
+
+          if (upsertError) {
+            console.error("[bible_people_notes] Error upserting notes to bible_people_notes:", upsertError);
+            // Continue to use generated text even if save fails
+            notesText = generated;
+          } else {
+            // STEP 4: Re-read from database (never trust in-memory generated text)
+            const { data: savedData, error: readError } = await supabase
+              .from("bible_people_notes")
+              .select("notes_text")
+              .eq("person_name", personNameKey)
+              .maybeSingle();
+
+            if (readError) {
+              console.error("[bible_people_notes] Error re-reading notes:", readError);
+              notesText = generated;
+            } else if (savedData?.notes_text) {
+              notesText = savedData.notes_text;
+            } else {
+              notesText = generated;
+            }
+          }
+        }
+
+        setPersonNotes(notesText);
       } catch (err: any) {
         console.error("Error loading or generating notes:", err);
         setNotesError(err?.message || "Failed to load notes");
