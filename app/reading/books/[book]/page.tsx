@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
-import { getBookCurrentStep, isChapterUnlocked, isChapterCompleted, getCompletedChapters, getBookTotalChapters } from "../../../../lib/readingProgress";
+import { getBookCurrentStep, isChapterUnlocked, isChapterCompleted, getCompletedChapters, getBookTotalChapters, isAdminUser } from "../../../../lib/readingProgress";
 import { supabase } from "../../../../lib/supabaseClient";
 
 const CHAPTERS_PER_PAGE = 12;
@@ -46,17 +46,19 @@ export default function BookPage() {
   const [chapterPage, setChapterPage] = useState(0);
   const [completedChapters, setCompletedChapters] = useState<number[]>([]);
   const [userId, setUserId] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   // collapsed or open Louis bubble
   const [summaryCollapsed, setSummaryCollapsed] = useState(false);
 
-  // Get user ID
+  // Get user ID and email
   useEffect(() => {
     async function getUser() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         setUserId(user.id);
+        setUserEmail(user.email || null);
       } else {
         setLoading(false);
       }
@@ -160,8 +162,10 @@ export default function BookPage() {
           <div className="space-y-4 mt-1">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
               {visibleChapters.map((chapter) => {
+                // Admin bypass: admin can access all chapters
+                const adminBypass = userEmail && isAdminUser(userEmail);
                 // Use completedChapters array (already loaded from database)
-                const unlocked = chapter === 1 || completedChapters.includes(chapter - 1) || chapter <= currentChapter;
+                const unlocked = adminBypass || chapter === 1 || completedChapters.includes(chapter - 1) || chapter <= currentChapter;
                 const done = completedChapters.includes(chapter);
                 const current = chapter === currentChapter && !done;
 

@@ -110,12 +110,15 @@ export default function ReadingPage() {
   const hasPrevPage = bookPage > 0;
   const hasNextPage = startIndex + BOOKS_PER_PAGE < BOOKS.length;
 
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+
   // Get user ID and name
   useEffect(() => {
     async function getUser() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         setUserId(user.id);
+        setUserEmail(user.email || null);
         const meta: any = user.user_metadata || {};
         const first =
           meta.firstName ||
@@ -148,7 +151,7 @@ export default function ReadingPage() {
         // Get states for all books
         const states: Record<string, { unlocked: boolean; complete: boolean }> = {};
         for (const book of BOOKS) {
-          const unlocked = await isBookUnlocked(userId, book);
+          const unlocked = await isBookUnlocked(userId, book, userEmail);
           const complete = await isBookComplete(userId, book);
           states[book] = { unlocked, complete };
         }

@@ -250,9 +250,21 @@ const BOOKS_ORDER = [
 ];
 
 /**
+ * Check if a user email is the admin email
+ */
+export function isAdminUser(userEmail: string | null | undefined): boolean {
+  return userEmail === "moorelouis3@gmail.com";
+}
+
+/**
  * Check if a book is unlocked for a specific user
  */
-export async function isBookUnlocked(userId: string, book: string): Promise<boolean> {
+export async function isBookUnlocked(userId: string, book: string, userEmail?: string | null): Promise<boolean> {
+  // Admin bypass: admin can access all books
+  if (userEmail && isAdminUser(userEmail)) {
+    return true;
+  }
+
   const bookKey = book.toLowerCase().trim();
   
   // Matthew is always unlocked (first book)
@@ -278,8 +290,13 @@ export async function isBookUnlocked(userId: string, book: string): Promise<bool
 /**
  * Check if a chapter is unlocked for a specific user
  */
-export async function isChapterUnlocked(userId: string, book: string, chapter: number): Promise<boolean> {
+export async function isChapterUnlocked(userId: string, book: string, chapter: number, userEmail?: string | null): Promise<boolean> {
   try {
+    // Admin bypass: admin can access all chapters
+    if (userEmail && isAdminUser(userEmail)) {
+      return true;
+    }
+
     const bookKey = book.toLowerCase().trim();
     const completedChapters = await getCompletedChapters(userId, bookKey);
     
