@@ -92,17 +92,22 @@ export default function ReadingPage() {
   const [loading, setLoading] = useState(true);
   const [showLoadingOverlay, setShowLoadingOverlay] = useState(true);
   const [showStatsModal, setShowStatsModal] = useState(false);
+  const [alphabeticalOrder, setAlphabeticalOrder] = useState(false);
   const [stats, setStats] = useState<{
     booksCompleted: number;
     chaptersCompleted: number;
     bibleCompletionPercent: number;
   } | null>(null);
 
-  // book pagination
+  // book pagination - apply alphabetical sort if toggle is ON
+  const booksToDisplay = alphabeticalOrder 
+    ? [...BOOKS].sort((a, b) => a.localeCompare(b))
+    : BOOKS;
+  
   const startIndex = bookPage * BOOKS_PER_PAGE;
-  const visibleBooks = BOOKS.slice(startIndex, startIndex + BOOKS_PER_PAGE);
+  const visibleBooks = booksToDisplay.slice(startIndex, startIndex + BOOKS_PER_PAGE);
   const hasPrevPage = bookPage > 0;
-  const hasNextPage = startIndex + BOOKS_PER_PAGE < BOOKS.length;
+  const hasNextPage = startIndex + BOOKS_PER_PAGE < booksToDisplay.length;
 
   const [userEmail, setUserEmail] = useState<string | null>(null);
 
@@ -215,7 +220,7 @@ export default function ReadingPage() {
       
       <div className="max-w-4xl mx-auto">
         {/* PAGE HEADER */}
-        <h1 className="text-3xl font-bold mb-1">Bible Reading Plan</h1>
+        <h1 className="text-3xl font-bold mb-1">The Bible</h1>
         <p className="text-gray-700 mb-4">
           We walk together one book and one chapter at a time.
         </p>
@@ -228,13 +233,13 @@ export default function ReadingPage() {
             <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
               <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
               <p className="mb-2">
-                This is the Bible Reading Plan section of the app. From here we
-                pick one book at a time and walk through it together.
+                These are the books of the Bible.
+              </p>
+              <p className="mb-2">
+                There are 66 books, made up of the Old Testament and the New Testament.
               </p>
               <p>
-                We start in <span className="font-semibold">Matthew</span>. All
-                the other books stay locked until you finish the current book,
-                so nothing feels overwhelming.
+                This is just God's Word — and I'm here to make it easier for you.
               </p>
             </div>
           </div>
@@ -267,32 +272,60 @@ export default function ReadingPage() {
               })}
             </div>
 
-            {/* BOOK PAGINATION + HOME */}
-            <div className="flex items-center justify-between pt-2 text-xs sm:text-sm text-blue-600">
+            {/* BOOK PAGINATION + CONTROLS */}
+            <div className="flex items-center justify-between pt-2 text-xs sm:text-sm">
               <button
                 type="button"
                 onClick={() => hasPrevPage && setBookPage((p) => p - 1)}
                 disabled={!hasPrevPage}
-                className={`hover:underline ${
+                className={`text-blue-600 hover:underline ${
                   !hasPrevPage ? "text-gray-300 cursor-default" : ""
                 }`}
               >
                 Previous books
               </button>
 
-              <button
-                type="button"
-                onClick={() => setShowStatsModal(true)}
-                className="hover:underline cursor-pointer"
-              >
-                📘 Your Bible Study Stats
-              </button>
+              <div className="flex items-center gap-3">
+                {/* Alphabetical Order Toggle */}
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <span className="text-gray-700 text-xs">Alphabetical Order</span>
+                  <div className="relative inline-block w-10 h-5">
+                    <input
+                      type="checkbox"
+                      checked={alphabeticalOrder}
+                      onChange={(e) => {
+                        setAlphabeticalOrder(e.target.checked);
+                        setBookPage(0); // Reset to first page when toggling
+                      }}
+                      className="sr-only"
+                    />
+                    <div
+                      className={`block w-10 h-5 rounded-full transition-colors ${
+                        alphabeticalOrder ? "bg-blue-600" : "bg-gray-300"
+                      }`}
+                    />
+                    <div
+                      className={`absolute left-0.5 top-0.5 bg-white w-4 h-4 rounded-full transition-transform ${
+                        alphabeticalOrder ? "transform translate-x-5" : ""
+                      }`}
+                    />
+                  </div>
+                </label>
+
+                <button
+                  type="button"
+                  onClick={() => setShowStatsModal(true)}
+                  className="text-blue-600 hover:underline cursor-pointer"
+                >
+                  📘 Your Bible Study Stats
+                </button>
+              </div>
 
               <button
                 type="button"
                 onClick={() => hasNextPage && setBookPage((p) => p + 1)}
                 disabled={!hasNextPage}
-                className={`hover:underline ${
+                className={`text-blue-600 hover:underline ${
                   !hasNextPage ? "text-gray-300 cursor-default" : ""
                 }`}
               >
