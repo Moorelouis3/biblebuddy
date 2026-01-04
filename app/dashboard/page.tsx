@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
-import { ReadingStreakCard } from "../../components/ReadingStreakCard";
+import { calculateStreak, getDayAbbr, type StreakData } from "../../lib/streakCalculator";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -286,6 +286,29 @@ export default function DashboardPage() {
     preloadReadingPlanData();
   }, []);
 
+  // Load streak data
+  useEffect(() => {
+    if (!userId) {
+      setStreakData({ currentStreak: 0, last7Days: [] });
+      return;
+    }
+
+    async function loadStreak() {
+      try {
+        setIsLoadingStreak(true);
+        const data = await calculateStreak(userId);
+        setStreakData(data);
+      } catch (err) {
+        console.error("[STREAK] Error loading streak:", err);
+        setStreakData({ currentStreak: 0, last7Days: [] });
+      } finally {
+        setIsLoadingStreak(false);
+      }
+    }
+
+    loadStreak();
+  }, [userId]);
+
   // simple local streak system stored in localStorage
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -409,17 +432,85 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Progress Text */}
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 mb-4">
                   {levelInfo.level < 10
                     ? `${levelInfo.chaptersNeededForNext} more chapters to reach Level ${levelInfo.nextLevel}`
                     : "Bible completed 🎉"}
                 </p>
+
+                {/* Reading Streak Section */}
+                <div className="border-t border-gray-200 pt-4 mt-4">
+                  <button
+                    type="button"
+                    onClick={() => setIsStreakExpanded(!isStreakExpanded)}
+                    className="w-full flex items-center justify-between text-left"
+                  >
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold">🔥 Reading Streak</h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        {streakData?.currentStreak === 0
+                          ? "Start a streak by reading one chapter today"
+                          : `You're on a ${streakData?.currentStreak}-day streak`}
+                      </p>
+                    </div>
+                    <svg
+                      className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${
+                        isStreakExpanded ? "rotate-180" : ""
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* Expanded Streak Content */}
+                  {isStreakExpanded && (
+                    <div className="mt-4 animate-in slide-in-from-top-2 duration-200">
+                      {isLoadingStreak ? (
+                        <p className="text-sm text-gray-500 text-center py-2">Loading...</p>
+                      ) : streakData?.last7Days && streakData.last7Days.length > 0 ? (
+                        <>
+                          <div className="flex items-center justify-between mb-3">
+                            <p className="text-sm text-gray-600">Last 7 days</p>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            {streakData.last7Days.map((day) => (
+                              <div key={day.date} className="flex-1 flex flex-col items-center">
+                                <div className="text-xs text-gray-500 mb-2">
+                                  {getDayAbbr(day.date)}
+                                </div>
+                                <div
+                                  className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                                    day.completed
+                                      ? "bg-blue-500 text-white"
+                                      : "bg-gray-200 text-gray-400"
+                                  }`}
+                                  title={day.date}
+                                >
+                                  {day.completed ? "✓" : ""}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        <p className="text-sm text-gray-500 text-center py-2">
+                          Start a streak by reading one chapter today
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </div>
               </>
             ) : null}
           </div>
-
-          {/* READING STREAK CARD */}
-          <ReadingStreakCard userId={userId} />
 
           {/* THE BIBLE */}
           <Link href="/reading">
