@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
+import { ReadingStreakCard } from "../../components/ReadingStreakCard";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -92,9 +93,10 @@ const BOOKS = [
 
 export default function DashboardPage() {
   const [userName, setUserName] = useState<string>("buddy");
+  const [userId, setUserId] = useState<string | null>(null);
 
   const [streakDays, setStreakDays] = useState<number>(0);
-  const [daysSinceLastReading, setDaysSinceLastReading] = useState<number>(0);
+  const [daysSinceLastReading, setDaysSinceLastReading] = useState<number>(0);  
 
   const [currentMatthewStep, setCurrentMatthewStep] = useState(0);
   
@@ -118,6 +120,7 @@ export default function DashboardPage() {
       const { data, error } = await supabase.auth.getUser();
 
       if (data?.user) {
+        setUserId(data.user.id);
         const meta: any = data.user.user_metadata || {};
         const first =
           meta.firstName ||
@@ -414,6 +417,9 @@ export default function DashboardPage() {
               </>
             ) : null}
           </div>
+
+          {/* READING STREAK CARD */}
+          <ReadingStreakCard userId={userId} />
 
           {/* THE BIBLE */}
           <Link href="/reading">
