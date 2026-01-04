@@ -457,17 +457,20 @@ export default function PeopleInTheBiblePage() {
         setNotesError(null);
 
         // Generate notes using ChatGPT
-        const prompt = `Generate detailed notes about ${selectedPerson.name} from the Bible using this exact template structure. Use markdown formatting with the headers and emojis exactly as shown.
+        // Determine gender for pronoun usage (simple heuristic - can be improved)
+        const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti|Bernice|Drusilla|Euodia|Syntyche|Chloe|Nympha|Tryphaena|Tryphosa|Julia|Claudia|Persis)/i.test(selectedPerson.name);
+        const pronoun = isFemale ? "Her" : "Him";
+        const whoPronoun = isFemale ? "She" : "He";
+        
+        const prompt = `Generate detailed notes about ${selectedPerson.name} from the Bible using this exact template structure. The person's name is already shown in the header - DO NOT include the name as a heading. Start with the subtitle line.
 
 TEMPLATE TO GENERATE:
 
-## 🟦 ${selectedPerson.name}
-
-{Short subtitle describing who they are}
+🟦 {Short subtitle describing who ${selectedPerson.name} is}
 
 
 
-### 👤 Who ${selectedPerson.name} Is
+### 👤 Who ${whoPronoun} Is
 
 (2–3 short sentences explaining who they are and their role)
 
@@ -491,7 +494,7 @@ TEMPLATE TO GENERATE:
 
 
 
-### 📍 Where You Find ${selectedPerson.name}
+### 📍 Where You Find ${pronoun}
 
 📍 Book Chapter–Chapter
 
@@ -501,22 +504,24 @@ TEMPLATE TO GENERATE:
 
 
 
-### 🧠 Why ${selectedPerson.name} Matters
+### 🧠 Why This Person Matters
 
 (2–3 short sentences explaining why this person is important theologically or narratively)
 
 
 
 RULES:
-- Use markdown formatting (H2 for main header, H3 for section headers)
+- DO NOT include the person's name in any header (name is already in the modal header)
+- Start with the 🟦 subtitle line (no header, just emoji and text)
+- Use markdown formatting (H3 for section headers)
 - Include emojis exactly as shown in the template
 - Use double line breaks between sections
-- Keep paragraphs short (2–3 sentences max)
+- Keep paragraphs short (1–2 lines, 2–3 sentences max)
 - Total length ~200–250 words
 - Cinematic, clear, Bible-study tone (not a blog post)
 - No filler phrases, no meta commentary
 - No "I'm here to help" or similar filler
-- Be scannable and clear`;
+- Easy to scan, structured, not a wall of text`;
 
         const response = await fetch("/api/chat", {
           method: "POST",
