@@ -113,6 +113,11 @@ export default function DashboardPage() {
     chaptersNeededForNext: number;
     nextLevel: number;
   } | null>(null);
+  
+  // Streak data state
+  const [streakData, setStreakData] = useState<StreakData | null>(null);
+  const [isLoadingStreak, setIsLoadingStreak] = useState(false);
+  const [isStreakExpanded, setIsStreakExpanded] = useState(false);
 
   // load user first name from Supabase
   useEffect(() => {
