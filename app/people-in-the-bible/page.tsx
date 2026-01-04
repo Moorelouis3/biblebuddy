@@ -468,34 +468,66 @@ export default function PeopleInTheBiblePage() {
         }
 
         // Notes don't exist - generate them
-        const prompt = `You are Little Louis. Generate beginner-friendly notes about ${selectedPerson.name} from the Bible using this exact template and rules.
+        const prompt = `Generate detailed notes about ${selectedPerson.name} from the Bible using this exact template structure. Use markdown formatting with the headers and emojis exactly as shown.
 
-TEMPLATE
-# ${selectedPerson.name}
+TEMPLATE TO GENERATE:
 
-## Overview
-A short paragraph introducing who this person is and their significance in the Bible story.
+## 🟦 ${selectedPerson.name}
 
-## Story Summary
-A clear, chronological summary of their life and key events. Keep it simple and easy to follow. Three to four paragraphs.
+{Short subtitle describing who they are}
 
-## Key Moments
-List three to five important moments or events in their life. Each moment should be one to two sentences.
 
-## Why This Person Matters
-A paragraph explaining their role in the bigger story of the Bible and how they point to Jesus or God's plan.
 
-RULES
-- Use proper markdown formatting
-- No emojis
-- No cartoons or casual language
-- Serious but beginner-friendly tone
-- Clear, simple language
-- No hyphens anywhere in the text
-- No Greek or Hebrew words
-- No deep theological commentary
-- Keep it cinematic, warm, and simple
-- Do not overwhelm beginners`;
+### 👤 Who ${selectedPerson.name} Is
+
+(2–3 short sentences explaining who they are and their role)
+
+
+
+### 📖 Their Role in the Story
+
+(2–3 short sentences explaining how they fit into the bigger biblical narrative)
+
+
+
+### 🔥 Key Moments
+
+🟠 (Short sentence)
+
+🟠 (Short sentence)
+
+🟠 (Short sentence)
+
+🟠 (Short sentence)
+
+
+
+### 📍 Where You Find ${selectedPerson.name}
+
+📍 Book Chapter–Chapter
+
+📍 Book Chapter–Chapter
+
+📍 Book Chapter–Chapter
+
+
+
+### 🧠 Why ${selectedPerson.name} Matters
+
+(2–3 short sentences explaining why this person is important theologically or narratively)
+
+
+
+RULES:
+- Use markdown formatting (H2 for main header, H3 for section headers)
+- Include emojis exactly as shown in the template
+- Use double line breaks between sections
+- Keep paragraphs short (2–3 sentences max)
+- Total length ~200–250 words
+- Cinematic, clear, Bible-study tone (not a blog post)
+- No filler phrases, no meta commentary
+- No "I'm here to help" or similar filler
+- Be scannable and clear`;
 
         const response = await fetch("/api/chat", {
           method: "POST",
