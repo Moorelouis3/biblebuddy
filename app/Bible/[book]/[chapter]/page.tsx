@@ -947,7 +947,7 @@ function CongratsModalWithConfetti({
       // Go to reading plan page to start next book
       router.push("/reading");
     } else {
-      router.push(`/Bible/${book}/${chapter + 1}`);
+      router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/${chapter + 1}`);
     }
     setShowModal(false);
   }
