@@ -6,20 +6,14 @@ import { LouisAvatar } from "../../components/LouisAvatar";
 import { isBookComplete, getCurrentBook, getCompletedChapters, getTotalCompletedChapters } from "../../lib/readingProgress";
 import { supabase } from "../../lib/supabaseClient";
 
+// All 66 books of the Bible - standard Bible order (Genesis → Revelation)
 const BOOKS = [
-  // Gospels & Acts
-  "Matthew",
-  "Mark",
-  "Luke",
-  "John",
-  "Acts",
-  // Law (Torah)
+  // Old Testament
   "Genesis",
   "Exodus",
   "Leviticus",
   "Numbers",
   "Deuteronomy",
-  // History
   "Joshua",
   "Judges",
   "Ruth",
@@ -32,19 +26,16 @@ const BOOKS = [
   "Ezra",
   "Nehemiah",
   "Esther",
-  // Wisdom & Poetry
   "Job",
   "Psalms",
   "Proverbs",
   "Ecclesiastes",
   "Song of Solomon",
-  // Major Prophets
   "Isaiah",
   "Jeremiah",
   "Lamentations",
   "Ezekiel",
   "Daniel",
-  // Minor Prophets
   "Hosea",
   "Joel",
   "Amos",
@@ -57,7 +48,12 @@ const BOOKS = [
   "Haggai",
   "Zechariah",
   "Malachi",
-  // Paul's Letters
+  // New Testament
+  "Matthew",
+  "Mark",
+  "Luke",
+  "John",
+  "Acts",
   "Romans",
   "1 Corinthians",
   "2 Corinthians",
@@ -71,7 +67,6 @@ const BOOKS = [
   "2 Timothy",
   "Titus",
   "Philemon",
-  // General Epistles
   "Hebrews",
   "James",
   "1 Peter",
@@ -80,7 +75,6 @@ const BOOKS = [
   "2 John",
   "3 John",
   "Jude",
-  // Revelation
   "Revelation",
 ];
 

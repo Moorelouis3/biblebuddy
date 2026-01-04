@@ -228,13 +228,13 @@ export async function getCurrentBook(userId: string, books: string[]): Promise<s
     return null;
   } catch (err) {
     console.error(`[READING_PROGRESS] Error in getCurrentBook:`, err);
-    return "Matthew"; // Default to Matthew
+    return "Genesis"; // Default to Genesis (first book in biblical order)
   }
 }
 
-// Reading plan book order (same as in app/reading/page.tsx)
+// Bible book order - standard biblical order (Genesis → Revelation)
 const BOOKS_ORDER = [
-  "Matthew", "Mark", "Luke", "John", "Acts",
+  // Old Testament
   "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
   "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
   "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther",
@@ -242,6 +242,8 @@ const BOOKS_ORDER = [
   "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel",
   "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk",
   "Zephaniah", "Haggai", "Zechariah", "Malachi",
+  // New Testament
+  "Matthew", "Mark", "Luke", "John", "Acts",
   "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
   "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
   "1 Timothy", "2 Timothy", "Titus", "Philemon",
@@ -267,8 +269,8 @@ export async function isBookUnlocked(userId: string, book: string, userEmail?: s
 
   const bookKey = book.toLowerCase().trim();
   
-  // Matthew is always unlocked (first book)
-  if (bookKey === "matthew") return true;
+  // Genesis is always unlocked (first book in biblical order)
+  if (bookKey === "genesis") return true;
 
   // Find the book's index in the reading plan
   const bookIndex = BOOKS_ORDER.findIndex(b => b.toLowerCase().trim() === bookKey);
@@ -276,7 +278,7 @@ export async function isBookUnlocked(userId: string, book: string, userEmail?: s
   // If book not found in plan, it's locked
   if (bookIndex === -1) return false;
   
-  // If it's the first book (Matthew), it's unlocked (already handled above, but double-check)
+  // If it's the first book (Genesis), it's unlocked (already handled above, but double-check)
   if (bookIndex === 0) return true;
   
   // Book is unlocked if the previous book in the reading plan is complete
