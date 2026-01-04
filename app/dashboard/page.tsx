@@ -443,6 +443,15 @@ export default function DashboardPage() {
             </div>
           </Link>
 
+          <Link href="/places-in-the-bible">
+            <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+              <h2 className="text-xl font-semibold">📍 Places in the Bible</h2>
+              <p className="text-gray-700 mt-1">
+                Explore the important places of Scripture
+              </p>
+            </div>
+          </Link>
+
           {/* GET MORE BIBLE STUDY HELP CARD */}
           <Link href="https://joinhopenation.com/" target="_blank">
             <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
