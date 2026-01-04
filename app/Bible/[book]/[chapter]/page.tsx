@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useMemo } from "react";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { supabase } from "../../../../lib/supabaseClient";
@@ -40,13 +40,9 @@ type BibleApiResponse = {
 export default function BibleChapterPage() {
   const params = useParams();
   const router = useRouter();
-  const searchParams = useSearchParams();
   const bookParam = decodeURIComponent(String(params.book));
   const book = bookParam;
   const chapter = Number(params.chapter);
-  
-  // Check if accessed from Open Bible (no locking)
-  const openBibleMode = searchParams.get("open") === "true";
 
   const [sections, setSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
@@ -501,10 +497,8 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 
-  // Determine back link - Open Bible routes to /bible, Reading Plan routes to /reading/books
-  const backLink = openBibleMode 
-    ? `/bible`
-    : `/reading/books/${encodeURIComponent(book.toLowerCase())}`;
+  // Determine back link - route back to reading plan for this book
+  const backLink = `/reading/books/${encodeURIComponent(book.toLowerCase())}`;
 
   function triggerConfetti() {
     const duration = 1000;
