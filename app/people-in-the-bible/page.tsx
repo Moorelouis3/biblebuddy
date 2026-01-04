@@ -397,6 +397,13 @@ function createStaticPeople(): BiblePerson[] {
   }));
 }
 
+function normalizePersonMarkdown(markdown: string): string {
+  return markdown
+    .replace(/^\s*•\s+/gm, "- ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
 export default function PeopleInTheBiblePage() {
   const [people] = useState<BiblePerson[]>(createStaticPeople());
   const [searchQuery, setSearchQuery] = useState("");
@@ -755,7 +762,7 @@ MARKDOWN FORMATTING RULES (MANDATORY):
                     ),
                   }}
                 >
-                  {personNotes}
+                  {normalizePersonMarkdown(personNotes)}
                 </ReactMarkdown>
               </div>
             ) : (
