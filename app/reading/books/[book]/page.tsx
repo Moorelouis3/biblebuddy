@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
-import { getBookCurrentStep, isChapterUnlocked, isChapterCompleted, getCompletedChapters, getBookTotalChapters, isAdminUser } from "../../../../lib/readingProgress";
+import { getBookCurrentStep, isChapterCompleted, getCompletedChapters, getBookTotalChapters } from "../../../../lib/readingProgress";
 import { supabase } from "../../../../lib/supabaseClient";
 
 const CHAPTERS_PER_PAGE = 12;
@@ -30,12 +30,8 @@ const BOOK_INTROS: Record<string, string> = {
 
 export default function BookPage() {
   const params = useParams();
-  const searchParams = useSearchParams();
   const bookParam = String(params.book);
   const bookKey = bookParam.toLowerCase();
-  
-  // Check if accessed from Open Bible (no locking)
-  const openBibleMode = searchParams.get("open") === "true";
   
   // Get book display name (capitalize first letter of each word)
   const bookDisplayName = bookParam
@@ -166,63 +162,32 @@ export default function BookPage() {
           <div className="space-y-4 mt-1">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
               {visibleChapters.map((chapter) => {
-                // Admin bypass: admin can access all chapters
-                const adminBypass = userEmail && isAdminUser(userEmail);
-                // Open Bible mode: all chapters unlocked (no locking)
-                // Use completedChapters array (already loaded from database)
-                const unlocked = openBibleMode || adminBypass || chapter === 1 || completedChapters.includes(chapter - 1) || chapter <= currentChapter;
+                // All chapters are unlocked - no locking behavior
                 const done = completedChapters.includes(chapter);
                 const current = chapter === currentChapter && !done;
 
-                let stateClasses =
-                  "bg-gray-100 border-gray-300 text-gray-400 opacity-80 cursor-default";
+                // Chapter card styling: grey = not completed, green = completed
+                let stateClasses = "bg-gray-100 border-gray-300 text-gray-400 cursor-pointer";
 
                 if (done) {
-                  stateClasses =
-                    "bg-green-100 border-green-300 text-green-800 cursor-pointer";
-                } else if (current) {
-                  stateClasses =
-                    "bg-blue-100 border-blue-300 text-blue-800 cursor-pointer";
+                  stateClasses = "bg-green-100 border-green-300 text-green-800 cursor-pointer";
                 }
 
                 // label and description (no overview, only chapters 1-totalChapters)
                 const title = `${bookDisplayName} ${chapter}`;
                 const description = done
                   ? "Finished."
-                  : current
-                  ? "This is your next chapter."
-                  : openBibleMode
-                  ? "Click to read this chapter."
-                  : "Locked until you finish the previous chapter.";
+                  : "Click to read this chapter.";
 
                 const content = (
                   <>
                     <p className="font-semibold">{title}</p>
                     <p className="text-[11px] mt-1">{description}</p>
-                    {!unlocked && (
-                      <div className="absolute right-2 top-2 text-black/70">
-                        🔒
-                      </div>
-                    )}
                   </>
                 );
 
-                if (!unlocked) {
-                  return (
-                    <div
-                      key={chapter}
-                      className={`relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm ${stateClasses}`}
-                    >
-                      {content}
-                    </div>
-                  );
-                }
-
-                // All chapters use dynamic route
-                // Preserve open Bible mode in chapter links
-                const href = openBibleMode 
-                  ? `/Bible/${bookKey}/${chapter}?open=true`
-                  : `/Bible/${bookKey}/${chapter}`;
+                // All chapters use dynamic route - all are clickable
+                const href = `/Bible/${bookKey}/${chapter}`;
 
                 return (
                   <Link
