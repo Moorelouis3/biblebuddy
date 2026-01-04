@@ -162,35 +162,33 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
       console.log(`[bible_notes] Checking for existing notes: book="${bookKey}", chapter=${chapterNum}`);
 
-      // 1) Check Supabase for existing notes FIRST (BEFORE any ChatGPT call)
+      // CRITICAL: Check Supabase for existing notes FIRST (BEFORE any ChatGPT call)
+      // This is the ONLY source of truth - if notes exist, we MUST use them
       const { data: existing, error: existingError } = await supabase
         .from("bible_notes")
-        .select("id, notes_text")
+        .select("notes_text")
         .eq("book", bookKey)
         .eq("chapter", chapterNum)
         .maybeSingle();
 
-      if (existingError) {
-        if (existingError.code === 'PGRST116') {
-          // No rows found - this is expected if notes don't exist
-          console.log(`[bible_notes] No existing notes found for ${bookKey} chapter ${chapterNum}`);
-        } else {
-          console.error(`[bible_notes] Error checking for existing notes:`, existingError);
-          // Log the error but continue - we'll try to generate if query fails
-        }
+      // If query error is NOT "no rows found", log it but continue
+      if (existingError && existingError.code !== 'PGRST116') {
+        console.error(`[bible_notes] Error checking for existing notes:`, existingError);
       }
 
-      // 2) If notes exist with content, use them immediately (skip ChatGPT)
+      // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
+      // DO NOT continue to generation - this prevents duplicate ChatGPT calls
       if (existing?.notes_text && existing.notes_text.trim().length > 0) {
-        console.log(`[bible_notes] Found existing notes for ${bookKey} chapter ${chapterNum}, reusing (skipping ChatGPT)`);
-        // Found in Supabase - use it, DO NOT call OpenAI
-        // Clean it in case it was generated with old format
+        console.log(`[bible_notes] Found existing notes for ${bookKey} chapter ${chapterNum}, returning immediately (ChatGPT will NOT be called)`);
         const cleaned = cleanNotesText(existing.notes_text);
         setNotesText(cleaned);
         setLoadingNotes(false);
         loadingRef.current = false;
-        return;
+        return; // EXIT FUNCTION - DO NOT CONTINUE
       }
+
+      // GUARANTEE: If we reach here, notes do NOT exist in database
+      // This is the ONLY path where ChatGPT should be called
 
       // 3) Only generate if NOT found in Supabase
       const prompt = buildPrompt();
@@ -233,7 +231,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       console.log(`[bible_notes] Re-checking for existing notes after generation: book="${bookKey}", chapter=${chapterNum}`);
       const { data: existingAfterGen, error: checkAfterGenError } = await supabase
         .from("bible_notes")
-        .select("id, notes_text")
+        .select("notes_text")
         .eq("book", bookKey)
         .eq("chapter", chapterNum)
         .maybeSingle();
@@ -242,18 +240,17 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         console.error(`[bible_notes] Error re-checking after generation:`, checkAfterGenError);
       }
 
-      // If row exists now with content, use it (another request created it)
+      // MANDATORY: If row exists now, use it and DO NOT save (another request created it)
       if (existingAfterGen?.notes_text && existingAfterGen.notes_text.trim().length > 0) {
-        console.log(`[bible_notes] Notes were created by another request for ${bookKey} chapter ${chapterNum}, using existing row`);
+        console.log(`[bible_notes] Notes were created by another request for ${bookKey} chapter ${chapterNum}, using existing row (skipping save)`);
         const cleaned = cleanNotesText(existingAfterGen.notes_text);
         setNotesText(cleaned);
         setLoadingNotes(false);
         loadingRef.current = false;
-        return;
+        return; // EXIT - do not save, do not use generated text
       }
 
-      // No row exists - insert new one using UPSERT to handle race conditions
-      // UPSERT will either insert or update if row already exists (handles unique constraint)
+      // No row exists - upsert to handle race conditions gracefully
       console.log(`[bible_notes] Upserting notes for ${bookKey} chapter ${chapterNum}`);
       const { error: upsertError } = await supabase
         .from("bible_notes")
@@ -270,11 +267,10 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
       if (upsertError) {
         console.error(`[bible_notes] Error upserting notes:`, upsertError);
-        // Even if upsert fails, try to fetch existing row (another request may have created it)
       }
 
-      // CRITICAL: Always re-read from database after insert/upsert attempt
-      // This ensures UI reflects actual database state, not in-memory text
+      // MANDATORY: Always re-read from database after upsert
+      // NEVER use in-memory generated text - database is single source of truth
       console.log(`[bible_notes] Re-fetching from database after upsert: book="${bookKey}", chapter=${chapterNum}`);
       const { data: savedRow, error: fetchError } = await supabase
         .from("bible_notes")
@@ -291,16 +287,17 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         }
       }
 
-      // Use database state (single source of truth)
+      // MANDATORY: Use database state ONLY - never use in-memory generated text
       if (savedRow?.notes_text && savedRow.notes_text.trim().length > 0) {
         const cleaned = cleanNotesText(savedRow.notes_text);
         setNotesText(cleaned);
         setNotesError(null);
         console.log(`[bible_notes] Notes successfully saved and loaded from database for ${bookKey} chapter ${chapterNum}`);
       } else {
-        console.warn(`[bible_notes] Row not found in database after upsert`, { book: bookKey, chapter: chapterNum });
-        // Fallback: use generated text (shouldn't happen, but prevents blank UI)
-        setNotesText(generated);
+        // This should never happen - log as error
+        console.error(`[bible_notes] CRITICAL: Row not found in database after upsert`, { book: bookKey, chapter: chapterNum });
+        // Do NOT use generated text - this indicates a serious problem
+        setNotesError("Notes could not be saved to database. Please try again.");
       }
     } catch (err: any) {
       console.error("Error loading or generating notes", err);

@@ -298,11 +298,11 @@ export default function BibleChapterPage() {
     summaryLoadingRef.current = true;
 
     try {
-      // Step 1: Check if notes exist in Supabase
-      // IMPORTANT: Use lowercase book name for query
+      // CRITICAL: Check if notes exist in Supabase FIRST (BEFORE any ChatGPT call)
+      // This is the ONLY source of truth - if notes exist, we MUST use them
       const bookKey = bookName.toLowerCase().trim();
       
-      console.log(`Checking bible_notes for book="${bookKey}", chapter=${chapterNum}`);
+      console.log(`[bible_notes] Checking for existing notes: book="${bookKey}", chapter=${chapterNum}`);
       
       const { data: existing, error: existingError } = await supabase
         .from("bible_notes")
@@ -311,24 +311,24 @@ export default function BibleChapterPage() {
         .eq("chapter", chapterNum)
         .maybeSingle();
 
-      if (existingError) {
-        if (existingError.code === 'PGRST116') {
-          // No rows found - this is expected if notes don't exist
-          console.log(`No notes found for ${bookKey} chapter ${chapterNum}`);
-        } else {
-          console.error("Error checking bible_notes:", existingError);
-        }
+      if (existingError && existingError.code !== 'PGRST116') {
+        console.error("[bible_notes] Error checking bible_notes:", existingError);
       }
 
-      let notesText = "";
+      // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
+      // DO NOT continue to generation - this prevents duplicate ChatGPT calls
+      if (existing?.notes_text && existing.notes_text.trim().length > 0) {
+        console.log(`[bible_notes] Found existing notes for ${bookKey} chapter ${chapterNum}, returning immediately (ChatGPT will NOT be called)`);
+        const summary = extractBigIdeaSummary(existing.notes_text);
+        return summary || "";
+      }
 
-      if (existing?.notes_text) {
-        // Notes exist - use them
-        console.log(`Found existing notes for ${bookKey} chapter ${chapterNum}`);
-        notesText = existing.notes_text;
-      } else {
-        // Notes don't exist - generate them
-        const bookDisplayName = bookName
+      // GUARANTEE: If we reach here, notes do NOT exist in database
+      // This is the ONLY path where ChatGPT should be called
+      let notesText = "";
+      
+      // Notes don't exist - generate them
+      const bookDisplayName = bookName
           .split(" ")
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
           .join(" ");
@@ -405,22 +405,22 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         // Another request might have created it while we were generating
         const { data: existingCheck, error: checkError } = await supabase
           .from("bible_notes")
-          .select("id, notes_text")
+          .select("notes_text")
           .eq("book", bookKey)
           .eq("chapter", chapterNum)
           .maybeSingle();
 
         if (checkError && checkError.code !== 'PGRST116') {
-          console.error("Error checking for duplicates:", checkError);
+          console.error("[bible_notes] Error checking for duplicates:", checkError);
         }
 
-        // If row exists now with content, use it (another request created it)
+        // MANDATORY: If row exists now, use it and DO NOT save (another request created it)
         if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
-          console.log(`Notes were created by another request for ${bookKey} chapter ${chapterNum}, using existing`);
+          console.log(`[bible_notes] Notes were created by another request for ${bookKey} chapter ${chapterNum}, using existing (skipping save)`);
           notesText = existingCheck.notes_text;
         } else {
           // No row exists - upsert to handle race conditions gracefully
-          console.log(`Upserting notes for ${bookKey} chapter ${chapterNum}`);
+          console.log(`[bible_notes] Upserting notes for ${bookKey} chapter ${chapterNum}`);
           const { error: upsertError } = await supabase
             .from("bible_notes")
             .upsert(
@@ -435,11 +435,11 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
             );
 
           if (upsertError) {
-            console.error("Error upserting notes to bible_notes:", upsertError);
+            console.error("[bible_notes] Error upserting notes to bible_notes:", upsertError);
           }
 
-          // CRITICAL: Always re-read from database after upsert
-          // This ensures we use the actual database state, not in-memory text
+          // MANDATORY: Always re-read from database after upsert
+          // NEVER use in-memory generated text - database is single source of truth
           const { data: savedRow, error: fetchError } = await supabase
             .from("bible_notes")
             .select("notes_text")
@@ -448,18 +448,19 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
             .maybeSingle();
 
           if (fetchError && fetchError.code !== 'PGRST116') {
-            console.error("Error re-fetching notes after upsert:", fetchError);
+            console.error("[bible_notes] Error re-fetching notes after upsert:", fetchError);
           }
 
           if (savedRow?.notes_text && savedRow.notes_text.trim().length > 0) {
             notesText = savedRow.notes_text;
-            console.log(`Successfully loaded notes from database for ${bookKey} chapter ${chapterNum}`);
+            console.log(`[bible_notes] Successfully loaded notes from database for ${bookKey} chapter ${chapterNum}`);
           } else {
-            // Fallback: use generated text (shouldn't happen, but prevents empty summary)
-            notesText = generated;
+            // This should never happen - log as error
+            console.error(`[bible_notes] CRITICAL: Row not found in database after upsert`, { book: bookKey, chapter: chapterNum });
+            // Do NOT use generated text - return empty string to indicate failure
+            notesText = "";
           }
         }
-      }
 
       // Extract Big Idea summary
       const summary = extractBigIdeaSummary(notesText);
