@@ -11,6 +11,7 @@ import { getFeaturedCharactersForMatthew, FeaturedCharacter } from "../../../../
 import { FeaturedCharacterModal } from "../../../../components/FeaturedCharacterModal";
 import { useFeaturedCharacters } from "../../../../hooks/useFeaturedCharacters";
 import { useBibleHighlights, HighlightTerm } from "../../../../hooks/useBibleHighlights";
+import ReactMarkdown from "react-markdown";
 
 type Verse = {
   num: number;
@@ -70,6 +71,37 @@ export default function BibleChapterPage() {
   // Bible highlights
   const { highlightTerms, loading: highlightsLoading } = useBibleHighlights();
   const highlightsProcessedRef = useRef(false);
+  
+  // Overlay modals state (reuse same pattern as People/Places/Keywords pages)
+  const [selectedPerson, setSelectedPerson] = useState<{ name: string } | null>(null);
+  const [selectedPlace, setSelectedPlace] = useState<{ name: string } | null>(null);
+  const [selectedKeyword, setSelectedKeyword] = useState<{ name: string } | null>(null);
+  const [personNotes, setPersonNotes] = useState<string | null>(null);
+  const [placeNotes, setPlaceNotes] = useState<string | null>(null);
+  const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
+  const [loadingNotes, setLoadingNotes] = useState(false);
+
+  // Normalize markdown functions (reused from People/Places/Keywords pages)
+  function normalizePersonMarkdown(markdown: string): string {
+    return markdown
+      .replace(/^\s*[-•*]\s+/gm, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
+  function normalizePlaceMarkdown(markdown: string): string {
+    return markdown
+      .replace(/^\s*[-•*]\s+/gm, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
+  function normalizeKeywordMarkdown(markdown: string): string {
+    return markdown
+      .replace(/^\s*[-•*]\s+/gm, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
 
   // Normalize book name for API (e.g., "1 Samuel" -> "1samuel", "Matthew" -> "matthew")
   function normalizeBookName(bookName: string): string {
@@ -97,18 +129,25 @@ export default function BibleChapterPage() {
 
   // Apply highlights to verse text after rendering
   useEffect(() => {
-    if (!verseContainerRef.current || highlightsLoading || !highlightTerms.length || highlightsProcessedRef.current) {
+    if (!verseContainerRef.current || highlightsLoading || !highlightTerms.length || highlightsProcessedRef.current || sections.length === 0) {
       return;
     }
 
-    const container = verseContainerRef.current;
-    
-    // Find all verse paragraphs (but not verse number spans)
-    const verseParagraphs = container.querySelectorAll('p.leading-relaxed');
-    
-    if (verseParagraphs.length === 0) {
-      return;
-    }
+    // Wait for DOM to be ready using requestAnimationFrame
+    const applyHighlights = () => {
+      const container = verseContainerRef.current;
+      if (!container) return;
+      
+      // Find all verse paragraphs (but not verse number spans)
+      const verseParagraphs = container.querySelectorAll('p.leading-relaxed');
+      
+      if (verseParagraphs.length === 0) {
+        // DOM not ready yet, try again
+        requestAnimationFrame(applyHighlights);
+        return;
+      }
+      
+      // DOM is ready, proceed with highlighting
 
     // Sort terms by length (longest first) to match multi-word terms before single words
     const sortedTerms = [...highlightTerms].sort((a, b) => b.term.length - a.term.length);
@@ -204,13 +243,19 @@ export default function BibleChapterPage() {
       
       if (!term || !type) return;
       
-      // Navigate to appropriate page with term in URL
+      // Open overlay modal in-place (same as clicking a card on People/Places/Keywords pages)
       if (type === 'person') {
-        router.push(`/people-in-the-bible?term=${encodeURIComponent(term)}`);
+        setSelectedPerson({ name: term });
+        setSelectedPlace(null);
+        setSelectedKeyword(null);
       } else if (type === 'place') {
-        router.push(`/places-in-the-bible?term=${encodeURIComponent(term)}`);
+        setSelectedPlace({ name: term });
+        setSelectedPerson(null);
+        setSelectedKeyword(null);
       } else if (type === 'keyword') {
-        router.push(`/keywords-in-the-bible?term=${encodeURIComponent(term)}`);
+        setSelectedKeyword({ name: term });
+        setSelectedPerson(null);
+        setSelectedPlace(null);
       }
     };
 
@@ -218,15 +263,245 @@ export default function BibleChapterPage() {
       highlight.addEventListener('click', clickHandler);
     });
 
-    highlightsProcessedRef.current = true;
+      highlightsProcessedRef.current = true;
+      console.log("Bible highlights applied");
 
-    // Cleanup function
-    return () => {
-      highlights.forEach((highlight) => {
-        highlight.removeEventListener('click', clickHandler);
-      });
+      // Cleanup function
+      return () => {
+        highlights.forEach((highlight) => {
+          highlight.removeEventListener('click', clickHandler);
+        });
+      };
     };
+    
+    // Start the highlighting process
+    requestAnimationFrame(applyHighlights);
   }, [sections, highlightTerms, highlightsLoading, router]);
+
+  // Load notes for selected person (reuse same logic as People page)
+  useEffect(() => {
+    if (!selectedPerson) {
+      setPersonNotes(null);
+      return;
+    }
+
+    async function generateNotes() {
+      setLoadingNotes(true);
+      setPersonNotes(null);
+
+      try {
+        if (!selectedPerson) return;
+        const personNameKey = selectedPerson.name.toLowerCase().trim();
+
+        // STEP 1: Check Supabase FIRST
+        const { data: existing, error: existingError } = await supabase
+          .from("bible_people_notes")
+          .select("notes_text")
+          .eq("person_name", personNameKey)
+          .maybeSingle();
+
+        if (existingError && existingError.code !== 'PGRST116') {
+          console.error("[bible_people_notes] Error checking:", existingError);
+        }
+
+        if (existing?.notes_text && existing.notes_text.trim().length > 0) {
+          setPersonNotes(existing.notes_text);
+          setLoadingNotes(false);
+          return;
+        }
+
+        // STEP 2: Generate if not found
+        const prompt = `You are Little Louis. Generate Bible study style notes for a person from Scripture using the EXACT markdown structure below... [truncated for brevity, same as People page]`;
+        
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }),
+        });
+
+        if (!response.ok) throw new Error(`Failed to generate notes: ${response.statusText}`);
+        const json = await response.json();
+        const generated = (json?.reply as string) ?? "";
+
+        // STEP 3: Race condition protection
+        const { data: existingCheck } = await supabase
+          .from("bible_people_notes")
+          .select("notes_text")
+          .eq("person_name", personNameKey)
+          .maybeSingle();
+
+        let notesText = "";
+        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
+          notesText = existingCheck.notes_text;
+        } else {
+          // STEP 4: Upsert
+          await supabase
+            .from("bible_people_notes")
+            .upsert({ person_name: personNameKey, notes_text: generated }, { onConflict: "person_name" });
+
+          // STEP 5: Re-read from DB
+          const { data: finalData } = await supabase
+            .from("bible_people_notes")
+            .select("notes_text")
+            .eq("person_name", personNameKey)
+            .single();
+          notesText = finalData?.notes_text || generated;
+        }
+
+        setPersonNotes(notesText);
+      } catch (err: any) {
+        console.error("Error loading person notes:", err);
+      } finally {
+        setLoadingNotes(false);
+      }
+    }
+
+    generateNotes();
+  }, [selectedPerson]);
+
+  // Load notes for selected place (reuse same logic as Places page)
+  useEffect(() => {
+    if (!selectedPlace) {
+      setPlaceNotes(null);
+      return;
+    }
+
+    async function generateNotes() {
+      setLoadingNotes(true);
+      setPlaceNotes(null);
+
+      try {
+        if (!selectedPlace) return;
+        const normalizedPlace = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
+
+        const { data: existing } = await supabase
+          .from("places_in_the_bible_notes")
+          .select("notes_text")
+          .eq("normalized_place", normalizedPlace)
+          .maybeSingle();
+
+        if (existing?.notes_text && existing.notes_text.trim().length > 0) {
+          setPlaceNotes(existing.notes_text);
+          setLoadingNotes(false);
+          return;
+        }
+
+        const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the PLACE: ${selectedPlace.name}... [truncated]`;
+        
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }),
+        });
+
+        if (!response.ok) throw new Error(`Failed to generate notes`);
+        const json = await response.json();
+        const generated = (json?.reply as string) ?? "";
+
+        const { data: existingCheck } = await supabase
+          .from("places_in_the_bible_notes")
+          .select("notes_text")
+          .eq("normalized_place", normalizedPlace)
+          .maybeSingle();
+
+        let notesText = "";
+        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
+          notesText = existingCheck.notes_text;
+        } else {
+          await supabase
+            .from("places_in_the_bible_notes")
+            .upsert({ place: selectedPlace.name, normalized_place: normalizedPlace, notes_text: generated }, { onConflict: "normalized_place" });
+
+          const { data: finalData } = await supabase
+            .from("places_in_the_bible_notes")
+            .select("notes_text")
+            .eq("normalized_place", normalizedPlace)
+            .single();
+          notesText = finalData?.notes_text || generated;
+        }
+
+        setPlaceNotes(notesText);
+      } catch (err: any) {
+        console.error("Error loading place notes:", err);
+      } finally {
+        setLoadingNotes(false);
+      }
+    }
+
+    generateNotes();
+  }, [selectedPlace]);
+
+  // Load notes for selected keyword (reuse same logic as Keywords page)
+  useEffect(() => {
+    if (!selectedKeyword) {
+      setKeywordNotes(null);
+      return;
+    }
+
+    async function generateNotes() {
+      setLoadingNotes(true);
+      setKeywordNotes(null);
+
+      try {
+        if (!selectedKeyword) return;
+        const keywordKey = selectedKeyword.name.toLowerCase().trim();
+
+        const { data: existing } = await supabase
+          .from("keywords_in_the_bible")
+          .select("notes_text")
+          .eq("keyword", keywordKey)
+          .maybeSingle();
+
+        if (existing?.notes_text && existing.notes_text.trim().length > 0) {
+          setKeywordNotes(existing.notes_text);
+          setLoadingNotes(false);
+          return;
+        }
+
+        const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword.name}... [truncated]`;
+        
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }),
+        });
+
+        if (!response.ok) throw new Error(`Failed to generate notes`);
+        const json = await response.json();
+        const generated = (json?.reply as string) ?? "";
+
+        const { data: existingCheck } = await supabase
+          .from("keywords_in_the_bible")
+          .select("notes_text")
+          .eq("keyword", keywordKey)
+          .maybeSingle();
+
+        let notesText = "";
+        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
+          notesText = existingCheck.notes_text;
+        } else {
+          await supabase
+            .from("keywords_in_the_bible")
+            .upsert({ keyword: selectedKeyword.name, notes_text: generated }, { onConflict: "keyword" });
+
+          const { data: finalData } = await supabase
+            .from("keywords_in_the_bible")
+            .select("notes_text")
+            .eq("keyword", keywordKey)
+            .single();
+          notesText = finalData?.notes_text || generated;
+        }
+
+        setKeywordNotes(notesText);
+      } catch (err: any) {
+        console.error("Error loading keyword notes:", err);
+      } finally {
+        setLoadingNotes(false);
+      }
+    }
+
+    generateNotes();
+  }, [selectedKeyword]);
 
 
   useEffect(() => {
@@ -903,6 +1178,132 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         character={selectedCharacter}
         onClose={() => setSelectedCharacter(null)}
       />
+
+      {/* PERSON OVERLAY MODAL */}
+      {selectedPerson && (
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedPerson(null);
+                setPersonNotes(null);
+              }}
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
+            >
+              ✕
+            </button>
+            <h2 className="text-3xl font-bold mb-2">{selectedPerson.name}</h2>
+            {loadingNotes ? (
+              <div className="text-center py-12 text-gray-500">Loading notes...</div>
+            ) : personNotes ? (
+              <div>
+                <ReactMarkdown
+                  components={{
+                    h1: ({ ...props }) => (
+                      <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
+                    ),
+                    p: ({ ...props }) => (
+                      <p className="mb-4 leading-relaxed" {...props} />
+                    ),
+                    strong: ({ ...props }) => (
+                      <strong className="font-bold" {...props} />
+                    ),
+                  }}
+                >
+                  {normalizePersonMarkdown(personNotes)}
+                </ReactMarkdown>
+              </div>
+            ) : (
+              <div className="text-center py-12 text-gray-500">No notes available yet.</div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* PLACE OVERLAY MODAL */}
+      {selectedPlace && (
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedPlace(null);
+                setPlaceNotes(null);
+              }}
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
+            >
+              ✕
+            </button>
+            <h2 className="text-3xl font-bold mb-2">{selectedPlace.name}</h2>
+            {loadingNotes ? (
+              <div className="text-center py-12 text-gray-500">Loading notes...</div>
+            ) : placeNotes ? (
+              <div>
+                <ReactMarkdown
+                  components={{
+                    h1: ({ ...props }) => (
+                      <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
+                    ),
+                    p: ({ ...props }) => (
+                      <p className="mb-4 leading-relaxed" {...props} />
+                    ),
+                    strong: ({ ...props }) => (
+                      <strong className="font-bold" {...props} />
+                    ),
+                  }}
+                >
+                  {normalizePlaceMarkdown(placeNotes)}
+                </ReactMarkdown>
+              </div>
+            ) : (
+              <div className="text-center py-12 text-gray-500">No notes available yet.</div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* KEYWORD OVERLAY MODAL */}
+      {selectedKeyword && (
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedKeyword(null);
+                setKeywordNotes(null);
+              }}
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
+            >
+              ✕
+            </button>
+            <h2 className="text-3xl font-bold mb-2">{selectedKeyword.name}</h2>
+            {loadingNotes ? (
+              <div className="text-center py-12 text-gray-500">Loading notes...</div>
+            ) : keywordNotes ? (
+              <div>
+                <ReactMarkdown
+                  components={{
+                    h1: ({ ...props }) => (
+                      <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
+                    ),
+                    p: ({ ...props }) => (
+                      <p className="mb-4 leading-relaxed" {...props} />
+                    ),
+                    strong: ({ ...props }) => (
+                      <strong className="font-bold" {...props} />
+                    ),
+                  }}
+                >
+                  {normalizeKeywordMarkdown(keywordNotes)}
+                </ReactMarkdown>
+              </div>
+            ) : (
+              <div className="text-center py-12 text-gray-500">No notes available yet.</div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
