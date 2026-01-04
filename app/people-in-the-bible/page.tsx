@@ -1,37 +1,145 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import { getAllPeople, getPersonNotes, savePersonNotes, type BiblePerson } from "../../lib/biblePeople";
+import { getPersonNotes, savePersonNotes, type BiblePerson } from "../../lib/biblePeople";
 import { supabase } from "../../lib/supabaseClient";
 import ReactMarkdown from "react-markdown";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
+// Static list of Bible people names
+const STATIC_PEOPLE_NAMES = [
+  "Aaron",
+  "Abigail",
+  "Abimelech",
+  "Abraham",
+  "Adam",
+  "Andrew",
+  "Anna (prophetess)",
+  "Aquila",
+  "Balaam",
+  "Barabbas",
+  "Barnabas",
+  "Bartholomew",
+  "Bathsheba",
+  "Boaz",
+  "Cain",
+  "Caleb",
+  "Cornelius",
+  "Daniel",
+  "David",
+  "Deborah",
+  "Delilah",
+  "Elijah",
+  "Elisha",
+  "Elizabeth (mother of John the Baptist)",
+  "Esau",
+  "Esther",
+  "Eve",
+  "Ezra",
+  "Felix",
+  "Festus",
+  "Gabriel",
+  "Gideon",
+  "Goliath",
+  "Hagar",
+  "Hannah",
+  "Herod Antipas",
+  "Herod the Great",
+  "Hosea",
+  "Isaac",
+  "Isaiah",
+  "Ishmael",
+  "Jacob",
+  "James (brother of Jesus)",
+  "James (son of Zebedee)",
+  "Jehoshaphat",
+  "Jeremiah",
+  "Jesse",
+  "Jesus",
+  "Jethro",
+  "Joab",
+  "Job",
+  "Joel",
+  "John (apostle)",
+  "John the Baptist",
+  "Jonah",
+  "Jonathan (son of Saul)",
+  "Joseph (earthly father of Jesus)",
+  "Joseph (son of Jacob)",
+  "Joshua",
+  "Josiah",
+  "Judas Iscariot",
+  "Jude",
+  "King Saul",
+  "Lazarus",
+  "Leah",
+  "Levi (son of Jacob)",
+  "Lot",
+  "Luke",
+  "Lydia",
+  "Malachi",
+  "Manoah",
+  "Martha",
+  "Mary (mother of Jesus)",
+  "Mary Magdalene",
+  "Matthew",
+  "Micah",
+  "Miriam",
+  "Mordecai",
+  "Moses",
+  "Nahum",
+  "Naomi",
+  "Nathan",
+  "Nebuchadnezzar",
+  "Nehemiah",
+  "Nicodemus",
+  "Noah",
+  "Obadiah",
+  "Paul",
+  "Peter",
+  "Philip (apostle)",
+  "Pontius Pilate",
+  "Priscilla",
+  "Rachel",
+  "Rahab",
+  "Rebekah",
+  "Rehoboam",
+  "Ruth",
+  "Samson",
+  "Samuel",
+  "Sarah",
+  "Saul (later Paul)",
+  "Silas",
+  "Solomon",
+  "Stephen",
+  "Tamar",
+  "Timothy",
+  "Titus",
+  "Thomas",
+  "Uzziah",
+  "Zechariah (father of John the Baptist)",
+  "Zephaniah",
+  "Zerubbabel",
+];
+
+// Convert names to BiblePerson objects
+function createStaticPeople(): BiblePerson[] {
+  return STATIC_PEOPLE_NAMES.map((name, index) => ({
+    id: `static-${index}-${name.toLowerCase().replace(/[^a-z0-9]/g, "-")}`,
+    name: name,
+    normalized_name: name.toLowerCase().trim(),
+  }));
+}
+
 export default function PeopleInTheBiblePage() {
-  const [people, setPeople] = useState<BiblePerson[]>([]);
+  const [people] = useState<BiblePerson[]>(createStaticPeople());
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [selectedPerson, setSelectedPerson] = useState<BiblePerson | null>(null);
   const [personNotes, setPersonNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
   const [notesError, setNotesError] = useState<string | null>(null);
-  const [loadingPeople, setLoadingPeople] = useState(true);
-
-  // Load all people on mount
-  useEffect(() => {
-    async function loadPeople() {
-      try {
-        setLoadingPeople(true);
-        const allPeople = await getAllPeople();
-        setPeople(allPeople);
-      } catch (err) {
-        console.error("Error loading people:", err);
-      } finally {
-        setLoadingPeople(false);
-      }
-    }
-    loadPeople();
-  }, []);
 
   // Filter and sort people
   const filteredPeople = useMemo(() => {
@@ -267,11 +375,7 @@ RULES
 
             {/* MAIN CONTENT AREA */}
             <div className="flex-1">
-              {loadingPeople ? (
-                <div className="text-center py-12 text-gray-500">
-                  Loading people...
-                </div>
-              ) : filteredPeople.length === 0 ? (
+              {filteredPeople.length === 0 ? (
                 <div className="text-center py-12 text-gray-500">
                   {searchQuery || selectedLetter
                     ? "No people found. Try a different search or letter."
