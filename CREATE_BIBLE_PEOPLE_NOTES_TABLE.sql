@@ -17,11 +17,12 @@ CREATE TABLE public.bible_people_notes (
 );
 
 -- Add UNIQUE constraint (critical for preventing duplicate generations)
--- Create unique index for case-insensitive matching
+-- Unique index for case-insensitive enforcement
 CREATE UNIQUE INDEX bible_people_notes_person_unique
 ON public.bible_people_notes (lower(person_name));
 
--- Add unique constraint on person_name for upsert conflict detection
+-- Unique constraint on person_name for upsert conflict detection
+-- (Since we store lowercase values, this works with the index)
 ALTER TABLE public.bible_people_notes
 ADD CONSTRAINT bible_people_notes_person_name_unique UNIQUE (person_name);
 
