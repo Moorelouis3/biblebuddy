@@ -70,8 +70,6 @@ export function ChatLouis() {
   const animationFrameRef = useRef<number | null>(null);
   const [audioLevels, setAudioLevels] = useState<number[]>([]);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const transcriptAccumulatorRef = useRef<string>("");
-  const lastResultIndexRef = useRef<number>(0);
 
   // Format voice text with paragraph breaks
   function formatVoiceText(text: string, prevText: string): string {
@@ -110,31 +108,21 @@ export function ChatLouis() {
     recognition.lang = "en-US";
 
     recognition.onresult = (event: SpeechRecognitionEvent) => {
-      let newTranscript = "";
+      let fullTranscript = "";
       
-      // Collect all new results since last update
-      for (let i = event.resultIndex; i < event.results.length; i++) {
+      // With continuous=true, collect ALL results from the beginning
+      // The results array contains all results accumulated so far
+      for (let i = 0; i < event.results.length; i++) {
         const result = event.results[i];
         const transcript = result[0].transcript;
-        newTranscript += transcript;
-        
-        // If this is a final result, mark it
-        if (result.isFinal) {
-          lastResultIndexRef.current = i + 1;
-        }
+        fullTranscript += transcript;
       }
       
-      // Only update if we have new transcript text
-      if (newTranscript.trim()) {
-        setInput((prev) => {
-          // Get the base text (everything before the current interim result)
-          const baseText = transcriptAccumulatorRef.current;
-          
-          // Add the new transcript
-          transcriptAccumulatorRef.current = baseText + newTranscript;
-          
-          // Format the accumulated text
-          return formatVoiceText(transcriptAccumulatorRef.current, "");
+      // Update input with all accumulated text
+      if (fullTranscript.trim()) {
+        setInput(() => {
+          // Format the full accumulated transcript
+          return formatVoiceText(fullTranscript.trim(), "");
         });
       }
     };
