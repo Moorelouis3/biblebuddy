@@ -399,7 +399,7 @@ function createStaticPeople(): BiblePerson[] {
 
 function normalizePersonMarkdown(markdown: string): string {
   return markdown
-    .replace(/^\s*•\s+/gm, "- ")
+    .replace(/^\s*[-•*]\s+/gm, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
 }
@@ -489,23 +489,23 @@ TEMPLATE TO GENERATE (USE EXACT MARKDOWN SYNTAX):
 
 # 🔥 Key Moments
 
-- (short sentence)
+🔥 (short sentence)
 
-- (short sentence)
+🔥 (short sentence)
 
-- (short sentence)
+🔥 (short sentence)
 
-- (short sentence)
+🔥 (short sentence)
 
 
 
 # 📍 Where You Find ${pronoun}
 
-- Book Chapter–Chapter
+📖 Book Chapter–Chapter
 
-- Book Chapter–Chapter
+📖 Book Chapter–Chapter
 
-- Book Chapter–Chapter
+📖 Book Chapter–Chapter
 
 
 
@@ -518,7 +518,9 @@ TEMPLATE TO GENERATE (USE EXACT MARKDOWN SYNTAX):
 MARKDOWN FORMATTING RULES (MANDATORY):
 - Use # for ALL section headers (single hash mark)
 - Use TWO blank lines (double line break) between each section
-- Use - (hyphen) for ALL bullet points (key moments and locations) - NOT bullet dots
+- For Key Moments: Use 🔥 emoji prefix on each line (NOT markdown bullets)
+- For Where You Find: Use 📖 emoji prefix on each line (NOT markdown bullets)
+- DO NOT use markdown bullet lists (-, •, *)
 - DO NOT include the person's name in any header
 - Keep paragraphs short
 - Total length ~200–300 words
