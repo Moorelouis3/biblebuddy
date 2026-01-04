@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { getCompletedChapters, isChapterUnlocked, isChapterCompleted, getBookTotalChapters } from "@/lib/readingProgress";
+import { getCompletedChapters, getBookTotalChapters } from "@/lib/readingProgress";
 import { supabase } from "@/lib/supabaseClient";
 import ReactMarkdown from "react-markdown";
 
@@ -212,53 +212,32 @@ export default function BookBibleStudyNotesPage() {
           <div className="space-y-4 mt-1">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
               {visibleChapters.map((chapter) => {
-                const unlocked = userId ? (completedChapters.includes(chapter - 1) || chapter === 1) : false;
+                // All chapters are always accessible - no locking behavior
                 const done = completedChapters.includes(chapter);
-                
-                // Only allow clicking on completed chapters (green ones)
-                const canViewNotes = done;
 
-                let stateClasses =
-                  "bg-gray-100 border-gray-300 text-gray-400 opacity-80 cursor-default";
-
+                // Chapter card styling: grey = not completed, green = completed
+                let stateClasses = "bg-gray-100 border-gray-300 text-gray-400 cursor-pointer";
                 if (done) {
-                  stateClasses =
-                    "bg-green-100 border-green-300 text-green-800 cursor-pointer hover:shadow-md hover:scale-[1.01]";
+                  stateClasses = "bg-green-100 border-green-300 text-green-800 cursor-pointer";
                 }
 
                 const title = `${bookDisplayName} ${chapter}`;
                 const description = done
                   ? "Finished. Notes available."
-                  : "Not completed yet.";
+                  : "Click to view notes.";
 
                 const content = (
                   <>
                     <p className="font-semibold">{title}</p>
                     <p className="text-[11px] mt-1">{description}</p>
-                    {!done && (
-                      <div className="absolute right-2 top-2 text-black/70">
-                        🔒
-                      </div>
-                    )}
                   </>
                 );
-
-                if (!canViewNotes) {
-                  return (
-                    <div
-                      key={chapter}
-                      className={`relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm ${stateClasses}`}
-                    >
-                      {content}
-                    </div>
-                  );
-                }
 
                 return (
                   <button
                     key={chapter}
                     onClick={() => setSelectedChapter(chapter)}
-                    className={`relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm block ${stateClasses}`}
+                    className={`relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm block ${stateClasses} hover:shadow-md hover:scale-[1.01]`}
                   >
                     {content}
                   </button>
