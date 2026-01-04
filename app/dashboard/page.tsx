@@ -452,6 +452,15 @@ export default function DashboardPage() {
             </div>
           </Link>
 
+          <Link href="/keywords-in-the-bible">
+            <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+              <h2 className="text-xl font-semibold">🔑 Keywords in the Bible</h2>
+              <p className="text-gray-700 mt-1">
+                Understand important Bible words and ideas
+              </p>
+            </div>
+          </Link>
+
           {/* GET MORE BIBLE STUDY HELP CARD */}
           <Link href="https://joinhopenation.com/" target="_blank">
             <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
