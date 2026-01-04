@@ -1,7 +1,7 @@
 // components/ChatLouis.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { LouisAvatar } from "./LouisAvatar";
 
 type MessageRole = "user" | "assistant";
@@ -11,11 +11,132 @@ type Message = {
   content: string;
 };
 
+// Type for SpeechRecognition (Web Speech API)
+interface SpeechRecognitionResult {
+  [key: number]: SpeechRecognitionAlternative;
+  isFinal: boolean;
+  length: number;
+}
+
+interface SpeechRecognitionAlternative {
+  transcript: string;
+  confidence: number;
+}
+
+interface SpeechRecognitionResultList {
+  [key: number]: SpeechRecognitionResult;
+  length: number;
+}
+
+interface SpeechRecognitionEvent extends Event {
+  results: SpeechRecognitionResultList;
+  resultIndex: number;
+}
+
+interface SpeechRecognitionErrorEvent extends Event {
+  error: string;
+  message?: string;
+}
+
+interface SpeechRecognition extends EventTarget {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  start(): void;
+  stop(): void;
+  abort(): void;
+  onresult: ((event: SpeechRecognitionEvent) => void) | null;
+  onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
+  onend: (() => void) | null;
+}
+
+declare global {
+  interface Window {
+    SpeechRecognition: new () => SpeechRecognition;
+    webkitSpeechRecognition: new () => SpeechRecognition;
+  }
+}
+
 export function ChatLouis() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
+
+  // Initialize Speech Recognition
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      // Browser doesn't support speech recognition - silently fail
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = "en-US";
+
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
+      const transcript = event.results[0][0].transcript;
+      setInput((prev) => {
+        // Append to existing input, or replace if empty
+        return prev.trim() ? `${prev} ${transcript}` : transcript;
+      });
+      setIsListening(false);
+    };
+
+    recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
+      // Handle errors silently
+      console.error("Speech recognition error:", event.error);
+      setIsListening(false);
+    };
+
+    recognition.onend = () => {
+      setIsListening(false);
+    };
+
+    recognitionRef.current = recognition;
+
+    return () => {
+      if (recognitionRef.current) {
+        recognitionRef.current.stop();
+        recognitionRef.current = null;
+      }
+    };
+  }, []);
+
+  // Handle listening state changes
+  useEffect(() => {
+    if (!recognitionRef.current) return;
+
+    if (isListening) {
+      try {
+        recognitionRef.current.start();
+      } catch (err) {
+        // Already started or other error - silently handle
+        setIsListening(false);
+      }
+    } else {
+      recognitionRef.current.stop();
+    }
+  }, [isListening]);
+
+  // Clean up when chat closes
+  useEffect(() => {
+    if (!isOpen && isListening) {
+      setIsListening(false);
+    }
+  }, [isOpen, isListening]);
+
+  function toggleListening() {
+    setIsListening((prev) => !prev);
+  }
 
   async function handleSend() {
     const trimmed = input.trim();
@@ -133,6 +254,42 @@ export function ChatLouis() {
                 placeholder="Ask a Bible question..."
                 className="flex-1 text-xs border border-gray-300 rounded-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white"
               />
+              <button
+                type="button"
+                onClick={toggleListening}
+                className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition ${
+                  isListening
+                    ? "bg-red-500 hover:bg-red-600 text-white"
+                    : "bg-gray-200 hover:bg-gray-300 text-gray-600"
+                }`}
+                aria-label={isListening ? "Stop listening" : "Start listening"}
+              >
+                {isListening ? (
+                  <svg
+                    className="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a1 1 0 012 0v4a1 1 0 11-2 0V7zM12 9a1 1 0 10-2 0v2a1 1 0 102 0V9z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    className="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                )}
+              </button>
               <button
                 onClick={handleSend}
                 disabled={isSending || !input.trim()}
