@@ -300,29 +300,6 @@ export default function ReadingPage() {
               </button>
             </div>
           </div>
-
-          {/* animations */}
-          <style jsx>{`
-            .pulse-active-book {
-              animation: pulseScale 1.6s ease-in-out infinite;
-              transform-origin: center;
-            }
-
-            @keyframes pulseScale {
-              0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5);
-              }
-              40% {
-                transform: scale(1.06);
-                box-shadow: 0 0 0 14px rgba(249, 115, 22, 0);
-              }
-              100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
-              }
-            }
-          `}</style>
         </div>
       </div>
 
