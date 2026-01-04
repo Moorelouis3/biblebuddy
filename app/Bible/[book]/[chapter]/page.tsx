@@ -401,10 +401,8 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         // Enforce the no-hyphen rule
         generated = generated.replace(/-/g, " ");
 
-        notesText = generated;
-
-        // Save to Supabase (check AGAIN before inserting to prevent race condition duplicates)
-        // IMPORTANT: Another request might have created the row while we were generating
+        // CRITICAL: Before saving, check ONE MORE TIME if row exists (race condition protection)
+        // Another request might have created it while we were generating
         const { data: existingCheck, error: checkError } = await supabase
           .from("bible_notes")
           .select("id, notes_text")
@@ -416,53 +414,49 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           console.error("Error checking for duplicates:", checkError);
         }
 
-        // If row exists now with content, use it instead (another request created it)
+        // If row exists now with content, use it (another request created it)
         if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
           console.log(`Notes were created by another request for ${bookKey} chapter ${chapterNum}, using existing`);
           notesText = existingCheck.notes_text;
-        } else if (!existingCheck) {
-          // No row exists - insert new one
-          console.log(`Saving new notes for ${bookKey} chapter ${chapterNum}`);
-          const { error: insertError } = await supabase
+        } else {
+          // No row exists - upsert to handle race conditions gracefully
+          console.log(`Upserting notes for ${bookKey} chapter ${chapterNum}`);
+          const { error: upsertError } = await supabase
             .from("bible_notes")
-            .insert([
+            .upsert(
               {
                 book: bookKey,
                 chapter: chapterNum,
                 notes_text: generated,
               },
-            ]);
-
-          if (insertError) {
-            // If insert fails due to duplicate (unique constraint), fetch existing row
-            if (insertError.code === '23505') {
-              console.log(`Insert failed due to duplicate key for ${bookKey} chapter ${chapterNum}, fetching existing`);
-              const { data: existingRow, error: fetchError } = await supabase
-                .from("bible_notes")
-                .select("notes_text")
-                .eq("book", bookKey)
-                .eq("chapter", chapterNum)
-                .maybeSingle();
-
-              if (!fetchError && existingRow?.notes_text) {
-                notesText = existingRow.notes_text;
+              {
+                onConflict: "book,chapter",
               }
-            } else {
-              console.error("Error saving notes to bible_notes:", insertError);
-            }
-          } else {
-            console.log(`Successfully saved notes for ${bookKey} chapter ${chapterNum}`);
-          }
-        } else {
-          // Row exists but is empty - update it (shouldn't happen, but safe)
-          console.log(`Updating empty row for ${bookKey} chapter ${chapterNum}`);
-          const { error: updateError } = await supabase
-            .from("bible_notes")
-            .update({ notes_text: generated })
-            .eq("id", existingCheck.id);
+            );
 
-          if (updateError) {
-            console.error("Error updating notes in bible_notes:", updateError);
+          if (upsertError) {
+            console.error("Error upserting notes to bible_notes:", upsertError);
+          }
+
+          // CRITICAL: Always re-read from database after upsert
+          // This ensures we use the actual database state, not in-memory text
+          const { data: savedRow, error: fetchError } = await supabase
+            .from("bible_notes")
+            .select("notes_text")
+            .eq("book", bookKey)
+            .eq("chapter", chapterNum)
+            .maybeSingle();
+
+          if (fetchError && fetchError.code !== 'PGRST116') {
+            console.error("Error re-fetching notes after upsert:", fetchError);
+          }
+
+          if (savedRow?.notes_text && savedRow.notes_text.trim().length > 0) {
+            notesText = savedRow.notes_text;
+            console.log(`Successfully loaded notes from database for ${bookKey} chapter ${chapterNum}`);
+          } else {
+            // Fallback: use generated text (shouldn't happen, but prevents empty summary)
+            notesText = generated;
           }
         }
       }

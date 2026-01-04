@@ -228,12 +228,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       // Clean up: remove any top-level headers that AI might have generated
       generated = cleanNotesText(generated);
 
-      // IMPORTANT: Display notes immediately after generation
-      // Saving happens AFTER displaying - don't let save failures block rendering
-      setNotesText(generated);
-      setLoadingNotes(false); // Stop loading so notes display immediately
-
-      // 3) Before saving, check ONE MORE TIME if row exists (race condition protection)
+      // CRITICAL: Before saving, check ONE MORE TIME if row exists (race condition protection)
       // Another request might have created it while we were generating
       console.log(`[bible_notes] Re-checking for existing notes after generation: book="${bookKey}", chapter=${chapterNum}`);
       const { data: existingAfterGen, error: checkAfterGenError } = await supabase
@@ -243,91 +238,44 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         .eq("chapter", chapterNum)
         .maybeSingle();
 
-      if (checkAfterGenError) {
-        if (checkAfterGenError.code === 'PGRST116') {
-          // No rows found - this is expected
-          console.log(`[bible_notes] No existing notes after generation (expected)`);
-        } else {
-          console.error(`[bible_notes] Error re-checking after generation:`, checkAfterGenError);
-        }
+      if (checkAfterGenError && checkAfterGenError.code !== 'PGRST116') {
+        console.error(`[bible_notes] Error re-checking after generation:`, checkAfterGenError);
       }
 
-      // 4) If row exists now, use it (don't insert duplicate)
+      // If row exists now with content, use it (another request created it)
       if (existingAfterGen?.notes_text && existingAfterGen.notes_text.trim().length > 0) {
-        // Another request created it - use existing row instead
         console.log(`[bible_notes] Notes were created by another request for ${bookKey} chapter ${chapterNum}, using existing row`);
         const cleaned = cleanNotesText(existingAfterGen.notes_text);
         setNotesText(cleaned);
+        setLoadingNotes(false);
         loadingRef.current = false;
         return;
       }
 
-      // 5) No row exists - insert new one
-      // Use existingAfterGen?.id only if we had a row with empty notes_text (shouldn't happen, but safe)
-      if (existingAfterGen?.id) {
-        // Row exists but is empty - update it
-        console.log(`[bible_notes] Updating empty row for ${bookKey} chapter ${chapterNum}`);
-        const { error: updateError } = await supabase
-          .from("bible_notes")
-          .update({ notes_text: generated })
-          .eq("id", existingAfterGen.id);
-
-        if (updateError) {
-          console.error(`[bible_notes] Error updating notes:`, updateError);
-        } else {
-          console.log(`[bible_notes] Successfully updated notes for ${bookKey} chapter ${chapterNum}`);
-        }
-      } else {
-        // No row exists - insert new one
-        console.log(`[bible_notes] Inserting new notes for ${bookKey} chapter ${chapterNum}`);
-        const { error: insertError } = await supabase
-          .from("bible_notes")
-          .insert([
-            {
-              book: bookKey,
-              chapter: chapterNum,
-              notes_text: generated,
-            },
-          ]);
-
-        if (insertError) {
-          // If insert fails due to duplicate (unique constraint), fetch existing row
-          if (insertError.code === '23505') {
-            console.log(`[bible_notes] Insert failed due to duplicate key for ${bookKey} chapter ${chapterNum}, fetching existing row`);
-            const { data: existingRow, error: fetchError } = await supabase
-              .from("bible_notes")
-              .select("notes_text")
-              .eq("book", bookKey)
-              .eq("chapter", chapterNum)
-              .maybeSingle();
-
-            if (!fetchError && existingRow?.notes_text) {
-              console.log(`[bible_notes] Successfully fetched existing row after duplicate key error`);
-              const cleaned = cleanNotesText(existingRow.notes_text);
-              setNotesText(cleaned);
-              loadingRef.current = false;
-              return;
-            } else if (fetchError) {
-              console.error(`[bible_notes] Error fetching existing row after duplicate key:`, fetchError);
-            }
-          } else {
-            console.error(`[bible_notes] Error inserting notes:`, insertError);
-            // Log the full error details for debugging
-            console.error(`[bible_notes] Insert error details:`, {
-              code: insertError.code,
-              message: insertError.message,
-              details: insertError.details,
-              hint: insertError.hint,
-            });
+      // No row exists - insert new one using UPSERT to handle race conditions
+      // UPSERT will either insert or update if row already exists (handles unique constraint)
+      console.log(`[bible_notes] Upserting notes for ${bookKey} chapter ${chapterNum}`);
+      const { error: upsertError } = await supabase
+        .from("bible_notes")
+        .upsert(
+          {
+            book: bookKey,
+            chapter: chapterNum,
+            notes_text: generated,
+          },
+          {
+            onConflict: "book,chapter",
           }
-        } else {
-          console.log(`[bible_notes] Successfully inserted notes for ${bookKey} chapter ${chapterNum}`);
-        }
+        );
+
+      if (upsertError) {
+        console.error(`[bible_notes] Error upserting notes:`, upsertError);
+        // Even if upsert fails, try to fetch existing row (another request may have created it)
       }
 
-      // 6) Re-fetch from database after insert/update attempt to verify actual state
-      // UI state should be derived from database, not from insert response
-      console.log(`[bible_notes] Verifying save by re-fetching: book="${bookKey}", chapter=${chapterNum}`);
+      // CRITICAL: Always re-read from database after insert/upsert attempt
+      // This ensures UI reflects actual database state, not in-memory text
+      console.log(`[bible_notes] Re-fetching from database after upsert: book="${bookKey}", chapter=${chapterNum}`);
       const { data: savedRow, error: fetchError } = await supabase
         .from("bible_notes")
         .select("notes_text")
@@ -337,25 +285,22 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
       if (fetchError) {
         if (fetchError.code === 'PGRST116') {
-          console.warn(`[bible_notes] Verification failed: Row not found after save for ${bookKey} chapter ${chapterNum}`);
+          console.warn(`[bible_notes] Row not found after upsert for ${bookKey} chapter ${chapterNum}`);
         } else {
-          console.error(`[bible_notes] Error re-fetching notes after save:`, fetchError);
+          console.error(`[bible_notes] Error re-fetching notes after upsert:`, fetchError);
         }
       }
 
-      // 7) If row exists in database after save attempt, use database state
-      // This ensures UI is in sync with actual database state
+      // Use database state (single source of truth)
       if (savedRow?.notes_text && savedRow.notes_text.trim().length > 0) {
-        // Row exists in DB - use database state, clear any errors
         const cleaned = cleanNotesText(savedRow.notes_text);
         setNotesText(cleaned);
-        setNotesError(null); // Clear error since row exists in DB
-        console.log(`[bible_notes] Notes successfully saved and verified for ${bookKey} chapter ${chapterNum}`);
+        setNotesError(null);
+        console.log(`[bible_notes] Notes successfully saved and loaded from database for ${bookKey} chapter ${chapterNum}`);
       } else {
-        // Row doesn't exist in DB after save attempt - log internally only
-        console.warn(`[bible_notes] Verification failed: Row not found in database after save attempt`, { book: bookKey, chapter: chapterNum });
-        // Keep the generated notes displayed - don't set an error
-        // Verification failures will be visible to admins on Analytics page
+        console.warn(`[bible_notes] Row not found in database after upsert`, { book: bookKey, chapter: chapterNum });
+        // Fallback: use generated text (shouldn't happen, but prevents blank UI)
+        setNotesText(generated);
       }
     } catch (err: any) {
       console.error("Error loading or generating notes", err);
