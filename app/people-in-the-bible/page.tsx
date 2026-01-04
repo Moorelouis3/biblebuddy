@@ -756,12 +756,6 @@ MARKDOWN FORMATTING RULES (MANDATORY):
                     strong: ({ node, ...props }) => (
                       <strong className="font-bold" {...props} />
                     ),
-                    ul: ({ node, ...props }) => (
-                      <ul className="list-disc list-inside mb-4 space-y-2" {...props} />
-                    ),
-                    li: ({ node, ...props }) => (
-                      <li className="ml-4" {...props} />
-                    ),
                   }}
                 >
                   {normalizePersonMarkdown(personNotes)}
