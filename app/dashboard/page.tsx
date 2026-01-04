@@ -299,6 +299,7 @@ export default function DashboardPage() {
     }
 
     async function loadStreak() {
+      if (!userId) return; // Type guard
       try {
         setIsLoadingStreak(true);
         const data = await calculateStreak(userId);
