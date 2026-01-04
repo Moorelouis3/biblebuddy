@@ -482,23 +482,23 @@ TEMPLATE TO GENERATE (USE EXACT MARKDOWN SYNTAX):
 
 # 🔥 Key Moments
 
-• (short sentence)
+- (short sentence)
 
-• (short sentence)
+- (short sentence)
 
-• (short sentence)
+- (short sentence)
 
-• (short sentence)
+- (short sentence)
 
 
 
 # 📍 Where You Find ${pronoun}
 
-• Book Chapter–Chapter
+- Book Chapter–Chapter
 
-• Book Chapter–Chapter
+- Book Chapter–Chapter
 
-• Book Chapter–Chapter
+- Book Chapter–Chapter
 
 
 
@@ -511,13 +511,12 @@ TEMPLATE TO GENERATE (USE EXACT MARKDOWN SYNTAX):
 MARKDOWN FORMATTING RULES (MANDATORY):
 - Use # for ALL section headers (single hash mark)
 - Use TWO blank lines (double line break) between each section
-- Use • for bullet points (key moments and locations)
+- Use - (hyphen) for ALL bullet points (key moments and locations) - NOT bullet dots
 - DO NOT include the person's name in any header
 - Keep paragraphs short
 - Total length ~200–300 words
 - Use emojis in headers exactly as shown
 - Double line breaks between sections
-- No hyphens
 - Cinematic, clear, Bible-study tone
 - No filler phrases, no meta commentary`;
 
@@ -736,8 +735,28 @@ MARKDOWN FORMATTING RULES (MANDATORY):
                 {notesError}
               </div>
             ) : personNotes ? (
-              <div className="prose prose-sm max-w-none">
-                <ReactMarkdown>{personNotes}</ReactMarkdown>
+              <div>
+                <ReactMarkdown
+                  components={{
+                    h1: ({ node, ...props }) => (
+                      <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
+                    ),
+                    p: ({ node, ...props }) => (
+                      <p className="mb-4 leading-relaxed" {...props} />
+                    ),
+                    strong: ({ node, ...props }) => (
+                      <strong className="font-bold" {...props} />
+                    ),
+                    ul: ({ node, ...props }) => (
+                      <ul className="list-disc list-inside mb-4 space-y-2" {...props} />
+                    ),
+                    li: ({ node, ...props }) => (
+                      <li className="ml-4" {...props} />
+                    ),
+                  }}
+                >
+                  {personNotes}
+                </ReactMarkdown>
               </div>
             ) : (
               <div className="text-center py-12 text-gray-500">
