@@ -462,65 +462,62 @@ export default function PeopleInTheBiblePage() {
         const pronoun = isFemale ? "Her" : "Him";
         const whoPronoun = isFemale ? "She" : "He";
         
-        const prompt = `Generate detailed notes about ${selectedPerson.name} from the Bible using this EXACT markdown template structure. The person's name is already shown in the header - DO NOT include the name as a heading. Start with the subtitle line.
+        const prompt = `Generate detailed notes about ${selectedPerson.name} from the Bible using this EXACT markdown template structure. The person's name is already shown in the header - DO NOT include the name as a heading.
 
-CRITICAL: You MUST use proper markdown formatting with ### headers, double line breaks, and proper structure. The output will be rendered as markdown.
+CRITICAL: You MUST use proper markdown formatting with # headers (single hash), double line breaks, and proper structure. The output will be rendered as markdown.
 
 TEMPLATE TO GENERATE (USE EXACT MARKDOWN SYNTAX):
 
-🟦 {Short subtitle describing who ${selectedPerson.name} is}
+# 👤 Who ${whoPronoun} Is
+
+(two short paragraphs)
 
 
 
-### 👤 Who ${whoPronoun} Is
+# 📖 Their Role in the Story
 
-(2–3 short sentences explaining who they are and their role)
-
-
-
-### 📖 Their Role in the Story
-
-(2–3 short sentences explaining how they fit into the bigger biblical narrative)
+(two to three short paragraphs)
 
 
 
-### 🔥 Key Moments
+# 🔥 Key Moments
 
-🟠 (Short sentence)
+• (short sentence)
 
-🟠 (Short sentence)
+• (short sentence)
 
-🟠 (Short sentence)
+• (short sentence)
 
-🟠 (Short sentence)
-
-
-
-### 📍 Where You Find ${pronoun}
-
-📍 Book Chapter–Chapter
-
-📍 Book Chapter–Chapter
-
-📍 Book Chapter–Chapter
+• (short sentence)
 
 
 
-### 🧠 Why This Person Matters
+# 📍 Where You Find ${pronoun}
 
-(2–3 short sentences explaining why this person is important theologically or narratively)
+• Book Chapter–Chapter
+
+• Book Chapter–Chapter
+
+• Book Chapter–Chapter
+
+
+
+# 🌱 Why This Person Matters
+
+(two to three short paragraphs)
 
 
 
 MARKDOWN FORMATTING RULES (MANDATORY):
-- Use ### for ALL section headers (three hash marks)
+- Use # for ALL section headers (single hash mark)
 - Use TWO blank lines (double line break) between each section
-- Start with 🟦 subtitle line (no header, just emoji and text)
-- Use 🟠 for key moments bullets (each on its own line)
-- Use 📍 for location markers (each on its own line)
+- Use • for bullet points (key moments and locations)
 - DO NOT include the person's name in any header
-- Keep paragraphs short (1–2 lines, 2–3 sentences max)
-- Total length ~200–250 words
+- Keep paragraphs short
+- Total length ~200–300 words
+- Use emojis in headers exactly as shown
+- Double line breaks between sections
+- No hyphens
 - Cinematic, clear, Bible-study tone
 - No filler phrases, no meta commentary`;
 
