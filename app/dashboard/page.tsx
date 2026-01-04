@@ -462,20 +462,6 @@ export default function DashboardPage() {
               </p>
             </div>
           </Link>
-
-          {/* GET MORE BIBLE STUDY HELP CARD */}
-          <Link href="https://joinhopenation.com/" target="_blank">
-            <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold mb-1">📘 Get more Bible study help</h2>
-              <p className="text-gray-700 text-sm mb-2">Join our free community</p>
-              <p className="text-gray-500 text-xs mb-4">
-                Join our free community to study the Bible with others, ask questions, and grow together.
-              </p>
-              <button className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition">
-                Join our free community
-              </button>
-            </div>
-          </Link>
         </div>
       </div>
     </div>

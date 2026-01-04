@@ -162,6 +162,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       Settings
                     </Link>
 
+                    {/* JOIN OUR FREE COMMUNITY */}
+                    <a
+                      href="https://joinhopenation.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsProfileMenuOpen(false)}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Join our free community
+                    </a>
+
                     {/* ANALYTICS (ADMIN ONLY) */}
                     {isAdmin && (
                       <Link
