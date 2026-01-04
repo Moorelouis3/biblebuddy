@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import { getPersonNotes, savePersonNotes, type BiblePerson } from "../../lib/biblePeople";
-import { supabase } from "../../lib/supabaseClient";
+import { type BiblePerson } from "../../lib/biblePeople";
 import ReactMarkdown from "react-markdown";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -445,9 +444,9 @@ export default function PeopleInTheBiblePage() {
     return grouped;
   }, [people]);
 
-  // Load or generate notes when a person is selected
+  // Generate notes when a person is selected
   useEffect(() => {
-    async function loadOrGenerateNotes() {
+    async function generateNotes() {
       if (!selectedPerson) {
         setPersonNotes(null);
         return;
@@ -457,17 +456,7 @@ export default function PeopleInTheBiblePage() {
         setLoadingNotes(true);
         setNotesError(null);
 
-        // Check if notes exist in database FIRST
-        const existingNotes = await getPersonNotes(selectedPerson.id);
-
-        if (existingNotes && existingNotes.trim().length > 0) {
-          // Notes exist - use them
-          setPersonNotes(existingNotes);
-          setLoadingNotes(false);
-          return;
-        }
-
-        // Notes don't exist - generate them
+        // Generate notes using ChatGPT
         const prompt = `Generate detailed notes about ${selectedPerson.name} from the Bible using this exact template structure. Use markdown formatting with the headers and emojis exactly as shown.
 
 TEMPLATE TO GENERATE:
@@ -556,35 +545,8 @@ RULES:
           throw new Error("Generated notes are empty.");
         }
 
-        // Before saving, check ONE MORE TIME if notes exist (race condition protection)
-        const existingAfterGen = await getPersonNotes(selectedPerson.id);
-
-        if (existingAfterGen && existingAfterGen.trim().length > 0) {
-          // Another request created it - use existing
-          setPersonNotes(existingAfterGen);
-          setLoadingNotes(false);
-          return; // EXIT - do not save, do not use generated text
-        }
-
-        // Save to database
-        const saved = await savePersonNotes(selectedPerson.id, generated);
-
-        if (!saved) {
-          console.error("[BIBLE_PEOPLE] Failed to save notes");
-        }
-
-        // MANDATORY: Always re-read from database after upsert
-        // NEVER use in-memory generated text - database is single source of truth
-        const savedNotes = await getPersonNotes(selectedPerson.id);
-
-        if (savedNotes && savedNotes.trim().length > 0) {
-          setPersonNotes(savedNotes);
-        } else {
-          // This should never happen - log as error
-          console.error("[BIBLE_PEOPLE] CRITICAL: Notes not found in database after save", { personId: selectedPerson.id });
-          // Do NOT use generated text - this indicates a serious problem
-          setNotesError("Notes could not be saved to database. Please try again.");
-        }
+        // Display the generated notes directly (no database saving)
+        setPersonNotes(generated);
       } catch (err: any) {
         console.error("Error loading or generating notes:", err);
         setNotesError(err?.message || "Failed to load notes");
