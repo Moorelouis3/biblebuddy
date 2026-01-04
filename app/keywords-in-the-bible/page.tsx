@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
+import ReactMarkdown from "react-markdown";
+import { supabase } from "../../lib/supabaseClient";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -131,11 +133,21 @@ function createStaticKeywords(): BibleKeyword[] {
   }));
 }
 
+function normalizeKeywordMarkdown(markdown: string): string {
+  return markdown
+    .replace(/^\s*[-•*]\s+/gm, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
 export default function KeywordsInTheBiblePage() {
   const [keywords] = useState<BibleKeyword[]>(createStaticKeywords());
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [selectedKeyword, setSelectedKeyword] = useState<BibleKeyword | null>(null);
+  const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
+  const [loadingNotes, setLoadingNotes] = useState(false);
+  const [notesError, setNotesError] = useState<string | null>(null);
 
   // Filter and sort keywords
   const filteredKeywords = useMemo(() => {
@@ -174,6 +186,206 @@ export default function KeywordsInTheBiblePage() {
     });
     return grouped;
   }, [keywords]);
+
+  // Generate notes when a keyword is selected
+  useEffect(() => {
+    async function generateNotes() {
+      if (!selectedKeyword) {
+        setKeywordNotes(null);
+        return;
+      }
+
+      try {
+        setLoadingNotes(true);
+        setNotesError(null);
+
+        // Normalize: lowercase, trim
+        const keywordKey = selectedKeyword.name.toLowerCase().trim();
+
+        // STEP 1: Check database FIRST (mandatory short-circuit)
+        const { data: existing, error: existingError } = await supabase
+          .from("keywords_in_the_bible")
+          .select("notes_text")
+          .eq("keyword", keywordKey)
+          .maybeSingle();
+
+        if (existingError && existingError.code !== 'PGRST116') {
+          console.error("[keywords_in_the_bible] Error checking keywords_in_the_bible:", existingError);
+        }
+
+        // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
+        // DO NOT continue to generation - this prevents duplicate ChatGPT calls
+        if (existing?.notes_text && existing.notes_text.trim().length > 0) {
+          console.log(`[keywords_in_the_bible] Found existing notes for ${selectedKeyword.name}, returning immediately (ChatGPT will NOT be called)`);
+          setKeywordNotes(existing.notes_text);
+          setLoadingNotes(false);
+          return;
+        }
+
+        // GUARANTEE: If we reach here, notes do NOT exist in database
+        // This is the ONLY path where ChatGPT should be called
+        let notesText = "";
+
+        // STEP 2: Generate notes using ChatGPT
+        const prompt = `You are Little Louis.
+
+Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword.name}.
+
+Follow this EXACT markdown template and rules.
+
+TEMPLATE:
+
+# 📖 What This Keyword Means
+
+(two short paragraphs)
+
+
+
+
+
+# 🔍 Where It Appears in Scripture
+
+(two to three short paragraphs)
+
+
+
+
+
+# 🔑 Key Verses Using This Keyword
+
+🔥 sentence  
+
+🔥 sentence  
+
+🔥 sentence  
+
+🔥 sentence  
+
+
+
+
+
+# 📚 Where You Find It in the Bible
+
+📖 Book Chapter–Chapter  
+
+📖 Book Chapter–Chapter  
+
+📖 Book Chapter–Chapter  
+
+
+
+
+
+# 🌱 Why This Keyword Matters
+
+(two to three short paragraphs)
+
+
+
+RULES:
+- Use # for all section headers
+- Double line breaks between sections
+- No hyphens anywhere
+- Use emoji bullets only
+- No lists with dashes
+- No meta commentary
+- No deep theology
+- Cinematic but simple
+- Total length about 200–300 words
+- Do NOT include the keyword name as a header`;
+
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            messages: [
+              {
+                role: "user",
+                content: prompt,
+              },
+            ],
+          }),
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Failed to generate notes: ${response.statusText}. ${errorText}`);
+        }
+
+        const json = await response.json();
+        const generated = (json?.reply as string) ?? "";
+
+        if (!generated || generated.trim().length === 0) {
+          throw new Error("Generated notes are empty.");
+        }
+
+        // STEP 3: Race condition protection - check again before saving
+        const { data: existingCheck, error: checkError } = await supabase
+          .from("keywords_in_the_bible")
+          .select("notes_text")
+          .eq("keyword", keywordKey)
+          .maybeSingle();
+
+        if (checkError && checkError.code !== 'PGRST116') {
+          console.error("[keywords_in_the_bible] Error checking for duplicates:", checkError);
+        }
+
+        // MANDATORY: If row exists now, use it and DO NOT save (another request created it)
+        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
+          console.log(`[keywords_in_the_bible] Notes were created by another request for ${selectedKeyword.name}, using existing (skipping save)`);
+          notesText = existingCheck.notes_text;
+        } else {
+          // No row exists - upsert to handle race conditions gracefully
+          console.log(`[keywords_in_the_bible] Upserting notes for ${selectedKeyword.name}`);
+          const { error: upsertError } = await supabase
+            .from("keywords_in_the_bible")
+            .upsert(
+              {
+                keyword: keywordKey,
+                notes_text: generated,
+              },
+              {
+                onConflict: "keyword",
+              }
+            );
+
+          if (upsertError) {
+            console.error("[keywords_in_the_bible] Error upserting notes to keywords_in_the_bible:", upsertError);
+            // Continue to use generated text even if save fails
+            notesText = generated;
+          } else {
+            // STEP 4: Re-read from database (never trust in-memory generated text)
+            const { data: savedData, error: readError } = await supabase
+              .from("keywords_in_the_bible")
+              .select("notes_text")
+              .eq("keyword", keywordKey)
+              .maybeSingle();
+
+            if (readError) {
+              console.error("[keywords_in_the_bible] Error re-reading notes:", readError);
+              notesText = generated;
+            } else if (savedData?.notes_text) {
+              notesText = savedData.notes_text;
+            } else {
+              notesText = generated;
+            }
+          }
+        }
+
+        setKeywordNotes(notesText);
+      } catch (err: any) {
+        console.error("Error loading or generating notes:", err);
+        setNotesError(err?.message || "Failed to load notes");
+      } finally {
+        setLoadingNotes(false);
+      }
+    }
+
+    generateNotes();
+  }, [selectedKeyword]);
 
   // Scroll to letter section
   const scrollToLetter = (letter: string) => {
@@ -326,6 +538,8 @@ export default function KeywordsInTheBiblePage() {
               type="button"
               onClick={() => {
                 setSelectedKeyword(null);
+                setKeywordNotes(null);
+                setNotesError(null);
               }}
               className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
             >
@@ -333,6 +547,38 @@ export default function KeywordsInTheBiblePage() {
             </button>
 
             <h2 className="text-3xl font-bold mb-2">{selectedKeyword.name}</h2>
+
+            {loadingNotes ? (
+              <div className="text-center py-12 text-gray-500">
+                Loading notes...
+              </div>
+            ) : notesError ? (
+              <div className="text-center py-12 text-red-600">
+                {notesError}
+              </div>
+            ) : keywordNotes ? (
+              <div>
+                <ReactMarkdown
+                  components={{
+                    h1: ({ node, ...props }) => (
+                      <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
+                    ),
+                    p: ({ node, ...props }) => (
+                      <p className="mb-4 leading-relaxed" {...props} />
+                    ),
+                    strong: ({ node, ...props }) => (
+                      <strong className="font-bold" {...props} />
+                    ),
+                  }}
+                >
+                  {normalizeKeywordMarkdown(keywordNotes)}
+                </ReactMarkdown>
+              </div>
+            ) : (
+              <div className="text-center py-12 text-gray-500">
+                No notes available yet.
+              </div>
+            )}
           </div>
         </div>
       )}
