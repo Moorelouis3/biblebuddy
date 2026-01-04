@@ -89,8 +89,7 @@ export default function ReadingPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [userName, setUserName] = useState<string>("buddy");
   const [bookStates, setBookStates] = useState<Record<string, { complete: boolean }>>({});
-  const [loading, setLoading] = useState(true);
-  const [showLoadingOverlay, setShowLoadingOverlay] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [showStatsModal, setShowStatsModal] = useState(false);
   const [alphabeticalOrder, setAlphabeticalOrder] = useState(false);
   const [stats, setStats] = useState<{
@@ -132,17 +131,12 @@ export default function ReadingPage() {
     getUser();
   }, []);
 
-  // Load book states from database
+  // Load book states from database (background, non-blocking)
   useEffect(() => {
     async function loadBookStates() {
       if (!userId) return;
 
-      const startTime = Date.now();
-      const minDelay = 3000; // 3 seconds minimum
-
       try {
-        setLoading(true);
-
         // Get current active book
         const active = await getCurrentBook(userId, BOOKS);
         setCurrentActiveBook(active);
@@ -156,15 +150,6 @@ export default function ReadingPage() {
         setBookStates(states);
       } catch (err) {
         console.error("Error loading book states:", err);
-      } finally {
-        setLoading(false);
-        
-        // Hide loading overlay after minimum 3 seconds from start
-        const elapsed = Date.now() - startTime;
-        const remaining = Math.max(0, minDelay - elapsed);
-        setTimeout(() => {
-          setShowLoadingOverlay(false);
-        }, remaining);
       }
     }
 
@@ -208,22 +193,38 @@ export default function ReadingPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4 relative">
-      {/* Loading Overlay */}
-      {showLoadingOverlay && (
-        <div className="fixed inset-0 bg-gray-50 bg-opacity-95 z-50 flex items-center justify-center transition-opacity duration-300">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-700 text-lg font-medium">Loading Your Reading Plan</p>
-          </div>
-        </div>
-      )}
-      
       <div className="max-w-4xl mx-auto">
         {/* PAGE HEADER */}
-        <h1 className="text-3xl font-bold mb-1">The Bible</h1>
-        <p className="text-gray-700 mb-4">
-          We walk together one book and one chapter at a time.
-        </p>
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h1 className="text-3xl font-bold mb-1">The Bible</h1>
+          </div>
+          {/* Alphabetical Order Toggle */}
+          <label className="flex items-center gap-2 cursor-pointer">
+            <span className="text-gray-700 text-sm">Alphabetical Order</span>
+            <div className="relative inline-block w-10 h-5">
+              <input
+                type="checkbox"
+                checked={alphabeticalOrder}
+                onChange={(e) => {
+                  setAlphabeticalOrder(e.target.checked);
+                  setBookPage(0); // Reset to first page when toggling
+                }}
+                className="sr-only"
+              />
+              <div
+                className={`block w-10 h-5 rounded-full transition-colors ${
+                  alphabeticalOrder ? "bg-blue-600" : "bg-gray-300"
+                }`}
+              />
+              <div
+                className={`absolute left-0.5 top-0.5 bg-white w-4 h-4 rounded-full transition-transform ${
+                  alphabeticalOrder ? "transform translate-x-5" : ""
+                }`}
+              />
+            </div>
+          </label>
+        </div>
 
         {/* MAIN CARD */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8">
@@ -236,10 +237,10 @@ export default function ReadingPage() {
                 These are the books of the Bible.
               </p>
               <p className="mb-2">
-                There are 66 books, made up of the Old Testament and the New Testament.
+                Sixty-six books written over nearly 1,500 years, by dozens of authors, telling one connected story.
               </p>
               <p>
-                This is just God's Word — and I'm here to make it easier for you.
+                This is God's Word — and I'm here to make it easier for you to understand.
               </p>
             </div>
           </div>
@@ -285,41 +286,13 @@ export default function ReadingPage() {
                 Previous books
               </button>
 
-              <div className="flex items-center gap-3">
-                {/* Alphabetical Order Toggle */}
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <span className="text-gray-700 text-xs">Alphabetical Order</span>
-                  <div className="relative inline-block w-10 h-5">
-                    <input
-                      type="checkbox"
-                      checked={alphabeticalOrder}
-                      onChange={(e) => {
-                        setAlphabeticalOrder(e.target.checked);
-                        setBookPage(0); // Reset to first page when toggling
-                      }}
-                      className="sr-only"
-                    />
-                    <div
-                      className={`block w-10 h-5 rounded-full transition-colors ${
-                        alphabeticalOrder ? "bg-blue-600" : "bg-gray-300"
-                      }`}
-                    />
-                    <div
-                      className={`absolute left-0.5 top-0.5 bg-white w-4 h-4 rounded-full transition-transform ${
-                        alphabeticalOrder ? "transform translate-x-5" : ""
-                      }`}
-                    />
-                  </div>
-                </label>
-
-                <button
-                  type="button"
-                  onClick={() => setShowStatsModal(true)}
-                  className="text-blue-600 hover:underline cursor-pointer"
-                >
-                  📘 Your Bible Study Stats
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => setShowStatsModal(true)}
+                className="text-blue-600 hover:underline cursor-pointer"
+              >
+                📘 Your Bible Study Stats
+              </button>
 
               <button
                 type="button"
