@@ -555,7 +555,7 @@ RULES:
       }
     }
 
-    loadOrGenerateNotes();
+    generateNotes();
   }, [selectedPerson]);
 
   // Scroll to letter section
