@@ -556,9 +556,6 @@ RULES:
           throw new Error("Generated notes are empty.");
         }
 
-        // Enforce no-hyphen rule
-        generated = generated.replace(/-/g, " ");
-
         // Before saving, check ONE MORE TIME if notes exist (race condition protection)
         const existingAfterGen = await getPersonNotes(selectedPerson.id);
 
