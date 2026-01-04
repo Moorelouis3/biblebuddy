@@ -64,6 +64,31 @@ export function ChatLouis() {
   const [isSending, setIsSending] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const analyserRef = useRef<AnalyserNode | null>(null);
+  const mediaStreamRef = useRef<MediaStream | null>(null);
+  const animationFrameRef = useRef<number | null>(null);
+  const [audioLevels, setAudioLevels] = useState<number[]>([]);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  // Format voice text with paragraph breaks
+  function formatVoiceText(text: string, prevText: string): string {
+    // Clean up the text
+    let formatted = text.trim();
+    
+    // Add double line break after periods, exclamation marks, or question marks
+    // This creates natural paragraph breaks
+    formatted = formatted.replace(/([.!?])\s+/g, "$1\n\n");
+    
+    // Combine with previous text
+    if (prevText.trim()) {
+      // Add a space if previous text doesn't end with newline
+      const separator = prevText.trimEnd().endsWith("\n") ? "" : " ";
+      return prevText + separator + formatted;
+    }
+    
+    return formatted;
+  }
 
   // Initialize Speech Recognition
   useEffect(() => {
@@ -84,10 +109,7 @@ export function ChatLouis() {
 
     recognition.onresult = (event: SpeechRecognitionEvent) => {
       const transcript = event.results[0][0].transcript;
-      setInput((prev) => {
-        // Append to existing input, or replace if empty
-        return prev.trim() ? `${prev} ${transcript}` : transcript;
-      });
+      setInput((prev) => formatVoiceText(transcript, prev));
       setIsListening(false);
     };
 
@@ -111,6 +133,114 @@ export function ChatLouis() {
     };
   }, []);
 
+  // Initialize audio visualization
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
+    if (!AudioContext) {
+      // AudioContext not available - silently fail
+      return;
+    }
+
+    return () => {
+      // Cleanup on unmount
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      if (mediaStreamRef.current) {
+        mediaStreamRef.current.getTracks().forEach((track) => track.stop());
+        mediaStreamRef.current = null;
+      }
+      if (audioContextRef.current) {
+        audioContextRef.current.close();
+        audioContextRef.current = null;
+      }
+      analyserRef.current = null;
+    };
+  }, []);
+
+  // Handle audio visualization
+  useEffect(() => {
+    if (!isListening) {
+      // Stop visualization
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+      if (mediaStreamRef.current) {
+        mediaStreamRef.current.getTracks().forEach((track) => track.stop());
+        mediaStreamRef.current = null;
+      }
+      setAudioLevels([]);
+      return;
+    }
+
+    // Start audio visualization
+    async function startVisualization() {
+      try {
+        const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
+        if (!AudioContext) return;
+
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaStreamRef.current = stream;
+
+        const audioContext = new AudioContext();
+        audioContextRef.current = audioContext;
+
+        const analyser = audioContext.createAnalyser();
+        analyser.fftSize = 32; // Small for performance
+        analyserRef.current = analyser;
+
+        const source = audioContext.createMediaStreamSource(stream);
+        source.connect(analyser);
+
+        // Animation loop
+        const dataArray = new Uint8Array(analyser.frequencyBinCount);
+        
+        function animate() {
+          if (!analyserRef.current || !isListening) {
+            return;
+          }
+
+          analyserRef.current.getByteFrequencyData(dataArray);
+          
+          // Extract 5 bars from the frequency data
+          const barCount = 5;
+          const step = Math.floor(dataArray.length / barCount);
+          const levels: number[] = [];
+          
+          for (let i = 0; i < barCount; i++) {
+            const index = i * step;
+            levels.push(dataArray[index] / 255); // Normalize to 0-1
+          }
+          
+          setAudioLevels(levels);
+          animationFrameRef.current = requestAnimationFrame(animate);
+        }
+
+        animate();
+      } catch (err) {
+        // Silently fail if audio access denied or unavailable
+        console.error("Audio visualization error:", err);
+      }
+    }
+
+    startVisualization();
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+      if (mediaStreamRef.current) {
+        mediaStreamRef.current.getTracks().forEach((track) => track.stop());
+        mediaStreamRef.current = null;
+      }
+      setAudioLevels([]);
+    };
+  }, [isListening]);
+
   // Handle listening state changes
   useEffect(() => {
     if (!recognitionRef.current) return;
@@ -133,6 +263,14 @@ export function ChatLouis() {
       setIsListening(false);
     }
   }, [isOpen, isListening]);
+
+  // Auto-resize textarea
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 120)}px`;
+    }
+  }, [input]);
 
   function toggleListening() {
     setIsListening((prev) => !prev);
@@ -177,6 +315,14 @@ export function ChatLouis() {
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsSending(false);
+    }
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    // Send on Enter (without Shift), otherwise allow normal textarea behavior
+    if (e.key === "Enter" && !e.shiftKey && !isSending) {
+      e.preventDefault();
+      handleSend();
     }
   }
 
@@ -247,13 +393,31 @@ export function ChatLouis() {
           {/* Input area */}
           <div className="border-t border-gray-200 px-3 py-2.5 bg-gray-50 rounded-b-2xl">
             <div className="flex gap-2 items-end">
-              <input
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && !isSending && handleSend()}
-                placeholder="Ask a Bible question..."
-                className="flex-1 text-xs border border-gray-300 rounded-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white"
-              />
+              <div className="flex-1 flex items-end gap-2">
+                <textarea
+                  ref={textareaRef}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Ask a Bible question..."
+                  rows={1}
+                  className="flex-1 text-xs border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white resize-none min-h-[36px] max-h-[120px] overflow-y-auto"
+                />
+                {isListening && audioLevels.length > 0 && (
+                  <div className="flex items-end gap-0.5 h-8 pb-1">
+                    {audioLevels.map((level, index) => (
+                      <div
+                        key={index}
+                        className="w-1 bg-red-500 rounded-full transition-all duration-75"
+                        style={{
+                          height: `${Math.max(level * 24, 4)}px`,
+                          minHeight: "4px",
+                        }}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
               <button
                 type="button"
                 onClick={toggleListening}
