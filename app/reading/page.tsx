@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { LouisAvatar } from "../../components/LouisAvatar";
-import { isBookComplete, getCurrentBook, getCompletedChapters, getTotalCompletedChapters } from "../../lib/readingProgress";
+import { isBookUnlocked, isBookComplete, getCurrentBook, getCompletedChapters, getTotalCompletedChapters } from "../../lib/readingProgress";
 import { supabase } from "../../lib/supabaseClient";
 
 const BOOKS = [
@@ -94,7 +94,7 @@ export default function ReadingPage() {
   const [currentActiveBook, setCurrentActiveBook] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [userName, setUserName] = useState<string>("buddy");
-  const [bookStates, setBookStates] = useState<Record<string, { complete: boolean }>>({});
+  const [bookStates, setBookStates] = useState<Record<string, { unlocked: boolean; complete: boolean }>>({});
   const [loading, setLoading] = useState(true);
   const [showLoadingOverlay, setShowLoadingOverlay] = useState(true);
   const [showStatsModal, setShowStatsModal] = useState(false);
@@ -148,11 +148,12 @@ export default function ReadingPage() {
         const active = await getCurrentBook(userId, BOOKS);
         setCurrentActiveBook(active);
 
-        // Get completion states for all books (no locking checks)
-        const states: Record<string, { complete: boolean }> = {};
+        // Get states for all books (with locking checks for Reading Plan)
+        const states: Record<string, { unlocked: boolean; complete: boolean }> = {};
         for (const book of BOOKS) {
+          const unlocked = await isBookUnlocked(userId, book, userEmail);
           const complete = await isBookComplete(userId, book);
-          states[book] = { complete };
+          states[book] = { unlocked, complete };
         }
         setBookStates(states);
       } catch (err) {
@@ -249,40 +250,66 @@ export default function ReadingPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-2">
               {visibleBooks.map((book) => {
+                const unlocked = bookStates[book]?.unlocked ?? false;
                 const isComplete = bookStates[book]?.complete ?? false;
                 const isActive = currentActiveBook === book;
 
                 const baseClasses =
                   "relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm";
 
-                // All books are unlocked - no locking behavior
-                const href = `/reading/books/${book.toLowerCase()}`;
+                if (unlocked) {
+                  // Create route for any book (e.g., "Mark" -> "/reading/books/mark")
+                  const href = `/reading/books/${encodeURIComponent(book.toLowerCase())}`;
 
-                // Determine styling: active = orange, complete = blue, default = white
-                let cardClasses = "bg-white border-blue-200";
-                if (isActive) {
-                  cardClasses = "bg-orange-100 border-orange-300 pulse-active-book";
-                } else if (isComplete) {
-                  cardClasses = "bg-blue-100 border-blue-300";
+                  // Determine styling: active = orange, complete = blue, default = white
+                  let cardClasses = "bg-white border-blue-200";
+                  if (isActive) {
+                    cardClasses = "bg-orange-100 border-orange-300 pulse-active-book";
+                  } else if (isComplete) {
+                    cardClasses = "bg-blue-100 border-blue-300";
+                  }
+
+                  return (
+                    <Link
+                      key={book}
+                      href={href}
+                      className={`${baseClasses} block ${cardClasses}`}
+                    >
+                      <p className="font-semibold">{book}</p>
+                      <p className="text-[11px] mt-1">
+                        {isActive
+                          ? book === "Matthew"
+                            ? "Start here with Jesus. This is your first path."
+                            : "This is your current book."
+                          : isComplete
+                          ? "Completed. You've finished this book."
+                          : "This book is now unlocked."}
+                      </p>
+                    </Link>
+                  );
                 }
 
+                // locked books (no link)
+                // Find the previous book in the reading plan order
+                const bookIndex = BOOKS.findIndex(b => b === book);
+                const previousBook = bookIndex > 0 ? BOOKS[bookIndex - 1] : null;
+                const lockedSubtitle = previousBook 
+                  ? `Locked until you finish ${previousBook}.`
+                  : "Locked.";
+
                 return (
-                  <Link
+                  <div
                     key={book}
-                    href={href}
-                    className={`${baseClasses} block ${cardClasses}`}
+                    className={`${baseClasses} bg-gray-100 border-gray-300 text-gray-400 opacity-80 cursor-default`}
                   >
                     <p className="font-semibold">{book}</p>
                     <p className="text-[11px] mt-1">
-                      {isActive
-                        ? book === "Matthew"
-                          ? "Start here with Jesus. This is your first path."
-                          : "This is your current book."
-                        : isComplete
-                        ? "Completed. You've finished this book."
-                        : "Click to read this book."}
+                      {lockedSubtitle}
                     </p>
-                  </Link>
+                    <div className="absolute right-2 top-2 text-black/70">
+                      🔒
+                    </div>
+                  </div>
                 );
               })}
             </div>

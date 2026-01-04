@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { LouisAvatar } from "../../components/LouisAvatar";
 import { isBookComplete } from "../../lib/readingProgress";
 import { supabase } from "../../lib/supabaseClient";
 
@@ -120,9 +121,23 @@ export default function BiblePage() {
       <div className="max-w-4xl mx-auto">
         {/* PAGE HEADER */}
         <h1 className="text-3xl font-bold mb-1">The Bible</h1>
-        <p className="text-gray-700 mb-2">
-          Pick a book of the Bible to start reading.
-        </p>
+        
+        {/* LOUIS CALLOUT BUBBLE */}
+        <div className="mb-4 flex items-start gap-3">
+          <div className="flex-shrink-0 mt-1">
+            <LouisAvatar />
+          </div>
+          <div className="bg-gray-100 border border-gray-200 rounded-2xl px-4 py-3 text-sm leading-relaxed text-gray-800 flex-1">
+            <p>These are all the books of the Bible. Pick one and let's start reading.</p>
+          </div>
+        </div>
+
+        {/* HELPER LINKS */}
+        <div className="mb-4 text-sm text-gray-600">
+          <Link href="/reading" className="text-blue-600 hover:underline">
+            Don't know where to start? Try the Reading Plan →
+          </Link>
+        </div>
 
         {/* MAIN CARD */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8">
@@ -136,7 +151,8 @@ export default function BiblePage() {
                       "relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm";
 
                     // All books are unlocked - no locking behavior
-                    const href = `/reading/books/${book.toLowerCase()}`;
+                    // Add open=true query param to indicate Open Bible mode
+                    const href = `/reading/books/${encodeURIComponent(book.toLowerCase())}?open=true`;
 
                     // Determine styling: complete = blue, default = white
                     let cardClasses = "bg-white border-blue-200";
