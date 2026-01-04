@@ -297,15 +297,7 @@ export function ChatLouis() {
   }, [input]);
 
   function toggleListening() {
-    setIsListening((prev) => {
-      const newState = !prev;
-      if (!newState) {
-        // Reset accumulator when stopping
-        transcriptAccumulatorRef.current = "";
-        lastResultIndexRef.current = 0;
-      }
-      return newState;
-    });
+    setIsListening((prev) => !prev);
   }
 
   async function handleSend() {
