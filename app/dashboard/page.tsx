@@ -433,12 +433,12 @@ export default function DashboardPage() {
             </div>
           </Link>
 
-          {/* BIBLE BUDDIES */}
-          <Link href="/bible-buddies">
+          {/* PEOPLE IN THE BIBLE */}
+          <Link href="/people-in-the-bible">
             <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">🤝 Bible Buddies</h2>
+              <h2 className="text-xl font-semibold">👥 People in the Bible</h2>
               <p className="text-gray-700 mt-1">
-                Meet some of the Bible Buddies.
+                Meet the real people of the Bible
               </p>
             </div>
           </Link>
