@@ -462,9 +462,11 @@ export default function PeopleInTheBiblePage() {
         const pronoun = isFemale ? "Her" : "Him";
         const whoPronoun = isFemale ? "She" : "He";
         
-        const prompt = `Generate detailed notes about ${selectedPerson.name} from the Bible using this exact template structure. The person's name is already shown in the header - DO NOT include the name as a heading. Start with the subtitle line.
+        const prompt = `Generate detailed notes about ${selectedPerson.name} from the Bible using this EXACT markdown template structure. The person's name is already shown in the header - DO NOT include the name as a heading. Start with the subtitle line.
 
-TEMPLATE TO GENERATE:
+CRITICAL: You MUST use proper markdown formatting with ### headers, double line breaks, and proper structure. The output will be rendered as markdown.
+
+TEMPLATE TO GENERATE (USE EXACT MARKDOWN SYNTAX):
 
 🟦 {Short subtitle describing who ${selectedPerson.name} is}
 
@@ -510,18 +512,17 @@ TEMPLATE TO GENERATE:
 
 
 
-RULES:
-- DO NOT include the person's name in any header (name is already in the modal header)
-- Start with the 🟦 subtitle line (no header, just emoji and text)
-- Use markdown formatting (H3 for section headers)
-- Include emojis exactly as shown in the template
-- Use double line breaks between sections
+MARKDOWN FORMATTING RULES (MANDATORY):
+- Use ### for ALL section headers (three hash marks)
+- Use TWO blank lines (double line break) between each section
+- Start with 🟦 subtitle line (no header, just emoji and text)
+- Use 🟠 for key moments bullets (each on its own line)
+- Use 📍 for location markers (each on its own line)
+- DO NOT include the person's name in any header
 - Keep paragraphs short (1–2 lines, 2–3 sentences max)
 - Total length ~200–250 words
-- Cinematic, clear, Bible-study tone (not a blog post)
-- No filler phrases, no meta commentary
-- No "I'm here to help" or similar filler
-- Easy to scan, structured, not a wall of text`;
+- Cinematic, clear, Bible-study tone
+- No filler phrases, no meta commentary`;
 
         const response = await fetch("/api/chat", {
           method: "POST",
