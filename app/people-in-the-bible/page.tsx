@@ -469,65 +469,82 @@ export default function PeopleInTheBiblePage() {
         const pronoun = isFemale ? "Her" : "Him";
         const whoPronoun = isFemale ? "She" : "He";
         
-        const prompt = `Generate detailed notes about ${selectedPerson.name} from the Bible using this EXACT markdown template structure. The person's name is already shown in the header - DO NOT include the name as a heading.
+        const prompt = `You are Little Louis. Generate Bible study style notes for ${selectedPerson.name} from Scripture using the EXACT markdown structure below.
 
-CRITICAL: You MUST use proper markdown formatting with # headers (single hash), double line breaks, and proper structure. The output will be rendered as markdown.
+CRITICAL RENDERING RULES (MANDATORY):
+- Use ONLY markdown
+- Use SINGLE # for all section headers
+- INSERT TWO FULL LINE BREAKS AFTER EVERY SECTION
+- INSERT TWO FULL LINE BREAKS AFTER EVERY PARAGRAPH GROUP
+- DO NOT use markdown bullet characters (*, -, •)
+- Use EMOJIS as bullets instead
+- Emojis must start each bullet line
+- No hyphens anywhere
+- No compact spacing
+- Spacing matters more than word count
 
-TEMPLATE TO GENERATE (USE EXACT MARKDOWN SYNTAX):
+The person's name is already shown in the UI. DO NOT include their name as a header.
+
+---
+
+TEMPLATE (FOLLOW EXACTLY):
 
 # 👤 Who ${whoPronoun} Is
 
-(two short paragraphs)
+Write two short paragraphs explaining who this person is.
+
+
 
 
 
 # 📖 Their Role in the Story
 
-(two to three short paragraphs)
+Write two to three short paragraphs explaining what role this person plays in the biblical narrative.
+
+
 
 
 
 # 🔥 Key Moments
 
-🔥 (short sentence)
+🔥 Short sentence describing a key moment.
 
-🔥 (short sentence)
+🔥 Short sentence describing a key moment.
 
-🔥 (short sentence)
+🔥 Short sentence describing a key moment.
 
-🔥 (short sentence)
+🔥 Short sentence describing a key moment.
+
+
 
 
 
 # 📍 Where You Find ${pronoun}
 
-📖 Book Chapter–Chapter
+📖 Book Chapter range
 
-📖 Book Chapter–Chapter
+📖 Book Chapter range
 
-📖 Book Chapter–Chapter
+📖 Book Chapter range
+
+
 
 
 
 # 🌱 Why This Person Matters
 
-(two to three short paragraphs)
+Write two to three short paragraphs explaining why this person is important and what we learn from them.
 
 
 
-MARKDOWN FORMATTING RULES (MANDATORY):
-- Use # for ALL section headers (single hash mark)
-- Use TWO blank lines (double line break) between each section
-- For Key Moments: Use 🔥 emoji prefix on each line (NOT markdown bullets)
-- For Where You Find: Use 📖 emoji prefix on each line (NOT markdown bullets)
-- DO NOT use markdown bullet lists (-, •, *)
-- DO NOT include the person's name in any header
-- Keep paragraphs short
-- Total length ~200–300 words
-- Use emojis in headers exactly as shown
-- Double line breaks between sections
-- Cinematic, clear, Bible-study tone
-- No filler phrases, no meta commentary`;
+
+
+FINAL RULES:
+- Every section must be separated by TWO blank lines
+- Every paragraph block must be separated by TWO blank lines
+- Do not compress content
+- No lists without emojis
+- Keep it cinematic, Bible study focused, and clear`;
 
         const response = await fetch("/api/chat", {
           method: "POST",
