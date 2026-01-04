@@ -234,13 +234,10 @@ export default function ReadingPage() {
             <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
               <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
               <p className="mb-2">
-                These are the books of the Bible.
-              </p>
-              <p className="mb-2">
-                Sixty-six books written over nearly 1,500 years, by dozens of authors, telling one connected story.
+                The Bible is 66 books written over more than 1,500 years, telling one connected story of who God is and how He meets us right where we are.
               </p>
               <p>
-                This is God's Word — and I'm here to make it easier for you to understand.
+                This is just God's Word — and I'm here to help you understand it as you read.
               </p>
             </div>
           </div>
