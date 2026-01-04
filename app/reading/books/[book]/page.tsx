@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { getBookCurrentStep, isChapterUnlocked, isChapterCompleted, getCompletedChapters, getBookTotalChapters, isAdminUser } from "../../../../lib/readingProgress";
@@ -30,8 +30,12 @@ const BOOK_INTROS: Record<string, string> = {
 
 export default function BookPage() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const bookParam = String(params.book);
   const bookKey = bookParam.toLowerCase();
+  
+  // Check if accessed from Open Bible (no locking)
+  const openBibleMode = searchParams.get("open") === "true";
   
   // Get book display name (capitalize first letter of each word)
   const bookDisplayName = bookParam
@@ -164,8 +168,9 @@ export default function BookPage() {
               {visibleChapters.map((chapter) => {
                 // Admin bypass: admin can access all chapters
                 const adminBypass = userEmail && isAdminUser(userEmail);
+                // Open Bible mode: all chapters unlocked (no locking)
                 // Use completedChapters array (already loaded from database)
-                const unlocked = adminBypass || chapter === 1 || completedChapters.includes(chapter - 1) || chapter <= currentChapter;
+                const unlocked = openBibleMode || adminBypass || chapter === 1 || completedChapters.includes(chapter - 1) || chapter <= currentChapter;
                 const done = completedChapters.includes(chapter);
                 const current = chapter === currentChapter && !done;
 
@@ -186,6 +191,8 @@ export default function BookPage() {
                   ? "Finished."
                   : current
                   ? "This is your next chapter."
+                  : openBibleMode
+                  ? "Click to read this chapter."
                   : "Locked until you finish the previous chapter.";
 
                 const content = (
@@ -212,7 +219,10 @@ export default function BookPage() {
                 }
 
                 // All chapters use dynamic route
-                const href = `/Bible/${bookKey}/${chapter}`;
+                // Preserve open Bible mode in chapter links
+                const href = openBibleMode 
+                  ? `/Bible/${bookKey}/${chapter}?open=true`
+                  : `/Bible/${bookKey}/${chapter}`;
 
                 return (
                   <Link
