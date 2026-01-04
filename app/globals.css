@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+/* Bible highlight styles */
+.bible-highlight {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cfcfcf;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.bible-highlight:hover {
+  background-color: #f5f5f5;
+}
+
 /* ✅ Global colors */
 :root {
   /* background = the light color from your screenshot */

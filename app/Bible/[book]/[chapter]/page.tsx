@@ -10,6 +10,7 @@ import confetti from "canvas-confetti";
 import { getFeaturedCharactersForMatthew, FeaturedCharacter } from "../../../../lib/featuredCharacters";
 import { FeaturedCharacterModal } from "../../../../components/FeaturedCharacterModal";
 import { useFeaturedCharacters } from "../../../../hooks/useFeaturedCharacters";
+import { useBibleHighlights, HighlightTerm } from "../../../../hooks/useBibleHighlights";
 
 type Verse = {
   num: number;
@@ -65,6 +66,10 @@ export default function BibleChapterPage() {
   const [featuredCharacters, setFeaturedCharacters] = useState<FeaturedCharacter[]>([]);
   const [selectedCharacter, setSelectedCharacter] = useState<FeaturedCharacter | null>(null);
   const verseContainerRef = useRef<HTMLDivElement>(null);
+  
+  // Bible highlights
+  const { highlightTerms, loading: highlightsLoading } = useBibleHighlights();
+  const highlightsProcessedRef = useRef(false);
 
   // Normalize book name for API (e.g., "1 Samuel" -> "1samuel", "Matthew" -> "matthew")
   function normalizeBookName(bookName: string): string {
@@ -90,6 +95,140 @@ export default function BibleChapterPage() {
     ];
   }
 
+  // Apply highlights to verse text after rendering
+  useEffect(() => {
+    if (!verseContainerRef.current || highlightsLoading || !highlightTerms.length || highlightsProcessedRef.current) {
+      return;
+    }
+
+    const container = verseContainerRef.current;
+    
+    // Find all verse paragraphs (but not verse number spans)
+    const verseParagraphs = container.querySelectorAll('p.leading-relaxed');
+    
+    if (verseParagraphs.length === 0) {
+      return;
+    }
+
+    // Sort terms by length (longest first) to match multi-word terms before single words
+    const sortedTerms = [...highlightTerms].sort((a, b) => b.term.length - a.term.length);
+
+    verseParagraphs.forEach((paragraph) => {
+      // Get all text nodes in this paragraph (excluding verse number span)
+      const walker = document.createTreeWalker(
+        paragraph,
+        NodeFilter.SHOW_TEXT,
+        {
+          acceptNode: (node) => {
+            // Skip text nodes inside verse number spans or existing highlights
+            const parent = node.parentElement;
+            if (!parent) return NodeFilter.FILTER_REJECT;
+            if (parent.classList.contains('inline-flex')) return NodeFilter.FILTER_REJECT; // verse number
+            if (parent.classList.contains('bible-highlight')) return NodeFilter.FILTER_REJECT;
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        }
+      );
+
+      const textNodes: Text[] = [];
+      let node: Node | null;
+      while ((node = walker.nextNode())) {
+        textNodes.push(node as Text);
+      }
+
+      textNodes.forEach((textNode) => {
+        let text = textNode.textContent || '';
+        let replaced = false;
+
+        // Process each term
+        for (const term of sortedTerms) {
+          // Create regex for whole-word matching (case-insensitive)
+          const regex = new RegExp(`\\b${term.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+          
+          if (regex.test(text)) {
+            // Split text and wrap matches
+            const parts: (string | HTMLElement)[] = [];
+            let lastIndex = 0;
+            regex.lastIndex = 0; // Reset regex
+            let match: RegExpExecArray | null;
+            
+            while ((match = regex.exec(text)) !== null) {
+              // Add text before match
+              if (match.index > lastIndex) {
+                parts.push(text.substring(lastIndex, match.index));
+              }
+              
+              // Create highlight span
+              const span = document.createElement('span');
+              span.className = `bible-highlight bible-highlight-${term.type}`;
+              span.setAttribute('data-type', term.type);
+              span.setAttribute('data-term', term.term);
+              span.textContent = match[0];
+              span.style.cursor = 'pointer';
+              parts.push(span);
+              
+              lastIndex = match.index + match[0].length;
+            }
+            
+            // Add remaining text
+            if (lastIndex < text.length) {
+              parts.push(text.substring(lastIndex));
+            }
+            
+            // Replace text node with fragments
+            if (parts.length > 1) {
+              const fragment = document.createDocumentFragment();
+              parts.forEach((part) => {
+                if (typeof part === 'string') {
+                  fragment.appendChild(document.createTextNode(part));
+                } else {
+                  fragment.appendChild(part);
+                }
+              });
+              
+              textNode.parentNode?.replaceChild(fragment, textNode);
+              replaced = true;
+              break; // Only process first match to avoid overlapping
+            }
+          }
+        }
+      });
+    });
+
+    // Add click handlers to all highlights
+    const highlights = container.querySelectorAll('.bible-highlight');
+    const clickHandler = (e: Event) => {
+      const target = e.currentTarget as HTMLElement;
+      const term = target.getAttribute('data-term');
+      const type = target.getAttribute('data-type');
+      
+      if (!term || !type) return;
+      
+      // Navigate to appropriate page with term in URL
+      if (type === 'person') {
+        router.push(`/people-in-the-bible?term=${encodeURIComponent(term)}`);
+      } else if (type === 'place') {
+        router.push(`/places-in-the-bible?term=${encodeURIComponent(term)}`);
+      } else if (type === 'keyword') {
+        router.push(`/keywords-in-the-bible?term=${encodeURIComponent(term)}`);
+      }
+    };
+
+    highlights.forEach((highlight) => {
+      highlight.addEventListener('click', clickHandler);
+    });
+
+    highlightsProcessedRef.current = true;
+
+    // Cleanup function
+    return () => {
+      highlights.forEach((highlight) => {
+        highlight.removeEventListener('click', clickHandler);
+      });
+    };
+  }, [sections, highlightTerms, highlightsLoading, router]);
+
+
   useEffect(() => {
     async function loadChapter() {
       // Prevent double execution in React Strict Mode
@@ -97,6 +236,7 @@ export default function BibleChapterPage() {
         return;
       }
       loadingRef.current = true;
+      highlightsProcessedRef.current = false; // Reset highlight processing when chapter changes
 
       try {
         setLoading(true);
