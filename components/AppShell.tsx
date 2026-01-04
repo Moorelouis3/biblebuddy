@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { ChatLouis } from "./ChatLouis";
 
@@ -14,6 +14,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const profileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const getSession = async () => {
@@ -40,10 +42,45 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   const isBarePage = HIDDEN_ROUTES.includes(pathname ?? "/");
 
+  const isAdmin = isLoggedIn && userEmail === "moorelouis3@gmail.com";
+
   async function handleLogout() {
     await supabase.auth.signOut();
     router.push("/login");
   }
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        profileMenuRef.current &&
+        !profileMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsProfileMenuOpen(false);
+      }
+    }
+
+    if (isProfileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+  }, [isProfileMenuOpen]);
+
+  // Close dropdown on Escape key
+  useEffect(() => {
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key === "Escape" && isProfileMenuOpen) {
+        setIsProfileMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isProfileMenuOpen]);
 
   return (
     <>
@@ -58,68 +95,106 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               Bible Buddy
             </Link>
 
-            <nav className="flex items-center gap-3 text-xs sm:text-sm">
-              {/* HOME LINK */}
-              <Link
-                href="/dashboard"
-                className={`px-3 py-1 rounded-full ${
-                  pathname?.startsWith("/dashboard")
-                    ? "bg-sky-100 text-black"
-                    : "text-black hover:bg-gray-100"
-                }`}
-              >
-                Home
-              </Link>
-
-              {/* HOW TO USE BIBLEBUDDY LINK */}
-              <Link
-                href="/lessons"
-                className={`px-3 py-1 rounded-full ${
-                  pathname?.startsWith("/lessons")
-                    ? "bg-sky-100 text-black"
-                    : "text-black hover:bg-gray-100"
-                }`}
-              >
-                How to Use BibleBuddy
-              </Link>
-
-              {/* SETTINGS LINK */}
-              <Link
-                href="/settings"
-                className={`px-3 py-1 rounded-full ${
-                  pathname?.startsWith("/settings")
-                    ? "bg-sky-100 text-black"
-                    : "text-black hover:bg-gray-100"
-                }`}
-              >
-                Settings
-              </Link>
-
-              {/* 🔥 ADMIN-ONLY ANALYTICS BUTTON */}
-              {isLoggedIn && userEmail === "moorelouis3@gmail.com" && (
-                <Link
-                  href="admin/analytics"
-                  className={`px-3 py-1 rounded-full ${
-                    pathname?.startsWith("/analytics")
-                      ? "bg-sky-100 text-black"
-                      : "text-black hover:bg-gray-100"
-                  }`}
-                >
-                  Analytics
-                </Link>
-              )}
-
-              {/* LOGOUT */}
-              {isLoggedIn && (
+            {/* PROFILE DROPDOWN MENU */}
+            {isLoggedIn && (
+              <div className="relative" ref={profileMenuRef}>
                 <button
                   type="button"
-                  onClick={handleLogout}
-                  className="ml-1 px-3 py-1 rounded-full border border-gray-300 text-black hover:bg-gray-100"
+                  onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
+                  className="flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors"
+                  aria-label="Profile menu"
+                  aria-expanded={isProfileMenuOpen}
                 >
-                  Logout
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    />
+                  </svg>
                 </button>
-              )}
-            </nav>
+
+                {/* DROPDOWN MENU */}
+                {isProfileMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
+                    {/* HOME */}
+                    <Link
+                      href="/dashboard"
+                      onClick={() => setIsProfileMenuOpen(false)}
+                      className={`block px-4 py-2 text-sm ${
+                        pathname?.startsWith("/dashboard")
+                          ? "bg-sky-100 text-black font-medium"
+                          : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      Home
+                    </Link>
+
+                    {/* HOW TO USE BIBLEBUDDY */}
+                    <Link
+                      href="/lessons"
+                      onClick={() => setIsProfileMenuOpen(false)}
+                      className={`block px-4 py-2 text-sm ${
+                        pathname?.startsWith("/lessons")
+                          ? "bg-sky-100 text-black font-medium"
+                          : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      How to Use BibleBuddy
+                    </Link>
+
+                    {/* SETTINGS */}
+                    <Link
+                      href="/settings"
+                      onClick={() => setIsProfileMenuOpen(false)}
+                      className={`block px-4 py-2 text-sm ${
+                        pathname?.startsWith("/settings")
+                          ? "bg-sky-100 text-black font-medium"
+                          : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      Settings
+                    </Link>
+
+                    {/* ANALYTICS (ADMIN ONLY) */}
+                    {isAdmin && (
+                      <Link
+                        href="/admin/analytics"
+                        onClick={() => setIsProfileMenuOpen(false)}
+                        className={`block px-4 py-2 text-sm ${
+                          pathname?.startsWith("/admin/analytics")
+                            ? "bg-sky-100 text-black font-medium"
+                            : "text-gray-700 hover:bg-gray-100"
+                        }`}
+                      >
+                        Analytics
+                      </Link>
+                    )}
+
+                    {/* DIVIDER */}
+                    <div className="border-t border-gray-200 my-1" />
+
+                    {/* LOGOUT */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                        handleLogout();
+                      }}
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </header>
       )}
