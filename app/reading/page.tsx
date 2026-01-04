@@ -243,22 +243,14 @@ export default function ReadingPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-2">
               {visibleBooks.map((book) => {
-                const isComplete = bookStates[book]?.complete ?? false;
-                const isActive = currentActiveBook === book;
-
                 const baseClasses =
                   "relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm";
 
                 // All books are always unlocked - no locking behavior
                 const href = `/reading/books/${encodeURIComponent(book.toLowerCase())}`;
 
-                // Determine styling: active = orange, complete = blue, default = white
-                let cardClasses = "bg-white border-blue-200";
-                if (isActive) {
-                  cardClasses = "bg-orange-100 border-orange-300 pulse-active-book";
-                } else if (isComplete) {
-                  cardClasses = "bg-blue-100 border-blue-300";
-                }
+                // All book cards use the same light gray styling
+                const cardClasses = "bg-gray-100 border-gray-300";
 
                 return (
                   <Link
@@ -268,13 +260,7 @@ export default function ReadingPage() {
                   >
                     <p className="font-semibold">{book}</p>
                     <p className="text-[11px] mt-1">
-                      {isActive
-                        ? book === "Matthew"
-                          ? "Start here with Jesus. This is your first path."
-                          : "This is your current book."
-                        : isComplete
-                        ? "Completed. You've finished this book."
-                        : "Click to read this book."}
+                      Click to read this book.
                     </p>
                   </Link>
                 );
