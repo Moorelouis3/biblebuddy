@@ -70,6 +70,8 @@ export function ChatLouis() {
   const animationFrameRef = useRef<number | null>(null);
   const [audioLevels, setAudioLevels] = useState<number[]>([]);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const transcriptAccumulatorRef = useRef<string>("");
+  const lastResultIndexRef = useRef<number>(0);
 
   // Format voice text with paragraph breaks
   function formatVoiceText(text: string, prevText: string): string {
@@ -103,14 +105,38 @@ export function ChatLouis() {
     }
 
     const recognition = new SpeechRecognition();
-    recognition.continuous = false;
-    recognition.interimResults = false;
+    recognition.continuous = true; // Keep listening until stopped
+    recognition.interimResults = true; // Show interim results as user speaks
     recognition.lang = "en-US";
 
     recognition.onresult = (event: SpeechRecognitionEvent) => {
-      const transcript = event.results[0][0].transcript;
-      setInput((prev) => formatVoiceText(transcript, prev));
-      setIsListening(false);
+      let newTranscript = "";
+      
+      // Collect all new results since last update
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const result = event.results[i];
+        const transcript = result[0].transcript;
+        newTranscript += transcript;
+        
+        // If this is a final result, mark it
+        if (result.isFinal) {
+          lastResultIndexRef.current = i + 1;
+        }
+      }
+      
+      // Only update if we have new transcript text
+      if (newTranscript.trim()) {
+        setInput((prev) => {
+          // Get the base text (everything before the current interim result)
+          const baseText = transcriptAccumulatorRef.current;
+          
+          // Add the new transcript
+          transcriptAccumulatorRef.current = baseText + newTranscript;
+          
+          // Format the accumulated text
+          return formatVoiceText(transcriptAccumulatorRef.current, "");
+        });
+      }
     };
 
     recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
@@ -120,7 +146,17 @@ export function ChatLouis() {
     };
 
     recognition.onend = () => {
-      setIsListening(false);
+      // With continuous=true, onend fires when recognition stops
+      // Only stop if user explicitly stopped (not if recognition ended automatically)
+      if (isListening) {
+        // Restart if still listening (handles automatic stops in continuous mode)
+        try {
+          recognition.start();
+        } catch (err) {
+          // Silently handle restart errors (might already be starting)
+          setIsListening(false);
+        }
+      }
     };
 
     recognitionRef.current = recognition;
@@ -273,7 +309,15 @@ export function ChatLouis() {
   }, [input]);
 
   function toggleListening() {
-    setIsListening((prev) => !prev);
+    setIsListening((prev) => {
+      const newState = !prev;
+      if (!newState) {
+        // Reset accumulator when stopping
+        transcriptAccumulatorRef.current = "";
+        lastResultIndexRef.current = 0;
+      }
+      return newState;
+    });
   }
 
   async function handleSend() {
