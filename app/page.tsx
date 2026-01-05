@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { FormEvent, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
@@ -114,20 +113,6 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      {/* TOP BANNER IMAGE */}
-      <div className="w-full flex justify-center pb-8 md:pb-12">
-        <div className="w-full max-w-6xl px-4">
-          <Image
-            src="/landing-banner.png"
-            alt="Bible Buddy community"
-            width={1200}
-            height={400}
-            className="w-full h-auto rounded-lg"
-            priority
-          />
-        </div>
-      </div>
-
       {/* TOP BAR / HEADER */}
       <header className="w-full max-w-6xl mx-auto flex items-center justify-between px-4 py-4 md:py-6">
         <div className="text-2xl font-bold text-sky-600 tracking-tight">
