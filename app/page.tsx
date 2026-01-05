@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { FormEvent, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
@@ -113,6 +114,20 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
+      {/* TOP BANNER IMAGE */}
+      <div className="w-full flex justify-center pb-8 md:pb-12">
+        <div className="w-full max-w-6xl px-4">
+          <Image
+            src="/landing-banner.png"
+            alt="Bible Buddy community"
+            width={1200}
+            height={400}
+            className="w-full h-auto rounded-lg"
+            priority
+          />
+        </div>
+      </div>
+
       {/* TOP BAR / HEADER */}
       <header className="w-full max-w-6xl mx-auto flex items-center justify-between px-4 py-4 md:py-6">
         <div className="text-2xl font-bold text-sky-600 tracking-tight">
@@ -137,6 +152,23 @@ export default function LandingPage() {
           <p className="text-lg md:text-xl text-gray-600 text-center mb-8 max-w-3xl mx-auto">
             Join over 100 people who have already started using this free Bible study app built to help you move past surface-level reading and actually understand Scripture.
           </p>
+
+          {/* Word-Art Style CTA Text */}
+          <div className="max-w-md mx-auto mb-6">
+            <p className="text-2xl md:text-3xl font-bold text-center tracking-wide text-gray-900">
+              Create your free account here
+            </p>
+          </div>
+
+          {/* Login Button */}
+          <div className="max-w-md mx-auto mb-4 text-center">
+            <Link
+              href="/login"
+              className="inline-block rounded-full border border-gray-300 text-gray-700 text-sm font-semibold px-6 py-2.5 bg-white hover:bg-gray-50 transition"
+            >
+              Log In
+            </Link>
+          </div>
 
           {/* Signup Form */}
           <div className="max-w-md mx-auto mb-16">
