@@ -456,6 +456,44 @@ export default function PeopleInTheBiblePage() {
     return grouped;
   }, [people]);
 
+  // Load user ID and completion state
+  useEffect(() => {
+    async function loadUserAndProgress() {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+          setLoadingProgress(false);
+          return;
+        }
+
+        setUserId(user.id);
+
+        // Fetch all completed people for this user (batch query)
+        const { data, error } = await supabase
+          .from("people_progress")
+          .select("person_name")
+          .eq("user_id", user.id);
+
+        if (error) {
+          console.error("Error loading people progress:", error);
+        } else {
+          const completedSet = new Set<string>();
+          data?.forEach((row) => {
+            // Store normalized name (lowercase, trimmed) for matching
+            completedSet.add(row.person_name.toLowerCase().trim());
+          });
+          setCompletedPeople(completedSet);
+        }
+      } catch (err) {
+        console.error("Error loading user:", err);
+      } finally {
+        setLoadingProgress(false);
+      }
+    }
+
+    loadUserAndProgress();
+  }, []);
+
   // Generate notes when a person is selected
   useEffect(() => {
     async function generateNotes() {
