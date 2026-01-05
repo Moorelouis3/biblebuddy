@@ -77,6 +77,10 @@ export default function PlacesInTheBiblePage() {
   const [placeNotes, setPlaceNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
   const [notesError, setNotesError] = useState<string | null>(null);
+  const [completedPlaces, setCompletedPlaces] = useState<Set<string>>(new Set());
+  const [loadingProgress, setLoadingProgress] = useState(true);
+  const [showResetModal, setShowResetModal] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
 
   // Filter and sort places
   const filteredPlaces = useMemo(() => {
@@ -348,8 +352,8 @@ RULES:
       {/* MAIN CONTENT */}
       <main className="max-w-5xl mx-auto px-4 mt-6">
         <div className="bg-white rounded-3xl shadow-sm border border-gray-200 p-4 sm:p-6 md:p-8">
-          {/* SEARCH BAR */}
-          <div className="mb-6">
+          {/* SEARCH BAR AND RESET BUTTON */}
+          <div className="mb-6 flex gap-3 items-center">
             <input
               type="text"
               placeholder="Search for a place..."
@@ -358,8 +362,15 @@ RULES:
                 setSearchQuery(e.target.value);
                 setSelectedLetter(null); // Clear letter filter when searching
               }}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+            <button
+              type="button"
+              onClick={() => setShowResetModal(true)}
+              className="px-3 py-2 text-sm text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
+            >
+              Reset
+            </button>
           </div>
 
           <div className="flex gap-6">
@@ -413,16 +424,25 @@ RULES:
                     <div id={`letter-${selectedLetter}`}>
                       <h2 className="text-xl font-semibold mb-4">{selectedLetter}</h2>
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                        {filteredPlaces.map((place) => (
-                          <button
-                            key={place.id}
-                            type="button"
-                            onClick={() => setSelectedPlace(place)}
-                            className="text-left px-3 py-2 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition text-sm"
-                          >
-                            {place.name}
-                          </button>
-                        ))}
+                        {filteredPlaces.map((place) => {
+                          // Normalize place name for matching (same as database: lowercase, spaces to underscores)
+                          const placeKey = place.name.toLowerCase().trim().replace(/\s+/g, "_");
+                          const isCompleted = completedPlaces.has(placeKey);
+                          return (
+                            <button
+                              key={place.id}
+                              type="button"
+                              onClick={() => setSelectedPlace(place)}
+                              className={`text-left px-3 py-2 border rounded-lg transition text-sm ${
+                                isCompleted
+                                  ? "bg-green-50 border-green-300 hover:bg-green-100"
+                                  : "border-gray-200 hover:bg-blue-50 hover:border-blue-300"
+                              }`}
+                            >
+                              {place.name}
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
                   ) : (
@@ -438,16 +458,25 @@ RULES:
                         <div key={letter} id={`letter-${letter}`}>
                           <h2 className="text-xl font-semibold mb-4">{letter}</h2>
                           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                            {letterPlaces.map((place) => (
-                              <button
-                                key={place.id}
-                                type="button"
-                                onClick={() => setSelectedPlace(place)}
-                                className="text-left px-3 py-2 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition text-sm"
-                              >
-                                {place.name}
-                              </button>
-                            ))}
+                            {letterPlaces.map((place) => {
+                              // Normalize place name for matching (same as database: lowercase, spaces to underscores)
+                              const placeKey = place.name.toLowerCase().trim().replace(/\s+/g, "_");
+                              const isCompleted = completedPlaces.has(placeKey);
+                              return (
+                                <button
+                                  key={place.id}
+                                  type="button"
+                                  onClick={() => setSelectedPlace(place)}
+                                  className={`text-left px-3 py-2 border rounded-lg transition text-sm ${
+                                    isCompleted
+                                      ? "bg-green-50 border-green-300 hover:bg-green-100"
+                                      : "border-gray-200 hover:bg-blue-50 hover:border-blue-300"
+                                  }`}
+                                >
+                                  {place.name}
+                                </button>
+                              );
+                            })}
                           </div>
                         </div>
                       );
@@ -503,12 +532,138 @@ RULES:
                 >
                   {normalizePlaceMarkdown(placeNotes)}
                 </ReactMarkdown>
+
+                {/* MARK AS FINISHED BUTTON */}
+                {userId && (
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    {(() => {
+                      // Normalize place name (same as database: lowercase, spaces to underscores)
+                      const placeKey = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
+                      const isCompleted = completedPlaces.has(placeKey);
+                      return (
+                        <button
+                          type="button"
+                          onClick={async (e) => {
+                            // Prevent event from bubbling up
+                            e.stopPropagation();
+                            e.preventDefault();
+
+                            if (!userId) return;
+
+                            const placeNameKey = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
+
+                            if (isCompleted) {
+                              // Already completed - do nothing or allow unmarking if needed
+                              return;
+                            }
+
+                            try {
+                              // Insert completion
+                              const { error } = await supabase
+                                .from("places_progress")
+                                .upsert(
+                                  {
+                                    user_id: userId,
+                                    place_name: placeNameKey,
+                                  },
+                                  {
+                                    onConflict: "user_id,place_name",
+                                  }
+                                );
+
+                              if (error) {
+                                console.error("Error marking place as finished:", error);
+                                alert("Failed to mark as finished. Please try again.");
+                              } else {
+                                // Update local state
+                                setCompletedPlaces((prev) => {
+                                  const next = new Set(prev);
+                                  next.add(placeNameKey);
+                                  return next;
+                                });
+                                // Close the modal after marking as finished
+                                setSelectedPlace(null);
+                                setPlaceNotes(null);
+                                setNotesError(null);
+                              }
+                            } catch (err) {
+                              console.error("Error marking place as finished:", err);
+                              alert("Failed to mark as finished. Please try again.");
+                            }
+                          }}
+                          disabled={isCompleted}
+                          className={`w-full px-6 py-3 rounded-lg font-medium transition ${
+                            isCompleted
+                              ? "bg-green-100 text-green-700 cursor-not-allowed"
+                              : "bg-blue-600 text-white hover:bg-blue-700"
+                          }`}
+                        >
+                          {isCompleted
+                            ? `✓ ${selectedPlace.name} marked as finished`
+                            : `Mark ${selectedPlace.name} as finished`}
+                        </button>
+                      );
+                    })()}
+                  </div>
+                )}
               </div>
             ) : (
               <div className="text-center py-12 text-gray-500">
                 No notes available yet.
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* RESET CONFIRMATION MODAL */}
+      {showResetModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4">
+          <div className="relative w-full max-w-md rounded-2xl bg-white border border-gray-200 shadow-2xl p-6">
+            <h3 className="text-xl font-bold mb-4">Reset Progress</h3>
+            <p className="text-gray-700 mb-6">
+              Are you sure you want to reset your Places in the Bible progress? This will remove all completion marks and cannot be undone.
+            </p>
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={() => setShowResetModal(false)}
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={async () => {
+                  if (!userId) {
+                    setShowResetModal(false);
+                    return;
+                  }
+
+                  try {
+                    const { error } = await supabase
+                      .from("places_progress")
+                      .delete()
+                      .eq("user_id", userId);
+
+                    if (error) {
+                      console.error("Error resetting progress:", error);
+                      alert("Failed to reset progress. Please try again.");
+                    } else {
+                      // Clear local state
+                      setCompletedPlaces(new Set());
+                      setShowResetModal(false);
+                    }
+                  } catch (err) {
+                    console.error("Error resetting progress:", err);
+                    alert("Failed to reset progress. Please try again.");
+                  }
+                }}
+                className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+              >
+                Reset
+              </button>
+            </div>
           </div>
         </div>
       )}
