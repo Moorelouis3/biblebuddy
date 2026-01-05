@@ -932,7 +932,7 @@ FINAL RULES:
                         <button
                           type="button"
                           onClick={async (e) => {
-                            // Prevent event from bubbling up and potentially closing the modal
+                            // Prevent event from bubbling up
                             e.stopPropagation();
                             e.preventDefault();
 
@@ -969,7 +969,10 @@ FINAL RULES:
                                   next.add(personNameKey);
                                   return next;
                                 });
-                                // Modal stays open - do NOT call setSelectedPerson(null)
+                                // Close the modal after marking as finished
+                                setSelectedPerson(null);
+                                setPersonNotes(null);
+                                setNotesError(null);
                               }
                             } catch (err) {
                               console.error("Error marking person as finished:", err);
