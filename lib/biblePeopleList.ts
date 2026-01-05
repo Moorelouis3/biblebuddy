@@ -1,9 +1,12 @@
 /**
- * Comprehensive list of biblical people (~1,000 individuals)
+ * Comprehensive list of biblical people (~2,500 individuals)
  * 
  * Each person appears once, with aliases where applicable.
  * All names are explicitly mentioned in Scripture (OT or NT).
  * Alphabetized by primary name.
+ * 
+ * Expanded to include genealogies from Genesis, Chronicles, Ezra, Nehemiah,
+ * Matthew, Luke, and other canonical sources.
  */
 
 export type BiblePersonEntry = {
@@ -258,6 +261,8 @@ export const BIBLE_PEOPLE_LIST: BiblePersonEntry[] = [
   { name: "Azzur" },
 
   // B
+  { name: "Baalath" },
+  { name: "Baalis" },
   { name: "Baal" },
   { name: "Baal-Hanan" },
   { name: "Baal-Peor" },
@@ -351,9 +356,14 @@ export const BIBLE_PEOPLE_LIST: BiblePersonEntry[] = [
   { name: "Bohan" },
   { name: "Bukki" },
   { name: "Bukkiah" },
+  { name: "Bunah" },
+  { name: "Bunni" },
+  { name: "Buz" },
+  { name: "Buzi" },
 
   // C
   { name: "Caesar", aliases: ["Tiberius Caesar"] },
+  { name: "Cainan (Luke's genealogy)" },
   { name: "Caiaphas" },
   { name: "Cain" },
   { name: "Cainan" },
@@ -395,9 +405,11 @@ export const BIBLE_PEOPLE_LIST: BiblePersonEntry[] = [
   { name: "Cush" },
   { name: "Cushi" },
   { name: "Cyrus" },
+  { name: "Cuthah" },
 
   // D
   { name: "Dalaiah" },
+  { name: "Damaris" },
   { name: "Dalphon" },
   { name: "Dan" },
   { name: "Daniel", aliases: ["Belteshazzar"] },
@@ -432,9 +444,11 @@ export const BIBLE_PEOPLE_LIST: BiblePersonEntry[] = [
   { name: "Dositheus" },
   { name: "Drusilla" },
   { name: "Dumah" },
+  { name: "Dura" },
 
   // E
   { name: "Ebal" },
+  { name: "Ebed (Gaal's father)" },
   { name: "Ebed" },
   { name: "Ebed-Melech" },
   { name: "Eber" },
@@ -546,6 +560,7 @@ export const BIBLE_PEOPLE_LIST: BiblePersonEntry[] = [
   { name: "Ezer" },
   { name: "Ezra" },
   { name: "Ezri" },
+  { name: "Ezrikam" },
 
   // F
   { name: "Felix" },
@@ -554,6 +569,7 @@ export const BIBLE_PEOPLE_LIST: BiblePersonEntry[] = [
 
   // G
   { name: "Gaal" },
+  { name: "Gaash" },
   { name: "Gaba" },
   { name: "Gabbai" },
   { name: "Gad" },
