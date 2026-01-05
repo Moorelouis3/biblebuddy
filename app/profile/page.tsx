@@ -1,51 +1,72 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { supabase } from "../../lib/supabaseClient";
+import {
+  getProfileStats,
+  getHeatMapData,
+  calculateStreakFromActions,
+  getDayAbbr,
+  type ProfileStats,
+  type HeatMapDay,
+  type StreakData,
+} from "../../lib/profileStats";
+import { getTotalCompletedChapters } from "../../lib/readingProgress";
 
 export default function ProfilePage() {
-  // Mock data for UI only
-  const stats = {
-    totalActions: 247,
-    booksCompleted: 12,
-    chaptersRead: 342,
-    bibleCompletion: 28.7,
-    notesCreated: 89,
-    peopleLearnedAbout: 45,
-    placesDiscovered: 23,
-    keywordsMastered: 67,
-  };
+  const [userId, setUserId] = useState<string | null>(null);
+  const [stats, setStats] = useState<ProfileStats | null>(null);
+  const [heatMapData, setHeatMapData] = useState<HeatMapDay[]>([]);
+  const [streak, setStreak] = useState<StreakData | null>(null);
+  const [booksCompleted, setBooksCompleted] = useState(0);
+  const [bibleCompletion, setBibleCompletion] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-  const streak = {
-    currentStreak: 6,
-    days: [
-      { day: "Mon", completed: true },
-      { day: "Tue", completed: true },
-      { day: "Wed", completed: true },
-      { day: "Thu", completed: true },
-      { day: "Fri", completed: true },
-      { day: "Sat", completed: true },
-      { day: "Sun", completed: false },
-    ],
-  };
+  // Load user and all profile data
+  useEffect(() => {
+    async function loadProfileData() {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+          setLoading(false);
+          return;
+        }
 
-  // Mock heat map data (last 90 days)
-  const generateHeatMapData = () => {
-    const data = [];
-    const today = new Date();
-    for (let i = 89; i >= 0; i--) {
-      const date = new Date(today);
-      date.setDate(date.getDate() - i);
-      // Random mock data: 0-6 actions per day
-      const actions = Math.floor(Math.random() * 7);
-      data.push({
-        date: date.toISOString().slice(0, 10),
-        actions,
-      });
+        setUserId(user.id);
+
+        // Load profile stats
+        const profileStats = await getProfileStats(user.id);
+        setStats(profileStats);
+
+        // Load heat map data
+        const heatMap = await getHeatMapData(user.id);
+        setHeatMapData(heatMap);
+
+        // Load streak data
+        const streakData = await calculateStreakFromActions(user.id);
+        setStreak(streakData);
+
+        // Calculate books completed and Bible completion
+        const totalChapters = await getTotalCompletedChapters(user.id);
+        const totalBibleChapters = 1189;
+        const completionPercent = totalChapters > 0
+          ? Math.round((totalChapters / totalBibleChapters) * 100 * 10) / 10
+          : 0;
+
+        // For books completed, we'd need to query completed_chapters and count unique books
+        // For now, using a simplified calculation (approximate)
+        const estimatedBooks = Math.floor(totalChapters / 20); // Rough estimate
+        setBooksCompleted(estimatedBooks);
+        setBibleCompletion(completionPercent);
+      } catch (err) {
+        console.error("Error loading profile data:", err);
+      } finally {
+        setLoading(false);
+      }
     }
-    return data;
-  };
 
-  const [heatMapData] = useState(generateHeatMapData());
+    loadProfileData();
+  }, []);
 
   const getHeatMapColor = (actions: number) => {
     if (actions === 0) return "bg-gray-100";
@@ -53,6 +74,33 @@ export default function ProfilePage() {
     if (actions >= 2 && actions <= 3) return "bg-green-400";
     if (actions >= 4 && actions <= 5) return "bg-green-600";
     return "bg-green-800";
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 pb-12">
+        <div className="max-w-5xl mx-auto px-4 py-8">
+          <div className="text-center py-12 text-gray-500">Loading profile...</div>
+        </div>
+      </div>
+    );
+  }
+
+  // Use real data or defaults
+  const displayStats = stats || {
+    total_actions: 0,
+    chapters_completed_count: 0,
+    notes_created_count: 0,
+    people_learned_count: 0,
+    places_discovered_count: 0,
+    keywords_mastered_count: 0,
+    last_active_date: null,
+    current_streak: 0,
+  };
+
+  const displayStreak = streak || {
+    currentStreak: 0,
+    last7Days: [],
   };
 
   return (
@@ -82,60 +130,70 @@ export default function ProfilePage() {
         <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
           <div className="mb-4">
             <h2 className="text-xl font-semibold mb-1">
-              {streak.currentStreak} day streak
+              {displayStreak.currentStreak} day streak
             </h2>
             <p className="text-sm text-gray-600">
-              Read today to extend your streak
+              {displayStreak.currentStreak === 0
+                ? "Start a streak by reading today"
+                : "Read today to extend your streak"}
             </p>
           </div>
 
           {/* Day Indicators */}
-          <div className="flex items-center gap-3">
-            {streak.days.map((dayItem, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <div className="text-xs text-gray-500 mb-2">{dayItem.day}</div>
-                <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                    dayItem.completed
-                      ? "bg-green-500 text-white"
-                      : index === streak.days.length - 1
-                      ? "bg-blue-100 text-blue-600 border-2 border-blue-300"
-                      : "bg-gray-200 text-gray-400"
-                  }`}
-                >
-                  {dayItem.completed ? (
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  ) : index === streak.days.length - 1 ? (
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 4v16m8-8H4"
-                      />
-                    </svg>
-                  ) : null}
+          {displayStreak.last7Days.length > 0 ? (
+            <div className="flex items-center gap-3">
+              {displayStreak.last7Days.map((dayItem, index) => (
+                <div key={dayItem.date} className="flex flex-col items-center">
+                  <div className="text-xs text-gray-500 mb-2">
+                    {getDayAbbr(dayItem.date)}
+                  </div>
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                      dayItem.completed
+                        ? "bg-green-500 text-white"
+                        : index === displayStreak.last7Days.length - 1
+                        ? "bg-blue-100 text-blue-600 border-2 border-blue-300"
+                        : "bg-gray-200 text-gray-400"
+                    }`}
+                  >
+                    {dayItem.completed ? (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    ) : index === displayStreak.last7Days.length - 1 ? (
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 4v16m8-8H4"
+                        />
+                      </svg>
+                    ) : null}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-sm text-gray-500 text-center py-2">
+              No streak data available
+            </div>
+          )}
         </div>
 
         {/* DAILY ACTIVITY HEAT MAP */}
@@ -179,25 +237,25 @@ export default function ProfilePage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           {/* Total Actions */}
           <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.totalActions}</div>
+            <div className="text-2xl font-bold mb-1">{displayStats.total_actions}</div>
             <div className="text-sm text-gray-700">Total Actions</div>
           </div>
 
           {/* Books Completed */}
           <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.booksCompleted}</div>
+            <div className="text-2xl font-bold mb-1">{booksCompleted}</div>
             <div className="text-sm text-gray-700">Books Completed</div>
           </div>
 
           {/* Chapters Read */}
           <div className="bg-green-100 border border-green-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.chaptersRead}</div>
+            <div className="text-2xl font-bold mb-1">{displayStats.chapters_completed_count}</div>
             <div className="text-sm text-gray-700">Chapters Read</div>
           </div>
 
           {/* Bible Completion */}
           <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.bibleCompletion}%</div>
+            <div className="text-2xl font-bold mb-1">{bibleCompletion}%</div>
             <div className="text-sm text-gray-700">Bible Completion</div>
           </div>
         </div>
@@ -206,25 +264,25 @@ export default function ProfilePage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Notes Created */}
           <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.notesCreated}</div>
+            <div className="text-2xl font-bold mb-1">{displayStats.notes_created_count}</div>
             <div className="text-sm text-gray-700">Notes Created</div>
           </div>
 
           {/* People Learned About */}
           <div className="bg-pink-100 border border-pink-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.peopleLearnedAbout}</div>
+            <div className="text-2xl font-bold mb-1">{displayStats.people_learned_count}</div>
             <div className="text-sm text-gray-700">People Learned About</div>
           </div>
 
           {/* Places Discovered */}
           <div className="bg-cyan-100 border border-cyan-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.placesDiscovered}</div>
+            <div className="text-2xl font-bold mb-1">{displayStats.places_discovered_count}</div>
             <div className="text-sm text-gray-700">Places Discovered</div>
           </div>
 
           {/* Keywords Mastered */}
           <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.keywordsMastered}</div>
+            <div className="text-2xl font-bold mb-1">{displayStats.keywords_mastered_count}</div>
             <div className="text-sm text-gray-700">Keywords Mastered</div>
           </div>
         </div>

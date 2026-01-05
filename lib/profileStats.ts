@@ -1,0 +1,207 @@
+/**
+ * Profile Stats Utilities
+ * 
+ * Functions for reading profile stats and calculating streaks/heat map data
+ */
+
+import { supabase } from "./supabaseClient";
+
+export interface ProfileStats {
+  total_actions: number;
+  chapters_completed_count: number;
+  notes_created_count: number;
+  people_learned_count: number;
+  places_discovered_count: number;
+  keywords_mastered_count: number;
+  last_active_date: string | null;
+  current_streak: number;
+}
+
+export interface HeatMapDay {
+  date: string; // YYYY-MM-DD
+  actions: number;
+}
+
+/**
+ * Get profile stats for a user (from profile_stats table)
+ */
+export async function getProfileStats(
+  userId: string
+): Promise<ProfileStats | null> {
+  try {
+    const { data, error } = await supabase
+      .from("profile_stats")
+      .select("*")
+      .eq("user_id", userId)
+      .maybeSingle();
+
+    if (error) {
+      console.error("[PROFILE] Error fetching profile stats:", error);
+      return null;
+    }
+
+    if (!data) {
+      // Return default stats if no row exists
+      return {
+        total_actions: 0,
+        chapters_completed_count: 0,
+        notes_created_count: 0,
+        people_learned_count: 0,
+        places_discovered_count: 0,
+        keywords_mastered_count: 0,
+        last_active_date: null,
+        current_streak: 0,
+      };
+    }
+
+    return {
+      total_actions: data.total_actions || 0,
+      chapters_completed_count: data.chapters_completed_count || 0,
+      notes_created_count: data.notes_created_count || 0,
+      people_learned_count: data.people_learned_count || 0,
+      places_discovered_count: data.places_discovered_count || 0,
+      keywords_mastered_count: data.keywords_mastered_count || 0,
+      last_active_date: data.last_active_date,
+      current_streak: data.current_streak || 0,
+    };
+  } catch (err) {
+    console.error("[PROFILE] Error in getProfileStats:", err);
+    return null;
+  }
+}
+
+/**
+ * Get heat map data (last 90 days) from master_actions table
+ * Groups actions by date and counts actions per day
+ */
+export async function getHeatMapData(
+  userId: string
+): Promise<HeatMapDay[]> {
+  try {
+    // Get last 90 days of actions
+    const ninetyDaysAgo = new Date();
+    ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90);
+
+    const { data, error } = await supabase
+      .from("master_actions")
+      .select("created_at")
+      .eq("user_id", userId)
+      .gte("created_at", ninetyDaysAgo.toISOString())
+      .order("created_at", { ascending: true });
+
+    if (error) {
+      console.error("[PROFILE] Error fetching heat map data:", error);
+      return [];
+    }
+
+    // Group actions by date and count
+    const actionsByDate = new Map<string, number>();
+    data?.forEach((action) => {
+      const date = new Date(action.created_at).toISOString().slice(0, 10); // YYYY-MM-DD
+      actionsByDate.set(date, (actionsByDate.get(date) || 0) + 1);
+    });
+
+    // Generate array for last 90 days
+    const heatMapData: HeatMapDay[] = [];
+    const today = new Date();
+    for (let i = 89; i >= 0; i--) {
+      const date = new Date(today);
+      date.setDate(date.getDate() - i);
+      const dateStr = date.toISOString().slice(0, 10);
+      heatMapData.push({
+        date: dateStr,
+        actions: actionsByDate.get(dateStr) || 0,
+      });
+    }
+
+    return heatMapData;
+  } catch (err) {
+    console.error("[PROFILE] Error in getHeatMapData:", err);
+    return [];
+  }
+}
+
+/**
+ * Calculate current streak from master_actions table
+ * Returns streak data including last 7 days
+ */
+export interface StreakData {
+  currentStreak: number;
+  last7Days: Array<{ date: string; completed: boolean }>;
+}
+
+export async function calculateStreakFromActions(
+  userId: string
+): Promise<StreakData> {
+  try {
+    // Get all actions grouped by date
+    const { data, error } = await supabase
+      .from("master_actions")
+      .select("created_at")
+      .eq("user_id", userId)
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error("[PROFILE] Error fetching actions for streak:", error);
+      return { currentStreak: 0, last7Days: [] };
+    }
+
+    // Convert to dates (YYYY-MM-DD) and deduplicate
+    const completedDates = new Set<string>();
+    data?.forEach((action) => {
+      const date = new Date(action.created_at).toISOString().slice(0, 10);
+      completedDates.add(date);
+    });
+
+    // Calculate current streak (walk backward from today)
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const todayStr = today.toISOString().slice(0, 10);
+
+    let currentStreak = 0;
+    let checkDate = new Date(today);
+    let checkDateStr = todayStr;
+
+    // Walk backward day by day
+    while (true) {
+      if (completedDates.has(checkDateStr)) {
+        currentStreak++;
+        checkDate.setDate(checkDate.getDate() - 1);
+        checkDateStr = checkDate.toISOString().slice(0, 10);
+      } else {
+        break; // Streak breaks
+      }
+    }
+
+    // Generate last 7 days
+    const last7Days: Array<{ date: string; completed: boolean }> = [];
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date(today);
+      date.setDate(date.getDate() - i);
+      const dateStr = date.toISOString().slice(0, 10);
+      last7Days.push({
+        date: dateStr,
+        completed: completedDates.has(dateStr),
+      });
+    }
+
+    return {
+      currentStreak,
+      last7Days,
+    };
+  } catch (err) {
+    console.error("[PROFILE] Error calculating streak:", err);
+    return { currentStreak: 0, last7Days: [] };
+  }
+}
+
+/**
+ * Get day of week abbreviation (S, M, T, W, T, F, S)
+ */
+export function getDayAbbr(dateStr: string): string {
+  const date = new Date(dateStr + "T00:00:00");
+  const day = date.getDay();
+  const abbrs = ["S", "M", "T", "W", "T", "F", "S"];
+  return abbrs[day];
+}
+
