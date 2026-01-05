@@ -78,99 +78,8 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* STATS ROW 1 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          {/* Total Actions */}
-          <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.totalActions}</div>
-            <div className="text-sm text-gray-700">Total Actions</div>
-          </div>
-
-          {/* Books Completed */}
-          <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.booksCompleted}</div>
-            <div className="text-sm text-gray-700">Books Completed</div>
-          </div>
-
-          {/* Chapters Read */}
-          <div className="bg-green-100 border border-green-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.chaptersRead}</div>
-            <div className="text-sm text-gray-700">Chapters Read</div>
-          </div>
-
-          {/* Bible Completion */}
-          <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.bibleCompletion}%</div>
-            <div className="text-sm text-gray-700">Bible Completion</div>
-          </div>
-        </div>
-
-        {/* STATS ROW 2 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          {/* Notes Created */}
-          <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.notesCreated}</div>
-            <div className="text-sm text-gray-700">Notes Created</div>
-          </div>
-
-          {/* People Learned About */}
-          <div className="bg-pink-100 border border-pink-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.peopleLearnedAbout}</div>
-            <div className="text-sm text-gray-700">People Learned About</div>
-          </div>
-
-          {/* Places Discovered */}
-          <div className="bg-cyan-100 border border-cyan-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.placesDiscovered}</div>
-            <div className="text-sm text-gray-700">Places Discovered</div>
-          </div>
-
-          {/* Keywords Mastered */}
-          <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm">
-            <div className="text-2xl font-bold mb-1">{stats.keywordsMastered}</div>
-            <div className="text-sm text-gray-700">Keywords Mastered</div>
-          </div>
-        </div>
-
-        {/* DAILY ACTIVITY HEAT MAP */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-8">
-          <h2 className="text-xl font-semibold mb-4">Daily Activity</h2>
-          
-          {/* Legend */}
-          <div className="flex items-center gap-4 mb-4 text-xs text-gray-600">
-            <span>Less</span>
-            <div className="flex items-center gap-1">
-              <div className="w-3 h-3 rounded bg-gray-100"></div>
-              <div className="w-3 h-3 rounded bg-green-200"></div>
-              <div className="w-3 h-3 rounded bg-green-400"></div>
-              <div className="w-3 h-3 rounded bg-green-600"></div>
-              <div className="w-3 h-3 rounded bg-green-800"></div>
-            </div>
-            <span>More</span>
-            <div className="ml-4 flex items-center gap-2">
-              <span>0</span>
-              <span>1</span>
-              <span>3</span>
-              <span>5+</span>
-            </div>
-          </div>
-
-          {/* Heat Map Grid */}
-          <div className="overflow-x-auto">
-            <div className="inline-flex gap-1">
-              {heatMapData.map((day, index) => (
-                <div
-                  key={index}
-                  className={`w-3 h-3 rounded ${getHeatMapColor(day.actions)} hover:ring-2 hover:ring-blue-400 cursor-pointer`}
-                  title={`${day.actions} actions on ${new Date(day.date).toLocaleDateString()}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
         {/* DAILY STREAK SECTION */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
           <div className="mb-4">
             <h2 className="text-xl font-semibold mb-1">
               {streak.currentStreak} day streak
@@ -226,6 +135,97 @@ export default function ProfilePage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* DAILY ACTIVITY HEAT MAP */}
+        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
+          <h2 className="text-xl font-semibold mb-4">Daily Activity</h2>
+          
+          {/* Legend */}
+          <div className="flex items-center gap-4 mb-4 text-xs text-gray-600">
+            <span>Less</span>
+            <div className="flex items-center gap-1">
+              <div className="w-3 h-3 rounded bg-gray-100"></div>
+              <div className="w-3 h-3 rounded bg-green-200"></div>
+              <div className="w-3 h-3 rounded bg-green-400"></div>
+              <div className="w-3 h-3 rounded bg-green-600"></div>
+              <div className="w-3 h-3 rounded bg-green-800"></div>
+            </div>
+            <span>More</span>
+            <div className="ml-4 flex items-center gap-2">
+              <span>0</span>
+              <span>1</span>
+              <span>3</span>
+              <span>5+</span>
+            </div>
+          </div>
+
+          {/* Heat Map Grid */}
+          <div className="overflow-x-auto">
+            <div className="inline-flex gap-1">
+              {heatMapData.map((day, index) => (
+                <div
+                  key={index}
+                  className={`w-3 h-3 rounded ${getHeatMapColor(day.actions)} hover:ring-2 hover:ring-blue-400 cursor-pointer`}
+                  title={`${day.actions} actions on ${new Date(day.date).toLocaleDateString()}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* STATS ROW 1 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          {/* Total Actions */}
+          <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm">
+            <div className="text-2xl font-bold mb-1">{stats.totalActions}</div>
+            <div className="text-sm text-gray-700">Total Actions</div>
+          </div>
+
+          {/* Books Completed */}
+          <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm">
+            <div className="text-2xl font-bold mb-1">{stats.booksCompleted}</div>
+            <div className="text-sm text-gray-700">Books Completed</div>
+          </div>
+
+          {/* Chapters Read */}
+          <div className="bg-green-100 border border-green-200 rounded-xl p-5 shadow-sm">
+            <div className="text-2xl font-bold mb-1">{stats.chaptersRead}</div>
+            <div className="text-sm text-gray-700">Chapters Read</div>
+          </div>
+
+          {/* Bible Completion */}
+          <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm">
+            <div className="text-2xl font-bold mb-1">{stats.bibleCompletion}%</div>
+            <div className="text-sm text-gray-700">Bible Completion</div>
+          </div>
+        </div>
+
+        {/* STATS ROW 2 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Notes Created */}
+          <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm">
+            <div className="text-2xl font-bold mb-1">{stats.notesCreated}</div>
+            <div className="text-sm text-gray-700">Notes Created</div>
+          </div>
+
+          {/* People Learned About */}
+          <div className="bg-pink-100 border border-pink-200 rounded-xl p-5 shadow-sm">
+            <div className="text-2xl font-bold mb-1">{stats.peopleLearnedAbout}</div>
+            <div className="text-sm text-gray-700">People Learned About</div>
+          </div>
+
+          {/* Places Discovered */}
+          <div className="bg-cyan-100 border border-cyan-200 rounded-xl p-5 shadow-sm">
+            <div className="text-2xl font-bold mb-1">{stats.placesDiscovered}</div>
+            <div className="text-sm text-gray-700">Places Discovered</div>
+          </div>
+
+          {/* Keywords Mastered */}
+          <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm">
+            <div className="text-2xl font-bold mb-1">{stats.keywordsMastered}</div>
+            <div className="text-sm text-gray-700">Keywords Mastered</div>
           </div>
         </div>
       </div>
