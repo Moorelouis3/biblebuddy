@@ -4,10 +4,11 @@ import { useState, useEffect, useMemo } from "react";
 import { type BiblePerson } from "../../lib/biblePeople";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
+import { BIBLE_PEOPLE_LIST } from "../../lib/biblePeopleList";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-// Static list of Bible people names
+// Static list of Bible people names (legacy - now using BIBLE_PEOPLE_LIST)
 const STATIC_PEOPLE_NAMES = [
   "Aaron",
   "Abdon",
@@ -391,10 +392,11 @@ const STATIC_PEOPLE_NAMES = [
 
 // Convert names to BiblePerson objects
 function createStaticPeople(): BiblePerson[] {
-  return STATIC_PEOPLE_NAMES.map((name, index) => ({
-    id: `static-${index}-${name.toLowerCase().replace(/[^a-z0-9]/g, "-")}`,
-    name: name,
-    normalized_name: name.toLowerCase().trim(),
+  // Use the new comprehensive list with aliases
+  return BIBLE_PEOPLE_LIST.map((entry, index) => ({
+    id: `static-${index}-${entry.name.toLowerCase().replace(/[^a-z0-9]/g, "-")}`,
+    name: entry.name,
+    normalized_name: entry.name.toLowerCase().trim(),
   }));
 }
 
