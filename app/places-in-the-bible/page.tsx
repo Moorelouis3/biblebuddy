@@ -120,6 +120,45 @@ export default function PlacesInTheBiblePage() {
     return grouped;
   }, [places]);
 
+  // Load user ID and completion state
+  useEffect(() => {
+    async function loadUserAndProgress() {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+          setLoadingProgress(false);
+          return;
+        }
+
+        setUserId(user.id);
+
+        // Fetch all completed places for this user (batch query)
+        const { data, error } = await supabase
+          .from("places_progress")
+          .select("place_name")
+          .eq("user_id", user.id);
+
+        if (error) {
+          console.error("Error loading places progress:", error);
+        } else {
+          const completedSet = new Set<string>();
+          data?.forEach((row) => {
+            // Store normalized name (lowercase, trimmed, spaces to underscores) for matching
+            const normalized = row.place_name.toLowerCase().trim();
+            completedSet.add(normalized);
+          });
+          setCompletedPlaces(completedSet);
+        }
+      } catch (err) {
+        console.error("Error loading user:", err);
+      } finally {
+        setLoadingProgress(false);
+      }
+    }
+
+    loadUserAndProgress();
+  }, []);
+
   // Generate notes when a place is selected
   useEffect(() => {
     async function generateNotes() {
