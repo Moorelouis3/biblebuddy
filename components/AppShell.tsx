@@ -136,17 +136,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       Home
                     </Link>
 
-                    {/* HOW TO USE BIBLEBUDDY */}
+                    {/* PROFILE */}
                     <Link
-                      href="/lessons"
+                      href="/profile"
                       onClick={() => setIsProfileMenuOpen(false)}
                       className={`block px-4 py-2 text-sm ${
-                        pathname?.startsWith("/lessons")
+                        pathname?.startsWith("/profile")
                           ? "bg-sky-100 text-black font-medium"
                           : "text-gray-700 hover:bg-gray-100"
                       }`}
                     >
-                      How to Use BibleBuddy
+                      Profile
                     </Link>
 
                     {/* SETTINGS */}
@@ -162,6 +162,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       Settings
                     </Link>
 
+                    {/* HOW TO USE BIBLEBUDDY */}
+                    <Link
+                      href="/lessons"
+                      onClick={() => setIsProfileMenuOpen(false)}
+                      className={`block px-4 py-2 text-sm ${
+                        pathname?.startsWith("/lessons")
+                          ? "bg-sky-100 text-black font-medium"
+                          : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      How to Use
+                    </Link>
+
                     {/* JOIN OUR FREE COMMUNITY */}
                     <a
                       href="https://joinhopenation.com/"
@@ -170,7 +183,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       onClick={() => setIsProfileMenuOpen(false)}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     >
-                      Join our free community
+                      Join our Free Community
                     </a>
 
                     {/* ANALYTICS (ADMIN ONLY) */}
