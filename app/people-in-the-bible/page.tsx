@@ -931,7 +931,11 @@ FINAL RULES:
                       return (
                         <button
                           type="button"
-                          onClick={async () => {
+                          onClick={async (e) => {
+                            // Prevent event from bubbling up and potentially closing the modal
+                            e.stopPropagation();
+                            e.preventDefault();
+
                             if (!userId) return;
 
                             const personNameKey = selectedPerson.name.toLowerCase().trim();
@@ -965,6 +969,7 @@ FINAL RULES:
                                   next.add(personNameKey);
                                   return next;
                                 });
+                                // Modal stays open - do NOT call setSelectedPerson(null)
                               }
                             } catch (err) {
                               console.error("Error marking person as finished:", err);
