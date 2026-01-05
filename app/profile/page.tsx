@@ -11,7 +11,6 @@ import {
   type HeatMapDay,
   type StreakData,
 } from "../../lib/profileStats";
-import { getTotalCompletedChapters } from "../../lib/readingProgress";
 
 export default function ProfilePage() {
   const [userId, setUserId] = useState<string | null>(null);
@@ -47,17 +46,28 @@ export default function ProfilePage() {
         setStreak(streakData);
 
         // Calculate books completed and Bible completion
-        const totalChapters = await getTotalCompletedChapters(user.id);
-        const totalBibleChapters = 1189;
-        const completionPercent = totalChapters > 0
-          ? Math.round((totalChapters / totalBibleChapters) * 100 * 10) / 10
-          : 0;
+        // Query completed_chapters directly to get accurate counts
+        const { data: completedChapters, error: chaptersError } = await supabase
+          .from("completed_chapters")
+          .select("book")
+          .eq("user_id", user.id);
 
-        // For books completed, we'd need to query completed_chapters and count unique books
-        // For now, using a simplified calculation (approximate)
-        const estimatedBooks = Math.floor(totalChapters / 20); // Rough estimate
-        setBooksCompleted(estimatedBooks);
-        setBibleCompletion(completionPercent);
+        if (!chaptersError && completedChapters) {
+          // Count unique books
+          const uniqueBooks = new Set(completedChapters.map((c) => c.book));
+          setBooksCompleted(uniqueBooks.size);
+
+          // Calculate Bible completion percentage
+          const totalChapters = completedChapters.length;
+          const totalBibleChapters = 1189;
+          const completionPercent = totalChapters > 0
+            ? Math.round((totalChapters / totalBibleChapters) * 100 * 10) / 10
+            : 0;
+          setBibleCompletion(completionPercent);
+        } else {
+          setBooksCompleted(0);
+          setBibleCompletion(0);
+        }
       } catch (err) {
         console.error("Error loading profile data:", err);
       } finally {
