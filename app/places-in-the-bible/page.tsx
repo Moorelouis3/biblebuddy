@@ -603,6 +603,7 @@ RULES:
                                 const placeDisplayName = formatPlaceName(selectedPlace.name);
 
                                 // Insert into master_actions with action_label
+                                console.log("[MASTER_ACTIONS] inserting:", { action_type: "place_discovered", action_label: placeDisplayName });
                                 const { error: actionError } = await supabase
                                   .from("master_actions")
                                   .insert({

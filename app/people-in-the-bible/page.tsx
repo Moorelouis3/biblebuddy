@@ -994,6 +994,7 @@ FINAL RULES:
                                 const personDisplayName = formatPersonName(selectedPerson.name);
 
                                 // Insert into master_actions with action_label
+                                console.log("[MASTER_ACTIONS] inserting:", { action_type: "person_learned", action_label: personDisplayName });
                                 const { error: actionError } = await supabase
                                   .from("master_actions")
                                   .insert({

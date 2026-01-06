@@ -612,6 +612,7 @@ RULES:
                                 const keywordDisplayName = formatKeywordName(selectedKeyword.name);
 
                                 // Insert into master_actions with action_label
+                                console.log("[MASTER_ACTIONS] inserting:", { action_type: "keyword_mastered", action_label: keywordDisplayName });
                                 const { error: actionError } = await supabase
                                   .from("master_actions")
                                   .insert({

@@ -61,6 +61,7 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
     }
 
     // Insert into master_actions (user_login has no action_label)
+    console.log("[MASTER_ACTIONS] inserting:", { action_type: "user_login", action_label: null });
     const { error: actionError } = await supabase
       .from("master_actions")
       .insert({

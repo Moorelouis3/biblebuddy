@@ -1202,6 +1202,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           const actionLabel = `${bookDisplayName} ${chapter}`;
 
           // Insert into master_actions with action_label
+          console.log("[MASTER_ACTIONS] inserting:", { action_type: "chapter_completed", action_label: actionLabel });
           const { error: actionError } = await supabase
             .from("master_actions")
             .insert({
@@ -1220,6 +1221,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
             const bookIsComplete = await isBookComplete(userId, book);
             if (bookIsComplete) {
               // Book is complete - log book_completed action
+              console.log("[MASTER_ACTIONS] inserting:", { action_type: "book_completed", action_label: bookDisplayName });
               const { error: bookActionError } = await supabase
                 .from("master_actions")
                 .insert({
