@@ -144,19 +144,23 @@ export interface StreakData {
 }
 
 // Valid action types that count toward streak
+// Includes all Bible study actions except user_login
 const STREAK_ACTION_TYPES = [
   "chapter_completed",
   "book_completed",
   "person_learned",
   "place_discovered",
   "keyword_mastered",
+  "note_created",
 ];
 
 export async function calculateStreakFromActions(
   userId: string
 ): Promise<StreakData> {
   try {
-    // Get all actions, filtering for valid streak actions only
+    console.log(`[STREAK] Fetching actions for user_id: ${userId}`);
+    
+    // Get all actions EXCEPT user_login (filtering for valid streak actions)
     const { data, error } = await supabase
       .from("master_actions")
       .select("created_at, action_type")
@@ -165,17 +169,24 @@ export async function calculateStreakFromActions(
       .order("created_at", { ascending: false });
 
     if (error) {
-      console.error("[PROFILE] Error fetching actions for streak:", error);
+      console.error("[STREAK] Error fetching actions for streak:", error);
       return { currentStreak: 0, last7Days: [] };
     }
+
+    console.log(`[STREAK] Found ${data?.length || 0} valid streak actions`);
 
     // Convert to dates (YYYY-MM-DD) and deduplicate
     // One valid action per day = streak day (no minimum count needed)
     const completedDates = new Set<string>();
     data?.forEach((action) => {
-      const date = new Date(action.created_at).toISOString().slice(0, 10);
-      completedDates.add(date);
+      // Use local date to match user's calendar day
+      const actionDate = new Date(action.created_at);
+      const dateStr = actionDate.toISOString().slice(0, 10); // YYYY-MM-DD
+      completedDates.add(dateStr);
+      console.log(`[STREAK] Action on ${dateStr}: ${action.action_type}`);
     });
+
+    console.log(`[STREAK] Active dates:`, Array.from(completedDates).sort());
 
     // Calculate current streak (walk backward from today)
     const today = new Date();
@@ -203,11 +214,16 @@ export async function calculateStreakFromActions(
       const date = new Date(today);
       date.setDate(date.getDate() - i);
       const dateStr = date.toISOString().slice(0, 10);
+      const isCompleted = completedDates.has(dateStr);
       last7Days.push({
         date: dateStr,
-        completed: completedDates.has(dateStr),
+        completed: isCompleted,
       });
+      console.log(`[STREAK] Day ${dateStr}: ${isCompleted ? 'ACTIVE' : 'inactive'}`);
     }
+
+    console.log(`[STREAK] Current streak: ${currentStreak} days`);
+    console.log(`[STREAK] Last 7 days:`, last7Days.map(d => `${d.date}: ${d.completed ? '✓' : '✗'}`).join(', '));
 
     return {
       currentStreak,
