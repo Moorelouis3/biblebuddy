@@ -607,7 +607,7 @@ RULES:
                                   .from("master_actions")
                                   .insert({
                                     user_id: userId,
-                                    username: actionUsername,
+                                    username: actionUsername ?? null,
                                     action_type: "place_discovered",
                                     action_label: placeDisplayName,
                                   });

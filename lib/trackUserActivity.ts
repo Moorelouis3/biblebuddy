@@ -65,7 +65,7 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
       .from("master_actions")
       .insert({
         user_id: userId,
-        username: username,
+        username: username ?? null,
         action_type: "user_login",
       });
 

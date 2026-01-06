@@ -348,7 +348,7 @@ export default function NotesPage() {
           .from("master_actions")
           .insert({
             user_id: userId,
-            username: actionUsername,
+            username: actionUsername ?? null,
             action_type: "note_created",
           });
 

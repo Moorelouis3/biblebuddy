@@ -998,7 +998,7 @@ FINAL RULES:
                                   .from("master_actions")
                                   .insert({
                                     user_id: userId,
-                                    username: actionUsername,
+                                    username: actionUsername ?? null,
                                     action_type: "person_learned",
                                     action_label: personDisplayName,
                                   });

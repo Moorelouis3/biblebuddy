@@ -1095,7 +1095,7 @@ export default function GrowNotePage() {
           .from("master_actions")
           .insert({
             user_id: userId,
-            username: actionUsername,
+            username: actionUsername ?? null,
             action_type: "note_created",
           });
 

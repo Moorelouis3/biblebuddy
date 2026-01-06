@@ -1206,7 +1206,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
             .from("master_actions")
             .insert({
               user_id: userId,
-              username: actionUsername,
+              username: actionUsername ?? null,
               action_type: "chapter_completed",
               action_label: actionLabel,
             });
@@ -1224,7 +1224,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                 .from("master_actions")
                 .insert({
                   user_id: userId,
-                  username: actionUsername,
+                  username: actionUsername ?? null,
                   action_type: "book_completed",
                   action_label: bookDisplayName,
                 });
