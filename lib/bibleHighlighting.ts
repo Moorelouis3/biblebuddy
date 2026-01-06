@@ -129,6 +129,17 @@ export async function enrichBibleVerses(
       const match = regex.exec(escapedText);
 
       if (match) {
+        // For people names, only match if the matched text starts with a capital letter
+        // This prevents common words like "on", "put", "in" from being highlighted as people
+        if (highlightTerm.type === "people") {
+          const matchedText = match[0];
+          const firstChar = matchedText.charAt(0);
+          // Only match if first character is uppercase (proper noun)
+          if (firstChar !== firstChar.toUpperCase() || firstChar === firstChar.toLowerCase()) {
+            continue; // Skip - not capitalized, likely a common word
+          }
+        }
+
         const start = match.index;
         const end = start + match[0].length;
 
