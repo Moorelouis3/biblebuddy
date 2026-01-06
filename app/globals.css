@@ -8,21 +8,21 @@
   text-underline-offset: 3px;
 }
 
-/* PEOPLE — blue */
-.bible-highlight-person {
+/* PEOPLE — blue text, wavy underline */
+.bible-highlight-people {
   color: #1e40af;
   text-decoration-color: rgba(30, 64, 175, 0.6);
 }
 
-/* PLACES — green */
-.bible-highlight-place {
+/* PLACES — green text, wavy underline */
+.bible-highlight-places {
   color: #166534;
   text-decoration-color: rgba(22, 101, 52, 0.6);
 }
 
-/* KEYWORDS — dark maroon */
-.bible-highlight-keyword {
-  color: #7f1d1d;
+/* KEYWORDS — dark maroon red (60% blended, NOT bright), wavy underline */
+.bible-highlight-keywords {
+  color: rgba(127, 29, 29, 0.6); /* 60% opacity dark maroon */
   text-decoration-color: rgba(127, 29, 29, 0.6);
 }
 

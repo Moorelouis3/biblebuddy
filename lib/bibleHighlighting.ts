@@ -1,128 +1,37 @@
 /**
  * Bible highlighting utility - processes highlighting at save-time
  * 
- * This function takes raw Bible text and applies highlights for people, places, and keywords.
- * It returns HTML with pre-applied highlight spans.
+ * Uses the SAME lists as the UI pages (people-in-the-bible, places-in-the-bible, keywords-in-the-bible)
+ * Database is ONLY used when a word is clicked (for notes lookup), never for detection.
  * 
- * CRITICAL: Each entity is highlighted ONLY ONCE per chapter (first occurrence only).
+ * CRITICAL: Each term is highlighted ONLY ONCE per chapter (first occurrence only).
  */
 
-import { supabase } from "./supabaseClient";
-
-export type HighlightTerm = {
-  term: string;
-  type: "person" | "place" | "keyword";
-  lookupKey: string;
-};
+import { BIBLE_PEOPLE_LIST } from "./biblePeopleList";
+import { BIBLE_PLACES_LIST } from "./biblePlacesList";
+import { BIBLE_KEYWORDS_LIST } from "./bibleKeywordsList";
 
 /**
- * Stop words that should NEVER be highlighted
+ * Extract plain string arrays from the UI page lists
  */
-const STOP_WORDS = new Set([
-  "house",
-  "day",
-  "night",
-  "light",
-  "darkness",
-  "so",
-  "on",
-  "the",
-  "and",
-  "was",
-  "is",
-]);
-
-/**
- * Normalize text to lowercase for matching and lookup
- */
-function normalizeToLookupKey(text: string): string {
-  return text.toLowerCase().trim();
+function getPeopleNames(): string[] {
+  const names: string[] = [];
+  BIBLE_PEOPLE_LIST.forEach((person) => {
+    names.push(person.name);
+    // Include aliases
+    if (person.aliases) {
+      names.push(...person.aliases);
+    }
+  });
+  return names;
 }
 
-/**
- * Load all highlight terms from database tables
- */
-async function loadAllHighlightTerms(): Promise<HighlightTerm[]> {
-  const terms: HighlightTerm[] = [];
-  const usedLookupKeys = new Set<string>();
+function getPlaceNames(): string[] {
+  return BIBLE_PLACES_LIST.map((place) => place.name);
+}
 
-  try {
-    // Load people from bible_people_notes
-    const { data: people, error: peopleError } = await supabase
-      .from("bible_people_notes")
-      .select("person_name");
-
-    if (peopleError) {
-      console.error("Error loading people for highlighting:", peopleError);
-    } else if (people) {
-      people.forEach((p) => {
-        if (p.person_name) {
-          const lookupKey = normalizeToLookupKey(p.person_name);
-          // Skip if already added or is a stop word
-          if (!usedLookupKeys.has(lookupKey) && !STOP_WORDS.has(lookupKey)) {
-            terms.push({
-              term: p.person_name.trim(), // Preserve original casing
-              type: "person",
-              lookupKey,
-            });
-            usedLookupKeys.add(lookupKey);
-          }
-        }
-      });
-    }
-
-    // Load places from places_in_the_bible_notes
-    const { data: places, error: placesError } = await supabase
-      .from("places_in_the_bible_notes")
-      .select("place");
-
-    if (placesError) {
-      console.error("Error loading places for highlighting:", placesError);
-    } else if (places) {
-      places.forEach((p) => {
-        if (p.place) {
-          const lookupKey = normalizeToLookupKey(p.place);
-          // Only add if not already a person (person beats place) and not a stop word
-          if (!usedLookupKeys.has(lookupKey) && !STOP_WORDS.has(lookupKey)) {
-            terms.push({
-              term: p.place.trim(), // Preserve original casing
-              type: "place",
-              lookupKey,
-            });
-            usedLookupKeys.add(lookupKey);
-          }
-        }
-      });
-    }
-
-    // Load keywords from keywords_in_the_bible
-    const { data: keywords, error: keywordsError } = await supabase
-      .from("keywords_in_the_bible")
-      .select("keyword");
-
-    if (keywordsError) {
-      console.error("Error loading keywords for highlighting:", keywordsError);
-    } else if (keywords) {
-      keywords.forEach((k) => {
-        if (k.keyword) {
-          const lookupKey = normalizeToLookupKey(k.keyword);
-          // Only add if not already a person or place (person/place beat keyword) and not a stop word
-          if (!usedLookupKeys.has(lookupKey) && !STOP_WORDS.has(lookupKey)) {
-            terms.push({
-              term: k.keyword.trim(), // Preserve original casing
-              type: "keyword",
-              lookupKey,
-            });
-            usedLookupKeys.add(lookupKey);
-          }
-        }
-      });
-    }
-  } catch (err) {
-    console.error("Error loading highlight terms:", err);
-  }
-
-  return terms;
+function getKeywordNames(): string[] {
+  return BIBLE_KEYWORDS_LIST.map((keyword) => keyword.term);
 }
 
 /**
@@ -146,13 +55,46 @@ function escapeHtml(text: string): string {
 export async function enrichBibleVerses(
   verses: Array<{ verse: number; text: string }>
 ): Promise<string> {
-  // Load all highlight terms from database
-  const allTerms = await loadAllHighlightTerms();
+  // Get lists from UI pages (same source as people/places/keywords pages)
+  const peopleNames = getPeopleNames();
+  const placeNames = getPlaceNames();
+  const keywordNames = getKeywordNames();
+
+  // Build unified list with type information
+  type HighlightTerm = {
+    term: string;
+    type: "people" | "places" | "keywords";
+  };
+
+  const allTerms: HighlightTerm[] = [];
+
+  // Add people first (priority: people > places > keywords)
+  peopleNames.forEach((name) => {
+    allTerms.push({ term: name.trim(), type: "people" });
+  });
+
+  // Add places (only if not already a person)
+  const peopleSet = new Set(peopleNames.map((n) => n.toLowerCase().trim()));
+  placeNames.forEach((name) => {
+    const normalized = name.toLowerCase().trim();
+    if (!peopleSet.has(normalized)) {
+      allTerms.push({ term: name.trim(), type: "places" });
+    }
+  });
+
+  // Add keywords (only if not already a person or place)
+  const placesSet = new Set(placeNames.map((n) => n.toLowerCase().trim()));
+  keywordNames.forEach((name) => {
+    const normalized = name.toLowerCase().trim();
+    if (!peopleSet.has(normalized) && !placesSet.has(normalized)) {
+      allTerms.push({ term: name.trim(), type: "keywords" });
+    }
+  });
 
   // Sort by longest string first (prevents "David" matching inside "City of David")
-  const sortedTerms = [...allTerms].sort((a, b) => b.term.length - a.term.length);
+  allTerms.sort((a, b) => b.term.length - a.term.length);
 
-  // Track which lookup keys have been highlighted (once per chapter)
+  // Track which terms have been highlighted (once per chapter)
   const usedTerms = new Set<string>();
 
   // Process each verse, but track highlights across all verses
@@ -164,15 +106,16 @@ export async function enrichBibleVerses(
     const matches: Array<{
       start: number;
       end: number;
-      type: "person" | "place" | "keyword";
+      type: "people" | "places" | "keywords";
       term: string;
       matchedText: string;
     }> = [];
 
     // Walk through each term (sorted longest first)
-    for (const highlightTerm of sortedTerms) {
+    for (const highlightTerm of allTerms) {
       // Check if this term already highlighted (once per chapter)
-      if (usedTerms.has(highlightTerm.lookupKey)) {
+      const lookupKey = highlightTerm.term.toLowerCase().trim();
+      if (usedTerms.has(lookupKey)) {
         continue; // Skip - already highlighted once in this chapter
       }
 
@@ -204,7 +147,7 @@ export async function enrichBibleVerses(
           });
 
           // Mark as used (across all verses)
-          usedTerms.add(highlightTerm.lookupKey);
+          usedTerms.add(lookupKey);
         }
       }
     }

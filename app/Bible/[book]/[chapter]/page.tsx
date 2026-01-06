@@ -137,15 +137,15 @@ export default function BibleChapterPage() {
       if (!type || !term) return;
 
       // Open overlay modal in-place (same as clicking a card on People/Places/Keywords pages)
-      if (type === "person") {
+      if (type === "people") {
         setSelectedPerson({ name: term });
         setSelectedPlace(null);
         setSelectedKeyword(null);
-      } else if (type === "place") {
+      } else if (type === "places") {
         setSelectedPlace({ name: term });
         setSelectedPerson(null);
         setSelectedKeyword(null);
-      } else if (type === "keyword") {
+      } else if (type === "keywords") {
         setSelectedKeyword({ name: term });
         setSelectedPerson(null);
         setSelectedPlace(null);
