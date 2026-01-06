@@ -151,7 +151,18 @@ export async function enrichBibleVerses(
   // Get lists from UI pages (same source as people/places/keywords pages)
   const peopleNames = getPeopleNames();
   const placeNames = getPlaceNames();
-  const keywordNames = getKeywordNames();
+
+  // Deduplicate keyword terms (case-insensitive)
+  const keywordNamesSet = new Set<string>();
+  const keywordNames: string[] = [];
+  getKeywordNames().forEach((term) => {
+    const trimmed = term.trim();
+    if (!trimmed) return;
+    const key = trimmed.toLowerCase();
+    if (keywordNamesSet.has(key)) return;
+    keywordNamesSet.add(key);
+    keywordNames.push(trimmed);
+  });
 
   // Build separate lists with type information
   type HighlightTerm = {

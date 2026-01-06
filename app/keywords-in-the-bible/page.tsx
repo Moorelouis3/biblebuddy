@@ -15,11 +15,24 @@ type BibleKeyword = {
 
 // Convert names to BibleKeyword objects
 function createStaticKeywords(): BibleKeyword[] {
-  return BIBLE_KEYWORDS_LIST.map((keywordEntry, index) => ({
-    id: `static-${index}-${keywordEntry.term.toLowerCase().replace(/[^a-z0-9]/g, "-")}`,
-    name: keywordEntry.term,
-    normalized_name: keywordEntry.term.toLowerCase().trim(),
-  }));
+  const seen = new Set<string>();
+  const result: BibleKeyword[] = [];
+
+  BIBLE_KEYWORDS_LIST.forEach((keywordEntry, index) => {
+    const term = (keywordEntry.term || "").trim();
+    if (!term) return;
+    const normalized = term.toLowerCase();
+    if (seen.has(normalized)) return;
+    seen.add(normalized);
+
+    result.push({
+      id: `static-${index}-${normalized.replace(/[^a-z0-9]/g, "-")}`,
+      name: term,
+      normalized_name: normalized,
+    });
+  });
+
+  return result;
 }
 
 function normalizeKeywordMarkdown(markdown: string): string {
