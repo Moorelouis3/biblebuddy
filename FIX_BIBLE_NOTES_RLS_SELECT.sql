@@ -39,3 +39,5 @@ USING (true);
 -- 4. After running, SELECT queries should work correctly
 -- 5. This works together with the INSERT policy in FIX_BIBLE_NOTES_RLS.sql
 
+
+

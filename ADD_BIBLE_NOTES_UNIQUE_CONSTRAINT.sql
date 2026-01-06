@@ -52,3 +52,5 @@ ON public.bible_notes (book, chapter);
 -- 4. Run this in the Supabase SQL Editor: https://supabase.com/dashboard/project/_/sql
 -- 5. If you have existing duplicates, clean them up first (see STEP 1)
 
+
+
