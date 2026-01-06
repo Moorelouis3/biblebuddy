@@ -205,11 +205,6 @@ export async function enrichBibleVerses(
   placeTerms.sort((a, b) => b.term.length - a.term.length);
   keywordTerms.sort((a, b) => b.term.length - a.term.length);
 
-  // Track keyword highlights by layer
-  const keywordLayer1Used = new Set<string>(); // Not used - layer 1 highlights every time
-  const keywordLayer2Used = new Set<string>(); // Per section (verse group)
-  const keywordLayer3Used = new Set<string>(); // Once per chapter
-
   // Process each verse
   const enrichedVerses = verses.map((v, verseIndex) => {
     // Escape HTML in the verse text
@@ -302,44 +297,23 @@ export async function enrichBibleVerses(
       }
     }
 
-    // Process KEYWORDS (3-layer system)
+    // Process KEYWORDS (highlight EVERY occurrence)
     for (const highlightTerm of keywordTerms) {
-      if (!highlightTerm.layer) continue;
-      
-      const lookupKey = highlightTerm.term.toLowerCase().trim();
-      const layer = highlightTerm.layer;
-      
-      // Check layer-specific rules
-      if (layer === 2) {
-        // Layer 2: First per section (we'll use verse groups of ~10 verses as "sections")
-        const sectionKey = `${Math.floor(verseIndex / 10)}_${lookupKey}`;
-        if (keywordLayer2Used.has(sectionKey)) {
-          continue; // Already highlighted in this section
-        }
-      } else if (layer === 3) {
-        // Layer 3: Once per chapter
-        if (keywordLayer3Used.has(lookupKey)) {
-          continue; // Already highlighted once in this chapter
-        }
-      }
-      // Layer 1: No restrictions - highlight every time
-      
       const escapedTerm = highlightTerm.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
       
-      // Find first match in this verse
+      // Find ALL matches in this verse
       regex.lastIndex = 0;
-      const match = regex.exec(escapedText);
-      
-      if (match) {
+      let match;
+      while ((match = regex.exec(escapedText)) !== null) {
         const start = match.index;
         const end = start + match[0].length;
-        
+
         // Check if this range overlaps with any existing highlight
         const overlaps = matches.some(
           (m) => !(end <= m.start || start >= m.end)
         );
-        
+
         if (!overlaps) {
           matches.push({
             start,
@@ -348,15 +322,6 @@ export async function enrichBibleVerses(
             term: highlightTerm.term,
             matchedText: match[0],
           });
-          
-          // Mark as used based on layer
-          if (layer === 2) {
-            const sectionKey = `${Math.floor(verseIndex / 10)}_${lookupKey}`;
-            keywordLayer2Used.add(sectionKey);
-          } else if (layer === 3) {
-            keywordLayer3Used.add(lookupKey);
-          }
-          // Layer 1: Don't mark as used - allow multiple highlights
         }
       }
     }
