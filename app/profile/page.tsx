@@ -114,6 +114,7 @@ export default function ProfilePage() {
 
     try {
       // Get all actions from master_actions table
+      console.log(`[ACTION_LOG] Fetching actions for user_id: ${userId}`);
       const { data: masterActions, error: actionsError } = await supabase
         .from("master_actions")
         .select("action_type, action_label, created_at")
@@ -121,12 +122,17 @@ export default function ProfilePage() {
         .order("created_at", { ascending: false });
 
       if (actionsError) {
-        console.error("Error fetching master_actions:", actionsError);
+        console.error("[ACTION_LOG] Error fetching master_actions:", actionsError);
+        console.error("[ACTION_LOG] Error details:", JSON.stringify(actionsError, null, 2));
         setActionLog([]);
         return;
       }
 
+      console.log(`[ACTION_LOG] Raw response - data:`, masterActions);
+      console.log(`[ACTION_LOG] Number of actions returned:`, masterActions?.length ?? 0);
+
       if (!masterActions || masterActions.length === 0) {
+        console.log("[ACTION_LOG] No actions found in master_actions table for this user");
         setActionLog([]);
         return;
       }
