@@ -3,31 +3,27 @@
 /* Bible highlight styles */
 .bible-highlight {
   cursor: pointer;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
-  text-decoration-line: underline;
 }
 
-/* PEOPLE — deep blended blue */
+/* PEOPLE — blue underline */
 .bible-highlight-person {
-  color: rgba(30, 64, 175, 0.85); /* blue-800 blended */
-  text-decoration-color: rgba(30, 64, 175, 0.6);
+  text-decoration: underline;
+  text-decoration-color: rgba(30, 90, 180, 0.7); /* blue */
+  cursor: pointer;
 }
 
-/* PLACES — deep blended green */
+/* PLACES — green underline */
 .bible-highlight-place {
-  color: rgba(22, 101, 52, 0.85); /* green-800 blended */
-  text-decoration-color: rgba(22, 101, 52, 0.6);
+  text-decoration: underline;
+  text-decoration-color: rgba(40, 130, 70, 0.7); /* green */
+  cursor: pointer;
 }
 
-/* KEYWORDS — dark maroon red (NOT bright red) */
+/* KEYWORDS — dark maroon underline */
 .bible-highlight-keyword {
-  color: rgba(124, 45, 18, 0.85); /* maroon / dark red */
-  text-decoration-color: rgba(124, 45, 18, 0.6);
-}
-
-.bible-highlight:hover {
-  opacity: 0.9;
+  text-decoration: underline;
+  text-decoration-color: rgba(110, 30, 30, 0.6); /* dark maroon */
+  cursor: pointer;
 }
 
 /* ✅ Global colors */

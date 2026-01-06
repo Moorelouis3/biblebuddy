@@ -3,62 +3,139 @@
  * 
  * This function takes raw Bible text and applies highlights for people, places, and keywords.
  * It returns HTML with pre-applied highlight spans.
+ * 
+ * CRITICAL: Each entity is highlighted ONLY ONCE per chapter.
  */
 
+import { supabase } from "./supabaseClient";
 import { BIBLE_PEOPLE_LIST } from "./biblePeopleList";
-import { BIBLE_PLACES_LIST } from "./biblePlacesList";
-import { BIBLE_KEYWORDS_LIST } from "./bibleKeywordsList";
 
-export type HighlightTerm = {
-  term: string;
+export type HighlightEntity = {
   type: "person" | "place" | "keyword";
+  primary: string;
+  aliases: string[];
+  normalized: string;
 };
 
 /**
- * Build unified list of highlight terms from all sources
- * Expands aliases and deduplicates
+ * Normalize text for matching (lowercase, trim, collapse whitespace, strip punctuation)
  */
-function buildHighlightTerms(): HighlightTerm[] {
-  const termMap = new Map<string, HighlightTerm>();
-  
-  // Add people (including aliases)
-  BIBLE_PEOPLE_LIST.forEach((person) => {
-    const normalizedName = person.name.toLowerCase().trim();
-    if (!termMap.has(normalizedName)) {
-      termMap.set(normalizedName, { term: person.name, type: "person" });
-    }
-    
-    // Add aliases as person type
-    if (person.aliases) {
-      person.aliases.forEach((alias) => {
-        const normalizedAlias = alias.toLowerCase().trim();
-        if (!termMap.has(normalizedAlias)) {
-          termMap.set(normalizedAlias, { term: alias, type: "person" });
+function normalizeForMatching(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, " ") // collapse whitespace
+    .replace(/[.,;:!?'"()[\]{}]/g, ""); // strip punctuation
+}
+
+/**
+ * Normalize text but preserve original casing for display
+ */
+function preserveCase(text: string): string {
+  return text.trim();
+}
+
+/**
+ * Load all entities from database tables
+ */
+async function loadAllEntities(): Promise<HighlightEntity[]> {
+  const entities: HighlightEntity[] = [];
+
+  try {
+    // Load people from bible_people_notes
+    const { data: people, error: peopleError } = await supabase
+      .from("bible_people_notes")
+      .select("person_name");
+
+    if (peopleError) {
+      console.error("Error loading people for highlighting:", peopleError);
+    } else if (people) {
+      // Also include aliases from BIBLE_PEOPLE_LIST
+      const peopleMap = new Map<string, string[]>();
+      BIBLE_PEOPLE_LIST.forEach((person) => {
+        const normalized = normalizeForMatching(person.name);
+        if (!peopleMap.has(normalized)) {
+          peopleMap.set(normalized, []);
+        }
+        if (person.aliases) {
+          peopleMap.get(normalized)!.push(...person.aliases);
+        }
+      });
+
+      people.forEach((p) => {
+        if (p.person_name) {
+          const normalized = normalizeForMatching(p.person_name);
+          const aliases = peopleMap.get(normalized) || [];
+          entities.push({
+            type: "person",
+            primary: preserveCase(p.person_name),
+            aliases: aliases.map(preserveCase),
+            normalized,
+          });
         }
       });
     }
-  });
-  
-  // Add places
-  BIBLE_PLACES_LIST.forEach((place) => {
-    const normalizedName = place.name.toLowerCase().trim();
-    // Only add if not already present (person takes priority)
-    if (!termMap.has(normalizedName)) {
-      termMap.set(normalizedName, { term: place.name, type: "place" });
+
+    // Load places from places_in_the_bible_notes
+    const { data: places, error: placesError } = await supabase
+      .from("places_in_the_bible_notes")
+      .select("place, normalized_place");
+
+    if (placesError) {
+      console.error("Error loading places for highlighting:", placesError);
+    } else if (places) {
+      places.forEach((p) => {
+        if (p.place) {
+          const normalized = normalizeForMatching(p.place);
+          // Only add if not already a person
+          const isPerson = entities.some(
+            (e) => e.type === "person" && e.normalized === normalized
+          );
+          if (!isPerson) {
+            entities.push({
+              type: "place",
+              primary: preserveCase(p.place),
+              aliases: [],
+              normalized,
+            });
+          }
+        }
+      });
     }
-  });
-  
-  // Add keywords
-  BIBLE_KEYWORDS_LIST.forEach((keyword) => {
-    const normalizedTerm = keyword.term.toLowerCase().trim();
-    // Only add if not already present (person/place take priority)
-    if (!termMap.has(normalizedTerm)) {
-      termMap.set(normalizedTerm, { term: keyword.term, type: "keyword" });
+
+    // Load keywords from keywords_in_the_bible
+    const { data: keywords, error: keywordsError } = await supabase
+      .from("keywords_in_the_bible")
+      .select("keyword");
+
+    if (keywordsError) {
+      console.error("Error loading keywords for highlighting:", keywordsError);
+    } else if (keywords) {
+      keywords.forEach((k) => {
+        if (k.keyword) {
+          const normalized = normalizeForMatching(k.keyword);
+          // Only add if not already a person or place
+          const isPersonOrPlace = entities.some(
+            (e) =>
+              (e.type === "person" || e.type === "place") &&
+              e.normalized === normalized
+          );
+          if (!isPersonOrPlace) {
+            entities.push({
+              type: "keyword",
+              primary: preserveCase(k.keyword),
+              aliases: [],
+              normalized,
+            });
+          }
+        }
+      });
     }
-  });
-  
-  // Convert to array and sort by length (longest first) to match multi-word terms first
-  return Array.from(termMap.values()).sort((a, b) => b.term.length - a.term.length);
+  } catch (err) {
+    console.error("Error loading entities for highlighting:", err);
+  }
+
+  return entities;
 }
 
 /**
@@ -76,79 +153,133 @@ function escapeHtml(text: string): string {
 }
 
 /**
- * Process Bible text and apply highlights
- * Returns HTML with highlight spans
+ * Process verses array and return enriched HTML
+ * CRITICAL: Each entity is highlighted ONLY ONCE per chapter (across all verses)
  */
-export function enrichBibleText(text: string): string {
-  const terms = buildHighlightTerms();
-  
-  // Track which positions have been highlighted to prevent overlaps
-  const highlightedRanges: Array<{ start: number; end: number; type: string; term: string; matchedText: string }> = [];
-  
-  // Sort terms by length (longest first) to match multi-word terms first
-  const sortedTerms = [...terms].sort((a, b) => b.term.length - a.term.length);
-  
-  // Escape HTML in the original text
-  const escapedText = escapeHtml(text);
-  
-  // Process each term and collect all matches
-  for (const term of sortedTerms) {
-    // Create regex for whole-word matching (case-insensitive)
-    // Escape special regex characters in the term
-    const escapedTerm = term.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
-    
-    // Find all matches in the original escaped text
-    let match: RegExpExecArray | null;
-    regex.lastIndex = 0;
-    
-    while ((match = regex.exec(escapedText)) !== null) {
-      const start = match.index;
-      const end = start + match[0].length;
-      
-      // Check if this range overlaps with any existing highlight
-      const overlaps = highlightedRanges.some(
-        (range) => !(end <= range.start || start >= range.end)
-      );
-      
-      if (!overlaps) {
-        highlightedRanges.push({
-          start,
-          end,
-          type: term.type,
-          term: term.term,
-          matchedText: match[0],
+export async function enrichBibleVerses(
+  verses: Array<{ verse: number; text: string }>
+): Promise<string> {
+  // Load all entities from database (once for entire chapter)
+  const entities = await loadAllEntities();
+
+  // Expand aliases into the same entity (do not duplicate)
+  const expandedEntities: HighlightEntity[] = [];
+  const seenNormalized = new Set<string>();
+
+  entities.forEach((entity) => {
+    // Add primary
+    if (!seenNormalized.has(entity.normalized)) {
+      expandedEntities.push(entity);
+      seenNormalized.add(entity.normalized);
+    }
+
+    // Add aliases
+    entity.aliases.forEach((alias) => {
+      const normalizedAlias = normalizeForMatching(alias);
+      if (!seenNormalized.has(normalizedAlias)) {
+        expandedEntities.push({
+          ...entity,
+          primary: alias, // Use alias as primary for this match
+          normalized: normalizedAlias,
         });
+        seenNormalized.add(normalizedAlias);
+      }
+    });
+  });
+
+  // Sort by longest string first (prevents "David" matching inside "City of David")
+  expandedEntities.sort((a, b) => b.primary.length - a.primary.length);
+
+  // Track what's been highlighted per type (across ALL verses)
+  const highlightedPeople = new Set<string>();
+  const highlightedPlaces = new Set<string>();
+  const highlightedKeywords = new Set<string>();
+
+  // Process each verse, but track highlights across all verses
+  const enrichedVerses = verses.map((v) => {
+    // Escape HTML in the verse text
+    const escapedText = escapeHtml(v.text);
+
+    // Collect matches for this verse
+    const matches: Array<{
+      start: number;
+      end: number;
+      type: "person" | "place" | "keyword";
+      primary: string;
+      matchedText: string;
+    }> = [];
+
+    // Walk through each entity
+    for (const entity of expandedEntities) {
+      // Check if this entity type already highlighted this normalized term (across all verses)
+      let alreadyHighlighted = false;
+      if (entity.type === "person") {
+        alreadyHighlighted = highlightedPeople.has(entity.normalized);
+      } else if (entity.type === "place") {
+        alreadyHighlighted = highlightedPlaces.has(entity.normalized);
+      } else if (entity.type === "keyword") {
+        alreadyHighlighted = highlightedKeywords.has(entity.normalized);
+      }
+
+      if (alreadyHighlighted) {
+        continue; // Skip - already highlighted once in this chapter
+      }
+
+      // Create regex for whole-word matching (case-insensitive)
+      // Escape special regex characters
+      const escapedTerm = entity.primary.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
+
+      // Find first match in this verse
+      regex.lastIndex = 0;
+      const match = regex.exec(escapedText);
+
+      if (match) {
+        const start = match.index;
+        const end = start + match[0].length;
+
+        // Check if this range overlaps with any existing highlight in this verse
+        const overlaps = matches.some(
+          (m) => !(end <= m.start || start >= m.end)
+        );
+
+        if (!overlaps) {
+          matches.push({
+            start,
+            end,
+            type: entity.type,
+            primary: entity.primary,
+            matchedText: match[0],
+          });
+
+          // Mark as highlighted (across all verses)
+          if (entity.type === "person") {
+            highlightedPeople.add(entity.normalized);
+          } else if (entity.type === "place") {
+            highlightedPlaces.add(entity.normalized);
+          } else if (entity.type === "keyword") {
+            highlightedKeywords.add(entity.normalized);
+          }
+        }
       }
     }
-  }
-  
-  // Sort all matches by start position (descending) to replace from end to beginning
-  highlightedRanges.sort((a, b) => b.start - a.start);
-  
-  // Build the result by replacing matches from end to beginning
-  let result = escapedText;
-  for (const range of highlightedRanges) {
-    const before = result.substring(0, range.start);
-    const after = result.substring(range.end);
-    const highlightSpan = `<span class="bible-highlight bible-highlight-${range.type}" data-type="${range.type}" data-term="${escapeHtml(range.term)}">${range.matchedText}</span>`;
-    
-    result = before + highlightSpan + after;
-  }
-  
-  return result;
-}
 
-/**
- * Process verses array and return enriched HTML
- */
-export function enrichBibleVerses(verses: Array<{ verse: number; text: string }>): string {
-  const enrichedVerses = verses.map((v) => {
-    const enrichedText = enrichBibleText(v.text);
-    // Match the existing verse number badge style: rounded-md bg-blue-500 text-white text-[11px] font-semibold px-2 py-[2px] mr-3
+    // Sort matches by start position (descending) to replace from end to beginning
+    matches.sort((a, b) => b.start - a.start);
+
+    // Build the enriched text for this verse
+    let enrichedText = escapedText;
+    for (const match of matches) {
+      const before = enrichedText.substring(0, match.start);
+      const after = enrichedText.substring(match.end);
+      const highlightSpan = `<span class="bible-highlight bible-highlight-${match.type}" data-type="${match.type}" data-term="${escapeHtml(match.primary)}">${match.matchedText}</span>`;
+
+      enrichedText = before + highlightSpan + after;
+    }
+
+    // Match the existing verse number badge style
     return `<p class="leading-relaxed"><span class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white text-[11px] font-semibold px-2 py-[2px] mr-3">${v.verse.toString().padStart(2, "0")}</span>${enrichedText}</p>`;
   });
-  
+
   return enrichedVerses.join("\n");
 }
-

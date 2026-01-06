@@ -447,7 +447,7 @@ export default function BibleChapterPage() {
               setSections(convertToSections(verses, bookDisplay));
               
               // Generate enriched_content and save it
-              const enriched = enrichBibleVerses(verses);
+              const enriched = await enrichBibleVerses(verses);
               setEnrichedContent(enriched);
               
               // Update database with enriched_content
@@ -476,7 +476,7 @@ export default function BibleChapterPage() {
         const apiData: BibleApiResponse = await response.json();
 
         // Step D: Generate enriched_content from verses
-        const enriched = enrichBibleVerses(apiData.verses);
+        const enriched = await enrichBibleVerses(apiData.verses);
         setEnrichedContent(enriched);
 
         // Step E: Save to Supabase ONCE - check first to prevent duplicates
