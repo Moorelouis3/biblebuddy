@@ -968,16 +968,35 @@ FINAL RULES:
                                 alert("Failed to mark as finished. Please try again.");
                               } else {
                                 // ACTION TRACKING: Insert into master_actions
+                                // Always fetch username fresh from auth to ensure we have the correct value
+                                const { data: { user: authUser } } = await supabase.auth.getUser();
+                                let actionUsername = "User"; // Default fallback
+                                
+                                if (authUser) {
+                                  const meta: any = authUser.user_metadata || {};
+                                  actionUsername =
+                                    meta.firstName ||
+                                    meta.first_name ||
+                                    (authUser.email ? authUser.email.split("@")[0] : null) ||
+                                    "User";
+                                }
+
+                                console.log(`[MASTER_ACTIONS] Inserting with username: ${actionUsername}, user_id: ${userId}`);
+
                                 const { error: actionError } = await supabase
                                   .from("master_actions")
                                   .insert({
                                     user_id: userId,
+                                    username: actionUsername,
                                     action_type: "person_learned",
                                   });
 
                                 if (actionError) {
                                   console.error("Error logging action to master_actions:", actionError);
+                                  console.error("Attempted username:", actionUsername);
                                   // Don't block the UI - continue even if action logging fails
+                                } else {
+                                  console.log(`[MASTER_ACTIONS] Successfully inserted action with username: ${actionUsername}`);
                                 }
 
                                 // UPDATE profile_stats: Count from people_progress table
