@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { ChatLouis } from "./ChatLouis";
 import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
+import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -32,6 +33,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           console.log("[APPSHELL] Syncing notes count on initial session check (new day detected)");
           await syncNotesCount(session.user.id);
         }
+        
+        // Sync chapters count on initial session check
+        if (shouldSyncChaptersCount(session.user.id)) {
+          console.log("[APPSHELL] Syncing chapters count on initial session check (new day detected)");
+          await syncChaptersCount(session.user.id);
+        }
       }
     };
 
@@ -48,6 +55,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           if (shouldSyncNotesCount(session.user.id)) {
             console.log("[APPSHELL] Syncing notes count on login/new day");
             await syncNotesCount(session.user.id);
+          }
+          
+          // Sync chapters count when user logs in or session changes
+          if (shouldSyncChaptersCount(session.user.id)) {
+            console.log("[APPSHELL] Syncing chapters count on login/new day");
+            await syncChaptersCount(session.user.id);
           }
         }
       }

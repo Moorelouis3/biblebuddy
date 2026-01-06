@@ -12,6 +12,7 @@ import {
   type StreakData,
 } from "../../lib/profileStats";
 import { syncNotesCount, shouldSyncNotesCount } from "../../lib/syncNotesCount";
+import { syncChaptersCount, shouldSyncChaptersCount } from "../../lib/syncChaptersCount";
 
 export default function ProfilePage() {
   const [userId, setUserId] = useState<string | null>(null);
@@ -38,6 +39,12 @@ export default function ProfilePage() {
         if (shouldSyncNotesCount(user.id)) {
           console.log("[PROFILE] Syncing notes count on profile load (new day detected)");
           await syncNotesCount(user.id);
+        }
+
+        // Sync chapters count if it's a new day or first time
+        if (shouldSyncChaptersCount(user.id)) {
+          console.log("[PROFILE] Syncing chapters count on profile load (new day detected)");
+          await syncChaptersCount(user.id);
         }
 
         // Load profile stats
