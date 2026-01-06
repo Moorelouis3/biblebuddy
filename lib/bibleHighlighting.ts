@@ -47,9 +47,10 @@ function getKeywordNames(): string[] {
  * Layer 3: Theological/Abstract (covenant, redemption, inheritance)
  */
 function getKeywordLayer(term: string): 1 | 2 | 3 {
-  const termLower = term.toLowerCase();
+  const termLower = term.toLowerCase().trim();
   
   // Layer 1: Narrative-Critical - concrete objects/actions in stories
+  // Examples: pit, blood, silver, coat of many colors, flock, slave, dream
   const layer1Keywords = [
     "pit", "blood", "silver", "coat of many colors", "flock", "slave", "dream",
     "robe", "sheep", "goat", "donkey", "camel", "ox", "bull", "ram", "ewe",
@@ -58,10 +59,13 @@ function getKeywordLayer(term: string): 1 | 2 | 3 {
     "altar", "tent", "house", "tower", "wall", "gate", "well", "spring",
     "river", "sea", "mountain", "hill", "valley", "field", "vineyard",
     "grain", "wheat", "barley", "bread", "wine", "oil", "water", "fire",
-    "smoke", "cloud", "wind", "rain", "snow", "ice", "thunder", "lightning"
+    "smoke", "cloud", "wind", "rain", "snow", "ice", "thunder", "lightning",
+    "horse", "mule", "ass", "beast", "animal", "bird", "fish", "serpent",
+    "lion", "wolf", "bear", "deer", "dove", "raven", "eagle", "vulture"
   ];
   
   // Layer 2: Cultural/Historical - cultural artifacts and practices
+  // Examples: balm, myrrh, cistern, sackcloth, signet ring
   const layer2Keywords = [
     "balm", "myrrh", "frankincense", "cistern", "sackcloth", "signet ring",
     "ephod", "breastplate", "phylacteries", "mezuzah", "tallit", "yoke",
@@ -70,24 +74,53 @@ function getKeywordLayer(term: string): 1 | 2 | 3 {
     "cubit", "measure", "basket", "jar", "pot", "vessel", "lamp", "candle",
     "candlestick", "lampstand", "censer", "incense", "anointing oil",
     "burnt offering", "grain offering", "sin offering", "peace offering",
-    "wave offering", "drink offering", "trespass offering", "thank offering"
+    "wave offering", "drink offering", "trespass offering", "thank offering",
+    "dry cistern", "waterless pit", "sackcloth and ashes", "torn garments"
   ];
   
-  // Check if term matches any layer 1 keyword (including partial matches for phrases)
+  // Layer 3: Theological/Abstract - abstract concepts
+  // Examples: covenant, redemption, inheritance
+  const layer3Keywords = [
+    "covenant", "redemption", "inheritance", "atonement", "salvation",
+    "justification", "sanctification", "regeneration", "propitiation",
+    "expiation", "reconciliation", "adoption", "election", "predestination",
+    "foreknowledge", "glorification", "resurrection", "transfiguration",
+    "incarnation", "parousia", "millennium", "tribulation", "rapture"
+  ];
+  
+  // Check exact matches first (most specific)
+  if (layer1Keywords.includes(termLower)) {
+    return 1;
+  }
+  if (layer2Keywords.includes(termLower)) {
+    return 2;
+  }
+  if (layer3Keywords.includes(termLower)) {
+    return 3;
+  }
+  
+  // Check if term contains or is contained in any layer 1 keyword
   for (const keyword of layer1Keywords) {
     if (termLower.includes(keyword) || keyword.includes(termLower)) {
       return 1;
     }
   }
   
-  // Check if term matches any layer 2 keyword
+  // Check if term contains or is contained in any layer 2 keyword
   for (const keyword of layer2Keywords) {
     if (termLower.includes(keyword) || keyword.includes(termLower)) {
       return 2;
     }
   }
   
-  // Default to Layer 3: Theological/Abstract
+  // Check if term contains or is contained in any layer 3 keyword
+  for (const keyword of layer3Keywords) {
+    if (termLower.includes(keyword) || keyword.includes(termLower)) {
+      return 3;
+    }
+  }
+  
+  // Default to Layer 3: Theological/Abstract (most keywords are abstract concepts)
   return 3;
 }
 
