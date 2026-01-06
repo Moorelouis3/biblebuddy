@@ -29,24 +29,31 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       setIsLoggedIn(!!session);
       setUserEmail(session?.user?.email ?? null);
 
-      // Sync notes count on initial session check if user is logged in
+      // Sync notes count on initial session check if user is logged in (non-blocking)
       if (session?.user?.id) {
-        // Track user activity (login/refresh) - once per 24 hours
-        await trackUserActivity(session.user.id);
-        
-        // Recalculate total_actions from current counts
-        await recalculateTotalActions(session.user.id);
-        
-        if (shouldSyncNotesCount(session.user.id)) {
-          console.log("[APPSHELL] Syncing notes count on initial session check (new day detected)");
-          await syncNotesCount(session.user.id);
-        }
-        
-        // Sync chapters count on initial session check
-        if (shouldSyncChaptersCount(session.user.id)) {
-          console.log("[APPSHELL] Syncing chapters count on initial session check (new day detected)");
-          await syncChaptersCount(session.user.id);
-        }
+        // Run all sync/tracking in background - don't block UI
+        (async () => {
+          try {
+            // Track user activity (login/refresh) - once per 24 hours
+            await trackUserActivity(session.user.id);
+            
+            // Recalculate total_actions from current counts
+            await recalculateTotalActions(session.user.id);
+            
+            if (shouldSyncNotesCount(session.user.id)) {
+              console.log("[APPSHELL] Syncing notes count on initial session check (new day detected)");
+              await syncNotesCount(session.user.id);
+            }
+            
+            // Sync chapters count on initial session check
+            if (shouldSyncChaptersCount(session.user.id)) {
+              console.log("[APPSHELL] Syncing chapters count on initial session check (new day detected)");
+              await syncChaptersCount(session.user.id);
+            }
+          } catch (err) {
+            console.error("[APPSHELL] Error in background sync:", err);
+          }
+        })();
       }
     };
 
@@ -57,25 +64,32 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setIsLoggedIn(!!session);
         setUserEmail(session?.user?.email ?? null);
         
-        // Sync notes count when user logs in or session changes
+        // Sync notes count when user logs in or session changes (non-blocking)
         if (session?.user?.id) {
-          // Track user activity (login/refresh) - once per 24 hours
-          await trackUserActivity(session.user.id);
-          
-          // Recalculate total_actions from current counts
-          await recalculateTotalActions(session.user.id);
-          
-          // Check if we should sync (new day or first time)
-          if (shouldSyncNotesCount(session.user.id)) {
-            console.log("[APPSHELL] Syncing notes count on login/new day");
-            await syncNotesCount(session.user.id);
-          }
-          
-          // Sync chapters count when user logs in or session changes
-          if (shouldSyncChaptersCount(session.user.id)) {
-            console.log("[APPSHELL] Syncing chapters count on login/new day");
-            await syncChaptersCount(session.user.id);
-          }
+          // Run all sync/tracking in background - don't block UI
+          (async () => {
+            try {
+              // Track user activity (login/refresh) - once per 24 hours
+              await trackUserActivity(session.user.id);
+              
+              // Recalculate total_actions from current counts
+              await recalculateTotalActions(session.user.id);
+              
+              // Check if we should sync (new day or first time)
+              if (shouldSyncNotesCount(session.user.id)) {
+                console.log("[APPSHELL] Syncing notes count on login/new day");
+                await syncNotesCount(session.user.id);
+              }
+              
+              // Sync chapters count when user logs in or session changes
+              if (shouldSyncChaptersCount(session.user.id)) {
+                console.log("[APPSHELL] Syncing chapters count on login/new day");
+                await syncChaptersCount(session.user.id);
+              }
+            } catch (err) {
+              console.error("[APPSHELL] Error in background sync:", err);
+            }
+          })();
         }
       }
     );
