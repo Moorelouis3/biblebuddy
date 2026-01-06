@@ -126,49 +126,35 @@ export default function BibleChapterPage() {
     ];
   }
 
-  // Add click handlers to pre-rendered highlights (when enriched_content is used)
+  // Event delegation for click handlers on enriched content
   useEffect(() => {
-    if (!verseContainerRef.current || !enrichedContent) {
-      return;
-    }
+    const handler = (e: MouseEvent) => {
+      const el = e.target as HTMLElement;
+      if (!el.classList.contains("bible-highlight")) return;
 
-    const container = verseContainerRef.current;
-    const highlights = container.querySelectorAll('.bible-highlight');
-    
-    const clickHandler = (e: Event) => {
-      const target = e.currentTarget as HTMLElement;
-      const term = target.getAttribute('data-term');
-      const type = target.getAttribute('data-type');
-      
-      if (!term || !type) return;
-      
+      const type = el.dataset.type;
+      const term = el.dataset.term;
+      if (!type || !term) return;
+
       // Open overlay modal in-place (same as clicking a card on People/Places/Keywords pages)
-      if (type === 'person') {
+      if (type === "person") {
         setSelectedPerson({ name: term });
         setSelectedPlace(null);
         setSelectedKeyword(null);
-      } else if (type === 'place') {
+      } else if (type === "place") {
         setSelectedPlace({ name: term });
         setSelectedPerson(null);
         setSelectedKeyword(null);
-      } else if (type === 'keyword') {
+      } else if (type === "keyword") {
         setSelectedKeyword({ name: term });
         setSelectedPerson(null);
         setSelectedPlace(null);
       }
     };
 
-    highlights.forEach((highlight) => {
-      highlight.addEventListener('click', clickHandler);
-    });
-
-    // Cleanup function
-    return () => {
-      highlights.forEach((highlight) => {
-        highlight.removeEventListener('click', clickHandler);
-      });
-    };
-  }, [enrichedContent]);
+    document.addEventListener("click", handler);
+    return () => document.removeEventListener("click", handler);
+  }, []);
 
   // Load notes for selected person (reuse same logic as People page)
   useEffect(() => {
