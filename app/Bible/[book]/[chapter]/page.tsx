@@ -10,8 +10,8 @@ import confetti from "canvas-confetti";
 import { getFeaturedCharactersForMatthew, FeaturedCharacter } from "../../../../lib/featuredCharacters";
 import { FeaturedCharacterModal } from "../../../../components/FeaturedCharacterModal";
 import { useFeaturedCharacters } from "../../../../hooks/useFeaturedCharacters";
-import { useBibleHighlights, HighlightTerm } from "../../../../hooks/useBibleHighlights";
 import ReactMarkdown from "react-markdown";
+import { enrichBibleVerses } from "../../../../lib/bibleHighlighting";
 
 type Verse = {
   num: number;
@@ -68,9 +68,8 @@ export default function BibleChapterPage() {
   const [selectedCharacter, setSelectedCharacter] = useState<FeaturedCharacter | null>(null);
   const verseContainerRef = useRef<HTMLDivElement>(null);
   
-  // Bible highlights
-  const { highlightTerms, loading: highlightsLoading } = useBibleHighlights();
-  const highlightsProcessedRef = useRef(false);
+  // Enriched content (pre-highlighted HTML)
+  const [enrichedContent, setEnrichedContent] = useState<string | null>(null);
   
   // Overlay modals state (reuse same pattern as People/Places/Keywords pages)
   const [selectedPerson, setSelectedPerson] = useState<{ name: string } | null>(null);
@@ -127,115 +126,15 @@ export default function BibleChapterPage() {
     ];
   }
 
-  // Apply highlights to verse text after rendering
+  // Add click handlers to pre-rendered highlights (when enriched_content is used)
   useEffect(() => {
-    if (!verseContainerRef.current || highlightsLoading || !highlightTerms.length || highlightsProcessedRef.current || sections.length === 0) {
+    if (!verseContainerRef.current || !enrichedContent) {
       return;
     }
 
-    // Wait for DOM to be ready using requestAnimationFrame
-    const applyHighlights = () => {
-      const container = verseContainerRef.current;
-      if (!container) return;
-      
-      // Find all verse paragraphs (but not verse number spans)
-      const verseParagraphs = container.querySelectorAll('p.leading-relaxed');
-      
-      if (verseParagraphs.length === 0) {
-        // DOM not ready yet, try again
-        requestAnimationFrame(applyHighlights);
-        return;
-      }
-      
-      // DOM is ready, proceed with highlighting
-
-    // Sort terms by length (longest first) to match multi-word terms before single words
-    const sortedTerms = [...highlightTerms].sort((a, b) => b.term.length - a.term.length);
-
-    verseParagraphs.forEach((paragraph) => {
-      // Get all text nodes in this paragraph (excluding verse number span)
-      const walker = document.createTreeWalker(
-        paragraph,
-        NodeFilter.SHOW_TEXT,
-        {
-          acceptNode: (node) => {
-            // Skip text nodes inside verse number spans or existing highlights
-            const parent = node.parentElement;
-            if (!parent) return NodeFilter.FILTER_REJECT;
-            if (parent.classList.contains('inline-flex')) return NodeFilter.FILTER_REJECT; // verse number
-            if (parent.classList.contains('bible-highlight')) return NodeFilter.FILTER_REJECT;
-            return NodeFilter.FILTER_ACCEPT;
-          }
-        }
-      );
-
-      const textNodes: Text[] = [];
-      let node: Node | null;
-      while ((node = walker.nextNode())) {
-        textNodes.push(node as Text);
-      }
-
-      textNodes.forEach((textNode) => {
-        let text = textNode.textContent || '';
-        let replaced = false;
-
-        // Process each term
-        for (const term of sortedTerms) {
-          // Create regex for whole-word matching (case-insensitive)
-          const regex = new RegExp(`\\b${term.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
-          
-          if (regex.test(text)) {
-            // Split text and wrap matches
-            const parts: (string | HTMLElement)[] = [];
-            let lastIndex = 0;
-            regex.lastIndex = 0; // Reset regex
-            let match: RegExpExecArray | null;
-            
-            while ((match = regex.exec(text)) !== null) {
-              // Add text before match
-              if (match.index > lastIndex) {
-                parts.push(text.substring(lastIndex, match.index));
-              }
-              
-              // Create highlight span
-              const span = document.createElement('span');
-              span.className = `bible-highlight bible-highlight-${term.type}`;
-              span.setAttribute('data-type', term.type);
-              span.setAttribute('data-term', term.term);
-              span.textContent = match[0];
-              span.style.cursor = 'pointer';
-              parts.push(span);
-              
-              lastIndex = match.index + match[0].length;
-            }
-            
-            // Add remaining text
-            if (lastIndex < text.length) {
-              parts.push(text.substring(lastIndex));
-            }
-            
-            // Replace text node with fragments
-            if (parts.length > 1) {
-              const fragment = document.createDocumentFragment();
-              parts.forEach((part) => {
-                if (typeof part === 'string') {
-                  fragment.appendChild(document.createTextNode(part));
-                } else {
-                  fragment.appendChild(part);
-                }
-              });
-              
-              textNode.parentNode?.replaceChild(fragment, textNode);
-              replaced = true;
-              break; // Only process first match to avoid overlapping
-            }
-          }
-        }
-      });
-    });
-
-    // Add click handlers to all highlights
+    const container = verseContainerRef.current;
     const highlights = container.querySelectorAll('.bible-highlight');
+    
     const clickHandler = (e: Event) => {
       const target = e.currentTarget as HTMLElement;
       const term = target.getAttribute('data-term');
@@ -263,20 +162,13 @@ export default function BibleChapterPage() {
       highlight.addEventListener('click', clickHandler);
     });
 
-      highlightsProcessedRef.current = true;
-      console.log("Bible highlights applied");
-
-      // Cleanup function
-      return () => {
-        highlights.forEach((highlight) => {
-          highlight.removeEventListener('click', clickHandler);
-        });
-      };
+    // Cleanup function
+    return () => {
+      highlights.forEach((highlight) => {
+        highlight.removeEventListener('click', clickHandler);
+      });
     };
-    
-    // Start the highlighting process
-    requestAnimationFrame(applyHighlights);
-  }, [sections, highlightTerms, highlightsLoading, router]);
+  }, [enrichedContent]);
 
   // Load notes for selected person (reuse same logic as People page)
   useEffect(() => {
@@ -511,7 +403,6 @@ export default function BibleChapterPage() {
         return;
       }
       loadingRef.current = true;
-      highlightsProcessedRef.current = false; // Reset highlight processing when chapter changes
 
       try {
         setLoading(true);
@@ -520,24 +411,56 @@ export default function BibleChapterPage() {
         // Step A: Check Supabase table bible_chapters FIRST
         const { data: supabaseData, error: supabaseError } = await supabase
           .from("bible_chapters")
-          .select("content_json")
+          .select("content_json, enriched_content")
           .eq("book", book)
           .eq("chapter", chapter)
           .maybeSingle();
 
-        if (supabaseData && !supabaseError && supabaseData.content_json) {
-          // Step B: Use content_json to render verses - DO NOT call API
-          const content = supabaseData.content_json as any;
-          if (content && content.verses) {
-            const verses = content.verses as BibleApiVerse[];
-            const bookDisplay = book
-              .split(" ")
-              .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-              .join(" ");
-            setSections(convertToSections(verses, bookDisplay));
+        if (supabaseData && !supabaseError) {
+          // Step B: If enriched_content exists, use it directly (no runtime highlighting needed)
+          if (supabaseData.enriched_content) {
+            setEnrichedContent(supabaseData.enriched_content);
+            // Still set sections for structure, but enriched_content will be rendered
+            const content = supabaseData.content_json as any;
+            if (content && content.verses) {
+              const verses = content.verses as BibleApiVerse[];
+              const bookDisplay = book
+                .split(" ")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(" ");
+              setSections(convertToSections(verses, bookDisplay));
+            }
             setLoading(false);
             loadingRef.current = false;
             return;
+          }
+          
+          // Step C: If content_json exists but no enriched_content, use it and generate enriched_content
+          if (supabaseData.content_json) {
+            const content = supabaseData.content_json as any;
+            if (content && content.verses) {
+              const verses = content.verses as BibleApiVerse[];
+              const bookDisplay = book
+                .split(" ")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(" ");
+              setSections(convertToSections(verses, bookDisplay));
+              
+              // Generate enriched_content and save it
+              const enriched = enrichBibleVerses(verses);
+              setEnrichedContent(enriched);
+              
+              // Update database with enriched_content
+              await supabase
+                .from("bible_chapters")
+                .update({ enriched_content: enriched })
+                .eq("book", book)
+                .eq("chapter", chapter);
+              
+              setLoading(false);
+              loadingRef.current = false;
+              return;
+            }
           }
         }
 
@@ -552,7 +475,11 @@ export default function BibleChapterPage() {
 
         const apiData: BibleApiResponse = await response.json();
 
-        // Step D: Save to Supabase ONCE - check first to prevent duplicates
+        // Step D: Generate enriched_content from verses
+        const enriched = enrichBibleVerses(apiData.verses);
+        setEnrichedContent(enriched);
+
+        // Step E: Save to Supabase ONCE - check first to prevent duplicates
         const { data: existingCheck } = await supabase
           .from("bible_chapters")
           .select("id")
@@ -569,6 +496,7 @@ export default function BibleChapterPage() {
                 book: book,
                 chapter: chapter,
                 content_json: apiData,
+                enriched_content: enriched,
               },
             ]);
 
@@ -593,10 +521,10 @@ export default function BibleChapterPage() {
       }
     }
 
-    if (book && chapter) {
-      loadChapter();
-    }
-  }, [book, chapter]);
+      if (book && chapter) {
+        loadChapter();
+      }
+    }, [book, chapter]);
 
   // Get user ID
   useEffect(() => {
@@ -1095,25 +1023,34 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           ref={verseContainerRef}
           className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 mb-6 max-h-[60vh] overflow-y-auto"
         >
-          {sections.map((section) => (
-            <div key={section.id} className="mb-8 last:mb-0">
-              <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                <span className="text-2xl">{section.emoji}</span>
-                <span>{section.title}</span>
-              </h2>
+          {enrichedContent ? (
+            // Use pre-rendered enriched content if available
+            <div 
+              className="space-y-5"
+              dangerouslySetInnerHTML={{ __html: enrichedContent }}
+            />
+          ) : (
+            // Fallback to regular rendering (for chapters without enriched_content yet)
+            sections.map((section) => (
+              <div key={section.id} className="mb-8 last:mb-0">
+                <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                  <span className="text-2xl">{section.emoji}</span>
+                  <span>{section.title}</span>
+                </h2>
 
-              <div className="space-y-5">
-                {section.verses.map((verse) => (
-                  <p key={verse.num} className="leading-relaxed">
-                    <span className="inline-flex items-center justify-center rounded-md bg-blue-500 text-white text-[11px] font-semibold px-2 py-[2px] mr-3">
-                      {verse.num.toString().padStart(2, "0")}
-                    </span>
-                    {verse.text}
-                  </p>
-                ))}
+                <div className="space-y-5">
+                  {section.verses.map((verse) => (
+                    <p key={verse.num} className="leading-relaxed">
+                      <span className="inline-flex items-center justify-center rounded-md bg-blue-500 text-white text-[11px] font-semibold px-2 py-[2px] mr-3">
+                        {verse.num.toString().padStart(2, "0")}
+                      </span>
+                      {verse.text}
+                    </p>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
 
         {/* ACTION BUTTONS ROW */}
