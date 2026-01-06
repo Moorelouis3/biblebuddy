@@ -140,10 +140,16 @@ export default function ProfilePage() {
       // Track unique login dates (one per day) - backend already handles this, but we'll filter just in case
       const loginDates = new Set<string>();
 
+      console.log(`[ACTION_LOG] Processing ${masterActions.length} actions...`);
+      let processedCount = 0;
+      let skippedCount = 0;
+
       for (const action of masterActions) {
         const actionDate = new Date(action.created_at);
         const dateKey = actionDate.toISOString().split('T')[0]; // YYYY-MM-DD
         const formattedDate = formatActionDate(actionDate);
+
+        console.log(`[ACTION_LOG] Processing action: type=${action.action_type}, label=${action.action_label ?? 'null'}, date=${action.created_at}`);
 
         // Only process allowed action types
         if (action.action_type === "chapter_completed") {
@@ -156,6 +162,7 @@ export default function ProfilePage() {
             sortKey: actionDate.getTime(),
             actionType: "chapter_completed",
           });
+          processedCount++;
         } else if (action.action_type === "book_completed") {
           const text = action.action_label 
             ? `On ${formattedDate}, you finished ${action.action_label}.`
@@ -166,6 +173,7 @@ export default function ProfilePage() {
             sortKey: actionDate.getTime(),
             actionType: "book_completed",
           });
+          processedCount++;
         } else if (action.action_type === "person_learned") {
           const text = action.action_label 
             ? `On ${formattedDate}, you learned about ${action.action_label}.`
@@ -176,6 +184,7 @@ export default function ProfilePage() {
             sortKey: actionDate.getTime(),
             actionType: "person_learned",
           });
+          processedCount++;
         } else if (action.action_type === "place_discovered") {
           const text = action.action_label 
             ? `On ${formattedDate}, you discovered ${action.action_label}.`
@@ -186,6 +195,7 @@ export default function ProfilePage() {
             sortKey: actionDate.getTime(),
             actionType: "place_discovered",
           });
+          processedCount++;
         } else if (action.action_type === "keyword_mastered") {
           const text = action.action_label 
             ? `On ${formattedDate}, you mastered ${action.action_label}.`
@@ -196,6 +206,7 @@ export default function ProfilePage() {
             sortKey: actionDate.getTime(),
             actionType: "keyword_mastered",
           });
+          processedCount++;
         } else if (action.action_type === "note_created") {
           actions.push({
             date: formattedDate,
@@ -203,6 +214,7 @@ export default function ProfilePage() {
             sortKey: actionDate.getTime(),
             actionType: "note_created",
           });
+          processedCount++;
         } else if (action.action_type === "user_login") {
           // Only show one login per day (backend already handles this, but filter for safety)
           if (!loginDates.has(dateKey)) {
@@ -213,16 +225,25 @@ export default function ProfilePage() {
               sortKey: actionDate.getTime(),
               actionType: "user_login",
             });
+            processedCount++;
+          } else {
+            console.log(`[ACTION_LOG] Skipping duplicate login for date: ${dateKey}`);
+            skippedCount++;
           }
+        } else {
+          // Unknown action type - log it but don't process
+          console.log(`[ACTION_LOG] Skipping unknown action type: ${action.action_type}`);
+          skippedCount++;
         }
-        // Ignore all other action types
       }
 
       // Actions are already sorted by created_at DESC from the query, but sort again to be safe
       actions.sort((a, b) => b.sortKey - a.sortKey);
+      console.log(`[ACTION_LOG] Final summary: ${processedCount} processed, ${skippedCount} skipped, ${actions.length} actions in log`);
       setActionLog(actions);
     } catch (err) {
-      console.error("Error building action log:", err);
+      console.error("[ACTION_LOG] Error building action log:", err);
+      console.error("[ACTION_LOG] Error stack:", err instanceof Error ? err.stack : "No stack trace");
       setActionLog([]);
     }
   }
