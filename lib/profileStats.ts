@@ -175,51 +175,60 @@ export async function calculateStreakFromActions(
 
     console.log(`[STREAK] Found ${data?.length || 0} valid streak actions`);
 
-    // Convert to dates (YYYY-MM-DD) and deduplicate
+    // Helper function to get YYYY-MM-DD from a Date in local timezone
+    const getLocalDateString = (date: Date): string => {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    };
+
+    // Convert to dates (YYYY-MM-DD) using LOCAL timezone and deduplicate
     // One valid action per day = streak day (no minimum count needed)
     const completedDates = new Set<string>();
     data?.forEach((action) => {
-      // Use local date to match user's calendar day
+      // Parse as UTC timestamp, then convert to user's local date
       const actionDate = new Date(action.created_at);
-      const dateStr = actionDate.toISOString().slice(0, 10); // YYYY-MM-DD
+      const dateStr = getLocalDateString(actionDate);
       completedDates.add(dateStr);
-      console.log(`[STREAK] Action on ${dateStr}: ${action.action_type}`);
+      console.log(`[STREAK] Action on ${dateStr} (${action.action_type}) - UTC was: ${action.created_at}`);
     });
 
     console.log(`[STREAK] Active dates:`, Array.from(completedDates).sort());
 
-    // Calculate current streak (walk backward from today)
+    // Calculate current streak (walk backward from today in LOCAL timezone)
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const todayStr = today.toISOString().slice(0, 10);
+    const todayStr = getLocalDateString(today);
+    console.log(`[STREAK] Today (local): ${todayStr}`);
 
     let currentStreak = 0;
     let checkDate = new Date(today);
     let checkDateStr = todayStr;
 
-    // Walk backward day by day
+    // Walk backward day by day (using local dates)
     while (true) {
       if (completedDates.has(checkDateStr)) {
         currentStreak++;
         checkDate.setDate(checkDate.getDate() - 1);
-        checkDateStr = checkDate.toISOString().slice(0, 10);
+        checkDateStr = getLocalDateString(checkDate);
       } else {
         break; // Streak breaks
       }
     }
 
-    // Generate last 7 days
+    // Generate last 7 days (using local dates)
     const last7Days: Array<{ date: string; completed: boolean }> = [];
     for (let i = 6; i >= 0; i--) {
       const date = new Date(today);
       date.setDate(date.getDate() - i);
-      const dateStr = date.toISOString().slice(0, 10);
+      const dateStr = getLocalDateString(date);
       const isCompleted = completedDates.has(dateStr);
       last7Days.push({
         date: dateStr,
         completed: isCompleted,
       });
-      console.log(`[STREAK] Day ${dateStr}: ${isCompleted ? 'ACTIVE' : 'inactive'}`);
+      console.log(`[STREAK] Day ${dateStr}: ${isCompleted ? '✓ ACTIVE' : '✗ inactive'}`);
     }
 
     console.log(`[STREAK] Current streak: ${currentStreak} days`);
