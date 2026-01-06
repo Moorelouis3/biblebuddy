@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { FormEvent, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
@@ -161,11 +162,16 @@ export default function LandingPage() {
                 <div className="w-full max-w-3xl h-px bg-gray-200"></div>
               </div>
               
-              {/* Laptop mockup placeholder - replace with actual image */}
-              <div className="relative bg-gray-100 rounded-lg shadow-2xl p-4 md:p-6 border border-gray-200">
-                <div className="aspect-video bg-gradient-to-br from-blue-50 to-gray-100 rounded border border-gray-300 flex items-center justify-center">
-                  <div className="text-gray-400 text-sm">Bible Buddy App Screenshot</div>
-                </div>
+              {/* Laptop mockup image */}
+              <div className="relative">
+                <Image
+                  src="/images/matthew-overview/landingmain.png"
+                  alt="Bible Buddy App Screenshot"
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto rounded-lg shadow-2xl"
+                  priority
+                />
               </div>
             </div>
 
