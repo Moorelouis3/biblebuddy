@@ -30,7 +30,7 @@ export async function syncChaptersCount(userId: string): Promise<boolean> {
     // Get existing username if available
     const { data: currentStats } = await supabase
       .from("profile_stats")
-      .select("username")
+      .select("username, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count")
       .eq("user_id", userId)
       .maybeSingle();
 
@@ -48,6 +48,14 @@ export async function syncChaptersCount(userId: string): Promise<boolean> {
       }
     }
 
+    // Calculate total_actions as sum of all counts
+    const totalActions = 
+      (count || 0) +
+      (currentStats?.notes_created_count || 0) +
+      (currentStats?.people_learned_count || 0) +
+      (currentStats?.places_discovered_count || 0) +
+      (currentStats?.keywords_mastered_count || 0);
+
     // Update profile_stats with the count
     const { error: statsError } = await supabase
       .from("profile_stats")
@@ -55,6 +63,7 @@ export async function syncChaptersCount(userId: string): Promise<boolean> {
         {
           user_id: userId,
           chapters_completed_count: count || 0,
+          total_actions: totalActions,
           username: username,
           updated_at: new Date().toISOString(),
         },

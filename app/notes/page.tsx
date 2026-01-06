@@ -391,11 +391,19 @@ export default function NotesPage() {
           // Get existing username if available
           const { data: currentStats } = await supabase
             .from("profile_stats")
-            .select("username")
+            .select("username, chapters_completed_count, people_learned_count, places_discovered_count, keywords_mastered_count")
             .eq("user_id", userId)
             .maybeSingle();
 
           const finalUsername = currentStats?.username || statsUsername || "User";
+          
+          // Calculate total_actions as sum of all counts
+          const totalActions = 
+            (currentStats?.chapters_completed_count || 0) +
+            (count || 0) +
+            (currentStats?.people_learned_count || 0) +
+            (currentStats?.places_discovered_count || 0) +
+            (currentStats?.keywords_mastered_count || 0);
 
           // Update profile_stats with the count
           const { error: statsError } = await supabase
@@ -404,6 +412,7 @@ export default function NotesPage() {
               {
                 user_id: userId,
                 notes_created_count: count || 0,
+                total_actions: totalActions,
                 username: finalUsername,
                 updated_at: new Date().toISOString(),
               },

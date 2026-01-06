@@ -1029,11 +1029,19 @@ FINAL RULES:
                                   // Get existing username if available
                                   const { data: currentStats } = await supabase
                                     .from("profile_stats")
-                                    .select("username")
+                                    .select("username, chapters_completed_count, notes_created_count, places_discovered_count, keywords_mastered_count")
                                     .eq("user_id", userId)
                                     .maybeSingle();
 
                                   const finalUsername = currentStats?.username || statsUsername || "User";
+                                  
+                                  // Calculate total_actions as sum of all counts
+                                  const totalActions = 
+                                    (currentStats?.chapters_completed_count || 0) +
+                                    (currentStats?.notes_created_count || 0) +
+                                    (count || 0) +
+                                    (currentStats?.places_discovered_count || 0) +
+                                    (currentStats?.keywords_mastered_count || 0);
 
                                   // Update profile_stats with count from database
                                   const { error: statsUpdateError } = await supabase
@@ -1043,6 +1051,7 @@ FINAL RULES:
                                         user_id: userId,
                                         username: finalUsername,
                                         people_learned_count: count || 0,
+                                        total_actions: totalActions,
                                         updated_at: new Date().toISOString(),
                                       },
                                       {
@@ -1063,10 +1072,25 @@ FINAL RULES:
                                       .eq("user_id", userId);
 
                                     if (!notesCountError && notesCount !== null) {
+                                      // Get all counts to calculate total_actions
+                                      const { data: allStats } = await supabase
+                                        .from("profile_stats")
+                                        .select("chapters_completed_count, people_learned_count, places_discovered_count, keywords_mastered_count")
+                                        .eq("user_id", userId)
+                                        .maybeSingle();
+
+                                      const totalActions = 
+                                        (allStats?.chapters_completed_count || 0) +
+                                        (notesCount || 0) +
+                                        (allStats?.people_learned_count || 0) +
+                                        (allStats?.places_discovered_count || 0) +
+                                        (allStats?.keywords_mastered_count || 0);
+
                                       const { error: notesUpdateError } = await supabase
                                         .from("profile_stats")
                                         .update({
                                           notes_created_count: notesCount || 0,
+                                          total_actions: totalActions,
                                         })
                                         .eq("user_id", userId);
 
