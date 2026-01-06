@@ -13,7 +13,7 @@ import {
 } from "../../lib/profileStats";
 import { syncNotesCount, shouldSyncNotesCount } from "../../lib/syncNotesCount";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../../lib/syncChaptersCount";
-import { isBookComplete } from "../../lib/readingProgress";
+import { isBookComplete, getBookTotalChapters, getCompletedChapters } from "../../lib/readingProgress";
 
 export default function ProfilePage() {
   const [userId, setUserId] = useState<string | null>(null);
@@ -23,6 +23,8 @@ export default function ProfilePage() {
   const [booksCompleted, setBooksCompleted] = useState(0);
   const [bibleCompletion, setBibleCompletion] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [actionLog, setActionLog] = useState<Array<{ date: string; text: string; sortKey: number }>>([]);
+  const [isActionLogOpen, setIsActionLogOpen] = useState(false);
 
   // Load user and all profile data
   useEffect(() => {
@@ -64,8 +66,9 @@ export default function ProfilePage() {
         // Query completed_chapters directly to get accurate counts
         const { data: completedChapters, error: chaptersError } = await supabase
           .from("completed_chapters")
-          .select("book")
-          .eq("user_id", user.id);
+          .select("book, chapter, created_at")
+          .eq("user_id", user.id)
+          .order("created_at", { ascending: false });
 
         if (!chaptersError && completedChapters) {
           // Get unique books that have at least one chapter completed
@@ -89,9 +92,13 @@ export default function ProfilePage() {
             ? Math.round((totalChapters / totalBibleChapters) * 100 * 10) / 10
             : 0;
           setBibleCompletion(completionPercent);
+
+          // Build Action Log from existing data
+          await buildActionLog(user.id, completedChapters);
         } else {
           setBooksCompleted(0);
           setBibleCompletion(0);
+          setActionLog([]);
         }
       } catch (err) {
         console.error("Error loading profile data:", err);
@@ -102,6 +109,140 @@ export default function ProfilePage() {
 
     loadProfileData();
   }, []);
+
+  // Build Action Log from existing data
+  async function buildActionLog(userId: string, completedChapters: Array<{ book: string; chapter: number; created_at: string }>) {
+    const actions: Array<{ date: string; text: string; sortKey: number }> = [];
+
+    try {
+      // 1. Get all actions from master_actions
+      const { data: masterActions, error: actionsError } = await supabase
+        .from("master_actions")
+        .select("action_type, created_at")
+        .eq("user_id", userId)
+        .order("created_at", { ascending: false });
+
+      if (actionsError) {
+        console.error("Error fetching master_actions:", actionsError);
+      } else if (masterActions) {
+        // Track unique login dates (one per day)
+        const loginDates = new Set<string>();
+
+        for (const action of masterActions) {
+          const actionDate = new Date(action.created_at);
+          const dateKey = actionDate.toISOString().split('T')[0]; // YYYY-MM-DD
+          const formattedDate = formatActionDate(actionDate);
+
+          if (action.action_type === "chapter_completed") {
+            actions.push({
+              date: formattedDate,
+              text: `On ${formattedDate}, you completed a chapter.`,
+              sortKey: actionDate.getTime(),
+            });
+          } else if (action.action_type === "person_learned") {
+            actions.push({
+              date: formattedDate,
+              text: `On ${formattedDate}, you learned about a new person.`,
+              sortKey: actionDate.getTime(),
+            });
+          } else if (action.action_type === "place_discovered") {
+            actions.push({
+              date: formattedDate,
+              text: `On ${formattedDate}, you discovered a new place.`,
+              sortKey: actionDate.getTime(),
+            });
+          } else if (action.action_type === "keyword_mastered") {
+            actions.push({
+              date: formattedDate,
+              text: `On ${formattedDate}, you mastered a new keyword.`,
+              sortKey: actionDate.getTime(),
+            });
+          } else if (action.action_type === "user_login") {
+            // Only show one login per day
+            if (!loginDates.has(dateKey)) {
+              loginDates.add(dateKey);
+              actions.push({
+                date: formattedDate,
+                text: `On ${formattedDate}, you logged in.`,
+                sortKey: actionDate.getTime(),
+              });
+            }
+          }
+        }
+      }
+
+      // 2. Detect book completions from completed_chapters
+      // Group chapters by book and find when each book was completed
+      const bookChapters = new Map<string, Array<{ chapter: number; created_at: string }>>();
+      
+      for (const chapter of completedChapters) {
+        if (!bookChapters.has(chapter.book)) {
+          bookChapters.set(chapter.book, []);
+        }
+        bookChapters.get(chapter.book)!.push({
+          chapter: chapter.chapter,
+          created_at: chapter.created_at,
+        });
+      }
+
+      // For each book, check if it's complete and find the date of the last chapter
+      for (const [book, chapters] of bookChapters.entries()) {
+        const totalChapters = getBookTotalChapters(book);
+        const completedChapterNumbers = chapters.map(c => c.chapter);
+        const completedSet = new Set(completedChapterNumbers);
+
+        // Check if all chapters are completed
+        let allChaptersCompleted = true;
+        for (let i = 1; i <= totalChapters; i++) {
+          if (!completedSet.has(i)) {
+            allChaptersCompleted = false;
+            break;
+          }
+        }
+
+        if (allChaptersCompleted && chapters.length > 0) {
+          // Find the date when the book was completed
+          // This is the latest created_at among all chapters (when the last chapter was added)
+          const sortedChapters = [...chapters].sort((a, b) => 
+            new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+          );
+          
+          // The book completion date is when the most recently added chapter was completed
+          const completionDate = new Date(sortedChapters[0].created_at);
+          const formattedDate = formatActionDate(completionDate);
+          
+          // Capitalize book name properly
+          const bookName = book.split(' ').map(word => {
+            // Handle numbered books like "1 Samuel" -> "1 Samuel"
+            if (/^\d+$/.test(word)) return word;
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+          }).join(' ');
+
+          actions.push({
+            date: formattedDate,
+            text: `On ${formattedDate}, you completed ${bookName}.`,
+            sortKey: completionDate.getTime(),
+          });
+        }
+      }
+
+      // Sort by date (newest first) and limit display
+      actions.sort((a, b) => b.sortKey - a.sortKey);
+      setActionLog(actions);
+    } catch (err) {
+      console.error("Error building action log:", err);
+      setActionLog([]);
+    }
+  }
+
+  // Format date for action log display
+  function formatActionDate(date: Date): string {
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    return `${months[date.getMonth()]} ${date.getDate()}`;
+  }
 
   const getHeatMapColor = (actions: number) => {
     if (actions === 0) return "bg-gray-100";
@@ -320,6 +461,61 @@ export default function ProfilePage() {
             <div className="text-2xl font-bold mb-1">{displayStats.keywords_mastered_count}</div>
             <div className="text-sm text-gray-700">Keywords Mastered</div>
           </div>
+        </div>
+
+        {/* ACTION LOG SECTION */}
+        <div className="bg-white border border-gray-200 rounded-xl shadow-sm mt-6">
+          {/* Collapsible Header */}
+          <button
+            type="button"
+            onClick={() => setIsActionLogOpen(!isActionLogOpen)}
+            className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors duration-150 active:scale-[0.99]"
+          >
+            <h2 className="text-xl font-semibold">Action Log</h2>
+            <svg
+              className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
+                isActionLogOpen ? "rotate-180" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          {/* Collapsible Content */}
+          {isActionLogOpen && (
+            <div className="px-6 pb-6">
+              {actionLog.length === 0 ? (
+                <p className="text-sm text-gray-500 py-4">
+                  No actions yet. Start reading to see your activity history!
+                </p>
+              ) : (
+                <div
+                  className={`space-y-3 ${
+                    actionLog.length > 10
+                      ? "max-h-96 overflow-y-auto pr-2"
+                      : ""
+                  }`}
+                >
+                  {actionLog.map((action, index) => (
+                    <div
+                      key={index}
+                      className="text-sm text-gray-700 py-1 border-b border-gray-100 last:border-0"
+                    >
+                      {action.text}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
