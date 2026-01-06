@@ -1180,47 +1180,65 @@ FINAL RULES:
                   }
 
                   try {
-                    const { error } = await supabase
+                    // Step 1: Delete all people_progress entries
+                    const { error: deleteError } = await supabase
                       .from("people_progress")
                       .delete()
                       .eq("user_id", userId);
 
-                    if (error) {
-                      console.error("Error resetting progress:", error);
+                    if (deleteError) {
+                      console.error("Error resetting progress:", deleteError);
                       alert("Failed to reset progress. Please try again.");
-                    } else {
-                      // Reset profile_stats.people_learned_count to 0
-                      const { data: currentStats } = await supabase
-                        .from("profile_stats")
-                        .select("username")
-                        .eq("user_id", userId)
-                        .maybeSingle();
-
-                      const finalUsername = currentStats?.username || username || "User";
-
-                      const { error: statsError } = await supabase
-                        .from("profile_stats")
-                        .upsert(
-                          {
-                            user_id: userId,
-                            username: finalUsername,
-                            people_learned_count: 0,
-                            updated_at: new Date().toISOString(),
-                          },
-                          {
-                            onConflict: "user_id",
-                          }
-                        );
-
-                      if (statsError) {
-                        console.error("Error resetting profile_stats:", statsError);
-                        // Don't block UI - continue even if stats reset fails
-                      }
-
-                      // Clear local state
-                      setCompletedPeople(new Set());
-                      setShowResetModal(false);
+                      return;
                     }
+
+                    // Step 2: Reset profile_stats.people_learned_count to 0 (CRITICAL - must execute)
+                    // Get username if needed
+                    let finalUsername = username;
+                    if (!finalUsername) {
+                      const { data: { user } } = await supabase.auth.getUser();
+                      if (user) {
+                        const meta: any = user.user_metadata || {};
+                        finalUsername =
+                          meta.firstName ||
+                          meta.first_name ||
+                          (user.email ? user.email.split("@")[0] : null) ||
+                          "User";
+                      }
+                    }
+
+                    // Get existing stats to preserve username
+                    const { data: currentStats } = await supabase
+                      .from("profile_stats")
+                      .select("username")
+                      .eq("user_id", userId)
+                      .maybeSingle();
+
+                    const usernameToUse = currentStats?.username || finalUsername || "User";
+
+                    // CRITICAL: Update profile_stats with people_learned_count = 0
+                    const { error: statsError } = await supabase
+                      .from("profile_stats")
+                      .upsert(
+                        {
+                          user_id: userId,
+                          username: usernameToUse,
+                          people_learned_count: 0,
+                          updated_at: new Date().toISOString(),
+                        },
+                        {
+                          onConflict: "user_id",
+                        }
+                      );
+
+                    if (statsError) {
+                      console.error("Error resetting profile_stats:", statsError);
+                      alert(`Progress reset, but failed to update stats: ${statsError.message}`);
+                    }
+
+                    // Step 3: Clear local state
+                    setCompletedPeople(new Set());
+                    setShowResetModal(false);
                   } catch (err) {
                     console.error("Error resetting progress:", err);
                     alert("Failed to reset progress. Please try again.");
