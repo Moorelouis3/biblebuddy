@@ -601,12 +601,23 @@ RULES:
 
                                 console.log(`[MASTER_ACTIONS] Inserting keyword_mastered with username: ${actionUsername}, user_id: ${userId}`);
 
+                                // Format keyword name for action_label (capitalize properly)
+                                const formatKeywordName = (name: string): string => {
+                                  return name.split(' ').map(word => {
+                                    if (/^\d+$/.test(word)) return word; // Keep numbers as-is
+                                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                                  }).join(' ');
+                                };
+
+                                const keywordDisplayName = formatKeywordName(selectedKeyword.name);
+
                                 const { error: actionError } = await supabase
                                   .from("master_actions")
                                   .insert({
                                     user_id: userId,
                                     username: actionUsername,
                                     action_type: "keyword_mastered",
+                                    action_label: keywordDisplayName,
                                   });
 
                                 if (actionError) {

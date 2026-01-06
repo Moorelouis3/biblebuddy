@@ -116,7 +116,7 @@ export default function ProfilePage() {
       // Get all actions from master_actions table
       const { data: masterActions, error: actionsError } = await supabase
         .from("master_actions")
-        .select("action_type, created_at")
+        .select("action_type, action_label, created_at")
         .eq("user_id", userId)
         .order("created_at", { ascending: false });
 
@@ -141,37 +141,52 @@ export default function ProfilePage() {
 
         // Only process allowed action types
         if (action.action_type === "chapter_completed") {
+          const text = action.action_label 
+            ? `On ${formattedDate}, you completed ${action.action_label}.`
+            : `On ${formattedDate}, you completed a chapter.`;
           actions.push({
             date: formattedDate,
-            text: `On ${formattedDate}, you completed a chapter.`,
+            text,
             sortKey: actionDate.getTime(),
             actionType: "chapter_completed",
           });
         } else if (action.action_type === "book_completed") {
+          const text = action.action_label 
+            ? `On ${formattedDate}, you finished ${action.action_label}.`
+            : `On ${formattedDate}, you finished a book.`;
           actions.push({
             date: formattedDate,
-            text: `On ${formattedDate}, you completed a book.`,
+            text,
             sortKey: actionDate.getTime(),
             actionType: "book_completed",
           });
         } else if (action.action_type === "person_learned") {
+          const text = action.action_label 
+            ? `On ${formattedDate}, you learned about ${action.action_label}.`
+            : `On ${formattedDate}, you learned about a new person.`;
           actions.push({
             date: formattedDate,
-            text: `On ${formattedDate}, you learned about a new person.`,
+            text,
             sortKey: actionDate.getTime(),
             actionType: "person_learned",
           });
         } else if (action.action_type === "place_discovered") {
+          const text = action.action_label 
+            ? `On ${formattedDate}, you discovered ${action.action_label}.`
+            : `On ${formattedDate}, you discovered a new place.`;
           actions.push({
             date: formattedDate,
-            text: `On ${formattedDate}, you discovered a new place.`,
+            text,
             sortKey: actionDate.getTime(),
             actionType: "place_discovered",
           });
         } else if (action.action_type === "keyword_mastered") {
+          const text = action.action_label 
+            ? `On ${formattedDate}, you mastered ${action.action_label}.`
+            : `On ${formattedDate}, you mastered a new keyword.`;
           actions.push({
             date: formattedDate,
-            text: `On ${formattedDate}, you mastered a new keyword.`,
+            text,
             sortKey: actionDate.getTime(),
             actionType: "keyword_mastered",
           });

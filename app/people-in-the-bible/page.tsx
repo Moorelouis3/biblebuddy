@@ -983,12 +983,23 @@ FINAL RULES:
 
                                 console.log(`[MASTER_ACTIONS] Inserting with username: ${actionUsername}, user_id: ${userId}`);
 
+                                // Format person name for action_label (capitalize properly)
+                                const formatPersonName = (name: string): string => {
+                                  return name.split(' ').map(word => {
+                                    if (/^\d+$/.test(word)) return word; // Keep numbers as-is
+                                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                                  }).join(' ');
+                                };
+
+                                const personDisplayName = formatPersonName(selectedPerson.name);
+
                                 const { error: actionError } = await supabase
                                   .from("master_actions")
                                   .insert({
                                     user_id: userId,
                                     username: actionUsername,
                                     action_type: "person_learned",
+                                    action_label: personDisplayName,
                                   });
 
                                 if (actionError) {

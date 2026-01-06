@@ -5,7 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { supabase } from "../../../../lib/supabaseClient";
-import { markChapterDone, isChapterCompleted, getBookTotalChapters, getCompletedChapters } from "../../../../lib/readingProgress";
+import { markChapterDone, isChapterCompleted, getBookTotalChapters, getCompletedChapters, isBookComplete } from "../../../../lib/readingProgress";
 import confetti from "canvas-confetti";
 import { getFeaturedCharactersForMatthew, FeaturedCharacter } from "../../../../lib/featuredCharacters";
 import { FeaturedCharacterModal } from "../../../../components/FeaturedCharacterModal";
@@ -1189,16 +1189,54 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               "User";
           }
 
+          // Format book name for action_label (capitalize properly)
+          const formatBookName = (bookName: string): string => {
+            return bookName.split(' ').map(word => {
+              // Handle numbered books like "1 Samuel" -> "1 Samuel"
+              if (/^\d+$/.test(word)) return word;
+              return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            }).join(' ');
+          };
+
+          const bookDisplayName = formatBookName(book);
+          const actionLabel = `${bookDisplayName} ${chapter}`;
+
           const { error: actionError } = await supabase
             .from("master_actions")
             .insert({
               user_id: userId,
               username: actionUsername,
               action_type: "chapter_completed",
+              action_label: actionLabel,
             });
 
           if (actionError) {
             console.error("Error logging action to master_actions:", actionError);
+          }
+
+          // Check if book is now complete and log book_completed action
+          try {
+            const bookIsComplete = await isBookComplete(userId, book);
+            if (bookIsComplete) {
+              // Book is complete - log book_completed action
+              const { error: bookActionError } = await supabase
+                .from("master_actions")
+                .insert({
+                  user_id: userId,
+                  username: actionUsername,
+                  action_type: "book_completed",
+                  action_label: bookDisplayName,
+                });
+
+              if (bookActionError) {
+                console.error("Error logging book_completed action to master_actions:", bookActionError);
+              } else {
+                console.log(`[MASTER_ACTIONS] Successfully logged book_completed: ${bookDisplayName}`);
+              }
+            }
+          } catch (bookCheckError) {
+            console.error("Error checking book completion:", bookCheckError);
+            // Don't block - continue with profile stats update
           }
 
           // UPDATE profile_stats: Count from completed_chapters table
