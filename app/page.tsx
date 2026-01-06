@@ -72,13 +72,13 @@ export default function LandingPage() {
         <div className="flex items-center gap-4">
           <Link
             href="/login"
-            className="text-sm md:text-base text-gray-200 hover:text-white font-medium transition"
+            className="text-sm md:text-base text-gray-700 hover:text-gray-900 font-medium transition"
           >
             Log In
           </Link>
           <Link
             href="/signup"
-            className="inline-block rounded-full bg-blue-500 text-white text-sm md:text-base font-semibold px-5 md:px-6 py-2 md:py-2.5 shadow-md hover:bg-blue-400 transition"
+            className="inline-block rounded-full bg-blue-600 text-white text-sm md:text-base font-semibold px-5 md:px-6 py-2 md:py-2.5 shadow-md hover:bg-blue-700 transition"
           >
             Sign Up →
           </Link>
@@ -152,11 +152,11 @@ export default function LandingPage() {
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-[#050816] text-gray-300 mt-4">
+      <footer className="bg-white text-gray-700 border-t border-gray-200 mt-4">
         <div className="max-w-7xl mx-auto px-4 py-10 md:py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Left column - Connect with me */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-100 uppercase tracking-wide mb-4">
+            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-4">
               Connect with me (I&apos;m very responsive)
             </h3>
             <ul className="space-y-2 text-sm">
@@ -165,7 +165,7 @@ export default function LandingPage() {
                   href="https://www.youtube.com/@BibleStudyWithLouis"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-blue-600 transition-colors"
                 >
                   YouTube – Bible Study with Louis
                 </a>
@@ -175,7 +175,7 @@ export default function LandingPage() {
                   href="https://www.instagram.com/biblestudywithlouis"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-blue-600 transition-colors"
                 >
                   Instagram – Bible Study with Louis
                 </a>
@@ -185,7 +185,7 @@ export default function LandingPage() {
                   href="https://www.threads.net/@biblestudywithlouis"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-blue-600 transition-colors"
                 >
                   Threads – Bible Study with Louis
                 </a>
@@ -195,7 +195,7 @@ export default function LandingPage() {
                   href="https://www.tiktok.com/@biblestudywithlouis"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-blue-600 transition-colors"
                 >
                   TikTok – Bible Study with Louis
                 </a>
@@ -205,7 +205,7 @@ export default function LandingPage() {
                   href="https://www.facebook.com/profile.php?id=100085924826685"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-blue-600 transition-colors"
                 >
                   Facebook – Bible Study with Louis
                 </a>
@@ -215,14 +215,14 @@ export default function LandingPage() {
 
           {/* Middle column - Resources */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-100 uppercase tracking-wide mb-4">
+            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-4">
               Resources
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   href="/contact"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-blue-600 transition-colors"
                 >
                   Contact
                 </Link>
@@ -230,7 +230,7 @@ export default function LandingPage() {
               <li>
                 <Link
                   href="/privacy"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-blue-600 transition-colors"
                 >
                   Privacy Policy
                 </Link>
@@ -238,7 +238,7 @@ export default function LandingPage() {
               <li>
                 <Link
                   href="/terms"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-blue-600 transition-colors"
                 >
                   Terms of Service
                 </Link>
@@ -248,10 +248,10 @@ export default function LandingPage() {
 
           {/* Right column - Brand + Description */}
           <div className="text-sm md:text-base">
-            <h3 className="text-lg font-semibold text-white mb-3">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">
               Bible Buddy
             </h3>
-            <p className="text-gray-300 leading-relaxed max-w-sm">
+            <p className="text-gray-600 leading-relaxed max-w-sm">
               An interactive Bible study app built to help you understand
               Scripture, not just read it.
             </p>
@@ -259,7 +259,7 @@ export default function LandingPage() {
         </div>
 
         {/* Copyright row */}
-        <div className="border-t border-gray-800">
+        <div className="border-t border-gray-200">
           <div className="max-w-7xl mx-auto px-4 py-4 text-xs md:text-sm text-gray-500 text-center md:text-right">
             © 2026 Bible Buddy — Powered by Hope Nation
           </div>
