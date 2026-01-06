@@ -20,6 +20,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const profileMenuRef = useRef<HTMLDivElement>(null);
+  const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
+  const navMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const getSession = async () => {
@@ -103,12 +105,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   const isAdmin = isLoggedIn && userEmail === "moorelouis3@gmail.com";
 
+  // Determine if navigation menu should be shown (only on content pages)
+  const shouldShowNavMenu = isLoggedIn && !isBarePage && pathname && (
+    pathname.startsWith("/Bible") ||
+    pathname.startsWith("/notes") ||
+    pathname.startsWith("/people-in-the-bible") ||
+    pathname.startsWith("/places-in-the-bible") ||
+    pathname.startsWith("/keywords-in-the-bible")
+  ) && !pathname.startsWith("/dashboard");
+
   async function handleLogout() {
     await supabase.auth.signOut();
     router.push("/login");
   }
 
-  // Close dropdown when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -117,21 +128,28 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       ) {
         setIsProfileMenuOpen(false);
       }
+      if (
+        navMenuRef.current &&
+        !navMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsNavMenuOpen(false);
+      }
     }
 
-    if (isProfileMenuOpen) {
+    if (isProfileMenuOpen || isNavMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
       return () => {
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }
-  }, [isProfileMenuOpen]);
+  }, [isProfileMenuOpen, isNavMenuOpen]);
 
-  // Close dropdown on Escape key
+  // Close dropdowns on Escape key
   useEffect(() => {
     function handleEscape(event: KeyboardEvent) {
-      if (event.key === "Escape" && isProfileMenuOpen) {
-        setIsProfileMenuOpen(false);
+      if (event.key === "Escape") {
+        if (isProfileMenuOpen) setIsProfileMenuOpen(false);
+        if (isNavMenuOpen) setIsNavMenuOpen(false);
       }
     }
 
@@ -139,7 +157,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     return () => {
       document.removeEventListener("keydown", handleEscape);
     };
-  }, [isProfileMenuOpen]);
+  }, [isProfileMenuOpen, isNavMenuOpen]);
 
   return (
     <>
@@ -154,8 +172,124 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               Bible Buddy
             </Link>
 
-            {/* PROFILE DROPDOWN MENU */}
-            {isLoggedIn && (
+            <div className="flex items-center gap-2">
+              {/* NAVIGATION DROPDOWN MENU */}
+              {shouldShowNavMenu && (
+                <div className="relative" ref={navMenuRef}>
+                  <button
+                    type="button"
+                    onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
+                    className="px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:border-gray-400 transition-all duration-150 active:scale-[0.98] shadow-sm"
+                    aria-label="Navigation menu"
+                    aria-expanded={isNavMenuOpen}
+                  >
+                    Navigation
+                  </button>
+
+                  {/* NAVIGATION DROPDOWN */}
+                  {isNavMenuOpen && (
+                    <div className="absolute right-0 mt-2 w-48 max-w-[calc(100vw-2rem)] bg-white rounded-lg shadow-lg border border-gray-200 py-1.5 z-50">
+                      {/* BIBLE */}
+                      <Link
+                        href="/Bible"
+                        onClick={(e) => {
+                          if (pathname?.startsWith("/Bible")) {
+                            e.preventDefault();
+                          } else {
+                            setIsNavMenuOpen(false);
+                          }
+                        }}
+                        className={`block px-4 py-2.5 text-sm transition-all duration-150 ${
+                          pathname?.startsWith("/Bible")
+                            ? "bg-blue-50 text-blue-700 font-medium cursor-not-allowed"
+                            : "text-gray-700 hover:bg-blue-50 hover:text-blue-600 active:scale-[0.98]"
+                        }`}
+                      >
+                        Bible
+                      </Link>
+
+                      {/* NOTES */}
+                      <Link
+                        href="/notes"
+                        onClick={(e) => {
+                          if (pathname?.startsWith("/notes")) {
+                            e.preventDefault();
+                          } else {
+                            setIsNavMenuOpen(false);
+                          }
+                        }}
+                        className={`block px-4 py-2.5 text-sm transition-all duration-150 ${
+                          pathname?.startsWith("/notes")
+                            ? "bg-purple-50 text-purple-700 font-medium cursor-not-allowed"
+                            : "text-gray-700 hover:bg-purple-50 hover:text-purple-600 active:scale-[0.98]"
+                        }`}
+                      >
+                        Notes
+                      </Link>
+
+                      {/* PEOPLE IN THE BIBLE */}
+                      <Link
+                        href="/people-in-the-bible"
+                        onClick={(e) => {
+                          if (pathname?.startsWith("/people-in-the-bible")) {
+                            e.preventDefault();
+                          } else {
+                            setIsNavMenuOpen(false);
+                          }
+                        }}
+                        className={`block px-4 py-2.5 text-sm transition-all duration-150 ${
+                          pathname?.startsWith("/people-in-the-bible")
+                            ? "bg-green-50 text-green-700 font-medium cursor-not-allowed"
+                            : "text-gray-700 hover:bg-green-50 hover:text-green-600 active:scale-[0.98]"
+                        }`}
+                      >
+                        People in the Bible
+                      </Link>
+
+                      {/* PLACES IN THE BIBLE */}
+                      <Link
+                        href="/places-in-the-bible"
+                        onClick={(e) => {
+                          if (pathname?.startsWith("/places-in-the-bible")) {
+                            e.preventDefault();
+                          } else {
+                            setIsNavMenuOpen(false);
+                          }
+                        }}
+                        className={`block px-4 py-2.5 text-sm transition-all duration-150 ${
+                          pathname?.startsWith("/places-in-the-bible")
+                            ? "bg-amber-50 text-amber-700 font-medium cursor-not-allowed"
+                            : "text-gray-700 hover:bg-amber-50 hover:text-amber-600 active:scale-[0.98]"
+                        }`}
+                      >
+                        Places in the Bible
+                      </Link>
+
+                      {/* KEYWORDS IN THE BIBLE */}
+                      <Link
+                        href="/keywords-in-the-bible"
+                        onClick={(e) => {
+                          if (pathname?.startsWith("/keywords-in-the-bible")) {
+                            e.preventDefault();
+                          } else {
+                            setIsNavMenuOpen(false);
+                          }
+                        }}
+                        className={`block px-4 py-2.5 text-sm transition-all duration-150 ${
+                          pathname?.startsWith("/keywords-in-the-bible")
+                            ? "bg-red-50 text-red-700 font-medium cursor-not-allowed"
+                            : "text-gray-700 hover:bg-red-50 hover:text-red-600 active:scale-[0.98]"
+                        }`}
+                      >
+                        Keywords in the Bible
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* PROFILE DROPDOWN MENU */}
+              {isLoggedIn && (
               <div className="relative" ref={profileMenuRef}>
                 <button
                   type="button"
@@ -278,6 +412,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 )}
               </div>
             )}
+            </div>
           </div>
         </header>
       )}
