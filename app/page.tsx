@@ -2,13 +2,20 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
 export default function LandingPage() {
   const router = useRouter();
   const [isChecking, setIsChecking] = useState(true);
+  const [showSignupModal, setShowSignupModal] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // Check for existing session on mount and redirect if logged in
   useEffect(() => {
@@ -35,6 +42,67 @@ export default function LandingPage() {
       subscription.unsubscribe();
     };
   }, [router]);
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    setShowSuccessModal(false);
+
+    // Split name into first and last (if provided)
+    const nameParts = name.trim().split(" ");
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || "";
+
+    // 1. SIGN USER UP
+    const { data, error } = await supabase.auth.signUp({
+      email: email.trim(),
+      password: password.trim(),
+      options: {
+        data: {
+          first_name: firstName,
+          last_name: lastName,
+        },
+      },
+    });
+
+    if (error) {
+      setError(error.message);
+      setLoading(false);
+      return;
+    }
+
+    // 2. GET THE USER ID
+    const user = data.user;
+    if (!user) {
+      setError("Signup failed: no user returned.");
+      setLoading(false);
+      return;
+    }
+
+    // 3. INSERT INTO user_signups TABLE (non-blocking, analytics only)
+    try {
+      const { error: insertError } = await supabase
+        .from("user_signups")
+        .insert({
+          user_id: user.id,
+          email: user.email,
+        });
+
+      if (insertError) {
+        console.error("Analytics insert failed (non-blocking):", insertError);
+      }
+    } catch (analyticsError) {
+      console.error("Analytics insert error (non-blocking):", analyticsError);
+    }
+
+    // 4. SIGNUP SUCCEEDED - Clear form and show success modal
+    setLoading(false);
+    setName("");
+    setEmail("");
+    setPassword("");
+    setShowSuccessModal(true);
+  }
 
   // Don't render content until we've checked for session (prevents flash)
   if (isChecking) {
@@ -76,12 +144,13 @@ export default function LandingPage() {
           >
             Log In
           </Link>
-          <Link
-            href="/signup"
+          <button
+            type="button"
+            onClick={() => setShowSignupModal(true)}
             className="inline-block rounded-full bg-blue-600 text-white text-sm md:text-base font-semibold px-5 md:px-6 py-2 md:py-2.5 shadow-md hover:bg-blue-700 transition"
           >
             Sign Up →
-          </Link>
+          </button>
         </div>
       </header>
 
@@ -121,12 +190,13 @@ export default function LandingPage() {
 
           {/* Primary CTA Button */}
           <div className="text-center mb-6 md:mb-8">
-            <Link
-              href="/signup"
+            <button
+              type="button"
+              onClick={() => setShowSignupModal(true)}
               className="inline-block rounded-lg bg-blue-600 text-white text-base md:text-lg font-semibold px-8 md:px-10 py-3 md:py-4 shadow-lg hover:bg-blue-700 transition transform hover:scale-105"
             >
               Try Bible Buddy Now →
-            </Link>
+            </button>
           </div>
 
           {/* Minimal Feature Row */}
@@ -265,6 +335,129 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+
+      {/* SIGNUP MODAL */}
+      {showSignupModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
+          <div className="bg-white rounded-2xl w-full max-w-md p-6 md:p-7 shadow-2xl relative">
+            <button
+              type="button"
+              onClick={() => setShowSignupModal(false)}
+              className="absolute right-4 top-3 text-sm text-gray-400 hover:text-gray-700"
+            >
+              ✕
+            </button>
+
+            <h2 className="text-xl md:text-2xl font-bold mb-1 text-gray-900 text-center">
+              Create your free Bible Buddy account
+            </h2>
+            <p className="text-xs text-gray-500 mb-4 text-center">
+              Free to use. No credit card required.
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-3 mt-2">
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  required
+                  className="w-full px-3 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Enter your name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  className="w-full px-3 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  required
+                  minLength={6}
+                  className="w-full px-3 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Create a password"
+                />
+              </div>
+
+              {error && (
+                <p className="text-xs text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
+                  {error}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full rounded-lg bg-blue-600 text-white text-sm font-semibold py-2.5 mt-1 shadow-md hover:bg-blue-700 disabled:opacity-60 transition"
+              >
+                {loading ? "Creating account..." : "Create Free Account"}
+              </button>
+
+              <p className="text-[10px] text-gray-500 text-center mt-1.5">
+                By creating an account, you agree to the terms of service and privacy policy.
+              </p>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* SUCCESS MODAL */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl w-full max-w-md p-6 relative shadow-xl">
+            <div className="text-center">
+              <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
+                <svg
+                  className="h-6 w-6 text-green-600"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <h2 className="text-2xl font-bold mb-2 text-gray-900">
+                Account created successfully!
+              </h2>
+              <p className="text-sm text-gray-600 mb-6">
+                Please check your email to confirm your account before logging in.
+              </p>
+              <button
+                onClick={() => {
+                  setShowSuccessModal(false);
+                  setShowSignupModal(false);
+                }}
+                className="w-full px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+              >
+                Got it
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
