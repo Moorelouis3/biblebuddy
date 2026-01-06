@@ -188,13 +188,97 @@ export default function BibleChapterPage() {
           return;
         }
 
-        // STEP 2: Generate if not found
-        const prompt = `You are Little Louis. Generate Bible study style notes for a person from Scripture using the EXACT markdown structure below... [truncated for brevity, same as People page]`;
+        // STEP 2: Generate notes using ChatGPT (same as People page)
+        // Determine gender for pronoun usage (simple heuristic - can be improved)
+        const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti|Bernice|Drusilla|Euodia|Syntyche|Chloe|Nympha|Tryphaena|Tryphosa|Julia|Claudia|Persis)/i.test(selectedPerson.name);
+        const pronoun = isFemale ? "Her" : "Him";
+        const whoPronoun = isFemale ? "She" : "He";
+        
+        const prompt = `You are Little Louis. Generate Bible study style notes for ${selectedPerson.name} from Scripture using the EXACT markdown structure below.
+
+CRITICAL RENDERING RULES (MANDATORY):
+- Use ONLY markdown
+- Use SINGLE # for all section headers
+- INSERT TWO FULL LINE BREAKS AFTER EVERY SECTION
+- INSERT TWO FULL LINE BREAKS AFTER EVERY PARAGRAPH GROUP
+- DO NOT use markdown bullet characters (*, -, •)
+- Use EMOJIS as bullets instead
+- Emojis must start each bullet line
+- No hyphens anywhere
+- No compact spacing
+- Spacing matters more than word count
+
+The person's name is already shown in the UI. DO NOT include their name as a header.
+
+---
+
+TEMPLATE (FOLLOW EXACTLY):
+
+# 👤 Who ${whoPronoun} Is
+
+Write two short paragraphs explaining who this person is.
+
+
+
+
+# 📖 Their Role in the Story
+
+Write two to three short paragraphs explaining what role this person plays in the biblical narrative.
+
+
+
+
+# 🔥 Key Moments
+
+🔥 Short sentence describing a key moment.
+
+🔥 Short sentence describing a key moment.
+
+🔥 Short sentence describing a key moment.
+
+🔥 Short sentence describing a key moment.
+
+
+
+
+# 📍 Where You Find ${pronoun}
+
+📖 Book Chapter range
+
+📖 Book Chapter range
+
+📖 Book Chapter range
+
+
+
+
+# 🌱 Why This Person Matters
+
+Write two to three short paragraphs explaining why this person is important and what we learn from them.
+
+
+
+
+FINAL RULES:
+- Every section must be separated by TWO blank lines
+- Every paragraph block must be separated by TWO blank lines
+- Do not compress content
+- No lists without emojis
+- Keep it cinematic, Bible study focused, and clear`;
         
         const response = await fetch("/api/chat", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            messages: [
+              {
+                role: "user",
+                content: prompt,
+              },
+            ],
+          }),
         });
 
         if (!response.ok) throw new Error(`Failed to generate notes: ${response.statusText}`);
@@ -264,12 +348,84 @@ export default function BibleChapterPage() {
           return;
         }
 
-        const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the PLACE: ${selectedPlace.name}... [truncated]`;
+        // STEP 2: Generate notes using ChatGPT (same as Places page)
+        const prompt = `You are Little Louis.
+
+Generate beginner friendly Bible notes about the PLACE: ${selectedPlace.name}.
+
+Follow this EXACT markdown template and rules.
+
+TEMPLATE:
+
+# 🧭 What This Place Is
+
+(two short paragraphs)
+
+
+
+
+# 🗺️ Where It Appears in the Story
+
+(two to three short paragraphs)
+
+
+
+
+# 🔑 Key Moments Connected to This Place
+
+🔥 sentence  
+
+🔥 sentence  
+
+🔥 sentence  
+
+🔥 sentence  
+
+
+
+
+# 📖 Where You Find It in Scripture
+
+📖 Book Chapter–Chapter  
+
+📖 Book Chapter–Chapter  
+
+📖 Book Chapter–Chapter  
+
+
+
+
+# 🌱 Why This Place Matters
+
+(two to three short paragraphs)
+
+
+
+RULES:
+- Use # for all section headers
+- Double line breaks between sections
+- No hyphens anywhere
+- Use emoji bullets only
+- No lists with dashes
+- No meta commentary
+- No deep theology
+- Cinematic but simple
+- Total length about 200–300 words
+- Do NOT include the place name as a header`;
         
         const response = await fetch("/api/chat", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            messages: [
+              {
+                role: "user",
+                content: prompt,
+              },
+            ],
+          }),
         });
 
         if (!response.ok) throw new Error(`Failed to generate notes`);
@@ -336,12 +492,84 @@ export default function BibleChapterPage() {
           return;
         }
 
-        const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword.name}... [truncated]`;
+        // STEP 2: Generate notes using ChatGPT (same as Keywords page)
+        const prompt = `You are Little Louis.
+
+Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword.name}.
+
+Follow this EXACT markdown template and rules.
+
+TEMPLATE:
+
+# 📖 What This Keyword Means
+
+(two short paragraphs)
+
+
+
+
+# 🔍 Where It Appears in Scripture
+
+(two to three short paragraphs)
+
+
+
+
+# 🔑 Key Verses Using This Keyword
+
+🔥 sentence  
+
+🔥 sentence  
+
+🔥 sentence  
+
+🔥 sentence  
+
+
+
+
+# 📚 Where You Find It in the Bible
+
+📖 Book Chapter–Chapter  
+
+📖 Book Chapter–Chapter  
+
+📖 Book Chapter–Chapter  
+
+
+
+
+# 🌱 Why This Keyword Matters
+
+(two to three short paragraphs)
+
+
+
+RULES:
+- Use # for all section headers
+- Double line breaks between sections
+- No hyphens anywhere
+- Use emoji bullets only
+- No lists with dashes
+- No meta commentary
+- No deep theology
+- Cinematic but simple
+- Total length about 200–300 words
+- Do NOT include the keyword name as a header`;
         
         const response = await fetch("/api/chat", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            messages: [
+              {
+                role: "user",
+                content: prompt,
+              },
+            ],
+          }),
         });
 
         if (!response.ok) throw new Error(`Failed to generate notes`);
