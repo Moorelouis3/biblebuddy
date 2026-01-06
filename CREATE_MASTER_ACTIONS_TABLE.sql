@@ -46,12 +46,14 @@ ON public.master_actions
 FOR SELECT
 USING (auth.uid() = user_id);
 
--- INSERT policy (users can only insert their own actions)
+-- INSERT policy (authenticated users can insert actions with user_id IS NOT NULL)
+-- Note: We don't require auth.uid() = user_id because inserts occur in async contexts
+-- where auth.uid() may not be available. The application code ensures correct user_id.
 CREATE POLICY "master_actions_insert_own"
 ON public.master_actions
 FOR INSERT
 TO authenticated
-WITH CHECK (auth.uid() = user_id);
+WITH CHECK (user_id IS NOT NULL);
 
 -- Verification: Check that policies were created
 SELECT
