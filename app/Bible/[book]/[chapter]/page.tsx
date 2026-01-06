@@ -1159,97 +1159,6 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       await markChapterDone(userId, book, chapter);
       setIsCompleted(true);
 
-      // ACTION TRACKING: Insert into master_actions
-      // Always fetch username fresh from auth to ensure we have the correct value
-      const { data: { user: authUser } } = await supabase.auth.getUser();
-      let actionUsername = "User"; // Default fallback
-      
-      if (authUser) {
-        const meta: any = authUser.user_metadata || {};
-        actionUsername =
-          meta.firstName ||
-          meta.first_name ||
-          (authUser.email ? authUser.email.split("@")[0] : null) ||
-          "User";
-      }
-
-      console.log(`[MASTER_ACTIONS] Inserting chapter_completed with username: ${actionUsername}, user_id: ${userId}`);
-
-      const { error: actionError } = await supabase
-        .from("master_actions")
-        .insert({
-          user_id: userId,
-          username: actionUsername,
-          action_type: "chapter_completed",
-        });
-
-      if (actionError) {
-        console.error("Error logging action to master_actions:", actionError);
-        console.error("Attempted username:", actionUsername);
-        // Don't block the UI - continue even if action logging fails
-      } else {
-        console.log(`[MASTER_ACTIONS] Successfully inserted chapter_completed action with username: ${actionUsername}`);
-      }
-
-      // UPDATE profile_stats: Count from completed_chapters table
-      // Get username if not already loaded
-      let statsUsername = username;
-      if (!statsUsername && userId) {
-        const { data: { user } } = await supabase.auth.getUser();
-        if (user) {
-          const meta: any = user.user_metadata || {};
-          statsUsername =
-            meta.firstName ||
-            meta.first_name ||
-            (user.email ? user.email.split("@")[0] : null) ||
-            "User";
-        }
-      }
-
-      // Count all completed_chapters rows for this user
-      const { count, error: countError } = await supabase
-        .from("completed_chapters")
-        .select("*", { count: "exact", head: true })
-        .eq("user_id", userId);
-
-      if (countError) {
-        console.error("Error counting completed_chapters:", countError);
-        // Don't block UI - continue even if count fails
-      } else {
-        console.log(`[CHAPTERS COMPLETED] Count from database: ${count}`);
-        
-        // Get existing username if available
-        const { data: currentStats } = await supabase
-          .from("profile_stats")
-          .select("username")
-          .eq("user_id", userId)
-          .maybeSingle();
-
-        const finalUsername = currentStats?.username || statsUsername || "User";
-
-        // Update profile_stats with the count
-        const { error: statsError } = await supabase
-          .from("profile_stats")
-          .upsert(
-            {
-              user_id: userId,
-              chapters_completed_count: count || 0,
-              username: finalUsername,
-              updated_at: new Date().toISOString(),
-            },
-            {
-              onConflict: "user_id",
-            }
-          );
-
-        if (statsError) {
-          console.error("Error updating profile_stats:", statsError);
-          // Don't block UI - continue even if stats update fails
-        } else {
-          console.log(`[PROFILE_STATS] Successfully updated chapters_completed_count to ${count}`);
-        }
-      }
-
       // Trigger confetti animation immediately
       triggerConfetti();
 
@@ -1258,6 +1167,82 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         setShowCongratsModal(true);
         setIsSaving(false);
       }, 100);
+
+      // ACTION TRACKING: Do this asynchronously after UI updates (fire-and-forget)
+      // This doesn't block the UI from updating
+      (async () => {
+        try {
+          // Insert into master_actions
+          const { data: { user: authUser } } = await supabase.auth.getUser();
+          let actionUsername = "User";
+          
+          if (authUser) {
+            const meta: any = authUser.user_metadata || {};
+            actionUsername =
+              meta.firstName ||
+              meta.first_name ||
+              (authUser.email ? authUser.email.split("@")[0] : null) ||
+              "User";
+          }
+
+          const { error: actionError } = await supabase
+            .from("master_actions")
+            .insert({
+              user_id: userId,
+              username: actionUsername,
+              action_type: "chapter_completed",
+            });
+
+          if (actionError) {
+            console.error("Error logging action to master_actions:", actionError);
+          }
+
+          // UPDATE profile_stats: Count from completed_chapters table
+          let statsUsername = username;
+          if (!statsUsername && userId) {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+              const meta: any = user.user_metadata || {};
+              statsUsername =
+                meta.firstName ||
+                meta.first_name ||
+                (user.email ? user.email.split("@")[0] : null) ||
+                "User";
+            }
+          }
+
+          const { count, error: countError } = await supabase
+            .from("completed_chapters")
+            .select("*", { count: "exact", head: true })
+            .eq("user_id", userId);
+
+          if (!countError && count !== null) {
+            const { data: currentStats } = await supabase
+              .from("profile_stats")
+              .select("username")
+              .eq("user_id", userId)
+              .maybeSingle();
+
+            const finalUsername = currentStats?.username || statsUsername || "User";
+
+            await supabase
+              .from("profile_stats")
+              .upsert(
+                {
+                  user_id: userId,
+                  chapters_completed_count: count || 0,
+                  username: finalUsername,
+                  updated_at: new Date().toISOString(),
+                },
+                {
+                  onConflict: "user_id",
+                }
+              );
+          }
+        } catch (err) {
+          console.error("Error in chapter tracking (non-blocking):", err);
+        }
+      })();
     } catch (err) {
       console.error(`Error marking ${bookDisplayName} ${chapter} finished`, err);
       setIsSaving(false);
