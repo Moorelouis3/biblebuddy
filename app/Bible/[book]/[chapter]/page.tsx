@@ -1267,6 +1267,74 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           )}
         </div>
 
+        {/* NAVIGATION BUTTONS ROW */}
+        <div className="w-full max-w-3xl mx-auto flex flex-col md:flex-row items-center md:items-stretch md:justify-center gap-3 mb-4">
+          {/* Previous Chapter */}
+          {chapter > 1 ? (
+            <button
+              type="button"
+              onClick={() => router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/${chapter - 1}`)}
+              className="w-full md:w-auto px-6 py-3 rounded-full text-base font-semibold bg-white text-blue-700 border-2 border-blue-200 shadow-sm hover:bg-blue-50 hover:border-blue-300 transition text-center"
+            >
+              ← Previous Chapter
+            </button>
+          ) : (
+            <button
+              type="button"
+              disabled
+              className="w-full md:w-auto px-6 py-3 rounded-full text-base font-semibold bg-gray-100 text-gray-400 border-2 border-gray-200 cursor-not-allowed transition text-center"
+            >
+              ← Previous Chapter
+            </button>
+          )}
+
+          {/* Next Chapter */}
+          {chapter < getBookTotalChapters(book) ? (
+            <button
+              type="button"
+              onClick={() => router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/${chapter + 1}`)}
+              className="w-full md:w-auto px-6 py-3 rounded-full text-base font-semibold bg-white text-blue-700 border-2 border-blue-200 shadow-sm hover:bg-blue-50 hover:border-blue-300 transition text-center"
+            >
+              Next Chapter →
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => {
+                // Find next book in biblical order
+                const BOOKS_ORDER = [
+                  "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+                  "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+                  "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther",
+                  "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon",
+                  "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel",
+                  "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk",
+                  "Zephaniah", "Haggai", "Zechariah", "Malachi",
+                  "Matthew", "Mark", "Luke", "John", "Acts",
+                  "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+                  "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+                  "1 Timothy", "2 Timothy", "Titus", "Philemon",
+                  "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude",
+                  "Revelation",
+                ];
+                const currentIndex = BOOKS_ORDER.findIndex(
+                  (b) => b.toLowerCase() === book.toLowerCase()
+                );
+                if (currentIndex >= 0 && currentIndex < BOOKS_ORDER.length - 1) {
+                  const nextBook = BOOKS_ORDER[currentIndex + 1];
+                  router.push(`/Bible/${encodeURIComponent(nextBook.toLowerCase())}/1`);
+                } else {
+                  // Already at last book, go to first chapter of current book
+                  router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/1`);
+                }
+              }}
+              className="w-full md:w-auto px-6 py-3 rounded-full text-base font-semibold bg-white text-blue-700 border-2 border-blue-200 shadow-sm hover:bg-blue-50 hover:border-blue-300 transition text-center"
+            >
+              Next Book →
+            </button>
+          )}
+        </div>
+
         {/* ACTION BUTTONS ROW */}
         <div className="w-full max-w-3xl mx-auto flex flex-col md:flex-row items-center md:items-stretch md:justify-between gap-3 mb-4">
           {/* LEFT: Read Notes */}
