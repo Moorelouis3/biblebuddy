@@ -165,7 +165,7 @@ export default function LandingPage() {
               {/* Laptop mockup image */}
               <div className="relative">
                 <Image
-                  src="/images/matthew-overview/landingmain.png"
+                  src="/images/landing/bible-buddy-laptop.webp"
                   alt="Bible Buddy App Screenshot"
                   width={1200}
                   height={800}
