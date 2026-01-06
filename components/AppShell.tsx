@@ -106,8 +106,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const isAdmin = isLoggedIn && userEmail === "moorelouis3@gmail.com";
 
   // Determine if navigation menu should be shown (only on content pages)
+  // Shows on: Bible main page (/Bible), book pages (/Bible/[book]), chapter pages (/Bible/[book]/[chapter]),
+  // Notes pages, People, Places, and Keywords pages
+  // Hidden on: landing, login, signup, dashboard, and main home page
   const shouldShowNavMenu = isLoggedIn && !isBarePage && pathname && (
-    pathname.startsWith("/Bible") ||
+    pathname.startsWith("/Bible") ||  // Matches /Bible, /Bible/[book], /Bible/[book]/[chapter]
     pathname.startsWith("/notes") ||
     pathname.startsWith("/people-in-the-bible") ||
     pathname.startsWith("/places-in-the-bible") ||

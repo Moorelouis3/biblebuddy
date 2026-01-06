@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { supabase } from "../../lib/supabaseClient";
 import NewNoteModal from "../../components/NewNoteModal";
+import { logActionToMasterActions } from "../../lib/actionRecorder";
 
 type Note = {
   id: string;
@@ -343,22 +344,14 @@ export default function NotesPage() {
             "User";
         }
 
-        console.log(`[MASTER_ACTIONS] Inserting note_created with username: ${actionUsername}, user_id: ${userId}`);
-
-        const { error: actionError } = await supabase
-          .from("master_actions")
-          .insert({
-            user_id: userId,
-            username: actionUsername,
-            action_type: "note_created",
-          });
-
-        if (actionError) {
+        // Log action to master_actions using shared function
+        try {
+          await logActionToMasterActions(userId, "note_created", null, actionUsername);
+          console.log(`[MASTER_ACTIONS] Successfully logged note_created with username: ${actionUsername}`);
+        } catch (actionError) {
           console.error("Error logging action to master_actions:", actionError);
           console.error("Attempted username:", actionUsername);
           // Don't block the UI - continue even if action logging fails
-        } else {
-          console.log(`[MASTER_ACTIONS] Successfully inserted note_created action with username: ${actionUsername}`);
         }
 
         // UPDATE profile_stats: Count from notes table

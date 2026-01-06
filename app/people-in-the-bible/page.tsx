@@ -5,6 +5,7 @@ import { type BiblePerson } from "../../lib/biblePeople";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_PEOPLE_LIST } from "../../lib/biblePeopleList";
+import { logActionToMasterActions } from "../../lib/actionRecorder";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -993,21 +994,14 @@ FINAL RULES:
 
                                 const personDisplayName = formatPersonName(selectedPerson.name);
 
-                                const { error: actionError } = await supabase
-                                  .from("master_actions")
-                                  .insert({
-                                    user_id: userId,
-                                    username: actionUsername,
-                                    action_type: "person_learned",
-                                    action_label: personDisplayName,
-                                  });
-
-                                if (actionError) {
+                                // Log action to master_actions using shared function
+                                try {
+                                  await logActionToMasterActions(userId, "person_learned", personDisplayName, actionUsername);
+                                  console.log(`[MASTER_ACTIONS] Successfully logged person_learned: ${personDisplayName}`);
+                                } catch (actionError) {
                                   console.error("Error logging action to master_actions:", actionError);
                                   console.error("Attempted username:", actionUsername);
                                   // Don't block the UI - continue even if action logging fails
-                                } else {
-                                  console.log(`[MASTER_ACTIONS] Successfully inserted action with username: ${actionUsername}`);
                                 }
 
                                 // UPDATE profile_stats: Count from people_progress table

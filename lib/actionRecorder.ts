@@ -13,34 +13,97 @@ import { supabase } from "./supabaseClient";
 export type ActionType =
   | "user_login"
   | "chapter_completed"
+  | "book_completed"
   | "note_created"
   | "person_learned"
   | "place_discovered"
   | "keyword_mastered";
 
 /**
+ * Log an action to master_actions table ONLY
+ * 
+ * This is the SINGLE source of truth for master_actions inserts.
+ * All pages should use this function instead of direct inserts.
+ * 
+ * Profile stats updates should be handled separately by each page.
+ * 
+ * @param userId - The user ID
+ * @param actionType - The type of action
+ * @param actionLabel - Optional human-readable label (e.g., "Genesis 1", "Bethlehem", "David")
+ * @param username - Optional username (will be fetched from auth if not provided)
+ */
+export async function logActionToMasterActions(
+  userId: string,
+  actionType: ActionType,
+  actionLabel?: string | null,
+  username?: string | null
+): Promise<void> {
+  try {
+    // Get username if not provided
+    let finalUsername = username;
+    if (!finalUsername) {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const meta: any = user.user_metadata || {};
+        finalUsername =
+          meta.firstName ||
+          meta.first_name ||
+          (user.email ? user.email.split("@")[0] : null) ||
+          "User";
+      } else {
+        finalUsername = "User";
+      }
+    }
+
+    // Insert action into master_actions with action_label
+    const insertData: {
+      user_id: string;
+      action_type: string;
+      username: string;
+      action_label?: string | null;
+    } = {
+      user_id: userId,
+      action_type: actionType,
+      username: finalUsername,
+    };
+
+    // Only include action_label if provided (not null/undefined)
+    if (actionLabel !== null && actionLabel !== undefined) {
+      insertData.action_label = actionLabel;
+    }
+
+    const { error: actionError } = await supabase
+      .from("master_actions")
+      .insert(insertData);
+
+    if (actionError) {
+      console.error("[ACTION] Error logging action to master_actions:", actionError);
+      throw actionError;
+    }
+  } catch (err) {
+    console.error("[ACTION] Error in logActionToMasterActions:", err);
+    throw err;
+  }
+}
+
+/**
  * Record an action and update profile stats
  * 
  * STEP 1: Insert into master_actions
  * STEP 2: Update profile_stats
+ * 
+ * @deprecated Consider using logActionToMasterActions() for master_actions only,
+ * then handle profile_stats separately
  */
 export async function recordAction(
   userId: string,
-  actionType: ActionType
+  actionType: ActionType,
+  actionLabel?: string | null,
+  username?: string | null
 ): Promise<void> {
   try {
-    // STEP 1: Insert action into master_actions
-    const { error: actionError } = await supabase
-      .from("master_actions")
-      .insert({
-        user_id: userId,
-        action_type: actionType,
-      });
-
-    if (actionError) {
-      console.error("[ACTION] Error recording action:", actionError);
-      throw actionError;
-    }
+    // STEP 1: Insert action into master_actions using shared function
+    await logActionToMasterActions(userId, actionType, actionLabel, username);
 
     // STEP 2: Update profile_stats
     const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD

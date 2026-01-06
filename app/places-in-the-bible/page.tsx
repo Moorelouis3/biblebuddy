@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_PLACES_LIST } from "../../lib/biblePlacesList";
+import { logActionToMasterActions } from "../../lib/actionRecorder";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -602,21 +603,15 @@ RULES:
 
                                 const placeDisplayName = formatPlaceName(selectedPlace.name);
 
-                                const { error: actionError } = await supabase
-                                  .from("master_actions")
-                                  .insert({
-                                    user_id: userId,
-                                    username: actionUsername,
-                                    action_type: "place_discovered",
-                                    action_label: placeDisplayName,
-                                  });
-
-                                if (actionError) {
+                                // Log action to master_actions using shared function
+                                try {
+                                  const { logActionToMasterActions } = await import("../../../lib/actionRecorder");
+                                  await logActionToMasterActions(userId, "place_discovered", placeDisplayName, actionUsername);
+                                  console.log(`[MASTER_ACTIONS] Successfully logged place_discovered: ${placeDisplayName}`);
+                                } catch (actionError) {
                                   console.error("Error logging action to master_actions:", actionError);
                                   console.error("Attempted username:", actionUsername);
                                   // Don't block the UI - continue even if action logging fails
-                                } else {
-                                  console.log(`[MASTER_ACTIONS] Successfully inserted place_discovered action with username: ${actionUsername}`);
                                 }
 
                                 // UPDATE profile_stats: Count from places_progress table

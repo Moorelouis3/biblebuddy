@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_KEYWORDS_LIST } from "../../lib/bibleKeywordsList";
+import { logActionToMasterActions } from "../../lib/actionRecorder";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -611,21 +612,14 @@ RULES:
 
                                 const keywordDisplayName = formatKeywordName(selectedKeyword.name);
 
-                                const { error: actionError } = await supabase
-                                  .from("master_actions")
-                                  .insert({
-                                    user_id: userId,
-                                    username: actionUsername,
-                                    action_type: "keyword_mastered",
-                                    action_label: keywordDisplayName,
-                                  });
-
-                                if (actionError) {
+                                // Log action to master_actions using shared function
+                                try {
+                                  await logActionToMasterActions(userId, "keyword_mastered", keywordDisplayName, actionUsername);
+                                  console.log(`[MASTER_ACTIONS] Successfully logged keyword_mastered: ${keywordDisplayName}`);
+                                } catch (actionError) {
                                   console.error("Error logging action to master_actions:", actionError);
                                   console.error("Attempted username:", actionUsername);
                                   // Don't block the UI - continue even if action logging fails
-                                } else {
-                                  console.log(`[MASTER_ACTIONS] Successfully inserted keyword_mastered action with username: ${actionUsername}`);
                                 }
 
                                 // UPDATE profile_stats: Count from keywords_progress table

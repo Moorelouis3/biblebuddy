@@ -6,6 +6,7 @@ import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { supabase } from "../../../../lib/supabaseClient";
 import { markChapterDone, isChapterCompleted, getBookTotalChapters, getCompletedChapters, isBookComplete } from "../../../../lib/readingProgress";
+import { logActionToMasterActions } from "../../../../lib/actionRecorder";
 import confetti from "canvas-confetti";
 import { getFeaturedCharactersForMatthew, FeaturedCharacter } from "../../../../lib/featuredCharacters";
 import { FeaturedCharacterModal } from "../../../../components/FeaturedCharacterModal";
@@ -1201,16 +1202,10 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           const bookDisplayName = formatBookName(book);
           const actionLabel = `${bookDisplayName} ${chapter}`;
 
-          const { error: actionError } = await supabase
-            .from("master_actions")
-            .insert({
-              user_id: userId,
-              username: actionUsername,
-              action_type: "chapter_completed",
-              action_label: actionLabel,
-            });
-
-          if (actionError) {
+          // Log action to master_actions using shared function
+          try {
+            await logActionToMasterActions(userId, "chapter_completed", actionLabel, actionUsername);
+          } catch (actionError) {
             console.error("Error logging action to master_actions:", actionError);
           }
 
@@ -1218,20 +1213,12 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           try {
             const bookIsComplete = await isBookComplete(userId, book);
             if (bookIsComplete) {
-              // Book is complete - log book_completed action
-              const { error: bookActionError } = await supabase
-                .from("master_actions")
-                .insert({
-                  user_id: userId,
-                  username: actionUsername,
-                  action_type: "book_completed",
-                  action_label: bookDisplayName,
-                });
-
-              if (bookActionError) {
-                console.error("Error logging book_completed action to master_actions:", bookActionError);
-              } else {
+              // Book is complete - log book_completed action using shared function
+              try {
+                await logActionToMasterActions(userId, "book_completed", bookDisplayName, actionUsername);
                 console.log(`[MASTER_ACTIONS] Successfully logged book_completed: ${bookDisplayName}`);
+              } catch (bookActionError) {
+                console.error("Error logging book_completed action to master_actions:", bookActionError);
               }
             }
           } catch (bookCheckError) {
