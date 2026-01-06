@@ -965,6 +965,55 @@ FINAL RULES:
                                 console.error("Error marking person as finished:", error);
                                 alert("Failed to mark as finished. Please try again.");
                               } else {
+                                // ACTION TRACKING: Insert into master_actions
+                                const { error: actionError } = await supabase
+                                  .from("master_actions")
+                                  .insert({
+                                    user_id: userId,
+                                    action_type: "person_learned",
+                                    entity_type: "person",
+                                    entity_id: personNameKey,
+                                  });
+
+                                if (actionError) {
+                                  console.error("Error logging action to master_actions:", actionError);
+                                  // Don't block the UI - continue even if action logging fails
+                                }
+
+                                // ACTION TRACKING: Increment profile_stats.people_learned_count
+                                // First, ensure the row exists (upsert with default values)
+                                const { data: currentStats, error: statsFetchError } = await supabase
+                                  .from("profile_stats")
+                                  .select("people_learned_count")
+                                  .eq("user_id", userId)
+                                  .maybeSingle();
+
+                                if (statsFetchError && statsFetchError.code !== 'PGRST116') {
+                                  console.error("Error fetching profile_stats:", statsFetchError);
+                                } else {
+                                  // Calculate new count
+                                  const currentCount = currentStats?.people_learned_count || 0;
+                                  const newCount = currentCount + 1;
+
+                                  // Upsert with incremented count (creates row if doesn't exist)
+                                  const { error: statsUpdateError } = await supabase
+                                    .from("profile_stats")
+                                    .upsert(
+                                      {
+                                        user_id: userId,
+                                        people_learned_count: newCount,
+                                        updated_at: new Date().toISOString(),
+                                      },
+                                      {
+                                        onConflict: "user_id",
+                                      }
+                                    );
+
+                                  if (statsUpdateError) {
+                                    console.error("Error updating profile_stats:", statsUpdateError);
+                                  }
+                                }
+
                                 // Update local state
                                 setCompletedPeople((prev) => {
                                   const next = new Set(prev);
