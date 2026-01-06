@@ -163,7 +163,7 @@ export default function LandingPage() {
               </div>
               
               {/* Laptop mockup image */}
-              <div className="relative">
+              <div className="relative w-full max-w-4xl mx-auto">
                 <Image
                   src="/images/landing/bible-buddy-laptop.webp"
                   alt="Bible Buddy App Screenshot"
@@ -171,6 +171,7 @@ export default function LandingPage() {
                   height={800}
                   className="w-full h-auto rounded-lg shadow-2xl"
                   priority
+                  unoptimized
                 />
               </div>
             </div>
