@@ -134,9 +134,10 @@ export async function enrichBibleVerses(
         if (highlightTerm.type === "people") {
           const matchedText = match[0];
           const firstChar = matchedText.charAt(0);
-          // Only match if first character is uppercase (proper noun)
-          // Skip if first character is lowercase (common word)
-          if (firstChar !== firstChar.toUpperCase()) {
+          // Only match if first character is an uppercase letter (proper noun)
+          // Skip if first character is lowercase (common word) or not a letter
+          const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
+          if (!isUpperCaseLetter) {
             continue; // Skip - not capitalized, likely a common word
           }
         }
