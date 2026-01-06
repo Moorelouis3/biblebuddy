@@ -1156,12 +1156,10 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
     try {
       // Mark chapter as done in database - this will unlock the next chapter
-      const normalizedBook = book.toLowerCase().trim();
-      console.log(`[MARK_FINISHED] Attempting to mark ${normalizedBook} chapter ${chapter} as done for user ${userId}`);
-      console.log(`[MARK_FINISHED] Book param: "${book}", Normalized: "${normalizedBook}"`);
+      console.log(`[MARK_FINISHED] Attempting to mark ${book} chapter ${chapter} as done for user ${userId}`);
       
-      await markChapterDone(userId, normalizedBook, chapter);
-      console.log(`[MARK_FINISHED] Successfully marked ${normalizedBook} chapter ${chapter} as done`);
+      await markChapterDone(userId, book, chapter);
+      console.log(`[MARK_FINISHED] Successfully marked ${book} chapter ${chapter} as done`);
       
       setIsCompleted(true);
 
@@ -1249,9 +1247,11 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           console.error("Error in chapter tracking (non-blocking):", err);
         }
       })();
-    } catch (err) {
+    } catch (err: any) {
       console.error(`[MARK_FINISHED] Error marking ${bookDisplayName} ${chapter} finished:`, err);
-      alert(`Failed to mark chapter as finished. Please try again. Error: ${err instanceof Error ? err.message : 'Unknown error'}`);
+      const errorMessage = err?.message || err?.error?.message || JSON.stringify(err) || 'Unknown error';
+      console.error(`[MARK_FINISHED] Full error details:`, JSON.stringify(err, null, 2));
+      alert(`Failed to mark chapter as finished. Please try again. Error: ${errorMessage}`);
       setIsSaving(false);
     }
   }
