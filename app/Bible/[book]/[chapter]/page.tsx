@@ -1152,11 +1152,17 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       return;
     }
 
-    try {
-      setIsSaving(true);
+    setIsSaving(true);
 
+    try {
       // Mark chapter as done in database - this will unlock the next chapter
-      await markChapterDone(userId, book, chapter);
+      const normalizedBook = book.toLowerCase().trim();
+      console.log(`[MARK_FINISHED] Attempting to mark ${normalizedBook} chapter ${chapter} as done for user ${userId}`);
+      console.log(`[MARK_FINISHED] Book param: "${book}", Normalized: "${normalizedBook}"`);
+      
+      await markChapterDone(userId, normalizedBook, chapter);
+      console.log(`[MARK_FINISHED] Successfully marked ${normalizedBook} chapter ${chapter} as done`);
+      
       setIsCompleted(true);
 
       // Trigger confetti animation immediately
@@ -1244,7 +1250,8 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         }
       })();
     } catch (err) {
-      console.error(`Error marking ${bookDisplayName} ${chapter} finished`, err);
+      console.error(`[MARK_FINISHED] Error marking ${bookDisplayName} ${chapter} finished:`, err);
+      alert(`Failed to mark chapter as finished. Please try again. Error: ${err instanceof Error ? err.message : 'Unknown error'}`);
       setIsSaving(false);
     }
   }
