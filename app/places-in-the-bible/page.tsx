@@ -39,8 +39,8 @@ export default function PlacesInTheBiblePage() {
   const [notesError, setNotesError] = useState<string | null>(null);
   const [completedPlaces, setCompletedPlaces] = useState<Set<string>>(new Set());
   const [loadingProgress, setLoadingProgress] = useState(true);
-  const [showResetModal, setShowResetModal] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
 
   // Filter and sort places
   const filteredPlaces = useMemo(() => {
@@ -91,6 +91,15 @@ export default function PlacesInTheBiblePage() {
         }
 
         setUserId(user.id);
+
+        // Extract username from user metadata (same pattern as dashboard)
+        const meta: any = user.user_metadata || {};
+        const extractedUsername =
+          meta.firstName ||
+          meta.first_name ||
+          (user.email ? user.email.split("@")[0] : null) ||
+          "User";
+        setUsername(extractedUsername);
 
         // Fetch all completed places for this user (batch query)
         const { data, error } = await supabase
@@ -351,8 +360,8 @@ RULES:
       {/* MAIN CONTENT */}
       <main className="max-w-5xl mx-auto px-4 mt-6">
         <div className="bg-white rounded-3xl shadow-sm border border-gray-200 p-4 sm:p-6 md:p-8">
-          {/* SEARCH BAR AND RESET BUTTON */}
-          <div className="mb-6 flex gap-3 items-center">
+          {/* SEARCH BAR */}
+          <div className="mb-6">
             <input
               type="text"
               placeholder="Search for a place..."
@@ -361,15 +370,8 @@ RULES:
                 setSearchQuery(e.target.value);
                 setSelectedLetter(null); // Clear letter filter when searching
               }}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <button
-              type="button"
-              onClick={() => setShowResetModal(true)}
-              className="px-3 py-2 text-sm text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
-            >
-              Reset
-            </button>
           </div>
 
           <div className="flex gap-6">
@@ -574,6 +576,97 @@ RULES:
                                 console.error("Error marking place as finished:", error);
                                 alert("Failed to mark as finished. Please try again.");
                               } else {
+                                // ACTION TRACKING: Insert into master_actions
+                                // Always fetch username fresh from auth to ensure we have the correct value
+                                const { data: { user: authUser } } = await supabase.auth.getUser();
+                                let actionUsername = "User"; // Default fallback
+                                
+                                if (authUser) {
+                                  const meta: any = authUser.user_metadata || {};
+                                  actionUsername =
+                                    meta.firstName ||
+                                    meta.first_name ||
+                                    (authUser.email ? authUser.email.split("@")[0] : null) ||
+                                    "User";
+                                }
+
+                                console.log(`[MASTER_ACTIONS] Inserting place_discovered with username: ${actionUsername}, user_id: ${userId}`);
+
+                                const { error: actionError } = await supabase
+                                  .from("master_actions")
+                                  .insert({
+                                    user_id: userId,
+                                    username: actionUsername,
+                                    action_type: "place_discovered",
+                                  });
+
+                                if (actionError) {
+                                  console.error("Error logging action to master_actions:", actionError);
+                                  console.error("Attempted username:", actionUsername);
+                                  // Don't block the UI - continue even if action logging fails
+                                } else {
+                                  console.log(`[MASTER_ACTIONS] Successfully inserted place_discovered action with username: ${actionUsername}`);
+                                }
+
+                                // UPDATE profile_stats: Count from places_progress table
+                                // Get username if not already loaded
+                                let statsUsername = username;
+                                if (!statsUsername && userId) {
+                                  const { data: { user } } = await supabase.auth.getUser();
+                                  if (user) {
+                                    const meta: any = user.user_metadata || {};
+                                    statsUsername =
+                                      meta.firstName ||
+                                      meta.first_name ||
+                                      (user.email ? user.email.split("@")[0] : null) ||
+                                      "User";
+                                  }
+                                }
+
+                                // Count all places_progress rows for this user
+                                const { count, error: countError } = await supabase
+                                  .from("places_progress")
+                                  .select("*", { count: "exact", head: true })
+                                  .eq("user_id", userId);
+
+                                if (countError) {
+                                  console.error("Error counting places_progress:", countError);
+                                  alert(`Failed to update stats: ${countError.message}`);
+                                } else {
+                                  console.log(`[PLACES DISCOVERED] Count from database: ${count}`);
+                                  
+                                  // Get existing username if available
+                                  const { data: currentStats } = await supabase
+                                    .from("profile_stats")
+                                    .select("username")
+                                    .eq("user_id", userId)
+                                    .maybeSingle();
+
+                                  const finalUsername = currentStats?.username || statsUsername || "User";
+
+                                  // Update profile_stats with count from database
+                                  const { error: statsUpdateError } = await supabase
+                                    .from("profile_stats")
+                                    .upsert(
+                                      {
+                                        user_id: userId,
+                                        username: finalUsername,
+                                        places_discovered_count: count || 0,
+                                        updated_at: new Date().toISOString(),
+                                      },
+                                      {
+                                        onConflict: "user_id",
+                                      }
+                                    );
+
+                                  if (statsUpdateError) {
+                                    console.error("Error updating profile_stats:", statsUpdateError);
+                                    alert(`Failed to update profile stats: ${statsUpdateError.message}`);
+                                  } else {
+                                    console.log(`[PLACES DISCOVERED] Successfully updated profile_stats.places_discovered_count to ${count}`);
+                                  }
+                                }
+
                                 // Update local state
                                 setCompletedPlaces((prev) => {
                                   const next = new Set(prev);
@@ -615,57 +708,6 @@ RULES:
         </div>
       )}
 
-      {/* RESET CONFIRMATION MODAL */}
-      {showResetModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4">
-          <div className="relative w-full max-w-md rounded-2xl bg-white border border-gray-200 shadow-2xl p-6">
-            <h3 className="text-xl font-bold mb-4">Reset Progress</h3>
-            <p className="text-gray-700 mb-6">
-              Are you sure you want to reset your Places in the Bible progress? This will remove all completion marks and cannot be undone.
-            </p>
-            <div className="flex gap-3">
-              <button
-                type="button"
-                onClick={() => setShowResetModal(false)}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                onClick={async () => {
-                  if (!userId) {
-                    setShowResetModal(false);
-                    return;
-                  }
-
-                  try {
-                    const { error } = await supabase
-                      .from("places_progress")
-                      .delete()
-                      .eq("user_id", userId);
-
-                    if (error) {
-                      console.error("Error resetting progress:", error);
-                      alert("Failed to reset progress. Please try again.");
-                    } else {
-                      // Clear local state
-                      setCompletedPlaces(new Set());
-                      setShowResetModal(false);
-                    }
-                  } catch (err) {
-                    console.error("Error resetting progress:", err);
-                    alert("Failed to reset progress. Please try again.");
-                  }
-                }}
-                className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
-              >
-                Reset
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
