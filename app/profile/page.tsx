@@ -205,8 +205,8 @@ export default function ProfilePage() {
           processedCount++;
         } else if (action.action_type === "keyword_mastered") {
           const text = action.action_label 
-            ? `On ${formattedDate}, you mastered ${action.action_label}.`
-            : `On ${formattedDate}, you mastered a new keyword.`;
+            ? `On ${formattedDate}, you understood ${action.action_label}.`
+            : `On ${formattedDate}, you understood a new keyword.`;
           actions.push({
             date: formattedDate,
             text,
@@ -455,10 +455,10 @@ export default function ProfilePage() {
             <div className="text-sm text-gray-700">Places Discovered</div>
           </div>
 
-          {/* Keywords Mastered */}
+          {/* Keywords Understood */}
           <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm">
             <div className="text-2xl font-bold mb-1">{displayStats.keywords_mastered_count}</div>
-            <div className="text-sm text-gray-700">Keywords Mastered</div>
+            <div className="text-sm text-gray-700">Keywords Understood</div>
           </div>
         </div>
 
