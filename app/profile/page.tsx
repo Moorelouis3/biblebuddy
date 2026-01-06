@@ -23,7 +23,7 @@ export default function ProfilePage() {
   const [booksCompleted, setBooksCompleted] = useState(0);
   const [bibleCompletion, setBibleCompletion] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [actionLog, setActionLog] = useState<Array<{ date: string; text: string; sortKey: number }>>([]);
+  const [actionLog, setActionLog] = useState<Array<{ date: string; text: string; sortKey: number; actionType: string }>>([]);
   const [isActionLogOpen, setIsActionLogOpen] = useState(false);
 
   // Load user and all profile data
@@ -112,7 +112,7 @@ export default function ProfilePage() {
 
   // Build Action Log from existing data
   async function buildActionLog(userId: string, completedChapters: Array<{ book: string; chapter: number; created_at: string }>) {
-    const actions: Array<{ date: string; text: string; sortKey: number }> = [];
+    const actions: Array<{ date: string; text: string; sortKey: number; actionType: string }> = [];
 
     try {
       // 1. Get all actions from master_actions
@@ -138,24 +138,28 @@ export default function ProfilePage() {
               date: formattedDate,
               text: `On ${formattedDate}, you completed a chapter.`,
               sortKey: actionDate.getTime(),
+              actionType: "chapter_completed",
             });
           } else if (action.action_type === "person_learned") {
             actions.push({
               date: formattedDate,
               text: `On ${formattedDate}, you learned about a new person.`,
               sortKey: actionDate.getTime(),
+              actionType: "person_learned",
             });
           } else if (action.action_type === "place_discovered") {
             actions.push({
               date: formattedDate,
               text: `On ${formattedDate}, you discovered a new place.`,
               sortKey: actionDate.getTime(),
+              actionType: "place_discovered",
             });
           } else if (action.action_type === "keyword_mastered") {
             actions.push({
               date: formattedDate,
               text: `On ${formattedDate}, you mastered a new keyword.`,
               sortKey: actionDate.getTime(),
+              actionType: "keyword_mastered",
             });
           } else if (action.action_type === "user_login") {
             // Only show one login per day
@@ -165,6 +169,7 @@ export default function ProfilePage() {
                 date: formattedDate,
                 text: `On ${formattedDate}, you logged in.`,
                 sortKey: actionDate.getTime(),
+                actionType: "user_login",
               });
             }
           }
@@ -222,6 +227,7 @@ export default function ProfilePage() {
             date: formattedDate,
             text: `On ${formattedDate}, you completed ${bookName}.`,
             sortKey: completionDate.getTime(),
+            actionType: "book_completed",
           });
         }
       }
@@ -242,6 +248,26 @@ export default function ProfilePage() {
       "July", "August", "September", "October", "November", "December"
     ];
     return `${months[date.getMonth()]} ${date.getDate()}`;
+  }
+
+  // Get color class for action type
+  function getActionColorClass(actionType: string): string {
+    switch (actionType) {
+      case "chapter_completed":
+        return "bg-green-50 border-l-4 border-green-500";
+      case "book_completed":
+        return "bg-green-100 border-l-4 border-green-600";
+      case "person_learned":
+        return "bg-pink-50 border-l-4 border-pink-500";
+      case "place_discovered":
+        return "bg-cyan-50 border-l-4 border-cyan-500";
+      case "keyword_mastered":
+        return "bg-purple-50 border-l-4 border-purple-500";
+      case "user_login":
+        return "bg-blue-50 border-l-4 border-blue-500";
+      default:
+        return "bg-gray-50 border-l-4 border-gray-400";
+    }
   }
 
   const getHeatMapColor = (actions: number) => {
@@ -498,16 +524,18 @@ export default function ProfilePage() {
                 </p>
               ) : (
                 <div
-                  className={`space-y-3 ${
+                  className={`space-y-0 ${
                     actionLog.length > 10
-                      ? "max-h-96 overflow-y-auto pr-2"
+                      ? "max-h-96 overflow-y-auto"
                       : ""
                   }`}
                 >
                   {actionLog.map((action, index) => (
                     <div
                       key={index}
-                      className="text-sm text-gray-700 py-1 border-b border-gray-100 last:border-0"
+                      className={`${getActionColorClass(action.actionType)} px-4 py-3 text-sm text-gray-700 transition-colors duration-150 ${
+                        index < actionLog.length - 1 ? "border-b border-gray-200" : ""
+                      }`}
                     >
                       {action.text}
                     </div>
