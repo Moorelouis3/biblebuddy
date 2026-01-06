@@ -72,13 +72,13 @@ export default function LandingPage() {
         <div className="flex items-center gap-4">
           <Link
             href="/login"
-            className="text-sm md:text-base text-gray-700 hover:text-gray-900 font-medium transition"
+            className="text-sm md:text-base text-gray-200 hover:text-white font-medium transition"
           >
             Log In
           </Link>
           <Link
-            href="/login"
-            className="inline-block rounded-lg bg-blue-600 text-white text-sm md:text-base font-semibold px-5 md:px-6 py-2 md:py-2.5 shadow-md hover:bg-blue-700 transition"
+            href="/signup"
+            className="inline-block rounded-full bg-blue-500 text-white text-sm md:text-base font-semibold px-5 md:px-6 py-2 md:py-2.5 shadow-md hover:bg-blue-400 transition"
           >
             Sign Up →
           </Link>
@@ -122,7 +122,7 @@ export default function LandingPage() {
           {/* Primary CTA Button */}
           <div className="text-center mb-6 md:mb-8">
             <Link
-              href="/login"
+              href="/signup"
               className="inline-block rounded-lg bg-blue-600 text-white text-base md:text-lg font-semibold px-8 md:px-10 py-3 md:py-4 shadow-lg hover:bg-blue-700 transition transform hover:scale-105"
             >
               Try Bible Buddy Now →
@@ -150,6 +150,121 @@ export default function LandingPage() {
           </div>
         </div>
       </main>
+
+      {/* FOOTER */}
+      <footer className="bg-[#050816] text-gray-300 mt-4">
+        <div className="max-w-7xl mx-auto px-4 py-10 md:py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Left column - Connect with me */}
+          <div>
+            <h3 className="text-sm font-semibold text-gray-100 uppercase tracking-wide mb-4">
+              Connect with me (I&apos;m very responsive)
+            </h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a
+                  href="https://www.youtube.com/@BibleStudyWithLouis"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  YouTube – Bible Study with Louis
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/biblestudywithlouis"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Instagram – Bible Study with Louis
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.threads.net/@biblestudywithlouis"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Threads – Bible Study with Louis
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.tiktok.com/@biblestudywithlouis"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  TikTok – Bible Study with Louis
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/profile.php?id=100085924826685"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Facebook – Bible Study with Louis
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Middle column - Resources */}
+          <div>
+            <h3 className="text-sm font-semibold text-gray-100 uppercase tracking-wide mb-4">
+              Resources
+            </h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href="/contact"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/privacy"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/terms"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Terms of Service
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Right column - Brand + Description */}
+          <div className="text-sm md:text-base">
+            <h3 className="text-lg font-semibold text-white mb-3">
+              Bible Buddy
+            </h3>
+            <p className="text-gray-300 leading-relaxed max-w-sm">
+              An interactive Bible study app built to help you understand
+              Scripture, not just read it.
+            </p>
+          </div>
+        </div>
+
+        {/* Copyright row */}
+        <div className="border-t border-gray-800">
+          <div className="max-w-7xl mx-auto px-4 py-4 text-xs md:text-sm text-gray-500 text-center md:text-right">
+            © 2026 Bible Buddy — Powered by Hope Nation
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
