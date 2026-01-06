@@ -142,8 +142,8 @@ export default function LandingPage() {
 
       {/* HERO SECTION */}
       <main className="flex-1 w-full">
-        <section className="max-w-7xl mx-auto px-4 py-12 md:py-16 lg:py-20">
-          <div className="text-center mb-12 md:mb-16">
+        <section className="max-w-7xl mx-auto px-4 py-8 md:py-12">
+          <div className="text-center mb-8 md:mb-12">
             {/* Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 text-gray-900">
               Don't just read the Bible,
@@ -177,7 +177,7 @@ export default function LandingPage() {
             </div>
 
             {/* Primary CTA Button */}
-            <div className="mb-16">
+            <div className="mb-8">
               <a
                 href="#signup"
                 className="inline-block rounded-lg bg-blue-600 text-white text-base md:text-lg font-semibold px-8 md:px-10 py-3 md:py-4 shadow-lg hover:bg-blue-700 transition transform hover:scale-105"
@@ -189,7 +189,7 @@ export default function LandingPage() {
         </section>
 
         {/* FEATURE BOXES (4 CARDS) */}
-        <section className="max-w-7xl mx-auto px-4 py-12 md:py-16">
+        <section className="max-w-7xl mx-auto px-4 py-8 md:py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {/* Card 1 */}
             <div className="bg-white border border-gray-200 rounded-lg p-6 md:p-8 shadow-sm hover:shadow-md transition">
@@ -230,7 +230,7 @@ export default function LandingPage() {
         </section>
 
         {/* PROBLEM SECTION (CENTERED COPY) */}
-        <section className="max-w-4xl mx-auto px-4 py-12 md:py-16">
+        <section className="max-w-4xl mx-auto px-4 py-8 md:py-12">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               The Problem Isn't Reading the Bible —
@@ -249,7 +249,7 @@ export default function LandingPage() {
         </section>
 
         {/* VIDEO SECTION */}
-        <section className="max-w-4xl mx-auto px-4 py-12 md:py-16">
+        <section className="max-w-4xl mx-auto px-4 py-8 md:py-12">
           <div className="bg-white border border-gray-200 rounded-lg p-4 md:p-6 shadow-sm">
             <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
               <iframe
@@ -264,7 +264,7 @@ export default function LandingPage() {
         </section>
 
         {/* SIGNUP FORM SECTION */}
-        <section id="signup" className="max-w-md mx-auto px-4 py-12 md:py-16">
+        <section id="signup" className="max-w-md mx-auto px-4 py-8 md:py-12">
           <form onSubmit={handleSubmit} className="space-y-4 bg-white rounded-lg border border-gray-200 p-6 md:p-8 shadow-sm">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
