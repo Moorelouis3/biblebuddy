@@ -3,49 +3,9 @@
 import { useState, useEffect, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
+import { BIBLE_PLACES_LIST } from "../../lib/biblePlacesList";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-
-// Static list of Bible places names
-const STATIC_PLACES_NAMES = [
-  "Heaven",
-  "Earth",
-  "Sheol",
-  "Hades",
-  "Hell",
-  "New Heaven and New Earth",
-  "Jerusalem",
-  "Bethlehem",
-  "Nazareth",
-  "Jericho",
-  "Babylon",
-  "Nineveh",
-  "Rome",
-  "Damascus",
-  "Egypt",
-  "Canaan",
-  "Promised Land",
-  "Wilderness",
-  "Galilee",
-  "Judea",
-  "Samaria",
-  "Assyria",
-  "Tabernacle",
-  "Temple",
-  "Second Temple",
-  "Synagogue",
-  "Ark of the Covenant",
-  "Solomon's Palace",
-  "Garden of Eden",
-  "Mount Sinai",
-  "Mount Zion",
-  "Mount Carmel",
-  "Jordan River",
-  "Red Sea",
-  "Sea of Galilee",
-  "Cave of Adullam",
-  "Well of Beersheba",
-];
 
 type BiblePlace = {
   id: string;
@@ -55,10 +15,10 @@ type BiblePlace = {
 
 // Convert names to BiblePlace objects
 function createStaticPlaces(): BiblePlace[] {
-  return STATIC_PLACES_NAMES.map((name, index) => ({
-    id: `static-${index}-${name.toLowerCase().replace(/[^a-z0-9]/g, "-")}`,
-    name: name,
-    normalized_name: name.toLowerCase().trim(),
+  return BIBLE_PLACES_LIST.map((placeEntry, index) => ({
+    id: `static-${index}-${placeEntry.name.toLowerCase().replace(/[^a-z0-9]/g, "-")}`,
+    name: placeEntry.name,
+    normalized_name: placeEntry.name.toLowerCase().trim(),
   }));
 }
 
