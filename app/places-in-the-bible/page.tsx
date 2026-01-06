@@ -684,7 +684,7 @@ RULES:
                                       // Get all counts to calculate total_actions
                                       const { data: allStats } = await supabase
                                         .from("profile_stats")
-                                        .select("chapters_completed_count, notes_created_count, people_learned_count, keywords_mastered_count")
+                                        .select("chapters_completed_count, people_learned_count, places_discovered_count, keywords_mastered_count")
                                         .eq("user_id", userId)
                                         .maybeSingle();
 
