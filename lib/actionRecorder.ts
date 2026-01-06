@@ -59,12 +59,12 @@ export async function logActionToMasterActions(
     const insertData: {
       user_id: string;
       action_type: string;
-      username: string;
+      username: string | null;
       action_label?: string | null;
     } = {
       user_id: userId,
       action_type: actionType,
-      username: finalUsername,
+      username: finalUsername ?? null,
     };
 
     // Only include action_label if provided (not null/undefined)
