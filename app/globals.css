@@ -15,9 +15,9 @@
   color: #166534;
 }
 
-/* KEYWORDS — dark maroon red (60% blended, NOT bright), no underline */
+/* KEYWORDS — dark red (solid, NOT bright), no underline */
 .bible-highlight-keywords {
-  color: rgba(127, 29, 29, 0.6); /* 60% opacity dark maroon */
+  color: #7f1d1d; /* Dark red */
 }
 
 /* ✅ Global colors */

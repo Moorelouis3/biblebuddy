@@ -4,7 +4,13 @@
  * Uses the SAME lists as the UI pages (people-in-the-bible, places-in-the-bible, keywords-in-the-bible)
  * Database is ONLY used when a word is clicked (for notes lookup), never for detection.
  * 
- * CRITICAL: Each term is highlighted ONLY ONCE per chapter (first occurrence only).
+ * RULES:
+ * - People: Highlight EVERY occurrence (BLUE)
+ * - Places: Highlight EVERY occurrence, priority over people (GREEN)
+ * - Keywords: 3-layer system (DARK RED)
+ *   - Layer 1 (Narrative-Critical): Every occurrence
+ *   - Layer 2 (Cultural/Historical): First per section
+ *   - Layer 3 (Theological/Abstract): Once per chapter
  */
 
 import { BIBLE_PEOPLE_LIST } from "./biblePeopleList";
@@ -35,6 +41,57 @@ function getKeywordNames(): string[] {
 }
 
 /**
+ * Determine keyword layer (1, 2, or 3) based on keyword type
+ * Layer 1: Narrative-Critical (pit, blood, silver, coat of many colors, flock, slave, dream)
+ * Layer 2: Cultural/Historical (balm, myrrh, cistern, sackcloth, signet ring)
+ * Layer 3: Theological/Abstract (covenant, redemption, inheritance)
+ */
+function getKeywordLayer(term: string): 1 | 2 | 3 {
+  const termLower = term.toLowerCase();
+  
+  // Layer 1: Narrative-Critical - concrete objects/actions in stories
+  const layer1Keywords = [
+    "pit", "blood", "silver", "coat of many colors", "flock", "slave", "dream",
+    "robe", "sheep", "goat", "donkey", "camel", "ox", "bull", "ram", "ewe",
+    "lamb", "chariot", "sword", "bow", "arrow", "spear", "shield", "staff",
+    "rod", "scepter", "crown", "ring", "seal", "scroll", "tablet", "stone",
+    "altar", "tent", "house", "tower", "wall", "gate", "well", "spring",
+    "river", "sea", "mountain", "hill", "valley", "field", "vineyard",
+    "grain", "wheat", "barley", "bread", "wine", "oil", "water", "fire",
+    "smoke", "cloud", "wind", "rain", "snow", "ice", "thunder", "lightning"
+  ];
+  
+  // Layer 2: Cultural/Historical - cultural artifacts and practices
+  const layer2Keywords = [
+    "balm", "myrrh", "frankincense", "cistern", "sackcloth", "signet ring",
+    "ephod", "breastplate", "phylacteries", "mezuzah", "tallit", "yoke",
+    "millstone", "threshing floor", "winepress", "granary", "storehouse",
+    "temple treasury", "money changer", "denarius", "talent", "shekel",
+    "cubit", "measure", "basket", "jar", "pot", "vessel", "lamp", "candle",
+    "candlestick", "lampstand", "censer", "incense", "anointing oil",
+    "burnt offering", "grain offering", "sin offering", "peace offering",
+    "wave offering", "drink offering", "trespass offering", "thank offering"
+  ];
+  
+  // Check if term matches any layer 1 keyword (including partial matches for phrases)
+  for (const keyword of layer1Keywords) {
+    if (termLower.includes(keyword) || keyword.includes(termLower)) {
+      return 1;
+    }
+  }
+  
+  // Check if term matches any layer 2 keyword
+  for (const keyword of layer2Keywords) {
+    if (termLower.includes(keyword) || keyword.includes(termLower)) {
+      return 2;
+    }
+  }
+  
+  // Default to Layer 3: Theological/Abstract
+  return 3;
+}
+
+/**
  * Escape HTML special characters
  */
 function escapeHtml(text: string): string {
@@ -50,7 +107,10 @@ function escapeHtml(text: string): string {
 
 /**
  * Process verses array and return enriched HTML
- * CRITICAL: Each term is highlighted ONLY ONCE per chapter (first occurrence only)
+ * 
+ * PEOPLE: Highlight EVERY occurrence (BLUE)
+ * PLACES: Highlight EVERY occurrence, priority over people (GREEN)
+ * KEYWORDS: 3-layer system (DARK RED)
  */
 export async function enrichBibleVerses(
   verses: Array<{ verse: number; text: string }>
@@ -60,25 +120,29 @@ export async function enrichBibleVerses(
   const placeNames = getPlaceNames();
   const keywordNames = getKeywordNames();
 
-  // Build unified list with type information
+  // Build separate lists with type information
   type HighlightTerm = {
     term: string;
     type: "people" | "places" | "keywords";
+    layer?: 1 | 2 | 3; // For keywords only
   };
 
-  const allTerms: HighlightTerm[] = [];
+  const peopleTerms: HighlightTerm[] = [];
+  const placeTerms: HighlightTerm[] = [];
+  const keywordTerms: HighlightTerm[] = [];
 
-  // Add people first (priority: people > places > keywords)
+  // Add people
   peopleNames.forEach((name) => {
-    allTerms.push({ term: name.trim(), type: "people" });
+    peopleTerms.push({ term: name.trim(), type: "people" });
   });
 
-  // Add places (only if not already a person)
+  // Add places (places take priority over people)
   const peopleSet = new Set(peopleNames.map((n) => n.toLowerCase().trim()));
   placeNames.forEach((name) => {
     const normalized = name.toLowerCase().trim();
+    // Only add if not already a person (places take priority)
     if (!peopleSet.has(normalized)) {
-      allTerms.push({ term: name.trim(), type: "places" });
+      placeTerms.push({ term: name.trim(), type: "places" });
     }
   });
 
@@ -87,18 +151,23 @@ export async function enrichBibleVerses(
   keywordNames.forEach((name) => {
     const normalized = name.toLowerCase().trim();
     if (!peopleSet.has(normalized) && !placesSet.has(normalized)) {
-      allTerms.push({ term: name.trim(), type: "keywords" });
+      const layer = getKeywordLayer(name);
+      keywordTerms.push({ term: name.trim(), type: "keywords", layer });
     }
   });
 
-  // Sort by longest string first (prevents "David" matching inside "City of David")
-  allTerms.sort((a, b) => b.term.length - a.term.length);
+  // Sort all terms by longest string first (prevents "David" matching inside "City of David")
+  peopleTerms.sort((a, b) => b.term.length - a.term.length);
+  placeTerms.sort((a, b) => b.term.length - a.term.length);
+  keywordTerms.sort((a, b) => b.term.length - a.term.length);
 
-  // Track which terms have been highlighted (once per chapter)
-  const usedTerms = new Set<string>();
+  // Track keyword highlights by layer
+  const keywordLayer1Used = new Set<string>(); // Not used - layer 1 highlights every time
+  const keywordLayer2Used = new Set<string>(); // Per section (verse group)
+  const keywordLayer3Used = new Set<string>(); // Once per chapter
 
-  // Process each verse, but track highlights across all verses
-  const enrichedVerses = verses.map((v) => {
+  // Process each verse
+  const enrichedVerses = verses.map((v, verseIndex) => {
     // Escape HTML in the verse text
     const escapedText = escapeHtml(v.text);
 
@@ -111,69 +180,139 @@ export async function enrichBibleVerses(
       matchedText: string;
     }> = [];
 
-    // Walk through each term (sorted longest first)
-    for (const highlightTerm of allTerms) {
-      // Check if this term already highlighted (once per chapter)
-      const lookupKey = highlightTerm.term.toLowerCase().trim();
-      if (usedTerms.has(lookupKey)) {
-        continue; // Skip - already highlighted once in this chapter
-      }
-
-      // Create regex for whole-word matching (case-insensitive)
-      // Escape special regex characters
+    // Process PLACES first (they take priority)
+    for (const highlightTerm of placeTerms) {
       const escapedTerm = highlightTerm.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
-
-      // Find first match in this verse
+      
+      // Find ALL matches in this verse (not just first)
+      let match;
       regex.lastIndex = 0;
-      const match = regex.exec(escapedText);
-
-      if (match) {
-        // For people names, only match if the matched text starts with a capital letter
-        // This prevents common words like "on", "put", "in" from being highlighted as people
-        // Exception: Short names (1-2 letters) that are also common words - only match if capitalized
-        if (highlightTerm.type === "people") {
-          const matchedText = match[0];
-          const firstChar = matchedText.charAt(0);
-          const termLower = highlightTerm.term.toLowerCase();
-          
-          // List of short names that are also common words - require capitalization
-          const shortCommonWords = ["on", "in", "at", "to", "of", "is", "it", "as", "an", "am", "be", "do", "go", "if", "my", "no", "or", "so", "up", "us", "we", "put"];
-          
-          // If it's a short common word, only match if capitalized
-          if (shortCommonWords.includes(termLower) && termLower.length <= 3) {
-            const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
-            if (!isUpperCaseLetter) {
-              continue; // Skip lowercase common words
-            }
-          } else {
-            // For longer names, still require capitalization to avoid false matches
-            const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
-            if (!isUpperCaseLetter) {
-              continue; // Skip - not capitalized, likely a common word
-            }
-          }
-        }
-
+      while ((match = regex.exec(escapedText)) !== null) {
         const start = match.index;
         const end = start + match[0].length;
-
-        // Check if this range overlaps with any existing highlight in this verse
+        
+        // Check if this range overlaps with any existing highlight
         const overlaps = matches.some(
           (m) => !(end <= m.start || start >= m.end)
         );
-
+        
         if (!overlaps) {
           matches.push({
             start,
             end,
-            type: highlightTerm.type,
-            term: highlightTerm.term, // Original cased text
-            matchedText: match[0], // Matched text from verse
+            type: "places",
+            term: highlightTerm.term,
+            matchedText: match[0],
           });
+        }
+      }
+    }
 
-          // Mark as used (across all verses)
-          usedTerms.add(lookupKey);
+    // Process PEOPLE (every occurrence)
+    for (const highlightTerm of peopleTerms) {
+      const escapedTerm = highlightTerm.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
+      
+      // For people names, only match if capitalized (proper noun)
+      const termLower = highlightTerm.term.toLowerCase();
+      const shortCommonWords = ["on", "in", "at", "to", "of", "is", "it", "as", "an", "am", "be", "do", "go", "if", "my", "no", "or", "so", "up", "us", "we", "put"];
+      
+      // Find ALL matches in this verse
+      let match;
+      regex.lastIndex = 0;
+      while ((match = regex.exec(escapedText)) !== null) {
+        const matchedText = match[0];
+        const firstChar = matchedText.charAt(0);
+        
+        // Capitalization check for people
+        if (shortCommonWords.includes(termLower) && termLower.length <= 3) {
+          const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
+          if (!isUpperCaseLetter) {
+            continue; // Skip lowercase common words
+          }
+        } else {
+          const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
+          if (!isUpperCaseLetter) {
+            continue; // Skip - not capitalized, likely a common word
+          }
+        }
+        
+        const start = match.index;
+        const end = start + match[0].length;
+        
+        // Check if this range overlaps with any existing highlight
+        const overlaps = matches.some(
+          (m) => !(end <= m.start || start >= m.end)
+        );
+        
+        if (!overlaps) {
+          matches.push({
+            start,
+            end,
+            type: "people",
+            term: highlightTerm.term,
+            matchedText: match[0],
+          });
+        }
+      }
+    }
+
+    // Process KEYWORDS (3-layer system)
+    for (const highlightTerm of keywordTerms) {
+      if (!highlightTerm.layer) continue;
+      
+      const lookupKey = highlightTerm.term.toLowerCase().trim();
+      const layer = highlightTerm.layer;
+      
+      // Check layer-specific rules
+      if (layer === 2) {
+        // Layer 2: First per section (we'll use verse groups of ~10 verses as "sections")
+        const sectionKey = `${Math.floor(verseIndex / 10)}_${lookupKey}`;
+        if (keywordLayer2Used.has(sectionKey)) {
+          continue; // Already highlighted in this section
+        }
+      } else if (layer === 3) {
+        // Layer 3: Once per chapter
+        if (keywordLayer3Used.has(lookupKey)) {
+          continue; // Already highlighted once in this chapter
+        }
+      }
+      // Layer 1: No restrictions - highlight every time
+      
+      const escapedTerm = highlightTerm.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
+      
+      // Find first match in this verse
+      regex.lastIndex = 0;
+      const match = regex.exec(escapedText);
+      
+      if (match) {
+        const start = match.index;
+        const end = start + match[0].length;
+        
+        // Check if this range overlaps with any existing highlight
+        const overlaps = matches.some(
+          (m) => !(end <= m.start || start >= m.end)
+        );
+        
+        if (!overlaps) {
+          matches.push({
+            start,
+            end,
+            type: "keywords",
+            term: highlightTerm.term,
+            matchedText: match[0],
+          });
+          
+          // Mark as used based on layer
+          if (layer === 2) {
+            const sectionKey = `${Math.floor(verseIndex / 10)}_${lookupKey}`;
+            keywordLayer2Used.add(sectionKey);
+          } else if (layer === 3) {
+            keywordLayer3Used.add(lookupKey);
+          }
+          // Layer 1: Don't mark as used - allow multiple highlights
         }
       }
     }
