@@ -968,28 +968,11 @@ FINAL RULES:
                                 alert("Failed to mark as finished. Please try again.");
                               } else {
                                 // ACTION TRACKING: Insert into master_actions
-                                // Get username if not already loaded
-                                let actionUsername = username;
-                                if (!actionUsername && userId) {
-                                  const { data: { user } } = await supabase.auth.getUser();
-                                  if (user) {
-                                    const meta: any = user.user_metadata || {};
-                                    actionUsername =
-                                      meta.firstName ||
-                                      meta.first_name ||
-                                      (user.email ? user.email.split("@")[0] : null) ||
-                                      "User";
-                                  }
-                                }
-
                                 const { error: actionError } = await supabase
                                   .from("master_actions")
                                   .insert({
                                     user_id: userId,
-                                    username: actionUsername || "User",
                                     action_type: "person_learned",
-                                    reference_type: "person",
-                                    reference_id: personNameKey,
                                   });
 
                                 if (actionError) {
@@ -1020,7 +1003,10 @@ FINAL RULES:
 
                                 if (countError) {
                                   console.error("Error counting people_progress:", countError);
+                                  alert(`Failed to update stats: ${countError.message}`);
                                 } else {
+                                  console.log(`[PEOPLE LEARNED] Count from database: ${count}`);
+                                  
                                   // Get existing username if available
                                   const { data: currentStats } = await supabase
                                     .from("profile_stats")
@@ -1047,6 +1033,9 @@ FINAL RULES:
 
                                   if (statsUpdateError) {
                                     console.error("Error updating profile_stats:", statsUpdateError);
+                                    alert(`Failed to update profile stats: ${statsUpdateError.message}`);
+                                  } else {
+                                    console.log(`[PEOPLE LEARNED] Successfully updated profile_stats.people_learned_count to ${count}`);
                                   }
                                 }
 
