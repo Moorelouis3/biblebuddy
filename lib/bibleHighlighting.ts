@@ -135,7 +135,8 @@ export async function enrichBibleVerses(
           const matchedText = match[0];
           const firstChar = matchedText.charAt(0);
           // Only match if first character is uppercase (proper noun)
-          if (firstChar !== firstChar.toUpperCase() || firstChar === firstChar.toLowerCase()) {
+          // Skip if first character is lowercase (common word)
+          if (firstChar !== firstChar.toUpperCase()) {
             continue; // Skip - not capitalized, likely a common word
           }
         }
