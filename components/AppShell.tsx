@@ -7,6 +7,7 @@ import { supabase } from "../lib/supabaseClient";
 import { ChatLouis } from "./ChatLouis";
 import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
+import { trackUserActivity } from "../lib/trackUserActivity";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -29,6 +30,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       // Sync notes count on initial session check if user is logged in
       if (session?.user?.id) {
+        // Track user activity (login/refresh) - once per 24 hours
+        await trackUserActivity(session.user.id);
+        
         if (shouldSyncNotesCount(session.user.id)) {
           console.log("[APPSHELL] Syncing notes count on initial session check (new day detected)");
           await syncNotesCount(session.user.id);
@@ -51,6 +55,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         
         // Sync notes count when user logs in or session changes
         if (session?.user?.id) {
+          // Track user activity (login/refresh) - once per 24 hours
+          await trackUserActivity(session.user.id);
+          
           // Check if we should sync (new day or first time)
           if (shouldSyncNotesCount(session.user.id)) {
             console.log("[APPSHELL] Syncing notes count on login/new day");
