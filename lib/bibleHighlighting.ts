@@ -131,14 +131,27 @@ export async function enrichBibleVerses(
       if (match) {
         // For people names, only match if the matched text starts with a capital letter
         // This prevents common words like "on", "put", "in" from being highlighted as people
+        // Exception: Short names (1-2 letters) that are also common words - only match if capitalized
         if (highlightTerm.type === "people") {
           const matchedText = match[0];
           const firstChar = matchedText.charAt(0);
-          // Only match if first character is an uppercase letter (proper noun)
-          // Skip if first character is lowercase (common word) or not a letter
-          const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
-          if (!isUpperCaseLetter) {
-            continue; // Skip - not capitalized, likely a common word
+          const termLower = highlightTerm.term.toLowerCase();
+          
+          // List of short names that are also common words - require capitalization
+          const shortCommonWords = ["on", "in", "at", "to", "of", "is", "it", "as", "an", "am", "be", "do", "go", "if", "my", "no", "or", "so", "up", "us", "we", "put"];
+          
+          // If it's a short common word, only match if capitalized
+          if (shortCommonWords.includes(termLower) && termLower.length <= 3) {
+            const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
+            if (!isUpperCaseLetter) {
+              continue; // Skip lowercase common words
+            }
+          } else {
+            // For longer names, still require capitalization to avoid false matches
+            const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
+            if (!isUpperCaseLetter) {
+              continue; // Skip - not capitalized, likely a common word
+            }
           }
         }
 
