@@ -419,6 +419,7 @@ export default function PeopleInTheBiblePage() {
   const [loadingProgress, setLoadingProgress] = useState(true);
   const [showResetModal, setShowResetModal] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
 
   // Filter and sort people
   const filteredPeople = useMemo(() => {
@@ -469,6 +470,15 @@ export default function PeopleInTheBiblePage() {
         }
 
         setUserId(user.id);
+
+        // Extract username from user metadata (same pattern as dashboard)
+        const meta: any = user.user_metadata || {};
+        const extractedUsername =
+          meta.firstName ||
+          meta.first_name ||
+          (user.email ? user.email.split("@")[0] : null) ||
+          "User";
+        setUsername(extractedUsername);
 
         // Fetch all completed people for this user (batch query)
         const { data, error } = await supabase
@@ -942,103 +952,193 @@ FINAL RULES:
 
                             const personNameKey = selectedPerson.name.toLowerCase().trim();
 
-                            if (isCompleted) {
-                              // Already completed - do nothing or allow unmarking if needed
-                              return;
-                            }
-
                             try {
-                              // Insert completion
-                              const { error } = await supabase
-                                .from("people_progress")
-                                .upsert(
-                                  {
-                                    user_id: userId,
-                                    person_name: personNameKey,
-                                  },
-                                  {
-                                    onConflict: "user_id,person_name",
-                                  }
-                                );
-
-                              if (error) {
-                                console.error("Error marking person as finished:", error);
-                                alert("Failed to mark as finished. Please try again.");
-                              } else {
-                                // ACTION TRACKING: Insert into master_actions
-                                const { error: actionError } = await supabase
-                                  .from("master_actions")
-                                  .insert({
-                                    user_id: userId,
-                                    action_type: "person_learned",
-                                    entity_type: "person",
-                                    entity_id: personNameKey,
-                                  });
-
-                                if (actionError) {
-                                  console.error("Error logging action to master_actions:", actionError);
-                                  // Don't block the UI - continue even if action logging fails
-                                }
-
-                                // ACTION TRACKING: Increment profile_stats.people_learned_count
-                                // First, ensure the row exists (upsert with default values)
-                                const { data: currentStats, error: statsFetchError } = await supabase
-                                  .from("profile_stats")
-                                  .select("people_learned_count")
+                              if (isCompleted) {
+                                // TOGGLE: Unmark as learned
+                                const { error } = await supabase
+                                  .from("people_progress")
+                                  .delete()
                                   .eq("user_id", userId)
-                                  .maybeSingle();
+                                  .eq("person_name", personNameKey);
 
-                                if (statsFetchError && statsFetchError.code !== 'PGRST116') {
-                                  console.error("Error fetching profile_stats:", statsFetchError);
+                                if (error) {
+                                  console.error("Error unmarking person as finished:", error);
+                                  alert("Failed to unmark as finished. Please try again.");
                                 } else {
-                                  // Calculate new count
-                                  const currentCount = currentStats?.people_learned_count || 0;
-                                  const newCount = currentCount + 1;
-
-                                  // Upsert with incremented count (creates row if doesn't exist)
-                                  const { error: statsUpdateError } = await supabase
+                                  // Decrement profile_stats.people_learned_count
+                                  const { data: currentStats, error: statsFetchError } = await supabase
                                     .from("profile_stats")
-                                    .upsert(
-                                      {
-                                        user_id: userId,
-                                        people_learned_count: newCount,
-                                        updated_at: new Date().toISOString(),
-                                      },
-                                      {
-                                        onConflict: "user_id",
-                                      }
-                                    );
+                                    .select("people_learned_count, username")
+                                    .eq("user_id", userId)
+                                    .maybeSingle();
 
-                                  if (statsUpdateError) {
-                                    console.error("Error updating profile_stats:", statsUpdateError);
+                                  if (statsFetchError && statsFetchError.code !== 'PGRST116') {
+                                    console.error("Error fetching profile_stats:", statsFetchError);
+                                  } else {
+                                    // Calculate new count (never go below 0)
+                                    const currentCount = currentStats?.people_learned_count || 0;
+                                    const newCount = Math.max(0, currentCount - 1);
+
+                                    // Use existing username if available
+                                    const finalUsername = currentStats?.username || username || "User";
+
+                                    // Update with decremented count
+                                    const { error: statsUpdateError } = await supabase
+                                      .from("profile_stats")
+                                      .upsert(
+                                        {
+                                          user_id: userId,
+                                          username: finalUsername,
+                                          people_learned_count: newCount,
+                                          updated_at: new Date().toISOString(),
+                                        },
+                                        {
+                                          onConflict: "user_id",
+                                        }
+                                      );
+
+                                    if (statsUpdateError) {
+                                      console.error("Error updating profile_stats:", statsUpdateError);
+                                    }
                                   }
-                                }
 
-                                // Update local state
-                                setCompletedPeople((prev) => {
-                                  const next = new Set(prev);
-                                  next.add(personNameKey);
-                                  return next;
-                                });
-                                // Close the modal after marking as finished
-                                setSelectedPerson(null);
-                                setPersonNotes(null);
-                                setNotesError(null);
+                                  // Update local state - remove from completed set
+                                  setCompletedPeople((prev) => {
+                                    const next = new Set(prev);
+                                    next.delete(personNameKey);
+                                    return next;
+                                  });
+                                  // Close the modal after unmarking
+                                  setSelectedPerson(null);
+                                  setPersonNotes(null);
+                                  setNotesError(null);
+                                }
+                              } else {
+                                // Mark as learned (existing logic)
+                                // Insert completion
+                                const { error } = await supabase
+                                  .from("people_progress")
+                                  .upsert(
+                                    {
+                                      user_id: userId,
+                                      person_name: personNameKey,
+                                    },
+                                    {
+                                      onConflict: "user_id,person_name",
+                                    }
+                                  );
+
+                                if (error) {
+                                  console.error("Error marking person as finished:", error);
+                                  alert("Failed to mark as finished. Please try again.");
+                                } else {
+                                  // ACTION TRACKING: Insert into master_actions
+                                  // Get username if not already loaded
+                                  let actionUsername = username;
+                                  if (!actionUsername && userId) {
+                                    const { data: { user } } = await supabase.auth.getUser();
+                                    if (user) {
+                                      const meta: any = user.user_metadata || {};
+                                      actionUsername =
+                                        meta.firstName ||
+                                        meta.first_name ||
+                                        (user.email ? user.email.split("@")[0] : null) ||
+                                        "User";
+                                    }
+                                  }
+
+                                  const { error: actionError } = await supabase
+                                    .from("master_actions")
+                                    .insert({
+                                      user_id: userId,
+                                      username: actionUsername || "User",
+                                      action_type: "person_learned",
+                                      reference_type: "person",
+                                      reference_id: personNameKey,
+                                    });
+
+                                  if (actionError) {
+                                    console.error("Error logging action to master_actions:", actionError);
+                                    // Don't block the UI - continue even if action logging fails
+                                  }
+
+                                  // ACTION TRACKING: Increment profile_stats.people_learned_count
+                                  // Get username if not already loaded
+                                  let statsUsername = username;
+                                  if (!statsUsername && userId) {
+                                    const { data: { user } } = await supabase.auth.getUser();
+                                    if (user) {
+                                      const meta: any = user.user_metadata || {};
+                                      statsUsername =
+                                        meta.firstName ||
+                                        meta.first_name ||
+                                        (user.email ? user.email.split("@")[0] : null) ||
+                                        "User";
+                                    }
+                                  }
+
+                                  // First, ensure the row exists (upsert with default values)
+                                  const { data: currentStats, error: statsFetchError } = await supabase
+                                    .from("profile_stats")
+                                    .select("people_learned_count, username")
+                                    .eq("user_id", userId)
+                                    .maybeSingle();
+
+                                  if (statsFetchError && statsFetchError.code !== 'PGRST116') {
+                                    console.error("Error fetching profile_stats:", statsFetchError);
+                                  } else {
+                                    // Calculate new count
+                                    const currentCount = currentStats?.people_learned_count || 0;
+                                    const newCount = currentCount + 1;
+
+                                    // Use existing username if available, otherwise use extracted username
+                                    const finalUsername = currentStats?.username || statsUsername || "User";
+
+                                    // Upsert with incremented count and username (creates row if doesn't exist)
+                                    const { error: statsUpdateError } = await supabase
+                                      .from("profile_stats")
+                                      .upsert(
+                                        {
+                                          user_id: userId,
+                                          username: finalUsername,
+                                          people_learned_count: newCount,
+                                          updated_at: new Date().toISOString(),
+                                        },
+                                        {
+                                          onConflict: "user_id",
+                                        }
+                                      );
+
+                                    if (statsUpdateError) {
+                                      console.error("Error updating profile_stats:", statsUpdateError);
+                                    }
+                                  }
+
+                                  // Update local state
+                                  setCompletedPeople((prev) => {
+                                    const next = new Set(prev);
+                                    next.add(personNameKey);
+                                    return next;
+                                  });
+                                  // Close the modal after marking as finished
+                                  setSelectedPerson(null);
+                                  setPersonNotes(null);
+                                  setNotesError(null);
+                                }
                               }
                             } catch (err) {
-                              console.error("Error marking person as finished:", err);
-                              alert("Failed to mark as finished. Please try again.");
+                              console.error("Error toggling person as finished:", err);
+                              alert("Failed to update. Please try again.");
                             }
                           }}
-                          disabled={isCompleted}
                           className={`w-full px-6 py-3 rounded-lg font-medium transition ${
                             isCompleted
-                              ? "bg-green-100 text-green-700 cursor-not-allowed"
+                              ? "bg-green-100 text-green-700 hover:bg-green-200"
                               : "bg-blue-600 text-white hover:bg-blue-700"
                           }`}
                         >
                           {isCompleted
-                            ? `✓ ${selectedPerson.name} marked as finished`
+                            ? `✓ Unmark ${selectedPerson.name} as finished`
                             : `Mark ${selectedPerson.name} as finished`}
                         </button>
                       );
@@ -1089,6 +1189,34 @@ FINAL RULES:
                       console.error("Error resetting progress:", error);
                       alert("Failed to reset progress. Please try again.");
                     } else {
+                      // Reset profile_stats.people_learned_count to 0
+                      const { data: currentStats } = await supabase
+                        .from("profile_stats")
+                        .select("username")
+                        .eq("user_id", userId)
+                        .maybeSingle();
+
+                      const finalUsername = currentStats?.username || username || "User";
+
+                      const { error: statsError } = await supabase
+                        .from("profile_stats")
+                        .upsert(
+                          {
+                            user_id: userId,
+                            username: finalUsername,
+                            people_learned_count: 0,
+                            updated_at: new Date().toISOString(),
+                          },
+                          {
+                            onConflict: "user_id",
+                          }
+                        );
+
+                      if (statsError) {
+                        console.error("Error resetting profile_stats:", statsError);
+                        // Don't block UI - continue even if stats reset fails
+                      }
+
                       // Clear local state
                       setCompletedPeople(new Set());
                       setShowResetModal(false);
