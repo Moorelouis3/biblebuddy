@@ -124,21 +124,44 @@ export async function getHeatMapData(
 /**
  * Calculate current streak from master_actions table
  * Returns streak data including last 7 days
+ * 
+ * Streak Definition: A user earns a streak for a day if they perform
+ * AT LEAST ONE meaningful Bible action that day.
+ * 
+ * Valid streak-triggering actions:
+ * - chapter_completed
+ * - book_completed
+ * - person_learned
+ * - place_discovered
+ * - keyword_mastered
+ * 
+ * NOT streak-triggering:
+ * - user_login
  */
 export interface StreakData {
   currentStreak: number;
   last7Days: Array<{ date: string; completed: boolean }>;
 }
 
+// Valid action types that count toward streak
+const STREAK_ACTION_TYPES = [
+  "chapter_completed",
+  "book_completed",
+  "person_learned",
+  "place_discovered",
+  "keyword_mastered",
+];
+
 export async function calculateStreakFromActions(
   userId: string
 ): Promise<StreakData> {
   try {
-    // Get all actions grouped by date
+    // Get all actions, filtering for valid streak actions only
     const { data, error } = await supabase
       .from("master_actions")
-      .select("created_at")
+      .select("created_at, action_type")
       .eq("user_id", userId)
+      .in("action_type", STREAK_ACTION_TYPES)
       .order("created_at", { ascending: false });
 
     if (error) {
@@ -147,6 +170,7 @@ export async function calculateStreakFromActions(
     }
 
     // Convert to dates (YYYY-MM-DD) and deduplicate
+    // One valid action per day = streak day (no minimum count needed)
     const completedDates = new Set<string>();
     data?.forEach((action) => {
       const date = new Date(action.created_at).toISOString().slice(0, 10);

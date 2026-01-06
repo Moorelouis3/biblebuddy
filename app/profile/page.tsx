@@ -4,11 +4,9 @@ import { useState, useEffect } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import {
   getProfileStats,
-  getHeatMapData,
   calculateStreakFromActions,
   getDayAbbr,
   type ProfileStats,
-  type HeatMapDay,
   type StreakData,
 } from "../../lib/profileStats";
 import { syncNotesCount, shouldSyncNotesCount } from "../../lib/syncNotesCount";
@@ -18,7 +16,6 @@ import { isBookComplete } from "../../lib/readingProgress";
 export default function ProfilePage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [stats, setStats] = useState<ProfileStats | null>(null);
-  const [heatMapData, setHeatMapData] = useState<HeatMapDay[]>([]);
   const [streak, setStreak] = useState<StreakData | null>(null);
   const [booksCompleted, setBooksCompleted] = useState(0);
   const [bibleCompletion, setBibleCompletion] = useState(0);
@@ -54,11 +51,7 @@ export default function ProfilePage() {
         const profileStats = await getProfileStats(user.id);
         setStats(profileStats);
 
-        // Load heat map data
-        const heatMap = await getHeatMapData(user.id);
-        setHeatMapData(heatMap);
-
-        // Load streak data
+        // Load streak data (powered by master_actions)
         const streakData = await calculateStreakFromActions(user.id);
         setStreak(streakData);
 
@@ -293,13 +286,6 @@ export default function ProfilePage() {
     }
   }
 
-  const getHeatMapColor = (actions: number) => {
-    if (actions === 0) return "bg-gray-100";
-    if (actions === 1) return "bg-green-200";
-    if (actions >= 2 && actions <= 3) return "bg-green-400";
-    if (actions >= 4 && actions <= 5) return "bg-green-600";
-    return "bg-green-800";
-  };
 
   if (loading) {
     return (
@@ -421,42 +407,6 @@ export default function ProfilePage() {
           )}
         </div>
 
-        {/* DAILY ACTIVITY HEAT MAP */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-4">Daily Activity</h2>
-          
-          {/* Legend */}
-          <div className="flex items-center gap-4 mb-4 text-xs text-gray-600">
-            <span>Less</span>
-            <div className="flex items-center gap-1">
-              <div className="w-3 h-3 rounded bg-gray-100"></div>
-              <div className="w-3 h-3 rounded bg-green-200"></div>
-              <div className="w-3 h-3 rounded bg-green-400"></div>
-              <div className="w-3 h-3 rounded bg-green-600"></div>
-              <div className="w-3 h-3 rounded bg-green-800"></div>
-            </div>
-            <span>More</span>
-            <div className="ml-4 flex items-center gap-2">
-              <span>0</span>
-              <span>1</span>
-              <span>3</span>
-              <span>5+</span>
-            </div>
-          </div>
-
-          {/* Heat Map Grid */}
-          <div className="overflow-x-auto">
-            <div className="inline-flex gap-1">
-              {heatMapData.map((day, index) => (
-                <div
-                  key={index}
-                  className={`w-3 h-3 rounded ${getHeatMapColor(day.actions)} hover:ring-2 hover:ring-blue-400 cursor-pointer`}
-                  title={`${day.actions} actions on ${new Date(day.date).toLocaleDateString()}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
 
         {/* STATS ROW 1 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
