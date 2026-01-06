@@ -8,6 +8,7 @@ import { ChatLouis } from "./ChatLouis";
 import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
+import { recalculateTotalActions } from "../lib/recalculateTotalActions";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -33,6 +34,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         // Track user activity (login/refresh) - once per 24 hours
         await trackUserActivity(session.user.id);
         
+        // Recalculate total_actions from current counts
+        await recalculateTotalActions(session.user.id);
+        
         if (shouldSyncNotesCount(session.user.id)) {
           console.log("[APPSHELL] Syncing notes count on initial session check (new day detected)");
           await syncNotesCount(session.user.id);
@@ -57,6 +61,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         if (session?.user?.id) {
           // Track user activity (login/refresh) - once per 24 hours
           await trackUserActivity(session.user.id);
+          
+          // Recalculate total_actions from current counts
+          await recalculateTotalActions(session.user.id);
           
           // Check if we should sync (new day or first time)
           if (shouldSyncNotesCount(session.user.id)) {
