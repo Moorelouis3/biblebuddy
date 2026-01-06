@@ -6,7 +6,6 @@
  */
 
 import { supabase } from "./supabaseClient";
-import { logActionToMasterActions } from "./actionRecorder";
 
 /**
  * Track user activity (login/refresh)
@@ -61,10 +60,16 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
         "User";
     }
 
-    // Insert into master_actions using shared function (action_label is null for user_login)
-    try {
-      await logActionToMasterActions(userId, "user_login", null, username);
-    } catch (actionError) {
+    // Insert into master_actions (user_login has no action_label)
+    const { error: actionError } = await supabase
+      .from("master_actions")
+      .insert({
+        user_id: userId,
+        username: username,
+        action_type: "user_login",
+      });
+
+    if (actionError) {
       console.error("[TRACK_ACTIVITY] Error logging to master_actions:", actionError);
       // Continue anyway - we still want to update last_active_date
     }
