@@ -13,6 +13,7 @@ import {
 } from "../../lib/profileStats";
 import { syncNotesCount, shouldSyncNotesCount } from "../../lib/syncNotesCount";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../../lib/syncChaptersCount";
+import { isBookComplete } from "../../lib/readingProgress";
 
 export default function ProfilePage() {
   const [userId, setUserId] = useState<string | null>(null);
@@ -67,9 +68,19 @@ export default function ProfilePage() {
           .eq("user_id", user.id);
 
         if (!chaptersError && completedChapters) {
-          // Count unique books
+          // Get unique books that have at least one chapter completed
           const uniqueBooks = new Set(completedChapters.map((c) => c.book));
-          setBooksCompleted(uniqueBooks.size);
+          
+          // Check each book to see if ALL chapters are completed
+          let completedBooksCount = 0;
+          for (const book of uniqueBooks) {
+            const isComplete = await isBookComplete(user.id, book);
+            if (isComplete) {
+              completedBooksCount++;
+            }
+          }
+          
+          setBooksCompleted(completedBooksCount);
 
           // Calculate Bible completion percentage
           const totalChapters = completedChapters.length;
