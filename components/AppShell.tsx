@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { ChatLouis } from "./ChatLouis";
+import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -24,14 +25,31 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       setIsLoggedIn(!!session);
       setUserEmail(session?.user?.email ?? null);
+
+      // Sync notes count on initial session check if user is logged in
+      if (session?.user?.id) {
+        if (shouldSyncNotesCount(session.user.id)) {
+          console.log("[APPSHELL] Syncing notes count on initial session check (new day detected)");
+          await syncNotesCount(session.user.id);
+        }
+      }
     };
 
     getSession();
 
     const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
+      async (_event, session) => {
         setIsLoggedIn(!!session);
         setUserEmail(session?.user?.email ?? null);
+        
+        // Sync notes count when user logs in or session changes
+        if (session?.user?.id) {
+          // Check if we should sync (new day or first time)
+          if (shouldSyncNotesCount(session.user.id)) {
+            console.log("[APPSHELL] Syncing notes count on login/new day");
+            await syncNotesCount(session.user.id);
+          }
+        }
       }
     );
 

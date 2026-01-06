@@ -11,6 +11,7 @@ import {
   type HeatMapDay,
   type StreakData,
 } from "../../lib/profileStats";
+import { syncNotesCount, shouldSyncNotesCount } from "../../lib/syncNotesCount";
 
 export default function ProfilePage() {
   const [userId, setUserId] = useState<string | null>(null);
@@ -32,6 +33,12 @@ export default function ProfilePage() {
         }
 
         setUserId(user.id);
+
+        // Sync notes count if it's a new day or first time
+        if (shouldSyncNotesCount(user.id)) {
+          console.log("[PROFILE] Syncing notes count on profile load (new day detected)");
+          await syncNotesCount(user.id);
+        }
 
         // Load profile stats
         const profileStats = await getProfileStats(user.id);
