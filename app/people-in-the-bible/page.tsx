@@ -1055,6 +1055,25 @@ FINAL RULES:
                                     alert(`Failed to update profile stats: ${statsUpdateError.message}`);
                                   } else {
                                     console.log(`[PEOPLE LEARNED] Successfully updated profile_stats.people_learned_count to ${count}`);
+                                    
+                                    // Also update notes_created_count by counting from notes table
+                                    const { count: notesCount, error: notesCountError } = await supabase
+                                      .from("notes")
+                                      .select("*", { count: "exact", head: true })
+                                      .eq("user_id", userId);
+
+                                    if (!notesCountError && notesCount !== null) {
+                                      const { error: notesUpdateError } = await supabase
+                                        .from("profile_stats")
+                                        .update({
+                                          notes_created_count: notesCount || 0,
+                                        })
+                                        .eq("user_id", userId);
+
+                                      if (!notesUpdateError) {
+                                        console.log(`[NOTES COUNT] Updated notes_created_count to ${notesCount}`);
+                                      }
+                                    }
                                   }
                                 }
 
