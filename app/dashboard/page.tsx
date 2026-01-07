@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
+import { getProfileStats } from "../../lib/profileStats";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -105,12 +106,13 @@ export default function DashboardPage() {
   const [isLoadingLevel, setIsLoadingLevel] = useState<boolean>(true);
   const [levelInfo, setLevelInfo] = useState<{
     level: number;
-    chaptersRead: number;
+    levelName: string;
+    identityText: string;
+    encouragementText: string;
+    totalActions: number;
     levelStart: number;
     levelEnd: number;
     progressPercent: number;
-    chaptersNeededForNext: number;
-    nextLevel: number;
   } | null>(null);
 
   // load user first name from Supabase
@@ -134,9 +136,9 @@ export default function DashboardPage() {
     loadUser();
   }, []);
 
-  // Preload reading plan data (read-only, for dashboard display)
+  // Load level data based on total_actions
   useEffect(() => {
-    async function preloadReadingPlanData() {
+    async function loadLevelData() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) {
         setIsLoadingLevel(false);
@@ -146,143 +148,132 @@ export default function DashboardPage() {
       try {
         setIsLoadingLevel(true);
         
-        // Check localStorage cache first
-        const cacheKey = `bb_level_data_${user.id}`;
-        const cacheTimestampKey = `bb_level_data_timestamp_${user.id}`;
-        const cachedData = typeof window !== "undefined" ? window.localStorage.getItem(cacheKey) : null;
-        const cachedTimestamp = typeof window !== "undefined" ? window.localStorage.getItem(cacheTimestampKey) : null;
-        
-        // Use cache if less than 5 minutes old
-        if (cachedData && cachedTimestamp) {
-          const cacheAge = Date.now() - Number(cachedTimestamp);
-          if (cacheAge < 5 * 60 * 1000) { // 5 minutes
-            try {
-              const parsed = JSON.parse(cachedData);
-              setLevelInfo(parsed.levelInfo);
-              setTotalCompletedChapters(parsed.totalCompletedChapters);
-              setCurrentBook(parsed.currentBook);
-              setIsLoadingLevel(false);
-              return; // Use cached data
-            } catch (e) {
-              // Cache parse error, continue to fetch fresh data
-            }
-          }
-        }
-        
-        // Get current active book
+        // Get profile stats to read total_actions
+        const profileStats = await getProfileStats(user.id);
+        const totalActions = profileStats?.total_actions || 0;
+
+        // Get current active book (for other dashboard features)
         const activeBook = await getCurrentBook(user.id, BOOKS);
         setCurrentBook(activeBook);
 
-        // Get total completed chapters count across all books (using shared function)
-        // This is the SAME function used by Bible Study Stats modal
+        // Get total completed chapters (for other dashboard features)
         const totalCount = await getTotalCompletedChapters(user.id, BOOKS);
-        console.log("[DASHBOARD] Total completed chapters:", totalCount);
         setTotalCompletedChapters(totalCount);
 
-        // Calculate level based on chapters read (same source as Bible Study Stats)
-        const chaptersRead = totalCount;
+        // Calculate level based on total_actions
         let level = 1;
         let levelStart = 0;
-        let levelEnd = 9;
+        let levelEnd = 24;
+        let levelName = "First Steps";
+        let identityText = "You're just getting started. Every habit begins with a first step.";
+        let encouragementText = "Keep going. Consistency starts here.";
 
-        if (chaptersRead >= 1000 && chaptersRead <= 1188) {
+        if (totalActions >= 10000) {
+          level = 10;
+          levelStart = 10000;
+          levelEnd = 10000;
+          levelName = "Bible Buddy";
+          identityText = "You've made Bible study a true part of your life.";
+          encouragementText = "Welcome home. You are a Bible Buddy.";
+        } else if (totalActions >= 7000) {
           level = 9;
-          levelStart = 1000;
-          levelEnd = 1188;
-        } else if (chaptersRead >= 700 && chaptersRead <= 999) {
+          levelStart = 7000;
+          levelEnd = 9999;
+          levelName = "Faithful Student";
+          identityText = "You've shown long-term commitment to studying God's Word.";
+          encouragementText = "Faithfulness matters. Keep walking forward.";
+        } else if (totalActions >= 4000) {
           level = 8;
-          levelStart = 700;
-          levelEnd = 999;
-        } else if (chaptersRead >= 400 && chaptersRead <= 699) {
+          levelStart = 4000;
+          levelEnd = 6999;
+          levelName = "Story Seeker";
+          identityText = "You see how Scripture connects into one continuous story.";
+          encouragementText = "Stay engaged. You're seeing the bigger picture.";
+        } else if (totalActions >= 2000) {
           level = 7;
-          levelStart = 400;
-          levelEnd = 699;
-        } else if (chaptersRead >= 200 && chaptersRead <= 399) {
+          levelStart = 2000;
+          levelEnd = 3999;
+          levelName = "Word Builder";
+          identityText = "You're actively shaping your understanding of Scripture.";
+          encouragementText = "You're building something lasting.";
+        } else if (totalActions >= 1000) {
           level = 6;
-          levelStart = 200;
-          levelEnd = 399;
-        } else if (chaptersRead >= 100 && chaptersRead <= 199) {
+          levelStart = 1000;
+          levelEnd = 1999;
+          levelName = "Deepening Faith";
+          identityText = "You're studying with purpose and growing in understanding.";
+          encouragementText = "Keep pressing in. This is meaningful growth.";
+        } else if (totalActions >= 500) {
           level = 5;
-          levelStart = 100;
-          levelEnd = 199;
-        } else if (chaptersRead >= 50 && chaptersRead <= 99) {
+          levelStart = 500;
+          levelEnd = 999;
+          levelName = "Rooted";
+          identityText = "God's Word is becoming part of your rhythm and routine.";
+          encouragementText = "You're building depth. Stay rooted.";
+        } else if (totalActions >= 250) {
           level = 4;
-          levelStart = 50;
-          levelEnd = 99;
-        } else if (chaptersRead >= 30 && chaptersRead <= 49) {
+          levelStart = 250;
+          levelEnd = 499;
+          levelName = "Scripture Explorer";
+          identityText = "You're exploring people, places, and context beyond the surface.";
+          encouragementText = "You're connecting the story. Keep exploring.";
+        } else if (totalActions >= 100) {
           level = 3;
-          levelStart = 30;
-          levelEnd = 49;
-        } else if (chaptersRead >= 10 && chaptersRead <= 29) {
+          levelStart = 100;
+          levelEnd = 249;
+          levelName = "Curious Reader";
+          identityText = "You're asking questions, noticing details, and reading with intention.";
+          encouragementText = "Stay curious. Understanding grows here.";
+        } else if (totalActions >= 25) {
           level = 2;
-          levelStart = 10;
-          levelEnd = 29;
+          levelStart = 25;
+          levelEnd = 99;
+          levelName = "Getting Oriented";
+          identityText = "You're learning how the Bible works and how to move through it with confidence.";
+          encouragementText = "Keep going. You're building a daily habit.";
         } else {
           level = 1;
           levelStart = 0;
-          levelEnd = 9;
+          levelEnd = 24;
+          levelName = "First Steps";
+          identityText = "You're just getting started. Every habit begins with a first step.";
+          encouragementText = "Keep going. Consistency starts here.";
         }
 
         // Calculate progress within current level
-        const progressInLevel = chaptersRead - levelStart;
+        const progressInLevel = totalActions - levelStart;
         const levelSpan = levelEnd - levelStart + 1;
         const progressPercent = Math.min(100, Math.max(0, (progressInLevel / levelSpan) * 100));
 
-        // Calculate next level info
-        const nextLevel = level < 10 ? level + 1 : 10;
-        const nextLevelStart = nextLevel === 10 ? 1189 : 
-          nextLevel === 9 ? 1000 :
-          nextLevel === 8 ? 700 :
-          nextLevel === 7 ? 400 :
-          nextLevel === 6 ? 200 :
-          nextLevel === 5 ? 100 :
-          nextLevel === 4 ? 50 :
-          nextLevel === 3 ? 30 :
-          nextLevel === 2 ? 10 : 0;
-        const chaptersNeededForNext = Math.max(0, nextLevelStart - chaptersRead);
-
         const levelInfoData = {
           level,
-          chaptersRead,
+          levelName,
+          identityText,
+          encouragementText,
+          totalActions,
           levelStart,
           levelEnd,
           progressPercent,
-          chaptersNeededForNext,
-          nextLevel,
         };
 
         console.log("[DASHBOARD] Level calculation:", {
-          chaptersRead,
+          totalActions,
           level,
+          levelName,
           levelStart,
           levelEnd,
           progressPercent,
-          chaptersNeededForNext,
-          nextLevel,
         });
 
         setLevelInfo(levelInfoData);
-
-        // Save to cache
-        if (typeof window !== "undefined") {
-          const cacheKey = `bb_level_data_${user.id}`;
-          const cacheTimestampKey = `bb_level_data_timestamp_${user.id}`;
-          const cacheData = {
-            levelInfo: levelInfoData,
-            totalCompletedChapters: totalCount,
-            currentBook: activeBook,
-          };
-          window.localStorage.setItem(cacheKey, JSON.stringify(cacheData));
-          window.localStorage.setItem(cacheTimestampKey, String(Date.now()));
-        }
       } catch (err) {
-        console.error("Error preloading reading plan data:", err);
+        console.error("Error loading level data:", err);
       } finally {
         setIsLoadingLevel(false);
       }
     }
 
-    preloadReadingPlanData();
+    loadLevelData();
   }, []);
 
   // simple local streak system stored in localStorage
@@ -369,7 +360,7 @@ export default function DashboardPage() {
                   </div>
                 </div>
                 <p className="text-gray-700 text-sm mb-4">
-                  Keep going. You're building a daily habit.
+                  Loading your level...
                 </p>
                 
                 {/* Progress Bar Skeleton */}
@@ -382,19 +373,15 @@ export default function DashboardPage() {
                 {/* Progress Text Skeleton */}
                 <div className="flex items-center gap-1">
                   <div className="h-4 bg-gray-200 rounded w-32"></div>
-                  <div className="flex gap-1 items-center">
-                    <span className="text-gray-500 text-sm animate-[bounce_1.4s_ease-in-out_infinite]">.</span>
-                    <span className="text-gray-500 text-sm animate-[bounce_1.4s_ease-in-out_0.2s_infinite]">.</span>
-                    <span className="text-gray-500 text-sm animate-[bounce_1.4s_ease-in-out_0.4s_infinite]">.</span>
-                  </div>
                 </div>
               </>
             ) : levelInfo ? (
               // Actual content
               <>
-                <h2 className="text-xl font-semibold mb-2">📘 Level {levelInfo.level}</h2>
+                <h2 className="text-xl font-semibold mb-1">📘 Level {levelInfo.level}</h2>
+                <h3 className="text-lg font-medium text-gray-800 mb-2">{levelInfo.levelName}</h3>
                 <p className="text-gray-700 text-sm mb-4">
-                  Keep going. You're building a daily habit.
+                  {levelInfo.identityText}
                 </p>
                 
                 {/* Progress Bar */}
@@ -407,11 +394,9 @@ export default function DashboardPage() {
                   </div>
                 </div>
 
-                {/* Progress Text */}
-                <p className="text-sm text-gray-600">
-                  {levelInfo.level < 10
-                    ? `${levelInfo.chaptersNeededForNext} more chapters to reach Level ${levelInfo.nextLevel}`
-                    : "Bible completed 🎉"}
+                {/* Encouragement Text */}
+                <p className="text-sm text-gray-600 font-medium">
+                  {levelInfo.encouragementText}
                 </p>
               </>
             ) : null}
