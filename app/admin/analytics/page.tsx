@@ -84,9 +84,9 @@ export default function AnalyticsPage() {
   }
 
   function getFromDate(filter: TimeFilter): string | null {
-    const now = new Date();
     if (filter === "all") return null;
 
+    const now = new Date();
     if (filter === "24h") {
       return new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString();
     }
@@ -94,7 +94,10 @@ export default function AnalyticsPage() {
       return new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
     }
     // 1 year
-    return new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000).toISOString();
+    if (filter === "1y") {
+      return new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000).toISOString();
+    }
+    return null;
   }
 
   // Load global overview metrics (all users)
@@ -106,7 +109,7 @@ export default function AnalyticsPage() {
       const fromDate = getFromDate(filter);
 
       // Helper to apply created_at filter if needed
-      const applyDateFilter = <T,>(
+      const applyDateFilter = (
         query: any,
         column: string = "created_at"
       ): any => {
@@ -114,11 +117,12 @@ export default function AnalyticsPage() {
         return query.gte(column, fromDate);
       };
 
-      // Signups: use profile_stats as proxy for users
+      // Signups: query user_signups table
       const signupsPromise = applyDateFilter(
         supabase
-          .from("profile_stats")
-          .select("user_id", { count: "exact", head: true })
+          .from("user_signups")
+          .select("id", { count: "exact", head: true }),
+        "created_at"
       );
 
       // Logins: distinct users with user_login within range
@@ -177,14 +181,14 @@ export default function AnalyticsPage() {
       );
 
       const [
-        { count: signupsCount, error: signupsError },
-        { data: loginRows, error: loginsError },
-        { count: totalActionsCount, error: totalActionsError },
-        { count: chaptersCount, error: chaptersError },
-        { count: notesCount, error: notesError },
-        { count: peopleCount, error: peopleError },
-        { count: placesCount, error: placesError },
-        { count: keywordsCount, error: keywordsError },
+        signupsResult,
+        loginRowsResult,
+        totalActionsResult,
+        chaptersResult,
+        notesResult,
+        peopleResult,
+        placesResult,
+        keywordsResult,
       ] = await Promise.all([
         signupsPromise,
         loginsPromise,
@@ -195,6 +199,23 @@ export default function AnalyticsPage() {
         placesPromise,
         keywordsPromise,
       ]);
+
+      const signupsCount = signupsResult.count ?? 0;
+      const signupsError = signupsResult.error;
+      const loginRows = loginRowsResult.data;
+      const loginsError = loginRowsResult.error;
+      const totalActionsCount = totalActionsResult.count ?? 0;
+      const totalActionsError = totalActionsResult.error;
+      const chaptersCount = chaptersResult.count ?? 0;
+      const chaptersError = chaptersResult.error;
+      const notesCount = notesResult.count ?? 0;
+      const notesError = notesResult.error;
+      const peopleCount = peopleResult.count ?? 0;
+      const peopleError = peopleResult.error;
+      const placesCount = placesResult.count ?? 0;
+      const placesError = placesResult.error;
+      const keywordsCount = keywordsResult.count ?? 0;
+      const keywordsError = keywordsResult.error;
 
       if (
         signupsError ||
@@ -643,10 +664,39 @@ export default function AnalyticsPage() {
 }
 
 function OverviewCard({ label, value }: { label: string; value: number }) {
+  // Map labels to colors matching Profile page
+  const getCardColors = (label: string) => {
+    switch (label) {
+      case "Total Actions":
+        return "bg-blue-100 border border-blue-200";
+      case "Books Completed":
+        return "bg-purple-100 border border-purple-200";
+      case "Chapters Read":
+        return "bg-green-100 border border-green-200";
+      case "Bible Completion":
+        return "bg-orange-100 border border-orange-200";
+      case "Notes Created":
+        return "bg-yellow-100 border border-yellow-200";
+      case "People Learned":
+      case "People Learned About":
+        return "bg-pink-100 border border-pink-200";
+      case "Places Discovered":
+        return "bg-cyan-100 border border-cyan-200";
+      case "Keywords Understood":
+        return "bg-indigo-100 border border-indigo-200";
+      case "Signups":
+        return "bg-gray-100 border border-gray-200";
+      case "Logins":
+        return "bg-blue-100 border border-blue-200";
+      default:
+        return "bg-white border border-gray-200";
+    }
+  };
+
   return (
-    <div className="bg-white p-4 rounded-xl shadow text-center">
+    <div className={`p-4 rounded-xl shadow text-center ${getCardColors(label)}`}>
       <p className="text-3xl font-bold text-gray-900">{value}</p>
-      <p className="mt-1 text-sm text-gray-600">{label}</p>
+      <p className="mt-1 text-sm text-gray-700">{label}</p>
     </div>
   );
 }
