@@ -5,6 +5,8 @@ import { type BiblePerson } from "../../lib/biblePeople";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_PEOPLE_LIST } from "../../lib/biblePeopleList";
+import { checkStudyViewLimit, logStudyView } from "../../lib/studyViewLimit";
+import { useRouter } from "next/navigation";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -408,6 +410,7 @@ function normalizePersonMarkdown(markdown: string): string {
 }
 
 export default function PeopleInTheBiblePage() {
+  const router = useRouter();
   const [people] = useState<BiblePerson[]>(createStaticPeople());
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
@@ -419,6 +422,7 @@ export default function PeopleInTheBiblePage() {
   const [loadingProgress, setLoadingProgress] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
 
   // Filter and sort people
   const filteredPeople = useMemo(() => {
@@ -504,6 +508,30 @@ export default function PeopleInTheBiblePage() {
 
     loadUserAndProgress();
   }, []);
+
+  // Handle person selection with study view limit check
+  const handlePersonClick = async (person: BiblePerson) => {
+    if (!userId) {
+      // Not logged in - allow access (they'll need to log in to see notes anyway)
+      setSelectedPerson(person);
+      return;
+    }
+
+    // Check study view limit
+    const { allowed, reason } = await checkStudyViewLimit(userId);
+
+    if (!allowed) {
+      // Show upgrade modal
+      setShowUpgradeModal(true);
+      return;
+    }
+
+    // Log study view
+    await logStudyView(userId, username);
+
+    // Allow access
+    setSelectedPerson(person);
+  };
 
   // Generate notes when a person is selected
   useEffect(() => {
@@ -821,7 +849,7 @@ FINAL RULES:
                             <button
                               key={person.id}
                               type="button"
-                              onClick={() => setSelectedPerson(person)}
+                              onClick={() => handlePersonClick(person)}
                               className={`text-left px-3 py-2 border rounded-lg transition text-sm ${
                                 isCompleted
                                   ? "bg-green-50 border-green-300 hover:bg-green-100"
@@ -854,7 +882,7 @@ FINAL RULES:
                                 <button
                                   key={person.id}
                                   type="button"
-                                  onClick={() => setSelectedPerson(person)}
+                                  onClick={() => handlePersonClick(person)}
                                   className={`text-left px-3 py-2 border rounded-lg transition text-sm ${
                                     isCompleted
                                       ? "bg-green-50 border-green-300 hover:bg-green-100"
@@ -1154,6 +1182,41 @@ FINAL RULES:
         </div>
       )}
 
+      {/* UPGRADE MODAL */}
+      {showUpgradeModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4">
+          <div className="relative w-full max-w-md rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8">
+            <button
+              type="button"
+              onClick={() => setShowUpgradeModal(false)}
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
+            >
+              ✕
+            </button>
+            <h2 className="text-2xl font-bold mb-4">Daily Limit Reached</h2>
+            <p className="text-gray-700 mb-6">
+              You've reached your daily limit of 3 deep study views. Upgrade to Pro for unlimited access to people, places, and keywords.
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowUpgradeModal(false)}
+                className="flex-1 px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
+              >
+                Maybe Later
+              </button>
+              <button
+                onClick={() => {
+                  setShowUpgradeModal(false);
+                  router.push("/upgrade");
+                }}
+                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                Upgrade Now
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

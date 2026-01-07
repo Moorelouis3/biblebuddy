@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_KEYWORDS_LIST } from "../../lib/bibleKeywordsList";
+import { checkStudyViewLimit, logStudyView } from "../../lib/studyViewLimit";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -43,6 +45,7 @@ function normalizeKeywordMarkdown(markdown: string): string {
 }
 
 export default function KeywordsInTheBiblePage() {
+  const router = useRouter();
   const [keywords] = useState<BibleKeyword[]>(createStaticKeywords());
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
@@ -54,6 +57,25 @@ export default function KeywordsInTheBiblePage() {
   const [loadingProgress, setLoadingProgress] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+
+  // Handle keyword selection with study view limit check
+  const handleKeywordClick = async (keyword: BibleKeyword) => {
+    if (!userId) {
+      setSelectedKeyword(keyword);
+      return;
+    }
+
+    const { allowed } = await checkStudyViewLimit(userId);
+
+    if (!allowed) {
+      setShowUpgradeModal(true);
+      return;
+    }
+
+    await logStudyView(userId, username);
+    setSelectedKeyword(keyword);
+  };
 
   // Filter and sort keywords
   const filteredKeywords = useMemo(() => {
@@ -444,7 +466,7 @@ RULES:
                             <button
                               key={keyword.id}
                               type="button"
-                              onClick={() => setSelectedKeyword(keyword)}
+                              onClick={() => handleKeywordClick(keyword)}
                               className={`text-left px-3 py-2 border rounded-lg transition text-sm ${
                                 isCompleted
                                   ? "bg-green-50 border-green-300 hover:bg-green-100"
@@ -477,7 +499,7 @@ RULES:
                                 <button
                                   key={keyword.id}
                                   type="button"
-                                  onClick={() => setSelectedKeyword(keyword)}
+                                  onClick={() => handleKeywordClick(keyword)}
                                   className={`text-left px-3 py-2 border rounded-lg transition text-sm ${
                                     isCompleted
                                       ? "bg-green-50 border-green-300 hover:bg-green-100"
@@ -769,6 +791,42 @@ RULES:
                 No notes available yet.
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* UPGRADE MODAL */}
+      {showUpgradeModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4">
+          <div className="relative w-full max-w-md rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8">
+            <button
+              type="button"
+              onClick={() => setShowUpgradeModal(false)}
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
+            >
+              ✕
+            </button>
+            <h2 className="text-2xl font-bold mb-4">Daily Limit Reached</h2>
+            <p className="text-gray-700 mb-6">
+              You've reached your daily limit of 3 deep study views. Upgrade to Pro for unlimited access to people, places, and keywords.
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowUpgradeModal(false)}
+                className="flex-1 px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
+              >
+                Maybe Later
+              </button>
+              <button
+                onClick={() => {
+                  setShowUpgradeModal(false);
+                  router.push("/upgrade");
+                }}
+                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                Upgrade Now
+              </button>
+            </div>
           </div>
         </div>
       )}
