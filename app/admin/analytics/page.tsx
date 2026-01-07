@@ -54,10 +54,18 @@ export default function AnalyticsPage() {
   >([]);
   const [loadingInbox, setLoadingInbox] = useState(true);
   const [selectedFeedback, setSelectedFeedback] = useState<any | null>(null);
+  
+  // User Requests Inbox
+  const [userRequestsInbox, setUserRequestsInbox] = useState<
+    Array<{ id: string; username: string; subject: string; created_at: string; date: string; time: string }>
+  >([]);
+  const [loadingRequests, setLoadingRequests] = useState(true);
+  const [selectedRequest, setSelectedRequest] = useState<any | null>(null);
 
   useEffect(() => {
     loadActiveUsers();
     loadFeedbackInbox();
+    loadUserRequestsInbox();
   }, []);
 
   useEffect(() => {
@@ -598,6 +606,66 @@ export default function AnalyticsPage() {
     setSelectedFeedback(null);
   }
 
+  // Load user requests inbox from user_requests table
+  async function loadUserRequestsInbox() {
+    setLoadingRequests(true);
+    try {
+      const { data: requestsData, error } = await supabase
+        .from("user_requests")
+        .select("id, username, subject, message, screenshot_url, created_at")
+        .order("created_at", { ascending: false })
+        .limit(100); // Limit to 100 most recent requests
+
+      if (error) {
+        console.error("[USER_REQUESTS_INBOX] Error fetching requests:", error);
+        setUserRequestsInbox([]);
+        setLoadingRequests(false);
+        return;
+      }
+
+      if (!requestsData || requestsData.length === 0) {
+        setUserRequestsInbox([]);
+        setLoadingRequests(false);
+        return;
+      }
+
+      // Format request items for inbox display
+      const inboxItems = requestsData.map((request) => {
+        const requestDate = new Date(request.created_at);
+        const formattedDate = formatAdminActionDate(requestDate);
+        const formattedTime = formatAdminActionTime(requestDate);
+        const username = request.username || "Unknown User";
+
+        return {
+          id: request.id,
+          username,
+          subject: request.subject,
+          created_at: request.created_at,
+          date: formattedDate,
+          time: formattedTime,
+          fullData: request, // Store full data for modal
+        };
+      });
+
+      setUserRequestsInbox(inboxItems);
+      setLoadingRequests(false);
+    } catch (err) {
+      console.error("[USER_REQUESTS_INBOX] Error loading requests inbox:", err);
+      setUserRequestsInbox([]);
+      setLoadingRequests(false);
+    }
+  }
+
+  // Open request detail modal
+  function openRequestDetail(request: any) {
+    setSelectedRequest(request.fullData);
+  }
+
+  // Close request detail modal
+  function closeRequestDetail() {
+    setSelectedRequest(null);
+  }
+
   // Format action type name for display
   function formatActionTypeName(actionType: string): string {
     const nameMap: Record<string, string> = {
@@ -800,32 +868,65 @@ export default function AnalyticsPage() {
         )}
       </div>
 
-      {/* FEEDBACK INBOX SECTION */}
+      {/* INBOX SECTION (Feedback + User Requests) */}
       <div className="mt-12 mb-6">
         <h2 className="text-2xl font-bold mb-4">Inbox</h2>
         
-        {loadingInbox ? (
+        {/* Combined loading state */}
+        {(loadingInbox || loadingRequests) ? (
           <div className="bg-white p-4 rounded-xl shadow">
-            <p className="text-gray-500 text-sm">Loading feedback...</p>
+            <p className="text-gray-500 text-sm">Loading inbox...</p>
           </div>
-        ) : feedbackInbox.length === 0 ? (
+        ) : feedbackInbox.length === 0 && userRequestsInbox.length === 0 ? (
           <div className="bg-white p-4 rounded-xl shadow">
-            <p className="text-gray-500 text-sm">No feedback yet.</p>
+            <p className="text-gray-500 text-sm">No messages yet.</p>
           </div>
         ) : (
           <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
-            <div className={`max-h-96 overflow-y-auto ${feedbackInbox.length > 10 ? 'p-4' : 'p-4'}`}>
-              {feedbackInbox.map((item) => (
-                <div
-                  key={item.id}
-                  className="mb-2 p-3 rounded bg-green-50 border-l-4 border-green-500 cursor-pointer hover:bg-green-100 transition-colors"
-                  onClick={() => openFeedbackDetail(item)}
-                >
-                  <p className="text-sm text-gray-900">
-                    On {item.date} at {item.time}, {item.username} completed the feedback survey.
-                  </p>
-                </div>
-              ))}
+            <div className="max-h-96 overflow-y-auto p-4">
+              {(() => {
+                // Combine and sort by date (most recent first)
+                const allItems = [
+                  ...userRequestsInbox.map((item) => ({
+                    ...item,
+                    type: "request" as const,
+                    sortKey: new Date(item.created_at).getTime(),
+                  })),
+                  ...feedbackInbox.map((item) => ({
+                    ...item,
+                    type: "feedback" as const,
+                    sortKey: new Date(item.created_at).getTime(),
+                  })),
+                ].sort((a, b) => b.sortKey - a.sortKey);
+
+                return allItems.map((item) => {
+                  if (item.type === "request") {
+                    return (
+                      <div
+                        key={`request-${item.id}`}
+                        className="mb-2 p-3 rounded bg-blue-50 border-l-4 border-blue-500 cursor-pointer hover:bg-blue-100 transition-colors"
+                        onClick={() => openRequestDetail(item)}
+                      >
+                        <p className="text-sm text-gray-900">
+                          📨 {item.date} at {item.time} — {item.username} sent a message ({item.subject})
+                        </p>
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div
+                        key={`feedback-${item.id}`}
+                        className="mb-2 p-3 rounded bg-green-50 border-l-4 border-green-500 cursor-pointer hover:bg-green-100 transition-colors"
+                        onClick={() => openFeedbackDetail(item)}
+                      >
+                        <p className="text-sm text-gray-900">
+                          On {item.date} at {item.time}, {item.username} completed the feedback survey.
+                        </p>
+                      </div>
+                    );
+                  }
+                });
+              })()}
             </div>
           </div>
         )}
@@ -904,6 +1005,70 @@ export default function AnalyticsPage() {
                 <div className="pt-4 border-t">
                   <button
                     onClick={closeFeedbackDetail}
+                    className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* USER REQUEST DETAIL MODAL */}
+      {selectedRequest && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold">Request Details</h2>
+                <button
+                  onClick={closeRequestDetail}
+                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Username</label>
+                  <p className="text-gray-900">{selectedRequest.username || "Unknown User"}</p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Subject</label>
+                  <p className="text-gray-900">{selectedRequest.subject}</p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Message</label>
+                  <p className="text-gray-900 whitespace-pre-wrap">{selectedRequest.message}</p>
+                </div>
+
+                {selectedRequest.screenshot_url && (
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">Screenshot</label>
+                    <img
+                      src={selectedRequest.screenshot_url}
+                      alt="Screenshot"
+                      className="max-w-full h-auto rounded-lg border border-gray-200"
+                    />
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Submitted</label>
+                  <p className="text-gray-600 text-sm">
+                    {formatAdminActionDate(new Date(selectedRequest.created_at))} at{" "}
+                    {formatAdminActionTime(new Date(selectedRequest.created_at))}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t">
+                  <button
+                    onClick={closeRequestDetail}
                     className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
                   >
                     Close

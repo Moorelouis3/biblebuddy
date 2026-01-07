@@ -11,6 +11,7 @@ import { trackUserActivity } from "../lib/trackUserActivity";
 import { recalculateTotalActions } from "../lib/recalculateTotalActions";
 import { FeedbackBanner } from "./FeedbackBanner";
 import { FeedbackModal } from "./FeedbackModal";
+import { ContactUsModal } from "./ContactUsModal";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -30,6 +31,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [username, setUsername] = useState<string>("");
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [bannerDismissed, setBannerDismissed] = useState(false);
+  
+  // Contact Us modal state
+  const [showContactUsModal, setShowContactUsModal] = useState(false);
 
   useEffect(() => {
     const getSession = async () => {
@@ -232,6 +236,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         />
       )}
 
+      {/* CONTACT US MODAL */}
+      {isLoggedIn && userId && (
+        <ContactUsModal
+          userId={userId}
+          username={username}
+          isOpen={showContactUsModal}
+          onClose={() => setShowContactUsModal(false)}
+        />
+      )}
+
       {/* NAVBAR (hidden on landing/login/signup) */}
       {!isBarePage && (
         <header className="w-full bg-gray-50">
@@ -425,6 +439,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     >
                       Settings
                     </Link>
+
+                    {/* CONTACT US */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                        setShowContactUsModal(true);
+                      }}
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      👉 Contact Us
+                    </button>
 
                     {/* HOW TO USE BIBLEBUDDY */}
                     <Link
