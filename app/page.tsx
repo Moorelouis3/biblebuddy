@@ -107,7 +107,7 @@ export default function LandingPage() {
           user_id: user.id,
           username: username,
           action_type: "user_signup",
-          action_label: null,
+          action_label: "Signed up for Bible Buddy",
           created_at: new Date().toISOString(),
         });
 
