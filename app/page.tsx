@@ -96,7 +96,29 @@ export default function LandingPage() {
       console.error("Analytics insert error (non-blocking):", analyticsError);
     }
 
-    // 4. SIGNUP SUCCEEDED - Clear form and show success modal
+    // 4. INSERT INTO master_actions for signup tracking (non-blocking, analytics only)
+    try {
+      const firstName = nameParts[0] || "";
+      const username = firstName || user.email?.split("@")[0] || "New User";
+      
+      const { error: actionError } = await supabase
+        .from("master_actions")
+        .insert({
+          user_id: user.id,
+          username: username,
+          action_type: "user_signup",
+          action_label: null,
+          created_at: new Date().toISOString(),
+        });
+
+      if (actionError) {
+        console.error("Signup action tracking failed (non-blocking):", actionError);
+      }
+    } catch (actionTrackingError) {
+      console.error("Signup action tracking error (non-blocking):", actionTrackingError);
+    }
+
+    // 5. SIGNUP SUCCEEDED - Clear form and show success modal
     setLoading(false);
     setName("");
     setEmail("");

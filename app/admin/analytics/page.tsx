@@ -39,6 +39,9 @@ export default function AnalyticsPage() {
   const [loadingOverview, setLoadingOverview] = useState(true);
   const [overviewError, setOverviewError] = useState<string | null>(null);
 
+  // Action type filter for Action Log
+  const [selectedActionType, setSelectedActionType] = useState<string | null>(null);
+
   // Admin Action Log
   const [actionLog, setActionLog] = useState<
     Array<{ date: string; text: string; sortKey: number; actionType: string }>
@@ -51,8 +54,8 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
     loadOverviewMetrics(timeFilter);
-    buildAdminActionLog();
-  }, [timeFilter]);
+    buildAdminActionLog(timeFilter, selectedActionType);
+  }, [timeFilter, selectedActionType]);
 
   // Load active users (within last 60 minutes)
   async function loadActiveUsers() {
@@ -335,17 +338,32 @@ export default function AnalyticsPage() {
   }
 
   // Build Admin Action Log from master_actions table (all users)
-  async function buildAdminActionLog() {
+  async function buildAdminActionLog(filter?: TimeFilter, actionTypeFilter?: string | null) {
     setLoadingActionLog(true);
     const actions: Array<{ date: string; text: string; sortKey: number; actionType: string }> = [];
 
     try {
-      // Get all actions from master_actions table (no user_id filter)
-      const { data: masterActions, error: actionsError } = await supabase
+      const fromDate = filter ? getFromDate(filter) : null;
+      
+      // Build query with time filter
+      let query = supabase
         .from("master_actions")
         .select("action_type, action_label, created_at, username, user_id")
-        .order("created_at", { ascending: false })
-        .limit(200); // Limit to 200 most recent actions
+        .order("created_at", { ascending: false });
+
+      // Apply time filter
+      if (fromDate) {
+        query = query.gte("created_at", fromDate);
+      }
+
+      // Apply action type filter if selected
+      if (actionTypeFilter) {
+        query = query.eq("action_type", actionTypeFilter);
+      }
+
+      query = query.limit(200); // Limit to 200 most recent actions
+
+      const { data: masterActions, error: actionsError } = await query;
 
       if (actionsError) {
         console.error("[ADMIN_ACTION_LOG] Error fetching master_actions:", actionsError);
@@ -468,6 +486,13 @@ export default function AnalyticsPage() {
               actionType: "user_login",
             });
           }
+        } else if (action.action_type === "user_signup") {
+          actions.push({
+            date: formattedDate,
+            text: `On ${formattedDate} at ${formattedTime}, ${username} signed up.${counterText}`,
+            sortKey: actionDate.getTime(),
+            actionType: "user_signup",
+          });
         }
         // Ignore all other action types
       }
@@ -503,6 +528,21 @@ export default function AnalyticsPage() {
     return `${hours}:${minutesStr} ${ampm}`;
   }
 
+  // Format action type name for display
+  function formatActionTypeName(actionType: string): string {
+    const nameMap: Record<string, string> = {
+      "user_signup": "Signups",
+      "user_login": "Logins",
+      "chapter_completed": "Chapters Read",
+      "book_completed": "Books Completed",
+      "note_created": "Notes Created",
+      "person_learned": "People Learned",
+      "place_discovered": "Places Discovered",
+      "keyword_mastered": "Keywords Understood",
+    };
+    return nameMap[actionType] || actionType.replace(/_/g, " ");
+  }
+
   // Get color class for action type (reusing profile page colors)
   function getActionColorClass(actionType: string): string {
     switch (actionType) {
@@ -520,6 +560,8 @@ export default function AnalyticsPage() {
         return "bg-purple-50 border-l-4 border-purple-500";
       case "user_login":
         return "bg-blue-50 border-l-4 border-blue-500";
+      case "user_signup":
+        return "bg-gray-50 border-l-4 border-gray-500";
       default:
         return "bg-gray-50 border-l-4 border-gray-400";
     }
@@ -590,14 +632,20 @@ export default function AnalyticsPage() {
               <OverviewCard
                 label="Signups"
                 value={overviewMetrics.signups}
+                onClick={() => setSelectedActionType(selectedActionType === "user_signup" ? null : "user_signup")}
+                isSelected={selectedActionType === "user_signup"}
               />
               <OverviewCard
                 label="Logins"
                 value={overviewMetrics.logins}
+                onClick={() => setSelectedActionType(selectedActionType === "user_login" ? null : "user_login")}
+                isSelected={selectedActionType === "user_login"}
               />
               <OverviewCard
                 label="Total Actions"
                 value={overviewMetrics.totalActions}
+                onClick={() => setSelectedActionType(null)}
+                isSelected={selectedActionType === null}
               />
             </div>
 
@@ -606,22 +654,32 @@ export default function AnalyticsPage() {
               <OverviewCard
                 label="Chapters Read"
                 value={overviewMetrics.chaptersRead}
+                onClick={() => setSelectedActionType(selectedActionType === "chapter_completed" ? null : "chapter_completed")}
+                isSelected={selectedActionType === "chapter_completed"}
               />
               <OverviewCard
                 label="Notes Created"
                 value={overviewMetrics.notesCreated}
+                onClick={() => setSelectedActionType(selectedActionType === "note_created" ? null : "note_created")}
+                isSelected={selectedActionType === "note_created"}
               />
               <OverviewCard
                 label="People Learned"
                 value={overviewMetrics.peopleLearned}
+                onClick={() => setSelectedActionType(selectedActionType === "person_learned" ? null : "person_learned")}
+                isSelected={selectedActionType === "person_learned"}
               />
               <OverviewCard
                 label="Places Discovered"
                 value={overviewMetrics.placesDiscovered}
+                onClick={() => setSelectedActionType(selectedActionType === "place_discovered" ? null : "place_discovered")}
+                isSelected={selectedActionType === "place_discovered"}
               />
               <OverviewCard
                 label="Keywords Understood"
                 value={overviewMetrics.keywordsUnderstood}
+                onClick={() => setSelectedActionType(selectedActionType === "keyword_mastered" ? null : "keyword_mastered")}
+                isSelected={selectedActionType === "keyword_mastered"}
               />
             </div>
           </>
@@ -630,7 +688,22 @@ export default function AnalyticsPage() {
 
       {/* ADMIN ACTION LOG SECTION */}
       <div className="mt-12 mb-6">
-        <h2 className="text-2xl font-bold mb-4">Action Log (All Users)</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-2xl font-bold">Action Log (All Users)</h2>
+          {selectedActionType && (
+            <button
+              onClick={() => setSelectedActionType(null)}
+              className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+            >
+              Clear Filter
+            </button>
+          )}
+        </div>
+        {selectedActionType && (
+          <p className="text-sm text-gray-600 mb-4">
+            Showing only: <span className="font-semibold">{formatActionTypeName(selectedActionType)}</span>
+          </p>
+        )}
         
         {loadingActionLog ? (
           <div className="bg-white p-4 rounded-xl shadow">
@@ -663,7 +736,17 @@ export default function AnalyticsPage() {
   );
 }
 
-function OverviewCard({ label, value }: { label: string; value: number }) {
+function OverviewCard({ 
+  label, 
+  value, 
+  onClick, 
+  isSelected 
+}: { 
+  label: string; 
+  value: number;
+  onClick?: () => void;
+  isSelected?: boolean;
+}) {
   // Map labels to colors matching Profile page
   const getCardColors = (label: string) => {
     switch (label) {
@@ -693,8 +776,23 @@ function OverviewCard({ label, value }: { label: string; value: number }) {
     }
   };
 
+  const baseClasses = `p-4 rounded-xl shadow text-center ${getCardColors(label)}`;
+  const interactiveClasses = onClick ? "cursor-pointer transition-all hover:scale-105 hover:shadow-lg" : "";
+  const selectedClasses = isSelected ? "ring-2 ring-blue-500 ring-offset-2" : "";
+
   return (
-    <div className={`p-4 rounded-xl shadow text-center ${getCardColors(label)}`}>
+    <div 
+      className={`${baseClasses} ${interactiveClasses} ${selectedClasses}`}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      } : undefined}
+    >
       <p className="text-3xl font-bold text-gray-900">{value}</p>
       <p className="mt-1 text-sm text-gray-700">{label}</p>
     </div>
