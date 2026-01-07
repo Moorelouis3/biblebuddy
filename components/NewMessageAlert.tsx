@@ -63,17 +63,19 @@ export function NewMessageAlert() {
           }
         }
 
+        // Check if alert was already dismissed this session
+        const dismissed = sessionStorage.getItem("newMessageAlertDismissed");
+        
         if (hasNew) {
+          // Reset dismissed flag since there are new messages
+          if (dismissed === "true") {
+            sessionStorage.removeItem("newMessageAlertDismissed");
+          }
           setHasNewMessages(true);
           setShowAlert(true);
-          // Reset dismissed flag since there are new messages
-          sessionStorage.removeItem("newMessageAlertDismissed");
-        } else {
-          // Check if alert was already dismissed this session (only if no new messages)
-          const dismissed = sessionStorage.getItem("newMessageAlertDismissed");
-          if (dismissed === "true") {
-            return;
-          }
+        } else if (dismissed === "true") {
+          // No new messages and alert was dismissed - don't show
+          return;
         }
       } catch (err) {
         console.error("[NEW_MESSAGE_ALERT] Error checking messages:", err);
