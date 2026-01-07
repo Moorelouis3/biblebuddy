@@ -465,6 +465,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       How to Use
                     </Link>
 
+                    {/* UPDATES */}
+                    <Link
+                      href="/updates"
+                      onClick={() => setIsProfileMenuOpen(false)}
+                      className={`block px-4 py-2 text-sm ${
+                        pathname?.startsWith("/updates")
+                          ? "bg-sky-100 text-black font-medium"
+                          : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      Updates
+                    </Link>
+
                     {/* JOIN OUR FREE COMMUNITY */}
                     <a
                       href="https://joinhopenation.com/"
