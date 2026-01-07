@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS public.user_feedback (
   improvement_feedback text,
   review_text text,
   last_dismissed_at timestamptz,
+  permanently_dismissed boolean DEFAULT false,
   created_at timestamptz DEFAULT now()
 );
 

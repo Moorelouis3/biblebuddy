@@ -117,21 +117,9 @@ export function FeedbackModal({
 
   const handleDoLater = async () => {
     try {
-      // Save dismissal timestamp (banner stays visible)
-      const { error: updateError } = await supabase
-        .from("user_feedback")
-        .upsert({
-          user_id: userId,
-          last_dismissed_at: new Date().toISOString(),
-        }, {
-          onConflict: "user_id",
-        });
-
-      if (updateError) {
-        console.error("[FEEDBACK] Error saving dismissal:", updateError);
-      }
-
-      // Close modal but keep banner visible
+      // Save dismissal timestamp (banner stays visible, just closes modal)
+      // Don't set last_dismissed_at - banner should remain visible
+      // Just close the modal
       onDoLater();
       setShowSurvey(false);
       setAnswers({});
@@ -143,12 +131,12 @@ export function FeedbackModal({
 
   const handleNo = async () => {
     try {
-      // Save dismissal timestamp and mark as permanently dismissed
+      // Mark as permanently dismissed - never show again
       const { error: updateError } = await supabase
         .from("user_feedback")
         .upsert({
           user_id: userId,
-          last_dismissed_at: new Date().toISOString(),
+          permanently_dismissed: true,
         }, {
           onConflict: "user_id",
         });
@@ -161,6 +149,8 @@ export function FeedbackModal({
       onNo();
       setShowSurvey(false);
       setAnswers({});
+      // Reload to hide banner
+      window.location.reload();
     } catch (err) {
       console.error("[FEEDBACK] Error in no:", err);
       onNo();

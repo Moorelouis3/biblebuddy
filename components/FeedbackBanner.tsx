@@ -39,7 +39,7 @@ export function FeedbackBanner({ userId, onBannerClick }: FeedbackBannerProps) {
         // Check if user has already submitted feedback
         const { data: existingFeedback, error: feedbackError } = await supabase
           .from("user_feedback")
-          .select("happiness_rating, usefulness_rating, usage_frequency, recommendation_likelihood, last_dismissed_at")
+          .select("happiness_rating, usefulness_rating, usage_frequency, recommendation_likelihood, last_dismissed_at, permanently_dismissed")
           .eq("user_id", userId)
           .maybeSingle();
 
@@ -62,8 +62,15 @@ export function FeedbackBanner({ userId, onBannerClick }: FeedbackBannerProps) {
           return;
         }
 
-        // If user dismissed (clicked "No"), check if 30 days have passed
-        if (existingFeedback?.last_dismissed_at) {
+        // If user clicked "No" (permanently dismissed), never show again
+        if (existingFeedback?.permanently_dismissed) {
+          setShouldShow(false);
+          setLoading(false);
+          return;
+        }
+
+        // If user clicked "Do later", check if 30 days have passed
+        if (existingFeedback?.last_dismissed_at && !existingFeedback?.permanently_dismissed) {
           const dismissedDate = new Date(existingFeedback.last_dismissed_at);
           const thirtyDaysAgo = new Date();
           thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
