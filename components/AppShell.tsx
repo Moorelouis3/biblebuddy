@@ -9,6 +9,8 @@ import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
 import { recalculateTotalActions } from "../lib/recalculateTotalActions";
+import { FeedbackBanner } from "./FeedbackBanner";
+import { FeedbackModal } from "./FeedbackModal";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -22,6 +24,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const profileMenuRef = useRef<HTMLDivElement>(null);
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const navMenuRef = useRef<HTMLDivElement>(null);
+  
+  // Feedback system state
+  const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string>("");
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const [bannerDismissed, setBannerDismissed] = useState(false);
 
   useEffect(() => {
     const getSession = async () => {
@@ -30,6 +38,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       setIsLoggedIn(!!session);
       setUserEmail(session?.user?.email ?? null);
+      
+      // Set userId and username for feedback system
+      if (session?.user?.id) {
+        setUserId(session.user.id);
+        const meta: any = session.user.user_metadata || {};
+        const extractedUsername =
+          meta.firstName ||
+          meta.first_name ||
+          (session.user.email ? session.user.email.split("@")[0] : null) ||
+          "User";
+        setUsername(extractedUsername);
+      } else {
+        setUserId(null);
+        setUsername("");
+      }
 
       // Sync notes count on initial session check if user is logged in (non-blocking)
       if (session?.user?.id) {
@@ -65,6 +88,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       async (_event, session) => {
         setIsLoggedIn(!!session);
         setUserEmail(session?.user?.email ?? null);
+        
+        // Set userId and username for feedback system
+        if (session?.user?.id) {
+          setUserId(session.user.id);
+          const meta: any = session.user.user_metadata || {};
+          const extractedUsername =
+            meta.firstName ||
+            meta.first_name ||
+            (session.user.email ? session.user.email.split("@")[0] : null) ||
+            "User";
+          setUsername(extractedUsername);
+        } else {
+          setUserId(null);
+          setUsername("");
+        }
         
         // Sync notes count when user logs in or session changes (non-blocking)
         if (session?.user?.id) {
