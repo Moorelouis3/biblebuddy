@@ -508,7 +508,7 @@ export default function AnalyticsPage() {
         } else if (action.action_type === "user_signup") {
           actions.push({
             date: formattedDate,
-            text: `On ${formattedDate} at ${formattedTime}, ${username} signed up.${counterText}`,
+            text: `On ${formattedDate} at ${formattedTime}, ${username} just signed up.${counterText}`,
             sortKey: actionDate.getTime(),
             actionType: "user_signup",
           });
