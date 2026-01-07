@@ -438,11 +438,10 @@ export default function DashboardPage() {
             ) : levelInfo ? (
               // Actual content
               <>
-                <div className="flex items-start justify-between mb-1">
-                  <div>
-                    <h2 className="text-xl font-semibold mb-1">📘 Level {levelInfo.level}</h2>
-                    <h3 className="text-lg font-medium text-gray-800 mb-2">{levelInfo.levelName}</h3>
-                  </div>
+                <div className="flex items-start justify-between mb-2">
+                  <h2 className="text-xl font-semibold">
+                    📘 Level {levelInfo.level} "{levelInfo.levelName}"
+                  </h2>
                   <button
                     onClick={() => setShowLevelInfoModal(true)}
                     className="text-gray-400 hover:text-gray-600 text-lg font-bold w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
