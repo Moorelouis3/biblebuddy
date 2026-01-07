@@ -17,16 +17,16 @@ export default function AnalyticsPage() {
     buildAdminActionLog();
   }, []);
 
-  // Load active users (within last 10 minutes)
+  // Load active users (within last 60 minutes)
   async function loadActiveUsers() {
     setLoadingActiveUsers(true);
     try {
-      const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000).toISOString();
+      const sixtyMinutesAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
       
       const { data, error } = await supabase
         .from("master_actions")
         .select("user_id")
-        .gte("created_at", tenMinutesAgo);
+        .gte("created_at", sixtyMinutesAgo);
 
       if (error) {
         console.error("[ACTIVE_USERS] Error fetching active users:", error);
