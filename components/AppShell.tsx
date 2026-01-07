@@ -202,6 +202,31 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+      {/* FEEDBACK BANNER (shows on all pages when conditions are met) */}
+      {isLoggedIn && userId && !bannerDismissed && (
+        <FeedbackBanner
+          userId={userId}
+          onBannerClick={() => setShowFeedbackModal(true)}
+        />
+      )}
+
+      {/* FEEDBACK MODAL */}
+      {isLoggedIn && userId && (
+        <FeedbackModal
+          userId={userId}
+          username={username}
+          isOpen={showFeedbackModal}
+          onClose={() => {
+            setShowFeedbackModal(false);
+            setBannerDismissed(true);
+          }}
+          onDismiss={() => {
+            setShowFeedbackModal(false);
+            setBannerDismissed(true);
+          }}
+        />
+      )}
+
       {/* NAVBAR (hidden on landing/login/signup) */}
       {!isBarePage && (
         <header className="w-full bg-gray-50">
