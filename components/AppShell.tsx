@@ -203,7 +203,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       {/* FEEDBACK BANNER (shows on all pages when conditions are met) */}
-      {isLoggedIn && userId && !bannerDismissed && (
+      {/* Banner visibility is controlled by FeedbackBanner component based on database state */}
+      {isLoggedIn && userId && (
         <FeedbackBanner
           userId={userId}
           onBannerClick={() => setShowFeedbackModal(true)}
