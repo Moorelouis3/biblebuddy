@@ -114,6 +114,8 @@ export default function DashboardPage() {
     levelEnd: number;
     progressPercent: number;
   } | null>(null);
+  const [showLevelInfoModal, setShowLevelInfoModal] = useState(false);
+  const [motivationalMessage, setMotivationalMessage] = useState<string>("");
 
   // load user first name from Supabase
   useEffect(() => {
@@ -172,71 +174,71 @@ export default function DashboardPage() {
           level = 10;
           levelStart = 10000;
           levelEnd = 10000;
-          levelName = "Bible Buddy";
-          identityText = "You've made Bible study a true part of your life.";
+          levelName = "Rooted";
+          identityText = "You've built a strong foundation in Scripture.";
           encouragementText = "Welcome home. You are a Bible Buddy.";
         } else if (totalActions >= 7000) {
           level = 9;
           levelStart = 7000;
           levelEnd = 9999;
-          levelName = "Faithful Student";
-          identityText = "You've shown long-term commitment to studying God's Word.";
+          levelName = "Wise Observer";
+          identityText = "You understand context and purpose more clearly.";
           encouragementText = "Faithfulness matters. Keep walking forward.";
         } else if (totalActions >= 4000) {
           level = 8;
           levelStart = 4000;
           levelEnd = 6999;
-          levelName = "Story Seeker";
-          identityText = "You see how Scripture connects into one continuous story.";
+          levelName = "Deep Reader";
+          identityText = "You're comfortable slowing down and going deep.";
           encouragementText = "Stay engaged. You're seeing the bigger picture.";
         } else if (totalActions >= 2000) {
           level = 7;
           levelStart = 2000;
           levelEnd = 3999;
-          levelName = "Word Builder";
-          identityText = "You're actively shaping your understanding of Scripture.";
+          levelName = "Pattern Seeker";
+          identityText = "You notice themes, connections, and repetition.";
           encouragementText = "You're building something lasting.";
         } else if (totalActions >= 1000) {
           level = 6;
           levelStart = 1000;
           levelEnd = 1999;
-          levelName = "Deepening Faith";
-          identityText = "You're studying with purpose and growing in understanding.";
+          levelName = "Thoughtful Student";
+          identityText = "You're studying with intention and reflection.";
           encouragementText = "Keep pressing in. This is meaningful growth.";
         } else if (totalActions >= 500) {
           level = 5;
           levelStart = 500;
           levelEnd = 999;
-          levelName = "Rooted";
-          identityText = "God's Word is becoming part of your rhythm and routine.";
-          encouragementText = "You're building depth. Stay rooted.";
+          levelName = "Story Builder";
+          identityText = "You're starting to see the Bible as one big story.";
+          encouragementText = "You're building understanding, not just habits.";
         } else if (totalActions >= 250) {
           level = 4;
           levelStart = 250;
           levelEnd = 499;
           levelName = "Scripture Explorer";
-          identityText = "You're exploring people, places, and context beyond the surface.";
+          identityText = "You're connecting people, places, and meaning.";
           encouragementText = "You're connecting the story. Keep exploring.";
         } else if (totalActions >= 100) {
           level = 3;
           levelStart = 100;
           levelEnd = 249;
           levelName = "Curious Reader";
-          identityText = "You're asking questions, noticing details, and reading with intention.";
+          identityText = "You're asking good questions and digging deeper.";
           encouragementText = "Stay curious. Understanding grows here.";
         } else if (totalActions >= 25) {
           level = 2;
           levelStart = 25;
           levelEnd = 99;
           levelName = "Getting Oriented";
-          identityText = "You're learning how the Bible works and how to move through it with confidence.";
+          identityText = "You're learning how the Bible fits together.";
           encouragementText = "Keep going. You're building a daily habit.";
         } else {
           level = 1;
           levelStart = 0;
           levelEnd = 24;
           levelName = "First Steps";
-          identityText = "You're just getting started. Every habit begins with a first step.";
+          identityText = "You're just getting started. Every habit begins here.";
           encouragementText = "Keep going. Consistency starts here.";
         }
 
@@ -244,6 +246,63 @@ export default function DashboardPage() {
         const progressInLevel = totalActions - levelStart;
         const levelSpan = levelEnd - levelStart + 1;
         const progressPercent = Math.min(100, Math.max(0, (progressInLevel / levelSpan) * 100));
+
+        // Select random motivational message for this level
+        const motivationalMessages: Record<number, string[]> = {
+          1: [
+            "Every journey starts with one step.",
+            "You showed up. That matters.",
+            "Small steps lead to lasting habits.",
+          ],
+          2: [
+            "You're starting to find your rhythm.",
+            "Consistency is forming.",
+            "You're learning how this all fits together.",
+          ],
+          3: [
+            "Great questions lead to deeper understanding.",
+            "Your curiosity is a strength.",
+            "You're learning to slow down and ask why.",
+          ],
+          4: [
+            "You're connecting more than just verses.",
+            "The Bible is becoming clearer.",
+            "You're exploring with purpose.",
+          ],
+          5: [
+            "You're seeing the bigger picture now.",
+            "The story is starting to connect.",
+            "You're building understanding, not just habits.",
+          ],
+          6: [
+            "Your study is becoming intentional.",
+            "Depth beats speed every time.",
+            "You're growing steadily.",
+          ],
+          7: [
+            "You notice what others might miss.",
+            "Patterns are forming.",
+            "Your understanding is maturing.",
+          ],
+          8: [
+            "You're comfortable going deep.",
+            "You've learned how to slow down.",
+            "Depth is becoming natural.",
+          ],
+          9: [
+            "You read with wisdom and awareness.",
+            "Context matters — and you see it.",
+            "Your understanding is strong.",
+          ],
+          10: [
+            "You've built a solid foundation.",
+            "Your study habits are deeply rooted.",
+            "This is long-term growth.",
+          ],
+        };
+
+        const messages = motivationalMessages[level] || motivationalMessages[1];
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
         const levelInfoData = {
           level,
@@ -266,6 +325,7 @@ export default function DashboardPage() {
         });
 
         setLevelInfo(levelInfoData);
+        setMotivationalMessage(randomMessage);
       } catch (err) {
         console.error("Error loading level data:", err);
       } finally {
@@ -347,7 +407,7 @@ export default function DashboardPage() {
         {/* DASHBOARD CARDS */}
         <div className="flex flex-col gap-4">
           {/* BIBLE READING PROGRESS CARD */}
-          <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+          <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm relative">
             {isLoadingLevel ? (
               // Loading skeleton with animated dots
               <>
@@ -378,8 +438,19 @@ export default function DashboardPage() {
             ) : levelInfo ? (
               // Actual content
               <>
-                <h2 className="text-xl font-semibold mb-1">📘 Level {levelInfo.level}</h2>
-                <h3 className="text-lg font-medium text-gray-800 mb-2">{levelInfo.levelName}</h3>
+                <div className="flex items-start justify-between mb-1">
+                  <div>
+                    <h2 className="text-xl font-semibold mb-1">📘 Level {levelInfo.level}</h2>
+                    <h3 className="text-lg font-medium text-gray-800 mb-2">{levelInfo.levelName}</h3>
+                  </div>
+                  <button
+                    onClick={() => setShowLevelInfoModal(true)}
+                    className="text-gray-400 hover:text-gray-600 text-lg font-bold w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
+                    title="Learn about levels"
+                  >
+                    ?
+                  </button>
+                </div>
                 <p className="text-gray-700 text-sm mb-4">
                   {levelInfo.identityText}
                 </p>
@@ -394,9 +465,9 @@ export default function DashboardPage() {
                   </div>
                 </div>
 
-                {/* Encouragement Text */}
+                {/* Dynamic Motivational Message */}
                 <p className="text-sm text-gray-600 font-medium">
-                  {levelInfo.encouragementText}
+                  {motivationalMessage || levelInfo.encouragementText}
                 </p>
               </>
             ) : null}
@@ -449,6 +520,125 @@ export default function DashboardPage() {
           </Link>
         </div>
       </div>
+
+      {/* Level Info Modal */}
+      {showLevelInfoModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold">🧭 How Levels Work in Bible Buddy</h2>
+                <button
+                  onClick={() => setShowLevelInfoModal(false)}
+                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className="space-y-6 text-gray-700">
+                <p className="text-base leading-relaxed">
+                  Bible Buddy isn't about speed, streaks, or competing with other people.
+                  <br />
+                  It's about understanding the Bible deeply, one step at a time.
+                </p>
+
+                <div>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900">🔑 What Counts as Progress?</h3>
+                  <p className="mb-2">You earn progress by completing actions, such as:</p>
+                  <ul className="list-none space-y-2 ml-4">
+                    <li>📖 Finishing a Bible chapter</li>
+                    <li>👤 Learning about people in the Bible</li>
+                    <li>🗺️ Discovering places in the Bible</li>
+                    <li>🔍 Understanding key words and ideas</li>
+                    <li>📝 Creating and saving notes</li>
+                  </ul>
+                  <p className="mt-3 text-sm">Each action = 1 point toward your growth</p>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900">🧠 Why Levels Exist</h3>
+                  <p className="mb-2">Levels help you:</p>
+                  <ul className="list-none space-y-2 ml-4">
+                    <li>• See your personal growth over time</li>
+                    <li>• Stay encouraged</li>
+                    <li>• Build a deeper understanding of Scripture</li>
+                  </ul>
+                  <div className="mt-3 space-y-1 text-sm">
+                    <p>❌ No leaderboards</p>
+                    <p>❌ No competition</p>
+                    <p>✅ Just your journey with God</p>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900">🏷️ Bible Buddy Levels</h3>
+                  <div className="space-y-3">
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Level 1 – First Steps</p>
+                      <p className="text-sm">You're just getting started. Every habit begins here.</p>
+                    </div>
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Level 2 – Getting Oriented</p>
+                      <p className="text-sm">You're learning how the Bible fits together.</p>
+                    </div>
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Level 3 – Curious Reader</p>
+                      <p className="text-sm">You're asking good questions and digging deeper.</p>
+                    </div>
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Level 4 – Scripture Explorer</p>
+                      <p className="text-sm">You're connecting people, places, and meaning.</p>
+                    </div>
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Level 5 – Story Builder</p>
+                      <p className="text-sm">You're starting to see the Bible as one big story.</p>
+                    </div>
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Level 6 – Thoughtful Student</p>
+                      <p className="text-sm">You're studying with intention and reflection.</p>
+                    </div>
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Level 7 – Pattern Seeker</p>
+                      <p className="text-sm">You notice themes, connections, and repetition.</p>
+                    </div>
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Level 8 – Deep Reader</p>
+                      <p className="text-sm">You're comfortable slowing down and going deep.</p>
+                    </div>
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Level 9 – Wise Observer</p>
+                      <p className="text-sm">You understand context and purpose more clearly.</p>
+                    </div>
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Level 10 – Rooted</p>
+                      <p className="text-sm">You've built a strong foundation in Scripture.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <p className="font-semibold text-blue-900 mb-1">🙌 Final Encouragement</p>
+                  <p className="text-sm text-blue-800">
+                    There's no rush.
+                    <br />
+                    The goal isn't to finish fast — it's to understand deeply.
+                  </p>
+                </div>
+
+                <div className="pt-4">
+                  <button
+                    onClick={() => setShowLevelInfoModal(false)}
+                    className="w-full px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
