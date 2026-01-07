@@ -517,17 +517,23 @@ export default function PeopleInTheBiblePage() {
       return;
     }
 
+    console.log("[PEOPLE_PAGE] Person clicked:", person.name);
+
     // Check study view limit
     const { allowed, reason } = await checkStudyViewLimit(userId);
 
     if (!allowed) {
+      console.log("[PEOPLE_PAGE] study_view blocked — free limit reached");
       // Show upgrade modal
       setShowUpgradeModal(true);
       return;
     }
 
-    // Log study view
-    await logStudyView(userId, username);
+    // Log study view BEFORE allowing access
+    const insertSuccess = await logStudyView(userId, username, "person");
+    if (!insertSuccess) {
+      console.error("[PEOPLE_PAGE] Failed to log study_view, but allowing access anyway");
+    }
 
     // Allow access
     setSelectedPerson(person);

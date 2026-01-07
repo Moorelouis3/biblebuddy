@@ -30,7 +30,7 @@ export async function checkStudyViewLimit(userId: string): Promise<{
 
     const membershipStatus = profileStats?.membership_status || "free";
 
-    // 2. If pro, allow immediately
+    // 2. If pro, allow immediately (will still log for analytics)
     if (membershipStatus === "pro") {
       return { allowed: true };
     }
@@ -77,17 +77,40 @@ export async function checkStudyViewLimit(userId: string): Promise<{
 /**
  * Log a study_view action to master_actions
  */
-export async function logStudyView(userId: string, username: string | null): Promise<void> {
+export async function logStudyView(
+  userId: string,
+  username: string | null,
+  actionLabel: "person" | "place" | "keyword"
+): Promise<boolean> {
   try {
-    await supabase.from("master_actions").insert({
+    console.log("[STUDY_VIEW] Attempting study_view insert:", {
       user_id: userId,
       username: username ?? null,
       action_type: "study_view",
-      action_label: null,
+      action_label: actionLabel,
     });
+
+    const { data, error } = await supabase
+      .from("master_actions")
+      .insert({
+        user_id: userId,
+        username: username ?? null,
+        action_type: "study_view",
+        action_label: actionLabel,
+      })
+      .select();
+
+    if (error) {
+      console.error("[STUDY_VIEW] Error inserting study_view:", error);
+      console.error("[STUDY_VIEW] Error details:", JSON.stringify(error, null, 2));
+      return false;
+    }
+
+    console.log("[STUDY_VIEW] study_view insert success:", data);
+    return true;
   } catch (err) {
-    console.error("[STUDY_VIEW] Error logging study view:", err);
-    // Don't throw - logging failure shouldn't block access
+    console.error("[STUDY_VIEW] Unexpected error logging study view:", err);
+    return false;
   }
 }
 

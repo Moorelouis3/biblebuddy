@@ -53,14 +53,23 @@ export default function PlacesInTheBiblePage() {
       return;
     }
 
-    const { allowed } = await checkStudyViewLimit(userId);
+    console.log("[PLACES_PAGE] Place clicked:", place.name);
+
+    // Check study view limit
+    const { allowed, reason } = await checkStudyViewLimit(userId);
 
     if (!allowed) {
+      console.log("[PLACES_PAGE] study_view blocked — free limit reached");
       setShowUpgradeModal(true);
       return;
     }
 
-    await logStudyView(userId, username);
+    // Log study view BEFORE allowing access
+    const insertSuccess = await logStudyView(userId, username, "place");
+    if (!insertSuccess) {
+      console.error("[PLACES_PAGE] Failed to log study_view, but allowing access anyway");
+    }
+
     setSelectedPlace(place);
   };
 

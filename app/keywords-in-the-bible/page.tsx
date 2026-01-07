@@ -66,14 +66,23 @@ export default function KeywordsInTheBiblePage() {
       return;
     }
 
-    const { allowed } = await checkStudyViewLimit(userId);
+    console.log("[KEYWORDS_PAGE] Keyword clicked:", keyword.name);
+
+    // Check study view limit
+    const { allowed, reason } = await checkStudyViewLimit(userId);
 
     if (!allowed) {
+      console.log("[KEYWORDS_PAGE] study_view blocked — free limit reached");
       setShowUpgradeModal(true);
       return;
     }
 
-    await logStudyView(userId, username);
+    // Log study view BEFORE allowing access
+    const insertSuccess = await logStudyView(userId, username, "keyword");
+    if (!insertSuccess) {
+      console.error("[KEYWORDS_PAGE] Failed to log study_view, but allowing access anyway");
+    }
+
     setSelectedKeyword(keyword);
   };
 

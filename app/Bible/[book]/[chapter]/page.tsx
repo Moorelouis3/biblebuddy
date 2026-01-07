@@ -12,6 +12,7 @@ import { FeaturedCharacterModal } from "../../../../components/FeaturedCharacter
 import { useFeaturedCharacters } from "../../../../hooks/useFeaturedCharacters";
 import ReactMarkdown from "react-markdown";
 import { enrichBibleVerses } from "../../../../lib/bibleHighlighting";
+import { checkStudyViewLimit, logStudyView } from "../../../../lib/studyViewLimit";
 
 type Verse = {
   num: number;
@@ -80,6 +81,7 @@ export default function BibleChapterPage() {
   const [placeNotes, setPlaceNotes] = useState<string | null>(null);
   const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
 
   // Normalize markdown functions (reused from People/Places/Keywords pages)
   function normalizePersonMarkdown(markdown: string): string {
@@ -1663,6 +1665,42 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
             ) : (
               <div className="text-center py-12 text-gray-500">No notes available yet.</div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* UPGRADE MODAL */}
+      {showUpgradeModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4">
+          <div className="relative w-full max-w-md rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8">
+            <button
+              type="button"
+              onClick={() => setShowUpgradeModal(false)}
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
+            >
+              ✕
+            </button>
+            <h2 className="text-2xl font-bold mb-4">Daily Limit Reached</h2>
+            <p className="text-gray-700 mb-6">
+              You've reached your daily limit of 3 deep study views. Upgrade to Pro for unlimited access to people, places, and keywords.
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowUpgradeModal(false)}
+                className="flex-1 px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
+              >
+                Maybe Later
+              </button>
+              <button
+                onClick={() => {
+                  setShowUpgradeModal(false);
+                  router.push("/upgrade");
+                }}
+                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                Upgrade Now
+              </button>
+            </div>
           </div>
         </div>
       )}
