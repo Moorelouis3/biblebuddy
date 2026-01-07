@@ -32,6 +32,10 @@ export default function AnalyticsPage() {
   const [activeUsers, setActiveUsers] = useState(0);
   const [loadingActiveUsers, setLoadingActiveUsers] = useState(true);
 
+  // Total Users
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [loadingTotalUsers, setLoadingTotalUsers] = useState(true);
+
   // Global overview metrics
   const [timeFilter, setTimeFilter] = useState<TimeFilter>("24h");
   const [overviewMetrics, setOverviewMetrics] =
@@ -64,6 +68,7 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
     loadActiveUsers();
+    loadTotalUsers();
     loadFeedbackInbox();
     loadUserRequestsInbox();
   }, []);
@@ -99,6 +104,28 @@ export default function AnalyticsPage() {
       console.error("[ACTIVE_USERS] Error loading active users:", err);
       setActiveUsers(0);
       setLoadingActiveUsers(false);
+    }
+  }
+
+  // Load total users from auth.users
+  async function loadTotalUsers() {
+    setLoadingTotalUsers(true);
+    try {
+      const response = await fetch("/api/admin/total-users");
+      if (!response.ok) {
+        console.error("[TOTAL_USERS] Error fetching total users:", response.statusText);
+        setTotalUsers(0);
+        setLoadingTotalUsers(false);
+        return;
+      }
+
+      const data = await response.json();
+      setTotalUsers(data.totalUsers || 0);
+      setLoadingTotalUsers(false);
+    } catch (err) {
+      console.error("[TOTAL_USERS] Error loading total users:", err);
+      setTotalUsers(0);
+      setLoadingTotalUsers(false);
     }
   }
 
@@ -710,22 +737,45 @@ export default function AnalyticsPage() {
     <div className="max-w-3xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">Analytics Dashboard</h1>
 
-      {/* ACTIVE USERS RIGHT NOW */}
-      <div className="mb-12 text-center">
-        {loadingActiveUsers ? (
-          <div className="py-8">
-            <p className="text-gray-500 text-sm">Loading...</p>
+      {/* ACTIVE USERS RIGHT NOW + TOTAL USERS */}
+      <div className="mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+          {/* Active Users */}
+          <div>
+            {loadingActiveUsers ? (
+              <div className="py-8">
+                <p className="text-gray-500 text-sm">Loading...</p>
+              </div>
+            ) : (
+              <>
+                <div className="text-7xl font-bold text-gray-900 mb-2">
+                  {activeUsers}
+                </div>
+                <p className="text-lg text-gray-600">
+                  users are studying the Bible right now
+                </p>
+              </>
+            )}
           </div>
-        ) : (
-          <>
-            <div className="text-7xl font-bold text-gray-900 mb-2">
-              {activeUsers}
-            </div>
-            <p className="text-lg text-gray-600">
-              users are studying the Bible right now
-            </p>
-          </>
-        )}
+
+          {/* Total Users */}
+          <div>
+            {loadingTotalUsers ? (
+              <div className="py-8">
+                <p className="text-gray-500 text-sm">Loading...</p>
+              </div>
+            ) : (
+              <>
+                <div className="text-7xl font-bold text-gray-900 mb-2">
+                  {totalUsers}
+                </div>
+                <p className="text-lg text-gray-600">
+                  Total users
+                </p>
+              </>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* GLOBAL OVERVIEW METRICS */}
@@ -869,7 +919,7 @@ export default function AnalyticsPage() {
       </div>
 
       {/* INBOX SECTION (Feedback + User Requests) */}
-      <div className="mt-12 mb-6">
+      <div className="mt-12 mb-6" data-inbox-section>
         <h2 className="text-2xl font-bold mb-4">Inbox</h2>
         
         {/* Combined loading state */}

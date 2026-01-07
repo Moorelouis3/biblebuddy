@@ -12,6 +12,7 @@ import { recalculateTotalActions } from "../lib/recalculateTotalActions";
 import { FeedbackBanner } from "./FeedbackBanner";
 import { FeedbackModal } from "./FeedbackModal";
 import { ContactUsModal } from "./ContactUsModal";
+import { NewMessageAlert } from "./NewMessageAlert";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -206,6 +207,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+      {/* NEW MESSAGE ALERT (admin only) */}
+      {isAdmin && <NewMessageAlert />}
+
       {/* FEEDBACK BANNER (shows on all pages when conditions are met) */}
       {/* Banner visibility is controlled by FeedbackBanner component based on database state */}
       {isLoggedIn && userId && (
