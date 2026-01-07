@@ -39,7 +39,7 @@ export function FeedbackBanner({ userId, onBannerClick }: FeedbackBannerProps) {
         // Check if user has already submitted feedback
         const { data: existingFeedback, error: feedbackError } = await supabase
           .from("user_feedback")
-          .select("submitted_at, last_dismissed_at")
+          .select("happiness_rating, usefulness_rating, usage_frequency, recommendation_likelihood, last_dismissed_at")
           .eq("user_id", userId)
           .maybeSingle();
 
