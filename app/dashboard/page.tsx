@@ -138,7 +138,7 @@ export default function DashboardPage() {
     loadUser();
   }, []);
 
-  // Load level data based on total_actions
+  // Load level data based on total_actions (FAST - only queries total_actions)
   useEffect(() => {
     async function loadLevelData() {
       const { data: { user } } = await supabase.auth.getUser();
@@ -150,17 +150,14 @@ export default function DashboardPage() {
       try {
         setIsLoadingLevel(true);
         
-        // Get profile stats to read total_actions
-        const profileStats = await getProfileStats(user.id);
-        const totalActions = profileStats?.total_actions || 0;
+        // FAST QUERY: Only get total_actions from profile_stats
+        const { data, error } = await supabase
+          .from("profile_stats")
+          .select("total_actions")
+          .eq("user_id", user.id)
+          .single();
 
-        // Get current active book (for other dashboard features)
-        const activeBook = await getCurrentBook(user.id, BOOKS);
-        setCurrentBook(activeBook);
-
-        // Get total completed chapters (for other dashboard features)
-        const totalCount = await getTotalCompletedChapters(user.id, BOOKS);
-        setTotalCompletedChapters(totalCount);
+        const totalActions = (data?.total_actions || 0) as number;
 
         // Calculate level based on total_actions
         let level = 1;
@@ -326,14 +323,36 @@ export default function DashboardPage() {
 
         setLevelInfo(levelInfoData);
         setMotivationalMessage(randomMessage);
+        setIsLoadingLevel(false);
       } catch (err) {
         console.error("Error loading level data:", err);
-      } finally {
         setIsLoadingLevel(false);
       }
     }
 
     loadLevelData();
+  }, []);
+
+  // Load other dashboard data (separate, non-blocking)
+  useEffect(() => {
+    async function loadOtherDashboardData() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      try {
+        // Get current active book (for other dashboard features)
+        const activeBook = await getCurrentBook(user.id, BOOKS);
+        setCurrentBook(activeBook);
+
+        // Get total completed chapters (for other dashboard features)
+        const totalCount = await getTotalCompletedChapters(user.id, BOOKS);
+        setTotalCompletedChapters(totalCount);
+      } catch (err) {
+        console.error("Error loading other dashboard data:", err);
+      }
+    }
+
+    loadOtherDashboardData();
   }, []);
 
   // simple local streak system stored in localStorage
