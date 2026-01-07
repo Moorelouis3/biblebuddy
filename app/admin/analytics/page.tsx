@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
-type TimeFilter = "24h" | "30d" | "1y" | "all";
+type TimeFilter = "24h" | "7d" | "30d" | "1y" | "all";
 
 type OverviewMetrics = {
   signups: number;
@@ -92,6 +92,9 @@ export default function AnalyticsPage() {
     const now = new Date();
     if (filter === "24h") {
       return new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString();
+    }
+    if (filter === "7d") {
+      return new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
     }
     if (filter === "30d") {
       return new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
@@ -597,6 +600,7 @@ export default function AnalyticsPage() {
           <div className="inline-flex rounded-full border border-gray-200 bg-white p-1 text-xs sm:text-sm">
             {[
               { key: "24h", label: "Last 24 Hours" },
+              { key: "7d", label: "Last 7 Days" },
               { key: "30d", label: "Last 30 Days" },
               { key: "1y", label: "Last 1 Year" },
               { key: "all", label: "All Time" },
