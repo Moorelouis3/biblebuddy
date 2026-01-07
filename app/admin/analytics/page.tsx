@@ -248,6 +248,71 @@ export default function AnalyticsPage() {
     }
   }
 
+  // Load user counts for contextual counters
+  async function loadUserCounts(userIds: string[]): Promise<{
+    loginDays: Map<string, number>;
+    totalActions: Map<string, number>;
+  }> {
+    const loginDaysMap = new Map<string, number>();
+    const totalActionsMap = new Map<string, number>();
+
+    if (userIds.length === 0) {
+      return { loginDays: loginDaysMap, totalActions: totalActionsMap };
+    }
+
+    try {
+      // Batch fetch all actions for these users
+      const { data: allUserActions, error } = await supabase
+        .from("master_actions")
+        .select("user_id, action_type, created_at")
+        .in("user_id", userIds);
+
+      if (error) {
+        console.error("[USER_COUNTS] Error fetching user actions:", error);
+        return { loginDays: loginDaysMap, totalActions: totalActionsMap };
+      }
+
+      if (!allUserActions) {
+        return { loginDays: loginDaysMap, totalActions: totalActionsMap };
+      }
+
+      // Process counts per user
+      const userLoginDates = new Map<string, Set<string>>();
+      const userActionCounts = new Map<string, number>();
+
+      for (const action of allUserActions) {
+        const userId = action.user_id;
+        if (!userId) continue;
+
+        // Count total actions per user
+        userActionCounts.set(userId, (userActionCounts.get(userId) || 0) + 1);
+
+        // Track distinct login days per user
+        if (action.action_type === "user_login") {
+          const dateKey = new Date(action.created_at).toISOString().split('T')[0]; // YYYY-MM-DD
+          if (!userLoginDates.has(userId)) {
+            userLoginDates.set(userId, new Set());
+          }
+          userLoginDates.get(userId)!.add(dateKey);
+        }
+      }
+
+      // Convert login dates to counts
+      for (const [userId, dates] of userLoginDates.entries()) {
+        loginDaysMap.set(userId, dates.size);
+      }
+
+      // Set total action counts
+      for (const [userId, count] of userActionCounts.entries()) {
+        totalActionsMap.set(userId, count);
+      }
+    } catch (err) {
+      console.error("[USER_COUNTS] Error processing user counts:", err);
+    }
+
+    return { loginDays: loginDaysMap, totalActions: totalActionsMap };
+  }
+
   // Build Admin Action Log from master_actions table (all users)
   async function buildAdminActionLog() {
     setLoadingActionLog(true);
@@ -257,7 +322,7 @@ export default function AnalyticsPage() {
       // Get all actions from master_actions table (no user_id filter)
       const { data: masterActions, error: actionsError } = await supabase
         .from("master_actions")
-        .select("action_type, action_label, created_at, username")
+        .select("action_type, action_label, created_at, username, user_id")
         .order("created_at", { ascending: false })
         .limit(200); // Limit to 200 most recent actions
 
@@ -274,7 +339,18 @@ export default function AnalyticsPage() {
         return;
       }
 
-      // Track unique login dates per user (one per day)
+      // Collect unique user IDs for batch counting
+      const uniqueUserIds = new Set<string>();
+      for (const action of masterActions) {
+        if (action.user_id) {
+          uniqueUserIds.add(action.user_id);
+        }
+      }
+
+      // Batch load user counts
+      const { loginDays, totalActions } = await loadUserCounts(Array.from(uniqueUserIds));
+
+      // Track unique login dates per user (one per day) for display deduplication
       const userLoginDates = new Map<string, Set<string>>();
 
       for (const action of masterActions) {
@@ -283,12 +359,25 @@ export default function AnalyticsPage() {
         const formattedDate = formatAdminActionDate(actionDate);
         const formattedTime = formatAdminActionTime(actionDate);
         const username = action.username || "Unknown User";
+        const userId = action.user_id;
+
+        // Get contextual counter
+        let counterText = "";
+        if (userId) {
+          if (action.action_type === "user_login") {
+            const loginDaysCount = loginDays.get(userId) || 0;
+            counterText = ` (${loginDaysCount})`;
+          } else {
+            const totalActionsCount = totalActions.get(userId) || 0;
+            counterText = ` (${totalActionsCount})`;
+          }
+        }
 
         // Only process allowed action types
         if (action.action_type === "chapter_completed") {
           const text = action.action_label 
-            ? `On ${formattedDate} at ${formattedTime}, ${username} completed ${action.action_label}.`
-            : `On ${formattedDate} at ${formattedTime}, ${username} completed a chapter.`;
+            ? `On ${formattedDate} at ${formattedTime}, ${username} completed ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} completed a chapter.${counterText}`;
           actions.push({
             date: formattedDate,
             text,
@@ -297,8 +386,8 @@ export default function AnalyticsPage() {
           });
         } else if (action.action_type === "book_completed") {
           const text = action.action_label 
-            ? `On ${formattedDate} at ${formattedTime}, ${username} finished ${action.action_label}.`
-            : `On ${formattedDate} at ${formattedTime}, ${username} finished a book.`;
+            ? `On ${formattedDate} at ${formattedTime}, ${username} finished ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} finished a book.${counterText}`;
           actions.push({
             date: formattedDate,
             text,
@@ -307,8 +396,8 @@ export default function AnalyticsPage() {
           });
         } else if (action.action_type === "person_learned") {
           const text = action.action_label 
-            ? `On ${formattedDate} at ${formattedTime}, ${username} learned about ${action.action_label}.`
-            : `On ${formattedDate} at ${formattedTime}, ${username} learned about a new person.`;
+            ? `On ${formattedDate} at ${formattedTime}, ${username} learned about ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} learned about a new person.${counterText}`;
           actions.push({
             date: formattedDate,
             text,
@@ -317,8 +406,8 @@ export default function AnalyticsPage() {
           });
         } else if (action.action_type === "place_discovered") {
           const text = action.action_label 
-            ? `On ${formattedDate} at ${formattedTime}, ${username} discovered ${action.action_label}.`
-            : `On ${formattedDate} at ${formattedTime}, ${username} discovered a new place.`;
+            ? `On ${formattedDate} at ${formattedTime}, ${username} discovered ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} discovered a new place.${counterText}`;
           actions.push({
             date: formattedDate,
             text,
@@ -327,8 +416,8 @@ export default function AnalyticsPage() {
           });
         } else if (action.action_type === "keyword_mastered") {
           const text = action.action_label 
-            ? `On ${formattedDate} at ${formattedTime}, ${username} mastered ${action.action_label}.`
-            : `On ${formattedDate} at ${formattedTime}, ${username} mastered a new keyword.`;
+            ? `On ${formattedDate} at ${formattedTime}, ${username} mastered ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} mastered a new keyword.${counterText}`;
           actions.push({
             date: formattedDate,
             text,
@@ -338,7 +427,7 @@ export default function AnalyticsPage() {
         } else if (action.action_type === "note_created") {
           actions.push({
             date: formattedDate,
-            text: `On ${formattedDate} at ${formattedTime}, ${username} created a note.`,
+            text: `On ${formattedDate} at ${formattedTime}, ${username} created a note.${counterText}`,
             sortKey: actionDate.getTime(),
             actionType: "note_created",
           });
@@ -353,7 +442,7 @@ export default function AnalyticsPage() {
             userLogins.add(dateKey);
             actions.push({
               date: formattedDate,
-              text: `On ${formattedDate} at ${formattedTime}, ${username} logged in.`,
+              text: `On ${formattedDate} at ${formattedTime}, ${username} logged in.${counterText}`,
               sortKey: actionDate.getTime(),
               actionType: "user_login",
             });
