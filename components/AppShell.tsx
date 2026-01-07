@@ -218,11 +218,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           isOpen={showFeedbackModal}
           onClose={() => {
             setShowFeedbackModal(false);
-            setBannerDismissed(true);
+            // Don't dismiss banner on close - only on "No"
           }}
-          onDismiss={() => {
+          onDoLater={() => {
             setShowFeedbackModal(false);
-            setBannerDismissed(true);
+            // Banner stays visible
+          }}
+          onNo={() => {
+            setShowFeedbackModal(false);
+            setBannerDismissed(true); // Permanently hide banner
           }}
         />
       )}

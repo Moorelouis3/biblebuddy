@@ -13,16 +13,19 @@ CREATE TABLE IF NOT EXISTS public.user_feedback (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   username text,
-  submitted_at timestamptz DEFAULT now(),
+  happiness_rating text,
+  usefulness_rating text,
+  usage_frequency text,
+  recommendation_likelihood text,
+  improvement_feedback text,
+  review_text text,
   last_dismissed_at timestamptz,
-  feedback_data jsonb,
   created_at timestamptz DEFAULT now()
 );
 
--- Add unique constraint to ensure one submission per user
+-- Add unique constraint to ensure one row per user
 CREATE UNIQUE INDEX IF NOT EXISTS user_feedback_user_id_unique 
-ON public.user_feedback(user_id) 
-WHERE submitted_at IS NOT NULL;
+ON public.user_feedback(user_id);
 
 -- Enable RLS
 ALTER TABLE public.user_feedback ENABLE ROW LEVEL SECURITY;

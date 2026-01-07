@@ -49,14 +49,20 @@ export function FeedbackBanner({ userId, onBannerClick }: FeedbackBannerProps) {
           return;
         }
 
-        // If user has submitted, never show again
-        if (existingFeedback?.submitted_at) {
+        // Check if user has submitted feedback (has any rating filled)
+        const hasSubmitted = existingFeedback?.happiness_rating || 
+                            existingFeedback?.usefulness_rating || 
+                            existingFeedback?.usage_frequency || 
+                            existingFeedback?.recommendation_likelihood;
+        
+        if (hasSubmitted) {
+          // User has submitted feedback, never show again
           setShouldShow(false);
           setLoading(false);
           return;
         }
 
-        // If user dismissed, check if 30 days have passed
+        // If user dismissed (clicked "No"), check if 30 days have passed
         if (existingFeedback?.last_dismissed_at) {
           const dismissedDate = new Date(existingFeedback.last_dismissed_at);
           const thirtyDaysAgo = new Date();
