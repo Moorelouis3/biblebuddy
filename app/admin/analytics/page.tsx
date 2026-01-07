@@ -3,19 +3,56 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
+type TimeFilter = "24h" | "30d" | "1y" | "all";
+
+type OverviewMetrics = {
+  signups: number;
+  logins: number;
+  totalActions: number;
+  chaptersRead: number;
+  notesCreated: number;
+  peopleLearned: number;
+  placesDiscovered: number;
+  keywordsUnderstood: number;
+};
+
+const INITIAL_METRICS: OverviewMetrics = {
+  signups: 0,
+  logins: 0,
+  totalActions: 0,
+  chaptersRead: 0,
+  notesCreated: 0,
+  peopleLearned: 0,
+  placesDiscovered: 0,
+  keywordsUnderstood: 0,
+};
+
 export default function AnalyticsPage() {
   // Active Users Right Now
   const [activeUsers, setActiveUsers] = useState(0);
   const [loadingActiveUsers, setLoadingActiveUsers] = useState(true);
 
+  // Global overview metrics
+  const [timeFilter, setTimeFilter] = useState<TimeFilter>("24h");
+  const [overviewMetrics, setOverviewMetrics] =
+    useState<OverviewMetrics>(INITIAL_METRICS);
+  const [loadingOverview, setLoadingOverview] = useState(true);
+  const [overviewError, setOverviewError] = useState<string | null>(null);
+
   // Admin Action Log
-  const [actionLog, setActionLog] = useState<Array<{ date: string; text: string; sortKey: number; actionType: string }>>([]);
+  const [actionLog, setActionLog] = useState<
+    Array<{ date: string; text: string; sortKey: number; actionType: string }>
+  >([]);
   const [loadingActionLog, setLoadingActionLog] = useState(true);
 
   useEffect(() => {
     loadActiveUsers();
-    buildAdminActionLog();
   }, []);
+
+  useEffect(() => {
+    loadOverviewMetrics(timeFilter);
+    buildAdminActionLog();
+  }, [timeFilter]);
 
   // Load active users (within last 60 minutes)
   async function loadActiveUsers() {
@@ -43,6 +80,171 @@ export default function AnalyticsPage() {
       console.error("[ACTIVE_USERS] Error loading active users:", err);
       setActiveUsers(0);
       setLoadingActiveUsers(false);
+    }
+  }
+
+  function getFromDate(filter: TimeFilter): string | null {
+    const now = new Date();
+    if (filter === "all") return null;
+
+    if (filter === "24h") {
+      return new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString();
+    }
+    if (filter === "30d") {
+      return new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
+    }
+    // 1 year
+    return new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000).toISOString();
+  }
+
+  // Load global overview metrics (all users)
+  async function loadOverviewMetrics(filter: TimeFilter) {
+    setLoadingOverview(true);
+    setOverviewError(null);
+
+    try {
+      const fromDate = getFromDate(filter);
+
+      // Helper to apply created_at filter if needed
+      const applyDateFilter = <T,>(
+        query: any,
+        column: string = "created_at"
+      ): any => {
+        if (!fromDate) return query;
+        return query.gte(column, fromDate);
+      };
+
+      // Signups: use profile_stats as proxy for users
+      const signupsPromise = applyDateFilter(
+        supabase
+          .from("profile_stats")
+          .select("user_id", { count: "exact", head: true })
+      );
+
+      // Logins: distinct users with user_login within range
+      const loginsPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("user_id, created_at, action_type")
+          .eq("action_type", "user_login")
+      );
+
+      // Total actions: all master_actions rows
+      const totalActionsPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+      );
+
+      // Chapters read
+      const chaptersPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "chapter_completed")
+      );
+
+      // Notes created (from actions)
+      const notesPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "note_created")
+      );
+
+      // People learned
+      const peoplePromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "person_learned")
+      );
+
+      // Places discovered
+      const placesPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "place_discovered")
+      );
+
+      // Keywords understood (keyword_mastered)
+      const keywordsPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "keyword_mastered")
+      );
+
+      const [
+        { count: signupsCount, error: signupsError },
+        { data: loginRows, error: loginsError },
+        { count: totalActionsCount, error: totalActionsError },
+        { count: chaptersCount, error: chaptersError },
+        { count: notesCount, error: notesError },
+        { count: peopleCount, error: peopleError },
+        { count: placesCount, error: placesError },
+        { count: keywordsCount, error: keywordsError },
+      ] = await Promise.all([
+        signupsPromise,
+        loginsPromise,
+        totalActionsPromise,
+        chaptersPromise,
+        notesPromise,
+        peoplePromise,
+        placesPromise,
+        keywordsPromise,
+      ]);
+
+      if (
+        signupsError ||
+        loginsError ||
+        totalActionsError ||
+        chaptersError ||
+        notesError ||
+        peopleError ||
+        placesError ||
+        keywordsError
+      ) {
+        console.error("[ANALYTICS_OVERVIEW] Error loading metrics:", {
+          signupsError,
+          loginsError,
+          totalActionsError,
+          chaptersError,
+          notesError,
+          peopleError,
+          placesError,
+          keywordsError,
+        });
+        setOverviewError("Failed to load overview metrics.");
+        setOverviewMetrics(INITIAL_METRICS);
+        setLoadingOverview(false);
+        return;
+      }
+
+      // Distinct login users
+      const distinctLoginUsers = new Set(
+        (loginRows || [])
+          .map((row: any) => row.user_id)
+          .filter((id: string | null) => !!id)
+      );
+
+      setOverviewMetrics({
+        signups: signupsCount ?? 0,
+        logins: distinctLoginUsers.size,
+        totalActions: totalActionsCount ?? 0,
+        chaptersRead: chaptersCount ?? 0,
+        notesCreated: notesCount ?? 0,
+        peopleLearned: peopleCount ?? 0,
+        placesDiscovered: placesCount ?? 0,
+        keywordsUnderstood: keywordsCount ?? 0,
+      });
+      setLoadingOverview(false);
+    } catch (err) {
+      console.error("[ANALYTICS_OVERVIEW] Unexpected error:", err);
+      setOverviewError("Failed to load overview metrics.");
+      setOverviewMetrics(INITIAL_METRICS);
+      setLoadingOverview(false);
     }
   }
 
@@ -236,6 +438,86 @@ export default function AnalyticsPage() {
         )}
       </div>
 
+      {/* GLOBAL OVERVIEW METRICS */}
+      <div className="mt-4 mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
+          <h2 className="text-2xl font-bold">BibleBuddy Activity Overview</h2>
+          <div className="inline-flex rounded-full border border-gray-200 bg-white p-1 text-xs sm:text-sm">
+            {[
+              { key: "24h", label: "Last 24 Hours" },
+              { key: "30d", label: "Last 30 Days" },
+              { key: "1y", label: "Last 1 Year" },
+              { key: "all", label: "All Time" },
+            ].map((option) => (
+              <button
+                key={option.key}
+                type="button"
+                onClick={() => setTimeFilter(option.key as TimeFilter)}
+                className={`px-3 py-1 rounded-full transition text-xs sm:text-sm ${
+                  timeFilter === option.key
+                    ? "bg-blue-600 text-white shadow-sm"
+                    : "text-gray-600 hover:bg-gray-100"
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {overviewError && (
+          <p className="mb-3 text-sm text-red-600">{overviewError}</p>
+        )}
+
+        {loadingOverview ? (
+          <div className="bg-white p-6 rounded-xl shadow text-center">
+            <p className="text-gray-500 text-sm">Loading overview metrics...</p>
+          </div>
+        ) : (
+          <>
+            {/* ROW 1: USER ACTIVITY */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+              <OverviewCard
+                label="Signups"
+                value={overviewMetrics.signups}
+              />
+              <OverviewCard
+                label="Logins"
+                value={overviewMetrics.logins}
+              />
+              <OverviewCard
+                label="Total Actions"
+                value={overviewMetrics.totalActions}
+              />
+            </div>
+
+            {/* ROW 2: BIBLE ENGAGEMENT */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+              <OverviewCard
+                label="Chapters Read"
+                value={overviewMetrics.chaptersRead}
+              />
+              <OverviewCard
+                label="Notes Created"
+                value={overviewMetrics.notesCreated}
+              />
+              <OverviewCard
+                label="People Learned"
+                value={overviewMetrics.peopleLearned}
+              />
+              <OverviewCard
+                label="Places Discovered"
+                value={overviewMetrics.placesDiscovered}
+              />
+              <OverviewCard
+                label="Keywords Understood"
+                value={overviewMetrics.keywordsUnderstood}
+              />
+            </div>
+          </>
+        )}
+      </div>
+
       {/* ADMIN ACTION LOG SECTION */}
       <div className="mt-12 mb-6">
         <h2 className="text-2xl font-bold mb-4">Action Log (All Users)</h2>
@@ -267,6 +549,15 @@ export default function AnalyticsPage() {
       <p className="text-xs text-gray-500 mt-6">
         Admin view only (moorelouis3@gmail.com)
       </p>
+    </div>
+  );
+}
+
+function OverviewCard({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="bg-white p-4 rounded-xl shadow text-center">
+      <p className="text-3xl font-bold text-gray-900">{value}</p>
+      <p className="mt-1 text-sm text-gray-600">{label}</p>
     </div>
   );
 }
