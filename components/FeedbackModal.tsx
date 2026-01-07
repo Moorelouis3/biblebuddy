@@ -27,6 +27,12 @@ export function FeedbackModal({
   // Survey questions (EXACT text as specified)
   const questions = [
     {
+      id: "discovery_source",
+      question: "How did you find out about Bible Buddy?",
+      type: "dropdown",
+      options: ["Instagram", "Threads", "Facebook", "YouTube", "Someone I know", "Other"],
+    },
+    {
       id: "happiness_rating",
       question: "How happy are you with Bible Buddy?",
       options: ["Very happy", "Somewhat happy", "Neutral", "Not happy"],
@@ -83,6 +89,7 @@ export function FeedbackModal({
         .upsert({
           user_id: userId,
           username: finalUsername,
+          discovery_source: answers.discovery_source || null,
           happiness_rating: answers.happiness_rating || null,
           usefulness_rating: answers.usefulness_rating || null,
           usage_frequency: answers.usage_frequency || null,
@@ -251,6 +258,21 @@ export function FeedbackModal({
                         rows={4}
                         placeholder={q.optional ? "Your answer (optional)..." : "Your answer..."}
                       />
+                    ) : q.type === "dropdown" ? (
+                      <select
+                        value={answers[q.id] || ""}
+                        onChange={(e) =>
+                          setAnswers({ ...answers, [q.id]: e.target.value })
+                        }
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <option value="">Select an option...</option>
+                        {q.options?.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
                     ) : (
                       <div className="space-y-2">
                         {q.options?.map((option) => (

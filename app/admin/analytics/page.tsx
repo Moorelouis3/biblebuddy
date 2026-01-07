@@ -48,8 +48,16 @@ export default function AnalyticsPage() {
   >([]);
   const [loadingActionLog, setLoadingActionLog] = useState(true);
 
+  // Feedback Inbox
+  const [feedbackInbox, setFeedbackInbox] = useState<
+    Array<{ id: string; username: string; created_at: string; date: string; time: string }>
+  >([]);
+  const [loadingInbox, setLoadingInbox] = useState(true);
+  const [selectedFeedback, setSelectedFeedback] = useState<any | null>(null);
+
   useEffect(() => {
     loadActiveUsers();
+    loadFeedbackInbox();
   }, []);
 
   useEffect(() => {
@@ -531,6 +539,65 @@ export default function AnalyticsPage() {
     return `${hours}:${minutesStr} ${ampm}`;
   }
 
+  // Load feedback inbox from user_feedback table
+  async function loadFeedbackInbox() {
+    setLoadingInbox(true);
+    try {
+      const { data: feedbackData, error } = await supabase
+        .from("user_feedback")
+        .select("id, username, created_at, discovery_source, happiness_rating, usefulness_rating, usage_frequency, recommendation_likelihood, improvement_feedback, review_text")
+        .order("created_at", { ascending: false })
+        .limit(100); // Limit to 100 most recent feedback items
+
+      if (error) {
+        console.error("[FEEDBACK_INBOX] Error fetching feedback:", error);
+        setFeedbackInbox([]);
+        setLoadingInbox(false);
+        return;
+      }
+
+      if (!feedbackData || feedbackData.length === 0) {
+        setFeedbackInbox([]);
+        setLoadingInbox(false);
+        return;
+      }
+
+      // Format feedback items for inbox display
+      const inboxItems = feedbackData.map((feedback) => {
+        const feedbackDate = new Date(feedback.created_at);
+        const formattedDate = formatAdminActionDate(feedbackDate);
+        const formattedTime = formatAdminActionTime(feedbackDate);
+        const username = feedback.username || "Unknown User";
+
+        return {
+          id: feedback.id,
+          username,
+          created_at: feedback.created_at,
+          date: formattedDate,
+          time: formattedTime,
+          fullData: feedback, // Store full data for modal
+        };
+      });
+
+      setFeedbackInbox(inboxItems);
+      setLoadingInbox(false);
+    } catch (err) {
+      console.error("[FEEDBACK_INBOX] Error loading feedback inbox:", err);
+      setFeedbackInbox([]);
+      setLoadingInbox(false);
+    }
+  }
+
+  // Open feedback detail modal
+  function openFeedbackDetail(feedback: any) {
+    setSelectedFeedback(feedback.fullData);
+  }
+
+  // Close feedback detail modal
+  function closeFeedbackDetail() {
+    setSelectedFeedback(null);
+  }
+
   // Format action type name for display
   function formatActionTypeName(actionType: string): string {
     const nameMap: Record<string, string> = {
@@ -732,6 +799,121 @@ export default function AnalyticsPage() {
           </div>
         )}
       </div>
+
+      {/* FEEDBACK INBOX SECTION */}
+      <div className="mt-12 mb-6">
+        <h2 className="text-2xl font-bold mb-4">Inbox</h2>
+        
+        {loadingInbox ? (
+          <div className="bg-white p-4 rounded-xl shadow">
+            <p className="text-gray-500 text-sm">Loading feedback...</p>
+          </div>
+        ) : feedbackInbox.length === 0 ? (
+          <div className="bg-white p-4 rounded-xl shadow">
+            <p className="text-gray-500 text-sm">No feedback yet.</p>
+          </div>
+        ) : (
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
+            <div className={`max-h-96 overflow-y-auto ${feedbackInbox.length > 10 ? 'p-4' : 'p-4'}`}>
+              {feedbackInbox.map((item) => (
+                <div
+                  key={item.id}
+                  className="mb-2 p-3 rounded bg-green-50 border-l-4 border-green-500 cursor-pointer hover:bg-green-100 transition-colors"
+                  onClick={() => openFeedbackDetail(item)}
+                >
+                  <p className="text-sm text-gray-900">
+                    On {item.date} at {item.time}, {item.username} completed the feedback survey.
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* FEEDBACK DETAIL MODAL */}
+      {selectedFeedback && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold">Feedback Details</h2>
+                <button
+                  onClick={closeFeedbackDetail}
+                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Username</label>
+                  <p className="text-gray-900">{selectedFeedback.username || "Unknown User"}</p>
+                </div>
+
+                {selectedFeedback.discovery_source && (
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">How did you find out about Bible Buddy?</label>
+                    <p className="text-gray-900">{selectedFeedback.discovery_source}</p>
+                  </div>
+                )}
+
+                {selectedFeedback.happiness_rating && (
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">How happy are you with Bible Buddy?</label>
+                    <p className="text-gray-900">{selectedFeedback.happiness_rating}</p>
+                  </div>
+                )}
+
+                {selectedFeedback.usefulness_rating && (
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">How useful do you find Bible Buddy for understanding the Bible?</label>
+                    <p className="text-gray-900">{selectedFeedback.usefulness_rating}</p>
+                  </div>
+                )}
+
+                {selectedFeedback.usage_frequency && (
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">How often would you use Bible Buddy?</label>
+                    <p className="text-gray-900">{selectedFeedback.usage_frequency}</p>
+                  </div>
+                )}
+
+                {selectedFeedback.recommendation_likelihood && (
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">How likely are you to recommend Bible Buddy to someone else?</label>
+                    <p className="text-gray-900">{selectedFeedback.recommendation_likelihood}</p>
+                  </div>
+                )}
+
+                {selectedFeedback.improvement_feedback && (
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">If you could change, remove, or add anything to Bible Buddy, what would it be?</label>
+                    <p className="text-gray-900 whitespace-pre-wrap">{selectedFeedback.improvement_feedback}</p>
+                  </div>
+                )}
+
+                {selectedFeedback.review_text && (
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">Review</label>
+                    <p className="text-gray-900 whitespace-pre-wrap">{selectedFeedback.review_text}</p>
+                  </div>
+                )}
+
+                <div className="pt-4 border-t">
+                  <button
+                    onClick={closeFeedbackDetail}
+                    className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <p className="text-xs text-gray-500 mt-6">
         Admin view only (moorelouis3@gmail.com)
