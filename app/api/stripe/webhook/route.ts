@@ -355,7 +355,10 @@ export async function POST(req: NextRequest) {
       }
     } else if (eventType === "invoice.payment_failed") {
       const invoice = event.data.object as Stripe.Invoice;
-      const subscriptionId = typeof invoice.subscription === "string" ? invoice.subscription : null;
+      const subscriptionId =
+        "subscription" in invoice && typeof invoice.subscription === "string"
+          ? invoice.subscription
+          : null;
       console.log(`[WEBHOOK] 📦 invoice.payment_failed:`, {
         event_id: event.id,
         invoice_id: invoice.id,
