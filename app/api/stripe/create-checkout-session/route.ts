@@ -145,7 +145,8 @@ export async function POST(req: NextRequest) {
     console.log("[STRIPE_CHECKOUT] - customer_email:", user.email);
     console.log("[STRIPE_CHECKOUT] - success_url:", `${process.env.NEXT_PUBLIC_APP_URL}/upgrade/success?session_id={CHECKOUT_SESSION_ID}`);
     console.log("[STRIPE_CHECKOUT] - cancel_url:", `${process.env.NEXT_PUBLIC_APP_URL}/upgrade`);
-    console.log("[STRIPE_CHECKOUT] - metadata:", { user_id: user.id, plan: "pro" });
+    console.log("[STRIPE_CHECKOUT] - metadata.user_id:", user.id);
+    console.log("[STRIPE_CHECKOUT] - subscription_data.metadata.user_id:", user.id);
 
     let session;
     try {
@@ -163,6 +164,12 @@ export async function POST(req: NextRequest) {
         metadata: {
           user_id: user.id,
           plan: "pro",
+        },
+        subscription_data: {
+          metadata: {
+            user_id: user.id,
+            plan: "pro",
+          },
         },
       });
 

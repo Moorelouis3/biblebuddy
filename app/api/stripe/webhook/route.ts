@@ -256,24 +256,30 @@ export async function POST(req: NextRequest) {
     const eventType = event.type as string;
 
     if (eventType === "checkout.session.completed") {
-        const session = event.data.object as Stripe.Checkout.Session;
-        console.log(`[WEBHOOK] 📦 checkout.session.completed:`, {
-          event_id: event.id,
-          session_id: session.id,
-          mode: session.mode,
-          customer_email: session.customer_email,
-          metadata: session.metadata,
-        });
+      const session = event.data.object as Stripe.Checkout.Session;
+      console.log(`[WEBHOOK] 📦 checkout.session.completed:`, {
+        event_id: event.id,
+        session_id: session.id,
+        mode: session.mode,
+        customer_email: session.customer_email,
+        metadata: session.metadata,
+      });
 
-      // Extract user_id from metadata
+      // Extract user_id from metadata (defensive check)
       userId = session.metadata?.user_id || null;
 
       if (!userId) {
         console.error(`[WEBHOOK] ❌ No user_id found in checkout session metadata for event ${event.id}`);
-      } else if (session.mode === "subscription") {
-        // Only upgrade if this was a subscription checkout
+        // Return 200 OK to prevent Stripe retries, but don't update membership
+        return NextResponse.json({ received: true }, { status: 200 });
+      }
+
+      // Only upgrade if this was a subscription checkout
+      if (session.mode === "subscription") {
         membershipStatus = "pro";
         eventHandled = true;
+      } else {
+        console.log(`[WEBHOOK] ℹ️ Checkout session ${session.id} is not a subscription, skipping membership update`);
       }
     } else if (eventType === "customer.subscription.created") {
       const subscription = event.data.object as Stripe.Subscription;
@@ -323,18 +329,20 @@ export async function POST(req: NextRequest) {
         metadata: subscription.metadata,
       });
 
-      userId = await extractUserIdFromSubscription(subscription, stripe);
+      // Extract user_id from subscription metadata (defensive check)
+      userId = subscription.metadata?.user_id || null;
 
       if (!userId) {
-        console.error(`[WEBHOOK] ❌ No user_id found for subscription.deleted event ${event.id}`);
-      } else {
-        // Always downgrade to free when subscription is deleted
-        membershipStatus = "free";
-        eventHandled = true;
+        console.error(`[WEBHOOK] ❌ No user_id found in subscription.metadata for subscription.deleted event ${event.id}`);
+        return NextResponse.json({ received: true }, { status: 200 });
       }
-    } else if (eventType === "invoice.payment.paid") {
+
+      // Always downgrade to free when subscription is deleted
+      membershipStatus = "free";
+      eventHandled = true;
+    } else if (eventType === "invoice.payment_succeeded") {
       const invoice = event.data.object as Stripe.Invoice;
-      console.log(`[WEBHOOK] 📦 invoice.payment.paid:`, {
+      console.log(`[WEBHOOK] 📦 invoice.payment_succeeded:`, {
         event_id: event.id,
         invoice_id: invoice.id,
         customer_id: invoice.customer,
@@ -345,13 +353,35 @@ export async function POST(req: NextRequest) {
         metadata: invoice.metadata,
       });
 
-      // Extract user_id from invoice (via subscription or customer metadata)
-      userId = await extractUserIdFromInvoice(invoice, stripe);
+      // Extract user_id from subscription metadata (defensive check)
+      let subscriptionId: string | null = null;
+      if (
+        "subscription" in invoice &&
+        typeof invoice.subscription === "string"
+      ) {
+        subscriptionId = invoice.subscription;
+      }
 
-      if (userId) {
-        // Payment successful - ensure Pro status
+      if (!subscriptionId) {
+        console.error(`[WEBHOOK] ❌ No subscription found in invoice ${invoice.id} for event ${event.id}`);
+        return NextResponse.json({ received: true }, { status: 200 });
+      }
+
+      try {
+        const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+        userId = subscription.metadata?.user_id || null;
+
+        if (!userId) {
+          console.error(`[WEBHOOK] ❌ No user_id found in subscription.metadata for subscription ${subscriptionId}`);
+          return NextResponse.json({ received: true }, { status: 200 });
+        }
+
+        // Payment succeeded - ensure Pro status
         membershipStatus = "pro";
         eventHandled = true;
+      } catch (err) {
+        console.error(`[WEBHOOK] ❌ Error retrieving subscription ${subscriptionId}:`, err);
+        return NextResponse.json({ received: true }, { status: 200 });
       }
     } else if (eventType === "invoice.payment_failed") {
       const invoice = event.data.object as Stripe.Invoice;
@@ -367,13 +397,27 @@ export async function POST(req: NextRequest) {
         metadata: invoice.metadata,
       });
 
-      // Extract user_id from invoice (via subscription or customer metadata)
-      userId = await extractUserIdFromInvoice(invoice, stripe);
+      // Extract user_id from subscription metadata (defensive check)
+      if (!subscriptionId) {
+        console.error(`[WEBHOOK] ❌ No subscription found in invoice ${invoice.id} for event ${event.id}`);
+        return NextResponse.json({ received: true }, { status: 200 });
+      }
 
-      if (userId) {
+      try {
+        const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+        userId = subscription.metadata?.user_id || null;
+
+        if (!userId) {
+          console.error(`[WEBHOOK] ❌ No user_id found in subscription.metadata for subscription ${subscriptionId}`);
+          return NextResponse.json({ received: true }, { status: 200 });
+        }
+
         // Payment failed - downgrade to free
         membershipStatus = "free";
         eventHandled = true;
+      } catch (err) {
+        console.error(`[WEBHOOK] ❌ Error retrieving subscription ${subscriptionId}:`, err);
+        return NextResponse.json({ received: true }, { status: 200 });
       }
     } else {
       // Log unhandled events but return 200 OK
