@@ -338,7 +338,10 @@ export async function POST(req: NextRequest) {
         event_id: event.id,
         invoice_id: invoice.id,
         customer_id: invoice.customer,
-        subscription_id: invoice.subscription,
+        subscription_id:
+          "subscription" in invoice && typeof invoice.subscription === "string"
+            ? invoice.subscription
+            : null,
         metadata: invoice.metadata,
       });
 
