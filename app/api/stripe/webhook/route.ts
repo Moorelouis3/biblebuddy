@@ -32,39 +32,112 @@ function getSupabaseAdminClient() {
 }
 
 // Helper function to update membership status
+// Only updates existing rows, does not create duplicates
 async function updateMembershipStatus(
   userId: string,
   status: "free" | "pro"
 ): Promise<{ success: boolean; error?: string }> {
   try {
-    console.log(`[WEBHOOK] Updating membership_status for user ${userId} to ${status}`);
+    console.log(`[WEBHOOK] 🔄 Updating membership_status for user ${userId}: → ${status}`);
 
     const supabase = getSupabaseAdminClient();
 
-    // Upsert profile_stats to update membership_status
+    // First check if the user exists in profile_stats
+    const { data: existingUser, error: checkError } = await supabase
+      .from("profile_stats")
+      .select("user_id, membership_status")
+      .eq("user_id", userId)
+      .maybeSingle();
+
+    if (checkError) {
+      console.error(`[WEBHOOK] ❌ Failed to check existing user:`, checkError);
+      return { success: false, error: checkError.message };
+    }
+
+    // If user doesn't exist, log and skip (don't create new rows)
+    if (!existingUser) {
+      console.warn(`[WEBHOOK] ⚠️ User ${userId} does not exist in profile_stats. Skipping update.`);
+      return { success: false, error: "User does not exist in profile_stats" };
+    }
+
+    // Only update if status is different (avoid unnecessary updates)
+    if (existingUser.membership_status === status) {
+      console.log(`[WEBHOOK] ℹ️ User ${userId} already has membership_status = ${status}. No update needed.`);
+      return { success: true };
+    }
+
+    // Update only existing row
     const { error } = await supabase
       .from("profile_stats")
-      .upsert(
-        {
-          user_id: userId,
-          membership_status: status,
-        },
-        {
-          onConflict: "user_id",
-        }
-      );
+      .update({ membership_status: status })
+      .eq("user_id", userId);
 
     if (error) {
       console.error(`[WEBHOOK] ❌ Failed to update membership_status:`, error);
       return { success: false, error: error.message };
     }
 
-    console.log(`[WEBHOOK] ✅ Successfully updated membership_status to ${status} for user ${userId}`);
+    console.log(
+      `[WEBHOOK] ✅ Successfully updated membership_status: ${existingUser.membership_status} → ${status} for user ${userId}`
+    );
     return { success: true };
   } catch (err: any) {
     console.error(`[WEBHOOK] ❌ Error updating membership_status:`, err);
     return { success: false, error: err.message };
   }
+}
+
+// Helper function to extract user_id from subscription metadata or customer metadata
+async function extractUserIdFromSubscription(
+  subscription: Stripe.Subscription,
+  stripe: Stripe
+): Promise<string | null> {
+  // Try subscription metadata first
+  if (subscription.metadata?.user_id) {
+    return subscription.metadata.user_id;
+  }
+
+  // Fallback to customer metadata
+  if (typeof subscription.customer === "string") {
+    try {
+      const customer = await stripe.customers.retrieve(subscription.customer);
+      if (!customer.deleted && "metadata" in customer && customer.metadata?.user_id) {
+        return customer.metadata.user_id;
+      }
+    } catch (err) {
+      console.error("[WEBHOOK] ❌ Error retrieving customer:", err);
+    }
+  }
+
+  return null;
+}
+
+// Map Stripe subscription status to membership_status
+function mapSubscriptionStatusToMembership(
+  stripeStatus: string
+): "free" | "pro" | null {
+  // Active subscriptions → Pro
+  if (stripeStatus === "active" || stripeStatus === "trialing") {
+    return "pro";
+  }
+
+  // Past due → Keep as Pro (grace period)
+  if (stripeStatus === "past_due") {
+    return "pro";
+  }
+
+  // Cancelled/Unpaid/Expired/Paused → Free
+  if (
+    stripeStatus === "canceled" ||
+    stripeStatus === "unpaid" ||
+    stripeStatus === "incomplete_expired" ||
+    stripeStatus === "paused"
+  ) {
+    return "free";
+  }
+
+  // Unknown status → null (don't update)
+  return null;
 }
 
 export async function POST(req: NextRequest) {
@@ -121,141 +194,64 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Handle the event
-    switch (event.type) {
-      case "checkout.session.completed": {
-        const session = event.data.object as Stripe.Checkout.Session;
-        console.log(`[WEBHOOK] 📦 checkout.session.completed:`, {
-          event_id: event.id,
-          session_id: session.id,
-          customer_email: session.customer_email,
-          metadata: session.metadata,
-        });
-
-        // Extract user_id from metadata
-        const userId = session.metadata?.user_id;
-        if (!userId) {
-          console.error("[WEBHOOK] ❌ No user_id found in checkout session metadata");
-          break;
-        }
-
-        // Only upgrade if this was a subscription checkout
-        if (session.mode === "subscription") {
-          await updateMembershipStatus(userId, "pro");
-        }
-        break;
-      }
-
-      case "customer.subscription.created": {
-        const subscription = event.data.object as Stripe.Subscription;
-        console.log(`[WEBHOOK] 📦 customer.subscription.created:`, {
-          event_id: event.id,
-          subscription_id: subscription.id,
-          customer_id: subscription.customer,
-          status: subscription.status,
-          metadata: subscription.metadata,
-        });
-
-        // Extract user_id from metadata (set during checkout)
-        const userId = subscription.metadata?.user_id;
-        if (!userId) {
-          console.error("[WEBHOOK] ⚠️ No user_id found in subscription metadata");
-          // Note: checkout.session.completed should have already upgraded the user
-          // This event is logged but user is likely already upgraded
-          break;
-        }
-
-        // Only upgrade if subscription is active or trialing
-        if (subscription.status === "active" || subscription.status === "trialing") {
-          await updateMembershipStatus(userId, "pro");
-        }
-        break;
-      }
-
-      case "customer.subscription.updated": {
-        const subscription = event.data.object as Stripe.Subscription;
-        console.log(`[WEBHOOK] 📦 customer.subscription.updated:`, {
-          event_id: event.id,
-          subscription_id: subscription.id,
-          customer_id: subscription.customer,
-          status: subscription.status,
-          metadata: subscription.metadata,
-        });
-
-        // Extract user_id from metadata
-        let userId = subscription.metadata?.user_id;
-
-        // If not in subscription metadata, try to get from customer metadata
-        if (!userId && typeof subscription.customer === "string") {
-          try {
-            const customer = await stripe.customers.retrieve(subscription.customer);
-            if (!customer.deleted && "metadata" in customer) {
-              userId = customer.metadata?.user_id;
-            }
-          } catch (err) {
-            console.error("[WEBHOOK] ❌ Error retrieving customer:", err);
-          }
-        }
-
-        if (!userId) {
-          console.error("[WEBHOOK] ⚠️ No user_id found in subscription or customer metadata");
-          break;
-        }
-
-        // Update membership based on subscription status
-        if (subscription.status === "active" || subscription.status === "trialing") {
-          await updateMembershipStatus(userId, "pro");
-        } else if (
-          subscription.status === "canceled" ||
-          subscription.status === "unpaid" ||
-          subscription.status === "past_due"
-        ) {
-          await updateMembershipStatus(userId, "free");
-        }
-        break;
-      }
-
-      case "customer.subscription.deleted": {
-        const subscription = event.data.object as Stripe.Subscription;
-        console.log(`[WEBHOOK] 📦 customer.subscription.deleted:`, {
-          event_id: event.id,
-          subscription_id: subscription.id,
-          customer_id: subscription.customer,
-          status: subscription.status,
-          metadata: subscription.metadata,
-        });
-
-        // Extract user_id from metadata
-        let userId = subscription.metadata?.user_id;
-
-        // If not in subscription metadata, try to get from customer metadata
-        if (!userId && typeof subscription.customer === "string") {
-          try {
-            const customer = await stripe.customers.retrieve(subscription.customer);
-            if (!customer.deleted && "metadata" in customer) {
-              userId = customer.metadata?.user_id;
-            }
-          } catch (err) {
-            console.error("[WEBHOOK] ❌ Error retrieving customer:", err);
-          }
-        }
-
-        if (!userId) {
-          console.error("[WEBHOOK] ⚠️ No user_id found in subscription or customer metadata");
-          break;
-        }
-
-        // Downgrade to free
-        await updateMembershipStatus(userId, "free");
-        break;
-      }
-
-      default:
-        // Log unhandled event types for debugging
-        console.log(`[WEBHOOK] ⚠️ Unhandled event type: ${event.type}`, {
-          event_id: event.id,
-        });
+    // Handle ONLY subscription events (ignore all others)
+    if (
+      event.type !== "customer.subscription.created" &&
+      event.type !== "customer.subscription.updated" &&
+      event.type !== "customer.subscription.deleted"
+    ) {
+      // Log ignored events for debugging
+      console.log(`[WEBHOOK] ℹ️ Ignoring event type: ${event.type} (${event.id})`);
+      return NextResponse.json({ received: true }, { status: 200 });
     }
+
+    // Handle subscription events
+    const subscription = event.data.object as Stripe.Subscription;
+    console.log(`[WEBHOOK] 📦 ${event.type}:`, {
+      event_id: event.id,
+      subscription_id: subscription.id,
+      customer_id: subscription.customer,
+      status: subscription.status,
+      metadata: subscription.metadata,
+    });
+
+    // Extract user_id from subscription or customer metadata
+    const userId = await extractUserIdFromSubscription(subscription, stripe);
+
+    if (!userId) {
+      console.error(
+        `[WEBHOOK] ❌ No user_id found in subscription or customer metadata for event ${event.type} (${event.id})`
+      );
+      // Return 200 OK even if user_id not found (to prevent Stripe retries)
+      return NextResponse.json({ received: true }, { status: 200 });
+    }
+
+    // Map Stripe subscription status to membership_status
+    const membershipStatus = mapSubscriptionStatusToMembership(subscription.status);
+
+    if (membershipStatus === null) {
+      console.warn(
+        `[WEBHOOK] ⚠️ Unknown subscription status "${subscription.status}" for subscription ${subscription.id}. No membership update.`
+      );
+      return NextResponse.json({ received: true }, { status: 200 });
+    }
+
+    // Update membership status
+    console.log(
+      `[WEBHOOK] 📊 Status mapping: subscription.status="${subscription.status}" → membership_status="${membershipStatus}"`
+    );
+    const result = await updateMembershipStatus(userId, membershipStatus);
+
+    if (!result.success) {
+      console.error(`[WEBHOOK] ❌ Failed to update membership_status:`, result.error);
+      // Still return 200 OK to prevent Stripe retries for permanent errors
+      // (user doesn't exist, etc.)
+      return NextResponse.json({ received: true }, { status: 200 });
+    }
+
+    console.log(
+      `[WEBHOOK] ✅ Successfully processed ${event.type}: user ${userId} → ${membershipStatus}`
+    );
 
     // Return 200 OK to acknowledge receipt
     return NextResponse.json({ received: true }, { status: 200 });
