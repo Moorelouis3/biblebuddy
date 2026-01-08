@@ -357,13 +357,16 @@ export function ChatLouis() {
     }
   }
 
-  // Dragging handlers
-  function handleMouseDown(e: React.MouseEvent) {
-    if (e.button !== 0) return; // Only left mouse button
+  // Dragging handlers (mouse + touch via Pointer Events)
+  function handlePointerDown(e: React.PointerEvent<HTMLElement>) {
+    // Only left button for mouse; allow all touch pointers
+    if (e.pointerType === "mouse" && e.button !== 0) return;
     e.preventDefault();
     setIsDragging(true);
+
     const target = e.currentTarget as HTMLElement;
     const rect = target.getBoundingClientRect();
+
     setDragOffset({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
@@ -373,7 +376,7 @@ export function ChatLouis() {
   useEffect(() => {
     if (!isDragging) return;
 
-    function handleMouseMove(e: MouseEvent) {
+    function handlePointerMove(e: PointerEvent) {
       e.preventDefault();
       setPosition({
         x: e.clientX - dragOffset.x,
@@ -381,16 +384,18 @@ export function ChatLouis() {
       });
     }
 
-    function handleMouseUp() {
+    function handlePointerUp() {
       setIsDragging(false);
     }
 
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", handlePointerUp);
+    window.addEventListener("pointercancel", handlePointerUp);
 
     return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerup", handlePointerUp);
+      window.removeEventListener("pointercancel", handlePointerUp);
     };
   }, [isDragging, dragOffset]);
 
@@ -405,7 +410,7 @@ export function ChatLouis() {
               setIsOpen(true);
             }
           }}
-          onMouseDown={handleMouseDown}
+          onPointerDown={handlePointerDown}
           style={{
             position: "fixed",
             bottom: position.y === 0 ? "1rem" : undefined,
@@ -413,6 +418,7 @@ export function ChatLouis() {
             left: position.x !== 0 ? `${position.x}px` : undefined,
             top: position.y !== 0 ? `${position.y}px` : undefined,
             cursor: isDragging ? "grabbing" : "grab",
+            touchAction: "none",
           }}
           className="z-40 rounded-full shadow-xl flex items-center justify-center"
           aria-label="Chat with Louis"
@@ -427,14 +433,6 @@ export function ChatLouis() {
       {isOpen && (
         <div
           ref={panelRef}
-          onMouseDown={(e) => {
-            // Only start dragging if clicking on header area (not on interactive elements)
-            const target = e.target as HTMLElement;
-            if (target.closest('button') || target.closest('textarea') || target.closest('input')) {
-              return;
-            }
-            handleMouseDown(e);
-          }}
           style={{
             position: "fixed",
             bottom: position.y === 0 ? "6rem" : undefined,
@@ -448,12 +446,13 @@ export function ChatLouis() {
           {/* Header */}
           <div 
             className="px-4 py-2.5 border-b border-gray-200 flex items-center justify-between bg-gray-50 rounded-t-2xl cursor-grab active:cursor-grabbing"
-            onMouseDown={(e) => {
+            style={{ touchAction: "none" }}
+            onPointerDown={(e) => {
               const target = e.target as HTMLElement;
-              if (target.closest('button')) {
+              if (target.closest("button")) {
                 return; // Don't drag if clicking close button
               }
-              handleMouseDown(e);
+              handlePointerDown(e);
             }}
           >
             <div className="flex items-center gap-2">
@@ -463,7 +462,7 @@ export function ChatLouis() {
             <button
               onClick={() => setIsOpen(false)}
               className="text-gray-500 hover:text-gray-700 text-base leading-none"
-              onMouseDown={(e) => e.stopPropagation()}
+              onPointerDown={(e) => e.stopPropagation()}
             >
               ✕
             </button>
@@ -472,7 +471,6 @@ export function ChatLouis() {
           {/* Messages area */}
           <div 
             className="flex-1 overflow-y-auto px-4 py-3 space-y-2.5 bg-white"
-            onMouseDown={(e) => e.stopPropagation()}
           >
             {messages.length === 0 && (
               <div className="flex items-center justify-center h-full">
@@ -509,7 +507,6 @@ export function ChatLouis() {
           {/* Input area */}
           <div 
             className="border-t border-gray-200 px-3 py-2.5 bg-gray-50 rounded-b-2xl"
-            onMouseDown={(e) => e.stopPropagation()}
           >
             <div className="flex gap-2 items-end">
               <div className="flex-1 flex items-end gap-2">
