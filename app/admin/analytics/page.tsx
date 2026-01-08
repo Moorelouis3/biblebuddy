@@ -448,27 +448,94 @@ export default function AnalyticsPage() {
         return;
       }
 
-      if (!masterActions || masterActions.length === 0) {
-        setActionLog([]);
-        setLoadingActionLog(false);
-        return;
-      }
+      // Also query user_signups for old signups that don't have master_actions entries
+      // Only if no action type filter OR filter is "user_signup"
+      let oldSignups: Array<{ user_id: string; email: string; created_at: string }> = [];
+      if (!actionTypeFilter || actionTypeFilter === "user_signup") {
+        try {
+          // Get all user_ids that already have user_signup in master_actions
+          const existingSignupUserIds = new Set<string>();
+          if (masterActions) {
+            for (const action of masterActions) {
+              if (action.action_type === "user_signup" && action.user_id) {
+                existingSignupUserIds.add(action.user_id);
+              }
+            }
+          }
 
-      // Collect unique user IDs for batch counting
-      const uniqueUserIds = new Set<string>();
-      for (const action of masterActions) {
-        if (action.user_id) {
-          uniqueUserIds.add(action.user_id);
+          // Query user_signups with time filter
+          let signupsQuery = supabase
+            .from("user_signups")
+            .select("user_id, email, created_at")
+            .order("created_at", { ascending: false });
+
+          // Apply time filter
+          if (fromDate) {
+            signupsQuery = signupsQuery.gte("created_at", fromDate);
+          }
+
+          const { data: signupsData, error: signupsError } = await signupsQuery;
+
+          if (!signupsError && signupsData) {
+            // Filter out signups that already have master_actions entries
+            oldSignups = signupsData.filter(
+              (signup) => !existingSignupUserIds.has(signup.user_id)
+            );
+          }
+        } catch (err) {
+          console.error("[ADMIN_ACTION_LOG] Error fetching old signups:", err);
+          // Continue without old signups if there's an error
         }
       }
 
-      // Batch load user counts
-      const { loginDays, totalActions } = await loadUserCounts(Array.from(uniqueUserIds));
+      // Collect unique user IDs for batch counting (from both master_actions and old signups)
+      const uniqueUserIds = new Set<string>();
+      if (masterActions && masterActions.length > 0) {
+        for (const action of masterActions) {
+          if (action.user_id) {
+            uniqueUserIds.add(action.user_id);
+          }
+        }
+      }
+      for (const signup of oldSignups) {
+        if (signup.user_id) {
+          uniqueUserIds.add(signup.user_id);
+        }
+      }
+
+      // Batch load user counts (only if we have user IDs)
+      const { loginDays, totalActions } = uniqueUserIds.size > 0 
+        ? await loadUserCounts(Array.from(uniqueUserIds))
+        : { loginDays: new Map(), totalActions: new Map() };
+
+      // Get usernames for old signups from profile_stats
+      const signupUserIds = oldSignups.map(s => s.user_id);
+      const signupUsernames = new Map<string, string>();
+      if (signupUserIds.length > 0) {
+        try {
+          const { data: profileStats } = await supabase
+            .from("profile_stats")
+            .select("user_id, username")
+            .in("user_id", signupUserIds);
+
+          if (profileStats) {
+            for (const stat of profileStats) {
+              if (stat.user_id && stat.username) {
+                signupUsernames.set(stat.user_id, stat.username);
+              }
+            }
+          }
+        } catch (err) {
+          console.error("[ADMIN_ACTION_LOG] Error fetching usernames for old signups:", err);
+        }
+      }
 
       // Track unique login dates per user (one per day) for display deduplication
       const userLoginDates = new Map<string, Set<string>>();
 
-      for (const action of masterActions) {
+      // Process master_actions if they exist
+      if (masterActions && masterActions.length > 0) {
+        for (const action of masterActions) {
         const actionDate = new Date(action.created_at);
         const dateKey = actionDate.toISOString().split('T')[0]; // YYYY-MM-DD
         const formattedDate = formatAdminActionDate(actionDate);
@@ -571,6 +638,33 @@ export default function AnalyticsPage() {
           });
         }
         // Ignore all other action types
+        }
+      }
+
+      // Add old signups from user_signups table
+      for (const signup of oldSignups) {
+        const signupDate = new Date(signup.created_at);
+        const formattedDate = formatAdminActionDate(signupDate);
+        const formattedTime = formatAdminActionTime(signupDate);
+        
+        // Get username from profile_stats or use email as fallback
+        const username = signupUsernames.get(signup.user_id) || 
+                        signup.email?.split("@")[0] || 
+                        "New User";
+        
+        // Get contextual counter
+        let counterText = "";
+        if (signup.user_id) {
+          const totalActionsCount = totalActions.get(signup.user_id) || 0;
+          counterText = ` (${totalActionsCount})`;
+        }
+
+        actions.push({
+          date: formattedDate,
+          text: `On ${formattedDate} at ${formattedTime}, ${username} just signed up.${counterText}`,
+          sortKey: signupDate.getTime(),
+          actionType: "user_signup",
+        });
       }
 
       // Actions are already sorted by created_at DESC from the query, but sort again to be safe
