@@ -260,23 +260,17 @@ export async function POST(req: NextRequest) {
           metadata: session.metadata,
         });
 
-        // Extract user_id from metadata
-        userId = session.metadata?.user_id || null;
+      // Extract user_id from metadata
+      userId = session.metadata?.user_id || null;
 
-        if (!userId) {
-          console.error(`[WEBHOOK] ❌ No user_id found in checkout session metadata for event ${event.id}`);
-          break;
-        }
-
+      if (!userId) {
+        console.error(`[WEBHOOK] ❌ No user_id found in checkout session metadata for event ${event.id}`);
+      } else if (session.mode === "subscription") {
         // Only upgrade if this was a subscription checkout
-        if (session.mode === "subscription") {
-          membershipStatus = "pro";
-          eventHandled = true;
-        }
-        break;
+        membershipStatus = "pro";
+        eventHandled = true;
       }
-
-      case "customer.subscription.created": {
+    } else if (eventType === "customer.subscription.created") {
       const subscription = event.data.object as Stripe.Subscription;
       console.log(`[WEBHOOK] 📦 customer.subscription.created:`, {
         event_id: event.id,
@@ -353,11 +347,12 @@ export async function POST(req: NextRequest) {
       }
     } else if (eventType === "invoice.payment_failed") {
       const invoice = event.data.object as Stripe.Invoice;
+      const subscriptionId = typeof invoice.subscription === "string" ? invoice.subscription : null;
       console.log(`[WEBHOOK] 📦 invoice.payment_failed:`, {
         event_id: event.id,
         invoice_id: invoice.id,
         customer_id: invoice.customer,
-        subscription_id: invoice.subscription,
+        subscription_id: subscriptionId,
         metadata: invoice.metadata,
       });
 
