@@ -22,6 +22,12 @@ export default function SettingsPage() {
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [resettingPlan, setResettingPlan] = useState(false);
 
+  // Promo code
+  const [promoCode, setPromoCode] = useState("");
+  const [applyingCode, setApplyingCode] = useState(false);
+  const [promoSuccess, setPromoSuccess] = useState(false);
+  const [promoError, setPromoError] = useState<string | null>(null);
+
   useEffect(() => {
     async function loadUser() {
       const { data: { user: currentUser } } = await supabase.auth.getUser();
@@ -118,6 +124,46 @@ export default function SettingsPage() {
       alert(`Error: ${error.message}`);
     } finally {
       setResettingPlan(false);
+    }
+  }
+
+  async function handleApplyPromoCode() {
+    if (!promoCode.trim()) {
+      setPromoError("Please enter a code");
+      return;
+    }
+
+    setApplyingCode(true);
+    setPromoError(null);
+    setPromoSuccess(false);
+
+    try {
+      const response = await fetch("/api/promo/apply-code", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ code: promoCode.trim() }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to apply code");
+      }
+
+      setPromoSuccess(true);
+      setPromoCode("");
+      
+      // Optionally refresh profile state after a short delay
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    } catch (error: any) {
+      console.error("Error applying promo code:", error);
+      setPromoError(error.message || "Failed to apply code. Please try again.");
+    } finally {
+      setApplyingCode(false);
     }
   }
 
@@ -250,6 +296,56 @@ export default function SettingsPage() {
                 </div>
               </>
             )}
+          </div>
+        </div>
+
+        {/* Promo Code Section */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
+          <h2 className="text-xl font-semibold mb-4">Unlock Pro with a Code</h2>
+          
+          <div className="space-y-4">
+            <p className="text-sm text-gray-600">
+              Have a promo or lifetime access code? Enter it below to unlock Pro.
+            </p>
+
+            {promoSuccess && (
+              <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
+                🎉 Pro unlocked! Welcome to BibleBuddy Pro.
+              </div>
+            )}
+
+            {promoError && (
+              <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                {promoError}
+              </div>
+            )}
+
+            <div className="flex gap-3">
+              <input
+                type="text"
+                value={promoCode}
+                onChange={(e) => {
+                  setPromoCode(e.target.value);
+                  setPromoError(null);
+                  setPromoSuccess(false);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !applyingCode) {
+                    handleApplyPromoCode();
+                  }
+                }}
+                placeholder="Enter access code"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                disabled={applyingCode}
+              />
+              <button
+                onClick={handleApplyPromoCode}
+                disabled={applyingCode || !promoCode.trim()}
+                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {applyingCode ? "Applying..." : "Apply Code"}
+              </button>
+            </div>
           </div>
         </div>
 
