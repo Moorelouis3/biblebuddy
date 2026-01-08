@@ -70,6 +70,13 @@ export function ChatLouis() {
   const animationFrameRef = useRef<number | null>(null);
   const [audioLevels, setAudioLevels] = useState<number[]>([]);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  
+  // Dragging state
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
 
   // Format voice text with paragraph breaks
   function formatVoiceText(text: string, prevText: string): string {
@@ -350,24 +357,105 @@ export function ChatLouis() {
     }
   }
 
+  // Dragging handlers
+  function handleMouseDown(e: React.MouseEvent) {
+    if (e.button !== 0) return; // Only left mouse button
+    e.preventDefault();
+    setIsDragging(true);
+    const target = e.currentTarget as HTMLElement;
+    const rect = target.getBoundingClientRect();
+    setDragOffset({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  }
+
+  useEffect(() => {
+    if (!isDragging) return;
+
+    function handleMouseMove(e: MouseEvent) {
+      e.preventDefault();
+      setPosition({
+        x: e.clientX - dragOffset.x,
+        y: e.clientY - dragOffset.y,
+      });
+    }
+
+    function handleMouseUp() {
+      setIsDragging(false);
+    }
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isDragging, dragOffset]);
+
   return (
     <>
       {/* Floating avatar button */}
-      <button
-        onClick={() => setIsOpen((v) => !v)}
-        className="fixed bottom-4 right-4 z-40 rounded-full shadow-xl flex items-center justify-center"
-        aria-label="Chat with Louis"
-      >
-        <div className="w-20 h-20 rounded-full bg-black/5 flex items-center justify-center">
-          <LouisAvatar mood="bible" size={64} />
-        </div>
-      </button>
+      {!isOpen && (
+        <button
+          ref={buttonRef}
+          onClick={(e) => {
+            if (!isDragging) {
+              setIsOpen(true);
+            }
+          }}
+          onMouseDown={handleMouseDown}
+          style={{
+            position: "fixed",
+            bottom: position.y === 0 ? "1rem" : undefined,
+            right: position.x === 0 ? "1rem" : undefined,
+            left: position.x !== 0 ? `${position.x}px` : undefined,
+            top: position.y !== 0 ? `${position.y}px` : undefined,
+            cursor: isDragging ? "grabbing" : "grab",
+          }}
+          className="z-40 rounded-full shadow-xl flex items-center justify-center"
+          aria-label="Chat with Louis"
+        >
+          <div className="w-20 h-20 rounded-full bg-black/5 flex items-center justify-center">
+            <LouisAvatar mood="bible" size={64} />
+          </div>
+        </button>
+      )}
 
       {/* Chat panel - Medium size */}
       {isOpen && (
-        <div className="fixed bottom-24 right-4 z-40 w-[360px] h-[500px] rounded-t-2xl bg-white border border-gray-200 shadow-2xl flex flex-col">
+        <div
+          ref={panelRef}
+          onMouseDown={(e) => {
+            // Only start dragging if clicking on header area (not on interactive elements)
+            const target = e.target as HTMLElement;
+            if (target.closest('button') || target.closest('textarea') || target.closest('input')) {
+              return;
+            }
+            handleMouseDown(e);
+          }}
+          style={{
+            position: "fixed",
+            bottom: position.y === 0 ? "6rem" : undefined,
+            right: position.x === 0 ? "1rem" : undefined,
+            left: position.x !== 0 ? `${position.x}px` : undefined,
+            top: position.y !== 0 ? `${position.y}px` : undefined,
+            cursor: isDragging ? "grabbing" : "default",
+          }}
+          className="z-40 w-[360px] h-[500px] rounded-t-2xl bg-white border border-gray-200 shadow-2xl flex flex-col"
+        >
           {/* Header */}
-          <div className="px-4 py-2.5 border-b border-gray-200 flex items-center justify-between bg-gray-50 rounded-t-2xl">
+          <div 
+            className="px-4 py-2.5 border-b border-gray-200 flex items-center justify-between bg-gray-50 rounded-t-2xl cursor-grab active:cursor-grabbing"
+            onMouseDown={(e) => {
+              const target = e.target as HTMLElement;
+              if (target.closest('button')) {
+                return; // Don't drag if clicking close button
+              }
+              handleMouseDown(e);
+            }}
+          >
             <div className="flex items-center gap-2">
               <LouisAvatar mood="bible" size={28} />
               <span className="text-sm font-semibold text-gray-900">Chat with Louis</span>
@@ -375,13 +463,17 @@ export function ChatLouis() {
             <button
               onClick={() => setIsOpen(false)}
               className="text-gray-500 hover:text-gray-700 text-base leading-none"
+              onMouseDown={(e) => e.stopPropagation()}
             >
               ✕
             </button>
           </div>
 
           {/* Messages area */}
-          <div className="flex-1 overflow-y-auto px-4 py-3 space-y-2.5 bg-white">
+          <div 
+            className="flex-1 overflow-y-auto px-4 py-3 space-y-2.5 bg-white"
+            onMouseDown={(e) => e.stopPropagation()}
+          >
             {messages.length === 0 && (
               <div className="flex items-center justify-center h-full">
                 <p className="text-xs text-gray-500 text-center">
@@ -415,7 +507,10 @@ export function ChatLouis() {
           </div>
 
           {/* Input area */}
-          <div className="border-t border-gray-200 px-3 py-2.5 bg-gray-50 rounded-b-2xl">
+          <div 
+            className="border-t border-gray-200 px-3 py-2.5 bg-gray-50 rounded-b-2xl"
+            onMouseDown={(e) => e.stopPropagation()}
+          >
             <div className="flex gap-2 items-end">
               <div className="flex-1 flex items-end gap-2">
                 <textarea

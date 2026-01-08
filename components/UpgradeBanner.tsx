@@ -51,9 +51,9 @@ export function UpgradeBanner() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 bg-blue-600 text-white shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-4">
         <p className="text-sm sm:text-base">
-          Free Member • Upgrade for unlimited Bible study
+          Free Member
         </p>
         <button
           onClick={() => router.push("/upgrade")}

@@ -9,7 +9,6 @@ import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
 import { recalculateTotalActions } from "../lib/recalculateTotalActions";
-import { FeedbackBanner } from "./FeedbackBanner";
 import { FeedbackModal } from "./FeedbackModal";
 import { ContactUsModal } from "./ContactUsModal";
 import { NewMessageAlert } from "./NewMessageAlert";
@@ -33,6 +32,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [username, setUsername] = useState<string>("");
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [bannerDismissed, setBannerDismissed] = useState(false);
+  const [feedbackChecked, setFeedbackChecked] = useState(false);
   
   // Contact Us modal state
   const [showContactUsModal, setShowContactUsModal] = useState(false);
@@ -206,6 +206,92 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     };
   }, [isProfileMenuOpen, isNavMenuOpen]);
 
+  // Check feedback eligibility and show modal directly (no banner)
+  useEffect(() => {
+    async function checkFeedbackEligibility() {
+      if (!userId || feedbackChecked || showFeedbackModal) {
+        return;
+      }
+
+      try {
+        // Check if user has 5+ total actions
+        const { data: profileStats, error: statsError } = await supabase
+          .from("profile_stats")
+          .select("total_actions")
+          .eq("user_id", userId)
+          .maybeSingle();
+
+        if (statsError) {
+          console.error("[FEEDBACK] Error checking profile stats:", statsError);
+          setFeedbackChecked(true);
+          return;
+        }
+
+        const totalActions = profileStats?.total_actions || 0;
+        
+        if (totalActions < 5) {
+          setFeedbackChecked(true);
+          return;
+        }
+
+        // Check if user has already submitted feedback
+        const { data: existingFeedback, error: feedbackError } = await supabase
+          .from("user_feedback")
+          .select("happiness_rating, usefulness_rating, usage_frequency, recommendation_likelihood, last_dismissed_at, permanently_dismissed")
+          .eq("user_id", userId)
+          .maybeSingle();
+
+        if (feedbackError && feedbackError.code !== 'PGRST116') {
+          console.error("[FEEDBACK] Error checking feedback:", feedbackError);
+          setFeedbackChecked(true);
+          return;
+        }
+
+        // Check if user has submitted feedback (has any rating filled)
+        const hasSubmitted = existingFeedback?.happiness_rating || 
+                            existingFeedback?.usefulness_rating || 
+                            existingFeedback?.usage_frequency || 
+                            existingFeedback?.recommendation_likelihood;
+        
+        if (hasSubmitted) {
+          // User has submitted feedback, never show again
+          setFeedbackChecked(true);
+          return;
+        }
+
+        // If user clicked "No" (permanently dismissed), never show again
+        if (existingFeedback?.permanently_dismissed) {
+          setFeedbackChecked(true);
+          return;
+        }
+
+        // If user clicked "Do later", check if 30 days have passed
+        if (existingFeedback?.last_dismissed_at && !existingFeedback?.permanently_dismissed) {
+          const dismissedDate = new Date(existingFeedback.last_dismissed_at);
+          const thirtyDaysAgo = new Date();
+          thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+          
+          if (dismissedDate > thirtyDaysAgo) {
+            // Still within 30 day window, don't show
+            setFeedbackChecked(true);
+            return;
+          }
+        }
+
+        // All conditions met - show modal directly
+        setShowFeedbackModal(true);
+        setFeedbackChecked(true);
+      } catch (err) {
+        console.error("[FEEDBACK] Error checking eligibility:", err);
+        setFeedbackChecked(true);
+      }
+    }
+
+    if (userId && isLoggedIn) {
+      checkFeedbackEligibility();
+    }
+  }, [userId, isLoggedIn, feedbackChecked, showFeedbackModal]);
+
   return (
     <>
       {/* NEW MESSAGE ALERT (admin only) */}
@@ -213,15 +299,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       {/* UPGRADE BANNER (free users only) */}
       {isLoggedIn && <UpgradeBanner />}
-
-      {/* FEEDBACK BANNER (shows on all pages when conditions are met) */}
-      {/* Banner visibility is controlled by FeedbackBanner component based on database state */}
-      {isLoggedIn && userId && (
-        <FeedbackBanner
-          userId={userId}
-          onBannerClick={() => setShowFeedbackModal(true)}
-        />
-      )}
 
       {/* FEEDBACK MODAL */}
       {isLoggedIn && userId && (
