@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { createClient } from "@supabase/supabase-js";
 
 // Initialize Stripe
 if (!process.env.STRIPE_SECRET_KEY) {
@@ -11,6 +12,59 @@ if (process.env.STRIPE_SECRET_KEY) {
   stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
     apiVersion: "2025-12-15.clover",
   });
+}
+
+// Initialize Supabase client with service role (bypasses RLS)
+function getSupabaseAdminClient() {
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+
+  if (!serviceKey || !url) {
+    throw new Error("Supabase service role key or URL is not configured");
+  }
+
+  return createClient(url, serviceKey, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false,
+    },
+  });
+}
+
+// Helper function to update membership status
+async function updateMembershipStatus(
+  userId: string,
+  status: "free" | "pro"
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    console.log(`[WEBHOOK] Updating membership_status for user ${userId} to ${status}`);
+
+    const supabase = getSupabaseAdminClient();
+
+    // Upsert profile_stats to update membership_status
+    const { error } = await supabase
+      .from("profile_stats")
+      .upsert(
+        {
+          user_id: userId,
+          membership_status: status,
+        },
+        {
+          onConflict: "user_id",
+        }
+      );
+
+    if (error) {
+      console.error(`[WEBHOOK] ❌ Failed to update membership_status:`, error);
+      return { success: false, error: error.message };
+    }
+
+    console.log(`[WEBHOOK] ✅ Successfully updated membership_status to ${status} for user ${userId}`);
+    return { success: true };
+  } catch (err: any) {
+    console.error(`[WEBHOOK] ❌ Error updating membership_status:`, err);
+    return { success: false, error: err.message };
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -56,8 +110,9 @@ export async function POST(req: NextRequest) {
     let event: Stripe.Event;
     try {
       event = stripe.webhooks.constructEvent(rawBody, signature, webhookSecret);
+      console.log(`[WEBHOOK] ✅ Event verified: ${event.type} (${event.id})`);
     } catch (err: any) {
-      console.error("⚠️ Webhook signature verification failed:", err.message);
+      console.error("[WEBHOOK] ❌ Webhook signature verification failed:", err.message);
       return NextResponse.json(
         {
           error: `Webhook signature verification failed: ${err.message}`,
@@ -70,51 +125,130 @@ export async function POST(req: NextRequest) {
     switch (event.type) {
       case "checkout.session.completed": {
         const session = event.data.object as Stripe.Checkout.Session;
-        console.log("✅ checkout.session.completed:", {
+        console.log(`[WEBHOOK] 📦 checkout.session.completed:`, {
           event_id: event.id,
           session_id: session.id,
           customer_email: session.customer_email,
           metadata: session.metadata,
         });
+
+        // Extract user_id from metadata
+        const userId = session.metadata?.user_id;
+        if (!userId) {
+          console.error("[WEBHOOK] ❌ No user_id found in checkout session metadata");
+          break;
+        }
+
+        // Only upgrade if this was a subscription checkout
+        if (session.mode === "subscription") {
+          await updateMembershipStatus(userId, "pro");
+        }
         break;
       }
 
       case "customer.subscription.created": {
         const subscription = event.data.object as Stripe.Subscription;
-        console.log("✅ customer.subscription.created:", {
+        console.log(`[WEBHOOK] 📦 customer.subscription.created:`, {
           event_id: event.id,
           subscription_id: subscription.id,
           customer_id: subscription.customer,
           status: subscription.status,
+          metadata: subscription.metadata,
         });
+
+        // Extract user_id from metadata (set during checkout)
+        const userId = subscription.metadata?.user_id;
+        if (!userId) {
+          console.error("[WEBHOOK] ❌ No user_id found in subscription metadata");
+          // Try to get from checkout session if available
+          if (subscription.latest_invoice) {
+            try {
+              const invoice = await stripe.invoices.retrieve(
+                typeof subscription.latest_invoice === "string"
+                  ? subscription.latest_invoice
+                  : subscription.latest_invoice.id
+              );
+              if (invoice.subscription) {
+                const sub = await stripe.subscriptions.retrieve(
+                  typeof invoice.subscription === "string"
+                    ? invoice.subscription
+                    : invoice.subscription.id
+                );
+                // Check if we can get user_id from subscription metadata
+                if (sub.metadata?.user_id) {
+                  await updateMembershipStatus(sub.metadata.user_id, "pro");
+                  break;
+                }
+              }
+            } catch (err) {
+              console.error("[WEBHOOK] ❌ Error retrieving subscription details:", err);
+            }
+          }
+          break;
+        }
+
+        // Only upgrade if subscription is active or trialing
+        if (subscription.status === "active" || subscription.status === "trialing") {
+          await updateMembershipStatus(userId, "pro");
+        }
         break;
       }
 
       case "customer.subscription.updated": {
         const subscription = event.data.object as Stripe.Subscription;
-        console.log("✅ customer.subscription.updated:", {
+        console.log(`[WEBHOOK] 📦 customer.subscription.updated:`, {
           event_id: event.id,
           subscription_id: subscription.id,
           customer_id: subscription.customer,
           status: subscription.status,
+          metadata: subscription.metadata,
         });
+
+        // Extract user_id from metadata
+        const userId = subscription.metadata?.user_id;
+        if (!userId) {
+          console.error("[WEBHOOK] ❌ No user_id found in subscription metadata");
+          break;
+        }
+
+        // Update membership based on subscription status
+        if (subscription.status === "active" || subscription.status === "trialing") {
+          await updateMembershipStatus(userId, "pro");
+        } else if (
+          subscription.status === "canceled" ||
+          subscription.status === "unpaid" ||
+          subscription.status === "past_due"
+        ) {
+          await updateMembershipStatus(userId, "free");
+        }
         break;
       }
 
       case "customer.subscription.deleted": {
         const subscription = event.data.object as Stripe.Subscription;
-        console.log("✅ customer.subscription.deleted:", {
+        console.log(`[WEBHOOK] 📦 customer.subscription.deleted:`, {
           event_id: event.id,
           subscription_id: subscription.id,
           customer_id: subscription.customer,
           status: subscription.status,
+          metadata: subscription.metadata,
         });
+
+        // Extract user_id from metadata
+        const userId = subscription.metadata?.user_id;
+        if (!userId) {
+          console.error("[WEBHOOK] ❌ No user_id found in subscription metadata");
+          break;
+        }
+
+        // Downgrade to free
+        await updateMembershipStatus(userId, "free");
         break;
       }
 
       default:
         // Log unhandled event types for debugging
-        console.log("⚠️ Unhandled event type:", event.type, {
+        console.log(`[WEBHOOK] ⚠️ Unhandled event type: ${event.type}`, {
           event_id: event.id,
         });
     }
