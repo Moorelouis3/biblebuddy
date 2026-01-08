@@ -31,6 +31,43 @@ function getSupabaseAdminClient() {
   });
 }
 
+// Helper function to update payments status (Stripe subscription tracking only)
+// Uses upsert to create row if it doesn't exist
+async function updatePaymentsStatus(
+  userId: string,
+  hasActivePayment: boolean
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    console.log(`[WEBHOOK] 💳 Updating payments for user ${userId}: → ${hasActivePayment}`);
+
+    const supabase = getSupabaseAdminClient();
+
+    // Upsert to update existing or create new row
+    const { error } = await supabase
+      .from("profile_stats")
+      .upsert(
+        {
+          user_id: userId,
+          payments: hasActivePayment,
+        },
+        {
+          onConflict: "user_id",
+        }
+      );
+
+    if (error) {
+      console.error(`[WEBHOOK] ❌ Failed to upsert payments:`, error);
+      return { success: false, error: error.message };
+    }
+
+    console.log(`[WEBHOOK] ✅ Successfully updated payments: ${hasActivePayment} for user ${userId}`);
+    return { success: true };
+  } catch (err: any) {
+    console.error(`[WEBHOOK] ❌ Error updating payments:`, err);
+    return { success: false, error: err.message };
+  }
+}
+
 // Helper function to update membership status
 // Uses upsert to create row if it doesn't exist
 async function updateMembershipStatus(
@@ -165,6 +202,20 @@ async function extractUserIdFromInvoice(
   return null;
 }
 
+// Map Stripe subscription status to payments (true = active paying subscription)
+function mapSubscriptionStatusToPayments(
+  stripeStatus: string
+): boolean {
+  // Active subscriptions → true (actively paying)
+  if (stripeStatus === "active" || stripeStatus === "trialing") {
+    return true;
+  }
+
+  // All other statuses → false (not actively paying)
+  // canceled, unpaid, incomplete_expired, paused, past_due
+  return false;
+}
+
 // Map Stripe subscription status to membership_status
 function mapSubscriptionStatusToMembership(
   stripeStatus: string
@@ -278,6 +329,9 @@ export async function POST(req: NextRequest) {
       if (session.mode === "subscription") {
         membershipStatus = "pro";
         eventHandled = true;
+        
+        // Update payments status (checkout completed = active payment)
+        await updatePaymentsStatus(userId, true);
       } else {
         console.log(`[WEBHOOK] ℹ️ Checkout session ${session.id} is not a subscription, skipping membership update`);
       }
@@ -299,6 +353,10 @@ export async function POST(req: NextRequest) {
         // Map subscription status to membership
         membershipStatus = mapSubscriptionStatusToMembership(subscription.status);
         eventHandled = true;
+        
+        // Update payments status based on subscription status
+        const hasActivePayment = mapSubscriptionStatusToPayments(subscription.status);
+        await updatePaymentsStatus(userId, hasActivePayment);
       }
     } else if (eventType === "customer.subscription.updated") {
       const subscription = event.data.object as Stripe.Subscription;
@@ -318,6 +376,10 @@ export async function POST(req: NextRequest) {
         // Map subscription status to membership
         membershipStatus = mapSubscriptionStatusToMembership(subscription.status);
         eventHandled = true;
+        
+        // Update payments status based on subscription status
+        const hasActivePayment = mapSubscriptionStatusToPayments(subscription.status);
+        await updatePaymentsStatus(userId, hasActivePayment);
       }
     } else if (eventType === "customer.subscription.deleted") {
       const subscription = event.data.object as Stripe.Subscription;
@@ -340,6 +402,9 @@ export async function POST(req: NextRequest) {
       // Always downgrade to free when subscription is deleted
       membershipStatus = "free";
       eventHandled = true;
+      
+      // Update payments status (subscription deleted = no active payment)
+      await updatePaymentsStatus(userId, false);
     } else if (eventType === "invoice.payment_succeeded") {
       const invoice = event.data.object as Stripe.Invoice;
       console.log(`[WEBHOOK] 📦 invoice.payment_succeeded:`, {
@@ -379,6 +444,9 @@ export async function POST(req: NextRequest) {
         // Payment succeeded - ensure Pro status
         membershipStatus = "pro";
         eventHandled = true;
+        
+        // Update payments status (payment succeeded = active payment)
+        await updatePaymentsStatus(userId, true);
       } catch (err) {
         console.error(`[WEBHOOK] ❌ Error retrieving subscription ${subscriptionId}:`, err);
         return NextResponse.json({ received: true }, { status: 200 });
@@ -415,6 +483,9 @@ export async function POST(req: NextRequest) {
         // Payment failed - downgrade to free
         membershipStatus = "free";
         eventHandled = true;
+        
+        // Update payments status (payment failed = no active payment)
+        await updatePaymentsStatus(userId, false);
       } catch (err) {
         console.error(`[WEBHOOK] ❌ Error retrieving subscription ${subscriptionId}:`, err);
         return NextResponse.json({ received: true }, { status: 200 });

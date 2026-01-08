@@ -134,14 +134,14 @@ export default function AnalyticsPage() {
     }
   }
 
-  // Load paid users (Pro users) from profile_stats
+  // Load paid users (users with active Stripe subscriptions) from profile_stats
   async function loadPaidUsers() {
     setLoadingPaidUsers(true);
     try {
       const { count, error } = await supabase
         .from("profile_stats")
         .select("*", { count: "exact", head: true })
-        .eq("membership_status", "pro");
+        .eq("payments", true);
 
       if (error) {
         console.error("[PAID_USERS] Error fetching paid users:", error);
