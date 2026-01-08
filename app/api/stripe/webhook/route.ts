@@ -101,6 +101,7 @@ async function extractUserIdFromSubscription(
 ): Promise<string | null> {
   // Try subscription metadata first
   if (subscription.metadata?.user_id) {
+    console.log(`[WEBHOOK] Found user_id in subscription metadata: ${subscription.metadata.user_id}`);
     return subscription.metadata.user_id;
   }
 
@@ -109,6 +110,7 @@ async function extractUserIdFromSubscription(
     try {
       const customer = await stripe.customers.retrieve(subscription.customer);
       if (!customer.deleted && "metadata" in customer && customer.metadata?.user_id) {
+        console.log(`[WEBHOOK] Found user_id in customer metadata: ${customer.metadata.user_id}`);
         return customer.metadata.user_id;
       }
     } catch (err) {
@@ -116,6 +118,45 @@ async function extractUserIdFromSubscription(
     }
   }
 
+  console.warn(`[WEBHOOK] ⚠️ Could not extract user_id from subscription ${subscription.id}`);
+  return null;
+}
+
+// Helper function to extract user_id from invoice (via subscription)
+async function extractUserIdFromInvoice(
+  invoice: Stripe.Invoice,
+  stripe: Stripe
+): Promise<string | null> {
+  // Try invoice metadata first
+  if (invoice.metadata?.user_id) {
+    console.log(`[WEBHOOK] Found user_id in invoice metadata: ${invoice.metadata.user_id}`);
+    return invoice.metadata.user_id;
+  }
+
+  // If invoice has subscription, get user_id from subscription
+  if (invoice.subscription && typeof invoice.subscription === "string") {
+    try {
+      const subscription = await stripe.subscriptions.retrieve(invoice.subscription);
+      return await extractUserIdFromSubscription(subscription, stripe);
+    } catch (err) {
+      console.error("[WEBHOOK] ❌ Error retrieving subscription from invoice:", err);
+    }
+  }
+
+  // Fallback to customer metadata
+  if (invoice.customer && typeof invoice.customer === "string") {
+    try {
+      const customer = await stripe.customers.retrieve(invoice.customer);
+      if (!customer.deleted && "metadata" in customer && customer.metadata?.user_id) {
+        console.log(`[WEBHOOK] Found user_id in invoice customer metadata: ${customer.metadata.user_id}`);
+        return customer.metadata.user_id;
+      }
+    } catch (err) {
+      console.error("[WEBHOOK] ❌ Error retrieving customer from invoice:", err);
+    }
+  }
+
+  console.warn(`[WEBHOOK] ⚠️ Could not extract user_id from invoice ${invoice.id}`);
   return null;
 }
 
@@ -206,8 +247,10 @@ export async function POST(req: NextRequest) {
     let membershipStatus: "free" | "pro" | null = null;
     let eventHandled = false;
 
-    switch (event.type) {
-      case "checkout.session.completed": {
+    // Use string comparison instead of switch to avoid TypeScript strict type checking
+    const eventType = event.type as string;
+
+    if (eventType === "checkout.session.completed") {
         const session = event.data.object as Stripe.Checkout.Session;
         console.log(`[WEBHOOK] 📦 checkout.session.completed:`, {
           event_id: event.id,
@@ -234,134 +277,102 @@ export async function POST(req: NextRequest) {
       }
 
       case "customer.subscription.created": {
-        const subscription = event.data.object as Stripe.Subscription;
-        console.log(`[WEBHOOK] 📦 customer.subscription.created:`, {
-          event_id: event.id,
-          subscription_id: subscription.id,
-          customer_id: subscription.customer,
-          status: subscription.status,
-          metadata: subscription.metadata,
-        });
+      const subscription = event.data.object as Stripe.Subscription;
+      console.log(`[WEBHOOK] 📦 customer.subscription.created:`, {
+        event_id: event.id,
+        subscription_id: subscription.id,
+        customer_id: subscription.customer,
+        status: subscription.status,
+        metadata: subscription.metadata,
+      });
 
-        userId = await extractUserIdFromSubscription(subscription, stripe);
+      userId = await extractUserIdFromSubscription(subscription, stripe);
 
-        if (!userId) {
-          console.error(`[WEBHOOK] ❌ No user_id found for subscription.created event ${event.id}`);
-          break;
-        }
-
+      if (!userId) {
+        console.error(`[WEBHOOK] ❌ No user_id found for subscription.created event ${event.id}`);
+      } else {
         // Map subscription status to membership
         membershipStatus = mapSubscriptionStatusToMembership(subscription.status);
         eventHandled = true;
-        break;
       }
+    } else if (eventType === "customer.subscription.updated") {
+      const subscription = event.data.object as Stripe.Subscription;
+      console.log(`[WEBHOOK] 📦 customer.subscription.updated:`, {
+        event_id: event.id,
+        subscription_id: subscription.id,
+        customer_id: subscription.customer,
+        status: subscription.status,
+        metadata: subscription.metadata,
+      });
 
-      case "customer.subscription.updated": {
-        const subscription = event.data.object as Stripe.Subscription;
-        console.log(`[WEBHOOK] 📦 customer.subscription.updated:`, {
-          event_id: event.id,
-          subscription_id: subscription.id,
-          customer_id: subscription.customer,
-          status: subscription.status,
-          metadata: subscription.metadata,
-        });
+      userId = await extractUserIdFromSubscription(subscription, stripe);
 
-        userId = await extractUserIdFromSubscription(subscription, stripe);
-
-        if (!userId) {
-          console.error(`[WEBHOOK] ❌ No user_id found for subscription.updated event ${event.id}`);
-          break;
-        }
-
+      if (!userId) {
+        console.error(`[WEBHOOK] ❌ No user_id found for subscription.updated event ${event.id}`);
+      } else {
         // Map subscription status to membership
         membershipStatus = mapSubscriptionStatusToMembership(subscription.status);
         eventHandled = true;
-        break;
       }
+    } else if (eventType === "customer.subscription.deleted") {
+      const subscription = event.data.object as Stripe.Subscription;
+      console.log(`[WEBHOOK] 📦 customer.subscription.deleted:`, {
+        event_id: event.id,
+        subscription_id: subscription.id,
+        customer_id: subscription.customer,
+        status: subscription.status,
+        metadata: subscription.metadata,
+      });
 
-      case "customer.subscription.deleted": {
-        const subscription = event.data.object as Stripe.Subscription;
-        console.log(`[WEBHOOK] 📦 customer.subscription.deleted:`, {
-          event_id: event.id,
-          subscription_id: subscription.id,
-          customer_id: subscription.customer,
-          status: subscription.status,
-          metadata: subscription.metadata,
-        });
+      userId = await extractUserIdFromSubscription(subscription, stripe);
 
-        userId = await extractUserIdFromSubscription(subscription, stripe);
-
-        if (!userId) {
-          console.error(`[WEBHOOK] ❌ No user_id found for subscription.deleted event ${event.id}`);
-          break;
-        }
-
+      if (!userId) {
+        console.error(`[WEBHOOK] ❌ No user_id found for subscription.deleted event ${event.id}`);
+      } else {
         // Always downgrade to free when subscription is deleted
         membershipStatus = "free";
         eventHandled = true;
-        break;
       }
+    } else if (eventType === "invoice.payment.paid") {
+      const invoice = event.data.object as Stripe.Invoice;
+      console.log(`[WEBHOOK] 📦 invoice.payment.paid:`, {
+        event_id: event.id,
+        invoice_id: invoice.id,
+        customer_id: invoice.customer,
+        subscription_id: invoice.subscription,
+        metadata: invoice.metadata,
+      });
 
-      case "invoice.payment.paid": {
-        const invoice = event.data.object as Stripe.Invoice;
-        console.log(`[WEBHOOK] 📦 invoice.payment.paid:`, {
-          event_id: event.id,
-          invoice_id: invoice.id,
-          customer_id: invoice.customer,
-          subscription_id: invoice.subscription,
-          metadata: invoice.metadata,
-        });
+      // Extract user_id from invoice (via subscription or customer metadata)
+      userId = await extractUserIdFromInvoice(invoice, stripe);
 
-        // For invoice events, we need to get the subscription to find user_id
-        if (invoice.subscription && typeof invoice.subscription === "string") {
-          try {
-            const subscription = await stripe.subscriptions.retrieve(invoice.subscription);
-            userId = await extractUserIdFromSubscription(subscription, stripe);
-
-            if (userId) {
-              // Payment successful - ensure Pro status
-              membershipStatus = "pro";
-              eventHandled = true;
-            }
-          } catch (err) {
-            console.error(`[WEBHOOK] ❌ Error retrieving subscription for invoice:`, err);
-          }
-        }
-        break;
+      if (userId) {
+        // Payment successful - ensure Pro status
+        membershipStatus = "pro";
+        eventHandled = true;
       }
+    } else if (eventType === "invoice.payment_failed") {
+      const invoice = event.data.object as Stripe.Invoice;
+      console.log(`[WEBHOOK] 📦 invoice.payment_failed:`, {
+        event_id: event.id,
+        invoice_id: invoice.id,
+        customer_id: invoice.customer,
+        subscription_id: invoice.subscription,
+        metadata: invoice.metadata,
+      });
 
-      case "invoice.payment_failed": {
-        const invoice = event.data.object as Stripe.Invoice;
-        console.log(`[WEBHOOK] 📦 invoice.payment_failed:`, {
-          event_id: event.id,
-          invoice_id: invoice.id,
-          customer_id: invoice.customer,
-          subscription_id: invoice.subscription,
-          metadata: invoice.metadata,
-        });
+      // Extract user_id from invoice (via subscription or customer metadata)
+      userId = await extractUserIdFromInvoice(invoice, stripe);
 
-        // For invoice events, we need to get the subscription to find user_id
-        if (invoice.subscription && typeof invoice.subscription === "string") {
-          try {
-            const subscription = await stripe.subscriptions.retrieve(invoice.subscription);
-            userId = await extractUserIdFromSubscription(subscription, stripe);
-
-            if (userId) {
-              // Payment failed - downgrade to free
-              membershipStatus = "free";
-              eventHandled = true;
-            }
-          } catch (err) {
-            console.error(`[WEBHOOK] ❌ Error retrieving subscription for invoice:`, err);
-          }
-        }
-        break;
+      if (userId) {
+        // Payment failed - downgrade to free
+        membershipStatus = "free";
+        eventHandled = true;
       }
-
-      default:
-        // Log unhandled events but return 200 OK
-        console.log(`[WEBHOOK] ℹ️ Ignoring event type: ${event.type} (${event.id})`);
-        return NextResponse.json({ received: true }, { status: 200 });
+    } else {
+      // Log unhandled events but return 200 OK
+      console.log(`[WEBHOOK] ℹ️ Ignoring event type: ${eventType} (${event.id})`);
+      return NextResponse.json({ received: true }, { status: 200 });
     }
 
     // If event was handled, update membership status
