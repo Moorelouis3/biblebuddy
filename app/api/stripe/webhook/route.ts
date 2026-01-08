@@ -32,55 +32,62 @@ function getSupabaseAdminClient() {
 }
 
 // Helper function to update membership status
-// Only updates existing rows, does not create duplicates
+// Uses upsert to create row if it doesn't exist
 async function updateMembershipStatus(
   userId: string,
   status: "free" | "pro"
-): Promise<{ success: boolean; error?: string }> {
+): Promise<{ success: boolean; error?: string; currentStatus?: string }> {
   try {
     console.log(`[WEBHOOK] 🔄 Updating membership_status for user ${userId}: → ${status}`);
 
     const supabase = getSupabaseAdminClient();
 
-    // First check if the user exists in profile_stats
+    // First check current status
     const { data: existingUser, error: checkError } = await supabase
       .from("profile_stats")
       .select("user_id, membership_status")
       .eq("user_id", userId)
       .maybeSingle();
 
-    if (checkError) {
+    if (checkError && checkError.code !== "PGRST116") {
+      // PGRST116 = no rows returned (not an error)
       console.error(`[WEBHOOK] ❌ Failed to check existing user:`, checkError);
       return { success: false, error: checkError.message };
     }
 
-    // If user doesn't exist, log and skip (don't create new rows)
-    if (!existingUser) {
-      console.warn(`[WEBHOOK] ⚠️ User ${userId} does not exist in profile_stats. Skipping update.`);
-      return { success: false, error: "User does not exist in profile_stats" };
-    }
+    const currentStatus = existingUser?.membership_status || null;
 
-    // Only update if status is different (avoid unnecessary updates)
-    if (existingUser.membership_status === status) {
+    // Only update if status is different
+    if (currentStatus === status) {
       console.log(`[WEBHOOK] ℹ️ User ${userId} already has membership_status = ${status}. No update needed.`);
-      return { success: true };
+      return { success: true, currentStatus };
     }
 
-    // Update only existing row
-    const { error } = await supabase
+    // Upsert to update existing or create new row
+    const { error, data } = await supabase
       .from("profile_stats")
-      .update({ membership_status: status })
-      .eq("user_id", userId);
+      .upsert(
+        {
+          user_id: userId,
+          membership_status: status,
+        },
+        {
+          onConflict: "user_id",
+        }
+      )
+      .select("membership_status")
+      .single();
 
     if (error) {
-      console.error(`[WEBHOOK] ❌ Failed to update membership_status:`, error);
+      console.error(`[WEBHOOK] ❌ Failed to upsert membership_status:`, error);
+      console.error(`[WEBHOOK] Error details:`, JSON.stringify(error, null, 2));
       return { success: false, error: error.message };
     }
 
     console.log(
-      `[WEBHOOK] ✅ Successfully updated membership_status: ${existingUser.membership_status} → ${status} for user ${userId}`
+      `[WEBHOOK] ✅ Successfully updated membership_status: ${currentStatus || "null"} → ${status} for user ${userId}`
     );
-    return { success: true };
+    return { success: true, currentStatus: data?.membership_status || status };
   } catch (err: any) {
     console.error(`[WEBHOOK] ❌ Error updating membership_status:`, err);
     return { success: false, error: err.message };
@@ -194,64 +201,197 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Handle ONLY subscription events (ignore all others)
-    if (
-      event.type !== "customer.subscription.created" &&
-      event.type !== "customer.subscription.updated" &&
-      event.type !== "customer.subscription.deleted"
-    ) {
-      // Log ignored events for debugging
-      console.log(`[WEBHOOK] ℹ️ Ignoring event type: ${event.type} (${event.id})`);
-      return NextResponse.json({ received: true }, { status: 200 });
+    // Handle specific events
+    let userId: string | null = null;
+    let membershipStatus: "free" | "pro" | null = null;
+    let eventHandled = false;
+
+    switch (event.type) {
+      case "checkout.session.completed": {
+        const session = event.data.object as Stripe.Checkout.Session;
+        console.log(`[WEBHOOK] 📦 checkout.session.completed:`, {
+          event_id: event.id,
+          session_id: session.id,
+          mode: session.mode,
+          customer_email: session.customer_email,
+          metadata: session.metadata,
+        });
+
+        // Extract user_id from metadata
+        userId = session.metadata?.user_id || null;
+
+        if (!userId) {
+          console.error(`[WEBHOOK] ❌ No user_id found in checkout session metadata for event ${event.id}`);
+          break;
+        }
+
+        // Only upgrade if this was a subscription checkout
+        if (session.mode === "subscription") {
+          membershipStatus = "pro";
+          eventHandled = true;
+        }
+        break;
+      }
+
+      case "customer.subscription.created": {
+        const subscription = event.data.object as Stripe.Subscription;
+        console.log(`[WEBHOOK] 📦 customer.subscription.created:`, {
+          event_id: event.id,
+          subscription_id: subscription.id,
+          customer_id: subscription.customer,
+          status: subscription.status,
+          metadata: subscription.metadata,
+        });
+
+        userId = await extractUserIdFromSubscription(subscription, stripe);
+
+        if (!userId) {
+          console.error(`[WEBHOOK] ❌ No user_id found for subscription.created event ${event.id}`);
+          break;
+        }
+
+        // Map subscription status to membership
+        membershipStatus = mapSubscriptionStatusToMembership(subscription.status);
+        eventHandled = true;
+        break;
+      }
+
+      case "customer.subscription.updated": {
+        const subscription = event.data.object as Stripe.Subscription;
+        console.log(`[WEBHOOK] 📦 customer.subscription.updated:`, {
+          event_id: event.id,
+          subscription_id: subscription.id,
+          customer_id: subscription.customer,
+          status: subscription.status,
+          metadata: subscription.metadata,
+        });
+
+        userId = await extractUserIdFromSubscription(subscription, stripe);
+
+        if (!userId) {
+          console.error(`[WEBHOOK] ❌ No user_id found for subscription.updated event ${event.id}`);
+          break;
+        }
+
+        // Map subscription status to membership
+        membershipStatus = mapSubscriptionStatusToMembership(subscription.status);
+        eventHandled = true;
+        break;
+      }
+
+      case "customer.subscription.deleted": {
+        const subscription = event.data.object as Stripe.Subscription;
+        console.log(`[WEBHOOK] 📦 customer.subscription.deleted:`, {
+          event_id: event.id,
+          subscription_id: subscription.id,
+          customer_id: subscription.customer,
+          status: subscription.status,
+          metadata: subscription.metadata,
+        });
+
+        userId = await extractUserIdFromSubscription(subscription, stripe);
+
+        if (!userId) {
+          console.error(`[WEBHOOK] ❌ No user_id found for subscription.deleted event ${event.id}`);
+          break;
+        }
+
+        // Always downgrade to free when subscription is deleted
+        membershipStatus = "free";
+        eventHandled = true;
+        break;
+      }
+
+      case "invoice.payment.paid": {
+        const invoice = event.data.object as Stripe.Invoice;
+        console.log(`[WEBHOOK] 📦 invoice.payment.paid:`, {
+          event_id: event.id,
+          invoice_id: invoice.id,
+          customer_id: invoice.customer,
+          subscription_id: invoice.subscription,
+          metadata: invoice.metadata,
+        });
+
+        // For invoice events, we need to get the subscription to find user_id
+        if (invoice.subscription && typeof invoice.subscription === "string") {
+          try {
+            const subscription = await stripe.subscriptions.retrieve(invoice.subscription);
+            userId = await extractUserIdFromSubscription(subscription, stripe);
+
+            if (userId) {
+              // Payment successful - ensure Pro status
+              membershipStatus = "pro";
+              eventHandled = true;
+            }
+          } catch (err) {
+            console.error(`[WEBHOOK] ❌ Error retrieving subscription for invoice:`, err);
+          }
+        }
+        break;
+      }
+
+      case "invoice.payment_failed": {
+        const invoice = event.data.object as Stripe.Invoice;
+        console.log(`[WEBHOOK] 📦 invoice.payment_failed:`, {
+          event_id: event.id,
+          invoice_id: invoice.id,
+          customer_id: invoice.customer,
+          subscription_id: invoice.subscription,
+          metadata: invoice.metadata,
+        });
+
+        // For invoice events, we need to get the subscription to find user_id
+        if (invoice.subscription && typeof invoice.subscription === "string") {
+          try {
+            const subscription = await stripe.subscriptions.retrieve(invoice.subscription);
+            userId = await extractUserIdFromSubscription(subscription, stripe);
+
+            if (userId) {
+              // Payment failed - downgrade to free
+              membershipStatus = "free";
+              eventHandled = true;
+            }
+          } catch (err) {
+            console.error(`[WEBHOOK] ❌ Error retrieving subscription for invoice:`, err);
+          }
+        }
+        break;
+      }
+
+      default:
+        // Log unhandled events but return 200 OK
+        console.log(`[WEBHOOK] ℹ️ Ignoring event type: ${event.type} (${event.id})`);
+        return NextResponse.json({ received: true }, { status: 200 });
     }
 
-    // Handle subscription events
-    const subscription = event.data.object as Stripe.Subscription;
-    console.log(`[WEBHOOK] 📦 ${event.type}:`, {
-      event_id: event.id,
-      subscription_id: subscription.id,
-      customer_id: subscription.customer,
-      status: subscription.status,
-      metadata: subscription.metadata,
-    });
+    // If event was handled, update membership status
+    if (eventHandled) {
+      if (!userId) {
+        console.error(`[WEBHOOK] ❌ Event ${event.type} (${event.id}) was handled but user_id is missing`);
+        return NextResponse.json({ received: true }, { status: 200 });
+      }
 
-    // Extract user_id from subscription or customer metadata
-    const userId = await extractUserIdFromSubscription(subscription, stripe);
+      if (membershipStatus === null) {
+        console.warn(`[WEBHOOK] ⚠️ Event ${event.type} (${event.id}) was handled but membershipStatus is null`);
+        return NextResponse.json({ received: true }, { status: 200 });
+      }
 
-    if (!userId) {
-      console.error(
-        `[WEBHOOK] ❌ No user_id found in subscription or customer metadata for event ${event.type} (${event.id})`
+      // Update membership status
+      console.log(
+        `[WEBHOOK] 📊 Updating membership: user ${userId}, event ${event.type} → membership_status="${membershipStatus}"`
       );
-      // Return 200 OK even if user_id not found (to prevent Stripe retries)
-      return NextResponse.json({ received: true }, { status: 200 });
+      const result = await updateMembershipStatus(userId, membershipStatus);
+
+      if (!result.success) {
+        console.error(`[WEBHOOK] ❌ Failed to update membership_status:`, result.error);
+        // Still return 200 OK to prevent Stripe retries
+        return NextResponse.json({ received: true }, { status: 200 });
+      }
+
+      console.log(`[WEBHOOK] ✅ Successfully processed ${event.type}: user ${userId} → ${membershipStatus}`);
+    } else {
+      console.log(`[WEBHOOK] ℹ️ Event ${event.type} (${event.id}) was not handled (missing user_id or status)`);
     }
-
-    // Map Stripe subscription status to membership_status
-    const membershipStatus = mapSubscriptionStatusToMembership(subscription.status);
-
-    if (membershipStatus === null) {
-      console.warn(
-        `[WEBHOOK] ⚠️ Unknown subscription status "${subscription.status}" for subscription ${subscription.id}. No membership update.`
-      );
-      return NextResponse.json({ received: true }, { status: 200 });
-    }
-
-    // Update membership status
-    console.log(
-      `[WEBHOOK] 📊 Status mapping: subscription.status="${subscription.status}" → membership_status="${membershipStatus}"`
-    );
-    const result = await updateMembershipStatus(userId, membershipStatus);
-
-    if (!result.success) {
-      console.error(`[WEBHOOK] ❌ Failed to update membership_status:`, result.error);
-      // Still return 200 OK to prevent Stripe retries for permanent errors
-      // (user doesn't exist, etc.)
-      return NextResponse.json({ received: true }, { status: 200 });
-    }
-
-    console.log(
-      `[WEBHOOK] ✅ Successfully processed ${event.type}: user ${userId} → ${membershipStatus}`
-    );
 
     // Return 200 OK to acknowledge receipt
     return NextResponse.json({ received: true }, { status: 200 });
