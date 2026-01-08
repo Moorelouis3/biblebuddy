@@ -2,13 +2,65 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { supabase } from "../../lib/supabaseClient";
+import { useRouter } from "next/navigation";
 
 export default function UpgradePage() {
   const [mounted, setMounted] = useState(false);
+  const [isLoading, setIsLoading] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Stripe Price IDs
+  const MONTHLY_PRICE_ID = "price_1Sn7B2GDyj3itMVLUL8efwcG";
+  const YEARLY_PRICE_ID = "price_1Sn7BZGDyj3itMVLHoO6eeGw";
+
+  const handleCheckout = async (priceId: string, planType: "monthly" | "yearly") => {
+    try {
+      setIsLoading(planType);
+
+      // Check if user is authenticated
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session) {
+        alert("Please log in to upgrade to Pro.");
+        router.push("/login");
+        setIsLoading(null);
+        return;
+      }
+
+      // Create checkout session
+      const response = await fetch("/api/stripe/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ priceId }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to create checkout session");
+      }
+
+      // Redirect to Stripe Checkout
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error("No checkout URL returned");
+      }
+    } catch (error: any) {
+      console.error("Checkout error:", error);
+      alert(error.message || "Something went wrong. Please try again.");
+      setIsLoading(null);
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
@@ -64,25 +116,27 @@ export default function UpgradePage() {
           <div className="flex flex-col gap-3">
             {/* Monthly Button */}
             <button
-              className="relative w-full px-6 py-3 bg-white border-2 border-blue-500 rounded-lg font-semibold hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5"
+              className="relative w-full px-6 py-3 bg-white border-2 border-blue-500 rounded-lg font-semibold hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
               onClick={(e) => {
                 e.preventDefault();
-                // Stripe integration will go here
+                handleCheckout(MONTHLY_PRICE_ID, "monthly");
               }}
+              disabled={isLoading !== null}
               style={{ color: "#2563eb" }}
             >
               <span className="text-lg" style={{ color: "#2563eb" }}>
-                $5.99 Monthly
+                {isLoading === "monthly" ? "Loading..." : "$5.99 Monthly"}
               </span>
             </button>
 
             {/* Yearly Button with Best Value Banner */}
             <button
-              className="relative w-full px-6 py-3 bg-white border-2 border-blue-500 rounded-lg font-semibold hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 overflow-hidden"
+              className="relative w-full px-6 py-3 bg-white border-2 border-blue-500 rounded-lg font-semibold hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
               onClick={(e) => {
                 e.preventDefault();
-                // Stripe integration will go here
+                handleCheckout(YEARLY_PRICE_ID, "yearly");
               }}
+              disabled={isLoading !== null}
               style={{ color: "#2563eb" }}
             >
               {/* Gold Best Value Banner */}
@@ -99,7 +153,7 @@ export default function UpgradePage() {
                 </span>
               </div>
               <span className="text-lg relative z-10" style={{ color: "#2563eb" }}>
-                $50 Yearly
+                {isLoading === "yearly" ? "Loading..." : "$50 Yearly"}
               </span>
             </button>
           </div>
