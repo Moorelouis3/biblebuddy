@@ -46,18 +46,15 @@ export async function POST(req: NextRequest) {
 
     console.log("[STRIPE_CHECKOUT] ✅ NEXT_PUBLIC_APP_URL:", process.env.NEXT_PUBLIC_APP_URL);
 
-    // Get raw body for logging
-    const rawBody = await req.text();
-    console.log("[STRIPE_CHECKOUT] Raw request body:", rawBody);
-
     // Parse request body
     let body;
     try {
-      body = JSON.parse(rawBody);
+      body = await req.json();
       console.log("[STRIPE_CHECKOUT] Parsed body:", JSON.stringify(body, null, 2));
+      console.log("[STRIPE_CHECKOUT] Body keys:", Object.keys(body));
     } catch (err: any) {
       console.error("[STRIPE_CHECKOUT] ❌ Failed to parse JSON:", err.message);
-      console.error("[STRIPE_CHECKOUT] Raw body was:", rawBody);
+      console.error("[STRIPE_CHECKOUT] Error details:", err);
       return NextResponse.json(
         {
           error: "Invalid request format",
