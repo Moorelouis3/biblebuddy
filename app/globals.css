@@ -71,12 +71,42 @@ body {
   }
 }
 
+@keyframes arrowNudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes bannerShimmer {
+  0% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
 .animate-subtle-pulse {
   animation: subtlePulse 1.5s ease-in-out 0.5s;
 }
 
 .animate-price-attention {
   animation: priceAttention 1.2s ease-in-out;
+}
+
+.animate-arrow-nudge {
+  animation: arrowNudge 1s ease-in-out 1.5s;
+}
+
+.animate-banner-shimmer {
+  animation: bannerShimmer 1.5s ease-in-out 0.5s;
 }
 
 @media (prefers-reduced-motion: reduce) {

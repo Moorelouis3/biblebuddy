@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function UpgradePage() {
   const [mounted, setMounted] = useState(false);
@@ -46,8 +47,62 @@ export default function UpgradePage() {
             <li>✓ No daily limits</li>
             <li>✓ Priority support</li>
           </ul>
-          <div className="text-2xl font-bold mb-2">Coming Soon</div>
-          <p className="text-sm text-gray-500">Pricing will be announced soon</p>
+
+          {/* Visual Direction Toward Pricing */}
+          <div className="mb-4 flex items-center gap-2 text-sm text-gray-600">
+            <span
+              className={`inline-block transition-transform duration-300 ${
+                mounted ? "animate-arrow-nudge" : ""
+              }`}
+            >
+              ↓
+            </span>
+            <span>Pick a plan to upgrade now</span>
+          </div>
+
+          {/* Pricing Buttons */}
+          <div className="flex flex-col gap-3">
+            {/* Monthly Button */}
+            <button
+              className="relative w-full px-6 py-3 bg-white border-2 border-blue-500 rounded-lg font-semibold hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5"
+              onClick={(e) => {
+                e.preventDefault();
+                // Stripe integration will go here
+              }}
+              style={{ color: "#2563eb" }}
+            >
+              <span className="text-lg" style={{ color: "#2563eb" }}>
+                $5.99 Monthly
+              </span>
+            </button>
+
+            {/* Yearly Button with Best Value Banner */}
+            <button
+              className="relative w-full px-6 py-3 bg-white border-2 border-blue-500 rounded-lg font-semibold hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 overflow-hidden"
+              onClick={(e) => {
+                e.preventDefault();
+                // Stripe integration will go here
+              }}
+              style={{ color: "#2563eb" }}
+            >
+              {/* Gold Best Value Banner */}
+              <div
+                className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-yellow-400 via-yellow-500 to-amber-500 transform rotate-45 translate-x-8 -translate-y-8 flex items-end justify-center pb-1 ${
+                  mounted ? "animate-banner-shimmer" : ""
+                }`}
+                style={{
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                }}
+              >
+                <span className="text-[10px] font-bold text-white transform -rotate-45 translate-x-1 translate-y-1">
+                  BEST VALUE
+                </span>
+              </div>
+              <span className="text-lg relative z-10" style={{ color: "#2563eb" }}>
+                $50 Yearly
+              </span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -175,7 +230,15 @@ export default function UpgradePage() {
             }}
           >
             <div className="flex items-start gap-4">
-              <div className="text-3xl flex-shrink-0">🤖</div>
+              <div className="flex-shrink-0 w-12 h-12 rounded-full overflow-hidden shadow-md hover:scale-105 transition-transform duration-300">
+                <Image
+                  src="/louis/louis-smile.png"
+                  alt="Little Louis"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div>
                 <h4 className="text-xl font-bold mb-3">
                   <span
@@ -294,68 +357,6 @@ export default function UpgradePage() {
         </div>
       </div>
 
-      {/* Pricing Buttons */}
-      <div
-        className={`text-center mb-8 transition-all duration-400 ease-out ${
-          mounted
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-4"
-        }`}
-        style={{
-          transitionDelay: mounted ? "600ms" : "0ms",
-        }}
-      >
-        <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
-          {/* Monthly Button */}
-          <button
-            className="group relative px-8 py-4 bg-white border-2 border-gray-300 rounded-xl text-gray-900 font-semibold text-lg hover:border-gray-400 hover:shadow-lg transition-all duration-200 ease-out hover:-translate-y-0.5"
-            onClick={(e) => {
-              e.preventDefault();
-              // Stripe integration will go here
-            }}
-          >
-            <div className="flex flex-col items-center">
-              <span>Choose Monthly</span>
-              <span
-                className={`text-blue-600 font-bold mt-1 ${
-                  mounted ? "animate-price-attention" : ""
-                }`}
-                style={{
-                  animationDelay: mounted ? "1s" : "0s",
-                }}
-              >
-                $5.99 / month
-              </span>
-            </div>
-          </button>
-
-          {/* Yearly Button */}
-          <button
-            className="group relative px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold text-lg hover:bg-blue-700 hover:shadow-xl transition-all duration-200 ease-out hover:-translate-y-0.5"
-            onClick={(e) => {
-              e.preventDefault();
-              // Stripe integration will go here
-            }}
-          >
-            <div className="flex flex-col items-center">
-              <span>Choose Yearly</span>
-              <span
-                className={`font-bold mt-1 ${
-                  mounted ? "animate-price-attention" : ""
-                }`}
-                style={{
-                  animationDelay: mounted ? "1.2s" : "0s",
-                }}
-              >
-                $50 / year
-              </span>
-              <span className="text-sm text-blue-100 mt-1">
-                (Save 30%)
-              </span>
-            </div>
-          </button>
-        </div>
-      </div>
 
       {/* Footnote */}
       <div
