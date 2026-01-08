@@ -159,31 +159,9 @@ export async function POST(req: NextRequest) {
         // Extract user_id from metadata (set during checkout)
         const userId = subscription.metadata?.user_id;
         if (!userId) {
-          console.error("[WEBHOOK] ❌ No user_id found in subscription metadata");
-          // Try to get from checkout session if available
-          if (subscription.latest_invoice) {
-            try {
-              const invoice = await stripe.invoices.retrieve(
-                typeof subscription.latest_invoice === "string"
-                  ? subscription.latest_invoice
-                  : subscription.latest_invoice.id
-              );
-              if (invoice.subscription) {
-                const sub = await stripe.subscriptions.retrieve(
-                  typeof invoice.subscription === "string"
-                    ? invoice.subscription
-                    : invoice.subscription.id
-                );
-                // Check if we can get user_id from subscription metadata
-                if (sub.metadata?.user_id) {
-                  await updateMembershipStatus(sub.metadata.user_id, "pro");
-                  break;
-                }
-              }
-            } catch (err) {
-              console.error("[WEBHOOK] ❌ Error retrieving subscription details:", err);
-            }
-          }
+          console.error("[WEBHOOK] ⚠️ No user_id found in subscription metadata");
+          // Note: checkout.session.completed should have already upgraded the user
+          // This event is logged but user is likely already upgraded
           break;
         }
 
@@ -205,9 +183,22 @@ export async function POST(req: NextRequest) {
         });
 
         // Extract user_id from metadata
-        const userId = subscription.metadata?.user_id;
+        let userId = subscription.metadata?.user_id;
+
+        // If not in subscription metadata, try to get from customer metadata
+        if (!userId && typeof subscription.customer === "string") {
+          try {
+            const customer = await stripe.customers.retrieve(subscription.customer);
+            if (!customer.deleted && "metadata" in customer) {
+              userId = customer.metadata?.user_id;
+            }
+          } catch (err) {
+            console.error("[WEBHOOK] ❌ Error retrieving customer:", err);
+          }
+        }
+
         if (!userId) {
-          console.error("[WEBHOOK] ❌ No user_id found in subscription metadata");
+          console.error("[WEBHOOK] ⚠️ No user_id found in subscription or customer metadata");
           break;
         }
 
@@ -235,9 +226,22 @@ export async function POST(req: NextRequest) {
         });
 
         // Extract user_id from metadata
-        const userId = subscription.metadata?.user_id;
+        let userId = subscription.metadata?.user_id;
+
+        // If not in subscription metadata, try to get from customer metadata
+        if (!userId && typeof subscription.customer === "string") {
+          try {
+            const customer = await stripe.customers.retrieve(subscription.customer);
+            if (!customer.deleted && "metadata" in customer) {
+              userId = customer.metadata?.user_id;
+            }
+          } catch (err) {
+            console.error("[WEBHOOK] ❌ Error retrieving customer:", err);
+          }
+        }
+
         if (!userId) {
-          console.error("[WEBHOOK] ❌ No user_id found in subscription metadata");
+          console.error("[WEBHOOK] ⚠️ No user_id found in subscription or customer metadata");
           break;
         }
 
