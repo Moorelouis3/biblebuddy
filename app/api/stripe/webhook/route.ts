@@ -134,9 +134,14 @@ async function extractUserIdFromInvoice(
   }
 
   // If invoice has subscription, get user_id from subscription
-  if (invoice.subscription && typeof invoice.subscription === "string") {
+  if (
+    "subscription" in invoice &&
+    typeof invoice.subscription === "string"
+  ) {
     try {
-      const subscription = await stripe.subscriptions.retrieve(invoice.subscription);
+      const subscription = await stripe.subscriptions.retrieve(
+        invoice.subscription
+      );
       return await extractUserIdFromSubscription(subscription, stripe);
     } catch (err) {
       console.error("[WEBHOOK] ❌ Error retrieving subscription from invoice:", err);
