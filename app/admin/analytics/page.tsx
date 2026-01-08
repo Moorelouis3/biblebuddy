@@ -638,7 +638,7 @@ export default function AnalyticsPage() {
           });
         }
         // Ignore all other action types
-        }
+      }
       }
 
       // Add old signups from user_signups table
