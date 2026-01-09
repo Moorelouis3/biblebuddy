@@ -825,32 +825,43 @@ export default function AnalyticsPage() {
 
   // Dismiss inbox item (marks as dismissed in database, removes from display)
   async function dismissInboxItem(itemId: string, itemType: "feedback" | "request") {
+    // Immediately update local state to remove from display (optimistic update)
+    setDismissedInboxItems((prev) => new Set(prev).add(itemId));
+
     try {
       const tableName = itemType === "feedback" ? "user_feedback" : "user_requests";
       
+      // Try to update the database
       const { error } = await supabase
         .from(tableName)
         .update({ dismissed_from_inbox: true })
         .eq("id", itemId);
 
       if (error) {
+        // Check if error is because column doesn't exist
+        if (error.message?.includes("column") || error.code === "42703" || error.message?.includes("dismissed_from_inbox")) {
+          console.log(`[INBOX] Column dismissed_from_inbox doesn't exist yet. Item removed from display only.`);
+          // Item already removed from display via local state, so this is fine
+          // User needs to run the SQL migration for persistence
+          return;
+        }
+        
         console.error(`[INBOX] Error dismissing ${itemType} item:`, error);
-        alert(`Failed to dismiss item. Please try again.`);
+        // Don't show alert - item is already removed from display
+        // If it's a real error (not missing column), the item will reappear on refresh
         return;
       }
 
-      // Update local state to immediately remove from display
-      setDismissedInboxItems((prev) => new Set(prev).add(itemId));
-      
-      // Reload inbox to reflect database changes
+      // Successfully updated database - reload inbox to ensure consistency
       if (itemType === "feedback") {
         loadFeedbackInbox();
       } else {
         loadUserRequestsInbox();
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(`[INBOX] Error dismissing ${itemType} item:`, err);
-      alert(`Failed to dismiss item. Please try again.`);
+      // Don't show alert - item is already removed from display
+      // If there's an error, it will reappear on refresh, but at least UI is responsive
     }
   }
 
