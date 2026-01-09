@@ -69,6 +69,10 @@ export default function AnalyticsPage() {
   const [loadingStatsLog, setLoadingStatsLog] = useState(true);
   const [selectedMetric, setSelectedMetric] = useState<string>("Total Actions");
   const [selectedStatsRow, setSelectedStatsRow] = useState<typeof statsLogData[0] | null>(null);
+  const [statsLogView, setStatsLogView] = useState<"list" | "graph">("list");
+
+  // Main section selector (Action Log, Stats Log, Inbox)
+  const [activeSection, setActiveSection] = useState<"actions" | "stats" | "inbox">("actions");
 
   // Admin Action Log
   const [actionLog, setActionLog] = useState<
@@ -1529,147 +1533,295 @@ export default function AnalyticsPage() {
         )}
       </div>
 
-      {/* ADMIN ACTION LOG SECTION */}
+      {/* MAIN SECTION SELECTOR (Dropdown/Tabs) */}
       <div className="mt-12 mb-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold">Action Log (All Users)</h2>
-          {selectedActionType && (
-            <button
-              onClick={() => setSelectedActionType(null)}
-              className="text-sm text-blue-600 hover:text-blue-700 font-medium"
-            >
-              Clear Filter
-            </button>
-          )}
+          <h2 className="text-2xl font-bold">
+            {activeSection === "actions" && "Action Log (All Users)"}
+            {activeSection === "stats" && "Stats Log"}
+            {activeSection === "inbox" && "Inbox"}
+          </h2>
+          <div className="inline-flex rounded-lg border border-gray-200 bg-white p-1 text-sm">
+            {[
+              { key: "actions", label: "Actions" },
+              { key: "stats", label: "Stats Log" },
+              { key: "inbox", label: "Inbox" },
+            ].map((option) => (
+              <button
+                key={option.key}
+                type="button"
+                onClick={() => setActiveSection(option.key as "actions" | "stats" | "inbox")}
+                className={`px-4 py-2 rounded-md transition text-sm font-medium ${
+                  activeSection === option.key
+                    ? "bg-blue-600 text-white shadow-sm"
+                    : "text-gray-600 hover:bg-gray-100"
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
         </div>
-        {selectedActionType && (
-          <p className="text-sm text-gray-600 mb-4">
-            Showing only: <span className="font-semibold">{formatActionTypeName(selectedActionType)}</span>
-          </p>
-        )}
-        
-        {loadingActionLog ? (
-          <div className="bg-white p-4 rounded-xl shadow">
-            <p className="text-gray-500 text-sm">Loading actions...</p>
-          </div>
-        ) : actionLog.length === 0 ? (
-          <div className="bg-white p-4 rounded-xl shadow">
-            <p className="text-gray-500 text-sm">No actions yet.</p>
-          </div>
-        ) : (
-          <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
-            <div className={`max-h-96 overflow-y-auto ${actionLog.length > 10 ? 'p-4' : 'p-4'}`}>
-              {actionLog.map((action, idx) => (
-                <div
-                  key={idx}
-                  className={`mb-2 p-3 rounded ${getActionColorClass(action.actionType)}`}
-                >
-                  <p className="text-sm text-gray-900">{action.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
 
-      {/* STATS LOG SECTION */}
-      <div className="mt-12 mb-6">
-        <h2 className="text-2xl font-bold mb-4">Stats Log</h2>
-        
-        {loadingStatsLog ? (
-          <div className="bg-white p-4 rounded-xl shadow">
-            <p className="text-gray-500 text-sm">Loading stats...</p>
-          </div>
-        ) : statsLogData.length === 0 ? (
-          <div className="bg-white p-4 rounded-xl shadow">
-            <p className="text-gray-500 text-sm">No stats data available.</p>
-          </div>
-        ) : (
+        {/* ACTION LOG SECTION */}
+        {activeSection === "actions" && (
           <>
-            {/* Stats Log List (Action Log Style) */}
-            <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6">
-              <div className={`max-h-96 overflow-y-auto ${statsLogData.length > 10 ? 'p-4' : 'p-4'}`}>
-                {statsLogData.map((row, idx) => {
-                  // Get the value for the selected metric
-                  const getMetricValue = () => {
-                    switch (selectedMetric) {
-                      case "Signups":
-                        return row.signups;
-                      case "Logins":
-                        return row.logins;
-                      case "Total Actions":
-                        return row.totalActions;
-                      case "Chapters Read":
-                        return row.chaptersRead;
-                      case "Notes Created":
-                        return row.notesCreated;
-                      case "People Learned":
-                        return row.peopleLearned;
-                      case "Places Discovered":
-                        return row.placesDiscovered;
-                      case "Keywords Understood":
-                        return row.keywordsUnderstood;
-                      default:
-                        return row.totalActions;
-                    }
-                  };
-
-                  // Alternate background colors
-                  const bgColorClass = idx % 2 === 0 ? "bg-blue-50" : "bg-green-50";
-                  const borderColorClass = idx % 2 === 0 ? "border-blue-500" : "border-green-500";
-
-                  return (
+            {selectedActionType && (
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-sm text-gray-600">
+                  Showing only: <span className="font-semibold">{formatActionTypeName(selectedActionType)}</span>
+                </p>
+                <button
+                  onClick={() => setSelectedActionType(null)}
+                  className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+                >
+                  Clear Filter
+                </button>
+              </div>
+            )}
+            
+            {loadingActionLog ? (
+              <div className="bg-white p-4 rounded-xl shadow">
+                <p className="text-gray-500 text-sm">Loading actions...</p>
+              </div>
+            ) : actionLog.length === 0 ? (
+              <div className="bg-white p-4 rounded-xl shadow">
+                <p className="text-gray-500 text-sm">No actions yet.</p>
+              </div>
+            ) : (
+              <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
+                <div className={`max-h-96 overflow-y-auto ${actionLog.length > 10 ? 'p-4' : 'p-4'}`}>
+                  {actionLog.map((action, idx) => (
                     <div
                       key={idx}
-                      onClick={() => setSelectedStatsRow(row)}
-                      className={`mb-2 p-3 rounded cursor-pointer hover:opacity-90 transition-opacity border-l-4 ${bgColorClass} ${borderColorClass}`}
+                      className={`mb-2 p-3 rounded ${getActionColorClass(action.actionType)}`}
                     >
-                      <p className="text-sm text-gray-900">
-                        <span className="font-medium">{row.period}:</span> {selectedMetric} - {getMetricValue().toLocaleString()}
-                      </p>
+                      <p className="text-sm text-gray-900">{action.text}</p>
                     </div>
-                  );
-                })}
+                  ))}
+                </div>
               </div>
-            </div>
-
-            {/* Metric Toggle Bar */}
-            <div className="mb-4 flex flex-wrap gap-2">
-              {[
-                "Signups",
-                "Logins",
-                "Total Actions",
-                "Chapters Read",
-                "Notes Created",
-                "People Learned",
-                "Places Discovered",
-                "Keywords Understood",
-              ].map((metric) => (
-                <button
-                  key={metric}
-                  onClick={() => setSelectedMetric(metric)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    selectedMetric === metric
-                      ? "bg-blue-600 text-white shadow-sm"
-                      : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
-                  }`}
-                >
-                  {metric}
-                </button>
-              ))}
-            </div>
-
-            {/* Graph */}
-            <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-              <div className="h-64 relative">
-                <StatsGraph
-                  data={statsLogData}
-                  metric={selectedMetric}
-                  timeFilter={timeFilter}
-                />
-              </div>
-            </div>
+            )}
           </>
+        )}
+
+        {/* STATS LOG SECTION */}
+        {activeSection === "stats" && (
+          <>
+            {loadingStatsLog ? (
+              <div className="bg-white p-4 rounded-xl shadow">
+                <p className="text-gray-500 text-sm">Loading stats...</p>
+              </div>
+            ) : statsLogData.length === 0 ? (
+              <div className="bg-white p-4 rounded-xl shadow">
+                <p className="text-gray-500 text-sm">No stats data available.</p>
+              </div>
+            ) : (
+              <>
+                {/* Stats Log Tabs (List / Graph) */}
+                <div className="mb-4 inline-flex rounded-lg border border-gray-200 bg-white p-1 text-sm">
+                  <button
+                    onClick={() => setStatsLogView("list")}
+                    className={`px-4 py-2 rounded-md transition font-medium ${
+                      statsLogView === "list"
+                        ? "bg-blue-600 text-white shadow-sm"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }`}
+                  >
+                    List
+                  </button>
+                  <button
+                    onClick={() => setStatsLogView("graph")}
+                    className={`px-4 py-2 rounded-md transition font-medium ${
+                      statsLogView === "graph"
+                        ? "bg-blue-600 text-white shadow-sm"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }`}
+                  >
+                    Graph
+                  </button>
+                </div>
+
+                {/* Metric Toggle Bar (shown for both views) */}
+                <div className="mb-4 flex flex-wrap gap-2">
+                  {[
+                    "Signups",
+                    "Logins",
+                    "Total Actions",
+                    "Chapters Read",
+                    "Notes Created",
+                    "People Learned",
+                    "Places Discovered",
+                    "Keywords Understood",
+                  ].map((metric) => (
+                    <button
+                      key={metric}
+                      onClick={() => setSelectedMetric(metric)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                        selectedMetric === metric
+                          ? "bg-blue-600 text-white shadow-sm"
+                          : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
+                      }`}
+                    >
+                      {metric}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Stats Log List View */}
+                {statsLogView === "list" && (
+                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
+                    <div className={`max-h-96 overflow-y-auto ${statsLogData.length > 10 ? 'p-4' : 'p-4'}`}>
+                      {statsLogData.map((row, idx) => {
+                        // Get the value for the selected metric
+                        const getMetricValue = () => {
+                          switch (selectedMetric) {
+                            case "Signups":
+                              return row.signups;
+                            case "Logins":
+                              return row.logins;
+                            case "Total Actions":
+                              return row.totalActions;
+                            case "Chapters Read":
+                              return row.chaptersRead;
+                            case "Notes Created":
+                              return row.notesCreated;
+                            case "People Learned":
+                              return row.peopleLearned;
+                            case "Places Discovered":
+                              return row.placesDiscovered;
+                            case "Keywords Understood":
+                              return row.keywordsUnderstood;
+                            default:
+                              return row.totalActions;
+                          }
+                        };
+
+                        // Alternate background colors
+                        const bgColorClass = idx % 2 === 0 ? "bg-blue-50" : "bg-green-50";
+                        const borderColorClass = idx % 2 === 0 ? "border-blue-500" : "border-green-500";
+
+                        return (
+                          <div
+                            key={idx}
+                            onClick={() => setSelectedStatsRow(row)}
+                            className={`mb-2 p-3 rounded cursor-pointer hover:opacity-90 transition-opacity border-l-4 ${bgColorClass} ${borderColorClass}`}
+                          >
+                            <p className="text-sm text-gray-900">
+                              <span className="font-medium">{row.period}:</span> {selectedMetric} - {getMetricValue().toLocaleString()}
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* Stats Log Graph View */}
+                {statsLogView === "graph" && (
+                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+                    <div className="h-64 relative">
+                      <StatsGraph
+                        data={statsLogData}
+                        metric={selectedMetric}
+                        timeFilter={timeFilter}
+                      />
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+          </>
+        )}
+
+        {/* INBOX SECTION */}
+        {activeSection === "inbox" && (
+          <div data-inbox-section>
+            {(loadingInbox || loadingRequests) ? (
+              <div className="bg-white p-4 rounded-xl shadow">
+                <p className="text-gray-500 text-sm">Loading inbox...</p>
+              </div>
+            ) : feedbackInbox.length === 0 && userRequestsInbox.length === 0 ? (
+              <div className="bg-white p-4 rounded-xl shadow">
+                <p className="text-gray-500 text-sm">No messages yet.</p>
+              </div>
+            ) : (
+              <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
+                <div className="max-h-96 overflow-y-auto p-4">
+                  {(() => {
+                    // Combine and sort by date (most recent first)
+                    const allItems = [
+                      ...userRequestsInbox.map((item) => ({
+                        ...item,
+                        type: "request" as const,
+                        sortKey: new Date(item.created_at).getTime(),
+                      })),
+                      ...feedbackInbox.map((item) => ({
+                        ...item,
+                        type: "feedback" as const,
+                        sortKey: new Date(item.created_at).getTime(),
+                      })),
+                    ].sort((a, b) => b.sortKey - a.sortKey);
+
+                    // Filter out dismissed items
+                    const visibleItems = allItems.filter((item) => !dismissedInboxItems.has(item.id));
+
+                    return visibleItems.map((item) => {
+                      if (item.type === "request") {
+                        return (
+                          <div
+                            key={`request-${item.id}`}
+                            className="group mb-2 p-3 rounded bg-blue-50 border-l-4 border-blue-500 hover:bg-blue-100 transition-colors flex items-center justify-between gap-3"
+                          >
+                            <p 
+                              className="text-sm text-gray-900 flex-1 cursor-pointer"
+                              onClick={() => setSelectedRequest(item.fullData)}
+                            >
+                              📨 {item.date} at {item.time} — {item.username} sent a message ({item.subject})
+                            </p>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                dismissInboxItem(item.id, "request");
+                              }}
+                              className="opacity-0 group-hover:opacity-100 px-3 py-1 text-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded border border-red-200 transition-all"
+                              title="Remove from inbox"
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        );
+                      } else {
+                        return (
+                          <div
+                            key={`feedback-${item.id}`}
+                            className="group mb-2 p-3 rounded bg-green-50 border-l-4 border-green-500 hover:bg-green-100 transition-colors flex items-center justify-between gap-3"
+                          >
+                            <p 
+                              className="text-sm text-gray-900 flex-1 cursor-pointer"
+                              onClick={() => setSelectedFeedback(item.fullData)}
+                            >
+                              On {item.date} at {item.time}, {item.username}.
+                            </p>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                dismissInboxItem(item.id, "feedback");
+                              }}
+                              className="opacity-0 group-hover:opacity-100 px-3 py-1 text-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded border border-red-200 transition-all"
+                              title="Remove from inbox"
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        );
+                      }
+                    });
+                  })()}
+                </div>
+              </div>
+            )}
+          </div>
         )}
       </div>
 
@@ -1737,97 +1889,6 @@ export default function AnalyticsPage() {
           </div>
         </div>
       )}
-
-      {/* INBOX SECTION (Feedback + User Requests) */}
-      <div className="mt-12 mb-6" data-inbox-section>
-        <h2 className="text-2xl font-bold mb-4">Inbox</h2>
-        
-        {/* Combined loading state */}
-        {(loadingInbox || loadingRequests) ? (
-          <div className="bg-white p-4 rounded-xl shadow">
-            <p className="text-gray-500 text-sm">Loading inbox...</p>
-          </div>
-        ) : feedbackInbox.length === 0 && userRequestsInbox.length === 0 ? (
-          <div className="bg-white p-4 rounded-xl shadow">
-            <p className="text-gray-500 text-sm">No messages yet.</p>
-          </div>
-        ) : (
-          <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
-            <div className="max-h-96 overflow-y-auto p-4">
-              {(() => {
-                // Combine and sort by date (most recent first)
-                const allItems = [
-                  ...userRequestsInbox.map((item) => ({
-                    ...item,
-                    type: "request" as const,
-                    sortKey: new Date(item.created_at).getTime(),
-                  })),
-                  ...feedbackInbox.map((item) => ({
-                    ...item,
-                    type: "feedback" as const,
-                    sortKey: new Date(item.created_at).getTime(),
-                  })),
-                ].sort((a, b) => b.sortKey - a.sortKey);
-
-                // Filter out dismissed items
-                const visibleItems = allItems.filter((item) => !dismissedInboxItems.has(item.id));
-
-                return visibleItems.map((item) => {
-                  if (item.type === "request") {
-                    return (
-                      <div
-                        key={`request-${item.id}`}
-                        className="group mb-2 p-3 rounded bg-blue-50 border-l-4 border-blue-500 hover:bg-blue-100 transition-colors flex items-center justify-between gap-3"
-                      >
-                        <p 
-                          className="text-sm text-gray-900 flex-1 cursor-pointer"
-                          onClick={() => openRequestDetail(item)}
-                        >
-                          📨 {item.date} at {item.time} — {item.username} sent a message ({item.subject})
-                        </p>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            dismissInboxItem(item.id, "request");
-                          }}
-                          className="opacity-0 group-hover:opacity-100 px-3 py-1 text-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded border border-red-200 transition-all"
-                          title="Remove from inbox"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    );
-                  } else {
-                    return (
-                      <div
-                        key={`feedback-${item.id}`}
-                        className="group mb-2 p-3 rounded bg-green-50 border-l-4 border-green-500 hover:bg-green-100 transition-colors flex items-center justify-between gap-3"
-                      >
-                        <p 
-                          className="text-sm text-gray-900 flex-1 cursor-pointer"
-                          onClick={() => openFeedbackDetail(item)}
-                        >
-                          On {item.date} at {item.time}, {item.username}.
-                        </p>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            dismissInboxItem(item.id, "feedback");
-                          }}
-                          className="opacity-0 group-hover:opacity-100 px-3 py-1 text-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded border border-red-200 transition-all"
-                          title="Remove from inbox"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    );
-                  }
-                });
-              })()}
-            </div>
-          </div>
-        )}
-      </div>
 
       {/* FEEDBACK DETAIL MODAL */}
       {selectedFeedback && (
