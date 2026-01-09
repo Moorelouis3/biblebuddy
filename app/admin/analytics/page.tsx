@@ -1109,7 +1109,7 @@ export default function AnalyticsPage() {
                     return (
                       <div
                         key={`request-${item.id}`}
-                        className="mb-2 p-3 rounded bg-blue-50 border-l-4 border-blue-500 hover:bg-blue-100 transition-colors flex items-center justify-between gap-3"
+                        className="group mb-2 p-3 rounded bg-blue-50 border-l-4 border-blue-500 hover:bg-blue-100 transition-colors flex items-center justify-between gap-3"
                       >
                         <p 
                           className="text-sm text-gray-900 flex-1 cursor-pointer"
@@ -1122,7 +1122,7 @@ export default function AnalyticsPage() {
                             e.stopPropagation();
                             dismissInboxItem(item.id);
                           }}
-                          className="px-3 py-1 text-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded border border-red-200 transition-colors"
+                          className="opacity-0 group-hover:opacity-100 px-3 py-1 text-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded border border-red-200 transition-all"
                           title="Remove from inbox"
                         >
                           Delete
@@ -1133,7 +1133,7 @@ export default function AnalyticsPage() {
                     return (
                       <div
                         key={`feedback-${item.id}`}
-                        className="mb-2 p-3 rounded bg-green-50 border-l-4 border-green-500 hover:bg-green-100 transition-colors flex items-center justify-between gap-3"
+                        className="group mb-2 p-3 rounded bg-green-50 border-l-4 border-green-500 hover:bg-green-100 transition-colors flex items-center justify-between gap-3"
                       >
                         <p 
                           className="text-sm text-gray-900 flex-1 cursor-pointer"
@@ -1146,7 +1146,7 @@ export default function AnalyticsPage() {
                             e.stopPropagation();
                             dismissInboxItem(item.id);
                           }}
-                          className="px-3 py-1 text-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded border border-red-200 transition-colors"
+                          className="opacity-0 group-hover:opacity-100 px-3 py-1 text-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded border border-red-200 transition-all"
                           title="Remove from inbox"
                         >
                           Delete
