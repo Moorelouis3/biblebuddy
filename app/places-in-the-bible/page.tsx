@@ -54,16 +54,7 @@ export default function PlacesInTheBiblePage() {
 
     console.log("[PLACES_PAGE] Place clicked:", place.name);
 
-    // Check study view limit
-    const { allowed, reason } = await checkStudyViewLimit(userId);
-
-    if (!allowed) {
-      console.log("[PLACES_PAGE] study_view blocked — free limit reached");
-      setShowUpgradeModal(true);
-      return;
-    }
-
-    // Log study view BEFORE allowing access
+    // Log study view for analytics (no restrictions)
     const insertSuccess = await logStudyView(userId, username, "place");
     if (!insertSuccess) {
       console.error("[PLACES_PAGE] Failed to log study_view, but allowing access anyway");
