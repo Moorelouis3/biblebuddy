@@ -13,7 +13,6 @@ import { checkProExpiration } from "../lib/checkProExpiration";
 import { FeedbackModal } from "./FeedbackModal";
 import { ContactUsModal } from "./ContactUsModal";
 import { NewMessageAlert } from "./NewMessageAlert";
-import { UpgradeBanner } from "./UpgradeBanner";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -304,8 +303,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       {/* NEW MESSAGE ALERT (admin only) */}
       {isAdmin && <NewMessageAlert />}
 
-      {/* UPGRADE BANNER (free users only) */}
-      {isLoggedIn && <UpgradeBanner />}
 
       {/* FEEDBACK MODAL */}
       {isLoggedIn && userId && (
@@ -620,8 +617,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* PAGE CONTENT */}
-      {/* Add bottom padding so the fixed UpgradeBanner doesn't cover content */}
-      <main className={!isBarePage ? "pt-2 pb-16 bg-gray-50 min-h-screen" : ""}>
+      <main className={!isBarePage ? "pt-2 pb-2 bg-gray-50 min-h-screen" : ""}>
         {children}
       </main>
 
