@@ -706,7 +706,7 @@ export default function AnalyticsPage() {
       const { data: feedbackData, error } = await supabase
         .from("user_feedback")
         .select("id, username, created_at, discovery_source, happiness_rating, usefulness_rating, usage_frequency, recommendation_likelihood, improvement_feedback, review_text, dismissed_from_inbox")
-        .eq("dismissed_from_inbox", false) // Only show non-dismissed items
+        .or("dismissed_from_inbox.is.null,dismissed_from_inbox.eq.false") // Show items that are not dismissed (NULL or false)
         .order("created_at", { ascending: false })
         .limit(100); // Limit to 100 most recent feedback items
 
@@ -801,7 +801,7 @@ export default function AnalyticsPage() {
       const { data: requestsData, error } = await supabase
         .from("user_requests")
         .select("id, username, subject, message, screenshot_url, created_at, dismissed_from_inbox")
-        .eq("dismissed_from_inbox", false) // Only show non-dismissed items
+        .or("dismissed_from_inbox.is.null,dismissed_from_inbox.eq.false") // Show items that are not dismissed (NULL or false)
         .order("created_at", { ascending: false })
         .limit(100); // Limit to 100 most recent requests
 
