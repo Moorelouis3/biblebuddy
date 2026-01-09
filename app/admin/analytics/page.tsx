@@ -50,6 +50,26 @@ export default function AnalyticsPage() {
   // Action type filter for Action Log
   const [selectedActionType, setSelectedActionType] = useState<string | null>(null);
 
+  // Stats Log
+  const [statsLogData, setStatsLogData] = useState<
+    Array<{
+      period: string;
+      signups: number;
+      logins: number;
+      totalActions: number;
+      chaptersRead: number;
+      notesCreated: number;
+      peopleLearned: number;
+      placesDiscovered: number;
+      keywordsUnderstood: number;
+      startDate: Date;
+      endDate: Date;
+    }>
+  >([]);
+  const [loadingStatsLog, setLoadingStatsLog] = useState(true);
+  const [selectedMetric, setSelectedMetric] = useState<string>("Total Actions");
+  const [selectedStatsRow, setSelectedStatsRow] = useState<number | null>(null);
+
   // Admin Action Log
   const [actionLog, setActionLog] = useState<
     Array<{ date: string; text: string; sortKey: number; actionType: string }>
@@ -82,6 +102,7 @@ export default function AnalyticsPage() {
   useEffect(() => {
     loadOverviewMetrics(timeFilter);
     buildAdminActionLog(timeFilter, selectedActionType);
+    loadStatsLog(timeFilter);
   }, [timeFilter, selectedActionType]);
 
   // Load active users (within last 60 minutes)
