@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
 type TimeFilter = "24h" | "7d" | "30d" | "1y" | "all";
