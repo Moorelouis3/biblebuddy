@@ -179,6 +179,10 @@ export default function DashboardPage() {
     }
 
     function updateCountdown() {
+      if (!proExpiresAt) {
+        setDaysRemaining(null);
+        return;
+      }
       const expirationDate = new Date(proExpiresAt);
       const now = new Date();
       const diffMs = expirationDate.getTime() - now.getTime();
