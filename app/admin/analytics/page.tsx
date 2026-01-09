@@ -831,37 +831,51 @@ export default function AnalyticsPage() {
     try {
       const tableName = itemType === "feedback" ? "user_feedback" : "user_requests";
       
-      // Try to update the database
+      // Update the database to mark as dismissed
       const { error } = await supabase
         .from(tableName)
         .update({ dismissed_from_inbox: true })
         .eq("id", itemId);
 
       if (error) {
-        // Check if error is because column doesn't exist
+        console.error(`[INBOX] Error dismissing ${itemType} item:`, error);
+        console.error(`[INBOX] Error details:`, JSON.stringify(error, null, 2));
+        
+        // If column doesn't exist or RLS policy issue, show helpful message
         if (error.message?.includes("column") || error.code === "42703" || error.message?.includes("dismissed_from_inbox")) {
-          console.log(`[INBOX] Column dismissed_from_inbox doesn't exist yet. Item removed from display only.`);
-          // Item already removed from display via local state, so this is fine
-          // User needs to run the SQL migration for persistence
-          return;
+          alert("Please run the SQL migration ADD_DISMISSED_FROM_INBOX_WITH_POLICIES.sql to enable persistent dismissals.");
+        } else if (error.code === "42501" || error.message?.includes("permission") || error.message?.includes("policy")) {
+          alert("Permission denied. Please ensure UPDATE policies are set for admin on this table.");
+        } else {
+          alert(`Failed to dismiss item: ${error.message || "Unknown error"}`);
         }
         
-        console.error(`[INBOX] Error dismissing ${itemType} item:`, error);
-        // Don't show alert - item is already removed from display
-        // If it's a real error (not missing column), the item will reappear on refresh
+        // Remove from dismissed set so it reappears (since DB update failed)
+        setDismissedInboxItems((prev) => {
+          const next = new Set(prev);
+          next.delete(itemId);
+          return next;
+        });
         return;
       }
 
       // Successfully updated database - reload inbox to ensure consistency
+      console.log(`[INBOX] Successfully dismissed ${itemType} item ${itemId}`);
       if (itemType === "feedback") {
-        loadFeedbackInbox();
+        await loadFeedbackInbox();
       } else {
-        loadUserRequestsInbox();
+        await loadUserRequestsInbox();
       }
     } catch (err: any) {
       console.error(`[INBOX] Error dismissing ${itemType} item:`, err);
-      // Don't show alert - item is already removed from display
-      // If there's an error, it will reappear on refresh, but at least UI is responsive
+      alert(`Failed to dismiss item: ${err.message || "Unknown error"}`);
+      
+      // Remove from dismissed set so it reappears (since DB update failed)
+      setDismissedInboxItems((prev) => {
+        const next = new Set(prev);
+        next.delete(itemId);
+        return next;
+      });
     }
   }
 
