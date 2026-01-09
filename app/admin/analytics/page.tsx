@@ -705,7 +705,8 @@ export default function AnalyticsPage() {
     try {
       const { data: feedbackData, error } = await supabase
         .from("user_feedback")
-        .select("id, username, created_at, discovery_source, happiness_rating, usefulness_rating, usage_frequency, recommendation_likelihood, improvement_feedback, review_text")
+        .select("id, username, created_at, discovery_source, happiness_rating, usefulness_rating, usage_frequency, recommendation_likelihood, improvement_feedback, review_text, dismissed_from_inbox")
+        .eq("dismissed_from_inbox", false) // Only show non-dismissed items
         .order("created_at", { ascending: false })
         .limit(100); // Limit to 100 most recent feedback items
 
@@ -757,9 +758,35 @@ export default function AnalyticsPage() {
     setSelectedFeedback(feedback.fullData);
   }
 
-  // Dismiss inbox item (removes from display, but NOT from database)
-  function dismissInboxItem(itemId: string) {
-    setDismissedInboxItems((prev) => new Set(prev).add(itemId));
+  // Dismiss inbox item (marks as dismissed in database, removes from display)
+  async function dismissInboxItem(itemId: string, itemType: "feedback" | "request") {
+    try {
+      const tableName = itemType === "feedback" ? "user_feedback" : "user_requests";
+      
+      const { error } = await supabase
+        .from(tableName)
+        .update({ dismissed_from_inbox: true })
+        .eq("id", itemId);
+
+      if (error) {
+        console.error(`[INBOX] Error dismissing ${itemType} item:`, error);
+        alert(`Failed to dismiss item. Please try again.`);
+        return;
+      }
+
+      // Update local state to immediately remove from display
+      setDismissedInboxItems((prev) => new Set(prev).add(itemId));
+      
+      // Reload inbox to reflect database changes
+      if (itemType === "feedback") {
+        loadFeedbackInbox();
+      } else {
+        loadUserRequestsInbox();
+      }
+    } catch (err) {
+      console.error(`[INBOX] Error dismissing ${itemType} item:`, err);
+      alert(`Failed to dismiss item. Please try again.`);
+    }
   }
 
   // Close feedback detail modal
@@ -773,7 +800,8 @@ export default function AnalyticsPage() {
     try {
       const { data: requestsData, error } = await supabase
         .from("user_requests")
-        .select("id, username, subject, message, screenshot_url, created_at")
+        .select("id, username, subject, message, screenshot_url, created_at, dismissed_from_inbox")
+        .eq("dismissed_from_inbox", false) // Only show non-dismissed items
         .order("created_at", { ascending: false })
         .limit(100); // Limit to 100 most recent requests
 
@@ -1120,7 +1148,7 @@ export default function AnalyticsPage() {
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            dismissInboxItem(item.id);
+                            dismissInboxItem(item.id, "request");
                           }}
                           className="opacity-0 group-hover:opacity-100 px-3 py-1 text-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded border border-red-200 transition-all"
                           title="Remove from inbox"
@@ -1144,7 +1172,7 @@ export default function AnalyticsPage() {
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            dismissInboxItem(item.id);
+                            dismissInboxItem(item.id, "request");
                           }}
                           className="opacity-0 group-hover:opacity-100 px-3 py-1 text-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded border border-red-200 transition-all"
                           title="Remove from inbox"
