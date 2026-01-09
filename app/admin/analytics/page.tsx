@@ -68,7 +68,7 @@ export default function AnalyticsPage() {
   >([]);
   const [loadingStatsLog, setLoadingStatsLog] = useState(true);
   const [selectedMetric, setSelectedMetric] = useState<string>("Total Actions");
-  const [selectedStatsRow, setSelectedStatsRow] = useState<number | null>(null);
+  const [selectedStatsRow, setSelectedStatsRow] = useState<typeof statsLogData[0] | null>(null);
 
   // Admin Action Log
   const [actionLog, setActionLog] = useState<
@@ -1586,45 +1586,50 @@ export default function AnalyticsPage() {
           </div>
         ) : (
           <>
-            {/* Stats Log Table */}
-            <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6 overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead className="bg-gray-50 border-b border-gray-200">
-                    <tr>
-                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase">Period</th>
-                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Signups</th>
-                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Logins</th>
-                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Total Actions</th>
-                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Chapters Read</th>
-                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Notes Created</th>
-                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">People Learned</th>
-                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Places Discovered</th>
-                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Keywords Understood</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200">
-                    {statsLogData.map((row, idx) => (
-                      <tr
-                        key={idx}
-                        onClick={() => setSelectedStatsRow(selectedStatsRow === idx ? null : idx)}
-                        className={`cursor-pointer hover:bg-gray-50 transition-colors ${
-                          selectedStatsRow === idx ? "bg-blue-50" : ""
-                        }`}
-                      >
-                        <td className="px-4 py-3 text-sm font-medium text-gray-900">{row.period}</td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.signups.toLocaleString()}</td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.logins.toLocaleString()}</td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.totalActions.toLocaleString()}</td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.chaptersRead.toLocaleString()}</td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.notesCreated.toLocaleString()}</td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.peopleLearned.toLocaleString()}</td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.placesDiscovered.toLocaleString()}</td>
-                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.keywordsUnderstood.toLocaleString()}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+            {/* Stats Log List (Action Log Style) */}
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6">
+              <div className={`max-h-96 overflow-y-auto ${statsLogData.length > 10 ? 'p-4' : 'p-4'}`}>
+                {statsLogData.map((row, idx) => {
+                  // Get the value for the selected metric
+                  const getMetricValue = () => {
+                    switch (selectedMetric) {
+                      case "Signups":
+                        return row.signups;
+                      case "Logins":
+                        return row.logins;
+                      case "Total Actions":
+                        return row.totalActions;
+                      case "Chapters Read":
+                        return row.chaptersRead;
+                      case "Notes Created":
+                        return row.notesCreated;
+                      case "People Learned":
+                        return row.peopleLearned;
+                      case "Places Discovered":
+                        return row.placesDiscovered;
+                      case "Keywords Understood":
+                        return row.keywordsUnderstood;
+                      default:
+                        return row.totalActions;
+                    }
+                  };
+
+                  // Alternate background colors
+                  const bgColorClass = idx % 2 === 0 ? "bg-blue-50" : "bg-green-50";
+                  const borderColorClass = idx % 2 === 0 ? "border-blue-500" : "border-green-500";
+
+                  return (
+                    <div
+                      key={idx}
+                      onClick={() => setSelectedStatsRow(row)}
+                      className={`mb-2 p-3 rounded cursor-pointer hover:opacity-90 transition-opacity border-l-4 ${bgColorClass} ${borderColorClass}`}
+                    >
+                      <p className="text-sm text-gray-900">
+                        <span className="font-medium">{row.period}:</span> {selectedMetric} - {getMetricValue().toLocaleString()}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -1667,6 +1672,71 @@ export default function AnalyticsPage() {
           </>
         )}
       </div>
+
+      {/* STATS LOG DETAIL MODAL */}
+      {selectedStatsRow && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold">Stats for {selectedStatsRow.period}</h2>
+                <button
+                  onClick={() => setSelectedStatsRow(null)}
+                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Signups</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.signups.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-blue-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Logins</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.logins.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-green-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Total Actions</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.totalActions.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-green-100 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Chapters Read</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.chaptersRead.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-yellow-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Notes Created</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.notesCreated.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-pink-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">People Learned</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.peopleLearned.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-cyan-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Places Discovered</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.placesDiscovered.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Keywords Understood</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.keywordsUnderstood.toLocaleString()}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-6 border-t mt-6">
+                <button
+                  onClick={() => setSelectedStatsRow(null)}
+                  className="w-full px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* INBOX SECTION (Feedback + User Requests) */}
       <div className="mt-12 mb-6" data-inbox-section>
