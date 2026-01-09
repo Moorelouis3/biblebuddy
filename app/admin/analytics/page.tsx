@@ -703,20 +703,18 @@ export default function AnalyticsPage() {
   async function loadFeedbackInbox() {
     setLoadingInbox(true);
     try {
-      // Try to select with dismissed_from_inbox column, but handle if it doesn't exist
-      let query = supabase
+      // Select all columns including dismissed_from_inbox (will be null if column doesn't exist yet)
+      const { data: feedbackData, error } = await supabase
         .from("user_feedback")
         .select("id, username, created_at, discovery_source, happiness_rating, usefulness_rating, usage_frequency, recommendation_likelihood, improvement_feedback, review_text, dismissed_from_inbox")
         .order("created_at", { ascending: false })
         .limit(100);
 
-      const { data: feedbackData, error } = await query;
-
       if (error) {
         console.error("[FEEDBACK_INBOX] Error fetching feedback:", error);
-        // If column doesn't exist, try without it
-        if (error.message?.includes("column") || error.code === "42703") {
-          console.log("[FEEDBACK_INBOX] Retrying without dismissed_from_inbox column");
+        // If column doesn't exist, retry without it
+        if (error.message?.includes("column") || error.code === "42703" || error.message?.includes("dismissed_from_inbox")) {
+          console.log("[FEEDBACK_INBOX] Column dismissed_from_inbox doesn't exist, retrying without it");
           const { data: retryData, error: retryError } = await supabase
             .from("user_feedback")
             .select("id, username, created_at, discovery_source, happiness_rating, usefulness_rating, usage_frequency, recommendation_likelihood, improvement_feedback, review_text")
@@ -730,19 +728,8 @@ export default function AnalyticsPage() {
             return;
           }
           
-          // Filter out dismissed items in JavaScript if column exists
-          const filteredData = (retryData || []).filter((item: any) => 
-            item.dismissed_from_inbox !== true
-          );
-          
-          if (!filteredData || filteredData.length === 0) {
-            setFeedbackInbox([]);
-            setLoadingInbox(false);
-            return;
-          }
-          
-          // Use filtered data
-          const inboxItems = filteredData.map((feedback: any) => {
+          // Format items (no dismissed_from_inbox column, so show all)
+          const inboxItems = (retryData || []).map((feedback: any) => {
             const feedbackDate = new Date(feedback.created_at);
             const formattedDate = formatAdminActionDate(feedbackDate);
             const formattedTime = formatAdminActionTime(feedbackDate);
@@ -777,7 +764,7 @@ export default function AnalyticsPage() {
         return;
       }
 
-      // Filter out dismissed items (handle both NULL and false as visible)
+      // Filter out dismissed items - only hide if explicitly set to true
       const visibleData = feedbackData.filter((item: any) => 
         item.dismissed_from_inbox !== true
       );
@@ -888,20 +875,18 @@ export default function AnalyticsPage() {
   async function loadUserRequestsInbox() {
     setLoadingRequests(true);
     try {
-      // Try to select with dismissed_from_inbox column, but handle if it doesn't exist
-      let query = supabase
+      // Select all columns including dismissed_from_inbox (will be null if column doesn't exist yet)
+      const { data: requestsData, error } = await supabase
         .from("user_requests")
         .select("id, username, subject, message, screenshot_url, created_at, dismissed_from_inbox")
         .order("created_at", { ascending: false })
         .limit(100);
 
-      const { data: requestsData, error } = await query;
-
       if (error) {
         console.error("[USER_REQUESTS_INBOX] Error fetching requests:", error);
-        // If column doesn't exist, try without it
-        if (error.message?.includes("column") || error.code === "42703") {
-          console.log("[USER_REQUESTS_INBOX] Retrying without dismissed_from_inbox column");
+        // If column doesn't exist, retry without it
+        if (error.message?.includes("column") || error.code === "42703" || error.message?.includes("dismissed_from_inbox")) {
+          console.log("[USER_REQUESTS_INBOX] Column dismissed_from_inbox doesn't exist, retrying without it");
           const { data: retryData, error: retryError } = await supabase
             .from("user_requests")
             .select("id, username, subject, message, screenshot_url, created_at")
@@ -915,19 +900,8 @@ export default function AnalyticsPage() {
             return;
           }
           
-          // Filter out dismissed items in JavaScript
-          const filteredData = (retryData || []).filter((item: any) => 
-            item.dismissed_from_inbox !== true
-          );
-          
-          if (!filteredData || filteredData.length === 0) {
-            setUserRequestsInbox([]);
-            setLoadingRequests(false);
-            return;
-          }
-          
-          // Use filtered data
-          const inboxItems = filteredData.map((request: any) => {
+          // Format items (no dismissed_from_inbox column, so show all)
+          const inboxItems = (retryData || []).map((request: any) => {
             const requestDate = new Date(request.created_at);
             const formattedDate = formatAdminActionDate(requestDate);
             const formattedTime = formatAdminActionTime(requestDate);
@@ -960,7 +934,7 @@ export default function AnalyticsPage() {
         return;
       }
 
-      // Filter out dismissed items (handle both NULL and false as visible)
+      // Filter out dismissed items - only hide if explicitly set to true
       const visibleData = requestsData.filter((item: any) => 
         item.dismissed_from_inbox !== true
       );
