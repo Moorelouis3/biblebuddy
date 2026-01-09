@@ -409,7 +409,6 @@ function normalizePersonMarkdown(markdown: string): string {
 }
 
 export default function PeopleInTheBiblePage() {
-  const router = useRouter();
   const [people] = useState<BiblePerson[]>(createStaticPeople());
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
