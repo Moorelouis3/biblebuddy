@@ -435,6 +435,173 @@ export default function AnalyticsPage() {
     return { loginDays: loginDaysMap, totalActions: totalActionsMap };
   }
 
+  // Load Stats Log - aggregated stats by time buckets
+  async function loadStatsLog(filter: TimeFilter) {
+    setLoadingStatsLog(true);
+    try {
+      const fromDate = getFromDate(filter);
+      const now = new Date();
+      
+      let buckets: Array<{ start: Date; end: Date; label: string }> = [];
+      
+      // Create time buckets based on filter
+      if (filter === "24h") {
+        // One bucket per day for last 7 days
+        for (let i = 6; i >= 0; i--) {
+          const date = new Date(now);
+          date.setDate(date.getDate() - i);
+          date.setHours(0, 0, 0, 0);
+          const endDate = new Date(date);
+          endDate.setHours(23, 59, 59, 999);
+          buckets.push({
+            start: date,
+            end: endDate,
+            label: date.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+          });
+        }
+      } else if (filter === "7d") {
+        // One bucket per 7-day window
+        const startDate = fromDate ? new Date(fromDate) : new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+        const weeks = Math.ceil((now.getTime() - startDate.getTime()) / (7 * 24 * 60 * 60 * 1000));
+        for (let i = weeks - 1; i >= 0; i--) {
+          const end = new Date(now);
+          end.setDate(end.getDate() - (i * 7));
+          const start = new Date(end);
+          start.setDate(start.getDate() - 7);
+          buckets.push({
+            start,
+            end,
+            label: `${start.toLocaleDateString("en-US", { month: "short", day: "numeric" })} - ${end.toLocaleDateString("en-US", { month: "short", day: "numeric" })}`,
+          });
+        }
+      } else if (filter === "30d") {
+        // One bucket per 30-day window
+        const startDate = fromDate ? new Date(fromDate) : new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+        const months = Math.ceil((now.getTime() - startDate.getTime()) / (30 * 24 * 60 * 60 * 1000));
+        for (let i = months - 1; i >= 0; i--) {
+          const end = new Date(now);
+          end.setDate(end.getDate() - (i * 30));
+          const start = new Date(end);
+          start.setDate(start.getDate() - 30);
+          buckets.push({
+            start,
+            end,
+            label: `${start.toLocaleDateString("en-US", { month: "short", year: "numeric" })} - ${end.toLocaleDateString("en-US", { month: "short", year: "numeric" })}`,
+          });
+        }
+      } else if (filter === "1y") {
+        // One bucket per year
+        const startYear = fromDate ? new Date(fromDate).getFullYear() : now.getFullYear() - 1;
+        const endYear = now.getFullYear();
+        for (let year = startYear; year <= endYear; year++) {
+          buckets.push({
+            start: new Date(year, 0, 1),
+            end: new Date(year, 11, 31, 23, 59, 59, 999),
+            label: year.toString(),
+          });
+        }
+      } else {
+        // All time - one bucket
+        buckets.push({
+          start: new Date(0),
+          end: now,
+          label: "All Time",
+        });
+      }
+
+      // Aggregate data for each bucket
+      const statsPromises = buckets.map(async (bucket) => {
+        const bucketStart = bucket.start.toISOString();
+        const bucketEnd = bucket.end.toISOString();
+
+        // Signups
+        const { count: signups } = await supabase
+          .from("user_signups")
+          .select("id", { count: "exact", head: true })
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        // Logins (distinct users)
+        const { data: loginData } = await supabase
+          .from("master_actions")
+          .select("user_id")
+          .eq("action_type", "user_login")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+        const logins = new Set(loginData?.map((l) => l.user_id).filter(Boolean) || []).size;
+
+        // Total Actions
+        const { count: totalActions } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        // Chapters Read
+        const { count: chaptersRead } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "chapter_completed")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        // Notes Created
+        const { count: notesCreated } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "note_created")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        // People Learned
+        const { count: peopleLearned } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "person_learned")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        // Places Discovered
+        const { count: placesDiscovered } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "place_discovered")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        // Keywords Understood
+        const { count: keywordsUnderstood } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "keyword_mastered")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        return {
+          period: bucket.label,
+          signups: signups || 0,
+          logins: logins || 0,
+          totalActions: totalActions || 0,
+          chaptersRead: chaptersRead || 0,
+          notesCreated: notesCreated || 0,
+          peopleLearned: peopleLearned || 0,
+          placesDiscovered: placesDiscovered || 0,
+          keywordsUnderstood: keywordsUnderstood || 0,
+          startDate: bucket.start,
+          endDate: bucket.end,
+        };
+      });
+
+      const stats = await Promise.all(statsPromises);
+      setStatsLogData(stats);
+      setLoadingStatsLog(false);
+    } catch (err) {
+      console.error("[STATS_LOG] Error loading stats log:", err);
+      setStatsLogData([]);
+      setLoadingStatsLog(false);
+    }
+  }
+
   // Build Admin Action Log from master_actions table (all users)
   async function buildAdminActionLog(filter?: TimeFilter, actionTypeFilter?: string | null) {
     setLoadingActionLog(true);
@@ -1243,6 +1410,102 @@ export default function AnalyticsPage() {
               ))}
             </div>
           </div>
+        )}
+      </div>
+
+      {/* STATS LOG SECTION */}
+      <div className="mt-12 mb-6">
+        <h2 className="text-2xl font-bold mb-4">Stats Log</h2>
+        
+        {loadingStatsLog ? (
+          <div className="bg-white p-4 rounded-xl shadow">
+            <p className="text-gray-500 text-sm">Loading stats...</p>
+          </div>
+        ) : statsLogData.length === 0 ? (
+          <div className="bg-white p-4 rounded-xl shadow">
+            <p className="text-gray-500 text-sm">No stats data available.</p>
+          </div>
+        ) : (
+          <>
+            {/* Stats Log Table */}
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase">Period</th>
+                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Signups</th>
+                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Logins</th>
+                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Total Actions</th>
+                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Chapters Read</th>
+                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Notes Created</th>
+                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">People Learned</th>
+                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Places Discovered</th>
+                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-700 uppercase">Keywords Understood</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    {statsLogData.map((row, idx) => (
+                      <tr
+                        key={idx}
+                        onClick={() => setSelectedStatsRow(selectedStatsRow === idx ? null : idx)}
+                        className={`cursor-pointer hover:bg-gray-50 transition-colors ${
+                          selectedStatsRow === idx ? "bg-blue-50" : ""
+                        }`}
+                      >
+                        <td className="px-4 py-3 text-sm font-medium text-gray-900">{row.period}</td>
+                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.signups.toLocaleString()}</td>
+                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.logins.toLocaleString()}</td>
+                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.totalActions.toLocaleString()}</td>
+                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.chaptersRead.toLocaleString()}</td>
+                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.notesCreated.toLocaleString()}</td>
+                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.peopleLearned.toLocaleString()}</td>
+                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.placesDiscovered.toLocaleString()}</td>
+                        <td className="px-4 py-3 text-sm text-gray-700 text-right">{row.keywordsUnderstood.toLocaleString()}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Metric Toggle Bar */}
+            <div className="mb-4 flex flex-wrap gap-2">
+              {[
+                "Signups",
+                "Logins",
+                "Total Actions",
+                "Chapters Read",
+                "Notes Created",
+                "People Learned",
+                "Places Discovered",
+                "Keywords Understood",
+              ].map((metric) => (
+                <button
+                  key={metric}
+                  onClick={() => setSelectedMetric(metric)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    selectedMetric === metric
+                      ? "bg-blue-600 text-white shadow-sm"
+                      : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
+                  }`}
+                >
+                  {metric}
+                </button>
+              ))}
+            </div>
+
+            {/* Graph */}
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+              <div className="h-64 relative">
+                <StatsGraph
+                  data={statsLogData}
+                  metric={selectedMetric}
+                  timeFilter={timeFilter}
+                />
+              </div>
+            </div>
+          </>
         )}
       </div>
 
