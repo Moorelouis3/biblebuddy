@@ -1172,7 +1172,7 @@ export default function AnalyticsPage() {
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            dismissInboxItem(item.id, "request");
+                            dismissInboxItem(item.id, "feedback");
                           }}
                           className="opacity-0 group-hover:opacity-100 px-3 py-1 text-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded border border-red-200 transition-all"
                           title="Remove from inbox"
