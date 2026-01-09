@@ -58,14 +58,15 @@ export default function AnalyticsPage() {
 
   // Feedback Inbox
   const [feedbackInbox, setFeedbackInbox] = useState<
-    Array<{ id: string; username: string; created_at: string; date: string; time: string }>
+    Array<{ id: string; username: string; created_at: string; date: string; time: string; fullData?: any }>
   >([]);
   const [loadingInbox, setLoadingInbox] = useState(true);
   const [selectedFeedback, setSelectedFeedback] = useState<any | null>(null);
+  const [dismissedInboxItems, setDismissedInboxItems] = useState<Set<string>>(new Set());
   
   // User Requests Inbox
   const [userRequestsInbox, setUserRequestsInbox] = useState<
-    Array<{ id: string; username: string; subject: string; created_at: string; date: string; time: string }>
+    Array<{ id: string; username: string; subject: string; created_at: string; date: string; time: string; fullData?: any }>
   >([]);
   const [loadingRequests, setLoadingRequests] = useState(true);
   const [selectedRequest, setSelectedRequest] = useState<any | null>(null);
@@ -726,11 +727,15 @@ export default function AnalyticsPage() {
         const feedbackDate = new Date(feedback.created_at);
         const formattedDate = formatAdminActionDate(feedbackDate);
         const formattedTime = formatAdminActionTime(feedbackDate);
+        // Show username, or indicate they clicked "No" if happiness_rating is "Declined survey"
         const username = feedback.username || "Unknown User";
+        const displayText = feedback.happiness_rating === "Declined survey" 
+          ? `${username} clicked "No" on the feedback survey`
+          : `${username} completed the feedback survey`;
 
         return {
           id: feedback.id,
-          username,
+          username: displayText,
           created_at: feedback.created_at,
           date: formattedDate,
           time: formattedTime,
@@ -750,6 +755,11 @@ export default function AnalyticsPage() {
   // Open feedback detail modal
   function openFeedbackDetail(feedback: any) {
     setSelectedFeedback(feedback.fullData);
+  }
+
+  // Dismiss inbox item (removes from display, but NOT from database)
+  function dismissInboxItem(itemId: string) {
+    setDismissedInboxItems((prev) => new Set(prev).add(itemId));
   }
 
   // Close feedback detail modal
@@ -1091,29 +1101,56 @@ export default function AnalyticsPage() {
                   })),
                 ].sort((a, b) => b.sortKey - a.sortKey);
 
-                return allItems.map((item) => {
+                // Filter out dismissed items
+                const visibleItems = allItems.filter((item) => !dismissedInboxItems.has(item.id));
+
+                return visibleItems.map((item) => {
                   if (item.type === "request") {
                     return (
                       <div
                         key={`request-${item.id}`}
-                        className="mb-2 p-3 rounded bg-blue-50 border-l-4 border-blue-500 cursor-pointer hover:bg-blue-100 transition-colors"
-                        onClick={() => openRequestDetail(item)}
+                        className="mb-2 p-3 rounded bg-blue-50 border-l-4 border-blue-500 hover:bg-blue-100 transition-colors flex items-center justify-between gap-3"
                       >
-                        <p className="text-sm text-gray-900">
+                        <p 
+                          className="text-sm text-gray-900 flex-1 cursor-pointer"
+                          onClick={() => openRequestDetail(item)}
+                        >
                           📨 {item.date} at {item.time} — {item.username} sent a message ({item.subject})
                         </p>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            dismissInboxItem(item.id);
+                          }}
+                          className="px-3 py-1 text-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded border border-red-200 transition-colors"
+                          title="Remove from inbox"
+                        >
+                          Delete
+                        </button>
                       </div>
                     );
                   } else {
                     return (
                       <div
                         key={`feedback-${item.id}`}
-                        className="mb-2 p-3 rounded bg-green-50 border-l-4 border-green-500 cursor-pointer hover:bg-green-100 transition-colors"
-                        onClick={() => openFeedbackDetail(item)}
+                        className="mb-2 p-3 rounded bg-green-50 border-l-4 border-green-500 hover:bg-green-100 transition-colors flex items-center justify-between gap-3"
                       >
-                        <p className="text-sm text-gray-900">
-                          On {item.date} at {item.time}, {item.username} completed the feedback survey.
+                        <p 
+                          className="text-sm text-gray-900 flex-1 cursor-pointer"
+                          onClick={() => openFeedbackDetail(item)}
+                        >
+                          On {item.date} at {item.time}, {item.username}.
                         </p>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            dismissInboxItem(item.id);
+                          }}
+                          className="px-3 py-1 text-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded border border-red-200 transition-colors"
+                          title="Remove from inbox"
+                        >
+                          Delete
+                        </button>
                       </div>
                     );
                   }

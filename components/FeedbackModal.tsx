@@ -138,12 +138,29 @@ export function FeedbackModal({
 
   const handleNo = async () => {
     try {
-      // Mark as permanently dismissed - never show again
+      // Get username from auth if not provided
+      let finalUsername = username;
+      if (!finalUsername) {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          const meta: any = user.user_metadata || {};
+          finalUsername =
+            meta.firstName ||
+            meta.first_name ||
+            (user.email ? user.email.split("@")[0] : null) ||
+            "User";
+        }
+      }
+
+      // Mark as permanently dismissed - never show again, and save username
       const { error: updateError } = await supabase
         .from("user_feedback")
         .upsert({
           user_id: userId,
+          username: finalUsername,
           permanently_dismissed: true,
+          // Set a flag to indicate they clicked "No"
+          happiness_rating: "Declined survey",
         }, {
           onConflict: "user_id",
         });
