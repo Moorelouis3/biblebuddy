@@ -1209,6 +1209,165 @@ export default function AnalyticsPage() {
     }
   }
 
+  // Stats Graph Component
+  function StatsGraph({
+    data,
+    metric,
+    timeFilter,
+  }: {
+    data: typeof statsLogData;
+    metric: string;
+    timeFilter: TimeFilter;
+  }) {
+    const maxValue = useMemo(() => {
+      const values = data.map((row) => {
+        switch (metric) {
+          case "Signups":
+            return row.signups;
+          case "Logins":
+            return row.logins;
+          case "Total Actions":
+            return row.totalActions;
+          case "Chapters Read":
+            return row.chaptersRead;
+          case "Notes Created":
+            return row.notesCreated;
+          case "People Learned":
+            return row.peopleLearned;
+          case "Places Discovered":
+            return row.placesDiscovered;
+          case "Keywords Understood":
+            return row.keywordsUnderstood;
+          default:
+            return 0;
+        }
+      });
+      return Math.max(...values, 1);
+    }, [data, metric]);
+
+    const getValue = (row: typeof data[0]) => {
+      switch (metric) {
+        case "Signups":
+          return row.signups;
+        case "Logins":
+          return row.logins;
+        case "Total Actions":
+          return row.totalActions;
+        case "Chapters Read":
+          return row.chaptersRead;
+        case "Notes Created":
+          return row.notesCreated;
+        case "People Learned":
+          return row.peopleLearned;
+        case "Places Discovered":
+          return row.placesDiscovered;
+        case "Keywords Understood":
+          return row.keywordsUnderstood;
+        default:
+          return 0;
+      }
+    };
+
+    if (data.length === 0) {
+      return (
+        <div className="flex items-center justify-center h-full text-gray-500">
+          No data to display
+        </div>
+      );
+    }
+
+    const barWidth = Math.max(20, (100 / data.length) - 2);
+    const graphHeight = 200;
+    const graphWidth = Math.max(400, data.length * 50);
+
+    return (
+      <div className="w-full h-full overflow-x-auto">
+        <svg viewBox={`0 0 ${graphWidth} ${graphHeight + 40}`} className="w-full h-full min-w-full">
+          {/* Y-axis labels */}
+          {[0, 0.25, 0.5, 0.75, 1].map((ratio) => {
+            const value = Math.round(maxValue * ratio);
+            const y = graphHeight - graphHeight * ratio + 20;
+            return (
+              <g key={ratio}>
+                <line
+                  x1="40"
+                  y1={y}
+                  x2={graphWidth}
+                  y2={y}
+                  stroke="#e5e7eb"
+                  strokeWidth="1"
+                  strokeDasharray="2,2"
+                />
+                <text
+                  x="35"
+                  y={y + 4}
+                  textAnchor="end"
+                  className="text-xs fill-gray-600"
+                  fontSize="10"
+                >
+                  {value.toLocaleString()}
+                </text>
+              </g>
+            );
+          })}
+
+          {/* Bars */}
+          {data.map((row, idx) => {
+            const value = getValue(row);
+            const height = (value / maxValue) * graphHeight;
+            const x = 50 + idx * 50;
+            const y = graphHeight + 20 - height;
+            const barHeight = Math.max(2, height);
+
+            return (
+              <g key={idx}>
+                <rect
+                  x={x - barWidth / 2}
+                  y={y}
+                  width={barWidth}
+                  height={barHeight}
+                  fill="#3b82f6"
+                  className="hover:fill-blue-700 transition-colors"
+                  rx="2"
+                />
+                <text
+                  x={x}
+                  y={graphHeight + 35}
+                  textAnchor="middle"
+                  className="text-xs fill-gray-600"
+                  fontSize="9"
+                  transform={`rotate(-45 ${x} ${graphHeight + 35})`}
+                >
+                  {row.period.length > 8 ? row.period.substring(0, 8) + "..." : row.period}
+                </text>
+                <title>{`${row.period}: ${value.toLocaleString()}`}</title>
+              </g>
+            );
+          })}
+
+          {/* X-axis line */}
+          <line
+            x1="40"
+            y1={graphHeight + 20}
+            x2={graphWidth}
+            y2={graphHeight + 20}
+            stroke="#374151"
+            strokeWidth="2"
+          />
+
+          {/* Y-axis line */}
+          <line
+            x1="40"
+            y1="20"
+            x2="40"
+            y2={graphHeight + 20}
+            stroke="#374151"
+            strokeWidth="2"
+          />
+        </svg>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-3xl mx-auto p-4">
