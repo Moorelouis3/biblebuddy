@@ -36,9 +36,10 @@ export async function POST(req: NextRequest) {
     console.log(`[PROMO_CODE] Received code request: "${normalizedCode}"`);
 
     // Check if code is valid (server-side only - never expose valid codes in frontend)
-    const VALID_CODE = "BIBLEBUDDY100OFF";
+    const LIFETIME_PRO_CODE = "BIBLEBUDDY100OFF";
+    const TRIAL_30_DAYS_CODE = "BIBLEBUDDY30DAYS";
 
-    if (normalizedCode !== VALID_CODE) {
+    if (normalizedCode !== LIFETIME_PRO_CODE && normalizedCode !== TRIAL_30_DAYS_CODE) {
       console.log(`[PROMO_CODE] ❌ Invalid code: "${normalizedCode}"`);
       return NextResponse.json(
         {
@@ -48,7 +49,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    console.log(`[PROMO_CODE] ✅ Valid code received`);
+    console.log(`[PROMO_CODE] ✅ Valid code received: ${normalizedCode}`);
 
     // Check authentication
     const cookieStore = await cookies();
@@ -108,21 +109,30 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Update membership_status to 'pro'
-    console.log(`[PROMO_CODE] 🔄 Updating membership_status to 'pro' for user ${user.id}`);
+    // Determine update data based on code type
+    let updateData: { user_id: string; membership_status: string; pro_expires_at?: string | null } = {
+      user_id: user.id,
+      membership_status: "pro",
+    };
+
+    if (normalizedCode === TRIAL_30_DAYS_CODE) {
+      // 30-day trial: set expiration date
+      const expiresAt = new Date();
+      expiresAt.setDate(expiresAt.getDate() + 30);
+      updateData.pro_expires_at = expiresAt.toISOString();
+      console.log(`[PROMO_CODE] 🔄 Updating membership_status to 'pro' with 30-day expiration for user ${user.id}`);
+    } else {
+      // Lifetime Pro: no expiration
+      updateData.pro_expires_at = null;
+      console.log(`[PROMO_CODE] 🔄 Updating membership_status to 'pro' (lifetime) for user ${user.id}`);
+    }
     
     const { error: updateError, data } = await supabaseAdmin
       .from("profile_stats")
-      .upsert(
-        {
-          user_id: user.id,
-          membership_status: "pro",
-        },
-        {
-          onConflict: "user_id",
-        }
-      )
-      .select("membership_status")
+      .upsert(updateData, {
+        onConflict: "user_id",
+      })
+      .select("membership_status, pro_expires_at")
       .single();
 
     if (updateError) {
@@ -135,12 +145,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const message = normalizedCode === TRIAL_30_DAYS_CODE
+      ? "Pro unlocked for 30 days! Welcome to BibleBuddy Pro."
+      : "Pro unlocked successfully! Welcome to BibleBuddy Pro.";
+
     console.log(`[PROMO_CODE] ✅ Successfully updated membership_status to 'pro' for user ${user.id}`);
 
     return NextResponse.json(
       {
         success: true,
-        message: "Pro unlocked successfully!",
+        message,
       },
       { status: 200 }
     );

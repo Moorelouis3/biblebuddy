@@ -116,6 +116,9 @@ export default function DashboardPage() {
   } | null>(null);
   const [showLevelInfoModal, setShowLevelInfoModal] = useState(false);
   const [motivationalMessage, setMotivationalMessage] = useState<string>("");
+  const [proExpiresAt, setProExpiresAt] = useState<string | null>(null);
+  const [membershipStatus, setMembershipStatus] = useState<string | null>(null);
+  const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
 
   // load user first name from Supabase
   useEffect(() => {
@@ -137,6 +140,57 @@ export default function DashboardPage() {
 
     loadUser();
   }, []);
+
+  // Load Pro expiration data
+  useEffect(() => {
+    async function loadProExpiration() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      try {
+        const { data, error } = await supabase
+          .from("profile_stats")
+          .select("membership_status, pro_expires_at")
+          .eq("user_id", user.id)
+          .single();
+
+        if (error && error.code !== "PGRST116") {
+          console.error("Error loading Pro expiration:", error);
+          return;
+        }
+
+        if (data) {
+          setMembershipStatus(data.membership_status);
+          setProExpiresAt(data.pro_expires_at);
+        }
+      } catch (err) {
+        console.error("Error loading Pro expiration:", err);
+      }
+    }
+
+    loadProExpiration();
+  }, []);
+
+  // Update countdown timer in real-time
+  useEffect(() => {
+    if (membershipStatus !== "pro" || !proExpiresAt) {
+      setDaysRemaining(null);
+      return;
+    }
+
+    function updateCountdown() {
+      const expirationDate = new Date(proExpiresAt);
+      const now = new Date();
+      const diffMs = expirationDate.getTime() - now.getTime();
+      const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+      setDaysRemaining(diffDays > 0 ? diffDays : 0);
+    }
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 60000); // Update every minute
+
+    return () => clearInterval(interval);
+  }, [membershipStatus, proExpiresAt]);
 
   // Load level data based on total_actions (FAST - only queries total_actions)
   useEffect(() => {
@@ -490,6 +544,15 @@ export default function DashboardPage() {
               </>
             ) : null}
           </div>
+
+          {/* Pro Expiration Countdown Timer */}
+          {membershipStatus === "pro" && daysRemaining !== null && daysRemaining > 0 && (
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-sm">
+              <p className="text-sm text-blue-800 font-medium">
+                ⏰ Pro expires in {daysRemaining} {daysRemaining === 1 ? "day" : "days"}
+              </p>
+            </div>
+          )}
 
           {/* THE BIBLE */}
           <Link href="/reading">

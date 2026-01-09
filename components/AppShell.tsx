@@ -9,6 +9,7 @@ import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
 import { recalculateTotalActions } from "../lib/recalculateTotalActions";
+import { checkProExpiration } from "../lib/checkProExpiration";
 import { FeedbackModal } from "./FeedbackModal";
 import { ContactUsModal } from "./ContactUsModal";
 import { NewMessageAlert } from "./NewMessageAlert";
@@ -65,6 +66,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         // Run all sync/tracking in background - don't block UI
         (async () => {
           try {
+            // Check if Pro access has expired and revert to Free if needed
+            await checkProExpiration(session.user.id);
+            
             // Track user activity (login/refresh) - once per 24 hours
             await trackUserActivity(session.user.id);
             
@@ -115,6 +119,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           // Run all sync/tracking in background - don't block UI
           (async () => {
             try {
+              // Check if Pro access has expired and revert to Free if needed
+              await checkProExpiration(session.user.id);
+              
               // Track user activity (login/refresh) - once per 24 hours
               await trackUserActivity(session.user.id);
               
