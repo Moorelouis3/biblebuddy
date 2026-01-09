@@ -703,15 +703,69 @@ export default function AnalyticsPage() {
   async function loadFeedbackInbox() {
     setLoadingInbox(true);
     try {
-      const { data: feedbackData, error } = await supabase
+      // Try to select with dismissed_from_inbox column, but handle if it doesn't exist
+      let query = supabase
         .from("user_feedback")
         .select("id, username, created_at, discovery_source, happiness_rating, usefulness_rating, usage_frequency, recommendation_likelihood, improvement_feedback, review_text, dismissed_from_inbox")
-        .or("dismissed_from_inbox.is.null,dismissed_from_inbox.eq.false") // Show items that are not dismissed (NULL or false)
         .order("created_at", { ascending: false })
-        .limit(100); // Limit to 100 most recent feedback items
+        .limit(100);
+
+      const { data: feedbackData, error } = await query;
 
       if (error) {
         console.error("[FEEDBACK_INBOX] Error fetching feedback:", error);
+        // If column doesn't exist, try without it
+        if (error.message?.includes("column") || error.code === "42703") {
+          console.log("[FEEDBACK_INBOX] Retrying without dismissed_from_inbox column");
+          const { data: retryData, error: retryError } = await supabase
+            .from("user_feedback")
+            .select("id, username, created_at, discovery_source, happiness_rating, usefulness_rating, usage_frequency, recommendation_likelihood, improvement_feedback, review_text")
+            .order("created_at", { ascending: false })
+            .limit(100);
+          
+          if (retryError) {
+            console.error("[FEEDBACK_INBOX] Error on retry:", retryError);
+            setFeedbackInbox([]);
+            setLoadingInbox(false);
+            return;
+          }
+          
+          // Filter out dismissed items in JavaScript if column exists
+          const filteredData = (retryData || []).filter((item: any) => 
+            item.dismissed_from_inbox !== true
+          );
+          
+          if (!filteredData || filteredData.length === 0) {
+            setFeedbackInbox([]);
+            setLoadingInbox(false);
+            return;
+          }
+          
+          // Use filtered data
+          const inboxItems = filteredData.map((feedback: any) => {
+            const feedbackDate = new Date(feedback.created_at);
+            const formattedDate = formatAdminActionDate(feedbackDate);
+            const formattedTime = formatAdminActionTime(feedbackDate);
+            const username = feedback.username || "Unknown User";
+            const displayText = feedback.happiness_rating === "Declined survey" 
+              ? `${username} clicked "No" on the feedback survey`
+              : `${username} completed the feedback survey`;
+
+            return {
+              id: feedback.id,
+              username: displayText,
+              created_at: feedback.created_at,
+              date: formattedDate,
+              time: formattedTime,
+              fullData: feedback,
+            };
+          });
+
+          setFeedbackInbox(inboxItems);
+          setLoadingInbox(false);
+          return;
+        }
+        
         setFeedbackInbox([]);
         setLoadingInbox(false);
         return;
@@ -723,8 +777,19 @@ export default function AnalyticsPage() {
         return;
       }
 
+      // Filter out dismissed items (handle both NULL and false as visible)
+      const visibleData = feedbackData.filter((item: any) => 
+        item.dismissed_from_inbox !== true
+      );
+
+      if (!visibleData || visibleData.length === 0) {
+        setFeedbackInbox([]);
+        setLoadingInbox(false);
+        return;
+      }
+
       // Format feedback items for inbox display
-      const inboxItems = feedbackData.map((feedback) => {
+      const inboxItems = visibleData.map((feedback: any) => {
         const feedbackDate = new Date(feedback.created_at);
         const formattedDate = formatAdminActionDate(feedbackDate);
         const formattedTime = formatAdminActionTime(feedbackDate);
@@ -798,15 +863,67 @@ export default function AnalyticsPage() {
   async function loadUserRequestsInbox() {
     setLoadingRequests(true);
     try {
-      const { data: requestsData, error } = await supabase
+      // Try to select with dismissed_from_inbox column, but handle if it doesn't exist
+      let query = supabase
         .from("user_requests")
         .select("id, username, subject, message, screenshot_url, created_at, dismissed_from_inbox")
-        .or("dismissed_from_inbox.is.null,dismissed_from_inbox.eq.false") // Show items that are not dismissed (NULL or false)
         .order("created_at", { ascending: false })
-        .limit(100); // Limit to 100 most recent requests
+        .limit(100);
+
+      const { data: requestsData, error } = await query;
 
       if (error) {
         console.error("[USER_REQUESTS_INBOX] Error fetching requests:", error);
+        // If column doesn't exist, try without it
+        if (error.message?.includes("column") || error.code === "42703") {
+          console.log("[USER_REQUESTS_INBOX] Retrying without dismissed_from_inbox column");
+          const { data: retryData, error: retryError } = await supabase
+            .from("user_requests")
+            .select("id, username, subject, message, screenshot_url, created_at")
+            .order("created_at", { ascending: false })
+            .limit(100);
+          
+          if (retryError) {
+            console.error("[USER_REQUESTS_INBOX] Error on retry:", retryError);
+            setUserRequestsInbox([]);
+            setLoadingRequests(false);
+            return;
+          }
+          
+          // Filter out dismissed items in JavaScript
+          const filteredData = (retryData || []).filter((item: any) => 
+            item.dismissed_from_inbox !== true
+          );
+          
+          if (!filteredData || filteredData.length === 0) {
+            setUserRequestsInbox([]);
+            setLoadingRequests(false);
+            return;
+          }
+          
+          // Use filtered data
+          const inboxItems = filteredData.map((request: any) => {
+            const requestDate = new Date(request.created_at);
+            const formattedDate = formatAdminActionDate(requestDate);
+            const formattedTime = formatAdminActionTime(requestDate);
+            const username = request.username || "Unknown User";
+
+            return {
+              id: request.id,
+              username,
+              subject: request.subject,
+              created_at: request.created_at,
+              date: formattedDate,
+              time: formattedTime,
+              fullData: request,
+            };
+          });
+
+          setUserRequestsInbox(inboxItems);
+          setLoadingRequests(false);
+          return;
+        }
+        
         setUserRequestsInbox([]);
         setLoadingRequests(false);
         return;
@@ -818,8 +935,19 @@ export default function AnalyticsPage() {
         return;
       }
 
+      // Filter out dismissed items (handle both NULL and false as visible)
+      const visibleData = requestsData.filter((item: any) => 
+        item.dismissed_from_inbox !== true
+      );
+
+      if (!visibleData || visibleData.length === 0) {
+        setUserRequestsInbox([]);
+        setLoadingRequests(false);
+        return;
+      }
+
       // Format request items for inbox display
-      const inboxItems = requestsData.map((request) => {
+      const inboxItems = visibleData.map((request: any) => {
         const requestDate = new Date(request.created_at);
         const formattedDate = formatAdminActionDate(requestDate);
         const formattedTime = formatAdminActionTime(requestDate);
