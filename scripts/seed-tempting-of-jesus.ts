@@ -423,7 +423,7 @@ That's why he works so hard to knock you off it.
 
 Because he knows what's waiting at the end — real life, true joy, the kind that can't be taken away, and eternity with God.`,
     bible_reading_reference: "Matthew 7:13-14",
-    reflection_question: null,
+    reflection_question: "Which road are you walking right now — the broad road or the narrow one? What's one way you can start choosing the harder path today?",
   },
   {
     day_number: 4,
