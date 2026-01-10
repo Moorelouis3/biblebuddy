@@ -566,12 +566,12 @@ export default function DashboardPage() {
             </div>
           </Link>
 
-          {/* MY NOTES */}
-          <Link href="/notes">
-            <div className="bg-green-100 border border-green-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">📝 My Notes</h2>
+          {/* DEVOTIONALS */}
+          <Link href="/devotionals">
+            <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+              <h2 className="text-xl font-semibold">Devotionals</h2>
               <p className="text-gray-700 mt-1">
-                All your Bible notes saved in one place.
+                Guided daily Bible reading and reflection
               </p>
             </div>
           </Link>
