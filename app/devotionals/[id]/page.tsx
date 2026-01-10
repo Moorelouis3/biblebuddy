@@ -314,14 +314,11 @@ export default function DevotionalDetailPage() {
         {/* DEVOTIONAL COVER */}
         {devotional.title === "The Tempting of Jesus" && (
           <div className="flex justify-center my-6">
-            <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 inline-block">
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
               <img
                 src="/images/temptingofjesus.png"
                 alt={`${devotional.title} cover`}
-                width={240}
-                height={360}
-                className="rounded-lg"
-                style={{ maxWidth: '240px', height: 'auto' }}
+                className="rounded-lg w-[240px] h-auto object-contain"
               />
             </div>
           </div>
