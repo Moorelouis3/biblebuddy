@@ -148,9 +148,9 @@ export default function LoginPage() {
           <h1 className="text-2xl font-bold mb-2 text-center">
             Log in to Bible Buddy
           </h1>
-        <p className="text-sm text-gray-600 mb-6 text-center">
-          Pick up where you left off in Matthew.
-        </p>
+          <p className="text-sm text-gray-600 mb-6 text-center">
+            Pick up where you left off in Matthew.
+          </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -261,15 +261,16 @@ export default function LoginPage() {
           )}
         </form>
 
-        <p className="text-xs text-gray-600 mt-4 text-center">
-          Need an account?{" "}
-          <Link
-            href="/signup"
-            className="font-semibold text-blue-600 hover:underline"
-          >
-            Sign up
-          </Link>
-        </p>
+          <p className="text-xs text-gray-600 mt-4 text-center">
+            Need an account?{" "}
+            <Link
+              href="/signup"
+              className="font-semibold text-blue-600 hover:underline"
+            >
+              Sign up
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
