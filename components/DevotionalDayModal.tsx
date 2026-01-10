@@ -108,10 +108,16 @@ export default function DevotionalDayModal({
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       const el = e.target as HTMLElement;
-      if (!el.classList.contains("bible-highlight")) return;
+      // Check if clicked element or its parent has the bible-highlight class
+      const highlightElement = el.closest(".bible-highlight") as HTMLElement;
+      if (!highlightElement) return;
 
-      const type = el.dataset.type;
-      const term = el.dataset.term;
+      // Stop propagation to prevent modal from closing
+      e.stopPropagation();
+      e.preventDefault();
+
+      const type = highlightElement.dataset.type;
+      const term = highlightElement.dataset.term;
       if (!type || !term) return;
 
       // Open overlay modal (same as clicking a card on People/Places/Keywords pages)
