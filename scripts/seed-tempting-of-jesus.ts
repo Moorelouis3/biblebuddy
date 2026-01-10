@@ -1,9 +1,15 @@
 
 // Script to seed "The Tempting of Jesus" devotional with all 21 days from PDF
 // Run with: npx tsx scripts/seed-tempting-of-jesus.ts
+// ✅ VERIFIED: This file loads env vars from both .env and .env.local
+console.log("🔍 Executing: scripts/seed-tempting-of-jesus.ts");
 
-// Load environment variables from .env file (Node.js scripts don't auto-load .env.local)
-import 'dotenv/config';
+// Load environment variables from .env or .env.local file
+// dotenv/config loads .env by default, but we also check .env.local explicitly
+import dotenv from 'dotenv';
+import { resolve } from 'path';
+dotenv.config({ path: resolve(process.cwd(), '.env') });
+dotenv.config({ path: resolve(process.cwd(), '.env.local') });
 
 import { createClient } from "@supabase/supabase-js";
 

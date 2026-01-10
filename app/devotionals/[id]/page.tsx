@@ -160,11 +160,11 @@ export default function DevotionalDetailPage() {
     setShowBibleModal(true);
   };
 
-  const handleDayComplete = async (dayNumber: number) => {
+  const handleDayComplete = async (dayNumber: number, reflectionText: string, readingCompleted: boolean) => {
     if (!userId) return;
 
     try {
-      // Mark day as completed
+      // Save everything in one transaction: reflection, reading status, and completion
       const { error } = await supabase
         .from("devotional_progress")
         .upsert(
@@ -173,6 +173,8 @@ export default function DevotionalDetailPage() {
             devotional_id: devotionalId,
             day_number: dayNumber,
             is_completed: true,
+            reading_completed: readingCompleted,
+            reflection_text: reflectionText || null,
             completed_at: new Date().toISOString(),
           },
           {
@@ -186,11 +188,15 @@ export default function DevotionalDetailPage() {
         return;
       }
 
-      // Update local state
+      // Update local state with all values
       setProgress((prev) => {
         const next = new Map(prev);
-        const existing = next.get(dayNumber) || { day_number: dayNumber, is_completed: false, reading_completed: false, reflection_text: null };
-        next.set(dayNumber, { ...existing, is_completed: true });
+        next.set(dayNumber, { 
+          day_number: dayNumber, 
+          is_completed: true, 
+          reading_completed: readingCompleted,
+          reflection_text: reflectionText || null,
+        });
         return next;
       });
 
@@ -389,7 +395,7 @@ export default function DevotionalDetailPage() {
           onBibleReadingClick={() => handleBibleReadingClick(selectedDay.bible_reading_book, selectedDay.bible_reading_chapter)}
           onReadingComplete={() => handleReadingComplete(selectedDay.day_number)}
           onReflectionSave={(text) => handleReflectionSave(selectedDay.day_number, text)}
-          onDayComplete={() => handleDayComplete(selectedDay.day_number)}
+          onDayComplete={(reflectionText, readingCompleted) => handleDayComplete(selectedDay.day_number, reflectionText, readingCompleted)}
         />
       )}
 

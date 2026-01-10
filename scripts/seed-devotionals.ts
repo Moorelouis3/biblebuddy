@@ -1,13 +1,29 @@
 // Script to seed the first devotional: "The Tempting of Jesus"
 // Run with: npx tsx scripts/seed-devotionals.ts
 
+// Load environment variables from .env or .env.local file
+// dotenv/config loads .env by default, but we also check .env.local
+import dotenv from 'dotenv';
+import { resolve } from 'path';
+dotenv.config({ path: resolve(process.cwd(), '.env') });
+dotenv.config({ path: resolve(process.cwd(), '.env.local') });
+
 import { createClient } from "@supabase/supabase-js";
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+// Use server-only env vars (not NEXT_PUBLIC_ prefix)
+// Fallback to NEXT_PUBLIC_SUPABASE_URL for compatibility
+const SUPABASE_URL = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-  console.error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY");
+  console.error("❌ Missing environment variables!");
+  console.error("");
+  console.error("Required variables:");
+  console.error("  SUPABASE_URL=https://your-project-id.supabase.co");
+  console.error("  SUPABASE_SERVICE_ROLE_KEY=your-service-role-key");
+  console.error("");
+  console.error("Create a .env file in the project root (or add to .env.local)");
+  console.error("Get these values from: Supabase Dashboard → Project Settings → API");
   process.exit(1);
 }
 
