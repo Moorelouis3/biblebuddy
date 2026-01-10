@@ -315,10 +315,14 @@ export default function DevotionalDetailPage() {
         {devotional.title === "The Tempting of Jesus" && (
           <div className="flex justify-center my-6">
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/temptingofjesus.png"
                 alt={`${devotional.title} cover`}
                 className="rounded-lg w-[240px] h-auto object-contain"
+                onError={(e) => {
+                  console.error("Image failed to load:", e.currentTarget.src);
+                }}
               />
             </div>
           </div>
