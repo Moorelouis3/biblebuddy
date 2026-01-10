@@ -312,15 +312,17 @@ export default function DevotionalDetailPage() {
         <p className="text-gray-600 mb-4">{devotional.subtitle}</p>
 
         {/* DEVOTIONAL COVER */}
-        <div className="flex justify-center my-6">
-          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
-            <img
-              src="/images/temptingofjesus.png"
-              alt={`${devotional.title} cover`}
-              className="rounded-lg w-[240px] h-auto object-contain"
-            />
+        {devotional.title.includes("Tempting of Jesus") && (
+          <div className="flex justify-center my-6">
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
+              <img
+                src="/images/temptingofjesus.png"
+                alt={`${devotional.title} cover`}
+                className="rounded-lg w-[240px] h-auto object-contain"
+              />
+            </div>
           </div>
-        </div>
+        )}
 
         {/* PROGRESS */}
         <div className="bg-white border border-gray-200 rounded-xl p-4 mb-6">
