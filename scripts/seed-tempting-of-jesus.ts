@@ -372,8 +372,6 @@ God is with you, and because of Him, you can overcome.`,
     bible_reading_reference: "1 Corinthians 10:13",
     reflection_question: "Where do you need to trust that God is faithful right now — and look for the way of escape He's already provided?",
   },
-];
-
   {
     day_number: 3,
     day_title: "Fighting Temptation Isn't Easy",
@@ -1557,6 +1555,8 @@ Tomorrow we'll talk about why this story matters so much for your life — and h
     bible_reading_reference: "Luke 4:14-30",
     reflection_question: "How have your wilderness seasons and victories over temptation made you stronger? What's one way you can let what God's poured into you spill out onto others this week?",
   },
+];
+
 devotionalDays.sort((a, b) => a.day_number - b.day_number);
 
 async function seedDevotional() {
