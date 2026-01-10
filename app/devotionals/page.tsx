@@ -40,14 +40,15 @@ export default function DevotionalsPage() {
     loadDevotionals();
   }, []);
 
-  // Background colors for cards (can be expanded later)
-  const cardColors = [
-    "bg-yellow-100 border-yellow-200",
-    "bg-blue-100 border-blue-200",
-    "bg-purple-100 border-purple-200",
-    "bg-green-100 border-green-200",
-    "bg-orange-100 border-orange-200",
-  ];
+  // Get card color based on devotional title
+  const getCardColor = (title: string): string => {
+    // Special case: "The Tempting of Jesus" gets red
+    if (title === "The Tempting of Jesus") {
+      return "bg-red-50 border-red-200";
+    }
+    // Default: soft pastel green consistent with BibleBuddy's green UI
+    return "bg-green-50 border-green-200";
+  };
 
   if (loading) {
     return (
@@ -71,13 +72,13 @@ export default function DevotionalsPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {devotionals.map((devotional, index) => (
+            {devotionals.map((devotional) => (
               <Link
                 key={devotional.id}
                 href={`/devotionals/${devotional.id}`}
               >
                 <div
-                  className={`${cardColors[index % cardColors.length]} border rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition`}
+                  className={`${getCardColor(devotional.title)} border rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition`}
                 >
                   <h2 className="text-xl font-bold mb-1">{devotional.title}</h2>
                   <p className="text-sm text-gray-600">{devotional.subtitle}</p>

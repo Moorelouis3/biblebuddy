@@ -46,6 +46,7 @@ export default function DevotionalDetailPage() {
   const [showBibleModal, setShowBibleModal] = useState(false);
   const [bibleBook, setBibleBook] = useState<string>("");
   const [bibleChapter, setBibleChapter] = useState<number>(0);
+  const [showReadingRequiredModal, setShowReadingRequiredModal] = useState(false);
 
   useEffect(() => {
     async function loadUser() {
@@ -162,6 +163,12 @@ export default function DevotionalDetailPage() {
 
   const handleDayComplete = async (dayNumber: number, reflectionText: string, readingCompleted: boolean) => {
     if (!userId) return;
+
+    // ENFORCE: Bible reading must be completed before day can be marked complete
+    if (!readingCompleted) {
+      setShowReadingRequiredModal(true);
+      return; // Do not proceed with completion
+    }
 
     try {
       // Save everything in one transaction: reflection, reading status, and completion
@@ -356,9 +363,6 @@ export default function DevotionalDetailPage() {
                       <span className="text-gray-700">{day.day_title}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      {dayProgress?.reading_completed && (
-                        <span className="text-green-600 text-sm">✓ Read</span>
-                      )}
                       {!isUnlocked && (
                         <svg
                           className="w-5 h-5 text-gray-400"
@@ -406,6 +410,40 @@ export default function DevotionalDetailPage() {
           chapter={bibleChapter}
           onClose={() => setShowBibleModal(false)}
         />
+      )}
+
+      {/* READING REQUIRED MODAL */}
+      {showReadingRequiredModal && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4"
+          onClick={() => setShowReadingRequiredModal(false)}
+        >
+          <div 
+            className="relative w-full max-w-md rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setShowReadingRequiredModal(false)}
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl font-semibold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
+            >
+              ✕
+            </button>
+            
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Complete Bible Reading First</h2>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              You must complete the assigned Bible reading before marking this day as complete.
+            </p>
+            
+            <button
+              type="button"
+              onClick={() => setShowReadingRequiredModal(false)}
+              className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition shadow-sm"
+            >
+              Got it
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );
