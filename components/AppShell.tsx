@@ -577,6 +577,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       How to Use
                     </Link>
 
+                    {/* NOTES */}
+                    <Link
+                      href="/notes"
+                      onClick={() => setIsProfileMenuOpen(false)}
+                      className={`block px-4 py-2 text-sm ${
+                        pathname?.startsWith("/notes")
+                          ? "bg-sky-100 text-black font-medium"
+                          : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      Notes
+                    </Link>
+
                     {/* UPDATES */}
                     <Link
                       href="/updates"
