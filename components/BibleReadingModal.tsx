@@ -221,6 +221,8 @@ export default function BibleReadingModal({ book, chapter, onClose }: BibleReadi
 
   // Event delegation for click handlers on enriched content (same as Bible chapter page)
   useEffect(() => {
+    if (!enrichedContent) return;
+
     const handler = (e: MouseEvent) => {
       const el = e.target as HTMLElement;
       // Check if clicked element or its parent has the bible-highlight class
@@ -252,11 +254,34 @@ export default function BibleReadingModal({ book, chapter, onClose }: BibleReadi
     };
 
     // Attach to the verse container to scope clicks
-    const container = verseContainerRef.current;
-    if (container) {
-      container.addEventListener("click", handler);
-      return () => container.removeEventListener("click", handler);
+    // Use a small delay to ensure the DOM is ready after enrichedContent renders
+    const attachHandler = () => {
+      const container = verseContainerRef.current;
+      if (container) {
+        container.addEventListener("click", handler, true); // Use capture phase for better reliability
+        return true;
+      }
+      return false;
+    };
+
+    // Try to attach immediately
+    let attached = attachHandler();
+    
+    // If not attached yet, retry after a short delay
+    let timeout: NodeJS.Timeout | null = null;
+    if (!attached) {
+      timeout = setTimeout(() => {
+        attachHandler();
+      }, 100);
     }
+
+    return () => {
+      if (timeout) clearTimeout(timeout);
+      const container = verseContainerRef.current;
+      if (container) {
+        container.removeEventListener("click", handler, true);
+      }
+    };
   }, [enrichedContent]);
 
   // Load notes for selected person (reuse same logic as Bible chapter page)
@@ -709,7 +734,7 @@ Be accurate to Scripture.`;
       {/* PERSON OVERLAY MODAL (nested, higher z-index) */}
       {selectedPerson && (
         <div 
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
           onClick={(e) => {
             e.stopPropagation();
             setSelectedPerson(null);
@@ -762,7 +787,7 @@ Be accurate to Scripture.`;
       {/* PLACE OVERLAY MODAL (nested, higher z-index) */}
       {selectedPlace && (
         <div 
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
           onClick={(e) => {
             e.stopPropagation();
             setSelectedPlace(null);
@@ -815,7 +840,7 @@ Be accurate to Scripture.`;
       {/* KEYWORD OVERLAY MODAL (nested, higher z-index) */}
       {selectedKeyword && (
         <div 
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
           onClick={(e) => {
             e.stopPropagation();
             setSelectedKeyword(null);

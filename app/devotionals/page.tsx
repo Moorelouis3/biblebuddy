@@ -76,6 +76,15 @@ export default function DevotionalsPage() {
     return null;
   };
 
+  // Upcoming devotionals (visual only, no click handlers)
+  const upcomingDevotionals = [
+    {
+      id: "upcoming-testing-of-joseph",
+      title: "Testing of Joseph",
+      coverImage: "/images/Thetestingofjoseph.png", // File exists in public/images
+    },
+  ];
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -190,6 +199,7 @@ export default function DevotionalsPage() {
           <>
             {/* Mobile: Vertical scroll list */}
             <div className="flex flex-col md:hidden gap-6">
+              {/* Active Devotionals (clickable) */}
               {devotionals.map((devotional) => {
                 const coverImage = getCoverImage(devotional.title);
                 
@@ -213,10 +223,27 @@ export default function DevotionalsPage() {
                   </Link>
                 );
               })}
+              
+              {/* Upcoming Devotionals (visual only, no click) */}
+              {upcomingDevotionals.map((upcoming) => (
+                <div
+                  key={upcoming.id}
+                  className="block w-full"
+                >
+                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 opacity-75">
+                    <img
+                      src={upcoming.coverImage}
+                      alt={`${upcoming.title} cover`}
+                      className="w-full h-auto rounded-lg object-contain"
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
 
             {/* Desktop: Grid layout */}
             <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+              {/* Active Devotionals (clickable) */}
               {devotionals.map((devotional) => {
                 const coverImage = getCoverImage(devotional.title);
                 
@@ -240,6 +267,22 @@ export default function DevotionalsPage() {
                   </Link>
                 );
               })}
+              
+              {/* Upcoming Devotionals (visual only, no click) */}
+              {upcomingDevotionals.map((upcoming) => (
+                <div
+                  key={upcoming.id}
+                  className="block w-full max-w-xs"
+                >
+                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 opacity-75">
+                    <img
+                      src={upcoming.coverImage}
+                      alt={`${upcoming.title} cover`}
+                      className="w-full h-auto rounded-lg object-contain"
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
           </>
         )}
