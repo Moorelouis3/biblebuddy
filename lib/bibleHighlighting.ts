@@ -346,3 +346,214 @@ export async function enrichBibleVerses(
 
   return enrichedVerses.join("\n");
 }
+
+/**
+ * Process plain text and return enriched HTML (for devotionals, notes, etc.)
+ * 
+ * Same highlighting rules as enrichBibleVerses, but for plain text without verse numbers
+ * PEOPLE: Highlight EVERY occurrence (BLUE)
+ * PLACES: Highlight EVERY occurrence, priority over people (GREEN)
+ * KEYWORDS: Highlight EVERY occurrence (DARK RED)
+ * 
+ * This function is synchronous and can be called client-side
+ */
+export function enrichPlainText(text: string): string {
+  // Get lists from UI pages (same source as people/places/keywords pages)
+  const peopleNames = getPeopleNames();
+  const placeNames = getPlaceNames();
+
+  // Deduplicate keyword terms (case-insensitive)
+  const keywordNamesSet = new Set<string>();
+  const keywordNames: string[] = [];
+  getKeywordNames().forEach((term) => {
+    const trimmed = term.trim();
+    if (!trimmed) return;
+    const key = trimmed.toLowerCase();
+    if (keywordNamesSet.has(key)) return;
+    keywordNamesSet.add(key);
+    keywordNames.push(trimmed);
+  });
+
+  // Build separate lists with type information
+  type HighlightTerm = {
+    term: string;
+    type: "people" | "places" | "keywords";
+    layer?: 1 | 2 | 3; // For keywords only
+  };
+
+  const peopleTerms: HighlightTerm[] = [];
+  const placeTerms: HighlightTerm[] = [];
+  const keywordTerms: HighlightTerm[] = [];
+
+  // Add people
+  peopleNames.forEach((name) => {
+    peopleTerms.push({ term: name.trim(), type: "people" });
+  });
+
+  // Add places (places take priority over people)
+  const peopleSet = new Set(peopleNames.map((n) => n.toLowerCase().trim()));
+  placeNames.forEach((name) => {
+    const normalized = name.toLowerCase().trim();
+    // Only add if not already a person (places take priority)
+    if (!peopleSet.has(normalized)) {
+      placeTerms.push({ term: name.trim(), type: "places" });
+    }
+  });
+
+  // Add keywords (only if not already a person or place)
+  const placesSet = new Set(placeNames.map((n) => n.toLowerCase().trim()));
+  keywordNames.forEach((name) => {
+    const normalized = name.toLowerCase().trim();
+    if (!peopleSet.has(normalized) && !placesSet.has(normalized)) {
+      const layer = getKeywordLayer(name);
+      keywordTerms.push({ term: name.trim(), type: "keywords", layer });
+    }
+  });
+
+  // Sort all terms by longest string first (prevents "David" matching inside "City of David")
+  peopleTerms.sort((a, b) => b.term.length - a.term.length);
+  placeTerms.sort((a, b) => b.term.length - a.term.length);
+  keywordTerms.sort((a, b) => b.term.length - a.term.length);
+
+  // Escape HTML in the text
+  const escapedText = escapeHtml(text);
+
+  // Collect matches
+  const matches: Array<{
+    start: number;
+    end: number;
+    type: "people" | "places" | "keywords";
+    term: string;
+    matchedText: string;
+  }> = [];
+
+  // Process PLACES first (they take priority)
+  for (const highlightTerm of placeTerms) {
+    const escapedTerm = highlightTerm.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
+    
+    // Find ALL matches (not just first)
+    let match;
+    regex.lastIndex = 0;
+    while ((match = regex.exec(escapedText)) !== null) {
+      const start = match.index;
+      const end = start + match[0].length;
+      
+      // Check if this range overlaps with any existing highlight
+      const overlaps = matches.some(
+        (m) => !(end <= m.start || start >= m.end)
+      );
+      
+      if (!overlaps) {
+        matches.push({
+          start,
+          end,
+          type: "places",
+          term: highlightTerm.term,
+          matchedText: match[0],
+        });
+      }
+    }
+  }
+
+  // Process PEOPLE (every occurrence)
+  for (const highlightTerm of peopleTerms) {
+    const escapedTerm = highlightTerm.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
+    
+    // For people names, only match if capitalized (proper noun)
+    const termLower = highlightTerm.term.toLowerCase();
+    const shortCommonWords = ["on", "in", "at", "to", "of", "is", "it", "as", "an", "am", "be", "do", "go", "if", "my", "no", "or", "so", "up", "us", "we", "put"];
+    
+    // Find ALL matches
+    let match;
+    regex.lastIndex = 0;
+    while ((match = regex.exec(escapedText)) !== null) {
+      const matchedText = match[0];
+      const firstChar = matchedText.charAt(0);
+      
+      // Capitalization check for people
+      if (shortCommonWords.includes(termLower) && termLower.length <= 3) {
+        const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
+        if (!isUpperCaseLetter) {
+          continue; // Skip lowercase common words
+        }
+      } else {
+        const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
+        if (!isUpperCaseLetter) {
+          continue; // Skip - not capitalized, likely a common word
+        }
+      }
+      
+      const start = match.index;
+      const end = start + match[0].length;
+      
+      // Check if this range overlaps with any existing highlight
+      const overlaps = matches.some(
+        (m) => !(end <= m.start || start >= m.end)
+      );
+      
+      if (!overlaps) {
+        matches.push({
+          start,
+          end,
+          type: "people",
+          term: highlightTerm.term,
+          matchedText: match[0],
+        });
+      }
+    }
+  }
+
+  // Process KEYWORDS (highlight EVERY occurrence)
+  for (const highlightTerm of keywordTerms) {
+    const escapedTerm = highlightTerm.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
+    
+    // Find ALL matches
+    regex.lastIndex = 0;
+    let match;
+    while ((match = regex.exec(escapedText)) !== null) {
+      const start = match.index;
+      const end = start + match[0].length;
+
+      // Check if this range overlaps with any existing highlight
+      const overlaps = matches.some(
+        (m) => !(end <= m.start || start >= m.end)
+      );
+
+      if (!overlaps) {
+        matches.push({
+          start,
+          end,
+          type: "keywords",
+          term: highlightTerm.term,
+          matchedText: match[0],
+        });
+      }
+    }
+  }
+
+  // Sort matches by start position (descending) to replace from end to beginning
+  matches.sort((a, b) => b.start - a.start);
+
+  // Build the enriched text
+  let enrichedText = escapedText;
+  for (const match of matches) {
+    const before = enrichedText.substring(0, match.start);
+    const after = enrichedText.substring(match.end);
+    // Use original cased term in data-term attribute
+    const highlightSpan = `<span class="bible-highlight bible-highlight-${match.type}" data-type="${match.type}" data-term="${escapeHtml(match.term)}">${match.matchedText}</span>`;
+
+    enrichedText = before + highlightSpan + after;
+  }
+
+  // Preserve paragraph structure from original text (double newlines = paragraph breaks)
+  // Split by double newlines to preserve paragraphs, then join with proper HTML
+  const paragraphs = enrichedText.split(/\n\s*\n/).filter(p => p.trim());
+  if (paragraphs.length === 0) {
+    // Single paragraph or no breaks
+    return `<p class="leading-relaxed">${enrichedText}</p>`;
+  }
+  return paragraphs.map(p => `<p class="leading-relaxed">${p.trim().replace(/\n/g, ' ')}</p>`).join('\n');
+}
