@@ -2,6 +2,7 @@
 
 import { FormEvent, useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -95,12 +96,45 @@ function ResetPasswordForm() {
     }
   }
 
+  // Logo component for reset password page
+  const LogoHeader = () => (
+    <header className="w-full max-w-7xl mx-auto px-4 py-4 md:py-6 flex items-center">
+      <div className="flex items-center gap-3">
+        <Image
+          src="/louis/louis-bible.png"
+          alt="Bible Buddy Logo"
+          width={32}
+          height={32}
+          className="w-8 h-8"
+        />
+        <div>
+          <div className="text-lg md:text-xl font-bold text-gray-900 tracking-tight">
+            Bible Buddy
+          </div>
+          <div className="text-[10px] md:text-xs text-gray-500 -mt-0.5">
+            <a
+              href="https://joinhopenation.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-600 transition-colors"
+            >
+              Powered by Hope Nation
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+
   if (isValidToken === null) {
     // Still checking token
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-        <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
-          <p className="text-center text-gray-600">Verifying reset link...</p>
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        <LogoHeader />
+        <div className="flex-1 flex items-center justify-center px-4">
+          <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
+            <p className="text-center text-gray-600">Verifying reset link...</p>
+          </div>
         </div>
       </div>
     );
@@ -109,18 +143,21 @@ function ResetPasswordForm() {
   if (isValidToken === false) {
     // Invalid or missing token
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-        <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
-          <h1 className="text-2xl font-bold mb-2 text-center">Invalid Reset Link</h1>
-          <p className="text-sm text-gray-600 mb-6 text-center">
-            This password reset link is invalid or has expired.
-          </p>
-          <Link
-            href="/login"
-            className="block w-full text-center rounded-full bg-blue-600 text-white text-sm font-semibold py-2.5 shadow-sm hover:bg-blue-700"
-          >
-            Back to Login
-          </Link>
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        <LogoHeader />
+        <div className="flex-1 flex items-center justify-center px-4">
+          <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
+            <h1 className="text-2xl font-bold mb-2 text-center">Invalid Reset Link</h1>
+            <p className="text-sm text-gray-600 mb-6 text-center">
+              This password reset link is invalid or has expired.
+            </p>
+            <Link
+              href="/login"
+              className="block w-full text-center rounded-full bg-blue-600 text-white text-sm font-semibold py-2.5 shadow-sm hover:bg-blue-700"
+            >
+              Back to Login
+            </Link>
+          </div>
         </div>
       </div>
     );
@@ -128,24 +165,29 @@ function ResetPasswordForm() {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-        <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
-          <h1 className="text-2xl font-bold mb-2 text-center">Password Reset Successful!</h1>
-          <p className="text-sm text-gray-600 mb-6 text-center">
-            Your password has been updated. Redirecting to login...
-          </p>
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        <LogoHeader />
+        <div className="flex-1 flex items-center justify-center px-4">
+          <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
+            <h1 className="text-2xl font-bold mb-2 text-center">Password Reset Successful!</h1>
+            <p className="text-sm text-gray-600 mb-6 text-center">
+              Your password has been updated. Redirecting to login...
+            </p>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
-        <h1 className="text-2xl font-bold mb-2 text-center">Reset Your Password</h1>
-        <p className="text-sm text-gray-600 mb-6 text-center">
-          Enter your new password below.
-        </p>
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      <LogoHeader />
+      <div className="flex-1 flex items-center justify-center px-4">
+        <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
+          <h1 className="text-2xl font-bold mb-2 text-center">Reset Your Password</h1>
+          <p className="text-sm text-gray-600 mb-6 text-center">
+            Enter your new password below.
+          </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -202,18 +244,51 @@ function ResetPasswordForm() {
             Log in
           </Link>
         </p>
+        </div>
       </div>
     </div>
   );
 }
 
 export default function ResetPasswordPage() {
+  const LogoHeader = () => (
+    <header className="w-full max-w-7xl mx-auto px-4 py-4 md:py-6 flex items-center">
+      <div className="flex items-center gap-3">
+        <Image
+          src="/louis/louis-bible.png"
+          alt="Bible Buddy Logo"
+          width={32}
+          height={32}
+          className="w-8 h-8"
+        />
+        <div>
+          <div className="text-lg md:text-xl font-bold text-gray-900 tracking-tight">
+            Bible Buddy
+          </div>
+          <div className="text-[10px] md:text-xs text-gray-500 -mt-0.5">
+            <a
+              href="https://joinhopenation.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-600 transition-colors"
+            >
+              Powered by Hope Nation
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-          <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
-            <p className="text-center text-gray-600">Loading...</p>
+        <div className="min-h-screen bg-gray-50 flex flex-col">
+          <LogoHeader />
+          <div className="flex-1 flex items-center justify-center px-4">
+            <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
+              <p className="text-center text-gray-600">Loading...</p>
+            </div>
           </div>
         </div>
       }

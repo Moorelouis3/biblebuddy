@@ -3,6 +3,7 @@
 
 import { FormEvent, useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 
@@ -112,11 +113,41 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
-        <h1 className="text-2xl font-bold mb-2 text-center">
-          Log in to Bible Buddy
-        </h1>
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* HEADER (Top Bar) */}
+      <header className="w-full max-w-7xl mx-auto px-4 py-4 md:py-6 flex items-center">
+        {/* Left: Logo + Text */}
+        <div className="flex items-center gap-3">
+          <Image
+            src="/louis/louis-bible.png"
+            alt="Bible Buddy Logo"
+            width={32}
+            height={32}
+            className="w-8 h-8"
+          />
+          <div>
+            <div className="text-lg md:text-xl font-bold text-gray-900 tracking-tight">
+              Bible Buddy
+            </div>
+            <div className="text-[10px] md:text-xs text-gray-500 -mt-0.5">
+              <a
+                href="https://joinhopenation.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-600 transition-colors"
+              >
+                Powered by Hope Nation
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className="flex-1 flex items-center justify-center px-4">
+        <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
+          <h1 className="text-2xl font-bold mb-2 text-center">
+            Log in to Bible Buddy
+          </h1>
         <p className="text-sm text-gray-600 mb-6 text-center">
           Pick up where you left off in Matthew.
         </p>

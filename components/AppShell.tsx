@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 import { supabase } from "../lib/supabaseClient";
@@ -341,9 +342,31 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
             <Link
               href="/dashboard"
-              className="text-sm font-semibold text-black"
+              className="flex items-center gap-3 hover:opacity-80 transition-opacity"
             >
-              Bible Buddy
+              <Image
+                src="/louis/louis-bible.png"
+                alt="Bible Buddy Logo"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+              />
+              <div>
+                <div className="text-sm font-bold text-gray-900 tracking-tight">
+                  Bible Buddy
+                </div>
+                <div className="text-[10px] text-gray-500 -mt-0.5">
+                  <a
+                    href="https://joinhopenation.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="hover:text-blue-600 transition-colors"
+                  >
+                    Powered by Hope Nation
+                  </a>
+                </div>
+              </div>
             </Link>
 
             <div className="flex items-center gap-2">
