@@ -171,6 +171,17 @@ export default function DevotionalDetailPage() {
     }
 
     try {
+      // Check if day was already completed in database to prevent duplicate logging
+      const { data: existingProgressData } = await supabase
+        .from("devotional_progress")
+        .select("is_completed")
+        .eq("user_id", userId)
+        .eq("devotional_id", devotionalId)
+        .eq("day_number", dayNumber)
+        .maybeSingle();
+      
+      const wasAlreadyCompleted = existingProgressData?.is_completed === true;
+
       // Save everything in one transaction: reflection, reading status, and completion
       const { error } = await supabase
         .from("devotional_progress")
@@ -209,6 +220,103 @@ export default function DevotionalDetailPage() {
 
       // Close modal
       setSelectedDay(null);
+
+      // ACTION TRACKING: Only log if this is a NEW completion (not already completed)
+      // Do this asynchronously after UI updates (fire-and-forget)
+      if (!wasAlreadyCompleted) {
+        (async () => {
+          try {
+            // Get username for master_actions
+            const { data: { user: authUser } } = await supabase.auth.getUser();
+            let actionUsername = "User";
+            
+            if (authUser) {
+              const meta: any = authUser.user_metadata || {};
+              actionUsername =
+                meta.firstName ||
+                meta.first_name ||
+                (authUser.email ? authUser.email.split("@")[0] : null) ||
+                "User";
+            }
+
+            // Format action_label: "Devotional Title - Day X"
+            const actionLabel = devotional ? `${devotional.title} - Day ${dayNumber}` : `Day ${dayNumber}`;
+
+            // Insert into master_actions
+            console.log("[MASTER_ACTIONS] inserting:", { action_type: "devotional_day_completed", action_label: actionLabel });
+            const { error: actionError } = await supabase
+              .from("master_actions")
+              .insert({
+                user_id: userId,
+                username: actionUsername ?? null,
+                action_type: "devotional_day_completed",
+                action_label: actionLabel,
+              });
+
+            if (actionError) {
+              console.error("Error logging devotional_day_completed action to master_actions:", actionError);
+            }
+
+            // UPDATE profile_stats: Count from devotional_progress table
+            let statsUsername = actionUsername;
+            if (!statsUsername && userId) {
+              const { data: { user } } = await supabase.auth.getUser();
+              if (user) {
+                const meta: any = user.user_metadata || {};
+                statsUsername =
+                  meta.firstName ||
+                  meta.first_name ||
+                  (user.email ? user.email.split("@")[0] : null) ||
+                  "User";
+              }
+            }
+
+            // Count all completed devotional days for this user
+            const { count, error: countError } = await supabase
+              .from("devotional_progress")
+              .select("*", { count: "exact", head: true })
+              .eq("user_id", userId)
+              .eq("is_completed", true);
+
+            if (!countError && count !== null) {
+              // Fetch other counts from profile_stats
+              const { data: currentStats } = await supabase
+                .from("profile_stats")
+                .select("username, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, devotional_days_completed_count")
+                .eq("user_id", userId)
+                .maybeSingle();
+
+              const finalUsername = currentStats?.username || statsUsername || "User";
+              
+              // Calculate total_actions as sum of all counts including devotional_days_completed_count
+              const totalActions = 
+                (currentStats?.chapters_completed_count || 0) +
+                (currentStats?.notes_created_count || 0) +
+                (currentStats?.people_learned_count || 0) +
+                (currentStats?.places_discovered_count || 0) +
+                (currentStats?.keywords_mastered_count || 0) +
+                (count || 0); // devotional_days_completed_count
+
+              await supabase
+                .from("profile_stats")
+                .upsert(
+                  {
+                    user_id: userId,
+                    devotional_days_completed_count: count || 0,
+                    total_actions: totalActions,
+                    username: finalUsername,
+                    updated_at: new Date().toISOString(),
+                  },
+                  {
+                    onConflict: "user_id",
+                  }
+                );
+            }
+          } catch (err) {
+            console.error("Error in devotional day tracking (non-blocking):", err);
+          }
+        })();
+      }
     } catch (err) {
       console.error("Error completing day:", err);
       alert("Failed to mark day as complete. Please try again.");

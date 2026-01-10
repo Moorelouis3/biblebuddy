@@ -14,6 +14,7 @@ type OverviewMetrics = {
   peopleLearned: number;
   placesDiscovered: number;
   keywordsUnderstood: number;
+  devotionalDaysCompleted: number;
 };
 
 const INITIAL_METRICS: OverviewMetrics = {
@@ -25,6 +26,7 @@ const INITIAL_METRICS: OverviewMetrics = {
   peopleLearned: 0,
   placesDiscovered: 0,
   keywordsUnderstood: 0,
+  devotionalDaysCompleted: 0,
 };
 
 export default function AnalyticsPage() {
@@ -58,6 +60,7 @@ export default function AnalyticsPage() {
       peopleLearned: number;
       placesDiscovered: number;
       keywordsUnderstood: number;
+      devotionalDaysCompleted: number;
       startDate: Date;
       endDate: Date;
     }>
@@ -318,6 +321,14 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
+        // Devotional Days Completed
+        const { count: devotionalDaysCompleted } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "devotional_day_completed")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
         return {
           period: bucket.label,
           signups: signups || 0,
@@ -328,6 +339,7 @@ export default function AnalyticsPage() {
           peopleLearned: peopleLearned || 0,
           placesDiscovered: placesDiscovered || 0,
           keywordsUnderstood: keywordsUnderstood || 0,
+          devotionalDaysCompleted: devotionalDaysCompleted || 0,
           startDate: bucket.start,
           endDate: bucket.end,
         };
@@ -423,6 +435,14 @@ export default function AnalyticsPage() {
           .eq("action_type", "keyword_mastered")
       );
 
+      // Devotional days completed
+      const devotionalDaysPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "devotional_day_completed")
+      );
+
       const [
         signupsResult,
         loginRowsResult,
@@ -432,6 +452,7 @@ export default function AnalyticsPage() {
         peopleResult,
         placesResult,
         keywordsResult,
+        devotionalDaysResult,
       ] = await Promise.all([
         signupsPromise,
         loginsPromise,
@@ -441,6 +462,7 @@ export default function AnalyticsPage() {
         peoplePromise,
         placesPromise,
         keywordsPromise,
+        devotionalDaysPromise,
       ]);
 
       const signupsCount = signupsResult.count ?? 0;
@@ -459,6 +481,8 @@ export default function AnalyticsPage() {
       const placesError = placesResult.error;
       const keywordsCount = keywordsResult.count ?? 0;
       const keywordsError = keywordsResult.error;
+      const devotionalDaysCount = devotionalDaysResult.count ?? 0;
+      const devotionalDaysError = devotionalDaysResult.error;
 
       if (
         signupsError ||
@@ -468,7 +492,8 @@ export default function AnalyticsPage() {
         notesError ||
         peopleError ||
         placesError ||
-        keywordsError
+        keywordsError ||
+        devotionalDaysError
       ) {
         console.error("[ANALYTICS_OVERVIEW] Error loading metrics:", {
           signupsError,
@@ -479,6 +504,7 @@ export default function AnalyticsPage() {
           peopleError,
           placesError,
           keywordsError,
+          devotionalDaysError,
         });
         setOverviewError("Failed to load overview metrics.");
         setOverviewMetrics(INITIAL_METRICS);
@@ -502,6 +528,7 @@ export default function AnalyticsPage() {
         peopleLearned: peopleCount ?? 0,
         placesDiscovered: placesCount ?? 0,
         keywordsUnderstood: keywordsCount ?? 0,
+        devotionalDaysCompleted: devotionalDaysCount ?? 0,
       });
       setLoadingOverview(false);
     } catch (err) {
@@ -769,6 +796,16 @@ export default function AnalyticsPage() {
             text,
             sortKey: actionDate.getTime(),
             actionType: "keyword_mastered",
+          });
+        } else if (action.action_type === "devotional_day_completed") {
+          const text = action.action_label 
+            ? `On ${formattedDate} at ${formattedTime}, ${username} completed ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} completed a devotional day.${counterText}`;
+          actions.push({
+            date: formattedDate,
+            text,
+            sortKey: actionDate.getTime(),
+            actionType: "devotional_day_completed",
           });
         } else if (action.action_type === "note_created") {
           actions.push({
@@ -1156,6 +1193,7 @@ export default function AnalyticsPage() {
       "person_learned": "People Learned",
       "place_discovered": "Places Discovered",
       "keyword_mastered": "Keywords Understood",
+      "devotional_day_completed": "Devotional Days Completed",
     };
     return nameMap[actionType] || actionType.replace(/_/g, " ");
   }
@@ -1175,6 +1213,8 @@ export default function AnalyticsPage() {
         return "bg-cyan-50 border-l-4 border-cyan-500";
       case "keyword_mastered":
         return "bg-purple-50 border-l-4 border-purple-500";
+      case "devotional_day_completed":
+        return "bg-orange-50 border-l-4 border-orange-500";
       case "user_login":
         return "bg-blue-50 border-l-4 border-blue-500";
       case "user_signup":
@@ -1213,6 +1253,8 @@ export default function AnalyticsPage() {
             return row.placesDiscovered;
           case "Keywords Understood":
             return row.keywordsUnderstood;
+          case "Devotional Days Completed":
+            return row.devotionalDaysCompleted;
           default:
             return 0;
         }
@@ -1238,6 +1280,8 @@ export default function AnalyticsPage() {
           return row.placesDiscovered;
         case "Keywords Understood":
           return row.keywordsUnderstood;
+        case "Devotional Days Completed":
+          return row.devotionalDaysCompleted;
         default:
           return 0;
       }
@@ -1450,7 +1494,7 @@ export default function AnalyticsPage() {
             </div>
 
             {/* ROW 2: BIBLE ENGAGEMENT */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
               <OverviewCard
                 label="Chapters Read"
                 value={overviewMetrics.chaptersRead}
@@ -1480,6 +1524,12 @@ export default function AnalyticsPage() {
                 value={overviewMetrics.keywordsUnderstood}
                 onClick={() => setSelectedActionType(selectedActionType === "keyword_mastered" ? null : "keyword_mastered")}
                 isSelected={selectedActionType === "keyword_mastered"}
+              />
+              <OverviewCard
+                label="Devotional Days Completed"
+                value={overviewMetrics.devotionalDaysCompleted}
+                onClick={() => setSelectedActionType(selectedActionType === "devotional_day_completed" ? null : "devotional_day_completed")}
+                isSelected={selectedActionType === "devotional_day_completed"}
               />
             </div>
           </>
@@ -1606,6 +1656,7 @@ export default function AnalyticsPage() {
                     "People Learned",
                     "Places Discovered",
                     "Keywords Understood",
+                    "Devotional Days Completed",
                   ].map((metric) => (
                     <button
                       key={metric}
@@ -1645,6 +1696,8 @@ export default function AnalyticsPage() {
                               return row.placesDiscovered;
                             case "Keywords Understood":
                               return row.keywordsUnderstood;
+                            case "Devotional Days Completed":
+                              return row.devotionalDaysCompleted;
                             default:
                               return row.totalActions;
                           }
@@ -1826,6 +1879,10 @@ export default function AnalyticsPage() {
                   <div className="bg-purple-50 p-4 rounded-lg">
                     <p className="text-sm text-gray-600 mb-1">Keywords Understood</p>
                     <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.keywordsUnderstood.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-orange-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Devotional Days Completed</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.devotionalDaysCompleted.toLocaleString()}</p>
                   </div>
                 </div>
               </div>
