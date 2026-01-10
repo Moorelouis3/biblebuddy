@@ -1064,7 +1064,7 @@ His promises.
 
 His hand on your life even when you don't see it.`,
     bible_reading_reference: "Deuteronomy 8:1-10",
-    reflection_question: "Where in your life are you putting more trust in "bread" — your paycheck, your comfort, your plans — than in God? How can you start depending on Him more today?",
+    reflection_question: "Where in your life are you putting more trust in 'bread' — your paycheck, your comfort, your plans — than in God? How can you start depending on Him more today?",
   },
   {
     day_number: 13,
