@@ -1155,7 +1155,7 @@ God had saved them from slavery, carried them through miracles, tested them in t
 
 The only question was whether they would remember who kept them alive — or run right back to chasing everything else.`,
     bible_reading_reference: "Exodus 16-17 and Numbers 13-14",
-    reflection_question: "What's your own "wilderness story"? When has God carried you, provided for you, or tested you — and what has it taught you about where real life comes from?",
+    reflection_question: "What's your own 'wilderness story'? When has God carried you, provided for you, or tested you — and what has it taught you about where real life comes from?",
   },
   {
     day_number: 14,
