@@ -36,10 +36,6 @@ export default function AnalyticsPage() {
   const [totalUsers, setTotalUsers] = useState(0);
   const [loadingTotalUsers, setLoadingTotalUsers] = useState(true);
 
-  // Paid Users
-  const [paidUsers, setPaidUsers] = useState(0);
-  const [loadingPaidUsers, setLoadingPaidUsers] = useState(true);
-
   // Global overview metrics
   const [timeFilter, setTimeFilter] = useState<TimeFilter>("24h");
   const [overviewMetrics, setOverviewMetrics] =
@@ -98,7 +94,6 @@ export default function AnalyticsPage() {
   useEffect(() => {
     loadActiveUsers();
     loadTotalUsers();
-    loadPaidUsers();
     loadFeedbackInbox();
     loadUserRequestsInbox();
   }, []);
@@ -160,30 +155,6 @@ export default function AnalyticsPage() {
     }
   }
 
-  // Load paid users (users with active Stripe subscriptions) from profile_stats
-  async function loadPaidUsers() {
-    setLoadingPaidUsers(true);
-    try {
-      const { count, error } = await supabase
-        .from("profile_stats")
-        .select("*", { count: "exact", head: true })
-        .eq("payments", true);
-
-      if (error) {
-        console.error("[PAID_USERS] Error fetching paid users:", error);
-        setPaidUsers(0);
-        setLoadingPaidUsers(false);
-        return;
-      }
-
-      setPaidUsers(count || 0);
-      setLoadingPaidUsers(false);
-    } catch (err) {
-      console.error("[PAID_USERS] Error loading paid users:", err);
-      setPaidUsers(0);
-      setLoadingPaidUsers(false);
-    }
-  }
 
   function getFromDate(filter: TimeFilter): string | null {
     if (filter === "all") return null;
@@ -1377,9 +1348,9 @@ export default function AnalyticsPage() {
     <div className="max-w-3xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">Analytics Dashboard</h1>
 
-      {/* ACTIVE USERS RIGHT NOW + TOTAL USERS + PAID USERS */}
+      {/* ACTIVE USERS RIGHT NOW + TOTAL USERS */}
       <div className="mb-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
           {/* Active Users */}
           <div>
             {loadingActiveUsers ? (
@@ -1411,24 +1382,6 @@ export default function AnalyticsPage() {
                 </div>
                 <p className="text-lg text-gray-600">
                   Total users
-                </p>
-              </>
-            )}
-          </div>
-
-          {/* Paid Users */}
-          <div>
-            {loadingPaidUsers ? (
-              <div className="py-8">
-                <p className="text-gray-500 text-sm">Loading...</p>
-              </div>
-            ) : (
-              <>
-                <div className="text-7xl font-bold text-gray-900 mb-2">
-                  {paidUsers}
-                </div>
-                <p className="text-lg text-gray-600">
-                  Paid Users
                 </p>
               </>
             )}

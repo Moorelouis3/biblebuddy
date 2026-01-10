@@ -259,7 +259,7 @@ export default function LandingPage() {
                   rel="noreferrer"
                   className="hover:text-blue-600 transition-colors"
                 >
-                  YouTube – Bible Study with Louis
+                  YouTube
                 </a>
               </li>
               <li>
@@ -269,7 +269,7 @@ export default function LandingPage() {
                   rel="noreferrer"
                   className="hover:text-blue-600 transition-colors"
                 >
-                  Instagram – Bible Study with Louis
+                  Instagram
                 </a>
               </li>
               <li>
@@ -279,7 +279,7 @@ export default function LandingPage() {
                   rel="noreferrer"
                   className="hover:text-blue-600 transition-colors"
                 >
-                  Threads – Bible Study with Louis
+                  Threads
                 </a>
               </li>
               <li>
@@ -289,7 +289,7 @@ export default function LandingPage() {
                   rel="noreferrer"
                   className="hover:text-blue-600 transition-colors"
                 >
-                  TikTok – Bible Study with Louis
+                  TikTok
                 </a>
               </li>
               <li>
@@ -299,7 +299,7 @@ export default function LandingPage() {
                   rel="noreferrer"
                   className="hover:text-blue-600 transition-colors"
                 >
-                  Facebook – Bible Study with Louis
+                  Facebook
                 </a>
               </li>
             </ul>
