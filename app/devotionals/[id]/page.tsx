@@ -6,6 +6,7 @@ import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
 import DevotionalDayModal from "../../../components/DevotionalDayModal";
 import BibleReadingModal from "../../../components/BibleReadingModal";
+import DevotionalDayCompletionModal from "../../../components/DevotionalDayCompletionModal";
 
 interface Devotional {
   id: string;
@@ -47,6 +48,8 @@ export default function DevotionalDetailPage() {
   const [bibleBook, setBibleBook] = useState<string>("");
   const [bibleChapter, setBibleChapter] = useState<number>(0);
   const [showReadingRequiredModal, setShowReadingRequiredModal] = useState(false);
+  const [showCompletionModal, setShowCompletionModal] = useState(false);
+  const [completedDayNumber, setCompletedDayNumber] = useState<number | null>(null);
 
   useEffect(() => {
     async function loadUser() {
@@ -218,8 +221,14 @@ export default function DevotionalDetailPage() {
         return next;
       });
 
-      // Close modal
+      // Close day modal
       setSelectedDay(null);
+
+      // Show celebration modal if this was a NEW completion (not already completed)
+      if (!wasAlreadyCompleted && devotional) {
+        setCompletedDayNumber(dayNumber);
+        setShowCompletionModal(true);
+      }
 
       // ACTION TRACKING: Only log if this is a NEW completion (not already completed)
       // Do this asynchronously after UI updates (fire-and-forget)
@@ -629,6 +638,18 @@ export default function DevotionalDetailPage() {
             </button>
           </div>
         </div>
+      )}
+
+      {/* DEVOTIONAL DAY COMPLETION CELEBRATION MODAL */}
+      {showCompletionModal && completedDayNumber && devotional && (
+        <DevotionalDayCompletionModal
+          dayNumber={completedDayNumber}
+          devotionalTitle={devotional.title}
+          onClose={() => {
+            setShowCompletionModal(false);
+            setCompletedDayNumber(null);
+          }}
+        />
       )}
     </div>
   );
