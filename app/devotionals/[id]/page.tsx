@@ -223,9 +223,12 @@ export default function DevotionalDetailPage() {
 
       // ACTION TRACKING: Only log if this is a NEW completion (not already completed)
       // Do this asynchronously after UI updates (fire-and-forget)
+      // This matches the pattern used in chapter completion
       if (!wasAlreadyCompleted) {
         (async () => {
           try {
+            console.log(`[DEVOTIONAL_DAY_COMPLETE] Starting tracking for day ${dayNumber}, devotional ${devotionalId}, user ${userId}`);
+            
             // Get username for master_actions
             const { data: { user: authUser } } = await supabase.auth.getUser();
             let actionUsername = "User";
@@ -242,22 +245,32 @@ export default function DevotionalDetailPage() {
             // Format action_label: "Devotional Title - Day X"
             const actionLabel = devotional ? `${devotional.title} - Day ${dayNumber}` : `Day ${dayNumber}`;
 
-            // Insert into master_actions
-            console.log("[MASTER_ACTIONS] inserting:", { action_type: "devotional_day_completed", action_label: actionLabel });
-            const { error: actionError } = await supabase
+            // STEP 1: Insert into master_actions
+            console.log("[MASTER_ACTIONS] inserting:", { 
+              action_type: "devotional_day_completed", 
+              action_label: actionLabel,
+              user_id: userId,
+              username: actionUsername 
+            });
+            
+            const { error: actionError, data: actionData } = await supabase
               .from("master_actions")
               .insert({
                 user_id: userId,
                 username: actionUsername ?? null,
                 action_type: "devotional_day_completed",
                 action_label: actionLabel,
-              });
+              })
+              .select();
 
             if (actionError) {
-              console.error("Error logging devotional_day_completed action to master_actions:", actionError);
+              console.error("[MASTER_ACTIONS] Error logging devotional_day_completed action:", actionError);
+              console.error("[MASTER_ACTIONS] Full error details:", JSON.stringify(actionError, null, 2));
+            } else {
+              console.log("[MASTER_ACTIONS] Successfully inserted devotional_day_completed action:", actionData);
             }
 
-            // UPDATE profile_stats: Count from devotional_progress table
+            // STEP 2: UPDATE profile_stats: Count from devotional_progress table
             let statsUsername = actionUsername;
             if (!statsUsername && userId) {
               const { data: { user } } = await supabase.auth.getUser();
@@ -272,19 +285,41 @@ export default function DevotionalDetailPage() {
             }
 
             // Count all completed devotional days for this user
+            console.log("[PROFILE_STATS] Counting completed devotional days for user:", userId);
             const { count, error: countError } = await supabase
               .from("devotional_progress")
               .select("*", { count: "exact", head: true })
               .eq("user_id", userId)
               .eq("is_completed", true);
 
-            if (!countError && count !== null) {
+            if (countError) {
+              console.error("[PROFILE_STATS] Error counting devotional days:", countError);
+              console.error("[PROFILE_STATS] Full error details:", JSON.stringify(countError, null, 2));
+            } else {
+              console.log("[PROFILE_STATS] Found", count, "completed devotional days");
+
               // Fetch other counts from profile_stats
-              const { data: currentStats } = await supabase
+              // Note: If column doesn't exist, this select will still work (returns null for missing column)
+              const { data: currentStats, error: fetchStatsError } = await supabase
                 .from("profile_stats")
                 .select("username, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, devotional_days_completed_count")
                 .eq("user_id", userId)
                 .maybeSingle();
+
+              if (fetchStatsError) {
+                console.error("[PROFILE_STATS] Error fetching current stats:", fetchStatsError);
+                console.error("[PROFILE_STATS] Full error details:", JSON.stringify(fetchStatsError, null, 2));
+                
+                // If column doesn't exist, the select might fail - but we'll try the upsert anyway
+                if (fetchStatsError.message?.includes("devotional_days_completed_count") || 
+                    fetchStatsError.code === "42703") {
+                  console.error("[PROFILE_STATS] ⚠️ CRITICAL: Column 'devotional_days_completed_count' does not exist!");
+                  console.error("[PROFILE_STATS] ⚠️ Please run ADD_DEVOTIONAL_DAYS_COMPLETED_COLUMN.sql in Supabase SQL Editor");
+                }
+                return; // Don't proceed with update if fetch failed
+              }
+
+              console.log("[PROFILE_STATS] Current stats:", currentStats);
 
               const finalUsername = currentStats?.username || statsUsername || "User";
               
@@ -297,7 +332,14 @@ export default function DevotionalDetailPage() {
                 (currentStats?.keywords_mastered_count || 0) +
                 (count || 0); // devotional_days_completed_count
 
-              await supabase
+              console.log("[PROFILE_STATS] Updating profile_stats with:", {
+                user_id: userId,
+                devotional_days_completed_count: count || 0,
+                total_actions: totalActions,
+                username: finalUsername
+              });
+
+              const { error: updateError, data: updateData } = await supabase
                 .from("profile_stats")
                 .upsert(
                   {
@@ -310,12 +352,34 @@ export default function DevotionalDetailPage() {
                   {
                     onConflict: "user_id",
                   }
-                );
+                )
+                .select();
+
+              if (updateError) {
+                console.error("[PROFILE_STATS] Error updating profile_stats:", updateError);
+                console.error("[PROFILE_STATS] Error code:", updateError.code);
+                console.error("[PROFILE_STATS] Error message:", updateError.message);
+                console.error("[PROFILE_STATS] Full error details:", JSON.stringify(updateError, null, 2));
+                
+                // Check if error is due to missing column
+                if (updateError.message?.includes("devotional_days_completed_count") || 
+                    updateError.code === "42703" ||
+                    updateError.hint?.includes("devotional_days_completed_count")) {
+                  console.error("[PROFILE_STATS] ⚠️ CRITICAL: Column 'devotional_days_completed_count' does not exist in database!");
+                  console.error("[PROFILE_STATS] ⚠️ ACTION REQUIRED: Run ADD_DEVOTIONAL_DAYS_COMPLETED_COLUMN.sql in Supabase SQL Editor");
+                  console.error("[PROFILE_STATS] ⚠️ This is preventing profile stats from updating!");
+                }
+              } else {
+                console.log("[PROFILE_STATS] ✅ Successfully updated profile_stats:", updateData);
+              }
             }
           } catch (err) {
-            console.error("Error in devotional day tracking (non-blocking):", err);
+            console.error("[DEVOTIONAL_DAY_TRACKING] Unexpected error in devotional day tracking:", err);
+            console.error("[DEVOTIONAL_DAY_TRACKING] Full error details:", JSON.stringify(err, null, 2));
           }
         })();
+      } else {
+        console.log(`[DEVOTIONAL_DAY_COMPLETE] Day ${dayNumber} was already completed, skipping duplicate tracking`);
       }
     } catch (err) {
       console.error("Error completing day:", err);
