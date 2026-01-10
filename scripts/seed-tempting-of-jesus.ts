@@ -1,9 +1,14 @@
+
 // Script to seed "The Tempting of Jesus" devotional with all 21 days from PDF
 // Run with: npx tsx scripts/seed-tempting-of-jesus.ts
 
+// Load environment variables from .env file (Node.js scripts don't auto-load .env.local)
+import 'dotenv/config';
+
 import { createClient } from "@supabase/supabase-js";
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+// Use server-only env vars (not NEXT_PUBLIC_ prefix)
+const SUPABASE_URL = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
