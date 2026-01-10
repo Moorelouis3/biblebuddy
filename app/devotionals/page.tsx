@@ -66,14 +66,14 @@ export default function DevotionalsPage() {
     }
   };
 
-  // Get card color based on devotional title
-  const getCardColor = (title: string): string => {
-    // Special case: "The Tempting of Jesus" gets red
+  // Get cover image path based on devotional title
+  const getCoverImage = (title: string): string | null => {
+    // "The Tempting of Jesus" has a cover image
     if (title === "The Tempting of Jesus") {
-      return "bg-red-50 border-red-200";
+      return "/images/temptingofjesus.png";
     }
-    // Default: soft pastel green consistent with BibleBuddy's green UI
-    return "bg-green-50 border-green-200";
+    // Future devotionals can be added here
+    return null;
   };
 
   if (loading) {
@@ -187,21 +187,61 @@ export default function DevotionalsPage() {
             No devotionals available yet. Check back soon!
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {devotionals.map((devotional) => (
-              <Link
-                key={devotional.id}
-                href={`/devotionals/${devotional.id}`}
-              >
-                <div
-                  className={`${getCardColor(devotional.title)} border rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition`}
-                >
-                  <h2 className="text-xl font-bold mb-1">{devotional.title}</h2>
-                  <p className="text-sm text-gray-600">{devotional.subtitle}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <>
+            {/* Mobile: Vertical scroll list */}
+            <div className="flex flex-col md:hidden gap-6">
+              {devotionals.map((devotional) => {
+                const coverImage = getCoverImage(devotional.title);
+                
+                if (!coverImage) {
+                  return null;
+                }
+
+                return (
+                  <Link
+                    key={devotional.id}
+                    href={`/devotionals/${devotional.id}`}
+                    className="block w-full"
+                  >
+                    <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 hover:shadow-xl hover:scale-[1.01] transition-all duration-200 cursor-pointer">
+                      <img
+                        src={coverImage}
+                        alt={`${devotional.title} cover`}
+                        className="w-full h-auto rounded-lg object-contain"
+                      />
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Desktop: Grid layout */}
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+              {devotionals.map((devotional) => {
+                const coverImage = getCoverImage(devotional.title);
+                
+                if (!coverImage) {
+                  return null;
+                }
+
+                return (
+                  <Link
+                    key={devotional.id}
+                    href={`/devotionals/${devotional.id}`}
+                    className="block w-full max-w-xs"
+                  >
+                    <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer">
+                      <img
+                        src={coverImage}
+                        alt={`${devotional.title} cover`}
+                        className="w-full h-auto rounded-lg object-contain"
+                      />
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </>
         )}
       </div>
     </div>
