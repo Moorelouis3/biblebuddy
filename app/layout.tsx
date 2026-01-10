@@ -17,8 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Bible Buddy",
-  description: "Yourthe navigation menu option needs to be added to the bible page and all the book pages also
-   guided Bible reading companion",
+  description: "Your guided Bible reading companion",
   icons: {
     icon: "/favicon.ico",
     apple: "/icons/icon-192.png",
