@@ -647,11 +647,23 @@ Be accurate to Scripture.`;
 
       {/* PERSON OVERLAY MODAL (nested, higher z-index) */}
       {selectedPerson && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
+          onClick={(e) => {
+            // Only close this popup, not the parent devotional day modal
+            e.stopPropagation();
+            setSelectedPerson(null);
+            setPersonNotes(null);
+          }}
+        >
+          <div 
+            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               type="button"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setSelectedPerson(null);
                 setPersonNotes(null);
               }}
@@ -689,11 +701,23 @@ Be accurate to Scripture.`;
 
       {/* PLACE OVERLAY MODAL (nested, higher z-index) */}
       {selectedPlace && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
+          onClick={(e) => {
+            // Only close this popup, not the parent devotional day modal
+            e.stopPropagation();
+            setSelectedPlace(null);
+            setPlaceNotes(null);
+          }}
+        >
+          <div 
+            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               type="button"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setSelectedPlace(null);
                 setPlaceNotes(null);
               }}
@@ -731,11 +755,23 @@ Be accurate to Scripture.`;
 
       {/* KEYWORD OVERLAY MODAL (nested, higher z-index) */}
       {selectedKeyword && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
+          onClick={(e) => {
+            // Only close this popup, not the parent devotional day modal
+            e.stopPropagation();
+            setSelectedKeyword(null);
+            setKeywordNotes(null);
+          }}
+        >
+          <div 
+            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               type="button"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 setSelectedKeyword(null);
                 setKeywordNotes(null);
               }}
