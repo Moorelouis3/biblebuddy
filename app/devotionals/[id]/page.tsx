@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { supabase } from "../../../lib/supabaseClient";
 import DevotionalDayModal from "../../../components/DevotionalDayModal";
 import BibleReadingModal from "../../../components/BibleReadingModal";
@@ -316,13 +315,13 @@ export default function DevotionalDetailPage() {
         {devotional.title === "The Tempting of Jesus" && (
           <div className="flex justify-center my-6">
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 inline-block">
-              <Image
+              <img
                 src="/images/temptingofjesus.png"
                 alt={`${devotional.title} cover`}
                 width={240}
                 height={360}
                 className="rounded-lg"
-                priority
+                style={{ maxWidth: '240px', height: 'auto' }}
               />
             </div>
           </div>
