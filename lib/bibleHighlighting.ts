@@ -548,12 +548,27 @@ export function enrichPlainText(text: string): string {
     enrichedText = before + highlightSpan + after;
   }
 
-  // Preserve paragraph structure from original text (double newlines = paragraph breaks)
+  // Preserve paragraph structure from original text
   // Split by double newlines to preserve paragraphs, then join with proper HTML
   const paragraphs = enrichedText.split(/\n\s*\n/).filter(p => p.trim());
   if (paragraphs.length === 0) {
-    // Single paragraph or no breaks
-    return `<p class="leading-relaxed">${enrichedText}</p>`;
+    // Single paragraph or no breaks - split by single newlines and create paragraphs
+    // This improves readability for long blocks of text
+    const lines = enrichedText.split(/\n/).filter(line => line.trim());
+    if (lines.length === 0) {
+      return `<p class="leading-relaxed">${enrichedText}</p>`;
+    }
+    // Group lines into paragraphs (each line becomes a paragraph if blank line before it)
+    return lines.map(line => `<p class="leading-relaxed mb-4">${line.trim()}</p>`).join('\n');
   }
-  return paragraphs.map(p => `<p class="leading-relaxed">${p.trim().replace(/\n/g, ' ')}</p>`).join('\n');
+  // Multiple paragraphs - preserve structure with spacing
+  return paragraphs.map(p => {
+    // Within each paragraph, handle single line breaks
+    const lines = p.split(/\n/).filter(line => line.trim());
+    if (lines.length === 1) {
+      return `<p class="leading-relaxed mb-4">${lines[0].trim()}</p>`;
+    }
+    // Multiple lines in a paragraph - join with space, wrap in single paragraph
+    return `<p class="leading-relaxed mb-4">${lines.join(' ').trim()}</p>`;
+  }).join('\n');
 }

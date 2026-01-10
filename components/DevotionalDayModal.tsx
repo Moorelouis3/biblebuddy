@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { createClient } from "@supabase/supabase-js";
 import ReactMarkdown from "react-markdown";
 import { enrichPlainText } from "../lib/bibleHighlighting";
+import { BIBLE_PEOPLE_LIST } from "../lib/biblePeopleList";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -157,13 +158,33 @@ export default function DevotionalDayModal({
 
       try {
         if (!selectedPerson) return;
-        const personNameKey = selectedPerson.name.toLowerCase().trim();
+        
+        // Resolve alias to primary name if needed
+        const clickedTerm = selectedPerson.name;
+        let primaryName = clickedTerm;
+        
+        // Check if clicked term matches an alias - if so, use primary name
+        for (const person of BIBLE_PEOPLE_LIST) {
+          if (person.aliases && person.aliases.some(alias => 
+            alias.toLowerCase().trim() === clickedTerm.toLowerCase().trim()
+          )) {
+            primaryName = person.name;
+            break;
+          }
+          // Also check if clicked term matches primary name (case-insensitive)
+          if (person.name.toLowerCase().trim() === clickedTerm.toLowerCase().trim()) {
+            primaryName = person.name;
+            break;
+          }
+        }
+        
+        const personNameKey = primaryName.toLowerCase().trim();
 
-        // STEP 1: Check Supabase FIRST
+        // STEP 1: Check Supabase FIRST (use person_name column, not person)
         const { data: existing, error: existingError } = await supabase
           .from("bible_people_notes")
           .select("notes_text")
-          .eq("person", personNameKey)
+          .eq("person_name", personNameKey)
           .maybeSingle();
 
         if (existingError && existingError.code !== "PGRST116") {
@@ -176,33 +197,78 @@ export default function DevotionalDayModal({
           return;
         }
 
-        // STEP 2: Generate notes using OpenAI
-        const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti|Bernice|Drusilla|Euodia|Syntyche|Chloe|Nympha|Tryphaena|Tryphosa|Julia|Claudia|Persis)/i.test(selectedPerson.name);
+        // STEP 2: Generate notes using OpenAI (same as Bible chapter page)
+        // Determine gender for pronoun usage
+        const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti|Bernice|Drusilla|Euodia|Syntyche|Chloe|Nympha|Tryphaena|Tryphosa|Julia|Claudia|Persis)/i.test(primaryName);
+        const pronoun = isFemale ? "Her" : "Him";
+        const whoPronoun = isFemale ? "She" : "He";
 
-        const prompt = `You are Little Louis. Generate Bible study style notes for ${selectedPerson.name} from Scripture using the EXACT markdown structure below.
+        const prompt = `You are Little Louis. Generate Bible study style notes for ${primaryName} from Scripture using the EXACT markdown structure below.
 
-TEMPLATE
-# Who is this person?
-One short paragraph explaining who ${selectedPerson.name} ${isFemale ? "was" : "was"} in the Bible and why ${isFemale ? "she" : "he"} matters.
+CRITICAL RENDERING RULES (MANDATORY):
+- Use ONLY markdown
+- Use SINGLE # for all section headers
+- INSERT TWO FULL LINE BREAKS AFTER EVERY SECTION
+- INSERT TWO FULL LINE BREAKS AFTER EVERY PARAGRAPH GROUP
+- DO NOT use markdown bullet characters (*, -, •)
+- Use EMOJIS as bullets instead
+- Emojis must start each bullet line
+- No hyphens anywhere
+- No compact spacing
+- Spacing matters more than word count
 
-# Where do we see ${selectedPerson.name}?
-Include two or three specific Bible references where ${selectedPerson.name} appears. Each reference should include the book, chapter, and verse (e.g., "Genesis 37:5-11"). After each reference, write one sentence explaining what happens in that passage related to ${selectedPerson.name}.
+The person's name is already shown in the UI. DO NOT include their name as a header.
 
-# What makes ${selectedPerson.name} significant?
-List two or three key characteristics, actions, or lessons from ${selectedPerson.name}'s story. Each point should be one sentence. Keep it simple and beginner-friendly.
+---
 
-# How does ${selectedPerson.name}'s story point to Jesus?
-One short paragraph connecting ${selectedPerson.name}'s story to Jesus, prophecy, or the bigger story of redemption. Keep it simple and clear.
+TEMPLATE (FOLLOW EXACTLY):
 
-# What can we learn from ${selectedPerson.name}?
-One short paragraph with a simple, practical life application. Focus on faith, character, or following God.
+# 👤 Who ${whoPronoun} Is
 
-RULES
-DO NOT include a header like "${selectedPerson.name} Notes" or any title at the beginning. Start directly with "# Who is this person?".
-Keep emojis in headers if helpful, but focus on clarity.
-No images. No Greek or Hebrew words unless essential (and then explain simply).
-Keep it cinematic, warm, simple. Do not overwhelm beginners.
-Be accurate to Scripture.`;
+Write two short paragraphs explaining who this person is.
+
+
+
+# 📖 Their Role in the Story
+
+Write two to three short paragraphs explaining what role this person plays in the biblical narrative.
+
+
+
+# 🔥 Key Moments
+
+🔥 Short sentence describing a key moment.
+
+🔥 Short sentence describing a key moment.
+
+🔥 Short sentence describing a key moment.
+
+🔥 Short sentence describing a key moment.
+
+
+
+# 📍 Where You Find ${pronoun}
+
+📖 Book Chapter range
+
+📖 Book Chapter range
+
+📖 Book Chapter range
+
+
+
+# 🌱 Why This Person Matters
+
+Write two to three short paragraphs explaining why this person is important and what we learn from them.
+
+
+
+FINAL RULES:
+- Every section must be separated by TWO blank lines
+- Every paragraph block must be separated by TWO blank lines
+- Do not compress content
+- No lists without emojis
+- Keep it cinematic, Bible study focused, and clear`;
 
         const response = await fetch("/api/chat", {
           method: "POST",
@@ -213,19 +279,36 @@ Be accurate to Scripture.`;
           }),
         });
 
-        if (!response.ok) {
-          throw new Error("Failed to generate notes");
+        if (!response.ok) throw new Error(`Failed to generate notes: ${response.statusText}`);
+        const json = await response.json();
+        const generated = (json?.reply as string) ?? "";
+
+        // STEP 3: Race condition protection - check again before saving
+        const { data: existingCheck } = await supabase
+          .from("bible_people_notes")
+          .select("notes_text")
+          .eq("person_name", personNameKey)
+          .maybeSingle();
+
+        let notesText = "";
+        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
+          notesText = existingCheck.notes_text;
+        } else {
+          // STEP 4: Upsert
+          await supabase
+            .from("bible_people_notes")
+            .upsert({ person_name: personNameKey, notes_text: generated }, { onConflict: "person_name" });
+
+          // STEP 5: Re-read from DB
+          const { data: finalData } = await supabase
+            .from("bible_people_notes")
+            .select("notes_text")
+            .eq("person_name", personNameKey)
+            .single();
+          notesText = finalData?.notes_text || generated;
         }
 
-        const data = await response.json();
-        const generated = data.response || "";
-
-        // STEP 3: Save to Supabase
-        await supabase
-          .from("bible_people_notes")
-          .upsert({ person: personNameKey, notes_text: generated }, { onConflict: "person" });
-
-        setPersonNotes(generated);
+        setPersonNotes(notesText);
       } catch (err: any) {
         console.error("Error loading person notes:", err);
       } finally {
@@ -386,19 +469,22 @@ Be accurate to Scripture.`;
 
           const response = await fetch("/api/chat", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+            },
             body: JSON.stringify({
-              message: prompt,
-              growMode: false,
+              messages: [
+                {
+                  role: "user",
+                  content: prompt,
+                },
+              ],
             }),
           });
 
-          if (!response.ok) {
-            throw new Error("Failed to generate notes");
-          }
-
-          const data = await response.json();
-          const generated = data.response || "";
+          if (!response.ok) throw new Error(`Failed to generate notes: ${response.statusText}`);
+          const json = await response.json();
+          const generated = (json?.reply as string) ?? "";
 
           await supabase
             .from("keywords_in_the_bible")
