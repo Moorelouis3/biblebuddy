@@ -568,7 +568,7 @@ export default function DashboardPage() {
 
           {/* DEVOTIONALS */}
           <Link href="/devotionals">
-            <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+            <div className="bg-teal-100 border border-teal-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
               <h2 className="text-xl font-semibold">Devotionals</h2>
               <p className="text-gray-700 mt-1">
                 Guided daily Bible reading and reflection
