@@ -17,6 +17,22 @@ import { BIBLE_PEOPLE_LIST } from "../../../../lib/biblePeopleList";
 import { BIBLE_PLACES_LIST } from "../../../../lib/biblePlacesList";
 import { BIBLE_KEYWORDS_LIST } from "../../../../lib/bibleKeywordsList";
 
+// Add CSS animation for button click (only once)
+useEffect(() => {
+  if (typeof document !== 'undefined' && !document.getElementById('scale-down-bounce-animation')) {
+    const style = document.createElement('style');
+    style.id = 'scale-down-bounce-animation';
+    style.textContent = `
+      @keyframes scale-down-bounce {
+        0% { transform: scale(1); }
+        50% { transform: scale(0.85); }
+        100% { transform: scale(1); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}, []);
+
 type Verse = {
   num: number;
   text: string;
@@ -90,6 +106,9 @@ export default function BibleChapterPage() {
   const [completedPlaces, setCompletedPlaces] = useState<Set<string>>(new Set());
   const [completedKeywords, setCompletedKeywords] = useState<Set<string>>(new Set());
   const [loadingProgress, setLoadingProgress] = useState(true);
+  const [isAnimatingPerson, setIsAnimatingPerson] = useState(false);
+  const [isAnimatingPlace, setIsAnimatingPlace] = useState(false);
+  const [isAnimatingKeyword, setIsAnimatingKeyword] = useState(false);
 
   // Normalize markdown functions (reused from People/Places/Keywords pages)
   function normalizePersonMarkdown(markdown: string): string {
@@ -1803,17 +1822,30 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                                   next.add(personNameKey);
                                   return next;
                                 });
+                                
+                                // Trigger button animation
+                                setIsAnimatingPerson(true);
+                                
+                                // Close the modal after animation completes
+                                setTimeout(() => {
+                                  setSelectedPerson(null);
+                                  setPersonNotes(null);
+                                  setIsAnimatingPerson(false);
+                                }, 400); // Animation duration: 200ms scale down + 200ms scale up
                               }
                             } catch (err) {
                               console.error("Error marking person as finished:", err);
                               alert("Failed to mark as finished. Please try again.");
                             }
                           }}
-                          className={`w-full px-6 py-3 rounded-lg font-medium transition ${
+                          className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                             isCompleted
                               ? "bg-green-100 text-green-700 cursor-not-allowed"
                               : "bg-blue-600 text-white hover:bg-blue-700"
                           }`}
+                          style={isAnimatingPerson ? {
+                            animation: 'scale-down-bounce 0.4s ease-in-out'
+                          } : undefined}
                         >
                           {isCompleted
                             ? `✓ ${selectedPerson.name} marked as finished`
@@ -1998,17 +2030,30 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                                   next.add(placeNameKey);
                                   return next;
                                 });
+                                
+                                // Trigger button animation
+                                setIsAnimatingPlace(true);
+                                
+                                // Close the modal after animation completes
+                                setTimeout(() => {
+                                  setSelectedPlace(null);
+                                  setPlaceNotes(null);
+                                  setIsAnimatingPlace(false);
+                                }, 400); // Animation duration: 200ms scale down + 200ms scale up
                               }
                             } catch (err) {
                               console.error("Error marking place as finished:", err);
                               alert("Failed to mark as finished. Please try again.");
                             }
                           }}
-                          className={`w-full px-6 py-3 rounded-lg font-medium transition ${
+                          className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                             isCompleted
                               ? "bg-green-100 text-green-700 cursor-not-allowed"
                               : "bg-blue-600 text-white hover:bg-blue-700"
                           }`}
+                          style={isAnimatingPlace ? {
+                            animation: 'scale-down-bounce 0.4s ease-in-out'
+                          } : undefined}
                         >
                           {isCompleted
                             ? `✓ ${selectedPlace.name} marked as finished`
@@ -2192,17 +2237,30 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                                   next.add(keywordNameKey);
                                   return next;
                                 });
+                                
+                                // Trigger button animation
+                                setIsAnimatingKeyword(true);
+                                
+                                // Close the modal after animation completes
+                                setTimeout(() => {
+                                  setSelectedKeyword(null);
+                                  setKeywordNotes(null);
+                                  setIsAnimatingKeyword(false);
+                                }, 400); // Animation duration: 200ms scale down + 200ms scale up
                               }
                             } catch (err) {
                               console.error("Error marking keyword as finished:", err);
                               alert("Failed to mark as finished. Please try again.");
                             }
                           }}
-                          className={`w-full px-6 py-3 rounded-lg font-medium transition ${
+                          className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                             isCompleted
                               ? "bg-green-100 text-green-700 cursor-not-allowed"
                               : "bg-blue-600 text-white hover:bg-blue-700"
                           }`}
+                          style={isAnimatingKeyword ? {
+                            animation: 'scale-down-bounce 0.4s ease-in-out'
+                          } : undefined}
                         >
                           {isCompleted
                             ? `✓ ${selectedKeyword.name} marked as finished`

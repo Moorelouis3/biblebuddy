@@ -421,6 +421,7 @@ export default function PeopleInTheBiblePage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   // Filter and sort people
   const filteredPeople = useMemo(() => {
@@ -1142,21 +1143,31 @@ FINAL RULES:
                                   next.add(personNameKey);
                                   return next;
                                 });
-                                // Close the modal after marking as finished
-                                setSelectedPerson(null);
-                                setPersonNotes(null);
-                                setNotesError(null);
+                                
+                                // Trigger button animation
+                                setIsAnimating(true);
+                                
+                                // Close the modal after animation completes
+                                setTimeout(() => {
+                                  setSelectedPerson(null);
+                                  setPersonNotes(null);
+                                  setNotesError(null);
+                                  setIsAnimating(false);
+                                }, 400); // Animation duration: 200ms scale down + 200ms scale up
                               }
                             } catch (err) {
                               console.error("Error marking person as finished:", err);
                               alert("Failed to mark as finished. Please try again.");
                             }
                           }}
-                          className={`w-full px-6 py-3 rounded-lg font-medium transition ${
+                          className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                             isCompleted
                               ? "bg-green-100 text-green-700 cursor-not-allowed"
                               : "bg-blue-600 text-white hover:bg-blue-700"
                           }`}
+                          style={isAnimating ? {
+                            animation: 'scale-down-bounce 0.4s ease-in-out'
+                          } : undefined}
                         >
                           {isCompleted
                             ? `✓ ${selectedPerson.name} marked as finished`

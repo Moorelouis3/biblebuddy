@@ -7,6 +7,22 @@ import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_PLACES_LIST } from "../../lib/biblePlacesList";
 import { logStudyView } from "../../lib/studyViewLimit";
 
+// Add CSS animation for button click (only once)
+useEffect(() => {
+  if (typeof document !== 'undefined' && !document.getElementById('scale-down-bounce-animation')) {
+    const style = document.createElement('style');
+    style.id = 'scale-down-bounce-animation';
+    style.textContent = `
+      @keyframes scale-down-bounce {
+        0% { transform: scale(1); }
+        50% { transform: scale(0.85); }
+        100% { transform: scale(1); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}, []);
+
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 type BiblePlace = {
@@ -44,6 +60,7 @@ export default function PlacesInTheBiblePage() {
   const [loadingProgress, setLoadingProgress] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   // Handle place selection with study view limit check
   const handlePlaceClick = async (place: BiblePlace) => {
@@ -761,11 +778,14 @@ RULES:
                             }
                           }}
                           disabled={isCompleted}
-                          className={`w-full px-6 py-3 rounded-lg font-medium transition ${
+                          className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                             isCompleted
                               ? "bg-green-100 text-green-700 cursor-not-allowed"
                               : "bg-blue-600 text-white hover:bg-blue-700"
                           }`}
+                          style={isAnimating ? {
+                            animation: 'scale-down-bounce 0.4s ease-in-out'
+                          } : undefined}
                         >
                           {isCompleted
                             ? `✓ ${selectedPlace.name} marked as finished`
