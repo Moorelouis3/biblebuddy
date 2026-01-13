@@ -13,6 +13,9 @@ import { useFeaturedCharacters } from "../../../../hooks/useFeaturedCharacters";
 import ReactMarkdown from "react-markdown";
 import { enrichBibleVerses } from "../../../../lib/bibleHighlighting";
 import { logStudyView } from "../../../../lib/studyViewLimit";
+import { BIBLE_PEOPLE_LIST } from "../../../../lib/biblePeopleList";
+import { BIBLE_PLACES_LIST } from "../../../../lib/biblePlacesList";
+import { BIBLE_KEYWORDS_LIST } from "../../../../lib/bibleKeywordsList";
 
 type Verse = {
   num: number;
@@ -81,6 +84,12 @@ export default function BibleChapterPage() {
   const [placeNotes, setPlaceNotes] = useState<string | null>(null);
   const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
+  
+  // Completion tracking state (same as database pages)
+  const [completedPeople, setCompletedPeople] = useState<Set<string>>(new Set());
+  const [completedPlaces, setCompletedPlaces] = useState<Set<string>>(new Set());
+  const [completedKeywords, setCompletedKeywords] = useState<Set<string>>(new Set());
+  const [loadingProgress, setLoadingProgress] = useState(true);
 
   // Normalize markdown functions (reused from People/Places/Keywords pages)
   function normalizePersonMarkdown(markdown: string): string {
@@ -128,6 +137,29 @@ export default function BibleChapterPage() {
     ];
   }
 
+  // Helper function to resolve person name (handles aliases)
+  function resolvePersonName(clickedName: string): string {
+    const normalizedClicked = clickedName.toLowerCase().trim();
+    
+    // Search through BIBLE_PEOPLE_LIST to find matching name or alias
+    for (const person of BIBLE_PEOPLE_LIST) {
+      if (person.name.toLowerCase().trim() === normalizedClicked) {
+        return person.name; // Return primary name
+      }
+      // Check aliases
+      if (person.aliases) {
+        for (const alias of person.aliases) {
+          if (alias.toLowerCase().trim() === normalizedClicked) {
+            return person.name; // Return primary name for alias
+          }
+        }
+      }
+    }
+    
+    // If not found, return the clicked name as-is
+    return clickedName;
+  }
+
   // Event delegation for click handlers on enriched content
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -138,9 +170,10 @@ export default function BibleChapterPage() {
       const term = el.dataset.term;
       if (!type || !term) return;
 
-      // Open overlay modal in-place (same as clicking a card on People/Places/Keywords pages)
+      // Resolve to database record name (handles aliases for people)
       if (type === "people") {
-        setSelectedPerson({ name: term });
+        const resolvedName = resolvePersonName(term);
+        setSelectedPerson({ name: resolvedName });
         setSelectedPlace(null);
         setSelectedKeyword(null);
       } else if (type === "places") {
@@ -742,11 +775,18 @@ RULES:
       }
     }, [book, chapter]);
 
-  // Get user ID
+  // Get user ID and load completion progress (same as database pages)
   useEffect(() => {
-    async function getUser() {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
+    async function loadUserAndProgress() {
+      try {
+        setLoadingProgress(true);
+        const { data: { user } } = await supabase.auth.getUser();
+        
+        if (!user) {
+          setLoadingProgress(false);
+          return;
+        }
+
         setUserId(user.id);
         
         // Extract username from user metadata
@@ -757,9 +797,64 @@ RULES:
           (user.email ? user.email.split("@")[0] : null) ||
           "User";
         setUsername(extractedUsername);
+
+        // Fetch all completed people for this user (batch query)
+        const { data: peopleData, error: peopleError } = await supabase
+          .from("people_progress")
+          .select("person_name")
+          .eq("user_id", user.id);
+
+        if (peopleError) {
+          console.error("Error loading people progress:", peopleError);
+        } else {
+          const completedPeopleSet = new Set<string>();
+          peopleData?.forEach((row) => {
+            // Store normalized name (lowercase, trimmed) for matching
+            completedPeopleSet.add(row.person_name.toLowerCase().trim());
+          });
+          setCompletedPeople(completedPeopleSet);
+        }
+
+        // Fetch all completed places for this user
+        const { data: placesData, error: placesError } = await supabase
+          .from("places_progress")
+          .select("place_name")
+          .eq("user_id", user.id);
+
+        if (placesError) {
+          console.error("Error loading places progress:", placesError);
+        } else {
+          const completedPlacesSet = new Set<string>();
+          placesData?.forEach((row) => {
+            // Store normalized name (lowercase, spaces to underscores) for matching
+            completedPlacesSet.add(row.place_name.toLowerCase().trim());
+          });
+          setCompletedPlaces(completedPlacesSet);
+        }
+
+        // Fetch all completed keywords for this user
+        const { data: keywordsData, error: keywordsError } = await supabase
+          .from("keywords_progress")
+          .select("keyword_name")
+          .eq("user_id", user.id);
+
+        if (keywordsError) {
+          console.error("Error loading keywords progress:", keywordsError);
+        } else {
+          const completedKeywordsSet = new Set<string>();
+          keywordsData?.forEach((row) => {
+            // Store normalized name (lowercase, trimmed) for matching
+            completedKeywordsSet.add(row.keyword_name.toLowerCase().trim());
+          });
+          setCompletedKeywords(completedKeywordsSet);
+        }
+      } catch (err) {
+        console.error("Error loading user and progress:", err);
+      } finally {
+        setLoadingProgress(false);
       }
     }
-    getUser();
+    loadUserAndProgress();
   }, []);
 
   // Load featured characters for Matthew only
@@ -1576,6 +1671,158 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                 >
                   {normalizePersonMarkdown(personNotes)}
                 </ReactMarkdown>
+
+                {/* MARK AS FINISHED BUTTON (same as database pages) */}
+                {userId && (
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    {(() => {
+                      const personKey = selectedPerson.name.toLowerCase().trim();
+                      const isCompleted = completedPeople.has(personKey);
+                      return (
+                        <button
+                          type="button"
+                          onClick={async (e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+
+                            if (!userId) return;
+
+                            const personNameKey = selectedPerson.name.toLowerCase().trim();
+
+                            if (isCompleted) {
+                              return;
+                            }
+
+                            try {
+                              // Insert completion
+                              const { error } = await supabase
+                                .from("people_progress")
+                                .upsert(
+                                  {
+                                    user_id: userId,
+                                    person_name: personNameKey,
+                                  },
+                                  {
+                                    onConflict: "user_id,person_name",
+                                  }
+                                );
+
+                              if (error) {
+                                console.error("Error marking person as finished:", error);
+                                alert("Failed to mark as finished. Please try again.");
+                              } else {
+                                // ACTION TRACKING: Insert into master_actions
+                                const { data: { user: authUser } } = await supabase.auth.getUser();
+                                let actionUsername = "User";
+                                
+                                if (authUser) {
+                                  const meta: any = authUser.user_metadata || {};
+                                  actionUsername =
+                                    meta.firstName ||
+                                    meta.first_name ||
+                                    (authUser.email ? authUser.email.split("@")[0] : null) ||
+                                    "User";
+                                }
+
+                                const formatPersonName = (name: string): string => {
+                                  return name.split(' ').map(word => {
+                                    if (/^\d+$/.test(word)) return word;
+                                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                                  }).join(' ');
+                                };
+
+                                const personDisplayName = formatPersonName(selectedPerson.name);
+
+                                const { error: actionError } = await supabase
+                                  .from("master_actions")
+                                  .insert({
+                                    user_id: userId,
+                                    username: actionUsername ?? null,
+                                    action_type: "person_learned",
+                                    action_label: personDisplayName,
+                                  });
+
+                                if (actionError) {
+                                  console.error("Error logging action to master_actions:", actionError);
+                                }
+
+                                // UPDATE profile_stats
+                                let statsUsername = username;
+                                if (!statsUsername && userId) {
+                                  const { data: { user } } = await supabase.auth.getUser();
+                                  if (user) {
+                                    const meta: any = user.user_metadata || {};
+                                    statsUsername =
+                                      meta.firstName ||
+                                      meta.first_name ||
+                                      (user.email ? user.email.split("@")[0] : null) ||
+                                      "User";
+                                  }
+                                }
+
+                                const { count, error: countError } = await supabase
+                                  .from("people_progress")
+                                  .select("*", { count: "exact", head: true })
+                                  .eq("user_id", userId);
+
+                                if (!countError && count !== null) {
+                                  const { data: currentStats } = await supabase
+                                    .from("profile_stats")
+                                    .select("username, chapters_completed_count, notes_created_count, places_discovered_count, keywords_mastered_count")
+                                    .eq("user_id", userId)
+                                    .maybeSingle();
+
+                                  const finalUsername = currentStats?.username || statsUsername || "User";
+                                  
+                                  const totalActions = 
+                                    (currentStats?.chapters_completed_count || 0) +
+                                    (currentStats?.notes_created_count || 0) +
+                                    (count || 0) +
+                                    (currentStats?.places_discovered_count || 0) +
+                                    (currentStats?.keywords_mastered_count || 0);
+
+                                  await supabase
+                                    .from("profile_stats")
+                                    .upsert(
+                                      {
+                                        user_id: userId,
+                                        username: finalUsername,
+                                        people_learned_count: count || 0,
+                                        total_actions: totalActions,
+                                        updated_at: new Date().toISOString(),
+                                      },
+                                      {
+                                        onConflict: "user_id",
+                                      }
+                                    );
+                                }
+
+                                // Update local state
+                                setCompletedPeople((prev) => {
+                                  const next = new Set(prev);
+                                  next.add(personNameKey);
+                                  return next;
+                                });
+                              }
+                            } catch (err) {
+                              console.error("Error marking person as finished:", err);
+                              alert("Failed to mark as finished. Please try again.");
+                            }
+                          }}
+                          className={`w-full px-6 py-3 rounded-lg font-medium transition ${
+                            isCompleted
+                              ? "bg-green-100 text-green-700 cursor-not-allowed"
+                              : "bg-blue-600 text-white hover:bg-blue-700"
+                          }`}
+                        >
+                          {isCompleted
+                            ? `✓ ${selectedPerson.name} marked as finished`
+                            : `Mark ${selectedPerson.name} as finished`}
+                        </button>
+                      );
+                    })()}
+                  </div>
+                )}
               </div>
             ) : (
               <div className="text-center py-12 text-gray-500">No notes available yet.</div>
@@ -1618,6 +1865,159 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                 >
                   {normalizePlaceMarkdown(placeNotes)}
                 </ReactMarkdown>
+
+                {/* MARK AS FINISHED BUTTON (same as database pages) */}
+                {userId && (
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    {(() => {
+                      // Normalize place name (same as database: lowercase, spaces to underscores)
+                      const placeKey = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
+                      const isCompleted = completedPlaces.has(placeKey);
+                      return (
+                        <button
+                          type="button"
+                          onClick={async (e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+
+                            if (!userId) return;
+
+                            const placeNameKey = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
+
+                            if (isCompleted) {
+                              return;
+                            }
+
+                            try {
+                              // Insert completion
+                              const { error } = await supabase
+                                .from("places_progress")
+                                .upsert(
+                                  {
+                                    user_id: userId,
+                                    place_name: placeNameKey,
+                                  },
+                                  {
+                                    onConflict: "user_id,place_name",
+                                  }
+                                );
+
+                              if (error) {
+                                console.error("Error marking place as finished:", error);
+                                alert("Failed to mark as finished. Please try again.");
+                              } else {
+                                // ACTION TRACKING: Insert into master_actions
+                                const { data: { user: authUser } } = await supabase.auth.getUser();
+                                let actionUsername = "User";
+                                
+                                if (authUser) {
+                                  const meta: any = authUser.user_metadata || {};
+                                  actionUsername =
+                                    meta.firstName ||
+                                    meta.first_name ||
+                                    (authUser.email ? authUser.email.split("@")[0] : null) ||
+                                    "User";
+                                }
+
+                                const formatPlaceName = (name: string): string => {
+                                  return name.split(' ').map(word => {
+                                    if (/^\d+$/.test(word)) return word;
+                                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                                  }).join(' ');
+                                };
+
+                                const placeDisplayName = formatPlaceName(selectedPlace.name);
+
+                                const { error: actionError } = await supabase
+                                  .from("master_actions")
+                                  .insert({
+                                    user_id: userId,
+                                    username: actionUsername ?? null,
+                                    action_type: "place_discovered",
+                                    action_label: placeDisplayName,
+                                  });
+
+                                if (actionError) {
+                                  console.error("Error logging action to master_actions:", actionError);
+                                }
+
+                                // UPDATE profile_stats
+                                let statsUsername = username;
+                                if (!statsUsername && userId) {
+                                  const { data: { user } } = await supabase.auth.getUser();
+                                  if (user) {
+                                    const meta: any = user.user_metadata || {};
+                                    statsUsername =
+                                      meta.firstName ||
+                                      meta.first_name ||
+                                      (user.email ? user.email.split("@")[0] : null) ||
+                                      "User";
+                                  }
+                                }
+
+                                const { count, error: countError } = await supabase
+                                  .from("places_progress")
+                                  .select("*", { count: "exact", head: true })
+                                  .eq("user_id", userId);
+
+                                if (!countError && count !== null) {
+                                  const { data: currentStats } = await supabase
+                                    .from("profile_stats")
+                                    .select("username, chapters_completed_count, notes_created_count, people_learned_count, keywords_mastered_count")
+                                    .eq("user_id", userId)
+                                    .maybeSingle();
+
+                                  const finalUsername = currentStats?.username || statsUsername || "User";
+                                  
+                                  const totalActions = 
+                                    (currentStats?.chapters_completed_count || 0) +
+                                    (currentStats?.notes_created_count || 0) +
+                                    (currentStats?.people_learned_count || 0) +
+                                    (count || 0) +
+                                    (currentStats?.keywords_mastered_count || 0);
+
+                                  await supabase
+                                    .from("profile_stats")
+                                    .upsert(
+                                      {
+                                        user_id: userId,
+                                        username: finalUsername,
+                                        places_discovered_count: count || 0,
+                                        total_actions: totalActions,
+                                        updated_at: new Date().toISOString(),
+                                      },
+                                      {
+                                        onConflict: "user_id",
+                                      }
+                                    );
+                                }
+
+                                // Update local state
+                                setCompletedPlaces((prev) => {
+                                  const next = new Set(prev);
+                                  next.add(placeNameKey);
+                                  return next;
+                                });
+                              }
+                            } catch (err) {
+                              console.error("Error marking place as finished:", err);
+                              alert("Failed to mark as finished. Please try again.");
+                            }
+                          }}
+                          className={`w-full px-6 py-3 rounded-lg font-medium transition ${
+                            isCompleted
+                              ? "bg-green-100 text-green-700 cursor-not-allowed"
+                              : "bg-blue-600 text-white hover:bg-blue-700"
+                          }`}
+                        >
+                          {isCompleted
+                            ? `✓ ${selectedPlace.name} marked as finished`
+                            : `Mark ${selectedPlace.name} as finished`}
+                        </button>
+                      );
+                    })()}
+                  </div>
+                )}
               </div>
             ) : (
               <div className="text-center py-12 text-gray-500">No notes available yet.</div>
@@ -1660,6 +2060,158 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                 >
                   {normalizeKeywordMarkdown(keywordNotes)}
                 </ReactMarkdown>
+
+                {/* MARK AS FINISHED BUTTON (same as database pages) */}
+                {userId && (
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    {(() => {
+                      const keywordKey = selectedKeyword.name.toLowerCase().trim();
+                      const isCompleted = completedKeywords.has(keywordKey);
+                      return (
+                        <button
+                          type="button"
+                          onClick={async (e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+
+                            if (!userId) return;
+
+                            const keywordNameKey = selectedKeyword.name.toLowerCase().trim();
+
+                            if (isCompleted) {
+                              return;
+                            }
+
+                            try {
+                              // Insert completion
+                              const { error } = await supabase
+                                .from("keywords_progress")
+                                .upsert(
+                                  {
+                                    user_id: userId,
+                                    keyword_name: keywordNameKey,
+                                  },
+                                  {
+                                    onConflict: "user_id,keyword_name",
+                                  }
+                                );
+
+                              if (error) {
+                                console.error("Error marking keyword as finished:", error);
+                                alert("Failed to mark as finished. Please try again.");
+                              } else {
+                                // ACTION TRACKING: Insert into master_actions
+                                const { data: { user: authUser } } = await supabase.auth.getUser();
+                                let actionUsername = "User";
+                                
+                                if (authUser) {
+                                  const meta: any = authUser.user_metadata || {};
+                                  actionUsername =
+                                    meta.firstName ||
+                                    meta.first_name ||
+                                    (authUser.email ? authUser.email.split("@")[0] : null) ||
+                                    "User";
+                                }
+
+                                const formatKeywordName = (name: string): string => {
+                                  return name.split(' ').map(word => {
+                                    if (/^\d+$/.test(word)) return word;
+                                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                                  }).join(' ');
+                                };
+
+                                const keywordDisplayName = formatKeywordName(selectedKeyword.name);
+
+                                const { error: actionError } = await supabase
+                                  .from("master_actions")
+                                  .insert({
+                                    user_id: userId,
+                                    username: actionUsername ?? null,
+                                    action_type: "keyword_mastered",
+                                    action_label: keywordDisplayName,
+                                  });
+
+                                if (actionError) {
+                                  console.error("Error logging action to master_actions:", actionError);
+                                }
+
+                                // UPDATE profile_stats
+                                let statsUsername = username;
+                                if (!statsUsername && userId) {
+                                  const { data: { user } } = await supabase.auth.getUser();
+                                  if (user) {
+                                    const meta: any = user.user_metadata || {};
+                                    statsUsername =
+                                      meta.firstName ||
+                                      meta.first_name ||
+                                      (user.email ? user.email.split("@")[0] : null) ||
+                                      "User";
+                                  }
+                                }
+
+                                const { count, error: countError } = await supabase
+                                  .from("keywords_progress")
+                                  .select("*", { count: "exact", head: true })
+                                  .eq("user_id", userId);
+
+                                if (!countError && count !== null) {
+                                  const { data: currentStats } = await supabase
+                                    .from("profile_stats")
+                                    .select("username, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count")
+                                    .eq("user_id", userId)
+                                    .maybeSingle();
+
+                                  const finalUsername = currentStats?.username || statsUsername || "User";
+                                  
+                                  const totalActions = 
+                                    (currentStats?.chapters_completed_count || 0) +
+                                    (currentStats?.notes_created_count || 0) +
+                                    (currentStats?.people_learned_count || 0) +
+                                    (currentStats?.places_discovered_count || 0) +
+                                    (count || 0);
+
+                                  await supabase
+                                    .from("profile_stats")
+                                    .upsert(
+                                      {
+                                        user_id: userId,
+                                        username: finalUsername,
+                                        keywords_mastered_count: count || 0,
+                                        total_actions: totalActions,
+                                        updated_at: new Date().toISOString(),
+                                      },
+                                      {
+                                        onConflict: "user_id",
+                                      }
+                                    );
+                                }
+
+                                // Update local state
+                                setCompletedKeywords((prev) => {
+                                  const next = new Set(prev);
+                                  next.add(keywordNameKey);
+                                  return next;
+                                });
+                              }
+                            } catch (err) {
+                              console.error("Error marking keyword as finished:", err);
+                              alert("Failed to mark as finished. Please try again.");
+                            }
+                          }}
+                          className={`w-full px-6 py-3 rounded-lg font-medium transition ${
+                            isCompleted
+                              ? "bg-green-100 text-green-700 cursor-not-allowed"
+                              : "bg-blue-600 text-white hover:bg-blue-700"
+                          }`}
+                        >
+                          {isCompleted
+                            ? `✓ ${selectedKeyword.name} marked as finished`
+                            : `Mark ${selectedKeyword.name} as finished`}
+                        </button>
+                      );
+                    })()}
+                  </div>
+                )}
               </div>
             ) : (
               <div className="text-center py-12 text-gray-500">No notes available yet.</div>
