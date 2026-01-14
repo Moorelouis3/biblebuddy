@@ -31,11 +31,61 @@ export default function BibleInOneYearPage() {
   const [dayProgress, setDayProgress] = useState<Record<number, DayProgress>>({});
   const [weekProgress, setWeekProgress] = useState<Record<number, WeekProgress>>({});
   const [openWeek, setOpenWeek] = useState<number | null>(null);
+  const [openMonth, setOpenMonth] = useState<number | null>(null);
   const [selectedDay, setSelectedDay] = useState<DayReading | null>(null);
   const [loading, setLoading] = useState(true);
   const [currentDayNumber, setCurrentDayNumber] = useState(1);
   const [nextIncompleteDay, setNextIncompleteDay] = useState<number | null>(null);
   const weekRefs = useRef<Record<number, HTMLDivElement | null>>({});
+  const monthRefs = useRef<Record<number, HTMLDivElement | null>>({});
+
+  // Month sections and colors
+  const MONTHS = [
+    { name: "Month 1", color: "blue" },
+    { name: "Month 2", color: "indigo" },
+    { name: "Month 3", color: "teal" },
+    { name: "Month 4", color: "green" },
+    { name: "Month 5", color: "yellow" },
+    { name: "Month 6", color: "orange" },
+    { name: "Month 7", color: "red" },
+    { name: "Month 8", color: "pink" },
+    { name: "Month 9", color: "purple" },
+    { name: "Month 10", color: "blue" },
+    { name: "Month 11", color: "indigo" },
+    { name: "Month 12", color: "teal" },
+  ];
+
+  // Get month number for a week (1-12)
+  const getMonthForWeek = (weekNumber: number): number => {
+    // Approximately 4.33 weeks per month, so distribute 52 weeks across 12 months
+    // Each month gets roughly 4-5 weeks
+    if (weekNumber <= 4) return 1;      // January
+    if (weekNumber <= 8) return 2;      // February
+    if (weekNumber <= 13) return 3;     // March
+    if (weekNumber <= 17) return 4;     // April
+    if (weekNumber <= 22) return 5;     // May
+    if (weekNumber <= 26) return 6;     // June
+    if (weekNumber <= 30) return 7;     // July
+    if (weekNumber <= 35) return 8;     // August
+    if (weekNumber <= 39) return 9;     // September
+    if (weekNumber <= 43) return 10;    // October
+    if (weekNumber <= 48) return 11;    // November
+    return 12;                           // December
+  };
+
+  // Group weeks by month
+  const getWeeksByMonth = () => {
+    if (!plan) return {};
+    const months: Record<number, WeekReading[]> = {};
+    plan.weeks.forEach((week) => {
+      const month = getMonthForWeek(week.weekNumber);
+      if (!months[month]) {
+        months[month] = [];
+      }
+      months[month].push(week);
+    });
+    return months;
+  };
 
   // Generate plan on mount
   useEffect(() => {
@@ -159,10 +209,12 @@ export default function BibleInOneYearPage() {
         }
         setNextIncompleteDay(firstIncomplete);
 
-        // Open week containing the next incomplete day (or current day if all complete)
+        // Open week and month containing the next incomplete day (or current day if all complete)
         const targetDay = firstIncomplete || currentDayNumber;
         const targetWeek = getWeekNumber(targetDay);
+        const targetMonth = getMonthForWeek(targetWeek);
         setOpenWeek(targetWeek);
+        setOpenMonth(targetMonth);
       } catch (err) {
         console.error("[BIBLE_IN_ONE_YEAR] Error loading progress:", err);
       } finally {
@@ -173,14 +225,18 @@ export default function BibleInOneYearPage() {
     loadUserAndProgress();
   }, [plan, currentDayNumber]);
 
-  // Scroll to current week when it opens
+  // Scroll to current month/week when it opens
   useEffect(() => {
-    if (openWeek && weekRefs.current[openWeek]) {
+    if (openMonth && monthRefs.current[openMonth]) {
+      setTimeout(() => {
+        monthRefs.current[openMonth]?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    } else if (openWeek && weekRefs.current[openWeek]) {
       setTimeout(() => {
         weekRefs.current[openWeek]?.scrollIntoView({ behavior: "smooth", block: "center" });
       }, 100);
     }
-  }, [openWeek]);
+  }, [openWeek, openMonth]);
 
   const handleOpenChapter = (book: string, chapter: number) => {
     const slug = encodeURIComponent(book.toLowerCase().trim());
@@ -260,7 +316,9 @@ export default function BibleInOneYearPage() {
                 if (day) {
                   setSelectedDay(day);
                   const week = getWeekNumber(nextIncompleteDay!);
+                  const month = getMonthForWeek(week);
                   setOpenWeek(week);
+                  setOpenMonth(month);
                 }
               }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition"
@@ -270,104 +328,176 @@ export default function BibleInOneYearPage() {
           )}
         </div>
 
-        {/* WEEKS */}
-        <div className="space-y-4">
-          {plan.weeks.map((week) => {
-            const progress = weekProgress[week.weekNumber] || { completedDays: 0, totalDays: 7 };
-            const isOpen = openWeek === week.weekNumber;
-            const weekPercent = progress.totalDays > 0
-              ? (progress.completedDays / progress.totalDays) * 100
+        {/* MONTHS */}
+        <div className="space-y-6">
+          {MONTHS.map((month, monthIndex) => {
+            const monthNum = monthIndex + 1;
+            const weeksInMonth = getWeeksByMonth()[monthNum] || [];
+            const isMonthOpen = openMonth === monthNum;
+
+            // Calculate month progress
+            let monthCompletedDays = 0;
+            let monthTotalDays = 0;
+            weeksInMonth.forEach((week) => {
+              const progress = weekProgress[week.weekNumber] || { completedDays: 0, totalDays: 7 };
+              monthCompletedDays += progress.completedDays;
+              monthTotalDays += progress.totalDays;
+            });
+            const monthPercent = monthTotalDays > 0
+              ? (monthCompletedDays / monthTotalDays) * 100
               : 0;
+
+            const colorClasses = {
+              blue: "bg-blue-100 border-blue-200",
+              indigo: "bg-indigo-100 border-indigo-200",
+              teal: "bg-teal-100 border-teal-200",
+              green: "bg-green-100 border-green-200",
+              yellow: "bg-yellow-100 border-yellow-200",
+              orange: "bg-orange-100 border-orange-200",
+              red: "bg-red-100 border-red-200",
+              pink: "bg-pink-100 border-pink-200",
+              purple: "bg-purple-100 border-purple-200",
+            };
+
+            if (weeksInMonth.length === 0) return null;
 
             return (
               <div
-                key={week.weekNumber}
+                key={monthNum}
                 ref={(el) => {
-                  weekRefs.current[week.weekNumber] = el;
+                  monthRefs.current[monthNum] = el;
                 }}
-                className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden"
+                className={`${colorClasses[month.color as keyof typeof colorClasses]} border rounded-xl p-5 shadow-sm`}
               >
-                {/* Week Header */}
+                {/* Month Header */}
                 <button
                   type="button"
-                  onClick={() => setOpenWeek(isOpen ? null : week.weekNumber)}
-                  className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition"
+                  onClick={() => setOpenMonth(isMonthOpen ? null : monthNum)}
+                  className="w-full flex items-center justify-between text-left mb-2"
                 >
                   <div className="flex-1">
-                    <h2 className="text-lg font-semibold mb-1">
-                      Week {week.weekNumber}
-                    </h2>
+                    <h2 className="text-xl font-bold mb-1">{month.name}</h2>
                     <div className="flex items-center gap-3">
-                      <div className="flex-1 h-2 rounded-full bg-gray-200 overflow-hidden max-w-xs">
+                      <div className="flex-1 h-2 rounded-full bg-white/60 overflow-hidden max-w-xs">
                         <div
                           className="h-full bg-blue-500 rounded-full transition-all"
-                          style={{ width: `${weekPercent}%` }}
+                          style={{ width: `${monthPercent}%` }}
                         />
                       </div>
-                      <span className="text-xs text-gray-600">
-                        {progress.completedDays} / {progress.totalDays} days
+                      <span className="text-xs text-gray-700">
+                        {monthCompletedDays} / {monthTotalDays} days
                       </span>
                     </div>
                   </div>
-                  <span className="ml-3 text-gray-500 text-lg">
-                    {isOpen ? "▴" : "▾"}
+                  <span className="ml-3 text-gray-600 text-lg">
+                    {isMonthOpen ? "▴" : "▾"}
                   </span>
                 </button>
 
-                {/* Week Days */}
-                {isOpen && (
-                  <div className="p-4 pt-0 border-t border-gray-100">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-3">
-                      {week.days.map((day) => {
-                        const dayState = getDayState(day);
-                        const isCurrent = isCurrentDay(day.dayNumber);
-                        const progress = dayProgress[day.dayNumber];
+                {/* Weeks in Month */}
+                {isMonthOpen && (
+                  <div className="mt-4 space-y-3">
+                    {weeksInMonth.map((week) => {
+                      const progress = weekProgress[week.weekNumber] || { completedDays: 0, totalDays: 7 };
+                      const isOpen = openWeek === week.weekNumber;
+                      const weekPercent = progress.totalDays > 0
+                        ? (progress.completedDays / progress.totalDays) * 100
+                        : 0;
 
-                        let stateClasses = "bg-gray-100 border-gray-300 text-gray-700";
-                        if (dayState === "completed") {
-                          stateClasses = "bg-green-100 border-green-300 text-green-800";
-                        } else if (dayState === "in-progress") {
-                          stateClasses = "bg-yellow-100 border-yellow-300 text-yellow-800";
-                        }
-
-                        if (isCurrent) {
-                          stateClasses += " ring-2 ring-blue-500 ring-offset-2";
-                        }
-
-                        return (
+                      return (
+                        <div
+                          key={week.weekNumber}
+                          ref={(el) => {
+                            weekRefs.current[week.weekNumber] = el;
+                          }}
+                          className="bg-white/60 rounded-lg overflow-hidden"
+                        >
+                          {/* Week Header */}
                           <button
-                            key={day.dayNumber}
                             type="button"
-                            onClick={() => setSelectedDay(day)}
-                            className={`rounded-lg border p-3 text-left transition hover:shadow-md ${stateClasses}`}
+                            onClick={() => setOpenWeek(isOpen ? null : week.weekNumber)}
+                            className="w-full flex items-center justify-between p-3 text-left hover:bg-white/80 transition"
                           >
-                            <div className="flex items-center justify-between mb-1">
-                              <span className="font-semibold text-sm">
-                                Day {day.dayNumber}
-                              </span>
-                              {isCurrent && (
-                                <span className="text-xs bg-blue-500 text-white px-2 py-0.5 rounded-full">
-                                  Today
+                            <div className="flex-1">
+                              <h3 className="text-base font-semibold mb-1">
+                                Week {week.weekNumber}
+                              </h3>
+                              <div className="flex items-center gap-3">
+                                <div className="flex-1 h-1.5 rounded-full bg-gray-200 overflow-hidden max-w-xs">
+                                  <div
+                                    className="h-full bg-blue-500 rounded-full transition-all"
+                                    style={{ width: `${weekPercent}%` }}
+                                  />
+                                </div>
+                                <span className="text-xs text-gray-600">
+                                  {progress.completedDays} / {progress.totalDays} days
                                 </span>
-                              )}
-                            </div>
-                            <p className="text-xs text-gray-600 mb-2">
-                              {day.chapters.length} chapter{day.chapters.length !== 1 ? "s" : ""}
-                            </p>
-                            {progress && (
-                              <div className="h-1.5 rounded-full bg-gray-200 overflow-hidden">
-                                <div
-                                  className="h-full bg-blue-500 rounded-full transition-all"
-                                  style={{
-                                    width: `${(progress.completedChapters.size / progress.totalChapters) * 100}%`,
-                                  }}
-                                />
                               </div>
-                            )}
+                            </div>
+                            <span className="ml-3 text-gray-500">
+                              {isOpen ? "▴" : "▾"}
+                            </span>
                           </button>
-                        );
-                      })}
-                    </div>
+
+                          {/* Week Days */}
+                          {isOpen && (
+                            <div className="p-3 pt-0 border-t border-gray-200/50">
+                              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-2">
+                                {week.days.map((day) => {
+                                  const dayState = getDayState(day);
+                                  const isCurrent = isCurrentDay(day.dayNumber);
+                                  const progress = dayProgress[day.dayNumber];
+
+                                  let stateClasses = "bg-gray-100 border-gray-300 text-gray-700";
+                                  if (dayState === "completed") {
+                                    stateClasses = "bg-green-100 border-green-300 text-green-800";
+                                  } else if (dayState === "in-progress") {
+                                    stateClasses = "bg-yellow-100 border-yellow-300 text-yellow-800";
+                                  }
+
+                                  if (isCurrent) {
+                                    stateClasses += " ring-2 ring-blue-500 ring-offset-2";
+                                  }
+
+                                  return (
+                                    <button
+                                      key={day.dayNumber}
+                                      type="button"
+                                      onClick={() => setSelectedDay(day)}
+                                      className={`rounded-lg border p-2 text-left transition hover:shadow-md text-sm ${stateClasses}`}
+                                    >
+                                      <div className="flex items-center justify-between mb-1">
+                                        <span className="font-semibold text-xs">
+                                          Day {day.dayNumber}
+                                        </span>
+                                        {isCurrent && (
+                                          <span className="text-[10px] bg-blue-500 text-white px-1.5 py-0.5 rounded-full">
+                                            Today
+                                          </span>
+                                        )}
+                                      </div>
+                                      <p className="text-[10px] text-gray-600 mb-1">
+                                        {day.chapters.length} chapter{day.chapters.length !== 1 ? "s" : ""}
+                                      </p>
+                                      {progress && (
+                                        <div className="h-1 rounded-full bg-gray-200 overflow-hidden">
+                                          <div
+                                            className="h-full bg-blue-500 rounded-full transition-all"
+                                            style={{
+                                              width: `${(progress.completedChapters.size / progress.totalChapters) * 100}%`,
+                                            }}
+                                          />
+                                        </div>
+                                      )}
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
               </div>

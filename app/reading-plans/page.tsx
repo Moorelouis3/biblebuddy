@@ -24,15 +24,6 @@ const ACTIVE_PLANS: ReadingPlan[] = [
   },
 ];
 
-// Visual placeholders for future plans (not clickable yet)
-const UPCOMING_PLANS: ReadingPlan[] = [
-  {
-    id: "upcoming-chronological",
-    title: "Chronological Bible Journey",
-    subtitle: "Read the story of Scripture in historical order",
-    coverImage: "/images/placeholder-reading-plan.png",
-  },
-];
 
 export default function ReadingPlansPage() {
   return (
@@ -83,26 +74,6 @@ export default function ReadingPlansPage() {
                 </Link>
               ))}
 
-              {/* Upcoming (visual only) */}
-              {UPCOMING_PLANS.map((plan) => (
-                <div key={plan.id} className="block w-full">
-                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 opacity-75">
-                    {plan.coverImage && (
-                      <img
-                        src={plan.coverImage}
-                        alt={`${plan.title} cover`}
-                        className="w-full h-auto rounded-lg object-contain mb-3"
-                      />
-                    )}
-                    <h2 className="text-lg font-semibold text-gray-900">
-                      {plan.title}
-                    </h2>
-                    <p className="text-sm text-gray-600 mt-1">
-                      Coming soon
-                    </p>
-                  </div>
-                </div>
-              ))}
             </div>
 
             {/* Desktop: grid layout similar to Devotionals */}
@@ -130,27 +101,6 @@ export default function ReadingPlansPage() {
                     </p>
                   </div>
                 </Link>
-              ))}
-
-              {/* Upcoming (visual only) */}
-              {UPCOMING_PLANS.map((plan) => (
-                <div key={plan.id} className="block w-full max-w-xs">
-                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 opacity-75">
-                    {plan.coverImage && (
-                      <img
-                        src={plan.coverImage}
-                        alt={`${plan.title} cover`}
-                        className="w-full h-auto rounded-lg object-contain mb-3"
-                      />
-                    )}
-                    <h2 className="text-lg font-semibold text-gray-900">
-                      {plan.title}
-                    </h2>
-                    <p className="text-sm text-gray-600 mt-1">
-                      Coming soon
-                    </p>
-                  </div>
-                </div>
               ))}
             </div>
           </>
