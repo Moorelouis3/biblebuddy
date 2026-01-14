@@ -88,6 +88,7 @@ export default function BibleBuddyReadingPlanPage() {
   const [openBook, setOpenBook] = useState<string | null>(PLAN_BOOKS[0]);
   const [lastReadLocation, setLastReadLocation] = useState<{ book: string; chapter: number } | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [lockMessage, setLockMessage] = useState<string | null>(null);
 
   // Precompute total chapters in plan (does not depend on user)
   useEffect(() => {
@@ -171,8 +172,11 @@ export default function BibleBuddyReadingPlanPage() {
   const handleOpenChapter = (book: string, chapter: number) => {
     const slug = encodeURIComponent(book.toLowerCase().trim());
     // Reuse the existing Bible chapter overlay route.
-    // When the user marks the chapter done there and closes it,
-    // they'll be returned to this reading plan page.
+    // Mark that we came from the Bible Buddy Reading Plan so the Bible page
+    // can show a clear "back to plan" link instead of sending users elsewhere.
+    if (typeof window !== "undefined") {
+      window.sessionStorage.setItem("bbFromReadingPlan", "true");
+    }
     router.push(`/Bible/${slug}/${chapter}`);
   };
 
@@ -314,15 +318,46 @@ export default function BibleBuddyReadingPlanPage() {
 
               const isOpen = openBook === book;
 
+              // Locking logic: first book is always unlocked.
+              // Any other book unlocks only after ALL previous books in this plan
+              // are fully completed.
+              const bookIndex = PLAN_BOOKS.indexOf(book);
+              const previousBooks = PLAN_BOOKS.slice(0, bookIndex);
+              const previousAllComplete =
+                bookIndex === 0 ||
+                previousBooks.every((prevBook) => {
+                  const prevTotal = getBookTotalChapters(prevBook);
+                  const prevCompleted = completedByBook[prevBook] || [];
+                  return prevCompleted.length >= prevTotal;
+                });
+              const isUnlocked = bookIndex === 0 || previousAllComplete;
+
               return (
                 <div key={book} className="py-3">
                   <button
                     type="button"
-                    onClick={() => setOpenBook(isOpen ? null : book)}
-                    className="w-full flex items-center justify-between text-left"
+                    onClick={() => {
+                      if (!isUnlocked) {
+                        const lastPrev = previousBooks[previousBooks.length - 1];
+                        setLockMessage(
+                          lastPrev
+                            ? `Finish all chapters in ${lastPrev} before unlocking ${book}.`
+                            : `This book will unlock after earlier books in the plan are finished.`
+                        );
+                        return;
+                      }
+                      setLockMessage(null);
+                      setOpenBook(isOpen ? null : book);
+                    }}
+                    className={`w-full flex items-center justify-between text-left ${
+                      isUnlocked ? "" : "opacity-60 cursor-not-allowed"
+                    }`}
                   >
                     <div>
-                      <p className="font-semibold text-gray-900">{book}</p>
+                      <p className="font-semibold text-gray-900 flex items-center gap-2">
+                        {!isUnlocked && <span>🔒</span>}
+                        <span>{book}</span>
+                      </p>
                       <p className="text-xs text-gray-600 mt-0.5">
                         {finishedCount} / {totalChapters} chapters finished
                       </p>
@@ -338,7 +373,7 @@ export default function BibleBuddyReadingPlanPage() {
                     </span>
                   </button>
 
-                  {isOpen && (
+                  {isUnlocked && isOpen && (
                     <div className="mt-2">
                       {renderBookChapters(book)}
                     </div>
@@ -347,6 +382,12 @@ export default function BibleBuddyReadingPlanPage() {
               );
             })}
           </div>
+
+          {lockMessage && (
+            <div className="mt-4 text-xs sm:text-sm text-red-600">
+              {lockMessage}
+            </div>
+          )}
         </div>
       </div>
     </div>

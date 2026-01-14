@@ -93,6 +93,7 @@ export default function BibleChapterPage() {
   const [isAnimatingPerson, setIsAnimatingPerson] = useState(false);
   const [isAnimatingPlace, setIsAnimatingPlace] = useState(false);
   const [isAnimatingKeyword, setIsAnimatingKeyword] = useState(false);
+  const [fromReadingPlan, setFromReadingPlan] = useState(false);
 
   // Normalize markdown functions (reused from People/Places/Keywords pages)
   function normalizePersonMarkdown(markdown: string): string {
@@ -1157,14 +1158,31 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     loadSummary();
   }, [book, chapter]);
 
+  // Detect if this chapter was opened from the Bible Buddy Reading Plan
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const flag = window.sessionStorage.getItem("bbFromReadingPlan");
+    if (flag === "true") {
+      setFromReadingPlan(true);
+    }
+  }, []);
+
   // Get book display name (capitalize first letter of each word)
   const bookDisplayName = book
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 
-  // Determine back link - route back to reading plan for this book
-  const backLink = `/reading/books/${encodeURIComponent(book.toLowerCase())}`;
+  // Determine back link:
+  // - If opened from the Bible Buddy Reading Plan, send users back there.
+  // - Otherwise, send them to the normal book overview page.
+  const backLink = fromReadingPlan
+    ? "/reading-plans/bible-buddy"
+    : `/reading/books/${encodeURIComponent(book.toLowerCase())}`;
+
+  const backText = fromReadingPlan
+    ? "← Back to The Bible Buddy Reading Plan"
+    : `← Back to ${bookDisplayName} overview`;
 
   function triggerConfetti() {
     const duration = 1000;
@@ -1442,7 +1460,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         {/* BACK LINK */}
         <div className="mb-4 text-xs sm:text-sm text-blue-600">
           <Link href={backLink} className="hover:underline">
-            ← Back to {bookDisplayName} overview
+            {backText}
           </Link>
         </div>
 
@@ -2287,7 +2305,9 @@ function CongratsModalWithConfetti({
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 
-  const backLink = `/reading/books/${book.toLowerCase()}`;
+  const backLink = fromReadingPlan
+    ? "/reading-plans/bible-buddy"
+    : `/reading/books/${book.toLowerCase()}`;
 
   const [showLevelUpModal, setShowLevelUpModal] = useState(false);
   const [showModal, setShowModal] = useState(true);
