@@ -133,13 +133,13 @@ export default function GrowNotePage() {
     return null;
   }
 
-  function parseFormattedNote() {
-    // First try to get formatted note
-    const formattedNote = extractFormattedNote();
-    
-    // Extract passage reference from first user message
+  // Simple function to extract note data from user messages without parsing
+  function extractNoteData() {
     const userMessages = messages.filter((m) => m.role === "user");
-    const assistantMessages = messages.filter((m) => m.role === "assistant");
+    
+    if (userMessages.length === 0) {
+      return null;
+    }
     
     let book = "";
     let chapter = 1;
@@ -149,8 +149,7 @@ export default function GrowNotePage() {
     let research = "";
     let reflection = "";
     
-    // Get passage reference from first user message
-    if (userMessages.length > 0) {
+    // Extract passage reference from first user message
       const firstMsg = userMessages[0].content;
       const passageMatch = firstMsg.match(/([A-Za-z\s]+?)\s+(\d+):(\d+)(?:-(\d+))?/);
       if (passageMatch) {
@@ -158,91 +157,86 @@ export default function GrowNotePage() {
         chapter = parseInt(passageMatch[2]) || 1;
         verseFrom = parseInt(passageMatch[3]) || 1;
         verseTo = parseInt(passageMatch[4]) || verseFrom;
+    }
+    
+    // Find the "are you happy" message to identify where the reflection is
+    let happyMessageIndex = -1;
+    for (let i = messages.length - 1; i >= 0; i--) {
+      if (messages[i].role === "assistant" && messages[i].content.toLowerCase().includes("are you happy")) {
+        happyMessageIndex = i;
+        break;
       }
     }
     
-    if (formattedNote) {
-      // Parse the formatted note to extract components
-      const cleaned = formattedNote
-        .replace(/Would you like to save this as your GROW Note\?/gi, "")
-        .trim();
-
-      // Extract passage reference (e.g., "Passage: Proverbs 25:28")
-      const passageMatch = cleaned.match(/Passage:\s*([^\n]+)/i);
-      let passageRef = passageMatch ? passageMatch[1].trim() : "";
-
-      // If no passage found in formatted note, use the one we already extracted
-      if (!passageRef && book) {
-        passageRef = `${book} ${chapter}:${verseFrom}${verseTo !== verseFrom ? `-${verseTo}` : ""}`;
-      }
-
-      // Update book/chapter/verse from passage reference if found
-      if (passageRef && !book) {
-        const match = passageRef.match(/([A-Za-z\s]+?)\s+(\d+):(\d+)(?:-(\d+))?/);
-        if (match) {
-          book = match[1].trim();
-          chapter = parseInt(match[2]) || 1;
-          verseFrom = parseInt(match[3]) || 1;
-          verseTo = parseInt(match[4]) || verseFrom;
+    // Extract reflection: the last user message before "are you happy" (if found)
+    // Otherwise, use the last user message
+    if (happyMessageIndex > 0) {
+      for (let i = happyMessageIndex - 1; i >= 0; i--) {
+        if (messages[i].role === "user" && messages[i].content.trim().length > 10) {
+          reflection = messages[i].content.trim();
+          break;
         }
       }
+    } else if (userMessages.length > 1) {
+      // Use the last user message as reflection
+      reflection = userMessages[userMessages.length - 1].content.trim();
+    }
+    
+    // Extract research: collect all user messages between first and last (questions/research)
+    if (userMessages.length > 2) {
+      const researchMessages = userMessages.slice(1, -1);
+      research = researchMessages
+        .map(m => m.content.trim())
+        .filter(m => m.length > 0)
+        .join("\n\n");
+    }
+    
+    // Passage text: try to find it in assistant messages, otherwise leave empty
+    // Look for verses with [01], [02] format
+    for (const msg of messages) {
+      if (msg.role === "assistant") {
+        const verseLines = msg.content
+          .split('\n')
+          .filter(line => line.trim().match(/^\[\d+\]/))
+          .join('\n');
+        if (verseLines) {
+          passageText = verseLines.trim();
+          break;
+        }
+      }
+    }
+    
+    return {
+      book,
+      chapter,
+      verseFrom,
+      verseTo,
+      passage: passageText,
+      research,
+      observe: "", // O step is not saved separately
+      write: reflection,
+    };
+  }
 
-      // Extract Passage Text section - ONLY the Bible verses, nothing else
-      // Try with ** markers first, then without
-      let passageTextMatch = cleaned.match(/\*\*Passage Text\*\*[\s\S]*?(?=\*\*Questions|$)/i);
-      if (!passageTextMatch) {
-        passageTextMatch = cleaned.match(/Passage Text[\s\S]*?(?=Questions|$)/i);
-      }
-      if (passageTextMatch) {
-        passageText = passageTextMatch[0].replace(/(?:\*\*)?Passage Text(?:\*\*)?/i, "").replace(/📌/g, "").replace(/Great choice!/gi, "").trim();
-        // Remove ALL instructions and keep ONLY verses with [01], [02] format
-        const lines = passageText.split('\n');
-        const verseLines = lines.filter(line => {
-          const trimmed = line.trim();
-          // Keep only lines that start with [##] (verse numbers)
-          return trimmed.match(/^\[\d+\]/);
-        });
-        passageText = verseLines.join('\n').trim();
-      }
+  function formatContent() {
+    // Try to get the formatted note from AI
+    const formattedNote = extractFormattedNote();
+    if (formattedNote) {
+      // Remove the "Would you like to save" question and equals sign lines
+      return formattedNote
+        .replace(/Would you like to save this as your GROW Note\?/gi, "")
+        .replace(/^=+$/gm, "")
+        .replace(/\n=+\s*$/g, "")
+        .trim();
+    }
 
-      // Extract Questions & Research section (remove pin emoji and unwanted text if present)
-      // Try with ** markers first, then without
-      let researchMatch = cleaned.match(/\*\*Questions & Research\*\*([\s\S]*?)(?=\*\*Journal|$)/i);
-      if (!researchMatch) {
-        researchMatch = cleaned.match(/Questions & Research([\s\S]*?)(?=Journal|$)/i);
-      }
-      if (researchMatch) {
-        research = researchMatch[1] // Use captured group instead of full match
-          .replace(/📌/g, "")
-          .replace(/If you have more questions or thoughts, feel free to ask anytime!/gi, "")
-          .replace(/That's a great question!/gi, "")
-          .replace(/That is a great question!/gi, "")
-          .replace(/Do you have more questions[^\n]*\n?/gi, "")
-          .replace(/Can we move to O\?/gi, "")
-          .trim();
-      }
+    // Fallback: extract from conversation if formatted note not found
+    const userMessages = messages.filter((m) => m.role === "user");
+    const passage = userMessages[0]?.content || "";
+    return `📖 GROW Study Notes\nPassage: ${passage}\n\nNote content from conversation.`;
+  }
 
-      // Extract Journal Reflection section (stop at equals signs, "Would you like", or "Are you happy")
-      // Try with ** markers first, then without
-      let reflectionMatch = cleaned.match(/\*\*Journal Reflection\*\*([\s\S]*?)(?=\n*=+|Would you like|Are you happy|Click.*Save|$)/i);
-      if (!reflectionMatch) {
-        reflectionMatch = cleaned.match(/Journal Reflection([\s\S]*?)(?=\n*=+|Would you like|Are you happy|Click.*Save|$)/i);
-      }
-      reflection = reflectionMatch
-        ? reflectionMatch[1].replace(/(?:\*\*)?Journal Reflection(?:\*\*)?/i, "").replace(/📌/g, "").trim()
-        : "";
-      
-      // If reflection not found in formatted structure, look for it BEFORE the full structure
-      // The new format shows reflection first, then full structure
-      if (!reflection) {
-        // Find where the full structure starts
-        const fullNoteStart = cleaned.search(/📖 GROW Study Notes|=====================================================================\s*📖 GROW Study Notes|\*\*Passage Text\*\*/i);
-        if (fullNoteStart > 100) {
-          // Get everything before the full structure - this should contain the reflection
-          const beforeStructure = cleaned.substring(0, fullNoteStart);
-          // Look for reflection-like content (first person, personal reflection)
-          if (beforeStructure.length > 50 && (beforeStructure.includes("I ") || beforeStructure.includes("I'm") || beforeStructure.includes("I've"))) {
-            // Extract the reflection part, stopping at "Are you happy"
+  function filterMessageForDisplay(content: string): string {
             const reflectionPart = beforeStructure.split(/Are you happy/i)[0].trim();
             if (reflectionPart.length > 50) {
               reflection = reflectionPart
@@ -955,64 +949,42 @@ export default function GrowNotePage() {
       console.log("Total messages:", messages.length);
       console.log("Messages with 'are you happy':", messages.filter(m => m.content.toLowerCase().includes("are you happy")).length);
       
-      const parsed = parseFormattedNote();
-      console.log("=== PARSING DEBUG ===");
-      console.log("Parsed note:", parsed);
-      console.log("Has book:", !!parsed?.book, parsed?.book);
-      console.log("Has passage:", !!parsed?.passage, parsed?.passage?.substring(0, 50));
-      console.log("Has research:", !!parsed?.research, parsed?.research?.substring(0, 50));
-      console.log("Has reflection:", !!parsed?.write, parsed?.write?.substring(0, 100));
-      console.log("All messages:", messages.map(m => ({ role: m.role, preview: m.content.substring(0, 100) })));
-      console.log("====================");
+      // Extract note data from user messages (simple text extraction, no parsing)
+      const noteData = extractNoteData();
       
-      if (!parsed) {
-        // Show more helpful error message with debug info
-        const hasHappyMessage = messages.some(m => m.content.toLowerCase().includes("are you happy"));
-        const errorMsg = hasHappyMessage 
-          ? "Could not parse note. The reflection might not be formatted correctly. Please check the browser console (F12) for details."
-          : "Could not parse note. Please make sure you completed the GROW process and reached the W (Write) step.";
-        alert(errorMsg);
+      if (!noteData || !noteData.book) {
+        console.error("Could not extract passage reference from messages");
+        // Silently log and try to save with what we have
+        if (!noteData) {
         setSaving(false);
         return;
-      }
-
-      // If book is missing, try to extract from first user message
-      if (!parsed.book) {
-        const userMessages = messages.filter((m) => m.role === "user");
-        if (userMessages.length > 0) {
-          const firstMsg = userMessages[0].content;
-          const match = firstMsg.match(/([A-Za-z\s]+?)\s+(\d+):(\d+)(?:-(\d+))?/);
-          if (match) {
-            parsed.book = match[1].trim();
-            parsed.chapter = parseInt(match[2]) || 1;
-            parsed.verseFrom = parseInt(match[3]) || 1;
-            parsed.verseTo = parseInt(match[4]) || parsed.verseFrom;
-          }
         }
       }
 
-      if (!parsed.book) {
-        alert("Could not find passage reference. Please make sure you provided a Bible passage.");
-        setSaving(false);
-        return;
-      }
-
-      // Ensure we have at least reflection and book (required fields)
-      if (!parsed.write || parsed.write.trim().length === 0) {
-        alert("Could not find your reflection. Please make sure you completed the W (Write) step and the AI showed your formatted reflection.");
-        setSaving(false);
-        return;
+      // Ensure we have at least reflection (required field)
+      if (!noteData.write || noteData.write.trim().length === 0) {
+        // If no reflection found, use the last user message as fallback
+        const userMessages = messages.filter((m) => m.role === "user");
+        if (userMessages.length > 0) {
+          noteData.write = userMessages[userMessages.length - 1].content.trim();
+        }
+        
+        // If still no reflection, log error but don't block saving
+        if (!noteData.write || noteData.write.trim().length === 0) {
+          console.error("No reflection found, but saving anyway with empty reflection");
+          noteData.write = "";
+        }
       }
 
       console.log("Saving to Supabase:", {
         user_id: userId,
-        book: parsed.book,
-        chapter: parsed.chapter,
-        verse_from: parsed.verseFrom,
-        verse_to: parsed.verseTo,
-        passage: parsed.passage?.substring(0, 50) + "..." || "EMPTY",
-        research: parsed.research?.substring(0, 50) + "..." || "EMPTY",
-        write: parsed.write?.substring(0, 50) + "...",
+        book: noteData.book,
+        chapter: noteData.chapter,
+        verse_from: noteData.verseFrom,
+        verse_to: noteData.verseTo,
+        passage: noteData.passage?.substring(0, 50) + "..." || "EMPTY",
+        research: noteData.research?.substring(0, 50) + "..." || "EMPTY",
+        write: noteData.write?.substring(0, 50) + "...",
       });
 
       // If editing, update existing note; otherwise insert new one
@@ -1020,14 +992,14 @@ export default function GrowNotePage() {
         const { data, error } = await supabase
           .from("notes")
           .update({
-            book: parsed.book,
-            chapter: parsed.chapter,
-            verse_from: parsed.verseFrom,
-            verse_to: parsed.verseTo,
-            passage: parsed.passage,
-            research: parsed.research,
-            observe: parsed.observe,
-            write: parsed.write,
+            book: noteData.book,
+            chapter: noteData.chapter,
+            verse_from: noteData.verseFrom,
+            verse_to: noteData.verseTo,
+            passage: noteData.passage || "",
+            research: noteData.research || "",
+            observe: noteData.observe || "",
+            write: noteData.write || "",
           })
           .eq("id", Number(editingNoteId))
           .eq("user_id", userId)
@@ -1035,13 +1007,7 @@ export default function GrowNotePage() {
 
         if (error) {
           console.error("Error updating note:", error);
-          const errorMsg = error.message || "Unknown error";
-          // Check if it's a length issue
-          if (errorMsg.includes("value too long") || errorMsg.includes("exceeds maximum")) {
-            alert(`Failed to update note: One of the fields is too long. Please try shortening your reflection or passage text.`);
-          } else {
-            alert(`Failed to update note: ${errorMsg}`);
-          }
+          // Silently log error, don't show alert
           setSaving(false);
           return;
         }
@@ -1051,25 +1017,19 @@ export default function GrowNotePage() {
       } else {
         const { data, error } = await supabase.from("notes").insert({
           user_id: userId,
-          book: parsed.book,
-          chapter: parsed.chapter,
-          verse_from: parsed.verseFrom,
-          verse_to: parsed.verseTo,
-          passage: parsed.passage,
-          research: parsed.research,
-          observe: parsed.observe,
-          write: parsed.write,
+          book: noteData.book,
+          chapter: noteData.chapter,
+          verse_from: noteData.verseFrom,
+          verse_to: noteData.verseTo,
+          passage: noteData.passage || "",
+          research: noteData.research || "",
+          observe: noteData.observe || "",
+          write: noteData.write || "",
         }).select();
 
         if (error) {
           console.error("Error saving note:", error);
-          const errorMsg = error.message || "Unknown error";
-          // Check if it's a length issue
-          if (errorMsg.includes("value too long") || errorMsg.includes("exceeds maximum")) {
-            alert(`Failed to save note: One of the fields is too long. Please try shortening your reflection or passage text.`);
-          } else {
-            alert(`Failed to save note: ${errorMsg}`);
-          }
+          // Silently log error, don't show alert
           setSaving(false);
           return;
         }
