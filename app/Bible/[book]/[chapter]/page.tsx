@@ -1371,6 +1371,32 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
             console.error("Error logging action to master_actions:", actionError);
           }
 
+          // If this chapter was opened from a reading plan, also log reading_plan_chapter_completed
+          if (sourceContext.type === "reading-plan" && sourceContext.id) {
+            const readingPlanLabel = sourceContext.id === "bible-buddy" 
+              ? "The Bible Buddy Reading Plan"
+              : sourceContext.id === "bible-in-one-year"
+              ? "Bible in One Year"
+              : sourceContext.id;
+            
+            console.log("[MASTER_ACTIONS] inserting reading plan completion:", { 
+              action_type: "reading_plan_chapter_completed", 
+              action_label: `${readingPlanLabel}: ${actionLabel}` 
+            });
+            const { error: readingPlanActionError } = await supabase
+              .from("master_actions")
+              .insert({
+                user_id: userId,
+                username: actionUsername ?? null,
+                action_type: "reading_plan_chapter_completed",
+                action_label: `${readingPlanLabel}: ${actionLabel}`,
+              });
+
+            if (readingPlanActionError) {
+              console.error("Error logging reading plan action to master_actions:", readingPlanActionError);
+            }
+          }
+
           // Check if book is now complete and log book_completed action
           try {
             const bookIsComplete = await isBookComplete(userId, book);

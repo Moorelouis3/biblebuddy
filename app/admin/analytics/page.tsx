@@ -15,6 +15,7 @@ type OverviewMetrics = {
   placesDiscovered: number;
   keywordsUnderstood: number;
   devotionalDaysCompleted: number;
+  readingPlanChaptersCompleted: number;
 };
 
 const INITIAL_METRICS: OverviewMetrics = {
@@ -27,6 +28,7 @@ const INITIAL_METRICS: OverviewMetrics = {
   placesDiscovered: 0,
   keywordsUnderstood: 0,
   devotionalDaysCompleted: 0,
+  readingPlanChaptersCompleted: 0,
 };
 
 export default function AnalyticsPage() {
@@ -61,6 +63,7 @@ export default function AnalyticsPage() {
       placesDiscovered: number;
       keywordsUnderstood: number;
       devotionalDaysCompleted: number;
+      readingPlanChaptersCompleted: number;
       startDate: Date;
       endDate: Date;
     }>
@@ -329,6 +332,14 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
+        // Reading Plan Chapters Completed
+        const { count: readingPlanChaptersCompleted } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "reading_plan_chapter_completed")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
         return {
           period: bucket.label,
           signups: signups || 0,
@@ -340,6 +351,7 @@ export default function AnalyticsPage() {
           placesDiscovered: placesDiscovered || 0,
           keywordsUnderstood: keywordsUnderstood || 0,
           devotionalDaysCompleted: devotionalDaysCompleted || 0,
+          readingPlanChaptersCompleted: readingPlanChaptersCompleted || 0,
           startDate: bucket.start,
           endDate: bucket.end,
         };
@@ -443,6 +455,14 @@ export default function AnalyticsPage() {
           .eq("action_type", "devotional_day_completed")
       );
 
+      // Reading Plan chapters completed
+      const readingPlanChaptersPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "reading_plan_chapter_completed")
+      );
+
       const [
         signupsResult,
         loginRowsResult,
@@ -453,6 +473,7 @@ export default function AnalyticsPage() {
         placesResult,
         keywordsResult,
         devotionalDaysResult,
+        readingPlanChaptersResult,
       ] = await Promise.all([
         signupsPromise,
         loginsPromise,
@@ -463,6 +484,7 @@ export default function AnalyticsPage() {
         placesPromise,
         keywordsPromise,
         devotionalDaysPromise,
+        readingPlanChaptersPromise,
       ]);
 
       const signupsCount = signupsResult.count ?? 0;
@@ -483,6 +505,8 @@ export default function AnalyticsPage() {
       const keywordsError = keywordsResult.error;
       const devotionalDaysCount = devotionalDaysResult.count ?? 0;
       const devotionalDaysError = devotionalDaysResult.error;
+      const readingPlanChaptersCount = readingPlanChaptersResult.count ?? 0;
+      const readingPlanChaptersError = readingPlanChaptersResult.error;
 
       if (
         signupsError ||
@@ -493,7 +517,8 @@ export default function AnalyticsPage() {
         peopleError ||
         placesError ||
         keywordsError ||
-        devotionalDaysError
+        devotionalDaysError ||
+        readingPlanChaptersError
       ) {
         console.error("[ANALYTICS_OVERVIEW] Error loading metrics:", {
           signupsError,
@@ -505,6 +530,7 @@ export default function AnalyticsPage() {
           placesError,
           keywordsError,
           devotionalDaysError,
+          readingPlanChaptersError,
         });
         setOverviewError("Failed to load overview metrics.");
         setOverviewMetrics(INITIAL_METRICS);
@@ -529,6 +555,7 @@ export default function AnalyticsPage() {
         placesDiscovered: placesCount ?? 0,
         keywordsUnderstood: keywordsCount ?? 0,
         devotionalDaysCompleted: devotionalDaysCount ?? 0,
+        readingPlanChaptersCompleted: readingPlanChaptersCount ?? 0,
       });
       setLoadingOverview(false);
     } catch (err) {
@@ -1194,6 +1221,7 @@ export default function AnalyticsPage() {
       "place_discovered": "Places Discovered",
       "keyword_mastered": "Keywords Understood",
       "devotional_day_completed": "Devotional Days Completed",
+      "reading_plan_chapter_completed": "Reading Plan Chapters Completed",
     };
     return nameMap[actionType] || actionType.replace(/_/g, " ");
   }
@@ -1215,6 +1243,8 @@ export default function AnalyticsPage() {
         return "bg-purple-50 border-l-4 border-purple-500";
       case "devotional_day_completed":
         return "bg-orange-50 border-l-4 border-orange-500";
+      case "reading_plan_chapter_completed":
+        return "bg-yellow-50 border-l-4 border-yellow-500";
       case "user_login":
         return "bg-blue-50 border-l-4 border-blue-500";
       case "user_signup":
@@ -1255,6 +1285,8 @@ export default function AnalyticsPage() {
             return row.keywordsUnderstood;
           case "Devotional Days Completed":
             return row.devotionalDaysCompleted;
+          case "Reading Plan Chapters Completed":
+            return row.readingPlanChaptersCompleted;
           default:
             return 0;
         }
@@ -1282,6 +1314,8 @@ export default function AnalyticsPage() {
           return row.keywordsUnderstood;
         case "Devotional Days Completed":
           return row.devotionalDaysCompleted;
+        case "Reading Plan Chapters Completed":
+          return row.readingPlanChaptersCompleted;
         default:
           return 0;
       }
@@ -1531,6 +1565,12 @@ export default function AnalyticsPage() {
                 onClick={() => setSelectedActionType(selectedActionType === "devotional_day_completed" ? null : "devotional_day_completed")}
                 isSelected={selectedActionType === "devotional_day_completed"}
               />
+              <OverviewCard
+                label="Reading Plan Chapters Completed"
+                value={overviewMetrics.readingPlanChaptersCompleted}
+                onClick={() => setSelectedActionType(selectedActionType === "reading_plan_chapter_completed" ? null : "reading_plan_chapter_completed")}
+                isSelected={selectedActionType === "reading_plan_chapter_completed"}
+              />
             </div>
           </>
         )}
@@ -1657,6 +1697,7 @@ export default function AnalyticsPage() {
                     "Places Discovered",
                     "Keywords Understood",
                     "Devotional Days Completed",
+                    "Reading Plan Chapters Completed",
                   ].map((metric) => (
                     <button
                       key={metric}
@@ -1698,6 +1739,8 @@ export default function AnalyticsPage() {
                               return row.keywordsUnderstood;
                             case "Devotional Days Completed":
                               return row.devotionalDaysCompleted;
+                            case "Reading Plan Chapters Completed":
+                              return row.readingPlanChaptersCompleted;
                             default:
                               return row.totalActions;
                           }
@@ -1883,6 +1926,10 @@ export default function AnalyticsPage() {
                   <div className="bg-orange-50 p-4 rounded-lg">
                     <p className="text-sm text-gray-600 mb-1">Devotional Days Completed</p>
                     <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.devotionalDaysCompleted.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-yellow-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Reading Plan Chapters Completed</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.readingPlanChaptersCompleted.toLocaleString()}</p>
                   </div>
                 </div>
               </div>
