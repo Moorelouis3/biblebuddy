@@ -16,6 +16,12 @@ const ACTIVE_PLANS: ReadingPlan[] = [
     subtitle: "A story-focused journey through Scripture",
     coverImage: "/images/Thebiblebuddyreadingplan.png",
   },
+  {
+    id: "bible-in-one-year",
+    title: "Bible in One Year",
+    subtitle: "Read through the entire Bible in 365 days",
+    coverImage: "/images/bibleinoneyear.png",
+  },
 ];
 
 // Visual placeholders for future plans (not clickable yet)
