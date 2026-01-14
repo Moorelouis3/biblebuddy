@@ -834,6 +834,16 @@ export default function AnalyticsPage() {
             sortKey: actionDate.getTime(),
             actionType: "devotional_day_completed",
           });
+        } else if (action.action_type === "reading_plan_chapter_completed") {
+          const text = action.action_label 
+            ? `On ${formattedDate} at ${formattedTime}, ${username} completed ${action.action_label} from a reading plan.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} completed a reading plan chapter.${counterText}`;
+          actions.push({
+            date: formattedDate,
+            text,
+            sortKey: actionDate.getTime(),
+            actionType: "reading_plan_chapter_completed",
+          });
         } else if (action.action_type === "note_created") {
           actions.push({
             date: formattedDate,
