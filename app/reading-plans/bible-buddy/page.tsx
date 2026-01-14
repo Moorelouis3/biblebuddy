@@ -271,20 +271,20 @@ export default function BibleBuddyReadingPlanPage() {
     loadUserAndProgress();
   }, [totalChaptersInPlan]);
 
-  // Keep only the active section (where the current book lives) open
+  // Keep only the active section (where the current book lives) open on initial load
   useEffect(() => {
-    if (lastReadLocation) {
+    if (lastReadLocation && !openSectionId) {
       const sectionForBook = SECTIONS.find((section) =>
         section.books.includes(lastReadLocation.book)
       );
       if (sectionForBook) {
         setOpenSectionId(sectionForBook.id);
       }
-    } else if (!openSectionId) {
-      // Default: open the first section
+    } else if (!openSectionId && !lastReadLocation) {
+      // Default: open the first section if nothing is set
       setOpenSectionId(SECTIONS[0]?.id ?? null);
     }
-  }, [lastReadLocation, openSectionId]);
+  }, [lastReadLocation]); // Only depend on lastReadLocation, not openSectionId
 
   const handleOpenChapter = (book: string, chapter: number) => {
     const slug = encodeURIComponent(book.toLowerCase().trim());

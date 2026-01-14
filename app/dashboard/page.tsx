@@ -568,7 +568,7 @@ export default function DashboardPage() {
 
           {/* BIBLE READING PLANS (Level 2) */}
           <Link href="/reading-plans">
-            <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+            <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
               <h2 className="text-xl font-semibold">Bible Reading Plans</h2>
               <p className="text-gray-700 mt-1">
                 Different orders to read the Bible
