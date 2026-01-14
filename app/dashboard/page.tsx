@@ -541,9 +541,11 @@ export default function DashboardPage() {
                   </div>
                 </div>
 
-                {/* Dynamic Motivational Message */}
+                {/* Actions remaining until next level */}
                 <p className="text-sm text-gray-600 font-medium">
-                  {motivationalMessage || levelInfo.encouragementText}
+                  You have{" "}
+                  {Math.max(0, levelInfo.levelEnd - levelInfo.totalActions + 1)}{" "}
+                  actions until Level {levelInfo.level + 1}
                 </p>
               </>
             ) : null}
