@@ -68,6 +68,16 @@ export default function DevotionalDayModal({
   onReflectionSave,
   onDayComplete,
 }: DevotionalDayModalProps) {
+  // User + progress state for “Mark as finished” buttons
+  const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
+  const [completedPeople, setCompletedPeople] = useState<Set<string>>(new Set());
+  const [completedPlaces, setCompletedPlaces] = useState<Set<string>>(new Set());
+  const [completedKeywords, setCompletedKeywords] = useState<Set<string>>(new Set());
+  const [isAnimatingPerson, setIsAnimatingPerson] = useState(false);
+  const [isAnimatingPlace, setIsAnimatingPlace] = useState(false);
+  const [isAnimatingKeyword, setIsAnimatingKeyword] = useState(false);
+
   const [readingChecked, setReadingChecked] = useState(dayProgress?.reading_completed || false);
   const [reflectionText, setReflectionText] = useState(dayProgress?.reflection_text || "");
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
@@ -84,6 +94,74 @@ export default function DevotionalDayModal({
   const [placeNotes, setPlaceNotes] = useState<string | null>(null);
   const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
+
+  // Load user + existing progress so devotional popups share the same completion state as other pages
+  useEffect(() => {
+    async function loadUserAndProgress() {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
+        setUserId(user.id);
+        const meta: any = user.user_metadata || {};
+        const extractedUsername =
+          meta.firstName ||
+          meta.first_name ||
+          (user.email ? user.email.split("@")[0] : null) ||
+          "User";
+        setUsername(extractedUsername);
+
+        const [peopleRes, placesRes, keywordsRes] = await Promise.all([
+          supabase
+            .from("people_progress")
+            .select("person_name")
+            .eq("user_id", user.id),
+          supabase
+            .from("places_progress")
+            .select("place_name")
+            .eq("user_id", user.id),
+          supabase
+            .from("keywords_progress")
+            .select("keyword")
+            .eq("user_id", user.id),
+        ]);
+
+        if (!peopleRes.error && peopleRes.data) {
+          setCompletedPeople(
+            new Set(
+              peopleRes.data
+                .map((row: any) => String(row.person_name || "").toLowerCase().trim())
+                .filter(Boolean)
+            )
+          );
+        }
+
+        if (!placesRes.error && placesRes.data) {
+          setCompletedPlaces(
+            new Set(
+              placesRes.data
+                .map((row: any) => String(row.place_name || "").toLowerCase().trim())
+                .filter(Boolean)
+            )
+          );
+        }
+
+        if (!keywordsRes.error && keywordsRes.data) {
+          setCompletedKeywords(
+            new Set(
+              keywordsRes.data
+                .map((row: any) => String(row.keyword || "").toLowerCase().trim())
+                .filter(Boolean)
+            )
+          );
+        }
+      } catch (err) {
+        console.error("[DEVOTIONAL_DAY_MODAL] Error loading user/progress:", err);
+      }
+    }
+
+    loadUserAndProgress();
+  }, []);
 
   useEffect(() => {
     setReadingChecked(dayProgress?.reading_completed || false);
@@ -691,6 +769,212 @@ Be accurate to Scripture.`;
                 >
                   {normalizePersonMarkdown(personNotes)}
                 </ReactMarkdown>
+
+                {/* MARK PERSON AS FINISHED (shares logic with People/Bible pages) */}
+                {userId && (
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    {(() => {
+                      // Resolve alias to a primary person name (same as notes generation)
+                      const clickedTerm = selectedPerson.name;
+                      let primaryName = clickedTerm;
+
+                      for (const person of BIBLE_PEOPLE_LIST) {
+                        if (
+                          person.aliases &&
+                          person.aliases.some(
+                            (alias) =>
+                              alias.toLowerCase().trim() ===
+                              clickedTerm.toLowerCase().trim()
+                          )
+                        ) {
+                          primaryName = person.name;
+                          break;
+                        }
+                        if (
+                          person.name.toLowerCase().trim() ===
+                          clickedTerm.toLowerCase().trim()
+                        ) {
+                          primaryName = person.name;
+                          break;
+                        }
+                      }
+
+                      const personNameKey = primaryName.toLowerCase().trim();
+                      const isCompleted = completedPeople.has(personNameKey);
+
+                      return (
+                        <button
+                          type="button"
+                          onClick={async (e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+
+                            if (!userId || isCompleted) return;
+
+                            try {
+                              // Upsert into people_progress to mark learned
+                              const { error } = await supabase
+                                .from("people_progress")
+                                .upsert(
+                                  {
+                                    user_id: userId,
+                                    person_name: personNameKey,
+                                  },
+                                  {
+                                    onConflict: "user_id,person_name",
+                                  }
+                                );
+
+                              if (error) {
+                                console.error("Error marking person as finished:", error);
+                                alert("Failed to mark as finished. Please try again.");
+                                return;
+                              }
+
+                              // ACTION TRACKING: log to master_actions and update profile_stats
+                              try {
+                                const { data: { user: authUser } } = await supabase.auth.getUser();
+                                let actionUsername = username || "User";
+
+                                if (authUser) {
+                                  const meta: any = authUser.user_metadata || {};
+                                  actionUsername =
+                                    meta.firstName ||
+                                    meta.first_name ||
+                                    (authUser.email ? authUser.email.split("@")[0] : null) ||
+                                    "User";
+                                }
+
+                                const formatPersonName = (name: string): string =>
+                                  name
+                                    .split(" ")
+                                    .map((word) => {
+                                      if (/^\d+$/.test(word)) return word;
+                                      return (
+                                        word.charAt(0).toUpperCase() +
+                                        word.slice(1).toLowerCase()
+                                      );
+                                    })
+                                    .join(" ");
+
+                                const personDisplayName = formatPersonName(primaryName);
+
+                                // Insert into master_actions
+                                const { error: actionError } = await supabase
+                                  .from("master_actions")
+                                  .insert({
+                                    user_id: userId,
+                                    username: actionUsername ?? null,
+                                    action_type: "person_learned",
+                                    action_label: personDisplayName,
+                                  });
+
+                                if (actionError) {
+                                  console.error(
+                                    "Error logging action to master_actions:",
+                                    actionError
+                                  );
+                                }
+
+                                // Update profile_stats people_learned_count + total_actions
+                                let statsUsername = username || actionUsername;
+                                if (!statsUsername && userId) {
+                                  const { data: { user } } = await supabase.auth.getUser();
+                                  if (user) {
+                                    const meta: any = user.user_metadata || {};
+                                    statsUsername =
+                                      meta.firstName ||
+                                      meta.first_name ||
+                                      (user.email ? user.email.split("@")[0] : null) ||
+                                      "User";
+                                  }
+                                }
+
+                                const { count, error: countError } = await supabase
+                                  .from("people_progress")
+                                  .select("*", { count: "exact", head: true })
+                                  .eq("user_id", userId);
+
+                                if (!countError && count !== null) {
+                                  const { data: currentStats } = await supabase
+                                    .from("profile_stats")
+                                    .select(
+                                      "username, chapters_completed_count, notes_created_count, places_discovered_count, keywords_mastered_count"
+                                    )
+                                    .eq("user_id", userId)
+                                    .maybeSingle();
+
+                                  const finalUsername =
+                                    currentStats?.username || statsUsername || "User";
+
+                                  const totalActions =
+                                    (currentStats?.chapters_completed_count || 0) +
+                                    (currentStats?.notes_created_count || 0) +
+                                    (count || 0) +
+                                    (currentStats?.places_discovered_count || 0) +
+                                    (currentStats?.keywords_mastered_count || 0);
+
+                                  await supabase.from("profile_stats").upsert(
+                                    {
+                                      user_id: userId,
+                                      username: finalUsername,
+                                      people_learned_count: count || 0,
+                                      total_actions: totalActions,
+                                      updated_at: new Date().toISOString(),
+                                    },
+                                    {
+                                      onConflict: "user_id",
+                                    }
+                                  );
+                                }
+                              } catch (err) {
+                                console.error(
+                                  "[DEVOTIONAL_DAY_MODAL] Error updating stats for person:",
+                                  err
+                                );
+                              }
+
+                              // Local UI updates
+                              setCompletedPeople((prev) => {
+                                const next = new Set(prev);
+                                next.add(personNameKey);
+                                return next;
+                              });
+
+                              setIsAnimatingPerson(true);
+                              setTimeout(() => {
+                                setIsAnimatingPerson(false);
+                                setSelectedPerson(null);
+                                setPersonNotes(null);
+                              }, 400);
+                            } catch (err) {
+                              console.error(
+                                "[DEVOTIONAL_DAY_MODAL] Error marking person as finished:",
+                                err
+                              );
+                              alert("Failed to mark as finished. Please try again.");
+                            }
+                          }}
+                          disabled={isCompleted}
+                          className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                            isCompleted
+                              ? "bg-green-100 text-green-700 cursor-not-allowed"
+                              : "bg-blue-600 text-white hover:bg-blue-700"
+                          }`}
+                          style={
+                            isAnimatingPerson
+                              ? { animation: "scale-down-bounce 0.4s ease-in-out" }
+                              : undefined
+                          }
+                        >
+                          {isCompleted
+                            ? `✓ ${selectedPerson.name} marked as finished`
+                            : `Mark ${selectedPerson.name} as finished`}
+                        </button>
+                      );
+                    })()}
+                  </div>
+                )}
               </div>
             ) : (
               <div className="text-center py-12 text-gray-500">No notes available yet.</div>
@@ -745,6 +1029,192 @@ Be accurate to Scripture.`;
                 >
                   {normalizePlaceMarkdown(placeNotes)}
                 </ReactMarkdown>
+
+                {/* MARK PLACE AS FINISHED */}
+                {userId && (
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    {(() => {
+                      const placeKey = selectedPlace.name
+                        .toLowerCase()
+                        .trim()
+                        .replace(/\s+/g, "_");
+                      const isCompleted = completedPlaces.has(placeKey);
+
+                      return (
+                        <button
+                          type="button"
+                          onClick={async (e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+
+                            if (!userId || isCompleted) return;
+
+                            const placeNameKey = placeKey;
+
+                            try {
+                              const { error } = await supabase
+                                .from("places_progress")
+                                .upsert(
+                                  {
+                                    user_id: userId,
+                                    place_name: placeNameKey,
+                                  },
+                                  {
+                                    onConflict: "user_id,place_name",
+                                  }
+                                );
+
+                              if (error) {
+                                console.error(
+                                  "Error marking place as finished:",
+                                  error
+                                );
+                                alert("Failed to mark as finished. Please try again.");
+                                return;
+                              }
+
+                              try {
+                                const { data: { user: authUser } } = await supabase.auth.getUser();
+                                let actionUsername = username || "User";
+
+                                if (authUser) {
+                                  const meta: any = authUser.user_metadata || {};
+                                  actionUsername =
+                                    meta.firstName ||
+                                    meta.first_name ||
+                                    (authUser.email ? authUser.email.split("@")[0] : null) ||
+                                    "User";
+                                }
+
+                                const formatPlaceName = (name: string): string =>
+                                  name
+                                    .split(" ")
+                                    .map((word) => {
+                                      if (/^\d+$/.test(word)) return word;
+                                      return (
+                                        word.charAt(0).toUpperCase() +
+                                        word.slice(1).toLowerCase()
+                                      );
+                                    })
+                                    .join(" ");
+
+                                const placeDisplayName = formatPlaceName(
+                                  selectedPlace.name
+                                );
+
+                                const { error: actionError } = await supabase
+                                  .from("master_actions")
+                                  .insert({
+                                    user_id: userId,
+                                    username: actionUsername ?? null,
+                                    action_type: "place_discovered",
+                                    action_label: placeDisplayName,
+                                  });
+
+                                if (actionError) {
+                                  console.error(
+                                    "Error logging action to master_actions:",
+                                    actionError
+                                  );
+                                }
+
+                                let statsUsername = username || actionUsername;
+                                if (!statsUsername && userId) {
+                                  const { data: { user } } = await supabase.auth.getUser();
+                                  if (user) {
+                                    const meta: any = user.user_metadata || {};
+                                    statsUsername =
+                                      meta.firstName ||
+                                      meta.first_name ||
+                                      (user.email ? user.email.split("@")[0] : null) ||
+                                      "User";
+                                  }
+                                }
+
+                                const { count, error: countError } = await supabase
+                                  .from("places_progress")
+                                  .select("*", { count: "exact", head: true })
+                                  .eq("user_id", userId);
+
+                                if (!countError && count !== null) {
+                                  const { data: currentStats } = await supabase
+                                    .from("profile_stats")
+                                    .select(
+                                      "username, chapters_completed_count, notes_created_count, people_learned_count, keywords_mastered_count"
+                                    )
+                                    .eq("user_id", userId)
+                                    .maybeSingle();
+
+                                  const finalUsername =
+                                    currentStats?.username || statsUsername || "User";
+
+                                  const totalActions =
+                                    (currentStats?.chapters_completed_count || 0) +
+                                    (currentStats?.notes_created_count || 0) +
+                                    (currentStats?.people_learned_count || 0) +
+                                    (count || 0) +
+                                    (currentStats?.keywords_mastered_count || 0);
+
+                                  await supabase.from("profile_stats").upsert(
+                                    {
+                                      user_id: userId,
+                                      username: finalUsername,
+                                      places_discovered_count: count || 0,
+                                      total_actions: totalActions,
+                                      updated_at: new Date().toISOString(),
+                                    },
+                                    {
+                                      onConflict: "user_id",
+                                    }
+                                  );
+                                }
+                              } catch (err) {
+                                console.error(
+                                  "[DEVOTIONAL_DAY_MODAL] Error updating stats for place:",
+                                  err
+                                );
+                              }
+
+                              setCompletedPlaces((prev) => {
+                                const next = new Set(prev);
+                                next.add(placeNameKey);
+                                return next;
+                              });
+
+                              setIsAnimatingPlace(true);
+                              setTimeout(() => {
+                                setIsAnimatingPlace(false);
+                                setSelectedPlace(null);
+                                setPlaceNotes(null);
+                              }, 400);
+                            } catch (err) {
+                              console.error(
+                                "[DEVOTIONAL_DAY_MODAL] Error marking place as finished:",
+                                err
+                              );
+                              alert("Failed to mark as finished. Please try again.");
+                            }
+                          }}
+                          disabled={isCompleted}
+                          className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                            isCompleted
+                              ? "bg-green-100 text-green-700 cursor-not-allowed"
+                              : "bg-blue-600 text-white hover:bg-blue-700"
+                          }`}
+                          style={
+                            isAnimatingPlace
+                              ? { animation: "scale-down-bounce 0.4s ease-in-out" }
+                              : undefined
+                          }
+                        >
+                          {isCompleted
+                            ? `✓ ${selectedPlace.name} marked as finished`
+                            : `Mark ${selectedPlace.name} as finished`}
+                        </button>
+                      );
+                    })()}
+                  </div>
+                )}
               </div>
             ) : (
               <div className="text-center py-12 text-gray-500">No notes available yet.</div>
@@ -799,6 +1269,189 @@ Be accurate to Scripture.`;
                 >
                   {normalizeKeywordMarkdown(keywordNotes)}
                 </ReactMarkdown>
+
+                {/* MARK KEYWORD AS FINISHED */}
+                {userId && (
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    {(() => {
+                      const keywordKey = selectedKeyword.name.toLowerCase().trim();
+                      const isCompleted = completedKeywords.has(keywordKey);
+
+                      return (
+                        <button
+                          type="button"
+                          onClick={async (e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+
+                            if (!userId || isCompleted) return;
+
+                            const keywordNameKey = keywordKey;
+
+                            try {
+                              const { error } = await supabase
+                                .from("keywords_progress")
+                                .upsert(
+                                  {
+                                    user_id: userId,
+                                    keyword: keywordNameKey,
+                                  },
+                                  {
+                                    onConflict: "user_id,keyword",
+                                  }
+                                );
+
+                              if (error) {
+                                console.error(
+                                  "Error marking keyword as finished:",
+                                  error
+                                );
+                                alert("Failed to mark as finished. Please try again.");
+                                return;
+                              }
+
+                              try {
+                                const { data: { user: authUser } } = await supabase.auth.getUser();
+                                let actionUsername = username || "User";
+
+                                if (authUser) {
+                                  const meta: any = authUser.user_metadata || {};
+                                  actionUsername =
+                                    meta.firstName ||
+                                    meta.first_name ||
+                                    (authUser.email ? authUser.email.split("@")[0] : null) ||
+                                    "User";
+                                }
+
+                                const formatKeywordName = (name: string): string =>
+                                  name
+                                    .split(" ")
+                                    .map((word) => {
+                                      if (/^\d+$/.test(word)) return word;
+                                      return (
+                                        word.charAt(0).toUpperCase() +
+                                        word.slice(1).toLowerCase()
+                                      );
+                                    })
+                                    .join(" ");
+
+                                const keywordDisplayName = formatKeywordName(
+                                  selectedKeyword.name
+                                );
+
+                                const { error: actionError } = await supabase
+                                  .from("master_actions")
+                                  .insert({
+                                    user_id: userId,
+                                    username: actionUsername ?? null,
+                                    action_type: "keyword_mastered",
+                                    action_label: keywordDisplayName,
+                                  });
+
+                                if (actionError) {
+                                  console.error(
+                                    "Error logging action to master_actions:",
+                                    actionError
+                                  );
+                                }
+
+                                let statsUsername = username || actionUsername;
+                                if (!statsUsername && userId) {
+                                  const { data: { user } } = await supabase.auth.getUser();
+                                  if (user) {
+                                    const meta: any = user.user_metadata || {};
+                                    statsUsername =
+                                      meta.firstName ||
+                                      meta.first_name ||
+                                      (user.email ? user.email.split("@")[0] : null) ||
+                                      "User";
+                                  }
+                                }
+
+                                const { count, error: countError } = await supabase
+                                  .from("keywords_progress")
+                                  .select("*", { count: "exact", head: true })
+                                  .eq("user_id", userId);
+
+                                if (!countError && count !== null) {
+                                  const { data: currentStats } = await supabase
+                                    .from("profile_stats")
+                                    .select(
+                                      "username, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count"
+                                    )
+                                    .eq("user_id", userId)
+                                    .maybeSingle();
+
+                                  const finalUsername =
+                                    currentStats?.username || statsUsername || "User";
+
+                                  const totalActions =
+                                    (currentStats?.chapters_completed_count || 0) +
+                                    (currentStats?.notes_created_count || 0) +
+                                    (currentStats?.people_learned_count || 0) +
+                                    (currentStats?.places_discovered_count || 0) +
+                                    (count || 0);
+
+                                  await supabase.from("profile_stats").upsert(
+                                    {
+                                      user_id: userId,
+                                      username: finalUsername,
+                                      keywords_mastered_count: count || 0,
+                                      total_actions: totalActions,
+                                      updated_at: new Date().toISOString(),
+                                    },
+                                    {
+                                      onConflict: "user_id",
+                                    }
+                                  );
+                                }
+                              } catch (err) {
+                                console.error(
+                                  "[DEVOTIONAL_DAY_MODAL] Error updating stats for keyword:",
+                                  err
+                                );
+                              }
+
+                              setCompletedKeywords((prev) => {
+                                const next = new Set(prev);
+                                next.add(keywordNameKey);
+                                return next;
+                              });
+
+                              setIsAnimatingKeyword(true);
+                              setTimeout(() => {
+                                setIsAnimatingKeyword(false);
+                                setSelectedKeyword(null);
+                                setKeywordNotes(null);
+                              }, 400);
+                            } catch (err) {
+                              console.error(
+                                "[DEVOTIONAL_DAY_MODAL] Error marking keyword as finished:",
+                                err
+                              );
+                              alert("Failed to mark as finished. Please try again.");
+                            }
+                          }}
+                          disabled={isCompleted}
+                          className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+                            isCompleted
+                              ? "bg-green-100 text-green-700 cursor-not-allowed"
+                              : "bg-blue-600 text-white hover:bg-blue-700"
+                          }`}
+                          style={
+                            isAnimatingKeyword
+                              ? { animation: "scale-down-bounce 0.4s ease-in-out" }
+                              : undefined
+                          }
+                        >
+                          {isCompleted
+                            ? `✓ ${selectedKeyword.name} marked as finished`
+                            : `Mark ${selectedKeyword.name} as finished`}
+                        </button>
+                      );
+                    })()}
+                  </div>
+                )}
               </div>
             ) : (
               <div className="text-center py-12 text-gray-500">No notes available yet.</div>

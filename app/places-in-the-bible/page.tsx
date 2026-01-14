@@ -7,22 +7,6 @@ import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_PLACES_LIST } from "../../lib/biblePlacesList";
 import { logStudyView } from "../../lib/studyViewLimit";
 
-// Add CSS animation for button click (only once)
-useEffect(() => {
-  if (typeof document !== 'undefined' && !document.getElementById('scale-down-bounce-animation')) {
-    const style = document.createElement('style');
-    style.id = 'scale-down-bounce-animation';
-    style.textContent = `
-      @keyframes scale-down-bounce {
-        0% { transform: scale(1); }
-        50% { transform: scale(0.85); }
-        100% { transform: scale(1); }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-}, []);
-
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 type BiblePlace = {
