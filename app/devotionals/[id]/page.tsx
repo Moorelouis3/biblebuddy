@@ -5,7 +5,6 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
 import DevotionalDayModal from "../../../components/DevotionalDayModal";
-import BibleReadingModal from "../../../components/BibleReadingModal";
 import DevotionalDayCompletionModal from "../../../components/DevotionalDayCompletionModal";
 
 interface Devotional {
@@ -44,9 +43,6 @@ export default function DevotionalDetailPage() {
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
   const [selectedDay, setSelectedDay] = useState<DevotionalDay | null>(null);
-  const [showBibleModal, setShowBibleModal] = useState(false);
-  const [bibleBook, setBibleBook] = useState<string>("");
-  const [bibleChapter, setBibleChapter] = useState<number>(0);
   const [showReadingRequiredModal, setShowReadingRequiredModal] = useState(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
   const [completedDayNumber, setCompletedDayNumber] = useState<number | null>(null);
@@ -159,9 +155,9 @@ export default function DevotionalDetailPage() {
   };
 
   const handleBibleReadingClick = (book: string, chapter: number) => {
-    setBibleBook(book);
-    setBibleChapter(chapter);
-    setShowBibleModal(true);
+    // Open the full Bible chapter overlay route so users see the exact same
+    // experience as in the main Bible section (mark chapter done, notes, links, etc.).
+    router.push(`/Bible/${encodeURIComponent(book)}/${chapter}`);
   };
 
   const handleDayComplete = async (dayNumber: number, reflectionText: string, readingCompleted: boolean) => {
@@ -594,15 +590,6 @@ export default function DevotionalDetailPage() {
           onReadingComplete={() => handleReadingComplete(selectedDay.day_number)}
           onReflectionSave={(text) => handleReflectionSave(selectedDay.day_number, text)}
           onDayComplete={(reflectionText, readingCompleted) => handleDayComplete(selectedDay.day_number, reflectionText, readingCompleted)}
-        />
-      )}
-
-      {/* BIBLE READING MODAL (nested) */}
-      {showBibleModal && (
-        <BibleReadingModal
-          book={bibleBook}
-          chapter={bibleChapter}
-          onClose={() => setShowBibleModal(false)}
         />
       )}
 
