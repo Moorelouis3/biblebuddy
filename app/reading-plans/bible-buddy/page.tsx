@@ -156,7 +156,6 @@ export default function BibleBuddyReadingPlanPage() {
   const [openBook, setOpenBook] = useState<string | null>(PLAN_BOOKS[0]);
   const [lastReadLocation, setLastReadLocation] = useState<{ book: string; chapter: number } | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [lockMessage, setLockMessage] = useState<string | null>(null);
 
   // Precompute total chapters in plan (does not depend on user)
   useEffect(() => {
@@ -292,7 +291,7 @@ export default function BibleBuddyReadingPlanPage() {
     // Mark that we came from the Bible Buddy Reading Plan so the Bible page
     // can show a clear "back to plan" link instead of sending users elsewhere.
     if (typeof window !== "undefined") {
-      window.sessionStorage.setItem("bbFromReadingPlan", "true");
+      window.sessionStorage.setItem("bbFromReadingPlan", "bible-buddy");
     }
     router.push(`/Bible/${slug}/${chapter}`);
   };
@@ -480,15 +479,8 @@ export default function BibleBuddyReadingPlanPage() {
                           type="button"
                           onClick={() => {
                             if (!isUnlocked) {
-                              const lastPrev = previousBooks[previousBooks.length - 1];
-                              setLockMessage(
-                                lastPrev
-                                  ? `Finish all chapters in ${lastPrev} before unlocking ${book}.`
-                                  : `This book will unlock after earlier books in the plan are finished.`
-                              );
                               return;
                             }
-                            setLockMessage(null);
                             setOpenBook(isOpen ? null : book);
                           }}
                           className={`w-full flex items-center justify-between text-left ${
@@ -529,12 +521,6 @@ export default function BibleBuddyReadingPlanPage() {
             );
           })}
         </div>
-
-        {lockMessage && (
-          <div className="mt-4 text-xs sm:text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">
-            {lockMessage}
-          </div>
-        )}
       </div>
     </div>
   );

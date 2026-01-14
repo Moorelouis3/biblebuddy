@@ -1158,12 +1158,55 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     loadSummary();
   }, [book, chapter]);
 
-  // Detect if this chapter was opened from the Bible Buddy Reading Plan
+  // Detect if this chapter was opened from a reading plan or devotional
+  const [sourceContext, setSourceContext] = useState<{
+    type: "reading-plan" | "devotional" | null;
+    id: string | null;
+    backLink: string | null;
+    backText: string | null;
+  }>({ type: null, id: null, backLink: null, backText: null });
+
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const flag = window.sessionStorage.getItem("bbFromReadingPlan");
-    if (flag === "true") {
-      setFromReadingPlan(true);
+    const source = window.sessionStorage.getItem("bbFromReadingPlan");
+    
+    if (source) {
+      // Parse the source to determine where to go back
+      if (source === "bible-buddy") {
+        setSourceContext({
+          type: "reading-plan",
+          id: "bible-buddy",
+          backLink: "/reading-plans/bible-buddy",
+          backText: "← Back to The Bible Buddy Reading Plan",
+        });
+        setFromReadingPlan(true); // Keep for backward compatibility
+      } else if (source === "bible-in-one-year") {
+        setSourceContext({
+          type: "reading-plan",
+          id: "bible-in-one-year",
+          backLink: "/reading-plans/bible-in-one-year",
+          backText: "← Back to Bible in One Year",
+        });
+        setFromReadingPlan(true);
+      } else if (source.startsWith("devotional:")) {
+        const devotionalId = source.replace("devotional:", "");
+        setSourceContext({
+          type: "devotional",
+          id: devotionalId,
+          backLink: `/devotionals/${devotionalId}`,
+          backText: "← Back to Devotional",
+        });
+        setFromReadingPlan(true);
+      } else if (source === "true") {
+        // Legacy: just "true" means Bible Buddy
+        setSourceContext({
+          type: "reading-plan",
+          id: "bible-buddy",
+          backLink: "/reading-plans/bible-buddy",
+          backText: "← Back to The Bible Buddy Reading Plan",
+        });
+        setFromReadingPlan(true);
+      }
     }
   }, []);
 
@@ -1174,15 +1217,10 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     .join(" ");
 
   // Determine back link:
-  // - If opened from the Bible Buddy Reading Plan, send users back there.
+  // - If opened from a reading plan or devotional, send users back there.
   // - Otherwise, send them to the normal book overview page.
-  const backLink = fromReadingPlan
-    ? "/reading-plans/bible-buddy"
-    : `/reading/books/${encodeURIComponent(book.toLowerCase())}`;
-
-  const backText = fromReadingPlan
-    ? "← Back to The Bible Buddy Reading Plan"
-    : `← Back to ${bookDisplayName} overview`;
+  const backLink = sourceContext.backLink || `/reading/books/${encodeURIComponent(book.toLowerCase())}`;
+  const backText = sourceContext.backText || `← Back to ${bookDisplayName} overview`;
 
   function triggerConfetti() {
     const duration = 1000;

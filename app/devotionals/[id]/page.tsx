@@ -155,6 +155,11 @@ export default function DevotionalDetailPage() {
   };
 
   const handleBibleReadingClick = (book: string, chapter: number) => {
+    // Set session storage to indicate we're coming from a devotional
+    // This allows the Bible chapter page to show the correct back link
+    if (typeof window !== "undefined") {
+      window.sessionStorage.setItem("bbFromReadingPlan", `devotional:${devotionalId}`);
+    }
     // Open the full Bible chapter overlay route so users see the exact same
     // experience as in the main Bible section (mark chapter done, notes, links, etc.).
     router.push(`/Bible/${encodeURIComponent(book)}/${chapter}`);
