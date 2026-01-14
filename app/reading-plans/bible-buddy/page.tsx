@@ -149,6 +149,7 @@ export default function BibleBuddyReadingPlanPage() {
 
   const [userId, setUserId] = useState<string | null>(null);
   const [completedByBook, setCompletedByBook] = useState<CompletedMap>({});
+  const [openSectionId, setOpenSectionId] = useState<string | null>(null);
   const [planProgressPercent, setPlanProgressPercent] = useState<number>(0);
   const [totalChaptersInPlan, setTotalChaptersInPlan] = useState<number>(0);
   const [completedChaptersInPlan, setCompletedChaptersInPlan] = useState<number>(0);
@@ -166,9 +167,11 @@ export default function BibleBuddyReadingPlanPage() {
     setTotalChaptersInPlan(total);
   }, []);
 
-  // Load user and reading progress for all plan books
+  // Load user and all progress with a single fast query
   useEffect(() => {
     async function loadUserAndProgress() {
+      if (totalChaptersInPlan === 0) return;
+
       try {
         setLoading(true);
 
@@ -181,18 +184,47 @@ export default function BibleBuddyReadingPlanPage() {
         const uid = user.id;
         setUserId(uid);
 
-        // Load completed chapters for each book in the plan
-        const completedMap: CompletedMap = {};
-        let totalCompleted = 0;
+        // Single query for all completed chapters in this plan
+        const planBookKeys = PLAN_BOOKS.map((book) => book.toLowerCase().trim());
+        const { data, error } = await supabase
+          .from("completed_chapters")
+          .select("book, chapter")
+          .eq("user_id", uid)
+          .in("book", planBookKeys);
 
-        for (const book of PLAN_BOOKS) {
-          const bookKey = book.toLowerCase().trim();
-          const completed = await getCompletedChapters(uid, bookKey);
-          completedMap[book] = completed;
-          totalCompleted += completed.length;
+        if (error) {
+          console.error("[BIBLE_BUDDY_PLAN] Error loading completed chapters:", error);
+          setLoading(false);
+          return;
         }
 
+        // Initialize map with empty arrays for all books
+        const completedMap: CompletedMap = {};
+        PLAN_BOOKS.forEach((book) => {
+          completedMap[book] = [];
+        });
+
+        // Group chapters by original book name
+        (data || []).forEach((row: { book: string; chapter: number }) => {
+          const matchBook = PLAN_BOOKS.find(
+            (b) => b.toLowerCase().trim() === row.book.toLowerCase().trim()
+          );
+          if (!matchBook) return;
+          completedMap[matchBook].push(row.chapter);
+        });
+
+        // Sort chapters inside each book
+        Object.keys(completedMap).forEach((book) => {
+          completedMap[book].sort((a, b) => a - b);
+        });
+
         setCompletedByBook(completedMap);
+
+        // Total completed chapters across the plan
+        let totalCompleted = 0;
+        PLAN_BOOKS.forEach((book) => {
+          totalCompleted += completedMap[book]?.length || 0;
+        });
         setCompletedChaptersInPlan(totalCompleted);
 
         // Compute overall plan progress
@@ -204,27 +236,30 @@ export default function BibleBuddyReadingPlanPage() {
           setPlanProgressPercent(percent);
         }
 
-        // Determine "last read" location:
-        // - Find the furthest completed chapter in plan order
-        // - If nothing completed, default to first chapter of first book
-        let lastBook: string | null = null;
-        let lastChapter = 0;
+        // Determine "continue" location:
+        // First incomplete chapter in PLAN_BOOKS order.
+        let nextBook: string | null = null;
+        let nextChapter = 1;
 
-        PLAN_BOOKS.forEach((book) => {
-          const completed = completedMap[book] || [];
-          if (completed.length > 0) {
-            const maxChapter = Math.max(...completed);
-            // Later books in the PLAN_BOOKS array take precedence
-            lastBook = book;
-            lastChapter = maxChapter;
+        outer: for (const book of PLAN_BOOKS) {
+          const totalChapters = getBookTotalChapters(book);
+          const completed = new Set(completedMap[book] || []);
+          for (let ch = 1; ch <= totalChapters; ch++) {
+            if (!completed.has(ch)) {
+              nextBook = book;
+              nextChapter = ch;
+              break outer;
+            }
           }
-        });
+        }
 
-        if (!lastBook) {
-          // Nothing completed yet – start at first book + chapter 1
-          setLastReadLocation({ book: PLAN_BOOKS[0], chapter: 1 });
+        if (nextBook) {
+          setLastReadLocation({ book: nextBook, chapter: nextChapter });
         } else {
-          setLastReadLocation({ book: lastBook, chapter: lastChapter });
+          // Everything is complete – default to last chapter of the last book
+          const lastBook = PLAN_BOOKS[PLAN_BOOKS.length - 1];
+          const lastChapterNumber = getBookTotalChapters(lastBook);
+          setLastReadLocation({ book: lastBook, chapter: lastChapterNumber });
         }
       } catch (err) {
         console.error("[BIBLE_BUDDY_PLAN] Error loading reading plan progress:", err);
@@ -235,6 +270,21 @@ export default function BibleBuddyReadingPlanPage() {
 
     loadUserAndProgress();
   }, [totalChaptersInPlan]);
+
+  // Keep only the active section (where the current book lives) open
+  useEffect(() => {
+    if (lastReadLocation) {
+      const sectionForBook = SECTIONS.find((section) =>
+        section.books.includes(lastReadLocation.book)
+      );
+      if (sectionForBook) {
+        setOpenSectionId(sectionForBook.id);
+      }
+    } else if (!openSectionId) {
+      // Default: open the first section
+      setOpenSectionId(SECTIONS[0]?.id ?? null);
+    }
+  }, [lastReadLocation, openSectionId]);
 
   const handleOpenChapter = (book: string, chapter: number) => {
     const slug = encodeURIComponent(book.toLowerCase().trim());
@@ -296,13 +346,15 @@ export default function BibleBuddyReadingPlanPage() {
           The Bible Buddy Reading Plan
         </h1>
 
-        {/* COVER IMAGE */}
-        <div className="mb-6">
-          <img
-            src="/images/Thebiblebuddyreadingplan.png"
-            alt="The Bible Buddy Reading Plan cover"
-            className="w-full max-w-md mx-auto rounded-xl shadow-sm"
-          />
+        {/* COVER IMAGE (match devotional cover style) */}
+        <div className="mb-6 flex justify-center">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 max-w-xs w-full">
+            <img
+              src="/images/Thebiblebuddyreadingplan.png"
+              alt="The Bible Buddy Reading Plan cover"
+              className="w-full h-auto rounded-lg object-contain"
+            />
+          </div>
         </div>
 
         {/* INTRO PARAGRAPH */}
@@ -352,7 +404,7 @@ export default function BibleBuddyReadingPlanPage() {
           </div>
         </div>
 
-        {/* BOOKS SECTIONS */}
+        {/* BOOKS SECTIONS (each section collapsible, only active section open) */}
         <div className="space-y-6">
           {SECTIONS.map((section) => {
             const colorClasses = {
@@ -367,15 +419,36 @@ export default function BibleBuddyReadingPlanPage() {
               pink: "bg-pink-100 border-pink-200",
             };
 
+            const isSectionOpen = openSectionId === section.id;
+
             return (
               <div
                 key={section.id}
                 className={`${colorClasses[section.color as keyof typeof colorClasses]} border rounded-xl p-5 shadow-sm`}
               >
-                <h2 className="text-xl font-bold mb-2">{section.header}</h2>
-                <p className="text-gray-700 text-sm mb-4">{section.description}</p>
+                {/* Section header as dropdown toggle */}
+                <button
+                  type="button"
+                  onClick={() =>
+                    setOpenSectionId((current) =>
+                      current === section.id ? null : section.id
+                    )
+                  }
+                  className="w-full flex items-center justify-between text-left"
+                >
+                  <div>
+                    <h2 className="text-xl font-bold mb-1">{section.header}</h2>
+                    <p className="text-gray-700 text-sm">
+                      {section.description}
+                    </p>
+                  </div>
+                  <span className="ml-3 text-gray-600 text-lg">
+                    {isSectionOpen ? "▴" : "▾"}
+                  </span>
+                </button>
 
-                <div className="space-y-2">
+                {isSectionOpen && (
+                  <div className="mt-4 space-y-2">
                   {section.books.map((book) => {
                     const totalChapters = getBookTotalChapters(book);
                     const completed = completedByBook[book] || [];
@@ -450,7 +523,8 @@ export default function BibleBuddyReadingPlanPage() {
                       </div>
                     );
                   })}
-                </div>
+                  </div>
+                )}
               </div>
             );
           })}
