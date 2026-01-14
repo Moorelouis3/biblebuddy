@@ -2305,9 +2305,7 @@ function CongratsModalWithConfetti({
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 
-  const backLink = fromReadingPlan
-    ? "/reading-plans/bible-buddy"
-    : `/reading/books/${book.toLowerCase()}`;
+  const backLink = `/reading/books/${book.toLowerCase()}`;
 
   const [showLevelUpModal, setShowLevelUpModal] = useState(false);
   const [showModal, setShowModal] = useState(true);
