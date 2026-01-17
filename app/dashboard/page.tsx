@@ -6,6 +6,7 @@ import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
 import { getProfileStats } from "../../lib/profileStats";
+import AdSlot from "../../components/AdSlot";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -119,6 +120,7 @@ export default function DashboardPage() {
   const [proExpiresAt, setProExpiresAt] = useState<string | null>(null);
   const [membershipStatus, setMembershipStatus] = useState<string | null>(null);
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
+  const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
 
   // load user first name from Supabase
   useEffect(() => {
@@ -470,10 +472,212 @@ export default function DashboardPage() {
     ? "Start your Bible reading plan here"
     : "Continue reading your Bible here";
 
+  /**
+   * FEATURE FLAG: Set to true to enable ads
+   * 
+   * To enable ads:
+   * 1. Set ENABLE_ADS = true in this file
+   * 2. Set ENABLE_ADS = true in components/AdSlot.tsx
+   * 3. Add actual ad slot IDs from Google AdSense to the AdSlot components below
+   * 4. Ensure Google AdSense script is loaded in app/layout.tsx (already added)
+   * 
+   * IMPORTANT: Ads are disabled by default. Only enable after:
+   * - Getting approval from Google AdSense
+   * - Testing thoroughly
+   * - Ensuring ad slot IDs are correct
+   * 
+   * Ads will only show for:
+   * - Logged-in users
+   * - Free plan users (Pro users never see ads)
+   */
+  const ENABLE_ADS = false;
+
+  // Determine if ads should be shown
+  // Only show ads if:
+  // - Feature flag is enabled
+  // - User is logged in
+  // - User is NOT a Pro member
+  const shouldShowAds = ENABLE_ADS && userId && membershipStatus !== "pro";
+
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
-      {/* MAIN CONTENT – CENTERED COLUMN ONLY */}
-      <div className="max-w-lg mx-auto px-4 mt-8">
+      {/* DESKTOP LAYOUT: Left Ad | Content | Right Ad */}
+      <div className="hidden lg:flex max-w-7xl mx-auto px-4 mt-8 gap-6">
+        {/* LEFT AD SLOT (Desktop Only) */}
+        {shouldShowAds && (
+          <aside className="w-64 flex-shrink-0 sticky top-8 h-fit">
+            <div className="mt-8">
+              <AdSlot
+                variant="vertical"
+                format="300x250"
+                className="sticky top-8"
+              />
+            </div>
+          </aside>
+        )}
+
+        {/* MAIN CONTENT – CENTERED COLUMN */}
+        <div className="flex-1 max-w-lg mx-auto">
+        {/* GREETING */}
+        <div className="mb-4">
+          <p className="text-2xl font-semibold text-center">
+            Welcome back, {userName}!
+          </p>
+        </div>
+
+        {/* DASHBOARD CARDS */}
+        <div className="flex flex-col gap-4">
+          {/* BIBLE READING PROGRESS CARD */}
+          <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm relative">
+            {isLoadingLevel ? (
+              // Loading skeleton with animated dots
+              <>
+                <div className="flex items-center gap-2 mb-2">
+                  <h2 className="text-xl font-semibold">📘 Loading</h2>
+                  <div className="flex gap-1 items-center h-6">
+                    <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_infinite]">.</span>
+                    <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_0.2s_infinite]">.</span>
+                    <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_0.4s_infinite]">.</span>
+                  </div>
+                </div>
+                <p className="text-gray-700 text-sm mb-4">
+                  Loading your level...
+                </p>
+                
+                {/* Progress Bar Skeleton */}
+                <div className="mb-3">
+                  <div className="h-3 rounded-full bg-gray-200 overflow-hidden">
+                    <div className="h-full bg-blue-300 rounded-full w-1/3 animate-pulse"></div>
+                  </div>
+                </div>
+
+                {/* Progress Text Skeleton */}
+                <div className="flex items-center gap-1">
+                  <div className="h-4 bg-gray-200 rounded w-32"></div>
+                </div>
+              </>
+            ) : levelInfo ? (
+              // Actual content
+              <>
+                <div className="flex items-start justify-between mb-2">
+                  <h2 className="text-xl font-semibold">
+                    📘 Level {levelInfo.level} "{levelInfo.levelName}"
+                  </h2>
+                  <button
+                    onClick={() => setShowLevelInfoModal(true)}
+                    className="text-gray-400 hover:text-gray-600 text-lg font-bold w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
+                    title="Learn about levels"
+                  >
+                    ?
+                  </button>
+                </div>
+                <p className="text-gray-700 text-sm mb-4">
+                  {levelInfo.identityText}
+                </p>
+                
+                {/* Progress Bar */}
+                <div className="mb-3">
+                  <div className="h-3 rounded-full bg-gray-200 overflow-hidden">
+                    <div
+                      className="h-full bg-blue-500 rounded-full transition-all duration-300"
+                      style={{ width: `${levelInfo.progressPercent}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Actions remaining until next level */}
+                <p className="text-sm text-gray-600 font-medium">
+                  You have{" "}
+                  {Math.max(0, levelInfo.levelEnd - levelInfo.totalActions + 1)}{" "}
+                  actions until Level {levelInfo.level + 1}
+                </p>
+              </>
+            ) : null}
+          </div>
+
+          {/* Pro Expiration Countdown Timer */}
+          {membershipStatus === "pro" && daysRemaining !== null && daysRemaining > 0 && (
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-sm">
+              <p className="text-sm text-blue-800 font-medium">
+                ⏰ Pro expires in {daysRemaining} {daysRemaining === 1 ? "day" : "days"}
+              </p>
+            </div>
+          )}
+
+          {/* THE BIBLE */}
+          <Link href="/reading">
+            <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+              <h2 className="text-xl font-semibold">📖 The Bible</h2>
+              <p className="text-gray-700 mt-1">{readingSubtitle}</p>
+            </div>
+          </Link>
+
+          {/* BIBLE READING PLANS (Level 2) */}
+          <Link href="/reading-plans">
+            <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+              <h2 className="text-xl font-semibold">Bible Reading Plans</h2>
+              <p className="text-gray-700 mt-1">
+                Different orders to read the Bible
+              </p>
+            </div>
+          </Link>
+
+          {/* DEVOTIONALS */}
+          <Link href="/devotionals">
+            <div className="bg-teal-100 border border-teal-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+              <h2 className="text-xl font-semibold">Devotionals</h2>
+              <p className="text-gray-700 mt-1">
+                Guided daily Bible reading and reflection
+              </p>
+            </div>
+          </Link>
+
+          {/* PEOPLE IN THE BIBLE */}
+          <Link href="/people-in-the-bible">
+            <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+              <h2 className="text-xl font-semibold">👥 People in the Bible</h2>
+              <p className="text-gray-700 mt-1">
+                Meet the real people of the Bible
+              </p>
+            </div>
+          </Link>
+
+          <Link href="/places-in-the-bible">
+            <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+              <h2 className="text-xl font-semibold">📍 Places in the Bible</h2>
+              <p className="text-gray-700 mt-1">
+                Explore the important places of Scripture
+              </p>
+            </div>
+          </Link>
+
+          <Link href="/keywords-in-the-bible">
+            <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+              <h2 className="text-xl font-semibold">🔑 Keywords in the Bible</h2>
+              <p className="text-gray-700 mt-1">
+                Understand important Bible words and ideas
+              </p>
+            </div>
+          </Link>
+        </div>
+        </div>
+
+        {/* RIGHT AD SLOT (Desktop Only) */}
+        {shouldShowAds && (
+          <aside className="w-64 flex-shrink-0 sticky top-8 h-fit">
+            <div className="mt-8">
+              <AdSlot
+                variant="vertical"
+                format="300x250"
+                className="sticky top-8"
+              />
+            </div>
+          </aside>
+        )}
+      </div>
+
+      {/* MOBILE LAYOUT: Content Only (Ads shown at bottom) */}
+      <div className="lg:hidden max-w-lg mx-auto px-4 mt-8">
         {/* GREETING */}
         <div className="mb-4">
           <p className="text-2xl font-semibold text-center">
@@ -617,6 +821,50 @@ export default function DashboardPage() {
           </Link>
         </div>
       </div>
+
+      {/* MOBILE BOTTOM AD BANNER (Fixed at bottom, above system UI) */}
+      {shouldShowAds && !mobileAdDismissed && (
+        <div 
+          className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40 shadow-lg"
+          style={{
+            paddingBottom: "env(safe-area-inset-bottom, 0)",
+          }}
+        >
+          <div className="max-w-full mx-auto px-2 py-2 relative">
+            {/* Dismiss Button */}
+            <button
+              onClick={() => setMobileAdDismissed(true)}
+              className="absolute top-1 right-1 text-gray-400 hover:text-gray-600 z-50 p-1 rounded-full hover:bg-gray-100 transition-colors"
+              aria-label="Dismiss ad"
+              title="Dismiss ad"
+            >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <AdSlot
+              variant="horizontal"
+              format="320x50"
+              className="w-full"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Add bottom padding to mobile content when ad is shown (prevents content from being hidden behind ad) */}
+      {shouldShowAds && !mobileAdDismissed && (
+        <div className="lg:hidden h-20" />
+      )}
 
       {/* Level Info Modal */}
       {showLevelInfoModal && (
