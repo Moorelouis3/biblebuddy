@@ -632,6 +632,16 @@ export default function DashboardPage() {
             </div>
           </Link>
 
+          {/* NOTES */}
+          <Link href="/notes">
+            <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+              <h2 className="text-xl font-semibold">📝 Notes</h2>
+              <p className="text-gray-700 mt-1">
+                Save and organize your Bible study notes
+              </p>
+            </div>
+          </Link>
+
           {/* PEOPLE IN THE BIBLE */}
           <Link href="/people-in-the-bible">
             <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
@@ -788,6 +798,16 @@ export default function DashboardPage() {
               <h2 className="text-xl font-semibold">Devotionals</h2>
               <p className="text-gray-700 mt-1">
                 Guided daily Bible reading and reflection
+              </p>
+            </div>
+          </Link>
+
+          {/* NOTES */}
+          <Link href="/notes">
+            <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+              <h2 className="text-xl font-semibold">📝 Notes</h2>
+              <p className="text-gray-700 mt-1">
+                Save and organize your Bible study notes
               </p>
             </div>
           </Link>
