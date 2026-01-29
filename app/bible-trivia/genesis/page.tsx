@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
+import { logActionToMasterActions } from "@/lib/actionRecorder";
 
 interface Question {
   id: string;
@@ -176,19 +177,7 @@ export default function GenesisTriviaPage() {
 
     if (userId) {
       try {
-        const { data: { user } } = await supabase.auth.getUser();
-        let username = "User";
-        if (user) {
-          const meta: any = user.user_metadata || {};
-          username = meta.firstName || meta.first_name || (user.email ? user.email.split("@")[0] : null) || "User";
-        }
-
-        await supabase.from("master_actions").insert({
-          user_id: userId,
-          action_type: "trivia_question_attempted",
-          action_label: `Genesis ${currentQuestion.id}`,
-          username: username
-        });
+        await logActionToMasterActions(userId, "trivia_question_answered", currentQuestion.id);
       } catch (error) {
         console.error("Error tracking trivia question:", error);
       }

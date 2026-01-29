@@ -13,6 +13,7 @@ export interface ProfileStats {
   people_learned_count: number;
   places_discovered_count: number;
   keywords_mastered_count: number;
+  trivia_questions_answered: number;
   last_active_date: string | null;
   current_streak: number;
 }
@@ -49,6 +50,7 @@ export async function getProfileStats(
         people_learned_count: 0,
         places_discovered_count: 0,
         keywords_mastered_count: 0,
+        trivia_questions_answered: 0,
         last_active_date: null,
         current_streak: 0,
       };
@@ -61,6 +63,7 @@ export async function getProfileStats(
       people_learned_count: data.people_learned_count || 0,
       places_discovered_count: data.places_discovered_count || 0,
       keywords_mastered_count: data.keywords_mastered_count || 0,
+      trivia_questions_answered: data.trivia_questions_answered || 0,
       last_active_date: data.last_active_date,
       current_streak: data.current_streak || 0,
     };

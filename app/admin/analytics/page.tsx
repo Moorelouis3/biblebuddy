@@ -16,7 +16,7 @@ type OverviewMetrics = {
   keywordsUnderstood: number;
   devotionalDaysCompleted: number;
   readingPlanChaptersCompleted: number;
-  triviaQuestionsAttempted: number;
+  triviaQuestionsAnswered: number;
 };
 
 const INITIAL_METRICS: OverviewMetrics = {
@@ -30,7 +30,7 @@ const INITIAL_METRICS: OverviewMetrics = {
   keywordsUnderstood: 0,
   devotionalDaysCompleted: 0,
   readingPlanChaptersCompleted: 0,
-  triviaQuestionsAttempted: 0,
+  triviaQuestionsAnswered: 0,
 };
 
 export default function AnalyticsPage() {
@@ -66,7 +66,7 @@ export default function AnalyticsPage() {
       keywordsUnderstood: number;
       devotionalDaysCompleted: number;
       readingPlanChaptersCompleted: number;
-      triviaQuestionsAttempted: number;
+      triviaQuestionsAnswered: number;
       startDate: Date;
       endDate: Date;
     }>
@@ -343,11 +343,11 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
-        // Trivia Questions Attempted
-        const { count: triviaQuestionsAttempted } = await supabase
+        // Trivia Questions Answered
+        const { count: triviaQuestionsAnswered } = await supabase
           .from("master_actions")
           .select("id", { count: "exact", head: true })
-          .eq("action_type", "trivia_question_attempted")
+          .eq("action_type", "trivia_question_answered")
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
@@ -363,7 +363,7 @@ export default function AnalyticsPage() {
           keywordsUnderstood: keywordsUnderstood || 0,
           devotionalDaysCompleted: devotionalDaysCompleted || 0,
           readingPlanChaptersCompleted: readingPlanChaptersCompleted || 0,
-          triviaQuestionsAttempted: triviaQuestionsAttempted || 0,
+          triviaQuestionsAnswered: triviaQuestionsAnswered || 0,
           startDate: bucket.start,
           endDate: bucket.end,
         };
@@ -475,12 +475,12 @@ export default function AnalyticsPage() {
           .eq("action_type", "reading_plan_chapter_completed")
       );
 
-      // Trivia questions attempted
+      // Trivia questions answered
       const triviaQuestionsPromise = applyDateFilter(
         supabase
           .from("master_actions")
           .select("id", { count: "exact", head: true })
-          .eq("action_type", "trivia_question_attempted")
+          .eq("action_type", "trivia_question_answered")
       );
 
       const [
@@ -582,7 +582,7 @@ export default function AnalyticsPage() {
         keywordsUnderstood: keywordsCount ?? 0,
         devotionalDaysCompleted: devotionalDaysCount ?? 0,
         readingPlanChaptersCompleted: readingPlanChaptersCount ?? 0,
-        triviaQuestionsAttempted: triviaQuestionsCount ?? 0,
+        triviaQuestionsAnswered: triviaQuestionsCount ?? 0,
       });
       setLoadingOverview(false);
     } catch (err) {
@@ -1324,8 +1324,8 @@ export default function AnalyticsPage() {
             return row.devotionalDaysCompleted;
           case "Reading Plan Chapters Completed":
             return row.readingPlanChaptersCompleted;
-          case "Trivia Questions Attempted":
-            return row.triviaQuestionsAttempted;
+          case "Trivia Questions Answered":
+            return row.triviaQuestionsAnswered;
           default:
             return 0;
         }
@@ -1355,8 +1355,8 @@ export default function AnalyticsPage() {
           return row.devotionalDaysCompleted;
         case "Reading Plan Chapters Completed":
             return row.readingPlanChaptersCompleted;
-        case "Trivia Questions Attempted":
-            return row.triviaQuestionsAttempted;
+        case "Trivia Questions Answered":
+            return row.triviaQuestionsAnswered;
           default:
             return 0;
       }
@@ -1613,10 +1613,10 @@ export default function AnalyticsPage() {
                 isSelected={selectedActionType === "reading_plan_chapter_completed"}
               />
               <OverviewCard
-                label="Trivia Questions Attempted"
-                value={overviewMetrics.triviaQuestionsAttempted}
-                onClick={() => setSelectedActionType(selectedActionType === "trivia_question_attempted" ? null : "trivia_question_attempted")}
-                isSelected={selectedActionType === "trivia_question_attempted"}
+                label="Trivia Questions Answered"
+                value={overviewMetrics.triviaQuestionsAnswered}
+                onClick={() => setSelectedActionType(selectedActionType === "trivia_question_answered" ? null : "trivia_question_answered")}
+                isSelected={selectedActionType === "trivia_question_answered"}
               />
             </div>
           </>
@@ -1788,8 +1788,8 @@ export default function AnalyticsPage() {
                               return row.devotionalDaysCompleted;
                             case "Reading Plan Chapters Completed":
                               return row.readingPlanChaptersCompleted;
-                            case "Trivia Questions Attempted":
-                              return row.triviaQuestionsAttempted;
+                            case "Trivia Questions Answered":
+                              return row.triviaQuestionsAnswered;
                             default:
                               return row.totalActions;
                           }
@@ -1981,8 +1981,8 @@ export default function AnalyticsPage() {
                     <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.readingPlanChaptersCompleted.toLocaleString()}</p>
                   </div>
                   <div className="bg-emerald-50 p-4 rounded-lg">
-                    <p className="text-sm text-gray-600 mb-1">Trivia Questions Attempted</p>
-                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.triviaQuestionsAttempted.toLocaleString()}</p>
+                    <p className="text-sm text-gray-600 mb-1">Trivia Questions Answered</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.triviaQuestionsAnswered.toLocaleString()}</p>
                   </div>
                 </div>
               </div>

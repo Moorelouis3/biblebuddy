@@ -11,6 +11,7 @@ import {
 } from "../../lib/profileStats";
 import { syncNotesCount, shouldSyncNotesCount } from "../../lib/syncNotesCount";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../../lib/syncChaptersCount";
+import { syncTriviaQuestionsCount, shouldSyncTriviaQuestionsCount } from "../../lib/syncTriviaQuestionsCount";
 import { isBookComplete } from "../../lib/readingProgress";
 
 export default function ProfilePage() {
@@ -45,6 +46,12 @@ export default function ProfilePage() {
         if (shouldSyncChaptersCount(user.id)) {
           console.log("[PROFILE] Syncing chapters count on profile load (new day detected)");
           await syncChaptersCount(user.id);
+        }
+
+        // Sync trivia questions count if it's a new day or first time
+        if (shouldSyncTriviaQuestionsCount(user.id)) {
+          console.log("[PROFILE] Syncing trivia questions count on profile load (new day detected)");
+          await syncTriviaQuestionsCount(user.id);
         }
 
         // Load profile stats
@@ -305,6 +312,7 @@ export default function ProfilePage() {
     people_learned_count: 0,
     places_discovered_count: 0,
     keywords_mastered_count: 0,
+    trivia_questions_answered: 0,
     last_active_date: null,
     current_streak: 0,
   };
@@ -436,7 +444,7 @@ export default function ProfilePage() {
         </div>
 
         {/* STATS ROW 2 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {/* Notes Created */}
           <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm">
             <div className="text-2xl font-bold mb-1">{displayStats.notes_created_count}</div>
@@ -459,6 +467,12 @@ export default function ProfilePage() {
           <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm">
             <div className="text-2xl font-bold mb-1">{displayStats.keywords_mastered_count}</div>
             <div className="text-sm text-gray-700">Keywords Understood</div>
+          </div>
+
+          {/* Trivia Questions Answered */}
+          <div className="bg-teal-100 border border-teal-200 rounded-xl p-5 shadow-sm">
+            <div className="text-2xl font-bold mb-1">{displayStats.trivia_questions_answered}</div>
+            <div className="text-sm text-gray-700">Trivia Questions Answered</div>
           </div>
         </div>
 

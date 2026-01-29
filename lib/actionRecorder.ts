@@ -18,7 +18,7 @@ export type ActionType =
   | "person_learned"
   | "place_discovered"
   | "keyword_mastered"
-  | "trivia_question_attempted";
+  | "trivia_question_answered";
 
 /**
  * Log an action to master_actions table ONLY

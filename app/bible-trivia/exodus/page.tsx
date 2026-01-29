@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
+import { logActionToMasterActions } from "@/lib/actionRecorder";
 
 interface Question {
   id: string;
@@ -147,8 +148,17 @@ export default function ExodusTriviaPage() {
   const [correctCount, setCorrectCount] = useState(0);
   const [loadingVerseText, setLoadingVerseText] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
+    async function loadUser() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        setUserId(user.id);
+      }
+    }
+    loadUser();
+
     const shuffled = shuffleArray(ALL_QUESTIONS);
     setQuestions(shuffled.slice(0, 10));
   }, []);
@@ -164,6 +174,15 @@ export default function ExodusTriviaPage() {
     setSelectedAnswer(answer);
     if (answer === currentQuestion.correctAnswer) {
       setCorrectCount(prev => prev + 1);
+    }
+
+    // Track trivia question answered
+    if (userId) {
+      try {
+        await logActionToMasterActions(userId, "trivia_question_answered", currentQuestion.id);
+      } catch (error) {
+        console.error("Error tracking trivia question:", error);
+      }
     }
 
     if (!currentQuestion.verseText) {
