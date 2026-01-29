@@ -13,7 +13,7 @@ interface BookProgress {
 export default function BibleTriviaPage() {
   const [progress, setProgress] = useState<BookProgress>({
     genesis: 100,
-    exodus: 21,
+    exodus: 100,
     deuteronomy: 100
   });
   const [loading, setLoading] = useState(true);
@@ -33,7 +33,7 @@ export default function BibleTriviaPage() {
           console.error('Error fetching trivia progress:', error);
         } else {
           // Calculate remaining questions for each book
-          const bookTotals = { genesis: 100, exodus: 21, deuteronomy: 100 };
+          const bookTotals = { genesis: 100, exodus: 100, deuteronomy: 100 };
           const correctCounts: Record<string, number> = {};
           
           progressData?.forEach(p => {
