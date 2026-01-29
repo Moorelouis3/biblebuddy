@@ -185,13 +185,19 @@ export default function GenesisTriviaPage() {
           username = meta.firstName || meta.first_name || (user.email ? user.email.split("@")[0] : null) || "User";
         }
 
-        // Insert into master_actions
-        await supabase.from("master_actions").insert({
-          user_id: userId,
-          action_type: "trivia_question_answered",
-          action_label: currentQuestion.id.replace(/(\w+)(\d+)/, '$1_$2'),
-          username: username
-        });
+        // Insert into master_actions directly
+        const { error: insertError } = await supabase
+          .from('master_actions')
+          .insert({
+            user_id: userId,
+            action_type: 'trivia_question_answered',
+            action_label: currentQuestion.id,
+            username: username
+          });
+
+        if (insertError) {
+          console.error('Failed to insert trivia answer into master_actions:', insertError);
+        }
 
         // Increment profile_stats.trivia_questions_answered
         const { data: currentStats } = await supabase
