@@ -19,7 +19,7 @@ export default function BibleTriviaPage() {
               <div className="text-center">
                 <div className="text-6xl mb-4">📚</div>
                 <h2 className="text-2xl font-bold text-gray-800 mb-2">Genesis</h2>
-                <p className="text-gray-600 text-sm">25 Questions Available</p>
+                <p className="text-gray-600 text-sm">100 Questions Available</p>
               </div>
             </div>
           </Link>
