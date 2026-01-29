@@ -146,6 +146,7 @@ export default function ExodusTriviaPage() {
   const [isFlipped, setIsFlipped] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
   const [loadingVerseText, setLoadingVerseText] = useState(false);
+  const [showResults, setShowResults] = useState(false);
 
   useEffect(() => {
     const shuffled = shuffleArray(ALL_QUESTIONS);
@@ -191,8 +192,6 @@ export default function ExodusTriviaPage() {
       setShowResults(true);
     }
   };
-
-  const [showResults, setShowResults] = useState(false);
 
   const getEncouragementMessage = (score: number) => {
     if (score === 10) return "Perfect! You're an Exodus expert!";
