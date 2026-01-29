@@ -177,8 +177,22 @@ export default function GenesisTriviaPage() {
 
     if (userId) {
       try {
-        await logActionToMasterActions(userId, "trivia_question_answered", currentQuestion.id.replace(/(\w+)(\d+)/, '$1_$2'));
-        
+        // Get username
+        const { data: { user } } = await supabase.auth.getUser();
+        let username = "User";
+        if (user) {
+          const meta: any = user.user_metadata || {};
+          username = meta.firstName || meta.first_name || (user.email ? user.email.split("@")[0] : null) || "User";
+        }
+
+        // Insert into master_actions
+        await supabase.from("master_actions").insert({
+          user_id: userId,
+          action_type: "trivia_question_answered",
+          action_label: currentQuestion.id.replace(/(\w+)(\d+)/, '$1_$2'),
+          username: username
+        });
+
         // Increment profile_stats.trivia_questions_answered
         const { data: currentStats } = await supabase
           .from('profile_stats')
