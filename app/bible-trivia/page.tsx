@@ -13,7 +13,7 @@ export default function BibleTriviaPage() {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {/* Genesis Deck Card */}
           <Link href="/bible-trivia/genesis">
             <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full">
@@ -31,6 +31,17 @@ export default function BibleTriviaPage() {
               <div className="text-center">
                 <div className="text-6xl mb-4">🔥</div>
                 <h2 className="text-2xl font-bold text-gray-800 mb-2">Exodus</h2>
+                <p className="text-gray-600 text-sm">100 Questions Available</p>
+              </div>
+            </div>
+          </Link>
+
+          {/* Deuteronomy Deck Card */}
+          <Link href="/bible-trivia/deuteronomy">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full">
+              <div className="text-center">
+                <div className="text-6xl mb-4">📜</div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">Deuteronomy</h2>
                 <p className="text-gray-600 text-sm">100 Questions Available</p>
               </div>
             </div>
