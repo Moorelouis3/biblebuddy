@@ -179,7 +179,23 @@ export default function ExodusTriviaPage() {
     // Track trivia question answered
     if (userId) {
       try {
-        await logActionToMasterActions(userId, "trivia_question_answered", currentQuestion.id);
+        await logActionToMasterActions(userId, "trivia_question_answered", currentQuestion.id.replace(/(\w+)(\d+)/, '$1_$2'));
+        
+        // Increment profile_stats.trivia_questions_answered
+        const { data: currentStats } = await supabase
+          .from('profile_stats')
+          .select('trivia_questions_answered')
+          .eq('user_id', userId)
+          .single();
+        
+        if (currentStats) {
+          await supabase
+            .from('profile_stats')
+            .update({
+              trivia_questions_answered: (currentStats.trivia_questions_answered || 0) + 1
+            })
+            .eq('user_id', userId);
+        }
       } catch (error) {
         console.error("Error tracking trivia question:", error);
       }
