@@ -901,6 +901,16 @@ export default function AnalyticsPage() {
             sortKey: actionDate.getTime(),
             actionType: "user_signup",
           });
+        } else if (action.action_type === "trivia_question_answered") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} answered a trivia question (${action.action_label}).${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} answered a trivia question.${counterText}`;
+          actions.push({
+            date: formattedDate,
+            text,
+            sortKey: actionDate.getTime(),
+            actionType: "trivia_question_answered",
+          });
         }
         // Ignore all other action types
       }
@@ -1259,6 +1269,7 @@ export default function AnalyticsPage() {
       "keyword_mastered": "Keywords Understood",
       "devotional_day_completed": "Devotional Days Completed",
       "reading_plan_chapter_completed": "Reading Plan Chapters Completed",
+      "trivia_question_answered": "Trivia Questions Answered",
     };
     return nameMap[actionType] || actionType.replace(/_/g, " ");
   }
@@ -1282,6 +1293,8 @@ export default function AnalyticsPage() {
         return "bg-orange-50 border-l-4 border-orange-500";
       case "reading_plan_chapter_completed":
         return "bg-yellow-50 border-l-4 border-yellow-500";
+      case "trivia_question_answered":
+        return "bg-emerald-50 border-l-4 border-emerald-500";
       case "user_login":
         return "bg-blue-50 border-l-4 border-blue-500";
       case "user_signup":
