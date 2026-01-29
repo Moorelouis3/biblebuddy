@@ -82,31 +82,46 @@ export default function PeopleOfTheBiblePage() {
           </Link>
 
           {/* Jesus Deck Card */}
-          <div className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-2xl p-8 shadow-lg h-full opacity-75">
+          <Link
+            href="/bible-trivia/jesus"
+            className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
+          >
             <div className="text-center">
               <div className="text-6xl mb-4">✝️</div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">Jesus</h2>
-              <p className="text-gray-500 text-sm italic">Coming Soon</p>
+              <p className="text-gray-600 text-sm">
+                {loading ? "Loading..." : `${progress.jesus} Questions Remaining`}
+              </p>
             </div>
-          </div>
+          </Link>
 
           {/* Moses Deck Card */}
-          <div className="bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-2xl p-8 shadow-lg h-full opacity-75">
+          <Link
+            href="/bible-trivia/moses"
+            className="bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
+          >
             <div className="text-center">
-              <div className="text-6xl mb-4">🗡️</div>
+              <div className="text-6xl mb-4">⛰️</div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">Moses</h2>
-              <p className="text-gray-500 text-sm italic">Coming Soon</p>
+              <p className="text-gray-600 text-sm">
+                {loading ? "Loading..." : `${progress.moses} Questions Remaining`}
+              </p>
             </div>
-          </div>
+          </Link>
 
           {/* Abraham Deck Card */}
-          <div className="bg-gradient-to-br from-green-50 to-teal-50 border-2 border-green-200 rounded-2xl p-8 shadow-lg h-full opacity-75">
+          <Link
+            href="/bible-trivia/abraham"
+            className="bg-gradient-to-br from-green-50 to-teal-50 border-2 border-green-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
+          >
             <div className="text-center">
-              <div className="text-6xl mb-4">🌟</div>
+              <div className="text-6xl mb-4">🌾</div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">Abraham</h2>
-              <p className="text-gray-500 text-sm italic">Coming Soon</p>
+              <p className="text-gray-600 text-sm">
+                {loading ? "Loading..." : `${progress.abraham} Questions Remaining`}
+              </p>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* Back to Categories */}
