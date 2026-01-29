@@ -16,6 +16,7 @@ type OverviewMetrics = {
   keywordsUnderstood: number;
   devotionalDaysCompleted: number;
   readingPlanChaptersCompleted: number;
+  triviaQuestionsAttempted: number;
 };
 
 const INITIAL_METRICS: OverviewMetrics = {
@@ -29,6 +30,7 @@ const INITIAL_METRICS: OverviewMetrics = {
   keywordsUnderstood: 0,
   devotionalDaysCompleted: 0,
   readingPlanChaptersCompleted: 0,
+  triviaQuestionsAttempted: 0,
 };
 
 export default function AnalyticsPage() {
@@ -64,6 +66,7 @@ export default function AnalyticsPage() {
       keywordsUnderstood: number;
       devotionalDaysCompleted: number;
       readingPlanChaptersCompleted: number;
+      triviaQuestionsAttempted: number;
       startDate: Date;
       endDate: Date;
     }>
@@ -340,6 +343,14 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
+        // Trivia Questions Attempted
+        const { count: triviaQuestionsAttempted } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "trivia_question_attempted")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
         return {
           period: bucket.label,
           signups: signups || 0,
@@ -352,6 +363,7 @@ export default function AnalyticsPage() {
           keywordsUnderstood: keywordsUnderstood || 0,
           devotionalDaysCompleted: devotionalDaysCompleted || 0,
           readingPlanChaptersCompleted: readingPlanChaptersCompleted || 0,
+          triviaQuestionsAttempted: triviaQuestionsAttempted || 0,
           startDate: bucket.start,
           endDate: bucket.end,
         };
@@ -463,6 +475,14 @@ export default function AnalyticsPage() {
           .eq("action_type", "reading_plan_chapter_completed")
       );
 
+      // Trivia questions attempted
+      const triviaQuestionsPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "trivia_question_attempted")
+      );
+
       const [
         signupsResult,
         loginRowsResult,
@@ -474,6 +494,7 @@ export default function AnalyticsPage() {
         keywordsResult,
         devotionalDaysResult,
         readingPlanChaptersResult,
+        triviaQuestionsResult,
       ] = await Promise.all([
         signupsPromise,
         loginsPromise,
@@ -485,6 +506,7 @@ export default function AnalyticsPage() {
         keywordsPromise,
         devotionalDaysPromise,
         readingPlanChaptersPromise,
+        triviaQuestionsPromise,
       ]);
 
       const signupsCount = signupsResult.count ?? 0;
@@ -507,6 +529,8 @@ export default function AnalyticsPage() {
       const devotionalDaysError = devotionalDaysResult.error;
       const readingPlanChaptersCount = readingPlanChaptersResult.count ?? 0;
       const readingPlanChaptersError = readingPlanChaptersResult.error;
+      const triviaQuestionsCount = triviaQuestionsResult.count ?? 0;
+      const triviaQuestionsError = triviaQuestionsResult.error;
 
       if (
         signupsError ||
@@ -518,7 +542,8 @@ export default function AnalyticsPage() {
         placesError ||
         keywordsError ||
         devotionalDaysError ||
-        readingPlanChaptersError
+        readingPlanChaptersError ||
+        triviaQuestionsError
       ) {
         console.error("[ANALYTICS_OVERVIEW] Error loading metrics:", {
           signupsError,
@@ -531,6 +556,7 @@ export default function AnalyticsPage() {
           keywordsError,
           devotionalDaysError,
           readingPlanChaptersError,
+          triviaQuestionsError,
         });
         setOverviewError("Failed to load overview metrics.");
         setOverviewMetrics(INITIAL_METRICS);
@@ -556,6 +582,7 @@ export default function AnalyticsPage() {
         keywordsUnderstood: keywordsCount ?? 0,
         devotionalDaysCompleted: devotionalDaysCount ?? 0,
         readingPlanChaptersCompleted: readingPlanChaptersCount ?? 0,
+        triviaQuestionsAttempted: triviaQuestionsCount ?? 0,
       });
       setLoadingOverview(false);
     } catch (err) {
@@ -1297,6 +1324,8 @@ export default function AnalyticsPage() {
             return row.devotionalDaysCompleted;
           case "Reading Plan Chapters Completed":
             return row.readingPlanChaptersCompleted;
+          case "Trivia Questions Attempted":
+            return row.triviaQuestionsAttempted;
           default:
             return 0;
         }
@@ -1325,9 +1354,11 @@ export default function AnalyticsPage() {
         case "Devotional Days Completed":
           return row.devotionalDaysCompleted;
         case "Reading Plan Chapters Completed":
-          return row.readingPlanChaptersCompleted;
-        default:
-          return 0;
+            return row.readingPlanChaptersCompleted;
+        case "Trivia Questions Attempted":
+            return row.triviaQuestionsAttempted;
+          default:
+            return 0;
       }
     };
 
@@ -1581,6 +1612,12 @@ export default function AnalyticsPage() {
                 onClick={() => setSelectedActionType(selectedActionType === "reading_plan_chapter_completed" ? null : "reading_plan_chapter_completed")}
                 isSelected={selectedActionType === "reading_plan_chapter_completed"}
               />
+              <OverviewCard
+                label="Trivia Questions Attempted"
+                value={overviewMetrics.triviaQuestionsAttempted}
+                onClick={() => setSelectedActionType(selectedActionType === "trivia_question_attempted" ? null : "trivia_question_attempted")}
+                isSelected={selectedActionType === "trivia_question_attempted"}
+              />
             </div>
           </>
         )}
@@ -1751,6 +1788,8 @@ export default function AnalyticsPage() {
                               return row.devotionalDaysCompleted;
                             case "Reading Plan Chapters Completed":
                               return row.readingPlanChaptersCompleted;
+                            case "Trivia Questions Attempted":
+                              return row.triviaQuestionsAttempted;
                             default:
                               return row.totalActions;
                           }
@@ -1940,6 +1979,10 @@ export default function AnalyticsPage() {
                   <div className="bg-yellow-50 p-4 rounded-lg">
                     <p className="text-sm text-gray-600 mb-1">Reading Plan Chapters Completed</p>
                     <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.readingPlanChaptersCompleted.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-emerald-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Trivia Questions Attempted</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.triviaQuestionsAttempted.toLocaleString()}</p>
                   </div>
                 </div>
               </div>

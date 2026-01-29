@@ -642,6 +642,16 @@ export default function DashboardPage() {
             </div>
           </Link>
 
+          {/* BIBLE TRIVIA */}
+          <Link href="/bible-trivia">
+            <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+              <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2>
+              <p className="text-gray-700 mt-1">
+                Test your Bible knowledge
+              </p>
+            </div>
+          </Link>
+
           {/* PEOPLE IN THE BIBLE */}
           <Link href="/people-in-the-bible">
             <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
@@ -808,6 +818,16 @@ export default function DashboardPage() {
               <h2 className="text-xl font-semibold">📝 Notes</h2>
               <p className="text-gray-700 mt-1">
                 Save and organize your Bible study notes
+              </p>
+            </div>
+          </Link>
+
+          {/* BIBLE TRIVIA */}
+          <Link href="/bible-trivia">
+            <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+              <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2>
+              <p className="text-gray-700 mt-1">
+                Test your Bible knowledge
               </p>
             </div>
           </Link>
