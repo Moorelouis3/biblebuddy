@@ -12,13 +12,25 @@ export default function BibleTriviaPage() {
           <p className="text-gray-600">Test your Bible knowledge</p>
         </div>
 
-        {/* Genesis Deck Card */}
-        <div className="max-w-md mx-auto">
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          {/* Genesis Deck Card */}
           <Link href="/bible-trivia/genesis">
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer">
+            <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full">
               <div className="text-center">
                 <div className="text-6xl mb-4">📚</div>
                 <h2 className="text-2xl font-bold text-gray-800 mb-2">Genesis</h2>
+                <p className="text-gray-600 text-sm">100 Questions Available</p>
+              </div>
+            </div>
+          </Link>
+
+          {/* Exodus Deck Card */}
+          <Link href="/bible-trivia/exodus">
+            <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full">
+              <div className="text-center">
+                <div className="text-6xl mb-4">🔥</div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">Exodus</h2>
                 <p className="text-gray-600 text-sm">100 Questions Available</p>
               </div>
             </div>
