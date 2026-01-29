@@ -15,13 +15,13 @@ const supabase = createClient(
 
 export async function POST(request: NextRequest) {
   try {
-    const { userId, questionId, username } = await request.json();
+    const { userId, questionId, username, isCorrect, book } = await request.json();
 
-    console.log('Trivia answer API called:', { userId, questionId, username });
+    console.log('Trivia answer API called:', { userId, questionId, username, isCorrect, book });
 
-    if (!userId || !questionId) {
+    if (!userId || !questionId || isCorrect === undefined || !book) {
       return NextResponse.json(
-        { error: 'Missing required fields: userId, questionId' },
+        { error: 'Missing required fields: userId, questionId, isCorrect, book' },
         { status: 400 }
       );
     }
@@ -49,7 +49,27 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log('Successfully inserted trivia answer into master_actions');
+    // Insert or update trivia_question_progress
+    const { error: progressError } = await supabase
+      .from('trivia_question_progress')
+      .upsert({
+        user_id: userId,
+        book: book,
+        question_id: questionId,
+        is_correct: isCorrect
+      }, {
+        onConflict: 'user_id,book,question_id'
+      });
+
+    if (progressError) {
+      console.error('Error upserting trivia progress:', progressError);
+      return NextResponse.json(
+        { error: 'Failed to record trivia progress' },
+        { status: 500 }
+      );
+    }
+
+    console.log('Successfully inserted trivia answer into master_actions and trivia_question_progress');
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Unexpected error in trivia-answer API:', error);

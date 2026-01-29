@@ -153,16 +153,43 @@ export default function DeuteronomyTriviaPage() {
   const [loadingVerseText, setLoadingVerseText] = useState(false);
 
   useEffect(() => {
-    async function loadUser() {
+    async function loadUserAndQuestions() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         setUserId(user.id);
+        
+        // Fetch user's progress for deuteronomy questions
+        const { data: progressData, error } = await supabase
+          .from('trivia_question_progress')
+          .select('question_id, is_correct')
+          .eq('user_id', user.id)
+          .eq('book', 'deuteronomy');
+
+        if (error) {
+          console.error('Error fetching trivia progress:', error);
+        }
+
+        // Filter out correctly answered questions
+        const answeredCorrectly = new Set(
+          (progressData || [])
+            .filter(p => p.is_correct)
+            .map(p => p.question_id)
+        );
+
+        const availableQuestions = ALL_QUESTIONS.filter(q => !answeredCorrectly.has(q.id));
+        
+        // If no questions left, show all questions (allow review)
+        const questionsToUse = availableQuestions.length > 0 ? availableQuestions : ALL_QUESTIONS;
+        
+        const shuffled = shuffleArray(questionsToUse);
+        setQuestions(shuffled.slice(0, 10));
+      } else {
+        // No user logged in, show random questions
+        const shuffled = shuffleArray(ALL_QUESTIONS);
+        setQuestions(shuffled.slice(0, 10));
       }
     }
-    loadUser();
-
-    const shuffled = shuffleArray(ALL_QUESTIONS);
-    setQuestions(shuffled.slice(0, 10));
+    loadUserAndQuestions();
   }, []);
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -171,8 +198,9 @@ export default function DeuteronomyTriviaPage() {
   const handleAnswerSelect = async (answer: string) => {
     if (selectedAnswer) return;
     
+    const isCorrect = answer === currentQuestion.correctAnswer;
     setSelectedAnswer(answer);
-    if (answer === currentQuestion.correctAnswer) {
+    if (isCorrect) {
       setCorrectCount(prev => prev + 1);
     }
 
@@ -187,7 +215,7 @@ export default function DeuteronomyTriviaPage() {
         }
 
         // Insert into master_actions via server-side API (uses service role)
-        console.log('Making API call to record trivia answer:', { userId, questionId: currentQuestion.id, username });
+        console.log('Making API call to record trivia answer:', { userId, questionId: currentQuestion.id, username, isCorrect, book: 'deuteronomy' });
         const response = await fetch('/api/trivia-answer', {
           method: 'POST',
           headers: {
@@ -196,7 +224,9 @@ export default function DeuteronomyTriviaPage() {
           body: JSON.stringify({
             userId,
             questionId: currentQuestion.id,
-            username
+            username,
+            isCorrect,
+            book: 'deuteronomy'
           }),
         });
 
