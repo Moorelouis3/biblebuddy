@@ -50,24 +50,51 @@ export async function POST(request: NextRequest) {
     }
 
     // Insert or update trivia_question_progress
-    const { error: progressError } = await supabase
+    console.log('Attempting to upsert trivia progress:', { userId, book, questionId, isCorrect });
+    
+    // First try to update existing record
+    const { data: existing, error: selectError } = await supabase
       .from('trivia_question_progress')
-      .upsert({
-        user_id: userId,
-        book: book,
-        question_id: questionId,
-        is_correct: isCorrect
-      }, {
-        onConflict: 'user_id,book,question_id'
-      });
+      .select('id')
+      .eq('user_id', userId)
+      .eq('book', book)
+      .eq('question_id', questionId)
+      .single();
+
+    let progressError;
+    if (existing) {
+      // Update existing record
+      const { error } = await supabase
+        .from('trivia_question_progress')
+        .update({ 
+          is_correct: isCorrect,
+          answered_at: new Date().toISOString()
+        })
+        .eq('id', existing.id);
+      progressError = error;
+    } else {
+      // Insert new record
+      const { error } = await supabase
+        .from('trivia_question_progress')
+        .insert({
+          user_id: userId,
+          book: book,
+          question_id: questionId,
+          is_correct: isCorrect
+        });
+      progressError = error;
+    }
 
     if (progressError) {
-      console.error('Error upserting trivia progress:', progressError);
+      console.error('Error recording trivia progress:', progressError);
+      console.error('Progress error details:', JSON.stringify(progressError, null, 2));
       return NextResponse.json(
         { error: 'Failed to record trivia progress' },
         { status: 500 }
       );
     }
+
+    console.log('Successfully recorded trivia progress');
 
     console.log('Successfully inserted trivia answer into master_actions and trivia_question_progress');
     return NextResponse.json({ success: true });
