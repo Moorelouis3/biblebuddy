@@ -286,8 +286,9 @@ export default function GenesisTriviaPage() {
           >
             ← Back
           </Link>
-          <div className="text-sm text-gray-600">
-            Question {currentQuestionIndex + 1} of {questions.length}
+          <div className="text-sm text-gray-600 flex gap-8">
+            <span>Question {currentQuestionIndex + 1} of {questions.length}</span>
+            <span className="font-semibold">Score: {correctCount}</span>
           </div>
         </div>
 

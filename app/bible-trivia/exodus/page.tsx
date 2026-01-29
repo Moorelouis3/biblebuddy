@@ -144,6 +144,7 @@ export default function ExodusTriviaPage() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [correctCount, setCorrectCount] = useState(0);
   const [loadingVerseText, setLoadingVerseText] = useState(false);
 
   useEffect(() => {
@@ -158,7 +159,11 @@ export default function ExodusTriviaPage() {
 
   const handleAnswerSelect = async (answer: string) => {
     if (selectedAnswer) return;
+    
     setSelectedAnswer(answer);
+    if (answer === currentQuestion.correctAnswer) {
+      setCorrectCount(prev => prev + 1);
+    }
 
     if (!currentQuestion.verseText) {
       setLoadingVerseText(true);
@@ -182,21 +187,69 @@ export default function ExodusTriviaPage() {
       setCurrentQuestionIndex(i => i + 1);
       setSelectedAnswer(null);
       setIsFlipped(false);
+    } else {
+      setShowResults(true);
     }
   };
+
+  const [showResults, setShowResults] = useState(false);
+
+  const getEncouragementMessage = (score: number) => {
+    if (score === 10) return "Perfect! You're an Exodus expert!";
+    if (score >= 8) return "Excellent! You know Exodus well!";
+    if (score >= 6) return "Good job! Keep studying Exodus!";
+    if (score >= 4) return "Nice try! Exodus has much to explore!";
+    return "Keep learning! Every question helps you grow!";
+  };
+
+  if (showResults) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
+          <div className="text-6xl mb-4">🎉</div>
+          <h2 className="text-2xl font-bold mb-4">Quiz Complete!</h2>
+          <div className="mb-6">
+            <p className="text-4xl font-bold text-blue-600 mb-2">
+              {correctCount} / 10
+            </p>
+            <p className="text-gray-600">Correct Answers</p>
+          </div>
+          <p className="text-lg text-gray-700 mb-8">
+            {getEncouragementMessage(correctCount)}
+          </p>
+          <div className="space-y-3">
+            <Link
+              href="/bible-trivia/exodus"
+              className="block w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+            >
+              Play Again
+            </Link>
+            <Link
+              href="/bible-trivia"
+              className="block w-full bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition"
+            >
+              Back to Decks
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-2xl mx-auto">
-        <Link href="/bible-trivia" className="text-gray-600 hover:text-gray-800 font-semibold mb-6 block">
-          ← Back
-        </Link>
-
-        <div className="text-sm text-gray-600 mb-4 flex justify-between items-center">
-          <span>Question {currentQuestionIndex + 1} of {questions.length}</span>
-          <span className="font-semibold">Score: {questions.slice(0, currentQuestionIndex).filter((q, idx) => 
-            idx < currentQuestionIndex && selectedAnswer === q.correctAnswer 
-          ).length}</span>
+        <div className="mb-6 flex items-center justify-between">
+          <Link
+            href="/bible-trivia"
+            className="text-gray-600 hover:text-gray-800 transition"
+          >
+            ← Back
+          </Link>
+          <div className="text-sm text-gray-600 flex gap-8">
+            <span>Question {currentQuestionIndex + 1} of {questions.length}</span>
+            <span className="font-semibold">Score: {correctCount}</span>
+          </div>
         </div>
 
         <div style={{ perspective: "1000px", height: "600px" }}>
