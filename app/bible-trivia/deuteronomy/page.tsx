@@ -256,28 +256,49 @@ export default function DeuteronomyTriviaPage() {
     }
   };
 
-  if (!questions.length) return null;
+  const getEncouragementMessage = (score: number) => {
+    if (score === 10) return "Perfect! You're a Deuteronomy expert!";
+    if (score >= 8) return "Excellent! You know Deuteronomy well!";
+    if (score >= 6) return "Good job! Keep studying Deuteronomy!";
+    if (score >= 4) return "Nice try! Deuteronomy has much to explore!";
+    return "Keep learning! Every question helps you grow!";
+  };
+
+  if (questions.length === 0) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-4xl mb-4">📚</div>
+          <div className="text-gray-600">Loading questions...</div>
+        </div>
+      </div>
+    );
+  }
 
   if (showResults) {
     const percentage = Math.round((correctCount / questions.length) * 100);
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
           <div className="text-6xl mb-4">🎉</div>
           <h2 className="text-2xl font-bold mb-4">Quiz Complete!</h2>
           <div className="text-4xl font-bold text-blue-600 mb-2">{correctCount}/{questions.length}</div>
-          <div className="text-lg text-gray-600 mb-6">{percentage}% Correct</div>
-          
+          <div className="text-lg text-gray-600 mb-4">{percentage}% Correct</div>
+          <p className="text-gray-700 mb-6">
+            {getEncouragementMessage(correctCount)}
+          </p>
           <div className="space-y-3">
-            <Link href="/bible-trivia/deuteronomy">
-              <button className="w-full bg-blue-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-colors">
-                Try Again
-              </button>
+            <Link
+              href="/bible-trivia/deuteronomy"
+              className="block w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+            >
+              Play Again
             </Link>
-            <Link href="/bible-trivia">
-              <button className="w-full bg-gray-200 text-gray-800 py-3 px-6 rounded-xl font-semibold hover:bg-gray-300 transition-colors">
-                Choose Another Book
-              </button>
+            <Link
+              href="/bible-trivia"
+              className="block w-full bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition"
+            >
+              Back to Decks
             </Link>
           </div>
         </div>
@@ -286,100 +307,121 @@ export default function DeuteronomyTriviaPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-12">
-      <div className="max-w-4xl mx-auto px-4 pt-8">
-        {/* Header */}
-        <div className="mb-6 text-center">
-          <Link href="/bible-trivia" className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-4">
-            ← Back to Trivia
+    <div className="min-h-screen bg-gray-50 py-8 px-4">
+      <div className="max-w-2xl mx-auto">
+        <div className="mb-6 flex items-center justify-between">
+          <Link
+            href="/bible-trivia"
+            className="text-gray-600 hover:text-gray-800 transition"
+          >
+            ← Back
           </Link>
-          <h1 className="text-3xl font-semibold mb-2">📜 Deuteronomy Trivia</h1>
-          <p className="text-gray-600">Question {currentQuestionIndex + 1} of {questions.length}</p>
-        </div>
-
-        {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="bg-gray-200 rounded-full h-2">
-            <div 
-              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
-            ></div>
-          </div>
-          <div className="text-center mt-2 text-sm text-gray-600">
-            {correctCount} correct answers
+          <div className="text-sm text-gray-600 flex gap-8">
+            <span>Question {currentQuestionIndex + 1} of {questions.length}</span>
+            <span className="font-semibold">Score: {correctCount}</span>
           </div>
         </div>
 
-        {/* Question Card */}
-        <div className={`bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 ${isFlipped ? 'transform rotate-y-180' : ''}`}>
-          {/* Front of card - Question */}
-          <div className={`p-8 ${isFlipped ? 'hidden' : 'block'}`}>
-            <h2 className="text-xl font-semibold mb-6 text-center">{currentQuestion.question}</h2>
-            
-            <div className="space-y-3">
-              {currentQuestion.options.map((option) => (
-                <button
-                  key={option.label}
-                  onClick={() => handleAnswerSelect(option.label)}
-                  disabled={selectedAnswer !== null}
-                  className={`w-full p-4 rounded-xl border-2 text-left transition-all duration-200 ${
-                    selectedAnswer === null
-                      ? 'border-gray-200 hover:border-blue-300 hover:bg-blue-50'
-                      : selectedAnswer === option.label
-                        ? option.label === currentQuestion.correctAnswer
-                          ? 'border-green-500 bg-green-50 text-green-800'
-                          : 'border-red-500 bg-red-50 text-red-800'
-                        : option.label === currentQuestion.correctAnswer
-                          ? 'border-green-500 bg-green-50 text-green-800'
-                          : 'border-gray-200 opacity-50'
+        <div className="relative mb-8" style={{ perspective: "1000px" }}>
+          <div
+            className="relative w-full transition-transform duration-500"
+            style={{
+              transformStyle: "preserve-3d",
+              transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"
+            }}
+          >
+            <div
+              className="w-full bg-white rounded-2xl shadow-lg p-8"
+              style={{
+                backfaceVisibility: "hidden",
+                WebkitBackfaceVisibility: "hidden",
+                transform: "rotateY(0deg)"
+              }}
+            >
+              <h2 className="text-2xl font-bold mb-6 text-gray-800">
+                {currentQuestion.question}
+              </h2>
+              <div className="space-y-3">
+                {currentQuestion.options.map((option) => (
+                  <button
+                    key={option.label}
+                    onClick={() => handleAnswerSelect(option.label)}
+                    disabled={!!selectedAnswer}
+                    className="w-full text-left p-4 border-2 border-gray-200 rounded-xl hover:border-blue-400 hover:bg-blue-50 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <span className="font-semibold text-gray-700">
+                      {option.label}. {option.text}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div
+              className="w-full bg-white rounded-2xl shadow-lg p-8 absolute top-0 left-0"
+              style={{
+                backfaceVisibility: "hidden",
+                WebkitBackfaceVisibility: "hidden",
+                transform: "rotateY(180deg)"
+              }}
+            >
+              <div className="mb-6">
+                <div
+                  className={`inline-block px-4 py-2 rounded-lg font-semibold mb-4 ${
+                    isCorrect
+                      ? "bg-green-100 text-green-800"
+                      : "bg-red-100 text-red-800"
                   }`}
                 >
-                  <span className="font-semibold mr-3">{option.label}.</span>
-                  {option.text}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Back of card - Answer */}
-          <div className={`p-8 ${isFlipped ? 'block' : 'hidden'}`}>
-            <div className="text-center mb-6">
-              <div className={`text-4xl mb-2 ${isCorrect ? 'text-green-500' : 'text-red-500'}`}>
-                {isCorrect ? '✅' : '❌'}
+                  {isCorrect ? "✓ Correct!" : "✗ Incorrect"}
+                </div>
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                  {currentQuestion.question}
+                </h2>
+                <div className="space-y-2 mb-4">
+                  {currentQuestion.options.map((option) => (
+                    <div
+                      key={option.label}
+                      className={`p-3 rounded-lg ${
+                        option.label === currentQuestion.correctAnswer
+                          ? "bg-green-100 border-2 border-green-400"
+                          : option.label === selectedAnswer && !isCorrect
+                          ? "bg-red-100 border-2 border-red-400"
+                          : "bg-gray-50 border border-gray-200"
+                      }`}
+                    >
+                      <span className="font-semibold text-gray-700">
+                        {option.label}. {option.text}
+                        {option.label === currentQuestion.correctAnswer && (
+                          <span className="ml-2 text-green-700">✓</span>
+                        )}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                  <p className="text-sm font-semibold text-blue-900 mb-2">
+                    {currentQuestion.verse}
+                  </p>
+                  {loadingVerseText ? (
+                    <p className="text-gray-500 text-sm italic mb-3">Loading verse...</p>
+                  ) : currentQuestion.verseText ? (
+                    <p className="text-gray-800 text-sm leading-relaxed mb-3 italic">
+                      "{currentQuestion.verseText}"
+                    </p>
+                  ) : null}
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    {currentQuestion.explanation}
+                  </p>
+                </div>
               </div>
-              <h3 className="text-lg font-semibold mb-2">
-                {isCorrect ? 'Correct!' : 'Incorrect'}
-              </h3>
-              <p className="text-gray-600 text-sm mb-4">
-                The correct answer was: <span className="font-semibold">
-                  {currentQuestion.options.find(opt => opt.label === currentQuestion.correctAnswer)?.text}
-                </span>
-              </p>
-            </div>
-
-            {/* Verse */}
-            <div className="bg-gray-50 rounded-xl p-4 mb-6">
-              <div className="text-sm text-gray-600 mb-2">{currentQuestion.verse}</div>
-              {loadingVerseText ? (
-                <div className="text-gray-500 text-sm">Loading verse...</div>
-              ) : currentQuestion.verseText ? (
-                <div className="text-gray-800 italic text-sm">"{currentQuestion.verseText}"</div>
-              ) : null}
-            </div>
-
-            {/* Explanation */}
-            <div className="mb-6">
-              <h4 className="font-semibold mb-2">Explanation:</h4>
-              <p className="text-gray-700 text-sm leading-relaxed">{currentQuestion.explanation}</p>
-            </div>
-
-            {/* Next Button */}
-            <div className="text-center">
               <button
                 onClick={handleNext}
-                className="bg-blue-600 text-white py-3 px-8 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
+                className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
               >
-                {currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'See Results'}
+                {currentQuestionIndex < questions.length - 1
+                  ? "Next Question"
+                  : "See Results"}
               </button>
             </div>
           </div>
