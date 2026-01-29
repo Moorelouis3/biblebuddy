@@ -15,13 +15,16 @@ export default function PeopleOfTheBiblePage() {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {/* God Deck Card */}
-          <div className="bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-yellow-200 rounded-2xl p-8 shadow-lg h-full opacity-75">
+          <Link
+            href="/bible-trivia/god"
+            className="bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-yellow-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl transition-shadow"
+          >
             <div className="text-center">
               <div className="text-6xl mb-4">✨</div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">God</h2>
-              <p className="text-gray-500 text-sm italic">Coming Soon</p>
+              <p className="text-gray-600 text-sm">100 Questions</p>
             </div>
-          </div>
+          </Link>
 
           {/* Jesus Deck Card */}
           <div className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-2xl p-8 shadow-lg h-full opacity-75">
