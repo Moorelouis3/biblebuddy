@@ -17,6 +17,8 @@ export async function POST(request: NextRequest) {
   try {
     const { userId, questionId, username } = await request.json();
 
+    console.log('Trivia answer API called:', { userId, questionId, username });
+
     if (!userId || !questionId) {
       return NextResponse.json(
         { error: 'Missing required fields: userId, questionId' },
@@ -26,6 +28,8 @@ export async function POST(request: NextRequest) {
 
     // Format action_label (genesis01 -> genesis_01)
     const actionLabel = questionId.replace(/(\w+)(\d+)/, '$1_$2');
+
+    console.log('Inserting trivia answer:', { userId, actionType: 'trivia_question_answered', actionLabel, username });
 
     // Insert into master_actions using service role (bypasses RLS)
     const { error: insertError } = await supabase
@@ -45,6 +49,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    console.log('Successfully inserted trivia answer into master_actions');
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Unexpected error in trivia-answer API:', error);

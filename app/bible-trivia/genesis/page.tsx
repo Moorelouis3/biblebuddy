@@ -185,18 +185,25 @@ export default function GenesisTriviaPage() {
           username = meta.firstName || meta.first_name || (user.email ? user.email.split("@")[0] : null) || "User";
         }
 
-        // Insert into master_actions directly
-        const { error: insertError } = await supabase
-          .from('master_actions')
-          .insert({
-            user_id: userId,
-            action_type: 'trivia_question_answered',
-            action_label: currentQuestion.id,
-            username: username
-          });
+        // Insert into master_actions via server-side API (uses service role)
+        console.log('Making API call to record trivia answer:', { userId, questionId: currentQuestion.id, username });
+        const response = await fetch('/api/trivia-answer', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userId,
+            questionId: currentQuestion.id,
+            username
+          }),
+        });
 
-        if (insertError) {
-          console.error('Failed to insert trivia answer into master_actions:', insertError);
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('Failed to record trivia answer:', response.status, errorText);
+        } else {
+          console.log('Successfully recorded trivia answer');
         }
 
         // Increment profile_stats.trivia_questions_answered
