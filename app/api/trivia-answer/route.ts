@@ -64,9 +64,8 @@ export async function POST(request: NextRequest) {
       .maybeSingle();
 
     let progressError;
-    let correctCountUpdated = false;
     if (existing) {
-      // Update progress (do not increment correct count)
+      // Update progress (do not increment correct count, DB trigger handles XP)
       const { error } = await supabase
         .from('trivia_question_progress')
         .update({
@@ -86,37 +85,7 @@ export async function POST(request: NextRequest) {
           is_correct: isCorrect
         });
       progressError = error;
-      // Only increment trivia_correct_count if correct and first time
-      if (isCorrect) {
-        const { error: updateError } = await supabase
-          .from('profile_stats')
-          .update({
-            trivia_correct_count: supabase.raw('trivia_correct_count + 1')
-          })
-          .eq('user_id', userId);
-        if (updateError) {
-          console.error('Error incrementing trivia_correct_count:', updateError);
-        } else {
-          correctCountUpdated = true;
-        }
-      }
-    }
-
-    // Always recalculate total_actions after possible correct count update
-    if (correctCountUpdated) {
-      try {
-        const recalcRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/recalculate-total-actions`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ userId })
-        });
-        if (!recalcRes.ok) {
-          const errText = await recalcRes.text();
-          console.error('Failed to recalculate total_actions:', errText);
-        }
-      } catch (err) {
-        console.error('Error calling recalculate-total-actions API:', err);
-      }
+      // No direct XP/leveling logic here; DB trigger handles it
     }
 
     if (progressError) {
