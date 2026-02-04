@@ -612,23 +612,11 @@ export default function DashboardPage() {
             </div>
           </Link>
 
-          {/* BIBLE READING PLANS (Level 2) */}
-          <Link href="/reading-plans">
+          {/* GUIDED STUDIES HUB */}
+          <Link href="/guided-studies">
             <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">Bible Reading Plans</h2>
-              <p className="text-gray-700 mt-1">
-                Different orders to read the Bible
-              </p>
-            </div>
-          </Link>
-
-          {/* DEVOTIONALS */}
-          <Link href="/devotionals">
-            <div className="bg-teal-100 border border-teal-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">Devotionals</h2>
-              <p className="text-gray-700 mt-1">
-                Guided daily Bible reading and reflection
-              </p>
+              <h2 className="text-xl font-semibold">Guided Studies</h2>
+              <p className="text-gray-700 mt-1">Structured ways to study Scripture</p>
             </div>
           </Link>
 
@@ -652,31 +640,11 @@ export default function DashboardPage() {
             </div>
           </Link>
 
-          {/* PEOPLE IN THE BIBLE */}
-          <Link href="/people-in-the-bible">
+          {/* BIBLE REFERENCE HUB */}
+          <Link href="/bible-reference">
             <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">👥 People in the Bible</h2>
-              <p className="text-gray-700 mt-1">
-                Meet the real people of the Bible
-              </p>
-            </div>
-          </Link>
-
-          <Link href="/places-in-the-bible">
-            <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">📍 Places in the Bible</h2>
-              <p className="text-gray-700 mt-1">
-                Explore the important places of Scripture
-              </p>
-            </div>
-          </Link>
-
-          <Link href="/keywords-in-the-bible">
-            <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">🔑 Keywords in the Bible</h2>
-              <p className="text-gray-700 mt-1">
-                Understand important Bible words and ideas
-              </p>
+              <h2 className="text-xl font-semibold">Bible Reference</h2>
+              <p className="text-gray-700 mt-1">Tools to understand Scripture</p>
             </div>
           </Link>
         </div>
