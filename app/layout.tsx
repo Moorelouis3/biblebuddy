@@ -1,4 +1,3 @@
-import BottomBanner from "@/components/BottomBanner";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -76,12 +75,10 @@ export default function RootLayout({
       >
         {/* Responsive bottom padding for banner - applied to main content */}
         <div className="flex flex-col min-h-screen w-full">
-          <div className="flex-1 w-full pb-[72px] md:pb-[120px]">
+          <div className="flex-1 w-full">
             <AppShell>{children}</AppShell>
           </div>
         </div>
-        {/* Persistent Hope Nation Banner - outside all containers, direct child of body */}
-        <BottomBanner />
         {/* ✅ VERCEL ANALYTICS */}
         <Analytics />
       </body>
