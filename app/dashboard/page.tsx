@@ -532,6 +532,7 @@ export default function DashboardPage() {
             {isLoadingLevel ? (
               // Loading skeleton with animated dots
               <>
+
                 <div className="flex items-center gap-2 mb-2">
                   <h2 className="text-xl font-semibold">📘 Loading</h2>
                   <div className="flex gap-1 items-center h-6">
@@ -539,6 +540,7 @@ export default function DashboardPage() {
                     <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_0.2s_infinite]">.</span>
                     <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_0.4s_infinite]">.</span>
                   </div>
+
                 </div>
                 <p className="text-gray-700 text-sm mb-4">
                   Loading your level...
@@ -546,6 +548,7 @@ export default function DashboardPage() {
                 
                 {/* Progress Bar Skeleton */}
                 <div className="mb-3">
+
                   <div className="h-3 rounded-full bg-gray-200 overflow-hidden">
                     <div className="h-full bg-blue-300 rounded-full w-1/3 animate-pulse"></div>
                   </div>
@@ -555,6 +558,7 @@ export default function DashboardPage() {
                 <div className="flex items-center gap-1">
                   <div className="h-4 bg-gray-200 rounded w-32"></div>
                 </div>
+
               </>
             ) : levelInfo ? (
               // Actual content
