@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
-
 interface BookProgress {
   genesis: number;
   exodus: number;
   leviticus: number;
   numbers: number;
   deuteronomy: number;
+  joshua: number;
 }
 
 export default function BooksOfTheBiblePage() {
@@ -19,7 +19,8 @@ export default function BooksOfTheBiblePage() {
     exodus: 100,
     leviticus: 100,
     numbers: 100,
-    deuteronomy: 100
+    deuteronomy: 100,
+    joshua: 100,
   });
   const [loading, setLoading] = useState(true);
 
@@ -28,18 +29,17 @@ export default function BooksOfTheBiblePage() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         // Fetch progress for all books
-
         const { data: progressData, error } = await supabase
           .from('trivia_question_progress')
           .select('book, is_correct')
           .eq('user_id', user.id)
-          .in('book', ['genesis', 'exodus', 'leviticus', 'numbers', 'deuteronomy']);
+          .in('book', ['genesis', 'exodus', 'leviticus', 'numbers', 'deuteronomy', 'joshua']);
 
         if (error) {
           console.error('Error fetching trivia progress:', error);
         } else {
           // Calculate remaining questions for each book
-          const bookTotals = { genesis: 100, exodus: 100, leviticus: 100, numbers: 100, deuteronomy: 100 };
+          const bookTotals = { genesis: 100, exodus: 100, leviticus: 100, numbers: 100, deuteronomy: 100, joshua: 100 };
           const correctCounts: Record<string, number> = {};
 
           progressData?.forEach(p => {
@@ -53,7 +53,8 @@ export default function BooksOfTheBiblePage() {
             exodus: Math.max(0, bookTotals.exodus - (correctCounts.exodus || 0)),
             leviticus: Math.max(0, bookTotals.leviticus - (correctCounts.leviticus || 0)),
             numbers: Math.max(0, bookTotals.numbers - (correctCounts.numbers || 0)),
-            deuteronomy: Math.max(0, bookTotals.deuteronomy - (correctCounts.deuteronomy || 0))
+            deuteronomy: Math.max(0, bookTotals.deuteronomy - (correctCounts.deuteronomy || 0)),
+            joshua: Math.max(0, bookTotals.joshua - (correctCounts.joshua || 0)),
           });
         }
       }
@@ -133,6 +134,19 @@ export default function BooksOfTheBiblePage() {
                 <h2 className="text-2xl font-bold text-gray-800 mb-2">Deuteronomy</h2>
                 <p className="text-gray-600 text-sm">
                   {loading ? "Loading..." : `${progress.deuteronomy} Questions Remaining`}
+                </p>
+              </div>
+            </div>
+          </Link>
+
+          {/* Joshua Deck Card */}
+          <Link href="/bible-trivia/joshua">
+            <div className="bg-gradient-to-br from-cyan-50 to-blue-100 border-2 border-cyan-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full">
+              <div className="text-center">
+                <div className="text-6xl mb-4">⚔️</div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">Joshua</h2>
+                <p className="text-gray-600 text-sm">
+                  {loading ? "Loading..." : `${progress.joshua} Questions Remaining`}
                 </p>
               </div>
             </div>

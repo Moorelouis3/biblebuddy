@@ -17,7 +17,7 @@ export async function recalculateTotalActions(userId: string): Promise<boolean> 
     // Get all current counts from profile_stats
     const { data: currentStats, error: fetchError } = await supabase
       .from("profile_stats")
-      .select("chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, devotional_days_completed_count")
+      .select("chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, devotional_days_completed_count, trivia_correct_count")
       .eq("user_id", userId)
       .maybeSingle();
 
@@ -38,7 +38,8 @@ export async function recalculateTotalActions(userId: string): Promise<boolean> 
       (currentStats.people_learned_count || 0) +
       (currentStats.places_discovered_count || 0) +
       (currentStats.keywords_mastered_count || 0) +
-      (currentStats.devotional_days_completed_count || 0);
+      (currentStats.devotional_days_completed_count || 0) +
+      (currentStats.trivia_correct_count || 0);
 
     // Update total_actions
     const { error: updateError } = await supabase
