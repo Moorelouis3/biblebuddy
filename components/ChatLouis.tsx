@@ -420,7 +420,7 @@ export function ChatLouis() {
             cursor: isDragging ? "grabbing" : "grab",
             touchAction: "none",
           }}
-          className="z-40 rounded-full shadow-xl flex items-center justify-center"
+          className="z-[70] rounded-full shadow-xl flex items-center justify-center"
           aria-label="Chat with Louis"
         >
           <div className="w-20 h-20 rounded-full bg-black/5 flex items-center justify-center">
@@ -441,7 +441,7 @@ export function ChatLouis() {
             top: position.y !== 0 ? `${position.y}px` : undefined,
             cursor: isDragging ? "grabbing" : "default",
           }}
-          className="z-40 w-[360px] h-[500px] rounded-t-2xl bg-white border border-gray-200 shadow-2xl flex flex-col"
+          className="z-[70] w-[360px] h-[500px] rounded-t-2xl bg-white border border-gray-200 shadow-2xl flex flex-col"
         >
           {/* Header */}
           <div 

@@ -657,7 +657,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         {children}
       </main>
 
-      {/* CHAT LOUIS */}
+      {/* CHAT LOUIS - always rendered in AppShell */}
       {!isBarePage && <ChatLouis />}
     </>
   );
