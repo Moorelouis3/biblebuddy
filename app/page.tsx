@@ -136,7 +136,7 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#fefefe" }}>
       {/* HEADER (Top Bar) */}
       <header className="w-full max-w-7xl mx-auto px-4 py-4 md:py-6 flex items-center justify-between">
         {/* Left: Logo + Text */}
@@ -184,7 +184,7 @@ export default function LandingPage() {
       </header>
 
       {/* MAIN CONTENT (Centered, Above the Fold) */}
-      <main className="flex-1 w-full flex items-center justify-center px-4 py-8 md:py-12">
+      <main className="w-full flex justify-center px-4 pt-8 pb-4 md:pt-10 md:pb-6">
         <div className="w-full max-w-5xl mx-auto">
           {/* Headline Section */}
           <div className="text-center mb-8 md:mb-10">
@@ -197,20 +197,25 @@ export default function LandingPage() {
           </div>
 
           {/* VSL Video Section (MAIN FOCUS) */}
-          <div className="mb-6 md:mb-8">
+          <div className="mb-2 md:mb-2">
             <div className="relative max-w-4xl mx-auto">
               {/* Subtle glow effect behind video */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-gray-50/50 rounded-2xl blur-2xl -z-10"></div>
               
               {/* Video Container */}
-              <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-2 md:p-3">
+              <div className="p-2 md:p-3">
                 <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                  <iframe
-                    className="absolute top-0 left-0 w-full h-full rounded-xl"
-                    src="https://www.youtube.com/embed/_zfp-sS5hPY"
-                    title="Bible Buddy Introduction"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
+                  <Image
+                    src="/LandingPage1.png"
+                    alt="Bible Buddy preview"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 900px"
+                    className="absolute top-0 left-0 w-full h-full object-contain"
+                    style={{
+                      WebkitMaskImage: "radial-gradient(120% 120% at 50% 40%, #000 70%, transparent 100%)",
+                      maskImage: "radial-gradient(120% 120% at 50% 40%, #000 70%, transparent 100%)",
+                    }}
+                    priority
                   />
                 </div>
               </div>
@@ -218,7 +223,7 @@ export default function LandingPage() {
           </div>
 
           {/* Primary CTA Button */}
-          <div className="text-center mb-6 md:mb-8">
+          <div className="text-center mb-3 md:mb-4">
             <button
               type="button"
               onClick={() => setShowSignupModal(true)}
@@ -226,29 +231,144 @@ export default function LandingPage() {
             >
               Try Bible Buddy Now →
             </button>
+            <p className="text-xs md:text-sm text-gray-500 mt-2">
+              Create Your Bible Buddy Account Now
+            </p>
           </div>
 
-          {/* Minimal Feature Row */}
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 text-sm md:text-base text-gray-600">
-            <div className="flex items-center gap-2">
-              <span className="text-lg">📖</span>
-              <span>Interactive Bible</span>
+        </div>
+      </main>
+
+      <section className="w-full" style={{ backgroundColor: "#fefefe" }}>
+        <div className="max-w-6xl mx-auto px-4 pt-0 pb-12 md:pb-16">
+          <div className="text-center mb-10 md:mb-12"></div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 text-center">
+            <div className="space-y-3">
+              <svg
+                viewBox="0 0 24 24"
+                className="mx-auto h-8 w-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M2 6.5C2 5.12 3.12 4 4.5 4H12a3 3 0 0 1 3 3v13H4.5A2.5 2.5 0 0 0 2 22Z" />
+                <path d="M12 4h7.5A2.5 2.5 0 0 1 22 6.5V22H15" />
+              </svg>
+              <h3 className="text-base md:text-lg font-semibold text-gray-900">Interactive Bible</h3>
+              <p className="text-sm md:text-base text-gray-600">
+                Read Scripture with clarity, save your progress, and pick up exactly where you left off without losing your place.
+              </p>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-lg">🗺️</span>
-              <span>Full Bible Database</span>
+
+            <div className="space-y-3">
+              <svg
+                viewBox="0 0 24 24"
+                className="mx-auto h-8 w-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="3" />
+                <path d="M19.4 15a8 8 0 1 0-14.8 0" />
+                <path d="M12 2v2" />
+              </svg>
+              <h3 className="text-base md:text-lg font-semibold text-gray-900">Guided Studies</h3>
+              <p className="text-sm md:text-base text-gray-600">
+                Devotionals, study guides, and Bible reading plans designed to help you slow down and build a consistent habit of reading the Bible.
+              </p>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-lg">✍️</span>
-              <span>Simple Notes</span>
+
+            <div className="space-y-3">
+              <svg
+                viewBox="0 0 24 24"
+                className="mx-auto h-8 w-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4" />
+                <path d="M12 8h.01" />
+              </svg>
+              <h3 className="text-base md:text-lg font-semibold text-gray-900">Bible Help</h3>
+              <p className="text-sm md:text-base text-gray-600">
+                Access a growing database of over 5,000 explanations for biblical people, places, and key terms to understand historical and cultural context.
+              </p>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-lg">🎯</span>
-              <span>Built for Understanding</span>
+
+            <div className="space-y-3">
+              <svg
+                viewBox="0 0 24 24"
+                className="mx-auto h-8 w-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="6" y="4" width="12" height="16" rx="2" />
+                <path d="M9 8h6" />
+                <path d="M9 12h6" />
+                <path d="M9 16h4" />
+              </svg>
+              <h3 className="text-base md:text-lg font-semibold text-gray-900">Chapter Reviews</h3>
+              <p className="text-sm md:text-base text-gray-600">
+                Each chapter includes a clear overview explaining what’s happening, the main theme, and how it fits into the larger story of Scripture.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <svg
+                viewBox="0 0 24 24"
+                className="mx-auto h-8 w-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M9 12l2 2 4-4" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              <h3 className="text-base md:text-lg font-semibold text-gray-900">Bible Trivia</h3>
+              <p className="text-sm md:text-base text-gray-600">
+                Reinforce what you’ve read with over 10,000 Bible trivia questions designed to help you remember and apply Scripture.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <svg
+                viewBox="0 0 24 24"
+                className="mx-auto h-8 w-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 2c1.8 3.6 1.5 6.1 0 8.5 2.7-.2 4.5-2.1 4.5-4.8 3.3 3 3.7 8.1.6 11.6-2.9 3.3-8.2 3.4-11.1.3C2.1 14 2.6 8.9 6 6c0 2.7 1.9 4.6 4.6 4.8" />
+              </svg>
+              <h3 className="text-base md:text-lg font-semibold text-gray-900">Streak Tracker</h3>
+              <p className="text-sm md:text-base text-gray-600">
+                Track your reading streak and stay consistent as you build a daily habit of spending time in the Bible.
+              </p>
             </div>
           </div>
         </div>
-      </main>
+      </section>
 
       {/* FOOTER */}
       <footer className="bg-white text-gray-700 border-t border-gray-200 mt-4">

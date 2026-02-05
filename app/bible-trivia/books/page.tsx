@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
 interface BookProgress {
@@ -11,6 +11,8 @@ interface BookProgress {
   numbers: number;
   deuteronomy: number;
   joshua: number;
+  judges: number;
+  ruth: number;
 }
 
 export default function BooksOfTheBiblePage() {
@@ -21,6 +23,8 @@ export default function BooksOfTheBiblePage() {
     numbers: 100,
     deuteronomy: 100,
     joshua: 100,
+    judges: 100,
+    ruth: 50,
   });
   const [loading, setLoading] = useState(true);
 
@@ -30,19 +34,38 @@ export default function BooksOfTheBiblePage() {
       if (user) {
         // Fetch progress for all books
         const { data: progressData, error } = await supabase
-          .from('trivia_question_progress')
-          .select('book, is_correct')
-          .eq('user_id', user.id)
-          .in('book', ['genesis', 'exodus', 'leviticus', 'numbers', 'deuteronomy', 'joshua']);
+          .from("trivia_question_progress")
+          .select("book, is_correct")
+          .eq("user_id", user.id)
+          .in("book", [
+            "genesis",
+            "exodus",
+            "leviticus",
+            "numbers",
+            "deuteronomy",
+            "joshua",
+            "judges",
+            "ruth",
+          ]);
 
         if (error) {
-          console.error('Error fetching trivia progress:', error);
+          console.error("Error fetching trivia progress:", error);
         } else {
           // Calculate remaining questions for each book
-          const bookTotals = { genesis: 100, exodus: 100, leviticus: 100, numbers: 100, deuteronomy: 100, joshua: 100 };
+          const bookTotals = {
+            genesis: 100,
+            exodus: 100,
+            leviticus: 100,
+            numbers: 100,
+            deuteronomy: 100,
+            joshua: 100,
+            judges: 100,
+            ruth: 50,
+          };
+          // Removed duplicate bookTotals definition to fix build error
           const correctCounts: Record<string, number> = {};
 
-          progressData?.forEach(p => {
+          progressData?.forEach((p) => {
             if (p.is_correct) {
               correctCounts[p.book] = (correctCounts[p.book] || 0) + 1;
             }
@@ -55,6 +78,8 @@ export default function BooksOfTheBiblePage() {
             numbers: Math.max(0, bookTotals.numbers - (correctCounts.numbers || 0)),
             deuteronomy: Math.max(0, bookTotals.deuteronomy - (correctCounts.deuteronomy || 0)),
             joshua: Math.max(0, bookTotals.joshua - (correctCounts.joshua || 0)),
+            judges: Math.max(0, bookTotals.judges - (correctCounts.judges || 0)),
+            ruth: Math.max(0, bookTotals.ruth - (correctCounts.ruth || 0)),
           });
         }
       }
@@ -74,83 +99,88 @@ export default function BooksOfTheBiblePage() {
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          {/* Genesis Deck Card */}
-          <Link href="/bible-trivia/genesis">
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full">
-              <div className="text-center">
-                <div className="text-6xl mb-4">📚</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Genesis</h2>
-                <p className="text-gray-600 text-sm">
-                  {loading ? "Loading..." : `${progress.genesis} Questions Remaining`}
-                </p>
+          {[
+            {
+              key: "genesis",
+              title: "Genesis",
+              href: "/bible-trivia/genesis",
+              icon: "📚",
+              cardClass:
+                "bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200",
+            },
+            {
+              key: "exodus",
+              title: "Exodus",
+              href: "/bible-trivia/exodus",
+              icon: "🔥",
+              cardClass:
+                "bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200",
+            },
+            {
+              key: "leviticus",
+              title: "Leviticus",
+              href: "/bible-trivia/leviticus",
+              icon: "🌿",
+              cardClass:
+                "bg-gradient-to-br from-lime-50 to-green-50 border-2 border-lime-200",
+            },
+            {
+              key: "numbers",
+              title: "Numbers",
+              href: "/bible-trivia/numbers",
+              icon: "🔢",
+              cardClass:
+                "bg-gradient-to-br from-yellow-50 to-amber-100 border-2 border-yellow-200",
+            },
+            {
+              key: "deuteronomy",
+              title: "Deuteronomy",
+              href: "/bible-trivia/deuteronomy",
+              icon: "📜",
+              cardClass:
+                "bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200",
+            },
+            {
+              key: "joshua",
+              title: "Joshua",
+              href: "/bible-trivia/joshua",
+              icon: "⚔️",
+              cardClass:
+                "bg-gradient-to-br from-cyan-50 to-blue-100 border-2 border-cyan-200",
+            },
+            {
+              key: "judges",
+              title: "Judges",
+              href: "/bible-trivia/judges",
+              icon: "⚖️",
+              cardClass:
+                "bg-gradient-to-br from-purple-50 to-violet-100 border-2 border-purple-200",
+            },
+            {
+              key: "ruth",
+              title: "Ruth",
+              href: "/bible-trivia/ruth",
+              icon: "🌾",
+              cardClass:
+                "bg-gradient-to-br from-pink-50 to-yellow-100 border-2 border-pink-200",
+            },
+          ].map((card) => (
+            <Link key={card.key} href={card.href}>
+              <div
+                className={`${card.cardClass} rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full`}
+              >
+                <div className="text-center">
+                  <div className="text-6xl mb-4">{card.icon}</div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2">{card.title}</h2>
+                  <p className="text-gray-600 text-sm">
+                    {loading
+                      ? "Loading..."
+                      : `${progress[card.key as keyof BookProgress]} Questions Remaining`}
+                  </p>
+                </div>
               </div>
-            </div>
-          </Link>
-
-          {/* Exodus Deck Card */}
-          <Link href="/bible-trivia/exodus">
-            <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full">
-              <div className="text-center">
-                <div className="text-6xl mb-4">🔥</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Exodus</h2>
-                <p className="text-gray-600 text-sm">
-                  {loading ? "Loading..." : `${progress.exodus} Questions Remaining`}
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Leviticus Deck Card */}
-          <Link href="/bible-trivia/leviticus">
-            <div className="bg-gradient-to-br from-lime-50 to-green-50 border-2 border-lime-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full">
-              <div className="text-center">
-                <div className="text-6xl mb-4">🌿</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Leviticus</h2>
-                <p className="text-gray-600 text-sm">
-                  {loading ? "Loading..." : `${progress.leviticus} Questions Remaining`}
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Numbers Deck Card */}
-          <Link href="/bible-trivia/numbers">
-            <div className="bg-gradient-to-br from-yellow-50 to-amber-100 border-2 border-yellow-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full">
-              <div className="text-center">
-                <div className="text-6xl mb-4">🔢</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Numbers</h2>
-                <p className="text-gray-600 text-sm">
-                  {loading ? "Loading..." : `${progress.numbers} Questions Remaining`}
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Deuteronomy Deck Card */}
-          <Link href="/bible-trivia/deuteronomy">
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full">
-              <div className="text-center">
-                <div className="text-6xl mb-4">📜</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Deuteronomy</h2>
-                <p className="text-gray-600 text-sm">
-                  {loading ? "Loading..." : `${progress.deuteronomy} Questions Remaining`}
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Joshua Deck Card */}
-          <Link href="/bible-trivia/joshua">
-            <div className="bg-gradient-to-br from-cyan-50 to-blue-100 border-2 border-cyan-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full">
-              <div className="text-center">
-                <div className="text-6xl mb-4">⚔️</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Joshua</h2>
-                <p className="text-gray-600 text-sm">
-                  {loading ? "Loading..." : `${progress.joshua} Questions Remaining`}
-                </p>
-              </div>
-            </div>
-          </Link>
+            </Link>
+          ))}
         </div>
 
         {/* Back to Categories */}
