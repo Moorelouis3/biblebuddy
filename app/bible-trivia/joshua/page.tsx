@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
-import { logActionToMasterActions } from "@/lib/actionRecorder";
 
 interface Question {
   id: string;
@@ -1358,29 +1357,50 @@ export default function JoshuaTriviaPage() {
   const [showResults, setShowResults] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [loadingVerseText, setLoadingVerseText] = useState(false);
-  const [verseText, setVerseText] = useState<string>("");
 
   useEffect(() => {
     async function loadUserAndQuestions() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         setUserId(user.id);
+
+        const { data: progressData, error } = await supabase
+          .from("trivia_question_progress")
+          .select("question_id, is_correct")
+          .eq("user_id", user.id)
+          .eq("book", "joshua");
+
+        if (error) {
+          console.error("Error fetching trivia progress:", error);
+        }
+
+        const answeredCorrectly = new Set(
+          (progressData || [])
+            .filter((p) => p.is_correct)
+            .map((p) => p.question_id)
+        );
+
+        const availableQuestions = ALL_QUESTIONS.filter(
+          (q) => !answeredCorrectly.has(q.id)
+        );
+
+        const questionsToUse =
+          availableQuestions.length > 0 ? availableQuestions : ALL_QUESTIONS;
+
+        const shuffled = shuffleArray(questionsToUse);
+        setQuestions(shuffled.slice(0, 10));
+        return;
       }
+
       const shuffled = shuffleArray(ALL_QUESTIONS);
       setQuestions(shuffled.slice(0, 10));
     }
     loadUserAndQuestions();
   }, []);
 
-  useEffect(() => {
-    setSelectedAnswer(null);
-    setIsFlipped(false);
-    setVerseText("");
-  }, [currentQuestionIndex]);
-
   if (questions.length === 0) {
     return (
-      <div className="min-h-screen bg-blue-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="text-4xl mb-4">📚</div>
           <p className="text-gray-600">Loading questions...</p>
@@ -1394,8 +1414,9 @@ export default function JoshuaTriviaPage() {
 
   const handleAnswerSelect = async (answer: string) => {
     if (selectedAnswer) return;
+    const isCorrect = answer === currentQuestion.correctAnswer;
     setSelectedAnswer(answer);
-    if (answer === currentQuestion.correctAnswer) {
+    if (isCorrect) {
       setCorrectCount(prev => prev + 1);
     }
 
@@ -1407,44 +1428,87 @@ export default function JoshuaTriviaPage() {
           const meta: any = user.user_metadata || {};
           username = meta.firstName || meta.first_name || (user.email ? user.email.split("@")[0] : null) || "User";
         }
-        await logActionToMasterActions(
-          userId,
-          "trivia_question_answered",
-          `joshua:${currentQuestion.id}:${answer}`,
-          username
-        );
-        await supabase.from("trivia_question_progress").upsert([
-          {
-            user_id: userId,
+
+        const response = await fetch("/api/trivia-answer", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId,
+            questionId: currentQuestion.id,
+            username,
+            isCorrect,
             book: "joshua",
-            question_id: currentQuestion.id,
-            is_correct: answer === currentQuestion.correctAnswer,
-          }
-        ]);
+          }),
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error("Failed to record trivia answer:", response.status, errorText);
+        }
+
+        const { data: currentStats } = await supabase
+          .from("profile_stats")
+          .select("trivia_questions_answered")
+          .eq("user_id", userId)
+          .single();
+
+        if (currentStats) {
+          await supabase
+            .from("profile_stats")
+            .update({
+              trivia_questions_answered: (currentStats.trivia_questions_answered || 0) + 1,
+            })
+            .eq("user_id", userId);
+        }
       } catch (e) {
-        // ignore
+        console.error("Error tracking trivia question:", e);
       }
     }
 
-    setLoadingVerseText(true);
-    const text = await fetchVerseText(currentQuestion.verse);
-    setVerseText(text);
-    setLoadingVerseText(false);
+    if (!currentQuestion.verseText) {
+      setLoadingVerseText(true);
+      try {
+        const verseText = await fetchVerseText(currentQuestion.verse);
+        setQuestions((prev) => {
+          const updated = [...prev];
+          updated[currentQuestionIndex] = {
+            ...updated[currentQuestionIndex],
+            verseText,
+          };
+          return updated;
+        });
+      } catch (error) {
+        console.error("Error fetching verse text:", error);
+      } finally {
+        setLoadingVerseText(false);
+      }
+    }
     setIsFlipped(true);
   };
 
   const handleNext = () => {
-    if (!selectedAnswer) return;
     if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setCurrentQuestionIndex(prev => prev + 1);
+      setSelectedAnswer(null);
+      setIsFlipped(false);
     } else {
       setShowResults(true);
     }
   };
 
+  const getEncouragementMessage = (score: number) => {
+    if (score === 10) return "Perfect! You're a Joshua expert!";
+    if (score >= 8) return "Excellent! You know Joshua well!";
+    if (score >= 6) return "Good job! Keep studying Joshua!";
+    if (score >= 4) return "Nice try! Joshua has much to explore!";
+    return "Keep learning! Every question helps you grow!";
+  };
+
   if (showResults) {
     return (
-      <div className="min-h-screen bg-blue-50 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
           <div className="text-6xl mb-4">🎉</div>
           <h2 className="text-2xl font-bold mb-4">Quiz Complete!</h2>
@@ -1454,6 +1518,9 @@ export default function JoshuaTriviaPage() {
             </p>
             <p className="text-gray-600">Correct Answers</p>
           </div>
+          <p className="text-lg text-gray-700 mb-8">
+            {getEncouragementMessage(correctCount)}
+          </p>
           <div className="space-y-3">
             <Link
               href="/bible-trivia/joshua"
@@ -1462,10 +1529,10 @@ export default function JoshuaTriviaPage() {
               Play Again
             </Link>
             <Link
-              href="/bible-trivia/books"
+              href="/bible-trivia"
               className="block w-full bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition"
             >
-              Back to Books
+              Back to Decks
             </Link>
           </div>
         </div>
@@ -1474,11 +1541,11 @@ export default function JoshuaTriviaPage() {
   }
 
   return (
-    <div className="min-h-screen bg-blue-50 py-8 px-4">
+    <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-2xl mx-auto">
         <div className="mb-6 flex items-center justify-between">
           <Link
-            href="/bible-trivia/books"
+            href="/bible-trivia"
             className="text-gray-600 hover:text-gray-800 transition"
           >
             ← Back
@@ -1489,55 +1556,108 @@ export default function JoshuaTriviaPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-6">
-          <h2 className="text-xl font-bold mb-4">{currentQuestion.question}</h2>
-          <div className="space-y-3 mb-4">
-            {currentQuestion.options.map(opt => (
-              <button
-                key={opt.label}
-                className={`w-full text-left px-4 py-2 rounded-lg border transition-all
-                  ${selectedAnswer
-                    ? opt.label === currentQuestion.correctAnswer
-                      ? "bg-green-100 border-green-400"
-                      : opt.label === selectedAnswer
-                        ? "bg-red-100 border-red-400"
-                        : "bg-gray-50 border-gray-200"
-                    : "bg-gray-50 border-gray-200 hover:bg-blue-50 hover:border-blue-300"
-                  }
-                `}
-                disabled={!!selectedAnswer}
-                onClick={() => handleAnswerSelect(opt.label)}
-              >
-                <span className="font-bold mr-2">{opt.label}.</span> {opt.text}
-              </button>
-            ))}
-          </div>
-          {isFlipped && (
-            <div className="mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200">
-              <div className="font-semibold mb-2">
-                {selectedAnswer === currentQuestion.correctAnswer
-                  ? "Correct!"
-                  : "Incorrect."}
-              </div>
-              <div className="mb-2">{currentQuestion.explanation}</div>
-              <div className="text-sm text-gray-600">
-                <span className="font-semibold">Reference:</span> {currentQuestion.verse}
-                {loadingVerseText ? (
-                  <span className="ml-2 text-blue-400">Loading verse...</span>
-                ) : verseText ? (
-                  <span className="block mt-2 italic">"{verseText.trim()}"</span>
-                ) : null}
+        <div className="relative mb-8" style={{ perspective: "1000px" }}>
+          <div
+            className="relative w-full transition-transform duration-500"
+            style={{
+              transformStyle: "preserve-3d",
+              transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
+            }}
+          >
+            <div
+              className="w-full bg-white rounded-2xl shadow-lg p-8"
+              style={{
+                backfaceVisibility: "hidden",
+                WebkitBackfaceVisibility: "hidden",
+                transform: "rotateY(0deg)",
+              }}
+            >
+              <h2 className="text-2xl font-bold mb-6 text-gray-800">
+                {currentQuestion.question}
+              </h2>
+              <div className="space-y-3">
+                {currentQuestion.options.map((option) => (
+                  <button
+                    key={option.label}
+                    onClick={() => handleAnswerSelect(option.label)}
+                    disabled={!!selectedAnswer}
+                    className="w-full text-left p-4 border-2 border-gray-200 rounded-xl hover:border-blue-400 hover:bg-blue-50 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <span className="font-semibold text-gray-700">
+                      {option.label}. {option.text}
+                    </span>
+                  </button>
+                ))}
               </div>
             </div>
-          )}
-          <div className="flex justify-end mt-6">
-            <button
-              className="px-4 py-2 rounded bg-blue-600 text-white font-medium disabled:opacity-50"
-              onClick={handleNext}
-              disabled={!selectedAnswer}
+
+            <div
+              className="w-full bg-white rounded-2xl shadow-lg p-8 absolute top-0 left-0"
+              style={{
+                backfaceVisibility: "hidden",
+                WebkitBackfaceVisibility: "hidden",
+                transform: "rotateY(180deg)",
+              }}
             >
-              {currentQuestionIndex === questions.length - 1 ? "Finish" : "Next"}
-            </button>
+              <div className="mb-6">
+                <div
+                  className={`inline-block px-4 py-2 rounded-lg font-semibold mb-4 ${
+                    isCorrect
+                      ? "bg-green-100 text-green-800"
+                      : "bg-red-100 text-red-800"
+                  }`}
+                >
+                  {isCorrect ? "✓ Correct!" : "✗ Incorrect"}
+                </div>
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                  {currentQuestion.question}
+                </h2>
+                <div className="space-y-2 mb-4">
+                  {currentQuestion.options.map((option) => (
+                    <div
+                      key={option.label}
+                      className={`p-3 rounded-lg ${
+                        option.label === currentQuestion.correctAnswer
+                          ? "bg-green-100 border-2 border-green-400"
+                          : option.label === selectedAnswer && !isCorrect
+                          ? "bg-red-100 border-2 border-red-400"
+                          : "bg-gray-50 border border-gray-200"
+                      }`}
+                    >
+                      <span className="font-semibold text-gray-700">
+                        {option.label}. {option.text}
+                        {option.label === currentQuestion.correctAnswer && (
+                          <span className="ml-2 text-green-700">✓</span>
+                        )}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                  <p className="text-sm font-semibold text-blue-900 mb-2">
+                    {currentQuestion.verse}
+                  </p>
+                  {loadingVerseText ? (
+                    <p className="text-gray-500 text-sm italic mb-3">Loading verse...</p>
+                  ) : currentQuestion.verseText ? (
+                    <p className="text-gray-800 text-sm leading-relaxed mb-3 italic">
+                      "{currentQuestion.verseText}"
+                    </p>
+                  ) : null}
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    {currentQuestion.explanation}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={handleNext}
+                className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+              >
+                {currentQuestionIndex < questions.length - 1
+                  ? "Next Question"
+                  : "See Results"}
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,267 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+
+const BOOK_CARDS = [
+  {
+    key: "genesis",
+    title: "Genesis",
+    href: "/bible-trivia/genesis",
+    icon: "📚",
+    cardClass:
+      "bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200",
+  },
+  {
+    key: "exodus",
+    title: "Exodus",
+    href: "/bible-trivia/exodus",
+    icon: "🔥",
+    cardClass:
+      "bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200",
+  },
+  {
+    key: "leviticus",
+    title: "Leviticus",
+    href: "/bible-trivia/leviticus",
+    icon: "🌿",
+    cardClass:
+      "bg-gradient-to-br from-lime-50 to-green-50 border-2 border-lime-200",
+  },
+  {
+    key: "numbers",
+    title: "Numbers",
+    href: "/bible-trivia/numbers",
+    icon: "🔢",
+    cardClass:
+      "bg-gradient-to-br from-yellow-50 to-amber-100 border-2 border-yellow-200",
+  },
+  {
+    key: "deuteronomy",
+    title: "Deuteronomy",
+    href: "/bible-trivia/deuteronomy",
+    icon: "📜",
+    cardClass:
+      "bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200",
+  },
+  {
+    key: "joshua",
+    title: "Joshua",
+    href: "/bible-trivia/joshua",
+    icon: "⚔️",
+    cardClass:
+      "bg-gradient-to-br from-cyan-50 to-blue-100 border-2 border-cyan-200",
+  },
+  {
+    key: "judges",
+    title: "Judges",
+    href: "/bible-trivia/judges",
+    icon: "⚖️",
+    cardClass:
+      "bg-gradient-to-br from-purple-50 to-violet-100 border-2 border-purple-200",
+  },
+  {
+    key: "ruth",
+    title: "Ruth",
+    href: "/bible-trivia/ruth",
+    icon: "🌾",
+    cardClass:
+      "bg-gradient-to-br from-pink-50 to-yellow-100 border-2 border-pink-200",
+  },
+  {
+    key: "1samuel",
+    title: "1 Samuel",
+    href: "/bible-trivia/1-samuel",
+    icon: "🪖",
+    cardClass:
+      "bg-gradient-to-br from-slate-50 to-gray-100 border-2 border-slate-200",
+  },
+  {
+    key: "2samuel",
+    title: "2 Samuel",
+    href: "/bible-trivia/2-samuel",
+    icon: "🛡️",
+    cardClass:
+      "bg-gradient-to-br from-gray-50 to-zinc-100 border-2 border-gray-200",
+  },
+  {
+    key: "1kings",
+    title: "1 Kings",
+    href: "/bible-trivia/1-kings",
+    icon: "👑",
+    cardClass:
+      "bg-gradient-to-br from-yellow-50 to-amber-100 border-2 border-yellow-200",
+  },
+  {
+    key: "2kings",
+    title: "2 Kings",
+    href: "/bible-trivia/2-kings",
+    icon: "🏰",
+    cardClass:
+      "bg-gradient-to-br from-amber-50 to-orange-100 border-2 border-amber-200",
+  },
+  {
+    key: "1chronicles",
+    title: "1 Chronicles",
+    href: "/bible-trivia/1-chronicles",
+    icon: "📖",
+    cardClass:
+      "bg-gradient-to-br from-emerald-50 to-teal-100 border-2 border-emerald-200",
+  },
+  {
+    key: "2chronicles",
+    title: "2 Chronicles",
+    href: "/bible-trivia/2-chronicles",
+    icon: "📜",
+    cardClass:
+      "bg-gradient-to-br from-teal-50 to-cyan-100 border-2 border-teal-200",
+  },
+  {
+    key: "ezra",
+    title: "Ezra",
+    href: "/bible-trivia/ezra",
+    icon: "🕍",
+    cardClass:
+      "bg-gradient-to-br from-indigo-50 to-sky-100 border-2 border-indigo-200",
+  },
+  {
+    key: "nehemiah",
+    title: "Nehemiah",
+    href: "/bible-trivia/nehemiah",
+    icon: "🧱",
+    cardClass:
+      "bg-gradient-to-br from-rose-50 to-orange-100 border-2 border-rose-200",
+  },
+  {
+    key: "esther",
+    title: "Esther",
+    href: "/bible-trivia/esther",
+    icon: "👑",
+    cardClass:
+      "bg-gradient-to-br from-yellow-50 to-amber-100 border-2 border-yellow-200",
+  },
+  {
+    key: "job",
+    title: "Job",
+    href: "/bible-trivia/job",
+    icon: "🧠",
+    cardClass:
+      "bg-gradient-to-br from-slate-50 to-blue-100 border-2 border-slate-200",
+  },
+  {
+    key: "psalms",
+    title: "Psalms",
+    href: "/bible-trivia/psalms",
+    icon: "🎵",
+    cardClass:
+      "bg-gradient-to-br from-emerald-50 to-green-100 border-2 border-emerald-200",
+  },
+  {
+    key: "proverbs",
+    title: "Proverbs",
+    href: "/bible-trivia/proverbs",
+    icon: "💡",
+    cardClass:
+      "bg-gradient-to-br from-amber-50 to-yellow-100 border-2 border-amber-200",
+  },
+  {
+    key: "ecclesiastes",
+    title: "Ecclesiastes",
+    href: "/bible-trivia/ecclesiastes",
+    icon: "⏳",
+    cardClass:
+      "bg-gradient-to-br from-stone-50 to-amber-100 border-2 border-stone-200",
+  },
+  {
+    key: "songofsongs",
+    title: "Song of Songs",
+    href: "/bible-trivia/song-of-songs",
+    icon: "🌹",
+    cardClass:
+      "bg-gradient-to-br from-rose-50 to-pink-100 border-2 border-rose-200",
+  },
+  {
+    key: "isaiah",
+    title: "Isaiah",
+    href: "/bible-trivia/isaiah",
+    icon: "🕊️",
+    cardClass:
+      "bg-gradient-to-br from-sky-50 to-blue-100 border-2 border-sky-200",
+  },
+  {
+    key: "jeremiah",
+    title: "Jeremiah",
+    href: "/bible-trivia/jeremiah",
+    icon: "🪶",
+    cardClass:
+      "bg-gradient-to-br from-amber-50 to-orange-100 border-2 border-amber-200",
+  },
+  {
+    key: "lamentations",
+    title: "Lamentations",
+    href: "/bible-trivia/lamentations",
+    icon: "🕯️",
+    cardClass:
+      "bg-gradient-to-br from-zinc-50 to-stone-100 border-2 border-zinc-200",
+  },
+  {
+    key: "ezekiel",
+    title: "Ezekiel",
+    href: "/bible-trivia/ezekiel",
+    icon: "🛞",
+    cardClass:
+      "bg-gradient-to-br from-cyan-50 to-slate-100 border-2 border-cyan-200",
+  },
+  {
+    key: "daniel",
+    title: "Daniel",
+    href: "/bible-trivia/daniel",
+    icon: "🦁",
+    cardClass:
+      "bg-gradient-to-br from-amber-50 to-yellow-100 border-2 border-amber-200",
+  },
+  {
+    key: "hosea",
+    title: "Hosea",
+    href: "/bible-trivia/hosea",
+    icon: "🌧️",
+    cardClass:
+      "bg-gradient-to-br from-sky-50 to-blue-100 border-2 border-sky-200",
+  },
+  {
+    key: "joel",
+    title: "Joel",
+    href: "/bible-trivia/joel",
+    icon: "🌿",
+    cardClass:
+      "bg-gradient-to-br from-emerald-50 to-lime-100 border-2 border-emerald-200",
+  },
+  {
+    key: "amos",
+    title: "Amos",
+    href: "/bible-trivia/amos",
+    icon: "🐑",
+    cardClass:
+      "bg-gradient-to-br from-amber-50 to-yellow-100 border-2 border-amber-200",
+  },
+  {
+    key: "obadiah",
+    title: "Obadiah",
+    href: "/bible-trivia/obadiah",
+    icon: "🪨",
+    cardClass:
+      "bg-gradient-to-br from-slate-50 to-stone-100 border-2 border-slate-200",
+  },
+  {
+    key: "jonah",
+    title: "Jonah",
+    href: "/bible-trivia/jonah",
+    icon: "🐟",
+    cardClass:
+      "bg-gradient-to-br from-cyan-50 to-blue-100 border-2 border-cyan-200",
+  },
+];
 
 interface BookProgress {
   genesis: number;
@@ -13,6 +272,30 @@ interface BookProgress {
   joshua: number;
   judges: number;
   ruth: number;
+  "1samuel": number;
+  "2samuel": number;
+  "1kings": number;
+  "2kings": number;
+  "1chronicles": number;
+  "2chronicles": number;
+  ezra: number;
+  nehemiah: number;
+  esther: number;
+  job: number;
+  psalms: number;
+  proverbs: number;
+  ecclesiastes: number;
+  songofsongs: number;
+  isaiah: number;
+  jeremiah: number;
+  lamentations: number;
+  ezekiel: number;
+  daniel: number;
+  hosea: number;
+  joel: number;
+  amos: number;
+  obadiah: number;
+  jonah: number;
 }
 
 export default function BooksOfTheBiblePage() {
@@ -25,8 +308,48 @@ export default function BooksOfTheBiblePage() {
     joshua: 100,
     judges: 100,
     ruth: 50,
+    "1samuel": 100,
+    "2samuel": 100,
+    "1kings": 100,
+    "2kings": 100,
+    "1chronicles": 100,
+    "2chronicles": 100,
+    ezra: 100,
+    nehemiah: 100,
+    esther: 100,
+    job: 100,
+    psalms: 100,
+    proverbs: 100,
+    ecclesiastes: 100,
+    songofsongs: 100,
+    isaiah: 100,
+    jeremiah: 100,
+    lamentations: 100,
+    ezekiel: 100,
+    daniel: 100,
+    hosea: 100,
+    joel: 100,
+    amos: 100,
+    obadiah: 100,
+    jonah: 100,
   });
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredBooks = useMemo(() => {
+    let filtered = BOOK_CARDS;
+
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      filtered = filtered.filter(
+        (book) =>
+          book.title.toLowerCase().includes(query) ||
+          book.key.toLowerCase().includes(query)
+      );
+    }
+
+    return filtered;
+  }, [searchQuery]);
 
   useEffect(() => {
     async function fetchProgress() {
@@ -46,6 +369,30 @@ export default function BooksOfTheBiblePage() {
             "joshua",
             "judges",
             "ruth",
+            "1samuel",
+            "2samuel",
+            "1kings",
+            "2kings",
+            "1chronicles",
+            "2chronicles",
+            "ezra",
+            "nehemiah",
+            "esther",
+            "job",
+            "psalms",
+            "proverbs",
+            "ecclesiastes",
+            "songofsongs",
+            "isaiah",
+            "jeremiah",
+            "lamentations",
+            "ezekiel",
+            "daniel",
+            "hosea",
+            "joel",
+            "amos",
+            "obadiah",
+            "jonah",
           ]);
 
         if (error) {
@@ -61,6 +408,30 @@ export default function BooksOfTheBiblePage() {
             joshua: 100,
             judges: 100,
             ruth: 50,
+            "1samuel": 100,
+            "2samuel": 100,
+            "1kings": 100,
+            "2kings": 100,
+            "1chronicles": 100,
+            "2chronicles": 100,
+            ezra: 100,
+            nehemiah: 100,
+            esther: 100,
+            job: 100,
+            psalms: 100,
+            proverbs: 100,
+            ecclesiastes: 100,
+            songofsongs: 100,
+            isaiah: 100,
+            jeremiah: 100,
+            lamentations: 100,
+            ezekiel: 100,
+            daniel: 100,
+            hosea: 100,
+            joel: 100,
+            amos: 100,
+            obadiah: 100,
+            jonah: 100,
           };
           // Removed duplicate bookTotals definition to fix build error
           const correctCounts: Record<string, number> = {};
@@ -80,6 +451,30 @@ export default function BooksOfTheBiblePage() {
             joshua: Math.max(0, bookTotals.joshua - (correctCounts.joshua || 0)),
             judges: Math.max(0, bookTotals.judges - (correctCounts.judges || 0)),
             ruth: Math.max(0, bookTotals.ruth - (correctCounts.ruth || 0)),
+            "1samuel": Math.max(0, bookTotals["1samuel"] - (correctCounts["1samuel"] || 0)),
+            "2samuel": Math.max(0, bookTotals["2samuel"] - (correctCounts["2samuel"] || 0)),
+            "1kings": Math.max(0, bookTotals["1kings"] - (correctCounts["1kings"] || 0)),
+            "2kings": Math.max(0, bookTotals["2kings"] - (correctCounts["2kings"] || 0)),
+            "1chronicles": Math.max(0, bookTotals["1chronicles"] - (correctCounts["1chronicles"] || 0)),
+            "2chronicles": Math.max(0, bookTotals["2chronicles"] - (correctCounts["2chronicles"] || 0)),
+            ezra: Math.max(0, bookTotals.ezra - (correctCounts.ezra || 0)),
+            nehemiah: Math.max(0, bookTotals.nehemiah - (correctCounts.nehemiah || 0)),
+            esther: Math.max(0, bookTotals.esther - (correctCounts.esther || 0)),
+            job: Math.max(0, bookTotals.job - (correctCounts.job || 0)),
+            psalms: Math.max(0, bookTotals.psalms - (correctCounts.psalms || 0)),
+            proverbs: Math.max(0, bookTotals.proverbs - (correctCounts.proverbs || 0)),
+            ecclesiastes: Math.max(0, bookTotals.ecclesiastes - (correctCounts.ecclesiastes || 0)),
+            songofsongs: Math.max(0, bookTotals.songofsongs - (correctCounts.songofsongs || 0)),
+            isaiah: Math.max(0, bookTotals.isaiah - (correctCounts.isaiah || 0)),
+            jeremiah: Math.max(0, bookTotals.jeremiah - (correctCounts.jeremiah || 0)),
+            lamentations: Math.max(0, bookTotals.lamentations - (correctCounts.lamentations || 0)),
+            ezekiel: Math.max(0, bookTotals.ezekiel - (correctCounts.ezekiel || 0)),
+            daniel: Math.max(0, bookTotals.daniel - (correctCounts.daniel || 0)),
+            hosea: Math.max(0, bookTotals.hosea - (correctCounts.hosea || 0)),
+            joel: Math.max(0, bookTotals.joel - (correctCounts.joel || 0)),
+            amos: Math.max(0, bookTotals.amos - (correctCounts.amos || 0)),
+            obadiah: Math.max(0, bookTotals.obadiah - (correctCounts.obadiah || 0)),
+            jonah: Math.max(0, bookTotals.jonah - (correctCounts.jonah || 0)),
           });
         }
       }
@@ -97,74 +492,21 @@ export default function BooksOfTheBiblePage() {
           <p className="text-gray-600">Test your knowledge of biblical books</p>
         </div>
 
+        <div className="mb-6">
+          <input
+            type="text"
+            placeholder="Search books..."
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+            }}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          {[
-            {
-              key: "genesis",
-              title: "Genesis",
-              href: "/bible-trivia/genesis",
-              icon: "📚",
-              cardClass:
-                "bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200",
-            },
-            {
-              key: "exodus",
-              title: "Exodus",
-              href: "/bible-trivia/exodus",
-              icon: "🔥",
-              cardClass:
-                "bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200",
-            },
-            {
-              key: "leviticus",
-              title: "Leviticus",
-              href: "/bible-trivia/leviticus",
-              icon: "🌿",
-              cardClass:
-                "bg-gradient-to-br from-lime-50 to-green-50 border-2 border-lime-200",
-            },
-            {
-              key: "numbers",
-              title: "Numbers",
-              href: "/bible-trivia/numbers",
-              icon: "🔢",
-              cardClass:
-                "bg-gradient-to-br from-yellow-50 to-amber-100 border-2 border-yellow-200",
-            },
-            {
-              key: "deuteronomy",
-              title: "Deuteronomy",
-              href: "/bible-trivia/deuteronomy",
-              icon: "📜",
-              cardClass:
-                "bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200",
-            },
-            {
-              key: "joshua",
-              title: "Joshua",
-              href: "/bible-trivia/joshua",
-              icon: "⚔️",
-              cardClass:
-                "bg-gradient-to-br from-cyan-50 to-blue-100 border-2 border-cyan-200",
-            },
-            {
-              key: "judges",
-              title: "Judges",
-              href: "/bible-trivia/judges",
-              icon: "⚖️",
-              cardClass:
-                "bg-gradient-to-br from-purple-50 to-violet-100 border-2 border-purple-200",
-            },
-            {
-              key: "ruth",
-              title: "Ruth",
-              href: "/bible-trivia/ruth",
-              icon: "🌾",
-              cardClass:
-                "bg-gradient-to-br from-pink-50 to-yellow-100 border-2 border-pink-200",
-            },
-          ].map((card) => (
+          {filteredBooks.map((card) => (
             <Link key={card.key} href={card.href}>
               <div
                 className={`${card.cardClass} rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full`}
