@@ -261,6 +261,70 @@ const BOOK_CARDS = [
     cardClass:
       "bg-gradient-to-br from-cyan-50 to-blue-100 border-2 border-cyan-200",
   },
+  {
+    key: "micah",
+    title: "Micah",
+    href: "/bible-trivia/micah",
+    icon: "🏔️",
+    cardClass:
+      "bg-gradient-to-br from-slate-50 to-blue-100 border-2 border-slate-200",
+  },
+  {
+    key: "nahum",
+    title: "Nahum",
+    href: "/bible-trivia/nahum",
+    icon: "🗡️",
+    cardClass:
+      "bg-gradient-to-br from-red-50 to-orange-100 border-2 border-red-200",
+  },
+  {
+    key: "habakkuk",
+    title: "Habakkuk",
+    href: "/bible-trivia/habakkuk",
+    icon: "⚡",
+    cardClass:
+      "bg-gradient-to-br from-yellow-50 to-amber-100 border-2 border-yellow-200",
+  },
+  {
+    key: "zephaniah",
+    title: "Zephaniah",
+    href: "/bible-trivia/zephaniah",
+    icon: "🌪️",
+    cardClass:
+      "bg-gradient-to-br from-slate-50 to-sky-100 border-2 border-slate-200",
+  },
+  {
+    key: "haggai",
+    title: "Haggai",
+    href: "/bible-trivia/haggai",
+    icon: "🛠️",
+    cardClass:
+      "bg-gradient-to-br from-amber-50 to-orange-100 border-2 border-amber-200",
+  },
+  {
+    key: "zechariah",
+    title: "Zechariah",
+    href: "/bible-trivia/zechariah",
+    icon: "🗺️",
+    cardClass:
+      "bg-gradient-to-br from-sky-50 to-cyan-100 border-2 border-sky-200",
+  },
+  {
+    key: "malachi",
+    title: "Malachi",
+    href: "/bible-trivia/malachi",
+    icon: "📨",
+    cardClass:
+      "bg-gradient-to-br from-rose-50 to-red-100 border-2 border-rose-200",
+  },
+  {
+    key: "matthew",
+    title: "Matthew",
+    href: "/bible-trivia/matthew",
+    icon: "✝️",
+    cardClass:
+      "bg-gradient-to-br from-sky-50 to-indigo-100 border-2 border-sky-200",
+  },
 ];
 
 interface BookProgress {
@@ -296,6 +360,14 @@ interface BookProgress {
   amos: number;
   obadiah: number;
   jonah: number;
+  micah: number;
+  nahum: number;
+  habakkuk: number;
+  zephaniah: number;
+  haggai: number;
+  zechariah: number;
+  malachi: number;
+  matthew: number;
 }
 
 export default function BooksOfTheBiblePage() {
@@ -332,6 +404,14 @@ export default function BooksOfTheBiblePage() {
     amos: 100,
     obadiah: 100,
     jonah: 100,
+    micah: 100,
+    nahum: 100,
+    habakkuk: 100,
+    zephaniah: 100,
+    haggai: 100,
+    zechariah: 100,
+    malachi: 100,
+    matthew: 100,
   });
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -393,6 +473,14 @@ export default function BooksOfTheBiblePage() {
             "amos",
             "obadiah",
             "jonah",
+            "micah",
+            "nahum",
+            "habakkuk",
+            "zephaniah",
+            "haggai",
+            "zechariah",
+            "malachi",
+            "matthew",
           ]);
 
         if (error) {
@@ -432,6 +520,14 @@ export default function BooksOfTheBiblePage() {
             amos: 100,
             obadiah: 100,
             jonah: 100,
+            micah: 100,
+            nahum: 100,
+            habakkuk: 100,
+            zephaniah: 100,
+            haggai: 100,
+            zechariah: 100,
+            malachi: 100,
+            matthew: 100,
           };
           // Removed duplicate bookTotals definition to fix build error
           const correctCounts: Record<string, number> = {};
@@ -475,6 +571,14 @@ export default function BooksOfTheBiblePage() {
             amos: Math.max(0, bookTotals.amos - (correctCounts.amos || 0)),
             obadiah: Math.max(0, bookTotals.obadiah - (correctCounts.obadiah || 0)),
             jonah: Math.max(0, bookTotals.jonah - (correctCounts.jonah || 0)),
+            micah: Math.max(0, bookTotals.micah - (correctCounts.micah || 0)),
+            nahum: Math.max(0, bookTotals.nahum - (correctCounts.nahum || 0)),
+            habakkuk: Math.max(0, bookTotals.habakkuk - (correctCounts.habakkuk || 0)),
+            zephaniah: Math.max(0, bookTotals.zephaniah - (correctCounts.zephaniah || 0)),
+            haggai: Math.max(0, bookTotals.haggai - (correctCounts.haggai || 0)),
+            zechariah: Math.max(0, bookTotals.zechariah - (correctCounts.zechariah || 0)),
+            malachi: Math.max(0, bookTotals.malachi - (correctCounts.malachi || 0)),
+            matthew: Math.max(0, bookTotals.matthew - (correctCounts.matthew || 0)),
           });
         }
       }
