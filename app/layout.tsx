@@ -4,6 +4,7 @@ import "./globals.css";
 
 import AppShell from "@/components/AppShell";
 import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
+// redeploy trigger
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
