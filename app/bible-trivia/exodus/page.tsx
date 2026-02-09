@@ -17,7 +17,8 @@ interface Question {
 
 async function fetchVerseText(reference: string): Promise<string> {
   try {
-    const normalizedRef = reference.toLowerCase().replace(/\s+/g, '+');
+        const primaryRef = reference.split(/[;,]/)[0]?.trim() ?? reference.trim();
+    const normalizedRef = encodeURIComponent(primaryRef);
     const response = await fetch(`https://bible-api.com/${normalizedRef}`);
     if (!response.ok) throw new Error('Failed to fetch verse');
     const data = await response.json();
@@ -190,7 +191,16 @@ export default function ExodusTriviaPage() {
     loadUserAndQuestions();
   }, []);
 
-  if (!questions.length) return null;
+  if (questions.length === 0) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-4xl mb-4">📚</div>
+          <p className="text-gray-600">Loading questions...</p>
+        </div>
+      </div>
+    );
+  }
 
   const currentQuestion = questions[currentQuestionIndex];
   const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
@@ -454,3 +464,4 @@ export default function ExodusTriviaPage() {
     </div>
   );
 }
+

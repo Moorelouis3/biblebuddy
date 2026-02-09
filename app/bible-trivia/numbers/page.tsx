@@ -18,7 +18,8 @@ interface Question {
 // Helper function to fetch verse text from Bible API
 async function fetchVerseText(reference: string): Promise<string> {
   try {
-    const normalizedRef = reference.toLowerCase().replace(/\s+/g, '+');
+        const primaryRef = reference.split(/[;,]/)[0]?.trim() ?? reference.trim();
+    const normalizedRef = encodeURIComponent(primaryRef);
     const response = await fetch(`https://bible-api.com/${normalizedRef}`);
     if (!response.ok) throw new Error('Failed to fetch verse');
     const data = await response.json();
@@ -370,3 +371,4 @@ export default function NumbersTriviaPage() {
     </div>
   );
 }
+

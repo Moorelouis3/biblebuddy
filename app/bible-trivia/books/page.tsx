@@ -325,6 +325,214 @@ const BOOK_CARDS = [
     cardClass:
       "bg-gradient-to-br from-sky-50 to-indigo-100 border-2 border-sky-200",
   },
+  {
+    key: "mark",
+    title: "Mark",
+    href: "/bible-trivia/mark",
+    icon: "🦁",
+    cardClass:
+      "bg-gradient-to-br from-amber-50 to-yellow-100 border-2 border-amber-200",
+  },
+  {
+    key: "luke",
+    title: "Luke",
+    href: "/bible-trivia/luke",
+    icon: "🕊️",
+    cardClass:
+      "bg-gradient-to-br from-cyan-50 to-sky-100 border-2 border-cyan-200",
+  },
+  {
+    key: "john",
+    title: "John",
+    href: "/bible-trivia/john",
+    icon: "🦅",
+    cardClass:
+      "bg-gradient-to-br from-indigo-50 to-blue-100 border-2 border-indigo-200",
+  },
+  {
+    key: "acts",
+    title: "Acts",
+    href: "/bible-trivia/acts",
+    icon: "🧭",
+    cardClass:
+      "bg-gradient-to-br from-emerald-50 to-teal-100 border-2 border-emerald-200",
+  },
+  {
+    key: "romans",
+    title: "Romans",
+    href: "/bible-trivia/romans",
+    icon: "🏛️",
+    cardClass:
+      "bg-gradient-to-br from-amber-50 to-yellow-100 border-2 border-amber-200",
+  },
+  {
+    key: "1corinthians",
+    title: "1 Corinthians",
+    href: "/bible-trivia/1-corinthians",
+    icon: "💌",
+    cardClass:
+      "bg-gradient-to-br from-rose-50 to-pink-100 border-2 border-rose-200",
+  },
+  {
+    key: "2corinthians",
+    title: "2 Corinthians",
+    href: "/bible-trivia/2-corinthians",
+    icon: "📬",
+    cardClass:
+      "bg-gradient-to-br from-orange-50 to-amber-100 border-2 border-orange-200",
+  },
+  {
+    key: "galatians",
+    title: "Galatians",
+    href: "/bible-trivia/galatians",
+    icon: "🕊️",
+    cardClass:
+      "bg-gradient-to-br from-sky-50 to-cyan-100 border-2 border-sky-200",
+  },
+  {
+    key: "ephesians",
+    title: "Ephesians",
+    href: "/bible-trivia/ephesians",
+    icon: "🛡️",
+    cardClass:
+      "bg-gradient-to-br from-indigo-50 to-violet-100 border-2 border-indigo-200",
+  },
+  {
+    key: "philippians",
+    title: "Philippians",
+    href: "/bible-trivia/philippians",
+    icon: "🎉",
+    cardClass:
+      "bg-gradient-to-br from-pink-50 to-rose-100 border-2 border-pink-200",
+  },
+  {
+    key: "colossians",
+    title: "Colossians",
+    href: "/bible-trivia/colossians",
+    icon: "🧵",
+    cardClass:
+      "bg-gradient-to-br from-emerald-50 to-teal-100 border-2 border-emerald-200",
+  },
+  {
+    key: "1thessalonians",
+    title: "1 Thessalonians",
+    href: "/bible-trivia/1-thessalonians",
+    icon: "🌊",
+    cardClass:
+      "bg-gradient-to-br from-sky-50 to-blue-100 border-2 border-sky-200",
+  },
+  {
+    key: "2thessalonians",
+    title: "2 Thessalonians",
+    href: "/bible-trivia/2-thessalonians",
+    icon: "⛵",
+    cardClass:
+      "bg-gradient-to-br from-blue-50 to-indigo-100 border-2 border-blue-200",
+  },
+  {
+    key: "1timothy",
+    title: "1 Timothy",
+    href: "/bible-trivia/1-timothy",
+    icon: "🧭",
+    cardClass:
+      "bg-gradient-to-br from-amber-50 to-yellow-100 border-2 border-amber-200",
+  },
+  {
+    key: "2timothy",
+    title: "2 Timothy",
+    href: "/bible-trivia/2-timothy",
+    icon: "🛡️",
+    cardClass:
+      "bg-gradient-to-br from-slate-50 to-zinc-100 border-2 border-slate-200",
+  },
+  {
+    key: "titus",
+    title: "Titus",
+    href: "/bible-trivia/titus",
+    icon: "🧩",
+    cardClass:
+      "bg-gradient-to-br from-orange-50 to-amber-100 border-2 border-orange-200",
+  },
+  {
+    key: "philemon",
+    title: "Philemon",
+    href: "/bible-trivia/philemon",
+    icon: "✉️",
+    cardClass:
+      "bg-gradient-to-br from-emerald-50 to-teal-100 border-2 border-emerald-200",
+  },
+  {
+    key: "hebrews",
+    title: "Hebrews",
+    href: "/bible-trivia/hebrews",
+    icon: "📘",
+    cardClass:
+      "bg-gradient-to-br from-blue-50 to-sky-100 border-2 border-blue-200",
+  },
+  {
+    key: "james",
+    title: "James",
+    href: "/bible-trivia/james",
+    icon: "🧭",
+    cardClass:
+      "bg-gradient-to-br from-amber-50 to-yellow-100 border-2 border-amber-200",
+  },
+  {
+    key: "1peter",
+    title: "1 Peter",
+    href: "/bible-trivia/1-peter",
+    icon: "🐟",
+    cardClass:
+      "bg-gradient-to-br from-cyan-50 to-sky-100 border-2 border-cyan-200",
+  },
+  {
+    key: "2peter",
+    title: "2 Peter",
+    href: "/bible-trivia/2-peter",
+    icon: "🪨",
+    cardClass:
+      "bg-gradient-to-br from-teal-50 to-cyan-100 border-2 border-teal-200",
+  },
+  {
+    key: "1john",
+    title: "1 John",
+    href: "/bible-trivia/1-john",
+    icon: "✨",
+    cardClass:
+      "bg-gradient-to-br from-indigo-50 to-slate-100 border-2 border-indigo-200",
+  },
+  {
+    key: "2john",
+    title: "2 John",
+    href: "/bible-trivia/2-john",
+    icon: "🕊️",
+    cardClass:
+      "bg-gradient-to-br from-sky-50 to-indigo-100 border-2 border-sky-200",
+  },
+  {
+    key: "3john",
+    title: "3 John",
+    href: "/bible-trivia/3-john",
+    icon: "📜",
+    cardClass:
+      "bg-gradient-to-br from-amber-50 to-yellow-100 border-2 border-amber-200",
+  },
+  {
+    key: "jude",
+    title: "Jude",
+    href: "/bible-trivia/jude",
+    icon: "🛡️",
+    cardClass:
+      "bg-gradient-to-br from-rose-50 to-amber-100 border-2 border-rose-200",
+  },
+  {
+    key: "revelation",
+    title: "Revelation",
+    href: "/bible-trivia/revelation",
+    icon: "🌟",
+    cardClass:
+      "bg-gradient-to-br from-indigo-50 to-purple-100 border-2 border-indigo-200",
+  },
 ];
 
 interface BookProgress {
@@ -368,6 +576,32 @@ interface BookProgress {
   zechariah: number;
   malachi: number;
   matthew: number;
+  mark: number;
+  luke: number;
+  john: number;
+  acts: number;
+  romans: number;
+  "1corinthians": number;
+  "2corinthians": number;
+  galatians: number;
+  ephesians: number;
+  philippians: number;
+  colossians: number;
+  "1thessalonians": number;
+  "2thessalonians": number;
+  "1timothy": number;
+  "2timothy": number;
+  titus: number;
+  philemon: number;
+  hebrews: number;
+  james: number;
+  "1peter": number;
+  "2peter": number;
+  "1john": number;
+  "2john": number;
+  "3john": number;
+  jude: number;
+  revelation: number;
 }
 
 export default function BooksOfTheBiblePage() {
@@ -412,6 +646,32 @@ export default function BooksOfTheBiblePage() {
     zechariah: 100,
     malachi: 100,
     matthew: 100,
+    mark: 100,
+    luke: 100,
+    john: 100,
+    acts: 100,
+    romans: 100,
+    "1corinthians": 100,
+    "2corinthians": 100,
+    galatians: 100,
+    ephesians: 100,
+    philippians: 100,
+    colossians: 100,
+    "1thessalonians": 100,
+    "2thessalonians": 100,
+    "1timothy": 100,
+    "2timothy": 100,
+    titus: 100,
+    philemon: 100,
+    hebrews: 100,
+    james: 100,
+    "1peter": 100,
+    "2peter": 100,
+    "1john": 100,
+    "2john": 100,
+    "3john": 100,
+    jude: 100,
+    revelation: 100,
   });
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -481,6 +741,32 @@ export default function BooksOfTheBiblePage() {
             "zechariah",
             "malachi",
             "matthew",
+            "mark",
+            "luke",
+            "john",
+            "acts",
+            "romans",
+            "1corinthians",
+            "2corinthians",
+            "galatians",
+            "ephesians",
+            "philippians",
+            "colossians",
+            "1thessalonians",
+            "2thessalonians",
+            "1timothy",
+            "2timothy",
+            "titus",
+            "philemon",
+            "hebrews",
+            "james",
+            "1peter",
+            "2peter",
+            "1john",
+            "2john",
+            "3john",
+            "jude",
+            "revelation",
           ]);
 
         if (error) {
@@ -528,6 +814,32 @@ export default function BooksOfTheBiblePage() {
             zechariah: 100,
             malachi: 100,
             matthew: 100,
+            mark: 100,
+            luke: 100,
+            john: 100,
+            acts: 100,
+            romans: 100,
+            "1corinthians": 100,
+            "2corinthians": 100,
+            galatians: 100,
+            ephesians: 100,
+            philippians: 100,
+            colossians: 100,
+            "1thessalonians": 100,
+            "2thessalonians": 100,
+            "1timothy": 100,
+            "2timothy": 100,
+            titus: 100,
+            philemon: 100,
+            hebrews: 100,
+            james: 100,
+            "1peter": 100,
+            "2peter": 100,
+            "1john": 100,
+            "2john": 100,
+            "3john": 100,
+            jude: 100,
+            revelation: 100,
           };
           // Removed duplicate bookTotals definition to fix build error
           const correctCounts: Record<string, number> = {};
@@ -579,6 +891,92 @@ export default function BooksOfTheBiblePage() {
             zechariah: Math.max(0, bookTotals.zechariah - (correctCounts.zechariah || 0)),
             malachi: Math.max(0, bookTotals.malachi - (correctCounts.malachi || 0)),
             matthew: Math.max(0, bookTotals.matthew - (correctCounts.matthew || 0)),
+            mark: Math.max(0, bookTotals.mark - (correctCounts.mark || 0)),
+            luke: Math.max(0, bookTotals.luke - (correctCounts.luke || 0)),
+            john: Math.max(0, bookTotals.john - (correctCounts.john || 0)),
+            acts: Math.max(0, bookTotals.acts - (correctCounts.acts || 0)),
+            romans: Math.max(0, bookTotals.romans - (correctCounts.romans || 0)),
+            "1corinthians": Math.max(
+              0,
+              bookTotals["1corinthians"] - (correctCounts["1corinthians"] || 0)
+            ),
+            "2corinthians": Math.max(
+              0,
+              bookTotals["2corinthians"] - (correctCounts["2corinthians"] || 0)
+            ),
+            galatians: Math.max(
+              0,
+              bookTotals.galatians - (correctCounts.galatians || 0)
+            ),
+            ephesians: Math.max(
+              0,
+              bookTotals.ephesians - (correctCounts.ephesians || 0)
+            ),
+            philippians: Math.max(
+              0,
+              bookTotals.philippians - (correctCounts.philippians || 0)
+            ),
+            colossians: Math.max(
+              0,
+              bookTotals.colossians - (correctCounts.colossians || 0)
+            ),
+            "1thessalonians": Math.max(
+              0,
+              bookTotals["1thessalonians"] - (correctCounts["1thessalonians"] || 0)
+            ),
+            "2thessalonians": Math.max(
+              0,
+              bookTotals["2thessalonians"] - (correctCounts["2thessalonians"] || 0)
+            ),
+            "1timothy": Math.max(
+              0,
+              bookTotals["1timothy"] - (correctCounts["1timothy"] || 0)
+            ),
+            "2timothy": Math.max(
+              0,
+              bookTotals["2timothy"] - (correctCounts["2timothy"] || 0)
+            ),
+            titus: Math.max(
+              0,
+              bookTotals.titus - (correctCounts.titus || 0)
+            ),
+            philemon: Math.max(
+              0,
+              bookTotals.philemon - (correctCounts.philemon || 0)
+            ),
+            hebrews: Math.max(
+              0,
+              bookTotals.hebrews - (correctCounts.hebrews || 0)
+            ),
+            james: Math.max(
+              0,
+              bookTotals.james - (correctCounts.james || 0)
+            ),
+            "1peter": Math.max(
+              0,
+              bookTotals["1peter"] - (correctCounts["1peter"] || 0)
+            ),
+            "2peter": Math.max(
+              0,
+              bookTotals["2peter"] - (correctCounts["2peter"] || 0)
+            ),
+            "1john": Math.max(
+              0,
+              bookTotals["1john"] - (correctCounts["1john"] || 0)
+            ),
+            "2john": Math.max(
+              0,
+              bookTotals["2john"] - (correctCounts["2john"] || 0)
+            ),
+            "3john": Math.max(
+              0,
+              bookTotals["3john"] - (correctCounts["3john"] || 0)
+            ),
+            jude: Math.max(0, bookTotals.jude - (correctCounts.jude || 0)),
+            revelation: Math.max(
+              0,
+              bookTotals.revelation - (correctCounts.revelation || 0)
+            ),
           });
         }
       }

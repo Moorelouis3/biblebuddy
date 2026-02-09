@@ -16,7 +16,8 @@ interface Question {
 
 async function fetchVerseText(reference: string): Promise<string> {
   try {
-    const normalizedRef = reference.toLowerCase().replace(/\s+/g, "+");
+        const primaryRef = reference.split(/[;,]/)[0]?.trim() ?? reference.trim();
+    const normalizedRef = encodeURIComponent(primaryRef);
     const response = await fetch(`https://bible-api.com/${normalizedRef}`);
     if (!response.ok) throw new Error("Failed to fetch verse");
     const data = await response.json();
@@ -304,7 +305,7 @@ export default function ZechariahTriviaPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-4xl mb-4">Books</div>
+          <div className="text-4xl mb-4">📚</div>
           <p className="text-gray-600">Loading questions...</p>
         </div>
       </div>
@@ -315,7 +316,7 @@ export default function ZechariahTriviaPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
-          <div className="text-6xl mb-4">Congrats!</div>
+          <div className="text-6xl mb-4">🎉</div>
           <h2 className="text-2xl font-bold mb-4">Quiz Complete!</h2>
           <div className="mb-6">
             <p className="text-4xl font-bold text-blue-600 mb-2">
@@ -353,7 +354,7 @@ export default function ZechariahTriviaPage() {
             href="/bible-trivia"
             className="text-gray-600 hover:text-gray-800 transition"
           >
-            {"<- Back"}
+            ← Back
           </Link>
           <div className="text-sm text-gray-600 flex gap-8">
             <span>Question {currentQuestionIndex + 1} of {questions.length}</span>
@@ -469,3 +470,4 @@ export default function ZechariahTriviaPage() {
     </div>
   );
 }
+
