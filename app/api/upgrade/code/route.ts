@@ -18,8 +18,9 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const code = typeof body.code === "string" ? body.code.trim() : "";
-  if (code !== "BBP4Life") {
+  const code =
+    typeof body.code === "string" ? body.code.trim().toUpperCase() : "";
+  if (code !== "BBP4LIFE") {
     return NextResponse.json({ error: "Invalid code" }, { status: 400 });
   }
 
