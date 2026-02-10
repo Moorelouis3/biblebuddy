@@ -189,8 +189,13 @@ export default function KeywordsInTheBiblePage() {
         setKeywordNotes(null);
         setKeywordCreditBlocked(false);
 
+        const keyword = selectedKeyword;
+        if (!keyword) {
+          return;
+        }
+
         // Normalize: lowercase, trim
-        const keywordKey = selectedKeyword.name.toLowerCase().trim();
+        const keywordKey = keyword.name.toLowerCase().trim();
 
         if (userId) {
           const isCompleted = completedKeywords.has(keywordKey);
