@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabaseClient";
+import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { getCompletedChapters, isChapterCompleted } from "../../../lib/readingProgress";
 import {
   generateBibleInOneYearPlan,
@@ -33,6 +34,9 @@ export default function BibleInOneYearPage() {
   const [openWeek, setOpenWeek] = useState<number | null>(null);
   const [openMonth, setOpenMonth] = useState<number | null>(null);
   const [selectedDay, setSelectedDay] = useState<DayReading | null>(null);
+  const [showCreditBlocked, setShowCreditBlocked] = useState(false);
+  const [canViewSelectedDay, setCanViewSelectedDay] = useState(false);
+  const [viewedDays, setViewedDays] = useState<Set<number>>(new Set());
   const [loading, setLoading] = useState(true);
   const [currentDayNumber, setCurrentDayNumber] = useState(1);
   const [nextIncompleteDay, setNextIncompleteDay] = useState<number | null>(null);
@@ -260,6 +264,87 @@ export default function BibleInOneYearPage() {
     return dayNumber === targetDay;
   };
 
+  const isDayCompleted = (day: DayReading): boolean => {
+    const progress = dayProgress[day.dayNumber];
+    return !!progress && progress.completedChapters.size === progress.totalChapters;
+  };
+
+  const isDayUnlocked = (dayNumber: number): boolean => {
+    if (dayNumber === 1) return true;
+    const prevProgress = dayProgress[dayNumber - 1];
+    return !!prevProgress && prevProgress.completedChapters.size === prevProgress.totalChapters;
+  };
+
+  const handleDayClick = (day: DayReading) => {
+    if (!isDayUnlocked(day.dayNumber)) {
+      return;
+    }
+
+    setShowCreditBlocked(false);
+    setCanViewSelectedDay(false);
+    setSelectedDay(day);
+  };
+
+  useEffect(() => {
+    if (!selectedDay) {
+      setShowCreditBlocked(false);
+      setCanViewSelectedDay(false);
+      return;
+    }
+
+    const completed = isDayCompleted(selectedDay);
+    if (completed) {
+      setShowCreditBlocked(false);
+      setCanViewSelectedDay(true);
+      return;
+    }
+
+    if (viewedDays.has(selectedDay.dayNumber)) {
+      setShowCreditBlocked(false);
+      setCanViewSelectedDay(true);
+      return;
+    }
+
+    const consume = async () => {
+      const creditResponse = await fetch("/api/consume-credit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          actionType: ACTION_TYPE.bible_in_one_year_day_viewed,
+        }),
+      });
+
+      if (!creditResponse.ok) {
+        setShowCreditBlocked(true);
+        setCanViewSelectedDay(false);
+        return;
+      }
+
+      const creditResult = (await creditResponse.json().catch(() => ({}))) as {
+        ok?: boolean;
+        reason?: string;
+      };
+
+      if (creditResult.ok === false) {
+        setShowCreditBlocked(true);
+        setCanViewSelectedDay(false);
+        return;
+      }
+
+      setViewedDays((prev) => {
+        const next = new Set(prev);
+        next.add(selectedDay.dayNumber);
+        return next;
+      });
+      setShowCreditBlocked(false);
+      setCanViewSelectedDay(true);
+    };
+
+    consume();
+  }, [selectedDay, viewedDays, dayProgress]);
+
   if (loading || !plan) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -314,7 +399,7 @@ export default function BibleInOneYearPage() {
               onClick={() => {
                 const day = plan.weeks.flatMap((w) => w.days).find((d) => d.dayNumber === nextIncompleteDay);
                 if (day) {
-                  setSelectedDay(day);
+                  handleDayClick(day);
                   const week = getWeekNumber(nextIncompleteDay!);
                   const month = getMonthForWeek(week);
                   setOpenWeek(week);
@@ -459,12 +544,17 @@ export default function BibleInOneYearPage() {
                                     stateClasses += " ring-2 ring-blue-500 ring-offset-2";
                                   }
 
+                                  const isUnlocked = isDayUnlocked(day.dayNumber);
+
                                   return (
                                     <button
                                       key={day.dayNumber}
                                       type="button"
-                                      onClick={() => setSelectedDay(day)}
-                                      className={`rounded-lg border p-2 text-left transition hover:shadow-md text-sm ${stateClasses}`}
+                                      onClick={() => handleDayClick(day)}
+                                      disabled={!isUnlocked}
+                                      className={`rounded-lg border p-2 text-left transition hover:shadow-md text-sm ${stateClasses} ${
+                                        isUnlocked ? "" : "opacity-60 cursor-not-allowed"
+                                      }`}
                                     >
                                       <div className="flex items-center justify-between mb-1">
                                         <span className="font-semibold text-xs">
@@ -529,35 +619,57 @@ export default function BibleInOneYearPage() {
 
             {/* Modal Content */}
             <div className="p-6 overflow-y-auto flex-1">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {selectedDay.chapters.map((chapter, idx) => {
-                  const progress = dayProgress[selectedDay.dayNumber];
-                  const isCompleted = progress?.completedChapters.has(`${chapter.book}:${chapter.chapter}`);
+              {showCreditBlocked ? (
+                <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center">
+                  <div className="text-3xl mb-3">🔒</div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Out of Credits</h3>
+                  <p className="text-gray-600 text-sm">
+                    You've used all 5 daily credits available to free users.
+                  </p>
+                  <ul className="mt-4 space-y-1 text-left text-sm text-gray-600 list-disc pl-5">
+                    <li>People/Places/Keywords</li>
+                    <li>One round of trivia</li>
+                    <li>Open devotionals</li>
+                    <li>Start a new study action</li>
+                  </ul>
+                  <a
+                    href="/upgrade"
+                    className="mt-4 inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
+                  >
+                    Upgrade to Bible Buddy Pro
+                  </a>
+                </div>
+              ) : canViewSelectedDay ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {selectedDay.chapters.map((chapter, idx) => {
+                    const progress = dayProgress[selectedDay.dayNumber];
+                    const isCompleted = progress?.completedChapters.has(`${chapter.book}:${chapter.chapter}`);
 
-                  return (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={() => {
-                        handleOpenChapter(chapter.book, chapter.chapter);
-                        setSelectedDay(null);
-                      }}
-                      className={`rounded-xl border p-4 text-left transition hover:shadow-md ${
-                        isCompleted
-                          ? "bg-green-100 border-green-300 text-green-800"
-                          : "bg-white border-gray-300 text-gray-700 hover:border-blue-400"
-                      }`}
-                    >
-                      <p className="font-semibold">
-                        {chapter.book} {chapter.chapter}
-                      </p>
-                      <p className="text-xs mt-1 text-gray-600">
-                        {isCompleted ? "Completed" : "Tap to read"}
-                      </p>
-                    </button>
-                  );
-                })}
-              </div>
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => {
+                          handleOpenChapter(chapter.book, chapter.chapter);
+                          setSelectedDay(null);
+                        }}
+                        className={`rounded-xl border p-4 text-left transition hover:shadow-md ${
+                          isCompleted
+                            ? "bg-green-100 border-green-300 text-green-800"
+                            : "bg-white border-gray-300 text-gray-700 hover:border-blue-400"
+                        }`}
+                      >
+                        <p className="font-semibold">
+                          {chapter.book} {chapter.chapter}
+                        </p>
+                        <p className="text-xs mt-1 text-gray-600">
+                          {isCompleted ? "Completed" : "Tap to read"}
+                        </p>
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

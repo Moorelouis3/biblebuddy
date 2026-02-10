@@ -1,3 +1,8 @@
+/* Force white badge text regardless of card styles. */
+.pro-badge,
+.pro-badge * {
+  color: #ffffff !important;
+}
 @import "tailwindcss";
 
 /* Bible highlight styles */

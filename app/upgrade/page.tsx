@@ -14,11 +14,7 @@ export default function UpgradePage() {
     setMounted(true);
   }, []);
 
-  // Stripe Price IDs
-  const MONTHLY_PRICE_ID = "price_1Sn7B2GDyj3itMVLUL8efwcG";
-  const YEARLY_PRICE_ID = "price_1Sn7BZGDyj3itMVLHoO6eeGw";
-
-  const handleCheckout = async (priceId: string, planType: "monthly" | "yearly") => {
+  const handleCheckout = async (planType: "monthly" | "yearly") => {
     try {
       setIsLoading(planType);
 
@@ -35,12 +31,12 @@ export default function UpgradePage() {
       }
 
       // Create checkout session
-      const response = await fetch("/api/stripe/create-checkout-session", {
+      const response = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ priceId }),
+        body: JSON.stringify({ plan: planType }),
       });
 
       const data = await response.json();
@@ -64,9 +60,9 @@ export default function UpgradePage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-2">Upgrade to Pro</h1>
+      <h1 className="text-3xl font-bold mb-2">Upgrade to BibleBuddy Pro</h1>
       <p className="text-gray-600 mb-8">
-        Unlock unlimited access to deep Bible study resources.
+        Unlock unlimited access to deep Bible study tools.
       </p>
 
       <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -78,7 +74,7 @@ export default function UpgradePage() {
             <li>✓ Full Bible reading</li>
             <li>✓ Notes and progress tracking</li>
             <li>✓ Levels and streaks</li>
-            <li>✓ 3 deep study views per day</li>
+            <li>✓ 5 study credits per day</li>
           </ul>
           <div className="text-2xl font-bold mb-2">$0</div>
           <p className="text-sm text-gray-500">Forever free</p>
@@ -96,8 +92,8 @@ export default function UpgradePage() {
           <ul className="space-y-2 text-gray-700 mb-6">
             <li>✓ Everything in Free</li>
             <li>✓ Unlimited people, places, and keywords</li>
-            <li>✓ No daily limits</li>
-            <li>✓ Priority support</li>
+            <li>✓ Unlimited trivia questions</li>
+            <li>✓ All Bible study guides, devotionals, and reading plans</li>
           </ul>
 
           {/* Visual Direction Toward Pricing */}
@@ -109,7 +105,7 @@ export default function UpgradePage() {
             >
               ↓
             </span>
-            <span>Pick a plan to upgrade now</span>
+            <span>Unlock unlimited access to deep Bible study tools.</span>
           </div>
 
           {/* Pricing Buttons */}
@@ -119,13 +115,13 @@ export default function UpgradePage() {
               className="relative w-full px-6 py-3 bg-white border-2 border-blue-500 rounded-lg font-semibold hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
               onClick={(e) => {
                 e.preventDefault();
-                handleCheckout(MONTHLY_PRICE_ID, "monthly");
+                handleCheckout("monthly");
               }}
               disabled={isLoading !== null}
               style={{ color: "#2563eb" }}
             >
               <span className="text-lg" style={{ color: "#2563eb" }}>
-                {isLoading === "monthly" ? "Loading..." : "$5.99 Monthly"}
+                {isLoading === "monthly" ? "Loading..." : "$4.99 Monthly"}
               </span>
             </button>
 
@@ -134,7 +130,7 @@ export default function UpgradePage() {
               className="relative w-full px-6 py-3 bg-white border-2 border-blue-500 rounded-lg font-semibold hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
               onClick={(e) => {
                 e.preventDefault();
-                handleCheckout(YEARLY_PRICE_ID, "yearly");
+                handleCheckout("yearly");
               }}
               disabled={isLoading !== null}
               style={{ color: "#2563eb" }}
@@ -175,9 +171,7 @@ export default function UpgradePage() {
         <h2 className="text-3xl md:text-4xl font-bold mb-3">
           What You Unlock With BibleBuddy Pro
         </h2>
-        <p className="text-lg text-gray-600">
-          Go deeper into Scripture with unlimited Bible study tools.
-        </p>
+        <p className="text-lg text-gray-600"></p>
       </div>
 
       {/* Pro Feature Card */}
@@ -192,7 +186,7 @@ export default function UpgradePage() {
         }}
       >
         <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-          BibleBuddy Pro Includes
+          What You Unlock With BibleBuddy Pro
         </h3>
 
         <div className="space-y-8">
@@ -224,7 +218,7 @@ export default function UpgradePage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-blue-600 mt-1">•</span>
-                    <span>Unlimited access to Keywords of the Bible</span>
+                    <span>Unlimited access to Keywords in the Bible</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-blue-600 mt-1">•</span>
@@ -235,7 +229,39 @@ export default function UpgradePage() {
             </div>
           </div>
 
-          {/* Feature 2: Over 6,000 Bible Study Entries */}
+          {/* Feature 2: Bible Study Guides & Plans */}
+          <div>
+            <div className="flex items-start gap-4">
+              <div className="text-3xl flex-shrink-0">📘</div>
+              <div>
+                <h4 className="text-xl font-bold mb-3">
+                  Bible Study Guides & Plans
+                </h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 mt-1">•</span>
+                    <span>
+                      In-depth Bible study guides that explain Scripture clearly and simply
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 mt-1">•</span>
+                    <span>
+                      Guided Bible reading plans designed to help you understand the Bible in the easiest way
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 mt-1">•</span>
+                    <span>
+                      Daily devotionals covering major stories and key themes throughout the Bible
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature 2: Over 6,000 Trivia Questions */}
           <div
             className={`transition-all duration-400 ease-out ${
               mounted
@@ -247,25 +273,23 @@ export default function UpgradePage() {
             }}
           >
             <div className="flex items-start gap-4">
-              <div className="text-3xl flex-shrink-0">📚</div>
+              <div className="text-3xl flex-shrink-0">🎯</div>
               <div>
                 <h4 className="text-xl font-bold mb-3">
-                  Over 6,000 Bible Study Entries
+                  Over 6,000 Trivia Questions
                 </h4>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start gap-2">
                     <span className="text-blue-600 mt-1">•</span>
-                    <span>
-                      Deep studies covering people, places, and keywords
-                      throughout Scripture
-                    </span>
+                    <span>All Bible books trivia questions</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-blue-600 mt-1">•</span>
-                    <span>
-                      Designed to help users understand the story behind the
-                      verses
-                    </span>
+                    <span>All People of the Bible trivia questions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-blue-600 mt-1">•</span>
+                    <span>More added monthly</span>
                   </li>
                 </ul>
               </div>
@@ -322,8 +346,7 @@ export default function UpgradePage() {
                   <li className="flex items-start gap-2">
                     <span className="text-blue-600 mt-1">•</span>
                     <span>
-                      Designed to help you understand what you're reading, not
-                      replace Scripture
+                      Designed to help you understand Scripture, not replace it
                     </span>
                   </li>
                 </ul>
@@ -366,80 +389,7 @@ export default function UpgradePage() {
             </div>
           </div>
 
-          {/* Feature 5: Everything From the Free Plan */}
-          <div
-            className={`transition-all duration-400 ease-out ${
-              mounted
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-4"
-            }`}
-            style={{
-              transitionDelay: mounted ? "520ms" : "0ms",
-            }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="text-3xl flex-shrink-0">📈</div>
-              <div>
-                <h4 className="text-xl font-bold mb-3">
-                  Everything From the Free Plan
-                </h4>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>Unlimited Bible reading</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>Unlimited notes</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>Levels and streaks</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>Action points and progress tracking</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>Reading Plan + Study Plan combined</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-
-
-      {/* Footnote */}
-      <div
-        className={`text-center text-sm text-gray-500 transition-all duration-500 ease-out ${
-          mounted ? "opacity-60" : "opacity-0"
-        }`}
-        style={{
-          transitionDelay: mounted ? "800ms" : "0ms",
-        }}
-      >
-        <p>
-          Pro unlocks unlimited study views and AI assistance. Reading, notes,
-          and progress are always free.
-        </p>
-      </div>
-
-      <div className="bg-gray-50 rounded-xl p-6 mb-8 mt-12">
-        <h3 className="text-lg font-semibold mb-3">
-          What are deep study views?
-        </h3>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Deep study views include detailed information about people, places,
-          and keywords in the Bible. These are the pop-up explanations you see
-          when clicking on highlighted terms while reading Scripture.
-        </p>
-        <p className="text-gray-700 leading-relaxed">
-          Free members can access 3 of these detailed views per day. Pro members
-          have unlimited access to help you dive deeper into your Bible study.
-        </p>
       </div>
 
       <div className="text-center">

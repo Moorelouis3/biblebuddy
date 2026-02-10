@@ -122,6 +122,7 @@ export default function DashboardPage() {
   const [membershipStatus, setMembershipStatus] = useState<string | null>(null);
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null } | null>(null);
 
   // load user first name from Supabase
   useEffect(() => {
@@ -153,7 +154,7 @@ export default function DashboardPage() {
       try {
         const { data, error } = await supabase
           .from("profile_stats")
-          .select("membership_status, pro_expires_at")
+          .select("membership_status, pro_expires_at, is_paid, daily_credits")
           .eq("user_id", user.id)
           .single();
 
@@ -163,8 +164,16 @@ export default function DashboardPage() {
         }
 
         if (data) {
+          const normalizedIsPaid = data.is_paid === true;
+          const normalizedDailyCredits =
+            typeof data.daily_credits === "number" ? data.daily_credits : 0;
+
           setMembershipStatus(data.membership_status);
           setProExpiresAt(data.pro_expires_at);
+          setProfile({
+            is_paid: normalizedIsPaid,
+            daily_credits: normalizedDailyCredits,
+          });
         }
       } catch (err) {
         console.error("Error loading Pro expiration:", err);
@@ -211,14 +220,20 @@ export default function DashboardPage() {
       try {
         setIsLoadingLevel(true);
         
-        // FAST QUERY: Only get total_actions from profile_stats
+        // FAST QUERY: Get total_actions plus daily credits/pay status from profile_stats
         const { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions")
+          .select("total_actions, is_paid, daily_credits")
           .eq("user_id", user.id)
           .single();
 
         const totalActions = (data?.total_actions || 0) as number;
+        if (data) {
+          setProfile({
+            is_paid: data.is_paid === true,
+            daily_credits: typeof data.daily_credits === "number" ? data.daily_credits : 0,
+          });
+        }
 
         // Calculate level based on total_actions
         let level = 1;
@@ -596,6 +611,11 @@ export default function DashboardPage() {
                   {Math.max(0, levelInfo.levelEnd - levelInfo.totalActions + 1)}{" "}
                   actions until Level {levelInfo.level + 1}
                 </p>
+                {profile && profile.is_paid === false && (
+                  <p className="text-sm text-gray-600 font-medium mt-2">
+                    Daily credits left: {profile.daily_credits ?? 0}
+                  </p>
+                )}
               </>
             ) : null}
           </div>
@@ -760,6 +780,11 @@ export default function DashboardPage() {
                   {Math.max(0, levelInfo.levelEnd - levelInfo.totalActions + 1)}{" "}
                   actions until Level {levelInfo.level + 1}
                 </p>
+                {profile && profile.is_paid === false && (
+                  <p className="text-sm text-gray-600 font-medium mt-2">
+                    Daily credits left: {profile.daily_credits ?? 0}
+                  </p>
+                )}
               </>
             ) : null}
           </div>

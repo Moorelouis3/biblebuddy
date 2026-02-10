@@ -25,13 +25,22 @@ CHECK (action_type IN (
   'user_signup',
   'user_login',
   'chapter_completed',
+  'chapter_notes_viewed',
   'book_completed',
+  'note_started',
   'note_created',
   'person_learned',
+  'person_viewed',
   'place_discovered',
+  'place_viewed',
   'keyword_mastered',
+  'keyword_viewed',
+  'bible_in_one_year_day_viewed',
+  'devotional_day_viewed',
   'devotional_day_completed',
-  'reading_plan_chapter_completed'
+  'reading_plan_chapter_completed',
+  'trivia_started',
+  'trivia_question_answered'
 ));
 
 -- Verification: Check that constraint was updated

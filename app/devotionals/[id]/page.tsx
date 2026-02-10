@@ -44,6 +44,7 @@ export default function DevotionalDetailPage() {
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
   const [selectedDay, setSelectedDay] = useState<DevotionalDay | null>(null);
+  const [showCreditBlocked, setShowCreditBlocked] = useState(false);
   const [showReadingRequiredModal, setShowReadingRequiredModal] = useState(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
   const [completedDayNumber, setCompletedDayNumber] = useState<number | null>(null);
@@ -154,37 +155,44 @@ export default function DevotionalDetailPage() {
       return;
     }
 
-    const requiresCredit = devotional?.title === "The Tempting of Jesus";
-    let canOpen = true;
+    const dayProgress = progress.get(day.day_number);
+    const isCompleted = dayProgress?.is_completed === true;
 
-    if (requiresCredit && userId) {
-      const creditResponse = await fetch("/api/consume-credit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          actionType: ACTION_TYPE.devotional_day_started,
-        }),
-      });
-
-      if (!creditResponse.ok) {
-        canOpen = false;
-      } else {
-        const creditResult = (await creditResponse.json().catch(() => ({}))) as {
-          ok?: boolean;
-          reason?: string;
-        };
-
-        if (creditResult.ok === false) {
-          canOpen = false;
-        }
-      }
-    }
-
-    if (canOpen) {
+    if (isCompleted) {
+      setShowCreditBlocked(false);
       setSelectedDay(day);
+      return;
     }
+
+    const creditResponse = await fetch("/api/consume-credit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        actionType: ACTION_TYPE.devotional_day_viewed,
+      }),
+    });
+
+    if (!creditResponse.ok) {
+      setShowCreditBlocked(true);
+      setSelectedDay(day);
+      return;
+    }
+
+    const creditResult = (await creditResponse.json().catch(() => ({}))) as {
+      ok?: boolean;
+      reason?: string;
+    };
+
+    if (creditResult.ok === false) {
+      setShowCreditBlocked(true);
+      setSelectedDay(day);
+      return;
+    }
+
+    setShowCreditBlocked(false);
+    setSelectedDay(day);
   };
 
   const handleBibleReadingClick = (book: string, chapter: number) => {
@@ -208,6 +216,7 @@ export default function DevotionalDetailPage() {
     }
 
     try {
+
       // Check if day was already completed in database to prevent duplicate logging
       const { data: existingProgressData } = await supabase
         .from("devotional_progress")
@@ -623,6 +632,7 @@ export default function DevotionalDetailPage() {
         <DevotionalDayModal
           day={selectedDay}
           dayProgress={progress.get(selectedDay.day_number)}
+          showCreditBlocked={showCreditBlocked}
           onClose={() => setSelectedDay(null)}
           onBibleReadingClick={() => handleBibleReadingClick(selectedDay.bible_reading_book, selectedDay.bible_reading_chapter)}
           onReadingComplete={() => handleReadingComplete(selectedDay.day_number)}

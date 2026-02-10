@@ -417,12 +417,14 @@ export default function PeopleInTheBiblePage() {
   const [personNotes, setPersonNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
   const [notesError, setNotesError] = useState<string | null>(null);
+  const [personCreditBlocked, setPersonCreditBlocked] = useState(false);
   const [completedPeople, setCompletedPeople] = useState<Set<string>>(new Set());
   const [loadingProgress, setLoadingProgress] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [viewedPeople, setViewedPeople] = useState<Set<string>>(new Set());
 
   // Filter and sort people
   const filteredPeople = useMemo(() => {
@@ -531,17 +533,69 @@ export default function PeopleInTheBiblePage() {
 
   // Generate notes when a person is selected
   useEffect(() => {
-    async function generateNotes() {
-      if (!selectedPerson) {
-        setPersonNotes(null);
-        return;
-      }
+    if (!selectedPerson) {
+      setPersonNotes(null);
+      setPersonCreditBlocked(false);
+      return;
+    }
 
+    if (userId && loadingProgress) {
+      setLoadingNotes(true);
+      setNotesError(null);
+      setPersonNotes(null);
+      setPersonCreditBlocked(false);
+      return;
+    }
+
+    async function generateNotes() {
       try {
         setLoadingNotes(true);
         setNotesError(null);
+        setPersonNotes(null);
+        setPersonCreditBlocked(false);
 
         const personNameKey = selectedPerson.name.toLowerCase().trim();
+
+        if (userId) {
+          const isCompleted = completedPeople.has(personNameKey);
+
+          if (!isCompleted) {
+            const isViewed = viewedPeople.has(personNameKey);
+
+            if (!isViewed) {
+              const creditResponse = await fetch("/api/consume-credit", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  actionType: ACTION_TYPE.person_viewed,
+                }),
+              });
+
+              if (!creditResponse.ok) {
+                setPersonCreditBlocked(true);
+                return;
+              }
+
+              const creditResult = (await creditResponse.json()) as {
+                ok: boolean;
+                reason?: string;
+              };
+
+              if (!creditResult.ok) {
+                setPersonCreditBlocked(true);
+                return;
+              }
+
+              setViewedPeople((prev) => {
+                const next = new Set(prev);
+                next.add(personNameKey);
+                return next;
+              });
+            }
+          }
+        }
 
         // STEP 1: Check database FIRST (mandatory short-circuit)
         const { data: existing, error: existingError } = await supabase
@@ -740,7 +794,7 @@ FINAL RULES:
     }
 
     generateNotes();
-  }, [selectedPerson]);
+  }, [selectedPerson, userId, loadingProgress, completedPeople, viewedPeople]);
 
   // Scroll to letter section
   const scrollToLetter = (letter: string) => {
@@ -924,7 +978,27 @@ FINAL RULES:
               </p>
             )}
 
-            {loadingNotes ? (
+            {personCreditBlocked ? (
+              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center">
+                <div className="text-3xl mb-3">🔒</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Out of Credits</h3>
+                <p className="text-gray-600 text-sm">
+                  You've used all 5 daily credits available to free users.
+                </p>
+                <ul className="mt-4 space-y-1 text-left text-sm text-gray-600 list-disc pl-5">
+                  <li>People/Places/Keywords</li>
+                  <li>One round of trivia</li>
+                  <li>Open devotionals</li>
+                  <li>Start a new study action</li>
+                </ul>
+                <a
+                  href="/upgrade"
+                  className="mt-4 inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
+                >
+                  Upgrade to Bible Buddy Pro
+                </a>
+              </div>
+            ) : loadingNotes ? (
               <div className="text-center py-12 text-gray-500">
                 Loading notes...
               </div>

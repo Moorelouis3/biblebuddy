@@ -111,6 +111,7 @@ export default function NotesPage() {
   const [loadingNotes, setLoadingNotes] = useState(true);
   const [savingNote, setSavingNote] = useState(false);
   const [showNewNoteModal, setShowNewNoteModal] = useState(false);
+  const [showCreditBlocked, setShowCreditBlocked] = useState(false);
 
   // LOAD USER + NOTES
   useEffect(() => {
@@ -485,7 +486,35 @@ export default function NotesPage() {
           </div>
 
           <button
-            onClick={() => setShowNewNoteModal(true)}
+            onClick={async () => {
+              const creditResponse = await fetch("/api/consume-credit", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  actionType: ACTION_TYPE.note_started,
+                }),
+              });
+
+              if (!creditResponse.ok) {
+                setShowCreditBlocked(true);
+                return;
+              }
+
+              const creditResult = (await creditResponse.json().catch(() => ({}))) as {
+                ok?: boolean;
+                reason?: string;
+              };
+
+              if (creditResult.ok === false) {
+                setShowCreditBlocked(true);
+                return;
+              }
+
+              setShowCreditBlocked(false);
+              setShowNewNoteModal(true);
+            }}
             className="rounded-full bg-blue-600 text-white px-4 py-2 text-sm font-semibold shadow hover:bg-blue-700"
           >
             + New Note
@@ -831,6 +860,38 @@ export default function NotesPage() {
           isOpen={showNewNoteModal}
           onClose={() => setShowNewNoteModal(false)}
         />
+
+        {showCreditBlocked && (
+          <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl w-full max-w-md p-6 relative shadow-xl">
+              <button
+                onClick={() => setShowCreditBlocked(false)}
+                className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
+              >
+                ✕
+              </button>
+              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center">
+                <div className="text-3xl mb-3">🔒</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Out of Credits</h3>
+                <p className="text-gray-600 text-sm">
+                  You've used all 5 daily credits available to free users.
+                </p>
+                <ul className="mt-4 space-y-1 text-left text-sm text-gray-600 list-disc pl-5">
+                  <li>People/Places/Keywords</li>
+                  <li>One round of trivia</li>
+                  <li>Open devotionals</li>
+                  <li>Start a new study action</li>
+                </ul>
+                <a
+                  href="/upgrade"
+                  className="mt-4 inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
+                >
+                  Upgrade to Bible Buddy Pro
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

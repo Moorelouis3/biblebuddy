@@ -5,6 +5,7 @@ import { createClient } from "@supabase/supabase-js";
 import ReactMarkdown from "react-markdown";
 import { enrichPlainText } from "../lib/bibleHighlighting";
 import { BIBLE_PEOPLE_LIST } from "../lib/biblePeopleList";
+import { ACTION_TYPE } from "../lib/actionTypes";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -30,6 +31,7 @@ interface DayProgress {
 interface DevotionalDayModalProps {
   day: DevotionalDay;
   dayProgress: DayProgress | undefined;
+  showCreditBlocked: boolean;
   onClose: () => void;
   onBibleReadingClick: () => void;
   onReadingComplete: () => void;
@@ -62,6 +64,7 @@ function normalizeKeywordMarkdown(markdown: string): string {
 export default function DevotionalDayModal({
   day,
   dayProgress,
+  showCreditBlocked,
   onClose,
   onBibleReadingClick,
   onReadingComplete,
@@ -94,6 +97,12 @@ export default function DevotionalDayModal({
   const [placeNotes, setPlaceNotes] = useState<string | null>(null);
   const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
+  const [personCreditBlocked, setPersonCreditBlocked] = useState(false);
+  const [viewedPeople, setViewedPeople] = useState<Set<string>>(new Set());
+  const [placeCreditBlocked, setPlaceCreditBlocked] = useState(false);
+  const [viewedPlaces, setViewedPlaces] = useState<Set<string>>(new Set());
+  const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
+  const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
 
   // Load user + existing progress so devotional popups share the same completion state as other pages
   useEffect(() => {
@@ -227,12 +236,14 @@ export default function DevotionalDayModal({
   useEffect(() => {
     if (!selectedPerson) {
       setPersonNotes(null);
+      setPersonCreditBlocked(false);
       return;
     }
 
     async function generateNotes() {
       setLoadingNotes(true);
       setPersonNotes(null);
+      setPersonCreditBlocked(false);
 
       try {
         if (!selectedPerson) return;
@@ -257,6 +268,42 @@ export default function DevotionalDayModal({
         }
         
         const personNameKey = primaryName.toLowerCase().trim();
+
+        if (userId) {
+          const isCompleted = completedPeople.has(personNameKey);
+          const isViewed = viewedPeople.has(personNameKey);
+
+          if (!isCompleted && !isViewed) {
+            const creditResponse = await fetch("/api/consume-credit", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                actionType: ACTION_TYPE.person_viewed,
+              }),
+            });
+
+            if (!creditResponse.ok) {
+              setPersonCreditBlocked(true);
+              return;
+            }
+
+            const creditResult = (await creditResponse.json()) as {
+              ok: boolean;
+              reason?: string;
+            };
+
+            if (!creditResult.ok) {
+              setPersonCreditBlocked(true);
+              return;
+            }
+
+            setViewedPeople((prev) => {
+              const next = new Set(prev);
+              next.add(personNameKey);
+              return next;
+            });
+          }
+        }
 
         // STEP 1: Check Supabase FIRST (use person_name column, not person)
         const { data: existing, error: existingError } = await supabase
@@ -395,22 +442,63 @@ FINAL RULES:
     }
 
     generateNotes();
-  }, [selectedPerson]);
+  }, [selectedPerson, userId, completedPeople, viewedPeople]);
 
   // Load notes for selected place (reuse same logic as Bible chapter page)
   useEffect(() => {
     if (!selectedPlace) {
       setPlaceNotes(null);
+      setPlaceCreditBlocked(false);
       return;
     }
 
     async function generateNotes() {
       setLoadingNotes(true);
       setPlaceNotes(null);
+      setPlaceCreditBlocked(false);
 
       try {
         if (!selectedPlace) return;
         const normalizedPlace = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
+
+        if (userId) {
+          const isCompleted = completedPlaces.has(normalizedPlace);
+
+          if (!isCompleted) {
+            const isViewed = viewedPlaces.has(normalizedPlace);
+
+            if (!isViewed) {
+              const creditResponse = await fetch("/api/consume-credit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  actionType: ACTION_TYPE.place_viewed,
+                }),
+              });
+
+              if (!creditResponse.ok) {
+                setPlaceCreditBlocked(true);
+                return;
+              }
+
+              const creditResult = (await creditResponse.json()) as {
+                ok: boolean;
+                reason?: string;
+              };
+
+              if (!creditResult.ok) {
+                setPlaceCreditBlocked(true);
+                return;
+              }
+
+              setViewedPlaces((prev) => {
+                const next = new Set(prev);
+                next.add(normalizedPlace);
+                return next;
+              });
+            }
+          }
+        }
 
         // STEP 1: Check Supabase FIRST
         const { data: existing, error: existingError } = await supabase
@@ -486,22 +574,63 @@ Be accurate to Scripture.`;
     }
 
     generateNotes();
-  }, [selectedPlace]);
+  }, [selectedPlace, userId, completedPlaces, viewedPlaces]);
 
   // Load notes for selected keyword (reuse same logic as Bible chapter page)
   useEffect(() => {
     if (!selectedKeyword) {
       setKeywordNotes(null);
+      setKeywordCreditBlocked(false);
       return;
     }
 
     async function generateNotes() {
       setLoadingNotes(true);
       setKeywordNotes(null);
+      setKeywordCreditBlocked(false);
 
       try {
         if (!selectedKeyword) return;
         const keywordKey = selectedKeyword.name.toLowerCase().trim();
+
+        if (userId) {
+          const isCompleted = completedKeywords.has(keywordKey);
+
+          if (!isCompleted) {
+            const isViewed = viewedKeywords.has(keywordKey);
+
+            if (!isViewed) {
+              const creditResponse = await fetch("/api/consume-credit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  actionType: ACTION_TYPE.keyword_viewed,
+                }),
+              });
+
+              if (!creditResponse.ok) {
+                setKeywordCreditBlocked(true);
+                return;
+              }
+
+              const creditResult = (await creditResponse.json()) as {
+                ok: boolean;
+                reason?: string;
+              };
+
+              if (!creditResult.ok) {
+                setKeywordCreditBlocked(true);
+                return;
+              }
+
+              setViewedKeywords((prev) => {
+                const next = new Set(prev);
+                next.add(keywordKey);
+                return next;
+              });
+            }
+          }
+        }
 
         // STEP 1: Check Supabase FIRST
         const { data: existingCheck, error: existingError } = await supabase
@@ -585,7 +714,7 @@ Be accurate to Scripture.`;
     }
 
     generateNotes();
-  }, [selectedKeyword]);
+  }, [selectedKeyword, userId, completedKeywords, viewedKeywords]);
 
   const handleReadingCheck = () => {
     setReadingChecked(!readingChecked);
@@ -639,68 +768,92 @@ Be accurate to Scripture.`;
 
         {/* SCROLLABLE CONTENT AREA */}
         <div className="flex-1 overflow-y-auto px-6 sm:px-8 py-6">
-          {/* DEVOTIONAL CONTENT SECTION */}
-          <div className="mb-8" ref={devotionalTextRef}>
-            {enrichedText ? (
-              <div 
-                className="text-gray-700 leading-relaxed" 
-                style={{ lineHeight: '1.8', fontSize: '1rem' }}
-                dangerouslySetInnerHTML={{ __html: enrichedText }}
-              />
-            ) : (
-              <div className="text-gray-700 leading-relaxed whitespace-pre-line" style={{ lineHeight: '1.8', fontSize: '1rem' }}>
-                {day.devotional_text}
-              </div>
-            )}
-          </div>
-
-          {/* BIBLE READING SECTION */}
-          <div className="mb-8 pb-6 border-b border-gray-200">
-            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4">
-              📖 Bible Reading
-            </h3>
-            
-            <div className="space-y-3">
-              <label className="flex items-start gap-3 cursor-pointer group hover:bg-gray-50 p-2 rounded-lg -ml-2 transition">
-                <input
-                  type="checkbox"
-                  checked={readingChecked}
-                  onChange={handleReadingCheck}
-                  className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 cursor-pointer"
-                />
-                <div className="flex-1">
-                  <button
-                    type="button"
-                    onClick={onBibleReadingClick}
-                    className="text-blue-600 hover:text-blue-700 font-medium underline text-left"
-                  >
-                    Read {day.bible_reading_book} {day.bible_reading_chapter}
-                  </button>
-                </div>
-              </label>
-            </div>
-          </div>
-
-          {/* REFLECTION SECTION */}
-          {day.reflection_question && (
-            <div className="mb-6">
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3">
-                ✍️ Reflection
-              </h3>
-              <p className="text-gray-600 text-sm md:text-base mb-4 leading-relaxed">
-                {day.reflection_question}
+          {showCreditBlocked ? (
+            <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center">
+              <div className="text-3xl mb-3">🔒</div>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Out of Credits</h3>
+              <p className="text-gray-600 text-sm">
+                You've used all 5 daily credits available to free users.
               </p>
-              <textarea
-                value={reflectionText}
-                onChange={(e) => handleReflectionChange(e.target.value)}
-                placeholder="Type your thoughts here, or use voice-to-text..."
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[120px] resize-y text-gray-900 leading-relaxed"
-                style={{ lineHeight: '1.6' }}
-              />
-              {hasUnsavedChanges && (
-                <p className="text-xs text-gray-500 mt-2">Changes will be saved when you mark the day complete.</p>
-              )}
+              <ul className="mt-4 space-y-1 text-left text-sm text-gray-600 list-disc pl-5">
+                <li>People/Places/Keywords</li>
+                <li>One round of trivia</li>
+                <li>Open devotionals</li>
+                <li>Start a new study action</li>
+              </ul>
+              <a
+                href="/upgrade"
+                className="mt-4 inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
+              >
+                Upgrade to Bible Buddy Pro
+              </a>
             </div>
+          ) : (
+            <>
+              {/* DEVOTIONAL CONTENT SECTION */}
+              <div className="mb-8" ref={devotionalTextRef}>
+                {enrichedText ? (
+                  <div 
+                    className="text-gray-700 leading-relaxed" 
+                    style={{ lineHeight: '1.8', fontSize: '1rem' }}
+                    dangerouslySetInnerHTML={{ __html: enrichedText }}
+                  />
+                ) : (
+                  <div className="text-gray-700 leading-relaxed whitespace-pre-line" style={{ lineHeight: '1.8', fontSize: '1rem' }}>
+                    {day.devotional_text}
+                  </div>
+                )}
+              </div>
+
+              {/* BIBLE READING SECTION */}
+              <div className="mb-8 pb-6 border-b border-gray-200">
+                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4">
+                  📖 Bible Reading
+                </h3>
+                
+                <div className="space-y-3">
+                  <label className="flex items-start gap-3 cursor-pointer group hover:bg-gray-50 p-2 rounded-lg -ml-2 transition">
+                    <input
+                      type="checkbox"
+                      checked={readingChecked}
+                      onChange={handleReadingCheck}
+                      className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 cursor-pointer"
+                    />
+                    <div className="flex-1">
+                      <button
+                        type="button"
+                        onClick={onBibleReadingClick}
+                        className="text-blue-600 hover:text-blue-700 font-medium underline text-left"
+                      >
+                        Read {day.bible_reading_book} {day.bible_reading_chapter}
+                      </button>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              {/* REFLECTION SECTION */}
+              {day.reflection_question && (
+                <div className="mb-6">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3">
+                    ✍️ Reflection
+                  </h3>
+                  <p className="text-gray-600 text-sm md:text-base mb-4 leading-relaxed">
+                    {day.reflection_question}
+                  </p>
+                  <textarea
+                    value={reflectionText}
+                    onChange={(e) => handleReflectionChange(e.target.value)}
+                    placeholder="Type your thoughts here, or use voice-to-text..."
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[120px] resize-y text-gray-900 leading-relaxed"
+                    style={{ lineHeight: '1.6' }}
+                  />
+                  {hasUnsavedChanges && (
+                    <p className="text-xs text-gray-500 mt-2">Changes will be saved when you mark the day complete.</p>
+                  )}
+                </div>
+              )}
+            </>
           )}
         </div>
 
@@ -750,7 +903,27 @@ Be accurate to Scripture.`;
               ✕
             </button>
             <h2 className="text-3xl font-bold mb-2">{selectedPerson.name}</h2>
-            {loadingNotes ? (
+            {personCreditBlocked ? (
+              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center">
+                <div className="text-3xl mb-3">🔒</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Out of Credits</h3>
+                <p className="text-gray-600 text-sm">
+                  You've used all 5 daily credits available to free users.
+                </p>
+                <ul className="mt-4 space-y-1 text-left text-sm text-gray-600 list-disc pl-5">
+                  <li>People/Places/Keywords</li>
+                  <li>One round of trivia</li>
+                  <li>Open devotionals</li>
+                  <li>Start a new study action</li>
+                </ul>
+                <a
+                  href="/upgrade"
+                  className="mt-4 inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
+                >
+                  Upgrade to Bible Buddy Pro
+                </a>
+              </div>
+            ) : loadingNotes ? (
               <div className="text-center py-12 text-gray-500">Loading notes...</div>
             ) : personNotes ? (
               <div>
@@ -1010,7 +1183,27 @@ Be accurate to Scripture.`;
               ✕
             </button>
             <h2 className="text-3xl font-bold mb-2">{selectedPlace.name}</h2>
-            {loadingNotes ? (
+            {placeCreditBlocked ? (
+              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center">
+                <div className="text-3xl mb-3">🔒</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Out of Credits</h3>
+                <p className="text-gray-600 text-sm">
+                  You've used all 5 daily credits available to free users.
+                </p>
+                <ul className="mt-4 space-y-1 text-left text-sm text-gray-600 list-disc pl-5">
+                  <li>People/Places/Keywords</li>
+                  <li>One round of trivia</li>
+                  <li>Open devotionals</li>
+                  <li>Start a new study action</li>
+                </ul>
+                <a
+                  href="/upgrade"
+                  className="mt-4 inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
+                >
+                  Upgrade to Bible Buddy Pro
+                </a>
+              </div>
+            ) : loadingNotes ? (
               <div className="text-center py-12 text-gray-500">Loading notes...</div>
             ) : placeNotes ? (
               <div>
@@ -1250,7 +1443,27 @@ Be accurate to Scripture.`;
               ✕
             </button>
             <h2 className="text-3xl font-bold mb-2">{selectedKeyword.name}</h2>
-            {loadingNotes ? (
+            {keywordCreditBlocked ? (
+              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center">
+                <div className="text-3xl mb-3">🔒</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Out of Credits</h3>
+                <p className="text-gray-600 text-sm">
+                  You've used all 5 daily credits available to free users.
+                </p>
+                <ul className="mt-4 space-y-1 text-left text-sm text-gray-600 list-disc pl-5">
+                  <li>People/Places/Keywords</li>
+                  <li>One round of trivia</li>
+                  <li>Open devotionals</li>
+                  <li>Start a new study action</li>
+                </ul>
+                <a
+                  href="/upgrade"
+                  className="mt-4 inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
+                >
+                  Upgrade to Bible Buddy Pro
+                </a>
+              </div>
+            ) : loadingNotes ? (
               <div className="text-center py-12 text-gray-500">Loading notes...</div>
             ) : keywordNotes ? (
               <div>

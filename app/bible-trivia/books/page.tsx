@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { ACTION_TYPE } from "@/lib/actionTypes";
+import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
 
 const BOOK_CARDS = [
   {
@@ -536,6 +536,13 @@ const BOOK_CARDS = [
   },
 ];
 
+const FREE_TRIVIA_BOOK_KEYS = new Set([
+  "genesis",
+  "exodus",
+  "leviticus",
+  "numbers",
+]);
+
 interface BookProgress {
   genesis: number;
   exodus: number;
@@ -676,6 +683,8 @@ export default function BooksOfTheBiblePage() {
   });
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isPaid, setIsPaid] = useState<boolean | null>(null);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
 
   const filteredBooks = useMemo(() => {
     let filtered = BOOK_CARDS;
@@ -695,6 +704,20 @@ export default function BooksOfTheBiblePage() {
   useEffect(() => {
     async function fetchProgress() {
       const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        setIsPaid(false);
+        setLoading(false);
+        return;
+      }
+
+      const { data: profileStats } = await supabase
+        .from("profile_stats")
+        .select("is_paid")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      setIsPaid(!!profileStats?.is_paid);
+
       if (user) {
 // Fetch progress for all books
         const { data: progressData, error } = await supabase
@@ -1009,11 +1032,16 @@ export default function BooksOfTheBiblePage() {
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          {filteredBooks.map((card) => (
-            <Link key={card.key} href={card.href}>
-              <div
-                className={`${card.cardClass} rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full`}
-              >
+          {filteredBooks.map((card) => {
+            const isFreeBook = FREE_TRIVIA_BOOK_KEYS.has(card.key);
+            const isLocked = isPaid === false && !isFreeBook;
+            const cardClasses = `relative ${card.cardClass} rounded-2xl p-8 shadow-lg transition-all duration-200 cursor-pointer h-full ${
+              isLocked
+                ? "cursor-not-allowed pb-12"
+                : "hover:shadow-xl hover:scale-[1.02]"
+            }`;
+            const cardContent = (
+              <div className={cardClasses}>
                 <div className="text-center">
                   <div className="text-6xl mb-4">{card.icon}</div>
                   <h2 className="text-2xl font-bold text-gray-800 mb-2">{card.title}</h2>
@@ -1023,9 +1051,40 @@ export default function BooksOfTheBiblePage() {
                       : `${progress[card.key as keyof BookProgress]} Questions Remaining`}
                   </p>
                 </div>
+                {isLocked && (
+                  <div className="pointer-events-none absolute inset-0 bg-black/50">
+                    <div className="flex justify-center items-end h-full pb-[10px]">
+                      <div
+                        className="pro-badge inline-flex items-center gap-2 rounded-full bg-black/70 px-3 py-1 text-xs font-semibold"
+                      >
+                        <span>🔒</span>
+                        <span>Pro Users Only</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
-            </Link>
-          ))}
+            );
+
+            if (!isLocked) {
+              return (
+                <Link key={card.key} href={card.href}>
+                  {cardContent}
+                </Link>
+              );
+            }
+
+            return (
+              <button
+                key={card.key}
+                type="button"
+                onClick={() => setShowUpgradeModal(true)}
+                className="block w-full text-left"
+              >
+                {cardContent}
+              </button>
+            );
+          })}
         </div>
 
         {/* Back to Categories */}
@@ -1035,6 +1094,11 @@ export default function BooksOfTheBiblePage() {
           </Link>
         </div>
       </div>
+
+      <UpgradeRequiredModal
+        isOpen={showUpgradeModal}
+        onClose={() => setShowUpgradeModal(false)}
+      />
     </div>
   );
 }

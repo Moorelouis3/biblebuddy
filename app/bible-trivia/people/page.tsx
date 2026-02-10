@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { ACTION_TYPE } from "@/lib/actionTypes";
+import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
 
 interface PeopleProgress {
   god: number;
@@ -20,10 +20,26 @@ export default function PeopleOfTheBiblePage() {
     abraham: 100
   });
   const [loading, setLoading] = useState(true);
+  const [isPaid, setIsPaid] = useState<boolean | null>(null);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
 
   useEffect(() => {
     async function fetchProgress() {
       const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        setIsPaid(false);
+        setLoading(false);
+        return;
+      }
+
+      const { data: profileStats } = await supabase
+        .from("profile_stats")
+        .select("is_paid")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      setIsPaid(!!profileStats?.is_paid);
+
       if (user) {
 // Fetch progress for all people categories
         const { data: progressData, error } = await supabase
@@ -71,7 +87,7 @@ export default function PeopleOfTheBiblePage() {
           {/* God Deck Card */}
           <Link
             href="/bible-trivia/god"
-            className="bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-yellow-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
+            className="relative bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-yellow-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
           >
             <div className="text-center">
               <div className="text-6xl mb-4">✨</div>
@@ -85,7 +101,7 @@ export default function PeopleOfTheBiblePage() {
           {/* Jesus Deck Card */}
           <Link
             href="/bible-trivia/jesus"
-            className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
+            className="relative bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
           >
             <div className="text-center">
               <div className="text-6xl mb-4">✝️</div>
@@ -97,32 +113,84 @@ export default function PeopleOfTheBiblePage() {
           </Link>
 
           {/* Moses Deck Card */}
-          <Link
-            href="/bible-trivia/moses"
-            className="bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
-          >
-            <div className="text-center">
-              <div className="text-6xl mb-4">⛰️</div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">Moses</h2>
-              <p className="text-gray-600 text-sm">
-                {loading ? "Loading..." : `${progress.moses} Questions Remaining`}
-              </p>
-            </div>
-          </Link>
+          {isPaid === false ? (
+            <button
+              type="button"
+              onClick={() => setShowUpgradeModal(true)}
+              className="relative bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-2xl p-8 shadow-lg h-full transition-all duration-200 cursor-pointer text-left cursor-not-allowed pb-12"
+            >
+              <div className="text-center">
+                <div className="text-6xl mb-4">⛰️</div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">Moses</h2>
+                <p className="text-gray-600 text-sm">
+                  {loading ? "Loading..." : `${progress.moses} Questions Remaining`}
+                </p>
+              </div>
+              <div className="pointer-events-none absolute inset-0 bg-black/50">
+                <div className="flex justify-center items-end h-full pb-[10px]">
+                  <div
+                    className="pro-badge inline-flex items-center gap-2 rounded-full bg-black/70 px-3 py-1 text-xs font-semibold"
+                  >
+                    <span>🔒</span>
+                    <span>Pro Users Only</span>
+                  </div>
+                </div>
+              </div>
+            </button>
+          ) : (
+            <Link
+              href="/bible-trivia/moses"
+              className="relative bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
+            >
+              <div className="text-center">
+                <div className="text-6xl mb-4">⛰️</div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">Moses</h2>
+                <p className="text-gray-600 text-sm">
+                  {loading ? "Loading..." : `${progress.moses} Questions Remaining`}
+                </p>
+              </div>
+            </Link>
+          )}
 
           {/* Abraham Deck Card */}
-          <Link
-            href="/bible-trivia/abraham"
-            className="bg-gradient-to-br from-green-50 to-teal-50 border-2 border-green-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
-          >
-            <div className="text-center">
-              <div className="text-6xl mb-4">🌾</div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">Abraham</h2>
-              <p className="text-gray-600 text-sm">
-                {loading ? "Loading..." : `${progress.abraham} Questions Remaining`}
-              </p>
-            </div>
-          </Link>
+          {isPaid === false ? (
+            <button
+              type="button"
+              onClick={() => setShowUpgradeModal(true)}
+              className="relative bg-gradient-to-br from-green-50 to-teal-50 border-2 border-green-200 rounded-2xl p-8 shadow-lg h-full transition-all duration-200 cursor-pointer text-left cursor-not-allowed pb-12"
+            >
+              <div className="text-center">
+                <div className="text-6xl mb-4">🌾</div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">Abraham</h2>
+                <p className="text-gray-600 text-sm">
+                  {loading ? "Loading..." : `${progress.abraham} Questions Remaining`}
+                </p>
+              </div>
+              <div className="pointer-events-none absolute inset-0 bg-black/50">
+                <div className="flex justify-center items-end h-full pb-[10px]">
+                  <div
+                    className="pro-badge inline-flex items-center gap-2 rounded-full bg-black/70 px-3 py-1 text-xs font-semibold"
+                  >
+                    <span>🔒</span>
+                    <span>Pro Users Only</span>
+                  </div>
+                </div>
+              </div>
+            </button>
+          ) : (
+            <Link
+              href="/bible-trivia/abraham"
+              className="relative bg-gradient-to-br from-green-50 to-teal-50 border-2 border-green-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
+            >
+              <div className="text-center">
+                <div className="text-6xl mb-4">🌾</div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">Abraham</h2>
+                <p className="text-gray-600 text-sm">
+                  {loading ? "Loading..." : `${progress.abraham} Questions Remaining`}
+                </p>
+              </div>
+            </Link>
+          )}
         </div>
 
         {/* Back to Categories */}
@@ -132,6 +200,11 @@ export default function PeopleOfTheBiblePage() {
           </Link>
         </div>
       </div>
+
+      <UpgradeRequiredModal
+        isOpen={showUpgradeModal}
+        onClose={() => setShowUpgradeModal(false)}
+      />
     </div>
   );
 }
