@@ -2,19 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { createClient } from "@supabase/supabase-js";
 
-// Initialize Stripe
-if (!process.env.STRIPE_SECRET_KEY) {
-  console.error("⚠️ STRIPE_SECRET_KEY is not set in environment variables!");
-}
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-let stripe: Stripe | null = null;
-if (process.env.STRIPE_SECRET_KEY) {
-  stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-    apiVersion: "2025-12-15.clover",
-  });
-}
+const stripe = stripeSecretKey
+  ? new Stripe(stripeSecretKey, {
+      apiVersion: "2025-12-15.clover",
+    })
+  : null;
 
-// Initialize Supabase client with service role (bypasses RLS)
 function getSupabaseAdminClient() {
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -31,217 +27,85 @@ function getSupabaseAdminClient() {
   });
 }
 
-// Helper function to update payments status (Stripe subscription tracking only)
-// Uses upsert to create row if it doesn't exist
-async function updatePaymentsStatus(
-  userId: string,
-  hasActivePayment: boolean
-): Promise<{ success: boolean; error?: string }> {
-  try {
-    console.log(`[WEBHOOK] 💳 Updating payments for user ${userId}: → ${hasActivePayment}`);
-
-    const supabase = getSupabaseAdminClient();
-
-    // Upsert to update existing or create new row
-    const { error } = await supabase
-      .from("profile_stats")
-      .upsert(
-        {
-          user_id: userId,
-          payments: hasActivePayment,
-        },
-        {
-          onConflict: "user_id",
-        }
-      );
-
-    if (error) {
-      console.error(`[WEBHOOK] ❌ Failed to upsert payments:`, error);
-      return { success: false, error: error.message };
-    }
-
-    console.log(`[WEBHOOK] ✅ Successfully updated payments: ${hasActivePayment} for user ${userId}`);
-    return { success: true };
-  } catch (err: any) {
-    console.error(`[WEBHOOK] ❌ Error updating payments:`, err);
-    return { success: false, error: err.message };
+export async function POST(req: NextRequest) {
+  if (!stripe || !webhookSecret) {
+    console.error("[WEBHOOK] Missing Stripe configuration");
+    return NextResponse.json(
+      { error: "Stripe webhook is not configured" },
+      { status: 500 }
+    );
   }
-}
 
-// Helper function to update membership status
-// Uses upsert to create row if it doesn't exist
-async function updateMembershipStatus(
-  userId: string,
-  status: "free" | "pro"
-): Promise<{ success: boolean; error?: string; currentStatus?: string }> {
+  const signature = req.headers.get("stripe-signature");
+  if (!signature) {
+    return NextResponse.json(
+      { error: "Missing Stripe signature" },
+      { status: 400 }
+    );
+  }
+
+  const payload = await req.text();
+  let event: Stripe.Event;
+
   try {
-    console.log(`[WEBHOOK] 🔄 Updating membership_status for user ${userId}: → ${status}`);
+    event = stripe.webhooks.constructEvent(payload, signature, webhookSecret);
+  } catch (err) {
+    console.error("[WEBHOOK] Signature verification failed:", err);
+    return NextResponse.json(
+      { error: "Invalid Stripe signature" },
+      { status: 400 }
+    );
+  }
 
+  if (event.type !== "checkout.session.completed") {
+    return NextResponse.json({ received: true });
+  }
+
+  const session = event.data.object as Stripe.Checkout.Session;
+  const userId = session.metadata?.user_id;
+
+  if (!userId) {
+    console.error("[WEBHOOK] Missing user_id in Stripe session metadata");
+    return NextResponse.json(
+      { error: "Missing user_id in metadata" },
+      { status: 400 }
+    );
+  }
+
+  try {
     const supabase = getSupabaseAdminClient();
-
-    // First check current status
-    const { data: existingUser, error: checkError } = await supabase
+    const { data, error } = await supabase
       .from("profile_stats")
-      .select("user_id, membership_status")
+      .update({ is_paid: true })
       .eq("user_id", userId)
+      .select("user_id")
       .maybeSingle();
 
-    if (checkError && checkError.code !== "PGRST116") {
-      // PGRST116 = no rows returned (not an error)
-      console.error(`[WEBHOOK] ❌ Failed to check existing user:`, checkError);
-      return { success: false, error: checkError.message };
-    }
-
-    const currentStatus = existingUser?.membership_status || null;
-
-    // Only update if status is different
-    if (currentStatus === status) {
-      console.log(`[WEBHOOK] ℹ️ User ${userId} already has membership_status = ${status}. No update needed.`);
-      return { success: true, currentStatus };
-    }
-
-    // Upsert to update existing or create new row
-    const { error, data } = await supabase
-      .from("profile_stats")
-      .upsert(
-        {
-          user_id: userId,
-          membership_status: status,
-        },
-        {
-          onConflict: "user_id",
-        }
-      )
-      .select("membership_status")
-      .single();
-
     if (error) {
-      console.error(`[WEBHOOK] ❌ Failed to upsert membership_status:`, error);
-      console.error(`[WEBHOOK] Error details:`, JSON.stringify(error, null, 2));
-      return { success: false, error: error.message };
-    }
-
-    console.log(
-      `[WEBHOOK] ✅ Successfully updated membership_status: ${currentStatus || "null"} → ${status} for user ${userId}`
-    );
-    return { success: true, currentStatus: data?.membership_status || status };
-  } catch (err: any) {
-    console.error(`[WEBHOOK] ❌ Error updating membership_status:`, err);
-    return { success: false, error: err.message };
-  }
-}
-
-// Helper function to extract user_id from subscription metadata or customer metadata
-async function extractUserIdFromSubscription(
-  subscription: Stripe.Subscription,
-  stripe: Stripe
-): Promise<string | null> {
-  // Try subscription metadata first
-  if (subscription.metadata?.user_id) {
-    console.log(`[WEBHOOK] Found user_id in subscription metadata: ${subscription.metadata.user_id}`);
-    return subscription.metadata.user_id;
-  }
-
-  // Fallback to customer metadata
-  if (typeof subscription.customer === "string") {
-    try {
-      const customer = await stripe.customers.retrieve(subscription.customer);
-      if (!customer.deleted && "metadata" in customer && customer.metadata?.user_id) {
-        console.log(`[WEBHOOK] Found user_id in customer metadata: ${customer.metadata.user_id}`);
-        return customer.metadata.user_id;
-      }
-    } catch (err) {
-      console.error("[WEBHOOK] ❌ Error retrieving customer:", err);
-    }
-  }
-
-  console.warn(`[WEBHOOK] ⚠️ Could not extract user_id from subscription ${subscription.id}`);
-  return null;
-}
-
-// Helper function to extract user_id from invoice (via subscription)
-async function extractUserIdFromInvoice(
-  invoice: Stripe.Invoice,
-  stripe: Stripe
-): Promise<string | null> {
-  // Try invoice metadata first
-  if (invoice.metadata?.user_id) {
-    console.log(`[WEBHOOK] Found user_id in invoice metadata: ${invoice.metadata.user_id}`);
-    return invoice.metadata.user_id;
-  }
-
-  // If invoice has subscription, get user_id from subscription
-  if (
-    "subscription" in invoice &&
-    typeof invoice.subscription === "string"
-  ) {
-    try {
-      const subscription = await stripe.subscriptions.retrieve(
-        invoice.subscription
+      console.error("[WEBHOOK] Failed to update profile_stats:", error);
+      return NextResponse.json(
+        { error: "Failed to update profile" },
+        { status: 500 }
       );
-      return await extractUserIdFromSubscription(subscription, stripe);
-    } catch (err) {
-      console.error("[WEBHOOK] ❌ Error retrieving subscription from invoice:", err);
     }
-  }
 
-  // Fallback to customer metadata
-  if (invoice.customer && typeof invoice.customer === "string") {
-    try {
-      const customer = await stripe.customers.retrieve(invoice.customer);
-      if (!customer.deleted && "metadata" in customer && customer.metadata?.user_id) {
-        console.log(`[WEBHOOK] Found user_id in invoice customer metadata: ${customer.metadata.user_id}`);
-        return customer.metadata.user_id;
-      }
-    } catch (err) {
-      console.error("[WEBHOOK] ❌ Error retrieving customer from invoice:", err);
+    if (!data) {
+      console.error("[WEBHOOK] No profile_stats row found for user_id", userId);
+      return NextResponse.json(
+        { error: "Profile not found" },
+        { status: 404 }
+      );
     }
-  }
 
-  console.warn(`[WEBHOOK] ⚠️ Could not extract user_id from invoice ${invoice.id}`);
-  return null;
+    return NextResponse.json({ received: true });
+  } catch (err) {
+    console.error("[WEBHOOK] Error updating profile_stats:", err);
+    return NextResponse.json(
+      { error: "Stripe webhook processing failed" },
+      { status: 500 }
+    );
+  }
 }
-
-// Map Stripe subscription status to payments (true = active paying subscription)
-function mapSubscriptionStatusToPayments(
-  stripeStatus: string
-): boolean {
-  // Active subscriptions → true (actively paying)
-  if (stripeStatus === "active" || stripeStatus === "trialing") {
-    return true;
-  }
-
-  // All other statuses → false (not actively paying)
-  // canceled, unpaid, incomplete_expired, paused, past_due
-  return false;
-}
-
-// Map Stripe subscription status to membership_status
-function mapSubscriptionStatusToMembership(
-  stripeStatus: string
-): "free" | "pro" | null {
-  // Active subscriptions → Pro
-  if (stripeStatus === "active" || stripeStatus === "trialing") {
-    return "pro";
-  }
-
-  // Past due → Keep as Pro (grace period)
-  if (stripeStatus === "past_due") {
-    return "pro";
-  }
-
-  // Cancelled/Unpaid/Expired/Paused → Free
-  if (
-    stripeStatus === "canceled" ||
-    stripeStatus === "unpaid" ||
-    stripeStatus === "incomplete_expired" ||
-    stripeStatus === "paused"
-  ) {
-    return "free";
-  }
-
-  // Unknown status → null (don't update)
-  return null;
 }
 
 export async function POST(req: NextRequest) {
