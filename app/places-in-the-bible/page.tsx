@@ -176,8 +176,16 @@ export default function PlacesInTheBiblePage() {
         setPlaceNotes(null);
         setPlaceCreditBlocked(false);
 
+        const place = selectedPlace;
+        if (!place) {
+          return;
+        }
+
         // Normalize: lowercase, trim, replace spaces with underscores
-        const normalizedPlace = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
+        const normalizedPlace = place.name
+          .toLowerCase()
+          .trim()
+          .replace(/\s+/g, "_");
 
         if (userId) {
           const isCompleted = completedPlaces.has(normalizedPlace);
