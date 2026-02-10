@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
+import { ACTION_TYPE } from "@/lib/actionTypes";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 
 interface Question {
@@ -156,7 +157,7 @@ export default function AbrahamTriviaPage() {
     async function loadUserAndQuestions() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
-        setUserId(user.id);
+        const creditResponse = await fetch("/api/consume-credit", {           method: "POST",           headers: {             "Content-Type": "application/json",           },           body: JSON.stringify({             actionType: ACTION_TYPE.trivia_started,           }),         });                  if (!creditResponse.ok) {           return;         } const creditResult = (await creditResponse.json()) as {           ok: boolean;           reason?: string;         };                  if (!creditResult.ok) {           return;         } setUserId(user.id);
         
         // Fetch user's progress for abraham questions
         const { data: progressData, error } = await supabase
@@ -210,7 +211,7 @@ export default function AbrahamTriviaPage() {
         const { data: { user } } = await supabase.auth.getUser();
         let username = "User";
         if (user) {
-          const meta: any = user.user_metadata || {};
+const meta: any = user.user_metadata || {};
           username = meta.firstName || meta.first_name || (user.email ? user.email.split("@")[0] : null) || "User";
         }
 
@@ -461,3 +462,8 @@ export default function AbrahamTriviaPage() {
     </div>
   );
 }
+
+
+
+
+

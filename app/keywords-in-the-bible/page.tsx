@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_KEYWORDS_LIST } from "../../lib/bibleKeywordsList";
 import { logStudyView } from "../../lib/studyViewLimit";
+import { ACTION_TYPE } from "../../lib/actionTypes";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -634,13 +635,13 @@ RULES:
                                 const keywordDisplayName = formatKeywordName(selectedKeyword.name);
 
                                 // Insert into master_actions with action_label
-                                console.log("[MASTER_ACTIONS] inserting:", { action_type: "keyword_mastered", action_label: keywordDisplayName });
+                                console.log("[MASTER_ACTIONS] inserting:", { action_type: ACTION_TYPE.keyword_mastered, action_label: keywordDisplayName });
                                 const { error: actionError } = await supabase
                                   .from("master_actions")
                                   .insert({
                                     user_id: userId,
                                     username: actionUsername ?? null,
-                                    action_type: "keyword_mastered",
+                                    action_type: ACTION_TYPE.keyword_mastered,
                                     action_label: keywordDisplayName,
                                   });
 

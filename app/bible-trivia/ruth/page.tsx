@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
+import { ACTION_TYPE } from "@/lib/actionTypes";
 
 interface Question {
   id: string;
@@ -705,7 +706,7 @@ export default function RuthTriviaPage() {
     async function loadUserAndQuestions() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
-        setUserId(user.id);
+        const creditResponse = await fetch("/api/consume-credit", {           method: "POST",           headers: {             "Content-Type": "application/json",           },           body: JSON.stringify({             actionType: ACTION_TYPE.trivia_started,           }),         });                  if (!creditResponse.ok) {           return;         } const creditResult = (await creditResponse.json()) as {           ok: boolean;           reason?: string;         };                  if (!creditResult.ok) {           return;         } setUserId(user.id);
 
         // Fetch user's progress for ruth questions
         const { data: progressData, error } = await supabase
@@ -762,7 +763,7 @@ export default function RuthTriviaPage() {
         const { data: { user } } = await supabase.auth.getUser();
         let username = "User";
         if (user) {
-          const meta: any = user.user_metadata || {};
+const meta: any = user.user_metadata || {};
           username =
             meta.firstName ||
             meta.first_name ||
@@ -1026,4 +1027,9 @@ export default function RuthTriviaPage() {
     </div>
   );
 }
+
+
+
+
+
 

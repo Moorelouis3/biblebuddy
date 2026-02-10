@@ -16,6 +16,7 @@ import { logStudyView } from "../../../../lib/studyViewLimit";
 import { BIBLE_PEOPLE_LIST } from "../../../../lib/biblePeopleList";
 import { BIBLE_PLACES_LIST } from "../../../../lib/biblePlacesList";
 import { BIBLE_KEYWORDS_LIST } from "../../../../lib/bibleKeywordsList";
+import { ACTION_TYPE } from "../../../../lib/actionTypes";
 
 type Verse = {
   num: number;
@@ -1357,13 +1358,13 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           const actionLabel = `${bookDisplayName} ${chapter}`;
 
           // Insert into master_actions with action_label
-          console.log("[MASTER_ACTIONS] inserting:", { action_type: "chapter_completed", action_label: actionLabel });
+          console.log("[MASTER_ACTIONS] inserting:", { action_type: ACTION_TYPE.chapter_completed, action_label: actionLabel });
           const { error: actionError } = await supabase
             .from("master_actions")
             .insert({
               user_id: userId,
               username: actionUsername ?? null,
-              action_type: "chapter_completed",
+              action_type: ACTION_TYPE.chapter_completed,
               action_label: actionLabel,
             });
 
@@ -1380,7 +1381,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               : sourceContext.id;
             
             console.log("[MASTER_ACTIONS] inserting reading plan completion:", { 
-              action_type: "reading_plan_chapter_completed", 
+              action_type: ACTION_TYPE.reading_plan_chapter_completed, 
               action_label: `${readingPlanLabel}: ${actionLabel}` 
             });
             const { error: readingPlanActionError } = await supabase
@@ -1388,7 +1389,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               .insert({
                 user_id: userId,
                 username: actionUsername ?? null,
-                action_type: "reading_plan_chapter_completed",
+                action_type: ACTION_TYPE.reading_plan_chapter_completed,
                 action_label: `${readingPlanLabel}: ${actionLabel}`,
               });
 
@@ -1402,13 +1403,13 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
             const bookIsComplete = await isBookComplete(userId, book);
             if (bookIsComplete) {
               // Book is complete - log book_completed action
-              console.log("[MASTER_ACTIONS] inserting:", { action_type: "book_completed", action_label: bookDisplayName });
+              console.log("[MASTER_ACTIONS] inserting:", { action_type: ACTION_TYPE.book_completed, action_label: bookDisplayName });
               const { error: bookActionError } = await supabase
                 .from("master_actions")
                 .insert({
                   user_id: userId,
                   username: actionUsername ?? null,
-                  action_type: "book_completed",
+                  action_type: ACTION_TYPE.book_completed,
                   action_label: bookDisplayName,
                 });
 
@@ -1823,7 +1824,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                                   .insert({
                                     user_id: userId,
                                     username: actionUsername ?? null,
-                                    action_type: "person_learned",
+                                    action_type: ACTION_TYPE.person_learned,
                                     action_label: personDisplayName,
                                   });
 
@@ -2031,7 +2032,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                                   .insert({
                                     user_id: userId,
                                     username: actionUsername ?? null,
-                                    action_type: "place_discovered",
+                                    action_type: ACTION_TYPE.place_discovered,
                                     action_label: placeDisplayName,
                                   });
 
@@ -2238,7 +2239,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                                   .insert({
                                     user_id: userId,
                                     username: actionUsername ?? null,
-                                    action_type: "keyword_mastered",
+                                    action_type: ACTION_TYPE.keyword_mastered,
                                     action_label: keywordDisplayName,
                                   });
 

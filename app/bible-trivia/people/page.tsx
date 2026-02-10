@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { ACTION_TYPE } from "@/lib/actionTypes";
 
 interface PeopleProgress {
   god: number;
@@ -24,7 +25,7 @@ export default function PeopleOfTheBiblePage() {
     async function fetchProgress() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
-        // Fetch progress for all people categories
+// Fetch progress for all people categories
         const { data: progressData, error } = await supabase
           .from('trivia_question_progress')
           .select('book, is_correct')
@@ -134,3 +135,6 @@ export default function PeopleOfTheBiblePage() {
     </div>
   );
 }
+
+
+

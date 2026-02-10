@@ -6,6 +6,7 @@
  */
 
 import { supabase } from "./supabaseClient";
+import { ACTION_TYPE } from "./actionTypes";
 
 /**
  * Track user activity (login/refresh)
@@ -61,13 +62,13 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
     }
 
     // Insert into master_actions (user_login has no action_label)
-    console.log("[MASTER_ACTIONS] inserting:", { action_type: "user_login", action_label: null });
+    console.log("[MASTER_ACTIONS] inserting:", { action_type: ACTION_TYPE.user_login, action_label: null });
     const { error: actionError } = await supabase
       .from("master_actions")
       .insert({
         user_id: userId,
         username: username ?? null,
-        action_type: "user_login",
+        action_type: ACTION_TYPE.user_login,
       });
 
     if (actionError) {

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { supabase } from "../../lib/supabaseClient";
 import NewNoteModal from "../../components/NewNoteModal";
+import { ACTION_TYPE } from "../../lib/actionTypes";
 
 type Note = {
   id: string;
@@ -344,13 +345,13 @@ export default function NotesPage() {
         }
 
         // Insert into master_actions (note_created has no action_label)
-        console.log("[MASTER_ACTIONS] inserting:", { action_type: "note_created", action_label: null });
+        console.log("[MASTER_ACTIONS] inserting:", { action_type: ACTION_TYPE.note_created, action_label: null });
         const { error: actionError } = await supabase
           .from("master_actions")
           .insert({
             user_id: userId,
             username: actionUsername ?? null,
-            action_type: "note_created",
+            action_type: ACTION_TYPE.note_created,
           });
 
         if (actionError) {

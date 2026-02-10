@@ -6,6 +6,7 @@ import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
 import DevotionalDayModal from "../../../components/DevotionalDayModal";
 import DevotionalDayCompletionModal from "../../../components/DevotionalDayCompletionModal";
+import { ACTION_TYPE } from "../../../lib/actionTypes";
 
 interface Devotional {
   id: string;
@@ -148,8 +149,40 @@ export default function DevotionalDetailPage() {
     return prevDayProgress?.is_completed === true;
   };
 
-  const handleDayClick = (day: DevotionalDay) => {
-    if (isDayUnlocked(day.day_number)) {
+  const handleDayClick = async (day: DevotionalDay) => {
+    if (!isDayUnlocked(day.day_number)) {
+      return;
+    }
+
+    const requiresCredit = devotional?.title === "The Tempting of Jesus";
+    let canOpen = true;
+
+    if (requiresCredit && userId) {
+      const creditResponse = await fetch("/api/consume-credit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          actionType: ACTION_TYPE.devotional_day_started,
+        }),
+      });
+
+      if (!creditResponse.ok) {
+        canOpen = false;
+      } else {
+        const creditResult = (await creditResponse.json().catch(() => ({}))) as {
+          ok?: boolean;
+          reason?: string;
+        };
+
+        if (creditResult.ok === false) {
+          canOpen = false;
+        }
+      }
+    }
+
+    if (canOpen) {
       setSelectedDay(day);
     }
   };
@@ -257,7 +290,7 @@ export default function DevotionalDetailPage() {
 
             // STEP 1: Insert into master_actions
             console.log("[MASTER_ACTIONS] inserting:", { 
-              action_type: "devotional_day_completed", 
+              action_type: ACTION_TYPE.devotional_day_completed, 
               action_label: actionLabel,
               user_id: userId,
               username: actionUsername 
@@ -268,7 +301,7 @@ export default function DevotionalDetailPage() {
               .insert({
                 user_id: userId,
                 username: actionUsername ?? null,
-                action_type: "devotional_day_completed",
+                action_type: ACTION_TYPE.devotional_day_completed,
                 action_label: actionLabel,
               })
               .select();

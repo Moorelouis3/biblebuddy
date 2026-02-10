@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 
@@ -13,6 +14,7 @@ interface Devotional {
 }
 
 export default function DevotionalsPage() {
+  const router = useRouter();
   const [devotionals, setDevotionals] = useState<Devotional[]>([]);
   const [loading, setLoading] = useState(true);
   const [isInstructionsExpanded, setIsInstructionsExpanded] = useState(true);
@@ -207,19 +209,44 @@ export default function DevotionalsPage() {
                   return null;
                 }
 
+                const isTemptingOfJesus = devotional.title === "The Tempting of Jesus";
+                const card = (
+                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 hover:shadow-xl hover:scale-[1.01] transition-all duration-200 cursor-pointer">
+                    <img
+                      src={coverImage}
+                      alt={`${devotional.title} cover`}
+                      className="w-full h-auto rounded-lg object-contain"
+                    />
+                  </div>
+                );
+
+                if (isTemptingOfJesus) {
+                  return (
+                    <div
+                      key={devotional.id}
+                      role="link"
+                      tabIndex={0}
+                      className="block w-full"
+                      onClick={() => router.push(`/devotionals/${devotional.id}`)}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault();
+                          router.push(`/devotionals/${devotional.id}`);
+                        }
+                      }}
+                    >
+                      {card}
+                    </div>
+                  );
+                }
+
                 return (
                   <Link
                     key={devotional.id}
                     href={`/devotionals/${devotional.id}`}
                     className="block w-full"
                   >
-                    <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 hover:shadow-xl hover:scale-[1.01] transition-all duration-200 cursor-pointer">
-                      <img
-                        src={coverImage}
-                        alt={`${devotional.title} cover`}
-                        className="w-full h-auto rounded-lg object-contain"
-                      />
-                    </div>
+                    {card}
                   </Link>
                 );
               })}
@@ -251,19 +278,44 @@ export default function DevotionalsPage() {
                   return null;
                 }
 
+                const isTemptingOfJesus = devotional.title === "The Tempting of Jesus";
+                const card = (
+                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer">
+                    <img
+                      src={coverImage}
+                      alt={`${devotional.title} cover`}
+                      className="w-full h-auto rounded-lg object-contain"
+                    />
+                  </div>
+                );
+
+                if (isTemptingOfJesus) {
+                  return (
+                    <div
+                      key={devotional.id}
+                      role="link"
+                      tabIndex={0}
+                      className="block w-full max-w-xs"
+                      onClick={() => router.push(`/devotionals/${devotional.id}`)}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault();
+                          router.push(`/devotionals/${devotional.id}`);
+                        }
+                      }}
+                    >
+                      {card}
+                    </div>
+                  );
+                }
+
                 return (
                   <Link
                     key={devotional.id}
                     href={`/devotionals/${devotional.id}`}
                     className="block w-full max-w-xs"
                   >
-                    <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer">
-                      <img
-                        src={coverImage}
-                        alt={`${devotional.title} cover`}
-                        className="w-full h-auto rounded-lg object-contain"
-                      />
-                    </div>
+                    {card}
                   </Link>
                 );
               })}

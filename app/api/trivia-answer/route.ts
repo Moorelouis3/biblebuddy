@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { ACTION_TYPE } from '@/lib/actionTypes';
 
 // Server-side Supabase client with service role (bypasses RLS)
 const supabase = createClient(
@@ -29,14 +30,14 @@ export async function POST(request: NextRequest) {
     // Format action_label (genesis01 -> genesis_01)
     const actionLabel = questionId.replace(/(\w+)(\d+)/, '$1_$2');
 
-    console.log('Inserting trivia answer:', { userId, actionType: 'trivia_question_answered', actionLabel, username });
+    console.log('Inserting trivia answer:', { userId, actionType: ACTION_TYPE.trivia_question_answered, actionLabel, username });
 
     // Insert into master_actions using service role (bypasses RLS)
     const { error: insertError } = await supabase
       .from('master_actions')
       .insert({
         user_id: userId,
-        action_type: 'trivia_question_answered',
+        action_type: ACTION_TYPE.trivia_question_answered,
         action_label: actionLabel,
         username: username || 'User'
       });

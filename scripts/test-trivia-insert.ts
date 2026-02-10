@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { config } from 'dotenv';
+import { ACTION_TYPE } from '../lib/actionTypes';
 
 // Load environment variables
 config({ path: '../.env.local' });
@@ -22,7 +23,7 @@ async function testTriviaInsert() {
     .from('master_actions')
     .insert({
       user_id: testUserId,
-      action_type: 'trivia_question_answered',
+      action_type: ACTION_TYPE.trivia_question_answered,
       action_label: testQuestionId,
       username: testUsername
     })

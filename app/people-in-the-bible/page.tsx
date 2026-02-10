@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_PEOPLE_LIST } from "../../lib/biblePeopleList";
 import { logStudyView } from "../../lib/studyViewLimit";
+import { ACTION_TYPE } from "../../lib/actionTypes";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -1017,13 +1018,13 @@ FINAL RULES:
                                 const personDisplayName = formatPersonName(selectedPerson.name);
 
                                 // Insert into master_actions with action_label
-                                console.log("[MASTER_ACTIONS] inserting:", { action_type: "person_learned", action_label: personDisplayName });
+                                console.log("[MASTER_ACTIONS] inserting:", { action_type: ACTION_TYPE.person_learned, action_label: personDisplayName });
                                 const { error: actionError } = await supabase
                                   .from("master_actions")
                                   .insert({
                                     user_id: userId,
                                     username: actionUsername ?? null,
-                                    action_type: "person_learned",
+                                    action_type: ACTION_TYPE.person_learned,
                                     action_label: personDisplayName,
                                   });
 

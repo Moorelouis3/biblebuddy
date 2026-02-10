@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import ReactMarkdown from "react-markdown";
+import { ACTION_TYPE } from "@/lib/actionTypes";
 
 export default function ChapterNotesPage() {
   const params = useParams();
@@ -153,7 +154,36 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
     try {
       setLoadingNotes(true);
+      setNotesText("");
       setNotesError(null);
+
+      const creditResponse = await fetch("/api/consume-credit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          actionType: ACTION_TYPE.chapter_notes_viewed,
+        }),
+      });
+
+      if (!creditResponse.ok) {
+        const errorText = await creditResponse.text();
+        throw new Error(`Failed to check credits: ${creditResponse.statusText}. ${errorText}`);
+      }
+
+      const creditResult = (await creditResponse.json()) as {
+        ok: boolean;
+        reason?: string;
+      };
+
+      if (!creditResult.ok) {
+        if (creditResult.reason === "no_credits") {
+          return;
+        }
+
+        throw new Error("Failed to check credits.");
+      }
 
       // CRITICAL: Normalize book name to lowercase for consistent database queries
       // Database stores book names in lowercase (e.g., "mark", "matthew")

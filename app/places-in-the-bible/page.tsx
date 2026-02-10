@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_PLACES_LIST } from "../../lib/biblePlacesList";
 import { logStudyView } from "../../lib/studyViewLimit";
+import { ACTION_TYPE } from "../../lib/actionTypes";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -625,13 +626,13 @@ RULES:
                                 const placeDisplayName = formatPlaceName(selectedPlace.name);
 
                                 // Insert into master_actions with action_label
-                                console.log("[MASTER_ACTIONS] inserting:", { action_type: "place_discovered", action_label: placeDisplayName });
+                                console.log("[MASTER_ACTIONS] inserting:", { action_type: ACTION_TYPE.place_discovered, action_label: placeDisplayName });
                                 const { error: actionError } = await supabase
                                   .from("master_actions")
                                   .insert({
                                     user_id: userId,
                                     username: actionUsername ?? null,
-                                    action_type: "place_discovered",
+                                    action_type: ACTION_TYPE.place_discovered,
                                     action_label: placeDisplayName,
                                   });
 

@@ -5,6 +5,7 @@
  */
 
 import { supabase } from "./supabaseClient";
+import { ACTION_TYPE } from "./actionTypes";
 
 /**
  * Check if user can access a study view (Person, Place, or Keyword)
@@ -29,10 +30,17 @@ export async function logStudyView(
   actionLabel: "person" | "place" | "keyword"
 ): Promise<boolean> {
   try {
+    const actionType =
+      actionLabel === "person"
+        ? ACTION_TYPE.person_learned
+        : actionLabel === "place"
+          ? ACTION_TYPE.place_discovered
+          : ACTION_TYPE.keyword_mastered;
+
     console.log("[STUDY_VIEW] Attempting study_view insert:", {
       user_id: userId,
       username: username ?? null,
-      action_type: "study_view",
+      action_type: actionType,
       action_label: actionLabel,
     });
 
@@ -41,7 +49,7 @@ export async function logStudyView(
       .insert({
         user_id: userId,
         username: username ?? null,
-        action_type: "study_view",
+        action_type: actionType,
         action_label: actionLabel,
       })
       .select();

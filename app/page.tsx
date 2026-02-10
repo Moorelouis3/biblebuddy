@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState, useEffect, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { ACTION_TYPE } from "@/lib/actionTypes";
 
 export default function LandingPage() {
   const router = useRouter();
@@ -106,7 +107,7 @@ export default function LandingPage() {
         .insert({
           user_id: user.id,
           username: username,
-          action_type: "user_signup",
+          action_type: ACTION_TYPE.user_signup,
           action_label: "Signed up for Bible Buddy",
           created_at: new Date().toISOString(),
         });

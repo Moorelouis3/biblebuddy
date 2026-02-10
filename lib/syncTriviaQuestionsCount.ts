@@ -6,6 +6,7 @@
  */
 
 import { supabase } from "./supabaseClient";
+import { ACTION_TYPE } from "./actionTypes";
 
 /**
  * Sync trivia questions answered count from master_actions table to profile_stats
@@ -19,7 +20,7 @@ export async function syncTriviaQuestionsCount(userId: string): Promise<boolean>
       .from("master_actions")
       .select("*", { count: "exact", head: true })
       .eq("user_id", userId)
-      .eq("action_type", "trivia_question_answered");
+      .eq("action_type", ACTION_TYPE.trivia_question_answered);
 
     if (countError) {
       console.error("[SYNC TRIVIA] Error counting trivia questions:", countError);

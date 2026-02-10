@@ -9,16 +9,7 @@
  */
 
 import { supabase } from "./supabaseClient";
-
-export type ActionType =
-  | "user_login"
-  | "chapter_completed"
-  | "book_completed"
-  | "note_created"
-  | "person_learned"
-  | "place_discovered"
-  | "keyword_mastered"
-  | "trivia_question_answered";
+import type { ActionType } from "./actionTypes";
 
 /**
  * Log an action to master_actions table ONLY

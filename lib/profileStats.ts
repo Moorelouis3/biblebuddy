@@ -5,6 +5,7 @@
  */
 
 import { supabase } from "./supabaseClient";
+import { ACTION_TYPE } from "./actionTypes";
 
 export interface ProfileStats {
   total_actions: number;
@@ -149,12 +150,12 @@ export interface StreakData {
 // Valid action types that count toward streak
 // Includes all Bible study actions except user_login
 const STREAK_ACTION_TYPES = [
-  "chapter_completed",
-  "book_completed",
-  "person_learned",
-  "place_discovered",
-  "keyword_mastered",
-  "note_created",
+  ACTION_TYPE.chapter_completed,
+  ACTION_TYPE.book_completed,
+  ACTION_TYPE.person_learned,
+  ACTION_TYPE.place_discovered,
+  ACTION_TYPE.keyword_mastered,
+  ACTION_TYPE.note_created,
 ];
 
 export async function calculateStreakFromActions(

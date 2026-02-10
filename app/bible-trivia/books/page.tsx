@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { ACTION_TYPE } from "@/lib/actionTypes";
 
 const BOOK_CARDS = [
   {
@@ -695,7 +696,7 @@ export default function BooksOfTheBiblePage() {
     async function fetchProgress() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
-        // Fetch progress for all books
+// Fetch progress for all books
         const { data: progressData, error } = await supabase
           .from("trivia_question_progress")
           .select("book, is_correct")
@@ -1037,3 +1038,6 @@ export default function BooksOfTheBiblePage() {
     </div>
   );
 }
+
+
+
