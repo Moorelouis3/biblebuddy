@@ -554,7 +554,12 @@ export default function PeopleInTheBiblePage() {
         setPersonNotes(null);
         setPersonCreditBlocked(false);
 
-        const personNameKey = selectedPerson.name.toLowerCase().trim();
+        const person = selectedPerson;
+        if (!person) {
+          return;
+        }
+
+        const personNameKey = person.name.toLowerCase().trim();
 
         if (userId) {
           const isCompleted = completedPeople.has(personNameKey);
@@ -611,7 +616,7 @@ export default function PeopleInTheBiblePage() {
         // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
         // DO NOT continue to generation - this prevents duplicate ChatGPT calls
         if (existing?.notes_text && existing.notes_text.trim().length > 0) {
-          console.log(`[bible_people_notes] Found existing notes for ${selectedPerson.name}, returning immediately (ChatGPT will NOT be called)`);
+          console.log(`[bible_people_notes] Found existing notes for ${person.name}, returning immediately (ChatGPT will NOT be called)`);
           setPersonNotes(existing.notes_text);
           setLoadingNotes(false);
           return;
