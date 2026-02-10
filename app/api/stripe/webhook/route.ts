@@ -74,6 +74,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const supabase = getSupabaseAdminClient();
+    console.log("[WEBHOOK] Updating is_paid for user_id:", userId);
     const { data, error } = await supabase
       .from("profile_stats")
       .update({ is_paid: true })
