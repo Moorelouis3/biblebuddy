@@ -138,7 +138,7 @@ export default function SettingsPage() {
     setPromoSuccess(false);
 
     try {
-      const response = await fetch("/api/promo/apply-code", {
+      const response = await fetch("/api/upgrade/code", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
