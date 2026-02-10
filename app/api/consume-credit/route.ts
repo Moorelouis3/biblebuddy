@@ -8,11 +8,20 @@ type ConsumeCreditRequest = {
   actionType?: string;
 };
 
-const allowedActionTypes = new Set([
+type AllowedActionType =
+  | typeof ACTION_TYPE.chapter_notes_viewed
+  | typeof ACTION_TYPE.devotional_day_started
+  | typeof ACTION_TYPE.trivia_started;
+
+const allowedActionTypes = new Set<AllowedActionType>([
   ACTION_TYPE.chapter_notes_viewed,
   ACTION_TYPE.devotional_day_started,
   ACTION_TYPE.trivia_started,
 ]);
+
+function isAllowedActionType(value: string): value is AllowedActionType {
+  return isActionType(value) && allowedActionTypes.has(value as AllowedActionType);
+}
 
 export async function POST(req: NextRequest) {
   let body: ConsumeCreditRequest;
@@ -26,7 +35,7 @@ export async function POST(req: NextRequest) {
   }
 
   const actionType = typeof body.actionType === "string" ? body.actionType : "";
-  if (!isActionType(actionType) || !allowedActionTypes.has(actionType)) {
+  if (!isAllowedActionType(actionType)) {
     return NextResponse.json(
       { ok: false, error: "Invalid action type" },
       { status: 400 }
