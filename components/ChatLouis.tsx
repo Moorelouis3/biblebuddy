@@ -3,6 +3,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import { LouisAvatar } from "./LouisAvatar";
+import { supabase } from "../lib/supabaseClient";
+import { FeatureTourModal } from "./FeatureTourModal";
+import { DEFAULT_FEATURE_TOURS, normalizeFeatureTours } from "../lib/featureTours";
 
 type MessageRole = "user" | "assistant";
 
@@ -59,6 +62,10 @@ declare global {
 
 export function ChatLouis() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showChatTourModal, setShowChatTourModal] = useState(false);
+  const [isSavingChatTour, setIsSavingChatTour] = useState(false);
+  const [chatTourUserId, setChatTourUserId] = useState<string | null>(null);
+  const [chatFeatureTours, setChatFeatureTours] = useState({ ...DEFAULT_FEATURE_TOURS });
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
@@ -307,6 +314,112 @@ export function ChatLouis() {
     setIsListening((prev) => !prev);
   }
 
+  async function handleChatButtonClick() {
+    const {
+      data: { session },
+      error: sessionError,
+    } = await supabase.auth.getSession();
+
+    if (sessionError) {
+      console.error("[FEATURE_TOURS] Error loading session for chat tour:", sessionError);
+      return;
+    }
+
+    const authUserId = session?.user?.id;
+
+    if (!authUserId) {
+      setIsOpen(true);
+      return;
+    }
+
+    setChatTourUserId(authUserId);
+
+    const { data: profileStats, error: profileStatsError } = await supabase
+      .from("profile_stats")
+      .select("feature_tours")
+      .eq("user_id", authUserId)
+      .maybeSingle();
+
+    if (profileStatsError) {
+      console.error("[FEATURE_TOURS] Error loading chat tour status:", profileStatsError);
+      return;
+    }
+
+    if (!profileStats) {
+      const { error: upsertError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: authUserId,
+            feature_tours: { ...DEFAULT_FEATURE_TOURS },
+          },
+          { onConflict: "user_id" }
+        );
+
+      if (upsertError) {
+        console.error("[FEATURE_TOURS] Error creating chat tour profile row:", upsertError);
+        return;
+      }
+
+      setChatFeatureTours({ ...DEFAULT_FEATURE_TOURS });
+      setShowChatTourModal(true);
+      return;
+    }
+
+    const normalizedTours = normalizeFeatureTours(profileStats.feature_tours);
+    setChatFeatureTours(normalizedTours);
+
+    if (normalizedTours.chat_widget === true) {
+      setIsOpen(true);
+      return;
+    }
+
+    setShowChatTourModal(true);
+  }
+
+  async function handleChatTourUnderstand() {
+    if (!chatTourUserId) return;
+
+    setIsSavingChatTour(true);
+
+    const mergedFeatureTours = {
+      ...chatFeatureTours,
+      chat_widget: true,
+    };
+
+    const { error: updateError } = await supabase
+      .from("profile_stats")
+      .update({
+        feature_tours: mergedFeatureTours,
+      })
+      .eq("user_id", chatTourUserId);
+
+    if (updateError) {
+      console.error("[FEATURE_TOURS] Error updating chat tour:", updateError);
+
+      const { error: upsertError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: chatTourUserId,
+            feature_tours: mergedFeatureTours,
+          },
+          { onConflict: "user_id" }
+        );
+
+      if (upsertError) {
+        console.error("[FEATURE_TOURS] Error upserting chat tour:", upsertError);
+        setIsSavingChatTour(false);
+        return;
+      }
+    }
+
+    setChatFeatureTours(mergedFeatureTours);
+    setShowChatTourModal(false);
+    setIsSavingChatTour(false);
+    setIsOpen(true);
+  }
+
   async function handleSend() {
     const trimmed = input.trim();
     if (!trimmed) return;
@@ -405,9 +518,9 @@ export function ChatLouis() {
       {!isOpen && (
         <button
           ref={buttonRef}
-          onClick={(e) => {
+          onClick={async (e) => {
             if (!isDragging) {
-              setIsOpen(true);
+              await handleChatButtonClick();
             }
           }}
           onPointerDown={handlePointerDown}
@@ -581,6 +694,15 @@ export function ChatLouis() {
           </div>
         </div>
       )}
+
+      <FeatureTourModal
+        isOpen={showChatTourModal}
+        title="Welcome to Chat with Louis"
+        body="This chat helps you ask Bible questions instantly while you study so you can stay focused in your reading flow."
+        isSaving={isSavingChatTour}
+        onClose={() => setShowChatTourModal(false)}
+        onUnderstand={handleChatTourUnderstand}
+      />
     </>
   );
 }

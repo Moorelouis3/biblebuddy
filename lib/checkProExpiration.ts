@@ -9,7 +9,6 @@ export async function checkProExpiration(userId: string): Promise<void> {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 
     if (!serviceKey || !url) {
-      console.error("[PRO_EXPIRATION] Supabase service role key or URL not configured");
       return;
     }
 
@@ -28,7 +27,6 @@ export async function checkProExpiration(userId: string): Promise<void> {
       .maybeSingle();
 
     if (fetchError) {
-      console.error("[PRO_EXPIRATION] Error fetching profile stats:", fetchError);
       return;
     }
 
@@ -63,13 +61,11 @@ export async function checkProExpiration(userId: string): Promise<void> {
         .eq("user_id", userId);
 
       if (updateError) {
-        console.error("[PRO_EXPIRATION] Error reverting to Free:", updateError);
-      } else {
-        console.log(`[PRO_EXPIRATION] ✅ Successfully reverted user ${userId} to Free`);
+        return;
       }
     }
-  } catch (err: any) {
-    console.error("[PRO_EXPIRATION] Error checking Pro expiration:", err);
+  } catch (_err: unknown) {
+    return;
   }
 }
 

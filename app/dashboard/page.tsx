@@ -1,12 +1,20 @@
 // app/dashboard/page.tsx
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
 import { getProfileStats } from "../../lib/profileStats";
 import AdSlot from "../../components/AdSlot";
+import { FeatureTourModal } from "../../components/FeatureTourModal";
+import {
+  DEFAULT_FEATURE_TOURS,
+  normalizeFeatureTours,
+  type FeatureTourKey,
+  type FeatureToursState,
+} from "../../lib/featureTours";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -93,6 +101,7 @@ const BOOKS = [
 ];
 
 export default function DashboardPage() {
+  const router = useRouter();
   const [userName, setUserName] = useState<string>("buddy");
   const [userId, setUserId] = useState<string | null>(null);
 
@@ -123,6 +132,115 @@ export default function DashboardPage() {
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
   const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null } | null>(null);
+  const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
+  const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
+  const [activeTourKey, setActiveTourKey] = useState<FeatureTourKey | null>(null);
+  const [pendingTourNavigation, setPendingTourNavigation] = useState<string | null>(null);
+  const [isSavingFeatureTour, setIsSavingFeatureTour] = useState(false);
+
+  const TOUR_COPY: Record<FeatureTourKey, { title: string; body: string }> = {
+    dashboard: {
+      title: "Welcome to your Dashboard",
+      body: "This is your main study home where you can track your level, keep momentum, and jump into each Bible Buddy feature.",
+    },
+    bible: {
+      title: "Welcome to The Bible Section",
+      body: "This is where you can start reading Scripture, follow reading plans, and explore books of the Bible.",
+    },
+    guided_studies: {
+      title: "Welcome to Guided Studies",
+      body: "This is where you can follow structured studies designed to help you understand Scripture step by step.",
+    },
+    bible_reference: {
+      title: "Welcome to Bible References",
+      body: "This section helps you quickly explore people, places, and keywords to understand biblical context.",
+    },
+    bible_trivia: {
+      title: "Welcome to Bible Trivia",
+      body: "This is where you can test what you’ve learned and strengthen your Bible knowledge through quizzes.",
+    },
+    notes: {
+      title: "Welcome to Notes",
+      body: "Use this section to capture insights, organize your study thoughts, and keep track of what God is teaching you.",
+    },
+    chat_widget: {
+      title: "Welcome to Chat with Louis",
+      body: "This chat helps you ask Bible questions instantly while you study so you can stay focused in your reading flow.",
+    },
+  };
+
+  const DASHBOARD_TOUR_CONTENT = (
+    <div className="space-y-6">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
+        Welcome to Your Dashboard
+      </h1>
+
+      <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+        This is your Bible study command center. Here’s how everything works:
+      </p>
+
+      <div className="space-y-5">
+        <section className="space-y-2">
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">📈 Level &amp; Points</h2>
+          <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+            Complete actions, earn points, and level up.
+            <br />Click the question mark on the card to learn how leveling works.
+          </p>
+        </section>
+
+        <section className="space-y-2">
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 The Bible</h2>
+          <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+            Read Scripture here without distractions.
+            <br />Your progress and study flow stay in one place.
+          </p>
+        </section>
+
+        <section className="space-y-2">
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">🧭 Guided Studies</h2>
+          <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+            Find reading plans, devotionals, and structured study guides to go deeper.
+          </p>
+        </section>
+
+        <section className="space-y-2">
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">📚 Bible References</h2>
+          <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+            Look up people, places, and keywords to understand context instantly.
+          </p>
+        </section>
+
+        <section className="space-y-2">
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">🎯 Bible Trivia</h2>
+          <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+            Test your knowledge and reinforce what you’ve learned.
+          </p>
+        </section>
+
+        <section className="space-y-2">
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">📝 Notes</h2>
+          <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+            Create, save, and organize your personal Bible study notes.
+          </p>
+        </section>
+
+        <section className="space-y-2">
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">🤖 Little Louis (Chat Icon)</h2>
+          <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+            Your AI Bible Buddy.
+            <br />Ask questions about Scripture, history, or context anytime.
+          </p>
+        </section>
+
+        <section className="space-y-2">
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">⚙️ Menu (Top Right Corner)</h2>
+          <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+            Access your profile, settings, analytics, and account details.
+          </p>
+        </section>
+      </div>
+    </div>
+  );
 
   // load user first name from Supabase
   useEffect(() => {
@@ -145,42 +263,144 @@ export default function DashboardPage() {
     loadUser();
   }, []);
 
-  // Load Pro expiration data
   useEffect(() => {
-    async function loadProExpiration() {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+    async function loadFeatureTours() {
+      if (!userId) return;
 
-      try {
-        const { data, error } = await supabase
+      const { data, error } = await supabase
+        .from("profile_stats")
+        .select("feature_tours")
+        .eq("user_id", userId)
+        .maybeSingle();
+
+      if (error) {
+        console.error("[FEATURE_TOURS] Error loading feature_tours:", error);
+        setFeatureTours({ ...DEFAULT_FEATURE_TOURS });
+        setFeatureToursLoaded(true);
+        setActiveTourKey("dashboard");
+        setPendingTourNavigation(null);
+        return;
+      }
+
+      if (!data) {
+        const { error: upsertError } = await supabase
           .from("profile_stats")
-          .select("membership_status, pro_expires_at, is_paid, daily_credits")
-          .eq("user_id", user.id)
-          .single();
+          .upsert(
+            {
+              user_id: userId,
+              feature_tours: { ...DEFAULT_FEATURE_TOURS },
+            },
+            { onConflict: "user_id" }
+          );
 
-        if (error && error.code !== "PGRST116") {
-          console.error("Error loading Pro expiration:", error);
-          return;
+        if (upsertError) {
+          console.error("[FEATURE_TOURS] Error creating profile_stats row for tours:", upsertError);
         }
 
-        if (data) {
-          const normalizedIsPaid = data.is_paid === true;
-          const normalizedDailyCredits =
-            typeof data.daily_credits === "number" ? data.daily_credits : 0;
+        setFeatureTours({ ...DEFAULT_FEATURE_TOURS });
+        setFeatureToursLoaded(true);
+        setActiveTourKey("dashboard");
+        setPendingTourNavigation(null);
+        return;
+      }
 
-          setMembershipStatus(data.membership_status);
-          setProExpiresAt(data.pro_expires_at);
-          setProfile({
-            is_paid: normalizedIsPaid,
-            daily_credits: normalizedDailyCredits,
-          });
-        }
-      } catch (err) {
-        console.error("Error loading Pro expiration:", err);
+      const normalizedFeatureTours = normalizeFeatureTours(data.feature_tours);
+      setFeatureTours(normalizedFeatureTours);
+      setFeatureToursLoaded(true);
+
+      if (normalizedFeatureTours.dashboard !== true) {
+        setActiveTourKey("dashboard");
+        setPendingTourNavigation(null);
       }
     }
 
-    loadProExpiration();
+    loadFeatureTours();
+  }, [userId]);
+
+  async function handleTourUnderstand() {
+    if (!activeTourKey || !userId) return;
+
+    setIsSavingFeatureTour(true);
+
+    const mergedFeatureTours = {
+      ...featureTours,
+      [activeTourKey]: true,
+    };
+
+    const { error: updateError } = await supabase
+      .from("profile_stats")
+      .update({
+        feature_tours: mergedFeatureTours,
+      })
+      .eq("user_id", userId);
+
+    if (updateError) {
+      console.error("[FEATURE_TOURS] Error updating feature_tours:", updateError);
+
+      const { error: upsertError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            feature_tours: mergedFeatureTours,
+          },
+          { onConflict: "user_id" }
+        );
+
+      if (upsertError) {
+        console.error("[FEATURE_TOURS] Error upserting feature_tours:", upsertError);
+        setIsSavingFeatureTour(false);
+        return;
+      }
+    }
+
+    setFeatureTours(mergedFeatureTours);
+    const nextPath = pendingTourNavigation;
+    setActiveTourKey(null);
+    setPendingTourNavigation(null);
+    setIsSavingFeatureTour(false);
+
+    if (nextPath) {
+      router.push(nextPath);
+    }
+  }
+
+  function handleTourClose() {
+    const nextPath = pendingTourNavigation;
+    setActiveTourKey(null);
+    setPendingTourNavigation(null);
+
+    if (nextPath) {
+      router.push(nextPath);
+    }
+  }
+
+  function handleCardClick(
+    event: MouseEvent<HTMLAnchorElement>,
+    tourKey: FeatureTourKey,
+    path: string
+  ) {
+    if (!featureToursLoaded) {
+      router.push(path);
+      return;
+    }
+
+    event.preventDefault();
+
+    if (featureTours[tourKey] === true) {
+      router.push(path);
+      return;
+    }
+
+    setActiveTourKey(tourKey);
+    setPendingTourNavigation(path);
+  }
+
+  // Load Pro expiration data
+  useEffect(() => {
+    // Temporarily disabled for dashboard stabilization
+    setMembershipStatus(null);
+    setProExpiresAt(null);
   }, []);
 
   // Update countdown timer in real-time
@@ -211,21 +431,23 @@ export default function DashboardPage() {
   // Load level data based on total_actions (FAST - only queries total_actions)
   useEffect(() => {
     async function loadLevelData() {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
+      if (!userId) {
         setIsLoadingLevel(false);
         return;
       }
 
+      setIsLoadingLevel(true);
       try {
-        setIsLoadingLevel(true);
-        
         // FAST QUERY: Get total_actions plus daily credits/pay status from profile_stats
         const { data, error } = await supabase
           .from("profile_stats")
           .select("total_actions, is_paid, daily_credits")
-          .eq("user_id", user.id)
+          .eq("user_id", userId)
           .single();
+
+        if (error && error.code !== "PGRST116") {
+          throw error;
+        }
 
         const totalActions = (data?.total_actions || 0) as number;
         if (data) {
@@ -399,15 +621,15 @@ export default function DashboardPage() {
 
         setLevelInfo(levelInfoData);
         setMotivationalMessage(randomMessage);
-        setIsLoadingLevel(false);
       } catch (err) {
-        console.error("Error loading level data:", err);
+        console.warn("Error loading level data:", err);
+      } finally {
         setIsLoadingLevel(false);
       }
     }
 
     loadLevelData();
-  }, []);
+  }, [userId]);
 
   // Load other dashboard data (separate, non-blocking)
   useEffect(() => {
@@ -424,7 +646,7 @@ export default function DashboardPage() {
         const totalCount = await getTotalCompletedChapters(user.id, BOOKS);
         setTotalCompletedChapters(totalCount);
       } catch (err) {
-        console.error("Error loading other dashboard data:", err);
+        console.warn("Error loading other dashboard data:", err);
       }
     }
 
@@ -630,7 +852,7 @@ export default function DashboardPage() {
           )}
 
           {/* THE BIBLE */}
-          <Link href="/reading">
+          <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}>
             <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
               <h2 className="text-xl font-semibold">📖 The Bible</h2>
               <p className="text-gray-700 mt-1">{readingSubtitle}</p>
@@ -638,7 +860,7 @@ export default function DashboardPage() {
           </Link>
 
           {/* GUIDED STUDIES HUB */}
-          <Link href="/guided-studies">
+          <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}>
             <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
               <h2 className="text-xl font-semibold">Guided Studies</h2>
               <p className="text-gray-700 mt-1">Structured ways to study Scripture</p>
@@ -646,15 +868,15 @@ export default function DashboardPage() {
           </Link>
 
           {/* BIBLE REFERENCE HUB */}
-          <Link href="/bible-reference">
+          <Link href="/bible-reference" onClick={(event) => handleCardClick(event, "bible_reference", "/bible-reference")}>
             <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">Bible Reference</h2>
+              <h2 className="text-xl font-semibold">Bible References</h2>
               <p className="text-gray-700 mt-1">Tools to understand Scripture</p>
             </div>
           </Link>
 
           {/* BIBLE TRIVIA */}
-          <Link href="/bible-trivia">
+          <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}>
             <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
               <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2>
               <p className="text-gray-700 mt-1">
@@ -664,7 +886,7 @@ export default function DashboardPage() {
           </Link>
 
           {/* NOTES */}
-          <Link href="/notes">
+          <Link href="/notes" onClick={(event) => handleCardClick(event, "notes", "/notes")}>
             <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
               <h2 className="text-xl font-semibold">📝 Notes</h2>
               <p className="text-gray-700 mt-1">
@@ -799,7 +1021,7 @@ export default function DashboardPage() {
           )}
 
           {/* THE BIBLE */}
-          <Link href="/reading">
+          <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}>
             <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
               <h2 className="text-xl font-semibold">📖 The Bible</h2>
               <p className="text-gray-700 mt-1">{readingSubtitle}</p>
@@ -807,7 +1029,7 @@ export default function DashboardPage() {
           </Link>
 
           {/* GUIDED STUDIES HUB */}
-          <Link href="/guided-studies">
+          <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}>
             <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
               <h2 className="text-xl font-semibold">Guided Studies</h2>
               <p className="text-gray-700 mt-1">Structured ways to study Scripture</p>
@@ -815,15 +1037,15 @@ export default function DashboardPage() {
           </Link>
 
           {/* BIBLE REFERENCE HUB */}
-          <Link href="/bible-reference">
+          <Link href="/bible-reference" onClick={(event) => handleCardClick(event, "bible_reference", "/bible-reference")}>
             <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">Bible Reference</h2>
+              <h2 className="text-xl font-semibold">Bible References</h2>
               <p className="text-gray-700 mt-1">Tools to understand Scripture</p>
             </div>
           </Link>
 
           {/* BIBLE TRIVIA */}
-          <Link href="/bible-trivia">
+          <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}>
             <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
               <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2>
               <p className="text-gray-700 mt-1">
@@ -833,7 +1055,7 @@ export default function DashboardPage() {
           </Link>
 
           {/* NOTES */}
-          <Link href="/notes">
+          <Link href="/notes" onClick={(event) => handleCardClick(event, "notes", "/notes")}>
             <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
               <h2 className="text-xl font-semibold">📝 Notes</h2>
               <p className="text-gray-700 mt-1">
@@ -902,6 +1124,18 @@ export default function DashboardPage() {
       {/* Add bottom padding to mobile content when ad is shown (prevents content from being hidden behind ad) */}
       {shouldShowAds && !mobileAdDismissed && (
         <div className="lg:hidden h-20" />
+      )}
+
+      {activeTourKey && (
+        <FeatureTourModal
+          isOpen={true}
+          title={TOUR_COPY[activeTourKey].title}
+          body={TOUR_COPY[activeTourKey].body}
+          content={activeTourKey === "dashboard" ? DASHBOARD_TOUR_CONTENT : undefined}
+          isSaving={isSavingFeatureTour}
+          onClose={handleTourClose}
+          onUnderstand={handleTourUnderstand}
+        />
       )}
 
       {/* Level Info Modal */}

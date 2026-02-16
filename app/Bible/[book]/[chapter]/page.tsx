@@ -791,6 +791,7 @@ RULES:
       loadingRef.current = true;
 
       try {
+        console.log("[CHAPTER_LOADING] start", { book, chapter });
         setLoading(true);
         setError(null);
 
@@ -854,7 +855,11 @@ RULES:
         const normalizedBook = normalizeBookName(book);
         const apiUrl = `https://bible-api.com/${normalizedBook}+${chapter}`;
 
-        const response = await fetch(apiUrl);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 12000);
+        const response = await fetch(apiUrl, { signal: controller.signal });
+        clearTimeout(timeoutId);
+
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.statusText}`);
         }
@@ -898,17 +903,28 @@ RULES:
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
           .join(" ");
         setSections(convertToSections(apiData.verses, bookDisplay));
+        console.log("[CHAPTER_LOADING] success", { book, chapter, source: "bible-api" });
       } catch (err) {
         console.error("Error loading chapter:", err);
-        setError(err instanceof Error ? err.message : "Failed to load chapter");
+        const errMessage = err instanceof Error ? err.message : "Failed to load chapter";
+        setError(
+          errMessage.includes("aborted") || errMessage.includes("AbortError")
+            ? "Chapter request timed out. Please refresh and try again."
+            : errMessage
+        );
       } finally {
+        console.log("[CHAPTER_LOADING] end", { book, chapter, hasError: !!error });
         setLoading(false);
         loadingRef.current = false;
       }
     }
 
-      if (book && chapter) {
+      if (book && Number.isFinite(chapter) && chapter > 0) {
         loadChapter();
+      } else {
+        setError("Invalid chapter route.");
+        setLoading(false);
+        loadingRef.current = false;
       }
     }, [book, chapter]);
 
@@ -920,7 +936,6 @@ RULES:
         const { data: { user } } = await supabase.auth.getUser();
         
         if (!user) {
-          setLoadingProgress(false);
           return;
         }
 

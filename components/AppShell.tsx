@@ -10,10 +10,10 @@ import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
 import { recalculateTotalActions } from "../lib/recalculateTotalActions";
-import { checkProExpiration } from "../lib/checkProExpiration";
 import { FeedbackModal } from "./FeedbackModal";
 import { ContactUsModal } from "./ContactUsModal";
 import { NewMessageAlert } from "./NewMessageAlert";
+import { OnboardingModal } from "./OnboardingModal";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -37,6 +37,60 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   
   // Contact Us modal state
   const [showContactUsModal, setShowContactUsModal] = useState(false);
+  
+  // Onboarding state
+  const [showOnboardingModal, setShowOnboardingModal] = useState(false);
+  const [initialTrafficSource, setInitialTrafficSource] = useState<string | null>(null);
+  const [initialBibleExperienceLevel, setInitialBibleExperienceLevel] = useState<string | null>(null);
+
+  async function checkOnboardingStatus(currentUserId: string) {
+    try {
+      const { data: profileStats, error: profileStatsError } = await supabase
+        .from("profile_stats")
+        .select("onboarding_completed, traffic_source, bible_experience_level")
+        .eq("user_id", currentUserId)
+        .maybeSingle();
+
+      if (profileStatsError) {
+        console.error("[ONBOARDING] Error loading onboarding status:", profileStatsError);
+        setShowOnboardingModal(true);
+        setInitialTrafficSource(null);
+        setInitialBibleExperienceLevel(null);
+        return;
+      }
+
+      if (!profileStats) {
+        const { error: upsertError } = await supabase.from("profile_stats").upsert(
+          {
+            user_id: currentUserId,
+            onboarding_completed: false,
+            traffic_source: null,
+            bible_experience_level: null,
+          },
+          { onConflict: "user_id" }
+        );
+
+        if (upsertError) {
+          console.error("[ONBOARDING] Error creating profile_stats row:", upsertError);
+        }
+
+        setShowOnboardingModal(true);
+        setInitialTrafficSource(null);
+        setInitialBibleExperienceLevel(null);
+        return;
+      }
+
+      setInitialTrafficSource(profileStats.traffic_source ?? null);
+      setInitialBibleExperienceLevel(profileStats.bible_experience_level ?? null);
+      setShowOnboardingModal(profileStats.onboarding_completed !== true);
+    } catch (_err) {
+      console.error("[ONBOARDING] Unexpected onboarding status error:", _err);
+      setShowOnboardingModal(true);
+      setInitialTrafficSource(null);
+      setInitialBibleExperienceLevel(null);
+      return;
+    }
+  }
 
   useEffect(() => {
     const getSession = async () => {
@@ -56,9 +110,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           (session.user.email ? session.user.email.split("@")[0] : null) ||
           "User";
         setUsername(extractedUsername);
+        void checkOnboardingStatus(session.user.id);
       } else {
         setUserId(null);
         setUsername("");
+        setShowOnboardingModal(false);
+        setInitialTrafficSource(null);
+        setInitialBibleExperienceLevel(null);
       }
 
       // Sync notes count on initial session check if user is logged in (non-blocking)
@@ -66,8 +124,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         // Run all sync/tracking in background - don't block UI
         (async () => {
           try {
-            // Check if Pro access has expired and revert to Free if needed
-            await checkProExpiration(session.user.id);
+            // Temporarily disabled for stability:
+            // await checkProExpiration(session.user.id);
             
             // Track user activity (login/refresh) - once per 24 hours
             await trackUserActivity(session.user.id);
@@ -86,7 +144,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               await syncChaptersCount(session.user.id);
             }
           } catch (err) {
-            console.error("[APPSHELL] Error in background sync:", err);
+            console.warn("[APPSHELL] Background sync skipped due to transient issue.");
           }
         })();
       }
@@ -109,9 +167,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             (session.user.email ? session.user.email.split("@")[0] : null) ||
             "User";
           setUsername(extractedUsername);
+          void checkOnboardingStatus(session.user.id);
         } else {
           setUserId(null);
           setUsername("");
+          setShowOnboardingModal(false);
+          setInitialTrafficSource(null);
+          setInitialBibleExperienceLevel(null);
         }
         
         // Sync notes count when user logs in or session changes (non-blocking)
@@ -119,8 +181,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           // Run all sync/tracking in background - don't block UI
           (async () => {
             try {
-              // Check if Pro access has expired and revert to Free if needed
-              await checkProExpiration(session.user.id);
+              // Temporarily disabled for stability:
+              // await checkProExpiration(session.user.id);
               
               // Track user activity (login/refresh) - once per 24 hours
               await trackUserActivity(session.user.id);
@@ -140,7 +202,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 await syncChaptersCount(session.user.id);
               }
             } catch (err) {
-              console.error("[APPSHELL] Error in background sync:", err);
+              console.warn("[APPSHELL] Background sync skipped due to transient issue.");
             }
           })();
         }
@@ -229,7 +291,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           .maybeSingle();
 
         if (statsError) {
-          console.error("[FEEDBACK] Error checking profile stats:", statsError);
+          console.warn("[FEEDBACK] Profile stats unavailable; skipping feedback check.");
           setFeedbackChecked(true);
           return;
         }
@@ -249,7 +311,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           .maybeSingle();
 
         if (feedbackError && feedbackError.code !== 'PGRST116') {
-          console.error("[FEEDBACK] Error checking feedback:", feedbackError);
+          console.warn("[FEEDBACK] Feedback lookup unavailable; skipping feedback modal.");
           setFeedbackChecked(true);
           return;
         }
@@ -289,7 +351,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setShowFeedbackModal(true);
         setFeedbackChecked(true);
       } catch (err) {
-        console.error("[FEEDBACK] Error checking eligibility:", err);
+        console.warn("[FEEDBACK] Eligibility check skipped due to transient issue.");
         setFeedbackChecked(true);
       }
     }
@@ -304,9 +366,25 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       {/* NEW MESSAGE ALERT (admin only) */}
       {isAdmin && <NewMessageAlert />}
 
+      {/* ONBOARDING MODAL */}
+      {userId && (
+        <OnboardingModal
+          isOpen={showOnboardingModal}
+          userId={userId}
+          initialTrafficSource={initialTrafficSource}
+          initialBibleExperienceLevel={initialBibleExperienceLevel}
+          onFinished={(upgrade) => {
+            setShowOnboardingModal(false);
+            if (upgrade) {
+              router.push("/upgrade");
+            }
+          }}
+        />
+      )}
+
 
       {/* FEEDBACK MODAL */}
-      {isLoggedIn && userId && (
+      {isLoggedIn && userId && !showOnboardingModal && (
         <FeedbackModal
           userId={userId}
           username={username}
@@ -327,7 +405,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* CONTACT US MODAL */}
-      {isLoggedIn && userId && (
+      {isLoggedIn && userId && !showOnboardingModal && (
         <ContactUsModal
           userId={userId}
           username={username}
@@ -340,34 +418,34 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       {!isBarePage && (
         <header className="w-full bg-gray-50">
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
-            <Link
-              href="/dashboard"
-              className="flex items-center gap-3 hover:opacity-80 transition-opacity"
-            >
-              <Image
-                src="/louis/louis-bible.png"
-                alt="Bible Buddy Logo"
-                width={32}
-                height={32}
-                className="w-8 h-8"
-              />
-              <div>
-                <div className="text-sm font-bold text-gray-900 tracking-tight">
-                  Bible Buddy
+            <div className="flex items-center gap-3">
+              <Link
+                href="/dashboard"
+                className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+              >
+                <Image
+                  src="/louis/louis-bible.png"
+                  alt="Bible Buddy Logo"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8"
+                />
+                <div>
+                  <div className="text-sm font-bold text-gray-900 tracking-tight">
+                    Bible Buddy
+                  </div>
+                  <div className="text-[10px] text-gray-500 -mt-0.5">Powered by Hope Nation</div>
                 </div>
-                <div className="text-[10px] text-gray-500 -mt-0.5">
-                  <a
-                    href="https://joinhopenation.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="hover:text-blue-600 transition-colors"
-                  >
-                    Powered by Hope Nation
-                  </a>
-                </div>
-              </div>
-            </Link>
+              </Link>
+              <a
+                href="https://joinhopenation.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] text-gray-500 hover:text-blue-600 transition-colors"
+              >
+                Visit Hope Nation
+              </a>
+            </div>
 
             <div className="flex items-center gap-2">
               {/* NAVIGATION DROPDOWN MENU */}

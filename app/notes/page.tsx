@@ -121,7 +121,6 @@ export default function NotesPage() {
         const user = result.data.user;
 
         if (!user) {
-          setLoadingNotes(false);
           return;
         }
 
@@ -146,7 +145,6 @@ export default function NotesPage() {
 
         if (error) {
           console.error("Error loading notes", error);
-          setLoadingNotes(false);
           return;
         }
 
