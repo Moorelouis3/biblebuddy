@@ -2,7 +2,7 @@ export type FeatureTourKey =
   | "dashboard"
   | "bible"
   | "guided_studies"
-  | "bible_reference"
+  | "bible_references"
   | "bible_trivia"
   | "notes"
   | "chat_widget";
@@ -13,7 +13,7 @@ export const DEFAULT_FEATURE_TOURS: FeatureToursState = {
   dashboard: false,
   bible: false,
   guided_studies: false,
-  bible_reference: false,
+  bible_references: false,
   bible_trivia: false,
   notes: false,
   chat_widget: false,
@@ -24,13 +24,16 @@ export function normalizeFeatureTours(raw: unknown): FeatureToursState {
     return { ...DEFAULT_FEATURE_TOURS };
   }
 
-  const source = raw as Partial<Record<FeatureTourKey, unknown>>;
+  const source = raw as Partial<Record<FeatureTourKey, unknown>> & {
+    bible_reference?: unknown;
+  };
 
   return {
     dashboard: source.dashboard === true,
     bible: source.bible === true,
     guided_studies: source.guided_studies === true,
-    bible_reference: source.bible_reference === true,
+    bible_references:
+      source.bible_references === true || source.bible_reference === true,
     bible_trivia: source.bible_trivia === true,
     notes: source.notes === true,
     chat_widget: source.chat_widget === true,

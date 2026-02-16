@@ -153,7 +153,7 @@ export default function DashboardPage() {
       title: "Welcome to Guided Studies",
       body: "This is where you can follow structured studies designed to help you understand Scripture step by step.",
     },
-    bible_reference: {
+    bible_references: {
       title: "Welcome to Bible References",
       body: "This section helps you quickly explore people, places, and keywords to understand biblical context.",
     },
@@ -241,6 +241,358 @@ export default function DashboardPage() {
           </p>
         </section>
       </div>
+    </div>
+  );
+
+  const BIBLE_TOUR_CONTENT = (
+    <div className="space-y-6">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
+        📖 The Bible
+      </h1>
+
+      <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+        This is where you read Scripture inside Bible Buddy.
+        <br />
+        Everything is designed to keep your reading, progress, and notes in one place.
+      </p>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🔤 Choose Your Translation</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Select from three translations:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• WEB – World English Bible</li>
+          <li>• ASV – American Standard Version</li>
+          <li>• KJV – King James Version</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">You can switch translations anytime while reading.</p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📚 Browse the Books</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">You can:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• View books in Biblical order</li>
+          <li>• Or sort them Alphabetically</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Click any book to see its chapters.</p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 Read a Chapter</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">When you open a chapter, you’ll see:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• A short overview from Little Louis explaining what’s happening</li>
+          <li>• The full chapter text</li>
+          <li>• Verse numbers for easy reference</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Everything stays clean and distraction-free.</p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">⬅️➡️ Navigate Easily</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Under each chapter you can:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• Go to the Previous or Next chapter</li>
+          <li>• Return to the book overview</li>
+        </ul>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🧠 Go Deeper</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Below the chapter, you can:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• Tap “Read [Chapter] Notes” for a full breakdown</li>
+          <li>• Tap “Take Notes” to write your own thoughts</li>
+          <li>• Mark the chapter as Completed</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          Completed chapters appear highlighted so you can track your progress.
+        </p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🤖 Use Little Louis Anytime</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Tap the chat icon to ask questions about:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• Scripture</li>
+          <li>• History</li>
+          <li>• Context</li>
+          <li>• Meaning</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Your AI Bible Buddy is always available.</p>
+      </section>
+    </div>
+  );
+
+  const GUIDED_STUDIES_TOUR_CONTENT = (
+    <div className="space-y-6">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
+        📘 Guided Studies
+      </h1>
+
+      <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+        Structured ways to go deeper in Scripture.
+        <br />
+        Choose the format that fits how you like to learn.
+      </p>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 Bible Reading Plans</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          Reading Plans guide you through Scripture in a structured order.
+        </p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          Instead of choosing randomly, you follow a clear path — whether that’s reading the entire Bible, focusing on specific themes, or moving through the story in a logical flow.
+        </p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          Pick a plan, follow the chapters, and let your progress build over time.
+        </p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🌅 Devotionals</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          Devotionals are short, focused daily readings.
+        </p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Each devotional includes:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• A selected passage</li>
+          <li>• Reflection or explanation</li>
+          <li>• Practical application</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          They’re designed to help you stay consistent and connect Scripture to everyday life.
+        </p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📚 Bible Study Guides</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Study Guides go deeper.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">These include:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• Detailed explanations of passages</li>
+          <li>• Historical and cultural context</li>
+          <li>• Connections across Scripture</li>
+          <li>• Structured breakdowns to help you understand what’s happening and why</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          If you want more than just reading — this is where you slow down and truly study.
+        </p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🎯 Choose Your Style</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Some days you may want structure.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Some days you may want reflection.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Some days you may want deep study.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Guided Studies gives you all three.</p>
+      </section>
+    </div>
+  );
+
+  const BIBLE_REFERENCES_TOUR_CONTENT = (
+    <div className="space-y-6">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
+        📚 Welcome to Bible References
+      </h1>
+
+      <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+        Most people understand the overall story of the Bible.
+      </p>
+      <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+        But deep understanding comes from knowing the people, places, and key words behind the story.
+      </p>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">👤 People</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Explore thousands of biblical figures.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Learn:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• Who they were</li>
+          <li>• Where they lived</li>
+          <li>• What role they played</li>
+          <li>• How they connect to the bigger story</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Understanding the people brings Scripture to life.</p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📍 Places</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">The Bible happened in real locations.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">See:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• Cities</li>
+          <li>• Regions</li>
+          <li>• Nations</li>
+          <li>• Geographic context</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          Knowing where events happened helps you understand why they happened.
+        </p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🔑 Key Words</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          Many powerful truths in Scripture depend on specific words.
+        </p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Study:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• Important biblical terms</li>
+          <li>• Repeated themes</li>
+          <li>• Cultural meanings</li>
+          <li>• Original context</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          You cannot fully grasp the message if you don’t understand the words.
+        </p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🧠 Go Deeper</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Bible References is your context engine.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">When something feels unclear, look it up.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Clarity leads to confidence.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Context leads to understanding.</p>
+      </section>
+    </div>
+  );
+
+  const BIBLE_TRIVIA_TOUR_CONTENT = (
+    <div className="space-y-6">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
+        🎯 Welcome to Bible Trivia
+      </h1>
+
+      <p className="text-sm md:text-[15px] text-gray-600 leading-7">Test what you know.</p>
+      <p className="text-sm md:text-[15px] text-gray-600 leading-7">Strengthen what you’ve learned.</p>
+      <p className="text-sm md:text-[15px] text-gray-600 leading-7">Discover what you missed.</p>
+      <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+        Bible Trivia turns Scripture into active learning.
+      </p>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 All 66 Books</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Every book of the Bible is included.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">You can:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• Select a specific book</li>
+          <li>• Test your knowledge chapter by chapter</li>
+          <li>• Reinforce what you just read</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">From Genesis to Revelation — it’s all here.</p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">👤 Biblical Characters</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          There is also a People section focused on biblical figures.
+        </p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Test your knowledge on:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• Prophets</li>
+          <li>• Kings</li>
+          <li>• Apostles</li>
+          <li>• Disciples</li>
+          <li>• Major and minor characters</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          Understanding the people strengthens your understanding of the story.
+        </p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🧠 Why Trivia Matters</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Reading builds familiarity.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Testing builds retention.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Trivia helps:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• Lock Scripture into memory</li>
+          <li>• Reveal knowledge gaps</li>
+          <li>• Increase long-term understanding</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          The more you engage, the stronger your foundation becomes.
+        </p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🚀 Grow Through Repetition</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          Use Bible Trivia after reading a chapter, finishing a book, or completing a study.
+        </p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          Learning happens best when you apply what you’ve read.
+        </p>
+      </section>
+    </div>
+  );
+
+  const NOTES_TOUR_CONTENT = (
+    <div className="space-y-6">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
+        📝 Welcome to Notes
+      </h1>
+
+      <p className="text-sm md:text-[15px] text-gray-600 leading-7">Reading Scripture is powerful.</p>
+      <p className="text-sm md:text-[15px] text-gray-600 leading-7">Writing it down makes it transformational.</p>
+      <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+        Taking notes helps you slow down, reflect, and truly understand what you’re reading.
+      </p>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">✍️ Why Notes Matter</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">When you write:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• You process Scripture more deeply</li>
+          <li>• You remember what you study</li>
+          <li>• You see patterns and connections</li>
+          <li>• You build your own personal commentary over time</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          Faith grows when reflection becomes intentional.
+        </p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📚 Two Ways to Take Notes</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 Guided Notes (GROW Method)</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Use the GROW method to structure your study:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• G — Get the passage</li>
+          <li>• R — Research the context</li>
+          <li>• O — Observe what stands out</li>
+          <li>• W — Write your reflection</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          This helps you go deeper instead of just reading quickly.
+        </p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🗒 Free Form Notes</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Prefer to write freely?</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">You can:</p>
+        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+          <li>• Create personal reflections</li>
+          <li>• Record prayers</li>
+          <li>• Write sermon notes</li>
+          <li>• Capture insights while reading</li>
+        </ul>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          No structure required — just your thoughts and Scripture.
+        </p>
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🔁 Your Notes Stay Organized</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          Notes are connected to books and chapters so you can revisit them anytime.
+        </p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+          Over time, this becomes your personal Bible study archive.
+        </p>
+      </section>
     </div>
   );
 
@@ -857,6 +1209,16 @@ export default function DashboardPage() {
             ) : null}
           </div>
 
+          {profile?.is_paid === false && (
+            <Link href="/upgrade">
+              <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative">
+                <span className="absolute right-4 top-4 text-red-400 text-base" aria-hidden="true">🔒</span>
+                <h2 className="text-xl font-semibold">🔓 Unlock Full Access</h2>
+                <p className="text-gray-700 mt-1">Remove limits and study without restriction.</p>
+              </div>
+            </Link>
+          )}
+
           {/* Pro Expiration Countdown Timer */}
           {membershipStatus === "pro" && daysRemaining !== null && daysRemaining > 0 && (
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-sm">
@@ -883,7 +1245,7 @@ export default function DashboardPage() {
           </Link>
 
           {/* BIBLE REFERENCE HUB */}
-          <Link href="/bible-reference" onClick={(event) => handleCardClick(event, "bible_reference", "/bible-reference")}>
+          <Link href="/bible-references" onClick={(event) => handleCardClick(event, "bible_references", "/bible-references")}>
             <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
               <h2 className="text-xl font-semibold">Bible References</h2>
               <p className="text-gray-700 mt-1">Tools to understand Scripture</p>
@@ -1026,6 +1388,16 @@ export default function DashboardPage() {
             ) : null}
           </div>
 
+          {profile?.is_paid === false && (
+            <Link href="/upgrade">
+              <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative">
+                <span className="absolute right-4 top-4 text-red-400 text-base" aria-hidden="true">🔒</span>
+                <h2 className="text-xl font-semibold">🔓 Unlock Full Access</h2>
+                <p className="text-gray-700 mt-1">Remove limits and study without restriction.</p>
+              </div>
+            </Link>
+          )}
+
           {/* Pro Expiration Countdown Timer */}
           {membershipStatus === "pro" && daysRemaining !== null && daysRemaining > 0 && (
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-sm">
@@ -1052,7 +1424,7 @@ export default function DashboardPage() {
           </Link>
 
           {/* BIBLE REFERENCE HUB */}
-          <Link href="/bible-reference" onClick={(event) => handleCardClick(event, "bible_reference", "/bible-reference")}>
+          <Link href="/bible-references" onClick={(event) => handleCardClick(event, "bible_references", "/bible-references")}>
             <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
               <h2 className="text-xl font-semibold">Bible References</h2>
               <p className="text-gray-700 mt-1">Tools to understand Scripture</p>
@@ -1146,7 +1518,21 @@ export default function DashboardPage() {
           isOpen={true}
           title={TOUR_COPY[activeTourKey].title}
           body={TOUR_COPY[activeTourKey].body}
-          content={activeTourKey === "dashboard" ? DASHBOARD_TOUR_CONTENT : undefined}
+          content={
+            activeTourKey === "dashboard"
+              ? DASHBOARD_TOUR_CONTENT
+              : activeTourKey === "bible"
+              ? BIBLE_TOUR_CONTENT
+              : activeTourKey === "guided_studies"
+              ? GUIDED_STUDIES_TOUR_CONTENT
+                : activeTourKey === "bible_references"
+                ? BIBLE_REFERENCES_TOUR_CONTENT
+              : activeTourKey === "bible_trivia"
+              ? BIBLE_TRIVIA_TOUR_CONTENT
+                  : activeTourKey === "notes"
+                  ? NOTES_TOUR_CONTENT
+              : undefined
+          }
           isSaving={isSavingFeatureTour}
           onClose={handleTourClose}
           onUnderstand={handleTourUnderstand}
