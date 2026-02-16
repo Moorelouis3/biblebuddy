@@ -14,6 +14,7 @@ import { FeedbackModal } from "./FeedbackModal";
 import { ContactUsModal } from "./ContactUsModal";
 import { NewMessageAlert } from "./NewMessageAlert";
 import { OnboardingModal } from "./OnboardingModal";
+import { FeatureRenderPriorityProvider } from "./FeatureRenderPriorityContext";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -42,6 +43,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [showOnboardingModal, setShowOnboardingModal] = useState(false);
   const [initialTrafficSource, setInitialTrafficSource] = useState<string | null>(null);
   const [initialBibleExperienceLevel, setInitialBibleExperienceLevel] = useState<string | null>(null);
+  const [featureToursEnabled, setFeatureToursEnabled] = useState(false);
 
   async function checkOnboardingStatus(currentUserId: string) {
     try {
@@ -54,6 +56,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       if (profileStatsError) {
         console.error("[ONBOARDING] Error loading onboarding status:", profileStatsError);
         setShowOnboardingModal(true);
+        setFeatureToursEnabled(false);
         setInitialTrafficSource(null);
         setInitialBibleExperienceLevel(null);
         return;
@@ -75,6 +78,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         }
 
         setShowOnboardingModal(true);
+        setFeatureToursEnabled(false);
         setInitialTrafficSource(null);
         setInitialBibleExperienceLevel(null);
         return;
@@ -82,10 +86,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       setInitialTrafficSource(profileStats.traffic_source ?? null);
       setInitialBibleExperienceLevel(profileStats.bible_experience_level ?? null);
-      setShowOnboardingModal(profileStats.onboarding_completed !== true);
+      const onboardingCompleted = profileStats.onboarding_completed === true;
+      setShowOnboardingModal(!onboardingCompleted);
+      setFeatureToursEnabled(onboardingCompleted);
     } catch (_err) {
       console.error("[ONBOARDING] Unexpected onboarding status error:", _err);
       setShowOnboardingModal(true);
+      setFeatureToursEnabled(false);
       setInitialTrafficSource(null);
       setInitialBibleExperienceLevel(null);
       return;
@@ -115,6 +122,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setUserId(null);
         setUsername("");
         setShowOnboardingModal(false);
+        setFeatureToursEnabled(false);
         setInitialTrafficSource(null);
         setInitialBibleExperienceLevel(null);
       }
@@ -172,6 +180,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           setUserId(null);
           setUsername("");
           setShowOnboardingModal(false);
+          setFeatureToursEnabled(false);
           setInitialTrafficSource(null);
           setInitialBibleExperienceLevel(null);
         }
@@ -362,7 +371,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, [userId, isLoggedIn, feedbackChecked, showFeedbackModal]);
 
   return (
-    <>
+    <FeatureRenderPriorityProvider value={{ featureToursEnabled }}>
       {/* NEW MESSAGE ALERT (admin only) */}
       {isAdmin && <NewMessageAlert />}
 
@@ -375,8 +384,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           initialBibleExperienceLevel={initialBibleExperienceLevel}
           onFinished={(upgrade) => {
             setShowOnboardingModal(false);
+            setFeatureToursEnabled(true);
             if (upgrade) {
               router.push("/upgrade");
+            } else {
+              router.replace("/dashboard");
+              router.refresh();
             }
           }}
         />
@@ -737,6 +750,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       {/* CHAT LOUIS - always rendered in AppShell */}
       {!isBarePage && <ChatLouis />}
-    </>
+    </FeatureRenderPriorityProvider>
   );
 }

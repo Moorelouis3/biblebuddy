@@ -9,6 +9,7 @@ import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompleted
 import { getProfileStats } from "../../lib/profileStats";
 import AdSlot from "../../components/AdSlot";
 import { FeatureTourModal } from "../../components/FeatureTourModal";
+import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
 import {
   DEFAULT_FEATURE_TOURS,
   normalizeFeatureTours,
@@ -102,6 +103,7 @@ const BOOKS = [
 
 export default function DashboardPage() {
   const router = useRouter();
+  const { featureToursEnabled } = useFeatureRenderPriority();
   const [userName, setUserName] = useState<string>("buddy");
   const [userId, setUserId] = useState<string | null>(null);
 
@@ -265,7 +267,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     async function loadFeatureTours() {
-      if (!userId) return;
+      if (!featureToursEnabled || !userId) return;
 
       const { data, error } = await supabase
         .from("profile_stats")
@@ -315,7 +317,15 @@ export default function DashboardPage() {
     }
 
     loadFeatureTours();
-  }, [userId]);
+  }, [featureToursEnabled, userId]);
+
+  useEffect(() => {
+    if (!featureToursEnabled) {
+      setActiveTourKey(null);
+      setPendingTourNavigation(null);
+      setFeatureToursLoaded(false);
+    }
+  }, [featureToursEnabled]);
 
   async function handleTourUnderstand() {
     if (!activeTourKey || !userId) return;
@@ -380,6 +390,11 @@ export default function DashboardPage() {
     tourKey: FeatureTourKey,
     path: string
   ) {
+    if (!featureToursEnabled) {
+      router.push(path);
+      return;
+    }
+
     if (!featureToursLoaded) {
       router.push(path);
       return;
@@ -1126,7 +1141,7 @@ export default function DashboardPage() {
         <div className="lg:hidden h-20" />
       )}
 
-      {activeTourKey && (
+      {featureToursEnabled && activeTourKey && (
         <FeatureTourModal
           isOpen={true}
           title={TOUR_COPY[activeTourKey].title}

@@ -6,6 +6,7 @@ import { LouisAvatar } from "./LouisAvatar";
 import { supabase } from "../lib/supabaseClient";
 import { FeatureTourModal } from "./FeatureTourModal";
 import { DEFAULT_FEATURE_TOURS, normalizeFeatureTours } from "../lib/featureTours";
+import { useFeatureRenderPriority } from "./FeatureRenderPriorityContext";
 
 type MessageRole = "user" | "assistant";
 
@@ -61,6 +62,7 @@ declare global {
 }
 
 export function ChatLouis() {
+  const { featureToursEnabled } = useFeatureRenderPriority();
   const [isOpen, setIsOpen] = useState(false);
   const [showChatTourModal, setShowChatTourModal] = useState(false);
   const [isSavingChatTour, setIsSavingChatTour] = useState(false);
@@ -315,6 +317,11 @@ export function ChatLouis() {
   }
 
   async function handleChatButtonClick() {
+    if (!featureToursEnabled) {
+      setIsOpen(true);
+      return;
+    }
+
     const {
       data: { session },
       error: sessionError,
@@ -695,14 +702,16 @@ export function ChatLouis() {
         </div>
       )}
 
-      <FeatureTourModal
-        isOpen={showChatTourModal}
-        title="Welcome to Chat with Louis"
-        body="This chat helps you ask Bible questions instantly while you study so you can stay focused in your reading flow."
-        isSaving={isSavingChatTour}
-        onClose={() => setShowChatTourModal(false)}
-        onUnderstand={handleChatTourUnderstand}
-      />
+      {featureToursEnabled && (
+        <FeatureTourModal
+          isOpen={showChatTourModal}
+          title="Welcome to Chat with Louis"
+          body="This chat helps you ask Bible questions instantly while you study so you can stay focused in your reading flow."
+          isSaving={isSavingChatTour}
+          onClose={() => setShowChatTourModal(false)}
+          onUnderstand={handleChatTourUnderstand}
+        />
+      )}
     </>
   );
 }
