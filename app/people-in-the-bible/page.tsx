@@ -7,6 +7,7 @@ import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_PEOPLE_LIST } from "../../lib/biblePeopleList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
+import CreditLimitModal from "../../components/CreditLimitModal";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -983,27 +984,7 @@ FINAL RULES:
               </p>
             )}
 
-            {personCreditBlocked ? (
-              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center">
-                <div className="text-3xl mb-3">🔒</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Out of Credits</h3>
-                <p className="text-gray-600 text-sm">
-                  You've used all 5 daily credits available to free users.
-                </p>
-                <ul className="mt-4 space-y-1 text-left text-sm text-gray-600 list-disc pl-5">
-                  <li>People/Places/Keywords</li>
-                  <li>One round of trivia</li>
-                  <li>Open devotionals</li>
-                  <li>Start a new study action</li>
-                </ul>
-                <a
-                  href="/upgrade"
-                  className="mt-4 inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
-                >
-                  Upgrade to Bible Buddy Pro
-                </a>
-              </div>
-            ) : loadingNotes ? (
+            {personCreditBlocked ? null : loadingNotes ? (
               <div className="text-center py-12 text-gray-500">
                 Loading notes...
               </div>
@@ -1266,6 +1247,17 @@ FINAL RULES:
           </div>
         </div>
       )}
+
+      <CreditLimitModal
+        open={personCreditBlocked}
+        userId={userId}
+        onClose={() => {
+          setPersonCreditBlocked(false);
+          setSelectedPerson(null);
+          setPersonNotes(null);
+          setNotesError(null);
+        }}
+      />
 
     </div>
   );

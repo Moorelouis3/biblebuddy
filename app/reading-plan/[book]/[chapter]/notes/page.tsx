@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import ReactMarkdown from "react-markdown";
 import { ACTION_TYPE } from "@/lib/actionTypes";
+import CreditLimitModal from "@/components/CreditLimitModal";
 
 export default function ChapterNotesPage() {
   const params = useParams();
@@ -15,6 +16,8 @@ export default function ChapterNotesPage() {
   const [notesText, setNotesText] = useState<string>("");
   const [loadingNotes, setLoadingNotes] = useState(false);
   const [notesError, setNotesError] = useState<string | null>(null);
+  const [showCreditBlocked, setShowCreditBlocked] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
   const loadingRef = useRef(false);
 
   // Get book display name (capitalize first letter of each word)
@@ -156,6 +159,12 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       setLoadingNotes(true);
       setNotesText("");
       setNotesError(null);
+      setShowCreditBlocked(false);
+
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      setUserId(user?.id ?? null);
 
       const creditResponse = await fetch("/api/consume-credit", {
         method: "POST",
@@ -179,6 +188,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
       if (!creditResult.ok) {
         if (creditResult.reason === "no_credits") {
+          setShowCreditBlocked(true);
           return;
         }
 
@@ -424,6 +434,15 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           </div>
         </div>
       </div>
+
+      <CreditLimitModal
+        open={showCreditBlocked}
+        userId={userId}
+        onClose={() => {
+          setShowCreditBlocked(false);
+          router.back();
+        }}
+      />
     </div>
   );
 }

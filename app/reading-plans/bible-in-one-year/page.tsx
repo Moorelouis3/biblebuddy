@@ -14,6 +14,7 @@ import {
   type DayReading,
   type WeekReading,
 } from "../../../lib/bibleInOneYearPlan";
+import CreditLimitModal from "../../../components/CreditLimitModal";
 
 type DayProgress = {
   completedChapters: Set<string>; // "book:chapter" format
@@ -619,27 +620,7 @@ export default function BibleInOneYearPage() {
 
             {/* Modal Content */}
             <div className="p-6 overflow-y-auto flex-1">
-              {showCreditBlocked ? (
-                <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center">
-                  <div className="text-3xl mb-3">🔒</div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">Out of Credits</h3>
-                  <p className="text-gray-600 text-sm">
-                    You've used all 5 daily credits available to free users.
-                  </p>
-                  <ul className="mt-4 space-y-1 text-left text-sm text-gray-600 list-disc pl-5">
-                    <li>People/Places/Keywords</li>
-                    <li>One round of trivia</li>
-                    <li>Open devotionals</li>
-                    <li>Start a new study action</li>
-                  </ul>
-                  <a
-                    href="/upgrade"
-                    className="mt-4 inline-flex items-center justify-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition"
-                  >
-                    Upgrade to Bible Buddy Pro
-                  </a>
-                </div>
-              ) : canViewSelectedDay ? (
+              {showCreditBlocked ? null : canViewSelectedDay ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {selectedDay.chapters.map((chapter, idx) => {
                     const progress = dayProgress[selectedDay.dayNumber];
@@ -674,6 +655,15 @@ export default function BibleInOneYearPage() {
           </div>
         </div>
       )}
+
+      <CreditLimitModal
+        open={showCreditBlocked}
+        userId={userId}
+        onClose={() => {
+          setShowCreditBlocked(false);
+          setSelectedDay(null);
+        }}
+      />
     </div>
   );
 }
