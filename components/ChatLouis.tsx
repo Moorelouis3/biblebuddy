@@ -706,7 +706,59 @@ export function ChatLouis() {
         <FeatureTourModal
           isOpen={showChatTourModal}
           title="Welcome to Chat with Louis"
-          body="This chat helps you ask Bible questions instantly while you study so you can stay focused in your reading flow."
+          body=""
+          content={
+            <div className="space-y-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
+                Welcome to Chat with Louis
+              </h1>
+
+              <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+                This section helps you ask Bible questions instantly while you study so you can stay focused in your reading flow.
+              </p>
+
+              <section className="space-y-2">
+                <h2 className="text-lg md:text-xl font-semibold text-gray-900">💬 Ask Questions Anytime</h2>
+                <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+                  While reading Scripture, you can open Chat with Louis and ask:
+                </p>
+                <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+                  <li>• What does this verse mean?</li>
+                  <li>• Who is this person?</li>
+                  <li>• What is the historical context?</li>
+                  <li>• How does this connect to the rest of the Bible?</li>
+                </ul>
+                <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+                  You never have to leave your study flow.
+                </p>
+              </section>
+
+              <section className="space-y-2">
+                <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 Scripture Focused Answers</h2>
+                <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+                  Louis has been carefully trained on biblical content and designed to:
+                </p>
+                <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
+                  <li>• Search Scripture</li>
+                  <li>• Filter out nonsense</li>
+                  <li>• Prioritize clear, Scripture grounded answers</li>
+                </ul>
+                <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+                  The goal is clarity, not confusion.
+                </p>
+              </section>
+
+              <section className="space-y-2">
+                <h2 className="text-lg md:text-xl font-semibold text-gray-900">🧠 Study Without Breaking Flow</h2>
+                <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+                  Instead of switching apps or searching the internet, your study partner is built directly into BibleBuddy.
+                </p>
+                <p className="text-sm md:text-[15px] text-gray-600 leading-7">Stay focused.</p>
+                <p className="text-sm md:text-[15px] text-gray-600 leading-7">Dig deeper.</p>
+                <p className="text-sm md:text-[15px] text-gray-600 leading-7">Keep reading.</p>
+              </section>
+            </div>
+          }
           isSaving={isSavingChatTour}
           onClose={() => setShowChatTourModal(false)}
           onUnderstand={handleChatTourUnderstand}

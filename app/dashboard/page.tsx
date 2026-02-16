@@ -167,7 +167,7 @@ export default function DashboardPage() {
     },
     chat_widget: {
       title: "Welcome to Chat with Louis",
-      body: "This chat helps you ask Bible questions instantly while you study so you can stay focused in your reading flow.",
+      body: "This chat lets you ask Bible questions instantly while you study so you can stay focused in your reading flow. Louis has been carefully trained for hours on biblical content and designed to search Scripture, filter out nonsense, and prioritize clear, Scripture-grounded answers. It’s like having a Bible study partner built directly into your reading experience.",
     },
   };
 
