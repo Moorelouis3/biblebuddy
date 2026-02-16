@@ -92,6 +92,7 @@ export default function BibleChapterPage() {
   const [viewedPlaces, setViewedPlaces] = useState<Set<string>>(new Set());
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
   const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
+  const [translation, setTranslation] = useState<"web" | "asv" | "kjv">("web");
   
   // Completion tracking state (same as database pages)
   const [completedPeople, setCompletedPeople] = useState<Set<string>>(new Set());
@@ -792,17 +793,21 @@ RULES:
       loadingRef.current = true;
 
       try {
-        console.log("[CHAPTER_LOADING] start", { book, chapter });
+        console.log("[CHAPTER_LOADING] start", { book, chapter, translation });
         setLoading(true);
         setError(null);
 
-        // Step A: Check Supabase table bible_chapters FIRST
-        const { data: supabaseData, error: supabaseError } = await supabase
-          .from("bible_chapters")
-          .select("content_json, enriched_content")
-          .eq("book", book)
-          .eq("chapter", chapter)
-          .maybeSingle();
+        const shouldUseSupabaseCache = translation === "web";
+
+        // Step A: Check Supabase table bible_chapters FIRST (WEB only)
+        const { data: supabaseData, error: supabaseError } = shouldUseSupabaseCache
+          ? await supabase
+              .from("bible_chapters")
+              .select("content_json, enriched_content")
+              .eq("book", book)
+              .eq("chapter", chapter)
+              .maybeSingle()
+          : { data: null, error: null };
 
         if (supabaseData && !supabaseError) {
           // Step B: If enriched_content exists, use it directly (no runtime highlighting needed)
@@ -852,9 +857,9 @@ RULES:
           }
         }
 
-        // Step C: If NOT found in Supabase, fetch from bible-api.com
+        // Step C: If NOT found in Supabase (or non-WEB translation), fetch from bible-api.com
         const normalizedBook = normalizeBookName(book);
-        const apiUrl = `https://bible-api.com/${normalizedBook}+${chapter}`;
+        const apiUrl = `https://bible-api.com/${normalizedBook}+${chapter}?translation=${translation}`;
 
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 12000);
@@ -871,30 +876,32 @@ RULES:
         const enriched = await enrichBibleVerses(apiData.verses);
         setEnrichedContent(enriched);
 
-        // Step E: Save to Supabase ONCE - check first to prevent duplicates
-        const { data: existingCheck } = await supabase
-          .from("bible_chapters")
-          .select("id")
-          .eq("book", book)
-          .eq("chapter", chapter)
-          .maybeSingle();
-
-        if (!existingCheck) {
-          // Only insert if it doesn't exist
-          const { error: insertError } = await supabase
+        // Step E: Save to Supabase ONCE - check first to prevent duplicates (WEB only)
+        if (shouldUseSupabaseCache) {
+          const { data: existingCheck } = await supabase
             .from("bible_chapters")
-            .insert([
-              {
-                book: book,
-                chapter: chapter,
-                content_json: apiData,
-                enriched_content: enriched,
-              },
-            ]);
+            .select("id")
+            .eq("book", book)
+            .eq("chapter", chapter)
+            .maybeSingle();
 
-          if (insertError) {
-            console.error("Error saving to Supabase:", insertError);
-            // Continue anyway - we have the data
+          if (!existingCheck) {
+            // Only insert if it doesn't exist
+            const { error: insertError } = await supabase
+              .from("bible_chapters")
+              .insert([
+                {
+                  book: book,
+                  chapter: chapter,
+                  content_json: apiData,
+                  enriched_content: enriched,
+                },
+              ]);
+
+            if (insertError) {
+              console.error("Error saving to Supabase:", insertError);
+              // Continue anyway - we have the data
+            }
           }
         }
 
@@ -904,7 +911,7 @@ RULES:
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
           .join(" ");
         setSections(convertToSections(apiData.verses, bookDisplay));
-        console.log("[CHAPTER_LOADING] success", { book, chapter, source: "bible-api" });
+        console.log("[CHAPTER_LOADING] success", { book, chapter, translation, source: "bible-api" });
       } catch (err) {
         console.error("Error loading chapter:", err);
         const errMessage = err instanceof Error ? err.message : "Failed to load chapter";
@@ -914,7 +921,7 @@ RULES:
             : errMessage
         );
       } finally {
-        console.log("[CHAPTER_LOADING] end", { book, chapter, hasError: !!error });
+        console.log("[CHAPTER_LOADING] end", { book, chapter, translation, hasError: !!error });
         setLoading(false);
         loadingRef.current = false;
       }
@@ -927,7 +934,7 @@ RULES:
         setLoading(false);
         loadingRef.current = false;
       }
-    }, [book, chapter]);
+    }, [book, chapter, translation]);
 
   // Get user ID and load completion progress (same as database pages)
   useEffect(() => {
@@ -1678,9 +1685,21 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         </div>
 
         {/* PAGE HEADER */}
-        <h1 className="text-3xl font-bold mb-1">
-          {bookDisplayName} {chapter}
-        </h1>
+        <div className="mb-1 flex items-start justify-between gap-3">
+          <h1 className="text-3xl font-bold">
+            {bookDisplayName} {chapter}
+          </h1>
+          <select
+            value={translation}
+            onChange={(e) => setTranslation(e.target.value as "web" | "asv" | "kjv")}
+            className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            aria-label="Select Bible translation"
+          >
+            <option value="web">WEB</option>
+            <option value="asv">ASV</option>
+            <option value="kjv">KJV</option>
+          </select>
+        </div>
         <p className="text-gray-700 mb-4">
           Reading {bookDisplayName} chapter {chapter}.
         </p>
