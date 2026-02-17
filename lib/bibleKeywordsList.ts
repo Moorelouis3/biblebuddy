@@ -1923,6 +1923,7 @@ const BASE_BIBLE_KEYWORDS_LIST: BibleKeywordEntry[] = [
   { term: "Charge forward" },
   { term: "City wall" },
   { term: "Clash" },
+  { term: "Officer" },
   { term: "Commanding officer" },
   { term: "Complete destruction" },
   { term: "Conquest campaign" },
