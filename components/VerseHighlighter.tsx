@@ -117,7 +117,10 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
         .eq("user_id", user.id)
         .gt("daily_credits", 0);
       // Check if update affected a row
-      if (decErr || (Array.isArray(updateData) && updateData.length === 0)) {
+      if (
+        decErr ||
+        (Array.isArray(updateData) && updateData && (updateData as unknown[]).length === 0)
+      ) {
         setCreditBlocked(true);
         return;
       }
