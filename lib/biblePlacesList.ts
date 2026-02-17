@@ -2244,5 +2244,25 @@ export const BIBLE_PLACES_LIST: BiblePlaceEntry[] = [
   // User-requested additions (deduped) - batch 5
   { name: "Og’s territory" },
   { name: "Sihon’s territory" },
+  // User-requested additions (deduped) - batch 6, 2026-02-17
+  { name: "Achor Valley" },
+  { name: "Anak" },
+  { name: "Baalah" },
+  { name: "Cave of Makkedah" },
+  { name: "Ezion" },
+  { name: "Kiriath Baal" },
+  { name: "Kiriath Jearim" },
+  { name: "Kiriath Sepher" },
+  { name: "Lachish" },
+  { name: "Land of the Hittites" },
+  { name: "Mearah" },
+  { name: "Mount Halak" },
+  { name: "Mount Hebron" },
+  { name: "Mountains of Israel" },
+  { name: "Mountains of Judah" },
+  { name: "Nahal" },
+  { name: "Plain of Sharon" },
+  { name: "Taanach" },
+  { name: "Valley of Aijalon" },
 ];
 
