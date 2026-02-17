@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ColorPicker } from "./ColorPicker";
 import { fetchHighlights, upsertHighlight, deleteHighlight } from "../lib/verseHighlightingApi";
-import { useSession } from "../lib/useSession";
+
 
 interface VerseHighlighterProps {
   book: string;
@@ -10,10 +10,20 @@ interface VerseHighlighterProps {
 }
 
 export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapter, verses }) => {
-  const { user } = useSession();
+
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
   const [picker, setPicker] = useState<{ verse: number; anchor: { x: number; y: number } } | null>(null);
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await import("../lib/supabaseClient");
+      const supabase = data?.supabase || (await import("../lib/supabaseClient")).supabase;
+      const { data: userData } = await supabase.auth.getUser();
+      setUser(userData?.user || null);
+    })();
+  }, []);
 
   useEffect(() => {
     if (!user) return;
