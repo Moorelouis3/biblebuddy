@@ -137,6 +137,33 @@ function escapeHtml(text: string): string {
   return text.replace(/[&<>"']/g, (m) => map[m]);
 }
 
+function escapeRegex(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function createKeywordRegex(term: string): RegExp {
+  const normalizedTerm = term.trim();
+  if (!normalizedTerm) {
+    return /$^/g;
+  }
+
+  const words = normalizedTerm.split(/\s+/).filter(Boolean);
+  if (words.length === 0) {
+    return /$^/g;
+  }
+
+  const suffixPattern = "(?:s|es|ed|ing)?";
+
+  if (words.length === 1) {
+    const escapedWord = escapeRegex(words[0]);
+    return new RegExp(`\\b${escapedWord}${suffixPattern}\\b`, "gi");
+  }
+
+  const prefix = words.slice(0, -1).map(escapeRegex).join("\\s+");
+  const lastWord = escapeRegex(words[words.length - 1]);
+  return new RegExp(`\\b${prefix}\\s+${lastWord}${suffixPattern}\\b`, "gi");
+}
+
 /**
  * Process verses array and return enriched HTML
  * 
@@ -298,8 +325,7 @@ export async function enrichBibleVerses(
 
     // Process KEYWORDS (highlight EVERY occurrence)
     for (const highlightTerm of keywordTerms) {
-      const escapedTerm = highlightTerm.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
+      const regex = createKeywordRegex(highlightTerm.term);
       
       // Find ALL matches in this verse
       regex.lastIndex = 0;
@@ -506,8 +532,7 @@ export function enrichPlainText(text: string): string {
 
   // Process KEYWORDS (highlight EVERY occurrence)
   for (const highlightTerm of keywordTerms) {
-    const escapedTerm = highlightTerm.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
+    const regex = createKeywordRegex(highlightTerm.term);
     
     // Find ALL matches
     regex.lastIndex = 0;
