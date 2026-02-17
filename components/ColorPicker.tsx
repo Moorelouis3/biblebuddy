@@ -28,7 +28,10 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor,
     return () => document.removeEventListener("mousedown", handleClick);
   }, [onClose]);
 
+
   if (!anchor) return null;
+
+  console.log('[ColorPicker] Rendered at', anchor);
 
   return (
     <div
@@ -42,7 +45,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor,
           aria-label={c.name}
           className={`w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all duration-150 ${selectedColor === c.name ? "border-gray-800 scale-110" : "border-transparent"}`}
           style={{ backgroundColor: c.code }}
-          onClick={() => onSelect(selectedColor === c.name ? null : c.name)}
+          onClick={() => onSelect(c.name)}
         />
       ))}
     </div>

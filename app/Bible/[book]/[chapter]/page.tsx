@@ -1781,34 +1781,49 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           ref={verseContainerRef}
           className={`bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 mb-6 max-h-[60vh] overflow-y-auto ${plainTextMode ? "plain-text-mode" : ""}`}
         >
-          {enrichedContent ? (
-            // Use pre-rendered enriched content if available
-            <div 
-              className="space-y-5"
-              dangerouslySetInnerHTML={{ __html: enrichedContent }}
-            />
-          ) : (
-            // Fallback to regular rendering (for chapters without enriched_content yet)
-            sections.map((section) => (
-              <div key={section.id} className="mb-8 last:mb-0">
-                <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                  <span className="text-2xl">{section.emoji}</span>
-                  <span>{section.title}</span>
-                </h2>
-
-                <div className="space-y-5">
-                  {section.verses.map((verse) => (
-                    <p key={verse.num} className="leading-relaxed">
-                      <span className="inline-flex items-center justify-center rounded-md bg-blue-500 text-white text-[11px] font-semibold px-2 py-[2px] mr-3">
-                        {verse.num.toString().padStart(2, "0")}
-                      </span>
-                      {verse.text}
-                    </p>
-                  ))}
-                </div>
+          {sections.map((section) => (
+            <div key={section.id} className="mb-8 last:mb-0">
+              <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <span className="text-2xl">{section.emoji}</span>
+                <span>{section.title}</span>
+              </h2>
+              <div className="space-y-5">
+                {/* Always use VerseHighlighter for all chapters */}
+                {section.verses && section.verses.length > 0 && (
+                  <>
+                    {(() => {
+                      const VerseHighlighter = require("../../../../components/VerseHighlighter").VerseHighlighter;
+                      // If enrichedContent is available, split it into per-verse HTML
+                      let enrichedPerVerse: Record<number, string> = {};
+                      if (enrichedContent) {
+                        // Remove version marker and split by <p ...>...</p>
+                        const html = enrichedContent.replace(/<!--.*?-->/, '').trim();
+                        // Match all <p ...>...</p> blocks
+                        const verseBlocks = Array.from(html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g));
+                        verseBlocks.forEach((block, idx) => {
+                          // Try to extract the verse number from the badge
+                          const badgeMatch = block[1].match(/<span[^>]*>(\d+)<\/span>/);
+                          const verseNum = badgeMatch ? parseInt(badgeMatch[1], 10) : idx + 1;
+                          enrichedPerVerse[verseNum] = `<p>${block[1]}</p>`;
+                        });
+                      }
+                      return (
+                        <VerseHighlighter
+                          book={book}
+                          chapter={chapter}
+                          verses={section.verses.map(v => ({
+                            number: v.num,
+                            text: v.text,
+                            enrichedHtml: enrichedPerVerse[v.num]
+                          }))}
+                        />
+                      );
+                    })()}
+                  </>
+                )}
               </div>
-            ))
-          )}
+            </div>
+          ))}
         </div>
 
         {/* NAVIGATION BUTTONS ROW */}
