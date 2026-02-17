@@ -25,6 +25,14 @@
   color: #7f1d1d; /* Dark red */
 }
 
+/* Plain text mode for chapter reading: keep enriched HTML, remove highlight colors */
+.plain-text-mode .bible-highlight,
+.plain-text-mode .bible-highlight-people,
+.plain-text-mode .bible-highlight-places,
+.plain-text-mode .bible-highlight-keywords {
+  color: #000000 !important;
+}
+
 /* ✅ Global colors */
 :root {
   /* background = the light color from your screenshot */

@@ -93,6 +93,7 @@ export default function BibleChapterPage() {
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
   const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
   const [translation, setTranslation] = useState<"web" | "asv" | "kjv">("web");
+  const [plainTextMode, setPlainTextMode] = useState(false);
   
   // Completion tracking state (same as database pages)
   const [completedPeople, setCompletedPeople] = useState<Set<string>>(new Set());
@@ -103,6 +104,17 @@ export default function BibleChapterPage() {
   const [isAnimatingPlace, setIsAnimatingPlace] = useState(false);
   const [isAnimatingKeyword, setIsAnimatingKeyword] = useState(false);
   const [fromReadingPlan, setFromReadingPlan] = useState(false);
+
+  useEffect(() => {
+    const storedValue = localStorage.getItem("bible_plain_text_mode");
+    if (storedValue !== null) {
+      setPlainTextMode(storedValue === "1");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("bible_plain_text_mode", plainTextMode ? "1" : "0");
+  }, [plainTextMode]);
 
   // Normalize markdown functions (reused from People/Places/Keywords pages)
   function normalizePersonMarkdown(markdown: string): string {
@@ -1718,16 +1730,27 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           <h1 className="text-3xl font-bold">
             {bookDisplayName} {chapter}
           </h1>
-          <select
-            value={translation}
-            onChange={(e) => setTranslation(e.target.value as "web" | "asv" | "kjv")}
-            className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            aria-label="Select Bible translation"
-          >
-            <option value="web">WEB</option>
-            <option value="asv">ASV</option>
-            <option value="kjv">KJV</option>
-          </select>
+          <div className="flex items-center gap-3">
+            <label className="inline-flex items-center gap-2 text-sm text-gray-700">
+              <input
+                type="checkbox"
+                checked={plainTextMode}
+                onChange={(e) => setPlainTextMode(e.target.checked)}
+                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              />
+              Plain text mode
+            </label>
+            <select
+              value={translation}
+              onChange={(e) => setTranslation(e.target.value as "web" | "asv" | "kjv")}
+              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              aria-label="Select Bible translation"
+            >
+              <option value="web">WEB</option>
+              <option value="asv">ASV</option>
+              <option value="kjv">KJV</option>
+            </select>
+          </div>
         </div>
         <p className="text-gray-700 mb-4">
           Reading {bookDisplayName} chapter {chapter}.
@@ -1756,7 +1779,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         {/* VERSE BLOCK */}
         <div 
           ref={verseContainerRef}
-          className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 mb-6 max-h-[60vh] overflow-y-auto"
+          className={`bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 mb-6 max-h-[60vh] overflow-y-auto ${plainTextMode ? "plain-text-mode" : ""}`}
         >
           {enrichedContent ? (
             // Use pre-rendered enriched content if available
