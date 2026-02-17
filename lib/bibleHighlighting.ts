@@ -7,11 +7,10 @@
  * RULES:
  * - People: Highlight EVERY occurrence (BLUE)
  * - Places: Highlight EVERY occurrence, priority over people (GREEN)
- * - Keywords: 3-layer system (DARK RED)
- *   - Layer 1 (Narrative-Critical): Every occurrence
- *   - Layer 2 (Cultural/Historical): First per section
- *   - Layer 3 (Theological/Abstract): Once per chapter
+ * - Keywords: Highlight EVERY occurrence (DARK RED)
  */
+
+export const BIBLE_HIGHLIGHTING_VERSION_MARKER = "<!-- bible-highlighting:v2-all-keyword-occurrences -->";
 
 import { BIBLE_PEOPLE_LIST } from "./biblePeopleList";
 import { BIBLE_PLACES_LIST } from "./biblePlacesList";
@@ -344,7 +343,7 @@ export async function enrichBibleVerses(
     return `<p class="leading-relaxed"><span class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white text-[11px] font-semibold px-2 py-[2px] mr-3">${v.verse.toString().padStart(2, "0")}</span>${enrichedText}</p>`;
   });
 
-  return enrichedVerses.join("\n");
+  return `${BIBLE_HIGHLIGHTING_VERSION_MARKER}\n${enrichedVerses.join("\n")}`;
 }
 
 /**

@@ -11,7 +11,7 @@ import { getFeaturedCharactersForMatthew, FeaturedCharacter } from "../../../../
 import { FeaturedCharacterModal } from "../../../../components/FeaturedCharacterModal";
 import { useFeaturedCharacters } from "../../../../hooks/useFeaturedCharacters";
 import ReactMarkdown from "react-markdown";
-import { enrichBibleVerses } from "../../../../lib/bibleHighlighting";
+import { BIBLE_HIGHLIGHTING_VERSION_MARKER, enrichBibleVerses } from "../../../../lib/bibleHighlighting";
 import { logStudyView } from "../../../../lib/studyViewLimit";
 import { BIBLE_PEOPLE_LIST } from "../../../../lib/biblePeopleList";
 import { BIBLE_PLACES_LIST } from "../../../../lib/biblePlacesList";
@@ -810,10 +810,26 @@ RULES:
           : { data: null, error: null };
 
         if (supabaseData && !supabaseError) {
-          // Step B: If enriched_content exists, use it directly (no runtime highlighting needed)
+          // Step B: If enriched_content exists, use it directly when it matches the current highlighting version
           if (supabaseData.enriched_content) {
-            setEnrichedContent(supabaseData.enriched_content);
-            // Still set sections for structure, but enriched_content will be rendered
+            const hasCurrentHighlightVersion = supabaseData.enriched_content.includes(BIBLE_HIGHLIGHTING_VERSION_MARKER);
+
+            if (hasCurrentHighlightVersion) {
+              setEnrichedContent(supabaseData.enriched_content);
+              const content = supabaseData.content_json as any;
+              if (content && content.verses) {
+                const verses = content.verses as BibleApiVerse[];
+                const bookDisplay = book
+                  .split(" ")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                  .join(" ");
+                setSections(convertToSections(verses, bookDisplay));
+              }
+              setLoading(false);
+              loadingRef.current = false;
+              return;
+            }
+
             const content = supabaseData.content_json as any;
             if (content && content.verses) {
               const verses = content.verses as BibleApiVerse[];
@@ -822,10 +838,23 @@ RULES:
                 .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
                 .join(" ");
               setSections(convertToSections(verses, bookDisplay));
+
+              const regeneratedEnrichedContent = await enrichBibleVerses(verses);
+              setEnrichedContent(regeneratedEnrichedContent);
+
+              await supabase
+                .from("bible_chapters")
+                .update({ enriched_content: regeneratedEnrichedContent })
+                .eq("book", book)
+                .eq("chapter", chapter);
+
+              setLoading(false);
+              loadingRef.current = false;
+              return;
             }
-            setLoading(false);
-            loadingRef.current = false;
-            return;
+
+            // Stale enriched_content exists but no cached verses available to regenerate.
+            // Fall through to API fetch so we can rebuild highlights with current rules.
           }
           
           // Step C: If content_json exists but no enriched_content, use it and generate enriched_content
