@@ -10,11 +10,34 @@
  * - Keywords: Highlight EVERY occurrence (DARK RED)
  */
 
-export const BIBLE_HIGHLIGHTING_VERSION_MARKER = "<!-- bible-highlighting:v3-expanded-keyword-list -->";
-
 import { BIBLE_PEOPLE_LIST } from "./biblePeopleList";
 import { BIBLE_PLACES_LIST } from "./biblePlacesList";
 import { BIBLE_KEYWORDS_LIST } from "./bibleKeywordsList";
+
+const KEYWORD_SUFFIX_PATTERN = "(?:s|es|ed|ing)?";
+const KEYWORD_MATCHING_RULESET = "all-occurrences-last-token-suffixes";
+
+function createStableHash(value: string): string {
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+  }
+  return (hash >>> 0).toString(16).padStart(8, "0");
+}
+
+function createKeywordFingerprint(): string {
+  const dedupedSortedKeywords = Array.from(
+    new Set(
+      BIBLE_KEYWORDS_LIST.map((keyword) => keyword.term.trim().toLowerCase()).filter(Boolean)
+    )
+  ).sort();
+
+  return createStableHash(dedupedSortedKeywords.join("|"));
+}
+
+const BIBLE_HIGHLIGHTING_VERSION_FINGERPRINT = `${KEYWORD_MATCHING_RULESET}-${KEYWORD_SUFFIX_PATTERN}-${createKeywordFingerprint()}`;
+export const BIBLE_HIGHLIGHTING_VERSION_MARKER = `<!-- bible-highlighting:${BIBLE_HIGHLIGHTING_VERSION_FINGERPRINT} -->`;
 
 /**
  * Extract plain string arrays from the UI page lists
@@ -152,16 +175,14 @@ function createKeywordRegex(term: string): RegExp {
     return /$^/g;
   }
 
-  const suffixPattern = "(?:s|es|ed|ing)?";
-
   if (words.length === 1) {
     const escapedWord = escapeRegex(words[0]);
-    return new RegExp(`\\b${escapedWord}${suffixPattern}\\b`, "gi");
+    return new RegExp(`\\b${escapedWord}${KEYWORD_SUFFIX_PATTERN}\\b`, "gi");
   }
 
   const prefix = words.slice(0, -1).map(escapeRegex).join("\\s+");
   const lastWord = escapeRegex(words[words.length - 1]);
-  return new RegExp(`\\b${prefix}\\s+${lastWord}${suffixPattern}\\b`, "gi");
+  return new RegExp(`\\b${prefix}\\s+${lastWord}${KEYWORD_SUFFIX_PATTERN}\\b`, "gi");
 }
 
 /**
