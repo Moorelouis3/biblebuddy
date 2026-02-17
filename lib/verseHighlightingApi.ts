@@ -18,7 +18,7 @@ export async function upsertHighlight(book: string, chapter: number, verse: numb
   if (!user) return;
   await supabase
     .from("highlights")
-    .upsert({ user_id: user.id, book, chapter, verse, color }, { onConflict: ["user_id", "book", "chapter", "verse"] });
+    .upsert({ user_id: user.id, book, chapter, verse, color }, { onConflict: "user_id,book,chapter,verse" });
 }
 
 export async function deleteHighlight(book: string, chapter: number, verse: number) {
