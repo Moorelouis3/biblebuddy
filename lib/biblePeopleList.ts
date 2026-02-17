@@ -632,6 +632,7 @@ export const BIBLE_PEOPLE_LIST: BiblePersonEntry[] = [
   { name: "Ginath" },
   { name: "Ginnethon" },
   { name: "Gishpa" },
+  { name: "God", aliases: ["LORD"] },
   { name: "Gog" },
   { name: "Goliath" },
   { name: "Gomer" },

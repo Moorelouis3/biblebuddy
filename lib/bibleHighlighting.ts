@@ -16,6 +16,7 @@ import { BIBLE_KEYWORDS_LIST } from "./bibleKeywordsList";
 
 const KEYWORD_SUFFIX_PATTERN = "(?:s|es|ed|ing)?";
 const KEYWORD_MATCHING_RULESET = "all-occurrences-last-token-suffixes";
+const HIGHLIGHT_PIPELINE_RULESET = "places-priority-over-people;people-all-occurrences;keywords-all-occurrences";
 
 function createStableHash(value: string): string {
   let hash = 2166136261;
@@ -26,17 +27,41 @@ function createStableHash(value: string): string {
   return (hash >>> 0).toString(16).padStart(8, "0");
 }
 
+function normalizeDedupedSortedTerms(terms: string[]): string[] {
+  return Array.from(new Set(terms.map((term) => term.trim().toLowerCase()).filter(Boolean))).sort();
+}
+
 function createKeywordFingerprint(): string {
-  const dedupedSortedKeywords = Array.from(
-    new Set(
-      BIBLE_KEYWORDS_LIST.map((keyword) => keyword.term.trim().toLowerCase()).filter(Boolean)
-    )
-  ).sort();
+  const dedupedSortedKeywords = normalizeDedupedSortedTerms(
+    BIBLE_KEYWORDS_LIST.map((keyword) => keyword.term)
+  );
 
   return createStableHash(dedupedSortedKeywords.join("|"));
 }
 
-const BIBLE_HIGHLIGHTING_VERSION_FINGERPRINT = `${KEYWORD_MATCHING_RULESET}-${KEYWORD_SUFFIX_PATTERN}-${createKeywordFingerprint()}`;
+function createPeopleFingerprint(): string {
+  const peopleAndAliases = BIBLE_PEOPLE_LIST.flatMap((person) => [person.name, ...(person.aliases ?? [])]);
+  const dedupedSortedPeople = normalizeDedupedSortedTerms(peopleAndAliases);
+
+  return createStableHash(dedupedSortedPeople.join("|"));
+}
+
+function createPlacesFingerprint(): string {
+  const dedupedSortedPlaces = normalizeDedupedSortedTerms(
+    BIBLE_PLACES_LIST.map((place) => place.name)
+  );
+
+  return createStableHash(dedupedSortedPlaces.join("|"));
+}
+
+const BIBLE_HIGHLIGHTING_VERSION_FINGERPRINT = [
+  HIGHLIGHT_PIPELINE_RULESET,
+  KEYWORD_MATCHING_RULESET,
+  KEYWORD_SUFFIX_PATTERN,
+  `people:${createPeopleFingerprint()}`,
+  `places:${createPlacesFingerprint()}`,
+  `keywords:${createKeywordFingerprint()}`,
+].join("-");
 export const BIBLE_HIGHLIGHTING_VERSION_MARKER = `<!-- bible-highlighting:${BIBLE_HIGHLIGHTING_VERSION_FINGERPRINT} -->`;
 
 /**
