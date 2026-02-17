@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ColorPicker } from "./ColorPicker";
 import { fetchHighlights, upsertHighlight, deleteHighlight } from "../lib/verseHighlightingApi";
+import { ACTION_TYPE } from "../lib/actionTypes";
+import CreditLimitModal from "./CreditLimitModal";
 import { supabase } from "../lib/supabaseClient";
 
 interface VerseHighlighterProps {
@@ -23,13 +25,13 @@ function getEnrichedHtmlForVerse(enrichedHtml: string | undefined, fallback: str
   return html;
 }
 
-export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapter, verses }) => {
 
+export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapter, verses }) => {
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
   const [picker, setPicker] = useState<{ verse: number; anchor: { x: number; y: number } } | null>(null);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
-
+  const [creditBlocked, setCreditBlocked] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -68,6 +70,21 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
       setHighlightMap((m) => { const n = { ...m }; delete n[verse]; return n; });
       await deleteHighlight(book, chapter, verse);
     } else if (color) {
+      // Require credit for highlight
+      const creditResponse = await fetch("/api/consume-credit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ actionType: ACTION_TYPE.verse_highlighted }),
+      });
+      if (!creditResponse.ok) {
+        setCreditBlocked(true);
+        return;
+      }
+      const creditResult = (await creditResponse.json()) as { ok?: boolean; reason?: string };
+      if (creditResult.ok === false) {
+        setCreditBlocked(true);
+        return;
+      }
       setHighlightMap((m) => ({ ...m, [verse]: color }));
       await upsertHighlight(book, chapter, verse, color);
     }
@@ -108,6 +125,11 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
         selectedColor={picker && highlightMap[picker.verse] ? highlightMap[picker.verse] : null}
         onSelect={handleColorSelect}
         onClose={() => setPicker(null)}
+      />
+      <CreditLimitModal
+        open={creditBlocked}
+        userId={user?.id || null}
+        onClose={() => setCreditBlocked(false)}
       />
     </div>
   );

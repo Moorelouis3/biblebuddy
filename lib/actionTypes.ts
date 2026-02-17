@@ -19,6 +19,7 @@ export const ACTION_TYPES = [
   "user_login",
   "user_signup",
   "chapter_notes_viewed",
+  "verse_highlighted",
 ] as const;
 
 export type ActionType = (typeof ACTION_TYPES)[number];
@@ -44,6 +45,7 @@ export const ACTION_TYPE = {
   user_login: "user_login",
   user_signup: "user_signup",
   chapter_notes_viewed: "chapter_notes_viewed",
+  verse_highlighted: "verse_highlighted",
 } as const satisfies Record<ActionType, ActionType>;
 
 export function isActionType(value: string): value is ActionType {
