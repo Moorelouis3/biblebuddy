@@ -65,9 +65,14 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
           key={v.number}
           className="verse-text group transition-colors duration-200"
           style={{ backgroundColor: highlightMap[v.number] ? getColorCode(highlightMap[v.number]) : "transparent", borderRadius: highlightMap[v.number] ? 4 : 0, transition: "background-color 0.3s" }}
-          onClick={(e) => handleVerseClick(v.number, e)}
         >
-          <span className="select-none text-xs text-gray-400 mr-1">{v.number}</span>
+          <span
+            className="select-none text-xs text-gray-400 mr-1 cursor-pointer hover:text-blue-600"
+            onClick={(e) => { e.stopPropagation(); handleVerseClick(v.number, e); }}
+            title="Highlight this verse"
+          >
+            {v.number}
+          </span>
           {v.text}
         </span>
       ))}
