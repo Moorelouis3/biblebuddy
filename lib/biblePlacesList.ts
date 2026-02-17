@@ -2241,9 +2241,8 @@ export const BIBLE_PLACES_LIST: BiblePlaceEntry[] = [
   { name: "Wilderness of Moab" },
   { name: "Zalmonah" },
   { name: "Zared" },
+  // User-requested additions (deduped) - batch 5
+  { name: "Og’s territory" },
+  { name: "Sihon’s territory" },
 ];
-
-// User-requested additions (deduped) - batch 5
-{ name: "Og’s territory" },
-{ name: "Sihon’s territory" },
 
