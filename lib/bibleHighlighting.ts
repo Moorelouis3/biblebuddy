@@ -14,7 +14,7 @@ import { BIBLE_PEOPLE_LIST } from "./biblePeopleList";
 import { BIBLE_PLACES_LIST } from "./biblePlacesList";
 import { BIBLE_KEYWORDS_LIST } from "./bibleKeywordsList";
 
-const KEYWORD_SUFFIX_PATTERN = "(?:s|es|ed|ing)?";
+const KEYWORD_SUFFIX_PATTERN = "(?:s|es|ed|ing|ves)?";
 const KEYWORD_MATCHING_RULESET = "all-occurrences-last-token-suffixes";
 const HIGHLIGHT_PIPELINE_RULESET = "places-priority-over-people;people-all-occurrences;keywords-all-occurrences";
 
@@ -262,15 +262,15 @@ export async function enrichBibleVerses(
     }
   });
 
-  // Add keywords (only if not already a person or place)
+  // Add keywords
   const placesSet = new Set(placeNames.map((n) => n.toLowerCase().trim()));
   keywordNames.forEach((name) => {
     const normalized = name.toLowerCase().trim();
-    if (!peopleSet.has(normalized) && !placesSet.has(normalized)) {
-      const layer = getKeywordLayer(name);
-      keywordTerms.push({ term: name.trim(), type: "keywords", layer });
-    }
+    if (!normalized) return;
+    const layer = getKeywordLayer(name);
+    keywordTerms.push({ term: name.trim(), type: "keywords", layer });
   });
+  const keywordSet = new Set(keywordNames.map((name) => name.toLowerCase().trim()));
 
   // Sort all terms by longest string first (prevents "David" matching inside "City of David")
   peopleTerms.sort((a, b) => b.term.length - a.term.length);
@@ -324,39 +324,42 @@ export async function enrichBibleVerses(
     for (const highlightTerm of peopleTerms) {
       const escapedTerm = highlightTerm.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       const regex = new RegExp(`\\b${escapedTerm}\\b`, "gi");
-      
-      // For people names, only match if capitalized (proper noun)
+
+      // For people names, usually require capitalization (proper noun)
+      // but if the same term is also a keyword, allow lowercase fallback highlighting.
       const termLower = highlightTerm.term.toLowerCase();
       const shortCommonWords = ["on", "in", "at", "to", "of", "is", "it", "as", "an", "am", "be", "do", "go", "if", "my", "no", "or", "so", "up", "us", "we", "put"];
-      
+      const isAlsoKeyword = keywordSet.has(termLower);
+
       // Find ALL matches in this verse
       let match;
       regex.lastIndex = 0;
       while ((match = regex.exec(escapedText)) !== null) {
         const matchedText = match[0];
         const firstChar = matchedText.charAt(0);
-        
-        // Capitalization check for people
-        if (shortCommonWords.includes(termLower) && termLower.length <= 3) {
-          const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
-          if (!isUpperCaseLetter) {
-            continue; // Skip lowercase common words
-          }
-        } else {
-          const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
-          if (!isUpperCaseLetter) {
-            continue; // Skip - not capitalized, likely a common word
+
+        if (!isAlsoKeyword) {
+          if (shortCommonWords.includes(termLower) && termLower.length <= 3) {
+            const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
+            if (!isUpperCaseLetter) {
+              continue; // Skip lowercase common words
+            }
+          } else {
+            const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
+            if (!isUpperCaseLetter) {
+              continue; // Skip - not capitalized, likely a common word
+            }
           }
         }
-        
+
         const start = match.index;
         const end = start + match[0].length;
-        
+
         // Check if this range overlaps with any existing highlight
         const overlaps = matches.some(
           (m) => !(end <= m.start || start >= m.end)
         );
-        
+
         if (!overlaps) {
           matches.push({
             start,
@@ -471,15 +474,15 @@ export function enrichPlainText(text: string): string {
     }
   });
 
-  // Add keywords (only if not already a person or place)
+  // Add keywords
   const placesSet = new Set(placeNames.map((n) => n.toLowerCase().trim()));
   keywordNames.forEach((name) => {
     const normalized = name.toLowerCase().trim();
-    if (!peopleSet.has(normalized) && !placesSet.has(normalized)) {
-      const layer = getKeywordLayer(name);
-      keywordTerms.push({ term: name.trim(), type: "keywords", layer });
-    }
+    if (!normalized) return;
+    const layer = getKeywordLayer(name);
+    keywordTerms.push({ term: name.trim(), type: "keywords", layer });
   });
+  const keywordSet = new Set(keywordNames.map((name) => name.toLowerCase().trim()));
 
   // Sort all terms by longest string first (prevents "David" matching inside "City of David")
   peopleTerms.sort((a, b) => b.term.length - a.term.length);
@@ -543,16 +546,19 @@ export function enrichPlainText(text: string): string {
       const matchedText = match[0];
       const firstChar = matchedText.charAt(0);
       
-      // Capitalization check for people
-      if (shortCommonWords.includes(termLower) && termLower.length <= 3) {
-        const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
-        if (!isUpperCaseLetter) {
-          continue; // Skip lowercase common words
-        }
-      } else {
-        const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
-        if (!isUpperCaseLetter) {
-          continue; // Skip - not capitalized, likely a common word
+      const isAlsoKeyword = keywordSet.has(termLower);
+      if (!isAlsoKeyword) {
+        // Capitalization check for people
+        if (shortCommonWords.includes(termLower) && termLower.length <= 3) {
+          const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
+          if (!isUpperCaseLetter) {
+            continue; // Skip lowercase common words
+          }
+        } else {
+          const isUpperCaseLetter = /^[A-Z]/.test(firstChar);
+          if (!isUpperCaseLetter) {
+            continue; // Skip - not capitalized, likely a common word
+          }
         }
       }
       
