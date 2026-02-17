@@ -1,3 +1,4 @@
+  { name: "Naomi" },
 /**
  * Comprehensive list of biblical people (~2,500 individuals)
  * 
