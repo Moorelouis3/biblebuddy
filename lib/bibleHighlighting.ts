@@ -10,7 +10,7 @@
  * - Keywords: Highlight EVERY occurrence (DARK RED)
  */
 
-export const BIBLE_HIGHLIGHTING_VERSION_MARKER = "<!-- bible-highlighting:v2-all-keyword-occurrences -->";
+export const BIBLE_HIGHLIGHTING_VERSION_MARKER = "<!-- bible-highlighting:v3-expanded-keyword-list -->";
 
 import { BIBLE_PEOPLE_LIST } from "./biblePeopleList";
 import { BIBLE_PLACES_LIST } from "./biblePlacesList";
