@@ -171,6 +171,7 @@ export default function CreditLimitModal({
                   <p className="text-sm md:text-[15px] text-gray-700 mb-2">Credits are used when you:</p>
                   <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
                     <li>• Explore People, Places, or Keywords</li>
+                    <li>• Highlight a verse</li>
                     <li>• Start a trivia round</li>
                     <li>• Open devotionals</li>
                     <li>• Begin new study actions</li>
