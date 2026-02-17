@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ColorPicker } from "./ColorPicker";
 import { fetchHighlights, upsertHighlight, deleteHighlight } from "../lib/verseHighlightingApi";
-
+import { supabase } from "../lib/supabaseClient";
 
 interface VerseHighlighterProps {
   book: string;
@@ -17,8 +17,6 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
   const [user, setUser] = useState<any>(null);
 
 
-  // Import supabase client directly
-  import { supabase } from "../lib/supabaseClient";
   useEffect(() => {
     (async () => {
       const { data: userData } = await supabase.auth.getUser();
