@@ -16,10 +16,11 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
 
+
+  // Import supabase client directly
+  import { supabase } from "../lib/supabaseClient";
   useEffect(() => {
     (async () => {
-      const { data } = await import("../lib/supabaseClient");
-      const supabase = data?.supabase || (await import("../lib/supabaseClient")).supabase;
       const { data: userData } = await supabase.auth.getUser();
       setUser(userData?.user || null);
     })();
