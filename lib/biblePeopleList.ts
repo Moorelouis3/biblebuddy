@@ -1,4 +1,4 @@
-  // Ruth integration (2026-02-17)
+// Ruth integration (2026-02-17)
   { name: "citizens" },
   { name: "daughter" },
   { name: "daughter-in-law" },
