@@ -1229,11 +1229,20 @@ export default function DashboardPage() {
           )}
 
           {/* THE BIBLE */}
-          <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}>
-            <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">📖 The Bible</h2>
-              <p className="text-gray-700 mt-1">{readingSubtitle}</p>
-            </div>
+
+          <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}> 
+            <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold">📖 The Bible</h2> 
+              <p className="text-gray-700 mt-1">{readingSubtitle}</p> 
+            </div> 
+          </Link>
+
+          {/* BIBLE STUDY HUB (was Community) */}
+          <Link href="/bible-study-hub" onClick={(event) => handleCardClick(event, "bible_study_hub", "/bible-study-hub")}> 
+            <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold text-orange-800">Bible Study Hub</h2> 
+              <p className="text-gray-700 mt-1">Study Scripture with others</p> 
+            </div> 
           </Link>
 
           {/* GUIDED STUDIES HUB */}
@@ -1273,20 +1282,7 @@ export default function DashboardPage() {
           </Link>
 
           {/* COMMUNITY */}
-          <div
-            className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"
-            onClick={() => setShowCommunityModal(true)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                setShowCommunityModal(true);
-              }
-            }}
-          >
-            <h2 className="text-xl font-semibold">Looking for community?</h2>
-            <p className="text-gray-700 mt-1">Study Scripture with other believers</p>
-          </div>
+
         </div>
         </div>
 
@@ -1408,11 +1404,20 @@ export default function DashboardPage() {
           )}
 
           {/* THE BIBLE */}
-          <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}>
-            <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">📖 The Bible</h2>
-              <p className="text-gray-700 mt-1">{readingSubtitle}</p>
-            </div>
+
+          <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}> 
+            <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold">📖 The Bible</h2> 
+              <p className="text-gray-700 mt-1">{readingSubtitle}</p> 
+            </div> 
+          </Link>
+
+          {/* BIBLE STUDY HUB (was Community) */}
+          <Link href="/bible-study-hub" onClick={(event) => handleCardClick(event, "bible_study_hub", "/bible-study-hub")}> 
+            <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold text-orange-800">Bible Study Hub</h2> 
+              <p className="text-gray-700 mt-1">Study Scripture with others</p> 
+            </div> 
           </Link>
 
           {/* GUIDED STUDIES HUB */}
@@ -1452,20 +1457,7 @@ export default function DashboardPage() {
           </Link>
 
           {/* COMMUNITY */}
-          <div
-            className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"
-            onClick={() => setShowCommunityModal(true)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                setShowCommunityModal(true);
-              }
-            }}
-          >
-            <h2 className="text-xl font-semibold">Looking for community?</h2>
-            <p className="text-gray-700 mt-1">Study Scripture with other believers</p>
-          </div>
+
         </div>
       </div>
 
