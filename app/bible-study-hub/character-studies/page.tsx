@@ -8,6 +8,12 @@ const characters = [
     desc: "The Gentile doctor, Gospel writer, and companion of Paul."
   },
   {
+    href: "/bible-study-hub/character-studies/moses",
+    emoji: "🔥",
+    name: "Moses",
+    desc: "The man God drew out to draw His people out"
+  },
+  {
     href: "/bible-study-hub/character-studies/paul",
     emoji: "🧔",
     name: "Paul",
