@@ -1229,64 +1229,60 @@ export default function DashboardPage() {
           )}
 
           {/* THE BIBLE */}
-          <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}>
-            <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">📖 The Bible</h2>
-              <p className="text-gray-700 mt-1">{readingSubtitle}</p>
-            </div>
+          <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}> 
+            <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold">📖 The Bible</h2> 
+              <p className="text-gray-700 mt-1">Read the complete Bible here</p>
+            </div> 
           </Link>
 
-          {/* GUIDED STUDIES HUB */}
-          <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}>
-            <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">Guided Studies</h2>
-              <p className="text-gray-700 mt-1">Structured ways to study Scripture</p>
-            </div>
+          {/* STUDY HUB */}
+          <Link href="/study-hub"> 
+            <div 
+              className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition" 
+              role="button" 
+              tabIndex={0} 
+            > 
+              <h2 className="text-xl font-semibold">Bible Study Hub</h2> 
+              <p className="text-gray-700 mt-1">Join the discussion and explore the Bible by topic</p> 
+            </div> 
           </Link>
 
           {/* BIBLE REFERENCE HUB */}
-          <Link href="/bible-references" onClick={(event) => handleCardClick(event, "bible_references", "/bible-references")}>
-            <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">Bible References</h2>
-              <p className="text-gray-700 mt-1">Tools to understand Scripture</p>
-            </div>
+          <Link href="/bible-references" onClick={(event) => handleCardClick(event, "bible_references", "/bible-references")}> 
+            <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold">Bible References</h2> 
+              <p className="text-gray-700 mt-1">Tools to understand Scripture</p> 
+            </div> 
+          </Link>
+
+          {/* GUIDED STUDIES HUB */}
+          <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}> 
+            <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold">Bible Studies</h2>
+              <p className="text-gray-700 mt-1">Structured ways to study Scripture</p> 
+            </div> 
           </Link>
 
           {/* BIBLE TRIVIA */}
-          <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}>
-            <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2>
-              <p className="text-gray-700 mt-1">
-                Test your Bible knowledge
-              </p>
-            </div>
+          <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}> 
+            <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2> 
+              <p className="text-gray-700 mt-1"> 
+                Test your Bible knowledge 
+              </p> 
+            </div> 
           </Link>
 
           {/* NOTES */}
-          <Link href="/notes" onClick={(event) => handleCardClick(event, "notes", "/notes")}>
-            <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">📝 Notes</h2>
+          <Link href="/notes" onClick={(event) => handleCardClick(event, "notes", "/notes")}> 
+            <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold">📝 Bible Notes</h2>
               <p className="text-gray-700 mt-1">
-                Save and organize your Bible study notes
+                Create and save your Bible study notes
               </p>
-            </div>
+            </div> 
           </Link>
-
-          {/* COMMUNITY */}
-          <div
-            className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"
-            onClick={() => setShowCommunityModal(true)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                setShowCommunityModal(true);
-              }
-            }}
-          >
-            <h2 className="text-xl font-semibold">Looking for community?</h2>
-            <p className="text-gray-700 mt-1">Study Scripture with other believers</p>
-          </div>
         </div>
         </div>
 
