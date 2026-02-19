@@ -1,8 +1,19 @@
 import React from "react";
+import Image from "next/image";
 
 export default function LukeCharacterStudyPage() {
   return (
     <article className="max-w-2xl mx-auto px-4 py-10">
+      <div className="mb-8">
+        <Image
+          src="/Lukebanner.png"
+          alt="Luke Character Study Banner"
+          width={1200}
+          height={600}
+          className="rounded-xl shadow-sm w-full h-auto object-cover"
+          priority
+        />
+      </div>
       <h1 className="text-3xl font-bold mb-2">Luke</h1>
       <h2 className="text-xl font-semibold mb-4 text-gray-700">The Gospel Writer Who Wasn’t One of the Twelve</h2>
       <section className="mb-8">
