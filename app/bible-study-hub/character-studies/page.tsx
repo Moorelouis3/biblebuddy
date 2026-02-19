@@ -7,7 +7,12 @@ const characters = [
     name: "Luke",
     desc: "The Gentile doctor, Gospel writer, and companion of Paul."
   },
-  // Add more character cards here as needed
+  {
+    href: "/bible-study-hub/character-studies/paul",
+    emoji: "🧔",
+    name: "Paul",
+    desc: "From persecutor to missionary apostle."
+  },
 ];
 
 export default function CharacterStudiesPage() {
