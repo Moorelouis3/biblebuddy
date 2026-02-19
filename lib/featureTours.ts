@@ -5,7 +5,8 @@ export type FeatureTourKey =
   | "bible_references"
   | "bible_trivia"
   | "notes"
-  | "chat_widget";
+  | "chat_widget"
+  | "bible_study_hub";
 
 export type FeatureToursState = Record<FeatureTourKey, boolean>;
 
@@ -17,6 +18,7 @@ export const DEFAULT_FEATURE_TOURS: FeatureToursState = {
   bible_trivia: false,
   notes: false,
   chat_widget: false,
+  bible_study_hub: false,
 };
 
 export function normalizeFeatureTours(raw: unknown): FeatureToursState {
@@ -37,5 +39,6 @@ export function normalizeFeatureTours(raw: unknown): FeatureToursState {
     bible_trivia: source.bible_trivia === true,
     notes: source.notes === true,
     chat_widget: source.chat_widget === true,
+    bible_study_hub: source.bible_study_hub === true,
   };
 }

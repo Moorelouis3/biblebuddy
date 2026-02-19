@@ -169,6 +169,10 @@ export default function DashboardPage() {
       title: "Welcome to Chat with Louis",
       body: "This chat lets you ask Bible questions instantly while you study so you can stay focused in your reading flow. Louis has been carefully trained for hours on biblical content and designed to search Scripture, filter out nonsense, and prioritize clear, Scripture-grounded answers. It’s like having a Bible study partner built directly into your reading experience.",
     },
+    bible_study_hub: {
+      title: "Welcome to the Bible Study Hub",
+      body: "Join the discussion and explore the Bible by topic. Dive into insights, tools, and foundational studies to grow your understanding.",
+    },
   };
 
   const DASHBOARD_TOUR_CONTENT = (
