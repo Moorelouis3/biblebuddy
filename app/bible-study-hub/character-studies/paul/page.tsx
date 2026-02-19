@@ -5,7 +5,7 @@ export default function PaulCharacterStudyPage() {
     <article className="max-w-2xl mx-auto px-4 py-10">
       <div className="mb-8">
         <Image
-          src="/Paul%20banner.png"
+          src="/Paulbanner.png"
           alt="Paul Character Study Banner"
           width={1200}
           height={600}
