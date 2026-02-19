@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BibleStudyBreadcrumb from "@/components/BibleStudyBreadcrumb";
 
 const subjects = [
   {
@@ -54,6 +55,12 @@ const subjects = [
 export default function BibleStudyHubPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
+      <BibleStudyBreadcrumb
+        items={[
+          { label: "Dashboard", href: "/dashboard" },
+          { label: "Bible Study Hub" }
+        ]}
+      />
       <h1 className="text-3xl font-bold mb-2">Study Hub</h1>
       <p className="text-gray-600 mb-8">Join the discussion and explore the Bible by topic.</p>
       <div className="flex flex-col gap-5">

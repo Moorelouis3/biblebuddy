@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BibleStudyBreadcrumb from "@/components/BibleStudyBreadcrumb";
 
 const characters = [
   {
@@ -24,6 +25,13 @@ const characters = [
 export default function CharacterStudiesPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
+      <BibleStudyBreadcrumb
+        items={[
+          { label: "Dashboard", href: "/dashboard" },
+          { label: "Bible Study Hub", href: "/bible-study-hub" },
+          { label: "Character Studies" }
+        ]}
+      />
       <h1 className="text-3xl font-bold mb-2">Character Studies</h1>
       <p className="text-gray-600 mb-8">Explore the lives of key Bible characters.</p>
       <div className="flex flex-col gap-5">

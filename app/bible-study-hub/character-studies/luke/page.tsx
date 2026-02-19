@@ -1,9 +1,18 @@
 import React from "react";
 import Image from "next/image";
+import BibleStudyBreadcrumb from "@/components/BibleStudyBreadcrumb";
 
 export default function LukeCharacterStudyPage() {
   return (
     <article className="max-w-2xl mx-auto px-4 py-10">
+      <BibleStudyBreadcrumb
+        items={[
+          { label: "Dashboard", href: "/dashboard" },
+          { label: "Bible Study Hub", href: "/bible-study-hub" },
+          { label: "Character Studies", href: "/bible-study-hub/character-studies" },
+          { label: "Luke" }
+        ]}
+      />
       <div className="mb-8">
         <Image
           src="/Lukebanner.png"
