@@ -24,6 +24,16 @@ export default function ChristianFoundationsPage() {
             <div className="text-gray-700 text-sm">Understanding Heaven Biblically</div>
           </div>
         </a>
+        <a
+          href="/bible-study-hub/christian-foundations/why-so-many-denominations"
+          className="rounded-xl p-6 shadow-sm border border-purple-200 bg-purple-100 hover:shadow-md transition cursor-pointer flex items-start gap-4"
+        >
+          <span className="text-3xl mt-1 select-none">🌎</span>
+          <div>
+            <div className="font-bold text-lg text-purple-900 mb-1">Why So Many Denominations</div>
+            <div className="text-gray-700 text-sm">Understanding Christian Divisions</div>
+          </div>
+        </a>
       </div>
     </div>
   );
