@@ -1,43 +1,37 @@
+import React from "react";
 import Image from "next/image";
-import BibleStudyBreadcrumb from "@/components/BibleStudyBreadcrumb";
+import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 
-export default function ASimpleBibleHighlightingSystem() {
   return (
-    <article className="max-w-2xl mx-auto px-4 py-10">
-      <BibleStudyBreadcrumb
-        items={[
-          { label: "Dashboard", href: "/dashboard" },
-          { label: "Bible Study Tips", href: "/bible-study-tips" },
-          { label: "A Simple Bible Highlighting System" }
-        ]}
-      />
-      <div className="mb-8">
-        <Image
-          src="/Biblehighlightingbanner.png"
-          alt="Bible Highlighting Banner"
-          width={1200}
-          height={400}
-          className="w-full rounded-xl mb-6"
-          priority
-        />
-      </div>
-      <h1 className="text-3xl font-bold mb-4">A Simple Bible Highlighting System</h1>
-      <h2 className="text-xl font-semibold mb-3">How to Highlight With Purpose</h2>
-      <p className="mb-4">When many people first begin studying the Bible, highlighting feels automatic.</p>
-      <p className="mb-4">Everyone highlights.</p>
-      <p className="mb-4">So it must be helpful.</p>
-      <p className="mb-4">A yellow highlighter comes out.<br />Verses start glowing.<br />Pages become colorful.</p>
-      <p className="mb-4">And at first, it feels productive.</p>
-      <p className="mb-4">But weeks later, those same pages are opened again.</p>
-      <p className="mb-4">And a question appears.</p>
-      <p className="mb-4">Why was this highlighted?</p>
-      <p className="mb-4">What did this mean?</p>
-      <p className="mb-4">What was the purpose?</p>
-      <p className="mb-4">Highlighting without intention does not create clarity.</p>
-      <p className="mb-4">It creates color.</p>
-      <p className="mb-4">And color alone does not produce understanding.</p>
-      <h2 className="text-xl font-semibold mt-8 mb-3">🎨 More Colors Is Not the Solution</h2>
-      <p className="mb-4">When simple highlighting feels confusing, the next instinct is often to add more colors.</p>
+    <BibleStudyHubArticleLayout>
+      <article className="max-w-2xl mx-auto px-4 py-10">
+        <div className="mb-8">
+          <Image
+            src="/Biblehighlightingbanner.png"
+            alt="Bible Highlighting Banner"
+            width={1200}
+            height={400}
+            className="w-full rounded-xl mb-6"
+            priority
+          />
+        </div>
+        <h1 className="text-3xl font-bold mb-4">A Simple Bible Highlighting System</h1>
+        <h2 className="text-xl font-semibold mb-3">How to Highlight With Purpose</h2>
+        <p className="mb-4">When many people first begin studying the Bible, highlighting feels automatic.</p>
+        <p className="mb-4">Everyone highlights.</p>
+        <p className="mb-4">So it must be helpful.</p>
+        <p className="mb-4">A yellow highlighter comes out.<br />Verses start glowing.<br />Pages become colorful.</p>
+        <p className="mb-4">And at first, it feels productive.</p>
+        <p className="mb-4">But weeks later, those same pages are opened again.</p>
+        <p className="mb-4">And a question appears.</p>
+        <p className="mb-4">Why was this highlighted?</p>
+        <p className="mb-4">What did this mean?</p>
+        <p className="mb-4">What was the purpose?</p>
+        <p className="mb-4">Highlighting without intention does not create clarity.</p>
+        <p className="mb-4">It creates color.</p>
+        <p className="mb-4">And color alone does not produce understanding.</p>
+        <h2 className="text-xl font-semibold mt-8 mb-3">🎨 More Colors Is Not the Solution</h2>
+        <p className="mb-4">When simple highlighting feels confusing, the next instinct is often to add more colors.</p>
       <ul className="mb-4 ml-6 list-none">
         <li>🔵 Blue</li>
         <li>🟢 Green</li>
@@ -192,6 +186,7 @@ export default function ASimpleBibleHighlightingSystem() {
       <p className="mb-4">Highlight with purpose.</p>
       <p className="mb-4">Highlight so that future understanding builds on present insight.</p>
       <p className="mb-4">That is how highlighting becomes a tool for growth instead of just color on a page.</p>
-    </article>
+      </article>
+    </BibleStudyHubArticleLayout>
   );
 }
