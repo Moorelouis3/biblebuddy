@@ -8,7 +8,12 @@ const tips = [
     title: "Why Bible Study Is Hard",
     desc: "5 Reasons Studying the Bible Is Hard",
   },
-  // Add other cards here if needed
+  {
+    href: "/bible-study-tips/how-to-read-the-bible",
+    emoji: "📖",
+    title: "How to Read the Bible",
+    desc: "A Simple Way to Study Scripture",
+  },
 ];
 
 export default function BibleStudyTipsPage() {
