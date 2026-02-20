@@ -437,7 +437,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 className="flex items-center gap-3 hover:opacity-80 transition-opacity"
               >
                 <Image
-                  src="/louis/louis-bible.png"
+                  src="/Biblelogo.png"
                   alt="Bible Buddy Logo"
                   width={32}
                   height={32}
