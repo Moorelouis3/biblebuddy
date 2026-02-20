@@ -436,13 +436,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 href="/dashboard"
                 className="flex items-center gap-3 hover:opacity-80 transition-opacity"
               >
-                <Image
-                  src="/Biblebuddyicon.png"
-                  alt="Bible Buddy Logo"
-                  width={32}
-                  height={32}
-                  className="w-8 h-8"
-                />
+                {/* Logo removed as requested */}
                 <div>
                   <div className="text-sm font-bold text-gray-900 tracking-tight">
                     Bible Buddy
