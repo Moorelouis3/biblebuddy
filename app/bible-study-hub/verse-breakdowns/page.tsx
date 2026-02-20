@@ -24,6 +24,16 @@ export default function VerseBreakdownsPage() {
             <div className="text-gray-700 text-sm">Proverbs 25:28 Explained</div>
           </div>
         </a>
+        <a
+          href="/bible-study-hub/verse-breakdowns/salt-and-light"
+          className="rounded-xl p-6 shadow-sm border border-blue-200 bg-blue-100 hover:shadow-md transition cursor-pointer flex items-start gap-4"
+        >
+          <span className="text-3xl mt-1 select-none">🧂</span>
+          <div>
+            <div className="font-bold text-lg text-blue-900 mb-1">Salt and Light</div>
+            <div className="text-gray-700 text-sm">Matthew 5:13 to 16</div>
+          </div>
+        </a>
       </div>
     </div>
   );
