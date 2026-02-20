@@ -34,18 +34,6 @@ export default function BibleStudyTipsPage() {
       <h1 className="text-3xl font-bold mb-2">Bible Study Tips</h1>
       <p className="text-gray-600 mb-8">Practical advice and encouragement for your Bible study journey.</p>
       <div className="flex flex-col gap-5">
-        {/* Render the current section card as a non-link, others as links */}
-        <div
-          className={
-            "rounded-xl p-6 shadow-sm border border-yellow-200 bg-yellow-100 flex items-start gap-4 opacity-60 cursor-default select-none"
-          }
-        >
-          <span className="text-3xl mt-1">🛠️</span>
-          <div>
-            <div className="font-bold text-lg text-yellow-900 mb-1">Bible Study Tips</div>
-            <div className="text-gray-700 text-sm">Helpful resources for deeper Bible study.</div>
-          </div>
-        </div>
         {tips.map((t) => (
           <Link
             key={t.href}
