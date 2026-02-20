@@ -14,6 +14,12 @@ const tips = [
     title: "How to Read the Bible",
     desc: "A Simple Way to Study Scripture",
   },
+  {
+    href: "/bible-study-tips/a-simple-bible-highlighting-system",
+    emoji: "🖍️",
+    title: "A Simple Bible Highlighting System",
+    desc: "How to Highlight With Purpose",
+  },
 ];
 
 export default function BibleStudyTipsPage() {
