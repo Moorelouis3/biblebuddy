@@ -1,8 +1,9 @@
 import Image from "next/image";
+import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 
 export default function TheManWhoLegalizedChristianity() {
   return (
-    <article className="max-w-2xl mx-auto px-4 py-10">
+    <BibleStudyHubArticleLayout>
       <div className="mb-8">
         <Image
           src="/Legalized.png"
@@ -41,18 +42,18 @@ export default function TheManWhoLegalizedChristianity() {
       <p className="mb-4">So they were:</p>
       <ul className="mb-4 ml-6 list-none">
         <li>⛓️ Arrested</li>
-        <li>🩸 Executed</li>
+        <li>🧊 Executed</li>
         <li>🐅 Fed to animals in arenas</li>
         <li>🕯️ Forced into secrecy</li>
       </ul>
       <p className="mb-4">Yet Christianity continued to spread.</p>
       <p className="mb-4">Not because it had power.</p>
       <p className="mb-4">Because it had conviction.</p>
-      <h2 className="text-xl font-semibold mt-8 mb-3">📜 The Major Waves of Persecution</h2>
+      <h2 className="text-xl font-semibold mt-8 mb-3">📄 The Major Waves of Persecution</h2>
       <ul className="mb-4 ml-6 list-none">
         <li>🔥 64 AD<br />Under Emperor Nero, Christians were blamed for the Great Fire of Rome. Many were publicly tortured and killed.</li>
         <li>👑 81 to 96 AD<br />Domitian demanded to be called Lord and God. Christians refused and suffered.</li>
-        <li>📜 98 to 117 AD<br />Under Trajan, Christianity was officially illegal. Accused believers who refused to recant were punished.</li>
+        <li>📄 98 to 117 AD<br />Under Trajan, Christianity was officially illegal. Accused believers who refused to recant were punished.</li>
         <li>🔥 161 to 180 AD<br />During the reign of Marcus Aurelius, plagues devastated Rome. Christians were blamed for angering the gods.</li>
         <li>⚔️ 303 AD<br />The Great Persecution under Diocletian and Galerius. Churches destroyed. Scriptures burned. Leaders imprisoned. Thousands executed.</li>
       </ul>
@@ -147,6 +148,6 @@ export default function TheManWhoLegalizedChristianity() {
       <p className="mb-4">The legalization of Christianity marks one of the most significant turning points in church history.</p>
       <p className="mb-4">A persecuted movement became a protected institution.</p>
       <p className="mb-4">And the world would never be the same.</p>
-    </article>
+    </BibleStudyHubArticleLayout>
   );
 }

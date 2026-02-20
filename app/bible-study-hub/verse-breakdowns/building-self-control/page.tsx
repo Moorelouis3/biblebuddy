@@ -6,7 +6,7 @@ export default function BuildingSelfControl() {
       <div className="mb-8">
         <Image
           src="/Selfcontrolbanner.png"
-          alt="Building Self Control Banner"
+            <BibleStudyHubArticleLayout>
           width={1200}
           height={400}
           className="w-full rounded-xl mb-6"
@@ -72,7 +72,7 @@ export default function BuildingSelfControl() {
       <ul className="mb-4 ml-6 list-none">
         <li>🚫 Saying no to what pulls you from God</li>
         <li>✅ Saying yes to what draws you toward Him</li>
-      </ul>
+            </BibleStudyHubArticleLayout>
       <p className="mb-4">Without it, everything weakens.</p>
       <h2 className="text-xl font-semibold mt-8 mb-3">🧠 Where Sin Actually Begins</h2>
       <p className="mb-4">Jesus addresses this directly in Matthew 5.</p>

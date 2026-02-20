@@ -1,8 +1,9 @@
 import Image from "next/image";
+import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 
 export default function StPatrickPage() {
   return (
-    <div className="max-w-2xl mx-auto px-4 py-10">
+    <BibleStudyHubArticleLayout>
       <div className="w-full mb-6">
         <Image
           src="/Irelandbanner.png"
@@ -129,6 +130,6 @@ export default function StPatrickPage() {
       <p className="mb-4">A pagan nation encountered Christianity.</p>
       <p className="mb-4">History remembers green.</p>
       <p className="mb-4">But the foundation was faith.</p>
-    </div>
+    </BibleStudyHubArticleLayout>
   );
 }

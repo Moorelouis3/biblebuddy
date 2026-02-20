@@ -1,8 +1,9 @@
 import Image from "next/image";
+import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 
 export default function StValentinePage() {
   return (
-    <div className="max-w-2xl mx-auto px-4 py-10">
+    <BibleStudyHubArticleLayout>
       <div className="w-full mb-6">
         <Image
           src="/Valentinebanner.png"
@@ -108,6 +109,6 @@ export default function StValentinePage() {
       <p className="mb-4">Celebrate love.</p>
       <p className="mb-4">Just remember that the name attached to the day belonged to a man who chose Christ over comfort.</p>
       <p className="mb-4">And paid for it with his life.</p>
-    </div>
+    </BibleStudyHubArticleLayout>
   );
 }

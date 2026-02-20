@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function WhatIsHell() {
   return (
-    <article className="max-w-2xl mx-auto px-4 py-10">
+    <BibleStudyHubArticleLayout>
       <div className="mb-8">
         <Image
           src="/Whatishell.png"
@@ -176,6 +176,6 @@ export default function WhatIsHell() {
       <p className="mb-4">Not a simplistic picture.</p>
       <p className="mb-4">And clarity matters.</p>
       <p className="mb-4">Because when we understand what Scripture actually says, we are better equipped to respond to it with seriousness, humility, and truth.</p>
-    </article>
+    </BibleStudyHubArticleLayout>
   );
 }

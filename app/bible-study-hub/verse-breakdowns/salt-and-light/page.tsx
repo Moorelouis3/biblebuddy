@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function SaltAndLight() {
   return (
-    <article className="max-w-2xl mx-auto px-4 py-10">
+    <BibleStudyHubArticleLayout>
       <div className="mb-8">
         <Image
           src="/Saltearthbanner.png"
@@ -154,6 +154,7 @@ export default function SaltAndLight() {
       <p className="mb-4">But salt that blends in loses effect.</p>
       <p className="mb-4">Light that hides loses purpose.</p>
       <p className="mb-4">And when identity is lived faithfully, the world around it changes.</p>
-    </article>
+    </BibleStudyHubArticleLayout>
+  );
   );
 }

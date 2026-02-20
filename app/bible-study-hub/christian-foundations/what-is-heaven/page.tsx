@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function WhatIsHeaven() {
   return (
-    <article className="max-w-2xl mx-auto px-4 py-10">
+    <BibleStudyHubArticleLayout>
       <div className="mb-8">
         <Image
           src="/Whatisheaven.png"
@@ -174,6 +174,6 @@ export default function WhatIsHeaven() {
       <p className="mb-4">Sin is removed.</p>
       <p className="mb-4">God is fully present.</p>
       <p className="mb-4">That is heaven.</p>
-    </article>
+    </BibleStudyHubArticleLayout>
   );
 }

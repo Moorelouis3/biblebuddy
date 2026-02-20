@@ -1,8 +1,9 @@
 import Image from "next/image";
+import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 
 export default function YourBodyIsATemple() {
   return (
-    <article className="max-w-2xl mx-auto px-4 py-10">
+    <BibleStudyHubArticleLayout>
       <div className="mb-8">
         <Image
           src="/Bodytemplebanner.png"
@@ -14,28 +15,28 @@ export default function YourBodyIsATemple() {
         />
       </div>
       <h1 className="text-3xl font-bold mb-4">Your Body Is a Temple</h1>
-      <h2 className="text-xl font-semibold mb-3">1 Corinthians 6:19 to 20</h2>
-      <p className="mb-4">Have you ever heard someone quote this verse?</p>
-      <p className="mb-4">“Your body is a temple of the Holy Spirit.”</p>
-      <p className="mb-4">Most people hear it and instantly assume it means one thing.</p>
-      <ul className="mb-4 ml-6 list-none">
-        <li>🧑‍⚕️ Take care of yourself</li>
-        <li>🚫 Do not sin</li>
-        <li>🙏 Try to be holy</li>
-      </ul>
-      <p className="mb-4">That is not wrong, but it is incomplete.</p>
-      <p className="mb-4">Because when Paul wrote this, he was not speaking to people who grew up with church culture.</p>
-      <p className="mb-4">He was speaking to people who grew up in Corinth.</p>
-      <p className="mb-4">And once the backstory is understood, this verse hits with a different weight.</p>
-      <h2 className="text-xl font-semibold mt-8 mb-3">The Verse That Sounds Familiar Until You Know the Backstory</h2>
-      <p className="mb-4">Paul writes:</p>
-      <p className="mb-4">“Do you not know that your body is a temple of the Holy Spirit within you, whom you have from God?”<br />1 Corinthians 6:19</p>
-      <p className="mb-4">Then he says:</p>
-      <p className="mb-4">“You are not your own, for you were bought with a price. So glorify God in your body.”<br />1 Corinthians 6:19 to 20</p>
-      <p className="mb-4">This was not a general motivational quote.</p>
-      <p className="mb-4">This was a direct correction.</p>
-      <p className="mb-4">A warning.</p>
-      <p className="mb-4">A full identity shift.</p>
+      <h2 className="text-xl font-semibold mb-3">1 Corinthians 6:19-20 Explained</h2>
+      <p className="mb-4">“Do you not know that your body is a temple of the Holy Spirit within you, whom you have from God? You are not your own, for you were bought with a price. So glorify God in your body.”<br />1 Corinthians 6:19-20</p>
+      <p className="mb-4">This verse is often quoted in discussions about health, fitness, and self-care.</p>
+      <p className="mb-4">But its meaning goes much deeper.</p>
+      <h2 className="text-xl font-semibold mt-8 mb-3">🏛️ What Does It Mean?</h2>
+      <p className="mb-4">Paul is not just talking about physical health.</p>
+      <p className="mb-4">He is talking about spiritual reality.</p>
+      <p className="mb-4">Your body is a place where God’s Spirit lives.</p>
+      <p className="mb-4">That makes your body sacred.</p>
+      <h2 className="text-xl font-semibold mt-8 mb-3">💪 Why It Matters</h2>
+      <p className="mb-4">If your body is a temple, it deserves respect.</p>
+      <p className="mb-4">Not because of pride or vanity, but because of God’s presence.</p>
+      <p className="mb-4">Taking care of your body is a way to honor God.</p>
+      <h2 className="text-xl font-semibold mt-8 mb-3">📌 Why This Still Matters</h2>
+      <p className="mb-4">This teaching is not just about rules.</p>
+      <p className="mb-4">It is about relationship.</p>
+      <p className="mb-4">God values you so much that He lives within you.</p>
+      <p className="mb-4">When you understand this, you can live with purpose and dignity.</p>
+      <p className="mb-4">And you can glorify God in everything you do.</p>
+    </BibleStudyHubArticleLayout>
+  );
+}
       <h2 className="text-xl font-semibold mt-8 mb-3">Corinth Was Rebuilt and It Came Back Worse</h2>
       <p className="mb-4">Corinth was once a powerful Greek city.</p>
       <p className="mb-4">But Rome destroyed it in 146 B C.</p>
