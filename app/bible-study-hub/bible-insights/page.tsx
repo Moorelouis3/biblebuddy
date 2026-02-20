@@ -4,8 +4,13 @@ import BibleStudyBreadcrumb from "@/components/BibleStudyBreadcrumb";
 const insights = [
   {
     href: "/bible-study-hub/bible-insights/how-to-defend-the-bible",
-    title: "How to Defend the Bible",
+    title: "🛡️ How to Defend the Bible",
     desc: "How to respond when people say it was changed, written by men, or fake.",
+  },
+  {
+    href: "/bible-study-hub/bible-insights/what-is-the-bible",
+    title: "📖 What Is the Bible?",
+    desc: "Understanding its origin, structure, authors, and why it matters.",
   },
   // ...other cards can be added here...
 ];
