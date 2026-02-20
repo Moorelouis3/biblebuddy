@@ -11,7 +11,7 @@ const subjects = [
     text: "text-blue-900"
   },
   {
-    href: "/bible-study-hub/study-tools",
+    href: "/bible-study-tips",
     emoji: "🛠️",
     title: "Bible Study Tips",
     desc: "Helpful resources for deeper Bible study.",
