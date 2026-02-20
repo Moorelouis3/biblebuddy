@@ -17,6 +17,8 @@ export interface ProfileStats {
   trivia_questions_answered: number;
   last_active_date: string | null;
   current_streak: number;
+  username?: string;
+  display_name?: string;
 }
 
 export interface HeatMapDay {
@@ -33,7 +35,7 @@ export async function getProfileStats(
   try {
     const { data, error } = await supabase
       .from("profile_stats")
-      .select("*")
+      .select("*, username, display_name")
       .eq("user_id", userId)
       .maybeSingle();
 
@@ -67,6 +69,8 @@ export async function getProfileStats(
       trivia_questions_answered: data.trivia_questions_answered || 0,
       last_active_date: data.last_active_date,
       current_streak: data.current_streak || 0,
+      username: data.username || undefined,
+      display_name: data.display_name || undefined,
     };
   } catch (err) {
     console.error("[PROFILE] Error in getProfileStats:", err);
