@@ -1,5 +1,5 @@
 import Link from "next/link";
-import BibleStudyBreadcrumb from "@/components/BibleStudyBreadcrumb";
+import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 
 const tips = [
   {
@@ -24,13 +24,7 @@ const tips = [
 
 export default function BibleStudyTipsPage() {
   return (
-    <div className="max-w-2xl mx-auto px-4 py-10">
-      <BibleStudyBreadcrumb
-        items={[
-          { label: "Dashboard", href: "/dashboard" },
-          { label: "Bible Study Tips" },
-        ]}
-      />
+    <BibleStudyHubArticleLayout>
       <h1 className="text-3xl font-bold mb-2">Bible Study Tips</h1>
       <p className="text-gray-600 mb-8">Practical advice and encouragement for your Bible study journey.</p>
       <div className="flex flex-col gap-5">
@@ -48,6 +42,6 @@ export default function BibleStudyTipsPage() {
           </Link>
         ))}
       </div>
-    </div>
+    </BibleStudyHubArticleLayout>
   );
 }
