@@ -1,3 +1,5 @@
+
+import Image from "next/image";
 import BibleStudyBreadcrumb from "@/components/BibleStudyBreadcrumb";
 
 export default function WhyBibleStudyIsHardPage() {
@@ -10,6 +12,17 @@ export default function WhyBibleStudyIsHardPage() {
           { label: "Why Bible Study Is Hard" }
         ]}
       />
+
+      <div className="mb-8">
+        <Image
+          src="/Biblestudyhardbanner.png"
+          alt="Why Bible Study Is Hard Banner"
+          width={1200}
+          height={600}
+          className="rounded-xl shadow-sm w-full h-auto object-cover"
+          priority
+        />
+      </div>
       <h1 className="text-3xl font-bold mb-2">Why Bible Study Is Hard</h1>
       <h2 className="text-xl font-semibold mb-8 text-gray-700">5 Reasons Studying the Bible Feels Difficult</h2>
 
