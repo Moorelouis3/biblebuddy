@@ -20,9 +20,9 @@ export const metadata: Metadata = {
   title: "Bible Buddy",
   description: "Your guided Bible reading companion",
   icons: {
-    icon: "/Newbiblelogo.png",
-    apple: "/Newbiblelogo.png",
-    shortcut: "/Newbiblelogo.png",
+    icon: "/Biblebuddylogo.png",
+    apple: "/Biblebuddylogo.png",
+    shortcut: "/Biblebuddylogo.png",
   },
   manifest: "/manifest.json",
   appleWebApp: {
