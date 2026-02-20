@@ -119,11 +119,7 @@ export default function WhySoManyBibleTranslationsPage() {
         <p className="mb-4">Only the language around it has.</p>
       </section>
 
-      <section className="mb-8">
-        <h2 className="text-lg font-semibold mb-4">🚫 Important</h2>
-        <p className="mb-4">Do not alter existing Bible Insights articles.<br/>Do not refactor layout components.<br/>Do not modify global styles.<br/>Do not rename folders.</p>
-        <p className="mb-4">Only add this new card and article following the established pattern.</p>
-      </section>
+
     </article>
   );
 }
