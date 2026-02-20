@@ -1238,7 +1238,7 @@ export default function DashboardPage() {
           <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}> 
             <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
               <h2 className="text-xl font-semibold">📖 Bible</h2> 
-              <p className="text-gray-700 mt-1">Read the complete Bible here.</p> 
+              <p className="text-gray-700 mt-1">Read the complete Bible here</p> 
             </div> 
           </Link>
 
@@ -1246,7 +1246,7 @@ export default function DashboardPage() {
           <Link href="/bible-study-hub" onClick={(event) => handleCardClick(event, "bible_study_hub", "/bible-study-hub")}> 
             <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
               <h2 className="text-xl font-semibold text-orange-800">Bible Study Hub</h2> 
-              <p className="text-gray-700 mt-1">Explore structured Bible study topics and deep dives.</p> 
+              <p className="text-gray-700 mt-1">Discuss and explore Bible topics</p> 
             </div> 
           </Link>
 
@@ -1254,7 +1254,7 @@ export default function DashboardPage() {
           <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}> 
             <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
               <h2 className="text-xl font-semibold">Bible Studies</h2> 
-              <p className="text-gray-700 mt-1">Follow structured verse-by-verse and topical studies.</p> 
+              <p className="text-gray-700 mt-1">Structured ways to study Scripture</p> 
             </div> 
           </Link>
 
@@ -1262,28 +1262,24 @@ export default function DashboardPage() {
           <Link href="/bible-references" onClick={(event) => handleCardClick(event, "bible_references", "/bible-references")}> 
             <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
               <h2 className="text-xl font-semibold">Bible References</h2> 
-              <p className="text-gray-700 mt-1">Look up people, places, keywords, and definitions.</p> 
+              <p className="text-gray-700 mt-1">Explanations of Bible keywords</p> 
             </div> 
           </Link>
 
           {/* BIBLE TRIVIA */}
-          <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}>
-            <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2>
-              <p className="text-gray-700 mt-1">
-                Test your Bible knowledge
-              </p>
-            </div>
+          <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}> 
+            <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold">🎯 Bible Games</h2> 
+              <p className="text-gray-700 mt-1">Test your Bible knowledge</p> 
+            </div> 
           </Link>
 
           {/* NOTES */}
-          <Link href="/notes" onClick={(event) => handleCardClick(event, "notes", "/notes")}>
-            <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">📝 Notes</h2>
-              <p className="text-gray-700 mt-1">
-                Save and organize your Bible study notes
-              </p>
-            </div>
+          <Link href="/notes" onClick={(event) => handleCardClick(event, "notes", "/notes")}> 
+            <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold">📝 Bible Study Notes</h2> 
+              <p className="text-gray-700 mt-1">Create and save study notes</p> 
+            </div> 
           </Link>
 
           {/* COMMUNITY */}
@@ -1408,57 +1404,52 @@ export default function DashboardPage() {
             </div>
           )}
 
-          {/* THE BIBLE */}
-
+          {/* BIBLE */}
           <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}> 
             <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-              <h2 className="text-xl font-semibold">📖 The Bible</h2> 
-              <p className="text-gray-700 mt-1">{readingSubtitle}</p> 
+              <h2 className="text-xl font-semibold">📖 Bible</h2> 
+              <p className="text-gray-700 mt-1">Read the complete Bible here</p> 
             </div> 
           </Link>
 
-          {/* BIBLE STUDY HUB (was Community) */}
+          {/* BIBLE STUDY HUB */}
           <Link href="/bible-study-hub" onClick={(event) => handleCardClick(event, "bible_study_hub", "/bible-study-hub")}> 
             <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
               <h2 className="text-xl font-semibold text-orange-800">Bible Study Hub</h2> 
-              <p className="text-gray-700 mt-1">Study Scripture with others</p> 
+              <p className="text-gray-700 mt-1">Discuss and explore Bible topics</p> 
             </div> 
           </Link>
 
-          {/* GUIDED STUDIES HUB */}
-          <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}>
-            <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">Guided Studies</h2>
-              <p className="text-gray-700 mt-1">Structured ways to study Scripture</p>
-            </div>
+          {/* BIBLE STUDIES */}
+          <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}> 
+            <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold">Bible Studies</h2> 
+              <p className="text-gray-700 mt-1">Structured ways to study Scripture</p> 
+            </div> 
           </Link>
 
-          {/* BIBLE REFERENCE HUB */}
-          <Link href="/bible-references" onClick={(event) => handleCardClick(event, "bible_references", "/bible-references")}>
-            <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">Bible References</h2>
-              <p className="text-gray-700 mt-1">Tools to understand Scripture</p>
-            </div>
+          {/* BIBLE REFERENCES */}
+          <Link href="/bible-references" onClick={(event) => handleCardClick(event, "bible_references", "/bible-references")}> 
+            <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold">Bible References</h2> 
+              <p className="text-gray-700 mt-1">Explanations of Bible keywords</p> 
+            </div> 
           </Link>
 
           {/* BIBLE TRIVIA */}
-          <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}>
-            <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2>
-              <p className="text-gray-700 mt-1">
-                Test your Bible knowledge
-              </p>
-            </div>
+          <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}> 
+            <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold">🎯 Bible Games</h2> 
+              <p className="text-gray-700 mt-1">Test your Bible knowledge</p> 
+            </div> 
           </Link>
 
           {/* NOTES */}
-          <Link href="/notes" onClick={(event) => handleCardClick(event, "notes", "/notes")}>
-            <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-              <h2 className="text-xl font-semibold">📝 Notes</h2>
-              <p className="text-gray-700 mt-1">
-                Save and organize your Bible study notes
-              </p>
-            </div>
+          <Link href="/notes" onClick={(event) => handleCardClick(event, "notes", "/notes")}> 
+            <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
+              <h2 className="text-xl font-semibold">📝 Bible Study Notes</h2> 
+              <p className="text-gray-700 mt-1">Create and save study notes</p> 
+            </div> 
           </Link>
 
           {/* COMMUNITY */}
