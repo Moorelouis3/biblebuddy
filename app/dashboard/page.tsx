@@ -1237,7 +1237,7 @@ export default function DashboardPage() {
           {/* BIBLE */}
           <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}> 
             <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-              <h2 className="text-xl font-semibold">📖 Bible</h2> 
+              <h2 className="text-xl font-semibold">📖 The Bible</h2> 
               <p className="text-gray-700 mt-1">Read the complete Bible here</p> 
             </div> 
           </Link>
@@ -1407,7 +1407,7 @@ export default function DashboardPage() {
           {/* BIBLE */}
           <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}> 
             <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-              <h2 className="text-xl font-semibold">📖 Bible</h2> 
+              <h2 className="text-xl font-semibold">📖 The Bible</h2> 
               <p className="text-gray-700 mt-1">Read the complete Bible here</p> 
             </div> 
           </Link>
