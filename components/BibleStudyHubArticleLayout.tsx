@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import CommentSection from "@/components/comments/CommentSection";
 
 function toTitleCase(str: string) {
   return str
@@ -34,6 +35,10 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
     crumbs.push({ label: article }); // Not clickable
   }
 
+  // Only show comments on article pages (i.e., /bible-study-hub/[subject]/[article])
+  const isArticlePage = segments[0] === "bible-study-hub" && segments.length === 3;
+  const articleSlug = isArticlePage ? `/bible-study-hub/${segments[1]}/${segments[2]}` : undefined;
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
       <nav className="mb-6 text-sm text-gray-500 flex flex-wrap items-center gap-1">
@@ -51,6 +56,7 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
         ))}
       </nav>
       {children}
+      {isArticlePage && articleSlug && <CommentSection articleSlug={articleSlug} />}
     </div>
   );
 }
