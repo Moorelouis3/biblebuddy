@@ -32,37 +32,37 @@ export default function WhyBibleStudyIsHardPage() {
                     src="/Biblestudyhardbanner.png"
                     alt="Why Bible Study Is Hard Banner"
                     width={1200}
-                    height={600}
-                    className="rounded-xl shadow-sm w-full h-auto object-cover"
-                    priority
-                  />
-                </div>
-                <h1 className="text-3xl font-bold mb-2">Why Bible Study Is Hard</h1>
-                <h2 className="text-xl font-semibold mb-8 text-gray-700">5 Reasons Studying the Bible Feels Difficult</h2>
-                <section className="mb-8">
-                  <p className="mb-4">If reading the Bible has ever felt frustrating, confusing, or inconsistent, you are not alone.</p>
-                  <p className="mb-4">Many people want to study Scripture.</p>
-                  <p className="mb-4">They start with good intentions.<br/>They feel motivated.<br/>They commit to doing better.</p>
-                  <p className="mb-4">And then somewhere along the way, it fades.</p>
-                  <p className="mb-4">Not because they stopped caring.</p>
-                  <p className="mb-4">But because something underneath the surface was never addressed.</p>
-                  <p className="mb-4">Bible study feels hard for real reasons.</p>
-                  <p className="mb-4">And unless those reasons are named clearly, shame quietly fills the gap.</p>
-                  <p className="mb-4">This article is not about guilt.</p>
-                  <p className="mb-4">It is about clarity.</p>
-                  <p className="mb-4">Let’s talk honestly about why studying the Bible feels difficult for so many people.</p>
-                </section>
-              </article>
-            </BibleStudyHubArticleLayout>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-lg font-semibold mb-4">📖 Reason 1: The Motivation Is Misplaced</h2>
-        <p className="mb-4">“You will seek me and find me, when you seek me with all your heart.”<br/>Jeremiah 29:13</p>
-        <p className="mb-4">Many people begin reading the Bible because they feel like they should.</p>
-        <p className="mb-4">👤 Someone told them to<br/>⛪ A sermon emphasized it<br/>👨‍👩‍👧 Family expectations shaped it<br/>📱 A post made them feel behind</p>
-        <p className="mb-4">So Bible study becomes obligation instead of relationship.</p>
-        <p className="mb-4">And obligation drains energy.</p>
+                    return (
+                      <BibleStudyHubArticleLayout>
+                        <article className="max-w-2xl mx-auto px-4 py-10">
+                          <div className="mb-8">
+                            <Image
+                              src="/Biblestudyhardbanner.png"
+                              alt="Why Bible Study Is Hard Banner"
+                              width={1200}
+                              height={600}
+                              className="rounded-xl shadow-sm w-full h-auto object-cover"
+                              priority
+                            />
+                          </div>
+                          <h1 className="text-3xl font-bold mb-2">Why Bible Study Is Hard</h1>
+                          <h2 className="text-xl font-semibold mb-8 text-gray-700">5 Reasons Studying the Bible Feels Difficult</h2>
+                          <section className="mb-8">
+                            <p className="mb-4">If reading the Bible has ever felt frustrating, confusing, or inconsistent, you are not alone.</p>
+                            <p className="mb-4">Many people want to study Scripture.</p>
+                            <p className="mb-4">They start with good intentions.<br/>They feel motivated.<br/>They commit to doing better.</p>
+                            <p className="mb-4">And then somewhere along the way, it fades.</p>
+                            <p className="mb-4">Not because they stopped caring.</p>
+                            <p className="mb-4">But because something underneath the surface was never addressed.</p>
+                            <p className="mb-4">Bible study feels hard for real reasons.</p>
+                            <p className="mb-4">And unless those reasons are named clearly, shame quietly fills the gap.</p>
+                            <p className="mb-4">This article is not about guilt.</p>
+                            <p className="mb-4">It is about clarity.</p>
+                            <p className="mb-4">Let’s talk honestly about why studying the Bible feels difficult for so many people.</p>
+                          </section>
+                          {/* ...rest of the article content remains unchanged... */}
+                          <section className="mb-8">
+                            <h2 className="text-lg font-semibold mb-4">📖 Reason 1: The Motivation Is Misplaced</h2>
         <p className="mb-4">When something feels like pressure, resistance grows.</p>
         <p className="mb-4">You sit down to read and suddenly:</p>
         <p className="mb-4">🧠 The mind wanders<br/>⏰ Everything else feels urgent<br/>📖 The Bible feels heavy</p>
