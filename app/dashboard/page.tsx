@@ -1245,7 +1245,7 @@ export default function DashboardPage() {
           {/* BIBLE STUDY HUB */}
           <Link href="/bible-study-hub" onClick={(event) => handleCardClick(event, "bible_study_hub", "/bible-study-hub")}> 
             <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-              <h2 className="text-xl font-semibold text-orange-800">Bible Study Hub</h2> 
+              <h2 className="text-xl font-semibold text-orange-800">🧭 Bible Study Hub</h2> 
               <p className="text-gray-700 mt-1">Discuss and explore Bible topics</p> 
             </div> 
           </Link>
@@ -1253,7 +1253,7 @@ export default function DashboardPage() {
           {/* BIBLE STUDIES */}
           <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}> 
             <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-              <h2 className="text-xl font-semibold">Bible Studies</h2> 
+              <h2 className="text-xl font-semibold">📚 Bible Studies</h2> 
               <p className="text-gray-700 mt-1">Structured ways to study Scripture</p> 
             </div> 
           </Link>
@@ -1261,7 +1261,7 @@ export default function DashboardPage() {
           {/* BIBLE REFERENCES */}
           <Link href="/bible-references" onClick={(event) => handleCardClick(event, "bible_references", "/bible-references")}> 
             <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-              <h2 className="text-xl font-semibold">Bible References</h2> 
+              <h2 className="text-xl font-semibold">🔎 Bible References</h2> 
               <p className="text-gray-700 mt-1">Explanations of Bible keywords</p> 
             </div> 
           </Link>
@@ -1415,7 +1415,7 @@ export default function DashboardPage() {
           {/* BIBLE STUDY HUB */}
           <Link href="/bible-study-hub" onClick={(event) => handleCardClick(event, "bible_study_hub", "/bible-study-hub")}> 
             <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-              <h2 className="text-xl font-semibold text-orange-800">Bible Study Hub</h2> 
+              <h2 className="text-xl font-semibold text-orange-800">🧭 Bible Study Hub</h2> 
               <p className="text-gray-700 mt-1">Discuss and explore Bible topics</p> 
             </div> 
           </Link>
@@ -1423,7 +1423,7 @@ export default function DashboardPage() {
           {/* BIBLE STUDIES */}
           <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}> 
             <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-              <h2 className="text-xl font-semibold">Bible Studies</h2> 
+              <h2 className="text-xl font-semibold">📚 Bible Studies</h2> 
               <p className="text-gray-700 mt-1">Structured ways to study Scripture</p> 
             </div> 
           </Link>
@@ -1431,7 +1431,7 @@ export default function DashboardPage() {
           {/* BIBLE REFERENCES */}
           <Link href="/bible-references" onClick={(event) => handleCardClick(event, "bible_references", "/bible-references")}> 
             <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-              <h2 className="text-xl font-semibold">Bible References</h2> 
+              <h2 className="text-xl font-semibold">🔎 Bible References</h2> 
               <p className="text-gray-700 mt-1">Explanations of Bible keywords</p> 
             </div> 
           </Link>
