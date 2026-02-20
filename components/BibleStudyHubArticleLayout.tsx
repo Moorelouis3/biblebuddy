@@ -35,9 +35,14 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
     crumbs.push({ label: article }); // Not clickable
   }
 
-  // Only show comments on article pages (i.e., /bible-study-hub/[subject]/[article])
-  const isArticlePage = segments[0] === "bible-study-hub" && segments.length === 3;
-  const articleSlug = isArticlePage ? `/bible-study-hub/${segments[1]}/${segments[2]}` : undefined;
+  // Show comments on article pages in both /bible-study-hub/[subject]/[article] and /bible-study-tips/[article]
+  const isHubArticlePage = segments[0] === "bible-study-hub" && segments.length === 3;
+  const isTipsArticlePage = segments[0] === "bible-study-tips" && segments.length === 2;
+  const articleSlug = isHubArticlePage
+    ? `/bible-study-hub/${segments[1]}/${segments[2]}`
+    : isTipsArticlePage
+    ? `/bible-study-tips/${segments[1]}`
+    : undefined;
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
@@ -56,7 +61,7 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
         ))}
       </nav>
       {children}
-      {isArticlePage && articleSlug && <CommentSection articleSlug={articleSlug} />}
+      {(isHubArticlePage || isTipsArticlePage) && articleSlug && <CommentSection articleSlug={articleSlug} />}
     </div>
   );
 }
