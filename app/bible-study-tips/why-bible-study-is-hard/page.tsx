@@ -127,17 +127,6 @@ export default function WhyBibleStudyIsHardPage() {
     </BibleStudyHubArticleLayout>
   );
 }
-                              <p className="mb-4">It gives the mind direction.</p>
-                              <p className="mb-4">It reduces overwhelm.</p>
-                              <p className="mb-4">It makes growth measurable.</p>
-                              <p className="mb-4">And once structure exists, consistency becomes possible.</p>
-                            </section>
-                            <section className="mb-8">
-                              <h2 className="text-lg font-semibold mb-4">🔥 The Truth About the Struggle</h2>
-                              <p className="mb-4">Struggling with Bible study does not mean laziness.</p>
-                              <p className="mb-4">It does not mean spiritual weakness.</p>
-                              <p className="mb-4">It often means no one ever explained how to build a sustainable rhythm.</p>
-                              <p className="mb-4">Clarity replaces shame.</p>
                               <p className="mb-4">Structure replaces confusion.</p>
                               <p className="mb-4">Small intentional steps replace burnout.</p>
                               <p className="mb-4">Bible study is not about perfection.</p>
