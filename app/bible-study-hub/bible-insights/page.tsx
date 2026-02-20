@@ -12,7 +12,11 @@ const insights = [
     title: "📖 What Is the Bible?",
     desc: "Understanding its origin, structure, authors, and why it matters.",
   },
-  // ...other cards can be added here...
+  {
+    href: "/bible-study-hub/bible-insights/why-so-many-bible-translations",
+    title: "📚 Why So Many Bible Translations?",
+    desc: "Understanding Your Modern Bible Version",
+  },
 ];
 
 export default function BibleInsightsPage() {
