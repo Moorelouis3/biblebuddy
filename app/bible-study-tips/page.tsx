@@ -4,6 +4,7 @@ import BibleStudyBreadcrumb from "@/components/BibleStudyBreadcrumb";
 const tips = [
   {
     href: "/bible-study-tips/why-bible-study-is-hard",
+    emoji: "🧠",
     title: "Why Bible Study Is Hard",
     desc: "5 Reasons Studying the Bible Is Hard",
   },
@@ -26,10 +27,13 @@ export default function BibleStudyTipsPage() {
           <Link
             key={t.href}
             href={t.href}
-            className="rounded-xl p-6 shadow-sm border border-yellow-200 bg-yellow-100 hover:shadow-md transition cursor-pointer flex flex-col gap-2"
+            className="rounded-xl p-6 shadow-sm border border-yellow-200 bg-yellow-100 hover:shadow-md transition cursor-pointer flex items-start gap-4"
           >
-            <div className="font-bold text-lg text-yellow-900">{t.title}</div>
-            <div className="text-gray-700 text-sm">{t.desc}</div>
+            <span className="text-3xl mt-1 select-none">{t.emoji}</span>
+            <div>
+              <div className="font-bold text-lg text-yellow-900 mb-1">{t.title}</div>
+              <div className="text-gray-700 text-sm">{t.desc}</div>
+            </div>
           </Link>
         ))}
       </div>
