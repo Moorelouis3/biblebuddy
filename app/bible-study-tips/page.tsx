@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 
 const tips = [
@@ -30,7 +29,6 @@ const tips = [
 ];
 
 export default function BibleStudyTipsPage() {
-  const pathname = usePathname();
   return (
     <BibleStudyHubArticleLayout>
       <h1 className="text-3xl font-bold mb-2">Bible Study Tips</h1>
