@@ -1,7 +1,13 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { v4 as uuidv4 } from "uuid";
+import { supabase } from "@/lib/supabaseClient";
+// Simple UUID v4 generator (RFC4122 compliant, not cryptographically secure)
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
 
 interface Comment {
   id: string;
@@ -47,7 +53,6 @@ function timeAgo(date: string) {
 }
 
 export default function CommentSection({ articleSlug }: CommentSectionProps) {
-  const supabase = createClientComponentClient();
   const [comments, setComments] = useState<Comment[]>([]);
   const [user, setUser] = useState<{ id: string; name: string } | null>(null);
   const [content, setContent] = useState("");
@@ -65,16 +70,16 @@ export default function CommentSection({ articleSlug }: CommentSectionProps) {
     setLoading(false);
     if (error) setError(error.message);
     else setComments(data || []);
-  }, [articleSlug, supabase]);
+  }, [articleSlug]);
 
   useEffect(() => {
     fetchComments();
-    supabase.auth.getUser().then(({ data }) => {
-      if (data.user) {
-        setUser({ id: data.user.id, name: data.user.user_metadata?.name || "User" });
+    supabase.auth.getSession().then(({ data }) => {
+      if (data.session && data.session.user) {
+        setUser({ id: data.session.user.id, name: data.session.user.user_metadata?.name || "User" });
       }
     });
-  }, [fetchComments, supabase.auth]);
+  }, [fetchComments]);
 
   const handlePost = async (e: React.FormEvent) => {
     e.preventDefault();
