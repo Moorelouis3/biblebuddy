@@ -1,19 +1,10 @@
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
-import BibleStudyBreadcrumb from "@/components/BibleStudyBreadcrumb";
 import Image from "next/image";
 
 export default function HowToDefendTheBiblePage() {
   return (
     <BibleStudyHubArticleLayout>
       <article className="max-w-2xl mx-auto px-4 py-10">
-        <BibleStudyBreadcrumb
-          items={[
-            { label: "Dashboard", href: "/dashboard" },
-            { label: "Bible Study Hub", href: "/bible-study-hub" },
-            { label: "Bible Insights", href: "/bible-study-hub/bible-insights" },
-            { label: "How to Defend the Bible" }
-          ]}
-        />
         <div className="mb-8">
           <Image
             src="/Defenthebiblebanner.png"

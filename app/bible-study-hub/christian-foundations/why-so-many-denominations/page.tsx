@@ -1,5 +1,4 @@
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
-import BibleStudyBreadcrumb from "@/components/BibleStudyBreadcrumb";
 import Image from "next/image";
 
 export default function WhySoManyDenominations() {
