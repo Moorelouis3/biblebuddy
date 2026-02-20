@@ -17,39 +17,43 @@ export default function WhyBibleStudyIsHardPage() {
         <Image
           src="/Biblestudyhardbanner.png"
           alt="Why Bible Study Is Hard Banner"
-          width={1200}
-          height={600}
-          className="rounded-xl shadow-sm w-full h-auto object-cover"
-          priority
-        />
-      </div>
-      <h1 className="text-3xl font-bold mb-2">Why Bible Study Is Hard</h1>
-      <h2 className="text-xl font-semibold mb-8 text-gray-700">5 Reasons Studying the Bible Feels Difficult</h2>
-
-      <section className="mb-8">
-        <p className="mb-4">If reading the Bible has ever felt frustrating, confusing, or inconsistent, you are not alone.</p>
-        <p className="mb-4">Many people want to study Scripture.</p>
-        <p className="mb-4">They start with good intentions.<br/>They feel motivated.<br/>They commit to doing better.</p>
-        <p className="mb-4">And then somewhere along the way, it fades.</p>
-        <p className="mb-4">Not because they stopped caring.</p>
-        <p className="mb-4">But because something underneath the surface was never addressed.</p>
-        <p className="mb-4">Bible study feels hard for real reasons.</p>
-        <p className="mb-4">And unless those reasons are named clearly, shame quietly fills the gap.</p>
-        <p className="mb-4">This article is not about guilt.</p>
-        <p className="mb-4">It is about clarity.</p>
-        <p className="mb-4">Let’s talk honestly about why studying the Bible feels difficult for so many people.</p>
-        <p className="mb-4">Not to judge.<br/>Not to pressure.<br/>But to understand.</p>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-lg font-semibold mb-4">🧠 The Real Struggle No One Says Out Loud</h2>
-        <p className="mb-4">Most believers do not quit reading the Bible because they do not care.</p>
-        <p className="mb-4">They step away because:</p>
-        <p className="mb-4">🧠 They do not understand what they are reading<br/>😳 They feel embarrassed asking questions<br/>📍 They do not know where to start<br/>⏳ They already feel behind</p>
-        <p className="mb-4">Instead of addressing those obstacles, spiritual guilt often gets layered on top.</p>
-        <p className="mb-4">Guilt does not produce growth.</p>
-        <p className="mb-4">It produces silence.</p>
-        <p className="mb-4">So let’s name the real reasons people struggle to stay consistent in Scripture.</p>
+          return (
+            <BibleStudyHubArticleLayout>
+              <article className="max-w-2xl mx-auto px-4 py-10">
+                <BibleStudyBreadcrumb
+                  items={[
+                    { label: "Dashboard", href: "/dashboard" },
+                    { label: "Bible Study Tips", href: "/bible-study-tips" },
+                    { label: "Why Bible Study Is Hard" }
+                  ]}
+                />
+                <div className="mb-8">
+                  <Image
+                    src="/Biblestudyhardbanner.png"
+                    alt="Why Bible Study Is Hard Banner"
+                    width={1200}
+                    height={600}
+                    className="rounded-xl shadow-sm w-full h-auto object-cover"
+                    priority
+                  />
+                </div>
+                <h1 className="text-3xl font-bold mb-2">Why Bible Study Is Hard</h1>
+                <h2 className="text-xl font-semibold mb-8 text-gray-700">5 Reasons Studying the Bible Feels Difficult</h2>
+                <section className="mb-8">
+                  <p className="mb-4">If reading the Bible has ever felt frustrating, confusing, or inconsistent, you are not alone.</p>
+                  <p className="mb-4">Many people want to study Scripture.</p>
+                  <p className="mb-4">They start with good intentions.<br/>They feel motivated.<br/>They commit to doing better.</p>
+                  <p className="mb-4">And then somewhere along the way, it fades.</p>
+                  <p className="mb-4">Not because they stopped caring.</p>
+                  <p className="mb-4">But because something underneath the surface was never addressed.</p>
+                  <p className="mb-4">Bible study feels hard for real reasons.</p>
+                  <p className="mb-4">And unless those reasons are named clearly, shame quietly fills the gap.</p>
+                  <p className="mb-4">This article is not about guilt.</p>
+                  <p className="mb-4">It is about clarity.</p>
+                  <p className="mb-4">Let’s talk honestly about why studying the Bible feels difficult for so many people.</p>
+                </section>
+              </article>
+            </BibleStudyHubArticleLayout>
       </section>
 
       <section className="mb-8">

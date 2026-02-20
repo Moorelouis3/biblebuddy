@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { getProfileStats } from "@/lib/profileStats";
 // Simple UUID v4 generator (RFC4122 compliant, not cryptographically secure)
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -74,22 +75,33 @@ export default function CommentSection({ articleSlug }: CommentSectionProps) {
 
   useEffect(() => {
     fetchComments();
-    supabase.auth.getSession().then(({ data }) => {
+    (async () => {
+      const { data } = await supabase.auth.getSession();
       if (data.session && data.session.user) {
-        const meta = data.session.user.user_metadata || {};
+        const userId = data.session.user.id;
+        // Try to get username from profile_stats
         let displayName = "";
-        if (meta.full_name && typeof meta.full_name === "string" && meta.full_name.trim()) {
-          displayName = meta.full_name.trim();
-        } else if (meta.name && typeof meta.name === "string" && meta.name.trim()) {
-          displayName = meta.name.trim();
-        } else if (data.session.user.email && typeof data.session.user.email === "string") {
-          displayName = data.session.user.email.split("@")[0];
-        } else {
-          displayName = "Anonymous";
+        try {
+          const stats = await getProfileStats(userId);
+          if (stats && (stats as any).username && typeof (stats as any).username === "string" && (stats as any).username.trim()) {
+            displayName = (stats as any).username.trim();
+          }
+        } catch {}
+        if (!displayName) {
+          const meta = data.session.user.user_metadata || {};
+          if (meta.full_name && typeof meta.full_name === "string" && meta.full_name.trim()) {
+            displayName = meta.full_name.trim();
+          } else if (meta.name && typeof meta.name === "string" && meta.name.trim()) {
+            displayName = meta.name.trim();
+          } else if (data.session.user.email && typeof data.session.user.email === "string") {
+            displayName = data.session.user.email.split("@")[0];
+          } else {
+            displayName = "Anonymous";
+          }
         }
-        setUser({ id: data.session.user.id, name: displayName });
+        setUser({ id: userId, name: displayName });
       }
-    });
+    })();
   }, [fetchComments]);
 
   const handlePost = async (e: React.FormEvent) => {
