@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 
 export default function SaltAndLight() {
   return (
@@ -155,6 +156,5 @@ export default function SaltAndLight() {
       <p className="mb-4">Light that hides loses purpose.</p>
       <p className="mb-4">And when identity is lived faithfully, the world around it changes.</p>
     </BibleStudyHubArticleLayout>
-  );
   );
 }

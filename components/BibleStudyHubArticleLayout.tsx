@@ -1,3 +1,5 @@
+"use client";
+// ...existing code...
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -8,12 +10,14 @@ function toTitleCase(str: string) {
     .replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
+type Crumb = { label: string; href?: string };
+
 export default function BibleStudyHubArticleLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
 
   // Breadcrumb logic
-  const crumbs = [
+  const crumbs: Crumb[] = [
     { label: "Dashboard", href: "/dashboard" },
     { label: "Bible Study Hub", href: "/bible-study-hub" },
   ];
