@@ -1646,49 +1646,7 @@ export default function DashboardPage() {
         </div>
       )}
 
-      {/* Hope Nation Community Modal */}
-      {showCommunityModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-lg w-full">
-            <div className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900">Hope Nation Community</h2>
-                  <p className="text-sm text-gray-500 mt-1">A place to study the Bible together.</p>
-                </div>
-                <button
-                  onClick={() => setShowCommunityModal(false)}
-                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
-                  aria-label="Close"
-                >
-                  ×
-                </button>
-              </div>
 
-              <p className="text-sm text-gray-700 leading-relaxed mb-4">
-                Hope Nation is a Bible study community where believers come together to study Scripture, ask thoughtful questions, and grow in understanding through discussion and shared insight.
-              </p>
-
-              <ul className="list-none space-y-2 text-sm text-gray-700 mb-6">
-                <li>📖 Group Bible studies</li>
-                <li>💬 Scripture discussions and questions</li>
-                <li>🤝 Encouragement and accountability</li>
-              </ul>
-
-              <div className="text-center">
-                <button
-                  type="button"
-                  onClick={() => window.open("https://www.joinhopenation.com", "_blank", "noopener,noreferrer")}
-                  className="inline-block rounded-lg bg-blue-600 text-white text-sm md:text-base font-semibold px-6 py-2.5 shadow-sm hover:bg-blue-700 transition"
-                >
-                  Join us in Hope Nation
-                </button>
-                <p className="text-xs text-gray-500 mt-2">Hope Nation is free to join.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

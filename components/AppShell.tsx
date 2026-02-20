@@ -447,17 +447,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   <div className="text-sm font-bold text-gray-900 tracking-tight">
                     Bible Buddy
                   </div>
-                  <div className="text-[10px] text-gray-500 -mt-0.5">Powered by Hope Nation</div>
                 </div>
               </Link>
-              <a
-                href="https://joinhopenation.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[10px] text-gray-500 hover:text-blue-600 transition-colors"
-              >
-                Visit Hope Nation
-              </a>
+
             </div>
 
             <div className="flex items-center gap-2">
@@ -694,16 +686,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       Updates
                     </Link>
 
-                    {/* JOIN OUR FREE COMMUNITY */}
-                    <a
-                      href="https://joinhopenation.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setIsProfileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Join our Free Community
-                    </a>
+
 
                     {/* ANALYTICS (ADMIN ONLY) */}
                     {isAdmin && (

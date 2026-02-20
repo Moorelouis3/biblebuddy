@@ -153,16 +153,7 @@ export default function LandingPage() {
             <div className="text-lg md:text-xl font-bold text-gray-900 tracking-tight">
               Bible Buddy
             </div>
-            <div className="text-[10px] md:text-xs text-gray-500 -mt-0.5">
-              <a
-                href="https://joinhopenation.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-blue-600 transition-colors"
-              >
-                Powered by Hope Nation
-              </a>
-            </div>
+
           </div>
         </div>
 
@@ -481,7 +472,7 @@ export default function LandingPage() {
         {/* Copyright row */}
         <div className="border-t border-gray-200">
           <div className="max-w-7xl mx-auto px-4 py-4 text-xs md:text-sm text-gray-500 text-center md:text-right">
-            © 2026 Bible Buddy — Powered by Hope Nation
+            © 2026 Bible Buddy
           </div>
         </div>
       </footer>

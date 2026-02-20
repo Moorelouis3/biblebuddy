@@ -131,12 +131,12 @@ export default function LoginPage() {
             </div>
             <div className="text-[10px] md:text-xs text-gray-500 -mt-0.5">
               <a
-                href="https://joinhopenation.com"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-blue-600 transition-colors"
               >
-                Powered by Hope Nation
+
               </a>
             </div>
           </div>
