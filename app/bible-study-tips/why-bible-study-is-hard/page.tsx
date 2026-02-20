@@ -1,4 +1,8 @@
 
+import React from "react";
+import Image from "next/image";
+import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+
 
 export default function WhyBibleStudyIsHardPage() {
   return (
