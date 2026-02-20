@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 
+export default function Page() {
   return (
     <BibleStudyHubArticleLayout>
       <article className="max-w-2xl mx-auto px-4 py-10">
@@ -186,6 +187,7 @@ import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout"
       <p className="mb-4">Highlight with purpose.</p>
       <p className="mb-4">Highlight so that future understanding builds on present insight.</p>
       <p className="mb-4">That is how highlighting becomes a tool for growth instead of just color on a page.</p>
+
       </article>
     </BibleStudyHubArticleLayout>
   );
