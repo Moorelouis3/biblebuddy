@@ -5,7 +5,7 @@ export default function YourBodyIsATemple() {
     <article className="max-w-2xl mx-auto px-4 py-10">
       <div className="mb-8">
         <Image
-          src="/Templebanner.png"
+          src="/Bodytemplebanner.png"
           alt="Your Body Is a Temple Banner"
           width={1200}
           height={400}
