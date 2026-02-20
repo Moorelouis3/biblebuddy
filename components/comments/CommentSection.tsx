@@ -76,7 +76,18 @@ export default function CommentSection({ articleSlug }: CommentSectionProps) {
     fetchComments();
     supabase.auth.getSession().then(({ data }) => {
       if (data.session && data.session.user) {
-        setUser({ id: data.session.user.id, name: data.session.user.user_metadata?.name || "User" });
+        const meta = data.session.user.user_metadata || {};
+        let displayName = "";
+        if (meta.full_name && typeof meta.full_name === "string" && meta.full_name.trim()) {
+          displayName = meta.full_name.trim();
+        } else if (meta.name && typeof meta.name === "string" && meta.name.trim()) {
+          displayName = meta.name.trim();
+        } else if (data.session.user.email && typeof data.session.user.email === "string") {
+          displayName = data.session.user.email.split("@")[0];
+        } else {
+          displayName = "Anonymous";
+        }
+        setUser({ id: data.session.user.id, name: displayName });
       }
     });
   }, [fetchComments]);
