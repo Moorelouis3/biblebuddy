@@ -127,13 +127,3 @@ export default function WhyBibleStudyIsHardPage() {
     </BibleStudyHubArticleLayout>
   );
 }
-                              <p className="mb-4">Structure replaces confusion.</p>
-                              <p className="mb-4">Small intentional steps replace burnout.</p>
-                              <p className="mb-4">Bible study is not about perfection.</p>
-                              <p className="mb-4">It is about building something that lasts.</p>
-                              <p className="mb-4">And once the foundation is right, everything changes.</p>
-                            </section>
-                          </article>
-                        </BibleStudyHubArticleLayout>
-                      );
-                    }
