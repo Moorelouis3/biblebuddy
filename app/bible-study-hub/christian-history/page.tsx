@@ -24,6 +24,16 @@ export default function ChristianHistoryPage() {
             <div className="text-gray-700 text-sm">He Who Brought Christianity to Ireland</div>
           </div>
         </a>
+        <a
+          href="/bible-study-hub/christian-history/st-valentine"
+          className="rounded-xl p-6 shadow-sm border border-orange-200 bg-orange-100 hover:shadow-md transition cursor-pointer flex items-start gap-4"
+        >
+          <span className="text-3xl mt-1 select-none">❤️</span>
+          <div>
+            <div className="font-bold text-lg text-orange-900 mb-1">St. Valentine</div>
+            <div className="text-gray-700 text-sm">The Martyr Behind the Modern Holiday</div>
+          </div>
+        </a>
       </div>
     </div>
   );
