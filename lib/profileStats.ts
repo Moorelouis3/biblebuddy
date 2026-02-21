@@ -29,53 +29,19 @@ export interface HeatMapDay {
 /**
  * Get profile stats for a user (from profile_stats table)
  */
-export async function getProfileStats(
-  userId: string
-): Promise<ProfileStats | null> {
-  try {
-    const { data, error } = await supabase
-      .from("profile_stats")
-      .select("*, username, display_name")
-      .eq("user_id", userId)
-      .maybeSingle();
+export async function getProfileStats(userId: string) {
+  const { data, error } = await supabase
+    .from("profile_stats")
+    .select("username")
+    .eq("user_id", userId)
+    .single();
 
-    if (error) {
-      console.error("[PROFILE] Error fetching profile stats:", error);
-      return null;
-    }
-
-    if (!data) {
-      // Return default stats if no row exists
-      return {
-        total_actions: 0,
-        chapters_completed_count: 0,
-        notes_created_count: 0,
-        people_learned_count: 0,
-        places_discovered_count: 0,
-        keywords_mastered_count: 0,
-        trivia_questions_answered: 0,
-        last_active_date: null,
-        current_streak: 0,
-      };
-    }
-
-    return {
-      total_actions: data.total_actions || 0,
-      chapters_completed_count: data.chapters_completed_count || 0,
-      notes_created_count: data.notes_created_count || 0,
-      people_learned_count: data.people_learned_count || 0,
-      places_discovered_count: data.places_discovered_count || 0,
-      keywords_mastered_count: data.keywords_mastered_count || 0,
-      trivia_questions_answered: data.trivia_questions_answered || 0,
-      last_active_date: data.last_active_date,
-      current_streak: data.current_streak || 0,
-      username: data.username || undefined,
-      display_name: data.display_name || undefined,
-    };
-  } catch (err) {
-    console.error("[PROFILE] Error in getProfileStats:", err);
+  if (error) {
+    console.error("[PROFILE] Error fetching profile stats:", error);
     return null;
   }
+
+  return data;
 }
 
 /**
