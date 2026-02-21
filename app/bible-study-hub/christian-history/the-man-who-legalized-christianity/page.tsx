@@ -148,6 +148,21 @@ export default function TheManWhoLegalizedChristianity() {
       <p className="mb-4">The legalization of Christianity marks one of the most significant turning points in church history.</p>
       <p className="mb-4">A persecuted movement became a protected institution.</p>
       <p className="mb-4">And the world would never be the same.</p>
+      {/* Reflection Section */}
+      <div className="mt-8 mb-4 flex flex-col items-center">
+        <hr className="w-2/3 mb-2 border-blue-200" />
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-900 mb-1">Reflection Question</h2>
+        <div className="text-lg md:text-xl font-semibold text-center text-gray-700 mb-1">
+          Do you believe faith and government should be closely connected?
+        </div>
+        <div className="text-sm italic text-gray-500 text-center mt-0 mb-0">
+          Share your thoughts below and join the conversation.
+        </div>
+      </div>
+      {/* CommentSection wrapper with minimal top margin */}
+      <div className="mt-2">
+        {/* CommentSection is rendered by layout, so nothing else needed here */}
+      </div>
     </BibleStudyHubArticleLayout>
   );
 }

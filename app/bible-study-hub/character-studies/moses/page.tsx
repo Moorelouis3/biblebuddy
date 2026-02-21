@@ -122,6 +122,21 @@ export default function MosesCharacterStudyPage() {
           <p className="mb-4">Moses’ life proves something powerful:</p>
           <p className="mb-4">God prepares in hidden places.<br/>God calls the reluctant.<br/>God uses the imperfect.<br/>And sometimes, the man who never enters the Promise is still the man who leads everyone else to it.</p>
         </section>
+      {/* Reflection Section */}
+      <div className="mt-8 mb-4 flex flex-col items-center">
+        <hr className="w-2/3 mb-2 border-blue-200" />
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-900 mb-1">Reflection Question</h2>
+        <div className="text-lg md:text-xl font-semibold text-center text-gray-700 mb-1">
+          What part of Moses' life shocks or surprises you the most?
+        </div>
+        <div className="text-sm italic text-gray-500 text-center mt-0 mb-0">
+          Share your thoughts below and join the conversation.
+        </div>
+      </div>
+      {/* CommentSection wrapper with minimal top margin */}
+      <div className="mt-2">
+        {/* CommentSection is rendered by layout, so nothing else needed here */}
+      </div>
       </article>
     </BibleStudyHubArticleLayout>
   );

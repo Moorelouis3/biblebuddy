@@ -150,6 +150,21 @@ export default function LukeCharacterStudyPage() {
           <p className="mb-4">Luke did not walk with Jesus in Galilee. But he walked with the ones who did. He listened. He investigated. He documented. And because of that, we have the most detailed historical account of Jesus’ life and the expansion of the early Church.</p>
           <p className="mb-4">God used a doctor. God used an outsider. God used Luke.</p>
         </section>
+      {/* Reflection Section */}
+      <div className="mt-8 mb-4 flex flex-col items-center">
+        <hr className="w-2/3 mb-2 border-blue-200" />
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-900 mb-1">Reflection Question</h2>
+        <div className="text-lg md:text-xl font-semibold text-center text-gray-700 mb-1">
+          Have you ever felt like an outsider in your faith journey?
+        </div>
+        <div className="text-sm italic text-gray-500 text-center mt-0 mb-0">
+          Share your thoughts below and join the conversation.
+        </div>
+      </div>
+      {/* CommentSection wrapper with minimal top margin */}
+      <div className="mt-2">
+        {/* CommentSection is rendered by layout, so nothing else needed here */}
+      </div>
       </article>
     </BibleStudyHubArticleLayout>
   );
