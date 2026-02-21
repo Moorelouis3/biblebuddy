@@ -212,10 +212,10 @@ export default function CommentSection({
   return (
     <section className="mt-0">
       <div className="max-w-2xl mx-auto bg-white/90 border border-blue-100 rounded-2xl shadow-sm p-6 md:p-8">
-        <h2 className="text-xl font-bold mb-4 text-blue-900">{headingText}</h2>
+        <h2 className="text-xl font-bold mb-2 text-blue-900">{headingText}</h2>
         {error && <div className="text-red-500 mb-2">{error}</div>}
         {user && !replyTo && (
-          <form onSubmit={handlePost} className="mb-6 flex flex-col gap-2">
+          <form onSubmit={handlePost} className="mb-2 flex flex-col gap-2">
             <textarea
               className="w-full border border-blue-200 rounded-lg p-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400"
               rows={3}

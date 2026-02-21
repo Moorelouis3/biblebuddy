@@ -138,7 +138,7 @@ export default function HowToDefendTheBiblePage() {
       {/* Reflection Section */}
       <div className="mt-8 mb-4 flex flex-col items-center">
         <hr className="w-2/3 mb-6 border-blue-200" />
-        <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-900 mb-3">Reflection Question</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-900 mb-1">Reflection Question</h2>
         <div className="text-lg md:text-xl font-semibold text-center text-gray-700 mb-2">
           If someone asked you right now,<br />
           “How do you know the Bible is reliable,”<br />
