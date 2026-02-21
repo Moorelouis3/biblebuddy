@@ -61,7 +61,14 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
         ))}
       </nav>
       {children}
-      {(isHubArticlePage || isTipsArticlePage) && articleSlug && <CommentSection articleSlug={articleSlug} />}
+      {(isHubArticlePage || isTipsArticlePage) && articleSlug && (
+        <CommentSection
+          articleSlug={articleSlug}
+          headingText="Answer the reflection question below"
+          placeholderText="Type your reflection answer here to join the discussion..."
+          submitButtonText="Share My Reflection"
+        />
+      )}
     </div>
   );
 }
