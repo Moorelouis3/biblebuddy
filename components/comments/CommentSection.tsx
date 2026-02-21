@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { getProfileStats } from "@/lib/profileStats";
+import { getUsername } from "@/lib/profileStats";
 // Simple UUID v4 generator (RFC4122 compliant, not cryptographically secure)
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -81,7 +81,7 @@ export default function CommentSection({ articleSlug }: CommentSectionProps) {
         const userId = data.session.user.id;
         let displayName = "";
         try {
-          const profile = await getProfileStats(userId);
+          const profile = await getUsername(userId);
           if (profile && typeof profile.username === "string" && profile.username.trim()) {
             displayName = profile.username.trim();
           } else if (data.session.user.email && typeof data.session.user.email === "string") {
@@ -90,7 +90,7 @@ export default function CommentSection({ articleSlug }: CommentSectionProps) {
             displayName = "Anonymous";
           }
         } catch (err) {
-          console.error("[CommentSection] Error fetching profile stats:", err);
+          console.error("[CommentSection] Error fetching username:", err);
           if (data.session.user.email && typeof data.session.user.email === "string") {
             displayName = data.session.user.email.split("@")[0];
           } else {

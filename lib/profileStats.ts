@@ -29,7 +29,25 @@ export interface HeatMapDay {
 /**
  * Get profile stats for a user (from profile_stats table)
  */
-export async function getProfileStats(userId: string) {
+export async function getProfileStats(userId: string): Promise<ProfileStats | null> {
+  const { data, error } = await supabase
+    .from("profile_stats")
+    .select("*")
+    .eq("user_id", userId)
+    .single();
+
+  if (error) {
+    console.error("[PROFILE] Error fetching profile stats:", error);
+    return null;
+  }
+
+  return data as ProfileStats;
+}
+
+/**
+ * Get only the username for a user (from profile_stats table)
+ */
+export async function getUsername(userId: string): Promise<{ username: string } | null> {
   const { data, error } = await supabase
     .from("profile_stats")
     .select("username")
@@ -37,7 +55,7 @@ export async function getProfileStats(userId: string) {
     .single();
 
   if (error) {
-    console.error("[PROFILE] Error fetching profile stats:", error);
+    console.error("[PROFILE] Error fetching username:", error);
     return null;
   }
 
