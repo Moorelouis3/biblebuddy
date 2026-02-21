@@ -135,6 +135,23 @@ export default function HowToDefendTheBiblePage() {
           <p className="mb-4">Study it.<br/>Know it.<br/>Stand on it.</p>
           <p className="mb-4">Because when you know why it’s true —<br/>no comment section can shake you.</p>
         </section>
+      {/* Reflection Section */}
+      <div className="mt-8 mb-4 flex flex-col items-center">
+        <hr className="w-2/3 mb-6 border-blue-200" />
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-900 mb-3">Reflection Question</h2>
+        <div className="text-lg md:text-xl font-semibold text-center text-gray-700 mb-2">
+          If someone asked you right now,<br />
+          “How do you know the Bible is reliable,”<br />
+          what would you say?
+        </div>
+        <div className="text-sm italic text-gray-500 text-center mt-2 mb-0">
+          Share your thoughts below and join the conversation.
+        </div>
+      </div>
+      {/* CommentSection wrapper with minimal top margin */}
+      <div className="mt-2">
+        {/* CommentSection is rendered by layout, so nothing else needed here */}
+      </div>
       </article>
     </BibleStudyHubArticleLayout>
   );

@@ -210,7 +210,7 @@ export default function CommentSection({
     ));
 
   return (
-    <section className="mt-12">
+    <section className="mt-0">
       <div className="max-w-2xl mx-auto bg-white/90 border border-blue-100 rounded-2xl shadow-sm p-6 md:p-8">
         <h2 className="text-xl font-bold mb-4 text-blue-900">{headingText}</h2>
         {error && <div className="text-red-500 mb-2">{error}</div>}
