@@ -79,25 +79,19 @@ export default function CommentSection({ articleSlug }: CommentSectionProps) {
       const { data } = await supabase.auth.getSession();
       if (data.session && data.session.user) {
         const userId = data.session.user.id;
-        // Try to get display_name or username from profile_stats
         let displayName = "";
         try {
-          const stats = await getProfileStats(userId);
-          if (stats) {
-            if (typeof stats.display_name === "string" && stats.display_name.trim()) {
-              displayName = stats.display_name.trim();
-            } else if (typeof stats.username === "string" && stats.username.trim()) {
-              displayName = stats.username.trim();
-            }
-          }
-        } catch {}
-        if (!displayName) {
-          const meta = data.session.user.user_metadata || {};
-          if (meta.full_name && typeof meta.full_name === "string" && meta.full_name.trim()) {
-            displayName = meta.full_name.trim();
-          } else if (meta.name && typeof meta.name === "string" && meta.name.trim()) {
-            displayName = meta.name.trim();
+          const profile = await getProfileStats(userId);
+          if (profile && typeof profile.username === "string" && profile.username.trim()) {
+            displayName = profile.username.trim();
           } else if (data.session.user.email && typeof data.session.user.email === "string") {
+            displayName = data.session.user.email.split("@")[0];
+          } else {
+            displayName = "Anonymous";
+          }
+        } catch (err) {
+          console.error("[CommentSection] Error fetching profile stats:", err);
+          if (data.session.user.email && typeof data.session.user.email === "string") {
             displayName = data.session.user.email.split("@")[0];
           } else {
             displayName = "Anonymous";
