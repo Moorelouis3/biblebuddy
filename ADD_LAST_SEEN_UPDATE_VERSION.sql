@@ -1,0 +1,1 @@
+ALTER TABLE public.profile_stats ADD COLUMN last_seen_update_version text;
