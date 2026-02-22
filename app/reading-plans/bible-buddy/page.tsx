@@ -177,27 +177,13 @@ export default function BibleBuddyReadingPlanPage() {
 
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) {
-          setIsPaid(false);
           setLoading(false);
           return;
         }
 
         const uid = user.id;
         setUserId(uid);
-
-        const { data: profileStats } = await supabase
-          .from("profile_stats")
-          .select("is_paid")
-          .eq("user_id", uid)
-          .maybeSingle();
-
-        if (!profileStats?.is_paid) {
-          setIsPaid(false);
-          setLoading(false);
-          return;
-        }
-
-        setIsPaid(true);
+        setIsPaid(true); // Always unlock for all users
 
         // Single query for all completed chapters in this plan
         const planBookKeys = PLAN_BOOKS.map((book) => book.toLowerCase().trim());
