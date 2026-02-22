@@ -1,57 +1,53 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 
 const SUBJECTS = [
-  { name: "Bible Insights", slug: "bible-insights" },
-  { name: "Bible Study Tips", slug: "bible-study-tips" },
-  { name: "Christian Foundations", slug: "christian-foundations" },
-  { name: "Verse Breakdowns", slug: "verse-breakdowns" },
-  { name: "Character Studies", slug: "character-studies" },
-  { name: "Christian History", slug: "christian-history" },
+  { name: "Bible Insights", slug: "bible-insights", bg: "bg-blue-100 border-blue-200", text: "text-blue-900" },
+  { name: "Bible Study Tips", slug: "bible-study-tips", bg: "bg-yellow-100 border-yellow-200", text: "text-yellow-900" },
+  { name: "Christian Foundations", slug: "christian-foundations", bg: "bg-purple-100 border-purple-200", text: "text-purple-900" },
+  { name: "Verse Breakdowns", slug: "verse-breakdowns", bg: "bg-emerald-100 border-emerald-200", text: "text-emerald-900" },
+  { name: "Character Studies", slug: "character-studies", bg: "bg-indigo-100 border-indigo-200", text: "text-indigo-900" },
+  { name: "Christian History", slug: "christian-history", bg: "bg-orange-100 border-orange-200", text: "text-orange-900" },
 ];
 
 export default function CommentsAdminPage() {
   const [comments, setComments] = useState<any[]>([]);
   const [counts, setCounts] = useState<{ [key: string]: number }>({});
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
-      const fetchComments = async () => {
-        // Try normal client first
-        let { data, error } = await supabase
-          .from("article_comments")
-          .select("*")
-          .order("created_at", { ascending: false });
-        // If blocked, try admin client
-        if (error || !data) {
-          // Uncomment below if needed:
-          // let { data: adminData, error: adminError } = await adminSupabase
-          //   .from("article_comments")
-          //   .select("*")
-          //   .order("created_at", { ascending: false });
-          // if (!adminError && adminData) {
-          //   data = adminData;
-          //   error = null;
-          // }
-        }
-        console.log("Fetched comments:", data);
-        if (!error && data) {
-          setComments(data);
-          // Count by subject
-          const grouped: { [key: string]: number } = {};
-          SUBJECTS.forEach((s) => (grouped[s.slug] = 0));
-          data.forEach((c: any) => {
-            if (grouped[c.article_slug] !== undefined) {
-              grouped[c.article_slug]++;
-            }
-          });
-          setCounts(grouped);
-        }
-        setLoading(false);
-      };
-      fetchComments();
+    const fetchComments = async () => {
+      let { data, error } = await supabase
+        .from("article_comments")
+        .select("*")
+        .order("created_at", { ascending: false });
+      if (!error && data) {
+        setComments(data);
+        // Count by subject
+        const getSubjectFromSlug = (slug: string) => {
+          const parts = slug.split("/").filter(Boolean);
+          const hubIndex = parts.indexOf("bible-study-hub");
+          return hubIndex !== -1 ? parts[hubIndex + 1] : null;
+        };
+        const counts = data.reduce((acc: Record<string, number>, c: any) => {
+          const subject = getSubjectFromSlug(c.article_slug);
+          if (subject) acc[subject] = (acc[subject] || 0) + 1;
+          return acc;
+        }, {});
+        // Fill missing subjects with 0
+        const grouped: { [key: string]: number } = {};
+        SUBJECTS.forEach((s) => {
+          grouped[s.slug] = counts[s.slug] || 0;
+        });
+        setCounts(grouped);
+      }
+      setLoading(false);
+    };
+    fetchComments();
   }, []);
 
   return (
@@ -61,10 +57,10 @@ export default function CommentsAdminPage() {
         {SUBJECTS.map((s) => (
           <div
             key={s.slug}
-            className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 flex flex-col items-center"
+            className={`rounded-xl shadow-sm p-4 flex flex-col items-center border ${s.bg}`}
           >
-            <div className="font-semibold text-lg mb-2">{s.name}</div>
-            <div className="text-2xl font-bold">{counts[s.slug] || 0}</div>
+            <div className={`font-semibold text-lg mb-2 ${s.text}`}>{s.name}</div>
+            <div className={`text-2xl font-bold ${s.text}`}>{counts[s.slug] || 0}</div>
           </div>
         ))}
       </div>
@@ -98,7 +94,7 @@ export default function CommentsAdminPage() {
                 <div
                   key={i}
                   className="mb-2 p-3 rounded cursor-pointer hover:opacity-90 transition-opacity border-l-4 bg-blue-50 border-blue-500 flex items-center justify-between gap-3"
-                  // onClick={() => setSelectedComment(c)} // For modal detail view
+                  onClick={() => router.push(c.article_slug)}
                 >
                   <span className="font-medium text-gray-900 w-1/4 truncate">{c.display_name || c.user_name || "Anonymous"}</span>
                   <span className="text-gray-700 w-1/2 truncate text-center">{title}</span>

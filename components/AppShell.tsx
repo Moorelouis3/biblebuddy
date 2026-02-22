@@ -684,17 +684,30 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
                     {/* ANALYTICS (ADMIN ONLY) */}
                     {isAdmin && (
-                      <Link
-                        href="/admin/analytics"
-                        onClick={() => setIsProfileMenuOpen(false)}
-                        className={`block px-4 py-2 text-sm ${
-                          pathname?.startsWith("/admin/analytics")
-                            ? "bg-sky-100 text-black font-medium"
-                            : "text-gray-700 hover:bg-gray-100"
-                        }`}
-                      >
-                        Analytics
-                      </Link>
+                      <>
+                        <Link
+                          href="/admin/analytics"
+                          onClick={() => setIsProfileMenuOpen(false)}
+                          className={`block px-4 py-2 text-sm ${
+                            pathname?.startsWith("/admin/analytics")
+                              ? "bg-sky-100 text-black font-medium"
+                              : "text-gray-700 hover:bg-gray-100"
+                          }`}
+                        >
+                          Analytics
+                        </Link>
+                        <Link
+                          href="/comments-admin"
+                          onClick={() => setIsProfileMenuOpen(false)}
+                          className={`block px-4 py-2 text-sm ${
+                            pathname === "/comments-admin"
+                              ? "bg-sky-100 text-black font-medium"
+                              : "text-gray-700 hover:bg-gray-100"
+                          }`}
+                        >
+                          Comments Admin
+                        </Link>
+                      </>
                     )}
 
                     {/* DIVIDER */}
