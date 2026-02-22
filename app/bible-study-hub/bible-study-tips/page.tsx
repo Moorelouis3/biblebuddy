@@ -5,34 +5,17 @@ import { useState } from "react";
 import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import { useRouter } from "next/navigation";
 
-const insights = [
-  {
-    href: "/bible-study-hub/bible-insights/how-to-defend-the-bible",
-    title: "🛡️ How to Defend the Bible",
-    desc: "How to respond when people say it was changed, written by men, or fake.",
-  },
-  {
-    href: "/bible-study-hub/bible-insights/what-is-the-bible",
-    title: "📖 What Is the Bible?",
-    desc: "Understanding its origin, structure, authors, and why it matters.",
-  },
-  {
-    href: "/bible-study-hub/bible-insights/why-so-many-bible-translations",
-    title: "📚 Why So Many Bible Translations?",
-    desc: "Understanding Your Modern Bible Version",
-  },
-];
+const tipsArticles: { href: string; title: string; desc: string }[] = [];
 
-
-export default function BibleInsightsPage() {
+export default function BibleStudyTipsPage() {
   const [view, setView] = useState<"articles" | "questions">("articles");
   const router = useRouter();
 
   return (
     <BibleStudyHubArticleLayout>
       <div className="max-w-2xl mx-auto px-4 py-10">
-        <h1 className="text-3xl font-bold mb-2">Bible Insights</h1>
-        <p className="text-gray-600 mb-8">Explore insights and commentary on Scripture.</p>
+        <h1 className="text-3xl font-bold mb-2">Bible Study Tips</h1>
+        <p className="text-gray-600 mb-8">Practical advice for studying Scripture.</p>
 
         {/* Toggle UI */}
         <div className="flex justify-center mb-8">
@@ -59,7 +42,8 @@ export default function BibleInsightsPage() {
         {/* Articles View */}
         {view === "articles" && (
           <div className="flex flex-col gap-5">
-            {insights.map((i) => (
+            {/* Render article cards here (unchanged) */}
+            {tipsArticles.map((i) => (
               <Link
                 key={i.href}
                 href={i.href}
@@ -76,20 +60,28 @@ export default function BibleInsightsPage() {
         {view === "questions" && (
           <div className="flex flex-col gap-5">
             <button
-              onClick={() => router.push("/bible-study-hub/bible-insights/which-bible-character-relates")}
+              onClick={() => router.push("/bible-study-hub/bible-study-tips/whats-your-best-study-tip")}
               className="rounded-xl p-6 shadow-sm border border-blue-200 bg-blue-100 hover:shadow-md transition cursor-pointer flex flex-col gap-2 text-left w-full"
               type="button"
             >
-              <div className="font-bold text-lg text-blue-900">🧑‍🦱 Which Bible Character Relates?</div>
-              <div className="text-gray-700 text-sm">Faith journeys are deeply personal.</div>
+              <div className="font-bold text-lg text-blue-900">💡 What’s Your Best Study Tip?</div>
+              <div className="text-gray-700 text-sm">Share what helps you most.</div>
             </button>
             <button
-              onClick={() => router.push("/bible-study-hub/bible-insights/favorite-book-of-the-bible")}
+              onClick={() => router.push("/bible-study-hub/bible-study-tips/how-do-you-take-notes")}
               className="rounded-xl p-6 shadow-sm border border-blue-200 bg-blue-100 hover:shadow-md transition cursor-pointer flex flex-col gap-2 text-left w-full"
               type="button"
             >
-              <div className="font-bold text-lg text-blue-900">📚 Favorite Book of the Bible?</div>
-              <div className="text-gray-700 text-sm">Every book speaks differently.</div>
+              <div className="font-bold text-lg text-blue-900">📝 How Do You Take Notes?</div>
+              <div className="text-gray-700 text-sm">Everyone studies a little differently.</div>
+            </button>
+            <button
+              onClick={() => router.push("/bible-study-hub/bible-study-tips/what-keeps-you-consistent")}
+              className="rounded-xl p-6 shadow-sm border border-blue-200 bg-blue-100 hover:shadow-md transition cursor-pointer flex flex-col gap-2 text-left w-full"
+              type="button"
+            >
+              <div className="font-bold text-lg text-blue-900">🔥 What Keeps You Consistent?</div>
+              <div className="text-gray-700 text-sm">Staying disciplined is not easy.</div>
             </button>
           </div>
         )}
