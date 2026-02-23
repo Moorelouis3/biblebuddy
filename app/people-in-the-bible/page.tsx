@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { type BiblePerson } from "../../lib/biblePeople";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
@@ -8,6 +8,9 @@ import { BIBLE_PEOPLE_LIST } from "../../lib/biblePeopleList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import CreditLimitModal from "../../components/CreditLimitModal";
+import CreditEducationModal from "../../components/CreditEducationModal";
+// Utility to get/set session flag for education modal
+const EDUCATION_MODAL_SESSION_KEY = "bbCreditEducationModalShown";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -411,6 +414,69 @@ function normalizePersonMarkdown(markdown: string): string {
 }
 
 export default function PeopleInTheBiblePage() {
+    // Credit state for modal logic
+    const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; ignore_credit_phase1: boolean | null } | null>(null);
+    const prevCreditsRef = useRef<number | null>(null);
+    const [showEducationModal, setShowEducationModal] = useState(false);
+    // Fetch profile_stats for credit state (now includes ignore_credit_phase1)
+    useEffect(() => {
+      async function fetchProfile() {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+        const { data, error } = await supabase
+          .from("profile_stats")
+          .select("is_paid, daily_credits, ignore_credit_phase1")
+          .eq("user_id", user.id)
+          .maybeSingle();
+        if (!error && data) {
+          setProfile({
+            is_paid: data.is_paid === true,
+            daily_credits: typeof data.daily_credits === "number" ? data.daily_credits : null,
+            ignore_credit_phase1: data.ignore_credit_phase1 === true,
+          });
+          prevCreditsRef.current = typeof data.daily_credits === "number" ? data.daily_credits : null;
+        }
+      }
+      fetchProfile();
+    }, []);
+
+    // Listen for credit changes (simulate: poll every 2s for demo, or update after credit use)
+    useEffect(() => {
+      if (!profile || profile.is_paid || profile.ignore_credit_phase1) return;
+      const interval = setInterval(async () => {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+        const { data, error } = await supabase
+          .from("profile_stats")
+          .select("is_paid, daily_credits, ignore_credit_phase1")
+          .eq("user_id", user.id)
+          .maybeSingle();
+        if (!error && data && data.is_paid !== true && data.ignore_credit_phase1 !== true) {
+          const prev = prevCreditsRef.current;
+          const curr = typeof data.daily_credits === "number" ? data.daily_credits : null;
+          const shouldTrigger = prev === 5 && curr === 4;
+          console.log("PHASE1 DEBUG:", {
+            isPaid: data.is_paid,
+            previousCredits: prev,
+            newCredits: curr,
+            ignoreCreditPhase1: data.ignore_credit_phase1,
+            shouldTrigger
+          });
+          // Only trigger if prev was 5, now 4, and ignore_credit_phase1 is false
+          if (shouldTrigger) {
+            setShowEducationModal(true);
+          }
+          prevCreditsRef.current = curr;
+        }
+      }, 2000);
+      return () => clearInterval(interval);
+    }, [profile]);
+    // Modal close handler
+    const handleCloseEducationModal = () => setShowEducationModal(false);
+    // When user sets ignore, update profile state
+    const handleSetIgnore = () => {
+      setProfile((prev) => prev ? { ...prev, ignore_credit_phase1: true } : prev);
+    };
   const [people] = useState<BiblePerson[]>(createStaticPeople());
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
@@ -569,6 +635,7 @@ export default function PeopleInTheBiblePage() {
             const isViewed = viewedPeople.has(personNameKey);
 
             if (!isViewed) {
+              console.log("PHASE1 DEBUG: Credit BEFORE API call", profile?.daily_credits);
               const creditResponse = await fetch("/api/consume-credit", {
                 method: "POST",
                 headers: {
@@ -585,6 +652,13 @@ export default function PeopleInTheBiblePage() {
               }
 
               const creditResult = (await creditResponse.json()) as {
+              // After API call, re-fetch profile to get updated credits
+              const { data: afterData, error: afterError } = await supabase
+                .from("profile_stats")
+                .select("daily_credits")
+                .eq("user_id", userId)
+                .maybeSingle();
+              console.log("PHASE1 DEBUG: Credit AFTER API call", afterData?.daily_credits);
                 ok: boolean;
                 reason?: string;
               };
@@ -820,6 +894,14 @@ FINAL RULES:
 
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
+        {/* PHASE 1 EDUCATION MODAL */}
+        <CreditEducationModal
+          open={showEducationModal}
+          onClose={handleCloseEducationModal}
+          userId={userId}
+          ignoreCreditPhase1={!!profile?.ignore_credit_phase1}
+          onSetIgnore={handleSetIgnore}
+        />
       {/* HEADER */}
       <header className="w-full pt-4 pb-4 border-b border-gray-200 bg-white/60 backdrop-blur">
         <div className="max-w-5xl mx-auto px-4">
