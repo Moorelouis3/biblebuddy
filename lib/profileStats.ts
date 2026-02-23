@@ -17,8 +17,6 @@ export interface ProfileStats {
   trivia_questions_answered: number;
   last_active_date: string | null;
   current_streak: number;
-  onboarding_completed: boolean;
-  last_seen_update_version: string | null;
   username?: string;
   display_name?: string;
 }

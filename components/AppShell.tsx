@@ -15,10 +15,6 @@ import { ContactUsModal } from "./ContactUsModal";
 import { NewMessageAlert } from "./NewMessageAlert";
 import { OnboardingModal } from "./OnboardingModal";
 import { FeatureRenderPriorityProvider } from "./FeatureRenderPriorityContext";
-import GlobalUpdateModal from "./GlobalUpdateModal";
-import { CURRENT_UPDATE_VERSION } from "../lib/globalUpdateConfig";
-import { getProfileStats, type ProfileStats } from "../lib/profileStats";
-import { shouldShowGlobalUpdateModal } from "../lib/shouldShowGlobalUpdateModal";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -48,10 +44,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [initialTrafficSource, setInitialTrafficSource] = useState<string | null>(null);
   const [initialBibleExperienceLevel, setInitialBibleExperienceLevel] = useState<string | null>(null);
   const [featureToursEnabled, setFeatureToursEnabled] = useState(false);
-
-  // Global update modal state
-  const [showUpdateModal, setShowUpdateModal] = useState(false);
-  const [profileStats, setProfileStats] = useState<ProfileStats | null>(null);
 
   async function checkOnboardingStatus(currentUserId: string) {
     try {
@@ -114,7 +106,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       setIsLoggedIn(!!session);
       setUserEmail(session?.user?.email ?? null);
-
+      
+      // Set userId and username for feedback system
       if (session?.user?.id) {
         setUserId(session.user.id);
         const meta: any = session.user.user_metadata || {};
@@ -125,14 +118,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           "User";
         setUsername(extractedUsername);
         void checkOnboardingStatus(session.user.id);
-        // Fetch profile stats for update modal
-        const stats = await getProfileStats(session.user.id);
-        setProfileStats(stats);
-        if (shouldShowGlobalUpdateModal(stats, CURRENT_UPDATE_VERSION)) {
-          setShowUpdateModal(true);
-        } else {
-          setShowUpdateModal(false);
-        }
       } else {
         setUserId(null);
         setUsername("");
@@ -140,12 +125,39 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setFeatureToursEnabled(false);
         setInitialTrafficSource(null);
         setInitialBibleExperienceLevel(null);
-        setProfileStats(null);
-        setShowUpdateModal(false);
       }
 
-      // ...existing code for sync/tracking...
+      // Sync notes count on initial session check if user is logged in (non-blocking)
+      if (session?.user?.id) {
+        // Run all sync/tracking in background - don't block UI
+        (async () => {
+          try {
+            // Temporarily disabled for stability:
+            // await checkProExpiration(session.user.id);
+            
+            // Track user activity (login/refresh) - once per 24 hours
+            await trackUserActivity(session.user.id);
+            
+            // Recalculate total_actions from current counts
+            await recalculateTotalActions(session.user.id);
+            
+            if (shouldSyncNotesCount(session.user.id)) {
+              console.log("[APPSHELL] Syncing notes count on initial session check (new day detected)");
+              await syncNotesCount(session.user.id);
+            }
+            
+            // Sync chapters count on initial session check
+            if (shouldSyncChaptersCount(session.user.id)) {
+              console.log("[APPSHELL] Syncing chapters count on initial session check (new day detected)");
+              await syncChaptersCount(session.user.id);
+            }
+          } catch (err) {
+            console.warn("[APPSHELL] Background sync skipped due to transient issue.");
+          }
+        })();
+      }
     };
+
     getSession();
 
     const { data: listener } = supabase.auth.onAuthStateChange(
@@ -380,16 +392,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               router.refresh();
             }
           }}
-        />
-      )}
-
-      {/* GLOBAL UPDATE MODAL */}
-      {userId && profileStats && showUpdateModal && (
-        <GlobalUpdateModal
-          userId={userId}
-          lastSeenUpdateVersion={(profileStats as any).last_seen_update_version || null}
-          onboardingCompleted={profileStats.onboarding_completed === true}
-          onClose={() => setShowUpdateModal(false)}
         />
       )}
 

@@ -156,7 +156,6 @@ export default function BibleBuddyReadingPlanPage() {
   const [openBook, setOpenBook] = useState<string | null>(PLAN_BOOKS[0]);
   const [lastReadLocation, setLastReadLocation] = useState<{ book: string; chapter: number } | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [isPaid, setIsPaid] = useState<boolean | null>(null);
 
   // Precompute total chapters in plan (does not depend on user)
   useEffect(() => {
@@ -183,7 +182,6 @@ export default function BibleBuddyReadingPlanPage() {
 
         const uid = user.id;
         setUserId(uid);
-        setIsPaid(true); // Always unlock for all users
 
         // Single query for all completed chapters in this plan
         const planBookKeys = PLAN_BOOKS.map((book) => book.toLowerCase().trim());
@@ -338,33 +336,6 @@ export default function BibleBuddyReadingPlanPage() {
       </div>
     );
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 py-8">
-          <div className="text-gray-500">Loading reading plan...</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (isPaid === false) {
-    return (
-      <div className="min-h-screen bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 py-8">
-          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">🔒 Pro Feature</h3>
-            <p className="text-gray-600 text-sm">
-              This feature is available for Bible Buddy Pro users.
-              <br />
-              Bible reading is always free.
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gray-50">

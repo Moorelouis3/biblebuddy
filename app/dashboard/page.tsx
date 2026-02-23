@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
 import { getProfileStats } from "../../lib/profileStats";
+
 import AdSlot from "../../components/AdSlot";
 import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
@@ -802,7 +803,8 @@ export default function DashboardPage() {
 
   // Load level data based on total_actions (FAST - only queries total_actions)
   useEffect(() => {
-    async function loadLevelData() {
+    let didCancel = false;
+    async function loadLevelDataAndMaybeResetCredits() {
       if (!userId) {
         setIsLoadingLevel(false);
         return;
@@ -810,7 +812,16 @@ export default function DashboardPage() {
 
       setIsLoadingLevel(true);
       try {
-        // FAST QUERY: Get total_actions plus daily credits/pay status from profile_stats
+        // 1. Call API route to reset daily credits if needed
+        const resetRes = await fetch("/api/reset-daily-credits", {
+          method: "POST",
+        });
+        let resetJson: { ok: boolean; reset?: boolean; daily_credits?: number } = { ok: false };
+        try {
+          resetJson = await resetRes.json();
+        } catch {}
+
+        // 2. Fetch profile_stats for dashboard display
         const { data, error } = await supabase
           .from("profile_stats")
           .select("total_actions, is_paid, daily_credits")
@@ -821,11 +832,17 @@ export default function DashboardPage() {
           throw error;
         }
 
-        const totalActions = (data?.total_actions || 0) as number;
-        if (data) {
+        const profileData = data;
+        const totalActions = (profileData?.total_actions || 0) as number;
+        if (profileData) {
           setProfile({
-            is_paid: data.is_paid === true,
-            daily_credits: typeof data.daily_credits === "number" ? data.daily_credits : 0,
+            is_paid: profileData.is_paid === true,
+            daily_credits:
+              typeof resetJson.daily_credits === "number"
+                ? resetJson.daily_credits
+                : typeof profileData.daily_credits === "number"
+                ? profileData.daily_credits
+                : 0,
           });
         }
 
@@ -982,25 +999,22 @@ export default function DashboardPage() {
           progressPercent,
         };
 
-        console.log("[DASHBOARD] Level calculation:", {
-          totalActions,
-          level,
-          levelName,
-          levelStart,
-          levelEnd,
-          progressPercent,
-        });
-
-        setLevelInfo(levelInfoData);
-        setMotivationalMessage(randomMessage);
+        if (!didCancel) {
+          setLevelInfo(levelInfoData);
+          setMotivationalMessage(randomMessage);
+        }
       } catch (err) {
-        console.warn("Error loading level data:", err);
+        if (!didCancel) {
+          console.warn("Error loading level data:", err);
+        }
       } finally {
-        setIsLoadingLevel(false);
+        if (!didCancel) setIsLoadingLevel(false);
       }
     }
-
-    loadLevelData();
+    loadLevelDataAndMaybeResetCredits();
+    return () => {
+      didCancel = true;
+    };
   }, [userId]);
 
   // Load other dashboard data (separate, non-blocking)
