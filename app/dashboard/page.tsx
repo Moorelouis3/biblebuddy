@@ -1283,7 +1283,7 @@ export default function DashboardPage() {
           {/* BIBLE TRIVIA */}
           <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}> 
             <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-              <h2 className="text-xl font-semibold">🎯 Bible Games</h2> 
+              <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2> 
               <p className="text-gray-700 mt-1">Test your Bible knowledge</p> 
             </div> 
           </Link>
