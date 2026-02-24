@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 // Use the same Louis avatar as CreditEducationModal
 const LOUIS_AVATAR_SRC = "/louis/louis-bible.png";
@@ -89,6 +90,15 @@ function getDayOfYear(date: Date) {
 }
 
 export default function DashboardDailyWelcomeModal({ open, onClose }: DashboardDailyWelcomeModalProps) {
+  const router = useRouter();
+
+  // Helper to handle both actions
+  const handleAcknowledge = async (navigateToVerse?: boolean) => {
+    await onClose();
+    if (navigateToVerse) {
+      router.push("/verse-of-the-day");
+    }
+  };
 
   if (!open) return null;
 
@@ -127,14 +137,14 @@ export default function DashboardDailyWelcomeModal({ open, onClose }: DashboardD
           </>
         ) : null}
         <div className="w-full mt-2 flex flex-col items-center">
-          <a
-            href="/verse-of-the-day"
+          <button
+            onClick={() => handleAcknowledge(true)}
             className="bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition w-full text-center"
           >
             Understand This Verse
-          </a>
+          </button>
           <button
-            onClick={onClose}
+            onClick={() => handleAcknowledge(false)}
             className="mt-3 text-sm text-blue-600 hover:underline bg-transparent border-none p-0"
             style={{ background: "none", border: "none" }}
           >

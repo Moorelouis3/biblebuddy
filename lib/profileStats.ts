@@ -17,6 +17,7 @@ export interface ProfileStats {
   trivia_questions_answered: number;
   last_active_date: string | null;
   current_streak: number;
+  verse_of_the_day_shown?: string | null;
   username?: string;
   display_name?: string;
   hide_credit_info_modal?: boolean;
@@ -33,7 +34,7 @@ export interface HeatMapDay {
  * Get profile stats for a user (from profile_stats table)
  */
 export async function getProfileStats(userId: string): Promise<ProfileStats | null> {
-  const selectString = "*, hide_credit_info_modal, is_paid, daily_credits";
+  const selectString = "*, hide_credit_info_modal, is_paid, daily_credits, verse_of_the_day_shown";
   const { data, error, status, statusText } = await supabase
     .from("profile_stats")
     .select(selectString)

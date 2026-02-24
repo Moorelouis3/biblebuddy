@@ -167,24 +167,33 @@ export default function DashboardPage() {
     const mm = String(today.getMonth() + 1).padStart(2, "0");
     const dd = String(today.getDate()).padStart(2, "0");
     const todayStr = `${yyyy}-${mm}-${dd}`;
-    const todayKey = `bbDailyWelcome_${todayStr}`;
 
-    // If overlay already shown today, do not show
-    if (window.localStorage.getItem(todayKey)) return;
-
-    // Show overlay if last_active_date is not today
-    if (profile.last_active_date !== todayStr) {
+    // Only show overlay if not already open and date is not today
+    if (!showDailyWelcome && profile.verse_of_the_day_shown !== todayStr) {
       setShowDailyWelcome(true);
       setIsReturningUser(false);
       setLastAction(null);
       setRecommendation(null);
-      window.localStorage.setItem(todayKey, "1");
     }
-  }, [profile]);
+  }, [profile, showDailyWelcome]);
 
   // Daily Welcome Modal close handler
-  const handleCloseDailyWelcome = () => {
+  const handleCloseDailyWelcome = async () => {
     setShowDailyWelcome(false);
+    // Update verse_of_the_day_shown in profile_stats to today
+    if (userId) {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, "0");
+      const dd = String(today.getDate()).padStart(2, "0");
+      const todayStr = `${yyyy}-${mm}-${dd}`;
+      await supabase
+        .from("profile_stats")
+        .update({ verse_of_the_day_shown: todayStr })
+        .eq("user_id", userId);
+      // Update local profile state so overlay doesn't show again until tomorrow
+      setProfile((prev) => prev ? { ...prev, verse_of_the_day_shown: todayStr } : prev);
+    }
   };
 
   const TOUR_COPY: Record<FeatureTourKey, { title: string; body: string }> = {

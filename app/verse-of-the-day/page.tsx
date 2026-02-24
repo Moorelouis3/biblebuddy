@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import VerseDetail from "../../components/VerseDetail";
 import { LouisAvatar } from "../../components/LouisAvatar";
 
@@ -55,6 +56,12 @@ export default function VerseOfTheDayPage() {
         <LouisAvatar mood="bible" size={72} />
       </div>
       <VerseDetail text={verse.text} reference={verse.reference} subtitle={verse.subtitle} />
+      <Link
+        href="/dashboard"
+        className="mt-8 px-6 py-3 rounded-2xl text-base font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition"
+      >
+        Back to Dashboard
+      </Link>
     </div>
   );
 }
