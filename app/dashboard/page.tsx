@@ -146,80 +146,41 @@ export default function DashboardPage() {
   const [pendingTourNavigation, setPendingTourNavigation] = useState<string | null>(null);
   const [isSavingFeatureTour, setIsSavingFeatureTour] = useState(false);
 
-  // Daily Welcome Overlay logic
+  // Daily Welcome Overlay logic (with dev override)
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    // DEV OVERRIDE: show overlay if ?showWelcome=1 is in the URL
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("showWelcome") === "1") {
+      setShowDailyWelcome(true);
+      setIsReturningUser(false);
+      setLastAction(null);
+      setRecommendation(null);
+      return;
+    }
     // Only run after profile loads
-    if (!profile || typeof window === "undefined" || profile.is_paid === null) return;
-    // Only trigger for free users
-    if (profile.is_paid) return;
-    // Only trigger if daily_credits === 5
-    if (profile.daily_credits !== 5) return;
+    if (!profile) return;
 
-    // Get today's date string
+    // Get today's date string (YYYY-MM-DD)
     const today = new Date();
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, "0");
     const dd = String(today.getDate()).padStart(2, "0");
-    const todayKey = `bbDailyWelcome_${yyyy}-${mm}-${dd}`;
+    const todayStr = `${yyyy}-${mm}-${dd}`;
+    const todayKey = `bbDailyWelcome_${todayStr}`;
 
     // If overlay already shown today, do not show
     if (window.localStorage.getItem(todayKey)) return;
 
-    // Query master_actions for last action
-    async function checkActions() {
-      if (!userId) return;
-      try {
-        const { data, error } = await supabase
-          .from("master_actions")
-          .select("action_type, action_label")
-          .eq("user_id", userId)
-          .order("created_at", { ascending: false })
-          .limit(1);
-        if (error) {
-          setShowDailyWelcome(false);
-          return;
-        }
-        if (data && data.length > 0) {
-          setIsReturningUser(true);
-          setLastAction(data[0]);
-          // Recommendation logic
-          let rec = null;
-          const { action_type, action_label } = data[0];
-          if (action_type === "chapter_completed") {
-            // Recommend next chapter (simple logic)
-            const parts = action_label.split(" ");
-            if (parts.length === 2) {
-              const book = parts[0];
-              const chapterNum = parseInt(parts[1], 10);
-              if (!isNaN(chapterNum)) {
-                rec = `Read ${book} ${chapterNum + 1}`;
-              }
-            }
-          } else if (action_type === "trivia_played") {
-            rec = "Try more Bible Trivia";
-          } else if (action_type === "person_viewed") {
-            rec = "Explore another Bible Person";
-          } else if (action_type === "keyword_viewed") {
-            rec = "Explore another Keyword";
-          } else if (action_type === "place_viewed") {
-            rec = "Explore another Place";
-          }
-          setRecommendation(rec);
-        } else {
-          setIsReturningUser(false);
-          setLastAction(null);
-          setRecommendation(null);
-        }
-        setShowDailyWelcome(true);
-        window.localStorage.setItem(todayKey, "1");
-      } catch {
-        // Fail silently
-        setShowDailyWelcome(false);
-      }
+    // Show overlay if last_active_date is not today
+    if (profile.last_active_date !== todayStr) {
+      setShowDailyWelcome(true);
+      setIsReturningUser(false);
+      setLastAction(null);
+      setRecommendation(null);
+      window.localStorage.setItem(todayKey, "1");
     }
-    checkActions();
-    // Dependency: profile, userId
-  }, [profile, userId]);
+  }, [profile]);
 
   // Daily Welcome Modal close handler
   const handleCloseDailyWelcome = () => {

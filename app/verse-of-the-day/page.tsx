@@ -1,53 +1,9 @@
 "use client";
 import React from "react";
+import VerseDetail from "../../components/VerseDetail";
+import { LouisAvatar } from "../../components/LouisAvatar";
 
-// Use the same Louis avatar as CreditEducationModal
-const LOUIS_AVATAR_SRC = "/louis/louis-bible.png";
-
-export type DashboardDailyWelcomeModalProps = {
-  open: boolean;
-  onClose: () => void;
-  isReturningUser: boolean;
-  lastAction?: { action_type: string; action_label: string } | null;
-  recommendation?: string | null;
-};
-
-// No longer needed: actionTypeDisplay
-
-// Daily rotating intros and verses
-const LOUIS_INTROS = [
-  "Hey — it’s Louis. Here’s something for you today.",
-  "I’m glad you’re back. Let’s start with this.",
-  "Before you dive in, read this with me.",
-  "I picked this verse for today.",
-  "Let’s begin with something grounding.",
-  "Take a breath. Start here.",
-  "Here’s today’s reminder.",
-  "This stood out for today.",
-  "Let’s open with truth.",
-  "Start your study here.",
-  "A quick word before you begin.",
-  "I think this will speak to you today.",
-  "Let this guide your reading.",
-  "Here’s something steady for today.",
-  "Begin here.",
-  "This is worth sitting with.",
-  "Let’s focus your heart first.",
-  "Before anything else, read this.",
-  "Something simple, but powerful.",
-  "Keep this in mind today.",
-  "Read this slowly.",
-  "Let this shape your study today.",
-  "A strong place to begin.",
-  "This verse matters.",
-  "Let this anchor you.",
-  "Start here, then build.",
-  "A reminder for your journey.",
-  "Pause and read this.",
-  "Let this settle in.",
-  "Here’s your verse for today."
-];
-
+// These must match the arrays in DashboardDailyWelcomeModal
 const VERSE_OF_THE_DAY = [
   { text: "Your word is a lamp to my feet and a light to my path.", reference: "Psalm 119:105", subtitle: "God’s Word guides one step at a time." },
   { text: "The unfolding of Your words gives light; it gives understanding to the simple.", reference: "Psalm 119:130", subtitle: "Understanding begins when Scripture opens." },
@@ -88,56 +44,17 @@ function getDayOfYear(date: Date) {
   return Math.floor(diff / oneDay);
 }
 
-export default function DashboardDailyWelcomeModal({ open, onClose }: DashboardDailyWelcomeModalProps) {
-
-  if (!open) return null;
-
-  // Developer override: force Psalm 119:105 as the verse of the day if localStorage.BB_FORCE_VERSE is set
-  let verse = null;
-  let intro = null;
-  if (typeof window !== "undefined" && window.localStorage && window.localStorage.getItem("BB_FORCE_VERSE") === "1") {
-    verse = VERSE_OF_THE_DAY.find(v => v.reference === "Psalm 119:105");
-    intro = "[DEV MODE] Forced verse for testing.";
-  } else {
-    const today = new Date();
-    const dayOfYear = getDayOfYear(today);
-    const introIdx = dayOfYear % LOUIS_INTROS.length;
-    const verseIdx = dayOfYear % VERSE_OF_THE_DAY.length;
-    intro = LOUIS_INTROS[introIdx];
-    verse = VERSE_OF_THE_DAY[verseIdx];
-  }
-
+export default function VerseOfTheDayPage() {
+  const today = new Date();
+  const dayOfYear = getDayOfYear(today);
+  const verseIdx = dayOfYear % VERSE_OF_THE_DAY.length;
+  const verse = VERSE_OF_THE_DAY[verseIdx];
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-50 bg-opacity-90 px-3 py-4 overflow-y-auto">
-      <div className="relative w-full max-w-md rounded-3xl bg-blue-100 border border-blue-200 shadow-2xl p-6 sm:p-8 my-8 flex flex-col items-center">
-        <button
-          type="button"
-          onClick={onClose}
-          className="absolute right-4 top-4 text-blue-400 hover:text-blue-700 text-xl"
-        >
-          ✕
-        </button>
-        <img src={LOUIS_AVATAR_SRC} alt="Louis avatar" width={72} height={72} className="rounded-full select-none mx-auto mb-4 shadow-lg border border-blue-200 bg-white" />
-        <div className="mb-4 text-base text-blue-900 text-center font-medium">{intro}</div>
-        <div className="mb-2 text-lg font-bold italic text-center text-blue-900">“{verse.text}”</div>
-        <div className="mb-1 text-sm text-center text-blue-700">{verse.reference}</div>
-        <div className="mb-6 text-xs text-blue-400 text-center">{verse.subtitle}</div>
-        <div className="w-full mt-2 flex flex-col items-center">
-          <a
-            href="/verse-of-the-day"
-            className="bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition w-full text-center"
-          >
-            Understand This Verse
-          </a>
-          <button
-            onClick={onClose}
-            className="mt-3 text-sm text-blue-600 hover:underline bg-transparent border-none p-0"
-            style={{ background: "none", border: "none" }}
-          >
-            Skip Today’s Verse
-          </button>
-        </div>
+    <div className="min-h-screen bg-blue-50 flex flex-col items-center justify-center py-8 px-2">
+      <div className="flex flex-col items-center mb-2">
+        <LouisAvatar mood="bible" size={72} />
       </div>
+      <VerseDetail text={verse.text} reference={verse.reference} subtitle={verse.subtitle} />
     </div>
   );
 }
