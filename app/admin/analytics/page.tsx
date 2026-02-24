@@ -69,6 +69,7 @@ export default function AnalyticsPage() {
       devotionalDaysCompleted: number;
       readingPlanChaptersCompleted: number;
       triviaQuestionsAnswered: number;
+      understandVerseOfTheDay: number;
       startDate: Date;
       endDate: Date;
     }>
