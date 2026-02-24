@@ -1,0 +1,88 @@
+[33m70b4649[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Change dashboard card label from Bible Games to Bible Trivia (desktop and mobile)
+[33mdb6512e[m Fix daily credit reset: remove atomic .or() filter, use simple JS logic
+[33m8e79aa3[m Unlock Bible Buddy Reading Plan for free users
+[33mc987e30[m Update ProfileStats type: add onboarding_completed and last_seen_update_version
+[33m5cfee80[m Add migration for last_seen_update_version column (Global Update Modal)
+[33me2293fc[m Fix TS strict mode: explicit string type for map parameter in comments-admin/page.tsx
+[33mdca04c7[m Fix Comments Admin: subject card counts, clickable log rows, card colors match Study Hub
+[33m21944ba[m Update Comments Admin page UI and counting logic to match Analytics log
+[33m678b5eb[m Add Questions toggles and cards for Character Studies, Christian Foundations, Christian History, and Verse Breakdowns
+[33m247953d[m Add Bible Study Tips question pages and unify card/toggle colors
+[33m603f8cf[m Add intro text block to What Translation Do You Use discussion page with article-style formatting
+[33me6c6d1c[m Add reflection blocks to Christian History articles with custom questions
+[33m5a375d1[m Add reflection block to 'Why So Many Bible Translations' article, matching defend article structure
+[33m5d52fa5[m Reduce vertical gap between reflection and comment section (mt-12  mt-0) for seamless flow
+[33m1684b14[m fix: add and properly type comment section props for reflection UI
+[33mbf39090[m chore: update comment button to 'Share My Reflection' on hub articles
+[33m9336f94[m fix: restore getProfileStats for profile page, add getUsername for comments, update CommentSection to use getUsername
+[33mec6a227[m fix: profileStats only selects username, removes display_name and all other fields
+[33m8167070[m fix: comment system uses only username from profile_stats, fallback to email prefix
+[33md3df4f5[m fix: wrap article page in valid React component for comment section
+[33m574c7b7[m fix: always use display_name or username for comment display name if available
+[33m5f30f88[m feat: wrap A Simple Bible Highlighting System in shared layout for comments
+[33m7382aaf[m fix: add missing imports to Why Bible Study Is Hard article page
+[33m46e0cfe[m fix: remove all duplicate/stray code after component in Why Bible Study Is Hard article (final clean)
+[33m942b661[m fix: remove stray duplicate JSX after component in Why Bible Study Is Hard article
+[33m4c48ea1[m fix: fully rebuild Why Bible Study Is Hard article as a single valid component
+[33mb65b3bf[m chore: push all outstanding changes after article layout fixes
+[33m9e9b9e0[m fix: remove invalid nested return and ensure correct layout in Why Bible Study Is Hard article (final clean)
+[33mf6cf09a[m fix: clean manual rewrite of Why Bible Study Is Hard article with shared layout
+[33m3b27089[m fix: remove invalid nested return and ensure correct layout in Why Bible Study Is Hard article
+[33m5925898[m feat: wrap all Bible Study Tips articles in shared layout for comments; use profile username for comment display name
+[33m589e218[m fix: use correct user display name for new comments
+[33mbf601c7[m chore: wrap all hub articles in BibleStudyHubArticleLayout for universal comments
+[33mc9fce20[m Feature: Show comments on /bible-study-tips/[article] pages as well as hub articles
+[33m2e19936[m Fix: Wrap How to Read the Bible article in BibleStudyHubArticleLayout for comments and navigation
+[33m86fafd2[m Fix: Replace uuid package with custom uuidv4 for Vercel compatibility
+[33m4157bd7[m Fix: Add missing commas in manifest.json to resolve build error
+[33ma5de05f[m Chore: Add uuid dependency for comment system stability
+[33m5506ab6[m Feature: Add reusable comment system to all Bible Study Hub articles
+[33m5b06a2d[m[33m ([m[1;33mtag: [m[1;33mv1.0[m[33m)[m Fix: Remove unclickable Bible Study Tips card from tips page, show only article cards
+[33m0e44ef9[m Fix build: remove unused usePathname import from Bible Study Tips page
+[33m6dfda35[m UX: Render Bible Study Tips card as non-link and highlight when on tips page
+[33m4b263fa[m Fix: Restore correct Bible Study Tips menu and card linking
+[33m34cbe98[m Fix: Make Bible Study Tips menu exactly match Bible Study Hub main menu
+[33m1c90757[m Fix: Wrap Bible Study Tips page in BibleStudyHubArticleLayout for consistent menu and breadcrumb
+[33m7fc1365[m Fix: Add missing BibleStudyHubArticleLayout imports to article pages for clean build
+[33m273101f[m Wrap all Bible Study Hub subject and article pages in layout for menu and breadcrumb consistency
+[33m06ba67c[m Add St. Valentine article card and page to Christian History
+[33m5348a4a[m Add St. Patrick article card and page to Christian History
+[33m3c4c02a[m Add 'The Man Who Legalized Christianity' article card and page to Christian History
+[33m52b190c[m Move 'Salt and Light' article card and page to Verse Breakdowns
+[33m8d402b3[m Add 'Salt and Light' article card and page to Verse by Verse
+[33mcbc9572[m Fix: Move 'Building Self Control' article to Verse Breakdowns and correct Body is a Temple banner image
+[33m42f0619[m Add 'Building Self Control' article card and page to Verse by Verse
+[33m22b9fc8[m Add 'Your Body Is a Temple' article card and page to Verse Breakdowns
+[33m62cea10[m Add 'Why So Many Denominations' article card and page to Christian Foundations
+[33m0176fbb[m Add 'What Is Heaven' article card and page to Christian Foundations
+[33mbb54f64[m Add 'What Is Hell' article card and page to Christian Foundations
+[33m54dbf55[m Add 'A Simple Bible Highlighting System' article card and page to Bible Study Tips
+[33m9ac9f25[m Add 'How to Read the Bible' article card and page to Bible Study Tips
+[33m2e1ffaa[m Update dashboard card title to 'The Bible' (desktop & mobile)
+[33ma5d7c59[m Prepend emojis to dashboard card titles (desktop & mobile)
+[33m24be17b[m Use Biblestudyhardbanner.png as banner for Why Bible Study Is Hard article
+[33mcbdf71e[m Add emoji to Why Bible Study Is Hard card in Bible Study Tips
+[33m4e98775[m Fix Bible Study Tips card link to point to /bible-study-tips
+[33m664e50b[m Add Bible Study Tips article and card: Why Bible Study Is Hard
+[33m41ce17b[m Change Study Tools card to Bible Study Tips in Bible Study Hub
+[33m3ba8b42[m Remove instructions section from Why So Many Bible Translations article
+[33m633a993[m Add Bible Insights article and card: Why So Many Bible Translations?
+[33mbb19051[m Remove logo from header, ensure Biblebuddyicon.png is used for all app icons
+[33me7f51c3[m Update all logo/icon references to Biblebuddyicon.png
+[33m0910476[m Replace all app icons and logo references with Biblebuddylogo.png and remove unused icon files
+[33mfcbea74[m Replace all app icons and logo references with Newbiblelogo.png and remove old icon files
+[33m1bccc04[m Remove all Hope Nation references and links from UI and codebase
+[33m6c1c3b4[m Update dashboard card titles and subtitles
+[33m5aa5065[m Add dashboard component and config files
+[33maefe758[m Replace all app logos and icons with Biblelogo.png (top left, PWA, favicon, manifest, cache busting)
+[33m28a38b2[m Fix: dashboard 'use client' on line 1 for proper client/server boundary
+[33m9d7850c[m Force dashboard to render dynamically (disable static caching)
+[33mb48ac2c[m Add emojis to Bible Insights card titles for consistency
+[33me3e056a[m Add 'What Is the Bible?' cinematic article page with banner and breadcrumb
+[33m3726382[m Add Whatisthebiblebanner.png for 'What Is the Bible?' article (production tracking)
+[33m36f7dd7[m Track and commit BibleStudyBreadcrumb.tsx with correct casing for Vercel
+[33m986d76d[m Add 'How to Defend the Bible' article and card to Bible Insights with banner and breadcrumb
+[33ma370a21[m Add Defenthebiblebanner.png for How to Defend the Bible article
+[33m3741406[m Implement reusable breadcrumb navigation across Bible Study Hub section
+[33m74f159e[m Add Moses banner image (Mosesbanner.png) for production
+[33m2a39d6a[m Add Moses car

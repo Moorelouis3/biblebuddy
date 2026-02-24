@@ -454,16 +454,8 @@ export default function PeopleInTheBiblePage() {
         if (!error && data && data.is_paid !== true && data.ignore_credit_phase1 !== true) {
           const prev = prevCreditsRef.current;
           const curr = typeof data.daily_credits === "number" ? data.daily_credits : null;
-          const shouldTrigger = prev === 5 && curr === 4;
-          console.log("PHASE1 DEBUG:", {
-            isPaid: data.is_paid,
-            previousCredits: prev,
-            newCredits: curr,
-            ignoreCreditPhase1: data.ignore_credit_phase1,
-            shouldTrigger
-          });
           // Only trigger if prev was 5, now 4, and ignore_credit_phase1 is false
-          if (shouldTrigger) {
+          if (prev === 5 && curr === 4) {
             setShowEducationModal(true);
           }
           prevCreditsRef.current = curr;
@@ -635,7 +627,6 @@ export default function PeopleInTheBiblePage() {
             const isViewed = viewedPeople.has(personNameKey);
 
             if (!isViewed) {
-              console.log("PHASE1 DEBUG: Credit BEFORE API call", profile?.daily_credits);
               const creditResponse = await fetch("/api/consume-credit", {
                 method: "POST",
                 headers: {
@@ -652,13 +643,6 @@ export default function PeopleInTheBiblePage() {
               }
 
               const creditResult = (await creditResponse.json()) as {
-              // After API call, re-fetch profile to get updated credits
-              const { data: afterData, error: afterError } = await supabase
-                .from("profile_stats")
-                .select("daily_credits")
-                .eq("user_id", userId)
-                .maybeSingle();
-              console.log("PHASE1 DEBUG: Credit AFTER API call", afterData?.daily_credits);
                 ok: boolean;
                 reason?: string;
               };
