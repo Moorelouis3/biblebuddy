@@ -119,9 +119,13 @@ export default function DashboardDailyWelcomeModal({ open, onClose }: DashboardD
         </button>
         <img src={LOUIS_AVATAR_SRC} alt="Louis avatar" width={72} height={72} className="rounded-full select-none mx-auto mb-4 shadow-lg border border-blue-200 bg-white" />
         <div className="mb-4 text-base text-blue-900 text-center font-medium">{intro}</div>
-        <div className="mb-2 text-lg font-bold italic text-center text-blue-900">“{verse.text}”</div>
-        <div className="mb-1 text-sm text-center text-blue-700">{verse.reference}</div>
-        <div className="mb-6 text-xs text-blue-400 text-center">{verse.subtitle}</div>
+        {verse ? (
+          <>
+            <div className="mb-2 text-lg font-bold italic text-center text-blue-900">“{verse.text}”</div>
+            <div className="mb-1 text-sm text-center text-blue-700">{verse.reference}</div>
+            <div className="mb-6 text-xs text-blue-400 text-center">{verse.subtitle}</div>
+          </>
+        ) : null}
         <div className="w-full mt-2 flex flex-col items-center">
           <a
             href="/verse-of-the-day"
