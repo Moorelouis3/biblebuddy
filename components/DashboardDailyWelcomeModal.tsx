@@ -43,94 +43,76 @@ export default function DashboardDailyWelcomeModal({
 
     // Body copy logic
     let body;
+    let primaryBtn = "Start Your Day";
+    let secondary = "Maybe later";
+
     if (hasActionLabel) {
       body = (
         <>
-          <p className="mb-2">Last time you were learning about <span className="font-bold">{actionLabel}</span>.</p>
-          <p className="mb-2">Want to keep going today?</p>
-          <p className="mb-2">You have <span className="font-bold">{dailyCredits} study actions</span> ready.</p>
+          <p className="mb-2">Last time you were exploring <span className="font-bold">{actionLabel}</span>.</p>
+          <p className="mb-2">Want to keep building on that today?</p>
+          <p className="mb-2">You’ve got <span className="font-bold">{dailyCredits} study actions</span> ready.</p>
         </>
       );
+      primaryBtn = "Continue Learning";
+      secondary = "Not right now";
     } else if (actionType) {
       if (actionType === "person" || actionType === "person_viewed") {
         body = (
           <>
-            <p className="mb-2">I saw you were exploring Bible people recently.</p>
+            <p className="mb-2">Last time you were exploring Bible people.</p>
             <p className="mb-2">Want to discover someone new today?</p>
-            <p className="mb-2">You have <span className="font-bold">{dailyCredits} study actions</span> ready.</p>
+            <p className="mb-2">You’ve got <span className="font-bold">{dailyCredits} study actions</span> ready.</p>
           </>
         );
+        primaryBtn = "Explore Bible People";
       } else if (actionType === "chapter" || actionType === "chapter_completed") {
         body = (
           <>
             <p className="mb-2">You were reading through Scripture recently.</p>
             <p className="mb-2">Ready to continue where you left off?</p>
-            <p className="mb-2">You have <span className="font-bold">{dailyCredits} study actions</span> ready.</p>
+            <p className="mb-2">You’ve got <span className="font-bold">{dailyCredits} study actions</span> ready.</p>
           </>
         );
+        primaryBtn = "Continue Reading";
       } else if (actionType === "trivia" || actionType === "trivia_played") {
         body = (
           <>
-            <p className="mb-2">You were testing your knowledge in Bible Trivia.</p>
-            <p className="mb-2">Want another round?</p>
-            <p className="mb-2">You have <span className="font-bold">{dailyCredits} study actions</span> ready.</p>
+            <p className="mb-2">You were testing your Bible knowledge.</p>
+            <p className="mb-2">Want another round today?</p>
+            <p className="mb-2">You’ve got <span className="font-bold">{dailyCredits} study actions</span> ready.</p>
           </>
         );
+        primaryBtn = "Play Trivia";
       } else if (actionType === "devotional" || actionType === "devotional_day_completed") {
         body = (
           <>
             <p className="mb-2">You were spending time in a devotional.</p>
             <p className="mb-2">Ready for another day?</p>
-            <p className="mb-2">You have <span className="font-bold">{dailyCredits} study actions</span> ready.</p>
+            <p className="mb-2">You’ve got <span className="font-bold">{dailyCredits} study actions</span> ready.</p>
           </>
         );
+        primaryBtn = "Open Devotional";
       } else {
         body = (
           <>
+            <p className="mb-2">Welcome to Bible Buddy.</p>
             <p className="mb-2">You’ve got <span className="font-bold">{dailyCredits} study actions</span> ready today.</p>
-            <p className="mb-2">Let’s keep building your Bible knowledge.</p>
+            <p className="mb-2">Let’s start building your Bible knowledge.</p>
           </>
         );
+        primaryBtn = "Start Your Day";
       }
     } else {
       body = (
         <>
+          <p className="mb-2">Welcome to Bible Buddy.</p>
           <p className="mb-2">You’ve got <span className="font-bold">{dailyCredits} study actions</span> ready today.</p>
-          <p className="mb-2">Let’s keep building your Bible knowledge.</p>
+          <p className="mb-2">Let’s start building your Bible knowledge.</p>
         </>
       );
+      primaryBtn = "Start Your Day";
     }
-
-    // CTA button logic
-    let primaryBtn = "Start Your Day";
-    if (hasActionLabel) {
-      if (actionType === "person" || actionType === "person_viewed") {
-        primaryBtn = "Explore Bible People";
-      } else if (actionType === "chapter" || actionType === "chapter_completed") {
-        primaryBtn = "Continue Reading";
-      } else if (actionType === "trivia" || actionType === "trivia_played") {
-        primaryBtn = "Play Trivia";
-      } else if (actionType === "devotional" || actionType === "devotional_day_completed") {
-        primaryBtn = "Open Devotional";
-      } else {
-        primaryBtn = "Start Your Day";
-      }
-    } else if (actionType) {
-      if (actionType === "person" || actionType === "person_viewed") {
-        primaryBtn = "Explore Bible People";
-      } else if (actionType === "chapter" || actionType === "chapter_completed") {
-        primaryBtn = "Continue Reading";
-      } else if (actionType === "trivia" || actionType === "trivia_played") {
-        primaryBtn = "Play Trivia";
-      } else if (actionType === "devotional" || actionType === "devotional_day_completed") {
-        primaryBtn = "Open Devotional";
-      } else {
-        primaryBtn = "Start Your Day";
-      }
-    }
-
-    // Secondary text link
-    const secondary = "Try something different";
 
     return (
       <>
