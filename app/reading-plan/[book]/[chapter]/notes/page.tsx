@@ -233,7 +233,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         afterIgnorePhase1 = profileAfter?.ignore_credit_phase1 === true;
       }
 
-      // 4. Phase 1 overlay: if 5→4, unpaid, not ignored, and not shown this session, show overlay and return (do NOT load notes)
+      // 4. Phase 1 overlay: if 5→4, unpaid, not ignored, and not shown this session, show overlay (but DO NOT return early)
       if (
         beforeCredits === 5 &&
         afterCredits === 4 &&
@@ -245,9 +245,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       ) {
         setShowEducationModal(true);
         window.sessionStorage.setItem(EDUCATION_MODAL_SESSION_KEY, "1");
-        setLoadingNotes(false);
-        loadingRef.current = false;
-        return; // Do NOT load or show notes until overlay is closed
+        // Do NOT return early; allow notes to load in background
       }
       // 3) Only generate if NOT found in Supabase
       const prompt = buildPrompt();
