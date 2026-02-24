@@ -6,7 +6,9 @@ import { supabase } from "@/lib/supabaseClient";
 import ReactMarkdown from "react-markdown";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import CreditLimitModal from "@/components/CreditLimitModal";
+import CreditEducationModal from "@/components/CreditEducationModal";
 
+const EDUCATION_MODAL_SESSION_KEY = "bbCreditEducationModalShown";
 export default function ChapterNotesPage() {
   const params = useParams();
   const router = useRouter();
@@ -17,6 +19,9 @@ export default function ChapterNotesPage() {
   const [loadingNotes, setLoadingNotes] = useState(false);
   const [notesError, setNotesError] = useState<string | null>(null);
   const [showCreditBlocked, setShowCreditBlocked] = useState(false);
+  const [showEducationModal, setShowEducationModal] = useState(false);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; ignore_credit_phase1: boolean | null } | null>(null);
+  const prevCreditsRef = useRef<number | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const loadingRef = useRef(false);
 
@@ -78,58 +83,12 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
   function cleanNotesText(text: string): string {
     let cleaned = text.trim();
 
-    // Split by lines to process more carefully
-    const lines = cleaned.split("\n");
-    const cleanedLines: string[] = [];
-    let foundBigIdea = false;
-    let skipUntilBigIdea = true;
-
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-      const trimmedLine = line.trim();
-
-      // Skip empty lines at the start
-      if (skipUntilBigIdea && !trimmedLine) {
-        continue;
-      }
-
-      // Check if this is the top-level chapter header we want to remove
-      const isChapterHeader =
-        trimmedLine.match(
-          new RegExp(`.*${bookDisplayName}.*[Cc]hapter.*${chapter}.*[Nn]otes.*`, "i")
-        ) ||
-        trimmedLine.match(/^🌟\s*.*[Cc]hapter.*[Nn]otes.*$/i) ||
-        (trimmedLine.startsWith("#") &&
-          trimmedLine.match(
-            new RegExp(`.*${bookDisplayName}.*[Cc]hapter.*${chapter}.*`, "i")
-          ));
-
-      // If we find the Big Idea section (🧠), start including lines.
-      // Support both:
-      // - "🧠 Big Idea of the Chapter"
-      // - "# 🧠 Big Idea of the Chapter"
-      const isBigIdeaHeader =
-        trimmedLine.startsWith("🧠") || /^#+\s*🧠/.test(trimmedLine);
-
-      if (isBigIdeaHeader) {
-        foundBigIdea = true;
-        skipUntilBigIdea = false;
-        cleanedLines.push(line);
-        continue;
-      }
-
-      // Skip chapter header lines (only before Big Idea is found)
-      if (skipUntilBigIdea && isChapterHeader) {
-        continue;
-      }
-
-      // Once we've found Big Idea, include all lines (preserves What's Happening...)
-      if (foundBigIdea || !skipUntilBigIdea) {
-        cleanedLines.push(line);
-      }
+    // Remove any top-level chapter header (e.g., "Genesis 1 Notes", etc.)
+    // Only keep lines starting from the first Big Idea header
+    const bigIdeaIdx = cleaned.search(/^#?\s*🧠/m);
+    if (bigIdeaIdx > 0) {
+      cleaned = cleaned.slice(bigIdeaIdx);
     }
-
-    cleaned = cleanedLines.join("\n").trim();
 
     // Final safety check: ensure it starts with Big Idea
     if (!cleaned.startsWith("🧠") && !cleaned.startsWith("#")) {
@@ -148,7 +107,67 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     return cleaned.trim();
   }
 
+  // Fetch profile_stats for credit state (for Phase 1 overlay)
+  useEffect(() => {
+    async function fetchProfile() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+      const { data, error } = await supabase
+        .from("profile_stats")
+        .select("is_paid, daily_credits, ignore_credit_phase1")
+        .eq("user_id", user.id)
+        .maybeSingle();
+      if (!error && data) {
+        setProfile({
+          is_paid: data.is_paid === true,
+          daily_credits: typeof data.daily_credits === "number" ? data.daily_credits : null,
+          ignore_credit_phase1: data.ignore_credit_phase1 === true,
+        });
+        prevCreditsRef.current = typeof data.daily_credits === "number" ? data.daily_credits : null;
+      }
+    }
+    fetchProfile();
+  }, []);
+
+  // Listen for credit changes (Phase 1 overlay logic)
+  useEffect(() => {
+    if (!profile || profile.is_paid || profile.ignore_credit_phase1) return;
+    const interval = setInterval(async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+      const { data, error } = await supabase
+        .from("profile_stats")
+        .select("is_paid, daily_credits, ignore_credit_phase1")
+        .eq("user_id", user.id)
+        .maybeSingle();
+      if (!error && data && data.is_paid !== true && data.ignore_credit_phase1 !== true) {
+        const prev = prevCreditsRef.current;
+        const curr = typeof data.daily_credits === "number" ? data.daily_credits : null;
+        console.log("[PHASE1 POLL] prevCredits:", prev, "newCredits:", curr);
+        // Only trigger if prev was 5, now 4, and ignore_credit_phase1 is false
+        if (prev === 5 && curr === 4) {
+          // Only show once per session
+          if (!window.sessionStorage.getItem(EDUCATION_MODAL_SESSION_KEY)) {
+            console.log("[PHASE1 POLL] Triggering Phase 1 overlay (5→4 transition detected)");
+            setShowEducationModal(true);
+            window.sessionStorage.setItem(EDUCATION_MODAL_SESSION_KEY, "1");
+          }
+        }
+        prevCreditsRef.current = curr;
+      }
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [profile]);
+
+  const handleCloseEducationModal = () => setShowEducationModal(false);
+  const handleSetIgnore = () => {
+    setProfile((prev) => prev ? { ...prev, ignore_credit_phase1: true } : prev);
+  };
+
   async function loadOrGenerateNotes() {
+      // Ensure bookKey and chapterNum are defined at the top for use throughout the function
+      const bookKey = book.toLowerCase().trim();
+      const chapterNum = Number(chapter);
     // Prevent double execution in React Strict Mode
     if (loadingRef.current) {
       return;
@@ -161,11 +180,29 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       setNotesError(null);
       setShowCreditBlocked(false);
 
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      setUserId(user?.id ?? null);
 
+
+      const { data: { user } } = await supabase.auth.getUser();
+      const userIdLocal = user?.id ?? null;
+      setUserId(userIdLocal);
+
+      // --- PHASE 1 OVERLAY LOGIC: Run immediately after credit deduction ---
+      // 1. Fetch profile before deduction
+      let beforeCredits = null;
+      let beforeIsPaid = false;
+      let beforeIgnorePhase1 = false;
+      if (userIdLocal) {
+        const { data: profileBefore } = await supabase
+          .from("profile_stats")
+          .select("daily_credits, is_paid, ignore_credit_phase1")
+          .eq("user_id", userIdLocal)
+          .maybeSingle();
+        beforeCredits = profileBefore?.daily_credits;
+        beforeIsPaid = profileBefore?.is_paid === true;
+        beforeIgnorePhase1 = profileBefore?.ignore_credit_phase1 === true;
+      }
+
+      // 2. Deduct credit
       const creditResponse = await fetch("/api/consume-credit", {
         method: "POST",
         headers: {
@@ -181,55 +218,37 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         throw new Error(`Failed to check credits: ${creditResponse.statusText}. ${errorText}`);
       }
 
-      const creditResult = (await creditResponse.json()) as {
-        ok: boolean;
-        reason?: string;
-      };
-
-      if (!creditResult.ok) {
-        if (creditResult.reason === "no_credits") {
-          setShowCreditBlocked(true);
-          return;
-        }
-
-        throw new Error("Failed to check credits.");
+      // 3. Fetch profile after deduction
+      let afterCredits = null;
+      let afterIsPaid = false;
+      let afterIgnorePhase1 = false;
+      if (userIdLocal) {
+        const { data: profileAfter } = await supabase
+          .from("profile_stats")
+          .select("daily_credits, is_paid, ignore_credit_phase1")
+          .eq("user_id", userIdLocal)
+          .maybeSingle();
+        afterCredits = profileAfter?.daily_credits;
+        afterIsPaid = profileAfter?.is_paid === true;
+        afterIgnorePhase1 = profileAfter?.ignore_credit_phase1 === true;
       }
 
-      // CRITICAL: Normalize book name to lowercase for consistent database queries
-      // Database stores book names in lowercase (e.g., "mark", "matthew")
-      const bookKey = book.toLowerCase().trim();
-      const chapterNum = Number(chapter); // Ensure chapter is an integer
-
-      console.log(`[bible_notes] Checking for existing notes: book="${bookKey}", chapter=${chapterNum}`);
-
-      // CRITICAL: Check Supabase for existing notes FIRST (BEFORE any ChatGPT call)
-      // This is the ONLY source of truth - if notes exist, we MUST use them
-      const { data: existing, error: existingError } = await supabase
-        .from("bible_notes")
-        .select("notes_text")
-        .eq("book", bookKey)
-        .eq("chapter", chapterNum)
-        .maybeSingle();
-
-      // If query error is NOT "no rows found", log it but continue
-      if (existingError && existingError.code !== 'PGRST116') {
-        console.error(`[bible_notes] Error checking for existing notes:`, existingError);
-      }
-
-      // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
-      // DO NOT continue to generation - this prevents duplicate ChatGPT calls
-      if (existing?.notes_text && existing.notes_text.trim().length > 0) {
-        console.log(`[bible_notes] Found existing notes for ${bookKey} chapter ${chapterNum}, returning immediately (ChatGPT will NOT be called)`);
-        const cleaned = cleanNotesText(existing.notes_text);
-        setNotesText(cleaned);
+      // 4. Phase 1 overlay: if 5→4, unpaid, not ignored, and not shown this session, show overlay and return (do NOT load notes)
+      if (
+        beforeCredits === 5 &&
+        afterCredits === 4 &&
+        !beforeIsPaid &&
+        !afterIsPaid &&
+        !beforeIgnorePhase1 &&
+        !afterIgnorePhase1 &&
+        !window.sessionStorage.getItem(EDUCATION_MODAL_SESSION_KEY)
+      ) {
+        setShowEducationModal(true);
+        window.sessionStorage.setItem(EDUCATION_MODAL_SESSION_KEY, "1");
         setLoadingNotes(false);
         loadingRef.current = false;
-        return; // EXIT FUNCTION - DO NOT CONTINUE
+        return; // Do NOT load or show notes until overlay is closed
       }
-
-      // GUARANTEE: If we reach here, notes do NOT exist in database
-      // This is the ONLY path where ChatGPT should be called
-
       // 3) Only generate if NOT found in Supabase
       const prompt = buildPrompt();
       const response = await fetch("/api/chat", {
@@ -354,7 +373,15 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
   }, [book, chapter]);
 
   return (
-    <div className="fixed inset-0 z-40 bg-black/70 flex items-start justify-center overflow-y-auto p-4 py-10">
+    <>
+      <CreditEducationModal
+        open={showEducationModal}
+        onClose={handleCloseEducationModal}
+        userId={userId}
+        ignoreCreditPhase1={!!profile?.ignore_credit_phase1}
+        onSetIgnore={handleSetIgnore}
+      />
+      <div className="fixed inset-0 z-40 bg-black/70 flex items-start justify-center overflow-y-auto p-4 py-10">
       {/* outer white card */}
       <div className="relative w-full max-w-3xl md:max-w-4xl rounded-[32px] bg-white shadow-2xl shadow-black/30 ring-1 ring-black/10 p-2 md:p-3 mb-10">
         {/* close button */}
@@ -443,7 +470,8 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           router.back();
         }}
       />
-    </div>
+      </div>
+    </>
   );
 }
 

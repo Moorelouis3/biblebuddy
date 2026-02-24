@@ -3,7 +3,9 @@
 export const dynamic = 'force-dynamic';
 
 import { useEffect, useState, type MouseEvent } from "react";
+import DashboardDailyWelcomeModal from "../../components/DashboardDailyWelcomeModal";
 import Link from "next/link";
+import "../../styles/pulse.css";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
@@ -104,17 +106,18 @@ const BOOKS = [
 ];
 
 export default function DashboardPage() {
+  // All useState declarations appear first, before any useEffect
+  const [showDailyWelcome, setShowDailyWelcome] = useState(false);
+  const [isReturningUser, setIsReturningUser] = useState(false);
+  const [lastAction, setLastAction] = useState<{ action_type: string; action_label: string } | null>(null);
+  const [recommendation, setRecommendation] = useState<string | null>(null);
   const router = useRouter();
   const { featureToursEnabled } = useFeatureRenderPriority();
   const [userName, setUserName] = useState<string>("buddy");
   const [userId, setUserId] = useState<string | null>(null);
-
   const [streakDays, setStreakDays] = useState<number>(0);
-  const [daysSinceLastReading, setDaysSinceLastReading] = useState<number>(0);  
-
+  const [daysSinceLastReading, setDaysSinceLastReading] = useState<number>(0);
   const [currentMatthewStep, setCurrentMatthewStep] = useState(0);
-  
-  // Preloaded reading plan data
   const [totalCompletedChapters, setTotalCompletedChapters] = useState<number>(0);
   const [currentBook, setCurrentBook] = useState<string | null>(null);
   const [isLoadingLevel, setIsLoadingLevel] = useState<boolean>(true);
@@ -141,6 +144,86 @@ export default function DashboardPage() {
   const [activeTourKey, setActiveTourKey] = useState<FeatureTourKey | null>(null);
   const [pendingTourNavigation, setPendingTourNavigation] = useState<string | null>(null);
   const [isSavingFeatureTour, setIsSavingFeatureTour] = useState(false);
+
+  // Daily Welcome Overlay logic
+  useEffect(() => {
+    // Only run after profile loads
+    if (!profile || typeof window === "undefined" || profile.is_paid === null) return;
+    // Only trigger for free users
+    if (profile.is_paid) return;
+    // Only trigger if daily_credits === 5
+    if (profile.daily_credits !== 5) return;
+
+    // Get today's date string
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const dd = String(today.getDate()).padStart(2, "0");
+    const todayKey = `bbDailyWelcome_${yyyy}-${mm}-${dd}`;
+
+    // If overlay already shown today, do not show
+    if (window.localStorage.getItem(todayKey)) return;
+
+    // Query master_actions for last action
+    async function checkActions() {
+      if (!userId) return;
+      try {
+        const { data, error } = await supabase
+          .from("master_actions")
+          .select("action_type, action_label")
+          .eq("user_id", userId)
+          .order("created_at", { ascending: false })
+          .limit(1);
+        if (error) {
+          setShowDailyWelcome(false);
+          return;
+        }
+        if (data && data.length > 0) {
+          setIsReturningUser(true);
+          setLastAction(data[0]);
+          // Recommendation logic
+          let rec = null;
+          const { action_type, action_label } = data[0];
+          if (action_type === "chapter_completed") {
+            // Recommend next chapter (simple logic)
+            const parts = action_label.split(" ");
+            if (parts.length === 2) {
+              const book = parts[0];
+              const chapterNum = parseInt(parts[1], 10);
+              if (!isNaN(chapterNum)) {
+                rec = `Read ${book} ${chapterNum + 1}`;
+              }
+            }
+          } else if (action_type === "trivia_played") {
+            rec = "Try more Bible Trivia";
+          } else if (action_type === "person_viewed") {
+            rec = "Explore another Bible Person";
+          } else if (action_type === "keyword_viewed") {
+            rec = "Explore another Keyword";
+          } else if (action_type === "place_viewed") {
+            rec = "Explore another Place";
+          }
+          setRecommendation(rec);
+        } else {
+          setIsReturningUser(false);
+          setLastAction(null);
+          setRecommendation(null);
+        }
+        setShowDailyWelcome(true);
+        window.localStorage.setItem(todayKey, "1");
+      } catch {
+        // Fail silently
+        setShowDailyWelcome(false);
+      }
+    }
+    checkActions();
+    // Dependency: profile, userId
+  }, [profile, userId]);
+
+  // Daily Welcome Modal close handler
+  const handleCloseDailyWelcome = () => {
+    setShowDailyWelcome(false);
+  };
 
   const TOUR_COPY: Record<FeatureTourKey, { title: string; body: string }> = {
     dashboard: {
@@ -1124,7 +1207,16 @@ export default function DashboardPage() {
   const shouldShowAds = ENABLE_ADS && userId && membershipStatus !== "pro";
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-12">
+    <>
+      {/* Daily Welcome Overlay (isolated, safe) */}
+      <DashboardDailyWelcomeModal
+        open={showDailyWelcome}
+        onClose={handleCloseDailyWelcome}
+        isReturningUser={isReturningUser}
+        lastAction={lastAction}
+        recommendation={recommendation}
+      />
+      <div className="min-h-screen bg-gray-50 pb-12">
       {/* DESKTOP LAYOUT: Left Ad | Content | Right Ad */}
       <div className="hidden lg:flex max-w-7xl mx-auto px-4 mt-8 gap-6">
         {/* LEFT AD SLOT (Desktop Only) */}
@@ -1230,7 +1322,7 @@ export default function DashboardPage() {
 
           {profile?.is_paid === false && (
             <Link href="/upgrade">
-              <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative">
+              <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative animate-pulse-slow">
                 <span className="absolute right-4 top-4 text-red-400 text-base" aria-hidden="true">🔒</span>
                 <h2 className="text-xl font-semibold">🔓 Unlock Full Access</h2>
                 <p className="text-gray-700 mt-1">Remove limits and study without restriction.</p>
@@ -1662,5 +1754,6 @@ export default function DashboardPage() {
 
 
     </div>
+    </>
   );
 }
