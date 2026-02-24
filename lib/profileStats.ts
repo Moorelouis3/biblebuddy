@@ -19,6 +19,9 @@ export interface ProfileStats {
   current_streak: number;
   username?: string;
   display_name?: string;
+  is_paid?: boolean;
+  daily_credits?: number;
+  hide_credit_info_modal?: boolean;
 }
 
 export interface HeatMapDay {
