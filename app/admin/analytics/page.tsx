@@ -17,6 +17,7 @@ type OverviewMetrics = {
   devotionalDaysCompleted: number;
   readingPlanChaptersCompleted: number;
   triviaQuestionsAnswered: number;
+  understandVerseOfTheDay: number;
 };
 
 const INITIAL_METRICS: OverviewMetrics = {
@@ -31,6 +32,7 @@ const INITIAL_METRICS: OverviewMetrics = {
   devotionalDaysCompleted: 0,
   readingPlanChaptersCompleted: 0,
   triviaQuestionsAnswered: 0,
+  understandVerseOfTheDay: 0,
 };
 
 export default function AnalyticsPage() {
@@ -351,6 +353,14 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
+        // Understand This Verse clicks
+        const { count: understandVerseOfTheDay } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "understand_verse_of_the_day")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
         return {
           period: bucket.label,
           signups: signups || 0,
@@ -364,6 +374,7 @@ export default function AnalyticsPage() {
           devotionalDaysCompleted: devotionalDaysCompleted || 0,
           readingPlanChaptersCompleted: readingPlanChaptersCompleted || 0,
           triviaQuestionsAnswered: triviaQuestionsAnswered || 0,
+          understandVerseOfTheDay: understandVerseOfTheDay || 0,
           startDate: bucket.start,
           endDate: bucket.end,
         };
@@ -483,6 +494,14 @@ export default function AnalyticsPage() {
           .eq("action_type", "trivia_question_answered")
       );
 
+      // Understand This Verse clicks
+      const understandVerseOfTheDayPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "understand_verse_of_the_day")
+      );
+
       const [
         signupsResult,
         loginRowsResult,
@@ -495,6 +514,7 @@ export default function AnalyticsPage() {
         devotionalDaysResult,
         readingPlanChaptersResult,
         triviaQuestionsResult,
+        understandVerseOfTheDayResult,
       ] = await Promise.all([
         signupsPromise,
         loginsPromise,
@@ -507,6 +527,7 @@ export default function AnalyticsPage() {
         devotionalDaysPromise,
         readingPlanChaptersPromise,
         triviaQuestionsPromise,
+        understandVerseOfTheDayPromise,
       ]);
 
       const signupsCount = signupsResult.count ?? 0;
@@ -531,6 +552,8 @@ export default function AnalyticsPage() {
       const readingPlanChaptersError = readingPlanChaptersResult.error;
       const triviaQuestionsCount = triviaQuestionsResult.count ?? 0;
       const triviaQuestionsError = triviaQuestionsResult.error;
+      const understandVerseOfTheDayCount = understandVerseOfTheDayResult.count ?? 0;
+      const understandVerseOfTheDayError = understandVerseOfTheDayResult.error;
 
       if (
         signupsError ||
@@ -543,7 +566,8 @@ export default function AnalyticsPage() {
         keywordsError ||
         devotionalDaysError ||
         readingPlanChaptersError ||
-        triviaQuestionsError
+        triviaQuestionsError ||
+        understandVerseOfTheDayError
       ) {
         console.error("[ANALYTICS_OVERVIEW] Error loading metrics:", {
           signupsError,
@@ -557,6 +581,7 @@ export default function AnalyticsPage() {
           devotionalDaysError,
           readingPlanChaptersError,
           triviaQuestionsError,
+          understandVerseOfTheDayError,
         });
         setOverviewError("Failed to load overview metrics.");
         setOverviewMetrics(INITIAL_METRICS);
@@ -583,6 +608,7 @@ export default function AnalyticsPage() {
         devotionalDaysCompleted: devotionalDaysCount ?? 0,
         readingPlanChaptersCompleted: readingPlanChaptersCount ?? 0,
         triviaQuestionsAnswered: triviaQuestionsCount ?? 0,
+        understandVerseOfTheDay: understandVerseOfTheDayCount ?? 0,
       });
       setLoadingOverview(false);
     } catch (err) {
@@ -1630,6 +1656,13 @@ export default function AnalyticsPage() {
                 value={overviewMetrics.triviaQuestionsAnswered}
                 onClick={() => setSelectedActionType(selectedActionType === "trivia_question_answered" ? null : "trivia_question_answered")}
                 isSelected={selectedActionType === "trivia_question_answered"}
+              />
+              {/* New Card: Understand This Verse Clicks */}
+              <OverviewCard
+                label="Understand This Verse Clicks"
+                value={overviewMetrics.understandVerseOfTheDay}
+                onClick={() => setSelectedActionType(selectedActionType === "understand_verse_of_the_day" ? null : "understand_verse_of_the_day")}
+                isSelected={selectedActionType === "understand_verse_of_the_day"}
               />
             </div>
           </>

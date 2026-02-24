@@ -1188,6 +1188,7 @@ export default function DashboardPage() {
         isReturningUser={isReturningUser}
         lastAction={lastAction}
         recommendation={recommendation}
+        userId={userId}
       />
       <div className="min-h-screen bg-gray-50 pb-12">
       {/* DESKTOP LAYOUT: Left Ad | Content | Right Ad */}

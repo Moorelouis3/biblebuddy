@@ -5,12 +5,15 @@ import { useRouter } from "next/navigation";
 // Use the same Louis avatar as CreditEducationModal
 const LOUIS_AVATAR_SRC = "/louis/louis-bible.png";
 
+import { logActionToMasterActions } from "../lib/actionRecorder";
+
 export type DashboardDailyWelcomeModalProps = {
   open: boolean;
   onClose: () => void;
   isReturningUser: boolean;
   lastAction?: { action_type: string; action_label: string } | null;
   recommendation?: string | null;
+  userId?: string | null;
 };
 
 // No longer needed: actionTypeDisplay
@@ -89,11 +92,14 @@ function getDayOfYear(date: Date) {
   return Math.floor(diff / oneDay);
 }
 
-export default function DashboardDailyWelcomeModal({ open, onClose }: DashboardDailyWelcomeModalProps) {
+export default function DashboardDailyWelcomeModal({ open, onClose, userId }: DashboardDailyWelcomeModalProps) {
   const router = useRouter();
 
   // Helper to handle both actions
   const handleAcknowledge = async (navigateToVerse?: boolean) => {
+    if (navigateToVerse && userId) {
+      await logActionToMasterActions(userId, "understand_verse_of_the_day");
+    }
     await onClose();
     if (navigateToVerse) {
       router.push("/verse-of-the-day");
