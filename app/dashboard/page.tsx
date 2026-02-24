@@ -139,7 +139,7 @@ export default function DashboardPage() {
   const [membershipStatus, setMembershipStatus] = useState<string | null>(null);
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
-  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null } | null>(null);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null } | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
   const [activeTourKey, setActiveTourKey] = useState<FeatureTourKey | null>(null);
@@ -869,7 +869,7 @@ export default function DashboardPage() {
         // 2. Fetch profile_stats for dashboard display
         const { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, is_paid, daily_credits")
+          .select("total_actions, is_paid, daily_credits, last_active_date")
           .eq("user_id", userId)
           .single();
 
@@ -888,6 +888,7 @@ export default function DashboardPage() {
                 : typeof profileData.daily_credits === "number"
                 ? profileData.daily_credits
                 : 0,
+            last_active_date: profileData.last_active_date ?? null,
           });
         }
 
