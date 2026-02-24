@@ -19,9 +19,9 @@ export interface ProfileStats {
   current_streak: number;
   username?: string;
   display_name?: string;
+  hide_credit_info_modal?: boolean;
   is_paid?: boolean;
   daily_credits?: number;
-  hide_credit_info_modal?: boolean;
 }
 
 export interface HeatMapDay {
@@ -33,15 +33,49 @@ export interface HeatMapDay {
  * Get profile stats for a user (from profile_stats table)
  */
 export async function getProfileStats(userId: string): Promise<ProfileStats | null> {
-  const { data, error } = await supabase
+  const selectString = "*, hide_credit_info_modal, is_paid, daily_credits";
+  const { data, error, status, statusText } = await supabase
     .from("profile_stats")
-    .select("*")
+    .select(selectString)
     .eq("user_id", userId)
-    .single();
+    .maybeSingle();
 
-  if (error) {
-    console.error("[PROFILE] Error fetching profile stats:", error);
-    return null;
+  if (error || !data) {
+    console.error("[PROFILE] Error fetching profile stats:", {
+      message: error?.message,
+      code: error?.code,
+      details: error?.details,
+      hint: error?.hint,
+      status,
+      statusText,
+      selectString,
+      data,
+    });
+    // If row is missing, try to create it (upsert)
+    if (status === 406 || (error && (error.code === 'PGRST116' || error.code === '42703'))) {
+      // 42703 = undefined_column (column missing)
+      const { error: upsertError, data: upsertData } = await supabase
+        .from("profile_stats")
+        .upsert({ user_id: userId }, { onConflict: "user_id" })
+        .select(selectString)
+        .maybeSingle();
+      if (upsertError) {
+        console.error("[PROFILE] Error upserting profile stats:", {
+          message: upsertError?.message,
+          code: upsertError?.code,
+          details: upsertError?.details,
+          hint: upsertError?.hint,
+          status,
+          statusText,
+          selectString,
+        });
+        // Fallback: return minimal default
+        return { user_id: userId, is_paid: false, daily_credits: 5, hide_credit_info_modal: false } as any;
+      }
+      return upsertData as ProfileStats;
+    }
+    // Fallback: return minimal default
+    return { user_id: userId, is_paid: false, daily_credits: 5, hide_credit_info_modal: false } as any;
   }
 
   return data as ProfileStats;
