@@ -52,10 +52,7 @@ export async function GET() {
       hasMore = page < totalPages && users.length === perPage;
       page++;
 
-      // Safety limit: stop after 10 pages (10,000 users)
-      if (page > 10) {
-        break;
-      }
+        // No safety limit: continue until all pages are fetched
     }
 
     return NextResponse.json({ totalUsers });
