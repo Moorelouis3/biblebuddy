@@ -46,10 +46,10 @@ export async function GET() {
       active_users_30d,
       active_users_1y,
     ] = await Promise.all([
-      getActiveUsersCount(...windows.active_users_24h),
-      getActiveUsersCount(...windows.active_users_7d),
-      getActiveUsersCount(...windows.active_users_30d),
-      getActiveUsersCount(...windows.active_users_1y),
+      getActiveUsersCount(windows.active_users_24h[0], windows.active_users_24h[1]),
+      getActiveUsersCount(windows.active_users_7d[0], windows.active_users_7d[1]),
+      getActiveUsersCount(windows.active_users_30d[0], windows.active_users_30d[1]),
+      getActiveUsersCount(windows.active_users_1y[0], windows.active_users_1y[1]),
     ]);
 
     // Keep existing logic for other stats
