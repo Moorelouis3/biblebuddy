@@ -33,7 +33,7 @@ export async function GET() {
       active_users_1y:  [new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000).toISOString(), nowISO],
     };
 
-    async function getActiveUsersCount(start_ts, end_ts) {
+    async function getActiveUsersCount(start_ts: string, end_ts: string) {
       const { data, error } = await supabase.rpc("get_active_users_count", { start_ts, end_ts });
       if (error) throw error;
       // Supabase RPC returns array or single value depending on config
