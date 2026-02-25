@@ -22,47 +22,37 @@ export async function GET() {
   });
 
   try {
-    // 1. Fetch authentication statistics from Postgres via RPC.
-    //    You must create this function in your Supabase SQL editor:
-    //
-    //    create or replace function get_auth_user_stats()
-    //    returns table (
-    //      total_users bigint,
-    //      signups_last_30_days bigint,
-    //      logins_last_24h bigint,
-    //      logins_last_7_days bigint,
-    //      logins_last_30_days bigint
-    //    )
-    //    language sql
-    //    security definer
-    //    set search_path = public
-    //    as $$
-    //      select
-    //        count(*) as total_users,
-    //        count(*) filter (where created_at >= now() - interval '30 days') as signups_last_30_days,
-    //        count(*) filter (where last_sign_in_at >= now() - interval '24 hours') as logins_last_24h,
-    //        count(*) filter (where last_sign_in_at >= now() - interval '7 days') as logins_last_7_days,
-    //        count(*) filter (where last_sign_in_at >= now() - interval '30 days') as logins_last_30_days
-    //      from auth.users;
-    //    $$;
-    //
-    const { data: authStats, error: authStatsError } = await supabase.rpc(
-      "get_auth_user_stats"
-    );
 
-    if (authStatsError) {
-      console.error("Error fetching auth user stats:", authStatsError);
-      throw authStatsError;
+    // Active Users RPC windows
+    const now = new Date();
+    const nowISO = now.toISOString();
+    const windows = {
+      active_users_24h: [new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString(), nowISO],
+      active_users_7d:  [new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString(), nowISO],
+      active_users_30d: [new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString(), nowISO],
+      active_users_1y:  [new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000).toISOString(), nowISO],
+    };
+
+    async function getActiveUsersCount(start_ts, end_ts) {
+      const { data, error } = await supabase.rpc("get_active_users_count", { start_ts, end_ts });
+      if (error) throw error;
+      // Supabase RPC returns array or single value depending on config
+      return Array.isArray(data) ? Number(data[0]) : Number(data);
     }
 
-    // Normalise RPC result (can be single object or array)
-    const stats = Array.isArray(authStats) ? authStats[0] : authStats;
+    const [
+      active_users_24h,
+      active_users_7d,
+      active_users_30d,
+      active_users_1y,
+    ] = await Promise.all([
+      getActiveUsersCount(...windows.active_users_24h),
+      getActiveUsersCount(...windows.active_users_7d),
+      getActiveUsersCount(...windows.active_users_30d),
+      getActiveUsersCount(...windows.active_users_1y),
+    ]);
 
-    const logins_last_24h = Number(stats?.logins_last_24h ?? 0);
-    const logins_last_7_days = Number(stats?.logins_last_7_days ?? 0);
-    const logins_last_30_days = Number(stats?.logins_last_30_days ?? 0);
-    const signups_last_30_days = Number(stats?.signups_last_30_days ?? 0);
-    const total_users = Number(stats?.total_users ?? 0);
+    // Keep existing logic for other stats
 
     // 2. Total notes (keep existing logic)
     const { count: total_notes } = await supabase
@@ -86,11 +76,10 @@ export async function GET() {
     const has_verification_issues = total > 0 && total > withContent;
 
     return NextResponse.json({
-      logins_last_24h,
-      logins_last_7_days,
-      logins_last_30_days,
-      signups_last_30_days,
-      total_users,
+      active_users_24h,
+      active_users_7d,
+      active_users_30d,
+      active_users_1y,
       total_notes: total_notes ?? 0,
       has_verification_issues,
     });

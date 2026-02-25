@@ -7,7 +7,7 @@ type TimeFilter = "24h" | "7d" | "30d" | "1y" | "all";
 
 type OverviewMetrics = {
   signups: number;
-  logins: number;
+  activeUsers: number;
   totalActions: number;
   chaptersRead: number;
   notesCreated: number;
@@ -22,7 +22,7 @@ type OverviewMetrics = {
 
 const INITIAL_METRICS: OverviewMetrics = {
   signups: 0,
-  logins: 0,
+  activeUsers: 0,
   totalActions: 0,
   chaptersRead: 0,
   notesCreated: 0,
@@ -37,7 +37,12 @@ const INITIAL_METRICS: OverviewMetrics = {
 
 export default function AnalyticsPage() {
   // Active Users Right Now
-  const [activeUsers, setActiveUsers] = useState(0);
+  const [activeUsersByWindow, setActiveUsersByWindow] = useState({
+    '24h': 0,
+    '7d': 0,
+    '30d': 0,
+    '1y': 0,
+  });
   const [loadingActiveUsers, setLoadingActiveUsers] = useState(true);
 
   // Total Users
@@ -59,7 +64,7 @@ export default function AnalyticsPage() {
     Array<{
       period: string;
       signups: number;
-      logins: number;
+      activeUsers: number;
       totalActions: number;
       chaptersRead: number;
       notesCreated: number;
@@ -104,7 +109,23 @@ export default function AnalyticsPage() {
   const [selectedRequest, setSelectedRequest] = useState<any | null>(null);
 
   useEffect(() => {
-    loadActiveUsers();
+    async function fetchActiveUsers() {
+      setLoadingActiveUsers(true);
+      try {
+        const res = await fetch('/api/admin/analytics');
+        const data = await res.json();
+        setActiveUsersByWindow({
+          '24h': data.active_users_24h,
+          '7d': data.active_users_7d,
+          '30d': data.active_users_30d,
+          '1y': data.active_users_1y,
+        });
+      } catch (e) {
+        setActiveUsersByWindow({ '24h': 0, '7d': 0, '30d': 0, '1y': 0 });
+      }
+      setLoadingActiveUsers(false);
+    }
+    fetchActiveUsers();
     loadTotalUsers();
     loadFeedbackInbox();
     loadUserRequestsInbox();
@@ -199,19 +220,13 @@ export default function AnalyticsPage() {
       
       // Create time buckets based on filter
       if (filter === "24h") {
-        // One bucket per day for last 7 days
-        for (let i = 6; i >= 0; i--) {
-          const date = new Date(now);
-          date.setDate(date.getDate() - i);
-          date.setHours(0, 0, 0, 0);
-          const endDate = new Date(date);
-          endDate.setHours(23, 59, 59, 999);
-          buckets.push({
-            start: date,
-            end: endDate,
-            label: date.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
-          });
-        }
+        // Single bucket for the last 24 hours
+        const start = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+        buckets.push({
+          start,
+          end: now,
+          label: "Last 24h",
+        });
       } else if (filter === "7d") {
         // One bucket per 7-day window
         const startDate = fromDate ? new Date(fromDate) : new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
@@ -275,13 +290,12 @@ export default function AnalyticsPage() {
           .lte("created_at", bucketEnd);
 
         // Logins (distinct users)
-        const { data: loginData } = await supabase
+        const { data: activeUserRows, error: activeUserRowsError } = await supabase
           .from("master_actions")
           .select("user_id")
-          .eq("action_type", "user_login")
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
-        const logins = new Set(loginData?.map((l) => l.user_id).filter(Boolean) || []).size;
+        const activeUsers = new Set((activeUserRows || []).map(row => row.user_id).filter(id => !!id && id !== "")).size;
 
         // Total Actions
         const { count: totalActions } = await supabase
@@ -365,7 +379,7 @@ export default function AnalyticsPage() {
         return {
           period: bucket.label,
           signups: signups || 0,
-          logins: logins || 0,
+          activeUsers: activeUsers || 0,
           totalActions: totalActions || 0,
           chaptersRead: chaptersRead || 0,
           notesCreated: notesCreated || 0,
@@ -417,11 +431,11 @@ export default function AnalyticsPage() {
       );
 
       // Logins: distinct users with user_login within range
-      const loginsPromise = applyDateFilter(
+      // Active Users: distinct user_id from master_actions within range
+      const activeUsersPromise = applyDateFilter(
         supabase
           .from("master_actions")
-          .select("user_id, created_at, action_type")
-          .eq("action_type", "user_login")
+          .select("user_id")
       );
 
       // Total actions: all master_actions rows
@@ -505,7 +519,7 @@ export default function AnalyticsPage() {
 
       const [
         signupsResult,
-        loginRowsResult,
+        activeUsersRowsResult,
         totalActionsResult,
         chaptersResult,
         notesResult,
@@ -518,7 +532,7 @@ export default function AnalyticsPage() {
         understandVerseOfTheDayResult,
       ] = await Promise.all([
         signupsPromise,
-        loginsPromise,
+        activeUsersPromise,
         totalActionsPromise,
         chaptersPromise,
         notesPromise,
@@ -533,8 +547,9 @@ export default function AnalyticsPage() {
 
       const signupsCount = signupsResult.count ?? 0;
       const signupsError = signupsResult.error;
-      const loginRows = loginRowsResult.data;
-      const loginsError = loginRowsResult.error;
+      const activeUsersRows = activeUsersRowsResult.data;
+      const activeUsersError = activeUsersRowsResult.error;
+      const activeUsersCount = new Set((activeUsersRows || []).map(row => row.user_id).filter(id => !!id && id !== "")).size;
       const totalActionsCount = totalActionsResult.count ?? 0;
       const totalActionsError = totalActionsResult.error;
       const chaptersCount = chaptersResult.count ?? 0;
@@ -558,7 +573,7 @@ export default function AnalyticsPage() {
 
       if (
         signupsError ||
-        loginsError ||
+        activeUsersError ||
         totalActionsError ||
         chaptersError ||
         notesError ||
@@ -572,7 +587,7 @@ export default function AnalyticsPage() {
       ) {
         console.error("[ANALYTICS_OVERVIEW] Error loading metrics:", {
           signupsError,
-          loginsError,
+          activeUsersError,
           totalActionsError,
           chaptersError,
           notesError,
@@ -591,15 +606,12 @@ export default function AnalyticsPage() {
       }
 
       // Distinct login users
-      const distinctLoginUsers = new Set(
-        (loginRows || [])
-          .map((row: any) => row.user_id)
-          .filter((id: string | null) => !!id)
-      );
+      // Distinct active users
+      // Active Users: count of unique users who did any master action
 
       setOverviewMetrics({
         signups: signupsCount ?? 0,
-        logins: distinctLoginUsers.size,
+        activeUsers: activeUsersCount,
         totalActions: totalActionsCount ?? 0,
         chaptersRead: chaptersCount ?? 0,
         notesCreated: notesCount ?? 0,
@@ -640,7 +652,11 @@ export default function AnalyticsPage() {
         .in("user_id", userIds);
 
       if (error) {
-        console.error("[USER_COUNTS] Error fetching user actions:", error);
+        if (error && (error.message || typeof error === 'string')) {
+          console.error("[USER_COUNTS] Error fetching user actions:", error.message || error);
+        } else {
+          console.error("[USER_COUNTS] Error fetching user actions: Unknown error", error);
+        }
         return { loginDays: loginDaysMap, totalActions: totalActionsMap };
       }
 
@@ -1346,8 +1362,8 @@ export default function AnalyticsPage() {
         switch (metric) {
           case "Signups":
             return row.signups;
-          case "Logins":
-            return row.logins;
+          case "Active Users":
+            return row.activeUsers;
           case "Total Actions":
             return row.totalActions;
           case "Chapters Read":
@@ -1377,8 +1393,8 @@ export default function AnalyticsPage() {
       switch (metric) {
         case "Signups":
           return row.signups;
-        case "Logins":
-          return row.logins;
+        case "Active Users":
+          return row.activeUsers;
         case "Total Actions":
           return row.totalActions;
         case "Chapters Read":
@@ -1519,10 +1535,10 @@ export default function AnalyticsPage() {
             ) : (
               <>
                 <div className="text-7xl font-bold text-gray-900 mb-2">
-                  {activeUsers}
+                  {activeUsersByWindow[timeFilter] || 0}
                 </div>
                 <p className="text-lg text-gray-600">
-                  users are studying the Bible right now
+                  Active Users
                 </p>
               </>
             )}
@@ -1595,10 +1611,10 @@ export default function AnalyticsPage() {
                 isSelected={selectedActionType === "user_signup"}
               />
               <OverviewCard
-                label="Logins"
-                value={overviewMetrics.logins}
-                onClick={() => setSelectedActionType(selectedActionType === "user_login" ? null : "user_login")}
-                isSelected={selectedActionType === "user_login"}
+                label={<span className="font-bold">Active Users</span>}
+                value={activeUsersByWindow[timeFilter] || 0}
+                onClick={() => setSelectedActionType(null)}
+                isSelected={false}
               />
               <OverviewCard
                 label="Total Actions"
@@ -1716,7 +1732,6 @@ export default function AnalyticsPage() {
                 </button>
               </div>
             )}
-            
             {loadingActionLog ? (
               <div className="bg-white p-4 rounded-xl shadow">
                 <p className="text-gray-500 text-sm">Loading actions...</p>
@@ -1817,8 +1832,8 @@ export default function AnalyticsPage() {
                           switch (selectedMetric) {
                             case "Signups":
                               return row.signups;
-                            case "Logins":
-                              return row.logins;
+                            case "Active Users":
+                              return row.activeUsers;
                             case "Total Actions":
                               return row.totalActions;
                             case "Chapters Read":
@@ -1992,8 +2007,8 @@ export default function AnalyticsPage() {
                     <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.signups.toLocaleString()}</p>
                   </div>
                   <div className="bg-blue-50 p-4 rounded-lg">
-                    <p className="text-sm text-gray-600 mb-1">Logins</p>
-                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.logins.toLocaleString()}</p>
+                    <p className="text-sm text-gray-600 mb-1">Active Users</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.activeUsers.toLocaleString()}</p>
                   </div>
                   <div className="bg-green-50 p-4 rounded-lg">
                     <p className="text-sm text-gray-600 mb-1">Total Actions</p>
@@ -2235,7 +2250,7 @@ function OverviewCard({
         return "bg-indigo-100 border border-indigo-200";
       case "Signups":
         return "bg-gray-100 border border-gray-200";
-      case "Logins":
+      case "Active Users":
         return "bg-blue-100 border border-blue-200";
       default:
         return "bg-white border border-gray-200";

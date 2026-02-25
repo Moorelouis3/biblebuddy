@@ -21,16 +21,18 @@ export default function CommentsAdminPage() {
     const fetchComments = async () => {
       const { data, error } = await supabase
         .from("article_comments")
-        .select("display_name, article_slug, created_at");
+        .select("user_name, article_slug, created_at");
       if (!error && data) {
         setComments(data);
-        // Count by subject
+        // Count by subject: count any comment whose article_slug contains the subject slug
         const grouped: { [key: string]: number } = {};
         SUBJECTS.forEach((s) => (grouped[s.slug] = 0));
         data.forEach((c: any) => {
-          if (grouped[c.article_slug] !== undefined) {
-            grouped[c.article_slug]++;
-          }
+          SUBJECTS.forEach((s) => {
+            if (typeof c.article_slug === "string" && c.article_slug.includes(s.slug)) {
+              grouped[s.slug]++;
+            }
+          });
         });
         setCounts(grouped);
       }
@@ -60,7 +62,7 @@ export default function CommentsAdminPage() {
         <ul className="divide-y divide-gray-200">
           {comments.map((c, i) => (
             <li key={i} className="py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-              <span className="font-medium">{c.display_name}</span>
+              <span className="font-medium">{c.user_name}</span>
               <Link
                 href={`/bible-study-hub/${c.article_slug}`}
                 className="text-blue-600 hover:underline mx-2"
