@@ -36,7 +36,7 @@ const INITIAL_METRICS: OverviewMetrics = {
 };
 
 export default function AnalyticsPage() {
-  // Active Users Right Now
+  // Active Users By Window (filtered)
   const [activeUsersByWindow, setActiveUsersByWindow] = useState({
     '24h': 0,
     '7d': 0,
@@ -44,6 +44,9 @@ export default function AnalyticsPage() {
     '1y': 0,
   });
   const [loadingActiveUsers, setLoadingActiveUsers] = useState(true);
+  // Active Users (last 60 min, for card)
+  const [filteredActiveUsers, setFilteredActiveUsers] = useState(0);
+  const [loadingFilteredActiveUsers, setLoadingFilteredActiveUsers] = useState(true);
 
   // Total Users
   const [totalUsers, setTotalUsers] = useState(0);
@@ -139,30 +142,27 @@ export default function AnalyticsPage() {
 
   // Load active users (within last 60 minutes)
   async function loadActiveUsers() {
-    setLoadingActiveUsers(true);
+    setLoadingFilteredActiveUsers(true);
     try {
       const sixtyMinutesAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
-      
       const { data, error } = await supabase
         .from("master_actions")
         .select("user_id")
         .gte("created_at", sixtyMinutesAgo);
-
       if (error) {
         console.error("[ACTIVE_USERS] Error fetching active users:", error);
-        setActiveUsers(0);
-        setLoadingActiveUsers(false);
+        setFilteredActiveUsers(0);
+        setLoadingFilteredActiveUsers(false);
         return;
       }
-
       // Count distinct user_ids
-      const uniqueUserIds = new Set(data?.map(action => action.user_id).filter(Boolean) || []);
-      setActiveUsers(uniqueUserIds.size);
-      setLoadingActiveUsers(false);
+      const uniqueUserIds = new Set(data?.map((action: { user_id: string }) => action.user_id).filter(Boolean) || []);
+      setFilteredActiveUsers(uniqueUserIds.size);
+      setLoadingFilteredActiveUsers(false);
     } catch (err) {
       console.error("[ACTIVE_USERS] Error loading active users:", err);
-      setActiveUsers(0);
-      setLoadingActiveUsers(false);
+      setFilteredActiveUsers(0);
+      setLoadingFilteredActiveUsers(false);
     }
   }
 
@@ -549,7 +549,7 @@ export default function AnalyticsPage() {
       const signupsError = signupsResult.error;
       const activeUsersRows = activeUsersRowsResult.data;
       const activeUsersError = activeUsersRowsResult.error;
-      const activeUsersCount = new Set((activeUsersRows || []).map(row => row.user_id).filter(id => !!id && id !== "")).size;
+      const activeUsersCount = new Set((activeUsersRows || []).map((row: { user_id: string }) => row.user_id).filter((id: string) => !!id && id !== "")).size;
       const totalActionsCount = totalActionsResult.count ?? 0;
       const totalActionsError = totalActionsResult.error;
       const chaptersCount = chaptersResult.count ?? 0;
@@ -1535,7 +1535,7 @@ export default function AnalyticsPage() {
             ) : (
               <>
                 <div className="text-7xl font-bold text-gray-900 mb-2">
-                  {activeUsersByWindow[timeFilter] || 0}
+                  {activeUsersByWindow[timeFilter as keyof typeof activeUsersByWindow] || 0}
                 </div>
                 <p className="text-lg text-gray-600">
                   Active Users
@@ -1611,8 +1611,8 @@ export default function AnalyticsPage() {
                 isSelected={selectedActionType === "user_signup"}
               />
               <OverviewCard
-                label={<span className="font-bold">Active Users</span>}
-                value={activeUsersByWindow[timeFilter] || 0}
+                label="Active Users"
+                value={activeUsersByWindow[timeFilter as keyof typeof activeUsersByWindow] || 0}
                 onClick={() => setSelectedActionType(null)}
                 isSelected={false}
               />
