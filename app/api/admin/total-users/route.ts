@@ -1,67 +1,39 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 
 export async function GET() {
-  try {
-    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 
-    if (!serviceKey || !url) {
+  let totalUsers = 0;
+  let page = 1;
+  const perPage = 1000;
+  let hasMore = true;
+
+  while (hasMore) {
+    const response = await fetch(
+      `${url}/auth/v1/admin/users?page=${page}&per_page=${perPage}`,
+      {
+        headers: {
+          apiKey: serviceKey,
+          Authorization: `Bearer ${serviceKey}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
       return NextResponse.json(
-        { error: "Server not configured" },
+        { error: "Failed to fetch users" },
         { status: 500 }
       );
     }
 
-    // Create Supabase client with service role key for admin queries
-    const supabase = createClient(url, serviceKey, {
-      auth: {
-        autoRefreshToken: false,
-        persistSession: false,
-      },
-    });
+    const json = await response.json();
 
-    // Query auth.users via admin API with pagination
-    let totalUsers = 0;
-    let page = 1;
-    const perPage = 1000; // Max per page
-    let hasMore = true;
+    totalUsers += json.users.length;
 
-    while (hasMore) {
-      const response = await fetch(
-        `${url}/auth/v1/admin/users?page=${page}&per_page=${perPage}`,
-        {
-          headers: {
-            apiKey: serviceKey,
-            Authorization: `Bearer ${serviceKey}`,
-          },
-        }
-      );
-
-      if (!response.ok) {
-        console.error("[TOTAL_USERS] Error fetching users:", response.statusText);
-        break;
-      }
-
-      const data = await response.json();
-      const users = data?.users || [];
-      totalUsers += users.length;
-
-      // Check if there are more pages
-      const totalPages = Math.ceil((data?.total || 0) / perPage);
-      hasMore = page < totalPages && users.length === perPage;
-      page++;
-
-        // No safety limit: continue until all pages are fetched
-    }
-
-    return NextResponse.json({ totalUsers });
-  } catch (error: any) {
-    console.error("[TOTAL_USERS] Unexpected error:", error);
-    return NextResponse.json(
-      { error: error.message || "Internal server error" },
-      { status: 500 }
-    );
+    hasMore = json.users.length === perPage;
+    page++;
   }
-}
 
+  return NextResponse.json({ totalUsers });
+}
