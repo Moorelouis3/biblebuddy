@@ -45,10 +45,6 @@ export default function AnalyticsPage() {
   });
   const [loadingActiveUsers, setLoadingActiveUsers] = useState(true);
 
-  // Lifetime Active Users (all time)
-  const [lifetimeActiveUsers, setLifetimeActiveUsers] = useState(0);
-  const [loadingLifetimeActiveUsers, setLoadingLifetimeActiveUsers] = useState(true);
-
   // Total Users
   const [totalUsers, setTotalUsers] = useState(0);
   const [loadingTotalUsers, setLoadingTotalUsers] = useState(true);
@@ -154,18 +150,18 @@ export default function AnalyticsPage() {
 
       if (error) {
         console.error("[ACTIVE_USERS] Error fetching active users:", error);
-        setLifetimeActiveUsers(0);
+        setActiveUsers(0);
         setLoadingActiveUsers(false);
         return;
       }
 
       // Count distinct user_ids
       const uniqueUserIds = new Set(data?.map(action => action.user_id).filter(Boolean) || []);
-      setLifetimeActiveUsers(uniqueUserIds.size);
+      setActiveUsers(uniqueUserIds.size);
       setLoadingActiveUsers(false);
     } catch (err) {
       console.error("[ACTIVE_USERS] Error loading active users:", err);
-      setLifetimeActiveUsers(0);
+      setActiveUsers(0);
       setLoadingActiveUsers(false);
     }
   }
