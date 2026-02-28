@@ -8,7 +8,6 @@ import { supabase } from "../../lib/supabaseClient";
 interface Devotional {
   id: string;
   title: string;
-  subtitle: string;
   description: string;
   total_days: number;
 }
@@ -74,18 +73,14 @@ export default function DevotionalsPage() {
     if (title === "The Tempting of Jesus") {
       return "/images/temptingofjesus.png";
     }
+    // "The Testing of Joseph" has a cover image
+    if (title === "The Testing of Joseph") {
+      return "/Thetestingofjoseph.png";
+    }
     // Future devotionals can be added here
     return null;
   };
 
-  // Upcoming devotionals (visual only, no click handlers)
-  const upcomingDevotionals = [
-    {
-      id: "upcoming-testing-of-joseph",
-      title: "Testing of Joseph",
-      coverImage: "/images/Thetestingofjoseph.png", // File exists in public/images
-    },
-  ];
 
   if (loading) {
     return (
@@ -204,11 +199,7 @@ export default function DevotionalsPage() {
               {/* Active Devotionals (clickable) */}
               {devotionals.map((devotional) => {
                 const coverImage = getCoverImage(devotional.title);
-                
-                if (!coverImage) {
-                  return null;
-                }
-
+                if (!coverImage) return null;
                 const isTemptingOfJesus = devotional.title === "The Tempting of Jesus";
                 const card = (
                   <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 hover:shadow-xl hover:scale-[1.01] transition-all duration-200 cursor-pointer">
@@ -217,9 +208,11 @@ export default function DevotionalsPage() {
                       alt={`${devotional.title} cover`}
                       className="w-full h-auto rounded-lg object-contain"
                     />
+                    <div className="mt-3 text-lg font-semibold text-gray-900 text-center">
+                      {devotional.title}
+                    </div>
                   </div>
                 );
-
                 if (isTemptingOfJesus) {
                   return (
                     <div
@@ -239,7 +232,6 @@ export default function DevotionalsPage() {
                     </div>
                   );
                 }
-
                 return (
                   <Link
                     key={devotional.id}
@@ -250,22 +242,9 @@ export default function DevotionalsPage() {
                   </Link>
                 );
               })}
+
+              {/* Always show The Testing of Joseph (mobile) */}
               
-              {/* Upcoming Devotionals (visual only, no click) */}
-              {upcomingDevotionals.map((upcoming) => (
-                <div
-                  key={upcoming.id}
-                  className="block w-full"
-                >
-                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 opacity-75">
-                    <img
-                      src={upcoming.coverImage}
-                      alt={`${upcoming.title} cover`}
-                      className="w-full h-auto rounded-lg object-contain"
-                    />
-                  </div>
-                </div>
-              ))}
             </div>
 
             {/* Desktop: Grid layout */}
@@ -273,11 +252,7 @@ export default function DevotionalsPage() {
               {/* Active Devotionals (clickable) */}
               {devotionals.map((devotional) => {
                 const coverImage = getCoverImage(devotional.title);
-                
-                if (!coverImage) {
-                  return null;
-                }
-
+                if (!coverImage) return null;
                 const isTemptingOfJesus = devotional.title === "The Tempting of Jesus";
                 const card = (
                   <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer">
@@ -286,9 +261,11 @@ export default function DevotionalsPage() {
                       alt={`${devotional.title} cover`}
                       className="w-full h-auto rounded-lg object-contain"
                     />
+                    <div className="mt-3 text-lg font-semibold text-gray-900 text-center">
+                      {devotional.title}
+                    </div>
                   </div>
                 );
-
                 if (isTemptingOfJesus) {
                   return (
                     <div
@@ -308,7 +285,6 @@ export default function DevotionalsPage() {
                     </div>
                   );
                 }
-
                 return (
                   <Link
                     key={devotional.id}
@@ -319,22 +295,9 @@ export default function DevotionalsPage() {
                   </Link>
                 );
               })}
+
+              {/* Always show The Testing of Joseph (desktop) */}
               
-              {/* Upcoming Devotionals (visual only, no click) */}
-              {upcomingDevotionals.map((upcoming) => (
-                <div
-                  key={upcoming.id}
-                  className="block w-full max-w-xs"
-                >
-                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 opacity-75">
-                    <img
-                      src={upcoming.coverImage}
-                      alt={`${upcoming.title} cover`}
-                      className="w-full h-auto rounded-lg object-contain"
-                    />
-                  </div>
-                </div>
-              ))}
             </div>
           </>
         )}

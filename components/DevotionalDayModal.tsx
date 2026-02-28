@@ -181,16 +181,7 @@ export default function DevotionalDayModal({
 
   // Apply highlighting to devotional text when day changes
   useEffect(() => {
-    if (day.devotional_text) {
-      try {
-        const enriched = enrichPlainText(day.devotional_text);
-        setEnrichedText(enriched);
-      } catch (error) {
-        console.error("Error enriching devotional text:", error);
-        // Fallback to plain text if enrichment fails
-        setEnrichedText(day.devotional_text);
-      }
-    }
+    // No longer needed: enrichment and <br /> logic handled in render
   }, [day.devotional_text]);
 
   // Event delegation for click handlers on enriched content (same as Bible chapter page)
@@ -773,17 +764,17 @@ Be accurate to Scripture.`;
             <>
               {/* DEVOTIONAL CONTENT SECTION */}
               <div className="mb-8" ref={devotionalTextRef}>
-                {enrichedText ? (
-                  <div 
-                    className="text-gray-700 leading-relaxed" 
-                    style={{ lineHeight: '1.8', fontSize: '1rem' }}
-                    dangerouslySetInnerHTML={{ __html: enrichedText }}
-                  />
-                ) : (
-                  <div className="text-gray-700 leading-relaxed whitespace-pre-line" style={{ lineHeight: '1.8', fontSize: '1rem' }}>
-                    {day.devotional_text}
-                  </div>
-                )}
+                <div className="text-gray-700" style={{ fontSize: '1rem' }}>
+                  {day.devotional_text
+                    ? day.devotional_text.split(/\n\s*\n/).map((para, idx) => (
+                        <p
+                          key={idx}
+                          className="mb-4 leading-relaxed"
+                          dangerouslySetInnerHTML={{ __html: enrichPlainText(para) }}
+                        />
+                      ))
+                    : null}
+                </div>
               </div>
 
               {/* BIBLE READING SECTION */}
@@ -806,7 +797,21 @@ Be accurate to Scripture.`;
                         onClick={onBibleReadingClick}
                         className="text-blue-600 hover:text-blue-700 font-medium underline text-left"
                       >
-                        Read {day.bible_reading_book} {day.bible_reading_chapter}
+                        {(() => {
+                          const book = day.bible_reading_book;
+                          const chapter = day.bible_reading_chapter;
+                          const startVerse = (day as any).bible_reading_start_verse;
+                          const endVerse = (day as any).bible_reading_end_verse;
+                          if (
+                            startVerse != null &&
+                            endVerse != null &&
+                            startVerse !== '' &&
+                            endVerse !== ''
+                          ) {
+                            return `Read ${book} ${chapter}:${startVerse}-${endVerse}`;
+                          }
+                          return `Read ${book} ${chapter}`;
+                        })()}
                       </button>
                     </div>
                   </label>
