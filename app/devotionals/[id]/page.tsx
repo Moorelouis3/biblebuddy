@@ -1,3 +1,9 @@
+// Cover image selector with TypeScript typing
+function getCoverImage(title: string): string | null {
+  if (title === "The Tempting of Jesus") return "/images/temptingofjesus.png";
+  if (title === "The Testing of Joseph") return "/Thetestingofjoseph.png";
+  return null;
+}
 "use client";
 
 import { useEffect, useState } from "react";
@@ -593,11 +599,6 @@ export default function DevotionalDetailPage() {
 
         {/* DEVOTIONAL COVER */}
         {(() => {
-          function getCoverImage(title) {
-            if (title === "The Tempting of Jesus") return "/images/temptingofjesus.png";
-            if (title === "The Testing of Joseph") return "/Thetestingofjoseph.png";
-            return null;
-          }
           const cover = getCoverImage(devotional.title);
           return (
             cover && (
