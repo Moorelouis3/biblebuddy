@@ -1,3 +1,8 @@
+function getCoverImage(title: string): string | null {
+  if (title === "The Tempting of Jesus") return "/images/temptingofjesus.png";
+  if (title === "The Testing of Joseph") return "/Thetestingofjoseph.png";
+  return null;
+}
 "use client";
 
 import { useEffect, useState } from "react";
@@ -574,27 +579,17 @@ export default function DevotionalDetailPage() {
         <p className="text-gray-600 mb-4">{devotional.subtitle}</p>
 
         {/* DEVOTIONAL COVER */}
-        {(() => {
-          function getCoverImage(title) {
-            if (title === "The Tempting of Jesus") return "/images/temptingofjesus.png";
-            if (title === "The Testing of Joseph") return "/Thetestingofjoseph.png";
-            return null;
-          }
-          const cover = getCoverImage(devotional.title);
-          return (
-            cover && (
-              <div className="flex justify-center my-6">
-                <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
-                  <img
-                    src={cover}
-                    alt={`${devotional.title} cover`}
-                    className="rounded-lg w-[240px] h-auto object-contain"
-                  />
-                </div>
-              </div>
-            )
-          );
-        })()}
+        {getCoverImage(devotional.title) && (
+          <div className="flex justify-center my-6">
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
+              <img
+                src={getCoverImage(devotional.title)!}
+                alt={`${devotional.title} cover`}
+                className="rounded-lg w-[240px] h-auto object-contain"
+              />
+            </div>
+          </div>
+        )}
 
         {/* PROGRESS */}
         <div className="bg-white border border-gray-200 rounded-xl p-4 mb-6">
