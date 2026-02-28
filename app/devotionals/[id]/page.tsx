@@ -1,10 +1,11 @@
+
+"use client";
 // Cover image selector with TypeScript typing
 function getCoverImage(title: string): string | null {
   if (title === "The Tempting of Jesus") return "/images/temptingofjesus.png";
   if (title === "The Testing of Joseph") return "/Thetestingofjoseph.png";
   return null;
 }
-"use client";
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
