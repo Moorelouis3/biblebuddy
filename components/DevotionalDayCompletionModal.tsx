@@ -5,15 +5,25 @@ import { LouisAvatar } from "./LouisAvatar";
 import confetti from "canvas-confetti";
 
 interface DevotionalDayCompletionModalProps {
-  dayNumber: number;
-  devotionalTitle: string;
+  dayNumber: number | null;
+  devotionalTitle: string | null;
   onClose: () => void;
+  customTitle?: string;
+  customBody?: string;
+  primaryButtonText?: string;
+  secondaryButtonText?: string;
+  onPrimary?: () => void;
 }
 
 export default function DevotionalDayCompletionModal({
   dayNumber,
   devotionalTitle,
   onClose,
+  customTitle,
+  customBody,
+  primaryButtonText,
+  secondaryButtonText,
+  onPrimary,
 }: DevotionalDayCompletionModalProps) {
   const [showModal, setShowModal] = useState(true);
 
@@ -119,29 +129,56 @@ export default function DevotionalDayCompletionModal({
 
         {/* Inner light blue column */}
         <div className="rounded-3xl bg-blue-50 px-4 md:px-6 py-5 md:py-7">
-          {/* Header with Louis */}
+          {/* Header with Louis or custom */}
           <div className="flex flex-col items-center mb-6">
             <LouisAvatar mood="stareyes" size={80} />
             <h1 className="text-2xl md:text-3xl font-bold mt-4 text-center text-gray-900">
-              🎉 Congratulations!
+              {customTitle ? customTitle : "🎉 Congratulations!"}
             </h1>
-            <p className="text-base md:text-lg text-gray-700 mt-3 text-center font-semibold">
-              You've completed Day {dayNumber} of {devotionalTitle}
-            </p>
-            <p className="text-base text-gray-600 mt-2 text-center">
-              Great job — your consistency is paying off!
-            </p>
+            {customBody ? (
+              <p className="text-base md:text-lg text-gray-700 mt-3 text-center font-semibold">
+                {customBody}
+              </p>
+            ) : (
+              <>
+                <p className="text-base md:text-lg text-gray-700 mt-3 text-center font-semibold">
+                  You've completed Day {dayNumber} of {devotionalTitle}
+                </p>
+                <p className="text-base text-gray-600 mt-2 text-center">
+                  Great job — your consistency is paying off!
+                </p>
+              </>
+            )}
           </div>
 
-          {/* Action Button */}
+          {/* Action Buttons */}
           <div className="grid grid-cols-1 gap-4 mb-6">
-            <button
-              type="button"
-              onClick={handleClose}
-              className="px-4 py-4 rounded-2xl text-sm md:text-base font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition text-center"
-            >
-              Continue Reading
-            </button>
+            {primaryButtonText && onPrimary ? (
+              <button
+                type="button"
+                onClick={onPrimary}
+                className="px-4 py-4 rounded-2xl text-sm md:text-base font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition text-center"
+              >
+                {primaryButtonText}
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={handleClose}
+                className="px-4 py-4 rounded-2xl text-sm md:text-base font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition text-center"
+              >
+                Continue Reading
+              </button>
+            )}
+            {secondaryButtonText && (
+              <button
+                type="button"
+                onClick={handleClose}
+                className="px-4 py-4 rounded-2xl text-sm md:text-base font-semibold bg-gray-200 text-gray-800 shadow-sm hover:bg-gray-300 transition text-center"
+              >
+                {secondaryButtonText}
+              </button>
+            )}
           </div>
         </div>
       </div>

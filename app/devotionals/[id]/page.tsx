@@ -1,11 +1,4 @@
-
 "use client";
-// Cover image selector with TypeScript typing
-function getCoverImage(title: string): string | null {
-  if (title === "The Tempting of Jesus") return "/images/temptingofjesus.png";
-  if (title === "The Testing of Joseph") return "/Thetestingofjoseph.png";
-  return null;
-}
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
@@ -50,37 +43,28 @@ export default function DevotionalDetailPage() {
   const [progress, setProgress] = useState<Map<number, DayProgress>>(new Map());
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
+  const [profileStats, setProfileStats] = useState<any>(null);
   const [selectedDay, setSelectedDay] = useState<DevotionalDay | null>(null);
-  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
-  const [isPaid, setIsPaid] = useState<boolean | null>(null);
-    // Fetch profile_stats.is_paid for the logged-in user
-    useEffect(() => {
-      async function fetchIsPaid() {
-        if (!userId) return;
-        const { data, error } = await supabase
-          .from("profile_stats")
-          .select("is_paid")
-          .eq("user_id", userId)
-          .maybeSingle();
-        if (!error && data && typeof data.is_paid === "boolean") {
-          setIsPaid(data.is_paid);
-        } else {
-          setIsPaid(false); // Default to free if error or not found
-        }
-      }
-      fetchIsPaid();
-    }, [userId]);
   const [showCreditBlocked, setShowCreditBlocked] = useState(false);
   const [showReadingRequiredModal, setShowReadingRequiredModal] = useState(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
   const [completedDayNumber, setCompletedDayNumber] = useState<number | null>(null);
+  const [showProModal, setShowProModal] = useState(false);
 
   useEffect(() => {
-    async function loadUser() {
+    async function loadUserAndProfile() {
       const { data: { user } } = await supabase.auth.getUser();
       setUserId(user?.id || null);
+      if (user?.id) {
+        const { data: stats } = await supabase
+          .from("profile_stats")
+          .select("is_paid")
+          .eq("user_id", user.id)
+          .maybeSingle();
+        setProfileStats(stats);
+      }
     }
-    loadUser();
+    loadUserAndProfile();
   }, []);
 
   useEffect(() => {
@@ -181,15 +165,6 @@ export default function DevotionalDetailPage() {
       return;
     }
 
-    // Restrict "The Testing of Joseph" for free users
-    if (
-      devotional?.title === "The Testing of Joseph" &&
-      isPaid === false
-    ) {
-      setShowUpgradeModal(true);
-      return;
-    }
-
     const dayProgress = progress.get(day.day_number);
     const isCompleted = dayProgress?.is_completed === true;
 
@@ -229,34 +204,6 @@ export default function DevotionalDetailPage() {
     setShowCreditBlocked(false);
     setSelectedDay(day);
   };
-      {/* UPGRADE MODAL FOR FREE USERS ON JOSEPH */}
-      {showUpgradeModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4" onClick={() => setShowUpgradeModal(false)}>
-          <div className="relative w-full max-w-md rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8" onClick={e => e.stopPropagation()}>
-            <button
-              type="button"
-              onClick={() => setShowUpgradeModal(false)}
-              className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl font-semibold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
-            >
-              ✕
-            <button
-              type="button"
-              onClick={() => setShowUpgradeModal(false)}
-              className="w-full px-6 py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-gray-300 transition shadow-sm"
-            >
-              Not Right Now
-            </button>
-              onClick={() => {
-                setShowUpgradeModal(false);
-                window.location.href = "/upgrade";
-              }}
-              className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition shadow-sm"
-            >
-              Upgrade
-            </button>
-          </div>
-        </div>
-      )}
 
   const handleBibleReadingClick = (book: string, chapter: number) => {
     // Set session storage to indicate we're coming from a devotional
@@ -564,6 +511,16 @@ export default function DevotionalDetailPage() {
     }
   };
 
+
+  // Pro lock for specific devotional
+  const PRO_DEVOTIONAL_UUID = "20b36b11-73df-4863-a4c3-8371a5ff511a";
+  const isProLocked = devotional?.id === PRO_DEVOTIONAL_UUID && profileStats?.is_paid === false;
+
+  useEffect(() => {
+    if (isProLocked) setShowProModal(true);
+    else setShowProModal(false);
+  }, [isProLocked]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -571,6 +528,24 @@ export default function DevotionalDetailPage() {
           <div className="text-gray-500">Loading devotional...</div>
         </div>
       </div>
+    );
+  }
+
+  if (isProLocked && showProModal) {
+    return (
+      <DevotionalDayCompletionModal
+        dayNumber={null}
+        devotionalTitle={null}
+        customTitle="You Need Bible Buddy Pro"
+        customBody={"This devotional is part of the Bible Buddy Pro library. Upgrade to unlock full access to all devotionals, deeper studies, and future releases."}
+        primaryButtonText="Upgrade to Pro"
+        secondaryButtonText="Maybe Later"
+        onPrimary={() => router.push('/upgrade')}
+        onClose={() => {
+          setShowProModal(false);
+          router.push('/devotionals');
+        }}
+      />
     );
   }
 
@@ -600,6 +575,11 @@ export default function DevotionalDetailPage() {
 
         {/* DEVOTIONAL COVER */}
         {(() => {
+          function getCoverImage(title) {
+            if (title === "The Tempting of Jesus") return "/images/temptingofjesus.png";
+            if (title === "The Testing of Joseph") return "/Thetestingofjoseph.png";
+            return null;
+          }
           const cover = getCoverImage(devotional.title);
           return (
             cover && (
