@@ -201,6 +201,7 @@ export default function DevotionalsPage() {
                 const coverImage = getCoverImage(devotional.title);
                 if (!coverImage) return null;
                 const isTemptingOfJesus = devotional.title === "The Tempting of Jesus";
+                const isTestingOfJoseph = devotional.title === "The Testing of Joseph";
                 const card = (
                   <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 hover:shadow-xl hover:scale-[1.01] transition-all duration-200 cursor-pointer">
                     <img
@@ -232,6 +233,25 @@ export default function DevotionalsPage() {
                     </div>
                   );
                 }
+                if (isTestingOfJoseph) {
+                  return (
+                    <div
+                      key={devotional.id}
+                      role="link"
+                      tabIndex={0}
+                      className="block w-full"
+                      onClick={() => router.push(`/devotionals/${devotional.id}`)}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault();
+                          router.push(`/devotionals/${devotional.id}`);
+                        }
+                      }}
+                    >
+                      {card}
+                    </div>
+                  );
+                }
                 return (
                   <Link
                     key={devotional.id}
@@ -242,9 +262,6 @@ export default function DevotionalsPage() {
                   </Link>
                 );
               })}
-
-              {/* Always show The Testing of Joseph (mobile) */}
-              
             </div>
 
             {/* Desktop: Grid layout */}
@@ -254,6 +271,7 @@ export default function DevotionalsPage() {
                 const coverImage = getCoverImage(devotional.title);
                 if (!coverImage) return null;
                 const isTemptingOfJesus = devotional.title === "The Tempting of Jesus";
+                const isTestingOfJoseph = devotional.title === "The Testing of Joseph";
                 const card = (
                   <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer">
                     <img
@@ -285,6 +303,25 @@ export default function DevotionalsPage() {
                     </div>
                   );
                 }
+                if (isTestingOfJoseph) {
+                  return (
+                    <div
+                      key={devotional.id}
+                      role="link"
+                      tabIndex={0}
+                      className="block w-full max-w-xs"
+                      onClick={() => router.push(`/devotionals/${devotional.id}`)}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault();
+                          router.push(`/devotionals/${devotional.id}`);
+                        }
+                      }}
+                    >
+                      {card}
+                    </div>
+                  );
+                }
                 return (
                   <Link
                     key={devotional.id}
@@ -295,9 +332,6 @@ export default function DevotionalsPage() {
                   </Link>
                 );
               })}
-
-              {/* Always show The Testing of Joseph (desktop) */}
-              
             </div>
           </>
         )}

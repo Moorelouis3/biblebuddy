@@ -44,6 +44,25 @@ export default function DevotionalDetailPage() {
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
   const [selectedDay, setSelectedDay] = useState<DevotionalDay | null>(null);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [isPaid, setIsPaid] = useState<boolean | null>(null);
+    // Fetch profile_stats.is_paid for the logged-in user
+    useEffect(() => {
+      async function fetchIsPaid() {
+        if (!userId) return;
+        const { data, error } = await supabase
+          .from("profile_stats")
+          .select("is_paid")
+          .eq("user_id", userId)
+          .maybeSingle();
+        if (!error && data && typeof data.is_paid === "boolean") {
+          setIsPaid(data.is_paid);
+        } else {
+          setIsPaid(false); // Default to free if error or not found
+        }
+      }
+      fetchIsPaid();
+    }, [userId]);
   const [showCreditBlocked, setShowCreditBlocked] = useState(false);
   const [showReadingRequiredModal, setShowReadingRequiredModal] = useState(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
@@ -155,6 +174,15 @@ export default function DevotionalDetailPage() {
       return;
     }
 
+    // Restrict "The Testing of Joseph" for free users
+    if (
+      devotional?.title === "The Testing of Joseph" &&
+      isPaid === false
+    ) {
+      setShowUpgradeModal(true);
+      return;
+    }
+
     const dayProgress = progress.get(day.day_number);
     const isCompleted = dayProgress?.is_completed === true;
 
@@ -194,6 +222,34 @@ export default function DevotionalDetailPage() {
     setShowCreditBlocked(false);
     setSelectedDay(day);
   };
+      {/* UPGRADE MODAL FOR FREE USERS ON JOSEPH */}
+      {showUpgradeModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4" onClick={() => setShowUpgradeModal(false)}>
+          <div className="relative w-full max-w-md rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8" onClick={e => e.stopPropagation()}>
+            <button
+              type="button"
+              onClick={() => setShowUpgradeModal(false)}
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl font-semibold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
+            >
+              ✕
+            </button>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Upgrade to Pro</h2>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              Upgrade to Pro to unlock our full devotional library.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setShowUpgradeModal(false);
+                window.location.href = "/upgrade";
+              }}
+              className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition shadow-sm"
+            >
+              Upgrade
+            </button>
+          </div>
+        </div>
+      )}
 
   const handleBibleReadingClick = (book: string, chapter: number) => {
     // Set session storage to indicate we're coming from a devotional
@@ -536,17 +592,27 @@ export default function DevotionalDetailPage() {
         <p className="text-gray-600 mb-4">{devotional.subtitle}</p>
 
         {/* DEVOTIONAL COVER */}
-        {devotional.title.includes("Tempting of Jesus") && (
-          <div className="flex justify-center my-6">
-            <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
-              <img
-                src="/images/temptingofjesus.png"
-                alt={`${devotional.title} cover`}
-                className="rounded-lg w-[240px] h-auto object-contain"
-              />
-            </div>
-          </div>
-        )}
+        {(() => {
+          function getCoverImage(title) {
+            if (title === "The Tempting of Jesus") return "/images/temptingofjesus.png";
+            if (title === "The Testing of Joseph") return "/Thetestingofjoseph.png";
+            return null;
+          }
+          const cover = getCoverImage(devotional.title);
+          return (
+            cover && (
+              <div className="flex justify-center my-6">
+                <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4">
+                  <img
+                    src={cover}
+                    alt={`${devotional.title} cover`}
+                    className="rounded-lg w-[240px] h-auto object-contain"
+                  />
+                </div>
+              </div>
+            )
+          );
+        })()}
 
         {/* PROGRESS */}
         <div className="bg-white border border-gray-200 rounded-xl p-4 mb-6">
