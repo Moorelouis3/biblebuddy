@@ -239,13 +239,13 @@ export default function DevotionalDetailPage() {
               className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl font-semibold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
             >
               ✕
-            </button>
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Upgrade to Pro</h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Upgrade to Pro to unlock our full devotional library.
-            </p>
             <button
               type="button"
+              onClick={() => setShowUpgradeModal(false)}
+              className="w-full px-6 py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-gray-300 transition shadow-sm"
+            >
+              Not Right Now
+            </button>
               onClick={() => {
                 setShowUpgradeModal(false);
                 window.location.href = "/upgrade";
