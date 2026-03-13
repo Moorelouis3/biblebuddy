@@ -14,7 +14,9 @@ import { FeedbackModal } from "./FeedbackModal";
 import { ContactUsModal } from "./ContactUsModal";
 import { NewMessageAlert } from "./NewMessageAlert";
 import { OnboardingModal } from "./OnboardingModal";
+import { GlobalUpdateModal } from "./GlobalUpdateModal";
 import { FeatureRenderPriorityProvider } from "./FeatureRenderPriorityContext";
+import { CURRENT_UPDATE_VERSION } from "../lib/globalUpdateConfig";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -44,6 +46,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [initialTrafficSource, setInitialTrafficSource] = useState<string | null>(null);
   const [initialBibleExperienceLevel, setInitialBibleExperienceLevel] = useState<string | null>(null);
   const [featureToursEnabled, setFeatureToursEnabled] = useState(false);
+
+  // Global update modal state
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [updateModalChecked, setUpdateModalChecked] = useState(false);
 
   async function checkOnboardingStatus(currentUserId: string) {
     try {
@@ -99,6 +105,40 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
   }
 
+  async function checkUpdateStatus(currentUserId: string) {
+    if (updateModalChecked) return;
+    try {
+      const { data } = await supabase
+        .from("profile_stats")
+        .select("onboarding_completed, last_seen_update_version")
+        .eq("user_id", currentUserId)
+        .maybeSingle();
+
+      // Only show to users who have finished onboarding
+      if (data?.onboarding_completed !== true) {
+        setUpdateModalChecked(true);
+        return;
+      }
+
+      if (data?.last_seen_update_version !== CURRENT_UPDATE_VERSION) {
+        setShowUpdateModal(true);
+      }
+    } catch (_err) {
+      console.warn("[UPDATE MODAL] Check skipped due to transient issue.");
+    }
+    setUpdateModalChecked(true);
+  }
+
+  async function handleDismissUpdateModal() {
+    setShowUpdateModal(false);
+    if (userId) {
+      await supabase
+        .from("profile_stats")
+        .update({ last_seen_update_version: CURRENT_UPDATE_VERSION })
+        .eq("user_id", userId);
+    }
+  }
+
   useEffect(() => {
     const getSession = async () => {
       const { data } = await supabase.auth.getSession();
@@ -118,6 +158,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           "User";
         setUsername(extractedUsername);
         void checkOnboardingStatus(session.user.id);
+        void checkUpdateStatus(session.user.id);
       } else {
         setUserId(null);
         setUsername("");
@@ -176,6 +217,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             "User";
           setUsername(extractedUsername);
           void checkOnboardingStatus(session.user.id);
+          void checkUpdateStatus(session.user.id);
         } else {
           setUserId(null);
           setUsername("");
@@ -184,7 +226,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           setInitialTrafficSource(null);
           setInitialBibleExperienceLevel(null);
         }
-        
+
         // Sync notes count when user logs in or session changes (non-blocking)
         if (session?.user?.id) {
           // Run all sync/tracking in background - don't block UI
@@ -414,6 +456,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             setShowFeedbackModal(false);
             setBannerDismissed(true); // Permanently hide banner
           }}
+        />
+      )}
+
+      {/* GLOBAL UPDATE MODAL */}
+      {isLoggedIn && userId && !showOnboardingModal && (
+        <GlobalUpdateModal
+          isOpen={showUpdateModal}
+          onDismiss={handleDismissUpdateModal}
         />
       )}
 

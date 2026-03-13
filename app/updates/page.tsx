@@ -9,6 +9,24 @@ export default function UpdatesPage() {
         How Bible Buddy is growing to help you understand the Bible better over time.
       </p>
 
+      {/* Version 3.0 */}
+      <section>
+        <h2 className="text-xl font-semibold mt-10 mb-3">Version 3.0 — March 2026</h2>
+        <p className="text-gray-600 italic mb-4">New devotional: The Testing of Joseph</p>
+        <p className="text-gray-700 leading-relaxed mb-4">
+          Bible Buddy's second devotional series is now live — a 21-day walk through Joseph's journey in Genesis.
+        </p>
+        <ul className="list-disc ml-6 space-y-2 text-gray-700 leading-relaxed mb-4">
+          <li>The Testing of Joseph — 21 days covering Genesis 37–50</li>
+          <li>Daily devotional text, Bible reading, and reflection question</li>
+          <li>Explores themes of favor, betrayal, faithfulness, and redemption</li>
+          <li>Progress tracked day-by-day alongside The Tempting of Jesus</li>
+        </ul>
+        <p className="text-gray-700 leading-relaxed">
+          Joseph's story is one of the most complete portraits of faith under pressure in all of Scripture.
+        </p>
+      </section>
+
       {/* Version 2.0 */}
       <section>
         <h2 className="text-xl font-semibold mt-10 mb-3">Version 2.0 — January 2026</h2>

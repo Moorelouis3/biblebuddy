@@ -23,6 +23,7 @@ export interface ProfileStats {
   hide_credit_info_modal?: boolean;
   is_paid?: boolean;
   daily_credits?: number;
+  last_seen_update_version?: string | null;
 }
 
 export interface HeatMapDay {
