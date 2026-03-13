@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e -path */node_modules -prune -o -type f \\\\\\(-name *.ts -o -name *.tsx \\\\\\) -print)",
+      "Bash(xargs grep:*)",
+      "Bash(grep -r \"onboarding_completed\\\\|last_seen_update_version\" /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e --include=*.ts --include=*.tsx)",
+      "Bash(ls -la /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/ADD*.sql)",
+      "Bash(find /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e -path */node_modules -prune -o -type f -name *.tsx -print)",
+      "Bash(git log:*)"
+    ]
+  }
+}
