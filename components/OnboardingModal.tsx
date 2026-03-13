@@ -8,10 +8,12 @@ type OnboardingModalProps = {
   userId: string;
   initialTrafficSource?: string | null;
   initialBibleExperienceLevel?: string | null;
+  canInstall?: boolean;
+  onInstallPrompt?: () => Promise<void>;
   onFinished: (upgrade: boolean) => void;
 };
 
-const TOTAL_STEPS = 6;
+const TOTAL_STEPS = 7;
 const STEP_TWO_OPTIONS = ["Instagram", "Facebook", "Word of mouth", "Other"] as const;
 const STEP_THREE_OPTIONS = [
   "Just getting started",
@@ -24,6 +26,8 @@ export function OnboardingModal({
   userId,
   initialTrafficSource,
   initialBibleExperienceLevel,
+  canInstall = false,
+  onInstallPrompt,
   onFinished,
 }: OnboardingModalProps) {
   const [currentStep, setCurrentStep] = useState(1);
@@ -32,6 +36,16 @@ export function OnboardingModal({
   const [selectedExperienceLevel, setSelectedExperienceLevel] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isIOS, setIsIOS] = useState(false);
+  const [isStandalone, setIsStandalone] = useState(false);
+
+  useEffect(() => {
+    setIsIOS(/iphone|ipad|ipod/i.test(navigator.userAgent));
+    setIsStandalone(
+      window.matchMedia("(display-mode: standalone)").matches ||
+      (navigator as any).standalone === true
+    );
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -414,6 +428,61 @@ export function OnboardingModal({
 
               {currentStep === 6 && (
                 <div className="space-y-6">
+                  {isStandalone ? (
+                    <>
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">You're already using the app</h2>
+                      <div className="max-w-xl space-y-4 text-sm md:text-[15px] text-gray-600 leading-7">
+                        <p>Bible Buddy is already installed on your home screen. You're all set!</p>
+                      </div>
+                    </>
+                  ) : isIOS ? (
+                    <>
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Add Bible Buddy to your home screen</h2>
+                      <div className="max-w-xl space-y-4 text-sm md:text-[15px] text-gray-600 leading-7">
+                        <p>Open it anytime from your home screen — no browser needed.</p>
+                        <ol className="space-y-4">
+                          <li className="flex items-start gap-3">
+                            <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-100 text-blue-700 font-bold text-sm flex items-center justify-center">1</span>
+                            <span>Tap the <strong className="text-gray-800">Share</strong> button at the bottom of Safari — it looks like a square with an arrow pointing up</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-100 text-blue-700 font-bold text-sm flex items-center justify-center">2</span>
+                            <span>Scroll down and tap <strong className="text-gray-800">"Add to Home Screen"</strong></span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-100 text-blue-700 font-bold text-sm flex items-center justify-center">3</span>
+                            <span>Tap <strong className="text-gray-800">"Add"</strong> in the top right corner</span>
+                          </li>
+                        </ol>
+                      </div>
+                    </>
+                  ) : canInstall ? (
+                    <>
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Add Bible Buddy to your home screen</h2>
+                      <div className="max-w-xl space-y-4 text-sm md:text-[15px] text-gray-600 leading-7">
+                        <p>Open it anytime from your home screen — no browser needed.</p>
+                        <button
+                          type="button"
+                          onClick={onInstallPrompt}
+                          className="w-full rounded-2xl border border-blue-600 bg-blue-50 px-5 py-4 text-left text-sm md:text-base font-semibold text-blue-700 hover:bg-blue-100 transition"
+                        >
+                          📲 Add to Home Screen
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Use Bible Buddy anytime</h2>
+                      <div className="max-w-xl space-y-4 text-sm md:text-[15px] text-gray-600 leading-7">
+                        <p>You can add Bible Buddy to your home screen from your browser's menu for quick access anytime.</p>
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
+
+              {currentStep === 7 && (
+                <div className="space-y-6">
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Free to start. Go deeper anytime.</h2>
                   <div className="max-w-xl space-y-4 text-[13px] sm:text-sm md:text-[15px] text-gray-600 leading-6 sm:leading-7">
                     <p><strong className="font-semibold text-gray-800">As a free user</strong>, you receive 5 credits each day.</p>
@@ -468,7 +537,7 @@ export function OnboardingModal({
               <div />
             )}
 
-            {currentStep < 6 && (
+            {currentStep < 7 && (
               <button
                 type="button"
                 onClick={handleContinue}
@@ -483,7 +552,7 @@ export function OnboardingModal({
               </button>
             )}
 
-            {currentStep === 6 && (
+            {currentStep === 7 && (
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 ml-auto w-full sm:w-auto">
                 <button
                   type="button"

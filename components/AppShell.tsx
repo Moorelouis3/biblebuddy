@@ -51,6 +51,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [updateModalChecked, setUpdateModalChecked] = useState(false);
 
+  // PWA install prompt state
+  const deferredInstallPromptRef = useRef<any>(null);
+  const [canInstall, setCanInstall] = useState(false);
+
   async function checkOnboardingStatus(currentUserId: string) {
     try {
       const { data: profileStats, error: profileStatsError } = await supabase
@@ -137,6 +141,25 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         .update({ last_seen_update_version: CURRENT_UPDATE_VERSION })
         .eq("user_id", userId);
     }
+  }
+
+  // Capture the PWA install prompt (fires on Android/Chrome before page is interactive)
+  useEffect(() => {
+    function handler(e: Event) {
+      e.preventDefault();
+      deferredInstallPromptRef.current = e;
+      setCanInstall(true);
+    }
+    window.addEventListener("beforeinstallprompt", handler);
+    return () => window.removeEventListener("beforeinstallprompt", handler);
+  }, []);
+
+  async function handleInstallPrompt() {
+    if (!deferredInstallPromptRef.current) return;
+    deferredInstallPromptRef.current.prompt();
+    await deferredInstallPromptRef.current.userChoice;
+    deferredInstallPromptRef.current = null;
+    setCanInstall(false);
   }
 
   useEffect(() => {
@@ -424,6 +447,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           userId={userId}
           initialTrafficSource={initialTrafficSource}
           initialBibleExperienceLevel={initialBibleExperienceLevel}
+          canInstall={canInstall}
+          onInstallPrompt={handleInstallPrompt}
           onFinished={(upgrade) => {
             setShowOnboardingModal(false);
             setFeatureToursEnabled(true);
