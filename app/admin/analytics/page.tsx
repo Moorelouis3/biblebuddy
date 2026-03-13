@@ -67,6 +67,7 @@ export default function AnalyticsPage() {
     Array<{
       period: string;
       signups: number;
+      logins: number;
       activeUsers: number;
       totalActions: number;
       chaptersRead: number;
@@ -219,49 +220,43 @@ export default function AnalyticsPage() {
       let buckets: Array<{ start: Date; end: Date; label: string }> = [];
       
       // Create time buckets based on filter
+      // Filter controls the bucket SIZE (granularity), not the date range.
       if (filter === "24h") {
-        // Single bucket for the last 24 hours
-        const start = new Date(now.getTime() - 24 * 60 * 60 * 1000);
-        buckets.push({
-          start,
-          end: now,
-          label: "Last 24h",
-        });
+        // Bucket = 1 day — show last 30 days, one row per day
+        for (let i = 29; i >= 0; i--) {
+          const dayStart = new Date(now);
+          dayStart.setDate(dayStart.getDate() - i);
+          dayStart.setHours(0, 0, 0, 0);
+          const dayEnd = new Date(dayStart);
+          dayEnd.setHours(23, 59, 59, 999);
+          const label = dayStart.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+          buckets.push({ start: dayStart, end: dayEnd, label });
+        }
       } else if (filter === "7d") {
-        // One bucket per 7-day window
-        const startDate = fromDate ? new Date(fromDate) : new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-        const weeks = Math.ceil((now.getTime() - startDate.getTime()) / (7 * 24 * 60 * 60 * 1000));
-        for (let i = weeks - 1; i >= 0; i--) {
-          const end = new Date(now);
-          end.setDate(end.getDate() - (i * 7));
-          const start = new Date(end);
-          start.setDate(start.getDate() - 7);
-          buckets.push({
-            start,
-            end,
-            label: `${start.toLocaleDateString("en-US", { month: "short", day: "numeric" })} - ${end.toLocaleDateString("en-US", { month: "short", day: "numeric" })}`,
-          });
+        // Bucket = 1 week — show last 12 weeks, one row per week
+        for (let i = 11; i >= 0; i--) {
+          const weekEnd = new Date(now);
+          weekEnd.setDate(weekEnd.getDate() - i * 7);
+          weekEnd.setHours(23, 59, 59, 999);
+          const weekStart = new Date(weekEnd);
+          weekStart.setDate(weekStart.getDate() - 6);
+          weekStart.setHours(0, 0, 0, 0);
+          const label = weekStart.toLocaleDateString("en-US", { month: "short", day: "numeric" })
+            + " – " + weekEnd.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+          buckets.push({ start: weekStart, end: weekEnd, label });
         }
       } else if (filter === "30d") {
-        // One bucket per 30-day window
-        const startDate = fromDate ? new Date(fromDate) : new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-        const months = Math.ceil((now.getTime() - startDate.getTime()) / (30 * 24 * 60 * 60 * 1000));
-        for (let i = months - 1; i >= 0; i--) {
-          const end = new Date(now);
-          end.setDate(end.getDate() - (i * 30));
-          const start = new Date(end);
-          start.setDate(start.getDate() - 30);
-          buckets.push({
-            start,
-            end,
-            label: `${start.toLocaleDateString("en-US", { month: "short", year: "numeric" })} - ${end.toLocaleDateString("en-US", { month: "short", year: "numeric" })}`,
-          });
+        // Bucket = 1 month — show last 12 months, one row per month
+        for (let i = 11; i >= 0; i--) {
+          const monthStart = new Date(now.getFullYear(), now.getMonth() - i, 1);
+          const monthEnd = new Date(monthStart.getFullYear(), monthStart.getMonth() + 1, 0, 23, 59, 59, 999);
+          const label = monthStart.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+          buckets.push({ start: monthStart, end: monthEnd, label });
         }
       } else if (filter === "1y") {
-        // One bucket per year
-        const startYear = fromDate ? new Date(fromDate).getFullYear() : now.getFullYear() - 1;
-        const endYear = now.getFullYear();
-        for (let year = startYear; year <= endYear; year++) {
+        // Bucket = 1 year — show last 5 years, one row per year
+        for (let i = 4; i >= 0; i--) {
+          const year = now.getFullYear() - i;
           buckets.push({
             start: new Date(year, 0, 1),
             end: new Date(year, 11, 31, 23, 59, 59, 999),
@@ -282,14 +277,23 @@ export default function AnalyticsPage() {
         const bucketStart = bucket.start.toISOString();
         const bucketEnd = bucket.end.toISOString();
 
-        // Signups
+        // Signups (from master_actions, same source as Action Log)
         const { count: signups } = await supabase
-          .from("user_signups")
+          .from("master_actions")
           .select("id", { count: "exact", head: true })
+          .eq("action_type", "user_signup")
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
-        // Logins (distinct users)
+        // Logins (count of user_login actions)
+        const { count: logins } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "user_login")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        // Active Users (distinct users who did any action)
         const { data: activeUserRows, error: activeUserRowsError } = await supabase
           .from("master_actions")
           .select("user_id")
@@ -379,6 +383,7 @@ export default function AnalyticsPage() {
         return {
           period: bucket.label,
           signups: signups || 0,
+          logins: logins || 0,
           activeUsers: activeUsers || 0,
           totalActions: totalActions || 0,
           chaptersRead: chaptersRead || 0,
@@ -1357,66 +1362,28 @@ export default function AnalyticsPage() {
     metric: string;
     timeFilter: TimeFilter;
   }) {
-    const maxValue = useMemo(() => {
-      const values = data.map((row) => {
-        switch (metric) {
-          case "Signups":
-            return row.signups;
-          case "Active Users":
-            return row.activeUsers;
-          case "Total Actions":
-            return row.totalActions;
-          case "Chapters Read":
-            return row.chaptersRead;
-          case "Notes Created":
-            return row.notesCreated;
-          case "People Learned":
-            return row.peopleLearned;
-          case "Places Discovered":
-            return row.placesDiscovered;
-          case "Keywords Understood":
-            return row.keywordsUnderstood;
-          case "Devotional Days Completed":
-            return row.devotionalDaysCompleted;
-          case "Reading Plan Chapters Completed":
-            return row.readingPlanChaptersCompleted;
-          case "Trivia Questions Answered":
-            return row.triviaQuestionsAnswered;
-          default:
-            return 0;
-        }
-      });
-      return Math.max(...values, 1);
-    }, [data, metric]);
-
     const getValue = (row: typeof data[0]) => {
       switch (metric) {
-        case "Signups":
-          return row.signups;
-        case "Active Users":
-          return row.activeUsers;
-        case "Total Actions":
-          return row.totalActions;
-        case "Chapters Read":
-          return row.chaptersRead;
-        case "Notes Created":
-          return row.notesCreated;
-        case "People Learned":
-          return row.peopleLearned;
-        case "Places Discovered":
-          return row.placesDiscovered;
-        case "Keywords Understood":
-          return row.keywordsUnderstood;
-        case "Devotional Days Completed":
-          return row.devotionalDaysCompleted;
-        case "Reading Plan Chapters Completed":
-            return row.readingPlanChaptersCompleted;
-        case "Trivia Questions Answered":
-            return row.triviaQuestionsAnswered;
-          default:
-            return 0;
+        case "Signups": return row.signups;
+        case "Logins": return row.logins;
+        case "Active Users": return row.activeUsers;
+        case "Total Actions": return row.totalActions;
+        case "Chapters Read": return row.chaptersRead;
+        case "Notes Created": return row.notesCreated;
+        case "People Learned": return row.peopleLearned;
+        case "Places Discovered": return row.placesDiscovered;
+        case "Keywords Understood": return row.keywordsUnderstood;
+        case "Devotional Days Completed": return row.devotionalDaysCompleted;
+        case "Reading Plan Chapters Completed": return row.readingPlanChaptersCompleted;
+        case "Trivia Questions Answered": return row.triviaQuestionsAnswered;
+        default: return 0;
       }
     };
+
+    const maxValue = useMemo(() => {
+      const values = data.map(getValue);
+      return Math.max(...values, 1);
+    }, [data, metric]);
 
     if (data.length === 0) {
       return (
@@ -1832,6 +1799,8 @@ export default function AnalyticsPage() {
                           switch (selectedMetric) {
                             case "Signups":
                               return row.signups;
+                            case "Logins":
+                              return row.logins;
                             case "Active Users":
                               return row.activeUsers;
                             case "Total Actions":
