@@ -702,7 +702,7 @@ export default function AnalyticsPage() {
   // Build Admin Action Log from master_actions table (all users)
   async function buildAdminActionLog(filter?: TimeFilter, actionTypeFilter?: string | null) {
     setLoadingActionLog(true);
-    const actions: Array<{ date: string; text: string; sortKey: number; actionType: string }> = [];
+    const actions: Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string }> = [];
 
     try {
       const fromDate = filter ? getFromDate(filter) : null;
