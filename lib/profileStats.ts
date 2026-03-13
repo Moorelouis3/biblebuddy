@@ -35,49 +35,29 @@ export interface HeatMapDay {
  * Get profile stats for a user (from profile_stats table)
  */
 export async function getProfileStats(userId: string): Promise<ProfileStats | null> {
-  const selectString = "*, hide_credit_info_modal, is_paid, daily_credits, verse_of_the_day_shown";
-  const { data, error, status, statusText } = await supabase
+  const { data, error } = await supabase
     .from("profile_stats")
-    .select(selectString)
+    .select("*")
     .eq("user_id", userId)
     .maybeSingle();
 
-  if (error || !data) {
-    console.error("[PROFILE] Error fetching profile stats:", {
-      message: error?.message,
-      code: error?.code,
-      details: error?.details,
-      hint: error?.hint,
-      status,
-      statusText,
-      selectString,
-      data,
-    });
-    // If row is missing, try to create it (upsert)
-    if (status === 406 || (error && (error.code === 'PGRST116' || error.code === '42703'))) {
-      // 42703 = undefined_column (column missing)
-      const { error: upsertError, data: upsertData } = await supabase
-        .from("profile_stats")
-        .upsert({ user_id: userId }, { onConflict: "user_id" })
-        .select(selectString)
-        .maybeSingle();
-      if (upsertError) {
-        console.error("[PROFILE] Error upserting profile stats:", {
-          message: upsertError?.message,
-          code: upsertError?.code,
-          details: upsertError?.details,
-          hint: upsertError?.hint,
-          status,
-          statusText,
-          selectString,
-        });
-        // Fallback: return minimal default
-        return { user_id: userId, is_paid: false, daily_credits: 5, hide_credit_info_modal: false } as any;
-      }
-      return upsertData as ProfileStats;
-    }
-    // Fallback: return minimal default
+  if (error) {
+    console.error("[PROFILE] Error fetching profile stats:", error);
     return { user_id: userId, is_paid: false, daily_credits: 5, hide_credit_info_modal: false } as any;
+  }
+
+  if (!data) {
+    // No row yet — create one
+    const { data: newData, error: upsertError } = await supabase
+      .from("profile_stats")
+      .upsert({ user_id: userId }, { onConflict: "user_id" })
+      .select("*")
+      .maybeSingle();
+    if (upsertError) {
+      console.error("[PROFILE] Error creating profile stats:", upsertError);
+      return { user_id: userId, is_paid: false, daily_credits: 5, hide_credit_info_modal: false } as any;
+    }
+    return newData as ProfileStats;
   }
 
   return data as ProfileStats;

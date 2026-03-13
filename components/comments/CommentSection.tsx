@@ -81,6 +81,32 @@ export default function CommentSection({
     else setComments(data || []);
   }, [articleSlug]);
 
+  // Scroll to and highlight a comment from URL hash (e.g. #comment-{uuid})
+  useEffect(() => {
+    if (typeof window === "undefined" || comments.length === 0) return;
+    const hash = window.location.hash;
+    if (!hash.startsWith("#comment-")) return;
+    const targetId = hash.slice(1); // e.g. "comment-abc123"
+
+    function tryScroll(attemptsLeft: number) {
+      const el = document.getElementById(targetId);
+      if (!el) {
+        if (attemptsLeft > 0) setTimeout(() => tryScroll(attemptsLeft - 1), 200);
+        return;
+      }
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.style.transition = "background-color 0.3s ease";
+      el.style.backgroundColor = "#dbeafe";
+      setTimeout(() => {
+        el.style.backgroundColor = "";
+        setTimeout(() => { el.style.transition = ""; }, 600);
+      }, 2500);
+    }
+
+    const timer = setTimeout(() => tryScroll(5), 150);
+    return () => clearTimeout(timer);
+  }, [comments]);
+
   useEffect(() => {
     fetchComments();
     (async () => {
@@ -141,6 +167,7 @@ export default function CommentSection({
     comments.length === 0 ? null : comments.map((c) => (
       <div
         key={c.id}
+        id={`comment-${c.id}`}
         className={`flex gap-3 py-4 ${depth > 0 ? 'pl-4 border-l-2 border-blue-100 bg-blue-50/40 rounded-md' : 'border-b border-gray-200'} transition-all`}
         style={{ marginLeft: depth ? 0 : 0 }}
       >

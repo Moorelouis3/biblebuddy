@@ -51,6 +51,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [updateModalChecked, setUpdateModalChecked] = useState(false);
 
+  // Notifications bell state
+  const [notifications, setNotifications] = useState<Array<{
+    id: string;
+    from_user_name: string;
+    article_slug: string;
+    comment_id: string | null;
+    message: string;
+    is_read: boolean;
+    created_at: string;
+  }>>([]);
+  const [isNotifOpen, setIsNotifOpen] = useState(false);
+  const notifRef = useRef<HTMLDivElement>(null);
+
   // PWA install prompt state
   const deferredInstallPromptRef = useRef<any>(null);
   const [canInstall, setCanInstall] = useState(false);
@@ -143,6 +156,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
   }
 
+  // Re-fetch notifications on every page navigation
+  useEffect(() => {
+    if (userId) void fetchNotifications(userId);
+  }, [pathname, userId]);
+
   // Capture the PWA install prompt (fires on Android/Chrome before page is interactive)
   useEffect(() => {
     function handler(e: Event) {
@@ -160,6 +178,37 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     await deferredInstallPromptRef.current.userChoice;
     deferredInstallPromptRef.current = null;
     setCanInstall(false);
+  }
+
+  async function fetchNotifications(currentUserId: string) {
+    const { data } = await supabase
+      .from("notifications")
+      .select("id, from_user_name, article_slug, comment_id, message, is_read, created_at")
+      .eq("user_id", currentUserId)
+      .order("created_at", { ascending: false })
+      .limit(20);
+    if (data) setNotifications(data);
+  }
+
+  async function markAllRead() {
+    if (!userId) return;
+    await supabase
+      .from("notifications")
+      .update({ is_read: true })
+      .eq("user_id", userId)
+      .eq("is_read", false);
+    setNotifications((prev) => prev.map((n) => ({ ...n, is_read: true })));
+  }
+
+  async function handleNotifClick(notif: typeof notifications[0]) {
+    // Mark this one as read
+    await supabase.from("notifications").update({ is_read: true }).eq("id", notif.id);
+    setNotifications((prev) =>
+      prev.map((n) => (n.id === notif.id ? { ...n, is_read: true } : n))
+    );
+    setIsNotifOpen(false);
+    const hash = notif.comment_id ? `#comment-${notif.comment_id}` : "";
+    router.push(`${notif.article_slug}${hash}`);
   }
 
   useEffect(() => {
@@ -182,6 +231,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setUsername(extractedUsername);
         void checkOnboardingStatus(session.user.id);
         void checkUpdateStatus(session.user.id);
+        void fetchNotifications(session.user.id);
       } else {
         setUserId(null);
         setUsername("");
@@ -189,6 +239,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setFeatureToursEnabled(false);
         setInitialTrafficSource(null);
         setInitialBibleExperienceLevel(null);
+        setNotifications([]);
       }
 
       // Sync notes count on initial session check if user is logged in (non-blocking)
@@ -241,6 +292,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           setUsername(extractedUsername);
           void checkOnboardingStatus(session.user.id);
           void checkUpdateStatus(session.user.id);
+          void fetchNotifications(session.user.id);
         } else {
           setUserId(null);
           setUsername("");
@@ -248,6 +300,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           setFeatureToursEnabled(false);
           setInitialTrafficSource(null);
           setInitialBibleExperienceLevel(null);
+          setNotifications([]);
         }
 
         // Sync notes count when user logs in or session changes (non-blocking)
@@ -333,6 +386,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       };
     }
   }, [isProfileMenuOpen, isNavMenuOpen]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (notifRef.current && !notifRef.current.contains(event.target as Node)) {
+        setIsNotifOpen(false);
+      }
+    }
+    if (isNotifOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [isNotifOpen]);
 
   // Close dropdowns on Escape key
   useEffect(() => {
@@ -632,6 +697,69 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       >
                         Keywords in the Bible
                       </Link>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* NOTIFICATION BELL */}
+              {isLoggedIn && (
+                <div className="relative" ref={notifRef}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsNotifOpen(!isNotifOpen);
+                      if (!isNotifOpen && userId) fetchNotifications(userId);
+                    }}
+                    className="relative flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors"
+                    aria-label="Notifications"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                    {notifications.filter((n) => !n.is_read).length > 0 && (
+                      <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 rounded-full bg-red-500 text-white text-[10px] font-bold">
+                        {notifications.filter((n) => !n.is_read).length > 9 ? "9+" : notifications.filter((n) => !n.is_read).length}
+                      </span>
+                    )}
+                  </button>
+
+                  {isNotifOpen && (
+                    <div className="absolute right-0 mt-2 w-80 max-w-[calc(100vw-2rem)] bg-white rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden">
+                      <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+                        <span className="font-semibold text-sm text-gray-900">Notifications</span>
+                        {notifications.some((n) => !n.is_read) && (
+                          <button onClick={markAllRead} className="text-xs text-blue-600 hover:text-blue-700 font-medium">
+                            Mark all read
+                          </button>
+                        )}
+                      </div>
+                      <div className="max-h-72 overflow-y-auto">
+                        {notifications.length === 0 ? (
+                          <p className="text-sm text-gray-500 text-center py-6">No notifications yet.</p>
+                        ) : (
+                          notifications.map((notif) => {
+                            const articleTitle = notif.article_slug
+                              ? notif.article_slug.split("/").filter(Boolean).pop()?.split("-").map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") ?? ""
+                              : "";
+                            return (
+                              <button
+                                key={notif.id}
+                                type="button"
+                                onClick={() => handleNotifClick(notif)}
+                                className={`w-full text-left px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors ${!notif.is_read ? "bg-blue-50" : ""}`}
+                              >
+                                <p className="text-sm text-gray-900 font-medium">{notif.message}</p>
+                                <p className="text-xs text-blue-600 mt-0.5">{articleTitle}</p>
+                                <p className="text-xs text-gray-400 mt-0.5">
+                                  {new Date(notif.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}
+                                </p>
+                              </button>
+                            );
+                          })
+                        )}
+                      </div>
                     </div>
                   )}
                 </div>

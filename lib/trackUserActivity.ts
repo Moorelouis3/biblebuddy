@@ -1,12 +1,15 @@
 /**
  * Track User Activity Utility
- * 
+ *
  * Tracks when a user logs in or refreshes the app (opens a new page).
  * Updates last_active_date in profile_stats and logs to master_actions once per 24 hours.
  */
 
 import { supabase } from "./supabaseClient";
 import { ACTION_TYPE } from "./actionTypes";
+
+// In-memory lock to prevent concurrent calls racing past the localStorage check
+const inFlight = new Set<string>();
 
 /**
  * Track user activity (login/refresh)
@@ -19,13 +22,23 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
     // Check if we've already logged activity for this user in this session
     const sessionKey = `activity_logged_${userId}`;
     const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-    
+
     if (typeof window !== "undefined") {
       const lastLogged = localStorage.getItem(sessionKey);
       if (lastLogged === today) {
-        // Already logged today in this session
         return false;
       }
+    }
+
+    // Prevent concurrent calls from both passing the check above
+    if (inFlight.has(userId)) {
+      return false;
+    }
+    inFlight.add(userId);
+
+    // Claim the slot in localStorage immediately before any await
+    if (typeof window !== "undefined") {
+      localStorage.setItem(sessionKey, today);
     }
 
     // Get current profile stats to check last_active_date
@@ -36,15 +49,12 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
       .maybeSingle();
 
     const lastActiveDate = currentStats?.last_active_date;
-    
+
     // Check if it's been 24 hours (different day) since last active
     const shouldLog = !lastActiveDate || lastActiveDate !== today;
 
     if (!shouldLog) {
-      // Already logged today, mark in localStorage and return
-      if (typeof window !== "undefined") {
-        localStorage.setItem(sessionKey, today);
-      }
+      inFlight.delete(userId);
       return false;
     }
 
@@ -93,18 +103,16 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
 
     if (statsError) {
       console.error("[TRACK_ACTIVITY] Error updating profile_stats:", statsError);
+      inFlight.delete(userId);
       return false;
     }
 
-    // Mark in localStorage that we've logged today
-    if (typeof window !== "undefined") {
-      localStorage.setItem(sessionKey, today);
-    }
-
+    inFlight.delete(userId);
     console.log(`[TRACK_ACTIVITY] Successfully tracked activity for user ${userId} on ${today}`);
     return true;
   } catch (err) {
     console.error("[TRACK_ACTIVITY] Error in trackUserActivity:", err);
+    inFlight.delete(userId);
     return false;
   }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
 type TimeFilter = "24h" | "7d" | "30d" | "1y" | "all";
@@ -93,9 +93,17 @@ export default function AnalyticsPage() {
 
   // Admin Action Log
   const [actionLog, setActionLog] = useState<
-    Array<{ date: string; text: string; sortKey: number; actionType: string }>
+    Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string }>
   >([]);
   const [loadingActionLog, setLoadingActionLog] = useState(true);
+
+  // User profile popup
+  const [selectedUser, setSelectedUser] = useState<{ userId: string; username: string } | null>(null);
+  const [userProfile, setUserProfile] = useState<any | null>(null);
+  const [loadingUserProfile, setLoadingUserProfile] = useState(false);
+
+  // Raw master_actions cache (populated during buildAdminActionLog, used for popup)
+  const rawMasterActionsRef = useRef<Array<{ user_id: string; action_type: string; action_label: string | null; created_at: string }>>([]);
 
   // Feedback Inbox
   const [feedbackInbox, setFeedbackInbox] = useState<
@@ -650,54 +658,39 @@ export default function AnalyticsPage() {
     }
 
     try {
-      // Batch fetch all actions for these users
-      const { data: allUserActions, error } = await supabase
-        .from("master_actions")
-        .select("user_id, action_type, created_at")
+      // Fetch total_actions and login days from profile_stats (all-time totals)
+      const { data: profileRows, error: profileError } = await supabase
+        .from("profile_stats")
+        .select("user_id, total_actions")
         .in("user_id", userIds);
 
-      if (error) {
-        if (error && (error.message || typeof error === 'string')) {
-          console.error("[USER_COUNTS] Error fetching user actions:", error.message || error);
-        } else {
-          console.error("[USER_COUNTS] Error fetching user actions: Unknown error", error);
-        }
-        return { loginDays: loginDaysMap, totalActions: totalActionsMap };
-      }
-
-      if (!allUserActions) {
-        return { loginDays: loginDaysMap, totalActions: totalActionsMap };
-      }
-
-      // Process counts per user
-      const userLoginDates = new Map<string, Set<string>>();
-      const userActionCounts = new Map<string, number>();
-
-      for (const action of allUserActions) {
-        const userId = action.user_id;
-        if (!userId) continue;
-
-        // Count total actions per user
-        userActionCounts.set(userId, (userActionCounts.get(userId) || 0) + 1);
-
-        // Track distinct login days per user
-        if (action.action_type === "user_login") {
-          const dateKey = new Date(action.created_at).toISOString().split('T')[0]; // YYYY-MM-DD
-          if (!userLoginDates.has(userId)) {
-            userLoginDates.set(userId, new Set());
+      if (!profileError && profileRows) {
+        for (const row of profileRows) {
+          if (row.user_id) {
+            totalActionsMap.set(row.user_id, row.total_actions ?? 0);
           }
-          userLoginDates.get(userId)!.add(dateKey);
         }
       }
 
-      // Convert login dates to counts
-      for (const [userId, dates] of userLoginDates.entries()) {
-        loginDaysMap.set(userId, dates.size);
-      }
+      // Fetch login days (distinct login dates per user) from master_actions
+      const { data: loginActions, error: loginError } = await supabase
+        .from("master_actions")
+        .select("user_id, created_at")
+        .in("user_id", userIds)
+        .eq("action_type", "user_login");
 
-      // Set total action counts
-      for (const [userId, count] of userActionCounts.entries()) {
-        totalActionsMap.set(userId, count);
+      if (!loginError && loginActions) {
+        const userLoginDates = new Map<string, Set<string>>();
+        for (const action of loginActions) {
+          const uid = action.user_id;
+          if (!uid) continue;
+          const dateKey = new Date(action.created_at).toISOString().split('T')[0];
+          if (!userLoginDates.has(uid)) userLoginDates.set(uid, new Set());
+          userLoginDates.get(uid)!.add(dateKey);
+        }
+        for (const [uid, dates] of userLoginDates.entries()) {
+          loginDaysMap.set(uid, dates.size);
+        }
       }
     } catch (err) {
       console.error("[USER_COUNTS] Error processing user counts:", err);
@@ -739,6 +732,11 @@ export default function AnalyticsPage() {
         setActionLog([]);
         setLoadingActionLog(false);
         return;
+      }
+
+      // Cache raw actions for the user profile popup
+      if (masterActions) {
+        rawMasterActionsRef.current = masterActions as any;
       }
 
       // Also query user_signups for old signups that don't have master_actions entries
@@ -856,6 +854,8 @@ export default function AnalyticsPage() {
           actions.push({
             date: formattedDate,
             text,
+            userId,
+            username,
             sortKey: actionDate.getTime(),
             actionType: "chapter_completed",
           });
@@ -866,6 +866,8 @@ export default function AnalyticsPage() {
           actions.push({
             date: formattedDate,
             text,
+            userId,
+            username,
             sortKey: actionDate.getTime(),
             actionType: "book_completed",
           });
@@ -876,6 +878,8 @@ export default function AnalyticsPage() {
           actions.push({
             date: formattedDate,
             text,
+            userId,
+            username,
             sortKey: actionDate.getTime(),
             actionType: "person_learned",
           });
@@ -886,6 +890,8 @@ export default function AnalyticsPage() {
           actions.push({
             date: formattedDate,
             text,
+            userId,
+            username,
             sortKey: actionDate.getTime(),
             actionType: "place_discovered",
           });
@@ -896,6 +902,8 @@ export default function AnalyticsPage() {
           actions.push({
             date: formattedDate,
             text,
+            userId,
+            username,
             sortKey: actionDate.getTime(),
             actionType: "keyword_mastered",
           });
@@ -906,6 +914,8 @@ export default function AnalyticsPage() {
           actions.push({
             date: formattedDate,
             text,
+            userId,
+            username,
             sortKey: actionDate.getTime(),
             actionType: "devotional_day_completed",
           });
@@ -916,6 +926,8 @@ export default function AnalyticsPage() {
           actions.push({
             date: formattedDate,
             text,
+            userId,
+            username,
             sortKey: actionDate.getTime(),
             actionType: "reading_plan_chapter_completed",
           });
@@ -923,6 +935,8 @@ export default function AnalyticsPage() {
           actions.push({
             date: formattedDate,
             text: `On ${formattedDate} at ${formattedTime}, ${username} created a note.${counterText}`,
+            userId,
+            username,
             sortKey: actionDate.getTime(),
             actionType: "note_created",
           });
@@ -938,7 +952,9 @@ export default function AnalyticsPage() {
             actions.push({
               date: formattedDate,
               text: `On ${formattedDate} at ${formattedTime}, ${username} logged in.${counterText}`,
-              sortKey: actionDate.getTime(),
+              userId,
+            username,
+            sortKey: actionDate.getTime(),
               actionType: "user_login",
             });
           }
@@ -946,6 +962,8 @@ export default function AnalyticsPage() {
           actions.push({
             date: formattedDate,
             text: `On ${formattedDate} at ${formattedTime}, ${username} just signed up.${counterText}`,
+            userId,
+            username,
             sortKey: actionDate.getTime(),
             actionType: "user_signup",
           });
@@ -956,6 +974,8 @@ export default function AnalyticsPage() {
           actions.push({
             date: formattedDate,
             text,
+            userId,
+            username,
             sortKey: actionDate.getTime(),
             actionType: "trivia_question_answered",
           });
@@ -985,6 +1005,8 @@ export default function AnalyticsPage() {
         actions.push({
           date: formattedDate,
           text: `On ${formattedDate} at ${formattedTime}, ${username} just signed up.${counterText}`,
+          userId: signup.user_id,
+          username,
           sortKey: signupDate.getTime(),
           actionType: "user_signup",
         });
@@ -999,6 +1021,67 @@ export default function AnalyticsPage() {
       setActionLog([]);
       setLoadingActionLog(false);
     }
+  }
+
+  // Load profile data for the user popup
+  async function openUserProfile(userId: string, username: string) {
+    setSelectedUser({ userId, username });
+    setUserProfile(null);
+    setLoadingUserProfile(true);
+
+    // Fetch ALL of this user's master_actions (no time filter, no limit).
+    // master_actions has no user-level RLS so this works for any user.
+    const { data: allActions } = await supabase
+      .from("master_actions")
+      .select("action_type, action_label, created_at, username")
+      .eq("user_id", userId)
+      .order("created_at", { ascending: false });
+
+    const actions = allActions || [];
+
+    // Compute stats from raw actions
+    const count = (type: string) => actions.filter((a) => a.action_type === type).length;
+
+    const distinctLoginDays = new Set(
+      actions
+        .filter((a) => a.action_type === "user_login")
+        .map((a) => new Date(a.created_at).toISOString().split("T")[0])
+    ).size;
+
+    const signupAction = actions
+      .filter((a) => a.action_type === "user_signup")
+      .sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())[0] ?? null;
+
+    const computedStats = {
+      total_actions: actions.length,
+      chapters_completed_count: count("chapter_completed"),
+      notes_created_count: count("note_created"),
+      people_learned_count: count("person_learned"),
+      places_discovered_count: count("place_discovered"),
+      keywords_mastered_count: count("keyword_mastered"),
+      trivia_questions_answered: count("trivia_question_answered"),
+    };
+
+    // Compute current streak (consecutive days with any non-login action up to today)
+    const activityDates = new Set(
+      actions
+        .filter((a) => a.action_type !== "user_login" && a.action_type !== "user_signup")
+        .map((a) => new Date(a.created_at).toISOString().split("T")[0])
+    );
+    let streak = 0;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    for (let i = 0; i < 365; i++) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const key = d.toISOString().split("T")[0];
+      if (activityDates.has(key)) { streak++; } else { break; }
+    }
+
+    const recentActions = actions.slice(0, 20);
+
+    setUserProfile({ computedStats, recentActions, distinctLoginDays, signupAction, currentStreak: streak });
+    setLoadingUserProfile(false);
   }
 
   // Format date for admin action log (includes month and day)
@@ -1711,12 +1794,14 @@ export default function AnalyticsPage() {
               <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
                 <div className={`max-h-96 overflow-y-auto ${actionLog.length > 10 ? 'p-4' : 'p-4'}`}>
                   {actionLog.map((action, idx) => (
-                    <div
+                    <button
                       key={idx}
-                      className={`mb-2 p-3 rounded ${getActionColorClass(action.actionType)}`}
+                      type="button"
+                      onClick={() => action.userId && openUserProfile(action.userId, action.username)}
+                      className={`w-full text-left mb-2 p-3 rounded transition-opacity hover:opacity-80 ${getActionColorClass(action.actionType)} ${action.userId ? "cursor-pointer" : "cursor-default"}`}
                     >
                       <p className="text-sm text-gray-900">{action.text}</p>
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -2182,6 +2267,90 @@ export default function AnalyticsPage() {
       <p className="text-xs text-gray-500 mt-6">
         Admin view only (moorelouis3@gmail.com)
       </p>
+
+      {/* USER PROFILE POPUP */}
+      {selectedUser && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[85vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900">{selectedUser.username}</h3>
+                  <p className="text-xs text-gray-400 mt-0.5">User Profile</p>
+                </div>
+                <button
+                  onClick={() => { setSelectedUser(null); setUserProfile(null); }}
+                  className="text-gray-400 hover:text-gray-600 text-2xl leading-none ml-4"
+                >
+                  ×
+                </button>
+              </div>
+
+              {loadingUserProfile ? (
+                <p className="text-sm text-gray-400 text-center py-8">Loading profile...</p>
+              ) : userProfile ? (
+                <div className="space-y-5">
+                  {/* Joined */}
+                  {userProfile.signupAction && (
+                    <div className="text-sm text-gray-600">
+                      <span className="font-semibold text-gray-800">Joined: </span>
+                      {new Date(userProfile.signupAction.created_at).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                    </div>
+                  )}
+
+                  {/* Key stats grid */}
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      { label: "Total Actions", value: userProfile.computedStats.total_actions },
+                      { label: "Login Days", value: userProfile.distinctLoginDays },
+                      { label: "Chapters Read", value: userProfile.computedStats.chapters_completed_count },
+                      { label: "Notes Created", value: userProfile.computedStats.notes_created_count },
+                      { label: "People Learned", value: userProfile.computedStats.people_learned_count },
+                      { label: "Places Discovered", value: userProfile.computedStats.places_discovered_count },
+                      { label: "Keywords Mastered", value: userProfile.computedStats.keywords_mastered_count },
+                      { label: "Trivia Answered", value: userProfile.computedStats.trivia_questions_answered },
+                      { label: "Current Streak", value: `${userProfile.currentStreak} days` },
+                    ].map((stat) => (
+                      <div key={stat.label} className="bg-gray-50 rounded-xl p-3">
+                        <p className="text-xs text-gray-500 mb-0.5">{stat.label}</p>
+                        <p className="text-lg font-bold text-gray-900">{stat.value}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Recent Activity */}
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-700 mb-2">Recent Activity</h4>
+                    {userProfile.recentActions.length === 0 ? (
+                      <p className="text-sm text-gray-400">No recent activity.</p>
+                    ) : (
+                      <div className="space-y-1 max-h-48 overflow-y-auto">
+                        {userProfile.recentActions.map((a: any, i: number) => (
+                          <div key={i} className="text-xs text-gray-600 flex justify-between gap-2 py-1 border-b border-gray-100">
+                            <span className="capitalize">{a.action_label || a.action_type.replace(/_/g, " ")}</span>
+                            <span className="text-gray-400 whitespace-nowrap">
+                              {new Date(a.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <p className="text-sm text-gray-400 text-center py-8">No profile data found.</p>
+              )}
+
+              <button
+                onClick={() => { setSelectedUser(null); setUserProfile(null); }}
+                className="mt-6 w-full bg-gray-100 text-gray-600 text-sm font-medium py-2 rounded-xl hover:bg-gray-200 transition"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
