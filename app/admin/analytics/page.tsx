@@ -1649,7 +1649,7 @@ export default function AnalyticsPage() {
             ) : (
               <>
                 <div className="text-7xl font-bold text-gray-900 mb-2">
-                  {activeUsersByWindow[timeFilter as keyof typeof activeUsersByWindow] || 0}
+                  {overviewMetrics.activeUsers}
                 </div>
                 <p className="text-lg text-gray-600">
                   Active Users
@@ -1726,7 +1726,7 @@ export default function AnalyticsPage() {
               />
               <OverviewCard
                 label="Active Users"
-                value={activeUsersByWindow[timeFilter as keyof typeof activeUsersByWindow] || 0}
+                value={overviewMetrics.activeUsers}
                 onClick={() => setSelectedActionType(null)}
                 isSelected={false}
               />
