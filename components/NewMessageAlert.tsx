@@ -21,9 +21,9 @@ export function NewMessageAlert() {
 
         setIsAdmin(true);
 
-        // Get last viewed timestamp from sessionStorage
+        // Get last viewed timestamp from localStorage
         const lastViewedKey = "lastInboxView";
-        const lastViewed = sessionStorage.getItem(lastViewedKey);
+        const lastViewed = localStorage.getItem(lastViewedKey);
         const lastViewedDate = lastViewed ? new Date(lastViewed) : null;
 
         // Check for new feedback
@@ -63,13 +63,13 @@ export function NewMessageAlert() {
           }
         }
 
-        // Check if alert was already dismissed this session
-        const dismissed = sessionStorage.getItem("newMessageAlertDismissed");
+        // Check if alert was already dismissed
+        const dismissed = localStorage.getItem("newMessageAlertDismissed");
         
         if (hasNew) {
           // Reset dismissed flag since there are new messages
           if (dismissed === "true") {
-            sessionStorage.removeItem("newMessageAlertDismissed");
+            localStorage.removeItem("newMessageAlertDismissed");
           }
           setHasNewMessages(true);
           setShowAlert(true);
@@ -87,14 +87,14 @@ export function NewMessageAlert() {
 
   const handleDismiss = () => {
     setShowAlert(false);
-    sessionStorage.setItem("newMessageAlertDismissed", "true");
+    localStorage.setItem("newMessageAlertDismissed", "true");
   };
 
   const handleViewMessage = () => {
     setShowAlert(false);
-    sessionStorage.setItem("newMessageAlertDismissed", "true");
+    localStorage.setItem("newMessageAlertDismissed", "true");
     // Update last viewed timestamp to now (user is going to view inbox)
-    sessionStorage.setItem("lastInboxView", new Date().toISOString());
+    localStorage.setItem("lastInboxView", new Date().toISOString());
     // Navigate to analytics page - the inbox section will be visible
     router.push("/admin/analytics");
     // Scroll to inbox section after navigation
