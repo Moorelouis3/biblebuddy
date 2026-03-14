@@ -6,7 +6,25 @@
       "Bash(grep -r \"onboarding_completed\\\\|last_seen_update_version\" /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e --include=*.ts --include=*.tsx)",
       "Bash(ls -la /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/ADD*.sql)",
       "Bash(find /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e -path */node_modules -prune -o -type f -name *.tsx -print)",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(find /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e -type f -name *devotional*)",
+      "Bash(find /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e -maxdepth 3 -type f -name *.ts -o -name *.tsx)",
+      "Bash(find /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e -type f \\\\\\(-name *.ts -o -name *.tsx \\\\\\) -path */app/* -o -path */lib/*)",
+      "Bash(ls -la /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/app/devotionals/[id]/)",
+      "Bash(grep -n \"progress\\\\|started\\\\|completed\" /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/app/devotionals/[id]/page.tsx)",
+      "Bash(grep -r 'CREATE TABLE.*completed' /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e --include=*.sql)",
+      "Bash(grep -l \"completed_chapters\" /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/*.sql)",
+      "Bash(ls /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/*.sql)",
+      "Bash(grep -n \"completed_chapters\\\\|from.*completed\" /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/app/Bible/[book]/[chapter]/page.tsx)",
+      "Bash(find /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e -name *completed* -o -name *chapters*)",
+      "Bash(find /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e -type d -name *migrat* -o -type d -name *supabase*)",
+      "Bash(grep -r 'CREATE TABLE' /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/*.sql)",
+      "Bash(grep -l completed_chapters /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/*.sql)",
+      "Bash(while read:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/**)",
+      "Bash(done)",
+      "Bash(grep -r .from.*completed_chapters /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e --include=*.ts --include=*.tsx)"
     ]
   }
 }

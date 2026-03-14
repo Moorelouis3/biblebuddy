@@ -23,21 +23,19 @@ export async function GET() {
 
   try {
 
-    // Active Users RPC windows
+    // Active Users = distinct users who logged in within each time window
     const now = new Date();
     const nowISO = now.toISOString();
-    const windows = {
-      active_users_24h: [new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString(), nowISO],
-      active_users_7d:  [new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString(), nowISO],
-      active_users_30d: [new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString(), nowISO],
-      active_users_1y:  [new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000).toISOString(), nowISO],
-    };
 
-    async function getActiveUsersCount(start_ts: string, end_ts: string) {
-      const { data, error } = await supabase.rpc("get_active_users_count", { start_ts, end_ts });
+    async function getActiveUsersCount(startISO: string) {
+      const { data, error } = await supabase
+        .from("master_actions")
+        .select("user_id")
+        .eq("action_type", "user_login")
+        .gte("created_at", startISO)
+        .lte("created_at", nowISO);
       if (error) throw error;
-      // Supabase RPC returns array or single value depending on config
-      return Array.isArray(data) ? Number(data[0]) : Number(data);
+      return new Set((data || []).map((r: { user_id: string }) => r.user_id).filter(Boolean)).size;
     }
 
     const [
@@ -46,10 +44,10 @@ export async function GET() {
       active_users_30d,
       active_users_1y,
     ] = await Promise.all([
-      getActiveUsersCount(windows.active_users_24h[0], windows.active_users_24h[1]),
-      getActiveUsersCount(windows.active_users_7d[0], windows.active_users_7d[1]),
-      getActiveUsersCount(windows.active_users_30d[0], windows.active_users_30d[1]),
-      getActiveUsersCount(windows.active_users_1y[0], windows.active_users_1y[1]),
+      getActiveUsersCount(new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString()),
+      getActiveUsersCount(new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString()),
+      getActiveUsersCount(new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString()),
+      getActiveUsersCount(new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000).toISOString()),
     ]);
 
     // Keep existing logic for other stats

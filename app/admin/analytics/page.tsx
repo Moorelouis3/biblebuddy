@@ -105,6 +105,21 @@ export default function AnalyticsPage() {
   // Raw master_actions cache (populated during buildAdminActionLog, used for popup)
   const rawMasterActionsRef = useRef<Array<{ user_id: string; action_type: string; action_label: string | null; created_at: string }>>([]);
 
+  // Devotional stats
+  const [devotionalStats, setDevotionalStats] = useState<Array<{
+    id: string;
+    title: string;
+    total_days: number;
+    usersStarted: number;
+  }>>([]);
+  const [loadingDevotionalStats, setLoadingDevotionalStats] = useState(true);
+  const [expandedDevotionals, setExpandedDevotionals] = useState<Set<string>>(new Set());
+
+  // Reading plan stats
+  const [readingPlanStats, setReadingPlanStats] = useState<Array<{ title: string; usersStarted: number }>>([]);
+  const [loadingReadingPlanStats, setLoadingReadingPlanStats] = useState(true);
+  const [expandedReadingPlans, setExpandedReadingPlans] = useState(false);
+
   // Feedback Inbox
   const [feedbackInbox, setFeedbackInbox] = useState<
     Array<{ id: string; username: string; created_at: string; date: string; time: string; fullData?: any }>
@@ -124,13 +139,32 @@ export default function AnalyticsPage() {
     async function fetchActiveUsers() {
       setLoadingActiveUsers(true);
       try {
-        const res = await fetch('/api/admin/analytics');
-        const data = await res.json();
+        const now = new Date();
+        const windows = {
+          '24h': new Date(now.getTime() - 24 * 60 * 60 * 1000).toISOString(),
+          '7d':  new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+          '30d': new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString(),
+          '1y':  new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000).toISOString(),
+        };
+
+        const countDistinct = (rows: { user_id: string }[]) =>
+          new Set(rows.map((r) => r.user_id).filter(Boolean)).size;
+
+        const [r24h, r7d, r30d, r1y] = await Promise.all(
+          Object.values(windows).map((since) =>
+            supabase
+              .from("master_actions")
+              .select("user_id")
+              .eq("action_type", "user_login")
+              .gte("created_at", since)
+          )
+        );
+
         setActiveUsersByWindow({
-          '24h': data.active_users_24h,
-          '7d': data.active_users_7d,
-          '30d': data.active_users_30d,
-          '1y': data.active_users_1y,
+          '24h': countDistinct(r24h.data || []),
+          '7d':  countDistinct(r7d.data || []),
+          '30d': countDistinct(r30d.data || []),
+          '1y':  countDistinct(r1y.data || []),
         });
       } catch (e) {
         setActiveUsersByWindow({ '24h': 0, '7d': 0, '30d': 0, '1y': 0 });
@@ -147,6 +181,8 @@ export default function AnalyticsPage() {
     loadOverviewMetrics(timeFilter);
     buildAdminActionLog(timeFilter, selectedActionType);
     loadStatsLog(timeFilter);
+    loadDevotionalStats();
+    loadReadingPlanStats();
   }, [timeFilter, selectedActionType]);
 
   // Load active users (within last 60 minutes)
@@ -197,6 +233,33 @@ export default function AnalyticsPage() {
     }
   }
 
+  async function loadDevotionalStats() {
+    setLoadingDevotionalStats(true);
+    try {
+      const res = await fetch("/api/admin/devotional-stats");
+      const data = await res.json();
+      if (data.stats) {
+        setDevotionalStats(data.stats);
+      }
+    } catch (err) {
+      console.error("[DEVOTIONAL_STATS] Error loading devotional stats:", err);
+    }
+    setLoadingDevotionalStats(false);
+  }
+
+  async function loadReadingPlanStats() {
+    setLoadingReadingPlanStats(true);
+    try {
+      const res = await fetch("/api/admin/reading-plan-stats");
+      const data = await res.json();
+      if (data.stats) {
+        setReadingPlanStats(data.stats);
+      }
+    } catch (err) {
+      console.error("[READING_PLAN_STATS] Error loading reading plan stats:", err);
+    }
+    setLoadingReadingPlanStats(false);
+  }
 
   function getFromDate(filter: TimeFilter): string | null {
     if (filter === "all") return null;
@@ -301,10 +364,11 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
-        // Active Users (distinct users who did any action)
+        // Active Users (distinct users who logged in)
         const { data: activeUserRows, error: activeUserRowsError } = await supabase
           .from("master_actions")
           .select("user_id")
+          .eq("action_type", "user_login")
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
         const activeUsers = new Set((activeUserRows || []).map(row => row.user_id).filter(id => !!id && id !== "")).size;
@@ -443,12 +507,12 @@ export default function AnalyticsPage() {
         "created_at"
       );
 
-      // Logins: distinct users with user_login within range
-      // Active Users: distinct user_id from master_actions within range
+      // Active Users: distinct users who logged in within range
       const activeUsersPromise = applyDateFilter(
         supabase
           .from("master_actions")
           .select("user_id")
+          .eq("action_type", "user_login")
       );
 
       // Total actions: all master_actions rows
@@ -2037,6 +2101,66 @@ export default function AnalyticsPage() {
             )}
           </div>
         )}
+      </div>
+
+      {/* DEVOTIONALS SECTION */}
+      <div className="mt-8 mb-12">
+        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+          <button
+            type="button"
+            className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-50 transition"
+            onClick={() => setExpandedDevotionals((prev) => prev.has("__all__") ? new Set() : new Set(["__all__"]))}
+          >
+            <span className="text-2xl font-bold">Devotionals</span>
+            <span className="text-gray-400 text-lg">{expandedDevotionals.has("__all__") ? "▲" : "▼"}</span>
+          </button>
+          {expandedDevotionals.has("__all__") && (
+            <div className="border-t border-gray-100">
+              {loadingDevotionalStats ? (
+                <p className="text-sm text-gray-400 px-5 py-4">Loading...</p>
+              ) : devotionalStats.length === 0 ? (
+                <p className="text-sm text-gray-400 px-5 py-4">No devotionals found.</p>
+              ) : (
+                devotionalStats.map((dev, i) => (
+                  <div key={dev.id} className={`flex items-center justify-between px-5 py-3 ${i > 0 ? "border-t border-gray-100" : ""}`}>
+                    <span className="text-gray-800 font-medium">{dev.title}</span>
+                    <span className="text-blue-600 font-bold">{dev.usersStarted} started</span>
+                  </div>
+                ))
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* READING PLANS SECTION */}
+      <div className="mt-4 mb-12">
+        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+          <button
+            type="button"
+            className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-50 transition"
+            onClick={() => setExpandedReadingPlans((prev) => !prev)}
+          >
+            <span className="text-2xl font-bold">Reading Plans</span>
+            <span className="text-gray-400 text-lg">{expandedReadingPlans ? "▲" : "▼"}</span>
+          </button>
+          {expandedReadingPlans && (
+            <div className="border-t border-gray-100">
+              {loadingReadingPlanStats ? (
+                <p className="text-sm text-gray-400 px-5 py-4">Loading...</p>
+              ) : readingPlanStats.length === 0 ? (
+                <p className="text-sm text-gray-400 px-5 py-4">No reading plan data found.</p>
+              ) : (
+                readingPlanStats.map((plan, i) => (
+                  <div key={plan.title} className={`flex items-center justify-between px-5 py-3 ${i > 0 ? "border-t border-gray-100" : ""}`}>
+                    <span className="text-gray-800 font-medium">{plan.title}</span>
+                    <span className="text-blue-600 font-bold">{plan.usersStarted} started</span>
+                  </div>
+                ))
+              )}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* STATS LOG DETAIL MODAL */}
