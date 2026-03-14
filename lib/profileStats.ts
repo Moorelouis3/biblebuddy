@@ -157,8 +157,9 @@ export interface StreakData {
 }
 
 // Valid action types that count toward streak
-// Includes all Bible study actions except user_login
+// Logging in counts as an active day, as do all Bible study actions
 const STREAK_ACTION_TYPES = [
+  ACTION_TYPE.user_login,
   ACTION_TYPE.chapter_completed,
   ACTION_TYPE.book_completed,
   ACTION_TYPE.person_learned,
