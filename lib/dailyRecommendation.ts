@@ -6,6 +6,34 @@
  */
 
 import { supabase } from "./supabaseClient";
+import { getBookTotalChapters } from "./readingProgress";
+
+/** Canonical Bible book order — used to find the next book after the last chapter */
+const BIBLE_BOOK_ORDER = [
+  "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+  "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel",
+  "1 Kings", "2 Kings", "1 Chronicles", "2 Chronicles",
+  "Ezra", "Nehemiah", "Esther", "Job", "Psalms", "Proverbs",
+  "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah",
+  "Lamentations", "Ezekiel", "Daniel", "Hosea", "Joel", "Amos",
+  "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk", "Zephaniah",
+  "Haggai", "Zechariah", "Malachi",
+  "Matthew", "Mark", "Luke", "John", "Acts",
+  "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+  "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+  "1 Timothy", "2 Timothy", "Titus", "Philemon",
+  "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John",
+  "Jude", "Revelation",
+];
+
+/** Returns the next chapter after the given book + chapter, wrapping across book boundaries */
+function getNextBibleChapter(book: string, chapter: number): { book: string; chapter: number } {
+  const total = getBookTotalChapters(book);
+  if (chapter < total) return { book, chapter: chapter + 1 };
+  const idx = BIBLE_BOOK_ORDER.findIndex((b) => b.toLowerCase() === book.toLowerCase());
+  if (idx !== -1 && idx < BIBLE_BOOK_ORDER.length - 1) return { book: BIBLE_BOOK_ORDER[idx + 1], chapter: 1 };
+  return { book: "Genesis", chapter: 1 }; // wrap after Revelation
+}
 
 export interface DailyRecommendation {
   greeting: string;
@@ -203,7 +231,28 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
       const label = lastMeaningful.action_label || "";
 
       switch (lastMeaningful.action_type) {
-        case "chapter_completed":
+        case "chapter_completed": {
+          // action_label = "Proverbs 10" — parse book + chapter
+          const chMatch = label.match(/^(.+?)\s+(\d+)$/);
+          if (chMatch) {
+            const chBook = chMatch[1];
+            const chNum = parseInt(chMatch[2], 10);
+            const next = getNextBibleChapter(chBook, chNum);
+            const nextLabel = `${next.book} ${next.chapter}`;
+            return {
+              greeting,
+              contextLine: contextLine(
+                actionDate,
+                `you read ${label}.`,
+                `It's been a while since you last read ${label}.`
+              ),
+              recommendationLine: `Want to continue with ${nextLabel} today?`,
+              primaryButtonText: `Read ${nextLabel}`,
+              primaryButtonHref: `/Bible/${next.book}/${next.chapter}`,
+              level: 2 as const,
+            };
+          }
+          // Fallback if label doesn't parse (shouldn't happen)
           return {
             greeting,
             contextLine: contextLine(
@@ -216,6 +265,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
             primaryButtonHref: "/Bible",
             level: 2 as const,
           };
+        }
 
         case "person_learned":
           return {
@@ -264,11 +314,11 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
             greeting,
             contextLine: contextLine(
               actionDate,
-              `you answered some trivia questions.`,
+              `you finished a round of trivia.`,
               `It's been a while since you last played Bible trivia.`
             ),
             recommendationLine: "Want to do more trivia today?",
-            primaryButtonText: "Play Trivia",
+            primaryButtonText: "Do Trivia",
             primaryButtonHref: "/bible-trivia",
             level: 2 as const,
           };
