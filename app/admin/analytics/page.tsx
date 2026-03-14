@@ -507,11 +507,11 @@ export default function AnalyticsPage() {
         "created_at"
       );
 
-      // Active Users: distinct users who logged in within range
+      // Active Users: count of logins within range (same as Stats Log "Logins")
       const activeUsersPromise = applyDateFilter(
         supabase
           .from("master_actions")
-          .select("user_id")
+          .select("id", { count: "exact", head: true })
           .eq("action_type", "user_login")
       );
 
@@ -624,9 +624,8 @@ export default function AnalyticsPage() {
 
       const signupsCount = signupsResult.count ?? 0;
       const signupsError = signupsResult.error;
-      const activeUsersRows = activeUsersRowsResult.data;
       const activeUsersError = activeUsersRowsResult.error;
-      const activeUsersCount = new Set((activeUsersRows || []).map((row: { user_id: string }) => row.user_id).filter((id: string) => !!id && id !== "")).size;
+      const activeUsersCount = activeUsersRowsResult.count ?? 0;
       const totalActionsCount = totalActionsResult.count ?? 0;
       const totalActionsError = totalActionsResult.error;
       const chaptersCount = chaptersResult.count ?? 0;
