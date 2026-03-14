@@ -24,6 +24,8 @@ export interface ProfileStats {
   is_paid?: boolean;
   daily_credits?: number;
   last_seen_update_version?: string | null;
+  daily_recommendation_shown?: string | null;
+  level_1_skipped_date?: string | null;
 }
 
 export interface HeatMapDay {

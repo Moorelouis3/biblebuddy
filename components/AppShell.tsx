@@ -17,6 +17,8 @@ import { OnboardingModal } from "./OnboardingModal";
 import { GlobalUpdateModal } from "./GlobalUpdateModal";
 import { FeatureRenderPriorityProvider } from "./FeatureRenderPriorityContext";
 import { CURRENT_UPDATE_VERSION } from "../lib/globalUpdateConfig";
+import DailyRecommendationModal from "./DailyRecommendationModal";
+import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -50,6 +52,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   // Global update modal state
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [updateModalChecked, setUpdateModalChecked] = useState(false);
+
+  // Daily recommendation modal state
+  const [showDailyRecommendation, setShowDailyRecommendation] = useState(false);
+  const [dailyRecommendation, setDailyRecommendation] = useState<DailyRecommendation | null>(null);
 
   // Notifications bell state
   const [notifications, setNotifications] = useState<Array<{
@@ -156,6 +162,56 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
   }
 
+  async function checkDailyRecommendation(currentUserId: string) {
+    try {
+      const today = new Date().toISOString().slice(0, 10);
+
+      // Gate: onboarding complete + update seen + not shown today
+      const { data } = await supabase
+        .from("profile_stats")
+        .select("onboarding_completed, last_seen_update_version, daily_recommendation_shown, level_1_skipped_date")
+        .eq("user_id", currentUserId)
+        .maybeSingle();
+
+      if (!data) return;
+      if (data.onboarding_completed !== true) return;
+      if (data.last_seen_update_version !== CURRENT_UPDATE_VERSION) return;
+      if (data.daily_recommendation_shown === today) return;
+
+      // Mark as shown for today immediately
+      await supabase
+        .from("profile_stats")
+        .update({ daily_recommendation_shown: today })
+        .eq("user_id", currentUserId);
+
+      // Suppress Level 1 if user skipped one within the last 3 days
+      let suppressLevel1 = false;
+      if (data.level_1_skipped_date) {
+        const skippedDate = new Date(data.level_1_skipped_date);
+        const diffDays = Math.floor((Date.now() - skippedDate.getTime()) / (1000 * 60 * 60 * 24));
+        if (diffDays < 3) suppressLevel1 = true;
+      }
+
+      // Build the recommendation
+      const recommendation = await getDailyRecommendation(currentUserId, suppressLevel1);
+      if (!recommendation) return;
+
+      setDailyRecommendation(recommendation);
+      setShowDailyRecommendation(true);
+    } catch (err) {
+      console.warn("[DAILY_RECOMMENDATION] Check skipped:", err);
+    }
+  }
+
+  async function handleLevel1Skipped() {
+    if (!userId) return;
+    const today = new Date().toISOString().slice(0, 10);
+    await supabase
+      .from("profile_stats")
+      .update({ level_1_skipped_date: today })
+      .eq("user_id", userId);
+  }
+
   // Re-fetch notifications on every page navigation
   useEffect(() => {
     if (userId) void fetchNotifications(userId);
@@ -231,6 +287,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setUsername(extractedUsername);
         void checkOnboardingStatus(session.user.id);
         void checkUpdateStatus(session.user.id);
+        void checkDailyRecommendation(session.user.id);
         void fetchNotifications(session.user.id);
       } else {
         setUserId(null);
@@ -554,6 +611,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         <GlobalUpdateModal
           isOpen={showUpdateModal}
           onDismiss={handleDismissUpdateModal}
+        />
+      )}
+
+      {/* DAILY RECOMMENDATION MODAL */}
+      {isLoggedIn && userId && !showOnboardingModal && !showUpdateModal && showDailyRecommendation && dailyRecommendation && (
+        <DailyRecommendationModal
+          greeting={dailyRecommendation.greeting}
+          contextLine={dailyRecommendation.contextLine}
+          recommendationLine={dailyRecommendation.recommendationLine}
+          primaryButtonText={dailyRecommendation.primaryButtonText}
+          primaryButtonHref={dailyRecommendation.primaryButtonHref}
+          onClose={() => setShowDailyRecommendation(false)}
+          onSecondary={dailyRecommendation.level === 1 ? handleLevel1Skipped : undefined}
         />
       )}
 
