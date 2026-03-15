@@ -178,7 +178,16 @@ export default function GroupDetailPage() {
             <div>
               <h1 className="text-2xl font-bold text-gray-900">{group.name}</h1>
               {group.leader_name && (
-                <p className="text-gray-700 text-sm mt-0.5">Led by {group.leader_name}</p>
+                <p className="text-gray-700 text-sm mt-0.5">
+                  Led by{" "}
+                  {group.leader_user_id ? (
+                    <Link href={`/profile/${group.leader_user_id}`} className="underline hover:text-gray-900 transition">
+                      {group.leader_name}
+                    </Link>
+                  ) : (
+                    group.leader_name
+                  )}
+                </p>
               )}
               <span className="inline-flex items-center gap-1 mt-2 bg-white/60 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">
                 👥 {group.member_count} / {group.max_members} members

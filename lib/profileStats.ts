@@ -26,6 +26,11 @@ export interface ProfileStats {
   last_seen_update_version?: string | null;
   daily_recommendation_shown?: string | null;
   level_1_skipped_date?: string | null;
+  bio?: string | null;
+  location?: string | null;
+  profile_image_url?: string | null;
+  last_active_at?: string | null;
+  profile_is_public?: boolean;
 }
 
 export interface HeatMapDay {
