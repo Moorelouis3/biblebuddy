@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../../lib/supabaseClient";
+import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
 
 // ── Interfaces ───────────────────────────────────────────────────────────────
 
@@ -26,6 +27,7 @@ interface Post {
   created_at: string;
   role?: string;
   liked?: boolean;
+  profile_image_url?: string | null;
 }
 
 interface Member {
@@ -68,13 +70,25 @@ interface SeriesComment {
   like_count: number;
   created_at: string;
   liked?: boolean;
+  profile_image_url?: string | null;
+}
+
+// ── Hub types ─────────────────────────────────────────────────────────────
+
+interface HubCategory {
+  id: string;
+  name: string;
+  emoji: string;
+  color: string;
+  display_order: number;
 }
 
 // ── Tab config ───────────────────────────────────────────────────────────────
 
-type TabKey = "general" | "bible_studies" | "updates" | "prayer" | "qa" | "members";
+type TabKey = "home" | "general" | "bible_studies" | "updates" | "prayer" | "qa" | "members";
 
 const TABS: { key: TabKey; label: string }[] = [
+  { key: "home",          label: "🏠 Home" },
   { key: "general",       label: "💬 General" },
   { key: "bible_studies", label: "📚 Bible Studies" },
   { key: "updates",       label: "📢 Updates" },
@@ -126,7 +140,8 @@ export default function GroupChatPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [userRole, setUserRole] = useState<string>("member");
   const [displayName, setDisplayName] = useState<string>("");
-  const [activeTab, setActiveTab] = useState<TabKey>("general");
+  const [userProfileImage, setUserProfileImage] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<string>("home");
 
   // Chat posts
   const [posts, setPosts] = useState<Post[]>([]);
@@ -135,9 +150,18 @@ export default function GroupChatPage() {
   const [submitting, setSubmitting] = useState(false);
   const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
 
+  // Hub categories (loaded from DB)
+  const [hubCategories, setHubCategories] = useState<HubCategory[]>([]);
+  const [hubView, setHubView] = useState<"articles" | "questions">("articles");
+  const [showHubDropdown, setShowHubDropdown] = useState(false);
+  const [dropdownRect, setDropdownRect] = useState<DOMRect | null>(null);
+  const dropdownBtnRef = useRef<HTMLButtonElement>(null);
+  const [selectedHubItem, setSelectedHubItem] = useState<HubItemStatic | null>(null);
+
   // Members
   const [members, setMembers] = useState<Member[]>([]);
   const [loadingMembers, setLoadingMembers] = useState(false);
+  const [membersSearch, setMembersSearch] = useState("");
 
   // Series list
   const [seriesList, setSeriesList] = useState<Series[]>([]);
@@ -185,10 +209,11 @@ export default function GroupChatPage() {
 
       const { data: profile } = await supabase
         .from("profile_stats")
-        .select("display_name, username")
+        .select("display_name, username, profile_image_url")
         .eq("user_id", user.id)
         .maybeSingle();
       setDisplayName(profile?.display_name || profile?.username || user.email?.split("@")[0] || "Member");
+      setUserProfileImage(profile?.profile_image_url ?? null);
 
       const { data: membership } = await supabase
         .from("group_members")
@@ -213,6 +238,14 @@ export default function GroupChatPage() {
       if (!groupData) { router.push("/study-groups"); return; }
       setGroup(groupData);
 
+      // Load hub categories for this group
+      const { data: hubCats } = await supabase
+        .from("group_hub_categories")
+        .select("id, name, emoji, color, display_order")
+        .eq("group_id", groupId)
+        .order("display_order", { ascending: true });
+      setHubCategories(hubCats || []);
+
       // Handle ?tab=bible_studies from detail page link
       const tabParam = searchParams.get("tab");
       if (tabParam === "bible_studies") setActiveTab("bible_studies");
@@ -224,17 +257,20 @@ export default function GroupChatPage() {
   // ── Load content when tab or group changes ───────────────────────────────
   useEffect(() => {
     if (!group) return;
+    setSelectedHubItem(null);
     if (activeTab === "members") {
       loadMembers();
     } else if (activeTab === "bible_studies") {
       setSelectedSeries(null);
       setSelectedPost(null);
       loadSeries();
+    } else if (hubCategories.some((c) => c.id === activeTab)) {
+      // items come from static HUB_CONTENT — no fetch needed
     } else {
       loadPosts();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [group, activeTab]);
+  }, [group, activeTab, hubCategories]);
 
   // ── Load series posts when series is selected ────────────────────────────
   useEffect(() => {
@@ -267,11 +303,14 @@ export default function GroupChatPage() {
     const rows = postRows || [];
     const authorIds = [...new Set(rows.map((p) => p.user_id))];
     let roleMap: Record<string, string> = {};
+    let imageMap: Record<string, string | null> = {};
     if (authorIds.length > 0) {
-      const { data: mems } = await supabase
-        .from("group_members").select("user_id, role")
-        .eq("group_id", group.id).in("user_id", authorIds);
+      const [{ data: mems }, { data: pics }] = await Promise.all([
+        supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", authorIds),
+        supabase.from("profile_stats").select("user_id, profile_image_url").in("user_id", authorIds),
+      ]);
       (mems || []).forEach((m) => { roleMap[m.user_id] = m.role; });
+      (pics || []).forEach((p) => { imageMap[p.user_id] = p.profile_image_url ?? null; });
     }
 
     let likedSet = new Set<string>();
@@ -282,7 +321,7 @@ export default function GroupChatPage() {
       (likes || []).forEach((l) => likedSet.add(l.post_id));
     }
 
-    setPosts(rows.map((p) => ({ ...p, role: roleMap[p.user_id] || "member", liked: likedSet.has(p.id) })));
+    setPosts(rows.map((p) => ({ ...p, role: roleMap[p.user_id] || "member", liked: likedSet.has(p.id), profile_image_url: imageMap[p.user_id] ?? null })));
     setLoadingPosts(false);
   }
 
@@ -311,7 +350,7 @@ export default function GroupChatPage() {
       .select("id, user_id, display_name, category, content, like_count, is_pinned, created_at")
       .single();
     if (!error && newPost) {
-      setPosts((prev) => [{ ...newPost, role: userRole, liked: false }, ...prev]);
+      setPosts((prev) => [{ ...newPost, role: userRole, liked: false, profile_image_url: userProfileImage }, ...prev]);
       setNewPostContent("");
     }
     setSubmitting(false);
@@ -321,18 +360,39 @@ export default function GroupChatPage() {
   async function loadMembers() {
     if (!group) return;
     setLoadingMembers(true);
-    const { data: memberRows } = await supabase
-      .from("group_members").select("user_id, role, display_name")
-      .eq("group_id", group.id).eq("status", "approved");
-    if (!memberRows || memberRows.length === 0) { setMembers([]); setLoadingMembers(false); return; }
-    const userIds = memberRows.map((m) => m.user_id);
-    const { data: profiles } = await supabase
-      .from("profile_stats").select("user_id, display_name, username, profile_image_url")
-      .in("user_id", userIds);
+
+    // Paginate past Supabase's 1000-row default limit
+    let allMemberRows: { user_id: string; role: string; display_name: string }[] = [];
+    let from = 0;
+    const PAGE = 1000;
+    while (true) {
+      const { data: page } = await supabase
+        .from("group_members")
+        .select("user_id, role, display_name")
+        .eq("group_id", group.id)
+        .eq("status", "approved")
+        .range(from, from + PAGE - 1);
+      if (!page || page.length === 0) break;
+      allMemberRows = allMemberRows.concat(page);
+      if (page.length < PAGE) break;
+      from += PAGE;
+    }
+
+    if (allMemberRows.length === 0) { setMembers([]); setLoadingMembers(false); return; }
+
+    // Fetch profiles in batches of 500 (Supabase .in() limit)
+    const userIds = allMemberRows.map((m) => m.user_id);
     const profileMap: Record<string, any> = {};
-    (profiles || []).forEach((p) => { profileMap[p.user_id] = p; });
+    for (let i = 0; i < userIds.length; i += 500) {
+      const { data: pics } = await supabase
+        .from("profile_stats")
+        .select("user_id, display_name, username, profile_image_url")
+        .in("user_id", userIds.slice(i, i + 500));
+      (pics || []).forEach((p) => { profileMap[p.user_id] = p; });
+    }
+
     const roleOrder: Record<string, number> = { leader: 0, moderator: 1, member: 2 };
-    const result: Member[] = memberRows.map((m) => {
+    const result: Member[] = allMemberRows.map((m) => {
       const p = profileMap[m.user_id];
       return { user_id: m.user_id, display_name: p?.display_name || p?.username || m.display_name || "Member", role: m.role, profile_image_url: p?.profile_image_url || null };
     });
@@ -385,6 +445,16 @@ export default function GroupChatPage() {
       .eq("post_id", postId)
       .order("created_at", { ascending: true });
     const commentRows = rows || [];
+
+    // Fetch profile images for all commenters
+    let imageMap: Record<string, string | null> = {};
+    if (commentRows.length > 0) {
+      const commenterIds = [...new Set(commentRows.map((c) => c.user_id))];
+      const { data: pics } = await supabase
+        .from("profile_stats").select("user_id, profile_image_url").in("user_id", commenterIds);
+      (pics || []).forEach((p) => { imageMap[p.user_id] = p.profile_image_url ?? null; });
+    }
+
     let likedSet = new Set<string>();
     if (userId && commentRows.length > 0) {
       const { data: likes } = await supabase
@@ -392,7 +462,7 @@ export default function GroupChatPage() {
         .eq("user_id", userId).in("comment_id", commentRows.map((c) => c.id));
       (likes || []).forEach((l) => likedSet.add(l.comment_id));
     }
-    setComments(commentRows.map((c) => ({ ...c, liked: likedSet.has(c.id) })));
+    setComments(commentRows.map((c) => ({ ...c, liked: likedSet.has(c.id), profile_image_url: imageMap[c.user_id] ?? null })));
     setLoadingComments(false);
   }
 
@@ -525,7 +595,7 @@ export default function GroupChatPage() {
       {/* ── Header banner ───────────────────────────────────────────────── */}
       <div className="sticky top-0 z-20" style={{ backgroundColor: coverColor }}>
         <div className="max-w-2xl mx-auto px-4 py-4 flex items-center gap-3">
-          {/* Back: post view → series view → series list → group detail */}
+          {/* Back: hub item → hub list → post view → series view → series list → group detail */}
           {selectedPost ? (
             <button onClick={() => setSelectedPost(null)} className="text-gray-700 hover:text-gray-900 transition">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -538,6 +608,12 @@ export default function GroupChatPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
+          ) : selectedHubItem ? (
+            <button onClick={() => setSelectedHubItem(null)} className="text-gray-700 hover:text-gray-900 transition">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
           ) : (
             <Link href={`/study-groups/${groupId}`} className="text-gray-700 hover:text-gray-900 transition">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -546,41 +622,138 @@ export default function GroupChatPage() {
             </Link>
           )}
           <span className="text-xl">{group.cover_emoji || "🤝"}</span>
-          <h1 className="text-lg font-bold text-gray-900 truncate">
-            {selectedPost ? selectedPost.title : selectedSeries ? selectedSeries.title : group.name}
-          </h1>
+          <div className="flex-1 min-w-0">
+            <h1 className="text-lg font-bold text-gray-900 truncate">
+              {selectedPost ? selectedPost.title : selectedSeries ? selectedSeries.title : selectedHubItem ? selectedHubItem.title : group.name}
+            </h1>
+            {!selectedPost && !selectedSeries && !selectedHubItem && (
+              <button
+                onClick={() => setActiveTab("members")}
+                className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
+              >
+                👥 See All Members
+              </button>
+            )}
+          </div>
         </div>
 
-        {/* ── Category tabs (hidden when in series/post sub-view) ────────── */}
-        {!selectedSeries && !selectedPost && (
-          <div
-            className="max-w-2xl mx-auto px-4 flex gap-1 overflow-x-auto pb-3 scrollbar-hide"
-            style={{ msOverflowStyle: "none", scrollbarWidth: "none" } as React.CSSProperties}
-          >
-            {TABS.map((tab) => {
-              const isActive = activeTab === tab.key;
+        {/* ── Navigation dropdown (hidden when in series/post/hub-item sub-view) ─── */}
+        {!selectedSeries && !selectedPost && !selectedHubItem && (
+          <div className="max-w-2xl mx-auto px-4 pb-3">
+            {(() => {
+              const staticOptions = [
+                { key: "home",          label: "🏠 Home" },
+                { key: "bible_studies", label: "📚 Bible Studies" },
+                { key: "prayer",        label: "🙏 Prayer" },
+                { key: "qa",            label: "❓ Q&A" },
+              ];
+              const activeStatic = staticOptions.find((o) => o.key === activeTab);
+              const activeHub = hubCategories.find((c) => c.id === activeTab);
+              const currentLabel =
+                activeStatic?.label ??
+                (activeHub ? `${activeHub.emoji} ${activeHub.name}` : "🏠 Home");
               return (
                 <button
-                  key={tab.key}
-                  onClick={() => setActiveTab(tab.key)}
-                  className="flex-shrink-0 px-3 py-1.5 rounded-full text-sm font-medium transition"
-                  style={{
-                    backgroundColor: isActive ? "#fff" : "transparent",
-                    color: isActive ? "#4a9b6f" : "rgba(0,0,0,0.55)",
-                    boxShadow: isActive ? "0 1px 4px rgba(0,0,0,0.12)" : "none",
+                  ref={dropdownBtnRef}
+                  onClick={() => {
+                    if (dropdownBtnRef.current) {
+                      setDropdownRect(dropdownBtnRef.current.getBoundingClientRect());
+                    }
+                    setShowHubDropdown((v) => !v);
                   }}
+                  className="flex items-center gap-2 px-4 py-2 bg-white/90 rounded-full text-sm font-semibold text-gray-800 shadow-sm border border-gray-200 hover:bg-white transition"
                 >
-                  {tab.label}
+                  <span>{currentLabel}</span>
+                  <svg
+                    className="w-4 h-4 opacity-60 flex-shrink-0"
+                    style={{ transform: showHubDropdown ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }}
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                  </svg>
                 </button>
               );
-            })}
+            })()}
           </div>
         )}
       </div>
 
+      {/* ── Nav dropdown overlay (rendered outside sticky header to escape z-20 stacking context) */}
+      {showHubDropdown && dropdownRect && (
+        <>
+          <div
+            className="fixed inset-0"
+            style={{ zIndex: 9998 }}
+            onClick={() => setShowHubDropdown(false)}
+          />
+          <div
+            className="fixed bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
+            style={{
+              zIndex: 9999,
+              top: dropdownRect.bottom + 6,
+              left: dropdownRect.left,
+              minWidth: 230,
+            }}
+          >
+            {[
+              { key: "home",          label: "🏠 Home" },
+              { key: "bible_studies", label: "📚 Bible Studies" },
+              { key: "prayer",        label: "🙏 Prayer" },
+              { key: "qa",            label: "❓ Q&A" },
+            ].map((opt) => (
+              <button
+                key={opt.key}
+                onClick={() => { setActiveTab(opt.key); setShowHubDropdown(false); }}
+                className="w-full flex items-center gap-3 px-4 py-3 text-sm text-left hover:bg-gray-50 transition border-b border-gray-50"
+                style={{ color: activeTab === opt.key ? "#4a9b6f" : "#374151", fontWeight: activeTab === opt.key ? 600 : 400 }}
+              >
+                <span>{opt.label}</span>
+                {activeTab === opt.key && (
+                  <svg className="w-4 h-4 ml-auto text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  </svg>
+                )}
+              </button>
+            ))}
+            {hubCategories.length > 0 && (
+              <div className="border-t border-gray-100">
+                {hubCategories.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => { setActiveTab(cat.id); setHubView("articles"); setShowHubDropdown(false); }}
+                    className="w-full flex items-center gap-3 px-4 py-3 text-sm text-left hover:bg-gray-50 transition border-b border-gray-50 last:border-0"
+                    style={{ color: activeTab === cat.id ? "#4a9b6f" : "#374151", fontWeight: activeTab === cat.id ? 600 : 400 }}
+                  >
+                    <span className="text-base">{cat.emoji}</span>
+                    <span>{cat.name}</span>
+                    {activeTab === cat.id && (
+                      <svg className="w-4 h-4 ml-auto text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </>
+      )}
+
       {/* ── Feed ────────────────────────────────────────────────────────── */}
       <div ref={feedRef} className="flex-1 overflow-y-auto pb-32">
-        <div className="max-w-2xl mx-auto px-4 py-4">
+
+        {/* ── Hub article viewer (iframe, full-width, no padding) ───────── */}
+        {selectedHubItem && (
+          <iframe
+            key={selectedHubItem.path}
+            src={selectedHubItem.path}
+            title={selectedHubItem.title}
+            className="w-full border-0 block"
+            style={{ height: "calc(100vh - 60px)", minHeight: 500 }}
+          />
+        )}
+
+        {!selectedHubItem && <div className="max-w-2xl mx-auto px-4 py-4">
 
           {/* ── MEMBERS TAB ─────────────────────────────────────────────── */}
           {activeTab === "members" && !selectedSeries && !selectedPost ? (
@@ -588,38 +761,54 @@ export default function GroupChatPage() {
               <div className="px-5 py-4 border-b border-gray-100">
                 <h2 className="text-base font-semibold text-gray-800">Members ({members.length})</h2>
               </div>
+              {/* Search */}
+              <div className="px-4 py-3 border-b border-gray-100">
+                <input
+                  type="text"
+                  value={membersSearch}
+                  onChange={(e) => setMembersSearch(e.target.value)}
+                  placeholder="Search members..."
+                  className="w-full px-4 py-2 bg-gray-100 rounded-xl text-sm text-gray-900 placeholder-gray-400 outline-none"
+                />
+              </div>
               {loadingMembers ? (
                 <p className="text-sm text-gray-400 text-center py-8">Loading members...</p>
               ) : members.length === 0 ? (
                 <p className="text-sm text-gray-400 text-center py-8">No members yet.</p>
-              ) : (
+              ) : (() => {
+                const q = membersSearch.toLowerCase();
+                const filtered = membersSearch ? members.filter((m) => m.display_name.toLowerCase().includes(q)) : members;
+                if (filtered.length === 0) return <p className="text-sm text-gray-400 text-center py-8">No results for "{membersSearch}".</p>;
+                return (
                 <div className="divide-y divide-gray-100">
-                  {members.map((member) => (
-                    <Link key={member.user_id} href={`/profile/${member.user_id}`}>
-                      <div className="flex items-center gap-3 px-5 py-3.5 hover:bg-gray-50 transition cursor-pointer">
-                        {member.profile_image_url ? (
-                          <img src={member.profile_image_url} alt={member.display_name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
-                        ) : (
-                          <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(member.user_id) }}>
-                            {getInitial(member.display_name)}
-                          </div>
-                        )}
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-semibold text-gray-900 truncate">{member.display_name}</p>
+                  {filtered.map((member) => (
+                    <div key={member.user_id} className="flex items-center gap-3 px-5 py-3.5">
+                      {member.profile_image_url ? (
+                        <img src={member.profile_image_url} alt={member.display_name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(member.user_id) }}>
+                          {getInitial(member.display_name)}
                         </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold text-gray-900 truncate">{member.display_name}</p>
                         {(member.role === "leader" || member.role === "moderator") && (
-                          <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium flex-shrink-0">
-                            {member.role === "leader" ? "Leader" : "Mod"}
+                          <span className="text-xs text-green-600 font-medium">
+                            {member.role === "leader" ? "Leader" : "Moderator"}
                           </span>
                         )}
-                        <svg className="w-4 h-4 text-gray-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
                       </div>
-                    </Link>
+                      <Link
+                        href={`/profile/${member.user_id}`}
+                        className="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition flex-shrink-0"
+                      >
+                        View Profile
+                      </Link>
+                    </div>
                   ))}
                 </div>
-              )}
+                );
+              })()}
             </div>
 
           /* ── BIBLE STUDIES — POST VIEW ─────────────────────────────────── */
@@ -663,12 +852,18 @@ export default function GroupChatPage() {
                     {comments.filter((c) => !c.parent_comment_id).map((comment) => (
                       <div key={comment.id} className="px-5 py-4">
                         <div className="flex items-start gap-3">
-                          <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(comment.user_id) }}>
-                            {getInitial(comment.display_name)}
-                          </div>
+                          <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0">
+                            {comment.profile_image_url ? (
+                              <img src={comment.profile_image_url} alt={comment.display_name} className="w-8 h-8 rounded-full object-cover hover:opacity-80 transition" />
+                            ) : (
+                              <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold hover:opacity-80 transition" style={{ backgroundColor: avatarColor(comment.user_id) }}>
+                                {getInitial(comment.display_name)}
+                              </div>
+                            )}
+                          </Link>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
-                              <span className="text-sm font-semibold text-gray-900">{comment.display_name}</span>
+                              <Link href={`/profile/${comment.user_id}`} className="text-sm font-semibold text-gray-900 hover:underline">{comment.display_name}</Link>
                               <span className="text-xs text-gray-400">{timeAgo(comment.created_at)}</span>
                             </div>
                             <p className="text-sm text-gray-800 leading-relaxed">{comment.content}</p>
@@ -717,12 +912,18 @@ export default function GroupChatPage() {
                             {/* Replies */}
                             {comments.filter((c) => c.parent_comment_id === comment.id).map((reply) => (
                               <div key={reply.id} className="mt-3 ml-4 flex items-start gap-2">
-                                <div className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(reply.user_id) }}>
-                                  {getInitial(reply.display_name)}
-                                </div>
+                                <Link href={`/profile/${reply.user_id}`} className="flex-shrink-0">
+                                  {reply.profile_image_url ? (
+                                    <img src={reply.profile_image_url} alt={reply.display_name} className="w-6 h-6 rounded-full object-cover hover:opacity-80 transition" />
+                                  ) : (
+                                    <div className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold hover:opacity-80 transition" style={{ backgroundColor: avatarColor(reply.user_id) }}>
+                                      {getInitial(reply.display_name)}
+                                    </div>
+                                  )}
+                                </Link>
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2 mb-0.5">
-                                    <span className="text-xs font-semibold text-gray-900">{reply.display_name}</span>
+                                    <Link href={`/profile/${reply.user_id}`} className="text-xs font-semibold text-gray-900 hover:underline">{reply.display_name}</Link>
                                     <span className="text-xs text-gray-400">{timeAgo(reply.created_at)}</span>
                                   </div>
                                   <p className="text-xs text-gray-800 leading-relaxed">{reply.content}</p>
@@ -887,21 +1088,84 @@ export default function GroupChatPage() {
               )}
             </div>
 
+          /* ── HUB TABS ───────────────────────────────────────────────────── */
+          ) : hubCategories.some((c) => c.id === activeTab) ? (() => {
+            const hubCat = hubCategories.find((c) => c.id === activeTab)!;
+            const bg = hubCat.color;
+            const borderColor = bg.replace(/ff$/, "cc");
+
+            // ── Category list view (items from static config) ──
+            const hubCatStatic = HUB_CONTENT.find((c) => c.name === hubCat.name);
+            const allItems = hubCatStatic?.items ?? [];
+            const articles = allItems.filter((i) => i.type === "article");
+            const questions = allItems.filter((i) => i.type === "question");
+            const items = hubView === "articles" ? articles : questions;
+            return (
+              <div className="flex flex-col gap-4">
+                {/* Articles / Questions toggle */}
+                <div className="flex justify-center">
+                  <div className="inline-flex rounded-lg border overflow-hidden shadow-sm" style={{ borderColor }}>
+                    <button
+                      className="px-5 py-2 text-sm font-semibold transition focus:outline-none"
+                      style={{ backgroundColor: hubView === "articles" ? bg : "transparent", color: hubView === "articles" ? "#1a1a1a" : "rgba(0,0,0,0.45)" }}
+                      onClick={() => setHubView("articles")}
+                      type="button"
+                    >
+                      Articles
+                    </button>
+                    <button
+                      className="px-5 py-2 text-sm font-semibold transition focus:outline-none border-l"
+                      style={{ borderColor, backgroundColor: hubView === "questions" ? bg : "transparent", color: hubView === "questions" ? "#1a1a1a" : "rgba(0,0,0,0.45)" }}
+                      onClick={() => setHubView("questions")}
+                      type="button"
+                    >
+                      Questions
+                    </button>
+                  </div>
+                </div>
+
+                {/* Content list */}
+                {items.length === 0 ? (
+                  <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm text-center">
+                    <p className="text-gray-400 text-sm">No {hubView} yet in this category.</p>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-3">
+                    {items.map((item) => (
+                      <button
+                        key={item.id}
+                        onClick={() => setSelectedHubItem(item)}
+                        className="w-full text-left rounded-xl p-5 shadow-sm border hover:shadow-md transition cursor-pointer"
+                        style={{ backgroundColor: bg, borderColor }}
+                      >
+                        <p className="font-bold text-gray-900 text-base leading-snug">{item.title}</p>
+                        <p className="text-gray-600 text-sm mt-1">{item.subtitle}</p>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })() : (
+
           /* ── OTHER TABS (chat) ──────────────────────────────────────────── */
-          ) : (
             renderPosts()
           )}
 
-        </div>
+        </div>}
       </div>
 
       {/* ── Post composer (chat tabs only) ──────────────────────────────── */}
-      {activeTab !== "members" && activeTab !== "bible_studies" && !selectedPost && (
+      {activeTab !== "members" && activeTab !== "bible_studies" && !hubCategories.some((c) => c.id === activeTab) && !selectedPost && (
         <div className="fixed bottom-0 left-0 right-0 z-20 bg-white border-t border-gray-200 px-4 py-3">
           <div className="max-w-2xl mx-auto flex items-end gap-3">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
-              {getInitial(displayName)}
-            </div>
+            {userProfileImage ? (
+              <img src={userProfileImage} alt={displayName} className="w-8 h-8 rounded-full object-cover flex-shrink-0" />
+            ) : (
+              <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
+                {getInitial(displayName)}
+              </div>
+            )}
             <div className="flex-1 bg-gray-100 rounded-2xl px-4 py-2.5 flex items-end gap-2">
               <textarea
                 className="flex-1 bg-transparent text-sm text-gray-900 placeholder-gray-400 resize-none outline-none max-h-28"
@@ -930,9 +1194,13 @@ export default function GroupChatPage() {
       {activeTab === "bible_studies" && selectedPost && (
         <div className="fixed bottom-0 left-0 right-0 z-20 bg-white border-t border-gray-200 px-4 py-3">
           <div className="max-w-2xl mx-auto flex items-end gap-3">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
-              {getInitial(displayName)}
-            </div>
+            {userProfileImage ? (
+              <img src={userProfileImage} alt={displayName} className="w-8 h-8 rounded-full object-cover flex-shrink-0" />
+            ) : (
+              <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
+                {getInitial(displayName)}
+              </div>
+            )}
             <div className="flex-1 bg-gray-100 rounded-2xl px-4 py-2.5 flex items-end gap-2">
               <textarea
                 className="flex-1 bg-transparent text-sm text-gray-900 placeholder-gray-400 resize-none outline-none max-h-28"
@@ -1090,9 +1358,13 @@ export default function GroupChatPage() {
           <div key={post.id} className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
             {post.is_pinned && <div className="flex items-center gap-1 text-xs text-amber-600 font-medium mb-2">📌 Pinned</div>}
             <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(post.user_id) }}>
-                {getInitial(post.display_name)}
-              </div>
+              {post.profile_image_url ? (
+                <img src={post.profile_image_url} alt={post.display_name || ""} className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
+              ) : (
+                <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(post.user_id) }}>
+                  {getInitial(post.display_name)}
+                </div>
+              )}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
                   <Link href={`/profile/${post.user_id}`} className="font-semibold text-gray-900 text-sm hover:underline">

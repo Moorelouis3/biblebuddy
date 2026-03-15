@@ -20,6 +20,7 @@ interface Comment {
   created_at: string;
   updated_at: string | null;
   is_deleted: boolean;
+  profile_image_url?: string | null;
   replies?: Comment[];
 }
 
@@ -77,8 +78,27 @@ export default function CommentSection({
       .eq("article_slug", articleSlug)
       .order("created_at", { ascending: true });
     setLoading(false);
-    if (error) setError(error.message);
-    else setComments(data || []);
+    if (error) { setError(error.message); return; }
+
+    const rows = data || [];
+    // Set comments immediately so they display right away
+    setComments(rows);
+
+    // Then enrich with profile images in the background
+    const userIds = [...new Set(rows.map((c: Comment) => c.user_id))];
+    if (userIds.length === 0) return;
+    try {
+      const { data: pics } = await supabase
+        .from("profile_stats")
+        .select("user_id, profile_image_url")
+        .in("user_id", userIds);
+      if (!pics || pics.length === 0) return;
+      const imageMap: Record<string, string | null> = {};
+      pics.forEach((p) => { imageMap[p.user_id] = p.profile_image_url ?? null; });
+      setComments((prev) => prev.map((c) => ({ ...c, profile_image_url: imageMap[c.user_id] ?? null })));
+    } catch {
+      // Profile image enrichment failed — comments still display fine
+    }
   }, [articleSlug]);
 
   // Scroll to and highlight a comment from URL hash (e.g. #comment-{uuid})
@@ -171,12 +191,18 @@ export default function CommentSection({
         className={`flex gap-3 py-4 ${depth > 0 ? 'pl-4 border-l-2 border-blue-100 bg-blue-50/40 rounded-md' : 'border-b border-gray-200'} transition-all`}
         style={{ marginLeft: depth ? 0 : 0 }}
       >
-        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center text-lg font-bold text-blue-700">
-          {c.user_name.charAt(0).toUpperCase()}
-        </div>
+        <a href={`/profile/${c.user_id}`} className="flex-shrink-0">
+          {c.profile_image_url ? (
+            <img src={c.profile_image_url} alt={c.user_name} className="w-10 h-10 rounded-full object-cover hover:opacity-80 transition" />
+          ) : (
+            <div className="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center text-lg font-bold text-blue-700 hover:opacity-80 transition">
+              {c.user_name.charAt(0).toUpperCase()}
+            </div>
+          )}
+        </a>
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-1">
-            <span className="font-semibold text-blue-900">{c.user_name}</span>
+            <a href={`/profile/${c.user_id}`} className="font-semibold text-blue-900 hover:underline">{c.user_name}</a>
             <span className="text-xs text-gray-400">{timeAgo(c.created_at)}</span>
           </div>
           <div className="mb-2 text-gray-800 whitespace-pre-line leading-relaxed">{c.content}</div>

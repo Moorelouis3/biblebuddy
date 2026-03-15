@@ -2,7 +2,7 @@
 // ...existing code...
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CommentSection from "@/components/comments/CommentSection";
 
 function toTitleCase(str: string) {
@@ -16,6 +16,11 @@ type Crumb = { label: string; href?: string };
 export default function BibleStudyHubArticleLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
+
+  const [isEmbed, setIsEmbed] = useState(false);
+  useEffect(() => {
+    try { setIsEmbed(window.self !== window.top); } catch { setIsEmbed(true); }
+  }, []);
 
   // Breadcrumb logic
   const crumbs: Crumb[] = [
@@ -43,6 +48,25 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
     : isTipsArticlePage
     ? `/bible-study-tips/${segments[1]}`
     : undefined;
+
+  // In embed (iframe) mode: skip breadcrumb nav, just render content + comments
+  if (isEmbed) {
+    return (
+      <div className="max-w-2xl mx-auto px-4 py-6">
+        {children}
+        {(isHubArticlePage || isTipsArticlePage) && articleSlug && (
+          <div className="mt-2">
+            <CommentSection
+              articleSlug={articleSlug}
+              headingText="Answer the reflection question below"
+              placeholderText="Type your reflection answer here to join the discussion..."
+              submitButtonText="Share My Reflection"
+            />
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">

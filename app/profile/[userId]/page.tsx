@@ -85,7 +85,11 @@ export default function PublicProfilePage() {
   const [conversationId, setConversationId] = useState<string | null>(null);
   const [buddyCount, setBuddyCount] = useState(0);
   const [buddiesList, setBuddiesList] = useState<BuddyProfile[]>([]);
+  const [buddiesPage, setBuddiesPage] = useState(1);
+  const [buddiesLoadingPage, setBuddiesLoadingPage] = useState(false);
+  const [buddiesSearch, setBuddiesSearch] = useState("");
   const [showBuddiesModal, setShowBuddiesModal] = useState(false);
+  const BUDDIES_PAGE_SIZE = 20;
   const [showRemoveBuddyConfirm, setShowRemoveBuddyConfirm] = useState(false);
 
   // ── Recent posts ───────────────────────────────────────────────────────────
@@ -263,29 +267,38 @@ export default function PublicProfilePage() {
   }
 
   async function loadBuddyCount() {
-    const { data } = await supabase
+    const { count } = await supabase
       .from("buddies")
-      .select("id", { count: "exact" })
+      .select("*", { count: "exact", head: true })
       .or(`user_id_1.eq.${profileUserId},user_id_2.eq.${profileUserId}`);
-    setBuddyCount(data?.length ?? 0);
+    setBuddyCount(count ?? 0);
   }
 
-  async function loadBuddiesList() {
+  async function loadBuddiesPage(page: number) {
+    setBuddiesLoadingPage(true);
+    const from = (page - 1) * BUDDIES_PAGE_SIZE;
+    const to = from + BUDDIES_PAGE_SIZE - 1;
+
     const { data: rows } = await supabase
       .from("buddies")
       .select("user_id_1, user_id_2")
-      .or(`user_id_1.eq.${profileUserId},user_id_2.eq.${profileUserId}`);
+      .or(`user_id_1.eq.${profileUserId},user_id_2.eq.${profileUserId}`)
+      .range(from, to);
 
-    if (!rows || rows.length === 0) { setBuddiesList([]); return; }
+    if (!rows || rows.length === 0) { setBuddiesList([]); setBuddiesLoadingPage(false); return; }
 
     const otherIds = rows.map((r) => r.user_id_1 === profileUserId ? r.user_id_2 : r.user_id_1);
 
-    const { data: profiles } = await supabase
+    const { data: pics } = await supabase
       .from("profile_stats")
       .select("user_id, display_name, username, profile_image_url")
       .in("user_id", otherIds);
 
-    setBuddiesList(profiles || []);
+    const profileMap: Record<string, BuddyProfile> = {};
+    (pics || []).forEach((p) => { profileMap[p.user_id] = p; });
+
+    setBuddiesList(otherIds.map((id) => profileMap[id] || { user_id: id, display_name: null, username: null, profile_image_url: null }));
+    setBuddiesLoadingPage(false);
   }
 
   // ── Buddy actions ──────────────────────────────────────────────────────────
@@ -709,7 +722,8 @@ export default function PublicProfilePage() {
                 )}
                 <button
                   onClick={() => {
-                    loadBuddiesList();
+                    setBuddiesPage(1);
+                    loadBuddiesPage(1);
                     setShowBuddiesModal(true);
                   }}
                   className="hover:text-gray-700 transition font-medium"
@@ -1005,59 +1019,118 @@ export default function PublicProfilePage() {
           <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-0 sm:px-4">
             <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-xl w-full sm:max-w-md max-h-[80vh] flex flex-col">
 
+              {/* Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 flex-shrink-0">
                 <h2 className="text-lg font-bold text-gray-900">
                   {isOwner ? "Your Buddies" : `${displayName}'s Buddies`}
+                  {buddyCount > 0 && <span className="ml-2 text-sm font-normal text-gray-400">({buddyCount.toLocaleString()})</span>}
                 </h2>
                 <button
-                  onClick={() => setShowBuddiesModal(false)}
+                  onClick={() => { setShowBuddiesModal(false); setBuddiesSearch(""); setBuddiesPage(1); }}
                   className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl"
                 >
                   ×
                 </button>
               </div>
 
-              <div className="overflow-y-auto flex-1 px-4 py-4">
-                {buddiesList.length === 0 ? (
-                  <p className="text-sm text-gray-400 text-center py-8">No buddies yet.</p>
-                ) : (
-                  <div className="flex flex-col gap-2">
-                    {buddiesList.map((buddy) => {
-                      const buddyDisplay = buddy.display_name || buddy.username || "Bible Buddy Member";
-                      const buddyInitials = buddyDisplay.split(" ").map((w: string) => w[0]).join("").slice(0, 2).toUpperCase();
-                      const buddyColor = avatarColor(buddy.user_id);
-                      return (
-                        <Link
-                          key={buddy.user_id}
-                          href={`/profile/${buddy.user_id}`}
-                          onClick={() => setShowBuddiesModal(false)}
-                          className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition"
-                        >
-                          {buddy.profile_image_url ? (
-                            <img src={buddy.profile_image_url} alt={buddyDisplay} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
-                          ) : (
-                            <div
-                              className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
-                              style={{ backgroundColor: buddyColor }}
-                            >
-                              {buddyInitials}
-                            </div>
-                          )}
-                          <div className="flex-1 min-w-0">
-                            <p className="font-semibold text-gray-900 text-sm truncate">{buddyDisplay}</p>
-                            {buddy.username && (
-                              <p className="text-xs text-gray-500">@{buddy.username}</p>
-                            )}
-                          </div>
-                          <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                )}
+              {/* Search */}
+              <div className="px-4 pt-3 pb-2 flex-shrink-0">
+                <input
+                  type="text"
+                  value={buddiesSearch}
+                  onChange={(e) => setBuddiesSearch(e.target.value)}
+                  placeholder="Search buddies..."
+                  className="w-full px-4 py-2 bg-gray-100 rounded-xl text-sm text-gray-900 placeholder-gray-400 outline-none"
+                />
               </div>
+
+              {/* List */}
+              <div className="overflow-y-auto flex-1 px-4 pb-2">
+                {buddiesLoadingPage ? (
+                  <p className="text-sm text-gray-400 text-center py-8">Loading...</p>
+                ) : buddiesList.length === 0 ? (
+                  <p className="text-sm text-gray-400 text-center py-8">No buddies yet.</p>
+                ) : (() => {
+                  const q = buddiesSearch.toLowerCase();
+                  const filtered = buddiesSearch
+                    ? buddiesList.filter((b) => (b.display_name || b.username || "").toLowerCase().includes(q))
+                    : buddiesList;
+                  if (filtered.length === 0) return <p className="text-sm text-gray-400 text-center py-8">No results for "{buddiesSearch}".</p>;
+                  return (
+                    <div className="divide-y divide-gray-100">
+                      {filtered.map((buddy) => {
+                        const buddyDisplay = buddy.display_name || buddy.username || "Member";
+                        const buddyInitials = buddyDisplay.split(" ").map((w: string) => w[0]).join("").slice(0, 2).toUpperCase();
+                        return (
+                          <div key={buddy.user_id} className="flex items-center gap-3 py-3">
+                            {buddy.profile_image_url ? (
+                              <img src={buddy.profile_image_url} alt={buddyDisplay} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                            ) : (
+                              <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(buddy.user_id) }}>
+                                {buddyInitials}
+                              </div>
+                            )}
+                            <div className="flex-1 min-w-0">
+                              <p className="font-semibold text-gray-900 text-sm truncate">{buddyDisplay}</p>
+                              {buddy.username && <p className="text-xs text-gray-500">@{buddy.username}</p>}
+                            </div>
+                            <Link
+                              href={`/profile/${buddy.user_id}`}
+                              onClick={() => { setShowBuddiesModal(false); setBuddiesSearch(""); setBuddiesPage(1); }}
+                              className="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition flex-shrink-0"
+                            >
+                              View Profile
+                            </Link>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
+              </div>
+
+              {/* Pagination */}
+              {!buddiesSearch && buddyCount > BUDDIES_PAGE_SIZE && (() => {
+                const totalPages = Math.ceil(buddyCount / BUDDIES_PAGE_SIZE);
+                // Show up to 7 page buttons with ellipsis
+                const getPages = () => {
+                  if (totalPages <= 7) return Array.from({ length: totalPages }, (_, i) => i + 1);
+                  const pages: (number | "...")[] = [];
+                  pages.push(1);
+                  if (buddiesPage > 3) pages.push("...");
+                  for (let p = Math.max(2, buddiesPage - 1); p <= Math.min(totalPages - 1, buddiesPage + 1); p++) pages.push(p);
+                  if (buddiesPage < totalPages - 2) pages.push("...");
+                  pages.push(totalPages);
+                  return pages;
+                };
+                return (
+                  <div className="flex items-center justify-center gap-1 px-4 py-3 border-t border-gray-100 flex-shrink-0 flex-wrap">
+                    <button
+                      onClick={() => { const p = buddiesPage - 1; setBuddiesPage(p); loadBuddiesPage(p); }}
+                      disabled={buddiesPage === 1 || buddiesLoadingPage}
+                      className="px-2 py-1 text-sm rounded-lg text-gray-500 hover:bg-gray-100 disabled:opacity-30 transition"
+                    >‹</button>
+                    {getPages().map((p, i) =>
+                      p === "..." ? (
+                        <span key={`ellipsis-${i}`} className="px-1 text-gray-400 text-sm">…</span>
+                      ) : (
+                        <button
+                          key={p}
+                          onClick={() => { setBuddiesPage(p as number); loadBuddiesPage(p as number); }}
+                          disabled={buddiesLoadingPage}
+                          className={`w-8 h-8 text-sm rounded-lg font-medium transition ${buddiesPage === p ? "text-white" : "text-gray-600 hover:bg-gray-100"}`}
+                          style={buddiesPage === p ? { backgroundColor: "#4a9b6f" } : {}}
+                        >{p}</button>
+                      )
+                    )}
+                    <button
+                      onClick={() => { const p = buddiesPage + 1; setBuddiesPage(p); loadBuddiesPage(p); }}
+                      disabled={buddiesPage === totalPages || buddiesLoadingPage}
+                      className="px-2 py-1 text-sm rounded-lg text-gray-500 hover:bg-gray-100 disabled:opacity-30 transition"
+                    >›</button>
+                  </div>
+                );
+              })()}
 
             </div>
           </div>

@@ -21,7 +21,24 @@ interface StudyGroup {
   invite_code: string | null;
 }
 
+interface GroupMember {
+  user_id: string;
+  display_name: string;
+  role: string;
+  profile_image_url: string | null;
+}
+
 type MemberStatus = "not_member" | "pending" | "approved" | "rejected";
+
+const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
+function avatarColor(userId: string): string {
+  let hash = 0;
+  for (let i = 0; i < userId.length; i++) hash = userId.charCodeAt(i) + ((hash << 5) - hash);
+  return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+}
+function getInitial(name: string): string {
+  return (name || "?")[0].toUpperCase();
+}
 
 export default function GroupDetailPage() {
   const params = useParams();
@@ -36,13 +53,16 @@ export default function GroupDetailPage() {
   const [joining, setJoining] = useState(false);
   const [currentSeries, setCurrentSeries] = useState<{ title: string; current_week: number; total_weeks: number } | null>(null);
 
+  // Members modal
+  const [showMembersModal, setShowMembersModal] = useState(false);
+  const [modalMembers, setModalMembers] = useState<GroupMember[]>([]);
+  const [loadingModalMembers, setLoadingModalMembers] = useState(false);
+
   useEffect(() => {
     async function load() {
-      // Get current user
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         setUserId(user.id);
-        // Try to get display name from profile_stats
         const { data: profile } = await supabase
           .from("profile_stats")
           .select("display_name, username")
@@ -51,7 +71,6 @@ export default function GroupDetailPage() {
         setDisplayName(profile?.display_name || profile?.username || user.email?.split("@")[0] || "Member");
       }
 
-      // Fetch group
       const { data: groupData, error } = await supabase
         .from("study_groups")
         .select("*")
@@ -59,14 +78,12 @@ export default function GroupDetailPage() {
         .maybeSingle();
 
       if (error || !groupData) {
-        console.error("[GROUP_DETAIL] Error loading group:", error);
         router.push("/study-groups");
         return;
       }
 
       setGroup(groupData);
 
-      // Fetch current series
       const { data: seriesData } = await supabase
         .from("group_series")
         .select("title, current_week, total_weeks")
@@ -75,7 +92,6 @@ export default function GroupDetailPage() {
         .maybeSingle();
       setCurrentSeries(seriesData || null);
 
-      // Check membership status
       if (user) {
         const { data: membership } = await supabase
           .from("group_members")
@@ -83,12 +99,7 @@ export default function GroupDetailPage() {
           .eq("group_id", groupId)
           .eq("user_id", user.id)
           .maybeSingle();
-
-        if (membership) {
-          setMemberStatus(membership.status as MemberStatus);
-        } else {
-          setMemberStatus("not_member");
-        }
+        setMemberStatus(membership ? (membership.status as MemberStatus) : "not_member");
       }
 
       setLoading(false);
@@ -97,12 +108,65 @@ export default function GroupDetailPage() {
     load();
   }, [groupId, router]);
 
+  async function openMembersModal() {
+    setShowMembersModal(true);
+    if (modalMembers.length > 0) return; // already loaded
+    setLoadingModalMembers(true);
+
+    // Paginate past Supabase's 1000-row default limit
+    let allMemberRows: { user_id: string; role: string; display_name: string }[] = [];
+    let from = 0;
+    const PAGE = 1000;
+    while (true) {
+      const { data: page } = await supabase
+        .from("group_members")
+        .select("user_id, role, display_name")
+        .eq("group_id", groupId)
+        .eq("status", "approved")
+        .range(from, from + PAGE - 1);
+      if (!page || page.length === 0) break;
+      allMemberRows = allMemberRows.concat(page);
+      if (page.length < PAGE) break;
+      from += PAGE;
+    }
+
+    if (allMemberRows.length === 0) {
+      setModalMembers([]);
+      setLoadingModalMembers(false);
+      return;
+    }
+
+    // Fetch profiles in batches of 500
+    const userIds = allMemberRows.map((m) => m.user_id);
+    const profileMap: Record<string, any> = {};
+    for (let i = 0; i < userIds.length; i += 500) {
+      const { data: pics } = await supabase
+        .from("profile_stats")
+        .select("user_id, display_name, username, profile_image_url")
+        .in("user_id", userIds.slice(i, i + 500));
+      (pics || []).forEach((p) => { profileMap[p.user_id] = p; });
+    }
+
+    const roleOrder: Record<string, number> = { leader: 0, moderator: 1, member: 2 };
+    const result: GroupMember[] = allMemberRows.map((m) => {
+      const p = profileMap[m.user_id];
+      return {
+        user_id: m.user_id,
+        display_name: p?.display_name || p?.username || m.display_name || "Member",
+        role: m.role,
+        profile_image_url: p?.profile_image_url || null,
+      };
+    });
+    result.sort((a, b) => (roleOrder[a.role] ?? 2) - (roleOrder[b.role] ?? 2));
+    setModalMembers(result);
+    setLoadingModalMembers(false);
+  }
+
   async function handleJoinRequest() {
     if (!userId || !group) return;
     setJoining(true);
 
     try {
-      // Insert membership request
       const { error: memberError } = await supabase
         .from("group_members")
         .insert({
@@ -114,12 +178,10 @@ export default function GroupDetailPage() {
         });
 
       if (memberError) {
-        console.error("[GROUP_DETAIL] Error inserting member:", memberError);
         setJoining(false);
         return;
       }
 
-      // Log feed activity
       void supabase.rpc("log_feed_activity", {
         p_activity_type: "study_group_joined",
         p_activity_data: { group_id: group.id, group_name: group.name },
@@ -128,16 +190,13 @@ export default function GroupDetailPage() {
         p_is_public: true,
       });
 
-      // Notify the group leader
       if (group.leader_user_id) {
-        await supabase
-          .from("notifications")
-          .insert({
-            user_id: group.leader_user_id,
-            type: "group_join_request",
-            from_user_name: displayName,
-            message: `${displayName} has requested to join "${group.name}"`,
-          });
+        await supabase.from("notifications").insert({
+          user_id: group.leader_user_id,
+          type: "group_join_request",
+          from_user_name: displayName,
+          message: `${displayName} has requested to join "${group.name}"`,
+        });
       }
 
       setMemberStatus("pending");
@@ -180,7 +239,6 @@ export default function GroupDetailPage() {
           className="rounded-2xl p-6 mb-6 relative"
           style={{ backgroundColor: coverColor }}
         >
-          {/* Share icon (skeleton — no logic yet) */}
           <button
             className="absolute top-4 right-4 w-9 h-9 bg-white/60 rounded-full flex items-center justify-center hover:bg-white/80 transition"
             title="Invite link coming soon"
@@ -208,9 +266,13 @@ export default function GroupDetailPage() {
                   )}
                 </p>
               )}
-              <span className="inline-flex items-center gap-1 mt-2 bg-white/60 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">
+              {/* Clickable member count */}
+              <button
+                onClick={openMembersModal}
+                className="inline-flex items-center gap-1 mt-2 bg-white/60 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full hover:bg-white/80 transition"
+              >
                 👥 {group.member_count === 1 ? "1 member" : `${group.member_count} members`}
-              </span>
+              </button>
             </div>
           </div>
         </div>
@@ -233,7 +295,11 @@ export default function GroupDetailPage() {
             >
               <div>
                 <p className="text-gray-900 font-semibold text-sm">{currentSeries.title}</p>
-                <p className="text-gray-600 text-xs mt-0.5">Week {currentSeries.current_week} of {currentSeries.total_weeks}</p>
+                <p className="text-gray-600 text-xs mt-0.5">
+                  {currentSeries.current_week === 0
+                    ? "Coming Soon"
+                    : `Week ${currentSeries.current_week} of ${currentSeries.total_weeks}`}
+                </p>
               </div>
               {memberStatus === "approved" && (
                 <Link
@@ -273,10 +339,7 @@ export default function GroupDetailPage() {
 
             {memberStatus === "pending" && (
               <>
-                <button
-                  disabled
-                  className="w-full py-3 rounded-xl bg-gray-200 text-gray-500 font-semibold text-base cursor-not-allowed"
-                >
+                <button disabled className="w-full py-3 rounded-xl bg-gray-200 text-gray-500 font-semibold text-base cursor-not-allowed">
                   Request Pending
                 </button>
                 <p className="text-xs text-gray-400 text-center mt-3">
@@ -297,10 +360,7 @@ export default function GroupDetailPage() {
 
             {memberStatus === "rejected" && (
               <>
-                <button
-                  disabled
-                  className="w-full py-3 rounded-xl bg-gray-200 text-gray-500 font-semibold text-base cursor-not-allowed"
-                >
+                <button disabled className="w-full py-3 rounded-xl bg-gray-200 text-gray-500 font-semibold text-base cursor-not-allowed">
                   Request Not Approved
                 </button>
                 <p className="text-xs text-gray-400 text-center mt-3">
@@ -312,6 +372,82 @@ export default function GroupDetailPage() {
         )}
 
       </div>
+
+      {/* ── Members Modal ─────────────────────────────────────────────────── */}
+      {showMembersModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-0 sm:px-4"
+          onClick={() => setShowMembersModal(false)}
+        >
+          <div
+            className="bg-white w-full sm:max-w-md rounded-t-2xl sm:rounded-2xl shadow-xl max-h-[80vh] flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal header */}
+            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 flex-shrink-0">
+              <h2 className="text-base font-semibold text-gray-900">
+                Members {modalMembers.length > 0 ? `(${modalMembers.length})` : ""}
+              </h2>
+              <button
+                onClick={() => setShowMembersModal(false)}
+                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Member list */}
+            <div className="overflow-y-auto flex-1">
+              {loadingModalMembers ? (
+                <p className="text-sm text-gray-400 text-center py-10">Loading members...</p>
+              ) : modalMembers.length === 0 ? (
+                <p className="text-sm text-gray-400 text-center py-10">No members yet.</p>
+              ) : (
+                <div className="divide-y divide-gray-100">
+                  {modalMembers.map((member) => (
+                    <div key={member.user_id} className="flex items-center gap-3 px-5 py-3.5">
+                      {/* Avatar */}
+                      {member.profile_image_url ? (
+                        <img
+                          src={member.profile_image_url}
+                          alt={member.display_name}
+                          className="w-10 h-10 rounded-full object-cover flex-shrink-0"
+                        />
+                      ) : (
+                        <div
+                          className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
+                          style={{ backgroundColor: avatarColor(member.user_id) }}
+                        >
+                          {getInitial(member.display_name)}
+                        </div>
+                      )}
+
+                      {/* Name + role */}
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold text-gray-900 truncate">{member.display_name}</p>
+                        {(member.role === "leader" || member.role === "moderator") && (
+                          <span className="text-xs text-green-600 font-medium">
+                            {member.role === "leader" ? "Leader" : "Moderator"}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* View Profile button */}
+                      <Link
+                        href={`/profile/${member.user_id}`}
+                        onClick={() => setShowMembersModal(false)}
+                        className="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition flex-shrink-0"
+                      >
+                        View Profile
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

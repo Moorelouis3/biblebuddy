@@ -1,3 +1,10 @@
+/* ── Hub article body styles ─────────────────────────────────────────────── */
+.hub-article-body h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+.hub-article-body h2 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+.hub-article-body p { margin-bottom: 0.75rem; line-height: 1.7; }
+.hub-article-body ul { margin-bottom: 0.75rem; padding-left: 1.25rem; list-style: none; }
+.hub-article-body li { margin-bottom: 0.25rem; }
+
 /* Force white badge text regardless of card styles. */
 .pro-badge,
 .pro-badge * {

@@ -27,6 +27,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
 
+  // When loaded inside an iframe (group hub embed), skip the shell entirely
+  const [isEmbedded, setIsEmbedded] = useState(false);
+  useEffect(() => {
+    try { setIsEmbedded(window.self !== window.top); } catch { setIsEmbedded(true); }
+  }, []);
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -602,7 +608,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  const isBarePage = HIDDEN_ROUTES.includes(pathname ?? "/");
+  // Treat iframe-embedded pages the same as bare pages (no shell/nav)
+  const isBarePage = HIDDEN_ROUTES.includes(pathname ?? "/") || isEmbedded;
 
   const isAdmin = isLoggedIn && userEmail === "moorelouis3@gmail.com";
 
