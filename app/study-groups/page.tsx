@@ -105,7 +105,7 @@ export default function StudyGroupsPage() {
                           )}
                           <div className="flex items-center gap-1 mt-2">
                             <span className="text-xs text-gray-400">
-                              {group.member_count} / {group.max_members} members
+                              {group.member_count === 1 ? "1 member" : `${group.member_count} members`}
                             </span>
                           </div>
                         </div>

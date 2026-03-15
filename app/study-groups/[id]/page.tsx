@@ -34,6 +34,7 @@ export default function GroupDetailPage() {
   const [displayName, setDisplayName] = useState<string>("");
   const [memberStatus, setMemberStatus] = useState<MemberStatus>("not_member");
   const [joining, setJoining] = useState(false);
+  const [currentSeries, setCurrentSeries] = useState<{ title: string; current_week: number; total_weeks: number } | null>(null);
 
   useEffect(() => {
     async function load() {
@@ -64,6 +65,15 @@ export default function GroupDetailPage() {
       }
 
       setGroup(groupData);
+
+      // Fetch current series
+      const { data: seriesData } = await supabase
+        .from("group_series")
+        .select("title, current_week, total_weeks")
+        .eq("group_id", groupId)
+        .eq("is_current", true)
+        .maybeSingle();
+      setCurrentSeries(seriesData || null);
 
       // Check membership status
       if (user) {
@@ -108,6 +118,15 @@ export default function GroupDetailPage() {
         setJoining(false);
         return;
       }
+
+      // Log feed activity
+      void supabase.rpc("log_feed_activity", {
+        p_activity_type: "study_group_joined",
+        p_activity_data: { group_id: group.id, group_name: group.name },
+        p_group_id: group.id,
+        p_group_name: group.name,
+        p_is_public: true,
+      });
 
       // Notify the group leader
       if (group.leader_user_id) {
@@ -190,7 +209,7 @@ export default function GroupDetailPage() {
                 </p>
               )}
               <span className="inline-flex items-center gap-1 mt-2 bg-white/60 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">
-                👥 {group.member_count} / {group.max_members} members
+                👥 {group.member_count === 1 ? "1 member" : `${group.member_count} members`}
               </span>
             </div>
           </div>
@@ -204,15 +223,26 @@ export default function GroupDetailPage() {
           </div>
         )}
 
-        {/* Current Weekly Study */}
-        {group.current_weekly_study && (
+        {/* Current Series */}
+        {currentSeries && (
           <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm mb-6">
-            <h2 className="text-base font-semibold text-gray-900 mb-2">📖 Current Weekly Study</h2>
+            <h2 className="text-base font-semibold text-gray-900 mb-2">📖 Current Series</h2>
             <div
-              className="rounded-lg px-4 py-3"
+              className="rounded-lg px-4 py-3 flex items-center justify-between gap-3"
               style={{ backgroundColor: coverColor + "55" }}
             >
-              <p className="text-gray-900 font-medium text-sm">{group.current_weekly_study}</p>
+              <div>
+                <p className="text-gray-900 font-semibold text-sm">{currentSeries.title}</p>
+                <p className="text-gray-600 text-xs mt-0.5">Week {currentSeries.current_week} of {currentSeries.total_weeks}</p>
+              </div>
+              {memberStatus === "approved" && (
+                <Link
+                  href={`/study-groups/${groupId}/chat?tab=bible_studies`}
+                  className="text-xs font-medium text-gray-700 hover:text-gray-900 transition whitespace-nowrap"
+                >
+                  View in group →
+                </Link>
+              )}
             </div>
           </div>
         )}

@@ -33,6 +33,48 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
   const [user, setUser] = useState<any>(null);
   const [creditBlocked, setCreditBlocked] = useState(false);
 
+  // Verse share state
+  const [shareVerse, setShareVerse] = useState<{ number: number; text: string } | null>(null);
+  const [shareContent, setShareContent] = useState("");
+  const [shareVisibility, setShareVisibility] = useState<"community" | "buddies">("community");
+  const [shareSubmitting, setShareSubmitting] = useState(false);
+  const [shareSuccess, setShareSuccess] = useState(false);
+
+  async function handleShareSubmit() {
+    if (!user || !shareVerse || shareSubmitting) return;
+    setShareSubmitting(true);
+    const verseRef = `${book.charAt(0).toUpperCase() + book.slice(1)} ${chapter}:${shareVerse.number}`;
+    const { data, error } = await supabase
+      .from("feed_posts")
+      .insert({
+        user_id: user.id,
+        post_type: "verse",
+        content: shareContent.trim() || "",
+        verse_ref: verseRef,
+        verse_text: shareVerse.text,
+        visibility: shareVisibility,
+      })
+      .select("id")
+      .single();
+
+    if (!error && data) {
+      void supabase.rpc("log_feed_activity", {
+        p_activity_type: "verse_shared",
+        p_activity_data: { verse_ref: verseRef, post_id: data.id },
+        p_feed_post_id: data.id,
+        p_is_public: shareVisibility === "community",
+      });
+      setShareSuccess(true);
+      setTimeout(() => {
+        setShareVerse(null);
+        setShareContent("");
+        setShareSuccess(false);
+        setShareVisibility("community");
+      }, 1800);
+    }
+    setShareSubmitting(false);
+  }
+
   useEffect(() => {
     (async () => {
       const { data: userData } = await supabase.auth.getUser();
@@ -153,10 +195,22 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
           </button>
           {/* Render enriched HTML for this verse, fallback to plain text */}
           <span
-            className="verse-text break-words text-base leading-relaxed"
+            className="verse-text break-words text-base leading-relaxed flex-1"
             // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted HTML from server-side enrichment
             dangerouslySetInnerHTML={{ __html: getEnrichedHtmlForVerse(v.enrichedHtml, v.text) }}
           />
+          {/* Share to Feed button — visible on row hover */}
+          {user && (
+            <button
+              onClick={(e) => { e.stopPropagation(); setShareVerse({ number: v.number, text: v.text }); setShareContent(""); }}
+              className="opacity-0 group-hover:opacity-100 ml-2 flex-shrink-0 transition-opacity text-gray-400 hover:text-green-600 p-1 rounded"
+              title={`Share verse ${v.number} to Feed`}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+              </svg>
+            </button>
+          )}
         </div>
       ))}
       <ColorPicker
@@ -170,6 +224,70 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
         userId={user?.id || null}
         onClose={() => setCreditBlocked(false)}
       />
+
+      {/* ── Share Verse to Feed Modal ─────────────────────────────────── */}
+      {shareVerse && (
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-4 pb-4 sm:pb-0">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-5">
+            {shareSuccess ? (
+              <div className="text-center py-6">
+                <p className="text-3xl mb-2">✅</p>
+                <p className="font-semibold text-gray-900">Shared to your Feed!</p>
+              </div>
+            ) : (
+              <>
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="font-bold text-gray-900 text-sm">Share to Bible Buddy Feed</h3>
+                  <button onClick={() => setShareVerse(null)} className="text-gray-400 hover:text-gray-600 transition text-lg leading-none">×</button>
+                </div>
+
+                {/* Verse preview */}
+                <div className="bg-green-50 border border-green-200 rounded-xl px-4 py-3 mb-3">
+                  <p className="text-xs font-semibold text-green-700 mb-1">
+                    {book.charAt(0).toUpperCase() + book.slice(1)} {chapter}:{shareVerse.number}
+                  </p>
+                  <p className="text-sm text-gray-700 italic leading-relaxed">"{shareVerse.text}"</p>
+                </div>
+
+                {/* Thought textarea */}
+                <textarea
+                  value={shareContent}
+                  onChange={(e) => setShareContent(e.target.value)}
+                  placeholder="What does this verse mean to you? (optional)"
+                  rows={3}
+                  autoFocus
+                  className="w-full text-sm px-3 py-2 border border-gray-200 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-green-400 mb-3"
+                />
+
+                {/* Visibility + submit */}
+                <div className="flex items-center justify-between gap-3 flex-wrap">
+                  <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-0.5">
+                    {(["community", "buddies"] as const).map((v) => (
+                      <button
+                        key={v}
+                        onClick={() => setShareVisibility(v)}
+                        className={`px-3 py-1.5 rounded-md text-xs font-semibold transition ${
+                          shareVisibility === v ? "bg-white shadow-sm text-gray-800" : "text-gray-400 hover:text-gray-600"
+                        }`}
+                      >
+                        {v === "community" ? "🌎 Community" : "👥 Buddies"}
+                      </button>
+                    ))}
+                  </div>
+                  <button
+                    onClick={handleShareSubmit}
+                    disabled={shareSubmitting}
+                    className="px-4 py-2 rounded-xl text-xs font-bold text-white transition disabled:opacity-40"
+                    style={{ backgroundColor: "#4a9b6f" }}
+                  >
+                    {shareSubmitting ? "Sharing..." : "Share"}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

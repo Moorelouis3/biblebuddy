@@ -282,6 +282,20 @@ export default function DevotionalDetailPage() {
       // Close day modal
       setSelectedDay(null);
 
+      // Log feed activity for new completions only
+      if (!wasAlreadyCompleted && devotional) {
+        void supabase.rpc("log_feed_activity", {
+          p_activity_type: "devotional_day_completed",
+          p_activity_data: {
+            devotional_id: devotionalId,
+            title: devotional.title,
+            day_number: dayNumber,
+            total_days: devotional.total_days,
+          },
+          p_is_public: true,
+        });
+      }
+
       // Show celebration modal if this was a NEW completion (not already completed)
       if (!wasAlreadyCompleted && devotional) {
         setCompletedDayNumber(dayNumber);

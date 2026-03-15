@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { ChatLouis } from "./ChatLouis";
 import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
@@ -19,6 +19,7 @@ import { FeatureRenderPriorityProvider } from "./FeatureRenderPriorityContext";
 import { CURRENT_UPDATE_VERSION } from "../lib/globalUpdateConfig";
 import DailyRecommendationModal from "./DailyRecommendationModal";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
+import { BuddyCelebrationModal, type BuddyCelebrationUser } from "./BuddyCelebrationModal";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
@@ -60,6 +61,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   // Notifications bell state
   const [notifications, setNotifications] = useState<Array<{
     id: string;
+    type: string | null;
+    from_user_id: string | null;
     from_user_name: string;
     article_slug: string;
     comment_id: string | null;
@@ -67,8 +70,27 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     is_read: boolean;
     created_at: string;
   }>>([]);
+  const [buddyActionLoadingId, setBuddyActionLoadingId] = useState<string | null>(null);
+  const [showBuddyCelebration, setShowBuddyCelebration] = useState(false);
+  const [celebrationData, setCelebrationData] = useState<{ me: BuddyCelebrationUser; buddy: BuddyCelebrationUser } | null>(null);
+  const shownCelebrationIds = useRef<Set<string>>(new Set());
   const [isNotifOpen, setIsNotifOpen] = useState(false);
   const notifRef = useRef<HTMLDivElement>(null);
+
+  // Messages panel state
+  const [unreadMessageCount, setUnreadMessageCount] = useState(0);
+  const [isMessagesOpen, setIsMessagesOpen] = useState(false);
+  const messagesRef = useRef<HTMLDivElement>(null);
+  const [conversationPreviews, setConversationPreviews] = useState<Array<{
+    id: string;
+    otherUserId: string;
+    otherUserName: string;
+    otherUserImage: string | null;
+    lastMessagePreview: string | null;
+    lastMessageAt: string | null;
+    hasUnread: boolean;
+  }>>([]);
+  const [loadingPreviews, setLoadingPreviews] = useState(false);
 
   // PWA install prompt state
   const deferredInstallPromptRef = useRef<any>(null);
@@ -217,6 +239,27 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (userId) void fetchNotifications(userId);
   }, [pathname, userId]);
 
+  // Fetch unread message count on every page navigation
+  useEffect(() => {
+    if (!userId) return;
+    async function fetchUnreadCount() {
+      const { data: convos } = await supabase
+        .from("conversations")
+        .select("id")
+        .or(`user_id_1.eq.${userId},user_id_2.eq.${userId}`);
+      if (!convos || convos.length === 0) { setUnreadMessageCount(0); return; }
+      const convoIds = convos.map((c: any) => c.id);
+      const { count } = await supabase
+        .from("messages")
+        .select("id", { count: "exact", head: true })
+        .in("conversation_id", convoIds)
+        .neq("sender_id", userId)
+        .is("read_at", null);
+      setUnreadMessageCount(count ?? 0);
+    }
+    void fetchUnreadCount();
+  }, [pathname, userId]);
+
   // Capture the PWA install prompt (fires on Android/Chrome before page is interactive)
   useEffect(() => {
     function handler(e: Event) {
@@ -236,14 +279,175 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setCanInstall(false);
   }
 
+  async function fetchConversationPreviews(currentUserId: string) {
+    setLoadingPreviews(true);
+    try {
+      const { data: convos } = await supabase
+        .from("conversations")
+        .select("id, user_id_1, user_id_2, last_message_at, last_message_preview")
+        .or(`user_id_1.eq.${currentUserId},user_id_2.eq.${currentUserId}`)
+        .order("last_message_at", { ascending: false, nullsFirst: false })
+        .limit(5);
+
+      if (!convos || convos.length === 0) { setConversationPreviews([]); return; }
+
+      const otherIds = convos.map((c) => c.user_id_1 === currentUserId ? c.user_id_2 : c.user_id_1);
+
+      const [profilesResult, unreadResult] = await Promise.all([
+        supabase
+          .from("profile_stats")
+          .select("user_id, display_name, username, profile_image_url")
+          .in("user_id", otherIds),
+        supabase
+          .from("messages")
+          .select("conversation_id")
+          .in("conversation_id", convos.map((c) => c.id))
+          .neq("sender_id", currentUserId)
+          .is("read_at", null),
+      ]);
+
+      const profiles = profilesResult.data || [];
+      const unreadConvoIds = new Set((unreadResult.data || []).map((m) => m.conversation_id));
+
+      const previews = convos.map((c) => {
+        const otherId = c.user_id_1 === currentUserId ? c.user_id_2 : c.user_id_1;
+        const profile = profiles.find((p) => p.user_id === otherId);
+        return {
+          id: c.id,
+          otherUserId: otherId,
+          otherUserName: profile?.display_name || profile?.username || "Bible Buddy",
+          otherUserImage: profile?.profile_image_url || null,
+          lastMessagePreview: c.last_message_preview || null,
+          lastMessageAt: c.last_message_at || null,
+          hasUnread: unreadConvoIds.has(c.id),
+        };
+      });
+
+      setConversationPreviews(previews);
+    } finally {
+      setLoadingPreviews(false);
+    }
+  }
+
+  function formatMessageTime(dateStr: string | null): string {
+    if (!dateStr) return "";
+    const date = new Date(dateStr);
+    const diffMs = Date.now() - date.getTime();
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMins / 60);
+    const diffDays = Math.floor(diffHours / 24);
+    if (diffMins < 1) return "now";
+    if (diffMins < 60) return `${diffMins}m`;
+    if (diffHours < 24) return `${diffHours}h`;
+    if (diffDays === 1) return "yesterday";
+    if (diffDays < 7) return `${diffDays}d`;
+    return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  }
+
+  async function triggerBuddyCelebration(currentUserId: string, buddyUserId: string) {
+    const { data: profiles } = await supabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url")
+      .in("user_id", [currentUserId, buddyUserId]);
+    if (!profiles || profiles.length < 2) return;
+    const me = profiles.find((p) => p.user_id === currentUserId);
+    const buddy = profiles.find((p) => p.user_id === buddyUserId);
+    if (!me || !buddy) return;
+    setCelebrationData({ me, buddy });
+    setShowBuddyCelebration(true);
+  }
+
   async function fetchNotifications(currentUserId: string) {
     const { data } = await supabase
       .from("notifications")
-      .select("id, from_user_name, article_slug, comment_id, message, is_read, created_at")
+      .select("id, type, from_user_id, from_user_name, article_slug, comment_id, message, is_read, created_at")
       .eq("user_id", currentUserId)
       .order("created_at", { ascending: false })
       .limit(20);
-    if (data) setNotifications(data);
+    if (data) {
+      setNotifications(data);
+      // Trigger celebration for the sender when they see an unread buddy_accepted notification
+      const unreadAccepted = data.find(
+        (n) => n.type === "buddy_accepted" && !n.is_read && n.from_user_id && !shownCelebrationIds.current.has(n.id)
+      );
+      if (unreadAccepted && unreadAccepted.from_user_id) {
+        shownCelebrationIds.current.add(unreadAccepted.id);
+        // Mark it read silently
+        void supabase.from("notifications").update({ is_read: true }).eq("id", unreadAccepted.id);
+        setNotifications((prev) =>
+          prev.map((n) => n.id === unreadAccepted.id ? { ...n, is_read: true } : n)
+        );
+        void triggerBuddyCelebration(currentUserId, unreadAccepted.from_user_id);
+      }
+    }
+  }
+
+  async function handleBuddyRequestAccept(notif: typeof notifications[0]) {
+    if (!userId || !notif.from_user_id || buddyActionLoadingId) return;
+    setBuddyActionLoadingId(notif.id);
+    try {
+      // Find the pending buddy request
+      const { data: req } = await supabase
+        .from("buddy_requests")
+        .select("id")
+        .eq("sender_id", notif.from_user_id)
+        .eq("receiver_id", userId)
+        .eq("status", "pending")
+        .maybeSingle();
+
+      if (req) {
+        await supabase
+          .from("buddy_requests")
+          .update({ status: "accepted" })
+          .eq("id", req.id);
+
+        // Log feed activity
+        void supabase.rpc("log_feed_activity", {
+          p_activity_type: "buddy_added",
+          p_activity_data: {
+            buddy_id: notif.from_user_id,
+            buddy_name: notif.from_user_name || "Bible Buddy",
+          },
+          p_is_public: true,
+        });
+      }
+
+      // Mark notification as read
+      await supabase.from("notifications").update({ is_read: true }).eq("id", notif.id);
+      setNotifications((prev) =>
+        prev.map((n) => n.id === notif.id ? { ...n, is_read: true, type: "buddy_accepted_done" } : n)
+      );
+      setIsNotifOpen(false);
+
+      // Show celebration for the receiver
+      if (notif.from_user_id) {
+        void triggerBuddyCelebration(userId, notif.from_user_id);
+      }
+    } finally {
+      setBuddyActionLoadingId(null);
+    }
+  }
+
+  async function handleBuddyRequestDecline(notif: typeof notifications[0]) {
+    if (!userId || !notif.from_user_id || buddyActionLoadingId) return;
+    setBuddyActionLoadingId(notif.id);
+    try {
+      // Delete the buddy request
+      await supabase
+        .from("buddy_requests")
+        .delete()
+        .eq("sender_id", notif.from_user_id)
+        .eq("receiver_id", userId)
+        .eq("status", "pending");
+
+      // Mark notification as read
+      await supabase.from("notifications").update({ is_read: true }).eq("id", notif.id);
+      setNotifications((prev) =>
+        prev.map((n) => n.id === notif.id ? { ...n, is_read: true, type: "buddy_declined_done" } : n)
+      );
+    } finally {
+      setBuddyActionLoadingId(null);
+    }
   }
 
   async function markAllRead() {
@@ -455,6 +659,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       return () => document.removeEventListener("mousedown", handleClickOutside);
     }
   }, [isNotifOpen]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (messagesRef.current && !messagesRef.current.contains(event.target as Node)) {
+        setIsMessagesOpen(false);
+      }
+    }
+    if (isMessagesOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [isMessagesOpen]);
 
   // Close dropdowns on Escape key
   useEffect(() => {
@@ -813,6 +1029,55 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                             const articleTitle = notif.article_slug
                               ? notif.article_slug.split("/").filter(Boolean).pop()?.split("-").map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") ?? ""
                               : "";
+                            const timeStr = new Date(notif.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+
+                            // Buddy request — show Accept / Not Now buttons
+                            if (notif.type === "buddy_request") {
+                              const isLoading = buddyActionLoadingId === notif.id;
+                              return (
+                                <div
+                                  key={notif.id}
+                                  className={`px-4 py-3 border-b border-gray-50 ${!notif.is_read ? "bg-blue-50" : ""}`}
+                                >
+                                  <p className="text-sm text-gray-900 font-medium">{notif.message}</p>
+                                  <p className="text-xs text-gray-400 mt-0.5 mb-2">{timeStr}</p>
+                                  <div className="flex gap-2">
+                                    <button
+                                      type="button"
+                                      disabled={isLoading}
+                                      onClick={() => handleBuddyRequestAccept(notif)}
+                                      className="flex-1 py-1.5 rounded-lg text-xs font-semibold text-white transition disabled:opacity-60"
+                                      style={{ backgroundColor: "#4a9b6f" }}
+                                    >
+                                      {isLoading ? "..." : "Accept"}
+                                    </button>
+                                    <button
+                                      type="button"
+                                      disabled={isLoading}
+                                      onClick={() => handleBuddyRequestDecline(notif)}
+                                      className="flex-1 py-1.5 rounded-lg text-xs font-semibold text-gray-600 bg-gray-100 border border-gray-200 hover:bg-gray-200 transition disabled:opacity-60"
+                                    >
+                                      Not Now
+                                    </button>
+                                  </div>
+                                </div>
+                              );
+                            }
+
+                            // Buddy accepted — no action needed, just show message
+                            if (notif.type === "buddy_accepted" || notif.type === "buddy_accepted_done" || notif.type === "buddy_declined_done") {
+                              return (
+                                <div
+                                  key={notif.id}
+                                  className={`px-4 py-3 border-b border-gray-50 ${!notif.is_read ? "bg-blue-50" : ""}`}
+                                >
+                                  <p className="text-sm text-gray-900 font-medium">{notif.message}</p>
+                                  <p className="text-xs text-gray-400 mt-0.5">{timeStr}</p>
+                                </div>
+                              );
+                            }
+
+                            // Default notification — clickable
                             return (
                               <button
                                 key={notif.id}
@@ -822,13 +1087,123 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               >
                                 <p className="text-sm text-gray-900 font-medium">{notif.message}</p>
                                 <p className="text-xs text-blue-600 mt-0.5">{articleTitle}</p>
-                                <p className="text-xs text-gray-400 mt-0.5">
-                                  {new Date(notif.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}
-                                </p>
+                                <p className="text-xs text-gray-400 mt-0.5">{timeStr}</p>
                               </button>
                             );
                           })
                         )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* MESSAGES PANEL */}
+              {isLoggedIn && (
+                <div className="relative" ref={messagesRef}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const opening = !isMessagesOpen;
+                      setIsMessagesOpen(opening);
+                      if (opening && userId) void fetchConversationPreviews(userId);
+                    }}
+                    className="relative flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors"
+                    aria-label="Messages"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                    {unreadMessageCount > 0 && (
+                      <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 rounded-full text-white text-[10px] font-bold" style={{ backgroundColor: "#4a9b6f" }}>
+                        {unreadMessageCount > 9 ? "9+" : unreadMessageCount}
+                      </span>
+                    )}
+                  </button>
+
+                  {isMessagesOpen && (
+                    <div className="absolute right-0 mt-2 w-80 max-w-[calc(100vw-2rem)] bg-white rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden">
+                      <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+                        <span className="font-semibold text-sm text-gray-900">Messages</span>
+                        <Link
+                          href="/messages"
+                          onClick={() => setIsMessagesOpen(false)}
+                          className="text-xs font-medium"
+                          style={{ color: "#4a9b6f" }}
+                        >
+                          See all
+                        </Link>
+                      </div>
+
+                      <div className="max-h-80 overflow-y-auto">
+                        {loadingPreviews ? (
+                          <p className="text-sm text-gray-400 text-center py-6">Loading...</p>
+                        ) : conversationPreviews.length === 0 ? (
+                          <div className="text-center py-8 px-4">
+                            <p className="text-sm text-gray-500 mb-1">No messages yet.</p>
+                            <p className="text-xs text-gray-400">Add Buddies to start chatting!</p>
+                          </div>
+                        ) : (
+                          conversationPreviews.map((convo) => {
+                            const initials = convo.otherUserName.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+                            const COLORS = ["#4a9b6f","#5b8dd9","#c97b3e","#9b6bb5","#d45f7a","#3ea8a8"];
+                            let hash = 0;
+                            for (let i = 0; i < convo.otherUserId.length; i++) hash = convo.otherUserId.charCodeAt(i) + ((hash << 5) - hash);
+                            const avatarBg = COLORS[Math.abs(hash) % COLORS.length];
+
+                            return (
+                              <button
+                                key={convo.id}
+                                type="button"
+                                onClick={() => {
+                                  setIsMessagesOpen(false);
+                                  router.push(`/messages/${convo.id}`);
+                                }}
+                                className={`w-full flex items-center gap-3 px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors text-left ${convo.hasUnread ? "bg-green-50" : ""}`}
+                              >
+                                {/* Avatar */}
+                                <div className="flex-shrink-0">
+                                  {convo.otherUserImage ? (
+                                    <img src={convo.otherUserImage} alt={convo.otherUserName} className="w-10 h-10 rounded-full object-cover" />
+                                  ) : (
+                                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold" style={{ backgroundColor: avatarBg }}>
+                                      {initials}
+                                    </div>
+                                  )}
+                                </div>
+
+                                {/* Text */}
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center justify-between gap-2">
+                                    <p className={`text-sm truncate ${convo.hasUnread ? "font-bold text-gray-900" : "font-medium text-gray-800"}`}>
+                                      {convo.otherUserName}
+                                    </p>
+                                    <span className="text-xs text-gray-400 flex-shrink-0">{formatMessageTime(convo.lastMessageAt)}</span>
+                                  </div>
+                                  <p className={`text-xs truncate mt-0.5 ${convo.hasUnread ? "text-gray-800 font-medium" : "text-gray-400"}`}>
+                                    {convo.lastMessagePreview || "No messages yet"}
+                                  </p>
+                                </div>
+
+                                {/* Unread dot */}
+                                {convo.hasUnread && (
+                                  <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#4a9b6f" }} />
+                                )}
+                              </button>
+                            );
+                          })
+                        )}
+                      </div>
+
+                      <div className="border-t border-gray-100 px-4 py-2.5">
+                        <Link
+                          href="/messages"
+                          onClick={() => setIsMessagesOpen(false)}
+                          className="block text-center text-sm font-medium text-gray-600 hover:text-gray-900 transition"
+                        >
+                          View all messages →
+                        </Link>
                       </div>
                     </div>
                   )}
@@ -1013,6 +1388,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       {/* CHAT LOUIS - always rendered in AppShell */}
       {!isBarePage && <ChatLouis />}
+
+      {/* BUDDY CELEBRATION MODAL */}
+      {showBuddyCelebration && celebrationData && (
+        <BuddyCelebrationModal
+          me={celebrationData.me}
+          buddy={celebrationData.buddy}
+          onClose={() => {
+            setShowBuddyCelebration(false);
+            setCelebrationData(null);
+          }}
+        />
+      )}
     </FeatureRenderPriorityProvider>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
 import {
@@ -46,11 +46,22 @@ function formatJoined(dateStr: string | null | undefined): string {
   return `${months[date.getMonth()]} ${date.getFullYear()}`;
 }
 
+type BuddyState = "none" | "pending_sent" | "pending_received" | "buddies";
+
+interface BuddyProfile {
+  user_id: string;
+  display_name: string | null;
+  username: string | null;
+  profile_image_url: string | null;
+}
+
 export default function PublicProfilePage() {
   const params = useParams();
+  const router = useRouter();
   const profileUserId = params.userId as string;
 
   const [viewerUserId, setViewerUserId] = useState<string | null>(null);
+  const [viewerName, setViewerName] = useState<string>("");
   const [stats, setStats] = useState<ProfileStats & { created_at?: string } | null>(null);
   const [streak, setStreak] = useState<StreakData | null>(null);
   const [booksCompleted, setBooksCompleted] = useState(0);
@@ -58,8 +69,6 @@ export default function PublicProfilePage() {
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [actionLog, setActionLog] = useState<Array<{ date: string; text: string; sortKey: number; actionType: string }>>([]);
-  const [isActionLogOpen, setIsActionLogOpen] = useState(false);
-  const [visibleLogCount, setVisibleLogCount] = useState(20);
   const [userGroups, setUserGroups] = useState<Array<{ id: string; name: string; cover_emoji: string | null; cover_color: string | null; member_count: number }>>([]);
   const [showEditModal, setShowEditModal] = useState(false);
   const [editDisplayName, setEditDisplayName] = useState("");
@@ -69,6 +78,26 @@ export default function PublicProfilePage() {
   const [editImageFile, setEditImageFile] = useState<File | null>(null);
   const [saving, setSaving] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
+
+  // ── Buddy state ────────────────────────────────────────────────────────────
+  const [buddyState, setBuddyState] = useState<BuddyState>("none");
+  const [buddyRequestId, setBuddyRequestId] = useState<string | null>(null);
+  const [conversationId, setConversationId] = useState<string | null>(null);
+  const [buddyCount, setBuddyCount] = useState(0);
+  const [buddiesList, setBuddiesList] = useState<BuddyProfile[]>([]);
+  const [showBuddiesModal, setShowBuddiesModal] = useState(false);
+  const [showRemoveBuddyConfirm, setShowRemoveBuddyConfirm] = useState(false);
+
+  // ── Recent posts ───────────────────────────────────────────────────────────
+  const [recentPosts, setRecentPosts] = useState<Array<{
+    id: string;
+    post_type: string;
+    content: string;
+    verse_ref: string | null;
+    visibility: string;
+    created_at: string;
+  }>>([]);
+  const [buddyActionLoading, setBuddyActionLoading] = useState(false);
 
   useEffect(() => {
     if (!profileUserId) return;
@@ -85,6 +114,15 @@ export default function PublicProfilePage() {
           if (shouldSyncNotesCount(user.id)) await syncNotesCount(user.id);
           if (shouldSyncChaptersCount(user.id)) await syncChaptersCount(user.id);
           if (shouldSyncTriviaQuestionsCount(user.id)) await syncTriviaQuestionsCount(user.id);
+        }
+        // Fetch viewer's display name for notifications
+        const { data: viewerProfile } = await supabase
+          .from("profile_stats")
+          .select("display_name, username")
+          .eq("user_id", user.id)
+          .maybeSingle();
+        if (viewerProfile) {
+          setViewerName(viewerProfile.display_name || viewerProfile.username || "Someone");
         }
       }
 
@@ -144,10 +182,217 @@ export default function PublicProfilePage() {
       }
 
       await buildActionLog(profileUserId);
+
+      // Load buddy data (only if viewer is logged in and not owner)
+      const { data: { user: currentUser } } = await supabase.auth.getUser();
+      if (currentUser && currentUser.id !== profileUserId) {
+        await loadBuddyRelationship(currentUser.id);
+      }
+      await loadBuddyCount();
+
+      // Load recent feed posts (RLS filters visibility automatically)
+      const { data: posts } = await supabase
+        .from("feed_posts")
+        .select("id, post_type, content, verse_ref, visibility, created_at")
+        .eq("user_id", profileUserId)
+        .order("created_at", { ascending: false })
+        .limit(6);
+      setRecentPosts(posts || []);
     } catch (err) {
       console.error("[PUBLIC_PROFILE] Error:", err);
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function loadBuddyRelationship(viewerId: string) {
+    // Check if already buddies
+    const uid1 = viewerId < profileUserId ? viewerId : profileUserId;
+    const uid2 = viewerId < profileUserId ? profileUserId : viewerId;
+
+    const { data: buddyRow } = await supabase
+      .from("buddies")
+      .select("id")
+      .eq("user_id_1", uid1)
+      .eq("user_id_2", uid2)
+      .maybeSingle();
+
+    if (buddyRow) {
+      setBuddyState("buddies");
+      // Get conversation id
+      const { data: convRow } = await supabase
+        .from("conversations")
+        .select("id")
+        .eq("user_id_1", uid1)
+        .eq("user_id_2", uid2)
+        .maybeSingle();
+      if (convRow) setConversationId(convRow.id);
+      return;
+    }
+
+    // Check pending request
+    const { data: sentRequest } = await supabase
+      .from("buddy_requests")
+      .select("id")
+      .eq("sender_id", viewerId)
+      .eq("receiver_id", profileUserId)
+      .eq("status", "pending")
+      .maybeSingle();
+
+    if (sentRequest) {
+      setBuddyState("pending_sent");
+      setBuddyRequestId(sentRequest.id);
+      return;
+    }
+
+    const { data: receivedRequest } = await supabase
+      .from("buddy_requests")
+      .select("id")
+      .eq("sender_id", profileUserId)
+      .eq("receiver_id", viewerId)
+      .eq("status", "pending")
+      .maybeSingle();
+
+    if (receivedRequest) {
+      setBuddyState("pending_received");
+      setBuddyRequestId(receivedRequest.id);
+      return;
+    }
+
+    setBuddyState("none");
+  }
+
+  async function loadBuddyCount() {
+    const { data } = await supabase
+      .from("buddies")
+      .select("id", { count: "exact" })
+      .or(`user_id_1.eq.${profileUserId},user_id_2.eq.${profileUserId}`);
+    setBuddyCount(data?.length ?? 0);
+  }
+
+  async function loadBuddiesList() {
+    const { data: rows } = await supabase
+      .from("buddies")
+      .select("user_id_1, user_id_2")
+      .or(`user_id_1.eq.${profileUserId},user_id_2.eq.${profileUserId}`);
+
+    if (!rows || rows.length === 0) { setBuddiesList([]); return; }
+
+    const otherIds = rows.map((r) => r.user_id_1 === profileUserId ? r.user_id_2 : r.user_id_1);
+
+    const { data: profiles } = await supabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url")
+      .in("user_id", otherIds);
+
+    setBuddiesList(profiles || []);
+  }
+
+  // ── Buddy actions ──────────────────────────────────────────────────────────
+  async function handleAddBuddy() {
+    if (!viewerUserId || buddyActionLoading) return;
+    setBuddyActionLoading(true);
+    try {
+      const { data: req, error } = await supabase
+        .from("buddy_requests")
+        .insert({ sender_id: viewerUserId, receiver_id: profileUserId })
+        .select("id")
+        .single();
+
+      if (error) { console.error("[BUDDY] Add error:", error); return; }
+      setBuddyRequestId(req.id);
+      setBuddyState("pending_sent");
+
+      // Send notification to profile owner
+      await supabase.from("notifications").insert({
+        user_id: profileUserId,
+        type: "buddy_request",
+        from_user_id: viewerUserId,
+        from_user_name: viewerName,
+        message: `${viewerName} sent you a Buddy request!`,
+      });
+    } finally {
+      setBuddyActionLoading(false);
+    }
+  }
+
+  async function handleCancelRequest() {
+    if (!buddyRequestId || buddyActionLoading) return;
+    setBuddyActionLoading(true);
+    try {
+      await supabase.from("buddy_requests").delete().eq("id", buddyRequestId);
+      setBuddyState("none");
+      setBuddyRequestId(null);
+    } finally {
+      setBuddyActionLoading(false);
+    }
+  }
+
+  async function handleAcceptRequest() {
+    if (!buddyRequestId || buddyActionLoading) return;
+    setBuddyActionLoading(true);
+    try {
+      await supabase
+        .from("buddy_requests")
+        .update({ status: "accepted" })
+        .eq("id", buddyRequestId);
+
+      // Log feed activity
+      void supabase.rpc("log_feed_activity", {
+        p_activity_type: "buddy_added",
+        p_activity_data: {
+          buddy_id: profileUserId,
+          buddy_name: stats?.display_name || stats?.username || "Bible Buddy",
+        },
+        p_is_public: true,
+      });
+
+      setBuddyState("buddies");
+      setBuddyRequestId(null);
+      await loadBuddyCount();
+
+      // Get conversation
+      if (viewerUserId) {
+        const uid1 = viewerUserId < profileUserId ? viewerUserId : profileUserId;
+        const uid2 = viewerUserId < profileUserId ? profileUserId : viewerUserId;
+        const { data: convRow } = await supabase
+          .from("conversations")
+          .select("id")
+          .eq("user_id_1", uid1)
+          .eq("user_id_2", uid2)
+          .maybeSingle();
+        if (convRow) setConversationId(convRow.id);
+      }
+    } finally {
+      setBuddyActionLoading(false);
+    }
+  }
+
+  async function handleDeclineRequest() {
+    if (!buddyRequestId || buddyActionLoading) return;
+    setBuddyActionLoading(true);
+    try {
+      await supabase.from("buddy_requests").delete().eq("id", buddyRequestId);
+      setBuddyState("none");
+      setBuddyRequestId(null);
+    } finally {
+      setBuddyActionLoading(false);
+    }
+  }
+
+  async function handleRemoveBuddy() {
+    if (!viewerUserId || buddyActionLoading) return;
+    setBuddyActionLoading(true);
+    try {
+      const uid1 = viewerUserId < profileUserId ? viewerUserId : profileUserId;
+      const uid2 = viewerUserId < profileUserId ? profileUserId : viewerUserId;
+      await supabase.from("buddies").delete().eq("user_id_1", uid1).eq("user_id_2", uid2);
+      setBuddyState("none");
+      setConversationId(null);
+      setShowRemoveBuddyConfirm(false);
+      await loadBuddyCount();
+    } finally {
+      setBuddyActionLoading(false);
     }
   }
 
@@ -211,7 +456,6 @@ export default function PublicProfilePage() {
     try {
       let imageUrl = stats?.profile_image_url || null;
 
-      // Upload new image if selected
       if (editImageFile) {
         setUploadingImage(true);
         const ext = editImageFile.name.split(".").pop();
@@ -242,7 +486,6 @@ export default function PublicProfilePage() {
       if (error) {
         console.error("[EDIT_PROFILE] Save error:", error);
       } else {
-        // Reflect changes locally without a full reload
         setStats((prev) => prev ? {
           ...prev,
           display_name: editDisplayName.trim() || prev.display_name,
@@ -365,15 +608,89 @@ export default function PublicProfilePage() {
                     <p className="text-sm text-gray-500 mt-0.5">@{username}</p>
                   )}
                 </div>
-                {/* Edit Profile button — owner only */}
-                {isOwner && (
+
+                {/* Action buttons — owner: Edit Profile; visitor: buddy button */}
+                {isOwner ? (
                   <button
                     onClick={openEditModal}
                     className="flex-shrink-0 px-4 py-1.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
                   >
                     Edit Profile
                   </button>
-                )}
+                ) : viewerUserId ? (
+                  <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
+                    {buddyState === "none" && (
+                      <button
+                        onClick={handleAddBuddy}
+                        disabled={buddyActionLoading}
+                        className="px-4 py-1.5 rounded-lg text-sm font-medium text-white transition disabled:opacity-60"
+                        style={{ backgroundColor: "#4a9b6f" }}
+                      >
+                        Add Buddy
+                      </button>
+                    )}
+                    {buddyState === "pending_sent" && (
+                      <>
+                        <span className="px-4 py-1.5 rounded-lg text-sm font-medium text-gray-500 bg-gray-100 border border-gray-200">
+                          Request Sent
+                        </span>
+                        <button
+                          onClick={handleCancelRequest}
+                          disabled={buddyActionLoading}
+                          className="text-xs text-red-500 hover:underline disabled:opacity-60"
+                        >
+                          Cancel Request
+                        </button>
+                      </>
+                    )}
+                    {buddyState === "pending_received" && (
+                      <div className="flex gap-2">
+                        <button
+                          onClick={handleAcceptRequest}
+                          disabled={buddyActionLoading}
+                          className="px-4 py-1.5 rounded-lg text-sm font-medium text-white transition disabled:opacity-60"
+                          style={{ backgroundColor: "#4a9b6f" }}
+                        >
+                          Accept
+                        </button>
+                        <button
+                          onClick={handleDeclineRequest}
+                          disabled={buddyActionLoading}
+                          className="px-4 py-1.5 rounded-lg text-sm font-medium text-gray-600 bg-gray-100 border border-gray-200 hover:bg-gray-200 transition disabled:opacity-60"
+                        >
+                          Decline
+                        </button>
+                      </div>
+                    )}
+                    {buddyState === "buddies" && (
+                      <>
+                        {conversationId ? (
+                          <button
+                            onClick={() => router.push(`/messages/${conversationId}`)}
+                            className="px-4 py-1.5 rounded-lg text-sm font-medium text-white transition"
+                            style={{ backgroundColor: "#4a9b6f" }}
+                          >
+                            Message
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => router.push("/messages")}
+                            className="px-4 py-1.5 rounded-lg text-sm font-medium text-white transition"
+                            style={{ backgroundColor: "#4a9b6f" }}
+                          >
+                            Message
+                          </button>
+                        )}
+                        <button
+                          onClick={() => setShowRemoveBuddyConfirm(true)}
+                          className="text-xs text-red-500 hover:underline"
+                        >
+                          Remove Buddy
+                        </button>
+                      </>
+                    )}
+                  </div>
+                ) : null}
               </div>
 
               {/* Bio */}
@@ -390,6 +707,15 @@ export default function PublicProfilePage() {
                 {stats?.created_at && (
                   <span>📅 Joined {formatJoined(stats.created_at)}</span>
                 )}
+                <button
+                  onClick={() => {
+                    loadBuddiesList();
+                    setShowBuddiesModal(true);
+                  }}
+                  className="hover:text-gray-700 transition font-medium"
+                >
+                  🤝 {buddyCount} {buddyCount === 1 ? "Buddy" : "Buddies"}
+                </button>
               </div>
             </div>
           </div>
@@ -508,47 +834,65 @@ export default function PublicProfilePage() {
           )}
         </div>
 
+        {/* ── RECENT POSTS ───────────────────────────────────────────────── */}
+        {recentPosts.length > 0 && (
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6 p-5">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-lg font-semibold text-gray-900">Recent Posts</h2>
+              <Link href="/bb-feed" className="text-xs text-green-600 hover:underline font-medium">View Feed →</Link>
+            </div>
+            <div className="flex flex-col gap-2">
+              {recentPosts.map((post) => {
+                const POST_TYPE_ICONS: Record<string, string> = {
+                  thought: "💭", verse: "📖", prayer: "🙏", photo: "📷", link: "🔗",
+                };
+                const icon = POST_TYPE_ICONS[post.post_type] || "💬";
+                const preview = post.verse_ref
+                  ? `${post.verse_ref} — ${post.content.slice(0, 60)}`
+                  : post.content.slice(0, 80);
+                const diffMs = Date.now() - new Date(post.created_at).getTime();
+                const diffDays = Math.floor(diffMs / 86400000);
+                const timeStr = diffDays === 0 ? "Today" : diffDays === 1 ? "Yesterday" : `${diffDays}d ago`;
+                return (
+                  <div key={post.id} className="flex items-start gap-3 px-3 py-2.5 rounded-xl bg-gray-50">
+                    <span className="text-base flex-shrink-0 mt-0.5">{icon}</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-gray-800 leading-snug truncate">
+                        {preview}{post.content.length > 80 ? "…" : ""}
+                      </p>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <span className="text-[10px] text-gray-400">{timeStr}</span>
+                        {post.visibility === "buddies" && (
+                          <span className="text-[10px] text-blue-400 bg-blue-50 rounded-full px-1.5 py-px">Buddies only</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {/* ── ACTION LOG ─────────────────────────────────────────────────── */}
         <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
-          <button
-            type="button"
-            onClick={() => setIsActionLogOpen(!isActionLogOpen)}
-            className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors duration-150"
-          >
+          <div className="px-6 py-4 border-b border-gray-100">
             <h2 className="text-xl font-semibold">Action Log</h2>
-            <svg className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${isActionLogOpen ? "rotate-180" : ""}`}
-              fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          {isActionLogOpen && (
-            <div className="pb-2">
-              {actionLog.length === 0 ? (
-                <p className="text-sm text-gray-500 py-4 px-6">No actions recorded yet.</p>
-              ) : (
-                <>
-                  {actionLog.slice(0, visibleLogCount).map((action, index) => (
-                    <div
-                      key={index}
-                      className={`${getActionColorClass(action.actionType)} px-6 py-3 text-sm text-gray-700 ${
-                        index < Math.min(visibleLogCount, actionLog.length) - 1 ? "border-b border-gray-100" : ""
-                      }`}
-                    >
-                      {action.text}
-                    </div>
-                  ))}
-                  {visibleLogCount < actionLog.length && (
-                    <div className="px-6 py-4 border-t border-gray-100">
-                      <button
-                        onClick={() => setVisibleLogCount((n) => n + 20)}
-                        className="text-sm text-gray-500 hover:text-gray-800 font-medium transition"
-                      >
-                        Show more ({actionLog.length - visibleLogCount} remaining)
-                      </button>
-                    </div>
-                  )}
-                </>
-              )}
+          </div>
+          {actionLog.length === 0 ? (
+            <p className="text-sm text-gray-500 py-4 px-6">No actions recorded yet.</p>
+          ) : (
+            <div className="overflow-y-auto max-h-96">
+              {actionLog.map((action, index) => (
+                <div
+                  key={index}
+                  className={`${getActionColorClass(action.actionType)} px-6 py-3 text-sm text-gray-700 ${
+                    index < actionLog.length - 1 ? "border-b border-gray-100" : ""
+                  }`}
+                >
+                  {action.text}
+                </div>
+              ))}
             </div>
           )}
         </div>
@@ -558,7 +902,6 @@ export default function PublicProfilePage() {
           <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-0 sm:px-4">
             <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto">
 
-              {/* Modal header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
                 <h2 className="text-lg font-bold text-gray-900">Edit Profile</h2>
                 <button
@@ -652,6 +995,96 @@ export default function PublicProfilePage() {
                   </button>
                 </div>
 
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── BUDDIES LIST MODAL ─────────────────────────────────────────── */}
+        {showBuddiesModal && (
+          <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-0 sm:px-4">
+            <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-xl w-full sm:max-w-md max-h-[80vh] flex flex-col">
+
+              <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 flex-shrink-0">
+                <h2 className="text-lg font-bold text-gray-900">
+                  {isOwner ? "Your Buddies" : `${displayName}'s Buddies`}
+                </h2>
+                <button
+                  onClick={() => setShowBuddiesModal(false)}
+                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className="overflow-y-auto flex-1 px-4 py-4">
+                {buddiesList.length === 0 ? (
+                  <p className="text-sm text-gray-400 text-center py-8">No buddies yet.</p>
+                ) : (
+                  <div className="flex flex-col gap-2">
+                    {buddiesList.map((buddy) => {
+                      const buddyDisplay = buddy.display_name || buddy.username || "Bible Buddy Member";
+                      const buddyInitials = buddyDisplay.split(" ").map((w: string) => w[0]).join("").slice(0, 2).toUpperCase();
+                      const buddyColor = avatarColor(buddy.user_id);
+                      return (
+                        <Link
+                          key={buddy.user_id}
+                          href={`/profile/${buddy.user_id}`}
+                          onClick={() => setShowBuddiesModal(false)}
+                          className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition"
+                        >
+                          {buddy.profile_image_url ? (
+                            <img src={buddy.profile_image_url} alt={buddyDisplay} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                          ) : (
+                            <div
+                              className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
+                              style={{ backgroundColor: buddyColor }}
+                            >
+                              {buddyInitials}
+                            </div>
+                          )}
+                          <div className="flex-1 min-w-0">
+                            <p className="font-semibold text-gray-900 text-sm truncate">{buddyDisplay}</p>
+                            {buddy.username && (
+                              <p className="text-xs text-gray-500">@{buddy.username}</p>
+                            )}
+                          </div>
+                          <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+            </div>
+          </div>
+        )}
+
+        {/* ── REMOVE BUDDY CONFIRM ───────────────────────────────────────── */}
+        {showRemoveBuddyConfirm && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
+            <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6">
+              <h2 className="text-lg font-bold text-gray-900 mb-2">Remove Buddy?</h2>
+              <p className="text-sm text-gray-500 mb-5">
+                Are you sure you want to remove {displayName} as a buddy? You can always add them again later.
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowRemoveBuddyConfirm(false)}
+                  className="flex-1 py-2.5 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleRemoveBuddy}
+                  disabled={buddyActionLoading}
+                  className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white bg-red-500 hover:bg-red-600 transition disabled:opacity-60"
+                >
+                  Remove
+                </button>
               </div>
             </div>
           </div>

@@ -17,7 +17,7 @@ INSERT INTO public.study_groups (
 )
 VALUES
   (
-    'Bible Buddy Study Group',
+    'Hope Nation',
     'Join owner and Bible teacher Louis Moore as together you break down the Bible — week by week, story by story — discussing, asking questions, and going deeper into God''s Word than you''ve ever gone before.',
     (SELECT id FROM auth.users WHERE email = 'moorelouis3@gmail.com' LIMIT 1),
     'Louis Moore',
@@ -70,4 +70,4 @@ SELECT
   'approved',
   now()
 FROM public.study_groups sg
-WHERE sg.name = 'Bible Buddy Study Group';
+WHERE sg.name = 'Hope Nation';

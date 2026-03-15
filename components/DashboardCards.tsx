@@ -101,11 +101,25 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       )}
 
-      <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}> 
-        <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-          <h2 className="text-xl font-semibold">📖 The Bible</h2> 
-          <p className="text-gray-700 mt-1">Read the complete Bible here</p> 
-        </div> 
+      <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}>
+        <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+          <h2 className="text-xl font-semibold">📖 The Bible</h2>
+          <p className="text-gray-700 mt-1">Read the complete Bible here</p>
+        </div>
+      </Link>
+
+      <Link href="/study-groups">
+        <div className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition" style={{ backgroundColor: "#d4ecd4", borderWidth: 1, borderColor: "#b8ddb8" }}>
+          <h2 className="text-xl font-semibold">🤝 Bible Study Groups</h2>
+          <p className="text-gray-700 mt-1">Study the Bible with others</p>
+        </div>
+      </Link>
+
+      <Link href="/bb-feed">
+        <div className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition" style={{ backgroundColor: "#fff7ed", borderWidth: 1, borderColor: "#fed7aa" }}>
+          <h2 className="text-xl font-semibold">🔥 Bible Buddy Feed</h2>
+          <p className="text-gray-700 mt-1">See what your community is up to</p>
+        </div>
       </Link>
 
       <Link href="/bible-study-hub" onClick={(event) => handleCardClick(event, "bible_study_hub", "/bible-study-hub")}> 
@@ -143,12 +157,6 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       </Link>
 
-      <Link href="/study-groups">
-        <div className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition" style={{ backgroundColor: "#d4ecd4", borderWidth: 1, borderColor: "#b8ddb8" }}>
-          <h2 className="text-xl font-semibold">🤝 Bible Study Groups</h2>
-          <p className="text-gray-700 mt-1">Study the Bible with others</p>
-        </div>
-      </Link>
     </div>
   );
 };
