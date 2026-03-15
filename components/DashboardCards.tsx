@@ -136,11 +136,18 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div> 
       </Link>
 
-      <Link href="/notes" onClick={(event) => handleCardClick(event, "notes", "/notes")}> 
-        <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-          <h2 className="text-xl font-semibold">📝 Bible Study Notes</h2> 
-          <p className="text-gray-700 mt-1">Create and save study notes</p> 
-        </div> 
+      <Link href="/notes" onClick={(event) => handleCardClick(event, "notes", "/notes")}>
+        <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+          <h2 className="text-xl font-semibold">📝 Bible Study Notes</h2>
+          <p className="text-gray-700 mt-1">Create and save study notes</p>
+        </div>
+      </Link>
+
+      <Link href="/study-groups">
+        <div className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition" style={{ backgroundColor: "#d4ecd4", borderWidth: 1, borderColor: "#b8ddb8" }}>
+          <h2 className="text-xl font-semibold">🤝 Bible Study Groups</h2>
+          <p className="text-gray-700 mt-1">Study the Bible with others</p>
+        </div>
       </Link>
     </div>
   );
