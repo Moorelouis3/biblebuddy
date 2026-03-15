@@ -108,6 +108,13 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       </Link>
 
+      <Link href="/bb-feed">
+        <div className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition" style={{ backgroundColor: "#fff7ed", borderWidth: 1, borderColor: "#fed7aa" }}>
+          <h2 className="text-xl font-semibold">🔥 Bible Buddy Feed</h2>
+          <p className="text-gray-700 mt-1">See what the Bible Buddy community is up to</p>
+        </div>
+      </Link>
+
       <Link href="/study-groups">
         <div className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition" style={{ backgroundColor: "#d4ecd4", borderWidth: 1, borderColor: "#b8ddb8" }}>
           <h2 className="text-xl font-semibold">🤝 Bible Study Groups</h2>
@@ -115,45 +122,17 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       </Link>
 
-      <Link href="/bb-feed">
-        <div className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition" style={{ backgroundColor: "#fff7ed", borderWidth: 1, borderColor: "#fed7aa" }}>
-          <h2 className="text-xl font-semibold">🔥 Bible Buddy Feed</h2>
-          <p className="text-gray-700 mt-1">See what your community is up to</p>
+      <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}>
+        <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+          <h2 className="text-xl font-semibold text-orange-800">🧭 Bible Study Hub</h2>
+          <p className="text-gray-700 mt-1">A collection of Bible study tools</p>
         </div>
       </Link>
 
-      <Link href="/bible-study-hub" onClick={(event) => handleCardClick(event, "bible_study_hub", "/bible-study-hub")}> 
-        <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-          <h2 className="text-xl font-semibold text-orange-800">🧭 Bible Study Hub</h2> 
-          <p className="text-gray-700 mt-1">Discuss and explore Bible topics</p> 
-        </div> 
-      </Link>
-
-      <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}> 
-        <div className="bg-yellow-100 border border-yellow-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-          <h2 className="text-xl font-semibold">📚 Bible Studies</h2> 
-          <p className="text-gray-700 mt-1">Structured ways to study Scripture</p> 
-        </div> 
-      </Link>
-
-      <Link href="/bible-references" onClick={(event) => handleCardClick(event, "bible_references", "/bible-references")}> 
-        <div className="bg-purple-100 border border-purple-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-          <h2 className="text-xl font-semibold">🔎 Bible References</h2> 
-          <p className="text-gray-700 mt-1">Explanations of Bible keywords</p> 
-        </div> 
-      </Link>
-
-      <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}> 
-        <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"> 
-          <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2> 
-          <p className="text-gray-700 mt-1">Test your Bible knowledge</p> 
-        </div> 
-      </Link>
-
-      <Link href="/notes" onClick={(event) => handleCardClick(event, "notes", "/notes")}>
-        <div className="bg-indigo-100 border border-indigo-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold">📝 Bible Study Notes</h2>
-          <p className="text-gray-700 mt-1">Create and save study notes</p>
+      <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}>
+        <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+          <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2>
+          <p className="text-gray-700 mt-1">Test your Bible knowledge</p>
         </div>
       </Link>
 
