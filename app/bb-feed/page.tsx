@@ -298,6 +298,7 @@ function PostComposer({ userId, userProfile, onPosted }: {
   const [videoFile, setVideoFile] = useState<File | null>(null);
   const [videoPreview, setVideoPreview] = useState<string | null>(null);
   const [videoDurationError, setVideoDurationError] = useState(false);
+  const [isPortraitVideo, setIsPortraitVideo] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [uploadProgress, setUploadProgress] = useState<number | null>(null);
@@ -310,7 +311,7 @@ function PostComposer({ userId, userProfile, onPosted }: {
     setContent(""); setPrayerIsRequest(false);
     setPhotoFile(null); setPhotoPreview(null);
     if (videoPreview) URL.revokeObjectURL(videoPreview);
-    setVideoFile(null); setVideoPreview(null); setVideoDurationError(false);
+    setVideoFile(null); setVideoPreview(null); setVideoDurationError(false); setIsPortraitVideo(false);
     setTab("thought");
     setExpanded(false);
     setUploadError(null);
@@ -333,10 +334,17 @@ function PostComposer({ userId, userProfile, onPosted }: {
       return;
     }
     if (videoPreview) URL.revokeObjectURL(videoPreview);
+    const objectUrl = URL.createObjectURL(file);
     setVideoFile(file);
-    setVideoPreview(URL.createObjectURL(file));
+    setVideoPreview(objectUrl);
     setVideoDurationError(false);
     setUploadError(null);
+    // Detect portrait vs landscape so we can render the right frame
+    const probe = document.createElement("video");
+    probe.src = objectUrl;
+    probe.onloadedmetadata = () => {
+      setIsPortraitVideo(probe.videoHeight > probe.videoWidth);
+    };
   }
 
   const canPost =
@@ -430,7 +438,8 @@ function PostComposer({ userId, userProfile, onPosted }: {
       verse_ref: null,
       verse_text: null,
       link_url: linkUrl,
-      link_title: null,
+      // For Bunny videos, store orientation so the feed renders the right aspect ratio
+      link_title: postType === "video" && linkUrl ? (isPortraitVideo ? "portrait" : "landscape") : null,
       media_url: mediaUrl,
     };
 
@@ -878,6 +887,7 @@ function VideoBlock({ post }: { post: FeedPost }) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [inView, setInView] = useState(false);
   const [everInView, setEverInView] = useState(false);
+  const inViewRef = useRef(false); // stable ref for use in callbacks
 
   // Intersection Observer — fire when 40% of the block is visible
   useEffect(() => {
@@ -887,6 +897,7 @@ function VideoBlock({ post }: { post: FeedPost }) {
       ([entry]) => {
         const visible = entry.isIntersecting;
         setInView(visible);
+        inViewRef.current = visible;
         if (visible) setEverInView(true);
       },
       { threshold: 0.4 }
@@ -946,11 +957,17 @@ function VideoBlock({ post }: { post: FeedPost }) {
 
     if (parsed.embedUrl) {
       const isBunny = parsed.platform === "bunny";
-      // Bunny: lazy-load, autoplay on first scroll-in with muted=true
-      const bunnyParams = "?autoplay=true&muted=true&loop=false&preload=false";
-      const embedSrc = isBunny ? `${parsed.embedUrl}${bunnyParams}` : parsed.embedUrl;
+      // For Bunny: use link_title to know orientation. Default portrait if unknown.
+      const isPortrait = isBunny
+        ? (post.link_title === "landscape" ? false : true)
+        : parsed.portrait;
+      // Bunny: load with autoplay=false so thumbnail shows, then play via postMessage
+      const embedSrc = isBunny
+        ? `${parsed.embedUrl}?autoplay=false&muted=true&loop=false`
+        : parsed.embedUrl;
 
-      if (!parsed.portrait) {
+      if (!isPortrait) {
+        // Landscape 16:9
         return (
           <div ref={containerRef} className="mt-3 relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: "56.25%" }}>
             {everInView && (
@@ -960,6 +977,7 @@ function VideoBlock({ post }: { post: FeedPost }) {
                 className="absolute inset-0 w-full h-full"
                 allowFullScreen
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                onLoad={() => { if (inViewRef.current) setTimeout(() => iframeRef.current?.contentWindow?.postMessage(JSON.stringify({ action: "play" }), "*"), 300); }}
               />
             )}
             {!everInView && (
@@ -973,7 +991,7 @@ function VideoBlock({ post }: { post: FeedPost }) {
         );
       }
 
-      // Portrait (TikTok, Shorts, Reels, Bunny — full-width 9:16 like Instagram)
+      // Portrait 9:16 — full-width like Instagram Reels
       return (
         <div ref={containerRef} className="mt-3 relative w-full rounded-2xl overflow-hidden bg-black" style={{ aspectRatio: "9/16", maxHeight: "600px" }}>
           {everInView && (
@@ -984,6 +1002,7 @@ function VideoBlock({ post }: { post: FeedPost }) {
               allowFullScreen
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               scrolling="no"
+              onLoad={() => { if (inViewRef.current) setTimeout(() => iframeRef.current?.contentWindow?.postMessage(JSON.stringify({ action: "play" }), "*"), 300); }}
             />
           )}
           {!everInView && (
