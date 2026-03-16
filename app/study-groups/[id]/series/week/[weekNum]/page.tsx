@@ -17,6 +17,13 @@ function getWeekUnlockDate(startDate: string, weekNum: number): string {
   return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 }
 
+function resolveSeriesStart(schedule: { start_at?: string | null; start_date?: string | null } | null | undefined): string | null {
+  if (!schedule) return null;
+  if (schedule.start_at) return schedule.start_at;
+  if (schedule.start_date) return `${schedule.start_date}T00:00:00`;
+  return null;
+}
+
 function getWeekAccessState(
   startDate: string | null,
   weekNum: number,
@@ -865,7 +872,7 @@ export default function WeekLessonPage() {
 
         const sid = seriesRes.data.id;
         const [scheduleRes, progressRowsRes, scoreRes] = await Promise.all([
-          supabase.from("series_schedules").select("start_date").eq("series_id", sid).maybeSingle(),
+          supabase.from("series_schedules").select("start_date, start_at").eq("series_id", sid).maybeSingle(),
           supabase
             .from("series_week_progress")
             .select("week_number, reading_completed, trivia_completed, reflection_posted")
@@ -904,7 +911,7 @@ export default function WeekLessonPage() {
         const previousWeek = progressMap[weekNum - 1] ?? { reading: false, trivia: false, reflection: false };
         const previousWeekComplete = weekNum === 1 ? true : (previousWeek.reading && previousWeek.trivia && previousWeek.reflection);
         const accessState = getWeekAccessState(
-          scheduleRes.data?.start_date ?? null,
+          resolveSeriesStart(scheduleRes.data),
           weekNum,
           isLeader,
           previousWeekComplete

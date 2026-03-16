@@ -41,6 +41,30 @@ function formatCountdown(targetTs: number, nowTs: number): string {
   return `${minutes}m ${seconds}s`;
 }
 
+function resolveSeriesStart(schedule: { start_at?: string | null; start_date?: string | null } | null | undefined): string | null {
+  if (!schedule) return null;
+  if (schedule.start_at) return schedule.start_at;
+  if (schedule.start_date) return `${schedule.start_date}T00:00:00`;
+  return null;
+}
+
+function formatDateTimeLabel(dateStr: string): string {
+  return new Date(dateStr).toLocaleString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
+function toDateTimeLocalValue(dateStr: string): string {
+  const date = new Date(dateStr);
+  const offset = date.getTimezoneOffset();
+  const local = new Date(date.getTime() - offset * 60000);
+  return local.toISOString().slice(0, 16);
+}
+
 function getWeekLockState(
   startDate: string | null,
   weekNum: number,
@@ -87,6 +111,7 @@ export default function SeriesOverviewPage() {
   const [startDate, setStartDate] = useState<string | null>(null);
   const [startDateInput, setStartDateInput] = useState("");
   const [savingDate, setSavingDate] = useState(false);
+  const [editingStartDate, setEditingStartDate] = useState(false);
   const [weeks, setWeeks] = useState<WeekCard[]>([]);
   const [groupName, setGroupName] = useState("Group");
   const [nowTs, setNowTs] = useState(() => Date.now());
@@ -112,15 +137,16 @@ export default function SeriesOverviewPage() {
       const sid = seriesRes.data.id;
 
       const [scheduleRes, progressRes] = await Promise.all([
-        supabase.from("series_schedules").select("start_date").eq("series_id", sid).maybeSingle(),
+        supabase.from("series_schedules").select("start_date, start_at").eq("series_id", sid).maybeSingle(),
         supabase.from("series_week_progress")
           .select("week_number, reading_completed, trivia_completed, reflection_posted")
           .eq("user_id", user.id).eq("series_id", sid),
       ]);
 
-      const sd = scheduleRes.data?.start_date ?? null;
+      const sd = resolveSeriesStart(scheduleRes.data);
       setStartDate(sd);
-      if (sd) setStartDateInput(sd);
+      if (sd) setStartDateInput(toDateTimeLocalValue(sd));
+      setEditingStartDate(!sd);
 
       const progMap: Record<number, { reading: boolean; trivia: boolean; reflection: boolean }> = {};
       (progressRes.data || []).forEach((p) => {
@@ -164,17 +190,19 @@ export default function SeriesOverviewPage() {
   async function saveStartDate() {
     if (!startDateInput || !seriesId || !userId) return;
     setSavingDate(true);
+    const startAtIso = new Date(startDateInput).toISOString();
     await supabase.from("series_schedules").upsert(
-      { series_id: seriesId, group_id: groupId, start_date: startDateInput, created_by: userId },
+      { series_id: seriesId, group_id: groupId, start_date: startDateInput.slice(0, 10), start_at: startAtIso, created_by: userId },
       { onConflict: "series_id" }
     );
-    setStartDate(startDateInput);
+    setStartDate(startAtIso);
+    setEditingStartDate(false);
     // Recompute unlock states
     setWeeks((prev) =>
       prev.map((w, index) => {
         const previousWeek = prev[index - 1];
         const lockState = getWeekLockState(
-          startDateInput,
+          startAtIso,
           w.weekNumber,
           userRole === "leader",
           w.weekNumber === 1 ? true : !!previousWeek?.complete
@@ -216,10 +244,11 @@ export default function SeriesOverviewPage() {
         {userRole === "leader" && (
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
             <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-1">📅 Series Schedule</p>
-            <p className="text-sm text-amber-800 mb-3">Set the Week 1 start date. Each week unlocks 7 days later automatically.</p>
-            <div className="flex gap-2">
+            <p className="text-sm text-amber-800 mb-3">Set the Week 1 start date and time. Each week unlocks 7 days later automatically.</p>
+            {!startDate || editingStartDate ? (
+            <div className="flex gap-2 flex-col sm:flex-row">
               <input
-                type="date"
+                type="datetime-local"
                 value={startDateInput}
                 onChange={(e) => setStartDateInput(e.target.value)}
                 className="flex-1 text-sm px-3 py-2 border border-amber-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-amber-400"
@@ -232,7 +261,20 @@ export default function SeriesOverviewPage() {
                 {savingDate ? "Saving..." : "Save"}
               </button>
             </div>
-            {startDate && <p className="text-xs text-amber-600 mt-2">Week 1 starts: {getUnlockDate(startDate, 1)}</p>}
+            ) : (
+              <div className="rounded-xl border border-amber-200 bg-white px-4 py-3">
+                <p className="text-sm font-semibold text-gray-900">
+                  Series starts in {formatCountdown(getUnlockTimestamp(startDate, 1), nowTs)}
+                </p>
+                <p className="text-xs text-amber-700 mt-1">{formatDateTimeLabel(startDate)}</p>
+                <button
+                  onClick={() => setEditingStartDate(true)}
+                  className="mt-3 text-xs font-semibold text-amber-700 hover:text-amber-900 transition"
+                >
+                  Change start time
+                </button>
+              </div>
+            )}
           </div>
         )}
 

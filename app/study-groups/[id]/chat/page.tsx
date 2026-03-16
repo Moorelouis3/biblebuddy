@@ -1,6 +1,8 @@
-"use client";
+﻿"use client";
 
-import { useEffect, useState, useRef } from "react";
+import { EditorContent, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import { useEffect, useState, useRef, type MouseEvent } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../../lib/supabaseClient";
@@ -8,7 +10,7 @@ import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { TOTAL_WEEKS, getSeriesWeekLesson } from "@/lib/seriesContent";
 
-// ── Interfaces ───────────────────────────────────────────────────────────────
+// â”€â”€ Interfaces â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 interface StudyGroup {
   id: string;
@@ -26,6 +28,7 @@ interface Post {
   id: string;
   user_id: string;
   display_name: string | null;
+  title?: string | null;
   category: string;
   content: string;
   like_count: number;
@@ -58,6 +61,19 @@ interface Member {
   display_name: string;
   role: string;
   profile_image_url: string | null;
+}
+
+interface ArticleLikeUser {
+  user_id: string;
+  display_name: string;
+  profile_image_url: string | null;
+}
+
+interface HubItemStats {
+  likeCount: number;
+  commentCount: number;
+  liked: boolean;
+  likers: ArticleLikeUser[];
 }
 
 interface Series {
@@ -104,6 +120,15 @@ interface SeriesComment {
   liked?: boolean;
   profile_image_url?: string | null;
 }
+
+const PLANNED_BIBLE_STUDY_SERIES = [
+  { key: "temptation_of_jesus", title: "The Temptation of Jesus", subtitle: "5-week group study" },
+  { key: "testing_of_joseph", title: "The Testing of Joseph", subtitle: "Coming next" },
+  { key: "wisdom_of_proverbs", title: "The Wisdom of Proverbs", subtitle: "Coming later" },
+  { key: "faith_of_job", title: "The Faith of Job", subtitle: "Coming later" },
+  { key: "calling_of_moses", title: "The Calling of Moses", subtitle: "Coming later" },
+  { key: "heart_of_david", title: "The Heart of David", subtitle: "Coming later" },
+] as const;
 
 function getWeekUnlockDate(startDate: string, weekNum: number): string {
   const d = new Date(startDate);
@@ -176,6 +201,10 @@ function formatCountdown(targetTs: number, nowTs: number): string {
   return `${minutes}m ${seconds}s`;
 }
 
+function normalizeHubCategoryName(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
 function getCurrentSeriesCardState(
   startAt: string | null,
   totalWeeks: number,
@@ -217,7 +246,7 @@ function getCurrentSeriesCardState(
 }
 
 
-// ── Video URL parsing ─────────────────────────────────────────────────────────
+// â”€â”€ Video URL parsing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 type VideoPlatform = "youtube" | "youtube_short" | "tiktok" | "instagram" | "unknown";
 function parseVideoEmbed(url: string): { platform: VideoPlatform; embedUrl: string | null; portrait: boolean } {
@@ -247,7 +276,7 @@ function isUploadedVideo(url: string): boolean {
   return lower.endsWith(".mp4") || lower.endsWith(".webm") || lower.endsWith(".mov");
 }
 
-// ── Hub types ─────────────────────────────────────────────────────────────
+// â”€â”€ Hub types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 interface HubCategory {
   id: string;
@@ -257,7 +286,7 @@ interface HubCategory {
   display_order: number;
 }
 
-// ── Tab config ───────────────────────────────────────────────────────────────
+// â”€â”€ Tab config â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 type TabKey = "home" | "general" | "bible_studies" | "updates" | "prayer" | "qa" | "members";
 
@@ -273,6 +302,24 @@ const TABS: { key: TabKey; label: string }[] = [
 
 function getGroupPostCategory(activeTab: string): string {
   return activeTab === "home" ? "general" : activeTab;
+}
+
+function stripHtml(html: string): string {
+  return html
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>/gi, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/\u00a0/g, " ")
+    .trim();
+}
+
+function getPostPreviewText(html: string): string {
+  const firstLine = stripHtml(html)
+    .split("\n")
+    .map((line) => line.replace(/\s+/g, " ").trim())
+    .find(Boolean);
+
+  return firstLine ?? "";
 }
 
 function GroupCommentSection({
@@ -536,7 +583,7 @@ function GroupCommentSection({
   );
 }
 
-// ── Helpers ──────────────────────────────────────────────────────────────────
+// â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function timeAgo(dateStr: string): string {
   const diff = Date.now() - new Date(dateStr).getTime();
@@ -566,7 +613,7 @@ function avatarColor(userId: string): string {
   return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
 }
 
-// ── Component ────────────────────────────────────────────────────────────────
+// â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function GroupChatPage() {
   const params = useParams();
@@ -582,14 +629,16 @@ export default function GroupChatPage() {
   const [userProfileImage, setUserProfileImage] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<string>("home");
   const [showGroupInfoModal, setShowGroupInfoModal] = useState(false);
+  const [selectedFeedPost, setSelectedFeedPost] = useState<Post | null>(null);
 
   // Chat posts
   const [posts, setPosts] = useState<Post[]>([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
+  const [showPostComposerModal, setShowPostComposerModal] = useState(false);
+  const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostContent, setNewPostContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
-  const [openCommentPostIds, setOpenCommentPostIds] = useState<Set<string>>(new Set());
   const [activePostMenuId, setActivePostMenuId] = useState<string | null>(null);
   const [deletePostId, setDeletePostId] = useState<string | null>(null);
   const [deletingPost, setDeletingPost] = useState(false);
@@ -612,7 +661,9 @@ export default function GroupChatPage() {
   const [hubCategories, setHubCategories] = useState<HubCategory[]>([]);
   const [hubView, setHubView] = useState<"articles" | "questions">("articles");
   const [showMoreNav, setShowMoreNav] = useState(false);
+  const [moreMenuPosition, setMoreMenuPosition] = useState<{ top: number; left: number } | null>(null);
   const [selectedHubItem, setSelectedHubItem] = useState<HubItemStatic | null>(null);
+  const moreButtonRef = useRef<HTMLButtonElement>(null);
 
   // Members
   const [members, setMembers] = useState<Member[]>([]);
@@ -630,17 +681,24 @@ export default function GroupChatPage() {
 
   // Series view
   const [selectedSeries, setSelectedSeries] = useState<Series | null>(null);
+  const [selectedSeriesWeek, setSelectedSeriesWeek] = useState<number | null>(null);
   const [seriesPosts, setSeriesPosts] = useState<SeriesPost[]>([]);
   const [loadingSeriesPosts, setLoadingSeriesPosts] = useState(false);
   const [seriesStartDate, setSeriesStartDate] = useState<string | null>(null);
   const [seriesWeekProgress, setSeriesWeekProgress] = useState<Record<number, { reading: boolean; trivia: boolean; reflection: boolean }>>({});
   const [seriesStartDateInput, setSeriesStartDateInput] = useState("");
   const [savingSeriesStartDate, setSavingSeriesStartDate] = useState(false);
+  const [seriesStartSaveError, setSeriesStartSaveError] = useState<string | null>(null);
   const [nowTs, setNowTs] = useState(() => Date.now());
   const [currentSeriesPreview, setCurrentSeriesPreview] = useState<CurrentSeriesPreview | null>(null);
   const [currentSeriesStartAt, setCurrentSeriesStartAt] = useState<string | null>(null);
   const [editingSeriesStart, setEditingSeriesStart] = useState(false);
   const [showSeriesOverviewDetails, setShowSeriesOverviewDetails] = useState(true);
+  const [hubItemStats, setHubItemStats] = useState<Record<string, HubItemStats>>({});
+  const [showHubLikesFor, setShowHubLikesFor] = useState<HubItemStatic | null>(null);
+  const [showPostLikesFor, setShowPostLikesFor] = useState<Post | null>(null);
+  const [postLikers, setPostLikers] = useState<ArticleLikeUser[]>([]);
+  const [loadingPostLikers, setLoadingPostLikers] = useState(false);
 
   // Post view
   const [selectedPost, setSelectedPost] = useState<SeriesPost | null>(null);
@@ -668,8 +726,31 @@ export default function GroupChatPage() {
   const [submittingNewSeriesPost, setSubmittingNewSeriesPost] = useState(false);
 
   const feedRef = useRef<HTMLDivElement>(null);
+  const postEditor = useEditor({
+    extensions: [
+      StarterKit.configure({
+        heading: {
+          levels: [1, 2, 3],
+        },
+      }),
+    ],
+    content: "",
+    immediatelyRender: false,
+    editorProps: {
+      attributes: {
+        class: "prose prose-sm max-w-none focus:outline-none min-h-[220px] px-4 py-4 text-gray-800",
+      },
+    },
+  });
 
-  // ── Auth + membership guard ──────────────────────────────────────────────
+  function runPostEditorCommand(command: () => boolean) {
+    return (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      command();
+    };
+  }
+
+  // â”€â”€ Auth + membership guard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
     async function checkAccessAndLoad() {
       const { data: { user } } = await supabase.auth.getUser();
@@ -742,7 +823,7 @@ export default function GroupChatPage() {
     checkAccessAndLoad();
   }, [groupId, router, searchParams]);
 
-  // ── Load content when tab or group changes ───────────────────────────────
+  // â”€â”€ Load content when tab or group changes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
     if (!group) return;
     setSelectedHubItem(null);
@@ -753,14 +834,14 @@ export default function GroupChatPage() {
       setSelectedPost(null);
       loadSeries();
     } else if (hubCategories.some((c) => c.id === activeTab)) {
-      // items come from static HUB_CONTENT — no fetch needed
+      // items come from static HUB_CONTENT â€” no fetch needed
     } else {
       loadPosts();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [group, activeTab, hubCategories]);
 
-  // ── Load series posts + schedule + progress when series is selected ─────
+  // â”€â”€ Load series posts + schedule + progress when series is selected â”€â”€â”€â”€â”€
   useEffect(() => {
     if (!selectedSeries) return;
     loadSeriesPosts(selectedSeries.id);
@@ -787,17 +868,60 @@ export default function GroupChatPage() {
   }, [selectedSeries]);
 
   useEffect(() => {
+    setSelectedSeriesWeek(null);
+  }, [selectedSeries?.id, activeTab]);
+
+  useEffect(() => {
+    const hubCat = hubCategories.find((c) => c.id === activeTab);
+    if (!hubCat) return;
+    const hubCatStatic = HUB_CONTENT.find((c) => normalizeHubCategoryName(c.name) === normalizeHubCategoryName(hubCat.name));
+    const items = hubCatStatic?.items ?? [];
+    if (items.length === 0) {
+      setHubItemStats({});
+      return;
+    }
+    void loadHubItemStats(items);
+  }, [activeTab, hubCategories, userId]);
+
+  useEffect(() => {
     const id = window.setInterval(() => setNowTs(Date.now()), 1000);
     return () => window.clearInterval(id);
   }, []);
 
-  // ── Load comments when post is selected ─────────────────────────────────
+  useEffect(() => {
+    if (!showMoreNav) return;
+
+    function updateMoreMenuPosition() {
+      const rect = moreButtonRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      setMoreMenuPosition({
+        top: rect.bottom + 8,
+        left: Math.max(12, rect.left),
+      });
+    }
+
+    updateMoreMenuPosition();
+    window.addEventListener("resize", updateMoreMenuPosition);
+    window.addEventListener("scroll", updateMoreMenuPosition, true);
+    return () => {
+      window.removeEventListener("resize", updateMoreMenuPosition);
+      window.removeEventListener("scroll", updateMoreMenuPosition, true);
+    };
+  }, [showMoreNav]);
+
+  useEffect(() => {
+    return () => {
+      if (postEditor) postEditor.destroy();
+    };
+  }, [postEditor]);
+
+  // â”€â”€ Load comments when post is selected â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
     if (selectedPost) loadComments(selectedPost.id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedPost]);
 
-  // ── Chat posts ───────────────────────────────────────────────────────────
+  // â”€â”€ Chat posts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function loadPosts() {
     if (!group) return;
     setLoadingPosts(true);
@@ -805,7 +929,7 @@ export default function GroupChatPage() {
 
     const { data: postRows, error } = await supabase
       .from("group_posts")
-      .select("id, user_id, display_name, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
+      .select("id, user_id, display_name, title, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
       .eq("group_id", group.id)
       .eq("category", postCategory)
       .is("parent_post_id", null)
@@ -864,14 +988,22 @@ export default function GroupChatPage() {
     }
 
     let likedSet = new Set<string>();
-    if (userId && rows.length > 0) {
+    const likeCountMap: Record<string, number> = {};
+    rows.forEach((row) => {
+      likeCountMap[row.id] = 0;
+    });
+    if (rows.length > 0) {
       const { data: likes } = await supabase
-        .from("group_post_likes").select("post_id")
-        .eq("user_id", userId).in("post_id", rows.map((p) => p.id));
-      (likes || []).forEach((l) => likedSet.add(l.post_id));
+        .from("group_post_likes").select("post_id, user_id")
+        .in("post_id", rows.map((p) => p.id));
+      (likes || []).forEach((like) => {
+        likeCountMap[like.post_id] = (likeCountMap[like.post_id] || 0) + 1;
+        if (userId && like.user_id === userId) likedSet.add(like.post_id);
+      });
     }
     setPosts(rows.map((p) => ({
       ...p,
+      like_count: likeCountMap[p.id] || 0,
       comment_count: rootCommentCountMap[p.id] || 0,
       role: roleMap[p.user_id] || "member",
       liked: likedSet.has(p.id),
@@ -882,21 +1014,79 @@ export default function GroupChatPage() {
 
   async function handleLike(post: Post) {
     if (!userId || likeLoading.has(post.id)) return;
+    const currentPost = posts.find((p) => p.id === post.id) ?? selectedFeedPost ?? post;
     setLikeLoading((prev) => new Set(prev).add(post.id));
-    if (post.liked) {
+    if (currentPost.liked) {
       await supabase.from("group_post_likes").delete().eq("post_id", post.id).eq("user_id", userId);
-      await supabase.from("group_posts").update({ like_count: Math.max(0, post.like_count - 1) }).eq("id", post.id);
-      setPosts((prev) => prev.map((p) => p.id === post.id ? { ...p, like_count: Math.max(0, p.like_count - 1), liked: false } : p));
+      await supabase.from("group_posts").update({ like_count: Math.max(0, currentPost.like_count - 1) }).eq("id", post.id);
+      const updated = { ...currentPost, like_count: Math.max(0, currentPost.like_count - 1), liked: false };
+      setPosts((prev) => prev.map((p) => p.id === post.id ? updated : p));
+      setSelectedFeedPost((prev) => prev?.id === post.id ? updated : prev);
+      setPostLikers((prev) => prev.filter((liker) => liker.user_id !== userId));
     } else {
       await supabase.from("group_post_likes").insert({ post_id: post.id, user_id: userId });
-      await supabase.from("group_posts").update({ like_count: post.like_count + 1 }).eq("id", post.id);
-      setPosts((prev) => prev.map((p) => p.id === post.id ? { ...p, like_count: p.like_count + 1, liked: true } : p));
+      await supabase.from("group_posts").update({ like_count: currentPost.like_count + 1 }).eq("id", post.id);
+      const updated = { ...currentPost, like_count: currentPost.like_count + 1, liked: true };
+      setPosts((prev) => prev.map((p) => p.id === post.id ? updated : p));
+      setSelectedFeedPost((prev) => prev?.id === post.id ? updated : prev);
+      setPostLikers((prev) => prev.some((liker) => liker.user_id === userId) ? prev : [{ user_id: userId, display_name: displayName, profile_image_url: userProfileImage }, ...prev]);
     }
     setLikeLoading((prev) => { const s = new Set(prev); s.delete(post.id); return s; });
   }
 
+  async function openPostLikes(post: Post) {
+    setShowPostLikesFor(post);
+    setLoadingPostLikers(true);
+
+    const { data: likeRows } = await supabase
+      .from("group_post_likes")
+      .select("user_id")
+      .eq("post_id", post.id);
+
+    const likerIds = [...new Set((likeRows || []).map((row) => row.user_id))];
+
+    if (likerIds.length === 0) {
+      setPostLikers([]);
+      setLoadingPostLikers(false);
+      return;
+    }
+
+    const { data: profiles } = await supabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url")
+      .in("user_id", likerIds);
+
+    setPostLikers(
+      likerIds.map((userIdValue) => {
+        const profile = (profiles || []).find((row) => row.user_id === userIdValue);
+        return {
+          user_id: userIdValue,
+          display_name: profile?.display_name || profile?.username || "Member",
+          profile_image_url: profile?.profile_image_url ?? null,
+        };
+      }),
+    );
+    setLoadingPostLikers(false);
+  }
+
+  function resetPostComposer() {
+    setNewPostTitle("");
+    setNewPostContent("");
+    postEditor?.commands.clearContent();
+    setComposerPhotoFile(null);
+    setComposerPhotoPreview(null);
+    if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
+    setComposerVideoFile(null);
+    setComposerVideoPreview(null);
+    setComposerVideoDurationError(false);
+    setComposerMode("text");
+    setComposerUploadError(null);
+  }
+
   async function handleSubmitPost() {
-    const hasContent = newPostContent.trim().length > 0;
+    const editorHtml = postEditor?.getHTML() ?? "";
+    const normalizedContent = editorHtml === "<p></p>" ? "" : editorHtml;
+    const hasContent = stripHtml(normalizedContent).length > 0;
     const hasPhoto = composerMode === "photo" && !!composerPhotoFile;
     const hasVideo = composerMode === "video" && !!composerVideoFile && !composerVideoDurationError;
     if (!hasContent && !hasPhoto && !hasVideo) return;
@@ -940,21 +1130,26 @@ export default function GroupChatPage() {
         group_id: group.id,
         user_id: userId,
         display_name: displayName,
+        title: newPostTitle.trim() || null,
         category: getGroupPostCategory(activeTab),
-        content: newPostContent.trim(),
+        content: normalizedContent,
         media_url: mediaUrl,
         link_url: linkUrl,
       })
-      .select("id, user_id, display_name, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
+      .select("id, user_id, display_name, title, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
       .single();
 
-    if (!error && newPost) {
+    if (error) {
+      console.error("Group post insert failed:", error);
+      setComposerUploadError(error.message || "Post failed to publish. Please try again.");
+      setSubmitting(false);
+      return;
+    }
+
+    if (newPost) {
       setPosts((prev) => [{ ...newPost, comment_count: 0, role: userRole, liked: false, profile_image_url: userProfileImage }, ...prev]);
-      setNewPostContent("");
-      setComposerPhotoFile(null); setComposerPhotoPreview(null);
-      if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
-      setComposerVideoFile(null); setComposerVideoPreview(null); setComposerVideoDurationError(false);
-      setComposerMode("text"); setComposerUploadError(null);
+      resetPostComposer();
+      setShowPostComposerModal(false);
       void logActionToMasterActions(userId, "group_message_sent", group?.name || "Group");
     }
     setSubmitting(false);
@@ -965,16 +1160,116 @@ export default function GroupChatPage() {
     setDeletingPost(true);
     await supabase.from("group_posts").delete().eq("id", deletePostId);
     setPosts((prev) => prev.filter((post) => post.id !== deletePostId));
-    setOpenCommentPostIds((prev) => {
-      const next = new Set(prev);
-      next.delete(deletePostId);
-      return next;
-    });
+    setSelectedFeedPost((prev) => (prev?.id === deletePostId ? null : prev));
     setDeletePostId(null);
     setDeletingPost(false);
   }
 
-  // ── Members ──────────────────────────────────────────────────────────────
+  async function loadHubItemStats(items: HubItemStatic[]) {
+    const itemPaths = items.map((item) => item.path);
+    const nextStats: Record<string, HubItemStats> = {};
+
+    itemPaths.forEach((path) => {
+      nextStats[path] = { likeCount: 0, commentCount: 0, liked: false, likers: [] };
+    });
+
+    const { data: commentRows } = await supabase
+      .from("article_comments")
+      .select("article_slug")
+      .in("article_slug", itemPaths);
+
+    (commentRows || []).forEach((row) => {
+      if (!row.article_slug || !nextStats[row.article_slug]) return;
+      nextStats[row.article_slug].commentCount += 1;
+    });
+
+    const { data: likeRows, error: likeRowsError } = await supabase
+      .from("article_likes")
+      .select("article_slug, user_id")
+      .in("article_slug", itemPaths);
+
+    if (!likeRowsError) {
+      const likerIds = [...new Set((likeRows || []).map((row) => row.user_id))];
+      let likerMap: Record<string, ArticleLikeUser> = {};
+
+      if (likerIds.length > 0) {
+        const { data: likerProfiles } = await supabase
+          .from("profile_stats")
+          .select("user_id, display_name, username, profile_image_url")
+          .in("user_id", likerIds);
+
+        likerMap = Object.fromEntries(
+          (likerProfiles || []).map((profile) => [
+            profile.user_id,
+            {
+              user_id: profile.user_id,
+              display_name: profile.display_name || profile.username || "Member",
+              profile_image_url: profile.profile_image_url ?? null,
+            },
+          ]),
+        );
+      }
+
+      (likeRows || []).forEach((row) => {
+        if (!row.article_slug || !nextStats[row.article_slug]) return;
+        nextStats[row.article_slug].likeCount += 1;
+        if (userId && row.user_id === userId) nextStats[row.article_slug].liked = true;
+        const liker = likerMap[row.user_id] || { user_id: row.user_id, display_name: "Member", profile_image_url: null };
+        nextStats[row.article_slug].likers.push(liker);
+      });
+    }
+
+    setHubItemStats(nextStats);
+  }
+
+  async function handleHubItemLike(item: HubItemStatic) {
+    if (!userId) return;
+    const current = hubItemStats[item.path] || { likeCount: 0, commentCount: 0, liked: false, likers: [] };
+
+    if (current.liked) {
+      const { error } = await supabase
+        .from("article_likes")
+        .delete()
+        .eq("article_slug", item.path)
+        .eq("user_id", userId);
+      if (error) return;
+
+      setHubItemStats((prev) => ({
+        ...prev,
+        [item.path]: {
+          ...current,
+          liked: false,
+          likeCount: Math.max(0, current.likeCount - 1),
+          likers: current.likers.filter((liker) => liker.user_id !== userId),
+        },
+      }));
+      return;
+    }
+
+    const { error } = await supabase.from("article_likes").insert({
+      article_slug: item.path,
+      user_id: userId,
+    });
+    if (error) return;
+
+    const newLiker: ArticleLikeUser = {
+      user_id: userId,
+      display_name: displayName,
+      profile_image_url: userProfileImage,
+    };
+
+    setHubItemStats((prev) => ({
+      ...prev,
+      [item.path]: {
+        ...current,
+        liked: true,
+        likeCount: current.likeCount + 1,
+        likers: current.likers.some((liker) => liker.user_id === userId) ? current.likers : [newLiker, ...current.likers],
+      },
+    }));
+  }
+
+  // â”€â”€ Members â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function fetchMembersPage(offset: number): Promise<{ rows: Member[]; hasMore: boolean }> {
     if (!group) return { rows: [], hasMore: false };
     const { data: page } = await supabase
@@ -1032,7 +1327,7 @@ export default function GroupChatPage() {
     setLoadingMoreMembers(false);
   }
 
-  // ── Series ───────────────────────────────────────────────────────────────
+  // â”€â”€ Series â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function loadSeries() {
     if (!group) return;
     setLoadingSeries(true);
@@ -1044,7 +1339,6 @@ export default function GroupChatPage() {
     const rows = data || [];
     setSeriesList(rows);
     const currentSeries = rows.find((series) => series.is_current) ?? rows[0] ?? null;
-    setSelectedSeries(currentSeries);
     setCurrentSeriesPreview(currentSeries ? {
       id: currentSeries.id,
       title: currentSeries.title,
@@ -1120,20 +1414,55 @@ export default function GroupChatPage() {
   async function handleSaveSeriesStartDate() {
     if (!selectedSeries || !group || !userId || !seriesStartDateInput) return;
     setSavingSeriesStartDate(true);
+    setSeriesStartSaveError(null);
     const startAtIso = new Date(seriesStartDateInput).toISOString();
-    await supabase.from("series_schedules").upsert(
-      {
-        series_id: selectedSeries.id,
-        group_id: group.id,
-        start_date: seriesStartDateInput.slice(0, 10),
-        start_at: startAtIso,
-        created_by: userId,
-      },
-      { onConflict: "series_id" }
-    );
-    setSeriesStartDate(startAtIso);
-    setCurrentSeriesStartAt(startAtIso);
-    setEditingSeriesStart(false);
+
+    const payload = {
+      series_id: selectedSeries.id,
+      group_id: group.id,
+      start_date: seriesStartDateInput.slice(0, 10),
+      start_at: startAtIso,
+      created_by: userId,
+    };
+
+    const { data: existingSchedule } = await supabase
+      .from("series_schedules")
+      .select("id")
+      .eq("series_id", selectedSeries.id)
+      .maybeSingle();
+
+    const saveResult = existingSchedule?.id
+      ? await supabase.from("series_schedules").update(payload).eq("id", existingSchedule.id)
+      : await supabase.from("series_schedules").insert(payload);
+
+    if (saveResult.error) {
+      const message = saveResult.error.message || "";
+      if (message.includes("Could not find the table 'public.series_schedules'")) {
+        setSeriesStartSaveError("Supabase is missing the series schedule tables. Run STEP_H_SERIES_TABLES.sql first, then ADD_SERIES_START_TIME_SUPPORT.sql.");
+      } else {
+        setSeriesStartSaveError(message || "Could not save the series start time.");
+      }
+      setSavingSeriesStartDate(false);
+      return;
+    }
+
+    const { data: refreshedSchedule, error: refreshError } = await supabase
+      .from("series_schedules")
+      .select("start_date, start_at")
+      .eq("series_id", selectedSeries.id)
+      .maybeSingle();
+
+    if (refreshError) {
+      setSeriesStartSaveError(refreshError.message || "The series start time saved, but it could not be reloaded.");
+      setSavingSeriesStartDate(false);
+      return;
+    }
+
+    const resolvedStart = resolveSeriesStart(refreshedSchedule);
+    setSeriesStartDate(resolvedStart);
+    setCurrentSeriesStartAt(resolvedStart);
+    setSeriesStartDateInput(resolvedStart ? toDateTimeLocalValue(resolvedStart) : "");
+    setEditingSeriesStart(!resolvedStart);
     setSavingSeriesStartDate(false);
   }
 
@@ -1235,7 +1564,7 @@ export default function GroupChatPage() {
     setSubmittingComment(false);
   }
 
-  // ── Derived ──────────────────────────────────────────────────────────────
+  // â”€â”€ Derived â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   if (!group) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -1245,6 +1574,7 @@ export default function GroupChatPage() {
   }
 
   const coverColor = group.cover_color || "#d4ecd4";
+  const activeFeedPost = selectedFeedPost ? (posts.find((post) => post.id === selectedFeedPost.id) ?? selectedFeedPost) : null;
   const isLeader = userRole === "leader";
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
   const SAGE = "#5a9a5a";
@@ -1253,14 +1583,14 @@ export default function GroupChatPage() {
     ? { buttonBg: "#b7794d" }
     : { buttonBg: SAGE };
 
-  // ── Render ───────────────────────────────────────────────────────────────
+  // â”€â”€ Render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
 
-      {/* ── Header banner ───────────────────────────────────────────────── */}
+      {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="sticky top-0 z-20" style={{ backgroundColor: coverColor }}>
         <div className="max-w-2xl mx-auto px-4 py-4 flex items-center gap-3">
-          {/* Back: hub item → hub list → post view → series view → series list → group detail */}
+          {/* Back: hub item â†’ hub list â†’ post view â†’ series view â†’ series list â†’ group detail */}
           {selectedPost ? (
             <button onClick={() => setSelectedPost(null)} className="text-gray-700 hover:text-gray-900 transition">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1289,9 +1619,9 @@ export default function GroupChatPage() {
           <span className="text-xl">{group.cover_emoji || "🤝"}</span>
           <div className="flex-1 min-w-0">
             <h1 className="text-lg font-bold text-gray-900 truncate">
-              {selectedPost ? selectedPost.title : selectedSeries ? selectedSeries.title : selectedHubItem ? selectedHubItem.title : displayGroupName}
+              {selectedHubItem ? selectedHubItem.title : displayGroupName}
             </h1>
-            {!selectedPost && !selectedSeries && !selectedHubItem && (
+            {!selectedHubItem && (
               <div className="flex items-center gap-3 flex-wrap">
                 <button
                   onClick={() => setShowGroupInfoModal(true)}
@@ -1311,7 +1641,7 @@ export default function GroupChatPage() {
         </div>
 
         {/* Header navigation */}
-        {!selectedSeries && !selectedPost && !selectedHubItem && (
+        {!selectedHubItem && (
           <div className="max-w-2xl mx-auto px-4 pb-3">
             {(() => {
               const primaryTabs = [
@@ -1330,8 +1660,8 @@ export default function GroupChatPage() {
               ];
               const moreIsActive = activeTab === "members" || hubCategories.some((cat) => cat.id === activeTab);
               return (
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
+                <div className="relative">
+                  <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pr-1">
                     {primaryTabs.map((tab) => {
                       const isActive = activeTab === tab.key;
                       return (
@@ -1339,6 +1669,11 @@ export default function GroupChatPage() {
                           key={tab.key}
                           type="button"
                           onClick={() => {
+                            if (tab.key === "bible_studies") {
+                              setSelectedSeries(null);
+                              setSelectedSeriesWeek(null);
+                              setSelectedPost(null);
+                            }
                             setActiveTab(tab.key);
                             setShowMoreNav(false);
                           }}
@@ -1354,53 +1689,33 @@ export default function GroupChatPage() {
                       );
                     })}
                     {moreItems.length > 0 && (
-                      <button
-                        type="button"
-                        onClick={() => setShowMoreNav((v) => !v)}
-                        className="px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition flex items-center gap-2"
-                        style={{
-                          backgroundColor: moreIsActive || showMoreNav ? "#ffffff" : "rgba(255,255,255,0.82)",
-                          borderColor: moreIsActive || showMoreNav ? "#d9c7b4" : "#e5e7eb",
-                          color: moreIsActive || showMoreNav ? "#8d5d38" : "#374151",
-                        }}
-                      >
-                        <span>More</span>
-                        <svg
-                          className={`w-4 h-4 transition-transform ${showMoreNav ? "rotate-180" : ""}`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+                      <div className="flex-shrink-0">
+                        <button
+                          ref={moreButtonRef}
+                          type="button"
+                          onClick={() => {
+                            setShowMoreNav((v) => !v);
+                          }}
+                          className="px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition flex items-center gap-2"
+                          style={{
+                            backgroundColor: moreIsActive || showMoreNav ? "#ffffff" : "rgba(255,255,255,0.82)",
+                            borderColor: moreIsActive || showMoreNav ? "#d9c7b4" : "#e5e7eb",
+                            color: moreIsActive || showMoreNav ? "#8d5d38" : "#374151",
+                          }}
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
+                          <span>More</span>
+                          <svg
+                            className={`w-4 h-4 transition-transform ${showMoreNav ? "rotate-180" : ""}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                      </div>
                     )}
                   </div>
-                  {showMoreNav && moreItems.length > 0 && (
-                    <div className="flex flex-wrap gap-2 rounded-2xl border px-3 py-3 shadow-sm" style={{ backgroundColor: "rgba(255,255,255,0.72)", borderColor: "rgba(255,255,255,0.78)" }}>
-                      {moreItems.map((item) => {
-                        const isActive = activeTab === item.key;
-                        return (
-                          <button
-                            key={item.key}
-                            type="button"
-                            onClick={() => {
-                              setActiveTab(item.key);
-                              if (item.isHub) setHubView("articles");
-                            }}
-                            className="px-3.5 py-2 rounded-full text-sm font-medium whitespace-nowrap transition"
-                            style={{
-                              backgroundColor: isActive ? "#f7e3d1" : "#fffaf4",
-                              color: isActive ? "#8d5d38" : "#5f6368",
-                              border: "1px solid #ead8c4",
-                            }}
-                          >
-                            {item.label}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
                 </div>
               );
             })()}
@@ -1408,11 +1723,50 @@ export default function GroupChatPage() {
         )}
       </div>
 
+      {showMoreNav && moreMenuPosition && !selectedHubItem && (
+        <>
+          <div className="fixed inset-0 z-10" onClick={() => setShowMoreNav(false)} />
+          <div
+            className="fixed z-20 w-64 max-w-[calc(100vw-2rem)] rounded-2xl border border-[#ead8c4] bg-[#fffaf4] p-2 shadow-xl"
+            style={{ top: moreMenuPosition.top, left: moreMenuPosition.left }}
+          >
+            {[
+              { key: "members", label: "Members", isHub: false },
+              ...hubCategories.map((cat) => ({
+                key: cat.id,
+                label: `${cat.emoji} ${cat.name}`,
+                isHub: true,
+              })),
+            ].map((item) => {
+              const isActive = activeTab === item.key;
+              return (
+                <button
+                  key={item.key}
+                  type="button"
+                  onClick={() => {
+                    setActiveTab(item.key);
+                    if (item.isHub) setHubView("articles");
+                    setShowMoreNav(false);
+                  }}
+                  className="w-full px-3.5 py-2.5 rounded-xl text-sm font-medium text-left transition"
+                  style={{
+                    backgroundColor: isActive ? "#f7e3d1" : "transparent",
+                    color: isActive ? "#8d5d38" : "#5f6368",
+                  }}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
+        </>
+      )}
 
-      {/* ── Feed ────────────────────────────────────────────────────────── */}
+
+      {/* â”€â”€ Feed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div ref={feedRef} className="flex-1 overflow-y-auto pb-32">
 
-        {/* ── Hub article viewer (iframe, full-width, no padding) ───────── */}
+        {/* â”€â”€ Hub article viewer (iframe, full-width, no padding) â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {selectedHubItem && (
           <iframe
             key={selectedHubItem.path}
@@ -1439,7 +1793,7 @@ export default function GroupChatPage() {
                   style={{ borderBottom: "1px solid #b8ddb8" }}
                 >
                   <div>
-                    <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: "#4f7e54" }}>Pinned Series</p>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: "#4f7e54" }}>Bible Study Series</p>
                     <h2 className="text-base font-bold text-gray-900 mt-1">{currentSeriesPreview.title}</h2>
                   </div>
                   <span
@@ -1464,7 +1818,7 @@ export default function GroupChatPage() {
             );
           })()}
 
-          {/* ── MEMBERS TAB ─────────────────────────────────────────────── */}
+          {/* â”€â”€ MEMBERS TAB â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
           {activeTab === "members" && !selectedSeries && !selectedPost ? (
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mt-2">
               <div className="px-5 py-4 border-b border-gray-100">
@@ -1517,7 +1871,7 @@ export default function GroupChatPage() {
                       </div>
                     ))}
                   </div>
-                  {/* Load more — only show when not searching */}
+                  {/* Load more â€” only show when not searching */}
                   {!membersSearch && membersHasMore && (
                     <div className="px-5 py-4 border-t border-gray-100">
                       <button
@@ -1525,7 +1879,7 @@ export default function GroupChatPage() {
                         disabled={loadingMoreMembers}
                         className="w-full py-2.5 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 hover:bg-gray-50 transition disabled:opacity-50"
                       >
-                        {loadingMoreMembers ? "Loading..." : `Load more · ${members.length} of ${membersTotal ?? "?"} members`}
+                        {loadingMoreMembers ? "Loading..." : `Load more Â· ${members.length} of ${membersTotal ?? "?"} members`}
                       </button>
                     </div>
                   )}
@@ -1537,14 +1891,14 @@ export default function GroupChatPage() {
               })()}
             </div>
 
-          /* ── BIBLE STUDIES — POST VIEW ─────────────────────────────────── */
+          /* â”€â”€ BIBLE STUDIES â€” POST VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
           ) : activeTab === "bible_studies" && selectedPost ? (
             <div className="flex flex-col gap-4">
               {/* Post card */}
               <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
                 <div className="px-5 pt-5 pb-4">
                   <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">{selectedSeries?.title}</p>
-                  <p className="text-xs text-gray-500 mb-3">Week {selectedPost.week_number} · {selectedPost.published_at ? formatDate(selectedPost.published_at) : formatDate(selectedPost.created_at)}</p>
+                  <p className="text-xs text-gray-500 mb-3">Week {selectedPost.week_number} Â· {selectedPost.published_at ? formatDate(selectedPost.published_at) : formatDate(selectedPost.created_at)}</p>
                   <h2 className="text-xl font-bold text-gray-900 mb-4 leading-snug">{selectedPost.title}</h2>
                   <p className="text-gray-800 text-sm leading-relaxed whitespace-pre-wrap">{selectedPost.content}</p>
                 </div>
@@ -1679,7 +2033,37 @@ export default function GroupChatPage() {
               </div>
             </div>
 
-          /* ── BIBLE STUDIES — SERIES VIEW ───────────────────────────────── */
+          /* â”€â”€ BIBLE STUDIES â€” SERIES VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+          ) : activeTab === "bible_studies" && selectedSeries && selectedSeriesWeek ? (
+            <div className="flex flex-col gap-4">
+              <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+                <div className="px-4 py-4 border-b border-gray-200 bg-[#fff8f2]">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedSeriesWeek(null)}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#8d5d38] hover:text-[#6f4526] transition"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back to Series
+                  </button>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-[#9c6a46] mt-3">
+                    {selectedSeries.title}
+                  </p>
+                  <h2 className="text-lg font-bold text-gray-900 mt-1">
+                    Week {selectedSeriesWeek}: {getSeriesWeekLesson(selectedSeriesWeek)?.title ?? "Study Week"}
+                  </h2>
+                </div>
+                <iframe
+                  key={`${groupId}-${selectedSeriesWeek}`}
+                  src={`/study-groups/${groupId}/series/week/${selectedSeriesWeek}`}
+                  title={`${selectedSeries.title} Week ${selectedSeriesWeek}`}
+                  className="w-full border-0 block bg-white"
+                  style={{ height: "calc(100vh - 180px)", minHeight: 980 }}
+                />
+              </div>
+            </div>
           ) : activeTab === "bible_studies" && selectedSeries ? (
             <div className="flex flex-col gap-4">
               {/* Series header card */}
@@ -1751,6 +2135,16 @@ export default function GroupChatPage() {
                             </span>
                           )}
                         </div>
+
+                        {seriesStartDate && (
+                          <p className="text-sm text-gray-700 mt-3">
+                            <span className="font-semibold text-gray-900">Bible Study Series </span>
+                            {new Date(seriesStartDate).getTime() > nowTs
+                              ? `starts in ${formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}`
+                              : "started"}{" "}
+                            <span className="text-gray-500">({formatDateTimeLabel(seriesStartDate)})</span>
+                          </p>
+                        )}
 
                         <button
                           type="button"
@@ -1853,26 +2247,31 @@ export default function GroupChatPage() {
                 )}
               </div>
 
-              {/* Week Lessons — inline cards when series is current */}
+              {/* Week Lessons â€” inline cards when series is current */}
               {isLeader && selectedSeries.is_current && (
                 <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
                   <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-1">Series Control Panel</p>
                   <p className="text-sm text-amber-800 mb-3">Set the Week 1 start date and time. Every other week unlocks automatically 7 days later.</p>
                   {!seriesStartDate || editingSeriesStart ? (
-                    <div className="flex gap-2 flex-col sm:flex-row">
-                      <input
-                        type="datetime-local"
-                        value={seriesStartDateInput}
-                        onChange={(e) => setSeriesStartDateInput(e.target.value)}
-                        className="flex-1 text-sm px-3 py-2 border border-amber-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-amber-400"
-                      />
-                      <button
-                        onClick={handleSaveSeriesStartDate}
-                        disabled={savingSeriesStartDate || !seriesStartDateInput}
-                        className="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-amber-500 hover:bg-amber-600 disabled:opacity-50 transition"
-                      >
-                        {savingSeriesStartDate ? "Saving..." : "Save"}
-                      </button>
+                    <div className="space-y-2">
+                      <div className="flex gap-2 flex-col sm:flex-row">
+                        <input
+                          type="datetime-local"
+                          value={seriesStartDateInput}
+                          onChange={(e) => setSeriesStartDateInput(e.target.value)}
+                          className="flex-1 text-sm px-3 py-2 border border-amber-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-amber-400"
+                        />
+                        <button
+                          onClick={handleSaveSeriesStartDate}
+                          disabled={savingSeriesStartDate || !seriesStartDateInput}
+                          className="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-amber-500 hover:bg-amber-600 disabled:opacity-50 transition"
+                        >
+                          {savingSeriesStartDate ? "Saving..." : "Save"}
+                        </button>
+                      </div>
+                      {seriesStartSaveError && (
+                        <p className="text-xs text-red-600">{seriesStartSaveError}</p>
+                      )}
                     </div>
                   ) : (
                     <div className="rounded-xl border border-amber-200 bg-white px-4 py-3">
@@ -1932,11 +2331,14 @@ export default function GroupChatPage() {
                           </div>
                           <div className="px-4 pb-3">
                             {unlocked && lesson ? (
-                              <Link href={`/study-groups/${groupId}/series/week/${wn}`}>
-                                <button className="w-full py-2 rounded-xl text-sm font-bold text-white transition hover:opacity-90" style={{ backgroundColor: "#4a9b6f" }}>
-                                  {complete ? "Review" : done > 0 ? "Continue" : "Start"}
-                                </button>
-                              </Link>
+                              <button
+                                type="button"
+                                onClick={() => setSelectedSeriesWeek(wn)}
+                                className="w-full py-2 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
+                                style={{ backgroundColor: "#4a9b6f" }}
+                              >
+                                {complete ? "Review" : done > 0 ? "Continue" : "Start"}
+                              </button>
                             ) : (
                               <button
                                 disabled
@@ -1997,7 +2399,7 @@ export default function GroupChatPage() {
               )}
             </div>
 
-          /* ── BIBLE STUDIES — SERIES LIST ───────────────────────────────── */
+          /* â”€â”€ BIBLE STUDIES â€” SERIES LIST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
           ) : activeTab === "bible_studies" ? (
             <div className="flex flex-col gap-4">
               {/* Leader header */}
@@ -2015,35 +2417,53 @@ export default function GroupChatPage() {
 
               {loadingSeries ? (
                 <p className="text-sm text-gray-400 text-center py-8">Loading...</p>
-              ) : seriesList.length === 0 ? (
-                <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm text-center">
-                  <p className="text-gray-400 text-sm">{isLeader ? "No series yet. Create the first one." : "No series available yet."}</p>
-                </div>
               ) : (
                 <div className="flex flex-col gap-3">
-                  {seriesList.map((series) => {
-                    const publishedCount = 0; // would require a join; omitted for perf
+                  {PLANNED_BIBLE_STUDY_SERIES.map((planned, index) => {
+                    const liveSeries = index === 0 ? (seriesList.find((series) => series.is_current) ?? seriesList[0] ?? null) : null;
+                    const isLive = index === 0 && !!liveSeries;
+                    const startLabel = isLive && currentSeriesStartAt ? formatDateTimeLabel(currentSeriesStartAt) : null;
                     return (
                       <button
-                        key={series.id}
-                        onClick={() => setSelectedSeries(series)}
-                        className="w-full bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-left hover:shadow-md transition"
+                        key={planned.key}
+                        type="button"
+                        onClick={() => {
+                          if (isLive && liveSeries) setSelectedSeries(liveSeries);
+                        }}
+                        disabled={!isLive}
+                        className={`w-full rounded-xl p-4 shadow-sm text-left transition border ${
+                          isLive
+                            ? "bg-white border-gray-200 hover:shadow-md"
+                            : "bg-gray-50 border-gray-200 opacity-55 cursor-not-allowed"
+                        }`}
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold text-gray-900 truncate">{series.title}</p>
-                            {series.description && <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">{series.description}</p>}
-                            <p className="text-xs text-gray-400 mt-1">{series.total_weeks} weeks</p>
+                            <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: isLive ? "#4f7e54" : "#9ca3af" }}>
+                              {planned.subtitle}
+                            </p>
+                            <p className="text-base font-semibold text-gray-900 mt-1">{planned.title}</p>
+                            {isLive ? (
+                              <>
+                                <p className="text-xs text-gray-500 mt-1 line-clamp-2">
+                                  {liveSeries?.description || "A guided Bible Buddy study through Luke 4:1-30 with notes, trivia, reflection, and group discussion."}
+                                </p>
+                                <p className="text-xs text-gray-400 mt-2">
+                                  {startLabel ? `Starts ${startLabel}` : "Start date coming soon"}
+                                </p>
+                              </>
+                            ) : (
+                              <p className="text-xs text-gray-400 mt-2">🔒 Locked until this series is released</p>
+                            )}
                           </div>
                           <div className="flex flex-col items-end gap-2 flex-shrink-0">
-                            {series.is_current && (
+                            {isLive ? (
                               <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{ backgroundColor: "#d4ecd4", color: SAGE }}>
-                                Current
+                                Active
                               </span>
+                            ) : (
+                              <span className="text-xs text-gray-400">🔒</span>
                             )}
-                            <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
                           </div>
                         </div>
                       </button>
@@ -2053,14 +2473,14 @@ export default function GroupChatPage() {
               )}
             </div>
 
-          /* ── HUB TABS ───────────────────────────────────────────────────── */
+          /* â”€â”€ HUB TABS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
           ) : hubCategories.some((c) => c.id === activeTab) ? (() => {
             const hubCat = hubCategories.find((c) => c.id === activeTab)!;
-            const bg = hubCat.color;
-            const borderColor = bg.replace(/ff$/, "cc");
+            const bg = "#ffffff";
+            const borderColor = "#e5e7eb";
 
-            // ── Category list view (items from static config) ──
-            const hubCatStatic = HUB_CONTENT.find((c) => c.name === hubCat.name);
+            // â”€â”€ Category list view (items from static config) â”€â”€
+            const hubCatStatic = HUB_CONTENT.find((c) => normalizeHubCategoryName(c.name) === normalizeHubCategoryName(hubCat.name));
             const allItems = hubCatStatic?.items ?? [];
             const articles = allItems.filter((i) => i.type === "article");
             const questions = allItems.filter((i) => i.type === "question");
@@ -2100,11 +2520,55 @@ export default function GroupChatPage() {
                       <button
                         key={item.id}
                         onClick={() => setSelectedHubItem(item)}
-                        className="w-full text-left rounded-xl p-5 shadow-sm border hover:shadow-md transition cursor-pointer"
+                        className="w-full text-left rounded-xl p-4 shadow-sm border hover:shadow-md transition cursor-pointer"
                         style={{ backgroundColor: bg, borderColor }}
                       >
-                        <p className="font-bold text-gray-900 text-base leading-snug">{item.title}</p>
-                        <p className="text-gray-600 text-sm mt-1">{item.subtitle}</p>
+                        <div className="min-w-0 flex-1">
+                          <p className="font-bold text-gray-900 text-[15px] leading-snug">
+                            <span className="mr-2">{item.emoji}</span>
+                            {item.title}
+                          </p>
+                          <p className="text-gray-600 text-sm mt-1">{item.subtitle}</p>
+                        </div>
+                        <div className="flex items-center gap-3 mt-3 pt-3 border-t border-black/5">
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              void handleHubItemLike(item);
+                            }}
+                            className="flex items-center gap-1.5 text-sm transition"
+                            style={{ color: hubItemStats[item.path]?.liked ? "#e53e3e" : "#7b7b7b" }}
+                          >
+                            <svg className="w-4 h-4" fill={hubItemStats[item.path]?.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setShowHubLikesFor(item);
+                            }}
+                            className="text-sm text-gray-500 hover:text-gray-700 hover:underline transition"
+                          >
+                            {hubItemStats[item.path]?.likeCount || 0}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedHubItem(item);
+                            }}
+                            className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-[#b7794d] transition"
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
+                            <span>{hubItemStats[item.path]?.commentCount || 0}</span>
+                            <span>Comments</span>
+                          </button>
+                        </div>
                       </button>
                     ))}
                   </div>
@@ -2113,168 +2577,390 @@ export default function GroupChatPage() {
             );
           })() : (
 
-          /* ── OTHER TABS (chat) ──────────────────────────────────────────── */
-            renderPosts()
+          /* â”€â”€ OTHER TABS (chat) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+            <div className="space-y-4">
+              {!hubCategories.some((c) => c.id === activeTab) && activeTab !== "members" && activeTab !== "bible_studies" && !selectedPost && (
+                <button
+                  type="button"
+                  onClick={() => setShowPostComposerModal(true)}
+                  className="w-full bg-white border border-[#d4ecd4] rounded-2xl px-4 py-4 shadow-sm hover:shadow-md transition text-left"
+                >
+                  <div className="flex items-center gap-3">
+                    {userProfileImage ? (
+                      <img src={userProfileImage} alt={displayName} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
+                        {getInitial(displayName)}
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-semibold text-gray-900">Share something with the group</p>
+                      <p className="text-sm text-gray-400 mt-1">Add a title, write your post, and start the conversation...</p>
+                    </div>
+                  </div>
+                </button>
+              )}
+              {renderPosts()}
+            </div>
           )}
 
         </div>}
       </div>
 
-      {/* ── Post composer (chat tabs only) ──────────────────────────────── */}
-      {activeTab !== "members" && activeTab !== "bible_studies" && !hubCategories.some((c) => c.id === activeTab) && !selectedPost && (
-        <div className="fixed bottom-0 left-0 right-0 z-20 bg-white border-t border-gray-200 px-4 pt-2 pb-3">
-          <div className="max-w-2xl mx-auto">
-            {/* Photo preview strip */}
-            {composerMode === "photo" && composerPhotoPreview && (
-              <div className="mb-2 relative inline-block">
-                <img src={composerPhotoPreview} alt="Preview" className="h-20 rounded-xl object-cover" />
-                <button
-                  onClick={() => { setComposerPhotoFile(null); setComposerPhotoPreview(null); setComposerMode("text"); }}
-                  className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-gray-700 rounded-full flex items-center justify-center text-white text-[9px] hover:bg-gray-900"
-                >✕</button>
-              </div>
-            )}
-            {/* Video upload strip */}
-            {composerMode === "video" && (
-              <div className="mb-2">
-                {!composerVideoPreview ? (
-                  <button
-                    onClick={() => groupVideoInputRef.current?.click()}
-                    className="w-full border-2 border-dashed border-gray-200 rounded-xl py-4 flex items-center justify-center gap-2 hover:border-green-400 hover:bg-green-50/50 transition text-sm text-gray-500 font-medium"
-                  >
-                    🎬 Tap to upload a video <span className="text-xs text-gray-400 font-normal">· MP4/MOV · max 50 MB · 90 sec</span>
-                    <button onClick={(e) => { e.stopPropagation(); setComposerMode("text"); }} className="ml-2 text-gray-400 hover:text-gray-600 text-xs">✕</button>
-                  </button>
-                ) : (
-                  <div className="relative">
-                    <video
-                      src={composerVideoPreview}
-                      controls
-                      playsInline
-                      className="w-full rounded-xl"
-                      style={{ maxHeight: "200px" }}
-                      onLoadedMetadata={(e) => {
-                        if (e.currentTarget.duration > 90) {
-                          setComposerVideoDurationError(true);
-                          setComposerUploadError("Video must be 90 seconds or shorter.");
-                        } else {
-                          setComposerVideoDurationError(false);
-                          setComposerUploadError(null);
-                        }
-                      }}
-                    />
-                    <button
-                      onClick={() => {
-                        if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
-                        setComposerVideoFile(null); setComposerVideoPreview(null);
-                        setComposerVideoDurationError(false); setComposerUploadError(null);
-                        setComposerMode("text");
-                      }}
-                      className="absolute top-1.5 right-1.5 w-6 h-6 bg-black/60 rounded-full flex items-center justify-center text-white text-[10px] hover:bg-black/80 transition"
-                    >✕</button>
-                  </div>
+      {activeFeedPost && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          onClick={() => setSelectedFeedPost(null)}
+        >
+          <div
+            className="bg-white rounded-3xl shadow-xl w-full max-w-2xl max-h-[92vh] overflow-y-auto modal-panel-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4 px-6 py-5 border-b border-[#efe5d9]">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <p className="font-semibold text-gray-900 text-sm">
+                    {activeFeedPost.display_name || "Member"}
+                  </p>
+                  {(activeFeedPost.role === "leader" || activeFeedPost.role === "moderator") && (
+                    <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
+                      {activeFeedPost.role === "leader" ? "Teacher" : "Mod"}
+                    </span>
+                  )}
+                  <span className="text-xs text-gray-400">{timeAgo(activeFeedPost.created_at)}</span>
+                </div>
+                {activeFeedPost.title && (
+                  <h2 className="text-xl font-bold text-gray-900 mt-2 leading-snug">{activeFeedPost.title}</h2>
                 )}
               </div>
-            )}
-            {composerUploadError && <p className="text-xs text-red-500 mb-1">{composerUploadError}</p>}
+              <button
+                type="button"
+                onClick={() => setSelectedFeedPost(null)}
+                className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition flex-shrink-0"
+              >
+                ×
+              </button>
+            </div>
 
-            {/* Main input row */}
-            <div className="flex items-end gap-2">
-              {userProfileImage ? (
-                <img src={userProfileImage} alt={displayName} className="w-8 h-8 rounded-full object-cover flex-shrink-0" />
-              ) : (
-                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
-                  {getInitial(displayName)}
-                </div>
+            <div className="px-6 py-5">
+              {activeFeedPost.content && (
+                <div
+                  className="prose prose-sm max-w-none text-gray-800 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: activeFeedPost.content }}
+                />
               )}
 
-              {/* Photo/video icon buttons */}
-              <input
-                ref={groupPhotoInputRef}
-                type="file"
-                accept="image/*"
-                capture="environment"
-                className="hidden"
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (!file) return;
-                  setComposerPhotoFile(file);
-                  const reader = new FileReader();
-                  reader.onload = (ev) => setComposerPhotoPreview(ev.target?.result as string);
-                  reader.readAsDataURL(file);
-                  setComposerMode("photo");
-                }}
-              />
-              <button
-                onClick={() => { groupPhotoInputRef.current?.click(); }}
-                title="Add photo"
-                className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition text-base ${
-                  composerMode === "photo" ? "bg-green-100 text-green-700" : "text-gray-400 hover:bg-gray-100 hover:text-gray-600"
-                }`}
-              >📷</button>
-              <input
-                ref={groupVideoInputRef}
-                type="file"
-                accept="video/mp4,video/webm,video/quicktime"
-                className="hidden"
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (!file) return;
-                  if (file.size > 52428800) { setComposerUploadError("Video must be under 50 MB."); return; }
-                  if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
-                  setComposerVideoFile(file);
-                  setComposerVideoPreview(URL.createObjectURL(file));
-                  setComposerVideoDurationError(false);
-                  setComposerUploadError(null);
-                  setComposerMode("video");
-                }}
-              />
-              <button
-                onClick={() => {
-                  if (composerMode === "video") {
-                    if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
-                    setComposerVideoFile(null); setComposerVideoPreview(null); setComposerVideoDurationError(false);
-                    setComposerMode("text");
-                  } else {
-                    groupVideoInputRef.current?.click();
-                  }
-                }}
-                title="Upload a video"
-                className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition text-base ${
-                  composerMode === "video" ? "bg-green-100 text-green-700" : "text-gray-400 hover:bg-gray-100 hover:text-gray-600"
-                }`}
-              >🎬</button>
-
-              <div className="flex-1 bg-gray-100 rounded-2xl px-4 py-2 flex items-end gap-2">
-                <textarea
-                  className="flex-1 bg-transparent text-sm text-gray-900 placeholder-gray-400 resize-none outline-none max-h-28"
-                  placeholder={
-                    composerMode === "photo" ? "Add a caption..." :
-                    composerMode === "video" ? "Say something about this video..." :
-                    `Post in ${TABS.find((t) => t.key === activeTab)?.label ?? ""}...`
-                  }
-                  rows={1}
-                  value={newPostContent}
-                  onChange={(e) => setNewPostContent(e.target.value)}
-                  onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSubmitPost(); } }}
-                />
+              <div className="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
                 <button
-                  onClick={handleSubmitPost}
-                  disabled={submitting || (!newPostContent.trim() && !composerPhotoFile && !composerVideoFile)}
-                  className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition disabled:opacity-40"
-                  style={{ backgroundColor: "#4a9b6f" }}
+                  onClick={() => void handleLike(activeFeedPost)}
+                  disabled={likeLoading.has(activeFeedPost.id)}
+                  className="flex items-center gap-1.5 text-sm transition"
+                  style={{ color: activeFeedPost.liked ? "#e53e3e" : "#9ca3af" }}
                 >
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  <svg className="w-4 h-4" fill={activeFeedPost.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
+                  <span>{activeFeedPost.like_count > 0 ? activeFeedPost.like_count : ""}</span>
                 </button>
+                <button
+                  type="button"
+                  onClick={() => void openPostLikes(activeFeedPost)}
+                  className="text-sm text-gray-500 hover:text-gray-700 transition"
+                >
+                  {activeFeedPost.like_count === 1 ? "1 like" : `${activeFeedPost.like_count || 0} likes`}
+                </button>
+                <div className="flex items-center gap-1.5 text-sm text-gray-400">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                  <span>{activeFeedPost.comment_count || 0}</span>
+                  <span>Comments</span>
+                </div>
               </div>
+
+              {userId && (
+                <div className="mt-5">
+                  <GroupCommentSection
+                    groupId={groupId}
+                    post={activeFeedPost}
+                    userId={userId}
+                    displayName={displayName}
+                    userProfileImage={userProfileImage}
+                    onCountChange={(delta) => {
+                      setSelectedFeedPost((prev) => prev ? { ...prev, comment_count: Math.max((prev.comment_count || 0) + delta, 0) } : prev);
+                      setPosts((prev) => prev.map((item) => item.id === activeFeedPost.id ? { ...item, comment_count: Math.max((item.comment_count || 0) + delta, 0) } : item));
+                    }}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
       )}
 
-      {/* ── Comment input bar (post view) ────────────────────────────────── */}
+      {showHubLikesFor && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          onClick={() => setShowHubLikesFor(null)}
+        >
+          <div
+            className="bg-white rounded-3xl shadow-xl w-full max-w-sm max-h-[80vh] overflow-y-auto modal-panel-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">Liked By</p>
+                <h3 className="text-base font-bold text-gray-900 mt-1">{showHubLikesFor.title}</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowHubLikesFor(null)}
+                className="w-9 h-9 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition"
+              >
+                ×
+              </button>
+            </div>
+            <div className="px-5 py-4">
+              {(hubItemStats[showHubLikesFor.path]?.likers || []).length === 0 ? (
+                <p className="text-sm text-gray-400 text-center py-6">No likes yet.</p>
+              ) : (
+                <div className="space-y-3">
+                  {(hubItemStats[showHubLikesFor.path]?.likers || []).map((liker) => (
+                    <div key={liker.user_id} className="flex items-center gap-3">
+                      {liker.profile_image_url ? (
+                        <img src={liker.profile_image_url} alt={liker.display_name} className="w-10 h-10 rounded-full object-cover" />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold" style={{ backgroundColor: avatarColor(liker.user_id) }}>
+                          {getInitial(liker.display_name)}
+                        </div>
+                      )}
+                      <p className="text-sm font-medium text-gray-900">{liker.display_name}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showPostLikesFor && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          onClick={() => setShowPostLikesFor(null)}
+        >
+          <div
+            className="bg-white rounded-3xl shadow-xl w-full max-w-sm max-h-[80vh] overflow-y-auto modal-panel-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">Liked By</p>
+                <h3 className="text-base font-bold text-gray-900 mt-1">{showPostLikesFor.title || "Post Likes"}</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowPostLikesFor(null)}
+                className="w-9 h-9 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition"
+              >
+                ×
+              </button>
+            </div>
+            <div className="px-5 py-4">
+              {loadingPostLikers ? (
+                <p className="text-sm text-gray-400 text-center py-6">Loading likes...</p>
+              ) : postLikers.length === 0 ? (
+                <p className="text-sm text-gray-400 text-center py-6">No likes yet.</p>
+              ) : (
+                <div className="space-y-3">
+                  {postLikers.map((liker) => (
+                    <div key={liker.user_id} className="flex items-center gap-3">
+                      {liker.profile_image_url ? (
+                        <img src={liker.profile_image_url} alt={liker.display_name} className="w-10 h-10 rounded-full object-cover" />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold" style={{ backgroundColor: avatarColor(liker.user_id) }}>
+                          {getInitial(liker.display_name)}
+                        </div>
+                      )}
+                      <p className="text-sm font-medium text-gray-900">{liker.display_name}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Group post composer */}
+      {activeTab !== "members" && activeTab !== "bible_studies" && !hubCategories.some((c) => c.id === activeTab) && !selectedPost && (
+        <>
+          {showPostComposerModal && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in" onClick={() => setShowPostComposerModal(false)}>
+              <div className="bg-white rounded-3xl shadow-xl w-full max-w-2xl max-h-[92vh] overflow-y-auto modal-panel-in" onClick={(e) => e.stopPropagation()}>
+                <div className="flex items-center justify-between px-6 py-5 border-b border-[#efe5d9]">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Bible Buddy Study Group</p>
+                    <h2 className="text-xl font-bold text-gray-900 mt-1">Create a Post</h2>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowPostComposerModal(false);
+                      resetPostComposer();
+                    }}
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div className="px-6 py-5 space-y-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-800 mb-2">Title</label>
+                    <input
+                      type="text"
+                      value={newPostTitle}
+                      onChange={(e) => setNewPostTitle(e.target.value)}
+                      placeholder="Add a title for your post"
+                      className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-800 mb-2">Message</label>
+                    <div className="rounded-3xl border border-[#ead8c4] overflow-hidden bg-[#fffaf4]">
+                      <div className="flex flex-wrap gap-2 px-4 py-3 border-b border-[#efe5d9] bg-[#fffdf9]">
+                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleBold().run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("bold") ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>Bold</button>
+                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleItalic().run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("italic") ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>Italic</button>
+                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleHeading({ level: 1 }).run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("heading", { level: 1 }) ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>H1</button>
+                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleHeading({ level: 2 }).run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("heading", { level: 2 }) ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>H2</button>
+                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleBulletList().run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("bulletList") ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>List</button>
+                      </div>
+                      <EditorContent editor={postEditor} />
+                    </div>
+                  </div>
+
+                  <input
+                    ref={groupPhotoInputRef}
+                    type="file"
+                    accept="image/*"
+                    capture="environment"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+                      setComposerPhotoFile(file);
+                      const reader = new FileReader();
+                      reader.onload = (ev) => setComposerPhotoPreview(ev.target?.result as string);
+                      reader.readAsDataURL(file);
+                      setComposerMode("photo");
+                    }}
+                  />
+                  <input
+                    ref={groupVideoInputRef}
+                    type="file"
+                    accept="video/mp4,video/webm,video/quicktime"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+                      if (file.size > 52428800) {
+                        setComposerUploadError("Video must be under 50 MB.");
+                        return;
+                      }
+                      if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
+                      setComposerVideoFile(file);
+                      setComposerVideoPreview(URL.createObjectURL(file));
+                      setComposerVideoDurationError(false);
+                      setComposerUploadError(null);
+                      setComposerMode("video");
+                    }}
+                  />
+
+                  <div className="flex flex-wrap gap-3">
+                    <button type="button" onClick={() => groupPhotoInputRef.current?.click()} className={`px-4 py-2 rounded-full text-sm font-semibold border transition ${composerMode === "photo" ? "bg-green-100 text-green-700 border-green-200" : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"}`}>Add Photo</button>
+                    <button type="button" onClick={() => groupVideoInputRef.current?.click()} className={`px-4 py-2 rounded-full text-sm font-semibold border transition ${composerMode === "video" ? "bg-green-100 text-green-700 border-green-200" : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"}`}>Add Video</button>
+                  </div>
+
+                  {composerMode === "photo" && composerPhotoPreview && (
+                    <div className="relative inline-block">
+                      <img src={composerPhotoPreview} alt="Preview" className="h-24 rounded-2xl object-cover border border-[#ead8c4]" />
+                      <button
+                        type="button"
+                        onClick={() => { setComposerPhotoFile(null); setComposerPhotoPreview(null); setComposerMode("text"); }}
+                        className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gray-700 text-white text-xs"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  )}
+
+                  {composerMode === "video" && composerVideoPreview && (
+                    <div className="relative">
+                      <video
+                        src={composerVideoPreview}
+                        controls
+                        playsInline
+                        className="w-full rounded-2xl border border-[#ead8c4]"
+                        style={{ maxHeight: "240px" }}
+                        onLoadedMetadata={(e) => {
+                          if (e.currentTarget.duration > 90) {
+                            setComposerVideoDurationError(true);
+                            setComposerUploadError("Video must be 90 seconds or shorter.");
+                          } else {
+                            setComposerVideoDurationError(false);
+                            setComposerUploadError(null);
+                          }
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
+                          setComposerVideoFile(null);
+                          setComposerVideoPreview(null);
+                          setComposerVideoDurationError(false);
+                          setComposerUploadError(null);
+                          setComposerMode("text");
+                        }}
+                        className="absolute top-2 right-2 w-7 h-7 rounded-full bg-black/65 text-white text-sm"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  )}
+
+                  {composerUploadError && <p className="text-sm text-red-500">{composerUploadError}</p>}
+
+                  <div className="flex items-center justify-end gap-3 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowPostComposerModal(false);
+                        resetPostComposer();
+                      }}
+                      className="px-4 py-2 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-100 transition"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleSubmitPost}
+                      disabled={submitting || (!stripHtml(postEditor?.getHTML() ?? "").length && !composerPhotoFile && !composerVideoFile)}
+                      className="px-5 py-2.5 rounded-xl text-sm font-semibold text-white disabled:opacity-50 transition"
+                      style={{ backgroundColor: SAGE }}
+                    >
+                      {submitting ? "Posting..." : "Post to Group"}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </>
+      )}
+      {/* â”€â”€ Comment input bar (post view) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {activeTab === "bible_studies" && selectedPost && (
         <div className="fixed bottom-0 left-0 right-0 z-20 bg-white border-t border-gray-200 px-4 py-3">
           <div className="max-w-2xl mx-auto flex items-end gap-3">
@@ -2309,7 +2995,7 @@ export default function GroupChatPage() {
         </div>
       )}
 
-      {/* ── Photo lightbox ───────────────────────────────────────────────── */}
+      {/* â”€â”€ Photo lightbox â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {lightboxUrl && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 modal-backdrop-in"
@@ -2320,7 +3006,7 @@ export default function GroupChatPage() {
             onClick={() => setLightboxUrl(null)}
             className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-xl transition"
           >
-            ✕
+            âœ•
           </button>
           <img
             src={lightboxUrl}
@@ -2331,13 +3017,13 @@ export default function GroupChatPage() {
         </div>
       )}
 
-      {/* ── New Series Modal ─────────────────────────────────────────────── */}
+      {/* â”€â”€ New Series Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {showNewSeriesModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in">
           <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h2 className="text-base font-bold text-gray-900">New Series</h2>
-              <button onClick={() => setShowNewSeriesModal(false)} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl">×</button>
+              <button onClick={() => setShowNewSeriesModal(false)} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl">Ã—</button>
             </div>
             <div className="px-6 py-5 space-y-4">
               <div>
@@ -2387,13 +3073,13 @@ export default function GroupChatPage() {
         </div>
       )}
 
-      {/* ── New Post Modal ───────────────────────────────────────────────── */}
+      {/* â”€â”€ New Post Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {showNewPostModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in">
           <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-              <h2 className="text-base font-bold text-gray-900">Add Week Post · Week {seriesPosts.length + 1}</h2>
-              <button onClick={() => setShowNewPostModal(false)} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl">×</button>
+              <h2 className="text-base font-bold text-gray-900">Add Week Post Â· Week {seriesPosts.length + 1}</h2>
+              <button onClick={() => setShowNewPostModal(false)} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl">Ã—</button>
             </div>
             <div className="px-6 py-5 space-y-4">
               <div>
@@ -2402,7 +3088,7 @@ export default function GroupChatPage() {
                   type="text"
                   value={newSeriesPostTitle}
                   onChange={(e) => setNewSeriesPostTitle(e.target.value)}
-                  placeholder={`Week ${seriesPosts.length + 1} — `}
+                  placeholder={`Week ${seriesPosts.length + 1} â€” `}
                   className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400"
                 />
               </div>
@@ -2459,7 +3145,7 @@ export default function GroupChatPage() {
                 onClick={() => setShowGroupInfoModal(false)}
                 className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl"
               >
-                ×
+                Ã—
               </button>
             </div>
             <div className="px-6 py-5 space-y-4">
@@ -2539,7 +3225,7 @@ export default function GroupChatPage() {
     </div>
   );
 
-  // ── Chat renderPosts helper ──────────────────────────────────────────────
+  // â”€â”€ Chat renderPosts helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function renderPosts() {
     if (loadingPosts) return <p className="text-gray-400 text-sm text-center py-8">Loading posts...</p>;
     if (posts.length === 0) {
@@ -2553,7 +3239,12 @@ export default function GroupChatPage() {
     return (
       <div className="flex flex-col gap-3">
         {posts.map((post) => (
-          <div key={post.id} className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+          <button
+            key={post.id}
+            type="button"
+            onClick={() => setSelectedFeedPost(post)}
+            className="w-full text-left bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition"
+          >
             {post.is_pinned && <div className="flex items-center gap-1 text-xs text-amber-600 font-medium mb-2">📌 Pinned</div>}
             <div className="flex items-start gap-3">
               {post.profile_image_url ? (
@@ -2580,7 +3271,10 @@ export default function GroupChatPage() {
                 <div className="relative">
                   <button
                     type="button"
-                    onClick={() => setActivePostMenuId(activePostMenuId === post.id ? null : post.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActivePostMenuId(activePostMenuId === post.id ? null : post.id);
+                    }}
                     className="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition"
                     aria-label="Post options"
                   >
@@ -2592,7 +3286,8 @@ export default function GroupChatPage() {
                     <div className="absolute right-0 top-10 z-10 min-w-[140px] rounded-2xl border border-gray-200 bg-white shadow-lg overflow-hidden">
                       <button
                         type="button"
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.stopPropagation();
                           setActivePostMenuId(null);
                           setDeletePostId(post.id);
                         }}
@@ -2605,7 +3300,12 @@ export default function GroupChatPage() {
                 </div>
               )}
             </div>
-            {post.content && <p className="text-gray-800 text-sm mt-3 leading-relaxed whitespace-pre-wrap">{post.content}</p>}
+            {post.title && <h3 className="text-lg font-bold text-gray-900 mt-3 leading-snug">{post.title}</h3>}
+            {post.content && (
+              <p className="text-sm text-gray-700 mt-3 leading-relaxed truncate whitespace-nowrap">
+                {getPostPreviewText(post.content)}
+              </p>
+            )}
             {post.media_url && isUploadedVideo(post.media_url) && (
               <video
                 src={post.media_url}
@@ -2613,12 +3313,16 @@ export default function GroupChatPage() {
                 playsInline
                 className="mt-3 w-full rounded-xl"
                 style={{ maxHeight: "400px" }}
+                onClick={(e) => e.stopPropagation()}
               />
             )}
             {post.media_url && !isUploadedVideo(post.media_url) && (
               <button
                 type="button"
-                onClick={() => setLightboxUrl(post.media_url!)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxUrl(post.media_url!);
+                }}
                 className="mt-3 w-full block rounded-xl overflow-hidden focus:outline-none"
                 style={{ maxHeight: "320px" }}
               >
@@ -2650,7 +3354,7 @@ export default function GroupChatPage() {
               }
               const meta = VIDEO_META[parsed.platform];
               return (
-                <a href={post.link_url} target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center gap-3 p-3 border border-gray-100 rounded-xl hover:bg-gray-50 transition">
+                <a href={post.link_url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="mt-3 flex items-center gap-3 p-3 border border-gray-100 rounded-xl hover:bg-gray-50 transition">
                   <span className="text-xl">{meta.icon}</span>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-semibold text-gray-700">{meta.label}</p>
@@ -2660,9 +3364,13 @@ export default function GroupChatPage() {
                 </a>
               );
             })()}
-            <div className="flex items-center gap-4 mt-3 pt-3 border-t border-gray-100">
+            <div className="flex items-center gap-4 mt-4 pt-3 border-t border-gray-100">
               <button
-                onClick={() => handleLike(post)}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  void handleLike(post);
+                }}
                 disabled={likeLoading.has(post.id)}
                 className="flex items-center gap-1.5 text-sm transition"
                 style={{ color: post.liked ? "#e53e3e" : "#9ca3af" }}
@@ -2670,16 +3378,22 @@ export default function GroupChatPage() {
                 <svg className="w-4 h-4" fill={post.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
-                <span>{post.like_count > 0 ? post.like_count : ""}</span>
               </button>
               <button
-                onClick={() => {
-                  setOpenCommentPostIds((prev) => {
-                    const next = new Set(prev);
-                    if (next.has(post.id)) next.delete(post.id);
-                    else next.add(post.id);
-                    return next;
-                  });
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  void openPostLikes(post);
+                }}
+                className="text-sm text-gray-500 hover:text-gray-700 transition"
+              >
+                {post.like_count === 1 ? "1 like" : `${post.like_count || 0} likes`}
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedFeedPost(post);
                 }}
                 className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-[#b7794d] transition"
               >
@@ -2687,25 +3401,14 @@ export default function GroupChatPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
                 <span>{post.comment_count || 0}</span>
-                <span>{openCommentPostIds.has(post.id) ? "Hide comments" : "Comments"}</span>
+                <span>Comments</span>
               </button>
             </div>
-            {openCommentPostIds.has(post.id) && userId && (
-              <GroupCommentSection
-                groupId={groupId}
-                post={post}
-                userId={userId}
-                displayName={displayName}
-                userProfileImage={userProfileImage}
-                onCountChange={(delta) => {
-                  setPosts((prev) => prev.map((item) => item.id === post.id ? { ...item, comment_count: Math.max((item.comment_count || 0) + delta, 0) } : item));
-                }}
-              />
-            )}
-          </div>
+          </button>
         ))}
       </div>
     );
   }
 }
+
 
