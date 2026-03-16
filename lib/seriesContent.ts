@@ -823,7 +823,330 @@ Bow to false gods, and you'll always be starving.`,
       },
     ],
   },
-  // Weeks 4–5 coming soon
+  {
+    weekNumber: 4,
+    title: "The Pride of Life",
+    subtitle: "The devil's final trick",
+    readingReference: "Luke 4:9–12",
+    readingApiQuery: "luke+4:9-12",
+    reflectionQuestion:
+      "Lord, show me where I've been living reckless. Show me the places where pride has taken over. Show me where I've been expecting You to protect me while I'm the one jumping off the ledge. Where in your life have you been acting like nothing can touch you, ignoring warning signs, treating sin casually, or thinking 'God will protect me anyway'?",
+
+    intro: `At the end of Part 3, we left off on the devil trying to tempt Jesus with the lust of the eye.
+
+He offered Him all the power and glory in the world.
+
+But Jesus replied, reminding the devil He doesn't need his shortcuts —
+
+You should only worship God.
+
+Now the devil has tempted Jesus twice...
+
+And don't forget that Jesus is at His weakest right now. He has been in the hot, dry wilderness for 40 days and has beaten the temptation of the devil twice.
+
+But the devil is not done.
+
+He has one more trick up his sleeve...
+
+And in this Bible study, we are going to really break it down.
+
+But before we talk about the Pride of Life — that's his last trick — let's really talk about who the devil is.
+
+## 👺 Who Is the Devil?
+
+Let's take it all the way back.
+
+Before Jesus.
+Before Moses.
+Before Adam and Eve.
+Before the world was even created.
+
+God created angels — spiritual beings — before He ever created us. And one of those angels? He wasn't just any angel.
+
+He was the most beautiful, the most gifted, the most powerful one. God made him with no flaws.
+
+He wasn't just good-looking — he was the most beautiful thing God had created at the time. He was intelligent — maybe even the smartest being God ever made. Plus, he had power — he likely had a leadership role, overseeing worship or guarding God's throne. Some believe he literally led heaven's worship.
+
+His name was **Lucifer**.
+
+But somewhere along the way... Lucifer started believing his own hype. Started feeling himself a little too much. Started thinking maybe he was the one who deserved the throne.
+
+> "I will ascend... I will make myself like the Most High." — Isaiah 14:13–14
+
+And boom — pride was found in him.
+
+> "Your heart became proud on account of your beauty, and you corrupted your wisdom because of your splendor." — Ezekiel 28:17
+
+## 💥 The Great Rebellion
+
+Lucifer didn't just feel pride — he took a shot at God's throne. He started recruiting angels. Whispering lies.
+
+And before long, a rebellion started. Michael and the loyal angels fought back.
+
+> "Michael and his angels fought against the dragon, and the dragon and his angels fought back. But he was not strong enough... and he was hurled to the earth." — Revelation 12:7–9
+
+God cast Lucifer out of heaven. He lost his place. He lost his name. And from that point on — he's called **Satan**.
+
+In Hebrew, "Satan" means adversary, opponent, enemy of God.
+
+But Lucifer didn't fall alone.
+
+> "He dragged a third of the stars with him." — Revelation 12:4
+
+That means a third of heaven's angels followed him in his rebellion. That's who we now call demons — fallen angels with the same twisted mission.
+
+## 😈 Satan's Final Trick: The Pride of Life
+
+This is why the third temptation — the Pride of Life — hits different.
+
+This ain't just a random sin.
+
+This is **Lucifer's original sin**.
+
+His go-to. His specialty. His downfall.
+
+He knows what it's like to think you don't need God. To believe you're good without Him. To be so caught up in your success, your body, your beauty, your ideas... that you stop submitting and start self-glorifying.
+
+The Pride of Life is that final trap he sets — because it's how he fell. And it's how he wants you to fall, too.
+
+## 🏛️ The Temple Temptation
+
+> "And he took him to Jerusalem and set him on the pinnacle of the temple and said to him, 'If you are the Son of God, throw yourself down from here.'" — Luke 4:9
+
+📍 **What Was "The Temple"?**
+
+The Temple in Jerusalem was the most sacred place in all of Jewish life. This is where people came to worship God, offer sacrifices, experience God's presence, and celebrate festivals. It was considered God's dwelling place on earth.
+
+The specific one Jesus was brought to? That was Herod's Temple — the second temple — rebuilt and expanded in massive, glorious detail. One of the most awe-inspiring structures of that time.
+
+So when Satan brought Jesus to the top of the Temple, he wasn't just tempting Him in private. He was saying:
+
+"Jump from the center of your people's faith. Show off your power. Let them see who You really are."
+
+He was basically saying: "Bro, you want these people to believe in you and trust you... just jump off this temple and the angels will catch you. That'll prove to them that you are who you say you are."
+
+But it's a trick.
+
+God's grace doesn't mean we can just be reckless and expect God to come through and save us.
+
+Now today we aren't standing on the ledge of a high building daring God to save us...
+
+Or are we?
+
+- That half a pizza you killed last night?
+- The last two workouts you skipped?
+- That decision you made knowing it was wrong?
+
+A lot of us treat our lives recklessly and then beg God for help when it goes left — just like the devil was telling Jesus to do.
+
+God loves you... so you think you can do whatever you want and He'll be there to clean up the mess?
+
+**That's the Pride of Life.**
+
+## 💭 When We Start "Smelling Ourselves"
+
+But this temptation means something even deeper.
+
+Sometimes we get in the position where we start smelling ourselves:
+
+"I did this..."
+"I got this..."
+"I'm the best at that..."
+
+And we start to forget about who we prayed to for the things we're now getting.
+
+We can be like Lucifer sometimes — when things are going good, we fall back from God. And the wild thing is... when things start going bad again, we're right back to praying for better days.
+
+The third temptation is about testing God — but also about removing God from the head of our lives, thinking we can do better on our own.
+
+## 🙏 Jesus' Reply
+
+> "And Jesus answered him, 'It is said, You shall not put the Lord your God to the test.'" — Luke 4:12
+
+Jesus shut it down quick.
+
+He was quoting Moses — from Deuteronomy 6:16. Moses was giving that speech to the new generation of Israelites before they entered the Promised Land. He said:
+
+> "Do not put the Lord your God to the test, as you did at Massah." — Deuteronomy 6:16
+
+When the Israelites first left Egypt, they were in the wilderness — just like Jesus is now. They got thirsty. They started complaining. They started doubting if God was even with them anymore. They literally said:
+
+> "Is the Lord among us or not?" — Exodus 17:7
+
+Like... God just split the Red Sea. He just brought you out of slavery. But the moment it got uncomfortable, they panicked.
+
+So when Moses said "Don't test God," he meant: **don't demand a sign to prove He's still with you.**
+
+Now fast-forward back to Jesus. Satan says: "Jump off this temple. If God's really with You, He'll catch You."
+
+And Jesus is like: "Nah. I don't need to test Him. I trust Him."
+
+That's real faith.
+
+## 🔚 Final Thoughts
+
+That's why the devil saves this one for last. He's tried the hunger. He's tried the shortcut. But when that doesn't work — he pulls out his ace.
+
+The other two — the lust of the flesh and the lust of the eyes — those hit you when you're **down**. When you're craving something. When your body's empty. When your heart is desperate.
+
+But this one? **This one hits you when you're up.**
+
+When you just got the job. When the money's flowing. When the prayers are getting answered. When you're walking in the blessing.
+
+And you think, "I'm good now. I made it."
+
+But the danger is — you start to forget who brought you there. You start thinking you did it. You worked hard. You showed up. You stayed disciplined. You sacrificed.
+
+And you did.
+
+But who gave you the strength? Who gave you the breath? Who opened the doors?
+
+And little by little — without even realizing it — you start to block God out. You don't mean to. You just stop depending. Stop praying. Stop asking.
+
+**That's the Pride of Life. It's spiritual amnesia.**
+
+You forget who got you there. You start thinking you are the answer.
+
+And Jesus said it clear:
+
+> "Do not test the Lord your God." — Luke 4:12
+
+So maybe this whole temptation wasn't about jumping off the temple. Maybe it's about how we live day to day.
+
+Do we live like God is in control? Or do we only call on Him once the damage is done?
+
+The Pride of Life is dangerous because it convinces you that you don't need God — right when you're most blessed.
+
+But real faith sounds like this:
+
+**Even when I'm winning... I still need Him.**
+**Even when I'm thriving... I still obey Him.**
+**Even when I don't feel desperate... I still depend on Him.**`,
+
+    triviaQuestions: [
+      {
+        id: "w4q1",
+        question: "Where did the devil take Jesus for the third temptation?",
+        options: [
+          { label: "A", text: "A high mountain overlooking Galilee" },
+          { label: "B", text: "The pinnacle of the Temple in Jerusalem" },
+          { label: "C", text: "The wilderness of Judea" },
+          { label: "D", text: "The banks of the Jordan River" },
+        ],
+        correctAnswer: "B",
+        explanation: "Luke 4:9 records: 'He took him to Jerusalem and set him on the pinnacle of the temple.' The Temple was the most sacred place in all of Jewish life — considered God's dwelling place on earth.",
+      },
+      {
+        id: "w4q2",
+        question: "What did the devil dare Jesus to do at the Temple?",
+        options: [
+          { label: "A", text: "Turn water into wine to impress the crowd" },
+          { label: "B", text: "Call down fire from heaven" },
+          { label: "C", text: "Throw Himself down so angels would catch Him" },
+          { label: "D", text: "Declare Himself king from the Temple steps" },
+        ],
+        correctAnswer: "C",
+        explanation: "Luke 4:9 records the devil saying: 'If you are the Son of God, throw yourself down from here.' He was daring Jesus to force God's hand and prove His identity through a public spectacle.",
+      },
+      {
+        id: "w4q3",
+        question: "What Scripture did Jesus quote to resist the third temptation?",
+        options: [
+          { label: "A", text: "Psalm 91 — 'He will command his angels'" },
+          { label: "B", text: "Deuteronomy 6:16 — 'Do not put the Lord your God to the test'" },
+          { label: "C", text: "Isaiah 40 — 'Those who hope in the Lord will renew their strength'" },
+          { label: "D", text: "Exodus 20 — 'You shall have no other gods before me'" },
+        ],
+        correctAnswer: "B",
+        explanation: "Luke 4:12 records Jesus quoting Deuteronomy 6:16 — 'You shall not put the Lord your God to the test.' Moses first said this to warn Israel not to repeat the sin of Massah, where they demanded a sign from God.",
+      },
+      {
+        id: "w4q4",
+        question: "According to the lesson, what is the original sin that made Lucifer fall from heaven?",
+        options: [
+          { label: "A", text: "Lust of the flesh" },
+          { label: "B", text: "Rebellion against Michael" },
+          { label: "C", text: "Pride" },
+          { label: "D", text: "Envy of God's creation" },
+        ],
+        correctAnswer: "C",
+        explanation: "Ezekiel 28:17 says: 'Your heart became proud on account of your beauty, and you corrupted your wisdom because of your splendor.' Pride was found in Lucifer — and it led to his fall. That's why the Pride of Life is his specialty.",
+      },
+      {
+        id: "w4q5",
+        question: "What does the Hebrew word 'Satan' mean?",
+        options: [
+          { label: "A", text: "Deceiver and liar" },
+          { label: "B", text: "Adversary, opponent, enemy of God" },
+          { label: "C", text: "The fallen one" },
+          { label: "D", text: "Prince of darkness" },
+        ],
+        correctAnswer: "B",
+        explanation: "The lesson explains that in Hebrew, 'Satan' means adversary, opponent, enemy of God. He lost his name 'Lucifer' when he was cast out of heaven after his rebellion.",
+      },
+      {
+        id: "w4q6",
+        question: "According to Revelation 12:4, what happened when Lucifer rebelled against God?",
+        options: [
+          { label: "A", text: "He fell alone into the earth" },
+          { label: "B", text: "He dragged a third of heaven's angels with him" },
+          { label: "C", text: "Half of the angels were destroyed" },
+          { label: "D", text: "He was locked away until the end of time" },
+        ],
+        correctAnswer: "B",
+        explanation: "Revelation 12:4 says he 'dragged a third of the stars with him' — a third of heaven's angels followed Lucifer in his rebellion. These fallen angels are what we now call demons.",
+      },
+      {
+        id: "w4q7",
+        question: "In Exodus 17:7, what did the Israelites say that showed they were 'testing God' in the wilderness?",
+        options: [
+          { label: "A", text: "'Why did you bring us here to die?'" },
+          { label: "B", text: "'Is the Lord among us or not?'" },
+          { label: "C", text: "'Give us water or we will return to Egypt'" },
+          { label: "D", text: "'Moses has abandoned us'" },
+        ],
+        correctAnswer: "B",
+        explanation: "Exodus 17:7 records Israel saying: 'Is the Lord among us or not?' — this after God had already split the Red Sea and freed them from slavery. That's exactly the kind of demanding-a-sign attitude Moses warned against in Deuteronomy 6:16.",
+      },
+      {
+        id: "w4q8",
+        question: "According to the lesson, what makes the Pride of Life the most dangerous temptation of the three?",
+        options: [
+          { label: "A", text: "It attacks when you are physically weak" },
+          { label: "B", text: "It comes when you are at your lowest and most desperate" },
+          { label: "C", text: "It hits when you are up, blessed, and thriving — and makes you forget God" },
+          { label: "D", text: "It is impossible to resist without special spiritual gifts" },
+        ],
+        correctAnswer: "C",
+        explanation: "The lesson explains that the first two temptations hit you when you're down. But the Pride of Life hits when you're winning — when life is good, blessings are flowing, and you start thinking you did it on your own, slowly blocking God out.",
+      },
+      {
+        id: "w4q9",
+        question: "Isaiah 14:13–14 records Lucifer saying 'I will ascend' and 'I will make myself like the Most High.' What does this tell us about the root of his fall?",
+        options: [
+          { label: "A", text: "He wanted to be worshipped by humans" },
+          { label: "B", text: "He was jealous of Jesus specifically" },
+          { label: "C", text: "His pride drove him to seek God's throne for himself" },
+          { label: "D", text: "He disagreed with how God was running heaven" },
+        ],
+        correctAnswer: "C",
+        explanation: "Isaiah 14:13–14 shows Lucifer's internal declaration — 'I will ascend... I will make myself like the Most High.' His pride wasn't passive. It drove him to actively pursue God's throne, which led directly to the angel war and his expulsion from heaven.",
+      },
+      {
+        id: "w4q10",
+        question: "How does the lesson describe 'spiritual amnesia' in relation to the Pride of Life?",
+        options: [
+          { label: "A", text: "Forgetting Scripture when temptation comes" },
+          { label: "B", text: "Forgetting who brought you to where you are and starting to think you did it yourself" },
+          { label: "C", text: "Losing your faith during seasons of suffering" },
+          { label: "D", text: "Forgetting to pray or read the Bible regularly" },
+        ],
+        correctAnswer: "B",
+        explanation: "The lesson calls the Pride of Life 'spiritual amnesia' — little by little you stop depending on God, stop praying, stop asking, and start thinking you are the answer. You forget who gave you the strength, the breath, and opened the doors.",
+      },
+    ],
+  },
+  // Week 5 coming soon
 ];
 
 export function getSeriesWeekLesson(weekNumber: number): SeriesWeekLesson | undefined {
