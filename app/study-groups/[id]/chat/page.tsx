@@ -29,13 +29,28 @@ interface Post {
   category: string;
   content: string;
   like_count: number;
+  comment_count?: number;
   is_pinned: boolean;
   created_at: string;
+  parent_post_id?: string | null;
   role?: string;
   liked?: boolean;
   profile_image_url?: string | null;
   media_url?: string | null;
   link_url?: string | null;
+}
+
+interface GroupFeedComment {
+  id: string;
+  user_id: string;
+  display_name: string | null;
+  category: string;
+  content: string;
+  like_count: number;
+  created_at: string;
+  parent_post_id: string | null;
+  liked?: boolean;
+  profile_image_url?: string | null;
 }
 
 interface Member {
@@ -54,6 +69,15 @@ interface Series {
   is_current: boolean;
   created_at: string;
 }
+
+interface CurrentSeriesPreview {
+  id: string;
+  title: string;
+  description: string | null;
+  total_weeks: number;
+  current_week: number;
+}
+
 
 interface SeriesPost {
   id: string;
@@ -85,6 +109,30 @@ function getWeekUnlockDate(startDate: string, weekNum: number): string {
   const d = new Date(startDate);
   d.setDate(d.getDate() + (weekNum - 1) * 7);
   return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+}
+
+function resolveSeriesStart(schedule: { start_at?: string | null; start_date?: string | null } | null | undefined): string | null {
+  if (!schedule) return null;
+  if (schedule.start_at) return schedule.start_at;
+  if (schedule.start_date) return `${schedule.start_date}T00:00:00`;
+  return null;
+}
+
+function formatDateTimeLabel(dateStr: string): string {
+  return new Date(dateStr).toLocaleString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
+function toDateTimeLocalValue(dateStr: string): string {
+  const date = new Date(dateStr);
+  const offset = date.getTimezoneOffset();
+  const local = new Date(date.getTime() - offset * 60000);
+  return local.toISOString().slice(0, 16);
 }
 
 function getWeekLockState(
@@ -127,6 +175,47 @@ function formatCountdown(targetTs: number, nowTs: number): string {
   if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
   return `${minutes}m ${seconds}s`;
 }
+
+function getCurrentSeriesCardState(
+  startAt: string | null,
+  totalWeeks: number,
+  nowTs: number
+): { headline: string; detail: string; cta: string } {
+  if (!startAt) {
+    return {
+      headline: "Bible study schedule coming soon",
+      detail: "The leader has not set the first release date yet.",
+      cta: "Open Series",
+    };
+  }
+
+  const startTs = new Date(startAt).getTime();
+  if (nowTs < startTs) {
+    return {
+      headline: `Series starts in ${formatCountdown(startTs, nowTs)}`,
+      detail: formatDateTimeLabel(startAt),
+      cta: "Open Series",
+    };
+  }
+
+  const weeksSinceStart = Math.floor((nowTs - startTs) / (7 * 24 * 60 * 60 * 1000));
+  const liveWeek = Math.min(totalWeeks, weeksSinceStart + 1);
+  if (liveWeek < totalWeeks) {
+    const nextUnlockTs = startTs + liveWeek * 7 * 24 * 60 * 60 * 1000;
+    return {
+      headline: `Week ${liveWeek + 1} unlocks in ${formatCountdown(nextUnlockTs, nowTs)}`,
+      detail: `Week ${liveWeek} is live now`,
+      cta: "Open Week Lessons",
+    };
+  }
+
+  return {
+    headline: "All weeks are now live",
+    detail: "The full series is available now.",
+    cta: "Open Week Lessons",
+  };
+}
+
 
 // ── Video URL parsing ─────────────────────────────────────────────────────────
 
@@ -182,6 +271,271 @@ const TABS: { key: TabKey; label: string }[] = [
   { key: "members",       label: "👥 Members" },
 ];
 
+function getGroupPostCategory(activeTab: string): string {
+  return activeTab === "home" ? "general" : activeTab;
+}
+
+function GroupCommentSection({
+  groupId,
+  post,
+  userId,
+  displayName,
+  userProfileImage,
+  onCountChange,
+}: {
+  groupId: string;
+  post: Post;
+  userId: string;
+  displayName: string;
+  userProfileImage: string | null;
+  onCountChange: (delta: number) => void;
+}) {
+  const [comments, setComments] = useState<GroupFeedComment[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [newComment, setNewComment] = useState("");
+  const [replyingTo, setReplyingTo] = useState<string | null>(null);
+  const [replyText, setReplyText] = useState("");
+  const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    async function loadComments() {
+      setLoading(true);
+      const { data: topLevelRows } = await supabase
+        .from("group_posts")
+        .select("id, user_id, display_name, category, content, like_count, created_at, parent_post_id")
+        .eq("group_id", groupId)
+        .eq("parent_post_id", post.id)
+        .order("created_at", { ascending: true });
+
+      const topLevel = topLevelRows || [];
+      const topLevelIds = topLevel.map((row) => row.id);
+
+      let replyRows: GroupFeedComment[] = [];
+      if (topLevelIds.length > 0) {
+        const { data } = await supabase
+          .from("group_posts")
+          .select("id, user_id, display_name, category, content, like_count, created_at, parent_post_id")
+          .in("parent_post_id", topLevelIds)
+          .order("created_at", { ascending: true });
+        replyRows = (data || []) as GroupFeedComment[];
+      }
+
+      const allRows = [...topLevel, ...replyRows] as GroupFeedComment[];
+      if (allRows.length === 0) {
+        setComments([]);
+        setLoading(false);
+        return;
+      }
+
+      const userIds = [...new Set(allRows.map((row) => row.user_id))];
+      const [{ data: profiles }, { data: likes }] = await Promise.all([
+        supabase
+          .from("profile_stats")
+          .select("user_id, profile_image_url")
+          .in("user_id", userIds),
+        supabase
+          .from("group_post_likes")
+          .select("post_id")
+          .eq("user_id", userId)
+          .in("post_id", allRows.map((row) => row.id)),
+      ]);
+
+      const imageMap: Record<string, string | null> = {};
+      (profiles || []).forEach((profile) => {
+        imageMap[profile.user_id] = profile.profile_image_url ?? null;
+      });
+      const likedSet = new Set((likes || []).map((like) => like.post_id));
+
+      setComments(
+        allRows.map((row) => ({
+          ...row,
+          liked: likedSet.has(row.id),
+          profile_image_url: imageMap[row.user_id] ?? null,
+        }))
+      );
+      setLoading(false);
+    }
+
+    void loadComments();
+  }, [groupId, post.id, userId]);
+
+  async function toggleCommentLike(comment: GroupFeedComment) {
+    if (likeLoading.has(comment.id)) return;
+    setLikeLoading((prev) => new Set(prev).add(comment.id));
+    if (comment.liked) {
+      await supabase.from("group_post_likes").delete().eq("post_id", comment.id).eq("user_id", userId);
+      await supabase.from("group_posts").update({ like_count: Math.max(0, comment.like_count - 1) }).eq("id", comment.id);
+      setComments((prev) => prev.map((item) => item.id === comment.id ? { ...item, like_count: Math.max(0, item.like_count - 1), liked: false } : item));
+    } else {
+      await supabase.from("group_post_likes").insert({ post_id: comment.id, user_id: userId });
+      await supabase.from("group_posts").update({ like_count: comment.like_count + 1 }).eq("id", comment.id);
+      setComments((prev) => prev.map((item) => item.id === comment.id ? { ...item, like_count: item.like_count + 1, liked: true } : item));
+    }
+    setLikeLoading((prev) => {
+      const next = new Set(prev);
+      next.delete(comment.id);
+      return next;
+    });
+  }
+
+  async function submitComment(content: string, parentId: string | null) {
+    if (!content.trim() || submitting) return;
+    setSubmitting(true);
+    const { data, error } = await supabase
+      .from("group_posts")
+      .insert({
+        group_id: groupId,
+        user_id: userId,
+        display_name: displayName,
+        category: post.category,
+        content: content.trim(),
+        parent_post_id: parentId ?? post.id,
+      })
+      .select("id, user_id, display_name, category, content, like_count, created_at, parent_post_id")
+      .single();
+
+    if (!error && data) {
+      setComments((prev) => [
+        ...prev,
+        {
+          ...(data as GroupFeedComment),
+          liked: false,
+          profile_image_url: userProfileImage,
+        },
+      ]);
+      onCountChange(1);
+      void logActionToMasterActions(userId, "group_message_sent", `group-post:${post.id}`);
+    }
+
+    setNewComment("");
+    setReplyText("");
+    setReplyingTo(null);
+    setSubmitting(false);
+  }
+
+  const topLevelComments = comments.filter((comment) => comment.parent_post_id === post.id);
+  const replies = (parentId: string) => comments.filter((comment) => comment.parent_post_id === parentId);
+
+  function CommentRow({ comment, indent = false }: { comment: GroupFeedComment; indent?: boolean }) {
+    const name = comment.display_name || "Member";
+    return (
+      <div className={`flex gap-2 ${indent ? "ml-8 mt-2" : "mt-2"}`}>
+        <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0 mt-0.5">
+          {comment.profile_image_url ? (
+            <img src={comment.profile_image_url} alt={name} className="w-7 h-7 rounded-full object-cover" />
+          ) : (
+            <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[10px] font-bold" style={{ backgroundColor: avatarColor(comment.user_id) }}>
+              {getInitial(name)}
+            </div>
+          )}
+        </Link>
+        <div className="flex-1 min-w-0">
+          <div className="rounded-2xl bg-[#faf7f2] border border-[#efe5d9] px-3 py-2">
+            <Link href={`/profile/${comment.user_id}`} className="text-xs font-semibold text-gray-800 hover:underline">
+              {name}
+            </Link>
+            <p className="text-xs text-gray-700 mt-0.5 leading-relaxed whitespace-pre-wrap">{comment.content}</p>
+          </div>
+          <div className="flex items-center gap-3 mt-1 px-1">
+            <span className="text-[10px] text-gray-400">{timeAgo(comment.created_at)}</span>
+            <button
+              onClick={() => void toggleCommentLike(comment)}
+              disabled={likeLoading.has(comment.id)}
+              className="flex items-center gap-1 text-[10px] text-gray-400 hover:text-red-500 transition"
+            >
+              <svg className="w-3 h-3" fill={comment.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              {comment.like_count > 0 ? comment.like_count : ""}
+            </button>
+            {!indent && (
+              <button
+                onClick={() => {
+                  setReplyingTo(replyingTo === comment.id ? null : comment.id);
+                  setReplyText("");
+                }}
+                className="text-[10px] text-gray-400 hover:text-[#b7794d] font-semibold transition"
+              >
+                Reply
+              </button>
+            )}
+          </div>
+          {!indent && replyingTo === comment.id && (
+            <div className="mt-2 flex gap-2 items-end">
+              <textarea
+                value={replyText}
+                onChange={(e) => setReplyText(e.target.value)}
+                placeholder={`Reply to ${name}...`}
+                rows={1}
+                className="flex-1 text-xs px-3 py-2 border border-[#eadfce] rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[#d6b18b] bg-white"
+              />
+              <button
+                onClick={() => void submitComment(replyText, comment.id)}
+                disabled={!replyText.trim() || submitting}
+                className="text-xs font-semibold text-white px-3 py-2 rounded-xl transition disabled:opacity-40 flex-shrink-0"
+                style={{ backgroundColor: "#b7794d" }}
+              >
+                Reply
+              </button>
+            </div>
+          )}
+          {!indent && replies(comment.id).map((reply) => (
+            <CommentRow key={reply.id} comment={reply} indent />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-4 pt-4 border-t border-[#efe5d9]">
+      {loading ? (
+        <p className="text-xs text-gray-400 text-center py-2">Loading comments...</p>
+      ) : topLevelComments.length === 0 ? (
+        <p className="text-xs text-gray-400 text-center py-2">No comments yet. Start the conversation.</p>
+      ) : (
+        <div>
+          {topLevelComments.map((comment) => (
+            <CommentRow key={comment.id} comment={comment} />
+          ))}
+        </div>
+      )}
+
+      <div className="flex gap-2 items-end mt-3">
+        {userProfileImage ? (
+          <img src={userProfileImage} alt={displayName} className="w-7 h-7 rounded-full object-cover flex-shrink-0" />
+        ) : (
+          <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(userId) }}>
+            {getInitial(displayName)}
+          </div>
+        )}
+        <textarea
+          value={newComment}
+          onChange={(e) => setNewComment(e.target.value)}
+          placeholder="Add a comment..."
+          rows={1}
+          className="flex-1 text-xs px-3 py-2 border border-[#eadfce] rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[#d6b18b] bg-white"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              void submitComment(newComment, null);
+            }
+          }}
+        />
+        <button
+          onClick={() => void submitComment(newComment, null)}
+          disabled={!newComment.trim() || submitting}
+          className="text-xs font-semibold text-white px-3 py-2 rounded-xl transition disabled:opacity-40 flex-shrink-0"
+          style={{ backgroundColor: "#b7794d" }}
+        >
+          Post
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 function timeAgo(dateStr: string): string {
@@ -235,6 +589,10 @@ export default function GroupChatPage() {
   const [newPostContent, setNewPostContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
+  const [openCommentPostIds, setOpenCommentPostIds] = useState<Set<string>>(new Set());
+  const [activePostMenuId, setActivePostMenuId] = useState<string | null>(null);
+  const [deletePostId, setDeletePostId] = useState<string | null>(null);
+  const [deletingPost, setDeletingPost] = useState(false);
 
   // Lightbox
   const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
@@ -253,9 +611,7 @@ export default function GroupChatPage() {
   // Hub categories (loaded from DB)
   const [hubCategories, setHubCategories] = useState<HubCategory[]>([]);
   const [hubView, setHubView] = useState<"articles" | "questions">("articles");
-  const [showHubDropdown, setShowHubDropdown] = useState(false);
-  const [dropdownRect, setDropdownRect] = useState<DOMRect | null>(null);
-  const dropdownBtnRef = useRef<HTMLButtonElement>(null);
+  const [showMoreNav, setShowMoreNav] = useState(false);
   const [selectedHubItem, setSelectedHubItem] = useState<HubItemStatic | null>(null);
 
   // Members
@@ -281,6 +637,10 @@ export default function GroupChatPage() {
   const [seriesStartDateInput, setSeriesStartDateInput] = useState("");
   const [savingSeriesStartDate, setSavingSeriesStartDate] = useState(false);
   const [nowTs, setNowTs] = useState(() => Date.now());
+  const [currentSeriesPreview, setCurrentSeriesPreview] = useState<CurrentSeriesPreview | null>(null);
+  const [currentSeriesStartAt, setCurrentSeriesStartAt] = useState<string | null>(null);
+  const [editingSeriesStart, setEditingSeriesStart] = useState(false);
+  const [showSeriesOverviewDetails, setShowSeriesOverviewDetails] = useState(true);
 
   // Post view
   const [selectedPost, setSelectedPost] = useState<SeriesPost | null>(null);
@@ -354,6 +714,26 @@ export default function GroupChatPage() {
         .order("display_order", { ascending: true });
       setHubCategories(hubCats || []);
 
+      const { data: currentSeriesData } = await supabase
+        .from("group_series")
+        .select("id, title, description, total_weeks, current_week")
+        .eq("group_id", groupId)
+        .eq("is_current", true)
+        .maybeSingle();
+
+      setCurrentSeriesPreview(currentSeriesData ?? null);
+
+      if (currentSeriesData?.id) {
+        const { data: scheduleData } = await supabase
+          .from("series_schedules")
+          .select("start_date, start_at")
+          .eq("series_id", currentSeriesData.id)
+          .maybeSingle();
+        setCurrentSeriesStartAt(resolveSeriesStart(scheduleData));
+      } else {
+        setCurrentSeriesStartAt(null);
+      }
+
       // Handle ?tab=bible_studies from detail page link
       const tabParam = searchParams.get("tab");
       if (tabParam === "bible_studies") setActiveTab("bible_studies");
@@ -385,10 +765,12 @@ export default function GroupChatPage() {
     if (!selectedSeries) return;
     loadSeriesPosts(selectedSeries.id);
     // Load start date
-    supabase.from("series_schedules").select("start_date").eq("series_id", selectedSeries.id).maybeSingle()
+    supabase.from("series_schedules").select("start_date, start_at").eq("series_id", selectedSeries.id).maybeSingle()
       .then(({ data }) => {
-        setSeriesStartDate(data?.start_date ?? null);
-        setSeriesStartDateInput(data?.start_date ?? "");
+        const resolvedStart = resolveSeriesStart(data);
+        setSeriesStartDate(resolvedStart);
+        setSeriesStartDateInput(resolvedStart ? toDateTimeLocalValue(resolvedStart) : "");
+        setEditingSeriesStart(!resolvedStart);
       });
     // Load week progress for current user
     if (userId) {
@@ -419,12 +801,13 @@ export default function GroupChatPage() {
   async function loadPosts() {
     if (!group) return;
     setLoadingPosts(true);
+    const postCategory = getGroupPostCategory(activeTab);
 
     const { data: postRows, error } = await supabase
       .from("group_posts")
-      .select("id, user_id, display_name, category, content, like_count, is_pinned, created_at")
+      .select("id, user_id, display_name, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
       .eq("group_id", group.id)
-      .eq("category", activeTab)
+      .eq("category", postCategory)
       .is("parent_post_id", null)
       .order("is_pinned", { ascending: false })
       .order("created_at", { ascending: false });
@@ -432,6 +815,42 @@ export default function GroupChatPage() {
     if (error) { setLoadingPosts(false); return; }
 
     const rows = postRows || [];
+    const rootCommentCountMap: Record<string, number> = {};
+    rows.forEach((row) => {
+      rootCommentCountMap[row.id] = 0;
+    });
+
+    if (rows.length > 0) {
+      const rootIds = rows.map((row) => row.id);
+      const { data: topLevelComments } = await supabase
+        .from("group_posts")
+        .select("id, parent_post_id")
+        .in("parent_post_id", rootIds);
+
+      const directComments = topLevelComments || [];
+      const topLevelMap: Record<string, string> = {};
+
+      directComments.forEach((comment) => {
+        if (!comment.parent_post_id) return;
+        topLevelMap[comment.id] = comment.parent_post_id;
+        rootCommentCountMap[comment.parent_post_id] = (rootCommentCountMap[comment.parent_post_id] || 0) + 1;
+      });
+
+      if (directComments.length > 0) {
+        const { data: replyRows } = await supabase
+          .from("group_posts")
+          .select("id, parent_post_id")
+          .in("parent_post_id", directComments.map((comment) => comment.id));
+
+        (replyRows || []).forEach((reply) => {
+          const rootId = reply.parent_post_id ? topLevelMap[reply.parent_post_id] : null;
+          if (rootId) {
+            rootCommentCountMap[rootId] = (rootCommentCountMap[rootId] || 0) + 1;
+          }
+        });
+      }
+    }
+
     const authorIds = [...new Set(rows.map((p) => p.user_id))];
     let roleMap: Record<string, string> = {};
     let imageMap: Record<string, string | null> = {};
@@ -451,8 +870,13 @@ export default function GroupChatPage() {
         .eq("user_id", userId).in("post_id", rows.map((p) => p.id));
       (likes || []).forEach((l) => likedSet.add(l.post_id));
     }
-
-    setPosts(rows.map((p) => ({ ...p, role: roleMap[p.user_id] || "member", liked: likedSet.has(p.id), profile_image_url: imageMap[p.user_id] ?? null })));
+    setPosts(rows.map((p) => ({
+      ...p,
+      comment_count: rootCommentCountMap[p.id] || 0,
+      role: roleMap[p.user_id] || "member",
+      liked: likedSet.has(p.id),
+      profile_image_url: imageMap[p.user_id] ?? null,
+    })));
     setLoadingPosts(false);
   }
 
@@ -516,16 +940,16 @@ export default function GroupChatPage() {
         group_id: group.id,
         user_id: userId,
         display_name: displayName,
-        category: activeTab,
+        category: getGroupPostCategory(activeTab),
         content: newPostContent.trim(),
         media_url: mediaUrl,
         link_url: linkUrl,
       })
-      .select("id, user_id, display_name, category, content, like_count, is_pinned, created_at, media_url, link_url")
+      .select("id, user_id, display_name, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
       .single();
 
     if (!error && newPost) {
-      setPosts((prev) => [{ ...newPost, role: userRole, liked: false, profile_image_url: userProfileImage }, ...prev]);
+      setPosts((prev) => [{ ...newPost, comment_count: 0, role: userRole, liked: false, profile_image_url: userProfileImage }, ...prev]);
       setNewPostContent("");
       setComposerPhotoFile(null); setComposerPhotoPreview(null);
       if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
@@ -534,6 +958,20 @@ export default function GroupChatPage() {
       void logActionToMasterActions(userId, "group_message_sent", group?.name || "Group");
     }
     setSubmitting(false);
+  }
+
+  async function handleDeleteGroupPost() {
+    if (!deletePostId || deletingPost) return;
+    setDeletingPost(true);
+    await supabase.from("group_posts").delete().eq("id", deletePostId);
+    setPosts((prev) => prev.filter((post) => post.id !== deletePostId));
+    setOpenCommentPostIds((prev) => {
+      const next = new Set(prev);
+      next.delete(deletePostId);
+      return next;
+    });
+    setDeletePostId(null);
+    setDeletingPost(false);
   }
 
   // ── Members ──────────────────────────────────────────────────────────────
@@ -605,7 +1043,15 @@ export default function GroupChatPage() {
       .order("created_at", { ascending: false });
     const rows = data || [];
     setSeriesList(rows);
-    setSelectedSeries(rows.find((series) => series.is_current) ?? rows[0] ?? null);
+    const currentSeries = rows.find((series) => series.is_current) ?? rows[0] ?? null;
+    setSelectedSeries(currentSeries);
+    setCurrentSeriesPreview(currentSeries ? {
+      id: currentSeries.id,
+      title: currentSeries.title,
+      description: currentSeries.description,
+      total_weeks: currentSeries.total_weeks,
+      current_week: currentSeries.current_week,
+    } : null);
     setLoadingSeries(false);
   }
 
@@ -674,16 +1120,20 @@ export default function GroupChatPage() {
   async function handleSaveSeriesStartDate() {
     if (!selectedSeries || !group || !userId || !seriesStartDateInput) return;
     setSavingSeriesStartDate(true);
+    const startAtIso = new Date(seriesStartDateInput).toISOString();
     await supabase.from("series_schedules").upsert(
       {
         series_id: selectedSeries.id,
         group_id: group.id,
-        start_date: seriesStartDateInput,
+        start_date: seriesStartDateInput.slice(0, 10),
+        start_at: startAtIso,
         created_by: userId,
       },
       { onConflict: "series_id" }
     );
-    setSeriesStartDate(seriesStartDateInput);
+    setSeriesStartDate(startAtIso);
+    setCurrentSeriesStartAt(startAtIso);
+    setEditingSeriesStart(false);
     setSavingSeriesStartDate(false);
   }
 
@@ -799,6 +1249,9 @@ export default function GroupChatPage() {
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
   const SAGE = "#5a9a5a";
   const displayGroupName = group.name === "Hope Nation" ? "Bible Buddy Study Group" : group.name;
+  const selectedSeriesAccent = selectedSeries?.title.toLowerCase().includes("tempt")
+    ? { buttonBg: "#b7794d" }
+    : { buttonBg: SAGE };
 
   // ── Render ───────────────────────────────────────────────────────────────
   return (
@@ -857,107 +1310,104 @@ export default function GroupChatPage() {
           </div>
         </div>
 
-        {/* ── Navigation dropdown (hidden when in series/post/hub-item sub-view) ─── */}
+        {/* Header navigation */}
         {!selectedSeries && !selectedPost && !selectedHubItem && (
           <div className="max-w-2xl mx-auto px-4 pb-3">
             {(() => {
-              const staticOptions = [
-                { key: "home",          label: "🏠 Home" },
-                { key: "bible_studies", label: "📚 Bible Studies" },
-                { key: "prayer",        label: "🙏 Prayer" },
-                { key: "qa",            label: "❓ Q&A" },
+              const primaryTabs = [
+                { key: "home", label: "Home" },
+                { key: "bible_studies", label: "Bible Studies" },
+                { key: "prayer", label: "Prayer" },
+                { key: "qa", label: "Q&A" },
               ];
-              const activeStatic = staticOptions.find((o) => o.key === activeTab);
-              const activeHub = hubCategories.find((c) => c.id === activeTab);
-              const currentLabel =
-                activeStatic?.label ??
-                (activeHub ? `${activeHub.emoji} ${activeHub.name}` : "🏠 Home");
+              const moreItems = [
+                { key: "members", label: "Members", isHub: false },
+                ...hubCategories.map((cat) => ({
+                  key: cat.id,
+                  label: `${cat.emoji} ${cat.name}`,
+                  isHub: true,
+                })),
+              ];
+              const moreIsActive = activeTab === "members" || hubCategories.some((cat) => cat.id === activeTab);
               return (
-                <button
-                  ref={dropdownBtnRef}
-                  onClick={() => {
-                    if (dropdownBtnRef.current) {
-                      setDropdownRect(dropdownBtnRef.current.getBoundingClientRect());
-                    }
-                    setShowHubDropdown((v) => !v);
-                  }}
-                  className="flex items-center gap-2 px-4 py-2 bg-white/90 rounded-full text-sm font-semibold text-gray-800 shadow-sm border border-gray-200 hover:bg-white transition"
-                >
-                  <span>{currentLabel}</span>
-                  <svg
-                    className="w-4 h-4 opacity-60 flex-shrink-0"
-                    style={{ transform: showHubDropdown ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }}
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
+                    {primaryTabs.map((tab) => {
+                      const isActive = activeTab === tab.key;
+                      return (
+                        <button
+                          key={tab.key}
+                          type="button"
+                          onClick={() => {
+                            setActiveTab(tab.key);
+                            setShowMoreNav(false);
+                          }}
+                          className="px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition"
+                          style={{
+                            backgroundColor: isActive ? "#ffffff" : "rgba(255,255,255,0.82)",
+                            borderColor: isActive ? "#d9c7b4" : "#e5e7eb",
+                            color: isActive ? "#8d5d38" : "#374151",
+                          }}
+                        >
+                          {tab.label}
+                        </button>
+                      );
+                    })}
+                    {moreItems.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => setShowMoreNav((v) => !v)}
+                        className="px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition flex items-center gap-2"
+                        style={{
+                          backgroundColor: moreIsActive || showMoreNav ? "#ffffff" : "rgba(255,255,255,0.82)",
+                          borderColor: moreIsActive || showMoreNav ? "#d9c7b4" : "#e5e7eb",
+                          color: moreIsActive || showMoreNav ? "#8d5d38" : "#374151",
+                        }}
+                      >
+                        <span>More</span>
+                        <svg
+                          className={`w-4 h-4 transition-transform ${showMoreNav ? "rotate-180" : ""}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    )}
+                  </div>
+                  {showMoreNav && moreItems.length > 0 && (
+                    <div className="flex flex-wrap gap-2 rounded-2xl border px-3 py-3 shadow-sm" style={{ backgroundColor: "rgba(255,255,255,0.72)", borderColor: "rgba(255,255,255,0.78)" }}>
+                      {moreItems.map((item) => {
+                        const isActive = activeTab === item.key;
+                        return (
+                          <button
+                            key={item.key}
+                            type="button"
+                            onClick={() => {
+                              setActiveTab(item.key);
+                              if (item.isHub) setHubView("articles");
+                            }}
+                            className="px-3.5 py-2 rounded-full text-sm font-medium whitespace-nowrap transition"
+                            style={{
+                              backgroundColor: isActive ? "#f7e3d1" : "#fffaf4",
+                              color: isActive ? "#8d5d38" : "#5f6368",
+                              border: "1px solid #ead8c4",
+                            }}
+                          >
+                            {item.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
               );
             })()}
           </div>
         )}
       </div>
 
-      {/* ── Nav dropdown overlay (rendered outside sticky header to escape z-20 stacking context) */}
-      {showHubDropdown && dropdownRect && (
-        <>
-          <div
-            className="fixed inset-0"
-            style={{ zIndex: 9998 }}
-            onClick={() => setShowHubDropdown(false)}
-          />
-          <div
-            className="fixed bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
-            style={{
-              zIndex: 9999,
-              top: dropdownRect.bottom + 6,
-              left: dropdownRect.left,
-              minWidth: 230,
-            }}
-          >
-            {[
-              { key: "home",          label: "🏠 Home" },
-              { key: "bible_studies", label: "📚 Bible Studies" },
-              { key: "prayer",        label: "🙏 Prayer" },
-              { key: "qa",            label: "❓ Q&A" },
-            ].map((opt) => (
-              <button
-                key={opt.key}
-                onClick={() => { setActiveTab(opt.key); setShowHubDropdown(false); }}
-                className="w-full flex items-center gap-3 px-4 py-3 text-sm text-left hover:bg-gray-50 transition border-b border-gray-50"
-                style={{ color: activeTab === opt.key ? "#4a9b6f" : "#374151", fontWeight: activeTab === opt.key ? 600 : 400 }}
-              >
-                <span>{opt.label}</span>
-                {activeTab === opt.key && (
-                  <svg className="w-4 h-4 ml-auto text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                  </svg>
-                )}
-              </button>
-            ))}
-            {hubCategories.length > 0 && (
-              <div className="border-t border-gray-100">
-                {hubCategories.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => { setActiveTab(cat.id); setHubView("articles"); setShowHubDropdown(false); }}
-                    className="w-full flex items-center gap-3 px-4 py-3 text-sm text-left hover:bg-gray-50 transition border-b border-gray-50 last:border-0"
-                    style={{ color: activeTab === cat.id ? "#4a9b6f" : "#374151", fontWeight: activeTab === cat.id ? 600 : 400 }}
-                  >
-                    <span className="text-base">{cat.emoji}</span>
-                    <span>{cat.name}</span>
-                    {activeTab === cat.id && (
-                      <svg className="w-4 h-4 ml-auto text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                      </svg>
-                    )}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        </>
-      )}
 
       {/* ── Feed ────────────────────────────────────────────────────────── */}
       <div ref={feedRef} className="flex-1 overflow-y-auto pb-32">
@@ -974,6 +1424,45 @@ export default function GroupChatPage() {
         )}
 
         {!selectedHubItem && <div className="max-w-2xl mx-auto px-4 py-4">
+
+          {activeTab === "home" && currentSeriesPreview && (() => {
+            const cardState = getCurrentSeriesCardState(currentSeriesStartAt, currentSeriesPreview.total_weeks, nowTs);
+            return (
+              <button
+                type="button"
+                onClick={() => setActiveTab("bible_studies")}
+                className="w-full mb-4 text-left rounded-2xl border shadow-sm hover:shadow-md transition overflow-hidden"
+                style={{ backgroundColor: "#d4ecd4", borderColor: "#b8ddb8" }}
+              >
+                <div
+                  className="px-5 py-4 flex items-center justify-between gap-3"
+                  style={{ borderBottom: "1px solid #b8ddb8" }}
+                >
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: "#4f7e54" }}>Pinned Series</p>
+                    <h2 className="text-base font-bold text-gray-900 mt-1">{currentSeriesPreview.title}</h2>
+                  </div>
+                  <span
+                    className="text-xs font-semibold px-2.5 py-1 rounded-full"
+                    style={{ backgroundColor: "#edf7ed", color: "#4f7e54" }}
+                  >
+                    Bible Study
+                  </span>
+                </div>
+                <div className="px-5 py-4">
+                  <p className="text-lg font-bold text-gray-900">{cardState.headline}</p>
+                  <p className="text-sm text-gray-600 mt-1">{cardState.detail}</p>
+                  <div
+                    className="mt-4 inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl"
+                    style={{ backgroundColor: "#5a9a5a", color: "white", boxShadow: "0 8px 18px rgba(90,154,90,0.16)" }}
+                  >
+                    {cardState.cta}
+                    <span aria-hidden="true">→</span>
+                  </div>
+                </div>
+              </button>
+            );
+          })()}
 
           {/* ── MEMBERS TAB ─────────────────────────────────────────────── */}
           {activeTab === "members" && !selectedSeries && !selectedPost ? (
@@ -1015,7 +1504,7 @@ export default function GroupChatPage() {
                           <p className="text-sm font-semibold text-gray-900 truncate">{member.display_name}</p>
                           {(member.role === "leader" || member.role === "moderator") && (
                             <span className="text-xs text-green-600 font-medium">
-                              {member.role === "leader" ? "Leader" : "Moderator"}
+                              {member.role === "leader" ? "Teacher" : "Moderator"}
                             </span>
                           )}
                         </div>
@@ -1194,35 +1683,171 @@ export default function GroupChatPage() {
           ) : activeTab === "bible_studies" && selectedSeries ? (
             <div className="flex flex-col gap-4">
               {/* Series header card */}
-              <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex-1">
-                    <h2 className="text-lg font-bold text-gray-900">{selectedSeries.title}</h2>
-                    {selectedSeries.description && <p className="text-sm text-gray-500 mt-1">{selectedSeries.description}</p>}
-                    <p className="text-xs text-gray-400 mt-2">{selectedSeries.total_weeks} weeks</p>
-                  </div>
-                  {selectedSeries.is_current && (
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#d4ecd4", color: SAGE }}>
-                      Current
-                    </span>
-                  )}
-                </div>
-                {isLeader && (
-                  <div className="flex gap-2 mt-4 flex-wrap">
-                    {!selectedSeries.is_current && (
-                      <button
-                        onClick={() => handleSetCurrentSeries(selectedSeries)}
-                        className="px-4 py-2 rounded-xl text-white text-sm font-medium transition hover:opacity-90"
-                        style={{ backgroundColor: SAGE }}
+              <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                {(() => {
+                  const isTemptationSeries = selectedSeries.title.toLowerCase().includes("tempt");
+                  const seriesAccent = isTemptationSeries
+                    ? {
+                        softBg: "#fff4ea",
+                        softBorder: "#eac9ae",
+                        mutedText: "#9c6a46",
+                        badgeBg: "#f6dfca",
+                        badgeText: "#8d5d38",
+                        panelBg: "#fff8f2",
+                        coverBg: "linear-gradient(180deg, #f7e3d1 0%, #fff4ea 100%)",
+                        buttonBg: "#b7794d",
+                      }
+                    : {
+                        softBg: "#edf7ed",
+                        softBorder: "#d4ecd4",
+                        mutedText: "#5a855d",
+                        badgeBg: "#d4ecd4",
+                        badgeText: SAGE,
+                        panelBg: "#ffffff",
+                        coverBg: "linear-gradient(180deg, #dcefdc 0%, #edf7ed 100%)",
+                        buttonBg: SAGE,
+                      };
+                  return (
+                    <>
+                      <div
+                        className="px-4 py-4 border-b border-gray-200"
+                        style={{ background: seriesAccent.coverBg }}
                       >
-                        Set as Current Series
-                      </button>
-                    )}
+                        <div className="rounded-2xl overflow-hidden border shadow-sm" style={{ borderColor: "rgba(255,255,255,0.65)" }}>
+                          {isTemptationSeries ? (
+                            <div className="relative h-48 sm:h-56 bg-[#f4dcc7]">
+                              <img
+                                src="/TheTemptingofjesusstudy.png"
+                                alt="The Tempting of Jesus study cover"
+                                className="w-full h-full object-cover"
+                                style={{ objectPosition: "center 42%" }}
+                              />
+                            </div>
+                          ) : (
+                            <div className="bg-white/35 px-4 py-6">
+                              <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: seriesAccent.mutedText }}>
+                                Placeholder Cover
+                              </p>
+                              <h2 className="text-2xl font-bold text-gray-900 mt-3">{selectedSeries.title}</h2>
+                              <p className="text-sm text-gray-700 mt-2 max-w-xl">
+                                A guided Bible Buddy group study through Scripture, released week by week.
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="p-4">
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex-1">
+                            <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: seriesAccent.mutedText }}>
+                              {selectedSeries.total_weeks}-week group study
+                            </p>
+                            <h3 className="text-lg font-bold text-gray-900 mt-1">{selectedSeries.title}</h3>
+                          </div>
+                          {selectedSeries.is_current && (
+                            <span className="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0" style={{ backgroundColor: seriesAccent.badgeBg, color: seriesAccent.badgeText }}>
+                              Current
+                            </span>
+                          )}
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => setShowSeriesOverviewDetails((v) => !v)}
+                          className="mt-3 w-full flex items-center justify-between py-3 text-left transition"
+                        >
+                          <div>
+                            <h4 className="text-base font-semibold text-gray-900">📖 About This Series</h4>
+                            <p className="text-xs text-gray-500 mt-0.5">What to expect, how it works, and what we will cover</p>
+                          </div>
+                          <svg
+                            className={`w-5 h-5 text-gray-600 transition-transform ${showSeriesOverviewDetails ? "" : "-rotate-90"}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+
+                        {showSeriesOverviewDetails && (
+                          <div className="pt-3 border-t" style={{ borderColor: seriesAccent.softBorder }}>
+                            <div className="space-y-3">
+                              <h5 className="text-base font-semibold text-gray-900">📚 What We Are Studying</h5>
+
+                              {isTemptationSeries ? (
+                                <>
+                                  <p className="text-sm text-gray-700 leading-relaxed">
+                                    This is a 5 week Bible study series going into the story of Jesus in the wilderness. Our main passage is Luke 4:1-30, and we will break the story down slowly, week by week, so the group can study it together and really understand what is happening.
+                                  </p>
+
+                                  <div className="space-y-2.5">
+                                    <div>
+                                      <p className="font-semibold text-gray-900 mb-1">🔥 What we will cover</p>
+                                      <p className="text-sm text-gray-700 leading-relaxed">
+                                        We will study the temptation of Jesus directly, but we will also cover important background from Luke's Gospel like Jesus as a child, John the Baptist, and the spiritual buildup that leads into the wilderness story.
+                                      </p>
+                                    </div>
+
+                                    <div>
+                                      <p className="font-semibold text-gray-900 mb-1">💬 How this group study works</p>
+                                      <p className="text-sm text-gray-700 leading-relaxed">
+                                        Each week includes guided reading, detailed notes to explain the verses, trivia questions, reflection prompts, and group discussion so we can all talk through what we are seeing in Scripture together.
+                                      </p>
+                                    </div>
+
+                                    <div>
+                                      <p className="font-semibold text-gray-900 mb-1">🗓️ Weekly release rhythm</p>
+                                      <p className="text-sm text-gray-700 leading-relaxed">
+                                        Once the series starts, a new Bible study will release each week. The goal is for all of us to move through the same study together, reflect on the same reading, and discuss what we are learning as a group.
+                                      </p>
+                                    </div>
+                                  </div>
+
+                                  <div className="space-y-1.5 pt-1">
+                                    {[
+                                      "📖 Main focus: Luke 4:1-30",
+                                      "📝 Includes detailed notes and verse explanation",
+                                      "🎯 Trivia questions and reflection prompts each week",
+                                      "🤝 Built for shared discussion and group study",
+                                    ].map((item) => (
+                                      <p key={item} className="text-sm text-gray-700 leading-relaxed">{item}</p>
+                                    ))}
+                                  </div>
+                                </>
+                              ) : (
+                                <>
+                                  <p className="text-sm text-gray-700 leading-relaxed">
+                                    This is a guided Bible study series designed for the group to move through together week by week with reading, notes, reflection, and discussion.
+                                  </p>
+                                  <div className="space-y-1.5 pt-1">
+                                    {[
+                                      "📖 Weekly Bible reading",
+                                      "📝 Detailed study notes",
+                                      "🎯 Trivia and reflection prompts",
+                                      "🤝 Shared group discussion",
+                                    ].map((item) => (
+                                      <p key={item} className="text-sm text-gray-700 leading-relaxed">{item}</p>
+                                    ))}
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  );
+                })()}
+                {isLeader && !selectedSeries.is_current && (
+                  <div className="px-4 pb-4">
                     <button
-                      onClick={() => setShowNewPostModal(true)}
-                      className="px-4 py-2 rounded-xl text-sm font-medium border border-gray-200 text-gray-700 hover:bg-gray-50 transition"
+                      onClick={() => handleSetCurrentSeries(selectedSeries)}
+                      className="px-4 py-2 rounded-xl text-white text-sm font-medium transition hover:opacity-90"
+                      style={{ backgroundColor: selectedSeriesAccent.buttonBg }}
                     >
-                      + Add Week Post
+                      Set as Current Series
                     </button>
                   </div>
                 )}
@@ -1232,23 +1857,37 @@ export default function GroupChatPage() {
               {isLeader && selectedSeries.is_current && (
                 <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
                   <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-1">Series Control Panel</p>
-                  <p className="text-sm text-amber-800 mb-3">Set the Week 1 start date. Every other week unlocks automatically 7 days later.</p>
-                  <div className="flex gap-2">
-                    <input
-                      type="date"
-                      value={seriesStartDateInput}
-                      onChange={(e) => setSeriesStartDateInput(e.target.value)}
-                      className="flex-1 text-sm px-3 py-2 border border-amber-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-amber-400"
-                    />
-                    <button
-                      onClick={handleSaveSeriesStartDate}
-                      disabled={savingSeriesStartDate || !seriesStartDateInput}
-                      className="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-amber-500 hover:bg-amber-600 disabled:opacity-50 transition"
-                    >
-                      {savingSeriesStartDate ? "Saving..." : "Save"}
-                    </button>
-                  </div>
-                  {seriesStartDate && <p className="text-xs text-amber-600 mt-2">Week 1 starts: {getWeekUnlockDate(seriesStartDate, 1)}</p>}
+                  <p className="text-sm text-amber-800 mb-3">Set the Week 1 start date and time. Every other week unlocks automatically 7 days later.</p>
+                  {!seriesStartDate || editingSeriesStart ? (
+                    <div className="flex gap-2 flex-col sm:flex-row">
+                      <input
+                        type="datetime-local"
+                        value={seriesStartDateInput}
+                        onChange={(e) => setSeriesStartDateInput(e.target.value)}
+                        className="flex-1 text-sm px-3 py-2 border border-amber-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      />
+                      <button
+                        onClick={handleSaveSeriesStartDate}
+                        disabled={savingSeriesStartDate || !seriesStartDateInput}
+                        className="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-amber-500 hover:bg-amber-600 disabled:opacity-50 transition"
+                      >
+                        {savingSeriesStartDate ? "Saving..." : "Save"}
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="rounded-xl border border-amber-200 bg-white px-4 py-3">
+                      <p className="text-sm font-semibold text-gray-900">
+                        Series starts in {formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}
+                      </p>
+                      <p className="text-xs text-amber-700 mt-1">{formatDateTimeLabel(seriesStartDate)}</p>
+                      <button
+                        onClick={() => setEditingSeriesStart(true)}
+                        className="mt-3 text-xs font-semibold text-amber-700 hover:text-amber-900 transition"
+                      >
+                        Change start time
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -1840,7 +2479,7 @@ export default function GroupChatPage() {
                   <p className="text-sm text-gray-900 mt-1">{group.member_count === 1 ? "1 member" : `${group.member_count || 0} members`}</p>
                 </div>
                 <div className="rounded-xl border border-gray-200 px-4 py-3">
-                  <p className="text-xs font-bold uppercase tracking-wide text-gray-400">Leader</p>
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-400">Teacher</p>
                   <p className="text-sm text-gray-900 mt-1">{group.leader_name || "Bible Buddy"}</p>
                 </div>
                 {group.current_weekly_study && (
@@ -1868,6 +2507,30 @@ export default function GroupChatPage() {
                   Close
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {deletePostId && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in" onClick={() => setDeletePostId(null)}>
+          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full modal-panel-in" onClick={(e) => e.stopPropagation()}>
+            <h3 className="font-bold text-gray-900 text-lg mb-2">Delete this post?</h3>
+            <p className="text-sm text-gray-500 mb-5">This will remove the post and its replies from the group feed.</p>
+            <div className="flex gap-3 justify-end">
+              <button
+                onClick={() => setDeletePostId(null)}
+                className="px-4 py-2 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-100 transition"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteGroupPost}
+                disabled={deletingPost}
+                className="px-4 py-2 rounded-xl text-sm font-semibold text-white bg-red-500 hover:bg-red-600 disabled:opacity-50 transition"
+              >
+                {deletingPost ? "Deleting..." : "Delete"}
+              </button>
             </div>
           </div>
         </div>
@@ -1907,14 +2570,39 @@ export default function GroupChatPage() {
                   </Link>
                   {(post.role === "leader" || post.role === "moderator") && (
                     <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
-                      {post.role === "leader" ? "Leader" : "Mod"}
+                      {post.role === "leader" ? "Teacher" : "Mod"}
                     </span>
                   )}
                   <span className="text-xs text-gray-400">{timeAgo(post.created_at)}</span>
                 </div>
               </div>
-              {isLeaderOrMod && (
-                <button className="text-gray-300 hover:text-amber-500 transition" title="Pin post (coming soon)" disabled>📌</button>
+              {(userId === post.user_id || isLeaderOrMod) && (
+                <div className="relative">
+                  <button
+                    type="button"
+                    onClick={() => setActivePostMenuId(activePostMenuId === post.id ? null : post.id)}
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition"
+                    aria-label="Post options"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6h.01M12 12h.01M12 18h.01" />
+                    </svg>
+                  </button>
+                  {activePostMenuId === post.id && (
+                    <div className="absolute right-0 top-10 z-10 min-w-[140px] rounded-2xl border border-gray-200 bg-white shadow-lg overflow-hidden">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setActivePostMenuId(null);
+                          setDeletePostId(post.id);
+                        }}
+                        className="w-full px-4 py-3 text-left text-sm font-medium text-red-600 hover:bg-red-50 transition"
+                      >
+                        Delete Post
+                      </button>
+                    </div>
+                  )}
+                </div>
               )}
             </div>
             {post.content && <p className="text-gray-800 text-sm mt-3 leading-relaxed whitespace-pre-wrap">{post.content}</p>}
@@ -1984,16 +2672,40 @@ export default function GroupChatPage() {
                 </svg>
                 <span>{post.like_count > 0 ? post.like_count : ""}</span>
               </button>
-              <button className="flex items-center gap-1.5 text-sm text-gray-400" title="Reply threads coming soon" disabled>
+              <button
+                onClick={() => {
+                  setOpenCommentPostIds((prev) => {
+                    const next = new Set(prev);
+                    if (next.has(post.id)) next.delete(post.id);
+                    else next.add(post.id);
+                    return next;
+                  });
+                }}
+                className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-[#b7794d] transition"
+              >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
-                Reply
+                <span>{post.comment_count || 0}</span>
+                <span>{openCommentPostIds.has(post.id) ? "Hide comments" : "Comments"}</span>
               </button>
             </div>
+            {openCommentPostIds.has(post.id) && userId && (
+              <GroupCommentSection
+                groupId={groupId}
+                post={post}
+                userId={userId}
+                displayName={displayName}
+                userProfileImage={userProfileImage}
+                onCountChange={(delta) => {
+                  setPosts((prev) => prev.map((item) => item.id === post.id ? { ...item, comment_count: Math.max((item.comment_count || 0) + delta, 0) } : item));
+                }}
+              />
+            )}
           </div>
         ))}
       </div>
     );
   }
 }
+
