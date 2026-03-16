@@ -261,7 +261,304 @@ These two verses carry the weight of everything that came before — the baptism
       },
     ],
   },
-  // Weeks 2–5 coming soon
+  {
+    weekNumber: 2,
+    title: "Bread From Stones",
+    subtitle: "The temptation of the flesh",
+    readingReference: "Luke 4:1–4",
+    readingApiQuery: "luke+4:1-4",
+    reflectionQuestion:
+      "When the devil tempted Jesus to turn stones into bread, he was appealing to His physical hunger — the lust of the flesh. But Jesus refused to satisfy a real need in a wrong way. What "stones" has the enemy been trying to get you to turn into "bread"? In other words — what desires, habits, or fleshly cravings have been pulling you away from trusting God's timing and provision?",
+
+    intro: `In Part 1, we set the stage.
+
+We looked at Jesus as a 12-year-old in the Temple, His baptism in the Jordan, the Trinity showing up all at once, and the Spirit leading Him into the wilderness.
+
+Now in Part 2, we finally get to the **first temptation** itself. The devil waits until Jesus is at His weakest — and then goes straight for His flesh.
+
+Let's walk through it.
+
+## 🌵 Why Did Jesus Go Into the Wilderness?
+
+Luke writes:
+
+> "And Jesus, full of the Holy Spirit, returned from the Jordan and was led by the Spirit in the wilderness, for forty days, being tempted by the devil. And He ate nothing during those days. And when they were ended, He was hungry." — Luke 4:1–2
+
+Here's the thing: Jesus didn't just wander into the wilderness. **He was led there by the Spirit.**
+
+This wasn't a vacation. It wasn't downtime after baptism. It was a mission.
+
+👉 In the Bible, the wilderness is always a testing ground:
+
+- 🌿 **John the Baptist** lived in the wilderness until his ministry began (Luke 1:80).
+- 🔼 **Moses** spent 40 years there with Israel.
+- 🔥 **Elijah** met God in the wilderness.
+- 🎯 **David** hid in the wilderness when Saul was chasing him.
+
+The wilderness is where God strips away comfort and builds character. It's where He forges people for their calling.
+
+**Here are 2 big reasons Jesus was led into the wilderness:**
+
+1. **To fully live the human experience.** He came to walk the same road we walk and show us how to endure temptation God's way. Where Israel failed for 40 years, Jesus would succeed in 40 days.
+
+2. **To prove the devil can be defeated.** Not by raw willpower — but by total dependence on God.
+
+This wasn't a detour. It was preparation — for ministry, for mission, and for us.
+
+## 🐍 The Devil Waits for Weakness
+
+Matthew adds an important detail:
+
+> "After fasting forty days and forty nights, He was hungry. And the tempter came and said to Him…" — Matthew 4:2–3
+
+Notice: **the devil doesn't show up on Day 1.**
+
+He waits until Jesus is weak, hungry, and at His lowest point.
+
+That's how temptation works with us, too. It waits. It lurks. It hits hardest when your guard is down.
+
+Think about it:
+
+- You start a new diet. Morning is fine. Afternoon is fine. But late at night, when you're tired — that's when the craving screams.
+- You swear off a bad habit. You're solid all day. But then you're alone, the house is quiet, and the whispers start.
+
+The devil doesn't rush. He's patient. He waits until you're empty, tired, and distracted. **Then he whispers.**
+
+That's exactly what happened to Jesus.
+
+## 🍞 The First Temptation
+
+Luke writes:
+
+> "The devil said to Him, 'If you are the Son of God, command this stone to become bread.'" — Luke 4:3
+
+On the surface, it sounds harmless. Jesus is starving. Bread would help. Why not?
+
+But this is **deeper than food.**
+
+The devil starts with: *"If you are the Son of God…"*
+
+In the Greek, that "if" really means **"since."** In other words:
+
+> "Since You're God's Son, why suffer? Use Your power. Fix this Yourself."
+
+👉 **This is the temptation of the flesh.**
+
+- Your stomach says, "I need this."
+- Your body says, "Just one hit."
+- Your feelings say, "I deserve this."
+
+But it's a lie. **The flesh exaggerates need and minimizes cost.**
+
+Paul said:
+
+> "The mind governed by the flesh is hostile to God." — Romans 8:7
+
+And that's exactly what the devil is pushing here:
+
+- 🍞 Shortcut over trust.
+- 🍞 Comfort over obedience.
+- 🍞 Flesh over faith.
+
+## 📖 Jesus' Response
+
+Jesus doesn't argue. He doesn't debate. He fires back with Scripture:
+
+> "It is written: Man shall not live by bread alone, but by every word that comes from the mouth of God." — Matthew 4:4
+
+That's **Deuteronomy 8:3** — Moses speaking to Israel's children as they were about to enter the Promised Land.
+
+The backstory:
+
+- Israel complained about food in the wilderness.
+- God provided manna — bread from heaven.
+- Rule: only take enough for the day. If you tried to store it, it rotted.
+- Why? It was **training** — to teach them to trust God daily.
+
+But they still complained. They still doubted. They still built idols.
+
+So Moses told their kids: *"It's not about bread. It's about obedience. Not about cravings. About trust."*
+
+And Jesus throws that same Word right back at Satan:
+
+> "Yes, I'm hungry. But I'd rather trust My Father's Word than feed My cravings."
+
+🔥 **That's the blueprint.**
+
+## 💡 What "Bread Alone" Means for Us
+
+You can swap "bread" with anything:
+
+- Weed. Porn. Control.
+- Fear. Ego. Comfort.
+
+Your flesh says, "I need this right now." But Jesus shows us — **no. What you really need is the Word of God.**
+
+The flesh says: satisfy yourself. The Spirit says: trust God.
+
+If Jesus had turned the stone into bread, He would've placed His flesh above His Father. But He didn't. He passed the test. And now He shows us how to do the same.
+
+## 📝 Real Talk + Application
+
+Here's what this first temptation teaches us:
+
+- 👀 **The devil attacks your flesh first.**
+- 🕰️ **He waits until you're weak.**
+- 🍞 **He offers shortcuts that cost more later.**
+- 📖 **The Word of God is your only real defense.**
+
+So here's the question: **What "stone" in your life are you tempted to turn into bread?**
+
+- That late-night scroll?
+- That "one more" drink?
+- That text thread you should've deleted?
+- That easy shortcut instead of God's way?
+
+👉 The way to fight it isn't more willpower. **It's more Word.** Fill yourself with Scripture before the temptation hits.
+
+> "Trust in the LORD with all your heart, and lean not on your own understanding." — Proverbs 3:5
+
+## 📌 Closing
+
+Jesus was starving, weak, and alone — but He still **trusted the Father over His flesh.**
+
+That's the pattern. That's how you fight back.
+
+So whatever your craving is, don't believe the lie that you "need" it. **You need God more.**
+
+- Not that late-night click.
+- Not that text.
+- Not that extra slice.
+- Not that blunt.
+
+**The Word > The craving.**
+
+👣 **Next week in Part 3**, we'll look at the second temptation — when Satan shows Jesus all the kingdoms of the world and offers Him power and glory if He'll just bow down.`,
+
+    triviaQuestions: [
+      {
+        id: "w2q1",
+        question: "What did the devil challenge Jesus to turn into bread?",
+        options: [
+          { label: "A", text: "Sand" },
+          { label: "B", text: "A stone" },
+          { label: "C", text: "Water" },
+          { label: "D", text: "Wood" },
+        ],
+        correctAnswer: "B",
+        explanation: "Luke 4:3 records: 'The devil said to Him, If you are the Son of God, command this stone to become bread.'",
+      },
+      {
+        id: "w2q2",
+        question: "How long had Jesus fasted before the devil approached Him with the first temptation?",
+        options: [
+          { label: "A", text: "7 days and nights" },
+          { label: "B", text: "30 days and nights" },
+          { label: "C", text: "40 days and nights" },
+          { label: "D", text: "3 days and nights" },
+        ],
+        correctAnswer: "C",
+        explanation: "Matthew 4:2–3 says 'After fasting forty days and forty nights, He was hungry. And the tempter came…'",
+      },
+      {
+        id: "w2q3",
+        question: "Which Old Testament book did Jesus quote when He rebuked the first temptation?",
+        options: [
+          { label: "A", text: "Psalms" },
+          { label: "B", text: "Proverbs" },
+          { label: "C", text: "Isaiah" },
+          { label: "D", text: "Deuteronomy" },
+        ],
+        correctAnswer: "D",
+        explanation: "'Man shall not live by bread alone' is from Deuteronomy 8:3 — Moses speaking to Israel's children before they entered the Promised Land.",
+      },
+      {
+        id: "w2q4",
+        question: "What does Jesus' response to the first temptation tell us about how to fight temptation?",
+        options: [
+          { label: "A", text: "Use willpower and discipline" },
+          { label: "B", text: "Argue back with logic" },
+          { label: "C", text: "Fight with the Word of God" },
+          { label: "D", text: "Walk away and stay silent" },
+        ],
+        correctAnswer: "C",
+        explanation: "Jesus didn't argue or debate — He answered every temptation with 'It is written.' The Word of God is our primary weapon against temptation.",
+      },
+      {
+        id: "w2q5",
+        question: "According to the lesson, why did God give Israel manna in the wilderness one day at a time?",
+        options: [
+          { label: "A", text: "To conserve food and prevent waste" },
+          { label: "B", text: "To train them to trust God daily" },
+          { label: "C", text: "Because the manna would spoil within hours" },
+          { label: "D", text: "To keep them from eating too much" },
+        ],
+        correctAnswer: "B",
+        explanation: "The manna system was training — if Israel tried to store it, it rotted. God designed it to build daily dependence and trust in His provision.",
+      },
+      {
+        id: "w2q6",
+        question: "What is the significance of the Greek word 'if' in the devil's phrase 'If you are the Son of God'?",
+        options: [
+          { label: "A", text: "The devil was genuinely uncertain about Jesus' identity" },
+          { label: "B", text: "In Greek, it actually means 'since' — the devil was acknowledging who Jesus was" },
+          { label: "C", text: "It was a direct denial that Jesus was God's Son" },
+          { label: "D", text: "It was a respectful question, not a challenge" },
+        ],
+        correctAnswer: "B",
+        explanation: "In Greek, the 'if' used here carries the meaning of 'since.' The devil wasn't doubting Jesus' identity — he was using it as leverage: 'Since You are God's Son, why suffer? Use Your power.'",
+      },
+      {
+        id: "w2q7",
+        question: "What does Paul say about 'the mind governed by the flesh' in Romans 8:7?",
+        options: [
+          { label: "A", text: "It is weak but redeemable" },
+          { label: "B", text: "It is hostile to God" },
+          { label: "C", text: "It leads to confusion" },
+          { label: "D", text: "It craves worldly things" },
+        ],
+        correctAnswer: "B",
+        explanation: "Romans 8:7 states: 'The mind governed by the flesh is hostile to God.' The devil's first temptation was designed to get Jesus to govern Himself by flesh rather than faith.",
+      },
+      {
+        id: "w2q8",
+        question: "According to the lesson, why didn't the devil attack Jesus on Day 1 of the fast?",
+        options: [
+          { label: "A", text: "The devil needed time to prepare his strategy" },
+          { label: "B", text: "He was afraid of the Holy Spirit at the start" },
+          { label: "C", text: "He waited until Jesus was weak, hungry, and at His lowest point" },
+          { label: "D", text: "He didn't know Jesus was in the wilderness until later" },
+        ],
+        correctAnswer: "C",
+        explanation: "Matthew 4:2–3 shows the devil waited until after 40 days of fasting — when Jesus was at His weakest. That's how temptation works: it waits for the cracks.",
+      },
+      {
+        id: "w2q9",
+        question: "What is the core lie behind the temptation of the flesh, according to this lesson?",
+        options: [
+          { label: "A", text: "That God doesn't care about your needs" },
+          { label: "B", text: "That the flesh exaggerates need and minimizes cost" },
+          { label: "C", text: "That shortcuts are always sinful" },
+          { label: "D", text: "That physical hunger is spiritually dangerous" },
+        ],
+        correctAnswer: "B",
+        explanation: "The flesh exaggerates need ('I have to have this') and minimizes cost ('just this once won't hurt'). That's the lie behind every temptation of the flesh.",
+      },
+      {
+        id: "w2q10",
+        question: "In the wilderness, which of these figures did NOT encounter God or face a major test?",
+        options: [
+          { label: "A", text: "Elijah" },
+          { label: "B", text: "David" },
+          { label: "C", text: "Solomon" },
+          { label: "D", text: "Moses" },
+        ],
+        correctAnswer: "C",
+        explanation: "The lesson highlights John the Baptist, Moses, Elijah, and David as wilderness figures tested and forged by God. Solomon is not among them — his testing came through wealth and power, not the wilderness.",
+      },
+    ],
+  },
+  // Weeks 3–5 coming soon
 ];
 
 export function getSeriesWeekLesson(weekNumber: number): SeriesWeekLesson | undefined {
