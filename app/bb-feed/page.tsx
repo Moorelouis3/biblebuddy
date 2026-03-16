@@ -323,8 +323,8 @@ function PostComposer({ userId, userProfile, onPosted }: {
   function handleVideoSelect(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (file.size > 52428800) {
-      setUploadError("Video must be under 50 MB.");
+    if (file.size > 209715200) {
+      setUploadError("Video must be under 200 MB.");
       return;
     }
     if (videoPreview) URL.revokeObjectURL(videoPreview);
@@ -540,7 +540,7 @@ function PostComposer({ userId, userProfile, onPosted }: {
               >
                 <span className="text-3xl">🎬</span>
                 <span className="text-sm font-semibold text-gray-600">Tap to upload a video</span>
-                <span className="text-xs text-gray-400">MP4, MOV, or WebM · max 50 MB · 90 sec</span>
+                <span className="text-xs text-gray-400">MP4, MOV, or WebM · max 200 MB</span>
               </button>
             ) : (
               <div className="relative">
