@@ -440,7 +440,14 @@ function PostComposer({ userId, userProfile, onPosted }: {
       .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
       .single();
 
-    if (!error && data) {
+    if (error) {
+      console.error("Post insert error:", error);
+      setUploadError(`Failed to post: ${error.message}`);
+      setSubmitting(false);
+      return;
+    }
+
+    if (data) {
       onPosted({
         ...data,
         display_name: userProfile?.display_name ?? null,
@@ -863,6 +870,154 @@ function CommentSection({ postId, myId, myProfile, onCountChange, highlightComme
   );
 }
 
+// ── Video Block (autoplay on scroll like IG) ──────────────────────────────────
+
+function VideoBlock({ post }: { post: FeedPost }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [inView, setInView] = useState(false);
+  const [everInView, setEverInView] = useState(false);
+
+  // Intersection Observer — fire when 40% of the block is visible
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const visible = entry.isIntersecting;
+        setInView(visible);
+        if (visible) setEverInView(true);
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Play / pause native <video> elements
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (inView) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [inView]);
+
+  // Play / pause Bunny (and YouTube) iframes via postMessage
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+    try {
+      if (inView) {
+        iframe.contentWindow?.postMessage(JSON.stringify({ action: "play" }), "*");
+        // YouTube API
+        iframe.contentWindow?.postMessage(JSON.stringify({ event: "command", func: "playVideo" }), "*");
+      } else {
+        iframe.contentWindow?.postMessage(JSON.stringify({ action: "pause" }), "*");
+        iframe.contentWindow?.postMessage(JSON.stringify({ event: "command", func: "pauseVideo" }), "*");
+      }
+    } catch {}
+  }, [inView]);
+
+  // ── Direct upload (Supabase mp4) ──────────────────────────────────────────
+  if (post.post_type === "video" && post.media_url) {
+    return (
+      <div ref={containerRef} className="mt-3 flex justify-center">
+        <video
+          ref={videoRef}
+          src={post.media_url}
+          muted
+          playsInline
+          loop
+          controls
+          className="rounded-xl bg-black w-full"
+          style={{ maxHeight: "480px" }}
+        />
+      </div>
+    );
+  }
+
+  // ── Embedded video (Bunny, YouTube, TikTok, Instagram) ────────────────────
+  if (post.post_type === "video" && post.link_url) {
+    const parsed = parseVideoEmbed(post.link_url);
+
+    if (parsed.embedUrl) {
+      const isBunny = parsed.platform === "bunny";
+      // Bunny: lazy-load, autoplay on first scroll-in with muted=true
+      const bunnyParams = "?autoplay=true&muted=true&loop=false&preload=false";
+      const embedSrc = isBunny ? `${parsed.embedUrl}${bunnyParams}` : parsed.embedUrl;
+
+      if (!parsed.portrait) {
+        return (
+          <div ref={containerRef} className="mt-3 relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: "56.25%" }}>
+            {everInView && (
+              <iframe
+                ref={iframeRef}
+                src={embedSrc}
+                className="absolute inset-0 w-full h-full"
+                allowFullScreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              />
+            )}
+            {!everInView && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
+                  <span className="text-white text-2xl ml-1">▶</span>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      }
+
+      // Portrait (TikTok, Shorts, Reels, Bunny portrait)
+      return (
+        <div ref={containerRef} className="mt-3 flex justify-center">
+          <div className="relative rounded-2xl overflow-hidden bg-black w-full" style={{ maxWidth: "300px", height: "530px" }}>
+            {everInView && (
+              <iframe
+                ref={iframeRef}
+                src={embedSrc}
+                className="w-full h-full border-0"
+                allowFullScreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                scrolling="no"
+              />
+            )}
+            {!everInView && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
+                  <span className="text-white text-2xl ml-1">▶</span>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    // Unembeddable link fallback
+    const meta = VIDEO_PLATFORM_META[parsed.platform];
+    return (
+      <a href={post.link_url} target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center gap-3 p-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition">
+        <span className="text-2xl">{meta.icon}</span>
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-semibold text-gray-800">{meta.label}</p>
+          <p className="text-xs text-gray-400 truncate">{post.link_url}</p>
+        </div>
+        <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    );
+  }
+
+  return null;
+}
+
 // ── Post Card ─────────────────────────────────────────────────────────────────
 
 function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountChange, onDelete, highlightPostId, highlightCommentId }: {
@@ -1041,52 +1196,8 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
         </button>
       )}
 
-      {/* Video — direct upload */}
-      {post.post_type === "video" && post.media_url && (
-        <div className="mt-3 flex justify-center">
-          <video
-            src={post.media_url}
-            controls
-            playsInline
-            className="rounded-xl bg-black w-full"
-            style={{ maxHeight: "480px" }}
-          />
-        </div>
-      )}
-
-      {/* Video embed */}
-      {post.post_type === "video" && post.link_url && (() => {
-        const parsed = parseVideoEmbed(post.link_url);
-        if (parsed.embedUrl) {
-          if (!parsed.portrait) {
-            return (
-              <div className="mt-3 relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: "56.25%" }}>
-                <iframe src={parsed.embedUrl} className="absolute inset-0 w-full h-full" allowFullScreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" />
-              </div>
-            );
-          }
-          return (
-            <div className="mt-3 flex justify-center">
-              <div className="relative rounded-2xl overflow-hidden bg-black w-full" style={{ maxWidth: "300px", height: "530px" }}>
-                <iframe src={parsed.embedUrl} className="w-full h-full border-0" allowFullScreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" scrolling="no" />
-              </div>
-            </div>
-          );
-        }
-        const meta = VIDEO_PLATFORM_META[parsed.platform];
-        return (
-          <a href={post.link_url} target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center gap-3 p-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition">
-            <span className="text-2xl">{meta.icon}</span>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold text-gray-800">{meta.label}</p>
-              <p className="text-xs text-gray-400 truncate">{post.link_url}</p>
-            </div>
-            <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
-        );
-      })()}
+      {/* Video — autoplay on scroll (Bunny Stream + embeds) */}
+      {post.post_type === "video" && <VideoBlock post={post} />}
 
       {/* Legacy link posts */}
       {post.post_type === "link" && post.link_url && (
