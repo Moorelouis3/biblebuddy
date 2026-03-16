@@ -265,8 +265,8 @@ These two verses carry the weight of everything that came before — the baptism
     weekNumber: 2,
     title: "Bread From Stones",
     subtitle: "The temptation of the flesh",
-    readingReference: "Luke 4:1–4",
-    readingApiQuery: "luke+4:1-4",
+    readingReference: "Luke 4:3–4",
+    readingApiQuery: "luke+4:3-4",
     reflectionQuestion:
       "When the devil tempted Jesus to turn stones into bread, he was appealing to His physical hunger — the lust of the flesh. But Jesus refused to satisfy a real need in a wrong way. What "stones" has the enemy been trying to get you to turn into "bread"? In other words — what desires, habits, or fleshly cravings have been pulling you away from trusting God's timing and provision?",
 
