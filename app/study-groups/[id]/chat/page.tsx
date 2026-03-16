@@ -5,6 +5,7 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../../lib/supabaseClient";
 import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
+import { logActionToMasterActions } from "@/lib/actionRecorder";
 
 // ── Interfaces ───────────────────────────────────────────────────────────────
 
@@ -451,6 +452,7 @@ export default function GroupChatPage() {
       if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
       setComposerVideoFile(null); setComposerVideoPreview(null); setComposerVideoDurationError(false);
       setComposerMode("text"); setComposerUploadError(null);
+      void logActionToMasterActions(userId, "group_message_sent", group?.name || "Group");
     }
     setSubmitting(false);
   }

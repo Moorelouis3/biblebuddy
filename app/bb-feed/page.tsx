@@ -6,6 +6,7 @@ import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 import { FeedOnboardingModal } from "../../components/FeedOnboardingModal";
 import { ModalShell } from "../../components/ModalShell";
+import { logActionToMasterActions } from "../../lib/actionRecorder";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -412,6 +413,17 @@ function PostComposer({ userId, userProfile, onPosted }: {
         p_is_public: true,
       });
 
+      void logActionToMasterActions(userId,
+        postType === "thought" ? "feed_post_thought" :
+        postType === "prayer" ? "feed_post_prayer" :
+        postType === "prayer_request" ? "feed_post_prayer_request" :
+        postType === "photo" ? "feed_post_photo" : "feed_post_video",
+        postType === "thought" ? content.trim().slice(0, 80) :
+        postType === "prayer" ? "Prayer" :
+        postType === "prayer_request" ? "Prayer Request" :
+        postType === "photo" ? "Photo post" : "Video post"
+      );
+
       reset();
     }
     setSubmitting(false);
@@ -677,6 +689,7 @@ function CommentSection({ postId, myId, myProfile, onCountChange }: {
       };
       setComments((prev) => [...prev, newC]);
       onCountChange(1);
+      void logActionToMasterActions(myId, parentId ? "feed_post_replied" : "feed_post_commented", `post:${postId}`);
     }
     setNewComment("");
     setReplyText("");
@@ -1634,6 +1647,7 @@ export default function BbFeedPage() {
         .from("feed_post_reactions")
         .insert({ post_id: postId, user_id: userId, reaction_type: reactionType });
       await supabase.rpc("increment_reaction_count", { p_post_id: postId, p_reaction: reactionType });
+      void logActionToMasterActions(userId, "feed_post_liked", `post:${postId}`);
     }
   }
 

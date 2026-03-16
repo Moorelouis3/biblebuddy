@@ -7,6 +7,7 @@ import { enrichPlainText } from "../lib/bibleHighlighting";
 import { BIBLE_PEOPLE_LIST } from "../lib/biblePeopleList";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import CreditLimitModal from "./CreditLimitModal";
+import { LouisAvatar } from "./LouisAvatar";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -81,6 +82,7 @@ export default function DevotionalDayModal({
   const [isAnimatingPerson, setIsAnimatingPerson] = useState(false);
   const [isAnimatingPlace, setIsAnimatingPlace] = useState(false);
   const [isAnimatingKeyword, setIsAnimatingKeyword] = useState(false);
+  const [learnedToast, setLearnedToast] = useState<string | null>(null);
 
   const [readingChecked, setReadingChecked] = useState(dayProgress?.reading_completed || false);
   const [reflectionText, setReflectionText] = useState(dayProgress?.reflection_text || "");
@@ -889,9 +891,17 @@ Be accurate to Scripture.`;
               ✕
             </button>
             <h2 className="text-3xl font-bold mb-2">{selectedPerson.name}</h2>
-            {personCreditBlocked ? null : loadingNotes ? (
-              <div className="text-center py-12 text-gray-500">Loading notes...</div>
-            ) : personNotes ? (
+            {personCreditBlocked ? null : !personNotes ? (
+              <div className="flex flex-col items-center py-10 gap-5">
+                <div style={{ animation: "bounce 1s infinite" }}><LouisAvatar mood="think" size={72} /></div>
+                <div className="w-full space-y-3 px-2">
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-5/6" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-3/4" />
+                </div>
+                <p className="text-sm text-gray-400 italic animate-pulse">{selectedPerson.name} is loading…</p>
+              </div>
+            ) : (
               <div>
                 <ReactMarkdown
                   components={{
@@ -941,182 +951,50 @@ Be accurate to Scripture.`;
                       const personNameKey = primaryName.toLowerCase().trim();
                       const isCompleted = completedPeople.has(personNameKey);
 
+                      const personDisplayName = primaryName.split(" ").map((w) => { if (/^\d+$/.test(w)) return w; return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(); }).join(" ");
                       return (
                         <button
                           type="button"
-                          onClick={async (e) => {
-                            e.stopPropagation();
-                            e.preventDefault();
-
+                          onClick={(e) => {
+                            e.stopPropagation(); e.preventDefault();
                             if (!userId || isCompleted) return;
-
-                            try {
-                              // Upsert into people_progress to mark learned
-                              const { error } = await supabase
-                                .from("people_progress")
-                                .upsert(
-                                  {
-                                    user_id: userId,
-                                    person_name: personNameKey,
-                                  },
-                                  {
-                                    onConflict: "user_id,person_name",
-                                  }
-                                );
-
-                              if (error) {
-                                console.error("Error marking person as finished:", error);
-                                alert("Failed to mark as finished. Please try again.");
-                                return;
-                              }
-
-                              // ACTION TRACKING: log to master_actions and update profile_stats
+                            setIsAnimatingPerson(true);
+                            setTimeout(() => {
+                              setIsAnimatingPerson(false); setSelectedPerson(null); setPersonNotes(null);
+                              setLearnedToast(`${personDisplayName} has been learned! 🙌`);
+                              setTimeout(() => setLearnedToast(null), 3500);
+                            }, 250);
+                            (async () => {
                               try {
-                                const { data: { user: authUser } } = await supabase.auth.getUser();
-                                let actionUsername = username || "User";
-
-                                if (authUser) {
-                                  const meta: any = authUser.user_metadata || {};
-                                  actionUsername =
-                                    meta.firstName ||
-                                    meta.first_name ||
-                                    (authUser.email ? authUser.email.split("@")[0] : null) ||
-                                    "User";
-                                }
-
-                                const formatPersonName = (name: string): string =>
-                                  name
-                                    .split(" ")
-                                    .map((word) => {
-                                      if (/^\d+$/.test(word)) return word;
-                                      return (
-                                        word.charAt(0).toUpperCase() +
-                                        word.slice(1).toLowerCase()
-                                      );
-                                    })
-                                    .join(" ");
-
-                                const personDisplayName = formatPersonName(primaryName);
-
-                                // Insert into master_actions
-                                const { error: actionError } = await supabase
-                                  .from("master_actions")
-                                  .insert({
-                                    user_id: userId,
-                                    username: actionUsername ?? null,
-                                    action_type: "person_learned",
-                                    action_label: personDisplayName,
-                                  });
-
-                                if (actionError) {
-                                  console.error(
-                                    "Error logging action to master_actions:",
-                                    actionError
-                                  );
-                                }
-
-                                // Update profile_stats people_learned_count + total_actions
-                                let statsUsername = username || actionUsername;
-                                if (!statsUsername && userId) {
-                                  const { data: { user } } = await supabase.auth.getUser();
-                                  if (user) {
-                                    const meta: any = user.user_metadata || {};
-                                    statsUsername =
-                                      meta.firstName ||
-                                      meta.first_name ||
-                                      (user.email ? user.email.split("@")[0] : null) ||
-                                      "User";
+                                const { error } = await supabase.from("people_progress").upsert({ user_id: userId, person_name: personNameKey }, { onConflict: "user_id,person_name" });
+                                if (!error) {
+                                  setCompletedPeople((prev) => { const n = new Set(prev); n.add(personNameKey); return n; });
+                                  const { data: { user: authUser } } = await supabase.auth.getUser();
+                                  const meta: any = authUser?.user_metadata || {};
+                                  const actionUsername = meta.firstName || meta.first_name || (authUser?.email?.split("@")[0]) || "User";
+                                  await supabase.from("master_actions").insert({ user_id: userId, username: actionUsername, action_type: "person_learned", action_label: personDisplayName });
+                                  const { count } = await supabase.from("people_progress").select("*", { count: "exact", head: true }).eq("user_id", userId);
+                                  if (count !== null) {
+                                    const { data: stats } = await supabase.from("profile_stats").select("username, chapters_completed_count, notes_created_count, places_discovered_count, keywords_mastered_count").eq("user_id", userId).maybeSingle();
+                                    await supabase.from("profile_stats").upsert({ user_id: userId, username: stats?.username || actionUsername, people_learned_count: count, total_actions: (stats?.chapters_completed_count || 0) + (stats?.notes_created_count || 0) + count + (stats?.places_discovered_count || 0) + (stats?.keywords_mastered_count || 0), updated_at: new Date().toISOString() }, { onConflict: "user_id" });
                                   }
                                 }
-
-                                const { count, error: countError } = await supabase
-                                  .from("people_progress")
-                                  .select("*", { count: "exact", head: true })
-                                  .eq("user_id", userId);
-
-                                if (!countError && count !== null) {
-                                  const { data: currentStats } = await supabase
-                                    .from("profile_stats")
-                                    .select(
-                                      "username, chapters_completed_count, notes_created_count, places_discovered_count, keywords_mastered_count"
-                                    )
-                                    .eq("user_id", userId)
-                                    .maybeSingle();
-
-                                  const finalUsername =
-                                    currentStats?.username || statsUsername || "User";
-
-                                  const totalActions =
-                                    (currentStats?.chapters_completed_count || 0) +
-                                    (currentStats?.notes_created_count || 0) +
-                                    (count || 0) +
-                                    (currentStats?.places_discovered_count || 0) +
-                                    (currentStats?.keywords_mastered_count || 0);
-
-                                  await supabase.from("profile_stats").upsert(
-                                    {
-                                      user_id: userId,
-                                      username: finalUsername,
-                                      people_learned_count: count || 0,
-                                      total_actions: totalActions,
-                                      updated_at: new Date().toISOString(),
-                                    },
-                                    {
-                                      onConflict: "user_id",
-                                    }
-                                  );
-                                }
-                              } catch (err) {
-                                console.error(
-                                  "[DEVOTIONAL_DAY_MODAL] Error updating stats for person:",
-                                  err
-                                );
-                              }
-
-                              // Local UI updates
-                              setCompletedPeople((prev) => {
-                                const next = new Set(prev);
-                                next.add(personNameKey);
-                                return next;
-                              });
-
-                              setIsAnimatingPerson(true);
-                              setTimeout(() => {
-                                setIsAnimatingPerson(false);
-                                setSelectedPerson(null);
-                                setPersonNotes(null);
-                              }, 400);
-                            } catch (err) {
-                              console.error(
-                                "[DEVOTIONAL_DAY_MODAL] Error marking person as finished:",
-                                err
-                              );
-                              alert("Failed to mark as finished. Please try again.");
-                            }
+                              } catch (err) { console.error("[DevotionalDayModal] person save error:", err); }
+                            })();
                           }}
                           disabled={isCompleted}
-                          className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                            isCompleted
-                              ? "bg-green-100 text-green-700 cursor-not-allowed"
-                              : "bg-blue-600 text-white hover:bg-blue-700"
+                          className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
+                            isCompleted ? "bg-green-100 text-green-700 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"
                           }`}
-                          style={
-                            isAnimatingPerson
-                              ? { animation: "scale-down-bounce 0.4s ease-in-out" }
-                              : undefined
-                          }
+                          style={isAnimatingPerson ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}
                         >
-                          {isCompleted
-                            ? `✓ ${selectedPerson.name} marked as finished`
-                            : `Mark ${selectedPerson.name} as finished`}
+                          {isCompleted ? `✓ ${selectedPerson.name} learned` : `Mark ${selectedPerson.name} as Learned`}
                         </button>
                       );
                     })()}
                   </div>
                 )}
               </div>
-            ) : (
-              <div className="text-center py-12 text-gray-500">No notes available yet.</div>
             )}
           </div>
         </div>
@@ -1149,9 +1027,17 @@ Be accurate to Scripture.`;
               ✕
             </button>
             <h2 className="text-3xl font-bold mb-2">{selectedPlace.name}</h2>
-            {placeCreditBlocked ? null : loadingNotes ? (
-              <div className="text-center py-12 text-gray-500">Loading notes...</div>
-            ) : placeNotes ? (
+            {placeCreditBlocked ? null : !placeNotes ? (
+              <div className="flex flex-col items-center py-10 gap-5">
+                <div style={{ animation: "bounce 1s infinite" }}><LouisAvatar mood="think" size={72} /></div>
+                <div className="w-full space-y-3 px-2">
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-5/6" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-3/4" />
+                </div>
+                <p className="text-sm text-gray-400 italic animate-pulse">{selectedPlace.name} is loading…</p>
+              </div>
+            ) : (
               <div>
                 <ReactMarkdown
                   components={{
@@ -1169,194 +1055,53 @@ Be accurate to Scripture.`;
                   {normalizePlaceMarkdown(placeNotes)}
                 </ReactMarkdown>
 
-                {/* MARK PLACE AS FINISHED */}
                 {userId && (
                   <div className="mt-8 pt-6 border-t border-gray-200">
                     {(() => {
-                      const placeKey = selectedPlace.name
-                        .toLowerCase()
-                        .trim()
-                        .replace(/\s+/g, "_");
+                      const placeKey = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
                       const isCompleted = completedPlaces.has(placeKey);
-
+                      const placeDisplayName = selectedPlace.name.split(" ").map((w) => { if (/^\d+$/.test(w)) return w; return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(); }).join(" ");
                       return (
                         <button
                           type="button"
-                          onClick={async (e) => {
-                            e.stopPropagation();
-                            e.preventDefault();
-
+                          onClick={(e) => {
+                            e.stopPropagation(); e.preventDefault();
                             if (!userId || isCompleted) return;
-
-                            const placeNameKey = placeKey;
-
-                            try {
-                              const { error } = await supabase
-                                .from("places_progress")
-                                .upsert(
-                                  {
-                                    user_id: userId,
-                                    place_name: placeNameKey,
-                                  },
-                                  {
-                                    onConflict: "user_id,place_name",
-                                  }
-                                );
-
-                              if (error) {
-                                console.error(
-                                  "Error marking place as finished:",
-                                  error
-                                );
-                                alert("Failed to mark as finished. Please try again.");
-                                return;
-                              }
-
+                            setIsAnimatingPlace(true);
+                            setTimeout(() => {
+                              setIsAnimatingPlace(false); setSelectedPlace(null); setPlaceNotes(null);
+                              setLearnedToast(`${placeDisplayName} has been learned! 🙌`);
+                              setTimeout(() => setLearnedToast(null), 3500);
+                            }, 250);
+                            (async () => {
                               try {
-                                const { data: { user: authUser } } = await supabase.auth.getUser();
-                                let actionUsername = username || "User";
-
-                                if (authUser) {
-                                  const meta: any = authUser.user_metadata || {};
-                                  actionUsername =
-                                    meta.firstName ||
-                                    meta.first_name ||
-                                    (authUser.email ? authUser.email.split("@")[0] : null) ||
-                                    "User";
-                                }
-
-                                const formatPlaceName = (name: string): string =>
-                                  name
-                                    .split(" ")
-                                    .map((word) => {
-                                      if (/^\d+$/.test(word)) return word;
-                                      return (
-                                        word.charAt(0).toUpperCase() +
-                                        word.slice(1).toLowerCase()
-                                      );
-                                    })
-                                    .join(" ");
-
-                                const placeDisplayName = formatPlaceName(
-                                  selectedPlace.name
-                                );
-
-                                const { error: actionError } = await supabase
-                                  .from("master_actions")
-                                  .insert({
-                                    user_id: userId,
-                                    username: actionUsername ?? null,
-                                    action_type: "place_discovered",
-                                    action_label: placeDisplayName,
-                                  });
-
-                                if (actionError) {
-                                  console.error(
-                                    "Error logging action to master_actions:",
-                                    actionError
-                                  );
-                                }
-
-                                let statsUsername = username || actionUsername;
-                                if (!statsUsername && userId) {
-                                  const { data: { user } } = await supabase.auth.getUser();
-                                  if (user) {
-                                    const meta: any = user.user_metadata || {};
-                                    statsUsername =
-                                      meta.firstName ||
-                                      meta.first_name ||
-                                      (user.email ? user.email.split("@")[0] : null) ||
-                                      "User";
+                                const { error } = await supabase.from("places_progress").upsert({ user_id: userId, place_name: placeKey }, { onConflict: "user_id,place_name" });
+                                if (!error) {
+                                  setCompletedPlaces((prev) => { const n = new Set(prev); n.add(placeKey); return n; });
+                                  const { data: { user: authUser } } = await supabase.auth.getUser();
+                                  const meta: any = authUser?.user_metadata || {};
+                                  const au = meta.firstName || meta.first_name || (authUser?.email?.split("@")[0]) || "User";
+                                  await supabase.from("master_actions").insert({ user_id: userId, username: au, action_type: "place_discovered", action_label: placeDisplayName });
+                                  const { count } = await supabase.from("places_progress").select("*", { count: "exact", head: true }).eq("user_id", userId);
+                                  if (count !== null) {
+                                    const { data: stats } = await supabase.from("profile_stats").select("username, chapters_completed_count, notes_created_count, people_learned_count, keywords_mastered_count").eq("user_id", userId).maybeSingle();
+                                    await supabase.from("profile_stats").upsert({ user_id: userId, username: stats?.username || au, places_discovered_count: count, total_actions: (stats?.chapters_completed_count || 0) + (stats?.notes_created_count || 0) + (stats?.people_learned_count || 0) + count + (stats?.keywords_mastered_count || 0), updated_at: new Date().toISOString() }, { onConflict: "user_id" });
                                   }
                                 }
-
-                                const { count, error: countError } = await supabase
-                                  .from("places_progress")
-                                  .select("*", { count: "exact", head: true })
-                                  .eq("user_id", userId);
-
-                                if (!countError && count !== null) {
-                                  const { data: currentStats } = await supabase
-                                    .from("profile_stats")
-                                    .select(
-                                      "username, chapters_completed_count, notes_created_count, people_learned_count, keywords_mastered_count"
-                                    )
-                                    .eq("user_id", userId)
-                                    .maybeSingle();
-
-                                  const finalUsername =
-                                    currentStats?.username || statsUsername || "User";
-
-                                  const totalActions =
-                                    (currentStats?.chapters_completed_count || 0) +
-                                    (currentStats?.notes_created_count || 0) +
-                                    (currentStats?.people_learned_count || 0) +
-                                    (count || 0) +
-                                    (currentStats?.keywords_mastered_count || 0);
-
-                                  await supabase.from("profile_stats").upsert(
-                                    {
-                                      user_id: userId,
-                                      username: finalUsername,
-                                      places_discovered_count: count || 0,
-                                      total_actions: totalActions,
-                                      updated_at: new Date().toISOString(),
-                                    },
-                                    {
-                                      onConflict: "user_id",
-                                    }
-                                  );
-                                }
-                              } catch (err) {
-                                console.error(
-                                  "[DEVOTIONAL_DAY_MODAL] Error updating stats for place:",
-                                  err
-                                );
-                              }
-
-                              setCompletedPlaces((prev) => {
-                                const next = new Set(prev);
-                                next.add(placeNameKey);
-                                return next;
-                              });
-
-                              setIsAnimatingPlace(true);
-                              setTimeout(() => {
-                                setIsAnimatingPlace(false);
-                                setSelectedPlace(null);
-                                setPlaceNotes(null);
-                              }, 400);
-                            } catch (err) {
-                              console.error(
-                                "[DEVOTIONAL_DAY_MODAL] Error marking place as finished:",
-                                err
-                              );
-                              alert("Failed to mark as finished. Please try again.");
-                            }
+                              } catch (err) { console.error("[DevotionalDayModal] place save error:", err); }
+                            })();
                           }}
                           disabled={isCompleted}
-                          className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                            isCompleted
-                              ? "bg-green-100 text-green-700 cursor-not-allowed"
-                              : "bg-blue-600 text-white hover:bg-blue-700"
-                          }`}
-                          style={
-                            isAnimatingPlace
-                              ? { animation: "scale-down-bounce 0.4s ease-in-out" }
-                              : undefined
-                          }
+                          className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${isCompleted ? "bg-green-100 text-green-700 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"}`}
+                          style={isAnimatingPlace ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}
                         >
-                          {isCompleted
-                            ? `✓ ${selectedPlace.name} marked as finished`
-                            : `Mark ${selectedPlace.name} as finished`}
+                          {isCompleted ? `✓ ${selectedPlace.name} learned` : `Mark ${selectedPlace.name} as Learned`}
                         </button>
                       );
                     })()}
                   </div>
                 )}
               </div>
-            ) : (
-              <div className="text-center py-12 text-gray-500">No notes available yet.</div>
             )}
           </div>
         </div>
@@ -1389,9 +1134,17 @@ Be accurate to Scripture.`;
               ✕
             </button>
             <h2 className="text-3xl font-bold mb-2">{selectedKeyword.name}</h2>
-            {keywordCreditBlocked ? null : loadingNotes ? (
-              <div className="text-center py-12 text-gray-500">Loading notes...</div>
-            ) : keywordNotes ? (
+            {keywordCreditBlocked ? null : !keywordNotes ? (
+              <div className="flex flex-col items-center py-10 gap-5">
+                <div style={{ animation: "bounce 1s infinite" }}><LouisAvatar mood="think" size={72} /></div>
+                <div className="w-full space-y-3 px-2">
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-5/6" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-3/4" />
+                </div>
+                <p className="text-sm text-gray-400 italic animate-pulse">{selectedKeyword.name} is loading…</p>
+              </div>
+            ) : (
               <div>
                 <ReactMarkdown
                   components={{
@@ -1409,191 +1162,53 @@ Be accurate to Scripture.`;
                   {normalizeKeywordMarkdown(keywordNotes)}
                 </ReactMarkdown>
 
-                {/* MARK KEYWORD AS FINISHED */}
                 {userId && (
                   <div className="mt-8 pt-6 border-t border-gray-200">
                     {(() => {
                       const keywordKey = selectedKeyword.name.toLowerCase().trim();
                       const isCompleted = completedKeywords.has(keywordKey);
-
+                      const kwDisplay = selectedKeyword.name.split(" ").map((w) => { if (/^\d+$/.test(w)) return w; return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(); }).join(" ");
                       return (
                         <button
                           type="button"
-                          onClick={async (e) => {
-                            e.stopPropagation();
-                            e.preventDefault();
-
+                          onClick={(e) => {
+                            e.stopPropagation(); e.preventDefault();
                             if (!userId || isCompleted) return;
-
-                            const keywordNameKey = keywordKey;
-
-                            try {
-                              const { error } = await supabase
-                                .from("keywords_progress")
-                                .upsert(
-                                  {
-                                    user_id: userId,
-                                    keyword: keywordNameKey,
-                                  },
-                                  {
-                                    onConflict: "user_id,keyword",
-                                  }
-                                );
-
-                              if (error) {
-                                console.error(
-                                  "Error marking keyword as finished:",
-                                  error
-                                );
-                                alert("Failed to mark as finished. Please try again.");
-                                return;
-                              }
-
+                            setIsAnimatingKeyword(true);
+                            setTimeout(() => {
+                              setIsAnimatingKeyword(false); setSelectedKeyword(null); setKeywordNotes(null);
+                              setLearnedToast(`${kwDisplay} has been learned! 🙌`);
+                              setTimeout(() => setLearnedToast(null), 3500);
+                            }, 250);
+                            (async () => {
                               try {
-                                const { data: { user: authUser } } = await supabase.auth.getUser();
-                                let actionUsername = username || "User";
-
-                                if (authUser) {
-                                  const meta: any = authUser.user_metadata || {};
-                                  actionUsername =
-                                    meta.firstName ||
-                                    meta.first_name ||
-                                    (authUser.email ? authUser.email.split("@")[0] : null) ||
-                                    "User";
-                                }
-
-                                const formatKeywordName = (name: string): string =>
-                                  name
-                                    .split(" ")
-                                    .map((word) => {
-                                      if (/^\d+$/.test(word)) return word;
-                                      return (
-                                        word.charAt(0).toUpperCase() +
-                                        word.slice(1).toLowerCase()
-                                      );
-                                    })
-                                    .join(" ");
-
-                                const keywordDisplayName = formatKeywordName(
-                                  selectedKeyword.name
-                                );
-
-                                const { error: actionError } = await supabase
-                                  .from("master_actions")
-                                  .insert({
-                                    user_id: userId,
-                                    username: actionUsername ?? null,
-                                    action_type: "keyword_mastered",
-                                    action_label: keywordDisplayName,
-                                  });
-
-                                if (actionError) {
-                                  console.error(
-                                    "Error logging action to master_actions:",
-                                    actionError
-                                  );
-                                }
-
-                                let statsUsername = username || actionUsername;
-                                if (!statsUsername && userId) {
-                                  const { data: { user } } = await supabase.auth.getUser();
-                                  if (user) {
-                                    const meta: any = user.user_metadata || {};
-                                    statsUsername =
-                                      meta.firstName ||
-                                      meta.first_name ||
-                                      (user.email ? user.email.split("@")[0] : null) ||
-                                      "User";
+                                const { error } = await supabase.from("keywords_progress").upsert({ user_id: userId, keyword: keywordKey }, { onConflict: "user_id,keyword" });
+                                if (!error) {
+                                  setCompletedKeywords((prev) => { const n = new Set(prev); n.add(keywordKey); return n; });
+                                  const { data: { user: authUser } } = await supabase.auth.getUser();
+                                  const meta: any = authUser?.user_metadata || {};
+                                  const au = meta.firstName || meta.first_name || (authUser?.email?.split("@")[0]) || "User";
+                                  await supabase.from("master_actions").insert({ user_id: userId, username: au, action_type: "keyword_mastered", action_label: kwDisplay });
+                                  const { count } = await supabase.from("keywords_progress").select("*", { count: "exact", head: true }).eq("user_id", userId);
+                                  if (count !== null) {
+                                    const { data: stats } = await supabase.from("profile_stats").select("username, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count").eq("user_id", userId).maybeSingle();
+                                    await supabase.from("profile_stats").upsert({ user_id: userId, username: stats?.username || au, keywords_mastered_count: count, total_actions: (stats?.chapters_completed_count || 0) + (stats?.notes_created_count || 0) + (stats?.people_learned_count || 0) + (stats?.places_discovered_count || 0) + count, updated_at: new Date().toISOString() }, { onConflict: "user_id" });
                                   }
                                 }
-
-                                const { count, error: countError } = await supabase
-                                  .from("keywords_progress")
-                                  .select("*", { count: "exact", head: true })
-                                  .eq("user_id", userId);
-
-                                if (!countError && count !== null) {
-                                  const { data: currentStats } = await supabase
-                                    .from("profile_stats")
-                                    .select(
-                                      "username, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count"
-                                    )
-                                    .eq("user_id", userId)
-                                    .maybeSingle();
-
-                                  const finalUsername =
-                                    currentStats?.username || statsUsername || "User";
-
-                                  const totalActions =
-                                    (currentStats?.chapters_completed_count || 0) +
-                                    (currentStats?.notes_created_count || 0) +
-                                    (currentStats?.people_learned_count || 0) +
-                                    (currentStats?.places_discovered_count || 0) +
-                                    (count || 0);
-
-                                  await supabase.from("profile_stats").upsert(
-                                    {
-                                      user_id: userId,
-                                      username: finalUsername,
-                                      keywords_mastered_count: count || 0,
-                                      total_actions: totalActions,
-                                      updated_at: new Date().toISOString(),
-                                    },
-                                    {
-                                      onConflict: "user_id",
-                                    }
-                                  );
-                                }
-                              } catch (err) {
-                                console.error(
-                                  "[DEVOTIONAL_DAY_MODAL] Error updating stats for keyword:",
-                                  err
-                                );
-                              }
-
-                              setCompletedKeywords((prev) => {
-                                const next = new Set(prev);
-                                next.add(keywordNameKey);
-                                return next;
-                              });
-
-                              setIsAnimatingKeyword(true);
-                              setTimeout(() => {
-                                setIsAnimatingKeyword(false);
-                                setSelectedKeyword(null);
-                                setKeywordNotes(null);
-                              }, 400);
-                            } catch (err) {
-                              console.error(
-                                "[DEVOTIONAL_DAY_MODAL] Error marking keyword as finished:",
-                                err
-                              );
-                              alert("Failed to mark as finished. Please try again.");
-                            }
+                              } catch (err) { console.error("[DevotionalDayModal] keyword save error:", err); }
+                            })();
                           }}
                           disabled={isCompleted}
-                          className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                            isCompleted
-                              ? "bg-green-100 text-green-700 cursor-not-allowed"
-                              : "bg-blue-600 text-white hover:bg-blue-700"
-                          }`}
-                          style={
-                            isAnimatingKeyword
-                              ? { animation: "scale-down-bounce 0.4s ease-in-out" }
-                              : undefined
-                          }
+                          className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${isCompleted ? "bg-green-100 text-green-700 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"}`}
+                          style={isAnimatingKeyword ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}
                         >
-                          {isCompleted
-                            ? `✓ ${selectedKeyword.name} marked as finished`
-                            : `Mark ${selectedKeyword.name} as finished`}
+                          {isCompleted ? `✓ ${selectedKeyword.name} learned` : `Mark ${selectedKeyword.name} as Learned`}
                         </button>
                       );
                     })()}
                   </div>
                 )}
               </div>
-            ) : (
-              <div className="text-center py-12 text-gray-500">No notes available yet.</div>
             )}
           </div>
         </div>
@@ -1638,6 +1253,17 @@ Be accurate to Scripture.`;
           setKeywordNotes(null);
         }}
       />
+
+      {/* ── Louis "learned" toast ──────────────────────────────────────────── */}
+      {learnedToast && (
+        <div
+          className="fixed bottom-24 left-1/2 z-[70] flex items-center gap-3 bg-white border border-green-200 rounded-2xl shadow-2xl px-4 py-3"
+          style={{ transform: "translateX(-50%)", animation: "slideUp 0.3s ease-out" }}
+        >
+          <LouisAvatar mood="stareyes" size={44} />
+          <p className="text-sm font-semibold text-gray-800 whitespace-nowrap">{learnedToast}</p>
+        </div>
+      )}
     </div>
   );
 }

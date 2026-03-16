@@ -14,6 +14,7 @@ import { syncNotesCount, shouldSyncNotesCount } from "../../../lib/syncNotesCoun
 import { syncChaptersCount, shouldSyncChaptersCount } from "../../../lib/syncChaptersCount";
 import { syncTriviaQuestionsCount, shouldSyncTriviaQuestionsCount } from "../../../lib/syncTriviaQuestionsCount";
 import { isBookComplete } from "../../../lib/readingProgress";
+import { logActionToMasterActions } from "@/lib/actionRecorder";
 
 // ── Avatar color helpers ────────────────────────────────────────────────────
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
@@ -359,6 +360,8 @@ export default function PublicProfilePage() {
         },
         p_is_public: true,
       });
+
+      void logActionToMasterActions(viewerUserId!, "buddy_added", stats?.display_name || stats?.username || "Bible Buddy");
 
       setBuddyState("buddies");
       setBuddyRequestId(null);

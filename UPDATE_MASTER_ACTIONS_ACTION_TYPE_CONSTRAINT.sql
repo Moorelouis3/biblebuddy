@@ -40,7 +40,20 @@ CHECK (action_type IN (
   'devotional_day_completed',
   'reading_plan_chapter_completed',
   'trivia_started',
-  'trivia_question_answered'
+  'trivia_question_answered',
+  'verse_highlighted',
+  'understand_verse_of_the_day',
+  'feed_post_thought',
+  'feed_post_prayer',
+  'feed_post_prayer_request',
+  'feed_post_photo',
+  'feed_post_video',
+  'feed_post_liked',
+  'feed_post_commented',
+  'feed_post_replied',
+  'buddy_added',
+  'group_message_sent',
+  'series_week_started'
 ));
 
 -- Verification: Check that constraint was updated

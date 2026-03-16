@@ -8,6 +8,7 @@ import { enrichBibleVerses } from "../lib/bibleHighlighting";
 import { BIBLE_PEOPLE_LIST } from "../lib/biblePeopleList";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import CreditLimitModal from "./CreditLimitModal";
+import { LouisAvatar } from "./LouisAvatar";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -958,9 +959,17 @@ Be accurate to Scripture.`;
               ✕
             </button>
             <h2 className="text-3xl font-bold mb-2">{selectedPerson.name}</h2>
-            {personCreditBlocked ? null : loadingNotes ? (
-              <div className="text-center py-12 text-gray-500">Loading notes...</div>
-            ) : personNotes ? (
+            {personCreditBlocked ? null : !personNotes ? (
+              <div className="flex flex-col items-center py-10 gap-5">
+                <div style={{ animation: "bounce 1s infinite" }}><LouisAvatar mood="think" size={72} /></div>
+                <div className="w-full space-y-3 px-2">
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-5/6" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-3/4" />
+                </div>
+                <p className="text-sm text-gray-400 italic animate-pulse">{selectedPerson.name} is loading…</p>
+              </div>
+            ) : (
               <div>
                 <ReactMarkdown
                   components={{
@@ -978,8 +987,6 @@ Be accurate to Scripture.`;
                   {normalizePersonMarkdown(personNotes)}
                 </ReactMarkdown>
               </div>
-            ) : (
-              <div className="text-center py-12 text-gray-500">No notes available yet.</div>
             )}
           </div>
         </div>
@@ -1011,9 +1018,21 @@ Be accurate to Scripture.`;
               ✕
             </button>
             <h2 className="text-3xl font-bold mb-2">{selectedPlace.name}</h2>
-            {placeCreditBlocked ? null : loadingNotes ? (
-              <div className="text-center py-12 text-gray-500">Loading notes...</div>
-            ) : placeNotes ? (
+            {placeCreditBlocked ? null : !placeNotes ? (
+              <div className="flex flex-col items-center py-10 gap-5">
+                <div style={{ animation: "bounce 1s infinite" }}>
+                  <LouisAvatar mood="think" size={72} />
+                </div>
+                <div className="w-full space-y-3 px-2">
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-5/6" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-3/4" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-4/5" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-2/3" />
+                </div>
+                <p className="text-sm text-gray-400 italic animate-pulse">{selectedPlace.name} is loading…</p>
+              </div>
+            ) : (
               <div>
                 <ReactMarkdown
                   components={{
@@ -1031,8 +1050,6 @@ Be accurate to Scripture.`;
                   {normalizePlaceMarkdown(placeNotes)}
                 </ReactMarkdown>
               </div>
-            ) : (
-              <div className="text-center py-12 text-gray-500">No notes available yet.</div>
             )}
           </div>
         </div>
@@ -1064,9 +1081,21 @@ Be accurate to Scripture.`;
               ✕
             </button>
             <h2 className="text-3xl font-bold mb-2">{selectedKeyword.name}</h2>
-            {keywordCreditBlocked ? null : loadingNotes ? (
-              <div className="text-center py-12 text-gray-500">Loading notes...</div>
-            ) : keywordNotes ? (
+            {keywordCreditBlocked ? null : !keywordNotes ? (
+              <div className="flex flex-col items-center py-10 gap-5">
+                <div style={{ animation: "bounce 1s infinite" }}>
+                  <LouisAvatar mood="think" size={72} />
+                </div>
+                <div className="w-full space-y-3 px-2">
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-5/6" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-3/4" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-4/5" />
+                  <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-2/3" />
+                </div>
+                <p className="text-sm text-gray-400 italic animate-pulse">{selectedKeyword.name} is loading…</p>
+              </div>
+            ) : (
               <div>
                 <ReactMarkdown
                   components={{
@@ -1084,8 +1113,6 @@ Be accurate to Scripture.`;
                   {normalizeKeywordMarkdown(keywordNotes)}
                 </ReactMarkdown>
               </div>
-            ) : (
-              <div className="text-center py-12 text-gray-500">No notes available yet.</div>
             )}
           </div>
         </div>

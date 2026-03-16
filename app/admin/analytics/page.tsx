@@ -18,6 +18,15 @@ type OverviewMetrics = {
   readingPlanChaptersCompleted: number;
   triviaQuestionsAnswered: number;
   understandVerseOfTheDay: number;
+  feedThoughtsPosted: number;
+  feedPrayersPosted: number;
+  feedPhotosPosted: number;
+  feedVideosPosted: number;
+  feedPostLikes: number;
+  feedComments: number;
+  feedReplies: number;
+  buddiesAdded: number;
+  groupMessagesSent: number;
 };
 
 const INITIAL_METRICS: OverviewMetrics = {
@@ -33,6 +42,15 @@ const INITIAL_METRICS: OverviewMetrics = {
   readingPlanChaptersCompleted: 0,
   triviaQuestionsAnswered: 0,
   understandVerseOfTheDay: 0,
+  feedThoughtsPosted: 0,
+  feedPrayersPosted: 0,
+  feedPhotosPosted: 0,
+  feedVideosPosted: 0,
+  feedPostLikes: 0,
+  feedComments: 0,
+  feedReplies: 0,
+  buddiesAdded: 0,
+  groupMessagesSent: 0,
 };
 
 export default function AnalyticsPage() {
@@ -79,6 +97,15 @@ export default function AnalyticsPage() {
       readingPlanChaptersCompleted: number;
       triviaQuestionsAnswered: number;
       understandVerseOfTheDay: number;
+      feedThoughtsPosted: number;
+      feedPrayersPosted: number;
+      feedPhotosPosted: number;
+      feedVideosPosted: number;
+      feedPostLikes: number;
+      feedComments: number;
+      feedReplies: number;
+      buddiesAdded: number;
+      groupMessagesSent: number;
       startDate: Date;
       endDate: Date;
     }>
@@ -452,6 +479,70 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
+        // Feed social actions
+        const { count: feedThoughtsPosted } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "feed_post_thought")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        const { count: feedPrayersPosted } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .in("action_type", ["feed_post_prayer", "feed_post_prayer_request"])
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        const { count: feedPhotosPosted } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "feed_post_photo")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        const { count: feedVideosPosted } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "feed_post_video")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        const { count: feedPostLikes } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "feed_post_liked")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        const { count: feedComments } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "feed_post_commented")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        const { count: feedReplies } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "feed_post_replied")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        const { count: buddiesAdded } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "buddy_added")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        const { count: groupMessagesSent } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "group_message_sent")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
         return {
           period: bucket.label,
           signups: signups || 0,
@@ -467,6 +558,15 @@ export default function AnalyticsPage() {
           readingPlanChaptersCompleted: readingPlanChaptersCompleted || 0,
           triviaQuestionsAnswered: triviaQuestionsAnswered || 0,
           understandVerseOfTheDay: understandVerseOfTheDay || 0,
+          feedThoughtsPosted: feedThoughtsPosted || 0,
+          feedPrayersPosted: feedPrayersPosted || 0,
+          feedPhotosPosted: feedPhotosPosted || 0,
+          feedVideosPosted: feedVideosPosted || 0,
+          feedPostLikes: feedPostLikes || 0,
+          feedComments: feedComments || 0,
+          feedReplies: feedReplies || 0,
+          buddiesAdded: buddiesAdded || 0,
+          groupMessagesSent: groupMessagesSent || 0,
           startDate: bucket.start,
           endDate: bucket.end,
         };
@@ -594,6 +694,16 @@ export default function AnalyticsPage() {
           .eq("action_type", "understand_verse_of_the_day")
       );
 
+      const feedThoughtsPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "feed_post_thought"));
+      const feedPrayersPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).in("action_type", ["feed_post_prayer", "feed_post_prayer_request"]));
+      const feedPhotosPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "feed_post_photo"));
+      const feedVideosPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "feed_post_video"));
+      const feedLikesPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "feed_post_liked"));
+      const feedCommentsPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "feed_post_commented"));
+      const feedRepliesPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "feed_post_replied"));
+      const buddiesAddedPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "buddy_added"));
+      const groupMessagesPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "group_message_sent"));
+
       const [
         signupsResult,
         activeUsersRowsResult,
@@ -607,6 +717,15 @@ export default function AnalyticsPage() {
         readingPlanChaptersResult,
         triviaQuestionsResult,
         understandVerseOfTheDayResult,
+        feedThoughtsResult,
+        feedPrayersResult,
+        feedPhotosResult,
+        feedVideosResult,
+        feedLikesResult,
+        feedCommentsResult,
+        feedRepliesResult,
+        buddiesAddedResult,
+        groupMessagesResult,
       ] = await Promise.all([
         signupsPromise,
         activeUsersPromise,
@@ -620,6 +739,15 @@ export default function AnalyticsPage() {
         readingPlanChaptersPromise,
         triviaQuestionsPromise,
         understandVerseOfTheDayPromise,
+        feedThoughtsPromise,
+        feedPrayersPromise,
+        feedPhotosPromise,
+        feedVideosPromise,
+        feedLikesPromise,
+        feedCommentsPromise,
+        feedRepliesPromise,
+        buddiesAddedPromise,
+        groupMessagesPromise,
       ]);
 
       const signupsCount = signupsResult.count ?? 0;
@@ -698,6 +826,15 @@ export default function AnalyticsPage() {
         readingPlanChaptersCompleted: readingPlanChaptersCount ?? 0,
         triviaQuestionsAnswered: triviaQuestionsCount ?? 0,
         understandVerseOfTheDay: understandVerseOfTheDayCount ?? 0,
+        feedThoughtsPosted: feedThoughtsResult.count ?? 0,
+        feedPrayersPosted: feedPrayersResult.count ?? 0,
+        feedPhotosPosted: feedPhotosResult.count ?? 0,
+        feedVideosPosted: feedVideosResult.count ?? 0,
+        feedPostLikes: feedLikesResult.count ?? 0,
+        feedComments: feedCommentsResult.count ?? 0,
+        feedReplies: feedRepliesResult.count ?? 0,
+        buddiesAdded: buddiesAddedResult.count ?? 0,
+        groupMessagesSent: groupMessagesResult.count ?? 0,
       });
       setLoadingOverview(false);
     } catch (err) {
@@ -1042,6 +1179,60 @@ export default function AnalyticsPage() {
             sortKey: actionDate.getTime(),
             actionType: "trivia_question_answered",
           });
+        } else if (action.action_type === "feed_post_thought") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} posted a thought: "${action.action_label}".${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} posted a thought.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_thought" });
+        } else if (action.action_type === "feed_post_prayer") {
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} posted a prayer.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_prayer" });
+        } else if (action.action_type === "feed_post_prayer_request") {
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} posted a prayer request.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_prayer_request" });
+        } else if (action.action_type === "feed_post_photo") {
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} posted a photo.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_photo" });
+        } else if (action.action_type === "feed_post_video") {
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} posted a video.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_video" });
+        } else if (action.action_type === "feed_post_liked") {
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} liked a post.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_liked" });
+        } else if (action.action_type === "feed_post_commented") {
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} commented on a post.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_commented" });
+        } else if (action.action_type === "feed_post_replied") {
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} replied to a comment.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_replied" });
+        } else if (action.action_type === "buddy_added") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} added ${action.action_label} as a Bible Buddy.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} added a new Bible Buddy.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "buddy_added" });
+        } else if (action.action_type === "group_message_sent") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} sent a message in ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} sent a group message.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "group_message_sent" });
+        } else if (action.action_type === "verse_highlighted") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} highlighted ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} highlighted a verse.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "verse_highlighted" });
+        } else if (action.action_type === "understand_verse_of_the_day") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} explored the verse of the day (${action.action_label}).${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} explored the verse of the day.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "understand_verse_of_the_day" });
+        } else if (action.action_type === "keyword_viewed") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} viewed the keyword "${action.action_label}".${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} viewed a keyword.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "keyword_viewed" });
+        } else if (action.action_type === "person_viewed") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} viewed "${action.action_label}".${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} viewed a person.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "person_viewed" });
+        } else if (action.action_type === "place_viewed") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} viewed the place "${action.action_label}".${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} viewed a place.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "place_viewed" });
         }
         // Ignore all other action types
       }
@@ -1522,6 +1713,15 @@ export default function AnalyticsPage() {
         case "Devotional Days Completed": return row.devotionalDaysCompleted;
         case "Reading Plan Chapters Completed": return row.readingPlanChaptersCompleted;
         case "Trivia Questions Answered": return row.triviaQuestionsAnswered;
+        case "Thoughts Posted": return row.feedThoughtsPosted;
+        case "Prayers Posted": return row.feedPrayersPosted;
+        case "Photos Posted": return row.feedPhotosPosted;
+        case "Videos Posted": return row.feedVideosPosted;
+        case "Post Likes": return row.feedPostLikes;
+        case "Comments": return row.feedComments;
+        case "Replies": return row.feedReplies;
+        case "Buddies Added": return row.buddiesAdded;
+        case "Group Messages": return row.groupMessagesSent;
         default: return 0;
       }
     };
@@ -1795,6 +1995,65 @@ export default function AnalyticsPage() {
                 isSelected={selectedActionType === "understand_verse_of_the_day"}
               />
             </div>
+
+            {/* ROW 3: SOCIAL FEED */}
+            <h3 className="text-lg font-bold mt-6 mb-3">📱 Social Feed</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+              <OverviewCard
+                label="💭 Thoughts Posted"
+                value={overviewMetrics.feedThoughtsPosted}
+                onClick={() => setSelectedActionType(selectedActionType === "feed_post_thought" ? null : "feed_post_thought")}
+                isSelected={selectedActionType === "feed_post_thought"}
+              />
+              <OverviewCard
+                label="🙏 Prayers Posted"
+                value={overviewMetrics.feedPrayersPosted}
+                onClick={() => setSelectedActionType(selectedActionType === "feed_post_prayer" ? null : "feed_post_prayer")}
+                isSelected={selectedActionType === "feed_post_prayer"}
+              />
+              <OverviewCard
+                label="📷 Photos Posted"
+                value={overviewMetrics.feedPhotosPosted}
+                onClick={() => setSelectedActionType(selectedActionType === "feed_post_photo" ? null : "feed_post_photo")}
+                isSelected={selectedActionType === "feed_post_photo"}
+              />
+              <OverviewCard
+                label="🎬 Videos Posted"
+                value={overviewMetrics.feedVideosPosted}
+                onClick={() => setSelectedActionType(selectedActionType === "feed_post_video" ? null : "feed_post_video")}
+                isSelected={selectedActionType === "feed_post_video"}
+              />
+              <OverviewCard
+                label="❤️ Post Likes"
+                value={overviewMetrics.feedPostLikes}
+                onClick={() => setSelectedActionType(selectedActionType === "feed_post_liked" ? null : "feed_post_liked")}
+                isSelected={selectedActionType === "feed_post_liked"}
+              />
+              <OverviewCard
+                label="💬 Comments"
+                value={overviewMetrics.feedComments}
+                onClick={() => setSelectedActionType(selectedActionType === "feed_post_commented" ? null : "feed_post_commented")}
+                isSelected={selectedActionType === "feed_post_commented"}
+              />
+              <OverviewCard
+                label="↩️ Replies"
+                value={overviewMetrics.feedReplies}
+                onClick={() => setSelectedActionType(selectedActionType === "feed_post_replied" ? null : "feed_post_replied")}
+                isSelected={selectedActionType === "feed_post_replied"}
+              />
+              <OverviewCard
+                label="🤝 Buddies Added"
+                value={overviewMetrics.buddiesAdded}
+                onClick={() => setSelectedActionType(selectedActionType === "buddy_added" ? null : "buddy_added")}
+                isSelected={selectedActionType === "buddy_added"}
+              />
+              <OverviewCard
+                label="📨 Group Messages"
+                value={overviewMetrics.groupMessagesSent}
+                onClick={() => setSelectedActionType(selectedActionType === "group_message_sent" ? null : "group_message_sent")}
+                isSelected={selectedActionType === "group_message_sent"}
+              />
+            </div>
           </>
         )}
       </div>
@@ -1922,6 +2181,15 @@ export default function AnalyticsPage() {
                     "Keywords Understood",
                     "Devotional Days Completed",
                     "Reading Plan Chapters Completed",
+                    "Thoughts Posted",
+                    "Prayers Posted",
+                    "Photos Posted",
+                    "Videos Posted",
+                    "Post Likes",
+                    "Comments",
+                    "Replies",
+                    "Buddies Added",
+                    "Group Messages",
                   ].map((metric) => (
                     <button
                       key={metric}
@@ -1969,6 +2237,24 @@ export default function AnalyticsPage() {
                               return row.readingPlanChaptersCompleted;
                             case "Trivia Questions Answered":
                               return row.triviaQuestionsAnswered;
+                            case "Thoughts Posted":
+                              return row.feedThoughtsPosted;
+                            case "Prayers Posted":
+                              return row.feedPrayersPosted;
+                            case "Photos Posted":
+                              return row.feedPhotosPosted;
+                            case "Videos Posted":
+                              return row.feedVideosPosted;
+                            case "Post Likes":
+                              return row.feedPostLikes;
+                            case "Comments":
+                              return row.feedComments;
+                            case "Replies":
+                              return row.feedReplies;
+                            case "Buddies Added":
+                              return row.buddiesAdded;
+                            case "Group Messages":
+                              return row.groupMessagesSent;
                             default:
                               return row.totalActions;
                           }
