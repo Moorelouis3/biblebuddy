@@ -376,11 +376,11 @@ export default function GroupDetailPage() {
       {/* ── Members Modal ─────────────────────────────────────────────────── */}
       {showMembersModal && (
         <div
-          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-0 sm:px-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
           onClick={() => setShowMembersModal(false)}
         >
           <div
-            className="bg-white w-full sm:max-w-md rounded-t-2xl sm:rounded-2xl shadow-xl max-h-[80vh] flex flex-col"
+            className="bg-white w-full max-w-md rounded-2xl shadow-xl max-h-[80vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal header */}

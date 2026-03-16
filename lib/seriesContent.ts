@@ -558,7 +558,272 @@ So whatever your craving is, don't believe the lie that you "need" it. **You nee
       },
     ],
   },
-  // Weeks 3–5 coming soon
+  {
+    weekNumber: 3,
+    title: "The Crown Without the Cross",
+    subtitle: "The temptation of ambition",
+    readingReference: "Luke 4:5–8",
+    readingApiQuery: "luke+4:5-8",
+    reflectionQuestion:
+      "The devil offered Jesus glory without obedience — a crown without the cross. He still works that way today, whispering 'take the easy road' or 'just one compromise.' Where in your life are you tempted to chase shortcuts instead of God's will? What would it look like to choose the cross over the crown this week?",
+
+    intro: `In Part 2, we saw how the devil tempted Jesus through His flesh — hunger after 40 days of fasting.
+
+It was about comfort, control, and quick fixes.
+
+Jesus stood firm: "It is written..."
+
+Now in Part 3, the devil changes his playbook.
+This time, he's not coming for Jesus' stomach.
+
+👉 He's coming for His **ambition**.
+
+His calling.
+His ego.
+
+## 📖 The Second Temptation
+
+> "The devil led him up to a high place and showed him in an instant all the kingdoms of the world. And he said to him, 'I will give you all their authority and splendor; it has been given to me, and I can give it to anyone I want to. If you worship me, it will all be yours.'" — Luke 4:5–7
+
+Picture this moment:
+
+- A high mountain or vision.
+- All the kingdoms of the world flashing before Him.
+- The throne, the crown, the stage.
+
+The devil basically says:
+
+💬 "Why go to the cross when you can have the crown now?"
+
+This is the temptation of **shortcuts**.
+
+✨ Glory without obedience.
+👑 Power without sacrifice.
+🏆 A crown without the cross.
+
+## ❓ Could Satan Really Offer That?
+
+Let's pause. How could the devil even claim to give away kingdoms?
+
+📌 Bible context:
+
+- Called "the prince of this world" (John 12:31).
+- Called "the god of this age" (2 Cor 4:4).
+- He influences systems, cultures, and hearts apart from God.
+
+⚠️ But he doesn't own them.
+
+> "The earth is the Lord's, and everything in it." — Psalm 24:1
+
+What Satan offers is always a counterfeit.
+He flashes the blessing without mentioning the chains.
+
+## 🙇 What Worship Really Means
+
+The devil says: "If you worship me, it will all be yours."
+
+But worship isn't just music on Sunday.
+It's:
+
+- Who you trust 🛐
+- Who you obey 👂
+- Who you center your life around 💓
+- Who shapes your decisions ⚖️
+
+👉 Whatever you bow to — even without your knees — that's your god.
+
+The enemy was really saying:
+"Switch loyalty. Skip obedience. Bow once, and I'll give you the world."
+
+## 📜 Israel's Failure vs Jesus' Faithfulness
+
+Jesus answers by quoting Deuteronomy 6:
+
+> "Worship the Lord your God and serve Him only." — Luke 4:8
+
+Moses told Israel the same thing as they entered the Promised Land: don't forget the One who brought you here.
+
+But Israel failed that test —
+
+- Golden calf in Exodus 32 🐄
+- Chasing the gods of Canaan 🔥
+- Forgetting God once life got good 🍇
+
+Jesus succeeds where they fell.
+
+He's rewriting the story — showing faithfulness in the wilderness where Israel showed rebellion.
+
+## 👀 How This Hits Us
+
+This temptation comes through what we **see**.
+The "lust of the eyes."
+
+Think about it:
+
+- 😡 Envy when someone else wins.
+- 😏 Lust when scrolling late at night.
+- 💼 Chasing the bag at any cost.
+- 📸 Living for the applause, clout, or lifestyle.
+
+And the devil's slick with it.
+He won't say, "Bow to me."
+He'll say:
+
+- "Take the easy road, you deserve it."
+- "Skip God's timing, I've got a shortcut."
+- "Just one compromise, no one will notice."
+
+It looks like a blessing...
+But it's really a trap.
+
+## 🗡️ Jesus' Response
+
+> "It is written: Worship the Lord your God and serve Him only." — Luke 4:8
+
+No debates. No flexing power. No long speeches.
+
+Just Scripture.
+Just truth.
+Just loyalty.
+
+Jesus shows us: **Worship is about loyalty — and that belongs to God alone.**
+
+## 💡 The Promise
+
+Jesus resisted the shortcut. He chose the hard road — the cross.
+And because of that, He secured the true crown.
+
+And here's His promise to us:
+
+> "Seek first the Kingdom of God and His righteousness, and all these things will be added to you." — Matthew 6:33
+
+Bow to God first, and He'll give you everything you truly need.
+Bow to false gods, and you'll always be starving.`,
+
+    triviaQuestions: [
+      {
+        id: "w3q1",
+        question: "What did the devil show Jesus during the second temptation?",
+        options: [
+          { label: "A", text: "The Temple in Jerusalem" },
+          { label: "B", text: "All the kingdoms of the world" },
+          { label: "C", text: "A vision of angels" },
+          { label: "D", text: "The Garden of Eden" },
+        ],
+        correctAnswer: "B",
+        explanation: "Luke 4:5 records: 'The devil led him up to a high place and showed him in an instant all the kingdoms of the world.'",
+      },
+      {
+        id: "w3q2",
+        question: "What did the devil offer Jesus in exchange for worship?",
+        options: [
+          { label: "A", text: "Freedom from suffering" },
+          { label: "B", text: "All the authority and splendor of the world's kingdoms" },
+          { label: "C", text: "Bread and water" },
+          { label: "D", text: "Protection from death" },
+        ],
+        correctAnswer: "B",
+        explanation: "Luke 4:6–7 records the devil saying: 'I will give you all their authority and splendor... If you worship me, it will all be yours.'",
+      },
+      {
+        id: "w3q3",
+        question: "What Scripture did Jesus quote to resist the second temptation?",
+        options: [
+          { label: "A", text: "Psalm 91" },
+          { label: "B", text: "Isaiah 40" },
+          { label: "C", text: "Deuteronomy 6" },
+          { label: "D", text: "Proverbs 3" },
+        ],
+        correctAnswer: "C",
+        explanation: "Jesus quoted Deuteronomy 6:13 — 'Worship the Lord your God and serve Him only' — the same command Moses gave Israel before they entered the Promised Land.",
+      },
+      {
+        id: "w3q4",
+        question: "What title does John 12:31 give to Satan that relates to his claim over the kingdoms?",
+        options: [
+          { label: "A", text: "The king of darkness" },
+          { label: "B", text: "The ruler of the air" },
+          { label: "C", text: "The prince of this world" },
+          { label: "D", text: "The father of lies" },
+        ],
+        correctAnswer: "C",
+        explanation: "John 12:31 calls Satan 'the prince of this world.' He influences systems and cultures — but he does not own them. 'The earth is the Lord's, and everything in it' (Psalm 24:1).",
+      },
+      {
+        id: "w3q5",
+        question: "According to the lesson, what does worship really mean beyond Sunday music?",
+        options: [
+          { label: "A", text: "Attending church regularly" },
+          { label: "B", text: "Knowing a lot of Scripture" },
+          { label: "C", text: "Who you trust, obey, center your life around, and let shape your decisions" },
+          { label: "D", text: "Tithing and giving offerings" },
+        ],
+        correctAnswer: "C",
+        explanation: "The lesson defines worship as loyalty — who you trust, who you obey, who you center your life around, and who shapes your decisions. Whatever you bow to, even without your knees, is your god.",
+      },
+      {
+        id: "w3q6",
+        question: "What does the lesson call this second temptation?",
+        options: [
+          { label: "A", text: "The temptation of the flesh" },
+          { label: "B", text: "The temptation of doubt" },
+          { label: "C", text: "The temptation of fear" },
+          { label: "D", text: "The temptation of shortcuts" },
+        ],
+        correctAnswer: "D",
+        explanation: "The lesson calls it the temptation of shortcuts — glory without obedience, power without sacrifice, a crown without the cross.",
+      },
+      {
+        id: "w3q7",
+        question: "How did Israel fail the test that Jesus passed in the wilderness?",
+        options: [
+          { label: "A", text: "They refused to pray or read Scripture" },
+          { label: "B", text: "They worshipped idols like the golden calf and the gods of Canaan" },
+          { label: "C", text: "They turned back before entering the Promised Land" },
+          { label: "D", text: "They doubted Moses was sent by God" },
+        ],
+        correctAnswer: "B",
+        explanation: "Israel bowed to the golden calf (Exodus 32), chased the gods of Canaan, and forgot God once life got comfortable. Jesus succeeded where they fell — showing faithfulness where Israel showed rebellion.",
+      },
+      {
+        id: "w3q8",
+        question: "What does 2 Corinthians 4:4 call Satan in relation to worldly influence?",
+        options: [
+          { label: "A", text: "The king of lies" },
+          { label: "B", text: "The god of this age" },
+          { label: "C", text: "The destroyer" },
+          { label: "D", text: "The accuser" },
+        ],
+        correctAnswer: "B",
+        explanation: "2 Corinthians 4:4 calls Satan 'the god of this age' — he influences systems, cultures, and hearts apart from God, which is why he could claim authority over the kingdoms he showed Jesus.",
+      },
+      {
+        id: "w3q9",
+        question: "What promise did Jesus secure by resisting the shortcut and choosing the cross?",
+        options: [
+          { label: "A", text: "He would return to heaven immediately" },
+          { label: "B", text: "He secured the true crown and the promise of Matthew 6:33" },
+          { label: "C", text: "He proved He didn't need Satan's help" },
+          { label: "D", text: "He earned the right to judge the world" },
+        ],
+        correctAnswer: "B",
+        explanation: "By rejecting the devil's shortcut, Jesus chose obedience and the cross — securing the true crown. Matthew 6:33 promises: 'Seek first the Kingdom of God and His righteousness, and all these things will be added to you.'",
+      },
+      {
+        id: "w3q10",
+        question: "What Psalm verse does the lesson quote to show that Satan doesn't truly own the world's kingdoms?",
+        options: [
+          { label: "A", text: "Psalm 23:1 — 'The Lord is my shepherd'" },
+          { label: "B", text: "Psalm 46:1 — 'God is our refuge and strength'" },
+          { label: "C", text: "Psalm 24:1 — 'The earth is the Lord's, and everything in it'" },
+          { label: "D", text: "Psalm 91:1 — 'Whoever dwells in the shelter of the Most High'" },
+        ],
+        correctAnswer: "C",
+        explanation: "Psalm 24:1 — 'The earth is the Lord's, and everything in it.' What Satan offers is always a counterfeit. He flashes the blessing without mentioning the chains.",
+      },
+    ],
+  },
+  // Weeks 4–5 coming soon
 ];
 
 export function getSeriesWeekLesson(weekNumber: number): SeriesWeekLesson | undefined {

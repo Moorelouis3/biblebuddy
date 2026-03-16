@@ -1517,8 +1517,8 @@ export default function GroupChatPage() {
 
       {/* ── New Series Modal ─────────────────────────────────────────────── */}
       {showNewSeriesModal && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-0 sm:px-4 modal-backdrop-in">
-          <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in">
+          <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h2 className="text-base font-bold text-gray-900">New Series</h2>
               <button onClick={() => setShowNewSeriesModal(false)} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl">×</button>
@@ -1573,8 +1573,8 @@ export default function GroupChatPage() {
 
       {/* ── New Post Modal ───────────────────────────────────────────────── */}
       {showNewPostModal && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-0 sm:px-4 modal-backdrop-in">
-          <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in">
+          <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h2 className="text-base font-bold text-gray-900">Add Week Post · Week {seriesPosts.length + 1}</h2>
               <button onClick={() => setShowNewPostModal(false)} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl">×</button>

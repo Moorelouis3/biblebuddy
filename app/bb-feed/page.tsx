@@ -670,7 +670,7 @@ function PostComposer({ userId, userProfile, onPosted }: {
                 style={{ width: `${uploadProgress}%`, backgroundColor: "#4a9b6f" }}
               />
             </div>
-            <p className="text-xs text-gray-400 mt-1 text-center">Uploading to Bunny Stream… {uploadProgress}%</p>
+            <p className="text-xs text-gray-400 mt-1 text-center">Uploading to Bible Buddy Feed… {uploadProgress}%</p>
           </div>
         )}
       </div>
@@ -884,10 +884,8 @@ function CommentSection({ postId, myId, myProfile, onCountChange, highlightComme
 function VideoBlock({ post }: { post: FeedPost }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [inView, setInView] = useState(false);
   const [everInView, setEverInView] = useState(false);
-  const inViewRef = useRef(false); // stable ref for use in callbacks
 
   // Intersection Observer — fire when 40% of the block is visible
   useEffect(() => {
@@ -897,7 +895,6 @@ function VideoBlock({ post }: { post: FeedPost }) {
       ([entry]) => {
         const visible = entry.isIntersecting;
         setInView(visible);
-        inViewRef.current = visible;
         if (visible) setEverInView(true);
       },
       { threshold: 0.4 }
@@ -915,22 +912,6 @@ function VideoBlock({ post }: { post: FeedPost }) {
     } else {
       video.pause();
     }
-  }, [inView]);
-
-  // Play / pause Bunny (and YouTube) iframes via postMessage
-  useEffect(() => {
-    const iframe = iframeRef.current;
-    if (!iframe) return;
-    try {
-      if (inView) {
-        iframe.contentWindow?.postMessage(JSON.stringify({ action: "play" }), "*");
-        // YouTube API
-        iframe.contentWindow?.postMessage(JSON.stringify({ event: "command", func: "playVideo" }), "*");
-      } else {
-        iframe.contentWindow?.postMessage(JSON.stringify({ action: "pause" }), "*");
-        iframe.contentWindow?.postMessage(JSON.stringify({ event: "command", func: "pauseVideo" }), "*");
-      }
-    } catch {}
   }, [inView]);
 
   // ── Direct upload (Supabase mp4) ──────────────────────────────────────────
@@ -961,26 +942,24 @@ function VideoBlock({ post }: { post: FeedPost }) {
       const isPortrait = isBunny
         ? (post.link_title === "landscape" ? false : true)
         : parsed.portrait;
-      // Bunny: load with autoplay=false so thumbnail shows, then play via postMessage
+      // Bunny: autoplay=true + muted=true so browser allows it. Mount iframe only
+      // when inView so it autoplays on scroll-in and stops on scroll-out.
       const embedSrc = isBunny
-        ? `${parsed.embedUrl}?autoplay=false&muted=true&loop=false`
+        ? `${parsed.embedUrl}?autoplay=true&muted=true&loop=false&preload=true`
         : parsed.embedUrl;
 
       if (!isPortrait) {
         // Landscape 16:9
         return (
           <div ref={containerRef} className="mt-3 relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: "56.25%" }}>
-            {everInView && (
+            {inView ? (
               <iframe
-                ref={iframeRef}
                 src={embedSrc}
                 className="absolute inset-0 w-full h-full"
                 allowFullScreen
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                onLoad={() => { if (inViewRef.current) setTimeout(() => iframeRef.current?.contentWindow?.postMessage(JSON.stringify({ action: "play" }), "*"), 300); }}
               />
-            )}
-            {!everInView && (
+            ) : (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
                   <span className="text-white text-2xl ml-1">▶</span>
@@ -994,18 +973,15 @@ function VideoBlock({ post }: { post: FeedPost }) {
       // Portrait 9:16 — full-width like Instagram Reels
       return (
         <div ref={containerRef} className="mt-3 relative w-full rounded-2xl overflow-hidden bg-black" style={{ aspectRatio: "9/16", maxHeight: "600px" }}>
-          {everInView && (
+          {inView ? (
             <iframe
-              ref={iframeRef}
               src={embedSrc}
               className="absolute inset-0 w-full h-full border-0"
               allowFullScreen
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               scrolling="no"
-              onLoad={() => { if (inViewRef.current) setTimeout(() => iframeRef.current?.contentWindow?.postMessage(JSON.stringify({ action: "play" }), "*"), 300); }}
             />
-          )}
-          {!everInView && (
+          ) : (
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
                 <span className="text-white text-2xl ml-1">▶</span>

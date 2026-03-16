@@ -916,8 +916,8 @@ export default function PublicProfilePage() {
 
         {/* ── EDIT PROFILE MODAL ─────────────────────────────────────────── */}
         {showEditModal && (
-          <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-0 sm:px-4">
-            <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
+            <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto">
 
               <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
                 <h2 className="text-lg font-bold text-gray-900">Edit Profile</h2>
@@ -1019,8 +1019,8 @@ export default function PublicProfilePage() {
 
         {/* ── BUDDIES LIST MODAL ─────────────────────────────────────────── */}
         {showBuddiesModal && (
-          <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-0 sm:px-4">
-            <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-xl w-full sm:max-w-md max-h-[80vh] flex flex-col">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
+            <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[80vh] flex flex-col">
 
               {/* Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 flex-shrink-0">

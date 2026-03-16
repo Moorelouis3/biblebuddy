@@ -36,7 +36,6 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
   // Verse share state
   const [shareVerse, setShareVerse] = useState<{ number: number; text: string } | null>(null);
   const [shareContent, setShareContent] = useState("");
-  const [shareVisibility, setShareVisibility] = useState<"community" | "buddies">("community");
   const [shareSubmitting, setShareSubmitting] = useState(false);
   const [shareSuccess, setShareSuccess] = useState(false);
 
@@ -52,7 +51,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
         content: shareContent.trim() || "",
         verse_ref: verseRef,
         verse_text: shareVerse.text,
-        visibility: shareVisibility,
+        visibility: "community",
       })
       .select("id")
       .single();
@@ -62,14 +61,13 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
         p_activity_type: "verse_shared",
         p_activity_data: { verse_ref: verseRef, post_id: data.id },
         p_feed_post_id: data.id,
-        p_is_public: shareVisibility === "community",
+        p_is_public: true,
       });
       setShareSuccess(true);
       setTimeout(() => {
         setShareVerse(null);
         setShareContent("");
         setShareSuccess(false);
-        setShareVisibility("community");
       }, 1800);
     }
     setShareSubmitting(false);
@@ -227,7 +225,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
 
       {/* ── Share Verse to Feed Modal ─────────────────────────────────── */}
       {shareVerse && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-4 pb-4 sm:pb-0">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-5">
             {shareSuccess ? (
               <div className="text-center py-6">
@@ -259,21 +257,8 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
                   className="w-full text-sm px-3 py-2 border border-gray-200 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-green-400 mb-3"
                 />
 
-                {/* Visibility + submit */}
-                <div className="flex items-center justify-between gap-3 flex-wrap">
-                  <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-0.5">
-                    {(["community", "buddies"] as const).map((v) => (
-                      <button
-                        key={v}
-                        onClick={() => setShareVisibility(v)}
-                        className={`px-3 py-1.5 rounded-md text-xs font-semibold transition ${
-                          shareVisibility === v ? "bg-white shadow-sm text-gray-800" : "text-gray-400 hover:text-gray-600"
-                        }`}
-                      >
-                        {v === "community" ? "🌎 Community" : "👥 Buddies"}
-                      </button>
-                    ))}
-                  </div>
+                {/* Submit */}
+                <div className="flex justify-end">
                   <button
                     onClick={handleShareSubmit}
                     disabled={shareSubmitting}
