@@ -11,6 +11,34 @@ import { ACTION_TYPE } from "@/lib/actionTypes";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
 
+function getWeekUnlockDate(startDate: string, weekNum: number): string {
+  const d = new Date(startDate);
+  d.setDate(d.getDate() + (weekNum - 1) * 7);
+  return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+}
+
+function getWeekAccessState(
+  startDate: string | null,
+  weekNum: number,
+  isLeader: boolean,
+  previousWeekComplete: boolean
+): { allowed: boolean; message: string | null } {
+  if (isLeader) return { allowed: true, message: null };
+  if (!startDate) return { allowed: false, message: "This series has not started yet." };
+
+  const unlockAt = new Date(startDate);
+  unlockAt.setDate(unlockAt.getDate() + (weekNum - 1) * 7);
+  if (new Date() < unlockAt) {
+    return { allowed: false, message: `Week ${weekNum} unlocks ${getWeekUnlockDate(startDate, weekNum)}.` };
+  }
+
+  if (weekNum > 1 && !previousWeekComplete) {
+    return { allowed: false, message: `Finish Week ${weekNum - 1} before starting Week ${weekNum}.` };
+  }
+
+  return { allowed: true, message: null };
+}
+
 // ── 36 fixed confetti pieces (avoids hydration mismatch) ─────────────────────
 const CONFETTI = [
   { left: 5,  color: "#f59e0b", w: 8,  h: 6,  delay: 0.0 },
@@ -768,6 +796,7 @@ export default function WeekLessonPage() {
   const [seriesId, setSeriesId] = useState<string | null>(null);
   const [groupName, setGroupName] = useState("Group");
   const [seriesTitle, setSeriesTitle] = useState("The Temptation of Jesus");
+  const [accessDeniedMessage, setAccessDeniedMessage] = useState<string | null>(null);
 
   const [readingDone, setReadingDone] = useState(false);
   const [triviaDone, setTriviaDone] = useState(false);
@@ -835,14 +864,14 @@ export default function WeekLessonPage() {
         if (seriesRes.data.title) setSeriesTitle(seriesRes.data.title);
 
         const sid = seriesRes.data.id;
-        const [progressRes, scoreRes] = await Promise.all([
+        const [scheduleRes, progressRowsRes, scoreRes] = await Promise.all([
+          supabase.from("series_schedules").select("start_date").eq("series_id", sid).maybeSingle(),
           supabase
             .from("series_week_progress")
-            .select("reading_completed, trivia_completed, reflection_posted")
+            .select("week_number, reading_completed, trivia_completed, reflection_posted")
             .eq("user_id", user.id)
             .eq("series_id", sid)
-            .eq("week_number", weekNum)
-            .maybeSingle(),
+            ,
           supabase
             .from("series_trivia_scores")
             .select("score")
@@ -852,13 +881,36 @@ export default function WeekLessonPage() {
             .maybeSingle(),
         ]);
 
-        if (progressRes.data) {
-          setReadingDone(progressRes.data.reading_completed ?? false);
-          setTriviaDone(progressRes.data.trivia_completed ?? false);
-          setReflectionDone(progressRes.data.reflection_posted ?? false);
+        const isLeader = memberRes.data?.role === "leader";
+        const progressMap: Record<number, { reading: boolean; trivia: boolean; reflection: boolean }> = {};
+        (progressRowsRes.data || []).forEach((row) => {
+          progressMap[row.week_number] = {
+            reading: row.reading_completed ?? false,
+            trivia: row.trivia_completed ?? false,
+            reflection: row.reflection_posted ?? false,
+          };
+        });
+
+        const currentWeek = progressMap[weekNum];
+        if (currentWeek) {
+          setReadingDone(currentWeek.reading);
+          setTriviaDone(currentWeek.trivia);
+          setReflectionDone(currentWeek.reflection);
         }
         if (scoreRes.data) {
           setSavedTriviaScore(scoreRes.data.score);
+        }
+
+        const previousWeek = progressMap[weekNum - 1] ?? { reading: false, trivia: false, reflection: false };
+        const previousWeekComplete = weekNum === 1 ? true : (previousWeek.reading && previousWeek.trivia && previousWeek.reflection);
+        const accessState = getWeekAccessState(
+          scheduleRes.data?.start_date ?? null,
+          weekNum,
+          isLeader,
+          previousWeekComplete
+        );
+        if (!accessState.allowed) {
+          setAccessDeniedMessage(accessState.message);
         }
       }
 
@@ -1046,6 +1098,17 @@ export default function WeekLessonPage() {
     return (
       <div className="max-w-2xl mx-auto px-4 py-16 text-center">
         <p className="text-gray-500">This week's lesson isn't available yet.</p>
+        <Link href={`/study-groups/${groupId}/series`} className="text-blue-600 hover:underline mt-4 inline-block">
+          ← Back to Series
+        </Link>
+      </div>
+    );
+  }
+
+  if (accessDeniedMessage) {
+    return (
+      <div className="max-w-2xl mx-auto px-4 py-16 text-center">
+        <p className="text-gray-700 font-semibold">{accessDeniedMessage}</p>
         <Link href={`/study-groups/${groupId}/series`} className="text-blue-600 hover:underline mt-4 inline-block">
           ← Back to Series
         </Link>

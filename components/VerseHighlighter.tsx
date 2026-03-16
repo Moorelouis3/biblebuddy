@@ -33,7 +33,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
   const [user, setUser] = useState<any>(null);
   const [creditBlocked, setCreditBlocked] = useState(false);
 
-  // Verse share state
+  // Kept in place so the feed feature can be re-enabled later without losing logic.
   const [shareVerse, setShareVerse] = useState<{ number: number; text: string } | null>(null);
   const [shareContent, setShareContent] = useState("");
   const [shareSubmitting, setShareSubmitting] = useState(false);
@@ -198,17 +198,6 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
             dangerouslySetInnerHTML={{ __html: getEnrichedHtmlForVerse(v.enrichedHtml, v.text) }}
           />
           {/* Share to Feed button — visible on row hover */}
-          {user && (
-            <button
-              onClick={(e) => { e.stopPropagation(); setShareVerse({ number: v.number, text: v.text }); setShareContent(""); }}
-              className="opacity-0 group-hover:opacity-100 [@media(hover:none)]:opacity-100 ml-2 flex-shrink-0 transition-opacity text-gray-400 active:text-green-600 p-1 rounded"
-              title={`Share verse ${v.number} to Feed`}
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-              </svg>
-            </button>
-          )}
         </div>
       ))}
       <ColorPicker
@@ -224,7 +213,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
       />
 
       {/* ── Share Verse to Feed Modal ─────────────────────────────────── */}
-      {shareVerse && (
+      {false && shareVerse && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-5">
             {shareSuccess ? (
@@ -242,9 +231,9 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
                 {/* Verse preview */}
                 <div className="bg-green-50 border border-green-200 rounded-xl px-4 py-3 mb-3">
                   <p className="text-xs font-semibold text-green-700 mb-1">
-                    {book.charAt(0).toUpperCase() + book.slice(1)} {chapter}:{shareVerse.number}
+                    {book.charAt(0).toUpperCase() + book.slice(1)} {chapter}:{shareVerse!.number}
                   </p>
-                  <p className="text-sm text-gray-700 italic leading-relaxed">"{shareVerse.text}"</p>
+                  <p className="text-sm text-gray-700 italic leading-relaxed">"{shareVerse!.text}"</p>
                 </div>
 
                 {/* Thought textarea */}

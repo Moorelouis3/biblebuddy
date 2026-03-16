@@ -852,7 +852,7 @@ export default function PublicProfilePage() {
         </div>
 
         {/* ── RECENT POSTS ───────────────────────────────────────────────── */}
-        {recentPosts.length > 0 && (
+        {false && recentPosts.length > 0 && (
           <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6 p-5">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-lg font-semibold text-gray-900">Recent Posts</h2>

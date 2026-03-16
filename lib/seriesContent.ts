@@ -270,11 +270,11 @@ These two verses carry the weight of everything that came before — the baptism
     reflectionQuestion:
       "When the devil tempted Jesus to turn stones into bread, he was appealing to His physical hunger — the lust of the flesh. But Jesus refused to satisfy a real need in a wrong way. What \"stones\" has the enemy been trying to get you to turn into \"bread\"? In other words — what desires, habits, or fleshly cravings have been pulling you away from trusting God's timing and provision?",
 
-    intro: `In Part 1, we set the stage.
+    intro: `In Week 1, we set the stage.
 
 We looked at Jesus as a 12-year-old in the Temple, His baptism in the Jordan, the Trinity showing up all at once, and the Spirit leading Him into the wilderness.
 
-Now in Part 2, we finally get to the **first temptation** itself. The devil waits until Jesus is at His weakest — and then goes straight for His flesh.
+Now in Week 2, we finally get to the **first temptation** itself. The devil waits until Jesus is at His weakest — and then goes straight for His flesh.
 
 Let's walk through it.
 
@@ -433,7 +433,7 @@ So whatever your craving is, don't believe the lie that you "need" it. **You nee
 
 **The Word > The craving.**
 
-👣 **Next week in Part 3**, we'll look at the second temptation — when Satan shows Jesus all the kingdoms of the world and offers Him power and glory if He'll just bow down.`,
+👣 **Next week in Week 3**, we'll look at the second temptation — when Satan shows Jesus all the kingdoms of the world and offers Him power and glory if He'll just bow down.`,
 
     triviaQuestions: [
       {
@@ -567,13 +567,13 @@ So whatever your craving is, don't believe the lie that you "need" it. **You nee
     reflectionQuestion:
       "The devil offered Jesus glory without obedience — a crown without the cross. He still works that way today, whispering 'take the easy road' or 'just one compromise.' Where in your life are you tempted to chase shortcuts instead of God's will? What would it look like to choose the cross over the crown this week?",
 
-    intro: `In Part 2, we saw how the devil tempted Jesus through His flesh — hunger after 40 days of fasting.
+    intro: `In Week 2, we saw how the devil tempted Jesus through His flesh — hunger after 40 days of fasting.
 
 It was about comfort, control, and quick fixes.
 
 Jesus stood firm: "It is written..."
 
-Now in Part 3, the devil changes his playbook.
+Now in Week 3, the devil changes his playbook.
 This time, he's not coming for Jesus' stomach.
 
 👉 He's coming for His **ambition**.
@@ -832,7 +832,7 @@ Bow to false gods, and you'll always be starving.`,
     reflectionQuestion:
       "Lord, show me where I've been living reckless. Show me the places where pride has taken over. Show me where I've been expecting You to protect me while I'm the one jumping off the ledge. Where in your life have you been acting like nothing can touch you, ignoring warning signs, treating sin casually, or thinking 'God will protect me anyway'?",
 
-    intro: `At the end of Part 3, we left off on the devil trying to tempt Jesus with the lust of the eye.
+    intro: `At the end of Week 3, we left off on the devil trying to tempt Jesus with the lust of the eye.
 
 He offered Him all the power and glory in the world.
 
@@ -1146,11 +1146,328 @@ But real faith sounds like this:
       },
     ],
   },
-  // Week 5 coming soon
+  {
+    weekNumber: 5,
+    title: "Coming Out Stronger",
+    subtitle: "The wilderness prepares you for the mission",
+    readingReference: "Luke 4:13–15",
+    readingApiQuery: "luke+4:13-15",
+    reflectionQuestion:
+      "Jesus came out of the wilderness stronger than He went in. He didn't chase fame — He chased obedience. And because He passed the test in private, God elevated Him in public. Are you in a wilderness season right now? What would it look like to stop rushing through it and trust that God is preparing you for something bigger than you realize?",
+
+    intro: `At the end of Week 4, we left off with the devil trying his final trick on Jesus.
+
+He tempted Him at the pinnacle of the temple. Told Him to jump. Told Him to force God's hand.
+
+But Jesus shut him down again.
+
+And now we are at the final moment in Luke's wilderness story.
+
+Today we finish the Temptation of Jesus.
+
+## 🧠 The Devil Leaves Jesus
+
+> "When the devil had ended every temptation, he departed from Him until an opportune time." — Luke 4:13
+
+For three temptations straight, the devil came with everything he had.
+
+He said:
+
+- Turn these stones into bread.
+- Worship me and I will give you everything you see.
+- Throw Yourself from this temple and make God catch You.
+
+And three times, Jesus refused to bend.
+
+He did not argue.
+He did not negotiate.
+He did not entertain the suggestion.
+
+He just stood firm on what God said.
+
+And because Jesus stood firm — the devil left.
+
+But pay attention to the wording. It does not say he left forever. It says:
+
+**"Until an opportune time."**
+
+That one line tells you everything you need to know about temptation.
+
+## 👀 Temptation Does Not End… It Circles Back
+
+People ask all the time: "How do I beat lust?" "How do I stop being lazy?" "How do I kill this addiction once and for all?"
+
+Here is the truth:
+
+**You do not beat temptation like it is a final boss in a video game.**
+
+Even Jesus — the Son of God — did not defeat temptation once and never face it again. The devil simply ran out of plays for that moment. He stepped back and waited.
+
+He watches. He studies. He waits for your weak moments. Just like he did with Jesus.
+
+## 😫 When Is the "Opportune Time"?
+
+It is never when you are strong.
+It is never when you are praying.
+It is never when you are close to God.
+
+The "opportune time" is when you are weak, lonely, hungry, tired, angry, isolated, or frustrated.
+
+That is when he slides back in. Jesus had been fasting forty days — no food, no comfort, no support. Just Him and the wilderness. And that is when Satan showed up. That is how he does us too.
+
+## 🔑 Do Not Rely on Willpower
+
+Jesus did not beat temptation with motivation. He did not beat it with discipline. He did not beat it with "trying harder."
+
+He used one thing: **the Word of God.**
+
+He quoted Scripture.
+He stood on truth.
+He stayed submitted to God.
+
+If Jesus — the most powerful person who ever lived — did not try to fight temptation in His own strength... why do we think we can?
+
+You cannot rely on willpower alone. You cannot just "say no." You have to **stay close to God daily.**
+
+- Get in the Word
+- Remember what God said
+- Fill your heart with truth before temptation hits
+
+Because the devil will always return. And when he does, you need something stronger than emotion.
+
+Jesus did not panic. He did not hesitate. He did not negotiate. He said: "It is written..."
+
+The devil had nothing left.
+
+## 🌅 Coming Out of the Wilderness
+
+> "And Jesus returned in the power of the Spirit to Galilee, and a report about Him went out through all the surrounding country. And He taught in their synagogues, being glorified by all." — Luke 4:14–15
+
+After Jesus defeated the devil, He came out of the wilderness **stronger than He went in.**
+
+He entered hungry, alone, and under attack.
+He left filled with the Spirit, focused, and ready for His mission.
+
+**That is what the wilderness does when you walk through it with God.**
+
+The devil thought the desert would break Him. But Jesus walked out with power, clarity, and authority. He did not just survive. He came out ready.
+
+## 🏠 Back to Galilee
+
+And where does Jesus go after the wilderness? Back to Galilee. Back to the region He grew up in.
+
+Not the capital.
+Not the temple.
+Not the spotlight.
+
+He goes home.
+
+📖 **Quick Background:**
+
+- Jesus was born in Bethlehem
+- Joseph and Mary fled to Egypt after Herod's order
+- They eventually moved to Nazareth in Galilee
+- Nazareth was a simple, working-class town — that is where Jesus grew up
+
+## ⚡ New Power… Same Region
+
+Now He returns. But He is not the same.
+
+He is not Mary's little boy. He is not the carpenter's apprentice. He is the man who defeated Satan face to face.
+
+And what happens? People notice. Word spreads. He begins teaching. He begins moving with purpose.
+
+But notice something important:
+
+**He did not chase fame. He chased obedience.**
+
+Because He passed the test in private — God elevated Him in public.
+
+## 🔥 What About You?
+
+Are you in a wilderness season right now?
+
+Dry? Hard? Confusing? Lonely?
+
+Do not tap out. Do not rush it.
+
+Because when God brings you out, you will not come out the same. You will come out stronger, sharper, more focused, more anointed, and more dangerous to the enemy.
+
+The wilderness is not punishment. It is **preparation**.
+
+Let God refine you. He is preparing you for something bigger than you realize.
+
+## 🙏 Thanks for Walking Through This With Me
+
+This is the end of our 5-week study on the Temptation of Jesus.
+
+If you made it this far — I'm proud of you. Most people never study these passages beyond a quick Sunday school version. But you took time to really understand:
+
+- How Jesus fought the devil
+- Why the wilderness matters
+- How temptation works
+- And how God strengthens us through struggle
+
+My prayer is that this series didn't just teach you something — but **formed something in you.**
+
+A hunger for the Word.
+A desire to fight differently.
+A confidence in what God has placed inside you.
+
+This is just the beginning. We're building something special here in Hope Nation — and even more is coming.`,
+
+    triviaQuestions: [
+      {
+        id: "w5q1",
+        question: "According to Luke 4:13, what did the devil do after finishing all three temptations?",
+        options: [
+          { label: "A", text: "He was cast into the pit" },
+          { label: "B", text: "He departed until an opportune time" },
+          { label: "C", text: "He attacked Jesus again immediately" },
+          { label: "D", text: "He went to tempt the disciples" },
+        ],
+        correctAnswer: "B",
+        explanation: "Luke 4:13 says the devil 'departed from Him until an opportune time.' He didn't leave forever — he stepped back, waited, and watched for a future moment of weakness.",
+      },
+      {
+        id: "w5q2",
+        question: "What does 'until an opportune time' tell us about how temptation works?",
+        options: [
+          { label: "A", text: "Temptation can be permanently defeated through willpower" },
+          { label: "B", text: "The devil only attacks once and moves on" },
+          { label: "C", text: "Temptation circles back — it watches for your weak moments" },
+          { label: "D", text: "Every temptation has an expiration date" },
+        ],
+        correctAnswer: "C",
+        explanation: "The lesson teaches that you don't beat temptation like a final boss. The devil steps back, waits, watches, and returns when you're weak, lonely, tired, or isolated. Even Jesus faced this reality.",
+      },
+      {
+        id: "w5q3",
+        question: "Where did Jesus go after leaving the wilderness, according to Luke 4:14?",
+        options: [
+          { label: "A", text: "Jerusalem" },
+          { label: "B", text: "Bethlehem" },
+          { label: "C", text: "The Jordan River" },
+          { label: "D", text: "Galilee" },
+        ],
+        correctAnswer: "D",
+        explanation: "Luke 4:14 says Jesus 'returned in the power of the Spirit to Galilee.' He went back to the region He grew up in — not the spotlight, not the capital. Back home, but completely transformed.",
+      },
+      {
+        id: "w5q4",
+        question: "According to the lesson, what is the one weapon Jesus used to defeat every temptation?",
+        options: [
+          { label: "A", text: "Willpower and discipline" },
+          { label: "B", text: "Prayer and fasting" },
+          { label: "C", text: "The Word of God" },
+          { label: "D", text: "His divine power as the Son of God" },
+        ],
+        correctAnswer: "C",
+        explanation: "Every time the devil tempted Him, Jesus quoted Scripture — 'It is written.' He did not fight in His own strength. The Word of God was His only weapon, and it was enough.",
+      },
+      {
+        id: "w5q5",
+        question: "What does the lesson say about Jesus' state when He entered vs. when He exited the wilderness?",
+        options: [
+          { label: "A", text: "He entered strong and left broken" },
+          { label: "B", text: "He entered and exited the same" },
+          { label: "C", text: "He entered hungry, alone, and under attack — He left filled with the Spirit and ready for mission" },
+          { label: "D", text: "He entered in faith and left in doubt" },
+        ],
+        correctAnswer: "C",
+        explanation: "Luke 4:14 says He returned 'in the power of the Spirit.' The wilderness didn't break Him — it forged Him. He left stronger, sharper, and more prepared for ministry than when He entered.",
+      },
+      {
+        id: "w5q6",
+        question: "According to the lesson, when is the devil's 'opportune time' to attack?",
+        options: [
+          { label: "A", text: "When you are at your strongest spiritually" },
+          { label: "B", text: "When you are in church or praying" },
+          { label: "C", text: "When you are close to God and reading Scripture daily" },
+          { label: "D", text: "When you are weak, lonely, hungry, tired, angry, or isolated" },
+        ],
+        correctAnswer: "D",
+        explanation: "The lesson explains that temptation never arrives when you're strong. It waits for the cracks — when you're emotionally drained, physically weak, or spiritually dry. That's how it worked with Jesus and how it works with us.",
+      },
+      {
+        id: "w5q7",
+        question: "What key observation does the lesson make about Jesus after the wilderness — regarding fame vs. obedience?",
+        options: [
+          { label: "A", text: "He immediately went to Jerusalem to announce His mission" },
+          { label: "B", text: "He did not chase fame — He chased obedience, and God elevated Him publicly because He passed the test privately" },
+          { label: "C", text: "He avoided people and continued fasting" },
+          { label: "D", text: "He sought out the Pharisees to debate Scripture" },
+        ],
+        correctAnswer: "B",
+        explanation: "Jesus went back to Galilee — not the spotlight, not the capital. He chased obedience, not fame. And because He passed the test in private, God elevated Him in public: 'a report about him went out through all the surrounding country.'",
+      },
+      {
+        id: "w5q8",
+        question: "According to the lesson, what is the wilderness — punishment or preparation?",
+        options: [
+          { label: "A", text: "Punishment for past sins" },
+          { label: "B", text: "A random trial with no purpose" },
+          { label: "C", text: "A sign that God has abandoned you" },
+          { label: "D", text: "Preparation — God is refining you for something bigger" },
+        ],
+        correctAnswer: "D",
+        explanation: "The lesson is clear: 'The wilderness is not punishment. It is preparation.' Just as Jesus came out stronger, sharper, and more anointed — God uses your hard seasons to forge you for your calling.",
+      },
+      {
+        id: "w5q9",
+        question: "The lesson says the devil 'had nothing left' after Jesus responded with 'It is written.' What does this teach us about Scripture?",
+        options: [
+          { label: "A", text: "Scripture is only effective for Jesus, not ordinary believers" },
+          { label: "B", text: "Scripture filled with truth before temptation hits is stronger than any emotion or temptation" },
+          { label: "C", text: "Scripture should only be used in formal prayer settings" },
+          { label: "D", text: "Memorizing a lot of verses is what matters most" },
+        ],
+        correctAnswer: "B",
+        explanation: "The lesson teaches: fill your heart with truth before temptation hits. The Word of God is not just information — it's a weapon. When Jesus spoke it, the devil ran out of moves. That same power is available to us.",
+      },
+      {
+        id: "w5q10",
+        question: "What is the central takeaway of this entire 5-week series on the Temptation of Jesus?",
+        options: [
+          { label: "A", text: "Jesus was uniquely divine and His experience has little application to our daily lives" },
+          { label: "B", text: "Temptation can be avoided if you are disciplined enough" },
+          { label: "C", text: "The wilderness breaks you — so avoid it at all costs" },
+          { label: "D", text: "Jesus shows us how to fight — with the Word, in submission to God, trusting that the wilderness is preparation not punishment" },
+        ],
+        correctAnswer: "D",
+        explanation: "The whole series builds to this: Jesus is our blueprint. He fought with the Word, not willpower. He stayed submitted to God through hunger and attack. And He came out of the wilderness stronger — ready for His mission. So will you.",
+      },
+    ],
+  },
 ];
 
 export function getSeriesWeekLesson(weekNumber: number): SeriesWeekLesson | undefined {
-  return TEMPTATION_OF_JESUS.find((w) => w.weekNumber === weekNumber);
+  const lesson = TEMPTATION_OF_JESUS.find((w) => w.weekNumber === weekNumber);
+  if (!lesson) return undefined;
+  if (weekNumber === 2) {
+    return {
+      ...lesson,
+      title: "The Lust of the Flesh",
+    };
+  }
+  if (weekNumber === 3) {
+    return {
+      ...lesson,
+      title: "The Lust of the Eyes",
+    };
+  }
+  if (weekNumber === 4) {
+    return {
+      ...lesson,
+      title: "The Pride of Life",
+    };
+  }
+  if (weekNumber !== 5) return lesson;
+  return {
+    ...lesson,
+    readingReference: "Luke 4:13-30",
+    readingApiQuery: "luke+4:13-30",
+  };
 }
 
 export const TOTAL_WEEKS = 5;

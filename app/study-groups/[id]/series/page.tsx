@@ -9,23 +9,69 @@ interface WeekCard {
   weekNumber: number;
   unlocked: boolean;
   unlockDate: string | null;
+  lockedMessage: string | null;
   reading: boolean;
   trivia: boolean;
   reflection: boolean;
   complete: boolean;
 }
 
-function isWeekUnlocked(startDate: string | null, weekNum: number): boolean {
-  if (!startDate) return false;
-  const d = new Date(startDate);
-  d.setDate(d.getDate() + (weekNum - 1) * 7);
-  return new Date() >= d;
-}
-
 function getUnlockDate(startDate: string, weekNum: number): string {
   const d = new Date(startDate);
   d.setDate(d.getDate() + (weekNum - 1) * 7);
   return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+}
+
+function getUnlockTimestamp(startDate: string, weekNum: number): number {
+  const d = new Date(startDate);
+  d.setDate(d.getDate() + (weekNum - 1) * 7);
+  return d.getTime();
+}
+
+function formatCountdown(targetTs: number, nowTs: number): string {
+  const diff = Math.max(0, targetTs - nowTs);
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  if (days > 0) return `${days}d ${hours}h ${minutes}m`;
+  if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
+  return `${minutes}m ${seconds}s`;
+}
+
+function getWeekLockState(
+  startDate: string | null,
+  weekNum: number,
+  isLeader: boolean,
+  previousWeekComplete: boolean
+): { unlocked: boolean; unlockDate: string | null; lockedMessage: string | null } {
+  if (isLeader) {
+    return {
+      unlocked: true,
+      unlockDate: startDate ? getUnlockDate(startDate, weekNum) : null,
+      lockedMessage: null,
+    };
+  }
+
+  if (!startDate) {
+    return { unlocked: false, unlockDate: null, lockedMessage: "Start date not set yet" };
+  }
+
+  const unlockDate = getUnlockDate(startDate, weekNum);
+  const unlockAt = new Date(startDate);
+  unlockAt.setDate(unlockAt.getDate() + (weekNum - 1) * 7);
+
+  if (new Date() < unlockAt) {
+    return { unlocked: false, unlockDate, lockedMessage: `Unlocks ${unlockDate}` };
+  }
+
+  if (weekNum > 1 && !previousWeekComplete) {
+    return { unlocked: false, unlockDate, lockedMessage: `Finish Week ${weekNum - 1} first` };
+  }
+
+  return { unlocked: true, unlockDate, lockedMessage: null };
 }
 
 export default function SeriesOverviewPage() {
@@ -43,6 +89,7 @@ export default function SeriesOverviewPage() {
   const [savingDate, setSavingDate] = useState(false);
   const [weeks, setWeeks] = useState<WeekCard[]>([]);
   const [groupName, setGroupName] = useState("Group");
+  const [nowTs, setNowTs] = useState(() => Date.now());
 
   useEffect(() => {
     async function init() {
@@ -87,12 +134,16 @@ export default function SeriesOverviewPage() {
       const isLeader = memberRes.data?.role === "leader";
       const cards: WeekCard[] = Array.from({ length: TOTAL_WEEKS }, (_, i) => {
         const wn = i + 1;
-        const unlocked = isLeader || isWeekUnlocked(sd, wn);
         const prog = progMap[wn] ?? { reading: false, trivia: false, reflection: false };
+        const previousWeekComplete = wn === 1
+          ? true
+          : !!(progMap[wn - 1]?.reading && progMap[wn - 1]?.trivia && progMap[wn - 1]?.reflection);
+        const lockState = getWeekLockState(sd, wn, isLeader, previousWeekComplete);
         return {
           weekNumber: wn,
-          unlocked,
-          unlockDate: sd ? getUnlockDate(sd, wn) : null,
+          unlocked: lockState.unlocked,
+          unlockDate: lockState.unlockDate,
+          lockedMessage: lockState.lockedMessage,
           reading: prog.reading,
           trivia: prog.trivia,
           reflection: prog.reflection,
@@ -105,6 +156,11 @@ export default function SeriesOverviewPage() {
     init();
   }, [groupId, router]);
 
+  useEffect(() => {
+    const id = window.setInterval(() => setNowTs(Date.now()), 1000);
+    return () => window.clearInterval(id);
+  }, []);
+
   async function saveStartDate() {
     if (!startDateInput || !seriesId || !userId) return;
     setSavingDate(true);
@@ -115,11 +171,21 @@ export default function SeriesOverviewPage() {
     setStartDate(startDateInput);
     // Recompute unlock states
     setWeeks((prev) =>
-      prev.map((w) => ({
-        ...w,
-        unlocked: userRole === "leader" || isWeekUnlocked(startDateInput, w.weekNumber),
-        unlockDate: getUnlockDate(startDateInput, w.weekNumber),
-      }))
+      prev.map((w, index) => {
+        const previousWeek = prev[index - 1];
+        const lockState = getWeekLockState(
+          startDateInput,
+          w.weekNumber,
+          userRole === "leader",
+          w.weekNumber === 1 ? true : !!previousWeek?.complete
+        );
+        return {
+          ...w,
+          unlocked: lockState.unlocked,
+          unlockDate: lockState.unlockDate,
+          lockedMessage: lockState.lockedMessage,
+        };
+      })
     );
     setSavingDate(false);
   }
@@ -180,7 +246,9 @@ export default function SeriesOverviewPage() {
             return (
               <div
                 key={w.weekNumber}
-                className={`bg-white border rounded-xl shadow-sm overflow-hidden ${w.complete ? "border-green-200" : "border-gray-200"}`}
+                className={`border rounded-xl shadow-sm overflow-hidden transition-all ${
+                  w.complete ? "border-green-200 bg-white" : w.unlocked ? "border-gray-200 bg-white" : "border-gray-200 bg-gray-50 opacity-55"
+                }`}
               >
                 <div className={`px-5 py-4 ${w.complete ? "bg-green-50" : ""}`}>
                   <div className="flex items-start justify-between gap-3">
@@ -225,17 +293,14 @@ export default function SeriesOverviewPage() {
                   )}
 
                   {/* Unlock date for locked weeks */}
-                  {!w.unlocked && w.unlockDate && (
-                    <p className="text-xs text-gray-400 mt-2">Unlocks {w.unlockDate}</p>
-                  )}
-                  {!w.unlocked && !w.unlockDate && (
-                    <p className="text-xs text-gray-400 mt-2">Start date not set yet</p>
+                  {!w.unlocked && w.lockedMessage && (
+                    <p className="text-xs text-gray-400 mt-2">{w.lockedMessage}</p>
                   )}
                 </div>
 
                 {/* CTA */}
-                {(w.unlocked && hasContent) && (
-                  <div className="px-5 pb-4">
+                <div className="px-5 pb-4">
+                  {w.unlocked && hasContent ? (
                     <Link href={`/study-groups/${groupId}/series/week/${w.weekNumber}`}>
                       <button
                         className="w-full py-2.5 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
@@ -244,8 +309,17 @@ export default function SeriesOverviewPage() {
                         {w.complete ? "Review Week" : done > 0 ? "Continue" : "Start Week"}
                       </button>
                     </Link>
-                  </div>
-                )}
+                  ) : (
+                    <button
+                      disabled
+                      className="w-full py-2.5 rounded-xl text-sm font-bold border border-gray-200 bg-white text-gray-400 cursor-not-allowed"
+                    >
+                      {w.weekNumber === 1 && startDate
+                        ? `Starting Soon · ${formatCountdown(getUnlockTimestamp(startDate, 1), nowTs)}`
+                        : `🔒 Week ${w.weekNumber} Locked`}
+                    </button>
+                  )}
+                </div>
               </div>
             );
           })}

@@ -3,42 +3,39 @@
 export default function UpdatesPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      {/* Title */}
       <h1 className="text-3xl font-bold mb-2">Updates</h1>
       <p className="text-gray-500 mb-8">
         How Bible Buddy is growing to help you understand the Bible better over time.
       </p>
 
-      {/* Version 4.0 */}
       <section>
-        <h2 className="text-xl font-semibold mt-10 mb-3">Version 4.0 — March 2026</h2>
-        <p className="text-gray-600 italic mb-4">Bible Buddy Feed — your faith community, live now</p>
+        <h2 className="text-xl font-semibold mt-10 mb-3">Version 4.0 - March 2026</h2>
+        <p className="text-gray-600 italic mb-4">Bible Study Group - the new central place for shared study</p>
         <p className="text-gray-700 leading-relaxed mb-4">
-          Bible Buddy is no longer just a study tool — it&apos;s a community. Version 4.0 introduces the Bible Buddy Feed, a dedicated social space for Scripture-centered connection.
+          Bible Buddy now puts shared study front and center. Version 4.0 focuses the community experience around one official Bible study group with a simpler path into lessons and discussion.
         </p>
         <ul className="list-disc ml-6 space-y-2 text-gray-700 leading-relaxed mb-4">
-          <li>Community Feed — ranked posts from all Bible Buddies on the platform</li>
-          <li>Buddy Feed — a closer view of the people you&apos;re connected with</li>
-          <li>My Feed — a personal record of everything you&apos;ve shared</li>
-          <li>Post thoughts, favorite verses, prayers, and prayer requests</li>
-          <li>React to posts with emoji reactions and comment to start conversations</li>
-          <li>Visit any Bible Buddy&apos;s profile and connect directly</li>
-          <li>Feed ranking based on recency, engagement, and what you&apos;ve been studying</li>
+          <li>One official Bible Buddy Study Group for everyone in the app</li>
+          <li>Dashboard card opens the group directly with no extra middle page</li>
+          <li>Weekly Bible study lessons unlock automatically on schedule</li>
+          <li>Upcoming weeks stay visibly locked until release</li>
+          <li>Members must finish the previous week before starting the next one</li>
+          <li>Leader controls for setting the start date inside the group itself</li>
+          <li>Group details moved into the group view instead of a separate page</li>
         </ul>
         <p className="text-gray-700 leading-relaxed">
-          The Bible was never meant to be studied alone. The Feed brings your community into the same place as your study tools.
+          The Bible was never meant to be studied alone. This update makes the study group the clearest place to read, reflect, and grow together.
         </p>
       </section>
 
-      {/* Version 3.0 */}
       <section>
-        <h2 className="text-xl font-semibold mt-10 mb-3">Version 3.0 — March 2026</h2>
+        <h2 className="text-xl font-semibold mt-10 mb-3">Version 3.0 - March 2026</h2>
         <p className="text-gray-600 italic mb-4">New devotional: The Testing of Joseph</p>
         <p className="text-gray-700 leading-relaxed mb-4">
-          Bible Buddy's second devotional series is now live — a 21-day walk through Joseph's journey in Genesis.
+          Bible Buddy's second devotional series is now live - a 21-day walk through Joseph's journey in Genesis.
         </p>
         <ul className="list-disc ml-6 space-y-2 text-gray-700 leading-relaxed mb-4">
-          <li>The Testing of Joseph — 21 days covering Genesis 37–50</li>
+          <li>The Testing of Joseph - 21 days covering Genesis 37-50</li>
           <li>Daily devotional text, Bible reading, and reflection question</li>
           <li>Explores themes of favor, betrayal, faithfulness, and redemption</li>
           <li>Progress tracked day-by-day alongside The Tempting of Jesus</li>
@@ -48,9 +45,8 @@ export default function UpdatesPage() {
         </p>
       </section>
 
-      {/* Version 2.0 */}
       <section>
-        <h2 className="text-xl font-semibold mt-10 mb-3">Version 2.0 — January 2026</h2>
+        <h2 className="text-xl font-semibold mt-10 mb-3">Version 2.0 - January 2026</h2>
         <p className="text-gray-600 italic mb-4">A major step forward in understanding Scripture</p>
         <p className="text-gray-700 leading-relaxed mb-4">
           Bible Buddy moved from a simple reading tool to a full Bible study workspace.
@@ -74,9 +70,8 @@ export default function UpdatesPage() {
         </p>
       </section>
 
-      {/* Version 1.0 */}
       <section>
-        <h2 className="text-xl font-semibold mt-10 mb-3">Version 1.0 — December 2025</h2>
+        <h2 className="text-xl font-semibold mt-10 mb-3">Version 1.0 - December 2025</h2>
         <p className="text-gray-600 italic mb-4">The beginning</p>
         <p className="text-gray-700 leading-relaxed mb-4">
           Bible Buddy started as a focused reading experience.
@@ -92,7 +87,6 @@ export default function UpdatesPage() {
         </p>
       </section>
 
-      {/* What We're Working Toward */}
       <section>
         <h2 className="text-xl font-semibold mt-10 mb-3">What We're Working Toward</h2>
         <p className="text-gray-600 italic mb-4">Planned improvements and ideas</p>
@@ -125,7 +119,6 @@ export default function UpdatesPage() {
         </p>
       </section>
 
-      {/* Thank You */}
       <section>
         <h2 className="text-xl font-semibold mt-10 mb-3">Thank you</h2>
         <p className="text-gray-700 leading-relaxed">
@@ -136,4 +129,3 @@ export default function UpdatesPage() {
     </div>
   );
 }
-

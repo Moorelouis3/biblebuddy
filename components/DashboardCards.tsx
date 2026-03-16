@@ -108,17 +108,10 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       </Link>
 
-      <Link href="/bb-feed">
-        <div className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition" style={{ backgroundColor: "#fff7ed", borderWidth: 1, borderColor: "#fed7aa" }}>
-          <h2 className="text-xl font-semibold">🔥 Bible Buddy Feed</h2>
-          <p className="text-gray-700 mt-1">See what the Bible Buddy community is up to</p>
-        </div>
-      </Link>
-
       <Link href="/study-groups">
         <div className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition" style={{ backgroundColor: "#d4ecd4", borderWidth: 1, borderColor: "#b8ddb8" }}>
-          <h2 className="text-xl font-semibold">🤝 Bible Study Groups</h2>
-          <p className="text-gray-700 mt-1">Study the Bible with others</p>
+          <h2 className="text-xl font-semibold">🤝 Bible Study Group</h2>
+          <p className="text-gray-700 mt-1">Study the Bible with us</p>
         </div>
       </Link>
 

@@ -476,14 +476,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setIsNotifOpen(false);
     // Social feed notifications deep-link to the specific post/comment
     if (notif.type === "buddy_posted" || notif.type === "feed_post_liked" || notif.type === "feed_post_commented" || notif.type === "feed_post_replied") {
-      let url = "/bb-feed";
-      if (notif.post_id) {
-        url += `?post=${notif.post_id}`;
-        if (notif.comment_id && (notif.type === "feed_post_commented" || notif.type === "feed_post_replied")) {
-          url += `&comment=${notif.comment_id}`;
-        }
-      }
-      router.push(url);
+      router.push("/dashboard");
       return;
     }
     if (notif.type === "group_post" && notif.article_slug) {
@@ -1052,10 +1045,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                           notifications.map((notif) => {
                             // Friendly label for the notification source
                             const notifSourceLabel =
-                              notif.type === "buddy_posted" ? "Bible Buddies Feed" :
-                              notif.type === "feed_post_liked" ? "Bible Buddies Feed" :
-                              notif.type === "feed_post_commented" ? "Bible Buddies Feed" :
-                              notif.type === "feed_post_replied" ? "Bible Buddies Feed" :
+                              notif.type === "buddy_posted" ? "Community" :
+                              notif.type === "feed_post_liked" ? "Community" :
+                              notif.type === "feed_post_commented" ? "Community" :
+                              notif.type === "feed_post_replied" ? "Community" :
                               notif.type === "group_post"
                                 ? (notif.article_slug?.split("/").filter(Boolean)[1] ? "Study Group" : "Study Group")
                                 : notif.article_slug

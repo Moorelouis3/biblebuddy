@@ -6,6 +6,7 @@ import Link from "next/link";
 import { supabase } from "../../../../lib/supabaseClient";
 import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
+import { TOTAL_WEEKS, getSeriesWeekLesson } from "@/lib/seriesContent";
 
 // ── Interfaces ───────────────────────────────────────────────────────────────
 
@@ -13,6 +14,10 @@ interface StudyGroup {
   id: string;
   name: string;
   leader_user_id: string | null;
+  leader_name?: string | null;
+  description?: string | null;
+  member_count?: number;
+  current_weekly_study?: string | null;
   cover_color: string | null;
   cover_emoji: string | null;
 }
@@ -74,6 +79,53 @@ interface SeriesComment {
   created_at: string;
   liked?: boolean;
   profile_image_url?: string | null;
+}
+
+function getWeekUnlockDate(startDate: string, weekNum: number): string {
+  const d = new Date(startDate);
+  d.setDate(d.getDate() + (weekNum - 1) * 7);
+  return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+}
+
+function getWeekLockState(
+  startDate: string | null,
+  weekNum: number,
+  isLeader: boolean,
+  previousWeekComplete: boolean
+): { unlocked: boolean; lockedMessage: string } {
+  if (isLeader) return { unlocked: true, lockedMessage: "" };
+  if (!startDate) return { unlocked: false, lockedMessage: "Start date not set yet" };
+
+  const unlockAt = new Date(startDate);
+  unlockAt.setDate(unlockAt.getDate() + (weekNum - 1) * 7);
+  if (new Date() < unlockAt) {
+    return { unlocked: false, lockedMessage: `Unlocks ${getWeekUnlockDate(startDate, weekNum)}` };
+  }
+
+  if (weekNum > 1 && !previousWeekComplete) {
+    return { unlocked: false, lockedMessage: `Finish Week ${weekNum - 1} first` };
+  }
+
+  return { unlocked: true, lockedMessage: "" };
+}
+
+function getWeekUnlockTimestamp(startDate: string, weekNum: number): number {
+  const d = new Date(startDate);
+  d.setDate(d.getDate() + (weekNum - 1) * 7);
+  return d.getTime();
+}
+
+function formatCountdown(targetTs: number, nowTs: number): string {
+  const diff = Math.max(0, targetTs - nowTs);
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  if (days > 0) return `${days}d ${hours}h ${minutes}m`;
+  if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
+  return `${minutes}m ${seconds}s`;
 }
 
 // ── Video URL parsing ─────────────────────────────────────────────────────────
@@ -175,6 +227,7 @@ export default function GroupChatPage() {
   const [displayName, setDisplayName] = useState<string>("");
   const [userProfileImage, setUserProfileImage] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<string>("home");
+  const [showGroupInfoModal, setShowGroupInfoModal] = useState(false);
 
   // Chat posts
   const [posts, setPosts] = useState<Post[]>([]);
@@ -223,6 +276,11 @@ export default function GroupChatPage() {
   const [selectedSeries, setSelectedSeries] = useState<Series | null>(null);
   const [seriesPosts, setSeriesPosts] = useState<SeriesPost[]>([]);
   const [loadingSeriesPosts, setLoadingSeriesPosts] = useState(false);
+  const [seriesStartDate, setSeriesStartDate] = useState<string | null>(null);
+  const [seriesWeekProgress, setSeriesWeekProgress] = useState<Record<number, { reading: boolean; trivia: boolean; reflection: boolean }>>({});
+  const [seriesStartDateInput, setSeriesStartDateInput] = useState("");
+  const [savingSeriesStartDate, setSavingSeriesStartDate] = useState(false);
+  const [nowTs, setNowTs] = useState(() => Date.now());
 
   // Post view
   const [selectedPost, setSelectedPost] = useState<SeriesPost | null>(null);
@@ -255,7 +313,10 @@ export default function GroupChatPage() {
   useEffect(() => {
     async function checkAccessAndLoad() {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) { router.push(`/study-groups/${groupId}`); return; }
+      if (!user) {
+        router.push("/login");
+        return;
+      }
 
       setUserId(user.id);
 
@@ -274,16 +335,11 @@ export default function GroupChatPage() {
         .eq("user_id", user.id)
         .maybeSingle();
 
-      if (!membership || membership.status !== "approved") {
-        router.push(`/study-groups/${groupId}`);
-        return;
-      }
-
-      setUserRole(membership.role);
+      setUserRole(membership?.status === "approved" ? membership.role : "member");
 
       const { data: groupData } = await supabase
         .from("study_groups")
-        .select("id, name, leader_user_id, cover_color, cover_emoji")
+        .select("id, name, leader_user_id, leader_name, description, member_count, current_weekly_study, cover_color, cover_emoji")
         .eq("id", groupId)
         .maybeSingle();
 
@@ -324,11 +380,34 @@ export default function GroupChatPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [group, activeTab, hubCategories]);
 
-  // ── Load series posts when series is selected ────────────────────────────
+  // ── Load series posts + schedule + progress when series is selected ─────
   useEffect(() => {
-    if (selectedSeries) loadSeriesPosts(selectedSeries.id);
+    if (!selectedSeries) return;
+    loadSeriesPosts(selectedSeries.id);
+    // Load start date
+    supabase.from("series_schedules").select("start_date").eq("series_id", selectedSeries.id).maybeSingle()
+      .then(({ data }) => {
+        setSeriesStartDate(data?.start_date ?? null);
+        setSeriesStartDateInput(data?.start_date ?? "");
+      });
+    // Load week progress for current user
+    if (userId) {
+      supabase.from("series_week_progress")
+        .select("week_number, reading_completed, trivia_completed, reflection_posted")
+        .eq("user_id", userId).eq("series_id", selectedSeries.id)
+        .then(({ data }) => {
+          const map: Record<number, { reading: boolean; trivia: boolean; reflection: boolean }> = {};
+          (data || []).forEach((p) => { map[p.week_number] = { reading: p.reading_completed, trivia: p.trivia_completed, reflection: p.reflection_posted }; });
+          setSeriesWeekProgress(map);
+        });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSeries]);
+
+  useEffect(() => {
+    const id = window.setInterval(() => setNowTs(Date.now()), 1000);
+    return () => window.clearInterval(id);
+  }, []);
 
   // ── Load comments when post is selected ─────────────────────────────────
   useEffect(() => {
@@ -524,7 +603,9 @@ export default function GroupChatPage() {
       .select("id, title, description, total_weeks, current_week, is_current, created_at")
       .eq("group_id", group.id)
       .order("created_at", { ascending: false });
-    setSeriesList(data || []);
+    const rows = data || [];
+    setSeriesList(rows);
+    setSelectedSeries(rows.find((series) => series.is_current) ?? rows[0] ?? null);
     setLoadingSeries(false);
   }
 
@@ -588,6 +669,22 @@ export default function GroupChatPage() {
     await supabase.from("group_series").update({ is_current: true }).eq("id", series.id);
     setSeriesList((prev) => prev.map((s) => ({ ...s, is_current: s.id === series.id })));
     setSelectedSeries((prev) => prev ? { ...prev, is_current: true } : prev);
+  }
+
+  async function handleSaveSeriesStartDate() {
+    if (!selectedSeries || !group || !userId || !seriesStartDateInput) return;
+    setSavingSeriesStartDate(true);
+    await supabase.from("series_schedules").upsert(
+      {
+        series_id: selectedSeries.id,
+        group_id: group.id,
+        start_date: seriesStartDateInput,
+        created_by: userId,
+      },
+      { onConflict: "series_id" }
+    );
+    setSeriesStartDate(seriesStartDateInput);
+    setSavingSeriesStartDate(false);
   }
 
   async function handleCreateSeries() {
@@ -701,6 +798,7 @@ export default function GroupChatPage() {
   const isLeader = userRole === "leader";
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
   const SAGE = "#5a9a5a";
+  const displayGroupName = group.name === "Hope Nation" ? "Bible Buddy Study Group" : group.name;
 
   // ── Render ───────────────────────────────────────────────────────────────
   return (
@@ -729,7 +827,7 @@ export default function GroupChatPage() {
               </svg>
             </button>
           ) : (
-            <Link href={`/study-groups/${groupId}`} className="text-gray-700 hover:text-gray-900 transition">
+            <Link href="/dashboard" className="text-gray-700 hover:text-gray-900 transition">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
@@ -738,15 +836,23 @@ export default function GroupChatPage() {
           <span className="text-xl">{group.cover_emoji || "🤝"}</span>
           <div className="flex-1 min-w-0">
             <h1 className="text-lg font-bold text-gray-900 truncate">
-              {selectedPost ? selectedPost.title : selectedSeries ? selectedSeries.title : selectedHubItem ? selectedHubItem.title : group.name}
+              {selectedPost ? selectedPost.title : selectedSeries ? selectedSeries.title : selectedHubItem ? selectedHubItem.title : displayGroupName}
             </h1>
             {!selectedPost && !selectedSeries && !selectedHubItem && (
-              <button
-                onClick={() => setActiveTab("members")}
-                className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
-              >
-                👥 See All Members
-              </button>
+              <div className="flex items-center gap-3 flex-wrap">
+                <button
+                  onClick={() => setShowGroupInfoModal(true)}
+                  className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
+                >
+                  About Group
+                </button>
+                <button
+                  onClick={() => setActiveTab("members")}
+                  className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
+                >
+                  👥 See All Members
+                </button>
+              </div>
             )}
           </div>
         </div>
@@ -1122,28 +1228,98 @@ export default function GroupChatPage() {
                 )}
               </div>
 
-              {/* Week Lessons link (shown when series is current) */}
-              {selectedSeries.is_current && (
-                <Link href={`/study-groups/${groupId}/series`}>
-                  <div className="flex items-center justify-between px-5 py-4 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition cursor-pointer">
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">📖</span>
-                      <div>
-                        <p className="text-sm font-bold text-gray-900">Week Lessons</p>
-                        <p className="text-xs text-gray-400">Readings, trivia & reflections</p>
-                      </div>
-                    </div>
-                    <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+              {/* Week Lessons — inline cards when series is current */}
+              {isLeader && selectedSeries.is_current && (
+                <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                  <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-1">Series Control Panel</p>
+                  <p className="text-sm text-amber-800 mb-3">Set the Week 1 start date. Every other week unlocks automatically 7 days later.</p>
+                  <div className="flex gap-2">
+                    <input
+                      type="date"
+                      value={seriesStartDateInput}
+                      onChange={(e) => setSeriesStartDateInput(e.target.value)}
+                      className="flex-1 text-sm px-3 py-2 border border-amber-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-amber-400"
+                    />
+                    <button
+                      onClick={handleSaveSeriesStartDate}
+                      disabled={savingSeriesStartDate || !seriesStartDateInput}
+                      className="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-amber-500 hover:bg-amber-600 disabled:opacity-50 transition"
+                    >
+                      {savingSeriesStartDate ? "Saving..." : "Save"}
+                    </button>
                   </div>
-                </Link>
+                  {seriesStartDate && <p className="text-xs text-amber-600 mt-2">Week 1 starts: {getWeekUnlockDate(seriesStartDate, 1)}</p>}
+                </div>
               )}
 
+              {selectedSeries.is_current && (() => {
+                const sd = seriesStartDate;
+                return (
+                  <div className="flex flex-col gap-3">
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-1">Week Lessons</p>
+                    {Array.from({ length: TOTAL_WEEKS }, (_, i) => i + 1).map((wn) => {
+                      const lesson = getSeriesWeekLesson(wn);
+                      const prog = seriesWeekProgress[wn] ?? { reading: false, trivia: false, reflection: false };
+                      const done = [prog.reading, prog.trivia, prog.reflection].filter(Boolean).length;
+                      const complete = done === 3;
+                      const previousWeek = seriesWeekProgress[wn - 1] ?? { reading: false, trivia: false, reflection: false };
+                      const previousWeekComplete = wn === 1 ? true : (previousWeek.reading && previousWeek.trivia && previousWeek.reflection);
+                      const lockState = getWeekLockState(sd, wn, isLeader, previousWeekComplete);
+                      const unlocked = lockState.unlocked;
+                      return (
+                        <div
+                          key={wn}
+                          className={`border rounded-xl shadow-sm overflow-hidden transition-all ${
+                            complete ? "border-green-200 bg-white" : unlocked ? "border-gray-200 bg-white" : "border-gray-200 bg-gray-50 opacity-55"
+                          }`}
+                        >
+                          <div className={`px-4 py-3 ${complete ? "bg-green-50" : ""}`}>
+                            <div className="flex items-center justify-between gap-3">
+                              <div className="flex-1 min-w-0">
+                                <p className="text-xs text-gray-400 font-medium">Week {wn}</p>
+                                <p className="text-sm font-semibold text-gray-900 mt-0.5">{lesson ? lesson.title : "Coming Soon"}</p>
+                                {lesson && <p className="text-xs text-gray-400 mt-0.5">{lesson.readingReference}</p>}
+                              </div>
+                              {complete ? (
+                                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-green-100 text-green-700 flex-shrink-0">✓ Done</span>
+                              ) : unlocked && lesson ? (
+                                done > 0 ? <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-600 flex-shrink-0">{done}/3</span>
+                                : <span className="text-xs text-gray-400 flex-shrink-0">Not started</span>
+                              ) : (
+                                <span className="text-xs text-gray-400 flex-shrink-0">🔒</span>
+                              )}
+                            </div>
+                            {!unlocked && <p className="text-xs text-gray-400 mt-1">{lockState.lockedMessage}</p>}
+                          </div>
+                          <div className="px-4 pb-3">
+                            {unlocked && lesson ? (
+                              <Link href={`/study-groups/${groupId}/series/week/${wn}`}>
+                                <button className="w-full py-2 rounded-xl text-sm font-bold text-white transition hover:opacity-90" style={{ backgroundColor: "#4a9b6f" }}>
+                                  {complete ? "Review" : done > 0 ? "Continue" : "Start"}
+                                </button>
+                              </Link>
+                            ) : (
+                              <button
+                                disabled
+                                className="w-full py-2 rounded-xl text-sm font-bold border border-gray-200 bg-white text-gray-400 cursor-not-allowed"
+                              >
+                                {wn === 1 && sd
+                                  ? `Starting Soon · ${formatCountdown(getWeekUnlockTimestamp(sd, 1), nowTs)}`
+                                  : `🔒 Week ${wn} Locked`}
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })()}
+
               {/* Posts list */}
-              {loadingSeriesPosts ? (
-                <p className="text-sm text-gray-400 text-center py-8">Loading posts...</p>
-              ) : seriesPosts.length === 0 ? (
+              {false && (
+                <div className="hidden">
+              false ? (
                 <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm text-center">
                   <p className="text-gray-400 text-sm">{isLeader ? "No posts yet. Add the first week post." : "No posts published yet."}</p>
                 </div>
@@ -1177,6 +1353,7 @@ export default function GroupChatPage() {
                       </div>
                     </button>
                   ))}
+                </div>
                 </div>
               )}
             </div>
@@ -1621,6 +1798,74 @@ export default function GroupChatPage() {
                   style={{ backgroundColor: SAGE }}
                 >
                   {submittingNewSeriesPost ? "Saving..." : "Save Post"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showGroupInfoModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          onClick={() => setShowGroupInfoModal(false)}
+        >
+          <div
+            className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+              <h2 className="text-base font-bold text-gray-900">{displayGroupName}</h2>
+              <button
+                onClick={() => setShowGroupInfoModal(false)}
+                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl"
+              >
+                ×
+              </button>
+            </div>
+            <div className="px-6 py-5 space-y-4">
+              <div className="rounded-xl border border-green-100 bg-green-50 px-4 py-3">
+                <p className="text-xs font-bold uppercase tracking-wide text-green-700">Official Group</p>
+                <p className="text-sm text-green-900 mt-1">This is the official Bible Buddy study group for the whole app.</p>
+              </div>
+              {group.description && (
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-400 mb-1">About</p>
+                  <p className="text-sm text-gray-700 leading-relaxed">{group.description}</p>
+                </div>
+              )}
+              <div className="grid grid-cols-1 gap-3">
+                <div className="rounded-xl border border-gray-200 px-4 py-3">
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-400">Members</p>
+                  <p className="text-sm text-gray-900 mt-1">{group.member_count === 1 ? "1 member" : `${group.member_count || 0} members`}</p>
+                </div>
+                <div className="rounded-xl border border-gray-200 px-4 py-3">
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-400">Leader</p>
+                  <p className="text-sm text-gray-900 mt-1">{group.leader_name || "Bible Buddy"}</p>
+                </div>
+                {group.current_weekly_study && (
+                  <div className="rounded-xl border border-gray-200 px-4 py-3">
+                    <p className="text-xs font-bold uppercase tracking-wide text-gray-400">Current Study</p>
+                    <p className="text-sm text-gray-900 mt-1">{group.current_weekly_study}</p>
+                  </div>
+                )}
+              </div>
+              <div className="flex gap-3 pt-1">
+                <button
+                  onClick={() => {
+                    setShowGroupInfoModal(false);
+                    setActiveTab("members");
+                  }}
+                  className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white transition hover:opacity-90"
+                  style={{ backgroundColor: SAGE }}
+                >
+                  View Members
+                </button>
+                <button
+                  onClick={() => setShowGroupInfoModal(false)}
+                  className="flex-1 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
+                >
+                  Close
                 </button>
               </div>
             </div>
