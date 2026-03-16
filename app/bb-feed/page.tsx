@@ -117,8 +117,8 @@ function parseVideoEmbed(url: string): { platform: VideoPlatform; embedUrl: stri
   if (ttVideo) return { platform: "tiktok", embedUrl: `https://www.tiktok.com/embed/v2/${ttVideo[1]}`, portrait: true };
   // TikTok short (vm.tiktok.com) — can't resolve without server, show link
   if (url.includes("tiktok.com")) return { platform: "tiktok", embedUrl: null, portrait: true };
-  // Bunny Stream embed
-  if (url.includes("iframe.mediadelivery.net/embed/")) return { platform: "bunny", embedUrl: url, portrait: false };
+  // Bunny Stream embed — portrait by default (phone uploads are vertical)
+  if (url.includes("iframe.mediadelivery.net/embed/")) return { platform: "bunny", embedUrl: url, portrait: true };
   return { platform: "unknown", embedUrl: null, portrait: false };
 }
 
@@ -973,28 +973,26 @@ function VideoBlock({ post }: { post: FeedPost }) {
         );
       }
 
-      // Portrait (TikTok, Shorts, Reels, Bunny portrait)
+      // Portrait (TikTok, Shorts, Reels, Bunny — full-width 9:16 like Instagram)
       return (
-        <div ref={containerRef} className="mt-3 flex justify-center">
-          <div className="relative rounded-2xl overflow-hidden bg-black w-full" style={{ maxWidth: "300px", height: "530px" }}>
-            {everInView && (
-              <iframe
-                ref={iframeRef}
-                src={embedSrc}
-                className="w-full h-full border-0"
-                allowFullScreen
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                scrolling="no"
-              />
-            )}
-            {!everInView && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
-                  <span className="text-white text-2xl ml-1">▶</span>
-                </div>
+        <div ref={containerRef} className="mt-3 relative w-full rounded-2xl overflow-hidden bg-black" style={{ aspectRatio: "9/16", maxHeight: "600px" }}>
+          {everInView && (
+            <iframe
+              ref={iframeRef}
+              src={embedSrc}
+              className="absolute inset-0 w-full h-full border-0"
+              allowFullScreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              scrolling="no"
+            />
+          )}
+          {!everInView && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
+                <span className="text-white text-2xl ml-1">▶</span>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       );
     }
