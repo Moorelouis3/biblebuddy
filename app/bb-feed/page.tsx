@@ -365,9 +365,14 @@ function PostComposer({ userId, userProfile, onPosted }: {
     if (tab === "video" && videoFile) {
       const ext = videoFile.name.split(".").pop() ?? "mp4";
       const path = `${userId}/${Date.now()}.${ext}`;
-      const { error: uploadErr } = await supabase.storage.from("post-media").upload(path, videoFile, { upsert: false });
+      const contentType = videoFile.type || "video/mp4";
+      const { error: uploadErr } = await supabase.storage.from("post-media").upload(path, videoFile, {
+        upsert: false,
+        contentType,
+      });
       if (uploadErr) {
-        setUploadError("Video upload failed. Please try again.");
+        console.error("Video upload error:", uploadErr);
+        setUploadError(`Video upload failed: ${uploadErr.message}`);
         setSubmitting(false);
         return;
       }
