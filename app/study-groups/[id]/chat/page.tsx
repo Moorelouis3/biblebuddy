@@ -28,6 +28,8 @@ interface Post {
   role?: string;
   liked?: boolean;
   profile_image_url?: string | null;
+  media_url?: string | null;
+  link_url?: string | null;
 }
 
 interface Member {
@@ -71,6 +73,36 @@ interface SeriesComment {
   created_at: string;
   liked?: boolean;
   profile_image_url?: string | null;
+}
+
+// ── Video URL parsing ─────────────────────────────────────────────────────────
+
+type VideoPlatform = "youtube" | "youtube_short" | "tiktok" | "instagram" | "unknown";
+function parseVideoEmbed(url: string): { platform: VideoPlatform; embedUrl: string | null; portrait: boolean } {
+  const ytWatch = url.match(/youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/);
+  if (ytWatch) return { platform: "youtube", embedUrl: `https://www.youtube.com/embed/${ytWatch[1]}?rel=0`, portrait: false };
+  const ytBe = url.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
+  if (ytBe) return { platform: "youtube", embedUrl: `https://www.youtube.com/embed/${ytBe[1]}?rel=0`, portrait: false };
+  const ytShort = url.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/);
+  if (ytShort) return { platform: "youtube_short", embedUrl: `https://www.youtube.com/embed/${ytShort[1]}?rel=0`, portrait: true };
+  const igReel = url.match(/instagram\.com\/(?:reel|p)\/([A-Za-z0-9_-]+)/);
+  if (igReel) return { platform: "instagram", embedUrl: `https://www.instagram.com/reel/${igReel[1]}/embed/`, portrait: true };
+  const ttVideo = url.match(/tiktok\.com\/@[^/?]+\/video\/(\d+)/);
+  if (ttVideo) return { platform: "tiktok", embedUrl: `https://www.tiktok.com/embed/v2/${ttVideo[1]}`, portrait: true };
+  if (url.includes("tiktok.com")) return { platform: "tiktok", embedUrl: null, portrait: true };
+  return { platform: "unknown", embedUrl: null, portrait: false };
+}
+const VIDEO_META: Record<VideoPlatform, { icon: string; label: string }> = {
+  youtube:       { icon: "▶️", label: "YouTube" },
+  youtube_short: { icon: "▶️", label: "YouTube Shorts" },
+  tiktok:        { icon: "🎵", label: "TikTok" },
+  instagram:     { icon: "📸", label: "Instagram Reel" },
+  unknown:       { icon: "🎬", label: "Video" },
+};
+
+function isUploadedVideo(url: string): boolean {
+  const lower = url.toLowerCase().split("?")[0];
+  return lower.endsWith(".mp4") || lower.endsWith(".webm") || lower.endsWith(".mov");
 }
 
 // ── Hub types ─────────────────────────────────────────────────────────────
@@ -150,6 +182,20 @@ export default function GroupChatPage() {
   const [submitting, setSubmitting] = useState(false);
   const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
 
+  // Lightbox
+  const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
+
+  // Composer media state
+  const [composerMode, setComposerMode] = useState<"text" | "photo" | "video">("text");
+  const [composerPhotoFile, setComposerPhotoFile] = useState<File | null>(null);
+  const [composerPhotoPreview, setComposerPhotoPreview] = useState<string | null>(null);
+  const [composerVideoFile, setComposerVideoFile] = useState<File | null>(null);
+  const [composerVideoPreview, setComposerVideoPreview] = useState<string | null>(null);
+  const [composerVideoDurationError, setComposerVideoDurationError] = useState(false);
+  const [composerUploadError, setComposerUploadError] = useState<string | null>(null);
+  const groupPhotoInputRef = useRef<HTMLInputElement>(null);
+  const groupVideoInputRef = useRef<HTMLInputElement>(null);
+
   // Hub categories (loaded from DB)
   const [hubCategories, setHubCategories] = useState<HubCategory[]>([]);
   const [hubView, setHubView] = useState<"articles" | "questions">("articles");
@@ -161,7 +207,12 @@ export default function GroupChatPage() {
   // Members
   const [members, setMembers] = useState<Member[]>([]);
   const [loadingMembers, setLoadingMembers] = useState(false);
+  const [loadingMoreMembers, setLoadingMoreMembers] = useState(false);
+  const [membersOffset, setMembersOffset] = useState(0);
+  const [membersHasMore, setMembersHasMore] = useState(false);
+  const [membersTotal, setMembersTotal] = useState<number | null>(null);
   const [membersSearch, setMembersSearch] = useState("");
+  const MEMBERS_PAGE = 20;
 
   // Series list
   const [seriesList, setSeriesList] = useState<Series[]>([]);
@@ -341,64 +392,125 @@ export default function GroupChatPage() {
   }
 
   async function handleSubmitPost() {
-    if (!newPostContent.trim() || !userId || !group || submitting) return;
+    const hasContent = newPostContent.trim().length > 0;
+    const hasPhoto = composerMode === "photo" && !!composerPhotoFile;
+    const hasVideo = composerMode === "video" && !!composerVideoFile && !composerVideoDurationError;
+    if (!hasContent && !hasPhoto && !hasVideo) return;
+    if (!userId || !group || submitting) return;
     if (activeTab === "members" || activeTab === "bible_studies") return;
     setSubmitting(true);
+    setComposerUploadError(null);
+
+    let mediaUrl: string | null = null;
+    let linkUrl: string | null = null;
+
+    if (hasPhoto && composerPhotoFile) {
+      const ext = composerPhotoFile.name.split(".").pop() ?? "jpg";
+      const path = `${userId}/${Date.now()}.${ext}`;
+      const { error: upErr } = await supabase.storage.from("post-media").upload(path, composerPhotoFile, { upsert: false });
+      if (upErr) {
+        setComposerUploadError("Photo upload failed. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+      const { data: pub } = supabase.storage.from("post-media").getPublicUrl(path);
+      mediaUrl = pub.publicUrl;
+    }
+
+    if (hasVideo && composerVideoFile) {
+      const ext = composerVideoFile.name.split(".").pop() ?? "mp4";
+      const path = `${userId}/${Date.now()}.${ext}`;
+      const { error: uploadErr } = await supabase.storage.from("post-media").upload(path, composerVideoFile, { upsert: false });
+      if (uploadErr) {
+        setComposerUploadError("Video upload failed. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+      const { data: pub } = supabase.storage.from("post-media").getPublicUrl(path);
+      mediaUrl = pub.publicUrl;
+    }
+
     const { data: newPost, error } = await supabase
       .from("group_posts")
-      .insert({ group_id: group.id, user_id: userId, display_name: displayName, category: activeTab, content: newPostContent.trim() })
-      .select("id, user_id, display_name, category, content, like_count, is_pinned, created_at")
+      .insert({
+        group_id: group.id,
+        user_id: userId,
+        display_name: displayName,
+        category: activeTab,
+        content: newPostContent.trim(),
+        media_url: mediaUrl,
+        link_url: linkUrl,
+      })
+      .select("id, user_id, display_name, category, content, like_count, is_pinned, created_at, media_url, link_url")
       .single();
+
     if (!error && newPost) {
       setPosts((prev) => [{ ...newPost, role: userRole, liked: false, profile_image_url: userProfileImage }, ...prev]);
       setNewPostContent("");
+      setComposerPhotoFile(null); setComposerPhotoPreview(null);
+      if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
+      setComposerVideoFile(null); setComposerVideoPreview(null); setComposerVideoDurationError(false);
+      setComposerMode("text"); setComposerUploadError(null);
     }
     setSubmitting(false);
   }
 
   // ── Members ──────────────────────────────────────────────────────────────
+  async function fetchMembersPage(offset: number): Promise<{ rows: Member[]; hasMore: boolean }> {
+    if (!group) return { rows: [], hasMore: false };
+    const { data: page } = await supabase
+      .from("group_members")
+      .select("user_id, role, display_name")
+      .eq("group_id", group.id)
+      .eq("status", "approved")
+      .order("role", { ascending: true })
+      .range(offset, offset + MEMBERS_PAGE - 1);
+
+    if (!page || page.length === 0) return { rows: [], hasMore: false };
+
+    const userIds = page.map((m) => m.user_id);
+    const { data: profiles } = await supabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url")
+      .in("user_id", userIds);
+    const profileMap: Record<string, any> = {};
+    (profiles || []).forEach((p) => { profileMap[p.user_id] = p; });
+
+    const roleOrder: Record<string, number> = { leader: 0, moderator: 1, member: 2 };
+    const rows: Member[] = page.map((m) => {
+      const p = profileMap[m.user_id];
+      return { user_id: m.user_id, display_name: p?.display_name || p?.username || m.display_name || "Member", role: m.role, profile_image_url: p?.profile_image_url ?? null };
+    });
+    rows.sort((a, b) => (roleOrder[a.role] ?? 2) - (roleOrder[b.role] ?? 2));
+    return { rows, hasMore: page.length === MEMBERS_PAGE };
+  }
+
   async function loadMembers() {
     if (!group) return;
     setLoadingMembers(true);
-
-    // Paginate past Supabase's 1000-row default limit
-    let allMemberRows: { user_id: string; role: string; display_name: string }[] = [];
-    let from = 0;
-    const PAGE = 1000;
-    while (true) {
-      const { data: page } = await supabase
+    setMembersOffset(0);
+    const [{ rows, hasMore }, { count }] = await Promise.all([
+      fetchMembersPage(0),
+      supabase
         .from("group_members")
-        .select("user_id, role, display_name")
+        .select("user_id", { count: "exact", head: true })
         .eq("group_id", group.id)
-        .eq("status", "approved")
-        .range(from, from + PAGE - 1);
-      if (!page || page.length === 0) break;
-      allMemberRows = allMemberRows.concat(page);
-      if (page.length < PAGE) break;
-      from += PAGE;
-    }
-
-    if (allMemberRows.length === 0) { setMembers([]); setLoadingMembers(false); return; }
-
-    // Fetch profiles in batches of 500 (Supabase .in() limit)
-    const userIds = allMemberRows.map((m) => m.user_id);
-    const profileMap: Record<string, any> = {};
-    for (let i = 0; i < userIds.length; i += 500) {
-      const { data: pics } = await supabase
-        .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url")
-        .in("user_id", userIds.slice(i, i + 500));
-      (pics || []).forEach((p) => { profileMap[p.user_id] = p; });
-    }
-
-    const roleOrder: Record<string, number> = { leader: 0, moderator: 1, member: 2 };
-    const result: Member[] = allMemberRows.map((m) => {
-      const p = profileMap[m.user_id];
-      return { user_id: m.user_id, display_name: p?.display_name || p?.username || m.display_name || "Member", role: m.role, profile_image_url: p?.profile_image_url || null };
-    });
-    result.sort((a, b) => (roleOrder[a.role] ?? 2) - (roleOrder[b.role] ?? 2));
-    setMembers(result);
+        .eq("status", "approved"),
+    ]);
+    setMembers(rows);
+    setMembersOffset(MEMBERS_PAGE);
+    setMembersHasMore(hasMore);
+    setMembersTotal(count ?? null);
     setLoadingMembers(false);
+  }
+
+  async function loadMoreMembers() {
+    setLoadingMoreMembers(true);
+    const { rows, hasMore } = await fetchMembersPage(membersOffset);
+    setMembers((prev) => [...prev, ...rows]);
+    setMembersOffset((prev) => prev + MEMBERS_PAGE);
+    setMembersHasMore(hasMore);
+    setLoadingMoreMembers(false);
   }
 
   // ── Series ───────────────────────────────────────────────────────────────
@@ -759,7 +871,7 @@ export default function GroupChatPage() {
           {activeTab === "members" && !selectedSeries && !selectedPost ? (
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mt-2">
               <div className="px-5 py-4 border-b border-gray-100">
-                <h2 className="text-base font-semibold text-gray-800">Members ({members.length})</h2>
+                <h2 className="text-base font-semibold text-gray-800">Members {membersTotal !== null ? `(${membersTotal})` : ""}</h2>
               </div>
               {/* Search */}
               <div className="px-4 py-3 border-b border-gray-100">
@@ -778,34 +890,51 @@ export default function GroupChatPage() {
               ) : (() => {
                 const q = membersSearch.toLowerCase();
                 const filtered = membersSearch ? members.filter((m) => m.display_name.toLowerCase().includes(q)) : members;
-                if (filtered.length === 0) return <p className="text-sm text-gray-400 text-center py-8">No results for "{membersSearch}".</p>;
+                if (filtered.length === 0) return <p className="text-sm text-gray-400 text-center py-8">No results for &ldquo;{membersSearch}&rdquo;.</p>;
                 return (
-                <div className="divide-y divide-gray-100">
-                  {filtered.map((member) => (
-                    <div key={member.user_id} className="flex items-center gap-3 px-5 py-3.5">
-                      {member.profile_image_url ? (
-                        <img src={member.profile_image_url} alt={member.display_name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
-                      ) : (
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(member.user_id) }}>
-                          {getInitial(member.display_name)}
-                        </div>
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-gray-900 truncate">{member.display_name}</p>
-                        {(member.role === "leader" || member.role === "moderator") && (
-                          <span className="text-xs text-green-600 font-medium">
-                            {member.role === "leader" ? "Leader" : "Moderator"}
-                          </span>
+                <div>
+                  <div className="divide-y divide-gray-100">
+                    {filtered.map((member) => (
+                      <div key={member.user_id} className="flex items-center gap-3 px-5 py-3.5">
+                        {member.profile_image_url ? (
+                          <img src={member.profile_image_url} alt={member.display_name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                        ) : (
+                          <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(member.user_id) }}>
+                            {getInitial(member.display_name)}
+                          </div>
                         )}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-semibold text-gray-900 truncate">{member.display_name}</p>
+                          {(member.role === "leader" || member.role === "moderator") && (
+                            <span className="text-xs text-green-600 font-medium">
+                              {member.role === "leader" ? "Leader" : "Moderator"}
+                            </span>
+                          )}
+                        </div>
+                        <Link
+                          href={`/profile/${member.user_id}`}
+                          className="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition flex-shrink-0"
+                        >
+                          View Profile
+                        </Link>
                       </div>
-                      <Link
-                        href={`/profile/${member.user_id}`}
-                        className="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition flex-shrink-0"
+                    ))}
+                  </div>
+                  {/* Load more — only show when not searching */}
+                  {!membersSearch && membersHasMore && (
+                    <div className="px-5 py-4 border-t border-gray-100">
+                      <button
+                        onClick={loadMoreMembers}
+                        disabled={loadingMoreMembers}
+                        className="w-full py-2.5 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 hover:bg-gray-50 transition disabled:opacity-50"
                       >
-                        View Profile
-                      </Link>
+                        {loadingMoreMembers ? "Loading..." : `Load more · ${members.length} of ${membersTotal ?? "?"} members`}
+                      </button>
                     </div>
-                  ))}
+                  )}
+                  {!membersSearch && !membersHasMore && membersTotal !== null && (
+                    <p className="text-xs text-gray-400 text-center py-3">{membersTotal} {membersTotal === 1 ? "member" : "members"} total</p>
+                  )}
                 </div>
                 );
               })()}
@@ -991,6 +1120,24 @@ export default function GroupChatPage() {
                 )}
               </div>
 
+              {/* Week Lessons link (shown when series is current) */}
+              {selectedSeries.is_current && (
+                <Link href={`/study-groups/${groupId}/series`}>
+                  <div className="flex items-center justify-between px-5 py-4 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition cursor-pointer">
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">📖</span>
+                      <div>
+                        <p className="text-sm font-bold text-gray-900">Week Lessons</p>
+                        <p className="text-xs text-gray-400">Readings, trivia & reflections</p>
+                      </div>
+                    </div>
+                    <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              )}
+
               {/* Posts list */}
               {loadingSeriesPosts ? (
                 <p className="text-sm text-gray-400 text-center py-8">Loading posts...</p>
@@ -1157,34 +1304,153 @@ export default function GroupChatPage() {
 
       {/* ── Post composer (chat tabs only) ──────────────────────────────── */}
       {activeTab !== "members" && activeTab !== "bible_studies" && !hubCategories.some((c) => c.id === activeTab) && !selectedPost && (
-        <div className="fixed bottom-0 left-0 right-0 z-20 bg-white border-t border-gray-200 px-4 py-3">
-          <div className="max-w-2xl mx-auto flex items-end gap-3">
-            {userProfileImage ? (
-              <img src={userProfileImage} alt={displayName} className="w-8 h-8 rounded-full object-cover flex-shrink-0" />
-            ) : (
-              <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
-                {getInitial(displayName)}
+        <div className="fixed bottom-0 left-0 right-0 z-20 bg-white border-t border-gray-200 px-4 pt-2 pb-3">
+          <div className="max-w-2xl mx-auto">
+            {/* Photo preview strip */}
+            {composerMode === "photo" && composerPhotoPreview && (
+              <div className="mb-2 relative inline-block">
+                <img src={composerPhotoPreview} alt="Preview" className="h-20 rounded-xl object-cover" />
+                <button
+                  onClick={() => { setComposerPhotoFile(null); setComposerPhotoPreview(null); setComposerMode("text"); }}
+                  className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-gray-700 rounded-full flex items-center justify-center text-white text-[9px] hover:bg-gray-900"
+                >✕</button>
               </div>
             )}
-            <div className="flex-1 bg-gray-100 rounded-2xl px-4 py-2.5 flex items-end gap-2">
-              <textarea
-                className="flex-1 bg-transparent text-sm text-gray-900 placeholder-gray-400 resize-none outline-none max-h-28"
-                placeholder={`Post in ${TABS.find((t) => t.key === activeTab)?.label ?? ""}...`}
-                rows={1}
-                value={newPostContent}
-                onChange={(e) => setNewPostContent(e.target.value)}
-                onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSubmitPost(); } }}
+            {/* Video upload strip */}
+            {composerMode === "video" && (
+              <div className="mb-2">
+                {!composerVideoPreview ? (
+                  <button
+                    onClick={() => groupVideoInputRef.current?.click()}
+                    className="w-full border-2 border-dashed border-gray-200 rounded-xl py-4 flex items-center justify-center gap-2 hover:border-green-400 hover:bg-green-50/50 transition text-sm text-gray-500 font-medium"
+                  >
+                    🎬 Tap to upload a video <span className="text-xs text-gray-400 font-normal">· MP4/MOV · max 50 MB · 90 sec</span>
+                    <button onClick={(e) => { e.stopPropagation(); setComposerMode("text"); }} className="ml-2 text-gray-400 hover:text-gray-600 text-xs">✕</button>
+                  </button>
+                ) : (
+                  <div className="relative">
+                    <video
+                      src={composerVideoPreview}
+                      controls
+                      playsInline
+                      className="w-full rounded-xl"
+                      style={{ maxHeight: "200px" }}
+                      onLoadedMetadata={(e) => {
+                        if (e.currentTarget.duration > 90) {
+                          setComposerVideoDurationError(true);
+                          setComposerUploadError("Video must be 90 seconds or shorter.");
+                        } else {
+                          setComposerVideoDurationError(false);
+                          setComposerUploadError(null);
+                        }
+                      }}
+                    />
+                    <button
+                      onClick={() => {
+                        if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
+                        setComposerVideoFile(null); setComposerVideoPreview(null);
+                        setComposerVideoDurationError(false); setComposerUploadError(null);
+                        setComposerMode("text");
+                      }}
+                      className="absolute top-1.5 right-1.5 w-6 h-6 bg-black/60 rounded-full flex items-center justify-center text-white text-[10px] hover:bg-black/80 transition"
+                    >✕</button>
+                  </div>
+                )}
+              </div>
+            )}
+            {composerUploadError && <p className="text-xs text-red-500 mb-1">{composerUploadError}</p>}
+
+            {/* Main input row */}
+            <div className="flex items-end gap-2">
+              {userProfileImage ? (
+                <img src={userProfileImage} alt={displayName} className="w-8 h-8 rounded-full object-cover flex-shrink-0" />
+              ) : (
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: userId ? avatarColor(userId) : "#aaa" }}>
+                  {getInitial(displayName)}
+                </div>
+              )}
+
+              {/* Photo/video icon buttons */}
+              <input
+                ref={groupPhotoInputRef}
+                type="file"
+                accept="image/*"
+                capture="environment"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+                  setComposerPhotoFile(file);
+                  const reader = new FileReader();
+                  reader.onload = (ev) => setComposerPhotoPreview(ev.target?.result as string);
+                  reader.readAsDataURL(file);
+                  setComposerMode("photo");
+                }}
               />
               <button
-                onClick={handleSubmitPost}
-                disabled={!newPostContent.trim() || submitting}
-                className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition disabled:opacity-40"
-                style={{ backgroundColor: "#4a9b6f" }}
-              >
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
-              </button>
+                onClick={() => { groupPhotoInputRef.current?.click(); }}
+                title="Add photo"
+                className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition text-base ${
+                  composerMode === "photo" ? "bg-green-100 text-green-700" : "text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+                }`}
+              >📷</button>
+              <input
+                ref={groupVideoInputRef}
+                type="file"
+                accept="video/mp4,video/webm,video/quicktime"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+                  if (file.size > 52428800) { setComposerUploadError("Video must be under 50 MB."); return; }
+                  if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
+                  setComposerVideoFile(file);
+                  setComposerVideoPreview(URL.createObjectURL(file));
+                  setComposerVideoDurationError(false);
+                  setComposerUploadError(null);
+                  setComposerMode("video");
+                }}
+              />
+              <button
+                onClick={() => {
+                  if (composerMode === "video") {
+                    if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
+                    setComposerVideoFile(null); setComposerVideoPreview(null); setComposerVideoDurationError(false);
+                    setComposerMode("text");
+                  } else {
+                    groupVideoInputRef.current?.click();
+                  }
+                }}
+                title="Upload a video"
+                className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition text-base ${
+                  composerMode === "video" ? "bg-green-100 text-green-700" : "text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+                }`}
+              >🎬</button>
+
+              <div className="flex-1 bg-gray-100 rounded-2xl px-4 py-2 flex items-end gap-2">
+                <textarea
+                  className="flex-1 bg-transparent text-sm text-gray-900 placeholder-gray-400 resize-none outline-none max-h-28"
+                  placeholder={
+                    composerMode === "photo" ? "Add a caption..." :
+                    composerMode === "video" ? "Say something about this video..." :
+                    `Post in ${TABS.find((t) => t.key === activeTab)?.label ?? ""}...`
+                  }
+                  rows={1}
+                  value={newPostContent}
+                  onChange={(e) => setNewPostContent(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSubmitPost(); } }}
+                />
+                <button
+                  onClick={handleSubmitPost}
+                  disabled={submitting || (!newPostContent.trim() && !composerPhotoFile && !composerVideoFile)}
+                  className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition disabled:opacity-40"
+                  style={{ backgroundColor: "#4a9b6f" }}
+                >
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1225,10 +1491,32 @@ export default function GroupChatPage() {
         </div>
       )}
 
+      {/* ── Photo lightbox ───────────────────────────────────────────────── */}
+      {lightboxUrl && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 modal-backdrop-in"
+          onClick={() => setLightboxUrl(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setLightboxUrl(null)}
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-xl transition"
+          >
+            ✕
+          </button>
+          <img
+            src={lightboxUrl}
+            alt="Full size"
+            className="max-w-full max-h-[90vh] rounded-2xl object-contain shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
       {/* ── New Series Modal ─────────────────────────────────────────────── */}
       {showNewSeriesModal && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-0 sm:px-4">
-          <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-0 sm:px-4 modal-backdrop-in">
+          <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h2 className="text-base font-bold text-gray-900">New Series</h2>
               <button onClick={() => setShowNewSeriesModal(false)} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl">×</button>
@@ -1283,8 +1571,8 @@ export default function GroupChatPage() {
 
       {/* ── New Post Modal ───────────────────────────────────────────────── */}
       {showNewPostModal && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-0 sm:px-4">
-          <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-0 sm:px-4 modal-backdrop-in">
+          <div className="bg-white rounded-t-2xl sm:rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h2 className="text-base font-bold text-gray-900">Add Week Post · Week {seriesPosts.length + 1}</h2>
               <button onClick={() => setShowNewPostModal(false)} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 text-xl">×</button>
@@ -1382,7 +1670,61 @@ export default function GroupChatPage() {
                 <button className="text-gray-300 hover:text-amber-500 transition" title="Pin post (coming soon)" disabled>📌</button>
               )}
             </div>
-            <p className="text-gray-800 text-sm mt-3 leading-relaxed whitespace-pre-wrap">{post.content}</p>
+            {post.content && <p className="text-gray-800 text-sm mt-3 leading-relaxed whitespace-pre-wrap">{post.content}</p>}
+            {post.media_url && isUploadedVideo(post.media_url) && (
+              <video
+                src={post.media_url}
+                controls
+                playsInline
+                className="mt-3 w-full rounded-xl"
+                style={{ maxHeight: "400px" }}
+              />
+            )}
+            {post.media_url && !isUploadedVideo(post.media_url) && (
+              <button
+                type="button"
+                onClick={() => setLightboxUrl(post.media_url!)}
+                className="mt-3 w-full block rounded-xl overflow-hidden focus:outline-none"
+                style={{ maxHeight: "320px" }}
+              >
+                <img
+                  src={post.media_url}
+                  alt="Post image"
+                  className="w-full object-cover"
+                  style={{ maxHeight: "320px", objectPosition: "center" }}
+                />
+              </button>
+            )}
+            {post.link_url && (() => {
+              const parsed = parseVideoEmbed(post.link_url);
+              if (parsed.embedUrl) {
+                if (!parsed.portrait) {
+                  return (
+                    <div className="mt-3 relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: "56.25%" }}>
+                      <iframe src={parsed.embedUrl} className="absolute inset-0 w-full h-full" allowFullScreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" />
+                    </div>
+                  );
+                }
+                return (
+                  <div className="mt-3 flex justify-center">
+                    <div className="relative rounded-2xl overflow-hidden bg-black w-full" style={{ maxWidth: "300px", height: "530px" }}>
+                      <iframe src={parsed.embedUrl} className="w-full h-full border-0" allowFullScreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" scrolling="no" />
+                    </div>
+                  </div>
+                );
+              }
+              const meta = VIDEO_META[parsed.platform];
+              return (
+                <a href={post.link_url} target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center gap-3 p-3 border border-gray-100 rounded-xl hover:bg-gray-50 transition">
+                  <span className="text-xl">{meta.icon}</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-semibold text-gray-700">{meta.label}</p>
+                    <p className="text-xs text-gray-400 truncate">{post.link_url}</p>
+                  </div>
+                  <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                </a>
+              );
+            })()}
             <div className="flex items-center gap-4 mt-3 pt-3 border-t border-gray-100">
               <button
                 onClick={() => handleLike(post)}

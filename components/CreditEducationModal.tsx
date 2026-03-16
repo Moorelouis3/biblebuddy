@@ -1,6 +1,7 @@
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { useState, useEffect } from "react";
+import { ModalShell } from "./ModalShell";
 
 interface CreditEducationModalProps {
   open: boolean;
@@ -22,8 +23,6 @@ export default function CreditEducationModal({ open, onClose, userId, ignoreCred
     }
   }, [open]);
 
-  if (!open) return null;
-
   const handleContinue = async () => {
     if (dontShow && userId) {
       setSaving(true);
@@ -43,7 +42,7 @@ export default function CreditEducationModal({ open, onClose, userId, ignoreCred
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/70 flex items-start justify-center overflow-y-auto p-1 py-4">
+    <ModalShell isOpen={open} onClose={onClose} backdropColor="bg-black/70" scrollable={true}>
       {/* Fireworks/confetti animation */}
       {showConfetti && (
         <div className="absolute inset-0 pointer-events-none z-50">
@@ -112,6 +111,6 @@ export default function CreditEducationModal({ open, onClose, userId, ignoreCred
           </div>
         </div>
       </div>
-    </div>
+    </ModalShell>
   );
 }

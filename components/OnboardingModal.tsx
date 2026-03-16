@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
+import { ModalShell } from "./ModalShell";
 
 type OnboardingModalProps = {
   isOpen: boolean;
@@ -76,8 +77,6 @@ export function OnboardingModal({
   }, [isOpen, initialTrafficSource, initialBibleExperienceLevel]);
 
   const progressText = useMemo(() => `${currentStep} of ${TOTAL_STEPS}`, [currentStep]);
-
-  if (!isOpen) return null;
 
   const canContinueStepTwo =
     selectedTrafficSource === "Other"
@@ -293,7 +292,7 @@ export function OnboardingModal({
   }
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/70 p-4 md:p-6 overflow-hidden">
+    <ModalShell isOpen={isOpen} zIndex="z-[200]" backdropColor="bg-black/70">
       <div
         className="relative w-full max-w-3xl rounded-[32px] bg-white shadow-2xl shadow-black/30 ring-1 ring-black/10 p-2 md:p-3"
         role="dialog"
@@ -575,6 +574,6 @@ export function OnboardingModal({
           </div>
         </div>
       </div>
-    </div>
+    </ModalShell>
   );
 }

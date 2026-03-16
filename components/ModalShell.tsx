@@ -1,0 +1,67 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+interface ModalShellProps {
+  isOpen: boolean;
+  onClose?: () => void;
+  children: React.ReactNode;
+  /** Tailwind z-index class, e.g. "z-50", "z-[200]". Default: "z-50" */
+  zIndex?: string;
+  /** When true: items-start + overflow-y-auto (tall scrollable modals). Default: false */
+  scrollable?: boolean;
+  /** Tailwind background class for the backdrop. Default: "bg-black/60" */
+  backdropColor?: string;
+}
+
+/**
+ * Wraps any modal with animated backdrop + panel (swoop-in on open, swoop-out on close).
+ * Usage: replace the outer `fixed inset-0` backdrop div with <ModalShell isOpen={...} onClose={...}>
+ * and remove the `if (!isOpen) return null` guard — ModalShell handles mounting/unmounting.
+ */
+export function ModalShell({
+  isOpen,
+  onClose,
+  children,
+  zIndex = "z-50",
+  scrollable = false,
+  backdropColor = "bg-black/60",
+}: ModalShellProps) {
+  const [mounted, setMounted] = useState(isOpen);
+  const [closing, setClosing] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => {
+    if (isOpen) {
+      clearTimeout(timerRef.current);
+      setClosing(false);
+      setMounted(true);
+    } else if (mounted) {
+      setClosing(true);
+      timerRef.current = setTimeout(() => {
+        setMounted(false);
+        setClosing(false);
+      }, 220);
+    }
+    return () => clearTimeout(timerRef.current);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
+
+  if (!mounted) return null;
+
+  return (
+    <div
+      className={`fixed inset-0 ${zIndex} ${backdropColor} flex ${
+        scrollable ? "items-start overflow-y-auto py-10" : "items-center"
+      } justify-center p-4 ${closing ? "modal-backdrop-out" : "modal-backdrop-in"}`}
+      onClick={onClose}
+    >
+      <div
+        className={closing ? "modal-panel-out" : "modal-panel-in"}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}

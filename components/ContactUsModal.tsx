@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
+import { ModalShell } from "./ModalShell";
 
 interface ContactUsModalProps {
   userId: string;
@@ -114,10 +115,8 @@ export function ContactUsModal({
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <ModalShell isOpen={isOpen} onClose={onClose} backdropColor="bg-black/50">
       <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           {/* Header */}
@@ -218,7 +217,7 @@ export function ContactUsModal({
           </div>
         </div>
       </div>
-    </div>
+    </ModalShell>
   );
 }
 

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { ModalShell } from "./ModalShell";
 
 type CreditLimitModalProps = {
   open: boolean;
@@ -136,12 +137,8 @@ export default function CreditLimitModal({
     };
   }, [open, userId, onClose, onResetComplete]);
 
-  if (!open) {
-    return null;
-  }
-
   return (
-    <div className={`fixed inset-0 bg-black/70 ${zIndexClassName} flex items-start justify-center overflow-y-auto p-4 py-10`}>
+    <ModalShell isOpen={open} onClose={onClose} zIndex={zIndexClassName} backdropColor="bg-black/70" scrollable={true}>
       <div className="relative w-full max-w-3xl md:max-w-4xl rounded-[32px] bg-white shadow-2xl shadow-black/30 ring-1 ring-black/10 p-2 md:p-3 mb-10">
         <button
           type="button"
@@ -210,6 +207,6 @@ export default function CreditLimitModal({
           </div>
         </div>
       </div>
-    </div>
+    </ModalShell>
   );
 }

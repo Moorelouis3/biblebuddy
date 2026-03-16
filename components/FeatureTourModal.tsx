@@ -2,6 +2,7 @@
 
 import { type ReactNode } from "react";
 import { LouisAvatar } from "./LouisAvatar";
+import { ModalShell } from "./ModalShell";
 
 type FeatureTourModalProps = {
   isOpen: boolean;
@@ -22,10 +23,8 @@ export function FeatureTourModal({
   onClose,
   onUnderstand,
 }: FeatureTourModalProps) {
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-50 bg-opacity-90 px-3 py-4 overflow-y-auto">
+    <ModalShell isOpen={isOpen} onClose={onClose} backdropColor="bg-blue-50/90" scrollable={true}>
       <div className="relative w-full max-w-md rounded-3xl bg-blue-100 border border-blue-200 shadow-2xl p-6 sm:p-8 my-8 flex flex-col items-center">
         <button
           type="button"
@@ -61,6 +60,6 @@ export function FeatureTourModal({
           </button>
         </div>
       </div>
-    </div>
+    </ModalShell>
   );
 }

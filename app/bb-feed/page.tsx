@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
+import { FeedOnboardingModal } from "../../components/FeedOnboardingModal";
+import { ModalShell } from "../../components/ModalShell";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -42,7 +44,7 @@ interface FeedActivity {
 }
 
 type Tab = "community" | "buddies" | "myfeed";
-type PostType = "thought" | "verse" | "prayer" | "photo" | "link";
+type PostType = "thought" | "verse" | "prayer" | "prayer_request" | "photo" | "link" | "video";
 
 interface FeedComment {
   id: string;
@@ -81,11 +83,47 @@ function timeAgo(dateStr: string): string {
 }
 
 const POST_TYPE_LABELS: Record<string, string> = {
-  thought: "💭 Thought",
-  verse: "📖 Verse",
-  prayer: "🙏 Prayer",
-  photo: "📷 Photo",
-  link: "🔗 Link",
+  thought:        "💭 Thought",
+  verse:          "📖 Verse",
+  prayer:         "🙏 Prayer",
+  prayer_request: "🙏 Prayer Request",
+  photo:          "📷 Photo",
+  link:           "🔗 Link",
+  video:          "🎬 Video",
+};
+
+// ── Video URL parsing ─────────────────────────────────────────────────────────
+
+type VideoPlatform = "youtube" | "youtube_short" | "tiktok" | "instagram" | "unknown";
+
+// Returns embedUrl + whether it's portrait (9:16) layout
+function parseVideoEmbed(url: string): { platform: VideoPlatform; embedUrl: string | null; portrait: boolean } {
+  // YouTube standard
+  const ytWatch = url.match(/youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/);
+  if (ytWatch) return { platform: "youtube", embedUrl: `https://www.youtube.com/embed/${ytWatch[1]}?rel=0`, portrait: false };
+  // youtu.be short links
+  const ytBe = url.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
+  if (ytBe) return { platform: "youtube", embedUrl: `https://www.youtube.com/embed/${ytBe[1]}?rel=0`, portrait: false };
+  // YouTube Shorts — portrait
+  const ytShort = url.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/);
+  if (ytShort) return { platform: "youtube_short", embedUrl: `https://www.youtube.com/embed/${ytShort[1]}?rel=0`, portrait: true };
+  // Instagram Reels: /reel/CODE/ or /p/CODE/
+  const igReel = url.match(/instagram\.com\/(?:reel|p)\/([A-Za-z0-9_-]+)/);
+  if (igReel) return { platform: "instagram", embedUrl: `https://www.instagram.com/reel/${igReel[1]}/embed/`, portrait: true };
+  // TikTok: /@user/video/ID
+  const ttVideo = url.match(/tiktok\.com\/@[^/?]+\/video\/(\d+)/);
+  if (ttVideo) return { platform: "tiktok", embedUrl: `https://www.tiktok.com/embed/v2/${ttVideo[1]}`, portrait: true };
+  // TikTok short (vm.tiktok.com) — can't resolve without server, show link
+  if (url.includes("tiktok.com")) return { platform: "tiktok", embedUrl: null, portrait: true };
+  return { platform: "unknown", embedUrl: null, portrait: false };
+}
+
+const VIDEO_PLATFORM_META: Record<VideoPlatform, { icon: string; label: string }> = {
+  youtube:       { icon: "▶️", label: "YouTube" },
+  youtube_short: { icon: "▶️", label: "YouTube Shorts" },
+  tiktok:        { icon: "🎵", label: "TikTok" },
+  instagram:     { icon: "📸", label: "Instagram Reel" },
+  unknown:       { icon: "🎬", label: "Video" },
 };
 
 // ── Feed ranking ──────────────────────────────────────────────────────────────
@@ -233,12 +271,12 @@ function activityLabel(type: string, data: Record<string, string | number | null
 
 // ── Post Composer ─────────────────────────────────────────────────────────────
 
-const POST_TYPES: { key: PostType; emoji: string; label: string }[] = [
+type ComposerTab = "thought" | "prayer" | "photo" | "video";
+const COMPOSER_TABS: { key: ComposerTab; emoji: string; label: string }[] = [
   { key: "thought", emoji: "💭", label: "Thought" },
-  { key: "verse",   emoji: "📖", label: "Verse"   },
   { key: "prayer",  emoji: "🙏", label: "Prayer"  },
   { key: "photo",   emoji: "📷", label: "Photo"   },
-  { key: "link",    emoji: "🔗", label: "Link"    },
+  { key: "video",   emoji: "🎬", label: "Video"   },
 ];
 
 function PostComposer({ userId, userProfile, onPosted }: {
@@ -247,42 +285,110 @@ function PostComposer({ userId, userProfile, onPosted }: {
   onPosted: (post: FeedPost) => void;
 }) {
   const [expanded, setExpanded] = useState(false);
-  const [postType, setPostType] = useState<PostType>("thought");
+  const [tab, setTab] = useState<ComposerTab>("thought");
   const [content, setContent] = useState("");
-  const [verseRef, setVerseRef] = useState("");
-  const [verseText, setVerseText] = useState("");
-  const [linkUrl, setLinkUrl] = useState("");
-  const [linkTitle, setLinkTitle] = useState("");
-  const [visibility, setVisibility] = useState<"community" | "buddies">("community");
+  const [prayerIsRequest, setPrayerIsRequest] = useState(false);
+  const [photoFile, setPhotoFile] = useState<File | null>(null);
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
+  const [videoFile, setVideoFile] = useState<File | null>(null);
+  const [videoPreview, setVideoPreview] = useState<string | null>(null);
+  const [videoDurationError, setVideoDurationError] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const photoInputRef = useRef<HTMLInputElement>(null);
+  const videoInputRef = useRef<HTMLInputElement>(null);
 
   const displayName = userProfile?.display_name || userProfile?.username || "Bible Buddy";
 
   function reset() {
-    setContent("");
-    setVerseRef("");
-    setVerseText("");
-    setLinkUrl("");
-    setLinkTitle("");
-    setPostType("thought");
-    setVisibility("community");
+    setContent(""); setPrayerIsRequest(false);
+    setPhotoFile(null); setPhotoPreview(null);
+    if (videoPreview) URL.revokeObjectURL(videoPreview);
+    setVideoFile(null); setVideoPreview(null); setVideoDurationError(false);
+    setTab("thought");
     setExpanded(false);
+    setUploadError(null);
   }
 
+  function handlePhotoSelect(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setPhotoFile(file);
+    const reader = new FileReader();
+    reader.onload = (ev) => setPhotoPreview(ev.target?.result as string);
+    reader.readAsDataURL(file);
+  }
+
+  function handleVideoSelect(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 52428800) {
+      setUploadError("Video must be under 50 MB.");
+      return;
+    }
+    if (videoPreview) URL.revokeObjectURL(videoPreview);
+    setVideoFile(file);
+    setVideoPreview(URL.createObjectURL(file));
+    setVideoDurationError(false);
+    setUploadError(null);
+  }
+
+  const canPost =
+    tab === "photo"  ? !!photoFile :
+    tab === "video"  ? !!videoFile && !videoDurationError :
+    content.trim().length > 0;
+
   async function handleSubmit() {
-    if (!content.trim() || submitting) return;
+    if (!canPost || submitting) return;
     setSubmitting(true);
+    setUploadError(null);
+
+    let mediaUrl: string | null = null;
+    let linkUrl: string | null = null;
+
+    // Upload photo to Supabase Storage
+    if (tab === "photo" && photoFile) {
+      const ext = photoFile.name.split(".").pop() ?? "jpg";
+      const path = `${userId}/${Date.now()}.${ext}`;
+      const { error: uploadErr } = await supabase.storage.from("post-media").upload(path, photoFile, { upsert: false });
+      if (uploadErr) {
+        setUploadError("Photo upload failed. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+      const { data: pub } = supabase.storage.from("post-media").getPublicUrl(path);
+      mediaUrl = pub.publicUrl;
+    }
+
+    // Upload video to Supabase Storage
+    if (tab === "video" && videoFile) {
+      const ext = videoFile.name.split(".").pop() ?? "mp4";
+      const path = `${userId}/${Date.now()}.${ext}`;
+      const { error: uploadErr } = await supabase.storage.from("post-media").upload(path, videoFile, { upsert: false });
+      if (uploadErr) {
+        setUploadError("Video upload failed. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+      const { data: pub } = supabase.storage.from("post-media").getPublicUrl(path);
+      mediaUrl = pub.publicUrl;
+    }
+
+    const postType: PostType =
+      tab === "prayer" && prayerIsRequest ? "prayer_request" :
+      tab === "prayer" ? "prayer" :
+      tab;
 
     const payload: Record<string, string | null> = {
       user_id: userId,
       post_type: postType,
-      content: content.trim(),
-      visibility,
-      verse_ref: verseRef.trim() || null,
-      verse_text: verseText.trim() || null,
-      link_url: linkUrl.trim() || null,
-      link_title: linkTitle.trim() || null,
-      media_url: null,
+      content: content.trim() || "",
+      visibility: "community",
+      verse_ref: null,
+      verse_text: null,
+      link_url: linkUrl,
+      link_title: null,
+      media_url: mediaUrl,
     };
 
     const { data, error } = await supabase
@@ -299,12 +405,11 @@ function PostComposer({ userId, userProfile, onPosted }: {
         profile_image_url: userProfile?.profile_image_url ?? null,
       } as FeedPost);
 
-      // Log activity
-      await supabase.rpc("log_feed_activity", {
+      void supabase.rpc("log_feed_activity", {
         p_activity_type: "post_created",
         p_activity_data: { post_id: data.id, post_type: postType, content_preview: content.trim().slice(0, 80) },
         p_feed_post_id: data.id,
-        p_is_public: visibility === "community",
+        p_is_public: true,
       });
 
       reset();
@@ -319,7 +424,7 @@ function PostComposer({ userId, userProfile, onPosted }: {
         className="w-full flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm hover:border-gray-300 transition text-left mb-6"
       >
         <Avatar userId={userId} displayName={displayName} imageUrl={userProfile?.profile_image_url ?? null} size={9} />
-        <span className="text-sm text-gray-400 flex-1">Share a thought, verse, or prayer...</span>
+        <span className="text-sm text-gray-400 flex-1">Share a thought, prayer, or photo...</span>
         <span className="text-xs text-white font-semibold px-3 py-1.5 rounded-full" style={{ backgroundColor: "#4a9b6f" }}>Post</span>
       </button>
     );
@@ -327,14 +432,14 @@ function PostComposer({ userId, userProfile, onPosted }: {
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6 overflow-hidden">
-      {/* Type selector */}
-      <div className="flex gap-0 border-b border-gray-100">
-        {POST_TYPES.map((t) => (
+      {/* Tab selector */}
+      <div className="flex border-b border-gray-100">
+        {COMPOSER_TABS.map((t) => (
           <button
             key={t.key}
-            onClick={() => setPostType(t.key)}
+            onClick={() => setTab(t.key)}
             className={`flex-1 py-2.5 text-xs font-semibold transition border-b-2 ${
-              postType === t.key
+              tab === t.key
                 ? "border-green-500 text-green-700 bg-green-50"
                 : "border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50"
             }`}
@@ -345,100 +450,145 @@ function PostComposer({ userId, userProfile, onPosted }: {
       </div>
 
       <div className="p-4 flex flex-col gap-3">
-        {/* Verse extras */}
-        {postType === "verse" && (
-          <>
-            <input
-              type="text"
-              value={verseRef}
-              onChange={(e) => setVerseRef(e.target.value)}
-              placeholder="Reference (e.g. John 3:16 NIV)"
-              className="w-full text-sm px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
-            />
-            <textarea
-              value={verseText}
-              onChange={(e) => setVerseText(e.target.value)}
-              placeholder="Paste verse text here..."
-              rows={2}
-              className="w-full text-sm px-3 py-2 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-green-400"
-            />
-          </>
+
+        {/* ── PRAYER: sub-type toggle ── */}
+        {tab === "prayer" && (
+          <div className="flex gap-1 bg-gray-100 rounded-lg p-0.5 self-start">
+            <button
+              onClick={() => setPrayerIsRequest(false)}
+              className={`px-3 py-1.5 rounded-md text-xs font-semibold transition ${
+                !prayerIsRequest ? "bg-white shadow-sm text-gray-800" : "text-gray-400 hover:text-gray-600"
+              }`}
+            >
+              🙏 Prayer
+            </button>
+            <button
+              onClick={() => setPrayerIsRequest(true)}
+              className={`px-3 py-1.5 rounded-md text-xs font-semibold transition ${
+                prayerIsRequest ? "bg-white shadow-sm text-gray-800" : "text-gray-400 hover:text-gray-600"
+              }`}
+            >
+              🤲 Prayer Request
+            </button>
+          </div>
         )}
 
-        {/* Link extras */}
-        {postType === "link" && (
-          <>
+        {/* ── PHOTO: file picker + preview ── */}
+        {tab === "photo" && (
+          <div>
             <input
-              type="url"
-              value={linkUrl}
-              onChange={(e) => setLinkUrl(e.target.value)}
-              placeholder="https://..."
-              className="w-full text-sm px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              ref={photoInputRef}
+              type="file"
+              accept="image/*"
+              capture="environment"
+              className="hidden"
+              onChange={handlePhotoSelect}
             />
-            <input
-              type="text"
-              value={linkTitle}
-              onChange={(e) => setLinkTitle(e.target.value)}
-              placeholder="Link title (optional)"
-              className="w-full text-sm px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
-            />
-          </>
+            {!photoPreview ? (
+              <button
+                onClick={() => photoInputRef.current?.click()}
+                className="w-full border-2 border-dashed border-gray-200 rounded-xl py-8 flex flex-col items-center gap-2 hover:border-green-400 hover:bg-green-50/50 transition"
+              >
+                <span className="text-3xl">📷</span>
+                <span className="text-sm font-semibold text-gray-600">Tap to add a photo</span>
+                <span className="text-xs text-gray-400">Choose from library or take a new one</span>
+              </button>
+            ) : (
+              <div className="relative">
+                <img src={photoPreview} alt="Preview" className="w-full rounded-xl object-cover max-h-64" />
+                <button
+                  onClick={() => { setPhotoFile(null); setPhotoPreview(null); }}
+                  className="absolute top-2 right-2 w-7 h-7 bg-black/60 rounded-full flex items-center justify-center text-white text-xs hover:bg-black/80 transition"
+                >
+                  ✕
+                </button>
+              </div>
+            )}
+          </div>
         )}
 
-        {/* Main content */}
+        {/* ── VIDEO: file upload + preview ── */}
+        {tab === "video" && (
+          <div>
+            <input
+              ref={videoInputRef}
+              type="file"
+              accept="video/mp4,video/webm,video/quicktime"
+              className="hidden"
+              onChange={handleVideoSelect}
+            />
+            {!videoPreview ? (
+              <button
+                onClick={() => videoInputRef.current?.click()}
+                className="w-full border-2 border-dashed border-gray-200 rounded-xl py-8 flex flex-col items-center gap-2 hover:border-green-400 hover:bg-green-50/50 transition"
+              >
+                <span className="text-3xl">🎬</span>
+                <span className="text-sm font-semibold text-gray-600">Tap to upload a video</span>
+                <span className="text-xs text-gray-400">MP4, MOV, or WebM · max 50 MB · 90 sec</span>
+              </button>
+            ) : (
+              <div className="relative">
+                <video
+                  src={videoPreview}
+                  controls
+                  playsInline
+                  className="w-full rounded-xl"
+                  style={{ maxHeight: "320px" }}
+                  onLoadedMetadata={(e) => {
+                    if (e.currentTarget.duration > 90) {
+                      setVideoDurationError(true);
+                      setUploadError("Video must be 90 seconds or shorter.");
+                    } else {
+                      setVideoDurationError(false);
+                      setUploadError(null);
+                    }
+                  }}
+                />
+                <button
+                  onClick={() => {
+                    if (videoPreview) URL.revokeObjectURL(videoPreview);
+                    setVideoFile(null); setVideoPreview(null);
+                    setVideoDurationError(false); setUploadError(null);
+                  }}
+                  className="absolute top-2 right-2 w-7 h-7 bg-black/60 rounded-full flex items-center justify-center text-white text-xs hover:bg-black/80 transition"
+                >
+                  ✕
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ── CAPTION / CONTENT textarea (all types) ── */}
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
           placeholder={
-            postType === "thought" ? "What's on your heart?" :
-            postType === "verse"   ? "What does this verse mean to you?" :
-            postType === "prayer"  ? "Share your prayer..." :
-            postType === "photo"   ? "Caption your photo..." :
-            "Why are you sharing this?"
+            tab === "thought" ? "What's on your heart?" :
+            tab === "prayer"  ? (prayerIsRequest ? "What would you like prayer for?" : "Share your prayer...") :
+            tab === "photo"   ? "Add a caption... (optional)" :
+            "Say something about this video... (optional)"
           }
-          rows={3}
-          autoFocus
+          rows={tab === "photo" || tab === "video" ? 2 : 3}
+          autoFocus={tab !== "photo"}
           className="w-full text-sm px-3 py-2 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-green-400"
         />
 
-        {/* Footer: visibility + actions */}
-        <div className="flex items-center justify-between gap-3 flex-wrap">
-          {/* Visibility toggle */}
-          <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-0.5">
-            <button
-              onClick={() => setVisibility("community")}
-              className={`px-3 py-1.5 rounded-md text-xs font-semibold transition ${
-                visibility === "community" ? "bg-white shadow-sm text-gray-800" : "text-gray-400 hover:text-gray-600"
-              }`}
-            >
-              🌎 Community
-            </button>
-            <button
-              onClick={() => setVisibility("buddies")}
-              className={`px-3 py-1.5 rounded-md text-xs font-semibold transition ${
-                visibility === "buddies" ? "bg-white shadow-sm text-gray-800" : "text-gray-400 hover:text-gray-600"
-              }`}
-            >
-              👥 Buddies
-            </button>
-          </div>
+        {uploadError && <p className="text-xs text-red-500">{uploadError}</p>}
 
-          <div className="flex gap-2">
-            <button
-              onClick={reset}
-              className="px-4 py-2 rounded-lg text-xs font-semibold text-gray-500 hover:bg-gray-100 transition"
-            >
+        {/* Footer */}
+        <div className="flex items-center justify-end gap-2">
+            <button onClick={reset} className="px-4 py-2 rounded-lg text-xs font-semibold text-gray-500 hover:bg-gray-100 transition">
               Cancel
             </button>
             <button
               onClick={handleSubmit}
-              disabled={!content.trim() || submitting}
+              disabled={!canPost || submitting}
               className="px-4 py-2 rounded-lg text-xs font-semibold text-white transition disabled:opacity-40"
               style={{ backgroundColor: "#4a9b6f" }}
             >
               {submitting ? "Posting..." : "Post"}
             </button>
-          </div>
         </div>
       </div>
     </div>
@@ -651,11 +801,34 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showReportModal, setShowReportModal] = useState(false);
   const [reportReason, setReportReason] = useState("");
+  const [likersOpen, setLikersOpen] = useState(false);
+  const [likers, setLikers] = useState<{ user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }[]>([]);
+  const [likersLoading, setLikersLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [deleted, setDeleted] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const displayName = post.display_name || post.username || "Bible Buddy";
   const isMyPost = post.user_id === myId;
+
+  async function openLikers() {
+    setLikersOpen(true);
+    if (likers.length > 0 && !likersLoading) return; // already loaded
+    setLikersLoading(true);
+    const { data: reactions } = await supabase
+      .from("feed_post_reactions")
+      .select("user_id")
+      .eq("post_id", post.id)
+      .eq("reaction_type", "love");
+    if (!reactions || reactions.length === 0) { setLikers([]); setLikersLoading(false); return; }
+    const ids = reactions.map((r) => r.user_id);
+    const { data: profiles } = await supabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url")
+      .in("user_id", ids);
+    setLikers(profiles || []);
+    setLikersLoading(false);
+  }
 
   function showToastMsg(msg: string) {
     setToast(msg);
@@ -707,9 +880,6 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
             <span className="text-xs text-gray-400 bg-gray-100 rounded-full px-2 py-0.5">
               {POST_TYPE_LABELS[post.post_type] || post.post_type}
             </span>
-            {post.visibility === "buddies" && (
-              <span className="text-xs text-blue-500 bg-blue-50 rounded-full px-2 py-0.5">Buddies only</span>
-            )}
           </div>
           <p className="text-xs text-gray-400">{timeAgo(post.created_at)}</p>
         </div>
@@ -747,18 +917,110 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
       </div>
 
       {/* Content */}
+      {post.post_type === "prayer_request" && (
+        <div className="flex items-center gap-1.5 mb-2">
+          <span className="text-xs font-semibold text-purple-700 bg-purple-50 border border-purple-100 px-2.5 py-0.5 rounded-full">🤲 Prayer Request</span>
+        </div>
+      )}
       {post.post_type === "verse" && post.verse_ref && (
         <p className="text-xs font-semibold text-green-700 mb-1">{post.verse_ref}</p>
       )}
       {post.verse_text && (
-        <p className="text-sm italic text-gray-600 mb-2 border-l-2 border-green-400 pl-3">"{post.verse_text}"</p>
+        <p className="text-sm italic text-gray-600 mb-2 border-l-2 border-green-400 pl-3">&ldquo;{post.verse_text}&rdquo;</p>
       )}
-      <p className="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap">{post.content}</p>
+      {post.content && (
+        <p className="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap">{post.content}</p>
+      )}
 
-      {post.media_url && (
-        <img src={post.media_url} alt="Post image" className="mt-3 rounded-lg w-full object-cover max-h-64" />
+      {/* Photo — social-media proportions, tap to expand */}
+      {post.media_url && post.post_type !== "video" && (
+        <button
+          type="button"
+          onClick={() => setLightboxOpen(true)}
+          className="mt-3 w-full block rounded-xl overflow-hidden focus:outline-none"
+          style={{ maxHeight: "320px" }}
+        >
+          <img
+            src={post.media_url}
+            alt="Post image"
+            className="w-full object-cover"
+            style={{ maxHeight: "320px", objectPosition: "center" }}
+          />
+        </button>
       )}
-      {post.link_url && (
+
+      {/* Video — direct upload */}
+      {post.post_type === "video" && post.media_url && (
+        <video
+          src={post.media_url}
+          controls
+          playsInline
+          className="mt-3 w-full rounded-xl"
+          style={{ maxHeight: "400px" }}
+        />
+      )}
+
+      {/* Video embed */}
+      {post.post_type === "video" && post.link_url && (() => {
+        const parsed = parseVideoEmbed(post.link_url);
+
+        if (parsed.embedUrl) {
+          // Landscape (YouTube standard): 16:9 responsive box
+          if (!parsed.portrait) {
+            return (
+              <div className="mt-3 relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: "56.25%" }}>
+                <iframe
+                  src={parsed.embedUrl}
+                  className="absolute inset-0 w-full h-full"
+                  allowFullScreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                />
+              </div>
+            );
+          }
+
+          // Portrait (Reels / Shorts / TikTok): centred 9:16 card, max 340px wide
+          return (
+            <div className="mt-3 flex justify-center">
+              <div
+                className="relative rounded-2xl overflow-hidden bg-black w-full"
+                style={{ maxWidth: "340px", height: "600px" }}
+              >
+                <iframe
+                  src={parsed.embedUrl}
+                  className="w-full h-full border-0"
+                  allowFullScreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  scrolling="no"
+                />
+              </div>
+            </div>
+          );
+        }
+
+        // Fallback link card for unresolvable URLs (e.g. TikTok short links)
+        const meta = VIDEO_PLATFORM_META[parsed.platform];
+        return (
+          <a
+            href={post.link_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 flex items-center gap-3 p-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition"
+          >
+            <span className="text-2xl">{meta.icon}</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-gray-800">{meta.label}</p>
+              <p className="text-xs text-gray-400 truncate">{post.link_url}</p>
+            </div>
+            <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        );
+      })()}
+
+      {/* Legacy link posts */}
+      {post.post_type === "link" && post.link_url && (
         <a
           href={post.link_url}
           target="_blank"
@@ -775,18 +1037,28 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
           const count = post.reaction_counts?.[r.key] ?? 0;
           const active = myReactions.has(`${post.id}:${r.key}`);
           return (
-            <button
-              key={r.key}
-              onClick={() => onReact(post.id, r.key)}
-              className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs border transition ${
-                active
-                  ? "border-green-400 bg-green-50 text-green-700 font-semibold"
-                  : "border-gray-200 bg-gray-50 hover:border-gray-400 hover:bg-gray-100 text-gray-600"
-              }`}
-            >
-              <span>{r.emoji}</span>
-              {count > 0 && <span className="font-medium">{count}</span>}
-            </button>
+            <div key={r.key} className={`flex items-center rounded-full text-xs border transition ${
+              active ? "border-green-400 bg-green-50" : "border-gray-200 bg-gray-50"
+            }`}>
+              <button
+                onClick={() => onReact(post.id, r.key)}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-full transition hover:scale-110 ${
+                  active ? "text-green-700 font-semibold" : "text-gray-600"
+                }`}
+              >
+                <span>{r.emoji}</span>
+              </button>
+              {count > 0 && (
+                <button
+                  onClick={openLikers}
+                  className={`pr-2.5 py-1 font-medium transition hover:underline ${
+                    active ? "text-green-700" : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  {count}
+                </button>
+              )}
+            </div>
           );
         })}
         <button
@@ -814,8 +1086,8 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
 
       {/* Delete confirmation modal */}
       {showDeleteModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={() => setShowDeleteModal(false)}>
-          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full mx-4" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 modal-backdrop-in" onClick={() => setShowDeleteModal(false)}>
+          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full mx-4 modal-panel-in" onClick={(e) => e.stopPropagation()}>
             <h3 className="font-bold text-gray-900 text-lg mb-2">Delete this post?</h3>
             <p className="text-sm text-gray-500 mb-5">This can&apos;t be undone. Your post, reactions, and comments will be permanently removed.</p>
             <div className="flex gap-3 justify-end">
@@ -839,8 +1111,8 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
 
       {/* Report modal */}
       {showReportModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={() => setShowReportModal(false)}>
-          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full mx-4" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 modal-backdrop-in" onClick={() => setShowReportModal(false)}>
+          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full mx-4 modal-panel-in" onClick={(e) => e.stopPropagation()}>
             <h3 className="font-bold text-gray-900 text-lg mb-2">Report this post</h3>
             <p className="text-sm text-gray-500 mb-4">Why are you reporting this post?</p>
             <div className="flex flex-col gap-2 mb-5">
@@ -877,6 +1149,68 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
           </div>
         </div>
       )}
+
+      {/* Photo lightbox */}
+      {lightboxOpen && post.media_url && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 modal-backdrop-in"
+          onClick={() => setLightboxOpen(false)}
+        >
+          <button
+            type="button"
+            onClick={() => setLightboxOpen(false)}
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-xl transition"
+          >
+            ✕
+          </button>
+          <img
+            src={post.media_url}
+            alt="Full size"
+            className="max-w-full max-h-[90vh] rounded-2xl object-contain shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
+      {/* Likers popup */}
+      <ModalShell isOpen={likersOpen} onClose={() => setLikersOpen(false)} zIndex="z-[110]" backdropColor="bg-black/50">
+        <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+            <h3 className="font-bold text-gray-900 text-base">❤️ Liked by</h3>
+            <button onClick={() => setLikersOpen(false)} className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 text-sm transition">✕</button>
+          </div>
+          <div className="max-h-80 overflow-y-auto py-2">
+            {likersLoading ? (
+              <p className="text-sm text-gray-400 text-center py-6">Loading...</p>
+            ) : likers.length === 0 ? (
+              <p className="text-sm text-gray-400 text-center py-6">No likes yet.</p>
+            ) : (
+              likers.map((u) => {
+                const name = u.display_name || u.username || "Bible Buddy";
+                return (
+                  <div key={u.user_id} className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition">
+                    <Link href={`/profile/${u.user_id}`} onClick={() => setLikersOpen(false)} className="flex-shrink-0">
+                      <Avatar userId={u.user_id} displayName={name} imageUrl={u.profile_image_url} size={9} />
+                    </Link>
+                    <div className="flex-1 min-w-0">
+                      <Link href={`/profile/${u.user_id}`} onClick={() => setLikersOpen(false)} className="text-sm font-semibold text-gray-900 hover:underline truncate block">
+                        {name}
+                      </Link>
+                    </div>
+                    <Link
+                      href={`/profile/${u.user_id}`}
+                      onClick={() => setLikersOpen(false)}
+                      className="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition flex-shrink-0"
+                    >
+                      View
+                    </Link>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </div>
+      </ModalShell>
 
       {/* Toast */}
       {toast && (
@@ -989,6 +1323,7 @@ export default function BbFeedPage() {
   const [myProfile, setMyProfile] = useState<{ display_name: string | null; username: string | null; profile_image_url: string | null } | null>(null);
   const [tab, setTab] = useState<Tab>("community");
   const [loading, setLoading] = useState(true);
+  const [showFeedOnboarding, setShowFeedOnboarding] = useState(false);
 
   // Buddies tab state — single ranked list (posts only shown, activities used for ranking)
   const [rankedBuddiesFeed, setRankedBuddiesFeed] = useState<RankedFeedItem[]>([]);
@@ -1012,10 +1347,13 @@ export default function BbFeedPage() {
       setUserId(user.id);
       const { data: prof } = await supabase
         .from("profile_stats")
-        .select("display_name, username, profile_image_url")
+        .select("display_name, username, profile_image_url, feed_onboarding_completed")
         .eq("user_id", user.id)
         .maybeSingle();
       setMyProfile(prof ?? null);
+      if (!prof?.feed_onboarding_completed) {
+        setShowFeedOnboarding(true);
+      }
       await loadFriendsTab(user.id);
       setLoading(false);
     }
@@ -1419,6 +1757,15 @@ export default function BbFeedPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-16">
+      {/* Feed onboarding — shown once on first visit */}
+      {userId && (
+        <FeedOnboardingModal
+          isOpen={showFeedOnboarding}
+          userId={userId}
+          onFinished={() => setShowFeedOnboarding(false)}
+        />
+      )}
+
       <div className="max-w-2xl mx-auto px-4 py-8">
 
         {/* Breadcrumb */}

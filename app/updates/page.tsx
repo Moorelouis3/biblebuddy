@@ -9,6 +9,27 @@ export default function UpdatesPage() {
         How Bible Buddy is growing to help you understand the Bible better over time.
       </p>
 
+      {/* Version 4.0 */}
+      <section>
+        <h2 className="text-xl font-semibold mt-10 mb-3">Version 4.0 — March 2026</h2>
+        <p className="text-gray-600 italic mb-4">Bible Buddy Feed — your faith community, live now</p>
+        <p className="text-gray-700 leading-relaxed mb-4">
+          Bible Buddy is no longer just a study tool — it&apos;s a community. Version 4.0 introduces the Bible Buddy Feed, a dedicated social space for Scripture-centered connection.
+        </p>
+        <ul className="list-disc ml-6 space-y-2 text-gray-700 leading-relaxed mb-4">
+          <li>Community Feed — ranked posts from all Bible Buddies on the platform</li>
+          <li>Buddy Feed — a closer view of the people you&apos;re connected with</li>
+          <li>My Feed — a personal record of everything you&apos;ve shared</li>
+          <li>Post thoughts, favorite verses, prayers, and prayer requests</li>
+          <li>React to posts with emoji reactions and comment to start conversations</li>
+          <li>Visit any Bible Buddy&apos;s profile and connect directly</li>
+          <li>Feed ranking based on recency, engagement, and what you&apos;ve been studying</li>
+        </ul>
+        <p className="text-gray-700 leading-relaxed">
+          The Bible was never meant to be studied alone. The Feed brings your community into the same place as your study tools.
+        </p>
+      </section>
+
       {/* Version 3.0 */}
       <section>
         <h2 className="text-xl font-semibold mt-10 mb-3">Version 3.0 — March 2026</h2>

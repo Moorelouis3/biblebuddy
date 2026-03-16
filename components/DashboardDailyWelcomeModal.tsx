@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { ModalShell } from "./ModalShell";
 
 // Use the same Louis avatar as CreditEducationModal
 const LOUIS_AVATAR_SRC = "/louis/louis-bible.png";
@@ -106,8 +107,6 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
     }
   };
 
-  if (!open) return null;
-
   // Developer override: force Psalm 119:105 as the verse of the day if localStorage.BB_FORCE_VERSE is set
   let verse = null;
   let intro = null;
@@ -124,7 +123,7 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-50 bg-opacity-90 px-3 py-4 overflow-y-auto">
+    <ModalShell isOpen={open} onClose={onClose} backdropColor="bg-blue-50/90" scrollable={true}>
       <div className="relative w-full max-w-md rounded-3xl bg-blue-100 border border-blue-200 shadow-2xl p-6 sm:p-8 my-8 flex flex-col items-center">
         <button
           type="button"
@@ -158,6 +157,6 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
           </button>
         </div>
       </div>
-    </div>
+    </ModalShell>
   );
 }

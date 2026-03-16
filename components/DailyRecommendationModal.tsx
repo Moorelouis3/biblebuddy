@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LouisAvatar } from "./LouisAvatar";
+import { ModalShell } from "./ModalShell";
 
 interface DailyRecommendationModalProps {
   greeting: string;
@@ -27,8 +28,6 @@ export default function DailyRecommendationModal({
   const router = useRouter();
   const [visible, setVisible] = useState(true);
 
-  if (!visible) return null;
-
   const handleClose = () => {
     setVisible(false);
     onClose();
@@ -46,7 +45,7 @@ export default function DailyRecommendationModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/70 flex items-start justify-center overflow-y-auto p-4 py-10">
+    <ModalShell isOpen={visible} onClose={handleClose} backdropColor="bg-black/70" scrollable={true}>
       <div className="relative w-full max-w-3xl md:max-w-4xl rounded-[32px] bg-white shadow-2xl shadow-black/30 ring-1 ring-black/10 p-2 md:p-3 mb-10 mt-10">
         {/* Close button */}
         <button
@@ -85,6 +84,6 @@ export default function DailyRecommendationModal({
           </div>
         </div>
       </div>
-    </div>
+    </ModalShell>
   );
 }

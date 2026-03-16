@@ -3,6 +3,7 @@
 // Matches the style of Bible Buddies modal
 
 import { FeaturedCharacter } from "../lib/featuredCharacters";
+import { ModalShell } from "./ModalShell";
 
 type FeaturedCharacterModalProps = {
   character: FeaturedCharacter | null;
@@ -16,13 +17,9 @@ export function FeaturedCharacterModal({
   if (!character) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3"
-      onClick={onClose}
-    >
+    <ModalShell isOpen={true} onClose={onClose} zIndex="z-40">
       <div
         className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-black/60 shadow-2xl shadow-black/70 p-6 sm:p-7 md:p-8"
-        onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
@@ -78,7 +75,7 @@ export function FeaturedCharacterModal({
           </div>
         )}
       </div>
-    </div>
+    </ModalShell>
   );
 }
 

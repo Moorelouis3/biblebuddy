@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ModalShell } from "./ModalShell";
 
 type UpgradeRequiredModalProps = {
   isOpen: boolean;
@@ -11,10 +12,8 @@ export default function UpgradeRequiredModal({
   isOpen,
   onClose,
 }: UpgradeRequiredModalProps) {
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
+    <ModalShell isOpen={isOpen} onClose={onClose}>
       <div className="bg-white rounded-2xl w-full max-w-md p-6 relative shadow-xl">
         <button
           type="button"
@@ -48,6 +47,6 @@ export default function UpgradeRequiredModal({
           </div>
         </div>
       </div>
-    </div>
+    </ModalShell>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { ModalShell } from "./ModalShell";
 
 interface NewNoteModalProps {
   isOpen: boolean;
@@ -10,15 +11,13 @@ interface NewNoteModalProps {
 export default function NewNoteModal({ isOpen, onClose }: NewNoteModalProps) {
   const router = useRouter();
 
-  if (!isOpen) return null;
-
   function handleGrowNote() {
     onClose();
     router.push("/notes/grow");
   }
 
   return (
-    <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+    <ModalShell isOpen={isOpen} onClose={onClose} backdropColor="bg-black/70">
       <div className="bg-white rounded-2xl w-full max-w-md p-6 relative shadow-xl">
         <button
           onClick={onClose}
@@ -55,7 +54,7 @@ export default function NewNoteModal({ isOpen, onClose }: NewNoteModalProps) {
           </button>
         </div>
       </div>
-    </div>
+    </ModalShell>
   );
 }
 

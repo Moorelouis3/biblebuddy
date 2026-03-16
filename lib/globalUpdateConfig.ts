@@ -8,4 +8,4 @@
  * 4. Deploy — every user whose last_seen_update_version doesn't match will see the popup once
  */
 
-export const CURRENT_UPDATE_VERSION = "3.0";
+export const CURRENT_UPDATE_VERSION = "4.0";

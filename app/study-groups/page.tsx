@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
+import { GroupsOnboardingModal } from "../../components/GroupsOnboardingModal";
 
 interface StudyGroup {
   id: string;
@@ -21,10 +22,25 @@ interface StudyGroup {
 export default function StudyGroupsPage() {
   const [groups, setGroups] = useState<StudyGroup[]>([]);
   const [loading, setLoading] = useState(true);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [showGroupsOnboarding, setShowGroupsOnboarding] = useState(false);
 
   useEffect(() => {
     async function loadGroups() {
       try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          setUserId(user.id);
+          const { data: profile } = await supabase
+            .from("profile_stats")
+            .select("groups_onboarding_completed")
+            .eq("user_id", user.id)
+            .maybeSingle();
+          if (!profile?.groups_onboarding_completed) {
+            setShowGroupsOnboarding(true);
+          }
+        }
+
         const { data, error } = await supabase
           .from("study_groups")
           .select("id, name, description, leader_name, category, status, member_count, max_members, current_weekly_study, cover_emoji, cover_color")
@@ -52,6 +68,15 @@ export default function StudyGroupsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Groups onboarding — shown once on first visit */}
+      {userId && (
+        <GroupsOnboardingModal
+          isOpen={showGroupsOnboarding}
+          userId={userId}
+          onFinished={() => setShowGroupsOnboarding(false)}
+        />
+      )}
+
       <div className="max-w-2xl mx-auto px-4 py-8">
 
         {/* Breadcrumb */}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { ModalShell } from "./ModalShell";
 
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
 function avatarColor(uid: string): string {
@@ -108,13 +109,9 @@ export function BuddyCelebrationModal({ me, buddy, onClose }: Props) {
       ))}
 
       {/* Overlay */}
-      <div
-        className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/50 px-4"
-        onClick={onClose}
-      >
+      <ModalShell isOpen={true} onClose={onClose} zIndex="z-[9998]" backdropColor="bg-black/50">
         <div
           className="buddy-pop-card bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center"
-          onClick={(e) => e.stopPropagation()}
         >
           <div className="text-4xl mb-2">🎉</div>
           <h2 className="text-2xl font-bold text-gray-900 mb-1">You're Buddies!</h2>
@@ -172,7 +169,7 @@ export function BuddyCelebrationModal({ me, buddy, onClose }: Props) {
             Let's Go! 🙌
           </button>
         </div>
-      </div>
+      </ModalShell>
     </>
   );
 }
