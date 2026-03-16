@@ -70,6 +70,34 @@ export default function CommentSection({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const hydrateUser = useCallback(async (userId?: string | null, email?: string | null) => {
+    if (!userId) {
+      setUser(null);
+      return;
+    }
+
+    let displayName = "";
+    try {
+      const profile = await getUsername(userId);
+      if (profile && typeof profile.username === "string" && profile.username.trim()) {
+        displayName = profile.username.trim();
+      } else if (email && typeof email === "string") {
+        displayName = email.split("@")[0];
+      } else {
+        displayName = "Anonymous";
+      }
+    } catch (err) {
+      console.error("[CommentSection] Error fetching username:", err);
+      if (email && typeof email === "string") {
+        displayName = email.split("@")[0];
+      } else {
+        displayName = "Anonymous";
+      }
+    }
+
+    setUser({ id: userId, name: displayName });
+  }, []);
+
   const fetchComments = useCallback(async () => {
     setLoading(true);
     const { data, error } = await supabase
@@ -130,31 +158,25 @@ export default function CommentSection({
   useEffect(() => {
     fetchComments();
     (async () => {
-      const { data } = await supabase.auth.getSession();
-      if (data.session && data.session.user) {
-        const userId = data.session.user.id;
-        let displayName = "";
-        try {
-          const profile = await getUsername(userId);
-          if (profile && typeof profile.username === "string" && profile.username.trim()) {
-            displayName = profile.username.trim();
-          } else if (data.session.user.email && typeof data.session.user.email === "string") {
-            displayName = data.session.user.email.split("@")[0];
-          } else {
-            displayName = "Anonymous";
-          }
-        } catch (err) {
-          console.error("[CommentSection] Error fetching username:", err);
-          if (data.session.user.email && typeof data.session.user.email === "string") {
-            displayName = data.session.user.email.split("@")[0];
-          } else {
-            displayName = "Anonymous";
-          }
-        }
-        setUser({ id: userId, name: displayName });
-      }
+      const [{ data: userData }, { data: sessionData }] = await Promise.all([
+        supabase.auth.getUser(),
+        supabase.auth.getSession(),
+      ]);
+
+      const authUser = userData.user ?? sessionData.session?.user ?? null;
+      await hydrateUser(authUser?.id ?? null, authUser?.email ?? null);
     })();
-  }, [fetchComments]);
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      await hydrateUser(session?.user?.id ?? null, session?.user?.email ?? null);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [fetchComments, hydrateUser]);
 
   const handlePost = async (e: React.FormEvent) => {
     e.preventDefault();

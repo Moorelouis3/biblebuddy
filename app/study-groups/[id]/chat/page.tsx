@@ -1589,39 +1589,46 @@ export default function GroupChatPage() {
 
       {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <div className="sticky top-0 z-20" style={{ backgroundColor: coverColor }}>
-        <div className="max-w-2xl mx-auto px-4 py-4 flex items-center gap-3">
-          {/* Back: hub item â†’ hub list â†’ post view â†’ series view â†’ series list â†’ group detail */}
-          {selectedPost ? (
-            <button onClick={() => setSelectedPost(null)} className="text-gray-700 hover:text-gray-900 transition">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-          ) : selectedSeries ? (
-            <button onClick={() => setSelectedSeries(null)} className="text-gray-700 hover:text-gray-900 transition">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-          ) : selectedHubItem ? (
-            <button onClick={() => setSelectedHubItem(null)} className="text-gray-700 hover:text-gray-900 transition">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-          ) : (
-            <Link href="/dashboard" className="text-gray-700 hover:text-gray-900 transition">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
+        <div className="max-w-2xl mx-auto px-4 py-4">
+          <div className="flex items-center gap-1 text-xs text-gray-600 font-medium mb-2 flex-wrap">
+            <Link href="/dashboard" className="hover:text-gray-900 hover:underline transition">
+              Dashboard
             </Link>
-          )}
-          <span className="text-xl">{group.cover_emoji || "🤝"}</span>
-          <div className="flex-1 min-w-0">
-            <h1 className="text-lg font-bold text-gray-900 truncate">
-              {selectedHubItem ? selectedHubItem.title : displayGroupName}
-            </h1>
-            {!selectedHubItem && (
+            <span>/</span>
+            <span className="text-gray-900">Bible Study Group</span>
+            {selectedSeries && (
+              <>
+                <span>/</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedSeries(null);
+                    setSelectedSeriesWeek(null);
+                    setSelectedPost(null);
+                  }}
+                  className="text-gray-900 hover:underline"
+                >
+                  {selectedSeries.title}
+                </button>
+              </>
+            )}
+            {selectedPost && (
+              <>
+                <span>/</span>
+                <button
+                  type="button"
+                  onClick={() => setSelectedPost(null)}
+                  className="text-gray-900 hover:underline"
+                >
+                  {selectedPost.title}
+                </button>
+              </>
+            )}
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-xl">{group.cover_emoji || "🤝"}</span>
+            <div className="flex-1 min-w-0">
+              <h1 className="text-lg font-bold text-gray-900 truncate">{displayGroupName}</h1>
               <div className="flex items-center gap-3 flex-wrap">
                 <button
                   onClick={() => setShowGroupInfoModal(true)}
@@ -1635,95 +1642,98 @@ export default function GroupChatPage() {
                 >
                   👥 See All Members
                 </button>
+                {selectedHubItem && (
+                  <span className="text-xs text-gray-500 truncate max-w-full">
+                    {selectedHubItem.title}
+                  </span>
+                )}
               </div>
-            )}
+            </div>
           </div>
         </div>
 
         {/* Header navigation */}
-        {!selectedHubItem && (
-          <div className="max-w-2xl mx-auto px-4 pb-3">
-            {(() => {
-              const primaryTabs = [
-                { key: "home", label: "Home" },
-                { key: "bible_studies", label: "Bible Studies" },
-                { key: "prayer", label: "Prayer" },
-                { key: "qa", label: "Q&A" },
-              ];
-              const moreItems = [
-                { key: "members", label: "Members", isHub: false },
-                ...hubCategories.map((cat) => ({
-                  key: cat.id,
-                  label: `${cat.emoji} ${cat.name}`,
-                  isHub: true,
-                })),
-              ];
-              const moreIsActive = activeTab === "members" || hubCategories.some((cat) => cat.id === activeTab);
-              return (
-                <div className="relative">
-                  <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pr-1">
-                    {primaryTabs.map((tab) => {
-                      const isActive = activeTab === tab.key;
-                      return (
-                        <button
-                          key={tab.key}
-                          type="button"
-                          onClick={() => {
-                            if (tab.key === "bible_studies") {
-                              setSelectedSeries(null);
-                              setSelectedSeriesWeek(null);
-                              setSelectedPost(null);
-                            }
-                            setActiveTab(tab.key);
-                            setShowMoreNav(false);
-                          }}
-                          className="px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition"
-                          style={{
-                            backgroundColor: isActive ? "#ffffff" : "rgba(255,255,255,0.82)",
-                            borderColor: isActive ? "#d9c7b4" : "#e5e7eb",
-                            color: isActive ? "#8d5d38" : "#374151",
-                          }}
+        <div className="max-w-2xl mx-auto px-4 pb-3">
+          {(() => {
+            const primaryTabs = [
+              { key: "home", label: "Home" },
+              { key: "bible_studies", label: "Bible Studies" },
+            ];
+            const moreItems = [
+              { key: "prayer", label: "🤲 Prayer Request", isHub: false },
+              { key: "qa", label: "❓ Q&A", isHub: false },
+              ...hubCategories.map((cat) => ({
+                key: cat.id,
+                label: `${cat.emoji} ${cat.name}`,
+                isHub: true,
+              })),
+            ];
+            const moreIsActive = activeTab === "prayer" || activeTab === "qa" || hubCategories.some((cat) => cat.id === activeTab);
+            return (
+              <div className="relative">
+                <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pr-1">
+                  {primaryTabs.map((tab) => {
+                    const isActive = activeTab === tab.key;
+                    return (
+                      <button
+                        key={tab.key}
+                        type="button"
+                        onClick={() => {
+                          if (tab.key === "bible_studies") {
+                            setSelectedSeries(null);
+                            setSelectedSeriesWeek(null);
+                            setSelectedPost(null);
+                          }
+                          setSelectedHubItem(null);
+                          setActiveTab(tab.key);
+                          setShowMoreNav(false);
+                        }}
+                        className="px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition"
+                        style={{
+                          backgroundColor: isActive ? "#ffffff" : "rgba(255,255,255,0.82)",
+                          borderColor: isActive ? "#d9c7b4" : "#e5e7eb",
+                          color: isActive ? "#8d5d38" : "#374151",
+                        }}
+                      >
+                        {tab.label}
+                      </button>
+                    );
+                  })}
+                  {moreItems.length > 0 && (
+                    <div className="flex-shrink-0">
+                      <button
+                        ref={moreButtonRef}
+                        type="button"
+                        onClick={() => {
+                          setShowMoreNav((v) => !v);
+                        }}
+                        className="px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition flex items-center gap-2"
+                        style={{
+                          backgroundColor: moreIsActive || showMoreNav ? "#ffffff" : "rgba(255,255,255,0.82)",
+                          borderColor: moreIsActive || showMoreNav ? "#d9c7b4" : "#e5e7eb",
+                          color: moreIsActive || showMoreNav ? "#8d5d38" : "#374151",
+                        }}
+                      >
+                        <span>More</span>
+                        <svg
+                          className={`w-4 h-4 transition-transform ${showMoreNav ? "rotate-180" : ""}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
                         >
-                          {tab.label}
-                        </button>
-                      );
-                    })}
-                    {moreItems.length > 0 && (
-                      <div className="flex-shrink-0">
-                        <button
-                          ref={moreButtonRef}
-                          type="button"
-                          onClick={() => {
-                            setShowMoreNav((v) => !v);
-                          }}
-                          className="px-4 py-2 rounded-full text-sm font-semibold border shadow-sm whitespace-nowrap transition flex items-center gap-2"
-                          style={{
-                            backgroundColor: moreIsActive || showMoreNav ? "#ffffff" : "rgba(255,255,255,0.82)",
-                            borderColor: moreIsActive || showMoreNav ? "#d9c7b4" : "#e5e7eb",
-                            color: moreIsActive || showMoreNav ? "#8d5d38" : "#374151",
-                          }}
-                        >
-                          <span>More</span>
-                          <svg
-                            className={`w-4 h-4 transition-transform ${showMoreNav ? "rotate-180" : ""}`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </button>
-                      </div>
-                    )}
-                  </div>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    </div>
+                  )}
                 </div>
-              );
-            })()}
-          </div>
-        )}
+              </div>
+            );
+          })()}
+        </div>
       </div>
 
-      {showMoreNav && moreMenuPosition && !selectedHubItem && (
+      {showMoreNav && moreMenuPosition && (
         <>
           <div className="fixed inset-0 z-10" onClick={() => setShowMoreNav(false)} />
           <div
@@ -1731,7 +1741,8 @@ export default function GroupChatPage() {
             style={{ top: moreMenuPosition.top, left: moreMenuPosition.left }}
           >
             {[
-              { key: "members", label: "Members", isHub: false },
+              { key: "prayer", label: "🤲 Prayer Request", isHub: false },
+              { key: "qa", label: "❓ Q&A", isHub: false },
               ...hubCategories.map((cat) => ({
                 key: cat.id,
                 label: `${cat.emoji} ${cat.name}`,
@@ -1744,6 +1755,7 @@ export default function GroupChatPage() {
                   key={item.key}
                   type="button"
                   onClick={() => {
+                    setSelectedHubItem(null);
                     setActiveTab(item.key);
                     if (item.isHub) setHubView("articles");
                     setShowMoreNav(false);
@@ -1768,13 +1780,15 @@ export default function GroupChatPage() {
 
         {/* â”€â”€ Hub article viewer (iframe, full-width, no padding) â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {selectedHubItem && (
-          <iframe
-            key={selectedHubItem.path}
-            src={selectedHubItem.path}
-            title={selectedHubItem.title}
-            className="w-full border-0 block"
-            style={{ height: "calc(100vh - 60px)", minHeight: 500 }}
-          />
+          <div className="w-full">
+            <iframe
+              key={selectedHubItem.path}
+              src={selectedHubItem.path}
+              title={selectedHubItem.title}
+              className="w-full border-0 block bg-white"
+              style={{ height: "calc(100vh - 118px)", minHeight: 600 }}
+            />
+          </div>
         )}
 
         {!selectedHubItem && <div className="max-w-2xl mx-auto px-4 py-4">
@@ -1804,7 +1818,16 @@ export default function GroupChatPage() {
                   </span>
                 </div>
                 <div className="px-5 py-4">
-                  <p className="text-lg font-bold text-gray-900">{cardState.headline}</p>
+                  {seriesStartDate && new Date(seriesStartDate).getTime() > nowTs ? (
+                    <p className="text-lg">
+                      <span className="font-semibold text-gray-900">Series starts in </span>
+                      <span className="font-bold" style={{ color: "#d62828" }}>
+                        {formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}
+                      </span>
+                    </p>
+                  ) : (
+                    <p className="text-lg font-bold" style={{ color: "#d62828" }}>{cardState.headline}</p>
+                  )}
                   <p className="text-sm text-gray-600 mt-1">{cardState.detail}</p>
                   <div
                     className="mt-4 inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl"
@@ -2139,9 +2162,11 @@ export default function GroupChatPage() {
                         {seriesStartDate && (
                           <p className="text-sm text-gray-700 mt-3">
                             <span className="font-semibold text-gray-900">Bible Study Series </span>
-                            {new Date(seriesStartDate).getTime() > nowTs
-                              ? `starts in ${formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}`
-                              : "started"}{" "}
+                            <span className="font-bold" style={{ color: "#d62828" }}>
+                              {new Date(seriesStartDate).getTime() > nowTs
+                                ? `starts in ${formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}`
+                                : "started"}
+                            </span>{" "}
                             <span className="text-gray-500">({formatDateTimeLabel(seriesStartDate)})</span>
                           </p>
                         )}
@@ -2275,10 +2300,10 @@ export default function GroupChatPage() {
                     </div>
                   ) : (
                     <div className="rounded-xl border border-amber-200 bg-white px-4 py-3">
-                      <p className="text-sm font-semibold text-gray-900">
+                      <p className="text-sm font-semibold" style={{ color: "#d62828" }}>
                         Series starts in {formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}
                       </p>
-                      <p className="text-xs text-amber-700 mt-1">{formatDateTimeLabel(seriesStartDate)}</p>
+                      <p className="text-xs mt-1" style={{ color: "#d62828" }}>{formatDateTimeLabel(seriesStartDate)}</p>
                       <button
                         onClick={() => setEditingSeriesStart(true)}
                         className="mt-3 text-xs font-semibold text-amber-700 hover:text-amber-900 transition"
@@ -2402,19 +2427,6 @@ export default function GroupChatPage() {
           /* â”€â”€ BIBLE STUDIES â€” SERIES LIST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
           ) : activeTab === "bible_studies" ? (
             <div className="flex flex-col gap-4">
-              {/* Leader header */}
-              {isLeader && (
-                <div className="flex justify-end">
-                  <button
-                    onClick={() => setShowNewSeriesModal(true)}
-                    className="px-4 py-2 rounded-xl text-white text-sm font-semibold transition hover:opacity-90"
-                    style={{ backgroundColor: SAGE }}
-                  >
-                    + New Series
-                  </button>
-                </div>
-              )}
-
               {loadingSeries ? (
                 <p className="text-sm text-gray-400 text-center py-8">Loading...</p>
               ) : (
@@ -2423,6 +2435,10 @@ export default function GroupChatPage() {
                     const liveSeries = index === 0 ? (seriesList.find((series) => series.is_current) ?? seriesList[0] ?? null) : null;
                     const isLive = index === 0 && !!liveSeries;
                     const startLabel = isLive && currentSeriesStartAt ? formatDateTimeLabel(currentSeriesStartAt) : null;
+                    const startCountdown =
+                      isLive && currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs
+                        ? formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)
+                        : null;
                     return (
                       <button
                         key={planned.key}
@@ -2448,8 +2464,16 @@ export default function GroupChatPage() {
                                 <p className="text-xs text-gray-500 mt-1 line-clamp-2">
                                   {liveSeries?.description || "A guided Bible Buddy study through Luke 4:1-30 with notes, trivia, reflection, and group discussion."}
                                 </p>
-                                <p className="text-xs text-gray-400 mt-2">
-                                  {startLabel ? `Starts ${startLabel}` : "Start date coming soon"}
+                                <p className="text-xs mt-2">
+                                  {startCountdown ? (
+                                    <>
+                                      <span className="text-gray-600">Series starts in </span>
+                                      <span className="font-bold" style={{ color: "#d62828" }}>{startCountdown}</span>
+                                      {startLabel && <span className="text-gray-500"> ({startLabel})</span>}
+                                    </>
+                                  ) : (
+                                    <span style={{ color: "#d62828" }}>{startLabel ? `Starts ${startLabel}` : "Start date coming soon"}</span>
+                                  )}
                                 </p>
                               </>
                             ) : (
@@ -2524,10 +2548,7 @@ export default function GroupChatPage() {
                         style={{ backgroundColor: bg, borderColor }}
                       >
                         <div className="min-w-0 flex-1">
-                          <p className="font-bold text-gray-900 text-[15px] leading-snug">
-                            <span className="mr-2">{item.emoji}</span>
-                            {item.title}
-                          </p>
+                          <p className="font-bold text-gray-900 text-[15px] leading-snug">{item.title}</p>
                           <p className="text-gray-600 text-sm mt-1">{item.subtitle}</p>
                         </div>
                         <div className="flex items-center gap-3 mt-3 pt-3 border-t border-black/5">
