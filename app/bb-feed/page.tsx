@@ -945,7 +945,7 @@ function VideoBlock({ post }: { post: FeedPost }) {
       // Bunny: autoplay=true + muted=true so browser allows it. Mount iframe only
       // when inView so it autoplays on scroll-in and stops on scroll-out.
       const embedSrc = isBunny
-        ? `${parsed.embedUrl}?autoplay=true&muted=true&loop=false&preload=true`
+        ? `${parsed.embedUrl}?autoplay=1&muted=1&loop=1&preload=true&controls=false`
         : parsed.embedUrl;
 
       if (!isPortrait) {
