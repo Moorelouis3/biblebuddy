@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
+import * as tus from "tus-js-client";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 import { FeedOnboardingModal } from "../../components/FeedOnboardingModal";
@@ -95,7 +96,7 @@ const POST_TYPE_LABELS: Record<string, string> = {
 
 // ── Video URL parsing ─────────────────────────────────────────────────────────
 
-type VideoPlatform = "youtube" | "youtube_short" | "tiktok" | "instagram" | "unknown";
+type VideoPlatform = "youtube" | "youtube_short" | "tiktok" | "instagram" | "bunny" | "unknown";
 
 // Returns embedUrl + whether it's portrait (9:16) layout
 function parseVideoEmbed(url: string): { platform: VideoPlatform; embedUrl: string | null; portrait: boolean } {
@@ -116,6 +117,8 @@ function parseVideoEmbed(url: string): { platform: VideoPlatform; embedUrl: stri
   if (ttVideo) return { platform: "tiktok", embedUrl: `https://www.tiktok.com/embed/v2/${ttVideo[1]}`, portrait: true };
   // TikTok short (vm.tiktok.com) — can't resolve without server, show link
   if (url.includes("tiktok.com")) return { platform: "tiktok", embedUrl: null, portrait: true };
+  // Bunny Stream embed
+  if (url.includes("iframe.mediadelivery.net/embed/")) return { platform: "bunny", embedUrl: url, portrait: false };
   return { platform: "unknown", embedUrl: null, portrait: false };
 }
 
@@ -124,6 +127,7 @@ const VIDEO_PLATFORM_META: Record<VideoPlatform, { icon: string; label: string }
   youtube_short: { icon: "▶️", label: "YouTube Shorts" },
   tiktok:        { icon: "🎵", label: "TikTok" },
   instagram:     { icon: "📸", label: "Instagram Reel" },
+  bunny:         { icon: "🎬", label: "Video" },
   unknown:       { icon: "🎬", label: "Video" },
 };
 
@@ -296,6 +300,7 @@ function PostComposer({ userId, userProfile, onPosted }: {
   const [videoDurationError, setVideoDurationError] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [uploadProgress, setUploadProgress] = useState<number | null>(null);
   const photoInputRef = useRef<HTMLInputElement>(null);
   const videoInputRef = useRef<HTMLInputElement>(null);
 
@@ -323,8 +328,8 @@ function PostComposer({ userId, userProfile, onPosted }: {
   function handleVideoSelect(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (file.size > 52428800) {
-      setUploadError("Video must be under 50 MB.");
+    if (file.size > 3221225472) {
+      setUploadError("Video must be under 3 GB.");
       return;
     }
     if (videoPreview) URL.revokeObjectURL(videoPreview);
@@ -361,23 +366,55 @@ function PostComposer({ userId, userProfile, onPosted }: {
       mediaUrl = pub.publicUrl;
     }
 
-    // Upload video to Supabase Storage
+    // Upload video to Bunny Stream via TUS
     if (tab === "video" && videoFile) {
-      const ext = videoFile.name.split(".").pop() ?? "mp4";
-      const path = `${userId}/${Date.now()}.${ext}`;
-      const contentType = videoFile.type || "video/mp4";
-      const { error: uploadErr } = await supabase.storage.from("post-media").upload(path, videoFile, {
-        upsert: false,
-        contentType,
-      });
-      if (uploadErr) {
-        console.error("Video upload error:", uploadErr);
-        setUploadError(`Video upload failed: ${uploadErr.message}`);
+      setUploadProgress(0);
+      try {
+        // Get video slot + TUS signature from our API
+        const credRes = await fetch("/api/bunny/video", { method: "POST" });
+        if (!credRes.ok) {
+          const err = await credRes.json();
+          throw new Error(err.error || "Failed to create video slot");
+        }
+        const { videoId, libraryId, expiration, signature } = await credRes.json();
+
+        // Upload directly to Bunny via TUS (resumable, no size limit)
+        const embedUrl: string = await new Promise((resolve, reject) => {
+          const upload = new tus.Upload(videoFile, {
+            endpoint: "https://video.bunnycdn.com/tusupload",
+            retryDelays: [0, 3000, 5000, 10000, 20000],
+            headers: {
+              AuthorizationSignature: signature,
+              AuthorizationExpire: String(expiration),
+              VideoId: videoId,
+              LibraryId: String(libraryId),
+            },
+            metadata: {
+              filetype: videoFile.type,
+              title: `bb-${Date.now()}`,
+            },
+            onProgress(bytesUploaded, bytesTotal) {
+              setUploadProgress(Math.round((bytesUploaded / bytesTotal) * 100));
+            },
+            onSuccess() {
+              resolve(`https://iframe.mediadelivery.net/embed/${libraryId}/${videoId}`);
+            },
+            onError(err) {
+              reject(err);
+            },
+          });
+          upload.start();
+        });
+
+        linkUrl = embedUrl;
+        setUploadProgress(null);
+      } catch (err) {
+        console.error("Bunny video upload error:", err);
+        setUploadError(`Video upload failed: ${err instanceof Error ? err.message : "Unknown error"}`);
         setSubmitting(false);
+        setUploadProgress(null);
         return;
       }
-      const { data: pub } = supabase.storage.from("post-media").getPublicUrl(path);
-      mediaUrl = pub.publicUrl;
     }
 
     const postType: PostType =
@@ -540,7 +577,7 @@ function PostComposer({ userId, userProfile, onPosted }: {
               >
                 <span className="text-3xl">🎬</span>
                 <span className="text-sm font-semibold text-gray-600">Tap to upload a video</span>
-                <span className="text-xs text-gray-400">MP4, MOV, or WebM · max 50 MB</span>
+                <span className="text-xs text-gray-400">MP4, MOV, or WebM · up to 3 GB</span>
               </button>
             ) : (
               <div className="relative">
@@ -603,9 +640,23 @@ function PostComposer({ userId, userProfile, onPosted }: {
               className="px-4 py-2 rounded-lg text-xs font-semibold text-white transition disabled:opacity-40"
               style={{ backgroundColor: "#4a9b6f" }}
             >
-              {submitting ? "Posting..." : "Post"}
+              {submitting && tab === "video" && uploadProgress !== null
+                ? `Uploading ${uploadProgress}%`
+                : submitting ? "Posting..." : "Post"}
             </button>
         </div>
+        {/* Video upload progress bar */}
+        {tab === "video" && uploadProgress !== null && (
+          <div className="px-4 pb-3">
+            <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
+              <div
+                className="h-full rounded-full transition-all duration-300"
+                style={{ width: `${uploadProgress}%`, backgroundColor: "#4a9b6f" }}
+              />
+            </div>
+            <p className="text-xs text-gray-400 mt-1 text-center">Uploading to Bunny Stream… {uploadProgress}%</p>
+          </div>
+        )}
       </div>
     </div>
   );
