@@ -203,7 +203,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
           {user && (
             <button
               onClick={(e) => { e.stopPropagation(); setShareVerse({ number: v.number, text: v.text }); setShareContent(""); }}
-              className="opacity-0 group-hover:opacity-100 ml-2 flex-shrink-0 transition-opacity text-gray-400 hover:text-green-600 p-1 rounded"
+              className="opacity-0 group-hover:opacity-100 [@media(hover:none)]:opacity-100 ml-2 flex-shrink-0 transition-opacity text-gray-400 active:text-green-600 p-1 rounded"
               title={`Share verse ${v.number} to Feed`}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
