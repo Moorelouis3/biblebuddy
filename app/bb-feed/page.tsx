@@ -433,17 +433,17 @@ function PostComposer({ userId, userProfile, onPosted }: {
     return (
       <button
         onClick={() => setExpanded(true)}
-        className="w-full flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm hover:border-gray-300 transition text-left mb-6"
+        className="w-full flex items-center gap-3 px-4 py-3.5 hover:bg-gray-50 transition text-left"
       >
-        <Avatar userId={userId} displayName={displayName} imageUrl={userProfile?.profile_image_url ?? null} size={9} />
-        <span className="text-sm text-gray-400 flex-1">Share a thought, prayer, or photo...</span>
-        <span className="text-xs text-white font-semibold px-3 py-1.5 rounded-full" style={{ backgroundColor: "#4a9b6f" }}>Post</span>
+        <Avatar userId={userId} displayName={displayName} imageUrl={userProfile?.profile_image_url ?? null} size={10} />
+        <span className="text-[15px] text-gray-400 flex-1">What&apos;s on your heart?</span>
+        <span className="text-xs text-white font-semibold px-4 py-2 rounded-full" style={{ backgroundColor: "#4a9b6f" }}>Post</span>
       </button>
     );
   }
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6 overflow-hidden">
+    <div className="bg-white overflow-hidden">
       {/* Tab selector */}
       <div className="flex border-b border-gray-100">
         {COMPOSER_TABS.map((t) => (
@@ -872,230 +872,206 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
   }
 
   if (deleted) {
-    return <div className="rounded-xl transition-all duration-500 opacity-0 h-0 overflow-hidden" />;
+    return <div className="transition-all duration-500 opacity-0 h-0 overflow-hidden" />;
   }
-  const REACTIONS = [
-    { key: "love", emoji: "❤️", label: "Love" },
-  ];
+  const loveCount = post.reaction_counts?.["love"] ?? 0;
+  const loveActive = myReactions.has(`${post.id}:love`);
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm relative">
-      {/* Header */}
-      <div className="flex items-center gap-3 mb-3">
-        <Link href={`/profile/${post.user_id}`}>
-          <Avatar userId={post.user_id} displayName={displayName} imageUrl={post.profile_image_url} />
-        </Link>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            <Link href={`/profile/${post.user_id}`} className="font-semibold text-sm text-gray-900 hover:underline truncate">
-              {displayName}
-            </Link>
-            <span className="text-xs text-gray-400 bg-gray-100 rounded-full px-2 py-0.5">
-              {POST_TYPE_LABELS[post.post_type] || post.post_type}
-            </span>
-          </div>
-          <p className="text-xs text-gray-400">{timeAgo(post.created_at)}</p>
+    <div className="relative px-4 pt-4 pb-1 border-b border-gray-100">
+      <div className="flex gap-3">
+
+        {/* Left column — avatar */}
+        <div className="flex-shrink-0">
+          <Link href={`/profile/${post.user_id}`}>
+            <Avatar userId={post.user_id} displayName={displayName} imageUrl={post.profile_image_url} size={10} />
+          </Link>
         </div>
-        {/* 3-dot menu */}
-        <div className="relative flex-shrink-0">
-          <button
-            onClick={() => setMenuOpen((v) => !v)}
-            className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition text-lg leading-none"
-          >
-            ···
-          </button>
-          {menuOpen && (
-            <>
-              <div className="fixed inset-0 z-10" onClick={() => setMenuOpen(false)} />
-              <div className="absolute right-0 top-8 z-20 bg-white border border-gray-200 rounded-xl shadow-lg py-1 min-w-[150px]">
-                {isMyPost ? (
-                  <button
-                    onClick={() => { setMenuOpen(false); setShowDeleteModal(true); }}
-                    className="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition"
-                  >
-                    🗑️ Delete post
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => { setMenuOpen(false); setShowReportModal(true); }}
-                    className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition"
-                  >
-                    🚩 Report post
-                  </button>
-                )}
-              </div>
-            </>
-          )}
-        </div>
-      </div>
 
-      {/* Content */}
-      {post.post_type === "prayer_request" && (
-        <div className="flex items-center gap-1.5 mb-2">
-          <span className="text-xs font-semibold text-purple-700 bg-purple-50 border border-purple-100 px-2.5 py-0.5 rounded-full">🤲 Prayer Request</span>
-        </div>
-      )}
-      {post.post_type === "verse" && post.verse_ref && (
-        <p className="text-xs font-semibold text-green-700 mb-1">{post.verse_ref}</p>
-      )}
-      {post.verse_text && (
-        <p className="text-sm italic text-gray-600 mb-2 border-l-2 border-green-400 pl-3">&ldquo;{post.verse_text}&rdquo;</p>
-      )}
-      {post.content && (
-        <p className="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap">{post.content}</p>
-      )}
+        {/* Right column — all content */}
+        <div className="flex-1 min-w-0 pb-3">
 
-      {/* Photo — social-media proportions, tap to expand */}
-      {post.media_url && post.post_type !== "video" && (
-        <button
-          type="button"
-          onClick={() => setLightboxOpen(true)}
-          className="mt-3 w-full block rounded-xl overflow-hidden focus:outline-none"
-          style={{ maxHeight: "320px" }}
-        >
-          <img
-            src={post.media_url}
-            alt="Post image"
-            className="w-full object-cover"
-            style={{ maxHeight: "320px", objectPosition: "center" }}
-          />
-        </button>
-      )}
-
-      {/* Video — direct upload */}
-      {post.post_type === "video" && post.media_url && (
-        <video
-          src={post.media_url}
-          controls
-          playsInline
-          className="mt-3 w-full rounded-xl"
-          style={{ maxHeight: "400px" }}
-        />
-      )}
-
-      {/* Video embed */}
-      {post.post_type === "video" && post.link_url && (() => {
-        const parsed = parseVideoEmbed(post.link_url);
-
-        if (parsed.embedUrl) {
-          // Landscape (YouTube standard): 16:9 responsive box
-          if (!parsed.portrait) {
-            return (
-              <div className="mt-3 relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: "56.25%" }}>
-                <iframe
-                  src={parsed.embedUrl}
-                  className="absolute inset-0 w-full h-full"
-                  allowFullScreen
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                />
-              </div>
-            );
-          }
-
-          // Portrait (Reels / Shorts / TikTok): centred 9:16 card, max 340px wide
-          return (
-            <div className="mt-3 flex justify-center">
-              <div
-                className="relative rounded-2xl overflow-hidden bg-black w-full"
-                style={{ maxWidth: "340px", height: "600px" }}
-              >
-                <iframe
-                  src={parsed.embedUrl}
-                  className="w-full h-full border-0"
-                  allowFullScreen
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  scrolling="no"
-                />
-              </div>
+          {/* Header row */}
+          <div className="flex items-start justify-between mb-1">
+            <div className="flex items-center gap-1.5 flex-wrap leading-none">
+              <Link href={`/profile/${post.user_id}`} className="font-semibold text-[15px] text-gray-900 hover:underline">
+                {displayName}
+              </Link>
+              <span className="text-xs text-gray-400">{timeAgo(post.created_at)}</span>
             </div>
-          );
-        }
-
-        // Fallback link card for unresolvable URLs (e.g. TikTok short links)
-        const meta = VIDEO_PLATFORM_META[parsed.platform];
-        return (
-          <a
-            href={post.link_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 flex items-center gap-3 p-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition"
-          >
-            <span className="text-2xl">{meta.icon}</span>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold text-gray-800">{meta.label}</p>
-              <p className="text-xs text-gray-400 truncate">{post.link_url}</p>
-            </div>
-            <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
-        );
-      })()}
-
-      {/* Legacy link posts */}
-      {post.post_type === "link" && post.link_url && (
-        <a
-          href={post.link_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 flex items-center gap-2 text-xs text-blue-600 hover:underline"
-        >
-          🔗 {post.link_title || post.link_url}
-        </a>
-      )}
-
-      {/* Reactions + comment toggle */}
-      <div className="flex items-center gap-1 mt-4 flex-wrap">
-        {REACTIONS.map((r) => {
-          const count = post.reaction_counts?.[r.key] ?? 0;
-          const active = myReactions.has(`${post.id}:${r.key}`);
-          return (
-            <div key={r.key} className={`flex items-center rounded-full text-xs border transition ${
-              active ? "border-green-400 bg-green-50" : "border-gray-200 bg-gray-50"
-            }`}>
+            {/* 3-dot menu */}
+            <div className="relative flex-shrink-0 -mt-0.5">
               <button
-                onClick={() => onReact(post.id, r.key)}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-full transition hover:scale-110 ${
-                  active ? "text-green-700 font-semibold" : "text-gray-600"
-                }`}
+                onClick={() => setMenuOpen((v) => !v)}
+                className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition text-lg leading-none"
               >
-                <span>{r.emoji}</span>
+                ···
               </button>
-              {count > 0 && (
-                <button
-                  onClick={openLikers}
-                  className={`pr-2.5 py-1 font-medium transition hover:underline ${
-                    active ? "text-green-700" : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  {count}
+              {menuOpen && (
+                <>
+                  <div className="fixed inset-0 z-10" onClick={() => setMenuOpen(false)} />
+                  <div className="absolute right-0 top-8 z-20 bg-white border border-gray-200 rounded-xl shadow-lg py-1 min-w-[150px]">
+                    {isMyPost ? (
+                      <button
+                        onClick={() => { setMenuOpen(false); setShowDeleteModal(true); }}
+                        className="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition"
+                      >
+                        🗑️ Delete post
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => { setMenuOpen(false); setShowReportModal(true); }}
+                        className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition"
+                      >
+                        🚩 Report post
+                      </button>
+                    )}
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Post-type badge — only for special types */}
+          {post.post_type === "prayer_request" && (
+            <span className="inline-block text-xs font-semibold text-purple-700 bg-purple-50 border border-purple-100 px-2 py-0.5 rounded-full mb-2">🤲 Prayer Request</span>
+          )}
+          {post.post_type === "prayer" && (
+            <span className="inline-block text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-full mb-2">🙏 Prayer</span>
+          )}
+
+          {/* Verse ref + quote */}
+          {post.post_type === "verse" && post.verse_ref && (
+            <p className="text-xs font-semibold text-green-700 mb-1">{post.verse_ref}</p>
+          )}
+          {post.verse_text && (
+            <p className="text-sm italic text-gray-600 mb-2 border-l-2 border-green-400 pl-3">&ldquo;{post.verse_text}&rdquo;</p>
+          )}
+
+          {/* Text content */}
+          {post.content && (
+            <p className="text-[15px] text-gray-800 leading-relaxed whitespace-pre-wrap mb-1">{post.content}</p>
+          )}
+
+          {/* Photo — natural proportions, tap to expand */}
+          {post.media_url && post.post_type !== "video" && (
+            <button
+              type="button"
+              onClick={() => setLightboxOpen(true)}
+              className="mt-2 block w-full rounded-2xl overflow-hidden focus:outline-none bg-gray-50"
+            >
+              <img
+                src={post.media_url}
+                alt="Post image"
+                className="w-full h-auto"
+                style={{ maxHeight: "500px", objectFit: "contain" }}
+              />
+            </button>
+          )}
+
+          {/* Video — direct upload (portrait-style) */}
+          {post.post_type === "video" && post.media_url && (
+            <div className="mt-2 flex justify-center">
+              <video
+                src={post.media_url}
+                controls
+                playsInline
+                className="rounded-2xl bg-black"
+                style={{ width: "100%", maxWidth: "340px", maxHeight: "600px" }}
+              />
+            </div>
+          )}
+
+          {/* Video embed */}
+          {post.post_type === "video" && post.link_url && (() => {
+            const parsed = parseVideoEmbed(post.link_url);
+            if (parsed.embedUrl) {
+              if (!parsed.portrait) {
+                return (
+                  <div className="mt-2 relative w-full rounded-2xl overflow-hidden bg-black" style={{ paddingBottom: "56.25%" }}>
+                    <iframe src={parsed.embedUrl} className="absolute inset-0 w-full h-full" allowFullScreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" />
+                  </div>
+                );
+              }
+              return (
+                <div className="mt-2 flex justify-center">
+                  <div className="relative rounded-2xl overflow-hidden bg-black w-full" style={{ maxWidth: "280px", height: "500px" }}>
+                    <iframe src={parsed.embedUrl} className="w-full h-full border-0" allowFullScreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" scrolling="no" />
+                  </div>
+                </div>
+              );
+            }
+            const meta = VIDEO_PLATFORM_META[parsed.platform];
+            return (
+              <a href={post.link_url} target="_blank" rel="noopener noreferrer" className="mt-2 flex items-center gap-3 p-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition">
+                <span className="text-2xl">{meta.icon}</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-semibold text-gray-800">{meta.label}</p>
+                  <p className="text-xs text-gray-400 truncate">{post.link_url}</p>
+                </div>
+              </a>
+            );
+          })()}
+
+          {/* Legacy link */}
+          {post.post_type === "link" && post.link_url && (
+            <a href={post.link_url} target="_blank" rel="noopener noreferrer" className="mt-2 flex items-center gap-2 text-xs text-blue-600 hover:underline">
+              🔗 {post.link_title || post.link_url}
+            </a>
+          )}
+
+          {/* Action row — Threads-style flat icons */}
+          <div className="flex items-center gap-4 mt-3 -ml-1">
+            {/* Like */}
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => onReact(post.id, "love")}
+                className={`p-1.5 rounded-full transition-colors ${loveActive ? "text-red-500 hover:bg-red-50" : "text-gray-400 hover:bg-gray-100 hover:text-red-400"}`}
+                aria-label="Like"
+              >
+                {loveActive ? (
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                ) : (
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                )}
+              </button>
+              {loveCount > 0 && (
+                <button onClick={openLikers} className="text-sm text-gray-500 hover:text-gray-800 transition tabular-nums leading-none">
+                  {loveCount}
                 </button>
               )}
             </div>
-          );
-        })}
-        <button
-          onClick={() => setShowComments((v) => !v)}
-          className="ml-auto flex items-center gap-1 text-xs text-gray-400 hover:text-green-600 transition"
-        >
-          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
-          {localCommentCount > 0 ? localCommentCount : "Comment"}
-        </button>
-      </div>
 
-      {showComments && (
-        <CommentSection
-          postId={post.id}
-          myId={myId}
-          myProfile={myProfile}
-          onCountChange={(delta) => {
-            setLocalCommentCount((n) => n + delta);
-            onCommentCountChange(post.id, delta);
-          }}
-        />
-      )}
+            {/* Comment */}
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => setShowComments((v) => !v)}
+                className={`p-1.5 rounded-full transition-colors ${showComments ? "text-green-600 hover:bg-green-50" : "text-gray-400 hover:bg-gray-100 hover:text-green-600"}`}
+                aria-label="Comment"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+              </button>
+              {localCommentCount > 0 && (
+                <span className="text-sm text-gray-500 tabular-nums leading-none">{localCommentCount}</span>
+              )}
+            </div>
+          </div>
+
+          {showComments && (
+            <CommentSection
+              postId={post.id}
+              myId={myId}
+              myProfile={myProfile}
+              onCountChange={(delta) => {
+                setLocalCommentCount((n) => n + delta);
+                onCommentCountChange(post.id, delta);
+              }}
+            />
+          )}
+        </div>
+      </div>
 
       {/* Delete confirmation modal */}
       {showDeleteModal && (
@@ -1284,45 +1260,39 @@ function ActivityPostCard({ activity }: { activity: FeedActivity }) {
   const content = activityLabel(activity.activity_type, activity.activity_data);
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-      {/* Header */}
-      <div className="flex items-center gap-3 mb-3">
-        <Link href={`/profile/${activity.user_id}`}>
-          <Avatar userId={activity.user_id} displayName={displayName} imageUrl={activity.profile_image_url} />
-        </Link>
+    <div className="px-4 pt-4 pb-3 border-b border-gray-100">
+      <div className="flex gap-3">
+        <div className="flex-shrink-0">
+          <Link href={`/profile/${activity.user_id}`}>
+            <Avatar userId={activity.user_id} displayName={displayName} imageUrl={activity.profile_image_url} size={10} />
+          </Link>
+        </div>
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            <Link href={`/profile/${activity.user_id}`} className="font-semibold text-sm text-gray-900 hover:underline truncate">
+          <div className="flex items-center gap-1.5 mb-1">
+            <Link href={`/profile/${activity.user_id}`} className="font-semibold text-[15px] text-gray-900 hover:underline">
               {displayName}
             </Link>
-            <span className="text-xs text-gray-400 bg-gray-100 rounded-full px-2 py-0.5">{badge}</span>
+            <span className="text-xs text-gray-400">{timeAgo(activity.created_at)}</span>
           </div>
-          <p className="text-xs text-gray-400">{timeAgo(activity.created_at)}</p>
+          <span className="inline-block text-xs font-medium text-gray-500 bg-gray-100 rounded-full px-2 py-0.5 mb-1.5">{badge}</span>
+          <p className="text-[15px] text-gray-800 leading-relaxed">{content}</p>
+          {activity.group_name && (
+            <p className="mt-1 text-xs font-semibold" style={{ color: "#4a9b6f" }}>📍 {activity.group_name}</p>
+          )}
+          <div className="flex items-center gap-4 mt-3 -ml-1">
+            <button
+              onClick={() => { setLiked((v) => !v); setLikeCount((n) => liked ? Math.max(n - 1, 0) : n + 1); }}
+              className={`p-1.5 rounded-full transition-colors ${liked ? "text-red-500 hover:bg-red-50" : "text-gray-400 hover:bg-gray-100 hover:text-red-400"}`}
+            >
+              {liked ? (
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              ) : (
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+              )}
+            </button>
+            {likeCount > 0 && <span className="text-sm text-gray-500 tabular-nums -ml-3">{likeCount}</span>}
+          </div>
         </div>
-      </div>
-
-      {/* Content */}
-      <p className="text-sm text-gray-800 leading-relaxed">{content}</p>
-      {activity.group_name && (
-        <p className="mt-1 text-xs font-semibold" style={{ color: "#4a9b6f" }}>📍 {activity.group_name}</p>
-      )}
-
-      {/* Heart reaction */}
-      <div className="flex items-center gap-1 mt-4">
-        <button
-          onClick={() => {
-            setLiked((v) => !v);
-            setLikeCount((n) => liked ? Math.max(n - 1, 0) : n + 1);
-          }}
-          className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs border transition ${
-            liked
-              ? "border-red-300 bg-red-50 text-red-600 font-semibold"
-              : "border-gray-200 bg-gray-50 hover:border-gray-400 hover:bg-gray-100 text-gray-600"
-          }`}
-        >
-          <span>❤️</span>
-          {likeCount > 0 && <span className="font-medium">{likeCount}</span>}
-        </button>
       </div>
     </div>
   );
@@ -1679,11 +1649,11 @@ export default function BbFeedPage() {
   function renderFriendsTab() {
     if (rankedBuddiesFeed.filter((i) => i._kind === "post").length === 0) {
       return (
-        <div className="bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
+        <div className="px-4 py-16 text-center">
           <p className="text-3xl mb-3">👥</p>
-          <h3 className="font-bold text-gray-900 mb-1">No buddy posts yet</h3>
+          <h3 className="font-semibold text-gray-900 mb-1">No buddy posts yet</h3>
           <p className="text-sm text-gray-500 mb-5">Add Buddies from their profile to see their posts here.</p>
-          <Link href="/study-groups" className="inline-block px-4 py-2 rounded-xl text-sm font-semibold text-white transition hover:opacity-90" style={{ backgroundColor: "#4a9b6f" }}>
+          <Link href="/study-groups" className="inline-block px-4 py-2 rounded-full text-sm font-semibold text-white transition hover:opacity-90" style={{ backgroundColor: "#4a9b6f" }}>
             Find People
           </Link>
         </div>
@@ -1692,7 +1662,7 @@ export default function BbFeedPage() {
 
     const buddyPosts = rankedBuddiesFeed.filter((item) => item._kind === "post");
     return (
-      <div className="flex flex-col gap-3">
+      <div className="divide-y divide-gray-100">
         {buddyPosts.map((item) => (
           <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} />
         ))}
@@ -1704,16 +1674,16 @@ export default function BbFeedPage() {
     const posts = rankedCommunityFeed.filter((item) => item._kind === "post");
     if (posts.length === 0) {
       return (
-        <div className="bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
+        <div className="px-4 py-16 text-center">
           <p className="text-3xl mb-3">🌎</p>
-          <h3 className="font-bold text-gray-900 mb-1">Community is quiet</h3>
+          <h3 className="font-semibold text-gray-900 mb-1">Community is quiet</h3>
           <p className="text-sm text-gray-500">Be the first to share something!</p>
         </div>
       );
     }
 
     return (
-      <div className="flex flex-col gap-3">
+      <div className="divide-y divide-gray-100">
         {posts.map((item) => (
           <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} />
         ))}
@@ -1737,16 +1707,16 @@ export default function BbFeedPage() {
 
     if (items.length === 0) {
       return (
-        <div className="bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
+        <div className="px-4 py-16 text-center">
           <p className="text-3xl mb-3">✨</p>
-          <h3 className="font-bold text-gray-900 mb-1">Your feed is empty</h3>
+          <h3 className="font-semibold text-gray-900 mb-1">Your feed is empty</h3>
           <p className="text-sm text-gray-500">Your posts and activity will appear here as you use Bible Buddy.</p>
         </div>
       );
     }
 
     return (
-      <div className="flex flex-col gap-3">
+      <div className="divide-y divide-gray-100">
         {items.map((item) =>
           item._kind === "post" ? (
             <PostCard
@@ -1770,7 +1740,7 @@ export default function BbFeedPage() {
   // ── Page ───────────────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-16">
+    <div className="min-h-screen bg-white pb-16">
       {/* Feed onboarding — shown once on first visit */}
       {userId && (
         <FeedOnboardingModal
@@ -1780,50 +1750,57 @@ export default function BbFeedPage() {
         />
       )}
 
-      <div className="max-w-2xl mx-auto px-4 py-8">
-
-        {/* Breadcrumb */}
-        <nav className="text-sm text-gray-500 mb-6">
-          <Link href="/dashboard" className="hover:text-gray-700 transition">Dashboard</Link>
-          <span className="mx-2">›</span>
-          <span className="text-gray-800 font-medium">Bible Buddy Feed</span>
-        </nav>
-
-        <h1 className="text-3xl font-bold text-gray-900 mb-6">🔥 Bible Buddy Feed</h1>
-
-        {/* Tabs */}
-        <div className="flex gap-1 bg-gray-100 rounded-xl p-1 mb-6">
-          {([
-            { key: "community", label: "🌎 Community" },
-            { key: "buddies",   label: "🤝 Buddies" },
-            { key: "myfeed",    label: "👤 My Feed" },
-          ] as { key: Tab; label: string }[]).map(({ key, label }) => (
-            <button
-              key={key}
-              onClick={() => setTab(key)}
-              className={`flex-1 py-2 rounded-lg text-sm font-semibold transition ${
-                tab === key ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
+      {/* Sticky header + tabs */}
+      <div className="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-gray-100">
+        <div className="max-w-xl mx-auto px-4 pt-4 pb-0">
+          <div className="flex items-center gap-2 mb-3">
+            <Link href="/dashboard" className="text-gray-400 hover:text-gray-600 transition">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </Link>
+            <h1 className="text-[17px] font-bold text-gray-900">Bible Buddies Feed</h1>
+          </div>
+          {/* Underline tabs */}
+          <div className="flex">
+            {([
+              { key: "community", label: "Community" },
+              { key: "buddies",   label: "Buddies" },
+              { key: "myfeed",    label: "My Posts" },
+            ] as { key: Tab; label: string }[]).map(({ key, label }) => (
+              <button
+                key={key}
+                onClick={() => setTab(key)}
+                className={`flex-1 py-2.5 text-sm font-semibold transition border-b-2 ${
+                  tab === key
+                    ? "border-green-500 text-gray-900"
+                    : "border-transparent text-gray-400 hover:text-gray-700"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
+      </div>
 
-        {/* Composer — hidden on My Feed tab */}
+      <div className="max-w-xl mx-auto">
+        {/* Composer — hidden on My Posts tab */}
         {!loading && userId && tab !== "myfeed" && (
-          <PostComposer
-            userId={userId}
-            userProfile={myProfile}
-            onPosted={(newPost) => {
-              const newRanked: RankedFeedItem = { ...newPost, _kind: "post", _score: 1, _signals: { recency: 1, engagement: 0, proximity: 0, relevance: 0 } };
-              if (tab === "buddies") {
-                setRankedBuddiesFeed((prev) => [newRanked, ...prev]);
-              } else {
-                setRankedCommunityFeed((prev) => [newRanked, ...prev]);
-              }
-            }}
-          />
+          <div className="border-b border-gray-100">
+            <PostComposer
+              userId={userId}
+              userProfile={myProfile}
+              onPosted={(newPost) => {
+                const newRanked: RankedFeedItem = { ...newPost, _kind: "post", _score: 1, _signals: { recency: 1, engagement: 0, proximity: 0, relevance: 0 } };
+                if (tab === "buddies") {
+                  setRankedBuddiesFeed((prev) => [newRanked, ...prev]);
+                } else {
+                  setRankedCommunityFeed((prev) => [newRanked, ...prev]);
+                }
+              }}
+            />
+          </div>
         )}
 
         {/* Content */}
@@ -1832,7 +1809,6 @@ export default function BbFeedPage() {
         ) : (
           tab === "buddies" ? renderFriendsTab() : tab === "community" ? renderCommunityTab() : renderMyFeedTab()
         )}
-
       </div>
     </div>
   );
