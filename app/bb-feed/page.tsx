@@ -632,11 +632,12 @@ function Avatar({ userId, displayName, imageUrl, size = 9 }: {
 
 // ── Comment Section ───────────────────────────────────────────────────────────
 
-function CommentSection({ postId, myId, myProfile, onCountChange }: {
+function CommentSection({ postId, myId, myProfile, onCountChange, highlightCommentId }: {
   postId: string;
   myId: string;
   myProfile: MyProfile;
   onCountChange: (delta: number) => void;
+  highlightCommentId?: string | null;
 }) {
   const [comments, setComments] = useState<FeedComment[]>([]);
   const [loading, setLoading] = useState(true);
@@ -702,13 +703,23 @@ function CommentSection({ postId, myId, myProfile, onCountChange }: {
 
   function CommentRow({ comment, indent = false }: { comment: FeedComment; indent?: boolean }) {
     const name = comment.display_name || comment.username || "Bible Buddy";
+    const isHighlightComment = comment.id === highlightCommentId;
+    const commentRowRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+      if (isHighlightComment && commentRowRef.current) {
+        const t = setTimeout(() => {
+          commentRowRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }, 700);
+        return () => clearTimeout(t);
+      }
+    }, [isHighlightComment]);
     return (
-      <div className={`flex gap-2 ${indent ? "ml-8 mt-1" : "mt-2"}`}>
+      <div ref={commentRowRef} className={`flex gap-2 ${indent ? "ml-8 mt-1" : "mt-2"} ${isHighlightComment ? "rounded-xl ring-2 ring-green-300 p-1 -mx-1" : ""}`}>
         <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0 mt-0.5">
           <Avatar userId={comment.user_id} displayName={name} imageUrl={comment.profile_image_url} size={6} />
         </Link>
         <div className="flex-1 min-w-0">
-          <div className="bg-gray-50 rounded-xl px-3 py-2">
+          <div className={`rounded-xl px-3 py-2 ${isHighlightComment ? "bg-green-50 border border-green-200" : "bg-gray-50"}`}>
             <Link href={`/profile/${comment.user_id}`} className="text-xs font-semibold text-gray-800 hover:underline">
               {name}
             </Link>
@@ -799,7 +810,7 @@ function CommentSection({ postId, myId, myProfile, onCountChange }: {
 
 // ── Post Card ─────────────────────────────────────────────────────────────────
 
-function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountChange, onDelete }: {
+function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountChange, onDelete, highlightPostId, highlightCommentId }: {
   post: FeedPost;
   myId: string;
   myProfile: MyProfile;
@@ -807,8 +818,23 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
   onReact: (postId: string, reaction: string) => void;
   onCommentCountChange: (postId: string, delta: number) => void;
   onDelete: (postId: string) => void;
+  highlightPostId?: string | null;
+  highlightCommentId?: string | null;
 }) {
+  const isHighlighted = post.id === highlightPostId;
+  const cardRef = useRef<HTMLDivElement>(null);
   const [showComments, setShowComments] = useState(false);
+
+  // Auto-scroll and open comments when this post is the deep-link target
+  useEffect(() => {
+    if (isHighlighted) {
+      setShowComments(true);
+      const t = setTimeout(() => {
+        cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 400);
+      return () => clearTimeout(t);
+    }
+  }, [isHighlighted]);
   const [localCommentCount, setLocalCommentCount] = useState(post.comment_count);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -878,7 +904,7 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
   const loveActive = myReactions.has(`${post.id}:love`);
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm relative">
+    <div ref={cardRef} className={`bg-white border rounded-xl p-4 shadow-sm relative transition-all ${isHighlighted ? "border-green-400 ring-2 ring-green-200" : "border-gray-200"}`}>
       {/* Header */}
       <div className="flex items-center gap-3 mb-3">
         <Link href={`/profile/${post.user_id}`}>
@@ -1045,6 +1071,7 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
           postId={post.id}
           myId={myId}
           myProfile={myProfile}
+          highlightCommentId={isHighlighted ? highlightCommentId : null}
           onCountChange={(delta) => {
             setLocalCommentCount((n) => n + delta);
             onCommentCountChange(post.id, delta);
@@ -1280,6 +1307,19 @@ export default function BbFeedPage() {
   const [tab, setTab] = useState<Tab>("community");
   const [loading, setLoading] = useState(true);
   const [showFeedOnboarding, setShowFeedOnboarding] = useState(false);
+
+  // Notification deep-link params
+  const [highlightPostId, setHighlightPostId] = useState<string | null>(null);
+  const [highlightCommentId, setHighlightCommentId] = useState<string | null>(null);
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get("post");
+    const commentId = params.get("comment");
+    setHighlightPostId(postId);
+    setHighlightCommentId(commentId);
+    // Switch to community tab so the post is visible
+    if (postId) setTab("community");
+  }, []);
 
   // Buddies tab state — single ranked list (posts only shown, activities used for ranking)
   const [rankedBuddiesFeed, setRankedBuddiesFeed] = useState<RankedFeedItem[]>([]);
@@ -1637,7 +1677,7 @@ export default function BbFeedPage() {
     return (
       <div className="flex flex-col gap-3">
         {buddyPosts.map((item) => (
-          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} />
+          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
         ))}
       </div>
     );
@@ -1658,7 +1698,7 @@ export default function BbFeedPage() {
     return (
       <div className="flex flex-col gap-3">
         {posts.map((item) => (
-          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} />
+          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
         ))}
       </div>
     );
@@ -1701,6 +1741,8 @@ export default function BbFeedPage() {
               onReact={handleReact}
               onCommentCountChange={handleCommentCountChange}
               onDelete={handleDeletePost}
+              highlightPostId={highlightPostId}
+              highlightCommentId={highlightCommentId}
             />
           ) : (
             <ActivityPostCard key={`act-${item.id}`} activity={item as FeedActivity} />

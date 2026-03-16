@@ -29,7 +29,7 @@ export function ModalShell({
 }: ModalShellProps) {
   const [mounted, setMounted] = useState(isOpen);
   const [closing, setClosing] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
     if (isOpen) {

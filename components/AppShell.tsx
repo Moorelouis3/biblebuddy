@@ -474,9 +474,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       prev.map((n) => (n.id === notif.id ? { ...n, is_read: true } : n))
     );
     setIsNotifOpen(false);
-    // Social feed notifications route to /bb-feed; group posts route to group chat
+    // Social feed notifications deep-link to the specific post/comment
     if (notif.type === "buddy_posted" || notif.type === "feed_post_liked" || notif.type === "feed_post_commented" || notif.type === "feed_post_replied") {
-      router.push("/bb-feed");
+      let url = "/bb-feed";
+      if (notif.post_id) {
+        url += `?post=${notif.post_id}`;
+        if (notif.comment_id && (notif.type === "feed_post_commented" || notif.type === "feed_post_replied")) {
+          url += `&comment=${notif.comment_id}`;
+        }
+      }
+      router.push(url);
       return;
     }
     if (notif.type === "group_post" && notif.article_slug) {

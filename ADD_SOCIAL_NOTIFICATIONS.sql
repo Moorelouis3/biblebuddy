@@ -70,13 +70,14 @@ BEGIN
 
   -- Notify post owner (skip if commenting on own post)
   IF post_owner_id IS NOT NULL AND post_owner_id != NEW.user_id THEN
-    INSERT INTO notifications (user_id, type, from_user_id, from_user_name, post_id, message, article_slug)
+    INSERT INTO notifications (user_id, type, from_user_id, from_user_name, post_id, comment_id, message, article_slug)
     VALUES (
       post_owner_id,
       CASE WHEN NEW.parent_comment_id IS NOT NULL THEN 'feed_post_replied' ELSE 'feed_post_commented' END,
       NEW.user_id,
       commenter_name,
       NEW.post_id,
+      NEW.id,
       CASE
         WHEN NEW.parent_comment_id IS NOT NULL THEN commenter_name || ' replied to your post 💬'
         ELSE commenter_name || ' commented on your post 💬'
@@ -93,13 +94,14 @@ BEGIN
     IF parent_owner_id IS NOT NULL
        AND parent_owner_id != NEW.user_id
        AND parent_owner_id != post_owner_id THEN
-      INSERT INTO notifications (user_id, type, from_user_id, from_user_name, post_id, message, article_slug)
+      INSERT INTO notifications (user_id, type, from_user_id, from_user_name, post_id, comment_id, message, article_slug)
       VALUES (
         parent_owner_id,
         'feed_post_replied',
         NEW.user_id,
         commenter_name,
         NEW.post_id,
+        NEW.id,
         commenter_name || ' replied to your comment 💬',
         '/bb-feed'
       );
