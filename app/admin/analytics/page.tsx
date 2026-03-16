@@ -479,69 +479,42 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
-        // Feed social actions
+        // Feed social actions — query source tables directly for accurate counts
         const { count: feedThoughtsPosted } = await supabase
-          .from("master_actions")
-          .select("id", { count: "exact", head: true })
-          .eq("action_type", "feed_post_thought")
-          .gte("created_at", bucketStart)
-          .lte("created_at", bucketEnd);
+          .from("feed_posts").select("id", { count: "exact", head: true })
+          .eq("post_type", "thought").gte("created_at", bucketStart).lte("created_at", bucketEnd);
 
         const { count: feedPrayersPosted } = await supabase
-          .from("master_actions")
-          .select("id", { count: "exact", head: true })
-          .in("action_type", ["feed_post_prayer", "feed_post_prayer_request"])
-          .gte("created_at", bucketStart)
-          .lte("created_at", bucketEnd);
+          .from("feed_posts").select("id", { count: "exact", head: true })
+          .in("post_type", ["prayer", "prayer_request"]).gte("created_at", bucketStart).lte("created_at", bucketEnd);
 
         const { count: feedPhotosPosted } = await supabase
-          .from("master_actions")
-          .select("id", { count: "exact", head: true })
-          .eq("action_type", "feed_post_photo")
-          .gte("created_at", bucketStart)
-          .lte("created_at", bucketEnd);
+          .from("feed_posts").select("id", { count: "exact", head: true })
+          .eq("post_type", "photo").gte("created_at", bucketStart).lte("created_at", bucketEnd);
 
         const { count: feedVideosPosted } = await supabase
-          .from("master_actions")
-          .select("id", { count: "exact", head: true })
-          .eq("action_type", "feed_post_video")
-          .gte("created_at", bucketStart)
-          .lte("created_at", bucketEnd);
+          .from("feed_posts").select("id", { count: "exact", head: true })
+          .eq("post_type", "video").gte("created_at", bucketStart).lte("created_at", bucketEnd);
 
         const { count: feedPostLikes } = await supabase
-          .from("master_actions")
-          .select("id", { count: "exact", head: true })
-          .eq("action_type", "feed_post_liked")
-          .gte("created_at", bucketStart)
-          .lte("created_at", bucketEnd);
+          .from("feed_post_reactions").select("post_id", { count: "exact", head: true })
+          .gte("created_at", bucketStart).lte("created_at", bucketEnd);
 
         const { count: feedComments } = await supabase
-          .from("master_actions")
-          .select("id", { count: "exact", head: true })
-          .eq("action_type", "feed_post_commented")
-          .gte("created_at", bucketStart)
-          .lte("created_at", bucketEnd);
+          .from("feed_post_comments").select("id", { count: "exact", head: true })
+          .is("parent_comment_id", null).gte("created_at", bucketStart).lte("created_at", bucketEnd);
 
         const { count: feedReplies } = await supabase
-          .from("master_actions")
-          .select("id", { count: "exact", head: true })
-          .eq("action_type", "feed_post_replied")
-          .gte("created_at", bucketStart)
-          .lte("created_at", bucketEnd);
+          .from("feed_post_comments").select("id", { count: "exact", head: true })
+          .not("parent_comment_id", "is", null).gte("created_at", bucketStart).lte("created_at", bucketEnd);
 
         const { count: buddiesAdded } = await supabase
-          .from("master_actions")
-          .select("id", { count: "exact", head: true })
-          .eq("action_type", "buddy_added")
-          .gte("created_at", bucketStart)
-          .lte("created_at", bucketEnd);
+          .from("buddy_requests").select("id", { count: "exact", head: true })
+          .eq("status", "accepted").gte("created_at", bucketStart).lte("created_at", bucketEnd);
 
         const { count: groupMessagesSent } = await supabase
-          .from("master_actions")
-          .select("id", { count: "exact", head: true })
-          .eq("action_type", "group_message_sent")
-          .gte("created_at", bucketStart)
-          .lte("created_at", bucketEnd);
+          .from("group_posts").select("id", { count: "exact", head: true })
+          .gte("created_at", bucketStart).lte("created_at", bucketEnd);
 
         return {
           period: bucket.label,
@@ -694,15 +667,16 @@ export default function AnalyticsPage() {
           .eq("action_type", "understand_verse_of_the_day")
       );
 
-      const feedThoughtsPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "feed_post_thought"));
-      const feedPrayersPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).in("action_type", ["feed_post_prayer", "feed_post_prayer_request"]));
-      const feedPhotosPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "feed_post_photo"));
-      const feedVideosPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "feed_post_video"));
-      const feedLikesPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "feed_post_liked"));
-      const feedCommentsPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "feed_post_commented"));
-      const feedRepliesPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "feed_post_replied"));
-      const buddiesAddedPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "buddy_added"));
-      const groupMessagesPromise = applyDateFilter(supabase.from("master_actions").select("id", { count: "exact", head: true }).eq("action_type", "group_message_sent"));
+      // Social feed metrics — query source tables directly for accurate counts
+      const feedThoughtsPromise = applyDateFilter(supabase.from("feed_posts").select("id", { count: "exact", head: true }).eq("post_type", "thought"));
+      const feedPrayersPromise = applyDateFilter(supabase.from("feed_posts").select("id", { count: "exact", head: true }).in("post_type", ["prayer", "prayer_request"]));
+      const feedPhotosPromise = applyDateFilter(supabase.from("feed_posts").select("id", { count: "exact", head: true }).eq("post_type", "photo"));
+      const feedVideosPromise = applyDateFilter(supabase.from("feed_posts").select("id", { count: "exact", head: true }).eq("post_type", "video"));
+      const feedLikesPromise = applyDateFilter(supabase.from("feed_post_reactions").select("post_id", { count: "exact", head: true }));
+      const feedCommentsPromise = applyDateFilter(supabase.from("feed_post_comments").select("id", { count: "exact", head: true }).is("parent_comment_id", null));
+      const feedRepliesPromise = applyDateFilter(supabase.from("feed_post_comments").select("id", { count: "exact", head: true }).not("parent_comment_id", "is", null));
+      const buddiesAddedPromise = applyDateFilter(supabase.from("buddy_requests").select("id", { count: "exact", head: true }).eq("status", "accepted"));
+      const groupMessagesPromise = applyDateFilter(supabase.from("group_posts").select("id", { count: "exact", head: true }));
 
       const [
         signupsResult,

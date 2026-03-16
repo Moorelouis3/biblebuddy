@@ -72,6 +72,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     from_user_name: string;
     article_slug: string;
     comment_id: string | null;
+    post_id: string | null;
     message: string;
     is_read: boolean;
     created_at: string;
@@ -366,7 +367,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   async function fetchNotifications(currentUserId: string) {
     const { data } = await supabase
       .from("notifications")
-      .select("id, type, from_user_id, from_user_name, article_slug, comment_id, message, is_read, created_at")
+      .select("id, type, from_user_id, from_user_name, article_slug, comment_id, post_id, message, is_read, created_at")
       .eq("user_id", currentUserId)
       .order("created_at", { ascending: false })
       .limit(20);
@@ -473,6 +474,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       prev.map((n) => (n.id === notif.id ? { ...n, is_read: true } : n))
     );
     setIsNotifOpen(false);
+    // Social feed notifications route to /bb-feed; group posts route to group chat
+    if (notif.type === "buddy_posted" || notif.type === "feed_post_liked" || notif.type === "feed_post_commented" || notif.type === "feed_post_replied") {
+      router.push("/bb-feed");
+      return;
+    }
+    if (notif.type === "group_post" && notif.article_slug) {
+      router.push(notif.article_slug);
+      return;
+    }
     const hash = notif.comment_id ? `#comment-${notif.comment_id}` : "";
     router.push(`${notif.article_slug}${hash}`);
   }
@@ -1033,9 +1043,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                           <p className="text-sm text-gray-500 text-center py-6">No notifications yet.</p>
                         ) : (
                           notifications.map((notif) => {
-                            const articleTitle = notif.article_slug
-                              ? notif.article_slug.split("/").filter(Boolean).pop()?.split("-").map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") ?? ""
-                              : "";
+                            // Friendly label for the notification source
+                            const notifSourceLabel =
+                              notif.type === "buddy_posted" ? "Bible Buddies Feed" :
+                              notif.type === "feed_post_liked" ? "Bible Buddies Feed" :
+                              notif.type === "feed_post_commented" ? "Bible Buddies Feed" :
+                              notif.type === "feed_post_replied" ? "Bible Buddies Feed" :
+                              notif.type === "group_post"
+                                ? (notif.article_slug?.split("/").filter(Boolean)[1] ? "Study Group" : "Study Group")
+                                : notif.article_slug
+                                  ? notif.article_slug.split("/").filter(Boolean).pop()?.split("-").map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") ?? ""
+                                  : "";
                             const timeStr = new Date(notif.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
 
                             // Buddy request — show Accept / Not Now buttons
@@ -1093,7 +1111,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                 className={`w-full text-left px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors ${!notif.is_read ? "bg-blue-50" : ""}`}
                               >
                                 <p className="text-sm text-gray-900 font-medium">{notif.message}</p>
-                                <p className="text-xs text-blue-600 mt-0.5">{articleTitle}</p>
+                                {notifSourceLabel && <p className="text-xs text-blue-600 mt-0.5">{notifSourceLabel}</p>}
                                 <p className="text-xs text-gray-400 mt-0.5">{timeStr}</p>
                               </button>
                             );
