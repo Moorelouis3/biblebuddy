@@ -20,8 +20,10 @@ import { CURRENT_UPDATE_VERSION } from "../lib/globalUpdateConfig";
 import DailyRecommendationModal from "./DailyRecommendationModal";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
 import { BuddyCelebrationModal, type BuddyCelebrationUser } from "./BuddyCelebrationModal";
+import UserBadge from "./UserBadge";
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
+const DAILY_RECOMMENDATIONS_ENABLED = false;
 
 function urlBase64ToUint8Array(base64String: string) {
   const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
@@ -100,6 +102,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     otherUserId: string;
     otherUserName: string;
     otherUserImage: string | null;
+    otherUserBadge: string | null;
+    otherUserIsPaid: boolean;
     lastMessagePreview: string | null;
     lastMessageAt: string | null;
     hasUnread: boolean;
@@ -454,7 +458,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const [profilesResult, unreadResult] = await Promise.all([
         supabase
           .from("profile_stats")
-          .select("user_id, display_name, username, profile_image_url")
+          .select("user_id, display_name, username, profile_image_url, member_badge, is_paid")
           .in("user_id", otherIds),
         supabase
           .from("messages")
@@ -475,6 +479,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           otherUserId: otherId,
           otherUserName: profile?.display_name || profile?.username || "Bible Buddy",
           otherUserImage: profile?.profile_image_url || null,
+          otherUserBadge: profile?.member_badge || null,
+          otherUserIsPaid: profile?.is_paid === true,
           lastMessagePreview: c.last_message_preview || null,
           lastMessageAt: c.last_message_at || null,
           hasUnread: unreadConvoIds.has(c.id),
@@ -662,7 +668,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setUsername(extractedUsername);
         void checkOnboardingStatus(session.user.id);
         void checkUpdateStatus(session.user.id);
-        void checkDailyRecommendation(session.user.id);
+        if (DAILY_RECOMMENDATIONS_ENABLED) {
+          void checkDailyRecommendation(session.user.id);
+        }
         void fetchNotifications(session.user.id);
       } else {
         setUserId(null);
@@ -1003,7 +1011,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* DAILY RECOMMENDATION MODAL */}
-      {isLoggedIn && userId && !showOnboardingModal && !showUpdateModal && showDailyRecommendation && dailyRecommendation && (
+      {DAILY_RECOMMENDATIONS_ENABLED && isLoggedIn && userId && !showOnboardingModal && !showUpdateModal && showDailyRecommendation && dailyRecommendation && (
         <DailyRecommendationModal
           greeting={dailyRecommendation.greeting}
           contextLine={dailyRecommendation.contextLine}
@@ -1382,9 +1390,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                 {/* Text */}
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center justify-between gap-2">
-                                    <p className={`text-sm truncate ${convo.hasUnread ? "font-bold text-gray-900" : "font-medium text-gray-800"}`}>
-                                      {convo.otherUserName}
-                                    </p>
+                                    <div className="flex min-w-0 items-center gap-2">
+                                      <p className={`text-sm truncate ${convo.hasUnread ? "font-bold text-gray-900" : "font-medium text-gray-800"}`}>
+                                        {convo.otherUserName}
+                                      </p>
+                                      <UserBadge customBadge={convo.otherUserBadge} isPaid={convo.otherUserIsPaid} />
+                                    </div>
                                     <span className="text-xs text-gray-400 flex-shrink-0">{formatMessageTime(convo.lastMessageAt)}</span>
                                   </div>
                                   <p className={`text-xs truncate mt-0.5 ${convo.hasUnread ? "text-gray-800 font-medium" : "text-gray-400"}`}>

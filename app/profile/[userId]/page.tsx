@@ -15,6 +15,8 @@ import { syncChaptersCount, shouldSyncChaptersCount } from "../../../lib/syncCha
 import { syncTriviaQuestionsCount, shouldSyncTriviaQuestionsCount } from "../../../lib/syncTriviaQuestionsCount";
 import { isBookComplete } from "../../../lib/readingProgress";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
+import UserBadge from "@/components/UserBadge";
+import { CUSTOM_MEMBER_BADGE_OPTIONS, normalizeCustomMemberBadge } from "@/lib/userBadges";
 
 // ── Avatar color helpers ────────────────────────────────────────────────────
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
@@ -54,6 +56,8 @@ interface BuddyProfile {
   display_name: string | null;
   username: string | null;
   profile_image_url: string | null;
+  member_badge?: string | null;
+  is_paid?: boolean;
 }
 
 export default function PublicProfilePage() {
@@ -62,6 +66,7 @@ export default function PublicProfilePage() {
   const profileUserId = params.userId as string;
 
   const [viewerUserId, setViewerUserId] = useState<string | null>(null);
+  const [viewerEmail, setViewerEmail] = useState<string | null>(null);
   const [viewerName, setViewerName] = useState<string>("");
   const [stats, setStats] = useState<ProfileStats & { created_at?: string } | null>(null);
   const [streak, setStreak] = useState<StreakData | null>(null);
@@ -92,6 +97,9 @@ export default function PublicProfilePage() {
   const [showBuddiesModal, setShowBuddiesModal] = useState(false);
   const BUDDIES_PAGE_SIZE = 20;
   const [showRemoveBuddyConfirm, setShowRemoveBuddyConfirm] = useState(false);
+  const [badgeDraft, setBadgeDraft] = useState<string>("");
+  const [savingBadge, setSavingBadge] = useState(false);
+  const [badgeSaveMessage, setBadgeSaveMessage] = useState<string | null>(null);
 
   // ── Recent posts ───────────────────────────────────────────────────────────
   const [recentPosts, setRecentPosts] = useState<Array<{
@@ -115,6 +123,7 @@ export default function PublicProfilePage() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         setViewerUserId(user.id);
+        setViewerEmail(user.email ?? null);
         if (user.id === profileUserId) {
           if (shouldSyncNotesCount(user.id)) await syncNotesCount(user.id);
           if (shouldSyncChaptersCount(user.id)) await syncChaptersCount(user.id);
@@ -150,6 +159,7 @@ export default function PublicProfilePage() {
       }
 
       setStats(profileData as ProfileStats & { created_at?: string });
+      setBadgeDraft(profileData.member_badge || "");
 
       const streakData = await calculateStreakFromActions(profileUserId);
       setStreak(streakData);
@@ -292,13 +302,13 @@ export default function PublicProfilePage() {
 
     const { data: pics } = await supabase
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url")
+      .select("user_id, display_name, username, profile_image_url, member_badge, is_paid")
       .in("user_id", otherIds);
 
     const profileMap: Record<string, BuddyProfile> = {};
     (pics || []).forEach((p) => { profileMap[p.user_id] = p; });
 
-    setBuddiesList(otherIds.map((id) => profileMap[id] || { user_id: id, display_name: null, username: null, profile_image_url: null }));
+    setBuddiesList(otherIds.map((id) => profileMap[id] || { user_id: id, display_name: null, username: null, profile_image_url: null, member_badge: null, is_paid: false }));
     setBuddiesLoadingPage(false);
   }
 
@@ -409,6 +419,55 @@ export default function PublicProfilePage() {
       await loadBuddyCount();
     } finally {
       setBuddyActionLoading(false);
+    }
+  }
+
+  async function handleSaveMemberBadge() {
+    if (viewerEmail !== "moorelouis3@gmail.com") return;
+    setSavingBadge(true);
+    setBadgeSaveMessage(null);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        setBadgeSaveMessage("Could not verify admin session.");
+        return;
+      }
+
+      const response = await fetch("/api/admin/member-badge", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          userId: profileUserId,
+          memberBadge: normalizeCustomMemberBadge(badgeDraft),
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        setBadgeSaveMessage(payload.error || "Could not save badge.");
+        return;
+      }
+
+      setStats((prev) => (
+        prev
+          ? {
+              ...prev,
+              member_badge: payload.memberBadge || null,
+              is_paid: payload.isPaid === true ? true : prev.is_paid,
+            }
+          : prev
+      ));
+      setBadgeSaveMessage("Badge updated.");
+    } catch (_error) {
+      setBadgeSaveMessage("Could not save badge.");
+    } finally {
+      setSavingBadge(false);
     }
   }
 
@@ -577,6 +636,7 @@ export default function PublicProfilePage() {
   const displayName = stats?.display_name || stats?.username || "Bible Buddy Member";
   const username = stats?.username || null;
   const isOwner = viewerUserId === profileUserId;
+  const canAssignBadges = viewerEmail === "moorelouis3@gmail.com";
   const initials = displayName.split(" ").map((w: string) => w[0]).join("").slice(0, 2).toUpperCase();
   const color = avatarColor(profileUserId);
 
@@ -619,7 +679,10 @@ export default function PublicProfilePage() {
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h1 className="text-2xl font-bold text-gray-900 leading-tight">{displayName}</h1>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h1 className="text-2xl font-bold text-gray-900 leading-tight">{displayName}</h1>
+                    <UserBadge customBadge={stats?.member_badge} isPaid={stats?.is_paid} />
+                  </div>
                   {username && (
                     <p className="text-sm text-gray-500 mt-0.5">@{username}</p>
                   )}
@@ -734,6 +797,41 @@ export default function PublicProfilePage() {
                   🤝 {buddyCount} {buddyCount === 1 ? "Buddy" : "Buddies"}
                 </button>
               </div>
+
+              {canAssignBadges && (
+                <div className="mt-4 rounded-2xl border border-gray-200 bg-gray-50 p-4">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold text-gray-900">Buddy Badge</p>
+                      <p className="mt-1 text-xs text-gray-500">
+                        Pro Buddy is automatic for paid buddies. A custom badge overrides it.
+                      </p>
+                      <select
+                        value={badgeDraft}
+                        onChange={(e) => setBadgeDraft(e.target.value)}
+                        className="mt-3 w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none"
+                      >
+                        {CUSTOM_MEMBER_BADGE_OPTIONS.map((option) => (
+                          <option key={option.value || "none"} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <button
+                      onClick={handleSaveMemberBadge}
+                      disabled={savingBadge}
+                      className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition disabled:opacity-60"
+                      style={{ backgroundColor: "#4a9b6f" }}
+                    >
+                      {savingBadge ? "Saving..." : "Save Badge"}
+                    </button>
+                  </div>
+                  {badgeSaveMessage && (
+                    <p className="mt-2 text-xs text-gray-500">{badgeSaveMessage}</p>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -1074,7 +1172,10 @@ export default function PublicProfilePage() {
                               </div>
                             )}
                             <div className="flex-1 min-w-0">
-                              <p className="font-semibold text-gray-900 text-sm truncate">{buddyDisplay}</p>
+                              <div className="flex flex-wrap items-center gap-2">
+                                <p className="font-semibold text-gray-900 text-sm truncate">{buddyDisplay}</p>
+                                <UserBadge customBadge={buddy.member_badge} isPaid={buddy.is_paid} />
+                              </div>
                               {buddy.username && <p className="text-xs text-gray-500">@{buddy.username}</p>}
                             </div>
                             <Link

@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
+import { ModalShell } from "../../../components/ModalShell";
+import UserBadge from "../../../components/UserBadge";
 
-const AVATAR_COLORS = ["#4a9b6f","#5b8dd9","#c97b3e","#9b6bb5","#d45f7a","#3ea8a8"];
+const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
+
 function avatarColor(uid: string): string {
   let hash = 0;
   for (let i = 0; i < uid.length; i++) hash = uid.charCodeAt(i) + ((hash << 5) - hash);
@@ -25,6 +28,17 @@ function formatMsgTime(dateStr: string): string {
   return date.toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
 }
 
+function parseGroupInvite(content: string): { body: string; href: string | null } {
+  const match = content.match(/Open Bible Study Group:\s*(\/study-groups\/[^\s]+)/i);
+  if (!match) {
+    return { body: content, href: null };
+  }
+
+  const href = match[1];
+  const body = content.replace(match[0], "").trim();
+  return { body, href };
+}
+
 interface Message {
   id: string;
   sender_id: string;
@@ -38,6 +52,8 @@ interface OtherUser {
   display_name: string | null;
   username: string | null;
   profile_image_url: string | null;
+  member_badge: string | null;
+  is_paid: boolean | null;
 }
 
 export default function ConversationPage() {
@@ -57,15 +73,19 @@ export default function ConversationPage() {
 
   useEffect(() => {
     async function init() {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) { router.push("/login"); return; }
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) {
+        router.push("/login");
+        return;
+      }
       setUserId(user.id);
       await loadConversation(user.id);
     }
-    init();
-  }, [conversationId]);
+    void init();
+  }, [conversationId, router]);
 
-  // Auto-scroll to bottom when messages change
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -73,7 +93,6 @@ export default function ConversationPage() {
   async function loadConversation(uid: string) {
     setLoading(true);
     try {
-      // Verify the user is part of this conversation
       const { data: convo } = await supabase
         .from("conversations")
         .select("id, user_id_1, user_id_2")
@@ -87,16 +106,23 @@ export default function ConversationPage() {
 
       const otherId = convo.user_id_1 === uid ? convo.user_id_2 : convo.user_id_1;
 
-      // Fetch other user profile
       const { data: profile } = await supabase
         .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url")
+        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid")
         .eq("user_id", otherId)
         .maybeSingle();
 
-      setOtherUser(profile || { user_id: otherId, display_name: null, username: null, profile_image_url: null });
+      setOtherUser(
+        profile || {
+          user_id: otherId,
+          display_name: null,
+          username: null,
+          profile_image_url: null,
+          member_badge: null,
+          is_paid: false,
+        },
+      );
 
-      // Fetch messages
       const { data: msgs } = await supabase
         .from("messages")
         .select("id, sender_id, content, read_at, created_at")
@@ -105,7 +131,6 @@ export default function ConversationPage() {
 
       setMessages(msgs || []);
 
-      // Mark incoming messages as read
       if (msgs && msgs.some((m) => m.sender_id !== uid && !m.read_at)) {
         void supabase
           .from("messages")
@@ -125,7 +150,6 @@ export default function ConversationPage() {
     setNewMessage("");
     setSending(true);
 
-    // Optimistic add
     const optimisticMsg: Message = {
       id: `temp-${Date.now()}`,
       sender_id: userId,
@@ -153,15 +177,13 @@ export default function ConversationPage() {
         return;
       }
 
-      // Replace optimistic with real row
-      setMessages((prev) => prev.map((m) => m.id === optimisticMsg.id ? inserted : m));
+      setMessages((prev) => prev.map((m) => (m.id === optimisticMsg.id ? inserted : m)));
 
-      // Update conversation preview
       await supabase
         .from("conversations")
         .update({
           last_message_at: inserted.created_at,
-          last_message_preview: content.length > 80 ? content.slice(0, 80) + "…" : content,
+          last_message_preview: content.length > 80 ? `${content.slice(0, 80)}...` : content,
         })
         .eq("id", conversationId);
     } finally {
@@ -177,124 +199,144 @@ export default function ConversationPage() {
     }
   }
 
-  // ── Loading ───────────────────────────────────────────────────────────────
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-sm text-gray-400">Loading conversation...</p>
-      </div>
+      <ModalShell isOpen={true} onClose={() => router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
+        <div className="mx-4 w-full max-w-3xl rounded-[28px] bg-white px-6 py-16 text-center shadow-2xl">
+          <p className="text-sm text-gray-400">Loading conversation...</p>
+        </div>
+      </ModalShell>
     );
   }
 
   if (notFound) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-        <div className="text-center">
-          <p className="text-4xl mb-4">🔍</p>
-          <h1 className="text-xl font-bold text-gray-900 mb-2">Conversation not found</h1>
-          <Link href="/messages" className="text-sm text-blue-600 hover:underline">Back to Messages</Link>
+      <ModalShell isOpen={true} onClose={() => router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
+        <div className="mx-4 w-full max-w-md rounded-[28px] bg-white px-6 py-12 text-center shadow-2xl">
+          <p className="mb-4 text-4xl">🔍</p>
+          <h1 className="mb-2 text-xl font-bold text-gray-900">Conversation not found</h1>
+          <Link href="/messages" className="text-sm text-blue-600 hover:underline">
+            Back to Messages
+          </Link>
         </div>
-      </div>
+      </ModalShell>
     );
   }
 
   const otherDisplay = otherUser?.display_name || otherUser?.username || "Bible Buddy";
-  const otherInitials = otherDisplay.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+  const otherInitials = otherDisplay
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
   const otherColor = otherUser ? avatarColor(otherUser.user_id) : "#4a9b6f";
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50">
+    <ModalShell isOpen={true} onClose={() => router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
+      <div className="mx-4 flex h-[82vh] w-full max-w-3xl flex-col overflow-hidden rounded-[30px] border border-black/5 bg-[#fcfcfb] shadow-2xl">
+        <div className="flex items-center gap-3 border-b border-black/5 bg-white px-4 py-3">
+          <button
+            type="button"
+            onClick={() => router.back()}
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200 hover:text-gray-700"
+            aria-label="Close conversation"
+          >
+            ×
+          </button>
 
-      {/* ── HEADER ──────────────────────────────────────────────────────── */}
-      <div className="bg-white border-b border-gray-200 px-4 py-3 flex items-center gap-3 flex-shrink-0">
-        <button
-          onClick={() => router.push("/messages")}
-          className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition text-gray-500 flex-shrink-0"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+          <Link href={`/profile/${otherUser?.user_id}`} className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl px-1 py-1 transition hover:bg-gray-50">
+            {otherUser?.profile_image_url ? (
+              <img src={otherUser.profile_image_url} alt={otherDisplay} className="h-10 w-10 flex-shrink-0 rounded-full object-cover" />
+            ) : (
+              <div
+                className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
+                style={{ backgroundColor: otherColor }}
+              >
+                {otherInitials}
+              </div>
+            )}
+            <div className="min-w-0">
+              <div className="flex min-w-0 items-center gap-2">
+                <p className="truncate text-sm font-semibold text-gray-900">{otherDisplay}</p>
+                <UserBadge customBadge={otherUser?.member_badge} isPaid={otherUser?.is_paid === true} />
+              </div>
+              {otherUser?.username && <p className="truncate text-xs text-gray-400">@{otherUser.username}</p>}
+            </div>
+          </Link>
+        </div>
 
-        <Link href={`/profile/${otherUser?.user_id}`} className="flex items-center gap-3 hover:opacity-80 transition flex-1 min-w-0">
-          {otherUser?.profile_image_url ? (
-            <img src={otherUser.profile_image_url} alt={otherDisplay} className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
-          ) : (
-            <div
-              className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
-              style={{ backgroundColor: otherColor }}
-            >
-              {otherInitials}
+        <div className="flex-1 overflow-y-auto bg-[#f6f7f5] px-4 py-4">
+          {messages.length === 0 && (
+            <div className="py-12 text-center">
+              <p className="text-sm text-gray-400">No messages yet. Say hello!</p>
             </div>
           )}
-          <div className="min-w-0">
-            <p className="font-semibold text-gray-900 text-sm truncate">{otherDisplay}</p>
-            {otherUser?.username && (
-              <p className="text-xs text-gray-400 truncate">@{otherUser.username}</p>
-            )}
-          </div>
-        </Link>
-      </div>
 
-      {/* ── MESSAGES ────────────────────────────────────────────────────── */}
-      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-        {messages.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-sm text-gray-400">No messages yet. Say hello! 👋</p>
-          </div>
-        )}
-
-        {messages.map((msg) => {
-          const isMine = msg.sender_id === userId;
-          return (
-            <div key={msg.id} className={`flex ${isMine ? "justify-end" : "justify-start"}`}>
-              <div className={`max-w-[75%] ${isMine ? "items-end" : "items-start"} flex flex-col gap-0.5`}>
-                <div
-                  className={`px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
-                    isMine
-                      ? "text-white rounded-br-sm"
-                      : "bg-white border border-gray-200 text-gray-900 rounded-bl-sm shadow-sm"
-                  }`}
-                  style={isMine ? { backgroundColor: "#4a9b6f" } : undefined}
-                >
-                  {msg.content}
+          {messages.map((msg) => {
+            const isMine = msg.sender_id === userId;
+            const invite = parseGroupInvite(msg.content);
+            return (
+              <div key={msg.id} className={`mb-3 flex ${isMine ? "justify-end" : "justify-start"}`}>
+                <div className={`flex max-w-[78%] flex-col gap-1 ${isMine ? "items-end" : "items-start"}`}>
+                  <div
+                    className={`rounded-3xl px-4 py-3 text-sm leading-relaxed ${
+                      isMine
+                        ? "rounded-br-md text-white"
+                        : "rounded-bl-md border border-black/5 bg-white text-gray-900 shadow-sm"
+                    }`}
+                    style={isMine ? { backgroundColor: "#4a9b6f" } : undefined}
+                  >
+                    <p className="whitespace-pre-wrap">{invite.body}</p>
+                    {invite.href && (
+                      <Link
+                        href={invite.href}
+                        className={`mt-3 inline-flex rounded-2xl px-3 py-2 text-xs font-semibold transition ${
+                          isMine
+                            ? "bg-white/20 text-white hover:bg-white/25"
+                            : "bg-[#4a9b6f] text-white hover:opacity-90"
+                        }`}
+                      >
+                        Open Bible Study Group
+                      </Link>
+                    )}
+                  </div>
+                  <span className="px-1 text-[10px] text-gray-400">{formatMsgTime(msg.created_at)}</span>
                 </div>
-                <span className="text-[10px] text-gray-400 px-1">{formatMsgTime(msg.created_at)}</span>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
 
-        <div ref={bottomRef} />
-      </div>
-
-      {/* ── INPUT ───────────────────────────────────────────────────────── */}
-      <div className="bg-white border-t border-gray-200 px-4 py-3 flex-shrink-0">
-        <div className="flex items-end gap-3 max-w-2xl mx-auto">
-          <textarea
-            ref={inputRef}
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Message..."
-            rows={1}
-            className="flex-1 resize-none px-4 py-2.5 border border-gray-200 rounded-2xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 max-h-32 overflow-y-auto"
-            style={{ lineHeight: "1.5" }}
-          />
-          <button
-            onClick={handleSend}
-            disabled={!newMessage.trim() || sending}
-            className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white transition disabled:opacity-40"
-            style={{ backgroundColor: "#4a9b6f" }}
-          >
-            <svg className="w-5 h-5 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </button>
+          <div ref={bottomRef} />
         </div>
-        <p className="text-[10px] text-gray-400 text-center mt-1.5">Enter to send · Shift+Enter for new line</p>
-      </div>
 
-    </div>
+        <div className="border-t border-black/5 bg-white px-4 py-3">
+          <div className="mx-auto flex max-w-2xl items-end gap-3">
+            <textarea
+              ref={inputRef}
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Message..."
+              rows={1}
+              className="max-h-32 flex-1 resize-none overflow-y-auto rounded-3xl border border-gray-200 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400"
+              style={{ lineHeight: "1.5" }}
+            />
+            <button
+              type="button"
+              onClick={() => void handleSend()}
+              disabled={!newMessage.trim() || sending}
+              className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-white transition disabled:opacity-40"
+              style={{ backgroundColor: "#4a9b6f" }}
+            >
+              <svg className="h-5 w-5 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+            </button>
+          </div>
+          <p className="mt-1.5 text-center text-[10px] text-gray-400">Enter to send · Shift+Enter for new line</p>
+        </div>
+      </div>
+    </ModalShell>
   );
 }

@@ -1,11 +1,14 @@
 "use client";
+
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { getUsername } from "@/lib/profileStats";
-// Simple UUID v4 generator (RFC4122 compliant, not cryptographically secure)
+import UserBadge from "@/components/UserBadge";
+
 function uuidv4() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
 }
@@ -21,6 +24,8 @@ interface Comment {
   updated_at: string | null;
   is_deleted: boolean;
   profile_image_url?: string | null;
+  member_badge?: string | null;
+  is_paid?: boolean | null;
   replies?: Comment[];
 }
 
@@ -61,7 +66,7 @@ export default function CommentSection({
   articleSlug,
   headingText = "Comments",
   placeholderText = "Write a comment...",
-  submitButtonText = "Post Comment"
+  submitButtonText = "Post Comment",
 }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [user, setUser] = useState<{ id: string; name: string } | null>(null);
@@ -106,35 +111,48 @@ export default function CommentSection({
       .eq("article_slug", articleSlug)
       .order("created_at", { ascending: true });
     setLoading(false);
-    if (error) { setError(error.message); return; }
+    if (error) {
+      setError(error.message);
+      return;
+    }
 
-    const rows = data || [];
-    // Set comments immediately so they display right away
+    const rows = (data || []) as Comment[];
     setComments(rows);
 
-    // Then enrich with profile images in the background
-    const userIds = [...new Set(rows.map((c: Comment) => c.user_id))];
+    const userIds = [...new Set(rows.map((c) => c.user_id))];
     if (userIds.length === 0) return;
     try {
-      const { data: pics } = await supabase
+      const { data: profiles } = await supabase
         .from("profile_stats")
-        .select("user_id, profile_image_url")
+        .select("user_id, profile_image_url, member_badge, is_paid")
         .in("user_id", userIds);
-      if (!pics || pics.length === 0) return;
-      const imageMap: Record<string, string | null> = {};
-      pics.forEach((p) => { imageMap[p.user_id] = p.profile_image_url ?? null; });
-      setComments((prev) => prev.map((c) => ({ ...c, profile_image_url: imageMap[c.user_id] ?? null })));
+      if (!profiles || profiles.length === 0) return;
+      const profileMap: Record<string, { profile_image_url: string | null; member_badge: string | null; is_paid: boolean }> = {};
+      profiles.forEach((p) => {
+        profileMap[p.user_id] = {
+          profile_image_url: p.profile_image_url ?? null,
+          member_badge: p.member_badge ?? null,
+          is_paid: p.is_paid === true,
+        };
+      });
+      setComments((prev) =>
+        prev.map((c) => ({
+          ...c,
+          profile_image_url: profileMap[c.user_id]?.profile_image_url ?? null,
+          member_badge: profileMap[c.user_id]?.member_badge ?? null,
+          is_paid: profileMap[c.user_id]?.is_paid ?? false,
+        })),
+      );
     } catch {
-      // Profile image enrichment failed — comments still display fine
+      // Profile enrichment failed; comments still render.
     }
   }, [articleSlug]);
 
-  // Scroll to and highlight a comment from URL hash (e.g. #comment-{uuid})
   useEffect(() => {
     if (typeof window === "undefined" || comments.length === 0) return;
     const hash = window.location.hash;
     if (!hash.startsWith("#comment-")) return;
-    const targetId = hash.slice(1); // e.g. "comment-abc123"
+    const targetId = hash.slice(1);
 
     function tryScroll(attemptsLeft: number) {
       const el = document.getElementById(targetId);
@@ -147,7 +165,9 @@ export default function CommentSection({
       el.style.backgroundColor = "#dbeafe";
       setTimeout(() => {
         el.style.backgroundColor = "";
-        setTimeout(() => { el.style.transition = ""; }, 600);
+        setTimeout(() => {
+          el.style.transition = "";
+        }, 600);
       }, 2500);
     }
 
@@ -156,8 +176,8 @@ export default function CommentSection({
   }, [comments]);
 
   useEffect(() => {
-    fetchComments();
-    (async () => {
+    void fetchComments();
+    void (async () => {
       const [{ data: userData }, { data: sessionData }] = await Promise.all([
         supabase.auth.getUser(),
         supabase.auth.getSession(),
@@ -194,7 +214,7 @@ export default function CommentSection({
     setContent("");
     setReplyTo(null);
     if (error) setError(error.message);
-    else fetchComments();
+    else void fetchComments();
   };
 
   const handleDelete = async (id: string) => {
@@ -202,97 +222,93 @@ export default function CommentSection({
     const { error } = await supabase.from("article_comments").delete().eq("id", id);
     setLoading(false);
     if (error) setError(error.message);
-    else fetchComments();
+    else void fetchComments();
   };
 
-  const renderComments = (comments: Comment[], depth = 0) =>
-    comments.length === 0 ? null : comments.map((c) => (
-      <div
-        key={c.id}
-        id={`comment-${c.id}`}
-        className={`flex gap-3 py-4 ${depth > 0 ? 'pl-4 border-l-2 border-blue-100 bg-blue-50/40 rounded-md' : 'border-b border-gray-200'} transition-all`}
-        style={{ marginLeft: depth ? 0 : 0 }}
-      >
-        <a href={`/profile/${c.user_id}`} className="flex-shrink-0">
-          {c.profile_image_url ? (
-            <img src={c.profile_image_url} alt={c.user_name} className="w-10 h-10 rounded-full object-cover hover:opacity-80 transition" />
-          ) : (
-            <div className="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center text-lg font-bold text-blue-700 hover:opacity-80 transition">
-              {c.user_name.charAt(0).toUpperCase()}
-            </div>
-          )}
-        </a>
-        <div className="flex-1">
-          <div className="flex items-center gap-2 mb-1">
-            <a href={`/profile/${c.user_id}`} className="font-semibold text-blue-900 hover:underline">{c.user_name}</a>
-            <span className="text-xs text-gray-400">{timeAgo(c.created_at)}</span>
-          </div>
-          <div className="mb-2 text-gray-800 whitespace-pre-line leading-relaxed">{c.content}</div>
-          <div className="flex gap-3 text-sm mt-1">
-            {user && user.id === c.user_id && (
-              <button
-                className="text-red-500 hover:underline hover:text-red-700 transition"
-                onClick={() => handleDelete(c.id)}
-              >
-                Delete
-              </button>
-            )}
-            <button
-              className="text-blue-500 hover:underline hover:text-blue-700 transition"
-              onClick={() => setReplyTo(c.id)}
-            >
-              Reply
-            </button>
-          </div>
-          {replyTo === c.id && (
-            <form onSubmit={handlePost} className="mt-3 flex flex-col gap-2">
-              <textarea
-                className="w-full border border-blue-200 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400"
-                rows={2}
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="Write a reply..."
-                required
-              />
-              <div className="flex gap-2">
-                <button
-                  type="submit"
-                  className="bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm font-medium shadow hover:bg-blue-700 disabled:opacity-60 transition"
-                  disabled={loading || !content.trim()}
-                >
-                  {loading ? "Posting..." : "Post Reply"}
-                </button>
-                <button
-                  type="button"
-                  className="text-gray-500 hover:underline text-sm"
-                  onClick={() => {
-                    setReplyTo(null);
-                    setContent("");
-                  }}
-                >
-                  Cancel
+  const renderComments = (items: Comment[], depth = 0) =>
+    items.length === 0
+      ? null
+      : items.map((c) => (
+          <div
+            key={c.id}
+            id={`comment-${c.id}`}
+            className={`flex gap-3 py-4 ${
+              depth > 0 ? "rounded-md border-l-2 border-blue-100 bg-blue-50/40 pl-4" : "border-b border-gray-200"
+            } transition-all`}
+          >
+            <a href={`/profile/${c.user_id}`} className="flex-shrink-0">
+              {c.profile_image_url ? (
+                <img src={c.profile_image_url} alt={c.user_name} className="h-10 w-10 rounded-full object-cover transition hover:opacity-80" />
+              ) : (
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-200 text-lg font-bold text-blue-700 transition hover:opacity-80">
+                  {c.user_name.charAt(0).toUpperCase()}
+                </div>
+              )}
+            </a>
+            <div className="flex-1">
+              <div className="mb-1 flex items-center gap-2">
+                <a href={`/profile/${c.user_id}`} className="font-semibold text-blue-900 hover:underline">
+                  {c.user_name}
+                </a>
+                <UserBadge customBadge={c.member_badge} isPaid={c.is_paid === true} />
+                <span className="text-xs text-gray-400">{timeAgo(c.created_at)}</span>
+              </div>
+              <div className="mb-2 whitespace-pre-line leading-relaxed text-gray-800">{c.content}</div>
+              <div className="mt-1 flex gap-3 text-sm">
+                {user && user.id === c.user_id && (
+                  <button className="text-red-500 transition hover:text-red-700 hover:underline" onClick={() => void handleDelete(c.id)}>
+                    Delete
+                  </button>
+                )}
+                <button className="text-blue-500 transition hover:text-blue-700 hover:underline" onClick={() => setReplyTo(c.id)}>
+                  Reply
                 </button>
               </div>
-            </form>
-          )}
-          {c.replies && c.replies.length > 0 && (
-            <div className="mt-2">
-              {renderComments(c.replies, depth + 1)}
+              {replyTo === c.id && (
+                <form onSubmit={handlePost} className="mt-3 flex flex-col gap-2">
+                  <textarea
+                    className="w-full rounded-lg border border-blue-200 p-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    rows={2}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    placeholder="Write a reply..."
+                    required
+                  />
+                  <div className="flex gap-2">
+                    <button
+                      type="submit"
+                      className="rounded-lg bg-blue-600 px-4 py-1.5 text-sm font-medium text-white shadow transition hover:bg-blue-700 disabled:opacity-60"
+                      disabled={loading || !content.trim()}
+                    >
+                      {loading ? "Posting..." : "Post Reply"}
+                    </button>
+                    <button
+                      type="button"
+                      className="text-sm text-gray-500 hover:underline"
+                      onClick={() => {
+                        setReplyTo(null);
+                        setContent("");
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              )}
+              {c.replies && c.replies.length > 0 && <div className="mt-2">{renderComments(c.replies, depth + 1)}</div>}
             </div>
-          )}
-        </div>
-      </div>
-    ));
+          </div>
+        ));
 
   return (
     <section className="mt-0">
-      <div className="max-w-2xl mx-auto bg-white/90 border border-blue-100 rounded-2xl shadow-sm p-6 md:p-8">
-        <h2 className="text-xl font-bold mb-2 text-blue-900">{headingText}</h2>
-        {error && <div className="text-red-500 mb-2">{error}</div>}
+      <div className="mx-auto max-w-2xl rounded-2xl border border-blue-100 bg-white/90 p-6 shadow-sm md:p-8">
+        <h2 className="mb-2 text-xl font-bold text-blue-900">{headingText}</h2>
+        {error && <div className="mb-2 text-red-500">{error}</div>}
         {user && !replyTo && (
           <form onSubmit={handlePost} className="mb-2 flex flex-col gap-2">
             <textarea
-              className="w-full border border-blue-200 rounded-lg p-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-400"
+              className="w-full rounded-lg border border-blue-200 p-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
               rows={3}
               value={content}
               onChange={(e) => setContent(e.target.value)}
@@ -301,7 +317,7 @@ export default function CommentSection({
             />
             <button
               type="submit"
-              className="bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-blue-700 disabled:opacity-60 transition self-end"
+              className="self-end rounded-lg bg-blue-600 px-5 py-2 font-semibold text-white shadow transition hover:bg-blue-700 disabled:opacity-60"
               disabled={loading || !content.trim()}
             >
               {loading ? "Posting..." : submitButtonText}
@@ -310,12 +326,12 @@ export default function CommentSection({
         )}
         <div>
           {comments.length === 0 ? (
-            <div className="text-gray-400 text-center py-8 text-base">No comments yet. Be the first to share your reflection.</div>
+            <div className="py-8 text-center text-base text-gray-400">No comments yet. Be the first to share your reflection.</div>
           ) : (
             renderComments(groupComments(comments))
           )}
         </div>
-        {!user && <div className="text-gray-500 text-sm text-center mt-4">Sign in to comment.</div>}
+        {!user && <div className="mt-4 text-center text-sm text-gray-500">Sign in to comment.</div>}
       </div>
     </section>
   );

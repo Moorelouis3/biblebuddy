@@ -10,6 +10,7 @@ import { BIBLE_PEOPLE_LIST } from "@/lib/biblePeopleList";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
+import UserBadge from "@/components/UserBadge";
 
 interface WeekLessonPageProps {
   embeddedGroupId?: string;
@@ -697,6 +698,9 @@ interface ReflectionEntry {
   content: string;
   display_name: string | null;
   profile_image_url: string | null;
+  member_badge?: string | null;
+  is_paid?: boolean | null;
+  group_role?: string | null;
   created_at: string;
   parent_reflection_id: string | null;
   like_count: number;
@@ -706,21 +710,29 @@ interface ReflectionEntry {
 function ReflectionSection({
   lesson,
   userId,
+  groupId,
   seriesId,
   weekNumber,
   done,
   onCompletionChange,
   displayName,
   profileImageUrl,
+  currentUserBadge,
+  currentUserIsPaid,
+  currentUserGroupRole,
 }: {
   lesson: SeriesWeekLesson;
   userId: string;
+  groupId: string;
   seriesId: string;
   weekNumber: number;
   done: boolean;
   onCompletionChange: (completed: boolean) => void;
   displayName: string;
   profileImageUrl: string | null;
+  currentUserBadge: string | null;
+  currentUserIsPaid: boolean;
+  currentUserGroupRole: string | null;
 }) {
   const [text, setText] = useState("");
   const [replyText, setReplyText] = useState("");
@@ -769,13 +781,47 @@ function ReflectionSection({
         }
       }
 
+      const reflectionUserIds = [...new Set(rows.map((row) => row.user_id))];
+      let profileMap: Record<string, { member_badge: string | null; is_paid: boolean }> = {};
+      let roleMap: Record<string, string | null> = {};
+
+      if (reflectionUserIds.length > 0) {
+        const [{ data: profileRows }, { data: memberRows }] = await Promise.all([
+          supabase
+            .from("profile_stats")
+            .select("user_id, member_badge, is_paid")
+            .in("user_id", reflectionUserIds),
+          supabase
+            .from("group_members")
+            .select("user_id, role")
+            .eq("group_id", groupId)
+            .in("user_id", reflectionUserIds),
+        ]);
+
+        profileMap = Object.fromEntries(
+          (profileRows || []).map((row) => [
+            row.user_id,
+            { member_badge: row.member_badge ?? null, is_paid: row.is_paid === true },
+          ]),
+        );
+        roleMap = Object.fromEntries((memberRows || []).map((row) => [row.user_id, row.role ?? null]));
+      }
+
       setReflectionError(null);
-      setReflections(rows.map((row) => ({ ...row, liked: likedSet.has(row.id) })));
+      setReflections(
+        rows.map((row) => ({
+          ...row,
+          liked: likedSet.has(row.id),
+          member_badge: profileMap[row.user_id]?.member_badge ?? null,
+          is_paid: profileMap[row.user_id]?.is_paid ?? false,
+          group_role: roleMap[row.user_id] ?? null,
+        })),
+      );
       setLoadingReflections(false);
     }
 
     void loadReflections();
-  }, [seriesId, weekNumber]);
+  }, [groupId, seriesId, userId, weekNumber]);
 
   async function handleSubmit(parentId: string | null = null) {
     const content = (parentId ? replyText : text).trim();
@@ -798,6 +844,9 @@ function ReflectionSection({
         content,
         display_name: displayName,
         profile_image_url: profileImageUrl,
+        member_badge: currentUserBadge,
+        is_paid: currentUserIsPaid,
+        group_role: currentUserGroupRole,
         created_at: new Date().toISOString(),
         parent_reflection_id: parentId,
         like_count: 0,
@@ -910,6 +959,11 @@ function ReflectionSection({
               <div className="flex-1">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-xs font-semibold text-gray-800">{name}</span>
+                  <UserBadge
+                    customBadge={reflection.member_badge}
+                    isPaid={reflection.is_paid === true}
+                    groupRole={reflection.group_role}
+                  />
                   <span className="text-xs text-gray-400">{timeAgo(reflection.created_at)}</span>
                 </div>
                 <p className="text-sm text-gray-700 mt-1 leading-relaxed whitespace-pre-wrap">{reflection.content}</p>
@@ -1180,6 +1234,8 @@ export default function WeekLessonPage({
   const [displayName, setDisplayName] = useState("");
   const [profileImageUrl, setProfileImageUrl] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState(false);
+  const [memberBadge, setMemberBadge] = useState<string | null>(null);
+  const [currentGroupRole, setCurrentGroupRole] = useState<string | null>(null);
   const [seriesId, setSeriesId] = useState<string | null>(null);
   const [groupName, setGroupName] = useState("Group");
   const [seriesTitle, setSeriesTitle] = useState("The Temptation of Jesus");
@@ -1242,11 +1298,12 @@ export default function WeekLessonPage({
         supabase.from("group_members").select("role").eq("group_id", groupId).eq("user_id", user.id).maybeSingle(),
         supabase.from("study_groups").select("name").eq("id", groupId).maybeSingle(),
         supabase.from("group_series").select("id, title").eq("group_id", groupId).eq("is_current", true).maybeSingle(),
-        supabase.from("profile_stats").select("display_name, username, profile_image_url, is_paid").eq("user_id", user.id).maybeSingle(),
+        supabase.from("profile_stats").select("display_name, username, profile_image_url, is_paid, member_badge").eq("user_id", user.id).maybeSingle(),
       ]);
 
       if (groupRes.data?.name) setGroupName(groupRes.data.name);
       const isLeader = memberRes.data?.role === "leader";
+      setCurrentGroupRole(memberRes.data?.role || null);
 
       if (seriesRes.data?.id) {
         setSeriesId(seriesRes.data.id);
@@ -1257,6 +1314,7 @@ export default function WeekLessonPage({
         setDisplayName(profileRes.data.display_name || profileRes.data.username || "");
         setProfileImageUrl(profileRes.data.profile_image_url || null);
         setIsPaid(profileRes.data.is_paid === true);
+        setMemberBadge(profileRes.data.member_badge || null);
       }
 
       setLoading(false);
@@ -1638,12 +1696,16 @@ export default function WeekLessonPage({
             <ReflectionSection
               lesson={lesson}
               userId={userId!}
+              groupId={groupId}
               seriesId={seriesId!}
               weekNumber={weekNum}
               done={reflectionDone}
               onCompletionChange={handleReflectionCompletionChange}
               displayName={displayName}
               profileImageUrl={profileImageUrl}
+              currentUserBadge={memberBadge}
+              currentUserIsPaid={isPaid}
+              currentUserGroupRole={currentGroupRole}
             />
           </SectionCard>
         </div>
