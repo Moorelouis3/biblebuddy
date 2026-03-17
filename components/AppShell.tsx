@@ -23,6 +23,13 @@ import { BuddyCelebrationModal, type BuddyCelebrationUser } from "./BuddyCelebra
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 
+function urlBase64ToUint8Array(base64String: string) {
+  const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
+  const rawData = window.atob(base64);
+  return Uint8Array.from([...rawData].map((char) => char.charCodeAt(0)));
+}
+
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -102,6 +109,87 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   // PWA install prompt state
   const deferredInstallPromptRef = useRef<any>(null);
   const [canInstall, setCanInstall] = useState(false);
+  const [pushSupported, setPushSupported] = useState(false);
+  const [pushPermission, setPushPermission] = useState<NotificationPermission | "unsupported">("unsupported");
+  const [pushSubscribed, setPushSubscribed] = useState(false);
+  const [pushLoading, setPushLoading] = useState(false);
+  const [pushError, setPushError] = useState<string | null>(null);
+
+  async function savePushSubscription(currentUserId: string, subscription: PushSubscription) {
+    const json = subscription.toJSON();
+    const p256dh = json.keys?.p256dh;
+    const auth = json.keys?.auth;
+
+    if (!p256dh || !auth) {
+      throw new Error("Push subscription keys are missing.");
+    }
+
+    const { error } = await supabase
+      .from("push_subscriptions")
+      .upsert(
+        {
+          user_id: currentUserId,
+          endpoint: subscription.endpoint,
+          p256dh,
+          auth,
+          user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
+          updated_at: new Date().toISOString(),
+          last_seen_at: new Date().toISOString(),
+        },
+        { onConflict: "endpoint" }
+      );
+
+    if (error) {
+      throw new Error(error.message || "Could not save push subscription.");
+    }
+  }
+
+  async function ensurePushSubscription(currentUserId: string) {
+    if (typeof window === "undefined") return;
+    if (!("serviceWorker" in navigator) || !("PushManager" in window)) return;
+    const vapidPublicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+    if (!vapidPublicKey) {
+      throw new Error("Missing NEXT_PUBLIC_VAPID_PUBLIC_KEY.");
+    }
+
+    const registration = await navigator.serviceWorker.register("/service-worker.js");
+    const worker = await navigator.serviceWorker.ready;
+    let subscription = await worker.pushManager.getSubscription();
+
+    if (!subscription) {
+      subscription = await worker.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(vapidPublicKey),
+      });
+    }
+
+    await savePushSubscription(currentUserId, subscription);
+    setPushSubscribed(true);
+  }
+
+  async function handleEnablePushAlerts() {
+    if (!userId) return;
+    setPushLoading(true);
+    setPushError(null);
+    try {
+      if (typeof window === "undefined" || !("Notification" in window)) {
+        throw new Error("Push notifications are not supported on this device.");
+      }
+
+      const permission = await Notification.requestPermission();
+      setPushPermission(permission);
+
+      if (permission !== "granted") {
+        throw new Error("Notifications were not allowed.");
+      }
+
+      await ensurePushSubscription(userId);
+    } catch (error: any) {
+      setPushError(error?.message || "Could not enable push alerts.");
+    } finally {
+      setPushLoading(false);
+    }
+  }
 
   async function checkOnboardingStatus(currentUserId: string) {
     try {
@@ -301,6 +389,45 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     window.addEventListener("beforeinstallprompt", handler);
     return () => window.removeEventListener("beforeinstallprompt", handler);
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const supported = "Notification" in window && "serviceWorker" in navigator && "PushManager" in window;
+    setPushSupported(supported);
+    setPushPermission(supported ? Notification.permission : "unsupported");
+  }, []);
+
+  useEffect(() => {
+    if (!isLoggedIn || !userId || !pushSupported) return;
+
+    let cancelled = false;
+    const currentUserId = userId;
+
+    async function syncPushState() {
+      try {
+        await navigator.serviceWorker.register("/service-worker.js");
+        const worker = await navigator.serviceWorker.ready;
+        const existingSubscription = await worker.pushManager.getSubscription();
+        if (!cancelled) {
+          setPushSubscribed(!!existingSubscription);
+        }
+
+        if (Notification.permission === "granted" && !existingSubscription) {
+          await ensurePushSubscription(currentUserId);
+        }
+      } catch (error: any) {
+        if (!cancelled) {
+          setPushError(error?.message || "Could not initialize push alerts.");
+        }
+      }
+    }
+
+    void syncPushState();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isLoggedIn, userId, pushSupported]);
 
   async function handleInstallPrompt() {
     if (!deferredInstallPromptRef.current) return;
@@ -1066,6 +1193,32 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                           </button>
                         )}
                       </div>
+                      {pushSupported && (
+                        <div className="px-4 py-3 border-b border-gray-100 bg-[#f8fbf8]">
+                          <div className="flex items-center justify-between gap-3">
+                            <div className="min-w-0">
+                              <p className="text-sm font-semibold text-gray-900">Phone Push Alerts</p>
+                              <p className="text-xs text-gray-500 mt-0.5">
+                                {pushPermission === "granted" && pushSubscribed
+                                  ? "Push alerts are on for this device."
+                                  : "Turn on push alerts so new Bible Buddy notifications reach this device."}
+                              </p>
+                            </div>
+                            {!(pushPermission === "granted" && pushSubscribed) && (
+                              <button
+                                type="button"
+                                onClick={handleEnablePushAlerts}
+                                disabled={pushLoading}
+                                className="px-3 py-2 rounded-lg text-xs font-semibold text-white transition disabled:opacity-60"
+                                style={{ backgroundColor: "#4a9b6f" }}
+                              >
+                                {pushLoading ? "Saving..." : "Enable"}
+                              </button>
+                            )}
+                          </div>
+                          {pushError && <p className="text-xs text-red-500 mt-2">{pushError}</p>}
+                        </div>
+                      )}
                       <div className="max-h-72 overflow-y-auto">
                         {notifications.length === 0 ? (
                           <p className="text-sm text-gray-500 text-center py-6">No notifications yet.</p>

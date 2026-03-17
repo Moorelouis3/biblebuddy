@@ -1,29 +1,9 @@
-const CACHE_VERSION = "v3-2026-02-19";
+const CACHE_VERSION = "v5-2026-03-17";
 const CACHE_NAME = `biblebuddy-${CACHE_VERSION}`;
 
 const STATIC_ASSETS = [
-  // Add static asset paths here, e.g. '/icon.png', '/manifest.json'
-];
-
-self.addEventListener('install', event => {
-  self.skipWaiting();
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(STATIC_ASSETS))
-  );
-});
-
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))
-    ).then(() => self.clients.claim())
-  );
-});
-const CACHE_VERSION = "v4-2026-02-19";
-const CACHE_NAME = `biblebuddy-${CACHE_VERSION}`;
-
-const STATIC_ASSETS = [
-  // Add static asset paths here, e.g. '/icon.png', '/manifest.json'
+  "/manifest.json",
+  "/Biblebuddyicon.png",
 ];
 
 self.addEventListener('install', event => {
@@ -63,4 +43,43 @@ self.addEventListener('fetch', event => {
   }
   // Default: just fetch
   event.respondWith(fetch(req));
+});
+
+self.addEventListener("push", (event) => {
+  const payload = event.data ? event.data.json() : {};
+  const title = payload.title || "Bible Buddy";
+  const options = {
+    body: payload.body || "You have a new notification.",
+    icon: "/Biblebuddyicon.png",
+    badge: "/Biblebuddyicon.png",
+    data: {
+      url: payload.url || "/dashboard",
+      notificationId: payload.notificationId || null,
+      type: payload.type || "notification",
+    },
+  };
+
+  event.waitUntil(self.registration.showNotification(title, options));
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const url = event.notification.data?.url || "/dashboard";
+
+  event.waitUntil(
+    self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((clients) => {
+      for (const client of clients) {
+        if ("focus" in client) {
+          client.navigate(url);
+          return client.focus();
+        }
+      }
+
+      if (self.clients.openWindow) {
+        return self.clients.openWindow(url);
+      }
+
+      return undefined;
+    })
+  );
 });
