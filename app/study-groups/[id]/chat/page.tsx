@@ -64,6 +64,15 @@ interface Member {
   profile_image_url: string | null;
 }
 
+interface MemberActivityItem {
+  user_id: string;
+  action_type: string;
+  action_label: string | null;
+  created_at: string;
+  display_name: string;
+  profile_image_url: string | null;
+}
+
 interface ArticleLikeUser {
   user_id: string;
   display_name: string;
@@ -202,6 +211,58 @@ function formatCountdown(targetTs: number, nowTs: number): string {
   return `${minutes}m ${seconds}s`;
 }
 
+function formatMemberActivityLine(activity: Pick<MemberActivityItem, "display_name" | "action_type" | "action_label">): string {
+  const name = activity.display_name || "A Buddy";
+  const label = activity.action_label?.trim();
+
+  switch (activity.action_type) {
+    case "chapter_completed":
+      return label ? `${name} read ${label}.` : `${name} completed a chapter.`;
+    case "book_completed":
+      return label ? `${name} finished ${label}.` : `${name} finished a book.`;
+    case "reading_plan_chapter_completed":
+      return label ? `${name} completed ${label} from a reading plan.` : `${name} completed a reading plan chapter.`;
+    case "devotional_day_completed":
+      return label ? `${name} completed ${label}.` : `${name} completed a devotional day.`;
+    case "note_created":
+      return `${name} created a note.`;
+    case "note_started":
+      return `${name} started a note.`;
+    case "person_learned":
+      return label ? `${name} learned about ${label}.` : `${name} learned about a Bible person.`;
+    case "person_viewed":
+      return label ? `${name} read about ${label}.` : `${name} viewed a Bible person.`;
+    case "place_discovered":
+      return label ? `${name} discovered ${label}.` : `${name} discovered a Bible place.`;
+    case "place_viewed":
+      return label ? `${name} explored ${label}.` : `${name} viewed a Bible place.`;
+    case "keyword_mastered":
+      return label ? `${name} studied ${label}.` : `${name} mastered a Bible keyword.`;
+    case "keyword_viewed":
+      return label ? `${name} explored ${label}.` : `${name} viewed a Bible keyword.`;
+    case "trivia_question_answered":
+      return label ? `${name} answered a trivia question about ${label}.` : `${name} answered a trivia question.`;
+    case "trivia_started":
+      return label ? `${name} started trivia on ${label}.` : `${name} started trivia.`;
+    case "chapter_notes_viewed":
+      return label ? `${name} opened notes for ${label}.` : `${name} opened chapter notes.`;
+    case "understand_verse_of_the_day":
+      return label ? `${name} studied the verse of the day: ${label}.` : `${name} studied the verse of the day.`;
+    case "verse_highlighted":
+      return label ? `${name} highlighted ${label}.` : `${name} highlighted a verse.`;
+    case "group_message_sent":
+      return `${name} posted in the group.`;
+    case "series_week_started":
+      return label ? `${name} started ${label}.` : `${name} started a study week.`;
+    case "user_login":
+      return `${name} logged in.`;
+    case "user_signup":
+      return `${name} joined Bible Buddy.`;
+    default:
+      return label ? `${name} ${activity.action_type.replace(/_/g, " ")}: ${label}.` : `${name} ${activity.action_type.replace(/_/g, " ")}.`;
+  }
+}
+
 function normalizeHubCategoryName(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }
@@ -298,7 +359,7 @@ const TABS: { key: TabKey; label: string }[] = [
   { key: "updates",       label: "📢 Updates" },
   { key: "prayer",        label: "🙏 Prayer" },
   { key: "qa",            label: "❓ Q&A" },
-  { key: "members",       label: "👥 Members" },
+  { key: "members",       label: "👥 Buddies" },
 ];
 
 function getGroupPostCategory(activeTab: string): string {
@@ -330,6 +391,7 @@ function GroupCommentSection({
   displayName,
   userProfileImage,
   onCountChange,
+  targetCommentId,
 }: {
   groupId: string;
   post: Post;
@@ -337,76 +399,88 @@ function GroupCommentSection({
   displayName: string;
   userProfileImage: string | null;
   onCountChange: (delta: number) => void;
+  targetCommentId?: string | null;
 }) {
   const [comments, setComments] = useState<GroupFeedComment[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [newComment, setNewComment] = useState("");
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
   const [replyText, setReplyText] = useState("");
   const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
 
-  useEffect(() => {
-    async function loadComments() {
-      setLoading(true);
-      const { data: topLevelRows } = await supabase
+  async function loadComments() {
+    setLoading(true);
+    const { data: topLevelRows } = await supabase
+      .from("group_posts")
+      .select("id, user_id, display_name, category, content, like_count, created_at, parent_post_id")
+      .eq("group_id", groupId)
+      .eq("parent_post_id", post.id)
+      .order("created_at", { ascending: true });
+
+    const topLevel = topLevelRows || [];
+    const topLevelIds = topLevel.map((row) => row.id);
+
+    let replyRows: GroupFeedComment[] = [];
+    if (topLevelIds.length > 0) {
+      const { data } = await supabase
         .from("group_posts")
         .select("id, user_id, display_name, category, content, like_count, created_at, parent_post_id")
-        .eq("group_id", groupId)
-        .eq("parent_post_id", post.id)
+        .in("parent_post_id", topLevelIds)
         .order("created_at", { ascending: true });
-
-      const topLevel = topLevelRows || [];
-      const topLevelIds = topLevel.map((row) => row.id);
-
-      let replyRows: GroupFeedComment[] = [];
-      if (topLevelIds.length > 0) {
-        const { data } = await supabase
-          .from("group_posts")
-          .select("id, user_id, display_name, category, content, like_count, created_at, parent_post_id")
-          .in("parent_post_id", topLevelIds)
-          .order("created_at", { ascending: true });
-        replyRows = (data || []) as GroupFeedComment[];
-      }
-
-      const allRows = [...topLevel, ...replyRows] as GroupFeedComment[];
-      if (allRows.length === 0) {
-        setComments([]);
-        setLoading(false);
-        return;
-      }
-
-      const userIds = [...new Set(allRows.map((row) => row.user_id))];
-      const [{ data: profiles }, { data: likes }] = await Promise.all([
-        supabase
-          .from("profile_stats")
-          .select("user_id, profile_image_url")
-          .in("user_id", userIds),
-        supabase
-          .from("group_post_likes")
-          .select("post_id")
-          .eq("user_id", userId)
-          .in("post_id", allRows.map((row) => row.id)),
-      ]);
-
-      const imageMap: Record<string, string | null> = {};
-      (profiles || []).forEach((profile) => {
-        imageMap[profile.user_id] = profile.profile_image_url ?? null;
-      });
-      const likedSet = new Set((likes || []).map((like) => like.post_id));
-
-      setComments(
-        allRows.map((row) => ({
-          ...row,
-          liked: likedSet.has(row.id),
-          profile_image_url: imageMap[row.user_id] ?? null,
-        }))
-      );
-      setLoading(false);
+      replyRows = (data || []) as GroupFeedComment[];
     }
 
+    const allRows = [...topLevel, ...replyRows] as GroupFeedComment[];
+    if (allRows.length === 0) {
+      setComments([]);
+      setLoading(false);
+      return;
+    }
+
+    const userIds = [...new Set(allRows.map((row) => row.user_id))];
+    const [{ data: profiles }, { data: likes }] = await Promise.all([
+      supabase
+        .from("profile_stats")
+        .select("user_id, profile_image_url")
+        .in("user_id", userIds),
+      supabase
+        .from("group_post_likes")
+        .select("post_id")
+        .eq("user_id", userId)
+        .in("post_id", allRows.map((row) => row.id)),
+    ]);
+
+    const imageMap: Record<string, string | null> = {};
+    (profiles || []).forEach((profile) => {
+      imageMap[profile.user_id] = profile.profile_image_url ?? null;
+    });
+    const likedSet = new Set((likes || []).map((like) => like.post_id));
+
+    setComments(
+      allRows.map((row) => ({
+        ...row,
+        liked: likedSet.has(row.id),
+        profile_image_url: imageMap[row.user_id] ?? null,
+      }))
+    );
+    setLoading(false);
+  }
+
+  useEffect(() => {
     void loadComments();
   }, [groupId, post.id, userId]);
+
+  useEffect(() => {
+    if (!targetCommentId || loading) return;
+    const timer = window.setTimeout(() => {
+      const target = document.getElementById(`comment-${targetCommentId}`);
+      if (!target) return;
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 150);
+    return () => window.clearTimeout(timer);
+  }, [targetCommentId, loading, comments.length]);
 
   async function toggleCommentLike(comment: GroupFeedComment) {
     if (likeLoading.has(comment.id)) return;
@@ -430,45 +504,44 @@ function GroupCommentSection({
   async function submitComment(content: string, parentId: string | null) {
     if (!content.trim() || submitting) return;
     setSubmitting(true);
-    const { data, error } = await supabase
+    setSubmitError(null);
+    const text = content.trim();
+    const { error } = await supabase
       .from("group_posts")
       .insert({
         group_id: groupId,
         user_id: userId,
         display_name: displayName,
         category: post.category,
-        content: content.trim(),
+        content: text,
         parent_post_id: parentId ?? post.id,
-      })
-      .select("id, user_id, display_name, category, content, like_count, created_at, parent_post_id")
-      .single();
+      });
 
-    if (!error && data) {
-      setComments((prev) => [
-        ...prev,
-        {
-          ...(data as GroupFeedComment),
-          liked: false,
-          profile_image_url: userProfileImage,
-        },
-      ]);
+    if (!error) {
+      await loadComments();
       onCountChange(1);
       void logActionToMasterActions(userId, "group_message_sent", `group-post:${post.id}`);
+      setNewComment("");
+      setReplyText("");
+      setReplyingTo(null);
+    } else {
+      setSubmitError(error.message || "Could not post your reply.");
     }
-
-    setNewComment("");
-    setReplyText("");
-    setReplyingTo(null);
     setSubmitting(false);
   }
 
   const topLevelComments = comments.filter((comment) => comment.parent_post_id === post.id);
   const replies = (parentId: string) => comments.filter((comment) => comment.parent_post_id === parentId);
 
-  function CommentRow({ comment, indent = false }: { comment: GroupFeedComment; indent?: boolean }) {
-    const name = comment.display_name || "Member";
+  function renderCommentRow(comment: GroupFeedComment, indent = false) {
+    const name = comment.display_name || "Buddy";
+    const isTargetComment = targetCommentId === comment.id;
     return (
-      <div className={`flex gap-2 ${indent ? "ml-8 mt-2" : "mt-2"}`}>
+      <div
+        key={comment.id}
+        id={`comment-${comment.id}`}
+        className={`flex gap-2 transition-colors duration-700 ${indent ? "ml-8 mt-3 pl-4 border-l border-[#e8ddd0]" : "mt-3"} ${isTargetComment ? "rounded-2xl ring-1 ring-[#e8ddd0] px-2 py-1" : ""}`}
+      >
         <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0 mt-0.5">
           {comment.profile_image_url ? (
             <img src={comment.profile_image_url} alt={name} className="w-7 h-7 rounded-full object-cover" />
@@ -479,13 +552,13 @@ function GroupCommentSection({
           )}
         </Link>
         <div className="flex-1 min-w-0">
-          <div className="rounded-2xl bg-[#faf7f2] border border-[#efe5d9] px-3 py-2">
+          <div>
             <Link href={`/profile/${comment.user_id}`} className="text-xs font-semibold text-gray-800 hover:underline">
               {name}
             </Link>
             <p className="text-xs text-gray-700 mt-0.5 leading-relaxed whitespace-pre-wrap">{comment.content}</p>
           </div>
-          <div className="flex items-center gap-3 mt-1 px-1">
+          <div className="flex items-center gap-3 mt-1">
             <span className="text-[10px] text-gray-400">{timeAgo(comment.created_at)}</span>
             <button
               onClick={() => void toggleCommentLike(comment)}
@@ -528,9 +601,7 @@ function GroupCommentSection({
               </button>
             </div>
           )}
-          {!indent && replies(comment.id).map((reply) => (
-            <CommentRow key={reply.id} comment={reply} indent />
-          ))}
+          {!indent && replies(comment.id).map((reply) => renderCommentRow(reply, true))}
         </div>
       </div>
     );
@@ -545,7 +616,7 @@ function GroupCommentSection({
       ) : (
         <div>
           {topLevelComments.map((comment) => (
-            <CommentRow key={comment.id} comment={comment} />
+            renderCommentRow(comment)
           ))}
         </div>
       )}
@@ -580,6 +651,7 @@ function GroupCommentSection({
           Post
         </button>
       </div>
+      {submitError && <p className="mt-2 text-xs text-red-500">{submitError}</p>}
     </div>
   );
 }
@@ -674,6 +746,10 @@ export default function GroupChatPage() {
   const [membersHasMore, setMembersHasMore] = useState(false);
   const [membersTotal, setMembersTotal] = useState<number | null>(null);
   const [membersSearch, setMembersSearch] = useState("");
+  const [showMembersActivityModal, setShowMembersActivityModal] = useState(false);
+  const [membersActivity, setMembersActivity] = useState<MemberActivityItem[]>([]);
+  const [loadingMembersActivity, setLoadingMembersActivity] = useState(false);
+  const [membersActivityError, setMembersActivityError] = useState<string | null>(null);
   const MEMBERS_PAGE = 20;
 
   // Series list
@@ -700,6 +776,7 @@ export default function GroupChatPage() {
   const [showPostLikesFor, setShowPostLikesFor] = useState<Post | null>(null);
   const [postLikers, setPostLikers] = useState<ArticleLikeUser[]>([]);
   const [loadingPostLikers, setLoadingPostLikers] = useState(false);
+  const [deepLinkedCommentId, setDeepLinkedCommentId] = useState<string | null>(null);
 
   // Post view
   const [selectedPost, setSelectedPost] = useState<SeriesPost | null>(null);
@@ -767,7 +844,7 @@ export default function GroupChatPage() {
         .select("display_name, username, profile_image_url")
         .eq("user_id", user.id)
         .maybeSingle();
-      setDisplayName(profile?.display_name || profile?.username || user.email?.split("@")[0] || "Member");
+      setDisplayName(profile?.display_name || profile?.username || user.email?.split("@")[0] || "Buddy");
       setUserProfileImage(profile?.profile_image_url ?? null);
 
       const { data: membership } = await supabase
@@ -843,6 +920,22 @@ export default function GroupChatPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [group, activeTab, hubCategories]);
 
+  useEffect(() => {
+    const targetPostId = searchParams.get("post");
+    const targetCommentId = searchParams.get("comment");
+    if (!group || !targetPostId) return;
+
+    if (activeTab === "members" || activeTab === "bible_studies" || hubCategories.some((c) => c.id === activeTab)) {
+      setActiveTab("home");
+      return;
+    }
+
+    setDeepLinkedCommentId(targetCommentId);
+    void openFeedPostById(targetPostId);
+    router.replace(`/study-groups/${groupId}/chat`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [group, posts, activeTab, hubCategories, searchParams]);
+
   // â”€â”€ Load series posts + schedule + progress when series is selected â”€â”€â”€â”€â”€
   useEffect(() => {
     if (!selectedSeries) return;
@@ -888,6 +981,39 @@ export default function GroupChatPage() {
     const id = window.setInterval(() => setNowTs(Date.now()), 1000);
     return () => window.clearInterval(id);
   }, []);
+
+  useEffect(() => {
+    const shouldLockBodyScroll =
+      !!selectedFeedPost ||
+      !!showPostComposerModal ||
+      !!showMembersActivityModal ||
+      !!showGroupInfoModal ||
+      !!deletePostId ||
+      !!lightboxUrl ||
+      !!showHubLikesFor ||
+      !!showPostLikesFor;
+
+    if (!shouldLockBodyScroll) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousTouchAction = document.body.style.touchAction;
+    document.body.style.overflow = "hidden";
+    document.body.style.touchAction = "none";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.body.style.touchAction = previousTouchAction;
+    };
+  }, [
+    selectedFeedPost,
+    showPostComposerModal,
+    showMembersActivityModal,
+    showGroupInfoModal,
+    deletePostId,
+    lightboxUrl,
+    showHubLikesFor,
+    showPostLikesFor,
+  ]);
 
   useEffect(() => {
     if (!showMoreNav) return;
@@ -1013,6 +1139,56 @@ export default function GroupChatPage() {
     setLoadingPosts(false);
   }
 
+  async function openFeedPostById(postId: string) {
+    const existingPost = posts.find((post) => post.id === postId);
+    if (existingPost) {
+      setSelectedFeedPost(existingPost);
+      return;
+    }
+
+    if (!group) return;
+
+    const { data: postRow } = await supabase
+      .from("group_posts")
+      .select("id, user_id, display_name, title, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
+      .eq("group_id", group.id)
+      .eq("id", postId)
+      .is("parent_post_id", null)
+      .maybeSingle();
+
+    if (!postRow) return;
+
+    const [{ data: membership }, { data: profile }, { data: likeRows }, { count: directCommentCount }, { data: topLevelComments }] = await Promise.all([
+      supabase.from("group_members").select("role").eq("group_id", group.id).eq("user_id", postRow.user_id).maybeSingle(),
+      supabase.from("profile_stats").select("profile_image_url").eq("user_id", postRow.user_id).maybeSingle(),
+      supabase.from("group_post_likes").select("post_id, user_id").eq("post_id", postRow.id),
+      supabase.from("group_posts").select("id", { count: "exact", head: true }).eq("parent_post_id", postRow.id),
+      supabase.from("group_posts").select("id").eq("parent_post_id", postRow.id),
+    ]);
+
+    let replyCount = 0;
+    const topLevelIds = (topLevelComments || []).map((comment) => comment.id);
+    if (topLevelIds.length > 0) {
+      const { count } = await supabase
+        .from("group_posts")
+        .select("id", { count: "exact", head: true })
+        .in("parent_post_id", topLevelIds);
+      replyCount = count ?? 0;
+    }
+
+    const liked = !!userId && (likeRows || []).some((row) => row.user_id === userId);
+    const hydratedPost: Post = {
+      ...postRow,
+      like_count: likeRows?.length || 0,
+      comment_count: (directCommentCount ?? 0) + replyCount,
+      role: membership?.role || "member",
+      liked,
+      profile_image_url: profile?.profile_image_url ?? null,
+    };
+
+    setSelectedFeedPost(hydratedPost);
+  }
+
   async function handleLike(post: Post) {
     if (!userId || likeLoading.has(post.id)) return;
     const currentPost = posts.find((p) => p.id === post.id) ?? selectedFeedPost ?? post;
@@ -1062,7 +1238,7 @@ export default function GroupChatPage() {
         const profile = (profiles || []).find((row) => row.user_id === userIdValue);
         return {
           user_id: userIdValue,
-          display_name: profile?.display_name || profile?.username || "Member",
+          display_name: profile?.display_name || profile?.username || "Buddy",
           profile_image_url: profile?.profile_image_url ?? null,
         };
       }),
@@ -1204,7 +1380,7 @@ export default function GroupChatPage() {
             profile.user_id,
             {
               user_id: profile.user_id,
-              display_name: profile.display_name || profile.username || "Member",
+              display_name: profile.display_name || profile.username || "Buddy",
               profile_image_url: profile.profile_image_url ?? null,
             },
           ]),
@@ -1215,7 +1391,7 @@ export default function GroupChatPage() {
         if (!row.article_slug || !nextStats[row.article_slug]) return;
         nextStats[row.article_slug].likeCount += 1;
         if (userId && row.user_id === userId) nextStats[row.article_slug].liked = true;
-        const liker = likerMap[row.user_id] || { user_id: row.user_id, display_name: "Member", profile_image_url: null };
+        const liker = likerMap[row.user_id] || { user_id: row.user_id, display_name: "Buddy", profile_image_url: null };
         nextStats[row.article_slug].likers.push(liker);
       });
     }
@@ -1294,7 +1470,7 @@ export default function GroupChatPage() {
     const roleOrder: Record<string, number> = { leader: 0, moderator: 1, member: 2 };
     const rows: Member[] = page.map((m) => {
       const p = profileMap[m.user_id];
-      return { user_id: m.user_id, display_name: p?.display_name || p?.username || m.display_name || "Member", role: m.role, profile_image_url: p?.profile_image_url ?? null };
+      return { user_id: m.user_id, display_name: p?.display_name || p?.username || m.display_name || "Buddy", role: m.role, profile_image_url: p?.profile_image_url ?? null };
     });
     rows.sort((a, b) => (roleOrder[a.role] ?? 2) - (roleOrder[b.role] ?? 2));
     return { rows, hasMore: page.length === MEMBERS_PAGE };
@@ -1327,6 +1503,123 @@ export default function GroupChatPage() {
     setMembersHasMore(hasMore);
     setLoadingMoreMembers(false);
   }
+
+  async function loadMembersActivity() {
+    if (!group) return;
+    setLoadingMembersActivity(true);
+    setMembersActivityError(null);
+
+    const { data: groupMemberRows, error: membersError } = await supabase
+      .from("group_members")
+      .select("user_id")
+      .eq("group_id", group.id)
+      .eq("status", "approved");
+
+    if (membersError) {
+      setMembersActivity([]);
+      setMembersActivityError("Could not load buddies for this group right now.");
+      setLoadingMembersActivity(false);
+      return;
+    }
+
+    const memberIds = [...new Set((groupMemberRows || []).map((row) => row.user_id))];
+
+    if (memberIds.length === 0) {
+      setMembersActivity([]);
+      setLoadingMembersActivity(false);
+      return;
+    }
+
+    const { data: actionRows, error: actionError } = await supabase
+      .from("master_actions")
+      .select("user_id, action_type, action_label, created_at, username")
+      .in("user_id", memberIds)
+      .order("created_at", { ascending: false })
+      .limit(60);
+
+    let resolvedActionRows = actionRows || [];
+    if (actionError) {
+      const fallback = await supabase
+        .from("master_actions")
+        .select("user_id, action_type, created_at")
+        .in("user_id", memberIds)
+        .order("created_at", { ascending: false })
+        .limit(60);
+
+      if (fallback.error) {
+        setMembersActivity([]);
+        setMembersActivityError(actionError.message || fallback.error.message || "Buddy activity could not load from master_actions.");
+        setLoadingMembersActivity(false);
+        return;
+      }
+
+      resolvedActionRows = (fallback.data || []).map((row) => ({
+        ...row,
+        action_label: null,
+        username: null,
+      }));
+    }
+
+    const trimmedRows = resolvedActionRows.slice(0, 20);
+    const actionUserIds = [...new Set(trimmedRows.map((row) => row.user_id).filter(Boolean))];
+
+    const { data: profiles } = actionUserIds.length > 0
+      ? await supabase
+          .from("profile_stats")
+          .select("user_id, display_name, username, profile_image_url")
+          .in("user_id", actionUserIds)
+      : { data: [] as Array<{ user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }> };
+
+    const profileMap = Object.fromEntries(
+      (profiles || []).map((profile) => [
+        profile.user_id,
+        {
+          display_name: profile.display_name || profile.username || "Buddy",
+          profile_image_url: profile.profile_image_url ?? null,
+        },
+      ]),
+    );
+
+    setMembersActivity(
+      trimmedRows.map((row) => ({
+        user_id: row.user_id,
+        action_type: row.action_type,
+        action_label: row.action_label,
+        created_at: row.created_at,
+        display_name: profileMap[row.user_id]?.display_name || row.username || "Buddy",
+        profile_image_url: profileMap[row.user_id]?.profile_image_url ?? null,
+      })),
+    );
+    setLoadingMembersActivity(false);
+  }
+
+  useEffect(() => {
+    if (!showMembersActivityModal) return;
+    void loadMembersActivity();
+  }, [showMembersActivityModal, group?.id]);
+
+  useEffect(() => {
+    if (!showMembersActivityModal) return;
+
+    const channel = supabase
+      .channel(`group-buddies-activity:${groupId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "master_actions",
+        },
+        () => {
+          void loadMembersActivity();
+        },
+      )
+      .subscribe();
+
+    return () => {
+      void supabase.removeChannel(channel);
+    };
+  }, [showMembersActivityModal, groupId, group?.id]);
 
   // â”€â”€ Series â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function loadSeries() {
@@ -1638,10 +1931,12 @@ export default function GroupChatPage() {
                   About Group
                 </button>
               <button
-                onClick={() => setActiveTab("members")}
+                onClick={() => {
+                      setShowMembersActivityModal(true);
+                }}
                 className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
               >
-                👥 See All Members
+                👥 See All Buddies
               </button>
             </div>
           </div>
@@ -1846,7 +2141,7 @@ export default function GroupChatPage() {
           {activeTab === "members" && !selectedSeries && !selectedPost ? (
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mt-2">
               <div className="px-5 py-4 border-b border-gray-100">
-                <h2 className="text-base font-semibold text-gray-800">Members {membersTotal !== null ? `(${membersTotal})` : ""}</h2>
+                  <h2 className="text-base font-semibold text-gray-800">Buddies {membersTotal !== null ? `(${membersTotal})` : ""}</h2>
               </div>
               {/* Search */}
               <div className="px-4 py-3 border-b border-gray-100">
@@ -1854,18 +2149,18 @@ export default function GroupChatPage() {
                   type="text"
                   value={membersSearch}
                   onChange={(e) => setMembersSearch(e.target.value)}
-                  placeholder="Search members..."
+                      placeholder="Search buddies..."
                   className="w-full px-4 py-2 bg-gray-100 rounded-xl text-sm text-gray-900 placeholder-gray-400 outline-none"
                 />
               </div>
               {loadingMembers ? (
-                <p className="text-sm text-gray-400 text-center py-8">Loading members...</p>
+                <p className="text-sm text-gray-400 text-center py-8">Loading buddies...</p>
               ) : members.length === 0 ? (
-                <p className="text-sm text-gray-400 text-center py-8">No members yet.</p>
+                <p className="text-sm text-gray-400 text-center py-8">No buddies yet.</p>
               ) : (() => {
                 const q = membersSearch.toLowerCase();
                 const filtered = membersSearch ? members.filter((m) => m.display_name.toLowerCase().includes(q)) : members;
-                if (filtered.length === 0) return <p className="text-sm text-gray-400 text-center py-8">No results for &ldquo;{membersSearch}&rdquo;.</p>;
+                if (filtered.length === 0) return <p className="text-sm text-gray-400 text-center py-8">No buddies found for &ldquo;{membersSearch}&rdquo;.</p>;
                 return (
                 <div>
                   <div className="divide-y divide-gray-100">
@@ -1903,12 +2198,12 @@ export default function GroupChatPage() {
                         disabled={loadingMoreMembers}
                         className="w-full py-2.5 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 hover:bg-gray-50 transition disabled:opacity-50"
                       >
-                        {loadingMoreMembers ? "Loading..." : `Load more Â· ${members.length} of ${membersTotal ?? "?"} members`}
+                      {loadingMoreMembers ? "Loading..." : `Load more · ${members.length} of ${membersTotal ?? "?"} buddies`}
                       </button>
                     </div>
                   )}
                   {!membersSearch && !membersHasMore && membersTotal !== null && (
-                    <p className="text-xs text-gray-400 text-center py-3">{membersTotal} {membersTotal === 1 ? "member" : "members"} total</p>
+                  <p className="text-xs text-gray-400 text-center py-3">{membersTotal} {membersTotal === 1 ? "buddy" : "buddies"} total</p>
                   )}
                 </div>
                 );
@@ -2520,9 +2815,17 @@ export default function GroupChatPage() {
                 ) : (
                   <div className="flex flex-col gap-3">
                     {items.map((item) => (
-                      <button
+                      <div
                         key={item.id}
+                        role="button"
+                        tabIndex={0}
                         onClick={() => setSelectedHubItem(item)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setSelectedHubItem(item);
+                          }
+                        }}
                         className="w-full text-left rounded-xl p-4 shadow-sm border hover:shadow-md transition cursor-pointer"
                         style={{ backgroundColor: bg, borderColor }}
                       >
@@ -2569,7 +2872,7 @@ export default function GroupChatPage() {
                             <span>Comments</span>
                           </button>
                         </div>
-                      </button>
+                      </div>
                     ))}
                   </div>
                 )}
@@ -2610,7 +2913,10 @@ export default function GroupChatPage() {
       {activeFeedPost && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
-          onClick={() => setSelectedFeedPost(null)}
+          onClick={() => {
+            setSelectedFeedPost(null);
+            setDeepLinkedCommentId(null);
+          }}
         >
           <div
             className="bg-white rounded-3xl shadow-xl w-full max-w-2xl max-h-[92vh] overflow-y-auto modal-panel-in"
@@ -2620,7 +2926,7 @@ export default function GroupChatPage() {
               <div className="min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
                   <p className="font-semibold text-gray-900 text-sm">
-                    {activeFeedPost.display_name || "Member"}
+                    {activeFeedPost.display_name || "Buddy"}
                   </p>
                   {(activeFeedPost.role === "leader" || activeFeedPost.role === "moderator") && (
                     <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
@@ -2635,7 +2941,10 @@ export default function GroupChatPage() {
               </div>
               <button
                 type="button"
-                onClick={() => setSelectedFeedPost(null)}
+                onClick={() => {
+                  setSelectedFeedPost(null);
+                  setDeepLinkedCommentId(null);
+                }}
                 className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition flex-shrink-0"
               >
                 ×
@@ -2648,6 +2957,31 @@ export default function GroupChatPage() {
                   className="prose prose-sm max-w-none text-gray-800 leading-relaxed"
                   dangerouslySetInnerHTML={{ __html: activeFeedPost.content }}
                 />
+              )}
+
+              {activeFeedPost.media_url && isUploadedVideo(activeFeedPost.media_url) && (
+                <video
+                  src={activeFeedPost.media_url}
+                  controls
+                  playsInline
+                  className="mt-4 w-full rounded-2xl bg-black"
+                  style={{ maxHeight: "520px" }}
+                />
+              )}
+
+              {activeFeedPost.media_url && !isUploadedVideo(activeFeedPost.media_url) && (
+                <button
+                  type="button"
+                  onClick={() => setLightboxUrl(activeFeedPost.media_url!)}
+                  className="mt-4 w-full block rounded-2xl overflow-hidden focus:outline-none"
+                >
+                  <img
+                    src={activeFeedPost.media_url}
+                    alt="Post image"
+                    className="w-full object-contain rounded-2xl"
+                    style={{ maxHeight: "520px", objectPosition: "center" }}
+                  />
+                </button>
               )}
 
               <div className="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
@@ -2686,6 +3020,7 @@ export default function GroupChatPage() {
                     userId={userId}
                     displayName={displayName}
                     userProfileImage={userProfileImage}
+                    targetCommentId={deepLinkedCommentId}
                     onCountChange={(delta) => {
                       setSelectedFeedPost((prev) => prev ? { ...prev, comment_count: Math.max((prev.comment_count || 0) + delta, 0) } : prev);
                       setPosts((prev) => prev.map((item) => item.id === activeFeedPost.id ? { ...item, comment_count: Math.max((item.comment_count || 0) + delta, 0) } : item));
@@ -3129,6 +3464,102 @@ export default function GroupChatPage() {
         </div>
       )}
 
+      {showMembersActivityModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          onClick={() => setShowMembersActivityModal(false)}
+        >
+          <div
+            className="bg-white rounded-3xl shadow-xl w-full max-w-xl max-h-[90vh] overflow-y-auto modal-panel-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="px-6 py-5 border-b border-gray-100">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Bible Study Group</p>
+                  <h2 className="text-2xl font-bold text-gray-900 mt-2">Buddies Activity</h2>
+                  <p className="text-sm text-gray-500 mt-1">Recent activity from your Bible study buddies.</p>
+                </div>
+                <button
+                  onClick={() => setShowMembersActivityModal(false)}
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition text-xl"
+                >
+                  ×
+                </button>
+              </div>
+              <div className="mt-4 flex gap-3">
+                <button
+                  onClick={() => {
+                    setShowMembersActivityModal(false);
+                    setActiveTab("members");
+                  }}
+                  className="px-4 py-2.5 rounded-xl text-sm font-semibold text-white transition hover:opacity-90"
+                  style={{ backgroundColor: SAGE }}
+                >
+                  View All Buddies
+                </button>
+                <button
+                  onClick={() => void loadMembersActivity()}
+                  className="px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
+                >
+                  Refresh
+                </button>
+              </div>
+            </div>
+            <div className="px-5 py-4">
+              {loadingMembersActivity ? (
+                <p className="text-sm text-gray-400 text-center py-8">Loading buddy activity...</p>
+              ) : membersActivityError ? (
+                <div className="text-center py-8 space-y-2">
+                  <p className="text-sm text-gray-500">{membersActivityError}</p>
+                  <p className="text-xs text-gray-400">Run the shared read policy SQL for `master_actions` if this keeps happening.</p>
+                </div>
+              ) : membersActivity.length === 0 ? (
+                <div className="text-center py-8 space-y-2">
+                  <p className="text-sm text-gray-500">No recent buddy activity yet.</p>
+                  <p className="text-xs text-gray-400">This list pulls from your shared activity log, so older and new Bible Buddy actions will appear here as your group keeps moving.</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {membersActivity.map((activity, index) => (
+                    <div key={`${activity.user_id}-${activity.created_at}-${index}`} className="rounded-2xl border border-gray-200 bg-white px-4 py-3 shadow-sm">
+                      <div className="flex items-start gap-3">
+                        <Link href={`/profile/${activity.user_id}`} className="flex-shrink-0">
+                          {activity.profile_image_url ? (
+                            <img src={activity.profile_image_url} alt={activity.display_name} className="w-11 h-11 rounded-full object-cover hover:opacity-80 transition" />
+                          ) : (
+                            <div className="w-11 h-11 rounded-full flex items-center justify-center text-white text-sm font-bold hover:opacity-80 transition" style={{ backgroundColor: avatarColor(activity.user_id) }}>
+                              {getInitial(activity.display_name)}
+                            </div>
+                          )}
+                        </Link>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-3">
+                            <Link href={`/profile/${activity.user_id}`} className="text-sm font-semibold text-gray-900 hover:underline truncate">
+                              {activity.display_name}
+                            </Link>
+                            <span className="text-xs text-gray-400 flex-shrink-0">{timeAgo(activity.created_at)}</span>
+                          </div>
+                          <p className="text-sm text-gray-700 leading-relaxed mt-1">{formatMemberActivityLine(activity)}</p>
+                          <p className="text-xs text-gray-400 mt-2">
+                            {new Date(activity.created_at).toLocaleString("en-US", {
+                              month: "short",
+                              day: "numeric",
+                              hour: "numeric",
+                              minute: "2-digit",
+                            })}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {showGroupInfoModal && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
@@ -3160,8 +3591,8 @@ export default function GroupChatPage() {
               )}
               <div className="grid grid-cols-1 gap-3">
                 <div className="rounded-xl border border-gray-200 px-4 py-3">
-                  <p className="text-xs font-bold uppercase tracking-wide text-gray-400">Members</p>
-                  <p className="text-sm text-gray-900 mt-1">{group.member_count === 1 ? "1 member" : `${group.member_count || 0} members`}</p>
+                  <p className="text-xs font-bold uppercase tracking-wide text-gray-400">Buddies</p>
+                  <p className="text-sm text-gray-900 mt-1">{group.member_count === 1 ? "1 buddy" : `${group.member_count || 0} buddies`}</p>
                 </div>
                 <div className="rounded-xl border border-gray-200 px-4 py-3">
                   <p className="text-xs font-bold uppercase tracking-wide text-gray-400">Teacher</p>
@@ -3178,12 +3609,12 @@ export default function GroupChatPage() {
                 <button
                   onClick={() => {
                     setShowGroupInfoModal(false);
-                    setActiveTab("members");
+                    setShowMembersActivityModal(true);
                   }}
                   className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white transition hover:opacity-90"
                   style={{ backgroundColor: SAGE }}
                 >
-                  View Members
+                  Buddies Activity
                 </button>
                 <button
                   onClick={() => setShowGroupInfoModal(false)}
@@ -3237,7 +3668,9 @@ export default function GroupChatPage() {
     }
     return (
       <div className="flex flex-col gap-3">
-        {posts.map((post) => (
+        {posts.map((post) => {
+          const hasImagePost = Boolean(post.media_url && !isUploadedVideo(post.media_url) && !post.link_url);
+          return (
           <div
             key={post.id}
             role="button"
@@ -3249,8 +3682,9 @@ export default function GroupChatPage() {
                 setSelectedFeedPost(post);
               }
             }}
-            className="w-full text-left bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition cursor-pointer"
+            className="w-full text-left transition cursor-pointer bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md"
           >
+            <div>
             {post.is_pinned && <div className="flex items-center gap-1 text-xs text-amber-600 font-medium mb-2">📌 Pinned</div>}
             <div className="flex items-start gap-3">
               {post.profile_image_url ? (
@@ -3263,7 +3697,7 @@ export default function GroupChatPage() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
                   <Link href={`/profile/${post.user_id}`} className="font-semibold text-gray-900 text-sm hover:underline">
-                    {post.display_name || "Member"}
+                    {post.display_name || "Buddy"}
                   </Link>
                   {(post.role === "leader" || post.role === "moderator") && (
                     <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
@@ -3306,9 +3740,9 @@ export default function GroupChatPage() {
                 </div>
               )}
             </div>
-            {post.title && <h3 className="text-lg font-bold text-gray-900 mt-3 leading-snug">{post.title}</h3>}
+            {post.title && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
             {post.content && (
-              <p className="text-sm text-gray-700 mt-3 leading-relaxed truncate whitespace-nowrap">
+              <p className={`text-sm text-gray-700 mt-3 leading-relaxed ${hasImagePost ? "whitespace-pre-wrap" : "truncate whitespace-nowrap"}`}>
                 {getPostPreviewText(post.content)}
               </p>
             )}
@@ -3323,22 +3757,17 @@ export default function GroupChatPage() {
               />
             )}
             {post.media_url && !isUploadedVideo(post.media_url) && (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxUrl(post.media_url!);
-                }}
-                className="mt-3 w-full block rounded-xl overflow-hidden focus:outline-none"
-                style={{ maxHeight: "320px" }}
+              <div
+                className="mt-3 w-full block rounded-[22px] overflow-hidden bg-white"
+                style={{ maxHeight: hasImagePost ? "560px" : "420px" }}
               >
                 <img
                   src={post.media_url}
                   alt="Post image"
-                  className="w-full object-cover"
-                  style={{ maxHeight: "320px", objectPosition: "center" }}
+                  className="w-full object-contain"
+                  style={{ maxHeight: hasImagePost ? "560px" : "420px", objectPosition: "center" }}
                 />
-              </button>
+              </div>
             )}
             {post.link_url && (() => {
               const parsed = parseVideoEmbed(post.link_url);
@@ -3410,8 +3839,9 @@ export default function GroupChatPage() {
                 <span>Comments</span>
               </button>
             </div>
+            </div>
           </div>
-        ))}
+        )})}
       </div>
     );
   }

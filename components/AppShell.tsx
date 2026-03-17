@@ -70,10 +70,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     type: string | null;
     from_user_id: string | null;
     from_user_name: string;
-    article_slug: string;
+    article_slug: string | null;
     comment_id: string | null;
     post_id: string | null;
-    message: string;
+    message: string | null;
     is_read: boolean;
     created_at: string;
   }>>([]);
@@ -245,6 +245,30 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (userId) void fetchNotifications(userId);
   }, [pathname, userId]);
+
+  useEffect(() => {
+    if (!userId) return;
+
+    const channel = supabase
+      .channel(`notifications:${userId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "notifications",
+          filter: `user_id=eq.${userId}`,
+        },
+        () => {
+          void fetchNotifications(userId);
+        },
+      )
+      .subscribe();
+
+    return () => {
+      void supabase.removeChannel(channel);
+    };
+  }, [userId]);
 
   // Fetch unread message count on every page navigation
   useEffect(() => {
@@ -479,12 +503,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       router.push("/dashboard");
       return;
     }
-    if (notif.type === "group_post" && notif.article_slug) {
-      router.push(notif.article_slug);
+    if (notif.article_slug?.startsWith("/study-groups/")) {
+      const searchParams = new URLSearchParams();
+      if (notif.post_id) searchParams.set("post", notif.post_id);
+      if (notif.comment_id) searchParams.set("comment", notif.comment_id);
+      const query = searchParams.toString();
+      router.push(query ? `${notif.article_slug}?${query}` : notif.article_slug);
       return;
     }
     const hash = notif.comment_id ? `#comment-${notif.comment_id}` : "";
-    router.push(`${notif.article_slug}${hash}`);
+    router.push(`${notif.article_slug ?? "/dashboard"}${hash}`);
   }
 
   useEffect(() => {
@@ -1049,8 +1077,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               notif.type === "feed_post_liked" ? "Community" :
                               notif.type === "feed_post_commented" ? "Community" :
                               notif.type === "feed_post_replied" ? "Community" :
-                              notif.type === "group_post"
-                                ? (notif.article_slug?.split("/").filter(Boolean)[1] ? "Study Group" : "Study Group")
+                              notif.article_slug?.startsWith("/study-groups/")
+                                ? "Study Group"
                                 : notif.article_slug
                                   ? notif.article_slug.split("/").filter(Boolean).pop()?.split("-").map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") ?? ""
                                   : "";
@@ -1064,7 +1092,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                   key={notif.id}
                                   className={`px-4 py-3 border-b border-gray-50 ${!notif.is_read ? "bg-blue-50" : ""}`}
                                 >
-                                  <p className="text-sm text-gray-900 font-medium">{notif.message}</p>
+                                  <p className="text-sm text-gray-900 font-medium">{notif.message || "New notification"}</p>
                                   <p className="text-xs text-gray-400 mt-0.5 mb-2">{timeStr}</p>
                                   <div className="flex gap-2">
                                     <button
@@ -1096,7 +1124,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                   key={notif.id}
                                   className={`px-4 py-3 border-b border-gray-50 ${!notif.is_read ? "bg-blue-50" : ""}`}
                                 >
-                                  <p className="text-sm text-gray-900 font-medium">{notif.message}</p>
+                                  <p className="text-sm text-gray-900 font-medium">{notif.message || "New notification"}</p>
                                   <p className="text-xs text-gray-400 mt-0.5">{timeStr}</p>
                                 </div>
                               );
@@ -1110,7 +1138,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                 onClick={() => handleNotifClick(notif)}
                                 className={`w-full text-left px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors ${!notif.is_read ? "bg-blue-50" : ""}`}
                               >
-                                <p className="text-sm text-gray-900 font-medium">{notif.message}</p>
+                                <p className="text-sm text-gray-900 font-medium">{notif.message || "New notification"}</p>
                                 {notifSourceLabel && <p className="text-xs text-blue-600 mt-0.5">{notifSourceLabel}</p>}
                                 <p className="text-xs text-gray-400 mt-0.5">{timeStr}</p>
                               </button>
