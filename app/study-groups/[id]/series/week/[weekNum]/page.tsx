@@ -227,7 +227,7 @@ function NotesSection({
   onUnlock: () => void;
 }) {
   const [expanded, setExpanded] = useState(!isPaid);
-  const notesHTML = parseIntroToHTML(lesson.notes ?? lesson.intro);
+  const notesHTML = isPaid && expanded ? parseIntroToHTML(lesson.notes ?? lesson.intro) : "";
 
   useEffect(() => {
     setExpanded(!isPaid);
@@ -1189,10 +1189,22 @@ export default function WeekLessonPage({
       ]);
 
       if (groupRes.data?.name) setGroupName(groupRes.data.name);
+      const isLeader = memberRes.data?.role === "leader";
+
       if (seriesRes.data?.id) {
         setSeriesId(seriesRes.data.id);
         if (seriesRes.data.title) setSeriesTitle(seriesRes.data.title);
+      }
 
+      if (profileRes.data) {
+        setDisplayName(profileRes.data.display_name || profileRes.data.username || "");
+        setProfileImageUrl(profileRes.data.profile_image_url || null);
+        setIsPaid(profileRes.data.is_paid === true);
+      }
+
+      setLoading(false);
+
+      if (seriesRes.data?.id) {
         const sid = seriesRes.data.id;
         const [scheduleRes, progressRowsRes, scoreRes] = await Promise.all([
           supabase.from("series_schedules").select("start_date, start_at").eq("series_id", sid).maybeSingle(),
@@ -1200,8 +1212,7 @@ export default function WeekLessonPage({
             .from("series_week_progress")
             .select("week_number, reading_completed, trivia_completed, reflection_posted")
             .eq("user_id", user.id)
-            .eq("series_id", sid)
-            ,
+            .eq("series_id", sid),
           supabase
             .from("series_trivia_scores")
             .select("score")
@@ -1211,7 +1222,6 @@ export default function WeekLessonPage({
             .maybeSingle(),
         ]);
 
-        const isLeader = memberRes.data?.role === "leader";
         const progressMap: Record<number, { reading: boolean; trivia: boolean; reflection: boolean }> = {};
         (progressRowsRes.data || []).forEach((row) => {
           progressMap[row.week_number] = {
@@ -1243,14 +1253,6 @@ export default function WeekLessonPage({
           setAccessDeniedMessage(accessState.message);
         }
       }
-
-      if (profileRes.data) {
-        setDisplayName(profileRes.data.display_name || profileRes.data.username || "");
-        setProfileImageUrl(profileRes.data.profile_image_url || null);
-        setIsPaid(profileRes.data.is_paid === true);
-      }
-
-      setLoading(false);
     }
     init();
   }, [groupId, weekNum, router]);
