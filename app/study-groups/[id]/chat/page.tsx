@@ -9,8 +9,10 @@ import { supabase } from "../../../../lib/supabaseClient";
 import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { TOTAL_WEEKS, getSeriesWeekLesson } from "@/lib/seriesContent";
+import { parseWeeklyTriviaQuestions } from "@/lib/groupWeeklyTrivia";
 import WeekLessonPage from "../series/week/[weekNum]/page";
 import UserBadge from "@/components/UserBadge";
+import GroupWeeklyTriviaCard from "@/components/GroupWeeklyTriviaCard";
 
 // â”€â”€ Interfaces â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
@@ -79,6 +81,18 @@ interface MemberActivityItem {
   created_at: string;
   display_name: string;
   profile_image_url: string | null;
+}
+
+interface WeeklyGroupTriviaFeedSet {
+  id: string;
+  post_id: string;
+  group_id: string;
+  week_key: string;
+  subject_key: string;
+  subject_title: string;
+  intro: string | null;
+  questions: ReturnType<typeof parseWeeklyTriviaQuestions>;
+  created_at: string;
 }
 
 interface ArticleLikeUser {
@@ -809,6 +823,7 @@ export default function GroupChatPage() {
 
   // Chat posts
   const [posts, setPosts] = useState<Post[]>([]);
+  const [weeklyTriviaByPostId, setWeeklyTriviaByPostId] = useState<Record<string, WeeklyGroupTriviaFeedSet>>({});
   const [loadingPosts, setLoadingPosts] = useState(true);
   const [showPostComposerModal, setShowPostComposerModal] = useState(false);
   const [newPostTitle, setNewPostTitle] = useState("");
@@ -1165,6 +1180,23 @@ export default function GroupChatPage() {
     setLoadingPosts(true);
     const postCategory = getGroupPostCategory(activeTab);
 
+    if (activeTab === "home") {
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const accessToken = sessionData.session?.access_token;
+        if (accessToken) {
+          await fetch(`/api/groups/${group.id}/weekly-trivia/ensure`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+        }
+      } catch (error) {
+        console.error("[GROUP_WEEKLY_TRIVIA] Ensure failed:", error);
+      }
+    }
+
     const { data: postRows, error } = await supabase
       .from("group_posts")
       .select("id, user_id, display_name, title, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
@@ -1177,10 +1209,32 @@ export default function GroupChatPage() {
     if (error) { setLoadingPosts(false); return; }
 
     const rows = postRows || [];
+    const nextWeeklyTriviaByPostId: Record<string, WeeklyGroupTriviaFeedSet> = {};
     const rootCommentCountMap: Record<string, number> = {};
     rows.forEach((row) => {
       rootCommentCountMap[row.id] = 0;
     });
+
+    if (rows.length > 0) {
+      const { data: triviaRows } = await supabase
+        .from("weekly_group_trivia_sets")
+        .select("id, post_id, group_id, week_key, subject_key, subject_title, intro, questions, created_at")
+        .in("post_id", rows.map((row) => row.id));
+
+      (triviaRows || []).forEach((row: any) => {
+        nextWeeklyTriviaByPostId[row.post_id] = {
+          id: row.id,
+          post_id: row.post_id,
+          group_id: row.group_id,
+          week_key: row.week_key,
+          subject_key: row.subject_key,
+          subject_title: row.subject_title,
+          intro: row.intro ?? null,
+          questions: parseWeeklyTriviaQuestions(row.questions),
+          created_at: row.created_at,
+        };
+      });
+    }
 
     if (rows.length > 0) {
       const rootIds = rows.map((row) => row.id);
@@ -1253,6 +1307,7 @@ export default function GroupChatPage() {
       is_paid: badgeMap[p.user_id]?.is_paid ?? false,
       member_badge: badgeMap[p.user_id]?.member_badge ?? null,
     })));
+    setWeeklyTriviaByPostId(nextWeeklyTriviaByPostId);
     setLoadingPosts(false);
   }
 
@@ -1294,6 +1349,29 @@ export default function GroupChatPage() {
     }
 
     const liked = !!userId && (likeRows || []).some((row) => row.user_id === userId);
+    const { data: triviaSetRow } = await supabase
+      .from("weekly_group_trivia_sets")
+      .select("id, post_id, group_id, week_key, subject_key, subject_title, intro, questions, created_at")
+      .eq("post_id", postRow.id)
+      .maybeSingle();
+
+    if (triviaSetRow) {
+      setWeeklyTriviaByPostId((prev) => ({
+        ...prev,
+        [postRow.id]: {
+          id: triviaSetRow.id,
+          post_id: triviaSetRow.post_id,
+          group_id: triviaSetRow.group_id,
+          week_key: triviaSetRow.week_key,
+          subject_key: triviaSetRow.subject_key,
+          subject_title: triviaSetRow.subject_title,
+          intro: triviaSetRow.intro ?? null,
+          questions: parseWeeklyTriviaQuestions((triviaSetRow as any).questions),
+          created_at: triviaSetRow.created_at,
+        },
+      }));
+    }
+
     const hydratedPost: Post = {
       ...postRow,
       like_count: likeRows?.length || 0,
@@ -2065,6 +2143,7 @@ export default function GroupChatPage() {
 
   const coverColor = group.cover_color || "#d4ecd4";
   const activeFeedPost = selectedFeedPost ? (posts.find((post) => post.id === selectedFeedPost.id) ?? selectedFeedPost) : null;
+  const activeFeedTriviaSet = activeFeedPost ? weeklyTriviaByPostId[activeFeedPost.id] : undefined;
   const isLeader = userRole === "leader";
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
   const SAGE = "#5a9a5a";
@@ -3168,11 +3247,14 @@ export default function GroupChatPage() {
             </div>
 
             <div className="px-6 py-5">
-              {activeFeedPost.content && (
+              {!activeFeedTriviaSet && activeFeedPost.content && (
                 <div
                   className="prose prose-sm max-w-none text-gray-800 leading-relaxed"
                   dangerouslySetInnerHTML={{ __html: activeFeedPost.content }}
                 />
+              )}
+              {activeFeedTriviaSet && (
+                <GroupWeeklyTriviaCard triviaSet={activeFeedTriviaSet} userId={userId} />
               )}
 
               {activeFeedPost.media_url && isUploadedVideo(activeFeedPost.media_url) && (
@@ -3911,6 +3993,7 @@ export default function GroupChatPage() {
       <div className="flex flex-col gap-3">
         {posts.map((post) => {
           const hasImagePost = Boolean(post.media_url && !isUploadedVideo(post.media_url) && !post.link_url);
+          const triviaSet = weeklyTriviaByPostId[post.id];
           return (
           <div
             key={post.id}
@@ -3978,10 +4061,15 @@ export default function GroupChatPage() {
               )}
             </div>
             {post.title && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
-            {post.content && (
+            {!triviaSet && post.content && (
               <p className={`text-sm text-gray-700 mt-3 leading-relaxed ${hasImagePost ? "whitespace-pre-wrap" : "truncate whitespace-nowrap"}`}>
                 {getPostPreviewText(post.content)}
               </p>
+            )}
+            {triviaSet && (
+              <div className="mt-3">
+                <GroupWeeklyTriviaCard triviaSet={triviaSet} userId={userId} />
+              </div>
             )}
             {post.media_url && isUploadedVideo(post.media_url) && (
               <video
