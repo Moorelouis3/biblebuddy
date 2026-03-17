@@ -1250,8 +1250,8 @@ export default function GroupChatPage() {
       role: roleMap[p.user_id] || "member",
       liked: likedSet.has(p.id),
       profile_image_url: imageMap[p.user_id] ?? null,
-      is_paid: false,
-      member_badge: null,
+      is_paid: badgeMap[p.user_id]?.is_paid ?? false,
+      member_badge: badgeMap[p.user_id]?.member_badge ?? null,
     })));
     setLoadingPosts(false);
   }
