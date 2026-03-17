@@ -749,8 +749,13 @@ export default function GroupChatPage() {
   const [showMembersActivityModal, setShowMembersActivityModal] = useState(false);
   const [membersActivity, setMembersActivity] = useState<MemberActivityItem[]>([]);
   const [loadingMembersActivity, setLoadingMembersActivity] = useState(false);
+  const [loadingMoreMembersActivity, setLoadingMoreMembersActivity] = useState(false);
   const [membersActivityError, setMembersActivityError] = useState<string | null>(null);
+  const [membersActivityOffset, setMembersActivityOffset] = useState(0);
+  const [membersActivityHasMore, setMembersActivityHasMore] = useState(false);
   const MEMBERS_PAGE = 20;
+  const MEMBERS_ACTIVITY_PAGE = 20;
+  const MEMBERS_ACTIVITY_MORE_PAGE = 10;
 
   // Series list
   const [seriesList, setSeriesList] = useState<Series[]>([]);
@@ -1504,9 +1509,15 @@ export default function GroupChatPage() {
     setLoadingMoreMembers(false);
   }
 
-  async function loadMembersActivity() {
+  async function loadMembersActivity(reset = false) {
     if (!group) return;
-    setLoadingMembersActivity(true);
+    const pageSize = reset ? MEMBERS_ACTIVITY_PAGE : MEMBERS_ACTIVITY_MORE_PAGE;
+    const offset = reset ? 0 : membersActivityOffset;
+    if (reset) {
+      setLoadingMembersActivity(true);
+    } else {
+      setLoadingMoreMembersActivity(true);
+    }
     setMembersActivityError(null);
 
     const { data: groupMemberRows, error: membersError } = await supabase
@@ -1519,6 +1530,7 @@ export default function GroupChatPage() {
       setMembersActivity([]);
       setMembersActivityError("Could not load buddies for this group right now.");
       setLoadingMembersActivity(false);
+      setLoadingMoreMembersActivity(false);
       return;
     }
 
@@ -1526,7 +1538,10 @@ export default function GroupChatPage() {
 
     if (memberIds.length === 0) {
       setMembersActivity([]);
+      setMembersActivityHasMore(false);
+      setMembersActivityOffset(0);
       setLoadingMembersActivity(false);
+      setLoadingMoreMembersActivity(false);
       return;
     }
 
@@ -1535,7 +1550,7 @@ export default function GroupChatPage() {
       .select("user_id, action_type, action_label, created_at, username")
       .in("user_id", memberIds)
       .order("created_at", { ascending: false })
-      .limit(60);
+      .range(offset, offset + pageSize);
 
     let resolvedActionRows = actionRows || [];
     if (actionError) {
@@ -1544,12 +1559,13 @@ export default function GroupChatPage() {
         .select("user_id, action_type, created_at")
         .in("user_id", memberIds)
         .order("created_at", { ascending: false })
-        .limit(60);
+        .range(offset, offset + pageSize);
 
       if (fallback.error) {
         setMembersActivity([]);
         setMembersActivityError(actionError.message || fallback.error.message || "Buddy activity could not load from master_actions.");
         setLoadingMembersActivity(false);
+        setLoadingMoreMembersActivity(false);
         return;
       }
 
@@ -1560,7 +1576,8 @@ export default function GroupChatPage() {
       }));
     }
 
-    const trimmedRows = resolvedActionRows.slice(0, 20);
+    const hasMore = resolvedActionRows.length > pageSize;
+    const trimmedRows = resolvedActionRows.slice(0, pageSize);
     const actionUserIds = [...new Set(trimmedRows.map((row) => row.user_id).filter(Boolean))];
 
     const { data: profiles } = actionUserIds.length > 0
@@ -1580,22 +1597,31 @@ export default function GroupChatPage() {
       ]),
     );
 
-    setMembersActivity(
-      trimmedRows.map((row) => ({
+    const mappedRows = trimmedRows.map((row) => ({
         user_id: row.user_id,
         action_type: row.action_type,
         action_label: row.action_label,
         created_at: row.created_at,
         display_name: profileMap[row.user_id]?.display_name || row.username || "Buddy",
         profile_image_url: profileMap[row.user_id]?.profile_image_url ?? null,
-      })),
-    );
+      }));
+    setMembersActivity((prev) => {
+      if (reset) return mappedRows;
+      const seen = new Set(prev.map((item) => `${item.user_id}-${item.created_at}-${item.action_type}-${item.action_label || ""}`));
+      return [...prev, ...mappedRows.filter((item) => !seen.has(`${item.user_id}-${item.created_at}-${item.action_type}-${item.action_label || ""}`))];
+    });
+    setMembersActivityHasMore(hasMore);
+    setMembersActivityOffset(offset + trimmedRows.length);
     setLoadingMembersActivity(false);
+    setLoadingMoreMembersActivity(false);
   }
 
   useEffect(() => {
     if (!showMembersActivityModal) return;
-    void loadMembersActivity();
+    setMembersActivity([]);
+    setMembersActivityOffset(0);
+    setMembersActivityHasMore(false);
+    void loadMembersActivity(true);
   }, [showMembersActivityModal, group?.id]);
 
   useEffect(() => {
@@ -1611,7 +1637,10 @@ export default function GroupChatPage() {
           table: "master_actions",
         },
         () => {
-          void loadMembersActivity();
+          setMembersActivity([]);
+          setMembersActivityOffset(0);
+          setMembersActivityHasMore(false);
+          void loadMembersActivity(true);
         },
       )
       .subscribe();
@@ -1620,6 +1649,31 @@ export default function GroupChatPage() {
       void supabase.removeChannel(channel);
     };
   }, [showMembersActivityModal, groupId, group?.id]);
+
+  useEffect(() => {
+    if (!group) return;
+    if (activeTab === "members" || activeTab === "bible_studies" || hubCategories.some((c) => c.id === activeTab)) return;
+
+    const channel = supabase
+      .channel(`group-feed-refresh:${group.id}:${activeTab}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "group_posts",
+          filter: `group_id=eq.${group.id}`,
+        },
+        () => {
+          void loadPosts();
+        },
+      )
+      .subscribe();
+
+    return () => {
+      void supabase.removeChannel(channel);
+    };
+  }, [group, activeTab, hubCategories]);
 
   // â”€â”€ Series â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function loadSeries() {
@@ -2886,8 +2940,12 @@ export default function GroupChatPage() {
                 <button
                   type="button"
                   onClick={() => setShowPostComposerModal(true)}
-                  className="w-full bg-white border border-[#d4ecd4] rounded-2xl px-4 py-4 shadow-sm hover:shadow-md transition text-left"
+                  className="w-full bg-white border border-[#d4ecd4] rounded-2xl px-4 py-4 shadow-sm hover:shadow-md transition text-left relative overflow-hidden"
                 >
+                  <span className="absolute right-4 top-4 flex h-2.5 w-2.5">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-[#8ccf98] opacity-60 animate-ping" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#4a9b6f]" />
+                  </span>
                   <div className="flex items-center gap-3">
                     {userProfileImage ? (
                       <img src={userProfileImage} alt={displayName} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
@@ -3507,7 +3565,7 @@ export default function GroupChatPage() {
               </div>
             </div>
             <div className="px-5 py-4">
-              {loadingMembersActivity ? (
+                    {loadingMembersActivity ? (
                 <p className="text-sm text-gray-400 text-center py-8">Loading buddy activity...</p>
               ) : membersActivityError ? (
                 <div className="text-center py-8 space-y-2">
@@ -3553,6 +3611,16 @@ export default function GroupChatPage() {
                       </div>
                     </div>
                   ))}
+                  {membersActivityHasMore && (
+                    <button
+                      type="button"
+                      onClick={() => void loadMembersActivity(false)}
+                      disabled={loadingMoreMembersActivity}
+                      className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition disabled:opacity-60"
+                    >
+                      {loadingMoreMembersActivity ? "Loading more activity..." : "Load 10 More"}
+                    </button>
+                  )}
                 </div>
               )}
             </div>

@@ -112,6 +112,7 @@ export default function SeriesOverviewPage() {
   const [startDateInput, setStartDateInput] = useState("");
   const [savingDate, setSavingDate] = useState(false);
   const [editingStartDate, setEditingStartDate] = useState(false);
+  const [showLeaderControls, setShowLeaderControls] = useState(false);
   const [weeks, setWeeks] = useState<WeekCard[]>([]);
   const [groupName, setGroupName] = useState("Group");
   const [nowTs, setNowTs] = useState(() => Date.now());
@@ -179,7 +180,7 @@ export default function SeriesOverviewPage() {
       setWeeks(cards);
       setLoading(false);
     }
-    init();
+    void init();
   }, [groupId, router]);
 
   useEffect(() => {
@@ -197,7 +198,6 @@ export default function SeriesOverviewPage() {
     );
     setStartDate(startAtIso);
     setEditingStartDate(false);
-    // Recompute unlock states
     setWeeks((prev) =>
       prev.map((w, index) => {
         const previousWeek = prev[index - 1];
@@ -225,7 +225,6 @@ export default function SeriesOverviewPage() {
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
       <div className="max-w-2xl mx-auto px-4 py-8">
-        {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6">
           <Link href="/dashboard" className="hover:text-gray-700 transition">Dashboard</Link>
           <span className="mx-2">›</span>
@@ -240,45 +239,6 @@ export default function SeriesOverviewPage() {
           <p className="text-sm text-gray-500 mt-1">5-week series · New lesson every week</p>
         </div>
 
-        {/* Leader schedule panel */}
-        {userRole === "leader" && (
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
-            <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-1">📅 Series Schedule</p>
-            <p className="text-sm text-amber-800 mb-3">Set the Week 1 start date and time. Each week unlocks 7 days later automatically.</p>
-            {!startDate || editingStartDate ? (
-            <div className="flex gap-2 flex-col sm:flex-row">
-              <input
-                type="datetime-local"
-                value={startDateInput}
-                onChange={(e) => setStartDateInput(e.target.value)}
-                className="flex-1 text-sm px-3 py-2 border border-amber-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-amber-400"
-              />
-              <button
-                onClick={saveStartDate}
-                disabled={savingDate || !startDateInput}
-                className="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-amber-500 hover:bg-amber-600 disabled:opacity-50 transition"
-              >
-                {savingDate ? "Saving..." : "Save"}
-              </button>
-            </div>
-            ) : (
-              <div className="rounded-xl border border-amber-200 bg-white px-4 py-3">
-                <p className="text-sm font-semibold text-gray-900">
-                  Study starts in {formatCountdown(getUnlockTimestamp(startDate, 1), nowTs)}
-                </p>
-                <p className="text-xs text-amber-700 mt-1">{formatDateTimeLabel(startDate)}</p>
-                <button
-                  onClick={() => setEditingStartDate(true)}
-                  className="mt-3 text-xs font-semibold text-amber-700 hover:text-amber-900 transition"
-                >
-                  Change start time
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Week cards */}
         <div className="flex flex-col gap-4">
           {weeks.map((w) => {
             const lesson = getSeriesWeekLesson(w.weekNumber);
@@ -311,12 +271,11 @@ export default function SeriesOverviewPage() {
                           <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-600">In Progress · {done}/3</span>
                         )
                       ) : !w.unlocked ? (
-                        <span className="text-xs text-gray-400">🔒 Locked</span>
+                        <span className="text-xs text-gray-400">Locked</span>
                       ) : null}
                     </div>
                   </div>
 
-                  {/* Progress pills */}
                   {w.unlocked && hasContent && (
                     <div className="flex gap-2 mt-3">
                       {[
@@ -334,13 +293,11 @@ export default function SeriesOverviewPage() {
                     </div>
                   )}
 
-                  {/* Unlock date for locked weeks */}
                   {!w.unlocked && w.lockedMessage && (
                     <p className="text-xs text-gray-400 mt-2">{w.lockedMessage}</p>
                   )}
                 </div>
 
-                {/* CTA */}
                 <div className="px-5 pb-4">
                   {w.unlocked && hasContent ? (
                     <Link href={`/study-groups/${groupId}/series/week/${w.weekNumber}`}>
@@ -358,7 +315,7 @@ export default function SeriesOverviewPage() {
                     >
                       {w.weekNumber === 1 && startDate
                         ? `Starting Soon · ${formatCountdown(getUnlockTimestamp(startDate, 1), nowTs)}`
-                        : `🔒 Week ${w.weekNumber} Locked`}
+                        : `Week ${w.weekNumber} Locked`}
                     </button>
                   )}
                 </div>
@@ -366,6 +323,61 @@ export default function SeriesOverviewPage() {
             );
           })}
         </div>
+
+        {userRole === "leader" && (
+          <div className="mt-5">
+            <button
+              type="button"
+              onClick={() => setShowLeaderControls((prev) => !prev)}
+              className="w-full rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-left transition hover:bg-amber-100"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wide text-amber-700">Series Controls</p>
+                  <p className="text-sm text-amber-900 mt-1">Manage the Week 1 release time for this study.</p>
+                </div>
+                <span className="text-amber-700 text-lg font-bold">{showLeaderControls ? "-" : "+"}</span>
+              </div>
+            </button>
+
+            {showLeaderControls && (
+              <div className="mt-3 bg-amber-50 border border-amber-200 rounded-xl p-4">
+                <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-1">Series Schedule</p>
+                <p className="text-sm text-amber-800 mb-3">Set the Week 1 start date and time. Each week unlocks 7 days later automatically.</p>
+                {!startDate || editingStartDate ? (
+                  <div className="flex gap-2 flex-col sm:flex-row">
+                    <input
+                      type="datetime-local"
+                      value={startDateInput}
+                      onChange={(e) => setStartDateInput(e.target.value)}
+                      className="flex-1 text-sm px-3 py-2 border border-amber-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-amber-400"
+                    />
+                    <button
+                      onClick={saveStartDate}
+                      disabled={savingDate || !startDateInput}
+                      className="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-amber-500 hover:bg-amber-600 disabled:opacity-50 transition"
+                    >
+                      {savingDate ? "Saving..." : "Save"}
+                    </button>
+                  </div>
+                ) : (
+                  <div className="rounded-xl border border-amber-200 bg-white px-4 py-3">
+                    <p className="text-sm font-semibold text-gray-900">
+                      Study starts in {formatCountdown(getUnlockTimestamp(startDate, 1), nowTs)}
+                    </p>
+                    <p className="text-xs text-amber-700 mt-1">{formatDateTimeLabel(startDate)}</p>
+                    <button
+                      onClick={() => setEditingStartDate(true)}
+                      className="mt-3 text-xs font-semibold text-amber-700 hover:text-amber-900 transition"
+                    >
+                      Change start time
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
