@@ -318,7 +318,7 @@ function NotesSection({
       {notesLoading && (
         <SmallLouisLoadingModal
           title="Loading Study Notes"
-          subtitle="Getting your Week 1 notes ready..."
+          subtitle={`Getting your Week ${lesson.weekNumber} notes ready...`}
         />
       )}
     </>

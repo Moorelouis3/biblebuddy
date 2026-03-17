@@ -1924,6 +1924,267 @@ He does not just tell us to resist. He models it.
 
 And in Him, we learn that the deepest life is not found in feeding every craving. It is found in trusting the Father, even in the wilderness.`;
 
+const WEEK_THREE_INTRO = `## The Offer That Looked Like Success
+
+The first temptation came through hunger. The second temptation comes through sight.
+
+Luke says the devil showed Jesus the kingdoms of the world in an instant. Power. Glory. Influence. The kind of vision that could make anyone think the mission was finally within reach.
+
+## What Satan Is Really Offering
+
+- 👀 something dazzling to look at
+- 👑 glory without suffering
+- 🛣️ a crown without the cross
+
+That is what makes this temptation so dangerous. Satan is not offering Jesus something random. He is offering a twisted version of Jesus' real mission.
+
+And that is still how temptation works. It flashes the reward, hides the chains, and whispers, "Take it now. Skip the hard part. Compromise a little."`;
+
+const WEEK_THREE_PREMIUM_NOTES = `## The Lust of the Eyes
+
+Luke 4:5-8 moves from appetite to vision. Satan shows Jesus the kingdoms of the world and offers Him authority and splendor in exchange for worship.
+
+That is the heart of this temptation:
+
+- 👀 visible glory
+- 👑 fast success
+- ⚠️ hidden compromise
+
+The offer sounds close to Jesus' mission, but the path is corrupt. Jesus will receive the nations, but not from Satan and not through disobedience.
+
+## Why This Matters
+
+The enemy loves shortcuts. He offers the reward without the refining, influence without integrity, and the crown without the cross.
+
+That is why this temptation reaches beyond ambition. It is really about worship and loyalty. Who will Jesus trust? Who will Jesus bow to? Who will define how the kingdom comes?
+
+## Could Satan Really Offer This?
+
+Scripture calls Satan the ruler of this world in a limited sense, meaning he exercises real influence in fallen systems. But he is still a creature, not the Creator.
+
+- 🌍 God is still the true owner of the world
+- 🐍 Satan only offers counterfeits
+- 🔗 every shortcut he offers comes with bondage attached
+
+He flashes splendor but hides slavery.
+
+## Jesus Refuses the Shortcut
+
+Jesus answers with Deuteronomy 6:13:
+
+> "Worship the Lord your God and serve him only."
+
+That is a straight loyalty verse. Jesus does not debate the devil. He does not negotiate with the offer. He does not say, "Let me think about it." He brings the moment back to worship.
+
+## Israel Failed Here Too
+
+This answer matters because Deuteronomy was spoken to Israel before they entered the land. They were warned not to forget the Lord once they saw blessing, cities, fields, and abundance.
+
+But Israel often did forget.
+
+- 🐄 they made the golden calf
+- 🔥 they chased other gods
+- 🍇 they enjoyed the gift and forgot the Giver
+
+Jesus succeeds where Israel failed. He sees what is offered, and still chooses obedience.
+
+## The Lust of the Eyes Today
+
+This temptation still shows up through what we see:
+
+- money without integrity
+- attraction without holiness
+- platform without character
+- applause without submission
+
+The eyes can make a shortcut look wise when it is actually poison.
+
+## What This Means for You
+
+Sometimes the hardest temptations are not the ones that feel dark. They are the ones that look blessed.
+
+- 👀 the relationship that pulls you from God
+- 💼 the opportunity that costs your integrity
+- 📱 the image you start living for
+- 🛣️ the shortcut that promises quick results
+
+Jesus shows us the way through: worship first, truth first, loyalty first.
+
+If the price of getting something is bowing away from God, it is too expensive.
+
+## A Simple Prayer
+
+"Lord, keep my eyes clean. Help me see through what only looks good. Teach me to want Your way more than quick success."`;
+
+const WEEK_FOUR_INTRO = `## The Final Attack
+
+By the third temptation, Satan has already tried hunger and shortcuts. Jesus has answered with Scripture both times.
+
+Now the enemy goes after something even deeper: pride, public display, and the temptation to force God's hand.
+
+He takes Jesus to the temple in Jerusalem, the center of worship, and tells Him to jump.
+
+## Why This Scene Matters
+
+- 🏛️ it happens at the temple
+- 📣 it invites public spectacle
+- 🧠 it tries to twist trust into testing God
+
+This is not just about jumping. It is about using God's promises recklessly, turning faith into performance, and acting like sonship means you can demand signs whenever you want.`;
+
+const WEEK_FOUR_PREMIUM_NOTES = `## The Pride of Life
+
+Luke 4:9-12 brings us to the final temptation. Satan takes Jesus to the pinnacle of the temple and tells Him to throw Himself down. Then he quotes Psalm 91, trying to use Scripture itself as bait.
+
+That is what makes this temptation so dangerous. The devil is not only tempting with pride. He is tempting with distorted Bible language.
+
+## What Satan Is Really Saying
+
+- 🏛️ prove Yourself publicly
+- 📣 make God rescue You dramatically
+- 👑 use sonship for self-display
+
+This is the pride of life. It is the urge to put self at the center, to demand proof, and to act as if God's care gives us permission to live recklessly.
+
+## Why the Temple Matters
+
+The temple was the holiest public space in Jewish life. It represented God's presence, worship, sacrifice, and covenant life.
+
+So this temptation is not random. Satan is bringing Jesus into a deeply religious place and trying to turn trust into theater.
+
+That still happens today. People can use spiritual language, Bible verses, and religious environments while still feeding ego.
+
+## Testing God vs Trusting God
+
+Jesus answers with Deuteronomy 6:16:
+
+> "Do not put the Lord your God to the test."
+
+That points back to Massah in Exodus 17, when Israel questioned whether God was really with them.
+
+- they had already seen God's power
+- they had already received deliverance
+- but in discomfort they demanded proof
+
+Jesus refuses that path. He does not need to force the Father to prove His love.
+
+## Pride Is Lucifer's Pattern
+
+Pride has always been Satan's language.
+
+- "I will ascend"
+- "I will exalt myself"
+- "I will make myself like the Most High"
+
+That is why this temptation cuts so deep. The enemy wants Jesus to use identity for self-exaltation instead of humble obedience.
+
+## The Pride of Life Today
+
+This temptation still shows up in subtle ways:
+
+- acting like success means you no longer need prayer
+- assuming gifting means you can ignore character
+- living recklessly and expecting God to clean up everything
+- wanting spiritual attention more than spiritual depth
+
+Pride says, "I am good. I have this. I can push the limits."
+
+Faith says, "I still need God. I still obey. I still trust."
+
+## What This Means for You
+
+The first two temptations often hit when you feel empty. This one often hits when you feel strong.
+
+- when things are working
+- when prayers are being answered
+- when doors are opening
+- when you start thinking you got here by yourself
+
+That is why it is so dangerous. Pride can grow in blessing if we stop remembering the One who carried us there.
+
+## A Simple Prayer
+
+"Lord, keep me humble. Do not let blessing make me careless. Teach me to trust You without trying to test You."`;
+
+const WEEK_FIVE_INTRO = `## After the Battle
+
+The wilderness story does not end with Jesus barely surviving. It ends with Jesus standing.
+
+Luke says the devil finished every temptation and then left Him until an opportune time. Then Jesus returned in the power of the Spirit.
+
+## Why This Ending Matters
+
+- 🏜️ the wilderness did not break Jesus
+- 🕊️ the Spirit was still with Him
+- 🚪 the battle became a doorway into ministry
+
+Week 5 is about what happens after obedience. Jesus comes out of the wilderness stronger, clearer, and ready for the mission in front of Him.`;
+
+const WEEK_FIVE_PREMIUM_NOTES = `## Coming Out Stronger
+
+Luke 4:13-15 shows us the end of the wilderness scene, and it is full of hope.
+
+First, Satan leaves. But Luke is careful with the wording: he leaves "until an opportune time." That means temptation is not gone forever. It circles back, looks for weakness, and tries again later.
+
+## The Enemy Leaves, But Not Forever
+
+- ⏳ temptation often retreats before it returns
+- 🕳️ the enemy looks for vulnerable moments
+- 📖 that is why daily dependence matters
+
+Jesus did not beat temptation with hype or raw willpower. He answered with Scripture, stayed submitted to the Father, and walked in the Spirit.
+
+## Jesus Returns in the Power of the Spirit
+
+Luke says Jesus returned in the power of the Spirit to Galilee.
+
+That is beautiful because He entered the wilderness full of the Spirit, and He leaves it empowered for ministry. The wilderness was not wasted. It became preparation.
+
+- 🏜️ testing produced clarity
+- 🕊️ obedience deepened power
+- 🚀 private victory prepared public ministry
+
+## Why the Wilderness Is Not Pointless
+
+We usually want out of wilderness seasons as fast as possible. But Scripture keeps showing that God uses hidden places to form people before public assignments.
+
+- Moses had wilderness years before leadership
+- David had wilderness seasons before the throne
+- Elijah met God in wilderness weakness
+- Jesus faced testing before ministry opened wide
+
+The wilderness is where God strips away illusions and teaches trust.
+
+## What Happens Next
+
+Luke says word about Jesus spread through the region and He taught in their synagogues. In other words, the mission moved forward.
+
+That matters because obedience in private is never meaningless. God often builds things in secret before He reveals them in public.
+
+## What This Means for You
+
+If you are in a hard season right now, do not assume it is empty.
+
+- 💔 God can use heartbreak
+- 😔 God can use loneliness
+- 💼 God can use uncertainty
+- 🙏 God can use waiting
+
+The goal is not just to get out. The goal is to walk through it with God and let Him form something deeper in you.
+
+## A Few Takeaways
+
+- stay close to Scripture before the next battle comes
+- do not confuse retreating temptation with permanent victory
+- trust that obedience in hidden places matters
+- remember that God can turn wilderness seasons into ministry preparation
+
+## Final Thought
+
+Jesus did not come out of the wilderness smaller. He came out stronger.
+
+That does not mean the wilderness felt easy. It means faithful obedience produced something solid. And that same God still uses wilderness seasons to prepare His people for what is next.`;
+
 export function getSeriesWeekLesson(weekNumber: number): SeriesWeekLesson | undefined {
   const lesson = TEMPTATION_OF_JESUS.find((w) => w.weekNumber === weekNumber);
   if (!lesson) return undefined;
@@ -1954,20 +2215,38 @@ export function getSeriesWeekLesson(weekNumber: number): SeriesWeekLesson | unde
     return {
       ...lesson,
       title: "The Lust of the Eyes",
+      intro: WEEK_THREE_INTRO,
+      notes: WEEK_THREE_PREMIUM_NOTES,
+      readingReference: "Luke 4:5-8",
+      readingApiQuery: "luke+4:5-8",
+      reflectionQuestion:
+        "The devil offered Jesus visible glory without the cross. Where do you feel tempted to chase what looks impressive instead of what God is asking of you? What would it look like to choose worship and loyalty over the shortcut this week?",
     };
   }
   if (weekNumber === 4) {
     return {
       ...lesson,
       title: "The Pride of Life",
+      intro: WEEK_FOUR_INTRO,
+      notes: WEEK_FOUR_PREMIUM_NOTES,
+      readingReference: "Luke 4:9-12",
+      readingApiQuery: "luke+4:9-12",
+      reflectionQuestion:
+        "The final temptation was about pride, public display, and testing God instead of trusting Him. Where are you most tempted to rely on yourself, demand control, or drift into spiritual pride? What would humble trust look like for you right now?",
     };
   }
-  if (weekNumber !== 5) return lesson;
-  return {
-    ...lesson,
-    readingReference: "Luke 4:13-30",
-    readingApiQuery: "luke+4:13-30",
-  };
+  if (weekNumber === 5) {
+    return {
+      ...lesson,
+      intro: WEEK_FIVE_INTRO,
+      notes: WEEK_FIVE_PREMIUM_NOTES,
+      readingReference: "Luke 4:13-30",
+      readingApiQuery: "luke+4:13-30",
+      reflectionQuestion:
+        "Jesus came out of the wilderness in the power of the Spirit, ready for what was next. If you are in a hard season, how might God be using it to prepare you instead of just punish you? What would it look like to trust Him with that process?",
+    };
+  }
+  return lesson;
 }
 
 export const TOTAL_WEEKS = 5;
