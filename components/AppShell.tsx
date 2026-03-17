@@ -118,6 +118,24 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [pushSubscribed, setPushSubscribed] = useState(false);
   const [pushLoading, setPushLoading] = useState(false);
   const [pushError, setPushError] = useState<string | null>(null);
+  const [showPushPrompt, setShowPushPrompt] = useState(false);
+  const [pushPromptClosing, setPushPromptClosing] = useState(false);
+
+  function getPushPromptDismissKey(currentUserId: string) {
+    return `bb:push-prompt-dismissed:${currentUserId}`;
+  }
+
+  function hidePushPrompt(persist = false) {
+    setPushPromptClosing(true);
+    window.setTimeout(() => {
+      setShowPushPrompt(false);
+      setPushPromptClosing(false);
+    }, 220);
+
+    if (persist && userId && typeof window !== "undefined") {
+      window.localStorage.setItem(getPushPromptDismissKey(userId), "1");
+    }
+  }
 
   async function savePushSubscription(currentUserId: string, subscription: PushSubscription) {
     const json = subscription.toJSON();
@@ -188,6 +206,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       }
 
       await ensurePushSubscription(userId);
+      hidePushPrompt(true);
     } catch (error: any) {
       setPushError(error?.message || "Could not enable push alerts.");
     } finally {
@@ -362,26 +381,42 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     };
   }, [userId]);
 
-  // Fetch unread message count on every page navigation
+  // Fetch unread message count by conversation, not by raw message rows
   useEffect(() => {
     if (!userId) return;
-    async function fetchUnreadCount() {
-      const { data: convos } = await supabase
-        .from("conversations")
-        .select("id")
-        .or(`user_id_1.eq.${userId},user_id_2.eq.${userId}`);
-      if (!convos || convos.length === 0) { setUnreadMessageCount(0); return; }
-      const convoIds = convos.map((c: any) => c.id);
-      const { count } = await supabase
-        .from("messages")
-        .select("id", { count: "exact", head: true })
-        .in("conversation_id", convoIds)
-        .neq("sender_id", userId)
-        .is("read_at", null);
-      setUnreadMessageCount(count ?? 0);
-    }
-    void fetchUnreadCount();
+    void refreshUnreadMessageCount(userId);
   }, [pathname, userId]);
+
+  useEffect(() => {
+    if (!userId) return;
+    const currentUserId = userId;
+
+    const channel = supabase
+      .channel(`messages-unread:${currentUserId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "messages",
+        },
+        () => {
+          void refreshUnreadMessageCount(currentUserId);
+        },
+      )
+      .subscribe();
+
+    function handleRefreshEvent() {
+      void refreshUnreadMessageCount(currentUserId);
+    }
+
+    window.addEventListener("bb:refresh-unread-messages", handleRefreshEvent);
+
+    return () => {
+      window.removeEventListener("bb:refresh-unread-messages", handleRefreshEvent);
+      void supabase.removeChannel(channel);
+    };
+  }, [userId]);
 
   // Capture the PWA install prompt (fires on Android/Chrome before page is interactive)
   useEffect(() => {
@@ -400,6 +435,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setPushSupported(supported);
     setPushPermission(supported ? Notification.permission : "unsupported");
   }, []);
+
+  useEffect(() => {
+    if (!pushSupported || !userId || typeof window === "undefined") {
+      setShowPushPrompt(false);
+      return;
+    }
+
+    const dismissed = window.localStorage.getItem(getPushPromptDismissKey(userId)) === "1";
+    const enabled = pushPermission === "granted" && pushSubscribed;
+    setShowPushPrompt(!dismissed && !enabled);
+  }, [pushPermission, pushSubscribed, pushSupported, userId]);
 
   useEffect(() => {
     if (!isLoggedIn || !userId || !pushSupported) return;
@@ -439,6 +485,28 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     await deferredInstallPromptRef.current.userChoice;
     deferredInstallPromptRef.current = null;
     setCanInstall(false);
+  }
+
+  async function refreshUnreadMessageCount(currentUserId: string) {
+    const { data: convos } = await supabase
+      .from("conversations")
+      .select("id")
+      .or(`user_id_1.eq.${currentUserId},user_id_2.eq.${currentUserId}`);
+
+    if (!convos || convos.length === 0) {
+      setUnreadMessageCount(0);
+      return;
+    }
+
+    const convoIds = convos.map((c: any) => c.id);
+    const { data: unreadRows } = await supabase
+      .from("messages")
+      .select("conversation_id")
+      .in("conversation_id", convoIds)
+      .neq("sender_id", currentUserId)
+      .is("read_at", null);
+
+    setUnreadMessageCount(new Set((unreadRows || []).map((row) => row.conversation_id)).size);
   }
 
   async function fetchConversationPreviews(currentUserId: string) {
@@ -527,11 +595,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       .select("id, type, from_user_id, from_user_name, article_slug, comment_id, post_id, message, is_read, created_at")
       .eq("user_id", currentUserId)
       .order("created_at", { ascending: false })
-      .limit(20);
+      .limit(40);
     if (data) {
-      setNotifications(data);
+      const visibleNotifications = data
+        .filter((n) => !n.from_user_id || n.from_user_id !== currentUserId)
+        .slice(0, 20);
+      setNotifications(visibleNotifications);
       // Trigger celebration for the sender when they see an unread buddy_accepted notification
-      const unreadAccepted = data.find(
+      const unreadAccepted = visibleNotifications.find(
         (n) => n.type === "buddy_accepted" && !n.is_read && n.from_user_id && !shownCelebrationIds.current.has(n.id)
       );
       if (unreadAccepted && unreadAccepted.from_user_id) {
@@ -1201,8 +1272,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                           </button>
                         )}
                       </div>
-                      {pushSupported && (
-                        <div className="px-4 py-3 border-b border-gray-100 bg-[#f8fbf8]">
+                      {pushSupported && showPushPrompt && (
+                        <div
+                          className={`px-4 py-3 border-b border-gray-100 bg-[#f8fbf8] transition-all duration-200 ${
+                            pushPromptClosing ? "opacity-0 -translate-y-1" : "opacity-100 translate-y-0"
+                          }`}
+                        >
                           <div className="flex items-center justify-between gap-3">
                             <div className="min-w-0">
                               <p className="text-sm font-semibold text-gray-900">Phone Push Alerts</p>
@@ -1222,6 +1297,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               >
                                 {pushLoading ? "Saving..." : "Enable"}
                               </button>
+                            )}
+                          </div>
+                          <div className="mt-2 flex items-center justify-between gap-3">
+                            <button
+                              type="button"
+                              onClick={() => hidePushPrompt(true)}
+                              className="text-xs font-medium text-gray-400 transition hover:text-gray-600"
+                            >
+                              No thanks
+                            </button>
+                            {pushPermission === "granted" && pushSubscribed && (
+                              <span className="text-[11px] font-medium text-[#4a9b6f]">Saved for this device</span>
                             )}
                           </div>
                           {pushError && <p className="text-xs text-red-500 mt-2">{pushError}</p>}
@@ -1330,8 +1417,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                         d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
                     {unreadMessageCount > 0 && (
-                      <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 rounded-full text-white text-[10px] font-bold" style={{ backgroundColor: "#4a9b6f" }}>
-                        {unreadMessageCount > 9 ? "9+" : unreadMessageCount}
+                      <span
+                        className="absolute -top-1 -right-1 h-3.5 w-3.5 rounded-full border-2 border-white"
+                        style={{ backgroundColor: "#4a9b6f" }}
+                        aria-hidden="true"
+                      >
                       </span>
                     )}
                   </button>

@@ -57,7 +57,8 @@ SELECT
   tr.actor_name || ' posted in ' || tr.group_name,
   tr.created_at
 FROM target_rows tr
-WHERE NOT EXISTS (
+WHERE tr.notification_user_id <> tr.actor_user_id
+  AND NOT EXISTS (
   SELECT 1
   FROM public.notifications n
   WHERE n.type = 'group_post'

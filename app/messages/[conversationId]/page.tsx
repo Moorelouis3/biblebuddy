@@ -137,7 +137,10 @@ export default function ConversationPage() {
           .update({ read_at: new Date().toISOString() })
           .eq("conversation_id", conversationId)
           .neq("sender_id", uid)
-          .is("read_at", null);
+          .is("read_at", null)
+          .then(() => {
+            window.dispatchEvent(new Event("bb:refresh-unread-messages"));
+          });
       }
     } finally {
       setLoading(false);
@@ -186,6 +189,8 @@ export default function ConversationPage() {
           last_message_preview: content.length > 80 ? `${content.slice(0, 80)}...` : content,
         })
         .eq("id", conversationId);
+
+      window.dispatchEvent(new Event("bb:refresh-unread-messages"));
     } finally {
       setSending(false);
       inputRef.current?.focus();

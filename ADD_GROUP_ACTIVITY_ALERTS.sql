@@ -54,6 +54,10 @@ BEGIN
     RETURN;
   END IF;
 
+  IF p_from_user_id IS NOT NULL AND p_user_id = p_from_user_id THEN
+    RETURN;
+  END IF;
+
   INSERT INTO public.notifications (
     user_id,
     type,

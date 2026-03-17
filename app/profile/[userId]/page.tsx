@@ -637,6 +637,10 @@ export default function PublicProfilePage() {
   const username = stats?.username || null;
   const isOwner = viewerUserId === profileUserId;
   const canAssignBadges = viewerEmail === "moorelouis3@gmail.com";
+  const shouldForceTeacherBadge =
+    (isOwner && viewerEmail === "moorelouis3@gmail.com") ||
+    stats?.display_name === "Louis" ||
+    stats?.username === "moorelouis3";
   const initials = displayName.split(" ").map((w: string) => w[0]).join("").slice(0, 2).toUpperCase();
   const color = avatarColor(profileUserId);
 
@@ -681,7 +685,11 @@ export default function PublicProfilePage() {
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
                     <h1 className="text-2xl font-bold text-gray-900 leading-tight">{displayName}</h1>
-                    <UserBadge customBadge={stats?.member_badge} isPaid={stats?.is_paid} />
+                    <UserBadge
+                      customBadge={stats?.member_badge}
+                      isPaid={stats?.is_paid}
+                      groupRole={shouldForceTeacherBadge ? "leader" : undefined}
+                    />
                   </div>
                   {username && (
                     <p className="text-sm text-gray-500 mt-0.5">@{username}</p>
