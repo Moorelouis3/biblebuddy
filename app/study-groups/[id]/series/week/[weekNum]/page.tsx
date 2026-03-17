@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -53,7 +53,7 @@ function getWeekAccessState(
   return { allowed: true, message: null };
 }
 
-// ── 36 fixed confetti pieces (avoids hydration mismatch) ─────────────────────
+// â”€â”€ 36 fixed confetti pieces (avoids hydration mismatch) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const CONFETTI = [
   { left: 5,  color: "#f59e0b", w: 8,  h: 6,  delay: 0.0 },
   { left: 12, color: "#10b981", w: 6,  h: 8,  delay: 0.15 },
@@ -93,7 +93,7 @@ const CONFETTI = [
   { left: 68, color: "#f59e0b", w: 8,  h: 6,  delay: 0.4 },
 ];
 
-// ── Intro rich renderer ────────────────────────────────────────────────────────
+// â”€â”€ Intro rich renderer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /** Apply bible term highlights + bold/italic to a single line of plain text. */
 function applyInlineHtml(line: string): string {
@@ -150,7 +150,7 @@ function parseIntroToHTML(intro: string): string {
       continue;
     }
 
-    // Single line starting with emoji (callout / 👉 / 📌)
+    // Single line starting with emoji (callout / ðŸ‘‰ / ðŸ“Œ)
     const firstCode = trimmed.codePointAt(0) ?? 0;
     if (lines.length === 1 && firstCode > 0x00FF) {
       const html = applyInlineHtml(lines[0]);
@@ -171,7 +171,7 @@ function parseIntroToHTML(intro: string): string {
 }
 
 function IntroSection({ lesson }: { lesson: SeriesWeekLesson }) {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
   const introHTML = parseIntroToHTML(lesson.intro);
 
   return (
@@ -184,7 +184,7 @@ function IntroSection({ lesson }: { lesson: SeriesWeekLesson }) {
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5">Study Notes</p>
           <p className="text-base font-bold text-gray-900">{lesson.title}</p>
         </div>
-        <span className="text-gray-400 text-lg">{expanded ? "▲" : "▼"}</span>
+        <span className="text-gray-400 text-lg">{expanded ? "â–²" : "â–¼"}</span>
       </button>
 
       {expanded && (
@@ -199,37 +199,122 @@ function IntroSection({ lesson }: { lesson: SeriesWeekLesson }) {
   );
 }
 
-// ── Section Card wrapper ──────────────────────────────────────────────────────
+// â”€â”€ Section Card wrapper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function FreeIntroSection({ lesson }: { lesson: SeriesWeekLesson }) {
+  const introHTML = parseIntroToHTML(lesson.intro);
+
+  return (
+    <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+      <div className="px-5 py-4 border-b border-gray-100 bg-gray-50">
+        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5">Week Intro</p>
+        <p className="text-base font-bold text-gray-900">{lesson.title}</p>
+      </div>
+      <div
+        className="px-5 pt-4 pb-5 flex flex-col gap-3"
+        dangerouslySetInnerHTML={{ __html: introHTML }}
+      />
+    </div>
+  );
+}
+
+function NotesSection({
+  lesson,
+  isPaid,
+  onUnlock,
+}: {
+  lesson: SeriesWeekLesson;
+  isPaid: boolean;
+  onUnlock: () => void;
+}) {
+  const [expanded, setExpanded] = useState(!isPaid);
+  const notesHTML = parseIntroToHTML(lesson.notes ?? lesson.intro);
+
+  useEffect(() => {
+    setExpanded(!isPaid);
+  }, [isPaid]);
+
+  return (
+    <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+      <div className="w-full px-5 py-4 border-b border-gray-100 bg-gray-50 flex items-center justify-between gap-3 text-left">
+        <div>
+          <p className="text-base font-bold text-gray-900">Study Notes</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${isPaid ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"}`}>
+            {isPaid ? "Unlocked" : "Locked"}
+          </span>
+          {isPaid && (
+            <button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              aria-expanded={expanded}
+              className="text-gray-400 transition hover:text-gray-600"
+            >
+              <svg
+                className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : ""}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          )}
+        </div>
+      </div>
+
+      {expanded && (isPaid ? (
+        <div
+          className="px-5 pt-4 pb-5 flex flex-col gap-3"
+          dangerouslySetInnerHTML={{ __html: notesHTML }}
+        />
+      ) : (
+        <div className="px-5 py-5">
+          <p className="text-base font-semibold text-gray-900 mb-3">Read The Study Notes</p>
+          <p className="text-xs font-semibold text-amber-600 uppercase tracking-wide mb-3">Upgrade for full access</p>
+          <p className="text-sm text-gray-600 mb-4">The Notes for this week go deeper into:</p>
+          <div className="space-y-2 text-sm text-gray-700 mb-5">
+            <p>&bull; what&apos;s really happening in each verse</p>
+            <p>&bull; historical and cultural context</p>
+            <p>&bull; Greek word meanings and insights</p>
+            <p>&bull; connections across the Bible</p>
+            <p>&bull; deeper explanations of people, places, and events</p>
+          </div>
+          <p className="text-sm text-gray-600 leading-relaxed mb-5">
+            If you want to go beyond just reading and actually understand Scripture on a deeper level, unlock the full Notes.
+          </p>
+          <button
+            type="button"
+            onClick={onUnlock}
+            className="w-full py-3 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
+            style={{ backgroundColor: "#4a9b6f" }}
+          >
+            Unlock Notes
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function SectionCard({
-  number,
   title,
-  done,
   children,
 }: {
-  number: number;
   title: string;
-  done: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <div className={`bg-white border rounded-xl shadow-sm overflow-hidden ${done ? "border-green-200" : "border-gray-200"}`}>
-      <div className={`px-5 py-3 flex items-center gap-3 ${done ? "bg-green-50" : "bg-gray-50"} border-b ${done ? "border-green-100" : "border-gray-100"}`}>
-        <span
-          className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${
-            done ? "bg-green-500 text-white" : "bg-gray-200 text-gray-600"
-          }`}
-        >
-          {done ? "✓" : number}
-        </span>
-        <span className={`text-sm font-bold ${done ? "text-green-700" : "text-gray-800"}`}>{title}</span>
-        {done && <span className="ml-auto text-xs text-green-600 font-semibold">Complete</span>}
+    <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+      <div className="px-5 py-3 bg-gray-50 border-b border-gray-100">
+        <span className="text-sm font-bold text-gray-800">{title}</span>
       </div>
       <div className="px-5 py-4">{children}</div>
     </div>
   );
 }
 
-// ── Reading Modal ─────────────────────────────────────────────────────────────
+// â”€â”€ Reading Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 interface BibleVerse {
   book_name: string;
   chapter: number;
@@ -309,7 +394,7 @@ function ReadingModal({
             <p className="text-xs text-orange-600 font-semibold uppercase tracking-wide">Selected Reading</p>
             <p className="text-base font-bold text-gray-900 mt-0.5">{lesson.readingReference}</p>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition text-xl leading-none">✕</button>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition text-xl leading-none">âœ•</button>
         </div>
 
         {/* Verses */}
@@ -343,14 +428,14 @@ function ReadingModal({
             onClick={handleShare}
             className="w-full py-2.5 rounded-xl text-sm font-semibold border border-gray-200 text-gray-700 hover:bg-gray-50 transition"
           >
-            {copied ? "Copied!" : "📋 Share Passage"}
+            {copied ? "Copied!" : "Share Passage"}
           </button>
           <button
             onClick={() => { onComplete(); onClose(); }}
             className="w-full py-2.5 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
             style={{ backgroundColor: "#4a9b6f" }}
           >
-            ✓ Complete Reading
+            Finish Reading
           </button>
         </div>
       </div>
@@ -358,7 +443,7 @@ function ReadingModal({
   );
 }
 
-// ── Trivia Quiz ───────────────────────────────────────────────────────────────
+// â”€â”€ Trivia Quiz â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function TriviaQuiz({
   lesson,
   userId,
@@ -420,7 +505,7 @@ function TriviaQuiz({
   if (phase === "done") {
     return (
       <div className="text-center py-4">
-        <p className="text-4xl mb-3">🏆</p>
+        <p className="text-4xl mb-3">ðŸ†</p>
         <p className="text-xl font-bold text-gray-900">{score} / {questions.length}</p>
         <p className="text-sm text-gray-500 mt-1">
           {score === questions.length ? "Perfect score!" : score >= questions.length * 0.7 ? "Great job!" : "Keep studying!"}
@@ -478,8 +563,8 @@ function TriviaQuiz({
           >
             <span className="font-semibold mr-2">{opt.label}.</span>
             {opt.text}
-            {revealed && opt.label === q.correctAnswer && <span className="ml-2 text-green-600">✓</span>}
-            {revealed && opt.label === selected && opt.label !== q.correctAnswer && <span className="ml-2 text-red-500">✗</span>}
+            {revealed && opt.label === q.correctAnswer && <span className="ml-2 text-green-600">âœ“</span>}
+            {revealed && opt.label === selected && opt.label !== q.correctAnswer && <span className="ml-2 text-red-500">âœ—</span>}
           </button>
         ))}
       </div>
@@ -495,7 +580,7 @@ function TriviaQuiz({
             className="w-full mt-3 py-2.5 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
             style={{ backgroundColor: "#4a9b6f" }}
           >
-            {saving ? "Saving..." : current + 1 >= questions.length ? "Finish & See Score" : "Next Question →"}
+            {saving ? "Saving..." : current + 1 >= questions.length ? "Finish & See Score" : "Next Question â†’"}
           </button>
         </div>
       )}
@@ -503,7 +588,7 @@ function TriviaQuiz({
   );
 }
 
-// ── Leaderboard ───────────────────────────────────────────────────────────────
+// â”€â”€ Leaderboard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 interface LeaderboardEntry {
   user_id: string;
   score: number;
@@ -553,7 +638,7 @@ function LeaderboardView({ seriesId, weekNumber, userId }: { seriesId: string; w
   if (loading) return <p className="text-sm text-gray-400 text-center py-4">Loading leaderboard...</p>;
   if (entries.length === 0) return <p className="text-sm text-gray-400 text-center py-4">No scores yet. Be the first!</p>;
 
-  const medals = ["🥇", "🥈", "🥉"];
+  const medals = ["ðŸ¥‡", "ðŸ¥ˆ", "ðŸ¥‰"];
 
   return (
     <div className="flex flex-col gap-2">
@@ -577,7 +662,7 @@ function LeaderboardView({ seriesId, weekNumber, userId }: { seriesId: string; w
   );
 }
 
-// ── Reflection Section ────────────────────────────────────────────────────────
+// â”€â”€ Reflection Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 interface ReflectionEntry {
   id: string;
   user_id: string;
@@ -585,6 +670,9 @@ interface ReflectionEntry {
   display_name: string | null;
   profile_image_url: string | null;
   created_at: string;
+  parent_reflection_id: string | null;
+  like_count: number;
+  liked?: boolean;
 }
 
 function ReflectionSection({
@@ -593,7 +681,7 @@ function ReflectionSection({
   seriesId,
   weekNumber,
   done,
-  onComplete,
+  onCompletionChange,
   displayName,
   profileImageUrl,
 }: {
@@ -602,55 +690,152 @@ function ReflectionSection({
   seriesId: string;
   weekNumber: number;
   done: boolean;
-  onComplete: () => void;
+  onCompletionChange: (completed: boolean) => void;
   displayName: string;
   profileImageUrl: string | null;
 }) {
   const [text, setText] = useState("");
+  const [replyText, setReplyText] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [posted, setPosted] = useState(done);
+  const [hasCompletedReflection, setHasCompletedReflection] = useState(done);
   const [reflections, setReflections] = useState<ReflectionEntry[]>([]);
   const [loadingReflections, setLoadingReflections] = useState(true);
+  const [reflectionError, setReflectionError] = useState<string | null>(null);
+  const [replyingToId, setReplyingToId] = useState<string | null>(null);
+  const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
+  const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   useEffect(() => {
-    supabase
-      .from("series_reflections")
-      .select("id, user_id, content, display_name, profile_image_url, created_at")
-      .eq("series_id", seriesId)
-      .eq("week_number", weekNumber)
-      .order("created_at", { ascending: false })
-      .then(({ data }) => {
-        setReflections(data || []);
+    setHasCompletedReflection(done);
+  }, [done]);
+
+  useEffect(() => {
+    async function loadReflections() {
+      setLoadingReflections(true);
+      const { data, error } = await supabase
+        .from("series_reflections")
+        .select("id, user_id, content, display_name, profile_image_url, created_at, parent_reflection_id, like_count")
+        .eq("series_id", seriesId)
+        .eq("week_number", weekNumber)
+        .order("created_at", { ascending: true });
+
+      if (error) {
+        console.error("Failed to load reflections:", error);
+        setReflectionError("Reflections could not load. Check the series reflections table and policies in Supabase.");
+        setReflections([]);
         setLoadingReflections(false);
-      });
+        return;
+      }
+
+      const rows = (data || []) as ReflectionEntry[];
+      let likedSet = new Set<string>();
+      if (rows.length > 0) {
+        const { data: likes, error: likesError } = await supabase
+          .from("series_reflection_likes")
+          .select("reflection_id")
+          .eq("user_id", userId)
+          .in("reflection_id", rows.map((row) => row.id));
+        if (!likesError) {
+          likedSet = new Set((likes || []).map((like) => like.reflection_id));
+        }
+      }
+
+      setReflectionError(null);
+      setReflections(rows.map((row) => ({ ...row, liked: likedSet.has(row.id) })));
+      setLoadingReflections(false);
+    }
+
+    void loadReflections();
   }, [seriesId, weekNumber]);
 
-  async function handleSubmit() {
-    if (!text.trim() || submitting) return;
+  async function handleSubmit(parentId: string | null = null) {
+    const content = (parentId ? replyText : text).trim();
+    if (!content || submitting) return;
     setSubmitting(true);
+    setReflectionError(null);
     const { error } = await supabase.from("series_reflections").insert({
       user_id: userId,
       series_id: seriesId,
       week_number: weekNumber,
-      content: text.trim(),
+      content,
       display_name: displayName || null,
       profile_image_url: profileImageUrl || null,
+      parent_reflection_id: parentId,
     });
     if (!error) {
       const newEntry: ReflectionEntry = {
         id: crypto.randomUUID(),
         user_id: userId,
-        content: text.trim(),
+        content,
         display_name: displayName,
         profile_image_url: profileImageUrl,
         created_at: new Date().toISOString(),
+        parent_reflection_id: parentId,
+        like_count: 0,
+        liked: false,
       };
       setReflections((prev) => [newEntry, ...prev]);
-      setText("");
-      setPosted(true);
-      onComplete();
+      if (parentId) {
+        setReplyText("");
+        setReplyingToId(null);
+      } else {
+        setText("");
+      }
+      if (!parentId && !hasCompletedReflection) {
+        setHasCompletedReflection(true);
+        onCompletionChange(true);
+      }
+    } else {
+      console.error("Failed to save reflection:", error);
+      setReflectionError(error.message || "Your reflection could not be posted.");
     }
     setSubmitting(false);
+  }
+
+  async function handleToggleLike(reflection: ReflectionEntry) {
+    if (likeLoading.has(reflection.id)) return;
+    setLikeLoading((prev) => new Set(prev).add(reflection.id));
+
+    if (reflection.liked) {
+      await supabase.from("series_reflection_likes").delete().eq("reflection_id", reflection.id).eq("user_id", userId);
+      await supabase.from("series_reflections").update({ like_count: Math.max(0, reflection.like_count - 1) }).eq("id", reflection.id);
+      setReflections((prev) => prev.map((item) => item.id === reflection.id ? { ...item, like_count: Math.max(0, item.like_count - 1), liked: false } : item));
+    } else {
+      await supabase.from("series_reflection_likes").insert({ reflection_id: reflection.id, user_id: userId });
+      await supabase.from("series_reflections").update({ like_count: reflection.like_count + 1 }).eq("id", reflection.id);
+      setReflections((prev) => prev.map((item) => item.id === reflection.id ? { ...item, like_count: item.like_count + 1, liked: true } : item));
+    }
+
+    setLikeLoading((prev) => {
+      const next = new Set(prev);
+      next.delete(reflection.id);
+      return next;
+    });
+  }
+
+  async function handleDeleteReflection(reflection: ReflectionEntry) {
+    if (deletingId) return;
+    setDeletingId(reflection.id);
+    setActiveMenuId(null);
+    const { error } = await supabase.from("series_reflections").delete().eq("id", reflection.id).eq("user_id", userId);
+    if (error) {
+      console.error("Failed to delete reflection:", error);
+      setReflectionError(error.message || "Your reflection could not be deleted.");
+      setDeletingId(null);
+      return;
+    }
+
+    const nextReflections = reflections.filter((item) => item.id !== reflection.id && item.parent_reflection_id !== reflection.id);
+    setReflections(nextReflections);
+    if (!reflection.parent_reflection_id) {
+      const remainingOwnTopLevel = nextReflections.some((item) => item.user_id === userId && !item.parent_reflection_id);
+      if (!remainingOwnTopLevel) {
+        setHasCompletedReflection(false);
+        onCompletionChange(false);
+      }
+    }
+    setDeletingId(null);
   }
 
   function timeAgo(dateStr: string) {
@@ -671,34 +856,177 @@ function ReflectionSection({
     return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
   }
 
+  const topLevelReflections = reflections.filter((reflection) => !reflection.parent_reflection_id);
+  const repliesFor = (parentId: string) => reflections.filter((reflection) => reflection.parent_reflection_id === parentId);
+
+  function ReflectionRow({ reflection, indent = false }: { reflection: ReflectionEntry; indent?: boolean }) {
+    const name = reflection.display_name || "Anonymous";
+    const replies = repliesFor(reflection.id);
+    const isOwnReflection = reflection.user_id === userId;
+
+    return (
+      <div className={`${indent ? "ml-10 mt-3" : "mt-4"} flex gap-3`}>
+        {reflection.profile_image_url ? (
+          <img src={reflection.profile_image_url} alt={name} className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-0.5" />
+        ) : (
+          <div
+            className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5"
+            style={{ backgroundColor: avatarBg(reflection.user_id) }}
+          >
+            {getInitial(name)}
+          </div>
+        )}
+        <div className="flex-1 min-w-0">
+          <div className="rounded-2xl bg-[#faf7f2] border border-[#efe5d9] px-3 py-2.5">
+            <div className="flex items-start gap-2">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-xs font-semibold text-gray-800">{name}</span>
+                  <span className="text-xs text-gray-400">{timeAgo(reflection.created_at)}</span>
+                </div>
+                <p className="text-sm text-gray-700 mt-1 leading-relaxed whitespace-pre-wrap">{reflection.content}</p>
+              </div>
+              {isOwnReflection && (
+                <div className="relative">
+                  <button
+                    type="button"
+                    onClick={() => setActiveMenuId(activeMenuId === reflection.id ? null : reflection.id)}
+                    className="w-7 h-7 rounded-full flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition"
+                    aria-label="Reflection options"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6h.01M12 12h.01M12 18h.01" />
+                    </svg>
+                  </button>
+                  {activeMenuId === reflection.id && (
+                    <div className="absolute right-0 top-8 z-10 min-w-[128px] rounded-xl border border-gray-200 bg-white shadow-lg overflow-hidden">
+                      <button
+                        type="button"
+                        onClick={() => void handleDeleteReflection(reflection)}
+                        disabled={deletingId === reflection.id}
+                        className="w-full px-4 py-3 text-left text-sm font-medium text-red-600 hover:bg-red-50 transition disabled:opacity-50"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="flex items-center gap-4 mt-1 px-1">
+            <button
+              type="button"
+              onClick={() => void handleToggleLike(reflection)}
+              disabled={likeLoading.has(reflection.id)}
+              className="flex items-center gap-1 text-xs transition"
+              style={{ color: reflection.liked ? "#e53e3e" : "#9ca3af" }}
+            >
+              <svg className="w-3.5 h-3.5" fill={reflection.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              <span>{reflection.like_count > 0 ? reflection.like_count : "Like"}</span>
+            </button>
+            {!indent && (
+              <button
+                type="button"
+                onClick={() => {
+                  setReplyingToId(replyingToId === reflection.id ? null : reflection.id);
+                  setReplyText("");
+                }}
+                className="text-xs text-gray-400 hover:text-[#b7794d] font-semibold transition"
+              >
+                Reply
+              </button>
+            )}
+          </div>
+          {!indent && replyingToId === reflection.id && (
+            <div className="mt-2 flex gap-2 items-end">
+              <textarea
+                value={replyText}
+                onChange={(e) => setReplyText(e.target.value)}
+                placeholder={`Reply to ${name}...`}
+                rows={1}
+                className="flex-1 text-sm px-3 py-2 border border-[#eadfce] rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[#d6b18b] bg-white"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    void handleSubmit(reflection.id);
+                  }
+                }}
+              />
+              <button
+                type="button"
+                onClick={() => void handleSubmit(reflection.id)}
+                disabled={!replyText.trim() || submitting}
+                className="text-sm font-semibold text-white px-3 py-2 rounded-xl transition disabled:opacity-40 flex-shrink-0"
+                style={{ backgroundColor: "#4a9b6f" }}
+              >
+                Reply
+              </button>
+            </div>
+          )}
+          {!indent && replies.map((reply) => (
+            <ReflectionRow key={reply.id} reflection={reply} indent />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="bg-amber-50 border border-amber-100 rounded-xl px-4 py-3 mb-4">
         <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-1">This Week's Reflection</p>
         <p className="text-sm text-amber-900 leading-relaxed">{lesson.reflectionQuestion}</p>
       </div>
+      {reflectionError && (
+        <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 mb-4 text-sm text-red-700">
+          {reflectionError}
+        </div>
+      )}
 
-      {!posted ? (
-        <div>
+      <div className="flex gap-3 items-end">
+        {profileImageUrl ? (
+          <img src={profileImageUrl} alt={displayName} className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
+        ) : (
+          <div
+            className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
+            style={{ backgroundColor: avatarBg(userId) }}
+          >
+            {getInitial(displayName)}
+          </div>
+        )}
+        <div className="flex-1 bg-gray-100 rounded-2xl px-4 py-3 flex items-end gap-2">
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Share your thoughts..."
-            rows={4}
-            className="w-full text-sm px-3 py-2.5 border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-green-300 resize-none"
+            placeholder="Post your reflection..."
+            rows={1}
+            className="flex-1 bg-transparent text-sm text-gray-900 placeholder-gray-400 resize-none outline-none max-h-28"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                void handleSubmit(null);
+              }
+            }}
           />
           <button
-            onClick={handleSubmit}
+            onClick={() => void handleSubmit(null)}
             disabled={!text.trim() || submitting}
-            className="w-full mt-2 py-2.5 rounded-xl text-sm font-bold text-white transition hover:opacity-90 disabled:opacity-50"
+            className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition disabled:opacity-40"
             style={{ backgroundColor: "#4a9b6f" }}
+            aria-label="Post reflection"
           >
-            {submitting ? "Posting..." : "Post Reflection"}
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            </svg>
           </button>
         </div>
-      ) : (
-        <div className="bg-green-50 border border-green-200 rounded-xl px-4 py-3 mb-4 text-sm text-green-700 font-semibold">
-          ✓ You've posted your reflection for this week
+      </div>
+      {hasCompletedReflection && (
+        <div className="bg-green-50 border border-green-200 rounded-xl px-4 py-3 mt-4 text-sm text-green-700 font-semibold">
+          Reflection completed.
         </div>
       )}
 
@@ -706,26 +1034,8 @@ function ReflectionSection({
       {!loadingReflections && reflections.length > 0 && (
         <div className="mt-4 flex flex-col gap-3">
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide">Group Reflections</p>
-          {reflections.map((r) => (
-            <div key={r.id} className="flex gap-3">
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5"
-                style={{ backgroundColor: avatarBg(r.user_id) }}
-              >
-                {r.profile_image_url ? (
-                  <img src={r.profile_image_url} alt="" className="w-8 h-8 rounded-full object-cover" />
-                ) : (
-                  getInitial(r.display_name)
-                )}
-              </div>
-              <div className="flex-1">
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-xs font-semibold text-gray-800">{r.display_name || "Anonymous"}</span>
-                  <span className="text-xs text-gray-400">{timeAgo(r.created_at)}</span>
-                </div>
-                <p className="text-sm text-gray-700 leading-relaxed">{r.content}</p>
-              </div>
-            </div>
+          {topLevelReflections.map((reflection) => (
+            <ReflectionRow key={reflection.id} reflection={reflection} />
           ))}
         </div>
       )}
@@ -733,7 +1043,7 @@ function ReflectionSection({
   );
 }
 
-// ── Completion Modal ──────────────────────────────────────────────────────────
+// â”€â”€ Completion Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function CompletionModal({ weekNumber, groupId, onClose }: { weekNumber: number; groupId: string; onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4" onClick={onClose}>
@@ -758,7 +1068,7 @@ function CompletionModal({ weekNumber, groupId, onClose }: { weekNumber: number;
           />
         ))}
 
-        <div className="text-6xl mb-4 animate-bounce">🙏</div>
+        <div className="text-6xl mb-4 animate-bounce">ðŸ™</div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Week {weekNumber} Complete!</h2>
         <p className="text-sm text-gray-500 mb-6">
           You've finished the reading, trivia, and reflection for this week. Keep it up!
@@ -777,7 +1087,7 @@ function CompletionModal({ weekNumber, groupId, onClose }: { weekNumber: number;
   );
 }
 
-// ── Louis loading skeleton for database word overlays ─────────────────────────
+// â”€â”€ Louis loading skeleton for database word overlays â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function LouisLoadingCard({ name }: { name: string }) {
   return (
     <div className="flex flex-col items-center py-10 gap-5">
@@ -791,12 +1101,12 @@ function LouisLoadingCard({ name }: { name: string }) {
         <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-4/5" />
         <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-2/3" />
       </div>
-      <p className="text-sm text-gray-400 italic animate-pulse">{name} is loading…</p>
+      <p className="text-sm text-gray-400 italic animate-pulse">{name} is loadingâ€¦</p>
     </div>
   );
 }
 
-// ── Main Page ─────────────────────────────────────────────────────────────────
+// â”€â”€ Main Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export default function WeekLessonPage({
   embeddedGroupId,
   embeddedWeekNum,
@@ -812,6 +1122,7 @@ export default function WeekLessonPage({
   const [userId, setUserId] = useState<string | null>(null);
   const [displayName, setDisplayName] = useState("");
   const [profileImageUrl, setProfileImageUrl] = useState<string | null>(null);
+  const [isPaid, setIsPaid] = useState(false);
   const [seriesId, setSeriesId] = useState<string | null>(null);
   const [groupName, setGroupName] = useState("Group");
   const [seriesTitle, setSeriesTitle] = useState("The Temptation of Jesus");
@@ -826,7 +1137,7 @@ export default function WeekLessonPage({
   const [showCompletionModal, setShowCompletionModal] = useState(false);
   const completionShownRef = useRef(false);
 
-  // ── Bible term overlay state (same as Bible chapter page) ──────────────────
+  // â”€â”€ Bible term overlay state (same as Bible chapter page) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const [selectedPerson, setSelectedPerson] = useState<{ name: string } | null>(null);
   const [selectedPlace, setSelectedPlace]   = useState<{ name: string } | null>(null);
   const [selectedKeyword, setSelectedKeyword] = useState<{ name: string } | null>(null);
@@ -851,7 +1162,7 @@ export default function WeekLessonPage({
 
   const lesson = getSeriesWeekLesson(weekNum);
 
-  // ── Resolve alias → primary person name ────────────────────────────────────
+  // â”€â”€ Resolve alias â†’ primary person name â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function resolvePersonName(clicked: string): string {
     const lower = clicked.toLowerCase().trim();
     for (const p of BIBLE_PEOPLE_LIST) {
@@ -861,7 +1172,7 @@ export default function WeekLessonPage({
     return clicked;
   }
   function normalizeMd(md: string): string {
-    return md.replace(/^\s*[-•*]\s+/gm, "").replace(/\n{3,}/g, "\n\n").trim();
+    return md.replace(/^\s*[-&bull;*]\s+/gm, "").replace(/\n{3,}/g, "\n\n").trim();
   }
 
   useEffect(() => {
@@ -874,7 +1185,7 @@ export default function WeekLessonPage({
         supabase.from("group_members").select("role").eq("group_id", groupId).eq("user_id", user.id).maybeSingle(),
         supabase.from("study_groups").select("name").eq("id", groupId).maybeSingle(),
         supabase.from("group_series").select("id, title").eq("group_id", groupId).eq("is_current", true).maybeSingle(),
-        supabase.from("profile_stats").select("display_name, username, profile_image_url").eq("user_id", user.id).maybeSingle(),
+        supabase.from("profile_stats").select("display_name, username, profile_image_url, is_paid").eq("user_id", user.id).maybeSingle(),
       ]);
 
       if (groupRes.data?.name) setGroupName(groupRes.data.name);
@@ -936,6 +1247,7 @@ export default function WeekLessonPage({
       if (profileRes.data) {
         setDisplayName(profileRes.data.display_name || profileRes.data.username || "");
         setProfileImageUrl(profileRes.data.profile_image_url || null);
+        setIsPaid(profileRes.data.is_paid === true);
       }
 
       setLoading(false);
@@ -943,7 +1255,7 @@ export default function WeekLessonPage({
     init();
   }, [groupId, weekNum, router]);
 
-  // ── Load completed people/places/keywords for this user ────────────────────
+  // â”€â”€ Load completed people/places/keywords for this user â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
     if (!userId) return;
     Promise.all([
@@ -957,7 +1269,7 @@ export default function WeekLessonPage({
     });
   }, [userId]);
 
-  // ── Document-level click delegation for bible-highlight spans ───────────────
+  // â”€â”€ Document-level click delegation for bible-highlight spans â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       const el = e.target as HTMLElement;
@@ -980,7 +1292,7 @@ export default function WeekLessonPage({
     return () => document.removeEventListener("click", handler);
   }, []);
 
-  // ── Person notes ────────────────────────────────────────────────────────────
+  // â”€â”€ Person notes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
     if (!selectedPerson) { setPersonNotes(null); setPersonCreditBlocked(false); return; }
     async function load() {
@@ -997,7 +1309,7 @@ export default function WeekLessonPage({
         if (cached?.notes_text) { setPersonNotes(cached.notes_text); setLoadingNotes(false); return; }
         const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti)/i.test(selectedPerson!.name);
         const pr = isFemale ? "Her" : "Him"; const wp = isFemale ? "She" : "He";
-        const prompt = `You are Little Louis. Generate Bible study notes for ${selectedPerson!.name}.\n\nTemplate:\n# 👤 Who ${wp} Is\n\n(two short paragraphs)\n\n\n\n# 📖 Their Role in the Story\n\n(two to three short paragraphs)\n\n\n\n# 🔥 Key Moments\n\n🔥 sentence\n🔥 sentence\n🔥 sentence\n\n\n\n# 📍 Where You Find ${pr}\n\n📖 Book Chapter\n📖 Book Chapter\n\n\n\n# 🌱 Why This Person Matters\n\n(two short paragraphs)\n\nRules: # headers only, double blank lines between sections, emoji bullets only, no hyphens, ~200-250 words, do NOT put their name as a header.`;
+        const prompt = `You are Little Louis. Generate Bible study notes for ${selectedPerson!.name}.\n\nTemplate:\n# ðŸ‘¤ Who ${wp} Is\n\n(two short paragraphs)\n\n\n\n# ðŸ“– Their Role in the Story\n\n(two to three short paragraphs)\n\n\n\n# ðŸ”¥ Key Moments\n\nðŸ”¥ sentence\nðŸ”¥ sentence\nðŸ”¥ sentence\n\n\n\n# ðŸ“ Where You Find ${pr}\n\nðŸ“– Book Chapter\nðŸ“– Book Chapter\n\n\n\n# ðŸŒ± Why This Person Matters\n\n(two short paragraphs)\n\nRules: # headers only, double blank lines between sections, emoji bullets only, no hyphens, ~200-250 words, do NOT put their name as a header.`;
         const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }) });
         const json = await res.json();
         const generated = json?.reply ?? "";
@@ -1011,7 +1323,7 @@ export default function WeekLessonPage({
     load();
   }, [selectedPerson, userId, completedPeople, viewedPeople]);
 
-  // ── Place notes ─────────────────────────────────────────────────────────────
+  // â”€â”€ Place notes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
     if (!selectedPlace) { setPlaceNotes(null); setPlaceCreditBlocked(false); return; }
     async function load() {
@@ -1026,7 +1338,7 @@ export default function WeekLessonPage({
         }
         const { data: cached } = await supabase.from("places_in_the_bible_notes").select("notes_text").eq("normalized_place", key).maybeSingle();
         if (cached?.notes_text) { setPlaceNotes(cached.notes_text); setLoadingNotes(false); return; }
-        const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the PLACE: ${selectedPlace!.name}.\n\nTemplate:\n# 🧭 What This Place Is\n\n(two short paragraphs)\n\n\n\n# 🗺️ Where It Appears in the Story\n\n(two short paragraphs)\n\n\n\n# 🔑 Key Moments Connected to This Place\n\n🔥 sentence\n🔥 sentence\n🔥 sentence\n\n\n\n# 📖 Where You Find It in Scripture\n\n📖 Book Chapter\n📖 Book Chapter\n\n\n\n# 🌱 Why This Place Matters\n\n(two short paragraphs)\n\nRules: # headers, double blank lines, emoji bullets, no hyphens, ~200 words, no place name as header.`;
+        const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the PLACE: ${selectedPlace!.name}.\n\nTemplate:\n# ðŸ§­ What This Place Is\n\n(two short paragraphs)\n\n\n\n# ðŸ—ºï¸ Where It Appears in the Story\n\n(two short paragraphs)\n\n\n\n# ðŸ”‘ Key Moments Connected to This Place\n\nðŸ”¥ sentence\nðŸ”¥ sentence\nðŸ”¥ sentence\n\n\n\n# ðŸ“– Where You Find It in Scripture\n\nðŸ“– Book Chapter\nðŸ“– Book Chapter\n\n\n\n# ðŸŒ± Why This Place Matters\n\n(two short paragraphs)\n\nRules: # headers, double blank lines, emoji bullets, no hyphens, ~200 words, no place name as header.`;
         const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }) });
         const json = await res.json();
         const generated = json?.reply ?? "";
@@ -1040,7 +1352,7 @@ export default function WeekLessonPage({
     load();
   }, [selectedPlace, userId, completedPlaces, viewedPlaces]);
 
-  // ── Keyword notes ───────────────────────────────────────────────────────────
+  // â”€â”€ Keyword notes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
     if (!selectedKeyword) { setKeywordNotes(null); setKeywordCreditBlocked(false); return; }
     async function load() {
@@ -1055,7 +1367,7 @@ export default function WeekLessonPage({
         }
         const { data: cached } = await supabase.from("keywords_in_the_bible").select("notes_text").eq("keyword", key).maybeSingle();
         if (cached?.notes_text) { setKeywordNotes(cached.notes_text); setLoadingNotes(false); return; }
-        const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword!.name}.\n\nTemplate:\n# 📖 What This Keyword Means\n\n(two short paragraphs)\n\n\n\n# 🔍 Where It Appears in Scripture\n\n(two short paragraphs)\n\n\n\n# 🔑 Key Verses Using This Keyword\n\n🔥 sentence\n🔥 sentence\n🔥 sentence\n\n\n\n# 📚 Where You Find It in the Bible\n\n📖 Book Chapter\n📖 Book Chapter\n\n\n\n# 🌱 Why This Keyword Matters\n\n(two short paragraphs)\n\nRules: # headers, double blank lines, emoji bullets, no hyphens, ~200 words, no keyword as header.`;
+        const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword!.name}.\n\nTemplate:\n# ðŸ“– What This Keyword Means\n\n(two short paragraphs)\n\n\n\n# ðŸ” Where It Appears in Scripture\n\n(two short paragraphs)\n\n\n\n# ðŸ”‘ Key Verses Using This Keyword\n\nðŸ”¥ sentence\nðŸ”¥ sentence\nðŸ”¥ sentence\n\n\n\n# ðŸ“š Where You Find It in the Bible\n\nðŸ“– Book Chapter\nðŸ“– Book Chapter\n\n\n\n# ðŸŒ± Why This Keyword Matters\n\n(two short paragraphs)\n\nRules: # headers, double blank lines, emoji bullets, no hyphens, ~200 words, no keyword as header.`;
         const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }) });
         const json = await res.json();
         const generated = json?.reply ?? "";
@@ -1069,28 +1381,32 @@ export default function WeekLessonPage({
     load();
   }, [selectedKeyword, userId, completedKeywords, viewedKeywords]);
 
-  async function updateProgress(field: "reading_completed" | "trivia_completed" | "reflection_posted") {
+  async function updateProgressValue(field: "reading_completed" | "trivia_completed" | "reflection_posted", value: boolean) {
     if (!userId || !seriesId) return;
 
     const patch: Record<string, boolean | string | number> = {
       user_id: userId,
       series_id: seriesId,
       week_number: weekNum,
-      [field]: true,
+      [field]: value,
     };
 
     await supabase
       .from("series_week_progress")
       .upsert(patch, { onConflict: "user_id,series_id,week_number" });
 
-    const newReading = field === "reading_completed" ? true : readingDone;
-    const newTrivia = field === "trivia_completed" ? true : triviaDone;
-    const newReflection = field === "reflection_posted" ? true : reflectionDone;
+    const newReading = field === "reading_completed" ? value : readingDone;
+    const newTrivia = field === "trivia_completed" ? value : triviaDone;
+    const newReflection = field === "reflection_posted" ? value : reflectionDone;
 
     if (newReading && newTrivia && newReflection && !completionShownRef.current) {
       completionShownRef.current = true;
       setShowCompletionModal(true);
     }
+  }
+
+  async function updateProgress(field: "reading_completed" | "trivia_completed" | "reflection_posted") {
+    await updateProgressValue(field, true);
   }
 
   function handleReadingComplete() {
@@ -1104,9 +1420,9 @@ export default function WeekLessonPage({
     updateProgress("trivia_completed");
   }
 
-  function handleReflectionComplete() {
-    setReflectionDone(true);
-    updateProgress("reflection_posted");
+  function handleReflectionCompletionChange(completed: boolean) {
+    setReflectionDone(completed);
+    void updateProgressValue("reflection_posted", completed);
   }
 
   if (loading) {
@@ -1123,7 +1439,7 @@ export default function WeekLessonPage({
           </button>
         ) : (
           <Link href={`/study-groups/${groupId}/series`} className="text-blue-600 hover:underline mt-4 inline-block">
-            ← Back to Series
+            â† Back to Series
           </Link>
         )}
       </div>
@@ -1140,7 +1456,7 @@ export default function WeekLessonPage({
           </button>
         ) : (
           <Link href={`/study-groups/${groupId}/series`} className="text-blue-600 hover:underline mt-4 inline-block">
-            ← Back to Series
+            â† Back to Series
           </Link>
         )}
       </div>
@@ -1169,11 +1485,11 @@ export default function WeekLessonPage({
         )}
         {!embedded && <nav className="text-sm text-gray-500 mb-6">
           <Link href="/dashboard" className="hover:text-gray-700 transition">Dashboard</Link>
-          <span className="mx-2">›</span>
+          <span className="mx-2">â€º</span>
           <Link href={`/study-groups/${groupId}/chat`} className="hover:text-gray-700 transition">{groupName}</Link>
-          <span className="mx-2">›</span>
+          <span className="mx-2">â€º</span>
           <Link href={`/study-groups/${groupId}/series`} className="hover:text-gray-700 transition">{seriesTitle}</Link>
-          <span className="mx-2">›</span>
+          <span className="mx-2">â€º</span>
           <span className="text-gray-800 font-medium">Week {weekNum}</span>
         </nav>}
 
@@ -1207,39 +1523,34 @@ export default function WeekLessonPage({
         {/* Sections */}
         <div className="flex flex-col gap-4">
           {/* Intro */}
-          <IntroSection lesson={lesson} />
+          <FreeIntroSection lesson={lesson} />
 
           {/* Section 1: Reading */}
-          <SectionCard number={1} title="Selected Reading" done={readingDone}>
+          <SectionCard title="Assigned Reading">
             <div className="text-center">
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">This Week&apos;s Reading</p>
               <p className="text-sm text-gray-600 mb-1">
                 <span className="font-semibold text-gray-900">{lesson.readingReference}</span>
               </p>
-              <p className="text-xs text-gray-400 mb-4">{lesson.subtitle}</p>
-              {readingDone ? (
-                <div className="flex flex-col items-center gap-2">
-                  <p className="text-sm text-green-600 font-semibold">✓ Reading completed</p>
-                  <button
-                    onClick={() => setShowReadingModal(true)}
-                    className="px-5 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 hover:bg-gray-50 transition"
-                  >
-                    Re-read Passage
-                  </button>
-                </div>
-              ) : (
-                <button
-                  onClick={() => setShowReadingModal(true)}
-                  className="px-6 py-2.5 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
-                  style={{ backgroundColor: "#4a9b6f" }}
-                >
-                  Open Reading
-                </button>
-              )}
+              <p className="text-sm text-gray-500 mb-4">Take a moment to read the passage before continuing.</p>
+              <button
+                onClick={() => setShowReadingModal(true)}
+                className="px-6 py-2.5 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
+                style={{ backgroundColor: "#4a9b6f" }}
+              >
+                {readingDone ? "Re-read Reading" : "Read Reading"}
+              </button>
             </div>
           </SectionCard>
 
+          <NotesSection
+            lesson={lesson}
+            isPaid={isPaid}
+            onUnlock={() => router.push("/upgrade")}
+          />
+
           {/* Section 2: Trivia */}
-          <SectionCard number={2} title="Bible Trivia" done={triviaDone}>
+          <SectionCard title="Trivia">
             <TriviaQuiz
               lesson={lesson}
               userId={userId!}
@@ -1255,7 +1566,7 @@ export default function WeekLessonPage({
           {(triviaDone || savedTriviaScore !== null) && seriesId && (
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
               <div className="px-5 py-3 bg-gray-50 border-b border-gray-100">
-                <p className="text-sm font-bold text-gray-800">🏆 Trivia Leaderboard — Week {weekNum}</p>
+                <p className="text-sm font-bold text-gray-800">ðŸ† Trivia Leaderboard â€” Week {weekNum}</p>
               </div>
               <div className="px-5 py-4">
                 <LeaderboardView seriesId={seriesId} weekNumber={weekNum} userId={userId!} />
@@ -1264,14 +1575,14 @@ export default function WeekLessonPage({
           )}
 
           {/* Section 3: Reflection */}
-          <SectionCard number={3} title="Reflection" done={reflectionDone}>
+          <SectionCard title="Reflection">
             <ReflectionSection
               lesson={lesson}
               userId={userId!}
               seriesId={seriesId!}
               weekNumber={weekNum}
               done={reflectionDone}
-              onComplete={handleReflectionComplete}
+              onCompletionChange={handleReflectionCompletionChange}
               displayName={displayName}
               profileImageUrl={profileImageUrl}
             />
@@ -1308,11 +1619,11 @@ export default function WeekLessonPage({
         }}
       />
 
-      {/* ── PERSON OVERLAY ─────────────────────────────────────────────────── */}
+      {/* â”€â”€ PERSON OVERLAY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {selectedPerson && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
           <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
-            <button type="button" onClick={() => { setSelectedPerson(null); setPersonNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">✕</button>
+            <button type="button" onClick={() => { setSelectedPerson(null); setPersonNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
             <h2 className="text-3xl font-bold mb-4">{selectedPerson.name}</h2>
             {personCreditBlocked ? null : !personNotes ? (
               <LouisLoadingCard name={selectedPerson.name} />
@@ -1334,14 +1645,14 @@ export default function WeekLessonPage({
                         setIsAnimatingPerson(true);
                         setTimeout(() => {
                           setSelectedPerson(null); setPersonNotes(null); setIsAnimatingPerson(false);
-                          setLearnedToast(`${displayName} has been learned! 🙌`);
+                          setLearnedToast(`${displayName} has been learned! ðŸ™Œ`);
                           setTimeout(() => setLearnedToast(null), 3500);
                         }, 250);
                         supabase.from("people_progress").upsert({ user_id: userId, person_name: key }, { onConflict: "user_id,person_name" })
                           .then(() => setCompletedPeople((p) => { const n = new Set(p); n.add(key); return n; }));
                       }} className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${done ? "bg-green-100 text-green-700 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"}`}
                         style={isAnimatingPerson ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}>
-                        {done ? `✓ ${selectedPerson.name} learned` : `Mark ${selectedPerson.name} as Learned`}
+                        {done ? `âœ“ ${selectedPerson.name} learned` : `Mark ${selectedPerson.name} as Learned`}
                       </button>
                     </div>
                   );
@@ -1352,11 +1663,11 @@ export default function WeekLessonPage({
         </div>
       )}
 
-      {/* ── PLACE OVERLAY ──────────────────────────────────────────────────── */}
+      {/* â”€â”€ PLACE OVERLAY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {selectedPlace && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
           <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
-            <button type="button" onClick={() => { setSelectedPlace(null); setPlaceNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">✕</button>
+            <button type="button" onClick={() => { setSelectedPlace(null); setPlaceNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
             <h2 className="text-3xl font-bold mb-4">{selectedPlace.name}</h2>
             {placeCreditBlocked ? null : !placeNotes ? (
               <LouisLoadingCard name={selectedPlace.name} />
@@ -1378,14 +1689,14 @@ export default function WeekLessonPage({
                         setIsAnimatingPlace(true);
                         setTimeout(() => {
                           setSelectedPlace(null); setPlaceNotes(null); setIsAnimatingPlace(false);
-                          setLearnedToast(`${displayName} has been learned! 🙌`);
+                          setLearnedToast(`${displayName} has been learned! ðŸ™Œ`);
                           setTimeout(() => setLearnedToast(null), 3500);
                         }, 250);
                         supabase.from("places_progress").upsert({ user_id: userId, place_name: key }, { onConflict: "user_id,place_name" })
                           .then(() => setCompletedPlaces((p) => { const n = new Set(p); n.add(key); return n; }));
                       }} className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${done ? "bg-green-100 text-green-700 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"}`}
                         style={isAnimatingPlace ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}>
-                        {done ? `✓ ${selectedPlace.name} learned` : `Mark ${selectedPlace.name} as Learned`}
+                        {done ? `âœ“ ${selectedPlace.name} learned` : `Mark ${selectedPlace.name} as Learned`}
                       </button>
                     </div>
                   );
@@ -1396,11 +1707,11 @@ export default function WeekLessonPage({
         </div>
       )}
 
-      {/* ── KEYWORD OVERLAY ────────────────────────────────────────────────── */}
+      {/* â”€â”€ KEYWORD OVERLAY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {selectedKeyword && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
           <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
-            <button type="button" onClick={() => { setSelectedKeyword(null); setKeywordNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">✕</button>
+            <button type="button" onClick={() => { setSelectedKeyword(null); setKeywordNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
             <h2 className="text-3xl font-bold mb-4">{selectedKeyword.name}</h2>
             {keywordCreditBlocked ? null : !keywordNotes ? (
               <LouisLoadingCard name={selectedKeyword.name} />
@@ -1422,14 +1733,14 @@ export default function WeekLessonPage({
                         setIsAnimatingKeyword(true);
                         setTimeout(() => {
                           setSelectedKeyword(null); setKeywordNotes(null); setIsAnimatingKeyword(false);
-                          setLearnedToast(`${displayName} has been learned! 🙌`);
+                          setLearnedToast(`${displayName} has been learned! ðŸ™Œ`);
                           setTimeout(() => setLearnedToast(null), 3500);
                         }, 250);
                         supabase.from("keywords_progress").upsert({ user_id: userId, keyword_name: key }, { onConflict: "user_id,keyword_name" })
                           .then(() => setCompletedKeywords((p) => { const n = new Set(p); n.add(key); return n; }));
                       }} className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${done ? "bg-green-100 text-green-700 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"}`}
                         style={isAnimatingKeyword ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}>
-                        {done ? `✓ ${selectedKeyword.name} learned` : `Mark ${selectedKeyword.name} as Learned`}
+                        {done ? `âœ“ ${selectedKeyword.name} learned` : `Mark ${selectedKeyword.name} as Learned`}
                       </button>
                     </div>
                   );
@@ -1440,7 +1751,7 @@ export default function WeekLessonPage({
         </div>
       )}
 
-      {/* ── Louis "learned" toast ────────────────────────────────────────────── */}
+      {/* â”€â”€ Louis "learned" toast â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {learnedToast && (
         <div
           className="fixed bottom-24 left-1/2 z-50 flex items-center gap-3 bg-white border border-green-200 rounded-2xl shadow-2xl px-4 py-3"
@@ -1453,3 +1764,4 @@ export default function WeekLessonPage({
     </div>
   );
 }
+
