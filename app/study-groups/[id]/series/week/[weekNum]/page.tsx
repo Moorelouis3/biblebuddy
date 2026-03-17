@@ -1690,7 +1690,7 @@ export default function WeekLessonPage({
             <div className="relative w-full max-w-xl max-h-[82vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-5 sm:p-6 my-8">
               <button type="button" onClick={() => { setSelectedPerson(null); setPersonNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
               <h2 className="text-2xl font-bold mb-4">{selectedPerson.name}</h2>
-              {personCreditBlocked ? null : (
+              {personCreditBlocked || !personNotes ? null : (
               <div>
                 <ReactMarkdown components={{
                   h1: ({ ...p }) => <h1 className="text-xl font-bold mt-6 mb-3 text-gray-900" {...p} />,
@@ -1739,7 +1739,7 @@ export default function WeekLessonPage({
             <div className="relative w-full max-w-xl max-h-[82vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-5 sm:p-6 my-8">
               <button type="button" onClick={() => { setSelectedPlace(null); setPlaceNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
               <h2 className="text-2xl font-bold mb-4">{selectedPlace.name}</h2>
-              {placeCreditBlocked ? null : (
+              {placeCreditBlocked || !placeNotes ? null : (
               <div>
                 <ReactMarkdown components={{
                   h1: ({ ...p }) => <h1 className="text-xl font-bold mt-6 mb-3 text-gray-900" {...p} />,
@@ -1788,7 +1788,7 @@ export default function WeekLessonPage({
             <div className="relative w-full max-w-xl max-h-[82vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-5 sm:p-6 my-8">
               <button type="button" onClick={() => { setSelectedKeyword(null); setKeywordNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
               <h2 className="text-2xl font-bold mb-4">{selectedKeyword.name}</h2>
-              {keywordCreditBlocked ? null : (
+              {keywordCreditBlocked || !keywordNotes ? null : (
               <div>
                 <ReactMarkdown components={{
                   h1: ({ ...p }) => <h1 className="text-xl font-bold mt-6 mb-3 text-gray-900" {...p} />,

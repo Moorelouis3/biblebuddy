@@ -1655,6 +1655,275 @@ You do not need to be stronger by yourself. You need to be closer. Rooted in the
 
 That is why Luke's version hits different. He does not just show us a test. He shows us the beloved Son walking into the wilderness on purpose, and that changes how we read the whole chapter.`;
 
+const WEEK_TWO_INTRO = `## The First Real Attack
+
+Week 1 gave us the build-up. Jesus was baptized, the Spirit descended, and the Father spoke His love over the Son. Then the Spirit led Jesus into the wilderness.
+
+Now Luke slows the moment down even more. After forty days without food, Jesus is hungry. Not pretend hungry. Not symbolic hungry. Real, human, painful hunger.
+
+And that is when the enemy speaks.
+
+## Why This Temptation Matters
+
+- 🍞 Satan starts with appetite.
+- 🧠 He targets a real need in a wrong way.
+- ⚔️ He tempts Jesus to use power apart from trust.
+
+Luke 4:3-4 is about more than bread. It is about whether Jesus will trust the Father when His body is screaming for relief.
+
+That is why this week hits so close to home. A lot of temptation does not begin with obviously evil things. It begins with real desires, real pain, real weakness, and the whisper to satisfy them outside of God's way.
+
+So before we move on, sit in the scene for a second: the wilderness is silent, Jesus is weak from fasting, and the first voice to break that silence is the devil trying to pull the Son off mission.`;
+
+const WEEK_TWO_PREMIUM_NOTES = `## Why This First Temptation Goes Straight for the Body
+
+Luke writes:
+
+> "The devil said to him, 'If you are the Son of God, tell this stone to become bread.' Jesus answered, 'It is written: Man shall not live on bread alone.'" - Luke 4:3-4
+
+This is the first direct temptation Luke records, and it is not random that Satan begins here. He starts with hunger. He starts with the body. He starts with a legitimate need.
+
+That is what makes this temptation so important. The issue is not that bread is bad. Bread is good. Hunger is real. The issue is whether Jesus will meet a real need in a way the Father has not led Him to.
+
+- 🍞 Bread itself is not the sin.
+- 🧭 Acting outside the Father's will is the issue.
+- ⚠️ Satan loves to twist a real need into a wrong response.
+
+This is why the first temptation speaks so directly to us. A lot of our battles do not begin with obviously dark things. They begin with desire, appetite, loneliness, stress, exhaustion, or hunger, and then the suggestion comes: "Handle it now. Satisfy it now. Do not wait on God."
+
+## The Build-Up Still Matters
+
+We cannot read Luke 4:3-4 like it dropped out of nowhere. The context from Week 1 still matters.
+
+- 🌊 Jesus has just come from the Jordan.
+- 🕊️ He is full of the Holy Spirit.
+- 🗣️ The Father has already said, "You are my Son, whom I love."
+- 🏜️ The Spirit has led Him into the wilderness on purpose.
+
+That means this temptation comes after affirmation, not before it. Jesus is not trying to earn sonship. He is resisting from sonship.
+
+That is a huge difference.
+
+A lot of us live like we have to obey God so He will finally love us. Jesus shows the opposite order. The Father speaks love first, and then the testing comes. That matters because temptation often tries to make you forget what God has already said.
+
+## Why the Devil Waited Until Jesus Was Hungry
+
+Luke 4:2 says Jesus ate nothing during those days, and at the end of them He was hungry. Matthew adds that after fasting forty days and forty nights, "the tempter came."
+
+That detail matters. Satan waits.
+
+- ⏳ He does not rush in on day one.
+- 🥀 He waits for weakness.
+- 🕳️ He looks for the worn-down moment.
+
+That is how temptation often works in real life too.
+
+- Late at night when your guard is down.
+- After a hard conversation when your emotions are raw.
+- In a lonely moment when you just want comfort.
+- In stress when quick relief feels more attractive than obedience.
+
+The enemy studies timing. He loves vulnerable moments. That is why spiritual formation matters so much. If we only rely on willpower, we will break. Jesus shows us something deeper: a life rooted in the Spirit and anchored in the Word.
+
+## "If You Are the Son of God"
+
+The devil says, "If you are the Son of God, tell this stone to become bread."
+
+That line is loaded.
+
+On one level, Satan is challenging identity. He is echoing the very truth the Father just declared at Jesus' baptism and trying to poison it.
+
+- 🗣️ The Father said, "You are my Son."
+- 🐍 Satan says, "If you are the Son..."
+
+That is how the enemy works. He questions what God has already made clear.
+
+And in the flow of the sentence, the challenge is basically this:
+
+"Since You are God's Son, why should You suffer like this? Why stay hungry? Why trust? Why not use Your power and fix it Yourself?"
+
+That is the deeper temptation. Not just eat bread. Separate Yourself from dependence. Use divine power independently. Step outside the pattern of obedient trust.
+
+Jesus came not only to save us, but to fully live the human life of obedience before the Father. If He turns stones to bread at Satan's suggestion, He is no longer resisting as the faithful Son in our place. He would be stepping outside the path the Father gave Him.
+
+## Why Bread Matters So Much in Scripture
+
+Bread is never just bread in the Bible. It is one of the most common pictures of daily provision.
+
+- 🌾 Bread represents sustenance, survival, and everyday need.
+- 🙏 In the Lord's Prayer, Jesus teaches us to ask for "daily bread."
+- 📖 In Israel's wilderness story, manna becomes a daily lesson in dependence.
+
+So when Satan says, "Turn this stone into bread," he is aiming at more than food. He is pressing on the question of provision.
+
+Will Jesus trust the Father to provide, or will He grasp for relief on His own terms?
+
+That same question shows up in our lives all the time.
+
+- Will I trust God with desire, or satisfy it immediately?
+- Will I trust God with money, or compromise to get ahead?
+- Will I trust God with loneliness, or run back to what I know is unhealthy?
+- Will I trust God with pain, or numb it in a way that pulls me farther from Him?
+
+The temptation of the flesh usually comes dressed as urgency.
+
+## Israel in the Wilderness and Jesus in the Wilderness
+
+Jesus answers Satan by quoting Deuteronomy 8:3:
+
+> "Man shall not live on bread alone."
+
+That is not a random verse. Jesus is reaching back to Israel's wilderness story.
+
+In Deuteronomy 8, Moses reminds Israel that God humbled them and let them hunger, then fed them with manna so they would learn something deeper:
+
+> "...that man does not live on bread alone but on every word that comes from the mouth of the Lord." - Deuteronomy 8:3
+
+That means the lesson of manna was never just food. It was trust.
+
+- 📦 Israel had to gather manna daily.
+- 🚫 They could not hoard it in fear.
+- 🙌 They had to depend on God's word and provision one day at a time.
+
+But Israel often failed that test. They grumbled. They doubted. They longed for Egypt. They wanted visible provision without obedient trust.
+
+Now Jesus stands in the wilderness as the faithful Son.
+
+- 🌊 Israel passed through the sea and then failed in the wilderness.
+- 🕊️ Jesus passes through baptism and then stands firm in the wilderness.
+- 🍞 Israel complained about food.
+- ✝️ Jesus refuses to step outside the Father's will even in hunger.
+
+He is reliving Israel's story, but this time the Son gets it right.
+
+## The Lust of the Flesh
+
+This week is called "The Lust of the Flesh" because this temptation hits bodily desire head-on.
+
+The language of 1 John 2:16 helps here:
+
+> "For everything in the world - the lust of the flesh, the lust of the eyes, and the pride of life - comes not from the Father but from the world."
+
+The lust of the flesh is not only sexual temptation. It is broader than that. It is the pull of disordered appetite.
+
+- 🍔 Hunger that becomes control.
+- 🍷 Desire that becomes indulgence.
+- 💬 Stress that becomes a sharp tongue.
+- 🔥 Sexual desire pursued outside God's design.
+- 😶 Emptiness that reaches for fast relief instead of faithful surrender.
+
+The flesh says, "I feel it, so I need it now."
+
+But not every strong feeling deserves obedience.
+
+That is one of the clearest lessons in Luke 4:3-4. Jesus feels real hunger, but He does not let hunger become his master.
+
+## Jesus Answers with Scripture
+
+Jesus does not argue with Satan. He does not perform for Satan. He does not explain Himself to Satan. He answers with Scripture.
+
+> "It is written..."
+
+That line matters because Jesus is showing us how spiritual warfare works.
+
+- 📖 He meets temptation with truth.
+- 🧠 He fights with what God has said.
+- 🫀 He shows that Scripture is not decorative. It is survival.
+
+This is simple, but it is not shallow. The Word of God reshapes what we believe in the moment of pressure.
+
+When temptation says, "You need this now," truth says, "God is enough."
+When temptation says, "You will die without this," truth says, "Man shall not live on bread alone."
+When temptation says, "Take control," truth says, "Trust the Father."
+
+That is why hiding Scripture in your heart matters before the crisis hits. In the moment of temptation, you usually do not rise to the level of your intentions. You fall to the level of your formation.
+
+## What Jesus Refuses to Do
+
+It helps to notice what Jesus refuses here.
+
+- ❌ He refuses to let hunger define Him.
+- ❌ He refuses to act independently of the Father.
+- ❌ He refuses to use power for self-serving relief.
+- ❌ He refuses the shortcut.
+
+That is powerful because Jesus is not resisting something obviously disgusting. He is resisting something that could easily be justified.
+
+"You are starving."
+"You are the Son of God."
+"Bread would solve the problem."
+
+But obedience is not just about avoiding obviously evil things. Sometimes obedience means refusing the seemingly reasonable thing because the Father has not spoken it.
+
+## Daily Bread and Daily Dependence
+
+There is a pastoral lesson here that hits everyday life.
+
+Most of us are not going to be tempted to miraculously turn stones into bread. But we are tempted all the time to satisfy ourselves outside of trust.
+
+We try to turn:
+
+- 🪨 loneliness into unhealthy attachment
+- 🪨 stress into addiction
+- 🪨 boredom into indulgence
+- 🪨 pain into escape
+- 🪨 insecurity into control
+
+That is what the enemy still whispers: "Take the stone. Make your own bread. Meet your need your own way."
+
+Jesus shows a better path. Dependence is not weakness. Dependence on the Father is strength.
+
+This is why the Lord's Prayer says, "Give us this day our daily bread." It trains us to live open-handed. Not hoarding. Not panicking. Not forcing. Receiving.
+
+## What This Means for Your Own Wilderness Season
+
+This passage gets real fast if you let it.
+
+Maybe your wilderness right now is:
+
+- 💔 heartbreak
+- 😔 isolation
+- 💼 financial stress
+- 😩 mental exhaustion
+- 🙏 prayers that feel unanswered
+
+Those are the moments when the flesh gets loud. The urge to self-medicate, self-protect, lash out, scroll endlessly, go back to an old person, or make a compromise can feel overwhelming.
+
+That does not make you uniquely broken. It makes you human.
+
+But Luke 4 reminds us that being human does not mean being mastered by appetite.
+
+Jesus shows us:
+
+- 🕊️ stay full of the Spirit
+- 📖 stay grounded in the Word
+- ⏳ trust God's timing
+- 🙏 bring real hunger to the Father instead of to the shortcut
+
+## A Few Simple Ways to Fight This Temptation
+
+- 📖 Read one passage each day before your phone shapes your mind.
+- 🗣️ Memorize a verse for the place you are weakest.
+- 🧠 Name the real hunger under the temptation. Is it comfort? control? attention? escape?
+- 🤝 Tell one safe person where you are struggling so temptation does not grow in secrecy.
+- 🙏 Pray honestly: "Father, teach me to trust You more than my cravings."
+
+You do not need to pretend the hunger is not real. Jesus was genuinely hungry. The question is what you do with that hunger.
+
+## Final Thought
+
+The first temptation is not really about bread. It is about trust.
+
+Will the Son live by appetite, or by the Father's word?
+
+Jesus chooses trust. He chooses obedience. He chooses the long road over the shortcut.
+
+And that matters for us because when we are tempted by the lust of the flesh, we are not looking at a distant Savior who cannot relate. We are looking at a faithful Savior who knows what pressure feels like and still shows us the way through.
+
+He does not just tell us to resist. He models it.
+
+And in Him, we learn that the deepest life is not found in feeding every craving. It is found in trusting the Father, even in the wilderness.`;
+
 export function getSeriesWeekLesson(weekNumber: number): SeriesWeekLesson | undefined {
   const lesson = TEMPTATION_OF_JESUS.find((w) => w.weekNumber === weekNumber);
   if (!lesson) return undefined;
@@ -1673,6 +1942,12 @@ export function getSeriesWeekLesson(weekNumber: number): SeriesWeekLesson | unde
     return {
       ...lesson,
       title: "The Lust of the Flesh",
+      intro: WEEK_TWO_INTRO,
+      notes: WEEK_TWO_PREMIUM_NOTES,
+      readingReference: "Luke 4:3-4",
+      readingApiQuery: "luke+4:3-4",
+      reflectionQuestion:
+        "When the devil tempted Jesus to turn stones into bread, he was appealing to a real physical hunger. Jesus refused to satisfy a real need in a wrong way. What 'stones' has the enemy been trying to get you to turn into 'bread'? Where do you feel tempted to reach for quick relief instead of trusting God's timing and provision?",
     };
   }
   if (weekNumber === 3) {
