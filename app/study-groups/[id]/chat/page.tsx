@@ -3362,15 +3362,19 @@ export default function GroupChatPage() {
                 <div className="space-y-3">
                   {(hubItemStats[showHubLikesFor.path]?.likers || []).map((liker) => (
                     <div key={liker.user_id} className="flex items-center gap-3">
-                      {liker.profile_image_url ? (
-                        <img src={liker.profile_image_url} alt={liker.display_name} className="w-10 h-10 rounded-full object-cover" />
-                      ) : (
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold" style={{ backgroundColor: avatarColor(liker.user_id) }}>
-                          {getInitial(liker.display_name)}
-                        </div>
-                      )}
-                      <div className="flex flex-wrap items-center gap-2">
-                        <p className="text-sm font-medium text-gray-900">{liker.display_name}</p>
+                      <Link href={`/profile/${liker.user_id}`} className="flex items-center gap-3 min-w-0">
+                        {liker.profile_image_url ? (
+                          <img src={liker.profile_image_url} alt={liker.display_name} className="w-10 h-10 rounded-full object-cover" />
+                        ) : (
+                          <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold" style={{ backgroundColor: avatarColor(liker.user_id) }}>
+                            {getInitial(liker.display_name)}
+                          </div>
+                        )}
+                      </Link>
+                      <div className="flex flex-wrap items-center gap-2 min-w-0">
+                        <Link href={`/profile/${liker.user_id}`} className="text-sm font-medium text-gray-900 hover:underline">
+                          {liker.display_name}
+                        </Link>
                         <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
                       </div>
                     </div>
@@ -3413,15 +3417,19 @@ export default function GroupChatPage() {
                 <div className="space-y-3">
                   {postLikers.map((liker) => (
                     <div key={liker.user_id} className="flex items-center gap-3">
-                      {liker.profile_image_url ? (
-                        <img src={liker.profile_image_url} alt={liker.display_name} className="w-10 h-10 rounded-full object-cover" />
-                      ) : (
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold" style={{ backgroundColor: avatarColor(liker.user_id) }}>
-                          {getInitial(liker.display_name)}
-                        </div>
-                      )}
-                      <div className="flex flex-wrap items-center gap-2">
-                        <p className="text-sm font-medium text-gray-900">{liker.display_name}</p>
+                      <Link href={`/profile/${liker.user_id}`} className="flex items-center gap-3 min-w-0">
+                        {liker.profile_image_url ? (
+                          <img src={liker.profile_image_url} alt={liker.display_name} className="w-10 h-10 rounded-full object-cover" />
+                        ) : (
+                          <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold" style={{ backgroundColor: avatarColor(liker.user_id) }}>
+                            {getInitial(liker.display_name)}
+                          </div>
+                        )}
+                      </Link>
+                      <div className="flex flex-wrap items-center gap-2 min-w-0">
+                        <Link href={`/profile/${liker.user_id}`} className="text-sm font-medium text-gray-900 hover:underline">
+                          {liker.display_name}
+                        </Link>
                         <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
                       </div>
                     </div>

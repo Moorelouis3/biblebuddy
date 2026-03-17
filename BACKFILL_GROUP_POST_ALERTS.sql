@@ -23,6 +23,12 @@ WITH top_level_posts AS (
     ON sg.id = gp.group_id
   WHERE gp.parent_post_id IS NULL
 ),
+louis_user AS (
+  SELECT id AS louis_id
+  FROM auth.users
+  WHERE lower(email) = 'moorelouis3@gmail.com'
+  LIMIT 1
+),
 target_rows AS (
   SELECT
     gm.user_id AS notification_user_id,
@@ -36,6 +42,14 @@ target_rows AS (
   JOIN public.group_members gm
     ON gm.group_id = tlp.group_id
    AND gm.status = 'approved'
+  CROSS JOIN louis_user lu
+  WHERE tlp.user_id = lu.louis_id
+     OR EXISTS (
+       SELECT 1
+       FROM public.buddies b
+       WHERE b.user_id_1 = LEAST(gm.user_id, tlp.user_id)
+         AND b.user_id_2 = GREATEST(gm.user_id, tlp.user_id)
+     )
 )
 INSERT INTO public.notifications (
   user_id,

@@ -91,6 +91,7 @@ DECLARE
   v_group_name text;
   v_route text;
   v_member record;
+  v_louis_id uuid;
 BEGIN
   IF NEW.parent_post_id IS NOT NULL THEN
     RETURN NEW;
@@ -99,12 +100,27 @@ BEGIN
   v_actor_name := public.notification_actor_name(NEW.user_id, COALESCE(NEW.display_name, 'A member'));
   SELECT name INTO v_group_name FROM public.study_groups WHERE id = NEW.group_id;
   v_route := '/study-groups/' || NEW.group_id || '/chat';
+  SELECT id INTO v_louis_id
+  FROM auth.users
+  WHERE lower(email) = 'moorelouis3@gmail.com'
+  LIMIT 1;
 
   FOR v_member IN
     SELECT gm.user_id
     FROM public.group_members gm
     WHERE gm.group_id = NEW.group_id
       AND gm.status = 'approved'
+      AND (
+        NEW.user_id = v_louis_id
+        OR EXISTS (
+          SELECT 1
+          FROM public.buddies b
+          WHERE (
+            b.user_id_1 = LEAST(gm.user_id, NEW.user_id)
+            AND b.user_id_2 = GREATEST(gm.user_id, NEW.user_id)
+          )
+        )
+      )
   LOOP
     PERFORM public.create_notification(
       v_member.user_id,

@@ -1,4 +1,4 @@
-export type CustomMemberBadge = "moderator" | "top_buddy" | "founder_buddy";
+export type CustomMemberBadge = "teacher" | "moderator" | "top_buddy" | "founder_buddy";
 
 export type ResolvedUserBadge = {
   key: "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "pro_buddy";
@@ -15,13 +15,14 @@ export const CUSTOM_MEMBER_BADGE_OPTIONS: Array<{
   label: string;
 }> = [
   { value: "", label: "No custom badge" },
+  { value: "teacher", label: "Teacher" },
   { value: "moderator", label: "Moderator" },
   { value: "top_buddy", label: "Top Buddy" },
   { value: "founder_buddy", label: "Founder Buddy" },
 ];
 
 export function normalizeCustomMemberBadge(value: string | null | undefined): CustomMemberBadge | null {
-  if (value === "moderator" || value === "top_buddy" || value === "founder_buddy") {
+  if (value === "teacher" || value === "moderator" || value === "top_buddy" || value === "founder_buddy") {
     return value;
   }
   return null;
@@ -33,6 +34,18 @@ export function resolveUserBadge(input: {
   groupRole?: string | null;
 }): ResolvedUserBadge | null {
   const customBadge = normalizeCustomMemberBadge(input.customBadge);
+
+  if (customBadge === "teacher") {
+    return {
+      key: "teacher",
+      label: "Teacher",
+      emoji: "👨‍🏫",
+      className: "bg-green-100 text-green-700",
+      title: "Teacher",
+      description: "Louis is the owner and head teacher on Bible Buddy. This badge marks the person leading, guiding, and teaching inside the study group.",
+      louisMood: "wave",
+    };
+  }
 
   if (customBadge === "moderator") {
     return {
