@@ -9,6 +9,7 @@ import { supabase } from "../../../../lib/supabaseClient";
 import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { TOTAL_WEEKS, getSeriesWeekLesson } from "@/lib/seriesContent";
+import WeekLessonPage from "../series/week/[weekNum]/page";
 
 // â”€â”€ Interfaces â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
@@ -831,6 +832,7 @@ export default function GroupChatPage() {
       loadMembers();
     } else if (activeTab === "bible_studies") {
       setSelectedSeries(null);
+      setSelectedSeriesWeek(null);
       setSelectedPost(null);
       loadSeries();
     } else if (hubCategories.some((c) => c.id === activeTab)) {
@@ -868,7 +870,6 @@ export default function GroupChatPage() {
   }, [selectedSeries]);
 
   useEffect(() => {
-    setSelectedSeriesWeek(null);
   }, [selectedSeries?.id, activeTab]);
 
   useEffect(() => {
@@ -1636,20 +1637,15 @@ export default function GroupChatPage() {
                 >
                   About Group
                 </button>
-                <button
-                  onClick={() => setActiveTab("members")}
-                  className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
-                >
-                  👥 See All Members
-                </button>
-                {selectedHubItem && (
-                  <span className="text-xs text-gray-500 truncate max-w-full">
-                    {selectedHubItem.title}
-                  </span>
-                )}
-              </div>
+              <button
+                onClick={() => setActiveTab("members")}
+                className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
+              >
+                👥 See All Members
+              </button>
             </div>
           </div>
+        </div>
         </div>
 
         {/* Header navigation */}
@@ -1818,15 +1814,20 @@ export default function GroupChatPage() {
                   </span>
                 </div>
                 <div className="px-5 py-4">
-                  {seriesStartDate && new Date(seriesStartDate).getTime() > nowTs ? (
-                    <p className="text-lg">
-                      <span className="font-semibold text-gray-900">Series starts in </span>
-                      <span className="font-bold" style={{ color: "#d62828" }}>
-                        {formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}
-                      </span>
+                  {currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs ? (
+                    <p
+                      className="text-lg font-bold"
+                      style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
+                    >
+                      Series starts in {formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)}
                     </p>
                   ) : (
-                    <p className="text-lg font-bold" style={{ color: "#d62828" }}>{cardState.headline}</p>
+                    <p
+                      className="text-lg font-bold"
+                      style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
+                    >
+                      {cardState.headline}
+                    </p>
                   )}
                   <p className="text-sm text-gray-600 mt-1">{cardState.detail}</p>
                   <div
@@ -2058,35 +2059,12 @@ export default function GroupChatPage() {
 
           /* â”€â”€ BIBLE STUDIES â€” SERIES VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
           ) : activeTab === "bible_studies" && selectedSeries && selectedSeriesWeek ? (
-            <div className="flex flex-col gap-4">
-              <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
-                <div className="px-4 py-4 border-b border-gray-200 bg-[#fff8f2]">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedSeriesWeek(null)}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#8d5d38] hover:text-[#6f4526] transition"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                    Back to Series
-                  </button>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-[#9c6a46] mt-3">
-                    {selectedSeries.title}
-                  </p>
-                  <h2 className="text-lg font-bold text-gray-900 mt-1">
-                    Week {selectedSeriesWeek}: {getSeriesWeekLesson(selectedSeriesWeek)?.title ?? "Study Week"}
-                  </h2>
-                </div>
-                <iframe
-                  key={`${groupId}-${selectedSeriesWeek}`}
-                  src={`/study-groups/${groupId}/series/week/${selectedSeriesWeek}`}
-                  title={`${selectedSeries.title} Week ${selectedSeriesWeek}`}
-                  className="w-full border-0 block bg-white"
-                  style={{ height: "calc(100vh - 180px)", minHeight: 980 }}
-                />
-              </div>
-            </div>
+            <WeekLessonPage
+              embedded
+              embeddedGroupId={groupId}
+              embeddedWeekNum={selectedSeriesWeek}
+              onBack={() => setSelectedSeriesWeek(null)}
+            />
           ) : activeTab === "bible_studies" && selectedSeries ? (
             <div className="flex flex-col gap-4">
               {/* Series header card */}
@@ -2160,15 +2138,16 @@ export default function GroupChatPage() {
                         </div>
 
                         {seriesStartDate && (
-                          <p className="text-sm text-gray-700 mt-3">
-                            <span className="font-semibold text-gray-900">Bible Study Series </span>
-                            <span className="font-bold" style={{ color: "#d62828" }}>
+                          <div className="mt-3">
+                            <p className="text-sm font-bold" style={{ color: "#d62828" }}>
                               {new Date(seriesStartDate).getTime() > nowTs
-                                ? `starts in ${formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}`
-                                : "started"}
-                            </span>{" "}
-                            <span className="text-gray-500">({formatDateTimeLabel(seriesStartDate)})</span>
-                          </p>
+                                ? `Bible Study Series starts in ${formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}`
+                                : "Bible Study Series started"}
+                            </p>
+                            <p className="text-sm text-gray-500 mt-1">
+                              {formatDateTimeLabel(seriesStartDate)}
+                            </p>
+                          </div>
                         )}
 
                         <button

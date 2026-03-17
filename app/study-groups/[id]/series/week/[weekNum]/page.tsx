@@ -11,6 +11,13 @@ import { ACTION_TYPE } from "@/lib/actionTypes";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
 
+interface WeekLessonPageProps {
+  embeddedGroupId?: string;
+  embeddedWeekNum?: number;
+  embedded?: boolean;
+  onBack?: () => void;
+}
+
 function getWeekUnlockDate(startDate: string, weekNum: number): string {
   const d = new Date(startDate);
   d.setDate(d.getDate() + (weekNum - 1) * 7);
@@ -790,11 +797,16 @@ function LouisLoadingCard({ name }: { name: string }) {
 }
 
 // ── Main Page ─────────────────────────────────────────────────────────────────
-export default function WeekLessonPage() {
+export default function WeekLessonPage({
+  embeddedGroupId,
+  embeddedWeekNum,
+  embedded = false,
+  onBack,
+}: WeekLessonPageProps = {}) {
   const params = useParams();
   const router = useRouter();
-  const groupId = params.id as string;
-  const weekNum = parseInt(params.weekNum as string, 10);
+  const groupId = embeddedGroupId ?? (params.id as string);
+  const weekNum = embeddedWeekNum ?? parseInt(params.weekNum as string, 10);
 
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
@@ -1105,9 +1117,15 @@ export default function WeekLessonPage() {
     return (
       <div className="max-w-2xl mx-auto px-4 py-16 text-center">
         <p className="text-gray-500">This week's lesson isn't available yet.</p>
-        <Link href={`/study-groups/${groupId}/series`} className="text-blue-600 hover:underline mt-4 inline-block">
-          ← Back to Series
-        </Link>
+        {embedded ? (
+          <button type="button" onClick={onBack} className="text-blue-600 hover:underline mt-4 inline-block">
+            Back to Series
+          </button>
+        ) : (
+          <Link href={`/study-groups/${groupId}/series`} className="text-blue-600 hover:underline mt-4 inline-block">
+            ← Back to Series
+          </Link>
+        )}
       </div>
     );
   }
@@ -1116,9 +1134,15 @@ export default function WeekLessonPage() {
     return (
       <div className="max-w-2xl mx-auto px-4 py-16 text-center">
         <p className="text-gray-700 font-semibold">{accessDeniedMessage}</p>
-        <Link href={`/study-groups/${groupId}/series`} className="text-blue-600 hover:underline mt-4 inline-block">
-          ← Back to Series
-        </Link>
+        {embedded ? (
+          <button type="button" onClick={onBack} className="text-blue-600 hover:underline mt-4 inline-block">
+            Back to Series
+          </button>
+        ) : (
+          <Link href={`/study-groups/${groupId}/series`} className="text-blue-600 hover:underline mt-4 inline-block">
+            ← Back to Series
+          </Link>
+        )}
       </div>
     );
   }
@@ -1126,10 +1150,24 @@ export default function WeekLessonPage() {
   const totalDone = [readingDone, triviaDone, reflectionDone].filter(Boolean).length;
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className={embedded ? "" : "min-h-screen bg-gray-50 pb-20"}>
       <div className="max-w-2xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
-        <nav className="text-sm text-gray-500 mb-6">
+        {embedded && (
+          <div className="mb-6">
+            <button
+              type="button"
+              onClick={onBack}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#8d5d38] hover:text-[#6f4526] transition"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back to {seriesTitle}
+            </button>
+          </div>
+        )}
+        {!embedded && <nav className="text-sm text-gray-500 mb-6">
           <Link href="/dashboard" className="hover:text-gray-700 transition">Dashboard</Link>
           <span className="mx-2">›</span>
           <Link href={`/study-groups/${groupId}/chat`} className="hover:text-gray-700 transition">{groupName}</Link>
@@ -1137,7 +1175,7 @@ export default function WeekLessonPage() {
           <Link href={`/study-groups/${groupId}/series`} className="hover:text-gray-700 transition">{seriesTitle}</Link>
           <span className="mx-2">›</span>
           <span className="text-gray-800 font-medium">Week {weekNum}</span>
-        </nav>
+        </nav>}
 
         {/* Week header */}
         <div className="mb-5">
