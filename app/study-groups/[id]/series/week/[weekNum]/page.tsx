@@ -227,73 +227,101 @@ function NotesSection({
   onUnlock: () => void;
 }) {
   const [expanded, setExpanded] = useState(!isPaid);
+  const [notesLoading, setNotesLoading] = useState(false);
   const notesHTML = isPaid && expanded ? parseIntroToHTML(lesson.notes ?? lesson.intro) : "";
 
   useEffect(() => {
     setExpanded(!isPaid);
   }, [isPaid]);
 
+  useEffect(() => {
+    if (!notesLoading) return;
+    const timer = window.setTimeout(() => {
+      setExpanded(true);
+      setNotesLoading(false);
+    }, 180);
+    return () => window.clearTimeout(timer);
+  }, [notesLoading]);
+
+  function handleToggle() {
+    if (!isPaid) return;
+    if (expanded) {
+      setExpanded(false);
+      return;
+    }
+    setNotesLoading(true);
+  }
+
   return (
-    <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
-      <div className="w-full px-5 py-4 border-b border-gray-100 bg-gray-50 flex items-center justify-between gap-3 text-left">
-        <div>
-          <p className="text-base font-bold text-gray-900">Study Notes</p>
+    <>
+      <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+        <div className="w-full px-5 py-4 border-b border-gray-100 bg-gray-50 flex items-center justify-between gap-3 text-left">
+          <div>
+            <p className="text-base font-bold text-gray-900">Study Notes</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${isPaid ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"}`}>
+              {isPaid ? "Unlocked" : "Locked"}
+            </span>
+            {isPaid && (
+              <button
+                type="button"
+                onClick={handleToggle}
+                aria-expanded={expanded}
+                className="text-gray-400 transition hover:text-gray-600"
+              >
+                <svg
+                  className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            )}
+          </div>
         </div>
-        <div className="flex items-center gap-3">
-          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${isPaid ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"}`}>
-            {isPaid ? "Unlocked" : "Locked"}
-          </span>
-          {isPaid && (
+
+        {expanded && (isPaid ? (
+          <div
+            className="px-5 pt-4 pb-5 flex flex-col gap-3"
+            dangerouslySetInnerHTML={{ __html: notesHTML }}
+          />
+        ) : (
+          <div className="px-5 py-5">
+            <p className="text-base font-semibold text-gray-900 mb-3">Read The Study Notes</p>
+            <p className="text-xs font-semibold text-amber-600 uppercase tracking-wide mb-3">Upgrade for full access</p>
+            <p className="text-sm text-gray-600 mb-4">The Notes for this week go deeper into:</p>
+            <div className="space-y-2 text-sm text-gray-700 mb-5">
+              <p>&bull; what&apos;s really happening in each verse</p>
+              <p>&bull; historical and cultural context</p>
+              <p>&bull; Greek word meanings and insights</p>
+              <p>&bull; connections across the Bible</p>
+              <p>&bull; deeper explanations of people, places, and events</p>
+            </div>
+            <p className="text-sm text-gray-600 leading-relaxed mb-5">
+              If you want to go beyond just reading and actually understand Scripture on a deeper level, unlock the full Notes.
+            </p>
             <button
               type="button"
-              onClick={() => setExpanded((v) => !v)}
-              aria-expanded={expanded}
-              className="text-gray-400 transition hover:text-gray-600"
+              onClick={onUnlock}
+              className="w-full py-3 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
+              style={{ backgroundColor: "#4a9b6f" }}
             >
-              <svg
-                className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : ""}`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
+              Unlock Notes
             </button>
-          )}
-        </div>
+          </div>
+        ))}
       </div>
 
-      {expanded && (isPaid ? (
-        <div
-          className="px-5 pt-4 pb-5 flex flex-col gap-3"
-          dangerouslySetInnerHTML={{ __html: notesHTML }}
+      {notesLoading && (
+        <SmallLouisLoadingModal
+          title="Loading Study Notes"
+          subtitle="Getting your Week 1 notes ready..."
         />
-      ) : (
-        <div className="px-5 py-5">
-          <p className="text-base font-semibold text-gray-900 mb-3">Read The Study Notes</p>
-          <p className="text-xs font-semibold text-amber-600 uppercase tracking-wide mb-3">Upgrade for full access</p>
-          <p className="text-sm text-gray-600 mb-4">The Notes for this week go deeper into:</p>
-          <div className="space-y-2 text-sm text-gray-700 mb-5">
-            <p>&bull; what&apos;s really happening in each verse</p>
-            <p>&bull; historical and cultural context</p>
-            <p>&bull; Greek word meanings and insights</p>
-            <p>&bull; connections across the Bible</p>
-            <p>&bull; deeper explanations of people, places, and events</p>
-          </div>
-          <p className="text-sm text-gray-600 leading-relaxed mb-5">
-            If you want to go beyond just reading and actually understand Scripture on a deeper level, unlock the full Notes.
-          </p>
-          <button
-            type="button"
-            onClick={onUnlock}
-            className="w-full py-3 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
-            style={{ backgroundColor: "#4a9b6f" }}
-          >
-            Unlock Notes
-          </button>
-        </div>
-      ))}
-    </div>
+      )}
+    </>
   );
 }
 
@@ -1106,6 +1134,35 @@ function LouisLoadingCard({ name }: { name: string }) {
   );
 }
 
+function SmallLouisLoadingModal({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle: string;
+}) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4">
+      <div className="w-full max-w-xs rounded-3xl border border-gray-200 bg-white px-5 py-5 shadow-2xl">
+        <div className="flex items-center gap-3">
+          <div style={{ animation: "bounce 1s infinite" }}>
+            <LouisAvatar mood="think" size={44} />
+          </div>
+          <div className="min-w-0">
+            <p className="text-sm font-bold text-gray-900">{title}</p>
+            <p className="text-xs text-gray-500 leading-relaxed mt-0.5">{subtitle}</p>
+          </div>
+        </div>
+        <div className="mt-4 space-y-2">
+          <div className="h-2.5 bg-gray-100 rounded-full animate-pulse" />
+          <div className="h-2.5 bg-gray-100 rounded-full animate-pulse w-5/6" />
+          <div className="h-2.5 bg-gray-100 rounded-full animate-pulse w-2/3" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // â”€â”€ Main Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export default function WeekLessonPage({
   embeddedGroupId,
@@ -1623,13 +1680,17 @@ export default function WeekLessonPage({
 
       {/* â”€â”€ PERSON OVERLAY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {selectedPerson && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
-            <button type="button" onClick={() => { setSelectedPerson(null); setPersonNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
-            <h2 className="text-3xl font-bold mb-4">{selectedPerson.name}</h2>
-            {personCreditBlocked ? null : !personNotes ? (
-              <LouisLoadingCard name={selectedPerson.name} />
-            ) : (
+        !personCreditBlocked && !personNotes ? (
+          <SmallLouisLoadingModal
+            title={`Loading ${selectedPerson.name}`}
+            subtitle="Pulling this study note from the database..."
+          />
+        ) : (
+          <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
+            <div className="relative w-full max-w-xl max-h-[82vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-5 sm:p-6 my-8">
+              <button type="button" onClick={() => { setSelectedPerson(null); setPersonNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
+              <h2 className="text-2xl font-bold mb-4">{selectedPerson.name}</h2>
+              {personCreditBlocked ? null : (
               <div>
                 <ReactMarkdown components={{
                   h1: ({ ...p }) => <h1 className="text-xl font-bold mt-6 mb-3 text-gray-900" {...p} />,
@@ -1660,20 +1721,25 @@ export default function WeekLessonPage({
                   );
                 })()}
               </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
+        )
       )}
 
       {/* â”€â”€ PLACE OVERLAY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {selectedPlace && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
-            <button type="button" onClick={() => { setSelectedPlace(null); setPlaceNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
-            <h2 className="text-3xl font-bold mb-4">{selectedPlace.name}</h2>
-            {placeCreditBlocked ? null : !placeNotes ? (
-              <LouisLoadingCard name={selectedPlace.name} />
-            ) : (
+        !placeCreditBlocked && !placeNotes ? (
+          <SmallLouisLoadingModal
+            title={`Loading ${selectedPlace.name}`}
+            subtitle="Pulling this study note from the database..."
+          />
+        ) : (
+          <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
+            <div className="relative w-full max-w-xl max-h-[82vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-5 sm:p-6 my-8">
+              <button type="button" onClick={() => { setSelectedPlace(null); setPlaceNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
+              <h2 className="text-2xl font-bold mb-4">{selectedPlace.name}</h2>
+              {placeCreditBlocked ? null : (
               <div>
                 <ReactMarkdown components={{
                   h1: ({ ...p }) => <h1 className="text-xl font-bold mt-6 mb-3 text-gray-900" {...p} />,
@@ -1704,20 +1770,25 @@ export default function WeekLessonPage({
                   );
                 })()}
               </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
+        )
       )}
 
       {/* â”€â”€ KEYWORD OVERLAY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {selectedKeyword && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
-            <button type="button" onClick={() => { setSelectedKeyword(null); setKeywordNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
-            <h2 className="text-3xl font-bold mb-4">{selectedKeyword.name}</h2>
-            {keywordCreditBlocked ? null : !keywordNotes ? (
-              <LouisLoadingCard name={selectedKeyword.name} />
-            ) : (
+        !keywordCreditBlocked && !keywordNotes ? (
+          <SmallLouisLoadingModal
+            title={`Loading ${selectedKeyword.name}`}
+            subtitle="Pulling this study note from the database..."
+          />
+        ) : (
+          <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
+            <div className="relative w-full max-w-xl max-h-[82vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-5 sm:p-6 my-8">
+              <button type="button" onClick={() => { setSelectedKeyword(null); setKeywordNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
+              <h2 className="text-2xl font-bold mb-4">{selectedKeyword.name}</h2>
+              {keywordCreditBlocked ? null : (
               <div>
                 <ReactMarkdown components={{
                   h1: ({ ...p }) => <h1 className="text-xl font-bold mt-6 mb-3 text-gray-900" {...p} />,
@@ -1748,9 +1819,10 @@ export default function WeekLessonPage({
                   );
                 })()}
               </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
+        )
       )}
 
       {/* â”€â”€ Louis "learned" toast â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}

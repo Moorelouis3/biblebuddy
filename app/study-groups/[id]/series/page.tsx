@@ -264,7 +264,7 @@ export default function SeriesOverviewPage() {
             ) : (
               <div className="rounded-xl border border-amber-200 bg-white px-4 py-3">
                 <p className="text-sm font-semibold text-gray-900">
-                  Series starts in {formatCountdown(getUnlockTimestamp(startDate, 1), nowTs)}
+                  Study starts in {formatCountdown(getUnlockTimestamp(startDate, 1), nowTs)}
                 </p>
                 <p className="text-xs text-amber-700 mt-1">{formatDateTimeLabel(startDate)}</p>
                 <button

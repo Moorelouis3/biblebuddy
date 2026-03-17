@@ -215,16 +215,16 @@ function getCurrentSeriesCardState(
     return {
       headline: "Bible study schedule coming soon",
       detail: "The leader has not set the first release date yet.",
-      cta: "Open Series",
+      cta: "Open Study",
     };
   }
 
   const startTs = new Date(startAt).getTime();
   if (nowTs < startTs) {
     return {
-      headline: `Series starts in ${formatCountdown(startTs, nowTs)}`,
+      headline: `Study starts in ${formatCountdown(startTs, nowTs)}`,
       detail: formatDateTimeLabel(startAt),
-      cta: "Open Series",
+      cta: "Open Study",
     };
   }
 
@@ -1796,22 +1796,22 @@ export default function GroupChatPage() {
                 type="button"
                 onClick={() => setActiveTab("bible_studies")}
                 className="w-full mb-4 text-left rounded-2xl border shadow-sm hover:shadow-md transition overflow-hidden"
-                style={{ backgroundColor: "#d4ecd4", borderColor: "#b8ddb8" }}
+                style={{ backgroundColor: "#f4e2d2", borderColor: "#d9b896" }}
               >
                 <div
-                  className="px-5 py-4 flex items-center justify-between gap-3"
-                  style={{ borderBottom: "1px solid #b8ddb8" }}
+                  className="px-4 pt-4 pb-3"
+                  style={{ borderBottom: "1px solid #d9b896" }}
                 >
-                  <div>
-                    <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: "#4f7e54" }}>Bible Study Series</p>
-                    <h2 className="text-base font-bold text-gray-900 mt-1">{currentSeriesPreview.title}</h2>
+                  <div className="rounded-2xl overflow-hidden border shadow-sm" style={{ borderColor: "rgba(116, 74, 45, 0.16)" }}>
+                    <div className="relative h-32 sm:h-40 bg-[#ead4c0]">
+                      <img
+                        src="/TheTemptingofjesusstudy.png"
+                        alt="The Temptation of Jesus study banner"
+                        className="w-full h-full object-cover"
+                        style={{ objectPosition: "center 42%" }}
+                      />
+                    </div>
                   </div>
-                  <span
-                    className="text-xs font-semibold px-2.5 py-1 rounded-full"
-                    style={{ backgroundColor: "#edf7ed", color: "#4f7e54" }}
-                  >
-                    Bible Study
-                  </span>
                 </div>
                 <div className="px-5 py-4">
                   {currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs ? (
@@ -1819,7 +1819,7 @@ export default function GroupChatPage() {
                       className="text-lg font-bold"
                       style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
                     >
-                      Series starts in {formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)}
+                      Study starts in {formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)}
                     </p>
                   ) : (
                     <p
@@ -1832,7 +1832,7 @@ export default function GroupChatPage() {
                   <p className="text-sm text-gray-600 mt-1">{cardState.detail}</p>
                   <div
                     className="mt-4 inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl"
-                    style={{ backgroundColor: "#5a9a5a", color: "white", boxShadow: "0 8px 18px rgba(90,154,90,0.16)" }}
+                    style={{ backgroundColor: "#8d5d38", color: "white", boxShadow: "0 8px 18px rgba(141,93,56,0.18)" }}
                   >
                     {cardState.cta}
                     <span aria-hidden="true">→</span>
@@ -2141,7 +2141,7 @@ export default function GroupChatPage() {
                           <div className="mt-3">
                             <p className="text-sm font-bold" style={{ color: "#d62828" }}>
                               {new Date(seriesStartDate).getTime() > nowTs
-                                ? `Bible Study Series starts in ${formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}`
+                                ? `Bible Study starts in ${formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}`
                                 : "Bible Study Series started"}
                             </p>
                             <p className="text-sm text-gray-500 mt-1">
@@ -2280,7 +2280,7 @@ export default function GroupChatPage() {
                   ) : (
                     <div className="rounded-xl border border-amber-200 bg-white px-4 py-3">
                       <p className="text-sm font-semibold" style={{ color: "#d62828" }}>
-                        Series starts in {formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}
+                        Study starts in {formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}
                       </p>
                       <p className="text-xs mt-1" style={{ color: "#d62828" }}>{formatDateTimeLabel(seriesStartDate)}</p>
                       <button
@@ -2446,7 +2446,7 @@ export default function GroupChatPage() {
                                 <p className="text-xs mt-2">
                                   {startCountdown ? (
                                     <>
-                                      <span className="text-gray-600">Series starts in </span>
+                                      <span className="text-gray-600">Study starts in </span>
                                       <span className="font-bold" style={{ color: "#d62828" }}>{startCountdown}</span>
                                       {startLabel && <span className="text-gray-500"> ({startLabel})</span>}
                                     </>
@@ -2845,7 +2845,6 @@ export default function GroupChatPage() {
                     ref={groupPhotoInputRef}
                     type="file"
                     accept="image/*"
-                    capture="environment"
                     className="hidden"
                     onChange={(e) => {
                       const file = e.target.files?.[0];
@@ -3239,11 +3238,18 @@ export default function GroupChatPage() {
     return (
       <div className="flex flex-col gap-3">
         {posts.map((post) => (
-          <button
+          <div
             key={post.id}
-            type="button"
+            role="button"
+            tabIndex={0}
             onClick={() => setSelectedFeedPost(post)}
-            className="w-full text-left bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setSelectedFeedPost(post);
+              }
+            }}
+            className="w-full text-left bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition cursor-pointer"
           >
             {post.is_pinned && <div className="flex items-center gap-1 text-xs text-amber-600 font-medium mb-2">📌 Pinned</div>}
             <div className="flex items-start gap-3">
@@ -3404,7 +3410,7 @@ export default function GroupChatPage() {
                 <span>Comments</span>
               </button>
             </div>
-          </button>
+          </div>
         ))}
       </div>
     );

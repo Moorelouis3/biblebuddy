@@ -1665,6 +1665,8 @@ export function getSeriesWeekLesson(weekNumber: number): SeriesWeekLesson | unde
       notes: WEEK_ONE_PREMIUM_NOTES,
       readingReference: "Luke 4:1-2",
       readingApiQuery: "luke+4:1-2",
+      reflectionQuestion:
+        "Before Jesus faced the devil in the wilderness, He was baptized - not because He needed cleansing, but to fully identify with us and fulfill God's plan. What stands out to you most about Jesus' baptism? What does His obedience in that moment teach you about your own walk with God?",
     };
   }
   if (weekNumber === 2) {
