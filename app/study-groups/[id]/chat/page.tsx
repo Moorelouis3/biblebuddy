@@ -10,6 +10,7 @@ import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { TOTAL_WEEKS, getSeriesWeekLesson } from "@/lib/seriesContent";
 import WeekLessonPage from "../series/week/[weekNum]/page";
+import UserBadge from "@/components/UserBadge";
 
 // â”€â”€ Interfaces â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
@@ -42,6 +43,8 @@ interface Post {
   profile_image_url?: string | null;
   media_url?: string | null;
   link_url?: string | null;
+  member_badge?: string | null;
+  is_paid?: boolean;
 }
 
 interface GroupFeedComment {
@@ -55,6 +58,9 @@ interface GroupFeedComment {
   parent_post_id: string | null;
   liked?: boolean;
   profile_image_url?: string | null;
+  role?: string;
+  member_badge?: string | null;
+  is_paid?: boolean;
 }
 
 interface Member {
@@ -62,6 +68,8 @@ interface Member {
   display_name: string;
   role: string;
   profile_image_url: string | null;
+  member_badge?: string | null;
+  is_paid?: boolean;
 }
 
 interface MemberActivityItem {
@@ -77,6 +85,8 @@ interface ArticleLikeUser {
   user_id: string;
   display_name: string;
   profile_image_url: string | null;
+  member_badge?: string | null;
+  is_paid?: boolean;
 }
 
 interface HubItemStats {
@@ -129,6 +139,9 @@ interface SeriesComment {
   created_at: string;
   liked?: boolean;
   profile_image_url?: string | null;
+  role?: string;
+  member_badge?: string | null;
+  is_paid?: boolean;
 }
 
 const PLANNED_BIBLE_STUDY_SERIES = [
@@ -390,6 +403,8 @@ function GroupCommentSection({
   userId,
   displayName,
   userProfileImage,
+  currentUserRole,
+  currentUserBadge,
   onCountChange,
   targetCommentId,
 }: {
@@ -398,6 +413,8 @@ function GroupCommentSection({
   userId: string;
   displayName: string;
   userProfileImage: string | null;
+  currentUserRole: string | null;
+  currentUserBadge: string | null;
   onCountChange: (delta: number) => void;
   targetCommentId?: string | null;
 }) {
@@ -409,6 +426,7 @@ function GroupCommentSection({
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
   const [replyText, setReplyText] = useState("");
   const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
+  const [deletingCommentId, setDeletingCommentId] = useState<string | null>(null);
 
   async function loadComments() {
     setLoading(true);
@@ -440,21 +458,32 @@ function GroupCommentSection({
     }
 
     const userIds = [...new Set(allRows.map((row) => row.user_id))];
-    const [{ data: profiles }, { data: likes }] = await Promise.all([
+    const [{ data: profiles }, { data: likes }, { data: memberships }] = await Promise.all([
       supabase
         .from("profile_stats")
-        .select("user_id, profile_image_url")
+        .select("user_id, profile_image_url, is_paid, member_badge")
         .in("user_id", userIds),
       supabase
         .from("group_post_likes")
         .select("post_id")
         .eq("user_id", userId)
         .in("post_id", allRows.map((row) => row.id)),
+      supabase
+        .from("group_members")
+        .select("user_id, role")
+        .eq("group_id", groupId)
+        .in("user_id", userIds),
     ]);
 
     const imageMap: Record<string, string | null> = {};
-    (profiles || []).forEach((profile) => {
+    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null }> = {};
+    const roleMap: Record<string, string> = {};
+    (profiles || []).forEach((profile: any) => {
       imageMap[profile.user_id] = profile.profile_image_url ?? null;
+      badgeMap[profile.user_id] = { is_paid: !!profile.is_paid, member_badge: profile.member_badge ?? null };
+    });
+    (memberships || []).forEach((membership) => {
+      roleMap[membership.user_id] = membership.role;
     });
     const likedSet = new Set((likes || []).map((like) => like.post_id));
 
@@ -463,6 +492,9 @@ function GroupCommentSection({
         ...row,
         liked: likedSet.has(row.id),
         profile_image_url: imageMap[row.user_id] ?? null,
+        role: roleMap[row.user_id] || "member",
+        is_paid: badgeMap[row.user_id]?.is_paid ?? false,
+        member_badge: badgeMap[row.user_id]?.member_badge ?? null,
       }))
     );
     setLoading(false);
@@ -530,6 +562,62 @@ function GroupCommentSection({
     setSubmitting(false);
   }
 
+  function canDeleteComment(comment: GroupFeedComment) {
+    return (
+      comment.user_id === userId ||
+      currentUserBadge === "moderator" ||
+      currentUserRole === "leader" ||
+      currentUserRole === "moderator"
+    );
+  }
+
+  async function handleDeleteComment(comment: GroupFeedComment) {
+    if (deletingCommentId) return;
+    setDeletingCommentId(comment.id);
+    setSubmitError(null);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch("/api/comments/delete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          kind: "group_feed_comment",
+          commentId: comment.id,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not delete this comment.");
+      }
+
+      const deletedIds = new Set<string>((payload.deletedIds || []) as string[]);
+      if (deletedIds.size === 0) deletedIds.add(comment.id);
+
+      setComments((prev) => prev.filter((item) => !deletedIds.has(item.id)));
+      onCountChange(-deletedIds.size);
+
+      if (replyingTo && deletedIds.has(replyingTo)) {
+        setReplyingTo(null);
+        setReplyText("");
+      }
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Could not delete this comment.");
+    }
+
+    setDeletingCommentId(null);
+  }
+
   const topLevelComments = comments.filter((comment) => comment.parent_post_id === post.id);
   const replies = (parentId: string) => comments.filter((comment) => comment.parent_post_id === parentId);
 
@@ -553,9 +641,12 @@ function GroupCommentSection({
         </Link>
         <div className="flex-1 min-w-0">
           <div>
-            <Link href={`/profile/${comment.user_id}`} className="text-xs font-semibold text-gray-800 hover:underline">
-              {name}
-            </Link>
+            <div className="flex flex-wrap items-center gap-2">
+              <Link href={`/profile/${comment.user_id}`} className="text-xs font-semibold text-gray-800 hover:underline">
+                {name}
+              </Link>
+              <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} />
+            </div>
             <p className="text-xs text-gray-700 mt-0.5 leading-relaxed whitespace-pre-wrap">{comment.content}</p>
           </div>
           <div className="flex items-center gap-3 mt-1">
@@ -579,6 +670,16 @@ function GroupCommentSection({
                 className="text-[10px] text-gray-400 hover:text-[#b7794d] font-semibold transition"
               >
                 Reply
+              </button>
+            )}
+            {canDeleteComment(comment) && (
+              <button
+                type="button"
+                onClick={() => void handleDeleteComment(comment)}
+                disabled={deletingCommentId === comment.id}
+                className="text-[10px] text-gray-400 hover:text-red-500 font-semibold transition disabled:opacity-50"
+              >
+                {deletingCommentId === comment.id ? "Deleting..." : "Delete"}
               </button>
             )}
           </div>
@@ -700,6 +801,8 @@ export default function GroupChatPage() {
   const [userRole, setUserRole] = useState<string>("member");
   const [displayName, setDisplayName] = useState<string>("");
   const [userProfileImage, setUserProfileImage] = useState<string | null>(null);
+  const [userIsPaid, setUserIsPaid] = useState(false);
+  const [userMemberBadge, setUserMemberBadge] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<string>("home");
   const [showGroupInfoModal, setShowGroupInfoModal] = useState(false);
   const [selectedFeedPost, setSelectedFeedPost] = useState<Post | null>(null);
@@ -793,6 +896,7 @@ export default function GroupChatPage() {
   const [submittingComment, setSubmittingComment] = useState(false);
   const [postLikeLoading, setPostLikeLoading] = useState(false);
   const [commentLikeLoading, setCommentLikeLoading] = useState<Set<string>>(new Set());
+  const [deletingSeriesCommentId, setDeletingSeriesCommentId] = useState<string | null>(null);
 
   // New Series modal
   const [showNewSeriesModal, setShowNewSeriesModal] = useState(false);
@@ -846,11 +950,13 @@ export default function GroupChatPage() {
 
       const { data: profile } = await supabase
         .from("profile_stats")
-        .select("display_name, username, profile_image_url")
+        .select("display_name, username, profile_image_url, is_paid, member_badge")
         .eq("user_id", user.id)
         .maybeSingle();
       setDisplayName(profile?.display_name || profile?.username || user.email?.split("@")[0] || "Buddy");
       setUserProfileImage(profile?.profile_image_url ?? null);
+      setUserIsPaid(!!profile?.is_paid);
+      setUserMemberBadge(profile?.member_badge ?? null);
 
       const { data: membership } = await supabase
         .from("group_members")
@@ -1110,14 +1216,7 @@ export default function GroupChatPage() {
     const authorIds = [...new Set(rows.map((p) => p.user_id))];
     let roleMap: Record<string, string> = {};
     let imageMap: Record<string, string | null> = {};
-    if (authorIds.length > 0) {
-      const [{ data: mems }, { data: pics }] = await Promise.all([
-        supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", authorIds),
-        supabase.from("profile_stats").select("user_id, profile_image_url").in("user_id", authorIds),
-      ]);
-      (mems || []).forEach((m) => { roleMap[m.user_id] = m.role; });
-      (pics || []).forEach((p) => { imageMap[p.user_id] = p.profile_image_url ?? null; });
-    }
+    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null }> = {};
 
     let likedSet = new Set<string>();
     const likeCountMap: Record<string, number> = {};
@@ -1133,6 +1232,17 @@ export default function GroupChatPage() {
         if (userId && like.user_id === userId) likedSet.add(like.post_id);
       });
     }
+    if (authorIds.length > 0) {
+      const [{ data: mems }, { data: pics }] = await Promise.all([
+        supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", authorIds),
+        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge").in("user_id", authorIds),
+      ]);
+      (mems || []).forEach((m) => { roleMap[m.user_id] = m.role; });
+      (pics || []).forEach((p: any) => {
+        imageMap[p.user_id] = p.profile_image_url ?? null;
+        badgeMap[p.user_id] = { is_paid: !!p.is_paid, member_badge: p.member_badge ?? null };
+      });
+    }
     setPosts(rows.map((p) => ({
       ...p,
       like_count: likeCountMap[p.id] || 0,
@@ -1140,6 +1250,8 @@ export default function GroupChatPage() {
       role: roleMap[p.user_id] || "member",
       liked: likedSet.has(p.id),
       profile_image_url: imageMap[p.user_id] ?? null,
+      is_paid: false,
+      member_badge: null,
     })));
     setLoadingPosts(false);
   }
@@ -1165,7 +1277,7 @@ export default function GroupChatPage() {
 
     const [{ data: membership }, { data: profile }, { data: likeRows }, { count: directCommentCount }, { data: topLevelComments }] = await Promise.all([
       supabase.from("group_members").select("role").eq("group_id", group.id).eq("user_id", postRow.user_id).maybeSingle(),
-      supabase.from("profile_stats").select("profile_image_url").eq("user_id", postRow.user_id).maybeSingle(),
+      supabase.from("profile_stats").select("profile_image_url, is_paid, member_badge").eq("user_id", postRow.user_id).maybeSingle(),
       supabase.from("group_post_likes").select("post_id, user_id").eq("post_id", postRow.id),
       supabase.from("group_posts").select("id", { count: "exact", head: true }).eq("parent_post_id", postRow.id),
       supabase.from("group_posts").select("id").eq("parent_post_id", postRow.id),
@@ -1189,6 +1301,8 @@ export default function GroupChatPage() {
       role: membership?.role || "member",
       liked,
       profile_image_url: profile?.profile_image_url ?? null,
+      is_paid: !!profile?.is_paid,
+      member_badge: profile?.member_badge ?? null,
     };
 
     setSelectedFeedPost(hydratedPost);
@@ -1211,7 +1325,7 @@ export default function GroupChatPage() {
       const updated = { ...currentPost, like_count: currentPost.like_count + 1, liked: true };
       setPosts((prev) => prev.map((p) => p.id === post.id ? updated : p));
       setSelectedFeedPost((prev) => prev?.id === post.id ? updated : prev);
-      setPostLikers((prev) => prev.some((liker) => liker.user_id === userId) ? prev : [{ user_id: userId, display_name: displayName, profile_image_url: userProfileImage }, ...prev]);
+      setPostLikers((prev) => prev.some((liker) => liker.user_id === userId) ? prev : [{ user_id: userId, display_name: displayName, profile_image_url: userProfileImage, is_paid: userIsPaid, member_badge: userMemberBadge }, ...prev]);
     }
     setLikeLoading((prev) => { const s = new Set(prev); s.delete(post.id); return s; });
   }
@@ -1235,7 +1349,7 @@ export default function GroupChatPage() {
 
     const { data: profiles } = await supabase
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url")
+      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge")
       .in("user_id", likerIds);
 
     setPostLikers(
@@ -1245,6 +1359,8 @@ export default function GroupChatPage() {
           user_id: userIdValue,
           display_name: profile?.display_name || profile?.username || "Buddy",
           profile_image_url: profile?.profile_image_url ?? null,
+          is_paid: !!profile?.is_paid,
+          member_badge: profile?.member_badge ?? null,
         };
       }),
     );
@@ -1329,7 +1445,7 @@ export default function GroupChatPage() {
     }
 
     if (newPost) {
-      setPosts((prev) => [{ ...newPost, comment_count: 0, role: userRole, liked: false, profile_image_url: userProfileImage }, ...prev]);
+      setPosts((prev) => [{ ...newPost, comment_count: 0, role: userRole, liked: false, profile_image_url: userProfileImage, is_paid: userIsPaid, member_badge: userMemberBadge }, ...prev]);
       resetPostComposer();
       setShowPostComposerModal(false);
       void logActionToMasterActions(userId, "group_message_sent", group?.name || "Group");
@@ -1467,7 +1583,7 @@ export default function GroupChatPage() {
     const userIds = page.map((m) => m.user_id);
     const { data: profiles } = await supabase
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url")
+      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge")
       .in("user_id", userIds);
     const profileMap: Record<string, any> = {};
     (profiles || []).forEach((p) => { profileMap[p.user_id] = p; });
@@ -1475,7 +1591,14 @@ export default function GroupChatPage() {
     const roleOrder: Record<string, number> = { leader: 0, moderator: 1, member: 2 };
     const rows: Member[] = page.map((m) => {
       const p = profileMap[m.user_id];
-      return { user_id: m.user_id, display_name: p?.display_name || p?.username || m.display_name || "Buddy", role: m.role, profile_image_url: p?.profile_image_url ?? null };
+      return {
+        user_id: m.user_id,
+        display_name: p?.display_name || p?.username || m.display_name || "Buddy",
+        role: m.role,
+        profile_image_url: p?.profile_image_url ?? null,
+        is_paid: !!p?.is_paid,
+        member_badge: p?.member_badge ?? null,
+      };
     });
     rows.sort((a, b) => (roleOrder[a.role] ?? 2) - (roleOrder[b.role] ?? 2));
     return { rows, hasMore: page.length === MEMBERS_PAGE };
@@ -1510,7 +1633,7 @@ export default function GroupChatPage() {
   }
 
   async function loadMembersActivity(reset = false) {
-    if (!group) return;
+    if (!group || !userId) return;
     const pageSize = reset ? MEMBERS_ACTIVITY_PAGE : MEMBERS_ACTIVITY_MORE_PAGE;
     const offset = reset ? 0 : membersActivityOffset;
     if (reset) {
@@ -1519,99 +1642,39 @@ export default function GroupChatPage() {
       setLoadingMoreMembersActivity(true);
     }
     setMembersActivityError(null);
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
 
-    const { data: groupMemberRows, error: membersError } = await supabase
-      .from("group_members")
-      .select("user_id")
-      .eq("group_id", group.id)
-      .eq("status", "approved");
-
-    if (membersError) {
-      setMembersActivity([]);
-      setMembersActivityError("Could not load buddies for this group right now.");
-      setLoadingMembersActivity(false);
-      setLoadingMoreMembersActivity(false);
-      return;
-    }
-
-    const memberIds = [...new Set((groupMemberRows || []).map((row) => row.user_id))];
-
-    if (memberIds.length === 0) {
-      setMembersActivity([]);
-      setMembersActivityHasMore(false);
-      setMembersActivityOffset(0);
-      setLoadingMembersActivity(false);
-      setLoadingMoreMembersActivity(false);
-      return;
-    }
-
-    const { data: actionRows, error: actionError } = await supabase
-      .from("master_actions")
-      .select("user_id, action_type, action_label, created_at, username")
-      .in("user_id", memberIds)
-      .order("created_at", { ascending: false })
-      .range(offset, offset + pageSize);
-
-    let resolvedActionRows = actionRows || [];
-    if (actionError) {
-      const fallback = await supabase
-        .from("master_actions")
-        .select("user_id, action_type, created_at")
-        .in("user_id", memberIds)
-        .order("created_at", { ascending: false })
-        .range(offset, offset + pageSize);
-
-      if (fallback.error) {
-        setMembersActivity([]);
-        setMembersActivityError(actionError.message || fallback.error.message || "Buddy activity could not load from master_actions.");
-        setLoadingMembersActivity(false);
-        setLoadingMoreMembersActivity(false);
-        return;
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
       }
 
-      resolvedActionRows = (fallback.data || []).map((row) => ({
-        ...row,
-        action_label: null,
-        username: null,
-      }));
-    }
-
-    const hasMore = resolvedActionRows.length > pageSize;
-    const trimmedRows = resolvedActionRows.slice(0, pageSize);
-    const actionUserIds = [...new Set(trimmedRows.map((row) => row.user_id).filter(Boolean))];
-
-    const { data: profiles } = actionUserIds.length > 0
-      ? await supabase
-          .from("profile_stats")
-          .select("user_id, display_name, username, profile_image_url")
-          .in("user_id", actionUserIds)
-      : { data: [] as Array<{ user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }> };
-
-    const profileMap = Object.fromEntries(
-      (profiles || []).map((profile) => [
-        profile.user_id,
-        {
-          display_name: profile.display_name || profile.username || "Buddy",
-          profile_image_url: profile.profile_image_url ?? null,
+      const response = await fetch(`/api/groups/${group.id}/buddies-activity?offset=${offset}&limit=${pageSize}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
         },
-      ]),
-    );
+      });
 
-    const mappedRows = trimmedRows.map((row) => ({
-        user_id: row.user_id,
-        action_type: row.action_type,
-        action_label: row.action_label,
-        created_at: row.created_at,
-        display_name: profileMap[row.user_id]?.display_name || row.username || "Buddy",
-        profile_image_url: profileMap[row.user_id]?.profile_image_url ?? null,
-      }));
-    setMembersActivity((prev) => {
-      if (reset) return mappedRows;
-      const seen = new Set(prev.map((item) => `${item.user_id}-${item.created_at}-${item.action_type}-${item.action_label || ""}`));
-      return [...prev, ...mappedRows.filter((item) => !seen.has(`${item.user_id}-${item.created_at}-${item.action_type}-${item.action_label || ""}`))];
-    });
-    setMembersActivityHasMore(hasMore);
-    setMembersActivityOffset(offset + trimmedRows.length);
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Buddy activity could not load right now.");
+      }
+
+      const mappedRows = Array.isArray(payload.items) ? payload.items as MemberActivityItem[] : [];
+      const hasMore = payload.hasMore === true;
+
+      setMembersActivity((prev) => {
+        if (reset) return mappedRows;
+        const seen = new Set(prev.map((item) => `${item.user_id}-${item.created_at}-${item.action_type}-${item.action_label || ""}`));
+        return [...prev, ...mappedRows.filter((item) => !seen.has(`${item.user_id}-${item.created_at}-${item.action_type}-${item.action_label || ""}`))];
+      });
+      setMembersActivityHasMore(hasMore);
+      setMembersActivityOffset(offset + mappedRows.length);
+    } catch (error) {
+      if (reset) setMembersActivity([]);
+      setMembersActivityError(error instanceof Error ? error.message : "Buddy activity could not load right now.");
+    }
     setLoadingMembersActivity(false);
     setLoadingMoreMembersActivity(false);
   }
@@ -1729,13 +1792,22 @@ export default function GroupChatPage() {
       .order("created_at", { ascending: true });
     const commentRows = rows || [];
 
-    // Fetch profile images for all commenters
     let imageMap: Record<string, string | null> = {};
+    let roleMap: Record<string, string> = {};
+    let badgeMap: Record<string, { is_paid: boolean; member_badge: string | null }> = {};
     if (commentRows.length > 0) {
       const commenterIds = [...new Set(commentRows.map((c) => c.user_id))];
-      const { data: pics } = await supabase
-        .from("profile_stats").select("user_id, profile_image_url").in("user_id", commenterIds);
-      (pics || []).forEach((p) => { imageMap[p.user_id] = p.profile_image_url ?? null; });
+      const [{ data: pics }, { data: roles }] = await Promise.all([
+        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge").in("user_id", commenterIds),
+        group
+          ? supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", commenterIds)
+          : Promise.resolve({ data: [] as Array<{ user_id: string; role: string }> }),
+      ]);
+      (pics || []).forEach((p: any) => {
+        imageMap[p.user_id] = p.profile_image_url ?? null;
+        badgeMap[p.user_id] = { is_paid: !!p.is_paid, member_badge: p.member_badge ?? null };
+      });
+      (roles || []).forEach((row) => { roleMap[row.user_id] = row.role; });
     }
 
     let likedSet = new Set<string>();
@@ -1745,7 +1817,14 @@ export default function GroupChatPage() {
         .eq("user_id", userId).in("comment_id", commentRows.map((c) => c.id));
       (likes || []).forEach((l) => likedSet.add(l.comment_id));
     }
-    setComments(commentRows.map((c) => ({ ...c, liked: likedSet.has(c.id), profile_image_url: imageMap[c.user_id] ?? null })));
+    setComments(commentRows.map((c) => ({
+      ...c,
+      liked: likedSet.has(c.id),
+      profile_image_url: imageMap[c.user_id] ?? null,
+      role: roleMap[c.user_id] || "member",
+      is_paid: badgeMap[c.user_id]?.is_paid ?? false,
+      member_badge: badgeMap[c.user_id]?.member_badge ?? null,
+    })));
     setLoadingComments(false);
   }
 
@@ -1910,6 +1989,69 @@ export default function GroupChatPage() {
       else setNewCommentText("");
     }
     setSubmittingComment(false);
+  }
+
+  function canDeleteSeriesComment(comment: SeriesComment) {
+    return (
+      comment.user_id === userId ||
+      userMemberBadge === "moderator" ||
+      userRole === "leader" ||
+      userRole === "moderator"
+    );
+  }
+
+  async function handleDeleteSeriesComment(comment: SeriesComment) {
+    if (!userId || deletingSeriesCommentId) return;
+    setDeletingSeriesCommentId(comment.id);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch("/api/comments/delete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          kind: "series_post_comment",
+          commentId: comment.id,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not delete this comment.");
+      }
+
+      const deletedIds = new Set<string>((payload.deletedIds || []) as string[]);
+      if (deletedIds.size === 0) deletedIds.add(comment.id);
+
+      setComments((prev) => prev.filter((item) => !deletedIds.has(item.id)));
+
+      if (typeof payload.nextCommentCount === "number") {
+        setSelectedPost((prev) => (prev ? { ...prev, comment_count: payload.nextCommentCount } : prev));
+        setSeriesPosts((prev) => prev.map((item) => (
+          selectedPost && item.id === selectedPost.id
+            ? { ...item, comment_count: payload.nextCommentCount }
+            : item
+        )));
+      }
+
+      if (replyingToId && deletedIds.has(replyingToId)) {
+        setReplyingToId(null);
+        setReplyText("");
+      }
+    } catch (error) {
+      console.error("Failed to delete series comment:", error);
+    }
+
+    setDeletingSeriesCommentId(null);
   }
 
   // â”€â”€ Derived â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -2228,12 +2370,10 @@ export default function GroupChatPage() {
                           </div>
                         )}
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-semibold text-gray-900 truncate">{member.display_name}</p>
-                          {(member.role === "leader" || member.role === "moderator") && (
-                            <span className="text-xs text-green-600 font-medium">
-                              {member.role === "leader" ? "Teacher" : "Moderator"}
-                            </span>
-                          )}
+                          <div className="flex flex-wrap items-center gap-2">
+                            <p className="text-sm font-semibold text-gray-900 truncate">{member.display_name}</p>
+                            <UserBadge customBadge={member.member_badge} isPaid={member.is_paid} groupRole={member.role} />
+                          </div>
                         </div>
                         <Link
                           href={`/profile/${member.user_id}`}
@@ -2317,6 +2457,7 @@ export default function GroupChatPage() {
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
                               <Link href={`/profile/${comment.user_id}`} className="text-sm font-semibold text-gray-900 hover:underline">{comment.display_name}</Link>
+                              <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} />
                               <span className="text-xs text-gray-400">{timeAgo(comment.created_at)}</span>
                             </div>
                             <p className="text-sm text-gray-800 leading-relaxed">{comment.content}</p>
@@ -2338,6 +2479,16 @@ export default function GroupChatPage() {
                               >
                                 Reply
                               </button>
+                              {canDeleteSeriesComment(comment) && (
+                                <button
+                                  type="button"
+                                  onClick={() => void handleDeleteSeriesComment(comment)}
+                                  disabled={deletingSeriesCommentId === comment.id}
+                                  className="text-xs text-gray-400 hover:text-red-500 transition disabled:opacity-50"
+                                >
+                                  {deletingSeriesCommentId === comment.id ? "Deleting..." : "Delete"}
+                                </button>
+                              )}
                             </div>
 
                             {/* Inline reply input */}
@@ -2377,6 +2528,7 @@ export default function GroupChatPage() {
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2 mb-0.5">
                                     <Link href={`/profile/${reply.user_id}`} className="text-xs font-semibold text-gray-900 hover:underline">{reply.display_name}</Link>
+                                    <UserBadge customBadge={reply.member_badge} isPaid={reply.is_paid} groupRole={reply.role} />
                                     <span className="text-xs text-gray-400">{timeAgo(reply.created_at)}</span>
                                   </div>
                                   <p className="text-xs text-gray-800 leading-relaxed">{reply.content}</p>
@@ -2391,6 +2543,16 @@ export default function GroupChatPage() {
                                     </svg>
                                     {reply.like_count > 0 ? reply.like_count : ""}
                                   </button>
+                                  {canDeleteSeriesComment(reply) && (
+                                    <button
+                                      type="button"
+                                      onClick={() => void handleDeleteSeriesComment(reply)}
+                                      disabled={deletingSeriesCommentId === reply.id}
+                                      className="text-xs text-gray-400 hover:text-red-500 transition disabled:opacity-50 mt-1"
+                                    >
+                                      {deletingSeriesCommentId === reply.id ? "Deleting..." : "Delete"}
+                                    </button>
+                                  )}
                                 </div>
                               </div>
                             ))}
@@ -2986,11 +3148,7 @@ export default function GroupChatPage() {
                   <p className="font-semibold text-gray-900 text-sm">
                     {activeFeedPost.display_name || "Buddy"}
                   </p>
-                  {(activeFeedPost.role === "leader" || activeFeedPost.role === "moderator") && (
-                    <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
-                      {activeFeedPost.role === "leader" ? "Teacher" : "Mod"}
-                    </span>
-                  )}
+                  <UserBadge customBadge={activeFeedPost.member_badge} isPaid={activeFeedPost.is_paid} groupRole={activeFeedPost.role} />
                   <span className="text-xs text-gray-400">{timeAgo(activeFeedPost.created_at)}</span>
                 </div>
                 {activeFeedPost.title && (
@@ -3078,6 +3236,8 @@ export default function GroupChatPage() {
                     userId={userId}
                     displayName={displayName}
                     userProfileImage={userProfileImage}
+                    currentUserRole={userRole}
+                    currentUserBadge={userMemberBadge}
                     targetCommentId={deepLinkedCommentId}
                     onCountChange={(delta) => {
                       setSelectedFeedPost((prev) => prev ? { ...prev, comment_count: Math.max((prev.comment_count || 0) + delta, 0) } : prev);
@@ -3127,7 +3287,10 @@ export default function GroupChatPage() {
                           {getInitial(liker.display_name)}
                         </div>
                       )}
-                      <p className="text-sm font-medium text-gray-900">{liker.display_name}</p>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <p className="text-sm font-medium text-gray-900">{liker.display_name}</p>
+                        <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -3175,7 +3338,10 @@ export default function GroupChatPage() {
                           {getInitial(liker.display_name)}
                         </div>
                       )}
-                      <p className="text-sm font-medium text-gray-900">{liker.display_name}</p>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <p className="text-sm font-medium text-gray-900">{liker.display_name}</p>
+                        <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -3570,7 +3736,7 @@ export default function GroupChatPage() {
               ) : membersActivityError ? (
                 <div className="text-center py-8 space-y-2">
                   <p className="text-sm text-gray-500">{membersActivityError}</p>
-                  <p className="text-xs text-gray-400">Run the shared read policy SQL for `master_actions` if this keeps happening.</p>
+                  <p className="text-xs text-gray-400">Try refreshing in a moment. This feed now pulls straight from the shared activity log on the server.</p>
                 </div>
               ) : membersActivity.length === 0 ? (
                 <div className="text-center py-8 space-y-2">
@@ -3578,9 +3744,12 @@ export default function GroupChatPage() {
                   <p className="text-xs text-gray-400">This list pulls from your shared activity log, so older and new Bible Buddy actions will appear here as your group keeps moving.</p>
                 </div>
               ) : (
-                <div className="space-y-3">
+                <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
                   {membersActivity.map((activity, index) => (
-                    <div key={`${activity.user_id}-${activity.created_at}-${index}`} className="rounded-2xl border border-gray-200 bg-white px-4 py-3 shadow-sm">
+                    <div
+                      key={`${activity.user_id}-${activity.created_at}-${index}`}
+                      className={`px-4 py-4 ${index > 0 ? "border-t border-gray-100" : ""}`}
+                    >
                       <div className="flex items-start gap-3">
                         <Link href={`/profile/${activity.user_id}`} className="flex-shrink-0">
                           {activity.profile_image_url ? (
@@ -3611,6 +3780,10 @@ export default function GroupChatPage() {
                       </div>
                     </div>
                   ))}
+                </div>
+              )}
+              {!loadingMembersActivity && !membersActivityError && membersActivity.length > 0 && membersActivityHasMore && (
+                <div className="mt-3">
                   {membersActivityHasMore && (
                     <button
                       type="button"
@@ -3767,11 +3940,7 @@ export default function GroupChatPage() {
                   <Link href={`/profile/${post.user_id}`} className="font-semibold text-gray-900 text-sm hover:underline">
                     {post.display_name || "Buddy"}
                   </Link>
-                  {(post.role === "leader" || post.role === "moderator") && (
-                    <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
-                      {post.role === "leader" ? "Teacher" : "Mod"}
-                    </span>
-                  )}
+                  <UserBadge customBadge={post.member_badge} isPaid={post.is_paid} groupRole={post.role} />
                   <span className="text-xs text-gray-400">{timeAgo(post.created_at)}</span>
                 </div>
               </div>

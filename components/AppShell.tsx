@@ -1263,7 +1263,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   </button>
 
                   {isNotifOpen && (
-                    <div className="absolute right-0 mt-2 w-80 max-w-[calc(100vw-2rem)] bg-white rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden">
+                    <div className="fixed top-16 left-4 right-4 sm:absolute sm:top-full sm:left-auto sm:right-0 sm:mt-2 sm:w-80 bg-white rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden">
                       <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
                         <span className="font-semibold text-sm text-gray-900">Notifications</span>
                         {notifications.some((n) => !n.is_read) && (
@@ -1427,7 +1427,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   </button>
 
                   {isMessagesOpen && (
-                    <div className="absolute right-0 mt-2 w-80 max-w-[calc(100vw-2rem)] bg-white rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden">
+                    <div className="fixed top-16 left-4 right-4 sm:absolute sm:top-full sm:left-auto sm:right-0 sm:mt-2 sm:w-80 bg-white rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden">
                       <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
                         <span className="font-semibold text-sm text-gray-900">Messages</span>
                         <Link

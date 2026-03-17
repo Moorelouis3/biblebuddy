@@ -895,22 +895,48 @@ function ReflectionSection({
     if (deletingId) return;
     setDeletingId(reflection.id);
     setActiveMenuId(null);
-    const { error } = await supabase.from("series_reflections").delete().eq("id", reflection.id).eq("user_id", userId);
-    if (error) {
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch("/api/comments/delete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          kind: "series_reflection",
+          commentId: reflection.id,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Your reflection could not be deleted.");
+      }
+
+      const deletedIds = new Set<string>((payload.deletedIds || []) as string[]);
+      if (deletedIds.size === 0) deletedIds.add(reflection.id);
+
+      const nextReflections = reflections.filter((item) => !deletedIds.has(item.id));
+      setReflections(nextReflections);
+      if (!reflection.parent_reflection_id) {
+        const remainingOwnTopLevel = nextReflections.some((item) => item.user_id === userId && !item.parent_reflection_id);
+        if (!remainingOwnTopLevel) {
+          setHasCompletedReflection(false);
+          onCompletionChange(false);
+        }
+      }
+    } catch (error) {
       console.error("Failed to delete reflection:", error);
-      setReflectionError(error.message || "Your reflection could not be deleted.");
+      setReflectionError(error instanceof Error ? error.message : "Your reflection could not be deleted.");
       setDeletingId(null);
       return;
-    }
-
-    const nextReflections = reflections.filter((item) => item.id !== reflection.id && item.parent_reflection_id !== reflection.id);
-    setReflections(nextReflections);
-    if (!reflection.parent_reflection_id) {
-      const remainingOwnTopLevel = nextReflections.some((item) => item.user_id === userId && !item.parent_reflection_id);
-      if (!remainingOwnTopLevel) {
-        setHasCompletedReflection(false);
-        onCompletionChange(false);
-      }
     }
     setDeletingId(null);
   }
@@ -939,7 +965,11 @@ function ReflectionSection({
   function ReflectionRow({ reflection, indent = false }: { reflection: ReflectionEntry; indent?: boolean }) {
     const name = reflection.display_name || "Anonymous";
     const replies = repliesFor(reflection.id);
-    const isOwnReflection = reflection.user_id === userId;
+    const canDeleteReflection =
+      reflection.user_id === userId ||
+      currentUserBadge === "moderator" ||
+      currentUserGroupRole === "leader" ||
+      currentUserGroupRole === "moderator";
 
     return (
       <div className={`${indent ? "ml-10 mt-3" : "mt-4"} flex gap-3`}>
@@ -968,7 +998,7 @@ function ReflectionSection({
                 </div>
                 <p className="text-sm text-gray-700 mt-1 leading-relaxed whitespace-pre-wrap">{reflection.content}</p>
               </div>
-              {isOwnReflection && (
+              {canDeleteReflection && (
                 <div className="relative">
                   <button
                     type="button"

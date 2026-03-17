@@ -74,10 +74,12 @@ export default function CommentSection({
   const [replyTo, setReplyTo] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [currentUserBadge, setCurrentUserBadge] = useState<string | null>(null);
 
   const hydrateUser = useCallback(async (userId?: string | null, email?: string | null) => {
     if (!userId) {
       setUser(null);
+      setCurrentUserBadge(null);
       return;
     }
 
@@ -98,6 +100,17 @@ export default function CommentSection({
       } else {
         displayName = "Anonymous";
       }
+    }
+
+    try {
+      const { data: profileRow } = await supabase
+        .from("profile_stats")
+        .select("member_badge")
+        .eq("user_id", userId)
+        .maybeSingle();
+      setCurrentUserBadge(profileRow?.member_badge ?? null);
+    } catch {
+      setCurrentUserBadge(null);
     }
 
     setUser({ id: userId, name: displayName });
@@ -219,10 +232,36 @@ export default function CommentSection({
 
   const handleDelete = async (id: string) => {
     setLoading(true);
-    const { error } = await supabase.from("article_comments").delete().eq("id", id);
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch("/api/comments/delete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          kind: "article_comment",
+          commentId: id,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not delete comment.");
+      }
+
+      void fetchComments();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not delete comment.");
+    }
     setLoading(false);
-    if (error) setError(error.message);
-    else void fetchComments();
   };
 
   const renderComments = (items: Comment[], depth = 0) =>
@@ -255,7 +294,7 @@ export default function CommentSection({
               </div>
               <div className="mb-2 whitespace-pre-line leading-relaxed text-gray-800">{c.content}</div>
               <div className="mt-1 flex gap-3 text-sm">
-                {user && user.id === c.user_id && (
+                {user && (user.id === c.user_id || currentUserBadge === "moderator") && (
                   <button className="text-red-500 transition hover:text-red-700 hover:underline" onClick={() => void handleDelete(c.id)}>
                     Delete
                   </button>
