@@ -1,5 +1,5 @@
--- Manually publish this week's Truth Thursday question right now
--- Run once in the Supabase SQL Editor to force the first question post live
+-- Manually publish this week's Opinion Wednesday poll right now
+-- Run once in the Supabase SQL Editor to force the first poll post live
 
 DO $$
 DECLARE
@@ -32,22 +32,20 @@ BEGIN
   END IF;
 
   v_week_start := (timezone('Europe/Berlin', now()))::date
-    - ((extract(dow from timezone('Europe/Berlin', now()))::int + 3) % 7);
+    - ((extract(dow from timezone('Europe/Berlin', now()))::int + 4) % 7);
   v_week_key := to_char(v_week_start, 'YYYY-MM-DD');
 
   IF EXISTS (
     SELECT 1
-    FROM public.weekly_group_questions
+    FROM public.weekly_group_polls
     WHERE group_id = v_group_id
       AND week_key = v_week_key
   ) THEN
-    RAISE NOTICE 'Truth Thursday already exists for week %.', v_week_key;
+    RAISE NOTICE 'Opinion Wednesday already exists for week %.', v_week_key;
     RETURN;
   END IF;
 
-  v_content :=
-    '<p>Truth Thursday is about real faith, real people, and real stories of what God has done.</p>' ||
-    '<p>Share as much of your story as you feel comfortable sharing in the comments.</p>';
+  v_content := '';
 
   INSERT INTO public.group_posts (
     group_id,
@@ -61,45 +59,50 @@ BEGIN
     v_group_id,
     v_louis_id,
     'Louis',
-    'What''s your testimony? How did God begin changing your life?',
+    'How many days a week do you usually read the Bible?',
     'general',
     v_content
   )
   RETURNING id INTO v_post_id;
 
-  INSERT INTO public.weekly_group_questions (
+  INSERT INTO public.weekly_group_polls (
     group_id,
     post_id,
     week_key,
-    prompt_key,
+    poll_key,
     subject_title,
-    prompt,
+    question,
     intro,
-    comment_prompt,
+    options,
     created_by
   )
   VALUES (
     v_group_id,
     v_post_id,
     v_week_key,
-    'testimony',
-    'Your Testimony',
-    'What''s your testimony? How did God begin changing your life?',
-    'Truth Thursday is about real faith, real people, and real stories of what God has done.',
-    'Share as much of your story as you feel comfortable sharing in the comments.',
+    'reading_frequency',
+    'Bible Reading Habits',
+    'How many days a week do you usually read the Bible?',
+    NULL,
+    jsonb_build_array(
+      jsonb_build_object('key', 'six_seven', 'text', '6 to 7 days a week'),
+      jsonb_build_object('key', 'four_five', 'text', '4 to 5 days a week'),
+      jsonb_build_object('key', 'two_three', 'text', '2 to 3 days a week'),
+      jsonb_build_object('key', 'once', 'text', 'Maybe once a week')
+    ),
     v_louis_id
   );
 END $$;
 
 SELECT
-  q.id,
-  q.week_key,
-  q.subject_title,
-  q.post_id,
-  p.title,
-  p.created_at
-FROM public.weekly_group_questions q
-JOIN public.group_posts p
-  ON p.id = q.post_id
-ORDER BY p.created_at DESC
+  p.id,
+  p.week_key,
+  p.question,
+  p.post_id,
+  gp.title,
+  gp.created_at
+FROM public.weekly_group_polls p
+JOIN public.group_posts gp
+  ON gp.id = p.post_id
+ORDER BY gp.created_at DESC
 LIMIT 5;

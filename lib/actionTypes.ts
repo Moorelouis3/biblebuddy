@@ -34,6 +34,7 @@ export const ACTION_TYPES = [
   "series_week_started",
   "study_group_feed_viewed",
   "study_group_article_opened",
+  "study_group_bible_study_card_opened",
 ] as const;
 
 export type ActionType = (typeof ACTION_TYPES)[number];
@@ -74,6 +75,7 @@ export const ACTION_TYPE = {
   series_week_started: "series_week_started",
   study_group_feed_viewed: "study_group_feed_viewed",
   study_group_article_opened: "study_group_article_opened",
+  study_group_bible_study_card_opened: "study_group_bible_study_card_opened",
 } as const satisfies Record<ActionType, ActionType>;
 
 export function isActionType(value: string): value is ActionType {

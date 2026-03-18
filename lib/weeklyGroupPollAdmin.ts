@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { buildWeeklyGroupQuestion } from "./groupWeeklyQuestion";
+import { buildWeeklyGroupPoll } from "./groupWeeklyPoll";
 
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 const BERLIN_TIME_ZONE = "Europe/Berlin";
@@ -34,14 +34,14 @@ function getBerlinDateParts(date: Date) {
 
 function isBerlinReleaseWindowOpen(date: Date) {
   const berlin = getBerlinDateParts(date);
-  if (berlin.weekday !== "Thu") return false;
+  if (berlin.weekday !== "Wed") return false;
   if (berlin.hour > 18) return true;
   if (berlin.hour < 18) return false;
   if (berlin.minute > 0) return true;
   return berlin.minute === 0 && berlin.second >= 0;
 }
 
-export async function ensureWeeklyGroupQuestionPost(
+export async function ensureWeeklyGroupPollPost(
   supabaseAdmin: SupabaseClient,
   groupId: string,
   now = new Date(),
@@ -63,16 +63,16 @@ export async function ensureWeeklyGroupQuestionPost(
     return { ok: true, skipped: true as const, reason: "before_release_time" };
   }
 
-  const question = buildWeeklyGroupQuestion(now);
+  const poll = buildWeeklyGroupPoll(now);
 
   const { data: existing, error: existingError } = await supabaseAdmin
-    .from("weekly_group_questions")
+    .from("weekly_group_polls")
     .select("id, post_id, week_key")
     .eq("group_id", groupId)
-    .eq("week_key", question.weekKey)
+    .eq("week_key", poll.weekKey)
     .maybeSingle();
 
-  if (existingError) throw new Error(existingError.message || "Could not check weekly question.");
+  if (existingError) throw new Error(existingError.message || "Could not check weekly poll.");
   if (existing) {
     return { ok: true, skipped: true as const, reason: "already_exists", postId: existing.post_id };
   }
@@ -85,9 +85,7 @@ export async function ensureWeeklyGroupQuestionPost(
   const louis = louisUsers.users.find((user) => user.email?.toLowerCase() === LOUIS_EMAIL);
   if (!louis) throw new Error("Louis account not found.");
 
-  const content =
-    `<p>${question.intro}</p>` +
-    `<p>${question.commentPrompt}</p>`;
+  const content = "";
 
   const { data: post, error: postError } = await supabaseAdmin
     .from("group_posts")
@@ -95,7 +93,7 @@ export async function ensureWeeklyGroupQuestionPost(
       group_id: groupId,
       user_id: louis.id,
       display_name: "Louis",
-      title: question.prompt,
+      title: poll.question,
       category: "general",
       content,
     })
@@ -103,27 +101,27 @@ export async function ensureWeeklyGroupQuestionPost(
     .single();
 
   if (postError || !post) {
-    throw new Error(postError?.message || "Could not create weekly question post.");
+    throw new Error(postError?.message || "Could not create weekly poll post.");
   }
 
-  const { error: questionError } = await supabaseAdmin
-    .from("weekly_group_questions")
+  const { error: pollError } = await supabaseAdmin
+    .from("weekly_group_polls")
     .insert({
       group_id: groupId,
       post_id: post.id,
-      week_key: question.weekKey,
-      prompt_key: question.promptKey,
-      subject_title: question.subjectTitle,
-      prompt: question.prompt,
-      intro: question.intro,
-      comment_prompt: question.commentPrompt,
+      week_key: poll.weekKey,
+      poll_key: poll.pollKey,
+      subject_title: poll.subjectTitle,
+      question: poll.question,
+      intro: poll.intro,
+      options: poll.options,
       created_by: louis.id,
     });
 
-  if (questionError) {
+  if (pollError) {
     await supabaseAdmin.from("group_posts").delete().eq("id", post.id);
-    throw new Error(questionError.message || "Could not save weekly question.");
+    throw new Error(pollError.message || "Could not save weekly poll.");
   }
 
-  return { ok: true, skipped: false as const, postId: post.id, weekKey: question.weekKey };
+  return { ok: true, skipped: false as const, postId: post.id, weekKey: poll.weekKey };
 }

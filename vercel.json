@@ -9,8 +9,28 @@
       "schedule": "0 16,17 * * 2"
     },
     {
+      "path": "/api/cron/update-monday",
+      "schedule": "0 16,17 * * 1"
+    },
+    {
+      "path": "/api/cron/weekly-group-poll",
+      "schedule": "0 16,17 * * 3"
+    },
+    {
       "path": "/api/cron/weekly-group-question",
       "schedule": "0 16,17 * * 4"
+    },
+    {
+      "path": "/api/cron/who-was-this-friday",
+      "schedule": "0 16,17 * * 5"
+    },
+    {
+      "path": "/api/cron/bible-study-saturday",
+      "schedule": "0 16,17 * * 6"
+    },
+    {
+      "path": "/api/cron/prayer-request-sunday",
+      "schedule": "0 16,17 * * 0"
     }
   ],
   "headers": [

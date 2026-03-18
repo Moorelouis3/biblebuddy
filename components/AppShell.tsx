@@ -1418,10 +1418,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     </svg>
                     {unreadMessageCount > 0 && (
                       <span
-                        className="absolute -top-1 -right-1 h-3.5 w-3.5 rounded-full border-2 border-white"
+                        className="absolute -top-1.5 -right-1.5 min-w-[1.1rem] h-[1.1rem] px-1 rounded-full border-2 border-white text-[10px] leading-none font-bold flex items-center justify-center text-white"
                         style={{ backgroundColor: "#4a9b6f" }}
-                        aria-hidden="true"
+                        aria-label={`${unreadMessageCount} unread message${unreadMessageCount === 1 ? "" : "s"}`}
                       >
+                        {unreadMessageCount > 99 ? "99+" : unreadMessageCount}
                       </span>
                     )}
                   </button>

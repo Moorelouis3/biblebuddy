@@ -1,5 +1,13 @@
+import { buildWeeklyGroupPoll } from "./groupWeeklyPoll";
 import { buildWeeklyGroupQuestion } from "./groupWeeklyQuestion";
 import { buildWeeklyGroupTrivia } from "./groupWeeklyTrivia";
+import {
+  type BibleStudySeriesSnapshot,
+  buildBibleStudySaturdayPost,
+  buildPrayerRequestSundayPost,
+  buildUpdateMondayPost,
+  buildWhoWasThisFridayPost,
+} from "./groupRecurringSeries";
 
 const BERLIN_TIME_ZONE = "Europe/Berlin";
 
@@ -23,6 +31,12 @@ function nextBerlinOccurrence(targetDay: number, hour: number, minute: number, f
   return next;
 }
 
+function addWeeks(date: Date, weeks: number) {
+  const next = new Date(date);
+  next.setDate(next.getDate() + weeks * 7);
+  return next;
+}
+
 function formatScheduleDate(date: Date) {
   return date.toLocaleString("en-US", {
     timeZone: BERLIN_TIME_ZONE,
@@ -34,56 +48,126 @@ function formatScheduleDate(date: Date) {
   });
 }
 
+type SchedulePreview = {
+  title: string;
+  description: string | null;
+  pollOptions?: string[];
+};
+
 export type GroupScheduleItem = {
   key: string;
   label: string;
   accent: string;
   nextReleaseLabel: string;
+  nextReleaseIso: string;
   nextContentTitle: string;
-  nextContentDescription: string;
+  nextContentDescription: string | null;
+  preview: SchedulePreview;
+  nextFour: Array<{
+    releaseLabel: string;
+    releaseIso: string;
+    title: string;
+    description: string | null;
+    pollOptions?: string[];
+  }>;
 };
 
-export function buildGroupSchedule(now = new Date()): GroupScheduleItem[] {
+type GroupScheduleOptions = {
+  bibleStudySeriesSnapshot?: BibleStudySeriesSnapshot | null;
+};
+
+function buildTimeline(
+  label: string,
+  key: string,
+  accent: string,
+  startDate: Date,
+  previewBuilder: (date: Date) => SchedulePreview,
+): GroupScheduleItem {
+  const preview = previewBuilder(startDate);
+  const nextFour = Array.from({ length: 4 }, (_, index) => {
+    const date = addWeeks(startDate, index);
+    const item = previewBuilder(date);
+    return {
+      releaseLabel: formatScheduleDate(date),
+      releaseIso: date.toISOString(),
+      title: item.title,
+      description: item.description,
+      pollOptions: item.pollOptions,
+    };
+  });
+
+  return {
+    key,
+    label,
+    accent,
+    nextReleaseLabel: formatScheduleDate(startDate),
+    nextReleaseIso: startDate.toISOString(),
+    nextContentTitle: preview.title,
+    nextContentDescription: preview.description,
+    preview,
+    nextFour,
+  };
+}
+
+export function buildGroupSchedule(now = new Date(), options: GroupScheduleOptions = {}): GroupScheduleItem[] {
+  const nextMonday = nextBerlinOccurrence(1, 18, 0, now);
   const nextTrivia = nextBerlinOccurrence(2, 18, 0, now);
+  const nextPoll = nextBerlinOccurrence(3, 18, 0, now);
   const nextQuestion = nextBerlinOccurrence(4, 18, 0, now);
+  const nextFriday = nextBerlinOccurrence(5, 18, 0, now);
   const nextBibleStudy = nextBerlinOccurrence(6, 18, 0, now);
   const nextPrayer = nextBerlinOccurrence(0, 18, 0, now);
 
-  const trivia = buildWeeklyGroupTrivia(nextTrivia);
-  const question = buildWeeklyGroupQuestion(nextQuestion);
-
   return [
-    {
-      key: "trivia_tuesday",
-      label: "Trivia Tuesday",
-      accent: "#4a9b6f",
-      nextReleaseLabel: formatScheduleDate(nextTrivia),
-      nextContentTitle: trivia.subjectTitle,
-      nextContentDescription: trivia.subjectLine,
-    },
-    {
-      key: "truth_thursday",
-      label: "Truth Thursday",
-      accent: "#b7794d",
-      nextReleaseLabel: formatScheduleDate(nextQuestion),
-      nextContentTitle: question.subjectTitle,
-      nextContentDescription: question.prompt,
-    },
-    {
-      key: "bible_study_saturday",
-      label: "Bible Study Saturday",
-      accent: "#8d5d38",
-      nextReleaseLabel: formatScheduleDate(nextBibleStudy),
-      nextContentTitle: "Weekly Bible Study Drop",
-      nextContentDescription: "A fresh guided study post with notes, structure, and a clear next step for the group.",
-    },
-    {
-      key: "prayer_request_sunday",
-      label: "Prayer Request Sunday",
-      accent: "#7b5ca8",
-      nextReleaseLabel: formatScheduleDate(nextPrayer),
-      nextContentTitle: "Weekly Prayer Check-In",
-      nextContentDescription: "A simple community prayer thread where Buddies can share needs and pray for one another.",
-    },
+    buildTimeline("Update Monday", "update_monday", "#5a9a5a", nextMonday, (date) => {
+      const update = buildUpdateMondayPost(date);
+      return {
+        title: update.title,
+        description: update.description,
+      };
+    }),
+    buildTimeline("Trivia Tuesday", "trivia_tuesday", "#4a9b6f", nextTrivia, (date) => {
+      const trivia = buildWeeklyGroupTrivia(date);
+      return {
+        title: "Weekly Bible Trivia",
+        description: `${trivia.subjectLine} ${trivia.intro}`,
+      };
+    }),
+    buildTimeline("Opinion Wednesday", "opinion_wednesday", "#5d7ec2", nextPoll, (date) => {
+      const poll = buildWeeklyGroupPoll(date);
+      return {
+        title: poll.question,
+        description: poll.intro,
+        pollOptions: poll.options.map((option) => option.text),
+      };
+    }),
+    buildTimeline("Truth Thursday", "truth_thursday", "#b7794d", nextQuestion, (date) => {
+      const question = buildWeeklyGroupQuestion(date);
+      return {
+        title: question.prompt,
+        description: question.intro,
+      };
+    }),
+    buildTimeline("Who Was This Friday", "who_was_this_friday", "#a2684f", nextFriday, (date) => {
+      const friday = buildWhoWasThisFridayPost(date);
+      return {
+        title: friday.title,
+        description: friday.description,
+      };
+    }),
+    buildTimeline("Bible Study Saturday", "bible_study_saturday", "#8d5d38", nextBibleStudy, (date) => {
+      const saturday = buildBibleStudySaturdayPost(date, options.bibleStudySeriesSnapshot ?? null);
+      return {
+        title: saturday.title,
+        description: saturday.description,
+      };
+    }),
+    buildTimeline("Prayer Request Sunday", "prayer_request_sunday", "#7b5ca8", nextPrayer, (date) => {
+      const sunday = buildPrayerRequestSundayPost(date);
+      return {
+        title: sunday.title,
+        description: sunday.description,
+      };
+    }),
   ];
 }

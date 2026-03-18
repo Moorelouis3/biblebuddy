@@ -10,9 +10,11 @@ import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { TOTAL_WEEKS, getSeriesWeekLesson } from "@/lib/seriesContent";
 import { parseWeeklyTriviaQuestions } from "@/lib/groupWeeklyTrivia";
+import { parseWeeklyPollOptions, type WeeklyGroupPollRecord } from "@/lib/groupWeeklyPoll";
 import type { WeeklyGroupQuestionRecord } from "@/lib/groupWeeklyQuestion";
 import WeekLessonPage from "../series/week/[weekNum]/page";
 import UserBadge from "@/components/UserBadge";
+import GroupWeeklyPollCard from "@/components/GroupWeeklyPollCard";
 import GroupWeeklyTriviaCard from "@/components/GroupWeeklyTriviaCard";
 import GroupWeeklyQuestionCard from "@/components/GroupWeeklyQuestionCard";
 import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
@@ -86,6 +88,19 @@ interface MemberActivityItem {
   profile_image_url: string | null;
 }
 
+interface TopBuddy {
+  rank: number;
+  userId: string;
+  displayName: string;
+  profileImageUrl: string | null;
+  memberBadge: string | null;
+  isPaid: boolean;
+  posts: number;
+  comments: number;
+  likes: number;
+  score: number;
+}
+
 interface WeeklyGroupTriviaFeedSet {
   id: string;
   post_id: string;
@@ -99,6 +114,12 @@ interface WeeklyGroupTriviaFeedSet {
 }
 
 interface WeeklyGroupQuestionFeedSet extends WeeklyGroupQuestionRecord {}
+
+interface WeeklyGroupPollFeedSet extends WeeklyGroupPollRecord {
+  vote_counts: Record<string, number>;
+  total_votes: number;
+  current_user_vote: string | null;
+}
 
 interface ArticleLikeUser {
   user_id: string;
@@ -862,6 +883,7 @@ export default function GroupChatPage() {
 
   // Chat posts
   const [posts, setPosts] = useState<Post[]>([]);
+  const [weeklyPollByPostId, setWeeklyPollByPostId] = useState<Record<string, WeeklyGroupPollFeedSet>>({});
   const [weeklyTriviaByPostId, setWeeklyTriviaByPostId] = useState<Record<string, WeeklyGroupTriviaFeedSet>>({});
   const [weeklyQuestionByPostId, setWeeklyQuestionByPostId] = useState<Record<string, WeeklyGroupQuestionFeedSet>>({});
   const [loadingPosts, setLoadingPosts] = useState(true);
@@ -906,12 +928,15 @@ export default function GroupChatPage() {
   const [membersTotal, setMembersTotal] = useState<number | null>(null);
   const [membersSearch, setMembersSearch] = useState("");
   const [showMembersActivityModal, setShowMembersActivityModal] = useState(false);
+  const [showTopBuddiesModal, setShowTopBuddiesModal] = useState(false);
   const [membersActivity, setMembersActivity] = useState<MemberActivityItem[]>([]);
   const [loadingMembersActivity, setLoadingMembersActivity] = useState(false);
   const [loadingMoreMembersActivity, setLoadingMoreMembersActivity] = useState(false);
   const [membersActivityError, setMembersActivityError] = useState<string | null>(null);
   const [membersActivityOffset, setMembersActivityOffset] = useState(0);
   const [membersActivityHasMore, setMembersActivityHasMore] = useState(false);
+  const [topBuddies, setTopBuddies] = useState<TopBuddy[]>([]);
+  const [loadingTopBuddies, setLoadingTopBuddies] = useState(false);
   const MEMBERS_PAGE = 20;
   const MEMBERS_ACTIVITY_PAGE = 20;
   const MEMBERS_ACTIVITY_MORE_PAGE = 10;
@@ -1321,6 +1346,69 @@ export default function GroupChatPage() {
     void logActionToMasterActions(userId, "study_group_article_opened", `${group.id}:${selectedHubItem.path}`, displayName || null);
   }, [displayName, group, selectedHubItem, userId]);
 
+  async function handleOpenBibleStudyCard() {
+    if (group && userId) {
+      void logActionToMasterActions(
+        userId,
+        "study_group_bible_study_card_opened",
+        group.id,
+        displayName || null,
+      );
+    }
+
+    const knownCurrentSeries =
+      seriesList.find((series) => series.is_current) ??
+      (currentSeriesPreview
+        ? {
+            ...currentSeriesPreview,
+            is_current: true,
+            created_at: new Date().toISOString(),
+          }
+        : null);
+
+    if (knownCurrentSeries) {
+      setSelectedSeries(knownCurrentSeries);
+      setSelectedSeriesWeek(null);
+      setActiveTab("bible_studies");
+      return;
+    }
+
+    await loadSeries();
+    setActiveTab("bible_studies");
+  }
+
+  async function loadTopBuddies() {
+    if (!group) return;
+    setLoadingTopBuddies(true);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch(`/api/groups/${group.id}/top-buddies`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      const payload = await response.json();
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not load top members.");
+      }
+
+      setTopBuddies(payload.buddies || []);
+    } catch (error) {
+      console.error("[TOP_BUDDIES] Failed to load:", error);
+      setTopBuddies([]);
+    } finally {
+      setLoadingTopBuddies(false);
+    }
+  }
+
   // â”€â”€ Load content when tab or group changes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
     if (!group) return;
@@ -1407,6 +1495,7 @@ export default function GroupChatPage() {
       !!selectedFeedPost ||
       !!showPostComposerModal ||
       !!showMembersActivityModal ||
+      !!showTopBuddiesModal ||
       !!showGroupInfoModal ||
       !!deletePostId ||
       !!lightboxUrl ||
@@ -1428,6 +1517,7 @@ export default function GroupChatPage() {
     selectedFeedPost,
     showPostComposerModal,
     showMembersActivityModal,
+    showTopBuddiesModal,
     showGroupInfoModal,
     deletePostId,
     lightboxUrl,
@@ -1480,6 +1570,12 @@ export default function GroupChatPage() {
         const accessToken = sessionData.session?.access_token;
         if (accessToken) {
           await Promise.all([
+            fetch(`/api/groups/${group.id}/update-monday/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
             fetch(`/api/groups/${group.id}/weekly-trivia/ensure`, {
               method: "POST",
               headers: {
@@ -1487,6 +1583,30 @@ export default function GroupChatPage() {
               },
             }),
             fetch(`/api/groups/${group.id}/weekly-question/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/who-was-this-friday/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/bible-study-saturday/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/prayer-request-sunday/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/weekly-poll/ensure`, {
               method: "POST",
               headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -1511,6 +1631,7 @@ export default function GroupChatPage() {
     if (error) { setLoadingPosts(false); return; }
 
     const rows = postRows || [];
+    const nextWeeklyPollByPostId: Record<string, WeeklyGroupPollFeedSet> = {};
     const nextWeeklyTriviaByPostId: Record<string, WeeklyGroupTriviaFeedSet> = {};
     const nextWeeklyQuestionByPostId: Record<string, WeeklyGroupQuestionFeedSet> = {};
     const rootCommentCountMap: Record<string, number> = {};
@@ -1555,6 +1676,50 @@ export default function GroupChatPage() {
           intro: row.intro ?? null,
           comment_prompt: row.comment_prompt ?? null,
           created_at: row.created_at,
+        };
+      });
+
+      const { data: pollRows } = await supabase
+        .from("weekly_group_polls")
+        .select("id, group_id, post_id, week_key, poll_key, subject_title, question, intro, options, created_at")
+        .in("post_id", rows.map((row) => row.id));
+
+      const pollIds = (pollRows || []).map((row: any) => row.id);
+      const { data: pollVoteRows } = pollIds.length > 0
+        ? await supabase
+            .from("weekly_group_poll_votes")
+            .select("poll_id, user_id, option_key")
+            .in("poll_id", pollIds)
+        : { data: [] as any[] };
+
+      const voteMap: Record<string, Record<string, number>> = {};
+      const totalVoteMap: Record<string, number> = {};
+      const currentUserVoteMap: Record<string, string | null> = {};
+
+      (pollVoteRows || []).forEach((vote: any) => {
+        voteMap[vote.poll_id] ||= {};
+        voteMap[vote.poll_id][vote.option_key] = (voteMap[vote.poll_id][vote.option_key] || 0) + 1;
+        totalVoteMap[vote.poll_id] = (totalVoteMap[vote.poll_id] || 0) + 1;
+        if (userId && vote.user_id === userId) {
+          currentUserVoteMap[vote.poll_id] = vote.option_key;
+        }
+      });
+
+      (pollRows || []).forEach((row: any) => {
+        nextWeeklyPollByPostId[row.post_id] = {
+          id: row.id,
+          group_id: row.group_id,
+          post_id: row.post_id,
+          week_key: row.week_key,
+          poll_key: row.poll_key,
+          subject_title: row.subject_title,
+          question: row.question,
+          intro: row.intro ?? null,
+          options: parseWeeklyPollOptions(row.options),
+          created_at: row.created_at,
+          vote_counts: voteMap[row.id] || {},
+          total_votes: totalVoteMap[row.id] || 0,
+          current_user_vote: currentUserVoteMap[row.id] || null,
         };
       });
     }
@@ -1630,6 +1795,7 @@ export default function GroupChatPage() {
       is_paid: badgeMap[p.user_id]?.is_paid ?? false,
       member_badge: badgeMap[p.user_id]?.member_badge ?? null,
     }))));
+    setWeeklyPollByPostId(nextWeeklyPollByPostId);
     setWeeklyTriviaByPostId(nextWeeklyTriviaByPostId);
     setWeeklyQuestionByPostId(nextWeeklyQuestionByPostId);
     setLoadingPosts(false);
@@ -1673,7 +1839,7 @@ export default function GroupChatPage() {
     }
 
     const liked = !!userId && (likeRows || []).some((row) => row.user_id === userId);
-    const [{ data: triviaSetRow }, { data: questionSetRow }] = await Promise.all([
+    const [{ data: triviaSetRow }, { data: questionSetRow }, { data: pollSetRow }] = await Promise.all([
       supabase
         .from("weekly_group_trivia_sets")
         .select("id, post_id, group_id, week_key, subject_key, subject_title, intro, questions, created_at")
@@ -1682,6 +1848,11 @@ export default function GroupChatPage() {
       supabase
         .from("weekly_group_questions")
         .select("id, group_id, post_id, week_key, prompt_key, subject_title, prompt, intro, comment_prompt, created_at")
+        .eq("post_id", postRow.id)
+        .maybeSingle(),
+      supabase
+        .from("weekly_group_polls")
+        .select("id, group_id, post_id, week_key, poll_key, subject_title, question, intro, options, created_at")
         .eq("post_id", postRow.id)
         .maybeSingle(),
     ]);
@@ -1717,6 +1888,41 @@ export default function GroupChatPage() {
           intro: questionSetRow.intro ?? null,
           comment_prompt: questionSetRow.comment_prompt ?? null,
           created_at: questionSetRow.created_at,
+        },
+      }));
+    }
+
+    if (pollSetRow) {
+      const { data: pollVoteRows } = await supabase
+        .from("weekly_group_poll_votes")
+        .select("poll_id, user_id, option_key")
+        .eq("poll_id", pollSetRow.id);
+
+      const voteCounts: Record<string, number> = {};
+      let totalVotes = 0;
+      let currentUserVote: string | null = null;
+      (pollVoteRows || []).forEach((vote: any) => {
+        voteCounts[vote.option_key] = (voteCounts[vote.option_key] || 0) + 1;
+        totalVotes += 1;
+        if (userId && vote.user_id === userId) currentUserVote = vote.option_key;
+      });
+
+      setWeeklyPollByPostId((prev) => ({
+        ...prev,
+        [postRow.id]: {
+          id: pollSetRow.id,
+          group_id: pollSetRow.group_id,
+          post_id: pollSetRow.post_id,
+          week_key: pollSetRow.week_key,
+          poll_key: pollSetRow.poll_key,
+          subject_title: pollSetRow.subject_title,
+          question: pollSetRow.question,
+          intro: pollSetRow.intro ?? null,
+          options: parseWeeklyPollOptions((pollSetRow as any).options),
+          created_at: pollSetRow.created_at,
+          vote_counts: voteCounts,
+          total_votes: totalVotes,
+          current_user_vote: currentUserVote,
         },
       }));
     }
@@ -1891,30 +2097,49 @@ export default function GroupChatPage() {
   }
 
   async function handleTogglePin(post: Post) {
-    if (!isLeaderOrMod || pinningPostId) return;
+    if (!isLeaderOrMod || pinningPostId || !group) return;
 
     const nextPinned = !post.is_pinned;
-    if (nextPinned) {
-      const pinnedCount = posts.filter((item) => item.is_pinned).length;
-      if (pinnedCount >= 3) {
-        window.alert("You can only pin 3 posts at a time.");
-        return;
-      }
-    }
-
     setPinningPostId(post.id);
     setActivePostMenuId(null);
 
-    const { error } = await supabase
-      .from("group_posts")
-      .update({ is_pinned: nextPinned })
-      .eq("id", post.id);
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
 
-    if (!error) {
-      setPosts((prev) => sortPinnedPostsFirst(prev.map((item) => (item.id === post.id ? { ...item, is_pinned: nextPinned } : item))));
-      setSelectedFeedPost((prev) => (prev?.id === post.id ? { ...prev, is_pinned: nextPinned } : prev));
-    } else {
-      window.alert("Could not update pin right now.");
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch(`/api/groups/${group.id}/pin-post`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          postId: post.id,
+          nextPinned,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not update pin right now.");
+      }
+
+      setPosts((prev) =>
+        sortPinnedPostsFirst(
+          prev.map((item) =>
+            item.id === post.id ? { ...item, is_pinned: Boolean(payload.isPinned) } : item,
+          ),
+        ),
+      );
+      setSelectedFeedPost((prev) =>
+        prev?.id === post.id ? { ...prev, is_pinned: Boolean(payload.isPinned) } : prev,
+      );
+    } catch (error) {
+      window.alert(error instanceof Error ? error.message : "Could not update pin right now.");
     }
 
     setPinningPostId(null);
@@ -2145,6 +2370,11 @@ export default function GroupChatPage() {
     setMembersActivityHasMore(false);
     void loadMembersActivity(true);
   }, [showMembersActivityModal, group?.id]);
+
+  useEffect(() => {
+    if (!group || activeTab !== "home") return;
+    void loadTopBuddies();
+  }, [activeTab, group?.id]);
 
   useEffect(() => {
     if (!showMembersActivityModal) return;
@@ -2524,6 +2754,7 @@ export default function GroupChatPage() {
 
   const coverColor = group.cover_color || "#d4ecd4";
   const activeFeedPost = selectedFeedPost ? (posts.find((post) => post.id === selectedFeedPost.id) ?? selectedFeedPost) : null;
+  const activeFeedPollSet = activeFeedPost ? weeklyPollByPostId[activeFeedPost.id] : undefined;
   const activeFeedTriviaSet = activeFeedPost ? weeklyTriviaByPostId[activeFeedPost.id] : undefined;
   const activeFeedQuestionSet = activeFeedPost ? weeklyQuestionByPostId[activeFeedPost.id] : undefined;
   const isLeader = userRole === "leader";
@@ -2753,53 +2984,104 @@ export default function GroupChatPage() {
           {activeTab === "home" && currentSeriesPreview && (() => {
             const cardState = getCurrentSeriesCardState(currentSeriesStartAt, currentSeriesPreview.total_weeks, nowTs);
             return (
-              <button
-                type="button"
-                onClick={() => setActiveTab("bible_studies")}
-                className="w-full mb-4 text-left rounded-2xl border shadow-sm hover:shadow-md transition overflow-hidden"
-                style={{ backgroundColor: "#f4e2d2", borderColor: "#d9b896" }}
-              >
-                <div
-                  className="px-4 pt-4 pb-3"
-                  style={{ borderBottom: "1px solid #d9b896" }}
+              <>
+                <button
+                  type="button"
+                  onClick={() => void handleOpenBibleStudyCard()}
+                  className="w-full mb-4 text-left rounded-2xl border shadow-sm hover:shadow-md transition overflow-hidden"
+                  style={{ backgroundColor: "#f4e2d2", borderColor: "#d9b896" }}
                 >
-                  <div className="rounded-2xl overflow-hidden border shadow-sm" style={{ borderColor: "rgba(116, 74, 45, 0.16)" }}>
-                    <div className="relative h-32 sm:h-40 bg-[#ead4c0]">
-                      <img
-                        src="/TheTemptingofjesusstudy.png"
-                        alt="The Temptation of Jesus study banner"
-                        className="w-full h-full object-cover"
-                        style={{ objectPosition: "center 42%" }}
-                      />
+                  <div
+                    className="px-4 pt-4 pb-3"
+                    style={{ borderBottom: "1px solid #d9b896" }}
+                  >
+                    <div className="rounded-2xl overflow-hidden border shadow-sm" style={{ borderColor: "rgba(116, 74, 45, 0.16)" }}>
+                      <div className="relative h-32 sm:h-40 bg-[#ead4c0]">
+                        <img
+                          src="/TheTemptingofjesusstudy.png"
+                          alt="The Temptation of Jesus study banner"
+                          className="w-full h-full object-cover"
+                          style={{ objectPosition: "center 42%" }}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="px-5 py-4">
-                  {currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs ? (
-                    <p
-                      className="text-lg font-bold"
-                      style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
+                  <div className="px-5 py-4">
+                    {currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs ? (
+                      <p
+                        className="text-lg font-bold"
+                        style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
+                      >
+                        Study starts in {formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)}
+                      </p>
+                    ) : (
+                      <p
+                        className="text-lg font-bold"
+                        style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
+                      >
+                        {cardState.headline}
+                      </p>
+                    )}
+                    <p className="text-sm text-gray-600 mt-1">{cardState.detail}</p>
+                  </div>
+                </button>
+
+                <div className="mb-4 rounded-2xl border border-[#d8e8d7] bg-white shadow-sm overflow-hidden">
+                  <div className="px-5 py-4">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#6f8d6c]">Top Members</p>
+                        <h3 className="mt-2 text-lg font-bold text-gray-900">Buddies showing up the most</h3>
+                        <p className="mt-1 text-sm text-gray-600">Top 5 over the last 30 days based on posts, comments, and likes.</p>
+                      </div>
+                      <span className="rounded-full bg-[#edf7ed] px-3 py-1 text-xs font-semibold text-[#4a9b6f]">Top 10</span>
+                    </div>
+
+                    <div className="mt-4 space-y-3">
+                      {loadingTopBuddies ? (
+                        <p className="text-sm text-gray-500">Loading top members...</p>
+                      ) : topBuddies.length === 0 ? (
+                        <p className="text-sm text-gray-500">No top member activity yet.</p>
+                      ) : (
+                        topBuddies.slice(0, 5).map((buddy) => (
+                          <div key={buddy.userId} className="flex items-center gap-3">
+                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f2e7dc] text-xs font-bold text-[#8d5d38]">
+                              {buddy.rank}
+                            </div>
+                            {buddy.profileImageUrl ? (
+                              <img src={buddy.profileImageUrl} alt={buddy.displayName} className="h-10 w-10 rounded-full object-cover" />
+                            ) : (
+                              <div className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white" style={{ backgroundColor: avatarColor(buddy.userId) }}>
+                                {getInitial(buddy.displayName)}
+                              </div>
+                            )}
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center gap-2">
+                                <p className="truncate text-sm font-semibold text-gray-900">{buddy.displayName}</p>
+                                <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
+                              </div>
+                              <p className="mt-0.5 text-xs text-gray-500">{buddy.posts} posts / {buddy.comments} comments / {buddy.likes} likes</p>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-base font-bold text-gray-900">{buddy.score}</p>
+                              <p className="text-[11px] text-gray-500">score</p>
+                            </div>
+                          </div>
+                        ))
+                      )}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setShowTopBuddiesModal(true)}
+                      className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#4a9b6f]"
                     >
-                      Study starts in {formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)}
-                    </p>
-                  ) : (
-                    <p
-                      className="text-lg font-bold"
-                      style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
-                    >
-                      {cardState.headline}
-                    </p>
-                  )}
-                  <p className="text-sm text-gray-600 mt-1">{cardState.detail}</p>
-                  <div
-                    className="mt-4 inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl"
-                    style={{ backgroundColor: "#8d5d38", color: "white", boxShadow: "0 8px 18px rgba(141,93,56,0.18)" }}
-                  >
-                    {cardState.cta}
-                    <span aria-hidden="true">→</span>
+                      See full ranking
+                      <span aria-hidden="true">→</span>
+                    </button>
                   </div>
                 </div>
-              </button>
+              </>
             );
           })()}
 
@@ -3569,9 +3851,6 @@ export default function GroupChatPage() {
           /* â”€â”€ OTHER TABS (chat) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
             <div className="space-y-4">
               {!hubCategories.some((c) => c.id === activeTab) && activeTab !== "members" && activeTab !== "bible_studies" && !selectedPost && (
-                renderUpdateCard()
-              )}
-              {!hubCategories.some((c) => c.id === activeTab) && activeTab !== "members" && activeTab !== "bible_studies" && !selectedPost && (
                 <button
                   type="button"
                   onClick={() => setShowPostComposerModal(true)}
@@ -3646,11 +3925,14 @@ export default function GroupChatPage() {
             </div>
 
             <div className="px-6 py-5">
-              {!activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && (
+              {!activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && (
                 <div
                   className="prose prose-sm max-w-none text-gray-800 leading-relaxed"
                   dangerouslySetInnerHTML={{ __html: activeFeedPost.content }}
                 />
+              )}
+              {activeFeedPollSet && (
+                <GroupWeeklyPollCard pollSet={activeFeedPollSet} userId={userId} />
               )}
               {activeFeedTriviaSet && (
                 <GroupWeeklyTriviaCard triviaSet={activeFeedTriviaSet} userId={userId} />
@@ -4297,6 +4579,78 @@ export default function GroupChatPage() {
         </div>
       )}
 
+      {showTopBuddiesModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          onClick={() => setShowTopBuddiesModal(false)}
+        >
+          <div
+            className="bg-white rounded-3xl shadow-xl w-full max-w-xl max-h-[90vh] overflow-y-auto modal-panel-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="px-6 py-5 border-b border-gray-100">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Bible Study Group</p>
+                  <h2 className="text-2xl font-bold text-gray-900 mt-2">Top Members</h2>
+                  <p className="text-sm text-gray-500 mt-1">Top 10 over the last 30 days based on posts, comments, and likes.</p>
+                </div>
+                <button
+                  onClick={() => setShowTopBuddiesModal(false)}
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition text-xl"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+
+            <div className="px-5 py-4">
+              {loadingTopBuddies ? (
+                <p className="text-sm text-gray-400 text-center py-8">Loading top members...</p>
+              ) : topBuddies.length === 0 ? (
+                <p className="text-sm text-gray-500 text-center py-8">No top member activity yet.</p>
+              ) : (
+                <div className="space-y-3">
+                  {topBuddies.map((buddy) => (
+                    <div key={buddy.userId} className="rounded-2xl border border-gray-200 bg-white px-4 py-4">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f2e7dc] text-xs font-bold text-[#8d5d38]">
+                          {buddy.rank}
+                        </div>
+                        <Link href={`/profile/${buddy.userId}`} className="flex-shrink-0">
+                          {buddy.profileImageUrl ? (
+                            <img src={buddy.profileImageUrl} alt={buddy.displayName} className="h-11 w-11 rounded-full object-cover" />
+                          ) : (
+                            <div className="flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold text-white" style={{ backgroundColor: avatarColor(buddy.userId) }}>
+                              {getInitial(buddy.displayName)}
+                            </div>
+                          )}
+                        </Link>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <Link href={`/profile/${buddy.userId}`} className="truncate text-sm font-semibold text-gray-900 hover:underline">
+                              {buddy.displayName}
+                            </Link>
+                            <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
+                          </div>
+                          <p className="mt-1 text-xs text-gray-500">
+                            {buddy.posts} posts / {buddy.comments} comments / {buddy.likes} likes
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-lg font-bold text-gray-900">{buddy.score}</p>
+                          <p className="text-xs text-gray-500">score</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {showGroupInfoModal && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
@@ -4407,6 +4761,7 @@ export default function GroupChatPage() {
     return (
       <div className="flex flex-col gap-3">
         {orderedPosts.map((post) => {
+          const pollSet = weeklyPollByPostId[post.id];
           const hasImagePost = Boolean(post.media_url && !isUploadedVideo(post.media_url) && !post.link_url);
           const triviaSet = weeklyTriviaByPostId[post.id];
           const questionSet = weeklyQuestionByPostId[post.id];
@@ -4490,10 +4845,15 @@ export default function GroupChatPage() {
               )}
             </div>
             {post.title && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
-            {!triviaSet && !questionSet && post.content && (
+            {!pollSet && !triviaSet && !questionSet && post.content && (
               <p className={`text-sm text-gray-700 mt-3 leading-relaxed ${hasImagePost ? "whitespace-pre-wrap" : "truncate whitespace-nowrap"}`}>
                 {getPostPreviewText(post.content)}
               </p>
+            )}
+            {pollSet && (
+              <div className="mt-3">
+                <GroupWeeklyPollCard pollSet={pollSet} userId={userId} />
+              </div>
             )}
             {triviaSet && (
               <div className="mt-3">
