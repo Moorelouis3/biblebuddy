@@ -843,6 +843,7 @@ export default function GroupChatPage() {
   const [hidePushSetupCard, setHidePushSetupCard] = useState(false);
   const [showDevotionalUpgradeModal, setShowDevotionalUpgradeModal] = useState(false);
   const [devotionalPreviews, setDevotionalPreviews] = useState<Record<string, DevotionalPreview>>({});
+  const [updateFeatureIndex, setUpdateFeatureIndex] = useState(0);
   const [activeTab, setActiveTab] = useState<string>("home");
   const [showGroupInfoModal, setShowGroupInfoModal] = useState(false);
   const [selectedFeedPost, setSelectedFeedPost] = useState<Post | null>(null);
@@ -1270,6 +1271,20 @@ export default function GroupChatPage() {
       cancelled = true;
     };
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!userId || activeTab !== "home") return;
+
+    const featureCount = userIsPaid ? 6 : 7;
+    const storageKey = `bb:update-card-feature-index:${userId}`;
+    const previousRaw = window.localStorage.getItem(storageKey);
+    const previousIndex = previousRaw ? Number(previousRaw) : -1;
+    const nextIndex = Number.isFinite(previousIndex) ? (previousIndex + 1 + featureCount) % featureCount : 0;
+
+    window.localStorage.setItem(storageKey, String(nextIndex));
+    setUpdateFeatureIndex(nextIndex);
+  }, [activeTab, userId, userIsPaid]);
 
   // â”€â”€ Load content when tab or group changes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
@@ -4726,10 +4741,7 @@ export default function GroupChatPage() {
           }]
         : []),
     ];
-    const featureIndex = userId
-      ? Math.abs(Array.from(userId).reduce((sum, char) => sum + char.charCodeAt(0), 0) + new Date().getDate()) % featureCards.length
-      : 0;
-    const featuredCard = featureCards[featureIndex];
+    const featuredCard = featureCards[updateFeatureIndex % featureCards.length];
     const featureCardBody = (
       <div className="rounded-2xl border border-[#d7e8d7] bg-[#f4fbf5] px-4 py-4 shadow-sm">
         <div className="flex items-start justify-between gap-3">
