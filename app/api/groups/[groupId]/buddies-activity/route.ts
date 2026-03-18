@@ -68,7 +68,7 @@ export async function GET(
     return NextResponse.json({ items: [], hasMore: false });
   }
 
-  const queryEnd = offset + limit;
+  const queryEnd = offset + limit - 1;
   const { data: actionRows, error: actionsError } = await supabaseAdmin
     .from("master_actions")
     .select("user_id, action_type, action_label, created_at")

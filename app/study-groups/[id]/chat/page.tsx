@@ -10,9 +10,11 @@ import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { TOTAL_WEEKS, getSeriesWeekLesson } from "@/lib/seriesContent";
 import { parseWeeklyTriviaQuestions } from "@/lib/groupWeeklyTrivia";
+import type { WeeklyGroupQuestionRecord } from "@/lib/groupWeeklyQuestion";
 import WeekLessonPage from "../series/week/[weekNum]/page";
 import UserBadge from "@/components/UserBadge";
 import GroupWeeklyTriviaCard from "@/components/GroupWeeklyTriviaCard";
+import GroupWeeklyQuestionCard from "@/components/GroupWeeklyQuestionCard";
 import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
 
 // â”€â”€ Interfaces â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -95,6 +97,8 @@ interface WeeklyGroupTriviaFeedSet {
   questions: ReturnType<typeof parseWeeklyTriviaQuestions>;
   created_at: string;
 }
+
+interface WeeklyGroupQuestionFeedSet extends WeeklyGroupQuestionRecord {}
 
 interface ArticleLikeUser {
   user_id: string;
@@ -833,6 +837,7 @@ export default function GroupChatPage() {
   // Core state
   const [group, setGroup] = useState<StudyGroup | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const [userRole, setUserRole] = useState<string>("member");
   const [displayName, setDisplayName] = useState<string>("");
   const [userProfileImage, setUserProfileImage] = useState<string | null>(null);
@@ -858,6 +863,7 @@ export default function GroupChatPage() {
   // Chat posts
   const [posts, setPosts] = useState<Post[]>([]);
   const [weeklyTriviaByPostId, setWeeklyTriviaByPostId] = useState<Record<string, WeeklyGroupTriviaFeedSet>>({});
+  const [weeklyQuestionByPostId, setWeeklyQuestionByPostId] = useState<Record<string, WeeklyGroupQuestionFeedSet>>({});
   const [loadingPosts, setLoadingPosts] = useState(true);
   const [showPostComposerModal, setShowPostComposerModal] = useState(false);
   const [newPostTitle, setNewPostTitle] = useState("");
@@ -1122,6 +1128,7 @@ export default function GroupChatPage() {
       }
 
       setUserId(user.id);
+      setUserEmail(user.email ?? null);
 
       const { data: profile } = await supabase
         .from("profile_stats")
@@ -1293,6 +1300,27 @@ export default function GroupChatPage() {
     setUpdateFeatureIndex(nextIndex);
   }, [activeTab, userId, userIsPaid]);
 
+  useEffect(() => {
+    if (!group || !userId || activeTab !== "home" || typeof window === "undefined") return;
+
+    const todayKey = new Date().toISOString().slice(0, 10);
+    const storageKey = `bb:group-home-view:${group.id}:${userId}:${todayKey}`;
+    if (window.localStorage.getItem(storageKey) === "1") return;
+
+    window.localStorage.setItem(storageKey, "1");
+    void logActionToMasterActions(userId, "study_group_feed_viewed", group.id, displayName || null);
+  }, [activeTab, displayName, group, userId]);
+
+  useEffect(() => {
+    if (!group || !userId || !selectedHubItem || selectedHubItem.type !== "article" || typeof window === "undefined") return;
+
+    const storageKey = `bb:group-article-open:${group.id}:${userId}:${selectedHubItem.path}`;
+    if (window.sessionStorage.getItem(storageKey) === "1") return;
+
+    window.sessionStorage.setItem(storageKey, "1");
+    void logActionToMasterActions(userId, "study_group_article_opened", `${group.id}:${selectedHubItem.path}`, displayName || null);
+  }, [displayName, group, selectedHubItem, userId]);
+
   // â”€â”€ Load content when tab or group changes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
     if (!group) return;
@@ -1451,15 +1479,23 @@ export default function GroupChatPage() {
         const { data: sessionData } = await supabase.auth.getSession();
         const accessToken = sessionData.session?.access_token;
         if (accessToken) {
-          await fetch(`/api/groups/${group.id}/weekly-trivia/ensure`, {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          });
+          await Promise.all([
+            fetch(`/api/groups/${group.id}/weekly-trivia/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/weekly-question/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+          ]);
         }
       } catch (error) {
-        console.error("[GROUP_WEEKLY_TRIVIA] Ensure failed:", error);
+        console.error("[GROUP_WEEKLY_AUTOMATIONS] Ensure failed:", error);
       }
     }
 
@@ -1476,6 +1512,7 @@ export default function GroupChatPage() {
 
     const rows = postRows || [];
     const nextWeeklyTriviaByPostId: Record<string, WeeklyGroupTriviaFeedSet> = {};
+    const nextWeeklyQuestionByPostId: Record<string, WeeklyGroupQuestionFeedSet> = {};
     const rootCommentCountMap: Record<string, number> = {};
     rows.forEach((row) => {
       rootCommentCountMap[row.id] = 0;
@@ -1497,6 +1534,26 @@ export default function GroupChatPage() {
           subject_title: row.subject_title,
           intro: row.intro ?? null,
           questions: parseWeeklyTriviaQuestions(row.questions),
+          created_at: row.created_at,
+        };
+      });
+
+      const { data: questionRows } = await supabase
+        .from("weekly_group_questions")
+        .select("id, group_id, post_id, week_key, prompt_key, subject_title, prompt, intro, comment_prompt, created_at")
+        .in("post_id", rows.map((row) => row.id));
+
+      (questionRows || []).forEach((row: any) => {
+        nextWeeklyQuestionByPostId[row.post_id] = {
+          id: row.id,
+          group_id: row.group_id,
+          post_id: row.post_id,
+          week_key: row.week_key,
+          prompt_key: row.prompt_key,
+          subject_title: row.subject_title,
+          prompt: row.prompt,
+          intro: row.intro ?? null,
+          comment_prompt: row.comment_prompt ?? null,
           created_at: row.created_at,
         };
       });
@@ -1574,6 +1631,7 @@ export default function GroupChatPage() {
       member_badge: badgeMap[p.user_id]?.member_badge ?? null,
     }))));
     setWeeklyTriviaByPostId(nextWeeklyTriviaByPostId);
+    setWeeklyQuestionByPostId(nextWeeklyQuestionByPostId);
     setLoadingPosts(false);
   }
 
@@ -1615,11 +1673,18 @@ export default function GroupChatPage() {
     }
 
     const liked = !!userId && (likeRows || []).some((row) => row.user_id === userId);
-    const { data: triviaSetRow } = await supabase
-      .from("weekly_group_trivia_sets")
-      .select("id, post_id, group_id, week_key, subject_key, subject_title, intro, questions, created_at")
-      .eq("post_id", postRow.id)
-      .maybeSingle();
+    const [{ data: triviaSetRow }, { data: questionSetRow }] = await Promise.all([
+      supabase
+        .from("weekly_group_trivia_sets")
+        .select("id, post_id, group_id, week_key, subject_key, subject_title, intro, questions, created_at")
+        .eq("post_id", postRow.id)
+        .maybeSingle(),
+      supabase
+        .from("weekly_group_questions")
+        .select("id, group_id, post_id, week_key, prompt_key, subject_title, prompt, intro, comment_prompt, created_at")
+        .eq("post_id", postRow.id)
+        .maybeSingle(),
+    ]);
 
     if (triviaSetRow) {
       setWeeklyTriviaByPostId((prev) => ({
@@ -1634,6 +1699,24 @@ export default function GroupChatPage() {
           intro: triviaSetRow.intro ?? null,
           questions: parseWeeklyTriviaQuestions((triviaSetRow as any).questions),
           created_at: triviaSetRow.created_at,
+        },
+      }));
+    }
+
+    if (questionSetRow) {
+      setWeeklyQuestionByPostId((prev) => ({
+        ...prev,
+        [postRow.id]: {
+          id: questionSetRow.id,
+          group_id: questionSetRow.group_id,
+          post_id: questionSetRow.post_id,
+          week_key: questionSetRow.week_key,
+          prompt_key: questionSetRow.prompt_key,
+          subject_title: questionSetRow.subject_title,
+          prompt: questionSetRow.prompt,
+          intro: questionSetRow.intro ?? null,
+          comment_prompt: questionSetRow.comment_prompt ?? null,
+          created_at: questionSetRow.created_at,
         },
       }));
     }
@@ -2017,70 +2100,28 @@ export default function GroupChatPage() {
     }
     setMembersActivityError(null);
     try {
-      const { data: memberRows, error: memberError } = await supabase
-        .from("group_members")
-        .select("user_id")
-        .eq("group_id", group.id)
-        .eq("status", "approved");
-
-      if (memberError) {
-        throw new Error(memberError.message || "Could not load group buddies.");
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
       }
 
-      const memberIds = [...new Set((memberRows || []).map((row) => row.user_id).filter(Boolean))];
-      if (memberIds.length === 0) {
-        setMembersActivity([]);
-        setMembersActivityHasMore(false);
-        setMembersActivityOffset(0);
-        return;
-      }
-
-      const queryEnd = offset + pageSize;
-      const { data: actionRows, error: actionError } = await supabase
-        .from("master_actions")
-        .select("user_id, action_type, action_label, created_at")
-        .in("user_id", memberIds)
-        .order("created_at", { ascending: false })
-        .range(offset, queryEnd);
-
-      if (actionError) {
-        throw new Error(actionError.message || "Buddy activity could not load right now.");
-      }
-
-      const resolvedRows = actionRows || [];
-      const hasMore = resolvedRows.length > pageSize;
-      const trimmedRows = resolvedRows.slice(0, pageSize);
-      const actionUserIds = [...new Set(trimmedRows.map((row) => row.user_id).filter(Boolean))];
-
-      const { data: profiles, error: profilesError } = actionUserIds.length > 0
-        ? await supabase
-            .from("profile_stats")
-            .select("user_id, display_name, username, profile_image_url")
-            .in("user_id", actionUserIds)
-        : { data: [], error: null };
-
-      if (profilesError) {
-        throw new Error(profilesError.message || "Could not load buddy profiles.");
-      }
-
-      const profileMap = Object.fromEntries(
-        (profiles || []).map((profile) => [
-          profile.user_id,
-          {
-            display_name: profile.display_name || profile.username || "Buddy",
-            profile_image_url: profile.profile_image_url ?? null,
+      const response = await fetch(
+        `/api/groups/${group.id}/buddies-activity?offset=${offset}&limit=${pageSize}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
           },
-        ]),
+        },
       );
 
-      const mappedRows = trimmedRows.map((row) => ({
-        user_id: row.user_id,
-        action_type: row.action_type,
-        action_label: row.action_label ?? null,
-        created_at: row.created_at,
-        display_name: profileMap[row.user_id]?.display_name || "Buddy",
-        profile_image_url: profileMap[row.user_id]?.profile_image_url ?? null,
-      })) as MemberActivityItem[];
+      const payload = await response.json().catch(() => null);
+      if (!response.ok) {
+        throw new Error(payload?.error || "Buddy activity could not load right now.");
+      }
+
+      const mappedRows = ((payload?.items || []) as MemberActivityItem[]);
+      const hasMore = !!payload?.hasMore;
 
       setMembersActivity((prev) => {
         if (reset) return mappedRows;
@@ -2484,8 +2525,10 @@ export default function GroupChatPage() {
   const coverColor = group.cover_color || "#d4ecd4";
   const activeFeedPost = selectedFeedPost ? (posts.find((post) => post.id === selectedFeedPost.id) ?? selectedFeedPost) : null;
   const activeFeedTriviaSet = activeFeedPost ? weeklyTriviaByPostId[activeFeedPost.id] : undefined;
+  const activeFeedQuestionSet = activeFeedPost ? weeklyQuestionByPostId[activeFeedPost.id] : undefined;
   const isLeader = userRole === "leader";
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
+  const isLouisAdmin = userEmail === "moorelouis3@gmail.com";
   const SAGE = "#5a9a5a";
   const displayGroupName = group.name === "Hope Nation" ? "Bible Buddy Study Group" : group.name;
   const selectedSeriesAccent = selectedSeries?.title.toLowerCase().includes("tempt")
@@ -2553,6 +2596,14 @@ export default function GroupChatPage() {
               >
                 👥 See All Buddies
               </button>
+              {isLouisAdmin && (
+                <Link
+                  href={`/study-groups/${group.id}/analytics`}
+                  className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
+                >
+                  📊 Group Analytics
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -3595,7 +3646,7 @@ export default function GroupChatPage() {
             </div>
 
             <div className="px-6 py-5">
-              {!activeFeedTriviaSet && activeFeedPost.content && (
+              {!activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && (
                 <div
                   className="prose prose-sm max-w-none text-gray-800 leading-relaxed"
                   dangerouslySetInnerHTML={{ __html: activeFeedPost.content }}
@@ -3603,6 +3654,13 @@ export default function GroupChatPage() {
               )}
               {activeFeedTriviaSet && (
                 <GroupWeeklyTriviaCard triviaSet={activeFeedTriviaSet} userId={userId} />
+              )}
+              {activeFeedQuestionSet && (
+                <GroupWeeklyQuestionCard
+                  prompt={activeFeedQuestionSet.prompt}
+                  intro={activeFeedQuestionSet.intro}
+                  commentPrompt={activeFeedQuestionSet.comment_prompt}
+                />
               )}
 
               {activeFeedPost.media_url && isUploadedVideo(activeFeedPost.media_url) && (
@@ -3659,7 +3717,7 @@ export default function GroupChatPage() {
               </div>
 
               {userId && (
-                <div className="mt-5">
+                <div className="mt-5" id="group-feed-comments">
                   <GroupCommentSection
                     groupId={groupId}
                     post={activeFeedPost}
@@ -4351,6 +4409,7 @@ export default function GroupChatPage() {
         {orderedPosts.map((post) => {
           const hasImagePost = Boolean(post.media_url && !isUploadedVideo(post.media_url) && !post.link_url);
           const triviaSet = weeklyTriviaByPostId[post.id];
+          const questionSet = weeklyQuestionByPostId[post.id];
           return (
           <div
             key={post.id}
@@ -4431,7 +4490,7 @@ export default function GroupChatPage() {
               )}
             </div>
             {post.title && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
-            {!triviaSet && post.content && (
+            {!triviaSet && !questionSet && post.content && (
               <p className={`text-sm text-gray-700 mt-3 leading-relaxed ${hasImagePost ? "whitespace-pre-wrap" : "truncate whitespace-nowrap"}`}>
                 {getPostPreviewText(post.content)}
               </p>
@@ -4439,6 +4498,15 @@ export default function GroupChatPage() {
             {triviaSet && (
               <div className="mt-3">
                 <GroupWeeklyTriviaCard triviaSet={triviaSet} userId={userId} />
+              </div>
+            )}
+            {questionSet && (
+              <div className="mt-3">
+                <GroupWeeklyQuestionCard
+                  prompt={questionSet.prompt}
+                  intro={questionSet.intro}
+                  commentPrompt={questionSet.comment_prompt}
+                />
               </div>
             )}
             {post.media_url && isUploadedVideo(post.media_url) && (
@@ -4648,7 +4716,8 @@ export default function GroupChatPage() {
             <img
               src="/images/temptingofjesus.png"
               alt="The Tempting of Jesus cover"
-              className="w-full rounded-2xl border border-[#ead8c4] bg-white object-contain"
+              className="mx-auto w-full max-w-[240px] rounded-2xl border border-[#ead8c4] bg-white object-contain shadow-sm"
+              style={{ maxHeight: "220px" }}
             />
             <div className="mt-4 flex items-center justify-between gap-3">
               <div>
@@ -4681,7 +4750,8 @@ export default function GroupChatPage() {
             <img
               src="/Thetestingofjoseph.png"
               alt="The Testing of Joseph cover"
-              className="w-full rounded-2xl border border-[#ead8c4] bg-white object-contain"
+              className="mx-auto w-full max-w-[240px] rounded-2xl border border-[#ead8c4] bg-white object-contain shadow-sm"
+              style={{ maxHeight: "220px" }}
             />
             <div className="mt-4 flex items-center justify-between gap-3">
               <div>
