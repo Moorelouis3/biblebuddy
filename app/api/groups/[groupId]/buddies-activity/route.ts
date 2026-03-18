@@ -71,7 +71,7 @@ export async function GET(
   const queryEnd = offset + limit;
   const { data: actionRows, error: actionsError } = await supabaseAdmin
     .from("master_actions")
-    .select("user_id, action_type, action_label, created_at, username")
+    .select("user_id, action_type, action_label, created_at")
     .in("user_id", memberIds)
     .order("created_at", { ascending: false })
     .range(offset, queryEnd);
@@ -111,7 +111,7 @@ export async function GET(
     action_type: row.action_type,
     action_label: row.action_label ?? null,
     created_at: row.created_at,
-    display_name: profileMap[row.user_id]?.display_name || row.username || "Buddy",
+    display_name: profileMap[row.user_id]?.display_name || "Buddy",
     profile_image_url: profileMap[row.user_id]?.profile_image_url ?? null,
   }));
 

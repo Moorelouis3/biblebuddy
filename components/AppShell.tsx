@@ -1457,14 +1457,22 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                             const avatarBg = COLORS[Math.abs(hash) % COLORS.length];
 
                             return (
-                              <button
+                              <div
                                 key={convo.id}
-                                type="button"
+                                role="button"
+                                tabIndex={0}
                                 onClick={() => {
                                   setIsMessagesOpen(false);
                                   router.push(`/messages/${convo.id}`);
                                 }}
-                                className={`w-full flex items-center gap-3 px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors text-left ${convo.hasUnread ? "bg-green-50" : ""}`}
+                                onKeyDown={(e) => {
+                                  if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault();
+                                    setIsMessagesOpen(false);
+                                    router.push(`/messages/${convo.id}`);
+                                  }
+                                }}
+                                className={`w-full flex items-center gap-3 px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors text-left cursor-pointer ${convo.hasUnread ? "bg-green-50" : ""}`}
                               >
                                 {/* Avatar */}
                                 <div className="flex-shrink-0">
@@ -1497,7 +1505,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                 {convo.hasUnread && (
                                   <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#4a9b6f" }} />
                                 )}
-                              </button>
+                              </div>
                             );
                           })
                         )}

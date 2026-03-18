@@ -165,11 +165,18 @@ export default function MessagesPage() {
                   .toUpperCase();
 
                 return (
-                  <button
+                  <div
                     key={convo.id}
-                    type="button"
+                    role="button"
+                    tabIndex={0}
                     onClick={() => router.push(`/messages/${convo.id}`)}
-                    className={`w-full text-left transition-colors hover:bg-gray-50 ${convo.hasUnread ? "bg-green-50/70" : ""} ${
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        router.push(`/messages/${convo.id}`);
+                      }
+                    }}
+                    className={`w-full text-left transition-colors hover:bg-gray-50 cursor-pointer ${convo.hasUnread ? "bg-green-50/70" : ""} ${
                       index < conversations.length - 1 ? "border-b border-gray-100" : ""
                     }`}
                   >
@@ -206,7 +213,7 @@ export default function MessagesPage() {
                         <div className="h-3 w-3 flex-shrink-0 rounded-full" style={{ backgroundColor: "#4a9b6f" }} />
                       )}
                     </div>
-                  </button>
+                  </div>
                 );
               })}
             </div>

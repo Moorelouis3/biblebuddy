@@ -13,6 +13,7 @@ import { parseWeeklyTriviaQuestions } from "@/lib/groupWeeklyTrivia";
 import WeekLessonPage from "../series/week/[weekNum]/page";
 import UserBadge from "@/components/UserBadge";
 import GroupWeeklyTriviaCard from "@/components/GroupWeeklyTriviaCard";
+import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
 
 // â”€â”€ Interfaces â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
@@ -101,6 +102,12 @@ interface ArticleLikeUser {
   profile_image_url: string | null;
   member_badge?: string | null;
   is_paid?: boolean;
+}
+
+interface DevotionalPreview {
+  id: string;
+  title: string;
+  description: string | null;
 }
 
 interface HubItemStats {
@@ -195,6 +202,13 @@ function toDateTimeLocalValue(dateStr: string): string {
   const offset = date.getTimezoneOffset();
   const local = new Date(date.getTime() - offset * 60000);
   return local.toISOString().slice(0, 16);
+}
+
+function urlBase64ToUint8Array(base64String: string) {
+  const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
+  const rawData = window.atob(base64);
+  return Uint8Array.from([...rawData].map((char) => char.charCodeAt(0)));
 }
 
 function getWeekLockState(
@@ -815,8 +829,20 @@ export default function GroupChatPage() {
   const [userRole, setUserRole] = useState<string>("member");
   const [displayName, setDisplayName] = useState<string>("");
   const [userProfileImage, setUserProfileImage] = useState<string | null>(null);
+  const [userBio, setUserBio] = useState<string | null>(null);
+  const [userLocation, setUserLocation] = useState<string | null>(null);
   const [userIsPaid, setUserIsPaid] = useState(false);
   const [userMemberBadge, setUserMemberBadge] = useState<string | null>(null);
+  const [pushSupported, setPushSupported] = useState(false);
+  const [pushPermission, setPushPermission] = useState<NotificationPermission | "unsupported">("unsupported");
+  const [pushSubscribed, setPushSubscribed] = useState(false);
+  const [pushSetupLoading, setPushSetupLoading] = useState(false);
+  const [pushSetupError, setPushSetupError] = useState<string | null>(null);
+  const [pushDismissed, setPushDismissed] = useState(false);
+  const [hideProfileSetupCard, setHideProfileSetupCard] = useState(false);
+  const [hidePushSetupCard, setHidePushSetupCard] = useState(false);
+  const [showDevotionalUpgradeModal, setShowDevotionalUpgradeModal] = useState(false);
+  const [devotionalPreviews, setDevotionalPreviews] = useState<Record<string, DevotionalPreview>>({});
   const [activeTab, setActiveTab] = useState<string>("home");
   const [showGroupInfoModal, setShowGroupInfoModal] = useState(false);
   const [selectedFeedPost, setSelectedFeedPost] = useState<Post | null>(null);
@@ -833,6 +859,7 @@ export default function GroupChatPage() {
   const [activePostMenuId, setActivePostMenuId] = useState<string | null>(null);
   const [deletePostId, setDeletePostId] = useState<string | null>(null);
   const [deletingPost, setDeletingPost] = useState(false);
+  const [pinningPostId, setPinningPostId] = useState<string | null>(null);
 
   // Lightbox
   const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
@@ -901,6 +928,131 @@ export default function GroupChatPage() {
   const [loadingPostLikers, setLoadingPostLikers] = useState(false);
   const [deepLinkedCommentId, setDeepLinkedCommentId] = useState<string | null>(null);
 
+  function getUpdateCardPushDismissKey(currentUserId: string) {
+    return `bb:update-card-push-dismissed:${currentUserId}`;
+  }
+
+  function dismissUpdateCardPush() {
+    if (!userId || typeof window === "undefined") return;
+    window.localStorage.setItem(getUpdateCardPushDismissKey(userId), "1");
+    setPushDismissed(true);
+  }
+
+  async function savePushSubscription(currentUserId: string, subscription: PushSubscription) {
+    const json = subscription.toJSON();
+    const p256dh = json.keys?.p256dh;
+    const auth = json.keys?.auth;
+
+    if (!p256dh || !auth) {
+      throw new Error("Push subscription keys are missing.");
+    }
+
+    const { error } = await supabase
+      .from("push_subscriptions")
+      .upsert(
+        {
+          user_id: currentUserId,
+          endpoint: subscription.endpoint,
+          p256dh,
+          auth,
+          user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
+          updated_at: new Date().toISOString(),
+          last_seen_at: new Date().toISOString(),
+        },
+        { onConflict: "endpoint" },
+      );
+
+    if (error) {
+      throw new Error(error.message || "Could not save push subscription.");
+    }
+  }
+
+  async function ensurePushSubscription(currentUserId: string) {
+    if (typeof window === "undefined") return;
+    if (!("serviceWorker" in navigator) || !("PushManager" in window)) return;
+
+    const vapidPublicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+    if (!vapidPublicKey) {
+      throw new Error("Missing NEXT_PUBLIC_VAPID_PUBLIC_KEY.");
+    }
+
+    await navigator.serviceWorker.register("/service-worker.js");
+    const worker = await navigator.serviceWorker.ready;
+    let subscription = await worker.pushManager.getSubscription();
+
+    if (!subscription) {
+      subscription = await worker.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(vapidPublicKey),
+      });
+    }
+
+    await savePushSubscription(currentUserId, subscription);
+    setPushSubscribed(true);
+  }
+
+  async function handleEnableUpdateCardPush() {
+    if (!userId) return;
+    setPushSetupLoading(true);
+    setPushSetupError(null);
+
+    try {
+      if (typeof window === "undefined" || !("Notification" in window)) {
+        throw new Error("Push notifications are not supported on this device.");
+      }
+
+      const permission = await Notification.requestPermission();
+      setPushPermission(permission);
+
+      if (permission !== "granted") {
+        throw new Error("Notifications were not allowed.");
+      }
+
+      await ensurePushSubscription(userId);
+      dismissUpdateCardPush();
+    } catch (error: any) {
+      setPushSetupError(error?.message || "Could not enable push alerts.");
+    } finally {
+      setPushSetupLoading(false);
+    }
+  }
+
+  async function openDevotionalFromFeature(title: "The Tempting of Jesus" | "The Testing of Joseph", paidOnly: boolean) {
+    if (paidOnly && !userIsPaid) {
+      setShowDevotionalUpgradeModal(true);
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from("devotionals")
+        .select("id")
+        .eq("title", title)
+        .maybeSingle();
+
+      if (error) {
+        router.push("/devotionals");
+        return;
+      }
+
+      if (data?.id) {
+        router.push(`/devotionals/${data.id}`);
+      } else {
+        router.push("/devotionals");
+      }
+    } catch {
+      router.push("/devotionals");
+    }
+  }
+
+  function getDevotionalDescription(title: "The Tempting of Jesus" | "The Testing of Joseph", fallback: string) {
+    return devotionalPreviews[title]?.description?.trim() || fallback;
+  }
+
+  function getDevotionalId(title: "The Tempting of Jesus" | "The Testing of Joseph") {
+    return devotionalPreviews[title]?.id || null;
+  }
+
   // Post view
   const [selectedPost, setSelectedPost] = useState<SeriesPost | null>(null);
   const [comments, setComments] = useState<SeriesComment[]>([]);
@@ -965,11 +1117,13 @@ export default function GroupChatPage() {
 
       const { data: profile } = await supabase
         .from("profile_stats")
-        .select("display_name, username, profile_image_url, is_paid, member_badge")
+        .select("display_name, username, profile_image_url, bio, location, is_paid, member_badge")
         .eq("user_id", user.id)
         .maybeSingle();
       setDisplayName(profile?.display_name || profile?.username || user.email?.split("@")[0] || "Buddy");
       setUserProfileImage(profile?.profile_image_url ?? null);
+      setUserBio(profile?.bio ?? null);
+      setUserLocation(profile?.location ?? null);
       setUserIsPaid(!!profile?.is_paid);
       setUserMemberBadge(profile?.member_badge ?? null);
 
@@ -1026,6 +1180,96 @@ export default function GroupChatPage() {
 
     checkAccessAndLoad();
   }, [groupId, router, searchParams]);
+
+  useEffect(() => {
+    const supported =
+      typeof window !== "undefined" &&
+      "Notification" in window &&
+      "serviceWorker" in navigator &&
+      "PushManager" in window;
+    setPushSupported(supported);
+    setPushPermission(supported ? Notification.permission : "unsupported");
+  }, []);
+
+  useEffect(() => {
+    if (!userId || typeof window === "undefined") return;
+    setPushDismissed(window.localStorage.getItem(getUpdateCardPushDismissKey(userId)) === "1");
+  }, [userId]);
+
+  useEffect(() => {
+    if (!pushSupported || !userId) return;
+
+    let cancelled = false;
+
+    async function loadPushState() {
+      try {
+        const worker = await navigator.serviceWorker.ready;
+        const subscription = await worker.pushManager.getSubscription();
+        if (!cancelled) {
+          setPushPermission(Notification.permission);
+          setPushSubscribed(!!subscription);
+        }
+      } catch {
+        if (!cancelled) {
+          setPushSubscribed(false);
+        }
+      }
+    }
+
+    void loadPushState();
+    return () => {
+      cancelled = true;
+    };
+  }, [pushSupported, userId]);
+
+  useEffect(() => {
+    const profileComplete = !!userProfileImage && !!userBio?.trim() && !!userLocation?.trim();
+    if (!profileComplete) {
+      setHideProfileSetupCard(false);
+      return;
+    }
+    const timeout = window.setTimeout(() => setHideProfileSetupCard(true), 220);
+    return () => window.clearTimeout(timeout);
+  }, [userProfileImage, userBio, userLocation]);
+
+  useEffect(() => {
+    const pushComplete = pushSupported && (pushPermission === "granted" && pushSubscribed || pushDismissed);
+    if (!pushComplete) {
+      setHidePushSetupCard(false);
+      return;
+    }
+    const timeout = window.setTimeout(() => setHidePushSetupCard(true), 220);
+    return () => window.clearTimeout(timeout);
+  }, [pushSupported, pushPermission, pushSubscribed, pushDismissed]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadDevotionalPreviews() {
+      try {
+        const { data, error } = await supabase
+          .from("devotionals")
+          .select("id, title, description")
+          .in("title", ["The Tempting of Jesus", "The Testing of Joseph"]);
+
+        if (error || !data || cancelled) return;
+
+        const next: Record<string, DevotionalPreview> = {};
+        for (const item of data) {
+          next[item.title] = item as DevotionalPreview;
+        }
+        setDevotionalPreviews(next);
+      } catch {
+        // best effort only
+      }
+    }
+
+    void loadDevotionalPreviews();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // â”€â”€ Load content when tab or group changes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
@@ -1541,6 +1785,41 @@ export default function GroupChatPage() {
     setDeletingPost(false);
   }
 
+  async function handleTogglePin(post: Post) {
+    if (!isLeaderOrMod || pinningPostId) return;
+
+    const nextPinned = !post.is_pinned;
+    if (nextPinned) {
+      const pinnedCount = posts.filter((item) => item.is_pinned).length;
+      if (pinnedCount >= 3) {
+        window.alert("You can only pin 3 posts at a time.");
+        return;
+      }
+    }
+
+    setPinningPostId(post.id);
+    setActivePostMenuId(null);
+
+    const { error } = await supabase
+      .from("group_posts")
+      .update({ is_pinned: nextPinned })
+      .eq("id", post.id);
+
+    if (!error) {
+      setPosts((prev) =>
+        [...prev.map((item) => (item.id === post.id ? { ...item, is_pinned: nextPinned } : item))].sort((a, b) => {
+          if (a.is_pinned !== b.is_pinned) return a.is_pinned ? -1 : 1;
+          return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+        }),
+      );
+      setSelectedFeedPost((prev) => (prev?.id === post.id ? { ...prev, is_pinned: nextPinned } : prev));
+    } else {
+      window.alert("Could not update pin right now.");
+    }
+
+    setPinningPostId(null);
+  }
+
   async function loadHubItemStats(items: HubItemStatic[]) {
     const itemPaths = items.map((item) => item.path);
     const nextStats: Record<string, HubItemStats> = {};
@@ -1721,26 +2000,70 @@ export default function GroupChatPage() {
     }
     setMembersActivityError(null);
     try {
-      const { data: sessionData } = await supabase.auth.getSession();
-      const accessToken = sessionData.session?.access_token;
+      const { data: memberRows, error: memberError } = await supabase
+        .from("group_members")
+        .select("user_id")
+        .eq("group_id", group.id)
+        .eq("status", "approved");
 
-      if (!accessToken) {
-        throw new Error("Could not verify your session.");
+      if (memberError) {
+        throw new Error(memberError.message || "Could not load group buddies.");
       }
 
-      const response = await fetch(`/api/groups/${group.id}/buddies-activity?offset=${offset}&limit=${pageSize}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-
-      const payload = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(payload.error || "Buddy activity could not load right now.");
+      const memberIds = [...new Set((memberRows || []).map((row) => row.user_id).filter(Boolean))];
+      if (memberIds.length === 0) {
+        setMembersActivity([]);
+        setMembersActivityHasMore(false);
+        setMembersActivityOffset(0);
+        return;
       }
 
-      const mappedRows = Array.isArray(payload.items) ? payload.items as MemberActivityItem[] : [];
-      const hasMore = payload.hasMore === true;
+      const queryEnd = offset + pageSize;
+      const { data: actionRows, error: actionError } = await supabase
+        .from("master_actions")
+        .select("user_id, action_type, action_label, created_at")
+        .in("user_id", memberIds)
+        .order("created_at", { ascending: false })
+        .range(offset, queryEnd);
+
+      if (actionError) {
+        throw new Error(actionError.message || "Buddy activity could not load right now.");
+      }
+
+      const resolvedRows = actionRows || [];
+      const hasMore = resolvedRows.length > pageSize;
+      const trimmedRows = resolvedRows.slice(0, pageSize);
+      const actionUserIds = [...new Set(trimmedRows.map((row) => row.user_id).filter(Boolean))];
+
+      const { data: profiles, error: profilesError } = actionUserIds.length > 0
+        ? await supabase
+            .from("profile_stats")
+            .select("user_id, display_name, username, profile_image_url")
+            .in("user_id", actionUserIds)
+        : { data: [], error: null };
+
+      if (profilesError) {
+        throw new Error(profilesError.message || "Could not load buddy profiles.");
+      }
+
+      const profileMap = Object.fromEntries(
+        (profiles || []).map((profile) => [
+          profile.user_id,
+          {
+            display_name: profile.display_name || profile.username || "Buddy",
+            profile_image_url: profile.profile_image_url ?? null,
+          },
+        ]),
+      );
+
+      const mappedRows = trimmedRows.map((row) => ({
+        user_id: row.user_id,
+        action_type: row.action_type,
+        action_label: row.action_label ?? null,
+        created_at: row.created_at,
+        display_name: profileMap[row.user_id]?.display_name || "Buddy",
+        profile_image_url: profileMap[row.user_id]?.profile_image_url ?? null,
+      })) as MemberActivityItem[];
 
       setMembersActivity((prev) => {
         if (reset) return mappedRows;
@@ -3178,6 +3501,9 @@ export default function GroupChatPage() {
           /* â”€â”€ OTHER TABS (chat) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
             <div className="space-y-4">
               {!hubCategories.some((c) => c.id === activeTab) && activeTab !== "members" && activeTab !== "bible_studies" && !selectedPost && (
+                renderUpdateCard()
+              )}
+              {!hubCategories.some((c) => c.id === activeTab) && activeTab !== "members" && activeTab !== "bible_studies" && !selectedPost && (
                 <button
                   type="button"
                   onClick={() => setShowPostComposerModal(true)}
@@ -3208,6 +3534,11 @@ export default function GroupChatPage() {
 
         </div>}
       </div>
+
+      <UpgradeRequiredModal
+        isOpen={showDevotionalUpgradeModal}
+        onClose={() => setShowDevotionalUpgradeModal(false)}
+      />
 
       {activeFeedPost && (
         <div
@@ -3997,9 +4328,23 @@ export default function GroupChatPage() {
         </div>
       );
     }
+    const pinnedPosts = posts.filter((post) => post.is_pinned);
+    const regularPosts = posts.filter((post) => !post.is_pinned);
+    const orderedPosts = [...pinnedPosts, ...regularPosts];
     return (
       <div className="flex flex-col gap-3">
-        {posts.map((post) => {
+        {pinnedPosts.length > 0 && (
+          <div className="bg-[#fff8eb] border border-[#f1dfb4] rounded-2xl px-4 py-3 shadow-sm">
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <p className="text-sm font-semibold text-[#8b5a2b]">Pinned Posts</p>
+                <p className="text-xs text-[#a0713d] mt-1">{pinnedPosts.length} of 3 pinned to the top</p>
+              </div>
+              <div className="text-xl">📌</div>
+            </div>
+          </div>
+        )}
+        {orderedPosts.map((post) => {
           const hasImagePost = Boolean(post.media_url && !isUploadedVideo(post.media_url) && !post.link_url);
           const triviaSet = weeklyTriviaByPostId[post.id];
           return (
@@ -4052,6 +4397,19 @@ export default function GroupChatPage() {
                   </button>
                   {activePostMenuId === post.id && (
                     <div className="absolute right-0 top-10 z-10 min-w-[140px] rounded-2xl border border-gray-200 bg-white shadow-lg overflow-hidden">
+                      {isLeaderOrMod && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            void handleTogglePin(post);
+                          }}
+                          disabled={pinningPostId === post.id}
+                          className="w-full px-4 py-3 text-left text-sm font-medium text-amber-700 hover:bg-amber-50 transition disabled:opacity-50"
+                        >
+                          {pinningPostId === post.id ? "Saving..." : post.is_pinned ? "Unpin Post" : "Pin to Top"}
+                        </button>
+                      )}
                       <button
                         type="button"
                         onClick={(e) => {
@@ -4178,6 +4536,308 @@ export default function GroupChatPage() {
       </div>
     );
   }
+
+  function renderUpdateCard() {
+    const missingProfilePhoto = !userProfileImage;
+    const missingBio = !userBio?.trim();
+    const missingLocation = !userLocation?.trim();
+    const profileIncomplete = missingProfilePhoto || missingBio || missingLocation;
+    const pushIncomplete = pushSupported && !(pushPermission === "granted" && pushSubscribed) && !pushDismissed;
+    const showProfileSetup = profileIncomplete && !hideProfileSetupCard;
+    const showPushSetup = pushIncomplete && !hidePushSetupCard;
+    const showSetupHeader = showProfileSetup || showPushSetup;
+    const profileHref = userId ? `/profile/${userId}` : "/profile";
+    const featureCards = [
+      {
+        key: "highlight",
+        eyebrow: "Reading tip",
+        title: "Highlight verses as you study",
+        description:
+          "Tap a verse number while reading to highlight Scripture in different colors and keep track of the passages God is using in your life.",
+        icon: "🖍️",
+        preview: (
+          <div className="mt-3 rounded-2xl border border-[#ead8c4] bg-white p-3 shadow-sm">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 rounded-xl bg-[#d7ebff] px-3 py-2 text-sm text-gray-800">
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-white font-bold text-gray-900">1</span>
+                <span className="truncate">Trust in the Lord with all your heart...</span>
+              </div>
+              <div className="flex items-center gap-2 rounded-xl bg-[#dff2df] px-3 py-2 text-sm text-gray-800">
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-white font-bold text-gray-900">2</span>
+                <span className="truncate">In all your ways acknowledge Him...</span>
+              </div>
+              <div className="flex items-center gap-2 rounded-xl bg-[#f8e3ff] px-3 py-2 text-sm text-gray-800">
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-white font-bold text-gray-900">3</span>
+                <span className="truncate">He will make your paths straight.</span>
+              </div>
+            </div>
+          </div>
+        ),
+      },
+      {
+        key: "translations",
+        eyebrow: "Study tool",
+        title: "Switch Bible translations as you read",
+        description:
+          "Use the translation dropdown at the top of the chapter to compare different Bible versions and catch details you might miss on the first read.",
+        icon: "🌍",
+        preview: (
+          <div className="mt-3 rounded-2xl border border-[#d7e8d7] bg-white p-3 shadow-sm">
+            <div className="flex items-center justify-between rounded-xl border border-[#e7efe7] bg-[#f8fbf8] px-3 py-2">
+              <span className="text-sm font-medium text-gray-700">Translation</span>
+              <span className="rounded-lg bg-white px-3 py-1 text-sm font-semibold text-gray-900 shadow-sm">WEB</span>
+            </div>
+            <p className="mt-3 text-sm text-gray-600">
+              Try a second version when a verse feels dense. A different translation can make the meaning click.
+            </p>
+          </div>
+        ),
+      },
+      {
+        key: "chapter-notes",
+        eyebrow: "Study tool",
+        title: "Open chapter notes after you finish reading",
+        description:
+          "Tap Chapter Notes to get a quick end-of-chapter explanation, pull the main themes together, and understand what you just read more clearly.",
+        icon: "📝",
+        preview: (
+          <div className="mt-3 rounded-2xl border border-[#d7e8d7] bg-white p-3 shadow-sm">
+            <div className="rounded-xl bg-[#f7f4ee] px-3 py-2 text-sm font-semibold text-[#7a5b2e]">Chapter Notes</div>
+            <p className="mt-3 text-sm text-gray-600">
+              Great for wrapping up a chapter before you move on to the next reading.
+            </p>
+          </div>
+        ),
+      },
+      {
+        key: "keywords",
+        eyebrow: "Deep dive",
+        title: "Tap names, places, and keywords for more context",
+        description:
+          "Bible Buddy can surface quick explanations from the study database so people, places, and important words make more sense while you read.",
+        icon: "🔎",
+        preview: (
+          <div className="mt-3 rounded-2xl border border-[#d7e8d7] bg-white p-3 shadow-sm">
+            <div className="flex flex-wrap gap-2">
+              <span className="rounded-full bg-[#eef8ef] px-3 py-1 text-xs font-semibold text-[#4f7e54]">Jerusalem</span>
+              <span className="rounded-full bg-[#fff2d9] px-3 py-1 text-xs font-semibold text-[#9a5b1f]">Pharisees</span>
+              <span className="rounded-full bg-[#f4e6ff] px-3 py-1 text-xs font-semibold text-[#7a4c9f]">Covenant</span>
+            </div>
+            <p className="mt-3 text-sm text-gray-600">
+              Tap through when you want context without leaving your reading flow.
+            </p>
+          </div>
+        ),
+      },
+      {
+        key: "tempting-of-jesus",
+        eyebrow: "Devotional preview",
+        title: "The Tempting of Jesus",
+        description:
+          getDevotionalDescription(
+            "The Tempting of Jesus",
+            "Walk through how Jesus answered temptation with truth, obedience, and strength in the wilderness.",
+          ),
+        icon: "✝️",
+        preview: (
+          <div className="mt-3 rounded-2xl border border-[#d7e8d7] bg-white p-4 shadow-sm">
+            <img
+              src="/images/temptingofjesus.png"
+              alt="The Tempting of Jesus cover"
+              className="w-full rounded-2xl border border-[#ead8c4] bg-white object-contain"
+            />
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <div>
+                <p className="text-sm font-semibold text-gray-900">Start Day 1</p>
+                <p className="mt-1 text-sm text-gray-600">A guided devotional on temptation, obedience, and the strength of Jesus.</p>
+              </div>
+              <Link
+                href={getDevotionalId("The Tempting of Jesus") ? `/devotionals/${getDevotionalId("The Tempting of Jesus")}` : "/devotionals"}
+                className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                style={{ backgroundColor: SAGE }}
+              >
+                Start Day 1
+              </Link>
+            </div>
+          </div>
+        ),
+      },
+      {
+        key: "testing-of-joseph",
+        eyebrow: userIsPaid ? "Devotional preview" : "Pro devotional",
+        title: "The Testing of Joseph",
+        description:
+          getDevotionalDescription(
+            "The Testing of Joseph",
+            "Follow Joseph through betrayal, waiting, pressure, and purpose in a devotional built around faith under pressure.",
+          ),
+        icon: "🔥",
+        preview: (
+          <div className="mt-3 rounded-2xl border border-[#ead8c4] bg-white p-4 shadow-sm">
+            <img
+              src="/Thetestingofjoseph.png"
+              alt="The Testing of Joseph cover"
+              className="w-full rounded-2xl border border-[#ead8c4] bg-white object-contain"
+            />
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <div>
+                <p className="text-sm font-semibold text-gray-900">Start Day 1</p>
+                <p className="mt-1 text-sm text-gray-600">
+                  {userIsPaid ? "Included in your account right now." : "Unlock Bible Buddy Pro to begin this devotional."}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => void openDevotionalFromFeature("The Testing of Joseph", true)}
+                className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                style={{ backgroundColor: SAGE }}
+              >
+                {userIsPaid ? "Start Day 1" : "Unlock"}
+              </button>
+            </div>
+          </div>
+        ),
+      },
+      ...(!userIsPaid
+        ? [{
+            key: "pro-upgrade",
+            eyebrow: "Popular upgrade",
+            title: "Upgrade to Bible Buddy Pro",
+            description:
+              "Unlock the fuller Bible Buddy experience with premium study tools, more depth, and the best features for people who want to grow consistently.",
+            icon: "🙏",
+            preview: (
+              <div className="mt-3 rounded-2xl border border-[#ead8c4] bg-gradient-to-br from-[#fffaf4] to-[#f7f2ff] p-4 shadow-sm">
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900">Bible Buddy Pro</p>
+                    <p className="mt-1 text-sm text-gray-600">More tools. More depth. More ways to stay in the Word.</p>
+                  </div>
+                  <Link
+                    href="/profile"
+                    className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                    style={{ backgroundColor: SAGE }}
+                  >
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+            ),
+          }]
+        : []),
+    ];
+    const featureIndex = userId
+      ? Math.abs(Array.from(userId).reduce((sum, char) => sum + char.charCodeAt(0), 0) + new Date().getDate()) % featureCards.length
+      : 0;
+    const featuredCard = featureCards[featureIndex];
+    const featureCardBody = (
+      <div className="rounded-2xl border border-[#d7e8d7] bg-[#f4fbf5] px-4 py-4 shadow-sm">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: SAGE }}>
+              {featuredCard.eyebrow}
+            </p>
+            <p className="text-sm font-semibold text-gray-900 mt-1">{featuredCard.title}</p>
+            <p className="text-sm text-gray-600 mt-1">{featuredCard.description}</p>
+          </div>
+          <div className="text-xl flex-shrink-0">{featuredCard.icon}</div>
+        </div>
+        {featuredCard.preview}
+      </div>
+    );
+
+    if (!showSetupHeader) {
+      return featureCardBody;
+    }
+
+    return (
+      <div className="w-full rounded-2xl border border-[#d7e8d7] bg-white px-4 py-4 shadow-sm">
+        {showSetupHeader ? (
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Update</p>
+              <h3 className="text-lg font-bold text-gray-900 mt-1">Set up your Bible Buddy</h3>
+              <p className="text-sm text-gray-500 mt-1 leading-relaxed">
+                A few quick things help your profile feel real, make it easier to connect, and keep you in the loop when something new happens.
+              </p>
+            </div>
+            <div className="h-11 w-11 rounded-2xl bg-[#eef8ef] flex items-center justify-center text-xl flex-shrink-0">✨</div>
+          </div>
+        ) : null}
+
+        <div className={`${showSetupHeader ? "mt-4" : ""} space-y-3`}>
+          <div className={`overflow-hidden transition-all duration-300 ${showProfileSetup ? "max-h-64 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-1 pointer-events-none"}`}>
+          <div className={`rounded-2xl border px-4 py-3 ${profileIncomplete ? "border-[#ead8c4] bg-[#fffaf4]" : "border-[#d7e8d7] bg-[#f4fbf5]"}`}>
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-gray-900">Complete your profile</p>
+                <p className="text-sm text-gray-600 mt-1">
+                  Add your photo, bio, and location so other Buddies can know who they are studying with.
+                </p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${missingProfilePhoto ? "bg-[#f5e3d0] text-[#9a5b1f]" : "bg-[#dff0df] text-[#4f7e54]"}`}>
+                    {missingProfilePhoto ? "Photo needed" : "Photo set"}
+                  </span>
+                  <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${missingBio ? "bg-[#f5e3d0] text-[#9a5b1f]" : "bg-[#dff0df] text-[#4f7e54]"}`}>
+                    {missingBio ? "Bio needed" : "Bio set"}
+                  </span>
+                  <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${missingLocation ? "bg-[#f5e3d0] text-[#9a5b1f]" : "bg-[#dff0df] text-[#4f7e54]"}`}>
+                    {missingLocation ? "Location needed" : "Location set"}
+                  </span>
+                </div>
+              </div>
+              <Link
+                href={profileHref}
+                className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 flex-shrink-0"
+                style={{ backgroundColor: SAGE }}
+              >
+                {profileIncomplete ? "Finish Profile" : "View Profile"}
+              </Link>
+            </div>
+          </div>
+          </div>
+
+          <div className={`overflow-hidden transition-all duration-300 ${showPushSetup ? "max-h-64 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-1 pointer-events-none"}`}>
+          {pushIncomplete && (
+            <div className="rounded-2xl border border-[#d7e8d7] bg-[#f4fbf5] px-4 py-3">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-gray-900">Turn on push alerts</p>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Get real-time Bible Buddy notifications when someone likes your post, replies, or sends something important.
+                  </p>
+                </div>
+                <div className="text-xl flex-shrink-0">🔔</div>
+              </div>
+              <div className="mt-3 flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => void handleEnableUpdateCardPush()}
+                  disabled={pushSetupLoading}
+                  className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
+                  style={{ backgroundColor: SAGE }}
+                >
+                  {pushSetupLoading ? "Saving..." : "Enable"}
+                </button>
+                <button
+                  type="button"
+                  onClick={dismissUpdateCardPush}
+                  className="rounded-xl px-4 py-2 text-sm font-medium text-gray-600 border border-gray-200 hover:bg-white transition"
+                >
+                  No thanks
+                </button>
+              </div>
+              {pushSetupError && <p className="text-xs text-red-500 mt-2">{pushSetupError}</p>}
+            </div>
+          )}
+          </div>
+
+          {featureCardBody}
+        </div>
+      </div>
+    );
+  }
+
 }
 
 
