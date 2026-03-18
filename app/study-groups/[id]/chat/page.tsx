@@ -815,6 +815,13 @@ function avatarColor(userId: string): string {
   return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
 }
 
+function sortPinnedPostsFirst<T extends { is_pinned: boolean; created_at: string }>(items: T[]): T[] {
+  return [...items].sort((a, b) => {
+    if (a.is_pinned !== b.is_pinned) return a.is_pinned ? -1 : 1;
+    return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+  });
+}
+
 // â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function GroupChatPage() {
@@ -1556,7 +1563,7 @@ export default function GroupChatPage() {
         badgeMap[p.user_id] = { is_paid: !!p.is_paid, member_badge: p.member_badge ?? null };
       });
     }
-    setPosts(rows.map((p) => ({
+    setPosts(sortPinnedPostsFirst(rows.map((p) => ({
       ...p,
       like_count: likeCountMap[p.id] || 0,
       comment_count: rootCommentCountMap[p.id] || 0,
@@ -1565,7 +1572,7 @@ export default function GroupChatPage() {
       profile_image_url: imageMap[p.user_id] ?? null,
       is_paid: badgeMap[p.user_id]?.is_paid ?? false,
       member_badge: badgeMap[p.user_id]?.member_badge ?? null,
-    })));
+    }))));
     setWeeklyTriviaByPostId(nextWeeklyTriviaByPostId);
     setLoadingPosts(false);
   }
@@ -1782,7 +1789,7 @@ export default function GroupChatPage() {
     }
 
     if (newPost) {
-      setPosts((prev) => [{ ...newPost, comment_count: 0, role: userRole, liked: false, profile_image_url: userProfileImage, is_paid: userIsPaid, member_badge: userMemberBadge }, ...prev]);
+      setPosts((prev) => sortPinnedPostsFirst([{ ...newPost, comment_count: 0, role: userRole, liked: false, profile_image_url: userProfileImage, is_paid: userIsPaid, member_badge: userMemberBadge }, ...prev]));
       resetPostComposer();
       setShowPostComposerModal(false);
       void logActionToMasterActions(userId, "group_message_sent", group?.name || "Group");
@@ -1821,12 +1828,7 @@ export default function GroupChatPage() {
       .eq("id", post.id);
 
     if (!error) {
-      setPosts((prev) =>
-        [...prev.map((item) => (item.id === post.id ? { ...item, is_pinned: nextPinned } : item))].sort((a, b) => {
-          if (a.is_pinned !== b.is_pinned) return a.is_pinned ? -1 : 1;
-          return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
-        }),
-      );
+      setPosts((prev) => sortPinnedPostsFirst(prev.map((item) => (item.id === post.id ? { ...item, is_pinned: nextPinned } : item))));
       setSelectedFeedPost((prev) => (prev?.id === post.id ? { ...prev, is_pinned: nextPinned } : prev));
     } else {
       window.alert("Could not update pin right now.");
@@ -4343,22 +4345,9 @@ export default function GroupChatPage() {
         </div>
       );
     }
-    const pinnedPosts = posts.filter((post) => post.is_pinned);
-    const regularPosts = posts.filter((post) => !post.is_pinned);
-    const orderedPosts = [...pinnedPosts, ...regularPosts];
+    const orderedPosts = sortPinnedPostsFirst(posts);
     return (
       <div className="flex flex-col gap-3">
-        {pinnedPosts.length > 0 && (
-          <div className="bg-[#fff8eb] border border-[#f1dfb4] rounded-2xl px-4 py-3 shadow-sm">
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <p className="text-sm font-semibold text-[#8b5a2b]">Pinned Posts</p>
-                <p className="text-xs text-[#a0713d] mt-1">{pinnedPosts.length} of 3 pinned to the top</p>
-              </div>
-              <div className="text-xl">📌</div>
-            </div>
-          </div>
-        )}
         {orderedPosts.map((post) => {
           const hasImagePost = Boolean(post.media_url && !isUploadedVideo(post.media_url) && !post.link_url);
           const triviaSet = weeklyTriviaByPostId[post.id];
