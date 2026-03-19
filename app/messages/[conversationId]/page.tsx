@@ -139,6 +139,13 @@ export default function ConversationPage() {
           .neq("sender_id", uid)
           .is("read_at", null)
           .then(() => {
+            void supabase
+              .from("notifications")
+              .update({ is_read: true })
+              .eq("type", "direct_message")
+              .eq("article_slug", `/messages/${conversationId}`)
+              .eq("user_id", uid)
+              .eq("is_read", false);
             window.dispatchEvent(new Event("bb:refresh-unread-messages"));
           });
       }

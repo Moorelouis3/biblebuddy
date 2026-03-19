@@ -69,20 +69,52 @@ export async function POST(request: NextRequest) {
 
   const message = preview ? `sent you a new message: ${preview}` : "sent you a new message";
 
-  const { error: insertError } = await supabaseAdmin
+  const conversationRoute = `/messages/${conversationId}`;
+  const { data: existingUnread, error: existingUnreadError } = await supabaseAdmin
     .from("notifications")
-    .insert({
-      user_id: recipientId,
-      type: "direct_message",
-      from_user_id: sender.id,
-      from_user_name: senderName,
-      article_slug: `/messages/${conversationId}`,
-      message,
-      is_read: false,
-    });
+    .select("id")
+    .eq("user_id", recipientId)
+    .eq("type", "direct_message")
+    .eq("article_slug", conversationRoute)
+    .eq("is_read", false)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
 
-  if (insertError) {
-    return NextResponse.json({ error: insertError.message || "Could not create notification." }, { status: 500 });
+  if (existingUnreadError) {
+    return NextResponse.json({ error: existingUnreadError.message || "Could not load message notification." }, { status: 500 });
+  }
+
+  if (existingUnread?.id) {
+    const { error: updateError } = await supabaseAdmin
+      .from("notifications")
+      .update({
+        from_user_id: sender.id,
+        from_user_name: senderName,
+        message,
+        created_at: new Date().toISOString(),
+      })
+      .eq("id", existingUnread.id);
+
+    if (updateError) {
+      return NextResponse.json({ error: updateError.message || "Could not update notification." }, { status: 500 });
+    }
+  } else {
+    const { error: insertError } = await supabaseAdmin
+      .from("notifications")
+      .insert({
+        user_id: recipientId,
+        type: "direct_message",
+        from_user_id: sender.id,
+        from_user_name: senderName,
+        article_slug: conversationRoute,
+        message,
+        is_read: false,
+      });
+
+    if (insertError) {
+      return NextResponse.json({ error: insertError.message || "Could not create notification." }, { status: 500 });
+    }
   }
 
   return NextResponse.json({ ok: true });

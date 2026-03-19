@@ -650,6 +650,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       .limit(40);
     if (data) {
       const visibleNotifications = data
+        .filter((n) => n.type !== "direct_message")
         .filter((n) => !n.from_user_id || n.from_user_id !== currentUserId)
         .slice(0, 20);
       setNotifications(visibleNotifications);

@@ -94,7 +94,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         <Link href={dailyRecommendation.primaryButtonHref}>
           <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative animate-pulse-slow">
             <span className="absolute right-4 top-4 text-red-400 text-base" aria-hidden="true">+</span>
-            <h2 className="text-xl font-semibold">{dailyRecommendationCardTitle}</h2>
+            <h2 className="text-xl font-semibold">✨ {dailyRecommendationCardTitle}</h2>
             <p className="text-sm text-gray-700 mt-2 leading-relaxed">{dailyRecommendationCardSubtitle}</p>
           </div>
         </Link>
@@ -110,7 +110,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 
       <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}>
         <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold">The Bible</h2>
+          <h2 className="text-xl font-semibold">📖 The Bible</h2>
           <p className="text-gray-700 mt-1">Read the complete Bible here</p>
         </div>
       </Link>
@@ -120,21 +120,21 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"
           style={{ backgroundColor: "#d4ecd4", borderWidth: 1, borderColor: "#b8ddb8" }}
         >
-          <h2 className="text-xl font-semibold">Bible Study Group</h2>
+          <h2 className="text-xl font-semibold">👥 Bible Study Group</h2>
           <p className="text-gray-700 mt-1">Study the Bible with us</p>
         </div>
       </Link>
 
       <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}>
         <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold">Bible Trivia</h2>
+          <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2>
           <p className="text-gray-700 mt-1">Test your Bible knowledge</p>
         </div>
       </Link>
 
       <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}>
         <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold text-orange-800">Bible Study Hub</h2>
+          <h2 className="text-xl font-semibold text-orange-800">🧭 Bible Study Hub</h2>
           <p className="text-gray-700 mt-1">A collection of Bible study tools</p>
         </div>
       </Link>
@@ -145,7 +145,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         className="w-full text-left bg-[#efe7ff] border border-[#ddd0ff] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative"
       >
         <span className="absolute right-4 top-4 text-[#8a63d2] text-base" aria-hidden="true">↗</span>
-        <h2 className="text-xl font-semibold text-gray-900">Invite a Bible Buddy</h2>
+        <h2 className="text-xl font-semibold text-gray-900">↗ Invite a Bible Buddy</h2>
         <p className="text-gray-700 mt-1">Share by text, WhatsApp, or copy link.</p>
       </button>
     </div>
