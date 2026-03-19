@@ -371,6 +371,17 @@ function getGroupPostCategory(activeTab: string): string {
   return activeTab === "home" ? "general" : activeTab;
 }
 
+const HOME_FEED_CATEGORIES = [
+  "general",
+  "weekly_trivia",
+  "weekly_poll",
+  "weekly_question",
+  "update_monday",
+  "who_was_this_friday",
+  "bible_study_saturday",
+  "prayer_request_sunday",
+] as const;
+
 function stripHtml(html: string): string {
   return html
     .replace(/<br\s*\/?>/gi, "\n")
@@ -1648,12 +1659,18 @@ export default function GroupChatPage() {
       }
     }
 
-    const { data: postRows, error } = await supabase
+    const postQuery = supabase
       .from("group_posts")
       .select("id, user_id, display_name, title, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
       .eq("group_id", group.id)
-      .eq("category", postCategory)
-      .is("parent_post_id", null)
+      .is("parent_post_id", null);
+
+    const categorizedPostQuery =
+      activeTab === "home"
+        ? postQuery.in("category", [...HOME_FEED_CATEGORIES])
+        : postQuery.eq("category", postCategory);
+
+    const { data: postRows, error } = await categorizedPostQuery
       .order("is_pinned", { ascending: false })
       .order("created_at", { ascending: false });
 

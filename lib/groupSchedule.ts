@@ -48,6 +48,24 @@ function formatScheduleDate(date: Date) {
   });
 }
 
+function stripHtml(html: string) {
+  return html
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>/gi, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/\u00a0/g, " ")
+    .replace(/\s+\n/g, "\n")
+    .replace(/\n{2,}/g, "\n\n")
+    .trim();
+}
+
+function truncatePreview(text: string, maxLength = 320) {
+  if (text.length <= maxLength) return text;
+  const trimmed = text.slice(0, maxLength);
+  const lastSpace = trimmed.lastIndexOf(" ");
+  return `${(lastSpace > 0 ? trimmed.slice(0, lastSpace) : trimmed).trim()}...`;
+}
+
 type SchedulePreview = {
   title: string;
   description: string | null;
@@ -152,7 +170,7 @@ export function buildGroupSchedule(now = new Date(), options: GroupScheduleOptio
       const friday = buildWhoWasThisFridayPost(date);
       return {
         title: friday.title,
-        description: friday.description,
+        description: truncatePreview(stripHtml(friday.contentHtml)),
       };
     }),
     buildTimeline("Bible Study Saturday", "bible_study_saturday", "#8d5d38", nextBibleStudy, (date) => {
