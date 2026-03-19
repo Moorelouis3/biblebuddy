@@ -63,7 +63,7 @@ BEGIN
     v_louis_id,
     'Louis',
     'Weekly Bible Trivia',
-    'general',
+    'weekly_trivia',
     v_content
   )
   RETURNING id INTO v_post_id;

@@ -195,7 +195,7 @@ export async function ensureWeeklyGroupSeriesPost(
       user_id: louis.id,
       display_name: "Louis",
       title: series.title,
-      category: "general",
+      category: seriesKey,
       content: series.contentHtml,
     })
     .select("id")

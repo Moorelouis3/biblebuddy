@@ -100,7 +100,7 @@ export async function ensureWeeklyGroupTriviaPost(
       user_id: louis.id,
       display_name: "Louis",
       title: "Weekly Bible Trivia",
-      category: "general",
+      category: "weekly_trivia",
       content,
     })
     .select("id")

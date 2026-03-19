@@ -15,6 +15,7 @@ import { getProfileStats } from "../../lib/profileStats";
 import AdSlot from "../../components/AdSlot";
 import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
+import { getDailyRecommendation, type DailyRecommendation } from "../../lib/dailyRecommendation";
 import {
   DEFAULT_FEATURE_TOURS,
   normalizeFeatureTours,
@@ -145,6 +146,7 @@ export default function DashboardPage() {
   const [activeTourKey, setActiveTourKey] = useState<FeatureTourKey | null>(null);
   const [pendingTourNavigation, setPendingTourNavigation] = useState<string | null>(null);
   const [isSavingFeatureTour, setIsSavingFeatureTour] = useState(false);
+  const [dailyRecommendationCard, setDailyRecommendationCard] = useState<DailyRecommendation | null>(null);
 
   // Daily Welcome Overlay logic (with dev override)
   useEffect(() => {
@@ -1152,6 +1154,45 @@ export default function DashboardPage() {
     ? "Start your Bible reading plan here"
     : "Continue reading your Bible here";
 
+  function buildDailyRecommendationCardCopy(recommendationItem: DailyRecommendation | null) {
+    if (!recommendationItem) {
+      return { title: null, subtitle: null };
+    }
+
+    const dayMatch = recommendationItem.primaryButtonText.match(/Day\s+(\d+)/i);
+    const readMatch = recommendationItem.primaryButtonText.match(/Read\s+(.+)/i);
+
+    let title = recommendationItem.primaryButtonText;
+    if (/continue day/i.test(recommendationItem.primaryButtonText) && dayMatch) {
+      title = `Finish Day ${dayMatch[1]}`;
+    } else if (/start day/i.test(recommendationItem.primaryButtonText) && dayMatch) {
+      title = `Start Day ${dayMatch[1]}`;
+    } else if (/read /i.test(recommendationItem.primaryButtonText) && readMatch) {
+      title = recommendationItem.contextLine.toLowerCase().includes("it's been a while")
+        ? `Start ${readMatch[1]}`
+        : `Finish ${readMatch[1]}`;
+    } else if (/continue reading plan/i.test(recommendationItem.primaryButtonText)) {
+      title = "Resume Plan";
+    } else if (/view devotionals/i.test(recommendationItem.primaryButtonText)) {
+      title = "Open Devotional";
+    } else if (/do trivia/i.test(recommendationItem.primaryButtonText)) {
+      title = "Open Trivia";
+    } else if (/explore people/i.test(recommendationItem.primaryButtonText)) {
+      title = "Explore People";
+    } else if (/explore places/i.test(recommendationItem.primaryButtonText)) {
+      title = "Explore Places";
+    } else if (/explore keywords/i.test(recommendationItem.primaryButtonText)) {
+      title = "Explore Keywords";
+    } else if (/open bible/i.test(recommendationItem.primaryButtonText)) {
+      title = "Open Bible";
+    }
+
+    return {
+      title,
+      subtitle: recommendationItem.level === 1 ? "Start here today" : "Your daily recommendation",
+    };
+  }
+
   /**
    * FEATURE FLAG: Set to true to enable ads
    * 
@@ -1178,6 +1219,46 @@ export default function DashboardPage() {
   // - User is logged in
   // - User is NOT a Pro member
   const shouldShowAds = ENABLE_ADS && userId && membershipStatus !== "pro";
+  const dailyRecommendationCardCopy = buildDailyRecommendationCardCopy(dailyRecommendationCard);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadDailyRecommendationCard() {
+      if (!userId) {
+        setDailyRecommendationCard(null);
+        return;
+      }
+
+      try {
+        const { data } = await supabase
+          .from("profile_stats")
+          .select("level_1_skipped_date")
+          .eq("user_id", userId)
+          .maybeSingle();
+
+        let suppressLevel1 = false;
+        if (data?.level_1_skipped_date) {
+          const skippedDate = new Date(data.level_1_skipped_date);
+          const diffDays = Math.floor((Date.now() - skippedDate.getTime()) / (1000 * 60 * 60 * 24));
+          if (diffDays < 3) suppressLevel1 = true;
+        }
+
+        const nextRecommendation = await getDailyRecommendation(userId, suppressLevel1);
+        if (!cancelled) setDailyRecommendationCard(nextRecommendation);
+      } catch (error) {
+        if (!cancelled) {
+          console.warn("Error loading daily recommendation card:", error);
+          setDailyRecommendationCard(null);
+        }
+      }
+    }
+
+    void loadDailyRecommendationCard();
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
 
   return (
     <>
@@ -1225,6 +1306,9 @@ export default function DashboardPage() {
           userName={userName}
           handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
           setShowLevelInfoModal={setShowLevelInfoModal}
+          dailyRecommendation={dailyRecommendationCard}
+          dailyRecommendationCardTitle={dailyRecommendationCardCopy.title}
+          dailyRecommendationCardSubtitle={dailyRecommendationCardCopy.subtitle}
         />
         </div>
 
@@ -1261,6 +1345,9 @@ export default function DashboardPage() {
           userName={userName}
           handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
           setShowLevelInfoModal={setShowLevelInfoModal}
+          dailyRecommendation={dailyRecommendationCard}
+          dailyRecommendationCardTitle={dailyRecommendationCardCopy.title}
+          dailyRecommendationCardSubtitle={dailyRecommendationCardCopy.subtitle}
         />
       </div>
 

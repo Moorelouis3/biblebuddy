@@ -60,7 +60,7 @@ BEGIN
     v_louis_id,
     'Louis',
     'How many days a week do you usually read the Bible?',
-    'general',
+    'weekly_poll',
     v_content
   )
   RETURNING id INTO v_post_id;

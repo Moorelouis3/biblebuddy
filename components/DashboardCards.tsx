@@ -1,7 +1,8 @@
-
 "use client";
+
 import Link from "next/link";
 import React from "react";
+import type { DailyRecommendation } from "../lib/dailyRecommendation";
 
 interface DashboardCardsProps {
   profile: any;
@@ -12,6 +13,9 @@ interface DashboardCardsProps {
   userName: string;
   handleCardClick: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, card: string, href: string) => void;
   setShowLevelInfoModal: (show: boolean) => void;
+  dailyRecommendation: DailyRecommendation | null;
+  dailyRecommendationCardTitle: string | null;
+  dailyRecommendationCardSubtitle: string | null;
 }
 
 const DashboardCards: React.FC<DashboardCardsProps> = ({
@@ -20,18 +24,19 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   daysRemaining,
   isLoadingLevel,
   levelInfo,
-  userName,
   handleCardClick,
   setShowLevelInfoModal,
+  dailyRecommendation,
+  dailyRecommendationCardTitle,
+  dailyRecommendationCardSubtitle,
 }) => {
   return (
     <div className="flex flex-col gap-4">
-      {/* BIBLE READING PROGRESS CARD */}
       <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm relative">
         {isLoadingLevel ? (
           <>
             <div className="flex items-center gap-2 mb-2">
-              <h2 className="text-xl font-semibold">📘 Loading</h2>
+              <h2 className="text-xl font-semibold">Loading</h2>
               <div className="flex gap-1 items-center h-6">
                 <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_infinite]">.</span>
                 <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_0.2s_infinite]">.</span>
@@ -52,7 +57,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           <>
             <div className="flex items-start justify-between mb-2">
               <h2 className="text-xl font-semibold">
-                📘 Level {levelInfo.level} "{levelInfo.levelName}"
+                Level {levelInfo.level} "{levelInfo.levelName}"
               </h2>
               <button
                 onClick={() => setShowLevelInfoModal(true)}
@@ -83,12 +88,13 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         ) : null}
       </div>
 
-      {profile?.is_paid === false && (
-        <Link href="/upgrade">
+      {dailyRecommendation && dailyRecommendationCardTitle && dailyRecommendationCardSubtitle && (
+        <Link href={dailyRecommendation.primaryButtonHref}>
           <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative animate-pulse-slow">
-            <span className="absolute right-4 top-4 text-red-400 text-base" aria-hidden="true">🔒</span>
-            <h2 className="text-xl font-semibold">🔓 Unlock Full Access</h2>
-            <p className="text-gray-700 mt-1">Remove limits and study without restriction.</p>
+            <span className="absolute right-4 top-4 text-red-400 text-base" aria-hidden="true">+</span>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-red-500">Daily Recommendation</p>
+            <h2 className="text-xl font-semibold mt-1">{dailyRecommendationCardTitle}</h2>
+            <p className="text-gray-700 mt-1">{dailyRecommendationCardSubtitle}</p>
           </div>
         </Link>
       )}
@@ -96,39 +102,38 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
       {membershipStatus === "pro" && daysRemaining !== null && daysRemaining > 0 && (
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-sm">
           <p className="text-sm text-blue-800 font-medium">
-            ⏰ Pro expires in {daysRemaining} {daysRemaining === 1 ? "day" : "days"}
+            Pro expires in {daysRemaining} {daysRemaining === 1 ? "day" : "days"}
           </p>
         </div>
       )}
 
       <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}>
         <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold">📖 The Bible</h2>
+          <h2 className="text-xl font-semibold">The Bible</h2>
           <p className="text-gray-700 mt-1">Read the complete Bible here</p>
         </div>
       </Link>
 
       <Link href="/study-groups">
         <div className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition" style={{ backgroundColor: "#d4ecd4", borderWidth: 1, borderColor: "#b8ddb8" }}>
-          <h2 className="text-xl font-semibold">🤝 Bible Study Group</h2>
+          <h2 className="text-xl font-semibold">Bible Study Group</h2>
           <p className="text-gray-700 mt-1">Study the Bible with us</p>
         </div>
       </Link>
 
       <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}>
         <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold text-orange-800">🧭 Bible Study Hub</h2>
+          <h2 className="text-xl font-semibold text-orange-800">Bible Study Hub</h2>
           <p className="text-gray-700 mt-1">A collection of Bible study tools</p>
         </div>
       </Link>
 
       <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}>
         <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2>
+          <h2 className="text-xl font-semibold">Bible Trivia</h2>
           <p className="text-gray-700 mt-1">Test your Bible knowledge</p>
         </div>
       </Link>
-
     </div>
   );
 };

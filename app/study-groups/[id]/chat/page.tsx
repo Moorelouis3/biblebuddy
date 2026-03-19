@@ -442,12 +442,13 @@ function stripHtml(html: string): string {
 }
 
 function getPostPreviewText(html: string): string {
-  const firstLine = stripHtml(html)
+  const previewLines = stripHtml(html)
     .split("\n")
     .map((line) => line.replace(/\s+/g, " ").trim())
-    .find(Boolean);
+    .filter(Boolean)
+    .slice(0, 4);
 
-  return firstLine ?? "";
+  return previewLines.join("\n");
 }
 
 function GroupCommentSection({
@@ -4846,7 +4847,7 @@ export default function GroupChatPage() {
             </div>
             {post.title && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
             {!pollSet && !triviaSet && !questionSet && post.content && (
-              <p className={`text-sm text-gray-700 mt-3 leading-relaxed ${hasImagePost ? "whitespace-pre-wrap" : "truncate whitespace-nowrap"}`}>
+              <p className={`text-sm text-gray-700 mt-3 leading-relaxed whitespace-pre-line line-clamp-4`}>
                 {getPostPreviewText(post.content)}
               </p>
             )}

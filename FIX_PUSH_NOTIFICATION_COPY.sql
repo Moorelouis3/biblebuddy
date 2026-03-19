@@ -41,7 +41,11 @@ BEGIN
     END IF;
 
     v_body := regexp_replace(v_body, '^\s*from bible buddy[:\s-]*', '', 'i');
-    v_body := regexp_replace(v_body, '^\s*' || regexp_replace(v_actor_name, '([\\.^$|()\\[\\]{}*+?\\\\-])', '\\\1', 'g') || '\s+', '', 'i');
+
+    IF lower(v_body) LIKE lower(v_actor_name) || ' %' THEN
+      v_body := substr(v_body, char_length(v_actor_name) + 2);
+    END IF;
+
     v_body := COALESCE(NULLIF(btrim(v_body), ''), 'sent you a new alert');
   ELSE
     v_title := 'Bible Buddy';

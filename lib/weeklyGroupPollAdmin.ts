@@ -94,7 +94,7 @@ export async function ensureWeeklyGroupPollPost(
       user_id: louis.id,
       display_name: "Louis",
       title: poll.question,
-      category: "general",
+      category: "weekly_poll",
       content,
     })
     .select("id")

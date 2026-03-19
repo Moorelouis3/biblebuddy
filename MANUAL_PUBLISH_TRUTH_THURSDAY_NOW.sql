@@ -62,7 +62,7 @@ BEGIN
     v_louis_id,
     'Louis',
     'What''s your testimony? How did God begin changing your life?',
-    'general',
+    'weekly_question',
     v_content
   )
   RETURNING id INTO v_post_id;

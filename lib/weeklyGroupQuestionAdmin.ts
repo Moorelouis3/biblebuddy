@@ -96,7 +96,7 @@ export async function ensureWeeklyGroupQuestionPost(
       user_id: louis.id,
       display_name: "Louis",
       title: question.prompt,
-      category: "general",
+      category: "weekly_question",
       content,
     })
     .select("id")
