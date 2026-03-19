@@ -36,11 +36,13 @@ BEGIN
 
     IF NEW.message IS NOT NULL AND position(v_actor_name || ' ' in NEW.message) = 1 THEN
       v_body := substr(NEW.message, char_length(v_actor_name) + 2);
-    ELSIF NEW.message IS NOT NULL AND lower(NEW.message) LIKE 'from bible buddy %' THEN
-      v_body := substr(NEW.message, char_length('from Bible Buddy ') + 1);
     ELSE
       v_body := COALESCE(NULLIF(NEW.message, ''), 'sent you a new alert');
     END IF;
+
+    v_body := regexp_replace(v_body, '^\s*from bible buddy[:\s-]*', '', 'i');
+    v_body := regexp_replace(v_body, '^\s*' || regexp_replace(v_actor_name, '([\\.^$|()\\[\\]{}*+?\\\\-])', '\\\1', 'g') || '\s+', '', 'i');
+    v_body := COALESCE(NULLIF(btrim(v_body), ''), 'sent you a new alert');
   ELSE
     v_title := 'Bible Buddy';
     v_body := COALESCE(NULLIF(NEW.message, ''), 'You have a new alert');
