@@ -389,6 +389,27 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!userId) return;
+
+    const currentUserId = userId;
+    const refresh = () => {
+      void refreshUnreadMessageCount(currentUserId);
+      if (isMessagesOpen) {
+        void fetchConversationPreviews(currentUserId);
+      }
+      void fetchNotifications(currentUserId);
+    };
+
+    const interval = window.setInterval(refresh, 15000);
+    window.addEventListener("focus", refresh);
+
+    return () => {
+      window.clearInterval(interval);
+      window.removeEventListener("focus", refresh);
+    };
+  }, [userId, isMessagesOpen]);
+
+  useEffect(() => {
+    if (!userId) return;
     const currentUserId = userId;
 
     const channel = supabase

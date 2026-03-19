@@ -16,7 +16,6 @@ import AdSlot from "../../components/AdSlot";
 import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
 import { getDailyRecommendation, type DailyRecommendation } from "../../lib/dailyRecommendation";
-import { ModalShell } from "../../components/ModalShell";
 import {
   DEFAULT_FEATURE_TOURS,
   normalizeFeatureTours,
@@ -148,8 +147,6 @@ export default function DashboardPage() {
   const [pendingTourNavigation, setPendingTourNavigation] = useState<string | null>(null);
   const [isSavingFeatureTour, setIsSavingFeatureTour] = useState(false);
   const [dailyRecommendationCard, setDailyRecommendationCard] = useState<DailyRecommendation | null>(null);
-  const [showInviteBuddyModal, setShowInviteBuddyModal] = useState(false);
-  const [copiedInviteLink, setCopiedInviteLink] = useState(false);
 
   // Daily Welcome Overlay logic (with dev override)
   useEffect(() => {
@@ -1162,37 +1159,48 @@ export default function DashboardPage() {
       return { title: null, subtitle: null };
     }
 
-    const dayMatch = recommendationItem.primaryButtonText.match(/Day\s+(\d+)/i);
-    const readMatch = recommendationItem.primaryButtonText.match(/Read\s+(.+)/i);
+    const cta = recommendationItem.primaryButtonText;
+    let subtitle = recommendationItem.recommendationLine;
+    const devotionalTitleMatch =
+      recommendationItem.contextLine.match(/of the (.+?) devotional/i) ||
+      recommendationItem.contextLine.match(/middle of the (.+?) devotional/i);
+    const devotionalTitle = devotionalTitleMatch?.[1]?.trim() || null;
 
-    let title = recommendationItem.primaryButtonText;
-    if (/continue day/i.test(recommendationItem.primaryButtonText) && dayMatch) {
-      title = `Finish Day ${dayMatch[1]}`;
-    } else if (/start day/i.test(recommendationItem.primaryButtonText) && dayMatch) {
-      title = `Start Day ${dayMatch[1]}`;
-    } else if (/read /i.test(recommendationItem.primaryButtonText) && readMatch) {
-      title = recommendationItem.contextLine.toLowerCase().includes("it's been a while")
-        ? `Start ${readMatch[1]}`
-        : `Finish ${readMatch[1]}`;
-    } else if (/continue reading plan/i.test(recommendationItem.primaryButtonText)) {
-      title = "Resume Plan";
-    } else if (/view devotionals/i.test(recommendationItem.primaryButtonText)) {
-      title = "Open Devotional";
-    } else if (/do trivia/i.test(recommendationItem.primaryButtonText)) {
-      title = "Open Trivia";
-    } else if (/explore people/i.test(recommendationItem.primaryButtonText)) {
-      title = "Explore People";
-    } else if (/explore places/i.test(recommendationItem.primaryButtonText)) {
-      title = "Explore Places";
-    } else if (/explore keywords/i.test(recommendationItem.primaryButtonText)) {
-      title = "Explore Keywords";
-    } else if (/open bible/i.test(recommendationItem.primaryButtonText)) {
-      title = "Open Bible";
+    if (/continue day/i.test(cta)) {
+      const dayMatch = cta.match(/Day\s+(\d+)/i);
+      subtitle = dayMatch
+        ? `Continue Day ${dayMatch[1]} of ${devotionalTitle || "your devotional"}.`
+        : `Continue ${devotionalTitle || "your devotional"} today.`;
+    } else if (/start day/i.test(cta)) {
+      subtitle = devotionalTitle
+        ? `Start ${devotionalTitle} today.`
+        : "Start a devotional today.";
+    } else if (/continue reading plan/i.test(cta)) {
+      subtitle = "Continue your reading plan where you left off.";
+    } else if (/read /i.test(cta)) {
+      const readMatch = cta.match(/Read\s+(.+)/i);
+      subtitle = readMatch
+        ? `Continue reading with ${readMatch[1]}.`
+        : "Continue reading in the Bible today.";
+    } else if (/view devotionals/i.test(cta)) {
+      subtitle = "Continue one of your devotionals today.";
+    } else if (/explore people/i.test(cta)) {
+      subtitle = "Explore another person in the Bible today.";
+    } else if (/explore places/i.test(cta)) {
+      subtitle = "Explore another place in the Bible today.";
+    } else if (/explore keywords/i.test(cta)) {
+      subtitle = "Explore another Bible keyword today.";
+    } else if (/do trivia/i.test(cta)) {
+      subtitle = "Play a round of Bible trivia today.";
+    } else if (/open study group/i.test(cta)) {
+      subtitle = "Open this week's live study in your group.";
+    } else if (/open bible/i.test(cta)) {
+      subtitle = "Continue reading in the Bible today.";
     }
 
     return {
-      title,
-      subtitle: recommendationItem.level === 1 ? "Start here today" : "Your daily recommendation",
+      title: "Today's Recommendation",
+      subtitle,
     };
   }
 
@@ -1227,8 +1235,6 @@ export default function DashboardPage() {
   const inviteText = "I've been using Bible Buddy to read and study the Bible. Come join me.";
 
   async function handleInviteBuddy() {
-    setCopiedInviteLink(false);
-
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
         await navigator.share({
@@ -1238,19 +1244,12 @@ export default function DashboardPage() {
         });
         return;
       } catch {
-        // fall through to fallback modal
+        // fall through to sms fallback
       }
     }
 
-    setShowInviteBuddyModal(true);
-  }
-
-  async function handleCopyInviteLink() {
-    try {
-      await navigator.clipboard.writeText(`${inviteText} ${inviteLink}`);
-      setCopiedInviteLink(true);
-    } catch (error) {
-      console.warn("Could not copy invite link:", error);
+    if (typeof window !== "undefined") {
+      window.location.href = `sms:?&body=${encodeURIComponent(`${inviteText} ${inviteLink}`)}`;
     }
   }
 
@@ -1455,54 +1454,6 @@ export default function DashboardPage() {
           onUnderstand={handleTourUnderstand}
         />
       )}
-
-      <ModalShell isOpen={showInviteBuddyModal} onClose={() => setShowInviteBuddyModal(false)} backdropColor="bg-black/60">
-        <div className="w-[min(92vw,28rem)] rounded-[28px] bg-white shadow-2xl ring-1 ring-black/10 p-6">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7a58bf]">Invite</p>
-              <h2 className="text-2xl font-bold text-gray-900 mt-1">Invite a Bible Buddy</h2>
-              <p className="text-sm text-gray-600 mt-2">Share Bible Buddy with a friend by text, WhatsApp, or copy link.</p>
-            </div>
-            <button
-              type="button"
-              onClick={() => setShowInviteBuddyModal(false)}
-              className="w-9 h-9 rounded-full text-gray-500 hover:bg-gray-100 transition"
-            >
-              ×
-            </button>
-          </div>
-
-          <div className="mt-5 space-y-3">
-            <a
-              href={`sms:?&body=${encodeURIComponent(`${inviteText} ${inviteLink}`)}`}
-              className="block w-full rounded-2xl bg-[#f5f7fb] border border-gray-200 px-4 py-4 text-sm font-semibold text-gray-900 hover:bg-white transition"
-            >
-              Text a Friend
-            </a>
-            <a
-              href={`https://wa.me/?text=${encodeURIComponent(`${inviteText} ${inviteLink}`)}`}
-              target="_blank"
-              rel="noreferrer"
-              className="block w-full rounded-2xl bg-[#f5f7fb] border border-gray-200 px-4 py-4 text-sm font-semibold text-gray-900 hover:bg-white transition"
-            >
-              Share on WhatsApp
-            </a>
-            <button
-              type="button"
-              onClick={() => void handleCopyInviteLink()}
-              className="block w-full rounded-2xl bg-[#f5f7fb] border border-gray-200 px-4 py-4 text-sm font-semibold text-gray-900 hover:bg-white transition text-left"
-            >
-              {copiedInviteLink ? "Copied Invite Link" : "Copy Invite Link"}
-            </button>
-          </div>
-
-          <div className="mt-5 rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">Invite Link</p>
-            <p className="text-sm text-gray-700 mt-2 break-all">{inviteLink}</p>
-          </div>
-        </div>
-      </ModalShell>
 
       {/* Level Info Modal */}
       {showLevelInfoModal && (

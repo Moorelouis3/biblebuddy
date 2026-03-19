@@ -1,4 +1,4 @@
--- Make push notifications read like "Name from Bible Buddy" with the action below
+-- Make push notifications use the actor name as the title and the action below
 -- Run once in Supabase SQL Editor
 
 CREATE OR REPLACE FUNCTION public.queue_push_notification_job()
@@ -32,7 +32,7 @@ BEGIN
   END IF;
 
   IF v_actor_name IS NOT NULL THEN
-    v_title := v_actor_name || ' from Bible Buddy';
+    v_title := v_actor_name;
 
     IF NEW.message IS NOT NULL AND position(v_actor_name || ' ' in NEW.message) = 1 THEN
       v_body := substr(NEW.message, char_length(v_actor_name) + 2);

@@ -30,19 +30,22 @@ export async function GET(request: NextRequest) {
     .from("study_groups")
     .select("id, name, created_at")
     .in("name", ["Bible Buddy Study Group", "Hope Nation"])
-    .order("created_at", { ascending: true })
-    .limit(1)
-    .maybeSingle();
+    .order("created_at", { ascending: false });
 
   if (groupError) {
     return NextResponse.json({ error: groupError.message || "Could not load official study group." }, { status: 500 });
   }
-  if (!group) {
+  const targetGroup =
+    group?.find((row) => row.name === "Bible Buddy Study Group") ??
+    group?.find((row) => row.name === "Hope Nation") ??
+    null;
+
+  if (!targetGroup) {
     return NextResponse.json({ error: "Official study group not found." }, { status: 404 });
   }
 
   try {
-    const result = await ensureWeeklyGroupQuestionPost(supabaseAdmin, group.id);
+    const result = await ensureWeeklyGroupQuestionPost(supabaseAdmin, targetGroup.id);
     return NextResponse.json(result);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Could not create weekly question.";

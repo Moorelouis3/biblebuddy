@@ -95,22 +95,10 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative animate-pulse-slow">
             <span className="absolute right-4 top-4 text-red-400 text-base" aria-hidden="true">+</span>
             <h2 className="text-xl font-semibold">{dailyRecommendationCardTitle}</h2>
-            <p className="text-sm text-gray-600 mt-2 leading-relaxed line-clamp-3">
-              {dailyRecommendation.contextLine} {dailyRecommendation.recommendationLine}
-            </p>
+            <p className="text-sm text-gray-700 mt-2 leading-relaxed">{dailyRecommendationCardSubtitle}</p>
           </div>
         </Link>
       )}
-
-      <button
-        type="button"
-        onClick={onInviteBuddy}
-        className="w-full text-left bg-[#efe7ff] border border-[#ddd0ff] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative"
-      >
-        <span className="absolute right-4 top-4 text-[#8a63d2] text-base" aria-hidden="true">↗</span>
-        <h2 className="text-xl font-semibold text-gray-900">Invite a Bible Buddy</h2>
-        <p className="text-gray-700 mt-1">Share by text, WhatsApp, or copy link.</p>
-      </button>
 
       {membershipStatus === "pro" && daysRemaining !== null && daysRemaining > 0 && (
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-sm">
@@ -128,9 +116,19 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
       </Link>
 
       <Link href="/study-groups">
-        <div className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition" style={{ backgroundColor: "#d4ecd4", borderWidth: 1, borderColor: "#b8ddb8" }}>
+        <div
+          className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"
+          style={{ backgroundColor: "#d4ecd4", borderWidth: 1, borderColor: "#b8ddb8" }}
+        >
           <h2 className="text-xl font-semibold">Bible Study Group</h2>
           <p className="text-gray-700 mt-1">Study the Bible with us</p>
+        </div>
+      </Link>
+
+      <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}>
+        <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+          <h2 className="text-xl font-semibold">Bible Trivia</h2>
+          <p className="text-gray-700 mt-1">Test your Bible knowledge</p>
         </div>
       </Link>
 
@@ -141,12 +139,15 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       </Link>
 
-      <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}>
-        <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold">Bible Trivia</h2>
-          <p className="text-gray-700 mt-1">Test your Bible knowledge</p>
-        </div>
-      </Link>
+      <button
+        type="button"
+        onClick={onInviteBuddy}
+        className="w-full text-left bg-[#efe7ff] border border-[#ddd0ff] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative"
+      >
+        <span className="absolute right-4 top-4 text-[#8a63d2] text-base" aria-hidden="true">↗</span>
+        <h2 className="text-xl font-semibold text-gray-900">Invite a Bible Buddy</h2>
+        <p className="text-gray-700 mt-1">Share by text, WhatsApp, or copy link.</p>
+      </button>
     </div>
   );
 };

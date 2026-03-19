@@ -190,6 +190,26 @@ export default function ConversationPage() {
         })
         .eq("id", conversationId);
 
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (session?.access_token) {
+        void fetch("/api/messages/notify", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session.access_token}`,
+          },
+          body: JSON.stringify({
+            conversationId,
+            preview: content.length > 80 ? `${content.slice(0, 80)}...` : content,
+          }),
+        }).catch((error) => {
+          console.warn("[MESSAGES] Could not create direct message notification:", error);
+        });
+      }
+
       window.dispatchEvent(new Event("bb:refresh-unread-messages"));
     } finally {
       setSending(false);

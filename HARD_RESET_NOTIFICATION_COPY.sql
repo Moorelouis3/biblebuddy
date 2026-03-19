@@ -67,7 +67,7 @@ BEGIN
 
   IF v_actor_name IS NOT NULL THEN
     v_body := public.clean_bible_buddy_notification_body(v_actor_name, NEW.message);
-    v_title := v_actor_name || ' from Bible Buddy';
+    v_title := v_actor_name;
   ELSE
     v_title := 'Bible Buddy';
     v_body := COALESCE(NULLIF(NEW.message, ''), 'You have a new alert');
@@ -113,7 +113,7 @@ SET payload = jsonb_build_object(
         THEN COALESCE(
           NULLIF(n.from_user_name, ''),
           NULLIF(regexp_replace(COALESCE(j.payload->>'title', ''), '\s+from Bible Buddy\s*$', '', 'i'), '')
-        ) || ' from Bible Buddy'
+        )
       ELSE 'Bible Buddy'
     END,
   'body',

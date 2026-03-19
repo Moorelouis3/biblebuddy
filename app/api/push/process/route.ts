@@ -49,7 +49,7 @@ function normalizePushPayload(payload: PushJobRow["payload"]) {
     rawTitle.replace(/\s+from Bible Buddy\s*$/i, "").trim() ||
     null;
   const body = cleanNotificationBody(actorName, payload?.body);
-  const title = actorName ? `${actorName} from Bible Buddy` : (rawTitle || "Bible Buddy");
+  const title = actorName || rawTitle || "Bible Buddy";
 
   return {
     title,

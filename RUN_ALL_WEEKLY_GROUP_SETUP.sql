@@ -326,7 +326,7 @@ BEGIN
   END IF;
 
   IF v_actor_name IS NOT NULL THEN
-    v_title := v_actor_name || ' from Bible Buddy';
+    v_title := v_actor_name;
 
     IF NEW.message IS NOT NULL AND position(v_actor_name || ' ' in NEW.message) = 1 THEN
       v_body := substr(NEW.message, char_length(v_actor_name) + 2);

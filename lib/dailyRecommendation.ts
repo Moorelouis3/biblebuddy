@@ -35,6 +35,38 @@ function getNextBibleChapter(book: string, chapter: number): { book: string; cha
   return { book: "Genesis", chapter: 1 }; // wrap after Revelation
 }
 
+function parseChapterReference(label: string | null | undefined): { book: string; chapter: number } | null {
+  if (!label) return null;
+
+  const match = label.match(/^(.+?)\s+(\d+)$/);
+  if (!match) return null;
+
+  const chapter = parseInt(match[2], 10);
+  if (Number.isNaN(chapter)) return null;
+
+  return { book: match[1], chapter };
+}
+
+function pickRecommendedDevotional(
+  devotionals: Array<{ id: string; title: string; total_days?: number | null }>
+): { id: string; title: string; total_days?: number | null } | null {
+  if (!devotionals.length) return null;
+
+  const preferredTitleMatchers = [/tempt/i, /joseph/i, /prayer/i, /psalm/i, /gospel/i];
+
+  for (const matcher of preferredTitleMatchers) {
+    const match = devotionals.find((devotional) => matcher.test(devotional.title));
+    if (match) return match;
+  }
+
+  return devotionals[0] ?? null;
+}
+
+function pickRandomRecommendation(options: DailyRecommendation[]): DailyRecommendation | null {
+  if (!options.length) return null;
+  return options[Math.floor(Math.random() * options.length)] ?? null;
+}
+
 export interface DailyRecommendation {
   greeting: string;
   contextLine: string;
@@ -115,6 +147,16 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
     // --- Greeting line ---
     const streak = calculateStreak(allActions);
     const lastMeaningful = allActions.find((a) => MEANINGFUL_ACTIONS.includes(a.action_type));
+    const lastDevotionalCompletion = allActions.find((a) => a.action_type === "devotional_day_completed");
+    const lastReadingPlanCompletion = allActions.find((a) => a.action_type === "reading_plan_chapter_completed");
+    const lastBibleReading = allActions.find((a) => a.action_type === "chapter_completed");
+    const lastReferenceAction = allActions.find((a) =>
+      a.action_type === "person_learned" ||
+      a.action_type === "place_discovered" ||
+      a.action_type === "keyword_mastered"
+    );
+    const lastTriviaAction = allActions.find((a) => a.action_type === "trivia_question_answered");
+    const lastBibleNoteAction = allActions.find((a) => a.action_type === "note_created" || a.action_type === "verse_highlighted");
     const daysSinceActive = lastMeaningful
       ? Math.floor((Date.now() - new Date(lastMeaningful.created_at).getTime()) / 86400000)
       : null;
@@ -130,102 +172,276 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
       greeting = "Good to see you.";
     }
 
-    if (!suppressLevel1) {
-      // --- PRIORITY 1: Active devotional ---
-      const { data: devotionalProgress } = await supabase
-        .from("devotional_progress")
-        .select("devotional_id, day_number, is_completed")
-        .eq("user_id", userId)
-        .eq("is_completed", true)
-        .order("day_number", { ascending: false });
+    const primaryCandidates: DailyRecommendation[] = [];
 
-      if (devotionalProgress && devotionalProgress.length > 0) {
-        const maxByDevotional: Record<string, number> = {};
-        for (const row of devotionalProgress) {
-          if (!maxByDevotional[row.devotional_id] || row.day_number > maxByDevotional[row.devotional_id]) {
-            maxByDevotional[row.devotional_id] = row.day_number;
-          }
-        }
+    // --- PRIMARY CANDIDATE: Active devotional ---
+    const { data: devotionalProgress } = await supabase
+      .from("devotional_progress")
+      .select("devotional_id, day_number, is_completed")
+      .eq("user_id", userId)
+      .eq("is_completed", true)
+      .order("day_number", { ascending: false });
 
-        const { data: devotionals } = await supabase
-          .from("devotionals")
-          .select("id, title, total_days")
-          .in("id", Object.keys(maxByDevotional));
-
-        if (devotionals) {
-          for (const dev of devotionals) {
-            const maxDay = maxByDevotional[dev.id];
-            if (maxDay < dev.total_days) {
-              const nextDay = maxDay + 1;
-              const lastDevAction = allActions.find(
-                (a) => a.action_type === "devotional_day_completed" && a.action_label?.includes(dev.title)
-              );
-              const devContextLine = lastDevAction
-                ? contextLine(
-                    new Date(lastDevAction.created_at),
-                    `you finished Day ${maxDay} of the ${dev.title} devotional.`,
-                    `It's been a while since you last worked on the ${dev.title} devotional.`
-                  )
-                : `You're on Day ${nextDay} of the ${dev.title} devotional.`;
-              return {
-                greeting,
-                contextLine: devContextLine,
-                recommendationLine: `Ready to continue with Day ${nextDay}?`,
-                primaryButtonText: `Continue Day ${nextDay}`,
-                primaryButtonHref: `/devotionals/${dev.id}`,
-                level: 1 as const,
-              };
-            }
-          }
+    if (devotionalProgress && devotionalProgress.length > 0) {
+      const maxByDevotional: Record<string, number> = {};
+      for (const row of devotionalProgress) {
+        if (!maxByDevotional[row.devotional_id] || row.day_number > maxByDevotional[row.devotional_id]) {
+          maxByDevotional[row.devotional_id] = row.day_number;
         }
       }
 
-      // --- PRIORITY 2: Active reading plan ---
-      const lastReadingPlan = allActions.find((a) => a.action_type === "reading_plan_chapter_completed");
-      if (lastReadingPlan) {
-        const colonIndex = (lastReadingPlan.action_label || "").indexOf(": ");
-        const planName = colonIndex !== -1 ? lastReadingPlan.action_label!.slice(0, colonIndex) : "your reading plan";
-        const chapterRef = colonIndex !== -1 ? lastReadingPlan.action_label!.slice(colonIndex + 2) : "a chapter";
-        const rpDate = new Date(lastReadingPlan.created_at);
-        const isBibleBuddy = planName.toLowerCase().includes("bible buddy");
+      const { data: devotionals } = await supabase
+        .from("devotionals")
+        .select("id, title, total_days")
+        .in("id", Object.keys(maxByDevotional));
 
-        if (isBibleBuddy) {
-          const match = chapterRef.match(/^(.+?)\s+(\d+)$/);
-          if (match) {
-            const book = match[1];
-            const chapter = parseInt(match[2], 10);
-            const nextChapter = chapter + 1;
-            return {
+      if (devotionals) {
+        for (const dev of devotionals) {
+          const maxDay = maxByDevotional[dev.id];
+          if (maxDay < dev.total_days) {
+            const nextDay = maxDay + 1;
+            const lastDevAction = allActions.find(
+              (a) => a.action_type === "devotional_day_completed" && a.action_label?.includes(dev.title)
+            );
+            const devContextLine = lastDevAction
+              ? contextLine(
+                  new Date(lastDevAction.created_at),
+                  `you finished Day ${maxDay} of the ${dev.title} devotional.`,
+                  `It's been a while since you last worked on the ${dev.title} devotional.`
+                )
+              : `You're in the middle of the ${dev.title} devotional and Day ${nextDay} is ready.`;
+            primaryCandidates.push({
               greeting,
-              contextLine: contextLine(
-                rpDate,
-                `you read ${chapterRef} in the Bible Buddy Reading Plan.`,
-                `It's been a while since you last read ${chapterRef} in the Bible Buddy Reading Plan.`
-              ),
-              recommendationLine: `Want to continue with ${book} ${nextChapter} today?`,
-              primaryButtonText: `Read ${book} ${nextChapter}`,
-              primaryButtonHref: `/Bible/${book}/${nextChapter}`,
+              contextLine: devContextLine,
+              recommendationLine: `Pick up where you left off and continue with Day ${nextDay} today.`,
+              primaryButtonText: `Continue Day ${nextDay}`,
+              primaryButtonHref: `/devotionals/${dev.id}`,
               level: 1 as const,
-            };
+            });
+            break;
           }
         }
+      }
+    }
 
-        return {
+    // --- PRIMARY CANDIDATE: Active reading plan ---
+    const lastReadingPlan = allActions.find((a) => a.action_type === "reading_plan_chapter_completed");
+    if (lastReadingPlan) {
+      const colonIndex = (lastReadingPlan.action_label || "").indexOf(": ");
+      const planName = colonIndex !== -1 ? lastReadingPlan.action_label!.slice(0, colonIndex) : "your reading plan";
+      const chapterRef = colonIndex !== -1 ? lastReadingPlan.action_label!.slice(colonIndex + 2) : "a chapter";
+      const rpDate = new Date(lastReadingPlan.created_at);
+      const isBibleBuddy = planName.toLowerCase().includes("bible buddy");
+      const parsedChapter = parseChapterReference(chapterRef);
+
+      if (isBibleBuddy && parsedChapter) {
+        const nextChapter = getNextBibleChapter(parsedChapter.book, parsedChapter.chapter);
+        primaryCandidates.push({
+          greeting,
+          contextLine: contextLine(
+            rpDate,
+            `you finished ${chapterRef} in the Bible Buddy Reading Plan.`,
+            `It's been a while since you last opened the Bible Buddy Reading Plan.`
+          ),
+          recommendationLine: `Your next chapter is ${nextChapter.book} ${nextChapter.chapter}.`,
+          primaryButtonText: `Read ${nextChapter.book} ${nextChapter.chapter}`,
+          primaryButtonHref: `/Bible/${nextChapter.book}/${nextChapter.chapter}`,
+          level: 1 as const,
+        });
+      } else {
+        primaryCandidates.push({
           greeting,
           contextLine: contextLine(
             rpDate,
             `you read ${chapterRef} in ${planName}.`,
             `It's been a while since you last read from ${planName}.`
           ),
-          recommendationLine: "Want to continue your reading plan today?",
+          recommendationLine: `Jump back into ${planName} and keep the momentum going today.`,
           primaryButtonText: "Continue Reading Plan",
           primaryButtonHref: isBibleBuddy ? "/reading-plans/bible-buddy" : "/reading-plans/bible-in-one-year",
           level: 1 as const,
-        };
+        });
       }
-    } // end !suppressLevel1
+    }
 
-    // --- PRIORITY 3: Last meaningful action ---
+    // --- PRIMARY CANDIDATE: Continue Bible reading ---
+    if (lastBibleReading) {
+      const actionDate = new Date(lastBibleReading.created_at);
+      const label = lastBibleReading.action_label || "";
+      const chMatch = label.match(/^(.+?)\s+(\d+)$/);
+      if (chMatch) {
+        const chBook = chMatch[1];
+        const chNum = parseInt(chMatch[2], 10);
+        const next = getNextBibleChapter(chBook, chNum);
+        const nextLabel = `${next.book} ${next.chapter}`;
+        primaryCandidates.push({
+          greeting,
+          contextLine: contextLine(
+            actionDate,
+            `you finished ${label}.`,
+            `It's been a while since you last read in ${chBook}.`
+          ),
+          recommendationLine: `Keep reading by starting ${nextLabel} next.`,
+          primaryButtonText: `Read ${nextLabel}`,
+          primaryButtonHref: `/Bible/${next.book}/${next.chapter}`,
+          level: 2 as const,
+        });
+      } else {
+        primaryCandidates.push({
+          greeting,
+          contextLine: contextLine(
+            actionDate,
+            `you read ${label}.`,
+            `It's been a while since you last opened the Bible.`
+          ),
+          recommendationLine: "Open the Bible and continue where you left off.",
+          primaryButtonText: "Open Bible",
+          primaryButtonHref: "/Bible",
+          level: 2 as const,
+        });
+      }
+    }
+
+    // --- PRIMARY CANDIDATE: Live study group study if available ---
+    const { data: memberships } = await supabase
+      .from("group_members")
+      .select("group_id")
+      .eq("user_id", userId)
+      .eq("status", "approved")
+      .limit(10);
+
+    const memberGroupIds = (memberships || []).map((row) => row.group_id);
+    if (memberGroupIds.length > 0) {
+      const { data: liveStudyPosts } = await supabase
+        .from("weekly_group_series_posts")
+        .select("group_id, title, description, created_at")
+        .eq("series_key", "bible_study_saturday")
+        .in("group_id", memberGroupIds)
+        .order("created_at", { ascending: false })
+        .limit(1);
+
+      const liveStudy = liveStudyPosts?.[0];
+      if (liveStudy) {
+        primaryCandidates.push({
+          greeting,
+          contextLine: contextLine(
+            new Date(liveStudy.created_at),
+            `your group has this week's Bible study ready.`,
+            `It's been a while since you checked your Bible Study Group.`
+          ),
+          recommendationLine: liveStudy.title || "Open this week's live Bible study in your group.",
+          primaryButtonText: "Open Study Group",
+          primaryButtonHref: `/study-groups/${liveStudy.group_id}/chat`,
+          level: 2 as const,
+        });
+      }
+    }
+
+    const randomPrimary = pickRandomRecommendation(primaryCandidates);
+    if (randomPrimary) {
+      return randomPrimary;
+    }
+
+    // --- PRIORITY 4: Continue devotionals before anything else ---
+    if (lastDevotionalCompletion) {
+      return {
+        greeting,
+        contextLine: contextLine(
+          new Date(lastDevotionalCompletion.created_at),
+          `you completed a devotional day.`,
+          `It's been a while since you last worked on a devotional.`
+        ),
+        recommendationLine: "Open your devotionals and continue where you left off.",
+        primaryButtonText: "View Devotionals",
+        primaryButtonHref: "/devotionals",
+        level: 2 as const,
+      };
+    }
+
+    // --- PRIORITY 5: Reference tools after Bible reading ---
+    if (lastReferenceAction) {
+      const actionDate = new Date(lastReferenceAction.created_at);
+      const label = lastReferenceAction.action_label || "";
+
+      switch (lastReferenceAction.action_type) {
+        case "person_learned":
+          return {
+            greeting,
+            contextLine: contextLine(
+              actionDate,
+              `you looked up ${label}.`,
+              `It's been a while since you last explored people in the Bible.`
+            ),
+            recommendationLine: "Open the people tool again and learn another Bible person today.",
+            primaryButtonText: "Explore People",
+            primaryButtonHref: "/people-in-the-bible",
+            level: 2 as const,
+          };
+
+        case "place_discovered":
+          return {
+            greeting,
+            contextLine: contextLine(
+              actionDate,
+              `you looked up ${label}.`,
+              `It's been a while since you last explored places in the Bible.`
+            ),
+            recommendationLine: "Open the places tool again and explore another Bible location today.",
+            primaryButtonText: "Explore Places",
+            primaryButtonHref: "/places-in-the-bible",
+            level: 2 as const,
+          };
+
+        case "keyword_mastered":
+          return {
+            greeting,
+            contextLine: contextLine(
+              actionDate,
+              `you looked up ${label}.`,
+              `It's been a while since you last explored Bible keywords.`
+            ),
+            recommendationLine: "Open the keywords tool again and dig into another key word today.",
+            primaryButtonText: "Explore Keywords",
+            primaryButtonHref: "/keywords-in-the-bible",
+            level: 2 as const,
+          };
+      }
+    }
+
+    // --- PRIORITY 6: Other meaningful actions ---
+    if (lastTriviaAction) {
+      return {
+        greeting,
+        contextLine: contextLine(
+          new Date(lastTriviaAction.created_at),
+          `you finished a round of trivia.`,
+          `It's been a while since you last played Bible trivia.`
+        ),
+        recommendationLine: "Play another round and keep building what you know.",
+        primaryButtonText: "Do Trivia",
+        primaryButtonHref: "/bible-trivia",
+        level: 2 as const,
+      };
+    }
+
+    if (lastBibleNoteAction) {
+      return {
+        greeting,
+        contextLine: contextLine(
+          new Date(lastBibleNoteAction.created_at),
+          lastBibleNoteAction.action_type === "note_created"
+            ? `you created a note while reading.`
+            : `you highlighted some verses.`,
+          `It's been a while since you last opened the Bible.`
+        ),
+        recommendationLine: "Open the Bible and keep going while it is still fresh.",
+        primaryButtonText: "Open Bible",
+        primaryButtonHref: "/Bible",
+        level: 2 as const,
+      };
+    }
+
+    // --- PRIORITY 7: Fallback to last meaningful action if needed ---
     if (lastMeaningful) {
       const actionDate = new Date(lastMeaningful.created_at);
       const label = lastMeaningful.action_label || "";
@@ -243,10 +459,10 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
               greeting,
               contextLine: contextLine(
                 actionDate,
-                `you read ${label}.`,
-                `It's been a while since you last read ${label}.`
+                `you finished ${label}.`,
+                `It's been a while since you last read in ${chBook}.`
               ),
-              recommendationLine: `Want to continue with ${nextLabel} today?`,
+              recommendationLine: `Keep reading by starting ${nextLabel} next.`,
               primaryButtonText: `Read ${nextLabel}`,
               primaryButtonHref: `/Bible/${next.book}/${next.chapter}`,
               level: 2 as const,
@@ -275,7 +491,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
               `you looked up ${label}.`,
               `It's been a while since you last explored people in the Bible.`
             ),
-            recommendationLine: "Want to explore another person in the Bible?",
+            recommendationLine: "Open the people tool again and learn another Bible person today.",
             primaryButtonText: "Explore People",
             primaryButtonHref: "/people-in-the-bible",
             level: 2 as const,
@@ -289,7 +505,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
               `you looked up ${label}.`,
               `It's been a while since you last explored places in the Bible.`
             ),
-            recommendationLine: "Want to explore another place in the Bible?",
+            recommendationLine: "Open the places tool again and explore another Bible location today.",
             primaryButtonText: "Explore Places",
             primaryButtonHref: "/places-in-the-bible",
             level: 2 as const,
@@ -303,7 +519,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
               `you looked up ${label}.`,
               `It's been a while since you last explored Bible keywords.`
             ),
-            recommendationLine: "Want to explore another Bible keyword?",
+            recommendationLine: "Open the keywords tool again and dig into another key word today.",
             primaryButtonText: "Explore Keywords",
             primaryButtonHref: "/keywords-in-the-bible",
             level: 2 as const,
@@ -317,7 +533,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
               `you finished a round of trivia.`,
               `It's been a while since you last played Bible trivia.`
             ),
-            recommendationLine: "Want to do more trivia today?",
+            recommendationLine: "Play another round and keep building what you know.",
             primaryButtonText: "Do Trivia",
             primaryButtonHref: "/bible-trivia",
             level: 2 as const,
@@ -331,7 +547,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
               `you created a note while reading.`,
               `It's been a while since you last opened the Bible.`
             ),
-            recommendationLine: "Want to keep reading today?",
+            recommendationLine: "Jump back into Scripture and keep reading from where you were studying.",
             primaryButtonText: "Open Bible",
             primaryButtonHref: "/Bible",
             level: 2 as const,
@@ -345,7 +561,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
               `you highlighted some verses.`,
               `It's been a while since you last opened the Bible.`
             ),
-            recommendationLine: "Want to keep reading today?",
+            recommendationLine: "Open the Bible and keep going while those verses are still fresh.",
             primaryButtonText: "Open Bible",
             primaryButtonHref: "/Bible",
             level: 2 as const,
@@ -359,7 +575,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
               `you completed a devotional day.`,
               `It's been a while since you last worked on a devotional.`
             ),
-            recommendationLine: "Want to continue your devotional today?",
+            recommendationLine: "Pick a devotional and keep your consistency going today.",
             primaryButtonText: "View Devotionals",
             primaryButtonHref: "/devotionals",
             level: 2 as const,
@@ -368,19 +584,20 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
     }
 
     // --- PRIORITY 4: New user — recommend The Tempting of Jesus ---
-    const { data: freeDevotional } = await supabase
+    const { data: recommendedDevotionals } = await supabase
       .from("devotionals")
-      .select("id, title")
-      .ilike("title", "%Tempt%")
-      .maybeSingle();
+      .select("id, title, total_days")
+      .limit(10);
 
-    if (freeDevotional) {
+    const recommendedDevotional = pickRecommendedDevotional(recommendedDevotionals || []);
+
+    if (recommendedDevotional) {
       return {
         greeting: "Welcome to Bible Buddy.",
-        contextLine: "A great place to start is my free devotional.",
-        recommendationLine: `Want to begin Day 1 of ${freeDevotional.title}?`,
+        contextLine: `You have not started a devotional yet, and ${recommendedDevotional.title} is a great place to begin.`,
+        recommendationLine: "Start with Day 1 today and build a simple daily habit.",
         primaryButtonText: "Start Day 1",
-        primaryButtonHref: `/devotionals/${freeDevotional.id}`,
+        primaryButtonHref: `/devotionals/${recommendedDevotional.id}`,
         level: 2 as const,
       };
     }
