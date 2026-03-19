@@ -121,6 +121,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [showPushPrompt, setShowPushPrompt] = useState(false);
   const [pushPromptClosing, setPushPromptClosing] = useState(false);
 
+  const visibleUnreadNotificationCount = notifications.filter(
+    (notification) => notification.type !== "direct_message" && !notification.is_read,
+  ).length;
+
   function getPushPromptDismissKey(currentUserId: string) {
     return `bb:push-prompt-dismissed:${currentUserId}`;
   }
@@ -1308,9 +1312,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                         d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                     </svg>
-                    {notifications.filter((n) => !n.is_read).length > 0 && (
+                    {visibleUnreadNotificationCount > 0 && (
                       <span className="absolute -top-1 -right-1 flex items-center justify-center w-4 h-4 rounded-full bg-red-500 text-white text-[10px] font-bold">
-                        {notifications.filter((n) => !n.is_read).length > 9 ? "9+" : notifications.filter((n) => !n.is_read).length}
+                        {visibleUnreadNotificationCount > 9 ? "9+" : visibleUnreadNotificationCount}
                       </span>
                     )}
                   </button>
@@ -1319,7 +1323,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     <div className="fixed top-16 left-4 right-4 sm:absolute sm:top-full sm:left-auto sm:right-0 sm:mt-2 sm:w-80 bg-white rounded-xl shadow-lg border border-gray-200 z-50 overflow-hidden">
                       <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
                         <span className="font-semibold text-sm text-gray-900">Notifications</span>
-                        {notifications.some((n) => !n.is_read) && (
+                        {visibleUnreadNotificationCount > 0 && (
                           <button onClick={markAllRead} className="text-xs text-blue-600 hover:text-blue-700 font-medium">
                             Mark all read
                           </button>
