@@ -26,6 +26,38 @@ type PushSubscriptionRow = {
   auth: string;
 };
 
+function cleanNotificationBody(actorName: string | null, message: string | null | undefined) {
+  let body = (message || "").trim() || "sent you a new alert";
+
+  for (let i = 0; i < 4; i += 1) {
+    body = body.replace(/^\s*from bible buddy[:\s-]*/i, "").trim();
+
+    if (actorName) {
+      const actorPrefix = `${actorName} `.toLowerCase();
+      if (body.toLowerCase().startsWith(actorPrefix)) {
+        body = body.slice(actorName.length + 1).trim();
+      }
+    }
+  }
+
+  return body || "sent you a new alert";
+}
+
+function normalizePushPayload(payload: PushJobRow["payload"]) {
+  const rawTitle = (payload?.title || "").trim();
+  const actorName = rawTitle.replace(/\s+from Bible Buddy\s*$/i, "").trim() || null;
+  const title = actorName ? `${actorName} from Bible Buddy` : (rawTitle || "Bible Buddy");
+  const body = cleanNotificationBody(actorName, payload?.body);
+
+  return {
+    title,
+    body,
+    url: payload?.url || "/dashboard",
+    type: payload?.type || "notification",
+    notificationId: payload?.notificationId || null,
+  };
+}
+
 function isAuthorized(request: NextRequest) {
   const secret = process.env.CRON_SECRET;
   if (!secret) return true;
@@ -91,6 +123,7 @@ export async function GET(request: NextRequest) {
 
   for (const job of pendingJobs) {
     const userSubscriptions = subsByUser.get(job.user_id) || [];
+    const normalizedPayload = normalizePushPayload(job.payload);
 
     if (userSubscriptions.length === 0) {
       await supabase
@@ -119,7 +152,7 @@ export async function GET(request: NextRequest) {
               auth: subscription.auth,
             },
           },
-          JSON.stringify(job.payload || {})
+          JSON.stringify(normalizedPayload)
         );
         sentAny = true;
       } catch (error: any) {
@@ -134,6 +167,7 @@ export async function GET(request: NextRequest) {
     await supabase
       .from("push_notification_jobs")
       .update({
+        payload: normalizedPayload,
         status: sentAny ? "sent" : "failed",
         attempts: job.attempts + 1,
         sent_at: sentAny ? new Date().toISOString() : null,

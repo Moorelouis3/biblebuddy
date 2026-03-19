@@ -3031,7 +3031,18 @@ export default function GroupChatPage() {
                   {renderUpdateCard()}
                 </div>
 
-                <div className="mb-4 rounded-2xl border border-[#d8e8d7] bg-white shadow-sm overflow-hidden">
+              </>
+            );
+          })()}
+
+          {/* â”€â”€ MEMBERS TAB â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+          {activeTab === "members" && !selectedSeries && !selectedPost ? (
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mt-2">
+              <div className="px-5 py-4 border-b border-gray-100">
+                  <h2 className="text-base font-semibold text-gray-800">Buddies {membersTotal !== null ? `(${membersTotal})` : ""}</h2>
+              </div>
+              <div className="px-4 pt-4">
+                <div className="rounded-2xl border border-[#d8e8d7] bg-white shadow-sm overflow-hidden">
                   <div className="px-5 py-4">
                     <div className="flex items-start justify-between gap-4">
                       <div>
@@ -3086,15 +3097,6 @@ export default function GroupChatPage() {
                     </button>
                   </div>
                 </div>
-              </>
-            );
-          })()}
-
-          {/* â”€â”€ MEMBERS TAB â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-          {activeTab === "members" && !selectedSeries && !selectedPost ? (
-            <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mt-2">
-              <div className="px-5 py-4 border-b border-gray-100">
-                  <h2 className="text-base font-semibold text-gray-800">Buddies {membersTotal !== null ? `(${membersTotal})` : ""}</h2>
               </div>
               {/* Search */}
               <div className="px-4 py-3 border-b border-gray-100">
@@ -4984,206 +4986,8 @@ export default function GroupChatPage() {
     const showPushSetup = pushIncomplete && !hidePushSetupCard;
     const showSetupHeader = showProfileSetup || showPushSetup;
     const profileHref = userId ? `/profile/${userId}` : "/profile";
-    const featureCards = [
-      {
-        key: "highlight",
-        eyebrow: "Reading tip",
-        title: "Highlight verses as you study",
-        description:
-          "Tap a verse number while reading to highlight Scripture in different colors and keep track of the passages God is using in your life.",
-        icon: "🖍️",
-        preview: (
-          <div className="mt-3 rounded-2xl border border-[#ead8c4] bg-white p-3 shadow-sm">
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 rounded-xl bg-[#d7ebff] px-3 py-2 text-sm text-gray-800">
-                <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-white font-bold text-gray-900">1</span>
-                <span className="truncate">Trust in the Lord with all your heart...</span>
-              </div>
-              <div className="flex items-center gap-2 rounded-xl bg-[#dff2df] px-3 py-2 text-sm text-gray-800">
-                <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-white font-bold text-gray-900">2</span>
-                <span className="truncate">In all your ways acknowledge Him...</span>
-              </div>
-              <div className="flex items-center gap-2 rounded-xl bg-[#f8e3ff] px-3 py-2 text-sm text-gray-800">
-                <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-white font-bold text-gray-900">3</span>
-                <span className="truncate">He will make your paths straight.</span>
-              </div>
-            </div>
-          </div>
-        ),
-      },
-      {
-        key: "translations",
-        eyebrow: "Study tool",
-        title: "Switch Bible translations as you read",
-        description:
-          "Use the translation dropdown at the top of the chapter to compare different Bible versions and catch details you might miss on the first read.",
-        icon: "🌍",
-        preview: (
-          <div className="mt-3 rounded-2xl border border-[#d7e8d7] bg-white p-3 shadow-sm">
-            <div className="flex items-center justify-between rounded-xl border border-[#e7efe7] bg-[#f8fbf8] px-3 py-2">
-              <span className="text-sm font-medium text-gray-700">Translation</span>
-              <span className="rounded-lg bg-white px-3 py-1 text-sm font-semibold text-gray-900 shadow-sm">WEB</span>
-            </div>
-            <p className="mt-3 text-sm text-gray-600">
-              Try a second version when a verse feels dense. A different translation can make the meaning click.
-            </p>
-          </div>
-        ),
-      },
-      {
-        key: "chapter-notes",
-        eyebrow: "Study tool",
-        title: "Open chapter notes after you finish reading",
-        description:
-          "Tap Chapter Notes to get a quick end-of-chapter explanation, pull the main themes together, and understand what you just read more clearly.",
-        icon: "📝",
-        preview: (
-          <div className="mt-3 rounded-2xl border border-[#d7e8d7] bg-white p-3 shadow-sm">
-            <div className="rounded-xl bg-[#f7f4ee] px-3 py-2 text-sm font-semibold text-[#7a5b2e]">Chapter Notes</div>
-            <p className="mt-3 text-sm text-gray-600">
-              Great for wrapping up a chapter before you move on to the next reading.
-            </p>
-          </div>
-        ),
-      },
-      {
-        key: "keywords",
-        eyebrow: "Deep dive",
-        title: "Tap names, places, and keywords for more context",
-        description:
-          "Bible Buddy can surface quick explanations from the study database so people, places, and important words make more sense while you read.",
-        icon: "🔎",
-        preview: (
-          <div className="mt-3 rounded-2xl border border-[#d7e8d7] bg-white p-3 shadow-sm">
-            <div className="flex flex-wrap gap-2">
-              <span className="rounded-full bg-[#eef8ef] px-3 py-1 text-xs font-semibold text-[#4f7e54]">Jerusalem</span>
-              <span className="rounded-full bg-[#fff2d9] px-3 py-1 text-xs font-semibold text-[#9a5b1f]">Pharisees</span>
-              <span className="rounded-full bg-[#f4e6ff] px-3 py-1 text-xs font-semibold text-[#7a4c9f]">Covenant</span>
-            </div>
-            <p className="mt-3 text-sm text-gray-600">
-              Tap through when you want context without leaving your reading flow.
-            </p>
-          </div>
-        ),
-      },
-      {
-        key: "tempting-of-jesus",
-        eyebrow: "Devotional preview",
-        title: "The Tempting of Jesus",
-        description:
-          getDevotionalDescription(
-            "The Tempting of Jesus",
-            "Walk through how Jesus answered temptation with truth, obedience, and strength in the wilderness.",
-          ),
-        icon: "✝️",
-        preview: (
-          <div className="mt-3 rounded-2xl border border-[#d7e8d7] bg-white p-4 shadow-sm">
-            <img
-              src="/images/temptingofjesus.png"
-              alt="The Tempting of Jesus cover"
-              className="mx-auto w-full max-w-[240px] rounded-2xl border border-[#ead8c4] bg-white object-contain shadow-sm"
-              style={{ maxHeight: "220px" }}
-            />
-            <div className="mt-4 flex items-center justify-between gap-3">
-              <div>
-                <p className="text-sm font-semibold text-gray-900">Start Day 1</p>
-                <p className="mt-1 text-sm text-gray-600">A guided devotional on temptation, obedience, and the strength of Jesus.</p>
-              </div>
-              <Link
-                href={getDevotionalId("The Tempting of Jesus") ? `/devotionals/${getDevotionalId("The Tempting of Jesus")}` : "/devotionals"}
-                className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
-                style={{ backgroundColor: SAGE }}
-              >
-                Start Day 1
-              </Link>
-            </div>
-          </div>
-        ),
-      },
-      {
-        key: "testing-of-joseph",
-        eyebrow: userIsPaid ? "Devotional preview" : "Pro devotional",
-        title: "The Testing of Joseph",
-        description:
-          getDevotionalDescription(
-            "The Testing of Joseph",
-            "Follow Joseph through betrayal, waiting, pressure, and purpose in a devotional built around faith under pressure.",
-          ),
-        icon: "🔥",
-        preview: (
-          <div className="mt-3 rounded-2xl border border-[#ead8c4] bg-white p-4 shadow-sm">
-            <img
-              src="/Thetestingofjoseph.png"
-              alt="The Testing of Joseph cover"
-              className="mx-auto w-full max-w-[240px] rounded-2xl border border-[#ead8c4] bg-white object-contain shadow-sm"
-              style={{ maxHeight: "220px" }}
-            />
-            <div className="mt-4 flex items-center justify-between gap-3">
-              <div>
-                <p className="text-sm font-semibold text-gray-900">Start Day 1</p>
-                <p className="mt-1 text-sm text-gray-600">
-                  {userIsPaid ? "Included in your account right now." : "Unlock Bible Buddy Pro to begin this devotional."}
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() => void openDevotionalFromFeature("The Testing of Joseph", true)}
-                className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
-                style={{ backgroundColor: SAGE }}
-              >
-                {userIsPaid ? "Start Day 1" : "Unlock"}
-              </button>
-            </div>
-          </div>
-        ),
-      },
-      ...(!userIsPaid
-        ? [{
-            key: "pro-upgrade",
-            eyebrow: "Popular upgrade",
-            title: "Upgrade to Bible Buddy Pro",
-            description:
-              "Unlock the fuller Bible Buddy experience with premium study tools, more depth, and the best features for people who want to grow consistently.",
-            icon: "🙏",
-            preview: (
-              <div className="mt-3 rounded-2xl border border-[#ead8c4] bg-gradient-to-br from-[#fffaf4] to-[#f7f2ff] p-4 shadow-sm">
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <p className="text-sm font-semibold text-gray-900">Bible Buddy Pro</p>
-                    <p className="mt-1 text-sm text-gray-600">More tools. More depth. More ways to stay in the Word.</p>
-                  </div>
-                  <Link
-                    href="/profile"
-                    className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
-                    style={{ backgroundColor: SAGE }}
-                  >
-                    Learn More
-                  </Link>
-                </div>
-              </div>
-            ),
-          }]
-        : []),
-    ];
-    const featuredCard = featureCards[updateFeatureIndex % featureCards.length];
-    const featureCardBody = (
-      <div className="rounded-2xl border border-[#d7e8d7] bg-[#f4fbf5] px-4 py-4 shadow-sm">
-        <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: SAGE }}>
-              {featuredCard.eyebrow}
-            </p>
-            <p className="text-sm font-semibold text-gray-900 mt-1">{featuredCard.title}</p>
-            <p className="text-sm text-gray-600 mt-1">{featuredCard.description}</p>
-          </div>
-          <div className="text-xl flex-shrink-0">{featuredCard.icon}</div>
-        </div>
-        {featuredCard.preview}
-      </div>
-    );
-
     if (!showSetupHeader) {
-      return featureCardBody;
+      return null;
     }
 
     return (
@@ -5191,10 +4995,10 @@ export default function GroupChatPage() {
         {showSetupHeader ? (
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Update</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Set Up</p>
               <h3 className="text-lg font-bold text-gray-900 mt-1">Set up your Bible Buddy</h3>
               <p className="text-sm text-gray-500 mt-1 leading-relaxed">
-                A few quick things help your profile feel real, make it easier to connect, and keep you in the loop when something new happens.
+                A few quick things help your profile feel real and make sure you do not miss replies, likes, and important Bible Buddy updates.
               </p>
             </div>
             <div className="h-11 w-11 rounded-2xl bg-[#eef8ef] flex items-center justify-center text-xl flex-shrink-0">✨</div>
@@ -5267,8 +5071,6 @@ export default function GroupChatPage() {
             </div>
           )}
           </div>
-
-          {featureCardBody}
         </div>
       </div>
     );
