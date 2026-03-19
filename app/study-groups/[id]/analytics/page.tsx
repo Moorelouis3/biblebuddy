@@ -465,44 +465,6 @@ export default function StudyGroupAnalyticsPage() {
             </div>
           ) : null}
 
-          <div className="mt-5 rounded-3xl border border-[#e8dfd2] bg-[#fffdf9] p-5">
-            <div className="flex items-start justify-between gap-4 flex-wrap">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#8d5d38]">Most Active Buddies</p>
-                <p className="mt-2 text-sm text-gray-600">Top 10 from the last 30 days using a weighted score: posts x5, comments x3, likes x1.</p>
-              </div>
-            </div>
-            <div className="mt-5 space-y-3">
-              {data.mostActiveBuddies.map((buddy) => (
-                <div key={buddy.userId} className="flex items-center gap-3 rounded-2xl border border-[#ede4d8] bg-white px-4 py-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f2e7dc] text-sm font-bold text-[#8d5d38]">
-                    {buddy.rank}
-                  </div>
-                  {buddy.profileImageUrl ? (
-                    <img src={buddy.profileImageUrl} alt={buddy.displayName} className="h-10 w-10 rounded-full object-cover" />
-                  ) : (
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#d8e8d7] text-sm font-bold text-[#4a9b6f]">
-                      {buddy.displayName.slice(0, 1).toUpperCase()}
-                    </div>
-                  )}
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-semibold text-gray-900">{buddy.displayName}</p>
-                    <p className="mt-1 text-xs text-gray-500">
-                      {buddy.posts} posts / {buddy.comments} comments / {buddy.likes} likes
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-lg font-bold text-gray-900">{buddy.score}</p>
-                    <p className="text-xs text-gray-500">activity score</p>
-                  </div>
-                </div>
-              ))}
-              {data.mostActiveBuddies.length === 0 ? (
-                <p className="text-sm text-gray-500">No activity yet to rank.</p>
-              ) : null}
-            </div>
-          </div>
-
           <div className="mt-8 rounded-3xl border border-[#dce8dc] bg-[#f8fcf7] p-5">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#6f8d6c]">Content Calendar</p>
             <p className="mt-2 text-sm text-gray-600">

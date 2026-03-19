@@ -66,11 +66,12 @@ BEGIN
   END IF;
 
   IF v_actor_name IS NOT NULL THEN
-    v_title := v_actor_name || ' from Bible Buddy';
     v_body := public.clean_bible_buddy_notification_body(v_actor_name, NEW.message);
+    v_title := v_actor_name || ' ' || v_body;
+    v_body := '';
   ELSE
     v_title := 'Bible Buddy';
-    v_body := COALESCE(NULLIF(NEW.message, ''), 'You have a new alert');
+    v_body := '';
   END IF;
 
   INSERT INTO public.push_notification_jobs (
@@ -101,23 +102,6 @@ CREATE TRIGGER trg_queue_push_notification_job
   FOR EACH ROW
   EXECUTE FUNCTION public.queue_push_notification_job();
 
--- Clean up existing notification messages too, so new queue attempts
--- and future debugging do not keep using stale bad copy.
-UPDATE public.notifications n
-SET message = CASE
-  WHEN NULLIF(n.from_user_name, '') IS NOT NULL
-    THEN public.clean_bible_buddy_notification_body(NULLIF(n.from_user_name, ''), n.message)
-  ELSE COALESCE(NULLIF(n.message, ''), 'You have a new alert')
-END
-WHERE n.message IS NOT NULL
-  AND (
-    n.message ~* '^\s*from bible buddy'
-    OR (
-      NULLIF(n.from_user_name, '') IS NOT NULL
-      AND lower(n.message) LIKE lower(NULLIF(n.from_user_name, '')) || ' %'
-    )
-  );
-
 -- Clean up already queued push payloads so pending jobs stop sending bad copy.
 UPDATE public.push_notification_jobs j
 SET payload = jsonb_build_object(
@@ -130,24 +114,16 @@ SET payload = jsonb_build_object(
         THEN COALESCE(
           NULLIF(n.from_user_name, ''),
           NULLIF(regexp_replace(COALESCE(j.payload->>'title', ''), '\s+from Bible Buddy\s*$', '', 'i'), '')
-        ) || ' from Bible Buddy'
-      ELSE 'Bible Buddy'
-    END,
-  'body',
-    CASE
-      WHEN COALESCE(
-        NULLIF(n.from_user_name, ''),
-        NULLIF(regexp_replace(COALESCE(j.payload->>'title', ''), '\s+from Bible Buddy\s*$', '', 'i'), '')
-      ) IS NOT NULL
-        THEN public.clean_bible_buddy_notification_body(
+        ) || ' ' || public.clean_bible_buddy_notification_body(
           COALESCE(
             NULLIF(n.from_user_name, ''),
             NULLIF(regexp_replace(COALESCE(j.payload->>'title', ''), '\s+from Bible Buddy\s*$', '', 'i'), '')
           ),
           COALESCE(j.payload->>'body', n.message, '')
         )
-      ELSE COALESCE(NULLIF(COALESCE(j.payload->>'body', n.message, ''), ''), 'You have a new alert')
+      ELSE 'Bible Buddy'
     END,
+  'body', '',
   'url', COALESCE(j.payload->>'url', n.article_slug, '/dashboard'),
   'type', COALESCE(j.payload->>'type', n.type, 'notification'),
   'notificationId', COALESCE(j.payload->>'notificationId', j.notification_id::text)

@@ -4,6 +4,8 @@ import { createClient } from "@supabase/supabase-js";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const ADMIN_EMAIL = "moorelouis3@gmail.com";
+
 export async function GET(
   request: NextRequest,
   context: { params: Promise<{ groupId: string }> },
@@ -35,6 +37,10 @@ export async function GET(
   const supabaseAdmin = createClient(supabaseUrl, serviceKey, {
     auth: { autoRefreshToken: false, persistSession: false },
   });
+
+  const { data: louisUser } = await supabaseAdmin.auth.admin.listUsers();
+  const louisId =
+    louisUser?.users?.find((user) => (user.email || "").toLowerCase() === ADMIN_EMAIL)?.id || null;
 
   const { data: membership } = await supabaseAdmin
     .from("group_members")
@@ -94,6 +100,7 @@ export async function GET(
   });
 
   const ranked = Array.from(scoreMap.entries())
+    .filter(([userId]) => userId !== louisId)
     .map(([userId, counts]) => ({
       userId,
       posts: counts.posts,

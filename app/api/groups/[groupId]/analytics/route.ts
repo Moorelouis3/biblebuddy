@@ -93,6 +93,10 @@ export async function GET(
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
+  const { data: louisUser } = await supabaseAdmin.auth.admin.listUsers();
+  const louisId =
+    louisUser?.users?.find((user) => (user.email || "").toLowerCase() === ADMIN_EMAIL)?.id || null;
+
   const { data: group, error: groupError } = await supabaseAdmin
     .from("study_groups")
     .select("id, name, cover_emoji")
@@ -265,6 +269,7 @@ export async function GET(
     });
 
   const topBuddyIds = Array.from(activeBuddyScoreMap.entries())
+    .filter(([userId]) => userId !== louisId)
     .map(([userId, counts]) => ({
       userId,
       posts: counts.posts,

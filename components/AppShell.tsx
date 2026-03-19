@@ -576,6 +576,37 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
   }
 
+  function cleanNotificationMessageBody(actorName: string | null | undefined, message: string | null | undefined) {
+    let body = (message || "").trim();
+
+    for (let i = 0; i < 4; i += 1) {
+      body = body.replace(/^\s*from bible buddy[:\s-]*/i, "").trim();
+
+      if (actorName) {
+        const actorPrefix = `${actorName} `.toLowerCase();
+        if (body.toLowerCase().startsWith(actorPrefix)) {
+          body = body.slice(actorName.length + 1).trim();
+        }
+      }
+    }
+
+    return body || "sent you a new alert";
+  }
+
+  function renderNotificationCopy(notif: {
+    from_user_name: string;
+    message: string | null;
+  }) {
+    const actorName = notif.from_user_name?.trim() || "";
+    const body = cleanNotificationMessageBody(actorName || null, notif.message);
+
+    if (!actorName) {
+      return body;
+    }
+
+    return `${actorName} ${body}`;
+  }
+
   async function triggerBuddyCelebration(currentUserId: string, buddyUserId: string) {
     const { data: profiles } = await supabase
       .from("profile_stats")
@@ -1340,7 +1371,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                   key={notif.id}
                                   className={`px-4 py-3 border-b border-gray-50 ${!notif.is_read ? "bg-blue-50" : ""}`}
                                 >
-                                  <p className="text-sm text-gray-900 font-medium">{notif.message || "New notification"}</p>
+                                  <p className="text-sm text-gray-900 font-medium">{renderNotificationCopy(notif)}</p>
                                   <p className="text-xs text-gray-400 mt-0.5 mb-2">{timeStr}</p>
                                   <div className="flex gap-2">
                                     <button
@@ -1372,7 +1403,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                   key={notif.id}
                                   className={`px-4 py-3 border-b border-gray-50 ${!notif.is_read ? "bg-blue-50" : ""}`}
                                 >
-                                  <p className="text-sm text-gray-900 font-medium">{notif.message || "New notification"}</p>
+                                  <p className="text-sm text-gray-900 font-medium">{renderNotificationCopy(notif)}</p>
                                   <p className="text-xs text-gray-400 mt-0.5">{timeStr}</p>
                                 </div>
                               );
@@ -1386,7 +1417,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                 onClick={() => handleNotifClick(notif)}
                                 className={`w-full text-left px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors ${!notif.is_read ? "bg-blue-50" : ""}`}
                               >
-                                <p className="text-sm text-gray-900 font-medium">{notif.message || "New notification"}</p>
+                                <p className="text-sm text-gray-900 font-medium">{renderNotificationCopy(notif)}</p>
                                 {notifSourceLabel && <p className="text-xs text-blue-600 mt-0.5">{notifSourceLabel}</p>}
                                 <p className="text-xs text-gray-400 mt-0.5">{timeStr}</p>
                               </button>

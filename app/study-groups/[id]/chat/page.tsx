@@ -79,15 +79,6 @@ interface Member {
   is_paid?: boolean;
 }
 
-interface MemberActivityItem {
-  user_id: string;
-  action_type: string;
-  action_label: string | null;
-  created_at: string;
-  display_name: string;
-  profile_image_url: string | null;
-}
-
 interface TopBuddy {
   rank: number;
   userId: string;
@@ -277,58 +268,6 @@ function formatCountdown(targetTs: number, nowTs: number): string {
   return `${minutes}m ${seconds}s`;
 }
 
-function formatMemberActivityLine(activity: Pick<MemberActivityItem, "display_name" | "action_type" | "action_label">): string {
-  const name = activity.display_name || "A Buddy";
-  const label = activity.action_label?.trim();
-
-  switch (activity.action_type) {
-    case "chapter_completed":
-      return label ? `${name} read ${label}.` : `${name} completed a chapter.`;
-    case "book_completed":
-      return label ? `${name} finished ${label}.` : `${name} finished a book.`;
-    case "reading_plan_chapter_completed":
-      return label ? `${name} completed ${label} from a reading plan.` : `${name} completed a reading plan chapter.`;
-    case "devotional_day_completed":
-      return label ? `${name} completed ${label}.` : `${name} completed a devotional day.`;
-    case "note_created":
-      return `${name} created a note.`;
-    case "note_started":
-      return `${name} started a note.`;
-    case "person_learned":
-      return label ? `${name} learned about ${label}.` : `${name} learned about a Bible person.`;
-    case "person_viewed":
-      return label ? `${name} read about ${label}.` : `${name} viewed a Bible person.`;
-    case "place_discovered":
-      return label ? `${name} discovered ${label}.` : `${name} discovered a Bible place.`;
-    case "place_viewed":
-      return label ? `${name} explored ${label}.` : `${name} viewed a Bible place.`;
-    case "keyword_mastered":
-      return label ? `${name} studied ${label}.` : `${name} mastered a Bible keyword.`;
-    case "keyword_viewed":
-      return label ? `${name} explored ${label}.` : `${name} viewed a Bible keyword.`;
-    case "trivia_question_answered":
-      return label ? `${name} answered a trivia question about ${label}.` : `${name} answered a trivia question.`;
-    case "trivia_started":
-      return label ? `${name} started trivia on ${label}.` : `${name} started trivia.`;
-    case "chapter_notes_viewed":
-      return label ? `${name} opened notes for ${label}.` : `${name} opened chapter notes.`;
-    case "understand_verse_of_the_day":
-      return label ? `${name} studied the verse of the day: ${label}.` : `${name} studied the verse of the day.`;
-    case "verse_highlighted":
-      return label ? `${name} highlighted ${label}.` : `${name} highlighted a verse.`;
-    case "group_message_sent":
-      return `${name} posted in the group.`;
-    case "series_week_started":
-      return label ? `${name} started ${label}.` : `${name} started a study week.`;
-    case "user_login":
-      return `${name} logged in.`;
-    case "user_signup":
-      return `${name} joined Bible Buddy.`;
-    default:
-      return label ? `${name} ${activity.action_type.replace(/_/g, " ")}: ${label}.` : `${name} ${activity.action_type.replace(/_/g, " ")}.`;
-  }
-}
-
 function normalizeHubCategoryName(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }
@@ -481,6 +420,9 @@ function GroupCommentSection({
   const [replyText, setReplyText] = useState("");
   const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
   const [deletingCommentId, setDeletingCommentId] = useState<string | null>(null);
+  const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
+  const [editingCommentText, setEditingCommentText] = useState("");
+  const [savingCommentId, setSavingCommentId] = useState<string | null>(null);
 
   async function loadComments() {
     setLoading(true);
@@ -625,6 +567,56 @@ function GroupCommentSection({
     );
   }
 
+  function canEditComment(comment: GroupFeedComment) {
+    return comment.user_id === userId;
+  }
+
+  async function handleSaveCommentEdit(comment: GroupFeedComment) {
+    const nextContent = editingCommentText.trim();
+    if (!nextContent || savingCommentId) return;
+
+    setSavingCommentId(comment.id);
+    setSubmitError(null);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch(`/api/groups/${groupId}/edit-post`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          postId: comment.id,
+          content: nextContent,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not save your comment.");
+      }
+
+      setComments((prev) => prev.map((item) => (
+        item.id === comment.id
+          ? { ...item, content: payload.post?.content ?? nextContent }
+          : item
+      )));
+      setEditingCommentId(null);
+      setEditingCommentText("");
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Could not save your comment.");
+    }
+
+    setSavingCommentId(null);
+  }
+
   async function handleDeleteComment(comment: GroupFeedComment) {
     if (deletingCommentId) return;
     setDeletingCommentId(comment.id);
@@ -701,7 +693,39 @@ function GroupCommentSection({
               </Link>
               <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} />
             </div>
-            <p className="text-xs text-gray-700 mt-0.5 leading-relaxed whitespace-pre-wrap">{comment.content}</p>
+            {editingCommentId === comment.id ? (
+              <div className="mt-2 space-y-2">
+                <textarea
+                  value={editingCommentText}
+                  onChange={(e) => setEditingCommentText(e.target.value)}
+                  rows={3}
+                  className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-3 py-2 text-xs text-gray-900 outline-none focus:ring-2 focus:ring-[#d6b18b] resize-none"
+                />
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => void handleSaveCommentEdit(comment)}
+                    disabled={savingCommentId === comment.id || !editingCommentText.trim()}
+                    className="rounded-xl px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
+                    style={{ backgroundColor: "#5a9a5a" }}
+                  >
+                    {savingCommentId === comment.id ? "Saving..." : "Save"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEditingCommentId(null);
+                      setEditingCommentText("");
+                    }}
+                    className="rounded-xl px-3 py-1.5 text-xs font-medium text-gray-600 border border-gray-200 hover:bg-gray-50 transition"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <p className="text-xs text-gray-700 mt-0.5 leading-relaxed whitespace-pre-wrap">{comment.content}</p>
+            )}
           </div>
           <div className="flex items-center gap-3 mt-1">
             <span className="text-[10px] text-gray-400">{timeAgo(comment.created_at)}</span>
@@ -724,6 +748,20 @@ function GroupCommentSection({
                 className="text-[10px] text-gray-400 hover:text-[#b7794d] font-semibold transition"
               >
                 Reply
+              </button>
+            )}
+            {canEditComment(comment) && editingCommentId !== comment.id && (
+              <button
+                type="button"
+                onClick={() => {
+                  setEditingCommentId(comment.id);
+                  setEditingCommentText(comment.content);
+                  setReplyingTo(null);
+                  setReplyText("");
+                }}
+                className="text-[10px] text-gray-400 hover:text-[#4a9b6f] font-semibold transition"
+              >
+                Edit
               </button>
             )}
             {canDeleteComment(comment) && (
@@ -894,6 +932,7 @@ export default function GroupChatPage() {
   const [submitting, setSubmitting] = useState(false);
   const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
   const [activePostMenuId, setActivePostMenuId] = useState<string | null>(null);
+  const [editingFeedPost, setEditingFeedPost] = useState<Post | null>(null);
   const [deletePostId, setDeletePostId] = useState<string | null>(null);
   const [deletingPost, setDeletingPost] = useState(false);
   const [pinningPostId, setPinningPostId] = useState<string | null>(null);
@@ -928,19 +967,10 @@ export default function GroupChatPage() {
   const [membersHasMore, setMembersHasMore] = useState(false);
   const [membersTotal, setMembersTotal] = useState<number | null>(null);
   const [membersSearch, setMembersSearch] = useState("");
-  const [showMembersActivityModal, setShowMembersActivityModal] = useState(false);
   const [showTopBuddiesModal, setShowTopBuddiesModal] = useState(false);
-  const [membersActivity, setMembersActivity] = useState<MemberActivityItem[]>([]);
-  const [loadingMembersActivity, setLoadingMembersActivity] = useState(false);
-  const [loadingMoreMembersActivity, setLoadingMoreMembersActivity] = useState(false);
-  const [membersActivityError, setMembersActivityError] = useState<string | null>(null);
-  const [membersActivityOffset, setMembersActivityOffset] = useState(0);
-  const [membersActivityHasMore, setMembersActivityHasMore] = useState(false);
   const [topBuddies, setTopBuddies] = useState<TopBuddy[]>([]);
   const [loadingTopBuddies, setLoadingTopBuddies] = useState(false);
   const MEMBERS_PAGE = 20;
-  const MEMBERS_ACTIVITY_PAGE = 20;
-  const MEMBERS_ACTIVITY_MORE_PAGE = 10;
 
   // Series list
   const [seriesList, setSeriesList] = useState<Series[]>([]);
@@ -1495,7 +1525,6 @@ export default function GroupChatPage() {
     const shouldLockBodyScroll =
       !!selectedFeedPost ||
       !!showPostComposerModal ||
-      !!showMembersActivityModal ||
       !!showTopBuddiesModal ||
       !!showGroupInfoModal ||
       !!deletePostId ||
@@ -1517,7 +1546,6 @@ export default function GroupChatPage() {
   }, [
     selectedFeedPost,
     showPostComposerModal,
-    showMembersActivityModal,
     showTopBuddiesModal,
     showGroupInfoModal,
     deletePostId,
@@ -2004,6 +2032,7 @@ export default function GroupChatPage() {
   function resetPostComposer() {
     setNewPostTitle("");
     setNewPostContent("");
+    setEditingFeedPost(null);
     postEditor?.commands.clearContent();
     setComposerPhotoFile(null);
     setComposerPhotoPreview(null);
@@ -2015,13 +2044,27 @@ export default function GroupChatPage() {
     setComposerUploadError(null);
   }
 
+  function canEditFeedPost(post: Post) {
+    return post.user_id === userId;
+  }
+
+  function startEditingFeedPost(post: Post) {
+    setActivePostMenuId(null);
+    setEditingFeedPost(post);
+    setNewPostTitle(post.title || "");
+    setNewPostContent(post.content || "");
+    postEditor?.commands.setContent(post.content || "");
+    setShowPostComposerModal(true);
+  }
+
   async function handleSubmitPost() {
     const editorHtml = postEditor?.getHTML() ?? "";
     const normalizedContent = editorHtml === "<p></p>" ? "" : editorHtml;
     const hasContent = stripHtml(normalizedContent).length > 0;
     const hasPhoto = composerMode === "photo" && !!composerPhotoFile;
     const hasVideo = composerMode === "video" && !!composerVideoFile && !composerVideoDurationError;
-    if (!hasContent && !hasPhoto && !hasVideo) return;
+    const hasExistingMedia = !!editingFeedPost?.media_url;
+    if (!hasContent && !hasPhoto && !hasVideo && !hasExistingMedia) return;
     if (!userId || !group || submitting) return;
     if (activeTab === "members" || activeTab === "bible_studies") return;
     setSubmitting(true);
@@ -2054,6 +2097,51 @@ export default function GroupChatPage() {
       }
       const { data: pub } = supabase.storage.from("post-media").getPublicUrl(path);
       mediaUrl = pub.publicUrl;
+    }
+
+    if (editingFeedPost) {
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const accessToken = sessionData.session?.access_token;
+
+        if (!accessToken) {
+          throw new Error("Could not verify your session.");
+        }
+
+        const response = await fetch(`/api/groups/${group.id}/edit-post`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify({
+            postId: editingFeedPost.id,
+            title: newPostTitle.trim(),
+            content: normalizedContent,
+          }),
+        });
+
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(payload.error || "Could not save your post changes.");
+        }
+
+        const updatedPost: Post = {
+          ...editingFeedPost,
+          title: payload.post?.title ?? null,
+          content: payload.post?.content ?? normalizedContent,
+        };
+
+        setPosts((prev) => sortPinnedPostsFirst(prev.map((item) => (item.id === updatedPost.id ? updatedPost : item))));
+        setSelectedFeedPost((prev) => (prev?.id === updatedPost.id ? updatedPost : prev));
+        resetPostComposer();
+        setShowPostComposerModal(false);
+      } catch (error) {
+        setComposerUploadError(error instanceof Error ? error.message : "Could not save your post changes.");
+      }
+
+      setSubmitting(false);
+      return;
     }
 
     const { data: newPost, error } = await supabase
@@ -2315,93 +2403,10 @@ export default function GroupChatPage() {
     setLoadingMoreMembers(false);
   }
 
-  async function loadMembersActivity(reset = false) {
-    if (!group || !userId) return;
-    const pageSize = reset ? MEMBERS_ACTIVITY_PAGE : MEMBERS_ACTIVITY_MORE_PAGE;
-    const offset = reset ? 0 : membersActivityOffset;
-    if (reset) {
-      setLoadingMembersActivity(true);
-    } else {
-      setLoadingMoreMembersActivity(true);
-    }
-    setMembersActivityError(null);
-    try {
-      const { data: sessionData } = await supabase.auth.getSession();
-      const accessToken = sessionData.session?.access_token;
-      if (!accessToken) {
-        throw new Error("Could not verify your session.");
-      }
-
-      const response = await fetch(
-        `/api/groups/${group.id}/buddies-activity?offset=${offset}&limit=${pageSize}`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        },
-      );
-
-      const payload = await response.json().catch(() => null);
-      if (!response.ok) {
-        throw new Error(payload?.error || "Buddy activity could not load right now.");
-      }
-
-      const mappedRows = ((payload?.items || []) as MemberActivityItem[]);
-      const hasMore = !!payload?.hasMore;
-
-      setMembersActivity((prev) => {
-        if (reset) return mappedRows;
-        const seen = new Set(prev.map((item) => `${item.user_id}-${item.created_at}-${item.action_type}-${item.action_label || ""}`));
-        return [...prev, ...mappedRows.filter((item) => !seen.has(`${item.user_id}-${item.created_at}-${item.action_type}-${item.action_label || ""}`))];
-      });
-      setMembersActivityHasMore(hasMore);
-      setMembersActivityOffset(offset + mappedRows.length);
-    } catch (error) {
-      if (reset) setMembersActivity([]);
-      setMembersActivityError(error instanceof Error ? error.message : "Buddy activity could not load right now.");
-    }
-    setLoadingMembersActivity(false);
-    setLoadingMoreMembersActivity(false);
-  }
-
   useEffect(() => {
-    if (!showMembersActivityModal) return;
-    setMembersActivity([]);
-    setMembersActivityOffset(0);
-    setMembersActivityHasMore(false);
-    void loadMembersActivity(true);
-  }, [showMembersActivityModal, group?.id]);
-
-  useEffect(() => {
-    if (!group || activeTab !== "home") return;
+    if (!group || activeTab !== "members") return;
     void loadTopBuddies();
   }, [activeTab, group?.id]);
-
-  useEffect(() => {
-    if (!showMembersActivityModal) return;
-
-    const channel = supabase
-      .channel(`group-buddies-activity:${groupId}`)
-      .on(
-        "postgres_changes",
-        {
-          event: "INSERT",
-          schema: "public",
-          table: "master_actions",
-        },
-        () => {
-          setMembersActivity([]);
-          setMembersActivityOffset(0);
-          setMembersActivityHasMore(false);
-          void loadMembersActivity(true);
-        },
-      )
-      .subscribe();
-
-    return () => {
-      void supabase.removeChannel(channel);
-    };
-  }, [showMembersActivityModal, groupId, group?.id]);
 
   useEffect(() => {
     if (!group) return;
@@ -2822,7 +2827,7 @@ export default function GroupChatPage() {
                 </button>
               <button
                 onClick={() => {
-                      setShowMembersActivityModal(true);
+                      setActiveTab("members");
                 }}
                 className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
               >
@@ -4145,7 +4150,7 @@ export default function GroupChatPage() {
                 <div className="flex items-center justify-between px-6 py-5 border-b border-[#efe5d9]">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Bible Buddy Study Group</p>
-                    <h2 className="text-xl font-bold text-gray-900 mt-1">Create a Post</h2>
+                    <h2 className="text-xl font-bold text-gray-900 mt-1">{editingFeedPost ? "Edit Post" : "Create a Post"}</h2>
                   </div>
                   <button
                     type="button"
@@ -4290,11 +4295,11 @@ export default function GroupChatPage() {
                     <button
                       type="button"
                       onClick={handleSubmitPost}
-                      disabled={submitting || (!stripHtml(postEditor?.getHTML() ?? "").length && !composerPhotoFile && !composerVideoFile)}
+                      disabled={submitting || (!stripHtml(postEditor?.getHTML() ?? "").length && !composerPhotoFile && !composerVideoFile && !editingFeedPost?.media_url)}
                       className="px-5 py-2.5 rounded-xl text-sm font-semibold text-white disabled:opacity-50 transition"
                       style={{ backgroundColor: SAGE }}
                     >
-                      {submitting ? "Posting..." : "Post to Group"}
+                      {submitting ? (editingFeedPost ? "Saving..." : "Posting...") : (editingFeedPost ? "Save Changes" : "Post to Group")}
                     </button>
                   </div>
                 </div>
@@ -4473,119 +4478,6 @@ export default function GroupChatPage() {
         </div>
       )}
 
-      {showMembersActivityModal && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
-          onClick={() => setShowMembersActivityModal(false)}
-        >
-          <div
-            className="bg-white rounded-3xl shadow-xl w-full max-w-xl max-h-[90vh] overflow-y-auto modal-panel-in"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="px-6 py-5 border-b border-gray-100">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Bible Study Group</p>
-                  <h2 className="text-2xl font-bold text-gray-900 mt-2">Buddies Activity</h2>
-                  <p className="text-sm text-gray-500 mt-1">Recent activity from your Bible study buddies.</p>
-                </div>
-                <button
-                  onClick={() => setShowMembersActivityModal(false)}
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 transition text-xl"
-                >
-                  ×
-                </button>
-              </div>
-              <div className="mt-4 flex gap-3">
-                <button
-                  onClick={() => {
-                    setShowMembersActivityModal(false);
-                    setActiveTab("members");
-                  }}
-                  className="px-4 py-2.5 rounded-xl text-sm font-semibold text-white transition hover:opacity-90"
-                  style={{ backgroundColor: SAGE }}
-                >
-                  View All Buddies
-                </button>
-                <button
-                  onClick={() => void loadMembersActivity()}
-                  className="px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
-                >
-                  Refresh
-                </button>
-              </div>
-            </div>
-            <div className="px-5 py-4">
-                    {loadingMembersActivity ? (
-                <p className="text-sm text-gray-400 text-center py-8">Loading buddy activity...</p>
-              ) : membersActivityError ? (
-                <div className="text-center py-8 space-y-2">
-                  <p className="text-sm text-gray-500">{membersActivityError}</p>
-                  <p className="text-xs text-gray-400">Try refreshing in a moment. This feed now pulls straight from the shared activity log on the server.</p>
-                </div>
-              ) : membersActivity.length === 0 ? (
-                <div className="text-center py-8 space-y-2">
-                  <p className="text-sm text-gray-500">No recent buddy activity yet.</p>
-                  <p className="text-xs text-gray-400">This list pulls from your shared activity log, so older and new Bible Buddy actions will appear here as your group keeps moving.</p>
-                </div>
-              ) : (
-                <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
-                  {membersActivity.map((activity, index) => (
-                    <div
-                      key={`${activity.user_id}-${activity.created_at}-${index}`}
-                      className={`px-4 py-4 ${index > 0 ? "border-t border-gray-100" : ""}`}
-                    >
-                      <div className="flex items-start gap-3">
-                        <Link href={`/profile/${activity.user_id}`} className="flex-shrink-0">
-                          {activity.profile_image_url ? (
-                            <img src={activity.profile_image_url} alt={activity.display_name} className="w-11 h-11 rounded-full object-cover hover:opacity-80 transition" />
-                          ) : (
-                            <div className="w-11 h-11 rounded-full flex items-center justify-center text-white text-sm font-bold hover:opacity-80 transition" style={{ backgroundColor: avatarColor(activity.user_id) }}>
-                              {getInitial(activity.display_name)}
-                            </div>
-                          )}
-                        </Link>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between gap-3">
-                            <Link href={`/profile/${activity.user_id}`} className="text-sm font-semibold text-gray-900 hover:underline truncate">
-                              {activity.display_name}
-                            </Link>
-                            <span className="text-xs text-gray-400 flex-shrink-0">{timeAgo(activity.created_at)}</span>
-                          </div>
-                          <p className="text-sm text-gray-700 leading-relaxed mt-1">{formatMemberActivityLine(activity)}</p>
-                          <p className="text-xs text-gray-400 mt-2">
-                            {new Date(activity.created_at).toLocaleString("en-US", {
-                              month: "short",
-                              day: "numeric",
-                              hour: "numeric",
-                              minute: "2-digit",
-                            })}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-              {!loadingMembersActivity && !membersActivityError && membersActivity.length > 0 && membersActivityHasMore && (
-                <div className="mt-3">
-                  {membersActivityHasMore && (
-                    <button
-                      type="button"
-                      onClick={() => void loadMembersActivity(false)}
-                      disabled={loadingMoreMembersActivity}
-                      className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 transition disabled:opacity-60"
-                    >
-                      {loadingMoreMembersActivity ? "Loading more activity..." : "Load 10 More"}
-                    </button>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
       {showTopBuddiesModal && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
@@ -4707,12 +4599,12 @@ export default function GroupChatPage() {
                 <button
                   onClick={() => {
                     setShowGroupInfoModal(false);
-                    setShowMembersActivityModal(true);
+                    setActiveTab("members");
                   }}
                   className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white transition hover:opacity-90"
                   style={{ backgroundColor: SAGE }}
                 >
-                  Buddies Activity
+                  View All Buddies
                 </button>
                 <button
                   onClick={() => setShowGroupInfoModal(false)}
@@ -4822,6 +4714,18 @@ export default function GroupChatPage() {
                   </button>
                   {activePostMenuId === post.id && (
                     <div className="absolute right-0 top-10 z-10 min-w-[140px] rounded-2xl border border-gray-200 bg-white shadow-lg overflow-hidden">
+                      {canEditFeedPost(post) && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            startEditingFeedPost(post);
+                          }}
+                          className="w-full px-4 py-3 text-left text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
+                        >
+                          Edit Post
+                        </button>
+                      )}
                       {isLeaderOrMod && (
                         <button
                           type="button"
