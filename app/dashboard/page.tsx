@@ -16,6 +16,7 @@ import AdSlot from "../../components/AdSlot";
 import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
 import { getDailyRecommendation, type DailyRecommendation } from "../../lib/dailyRecommendation";
+import { ModalShell } from "../../components/ModalShell";
 import {
   DEFAULT_FEATURE_TOURS,
   normalizeFeatureTours,
@@ -147,6 +148,8 @@ export default function DashboardPage() {
   const [pendingTourNavigation, setPendingTourNavigation] = useState<string | null>(null);
   const [isSavingFeatureTour, setIsSavingFeatureTour] = useState(false);
   const [dailyRecommendationCard, setDailyRecommendationCard] = useState<DailyRecommendation | null>(null);
+  const [showInviteBuddyModal, setShowInviteBuddyModal] = useState(false);
+  const [copiedInviteLink, setCopiedInviteLink] = useState(false);
 
   // Daily Welcome Overlay logic (with dev override)
   useEffect(() => {
@@ -1220,6 +1223,36 @@ export default function DashboardPage() {
   // - User is NOT a Pro member
   const shouldShowAds = ENABLE_ADS && userId && membershipStatus !== "pro";
   const dailyRecommendationCardCopy = buildDailyRecommendationCardCopy(dailyRecommendationCard);
+  const inviteLink = typeof window !== "undefined" ? `${window.location.origin}/signup` : "https://www.biblebuddy.com/signup";
+  const inviteText = "I've been using Bible Buddy to read and study the Bible. Come join me.";
+
+  async function handleInviteBuddy() {
+    setCopiedInviteLink(false);
+
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({
+          title: "Join me on Bible Buddy",
+          text: inviteText,
+          url: inviteLink,
+        });
+        return;
+      } catch {
+        // fall through to fallback modal
+      }
+    }
+
+    setShowInviteBuddyModal(true);
+  }
+
+  async function handleCopyInviteLink() {
+    try {
+      await navigator.clipboard.writeText(`${inviteText} ${inviteLink}`);
+      setCopiedInviteLink(true);
+    } catch (error) {
+      console.warn("Could not copy invite link:", error);
+    }
+  }
 
   useEffect(() => {
     let cancelled = false;
@@ -1309,6 +1342,7 @@ export default function DashboardPage() {
           dailyRecommendation={dailyRecommendationCard}
           dailyRecommendationCardTitle={dailyRecommendationCardCopy.title}
           dailyRecommendationCardSubtitle={dailyRecommendationCardCopy.subtitle}
+          onInviteBuddy={handleInviteBuddy}
         />
         </div>
 
@@ -1348,6 +1382,7 @@ export default function DashboardPage() {
           dailyRecommendation={dailyRecommendationCard}
           dailyRecommendationCardTitle={dailyRecommendationCardCopy.title}
           dailyRecommendationCardSubtitle={dailyRecommendationCardCopy.subtitle}
+          onInviteBuddy={handleInviteBuddy}
         />
       </div>
 
@@ -1420,6 +1455,54 @@ export default function DashboardPage() {
           onUnderstand={handleTourUnderstand}
         />
       )}
+
+      <ModalShell isOpen={showInviteBuddyModal} onClose={() => setShowInviteBuddyModal(false)} backdropColor="bg-black/60">
+        <div className="w-[min(92vw,28rem)] rounded-[28px] bg-white shadow-2xl ring-1 ring-black/10 p-6">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7a58bf]">Invite</p>
+              <h2 className="text-2xl font-bold text-gray-900 mt-1">Invite a Bible Buddy</h2>
+              <p className="text-sm text-gray-600 mt-2">Share Bible Buddy with a friend by text, WhatsApp, or copy link.</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowInviteBuddyModal(false)}
+              className="w-9 h-9 rounded-full text-gray-500 hover:bg-gray-100 transition"
+            >
+              ×
+            </button>
+          </div>
+
+          <div className="mt-5 space-y-3">
+            <a
+              href={`sms:?&body=${encodeURIComponent(`${inviteText} ${inviteLink}`)}`}
+              className="block w-full rounded-2xl bg-[#f5f7fb] border border-gray-200 px-4 py-4 text-sm font-semibold text-gray-900 hover:bg-white transition"
+            >
+              Text a Friend
+            </a>
+            <a
+              href={`https://wa.me/?text=${encodeURIComponent(`${inviteText} ${inviteLink}`)}`}
+              target="_blank"
+              rel="noreferrer"
+              className="block w-full rounded-2xl bg-[#f5f7fb] border border-gray-200 px-4 py-4 text-sm font-semibold text-gray-900 hover:bg-white transition"
+            >
+              Share on WhatsApp
+            </a>
+            <button
+              type="button"
+              onClick={() => void handleCopyInviteLink()}
+              className="block w-full rounded-2xl bg-[#f5f7fb] border border-gray-200 px-4 py-4 text-sm font-semibold text-gray-900 hover:bg-white transition text-left"
+            >
+              {copiedInviteLink ? "Copied Invite Link" : "Copy Invite Link"}
+            </button>
+          </div>
+
+          <div className="mt-5 rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">Invite Link</p>
+            <p className="text-sm text-gray-700 mt-2 break-all">{inviteLink}</p>
+          </div>
+        </div>
+      </ModalShell>
 
       {/* Level Info Modal */}
       {showLevelInfoModal && (

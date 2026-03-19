@@ -3027,6 +3027,10 @@ export default function GroupChatPage() {
                   </div>
                 </button>
 
+                <div className="mb-4">
+                  {renderUpdateCard()}
+                </div>
+
                 <div className="mb-4 rounded-2xl border border-[#d8e8d7] bg-white shadow-sm overflow-hidden">
                   <div className="px-5 py-4">
                     <div className="flex items-start justify-between gap-4">
