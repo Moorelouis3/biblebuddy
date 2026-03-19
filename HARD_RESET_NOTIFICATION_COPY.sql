@@ -67,11 +67,10 @@ BEGIN
 
   IF v_actor_name IS NOT NULL THEN
     v_body := public.clean_bible_buddy_notification_body(v_actor_name, NEW.message);
-    v_title := v_actor_name || ' ' || v_body;
-    v_body := '';
+    v_title := v_actor_name || ' from Bible Buddy';
   ELSE
     v_title := 'Bible Buddy';
-    v_body := '';
+    v_body := COALESCE(NULLIF(NEW.message, ''), 'You have a new alert');
   END IF;
 
   INSERT INTO public.push_notification_jobs (
@@ -114,16 +113,24 @@ SET payload = jsonb_build_object(
         THEN COALESCE(
           NULLIF(n.from_user_name, ''),
           NULLIF(regexp_replace(COALESCE(j.payload->>'title', ''), '\s+from Bible Buddy\s*$', '', 'i'), '')
-        ) || ' ' || public.clean_bible_buddy_notification_body(
+        ) || ' from Bible Buddy'
+      ELSE 'Bible Buddy'
+    END,
+  'body',
+    CASE
+      WHEN COALESCE(
+        NULLIF(n.from_user_name, ''),
+        NULLIF(regexp_replace(COALESCE(j.payload->>'title', ''), '\s+from Bible Buddy\s*$', '', 'i'), '')
+      ) IS NOT NULL
+        THEN public.clean_bible_buddy_notification_body(
           COALESCE(
             NULLIF(n.from_user_name, ''),
             NULLIF(regexp_replace(COALESCE(j.payload->>'title', ''), '\s+from Bible Buddy\s*$', '', 'i'), '')
           ),
           COALESCE(j.payload->>'body', n.message, '')
         )
-      ELSE 'Bible Buddy'
+      ELSE COALESCE(NULLIF(COALESCE(j.payload->>'body', n.message, ''), ''), 'You have a new alert')
     END,
-  'body', '',
   'url', COALESCE(j.payload->>'url', n.article_slug, '/dashboard'),
   'type', COALESCE(j.payload->>'type', n.type, 'notification'),
   'notificationId', COALESCE(j.payload->>'notificationId', j.notification_id::text)

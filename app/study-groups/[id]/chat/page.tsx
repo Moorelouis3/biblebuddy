@@ -3014,12 +3014,15 @@ export default function GroupChatPage() {
                   </div>
                   <div className="px-5 py-4">
                     {currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs ? (
-                      <p
-                        className="text-lg font-bold"
-                        style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
-                      >
-                        Study starts in {formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)}
-                      </p>
+                      <div className="flex items-center justify-between gap-3">
+                        <p
+                          className="text-base font-bold whitespace-nowrap"
+                          style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
+                        >
+                          Study starts in {formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)}
+                        </p>
+                        <p className="text-xs text-gray-600 text-right whitespace-nowrap">{formatDateTimeLabel(currentSeriesStartAt)}</p>
+                      </div>
                     ) : (
                       <p
                         className="text-lg font-bold"
@@ -3028,7 +3031,9 @@ export default function GroupChatPage() {
                         {cardState.headline}
                       </p>
                     )}
-                    <p className="text-sm text-gray-600 mt-1">{cardState.detail}</p>
+                    {!currentSeriesStartAt || new Date(currentSeriesStartAt).getTime() <= nowTs ? (
+                      <p className="text-sm text-gray-600 mt-1">{cardState.detail}</p>
+                    ) : null}
                   </div>
                 </button>
 

@@ -105,6 +105,8 @@ BEGIN
   END IF;
 
   IF v_actor_name IS NOT NULL THEN
+    v_title := v_actor_name || ' from Bible Buddy';
+
     IF NEW.message IS NOT NULL AND position(v_actor_name || ' ' in NEW.message) = 1 THEN
       v_body := substr(NEW.message, char_length(v_actor_name) + 2);
     ELSE
@@ -118,11 +120,9 @@ BEGIN
     END IF;
 
     v_body := COALESCE(NULLIF(btrim(v_body), ''), 'sent you a new alert');
-    v_title := v_actor_name || ' ' || v_body;
-    v_body := '';
   ELSE
     v_title := 'Bible Buddy';
-    v_body := '';
+    v_body := COALESCE(NULLIF(NEW.message, ''), 'You have a new alert');
   END IF;
 
   INSERT INTO public.push_notification_jobs (

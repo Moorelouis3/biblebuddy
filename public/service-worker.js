@@ -49,7 +49,7 @@ self.addEventListener("push", (event) => {
   const payload = event.data ? event.data.json() : {};
   const title = payload.title || "Bible Buddy";
   const options = {
-    body: typeof payload.body === "string" ? payload.body : "",
+    body: payload.body || "You have a new notification.",
     icon: "/Biblebuddyicon.png",
     badge: "/Biblebuddyicon.png",
     data: {
