@@ -46,8 +46,8 @@ BEGIN
   END IF;
 
   v_content :=
-    '<p>Truth Thursday is about real faith, real people, and real stories of what God has done.</p>' ||
-    '<p>Share as much of your story as you feel comfortable sharing in the comments.</p>';
+    '<p>Which Bible translation do you read when studying the Bible?</p>' ||
+    '<p>Drop your answer in the comments.</p>';
 
   INSERT INTO public.group_posts (
     group_id,
@@ -61,7 +61,7 @@ BEGIN
     v_group_id,
     v_louis_id,
     'Louis',
-    'What''s your testimony? How did God begin changing your life?',
+    'What''s your go to Bible translation right now?',
     'weekly_question',
     v_content
   )
@@ -82,11 +82,11 @@ BEGIN
     v_group_id,
     v_post_id,
     v_week_key,
-    'testimony',
-    'Your Testimony',
-    'What''s your testimony? How did God begin changing your life?',
-    'Truth Thursday is about real faith, real people, and real stories of what God has done.',
-    'Share as much of your story as you feel comfortable sharing in the comments.',
+    'go_to_translation',
+    'Bible Translation',
+    'What''s your go to Bible translation right now?',
+    'Which Bible translation do you read when studying the Bible?',
+    'Drop your answer in the comments.',
     v_louis_id
   );
 END $$;
