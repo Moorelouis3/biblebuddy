@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -104,6 +104,21 @@ type CalendarEvent = {
   pollOptions?: string[];
 };
 
+type CarouselQueueItem = {
+  id: string;
+  group_id: string;
+  created_by: string;
+  post_style: "cover" | "text";
+  title: string | null;
+  caption: string | null;
+  cover_image_url: string | null;
+  scheduled_for: string | null;
+  status: "draft" | "scheduled" | "published";
+  published_post_id: string | null;
+  published_at: string | null;
+  created_at: string;
+};
+
 const BERLIN_TIME_ZONE = "Europe/Berlin";
 
 function getBerlinDateParts(date: Date) {
@@ -135,6 +150,35 @@ function getBerlinDateKey(date: Date) {
   return `${parts.year}-${String(parts.month).padStart(2, "0")}-${String(parts.day).padStart(2, "0")}`;
 }
 
+function formatQueueDateTime(dateStr: string | null) {
+  if (!dateStr) return "Not scheduled";
+  return new Date(dateStr).toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
+function toDateTimeLocalValue(dateStr: string | null) {
+  if (!dateStr) return "";
+  const date = new Date(dateStr);
+  const offset = date.getTimezoneOffset();
+  const local = new Date(date.getTime() - offset * 60000);
+  return local.toISOString().slice(0, 16);
+}
+
+function queueStatusLabel(item: CarouselQueueItem) {
+  if (item.status === "published") return "Posted";
+  if (item.status === "scheduled") return "Scheduled";
+  return "Draft";
+}
+
+function queueStyleLabel(item: CarouselQueueItem) {
+  return item.post_style === "text" ? "Text Post" : "Cover Post";
+}
+
 export default function StudyGroupAnalyticsPage() {
   const params = useParams();
   const router = useRouter();
@@ -145,6 +189,21 @@ export default function StudyGroupAnalyticsPage() {
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
   const [selectedMetricKey, setSelectedMetricKey] = useState<string | null>("feed_visitors");
   const [chartWeekOffset, setChartWeekOffset] = useState(0);
+  const [adminUserId, setAdminUserId] = useState<string | null>(null);
+  const [carouselQueue, setCarouselQueue] = useState<CarouselQueueItem[]>([]);
+  const [queueLoading, setQueueLoading] = useState(false);
+  const [queueError, setQueueError] = useState<string | null>(null);
+  const [queuePostStyle, setQueuePostStyle] = useState<"cover" | "text">("cover");
+  const [queueTitle, setQueueTitle] = useState("");
+  const [queueCaption, setQueueCaption] = useState("");
+  const [queueScheduledFor, setQueueScheduledFor] = useState("");
+  const [queueCoverFile, setQueueCoverFile] = useState<File | null>(null);
+  const [queueCoverPreview, setQueueCoverPreview] = useState<string | null>(null);
+  const [savingQueueItem, setSavingQueueItem] = useState(false);
+  const [publishingQueueId, setPublishingQueueId] = useState<string | null>(null);
+  const [deletingQueueId, setDeletingQueueId] = useState<string | null>(null);
+  const [selectedQueueItemId, setSelectedQueueItemId] = useState<string | null>(null);
+  const queueFileInputRef = useRef<HTMLInputElement>(null);
 
   const metricCards = [
     { key: "feed_visitors", label: "Feed Visitors", value: data?.metrics.bibleStudyCardClicks24h ?? 0, helper: `${data?.metrics.uniqueBibleStudyCardVisitors24h ?? 0} unique buddies clicked the Bible study card in the last 24 hours` },
@@ -263,6 +322,9 @@ export default function StudyGroupAnalyticsPage() {
   const selectedEvent =
     calendarEvents.find((event) => event.id === selectedEventId) || null;
 
+  const selectedQueueItem =
+    carouselQueue.find((item) => item.id === selectedQueueItemId) || null;
+
   const calendarDays = useMemo(() => {
     const berlinToday = getBerlinDateParts(new Date());
     const weekdayOrder: Record<string, number> = {
@@ -292,6 +354,163 @@ export default function StudyGroupAnalyticsPage() {
     });
   }, [calendarEvents]);
 
+  async function loadCarouselQueue(currentUserId: string) {
+    setQueueLoading(true);
+    setQueueError(null);
+    try {
+      const { data: queueRows, error: queueLoadError } = await supabase
+        .from("group_feed_carousel_queue")
+        .select("id, group_id, created_by, post_style, title, caption, cover_image_url, scheduled_for, status, published_post_id, published_at, created_at")
+        .eq("group_id", groupId)
+        .eq("created_by", currentUserId)
+        .order("created_at", { ascending: false });
+
+      if (queueLoadError) {
+        throw queueLoadError;
+      }
+
+      setCarouselQueue((queueRows || []) as CarouselQueueItem[]);
+    } catch (err) {
+      setQueueError(err instanceof Error ? err.message : "Could not load the home feed scheduler.");
+    } finally {
+      setQueueLoading(false);
+    }
+  }
+
+  function resetQueueComposer() {
+    setQueuePostStyle("cover");
+    setQueueTitle("");
+    setQueueCaption("");
+    setQueueScheduledFor("");
+    setQueueCoverFile(null);
+    if (queueCoverPreview) {
+      URL.revokeObjectURL(queueCoverPreview);
+    }
+    setQueueCoverPreview(null);
+    if (queueFileInputRef.current) {
+      queueFileInputRef.current.value = "";
+    }
+  }
+
+  async function handleCreateQueueItem() {
+    if (!adminUserId) {
+      setQueueError("Could not verify your account.");
+      return;
+    }
+
+    if (queuePostStyle === "cover" && !queueCoverFile) {
+      setQueueError("Upload a carousel cover first.");
+      return;
+    }
+
+    setSavingQueueItem(true);
+    setQueueError(null);
+
+    try {
+      let coverImageUrl: string | null = null;
+
+      if (queuePostStyle === "cover" && queueCoverFile) {
+        const ext = queueCoverFile.name.split(".").pop() ?? "jpg";
+        const path = `${adminUserId}/group-carousel-${Date.now()}.${ext}`;
+        const { error: uploadError } = await supabase.storage
+          .from("post-media")
+          .upload(path, queueCoverFile, { upsert: false });
+
+        if (uploadError) {
+          throw uploadError;
+        }
+
+        const { data: publicUrlData } = supabase.storage.from("post-media").getPublicUrl(path);
+        coverImageUrl = publicUrlData.publicUrl;
+      }
+      const scheduledForIso = queueScheduledFor ? new Date(queueScheduledFor).toISOString() : null;
+
+      const { error: insertError } = await supabase.from("group_feed_carousel_queue").insert({
+        group_id: groupId,
+        created_by: adminUserId,
+        post_style: queuePostStyle,
+        title: queueTitle.trim() || null,
+        caption: queueCaption.trim() || null,
+        cover_image_url: coverImageUrl,
+        scheduled_for: scheduledForIso,
+        status: scheduledForIso ? "scheduled" : "draft",
+      });
+
+      if (insertError) {
+        throw insertError;
+      }
+
+      resetQueueComposer();
+      await loadCarouselQueue(adminUserId);
+    } catch (err) {
+      setQueueError(err instanceof Error ? err.message : "Could not save this home feed draft.");
+    } finally {
+      setSavingQueueItem(false);
+    }
+  }
+
+  async function handlePublishQueueItem(queueItem: CarouselQueueItem) {
+    if (!queueItem || publishingQueueId) return;
+    setPublishingQueueId(queueItem.id);
+    setQueueError(null);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch(`/api/groups/${groupId}/carousel-queue/publish`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ queueId: queueItem.id }),
+      });
+
+      const payload = await response.json();
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not post this carousel to the home feed.");
+      }
+
+      if (adminUserId) {
+        await loadCarouselQueue(adminUserId);
+      }
+    } catch (err) {
+      setQueueError(err instanceof Error ? err.message : "Could not publish this queued post.");
+    } finally {
+      setPublishingQueueId(null);
+    }
+  }
+
+  async function handleDeleteQueueItem(queueItemId: string) {
+    if (!adminUserId || deletingQueueId) return;
+    setDeletingQueueId(queueItemId);
+    setQueueError(null);
+
+    try {
+      const { error: deleteError } = await supabase
+        .from("group_feed_carousel_queue")
+        .delete()
+        .eq("id", queueItemId);
+
+      if (deleteError) {
+        throw deleteError;
+      }
+
+      if (selectedQueueItemId === queueItemId) {
+        setSelectedQueueItemId(null);
+      }
+      await loadCarouselQueue(adminUserId);
+    } catch (err) {
+      setQueueError(err instanceof Error ? err.message : "Could not delete this queued post.");
+    } finally {
+      setDeletingQueueId(null);
+    }
+  }
+
   useEffect(() => {
     let cancelled = false;
 
@@ -305,6 +524,7 @@ export default function StudyGroupAnalyticsPage() {
         router.push("/login");
         return;
       }
+      setAdminUserId(user.id);
       if (user.email !== "moorelouis3@gmail.com") {
         router.push(`/study-groups/${groupId}/chat`);
         return;
@@ -336,6 +556,8 @@ export default function StudyGroupAnalyticsPage() {
           setSelectedMetricKey("feed_visitors");
           setChartWeekOffset(0);
         }
+
+        await loadCarouselQueue(user.id);
       } catch (err) {
         if (!cancelled) {
           setError(err instanceof Error ? err.message : "Could not load analytics.");
@@ -511,6 +733,200 @@ export default function StudyGroupAnalyticsPage() {
               })}
             </div>
           </div>
+
+          <div className="mt-8 rounded-3xl border border-[#e5e7eb] bg-white p-5 shadow-sm">
+            <div className="flex items-start justify-between gap-4 flex-wrap">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-gray-400">Home Feed Scheduler</p>
+                <p className="mt-2 text-lg font-bold text-gray-900">Louis-only carousel queue</p>
+                <p className="mt-2 max-w-2xl text-sm text-gray-600">
+                  Switch between an IG-style cover post and a text-only thread post, then keep it in a private queue below the calendar. You can post it now or schedule it to publish automatically into the home feed as a real group post.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-600">
+                {carouselQueue.length} queued post{carouselQueue.length === 1 ? "" : "s"}
+              </div>
+            </div>
+
+            <div className="mt-5 grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
+              <div className="rounded-3xl border border-gray-200 bg-[#fafafa] p-4">
+                <p className="text-sm font-semibold text-gray-900">Add a home feed draft</p>
+                <p className="mt-1 text-xs text-gray-500">This stays hidden here until you post it or its scheduled time arrives.</p>
+
+                <div className="mt-4 grid grid-cols-2 gap-2 rounded-2xl border border-gray-200 bg-white p-1">
+                  <button
+                    type="button"
+                    onClick={() => setQueuePostStyle("cover")}
+                    className={`rounded-2xl px-3 py-2.5 text-sm font-semibold transition ${
+                      queuePostStyle === "cover" ? "bg-[#4a9b6f] text-white" : "text-gray-600 hover:bg-gray-50"
+                    }`}
+                  >
+                    Cover Post
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setQueuePostStyle("text")}
+                    className={`rounded-2xl px-3 py-2.5 text-sm font-semibold transition ${
+                      queuePostStyle === "text" ? "bg-[#4a9b6f] text-white" : "text-gray-600 hover:bg-gray-50"
+                    }`}
+                  >
+                    Text Post
+                  </button>
+                </div>
+
+                <input
+                  ref={queueFileInputRef}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(event) => {
+                    const file = event.target.files?.[0] ?? null;
+                    setQueueCoverFile(file);
+                    if (queueCoverPreview) {
+                      URL.revokeObjectURL(queueCoverPreview);
+                    }
+                    setQueueCoverPreview(file ? URL.createObjectURL(file) : null);
+                  }}
+                />
+
+                {queuePostStyle === "cover" ? (
+                  <button
+                    type="button"
+                    onClick={() => queueFileInputRef.current?.click()}
+                    className="mt-4 flex aspect-square w-full items-center justify-center overflow-hidden rounded-[26px] border border-dashed border-gray-300 bg-white text-center transition hover:border-[#4a9b6f]"
+                  >
+                    {queueCoverPreview ? (
+                      <img src={queueCoverPreview} alt="Carousel cover preview" className="h-full w-full object-cover" />
+                    ) : (
+                      <div className="px-6">
+                        <p className="text-sm font-semibold text-gray-700">Upload carousel cover</p>
+                        <p className="mt-1 text-xs text-gray-400">Square cover image like your IG grid</p>
+                      </div>
+                    )}
+                  </button>
+                ) : (
+                  <div className="mt-4 rounded-[26px] border border-gray-200 bg-white p-5">
+                    <div className="rounded-[22px] border border-gray-200 bg-[#f8f8f8] p-4">
+                      <p className="text-xs font-bold uppercase tracking-[0.14em] text-gray-400">Thread Preview</p>
+                      {queueTitle ? <p className="mt-3 text-lg font-bold leading-tight text-gray-900">{queueTitle}</p> : null}
+                      <p className="mt-3 whitespace-pre-line text-sm leading-6 text-gray-700">
+                        {queueCaption || "Your text-only post preview shows here."}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                <div className="mt-4 space-y-3">
+                  <input
+                    value={queueTitle}
+                    onChange={(event) => setQueueTitle(event.target.value)}
+                    placeholder={queuePostStyle === "text" ? "Subject" : "Optional title"}
+                    className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d7eadf]"
+                  />
+                  <textarea
+                    value={queueCaption}
+                    onChange={(event) => setQueueCaption(event.target.value)}
+                    placeholder={queuePostStyle === "text" ? "Paste your thread-style post here..." : "Write the caption you want under the carousel..."}
+                    rows={6}
+                    className="w-full resize-none rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d7eadf]"
+                  />
+                  <div>
+                    <label className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
+                      Auto Post Time
+                    </label>
+                    <input
+                      type="datetime-local"
+                      value={queueScheduledFor}
+                      onChange={(event) => setQueueScheduledFor(event.target.value)}
+                      className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#d7eadf]"
+                    />
+                  </div>
+                </div>
+
+                <div className="mt-4 flex gap-3">
+                  <button
+                    type="button"
+                    onClick={handleCreateQueueItem}
+                    disabled={savingQueueItem || (queuePostStyle === "cover" && !queueCoverFile)}
+                    className="flex-1 rounded-2xl bg-[#4a9b6f] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
+                  >
+                    {savingQueueItem ? "Saving..." : "Save to Queue"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={resetQueueComposer}
+                    className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-600 transition hover:bg-gray-50"
+                  >
+                    Clear
+                  </button>
+                </div>
+
+                {queueError ? <p className="mt-3 text-sm text-red-600">{queueError}</p> : null}
+              </div>
+
+              <div>
+                {queueLoading ? (
+                  <div className="rounded-3xl border border-gray-200 bg-[#fafafa] px-6 py-12 text-center text-sm text-gray-500">
+                    Loading your queued home feed posts...
+                  </div>
+                ) : carouselQueue.length === 0 ? (
+                  <div className="rounded-3xl border border-dashed border-gray-200 bg-[#fafafa] px-6 py-12 text-center">
+                    <p className="text-lg font-bold text-gray-900">No queued posts yet</p>
+                    <p className="mt-2 text-sm text-gray-500">Add your first cover post or text-only thread on the left and it will land here like a private IG grid.</p>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+                    {carouselQueue.map((item) => (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => setSelectedQueueItemId(item.id)}
+                        className="group relative aspect-square overflow-hidden rounded-[24px] border border-gray-200 bg-gray-100 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                      >
+                        {item.post_style === "cover" && item.cover_image_url ? (
+                          <>
+                            <img src={item.cover_image_url} alt={item.title || "Queued cover post"} className="h-full w-full object-cover" />
+                            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent p-3 text-left">
+                              <div className="mb-2 flex flex-wrap gap-2">
+                                <div className="inline-flex rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-gray-700">
+                                  {queueStatusLabel(item)}
+                                </div>
+                                <div className="inline-flex rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">
+                                  {queueStyleLabel(item)}
+                                </div>
+                              </div>
+                              <p className="line-clamp-2 text-sm font-bold text-white">
+                                {item.title || item.caption || "Untitled cover post"}
+                              </p>
+                            </div>
+                          </>
+                        ) : (
+                          <div className="flex h-full flex-col justify-between bg-white p-3 text-left">
+                            <div className="flex flex-wrap gap-2">
+                              <div className="inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-gray-700">
+                                {queueStatusLabel(item)}
+                              </div>
+                              <div className="inline-flex rounded-full bg-[#eef7f1] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#4a9b6f]">
+                                {queueStyleLabel(item)}
+                              </div>
+                            </div>
+                            <div className="mt-3">
+                              {item.title ? (
+                                <p className="line-clamp-3 text-base font-bold leading-tight text-gray-900">{item.title}</p>
+                              ) : null}
+                              <p className="mt-2 line-clamp-6 text-sm leading-5 text-gray-600">
+                                {item.caption || "Untitled text post"}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -570,6 +986,105 @@ export default function StudyGroupAnalyticsPage() {
 
               <div className="mt-5 border-t border-[#efe5d9] pt-4 text-sm text-gray-500">
                 0 likes / 0 Comments
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {selectedQueueItem ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-6"
+          onClick={() => setSelectedQueueItemId(null)}
+        >
+          <div
+            className="w-full max-w-4xl overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className={selectedQueueItem.post_style === "cover" ? "grid md:grid-cols-[minmax(0,420px)_minmax(0,1fr)]" : "grid md:grid-cols-1"}>
+              {selectedQueueItem.post_style === "cover" && selectedQueueItem.cover_image_url ? (
+                <div className="bg-black">
+                  <img
+                    src={selectedQueueItem.cover_image_url}
+                    alt={selectedQueueItem.title || "Queued cover post"}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              ) : null}
+              <div className="flex flex-col">
+                <div className="flex items-start justify-between gap-4 border-b border-gray-100 px-5 py-4">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-gray-400">Home Feed Scheduler</p>
+                    <p className="mt-1 text-lg font-bold text-gray-900">
+                      {selectedQueueItem.title || (selectedQueueItem.post_style === "text" ? "Untitled text post" : "Untitled cover post")}
+                    </p>
+                    <p className="mt-2 text-sm text-gray-500">
+                      {queueStatusLabel(selectedQueueItem)} • {selectedQueueItem.status === "published"
+                        ? `Posted ${formatQueueDateTime(selectedQueueItem.published_at)}`
+                        : `Auto post: ${formatQueueDateTime(selectedQueueItem.scheduled_for)}`}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedQueueItemId(null)}
+                    className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-sm font-semibold text-gray-600"
+                  >
+                    Close
+                  </button>
+                </div>
+
+                <div className="flex-1 overflow-y-auto px-5 py-5">
+                  <div className="rounded-[26px] border border-gray-200 bg-[#fafafa] p-5">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#eef7f1] text-sm font-bold text-[#4a9b6f]">
+                        L
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">Louis</p>
+                        <p className="text-xs text-gray-400">Queued home feed preview</p>
+                      </div>
+                    </div>
+
+                    {selectedQueueItem.title ? (
+                      <h3 className="mt-4 text-[24px] font-bold leading-tight text-gray-900">{selectedQueueItem.title}</h3>
+                    ) : null}
+
+                    <div className="mt-4 whitespace-pre-line text-[15px] leading-7 text-gray-700">
+                      {selectedQueueItem.caption || "No caption yet."}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border-t border-gray-100 px-5 py-4">
+                  <div className="flex flex-wrap gap-3">
+                    {selectedQueueItem.status !== "published" ? (
+                      <button
+                        type="button"
+                        onClick={() => void handlePublishQueueItem(selectedQueueItem)}
+                        disabled={publishingQueueId === selectedQueueItem.id}
+                        className="rounded-2xl bg-[#4a9b6f] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
+                      >
+                        {publishingQueueId === selectedQueueItem.id ? "Posting..." : "Post to Home Feed"}
+                      </button>
+                    ) : (
+                      <Link
+                        href={`/study-groups/${groupId}/chat`}
+                        className="rounded-2xl bg-[#4a9b6f] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+                      >
+                        Open Group Feed
+                      </Link>
+                    )}
+
+                    <button
+                      type="button"
+                      onClick={() => void handleDeleteQueueItem(selectedQueueItem.id)}
+                      disabled={deletingQueueId === selectedQueueItem.id}
+                      className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-50 disabled:opacity-50"
+                    >
+                      {deletingQueueId === selectedQueueItem.id ? "Deleting..." : "Delete"}
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -5,6 +5,10 @@
       "schedule": "* * * * *"
     },
     {
+      "path": "/api/cron/publish-group-feed-carousel",
+      "schedule": "*/15 * * * *"
+    },
+    {
       "path": "/api/cron/weekly-group-trivia",
       "schedule": "0 16,17 * * 2"
     },
