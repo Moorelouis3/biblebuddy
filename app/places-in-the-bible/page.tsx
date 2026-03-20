@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+export const dynamic = "force-dynamic";
+
+import { Suspense, useState, useEffect, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
@@ -33,7 +35,7 @@ function normalizePlaceMarkdown(markdown: string): string {
     .trim();
 }
 
-export default function PlacesInTheBiblePage() {
+function PlacesInTheBiblePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [places] = useState<BiblePlace[]>(createStaticPlaces());
@@ -879,5 +881,13 @@ RULES:
 
 
     </div>
+  );
+}
+
+export default function PlacesInTheBiblePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#f8f6ef]" />}>
+      <PlacesInTheBiblePageContent />
+    </Suspense>
   );
 }

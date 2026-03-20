@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect, useMemo, useRef } from "react";
+export const dynamic = "force-dynamic";
+
+import { Suspense, useState, useEffect, useMemo, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { type BiblePerson } from "../../lib/biblePeople";
 import ReactMarkdown from "react-markdown";
@@ -414,7 +416,7 @@ function normalizePersonMarkdown(markdown: string): string {
     .trim();
 }
 
-export default function PeopleInTheBiblePage() {
+function PeopleInTheBiblePageContent() {
     const searchParams = useSearchParams();
     // Credit state for modal logic
     const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; ignore_credit_phase1: boolean | null } | null>(null);
@@ -1340,5 +1342,13 @@ FINAL RULES:
       />
 
     </div>
+  );
+}
+
+export default function PeopleInTheBiblePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#f8f6ef]" />}>
+      <PeopleInTheBiblePageContent />
+    </Suspense>
   );
 }

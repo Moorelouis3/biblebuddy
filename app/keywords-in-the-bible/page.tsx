@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+export const dynamic = "force-dynamic";
+
+import { Suspense, useState, useEffect, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
@@ -46,7 +48,7 @@ function normalizeKeywordMarkdown(markdown: string): string {
     .trim();
 }
 
-export default function KeywordsInTheBiblePage() {
+function KeywordsInTheBiblePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [keywords] = useState<BibleKeyword[]>(createStaticKeywords());
@@ -885,5 +887,13 @@ RULES:
 
 
     </div>
+  );
+}
+
+export default function KeywordsInTheBiblePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#f8f6ef]" />}>
+      <KeywordsInTheBiblePageContent />
+    </Suspense>
   );
 }
