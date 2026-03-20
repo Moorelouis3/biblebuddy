@@ -6,6 +6,7 @@ import { useEffect, useState, useRef, type MouseEvent } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../../lib/supabaseClient";
+import { HOME_FEED_COVER_MARKER } from "@/lib/groupFeedCarouselScheduler";
 import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { TOTAL_WEEKS, getSeriesWeekLesson } from "@/lib/seriesContent";
@@ -399,6 +400,14 @@ function getPostPreviewText(html: string): string {
     .slice(0, 4);
 
   return previewLines.join("\n");
+}
+
+function isHomeFeedCoverPost(post: Pick<Post, "media_url" | "content">): boolean {
+  return Boolean(post.media_url && post.content?.includes(HOME_FEED_COVER_MARKER));
+}
+
+function getRenderablePostContent(html: string): string {
+  return html.replace(HOME_FEED_COVER_MARKER, "").trim();
 }
 
 function GroupCommentSection({
@@ -2780,6 +2789,7 @@ export default function GroupChatPage() {
   const activeFeedPollSet = activeFeedPost ? weeklyPollByPostId[activeFeedPost.id] : undefined;
   const activeFeedTriviaSet = activeFeedPost ? weeklyTriviaByPostId[activeFeedPost.id] : undefined;
   const activeFeedQuestionSet = activeFeedPost ? weeklyQuestionByPostId[activeFeedPost.id] : undefined;
+  const activeFeedCoverPost = activeFeedPost ? isHomeFeedCoverPost(activeFeedPost) : false;
   const isLeader = userRole === "leader";
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
   const isLouisAdmin = userEmail === "moorelouis3@gmail.com";
@@ -3942,7 +3952,7 @@ export default function GroupChatPage() {
                   <UserBadge customBadge={activeFeedPost.member_badge} isPaid={activeFeedPost.is_paid} groupRole={activeFeedPost.role} />
                   <span className="text-xs text-gray-400">{timeAgo(activeFeedPost.created_at)}</span>
                 </div>
-                {activeFeedPost.title && (
+                {activeFeedPost.title && !activeFeedCoverPost && (
                   <h2 className="text-xl font-bold text-gray-900 mt-2 leading-snug">{activeFeedPost.title}</h2>
                 )}
               </div>
@@ -3959,10 +3969,10 @@ export default function GroupChatPage() {
             </div>
 
             <div className="px-6 py-5">
-              {!activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && (
+              {!activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && (
                 <div
                   className="prose prose-sm max-w-none text-gray-800 leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: activeFeedPost.content }}
+                  dangerouslySetInnerHTML={{ __html: getRenderablePostContent(activeFeedPost.content) }}
                 />
               )}
               {activeFeedPollSet && (
@@ -4002,6 +4012,17 @@ export default function GroupChatPage() {
                     style={{ maxHeight: "520px", objectPosition: "center" }}
                   />
                 </button>
+              )}
+
+              {activeFeedCoverPost && activeFeedPost.title && (
+                <h2 className="mt-5 text-xl font-bold leading-snug text-gray-900">{activeFeedPost.title}</h2>
+              )}
+
+              {activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && (
+                <div
+                  className="prose prose-sm mt-5 max-w-none text-gray-800 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: getRenderablePostContent(activeFeedPost.content) }}
+                />
               )}
 
               <div className="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
@@ -4684,6 +4705,7 @@ export default function GroupChatPage() {
         {orderedPosts.map((post) => {
           const pollSet = weeklyPollByPostId[post.id];
           const hasImagePost = Boolean(post.media_url && !isUploadedVideo(post.media_url) && !post.link_url);
+          const isCoverOnlyFeedPost = isHomeFeedCoverPost(post);
           const triviaSet = weeklyTriviaByPostId[post.id];
           const questionSet = weeklyQuestionByPostId[post.id];
           return (
@@ -4777,8 +4799,8 @@ export default function GroupChatPage() {
                 </div>
               )}
             </div>
-            {post.title && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
-            {!pollSet && !triviaSet && !questionSet && post.content && (
+            {post.title && !isCoverOnlyFeedPost && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
+            {!pollSet && !triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && (
               <p className={`text-sm text-gray-700 mt-3 leading-relaxed whitespace-pre-line line-clamp-4`}>
                 {getPostPreviewText(post.content)}
               </p>

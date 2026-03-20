@@ -1,7 +1,9 @@
 "use client";
 
+import { EditorContent, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -179,6 +181,23 @@ function queueStyleLabel(item: CarouselQueueItem) {
   return item.post_style === "text" ? "Text Post" : "Cover Post";
 }
 
+function stripSchedulerHtml(html: string) {
+  return html
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>/gi, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/\u00a0/g, " ")
+    .trim();
+}
+
+function getErrorMessage(error: unknown, fallback: string) {
+  if (error instanceof Error && error.message) return error.message;
+  if (error && typeof error === "object" && "message" in error && typeof (error as { message?: unknown }).message === "string") {
+    return (error as { message: string }).message;
+  }
+  return fallback;
+}
+
 export default function StudyGroupAnalyticsPage() {
   const params = useParams();
   const router = useRouter();
@@ -195,7 +214,6 @@ export default function StudyGroupAnalyticsPage() {
   const [queueError, setQueueError] = useState<string | null>(null);
   const [queuePostStyle, setQueuePostStyle] = useState<"cover" | "text">("cover");
   const [queueTitle, setQueueTitle] = useState("");
-  const [queueCaption, setQueueCaption] = useState("");
   const [queueScheduledFor, setQueueScheduledFor] = useState("");
   const [queueCoverFile, setQueueCoverFile] = useState<File | null>(null);
   const [queueCoverPreview, setQueueCoverPreview] = useState<string | null>(null);
@@ -204,6 +222,32 @@ export default function StudyGroupAnalyticsPage() {
   const [deletingQueueId, setDeletingQueueId] = useState<string | null>(null);
   const [selectedQueueItemId, setSelectedQueueItemId] = useState<string | null>(null);
   const queueFileInputRef = useRef<HTMLInputElement>(null);
+  const queueEditor = useEditor({
+    extensions: [
+      StarterKit.configure({
+        heading: {
+          levels: [1, 2],
+        },
+      }),
+    ],
+    content: "",
+    immediatelyRender: false,
+    editorProps: {
+      attributes: {
+        class: "prose prose-sm max-w-none min-h-[180px] px-4 py-4 text-gray-800 focus:outline-none",
+      },
+    },
+  });
+
+  function runQueueEditorCommand(command: () => boolean) {
+    return (event: MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      command();
+    };
+  }
+
+  const queueEditorHtml = queueEditor?.getHTML() ?? "";
+  const queueEditorText = stripSchedulerHtml(queueEditorHtml);
 
   const metricCards = [
     { key: "feed_visitors", label: "Feed Visitors", value: data?.metrics.bibleStudyCardClicks24h ?? 0, helper: `${data?.metrics.uniqueBibleStudyCardVisitors24h ?? 0} unique buddies clicked the Bible study card in the last 24 hours` },
@@ -371,7 +415,7 @@ export default function StudyGroupAnalyticsPage() {
 
       setCarouselQueue((queueRows || []) as CarouselQueueItem[]);
     } catch (err) {
-      setQueueError(err instanceof Error ? err.message : "Could not load the home feed scheduler.");
+      setQueueError(getErrorMessage(err, "Could not load the home feed scheduler."));
     } finally {
       setQueueLoading(false);
     }
@@ -380,9 +424,9 @@ export default function StudyGroupAnalyticsPage() {
   function resetQueueComposer() {
     setQueuePostStyle("cover");
     setQueueTitle("");
-    setQueueCaption("");
     setQueueScheduledFor("");
     setQueueCoverFile(null);
+    queueEditor?.commands.setContent("");
     if (queueCoverPreview) {
       URL.revokeObjectURL(queueCoverPreview);
     }
@@ -430,7 +474,7 @@ export default function StudyGroupAnalyticsPage() {
         created_by: adminUserId,
         post_style: queuePostStyle,
         title: queueTitle.trim() || null,
-        caption: queueCaption.trim() || null,
+        caption: queueEditorHtml.trim() || null,
         cover_image_url: coverImageUrl,
         scheduled_for: scheduledForIso,
         status: scheduledForIso ? "scheduled" : "draft",
@@ -443,7 +487,7 @@ export default function StudyGroupAnalyticsPage() {
       resetQueueComposer();
       await loadCarouselQueue(adminUserId);
     } catch (err) {
-      setQueueError(err instanceof Error ? err.message : "Could not save this home feed draft.");
+      setQueueError(getErrorMessage(err, "Could not save this home feed draft."));
     } finally {
       setSavingQueueItem(false);
     }
@@ -479,7 +523,7 @@ export default function StudyGroupAnalyticsPage() {
         await loadCarouselQueue(adminUserId);
       }
     } catch (err) {
-      setQueueError(err instanceof Error ? err.message : "Could not publish this queued post.");
+      setQueueError(getErrorMessage(err, "Could not publish this queued post."));
     } finally {
       setPublishingQueueId(null);
     }
@@ -505,7 +549,7 @@ export default function StudyGroupAnalyticsPage() {
       }
       await loadCarouselQueue(adminUserId);
     } catch (err) {
-      setQueueError(err instanceof Error ? err.message : "Could not delete this queued post.");
+      setQueueError(getErrorMessage(err, "Could not delete this queued post."));
     } finally {
       setDeletingQueueId(null);
     }
@@ -560,7 +604,7 @@ export default function StudyGroupAnalyticsPage() {
         await loadCarouselQueue(user.id);
       } catch (err) {
         if (!cancelled) {
-          setError(err instanceof Error ? err.message : "Could not load analytics.");
+          setError(getErrorMessage(err, "Could not load analytics."));
         }
       } finally {
         if (!cancelled) {
@@ -809,9 +853,16 @@ export default function StudyGroupAnalyticsPage() {
                     <div className="rounded-[22px] border border-gray-200 bg-[#f8f8f8] p-4">
                       <p className="text-xs font-bold uppercase tracking-[0.14em] text-gray-400">Thread Preview</p>
                       {queueTitle ? <p className="mt-3 text-lg font-bold leading-tight text-gray-900">{queueTitle}</p> : null}
-                      <p className="mt-3 whitespace-pre-line text-sm leading-6 text-gray-700">
-                        {queueCaption || "Your text-only post preview shows here."}
-                      </p>
+                      <div className="mt-3 text-sm leading-6 text-gray-700">
+                        {queueEditorText ? (
+                          <div
+                            className="prose prose-sm max-w-none text-gray-700"
+                            dangerouslySetInnerHTML={{ __html: queueEditorHtml }}
+                          />
+                        ) : (
+                          "Your text-only post preview shows here."
+                        )}
+                      </div>
                     </div>
                   </div>
                 )}
@@ -823,13 +874,16 @@ export default function StudyGroupAnalyticsPage() {
                     placeholder={queuePostStyle === "text" ? "Subject" : "Optional title"}
                     className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d7eadf]"
                   />
-                  <textarea
-                    value={queueCaption}
-                    onChange={(event) => setQueueCaption(event.target.value)}
-                    placeholder={queuePostStyle === "text" ? "Paste your thread-style post here..." : "Write the caption you want under the carousel..."}
-                    rows={6}
-                    className="w-full resize-none rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d7eadf]"
-                  />
+                  <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+                    <div className="flex flex-wrap gap-2 border-b border-gray-100 px-4 py-3 bg-[#fafafa]">
+                      <button type="button" onMouseDown={runQueueEditorCommand(() => queueEditor?.chain().focus().toggleBold().run() ?? false)} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${queueEditor?.isActive("bold") ? "bg-[#dff0df] text-[#4f7e54]" : "border border-[#d7eadf] bg-white text-gray-600"}`}>Bold</button>
+                      <button type="button" onMouseDown={runQueueEditorCommand(() => queueEditor?.chain().focus().toggleItalic().run() ?? false)} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${queueEditor?.isActive("italic") ? "bg-[#dff0df] text-[#4f7e54]" : "border border-[#d7eadf] bg-white text-gray-600"}`}>Italic</button>
+                      <button type="button" onMouseDown={runQueueEditorCommand(() => queueEditor?.chain().focus().toggleHeading({ level: 1 }).run() ?? false)} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${queueEditor?.isActive("heading", { level: 1 }) ? "bg-[#dff0df] text-[#4f7e54]" : "border border-[#d7eadf] bg-white text-gray-600"}`}>H1</button>
+                      <button type="button" onMouseDown={runQueueEditorCommand(() => queueEditor?.chain().focus().toggleHeading({ level: 2 }).run() ?? false)} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${queueEditor?.isActive("heading", { level: 2 }) ? "bg-[#dff0df] text-[#4f7e54]" : "border border-[#d7eadf] bg-white text-gray-600"}`}>H2</button>
+                      <button type="button" onMouseDown={runQueueEditorCommand(() => queueEditor?.chain().focus().toggleBulletList().run() ?? false)} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${queueEditor?.isActive("bulletList") ? "bg-[#dff0df] text-[#4f7e54]" : "border border-[#d7eadf] bg-white text-gray-600"}`}>List</button>
+                    </div>
+                    <EditorContent editor={queueEditor} />
+                  </div>
                   <div>
                     <label className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
                       Auto Post Time
@@ -847,7 +901,7 @@ export default function StudyGroupAnalyticsPage() {
                   <button
                     type="button"
                     onClick={handleCreateQueueItem}
-                    disabled={savingQueueItem || (queuePostStyle === "cover" && !queueCoverFile)}
+                    disabled={savingQueueItem || !queueEditorText || (queuePostStyle === "cover" && !queueCoverFile)}
                     className="flex-1 rounded-2xl bg-[#4a9b6f] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
                   >
                     {savingQueueItem ? "Saving..." : "Save to Queue"}
@@ -896,7 +950,7 @@ export default function StudyGroupAnalyticsPage() {
                                 </div>
                               </div>
                               <p className="line-clamp-2 text-sm font-bold text-white">
-                                {item.title || item.caption || "Untitled cover post"}
+                                {item.title || stripSchedulerHtml(item.caption || "") || "Untitled cover post"}
                               </p>
                             </div>
                           </>
@@ -915,7 +969,7 @@ export default function StudyGroupAnalyticsPage() {
                                 <p className="line-clamp-3 text-base font-bold leading-tight text-gray-900">{item.title}</p>
                               ) : null}
                               <p className="mt-2 line-clamp-6 text-sm leading-5 text-gray-600">
-                                {item.caption || "Untitled text post"}
+                                {stripSchedulerHtml(item.caption || "") || "Untitled text post"}
                               </p>
                             </div>
                           </div>
@@ -1049,8 +1103,15 @@ export default function StudyGroupAnalyticsPage() {
                       <h3 className="mt-4 text-[24px] font-bold leading-tight text-gray-900">{selectedQueueItem.title}</h3>
                     ) : null}
 
-                    <div className="mt-4 whitespace-pre-line text-[15px] leading-7 text-gray-700">
-                      {selectedQueueItem.caption || "No caption yet."}
+                    <div className="mt-4 text-[15px] leading-7 text-gray-700">
+                      {selectedQueueItem.caption ? (
+                        <div
+                          className="prose prose-sm max-w-none text-gray-700"
+                          dangerouslySetInnerHTML={{ __html: selectedQueueItem.caption }}
+                        />
+                      ) : (
+                        "No caption yet."
+                      )}
                     </div>
                   </div>
                 </div>

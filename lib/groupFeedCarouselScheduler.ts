@@ -1,5 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
+export const HOME_FEED_COVER_MARKER = "<!--home-feed-cover-->";
+
 export type GroupFeedCarouselQueueItem = {
   id: string;
   group_id: string;
@@ -26,6 +28,10 @@ function escapeHtml(value: string): string {
 function captionToHtml(caption: string | null | undefined): string {
   const text = (caption || "").trim();
   if (!text) return "<p></p>";
+
+  if (/<[a-z][\s\S]*>/i.test(text)) {
+    return text;
+  }
 
   return text
     .split(/\n{2,}/)
@@ -55,7 +61,7 @@ export async function publishGroupFeedCarouselItem(
   }
 
   const displayName = await resolveDisplayName(supabaseAdmin, item.created_by);
-  const contentHtml = captionToHtml(item.caption);
+  const contentHtml = `${item.post_style === "cover" ? HOME_FEED_COVER_MARKER : ""}${captionToHtml(item.caption)}`;
 
   const { data: insertedPost, error: postError } = await supabaseAdmin
     .from("group_posts")
