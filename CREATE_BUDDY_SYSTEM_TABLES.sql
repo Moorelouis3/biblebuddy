@@ -146,6 +146,111 @@ CREATE POLICY "messages_update_read" ON public.messages
     AND auth.uid() != sender_id
   );
 
+-- Senders can edit the content of their own messages
+CREATE POLICY "messages_update_own" ON public.messages
+  FOR UPDATE TO authenticated
+  USING (
+    auth.uid() = sender_id
+    AND EXISTS (
+      SELECT 1 FROM public.conversations
+      WHERE conversations.id = messages.conversation_id
+        AND (conversations.user_id_1 = auth.uid() OR conversations.user_id_2 = auth.uid())
+    )
+    AND NOT EXISTS (
+      SELECT 1 FROM public.messages newer_messages
+      WHERE newer_messages.conversation_id = messages.conversation_id
+        AND newer_messages.sender_id = auth.uid()
+        AND (
+          newer_messages.created_at > messages.created_at
+          OR (newer_messages.created_at = messages.created_at AND newer_messages.id <> messages.id)
+        )
+    )
+  )
+  WITH CHECK (
+    auth.uid() = sender_id
+    AND EXISTS (
+      SELECT 1 FROM public.conversations
+      WHERE conversations.id = messages.conversation_id
+        AND (conversations.user_id_1 = auth.uid() OR conversations.user_id_2 = auth.uid())
+    )
+    AND NOT EXISTS (
+      SELECT 1 FROM public.messages newer_messages
+      WHERE newer_messages.conversation_id = messages.conversation_id
+        AND newer_messages.sender_id = auth.uid()
+        AND (
+          newer_messages.created_at > messages.created_at
+          OR (newer_messages.created_at = messages.created_at AND newer_messages.id <> messages.id)
+        )
+    )
+  );
+
+-- buddy_blocks
+CREATE TABLE IF NOT EXISTS public.buddy_blocks (
+  id               uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  blocker_user_id  uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  blocked_user_id  uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  reason           text,
+  created_at       timestamptz NOT NULL DEFAULT now(),
+  UNIQUE (blocker_user_id, blocked_user_id),
+  CHECK (blocker_user_id <> blocked_user_id)
+);
+
+ALTER TABLE public.buddy_blocks ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "buddy_blocks_select_parties" ON public.buddy_blocks
+  FOR SELECT TO authenticated
+  USING (auth.uid() = blocker_user_id OR auth.uid() = blocked_user_id);
+
+CREATE POLICY "buddy_blocks_insert_blocker" ON public.buddy_blocks
+  FOR INSERT TO authenticated
+  WITH CHECK (auth.uid() = blocker_user_id AND blocker_user_id <> blocked_user_id);
+
+CREATE POLICY "buddy_blocks_delete_blocker" ON public.buddy_blocks
+  FOR DELETE TO authenticated
+  USING (auth.uid() = blocker_user_id);
+
+-- buddy_reports
+CREATE TABLE IF NOT EXISTS public.buddy_reports (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  reporter_user_id  uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  reported_user_id  uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  conversation_id   uuid REFERENCES public.conversations(id) ON DELETE SET NULL,
+  reason            text NOT NULL,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+  CHECK (reporter_user_id <> reported_user_id)
+);
+
+ALTER TABLE public.buddy_reports ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "buddy_reports_select_own" ON public.buddy_reports
+  FOR SELECT TO authenticated
+  USING (auth.uid() = reporter_user_id);
+
+CREATE POLICY "buddy_reports_insert_own" ON public.buddy_reports
+  FOR INSERT TO authenticated
+  WITH CHECK (auth.uid() = reporter_user_id AND reporter_user_id <> reported_user_id);
+
+DROP POLICY IF EXISTS "messages_insert_sender" ON public.messages;
+CREATE POLICY "messages_insert_sender" ON public.messages
+  FOR INSERT TO authenticated
+  WITH CHECK (
+    auth.uid() = sender_id
+    AND EXISTS (
+      SELECT 1
+      FROM public.conversations
+      WHERE conversations.id = messages.conversation_id
+        AND (conversations.user_id_1 = auth.uid() OR conversations.user_id_2 = auth.uid())
+    )
+    AND NOT EXISTS (
+      SELECT 1
+      FROM public.buddy_blocks bb
+      JOIN public.conversations c
+        ON c.id = messages.conversation_id
+      WHERE (bb.blocker_user_id = c.user_id_1 AND bb.blocked_user_id = c.user_id_2)
+         OR (bb.blocker_user_id = c.user_id_2 AND bb.blocked_user_id = c.user_id_1)
+    )
+  );
+
 -- ── Trigger: on buddy_request accepted → create buddies + conversation + notification ──
 CREATE OR REPLACE FUNCTION public.handle_buddy_request_accepted()
 RETURNS TRIGGER LANGUAGE plpgsql SECURITY DEFINER AS $$

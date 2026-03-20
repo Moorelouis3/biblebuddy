@@ -22,6 +22,7 @@ import {
   type FeatureTourKey,
   type FeatureToursState,
 } from "../../lib/featureTours";
+import { LEVEL_DEFINITIONS, calculateWeightedPoints, getLevelInfoFromPoints } from "../../lib/levelSystem";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -128,9 +129,10 @@ export default function DashboardPage() {
     levelName: string;
     identityText: string;
     encouragementText: string;
-    totalActions: number;
+    totalPoints: number;
     levelStart: number;
     levelEnd: number;
+    pointsToNextLevel: number;
     progressPercent: number;
   } | null>(null);
   const [showLevelInfoModal, setShowLevelInfoModal] = useState(false);
@@ -889,7 +891,6 @@ export default function DashboardPage() {
         }
 
         const profileData = data;
-        const totalActions = (profileData?.total_actions || 0) as number;
         if (profileData) {
           setProfile({
             is_paid: profileData.is_paid === true,
@@ -904,90 +905,56 @@ export default function DashboardPage() {
           });
         }
 
-        // Calculate level based on total_actions
-        let level = 1;
-        let levelStart = 0;
-        let levelEnd = 24;
-        let levelName = "First Steps";
-        let identityText = "You're just getting started. Every habit begins with a first step.";
-        let encouragementText = "Keep going. Consistency starts here.";
+        const [
+          actionsResult,
+          groupPostsResult,
+          groupLikeGivenResult,
+          feedPostsResult,
+        ] = await Promise.all([
+          supabase
+            .from("master_actions")
+            .select("action_type")
+            .eq("user_id", userId),
+          supabase
+            .from("group_posts")
+            .select("id, parent_post_id, like_count")
+            .eq("user_id", userId),
+          supabase
+            .from("group_post_likes")
+            .select("post_id", { count: "exact", head: true })
+            .eq("user_id", userId),
+          supabase
+            .from("feed_posts")
+            .select("reaction_counts")
+            .eq("user_id", userId),
+        ]);
 
-        if (totalActions >= 10000) {
-          level = 10;
-          levelStart = 10000;
-          levelEnd = 10000;
-          levelName = "Rooted";
-          identityText = "You've built a strong foundation in Scripture.";
-          encouragementText = "Welcome home. You are a Bible Buddy.";
-        } else if (totalActions >= 7000) {
-          level = 9;
-          levelStart = 7000;
-          levelEnd = 9999;
-          levelName = "Wise Observer";
-          identityText = "You understand context and purpose more clearly.";
-          encouragementText = "Faithfulness matters. Keep walking forward.";
-        } else if (totalActions >= 4000) {
-          level = 8;
-          levelStart = 4000;
-          levelEnd = 6999;
-          levelName = "Deep Reader";
-          identityText = "You're comfortable slowing down and going deep.";
-          encouragementText = "Stay engaged. You're seeing the bigger picture.";
-        } else if (totalActions >= 2000) {
-          level = 7;
-          levelStart = 2000;
-          levelEnd = 3999;
-          levelName = "Pattern Seeker";
-          identityText = "You notice themes, connections, and repetition.";
-          encouragementText = "You're building something lasting.";
-        } else if (totalActions >= 1000) {
-          level = 6;
-          levelStart = 1000;
-          levelEnd = 1999;
-          levelName = "Thoughtful Student";
-          identityText = "You're studying with intention and reflection.";
-          encouragementText = "Keep pressing in. This is meaningful growth.";
-        } else if (totalActions >= 500) {
-          level = 5;
-          levelStart = 500;
-          levelEnd = 999;
-          levelName = "Story Builder";
-          identityText = "You're starting to see the Bible as one big story.";
-          encouragementText = "You're building understanding, not just habits.";
-        } else if (totalActions >= 250) {
-          level = 4;
-          levelStart = 250;
-          levelEnd = 499;
-          levelName = "Scripture Explorer";
-          identityText = "You're connecting people, places, and meaning.";
-          encouragementText = "You're connecting the story. Keep exploring.";
-        } else if (totalActions >= 100) {
-          level = 3;
-          levelStart = 100;
-          levelEnd = 249;
-          levelName = "Curious Reader";
-          identityText = "You're asking good questions and digging deeper.";
-          encouragementText = "Stay curious. Understanding grows here.";
-        } else if (totalActions >= 25) {
-          level = 2;
-          levelStart = 25;
-          levelEnd = 99;
-          levelName = "Getting Oriented";
-          identityText = "You're learning how the Bible fits together.";
-          encouragementText = "Keep going. You're building a daily habit.";
-        } else {
-          level = 1;
-          levelStart = 0;
-          levelEnd = 24;
-          levelName = "First Steps";
-          identityText = "You're just getting started. Every habit begins here.";
-          encouragementText = "Keep going. Consistency starts here.";
-        }
+        const actionTypes = (actionsResult.data || [])
+          .map((row) => row.action_type)
+          .filter((actionType): actionType is string => typeof actionType === "string" && actionType !== "group_message_sent");
 
-        // Calculate progress within current level
-        const progressInLevel = totalActions - levelStart;
-        const levelSpan = levelEnd - levelStart + 1;
-        const progressPercent = Math.min(100, Math.max(0, (progressInLevel / levelSpan) * 100));
+        const groupPosts = groupPostsResult.data || [];
+        const groupRootPostCount = groupPosts.filter((post) => !post.parent_post_id).length;
+        const groupCommentCount = groupPosts.filter((post) => !!post.parent_post_id).length;
+        const groupLikesReceivedCount = groupPosts.reduce((total, post) => total + (post.like_count || 0), 0);
+        const groupLikeGivenCount = groupLikeGivenResult.count || 0;
+        const feedLikesReceivedCount = (feedPostsResult.data || []).reduce((total, post) => {
+          const reactionCounts = post.reaction_counts && typeof post.reaction_counts === "object"
+            ? post.reaction_counts as Record<string, number>
+            : {};
+          return total + Object.values(reactionCounts).reduce((sum, count) => sum + (Number(count) || 0), 0);
+        }, 0);
+
+        const weightedPoints = calculateWeightedPoints({
+          actionTypes,
+          groupRootPostCount,
+          groupCommentCount,
+          groupLikeGivenCount,
+          likesReceivedCount: groupLikesReceivedCount + feedLikesReceivedCount,
+        });
+
+        const levelData = getLevelInfoFromPoints(weightedPoints.totalPoints);
+        const { level, levelName, identityText, encouragementText, levelStart, levelEnd, progressPercent, totalPoints, pointsToNextLevel } = levelData;
 
         // Select random motivational message for this level
         const motivationalMessages: Record<number, string[]> = {
@@ -1051,9 +1018,10 @@ export default function DashboardPage() {
           levelName,
           identityText,
           encouragementText,
-          totalActions,
+          totalPoints,
           levelStart,
           levelEnd,
+          pointsToNextLevel,
           progressPercent,
         };
 
@@ -1479,15 +1447,37 @@ export default function DashboardPage() {
 
                 <div>
                   <h3 className="text-lg font-semibold mb-3 text-gray-900">🔑 What Counts as Progress?</h3>
-                  <p className="mb-2">You earn progress by completing actions, such as:</p>
+                  <p className="mb-2">You earn weighted points across Bible Buddy, such as:</p>
                   <ul className="list-none space-y-2 ml-4">
-                    <li>📖 Finishing a Bible chapter</li>
-                    <li>👤 Learning about people in the Bible</li>
-                    <li>🗺️ Discovering places in the Bible</li>
-                    <li>🔍 Understanding key words and ideas</li>
-                    <li>📝 Creating and saving notes</li>
+                    <li>📖 Finishing a Bible chapter, devotional day, or reading plan chapter</li>
+                    <li>👤 Learning people, places, keywords, and taking notes</li>
+                    <li>👥 Posting in the group, commenting, and joining community activity</li>
+                    <li>❤️ Liking posts or comments, and earning likes from other Buddies</li>
+                    <li>🎯 Trivia, study opens, highlights, and other meaningful app actions</li>
                   </ul>
-                  <p className="mt-3 text-sm">Each action = 1 point toward your growth</p>
+                  <p className="mt-3 text-sm">Bigger study actions are worth more points than lighter actions like likes.</p>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900">⚖️ How Points Work</h3>
+                  <div className="space-y-3 text-sm text-gray-700">
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Higher-point actions</p>
+                      <p>Finishing chapters, completing devotionals, reading plans, learning references, and creating notes carry the most weight.</p>
+                    </div>
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Mid-point actions</p>
+                      <p>Posting in the study group, replying to people, opening studies, and community participation all help you level up too.</p>
+                    </div>
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Lower-point actions</p>
+                      <p>Likes still count, but they are worth less than finishing a real study action like a chapter or devotional day.</p>
+                    </div>
+                    <div className="bg-gray-50 p-3 rounded-lg">
+                      <p className="font-semibold text-gray-900">Earned engagement counts too</p>
+                      <p>If other Buddies like your posts or comments, that also gives you points because your activity is helping the community.</p>
+                    </div>
+                  </div>
                 </div>
 
                 <div>
@@ -1508,46 +1498,18 @@ export default function DashboardPage() {
                 <div>
                   <h3 className="text-lg font-semibold mb-3 text-gray-900">🏷️ Bible Buddy Levels</h3>
                   <div className="space-y-3">
-                    <div className="bg-gray-50 p-3 rounded-lg">
-                      <p className="font-semibold text-gray-900">Level 1 – First Steps</p>
-                      <p className="text-sm">You're just getting started. Every habit begins here.</p>
-                    </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
-                      <p className="font-semibold text-gray-900">Level 2 – Getting Oriented</p>
-                      <p className="text-sm">You're learning how the Bible fits together.</p>
-                    </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
-                      <p className="font-semibold text-gray-900">Level 3 – Curious Reader</p>
-                      <p className="text-sm">You're asking good questions and digging deeper.</p>
-                    </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
-                      <p className="font-semibold text-gray-900">Level 4 – Scripture Explorer</p>
-                      <p className="text-sm">You're connecting people, places, and meaning.</p>
-                    </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
-                      <p className="font-semibold text-gray-900">Level 5 – Story Builder</p>
-                      <p className="text-sm">You're starting to see the Bible as one big story.</p>
-                    </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
-                      <p className="font-semibold text-gray-900">Level 6 – Thoughtful Student</p>
-                      <p className="text-sm">You're studying with intention and reflection.</p>
-                    </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
-                      <p className="font-semibold text-gray-900">Level 7 – Pattern Seeker</p>
-                      <p className="text-sm">You notice themes, connections, and repetition.</p>
-                    </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
-                      <p className="font-semibold text-gray-900">Level 8 – Deep Reader</p>
-                      <p className="text-sm">You're comfortable slowing down and going deep.</p>
-                    </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
-                      <p className="font-semibold text-gray-900">Level 9 – Wise Observer</p>
-                      <p className="text-sm">You understand context and purpose more clearly.</p>
-                    </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
-                      <p className="font-semibold text-gray-900">Level 10 – Rooted</p>
-                      <p className="text-sm">You've built a strong foundation in Scripture.</p>
-                    </div>
+                    {LEVEL_DEFINITIONS.map((definition) => (
+                      <div key={definition.level} className="bg-gray-50 p-3 rounded-lg">
+                        <p className="font-semibold text-gray-900">
+                          Level {definition.level} – {definition.levelName}
+                          {" "}
+                          <span className="text-xs font-medium text-gray-500">
+                            ({definition.minPoints} to {definition.maxPoints ?? "17,000+"} pts)
+                          </span>
+                        </p>
+                        <p className="text-sm">{definition.identityText}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
 

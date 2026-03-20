@@ -431,8 +431,26 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )
       .subscribe();
 
-    function handleRefreshEvent() {
+    function handleRefreshEvent(event: Event) {
+      const customEvent = event as CustomEvent<{ conversationId?: string; markRead?: boolean }>;
+      if (customEvent.detail?.markRead && customEvent.detail.conversationId) {
+        setUnreadMessageCount((prev) => Math.max(0, prev - 1));
+        setConversationPreviews((prev) =>
+          prev.map((conversation) =>
+            conversation.id === customEvent.detail?.conversationId
+              ? {
+                  ...conversation,
+                  hasUnread: false,
+                }
+              : conversation,
+          ),
+        );
+      }
+
       void refreshUnreadMessageCount(currentUserId);
+      if (isMessagesOpen) {
+        void fetchConversationPreviews(currentUserId);
+      }
     }
 
     window.addEventListener("bb:refresh-unread-messages", handleRefreshEvent);
@@ -441,7 +459,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.removeEventListener("bb:refresh-unread-messages", handleRefreshEvent);
       void supabase.removeChannel(channel);
     };
-  }, [userId]);
+  }, [userId, isMessagesOpen]);
 
   // Capture the PWA install prompt (fires on Android/Chrome before page is interactive)
   useEffect(() => {

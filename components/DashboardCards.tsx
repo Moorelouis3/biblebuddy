@@ -79,7 +79,9 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
               </div>
             </div>
             <p className="text-sm text-gray-600 font-medium">
-              You have {Math.max(0, levelInfo.levelEnd - levelInfo.totalActions + 1)} actions until Level {levelInfo.level + 1}
+              {levelInfo.pointsToNextLevel > 0
+                ? `You have ${levelInfo.pointsToNextLevel} points until Level ${levelInfo.level + 1}`
+                : "You've reached the top level"}
             </p>
             {profile && profile.is_paid === false && (
               <p className="text-sm text-gray-600 font-medium mt-2">

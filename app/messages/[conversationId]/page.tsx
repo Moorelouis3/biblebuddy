@@ -8,11 +8,28 @@ import { ModalShell } from "../../../components/ModalShell";
 import UserBadge from "../../../components/UserBadge";
 
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
+const REPORT_REASONS = [
+  "Spam or scam",
+  "Harassment or bullying",
+  "Inappropriate or sexual content",
+  "Hate or abusive language",
+  "Threatening behavior",
+  "Fake profile or impersonation",
+];
 
 function avatarColor(uid: string): string {
   let hash = 0;
   for (let i = 0; i < uid.length; i++) hash = uid.charCodeAt(i) + ((hash << 5) - hash);
   return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+}
+
+function initialsFor(name: string): string {
+  return name
+    .split(" ")
+    .map((word) => word[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
 }
 
 function formatMsgTime(dateStr: string): string {
@@ -24,8 +41,21 @@ function formatMsgTime(dateStr: string): string {
   if (diffMins < 1) return "now";
   if (diffMins < 60) return `${diffMins}m ago`;
   if (diffHours < 24) return date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
-  if (diffDays === 1) return `Yesterday ${date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}`;
-  return date.toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  if (diffDays === 1) {
+    return `Yesterday ${date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}`;
+  }
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
+function formatHeaderStatus(lastActiveAt?: string | null): string {
+  if (!lastActiveAt) return "Buddy";
+  const date = new Date(lastActiveAt);
+  return `Active ${formatMsgTime(date.toISOString())}`;
 }
 
 function parseGroupInvite(content: string): { body: string; href: string | null } {
@@ -47,13 +77,19 @@ interface Message {
   created_at: string;
 }
 
-interface OtherUser {
+interface BuddyProfile {
   user_id: string;
   display_name: string | null;
   username: string | null;
   profile_image_url: string | null;
   member_badge: string | null;
   is_paid: boolean | null;
+  last_active_at?: string | null;
+}
+
+interface BlockState {
+  blocker_user_id: string;
+  blocked_user_id: string;
 }
 
 export default function ConversationPage() {
@@ -62,33 +98,69 @@ export default function ConversationPage() {
   const conversationId = params.conversationId as string;
 
   const [userId, setUserId] = useState<string | null>(null);
-  const [otherUser, setOtherUser] = useState<OtherUser | null>(null);
+  const [myProfile, setMyProfile] = useState<BuddyProfile | null>(null);
+  const [otherUser, setOtherUser] = useState<BuddyProfile | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [newMessage, setNewMessage] = useState("");
   const [sending, setSending] = useState(false);
+  const [editingMessageId, setEditingMessageId] = useState<string | null>(null);
+  const [editingContent, setEditingContent] = useState("");
+  const [savingEdit, setSavingEdit] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showReportModal, setShowReportModal] = useState(false);
+  const [reportReason, setReportReason] = useState("");
+  const [submittingReport, setSubmittingReport] = useState(false);
+  const [blockingBuddy, setBlockingBuddy] = useState(false);
+  const [blockState, setBlockState] = useState<BlockState | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const editInputRef = useRef<HTMLTextAreaElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     async function init() {
       const {
         data: { user },
       } = await supabase.auth.getUser();
+
       if (!user) {
         router.push("/login");
         return;
       }
+
       setUserId(user.id);
       await loadConversation(user.id);
     }
+
     void init();
   }, [conversationId, router]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  useEffect(() => {
+    if (!editingMessageId) return;
+    editInputRef.current?.focus();
+  }, [editingMessageId]);
+
+  useEffect(() => {
+    function handleOutsideClick(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    }
+
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [menuOpen]);
 
   async function loadConversation(uid: string) {
     setLoading(true);
@@ -106,20 +178,36 @@ export default function ConversationPage() {
 
       const otherId = convo.user_id_1 === uid ? convo.user_id_2 : convo.user_id_1;
 
-      const { data: profile } = await supabase
+      const { data: profiles } = await supabase
         .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid")
-        .eq("user_id", otherId)
-        .maybeSingle();
+        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, last_active_at")
+        .in("user_id", [uid, otherId]);
+
+      const profileRows = profiles || [];
+      const myRow = profileRows.find((profile) => profile.user_id === uid) || null;
+      const otherRow = profileRows.find((profile) => profile.user_id === otherId) || null;
+
+      setMyProfile(
+        myRow || {
+          user_id: uid,
+          display_name: null,
+          username: null,
+          profile_image_url: null,
+          member_badge: null,
+          is_paid: false,
+          last_active_at: null,
+        },
+      );
 
       setOtherUser(
-        profile || {
+        otherRow || {
           user_id: otherId,
           display_name: null,
           username: null,
           profile_image_url: null,
           member_badge: null,
           is_paid: false,
+          last_active_at: null,
         },
       );
 
@@ -131,7 +219,26 @@ export default function ConversationPage() {
 
       setMessages(msgs || []);
 
-      if (msgs && msgs.some((m) => m.sender_id !== uid && !m.read_at)) {
+      const { data: blockRows } = await supabase
+        .from("buddy_blocks")
+        .select("blocker_user_id, blocked_user_id")
+        .or(`and(blocker_user_id.eq.${uid},blocked_user_id.eq.${otherId}),and(blocker_user_id.eq.${otherId},blocked_user_id.eq.${uid})`)
+        .limit(1);
+
+      setBlockState(blockRows?.[0] ?? null);
+
+      const hadUnreadMessages = msgs ? msgs.some((message) => message.sender_id !== uid && !message.read_at) : false;
+
+      if (hadUnreadMessages) {
+        window.dispatchEvent(
+          new CustomEvent("bb:refresh-unread-messages", {
+            detail: {
+              conversationId,
+              markRead: true,
+            },
+          }),
+        );
+
         void supabase
           .from("messages")
           .update({ read_at: new Date().toISOString() })
@@ -146,7 +253,13 @@ export default function ConversationPage() {
               .eq("article_slug", `/messages/${conversationId}`)
               .eq("user_id", uid)
               .eq("is_read", false);
-            window.dispatchEvent(new Event("bb:refresh-unread-messages"));
+            window.dispatchEvent(
+              new CustomEvent("bb:refresh-unread-messages", {
+                detail: {
+                  conversationId,
+                },
+              }),
+            );
           });
       }
     } finally {
@@ -155,7 +268,7 @@ export default function ConversationPage() {
   }
 
   async function handleSend() {
-    if (!newMessage.trim() || !userId || sending) return;
+    if (!newMessage.trim() || !userId || sending || blockState) return;
     const content = newMessage.trim();
     setNewMessage("");
     setSending(true);
@@ -167,6 +280,7 @@ export default function ConversationPage() {
       read_at: null,
       created_at: new Date().toISOString(),
     };
+
     setMessages((prev) => [...prev, optimisticMsg]);
 
     try {
@@ -182,12 +296,12 @@ export default function ConversationPage() {
 
       if (error) {
         console.error("[MESSAGES] Send error:", error);
-        setMessages((prev) => prev.filter((m) => m.id !== optimisticMsg.id));
+        setMessages((prev) => prev.filter((message) => message.id !== optimisticMsg.id));
         setNewMessage(content);
         return;
       }
 
-      setMessages((prev) => prev.map((m) => (m.id === optimisticMsg.id ? inserted : m)));
+      setMessages((prev) => prev.map((message) => (message.id === optimisticMsg.id ? inserted : message)));
 
       await supabase
         .from("conversations")
@@ -224,10 +338,141 @@ export default function ConversationPage() {
     }
   }
 
-  function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
-    if (e.key === "Enter" && !e.shiftKey) {
+  function handleComposerKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
       e.preventDefault();
       void handleSend();
+    }
+  }
+
+  function startEditingMessage(message: Message) {
+    setEditingMessageId(message.id);
+    setEditingContent(message.content);
+  }
+
+  function cancelEditingMessage() {
+    setEditingMessageId(null);
+    setEditingContent("");
+  }
+
+  async function handleSaveEdit() {
+    if (!editingMessageId || !userId || savingEdit) return;
+    const latestOwnMessageId =
+      [...messages].reverse().find((message) => message.sender_id === userId)?.id ?? null;
+    if (editingMessageId !== latestOwnMessageId) {
+      cancelEditingMessage();
+      return;
+    }
+    const trimmed = editingContent.trim();
+    if (!trimmed) return;
+
+    const originalMessage = messages.find((message) => message.id === editingMessageId);
+    setSavingEdit(true);
+
+    setMessages((prev) =>
+      prev.map((message) =>
+        message.id === editingMessageId
+          ? {
+              ...message,
+              content: trimmed,
+            }
+          : message,
+      ),
+    );
+
+    try {
+      const { error } = await supabase
+        .from("messages")
+        .update({ content: trimmed })
+        .eq("id", editingMessageId)
+        .eq("sender_id", userId);
+
+      if (error) {
+        console.error("[MESSAGES] Edit error:", error);
+        if (originalMessage) {
+          setMessages((prev) =>
+            prev.map((message) => (message.id === originalMessage.id ? originalMessage : message)),
+          );
+        }
+        return;
+      }
+
+      await supabase
+        .from("conversations")
+        .update({
+          last_message_preview: trimmed.length > 80 ? `${trimmed.slice(0, 80)}...` : trimmed,
+        })
+        .eq("id", conversationId);
+
+      cancelEditingMessage();
+    } finally {
+      setSavingEdit(false);
+    }
+  }
+
+  function handleEditKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+      e.preventDefault();
+      void handleSaveEdit();
+    }
+
+    if (e.key === "Escape") {
+      e.preventDefault();
+      cancelEditingMessage();
+    }
+  }
+
+  async function handleBlockBuddy() {
+    if (!userId || !otherUser || blockingBuddy) return;
+    setBlockingBuddy(true);
+
+    try {
+      const { error } = await supabase.from("buddy_blocks").upsert(
+        {
+          blocker_user_id: userId,
+          blocked_user_id: otherUser.user_id,
+          reason: "Blocked from messages",
+        },
+        { onConflict: "blocker_user_id,blocked_user_id" },
+      );
+
+      if (error) {
+        console.error("[MESSAGES] Block buddy error:", error);
+        return;
+      }
+
+      setBlockState({
+        blocker_user_id: userId,
+        blocked_user_id: otherUser.user_id,
+      });
+      setMenuOpen(false);
+    } finally {
+      setBlockingBuddy(false);
+    }
+  }
+
+  async function handleSubmitReport() {
+    if (!userId || !otherUser || !reportReason || submittingReport) return;
+    setSubmittingReport(true);
+
+    try {
+      const { error } = await supabase.from("buddy_reports").insert({
+        reporter_user_id: userId,
+        reported_user_id: otherUser.user_id,
+        conversation_id: conversationId,
+        reason: reportReason,
+      });
+
+      if (error) {
+        console.error("[MESSAGES] Report buddy error:", error);
+        return;
+      }
+
+      setShowReportModal(false);
+      setReportReason("");
+      setMenuOpen(false);
+    } finally {
+      setSubmittingReport(false);
     }
   }
 
@@ -245,7 +490,7 @@ export default function ConversationPage() {
     return (
       <ModalShell isOpen={true} onClose={() => router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
         <div className="mx-4 w-full max-w-md rounded-[28px] bg-white px-6 py-12 text-center shadow-2xl">
-          <p className="mb-4 text-4xl">🔍</p>
+          <p className="mb-4 text-4xl">?</p>
           <h1 className="mb-2 text-xl font-bold text-gray-900">Conversation not found</h1>
           <Link href="/messages" className="text-sm text-blue-600 hover:underline">
             Back to Messages
@@ -256,119 +501,312 @@ export default function ConversationPage() {
   }
 
   const otherDisplay = otherUser?.display_name || otherUser?.username || "Bible Buddy";
-  const otherInitials = otherDisplay
-    .split(" ")
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
+  const myDisplay = myProfile?.display_name || myProfile?.username || "You";
+  const latestOwnMessageId =
+    [...messages].reverse().find((message) => message.sender_id === userId)?.id ?? null;
+  const latestSeenMessageId =
+    [...messages].reverse().find((message) => message.sender_id === userId && message.read_at)?.id ?? null;
+  const otherInitials = initialsFor(otherDisplay);
+  const myInitials = initialsFor(myDisplay);
   const otherColor = otherUser ? avatarColor(otherUser.user_id) : "#4a9b6f";
+  const myColor = userId ? avatarColor(userId) : "#5b8dd9";
+  const blockedByMe = blockState?.blocker_user_id === userId;
+  const blockedByThem = !!blockState && blockState.blocker_user_id !== userId;
+  const composerNotice = blockedByMe
+    ? "You blocked this buddy. Unblock them in the database or admin tools to message again."
+    : blockedByThem
+      ? "This buddy has blocked messages in this conversation."
+      : null;
 
   return (
-    <ModalShell isOpen={true} onClose={() => router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
-      <div className="mx-4 flex h-[82vh] w-full max-w-3xl flex-col overflow-hidden rounded-[30px] border border-black/5 bg-[#fcfcfb] shadow-2xl">
-        <div className="flex items-center gap-3 border-b border-black/5 bg-white px-4 py-3">
-          <button
-            type="button"
-            onClick={() => router.back()}
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200 hover:text-gray-700"
-            aria-label="Close conversation"
-          >
-            ×
-          </button>
-
-          <Link href={`/profile/${otherUser?.user_id}`} className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl px-1 py-1 transition hover:bg-gray-50">
-            {otherUser?.profile_image_url ? (
-              <img src={otherUser.profile_image_url} alt={otherDisplay} className="h-10 w-10 flex-shrink-0 rounded-full object-cover" />
-            ) : (
-              <div
-                className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
-                style={{ backgroundColor: otherColor }}
-              >
-                {otherInitials}
-              </div>
-            )}
-            <div className="min-w-0">
-              <div className="flex min-w-0 items-center gap-2">
-                <p className="truncate text-sm font-semibold text-gray-900">{otherDisplay}</p>
-                <UserBadge customBadge={otherUser?.member_badge} isPaid={otherUser?.is_paid === true} />
-              </div>
-              {otherUser?.username && <p className="truncate text-xs text-gray-400">@{otherUser.username}</p>}
-            </div>
-          </Link>
-        </div>
-
-        <div className="flex-1 overflow-y-auto bg-[#f6f7f5] px-4 py-4">
-          {messages.length === 0 && (
-            <div className="py-12 text-center">
-              <p className="text-sm text-gray-400">No messages yet. Say hello!</p>
-            </div>
-          )}
-
-          {messages.map((msg) => {
-            const isMine = msg.sender_id === userId;
-            const invite = parseGroupInvite(msg.content);
-            return (
-              <div key={msg.id} className={`mb-3 flex ${isMine ? "justify-end" : "justify-start"}`}>
-                <div className={`flex max-w-[78%] flex-col gap-1 ${isMine ? "items-end" : "items-start"}`}>
-                  <div
-                    className={`rounded-3xl px-4 py-3 text-sm leading-relaxed ${
-                      isMine
-                        ? "rounded-br-md text-white"
-                        : "rounded-bl-md border border-black/5 bg-white text-gray-900 shadow-sm"
-                    }`}
-                    style={isMine ? { backgroundColor: "#4a9b6f" } : undefined}
-                  >
-                    <p className="whitespace-pre-wrap">{invite.body}</p>
-                    {invite.href && (
-                      <Link
-                        href={invite.href}
-                        className={`mt-3 inline-flex rounded-2xl px-3 py-2 text-xs font-semibold transition ${
-                          isMine
-                            ? "bg-white/20 text-white hover:bg-white/25"
-                            : "bg-[#4a9b6f] text-white hover:opacity-90"
-                        }`}
-                      >
-                        Open Bible Study Group
-                      </Link>
-                    )}
-                  </div>
-                  <span className="px-1 text-[10px] text-gray-400">{formatMsgTime(msg.created_at)}</span>
-                </div>
-              </div>
-            );
-          })}
-
-          <div ref={bottomRef} />
-        </div>
-
-        <div className="border-t border-black/5 bg-white px-4 py-3">
-          <div className="mx-auto flex max-w-2xl items-end gap-3">
-            <textarea
-              ref={inputRef}
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Message..."
-              rows={1}
-              className="max-h-32 flex-1 resize-none overflow-y-auto rounded-3xl border border-gray-200 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400"
-              style={{ lineHeight: "1.5" }}
-            />
+    <>
+      <ModalShell isOpen={true} onClose={() => router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
+        <div className="mx-4 flex h-[84vh] w-full max-w-4xl flex-col overflow-hidden rounded-[32px] border border-gray-200 bg-[#f5f5f5] shadow-2xl">
+          <div className="flex items-center gap-3 border-b border-gray-200 bg-white px-5 py-4">
             <button
               type="button"
-              onClick={() => void handleSend()}
-              disabled={!newMessage.trim() || sending}
-              className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-white transition disabled:opacity-40"
-              style={{ backgroundColor: "#4a9b6f" }}
+              onClick={() => router.back()}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200 hover:text-gray-700"
+              aria-label="Close conversation"
             >
-              <svg className="h-5 w-5 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-              </svg>
+              x
+            </button>
+
+            <Link
+              href={`/profile/${otherUser?.user_id}`}
+              className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl px-1 py-1 transition hover:bg-gray-50"
+            >
+              {otherUser?.profile_image_url ? (
+                <img
+                  src={otherUser.profile_image_url}
+                  alt={otherDisplay}
+                  className="h-12 w-12 flex-shrink-0 rounded-full object-cover ring-2 ring-white/10"
+                />
+              ) : (
+                <div
+                  className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
+                  style={{ backgroundColor: otherColor }}
+                >
+                  {otherInitials}
+                </div>
+              )}
+              <div className="min-w-0">
+                <div className="flex min-w-0 items-center gap-2">
+                  <p className="truncate text-lg font-semibold text-gray-900">{otherDisplay}</p>
+                  <UserBadge customBadge={otherUser?.member_badge} isPaid={otherUser?.is_paid === true} />
+                </div>
+                <p className="truncate text-sm text-gray-500">
+                  {otherUser?.username ? `@${otherUser.username} · ` : ""}
+                  {formatHeaderStatus(otherUser?.last_active_at)}
+                </p>
+              </div>
+            </Link>
+
+            <div className="relative" ref={menuRef}>
+              <button
+                type="button"
+                onClick={() => setMenuOpen((prev) => !prev)}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 transition hover:bg-gray-50"
+                aria-label="Conversation options"
+              >
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="5" cy="12" r="2" />
+                  <circle cx="12" cy="12" r="2" />
+                  <circle cx="19" cy="12" r="2" />
+                </svg>
+              </button>
+
+              {menuOpen && otherUser && (
+                <div className="absolute right-0 top-14 z-20 w-64 overflow-hidden rounded-3xl border border-gray-200 bg-white p-2 shadow-2xl">
+                  <Link
+                    href={`/profile/${otherUser.user_id}`}
+                    onClick={() => setMenuOpen(false)}
+                    className="block rounded-2xl px-4 py-3 text-sm font-semibold text-gray-900 transition hover:bg-gray-50"
+                  >
+                    View Buddy Profile
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => void handleBlockBuddy()}
+                    disabled={blockingBuddy || !!blockedByMe}
+                    className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-red-600 transition hover:bg-red-50 disabled:opacity-50"
+                  >
+                    {blockedByMe ? "Buddy Blocked" : blockingBuddy ? "Blocking..." : `Block ${otherDisplay}`}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowReportModal(true)}
+                    className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-gray-900 transition hover:bg-gray-50"
+                  >
+                    Report {otherDisplay}
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-y-auto bg-[#f5f5f5] px-5 py-5">
+            {messages.length === 0 && (
+              <div className="py-16 text-center">
+                <p className="text-sm text-gray-400">No messages yet. Say hello!</p>
+              </div>
+            )}
+
+            {messages.map((msg) => {
+              const isMine = msg.sender_id === userId;
+              const invite = parseGroupInvite(msg.content);
+              const isEditing = editingMessageId === msg.id;
+              const isSeen = msg.id === latestSeenMessageId;
+              const canEdit = isMine && msg.id === latestOwnMessageId;
+              const senderName = isMine ? myDisplay : otherDisplay;
+              const senderImage = isMine ? myProfile?.profile_image_url : otherUser?.profile_image_url;
+              const senderInitials = isMine ? myInitials : otherInitials;
+              const senderColor = isMine ? myColor : otherColor;
+
+              return (
+                <div key={msg.id} className={`mb-5 flex ${isMine ? "justify-end" : "justify-start"}`}>
+                  <div className={`flex max-w-[86%] items-end gap-3 ${isMine ? "flex-row-reverse" : "flex-row"}`}>
+                    {senderImage ? (
+                      <img
+                        src={senderImage}
+                        alt={senderName}
+                        className="h-10 w-10 flex-shrink-0 rounded-full object-cover ring-2 ring-white/10"
+                      />
+                    ) : (
+                      <div
+                        className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                        style={{ backgroundColor: senderColor }}
+                      >
+                        {senderInitials}
+                      </div>
+                    )}
+
+                    <div className={`flex min-w-0 flex-col gap-1 ${isMine ? "items-end" : "items-start"}`}>
+                      <div className="px-1 text-xs font-semibold text-gray-700">{senderName}</div>
+
+                      <div
+                        className={`rounded-[24px] border px-4 py-3 text-sm leading-relaxed shadow-sm ${
+                          isMine
+                            ? "rounded-br-md border-[#d8eadf] bg-[#eef7f1] text-gray-900"
+                            : "rounded-bl-md border-gray-200 bg-white text-gray-900"
+                        }`}
+                      >
+                        {isEditing ? (
+                          <div className="space-y-3">
+                            <textarea
+                              ref={editInputRef}
+                              value={editingContent}
+                              onChange={(e) => setEditingContent(e.target.value)}
+                              onKeyDown={handleEditKeyDown}
+                              rows={3}
+                              className="w-full resize-none rounded-2xl border border-gray-200 bg-white px-3 py-2 text-sm leading-relaxed text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                            />
+                            <div className="flex items-center justify-end gap-2">
+                              <button
+                                type="button"
+                                onClick={cancelEditingMessage}
+                                className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700 transition hover:bg-gray-200"
+                              >
+                                Cancel
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => void handleSaveEdit()}
+                                disabled={!editingContent.trim() || savingEdit}
+                                className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#2f6f4f] transition hover:bg-white/90 disabled:opacity-50"
+                              >
+                                {savingEdit ? "Saving..." : "Save"}
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <>
+                            <p className="whitespace-pre-wrap">{invite.body}</p>
+                            {invite.href && (
+                              <Link
+                                href={invite.href}
+                                className="mt-3 inline-flex rounded-2xl bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-700 transition hover:bg-gray-200"
+                              >
+                                Open Bible Study Group
+                              </Link>
+                            )}
+                          </>
+                        )}
+                      </div>
+
+                      <div className={`flex items-center gap-2 px-1 text-[11px] text-gray-400 ${isMine ? "justify-end" : "justify-start"}`}>
+                        <span>{formatMsgTime(msg.created_at)}</span>
+                        {canEdit && !isEditing && (
+                          <button
+                            type="button"
+                            onClick={() => startEditingMessage(msg)}
+                            className="font-medium text-gray-500 transition hover:text-gray-800"
+                          >
+                            Edit
+                          </button>
+                        )}
+                        {isMine && isSeen && <span className="font-medium text-[#83e2a7]">Seen</span>}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+
+            <div ref={bottomRef} />
+          </div>
+
+          <div className="border-t border-gray-200 bg-white px-5 py-4">
+            {composerNotice ? (
+                <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                {composerNotice}
+              </div>
+            ) : (
+              <>
+                <div className="mx-auto flex max-w-3xl items-end gap-3">
+                  <textarea
+                    ref={inputRef}
+                    value={newMessage}
+                    onChange={(e) => setNewMessage(e.target.value)}
+                    onKeyDown={handleComposerKeyDown}
+                    placeholder={`Message ${otherDisplay}`}
+                    rows={1}
+                    className="max-h-36 flex-1 resize-none overflow-y-auto rounded-[24px] border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                    style={{ lineHeight: "1.5" }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => void handleSend()}
+                    disabled={!newMessage.trim() || sending}
+                    className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-white transition disabled:opacity-40"
+                    style={{ backgroundColor: "#4a9b6f" }}
+                  >
+                    <svg className="h-5 w-5 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                  </button>
+                </div>
+                <p className="mt-2 text-center text-[10px] text-gray-400">Enter for new line | Ctrl+Enter to send</p>
+              </>
+            )}
+          </div>
+        </div>
+      </ModalShell>
+
+      <ModalShell
+        isOpen={showReportModal}
+        onClose={() => setShowReportModal(false)}
+        backdropColor="bg-black/60"
+        zIndex="z-[90]"
+      >
+        <div className="mx-4 w-full max-w-md rounded-[28px] border border-gray-200 bg-white px-6 py-6 text-gray-900 shadow-2xl">
+          <h2 className="text-xl font-bold">Report Buddy</h2>
+          <p className="mt-2 text-sm text-gray-500">Why are you reporting {otherDisplay}?</p>
+
+          <div className="mt-5 space-y-2">
+            {REPORT_REASONS.map((reason) => (
+              <label
+                key={reason}
+                className={`flex cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-sm transition ${
+                  reportReason === reason
+                    ? "border-[#4a9b6f] bg-[#eef7f1]"
+                    : "border-gray-200 bg-white hover:bg-gray-50"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="buddy-report-reason"
+                  checked={reportReason === reason}
+                  onChange={() => setReportReason(reason)}
+                  className="h-4 w-4 accent-[#4a9b6f]"
+                />
+                <span>{reason}</span>
+              </label>
+            ))}
+          </div>
+
+          <div className="mt-6 flex gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                setShowReportModal(false);
+                setReportReason("");
+              }}
+              className="flex-1 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={() => void handleSubmitReport()}
+              disabled={!reportReason || submittingReport}
+              className="flex-1 rounded-2xl bg-[#4a9b6f] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
+            >
+              {submittingReport ? "Submitting..." : "Submit Report"}
             </button>
           </div>
-          <p className="mt-1.5 text-center text-[10px] text-gray-400">Enter to send · Shift+Enter for new line</p>
         </div>
-      </div>
-    </ModalShell>
+      </ModalShell>
+    </>
   );
 }

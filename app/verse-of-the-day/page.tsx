@@ -1,67 +1,90 @@
 "use client";
-import React from "react";
+
+import { useState } from "react";
 import Link from "next/link";
-import VerseDetail from "../../components/VerseDetail";
+import { ModalShell } from "../../components/ModalShell";
 import { LouisAvatar } from "../../components/LouisAvatar";
-
-// These must match the arrays in DashboardDailyWelcomeModal
-const VERSE_OF_THE_DAY = [
-  { text: "Your word is a lamp to my feet and a light to my path.", reference: "Psalm 119:105", subtitle: "God’s Word guides one step at a time." },
-  { text: "The unfolding of Your words gives light; it gives understanding to the simple.", reference: "Psalm 119:130", subtitle: "Understanding begins when Scripture opens." },
-  { text: "Blessed is the one whose delight is in the law of the Lord.", reference: "Psalm 1:1–2", subtitle: "Joy grows where Scripture is loved." },
-  { text: "All Scripture is breathed out by God and profitable for teaching.", reference: "2 Timothy 3:16", subtitle: "Every page has purpose." },
-  { text: "Be doers of the word, and not hearers only.", reference: "James 1:22", subtitle: "Study transforms when it becomes action." },
-  { text: "Let the word of Christ dwell in you richly.", reference: "Colossians 3:16", subtitle: "Scripture was meant to live in you." },
-  { text: "I have stored up Your word in my heart.", reference: "Psalm 119:11", subtitle: "What you store shapes who you become." },
-  { text: "The words that I have spoken to you are spirit and life.", reference: "John 6:63", subtitle: "God’s Word carries life itself." },
-  { text: "Faith comes from hearing, and hearing through the word of Christ.", reference: "Romans 10:17", subtitle: "Faith grows through exposure to truth." },
-  { text: "Open my eyes, that I may behold wondrous things out of Your law.", reference: "Psalm 119:18", subtitle: "Ask God to help you see more." },
-  { text: "The law of the Lord is perfect, reviving the soul.", reference: "Psalm 19:7", subtitle: "Scripture refreshes the weary heart." },
-  { text: "Man shall not live by bread alone, but by every word that comes from the mouth of God.", reference: "Matthew 4:4", subtitle: "Spiritual hunger needs spiritual food." },
-  { text: "Sanctify them in the truth; Your word is truth.", reference: "John 17:17", subtitle: "Truth shapes identity." },
-  { text: "Teach me, O Lord, the way of Your statutes.", reference: "Psalm 119:33", subtitle: "Study begins with humility." },
-  { text: "These words that I command you today shall be on your heart.", reference: "Deuteronomy 6:6", subtitle: "Scripture belongs in everyday life." },
-  { text: "Ezra had set his heart to study the Law of the Lord.", reference: "Ezra 7:10", subtitle: "Intentional study changes generations." },
-  { text: "Your testimonies are my delight; they are my counselors.", reference: "Psalm 119:24", subtitle: "The Bible gives wisdom for decisions." },
-  { text: "The entrance of Your words gives light.", reference: "Psalm 119:130", subtitle: "Darkness fades where Scripture enters." },
-  { text: "Incline my heart to Your testimonies.", reference: "Psalm 119:36", subtitle: "Ask God to shape your desires." },
-  { text: "Continue in what you have learned.", reference: "2 Timothy 3:14", subtitle: "Growth comes from consistency." },
-  { text: "Let us know; let us press on to know the Lord.", reference: "Hosea 6:3", subtitle: "Keep pressing forward." },
-  { text: "The fear of the Lord is the beginning of wisdom.", reference: "Proverbs 9:10", subtitle: "Wisdom begins with reverence." },
-  { text: "Search the Scriptures.", reference: "John 5:39", subtitle: "Seek, don’t skim." },
-  { text: "Great peace have those who love Your law.", reference: "Psalm 119:165", subtitle: "Scripture brings stability." },
-  { text: "The testimony of the Lord is sure, making wise the simple.", reference: "Psalm 19:7", subtitle: "Wisdom is available to everyone." },
-  { text: "Blessed rather are those who hear the word of God and keep it.", reference: "Luke 11:28", subtitle: "Hearing is the beginning, not the end." },
-  { text: "Your word is very pure.", reference: "Psalm 119:140", subtitle: "God’s Word stands uncorrupted." },
-  { text: "Meditate on it day and night.", reference: "Joshua 1:8", subtitle: "Depth comes from reflection." },
-  { text: "The unfolding of Your words gives understanding.", reference: "Psalm 119:130", subtitle: "Understanding unfolds over time." },
-  { text: "Teach me Your way, O Lord.", reference: "Psalm 27:11", subtitle: "Learning is a lifelong journey." }
-];
-
-function getDayOfYear(date: Date) {
-  const start = new Date(date.getFullYear(), 0, 0);
-  const diff = date.getTime() - start.getTime();
-  const oneDay = 1000 * 60 * 60 * 24;
-  return Math.floor(diff / oneDay);
-}
+import { getVerseOfTheDay } from "../../lib/verseOfTheDay";
 
 export default function VerseOfTheDayPage() {
-  const today = new Date();
-  const dayOfYear = getDayOfYear(today);
-  const verseIdx = dayOfYear % VERSE_OF_THE_DAY.length;
-  const verse = VERSE_OF_THE_DAY[verseIdx];
+  const [showExplanation, setShowExplanation] = useState(false);
+  const verse = getVerseOfTheDay();
+
   return (
-    <div className="min-h-screen bg-blue-50 flex flex-col items-center justify-center py-8 px-2">
-      <div className="flex flex-col items-center mb-2">
-        <LouisAvatar mood="bible" size={72} />
-      </div>
-      <VerseDetail text={verse.text} reference={verse.reference} subtitle={verse.subtitle} />
-      <Link
-        href="/dashboard"
-        className="mt-8 px-6 py-3 rounded-2xl text-base font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition"
+    <>
+      <ModalShell isOpen={true} backdropColor="bg-black/45" scrollable={true}>
+        <div className="my-8 w-full max-w-xl overflow-hidden rounded-[32px] border border-[#d9e7ff] bg-white shadow-2xl">
+          <div className="bg-gradient-to-br from-[#eef5ff] via-[#f7fbff] to-[#e8f0ff] px-6 pb-7 pt-8 sm:px-8">
+            <div className="mb-4 flex justify-center">
+              <LouisAvatar mood="bible" size={72} />
+            </div>
+            <p className="mb-3 text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-[#5d7fb7]">
+              Verse of the Day
+            </p>
+            <div className="rounded-[28px] border border-[#d9e7ff] bg-white px-6 py-6 text-center shadow-sm">
+              <div className="mb-4 text-2xl font-bold italic leading-9 text-[#17335f]">"{verse.text}"</div>
+              <div className="mb-1 text-base font-semibold text-[#3e67a7]">{verse.reference}</div>
+              <div className="text-sm text-[#6d86ad]">{verse.subtitle}</div>
+            </div>
+          </div>
+
+          <div className="bg-white px-6 pb-6 pt-5 sm:px-8">
+            <button
+              type="button"
+              onClick={() => setShowExplanation(true)}
+              className="w-full rounded-2xl bg-[#3f6fb2] px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#335f9a]"
+            >
+              Read the Explanation
+            </button>
+            <Link
+              href="/dashboard"
+              className="mt-3 block w-full rounded-2xl border border-[#d4e2fb] px-4 py-3 text-center text-sm font-semibold text-[#456ba6] transition hover:bg-[#f6f9ff]"
+            >
+              Back to Dashboard
+            </Link>
+          </div>
+        </div>
+      </ModalShell>
+
+      <ModalShell
+        isOpen={showExplanation}
+        onClose={() => setShowExplanation(false)}
+        backdropColor="bg-black/50"
+        scrollable={true}
+        zIndex="z-[90]"
       >
-        Back to Dashboard
-      </Link>
-    </div>
+        <div className="my-8 w-full max-w-2xl overflow-hidden rounded-[32px] border border-[#d9e7ff] bg-white shadow-2xl">
+          <div className="flex items-start justify-between border-b border-[#e7eefc] bg-[#f7faff] px-6 py-5 sm:px-8">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#6786ba]">Explanation</p>
+              <h1 className="mt-2 text-2xl font-bold text-[#17335f]">{verse.reference}</h1>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowExplanation(false)}
+              className="rounded-full bg-white px-3 py-1 text-sm font-semibold text-[#5f7fb4] shadow-sm transition hover:text-[#355b97]"
+            >
+              Close
+            </button>
+          </div>
+
+          <div className="max-h-[70vh] overflow-y-auto px-6 py-6 sm:px-8">
+            <div className="mb-6 rounded-[24px] border border-[#e5ecfb] bg-[#fbfdff] px-5 py-5">
+              <p className="text-lg italic leading-8 text-[#29446f]">"{verse.text}"</p>
+              <p className="mt-3 text-sm font-semibold text-[#5377b1]">{verse.subtitle}</p>
+            </div>
+
+            <div className="space-y-5">
+              {verse.explanationSections.map((section) => (
+                <div key={section.heading} className="rounded-[24px] border border-[#edf2fc] bg-white px-5 py-5 shadow-sm">
+                  <h2 className="mb-2 text-lg font-bold text-[#2d4a79]">{section.heading}</h2>
+                  <p className="text-sm leading-7 text-gray-700">{section.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </ModalShell>
+    </>
   );
 }
