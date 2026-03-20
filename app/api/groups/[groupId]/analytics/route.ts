@@ -60,6 +60,17 @@ function buildDailySeries(
     .sort((a, b) => a.dateKey.localeCompare(b.dateKey));
 }
 
+function stripHtml(html: string | null | undefined) {
+  if (!html) return "";
+  return html
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>/gi, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/\u00a0/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export async function GET(
   request: NextRequest,
   context: { params: Promise<{ groupId: string }> },
@@ -116,6 +127,7 @@ export async function GET(
     feedViewActions,
     articleReadActions,
     bibleStudyCardOpenActions,
+    recentPostsResult,
     groupPostIdsResult,
     postCountResult,
     commentCountResult,
@@ -126,20 +138,26 @@ export async function GET(
   ] = await Promise.all([
     supabaseAdmin
       .from("master_actions")
-      .select("user_id, created_at")
+      .select("user_id, username, created_at")
       .eq("action_type", "study_group_feed_viewed")
       .eq("action_label", groupId),
     supabaseAdmin
       .from("master_actions")
-      .select("user_id, created_at")
+      .select("user_id, username, created_at")
       .eq("action_type", "study_group_article_opened")
       .like("action_label", `${groupId}:%`),
     supabaseAdmin
       .from("master_actions")
-      .select("user_id, created_at")
+      .select("user_id, username, created_at")
       .eq("action_type", "study_group_bible_study_card_opened")
       .eq("action_label", groupId)
       .gte("created_at", ninetyDaysAgoIso),
+    supabaseAdmin
+      .from("group_posts")
+      .select("id, user_id, parent_post_id, title, content, created_at")
+      .eq("group_id", groupId)
+      .order("created_at", { ascending: false })
+      .limit(150),
     supabaseAdmin
       .from("group_posts")
       .select("id")
@@ -210,6 +228,7 @@ export async function GET(
   let likeCount = 0;
   let postRowsDetailed: Array<{ id: string; user_id: string | null; created_at: string | null; parent_post_id: string | null }> = [];
   let likeRowsDetailed: Array<{ user_id: string | null; created_at: string | null }> = [];
+  let recentLikeRows: Array<{ post_id: string; user_id: string | null; created_at: string | null }> = [];
 
   if (groupPostIds.length > 0) {
     const [{ count }, detailedPostsResult, detailedLikesResult] = await Promise.all([
@@ -231,6 +250,15 @@ export async function GET(
     likeCount = count || 0;
     postRowsDetailed = detailedPostsResult.data || [];
     likeRowsDetailed = detailedLikesResult.data || [];
+
+    const { data: recentLikesResult } = await supabaseAdmin
+      .from("group_post_likes")
+      .select("post_id, user_id, created_at")
+      .in("post_id", groupPostIds)
+      .order("created_at", { ascending: false })
+      .limit(150);
+
+    recentLikeRows = recentLikesResult || [];
   }
 
   const topLevelPostsDaily = buildDailySeries(postRowsDetailed.filter((row) => !row.parent_post_id));
@@ -303,6 +331,159 @@ export async function GET(
     };
   });
 
+  const recentPosts = recentPostsResult.data || [];
+  const postMap = new Map(
+    recentPosts.map((row) => [
+      row.id,
+      {
+        id: row.id,
+        user_id: row.user_id,
+        parent_post_id: row.parent_post_id,
+        title: row.title,
+        content: row.content,
+        created_at: row.created_at,
+      },
+    ]),
+  );
+
+  const likeTargetIds = Array.from(new Set(recentLikeRows.map((row) => row.post_id).filter(Boolean)));
+  const missingLikeTargetIds = likeTargetIds.filter((id) => !postMap.has(id));
+
+  if (missingLikeTargetIds.length > 0) {
+    const { data: missingLikePosts } = await supabaseAdmin
+      .from("group_posts")
+      .select("id, user_id, parent_post_id, title, content, created_at")
+      .in("id", missingLikeTargetIds);
+
+    (missingLikePosts || []).forEach((row) => {
+      postMap.set(row.id, row);
+    });
+  }
+
+  const actionUserIds = new Set<string>();
+  recentPosts.forEach((row) => {
+    if (row.user_id) actionUserIds.add(row.user_id);
+    if (row.parent_post_id) {
+      const parent = postMap.get(row.parent_post_id);
+      if (parent?.user_id) actionUserIds.add(parent.user_id);
+    }
+  });
+  recentLikeRows.forEach((row) => {
+    if (row.user_id) actionUserIds.add(row.user_id);
+    const target = postMap.get(row.post_id);
+    if (target?.user_id) actionUserIds.add(target.user_id);
+  });
+  (feedViewActions.data || []).forEach((row) => {
+    if (row.user_id) actionUserIds.add(row.user_id);
+  });
+  (articleReadActions.data || []).forEach((row) => {
+    if (row.user_id) actionUserIds.add(row.user_id);
+  });
+  (bibleStudyCardOpenActions.data || []).forEach((row) => {
+    if (row.user_id) actionUserIds.add(row.user_id);
+  });
+
+  const { data: actionProfiles } = actionUserIds.size
+    ? await supabaseAdmin
+        .from("profile_stats")
+        .select("user_id, display_name, username")
+        .in("user_id", Array.from(actionUserIds))
+    : { data: [] as Array<{ user_id: string; display_name: string | null; username: string | null }> };
+
+  const actionProfileMap = new Map(
+    (actionProfiles || []).map((profile) => [
+      profile.user_id,
+      profile.display_name || profile.username || "Buddy",
+    ]),
+  );
+
+  const recentActions = [
+    ...recentPosts
+      .filter((row) => row.created_at)
+      .map((row) => {
+        const actorName = row.user_id ? actionProfileMap.get(row.user_id) || "Buddy" : "Buddy";
+        const parent = row.parent_post_id ? postMap.get(row.parent_post_id) : null;
+        const targetName = parent?.user_id ? actionProfileMap.get(parent.user_id) || "Buddy" : null;
+        const previewSource = row.title || stripHtml(row.content);
+        const preview = previewSource ? previewSource.slice(0, 80) : null;
+
+        if (!row.parent_post_id) {
+          return {
+            created_at: row.created_at as string,
+            actionType: "group_post_created",
+            text: `${actorName} posted in the group${preview ? `: "${preview}"` : "."}`,
+          };
+        }
+
+        if (parent?.parent_post_id) {
+          return {
+            created_at: row.created_at as string,
+            actionType: "group_reply_created",
+            text: `${actorName} replied to ${targetName || "a buddy"}'s comment${preview ? `: "${preview}"` : "."}`,
+          };
+        }
+
+        return {
+          created_at: row.created_at as string,
+          actionType: "group_comment_created",
+          text: `${actorName} commented on ${targetName || "a buddy"}'s post${preview ? `: "${preview}"` : "."}`,
+        };
+      }),
+    ...recentLikeRows
+      .filter((row) => row.created_at)
+      .map((row) => {
+        const actorName = row.user_id ? actionProfileMap.get(row.user_id) || "Buddy" : "Buddy";
+        const target = postMap.get(row.post_id);
+        const targetName = target?.user_id ? actionProfileMap.get(target.user_id) || "Buddy" : "a buddy";
+        if (target?.parent_post_id) {
+          const parent = postMap.get(target.parent_post_id);
+          const isReply = !!parent?.parent_post_id;
+          return {
+            created_at: row.created_at as string,
+            actionType: isReply ? "group_reply_liked" : "group_comment_liked",
+            text: `${actorName} liked ${targetName}'s ${isReply ? "reply" : "comment"}.`,
+          };
+        }
+        return {
+          created_at: row.created_at as string,
+          actionType: "group_post_liked",
+          text: `${actorName} liked ${targetName}'s post.`,
+        };
+      }),
+    ...(feedViewActions.data || [])
+      .filter((row) => row.created_at)
+      .map((row) => {
+        const actorName = row.user_id ? actionProfileMap.get(row.user_id) || row.username || "Buddy" : row.username || "Buddy";
+        return {
+          created_at: row.created_at as string,
+          actionType: "study_group_feed_viewed",
+          text: `${actorName} opened the group feed.`,
+        };
+      }),
+    ...(articleReadActions.data || [])
+      .filter((row) => row.created_at)
+      .map((row) => {
+        const actorName = row.user_id ? actionProfileMap.get(row.user_id) || row.username || "Buddy" : row.username || "Buddy";
+        return {
+          created_at: row.created_at as string,
+          actionType: "study_group_article_opened",
+          text: `${actorName} opened a study article.`,
+        };
+      }),
+    ...(bibleStudyCardOpenActions.data || [])
+      .filter((row) => row.created_at)
+      .map((row) => {
+        const actorName = row.user_id ? actionProfileMap.get(row.user_id) || row.username || "Buddy" : row.username || "Buddy";
+        return {
+          created_at: row.created_at as string,
+          actionType: "study_group_bible_study_card_opened",
+          text: `${actorName} opened the Bible study card.`,
+        };
+      }),
+  ]
+    .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
+    .slice(0, 60);
+
   return NextResponse.json({
     group: {
       id: group.id,
@@ -332,6 +513,7 @@ export async function GET(
       likesDaily,
       articleReadsDaily,
     },
+    recentActions,
     mostActiveBuddies,
     schedule: buildGroupSchedule(new Date(), {
       bibleStudySeriesSnapshot,

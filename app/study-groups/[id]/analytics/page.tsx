@@ -61,6 +61,11 @@ type AnalyticsPayload = {
       uniqueVisitors: number;
     }>;
   };
+  recentActions: Array<{
+    created_at: string;
+    actionType: string;
+    text: string;
+  }>;
   mostActiveBuddies: Array<{
     rank: number;
     userId: string;
@@ -196,6 +201,22 @@ function getErrorMessage(error: unknown, fallback: string) {
     return (error as { message: string }).message;
   }
   return fallback;
+}
+
+function formatActionLogDateTime(dateStr: string) {
+  return new Date(dateStr).toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
+function getGroupActionColorClass(actionType: string) {
+  if (actionType.includes("liked")) return "bg-[#fff6eb]";
+  if (actionType.includes("comment") || actionType.includes("reply")) return "bg-[#f6f8ff]";
+  if (actionType.includes("viewed") || actionType.includes("opened")) return "bg-[#f4faf4]";
+  return "bg-[#fcfbf8]";
 }
 
 export default function StudyGroupAnalyticsPage() {
@@ -619,6 +640,18 @@ export default function StudyGroupAnalyticsPage() {
     };
   }, [groupId, router]);
 
+  useEffect(() => {
+    const shouldLockBodyScroll = Boolean(selectedEventId || selectedQueueItemId);
+    if (!shouldLockBodyScroll) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [selectedEventId, selectedQueueItemId]);
+
   if (loading) {
     return <div className="min-h-screen bg-gray-50 flex items-center justify-center text-sm text-gray-500">Loading group analytics...</div>;
   }
@@ -681,6 +714,38 @@ export default function StudyGroupAnalyticsPage() {
                 <p className="mt-2 text-xs leading-relaxed text-gray-500">{card.helper}</p>
               </button>
             ))}
+          </div>
+
+          <div className="mt-5 rounded-3xl border border-[#e5e7eb] bg-white shadow-sm">
+            <div className="border-b border-[#eef1ec] px-5 py-4">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#6f8d6c]">Group Action Log</p>
+              <p className="mt-2 text-sm text-gray-600">
+                Everything happening in this group right now, including posts, comments, replies, likes, and study opens.
+              </p>
+            </div>
+            <div className="max-h-[420px] overflow-y-auto px-4 py-4">
+              {data.recentActions.length === 0 ? (
+                <div className="rounded-2xl bg-[#fcfbf8] px-4 py-5 text-sm text-gray-500">
+                  No group activity yet.
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {data.recentActions.map((action, index) => (
+                    <div
+                      key={`${action.created_at}-${index}`}
+                      className={`rounded-2xl px-4 py-3 ${getGroupActionColorClass(action.actionType)}`}
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <p className="text-sm leading-6 text-gray-900">{action.text}</p>
+                        <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-gray-400">
+                          {formatActionLogDateTime(action.created_at)}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           {selectedMetricKey ? (
@@ -782,203 +847,24 @@ export default function StudyGroupAnalyticsPage() {
             <div className="flex items-start justify-between gap-4 flex-wrap">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-gray-400">Home Feed Scheduler</p>
-                <p className="mt-2 text-lg font-bold text-gray-900">Louis-only carousel queue</p>
+                <p className="mt-2 text-lg font-bold text-gray-900">Private scheduler feed</p>
                 <p className="mt-2 max-w-2xl text-sm text-gray-600">
-                  Switch between an IG-style cover post and a text-only thread post, then keep it in a private queue below the calendar. You can post it now or schedule it to publish automatically into the home feed as a real group post.
+                  The scheduler now lives on its own page so it can feel like the real home feed composer and preview flow instead of an analytics widget.
                 </p>
               </div>
-              <div className="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-600">
-                {carouselQueue.length} queued post{carouselQueue.length === 1 ? "" : "s"}
-              </div>
+              <Link
+                href={`/study-groups/${groupId}/scheduler`}
+                className="rounded-2xl bg-[#4a9b6f] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+              >
+                Open Scheduler
+              </Link>
             </div>
 
-            <div className="mt-5 grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
-              <div className="rounded-3xl border border-gray-200 bg-[#fafafa] p-4">
-                <p className="text-sm font-semibold text-gray-900">Add a home feed draft</p>
-                <p className="mt-1 text-xs text-gray-500">This stays hidden here until you post it or its scheduled time arrives.</p>
-
-                <div className="mt-4 grid grid-cols-2 gap-2 rounded-2xl border border-gray-200 bg-white p-1">
-                  <button
-                    type="button"
-                    onClick={() => setQueuePostStyle("cover")}
-                    className={`rounded-2xl px-3 py-2.5 text-sm font-semibold transition ${
-                      queuePostStyle === "cover" ? "bg-[#4a9b6f] text-white" : "text-gray-600 hover:bg-gray-50"
-                    }`}
-                  >
-                    Cover Post
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setQueuePostStyle("text")}
-                    className={`rounded-2xl px-3 py-2.5 text-sm font-semibold transition ${
-                      queuePostStyle === "text" ? "bg-[#4a9b6f] text-white" : "text-gray-600 hover:bg-gray-50"
-                    }`}
-                  >
-                    Text Post
-                  </button>
-                </div>
-
-                <input
-                  ref={queueFileInputRef}
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={(event) => {
-                    const file = event.target.files?.[0] ?? null;
-                    setQueueCoverFile(file);
-                    if (queueCoverPreview) {
-                      URL.revokeObjectURL(queueCoverPreview);
-                    }
-                    setQueueCoverPreview(file ? URL.createObjectURL(file) : null);
-                  }}
-                />
-
-                {queuePostStyle === "cover" ? (
-                  <button
-                    type="button"
-                    onClick={() => queueFileInputRef.current?.click()}
-                    className="mt-4 flex aspect-square w-full items-center justify-center overflow-hidden rounded-[26px] border border-dashed border-gray-300 bg-white text-center transition hover:border-[#4a9b6f]"
-                  >
-                    {queueCoverPreview ? (
-                      <img src={queueCoverPreview} alt="Carousel cover preview" className="h-full w-full object-cover" />
-                    ) : (
-                      <div className="px-6">
-                        <p className="text-sm font-semibold text-gray-700">Upload carousel cover</p>
-                        <p className="mt-1 text-xs text-gray-400">Square cover image like your IG grid</p>
-                      </div>
-                    )}
-                  </button>
-                ) : (
-                  <div className="mt-4 rounded-[26px] border border-gray-200 bg-white p-5">
-                    <div className="rounded-[22px] border border-gray-200 bg-[#f8f8f8] p-4">
-                      <p className="text-xs font-bold uppercase tracking-[0.14em] text-gray-400">Thread Preview</p>
-                      {queueTitle ? <p className="mt-3 text-lg font-bold leading-tight text-gray-900">{queueTitle}</p> : null}
-                      <div className="mt-3 text-sm leading-6 text-gray-700">
-                        {queueEditorText ? (
-                          <div
-                            className="prose prose-sm max-w-none text-gray-700"
-                            dangerouslySetInnerHTML={{ __html: queueEditorHtml }}
-                          />
-                        ) : (
-                          "Your text-only post preview shows here."
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                <div className="mt-4 space-y-3">
-                  <input
-                    value={queueTitle}
-                    onChange={(event) => setQueueTitle(event.target.value)}
-                    placeholder={queuePostStyle === "text" ? "Subject" : "Optional title"}
-                    className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d7eadf]"
-                  />
-                  <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
-                    <div className="flex flex-wrap gap-2 border-b border-gray-100 px-4 py-3 bg-[#fafafa]">
-                      <button type="button" onMouseDown={runQueueEditorCommand(() => queueEditor?.chain().focus().toggleBold().run() ?? false)} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${queueEditor?.isActive("bold") ? "bg-[#dff0df] text-[#4f7e54]" : "border border-[#d7eadf] bg-white text-gray-600"}`}>Bold</button>
-                      <button type="button" onMouseDown={runQueueEditorCommand(() => queueEditor?.chain().focus().toggleItalic().run() ?? false)} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${queueEditor?.isActive("italic") ? "bg-[#dff0df] text-[#4f7e54]" : "border border-[#d7eadf] bg-white text-gray-600"}`}>Italic</button>
-                      <button type="button" onMouseDown={runQueueEditorCommand(() => queueEditor?.chain().focus().toggleHeading({ level: 1 }).run() ?? false)} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${queueEditor?.isActive("heading", { level: 1 }) ? "bg-[#dff0df] text-[#4f7e54]" : "border border-[#d7eadf] bg-white text-gray-600"}`}>H1</button>
-                      <button type="button" onMouseDown={runQueueEditorCommand(() => queueEditor?.chain().focus().toggleHeading({ level: 2 }).run() ?? false)} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${queueEditor?.isActive("heading", { level: 2 }) ? "bg-[#dff0df] text-[#4f7e54]" : "border border-[#d7eadf] bg-white text-gray-600"}`}>H2</button>
-                      <button type="button" onMouseDown={runQueueEditorCommand(() => queueEditor?.chain().focus().toggleBulletList().run() ?? false)} className={`rounded-full px-3 py-1.5 text-xs font-semibold ${queueEditor?.isActive("bulletList") ? "bg-[#dff0df] text-[#4f7e54]" : "border border-[#d7eadf] bg-white text-gray-600"}`}>List</button>
-                    </div>
-                    <EditorContent editor={queueEditor} />
-                  </div>
-                  <div>
-                    <label className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-                      Auto Post Time
-                    </label>
-                    <input
-                      type="datetime-local"
-                      value={queueScheduledFor}
-                      onChange={(event) => setQueueScheduledFor(event.target.value)}
-                      className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#d7eadf]"
-                    />
-                  </div>
-                </div>
-
-                <div className="mt-4 flex gap-3">
-                  <button
-                    type="button"
-                    onClick={handleCreateQueueItem}
-                    disabled={savingQueueItem || !queueEditorText || (queuePostStyle === "cover" && !queueCoverFile)}
-                    className="flex-1 rounded-2xl bg-[#4a9b6f] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
-                  >
-                    {savingQueueItem ? "Saving..." : "Save to Queue"}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={resetQueueComposer}
-                    className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-600 transition hover:bg-gray-50"
-                  >
-                    Clear
-                  </button>
-                </div>
-
-                {queueError ? <p className="mt-3 text-sm text-red-600">{queueError}</p> : null}
-              </div>
-
-              <div>
-                {queueLoading ? (
-                  <div className="rounded-3xl border border-gray-200 bg-[#fafafa] px-6 py-12 text-center text-sm text-gray-500">
-                    Loading your queued home feed posts...
-                  </div>
-                ) : carouselQueue.length === 0 ? (
-                  <div className="rounded-3xl border border-dashed border-gray-200 bg-[#fafafa] px-6 py-12 text-center">
-                    <p className="text-lg font-bold text-gray-900">No queued posts yet</p>
-                    <p className="mt-2 text-sm text-gray-500">Add your first cover post or text-only thread on the left and it will land here like a private IG grid.</p>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-                    {carouselQueue.map((item) => (
-                      <button
-                        key={item.id}
-                        type="button"
-                        onClick={() => setSelectedQueueItemId(item.id)}
-                        className="group relative aspect-square overflow-hidden rounded-[24px] border border-gray-200 bg-gray-100 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-                      >
-                        {item.post_style === "cover" && item.cover_image_url ? (
-                          <>
-                            <img src={item.cover_image_url} alt={item.title || "Queued cover post"} className="h-full w-full object-cover" />
-                            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent p-3 text-left">
-                              <div className="mb-2 flex flex-wrap gap-2">
-                                <div className="inline-flex rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-gray-700">
-                                  {queueStatusLabel(item)}
-                                </div>
-                                <div className="inline-flex rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">
-                                  {queueStyleLabel(item)}
-                                </div>
-                              </div>
-                              <p className="line-clamp-2 text-sm font-bold text-white">
-                                {item.title || stripSchedulerHtml(item.caption || "") || "Untitled cover post"}
-                              </p>
-                            </div>
-                          </>
-                        ) : (
-                          <div className="flex h-full flex-col justify-between bg-white p-3 text-left">
-                            <div className="flex flex-wrap gap-2">
-                              <div className="inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-gray-700">
-                                {queueStatusLabel(item)}
-                              </div>
-                              <div className="inline-flex rounded-full bg-[#eef7f1] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#4a9b6f]">
-                                {queueStyleLabel(item)}
-                              </div>
-                            </div>
-                            <div className="mt-3">
-                              {item.title ? (
-                                <p className="line-clamp-3 text-base font-bold leading-tight text-gray-900">{item.title}</p>
-                              ) : null}
-                              <p className="mt-2 line-clamp-6 text-sm leading-5 text-gray-600">
-                                {stripSchedulerHtml(item.caption || "") || "Untitled text post"}
-                              </p>
-                            </div>
-                          </div>
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+            <div className="mt-5 rounded-3xl border border-[#d4ecd4] bg-[#f9fcf9] p-5">
+              <p className="text-sm font-semibold text-gray-900">What moved</p>
+              <p className="mt-2 text-sm leading-6 text-gray-600">
+                Your cover drafts and text-only thread drafts now live in a dedicated private scheduler feed. You can save drafts with no time, click any queued post to preview it like a real home feed post, and post it from there when ready.
+              </p>
             </div>
           </div>
         </div>
@@ -1052,26 +938,14 @@ export default function StudyGroupAnalyticsPage() {
           onClick={() => setSelectedQueueItemId(null)}
         >
           <div
-            className="w-full max-w-4xl overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-2xl"
+            className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[28px] border border-gray-200 bg-[#f7f8f4] shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className={selectedQueueItem.post_style === "cover" ? "grid md:grid-cols-[minmax(0,420px)_minmax(0,1fr)]" : "grid md:grid-cols-1"}>
-              {selectedQueueItem.post_style === "cover" && selectedQueueItem.cover_image_url ? (
-                <div className="bg-black">
-                  <img
-                    src={selectedQueueItem.cover_image_url}
-                    alt={selectedQueueItem.title || "Queued cover post"}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              ) : null}
-              <div className="flex flex-col">
-                <div className="flex items-start justify-between gap-4 border-b border-gray-100 px-5 py-4">
+            <div>
+              <div>
+                <div className="flex items-start justify-between gap-4 border-b border-gray-200 bg-white px-5 py-4">
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-gray-400">Home Feed Scheduler</p>
-                    <p className="mt-1 text-lg font-bold text-gray-900">
-                      {selectedQueueItem.title || (selectedQueueItem.post_style === "text" ? "Untitled text post" : "Untitled cover post")}
-                    </p>
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-gray-400">Home Feed Preview</p>
                     <p className="mt-2 text-sm text-gray-500">
                       {queueStatusLabel(selectedQueueItem)} • {selectedQueueItem.status === "published"
                         ? `Posted ${formatQueueDateTime(selectedQueueItem.published_at)}`
@@ -1087,20 +961,31 @@ export default function StudyGroupAnalyticsPage() {
                   </button>
                 </div>
 
-                <div className="flex-1 overflow-y-auto px-5 py-5">
-                  <div className="rounded-[26px] border border-gray-200 bg-[#fafafa] p-5">
+                <div className="px-5 py-5">
+                  <div className="rounded-[28px] border border-gray-200 bg-white p-5 shadow-sm">
                     <div className="flex items-center gap-3">
                       <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#eef7f1] text-sm font-bold text-[#4a9b6f]">
                         L
                       </div>
                       <div>
                         <p className="text-sm font-semibold text-gray-900">Louis</p>
-                        <p className="text-xs text-gray-400">Queued home feed preview</p>
+                        <p className="text-xs text-gray-400">Queued home feed post</p>
                       </div>
                     </div>
 
+                    {selectedQueueItem.post_style === "cover" && selectedQueueItem.cover_image_url ? (
+                      <div className="mt-4 overflow-hidden rounded-[24px] border border-gray-100 bg-[#f8f8f8]">
+                        <img
+                          src={selectedQueueItem.cover_image_url}
+                          alt={selectedQueueItem.title || "Queued cover post"}
+                          className="w-full object-contain"
+                          style={{ maxHeight: "520px", objectPosition: "center" }}
+                        />
+                      </div>
+                    ) : null}
+
                     {selectedQueueItem.title ? (
-                      <h3 className="mt-4 text-[24px] font-bold leading-tight text-gray-900">{selectedQueueItem.title}</h3>
+                      <h3 className="mt-5 text-xl font-bold leading-snug text-gray-900">{selectedQueueItem.title}</h3>
                     ) : null}
 
                     <div className="mt-4 text-[15px] leading-7 text-gray-700">
@@ -1116,7 +1001,7 @@ export default function StudyGroupAnalyticsPage() {
                   </div>
                 </div>
 
-                <div className="border-t border-gray-100 px-5 py-4">
+                <div className="px-5 pb-5">
                   <div className="flex flex-wrap gap-3">
                     {selectedQueueItem.status !== "published" ? (
                       <button

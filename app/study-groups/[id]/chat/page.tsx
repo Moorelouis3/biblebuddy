@@ -4807,7 +4807,7 @@ export default function GroupChatPage() {
             )}
             {pollSet && (
               <div className="mt-3">
-                <GroupWeeklyPollCard pollSet={pollSet} userId={userId} />
+                <GroupWeeklyPollCard pollSet={pollSet} userId={userId} compactResults />
               </div>
             )}
             {triviaSet && (

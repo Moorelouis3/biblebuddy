@@ -23,9 +23,11 @@ type PollVoter = {
 export default function GroupWeeklyPollCard({
   pollSet,
   userId,
+  compactResults = false,
 }: {
   pollSet: PollFeedSet;
   userId: string | null;
+  compactResults?: boolean;
 }) {
   const [currentVote, setCurrentVote] = useState<string | null>(pollSet.current_user_vote);
   const [voteCounts, setVoteCounts] = useState<Record<string, number>>(pollSet.vote_counts);
@@ -166,7 +168,7 @@ export default function GroupWeeklyPollCard({
 
               {currentVote && voters.length ? (
                 <div className="relative mt-3 flex items-center gap-1">
-                  {voters.slice(0, 5).map((voter) => (
+                  {voters.slice(0, compactResults ? 3 : 5).map((voter) => (
                     <div
                       key={voter.user_id}
                       title={voter.display_name}
@@ -181,9 +183,14 @@ export default function GroupWeeklyPollCard({
                       )}
                     </div>
                   ))}
-                  {voters.length > 5 ? (
+                  {voters.length > (compactResults ? 3 : 5) ? (
                     <span className="ml-1 text-[11px] font-semibold text-gray-500">
-                      +{voters.length - 5}
+                      +{voters.length - (compactResults ? 3 : 5)}
+                    </span>
+                  ) : null}
+                  {compactResults ? (
+                    <span className="ml-2 text-[11px] font-semibold text-gray-500">
+                      Open post to see all
                     </span>
                   ) : null}
                 </div>
