@@ -579,7 +579,27 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           .is("read_at", null),
       ]);
 
-      const profiles = profilesResult.data || [];
+      const profiles = [...(profilesResult.data || [])];
+      const missingIds = otherIds.filter((id) => !profiles.some((profile) => profile.user_id === id));
+
+      if (missingIds.length > 0) {
+        const missingResults = await Promise.all(
+          [...new Set(missingIds)].map(async (missingId) => {
+            const { data } = await supabase
+              .from("profile_stats")
+              .select("user_id, display_name, username, profile_image_url, member_badge, is_paid")
+              .eq("user_id", missingId)
+              .maybeSingle();
+
+            return data;
+          }),
+        );
+
+        missingResults.forEach((profile) => {
+          if (profile) profiles.push(profile);
+        });
+      }
+
       const unreadConvoIds = new Set((unreadResult.data || []).map((m) => m.conversation_id));
 
       const previews = convos.map((c) => {

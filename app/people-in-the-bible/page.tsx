@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import { type BiblePerson } from "../../lib/biblePeople";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
@@ -414,6 +415,7 @@ function normalizePersonMarkdown(markdown: string): string {
 }
 
 export default function PeopleInTheBiblePage() {
+    const searchParams = useSearchParams();
     // Credit state for modal logic
     const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; ignore_credit_phase1: boolean | null } | null>(null);
     const prevCreditsRef = useRef<number | null>(null);
@@ -589,6 +591,18 @@ export default function PeopleInTheBiblePage() {
     // Allow access
     setSelectedPerson(person);
   };
+
+  useEffect(() => {
+    const requestedPerson = searchParams.get("person")?.trim().toLowerCase();
+    if (!requestedPerson) return;
+
+    const matchedPerson = people.find((person) => person.name.toLowerCase() === requestedPerson);
+    if (!matchedPerson) return;
+
+    setSearchQuery(matchedPerson.name);
+    setSelectedLetter(null);
+    setSelectedPerson(matchedPerson);
+  }, [people, searchParams]);
 
   // Generate notes when a person is selected
   useEffect(() => {
@@ -1328,4 +1342,3 @@ FINAL RULES:
     </div>
   );
 }
-

@@ -50,7 +50,9 @@ export async function POST(
   }
 
   try {
-    const result = await ensureWeeklyGroupSeriesPost(supabaseAdmin, groupId, "prayer_request_sunday");
+    const body = await request.json().catch(() => ({}));
+    const targetDate = typeof body?.targetDate === "string" ? new Date(body.targetDate) : new Date();
+    const result = await ensureWeeklyGroupSeriesPost(supabaseAdmin, groupId, "prayer_request_sunday", userData.user.id, targetDate, { force: body?.force === true });
     return NextResponse.json(result);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Could not ensure Prayer Request Sunday.";

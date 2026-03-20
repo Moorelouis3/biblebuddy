@@ -28,10 +28,12 @@ export default function GroupWeeklyTriviaCard({
   triviaSet,
   userId,
   onAfterComplete,
+  compactBoard = false,
 }: {
   triviaSet: WeeklyGroupTriviaSet;
   userId: string | null;
   onAfterComplete?: () => void;
+  compactBoard?: boolean;
 }) {
   const questions = triviaSet.questions;
   const totalQuestions = questions.length;
@@ -287,7 +289,7 @@ export default function GroupWeeklyTriviaCard({
                 <p className="py-5 text-sm text-gray-400">No scores yet. Be the first one on the board.</p>
               ) : (
                 <div className="mt-3 space-y-2">
-                  {entries.map((entry, index) => {
+                  {entries.slice(0, compactBoard ? 3 : entries.length).map((entry, index) => {
                     const percent = Math.round((entry.score / Math.max(entry.total_questions, 1)) * 100);
                     return (
                       <div
@@ -320,6 +322,11 @@ export default function GroupWeeklyTriviaCard({
                       </div>
                     );
                   })}
+                  {compactBoard && entries.length > 3 ? (
+                    <p className="px-1 pt-1 text-[11px] font-semibold text-gray-500">
+                      Open post to see the full trivia board and everyone who finished.
+                    </p>
+                  ) : null}
                 </div>
               )}
             </div>

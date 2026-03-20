@@ -24,7 +24,20 @@
       "Bash(do echo:*)",
       "Read(//c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/**)",
       "Bash(done)",
-      "Bash(grep -r .from.*completed_chapters /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e --include=*.ts --include=*.tsx)"
+      "Bash(grep -r .from.*completed_chapters /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e --include=*.ts --include=*.tsx)",
+      "Bash(grep -r handleBuddyRequestAccept c:UsersMooreDesktopbiblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e --include=*.ts --include=*.tsx)",
+      "Bash(grep -n \"acceptBuddy\\\\|handleBuddy\\\\|buddy.*accept\" c:UsersMooreDesktopbiblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337eappprofile[userId]page.tsx)",
+      "Bash(grep -n \"\\\\.upsert\\\\|\\\\.insert\" c:UsersMooreDesktopbiblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337eappdevotionals[id]page.tsx)",
+      "Bash(ls -la /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/*.sql)",
+      "Bash(grep -r \"categories\\\\|category\" /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/*.sql)",
+      "Bash(grep -r \"CREATE TABLE\\\\|create table\" /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/*.sql)",
+      "Bash(ls -1 /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/*.sql)",
+      "Bash(for f:*)",
+      "Bash(npx tsc:*)",
+      "Bash(wc -l c:UsersMooreDesktopbiblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337eappstudy-groups[id]chatpage.tsx)",
+      "Bash(grep -E \"\\\\.\\(sql|ts|tsx\\)$\")",
+      "Bash(find /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/app/notifications -type f -name *.tsx)",
+      "Bash(find /c/Users/Moore/Desktop/biblebuddy-64b2c5e17859ed53fac72e910f85cda25c78337e/app/bible-buddies -type f -name *.tsx)"
     ]
   }
 }

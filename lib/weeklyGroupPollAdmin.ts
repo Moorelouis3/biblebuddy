@@ -1,8 +1,30 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { buildWeeklyGroupPoll } from "./groupWeeklyPoll";
-
-const LOUIS_EMAIL = "moorelouis3@gmail.com";
 const BERLIN_TIME_ZONE = "Europe/Berlin";
+const LOUIS_EMAIL = "moorelouis3@gmail.com";
+
+async function resolveDisplayName(supabaseAdmin: SupabaseClient, userId: string) {
+  const { data } = await supabaseAdmin
+    .from("profile_stats")
+    .select("display_name, username")
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  return data?.display_name || data?.username || "Louis";
+}
+
+async function resolveActorUserId(supabaseAdmin: SupabaseClient, actorUserId?: string | null) {
+  if (actorUserId) return actorUserId;
+
+  const { data: louisUsers, error: louisError } = await supabaseAdmin.auth.admin.listUsers({
+    page: 1,
+    perPage: 1000,
+  });
+  if (louisError) throw new Error(louisError.message || "Could not load Louis account.");
+  const louis = louisUsers.users.find((user) => user.email?.toLowerCase() === LOUIS_EMAIL);
+  if (!louis) throw new Error("Louis account not found.");
+  return louis.id;
+}
 
 function getBerlinDateParts(date: Date) {
   const formatter = new Intl.DateTimeFormat("en-GB", {
@@ -44,7 +66,9 @@ function isBerlinReleaseWindowOpen(date: Date) {
 export async function ensureWeeklyGroupPollPost(
   supabaseAdmin: SupabaseClient,
   groupId: string,
+  actorUserId?: string | null,
   now = new Date(),
+  options: { force?: boolean } = {},
 ) {
   const { data: group, error: groupError } = await supabaseAdmin
     .from("study_groups")
@@ -55,11 +79,7 @@ export async function ensureWeeklyGroupPollPost(
   if (groupError) throw new Error(groupError.message || "Could not load study group.");
   if (!group) throw new Error("Study group not found.");
 
-  if (!["Bible Buddy Study Group", "Hope Nation"].includes(group.name)) {
-    return { ok: true, skipped: true as const, reason: "not_official_group" };
-  }
-
-  if (!isBerlinReleaseWindowOpen(now)) {
+  if (!options.force && !isBerlinReleaseWindowOpen(now)) {
     return { ok: true, skipped: true as const, reason: "before_release_time" };
   }
 
@@ -77,13 +97,8 @@ export async function ensureWeeklyGroupPollPost(
     return { ok: true, skipped: true as const, reason: "already_exists", postId: existing.post_id };
   }
 
-  const { data: louisUsers, error: louisError } = await supabaseAdmin.auth.admin.listUsers({
-    page: 1,
-    perPage: 1000,
-  });
-  if (louisError) throw new Error(louisError.message || "Could not load Louis account.");
-  const louis = louisUsers.users.find((user) => user.email?.toLowerCase() === LOUIS_EMAIL);
-  if (!louis) throw new Error("Louis account not found.");
+  const resolvedActorUserId = await resolveActorUserId(supabaseAdmin, actorUserId);
+  const displayName = await resolveDisplayName(supabaseAdmin, resolvedActorUserId);
 
   const content = "";
 
@@ -91,8 +106,8 @@ export async function ensureWeeklyGroupPollPost(
     .from("group_posts")
     .insert({
       group_id: groupId,
-      user_id: louis.id,
-      display_name: "Louis",
+      user_id: resolvedActorUserId,
+      display_name: displayName,
       title: poll.question,
       category: "weekly_poll",
       content,
@@ -115,7 +130,7 @@ export async function ensureWeeklyGroupPollPost(
       question: poll.question,
       intro: poll.intro,
       options: poll.options,
-      created_by: louis.id,
+      created_by: resolvedActorUserId,
     });
 
   if (pollError) {

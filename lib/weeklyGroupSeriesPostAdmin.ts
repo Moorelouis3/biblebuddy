@@ -8,8 +8,8 @@ import {
   getBerlinDateKey,
 } from "./groupRecurringSeries";
 
-const LOUIS_EMAIL = "moorelouis3@gmail.com";
 const BERLIN_TIME_ZONE = "Europe/Berlin";
+const LOUIS_EMAIL = "moorelouis3@gmail.com";
 
 export type WeeklySeriesKey =
   | "update_monday"
@@ -95,6 +95,29 @@ async function loadBibleStudySeriesSnapshot(
   };
 }
 
+async function resolveDisplayName(supabaseAdmin: SupabaseClient, userId: string) {
+  const { data } = await supabaseAdmin
+    .from("profile_stats")
+    .select("display_name, username")
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  return data?.display_name || data?.username || "Louis";
+}
+
+async function resolveActorUserId(supabaseAdmin: SupabaseClient, actorUserId?: string | null) {
+  if (actorUserId) return actorUserId;
+
+  const { data: louisUsers, error: louisError } = await supabaseAdmin.auth.admin.listUsers({
+    page: 1,
+    perPage: 1000,
+  });
+  if (louisError) throw new Error(louisError.message || "Could not load Louis account.");
+  const louis = louisUsers.users.find((user) => user.email?.toLowerCase() === LOUIS_EMAIL);
+  if (!louis) throw new Error("Louis account not found.");
+  return louis.id;
+}
+
 function getBerlinDateParts(date: Date) {
   const formatter = new Intl.DateTimeFormat("en-GB", {
     timeZone: BERLIN_TIME_ZONE,
@@ -137,7 +160,9 @@ export async function ensureWeeklyGroupSeriesPost(
   supabaseAdmin: SupabaseClient,
   groupId: string,
   seriesKey: WeeklySeriesKey,
+  actorUserId?: string | null,
   now = new Date(),
+  options: { force?: boolean } = {},
 ) {
   const { data: group, error: groupError } = await supabaseAdmin
     .from("study_groups")
@@ -148,11 +173,7 @@ export async function ensureWeeklyGroupSeriesPost(
   if (groupError) throw new Error(groupError.message || "Could not load study group.");
   if (!group) throw new Error("Study group not found.");
 
-  if (!["Bible Buddy Study Group", "Hope Nation"].includes(group.name)) {
-    return { ok: true, skipped: true as const, reason: "not_official_group" };
-  }
-
-  if (!isBerlinReleaseWindowOpen(seriesKey, now)) {
+  if (!options.force && !isBerlinReleaseWindowOpen(seriesKey, now)) {
     return { ok: true, skipped: true as const, reason: "before_release_time" };
   }
 
@@ -180,20 +201,15 @@ export async function ensureWeeklyGroupSeriesPost(
     return { ok: true, skipped: true as const, reason: "already_exists", postId: existing.post_id };
   }
 
-  const { data: louisUsers, error: louisError } = await supabaseAdmin.auth.admin.listUsers({
-    page: 1,
-    perPage: 1000,
-  });
-  if (louisError) throw new Error(louisError.message || "Could not load Louis account.");
-  const louis = louisUsers.users.find((user) => user.email?.toLowerCase() === LOUIS_EMAIL);
-  if (!louis) throw new Error("Louis account not found.");
+  const resolvedActorUserId = await resolveActorUserId(supabaseAdmin, actorUserId);
+  const displayName = await resolveDisplayName(supabaseAdmin, resolvedActorUserId);
 
   const { data: post, error: postError } = await supabaseAdmin
     .from("group_posts")
     .insert({
       group_id: groupId,
-      user_id: louis.id,
-      display_name: "Louis",
+      user_id: resolvedActorUserId,
+      display_name: displayName,
       title: series.title,
       category: seriesKey,
       content: series.contentHtml,
@@ -216,7 +232,7 @@ export async function ensureWeeklyGroupSeriesPost(
       title: series.title,
       description: series.description,
       content_html: series.contentHtml,
-      created_by: louis.id,
+      created_by: resolvedActorUserId,
     });
 
   if (seriesError) {

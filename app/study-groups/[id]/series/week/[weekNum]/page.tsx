@@ -1586,7 +1586,7 @@ export default function WeekLessonPage({
           </button>
         ) : (
           <Link href={`/study-groups/${groupId}/series`} className="text-blue-600 hover:underline mt-4 inline-block">
-            â† Back to Series
+            Back to Series
           </Link>
         )}
       </div>
@@ -1603,7 +1603,7 @@ export default function WeekLessonPage({
           </button>
         ) : (
           <Link href={`/study-groups/${groupId}/series`} className="text-blue-600 hover:underline mt-4 inline-block">
-            â† Back to Series
+            Back to Series
           </Link>
         )}
       </div>
@@ -1632,11 +1632,11 @@ export default function WeekLessonPage({
         )}
         {!embedded && <nav className="text-sm text-gray-500 mb-6">
           <Link href="/dashboard" className="hover:text-gray-700 transition">Dashboard</Link>
-          <span className="mx-2">â€º</span>
+          <span className="mx-2">/</span>
           <Link href={`/study-groups/${groupId}/chat`} className="hover:text-gray-700 transition">{groupName}</Link>
-          <span className="mx-2">â€º</span>
+          <span className="mx-2">/</span>
           <Link href={`/study-groups/${groupId}/series`} className="hover:text-gray-700 transition">{seriesTitle}</Link>
-          <span className="mx-2">â€º</span>
+          <span className="mx-2">/</span>
           <span className="text-gray-800 font-medium">Week {weekNum}</span>
         </nav>}
 

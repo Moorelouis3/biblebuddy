@@ -83,6 +83,14 @@ function getPlainIntroSnippet(intro: string) {
   return blocks.find((block) => !block.endsWith(":")) ?? blocks[0] ?? "";
 }
 
+function getPlainIntroBlocks(intro: string) {
+  return stripFormatting(intro)
+    .split("\n\n")
+    .map((block) => block.trim())
+    .filter(Boolean)
+    .filter((block) => !block.endsWith(":"));
+}
+
 function resolveSeriesWeekNumber(date: Date, seriesStartAt: string | null, totalWeeks = TOTAL_WEEKS) {
   if (!seriesStartAt) return 1;
 
@@ -193,30 +201,62 @@ const FRIDAY_FEATURES: RecurringSeriesTemplate[] = [
   {
     title: "Who was Judah in the Bible?",
     description: "This week's Who Was This Friday looks at Judah, his failures, his turning point, and why his story matters more than most people realize.",
-    contentHtml: paragraphize(
-      "Hey Buddies,\n\nThis week's Who Was This Friday is about Judah.\n\nJudah is one of those people in the Bible whose story is bigger than most people first realize. He was one of Joseph's brothers, which means he was right in the middle of that family jealousy, betrayal, and pain. Early on, Judah is not presented like a hero. He is part of the mess. He makes real choices that affect real people, and some of those choices are ugly. That matters because Scripture does not hide how broken people can be.\n\nBut Judah's story changes. Later, when the family faces another crisis in Egypt, Judah steps forward in a completely different way. He takes responsibility. He speaks up. He offers himself in Benjamin's place. That moment shows growth. It shows repentance in action, not just words. Judah moves from being part of the harm to being willing to sacrifice himself for someone else.\n\nThat is a major reason Judah matters. He is not just a name in a list. He is a picture of how God can change a person over time. And even bigger than that, Jesus comes through the line of Judah. That does not erase Judah's failures, but it does show God's redemption. Judah reminds us that God can take a messy story and still bring something holy out of it.",
-    ),
+    contentHtml:
+      "<p><strong>This week we are looking at Judah.</strong></p>" +
+      "<p>Judah is one of those people in Scripture whose story starts messy and then becomes surprisingly important. He was one of Joseph's brothers, so he was right in the middle of the jealousy, betrayal, and pain that tore that family apart.</p>" +
+      "<h2>Why Judah matters</h2>" +
+      "<ul><li>🔥 He shows how ugly sin can get when envy is left unchecked.</li><li>📖 He later steps up with real responsibility instead of empty words.</li><li>👑 His story matters even more because the line of Jesus comes through Judah.</li></ul>" +
+      "<p>That turn in Judah's life is what makes him worth studying. He is not introduced like a hero. He is part of the problem. But later, when the family faces another crisis, Judah becomes the one willing to stand in the gap for Benjamin. That is growth. That is repentance with action.</p>" +
+      "<h2>Where to read it in the Bible</h2>" +
+      "<ul><li>📍 Genesis 37:26-27</li><li>📍 Genesis 38:1-26</li><li>📍 Genesis 44:18-34</li><li>📍 Matthew 1:2-3</li></ul>" +
+      "<h2>The real takeaway</h2>" +
+      "<p>Judah reminds us that God does not need a clean backstory to do something powerful with a person. Scripture does not hide his failures, but it also does not end there. God can confront what is broken, reshape a heart, and still bring redemption out of a life that looked messy.</p>" +
+      "<p><strong>Drop into the comments after you read:</strong> What stands out to you most about Judah's change?</p>",
   },
   {
     title: "Who was Gabriel in the Bible?",
     description: "This week's Who Was This Friday looks at Gabriel and the moments where he shows up carrying messages that change the story.",
-    contentHtml: paragraphize(
-      "Hey Buddies,\n\nThis week's Who Was This Friday is about Gabriel.\n\nGabriel is one of the most recognized angels in the Bible, but what makes him stand out is not how often he appears. It is what is happening when he does appear. Gabriel shows up in moments where God is revealing something serious, something that changes the direction of the story. He is connected to messages that are bigger than the person hearing them in the moment.\n\nIn Daniel, Gabriel helps explain visions that would have been overwhelming without God's help. In Luke, he announces the coming births of John the Baptist and Jesus. Those are not random moments. Those are major turning points in Scripture. Gabriel's role shows us that when God is moving, He is not confused, rushed, or reacting. He is carrying out a plan that has already been set in motion.\n\nThat is one reason Gabriel matters. He reminds us that heaven is involved even when earth feels uncertain. He also reminds us that God's messages are not always easy to receive. Zechariah struggles to believe. Mary asks questions. But Gabriel's presence keeps pointing to the same truth: God is doing exactly what He said He would do. Gabriel is a reminder that when God speaks, history moves. And when God sends a message, it is never small.",
-    ),
+    contentHtml:
+      "<p><strong>This week we are looking at Gabriel.</strong></p>" +
+      "<p>Gabriel is one of the clearest reminders in Scripture that when God speaks, history moves. He does not appear often, but when he does, the moment is never small.</p>" +
+      "<h2>Why Gabriel matters</h2>" +
+      "<ul><li>🕊️ He shows up in moments where God is revealing something major.</li><li>📣 He announces things that change the direction of the story.</li><li>✨ He reminds us that heaven is active even when life on earth feels uncertain.</li></ul>" +
+      "<p>In Daniel, Gabriel helps explain visions that would have been overwhelming without God's help. In Luke, he announces the births of John the Baptist and Jesus. Those are turning-point moments. Gabriel's role reminds us that God is never scrambling. He is moving with purpose.</p>" +
+      "<h2>Where to read it in the Bible</h2>" +
+      "<ul><li>📍 Daniel 8:15-17</li><li>📍 Daniel 9:21-27</li><li>📍 Luke 1:11-20</li><li>📍 Luke 1:26-38</li></ul>" +
+      "<h2>The real takeaway</h2>" +
+      "<p>Gabriel points us back to the faithfulness of God. His presence keeps saying the same thing: what God promised is still moving forward. Even when people hesitate, struggle, or need time to understand, God is still accomplishing His word.</p>" +
+      "<p><strong>Drop into the comments after you read:</strong> What part of Gabriel's role stands out to you most?</p>",
   },
   {
     title: "Who was Andrew in the Bible?",
     description: "This week's Who Was This Friday looks at Andrew and why quiet faithfulness still matters in the story of Jesus.",
-    contentHtml: paragraphize(
-      "Hey Buddies,\n\nThis week's Who Was This Friday is about Andrew.\n\nAndrew is one of those disciples people can easily overlook because he is usually standing near someone louder. He was Peter's brother, and Peter naturally gets more attention in the Gospel story. But Andrew matters because he shows us that influence is not always loud, dramatic, or center stage. Sometimes the people doing quiet kingdom work are carrying more weight than others realize.\n\nOne of the clearest patterns in Andrew's life is that he keeps bringing people to Jesus. He brings Peter. He brings the boy with the loaves and fish. He helps connect people to Christ instead of trying to become the focus himself. That is powerful. Andrew does not need to control the moment. He is faithful enough to simply point people in the right direction.\n\nThat is why Andrew's story matters. He reminds us that not every calling looks big from the outside. Some people are builders of connection. Some people are introducers. Some people quietly help other people get one step closer to Jesus. Andrew shows that this kind of faithfulness is not small in the kingdom of God. In a world that often rewards being seen, Andrew reminds us that heaven also notices the people who faithfully bring others to Christ.",
-    ),
+    contentHtml:
+      "<p><strong>This week we are looking at Andrew.</strong></p>" +
+      "<p>Andrew is easy to overlook because he often stands near louder people in the Gospel story. But his quiet faithfulness is exactly what makes him so important.</p>" +
+      "<h2>Why Andrew matters</h2>" +
+      "<ul><li>🤝 He keeps bringing people to Jesus.</li><li>📍 He shows that influence does not have to be loud to be powerful.</li><li>💡 He reminds us that helping others get closer to Christ is real ministry.</li></ul>" +
+      "<p>Andrew brings Peter. He helps bring the boy with the loaves and fish. He keeps showing up as someone willing to connect people to Jesus without needing the spotlight for himself.</p>" +
+      "<h2>Where to read it in the Bible</h2>" +
+      "<ul><li>📍 John 1:35-42</li><li>📍 John 6:8-9</li><li>📍 John 12:20-22</li><li>📍 Matthew 4:18-20</li></ul>" +
+      "<h2>The real takeaway</h2>" +
+      "<p>Andrew reminds us that some of the strongest kingdom work happens quietly. Not every calling looks dramatic from the outside. Some people are builders, introducers, and faithful connectors. Heaven notices that kind of obedience.</p>" +
+      "<p><strong>Drop into the comments after you read:</strong> Do you relate more to loud leadership or quiet faithfulness?</p>",
   },
   {
     title: "Who was Barnabas in the Bible?",
     description: "This week's Who Was This Friday looks at Barnabas and how encouragement became part of his calling.",
-    contentHtml: paragraphize(
-      "Hey Buddies,\n\nThis week's Who Was This Friday is about Barnabas.\n\nBarnabas is one of the clearest examples in the New Testament of what real encouragement looks like. Not shallow encouragement. Not just saying something positive. Barnabas had a way of seeing where God was working in people and making room for that work to grow. That kind of person is rare, and the early church was stronger because he was there.\n\nOne of the biggest moments in Barnabas's story is how he stood beside Saul, who later became Paul. At that time, many believers were afraid of Saul because of his past. Barnabas was willing to recognize that God's grace was truly at work in him. That took discernment, courage, and spiritual maturity. Later, Barnabas also gives John Mark another chance when others were ready to move on from him. That tells you a lot about the kind of man he was.\n\nBarnabas matters because he shows that encouragement is not just a personality trait. It can be a ministry. The right encourager helps hold people up while God shapes them. He helps protect growth in its early stages. He helps people keep going when others are unsure about them. Barnabas reminds us that one steady, faithful encourager can impact more lives than they may ever fully know.",
-    ),
+    contentHtml:
+      "<p><strong>This week we are looking at Barnabas.</strong></p>" +
+      "<p>Barnabas is one of the clearest examples in the New Testament of what real encouragement looks like. Not shallow positivity. Real spiritual encouragement that helps people grow.</p>" +
+      "<h2>Why Barnabas matters</h2>" +
+      "<ul><li>🙌 He saw God's work in people before others were fully ready to trust it.</li><li>🛡️ He stood beside Paul when many believers were still afraid of him.</li><li>🌱 He made room for growth instead of writing people off too quickly.</li></ul>" +
+      "<p>That kind of person is rare. Barnabas was willing to recognize God's grace at work in people and protect that growth while it was still fragile. Later, he also gives John Mark another chance when others were ready to move on.</p>" +
+      "<h2>Where to read it in the Bible</h2>" +
+      "<ul><li>📍 Acts 4:36-37</li><li>📍 Acts 9:26-27</li><li>📍 Acts 11:22-26</li><li>📍 Acts 15:36-39</li></ul>" +
+      "<h2>The real takeaway</h2>" +
+      "<p>Barnabas shows us that encouragement can be a ministry, not just a personality trait. The right encourager helps people keep going, helps protect new growth, and can impact more lives than they may ever fully see.</p>" +
+      "<p><strong>Drop into the comments after you read:</strong> Who has been a Barnabas in your life?</p>",
   },
 ];
 
@@ -347,9 +387,12 @@ export function buildBibleStudySaturdayPost(
 
   if (liveStudy) {
     const readingLine = `${liveStudy.lesson.readingReference} · Week ${liveStudy.weekNumber} of ${liveStudy.seriesTitle}`;
+    const introBlocks = getPlainIntroBlocks(liveStudy.lesson.intro);
+    const promoLead = introBlocks[0] || liveStudy.introSnippet;
+    const promoSupport = introBlocks[1] || "This study is built to help you move through the week with structure instead of guessing what to focus on next.";
     const description =
-      `This week's Bible study is now live.\n\n` +
-      `Learn about "${liveStudy.lesson.title}" and ${liveStudy.lesson.subtitle.toLowerCase()}.\n\n` +
+      `Bible Study Saturday is here.\n\n` +
+      `This week we are jumping into "${liveStudy.lesson.title}" - ${liveStudy.lesson.subtitle.toLowerCase()}.\n\n` +
       `${readingLine}`;
 
     return {
@@ -358,10 +401,16 @@ export function buildBibleStudySaturdayPost(
       title: "This week's Bible Study is now live",
       description,
       contentHtml:
-        `<p><strong>This week's Bible study is now live.</strong></p>` +
-        `<p>Learn about <strong>${liveStudy.lesson.title}</strong>, ${liveStudy.lesson.subtitle.toLowerCase()}, as we study <strong>${liveStudy.lesson.readingReference}</strong> together.</p>` +
-        `<p>${liveStudy.introSnippet}</p>` +
-        `<p><a href="${liveStudy.studyHref}" style="color:#8d5d38;font-weight:700;text-decoration:underline;">Open this week's Bible study</a></p>`,
+        `<h1>Bible Study Saturday Is Live</h1>` +
+        `<p><strong>This week's study is ready and it is meant to be a full-group moment.</strong></p>` +
+        `<p>We are jumping into <strong>${liveStudy.lesson.title}</strong> - ${liveStudy.lesson.subtitle.toLowerCase()} - as we study <strong>${liveStudy.lesson.readingReference}</strong> together.</p>` +
+        `<h2>Why you should jump in</h2>` +
+        `<ul><li>🔥 This is part <strong>${liveStudy.weekNumber}</strong> of a bigger multi-part Bible study series.</li><li>📖 You can move through it throughout the week, not all at once.</li><li>💬 It gives you reading, notes, reflection, and a real group discussion point.</li></ul>` +
+        `<p>${promoLead}</p>` +
+        `<p>${promoSupport}</p>` +
+        `<p><strong>Reading for this week:</strong> ${readingLine}</p>` +
+        `<p><a href="${liveStudy.studyHref}" style="color:#8d5d38;font-weight:700;text-decoration:underline;">Open this week's Bible study</a></p>` +
+        `<p><strong>After you go through it, come back and tell the group what stood out to you most.</strong></p>`,
     };
   }
 

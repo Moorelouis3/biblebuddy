@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_PLACES_LIST } from "../../lib/biblePlacesList";
 import { logStudyView } from "../../lib/studyViewLimit";
@@ -35,6 +35,7 @@ function normalizePlaceMarkdown(markdown: string): string {
 
 export default function PlacesInTheBiblePage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [places] = useState<BiblePlace[]>(createStaticPlaces());
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
@@ -67,6 +68,18 @@ export default function PlacesInTheBiblePage() {
 
     setSelectedPlace(place);
   };
+
+  useEffect(() => {
+    const requestedPlace = searchParams.get("place")?.trim().toLowerCase();
+    if (!requestedPlace) return;
+
+    const matchedPlace = places.find((place) => place.name.toLowerCase() === requestedPlace);
+    if (!matchedPlace) return;
+
+    setSearchQuery(matchedPlace.name);
+    setSelectedLetter(null);
+    setSelectedPlace(matchedPlace);
+  }, [places, searchParams]);
 
   // Filter and sort places
   const filteredPlaces = useMemo(() => {
@@ -868,4 +881,3 @@ RULES:
     </div>
   );
 }
-

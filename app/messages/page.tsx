@@ -46,6 +46,7 @@ export default function MessagesPage() {
   const router = useRouter();
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [loading, setLoading] = useState(true);
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null);
 
   useEffect(() => {
     async function load() {
@@ -56,10 +57,47 @@ export default function MessagesPage() {
         router.push("/login");
         return;
       }
+      setCurrentUserId(user.id);
       await fetchConversations(user.id);
     }
     void load();
   }, [router]);
+
+  useEffect(() => {
+    if (!currentUserId) return;
+
+    const refresh = () => {
+      void fetchConversations(currentUserId);
+    };
+
+    const messageChannel = supabase
+      .channel(`messages-page:${currentUserId}`)
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "messages" },
+        refresh,
+      )
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "conversations" },
+        refresh,
+      )
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "profile_stats" },
+        refresh,
+      )
+      .subscribe();
+
+    window.addEventListener("focus", refresh);
+    window.addEventListener("bb:refresh-unread-messages", refresh);
+
+    return () => {
+      window.removeEventListener("focus", refresh);
+      window.removeEventListener("bb:refresh-unread-messages", refresh);
+      void supabase.removeChannel(messageChannel);
+    };
+  }, [currentUserId]);
 
   async function fetchConversations(uid: string) {
     setLoading(true);
@@ -90,7 +128,27 @@ export default function MessagesPage() {
           .is("read_at", null),
       ]);
 
-      const profiles = profilesResult.data || [];
+      const profiles = [...(profilesResult.data || [])];
+      const missingIds = otherIds.filter((id) => !profiles.some((profile) => profile.user_id === id));
+
+      if (missingIds.length > 0) {
+        const missingResults = await Promise.all(
+          [...new Set(missingIds)].map(async (missingId) => {
+            const { data } = await supabase
+              .from("profile_stats")
+              .select("user_id, display_name, username, profile_image_url, member_badge, is_paid")
+              .eq("user_id", missingId)
+              .maybeSingle();
+
+            return data;
+          }),
+        );
+
+        missingResults.forEach((profile) => {
+          if (profile) profiles.push(profile);
+        });
+      }
+
       const unreadConvoIds = new Set((unreadResult.data || []).map((m) => m.conversation_id));
 
       setConversations(
@@ -110,6 +168,9 @@ export default function MessagesPage() {
           };
         }),
       );
+    } catch (error) {
+      console.error("[MESSAGES_PAGE] Could not load conversations:", error);
+      setConversations([]);
     } finally {
       setLoading(false);
     }

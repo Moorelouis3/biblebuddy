@@ -119,6 +119,46 @@ export default function ConversationPage() {
   const editInputRef = useRef<HTMLTextAreaElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
+  async function markConversationAsRead(currentUserId: string) {
+    const nowIso = new Date().toISOString();
+    const { error } = await supabase
+      .from("messages")
+      .update({ read_at: nowIso })
+      .eq("conversation_id", conversationId)
+      .neq("sender_id", currentUserId)
+      .is("read_at", null);
+
+    if (error) {
+      console.error("[MESSAGES] Could not mark conversation read:", error);
+      return;
+    }
+
+    setMessages((prev) =>
+      prev.map((message) =>
+        message.sender_id !== currentUserId && !message.read_at
+          ? { ...message, read_at: nowIso }
+          : message,
+      ),
+    );
+
+    void supabase
+      .from("notifications")
+      .update({ is_read: true })
+      .eq("type", "direct_message")
+      .eq("article_slug", `/messages/${conversationId}`)
+      .eq("user_id", currentUserId)
+      .eq("is_read", false);
+
+    window.dispatchEvent(
+      new CustomEvent("bb:refresh-unread-messages", {
+        detail: {
+          conversationId,
+          markRead: true,
+        },
+      }),
+    );
+  }
+
   useEffect(() => {
     async function init() {
       const {
@@ -230,42 +270,63 @@ export default function ConversationPage() {
       const hadUnreadMessages = msgs ? msgs.some((message) => message.sender_id !== uid && !message.read_at) : false;
 
       if (hadUnreadMessages) {
-        window.dispatchEvent(
-          new CustomEvent("bb:refresh-unread-messages", {
-            detail: {
-              conversationId,
-              markRead: true,
-            },
-          }),
-        );
-
-        void supabase
-          .from("messages")
-          .update({ read_at: new Date().toISOString() })
-          .eq("conversation_id", conversationId)
-          .neq("sender_id", uid)
-          .is("read_at", null)
-          .then(() => {
-            void supabase
-              .from("notifications")
-              .update({ is_read: true })
-              .eq("type", "direct_message")
-              .eq("article_slug", `/messages/${conversationId}`)
-              .eq("user_id", uid)
-              .eq("is_read", false);
-            window.dispatchEvent(
-              new CustomEvent("bb:refresh-unread-messages", {
-                detail: {
-                  conversationId,
-                },
-              }),
-            );
-          });
+        void markConversationAsRead(uid);
       }
     } finally {
       setLoading(false);
     }
   }
+
+  useEffect(() => {
+    if (!userId) return;
+
+    const currentUserId = userId;
+    const channel = supabase
+      .channel(`conversation:${conversationId}:${currentUserId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "messages",
+          filter: `conversation_id=eq.${conversationId}`,
+        },
+        async () => {
+          const { data: latestMessages, error } = await supabase
+            .from("messages")
+            .select("id, sender_id, content, read_at, created_at")
+            .eq("conversation_id", conversationId)
+            .order("created_at", { ascending: true });
+
+          if (error) {
+            console.error("[MESSAGES] Could not refresh conversation messages:", error);
+            return;
+          }
+
+          setMessages(latestMessages || []);
+
+          const hasUnreadIncoming = (latestMessages || []).some(
+            (message) => message.sender_id !== currentUserId && !message.read_at,
+          );
+
+          if (hasUnreadIncoming) {
+            await markConversationAsRead(currentUserId);
+          }
+        },
+      )
+      .subscribe();
+
+    const focusRefresh = () => {
+      void loadConversation(currentUserId);
+    };
+
+    window.addEventListener("focus", focusRefresh);
+
+    return () => {
+      window.removeEventListener("focus", focusRefresh);
+      void supabase.removeChannel(channel);
+    };
+  }, [conversationId, userId]);
 
   async function handleSend() {
     if (!newMessage.trim() || !userId || sending || blockState) return;

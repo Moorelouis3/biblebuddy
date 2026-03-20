@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_KEYWORDS_LIST } from "../../lib/bibleKeywordsList";
@@ -48,6 +48,7 @@ function normalizeKeywordMarkdown(markdown: string): string {
 
 export default function KeywordsInTheBiblePage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [keywords] = useState<BibleKeyword[]>(createStaticKeywords());
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
@@ -80,6 +81,18 @@ export default function KeywordsInTheBiblePage() {
 
     setSelectedKeyword(keyword);
   };
+
+  useEffect(() => {
+    const requestedKeyword = searchParams.get("keyword")?.trim().toLowerCase();
+    if (!requestedKeyword) return;
+
+    const matchedKeyword = keywords.find((keyword) => keyword.name.toLowerCase() === requestedKeyword);
+    if (!matchedKeyword) return;
+
+    setSearchQuery(matchedKeyword.name);
+    setSelectedLetter(null);
+    setSelectedKeyword(matchedKeyword);
+  }, [keywords, searchParams]);
 
   // Filter and sort keywords
   const filteredKeywords = useMemo(() => {
@@ -874,4 +887,3 @@ RULES:
     </div>
   );
 }
-

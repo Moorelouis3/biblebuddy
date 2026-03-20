@@ -2,6 +2,7 @@
 
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import ReactMarkdown from "react-markdown";
 import { useEffect, useState, useRef, type MouseEvent } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -19,6 +20,17 @@ import GroupWeeklyPollCard from "@/components/GroupWeeklyPollCard";
 import GroupWeeklyTriviaCard from "@/components/GroupWeeklyTriviaCard";
 import GroupWeeklyQuestionCard from "@/components/GroupWeeklyQuestionCard";
 import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
+import CreditLimitModal from "@/components/CreditLimitModal";
+import { LouisAvatar } from "@/components/LouisAvatar";
+import PostMentionSuggestions from "@/components/PostMentionSuggestions";
+import { enrichBibleVerses } from "@/lib/bibleHighlighting";
+import { ACTION_TYPE } from "@/lib/actionTypes";
+import { BIBLE_PEOPLE_LIST } from "@/lib/biblePeopleList";
+import {
+  linkMentionItemsInHtml,
+  loadGroupPostMentions,
+  type MentionCatalogItem,
+} from "@/lib/groupPostMentions";
 
 // â”€â”€ Interfaces â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
@@ -388,6 +400,7 @@ function stripHtml(html: string): string {
     .replace(/<br\s*\/?>/gi, "\n")
     .replace(/<\/p>/gi, "\n")
     .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;|&#160;/gi, " ")
     .replace(/\u00a0/g, " ")
     .trim();
 }
@@ -407,7 +420,51 @@ function isHomeFeedCoverPost(post: Pick<Post, "media_url" | "content">): boolean
 }
 
 function getRenderablePostContent(html: string): string {
-  return html.replace(HOME_FEED_COVER_MARKER, "").trim();
+  return linkBibleReferencesInHtml(html.replace(HOME_FEED_COVER_MARKER, "").trim());
+}
+
+function escapeHtmlAttribute(value: string) {
+  return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+}
+
+function linkBibleReferencesInHtml(html: string) {
+  return html.replace(
+    /\b((?:[1-3]\s+)?[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+(\d+):(\d+)(?:-(\d+))?\b/g,
+    (match) =>
+      `<button type="button" class="scripture-ref-link inline font-semibold text-[#8d5d38] underline underline-offset-2" data-scripture-ref="${escapeHtmlAttribute(match)}">${match}</button>`,
+  );
+}
+
+function parseBibleReference(reference: string) {
+  const match = reference.match(/^((?:[1-3]\s+)?[A-Za-z]+(?:\s+[A-Za-z]+)*)\s+(\d+):?/);
+  if (!match) return null;
+
+  const book = match[1].trim();
+  const chapter = Number(match[2]);
+  if (!book || Number.isNaN(chapter)) return null;
+
+  return { book, chapter };
+}
+
+function normalizePersonMarkdown(markdown: string) {
+  return markdown
+    .replace(/^\s*[-â€¢*]\s+/gm, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+function normalizePlaceMarkdown(markdown: string) {
+  return markdown
+    .replace(/^\s*[-â€¢*]\s+/gm, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+function normalizeKeywordMarkdown(markdown: string) {
+  return markdown
+    .replace(/^\s*[-â€¢*]\s+/gm, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
 }
 
 function GroupCommentSection({
@@ -939,6 +996,24 @@ export default function GroupChatPage() {
   const [activeTab, setActiveTab] = useState<string>("home");
   const [showGroupInfoModal, setShowGroupInfoModal] = useState(false);
   const [selectedFeedPost, setSelectedFeedPost] = useState<Post | null>(null);
+  const [selectedScripture, setSelectedScripture] = useState<{ reference: string; book: string; chapter: number } | null>(null);
+  const [scriptureHtml, setScriptureHtml] = useState<string | null>(null);
+  const [loadingScripture, setLoadingScripture] = useState(false);
+  const [selectedPerson, setSelectedPerson] = useState<{ name: string } | null>(null);
+  const [selectedPlace, setSelectedPlace] = useState<{ name: string } | null>(null);
+  const [selectedKeyword, setSelectedKeyword] = useState<{ name: string } | null>(null);
+  const [personNotes, setPersonNotes] = useState<string | null>(null);
+  const [placeNotes, setPlaceNotes] = useState<string | null>(null);
+  const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
+  const [completedPeople, setCompletedPeople] = useState<Set<string>>(new Set());
+  const [viewedPeople, setViewedPeople] = useState<Set<string>>(new Set());
+  const [completedPlaces, setCompletedPlaces] = useState<Set<string>>(new Set());
+  const [viewedPlaces, setViewedPlaces] = useState<Set<string>>(new Set());
+  const [completedKeywords, setCompletedKeywords] = useState<Set<string>>(new Set());
+  const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
+  const [personCreditBlocked, setPersonCreditBlocked] = useState(false);
+  const [placeCreditBlocked, setPlaceCreditBlocked] = useState(false);
+  const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
 
   // Chat posts
   const [posts, setPosts] = useState<Post[]>([]);
@@ -968,8 +1043,627 @@ export default function GroupChatPage() {
   const [composerVideoPreview, setComposerVideoPreview] = useState<string | null>(null);
   const [composerVideoDurationError, setComposerVideoDurationError] = useState(false);
   const [composerUploadError, setComposerUploadError] = useState<string | null>(null);
+  const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
   const groupPhotoInputRef = useRef<HTMLInputElement>(null);
   const groupVideoInputRef = useRef<HTMLInputElement>(null);
+  const scriptureContainerRef = useRef<HTMLDivElement>(null);
+
+  function handleScriptureClick(event: MouseEvent<HTMLDivElement>) {
+    const target = event.target as HTMLElement | null;
+    const scriptureButton = target?.closest(".scripture-ref-link") as HTMLElement | null;
+    if (!scriptureButton) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const reference = scriptureButton.dataset.scriptureRef;
+    if (!reference) return;
+
+    const parsed = parseBibleReference(reference);
+    if (!parsed) return;
+
+    setSelectedScripture({
+      reference,
+      book: parsed.book,
+      chapter: parsed.chapter,
+    });
+  }
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadScriptureSelection() {
+      if (!selectedScripture) {
+        setScriptureHtml(null);
+        return;
+      }
+
+      try {
+        setLoadingScripture(true);
+        setScriptureHtml(null);
+
+        const normalizedRef = selectedScripture.reference.replace(/\s+/g, "+");
+        const response = await fetch(`https://bible-api.com/${normalizedRef}`);
+        if (!response.ok) throw new Error("Could not load Bible verses.");
+        const payload = await response.json();
+        const verses = Array.isArray(payload?.verses) ? payload.verses : [];
+        const enriched = await enrichBibleVerses(verses);
+
+        if (!cancelled) setScriptureHtml(enriched);
+      } catch {
+        if (!cancelled) setScriptureHtml("<p>Could not load this verse right now.</p>");
+      } finally {
+        if (!cancelled) setLoadingScripture(false);
+      }
+    }
+
+    void loadScriptureSelection();
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedScripture]);
+
+  useEffect(() => {
+    if (!userId) return;
+
+    let cancelled = false;
+
+    async function loadBiblePopupProgress() {
+      try {
+        const [peopleResult, placesResult, keywordsResult] = await Promise.all([
+          supabase.from("people_progress").select("person_name").eq("user_id", userId),
+          supabase.from("places_progress").select("place_name").eq("user_id", userId),
+          supabase.from("keywords_progress").select("keyword_name").eq("user_id", userId),
+        ]);
+
+        if (cancelled) return;
+
+        const nextCompletedPeople = new Set<string>();
+        (peopleResult.data || []).forEach((row: { person_name: string | null }) => {
+          nextCompletedPeople.add(String(row.person_name || "").toLowerCase().trim());
+        });
+        setCompletedPeople(nextCompletedPeople);
+
+        const nextCompletedPlaces = new Set<string>();
+        (placesResult.data || []).forEach((row: { place_name: string | null }) => {
+          nextCompletedPlaces.add(String(row.place_name || "").toLowerCase().trim());
+        });
+        setCompletedPlaces(nextCompletedPlaces);
+
+        const nextCompletedKeywords = new Set<string>();
+        (keywordsResult.data || []).forEach((row: { keyword_name: string | null }) => {
+          nextCompletedKeywords.add(String(row.keyword_name || "").toLowerCase().trim());
+        });
+        setCompletedKeywords(nextCompletedKeywords);
+      } catch (progressError) {
+        console.error("[GROUP_CHAT] Could not load Bible popup progress:", progressError);
+      }
+    }
+
+    void loadBiblePopupProgress();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
+
+  useEffect(() => {
+    if (!scriptureHtml) return undefined;
+
+    const handler = (event: Event) => {
+      const target = event.target as HTMLElement | null;
+      const highlightElement = target?.closest(".bible-highlight") as HTMLElement | null;
+      if (!highlightElement) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      const type = highlightElement.dataset.type;
+      const term = highlightElement.dataset.term;
+      if (!type || !term) return;
+
+      if (type === "people") {
+        setSelectedPerson({ name: term });
+        setSelectedPlace(null);
+        setSelectedKeyword(null);
+      } else if (type === "places") {
+        setSelectedPlace({ name: term });
+        setSelectedPerson(null);
+        setSelectedKeyword(null);
+      } else if (type === "keywords") {
+        setSelectedKeyword({ name: term });
+        setSelectedPerson(null);
+        setSelectedPlace(null);
+      }
+    };
+
+    const attachHandler = () => {
+      const container = scriptureContainerRef.current;
+      if (container) {
+        container.addEventListener("click", handler, true);
+        return true;
+      }
+      return false;
+    };
+
+    let timeout: NodeJS.Timeout | null = null;
+    const attached = attachHandler();
+    if (!attached) {
+      timeout = setTimeout(() => {
+        attachHandler();
+      }, 100);
+    }
+
+    return () => {
+      if (timeout) clearTimeout(timeout);
+      const container = scriptureContainerRef.current;
+      if (container) {
+        container.removeEventListener("click", handler, true);
+      }
+    };
+  }, [scriptureHtml]);
+
+  useEffect(() => {
+    if (!selectedPerson) {
+      setPersonNotes(null);
+      setPersonCreditBlocked(false);
+      return;
+    }
+
+    const selectedPersonName = selectedPerson.name;
+
+    async function loadPersonNotes() {
+      setPersonNotes(null);
+      setPersonCreditBlocked(false);
+
+      try {
+        const clickedTerm = selectedPersonName;
+        let primaryName = clickedTerm;
+
+        for (const person of BIBLE_PEOPLE_LIST) {
+          if (person.aliases?.some((alias) => alias.toLowerCase().trim() === clickedTerm.toLowerCase().trim())) {
+            primaryName = person.name;
+            break;
+          }
+          if (person.name.toLowerCase().trim() === clickedTerm.toLowerCase().trim()) {
+            primaryName = person.name;
+            break;
+          }
+        }
+
+        const personNameKey = primaryName.toLowerCase().trim();
+        const isCompleted = completedPeople.has(personNameKey);
+        const isViewed = viewedPeople.has(personNameKey);
+
+        if (userId && !isCompleted && !isViewed) {
+          const creditResponse = await fetch("/api/consume-credit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ actionType: ACTION_TYPE.person_viewed }),
+          });
+
+          if (!creditResponse.ok) {
+            setPersonCreditBlocked(true);
+            return;
+          }
+
+          const creditResult = (await creditResponse.json()) as { ok: boolean };
+          if (!creditResult.ok) {
+            setPersonCreditBlocked(true);
+            return;
+          }
+
+          setViewedPeople((prev) => new Set(prev).add(personNameKey));
+        }
+
+        const { data: existing, error: existingError } = await supabase
+          .from("bible_people_notes")
+          .select("notes_text")
+          .eq("person_name", personNameKey)
+          .maybeSingle();
+
+        if (existingError && existingError.code !== "PGRST116") {
+          console.error("Error checking existing person notes:", existingError);
+        }
+
+        if (existing?.notes_text?.trim()) {
+          setPersonNotes(existing.notes_text);
+          return;
+        }
+
+        const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti|Bernice|Drusilla|Euodia|Syntyche|Chloe|Nympha|Tryphaena|Tryphosa|Julia|Claudia|Persis)/i.test(primaryName);
+        const pronoun = isFemale ? "Her" : "Him";
+        const whoPronoun = isFemale ? "She" : "He";
+
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            messages: [
+              {
+                role: "user",
+                content: `You are Little Louis. Generate Bible study style notes for ${primaryName} from Scripture using the EXACT markdown structure below.
+
+CRITICAL RENDERING RULES (MANDATORY):
+- Use ONLY markdown
+- Use SINGLE # for all section headers
+- INSERT TWO FULL LINE BREAKS AFTER EVERY SECTION
+- INSERT TWO FULL LINE BREAKS AFTER EVERY PARAGRAPH GROUP
+- DO NOT use markdown bullet characters (*, -, â€¢)
+- Use EMOJIS as bullets instead
+- Emojis must start each bullet line
+- No hyphens anywhere
+- No compact spacing
+- Spacing matters more than word count
+
+The person's name is already shown in the UI. DO NOT include their name as a header.
+
+---
+
+TEMPLATE (FOLLOW EXACTLY):
+
+# ðŸ‘¤ Who ${whoPronoun} Is
+
+Write two short paragraphs explaining who this person is.
+
+
+
+# ðŸ“– Their Role in the Story
+
+Write two to three short paragraphs explaining what role this person plays in the biblical narrative.
+
+
+
+# ðŸ”¥ Key Moments
+
+ðŸ”¥ Short sentence describing a key moment.
+
+ðŸ”¥ Short sentence describing a key moment.
+
+ðŸ”¥ Short sentence describing a key moment.
+
+ðŸ”¥ Short sentence describing a key moment.
+
+
+
+# ðŸ“ Where You Find ${pronoun}
+
+ðŸ“– Book Chapter range
+
+ðŸ“– Book Chapter range
+
+ðŸ“– Book Chapter range
+
+
+
+# ðŸŒ± Why This Person Matters
+
+Write two to three short paragraphs explaining why this person is important and what we learn from them.
+
+
+
+FINAL RULES:
+- Every section must be separated by TWO blank lines
+- Every paragraph block must be separated by TWO blank lines
+- Do not compress content
+- No lists without emojis
+- Keep it cinematic, Bible study focused, and clear`,
+              },
+            ],
+          }),
+        });
+
+        if (!response.ok) throw new Error(`Failed to generate notes: ${response.statusText}`);
+        const json = await response.json();
+        const generated = (json?.reply as string) ?? "";
+
+        const { data: existingCheck } = await supabase
+          .from("bible_people_notes")
+          .select("notes_text")
+          .eq("person_name", personNameKey)
+          .maybeSingle();
+
+        let notesText = "";
+        if (existingCheck?.notes_text?.trim()) {
+          notesText = existingCheck.notes_text;
+        } else {
+          await supabase
+            .from("bible_people_notes")
+            .upsert({ person_name: personNameKey, notes_text: generated }, { onConflict: "person_name" });
+
+          const { data: finalData } = await supabase
+            .from("bible_people_notes")
+            .select("notes_text")
+            .eq("person_name", personNameKey)
+            .single();
+          notesText = finalData?.notes_text || generated;
+        }
+
+        setPersonNotes(notesText);
+      } catch (personError) {
+        console.error("Error loading person notes:", personError);
+      }
+    }
+
+    void loadPersonNotes();
+  }, [selectedPerson, userId, completedPeople, viewedPeople]);
+
+  useEffect(() => {
+    if (!selectedPlace) {
+      setPlaceNotes(null);
+      setPlaceCreditBlocked(false);
+      return;
+    }
+
+    const selectedPlaceName = selectedPlace.name;
+
+    async function loadPlaceNotes() {
+      setPlaceNotes(null);
+      setPlaceCreditBlocked(false);
+
+      try {
+        const normalizedPlace = selectedPlaceName.toLowerCase().trim().replace(/\s+/g, "_");
+        const isCompleted = completedPlaces.has(normalizedPlace);
+        const isViewed = viewedPlaces.has(normalizedPlace);
+
+        if (userId && !isCompleted && !isViewed) {
+          const creditResponse = await fetch("/api/consume-credit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ actionType: ACTION_TYPE.place_viewed }),
+          });
+
+          if (!creditResponse.ok) {
+            setPlaceCreditBlocked(true);
+            return;
+          }
+
+          const creditResult = (await creditResponse.json()) as { ok: boolean };
+          if (!creditResult.ok) {
+            setPlaceCreditBlocked(true);
+            return;
+          }
+
+          setViewedPlaces((prev) => new Set(prev).add(normalizedPlace));
+        }
+
+        const { data: existing } = await supabase
+          .from("places_in_the_bible_notes")
+          .select("notes_text")
+          .eq("normalized_place", normalizedPlace)
+          .maybeSingle();
+
+        if (existing?.notes_text?.trim()) {
+          setPlaceNotes(existing.notes_text);
+          return;
+        }
+
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            messages: [
+              {
+                role: "user",
+                content: `You are Little Louis.
+
+Generate beginner friendly Bible notes about the PLACE: ${selectedPlaceName}.
+
+Follow this EXACT markdown template and rules.
+
+TEMPLATE:
+
+# Where is this place?
+
+One short paragraph explaining where ${selectedPlaceName} is located (region, country, significance) and why it matters in the Bible.
+
+
+
+# What happens at ${selectedPlaceName}?
+
+Include two or three specific Bible references where ${selectedPlaceName} appears. Each reference should include the book, chapter, and verse (e.g., "Genesis 12:1-9"). After each reference, write one sentence explaining what happens in that passage at ${selectedPlaceName}.
+
+
+
+# Why is ${selectedPlaceName} significant?
+
+List two or three key reasons why ${selectedPlaceName} matters in the Bible story. Each point should be one sentence. Keep it simple and beginner-friendly.
+
+
+
+# How does ${selectedPlaceName} connect to Jesus?
+
+One short paragraph connecting ${selectedPlaceName} to Jesus, prophecy, or the bigger story of redemption. Keep it simple and clear.
+
+
+
+# What can we learn from ${selectedPlaceName}?
+
+One short paragraph with a simple, practical life application related to place, journey, or God's presence.
+
+RULES
+DO NOT include a header like "${selectedPlaceName} Notes" or any title at the beginning. Start directly with "# Where is this place?".
+Keep emojis in headers if helpful, but focus on clarity.
+No images. No Greek or Hebrew words unless essential (and then explain simply).
+Keep it cinematic, warm, simple. Do not overwhelm beginners.
+Be accurate to Scripture.`,
+              },
+            ],
+          }),
+        });
+
+        if (!response.ok) throw new Error(`Failed to generate notes: ${response.statusText}`);
+        const json = await response.json();
+        const generated = (json?.reply as string) ?? "";
+
+        await supabase
+          .from("places_in_the_bible_notes")
+          .upsert({ place: selectedPlaceName, normalized_place: normalizedPlace, notes_text: generated }, { onConflict: "normalized_place" });
+
+        setPlaceNotes(generated);
+      } catch (placeError) {
+        console.error("Error loading place notes:", placeError);
+      }
+    }
+
+    void loadPlaceNotes();
+  }, [selectedPlace, userId, completedPlaces, viewedPlaces]);
+
+  useEffect(() => {
+    if (!selectedKeyword) {
+      setKeywordNotes(null);
+      setKeywordCreditBlocked(false);
+      return;
+    }
+
+    const selectedKeywordName = selectedKeyword.name;
+
+    async function loadKeywordNotes() {
+      setKeywordNotes(null);
+      setKeywordCreditBlocked(false);
+
+      try {
+        const keywordKey = selectedKeywordName.toLowerCase().trim();
+        const isCompleted = completedKeywords.has(keywordKey);
+        const isViewed = viewedKeywords.has(keywordKey);
+
+        if (userId && !isCompleted && !isViewed) {
+          const creditResponse = await fetch("/api/consume-credit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ actionType: ACTION_TYPE.keyword_viewed }),
+          });
+
+          if (!creditResponse.ok) {
+            setKeywordCreditBlocked(true);
+            return;
+          }
+
+          const creditResult = (await creditResponse.json()) as { ok: boolean };
+          if (!creditResult.ok) {
+            setKeywordCreditBlocked(true);
+            return;
+          }
+
+          setViewedKeywords((prev) => new Set(prev).add(keywordKey));
+        }
+
+        const { data: existingCheck, error: existingError } = await supabase
+          .from("keywords_in_the_bible")
+          .select("notes_text")
+          .eq("keyword", keywordKey)
+          .maybeSingle();
+
+        if (existingError && existingError.code !== "PGRST116") {
+          console.error("[keywords_in_the_bible] Error checking keywords_in_the_bible:", existingError);
+        }
+
+        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
+          setKeywordNotes(existingCheck.notes_text);
+          return;
+        }
+
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            messages: [
+              {
+                role: "user",
+                content: `You are Little Louis.
+
+Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeywordName}.
+
+Follow this EXACT markdown template and rules.
+
+TEMPLATE:
+
+# ðŸ“– What This Keyword Means
+
+(two short paragraphs)
+
+
+
+
+
+# ðŸ” Where It Appears in Scripture
+
+(two to three short paragraphs)
+
+
+
+
+
+# ðŸ”‘ Key Verses Using This Keyword
+
+ðŸ”¥ sentence  
+
+ðŸ”¥ sentence  
+
+ðŸ”¥ sentence  
+
+ðŸ”¥ sentence  
+
+
+
+
+
+# ðŸ“š Where You Find It in the Bible
+
+ðŸ“– Book Chapterâ€“Chapter  
+
+ðŸ“– Book Chapterâ€“Chapter  
+
+ðŸ“– Book Chapterâ€“Chapter  
+
+
+
+
+
+# ðŸŒ± Why This Keyword Matters
+
+(two to three short paragraphs)
+
+
+
+RULES:
+- Use # for all section headers
+- Double line breaks between sections
+- No hyphens anywhere
+- Use emoji bullets only
+- No lists with dashes
+- No meta commentary
+- No deep theology
+- Cinematic but simple
+- Total length about 200â€“300 words
+- Do NOT include the keyword name as a header`,
+              },
+            ],
+          }),
+        });
+
+        if (!response.ok) throw new Error(`Failed to generate notes: ${response.statusText}`);
+        const json = await response.json();
+        const generated = (json?.reply as string) ?? "";
+
+        await supabase
+          .from("keywords_in_the_bible")
+          .upsert({ keyword: selectedKeywordName, notes_text: generated }, { onConflict: "keyword" });
+
+        const { data: finalData } = await supabase
+          .from("keywords_in_the_bible")
+          .select("notes_text")
+          .eq("keyword", keywordKey)
+          .single();
+
+        setKeywordNotes(finalData?.notes_text || generated);
+      } catch (keywordError) {
+        console.error("Error loading keyword notes:", keywordError);
+      }
+    }
+
+    void loadKeywordNotes();
+  }, [selectedKeyword, userId, completedKeywords, viewedKeywords]);
 
   // Hub categories (loaded from DB)
   const [hubCategories, setHubCategories] = useState<HubCategory[]>([]);
@@ -1193,6 +1887,27 @@ export default function GroupChatPage() {
       command();
     };
   }
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadMentionItems() {
+      if (!groupId) return;
+
+      try {
+        const items = await loadGroupPostMentions(supabase, groupId);
+        if (!cancelled) setMentionItems(items);
+      } catch (error) {
+        console.error("Could not load mention items:", error);
+      }
+    }
+
+    loadMentionItems();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [groupId]);
 
   // â”€â”€ Auth + membership guard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
@@ -2085,7 +2800,7 @@ export default function GroupChatPage() {
 
   async function handleSubmitPost() {
     const editorHtml = postEditor?.getHTML() ?? "";
-    const normalizedContent = editorHtml === "<p></p>" ? "" : editorHtml;
+    let normalizedContent = editorHtml === "<p></p>" ? "" : editorHtml;
     const hasContent = stripHtml(normalizedContent).length > 0;
     const hasPhoto = composerMode === "photo" && !!composerPhotoFile;
     const hasVideo = composerMode === "video" && !!composerVideoFile && !composerVideoDurationError;
@@ -2098,6 +2813,17 @@ export default function GroupChatPage() {
 
     let mediaUrl: string | null = null;
     let linkUrl: string | null = null;
+
+    if (normalizedContent) {
+      try {
+        const items = mentionItems.length > 0 ? mentionItems : await loadGroupPostMentions(supabase, group.id);
+        normalizedContent = linkMentionItemsInHtml(normalizedContent, items);
+      } catch (mentionError) {
+        setComposerUploadError(mentionError instanceof Error ? mentionError.message : "Could not prepare post mentions.");
+        setSubmitting(false);
+        return;
+      }
+    }
 
     if (hasPhoto && composerPhotoFile) {
       const ext = composerPhotoFile.name.split(".").pop() ?? "jpg";
@@ -2861,12 +3587,20 @@ export default function GroupChatPage() {
                 👥 See All Buddies
               </button>
               {isLouisAdmin && (
-                <Link
-                  href={`/study-groups/${group.id}/analytics`}
-                  className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
-                >
-                  📊 Group Analytics
-                </Link>
+                <>
+                  <Link
+                    href={`/study-groups/${group.id}/analytics`}
+                    className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
+                  >
+                    📊 Group Analytics
+                  </Link>
+                  <Link
+                    href={`/study-groups/${group.id}/scheduler`}
+                    className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
+                  >
+                    🗓️ Scheduler
+                  </Link>
+                </>
               )}
             </div>
           </div>
@@ -3971,7 +4705,8 @@ export default function GroupChatPage() {
             <div className="px-6 py-5">
               {!activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && (
                 <div
-                  className="prose prose-sm max-w-none text-gray-800 leading-relaxed"
+                  className="prose prose-sm max-w-none text-gray-800 leading-relaxed [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:mt-6 [&_h2]:mb-3 [&_h2]:text-lg [&_h2]:font-bold [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5 [&_li]:my-1.5"
+                  onClick={handleScriptureClick}
                   dangerouslySetInnerHTML={{ __html: getRenderablePostContent(activeFeedPost.content) }}
                 />
               )}
@@ -4020,7 +4755,8 @@ export default function GroupChatPage() {
 
               {activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && (
                 <div
-                  className="prose prose-sm mt-5 max-w-none text-gray-800 leading-relaxed"
+                  className="prose prose-sm mt-5 max-w-none text-gray-800 leading-relaxed [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:mt-6 [&_h2]:mb-3 [&_h2]:text-lg [&_h2]:font-bold [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5 [&_li]:my-1.5"
+                  onClick={handleScriptureClick}
                   dangerouslySetInnerHTML={{ __html: getRenderablePostContent(activeFeedPost.content) }}
                 />
               )}
@@ -4075,6 +4811,176 @@ export default function GroupChatPage() {
           </div>
         </div>
       )}
+
+      {selectedScripture ? (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 px-4" onClick={() => setSelectedScripture(null)}>
+          <div className="w-full max-w-2xl max-h-[88vh] overflow-y-auto rounded-3xl bg-white shadow-2xl" onClick={(event) => event.stopPropagation()}>
+            <div className="flex items-center justify-between border-b border-[#efe5d9] px-6 py-5">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#8d5d38]">Bible Reference</p>
+                <h3 className="mt-1 text-xl font-bold text-gray-900">{selectedScripture.reference}</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedScripture(null)}
+                className="flex h-10 w-10 items-center justify-center rounded-full text-gray-500 transition hover:bg-gray-100"
+              >
+                x
+              </button>
+            </div>
+
+            <div className="px-6 py-5">
+              {loadingScripture ? (
+                <p className="text-sm text-gray-500">Loading verses...</p>
+              ) : (
+                <div
+                  ref={scriptureContainerRef}
+                  className="prose prose-sm max-w-none text-gray-800 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: scriptureHtml || "<p>Could not load this verse right now.</p>" }}
+                />
+              )}
+
+              <div className="mt-6 flex justify-end">
+                <Link
+                  href={`/Bible/${encodeURIComponent(selectedScripture.book.toLowerCase())}/${selectedScripture.chapter}`}
+                  className="rounded-xl bg-[#4a9b6f] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                >
+                  Read Full Chapter
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {selectedPerson ? (
+        <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 px-3 py-4" onClick={() => { setSelectedPerson(null); setPersonNotes(null); }}>
+          <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-gray-200 bg-white p-6 shadow-2xl sm:p-8" onClick={(event) => event.stopPropagation()}>
+            <button type="button" onClick={() => { setSelectedPerson(null); setPersonNotes(null); }} className="absolute right-4 top-4 text-xl text-gray-500 hover:text-gray-800">
+              x
+            </button>
+            <h2 className="mb-2 text-3xl font-bold">{selectedPerson.name}</h2>
+            {personCreditBlocked ? null : personNotes === null ? (
+              <div className="flex flex-col items-center gap-5 py-10">
+                <div style={{ animation: "bounce 1s infinite" }}><LouisAvatar mood="think" size={72} /></div>
+                <div className="w-full space-y-3 px-2">
+                  <div className="h-3.5 animate-pulse rounded-full bg-gray-100" />
+                  <div className="h-3.5 w-5/6 animate-pulse rounded-full bg-gray-100" />
+                  <div className="h-3.5 w-3/4 animate-pulse rounded-full bg-gray-100" />
+                </div>
+                <p className="text-sm italic text-gray-400 animate-pulse">{selectedPerson.name} is loading...</p>
+              </div>
+            ) : (
+              <ReactMarkdown
+                components={{
+                  h1: ({ ...props }) => <h1 className="mb-4 mt-6 text-xl font-bold text-gray-900 md:text-2xl" {...props} />,
+                  p: ({ ...props }) => <p className="mb-4 leading-relaxed" {...props} />,
+                  strong: ({ ...props }) => <strong className="font-bold" {...props} />,
+                }}
+              >
+                {normalizePersonMarkdown(personNotes)}
+              </ReactMarkdown>
+            )}
+          </div>
+        </div>
+      ) : null}
+
+      {selectedPlace ? (
+        <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 px-3 py-4" onClick={() => { setSelectedPlace(null); setPlaceNotes(null); }}>
+          <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-gray-200 bg-white p-6 shadow-2xl sm:p-8" onClick={(event) => event.stopPropagation()}>
+            <button type="button" onClick={() => { setSelectedPlace(null); setPlaceNotes(null); }} className="absolute right-4 top-4 text-xl text-gray-500 hover:text-gray-800">
+              x
+            </button>
+            <h2 className="mb-2 text-3xl font-bold">{selectedPlace.name}</h2>
+            {placeCreditBlocked ? null : placeNotes === null ? (
+              <div className="flex flex-col items-center gap-5 py-10">
+                <div style={{ animation: "bounce 1s infinite" }}><LouisAvatar mood="think" size={72} /></div>
+                <div className="w-full space-y-3 px-2">
+                  <div className="h-3.5 animate-pulse rounded-full bg-gray-100" />
+                  <div className="h-3.5 w-5/6 animate-pulse rounded-full bg-gray-100" />
+                  <div className="h-3.5 w-3/4 animate-pulse rounded-full bg-gray-100" />
+                </div>
+                <p className="text-sm italic text-gray-400 animate-pulse">{selectedPlace.name} is loading...</p>
+              </div>
+            ) : (
+              <ReactMarkdown
+                components={{
+                  h1: ({ ...props }) => <h1 className="mb-4 mt-6 text-xl font-bold text-gray-900 md:text-2xl" {...props} />,
+                  p: ({ ...props }) => <p className="mb-4 leading-relaxed" {...props} />,
+                  strong: ({ ...props }) => <strong className="font-bold" {...props} />,
+                }}
+              >
+                {normalizePlaceMarkdown(placeNotes)}
+              </ReactMarkdown>
+            )}
+          </div>
+        </div>
+      ) : null}
+
+      {selectedKeyword ? (
+        <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 px-3 py-4" onClick={() => { setSelectedKeyword(null); setKeywordNotes(null); }}>
+          <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-gray-200 bg-white p-6 shadow-2xl sm:p-8" onClick={(event) => event.stopPropagation()}>
+            <button type="button" onClick={() => { setSelectedKeyword(null); setKeywordNotes(null); }} className="absolute right-4 top-4 text-xl text-gray-500 hover:text-gray-800">
+              x
+            </button>
+            <h2 className="mb-2 text-3xl font-bold">{selectedKeyword.name}</h2>
+            {keywordCreditBlocked ? null : keywordNotes === null ? (
+              <div className="flex flex-col items-center gap-5 py-10">
+                <div style={{ animation: "bounce 1s infinite" }}><LouisAvatar mood="think" size={72} /></div>
+                <div className="w-full space-y-3 px-2">
+                  <div className="h-3.5 animate-pulse rounded-full bg-gray-100" />
+                  <div className="h-3.5 w-5/6 animate-pulse rounded-full bg-gray-100" />
+                  <div className="h-3.5 w-3/4 animate-pulse rounded-full bg-gray-100" />
+                </div>
+                <p className="text-sm italic text-gray-400 animate-pulse">{selectedKeyword.name} is loading...</p>
+              </div>
+            ) : (
+              <ReactMarkdown
+                components={{
+                  h1: ({ ...props }) => <h1 className="mb-4 mt-6 text-xl font-bold text-gray-900 md:text-2xl" {...props} />,
+                  p: ({ ...props }) => <p className="mb-4 leading-relaxed" {...props} />,
+                  strong: ({ ...props }) => <strong className="font-bold" {...props} />,
+                }}
+              >
+                {normalizeKeywordMarkdown(keywordNotes)}
+              </ReactMarkdown>
+            )}
+          </div>
+        </div>
+      ) : null}
+
+      <CreditLimitModal
+        open={personCreditBlocked}
+        userId={userId}
+        zIndexClassName="z-[80]"
+        onClose={() => {
+          setPersonCreditBlocked(false);
+          setSelectedPerson(null);
+          setPersonNotes(null);
+        }}
+      />
+
+      <CreditLimitModal
+        open={placeCreditBlocked}
+        userId={userId}
+        zIndexClassName="z-[80]"
+        onClose={() => {
+          setPlaceCreditBlocked(false);
+          setSelectedPlace(null);
+          setPlaceNotes(null);
+        }}
+      />
+
+      <CreditLimitModal
+        open={keywordCreditBlocked}
+        userId={userId}
+        zIndexClassName="z-[80]"
+        onClose={() => {
+          setKeywordCreditBlocked(false);
+          setSelectedKeyword(null);
+          setKeywordNotes(null);
+        }}
+      />
 
       {showHubLikesFor && (
         <div
@@ -4231,6 +5137,7 @@ export default function GroupChatPage() {
                       </div>
                       <EditorContent editor={postEditor} />
                     </div>
+                    <PostMentionSuggestions editor={postEditor} items={mentionItems} />
                   </div>
 
                   <input
@@ -4812,7 +5719,7 @@ export default function GroupChatPage() {
             )}
             {triviaSet && (
               <div className="mt-3">
-                <GroupWeeklyTriviaCard triviaSet={triviaSet} userId={userId} />
+                <GroupWeeklyTriviaCard triviaSet={triviaSet} userId={userId} compactBoard />
               </div>
             )}
             {questionSet && (

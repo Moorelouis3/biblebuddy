@@ -61,6 +61,7 @@ export async function publishGroupFeedCarouselItem(
   }
 
   const displayName = await resolveDisplayName(supabaseAdmin, item.created_by);
+  const hasMedia = Boolean(item.cover_image_url);
   const contentHtml = `${item.post_style === "cover" ? HOME_FEED_COVER_MARKER : ""}${captionToHtml(item.caption)}`;
 
   const { data: insertedPost, error: postError } = await supabaseAdmin
@@ -72,7 +73,7 @@ export async function publishGroupFeedCarouselItem(
       title: item.title?.trim() || null,
       category: "general",
       content: contentHtml,
-      media_url: item.post_style === "cover" ? item.cover_image_url : null,
+      media_url: hasMedia ? item.cover_image_url : null,
       link_url: null,
     })
     .select("id")

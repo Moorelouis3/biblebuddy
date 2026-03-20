@@ -50,7 +50,9 @@ export async function POST(
   }
 
   try {
-    const result = await ensureWeeklyGroupPollPost(supabaseAdmin, groupId);
+    const body = await request.json().catch(() => ({}));
+    const targetDate = typeof body?.targetDate === "string" ? new Date(body.targetDate) : new Date();
+    const result = await ensureWeeklyGroupPollPost(supabaseAdmin, groupId, userData.user.id, targetDate, { force: body?.force === true });
     return NextResponse.json(result);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Could not ensure weekly poll.";

@@ -797,49 +797,21 @@ export default function StudyGroupAnalyticsPage() {
           ) : null}
 
           <div className="mt-8 rounded-3xl border border-[#dce8dc] bg-[#f8fcf7] p-5">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#6f8d6c]">Content Calendar</p>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#6f8d6c]">Recurring Schedule</p>
             <p className="mt-2 text-sm text-gray-600">
-              Click a scheduled day to see the real preview of how that post will look.
+              The recurring day schedule now lives inside the scheduler feed, where the next upcoming drops stay pinned at the top like compact feed cards.
             </p>
-            <div className="mt-5 grid grid-cols-7 gap-2">
-              {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day) => (
-                <div key={day} className="px-2 pb-2 text-center text-xs font-bold uppercase tracking-[0.16em] text-gray-400">
-                  {day}
-                </div>
-              ))}
-              {calendarDays.map((day) => {
-                const isSelected = !!selectedEvent && day.events.some((event) => event.id === selectedEvent.id);
-                const hasEvents = day.events.length > 0;
-                return (
-                  <button
-                    key={day.dateKey}
-                    type="button"
-                    onClick={() => {
-                      if (day.events[0]) setSelectedEventId(day.events[0].id);
-                    }}
-                    className={`min-h-[84px] rounded-2xl border p-2.5 text-left transition ${
-                      isSelected
-                        ? "border-[#4a9b6f] bg-white shadow-sm"
-                        : hasEvents
-                          ? "border-[#dfe9dd] bg-white hover:border-[#bfd9bf]"
-                          : "border-[#edf2eb] bg-[#fbfcfa]"
-                    }`}
-                  >
-                    <p className="text-sm font-bold text-gray-900">{day.date.getUTCDate()}</p>
-                    <div className="mt-1.5 space-y-1">
-                      {day.events.map((event) => (
-                        <div
-                          key={event.id}
-                          className="rounded-xl px-2 py-1 text-[10px] font-semibold leading-tight text-white"
-                          style={{ backgroundColor: event.accent }}
-                        >
-                          {event.label}
-                        </div>
-                      ))}
-                    </div>
-                  </button>
-                );
-              })}
+            <div className="mt-5 rounded-3xl border border-[#d4ecd4] bg-white p-5">
+              <p className="text-sm font-semibold text-gray-900">What changed</p>
+              <p className="mt-2 text-sm leading-6 text-gray-600">
+                Instead of managing recurring posts from a calendar widget here, the scheduler now shows the next two upcoming drops at the top of the feed so they feel closer to the real post flow.
+              </p>
+              <Link
+                href={`/study-groups/${groupId}/scheduler`}
+                className="mt-4 inline-flex rounded-2xl bg-[#4a9b6f] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+              >
+                Open Scheduler Feed
+              </Link>
             </div>
           </div>
 
