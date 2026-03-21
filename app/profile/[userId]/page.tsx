@@ -171,6 +171,12 @@ export default function PublicProfilePage() {
   const [buddyActionLoading, setBuddyActionLoading] = useState(false);
   const heatMapCardRef = useRef<HTMLDivElement | null>(null);
 
+  // ── Referral code ───────────────────────────────────────────────────────────
+  const [referralInput, setReferralInput] = useState("");
+  const [referralState, setReferralState] = useState<"idle" | "checking" | "valid" | "invalid">("idle");
+  const [referralError, setReferralError] = useState<string | null>(null);
+  const [referralTrialEnds, setReferralTrialEnds] = useState<string | null>(null);
+
   useEffect(() => {
     if (!profileUserId) return;
     loadProfileData();
@@ -403,6 +409,33 @@ export default function PublicProfilePage() {
 
     setBuddiesList(otherIds.map((id) => profileMap[id] || { user_id: id, display_name: null, username: null, profile_image_url: null, member_badge: null, is_paid: false, current_streak: null }));
     setBuddiesLoadingPage(false);
+  }
+
+  // ── Referral code ──────────────────────────────────────────────────────────
+  async function applyReferralCode() {
+    const code = referralInput.trim().toUpperCase();
+    if (!code) return;
+    setReferralState("checking");
+    setReferralError(null);
+    try {
+      const res = await fetch("/api/ambassador/apply-code", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ code }),
+      });
+      const json = await res.json();
+      if (!res.ok) {
+        setReferralError(json.error ?? "Invalid code. Please try again.");
+        setReferralState("invalid");
+      } else {
+        setReferralState("valid");
+        setReferralTrialEnds(json.trialEndsAt ?? null);
+        setStats((prev) => prev ? { ...prev, is_paid: true } : prev);
+      }
+    } catch {
+      setReferralError("Something went wrong. Please try again.");
+      setReferralState("invalid");
+    }
   }
 
   // ── Buddy actions ──────────────────────────────────────────────────────────
@@ -952,6 +985,48 @@ export default function PublicProfilePage() {
             </div>
           </div>
         </div>
+
+        {/* ── REFERRAL CODE (owner only, non-paid) ────────────────────────── */}
+        {isOwner && !stats?.is_paid && (
+          <div className="bg-white border border-teal-200 rounded-xl p-4 shadow-sm mb-6">
+            {referralState === "valid" ? (
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">🎉</span>
+                <div>
+                  <p className="text-sm font-bold text-teal-700">30-day Pro trial activated!</p>
+                  {referralTrialEnds && (
+                    <p className="text-xs text-gray-500 mt-0.5">
+                      Pro access until {new Date(referralTrialEnds).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div>
+                <p className="text-sm font-semibold text-gray-800 mb-1">Have a referral code?</p>
+                <p className="text-xs text-gray-500 mb-3">Enter a Buddy Partner code to get 30 days of Pro free.</p>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={referralInput}
+                    onChange={(e) => { setReferralInput(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "")); setReferralError(null); setReferralState("idle"); }}
+                    placeholder="e.g. LOUIS30"
+                    maxLength={16}
+                    className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm font-mono tracking-wider uppercase focus:outline-none focus:ring-2 focus:ring-teal-400"
+                  />
+                  <button
+                    onClick={applyReferralCode}
+                    disabled={!referralInput.trim() || referralState === "checking"}
+                    className="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-teal-600 hover:bg-teal-700 disabled:opacity-50 transition"
+                  >
+                    {referralState === "checking" ? "Checking..." : "Apply"}
+                  </button>
+                </div>
+                {referralError && <p className="text-xs text-red-500 mt-2">{referralError}</p>}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* ── DAILY STREAK ───────────────────────────────────────────────── */}
         <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
