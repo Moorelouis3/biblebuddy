@@ -84,7 +84,7 @@ ${studyLink}`;
 // ── DM sender ────────────────────────────────────────────────────────────────
 
 async function sendDM(
-  supabaseAdmin: ReturnType<typeof createClient>,
+  db: any,
   louisId: string,
   louisName: string,
   userId: string,
@@ -95,7 +95,7 @@ async function sendDM(
     const [uid1, uid2] = louisId < userId ? [louisId, userId] : [userId, louisId];
 
     // Find or create the conversation
-    const { data: existingConvo } = await supabaseAdmin
+    const { data: existingConvo } = await db
       .from("conversations")
       .select("id")
       .eq("user_id_1", uid1)
@@ -105,7 +105,7 @@ async function sendDM(
     let conversationId: string = existingConvo?.id;
 
     if (!conversationId) {
-      const { data: newConvo, error: convoError } = await supabaseAdmin
+      const { data: newConvo, error: convoError } = await db
         .from("conversations")
         .insert({ user_id_1: uid1, user_id_2: uid2 })
         .select("id")
@@ -122,7 +122,7 @@ async function sendDM(
     const preview = message.slice(0, 120);
 
     // Insert the message
-    const { error: msgError } = await supabaseAdmin.from("messages").insert({
+    const { error: msgError } = await db.from("messages").insert({
       conversation_id: conversationId,
       sender_id: louisId,
       content: message,
@@ -135,13 +135,13 @@ async function sendDM(
     }
 
     // Update conversation metadata
-    await supabaseAdmin
+    await db
       .from("conversations")
       .update({ last_message_at: now, last_message_preview: preview })
       .eq("id", conversationId);
 
     // Upsert notification so it surfaces in the bell / badge
-    const { data: existingNotif } = await supabaseAdmin
+    const { data: existingNotif } = await db
       .from("notifications")
       .select("id")
       .eq("type", "direct_message")
@@ -151,12 +151,12 @@ async function sendDM(
       .maybeSingle();
 
     if (existingNotif?.id) {
-      await supabaseAdmin
+      await db
         .from("notifications")
         .update({ from_user_id: louisId, from_user_name: louisName, message: preview, created_at: now })
         .eq("id", existingNotif.id);
     } else {
-      await supabaseAdmin.from("notifications").insert({
+      await db.from("notifications").insert({
         user_id: userId,
         type: "direct_message",
         from_user_id: louisId,
@@ -188,9 +188,12 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Server not configured." }, { status: 500 });
   }
 
-  const supabaseAdmin = createClient(supabaseUrl, serviceKey, {
+  // Cast to any so TypeScript doesn't complain about untyped tables
+  // (conversations, messages, notifications, onboarding_dm_sent)
+  const db: any = createClient(supabaseUrl, serviceKey, {
     auth: { autoRefreshToken: false, persistSession: false },
   });
+  const supabaseAdmin = db;
 
   // ── Resolve Louis's user ID ──────────────────────────────────────────────
   const { data: authData, error: authError } = await supabaseAdmin.auth.admin.listUsers({
