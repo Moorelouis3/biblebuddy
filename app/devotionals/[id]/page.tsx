@@ -1,8 +1,8 @@
 "use client";
 
 function getCoverImage(title: string): string | null {
-  if (title === "The Tempting of Jesus") return "/images/temptingofjesus.png";
-  if (title === "The Testing of Joseph") return "/Thetestingofjoseph.png";
+  if (title === "The Tempting of Jesus") return "/newtempting.png";
+  if (title === "The Testing of Joseph") return "/newtesting.png";
   if (title === "The Disciples of Jesus") return "/disciplesofjesusdevotional.png";
   if (title === "Women of the Bible") return "/womenofthebible.png";
   if (title === "The Wisdom of Proverbs") return "/WisdomofProverbs.png";

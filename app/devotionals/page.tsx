@@ -70,10 +70,10 @@ export default function DevotionalsPage() {
   // Get cover image path based on devotional title
   const getCoverImage = (title: string): string | null => {
     if (title === "The Tempting of Jesus") {
-      return "/images/temptingofjesus.png";
+      return "/newtempting.png";
     }
     if (title === "The Testing of Joseph") {
-      return "/Thetestingofjoseph.png";
+      return "/newtesting.png";
     }
     if (title === "The Disciples of Jesus") {
       return "/disciplesofjesusdevotional.png";
