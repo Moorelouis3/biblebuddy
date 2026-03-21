@@ -6,6 +6,7 @@ import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
 import { ModalShell } from "../../../components/ModalShell";
 import UserBadge from "../../../components/UserBadge";
+import StreakFlameBadge from "../../../components/StreakFlameBadge";
 
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
 const REPORT_REASONS = [
@@ -85,6 +86,7 @@ interface BuddyProfile {
   member_badge: string | null;
   is_paid: boolean | null;
   last_active_at?: string | null;
+  current_streak?: number | null;
 }
 
 interface BlockState {
@@ -220,7 +222,7 @@ export default function ConversationPage() {
 
       const { data: profiles } = await supabase
         .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, last_active_at")
+        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, last_active_at, current_streak")
         .in("user_id", [uid, otherId]);
 
       const profileRows = profiles || [];
@@ -236,6 +238,7 @@ export default function ConversationPage() {
           member_badge: null,
           is_paid: false,
           last_active_at: null,
+          current_streak: null,
         },
       );
 
@@ -248,6 +251,7 @@ export default function ConversationPage() {
           member_badge: null,
           is_paid: false,
           last_active_at: null,
+          current_streak: null,
         },
       );
 
@@ -614,6 +618,7 @@ export default function ConversationPage() {
               <div className="min-w-0">
                 <div className="flex min-w-0 items-center gap-2">
                   <p className="truncate text-lg font-semibold text-gray-900">{otherDisplay}</p>
+                  <StreakFlameBadge currentStreak={otherUser?.current_streak} />
                   <UserBadge customBadge={otherUser?.member_badge} isPaid={otherUser?.is_paid === true} />
                 </div>
                 <p className="truncate text-sm text-gray-500">

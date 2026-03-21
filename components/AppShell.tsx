@@ -2,25 +2,47 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { supabase } from "../lib/supabaseClient";
-import { ChatLouis } from "./ChatLouis";
 import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
 import { recalculateTotalActions } from "../lib/recalculateTotalActions";
-import { FeedbackModal } from "./FeedbackModal";
-import { ContactUsModal } from "./ContactUsModal";
-import { NewMessageAlert } from "./NewMessageAlert";
-import { OnboardingModal } from "./OnboardingModal";
-import { GlobalUpdateModal } from "./GlobalUpdateModal";
 import { FeatureRenderPriorityProvider } from "./FeatureRenderPriorityContext";
 import { CURRENT_UPDATE_VERSION } from "../lib/globalUpdateConfig";
-import DailyRecommendationModal from "./DailyRecommendationModal";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
-import { BuddyCelebrationModal, type BuddyCelebrationUser } from "./BuddyCelebrationModal";
+import { buildFullName, hasRequiredFullName, splitFullName } from "../lib/profileName";
+import type { BuddyCelebrationUser } from "./BuddyCelebrationModal";
 import UserBadge from "./UserBadge";
+import StreakFlameBadge from "./StreakFlameBadge";
+
+const ChatLouis = dynamic(() => import("./ChatLouis").then((mod) => mod.ChatLouis), {
+  ssr: false,
+});
+const FeedbackModal = dynamic(() => import("./FeedbackModal").then((mod) => mod.FeedbackModal), {
+  ssr: false,
+});
+const ContactUsModal = dynamic(() => import("./ContactUsModal").then((mod) => mod.ContactUsModal), {
+  ssr: false,
+});
+const NewMessageAlert = dynamic(() => import("./NewMessageAlert").then((mod) => mod.NewMessageAlert), {
+  ssr: false,
+});
+const OnboardingModal = dynamic(() => import("./OnboardingModal").then((mod) => mod.OnboardingModal), {
+  ssr: false,
+});
+const GlobalUpdateModal = dynamic(() => import("./GlobalUpdateModal").then((mod) => mod.GlobalUpdateModal), {
+  ssr: false,
+});
+const DailyRecommendationModal = dynamic(() => import("./DailyRecommendationModal"), {
+  ssr: false,
+});
+const BuddyCelebrationModal = dynamic(
+  () => import("./BuddyCelebrationModal").then((mod) => mod.BuddyCelebrationModal),
+  { ssr: false },
+);
 
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 const DAILY_RECOMMENDATIONS_ENABLED = false;
@@ -30,6 +52,25 @@ function urlBase64ToUint8Array(base64String: string) {
   const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
   const rawData = window.atob(base64);
   return Uint8Array.from([...rawData].map((char) => char.charCodeAt(0)));
+}
+
+async function runBackgroundSessionSync(currentUserId: string) {
+  const tasks: Promise<unknown>[] = [
+    trackUserActivity(currentUserId),
+    recalculateTotalActions(currentUserId),
+  ];
+
+  if (shouldSyncNotesCount(currentUserId)) {
+    console.log("[APPSHELL] Syncing notes count in background");
+    tasks.push(syncNotesCount(currentUserId));
+  }
+
+  if (shouldSyncChaptersCount(currentUserId)) {
+    console.log("[APPSHELL] Syncing chapters count in background");
+    tasks.push(syncChaptersCount(currentUserId));
+  }
+
+  await Promise.allSettled(tasks);
 }
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
@@ -64,6 +105,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [initialTrafficSource, setInitialTrafficSource] = useState<string | null>(null);
   const [initialBibleExperienceLevel, setInitialBibleExperienceLevel] = useState<string | null>(null);
   const [featureToursEnabled, setFeatureToursEnabled] = useState(false);
+  const [showFullNameModal, setShowFullNameModal] = useState(false);
+  const [fullNameFirst, setFullNameFirst] = useState("");
+  const [fullNameLast, setFullNameLast] = useState("");
+  const [fullNameSaving, setFullNameSaving] = useState(false);
+  const [fullNameError, setFullNameError] = useState<string | null>(null);
 
   // Global update modal state
   const [showUpdateModal, setShowUpdateModal] = useState(false);
@@ -104,6 +150,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     otherUserImage: string | null;
     otherUserBadge: string | null;
     otherUserIsPaid: boolean;
+    otherUserCurrentStreak: number | null;
     lastMessagePreview: string | null;
     lastMessageAt: string | null;
     hasUnread: boolean;
@@ -269,6 +316,60 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       setInitialTrafficSource(null);
       setInitialBibleExperienceLevel(null);
       return;
+    }
+  }
+
+  async function checkFullNameRequirement(currentUserId: string) {
+    try {
+      const { data: profile } = await supabase
+        .from("profile_stats")
+        .select("display_name, username")
+        .eq("user_id", currentUserId)
+        .maybeSingle();
+
+      const currentName = profile?.display_name || profile?.username || "";
+      if (hasRequiredFullName(currentName)) {
+        setShowFullNameModal(false);
+        setFullNameError(null);
+        return;
+      }
+
+      const split = splitFullName(currentName);
+      setFullNameFirst(split.firstName);
+      setFullNameLast(split.lastName);
+      setShowFullNameModal(true);
+    } catch (error) {
+      console.warn("[FULL_NAME] Check skipped due to transient issue.", error);
+    }
+  }
+
+  async function handleSaveRequiredFullName() {
+    if (!userId || fullNameSaving) return;
+
+    const normalizedFullName = buildFullName(fullNameFirst, fullNameLast);
+    if (!hasRequiredFullName(normalizedFullName)) {
+      setFullNameError("Please add both your first and last name.");
+      return;
+    }
+
+    setFullNameSaving(true);
+    setFullNameError(null);
+
+    try {
+      const { error } = await supabase
+        .from("profile_stats")
+        .update({ display_name: normalizedFullName })
+        .eq("user_id", userId);
+
+      if (error) {
+        throw error;
+      }
+
+      setShowFullNameModal(false);
+    } catch (error: any) {
+      setFullNameError(error?.message || "Could not save your full name.");
+    } finally {
+      setFullNameSaving(false);
     }
   }
 
@@ -569,7 +670,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const [profilesResult, unreadResult] = await Promise.all([
         supabase
           .from("profile_stats")
-          .select("user_id, display_name, username, profile_image_url, member_badge, is_paid")
+          .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
           .in("user_id", otherIds),
         supabase
           .from("messages")
@@ -587,7 +688,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           [...new Set(missingIds)].map(async (missingId) => {
             const { data } = await supabase
               .from("profile_stats")
-              .select("user_id, display_name, username, profile_image_url, member_badge, is_paid")
+              .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
               .eq("user_id", missingId)
               .maybeSingle();
 
@@ -612,6 +713,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           otherUserImage: profile?.profile_image_url || null,
           otherUserBadge: profile?.member_badge || null,
           otherUserIsPaid: profile?.is_paid === true,
+          otherUserCurrentStreak: profile?.current_streak ?? null,
           lastMessagePreview: c.last_message_preview || null,
           lastMessageAt: c.last_message_at || null,
           hasUnread: unreadConvoIds.has(c.id),
@@ -853,25 +955,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         // Run all sync/tracking in background - don't block UI
         (async () => {
           try {
-            // Temporarily disabled for stability:
-            // await checkProExpiration(session.user.id);
-            
-            // Track user activity (login/refresh) - once per 24 hours
-            await trackUserActivity(session.user.id);
-            
-            // Recalculate total_actions from current counts
-            await recalculateTotalActions(session.user.id);
-            
-            if (shouldSyncNotesCount(session.user.id)) {
-              console.log("[APPSHELL] Syncing notes count on initial session check (new day detected)");
-              await syncNotesCount(session.user.id);
-            }
-            
-            // Sync chapters count on initial session check
-            if (shouldSyncChaptersCount(session.user.id)) {
-              console.log("[APPSHELL] Syncing chapters count on initial session check (new day detected)");
-              await syncChaptersCount(session.user.id);
-            }
+            await runBackgroundSessionSync(session.user.id);
           } catch (err) {
             console.warn("[APPSHELL] Background sync skipped due to transient issue.");
           }
@@ -914,26 +998,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           // Run all sync/tracking in background - don't block UI
           (async () => {
             try {
-              // Temporarily disabled for stability:
-              // await checkProExpiration(session.user.id);
-              
-              // Track user activity (login/refresh) - once per 24 hours
-              await trackUserActivity(session.user.id);
-              
-              // Recalculate total_actions from current counts
-              await recalculateTotalActions(session.user.id);
-              
-              // Check if we should sync (new day or first time)
-              if (shouldSyncNotesCount(session.user.id)) {
-                console.log("[APPSHELL] Syncing notes count on login/new day");
-                await syncNotesCount(session.user.id);
-              }
-              
-              // Sync chapters count when user logs in or session changes
-              if (shouldSyncChaptersCount(session.user.id)) {
-                console.log("[APPSHELL] Syncing chapters count on login/new day");
-                await syncChaptersCount(session.user.id);
-              }
+              await runBackgroundSessionSync(session.user.id);
             } catch (err) {
               console.warn("[APPSHELL] Background sync skipped due to transient issue.");
             }
@@ -1119,6 +1184,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
   }, [userId, isLoggedIn, feedbackChecked, showFeedbackModal]);
 
+  useEffect(() => {
+    if (!userId || !isLoggedIn || showOnboardingModal) return;
+    void checkFullNameRequirement(userId);
+  }, [userId, isLoggedIn, showOnboardingModal]);
+
   return (
     <FeatureRenderPriorityProvider value={{ featureToursEnabled }}>
       {/* NEW MESSAGE ALERT (admin only) */}
@@ -1146,9 +1216,56 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         />
       )}
 
+      {isLoggedIn && userId && !showOnboardingModal && showFullNameModal && (
+        <div className="fixed inset-0 z-[120] flex items-center justify-center bg-black/45 px-4">
+          <div className="w-full max-w-md rounded-3xl border border-[#d9eadf] bg-[#f8fcf9] p-6 shadow-2xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#4a9b6f]">One-time setup</p>
+            <h2 className="mt-2 text-2xl font-bold text-gray-900">Add your first and last name</h2>
+            <p className="mt-3 text-sm leading-6 text-gray-600">
+              Add your full name so Buddies can recognize you more easily in groups, messages, and profiles.
+            </p>
+
+            <div className="mt-5 space-y-4">
+              <div>
+                <label className="mb-1 block text-sm font-medium text-gray-700">First name</label>
+                <input
+                  type="text"
+                  value={fullNameFirst}
+                  onChange={(event) => setFullNameFirst(event.target.value)}
+                  placeholder="First name"
+                  className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-[#4a9b6f]/30"
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-sm font-medium text-gray-700">Last name</label>
+                <input
+                  type="text"
+                  value={fullNameLast}
+                  onChange={(event) => setFullNameLast(event.target.value)}
+                  placeholder="Last name"
+                  className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-[#4a9b6f]/30"
+                />
+              </div>
+            </div>
+
+            {fullNameError && <p className="mt-3 text-sm text-red-500">{fullNameError}</p>}
+
+            <button
+              type="button"
+              onClick={() => void handleSaveRequiredFullName()}
+              disabled={fullNameSaving}
+              className="mt-5 w-full rounded-2xl px-4 py-3 text-sm font-semibold text-white transition disabled:opacity-60"
+              style={{ backgroundColor: "#4a9b6f" }}
+            >
+              {fullNameSaving ? "Saving..." : "Save full name"}
+            </button>
+          </div>
+        </div>
+      )}
+
 
       {/* FEEDBACK MODAL */}
-      {isLoggedIn && userId && !showOnboardingModal && (
+      {isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && (
         <FeedbackModal
           userId={userId}
           username={username}
@@ -1169,7 +1286,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* GLOBAL UPDATE MODAL */}
-      {isLoggedIn && userId && !showOnboardingModal && (
+      {isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && (
         <GlobalUpdateModal
           isOpen={showUpdateModal}
           onDismiss={handleDismissUpdateModal}
@@ -1177,7 +1294,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* DAILY RECOMMENDATION MODAL */}
-      {DAILY_RECOMMENDATIONS_ENABLED && isLoggedIn && userId && !showOnboardingModal && !showUpdateModal && showDailyRecommendation && dailyRecommendation && (
+      {DAILY_RECOMMENDATIONS_ENABLED && isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && !showUpdateModal && showDailyRecommendation && dailyRecommendation && (
         <DailyRecommendationModal
           greeting={dailyRecommendation.greeting}
           contextLine={dailyRecommendation.contextLine}
@@ -1190,7 +1307,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* CONTACT US MODAL */}
-      {isLoggedIn && userId && !showOnboardingModal && (
+      {isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && (
         <ContactUsModal
           userId={userId}
           username={username}
@@ -1588,6 +1705,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                       <p className={`text-sm truncate ${convo.hasUnread ? "font-bold text-gray-900" : "font-medium text-gray-800"}`}>
                                         {convo.otherUserName}
                                       </p>
+                                      <StreakFlameBadge currentStreak={convo.otherUserCurrentStreak} />
                                       <UserBadge customBadge={convo.otherUserBadge} isPaid={convo.otherUserIsPaid} />
                                     </div>
                                     <span className="text-xs text-gray-400 flex-shrink-0">{formatMessageTime(convo.lastMessageAt)}</span>

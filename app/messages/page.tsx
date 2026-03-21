@@ -6,6 +6,7 @@ import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 import { ModalShell } from "../../components/ModalShell";
 import UserBadge from "../../components/UserBadge";
+import StreakFlameBadge from "../../components/StreakFlameBadge";
 
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
 
@@ -37,6 +38,7 @@ interface Conversation {
   otherUserImage: string | null;
   otherUserBadge: string | null;
   otherUserIsPaid: boolean;
+  otherUserCurrentStreak: number | null;
   lastMessagePreview: string | null;
   lastMessageAt: string | null;
   hasUnread: boolean;
@@ -118,7 +120,7 @@ export default function MessagesPage() {
       const [profilesResult, unreadResult] = await Promise.all([
         supabase
           .from("profile_stats")
-          .select("user_id, display_name, username, profile_image_url, member_badge, is_paid")
+          .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
           .in("user_id", otherIds),
         supabase
           .from("messages")
@@ -136,7 +138,7 @@ export default function MessagesPage() {
           [...new Set(missingIds)].map(async (missingId) => {
             const { data } = await supabase
               .from("profile_stats")
-              .select("user_id, display_name, username, profile_image_url, member_badge, is_paid")
+              .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
               .eq("user_id", missingId)
               .maybeSingle();
 
@@ -162,6 +164,7 @@ export default function MessagesPage() {
             otherUserImage: profile?.profile_image_url || null,
             otherUserBadge: profile?.member_badge || null,
             otherUserIsPaid: profile?.is_paid === true,
+            otherUserCurrentStreak: profile?.current_streak ?? null,
             lastMessagePreview: c.last_message_preview || null,
             lastMessageAt: c.last_message_at || null,
             hasUnread: unreadConvoIds.has(c.id),
@@ -261,6 +264,7 @@ export default function MessagesPage() {
                             <p className={`truncate text-sm ${convo.hasUnread ? "font-bold text-gray-900" : "font-semibold text-gray-800"}`}>
                               {convo.otherUserName}
                             </p>
+                            <StreakFlameBadge currentStreak={convo.otherUserCurrentStreak} />
                             <UserBadge customBadge={convo.otherUserBadge} isPaid={convo.otherUserIsPaid} />
                           </div>
                           <span className="flex-shrink-0 text-xs text-gray-400">{formatTime(convo.lastMessageAt)}</span>

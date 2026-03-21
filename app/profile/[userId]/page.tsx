@@ -16,7 +16,9 @@ import { syncChaptersCount, shouldSyncChaptersCount } from "../../../lib/syncCha
 import { syncTriviaQuestionsCount, shouldSyncTriviaQuestionsCount } from "../../../lib/syncTriviaQuestionsCount";
 import { isBookComplete } from "../../../lib/readingProgress";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
+import { hasRequiredFullName } from "@/lib/profileName";
 import UserBadge from "@/components/UserBadge";
+import StreakFlameBadge from "@/components/StreakFlameBadge";
 import { CUSTOM_MEMBER_BADGE_OPTIONS, normalizeCustomMemberBadge } from "@/lib/userBadges";
 
 // ── Avatar color helpers ────────────────────────────────────────────────────
@@ -105,6 +107,7 @@ interface BuddyProfile {
   profile_image_url: string | null;
   member_badge?: string | null;
   is_paid?: boolean;
+  current_streak?: number | null;
 }
 
 export default function PublicProfilePage() {
@@ -154,6 +157,7 @@ export default function PublicProfilePage() {
   const [badgeDraft, setBadgeDraft] = useState<string>("");
   const [savingBadge, setSavingBadge] = useState(false);
   const [badgeSaveMessage, setBadgeSaveMessage] = useState<string | null>(null);
+  const [editProfileError, setEditProfileError] = useState<string | null>(null);
 
   // ── Recent posts ───────────────────────────────────────────────────────────
   const [recentPosts, setRecentPosts] = useState<Array<{
@@ -391,13 +395,13 @@ export default function PublicProfilePage() {
 
     const { data: pics } = await supabase
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url, member_badge, is_paid")
+      .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
       .in("user_id", otherIds);
 
     const profileMap: Record<string, BuddyProfile> = {};
     (pics || []).forEach((p) => { profileMap[p.user_id] = p; });
 
-    setBuddiesList(otherIds.map((id) => profileMap[id] || { user_id: id, display_name: null, username: null, profile_image_url: null, member_badge: null, is_paid: false }));
+    setBuddiesList(otherIds.map((id) => profileMap[id] || { user_id: id, display_name: null, username: null, profile_image_url: null, member_badge: null, is_paid: false, current_streak: null }));
     setBuddiesLoadingPage(false);
   }
 
@@ -603,6 +607,7 @@ export default function PublicProfilePage() {
     setEditLocation(stats?.location || "");
     setEditImagePreview(stats?.profile_image_url || null);
     setEditImageFile(null);
+    setEditProfileError(null);
     setShowEditModal(true);
   }
 
@@ -615,7 +620,12 @@ export default function PublicProfilePage() {
 
   async function handleSaveProfile() {
     if (!viewerUserId || viewerUserId !== profileUserId) return;
+    if (!hasRequiredFullName(editDisplayName)) {
+      setEditProfileError("Please add both your first and last name.");
+      return;
+    }
     setSaving(true);
+    setEditProfileError(null);
 
     try {
       let imageUrl = stats?.profile_image_url || null;
@@ -776,6 +786,7 @@ export default function PublicProfilePage() {
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
                     <h1 className="text-2xl font-bold text-gray-900 leading-tight">{displayName}</h1>
+                    <StreakFlameBadge currentStreak={displayStats.current_streak} />
                     <UserBadge
                       customBadge={stats?.member_badge}
                       isPaid={stats?.is_paid}
@@ -1259,15 +1270,20 @@ export default function PublicProfilePage() {
 
                 {/* Display name */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Display Name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                   <input
                     type="text"
                     value={editDisplayName}
                     onChange={(e) => setEditDisplayName(e.target.value)}
-                    placeholder="Your name"
+                    placeholder="First and last name"
                     className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400"
                   />
+                  <p className="mt-1 text-xs text-gray-400">Use your first and last name so Buddies can recognize you.</p>
                 </div>
+
+                {editProfileError ? (
+                  <p className="text-sm text-red-500">{editProfileError}</p>
+                ) : null}
 
                 {/* Bio */}
                 <div>
@@ -1378,6 +1394,7 @@ export default function PublicProfilePage() {
                             <div className="flex-1 min-w-0">
                               <div className="flex flex-wrap items-center gap-2">
                                 <p className="font-semibold text-gray-900 text-sm truncate">{buddyDisplay}</p>
+                                <StreakFlameBadge currentStreak={buddy.current_streak} />
                                 <UserBadge customBadge={buddy.member_badge} isPaid={buddy.is_paid} />
                               </div>
                               {buddy.username && <p className="text-xs text-gray-500">@{buddy.username}</p>}
