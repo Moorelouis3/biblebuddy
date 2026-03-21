@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 
+// Track how many modals are currently mounted so scroll is only restored when all are closed
+let _openModalCount = 0;
+
 interface ModalShellProps {
   isOpen: boolean;
   onClose?: () => void;
@@ -46,6 +49,20 @@ export function ModalShell({
     return () => clearTimeout(timerRef.current);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
+
+  // Lock body scroll while any modal is mounted
+  useEffect(() => {
+    if (!mounted) return;
+    _openModalCount += 1;
+    document.body.style.overflow = "hidden";
+    return () => {
+      _openModalCount -= 1;
+      if (_openModalCount <= 0) {
+        _openModalCount = 0;
+        document.body.style.overflow = "";
+      }
+    };
+  }, [mounted]);
 
   if (!mounted) return null;
 

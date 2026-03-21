@@ -479,6 +479,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         },
         () => {
           void fetchNotifications(userId);
+          // Also refresh the message badge — DM notifications are created server-side
+          // (service role) so this channel is guaranteed to fire when a new message arrives
+          void refreshUnreadMessageCount(userId);
         },
       )
       .subscribe();
