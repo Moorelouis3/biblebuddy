@@ -477,6 +477,8 @@ BEGIN
       FROM public.group_members gm
       WHERE gm.group_id = v_group_id
         AND gm.status = 'approved'
+        AND gm.role = 'leader'
+        AND gm.user_id <> NEW.user_id
     LOOP
       PERFORM public.create_notification(
         v_member.user_id,
