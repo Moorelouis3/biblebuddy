@@ -3346,10 +3346,13 @@ RULES:
     if (allUserIds.length > 0) {
       const { data: profiles } = await supabase
         .from("profile_stats")
-        .select("user_id, username, avatar_url")
+        .select("user_id, username, display_name, profile_image_url")
         .in("user_id", allUserIds);
       (profiles || []).forEach((p) => {
-        if (p.user_id) profileMap.set(p.user_id, { username: p.username ?? "Unknown", avatar_url: p.avatar_url });
+        if (p.user_id) profileMap.set(p.user_id, {
+          username: p.username ?? p.display_name ?? "Unknown",
+          avatar_url: p.profile_image_url ?? null,
+        });
       });
     }
 
