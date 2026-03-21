@@ -9,6 +9,10 @@
       "schedule": "*/15 * * * *"
     },
     {
+      "path": "/api/cron/onboarding-messages",
+      "schedule": "*/15 * * * *"
+    },
+    {
       "path": "/api/cron/weekly-group-trivia",
       "schedule": "0 16,17 * * 2"
     },
