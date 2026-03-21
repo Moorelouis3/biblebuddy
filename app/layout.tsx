@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     url: "https://mybiblebuddy.net",
     images: [
       {
-        url: "https://mybiblebuddy.net/banner.png",
+        url: "https://mybiblebuddy.net/webbanner.png",
         width: 1200,
         height: 630,
         alt: "Bible Buddy – Free Bible Study App",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Bible Buddy – Free Bible Study App",
     description: "Read and understand the Bible with guided reading plans, highlights, and study tools.",
-    images: ["https://mybiblebuddy.net/banner.png"],
+    images: ["https://mybiblebuddy.net/webbanner.png"],
   },
 };
 
