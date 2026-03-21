@@ -120,7 +120,7 @@ export default function AnalyticsPage() {
 
   // Admin Action Log
   const [actionLog, setActionLog] = useState<
-    Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string }>
+    Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string; url?: string }>
   >([]);
   const [loadingActionLog, setLoadingActionLog] = useState(true);
 
@@ -138,6 +138,15 @@ export default function AnalyticsPage() {
     title: string;
     total_days: number;
     usersStarted: number;
+    usersCompleted: number;
+    users: Array<{
+      user_id: string;
+      username: string;
+      highestDay: number;
+      daysCompleted: number;
+      finished: boolean;
+      lastActivity: string;
+    }>;
   }>>([]);
   const [loadingDevotionalStats, setLoadingDevotionalStats] = useState(true);
   const [expandedDevotionals, setExpandedDevotionals] = useState<Set<string>>(new Set());
@@ -876,7 +885,15 @@ export default function AnalyticsPage() {
   // Build Admin Action Log from master_actions table (all users)
   async function buildAdminActionLog(filter?: TimeFilter, actionTypeFilter?: string | null) {
     setLoadingActionLog(true);
-    const actions: Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string }> = [];
+    const actions: Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string; url?: string }> = [];
+
+    // Pre-fetch devotional title→ID map for URL derivation
+    const devotionalIdMap = new Map<string, string>();
+    try {
+      const { data: devs } = await supabase.from("devotionals").select("id, title");
+      if (devs) devs.forEach((d) => devotionalIdMap.set(d.title.toLowerCase(), d.id));
+    } catch (_) {}
+
 
     try {
       const fromDate = filter ? getFromDate(filter) : null;
@@ -1022,9 +1039,15 @@ export default function AnalyticsPage() {
 
         // Only process allowed action types
         if (action.action_type === "chapter_completed") {
-          const text = action.action_label 
+          const text = action.action_label
             ? `On ${formattedDate} at ${formattedTime}, ${username} completed ${action.action_label}.${counterText}`
             : `On ${formattedDate} at ${formattedTime}, ${username} completed a chapter.${counterText}`;
+          // Derive URL: action_label is like "Matthew 5"
+          let chapterUrl: string | undefined;
+          if (action.action_label) {
+            const match = action.action_label.match(/^(.+?)\s+(\d+)$/);
+            if (match) chapterUrl = `/Bible/${encodeURIComponent(match[1])}/${match[2]}`;
+          }
           actions.push({
             date: formattedDate,
             text,
@@ -1032,6 +1055,7 @@ export default function AnalyticsPage() {
             username,
             sortKey: actionDate.getTime(),
             actionType: "chapter_completed",
+            url: chapterUrl,
           });
         } else if (action.action_type === "book_completed") {
           const text = action.action_label 
@@ -1082,9 +1106,18 @@ export default function AnalyticsPage() {
             actionType: "keyword_mastered",
           });
         } else if (action.action_type === "devotional_day_completed") {
-          const text = action.action_label 
+          const text = action.action_label
             ? `On ${formattedDate} at ${formattedTime}, ${username} completed ${action.action_label}.${counterText}`
             : `On ${formattedDate} at ${formattedTime}, ${username} completed a devotional day.${counterText}`;
+          // Derive URL: action_label is like "The Faith of Job - Day 3"
+          let devUrl: string | undefined;
+          if (action.action_label) {
+            const titleMatch = action.action_label.match(/^(.+?)\s*-\s*Day\s*\d+/i);
+            if (titleMatch) {
+              const devId = devotionalIdMap.get(titleMatch[1].trim().toLowerCase());
+              if (devId) devUrl = `/devotionals/${devId}`;
+            }
+          }
           actions.push({
             date: formattedDate,
             text,
@@ -1092,6 +1125,7 @@ export default function AnalyticsPage() {
             username,
             sortKey: actionDate.getTime(),
             actionType: "devotional_day_completed",
+            url: devUrl,
           });
         } else if (action.action_type === "reading_plan_chapter_completed") {
           const text = action.action_label 
@@ -1207,6 +1241,11 @@ export default function AnalyticsPage() {
             ? `On ${formattedDate} at ${formattedTime}, ${username} viewed the place "${action.action_label}".${counterText}`
             : `On ${formattedDate} at ${formattedTime}, ${username} viewed a place.${counterText}`;
           actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "place_viewed" });
+        } else if (action.action_type === "series_week_started") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} started ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} started a Bible series week.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "series_week_started", url: "/groups" });
         }
         // Ignore all other action types
       }
@@ -1658,6 +1697,8 @@ export default function AnalyticsPage() {
         return "bg-blue-50 border-l-4 border-blue-500";
       case "user_signup":
         return "bg-gray-50 border-l-4 border-gray-500";
+      case "series_week_started":
+        return "bg-indigo-50 border-l-4 border-indigo-500";
       default:
         return "bg-gray-50 border-l-4 border-gray-400";
     }
@@ -2090,14 +2131,30 @@ export default function AnalyticsPage() {
               <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
                 <div className={`max-h-96 overflow-y-auto ${actionLog.length > 10 ? 'p-4' : 'p-4'}`}>
                   {actionLog.map((action, idx) => (
-                    <button
+                    <div
                       key={idx}
-                      type="button"
-                      onClick={() => action.userId && openUserProfile(action.userId, action.username)}
-                      className={`w-full text-left mb-2 p-3 rounded transition-opacity hover:opacity-80 ${getActionColorClass(action.actionType)} ${action.userId ? "cursor-pointer" : "cursor-default"}`}
+                      className={`flex items-center justify-between mb-2 p-3 rounded ${getActionColorClass(action.actionType)}`}
                     >
-                      <p className="text-sm text-gray-900">{action.text}</p>
-                    </button>
+                      <button
+                        type="button"
+                        onClick={() => action.userId && openUserProfile(action.userId, action.username)}
+                        className={`flex-1 text-left transition-opacity hover:opacity-80 ${action.userId ? "cursor-pointer" : "cursor-default"}`}
+                      >
+                        <p className="text-sm text-gray-900">{action.text}</p>
+                      </button>
+                      {action.url && (
+                        <a
+                          href={action.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="ml-3 flex-shrink-0 text-xs font-semibold text-blue-600 hover:text-blue-800 underline"
+                          title="View content"
+                        >
+                          View →
+                        </a>
+                      )}
+                    </div>
                   ))}
                 </div>
               </div>
@@ -2381,9 +2438,73 @@ export default function AnalyticsPage() {
                 <p className="text-sm text-gray-400 px-5 py-4">No devotionals found.</p>
               ) : (
                 devotionalStats.map((dev, i) => (
-                  <div key={dev.id} className={`flex items-center justify-between px-5 py-3 ${i > 0 ? "border-t border-gray-100" : ""}`}>
-                    <span className="text-gray-800 font-medium">{dev.title}</span>
-                    <span className="text-blue-600 font-bold">{dev.usersStarted} started</span>
+                  <div key={dev.id} className={i > 0 ? "border-t border-gray-100" : ""}>
+                    {/* Devotional row — click to expand user list */}
+                    <button
+                      type="button"
+                      className="w-full flex items-center justify-between px-5 py-3 hover:bg-gray-50 transition text-left"
+                      onClick={() =>
+                        setExpandedDevotionals((prev) => {
+                          const next = new Set(prev);
+                          next.has(dev.id) ? next.delete(dev.id) : next.add(dev.id);
+                          return next;
+                        })
+                      }
+                    >
+                      <div>
+                        <span className="text-gray-800 font-semibold">{dev.title}</span>
+                        <span className="ml-3 text-xs text-gray-400">{dev.total_days} days</span>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <span className="text-sm text-blue-600 font-bold">{dev.usersStarted} started</span>
+                        {dev.usersCompleted > 0 && (
+                          <span className="text-sm text-green-600 font-bold">{dev.usersCompleted} finished</span>
+                        )}
+                        <span className="text-gray-400 text-sm">{expandedDevotionals.has(dev.id) ? "▲" : "▼"}</span>
+                      </div>
+                    </button>
+
+                    {/* Per-user progress detail */}
+                    {expandedDevotionals.has(dev.id) && (
+                      <div className="border-t border-gray-100 bg-gray-50 px-5 py-3">
+                        {dev.users.length === 0 ? (
+                          <p className="text-sm text-gray-400">No users have started this devotional yet.</p>
+                        ) : (
+                          <table className="w-full text-sm">
+                            <thead>
+                              <tr className="text-left text-xs text-gray-500 border-b border-gray-200 pb-1">
+                                <th className="pb-2 font-semibold">User</th>
+                                <th className="pb-2 font-semibold">Days Done</th>
+                                <th className="pb-2 font-semibold">Current Day</th>
+                                <th className="pb-2 font-semibold">Status</th>
+                                <th className="pb-2 font-semibold">Last Activity</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {dev.users.map((u) => (
+                                <tr key={u.user_id} className="border-b border-gray-100 last:border-0">
+                                  <td className="py-2 font-medium text-gray-800">{u.username}</td>
+                                  <td className="py-2 text-gray-600">{u.daysCompleted} / {dev.total_days}</td>
+                                  <td className="py-2 text-gray-600">Day {u.highestDay}</td>
+                                  <td className="py-2">
+                                    {u.finished ? (
+                                      <span className="px-2 py-0.5 bg-green-100 text-green-700 rounded-full text-xs font-semibold">Finished ✓</span>
+                                    ) : u.daysCompleted > 0 ? (
+                                      <span className="px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">In Progress</span>
+                                    ) : (
+                                      <span className="px-2 py-0.5 bg-gray-100 text-gray-500 rounded-full text-xs font-semibold">Started</span>
+                                    )}
+                                  </td>
+                                  <td className="py-2 text-gray-400 text-xs">
+                                    {u.lastActivity ? new Date(u.lastActivity).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "—"}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        )}
+                      </div>
+                    )}
                   </div>
                 ))
               )}
