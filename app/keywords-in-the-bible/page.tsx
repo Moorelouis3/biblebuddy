@@ -10,6 +10,7 @@ import { BIBLE_KEYWORDS_LIST } from "../../lib/bibleKeywordsList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import CreditLimitModal from "../../components/CreditLimitModal";
+import CreditToast from "../../components/CreditToast";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -65,6 +66,7 @@ function KeywordsInTheBiblePageContent() {
   const [username, setUsername] = useState<string | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
+  const [showCreditToast, setShowCreditToast] = useState(false);
 
   // Handle keyword selection with study view limit check
   const handleKeywordClick = async (keyword: BibleKeyword) => {
@@ -250,6 +252,7 @@ function KeywordsInTheBiblePageContent() {
                 next.add(keywordKey);
                 return next;
               });
+              setShowCreditToast(true);
             }
           }
         }
@@ -438,6 +441,43 @@ RULES:
 
     generateNotes();
   }, [selectedKeyword, userId, loadingProgress, completedKeywords, viewedKeywords]);
+
+  // Mark keyword as complete (called automatically when notes load)
+  const markKeywordAsComplete = async () => {
+    if (!userId || !selectedKeyword) return;
+    const keywordNameKey = selectedKeyword.name.toLowerCase().trim();
+    if (completedKeywords.has(keywordNameKey)) return;
+
+    try {
+      const { error } = await supabase
+        .from("keywords_progress")
+        .upsert({ user_id: userId, keyword_name: keywordNameKey }, { onConflict: "user_id,keyword_name" });
+      if (error) { console.error("Error auto-marking keyword:", error); return; }
+
+      const { data: { user: authUser } } = await supabase.auth.getUser();
+      let actionUsername = "User";
+      if (authUser) {
+        const meta: any = authUser.user_metadata || {};
+        actionUsername = meta.firstName || meta.first_name || (authUser.email ? authUser.email.split("@")[0] : null) || "User";
+      }
+      const keywordDisplayName = selectedKeyword.name.split(" ").map((w: string) => /^\d+$/.test(w) ? w : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(" ");
+      await supabase.from("master_actions").insert({ user_id: userId, username: actionUsername, action_type: ACTION_TYPE.keyword_mastered, action_label: keywordDisplayName });
+
+      const { count } = await supabase.from("keywords_progress").select("*", { count: "exact", head: true }).eq("user_id", userId);
+      const { data: currentStats } = await supabase.from("profile_stats").select("username, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count").eq("user_id", userId).maybeSingle();
+      const finalUsername = currentStats?.username || username || "User";
+      const totalActions = (currentStats?.chapters_completed_count || 0) + (currentStats?.notes_created_count || 0) + (currentStats?.people_learned_count || 0) + (currentStats?.places_discovered_count || 0) + (count || 0);
+      await supabase.from("profile_stats").upsert({ user_id: userId, username: finalUsername, keywords_mastered_count: count || 0, total_actions: totalActions, updated_at: new Date().toISOString() }, { onConflict: "user_id" });
+
+      setCompletedKeywords((prev) => { const next = new Set(prev); next.add(keywordNameKey); return next; });
+    } catch (err) {
+      console.error("Error auto-marking keyword:", err);
+    }
+  };
+
+  // Auto-mark keyword as complete when notes finish loading
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { if (keywordNotes && userId && selectedKeyword) { markKeywordAsComplete(); } }, [keywordNotes]);
 
   // Scroll to letter section
   const scrollToLetter = (letter: string) => {
@@ -642,226 +682,12 @@ RULES:
                   {normalizeKeywordMarkdown(keywordNotes)}
                 </ReactMarkdown>
 
-                {/* MARK AS FINISHED BUTTON */}
-                {userId && (
+                {/* COMPLETION STATUS */}
+                {userId && completedKeywords.has(selectedKeyword.name.toLowerCase().trim()) && (
                   <div className="mt-8 pt-6 border-t border-gray-200">
-                    {(() => {
-                      const keywordKey = selectedKeyword.name.toLowerCase().trim();
-                      const isCompleted = completedKeywords.has(keywordKey);
-                      return (
-                        <button
-                          type="button"
-                          onClick={async (e) => {
-                            // Prevent event from bubbling up
-                            e.stopPropagation();
-                            e.preventDefault();
-
-                            if (!userId) return;
-
-                            const keywordNameKey = selectedKeyword.name.toLowerCase().trim();
-
-                            if (isCompleted) {
-                              // Already completed - do nothing or allow unmarking if needed
-                              return;
-                            }
-
-                            try {
-                              // Insert completion
-                              const { error } = await supabase
-                                .from("keywords_progress")
-                                .upsert(
-                                  {
-                                    user_id: userId,
-                                    keyword_name: keywordNameKey,
-                                  },
-                                  {
-                                    onConflict: "user_id,keyword_name",
-                                  }
-                                );
-
-                              if (error) {
-                                console.error("Error marking keyword as finished:", error);
-                                alert("Failed to mark as finished. Please try again.");
-                              } else {
-                                // ACTION TRACKING: Insert into master_actions
-                                // Always fetch username fresh from auth to ensure we have the correct value
-                                const { data: { user: authUser } } = await supabase.auth.getUser();
-                                let actionUsername = "User"; // Default fallback
-                                
-                                if (authUser) {
-                                  const meta: any = authUser.user_metadata || {};
-                                  actionUsername =
-                                    meta.firstName ||
-                                    meta.first_name ||
-                                    (authUser.email ? authUser.email.split("@")[0] : null) ||
-                                    "User";
-                                }
-
-                                console.log(`[MASTER_ACTIONS] Inserting keyword_mastered with username: ${actionUsername}, user_id: ${userId}`);
-
-                                // Format keyword name for action_label (capitalize properly)
-                                const formatKeywordName = (name: string): string => {
-                                  return name.split(' ').map(word => {
-                                    if (/^\d+$/.test(word)) return word; // Keep numbers as-is
-                                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-                                  }).join(' ');
-                                };
-
-                                const keywordDisplayName = formatKeywordName(selectedKeyword.name);
-
-                                // Insert into master_actions with action_label
-                                console.log("[MASTER_ACTIONS] inserting:", { action_type: ACTION_TYPE.keyword_mastered, action_label: keywordDisplayName });
-                                const { error: actionError } = await supabase
-                                  .from("master_actions")
-                                  .insert({
-                                    user_id: userId,
-                                    username: actionUsername ?? null,
-                                    action_type: ACTION_TYPE.keyword_mastered,
-                                    action_label: keywordDisplayName,
-                                  });
-
-                                if (actionError) {
-                                  console.error("Error logging action to master_actions:", actionError);
-                                  console.error("Attempted username:", actionUsername);
-                                  // Don't block the UI - continue even if action logging fails
-                                } else {
-                                  console.log(`[MASTER_ACTIONS] Successfully logged keyword_mastered: ${keywordDisplayName}`);
-                                }
-
-                                // UPDATE profile_stats: Count from keywords_progress table
-                                // Get username if not already loaded
-                                let statsUsername = username;
-                                if (!statsUsername && userId) {
-                                  const { data: { user } } = await supabase.auth.getUser();
-                                  if (user) {
-                                    const meta: any = user.user_metadata || {};
-                                    statsUsername =
-                                      meta.firstName ||
-                                      meta.first_name ||
-                                      (user.email ? user.email.split("@")[0] : null) ||
-                                      "User";
-                                  }
-                                }
-
-                                // Count all keywords_progress rows for this user
-                                const { count, error: countError } = await supabase
-                                  .from("keywords_progress")
-                                  .select("*", { count: "exact", head: true })
-                                  .eq("user_id", userId);
-
-                                if (countError) {
-                                  console.error("Error counting keywords_progress:", countError);
-                                  alert(`Failed to update stats: ${countError.message}`);
-                                } else {
-                                  console.log(`[KEYWORDS MASTERED] Count from database: ${count}`);
-                                  
-                                  // Get existing username if available
-                                  const { data: currentStats } = await supabase
-                                    .from("profile_stats")
-                                    .select("username, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count")
-                                    .eq("user_id", userId)
-                                    .maybeSingle();
-
-                                  const finalUsername = currentStats?.username || statsUsername || "User";
-                                  
-                                  // Calculate total_actions as sum of all counts
-                                  const totalActions = 
-                                    (currentStats?.chapters_completed_count || 0) +
-                                    (currentStats?.notes_created_count || 0) +
-                                    (currentStats?.people_learned_count || 0) +
-                                    (currentStats?.places_discovered_count || 0) +
-                                    (count || 0);
-
-                                  // Update profile_stats with count from database
-                                  const { error: statsUpdateError } = await supabase
-                                    .from("profile_stats")
-                                    .upsert(
-                                      {
-                                        user_id: userId,
-                                        username: finalUsername,
-                                        keywords_mastered_count: count || 0,
-                                        total_actions: totalActions,
-                                        updated_at: new Date().toISOString(),
-                                      },
-                                      {
-                                        onConflict: "user_id",
-                                      }
-                                    );
-
-                                  if (statsUpdateError) {
-                                    console.error("Error updating profile_stats:", statsUpdateError);
-                                    alert(`Failed to update profile stats: ${statsUpdateError.message}`);
-                                  } else {
-                                    console.log(`[KEYWORDS MASTERED] Successfully updated profile_stats.keywords_mastered_count to ${count}`);
-                                    
-                                    // Also update notes_created_count by counting from notes table
-                                    const { count: notesCount, error: notesCountError } = await supabase
-                                      .from("notes")
-                                      .select("*", { count: "exact", head: true })
-                                      .eq("user_id", userId);
-
-                                    if (!notesCountError && notesCount !== null) {
-                                      // Get all counts to calculate total_actions
-                                      const { data: allStats } = await supabase
-                                        .from("profile_stats")
-                                        .select("chapters_completed_count, people_learned_count, places_discovered_count, keywords_mastered_count")
-                                        .eq("user_id", userId)
-                                        .maybeSingle();
-
-                                      const totalActions = 
-                                        (allStats?.chapters_completed_count || 0) +
-                                        (notesCount || 0) +
-                                        (allStats?.people_learned_count || 0) +
-                                        (allStats?.places_discovered_count || 0) +
-                                        (allStats?.keywords_mastered_count || 0);
-
-                                      const { error: notesUpdateError } = await supabase
-                                        .from("profile_stats")
-                                        .update({
-                                          notes_created_count: notesCount || 0,
-                                          total_actions: totalActions,
-                                        })
-                                        .eq("user_id", userId);
-
-                                      if (!notesUpdateError) {
-                                        console.log(`[NOTES COUNT] Updated notes_created_count to ${notesCount}`);
-                                      }
-                                    }
-                                  }
-                                }
-
-                                // Update local state
-                                setCompletedKeywords((prev) => {
-                                  const next = new Set(prev);
-                                  next.add(keywordNameKey);
-                                  return next;
-                                });
-                                // Close the modal after marking as finished
-                                setSelectedKeyword(null);
-                                setKeywordNotes(null);
-                                setNotesError(null);
-                              }
-                            } catch (err) {
-                              console.error("Error marking keyword as finished:", err);
-                              alert("Failed to mark as finished. Please try again.");
-                            }
-                          }}
-                          disabled={isCompleted}
-                          className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                            isCompleted
-                              ? "bg-green-100 text-green-700 cursor-not-allowed"
-                              : "bg-blue-600 text-white hover:bg-blue-700"
-                          }`}
-                          style={isAnimating ? {
-                            animation: 'scale-down-bounce 0.4s ease-in-out'
-                          } : undefined}
-                        >
-                          {isCompleted
-                            ? `✓ ${selectedKeyword.name} marked as finished`
-                            : `Mark ${selectedKeyword.name} as finished`}
-                        </button>
-                      );
-                    })()}
+                    <div className="w-full px-6 py-3 rounded-lg font-medium bg-green-100 text-green-700 text-center">
+                      ✓ {selectedKeyword.name} completed
+                    </div>
                   </div>
                 )}
               </div>
@@ -883,6 +709,12 @@ RULES:
           setKeywordNotes(null);
           setNotesError(null);
         }}
+      />
+
+      <CreditToast
+        open={showCreditToast}
+        message="1 credit used"
+        onClose={() => setShowCreditToast(false)}
       />
 
 

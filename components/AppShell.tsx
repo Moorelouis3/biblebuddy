@@ -509,12 +509,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       void fetchNotifications(currentUserId);
     };
 
-    const interval = window.setInterval(refresh, 15000);
+    const interval = window.setInterval(refresh, 8000);
     window.addEventListener("focus", refresh);
+
+    function handleVisibilityChange() {
+      if (document.visibilityState === "visible") refresh();
+    }
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       window.clearInterval(interval);
       window.removeEventListener("focus", refresh);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [userId, isMessagesOpen]);
 
@@ -999,6 +1005,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           void checkOnboardingStatus(session.user.id);
           void checkUpdateStatus(session.user.id);
           void fetchNotifications(session.user.id);
+          void refreshUnreadMessageCount(session.user.id);
         } else {
           setUserId(null);
           setUsername("");
