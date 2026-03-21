@@ -60,6 +60,47 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: error.message || "Could not save badge." }, { status: 500 });
   }
 
+  // If assigning buddy_partner, auto-create ambassador_profile if needed
+  if (normalizedBadge === "buddy_partner") {
+    const { data: existing } = await supabaseAdmin
+      .from("ambassador_profiles")
+      .select("id")
+      .eq("user_id", targetUserId)
+      .maybeSingle();
+
+    if (!existing) {
+      const { data: profile } = await supabaseAdmin
+        .from("profile_stats")
+        .select("username, display_name")
+        .eq("user_id", targetUserId)
+        .maybeSingle();
+
+      const baseName = (profile?.username ?? profile?.display_name ?? "BUDDY")
+        .toUpperCase()
+        .replace(/[^A-Z0-9]/g, "")
+        .slice(0, 8);
+      const suffix = Math.floor(10 + Math.random() * 90);
+      const referralCode = `${baseName}${suffix}`;
+
+      await supabaseAdmin.from("ambassador_profiles").insert({
+        user_id: targetUserId,
+        referral_code: referralCode,
+        is_active: true,
+      });
+    } else {
+      await supabaseAdmin
+        .from("ambassador_profiles")
+        .update({ is_active: true })
+        .eq("user_id", targetUserId);
+    }
+  } else {
+    // Deactivate ambassador profile when badge is removed
+    await supabaseAdmin
+      .from("ambassador_profiles")
+      .update({ is_active: false })
+      .eq("user_id", targetUserId);
+  }
+
   return NextResponse.json({
     ok: true,
     memberBadge: normalizedBadge,

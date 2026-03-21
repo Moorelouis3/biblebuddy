@@ -1,7 +1,7 @@
-export type CustomMemberBadge = "teacher" | "moderator" | "top_buddy" | "founder_buddy";
+export type CustomMemberBadge = "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "buddy_partner";
 
 export type ResolvedUserBadge = {
-  key: "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "pro_buddy";
+  key: "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "pro_buddy" | "buddy_partner";
   label: string;
   emoji: string;
   className: string;
@@ -19,10 +19,17 @@ export const CUSTOM_MEMBER_BADGE_OPTIONS: Array<{
   { value: "moderator", label: "Moderator" },
   { value: "top_buddy", label: "Top Buddy" },
   { value: "founder_buddy", label: "Founder Buddy" },
+  { value: "buddy_partner", label: "Buddy Partner" },
 ];
 
 export function normalizeCustomMemberBadge(value: string | null | undefined): CustomMemberBadge | null {
-  if (value === "teacher" || value === "moderator" || value === "top_buddy" || value === "founder_buddy") {
+  if (
+    value === "teacher" ||
+    value === "moderator" ||
+    value === "top_buddy" ||
+    value === "founder_buddy" ||
+    value === "buddy_partner"
+  ) {
     return value;
   }
   return null;
@@ -34,6 +41,18 @@ export function resolveUserBadge(input: {
   groupRole?: string | null;
 }): ResolvedUserBadge | null {
   const customBadge = normalizeCustomMemberBadge(input.customBadge);
+
+  if (customBadge === "buddy_partner") {
+    return {
+      key: "buddy_partner",
+      label: "Buddy Partner",
+      emoji: "🤝",
+      className: "bg-teal-100 text-teal-700",
+      title: "Buddy Partner",
+      description: "This member is an official Bible Buddy Ambassador. They help grow the Bible Buddy community by sharing the app and inviting others to study God's Word.",
+      louisMood: "stareyes",
+    };
+  }
 
   if (customBadge === "teacher") {
     return {

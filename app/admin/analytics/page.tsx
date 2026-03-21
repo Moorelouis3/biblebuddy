@@ -171,6 +171,13 @@ export default function AnalyticsPage() {
   const [loadingRequests, setLoadingRequests] = useState(true);
   const [selectedRequest, setSelectedRequest] = useState<any | null>(null);
 
+  // Ambassador / Buddy Partners
+  type AmbassadorReferral = { referred_user_id: string; username: string; profile_image_url: string | null; trial_started_at: string; trial_ends_at: string };
+  type AmbassadorEntry = { user_id: string; username: string; display_name: string; profile_image_url: string | null; referral_code: string; is_active: boolean; total_referrals: number; referrals: AmbassadorReferral[] };
+  const [ambassadors, setAmbassadors] = useState<AmbassadorEntry[]>([]);
+  const [loadingAmbassadors, setLoadingAmbassadors] = useState(true);
+  const [expandedAmbassador, setExpandedAmbassador] = useState<string | null>(null);
+
   useEffect(() => {
     async function fetchActiveUsers() {
       setLoadingActiveUsers(true);
@@ -219,6 +226,7 @@ export default function AnalyticsPage() {
     loadStatsLog(timeFilter);
     loadDevotionalStats();
     loadReadingPlanStats();
+    loadAmbassadors();
   }, [timeFilter, selectedActionType]);
 
   // Load active users (within last 60 minutes)
@@ -281,6 +289,22 @@ export default function AnalyticsPage() {
       console.error("[DEVOTIONAL_STATS] Error loading devotional stats:", err);
     }
     setLoadingDevotionalStats(false);
+  }
+
+  async function loadAmbassadors() {
+    setLoadingAmbassadors(true);
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const token = session?.access_token ?? "";
+      const res = await fetch("/api/admin/ambassadors", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const data = await res.json();
+      if (data.ambassadors) setAmbassadors(data.ambassadors);
+    } catch (err) {
+      console.error("[AMBASSADORS] Error loading ambassadors:", err);
+    }
+    setLoadingAmbassadors(false);
   }
 
   async function loadReadingPlanStats() {
@@ -2508,6 +2532,87 @@ export default function AnalyticsPage() {
                   </div>
                 ))
               )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* BUDDY PARTNERS / AMBASSADORS SECTION */}
+      <div className="mt-4 mb-4">
+        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-teal-50">
+            <div>
+              <span className="text-xl font-bold text-teal-800">🤝 Buddy Partners</span>
+              <p className="text-xs text-teal-600 mt-0.5">{ambassadors.length} active partner{ambassadors.length !== 1 ? "s" : ""}</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => loadAmbassadors()}
+              className="text-xs text-teal-600 hover:text-teal-800 font-semibold transition"
+            >
+              ↻ Refresh
+            </button>
+          </div>
+          {loadingAmbassadors ? (
+            <p className="text-sm text-gray-400 px-5 py-4">Loading...</p>
+          ) : ambassadors.length === 0 ? (
+            <p className="text-sm text-gray-400 px-5 py-4">No Buddy Partners yet. Assign the Buddy Partner badge to a user to create one.</p>
+          ) : (
+            <div className="divide-y divide-gray-100">
+              {ambassadors.map((amb) => (
+                <div key={amb.user_id}>
+                  {/* Ambassador row */}
+                  <button
+                    type="button"
+                    onClick={() => setExpandedAmbassador((prev) => prev === amb.user_id ? null : amb.user_id)}
+                    className="w-full flex items-center gap-3 px-5 py-3 text-left hover:bg-gray-50 transition"
+                  >
+                    {amb.profile_image_url ? (
+                      <img src={amb.profile_image_url} alt={amb.username} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center text-sm font-bold text-teal-700 flex-shrink-0">
+                        {amb.username.charAt(0).toUpperCase()}
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-semibold text-gray-900">{amb.display_name || amb.username}</p>
+                      <p className="text-xs text-gray-400 font-mono">Code: <span className="font-bold text-teal-700">{amb.referral_code}</span> · {amb.is_active ? "Active" : "Inactive"}</p>
+                    </div>
+                    <div className="text-right flex-shrink-0">
+                      <p className="text-xl font-black text-teal-700">{amb.total_referrals}</p>
+                      <p className="text-xs text-gray-400">referrals</p>
+                    </div>
+                    <span className="text-gray-400 text-sm ml-2">{expandedAmbassador === amb.user_id ? "▲" : "▼"}</span>
+                  </button>
+                  {/* Expanded referral list */}
+                  {expandedAmbassador === amb.user_id && (
+                    <div className="bg-gray-50 border-t border-gray-100 px-5 py-3">
+                      {amb.referrals.length === 0 ? (
+                        <p className="text-xs text-gray-400 py-2">No referrals yet.</p>
+                      ) : (
+                        <div className="space-y-2">
+                          {amb.referrals.map((r) => (
+                            <div key={r.referred_user_id} className="flex items-center gap-2 text-xs">
+                              {r.profile_image_url ? (
+                                <img src={r.profile_image_url} alt={r.username} className="w-6 h-6 rounded-full object-cover" />
+                              ) : (
+                                <div className="w-6 h-6 rounded-full bg-teal-100 flex items-center justify-center text-xs font-bold text-teal-600">
+                                  {r.username.charAt(0).toUpperCase()}
+                                </div>
+                              )}
+                              <span className="font-semibold text-gray-800">{r.username}</span>
+                              <span className="text-gray-400">joined {new Date(r.trial_started_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                              <span className={`ml-auto px-2 py-0.5 rounded-full font-semibold ${new Date(r.trial_ends_at) > new Date() ? "bg-green-100 text-green-700" : "bg-gray-200 text-gray-500"}`}>
+                                {new Date(r.trial_ends_at) > new Date() ? "Trial active" : "Trial ended"}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           )}
         </div>

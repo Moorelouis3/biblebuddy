@@ -797,12 +797,22 @@ export default function PublicProfilePage() {
 
                 {/* Action buttons — owner: Edit Profile; visitor: buddy button */}
                 {isOwner ? (
-                  <button
-                    onClick={openEditModal}
-                    className="flex-shrink-0 px-4 py-1.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
-                  >
-                    Edit Profile
-                  </button>
+                  <div className="flex flex-col items-end gap-2 flex-shrink-0">
+                    <button
+                      onClick={openEditModal}
+                      className="px-4 py-1.5 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition"
+                    >
+                      Edit Profile
+                    </button>
+                    {stats?.member_badge === "buddy_partner" && (
+                      <Link
+                        href="/ambassador"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold bg-teal-50 border border-teal-200 text-teal-700 hover:bg-teal-100 transition"
+                      >
+                        🤝 Partner Dashboard
+                      </Link>
+                    )}
+                  </div>
                 ) : viewerUserId ? (
                   <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
                     {buddyState === "none" && (

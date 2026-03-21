@@ -39,6 +39,9 @@ export function OnboardingModal({
   const [error, setError] = useState<string | null>(null);
   const [isIOS, setIsIOS] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
+  const [referralCode, setReferralCode] = useState("");
+  const [referralState, setReferralState] = useState<"idle" | "checking" | "valid" | "invalid">("idle");
+  const [referralError, setReferralError] = useState<string | null>(null);
 
   useEffect(() => {
     setIsIOS(/iphone|ipad|ipod/i.test(navigator.userAgent));
@@ -271,6 +274,30 @@ export function OnboardingModal({
 
     if (currentStep < TOTAL_STEPS) {
       setCurrentStep((step) => step + 1);
+    }
+  }
+
+  async function applyReferralCode() {
+    const code = referralCode.trim().toUpperCase();
+    if (!code) return;
+    setReferralState("checking");
+    setReferralError(null);
+    try {
+      const res = await fetch("/api/ambassador/apply-code", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setReferralState("valid");
+      } else {
+        setReferralState("invalid");
+        setReferralError(json.error ?? "Invalid code.");
+      }
+    } catch {
+      setReferralState("invalid");
+      setReferralError("Could not apply code. Try again.");
     }
   }
 
@@ -513,6 +540,42 @@ export function OnboardingModal({
                         <li>🤖 Unlimited AI questions</li>
                         <li>🚀 Study without limits</li>
                       </ul>
+                    </div>
+
+                    {/* Referral code entry */}
+                    <div className="border-t border-gray-100 pt-4">
+                      <p className="font-semibold text-gray-800 mb-2">Have a referral code?</p>
+                      {referralState === "valid" ? (
+                        <div className="rounded-xl bg-green-50 border border-green-200 px-4 py-3 text-center">
+                          <p className="text-sm font-bold text-green-700">✓ 30 day Pro trial started</p>
+                        </div>
+                      ) : (
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            value={referralCode}
+                            onChange={(e) => {
+                              setReferralCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""));
+                              setReferralState("idle");
+                              setReferralError(null);
+                            }}
+                            placeholder="e.g. LOUIS30"
+                            maxLength={16}
+                            className="flex-1 text-sm px-3 py-2.5 border border-gray-200 rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300 uppercase font-mono tracking-wider"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => void applyReferralCode()}
+                            disabled={!referralCode.trim() || referralState === "checking"}
+                            className="px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50 transition"
+                          >
+                            {referralState === "checking" ? "..." : "Apply"}
+                          </button>
+                        </div>
+                      )}
+                      {referralState === "invalid" && referralError && (
+                        <p className="text-xs text-red-600 mt-1.5">{referralError}</p>
+                      )}
                     </div>
                   </div>
                 </div>
