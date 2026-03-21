@@ -130,16 +130,21 @@ export default function AmbassadorPage() {
       setSavingCode(false);
       return;
     }
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.access_token) return;
 
-    const { error } = await supabase
-      .from("ambassador_profiles")
-      .update({ referral_code: code, updated_at: new Date().toISOString() })
-      .eq("user_id", user.id);
+    const res = await fetch("/api/ambassador/update-code", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${session.access_token}`,
+      },
+      body: JSON.stringify({ code }),
+    });
 
-    if (error) {
-      setCodeError(error.message.includes("unique") ? "That code is already taken. Try another." : "Failed to save. Try again.");
+    const json = await res.json();
+    if (!res.ok) {
+      setCodeError(json.error ?? "Failed to save. Try again.");
     } else {
       setProfile((prev) => prev ? { ...prev, referral_code: code } : prev);
       setEditingCode(false);
