@@ -143,7 +143,7 @@ export default function ConversationPage() {
       ),
     );
 
-    void supabase
+    await supabase
       .from("notifications")
       .update({ is_read: true })
       .eq("type", "direct_message")

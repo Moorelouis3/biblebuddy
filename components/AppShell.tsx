@@ -513,6 +513,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     };
   }, [userId, isMessagesOpen]);
 
+  // Stable realtime channel — only depends on userId so it never tears down when the panel opens/closes
   useEffect(() => {
     if (!userId) return;
     const currentUserId = userId;
@@ -532,21 +533,30 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )
       .subscribe();
 
+    return () => {
+      void supabase.removeChannel(channel);
+    };
+  }, [userId]);
+
+  // Event listener for explicit mark-read / send signals from conversation pages
+  useEffect(() => {
+    if (!userId) return;
+    const currentUserId = userId;
+
     function handleRefreshEvent(event: Event) {
       const customEvent = event as CustomEvent<{ conversationId?: string; markRead?: boolean }>;
       if (customEvent.detail?.markRead && customEvent.detail.conversationId) {
-        setConversationPreviews((prev) =>
-          prev.map((conversation) =>
-            conversation.id === customEvent.detail?.conversationId
-              ? {
-                  ...conversation,
-                  hasUnread: false,
-                }
-              : conversation,
-          ),
-        );
+        const convId = customEvent.detail.conversationId;
+        // Optimistically clear the dot and decrement the badge immediately
+        setConversationPreviews((prev) => {
+          const hadUnread = prev.some((c) => c.id === convId && c.hasUnread);
+          if (hadUnread) {
+            setUnreadMessageCount((count) => Math.max(0, count - 1));
+          }
+          return prev.map((c) => (c.id === convId ? { ...c, hasUnread: false } : c));
+        });
       }
-
+      // Always confirm with a fresh DB query
       void refreshUnreadMessageCount(currentUserId);
       if (isMessagesOpen) {
         void fetchConversationPreviews(currentUserId);
@@ -557,7 +567,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
     return () => {
       window.removeEventListener("bb:refresh-unread-messages", handleRefreshEvent);
-      void supabase.removeChannel(channel);
     };
   }, [userId, isMessagesOpen]);
 
