@@ -275,6 +275,13 @@ export default function ConversationPage() {
 
       if (hadUnreadMessages) {
         void markConversationAsRead(uid);
+      } else {
+        // Even when there's nothing to mark read, tell AppShell to re-sync its badge/dot state
+        window.dispatchEvent(
+          new CustomEvent("bb:refresh-unread-messages", {
+            detail: { conversationId, markRead: true },
+          }),
+        );
       }
     } finally {
       setLoading(false);

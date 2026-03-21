@@ -729,6 +729,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       });
 
       setConversationPreviews(previews);
+      // Keep badge count in sync with the same data — prevents badge/dot drift
+      setUnreadMessageCount(unreadConvoIds.size);
     } finally {
       setLoadingPreviews(false);
     }
@@ -1683,12 +1685,24 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                 role="button"
                                 tabIndex={0}
                                 onClick={() => {
+                                  if (convo.hasUnread) {
+                                    setConversationPreviews((prev) =>
+                                      prev.map((c) => (c.id === convo.id ? { ...c, hasUnread: false } : c))
+                                    );
+                                    setUnreadMessageCount((count) => Math.max(0, count - 1));
+                                  }
                                   setIsMessagesOpen(false);
                                   router.push(`/messages/${convo.id}`);
                                 }}
                                 onKeyDown={(e) => {
                                   if (e.key === "Enter" || e.key === " ") {
                                     e.preventDefault();
+                                    if (convo.hasUnread) {
+                                      setConversationPreviews((prev) =>
+                                        prev.map((c) => (c.id === convo.id ? { ...c, hasUnread: false } : c))
+                                      );
+                                      setUnreadMessageCount((count) => Math.max(0, count - 1));
+                                    }
                                     setIsMessagesOpen(false);
                                     router.push(`/messages/${convo.id}`);
                                   }
