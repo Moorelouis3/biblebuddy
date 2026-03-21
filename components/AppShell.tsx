@@ -535,7 +535,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     function handleRefreshEvent(event: Event) {
       const customEvent = event as CustomEvent<{ conversationId?: string; markRead?: boolean }>;
       if (customEvent.detail?.markRead && customEvent.detail.conversationId) {
-        setUnreadMessageCount((prev) => Math.max(0, prev - 1));
         setConversationPreviews((prev) =>
           prev.map((conversation) =>
             conversation.id === customEvent.detail?.conversationId
