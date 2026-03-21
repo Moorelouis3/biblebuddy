@@ -204,6 +204,24 @@ interface SeriesComment {
   current_streak?: number | null;
 }
 
+interface AnalyticsUser {
+  user_id: string;
+  username: string;
+  avatar_url?: string | null;
+}
+
+interface TriviaScore extends AnalyticsUser {
+  score: number;
+  total: number;
+}
+
+interface WeekAnalytics {
+  starters: number;
+  readers: AnalyticsUser[];
+  triviaScores: TriviaScore[];
+  reflectors: AnalyticsUser[];
+}
+
 const PLANNED_BIBLE_STUDY_SERIES = [
   { key: "temptation_of_jesus", title: "The Temptation of Jesus", subtitle: "5-week group study" },
   { key: "testing_of_joseph", title: "The Testing of Joseph", subtitle: "Coming next" },
@@ -1721,6 +1739,11 @@ RULES:
   const [currentSeriesPreview, setCurrentSeriesPreview] = useState<CurrentSeriesPreview | null>(null);
   const [currentSeriesStartAt, setCurrentSeriesStartAt] = useState<string | null>(null);
   const [editingSeriesStart, setEditingSeriesStart] = useState(false);
+  const [weekAnalytics, setWeekAnalytics] = useState<Map<number, WeekAnalytics>>(new Map());
+  const [loadingAnalytics, setLoadingAnalytics] = useState(false);
+  const [showAnalytics, setShowAnalytics] = useState(false);
+  const [analyticsPopupUser, setAnalyticsPopupUser] = useState<AnalyticsUser | null>(null);
+  const [analyticsLoaded, setAnalyticsLoaded] = useState(false);
   const [showSeriesOverviewDetails, setShowSeriesOverviewDetails] = useState(true);
   const [hubItemStats, setHubItemStats] = useState<Record<string, HubItemStats>>({});
   const [showHubLikesFor, setShowHubLikesFor] = useState<HubItemStatic | null>(null);
@@ -3289,6 +3312,68 @@ RULES:
     setLoadingSeries(false);
   }
 
+  async function loadSeriesAnalytics(seriesId: string) {
+    setLoadingAnalytics(true);
+
+    const [progressRes, triviaRes, reflectionsRes] = await Promise.all([
+      supabase
+        .from("series_week_progress")
+        .select("user_id, week_number, reading_completed, trivia_completed, reflection_posted")
+        .eq("series_id", seriesId),
+      supabase
+        .from("series_trivia_scores")
+        .select("user_id, week_number, score, total_questions")
+        .eq("series_id", seriesId),
+      supabase
+        .from("series_reflections")
+        .select("user_id, week_number, display_name, profile_image_url")
+        .eq("series_id", seriesId),
+    ]);
+
+    const progressRows = progressRes.data || [];
+    const triviaRows = triviaRes.data || [];
+    const reflectionRows = reflectionsRes.data || [];
+
+    const allUserIds = [
+      ...new Set([
+        ...progressRows.map((r) => r.user_id),
+        ...triviaRows.map((r) => r.user_id),
+        ...reflectionRows.map((r) => r.user_id),
+      ].filter(Boolean)),
+    ];
+
+    const profileMap = new Map<string, { username: string; avatar_url?: string | null }>();
+    if (allUserIds.length > 0) {
+      const { data: profiles } = await supabase
+        .from("profile_stats")
+        .select("user_id, username, avatar_url")
+        .in("user_id", allUserIds);
+      (profiles || []).forEach((p) => {
+        if (p.user_id) profileMap.set(p.user_id, { username: p.username ?? "Unknown", avatar_url: p.avatar_url });
+      });
+    }
+
+    function resolveUser(uid: string, displayName?: string | null, profileImage?: string | null): AnalyticsUser {
+      const prof = profileMap.get(uid);
+      return { user_id: uid, username: displayName ?? prof?.username ?? "Unknown", avatar_url: profileImage ?? prof?.avatar_url ?? null };
+    }
+
+    const analyticsMap = new Map<number, WeekAnalytics>();
+    for (let wn = 1; wn <= TOTAL_WEEKS; wn++) {
+      const weekProgress = progressRows.filter((r) => r.week_number === wn);
+      analyticsMap.set(wn, {
+        starters: weekProgress.length,
+        readers: weekProgress.filter((r) => r.reading_completed).map((r) => resolveUser(r.user_id)),
+        triviaScores: triviaRows.filter((r) => r.week_number === wn).map((r) => ({ ...resolveUser(r.user_id), score: r.score, total: r.total_questions })),
+        reflectors: reflectionRows.filter((r) => r.week_number === wn).map((r) => resolveUser(r.user_id, r.display_name, r.profile_image_url)),
+      });
+    }
+
+    setWeekAnalytics(analyticsMap);
+    setLoadingAnalytics(false);
+    setAnalyticsLoaded(true);
+  }
+
   async function loadSeriesPosts(seriesId: string) {
     if (!group) return;
     setLoadingSeriesPosts(true);
@@ -4432,6 +4517,128 @@ RULES:
                         className="mt-3 text-xs font-semibold text-amber-700 hover:text-amber-900 transition"
                       >
                         Change start time
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Series Analytics (leader only) */}
+              {isLeader && selectedSeries.is_current && (
+                <div>
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      const next = !showAnalytics;
+                      setShowAnalytics(next);
+                      if (next && !analyticsLoaded) await loadSeriesAnalytics(selectedSeries.id);
+                    }}
+                    className="w-full rounded-2xl border border-indigo-200 bg-indigo-50 px-4 py-3 text-left transition hover:bg-indigo-100"
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-wide text-indigo-700">Series Analytics</p>
+                        <p className="text-sm text-indigo-900 mt-0.5">See who&apos;s engaging with each week.</p>
+                      </div>
+                      <span className="text-indigo-700 text-lg font-bold">{showAnalytics ? "−" : "+"}</span>
+                    </div>
+                  </button>
+
+                  {showAnalytics && (
+                    <div className="mt-3 space-y-3">
+                      {analyticsPopupUser && (
+                        <div
+                          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
+                          onClick={() => setAnalyticsPopupUser(null)}
+                        >
+                          <div
+                            className="bg-white rounded-2xl shadow-xl p-6 max-w-xs w-full text-center"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {analyticsPopupUser.avatar_url ? (
+                              <img src={analyticsPopupUser.avatar_url} alt={analyticsPopupUser.username} className="w-20 h-20 rounded-full object-cover mx-auto mb-3 border-2 border-gray-200" />
+                            ) : (
+                              <div className="w-20 h-20 rounded-full bg-indigo-100 flex items-center justify-center mx-auto mb-3 text-2xl font-bold text-indigo-600">
+                                {analyticsPopupUser.username.charAt(0).toUpperCase()}
+                              </div>
+                            )}
+                            <p className="text-lg font-bold text-gray-900">{analyticsPopupUser.username}</p>
+                            <button onClick={() => setAnalyticsPopupUser(null)} className="mt-4 text-sm text-gray-400 hover:text-gray-600 transition">Close</button>
+                          </div>
+                        </div>
+                      )}
+                      {loadingAnalytics ? (
+                        <div className="text-center text-sm text-gray-400 py-6">Loading analytics...</div>
+                      ) : (
+                        Array.from({ length: TOTAL_WEEKS }, (_, i) => i + 1).map((wn) => {
+                          const lesson = getSeriesWeekLesson(wn);
+                          const data = weekAnalytics.get(wn);
+                          if (!data) return null;
+                          const hasAny = data.starters > 0;
+                          return (
+                            <div key={wn} className="border border-indigo-100 rounded-xl bg-white overflow-hidden">
+                              <div className="bg-indigo-50 px-4 py-3 flex items-center justify-between">
+                                <div>
+                                  <p className="text-xs font-bold text-indigo-700 uppercase tracking-wide">Week {wn}</p>
+                                  {lesson && <p className="text-sm font-semibold text-gray-800 mt-0.5">{lesson.title}</p>}
+                                </div>
+                                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-700">{data.starters} started</span>
+                              </div>
+                              {!hasAny ? (
+                                <p className="text-xs text-gray-400 px-4 py-3">No activity yet.</p>
+                              ) : (
+                                <div className="px-4 py-3 space-y-4">
+                                  <div>
+                                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Read the Reading ({data.readers.length})</p>
+                                    {data.readers.length === 0 ? <p className="text-xs text-gray-400">No one yet.</p> : (
+                                      <div className="flex flex-wrap gap-2">
+                                        {data.readers.map((u) => (
+                                          <button key={u.user_id} onClick={() => setAnalyticsPopupUser(u)} className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-full px-2.5 py-1 hover:bg-indigo-50 hover:border-indigo-200 transition">
+                                            {u.avatar_url ? <img src={u.avatar_url} alt={u.username} className="w-5 h-5 rounded-full object-cover" /> : <div className="w-5 h-5 rounded-full bg-indigo-200 flex items-center justify-center text-xs font-bold text-indigo-700">{u.username.charAt(0).toUpperCase()}</div>}
+                                            <span className="text-xs font-medium text-gray-700">{u.username}</span>
+                                          </button>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
+                                  <div>
+                                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Took the Quiz ({data.triviaScores.length})</p>
+                                    {data.triviaScores.length === 0 ? <p className="text-xs text-gray-400">No one yet.</p> : (
+                                      <div className="flex flex-wrap gap-2">
+                                        {data.triviaScores.map((u) => (
+                                          <button key={u.user_id} onClick={() => setAnalyticsPopupUser(u)} className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-full px-2.5 py-1 hover:bg-indigo-50 hover:border-indigo-200 transition">
+                                            {u.avatar_url ? <img src={u.avatar_url} alt={u.username} className="w-5 h-5 rounded-full object-cover" /> : <div className="w-5 h-5 rounded-full bg-purple-200 flex items-center justify-center text-xs font-bold text-purple-700">{u.username.charAt(0).toUpperCase()}</div>}
+                                            <span className="text-xs font-medium text-gray-700">{u.username}</span>
+                                            <span className="text-xs font-bold text-green-600 ml-0.5">{u.score}/{u.total}</span>
+                                          </button>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
+                                  <div>
+                                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Posted a Reflection ({data.reflectors.length})</p>
+                                    {data.reflectors.length === 0 ? <p className="text-xs text-gray-400">No one yet.</p> : (
+                                      <div className="flex flex-wrap gap-2">
+                                        {data.reflectors.map((u) => (
+                                          <button key={u.user_id} onClick={() => setAnalyticsPopupUser(u)} className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-full px-2.5 py-1 hover:bg-indigo-50 hover:border-indigo-200 transition">
+                                            {u.avatar_url ? <img src={u.avatar_url} alt={u.username} className="w-5 h-5 rounded-full object-cover" /> : <div className="w-5 h-5 rounded-full bg-green-200 flex items-center justify-center text-xs font-bold text-green-700">{u.username.charAt(0).toUpperCase()}</div>}
+                                            <span className="text-xs font-medium text-gray-700">{u.username}</span>
+                                          </button>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })
+                      )}
+                      <button
+                        onClick={() => { setAnalyticsLoaded(false); void loadSeriesAnalytics(selectedSeries.id); }}
+                        className="text-xs text-indigo-600 hover:text-indigo-800 transition font-semibold"
+                      >
+                        ↻ Refresh
                       </button>
                     </div>
                   )}
