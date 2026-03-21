@@ -49,6 +49,7 @@ export default function DevotionalDetailPage() {
   const [progress, setProgress] = useState<Map<number, DayProgress>>(new Map());
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const [profileStats, setProfileStats] = useState<any>(null);
   const [selectedDay, setSelectedDay] = useState<DevotionalDay | null>(null);
   const [showCreditBlocked, setShowCreditBlocked] = useState(false);
@@ -61,6 +62,7 @@ export default function DevotionalDetailPage() {
     async function loadUserAndProfile() {
       const { data: { user } } = await supabase.auth.getUser();
       setUserId(user?.id || null);
+      setUserEmail(user?.email || null);
       if (user?.id) {
         const { data: stats } = await supabase
           .from("profile_stats")
@@ -161,6 +163,7 @@ export default function DevotionalDetailPage() {
   const progressPercent = devotional ? (completedDays / devotional.total_days) * 100 : 0;
 
   const isDayUnlocked = (dayNumber: number) => {
+    if (userEmail === "moorelouis3@gmail.com") return true;
     if (dayNumber === 1) return true;
     const prevDayProgress = progress.get(dayNumber - 1);
     return prevDayProgress?.is_completed === true;
