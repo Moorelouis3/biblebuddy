@@ -60,6 +60,10 @@ export default function DevotionalDetailPage() {
   const [showCompletionModal, setShowCompletionModal] = useState(false);
   const [completedDayNumber, setCompletedDayNumber] = useState<number | null>(null);
   const [showProModal, setShowProModal] = useState(false);
+  const [freeDevotionalId, setFreeDevotionalId] = useState<string | null | undefined>(undefined);
+  const [showChooseFreeModal, setShowChooseFreeModal] = useState(false);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [pendingDayClick, setPendingDayClick] = useState<DevotionalDay | null>(null);
 
   useEffect(() => {
     async function loadUserAndProfile() {
@@ -69,10 +73,13 @@ export default function DevotionalDetailPage() {
       if (user?.id) {
         const { data: stats } = await supabase
           .from("profile_stats")
-          .select("is_paid")
+          .select("is_paid, free_devotional_id")
           .eq("user_id", user.id)
           .maybeSingle();
         setProfileStats(stats);
+        setFreeDevotionalId((stats as any)?.free_devotional_id ?? null);
+      } else {
+        setFreeDevotionalId(null);
       }
     }
     loadUserAndProfile();
@@ -177,6 +184,26 @@ export default function DevotionalDetailPage() {
       return;
     }
 
+    const isFreeUser = profileStats?.is_paid !== true && userEmail !== "moorelouis3@gmail.com";
+
+    // Free user logic — wait until freeDevotionalId is loaded
+    if (isFreeUser && freeDevotionalId !== undefined) {
+      if (freeDevotionalId === devotionalId) {
+        // This IS their free devotional — open freely
+        setShowCreditBlocked(false);
+        setSelectedDay(day);
+      } else if (freeDevotionalId === null) {
+        // No free devotional chosen yet — ask them
+        setPendingDayClick(day);
+        setShowChooseFreeModal(true);
+      } else {
+        // They already chose a different devotional — upgrade wall
+        setShowUpgradeModal(true);
+      }
+      return;
+    }
+
+    // Paid user (or owner) — existing consume-credit logic
     const dayProgress = progress.get(day.day_number);
     const isCompleted = dayProgress?.is_completed === true;
 
@@ -188,12 +215,8 @@ export default function DevotionalDetailPage() {
 
     const creditResponse = await fetch("/api/consume-credit", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        actionType: ACTION_TYPE.devotional_day_viewed,
-      }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ actionType: ACTION_TYPE.devotional_day_viewed }),
     });
 
     if (!creditResponse.ok) {
@@ -215,6 +238,24 @@ export default function DevotionalDetailPage() {
 
     setShowCreditBlocked(false);
     setSelectedDay(day);
+  };
+
+  const handleConfirmFreeChoice = async () => {
+    if (!userId) return;
+    // Save the free devotional choice to profile_stats
+    await supabase
+      .from("profile_stats")
+      .upsert(
+        { user_id: userId, free_devotional_id: devotionalId },
+        { onConflict: "user_id" }
+      );
+    setFreeDevotionalId(devotionalId);
+    setShowChooseFreeModal(false);
+    if (pendingDayClick) {
+      setShowCreditBlocked(false);
+      setSelectedDay(pendingDayClick);
+      setPendingDayClick(null);
+    }
   };
 
   const handleBibleReadingClick = (book: string, chapter: number) => {
@@ -749,6 +790,83 @@ export default function DevotionalDetailPage() {
             setCompletedDayNumber(null);
           }}
         />
+      )}
+
+      {/* FREE DEVOTIONAL CHOICE MODAL */}
+      {showChooseFreeModal && devotional && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+          onClick={() => { setShowChooseFreeModal(false); setPendingDayClick(null); }}
+        >
+          <div
+            className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-xl font-bold text-gray-900 mb-3">🎁 You have one free devotional</h2>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              As a free user, you're gifted <strong>one complete devotional</strong> — all {devotional.total_days} days, fully unlocked.
+              <br /><br />
+              Once you choose, this will be your free devotional. Is <strong>{devotional.title}</strong> the one you want to start?
+            </p>
+            <div className="flex flex-col gap-3">
+              <button
+                type="button"
+                onClick={handleConfirmFreeChoice}
+                className="w-full py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition"
+              >
+                Yes, start {devotional.title}
+              </button>
+              <button
+                type="button"
+                onClick={() => { setShowChooseFreeModal(false); setPendingDayClick(null); }}
+                className="w-full py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition"
+              >
+                Not yet
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* UPGRADE MODAL — free user on a non-free devotional */}
+      {showUpgradeModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+          onClick={() => setShowUpgradeModal(false)}
+        >
+          <div
+            className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setShowUpgradeModal(false)}
+              className="absolute right-4 top-4 text-gray-400 hover:text-gray-700 text-xl"
+            >
+              ✕
+            </button>
+            <h2 className="text-xl font-bold text-gray-900 mb-3">Unlock All Devotionals</h2>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              You've already started your free devotional. Upgrade to Bible Buddy Pro to unlock every devotional — including this one — plus all future releases.
+            </p>
+            <div className="flex flex-col gap-3">
+              <button
+                type="button"
+                onClick={() => router.push('/upgrade')}
+                className="w-full py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition"
+              >
+                Upgrade to Pro
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowUpgradeModal(false)}
+                className="w-full py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition"
+              >
+                Maybe Later
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
