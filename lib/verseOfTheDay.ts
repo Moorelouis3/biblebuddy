@@ -375,18 +375,36 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
 ];
 
 function buildFallbackExplanation(entry: VerseOfTheDayEntry): VerseExplanationSection[] {
+  // Derive book name for context
+  const book = entry.reference.split(" ").slice(0, -1).join(" ") || entry.reference;
+  const isOT = [
+    "Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua","Judges","Ruth",
+    "1 Samuel","2 Samuel","1 Kings","2 Kings","1 Chronicles","2 Chronicles","Ezra",
+    "Nehemiah","Esther","Job","Psalm","Psalms","Proverbs","Ecclesiastes","Song of Solomon",
+    "Isaiah","Jeremiah","Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos","Obadiah",
+    "Jonah","Micah","Nahum","Habakkuk","Zephaniah","Haggai","Zechariah","Malachi",
+  ].some((b) => entry.reference.startsWith(b));
+
   return [
     {
-      heading: "What This Verse Says",
-      body: `${entry.reference} highlights a key truth worth slowing down and sitting with instead of rushing past.`,
+      heading: "📖 Who Wrote It",
+      body: isOT
+        ? `${book} is part of the Old Testament, written by prophets, poets, and leaders whom God used to record His Word for Israel and for all generations. The specific author reflects on God's nature and His relationship with His people.`
+        : `${book} is part of the New Testament, written by an apostle or close companion of the early church to encourage believers and explain the life, death, and resurrection of Jesus Christ.`,
     },
     {
-      heading: "Why It Matters",
-      body: `This verse keeps your focus on God's character, His truth, and the way He wants to shape your life through Scripture.`,
+      heading: "🕰️ When & What Was Happening",
+      body: isOT
+        ? `This verse was written during a pivotal moment in Israel's history — a time when God's people needed to be reminded of His promises, His character, or the right way to live. The words in ${entry.reference} were meant to anchor them in truth when circumstances were uncertain.`
+        : `This verse was written in the first century A.D. as the early church was forming and spreading across the Roman world. Believers faced pressure, confusion, and persecution, and these words were meant to ground them in the gospel and in how to live as followers of Jesus.`,
     },
     {
-      heading: "How To Use It Today",
-      body: `Read ${entry.reference} again slowly, notice what stands out most, and ask God to help you live this truth instead of only admiring it.`,
+      heading: "💡 What It Means",
+      body: `${entry.reference} speaks directly to the relationship between God and His people. The words are not abstract theology — they are a living truth meant to change how you think, pray, and act. At its core this verse is saying: God is faithful, His Word is trustworthy, and living according to it leads to a life that matters.`,
+    },
+    {
+      heading: "🌱 Why It Matters Today",
+      body: `This verse still applies because human nature, the need for God, and the reality of His love have not changed. Read ${entry.reference} again slowly today. Ask yourself what it reveals about who God is, what it asks of you, and how you can carry that truth into your conversations, decisions, and prayers this week.`,
     },
   ];
 }
