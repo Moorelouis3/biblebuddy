@@ -59,11 +59,26 @@ export default function AmbassadorPage() {
         return;
       }
 
-      const { data: ambProfile } = await supabase
+      let { data: ambProfile } = await supabase
         .from("ambassador_profiles")
         .select("referral_code, is_active")
         .eq("user_id", user.id)
         .maybeSingle();
+
+      // Auto-create profile row if missing (e.g. table was created after badge was assigned)
+      if (!ambProfile) {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session?.access_token) {
+          const res = await fetch("/api/ambassador/ensure-profile", {
+            method: "POST",
+            headers: { authorization: `Bearer ${session.access_token}` },
+          });
+          if (res.ok) {
+            const json = await res.json();
+            ambProfile = { referral_code: json.referral_code, is_active: json.is_active };
+          }
+        }
+      }
 
       if (!ambProfile) {
         setNotAuthorized(true);
