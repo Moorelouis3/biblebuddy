@@ -84,6 +84,9 @@ export default function DevotionalsPage() {
     if (title === "The Wisdom of Proverbs") {
       return "/WisdomofProverbs.png";
     }
+    if (title === "The Faith of Job") {
+      return "/faithofjob.png";
+    }
     return null;
   };
 
