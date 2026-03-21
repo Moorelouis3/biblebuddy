@@ -69,15 +69,15 @@ export default function DevotionalsPage() {
 
   // Get cover image path based on devotional title
   const getCoverImage = (title: string): string | null => {
-    // "The Tempting of Jesus" has a cover image
     if (title === "The Tempting of Jesus") {
       return "/images/temptingofjesus.png";
     }
-    // "The Testing of Joseph" has a cover image
     if (title === "The Testing of Joseph") {
       return "/Thetestingofjoseph.png";
     }
-    // Future devotionals can be added here
+    if (title === "The Disciples of Jesus") {
+      return "/disciplesofjesusdevotional.png";
+    }
     return null;
   };
 
@@ -193,147 +193,41 @@ export default function DevotionalsPage() {
             No devotionals available yet. Check back soon!
           </div>
         ) : (
-          <>
-            {/* Mobile: Vertical scroll list */}
-            <div className="flex flex-col md:hidden gap-6">
-              {/* Active Devotionals (clickable) */}
-              {devotionals.map((devotional) => {
-                const coverImage = getCoverImage(devotional.title);
-                if (!coverImage) return null;
-                const isTemptingOfJesus = devotional.title === "The Tempting of Jesus";
-                const isTestingOfJoseph = devotional.title === "The Testing of Joseph";
-                const card = (
-                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 hover:shadow-xl hover:scale-[1.01] transition-all duration-200 cursor-pointer">
-                    <img
-                      src={coverImage}
-                      alt={`${devotional.title} cover`}
-                      className="w-full h-auto rounded-lg object-contain"
-                    />
-                    <div className="mt-3 text-lg font-semibold text-gray-900 text-center">
-                      {devotional.title}
-                    </div>
+          <div className="grid grid-cols-3 gap-3 md:gap-8">
+            {devotionals.map((devotional) => {
+              const coverImage = getCoverImage(devotional.title);
+              if (!coverImage) return null;
+              const card = (
+                <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-2 md:p-5 hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer">
+                  <img
+                    src={coverImage}
+                    alt={`${devotional.title} cover`}
+                    className="w-full h-auto rounded-lg object-contain"
+                  />
+                  <div className="mt-2 text-xs md:text-lg font-semibold text-gray-900 text-center leading-tight">
+                    {devotional.title}
                   </div>
-                );
-                if (isTemptingOfJesus) {
-                  return (
-                    <div
-                      key={devotional.id}
-                      role="link"
-                      tabIndex={0}
-                      className="block w-full"
-                      onClick={() => router.push(`/devotionals/${devotional.id}`)}
-                      onKeyDown={(event) => {
-                        if (event.key === "Enter" || event.key === " ") {
-                          event.preventDefault();
-                          router.push(`/devotionals/${devotional.id}`);
-                        }
-                      }}
-                    >
-                      {card}
-                    </div>
-                  );
-                }
-                if (isTestingOfJoseph) {
-                  return (
-                    <div
-                      key={devotional.id}
-                      role="link"
-                      tabIndex={0}
-                      className="block w-full"
-                      onClick={() => router.push(`/devotionals/${devotional.id}`)}
-                      onKeyDown={(event) => {
-                        if (event.key === "Enter" || event.key === " ") {
-                          event.preventDefault();
-                          router.push(`/devotionals/${devotional.id}`);
-                        }
-                      }}
-                    >
-                      {card}
-                    </div>
-                  );
-                }
-                return (
-                  <Link
-                    key={devotional.id}
-                    href={`/devotionals/${devotional.id}`}
-                    className="block w-full"
-                  >
-                    {card}
-                  </Link>
-                );
-              })}
-            </div>
-
-            {/* Desktop: Grid layout */}
-            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-              {/* Active Devotionals (clickable) */}
-              {devotionals.map((devotional) => {
-                const coverImage = getCoverImage(devotional.title);
-                if (!coverImage) return null;
-                const isTemptingOfJesus = devotional.title === "The Tempting of Jesus";
-                const isTestingOfJoseph = devotional.title === "The Testing of Joseph";
-                const card = (
-                  <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer">
-                    <img
-                      src={coverImage}
-                      alt={`${devotional.title} cover`}
-                      className="w-full h-auto rounded-lg object-contain"
-                    />
-                    <div className="mt-3 text-lg font-semibold text-gray-900 text-center">
-                      {devotional.title}
-                    </div>
-                  </div>
-                );
-                if (isTemptingOfJesus) {
-                  return (
-                    <div
-                      key={devotional.id}
-                      role="link"
-                      tabIndex={0}
-                      className="block w-full max-w-xs"
-                      onClick={() => router.push(`/devotionals/${devotional.id}`)}
-                      onKeyDown={(event) => {
-                        if (event.key === "Enter" || event.key === " ") {
-                          event.preventDefault();
-                          router.push(`/devotionals/${devotional.id}`);
-                        }
-                      }}
-                    >
-                      {card}
-                    </div>
-                  );
-                }
-                if (isTestingOfJoseph) {
-                  return (
-                    <div
-                      key={devotional.id}
-                      role="link"
-                      tabIndex={0}
-                      className="block w-full max-w-xs"
-                      onClick={() => router.push(`/devotionals/${devotional.id}`)}
-                      onKeyDown={(event) => {
-                        if (event.key === "Enter" || event.key === " ") {
-                          event.preventDefault();
-                          router.push(`/devotionals/${devotional.id}`);
-                        }
-                      }}
-                    >
-                      {card}
-                    </div>
-                  );
-                }
-                return (
-                  <Link
-                    key={devotional.id}
-                    href={`/devotionals/${devotional.id}`}
-                    className="block w-full max-w-xs"
-                  >
-                    {card}
-                  </Link>
-                );
-              })}
-            </div>
-          </>
+                </div>
+              );
+              return (
+                <div
+                  key={devotional.id}
+                  role="link"
+                  tabIndex={0}
+                  className="block w-full"
+                  onClick={() => router.push(`/devotionals/${devotional.id}`)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      router.push(`/devotionals/${devotional.id}`);
+                    }
+                  }}
+                >
+                  {card}
+                </div>
+              );
+            })}
+          </div>
         )}
       </div>
     </div>
