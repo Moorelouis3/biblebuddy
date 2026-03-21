@@ -560,20 +560,20 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const customEvent = event as CustomEvent<{ conversationId?: string; markRead?: boolean }>;
       if (customEvent.detail?.markRead && customEvent.detail.conversationId) {
         const convId = customEvent.detail.conversationId;
-        // Optimistically clear the dot and decrement the badge immediately
-        setConversationPreviews((prev) => {
-          const hadUnread = prev.some((c) => c.id === convId && c.hasUnread);
-          if (hadUnread) {
-            setUnreadMessageCount((count) => Math.max(0, count - 1));
-          }
-          return prev.map((c) => (c.id === convId ? { ...c, hasUnread: false } : c));
-        });
+        // Optimistic update using the cached set (works even if panel was never opened)
+        if (_cachedUnreadConvoIds.current.has(convId)) {
+          _cachedUnreadConvoIds.current.delete(convId);
+          setUnreadMessageCount((count) => Math.max(0, count - 1));
+        }
+        setConversationPreviews((prev) =>
+          prev.map((c) => (c.id === convId ? { ...c, hasUnread: false } : c))
+        );
       }
-      // Always confirm with a fresh DB query
-      void refreshUnreadMessageCount(currentUserId);
-      if (isMessagesOpen) {
-        void fetchConversationPreviews(currentUserId);
-      }
+      // Delay DB confirmation so mark-read API has time to complete first
+      setTimeout(() => {
+        void refreshUnreadMessageCount(currentUserId);
+        if (isMessagesOpen) void fetchConversationPreviews(currentUserId);
+      }, 1500);
     }
 
     window.addEventListener("bb:refresh-unread-messages", handleRefreshEvent);
