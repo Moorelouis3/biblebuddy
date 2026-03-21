@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
 import {
   calculateStreakFromActions,
-  getDayAbbr,
+  getHeatMapData,
+  type HeatMapDay,
   type ProfileStats,
   type StreakData,
 } from "../../../lib/profileStats";
@@ -51,6 +52,52 @@ function formatJoined(dateStr: string | null | undefined): string {
 
 type BuddyState = "none" | "pending_sent" | "pending_received" | "buddies";
 
+const HEATMAP_MONTH_FORMATTER = new Intl.DateTimeFormat("en-US", { month: "short" });
+const HEATMAP_TOOLTIP_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+const HEATMAP_WEEKDAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+function getHeatMapCellClasses(level: HeatMapDay["level"]): string {
+  if (level === 2) return "bg-[#4a9b6f] border-[#4a9b6f]";
+  if (level === 1) return "bg-[#bfe6ce] border-[#9fd2b4]";
+  return "bg-gray-100 border-gray-200";
+}
+
+function buildHeatMapWeeks(days: HeatMapDay[]) {
+  const weeks: Array<Array<HeatMapDay | null>> = [];
+  for (let i = 0; i < days.length; i += 7) {
+    const week: Array<HeatMapDay | null> = days.slice(i, i + 7);
+    while (week.length < 7) week.push(null);
+    weeks.push(week);
+  }
+  return weeks;
+}
+
+function getHeatMapMonthLabels(weeks: Array<Array<HeatMapDay | null>>) {
+  let lastMonth = "";
+  return weeks.map((week, index) => {
+    const firstDay = week.find(Boolean);
+    if (!firstDay) return { index, label: "" };
+    const monthLabel = HEATMAP_MONTH_FORMATTER.format(new Date(`${firstDay.date}T00:00:00`));
+    if (monthLabel === lastMonth) {
+      return { index, label: "" };
+    }
+    lastMonth = monthLabel;
+    return { index, label: monthLabel };
+  });
+}
+
+function getHeatMapTooltip(day: HeatMapDay) {
+  return {
+    countLabel: `${day.actions} ${day.actions === 1 ? "activity" : "activities"}`,
+    dateLabel: HEATMAP_TOOLTIP_DATE_FORMATTER.format(new Date(`${day.date}T00:00:00`)),
+  };
+}
+
 interface BuddyProfile {
   user_id: string;
   display_name: string | null;
@@ -70,6 +117,13 @@ export default function PublicProfilePage() {
   const [viewerName, setViewerName] = useState<string>("");
   const [stats, setStats] = useState<ProfileStats & { created_at?: string } | null>(null);
   const [streak, setStreak] = useState<StreakData | null>(null);
+  const [heatMapDays, setHeatMapDays] = useState<HeatMapDay[]>([]);
+  const [hoveredHeatMapDay, setHoveredHeatMapDay] = useState<{
+    day: HeatMapDay;
+    x: number;
+    y: number;
+  } | null>(null);
+  const [showHeatMapInfoModal, setShowHeatMapInfoModal] = useState(false);
   const [booksCompleted, setBooksCompleted] = useState(0);
   const [bibleCompletion, setBibleCompletion] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -111,6 +165,7 @@ export default function PublicProfilePage() {
     created_at: string;
   }>>([]);
   const [buddyActionLoading, setBuddyActionLoading] = useState(false);
+  const heatMapCardRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!profileUserId) return;
@@ -161,8 +216,42 @@ export default function PublicProfilePage() {
       setStats(profileData as ProfileStats & { created_at?: string });
       setBadgeDraft(profileData.member_badge || "");
 
-      const streakData = await calculateStreakFromActions(profileUserId);
+      const { data: latestAction } = await supabase
+        .from("master_actions")
+        .select("created_at")
+        .eq("user_id", profileUserId)
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      if (latestAction?.created_at) {
+        const mergedProfileData = {
+          ...profileData,
+          last_active_at: latestAction.created_at,
+          last_active_date: latestAction.created_at,
+        };
+        setStats(mergedProfileData as ProfileStats & { created_at?: string });
+
+        if (
+          profileData.last_active_at !== latestAction.created_at ||
+          profileData.last_active_date !== latestAction.created_at
+        ) {
+          await supabase
+            .from("profile_stats")
+            .update({
+              last_active_at: latestAction.created_at,
+              last_active_date: latestAction.created_at,
+            })
+            .eq("user_id", profileUserId);
+        }
+      }
+
+      const [streakData, heatMapData] = await Promise.all([
+        calculateStreakFromActions(profileUserId),
+        getHeatMapData(profileUserId),
+      ]);
       setStreak(streakData);
+      setHeatMapDays(heatMapData);
 
       const { data: completedChapters, error: chaptersError } = await supabase
         .from("completed_chapters")
@@ -633,6 +722,8 @@ export default function PublicProfilePage() {
   // ── Derived display values ────────────────────────────────────────────────
   const displayStats = stats || { total_actions: 0, chapters_completed_count: 0, notes_created_count: 0, people_learned_count: 0, places_discovered_count: 0, keywords_mastered_count: 0, trivia_questions_answered: 0, last_active_date: null, current_streak: 0 };
   const displayStreak = streak || { currentStreak: 0, last7Days: [] };
+  const heatMapWeeks = buildHeatMapWeeks(heatMapDays);
+  const heatMapMonthLabels = getHeatMapMonthLabels(heatMapWeeks);
   const displayName = stats?.display_name || stats?.username || "Bible Buddy Member";
   const username = stats?.username || null;
   const isOwner = viewerUserId === profileUserId;
@@ -691,9 +782,6 @@ export default function PublicProfilePage() {
                       groupRole={shouldForceTeacherBadge ? "leader" : undefined}
                     />
                   </div>
-                  {username && (
-                    <p className="text-sm text-gray-500 mt-0.5">@{username}</p>
-                  )}
                 </div>
 
                 {/* Action buttons — owner: Edit Profile; visitor: buddy button */}
@@ -846,34 +934,109 @@ export default function PublicProfilePage() {
 
         {/* ── DAILY STREAK ───────────────────────────────────────────────── */}
         <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
-          <div className="mb-4">
-            <h2 className="text-xl font-semibold mb-1">{displayStreak.currentStreak} day streak</h2>
-            <p className="text-sm text-gray-600">
-              {displayStreak.currentStreak === 0 ? "No active streak" : "Active streak"}
-            </p>
+          <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <h2 className="text-xl font-semibold mb-1">{displayStreak.currentStreak} day streak</h2>
+              <p className="text-sm text-gray-600">
+                {displayStreak.currentStreak === 0 ? "No active streak" : "Active streak"}
+              </p>
+            </div>
+            <span className="rounded-full border border-[#d9eadf] bg-[#f3faf5] px-3 py-1 text-xs font-medium text-[#356c50]">
+              Past 6 months
+            </span>
           </div>
-          {displayStreak.last7Days.length > 0 ? (
-            <div className="flex items-center gap-3">
-              {displayStreak.last7Days.map((dayItem, index) => (
-                <div key={dayItem.date} className="flex flex-col items-center">
-                  <div className="text-xs text-gray-500 mb-2">{getDayAbbr(dayItem.date)}</div>
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                    dayItem.completed ? "bg-green-500 text-white"
-                    : index === displayStreak.last7Days.length - 1 ? "bg-blue-100 text-blue-600 border-2 border-blue-300"
-                    : "bg-gray-200 text-gray-400"
-                  }`}>
-                    {dayItem.completed ? (
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    ) : index === displayStreak.last7Days.length - 1 ? (
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                      </svg>
-                    ) : null}
-                  </div>
+          {heatMapWeeks.length > 0 ? (
+            <div ref={heatMapCardRef} className="relative rounded-2xl border border-[#d9eadf] bg-[#f8fcf9] p-4 sm:p-5">
+              {hoveredHeatMapDay ? (
+                <div
+                  className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-full rounded-2xl border border-[#d9eadf] bg-[#f8fcf9] px-4 py-3 text-center text-[#234333] shadow-xl"
+                  style={{
+                    left: hoveredHeatMapDay.x,
+                    top: hoveredHeatMapDay.y - 10,
+                  }}
+                >
+                  <p className="text-[13px] font-semibold leading-none">
+                    {getHeatMapTooltip(hoveredHeatMapDay.day).countLabel}
+                  </p>
+                  <p className="mt-2 text-[13px] text-[#5b6f63]">
+                    {getHeatMapTooltip(hoveredHeatMapDay.day).dateLabel}
+                  </p>
                 </div>
-              ))}
+              ) : null}
+
+              <div className="mb-3 flex pl-8 text-[11px] font-medium text-gray-500 sm:pl-10">
+                {heatMapMonthLabels.map((month, index) => (
+                  <div key={`${month.label}-${index}`} className="w-3 mr-0.5 text-left sm:w-3.5 sm:mr-1">
+                    {month.label}
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex gap-2 sm:gap-3">
+                <div className="grid grid-rows-7 gap-0.5 pt-[1px] text-[11px] text-gray-400 sm:gap-1 sm:text-xs">
+                  {HEATMAP_WEEKDAY_LABELS.map((label, index) => (
+                    <div key={label} className="h-3 w-5 leading-3 sm:h-3.5 sm:w-7 sm:leading-4">
+                      {index === 1 || index === 3 || index === 5 ? label : ""}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex gap-0.5 sm:gap-1">
+                  {heatMapWeeks.map((week, weekIndex) => (
+                    <div key={`week-${weekIndex}`} className="grid grid-rows-7 gap-0.5 sm:gap-1">
+                      {week.map((day, dayIndex) => (
+                        <button
+                          key={day ? day.date : `empty-${weekIndex}-${dayIndex}`}
+                          type="button"
+                          onMouseEnter={(event) => {
+                            if (!day || !heatMapCardRef.current) return;
+                            const cardRect = heatMapCardRef.current.getBoundingClientRect();
+                            const cellRect = event.currentTarget.getBoundingClientRect();
+                            setHoveredHeatMapDay({
+                              day,
+                              x: cellRect.left - cardRect.left + cellRect.width / 2,
+                              y: cellRect.top - cardRect.top,
+                            });
+                          }}
+                          onMouseLeave={() => setHoveredHeatMapDay((current) => (current?.day.date === day?.date ? null : current))}
+                          onFocus={(event) => {
+                            if (!day || !heatMapCardRef.current) return;
+                            const cardRect = heatMapCardRef.current.getBoundingClientRect();
+                            const cellRect = event.currentTarget.getBoundingClientRect();
+                            setHoveredHeatMapDay({
+                              day,
+                              x: cellRect.left - cardRect.left + cellRect.width / 2,
+                              y: cellRect.top - cardRect.top,
+                            });
+                          }}
+                          onBlur={() => setHoveredHeatMapDay((current) => (current?.day.date === day?.date ? null : current))}
+                          className={`h-3 w-3 rounded-[3px] border transition-transform hover:scale-110 focus:scale-110 focus:outline-none sm:h-3.5 sm:w-3.5 ${
+                            day ? getHeatMapCellClasses(day.level) : "border-transparent bg-transparent"
+                          } ${day ? "" : "pointer-events-none"}`}
+                          aria-label={day ? `${getHeatMapTooltip(day).countLabel} on ${getHeatMapTooltip(day).dateLabel}` : undefined}
+                        />
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-4 flex flex-col gap-3 text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between">
+                <button
+                  type="button"
+                  onClick={() => setShowHeatMapInfoModal(true)}
+                  className="w-fit text-sm font-medium text-[#4a9b6f] transition hover:text-[#356c50]"
+                >
+                  What is this?
+                </button>
+                <div className="flex items-center gap-2 whitespace-nowrap">
+                  <span>Less</span>
+                  <span className="h-3.5 w-3.5 rounded-[4px] border border-gray-200 bg-gray-100" />
+                  <span className="h-3.5 w-3.5 rounded-[4px] border border-[#9fd2b4] bg-[#bfe6ce]" />
+                  <span className="h-3.5 w-3.5 rounded-[4px] border border-[#4a9b6f] bg-[#4a9b6f]" />
+                  <span>More</span>
+                </div>
+              </div>
             </div>
           ) : (
             <div className="text-sm text-gray-500 text-center py-2">No streak data available</div>
@@ -899,6 +1062,39 @@ export default function PublicProfilePage() {
             <div className="text-sm text-gray-700">Bible Completion</div>
           </div>
         </div>
+
+        {showHeatMapInfoModal ? (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
+            <div className="w-full max-w-lg rounded-3xl border border-[#d9eadf] bg-[#f8fcf9] p-6 shadow-2xl">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900">Daily activity</h3>
+                  <div className="mt-4 space-y-4 text-base leading-8 text-[#43584b]">
+                    <p>
+                      This chart shows daily activity on Bible Buddy over the past 6 months.
+                      It includes when you show up, study, post, like, comment, reply,
+                      and take part in group activity.
+                    </p>
+                    <p>
+                      Light green means you logged in that day. Dark green means you took at least
+                      one real action that day.
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowHeatMapInfoModal(false)}
+                  className="rounded-full p-2 text-gray-400 transition hover:bg-white hover:text-gray-600"
+                  aria-label="Close activity info"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : null}
 
         {/* ── STATS ROW 2 ────────────────────────────────────────────────── */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">

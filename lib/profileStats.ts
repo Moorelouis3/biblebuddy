@@ -36,7 +36,18 @@ export interface ProfileStats {
 
 export interface HeatMapDay {
   date: string; // YYYY-MM-DD
+  loginCount: number;
+  meaningfulCount: number;
+  level: 0 | 1 | 2;
   actions: number;
+}
+
+const NON_STREAK_ACTION_TYPES = new Set([
+  ACTION_TYPE.user_signup,
+]);
+
+function isMeaningfulActionType(actionType: string): boolean {
+  return !NON_STREAK_ACTION_TYPES.has(actionType as typeof ACTION_TYPE.user_signup) && actionType !== ACTION_TYPE.user_login;
 }
 
 /**
@@ -90,22 +101,23 @@ export async function getUsername(userId: string): Promise<{ username: string } 
 }
 
 /**
- * Get heat map data (last 90 days) from master_actions table
- * Groups actions by date and counts actions per day
+ * Get heat map data (last 364 days) from master_actions table.
+ * Level 1 means the user logged in that day.
+ * Level 2 means the user completed at least one meaningful action that day.
  */
 export async function getHeatMapData(
   userId: string
 ): Promise<HeatMapDay[]> {
   try {
-    // Get last 90 days of actions
-    const ninetyDaysAgo = new Date();
-    ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90);
+    const daysToShow = 182;
+    const daysAgo = new Date();
+    daysAgo.setDate(daysAgo.getDate() - (daysToShow - 1));
 
     const { data, error } = await supabase
       .from("master_actions")
-      .select("created_at")
+      .select("created_at, action_type")
       .eq("user_id", userId)
-      .gte("created_at", ninetyDaysAgo.toISOString())
+      .gte("created_at", daysAgo.toISOString())
       .order("created_at", { ascending: true });
 
     if (error) {
@@ -113,23 +125,47 @@ export async function getHeatMapData(
       return [];
     }
 
-    // Group actions by date and count
-    const actionsByDate = new Map<string, number>();
+    const actionsByDate = new Map<
+      string,
+      { actions: number; loginCount: number; meaningfulCount: number }
+    >();
     data?.forEach((action) => {
       const date = new Date(action.created_at).toISOString().slice(0, 10); // YYYY-MM-DD
-      actionsByDate.set(date, (actionsByDate.get(date) || 0) + 1);
+      const current = actionsByDate.get(date) || {
+        actions: 0,
+        loginCount: 0,
+        meaningfulCount: 0,
+      };
+      current.actions += 1;
+      if (action.action_type === ACTION_TYPE.user_login) {
+        current.loginCount += 1;
+      }
+      if (isMeaningfulActionType(action.action_type)) {
+        current.meaningfulCount += 1;
+      }
+      actionsByDate.set(date, current);
     });
 
-    // Generate array for last 90 days
+    // Generate array for the last 364 days
     const heatMapData: HeatMapDay[] = [];
     const today = new Date();
-    for (let i = 89; i >= 0; i--) {
+    for (let i = daysToShow - 1; i >= 0; i--) {
       const date = new Date(today);
       date.setDate(date.getDate() - i);
       const dateStr = date.toISOString().slice(0, 10);
+      const stats = actionsByDate.get(dateStr) || {
+        actions: 0,
+        loginCount: 0,
+        meaningfulCount: 0,
+      };
+      const level: 0 | 1 | 2 =
+        stats.meaningfulCount > 0 ? 2 : stats.loginCount > 0 ? 1 : 0;
       heatMapData.push({
         date: dateStr,
-        actions: actionsByDate.get(dateStr) || 0,
+        loginCount: stats.loginCount,
+        meaningfulCount: stats.meaningfulCount,
+        level,
+        actions: stats.actions,
       });
     }
 
@@ -168,10 +204,38 @@ const STREAK_ACTION_TYPES = [
   ACTION_TYPE.user_login,
   ACTION_TYPE.chapter_completed,
   ACTION_TYPE.book_completed,
+  ACTION_TYPE.bible_in_one_year_day_viewed,
+  ACTION_TYPE.devotional_day_completed,
+  ACTION_TYPE.devotional_day_started,
+  ACTION_TYPE.devotional_day_viewed,
   ACTION_TYPE.person_learned,
+  ACTION_TYPE.person_viewed,
   ACTION_TYPE.place_discovered,
+  ACTION_TYPE.place_viewed,
   ACTION_TYPE.keyword_mastered,
+  ACTION_TYPE.keyword_viewed,
   ACTION_TYPE.note_created,
+  ACTION_TYPE.note_started,
+  ACTION_TYPE.reading_plan_chapter_completed,
+  ACTION_TYPE.trivia_question_answered,
+  ACTION_TYPE.trivia_started,
+  ACTION_TYPE.chapter_notes_viewed,
+  ACTION_TYPE.verse_highlighted,
+  ACTION_TYPE.understand_verse_of_the_day,
+  ACTION_TYPE.feed_post_thought,
+  ACTION_TYPE.feed_post_prayer,
+  ACTION_TYPE.feed_post_prayer_request,
+  ACTION_TYPE.feed_post_photo,
+  ACTION_TYPE.feed_post_video,
+  ACTION_TYPE.feed_post_liked,
+  ACTION_TYPE.feed_post_commented,
+  ACTION_TYPE.feed_post_replied,
+  ACTION_TYPE.buddy_added,
+  ACTION_TYPE.group_message_sent,
+  ACTION_TYPE.series_week_started,
+  ACTION_TYPE.study_group_feed_viewed,
+  ACTION_TYPE.study_group_article_opened,
+  ACTION_TYPE.study_group_bible_study_card_opened,
 ];
 
 export async function calculateStreakFromActions(
