@@ -151,7 +151,7 @@ function parseIntroToHTML(intro: string): string {
       continue;
     }
 
-    // Single line starting with emoji (callout / ðŸ‘‰ / ðŸ“Œ)
+    // Single line starting with emoji (callout / 👉 / 📌)
     const firstCode = trimmed.codePointAt(0) ?? 0;
     if (lines.length === 1 && firstCode > 0x00FF) {
       const html = applyInlineHtml(lines[0]);
@@ -534,7 +534,7 @@ function TriviaQuiz({
   if (phase === "done") {
     return (
       <div className="text-center py-4">
-        <p className="text-4xl mb-3">ðŸ†</p>
+        <p className="text-4xl mb-3">🏆</p>
         <p className="text-xl font-bold text-gray-900">{score} / {questions.length}</p>
         <p className="text-sm text-gray-500 mt-1">
           {score === questions.length ? "Perfect score!" : score >= questions.length * 0.7 ? "Great job!" : "Keep studying!"}
@@ -667,7 +667,7 @@ function LeaderboardView({ seriesId, weekNumber, userId }: { seriesId: string; w
   if (loading) return <p className="text-sm text-gray-400 text-center py-4">Loading leaderboard...</p>;
   if (entries.length === 0) return <p className="text-sm text-gray-400 text-center py-4">No scores yet. Be the first!</p>;
 
-  const medals = ["ðŸ¥‡", "ðŸ¥ˆ", "ðŸ¥‰"];
+  const medals = ["🥇", "🥈", "🥉"];
 
   return (
     <div className="flex flex-col gap-2">
@@ -1180,7 +1180,7 @@ function CompletionModal({ weekNumber, groupId, onClose }: { weekNumber: number;
           />
         ))}
 
-        <div className="text-6xl mb-4 animate-bounce">ðŸ™</div>
+        <div className="text-6xl mb-4 animate-bounce">🙏</div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Week {weekNumber} Complete!</h2>
         <p className="text-sm text-gray-500 mb-6">
           You've finished the reading, trivia, and reflection for this week. Keep it up!
@@ -1213,7 +1213,7 @@ function LouisLoadingCard({ name }: { name: string }) {
         <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-4/5" />
         <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-2/3" />
       </div>
-      <p className="text-sm text-gray-400 italic animate-pulse">{name} is loadingâ€¦</p>
+      <p className="text-sm text-gray-400 italic animate-pulse">{name} is loading…</p>
     </div>
   );
 }
@@ -1466,7 +1466,7 @@ export default function WeekLessonPage({
         if (cached?.notes_text) { setPersonNotes(cached.notes_text); setLoadingNotes(false); return; }
         const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti)/i.test(selectedPerson!.name);
         const pr = isFemale ? "Her" : "Him"; const wp = isFemale ? "She" : "He";
-        const prompt = `You are Little Louis. Generate Bible study notes for ${selectedPerson!.name}.\n\nTemplate:\n# ðŸ‘¤ Who ${wp} Is\n\n(two short paragraphs)\n\n\n\n# ðŸ“– Their Role in the Story\n\n(two to three short paragraphs)\n\n\n\n# ðŸ”¥ Key Moments\n\nðŸ”¥ sentence\nðŸ”¥ sentence\nðŸ”¥ sentence\n\n\n\n# ðŸ“ Where You Find ${pr}\n\nðŸ“– Book Chapter\nðŸ“– Book Chapter\n\n\n\n# ðŸŒ± Why This Person Matters\n\n(two short paragraphs)\n\nRules: # headers only, double blank lines between sections, emoji bullets only, no hyphens, ~200-250 words, do NOT put their name as a header.`;
+        const prompt = `You are Little Louis. Generate Bible study notes for ${selectedPerson!.name}.\n\nTemplate:\n# 👤 Who ${wp} Is\n\n(two short paragraphs)\n\n\n\n# 📖 Their Role in the Story\n\n(two to three short paragraphs)\n\n\n\n# 🔥 Key Moments\n\n🔥 sentence\n🔥 sentence\n🔥 sentence\n\n\n\n# 📍 Where You Find ${pr}\n\n📖 Book Chapter\n📖 Book Chapter\n\n\n\n# 🌱 Why This Person Matters\n\n(two short paragraphs)\n\nRules: # headers only, double blank lines between sections, emoji bullets only, no hyphens, ~200-250 words, do NOT put their name as a header.`;
         const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }) });
         const json = await res.json();
         const generated = json?.reply ?? "";
@@ -1495,7 +1495,7 @@ export default function WeekLessonPage({
         }
         const { data: cached } = await supabase.from("places_in_the_bible_notes").select("notes_text").eq("normalized_place", key).maybeSingle();
         if (cached?.notes_text) { setPlaceNotes(cached.notes_text); setLoadingNotes(false); return; }
-        const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the PLACE: ${selectedPlace!.name}.\n\nTemplate:\n# ðŸ§­ What This Place Is\n\n(two short paragraphs)\n\n\n\n# ðŸ—ºï¸ Where It Appears in the Story\n\n(two short paragraphs)\n\n\n\n# ðŸ”‘ Key Moments Connected to This Place\n\nðŸ”¥ sentence\nðŸ”¥ sentence\nðŸ”¥ sentence\n\n\n\n# ðŸ“– Where You Find It in Scripture\n\nðŸ“– Book Chapter\nðŸ“– Book Chapter\n\n\n\n# ðŸŒ± Why This Place Matters\n\n(two short paragraphs)\n\nRules: # headers, double blank lines, emoji bullets, no hyphens, ~200 words, no place name as header.`;
+        const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the PLACE: ${selectedPlace!.name}.\n\nTemplate:\n# ðŸ§­ What This Place Is\n\n(two short paragraphs)\n\n\n\n# ðŸ—ºï¸ Where It Appears in the Story\n\n(two short paragraphs)\n\n\n\n# ðŸ”‘ Key Moments Connected to This Place\n\n🔥 sentence\n🔥 sentence\n🔥 sentence\n\n\n\n# 📖 Where You Find It in Scripture\n\n📖 Book Chapter\n📖 Book Chapter\n\n\n\n# 🌱 Why This Place Matters\n\n(two short paragraphs)\n\nRules: # headers, double blank lines, emoji bullets, no hyphens, ~200 words, no place name as header.`;
         const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }) });
         const json = await res.json();
         const generated = json?.reply ?? "";
@@ -1524,7 +1524,7 @@ export default function WeekLessonPage({
         }
         const { data: cached } = await supabase.from("keywords_in_the_bible").select("notes_text").eq("keyword", key).maybeSingle();
         if (cached?.notes_text) { setKeywordNotes(cached.notes_text); setLoadingNotes(false); return; }
-        const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword!.name}.\n\nTemplate:\n# ðŸ“– What This Keyword Means\n\n(two short paragraphs)\n\n\n\n# ðŸ” Where It Appears in Scripture\n\n(two short paragraphs)\n\n\n\n# ðŸ”‘ Key Verses Using This Keyword\n\nðŸ”¥ sentence\nðŸ”¥ sentence\nðŸ”¥ sentence\n\n\n\n# ðŸ“š Where You Find It in the Bible\n\nðŸ“– Book Chapter\nðŸ“– Book Chapter\n\n\n\n# ðŸŒ± Why This Keyword Matters\n\n(two short paragraphs)\n\nRules: # headers, double blank lines, emoji bullets, no hyphens, ~200 words, no keyword as header.`;
+        const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword!.name}.\n\nTemplate:\n# 📖 What This Keyword Means\n\n(two short paragraphs)\n\n\n\n# ðŸ” Where It Appears in Scripture\n\n(two short paragraphs)\n\n\n\n# ðŸ”‘ Key Verses Using This Keyword\n\n🔥 sentence\n🔥 sentence\n🔥 sentence\n\n\n\n# ðŸ“š Where You Find It in the Bible\n\n📖 Book Chapter\n📖 Book Chapter\n\n\n\n# 🌱 Why This Keyword Matters\n\n(two short paragraphs)\n\nRules: # headers, double blank lines, emoji bullets, no hyphens, ~200 words, no keyword as header.`;
         const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }) });
         const json = await res.json();
         const generated = json?.reply ?? "";
@@ -1723,7 +1723,7 @@ export default function WeekLessonPage({
           {(triviaDone || savedTriviaScore !== null) && seriesId && (
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
               <div className="px-5 py-3 bg-gray-50 border-b border-gray-100">
-                <p className="text-sm font-bold text-gray-800">ðŸ† Trivia Leaderboard â€” Week {weekNum}</p>
+                <p className="text-sm font-bold text-gray-800">🏆 Trivia Leaderboard — Week {weekNum}</p>
               </div>
               <div className="px-5 py-4">
                 <LeaderboardView seriesId={seriesId} weekNumber={weekNum} userId={userId!} />
@@ -1810,7 +1810,7 @@ export default function WeekLessonPage({
                         setIsAnimatingPerson(true);
                         setTimeout(() => {
                           setSelectedPerson(null); setPersonNotes(null); setIsAnimatingPerson(false);
-                          setLearnedToast(`${displayName} has been learned! ðŸ™Œ`);
+                          setLearnedToast(`${displayName} has been learned! 🙌`);
                           setTimeout(() => setLearnedToast(null), 3500);
                         }, 250);
                         supabase.from("people_progress").upsert({ user_id: userId, person_name: key }, { onConflict: "user_id,person_name" })
@@ -1859,7 +1859,7 @@ export default function WeekLessonPage({
                         setIsAnimatingPlace(true);
                         setTimeout(() => {
                           setSelectedPlace(null); setPlaceNotes(null); setIsAnimatingPlace(false);
-                          setLearnedToast(`${displayName} has been learned! ðŸ™Œ`);
+                          setLearnedToast(`${displayName} has been learned! 🙌`);
                           setTimeout(() => setLearnedToast(null), 3500);
                         }, 250);
                         supabase.from("places_progress").upsert({ user_id: userId, place_name: key }, { onConflict: "user_id,place_name" })
@@ -1908,7 +1908,7 @@ export default function WeekLessonPage({
                         setIsAnimatingKeyword(true);
                         setTimeout(() => {
                           setSelectedKeyword(null); setKeywordNotes(null); setIsAnimatingKeyword(false);
-                          setLearnedToast(`${displayName} has been learned! ðŸ™Œ`);
+                          setLearnedToast(`${displayName} has been learned! 🙌`);
                           setTimeout(() => setLearnedToast(null), 3500);
                         }, 250);
                         supabase.from("keywords_progress").upsert({ user_id: userId, keyword_name: key }, { onConflict: "user_id,keyword_name" })

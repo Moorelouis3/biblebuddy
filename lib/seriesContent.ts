@@ -29,7 +29,7 @@ export const TEMPTATION_OF_JESUS: SeriesWeekLesson[] = [
     readingReference: "Luke 4:1â€“2",
     readingApiQuery: "luke+4:1-2",
     reflectionQuestion:
-      "Before Jesus faced the devil in the wilderness, He was baptized â€” not because He needed cleansing, but to fully identify with us and fulfill God's plan. What stands out to you most about Jesus' baptism? What does His obedience in that moment teach you about your own walk with God?",
+      "Before Jesus faced the devil in the wilderness, He was baptized — not because He needed cleansing, but to fully identify with us and fulfill God's plan. What stands out to you most about Jesus' baptism? What does His obedience in that moment teach you about your own walk with God?",
 
     intro: `This is one of my favorite stories in the whole Bible.
 
@@ -41,9 +41,9 @@ Jesus didn't argue.
 He didn't flex His power.
 He didn't compromise.
 
-ðŸ‘‰ He answered every temptation with **"It is writtenâ€¦"**
+👉 He answered every temptation with **"It is written…"**
 
-That's why this story matters so much. It's not just Jesus' story â€” it's our **blueprint**.
+That's why this story matters so much. It's not just Jesus' story — it's our **blueprint**.
 
 ## Why Luke's Version Hits Different
 
@@ -53,14 +53,14 @@ But Luke? Luke's account is my favorite.
 
 Here's why. Luke tells you up front what he's doing:
 
-> "I myself have carefully investigated everything from the beginningâ€¦ so that you may know the certainty of the things you've been taught." â€” Luke 1:3â€“4
+> "I myself have carefully investigated everything from the beginning… so that you may know the certainty of the things you've been taught." — Luke 1:3â€“4
 
 Luke wasn't guessing. He was investigating.
 
-ðŸ“Œ **Quick facts about Luke:**
+📌 **Quick facts about Luke:**
 
 - ðŸ©º He was a **doctor** (Colossians 4:14).
-- âœˆï¸ He traveled with Paul â€” you can see the narration switch from "they" to "we" in Acts 16:10.
+- âœˆï¸ He traveled with Paul — you can see the narration switch from "they" to "we" in Acts 16:10.
 - ðŸŒ He was likely a **Gentile**, so he explains Jewish customs for readers who didn't grow up with Torah.
 - ðŸ“„ By word count, **Luke + Acts** make him the largest contributor to the NT.
 - ðŸ•Šï¸ His Gospel is Spirit-led. Jesus promised the Spirit would guide the apostles to all truth (John 16:13).
@@ -71,24 +71,24 @@ Luke doesn't jump straight into the desert. He shows us who Jesus was becoming.
 
 When Jesus was twelve years old, His family traveled from Nazareth to Jerusalem for the Passover festival.
 
-ðŸ‘‰ **What's Passover?**
+👉 **What's Passover?**
 
-- ðŸ“– It celebrated how God "passed over" the houses of Israel in Egypt during the final plague (Exodus 12).
+- 📖 It celebrated how God "passed over" the houses of Israel in Egypt during the final plague (Exodus 12).
 - ðŸ§‘ All Jewish men were required by law to attend the feast in Jerusalem.
-- ðŸš¶ Families traveled in big caravans â€” extended relatives, neighbors, sometimes 80â€“100 people.
-- ðŸ“– Distance: about **65â€“70 miles** from Nazareth â†’ Jerusalem = 3â€“5 days on foot.
+- ðŸš¶ Families traveled in big caravans — extended relatives, neighbors, sometimes 80â€“100 people.
+- 📖 Distance: about **65â€“70 miles** from Nazareth â†’ Jerusalem = 3â€“5 days on foot.
 
 So Joseph, Mary, and Jesus make the journey. They celebrate Passover, then the family packs up to return home. But one night on the way back, they realize something terrifying: **Jesus isn't there.**
 
-They searched for three days. They found Him in the Temple â€” not lost, not hiding â€” but discussing Scripture with the teachers.
+They searched for three days. They found Him in the Temple — not lost, not hiding — but discussing Scripture with the teachers.
 
-> "Everyone who heard Him was amazed at His understanding and His answers." â€” Luke 2:47
+> "Everyone who heard Him was amazed at His understanding and His answers." — Luke 2:47
 
 Mary, exhausted, asks: "Son, why have You treated us like this? We've been anxiously searching for You!"
 
 And Jesus responds with a line that sums up His entire mission:
 
-> "Didn't you know I had to be in My Father's house?" â€” Luke 2:49
+> "Didn't you know I had to be in My Father's house?" — Luke 2:49
 
 That's the last recorded thing He says until He's thirty. **Eighteen years of silence.** No miracles. No crowds.
 
@@ -98,7 +98,7 @@ Just obedience and preparation. But that one sentence already shows us who He kn
 
 Before Jesus stepped into public ministry, someone had to prepare the way.
 
-John the Baptist was that man. He and Jesus were family â€” Elizabeth (John's mother) was a relative of Mary (Luke 1:36). Even before birth, when pregnant Mary visited Elizabeth, John leaped in the womb in recognition of Jesus (Luke 1:41).
+John the Baptist was that man. He and Jesus were family — Elizabeth (John's mother) was a relative of Mary (Luke 1:36). Even before birth, when pregnant Mary visited Elizabeth, John leaped in the womb in recognition of Jesus (Luke 1:41).
 
 John's whole life had one mission: *"Prepare the way of the Lord."*
 
@@ -108,24 +108,24 @@ He preached in the desert, confronted crowds and religious leaders alike, and ca
 
 When Jesus finally stepped into public ministry at thirty years old, He didn't start with a sermon. He started with baptism.
 
-John tried to refuse. But Jesus insisted â€” He needed to "fulfill all righteousness" (Matthew 3:15). He wasn't baptized because He needed cleansing. He stepped into the water to fully identify with us and to launch His public ministry.
+John tried to refuse. But Jesus insisted — He needed to "fulfill all righteousness" (Matthew 3:15). He wasn't baptized because He needed cleansing. He stepped into the water to fully identify with us and to launch His public ministry.
 
 The moment He came up from the water, heaven opened:
 
-> "You are my Son, whom I love; with You I am well pleased." â€” Luke 3:22
+> "You are my Son, whom I love; with You I am well pleased." — Luke 3:22
 
-Father, Son, and Holy Spirit â€” all present in one extraordinary moment.
+Father, Son, and Holy Spirit — all present in one extraordinary moment.
 
 ## Led Into the Wilderness
 
 Instead of applause, the Spirit led Jesus straight into the desert.
 
-> "Jesus, full of the Holy Spirit, left the Jordan and was led by the Spirit into the wilderness, where for forty days He was tempted by the devil. He ate nothing during those days, and at the end of them He was hungry." â€” Luke 4:1â€“2
+> "Jesus, full of the Holy Spirit, left the Jordan and was led by the Spirit into the wilderness, where for forty days He was tempted by the devil. He ate nothing during those days, and at the end of them He was hungry." — Luke 4:1â€“2
 
 Notice two things:
 
 - He was *full of the Spirit*
-- He was *led* â€” not wandering, not running. Purposefully directed.
+- He was *led* — not wandering, not running. Purposefully directed.
 
 The number **forty** echoes throughout Scripture as a pattern of testing and preparation:
 
@@ -135,9 +135,9 @@ The number **forty** echoes throughout Scripture as a pattern of testing and pre
 
 Every time, something was being **forged**.
 
-The enemy waited until Jesus was at His weakest â€” hungry, alone, at the end of forty days. That is how temptation operates. It does not arrive when you are strong. **It waits for the cracks.**
+The enemy waited until Jesus was at His weakest — hungry, alone, at the end of forty days. That is how temptation operates. It does not arrive when you are strong. **It waits for the cracks.**
 
-These two verses carry the weight of everything that came before â€” the baptism, the years of preparation, the Father's declaration. Read them slowly. That changes how we think about our own wilderness seasons.`,
+These two verses carry the weight of everything that came before — the baptism, the years of preparation, the Father's declaration. Read them slowly. That changes how we think about our own wilderness seasons.`,
 
     triviaQuestions: [
       {
@@ -183,7 +183,7 @@ These two verses carry the weight of everything that came before â€” the ba
           { label: "A", text: "Bread and water" },
           { label: "B", text: "Locusts and honey" },
           { label: "C", text: "Manna from heaven" },
-          { label: "D", text: "Nothing â€” He fasted the entire time" },
+          { label: "D", text: "Nothing — He fasted the entire time" },
         ],
         correctAnswer: "D",
         explanation: "Luke 4:2 says 'He ate nothing during those days, and at the end of them He was hungry.'",
@@ -241,8 +241,8 @@ These two verses carry the weight of everything that came before â€” the ba
         question: "How are Jesus and John the Baptist related?",
         options: [
           { label: "A", text: "Brothers" },
-          { label: "B", text: "No relation â€” John was a stranger" },
-          { label: "C", text: "Cousins â€” their mothers were relatives" },
+          { label: "B", text: "No relation — John was a stranger" },
+          { label: "C", text: "Cousins — their mothers were relatives" },
           { label: "D", text: "Teacher and student" },
         ],
         correctAnswer: "C",
@@ -269,13 +269,13 @@ These two verses carry the weight of everything that came before â€” the ba
     readingReference: "Luke 4:3â€“4",
     readingApiQuery: "luke+4:3-4",
     reflectionQuestion:
-      "When the devil tempted Jesus to turn stones into bread, he was appealing to His physical hunger â€” the lust of the flesh. But Jesus refused to satisfy a real need in a wrong way. What \"stones\" has the enemy been trying to get you to turn into \"bread\"? In other words â€” what desires, habits, or fleshly cravings have been pulling you away from trusting God's timing and provision?",
+      "When the devil tempted Jesus to turn stones into bread, he was appealing to His physical hunger — the lust of the flesh. But Jesus refused to satisfy a real need in a wrong way. What \"stones\" has the enemy been trying to get you to turn into \"bread\"? In other words — what desires, habits, or fleshly cravings have been pulling you away from trusting God's timing and provision?",
 
     intro: `In Week 1, we set the stage.
 
 We looked at Jesus as a 12-year-old in the Temple, His baptism in the Jordan, the Trinity showing up all at once, and the Spirit leading Him into the wilderness.
 
-Now in Week 2, we finally get to the **first temptation** itself. The devil waits until Jesus is at His weakest â€” and then goes straight for His flesh.
+Now in Week 2, we finally get to the **first temptation** itself. The devil waits until Jesus is at His weakest — and then goes straight for His flesh.
 
 Let's walk through it.
 
@@ -283,17 +283,17 @@ Let's walk through it.
 
 Luke writes:
 
-> "And Jesus, full of the Holy Spirit, returned from the Jordan and was led by the Spirit in the wilderness, for forty days, being tempted by the devil. And He ate nothing during those days. And when they were ended, He was hungry." â€” Luke 4:1â€“2
+> "And Jesus, full of the Holy Spirit, returned from the Jordan and was led by the Spirit in the wilderness, for forty days, being tempted by the devil. And He ate nothing during those days. And when they were ended, He was hungry." — Luke 4:1â€“2
 
 Here's the thing: Jesus didn't just wander into the wilderness. **He was led there by the Spirit.**
 
 This wasn't a vacation. It wasn't downtime after baptism. It was a mission.
 
-ðŸ‘‰ In the Bible, the wilderness is always a testing ground:
+👉 In the Bible, the wilderness is always a testing ground:
 
 - ðŸŒ¿ **John the Baptist** lived in the wilderness until his ministry began (Luke 1:80).
 - ðŸ”¼ **Moses** spent 40 years there with Israel.
-- ðŸ”¥ **Elijah** met God in the wilderness.
+- 🔥 **Elijah** met God in the wilderness.
 - ðŸŽ¯ **David** hid in the wilderness when Saul was chasing him.
 
 The wilderness is where God strips away comfort and builds character. It's where He forges people for their calling.
@@ -302,15 +302,15 @@ The wilderness is where God strips away comfort and builds character. It's where
 
 1. **To fully live the human experience.** He came to walk the same road we walk and show us how to endure temptation God's way. Where Israel failed for 40 years, Jesus would succeed in 40 days.
 
-2. **To prove the devil can be defeated.** Not by raw willpower â€” but by total dependence on God.
+2. **To prove the devil can be defeated.** Not by raw willpower — but by total dependence on God.
 
-This wasn't a detour. It was preparation â€” for ministry, for mission, and for us.
+This wasn't a detour. It was preparation — for ministry, for mission, and for us.
 
 ## ðŸ The Devil Waits for Weakness
 
 Matthew adds an important detail:
 
-> "After fasting forty days and forty nights, He was hungry. And the tempter came and said to Himâ€¦" â€” Matthew 4:2â€“3
+> "After fasting forty days and forty nights, He was hungry. And the tempter came and said to Him…" — Matthew 4:2â€“3
 
 Notice: **the devil doesn't show up on Day 1.**
 
@@ -320,7 +320,7 @@ That's how temptation works with us, too. It waits. It lurks. It hits hardest wh
 
 Think about it:
 
-- You start a new diet. Morning is fine. Afternoon is fine. But late at night, when you're tired â€” that's when the craving screams.
+- You start a new diet. Morning is fine. Afternoon is fine. But late at night, when you're tired — that's when the craving screams.
 - You swear off a bad habit. You're solid all day. But then you're alone, the house is quiet, and the whispers start.
 
 The devil doesn't rush. He's patient. He waits until you're empty, tired, and distracted. **Then he whispers.**
@@ -331,19 +331,19 @@ That's exactly what happened to Jesus.
 
 Luke writes:
 
-> "The devil said to Him, 'If you are the Son of God, command this stone to become bread.'" â€” Luke 4:3
+> "The devil said to Him, 'If you are the Son of God, command this stone to become bread.'" — Luke 4:3
 
 On the surface, it sounds harmless. Jesus is starving. Bread would help. Why not?
 
 But this is **deeper than food.**
 
-The devil starts with: *"If you are the Son of Godâ€¦"*
+The devil starts with: *"If you are the Son of God…"*
 
 In the Greek, that "if" really means **"since."** In other words:
 
 > "Since You're God's Son, why suffer? Use Your power. Fix this Yourself."
 
-ðŸ‘‰ **This is the temptation of the flesh.**
+👉 **This is the temptation of the flesh.**
 
 - Your stomach says, "I need this."
 - Your body says, "Just one hit."
@@ -353,7 +353,7 @@ But it's a lie. **The flesh exaggerates need and minimizes cost.**
 
 Paul said:
 
-> "The mind governed by the flesh is hostile to God." â€” Romans 8:7
+> "The mind governed by the flesh is hostile to God." — Romans 8:7
 
 And that's exactly what the devil is pushing here:
 
@@ -361,20 +361,20 @@ And that's exactly what the devil is pushing here:
 - ðŸž Comfort over obedience.
 - ðŸž Flesh over faith.
 
-## ðŸ“– Jesus' Response
+## 📖 Jesus' Response
 
 Jesus doesn't argue. He doesn't debate. He fires back with Scripture:
 
-> "It is written: Man shall not live by bread alone, but by every word that comes from the mouth of God." â€” Matthew 4:4
+> "It is written: Man shall not live by bread alone, but by every word that comes from the mouth of God." — Matthew 4:4
 
-That's **Deuteronomy 8:3** â€” Moses speaking to Israel's children as they were about to enter the Promised Land.
+That's **Deuteronomy 8:3** — Moses speaking to Israel's children as they were about to enter the Promised Land.
 
 The backstory:
 
 - Israel complained about food in the wilderness.
-- God provided manna â€” bread from heaven.
+- God provided manna — bread from heaven.
 - Rule: only take enough for the day. If you tried to store it, it rotted.
-- Why? It was **training** â€” to teach them to trust God daily.
+- Why? It was **training** — to teach them to trust God daily.
 
 But they still complained. They still doubted. They still built idols.
 
@@ -384,7 +384,7 @@ And Jesus throws that same Word right back at Satan:
 
 > "Yes, I'm hungry. But I'd rather trust My Father's Word than feed My cravings."
 
-ðŸ”¥ **That's the blueprint.**
+🔥 **That's the blueprint.**
 
 ## ðŸ’¡ What "Bread Alone" Means for Us
 
@@ -393,7 +393,7 @@ You can swap "bread" with anything:
 - Weed. Porn. Control.
 - Fear. Ego. Comfort.
 
-Your flesh says, "I need this right now." But Jesus shows us â€” **no. What you really need is the Word of God.**
+Your flesh says, "I need this right now." But Jesus shows us — **no. What you really need is the Word of God.**
 
 The flesh says: satisfy yourself. The Spirit says: trust God.
 
@@ -406,7 +406,7 @@ Here's what this first temptation teaches us:
 - ðŸ‘€ **The devil attacks your flesh first.**
 - ðŸ•°ï¸ **He waits until you're weak.**
 - ðŸž **He offers shortcuts that cost more later.**
-- ðŸ“– **The Word of God is your only real defense.**
+- 📖 **The Word of God is your only real defense.**
 
 So here's the question: **What "stone" in your life are you tempted to turn into bread?**
 
@@ -415,13 +415,13 @@ So here's the question: **What "stone" in your life are you tempted to turn into
 - That text thread you should've deleted?
 - That easy shortcut instead of God's way?
 
-ðŸ‘‰ The way to fight it isn't more willpower. **It's more Word.** Fill yourself with Scripture before the temptation hits.
+👉 The way to fight it isn't more willpower. **It's more Word.** Fill yourself with Scripture before the temptation hits.
 
-> "Trust in the LORD with all your heart, and lean not on your own understanding." â€” Proverbs 3:5
+> "Trust in the LORD with all your heart, and lean not on your own understanding." — Proverbs 3:5
 
-## ðŸ“Œ Closing
+## 📌 Closing
 
-Jesus was starving, weak, and alone â€” but He still **trusted the Father over His flesh.**
+Jesus was starving, weak, and alone — but He still **trusted the Father over His flesh.**
 
 That's the pattern. That's how you fight back.
 
@@ -434,7 +434,7 @@ So whatever your craving is, don't believe the lie that you "need" it. **You nee
 
 **The Word > The craving.**
 
-ðŸ‘£ **Next week in Week 3**, we'll look at the second temptation â€” when Satan shows Jesus all the kingdoms of the world and offers Him power and glory if He'll just bow down.`,
+ðŸ‘£ **Next week in Week 3**, we'll look at the second temptation — when Satan shows Jesus all the kingdoms of the world and offers Him power and glory if He'll just bow down.`,
 
     triviaQuestions: [
       {
@@ -459,7 +459,7 @@ So whatever your craving is, don't believe the lie that you "need" it. **You nee
           { label: "D", text: "3 days and nights" },
         ],
         correctAnswer: "C",
-        explanation: "Matthew 4:2â€“3 says 'After fasting forty days and forty nights, He was hungry. And the tempter cameâ€¦'",
+        explanation: "Matthew 4:2â€“3 says 'After fasting forty days and forty nights, He was hungry. And the tempter came…'",
       },
       {
         id: "w2q3",
@@ -471,7 +471,7 @@ So whatever your craving is, don't believe the lie that you "need" it. **You nee
           { label: "D", text: "Deuteronomy" },
         ],
         correctAnswer: "D",
-        explanation: "'Man shall not live by bread alone' is from Deuteronomy 8:3 â€” Moses speaking to Israel's children before they entered the Promised Land.",
+        explanation: "'Man shall not live by bread alone' is from Deuteronomy 8:3 — Moses speaking to Israel's children before they entered the Promised Land.",
       },
       {
         id: "w2q4",
@@ -483,7 +483,7 @@ So whatever your craving is, don't believe the lie that you "need" it. **You nee
           { label: "D", text: "Walk away and stay silent" },
         ],
         correctAnswer: "C",
-        explanation: "Jesus didn't argue or debate â€” He answered every temptation with 'It is written.' The Word of God is our primary weapon against temptation.",
+        explanation: "Jesus didn't argue or debate — He answered every temptation with 'It is written.' The Word of God is our primary weapon against temptation.",
       },
       {
         id: "w2q5",
@@ -495,19 +495,19 @@ So whatever your craving is, don't believe the lie that you "need" it. **You nee
           { label: "D", text: "To keep them from eating too much" },
         ],
         correctAnswer: "B",
-        explanation: "The manna system was training â€” if Israel tried to store it, it rotted. God designed it to build daily dependence and trust in His provision.",
+        explanation: "The manna system was training — if Israel tried to store it, it rotted. God designed it to build daily dependence and trust in His provision.",
       },
       {
         id: "w2q6",
         question: "What is the significance of the Greek word 'if' in the devil's phrase 'If you are the Son of God'?",
         options: [
           { label: "A", text: "The devil was genuinely uncertain about Jesus' identity" },
-          { label: "B", text: "In Greek, it actually means 'since' â€” the devil was acknowledging who Jesus was" },
+          { label: "B", text: "In Greek, it actually means 'since' — the devil was acknowledging who Jesus was" },
           { label: "C", text: "It was a direct denial that Jesus was God's Son" },
           { label: "D", text: "It was a respectful question, not a challenge" },
         ],
         correctAnswer: "B",
-        explanation: "In Greek, the 'if' used here carries the meaning of 'since.' The devil wasn't doubting Jesus' identity â€” he was using it as leverage: 'Since You are God's Son, why suffer? Use Your power.'",
+        explanation: "In Greek, the 'if' used here carries the meaning of 'since.' The devil wasn't doubting Jesus' identity — he was using it as leverage: 'Since You are God's Son, why suffer? Use Your power.'",
       },
       {
         id: "w2q7",
@@ -531,7 +531,7 @@ So whatever your craving is, don't believe the lie that you "need" it. **You nee
           { label: "D", text: "He didn't know Jesus was in the wilderness until later" },
         ],
         correctAnswer: "C",
-        explanation: "Matthew 4:2â€“3 shows the devil waited until after 40 days of fasting â€” when Jesus was at His weakest. That's how temptation works: it waits for the cracks.",
+        explanation: "Matthew 4:2â€“3 shows the devil waited until after 40 days of fasting — when Jesus was at His weakest. That's how temptation works: it waits for the cracks.",
       },
       {
         id: "w2q9",
@@ -555,7 +555,7 @@ So whatever your craving is, don't believe the lie that you "need" it. **You nee
           { label: "D", text: "Moses" },
         ],
         correctAnswer: "C",
-        explanation: "The lesson highlights John the Baptist, Moses, Elijah, and David as wilderness figures tested and forged by God. Solomon is not among them â€” his testing came through wealth and power, not the wilderness.",
+        explanation: "The lesson highlights John the Baptist, Moses, Elijah, and David as wilderness figures tested and forged by God. Solomon is not among them — his testing came through wealth and power, not the wilderness.",
       },
     ],
   },
@@ -566,9 +566,9 @@ So whatever your craving is, don't believe the lie that you "need" it. **You nee
     readingReference: "Luke 4:5â€“8",
     readingApiQuery: "luke+4:5-8",
     reflectionQuestion:
-      "The devil offered Jesus glory without obedience â€” a crown without the cross. He still works that way today, whispering 'take the easy road' or 'just one compromise.' Where in your life are you tempted to chase shortcuts instead of God's will? What would it look like to choose the cross over the crown this week?",
+      "The devil offered Jesus glory without obedience — a crown without the cross. He still works that way today, whispering 'take the easy road' or 'just one compromise.' Where in your life are you tempted to chase shortcuts instead of God's will? What would it look like to choose the cross over the crown this week?",
 
-    intro: `In Week 2, we saw how the devil tempted Jesus through His flesh â€” hunger after 40 days of fasting.
+    intro: `In Week 2, we saw how the devil tempted Jesus through His flesh — hunger after 40 days of fasting.
 
 It was about comfort, control, and quick fixes.
 
@@ -577,14 +577,14 @@ Jesus stood firm: "It is written..."
 Now in Week 3, the devil changes his playbook.
 This time, he's not coming for Jesus' stomach.
 
-ðŸ‘‰ He's coming for His **ambition**.
+👉 He's coming for His **ambition**.
 
 His calling.
 His ego.
 
-## ðŸ“– The Second Temptation
+## 📖 The Second Temptation
 
-> "The devil led him up to a high place and showed him in an instant all the kingdoms of the world. And he said to him, 'I will give you all their authority and splendor; it has been given to me, and I can give it to anyone I want to. If you worship me, it will all be yours.'" â€” Luke 4:5â€“7
+> "The devil led him up to a high place and showed him in an instant all the kingdoms of the world. And he said to him, 'I will give you all their authority and splendor; it has been given to me, and I can give it to anyone I want to. If you worship me, it will all be yours.'" — Luke 4:5â€“7
 
 Picture this moment:
 
@@ -600,13 +600,13 @@ This is the temptation of **shortcuts**.
 
 âœ¨ Glory without obedience.
 ðŸ‘‘ Power without sacrifice.
-ðŸ† A crown without the cross.
+🏆 A crown without the cross.
 
 ## â“ Could Satan Really Offer That?
 
 Let's pause. How could the devil even claim to give away kingdoms?
 
-ðŸ“Œ Bible context:
+📌 Bible context:
 
 - Called "the prince of this world" (John 12:31).
 - Called "the god of this age" (2 Cor 4:4).
@@ -614,7 +614,7 @@ Let's pause. How could the devil even claim to give away kingdoms?
 
 âš ï¸ But he doesn't own them.
 
-> "The earth is the Lord's, and everything in it." â€” Psalm 24:1
+> "The earth is the Lord's, and everything in it." — Psalm 24:1
 
 What Satan offers is always a counterfeit.
 He flashes the blessing without mentioning the chains.
@@ -631,7 +631,7 @@ It's:
 - Who you center your life around ðŸ’“
 - Who shapes your decisions âš–ï¸
 
-ðŸ‘‰ Whatever you bow to â€” even without your knees â€” that's your god.
+👉 Whatever you bow to — even without your knees — that's your god.
 
 The enemy was really saying:
 "Switch loyalty. Skip obedience. Bow once, and I'll give you the world."
@@ -640,19 +640,19 @@ The enemy was really saying:
 
 Jesus answers by quoting Deuteronomy 6:
 
-> "Worship the Lord your God and serve Him only." â€” Luke 4:8
+> "Worship the Lord your God and serve Him only." — Luke 4:8
 
 Moses told Israel the same thing as they entered the Promised Land: don't forget the One who brought you here.
 
-But Israel failed that test â€”
+But Israel failed that test —
 
 - Golden calf in Exodus 32 ðŸ„
-- Chasing the gods of Canaan ðŸ”¥
+- Chasing the gods of Canaan 🔥
 - Forgetting God once life got good ðŸ‡
 
 Jesus succeeds where they fell.
 
-He's rewriting the story â€” showing faithfulness in the wilderness where Israel showed rebellion.
+He's rewriting the story — showing faithfulness in the wilderness where Israel showed rebellion.
 
 ## ðŸ‘€ How This Hits Us
 
@@ -679,7 +679,7 @@ But it's really a trap.
 
 ## ðŸ—¡ï¸ Jesus' Response
 
-> "It is written: Worship the Lord your God and serve Him only." â€” Luke 4:8
+> "It is written: Worship the Lord your God and serve Him only." — Luke 4:8
 
 No debates. No flexing power. No long speeches.
 
@@ -687,16 +687,16 @@ Just Scripture.
 Just truth.
 Just loyalty.
 
-Jesus shows us: **Worship is about loyalty â€” and that belongs to God alone.**
+Jesus shows us: **Worship is about loyalty — and that belongs to God alone.**
 
 ## ðŸ’¡ The Promise
 
-Jesus resisted the shortcut. He chose the hard road â€” the cross.
+Jesus resisted the shortcut. He chose the hard road — the cross.
 And because of that, He secured the true crown.
 
 And here's His promise to us:
 
-> "Seek first the Kingdom of God and His righteousness, and all these things will be added to you." â€” Matthew 6:33
+> "Seek first the Kingdom of God and His righteousness, and all these things will be added to you." — Matthew 6:33
 
 Bow to God first, and He'll give you everything you truly need.
 Bow to false gods, and you'll always be starving.`,
@@ -736,7 +736,7 @@ Bow to false gods, and you'll always be starving.`,
           { label: "D", text: "Proverbs 3" },
         ],
         correctAnswer: "C",
-        explanation: "Jesus quoted Deuteronomy 6:13 â€” 'Worship the Lord your God and serve Him only' â€” the same command Moses gave Israel before they entered the Promised Land.",
+        explanation: "Jesus quoted Deuteronomy 6:13 — 'Worship the Lord your God and serve Him only' — the same command Moses gave Israel before they entered the Promised Land.",
       },
       {
         id: "w3q4",
@@ -748,7 +748,7 @@ Bow to false gods, and you'll always be starving.`,
           { label: "D", text: "The father of lies" },
         ],
         correctAnswer: "C",
-        explanation: "John 12:31 calls Satan 'the prince of this world.' He influences systems and cultures â€” but he does not own them. 'The earth is the Lord's, and everything in it' (Psalm 24:1).",
+        explanation: "John 12:31 calls Satan 'the prince of this world.' He influences systems and cultures — but he does not own them. 'The earth is the Lord's, and everything in it' (Psalm 24:1).",
       },
       {
         id: "w3q5",
@@ -760,7 +760,7 @@ Bow to false gods, and you'll always be starving.`,
           { label: "D", text: "Tithing and giving offerings" },
         ],
         correctAnswer: "C",
-        explanation: "The lesson defines worship as loyalty â€” who you trust, who you obey, who you center your life around, and who shapes your decisions. Whatever you bow to, even without your knees, is your god.",
+        explanation: "The lesson defines worship as loyalty — who you trust, who you obey, who you center your life around, and who shapes your decisions. Whatever you bow to, even without your knees, is your god.",
       },
       {
         id: "w3q6",
@@ -772,7 +772,7 @@ Bow to false gods, and you'll always be starving.`,
           { label: "D", text: "The temptation of shortcuts" },
         ],
         correctAnswer: "D",
-        explanation: "The lesson calls it the temptation of shortcuts â€” glory without obedience, power without sacrifice, a crown without the cross.",
+        explanation: "The lesson calls it the temptation of shortcuts — glory without obedience, power without sacrifice, a crown without the cross.",
       },
       {
         id: "w3q7",
@@ -784,7 +784,7 @@ Bow to false gods, and you'll always be starving.`,
           { label: "D", text: "They doubted Moses was sent by God" },
         ],
         correctAnswer: "B",
-        explanation: "Israel bowed to the golden calf (Exodus 32), chased the gods of Canaan, and forgot God once life got comfortable. Jesus succeeded where they fell â€” showing faithfulness where Israel showed rebellion.",
+        explanation: "Israel bowed to the golden calf (Exodus 32), chased the gods of Canaan, and forgot God once life got comfortable. Jesus succeeded where they fell — showing faithfulness where Israel showed rebellion.",
       },
       {
         id: "w3q8",
@@ -796,7 +796,7 @@ Bow to false gods, and you'll always be starving.`,
           { label: "D", text: "The accuser" },
         ],
         correctAnswer: "B",
-        explanation: "2 Corinthians 4:4 calls Satan 'the god of this age' â€” he influences systems, cultures, and hearts apart from God, which is why he could claim authority over the kingdoms he showed Jesus.",
+        explanation: "2 Corinthians 4:4 calls Satan 'the god of this age' — he influences systems, cultures, and hearts apart from God, which is why he could claim authority over the kingdoms he showed Jesus.",
       },
       {
         id: "w3q9",
@@ -808,19 +808,19 @@ Bow to false gods, and you'll always be starving.`,
           { label: "D", text: "He earned the right to judge the world" },
         ],
         correctAnswer: "B",
-        explanation: "By rejecting the devil's shortcut, Jesus chose obedience and the cross â€” securing the true crown. Matthew 6:33 promises: 'Seek first the Kingdom of God and His righteousness, and all these things will be added to you.'",
+        explanation: "By rejecting the devil's shortcut, Jesus chose obedience and the cross — securing the true crown. Matthew 6:33 promises: 'Seek first the Kingdom of God and His righteousness, and all these things will be added to you.'",
       },
       {
         id: "w3q10",
         question: "What Psalm verse does the lesson quote to show that Satan doesn't truly own the world's kingdoms?",
         options: [
-          { label: "A", text: "Psalm 23:1 â€” 'The Lord is my shepherd'" },
-          { label: "B", text: "Psalm 46:1 â€” 'God is our refuge and strength'" },
-          { label: "C", text: "Psalm 24:1 â€” 'The earth is the Lord's, and everything in it'" },
-          { label: "D", text: "Psalm 91:1 â€” 'Whoever dwells in the shelter of the Most High'" },
+          { label: "A", text: "Psalm 23:1 — 'The Lord is my shepherd'" },
+          { label: "B", text: "Psalm 46:1 — 'God is our refuge and strength'" },
+          { label: "C", text: "Psalm 24:1 — 'The earth is the Lord's, and everything in it'" },
+          { label: "D", text: "Psalm 91:1 — 'Whoever dwells in the shelter of the Most High'" },
         ],
         correctAnswer: "C",
-        explanation: "Psalm 24:1 â€” 'The earth is the Lord's, and everything in it.' What Satan offers is always a counterfeit. He flashes the blessing without mentioning the chains.",
+        explanation: "Psalm 24:1 — 'The earth is the Lord's, and everything in it.' What Satan offers is always a counterfeit. He flashes the blessing without mentioning the chains.",
       },
     ],
   },
@@ -837,7 +837,7 @@ Bow to false gods, and you'll always be starving.`,
 
 He offered Him all the power and glory in the world.
 
-But Jesus replied, reminding the devil He doesn't need his shortcuts â€”
+But Jesus replied, reminding the devil He doesn't need his shortcuts —
 
 You should only worship God.
 
@@ -851,7 +851,7 @@ He has one more trick up his sleeve...
 
 And in this Bible study, we are going to really break it down.
 
-But before we talk about the Pride of Life â€” that's his last trick â€” let's really talk about who the devil is.
+But before we talk about the Pride of Life — that's his last trick — let's really talk about who the devil is.
 
 ## ðŸ‘º Who Is the Devil?
 
@@ -862,43 +862,43 @@ Before Moses.
 Before Adam and Eve.
 Before the world was even created.
 
-God created angels â€” spiritual beings â€” before He ever created us. And one of those angels? He wasn't just any angel.
+God created angels — spiritual beings — before He ever created us. And one of those angels? He wasn't just any angel.
 
 He was the most beautiful, the most gifted, the most powerful one. God made him with no flaws.
 
-He wasn't just good-looking â€” he was the most beautiful thing God had created at the time. He was intelligent â€” maybe even the smartest being God ever made. Plus, he had power â€” he likely had a leadership role, overseeing worship or guarding God's throne. Some believe he literally led heaven's worship.
+He wasn't just good-looking — he was the most beautiful thing God had created at the time. He was intelligent — maybe even the smartest being God ever made. Plus, he had power — he likely had a leadership role, overseeing worship or guarding God's throne. Some believe he literally led heaven's worship.
 
 His name was **Lucifer**.
 
 But somewhere along the way... Lucifer started believing his own hype. Started feeling himself a little too much. Started thinking maybe he was the one who deserved the throne.
 
-> "I will ascend... I will make myself like the Most High." â€” Isaiah 14:13â€“14
+> "I will ascend... I will make myself like the Most High." — Isaiah 14:13â€“14
 
-And boom â€” pride was found in him.
+And boom — pride was found in him.
 
-> "Your heart became proud on account of your beauty, and you corrupted your wisdom because of your splendor." â€” Ezekiel 28:17
+> "Your heart became proud on account of your beauty, and you corrupted your wisdom because of your splendor." — Ezekiel 28:17
 
 ## ðŸ’¥ The Great Rebellion
 
-Lucifer didn't just feel pride â€” he took a shot at God's throne. He started recruiting angels. Whispering lies.
+Lucifer didn't just feel pride — he took a shot at God's throne. He started recruiting angels. Whispering lies.
 
 And before long, a rebellion started. Michael and the loyal angels fought back.
 
-> "Michael and his angels fought against the dragon, and the dragon and his angels fought back. But he was not strong enough... and he was hurled to the earth." â€” Revelation 12:7â€“9
+> "Michael and his angels fought against the dragon, and the dragon and his angels fought back. But he was not strong enough... and he was hurled to the earth." — Revelation 12:7â€“9
 
-God cast Lucifer out of heaven. He lost his place. He lost his name. And from that point on â€” he's called **Satan**.
+God cast Lucifer out of heaven. He lost his place. He lost his name. And from that point on — he's called **Satan**.
 
 In Hebrew, "Satan" means adversary, opponent, enemy of God.
 
 But Lucifer didn't fall alone.
 
-> "He dragged a third of the stars with him." â€” Revelation 12:4
+> "He dragged a third of the stars with him." — Revelation 12:4
 
-That means a third of heaven's angels followed him in his rebellion. That's who we now call demons â€” fallen angels with the same twisted mission.
+That means a third of heaven's angels followed him in his rebellion. That's who we now call demons — fallen angels with the same twisted mission.
 
 ## ðŸ˜ˆ Satan's Final Trick: The Pride of Life
 
-This is why the third temptation â€” the Pride of Life â€” hits different.
+This is why the third temptation — the Pride of Life — hits different.
 
 This ain't just a random sin.
 
@@ -908,17 +908,17 @@ His go-to. His specialty. His downfall.
 
 He knows what it's like to think you don't need God. To believe you're good without Him. To be so caught up in your success, your body, your beauty, your ideas... that you stop submitting and start self-glorifying.
 
-The Pride of Life is that final trap he sets â€” because it's how he fell. And it's how he wants you to fall, too.
+The Pride of Life is that final trap he sets — because it's how he fell. And it's how he wants you to fall, too.
 
 ## ðŸ›ï¸ The Temple Temptation
 
-> "And he took him to Jerusalem and set him on the pinnacle of the temple and said to him, 'If you are the Son of God, throw yourself down from here.'" â€” Luke 4:9
+> "And he took him to Jerusalem and set him on the pinnacle of the temple and said to him, 'If you are the Son of God, throw yourself down from here.'" — Luke 4:9
 
-ðŸ“ **What Was "The Temple"?**
+📍 **What Was "The Temple"?**
 
 The Temple in Jerusalem was the most sacred place in all of Jewish life. This is where people came to worship God, offer sacrifices, experience God's presence, and celebrate festivals. It was considered God's dwelling place on earth.
 
-The specific one Jesus was brought to? That was Herod's Temple â€” the second temple â€” rebuilt and expanded in massive, glorious detail. One of the most awe-inspiring structures of that time.
+The specific one Jesus was brought to? That was Herod's Temple — the second temple — rebuilt and expanded in massive, glorious detail. One of the most awe-inspiring structures of that time.
 
 So when Satan brought Jesus to the top of the Temple, he wasn't just tempting Him in private. He was saying:
 
@@ -938,7 +938,7 @@ Or are we?
 - The last two workouts you skipped?
 - That decision you made knowing it was wrong?
 
-A lot of us treat our lives recklessly and then beg God for help when it goes left â€” just like the devil was telling Jesus to do.
+A lot of us treat our lives recklessly and then beg God for help when it goes left — just like the devil was telling Jesus to do.
 
 God loves you... so you think you can do whatever you want and He'll be there to clean up the mess?
 
@@ -956,23 +956,23 @@ Sometimes we get in the position where we start smelling ourselves:
 
 And we start to forget about who we prayed to for the things we're now getting.
 
-We can be like Lucifer sometimes â€” when things are going good, we fall back from God. And the wild thing is... when things start going bad again, we're right back to praying for better days.
+We can be like Lucifer sometimes — when things are going good, we fall back from God. And the wild thing is... when things start going bad again, we're right back to praying for better days.
 
-The third temptation is about testing God â€” but also about removing God from the head of our lives, thinking we can do better on our own.
+The third temptation is about testing God — but also about removing God from the head of our lives, thinking we can do better on our own.
 
-## ðŸ™ Jesus' Reply
+## 🙏 Jesus' Reply
 
-> "And Jesus answered him, 'It is said, You shall not put the Lord your God to the test.'" â€” Luke 4:12
+> "And Jesus answered him, 'It is said, You shall not put the Lord your God to the test.'" — Luke 4:12
 
 Jesus shut it down quick.
 
-He was quoting Moses â€” from Deuteronomy 6:16. Moses was giving that speech to the new generation of Israelites before they entered the Promised Land. He said:
+He was quoting Moses — from Deuteronomy 6:16. Moses was giving that speech to the new generation of Israelites before they entered the Promised Land. He said:
 
-> "Do not put the Lord your God to the test, as you did at Massah." â€” Deuteronomy 6:16
+> "Do not put the Lord your God to the test, as you did at Massah." — Deuteronomy 6:16
 
-When the Israelites first left Egypt, they were in the wilderness â€” just like Jesus is now. They got thirsty. They started complaining. They started doubting if God was even with them anymore. They literally said:
+When the Israelites first left Egypt, they were in the wilderness — just like Jesus is now. They got thirsty. They started complaining. They started doubting if God was even with them anymore. They literally said:
 
-> "Is the Lord among us or not?" â€” Exodus 17:7
+> "Is the Lord among us or not?" — Exodus 17:7
 
 Like... God just split the Red Sea. He just brought you out of slavery. But the moment it got uncomfortable, they panicked.
 
@@ -986,9 +986,9 @@ That's real faith.
 
 ## ðŸ”š Final Thoughts
 
-That's why the devil saves this one for last. He's tried the hunger. He's tried the shortcut. But when that doesn't work â€” he pulls out his ace.
+That's why the devil saves this one for last. He's tried the hunger. He's tried the shortcut. But when that doesn't work — he pulls out his ace.
 
-The other two â€” the lust of the flesh and the lust of the eyes â€” those hit you when you're **down**. When you're craving something. When your body's empty. When your heart is desperate.
+The other two — the lust of the flesh and the lust of the eyes — those hit you when you're **down**. When you're craving something. When your body's empty. When your heart is desperate.
 
 But this one? **This one hits you when you're up.**
 
@@ -996,13 +996,13 @@ When you just got the job. When the money's flowing. When the prayers are gettin
 
 And you think, "I'm good now. I made it."
 
-But the danger is â€” you start to forget who brought you there. You start thinking you did it. You worked hard. You showed up. You stayed disciplined. You sacrificed.
+But the danger is — you start to forget who brought you there. You start thinking you did it. You worked hard. You showed up. You stayed disciplined. You sacrificed.
 
 And you did.
 
 But who gave you the strength? Who gave you the breath? Who opened the doors?
 
-And little by little â€” without even realizing it â€” you start to block God out. You don't mean to. You just stop depending. Stop praying. Stop asking.
+And little by little — without even realizing it — you start to block God out. You don't mean to. You just stop depending. Stop praying. Stop asking.
 
 **That's the Pride of Life. It's spiritual amnesia.**
 
@@ -1010,13 +1010,13 @@ You forget who got you there. You start thinking you are the answer.
 
 And Jesus said it clear:
 
-> "Do not test the Lord your God." â€” Luke 4:12
+> "Do not test the Lord your God." — Luke 4:12
 
 So maybe this whole temptation wasn't about jumping off the temple. Maybe it's about how we live day to day.
 
 Do we live like God is in control? Or do we only call on Him once the damage is done?
 
-The Pride of Life is dangerous because it convinces you that you don't need God â€” right when you're most blessed.
+The Pride of Life is dangerous because it convinces you that you don't need God — right when you're most blessed.
 
 But real faith sounds like this:
 
@@ -1035,7 +1035,7 @@ But real faith sounds like this:
           { label: "D", text: "The banks of the Jordan River" },
         ],
         correctAnswer: "B",
-        explanation: "Luke 4:9 records: 'He took him to Jerusalem and set him on the pinnacle of the temple.' The Temple was the most sacred place in all of Jewish life â€” considered God's dwelling place on earth.",
+        explanation: "Luke 4:9 records: 'He took him to Jerusalem and set him on the pinnacle of the temple.' The Temple was the most sacred place in all of Jewish life — considered God's dwelling place on earth.",
       },
       {
         id: "w4q2",
@@ -1053,13 +1053,13 @@ But real faith sounds like this:
         id: "w4q3",
         question: "What Scripture did Jesus quote to resist the third temptation?",
         options: [
-          { label: "A", text: "Psalm 91 â€” 'He will command his angels'" },
-          { label: "B", text: "Deuteronomy 6:16 â€” 'Do not put the Lord your God to the test'" },
-          { label: "C", text: "Isaiah 40 â€” 'Those who hope in the Lord will renew their strength'" },
-          { label: "D", text: "Exodus 20 â€” 'You shall have no other gods before me'" },
+          { label: "A", text: "Psalm 91 — 'He will command his angels'" },
+          { label: "B", text: "Deuteronomy 6:16 — 'Do not put the Lord your God to the test'" },
+          { label: "C", text: "Isaiah 40 — 'Those who hope in the Lord will renew their strength'" },
+          { label: "D", text: "Exodus 20 — 'You shall have no other gods before me'" },
         ],
         correctAnswer: "B",
-        explanation: "Luke 4:12 records Jesus quoting Deuteronomy 6:16 â€” 'You shall not put the Lord your God to the test.' Moses first said this to warn Israel not to repeat the sin of Massah, where they demanded a sign from God.",
+        explanation: "Luke 4:12 records Jesus quoting Deuteronomy 6:16 — 'You shall not put the Lord your God to the test.' Moses first said this to warn Israel not to repeat the sin of Massah, where they demanded a sign from God.",
       },
       {
         id: "w4q4",
@@ -1071,7 +1071,7 @@ But real faith sounds like this:
           { label: "D", text: "Envy of God's creation" },
         ],
         correctAnswer: "C",
-        explanation: "Ezekiel 28:17 says: 'Your heart became proud on account of your beauty, and you corrupted your wisdom because of your splendor.' Pride was found in Lucifer â€” and it led to his fall. That's why the Pride of Life is his specialty.",
+        explanation: "Ezekiel 28:17 says: 'Your heart became proud on account of your beauty, and you corrupted your wisdom because of your splendor.' Pride was found in Lucifer — and it led to his fall. That's why the Pride of Life is his specialty.",
       },
       {
         id: "w4q5",
@@ -1095,7 +1095,7 @@ But real faith sounds like this:
           { label: "D", text: "He was locked away until the end of time" },
         ],
         correctAnswer: "B",
-        explanation: "Revelation 12:4 says he 'dragged a third of the stars with him' â€” a third of heaven's angels followed Lucifer in his rebellion. These fallen angels are what we now call demons.",
+        explanation: "Revelation 12:4 says he 'dragged a third of the stars with him' — a third of heaven's angels followed Lucifer in his rebellion. These fallen angels are what we now call demons.",
       },
       {
         id: "w4q7",
@@ -1107,7 +1107,7 @@ But real faith sounds like this:
           { label: "D", text: "'Moses has abandoned us'" },
         ],
         correctAnswer: "B",
-        explanation: "Exodus 17:7 records Israel saying: 'Is the Lord among us or not?' â€” this after God had already split the Red Sea and freed them from slavery. That's exactly the kind of demanding-a-sign attitude Moses warned against in Deuteronomy 6:16.",
+        explanation: "Exodus 17:7 records Israel saying: 'Is the Lord among us or not?' — this after God had already split the Red Sea and freed them from slavery. That's exactly the kind of demanding-a-sign attitude Moses warned against in Deuteronomy 6:16.",
       },
       {
         id: "w4q8",
@@ -1115,11 +1115,11 @@ But real faith sounds like this:
         options: [
           { label: "A", text: "It attacks when you are physically weak" },
           { label: "B", text: "It comes when you are at your lowest and most desperate" },
-          { label: "C", text: "It hits when you are up, blessed, and thriving â€” and makes you forget God" },
+          { label: "C", text: "It hits when you are up, blessed, and thriving — and makes you forget God" },
           { label: "D", text: "It is impossible to resist without special spiritual gifts" },
         ],
         correctAnswer: "C",
-        explanation: "The lesson explains that the first two temptations hit you when you're down. But the Pride of Life hits when you're winning â€” when life is good, blessings are flowing, and you start thinking you did it on your own, slowly blocking God out.",
+        explanation: "The lesson explains that the first two temptations hit you when you're down. But the Pride of Life hits when you're winning — when life is good, blessings are flowing, and you start thinking you did it on your own, slowly blocking God out.",
       },
       {
         id: "w4q9",
@@ -1131,7 +1131,7 @@ But real faith sounds like this:
           { label: "D", text: "He disagreed with how God was running heaven" },
         ],
         correctAnswer: "C",
-        explanation: "Isaiah 14:13â€“14 shows Lucifer's internal declaration â€” 'I will ascend... I will make myself like the Most High.' His pride wasn't passive. It drove him to actively pursue God's throne, which led directly to the angel war and his expulsion from heaven.",
+        explanation: "Isaiah 14:13â€“14 shows Lucifer's internal declaration — 'I will ascend... I will make myself like the Most High.' His pride wasn't passive. It drove him to actively pursue God's throne, which led directly to the angel war and his expulsion from heaven.",
       },
       {
         id: "w4q10",
@@ -1143,7 +1143,7 @@ But real faith sounds like this:
           { label: "D", text: "Forgetting to pray or read the Bible regularly" },
         ],
         correctAnswer: "B",
-        explanation: "The lesson calls the Pride of Life 'spiritual amnesia' â€” little by little you stop depending on God, stop praying, stop asking, and start thinking you are the answer. You forget who gave you the strength, the breath, and opened the doors.",
+        explanation: "The lesson calls the Pride of Life 'spiritual amnesia' — little by little you stop depending on God, stop praying, stop asking, and start thinking you are the answer. You forget who gave you the strength, the breath, and opened the doors.",
       },
     ],
   },
@@ -1154,7 +1154,7 @@ But real faith sounds like this:
     readingReference: "Luke 4:13â€“15",
     readingApiQuery: "luke+4:13-15",
     reflectionQuestion:
-      "Jesus came out of the wilderness stronger than He went in. He didn't chase fame â€” He chased obedience. And because He passed the test in private, God elevated Him in public. Are you in a wilderness season right now? What would it look like to stop rushing through it and trust that God is preparing you for something bigger than you realize?",
+      "Jesus came out of the wilderness stronger than He went in. He didn't chase fame — He chased obedience. And because He passed the test in private, God elevated Him in public. Are you in a wilderness season right now? What would it look like to stop rushing through it and trust that God is preparing you for something bigger than you realize?",
 
     intro: `At the end of Week 4, we left off with the devil trying his final trick on Jesus.
 
@@ -1168,7 +1168,7 @@ Today we finish the Temptation of Jesus.
 
 ## ðŸ§  The Devil Leaves Jesus
 
-> "When the devil had ended every temptation, he departed from Him until an opportune time." â€” Luke 4:13
+> "When the devil had ended every temptation, he departed from Him until an opportune time." — Luke 4:13
 
 For three temptations straight, the devil came with everything he had.
 
@@ -1186,7 +1186,7 @@ He did not entertain the suggestion.
 
 He just stood firm on what God said.
 
-And because Jesus stood firm â€” the devil left.
+And because Jesus stood firm — the devil left.
 
 But pay attention to the wording. It does not say he left forever. It says:
 
@@ -1194,7 +1194,7 @@ But pay attention to the wording. It does not say he left forever. It says:
 
 That one line tells you everything you need to know about temptation.
 
-## ðŸ‘€ Temptation Does Not Endâ€¦ It Circles Back
+## ðŸ‘€ Temptation Does Not End… It Circles Back
 
 People ask all the time: "How do I beat lust?" "How do I stop being lazy?" "How do I kill this addiction once and for all?"
 
@@ -1202,7 +1202,7 @@ Here is the truth:
 
 **You do not beat temptation like it is a final boss in a video game.**
 
-Even Jesus â€” the Son of God â€” did not defeat temptation once and never face it again. The devil simply ran out of plays for that moment. He stepped back and waited.
+Even Jesus — the Son of God — did not defeat temptation once and never face it again. The devil simply ran out of plays for that moment. He stepped back and waited.
 
 He watches. He studies. He waits for your weak moments. Just like he did with Jesus.
 
@@ -1214,7 +1214,7 @@ It is never when you are close to God.
 
 The "opportune time" is when you are weak, lonely, hungry, tired, angry, isolated, or frustrated.
 
-That is when he slides back in. Jesus had been fasting forty days â€” no food, no comfort, no support. Just Him and the wilderness. And that is when Satan showed up. That is how he does us too.
+That is when he slides back in. Jesus had been fasting forty days — no food, no comfort, no support. Just Him and the wilderness. And that is when Satan showed up. That is how he does us too.
 
 ## ðŸ”‘ Do Not Rely on Willpower
 
@@ -1226,7 +1226,7 @@ He quoted Scripture.
 He stood on truth.
 He stayed submitted to God.
 
-If Jesus â€” the most powerful person who ever lived â€” did not try to fight temptation in His own strength... why do we think we can?
+If Jesus — the most powerful person who ever lived — did not try to fight temptation in His own strength... why do we think we can?
 
 You cannot rely on willpower alone. You cannot just "say no." You have to **stay close to God daily.**
 
@@ -1242,7 +1242,7 @@ The devil had nothing left.
 
 ## ðŸŒ… Coming Out of the Wilderness
 
-> "And Jesus returned in the power of the Spirit to Galilee, and a report about Him went out through all the surrounding country. And He taught in their synagogues, being glorified by all." â€” Luke 4:14â€“15
+> "And Jesus returned in the power of the Spirit to Galilee, and a report about Him went out through all the surrounding country. And He taught in their synagogues, being glorified by all." — Luke 4:14â€“15
 
 After Jesus defeated the devil, He came out of the wilderness **stronger than He went in.**
 
@@ -1263,14 +1263,14 @@ Not the spotlight.
 
 He goes home.
 
-ðŸ“– **Quick Background:**
+📖 **Quick Background:**
 
 - Jesus was born in Bethlehem
 - Joseph and Mary fled to Egypt after Herod's order
 - They eventually moved to Nazareth in Galilee
-- Nazareth was a simple, working-class town â€” that is where Jesus grew up
+- Nazareth was a simple, working-class town — that is where Jesus grew up
 
-## âš¡ New Powerâ€¦ Same Region
+## âš¡ New Power… Same Region
 
 Now He returns. But He is not the same.
 
@@ -1282,9 +1282,9 @@ But notice something important:
 
 **He did not chase fame. He chased obedience.**
 
-Because He passed the test in private â€” God elevated Him in public.
+Because He passed the test in private — God elevated Him in public.
 
-## ðŸ”¥ What About You?
+## 🔥 What About You?
 
 Are you in a wilderness season right now?
 
@@ -1298,24 +1298,24 @@ The wilderness is not punishment. It is **preparation**.
 
 Let God refine you. He is preparing you for something bigger than you realize.
 
-## ðŸ™ Thanks for Walking Through This With Me
+## 🙏 Thanks for Walking Through This With Me
 
 This is the end of our 5-week study on the Temptation of Jesus.
 
-If you made it this far â€” I'm proud of you. Most people never study these passages beyond a quick Sunday school version. But you took time to really understand:
+If you made it this far — I'm proud of you. Most people never study these passages beyond a quick Sunday school version. But you took time to really understand:
 
 - How Jesus fought the devil
 - Why the wilderness matters
 - How temptation works
 - And how God strengthens us through struggle
 
-My prayer is that this series didn't just teach you something â€” but **formed something in you.**
+My prayer is that this series didn't just teach you something — but **formed something in you.**
 
 A hunger for the Word.
 A desire to fight differently.
 A confidence in what God has placed inside you.
 
-This is just the beginning. We're building something special here in Hope Nation â€” and even more is coming.`,
+This is just the beginning. We're building something special here in Hope Nation — and even more is coming.`,
 
     triviaQuestions: [
       {
@@ -1328,7 +1328,7 @@ This is just the beginning. We're building something special here in Hope Nation
           { label: "D", text: "He went to tempt the disciples" },
         ],
         correctAnswer: "B",
-        explanation: "Luke 4:13 says the devil 'departed from Him until an opportune time.' He didn't leave forever â€” he stepped back, waited, and watched for a future moment of weakness.",
+        explanation: "Luke 4:13 says the devil 'departed from Him until an opportune time.' He didn't leave forever — he stepped back, waited, and watched for a future moment of weakness.",
       },
       {
         id: "w5q2",
@@ -1336,7 +1336,7 @@ This is just the beginning. We're building something special here in Hope Nation
         options: [
           { label: "A", text: "Temptation can be permanently defeated through willpower" },
           { label: "B", text: "The devil only attacks once and moves on" },
-          { label: "C", text: "Temptation circles back â€” it watches for your weak moments" },
+          { label: "C", text: "Temptation circles back — it watches for your weak moments" },
           { label: "D", text: "Every temptation has an expiration date" },
         ],
         correctAnswer: "C",
@@ -1352,7 +1352,7 @@ This is just the beginning. We're building something special here in Hope Nation
           { label: "D", text: "Galilee" },
         ],
         correctAnswer: "D",
-        explanation: "Luke 4:14 says Jesus 'returned in the power of the Spirit to Galilee.' He went back to the region He grew up in â€” not the spotlight, not the capital. Back home, but completely transformed.",
+        explanation: "Luke 4:14 says Jesus 'returned in the power of the Spirit to Galilee.' He went back to the region He grew up in — not the spotlight, not the capital. Back home, but completely transformed.",
       },
       {
         id: "w5q4",
@@ -1364,7 +1364,7 @@ This is just the beginning. We're building something special here in Hope Nation
           { label: "D", text: "His divine power as the Son of God" },
         ],
         correctAnswer: "C",
-        explanation: "Every time the devil tempted Him, Jesus quoted Scripture â€” 'It is written.' He did not fight in His own strength. The Word of God was His only weapon, and it was enough.",
+        explanation: "Every time the devil tempted Him, Jesus quoted Scripture — 'It is written.' He did not fight in His own strength. The Word of God was His only weapon, and it was enough.",
       },
       {
         id: "w5q5",
@@ -1372,11 +1372,11 @@ This is just the beginning. We're building something special here in Hope Nation
         options: [
           { label: "A", text: "He entered strong and left broken" },
           { label: "B", text: "He entered and exited the same" },
-          { label: "C", text: "He entered hungry, alone, and under attack â€” He left filled with the Spirit and ready for mission" },
+          { label: "C", text: "He entered hungry, alone, and under attack — He left filled with the Spirit and ready for mission" },
           { label: "D", text: "He entered in faith and left in doubt" },
         ],
         correctAnswer: "C",
-        explanation: "Luke 4:14 says He returned 'in the power of the Spirit.' The wilderness didn't break Him â€” it forged Him. He left stronger, sharper, and more prepared for ministry than when He entered.",
+        explanation: "Luke 4:14 says He returned 'in the power of the Spirit.' The wilderness didn't break Him — it forged Him. He left stronger, sharper, and more prepared for ministry than when He entered.",
       },
       {
         id: "w5q6",
@@ -1388,31 +1388,31 @@ This is just the beginning. We're building something special here in Hope Nation
           { label: "D", text: "When you are weak, lonely, hungry, tired, angry, or isolated" },
         ],
         correctAnswer: "D",
-        explanation: "The lesson explains that temptation never arrives when you're strong. It waits for the cracks â€” when you're emotionally drained, physically weak, or spiritually dry. That's how it worked with Jesus and how it works with us.",
+        explanation: "The lesson explains that temptation never arrives when you're strong. It waits for the cracks — when you're emotionally drained, physically weak, or spiritually dry. That's how it worked with Jesus and how it works with us.",
       },
       {
         id: "w5q7",
-        question: "What key observation does the lesson make about Jesus after the wilderness â€” regarding fame vs. obedience?",
+        question: "What key observation does the lesson make about Jesus after the wilderness — regarding fame vs. obedience?",
         options: [
           { label: "A", text: "He immediately went to Jerusalem to announce His mission" },
-          { label: "B", text: "He did not chase fame â€” He chased obedience, and God elevated Him publicly because He passed the test privately" },
+          { label: "B", text: "He did not chase fame — He chased obedience, and God elevated Him publicly because He passed the test privately" },
           { label: "C", text: "He avoided people and continued fasting" },
           { label: "D", text: "He sought out the Pharisees to debate Scripture" },
         ],
         correctAnswer: "B",
-        explanation: "Jesus went back to Galilee â€” not the spotlight, not the capital. He chased obedience, not fame. And because He passed the test in private, God elevated Him in public: 'a report about him went out through all the surrounding country.'",
+        explanation: "Jesus went back to Galilee — not the spotlight, not the capital. He chased obedience, not fame. And because He passed the test in private, God elevated Him in public: 'a report about him went out through all the surrounding country.'",
       },
       {
         id: "w5q8",
-        question: "According to the lesson, what is the wilderness â€” punishment or preparation?",
+        question: "According to the lesson, what is the wilderness — punishment or preparation?",
         options: [
           { label: "A", text: "Punishment for past sins" },
           { label: "B", text: "A random trial with no purpose" },
           { label: "C", text: "A sign that God has abandoned you" },
-          { label: "D", text: "Preparation â€” God is refining you for something bigger" },
+          { label: "D", text: "Preparation — God is refining you for something bigger" },
         ],
         correctAnswer: "D",
-        explanation: "The lesson is clear: 'The wilderness is not punishment. It is preparation.' Just as Jesus came out stronger, sharper, and more anointed â€” God uses your hard seasons to forge you for your calling.",
+        explanation: "The lesson is clear: 'The wilderness is not punishment. It is preparation.' Just as Jesus came out stronger, sharper, and more anointed — God uses your hard seasons to forge you for your calling.",
       },
       {
         id: "w5q9",
@@ -1424,7 +1424,7 @@ This is just the beginning. We're building something special here in Hope Nation
           { label: "D", text: "Memorizing a lot of verses is what matters most" },
         ],
         correctAnswer: "B",
-        explanation: "The lesson teaches: fill your heart with truth before temptation hits. The Word of God is not just information â€” it's a weapon. When Jesus spoke it, the devil ran out of moves. That same power is available to us.",
+        explanation: "The lesson teaches: fill your heart with truth before temptation hits. The Word of God is not just information — it's a weapon. When Jesus spoke it, the devil ran out of moves. That same power is available to us.",
       },
       {
         id: "w5q10",
@@ -1432,11 +1432,11 @@ This is just the beginning. We're building something special here in Hope Nation
         options: [
           { label: "A", text: "Jesus was uniquely divine and His experience has little application to our daily lives" },
           { label: "B", text: "Temptation can be avoided if you are disciplined enough" },
-          { label: "C", text: "The wilderness breaks you â€” so avoid it at all costs" },
-          { label: "D", text: "Jesus shows us how to fight â€” with the Word, in submission to God, trusting that the wilderness is preparation not punishment" },
+          { label: "C", text: "The wilderness breaks you — so avoid it at all costs" },
+          { label: "D", text: "Jesus shows us how to fight — with the Word, in submission to God, trusting that the wilderness is preparation not punishment" },
         ],
         correctAnswer: "D",
-        explanation: "The whole series builds to this: Jesus is our blueprint. He fought with the Word, not willpower. He stayed submitted to God through hunger and attack. And He came out of the wilderness stronger â€” ready for His mission. So will you.",
+        explanation: "The whole series builds to this: Jesus is our blueprint. He fought with the Word, not willpower. He stayed submitted to God through hunger and attack. And He came out of the wilderness stronger — ready for His mission. So will you.",
       },
     ],
   },

@@ -74,6 +74,7 @@ interface Message {
   id: string;
   sender_id: string;
   content: string;
+  image_url?: string | null;
   read_at: string | null;
   created_at: string;
 }
@@ -122,10 +123,13 @@ export default function ConversationPage({
   const [submittingReport, setSubmittingReport] = useState(false);
   const [blockingBuddy, setBlockingBuddy] = useState(false);
   const [blockState, setBlockState] = useState<BlockState | null>(null);
+  const [uploadingPhoto, setUploadingPhoto] = useState(false);
+  const [photoPreview, setPhotoPreview] = useState<{ file: File; url: string } | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const editInputRef = useRef<HTMLTextAreaElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const photoInputRef = useRef<HTMLInputElement>(null);
 
   async function markConversationAsRead(currentUserId: string) {
     const nowIso = new Date().toISOString();
@@ -261,7 +265,7 @@ export default function ConversationPage({
 
       const { data: msgs } = await supabase
         .from("messages")
-        .select("id, sender_id, content, read_at, created_at")
+        .select("id, sender_id, content, image_url, read_at, created_at")
         .eq("conversation_id", conversationId)
         .order("created_at", { ascending: true });
 
@@ -309,7 +313,7 @@ export default function ConversationPage({
         async () => {
           const { data: latestMessages, error } = await supabase
             .from("messages")
-            .select("id, sender_id, content, read_at, created_at")
+            .select("id, sender_id, content, image_url, read_at, created_at")
             .eq("conversation_id", conversationId)
             .order("created_at", { ascending: true });
 
@@ -343,6 +347,58 @@ export default function ConversationPage({
     };
   }, [conversationId, userId]);
 
+  async function handlePhotoSelect(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file || !userId || blockState) return;
+    const objectUrl = URL.createObjectURL(file);
+    setPhotoPreview({ file, url: objectUrl });
+    // Reset file input so same file can be selected again
+    e.target.value = "";
+  }
+
+  async function handleSendPhoto() {
+    if (!photoPreview || !userId || uploadingPhoto || blockState) return;
+    setUploadingPhoto(true);
+    const { file } = photoPreview;
+    const ext = file.name.split(".").pop() ?? "jpg";
+    const path = `dm-photos/${conversationId}/${userId}-${Date.now()}.${ext}`;
+    const { error: uploadError } = await supabase.storage.from("avatars").upload(path, file, { upsert: false });
+    if (uploadError) {
+      console.error("[DM PHOTO] Upload failed:", uploadError);
+      setUploadingPhoto(false);
+      return;
+    }
+    const { data: urlData } = supabase.storage.from("avatars").getPublicUrl(path);
+    const imageUrl = urlData?.publicUrl ?? null;
+    URL.revokeObjectURL(photoPreview.url);
+    setPhotoPreview(null);
+
+    const optimisticMsg: Message = {
+      id: `temp-photo-${Date.now()}`,
+      sender_id: userId,
+      content: "",
+      image_url: imageUrl,
+      read_at: null,
+      created_at: new Date().toISOString(),
+    };
+    setMessages((prev) => [...prev, optimisticMsg]);
+
+    const { data: inserted, error } = await supabase
+      .from("messages")
+      .insert({ conversation_id: conversationId, sender_id: userId, content: "", image_url: imageUrl })
+      .select("id, sender_id, content, image_url, read_at, created_at")
+      .single();
+
+    if (error) {
+      setMessages((prev) => prev.filter((m) => m.id !== optimisticMsg.id));
+    } else {
+      setMessages((prev) => prev.map((m) => (m.id === optimisticMsg.id ? inserted : m)));
+      await supabase.from("conversations").update({ last_message_at: inserted.created_at, last_message_preview: "📷 Photo" }).eq("id", conversationId);
+      window.dispatchEvent(new Event("bb:refresh-unread-messages"));
+    }
+    setUploadingPhoto(false);
+  }
+
   async function handleSend() {
     if (!newMessage.trim() || !userId || sending || blockState) return;
     const content = newMessage.trim();
@@ -367,7 +423,7 @@ export default function ConversationPage({
           sender_id: userId,
           content,
         })
-        .select("id, sender_id, content, read_at, created_at")
+        .select("id, sender_id, content, image_url, read_at, created_at")
         .single();
 
       if (error) {
@@ -756,6 +812,13 @@ export default function ConversationPage({
                               </button>
                             </div>
                           </div>
+                        ) : msg.image_url ? (
+                          <img
+                            src={msg.image_url}
+                            alt="Photo"
+                            className="max-w-[240px] rounded-2xl object-cover"
+                            style={{ maxHeight: 320 }}
+                          />
                         ) : (
                           <>
                             <p className="whitespace-pre-wrap">{invite.body}</p>
@@ -800,7 +863,51 @@ export default function ConversationPage({
               </div>
             ) : (
               <>
-                <div className="mx-auto flex max-w-3xl items-end gap-3">
+                {/* Photo preview */}
+                {photoPreview && (
+                  <div className="mb-3 flex items-start gap-3">
+                    <div className="relative">
+                      <img src={photoPreview.url} alt="Photo preview" className="h-24 w-24 rounded-2xl object-cover border border-gray-200" />
+                      <button
+                        type="button"
+                        onClick={() => { URL.revokeObjectURL(photoPreview.url); setPhotoPreview(null); }}
+                        className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-gray-800 text-white text-xs font-bold"
+                      >
+                        ×
+                      </button>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => void handleSendPhoto()}
+                      disabled={uploadingPhoto}
+                      className="flex h-10 items-center gap-2 rounded-full px-4 text-sm font-semibold text-white transition disabled:opacity-50"
+                      style={{ backgroundColor: "#4a9b6f" }}
+                    >
+                      {uploadingPhoto ? "Sending..." : "Send Photo"}
+                    </button>
+                  </div>
+                )}
+                <div className="mx-auto flex max-w-3xl items-end gap-2">
+                  {/* Hidden file input */}
+                  <input
+                    ref={photoInputRef}
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={handlePhotoSelect}
+                  />
+                  {/* Photo button */}
+                  <button
+                    type="button"
+                    onClick={() => photoInputRef.current?.click()}
+                    disabled={!!blockState}
+                    className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition hover:bg-gray-50 disabled:opacity-40"
+                    title="Send photo"
+                  >
+                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </button>
                   <textarea
                     ref={inputRef}
                     value={newMessage}
