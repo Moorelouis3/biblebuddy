@@ -81,6 +81,9 @@ export default function DevotionalsPage() {
     if (title === "Women of the Bible") {
       return "/womenofthebible.png";
     }
+    if (title === "The Wisdom of Proverbs") {
+      return "/WisdomofProverbs.png";
+    }
     return null;
   };
 

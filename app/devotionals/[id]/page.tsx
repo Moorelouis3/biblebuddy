@@ -5,6 +5,7 @@ function getCoverImage(title: string): string | null {
   if (title === "The Testing of Joseph") return "/Thetestingofjoseph.png";
   if (title === "The Disciples of Jesus") return "/disciplesofjesusdevotional.png";
   if (title === "Women of the Bible") return "/womenofthebible.png";
+  if (title === "The Wisdom of Proverbs") return "/WisdomofProverbs.png";
   return null;
 }
 import { useEffect, useState } from "react";
