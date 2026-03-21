@@ -32,27 +32,18 @@ export async function GET(request: NextRequest) {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  // Get all conversations this user is part of
-  const { data: convos } = await supabaseAdmin
-    .from("conversations")
-    .select("id")
-    .or(`user_id_1.eq.${currentUserId},user_id_2.eq.${currentUserId}`);
+  // Single server-side join — avoids passing a potentially huge array of
+  // conversation IDs as a URL parameter (breaks for accounts like Louis that
+  // have conversations with every user in the app).
+  const { data: unreadRows, error: rpcError } = await (supabaseAdmin as any)
+    .rpc("get_unread_conversation_ids", { p_user_id: currentUserId });
 
-  if (!convos || convos.length === 0) {
-    return NextResponse.json({ count: 0, unreadConversationIds: [] });
+  if (rpcError) {
+    console.error("[unread-count] RPC error:", rpcError.message);
+    return NextResponse.json({ error: rpcError.message }, { status: 500 });
   }
 
-  const convoIds = convos.map((c: any) => c.id);
-
-  // Get unread messages sent TO this user (service role bypasses RLS)
-  const { data: unreadRows } = await supabaseAdmin
-    .from("messages")
-    .select("conversation_id")
-    .in("conversation_id", convoIds)
-    .neq("sender_id", currentUserId)
-    .is("read_at", null);
-
-  const unreadConversationIds = [...new Set((unreadRows || []).map((r: any) => r.conversation_id))];
+  const unreadConversationIds = (unreadRows || []).map((r: any) => r.conversation_id);
 
   return NextResponse.json({
     count: unreadConversationIds.length,
