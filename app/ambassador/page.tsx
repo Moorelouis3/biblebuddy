@@ -131,24 +131,32 @@ export default function AmbassadorPage() {
       return;
     }
     const { data: { session } } = await supabase.auth.getSession();
-    if (!session?.access_token) return;
+    if (!session?.access_token) {
+      setCodeError("Session expired. Please refresh and try again.");
+      setSavingCode(false);
+      return;
+    }
 
-    const res = await fetch("/api/ambassador/update-code", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${session.access_token}`,
-      },
-      body: JSON.stringify({ code }),
-    });
+    try {
+      const res = await fetch("/api/ambassador/update-code", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({ code }),
+      });
 
-    const json = await res.json();
-    if (!res.ok) {
-      setCodeError(json.error ?? "Failed to save. Try again.");
-    } else {
-      setProfile((prev) => prev ? { ...prev, referral_code: code } : prev);
-      setEditingCode(false);
-      setNewCodeInput("");
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setCodeError(json.error ?? `Save failed (${res.status}). Try again.`);
+      } else {
+        setProfile((prev) => prev ? { ...prev, referral_code: code } : prev);
+        setEditingCode(false);
+        setNewCodeInput("");
+      }
+    } catch (err) {
+      setCodeError("Network error. Please try again.");
     }
     setSavingCode(false);
   }

@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
 
   const { error } = await supabase
     .from("ambassador_profiles")
-    .update({ referral_code: code, updated_at: new Date().toISOString() })
+    .update({ referral_code: code })
     .eq("user_id", userId);
 
   if (error) {
