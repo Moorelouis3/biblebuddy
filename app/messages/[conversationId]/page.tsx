@@ -94,10 +94,16 @@ interface BlockState {
   blocked_user_id: string;
 }
 
-export default function ConversationPage() {
+export default function ConversationPage({
+  externalId,
+  onExternalClose,
+}: {
+  externalId?: string;
+  onExternalClose?: () => void;
+} = {}) {
   const params = useParams();
   const router = useRouter();
-  const conversationId = params.conversationId as string;
+  const conversationId = (externalId ?? params?.conversationId) as string;
 
   const [userId, setUserId] = useState<string | null>(null);
   const [myProfile, setMyProfile] = useState<BuddyProfile | null>(null);
@@ -123,18 +129,8 @@ export default function ConversationPage() {
 
   async function markConversationAsRead(currentUserId: string) {
     const nowIso = new Date().toISOString();
-    const { error } = await supabase
-      .from("messages")
-      .update({ read_at: nowIso })
-      .eq("conversation_id", conversationId)
-      .neq("sender_id", currentUserId)
-      .is("read_at", null);
 
-    if (error) {
-      console.error("[MESSAGES] Could not mark conversation read:", error);
-      return;
-    }
-
+    // 1. Optimistically update local message state so "Seen" ticks appear immediately
     setMessages((prev) =>
       prev.map((message) =>
         message.sender_id !== currentUserId && !message.read_at
@@ -143,22 +139,30 @@ export default function ConversationPage() {
       ),
     );
 
-    await supabase
-      .from("notifications")
-      .update({ is_read: true })
-      .eq("type", "direct_message")
-      .eq("article_slug", `/messages/${conversationId}`)
-      .eq("user_id", currentUserId)
-      .eq("is_read", false);
-
+    // 2. Immediately tell AppShell to clear the badge/dot — don't block on the DB call
     window.dispatchEvent(
       new CustomEvent("bb:refresh-unread-messages", {
-        detail: {
-          conversationId,
-          markRead: true,
-        },
+        detail: { conversationId, markRead: true },
       }),
     );
+
+    // 3. Server-side update via service role so RLS never blocks it
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (session?.access_token) {
+      fetch("/api/messages/mark-read", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({ conversationId }),
+      }).catch((err) => {
+        console.warn("[MESSAGES] Could not mark messages as read via API:", err);
+      });
+    }
   }
 
   useEffect(() => {
@@ -550,7 +554,7 @@ export default function ConversationPage() {
 
   if (loading) {
     return (
-      <ModalShell isOpen={true} onClose={() => router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
+      <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
         <div className="mx-4 w-full max-w-3xl rounded-[28px] bg-white px-6 py-16 text-center shadow-2xl">
           <p className="text-sm text-gray-400">Loading conversation...</p>
         </div>
@@ -560,7 +564,7 @@ export default function ConversationPage() {
 
   if (notFound) {
     return (
-      <ModalShell isOpen={true} onClose={() => router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
+      <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
         <div className="mx-4 w-full max-w-md rounded-[28px] bg-white px-6 py-12 text-center shadow-2xl">
           <p className="mb-4 text-4xl">?</p>
           <h1 className="mb-2 text-xl font-bold text-gray-900">Conversation not found</h1>
@@ -592,12 +596,12 @@ export default function ConversationPage() {
 
   return (
     <>
-      <ModalShell isOpen={true} onClose={() => router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
+      <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
         <div className="mx-4 flex h-[84vh] w-full max-w-4xl flex-col overflow-hidden rounded-[32px] border border-gray-200 bg-[#f5f5f5] shadow-2xl">
           <div className="flex items-center gap-3 border-b border-gray-200 bg-white px-5 py-4">
             <button
               type="button"
-              onClick={() => router.back()}
+              onClick={() => onExternalClose ? onExternalClose() : router.back()}
               className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200 hover:text-gray-700"
               aria-label="Close conversation"
             >

@@ -17,6 +17,7 @@ import { buildFullName, hasRequiredFullName, splitFullName } from "../lib/profil
 import type { BuddyCelebrationUser } from "./BuddyCelebrationModal";
 import UserBadge from "./UserBadge";
 import StreakFlameBadge from "./StreakFlameBadge";
+const ConversationPage = dynamic(() => import("../app/messages/[conversationId]/page"), { ssr: false });
 
 const ChatLouis = dynamic(() => import("./ChatLouis").then((mod) => mod.ChatLouis), {
   ssr: false,
@@ -156,6 +157,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     hasUnread: boolean;
   }>>([]);
   const [loadingPreviews, setLoadingPreviews] = useState(false);
+  const [openConversationId, setOpenConversationId] = useState<string | null>(null);
 
   // PWA install prompt state
   const deferredInstallPromptRef = useRef<any>(null);
@@ -950,6 +952,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           void checkDailyRecommendation(session.user.id);
         }
         void fetchNotifications(session.user.id);
+        void refreshUnreadMessageCount(session.user.id);
       } else {
         setUserId(null);
         setUsername("");
@@ -1692,7 +1695,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                     setUnreadMessageCount((count) => Math.max(0, count - 1));
                                   }
                                   setIsMessagesOpen(false);
-                                  router.push(`/messages/${convo.id}`);
+                                  setOpenConversationId(convo.id);
                                 }}
                                 onKeyDown={(e) => {
                                   if (e.key === "Enter" || e.key === " ") {
@@ -1704,7 +1707,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                       setUnreadMessageCount((count) => Math.max(0, count - 1));
                                     }
                                     setIsMessagesOpen(false);
-                                    router.push(`/messages/${convo.id}`);
+                                    setOpenConversationId(convo.id);
                                   }
                                 }}
                                 className={`w-full flex items-center gap-3 px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors text-left cursor-pointer ${convo.hasUnread ? "bg-green-50" : ""}`}
@@ -1949,6 +1952,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             setShowBuddyCelebration(false);
             setCelebrationData(null);
           }}
+        />
+      )}
+
+      {/* INLINE CONVERSATION MODAL — opened from the messages panel, no page navigation */}
+      {openConversationId && (
+        <ConversationPage
+          externalId={openConversationId}
+          onExternalClose={() => setOpenConversationId(null)}
         />
       )}
     </FeatureRenderPriorityProvider>
