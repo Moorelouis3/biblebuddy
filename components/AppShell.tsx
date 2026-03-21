@@ -158,6 +158,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }>>([]);
   const [loadingPreviews, setLoadingPreviews] = useState(false);
   const [openConversationId, setOpenConversationId] = useState<string | null>(null);
+  // Cache of unread conversation IDs from the service-role API (bypasses RLS)
+  const _cachedUnreadConvoIds = useRef<Set<string>>(new Set());
 
   // PWA install prompt state
   const deferredInstallPromptRef = useRef<any>(null);
@@ -650,26 +652,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setCanInstall(false);
   }
 
-  async function refreshUnreadMessageCount(currentUserId: string) {
-    const { data: convos } = await supabase
-      .from("conversations")
-      .select("id")
-      .or(`user_id_1.eq.${currentUserId},user_id_2.eq.${currentUserId}`);
-
-    if (!convos || convos.length === 0) {
-      setUnreadMessageCount(0);
-      return;
+  async function refreshUnreadMessageCount(_currentUserId: string) {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.access_token) return;
+      const res = await fetch("/api/messages/unread-count", {
+        headers: { authorization: `Bearer ${session.access_token}` },
+      });
+      if (!res.ok) return;
+      const json = await res.json();
+      setUnreadMessageCount(json.count ?? 0);
+      // Cache unread conversation IDs so fetchConversationPreviews can use them
+      _cachedUnreadConvoIds.current = new Set(json.unreadConversationIds ?? []);
+    } catch {
+      // silently ignore — badge will retry on next tick
     }
-
-    const convoIds = convos.map((c: any) => c.id);
-    const { data: unreadRows } = await supabase
-      .from("messages")
-      .select("conversation_id")
-      .in("conversation_id", convoIds)
-      .neq("sender_id", currentUserId)
-      .is("read_at", null);
-
-    setUnreadMessageCount(new Set((unreadRows || []).map((row) => row.conversation_id)).size);
   }
 
   async function fetchConversationPreviews(currentUserId: string) {
@@ -686,17 +683,26 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       const otherIds = convos.map((c) => c.user_id_1 === currentUserId ? c.user_id_2 : c.user_id_1);
 
-      const [profilesResult, unreadResult] = await Promise.all([
+      // Also refresh unread count via service role so the cache is fresh
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.access_token) {
+        try {
+          const res = await fetch("/api/messages/unread-count", {
+            headers: { authorization: `Bearer ${session.access_token}` },
+          });
+          if (res.ok) {
+            const json = await res.json();
+            setUnreadMessageCount(json.count ?? 0);
+            _cachedUnreadConvoIds.current = new Set(json.unreadConversationIds ?? []);
+          }
+        } catch { /* ignore */ }
+      }
+
+      const [profilesResult] = await Promise.all([
         supabase
           .from("profile_stats")
           .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
           .in("user_id", otherIds),
-        supabase
-          .from("messages")
-          .select("conversation_id")
-          .in("conversation_id", convos.map((c) => c.id))
-          .neq("sender_id", currentUserId)
-          .is("read_at", null),
       ]);
 
       const profiles = [...(profilesResult.data || [])];
@@ -720,7 +726,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         });
       }
 
-      const unreadConvoIds = new Set((unreadResult.data || []).map((m) => m.conversation_id));
+      const unreadConvoIds = _cachedUnreadConvoIds.current;
 
       const previews = convos.map((c) => {
         const otherId = c.user_id_1 === currentUserId ? c.user_id_2 : c.user_id_1;
@@ -740,8 +746,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       });
 
       setConversationPreviews(previews);
-      // Keep badge count in sync with the same data — prevents badge/dot drift
-      setUnreadMessageCount(unreadConvoIds.size);
     } finally {
       setLoadingPreviews(false);
     }
