@@ -78,6 +78,9 @@ export default function DevotionalsPage() {
     if (title === "The Disciples of Jesus") {
       return "/disciplesofjesusdevotional.png";
     }
+    if (title === "Women of the Bible") {
+      return "/womenofthebible.png";
+    }
     return null;
   };
 
