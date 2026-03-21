@@ -1381,6 +1381,16 @@ export default function WeekLessonPage({
           setReadingDone(currentWeek.reading);
           setTriviaDone(currentWeek.trivia);
           setReflectionDone(currentWeek.reflection);
+        } else {
+          // First time this user opens this week — log to master_actions
+          const seriesTitle2 = seriesRes.data?.title ?? "Bible Series";
+          const username2 = profileRes.data?.username ?? profileRes.data?.display_name ?? "";
+          void supabase.from("master_actions").insert({
+            user_id: user.id,
+            username: username2,
+            action_type: ACTION_TYPE.series_week_started,
+            action_label: `${username2} started Week ${weekNum} of ${seriesTitle2}`,
+          });
         }
         if (scoreRes.data) {
           setSavedTriviaScore(scoreRes.data.score);
