@@ -253,23 +253,24 @@ export async function GET(request: NextRequest) {
   const now = Date.now();
   const stats = { day1: 0, day2: 0, day3: 0, day4: 0, errors: 0 };
 
-  // ── Day 1 — send as soon as a new user appears in profile_stats ──────────
+  // ── Day 1 — send as soon as a new user signs up ──────────────────────────
+  // Use auth.users (already fetched) so we catch users who haven't taken any
+  // action yet and therefore have no profile_stats row.
   // Window: signed up within the last 7 days and day 1 not yet sent
-  const sevenDaysAgo = new Date(now - 7 * DAY_MS).toISOString();
-  const { data: newProfiles } = await supabaseAdmin
-    .from("profile_stats")
-    .select("user_id")
-    .gte("created_at", sevenDaysAgo)
-    .neq("user_id", louisId);
+  const recentAuthUsers = authData.users.filter(
+    (u: any) =>
+      u.id !== louisId &&
+      new Date(u.created_at).getTime() >= now - 7 * DAY_MS,
+  );
 
-  for (const row of newProfiles || []) {
-    if (day1Sent.has(row.user_id)) continue;
+  for (const authUser of recentAuthUsers) {
+    if (day1Sent.has(authUser.id)) continue;
 
-    const ok = await sendDM(supabaseAdmin, louisId, louisName, row.user_id, MSG_DAY1);
+    const ok = await sendDM(supabaseAdmin, louisId, louisName, authUser.id, MSG_DAY1);
     if (ok) {
       await supabaseAdmin
         .from("onboarding_dm_sent")
-        .insert({ user_id: row.user_id, day_number: 1 });
+        .insert({ user_id: authUser.id, day_number: 1 });
       stats.day1++;
     } else {
       stats.errors++;
