@@ -298,60 +298,62 @@ const SATURDAY_FEATURES: RecurringSeriesTemplate[] = [
 const SUNDAY_FEATURES: RecurringSeriesTemplate[] = [
   {
     title: "What can we pray for this week?",
-    description: "A Sunday prayer post from Louis that opens the week with covering, encouragement, and space for Buddies to drop real prayer requests.",
+    description: "Sunday Prayer Request — drop whatever is on your heart this week. Be specific, be honest, or simply say please pray for me. I will be praying over every request.",
     contentHtml:
-      "<p>Hey Bible Buddy family,</p>" +
-      "<p>Before we step into this new week, I want to start by praying over all of us together.</p>" +
+      "<p><strong>Prayer Request Sunday is here — this is our space to cover the week together.</strong></p>" +
+      "<p>Before this week starts moving, I want to open this thread and pray over all of us.</p>" +
+      "<h2>Why this thread matters</h2>" +
+      "<ul><li>🙏 A new week brings new pressure — this is where we lay it down first.</li><li>🤝 Real community carries each other, not just cheers for each other.</li><li>💬 You do not have to over-explain it — just be honest about what you need.</li></ul>" +
+      "<p><strong>A prayer for the group this week:</strong></p>" +
       "<p>Dear Heavenly Father,<br/>" +
-      "Thank You for giving us another week and for staying with us even when life feels heavy, uncertain, or overwhelming.<br/>" +
-      "As we step into these next few days, go before us.<br/>" +
+      "Thank You for another week and for never leaving us even when life feels heavy.<br/>" +
+      "Go before every Buddy in this group as they step into these next few days.<br/>" +
       "Cover our minds with clarity, our hearts with peace, and our steps with wisdom.<br/>" +
-      "Give us strength where we feel tired, patience where we feel stretched, and trust in You where we feel unsure.<br/>" +
-      "Protect our homes, our health, our work, and the people we love.<br/>" +
-      "Remind every Buddy in this group that we do not walk into this week alone.<br/>" +
+      "Give strength where we feel tired, patience where we feel stretched, and trust in You where we feel unsure.<br/>" +
+      "Protect our homes, our health, our relationships, and the people we love.<br/>" +
       "We place this week into Your hands.<br/>" +
       "In Jesus' name, Amen.</p>" +
-      "<p>If you have any prayer requests, needs, or anything you want covered this week, drop it below.</p>" +
-      "<p>You can be specific, or you can simply say please pray for me. This is a place of support, not judgment. I'll be praying over every request.</p>",
+      "<p><strong>Drop your prayer request below.</strong> You can be as specific as you need or simply say please pray for me. This is a place of support, not judgment. I will be praying over every one.</p>",
   },
   {
     title: "How can the group pray for you this week?",
-    description: "A Sunday prayer thread that invites honest requests, speaks peace over the week ahead, and encourages the group to pray for each other.",
+    description: "Sunday Prayer Request — if you are carrying something into this week, this is where you put it down. Drop your request below and let the group stand with you.",
     contentHtml:
-      "<p>Hey Bible Buddy family,</p>" +
-      "<p>As we head into a new week, I want to open this space again for prayer.</p>" +
-      "<p>If you are walking into this week tired, if you need strength, clarity, peace, or direction, or if you are carrying something quietly and just need covering, drop it below.</p>" +
-      "<p>You can be specific, or you can simply say please pray for me. This is a place to support one another, not fix or judge anyone.</p>" +
-      "<p>Before the week starts, let me pray for all of us.</p>" +
+      "<p><strong>Sunday prayer thread is open — bring whatever you are carrying into this week.</strong></p>" +
+      "<p>Some weeks start heavy. Some start uncertain. Some start with something you have been holding quietly and just need covered. This is that space.</p>" +
+      "<h2>What this thread is for</h2>" +
+      "<ul><li>🙏 Requests for peace, direction, healing, or strength.</li><li>🛡️ Covering for situations you cannot fully explain yet.</li><li>🤝 Prayer for the people in your life who need it right now.</li></ul>" +
+      "<p><strong>A prayer for all of us before this week begins:</strong></p>" +
       "<p>Dear Heavenly Father,<br/>" +
-      "I pray for every member of Bible Buddy as we step into this new week.<br/>" +
+      "I pray over every Buddy in this group as we step into a new week.<br/>" +
       "Guard our minds, our hearts, and our spirits.<br/>" +
-      "Give us strength to stand firm, wisdom to choose rightly, and peace that does not depend on circumstances.<br/>" +
-      "Lead us, protect us, and remind us that we do not walk alone.<br/>" +
-      "We trust You with this week.<br/>" +
+      "Give us strength to stand firm, wisdom to choose rightly, and peace that does not depend on our circumstances.<br/>" +
+      "Lead us, protect us, and remind us that we do not walk this week alone.<br/>" +
+      "We trust You with what is ahead.<br/>" +
       "In Jesus' name, Amen.</p>" +
-      "<p>Post your prayer request below.</p>",
+      "<p><strong>Post your prayer request in the comments.</strong> Be specific or keep it simple — either way, the group is here to stand with you.</p>",
   },
   {
     title: "What is one thing you want prayer for right now?",
-    description: "A more personal Sunday prayer post that invites simple, honest requests and reminds the group to carry one another in prayer.",
+    description: "Sunday Prayer Request — just one thing. Whatever is weighing on you most right now, drop it here. The group will stand with you and I will be praying over every request.",
     contentHtml:
-      "<p>Hey Bible Buddy family,</p>" +
-      "<p>Before this week gets moving, I want to slow us down for a second and make room for prayer.</p>" +
-      "<p>If there is one thing on your heart right now, one thing weighing on you, or one thing you need God to move in, share it here.</p>" +
-      "<p>It can be big. It can be small. It can be detailed, or it can simply be please pray for me.</p>" +
-      "<p>This group is not here to judge you. It is here to stand with you.</p>" +
-      "<p>I will be praying over the requests that come in, and if you see someone else in the comments, take a minute to pray for them too. That is how a community starts to feel real.</p>",
+      "<p><strong>Before this week gets moving, let us slow down for a moment and make room for prayer.</strong></p>" +
+      "<p>One thing. That is all I am asking. If there is one thing on your heart right now — one thing weighing on you, one thing you need God to move in — share it here.</p>" +
+      "<h2>What you can bring here</h2>" +
+      "<ul><li>🙏 Something you have been carrying quietly for a while.</li><li>💔 A relationship, a situation, or a decision that needs wisdom.</li><li>⚡ Something coming up this week that you want covered.</li><li>🌿 A need for peace, healing, or a fresh start.</li></ul>" +
+      "<p>It can be big. It can be small. It can be detailed, or it can simply be please pray for me. This group is not here to judge anyone. It is here to stand with you.</p>" +
+      "<p><strong>Drop your request below.</strong> I will be praying over every comment that comes in, and I want to encourage you — if you see someone else's request, take a minute to pray for them too. That is how community becomes real.</p>",
   },
   {
     title: "Drop your prayer request for the week",
-    description: "A simple Sunday prayer thread that opens space for the group to ask for prayer, receive support, and begin the week covered in prayer.",
+    description: "Sunday Prayer Request — this is the weekly prayer thread. Drop what you need covered, what you are trusting God for, or simply say please pray for me. We carry each other here.",
     contentHtml:
-      "<p>Hey Bible Buddy family,</p>" +
-      "<p>This is our prayer thread for the week.</p>" +
-      "<p>If there is something you want prayer for, drop it in the comments. You do not need to over-explain it. Just be honest.</p>" +
-      "<p>If you need peace, wisdom, healing, strength, direction, or just covering for what is ahead, this is a good place to say it out loud.</p>" +
-      "<p>I will be praying over every request, and I want to encourage you to do the same for each other. Even a short prayer for another Buddy matters more than we realize.</p>",
+      "<p><strong>This is our weekly prayer thread — and it is always open.</strong></p>" +
+      "<p>Every Sunday I open this space because I believe we should start the week covered, not just busy. If something is weighing on you, this is a good place to say it out loud.</p>" +
+      "<h2>What to drop here</h2>" +
+      "<ul><li>🙏 Prayer for peace, wisdom, healing, or direction.</li><li>🛡️ Covering for hard situations you are walking through.</li><li>💬 A need you have been afraid to say out loud until now.</li><li>🤝 A request for someone you love who needs prayer too.</li></ul>" +
+      "<p>You do not have to over-explain it. You do not have to make it sound a certain way. Just be honest about what you need, and let this group carry it with you.</p>" +
+      "<p><strong>Post your request below.</strong> I will be praying over every one, and I want to encourage you to do the same for each other. Even a short prayer for another Buddy matters more than we realize.</p>",
   },
 ];
 

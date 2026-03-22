@@ -374,6 +374,78 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   },
 ];
 
+const BOOK_AUTHOR_MAP: Record<string, string> = {
+  // Old Testament
+  "Genesis": "Moses wrote Genesis as part of the Torah — the first five books of the Bible — under God's direction, recording creation, the fall, and the founding of Israel's story.",
+  "Exodus": "Moses wrote Exodus, documenting Israel's slavery in Egypt, God's deliverance through the plagues, and the giving of the Law at Mount Sinai.",
+  "Leviticus": "Moses wrote Leviticus, laying out the laws and priestly codes God gave Israel to help them live as a holy people set apart for Him.",
+  "Numbers": "Moses wrote Numbers, recording Israel's wilderness journey, their failures, and God's continued faithfulness through forty years of wandering.",
+  "Deuteronomy": "Moses wrote Deuteronomy — his final address to Israel before his death — calling the people to renewed covenant faithfulness as they prepared to enter the Promised Land.",
+  "Joshua": "The Book of Joshua is largely attributed to Joshua himself, recording the conquest and division of Canaan as God's fulfillment of His promise to Israel.",
+  "Judges": "The Book of Judges is traditionally attributed to Samuel, recording Israel's repeated cycle of sin, oppression, and deliverance during the era before the kings.",
+  "Ruth": "The Book of Ruth is traditionally attributed to Samuel, telling the story of Ruth's loyalty, Boaz's faithfulness, and God's quiet hand in redemption.",
+  "1 Samuel": "The books of Samuel are largely attributed to Samuel himself, with later portions written by Nathan and Gad, covering Israel's transition from judges to kings.",
+  "2 Samuel": "Second Samuel continues the account of David's reign, traditionally compiled from records kept by prophets like Nathan and Gad.",
+  "1 Kings": "First Kings is traditionally attributed to Jeremiah or a prophetic compiler, recording the rise of Solomon and the divided kingdom.",
+  "2 Kings": "Second Kings continues the royal history, traditionally attributed to Jeremiah, ending with the fall of both Israel and Judah.",
+  "1 Chronicles": "First Chronicles is traditionally attributed to Ezra, retelling Israel's royal history with a focus on David's preparations for the temple.",
+  "2 Chronicles": "Second Chronicles, traditionally attributed to Ezra, covers Solomon's reign through the fall of Judah, emphasizing covenant faithfulness.",
+  "Ezra": "Ezra wrote the Book of Ezra, documenting the return of Jewish exiles from Babylon and the rebuilding of the temple in Jerusalem.",
+  "Nehemiah": "Nehemiah wrote this book in the first person, recording his leadership in rebuilding Jerusalem's walls and restoring the community's covenant commitment.",
+  "Esther": "The author of Esther is unknown, but the book tells the story of Esther and Mordecai's courage in preserving the Jewish people during Persian rule.",
+  "Job": "The author of Job is unknown. It is one of the oldest texts in Scripture, exploring suffering, faith, and God's sovereignty in an unflinching way.",
+  "Psalm": "The Psalms were written by multiple authors — primarily David, along with Asaph, the sons of Korah, Moses, Solomon, and others — collected over centuries as Israel's book of worship and prayer.",
+  "Psalms": "The Psalms were written by multiple authors — primarily David, along with Asaph, the sons of Korah, Moses, Solomon, and others — collected over centuries as Israel's book of worship and prayer.",
+  "Proverbs": "Proverbs was written primarily by Solomon, Israel's wisest king, with additional contributions from Agur and King Lemuel. It is Israel's collected wisdom for practical, God-honoring living.",
+  "Ecclesiastes": "Ecclesiastes is attributed to Solomon, written in his later years as he reflected honestly on life, meaning, and what ultimately matters under God's authority.",
+  "Song of Solomon": "Song of Solomon is attributed to Solomon, written as a poetic celebration of love and as a picture of the covenant relationship between God and His people.",
+  "Isaiah": "Isaiah the prophet wrote this book in eighth-century B.C. Jerusalem, delivering some of the most powerful Messianic prophecies in all of Scripture.",
+  "Jeremiah": "Jeremiah the prophet wrote this book, often called the weeping prophet, who delivered God's urgent call to repentance to Judah in the final decades before the Babylonian exile.",
+  "Lamentations": "Lamentations is attributed to Jeremiah, written as a series of mournful poems over the destruction of Jerusalem and the temple by Babylon.",
+  "Ezekiel": "Ezekiel the priest and prophet wrote this book during the Babylonian exile, recording dramatic visions and messages about judgment, exile, and Israel's promised restoration.",
+  "Daniel": "Daniel wrote this book while serving as an official in Babylon and Persia, recording both historical accounts of God's faithfulness and prophetic visions about the end of days.",
+  "Hosea": "Hosea the prophet wrote this book, using his own painful marriage as a living picture of God's unfailing love for an unfaithful Israel.",
+  "Joel": "Joel the prophet wrote this book, calling Judah to repentance after a devastating locust plague and pointing forward to a great outpouring of God's Spirit.",
+  "Amos": "Amos the prophet — a shepherd and farmer from Tekoa — wrote this book, delivering some of the most direct indictments of social injustice and empty religion in all of Scripture.",
+  "Obadiah": "Obadiah the prophet wrote this shortest book of the Old Testament, pronouncing judgment on Edom for its pride and betrayal of Israel.",
+  "Jonah": "The Book of Jonah is attributed to Jonah the prophet, telling the story of his reluctant mission to Nineveh and what it reveals about the reach of God's mercy.",
+  "Micah": "Micah the prophet wrote this book, delivering both judgment and hope to Israel and Judah and containing one of the clearest Messianic birth prophecies in Scripture.",
+  "Nahum": "Nahum the prophet wrote this book, announcing God's coming judgment on Nineveh — the same city that repented under Jonah — after it returned to violence and wickedness.",
+  "Habakkuk": "Habakkuk the prophet wrote this book as a dialogue with God, wrestling honestly with why evil seems to go unanswered and arriving at a declaration of radical trust.",
+  "Zephaniah": "Zephaniah the prophet wrote this book during Josiah's reign, warning of the coming Day of the Lord while promising ultimate restoration for the faithful remnant.",
+  "Haggai": "Haggai the prophet wrote this book to the returned exiles, urging them to stop delaying the rebuilding of the temple and to put God's house first.",
+  "Zechariah": "Zechariah the prophet wrote this book alongside Haggai, encouraging the returned exiles with visions of God's future plans and some of the most detailed Messianic prophecies in the Old Testament.",
+  "Malachi": "Malachi the prophet wrote the last book of the Old Testament, confronting Israel's spiritual indifference and pointing forward to the coming messenger who would prepare the way for the Lord.",
+  // New Testament
+  "Matthew": "Matthew the Apostle — a former tax collector and one of the twelve disciples — wrote this Gospel, presenting Jesus as the long-awaited Messiah and King of Israel.",
+  "Mark": "John Mark, a close companion of Peter and later Paul, wrote this Gospel — the shortest and most action-focused of the four — believed to reflect Peter's firsthand account of Jesus.",
+  "Luke": "Luke the physician and companion of Paul wrote this Gospel, the most detailed account of Jesus's life, with special attention to the poor, the outcast, and the role of women.",
+  "John": "John the Apostle — one of Jesus's inner circle and the disciple described as the one Jesus loved — wrote this Gospel, the most theological of the four, emphasizing Jesus as the eternal Word of God.",
+  "Acts": "Luke the physician wrote Acts as a sequel to his Gospel, recording the spread of the early church through the power of the Holy Spirit from Jerusalem to Rome.",
+  "Romans": "Paul the Apostle wrote Romans to the church in Rome around A.D. 57, laying out the most systematic and thorough presentation of the gospel in all of Scripture.",
+  "1 Corinthians": "Paul the Apostle wrote this letter to the troubled church in Corinth, addressing divisions, immorality, spiritual gifts, and what love truly looks like in the body of Christ.",
+  "2 Corinthians": "Paul the Apostle wrote this deeply personal letter to Corinth, defending his ministry, explaining the nature of suffering and weakness, and calling the church back to genuine faith.",
+  "Galatians": "Paul the Apostle wrote Galatians as an urgent defense of the gospel of grace, pushing back hard against teachers who were adding works of the Law to faith in Christ.",
+  "Ephesians": "Paul the Apostle wrote Ephesians while imprisoned in Rome, laying out the fullness of what believers have in Christ and how that changes everything about how they live together.",
+  "Philippians": "Paul the Apostle wrote Philippians from prison, expressing deep joy and gratitude for his partnership with the church at Philippi and calling them to unity and peace.",
+  "Colossians": "Paul the Apostle wrote Colossians to correct false teaching in the church, making clear that Jesus Christ is supreme over all things and that nothing needs to be added to Him.",
+  "1 Thessalonians": "Paul the Apostle wrote this letter to the young church at Thessalonica, encouraging them in their faith, addressing questions about the return of Christ, and urging holy living.",
+  "2 Thessalonians": "Paul the Apostle wrote this follow-up letter to Thessalonica to correct misunderstandings about the end times and to encourage the church to stand firm and work faithfully.",
+  "1 Timothy": "Paul the Apostle wrote this personal letter to his young protégé Timothy, giving him guidance on leadership, worship, false teachers, and caring for the church at Ephesus.",
+  "2 Timothy": "Paul the Apostle wrote this final letter — likely from prison, near the end of his life — to Timothy, urging him to hold fast to the gospel and finish strong.",
+  "Titus": "Paul the Apostle wrote this letter to Titus, a trusted leader on the island of Crete, instructing him on how to organize the church, appoint elders, and teach sound doctrine.",
+  "Philemon": "Paul the Apostle wrote this brief personal letter to Philemon, appealing to him to receive his runaway enslaved man Onesimus back as a fellow brother in Christ.",
+  "Hebrews": "The Book of Hebrews is traditionally attributed to Paul the Apostle, though some scholars also point to Apollos or Barnabas. Whoever wrote it, the letter makes the case that Jesus is the fulfillment of everything in the Old Testament — the final High Priest, the perfect sacrifice, and the one through whom we now approach God.",
+  "James": "James, the brother of Jesus and leader of the Jerusalem church, wrote this intensely practical letter about what genuine faith looks like when it is actually lived out.",
+  "1 Peter": "Peter the Apostle wrote this letter to scattered believers facing persecution, encouraging them to stand firm in their faith and to live honorably among those who opposed them.",
+  "2 Peter": "Peter the Apostle wrote this second letter near the end of his life, warning against false teachers and urging believers to grow in the knowledge and grace of Jesus Christ.",
+  "1 John": "John the Apostle — the same John who wrote the Gospel — wrote this letter to strengthen believers in their assurance of salvation, warning against false teaching and calling the church to walk in love and truth.",
+  "2 John": "John the Apostle wrote this short letter to a specific church community, warning them not to show hospitality to false teachers who denied that Jesus came in the flesh.",
+  "3 John": "John the Apostle wrote this brief personal letter commending Gaius for his faithful support of traveling missionaries and confronting the divisive behavior of Diotrephes.",
+  "Jude": "Jude, the brother of Jesus and James, wrote this short and urgent letter warning believers about false teachers who had crept into the church and calling them to contend earnestly for the faith.",
+  "Revelation": "John the Apostle wrote Revelation while exiled on the island of Patmos, recording a series of visions about the cosmic battle between good and evil, the return of Christ, and the final restoration of all things.",
+};
+
 function buildFallbackExplanation(entry: VerseOfTheDayEntry): VerseExplanationSection[] {
   // Derive book name for context
   const book = entry.reference.split(" ").slice(0, -1).join(" ") || entry.reference;
@@ -385,12 +457,14 @@ function buildFallbackExplanation(entry: VerseOfTheDayEntry): VerseExplanationSe
     "Jonah","Micah","Nahum","Habakkuk","Zephaniah","Haggai","Zechariah","Malachi",
   ].some((b) => entry.reference.startsWith(b));
 
+  const specificAuthor = BOOK_AUTHOR_MAP[book];
+
   return [
     {
       heading: "📖 Who Wrote It",
-      body: isOT
-        ? `${book} is part of the Old Testament, written by prophets, poets, and leaders whom God used to record His Word for Israel and for all generations. The specific author reflects on God's nature and His relationship with His people.`
-        : `${book} is part of the New Testament, written by an apostle or close companion of the early church to encourage believers and explain the life, death, and resurrection of Jesus Christ.`,
+      body: specificAuthor ?? (isOT
+        ? `${book} is part of the Old Testament, written by prophets, poets, and leaders whom God used to record His Word for Israel and for all generations.`
+        : `${book} is part of the New Testament, written by an apostle or close companion of the early church to encourage believers and explain the life, death, and resurrection of Jesus Christ.`),
     },
     {
       heading: "🕰️ When & What Was Happening",
