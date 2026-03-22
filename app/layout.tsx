@@ -65,6 +65,7 @@ export default function RootLayout({
       </head>
       <body
         className="antialiased bg-gray-50"
+        suppressHydrationWarning
       >
         {/* Responsive bottom padding for banner - applied to main content */}
         <div className="flex flex-col min-h-screen w-full">
