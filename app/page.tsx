@@ -11,7 +11,8 @@ export default function LandingPage() {
   const router = useRouter();
   const [isChecking, setIsChecking] = useState(true);
   const [showSignupModal, setShowSignupModal] = useState(false);
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -49,11 +50,6 @@ export default function LandingPage() {
     setLoading(true);
     setError(null);
     setShowSuccessModal(false);
-
-    // Split name into first and last (if provided)
-    const nameParts = name.trim().split(" ");
-    const firstName = nameParts[0] || "";
-    const lastName = nameParts.slice(1).join(" ") || "";
 
     // 1. SIGN USER UP
     const { data, error } = await supabase.auth.signUp({
@@ -99,8 +95,7 @@ export default function LandingPage() {
 
     // 4. INSERT INTO master_actions for signup tracking (non-blocking, analytics only)
     try {
-      const firstName = nameParts[0] || "";
-      const username = firstName || user.email?.split("@")[0] || "New User";
+      const username = firstName.trim() || user.email?.split("@")[0] || "New User";
       
       const { error: actionError } = await supabase
         .from("master_actions")
@@ -123,12 +118,13 @@ export default function LandingPage() {
     fetch("/api/send-welcome-dm", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: user.id }),
+      body: JSON.stringify({ userId: user.id, firstName: firstName.trim(), lastName: lastName.trim() }),
     }).catch((err) => console.error("Welcome DM failed (non-blocking):", err));
 
     // 6. SIGNUP SUCCEEDED - Clear form and show success modal
     setLoading(false);
-    setName("");
+    setFirstName("");
+    setLastName("");
     setEmail("");
     setPassword("");
     setShowSuccessModal(true);
@@ -504,18 +500,33 @@ export default function LandingPage() {
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-3 mt-2">
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  required
-                  className="w-full px-3 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter your name"
-                />
+              <div className="flex gap-2">
+                <div className="flex-1">
+                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder="First name"
+                  />
+                </div>
+                <div className="flex-1">
+                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full px-3 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    placeholder="Last name"
+                  />
+                </div>
               </div>
 
               <div>

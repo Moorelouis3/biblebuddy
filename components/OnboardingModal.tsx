@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { ModalShell } from "./ModalShell";
 
@@ -14,7 +14,7 @@ type OnboardingModalProps = {
   onFinished: (upgrade: boolean) => void;
 };
 
-const TOTAL_STEPS = 7;
+const TOTAL_STEPS = 10;
 const STEP_TWO_OPTIONS = ["Instagram", "Facebook", "Word of mouth", "Other"] as const;
 const STEP_THREE_OPTIONS = [
   "Just getting started",
@@ -42,6 +42,12 @@ export function OnboardingModal({
   const [referralCode, setReferralCode] = useState("");
   const [referralState, setReferralState] = useState<"idle" | "checking" | "valid" | "invalid">("idle");
   const [referralError, setReferralError] = useState<string | null>(null);
+  // Profile setup (steps 4 & 5)
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
+  const [bio, setBio] = useState("");
+  const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
+  const avatarInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setIsIOS(/iphone|ipad|ipod/i.test(navigator.userAgent));
@@ -116,6 +122,8 @@ export function OnboardingModal({
     traffic_source?: string;
     bible_experience_level?: string;
     onboarding_completed?: boolean;
+    profile_image_url?: string;
+    bio?: string;
   }) {
     const {
       data: { session },
@@ -135,11 +143,6 @@ export function OnboardingModal({
       throw noUserError;
     }
 
-    console.log("[ONBOARDING] Persist attempt", {
-      userId: authenticatedUserId,
-      values,
-    });
-
     await ensureProfileStatsRow(authenticatedUserId);
 
     const { data, error } = await supabase
@@ -153,11 +156,6 @@ export function OnboardingModal({
       console.error("[ONBOARDING] Supabase update error:", error);
       throw error;
     }
-
-    console.log("[ONBOARDING] Persist success", {
-      userId: authenticatedUserId,
-      result: data,
-    });
 
     return data;
   }
@@ -183,7 +181,7 @@ export function OnboardingModal({
         setCurrentStep(3);
       } catch (persistError) {
         console.error("[ONBOARDING] Failed to save traffic_source:", persistError);
-        setError("We couldn’t save your answer. Please try again.");
+        setError("We couldn't save your answer. Please try again.");
       } finally {
         setIsSaving(false);
       }
@@ -200,21 +198,10 @@ export function OnboardingModal({
           error: sessionError,
         } = await supabase.auth.getSession();
 
-        if (sessionError) {
-          console.log("Error:", sessionError);
-          throw sessionError;
-        }
+        if (sessionError) throw sessionError;
 
         const authenticatedUserId = session?.user?.id || userId;
-
-        if (!authenticatedUserId) {
-          const noUserError = new Error("No authenticated user id available for bible_experience_level update");
-          console.log("Error:", noUserError);
-          throw noUserError;
-        }
-
-        console.log("Saving bible_experience_level:", selectedExperienceLevel);
-        console.log("User ID:", authenticatedUserId);
+        if (!authenticatedUserId) throw new Error("No authenticated user id available for bible_experience_level update");
 
         const { data: existingRow, error: existingRowError } = await supabase
           .from("profile_stats")
@@ -222,53 +209,73 @@ export function OnboardingModal({
           .eq("user_id", authenticatedUserId)
           .maybeSingle();
 
-        if (existingRowError) {
-          console.log("Error:", existingRowError);
-          throw existingRowError;
-        }
-
-        let resultData: unknown = null;
-        let resultError: unknown = null;
+        if (existingRowError) throw existingRowError;
 
         if (existingRow) {
-          const { data, error } = await supabase
+          await supabase
             .from("profile_stats")
             .update({ bible_experience_level: selectedExperienceLevel })
-            .eq("user_id", authenticatedUserId)
-            .select("user_id, bible_experience_level");
-
-          resultData = data;
-          resultError = error;
+            .eq("user_id", authenticatedUserId);
         } else {
-          const { data, error } = await supabase
+          await supabase
             .from("profile_stats")
             .upsert(
-              {
-                user_id: authenticatedUserId,
-                bible_experience_level: selectedExperienceLevel,
-              },
+              { user_id: authenticatedUserId, bible_experience_level: selectedExperienceLevel },
               { onConflict: "user_id" }
-            )
-            .select("user_id, bible_experience_level");
-
-          resultData = data;
-          resultError = error;
-        }
-
-        console.log("Result:", resultData);
-        console.log("Error:", resultError);
-
-        if (resultError) {
-          throw resultError;
+            );
         }
 
         setCurrentStep(4);
       } catch (persistError) {
         console.error("[ONBOARDING] Failed to save bible_experience_level:", persistError);
-        setError("We couldn’t save your answer. Please try again.");
+        setError("We couldn't save your answer. Please try again.");
       } finally {
         setIsSaving(false);
       }
+      return;
+    }
+
+    // Step 4 — upload profile picture (optional, best-effort)
+    if (currentStep === 4) {
+      if (avatarFile) {
+        try {
+          setIsUploadingAvatar(true);
+          const { data: { session } } = await supabase.auth.getSession();
+          const uid = session?.user?.id || userId;
+          const ext = avatarFile.name.split(".").pop();
+          const path = `${uid}/avatar.${ext}`;
+          const { error: uploadError } = await supabase.storage
+            .from("avatars")
+            .upload(path, avatarFile, { upsert: true });
+          if (!uploadError) {
+            const { data: urlData } = supabase.storage.from("avatars").getPublicUrl(path);
+            await persistProfileStats({ profile_image_url: urlData.publicUrl });
+          } else {
+            console.error("[ONBOARDING] Avatar upload error:", uploadError);
+          }
+        } catch (uploadErr) {
+          console.error("[ONBOARDING] Avatar upload unexpected error:", uploadErr);
+        } finally {
+          setIsUploadingAvatar(false);
+        }
+      }
+      setCurrentStep(5);
+      return;
+    }
+
+    // Step 5 — save bio (optional, best-effort)
+    if (currentStep === 5) {
+      if (bio.trim()) {
+        try {
+          setIsSaving(true);
+          await persistProfileStats({ bio: bio.trim() });
+        } catch (bioErr) {
+          console.error("[ONBOARDING] Bio save error:", bioErr);
+        } finally {
+          setIsSaving(false);
+        }
+      }
+      setCurrentStep(6);
       return;
     }
 
@@ -312,7 +319,7 @@ export function OnboardingModal({
       onFinished(upgrade);
     } catch (persistError) {
       console.error("[ONBOARDING] Failed to complete onboarding:", persistError);
-      setError("We couldn’t save your progress. Please try again.");
+      setError("We couldn't save your progress. Please try again.");
     } finally {
       setIsSaving(false);
     }
@@ -331,6 +338,8 @@ export function OnboardingModal({
 
           <div className="w-full mx-auto">
             <div className="w-full max-w-2xl mx-auto rounded-2xl border border-blue-100 bg-white/80 px-5 md:px-7 py-6 md:py-6 max-h-[58vh] overflow-y-auto">
+
+              {/* Step 1 — Welcome */}
               {currentStep === 1 && (
                 <div className="space-y-6">
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Welcome to Bible Buddy</h2>
@@ -341,6 +350,7 @@ export function OnboardingModal({
                 </div>
               )}
 
+              {/* Step 2 — How did you hear */}
               {currentStep === 2 && (
                 <div className="space-y-6">
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">How did you hear about Bible Buddy?</h2>
@@ -381,6 +391,7 @@ export function OnboardingModal({
                 </div>
               )}
 
+              {/* Step 3 — Bible journey */}
               {currentStep === 3 && (
                 <div className="space-y-6">
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Where are you in your Bible journey?</h2>
@@ -422,7 +433,75 @@ export function OnboardingModal({
                 </div>
               )}
 
+              {/* Step 4 — Profile picture */}
               {currentStep === 4 && (
+                <div className="space-y-6">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Add a profile picture</h2>
+                  <p className="text-sm md:text-[15px] text-gray-500">This is how other members will see you. You can always change it later.</p>
+                  <div className="flex flex-col items-center gap-5">
+                    <button
+                      type="button"
+                      onClick={() => avatarInputRef.current?.click()}
+                      className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-blue-200 bg-gray-100 flex items-center justify-center hover:opacity-90 transition"
+                    >
+                      {avatarPreview ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={avatarPreview} alt="Profile preview" className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="flex flex-col items-center gap-1 text-gray-400">
+                          <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                          </svg>
+                          <span className="text-xs font-medium">Tap to upload</span>
+                        </div>
+                      )}
+                    </button>
+                    <input
+                      ref={avatarInputRef}
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          setAvatarFile(file);
+                          setAvatarPreview(URL.createObjectURL(file));
+                        }
+                      }}
+                    />
+                    {avatarPreview && (
+                      <button
+                        type="button"
+                        onClick={() => { setAvatarFile(null); setAvatarPreview(null); }}
+                        className="text-xs text-gray-400 hover:text-gray-600 underline"
+                      >
+                        Remove photo
+                      </button>
+                    )}
+                    <p className="text-xs text-gray-400">Optional — tap Continue to skip</p>
+                  </div>
+                </div>
+              )}
+
+              {/* Step 5 — Bio */}
+              {currentStep === 5 && (
+                <div className="space-y-6">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Tell us a little about yourself</h2>
+                  <p className="text-sm md:text-[15px] text-gray-500">What brings you to studying the Bible? This is optional — you can skip it.</p>
+                  <textarea
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
+                    maxLength={200}
+                    rows={4}
+                    placeholder="e.g. I'm a new believer looking to understand the Word more deeply..."
+                    className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm md:text-base text-gray-700 placeholder-gray-400 focus:border-blue-500 focus:outline-none resize-none"
+                  />
+                  <p className="text-xs text-gray-400 text-right">{bio.length}/200</p>
+                </div>
+              )}
+
+              {/* Step 6 — Bible study should be clear */}
+              {currentStep === 6 && (
                 <div className="space-y-6">
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Bible study should be clear. Not complicated.</h2>
                   <div className="max-w-xl space-y-6 text-sm md:text-[15px] text-gray-600 leading-7">
@@ -437,7 +516,8 @@ export function OnboardingModal({
                 </div>
               )}
 
-              {currentStep === 5 && (
+              {/* Step 7 — Features list */}
+              {currentStep === 7 && (
                 <div className="space-y-6">
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Everything you need for serious Bible study</h2>
                   <ul className="max-w-xl space-y-4 text-sm md:text-[15px] text-gray-600 leading-7">
@@ -452,13 +532,34 @@ export function OnboardingModal({
                 </div>
               )}
 
-              {currentStep === 6 && (
+              {/* Step 8 — Bible Study Group */}
+              {currentStep === 8 && (
+                <div className="space-y-6">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Join the Bible Study Group</h2>
+                  <div className="max-w-xl space-y-5 text-sm md:text-[15px] text-gray-600 leading-7">
+                    <p>You don&apos;t have to study alone.</p>
+                    <p>
+                      The Bible Buddy Study Group is where members come together each week to go through a structured Bible study — with weekly lessons, discussion, and community.
+                    </p>
+                    <p>Every week there&apos;s a new study. Follow along at your own pace and connect with others on the same journey.</p>
+                    <a
+                      href="/study-groups"
+                      className="flex items-center justify-center gap-2 w-full rounded-2xl border border-blue-600 bg-blue-50 px-5 py-4 text-sm md:text-base font-semibold text-blue-700 hover:bg-blue-100 transition"
+                    >
+                      👥 Check out the Bible Study Group
+                    </a>
+                  </div>
+                </div>
+              )}
+
+              {/* Step 9 — Add to home screen */}
+              {currentStep === 9 && (
                 <div className="space-y-6">
                   {isStandalone ? (
                     <>
-                      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">You're already using the app</h2>
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">You&apos;re already using the app</h2>
                       <div className="max-w-xl space-y-4 text-sm md:text-[15px] text-gray-600 leading-7">
-                        <p>Bible Buddy is already installed on your home screen. You're all set!</p>
+                        <p>Bible Buddy is already installed on your home screen. You&apos;re all set!</p>
                       </div>
                     </>
                   ) : isIOS ? (
@@ -473,11 +574,11 @@ export function OnboardingModal({
                           </li>
                           <li className="flex items-start gap-3">
                             <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-100 text-blue-700 font-bold text-sm flex items-center justify-center">2</span>
-                            <span>Scroll down and tap <strong className="text-gray-800">"Add to Home Screen"</strong></span>
+                            <span>Scroll down and tap <strong className="text-gray-800">&quot;Add to Home Screen&quot;</strong></span>
                           </li>
                           <li className="flex items-start gap-3">
                             <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-100 text-blue-700 font-bold text-sm flex items-center justify-center">3</span>
-                            <span>Tap <strong className="text-gray-800">"Add"</strong> in the top right corner</span>
+                            <span>Tap <strong className="text-gray-800">&quot;Add&quot;</strong> in the top right corner</span>
                           </li>
                         </ol>
                       </div>
@@ -500,19 +601,20 @@ export function OnboardingModal({
                     <>
                       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Use Bible Buddy anytime</h2>
                       <div className="max-w-xl space-y-4 text-sm md:text-[15px] text-gray-600 leading-7">
-                        <p>You can add Bible Buddy to your home screen from your browser's menu for quick access anytime.</p>
+                        <p>You can add Bible Buddy to your home screen from your browser&apos;s menu for quick access anytime.</p>
                       </div>
                     </>
                   )}
                 </div>
               )}
 
-              {currentStep === 7 && (
+              {/* Step 10 — Free vs Pro */}
+              {currentStep === 10 && (
                 <div className="space-y-6">
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Free to start. Go deeper anytime.</h2>
                   <div className="max-w-xl space-y-4 text-[13px] sm:text-sm md:text-[15px] text-gray-600 leading-6 sm:leading-7">
                     <p><strong className="font-semibold text-gray-800">As a free user</strong>, you receive 5 credits each day.</p>
-                    <p>That’s enough for a focused, in-depth Bible study.</p>
+                    <p>That&apos;s enough for a focused, in-depth Bible study.</p>
                     <div className="space-y-3">
                       <p className="font-semibold text-gray-800">Each action inside Bible Buddy uses 1 credit:</p>
                       <ul className="space-y-3.5">
@@ -599,22 +701,23 @@ export function OnboardingModal({
               <div />
             )}
 
-            {currentStep < 7 && (
+            {currentStep < 10 && (
               <button
                 type="button"
                 onClick={handleContinue}
                 disabled={
                   isSaving ||
+                  isUploadingAvatar ||
                   (currentStep === 2 && !canContinueStepTwo) ||
                   (currentStep === 3 && !canContinueStepThree)
                 }
                 className="px-6 py-4 rounded-2xl text-sm md:text-base font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition disabled:bg-blue-300 disabled:cursor-not-allowed"
               >
-                {isSaving ? "Saving..." : "Continue"}
+                {isUploadingAvatar ? "Uploading..." : isSaving ? "Saving..." : "Continue"}
               </button>
             )}
 
-            {currentStep === 7 && (
+            {currentStep === 10 && (
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 ml-auto w-full sm:w-auto">
                 <button
                   type="button"

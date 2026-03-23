@@ -22,9 +22,13 @@ take a look around and get familiar with everything`;
 
 export async function POST(request: NextRequest) {
   let userId: string;
+  let firstName: string | undefined;
+  let lastName: string | undefined;
   try {
     const body = await request.json();
     userId = body.userId;
+    firstName = body.firstName;
+    lastName = body.lastName;
   } catch {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
@@ -42,6 +46,15 @@ export async function POST(request: NextRequest) {
   const db: any = createClient(supabaseUrl, serviceKey, {
     auth: { autoRefreshToken: false, persistSession: false },
   });
+
+  // Set display_name in profile_stats for the new user so their name shows in messages
+  const displayName = [firstName, lastName].filter(Boolean).join(" ").trim();
+  if (displayName) {
+    await db.from("profile_stats").upsert(
+      { user_id: userId, display_name: displayName },
+      { onConflict: "user_id" }
+    );
+  }
 
   // Resolve Louis's user ID
   const { data: authData, error: authError } = await db.auth.admin.listUsers({ perPage: 1000 });
