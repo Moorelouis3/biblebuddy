@@ -267,120 +267,11 @@ export default function AnalyticsPage() {
   async function loadRetentionData() {
     setLoadingRetention(true);
     try {
-      const DAY = 86400000;
-      const now = Date.now();
-      const ago = (days: number) => new Date(now - days * DAY).toISOString();
-
-      // 7-day return rate: users active 8–14 days ago who came back in past 7 days
-      const [prevWeekRows, currWeekRows, loginRows] = await Promise.all([
-        supabase
-          .from("master_actions")
-          .select("user_id")
-          .eq("action_type", "user_login")
-          .gte("created_at", ago(14))
-          .lt("created_at", ago(7)),
-        supabase
-          .from("master_actions")
-          .select("user_id")
-          .eq("action_type", "user_login")
-          .gte("created_at", ago(7)),
-        // All login events in the last 90 days for frequency analysis
-        supabase
-          .from("master_actions")
-          .select("user_id, created_at")
-          .eq("action_type", "user_login")
-          .gte("created_at", ago(90))
-          .order("created_at", { ascending: true }),
-      ]);
-
-      // 7-day return rate
-      const prevSet = new Set((prevWeekRows.data || []).map((r: any) => r.user_id).filter(Boolean));
-      const currSet = new Set((currWeekRows.data || []).map((r: any) => r.user_id).filter(Boolean));
-      const returned = [...prevSet].filter((id) => currSet.has(id)).length;
-      const sevenDayReturnPct = prevSet.size > 0 ? Math.round((returned / prevSet.size) * 100) : 0;
-
-      // DAU/WAU/MAU from currWeekRows and independent counts
-      const dau = currSet.size; // already 7d — will re-derive below from login data
-      const mauCutoff = new Date(now - 30 * DAY);
-      const wauCutoff = new Date(now - 7 * DAY);
-      const dauCutoff = new Date(now - 1 * DAY);
-
-      // Group login events by user, deduplicate to YYYY-MM-DD
-      const userDateMap = new Map<string, Set<string>>();
-      for (const row of loginRows.data || []) {
-        if (!row.user_id) continue;
-        const day = (row.created_at as string).slice(0, 10);
-        if (!userDateMap.has(row.user_id)) userDateMap.set(row.user_id, new Set());
-        userDateMap.get(row.user_id)!.add(day);
-      }
-
-      // Build per-user stats — only for users active in past 30 days (exclude inactive)
-      const thirtyDaysAgoStr = ago(30).slice(0, 10);
-      let dauCount = 0, wauCount = 0, mauCount = 0;
-      const avgGaps: number[] = [];
-
-      for (const [, dates] of userDateMap) {
-        const sorted = [...dates].sort();
-        const lastDay = sorted[sorted.length - 1];
-        if (lastDay < thirtyDaysAgoStr) continue; // inactive — skip
-
-        mauCount++;
-        if (lastDay >= ago(7).slice(0, 10)) wauCount++;
-        if (lastDay >= ago(1).slice(0, 10)) dauCount++;
-
-        if (sorted.length < 2) {
-          avgGaps.push(90); // only logged in once → treat as very infrequent
-          continue;
-        }
-        let total = 0;
-        for (let i = 1; i < sorted.length; i++) {
-          const diff = (new Date(sorted[i]).getTime() - new Date(sorted[i - 1]).getTime()) / DAY;
-          total += diff;
-        }
-        avgGaps.push(total / (sorted.length - 1));
-      }
-
-      // Stickiness
-      const dauMauPct = mauCount > 0 ? Math.round((dauCount / mauCount) * 100) : 0;
-      const wauMauPct = mauCount > 0 ? Math.round((wauCount / mauCount) * 100) : 0;
-
-      // Avg & median gap (exclude the one-time placeholder)
-      const realGaps = avgGaps.filter((g) => g < 90);
-      const avgGapDays =
-        realGaps.length > 0
-          ? Math.round((realGaps.reduce((a, b) => a + b, 0) / realGaps.length) * 10) / 10
-          : 0;
-      const sortedGaps = [...realGaps].sort((a, b) => a - b);
-      const medianGapDays =
-        sortedGaps.length > 0
-          ? Math.round(sortedGaps[Math.floor(sortedGaps.length / 2)] * 10) / 10
-          : 0;
-
-      // Frequency buckets
-      const BUCKETS = [
-        { label: "Daily", sublabel: "≤ 1.5 days avg", min: 0,  max: 1.5,  color: "#22c55e" },
-        { label: "Few times/week", sublabel: "1.5 – 3.5 days avg", min: 1.5, max: 3.5,  color: "#84cc16" },
-        { label: "Weekly", sublabel: "3.5 – 8 days avg", min: 3.5, max: 8,    color: "#eab308" },
-        { label: "Bi-weekly", sublabel: "8 – 20 days avg", min: 8,   max: 20,   color: "#f97316" },
-        { label: "Monthly", sublabel: "20 – 40 days avg", min: 20,  max: 40,   color: "#ef4444" },
-        { label: "One-time / rare", sublabel: "Only 1 login or 40+ days", min: 40,  max: Infinity, color: "#9ca3af" },
-      ];
-
-      const total = avgGaps.length;
-      const freqBuckets = BUCKETS.map((b) => {
-        const count = avgGaps.filter((g) => g >= b.min && g < b.max).length;
-        return { ...b, count, pct: total > 0 ? Math.round((count / total) * 100) : 0 };
-      });
-
-      setRetentionData({
-        dauMauPct,
-        wauMauPct,
-        sevenDayReturnPct,
-        avgGapDays,
-        medianGapDays,
-        activeUserCount: mauCount,
-        freqBuckets,
-      });
+      const res = await fetch("/api/admin/retention");
+      if (!res.ok) throw new Error(`Retention API error: ${res.status}`);
+      const data = await res.json();
+      console.log("[RETENTION] API response:", data.debug);
+      setRetentionData(data);
     } catch (e) {
       console.error("[RETENTION] Error:", e);
     }
@@ -2258,7 +2149,7 @@ export default function AnalyticsPage() {
                 <div>
                   <h3 className="text-sm font-bold text-gray-800">Login Frequency Distribution</h3>
                   <p className="text-xs text-gray-400 mt-0.5">
-                    {retentionData.activeUserCount} active users · last 30 days · inactive users excluded
+                    {retentionData.activeUserCount} active users · all time · inactive (30+ days) excluded
                   </p>
                 </div>
               </div>
