@@ -13,6 +13,7 @@ interface DashboardCardsProps {
   userName: string;
   handleCardClick: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, card: string, href: string) => void;
   setShowLevelInfoModal: (show: boolean) => void;
+  isLoadingRecommendation: boolean;
   dailyRecommendation: DailyRecommendation | null;
   dailyRecommendationCardTitle: string | null;
   dailyRecommendationCardSubtitle: string | null;
@@ -27,6 +28,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   levelInfo,
   handleCardClick,
   setShowLevelInfoModal,
+  isLoadingRecommendation,
   dailyRecommendation,
   dailyRecommendationCardTitle,
   dailyRecommendationCardSubtitle,
@@ -92,15 +94,25 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         ) : null}
       </div>
 
-      {dailyRecommendation && dailyRecommendationCardTitle && dailyRecommendationCardSubtitle && (
+      {isLoadingRecommendation ? (
+        <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm relative">
+          <h2 className="text-xl font-semibold">✨ Today&apos;s Recommendation</h2>
+          <div className="flex items-center gap-1 mt-3">
+            <span className="text-gray-500 text-sm">Loading</span>
+            <span className="text-gray-500 text-xl animate-[bounce_1.4s_ease-in-out_infinite]">.</span>
+            <span className="text-gray-500 text-xl animate-[bounce_1.4s_ease-in-out_0.2s_infinite]">.</span>
+            <span className="text-gray-500 text-xl animate-[bounce_1.4s_ease-in-out_0.4s_infinite]">.</span>
+          </div>
+        </div>
+      ) : dailyRecommendation && dailyRecommendationCardTitle && dailyRecommendationCardSubtitle ? (
         <Link href={dailyRecommendation.primaryButtonHref}>
-          <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative animate-pulse-slow">
-            <span className="absolute right-4 top-4 text-red-400 text-base" aria-hidden="true">+</span>
+          <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative">
+            <span className="absolute right-4 top-4 text-red-400 text-base" aria-hidden="true">→</span>
             <h2 className="text-xl font-semibold">✨ {dailyRecommendationCardTitle}</h2>
             <p className="text-sm text-gray-700 mt-2 leading-relaxed">{dailyRecommendationCardSubtitle}</p>
           </div>
         </Link>
-      )}
+      ) : null}
 
       {membershipStatus === "pro" && daysRemaining !== null && daysRemaining > 0 && (
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-sm">

@@ -2,6 +2,9 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
+import { triggerPostSuccess } from "@/components/PostSuccessEffect";
+import { triggerToast } from "@/components/AppToast";
 import * as tus from "tus-js-client";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
@@ -463,6 +466,8 @@ function PostComposer({ userId, userProfile, onPosted }: {
         username: userProfile?.username ?? null,
         profile_image_url: userProfile?.profile_image_url ?? null,
       } as FeedPost);
+      triggerPostSuccess();
+      triggerToast("Shared to the feed! 🙌");
 
       void supabase.rpc("log_feed_activity", {
         p_activity_type: "post_created",
@@ -1078,6 +1083,7 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
   }
 
   async function handleDelete() {
+    triggerSmokeDelete();
     setDeleting(true);
     await supabase.from("feed_post_reactions").delete().eq("post_id", post.id);
     await supabase.from("feed_post_comments").delete().eq("post_id", post.id);

@@ -1,0 +1,2 @@
+ALTER TABLE profile_stats
+ADD COLUMN IF NOT EXISTS current_level INTEGER DEFAULT 1;

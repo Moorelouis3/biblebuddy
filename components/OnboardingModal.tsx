@@ -437,7 +437,7 @@ export function OnboardingModal({
               {currentStep === 4 && (
                 <div className="space-y-6">
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Add a profile picture</h2>
-                  <p className="text-sm md:text-[15px] text-gray-500">This is how other members will see you. You can always change it later.</p>
+                  <p className="text-sm md:text-[15px] text-gray-500">This is how other members will see you. Real community starts with a real face.</p>
                   <div className="flex flex-col items-center gap-5">
                     <button
                       type="button"
@@ -478,7 +478,6 @@ export function OnboardingModal({
                         Remove photo
                       </button>
                     )}
-                    <p className="text-xs text-gray-400">Optional — tap Continue to skip</p>
                   </div>
                 </div>
               )}
@@ -486,8 +485,8 @@ export function OnboardingModal({
               {/* Step 5 — Bio */}
               {currentStep === 5 && (
                 <div className="space-y-6">
-                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Tell us a little about yourself</h2>
-                  <p className="text-sm md:text-[15px] text-gray-500">What brings you to studying the Bible? This is optional — you can skip it.</p>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Fill out your bio</h2>
+                  <p className="text-sm md:text-[15px] text-gray-500">Tell the community who you are and what brought you here. This shows on your profile.</p>
                   <textarea
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
@@ -535,19 +534,19 @@ export function OnboardingModal({
               {/* Step 8 — Bible Study Group */}
               {currentStep === 8 && (
                 <div className="space-y-6">
-                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Join the Bible Study Group</h2>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">You don&apos;t have to study alone</h2>
                   <div className="max-w-xl space-y-5 text-sm md:text-[15px] text-gray-600 leading-7">
-                    <p>You don&apos;t have to study alone.</p>
                     <p>
                       The Bible Buddy Study Group is where members come together each week to go through a structured Bible study — with weekly lessons, discussion, and community.
                     </p>
-                    <p>Every week there&apos;s a new study. Follow along at your own pace and connect with others on the same journey.</p>
-                    <a
-                      href="/study-groups"
-                      className="flex items-center justify-center gap-2 w-full rounded-2xl border border-blue-600 bg-blue-50 px-5 py-4 text-sm md:text-base font-semibold text-blue-700 hover:bg-blue-100 transition"
-                    >
-                      👥 Check out the Bible Study Group
-                    </a>
+                    <p>Every week there&apos;s a new study posted in the group. Follow along at your own pace, drop your thoughts in the comments, and connect with others on the same journey.</p>
+                    <ul className="space-y-3">
+                      <li>📅 Weekly Bible study lessons posted every Saturday</li>
+                      <li>🧠 Weekly trivia every Tuesday</li>
+                      <li>🙏 Prayer requests every Sunday</li>
+                      <li>💬 Community discussion all week long</li>
+                    </ul>
+                    <p>Once you finish setup, the Study Group will be waiting for you inside the app.</p>
                   </div>
                 </div>
               )}
@@ -643,42 +642,6 @@ export function OnboardingModal({
                         <li>🚀 Study without limits</li>
                       </ul>
                     </div>
-
-                    {/* Referral code entry */}
-                    <div className="border-t border-gray-100 pt-4">
-                      <p className="font-semibold text-gray-800 mb-2">Have a referral code?</p>
-                      {referralState === "valid" ? (
-                        <div className="rounded-xl bg-green-50 border border-green-200 px-4 py-3 text-center">
-                          <p className="text-sm font-bold text-green-700">✓ 30 day Pro trial started</p>
-                        </div>
-                      ) : (
-                        <div className="flex gap-2">
-                          <input
-                            type="text"
-                            value={referralCode}
-                            onChange={(e) => {
-                              setReferralCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""));
-                              setReferralState("idle");
-                              setReferralError(null);
-                            }}
-                            placeholder="e.g. LOUIS30"
-                            maxLength={16}
-                            className="flex-1 text-sm px-3 py-2.5 border border-gray-200 rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300 uppercase font-mono tracking-wider"
-                          />
-                          <button
-                            type="button"
-                            onClick={() => void applyReferralCode()}
-                            disabled={!referralCode.trim() || referralState === "checking"}
-                            className="px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50 transition"
-                          >
-                            {referralState === "checking" ? "..." : "Apply"}
-                          </button>
-                        </div>
-                      )}
-                      {referralState === "invalid" && referralError && (
-                        <p className="text-xs text-red-600 mt-1.5">{referralError}</p>
-                      )}
-                    </div>
                   </div>
                 </div>
               )}
@@ -687,7 +650,44 @@ export function OnboardingModal({
 
           {error && <p className="mt-6 text-sm text-red-600">{error}</p>}
 
-          <div className="mt-8 flex items-center justify-between gap-3 max-w-2xl mx-auto flex-wrap sm:flex-nowrap">
+          {/* Ambassador code — shown at step 10 above the finish buttons */}
+          {currentStep === 10 && (
+            <div className="mt-6 max-w-2xl mx-auto">
+              {referralState === "valid" ? (
+                <div className="rounded-xl bg-green-50 border border-green-200 px-4 py-3 text-center">
+                  <p className="text-sm font-bold text-green-700">✓ 30 day Pro trial started</p>
+                </div>
+              ) : (
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={referralCode}
+                    onChange={(e) => {
+                      setReferralCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""));
+                      setReferralState("idle");
+                      setReferralError(null);
+                    }}
+                    placeholder="Ambassador code (e.g. LOUIS30)"
+                    maxLength={16}
+                    className="flex-1 text-sm px-3 py-2.5 border border-gray-200 rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300 uppercase font-mono tracking-wider"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => void applyReferralCode()}
+                    disabled={!referralCode.trim() || referralState === "checking"}
+                    className="px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50 transition"
+                  >
+                    {referralState === "checking" ? "..." : "Apply"}
+                  </button>
+                </div>
+              )}
+              {referralState === "invalid" && referralError && (
+                <p className="text-xs text-red-600 mt-1.5">{referralError}</p>
+              )}
+            </div>
+          )}
+
+          <div className="mt-4 flex items-center justify-between gap-3 max-w-2xl mx-auto flex-wrap sm:flex-nowrap">
             {currentStep > 1 ? (
               <button
                 type="button"
@@ -709,7 +709,9 @@ export function OnboardingModal({
                   isSaving ||
                   isUploadingAvatar ||
                   (currentStep === 2 && !canContinueStepTwo) ||
-                  (currentStep === 3 && !canContinueStepThree)
+                  (currentStep === 3 && !canContinueStepThree) ||
+                  (currentStep === 4 && !avatarFile) ||
+                  (currentStep === 5 && !bio.trim())
                 }
                 className="px-6 py-4 rounded-2xl text-sm md:text-base font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition disabled:bg-blue-300 disabled:cursor-not-allowed"
               >

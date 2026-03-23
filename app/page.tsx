@@ -114,11 +114,13 @@ export default function LandingPage() {
       console.error("Signup action tracking error (non-blocking):", actionTrackingError);
     }
 
-    // 5. SEND WELCOME DM FROM LOUIS (fire-and-forget, non-blocking)
+    // 5. SEND WELCOME DM FROM LOUIS (fire-and-forget, keepalive ensures it
+    //    completes even if the browser navigates away before the response arrives)
     fetch("/api/send-welcome-dm", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: user.id, firstName: firstName.trim(), lastName: lastName.trim() }),
+      keepalive: true,
     }).catch((err) => console.error("Welcome DM failed (non-blocking):", err));
 
     // 6. SIGNUP SUCCEEDED - Clear form and show success modal

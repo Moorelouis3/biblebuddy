@@ -196,17 +196,41 @@ export async function GET(request: NextRequest) {
   const supabaseAdmin = db;
 
   // ── Resolve Louis's user ID ──────────────────────────────────────────────
-  const { data: authData, error: authError } = await supabaseAdmin.auth.admin.listUsers({
+  // Fetch page 1 only — Louis was an early user so he'll always be here.
+  const { data: firstPageData, error: authError } = await supabaseAdmin.auth.admin.listUsers({
+    page: 1,
     perPage: 1000,
   });
   if (authError) {
     return NextResponse.json({ error: "Could not list auth users." }, { status: 500 });
   }
-  const louisAuthUser = authData.users.find((u: any) => u.email === LOUIS_EMAIL);
+  const louisAuthUser = firstPageData.users.find((u: any) => u.email === LOUIS_EMAIL);
   if (!louisAuthUser) {
     return NextResponse.json({ error: "Founder account not found." }, { status: 404 });
   }
   const louisId = louisAuthUser.id;
+
+  // ── Fetch ALL recent auth users (paginated) for Day 1 detection ──────────
+  // We cannot rely on a single page because listUsers returns oldest-first and
+  // new signups will be past page 1 once the total user count exceeds 1000.
+  const sevenDaysAgo = new Date(now - 7 * DAY_MS);
+  const recentAuthUsers: any[] = [];
+  let fetchPage = 1;
+  while (true) {
+    const { data: pageData, error: pageError } = await supabaseAdmin.auth.admin.listUsers({
+      page: fetchPage,
+      perPage: 1000,
+    });
+    if (pageError || !pageData?.users?.length) break;
+    // Keep only users created within the last 7 days (skip Louis)
+    const recentOnPage = pageData.users.filter(
+      (u: any) => u.id !== louisId && new Date(u.created_at) >= sevenDaysAgo,
+    );
+    recentAuthUsers.push(...recentOnPage);
+    // If this page returned fewer than 1000, it's the last page
+    if (pageData.users.length < 1000) break;
+    fetchPage++;
+  }
 
   // Resolve Louis's display name
   const { data: louisProfile } = await supabaseAdmin
@@ -254,15 +278,8 @@ export async function GET(request: NextRequest) {
   const stats = { day1: 0, day2: 0, day3: 0, day4: 0, errors: 0 };
 
   // ── Day 1 — send as soon as a new user signs up ──────────────────────────
-  // Use auth.users (already fetched) so we catch users who haven't taken any
-  // action yet and therefore have no profile_stats row.
-  // Window: signed up within the last 7 days and day 1 not yet sent
-  const recentAuthUsers = authData.users.filter(
-    (u: any) =>
-      u.id !== louisId &&
-      new Date(u.created_at).getTime() >= now - 7 * DAY_MS,
-  );
-
+  // recentAuthUsers was built above via full pagination — all users from the
+  // last 7 days regardless of total user count.
   for (const authUser of recentAuthUsers) {
     if (day1Sent.has(authUser.id)) continue;
 

@@ -2,8 +2,11 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
 import { getUsername } from "@/lib/profileStats";
 import UserBadge from "@/components/UserBadge";
+import LevelBadge from "@/components/LevelBadge";
+import { triggerToast } from "@/components/AppToast";
 
 function uuidv4() {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
@@ -26,6 +29,7 @@ interface Comment {
   profile_image_url?: string | null;
   member_badge?: string | null;
   is_paid?: boolean | null;
+  current_level?: number | null;
   replies?: Comment[];
 }
 
@@ -137,15 +141,16 @@ export default function CommentSection({
     try {
       const { data: profiles } = await supabase
         .from("profile_stats")
-        .select("user_id, profile_image_url, member_badge, is_paid")
+        .select("user_id, profile_image_url, member_badge, is_paid, current_level")
         .in("user_id", userIds);
       if (!profiles || profiles.length === 0) return;
-      const profileMap: Record<string, { profile_image_url: string | null; member_badge: string | null; is_paid: boolean }> = {};
+      const profileMap: Record<string, { profile_image_url: string | null; member_badge: string | null; is_paid: boolean; current_level: number | null }> = {};
       profiles.forEach((p) => {
         profileMap[p.user_id] = {
           profile_image_url: p.profile_image_url ?? null,
           member_badge: p.member_badge ?? null,
           is_paid: p.is_paid === true,
+          current_level: p.current_level ?? null,
         };
       });
       setComments((prev) =>
@@ -154,6 +159,7 @@ export default function CommentSection({
           profile_image_url: profileMap[c.user_id]?.profile_image_url ?? null,
           member_badge: profileMap[c.user_id]?.member_badge ?? null,
           is_paid: profileMap[c.user_id]?.is_paid ?? false,
+          current_level: profileMap[c.user_id]?.current_level ?? null,
         })),
       );
     } catch {
@@ -227,10 +233,14 @@ export default function CommentSection({
     setContent("");
     setReplyTo(null);
     if (error) setError(error.message);
-    else void fetchComments();
+    else {
+      triggerToast("Comment posted!");
+      void fetchComments();
+    }
   };
 
   const handleDelete = async (id: string) => {
+    triggerSmokeDelete();
     setLoading(true);
     try {
       const { data: sessionData } = await supabase.auth.getSession();
@@ -289,6 +299,7 @@ export default function CommentSection({
                 <a href={`/profile/${c.user_id}`} className="font-semibold text-blue-900 hover:underline">
                   {c.user_name}
                 </a>
+                <LevelBadge currentLevel={c.current_level} />
                 <UserBadge customBadge={c.member_badge} isPaid={c.is_paid === true} />
                 <span className="text-xs text-gray-400">{timeAgo(c.created_at)}</span>
               </div>

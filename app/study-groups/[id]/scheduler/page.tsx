@@ -107,6 +107,17 @@ function timeAgo(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
+function formatCountdown(isoDate: string, now: number): string {
+  const diff = new Date(isoDate).getTime() - now;
+  if (diff <= 0) return "Live now";
+  const totalMins = Math.floor(diff / 60_000);
+  const hours = Math.floor(totalMins / 60);
+  const days = Math.floor(hours / 24);
+  if (days > 0) return `in ${days}d ${hours % 24}h`;
+  if (hours > 0) return `in ${hours}h ${totalMins % 60}m`;
+  return `in ${totalMins}m`;
+}
+
 function getBerlinDateParts(date = new Date()) {
   const formatter = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Europe/Berlin",
@@ -185,6 +196,9 @@ function getRecurringPreviewItem(
     }
     case "Tue": {
       const trivia = buildWeeklyGroupTrivia(date);
+      const questionsHtml = trivia.questions
+        .map((q, i) => `<li><strong>Q${i + 1}:</strong> ${q.question}</li>`)
+        .join("");
       return {
         scheduleId: `trivia_tuesday:${trivia.weekKey}`,
         key: "trivia_tuesday",
@@ -192,11 +206,12 @@ function getRecurringPreviewItem(
         accent: "#4a9b6f",
         releaseIso: date.toISOString(),
         isPublished: false,
-        title: "Weekly Bible Trivia",
+        title: `Weekly Bible Trivia: ${trivia.subjectTitle}`,
         description: `${trivia.subjectLine} ${trivia.intro}`,
         contentHtml:
           `<p><strong>${trivia.subjectLine}</strong></p>` +
           `<p>${trivia.intro}</p>` +
+          `<ol>${questionsHtml}</ol>` +
           `<p>Tap into this week's 10-question Bible trivia, see your score, and compare with the group board below.</p>`,
         endpoint: "weekly-trivia",
       };
@@ -358,6 +373,8 @@ export default function StudyGroupSchedulerPage() {
   const [loadingScripture, setLoadingScripture] = useState(false);
   const [publishedRecurringIds, setPublishedRecurringIds] = useState<Set<string>>(new Set());
   const [dismissedRecurringIds, setDismissedRecurringIds] = useState<Set<string>>(new Set());
+  const [recurringExpanded, setRecurringExpanded] = useState(false);
+  const [schedulerNow, setSchedulerNow] = useState(() => Date.now());
   const [selectedPerson, setSelectedPerson] = useState<{ name: string } | null>(null);
   const [selectedPlace, setSelectedPlace] = useState<{ name: string } | null>(null);
   const [selectedKeyword, setSelectedKeyword] = useState<{ name: string } | null>(null);
@@ -430,6 +447,11 @@ export default function StudyGroupSchedulerPage() {
       cancelled = true;
     };
   }, [groupId]);
+
+  useEffect(() => {
+    const interval = setInterval(() => setSchedulerNow(Date.now()), 60_000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (!adminUserId) return;
@@ -1513,7 +1535,7 @@ RULES:
         </button>
 
         <div className="flex flex-col gap-3">
-          {recurringFeedItems.map((item) => (
+          {(recurringExpanded ? recurringFeedItems : recurringFeedItems.slice(0, 2)).map((item) => (
             <div
               key={item.key}
               role="button"
@@ -1542,11 +1564,16 @@ RULES:
                       className="rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white"
                       style={{ backgroundColor: item.isPublished ? "#94a3b8" : item.accent }}
                     >
-                      {item.isPublished ? "Posted" : "Pinned"}
+                      {item.isPublished ? "Posted" : "Scheduled"}
                     </span>
                     <span className="text-xs text-gray-400">
-                      {new Date(item.releaseIso).toLocaleDateString("en-US", { weekday: "long" })}
+                      {new Date(item.releaseIso).toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" })}
                     </span>
+                    {!item.isPublished && (
+                      <span className="text-xs font-semibold" style={{ color: item.accent }}>
+                        {formatCountdown(item.releaseIso, schedulerNow)}
+                      </span>
+                    )}
                     {item.isPublished ? (
                       <button
                         type="button"
@@ -1568,10 +1595,29 @@ RULES:
                   <p className="text-sm text-gray-700 mt-3 leading-relaxed whitespace-pre-line line-clamp-2">
                     {getPostPreviewText(item.contentHtml || item.description || "")}
                   </p>
+                  {item.pollOptions && item.pollOptions.length > 0 && (
+                    <div className="mt-3 flex flex-col gap-1.5">
+                      {item.pollOptions.map((option, idx) => (
+                        <div key={idx} className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-700">
+                          {option}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           ))}
+          {recurringFeedItems.length > 2 && (
+            <button
+              type="button"
+              onClick={() => setRecurringExpanded((prev) => !prev)}
+              className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-600 shadow-sm hover:bg-gray-50 transition"
+            >
+              <span>{recurringExpanded ? "Show less" : `Show ${recurringFeedItems.length - 2} more scheduled posts`}</span>
+              <span className="text-base leading-none">{recurringExpanded ? "▲" : "▼"}</span>
+            </button>
+          )}
         </div>
 
         {queueLoading ? (

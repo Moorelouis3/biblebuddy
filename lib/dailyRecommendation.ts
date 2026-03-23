@@ -174,6 +174,15 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
 
     const primaryCandidates: DailyRecommendation[] = [];
 
+    // Fetch group memberships early — used for series, notification, and live study checks
+    const { data: memberships } = await supabase
+      .from("group_members")
+      .select("group_id")
+      .eq("user_id", userId)
+      .eq("status", "approved")
+      .limit(10);
+    const memberGroupIds = (memberships || []).map((row: { group_id: string }) => row.group_id);
+
     // --- PRIMARY CANDIDATE: Active devotional ---
     const { data: devotionalProgress } = await supabase
       .from("devotional_progress")
@@ -302,16 +311,62 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
       }
     }
 
-    // --- PRIMARY CANDIDATE: Live study group study if available ---
-    const { data: memberships } = await supabase
-      .from("group_members")
-      .select("group_id")
-      .eq("user_id", userId)
-      .eq("status", "approved")
-      .limit(10);
-
-    const memberGroupIds = (memberships || []).map((row) => row.group_id);
+    // --- GROUP CANDIDATES ---
     if (memberGroupIds.length > 0) {
+      // HIGH PRIORITY: Bible study series not yet started
+      const hasStartedSeries = allActions.some(
+        (a) =>
+          a.action_type === "series_week_viewed" ||
+          a.action_type === "group_series_started" ||
+          a.action_type === "series_day_completed"
+      );
+
+      if (!hasStartedSeries) {
+        const { data: seriesGroupPosts } = await supabase
+          .from("weekly_group_series_posts")
+          .select("group_id, title")
+          .in("group_id", memberGroupIds)
+          .eq("series_key", "bible_study_saturday")
+          .order("created_at", { ascending: true })
+          .limit(1);
+
+        const firstSeriesPost = seriesGroupPosts?.[0];
+        if (firstSeriesPost) {
+          primaryCandidates.push({
+            greeting,
+            contextLine: "Your Bible Study Group has an active Bible study series.",
+            recommendationLine: "Start with Week 1 and study the Word alongside the rest of the group.",
+            primaryButtonText: "Start Week 1 Bible Study",
+            primaryButtonHref: `/study-groups/${firstSeriesPost.group_id}/series/week/1`,
+            level: 1 as const,
+          });
+        }
+      }
+
+      // HIGH PRIORITY: Unread group notifications
+      const { count: unreadGroupCount } = await supabase
+        .from("notifications")
+        .select("id", { count: "exact", head: true })
+        .eq("user_id", userId)
+        .eq("is_read", false)
+        .like("article_slug", "/study-groups/%");
+
+      if (unreadGroupCount && unreadGroupCount > 0) {
+        const notifLine =
+          unreadGroupCount === 1
+            ? "There's new activity in your Bible Study Group."
+            : `There are ${unreadGroupCount} new things happening in your Bible Study Group.`;
+        primaryCandidates.push({
+          greeting,
+          contextLine: notifLine,
+          recommendationLine: "The group is active — check in and see what you missed.",
+          primaryButtonText: "Open Study Group",
+          primaryButtonHref: `/study-groups/${memberGroupIds[0]}/chat`,
+          level: 1 as const,
+        });
+      }
+
+      // SECONDARY: This week's live Bible study post
       const { data: liveStudyPosts } = await supabase
         .from("weekly_group_series_posts")
         .select("group_id, title, description, created_at")

@@ -1,6 +1,9 @@
 ﻿"use client";
 
 import dynamic from "next/dynamic";
+import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
+import { triggerPostSuccess } from "@/components/PostSuccessEffect";
+import { triggerToast } from "@/components/AppToast";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import ReactMarkdown from "react-markdown";
@@ -19,6 +22,7 @@ import { calculateStreakFromActions } from "@/lib/profileStats";
 import UserBadge from "@/components/UserBadge";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
+import LevelBadge from "@/components/LevelBadge";
 import { enrichBibleVerses } from "@/lib/bibleHighlighting";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { BIBLE_PEOPLE_LIST } from "@/lib/biblePeopleList";
@@ -70,6 +74,7 @@ interface Post {
   member_badge?: string | null;
   is_paid?: boolean;
   current_streak?: number | null;
+  current_level?: number | null;
 }
 
 interface GroupFeedComment {
@@ -87,6 +92,7 @@ interface GroupFeedComment {
   member_badge?: string | null;
   is_paid?: boolean;
   current_streak?: number | null;
+  current_level?: number | null;
 }
 
 interface Member {
@@ -97,6 +103,7 @@ interface Member {
   member_badge?: string | null;
   is_paid?: boolean;
   current_streak?: number | null;
+  current_level?: number | null;
 }
 
 interface TopBuddy {
@@ -107,6 +114,7 @@ interface TopBuddy {
   memberBadge: string | null;
   isPaid: boolean;
   currentStreak?: number | null;
+  currentLevel?: number | null;
   posts: number;
   comments: number;
   likes: number;
@@ -140,6 +148,7 @@ interface ArticleLikeUser {
   member_badge?: string | null;
   is_paid?: boolean;
   current_streak?: number | null;
+  current_level?: number | null;
 }
 
 interface DevotionalPreview {
@@ -202,6 +211,7 @@ interface SeriesComment {
   member_badge?: string | null;
   is_paid?: boolean;
   current_streak?: number | null;
+  current_level?: number | null;
 }
 
 interface AnalyticsUser {
@@ -562,7 +572,7 @@ function GroupCommentSection({
     const [{ data: profiles }, { data: likes }, { data: memberships }] = await Promise.all([
       supabase
         .from("profile_stats")
-        .select("user_id, profile_image_url, is_paid, member_badge, current_streak")
+        .select("user_id, profile_image_url, is_paid, member_badge, current_streak, current_level")
         .in("user_id", userIds),
       supabase
         .from("group_post_likes")
@@ -577,7 +587,7 @@ function GroupCommentSection({
     ]);
 
     const imageMap: Record<string, string | null> = {};
-    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null }> = {};
+    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; current_level: number | null }> = {};
     const roleMap: Record<string, string> = {};
     (profiles || []).forEach((profile: any) => {
       imageMap[profile.user_id] = profile.profile_image_url ?? null;
@@ -585,6 +595,7 @@ function GroupCommentSection({
         is_paid: !!profile.is_paid,
         member_badge: profile.member_badge ?? null,
         current_streak: profile.current_streak ?? null,
+        current_level: profile.current_level ?? null,
       };
     });
     (memberships || []).forEach((membership) => {
@@ -601,6 +612,7 @@ function GroupCommentSection({
         is_paid: badgeMap[row.user_id]?.is_paid ?? false,
         member_badge: badgeMap[row.user_id]?.member_badge ?? null,
         current_streak: badgeMap[row.user_id]?.current_streak ?? null,
+        current_level: badgeMap[row.user_id]?.current_level ?? null,
       }))
     );
     setLoading(false);
@@ -658,6 +670,7 @@ function GroupCommentSection({
     if (!error) {
       await loadComments();
       onCountChange(1);
+      triggerToast("Comment posted!");
       void logActionToMasterActions(userId, "group_message_sent", `group-post:${post.id}`);
       setNewComment("");
       setReplyText("");
@@ -728,6 +741,7 @@ function GroupCommentSection({
   }
 
   async function handleDeleteComment(comment: GroupFeedComment) {
+    triggerSmokeDelete();
     if (deletingCommentId) return;
     setDeletingCommentId(comment.id);
     setSubmitError(null);
@@ -802,6 +816,7 @@ function GroupCommentSection({
                 {name}
               </Link>
               <StreakFlameBadge currentStreak={comment.current_streak} />
+              <LevelBadge currentLevel={comment.current_level} />
               <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} />
             </div>
             {editingCommentId === comment.id ? (
@@ -1061,6 +1076,7 @@ export default function GroupChatPage() {
   const [newPostContent, setNewPostContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
+  const [likeAnimatingIds, setLikeAnimatingIds] = useState<Set<string>>(new Set());
   const [activePostMenuId, setActivePostMenuId] = useState<string | null>(null);
   const [editingFeedPost, setEditingFeedPost] = useState<Post | null>(null);
   const [deletePostId, setDeletePostId] = useState<string | null>(null);
@@ -2608,7 +2624,7 @@ RULES:
     const authorIds = [...new Set(rows.map((p) => p.user_id))];
     let roleMap: Record<string, string> = {};
     let imageMap: Record<string, string | null> = {};
-    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null }> = {};
+    const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; current_level: number | null }> = {};
 
     let likedSet = new Set<string>();
     const likeCountMap: Record<string, number> = {};
@@ -2627,7 +2643,7 @@ RULES:
     if (authorIds.length > 0) {
       const [{ data: mems }, { data: pics }] = await Promise.all([
         supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", authorIds),
-        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak").in("user_id", authorIds),
+        supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak, current_level").in("user_id", authorIds),
       ]);
       (mems || []).forEach((m) => { roleMap[m.user_id] = m.role; });
       (pics || []).forEach((p: any) => {
@@ -2636,6 +2652,7 @@ RULES:
           is_paid: !!p.is_paid,
           member_badge: p.member_badge ?? null,
           current_streak: p.current_streak ?? null,
+          current_level: p.current_level ?? null,
         };
       });
     }
@@ -2649,6 +2666,7 @@ RULES:
       is_paid: badgeMap[p.user_id]?.is_paid ?? false,
       member_badge: badgeMap[p.user_id]?.member_badge ?? null,
       current_streak: badgeMap[p.user_id]?.current_streak ?? null,
+      current_level: badgeMap[p.user_id]?.current_level ?? null,
     }))));
     setWeeklyPollByPostId(nextWeeklyPollByPostId);
     setWeeklyTriviaByPostId(nextWeeklyTriviaByPostId);
@@ -2677,7 +2695,7 @@ RULES:
 
     const [{ data: membership }, { data: profile }, { data: likeRows }, { count: directCommentCount }, { data: topLevelComments }] = await Promise.all([
       supabase.from("group_members").select("role").eq("group_id", group.id).eq("user_id", postRow.user_id).maybeSingle(),
-      supabase.from("profile_stats").select("profile_image_url, is_paid, member_badge, current_streak").eq("user_id", postRow.user_id).maybeSingle(),
+      supabase.from("profile_stats").select("profile_image_url, is_paid, member_badge, current_streak, current_level").eq("user_id", postRow.user_id).maybeSingle(),
       supabase.from("group_post_likes").select("post_id, user_id").eq("post_id", postRow.id),
       supabase.from("group_posts").select("id", { count: "exact", head: true }).eq("parent_post_id", postRow.id),
       supabase.from("group_posts").select("id").eq("parent_post_id", postRow.id),
@@ -2792,6 +2810,7 @@ RULES:
       is_paid: !!profile?.is_paid,
       member_badge: profile?.member_badge ?? null,
       current_streak: profile?.current_streak ?? null,
+      current_level: profile?.current_level ?? null,
     };
 
     setSelectedFeedPost(hydratedPost);
@@ -2809,6 +2828,8 @@ RULES:
       setSelectedFeedPost((prev) => prev?.id === post.id ? updated : prev);
       setPostLikers((prev) => prev.filter((liker) => liker.user_id !== userId));
     } else {
+      setLikeAnimatingIds((prev) => new Set(prev).add(post.id));
+      setTimeout(() => setLikeAnimatingIds((prev) => { const s = new Set(prev); s.delete(post.id); return s; }), 420);
       await supabase.from("group_post_likes").insert({ post_id: post.id, user_id: userId });
       await supabase.from("group_posts").update({ like_count: currentPost.like_count + 1 }).eq("id", post.id);
       const updated = { ...currentPost, like_count: currentPost.like_count + 1, liked: true };
@@ -2845,7 +2866,7 @@ RULES:
 
     const { data: profiles } = await supabase
       .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak")
+      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, current_level")
       .in("user_id", likerIds);
 
     setPostLikers(
@@ -2858,6 +2879,7 @@ RULES:
           is_paid: !!profile?.is_paid,
           member_badge: profile?.member_badge ?? null,
           current_streak: profile?.current_streak ?? null,
+          current_level: profile?.current_level ?? null,
         };
       }),
     );
@@ -3025,12 +3047,15 @@ RULES:
       }, ...prev]));
       resetPostComposer();
       setShowPostComposerModal(false);
+      triggerPostSuccess();
+      triggerToast("Posted to the group! 🙌");
       void logActionToMasterActions(userId, "group_message_sent", group?.name || "Group");
     }
     setSubmitting(false);
   }
 
   async function handleDeleteGroupPost() {
+    triggerSmokeDelete();
     if (!deletePostId || deletingPost) return;
     setDeletingPost(true);
     await supabase.from("group_posts").delete().eq("id", deletePostId);
@@ -3119,7 +3144,7 @@ RULES:
       if (likerIds.length > 0) {
         const { data: likerProfiles } = await supabase
           .from("profile_stats")
-          .select("user_id, display_name, username, profile_image_url, current_streak")
+          .select("user_id, display_name, username, profile_image_url, current_streak, current_level")
           .in("user_id", likerIds);
 
         likerMap = Object.fromEntries(
@@ -3130,6 +3155,7 @@ RULES:
               display_name: profile.display_name || profile.username || "Buddy",
               profile_image_url: profile.profile_image_url ?? null,
               current_streak: profile.current_streak ?? null,
+              current_level: profile.current_level ?? null,
             },
           ]),
         );
@@ -3631,6 +3657,7 @@ RULES:
   }
 
   async function handleDeleteSeriesComment(comment: SeriesComment) {
+    triggerSmokeDelete();
     if (!userId || deletingSeriesCommentId) return;
     setDeletingSeriesCommentId(comment.id);
 
@@ -4030,6 +4057,7 @@ RULES:
                                 <div className="flex items-center gap-1.5">
                                   <p className="truncate text-sm font-semibold text-gray-900">{buddy.displayName}</p>
                                   <StreakFlameBadge currentStreak={buddy.currentStreak} />
+                                  <LevelBadge currentLevel={buddy.currentLevel} />
                                 </div>
                                 <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                               </div>
@@ -4090,6 +4118,7 @@ RULES:
                             <div className="flex items-center gap-1.5">
                               <p className="text-sm font-semibold text-gray-900 truncate">{member.display_name}</p>
                               <StreakFlameBadge currentStreak={member.current_streak} />
+                              <LevelBadge currentLevel={member.current_level} />
                             </div>
                             <UserBadge customBadge={member.member_badge} isPaid={member.is_paid} groupRole={member.role} />
                           </div>
@@ -4177,6 +4206,7 @@ RULES:
                             <div className="flex items-center gap-1.5 mb-1">
                               <Link href={`/profile/${comment.user_id}`} className="text-sm font-semibold text-gray-900 hover:underline">{comment.display_name}</Link>
                               <StreakFlameBadge currentStreak={comment.current_streak} />
+                              <LevelBadge currentLevel={comment.current_level} />
                               <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} />
                               <span className="text-xs text-gray-400">{timeAgo(comment.created_at)}</span>
                             </div>
@@ -4249,6 +4279,7 @@ RULES:
                                   <div className="flex items-center gap-1.5 mb-0.5">
                                     <Link href={`/profile/${reply.user_id}`} className="text-xs font-semibold text-gray-900 hover:underline">{reply.display_name}</Link>
                                     <StreakFlameBadge currentStreak={reply.current_streak} />
+                                    <LevelBadge currentLevel={reply.current_level} />
                                     <UserBadge customBadge={reply.member_badge} isPaid={reply.is_paid} groupRole={reply.role} />
                                     <span className="text-xs text-gray-400">{timeAgo(reply.created_at)}</span>
                                   </div>
@@ -4997,6 +5028,7 @@ RULES:
                     {activeFeedPost.display_name || "Buddy"}
                   </p>
                   <StreakFlameBadge currentStreak={activeFeedPost.current_streak} />
+                  <LevelBadge currentLevel={activeFeedPost.current_level} />
                   <UserBadge customBadge={activeFeedPost.member_badge} isPaid={activeFeedPost.is_paid} groupRole={activeFeedPost.role} />
                   <span className="text-xs text-gray-400">{timeAgo(activeFeedPost.created_at)}</span>
                 </div>
@@ -5082,7 +5114,7 @@ RULES:
                   className="flex items-center gap-1.5 text-sm transition"
                   style={{ color: activeFeedPost.liked ? "#e53e3e" : "#9ca3af" }}
                 >
-                  <svg className="w-4 h-4" fill={activeFeedPost.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className={`w-4 h-4 ${likeAnimatingIds.has(activeFeedPost.id) ? "animate-heart-pop" : ""}`} fill={activeFeedPost.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
                   <span>{activeFeedPost.like_count > 0 ? activeFeedPost.like_count : ""}</span>
@@ -5339,6 +5371,7 @@ RULES:
                           {liker.display_name}
                         </Link>
                         <StreakFlameBadge currentStreak={liker.current_streak} />
+                        <LevelBadge currentLevel={liker.current_level} />
                         <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
                       </div>
                     </div>
@@ -5395,6 +5428,7 @@ RULES:
                           {liker.display_name}
                         </Link>
                         <StreakFlameBadge currentStreak={liker.current_streak} />
+                        <LevelBadge currentLevel={liker.current_level} />
                         <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
                       </div>
                     </div>
@@ -5797,6 +5831,7 @@ RULES:
                               {buddy.displayName}
                             </Link>
                             <StreakFlameBadge currentStreak={buddy.currentStreak} />
+                            <LevelBadge currentLevel={buddy.currentLevel} />
                             <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                           </div>
                           <p className="mt-1 text-xs text-gray-500">
@@ -5926,7 +5961,7 @@ RULES:
     const orderedPosts = sortPinnedPostsFirst(posts);
     return (
       <div className="flex flex-col gap-3">
-        {orderedPosts.map((post) => {
+        {orderedPosts.map((post, index) => {
           const pollSet = weeklyPollByPostId[post.id];
           const hasImagePost = Boolean(post.media_url && !isUploadedVideo(post.media_url) && !post.link_url);
           const isCoverOnlyFeedPost = isHomeFeedCoverPost(post);
@@ -5944,7 +5979,8 @@ RULES:
                 setSelectedFeedPost(post);
               }
             }}
-            className="w-full text-left transition cursor-pointer bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md"
+            className="w-full text-left transition cursor-pointer bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md animate-fade-in-up"
+            style={{ animationDelay: `${Math.min(index * 0.045, 0.45)}s` }}
           >
             <div>
             {post.is_pinned && <div className="flex items-center gap-1 text-xs text-amber-600 font-medium mb-2">📌 Pinned</div>}
@@ -5962,6 +5998,7 @@ RULES:
                     {post.display_name || "Buddy"}
                   </Link>
                   <StreakFlameBadge currentStreak={post.current_streak} />
+                  <LevelBadge currentLevel={post.current_level} />
                   <UserBadge customBadge={post.member_badge} isPaid={post.is_paid} groupRole={post.role} />
                   <span className="text-xs text-gray-400">{timeAgo(post.created_at)}</span>
                 </div>
@@ -6113,7 +6150,7 @@ RULES:
                 className="flex items-center gap-1.5 text-sm transition"
                 style={{ color: post.liked ? "#e53e3e" : "#9ca3af" }}
               >
-                <svg className="w-4 h-4" fill={post.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                <svg className={`w-4 h-4 ${likeAnimatingIds.has(post.id) ? "animate-heart-pop" : ""}`} fill={post.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </button>

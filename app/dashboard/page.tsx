@@ -149,6 +149,7 @@ export default function DashboardPage() {
   const [pendingTourNavigation, setPendingTourNavigation] = useState<string | null>(null);
   const [isSavingFeatureTour, setIsSavingFeatureTour] = useState(false);
   const [dailyRecommendationCard, setDailyRecommendationCard] = useState<DailyRecommendation | null>(null);
+  const [isDailyRecommendationLoading, setIsDailyRecommendationLoading] = useState(true);
 
   // Daily Welcome Overlay logic (with dev override)
   useEffect(() => {
@@ -1029,6 +1030,14 @@ export default function DashboardPage() {
           setLevelInfo(levelInfoData);
           setMotivationalMessage(randomMessage);
         }
+
+        // Write current_level back to profile_stats so other components can read it
+        supabase
+          .from("profile_stats")
+          .update({ current_level: level })
+          .eq("user_id", userId)
+          .then(() => {});
+
       } catch (err) {
         if (!didCancel) {
           console.warn("Error loading level data:", err);
@@ -1251,6 +1260,8 @@ export default function DashboardPage() {
           console.warn("Error loading daily recommendation card:", error);
           setDailyRecommendationCard(null);
         }
+      } finally {
+        if (!cancelled) setIsDailyRecommendationLoading(false);
       }
     }
 
@@ -1306,6 +1317,7 @@ export default function DashboardPage() {
           userName={userName}
           handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
           setShowLevelInfoModal={setShowLevelInfoModal}
+          isLoadingRecommendation={isDailyRecommendationLoading}
           dailyRecommendation={dailyRecommendationCard}
           dailyRecommendationCardTitle={dailyRecommendationCardCopy.title}
           dailyRecommendationCardSubtitle={dailyRecommendationCardCopy.subtitle}
@@ -1346,6 +1358,7 @@ export default function DashboardPage() {
           userName={userName}
           handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
           setShowLevelInfoModal={setShowLevelInfoModal}
+          isLoadingRecommendation={isDailyRecommendationLoading}
           dailyRecommendation={dailyRecommendationCard}
           dailyRecommendationCardTitle={dailyRecommendationCardCopy.title}
           dailyRecommendationCardSubtitle={dailyRecommendationCardCopy.subtitle}

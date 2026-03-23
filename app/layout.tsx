@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 import AppShell from "@/components/AppShell";
+import { SmokeDeleteEffect } from "@/components/SmokeDeleteEffect";
+import { PostSuccessEffect } from "@/components/PostSuccessEffect";
+import { AppToast } from "@/components/AppToast";
 import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
 // redeploy trigger
 
@@ -73,6 +76,9 @@ export default function RootLayout({
             <AppShell>{children}</AppShell>
           </div>
         </div>
+        <SmokeDeleteEffect />
+        <PostSuccessEffect />
+        <AppToast />
         {/* ✅ VERCEL ANALYTICS */}
         <Analytics />
       </body>

@@ -114,7 +114,7 @@ export async function GET(
   const { data: profiles } = ranked.length
     ? await supabaseAdmin
         .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid")
+        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level")
         .in("user_id", ranked.map((entry) => entry.userId))
     : { data: [] as Array<any> };
 
@@ -127,6 +127,8 @@ export async function GET(
       profileImageUrl: profile?.profile_image_url ?? null,
       memberBadge: profile?.member_badge ?? null,
       isPaid: !!profile?.is_paid,
+      currentStreak: profile?.current_streak ?? null,
+      currentLevel: profile?.current_level ?? null,
       posts: entry.posts,
       comments: entry.comments,
       likes: entry.likes,

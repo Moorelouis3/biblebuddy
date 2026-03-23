@@ -1,6 +1,7 @@
 ﻿"use client";
 import { useEffect, useState, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "@/lib/supabaseClient";
@@ -892,6 +893,7 @@ function ReflectionSection({
   }
 
   async function handleDeleteReflection(reflection: ReflectionEntry) {
+    triggerSmokeDelete();
     if (deletingId) return;
     setDeletingId(reflection.id);
     setActiveMenuId(null);

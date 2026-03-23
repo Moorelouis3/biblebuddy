@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
 import Image from "next/image";
 import { supabase } from "../../lib/supabaseClient";
 import NewNoteModal from "../../components/NewNoteModal";
@@ -438,6 +439,7 @@ export default function NotesPage() {
   }
 
   async function handleDelete() {
+    triggerSmokeDelete();
     if (!editingNoteId || !userId) return;
     await supabase
       .from("notes")
