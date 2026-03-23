@@ -147,11 +147,31 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
     ),
   },
   {
-    title: "Not understanding a person, place, or keyword can ruin your focus fast",
-    description: "Why this matters:\nOne of the easiest ways to lose your focus in the Bible is to hit a name, place, or word you do not understand and then disappear into random searches.\n\nHow to use it:\nAcross the app, when you see those colored study words in the reader, tap them right there.\n\nWhat it helps you do:\nOpen the explanation for people, places, and keywords without leaving the text, so you stay locked in while you study.",
-    contentHtml: paragraphize(
-      "Why this matters:\nOne of the easiest ways to lose your focus in the Bible is to hit a name, place, or word you do not understand and then disappear into random searches.\n\nHow to use it:\nAcross the app, when you see those colored study words in the reader, tap them right there.\n\nWhat it helps you do:\nOpen the explanation for people, places, and keywords without leaving the text, so you stay locked in while you study.",
-    ),
+    title: "What do you do if you don't understand a person, place, or word when reading the Bible?",
+    description: "I built Bible Buddy because I got tired of how many things I needed just to study the Bible. Highlighters, notebooks, Notion, Google, YouTube, two other Bible apps — all of that just because I would hit a word I didn't understand. Now you can just tap it and the explanation opens right there.",
+    contentHtml: `
+<p>I built Bible Buddy because I got tired of how many things I needed just to study the Bible.</p>
+<p>Highlighters. Notebooks. Notion. Google. YouTube. Two other Bible apps.</p>
+<p>All of that just because I would get to reading and hit a person, place, or word I didn't understand — and then I had to stop, search it up, write the definition down, and piece together what it meant before the verse even made sense.</p>
+<p>That broke my focus every single time. So I made something better.</p>
+<h2>📖 Reading the Bible is different now</h2>
+<p>Inside Bible Buddy we have a full <a href="/reading"><strong>Bible reader</strong></a> built specifically for this problem.</p>
+<p>When you come across a person, place, or keyword you don't know — you don't have to leave the page. Just tap it right there and the explanation opens instantly.</p>
+<h2>🔍 How it works</h2>
+<ul>
+<li>🟠 <strong>People</strong> are highlighted in orange — tap to see who they are and why they matter</li>
+<li>🟢 <strong>Places</strong> are highlighted in green — tap to see where it is and the context behind it</li>
+<li>🔵 <strong>Keywords</strong> are highlighted in blue — tap to get a clear definition right there</li>
+</ul>
+<p>The explanation pops up without taking you anywhere else. You stay in the text the whole time.</p>
+<h2>✅ What this does for your study</h2>
+<ul>
+<li>✔ You stay in Scripture instead of disappearing into searches</li>
+<li>✔ You understand the full verse or chapter instead of guessing</li>
+<li>✔ Your focus stays locked in from start to finish</li>
+</ul>
+<p>This is one of the main reasons I built the app. Open the Bible and try it — <a href="/reading"><strong>tap here to open the Bible reader →</strong></a></p>
+`.trim(),
   },
   {
     title: "Bible trivia is one of the easiest ways to keep learning without feeling overwhelmed",
