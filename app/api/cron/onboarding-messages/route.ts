@@ -213,7 +213,7 @@ export async function GET(request: NextRequest) {
   // ── Fetch ALL recent auth users (paginated) for Day 1 detection ──────────
   // We cannot rely on a single page because listUsers returns oldest-first and
   // new signups will be past page 1 once the total user count exceeds 1000.
-  const sevenDaysAgo = new Date(now - 7 * DAY_MS);
+  const sevenDaysAgo = new Date(Date.now() - 7 * DAY_MS);
   const recentAuthUsers: any[] = [];
   let fetchPage = 1;
   while (true) {
