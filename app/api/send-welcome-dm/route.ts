@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
 export const runtime = "nodejs";
+// Give the function up to 30 seconds (Vercel Pro / Hobby max)
+export const maxDuration = 30;
 
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 const APP_URL = (process.env.NEXT_PUBLIC_APP_URL || "https://biblebuddy.app").replace(/\/$/, "");
@@ -19,6 +21,38 @@ so I made something simpler
 Bible Buddy is built to help you understand what you're reading, not just go through it
 
 take a look around and get familiar with everything`;
+
+// ── Resolve Louis's user ID ───────────────────────────────────────────────
+// Fastest path: LOUIS_USER_ID env var (set once in Vercel → zero DB calls).
+// Fallback: scan profile_stats for the founder email's user_id via a
+//           direct HTTP call to the Supabase auth admin endpoint (much
+//           faster than fetching 1000+ users with listUsers).
+async function resolveFounderId(supabaseUrl: string, serviceKey: string, db: any): Promise<string | null> {
+  // 1. Env var — instant
+  if (process.env.LOUIS_USER_ID) return process.env.LOUIS_USER_ID;
+
+  // 2. Supabase auth REST API filtered by email — returns 1 user, not 1000
+  try {
+    const res = await fetch(
+      `${supabaseUrl}/auth/v1/admin/users?filter=${encodeURIComponent(`email=="${LOUIS_EMAIL}"`)}`,
+      { headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}` } }
+    );
+    if (res.ok) {
+      const json = await res.json();
+      const found = (json?.users ?? []).find((u: any) => u.email === LOUIS_EMAIL);
+      if (found?.id) return found.id;
+    }
+  } catch (_) {}
+
+  // 3. Last resort: listUsers page 1 (Louis is an early user)
+  try {
+    const { data } = await db.auth.admin.listUsers({ page: 1, perPage: 1000 });
+    const found = (data?.users ?? []).find((u: any) => u.email === LOUIS_EMAIL);
+    if (found?.id) return found.id;
+  } catch (_) {}
+
+  return null;
+}
 
 export async function POST(request: NextRequest) {
   let userId: string;
@@ -47,7 +81,7 @@ export async function POST(request: NextRequest) {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  // Set display_name in profile_stats for the new user so their name shows in messages
+  // Set display_name in profile_stats
   const displayName = [firstName, lastName].filter(Boolean).join(" ").trim();
   if (displayName) {
     await db.from("profile_stats").upsert(
@@ -56,26 +90,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Resolve Louis's user ID
-  const { data: authData, error: authError } = await db.auth.admin.listUsers({ perPage: 1000 });
-  if (authError) {
-    return NextResponse.json({ error: "Could not list auth users." }, { status: 500 });
-  }
-  const louisAuthUser = authData.users.find((u: any) => u.email === LOUIS_EMAIL);
-  if (!louisAuthUser) {
-    return NextResponse.json({ error: "Founder account not found." }, { status: 404 });
-  }
-  const louisId = louisAuthUser.id;
-
-  // Resolve Louis's display name
-  const { data: louisProfile } = await db
-    .from("profile_stats")
-    .select("display_name, username")
-    .eq("user_id", louisId)
-    .maybeSingle();
-  const louisName = louisProfile?.display_name || louisProfile?.username || "Louis";
-
-  // Check if day 1 already sent
+  // Check if day 1 already sent (do this before the expensive founder lookup)
   const { data: alreadySent } = await db
     .from("onboarding_dm_sent")
     .select("id")
@@ -86,6 +101,21 @@ export async function POST(request: NextRequest) {
   if (alreadySent) {
     return NextResponse.json({ ok: true, skipped: true });
   }
+
+  // Resolve Louis's user ID (fast path first)
+  const louisId = await resolveFounderId(supabaseUrl, serviceKey, db);
+  if (!louisId) {
+    console.error("[WELCOME_DM] Founder account not found.");
+    return NextResponse.json({ error: "Founder account not found." }, { status: 404 });
+  }
+
+  // Resolve Louis's display name
+  const { data: louisProfile } = await db
+    .from("profile_stats")
+    .select("display_name, username")
+    .eq("user_id", louisId)
+    .maybeSingle();
+  const louisName = louisProfile?.display_name || louisProfile?.username || "Louis";
 
   // conversations table requires user_id_1 < user_id_2
   const [uid1, uid2] = louisId < userId ? [louisId, userId] : [userId, louisId];
@@ -117,24 +147,23 @@ export async function POST(request: NextRequest) {
   const now = new Date().toISOString();
   const preview = MSG_DAY1.slice(0, 120);
 
-  // Insert the message
-  const { error: msgError } = await db.from("messages").insert({
-    conversation_id: conversationId,
-    sender_id: louisId,
-    content: MSG_DAY1,
-    created_at: now,
-  });
+  // Insert message + update convo + upsert notification in parallel
+  const [msgResult] = await Promise.all([
+    db.from("messages").insert({
+      conversation_id: conversationId,
+      sender_id: louisId,
+      content: MSG_DAY1,
+      created_at: now,
+    }),
+    db.from("conversations")
+      .update({ last_message_at: now, last_message_preview: preview })
+      .eq("id", conversationId),
+  ]);
 
-  if (msgError) {
-    console.error("[WELCOME_DM] Failed to insert message:", msgError.message);
+  if (msgResult.error) {
+    console.error("[WELCOME_DM] Failed to insert message:", msgResult.error.message);
     return NextResponse.json({ error: "Failed to send message." }, { status: 500 });
   }
-
-  // Update conversation metadata
-  await db
-    .from("conversations")
-    .update({ last_message_at: now, last_message_preview: preview })
-    .eq("id", conversationId);
 
   // Upsert notification
   const { data: existingNotif } = await db

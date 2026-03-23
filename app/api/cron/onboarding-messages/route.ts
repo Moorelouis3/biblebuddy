@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 60; // seconds — use Vercel Pro's extended limit
 
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 const APP_URL = (process.env.NEXT_PUBLIC_APP_URL || "https://biblebuddy.app").replace(/\/$/, "");
@@ -196,19 +197,32 @@ export async function GET(request: NextRequest) {
   const supabaseAdmin = db;
 
   // ── Resolve Louis's user ID ──────────────────────────────────────────────
-  // Fetch page 1 only — Louis was an early user so he'll always be here.
-  const { data: firstPageData, error: authError } = await supabaseAdmin.auth.admin.listUsers({
-    page: 1,
-    perPage: 1000,
-  });
-  if (authError) {
-    return NextResponse.json({ error: "Could not list auth users." }, { status: 500 });
+  // Fast path: LOUIS_USER_ID env var (zero API calls).
+  // Fallback: targeted auth REST API (returns 1 user, not 1000).
+  // Last resort: listUsers page 1.
+  let louisId: string | null = process.env.LOUIS_USER_ID ?? null;
+  if (!louisId) {
+    try {
+      const res = await fetch(
+        `${supabaseUrl}/auth/v1/admin/users?filter=${encodeURIComponent(`email=="${LOUIS_EMAIL}"`)}`,
+        { headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}` } }
+      );
+      if (res.ok) {
+        const json = await res.json();
+        louisId = (json?.users ?? []).find((u: any) => u.email === LOUIS_EMAIL)?.id ?? null;
+      }
+    } catch (_) {}
   }
-  const louisAuthUser = firstPageData.users.find((u: any) => u.email === LOUIS_EMAIL);
-  if (!louisAuthUser) {
+  if (!louisId) {
+    try {
+      const { data: p1, error: authError } = await supabaseAdmin.auth.admin.listUsers({ page: 1, perPage: 1000 });
+      if (authError) return NextResponse.json({ error: "Could not list auth users." }, { status: 500 });
+      louisId = p1.users.find((u: any) => u.email === LOUIS_EMAIL)?.id ?? null;
+    } catch (_) {}
+  }
+  if (!louisId) {
     return NextResponse.json({ error: "Founder account not found." }, { status: 404 });
   }
-  const louisId = louisAuthUser.id;
 
   // ── Fetch ALL recent auth users (paginated) for Day 1 detection ──────────
   // We cannot rely on a single page because listUsers returns oldest-first and
@@ -277,21 +291,27 @@ export async function GET(request: NextRequest) {
   const now = Date.now();
   const stats = { day1: 0, day2: 0, day3: 0, day4: 0, errors: 0 };
 
-  // ── Day 1 — send as soon as a new user signs up ──────────────────────────
-  // recentAuthUsers was built above via full pagination — all users from the
-  // last 7 days regardless of total user count.
-  for (const authUser of recentAuthUsers) {
-    if (day1Sent.has(authUser.id)) continue;
-
-    const ok = await sendDM(supabaseAdmin, louisId, louisName, authUser.id, MSG_DAY1);
-    if (ok) {
-      await supabaseAdmin
-        .from("onboarding_dm_sent")
-        .insert({ user_id: authUser.id, day_number: 1 });
-      stats.day1++;
-    } else {
-      stats.errors++;
-    }
+  // ── Day 1 — send to every new user who hasn't gotten it yet ─────────────
+  // Run in parallel (up to 10 at a time) so a burst of signups doesn't timeout.
+  const day1Pending = recentAuthUsers.filter((u) => !day1Sent.has(u.id));
+  const BATCH = 10;
+  for (let i = 0; i < day1Pending.length; i += BATCH) {
+    const batch = day1Pending.slice(i, i + BATCH);
+    const results = await Promise.allSettled(
+      batch.map(async (authUser) => {
+        const ok = await sendDM(supabaseAdmin, louisId!, louisName, authUser.id, MSG_DAY1);
+        if (ok) {
+          await supabaseAdmin
+            .from("onboarding_dm_sent")
+            .insert({ user_id: authUser.id, day_number: 1 });
+          stats.day1++;
+        } else {
+          stats.errors++;
+        }
+      })
+    );
+    // Count any unexpected rejections
+    stats.errors += results.filter((r) => r.status === "rejected").length;
   }
 
   // ── Day 2 — 24h after day 1, branch on profile completion ───────────────
