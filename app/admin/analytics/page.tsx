@@ -120,16 +120,11 @@ export default function AnalyticsPage() {
 
   // Admin Action Log
   const [actionLog, setActionLog] = useState<
-    Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string; url?: string }>
+    Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string; url?: string; dmCount?: number }>
   >([]);
   const [loadingActionLog, setLoadingActionLog] = useState(true);
 
-  // User profile popup
-  const [selectedUser, setSelectedUser] = useState<{ userId: string; username: string } | null>(null);
-  const [userProfile, setUserProfile] = useState<any | null>(null);
-  const [loadingUserProfile, setLoadingUserProfile] = useState(false);
-
-  // Raw master_actions cache (populated during buildAdminActionLog, used for popup)
+  // Raw master_actions cache (no longer used for popup, kept for reference)
   const rawMasterActionsRef = useRef<Array<{ user_id: string; action_type: string; action_label: string | null; created_at: string }>>([]);
 
   // Devotional stats
@@ -909,7 +904,7 @@ export default function AnalyticsPage() {
   // Build Admin Action Log from master_actions table (all users)
   async function buildAdminActionLog(filter?: TimeFilter, actionTypeFilter?: string | null) {
     setLoadingActionLog(true);
-    const actions: Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string; url?: string }> = [];
+    const actions: Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string; url?: string; dmCount?: number }> = [];
 
     // Pre-fetch devotional title→ID map for URL derivation
     const devotionalIdMap = new Map<string, string>();
@@ -1305,6 +1300,29 @@ export default function AnalyticsPage() {
 
       // Actions are already sorted by created_at DESC from the query, but sort again to be safe
       actions.sort((a, b) => b.sortKey - a.sortKey);
+
+      // Fetch welcome DM counts for all users in the log (to show under signup entries)
+      const allUserIds = [...new Set(actions.map((a) => a.userId).filter(Boolean) as string[])];
+      if (allUserIds.length > 0) {
+        try {
+          const { data: dmRows } = await supabase
+            .from("onboarding_dm_sent")
+            .select("user_id")
+            .in("user_id", allUserIds);
+          if (dmRows) {
+            const dmCountMap = new Map<string, number>();
+            for (const row of dmRows) {
+              dmCountMap.set(row.user_id, (dmCountMap.get(row.user_id) ?? 0) + 1);
+            }
+            for (const action of actions) {
+              if (action.userId && action.actionType === "user_signup") {
+                action.dmCount = dmCountMap.get(action.userId) ?? 0;
+              }
+            }
+          }
+        } catch (_) {}
+      }
+
       setActionLog(actions);
       setLoadingActionLog(false);
     } catch (err) {
@@ -1314,66 +1332,6 @@ export default function AnalyticsPage() {
     }
   }
 
-  // Load profile data for the user popup
-  async function openUserProfile(userId: string, username: string) {
-    setSelectedUser({ userId, username });
-    setUserProfile(null);
-    setLoadingUserProfile(true);
-
-    // Fetch ALL of this user's master_actions (no time filter, no limit).
-    // master_actions has no user-level RLS so this works for any user.
-    const { data: allActions } = await supabase
-      .from("master_actions")
-      .select("action_type, action_label, created_at, username")
-      .eq("user_id", userId)
-      .order("created_at", { ascending: false });
-
-    const actions = allActions || [];
-
-    // Compute stats from raw actions
-    const count = (type: string) => actions.filter((a) => a.action_type === type).length;
-
-    const distinctLoginDays = new Set(
-      actions
-        .filter((a) => a.action_type === "user_login")
-        .map((a) => new Date(a.created_at).toISOString().split("T")[0])
-    ).size;
-
-    const signupAction = actions
-      .filter((a) => a.action_type === "user_signup")
-      .sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())[0] ?? null;
-
-    const computedStats = {
-      total_actions: actions.length,
-      chapters_completed_count: count("chapter_completed"),
-      notes_created_count: count("note_created"),
-      people_learned_count: count("person_learned"),
-      places_discovered_count: count("place_discovered"),
-      keywords_mastered_count: count("keyword_mastered"),
-      trivia_questions_answered: count("trivia_question_answered"),
-    };
-
-    // Compute current streak (consecutive days with any non-login action up to today)
-    const activityDates = new Set(
-      actions
-        .filter((a) => a.action_type !== "user_login" && a.action_type !== "user_signup")
-        .map((a) => new Date(a.created_at).toISOString().split("T")[0])
-    );
-    let streak = 0;
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    for (let i = 0; i < 365; i++) {
-      const d = new Date(today);
-      d.setDate(d.getDate() - i);
-      const key = d.toISOString().split("T")[0];
-      if (activityDates.has(key)) { streak++; } else { break; }
-    }
-
-    const recentActions = actions.slice(0, 20);
-
-    setUserProfile({ computedStats, recentActions, distinctLoginDays, signupAction, currentStreak: streak });
-    setLoadingUserProfile(false);
-  }
 
   // Format date for admin action log (includes month and day)
   function formatAdminActionDate(date: Date): string {
@@ -2153,33 +2111,69 @@ export default function AnalyticsPage() {
               </div>
             ) : (
               <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
-                <div className={`max-h-96 overflow-y-auto ${actionLog.length > 10 ? 'p-4' : 'p-4'}`}>
-                  {actionLog.map((action, idx) => (
-                    <div
-                      key={idx}
-                      className={`flex items-center justify-between mb-2 p-3 rounded ${getActionColorClass(action.actionType)}`}
-                    >
-                      <button
-                        type="button"
-                        onClick={() => action.userId && openUserProfile(action.userId, action.username)}
-                        className={`flex-1 text-left transition-opacity hover:opacity-80 ${action.userId ? "cursor-pointer" : "cursor-default"}`}
+                <div className="max-h-96 overflow-y-auto p-4">
+                  {actionLog.map((action, idx) => {
+                    // Split text around the username so we can make it a link
+                    const nameParts = action.username && action.text.includes(action.username)
+                      ? action.text.split(action.username)
+                      : null;
+                    return (
+                      <div
+                        key={idx}
+                        className={`flex items-start justify-between mb-2 p-3 rounded ${getActionColorClass(action.actionType)}`}
                       >
-                        <p className="text-sm text-gray-900">{action.text}</p>
-                      </button>
-                      {action.url && (
-                        <a
-                          href={action.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="ml-3 flex-shrink-0 text-xs font-semibold text-blue-600 hover:text-blue-800 underline"
-                          title="View content"
-                        >
-                          View →
-                        </a>
-                      )}
-                    </div>
-                  ))}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm text-gray-900 leading-snug">
+                            {nameParts ? (
+                              <>
+                                {nameParts[0]}
+                                {action.userId ? (
+                                  <a
+                                    href={`/profile/${action.userId}`}
+                                    className="font-semibold text-blue-700 hover:underline"
+                                  >
+                                    {action.username}
+                                  </a>
+                                ) : (
+                                  <span className="font-semibold">{action.username}</span>
+                                )}
+                                {nameParts.slice(1).join(action.username)}
+                              </>
+                            ) : (
+                              action.text
+                            )}
+                          </p>
+                          {action.actionType === "user_signup" && action.dmCount !== undefined && (
+                            <p className="text-xs mt-0.5 text-gray-500">
+                              💬 {action.dmCount} of 4 welcome messages sent
+                            </p>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2 ml-3 flex-shrink-0">
+                          {action.url && (
+                            <a
+                              href={action.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-xs font-semibold text-blue-600 hover:text-blue-800 underline"
+                              title="View content"
+                            >
+                              View →
+                            </a>
+                          )}
+                          {action.userId && (
+                            <a
+                              href={`/profile/${action.userId}`}
+                              className="text-xs font-semibold text-gray-500 hover:text-gray-800 hover:underline"
+                              title="View profile"
+                            >
+                              Profile →
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -2877,89 +2871,6 @@ export default function AnalyticsPage() {
         Admin view only (moorelouis3@gmail.com)
       </p>
 
-      {/* USER PROFILE POPUP */}
-      {selectedUser && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[85vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900">{selectedUser.username}</h3>
-                  <p className="text-xs text-gray-400 mt-0.5">User Profile</p>
-                </div>
-                <button
-                  onClick={() => { setSelectedUser(null); setUserProfile(null); }}
-                  className="text-gray-400 hover:text-gray-600 text-2xl leading-none ml-4"
-                >
-                  ×
-                </button>
-              </div>
-
-              {loadingUserProfile ? (
-                <p className="text-sm text-gray-400 text-center py-8">Loading profile...</p>
-              ) : userProfile ? (
-                <div className="space-y-5">
-                  {/* Joined */}
-                  {userProfile.signupAction && (
-                    <div className="text-sm text-gray-600">
-                      <span className="font-semibold text-gray-800">Joined: </span>
-                      {new Date(userProfile.signupAction.created_at).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
-                    </div>
-                  )}
-
-                  {/* Key stats grid */}
-                  <div className="grid grid-cols-2 gap-3">
-                    {[
-                      { label: "Total Actions", value: userProfile.computedStats.total_actions },
-                      { label: "Login Days", value: userProfile.distinctLoginDays },
-                      { label: "Chapters Read", value: userProfile.computedStats.chapters_completed_count },
-                      { label: "Notes Created", value: userProfile.computedStats.notes_created_count },
-                      { label: "People Learned", value: userProfile.computedStats.people_learned_count },
-                      { label: "Places Discovered", value: userProfile.computedStats.places_discovered_count },
-                      { label: "Keywords Mastered", value: userProfile.computedStats.keywords_mastered_count },
-                      { label: "Trivia Answered", value: userProfile.computedStats.trivia_questions_answered },
-                      { label: "Current Streak", value: `${userProfile.currentStreak} days` },
-                    ].map((stat) => (
-                      <div key={stat.label} className="bg-gray-50 rounded-xl p-3">
-                        <p className="text-xs text-gray-500 mb-0.5">{stat.label}</p>
-                        <p className="text-lg font-bold text-gray-900">{stat.value}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Recent Activity */}
-                  <div>
-                    <h4 className="text-sm font-semibold text-gray-700 mb-2">Recent Activity</h4>
-                    {userProfile.recentActions.length === 0 ? (
-                      <p className="text-sm text-gray-400">No recent activity.</p>
-                    ) : (
-                      <div className="space-y-1 max-h-48 overflow-y-auto">
-                        {userProfile.recentActions.map((a: any, i: number) => (
-                          <div key={i} className="text-xs text-gray-600 flex justify-between gap-2 py-1 border-b border-gray-100">
-                            <span className="capitalize">{a.action_label || a.action_type.replace(/_/g, " ")}</span>
-                            <span className="text-gray-400 whitespace-nowrap">
-                              {new Date(a.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ) : (
-                <p className="text-sm text-gray-400 text-center py-8">No profile data found.</p>
-              )}
-
-              <button
-                onClick={() => { setSelectedUser(null); setUserProfile(null); }}
-                className="mt-6 w-full bg-gray-100 text-gray-600 text-sm font-medium py-2 rounded-xl hover:bg-gray-200 transition"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

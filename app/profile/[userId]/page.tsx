@@ -131,7 +131,7 @@ export default function PublicProfilePage() {
   const [bibleCompletion, setBibleCompletion] = useState(0);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
-  const [actionLog, setActionLog] = useState<Array<{ date: string; text: string; sortKey: number; actionType: string }>>([]);
+  const [actionLog, setActionLog] = useState<Array<{ date: string; text: string; sortKey: number; actionType: string; url?: string }>>([]);
   const [userGroups, setUserGroups] = useState<Array<{ id: string; name: string; cover_emoji: string | null; cover_color: string | null; member_count: number }>>([]);
   const [showEditModal, setShowEditModal] = useState(false);
   const [editDisplayName, setEditDisplayName] = useState("");
@@ -598,7 +598,7 @@ export default function PublicProfilePage() {
   }
 
   async function buildActionLog(uid: string) {
-    const actions: Array<{ date: string; text: string; sortKey: number; actionType: string }> = [];
+    const actions: Array<{ date: string; text: string; sortKey: number; actionType: string; url?: string }> = [];
     const { data: masterActions, error } = await supabase
       .from("master_actions")
       .select("action_type, action_label, created_at")
@@ -612,19 +612,57 @@ export default function PublicProfilePage() {
       const actionDate = new Date(action.created_at);
       const dateKey = actionDate.toISOString().split("T")[0];
       const d = formatActionDate(actionDate);
+      const label = action.action_label?.trim() || null;
 
       if (action.action_type === "chapter_completed") {
-        actions.push({ date: d, text: action.action_label ? `${d} — Read ${action.action_label}` : `${d} — Read a chapter`, sortKey: actionDate.getTime(), actionType: "chapter_completed" });
+        let url: string | undefined;
+        if (label) {
+          const match = label.match(/^(.+?)\s+(\d+)$/);
+          if (match) url = `/Bible/${encodeURIComponent(match[1])}/${match[2]}`;
+        }
+        actions.push({ date: d, text: label ? `${d} — Read ${label}` : `${d} — Read a chapter`, sortKey: actionDate.getTime(), actionType: "chapter_completed", url });
       } else if (action.action_type === "book_completed") {
-        actions.push({ date: d, text: action.action_label ? `${d} — Finished ${action.action_label}` : `${d} — Finished a book`, sortKey: actionDate.getTime(), actionType: "book_completed" });
+        actions.push({ date: d, text: label ? `${d} — Finished ${label}` : `${d} — Finished a book`, sortKey: actionDate.getTime(), actionType: "book_completed" });
       } else if (action.action_type === "person_learned") {
-        actions.push({ date: d, text: action.action_label ? `${d} — Learned about ${action.action_label}` : `${d} — Learned about a Bible person`, sortKey: actionDate.getTime(), actionType: "person_learned" });
+        actions.push({ date: d, text: label ? `${d} — Learned about ${label}` : `${d} — Learned about a Bible person`, sortKey: actionDate.getTime(), actionType: "person_learned" });
       } else if (action.action_type === "place_discovered") {
-        actions.push({ date: d, text: action.action_label ? `${d} — Discovered ${action.action_label}` : `${d} — Discovered a Bible place`, sortKey: actionDate.getTime(), actionType: "place_discovered" });
+        actions.push({ date: d, text: label ? `${d} — Discovered ${label}` : `${d} — Discovered a Bible place`, sortKey: actionDate.getTime(), actionType: "place_discovered" });
       } else if (action.action_type === "keyword_mastered") {
-        actions.push({ date: d, text: action.action_label ? `${d} — Explored ${action.action_label}` : `${d} — Explored a Bible keyword`, sortKey: actionDate.getTime(), actionType: "keyword_mastered" });
+        actions.push({ date: d, text: label ? `${d} — Mastered the keyword "${label}"` : `${d} — Mastered a Bible keyword`, sortKey: actionDate.getTime(), actionType: "keyword_mastered" });
       } else if (action.action_type === "note_created") {
         actions.push({ date: d, text: `${d} — Created a note`, sortKey: actionDate.getTime(), actionType: "note_created" });
+      } else if (action.action_type === "verse_highlighted") {
+        actions.push({ date: d, text: label ? `${d} — Highlighted ${label}` : `${d} — Highlighted a verse`, sortKey: actionDate.getTime(), actionType: "verse_highlighted" });
+      } else if (action.action_type === "devotional_day_completed") {
+        actions.push({ date: d, text: label ? `${d} — Completed ${label}` : `${d} — Completed a devotional day`, sortKey: actionDate.getTime(), actionType: "devotional_day_completed" });
+      } else if (action.action_type === "trivia_question_answered") {
+        actions.push({ date: d, text: label ? `${d} — Answered a trivia question (${label})` : `${d} — Answered a trivia question`, sortKey: actionDate.getTime(), actionType: "trivia_question_answered" });
+      } else if (action.action_type === "feed_post_thought") {
+        actions.push({ date: d, text: label ? `${d} — Posted a thought: "${label}"` : `${d} — Posted a thought to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_thought", url: "/bb-feed" });
+      } else if (action.action_type === "feed_post_prayer") {
+        actions.push({ date: d, text: `${d} — Posted a prayer to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer", url: "/bb-feed" });
+      } else if (action.action_type === "feed_post_prayer_request") {
+        actions.push({ date: d, text: `${d} — Posted a prayer request to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_prayer_request", url: "/bb-feed" });
+      } else if (action.action_type === "feed_post_photo") {
+        actions.push({ date: d, text: `${d} — Posted a photo to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_photo", url: "/bb-feed" });
+      } else if (action.action_type === "feed_post_video") {
+        actions.push({ date: d, text: `${d} — Posted a video to the feed`, sortKey: actionDate.getTime(), actionType: "feed_post_video", url: "/bb-feed" });
+      } else if (action.action_type === "feed_post_liked") {
+        // action_label may contain post_id — try to build a link with a hash anchor
+        const postUrl = label ? `/bb-feed#post-${label}` : "/bb-feed";
+        actions.push({ date: d, text: `${d} — Liked a post`, sortKey: actionDate.getTime(), actionType: "feed_post_liked", url: postUrl });
+      } else if (action.action_type === "feed_post_commented") {
+        const postUrl = label ? `/bb-feed#post-${label}` : "/bb-feed";
+        actions.push({ date: d, text: `${d} — Commented on a post`, sortKey: actionDate.getTime(), actionType: "feed_post_commented", url: postUrl });
+      } else if (action.action_type === "feed_post_replied") {
+        const postUrl = label ? `/bb-feed#post-${label}` : "/bb-feed";
+        actions.push({ date: d, text: `${d} — Replied to a comment`, sortKey: actionDate.getTime(), actionType: "feed_post_replied", url: postUrl });
+      } else if (action.action_type === "group_message_sent") {
+        actions.push({ date: d, text: label ? `${d} — Sent a message in ${label}` : `${d} — Sent a group message`, sortKey: actionDate.getTime(), actionType: "group_message_sent", url: "/study-groups" });
+      } else if (action.action_type === "buddy_added") {
+        actions.push({ date: d, text: label ? `${d} — Added ${label} as a Bible Buddy` : `${d} — Added a Bible Buddy`, sortKey: actionDate.getTime(), actionType: "buddy_added" });
+      } else if (action.action_type === "series_week_started") {
+        actions.push({ date: d, text: label ? `${d} — Started ${label}` : `${d} — Started a Bible series week`, sortKey: actionDate.getTime(), actionType: "series_week_started", url: "/study-groups" });
       } else if (action.action_type === "user_login" && !loginDates.has(dateKey)) {
         loginDates.add(dateKey);
         actions.push({ date: d, text: `${d} — Logged in`, sortKey: actionDate.getTime(), actionType: "user_login" });
@@ -717,14 +755,28 @@ export default function PublicProfilePage() {
 
   function getActionColorClass(actionType: string): string {
     switch (actionType) {
-      case "chapter_completed":  return "bg-green-50 border-l-4 border-green-500";
-      case "book_completed":     return "bg-green-100 border-l-4 border-green-600";
-      case "note_created":       return "bg-yellow-50 border-l-4 border-yellow-500";
-      case "person_learned":     return "bg-pink-50 border-l-4 border-pink-500";
-      case "place_discovered":   return "bg-cyan-50 border-l-4 border-cyan-500";
-      case "keyword_mastered":   return "bg-purple-50 border-l-4 border-purple-500";
-      case "user_login":         return "bg-blue-50 border-l-4 border-blue-500";
-      default:                   return "bg-gray-50 border-l-4 border-gray-400";
+      case "chapter_completed":         return "bg-green-50 border-l-4 border-green-500";
+      case "book_completed":            return "bg-green-100 border-l-4 border-green-600";
+      case "note_created":              return "bg-yellow-50 border-l-4 border-yellow-500";
+      case "person_learned":            return "bg-pink-50 border-l-4 border-pink-500";
+      case "place_discovered":          return "bg-cyan-50 border-l-4 border-cyan-500";
+      case "keyword_mastered":          return "bg-purple-50 border-l-4 border-purple-500";
+      case "verse_highlighted":         return "bg-orange-50 border-l-4 border-orange-400";
+      case "devotional_day_completed":  return "bg-amber-50 border-l-4 border-amber-500";
+      case "trivia_question_answered":  return "bg-indigo-50 border-l-4 border-indigo-400";
+      case "feed_post_thought":
+      case "feed_post_prayer":
+      case "feed_post_prayer_request":
+      case "feed_post_photo":
+      case "feed_post_video":           return "bg-blue-50 border-l-4 border-blue-400";
+      case "feed_post_liked":           return "bg-rose-50 border-l-4 border-rose-400";
+      case "feed_post_commented":
+      case "feed_post_replied":         return "bg-sky-50 border-l-4 border-sky-400";
+      case "group_message_sent":        return "bg-teal-50 border-l-4 border-teal-400";
+      case "buddy_added":               return "bg-violet-50 border-l-4 border-violet-400";
+      case "series_week_started":       return "bg-emerald-50 border-l-4 border-emerald-500";
+      case "user_login":                return "bg-blue-50 border-l-4 border-blue-500";
+      default:                          return "bg-gray-50 border-l-4 border-gray-400";
     }
   }
 
@@ -1299,14 +1351,27 @@ export default function PublicProfilePage() {
           ) : (
             <div className="overflow-y-auto max-h-96">
               {actionLog.map((action, index) => (
-                <div
-                  key={index}
-                  className={`${getActionColorClass(action.actionType)} px-6 py-3 text-sm text-gray-700 ${
-                    index < actionLog.length - 1 ? "border-b border-gray-100" : ""
-                  }`}
-                >
-                  {action.text}
-                </div>
+                action.url ? (
+                  <a
+                    key={index}
+                    href={action.url}
+                    className={`${getActionColorClass(action.actionType)} px-6 py-3 text-sm text-gray-700 flex items-center justify-between gap-2 hover:brightness-95 transition ${
+                      index < actionLog.length - 1 ? "border-b border-gray-100" : ""
+                    }`}
+                  >
+                    <span>{action.text}</span>
+                    <span className="text-xs text-blue-500 flex-shrink-0">View →</span>
+                  </a>
+                ) : (
+                  <div
+                    key={index}
+                    className={`${getActionColorClass(action.actionType)} px-6 py-3 text-sm text-gray-700 ${
+                      index < actionLog.length - 1 ? "border-b border-gray-100" : ""
+                    }`}
+                  >
+                    {action.text}
+                  </div>
+                )
               ))}
             </div>
           )}
