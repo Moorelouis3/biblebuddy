@@ -166,6 +166,18 @@ export default function AnalyticsPage() {
   const [loadingRequests, setLoadingRequests] = useState(true);
   const [selectedRequest, setSelectedRequest] = useState<any | null>(null);
 
+  // Retention metrics
+  const [retentionData, setRetentionData] = useState<{
+    dauMauPct: number;
+    wauMauPct: number;
+    sevenDayReturnPct: number;
+    avgGapDays: number;
+    medianGapDays: number;
+    activeUserCount: number;
+    freqBuckets: Array<{ label: string; sublabel: string; count: number; pct: number; color: string }>;
+  } | null>(null);
+  const [loadingRetention, setLoadingRetention] = useState(true);
+
   // Ambassador / Buddy Partners
   type AmbassadorReferral = { referred_user_id: string; username: string; profile_image_url: string | null; trial_started_at: string; trial_ends_at: string };
   type AmbassadorEntry = { user_id: string; username: string; display_name: string; profile_image_url: string | null; referral_code: string; is_active: boolean; total_referrals: number; referrals: AmbassadorReferral[] };
@@ -210,6 +222,7 @@ export default function AnalyticsPage() {
       setLoadingActiveUsers(false);
     }
     fetchActiveUsers();
+    loadRetentionData();
     loadTotalUsers();
     loadFeedbackInbox();
     loadUserRequestsInbox();
@@ -248,6 +261,130 @@ export default function AnalyticsPage() {
       setFilteredActiveUsers(0);
       setLoadingFilteredActiveUsers(false);
     }
+  }
+
+  // ── Retention & Engagement ────────────────────────────────────────────────
+  async function loadRetentionData() {
+    setLoadingRetention(true);
+    try {
+      const DAY = 86400000;
+      const now = Date.now();
+      const ago = (days: number) => new Date(now - days * DAY).toISOString();
+
+      // 7-day return rate: users active 8–14 days ago who came back in past 7 days
+      const [prevWeekRows, currWeekRows, loginRows] = await Promise.all([
+        supabase
+          .from("master_actions")
+          .select("user_id")
+          .eq("action_type", "user_login")
+          .gte("created_at", ago(14))
+          .lt("created_at", ago(7)),
+        supabase
+          .from("master_actions")
+          .select("user_id")
+          .eq("action_type", "user_login")
+          .gte("created_at", ago(7)),
+        // All login events in the last 90 days for frequency analysis
+        supabase
+          .from("master_actions")
+          .select("user_id, created_at")
+          .eq("action_type", "user_login")
+          .gte("created_at", ago(90))
+          .order("created_at", { ascending: true }),
+      ]);
+
+      // 7-day return rate
+      const prevSet = new Set((prevWeekRows.data || []).map((r: any) => r.user_id).filter(Boolean));
+      const currSet = new Set((currWeekRows.data || []).map((r: any) => r.user_id).filter(Boolean));
+      const returned = [...prevSet].filter((id) => currSet.has(id)).length;
+      const sevenDayReturnPct = prevSet.size > 0 ? Math.round((returned / prevSet.size) * 100) : 0;
+
+      // DAU/WAU/MAU from currWeekRows and independent counts
+      const dau = currSet.size; // already 7d — will re-derive below from login data
+      const mauCutoff = new Date(now - 30 * DAY);
+      const wauCutoff = new Date(now - 7 * DAY);
+      const dauCutoff = new Date(now - 1 * DAY);
+
+      // Group login events by user, deduplicate to YYYY-MM-DD
+      const userDateMap = new Map<string, Set<string>>();
+      for (const row of loginRows.data || []) {
+        if (!row.user_id) continue;
+        const day = (row.created_at as string).slice(0, 10);
+        if (!userDateMap.has(row.user_id)) userDateMap.set(row.user_id, new Set());
+        userDateMap.get(row.user_id)!.add(day);
+      }
+
+      // Build per-user stats — only for users active in past 30 days (exclude inactive)
+      const thirtyDaysAgoStr = ago(30).slice(0, 10);
+      let dauCount = 0, wauCount = 0, mauCount = 0;
+      const avgGaps: number[] = [];
+
+      for (const [, dates] of userDateMap) {
+        const sorted = [...dates].sort();
+        const lastDay = sorted[sorted.length - 1];
+        if (lastDay < thirtyDaysAgoStr) continue; // inactive — skip
+
+        mauCount++;
+        if (lastDay >= ago(7).slice(0, 10)) wauCount++;
+        if (lastDay >= ago(1).slice(0, 10)) dauCount++;
+
+        if (sorted.length < 2) {
+          avgGaps.push(90); // only logged in once → treat as very infrequent
+          continue;
+        }
+        let total = 0;
+        for (let i = 1; i < sorted.length; i++) {
+          const diff = (new Date(sorted[i]).getTime() - new Date(sorted[i - 1]).getTime()) / DAY;
+          total += diff;
+        }
+        avgGaps.push(total / (sorted.length - 1));
+      }
+
+      // Stickiness
+      const dauMauPct = mauCount > 0 ? Math.round((dauCount / mauCount) * 100) : 0;
+      const wauMauPct = mauCount > 0 ? Math.round((wauCount / mauCount) * 100) : 0;
+
+      // Avg & median gap (exclude the one-time placeholder)
+      const realGaps = avgGaps.filter((g) => g < 90);
+      const avgGapDays =
+        realGaps.length > 0
+          ? Math.round((realGaps.reduce((a, b) => a + b, 0) / realGaps.length) * 10) / 10
+          : 0;
+      const sortedGaps = [...realGaps].sort((a, b) => a - b);
+      const medianGapDays =
+        sortedGaps.length > 0
+          ? Math.round(sortedGaps[Math.floor(sortedGaps.length / 2)] * 10) / 10
+          : 0;
+
+      // Frequency buckets
+      const BUCKETS = [
+        { label: "Daily", sublabel: "≤ 1.5 days avg", min: 0,  max: 1.5,  color: "#22c55e" },
+        { label: "Few times/week", sublabel: "1.5 – 3.5 days avg", min: 1.5, max: 3.5,  color: "#84cc16" },
+        { label: "Weekly", sublabel: "3.5 – 8 days avg", min: 3.5, max: 8,    color: "#eab308" },
+        { label: "Bi-weekly", sublabel: "8 – 20 days avg", min: 8,   max: 20,   color: "#f97316" },
+        { label: "Monthly", sublabel: "20 – 40 days avg", min: 20,  max: 40,   color: "#ef4444" },
+        { label: "One-time / rare", sublabel: "Only 1 login or 40+ days", min: 40,  max: Infinity, color: "#9ca3af" },
+      ];
+
+      const total = avgGaps.length;
+      const freqBuckets = BUCKETS.map((b) => {
+        const count = avgGaps.filter((g) => g >= b.min && g < b.max).length;
+        return { ...b, count, pct: total > 0 ? Math.round((count / total) * 100) : 0 };
+      });
+
+      setRetentionData({
+        dauMauPct,
+        wauMauPct,
+        sevenDayReturnPct,
+        avgGapDays,
+        medianGapDays,
+        activeUserCount: mauCount,
+        freqBuckets,
+      });
+    } catch (e) {
+      console.error("[RETENTION] Error:", e);
+    }
+    setLoadingRetention(false);
   }
 
   // Load total users from auth.users
@@ -2053,6 +2190,105 @@ export default function AnalyticsPage() {
               />
             </div>
           </>
+        )}
+      </div>
+
+      {/* ── RETENTION & ENGAGEMENT ─────────────────────────────────────────── */}
+      <div className="mt-10 mb-10">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-2xl font-bold">Retention & Engagement</h2>
+          <button
+            onClick={() => loadRetentionData()}
+            className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+          >
+            Refresh
+          </button>
+        </div>
+
+        {loadingRetention ? (
+          <div className="bg-white p-6 rounded-xl shadow text-center">
+            <p className="text-gray-500 text-sm">Computing retention metrics…</p>
+          </div>
+        ) : retentionData ? (
+          <div className="space-y-4">
+            {/* Top KPI row */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {/* DAU/MAU */}
+              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center">
+                <p className="text-xs text-gray-500 mb-1">DAU / MAU</p>
+                <p className={`text-3xl font-bold ${retentionData.dauMauPct >= 20 ? "text-green-600" : retentionData.dauMauPct >= 10 ? "text-yellow-600" : "text-red-500"}`}>
+                  {retentionData.dauMauPct}%
+                </p>
+                <p className="text-xs text-gray-400 mt-1">
+                  {retentionData.dauMauPct >= 20 ? "Excellent 🔥" : retentionData.dauMauPct >= 10 ? "Good 👍" : "Needs work"}
+                </p>
+              </div>
+
+              {/* WAU/MAU */}
+              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center">
+                <p className="text-xs text-gray-500 mb-1">WAU / MAU</p>
+                <p className={`text-3xl font-bold ${retentionData.wauMauPct >= 50 ? "text-green-600" : retentionData.wauMauPct >= 30 ? "text-yellow-600" : "text-red-500"}`}>
+                  {retentionData.wauMauPct}%
+                </p>
+                <p className="text-xs text-gray-400 mt-1">Weekly stickiness</p>
+              </div>
+
+              {/* 7-day return */}
+              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center">
+                <p className="text-xs text-gray-500 mb-1">7-Day Return Rate</p>
+                <p className={`text-3xl font-bold ${retentionData.sevenDayReturnPct >= 40 ? "text-green-600" : retentionData.sevenDayReturnPct >= 20 ? "text-yellow-600" : "text-red-500"}`}>
+                  {retentionData.sevenDayReturnPct}%
+                </p>
+                <p className="text-xs text-gray-400 mt-1">Came back this week</p>
+              </div>
+
+              {/* Avg gap */}
+              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center">
+                <p className="text-xs text-gray-500 mb-1">Avg Session Gap</p>
+                <p className="text-3xl font-bold text-gray-800">
+                  {retentionData.avgGapDays === 0 ? "—" : `${retentionData.avgGapDays}d`}
+                </p>
+                <p className="text-xs text-gray-400 mt-1">Median: {retentionData.medianGapDays === 0 ? "—" : `${retentionData.medianGapDays}d`}</p>
+              </div>
+            </div>
+
+            {/* Frequency distribution */}
+            <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h3 className="text-sm font-bold text-gray-800">Login Frequency Distribution</h3>
+                  <p className="text-xs text-gray-400 mt-0.5">
+                    {retentionData.activeUserCount} active users · last 30 days · inactive users excluded
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-2.5">
+                {retentionData.freqBuckets.map((b) => (
+                  <div key={b.label} className="flex items-center gap-3">
+                    <div className="w-28 text-xs text-gray-700 font-medium flex-shrink-0">{b.label}</div>
+                    <div className="flex-1 bg-gray-100 rounded-full h-4 overflow-hidden">
+                      <div
+                        className="h-4 rounded-full transition-all"
+                        style={{ width: `${b.pct}%`, backgroundColor: b.color, minWidth: b.count > 0 ? "4px" : "0" }}
+                      />
+                    </div>
+                    <div className="w-16 text-right text-xs text-gray-600 flex-shrink-0">
+                      <span className="font-semibold">{b.pct}%</span>
+                      <span className="text-gray-400"> ({b.count})</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-gray-400 mt-4">
+                Based on average days between logins over the past 90 days.
+                Users with only one login session are counted as "one-time / rare."
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="bg-white p-4 rounded-xl shadow">
+            <p className="text-gray-500 text-sm">No retention data available.</p>
+          </div>
         )}
       </div>
 
