@@ -1009,27 +1009,28 @@ export default function AnalyticsPage() {
         ? await loadUserCounts(Array.from(uniqueUserIds))
         : { loginDays: new Map(), totalActions: new Map() };
 
-      // Get usernames for old signups from profile_stats
-      const signupUserIds = oldSignups.map(s => s.user_id);
-      const signupUsernames = new Map<string, string>();
-      if (signupUserIds.length > 0) {
+      // Batch-fetch real profile names (display_name > username) for ALL users in the log.
+      // This fixes "Unknown User" when action.username was null at log time.
+      const profileNameMap = new Map<string, string>();
+      const allUserIdsForProfiles = Array.from(uniqueUserIds);
+      if (allUserIdsForProfiles.length > 0) {
         try {
           const { data: profileStats } = await supabase
             .from("profile_stats")
-            .select("user_id, username")
-            .in("user_id", signupUserIds);
-
+            .select("user_id, display_name, username")
+            .in("user_id", allUserIdsForProfiles);
           if (profileStats) {
             for (const stat of profileStats) {
-              if (stat.user_id && stat.username) {
-                signupUsernames.set(stat.user_id, stat.username);
-              }
+              const name = stat.display_name?.trim() || stat.username?.trim() || null;
+              if (name) profileNameMap.set(stat.user_id, name);
             }
           }
         } catch (err) {
-          console.error("[ADMIN_ACTION_LOG] Error fetching usernames for old signups:", err);
+          console.error("[ADMIN_ACTION_LOG] Error fetching profile names:", err);
         }
       }
+      // signupUsernames just maps to the same profileNameMap for old-signup entries
+      const signupUsernames = profileNameMap;
 
       // Track unique login dates per user (one per day) for display deduplication
       const userLoginDates = new Map<string, Set<string>>();
@@ -1041,8 +1042,8 @@ export default function AnalyticsPage() {
         const dateKey = actionDate.toISOString().split('T')[0]; // YYYY-MM-DD
         const formattedDate = formatAdminActionDate(actionDate);
         const formattedTime = formatAdminActionTime(actionDate);
-        const username = action.username || "Unknown User";
         const userId = action.user_id;
+        const username = (userId && profileNameMap.get(userId)) || action.username?.trim() || "New User";
 
         // Get contextual counter
         let counterText = "";

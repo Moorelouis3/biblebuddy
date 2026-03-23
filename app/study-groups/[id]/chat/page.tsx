@@ -351,14 +351,14 @@ function getCurrentSeriesCardState(
     const nextUnlockTs = startTs + liveWeek * 7 * 24 * 60 * 60 * 1000;
     return {
       headline: `Week ${liveWeek + 1} unlocks in ${formatCountdown(nextUnlockTs, nowTs)}`,
-      detail: `Week ${liveWeek} is live now`,
+      detail: `Week ${liveWeek} is live — tap here to start it`,
       cta: "Open Week Lessons",
     };
   }
 
   return {
     headline: "All weeks are now live",
-    detail: "The full series is available now.",
+    detail: `Week ${liveWeek} is live — tap here to start it`,
     cta: "Open Week Lessons",
   };
 }
@@ -4835,8 +4835,26 @@ RULES:
                                       <span className="font-bold" style={{ color: "#d62828" }}>{startCountdown}</span>
                                       {startLabel && <span className="text-gray-500"> ({startLabel})</span>}
                                     </>
+                                  ) : currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() <= nowTs ? (
+                                    (() => {
+                                      const startTs = new Date(currentSeriesStartAt).getTime();
+                                      const totalWeeks = liveSeries?.total_weeks ?? 1;
+                                      const weeksSinceStart = Math.floor((nowTs - startTs) / (7 * 24 * 60 * 60 * 1000));
+                                      const liveWeek = Math.min(totalWeeks, weeksSinceStart + 1);
+                                      if (liveWeek < totalWeeks) {
+                                        const nextUnlockTs = startTs + liveWeek * 7 * 24 * 60 * 60 * 1000;
+                                        return (
+                                          <>
+                                            <span className="font-semibold" style={{ color: "#4f7e54" }}>Week {liveWeek} Active</span>
+                                            <span className="text-gray-500"> · Week {liveWeek + 1} ready in </span>
+                                            <span className="font-bold" style={{ color: "#d62828" }}>{formatCountdown(nextUnlockTs, nowTs)}</span>
+                                          </>
+                                        );
+                                      }
+                                      return <span className="font-semibold" style={{ color: "#4f7e54" }}>Week {liveWeek} Active · Final week</span>;
+                                    })()
                                   ) : (
-                                    <span style={{ color: "#d62828" }}>{startLabel ? `Starts ${startLabel}` : "Start date coming soon"}</span>
+                                    <span className="text-gray-400">Start date coming soon</span>
                                   )}
                                 </p>
                               </>
