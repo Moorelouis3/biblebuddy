@@ -39,6 +39,7 @@ const GroupWeeklyQuestionCard = dynamic(() => import("@/components/GroupWeeklyQu
 const UpgradeRequiredModal = dynamic(() => import("@/components/UpgradeRequiredModal"), { ssr: false });
 const CreditLimitModal = dynamic(() => import("@/components/CreditLimitModal"), { ssr: false });
 const PostMentionSuggestions = dynamic(() => import("@/components/PostMentionSuggestions"), { ssr: false });
+const TextareaMentionInput = dynamic(() => import("@/components/TextareaMentionInput"), { ssr: false });
 
 // â”€â”€ Interfaces â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
@@ -515,6 +516,7 @@ function GroupCommentSection({
   currentUserBadge,
   onCountChange,
   targetCommentId,
+  mentionItems = [],
 }: {
   groupId: string;
   post: Post;
@@ -525,6 +527,7 @@ function GroupCommentSection({
   currentUserBadge: string | null;
   onCountChange: (delta: number) => void;
   targetCommentId?: string | null;
+  mentionItems?: MentionCatalogItem[];
 }) {
   const [comments, setComments] = useState<GroupFeedComment[]>([]);
   const [loading, setLoading] = useState(true);
@@ -549,19 +552,21 @@ function GroupCommentSection({
       .order("created_at", { ascending: true });
 
     const topLevel = topLevelRows || [];
-    const topLevelIds = topLevel.map((row) => row.id);
 
-    let replyRows: GroupFeedComment[] = [];
-    if (topLevelIds.length > 0) {
+    // Fetch all descendants by walking levels until no new rows are found
+    let allRows: GroupFeedComment[] = [...topLevel] as GroupFeedComment[];
+    let parentIds = topLevel.map((row) => row.id);
+    while (parentIds.length > 0) {
       const { data } = await supabase
         .from("group_posts")
         .select("id, user_id, display_name, category, content, like_count, created_at, parent_post_id")
-        .in("parent_post_id", topLevelIds)
+        .in("parent_post_id", parentIds)
         .order("created_at", { ascending: true });
-      replyRows = (data || []) as GroupFeedComment[];
+      const newRows = (data || []) as GroupFeedComment[];
+      if (newRows.length === 0) break;
+      allRows = [...allRows, ...newRows];
+      parentIds = newRows.map((row) => row.id);
     }
-
-    const allRows = [...topLevel, ...replyRows] as GroupFeedComment[];
     if (allRows.length === 0) {
       setComments([]);
       setLoading(false);
@@ -791,14 +796,16 @@ function GroupCommentSection({
   const topLevelComments = comments.filter((comment) => comment.parent_post_id === post.id);
   const replies = (parentId: string) => comments.filter((comment) => comment.parent_post_id === parentId);
 
-  function renderCommentRow(comment: GroupFeedComment, indent = false) {
+  function renderCommentRow(comment: GroupFeedComment, depth = 0) {
     const name = comment.display_name || "Buddy";
     const isTargetComment = targetCommentId === comment.id;
+    // Cap visual indent at 1 level so deep threads stay readable on mobile
+    const indentClass = depth > 0 ? "ml-8 mt-3 pl-4 border-l border-[#e8ddd0]" : "mt-3";
     return (
       <div
         key={comment.id}
         id={`comment-${comment.id}`}
-        className={`flex gap-2 transition-colors duration-700 ${indent ? "ml-8 mt-3 pl-4 border-l border-[#e8ddd0]" : "mt-3"} ${isTargetComment ? "rounded-2xl ring-1 ring-[#e8ddd0] px-2 py-1" : ""}`}
+        className={`flex gap-2 transition-colors duration-700 ${indentClass} ${isTargetComment ? "rounded-2xl ring-1 ring-[#e8ddd0] px-2 py-1" : ""}`}
       >
         <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0 mt-0.5">
           {comment.profile_image_url ? (
@@ -865,17 +872,15 @@ function GroupCommentSection({
               </svg>
               {comment.like_count > 0 ? comment.like_count : ""}
             </button>
-            {!indent && (
-              <button
-                onClick={() => {
-                  setReplyingTo(replyingTo === comment.id ? null : comment.id);
-                  setReplyText("");
-                }}
-                className="text-[10px] text-gray-400 hover:text-[#b7794d] font-semibold transition"
-              >
-                Reply
-              </button>
-            )}
+            <button
+              onClick={() => {
+                setReplyingTo(replyingTo === comment.id ? null : comment.id);
+                setReplyText("");
+              }}
+              className="text-[10px] text-gray-400 hover:text-[#b7794d] font-semibold transition"
+            >
+              Reply
+            </button>
             {canEditComment(comment) && editingCommentId !== comment.id && (
               <button
                 type="button"
@@ -901,14 +906,17 @@ function GroupCommentSection({
               </button>
             )}
           </div>
-          {!indent && replyingTo === comment.id && (
+          {replyingTo === comment.id && (
             <div className="mt-2 flex gap-2 items-end">
-              <textarea
+              <TextareaMentionInput
                 value={replyText}
-                onChange={(e) => setReplyText(e.target.value)}
+                onChange={setReplyText}
+                mentionItems={mentionItems}
+                onEnterSubmit={() => void submitComment(replyText, comment.id)}
                 placeholder={`Reply to ${name}...`}
                 rows={1}
-                className="flex-1 text-xs px-3 py-2 border border-[#eadfce] rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[#d6b18b] bg-white"
+                autoFocus
+                className="w-full text-xs px-3 py-2 border border-[#eadfce] rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[#d6b18b] bg-white"
               />
               <button
                 onClick={() => void submitComment(replyText, comment.id)}
@@ -920,7 +928,7 @@ function GroupCommentSection({
               </button>
             </div>
           )}
-          {!indent && replies(comment.id).map((reply) => renderCommentRow(reply, true))}
+          {replies(comment.id).map((reply) => renderCommentRow(reply, Math.min(depth + 1, 1)))}
         </div>
       </div>
     );
@@ -1038,8 +1046,19 @@ export default function GroupChatPage() {
   const [pushSetupLoading, setPushSetupLoading] = useState(false);
   const [pushSetupError, setPushSetupError] = useState<string | null>(null);
   const [pushDismissed, setPushDismissed] = useState(false);
+  const deferredInstallPromptRef = useRef<any>(null);
+  const [canInstallToHomeScreen, setCanInstallToHomeScreen] = useState(false);
+  const [isIosDevice, setIsIosDevice] = useState(false);
+  const [isAndroidDevice, setIsAndroidDevice] = useState(false);
+  const [isStandaloneApp, setIsStandaloneApp] = useState(false);
+  const [installSetupLoading, setInstallSetupLoading] = useState(false);
+  const [installSetupError, setInstallSetupError] = useState<string | null>(null);
+  const [installCardDismissed, setInstallCardDismissed] = useState(false);
+  const [upgradeCardDismissed, setUpgradeCardDismissed] = useState(false);
   const [hideProfileSetupCard, setHideProfileSetupCard] = useState(false);
   const [hidePushSetupCard, setHidePushSetupCard] = useState(false);
+  const [hideInstallSetupCard, setHideInstallSetupCard] = useState(false);
+  const [hideUpgradeSetupCard, setHideUpgradeSetupCard] = useState(false);
   const [showDevotionalUpgradeModal, setShowDevotionalUpgradeModal] = useState(false);
   const [devotionalPreviews, setDevotionalPreviews] = useState<Record<string, DevotionalPreview>>({});
   const [updateFeatureIndex, setUpdateFeatureIndex] = useState(0);
@@ -1772,10 +1791,30 @@ RULES:
     return `bb:update-card-push-dismissed:${currentUserId}`;
   }
 
+  function getUpdateCardInstallDismissKey(currentUserId: string) {
+    return `bb:update-card-install-dismissed:${currentUserId}`;
+  }
+
+  function getUpdateCardUpgradeDismissKey(currentUserId: string) {
+    return `bb:update-card-upgrade-dismissed:${currentUserId}`;
+  }
+
   function dismissUpdateCardPush() {
     if (!userId || typeof window === "undefined") return;
     window.localStorage.setItem(getUpdateCardPushDismissKey(userId), "1");
     setPushDismissed(true);
+  }
+
+  function dismissUpdateCardInstall() {
+    if (!userId || typeof window === "undefined") return;
+    window.localStorage.setItem(getUpdateCardInstallDismissKey(userId), "1");
+    setInstallCardDismissed(true);
+  }
+
+  function dismissUpdateCardUpgrade() {
+    if (!userId || typeof window === "undefined") return;
+    window.localStorage.setItem(getUpdateCardUpgradeDismissKey(userId), "1");
+    setUpgradeCardDismissed(true);
   }
 
   async function savePushSubscription(currentUserId: string, subscription: PushSubscription) {
@@ -1854,6 +1893,35 @@ RULES:
       setPushSetupError(error?.message || "Could not enable push alerts.");
     } finally {
       setPushSetupLoading(false);
+    }
+  }
+
+  async function handleInstallToHomeScreen() {
+    if (typeof window === "undefined") return;
+    setInstallSetupLoading(true);
+    setInstallSetupError(null);
+
+    try {
+      const promptEvent = deferredInstallPromptRef.current;
+      if (!promptEvent) {
+        throw new Error("Open Bible Buddy in Chrome to install it from your browser menu.");
+      }
+
+      await promptEvent.prompt();
+      const choice = await promptEvent.userChoice;
+      if (choice?.outcome === "accepted") {
+        deferredInstallPromptRef.current = null;
+        setCanInstallToHomeScreen(false);
+        setIsStandaloneApp(true);
+        dismissUpdateCardInstall();
+        return;
+      }
+
+      throw new Error("Install was canceled.");
+    } catch (error: any) {
+      setInstallSetupError(error?.message || "Could not start install.");
+    } finally {
+      setInstallSetupLoading(false);
     }
   }
 
@@ -2094,8 +2162,50 @@ RULES:
   }, []);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const userAgent = navigator.userAgent || "";
+    setIsIosDevice(/iphone|ipad|ipod/i.test(userAgent));
+    setIsAndroidDevice(/android/i.test(userAgent));
+    setIsStandaloneApp(
+      window.matchMedia("(display-mode: standalone)").matches ||
+      (navigator as any).standalone === true,
+    );
+
+    function handleBeforeInstallPrompt(event: Event) {
+      event.preventDefault();
+      deferredInstallPromptRef.current = event;
+      setCanInstallToHomeScreen(true);
+    }
+
+    function handleInstalled() {
+      deferredInstallPromptRef.current = null;
+      setCanInstallToHomeScreen(false);
+      setIsStandaloneApp(true);
+    }
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    window.addEventListener("appinstalled", handleInstalled);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+      window.removeEventListener("appinstalled", handleInstalled);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!userId || typeof window === "undefined") return;
     setPushDismissed(window.localStorage.getItem(getUpdateCardPushDismissKey(userId)) === "1");
+  }, [userId]);
+
+  useEffect(() => {
+    if (!userId || typeof window === "undefined") return;
+    setInstallCardDismissed(window.localStorage.getItem(getUpdateCardInstallDismissKey(userId)) === "1");
+  }, [userId]);
+
+  useEffect(() => {
+    if (!userId || typeof window === "undefined") return;
+    setUpgradeCardDismissed(window.localStorage.getItem(getUpdateCardUpgradeDismissKey(userId)) === "1");
   }, [userId]);
 
   useEffect(() => {
@@ -2143,6 +2253,26 @@ RULES:
     const timeout = window.setTimeout(() => setHidePushSetupCard(true), 220);
     return () => window.clearTimeout(timeout);
   }, [pushSupported, pushPermission, pushSubscribed, pushDismissed]);
+
+  useEffect(() => {
+    const installComplete = isStandaloneApp || installCardDismissed;
+    if (!installComplete) {
+      setHideInstallSetupCard(false);
+      return;
+    }
+    const timeout = window.setTimeout(() => setHideInstallSetupCard(true), 220);
+    return () => window.clearTimeout(timeout);
+  }, [installCardDismissed, isStandaloneApp]);
+
+  useEffect(() => {
+    const upgradeComplete = userIsPaid || upgradeCardDismissed;
+    if (!upgradeComplete) {
+      setHideUpgradeSetupCard(false);
+      return;
+    }
+    const timeout = window.setTimeout(() => setHideUpgradeSetupCard(true), 220);
+    return () => window.clearTimeout(timeout);
+  }, [upgradeCardDismissed, userIsPaid]);
 
   useEffect(() => {
     let cancelled = false;
@@ -4244,13 +4374,15 @@ RULES:
                             {/* Inline reply input */}
                             {replyingToId === comment.id && (
                               <div className="mt-3 flex gap-2">
-                                <input
-                                  type="text"
+                                <TextareaMentionInput
                                   value={replyText}
-                                  onChange={(e) => setReplyText(e.target.value)}
+                                  onChange={setReplyText}
+                                  mentionItems={mentionItems}
+                                  onEnterSubmit={() => handleAddComment(comment.id)}
                                   placeholder={`Reply to ${comment.display_name}...`}
-                                  className="flex-1 text-xs bg-gray-100 rounded-xl px-3 py-2 outline-none text-gray-900 placeholder-gray-400"
-                                  onKeyDown={(e) => { if (e.key === "Enter") handleAddComment(comment.id); }}
+                                  rows={1}
+                                  autoFocus
+                                  className="w-full text-xs bg-gray-100 rounded-xl px-3 py-2 outline-none text-gray-900 placeholder-gray-400 resize-none"
                                 />
                                 <button
                                   onClick={() => handleAddComment(comment.id)}
@@ -5164,6 +5296,7 @@ RULES:
                     currentUserRole={userRole}
                     currentUserBadge={userMemberBadge}
                     targetCommentId={deepLinkedCommentId}
+                    mentionItems={mentionItems}
                     onCountChange={(delta) => {
                       setSelectedFeedPost((prev) => prev ? { ...prev, comment_count: Math.max((prev.comment_count || 0) + delta, 0) } : prev);
                       setPosts((prev) => prev.map((item) => item.id === activeFeedPost.id ? { ...item, comment_count: Math.max((item.comment_count || 0) + delta, 0) } : item));
@@ -6210,9 +6343,13 @@ RULES:
     const missingLocation = !userLocation?.trim();
     const profileIncomplete = missingProfilePhoto || missingBio || missingLocation;
     const pushIncomplete = pushSupported && !(pushPermission === "granted" && pushSubscribed) && !pushDismissed;
+    const installIncomplete = !isStandaloneApp && !installCardDismissed;
+    const upgradeIncomplete = !userIsPaid && !upgradeCardDismissed;
     const showProfileSetup = profileIncomplete && !hideProfileSetupCard;
     const showPushSetup = pushIncomplete && !hidePushSetupCard;
-    const showSetupHeader = showProfileSetup || showPushSetup;
+    const showInstallSetup = installIncomplete && !hideInstallSetupCard;
+    const showUpgradeSetup = upgradeIncomplete && !hideUpgradeSetupCard;
+    const showSetupHeader = showProfileSetup || showPushSetup || showInstallSetup || showUpgradeSetup;
     const profileHref = userId ? `/profile/${userId}` : "/profile";
     if (!showSetupHeader) {
       return null;
@@ -6299,11 +6436,118 @@ RULES:
             </div>
           )}
           </div>
+
+          <div className={`overflow-hidden transition-all duration-300 ${showInstallSetup ? "max-h-[28rem] opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-1 pointer-events-none"}`}>
+          {installIncomplete && (
+            <div className="rounded-2xl border border-[#d7e8d7] bg-[#f4fbf5] px-4 py-3">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-gray-900">Add Bible Buddy to your home screen</p>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Open Bible Buddy faster like an app and get back into your group with one tap.
+                  </p>
+                </div>
+                <div className="text-xl flex-shrink-0">📲</div>
+              </div>
+
+              {isIosDevice ? (
+                <ol className="mt-3 space-y-2 text-sm text-gray-600">
+                  <li>1. Open this page in Safari.</li>
+                  <li>2. Tap the Share button at the bottom.</li>
+                  <li>3. Tap <span className="font-semibold text-gray-800">Add to Home Screen</span>.</li>
+                  <li>4. Tap <span className="font-semibold text-gray-800">Add</span> in the top right.</li>
+                </ol>
+              ) : isAndroidDevice ? (
+                <div className="mt-3 space-y-3">
+                  {canInstallToHomeScreen && (
+                    <button
+                      type="button"
+                      onClick={() => void handleInstallToHomeScreen()}
+                      disabled={installSetupLoading}
+                      className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
+                      style={{ backgroundColor: SAGE }}
+                    >
+                      {installSetupLoading ? "Opening..." : "Add to Home Screen"}
+                    </button>
+                  )}
+                  <ol className="space-y-2 text-sm text-gray-600">
+                    <li>1. Open Bible Buddy in Chrome.</li>
+                    <li>2. Tap the 3-dot menu in the top right.</li>
+                    <li>3. Tap <span className="font-semibold text-gray-800">{canInstallToHomeScreen ? "Install app" : "Add to Home screen"}</span>.</li>
+                  </ol>
+                </div>
+              ) : (
+                <div className="mt-3 space-y-3">
+                  {canInstallToHomeScreen && (
+                    <button
+                      type="button"
+                      onClick={() => void handleInstallToHomeScreen()}
+                      disabled={installSetupLoading}
+                      className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
+                      style={{ backgroundColor: SAGE }}
+                    >
+                      {installSetupLoading ? "Opening..." : "Install Bible Buddy"}
+                    </button>
+                  )}
+                  <p className="text-sm text-gray-600">
+                    Use your browser menu to add Bible Buddy to your home screen for quicker access.
+                  </p>
+                </div>
+              )}
+
+              <div className="mt-3 flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={dismissUpdateCardInstall}
+                  className="rounded-xl px-4 py-2 text-sm font-medium text-gray-600 border border-gray-200 hover:bg-white transition"
+                >
+                  Maybe later
+                </button>
+              </div>
+              {installSetupError && <p className="text-xs text-red-500 mt-2">{installSetupError}</p>}
+            </div>
+          )}
+          </div>
+
+          <div className={`overflow-hidden transition-all duration-300 ${showUpgradeSetup ? "max-h-72 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-1 pointer-events-none"}`}>
+          {upgradeIncomplete && (
+            <div className="rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-gray-900">Go deeper with Bible Buddy Pro</p>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Unlock unlimited study, open every devotional, and keep going without credit limits when you are in the middle of a real breakthrough.
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Unlimited study access</span>
+                    <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Full devotional library</span>
+                    <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">No daily credit wall</span>
+                  </div>
+                </div>
+                <div className="text-xl flex-shrink-0">👑</div>
+              </div>
+              <div className="mt-3 flex items-center gap-3">
+                <Link
+                  href="/upgrade"
+                  className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                  style={{ backgroundColor: SAGE }}
+                >
+                  Upgrade to Pro
+                </Link>
+                <button
+                  type="button"
+                  onClick={dismissUpdateCardUpgrade}
+                  className="rounded-xl px-4 py-2 text-sm font-medium text-gray-600 border border-gray-200 hover:bg-white transition"
+                >
+                  Maybe later
+                </button>
+              </div>
+            </div>
+          )}
+          </div>
         </div>
       </div>
     );
   }
 
 }
-
-
