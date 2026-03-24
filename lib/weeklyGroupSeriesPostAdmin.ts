@@ -118,6 +118,23 @@ async function resolveActorUserId(supabaseAdmin: SupabaseClient, actorUserId?: s
   return louis.id;
 }
 
+async function syncExistingSeriesOwnership(
+  supabaseAdmin: SupabaseClient,
+  existingPostId: string | null | undefined,
+  actorUserId: string,
+  displayName: string,
+) {
+  if (!existingPostId) return;
+
+  await supabaseAdmin
+    .from("group_posts")
+    .update({
+      user_id: actorUserId,
+      display_name: displayName,
+    })
+    .eq("id", existingPostId);
+}
+
 function getBerlinDateParts(date: Date) {
   const formatter = new Intl.DateTimeFormat("en-GB", {
     timeZone: BERLIN_TIME_ZONE,
@@ -188,6 +205,9 @@ export async function ensureWeeklyGroupSeriesPost(
       : SERIES_CONFIG[seriesKey].builder(now);
   const weekKey = getBerlinDateKey(now);
 
+  const resolvedActorUserId = await resolveActorUserId(supabaseAdmin);
+  const displayName = await resolveDisplayName(supabaseAdmin, resolvedActorUserId);
+
   const { data: existing, error: existingError } = await supabaseAdmin
     .from("weekly_group_series_posts")
     .select("id, post_id, week_key")
@@ -198,11 +218,13 @@ export async function ensureWeeklyGroupSeriesPost(
 
   if (existingError) throw new Error(existingError.message || "Could not check weekly series post.");
   if (existing) {
+    await syncExistingSeriesOwnership(supabaseAdmin, existing.post_id, resolvedActorUserId, displayName);
+    await supabaseAdmin
+      .from("weekly_group_series_posts")
+      .update({ created_by: resolvedActorUserId })
+      .eq("id", existing.id);
     return { ok: true, skipped: true as const, reason: "already_exists", postId: existing.post_id };
   }
-
-  const resolvedActorUserId = await resolveActorUserId(supabaseAdmin, actorUserId);
-  const displayName = await resolveDisplayName(supabaseAdmin, resolvedActorUserId);
 
   const { data: post, error: postError } = await supabaseAdmin
     .from("group_posts")

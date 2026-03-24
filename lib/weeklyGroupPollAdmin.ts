@@ -26,6 +26,23 @@ async function resolveActorUserId(supabaseAdmin: SupabaseClient, actorUserId?: s
   return louis.id;
 }
 
+async function syncExistingPollOwnership(
+  supabaseAdmin: SupabaseClient,
+  existingPostId: string | null | undefined,
+  actorUserId: string,
+  displayName: string,
+) {
+  if (!existingPostId) return;
+
+  await supabaseAdmin
+    .from("group_posts")
+    .update({
+      user_id: actorUserId,
+      display_name: displayName,
+    })
+    .eq("id", existingPostId);
+}
+
 function getBerlinDateParts(date: Date) {
   const formatter = new Intl.DateTimeFormat("en-GB", {
     timeZone: BERLIN_TIME_ZONE,
@@ -85,6 +102,9 @@ export async function ensureWeeklyGroupPollPost(
 
   const poll = buildWeeklyGroupPoll(now);
 
+  const resolvedActorUserId = await resolveActorUserId(supabaseAdmin);
+  const displayName = await resolveDisplayName(supabaseAdmin, resolvedActorUserId);
+
   const { data: existing, error: existingError } = await supabaseAdmin
     .from("weekly_group_polls")
     .select("id, post_id, week_key")
@@ -94,11 +114,13 @@ export async function ensureWeeklyGroupPollPost(
 
   if (existingError) throw new Error(existingError.message || "Could not check weekly poll.");
   if (existing) {
+    await syncExistingPollOwnership(supabaseAdmin, existing.post_id, resolvedActorUserId, displayName);
+    await supabaseAdmin
+      .from("weekly_group_polls")
+      .update({ created_by: resolvedActorUserId })
+      .eq("id", existing.id);
     return { ok: true, skipped: true as const, reason: "already_exists", postId: existing.post_id };
   }
-
-  const resolvedActorUserId = await resolveActorUserId(supabaseAdmin, actorUserId);
-  const displayName = await resolveDisplayName(supabaseAdmin, resolvedActorUserId);
 
   const content = "";
 
