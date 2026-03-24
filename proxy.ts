@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const url = req.nextUrl.clone();
   const pathname = req.nextUrl.pathname;
 
@@ -14,7 +14,6 @@ export async function middleware(req: NextRequest) {
   ]);
   const TRIVIA_PEOPLE_SLUGS = new Set(["god", "jesus", "moses", "abraham"]);
 
-  // If not protected route → allow
   const protectedPaths = [
     "/dashboard",
     "/reading-plan",
@@ -23,19 +22,15 @@ export async function middleware(req: NextRequest) {
     "/ai",
     "/grow",
     "/profile",
-    "/bible-trivia"
+    "/bible-trivia",
   ];
 
-  const isProtected = protectedPaths.some((path) =>
-    pathname.startsWith(path)
-  );
+  const isProtected = protectedPaths.some((path) => pathname.startsWith(path));
 
   if (!isProtected) {
     return NextResponse.next();
   }
 
-  // If protected BUT user is coming from login, signup, or password reset
-  // Allow Supabase auth flow to finish
   const referer = req.headers.get("referer") || "";
   const fromAuth =
     pathname.startsWith("/auth") ||
@@ -50,7 +45,6 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // Create Supabase client to check for actual session
   let response = NextResponse.next({
     request: {
       headers: req.headers,
@@ -103,12 +97,10 @@ export async function middleware(req: NextRequest) {
     }
   );
 
-  // Check for authenticated session using Supabase
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // If not logged in → redirect to landing
   if (!user) {
     url.pathname = "/";
     return NextResponse.redirect(url);
@@ -148,7 +140,6 @@ export async function middleware(req: NextRequest) {
     }
   }
 
-  // Logged in → allow access
   return response;
 }
 
@@ -161,6 +152,6 @@ export const config = {
     "/ai/:path*",
     "/grow/:path*",
     "/profile/:path*",
-    "/bible-trivia/:path*"
+    "/bible-trivia/:path*",
   ],
 };

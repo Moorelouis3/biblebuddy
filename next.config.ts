@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    webpackBuildWorker: false,
+    parallelServerCompiles: false,
+    parallelServerBuildTraces: false,
+  },
 };
 
 export default nextConfig;
