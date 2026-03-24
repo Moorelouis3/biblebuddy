@@ -199,7 +199,7 @@ export function getMentionCategoryLabel(kind: MentionCatalogItem["kind"]) {
     case "place": return "Place";
     case "keyword": return "Keyword";
     case "reading_plan": return "Reading Plan";
-    case "series": return "Series";
+    case "series": return "Bible Series";
     default: return "Mention";
   }
 }
@@ -230,6 +230,33 @@ export function getActiveMentionQuery(editor: any) {
     to: from,
     query,
   };
+}
+
+// ── Textarea (plain <textarea> / <input>) mention helpers ─────────────────────
+
+/** Returns the active @-query and its start index in `value`, or null. */
+export function getActiveMentionQueryFromTextarea(
+  value: string,
+  selectionStart: number,
+): { query: string; atIndex: number } | null {
+  const textBefore = value.slice(0, selectionStart);
+  const match = textBefore.match(/(^|\s)@([^\s]*)$/);
+  if (!match) return null;
+  const atIndex = textBefore.lastIndexOf("@");
+  return { query: match[2], atIndex };
+}
+
+/** Inserts a mention item into `value`, replacing the @-query at cursor. */
+export function insertMentionIntoTextarea(
+  value: string,
+  selectionStart: number,
+  item: MentionCatalogItem,
+): { newValue: string; newCursorPos: number } {
+  const textBefore = value.slice(0, selectionStart);
+  const atIndex = textBefore.lastIndexOf("@");
+  const insertText = `@${item.label} `;
+  const newValue = value.slice(0, atIndex) + insertText + value.slice(selectionStart);
+  return { newValue, newCursorPos: atIndex + insertText.length };
 }
 
 export function insertMentionIntoEditor(editor: any, range: { from: number; to: number }, item: MentionCatalogItem) {
