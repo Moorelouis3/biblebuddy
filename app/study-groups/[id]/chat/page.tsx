@@ -6442,9 +6442,9 @@ RULES:
             <div className="rounded-2xl border border-[#d7e8d7] bg-[#f4fbf5] px-4 py-3">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="text-sm font-semibold text-gray-900">Add Bible Buddy to your home screen</p>
+                  <p className="text-sm font-semibold text-gray-900">Did you know you can install Bible Buddy as an app?</p>
                   <p className="text-sm text-gray-600 mt-1">
-                    Open Bible Buddy faster like an app and get back into your group with one tap.
+                    Save it to your home screen so you can continue studying the Bible with one tap on the Bible Buddy icon.
                   </p>
                 </div>
                 <div className="text-xl flex-shrink-0">📲</div>
@@ -6467,7 +6467,7 @@ RULES:
                       className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
                       style={{ backgroundColor: SAGE }}
                     >
-                      {installSetupLoading ? "Opening..." : "Add to Home Screen"}
+                      {installSetupLoading ? "Opening..." : "Install Bible Buddy"}
                     </button>
                   )}
                   <ol className="space-y-2 text-sm text-gray-600">
