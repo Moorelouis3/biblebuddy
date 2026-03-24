@@ -578,7 +578,15 @@ export default function LandingPage() {
               </button>
 
               <p className="text-[10px] text-gray-500 text-center mt-1.5">
-                By creating an account, you agree to the terms of service and privacy policy.
+                By creating an account, you agree to the{" "}
+                <Link href="/terms" className="underline underline-offset-2 hover:text-blue-600">
+                  terms of service
+                </Link>{" "}
+                and{" "}
+                <Link href="/privacy" className="underline underline-offset-2 hover:text-blue-600">
+                  privacy policy
+                </Link>
+                .
               </p>
             </form>
           </div>
