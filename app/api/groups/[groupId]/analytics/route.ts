@@ -412,6 +412,7 @@ export async function GET(
             created_at: row.created_at as string,
             actionType: "group_post_created",
             text: `${actorName} posted in the group${preview ? `: "${preview}"` : "."}`,
+            href: `/study-groups/${groupId}/chat?post=${row.id}`,
           };
         }
 
@@ -420,6 +421,7 @@ export async function GET(
             created_at: row.created_at as string,
             actionType: "group_reply_created",
             text: `${actorName} replied to ${targetName || "a buddy"}'s comment${preview ? `: "${preview}"` : "."}`,
+            href: `/study-groups/${groupId}/chat?post=${parent.parent_post_id}&comment=${row.id}`,
           };
         }
 
@@ -427,6 +429,7 @@ export async function GET(
           created_at: row.created_at as string,
           actionType: "group_comment_created",
           text: `${actorName} commented on ${targetName || "a buddy"}'s post${preview ? `: "${preview}"` : "."}`,
+          href: `/study-groups/${groupId}/chat?post=${row.parent_post_id}&comment=${row.id}`,
         };
       }),
     ...recentLikeRows
@@ -438,16 +441,19 @@ export async function GET(
         if (target?.parent_post_id) {
           const parent = postMap.get(target.parent_post_id);
           const isReply = !!parent?.parent_post_id;
+          const topPostId = isReply ? parent?.parent_post_id : target.parent_post_id;
           return {
             created_at: row.created_at as string,
             actionType: isReply ? "group_reply_liked" : "group_comment_liked",
             text: `${actorName} liked ${targetName}'s ${isReply ? "reply" : "comment"}.`,
+            href: topPostId ? `/study-groups/${groupId}/chat?post=${topPostId}&comment=${target.id}` : `/study-groups/${groupId}/chat`,
           };
         }
         return {
           created_at: row.created_at as string,
           actionType: "group_post_liked",
           text: `${actorName} liked ${targetName}'s post.`,
+          href: `/study-groups/${groupId}/chat?post=${row.post_id}`,
         };
       }),
     ...(feedViewActions.data || [])
@@ -458,6 +464,7 @@ export async function GET(
           created_at: row.created_at as string,
           actionType: "study_group_feed_viewed",
           text: `${actorName} opened the group feed.`,
+          href: `/study-groups/${groupId}/chat`,
         };
       }),
     ...(articleReadActions.data || [])
@@ -468,6 +475,7 @@ export async function GET(
           created_at: row.created_at as string,
           actionType: "study_group_article_opened",
           text: `${actorName} opened a study article.`,
+          href: `/study-groups/${groupId}/chat`,
         };
       }),
     ...(bibleStudyCardOpenActions.data || [])
@@ -478,6 +486,7 @@ export async function GET(
           created_at: row.created_at as string,
           actionType: "study_group_bible_study_card_opened",
           text: `${actorName} opened the Bible study card.`,
+          href: `/study-groups/${groupId}/chat?tab=bible_studies`,
         };
       }),
   ]

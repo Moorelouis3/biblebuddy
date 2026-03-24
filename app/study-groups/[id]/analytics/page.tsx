@@ -65,6 +65,7 @@ type AnalyticsPayload = {
     created_at: string;
     actionType: string;
     text: string;
+    href?: string;
   }>;
   mostActiveBuddies: Array<{
     rank: number;
@@ -731,9 +732,15 @@ export default function StudyGroupAnalyticsPage() {
               ) : (
                 <div className="space-y-2">
                   {data.recentActions.map((action, index) => (
-                    <div
+                    <button
                       key={`${action.created_at}-${index}`}
-                      className={`rounded-2xl px-4 py-3 ${getGroupActionColorClass(action.actionType)}`}
+                      type="button"
+                      onClick={() => {
+                        if (!action.href) return;
+                        router.push(action.href);
+                      }}
+                      disabled={!action.href}
+                      className={`w-full rounded-2xl px-4 py-3 text-left ${getGroupActionColorClass(action.actionType)} ${action.href ? "cursor-pointer transition hover:ring-1 hover:ring-[#bfd9bf]" : "cursor-default"}`}
                     >
                       <div className="flex items-start justify-between gap-4">
                         <p className="text-sm leading-6 text-gray-900">{action.text}</p>
@@ -741,7 +748,7 @@ export default function StudyGroupAnalyticsPage() {
                           {formatActionLogDateTime(action.created_at)}
                         </span>
                       </div>
-                    </div>
+                    </button>
                   ))}
                 </div>
               )}
