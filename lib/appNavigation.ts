@@ -56,34 +56,6 @@ export const APP_NAV_ITEMS: AppNavItem[] = [
     activeClasses: "bg-purple-50 text-purple-700 font-medium cursor-not-allowed",
     hoverClasses: "text-gray-700 hover:bg-purple-50 hover:text-purple-600 active:scale-[0.98]",
   },
-  {
-    label: "People in the Bible",
-    href: "/people-in-the-bible",
-    activePrefixes: ["/people-in-the-bible"],
-    activeClasses: "bg-lime-50 text-lime-700 font-medium cursor-not-allowed",
-    hoverClasses: "text-gray-700 hover:bg-lime-50 hover:text-lime-600 active:scale-[0.98]",
-  },
-  {
-    label: "Places in the Bible",
-    href: "/places-in-the-bible",
-    activePrefixes: ["/places-in-the-bible"],
-    activeClasses: "bg-amber-50 text-amber-700 font-medium cursor-not-allowed",
-    hoverClasses: "text-gray-700 hover:bg-amber-50 hover:text-amber-600 active:scale-[0.98]",
-  },
-  {
-    label: "Keywords in the Bible",
-    href: "/keywords-in-the-bible",
-    activePrefixes: ["/keywords-in-the-bible"],
-    activeClasses: "bg-rose-50 text-rose-700 font-medium cursor-not-allowed",
-    hoverClasses: "text-gray-700 hover:bg-rose-50 hover:text-rose-600 active:scale-[0.98]",
-  },
-  {
-    label: "Messages",
-    href: "/messages",
-    activePrefixes: ["/messages"],
-    activeClasses: "bg-teal-50 text-teal-700 font-medium cursor-not-allowed",
-    hoverClasses: "text-gray-700 hover:bg-teal-50 hover:text-teal-600 active:scale-[0.98]",
-  },
 ];
 
 const BREADCRUMB_LABELS: Record<string, string> = {
