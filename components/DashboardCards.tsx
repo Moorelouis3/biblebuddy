@@ -5,7 +5,7 @@ import React from "react";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 
 interface DashboardCardsProps {
-  profile: { is_paid?: boolean; daily_credits?: number | null } | null;
+  profile: { is_paid?: boolean | null; daily_credits?: number | null } | null;
   membershipStatus: string;
   daysRemaining: number | null;
   isLoadingLevel: boolean;
