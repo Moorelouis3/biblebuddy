@@ -62,8 +62,9 @@ export function getDirectMessagePresentation(
   actionHref?: string | null,
 ): DirectMessagePresentation {
   if (actionLabel && actionHref) {
+    const legacyPresentation = extractLegacyDirectMessageAction(content);
     return {
-      body: stripDanglingWhitespace(content),
+      body: stripDanglingWhitespace(legacyPresentation.body),
       action: {
         label: actionLabel,
         href: actionHref,

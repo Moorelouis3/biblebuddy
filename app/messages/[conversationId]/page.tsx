@@ -131,6 +131,11 @@ export default function ConversationPage({
   const menuRef = useRef<HTMLDivElement>(null);
   const photoInputRef = useRef<HTMLInputElement>(null);
 
+  function handleActionNavigation(href: string) {
+    onExternalClose?.();
+    router.push(href);
+  }
+
   async function markConversationAsRead(currentUserId: string) {
     const nowIso = new Date().toISOString();
 
@@ -884,12 +889,13 @@ export default function ConversationPage({
                               className="whitespace-pre-wrap"
                             />
                             {presentation.action && (
-                              <Link
-                                href={presentation.action.href}
+                              <button
+                                type="button"
+                                onClick={() => handleActionNavigation(presentation.action!.href)}
                                 className="mt-3 inline-flex min-h-10 items-center justify-center rounded-2xl border border-[#d8eadf] bg-[#eef7f1] px-4 py-2 text-sm font-semibold text-[#2f6f4f] transition hover:bg-[#e4f3ea]"
                               >
                                 {presentation.action.label}
-                              </Link>
+                              </button>
                             )}
                           </>
                         )}
