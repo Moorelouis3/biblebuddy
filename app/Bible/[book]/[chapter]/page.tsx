@@ -18,6 +18,7 @@ import { BIBLE_PLACES_LIST } from "../../../../lib/biblePlacesList";
 import { BIBLE_KEYWORDS_LIST } from "../../../../lib/bibleKeywordsList";
 import { ACTION_TYPE } from "../../../../lib/actionTypes";
 import CreditLimitModal from "../../../../components/CreditLimitModal";
+import CommentSection from "../../../../components/comments/CommentSection";
 
 type Verse = {
   num: number;
@@ -1439,6 +1440,8 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
   const backLink = sourceContext.backLink || `/reading/books/${encodeURIComponent(book.toLowerCase())}`;
   const backText = sourceContext.backText || `← Back to ${bookDisplayName} overview`;
 
+  const chapterDiscussionSlug = `bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${chapter}`;
+
   function triggerConfetti() {
     const duration = 1000;
     const animationEnd = Date.now() + duration;
@@ -1963,6 +1966,27 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           >
             Go Back to Bible Books
           </Link>
+        </div>
+
+        <div className="mb-10">
+          <div className="mx-auto mb-4 max-w-2xl rounded-2xl border border-blue-100 bg-gradient-to-br from-white via-blue-50 to-sky-50 p-5 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
+              Chapter Discussion
+            </p>
+            <h2 className="mt-2 text-2xl font-bold text-gray-900">
+              Talk Through {bookDisplayName} {chapter}
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-gray-700">
+              Share what stood out to you, what challenged you, what encouraged you, or a verse you do not want to forget.
+            </p>
+          </div>
+
+          <CommentSection
+            articleSlug={chapterDiscussionSlug}
+            headingText={`${bookDisplayName} ${chapter} Comments`}
+            placeholderText={`What stood out to you in ${bookDisplayName} ${chapter}?`}
+            submitButtonText="Post Reflection"
+          />
         </div>
       </div>
 
@@ -2686,4 +2710,3 @@ function LevelUpOverlay({
     </div>
   );
 }
-

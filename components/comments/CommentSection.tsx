@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
 import { getUsername } from "@/lib/profileStats";
 import UserBadge from "@/components/UserBadge";
 import LevelBadge from "@/components/LevelBadge";
+import StreakFlameBadge from "@/components/StreakFlameBadge";
 import { triggerToast } from "@/components/AppToast";
 
 function uuidv4() {
@@ -30,6 +32,7 @@ interface Comment {
   member_badge?: string | null;
   is_paid?: boolean | null;
   current_level?: number | null;
+  current_streak?: number | null;
   replies?: Comment[];
 }
 
@@ -64,6 +67,15 @@ function timeAgo(date: string) {
   if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
   if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
   return then.toLocaleDateString();
+}
+
+function avatarColor(seed: string) {
+  const palette = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
+  let hash = 0;
+  for (let index = 0; index < seed.length; index += 1) {
+    hash = seed.charCodeAt(index) + ((hash << 5) - hash);
+  }
+  return palette[Math.abs(hash) % palette.length];
 }
 
 export default function CommentSection({
@@ -141,16 +153,17 @@ export default function CommentSection({
     try {
       const { data: profiles } = await supabase
         .from("profile_stats")
-        .select("user_id, profile_image_url, member_badge, is_paid, current_level")
+        .select("user_id, profile_image_url, member_badge, is_paid, current_level, current_streak")
         .in("user_id", userIds);
       if (!profiles || profiles.length === 0) return;
-      const profileMap: Record<string, { profile_image_url: string | null; member_badge: string | null; is_paid: boolean; current_level: number | null }> = {};
+      const profileMap: Record<string, { profile_image_url: string | null; member_badge: string | null; is_paid: boolean; current_level: number | null; current_streak: number | null }> = {};
       profiles.forEach((p) => {
         profileMap[p.user_id] = {
           profile_image_url: p.profile_image_url ?? null,
           member_badge: p.member_badge ?? null,
           is_paid: p.is_paid === true,
           current_level: p.current_level ?? null,
+          current_streak: p.current_streak ?? null,
         };
       });
       setComments((prev) =>
@@ -160,6 +173,7 @@ export default function CommentSection({
           member_badge: profileMap[c.user_id]?.member_badge ?? null,
           is_paid: profileMap[c.user_id]?.is_paid ?? false,
           current_level: profileMap[c.user_id]?.current_level ?? null,
+          current_streak: profileMap[c.user_id]?.current_streak ?? null,
         })),
       );
     } catch {
@@ -181,7 +195,7 @@ export default function CommentSection({
       }
       el.scrollIntoView({ behavior: "smooth", block: "center" });
       el.style.transition = "background-color 0.3s ease";
-      el.style.backgroundColor = "#dbeafe";
+      el.style.backgroundColor = "#fff5e8";
       setTimeout(() => {
         el.style.backgroundColor = "";
         setTimeout(() => {
@@ -281,43 +295,49 @@ export default function CommentSection({
           <div
             key={c.id}
             id={`comment-${c.id}`}
-            className={`flex gap-3 py-4 ${
-              depth > 0 ? "rounded-md border-l-2 border-blue-100 bg-blue-50/40 pl-4" : "border-b border-gray-200"
+            className={`flex gap-3 rounded-2xl py-4 ${
+              depth > 0
+                ? "mt-3 border border-[#efe5d9] bg-[#fffaf4] px-4"
+                : "border-b border-[#efe5d9]"
             } transition-all`}
           >
-            <a href={`/profile/${c.user_id}`} className="flex-shrink-0">
+            <Link href={`/profile/${c.user_id}`} className="mt-0.5 flex-shrink-0">
               {c.profile_image_url ? (
-                <img src={c.profile_image_url} alt={c.user_name} className="h-10 w-10 rounded-full object-cover transition hover:opacity-80" />
+                <img src={c.profile_image_url} alt={c.user_name} className="h-9 w-9 rounded-full object-cover transition hover:opacity-80" />
               ) : (
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-200 text-lg font-bold text-blue-700 transition hover:opacity-80">
+                <div
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-white transition hover:opacity-80"
+                  style={{ backgroundColor: avatarColor(c.user_id) }}
+                >
                   {c.user_name.charAt(0).toUpperCase()}
                 </div>
               )}
-            </a>
-            <div className="flex-1">
-              <div className="mb-1 flex items-center gap-2">
-                <a href={`/profile/${c.user_id}`} className="font-semibold text-blue-900 hover:underline">
+            </Link>
+            <div className="min-w-0 flex-1">
+              <div className="mb-1 flex flex-wrap items-center gap-1.5">
+                <Link href={`/profile/${c.user_id}`} className="text-sm font-semibold text-gray-900 hover:underline">
                   {c.user_name}
-                </a>
+                </Link>
+                <StreakFlameBadge currentStreak={c.current_streak} />
                 <LevelBadge currentLevel={c.current_level} />
                 <UserBadge customBadge={c.member_badge} isPaid={c.is_paid === true} />
-                <span className="text-xs text-gray-400">{timeAgo(c.created_at)}</span>
+                <span className="text-[11px] text-gray-400">{timeAgo(c.created_at)}</span>
               </div>
-              <div className="mb-2 whitespace-pre-line leading-relaxed text-gray-800">{c.content}</div>
-              <div className="mt-1 flex gap-3 text-sm">
+              <div className="mb-2 whitespace-pre-line text-sm leading-relaxed text-gray-700">{c.content}</div>
+              <div className="mt-1 flex gap-3 text-[11px] font-semibold uppercase tracking-[0.08em]">
                 {user && (user.id === c.user_id || currentUserBadge === "moderator") && (
-                  <button className="text-red-500 transition hover:text-red-700 hover:underline" onClick={() => void handleDelete(c.id)}>
+                  <button className="text-gray-400 transition hover:text-red-500" onClick={() => void handleDelete(c.id)}>
                     Delete
                   </button>
                 )}
-                <button className="text-blue-500 transition hover:text-blue-700 hover:underline" onClick={() => setReplyTo(c.id)}>
+                <button className="text-gray-400 transition hover:text-[#b7794d]" onClick={() => setReplyTo(c.id)}>
                   Reply
                 </button>
               </div>
               {replyTo === c.id && (
                 <form onSubmit={handlePost} className="mt-3 flex flex-col gap-2">
                   <textarea
-                    className="w-full rounded-lg border border-blue-200 p-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] p-3 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
                     rows={2}
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
@@ -327,14 +347,14 @@ export default function CommentSection({
                   <div className="flex gap-2">
                     <button
                       type="submit"
-                      className="rounded-lg bg-blue-600 px-4 py-1.5 text-sm font-medium text-white shadow transition hover:bg-blue-700 disabled:opacity-60"
+                      className="rounded-xl bg-[#b7794d] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#9f643c] disabled:opacity-60"
                       disabled={loading || !content.trim()}
                     >
                       {loading ? "Posting..." : "Post Reply"}
                     </button>
                     <button
                       type="button"
-                      className="text-sm text-gray-500 hover:underline"
+                      className="text-sm text-gray-500 transition hover:text-gray-700"
                       onClick={() => {
                         setReplyTo(null);
                         setContent("");
@@ -352,13 +372,13 @@ export default function CommentSection({
 
   return (
     <section className="mt-0">
-      <div className="mx-auto max-w-2xl rounded-2xl border border-blue-100 bg-white/90 p-6 shadow-sm md:p-8">
-        <h2 className="mb-2 text-xl font-bold text-blue-900">{headingText}</h2>
-        {error && <div className="mb-2 text-red-500">{error}</div>}
+      <div className="mx-auto max-w-2xl rounded-3xl border border-[#ead8c4] bg-white p-6 shadow-[0_20px_60px_rgba(160,122,82,0.08)] md:p-8">
+        <h2 className="mb-2 text-xl font-bold text-gray-900">{headingText}</h2>
+        {error && <div className="mb-3 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">{error}</div>}
         {user && !replyTo && (
-          <form onSubmit={handlePost} className="mb-2 flex flex-col gap-2">
+          <form onSubmit={handlePost} className="mb-4 flex flex-col gap-3">
             <textarea
-              className="w-full rounded-lg border border-blue-200 p-3 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full rounded-3xl border border-[#ead8c4] bg-[#fffaf4] p-4 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
               rows={3}
               value={content}
               onChange={(e) => setContent(e.target.value)}
@@ -367,7 +387,7 @@ export default function CommentSection({
             />
             <button
               type="submit"
-              className="self-end rounded-lg bg-blue-600 px-5 py-2 font-semibold text-white shadow transition hover:bg-blue-700 disabled:opacity-60"
+              className="self-end rounded-full bg-[#b7794d] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#9f643c] disabled:opacity-60"
               disabled={loading || !content.trim()}
             >
               {loading ? "Posting..." : submitButtonText}
@@ -376,7 +396,9 @@ export default function CommentSection({
         )}
         <div>
           {comments.length === 0 ? (
-            <div className="py-8 text-center text-base text-gray-400">No comments yet. Be the first to share your reflection.</div>
+            <div className="rounded-3xl border border-dashed border-[#ead8c4] bg-[#fffaf4] px-5 py-10 text-center text-sm text-gray-500">
+              No comments yet. Be the first to share your reflection.
+            </div>
           ) : (
             renderComments(groupComments(comments))
           )}
