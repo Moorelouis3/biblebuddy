@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { getDirectMessagePreview, isMissingDirectMessageActionColumnError } from "@/lib/directMessageActions";
 
 export const runtime = "nodejs";
 // Give the function up to 30 seconds (Vercel Pro / Hobby max)
 export const maxDuration = 30;
 
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
-const APP_URL = (process.env.NEXT_PUBLIC_APP_URL || "https://biblebuddy.app").replace(/\/$/, "");
-
 const MSG_DAY1 = `Hey, welcome to Bible Buddy 👋🏾
 
 my name is Louis, I'm the one who built the app
@@ -145,20 +144,28 @@ export async function POST(request: NextRequest) {
   }
 
   const now = new Date().toISOString();
-  const preview = MSG_DAY1.slice(0, 120);
+  const preview = getDirectMessagePreview(MSG_DAY1);
 
   // Insert message + update convo + upsert notification in parallel
-  const [msgResult] = await Promise.all([
-    db.from("messages").insert({
+  let msgResult = await db.from("messages").insert({
+    conversation_id: conversationId,
+    sender_id: louisId,
+    content: MSG_DAY1,
+    created_at: now,
+  });
+
+  if (isMissingDirectMessageActionColumnError(msgResult.error)) {
+    msgResult = await db.from("messages").insert({
       conversation_id: conversationId,
       sender_id: louisId,
       content: MSG_DAY1,
       created_at: now,
-    }),
-    db.from("conversations")
-      .update({ last_message_at: now, last_message_preview: preview })
-      .eq("id", conversationId),
-  ]);
+    });
+  }
+
+  await db.from("conversations")
+    .update({ last_message_at: now, last_message_preview: preview })
+    .eq("id", conversationId);
 
   if (msgResult.error) {
     console.error("[WELCOME_DM] Failed to insert message:", msgResult.error.message);

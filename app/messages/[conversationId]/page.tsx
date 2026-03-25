@@ -9,7 +9,7 @@ import { ModalShell } from "../../../components/ModalShell";
 import UserBadge from "../../../components/UserBadge";
 import StreakFlameBadge from "../../../components/StreakFlameBadge";
 import { loadGroupPostMentions, type MentionCatalogItem } from "../../../lib/groupPostMentions";
-import { getDirectMessagePresentation } from "../../../lib/directMessageActions";
+import { getDirectMessagePresentation, isMissingDirectMessageActionColumnError } from "../../../lib/directMessageActions";
 import MentionText from "../../../components/MentionText";
 
 const TextareaMentionInput = dynamic(() => import("../../../components/TextareaMentionInput"), { ssr: false });
@@ -91,6 +91,8 @@ interface BlockState {
   blocker_user_id: string;
   blocked_user_id: string;
 }
+
+type MessageRowWithoutActions = Omit<Message, "action_label" | "action_href">;
 
 export default function ConversationPage({
   externalId,
@@ -223,7 +225,7 @@ export default function ConversationPage({
     try {
       const { data: convo } = await supabase
         .from("conversations")
-        .select("id, user_id_1, user_id_2")
+        .select("id, user_id_1, user_id_2, last_message_preview, last_message_at")
         .eq("id", conversationId)
         .maybeSingle();
 
@@ -269,13 +271,24 @@ export default function ConversationPage({
         },
       );
 
-      const { data: msgs } = await supabase
-        .from("messages")
-        .select("id, sender_id, content, image_url, action_label, action_href, read_at, created_at")
-        .eq("conversation_id", conversationId)
-        .order("created_at", { ascending: true });
+      const msgs = await fetchConversationMessages(conversationId);
+      const normalizedMessages =
+        msgs.length === 0 && convo.last_message_preview
+          ? [
+              {
+                id: `preview-${conversationId}`,
+                sender_id: otherId,
+                content: convo.last_message_preview,
+                image_url: null,
+                action_label: null,
+                action_href: null,
+                read_at: null,
+                created_at: convo.last_message_at || new Date().toISOString(),
+              },
+            ]
+          : msgs;
 
-      setMessages(msgs || []);
+      setMessages(normalizedMessages);
 
       const { data: blockRows } = await supabase
         .from("buddy_blocks")
@@ -285,7 +298,7 @@ export default function ConversationPage({
 
       setBlockState(blockRows?.[0] ?? null);
 
-      const hadUnreadMessages = msgs ? msgs.some((message) => message.sender_id !== uid && !message.read_at) : false;
+      const hadUnreadMessages = msgs.some((message) => message.sender_id !== uid && !message.read_at);
 
       if (hadUnreadMessages) {
         void markConversationAsRead(uid);
@@ -300,6 +313,44 @@ export default function ConversationPage({
     } finally {
       setLoading(false);
     }
+  }
+
+  function normalizeMessagesWithoutActions(rows: MessageRowWithoutActions[] | null | undefined): Message[] {
+    return (rows || []).map((row) => ({
+      ...row,
+      action_label: null,
+      action_href: null,
+    }));
+  }
+
+  async function fetchConversationMessages(currentConversationId: string): Promise<Message[]> {
+    const withActions = await supabase
+      .from("messages")
+      .select("id, sender_id, content, image_url, action_label, action_href, read_at, created_at")
+      .eq("conversation_id", currentConversationId)
+      .order("created_at", { ascending: true });
+
+    if (!withActions.error) {
+      return withActions.data || [];
+    }
+
+    if (!isMissingDirectMessageActionColumnError(withActions.error)) {
+      console.error("[MESSAGES] Could not load conversation messages:", withActions.error);
+      return [];
+    }
+
+    const fallback = await supabase
+      .from("messages")
+      .select("id, sender_id, content, image_url, read_at, created_at")
+      .eq("conversation_id", currentConversationId)
+      .order("created_at", { ascending: true });
+
+    if (fallback.error) {
+      console.error("[MESSAGES] Could not load conversation messages with fallback:", fallback.error);
+      return [];
+    }
+
+    return normalizeMessagesWithoutActions(fallback.data);
   }
 
   useEffect(() => {
@@ -317,18 +368,8 @@ export default function ConversationPage({
           filter: `conversation_id=eq.${conversationId}`,
         },
         async () => {
-          const { data: latestMessages, error } = await supabase
-            .from("messages")
-            .select("id, sender_id, content, image_url, action_label, action_href, read_at, created_at")
-            .eq("conversation_id", conversationId)
-            .order("created_at", { ascending: true });
-
-          if (error) {
-            console.error("[MESSAGES] Could not refresh conversation messages:", error);
-            return;
-          }
-
-          setMessages(latestMessages || []);
+          const latestMessages = await fetchConversationMessages(conversationId);
+          setMessages(latestMessages);
 
           const hasUnreadIncoming = (latestMessages || []).some(
             (message) => message.sender_id !== currentUserId && !message.read_at,
@@ -394,13 +435,14 @@ export default function ConversationPage({
     const { data: inserted, error } = await supabase
       .from("messages")
       .insert({ conversation_id: conversationId, sender_id: userId, content: "", image_url: imageUrl })
-      .select("id, sender_id, content, image_url, action_label, action_href, read_at, created_at")
+      .select("id, sender_id, content, image_url, read_at, created_at")
       .single();
 
     if (error) {
       setMessages((prev) => prev.filter((m) => m.id !== optimisticMsg.id));
     } else {
-      setMessages((prev) => prev.map((m) => (m.id === optimisticMsg.id ? inserted : m)));
+      const normalizedInserted: Message = { ...inserted, action_label: null, action_href: null };
+      setMessages((prev) => prev.map((m) => (m.id === optimisticMsg.id ? normalizedInserted : m)));
       await supabase.from("conversations").update({ last_message_at: inserted.created_at, last_message_preview: "📷 Photo" }).eq("id", conversationId);
       window.dispatchEvent(new Event("bb:refresh-unread-messages"));
     }
@@ -432,10 +474,8 @@ export default function ConversationPage({
           conversation_id: conversationId,
           sender_id: userId,
           content,
-          action_label: null,
-          action_href: null,
         })
-        .select("id, sender_id, content, image_url, action_label, action_href, read_at, created_at")
+        .select("id, sender_id, content, image_url, read_at, created_at")
         .single();
 
       if (error) {
@@ -445,7 +485,8 @@ export default function ConversationPage({
         return;
       }
 
-      setMessages((prev) => prev.map((message) => (message.id === optimisticMsg.id ? inserted : message)));
+      const normalizedInserted: Message = { ...inserted, action_label: null, action_href: null };
+      setMessages((prev) => prev.map((message) => (message.id === optimisticMsg.id ? normalizedInserted : message)));
 
       await supabase
         .from("conversations")

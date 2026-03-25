@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { getDirectMessagePreview, isMissingDirectMessageActionColumnError } from "@/lib/directMessageActions";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 60; // seconds — use Vercel Pro's extended limit
 
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
-const APP_URL = (process.env.NEXT_PUBLIC_APP_URL || "https://biblebuddy.app").replace(/\/$/, "");
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 function isAuthorized(request: NextRequest) {
@@ -31,56 +31,57 @@ Bible Buddy is built to help you understand what you're reading, not just go thr
 
 take a look around and get familiar with everything`;
 
-const MSG_DAY2_PROFILE_DONE = (groupLink: string) =>
+// groupPath must be a relative path like /study-groups/[id]/chat
+// The message renderer in the app detects "Open Bible Study Group: /study-groups/..."
+// and turns it into a tappable button labeled "Open Bible Study Group"
+
+const MSG_DAY2_PROFILE_DONE = (groupPath: string) =>
   `I see you got your profile set up 👀
 
 that's perfect
 
 next step, go check out the Bible Study Group
 
-jump in here:
-${groupLink}`;
+Open Bible Study Group: ${groupPath}`;
 
-const MSG_DAY2_NO_PROFILE = (profileLink: string) =>
+const MSG_DAY2_NO_PROFILE = (profilePath: string) =>
   `Hey 👋🏾
 
-quick reminder to set up your profile
+quick reminder to finish setting up your profile
 
-it takes like 30 seconds
+add your full name, a profile photo, and a short bio
 
-do that here:
-${profileLink}`;
+it only takes a minute
 
-const MSG_DAY3_GROUP_VISITED = (studyLink: string) =>
+Open your profile settings: ${profilePath}`;
+
+const MSG_DAY3_GROUP_VISITED = (groupPath: string) =>
   `I saw you checked out the Bible Study Group 👀
 
 now go into the latest study and start with Week 1
 
-start here:
-${studyLink}`;
+Open Bible Study Group: ${groupPath}`;
 
-const MSG_DAY3_NO_GROUP = (groupLink: string) =>
+const MSG_DAY3_NO_GROUP = (groupPath: string) =>
   `Hey 👋🏾
 
 the Bible Study Group is where everything comes together
 
-jump in here:
-${groupLink}`;
+Open Bible Study Group: ${groupPath}`;
 
 const MSG_DAY4_STUDY_STARTED =
   `I saw you started the study 👀
 
 that's exactly how to use Bible Buddy`;
 
-const MSG_DAY4_NO_STUDY = (studyLink: string) =>
+const MSG_DAY4_NO_STUDY = (groupPath: string) =>
   `Hey 👋🏾
 
 if you're not sure where to start
 
 go into the latest Bible study
 
-start here:
-${studyLink}`;
+Open Bible Study Group: ${groupPath}`;
 
 // ── DM sender ────────────────────────────────────────────────────────────────
 
@@ -90,6 +91,7 @@ async function sendDM(
   louisName: string,
   userId: string,
   message: string,
+  action?: { label: string; href: string } | null,
 ): Promise<boolean> {
   try {
     // conversations table requires user_id_1 < user_id_2
@@ -120,15 +122,31 @@ async function sendDM(
     }
 
     const now = new Date().toISOString();
-    const preview = message.slice(0, 120);
+    const preview = getDirectMessagePreview(message, action?.label ?? null, action?.href ?? null);
 
-    // Insert the message
-    const { error: msgError } = await db.from("messages").insert({
+    const insertPayload: Record<string, unknown> = {
       conversation_id: conversationId,
       sender_id: louisId,
       content: message,
       created_at: now,
-    });
+    };
+
+    if (action?.label && action?.href) {
+      insertPayload.action_label = action.label;
+      insertPayload.action_href = action.href;
+    }
+
+    let { error: msgError } = await db.from("messages").insert(insertPayload);
+
+    if (msgError && isMissingDirectMessageActionColumnError(msgError)) {
+      const fallbackPayload = {
+        conversation_id: conversationId,
+        sender_id: louisId,
+        content: message,
+        created_at: now,
+      };
+      ({ error: msgError } = await db.from("messages").insert(fallbackPayload));
+    }
 
     if (msgError) {
       console.error("[ONBOARDING_DM] Failed to insert message:", msgError.message);
@@ -265,11 +283,12 @@ export async function GET(request: NextRequest) {
     groups?.find((g: any) => g.name === "Hope Nation") ??
     null;
 
-  const groupLink = targetGroup
-    ? `${APP_URL}/study-groups/${targetGroup.id}/chat`
-    : `${APP_URL}/study-groups`;
-  const profileLink = `${APP_URL}/settings`;
-  const studyLink = groupLink; // the latest study lives inside the group
+  // Use relative paths — the message renderer detects /study-groups/... and
+  // renders a tappable "Open Bible Study Group" button instead of a raw URL
+  const groupPath = targetGroup
+    ? `/study-groups/${targetGroup.id}/chat`
+    : `/study-groups`;
+  const profilePath = `/settings`;
 
   // ── Load already-sent records ────────────────────────────────────────────
   const { data: allSent } = await supabaseAdmin
@@ -321,17 +340,23 @@ export async function GET(request: NextRequest) {
 
     const { data: profile } = await supabaseAdmin
       .from("profile_stats")
-      .select("onboarding_completed, display_name")
+      .select("display_name, profile_image_url, bio")
       .eq("user_id", userId)
       .maybeSingle();
 
+    // Profile is "done" only when the user has set a full name, a profile photo, AND a bio
     const profileDone =
-      profile?.onboarding_completed === true || !!(profile?.display_name?.trim());
+      !!(profile?.display_name?.trim()) &&
+      !!(profile?.profile_image_url?.trim()) &&
+      !!(profile?.bio?.trim());
     const msg = profileDone
-      ? MSG_DAY2_PROFILE_DONE(groupLink)
-      : MSG_DAY2_NO_PROFILE(profileLink);
+      ? MSG_DAY2_PROFILE_DONE(groupPath)
+      : MSG_DAY2_NO_PROFILE(profilePath);
+    const action = profileDone
+      ? { label: "Open Bible Study Group", href: groupPath }
+      : { label: "Open Profile Settings", href: profilePath };
 
-    const ok = await sendDM(supabaseAdmin, louisId, louisName, userId, msg);
+    const ok = await sendDM(supabaseAdmin, louisId, louisName, userId, msg, action);
     if (ok) {
       await supabaseAdmin
         .from("onboarding_dm_sent")
@@ -356,10 +381,11 @@ export async function GET(request: NextRequest) {
       .maybeSingle();
 
     const msg = groupVisit
-      ? MSG_DAY3_GROUP_VISITED(studyLink)
-      : MSG_DAY3_NO_GROUP(groupLink);
+      ? MSG_DAY3_GROUP_VISITED(groupPath)
+      : MSG_DAY3_NO_GROUP(groupPath);
+    const action = { label: "Open Bible Study Group", href: groupPath };
 
-    const ok = await sendDM(supabaseAdmin, louisId, louisName, userId, msg);
+    const ok = await sendDM(supabaseAdmin, louisId, louisName, userId, msg, action);
     if (ok) {
       await supabaseAdmin
         .from("onboarding_dm_sent")
@@ -385,9 +411,10 @@ export async function GET(request: NextRequest) {
 
     const msg = studyAction
       ? MSG_DAY4_STUDY_STARTED
-      : MSG_DAY4_NO_STUDY(studyLink);
+      : MSG_DAY4_NO_STUDY(groupPath);
+    const action = studyAction ? null : { label: "Open Bible Study Group", href: groupPath };
 
-    const ok = await sendDM(supabaseAdmin, louisId, louisName, userId, msg);
+    const ok = await sendDM(supabaseAdmin, louisId, louisName, userId, msg, action);
     if (ok) {
       await supabaseAdmin
         .from("onboarding_dm_sent")

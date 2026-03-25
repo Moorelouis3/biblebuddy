@@ -8,6 +8,13 @@ export type DirectMessagePresentation = {
   action: DirectMessageAction | null;
 };
 
+type SupabaseLikeError = {
+  code?: string | null;
+  message?: string | null;
+  details?: string | null;
+  hint?: string | null;
+};
+
 const LEGACY_ACTION_PATTERNS: Array<{
   regex: RegExp;
   label: string;
@@ -75,4 +82,14 @@ export function getDirectMessagePreview(
   const presentation = getDirectMessagePresentation(content, actionLabel, actionHref);
   const previewSource = presentation.body || content;
   return previewSource.length > 120 ? `${previewSource.slice(0, 120)}...` : previewSource;
+}
+
+export function isMissingDirectMessageActionColumnError(error: SupabaseLikeError | null | undefined): boolean {
+  const haystack = `${error?.code || ""} ${error?.message || ""} ${error?.details || ""} ${error?.hint || ""}`.toLowerCase();
+  if (!haystack) return false;
+
+  return (
+    haystack.includes("42703") &&
+    (haystack.includes("action_label") || haystack.includes("action_href"))
+  );
 }
