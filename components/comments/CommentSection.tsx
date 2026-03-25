@@ -91,11 +91,14 @@ export default function CommentSection({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [currentUserBadge, setCurrentUserBadge] = useState<string | null>(null);
+  const [currentUserProfileImage, setCurrentUserProfileImage] = useState<string | null>(null);
+  const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
 
   const hydrateUser = useCallback(async (userId?: string | null, email?: string | null) => {
     if (!userId) {
       setUser(null);
       setCurrentUserBadge(null);
+      setCurrentUserProfileImage(null);
       return;
     }
 
@@ -121,12 +124,14 @@ export default function CommentSection({
     try {
       const { data: profileRow } = await supabase
         .from("profile_stats")
-        .select("member_badge")
+        .select("member_badge, profile_image_url")
         .eq("user_id", userId)
         .maybeSingle();
       setCurrentUserBadge(profileRow?.member_badge ?? null);
+      setCurrentUserProfileImage(profileRow?.profile_image_url ?? null);
     } catch {
       setCurrentUserBadge(null);
+      setCurrentUserProfileImage(null);
     }
 
     setUser({ id: userId, name: displayName });
@@ -256,6 +261,7 @@ export default function CommentSection({
   const handleDelete = async (id: string) => {
     triggerSmokeDelete();
     setLoading(true);
+    setActiveMenuId(null);
     try {
       const { data: sessionData } = await supabase.auth.getSession();
       const accessToken = sessionData.session?.access_token;
@@ -295,18 +301,14 @@ export default function CommentSection({
           <div
             key={c.id}
             id={`comment-${c.id}`}
-            className={`flex gap-3 rounded-2xl py-4 ${
-              depth > 0
-                ? "mt-3 border border-[#efe5d9] bg-[#fffaf4] px-4"
-                : "border-b border-[#efe5d9]"
-            } transition-all`}
+            className={`${depth === 0 ? "mt-4" : "ml-10 mt-3"} flex gap-3 transition-all`}
           >
             <Link href={`/profile/${c.user_id}`} className="mt-0.5 flex-shrink-0">
               {c.profile_image_url ? (
-                <img src={c.profile_image_url} alt={c.user_name} className="h-9 w-9 rounded-full object-cover transition hover:opacity-80" />
+                <img src={c.profile_image_url} alt={c.user_name} className="h-8 w-8 rounded-full object-cover transition hover:opacity-80" />
               ) : (
                 <div
-                  className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-white transition hover:opacity-80"
+                  className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-white transition hover:opacity-80"
                   style={{ backgroundColor: avatarColor(c.user_id) }}
                 >
                   {c.user_name.charAt(0).toUpperCase()}
@@ -314,55 +316,76 @@ export default function CommentSection({
               )}
             </Link>
             <div className="min-w-0 flex-1">
-              <div className="mb-1 flex flex-wrap items-center gap-1.5">
-                <Link href={`/profile/${c.user_id}`} className="text-sm font-semibold text-gray-900 hover:underline">
-                  {c.user_name}
-                </Link>
-                <StreakFlameBadge currentStreak={c.current_streak} />
-                <LevelBadge currentLevel={c.current_level} />
-                <UserBadge customBadge={c.member_badge} isPaid={c.is_paid === true} />
-                <span className="text-[11px] text-gray-400">{timeAgo(c.created_at)}</span>
+              <div className="rounded-2xl border border-[#efe5d9] bg-[#faf7f2] px-3 py-2.5">
+                <div className="flex items-start gap-2">
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Link href={`/profile/${c.user_id}`} className="text-xs font-semibold text-gray-800 hover:underline">
+                        {c.user_name}
+                      </Link>
+                      <StreakFlameBadge currentStreak={c.current_streak} />
+                      <LevelBadge currentLevel={c.current_level} />
+                      <UserBadge customBadge={c.member_badge} isPaid={c.is_paid === true} />
+                      <span className="text-xs text-gray-400">{timeAgo(c.created_at)}</span>
+                    </div>
+                    <p className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-gray-700">{c.content}</p>
+                  </div>
+                  {user && (user.id === c.user_id || currentUserBadge === "moderator") && (
+                    <div className="relative">
+                      <button
+                        type="button"
+                        onClick={() => setActiveMenuId(activeMenuId === c.id ? null : c.id)}
+                        className="flex h-7 w-7 items-center justify-center rounded-full text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
+                        aria-label="Comment options"
+                      >
+                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6h.01M12 12h.01M12 18h.01" />
+                        </svg>
+                      </button>
+                      {activeMenuId === c.id && (
+                        <div className="absolute right-0 top-8 z-10 min-w-[128px] overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
+                          <button
+                            type="button"
+                            onClick={() => void handleDelete(c.id)}
+                            disabled={loading}
+                            className="w-full px-4 py-3 text-left text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="mb-2 whitespace-pre-line text-sm leading-relaxed text-gray-700">{c.content}</div>
-              <div className="mt-1 flex gap-3 text-[11px] font-semibold uppercase tracking-[0.08em]">
-                {user && (user.id === c.user_id || currentUserBadge === "moderator") && (
-                  <button className="text-gray-400 transition hover:text-red-500" onClick={() => void handleDelete(c.id)}>
-                    Delete
-                  </button>
-                )}
-                <button className="text-gray-400 transition hover:text-[#b7794d]" onClick={() => setReplyTo(c.id)}>
+              <div className="mt-1 flex items-center gap-4 px-1">
+                <button
+                  className="text-xs font-semibold text-gray-400 transition hover:text-[#b7794d]"
+                  onClick={() => {
+                    setReplyTo(replyTo === c.id ? null : c.id);
+                    setContent("");
+                  }}
+                >
                   Reply
                 </button>
               </div>
               {replyTo === c.id && (
-                <form onSubmit={handlePost} className="mt-3 flex flex-col gap-2">
+                <form onSubmit={handlePost} className="mt-2 flex items-end gap-2">
                   <textarea
-                    className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] p-3 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
-                    rows={2}
+                    className="w-full resize-none rounded-xl border border-[#eadfce] bg-white px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
+                    rows={1}
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     placeholder="Write a reply..."
                     required
                   />
-                  <div className="flex gap-2">
-                    <button
-                      type="submit"
-                      className="rounded-xl bg-[#b7794d] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#9f643c] disabled:opacity-60"
-                      disabled={loading || !content.trim()}
-                    >
-                      {loading ? "Posting..." : "Post Reply"}
-                    </button>
-                    <button
-                      type="button"
-                      className="text-sm text-gray-500 transition hover:text-gray-700"
-                      onClick={() => {
-                        setReplyTo(null);
-                        setContent("");
-                      }}
-                    >
-                      Cancel
-                    </button>
-                  </div>
+                  <button
+                    type="submit"
+                    className="flex-shrink-0 rounded-xl bg-[#4a9b6f] px-3 py-2 text-sm font-semibold text-white transition disabled:opacity-40"
+                    disabled={loading || !content.trim()}
+                  >
+                    Reply
+                  </button>
                 </form>
               )}
               {c.replies && c.replies.length > 0 && <div className="mt-2">{renderComments(c.replies, depth + 1)}</div>}
@@ -372,35 +395,55 @@ export default function CommentSection({
 
   return (
     <section className="mt-0">
-      <div className="mx-auto max-w-2xl rounded-3xl border border-[#ead8c4] bg-white p-6 shadow-[0_20px_60px_rgba(160,122,82,0.08)] md:p-8">
+      <div className="mx-auto max-w-2xl">
         <h2 className="mb-2 text-xl font-bold text-gray-900">{headingText}</h2>
         {error && <div className="mb-3 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">{error}</div>}
         {user && !replyTo && (
-          <form onSubmit={handlePost} className="mb-4 flex flex-col gap-3">
-            <textarea
-              className="w-full rounded-3xl border border-[#ead8c4] bg-[#fffaf4] p-4 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
-              rows={3}
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              placeholder={placeholderText}
-              required
-            />
-            <button
-              type="submit"
-              className="self-end rounded-full bg-[#b7794d] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#9f643c] disabled:opacity-60"
-              disabled={loading || !content.trim()}
-            >
-              {loading ? "Posting..." : submitButtonText}
-            </button>
+          <form onSubmit={handlePost} className="flex items-end gap-3">
+            {user && (
+              <Link href={`/profile/${user.id}`} className="flex-shrink-0">
+                {currentUserProfileImage ? (
+                  <img src={currentUserProfileImage} alt={user.name} className="h-9 w-9 rounded-full object-cover" />
+                ) : (
+                  <div
+                    className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-white"
+                    style={{ backgroundColor: avatarColor(user.id) }}
+                  >
+                    {user.name.charAt(0).toUpperCase()}
+                  </div>
+                )}
+              </Link>
+            )}
+            <div className="flex flex-1 items-end gap-2 rounded-2xl bg-gray-100 px-4 py-3">
+              <textarea
+                className="max-h-28 flex-1 resize-none bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none"
+                rows={1}
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                placeholder={placeholderText}
+                required
+              />
+              <button
+                type="submit"
+                className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full transition disabled:opacity-40"
+                style={{ backgroundColor: "#4a9b6f" }}
+                disabled={loading || !content.trim()}
+                aria-label={submitButtonText}
+              >
+                <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+              </button>
+            </div>
           </form>
         )}
         <div>
           {comments.length === 0 ? (
-            <div className="rounded-3xl border border-dashed border-[#ead8c4] bg-[#fffaf4] px-5 py-10 text-center text-sm text-gray-500">
+            <div className="mt-4 rounded-xl border border-dashed border-[#ead8c4] bg-[#fffaf4] px-5 py-10 text-center text-sm text-gray-500">
               No comments yet. Be the first to share your reflection.
             </div>
           ) : (
-            renderComments(groupComments(comments))
+            <div className="mt-4 flex flex-col gap-3">{renderComments(groupComments(comments))}</div>
           )}
         </div>
         {!user && <div className="mt-4 text-center text-sm text-gray-500">Sign in to comment.</div>}
