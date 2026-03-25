@@ -14,6 +14,9 @@ import { FeatureRenderPriorityProvider } from "./FeatureRenderPriorityContext";
 import { CURRENT_UPDATE_VERSION } from "../lib/globalUpdateConfig";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../lib/profileName";
+import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
+import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
+import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavigation";
 import type { BuddyCelebrationUser } from "./BuddyCelebrationModal";
 import UserBadge from "./UserBadge";
 import StreakFlameBadge from "./StreakFlameBadge";
@@ -672,18 +675,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   async function fetchConversationPreviews(currentUserId: string) {
     setLoadingPreviews(true);
     try {
-      const { data: convos } = await supabase
-        .from("conversations")
-        .select("id, user_id_1, user_id_2, last_message_at, last_message_preview")
-        .or(`user_id_1.eq.${currentUserId},user_id_2.eq.${currentUserId}`)
-        .order("last_message_at", { ascending: false, nullsFirst: false })
-        .limit(5);
-
-      if (!convos || convos.length === 0) { setConversationPreviews([]); return; }
-
-      const otherIds = convos.map((c) => c.user_id_1 === currentUserId ? c.user_id_2 : c.user_id_1);
-
-      // Also refresh unread count via service role so the cache is fresh
+      // Step 1 — refresh unread IDs so we know exactly which convos have new messages
       const { data: { session } } = await supabase.auth.getSession();
       if (session?.access_token) {
         try {
@@ -698,39 +690,48 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         } catch { /* ignore */ }
       }
 
-      const [profilesResult] = await Promise.all([
+      const unreadIds = [..._cachedUnreadConvoIds.current];
+
+      // Step 2 — fetch unread conversations (by ID) + top 5 recent, in parallel
+      const [unreadConvosResult, recentConvosResult] = await Promise.all([
+        unreadIds.length > 0
+          ? supabase
+              .from("conversations")
+              .select("id, user_id_1, user_id_2, last_message_at, last_message_preview")
+              .in("id", unreadIds)
+              .order("last_message_at", { ascending: false, nullsFirst: false })
+          : Promise.resolve({ data: [] as any[] }),
         supabase
-          .from("profile_stats")
-          .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
-          .in("user_id", otherIds),
+          .from("conversations")
+          .select("id, user_id_1, user_id_2, last_message_at, last_message_preview")
+          .or(`user_id_1.eq.${currentUserId},user_id_2.eq.${currentUserId}`)
+          .order("last_message_at", { ascending: false, nullsFirst: false })
+          .limit(5),
       ]);
 
-      const profiles = [...(profilesResult.data || [])];
-      const missingIds = otherIds.filter((id) => !profiles.some((profile) => profile.user_id === id));
+      // Step 3 — merge: unread first, then recent (deduplicated), max 7 shown
+      const unreadConvos = (unreadConvosResult.data || []) as any[];
+      const recentConvos = (recentConvosResult.data || []) as any[];
+      const seen = new Set(unreadConvos.map((c: any) => c.id));
+      const merged = [
+        ...unreadConvos,
+        ...recentConvos.filter((c: any) => !seen.has(c.id)),
+      ].slice(0, 7);
 
-      if (missingIds.length > 0) {
-        const missingResults = await Promise.all(
-          [...new Set(missingIds)].map(async (missingId) => {
-            const { data } = await supabase
-              .from("profile_stats")
-              .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
-              .eq("user_id", missingId)
-              .maybeSingle();
+      if (merged.length === 0) { setConversationPreviews([]); return; }
 
-            return data;
-          }),
-        );
+      const otherIds = merged.map((c: any) => c.user_id_1 === currentUserId ? c.user_id_2 : c.user_id_1);
+      const { data: profileData } = await supabase
+        .from("profile_stats")
+        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
+        .in("user_id", [...new Set(otherIds)]);
 
-        missingResults.forEach((profile) => {
-          if (profile) profiles.push(profile);
-        });
-      }
-
+      const profiles = profileData || [];
       const unreadConvoIds = _cachedUnreadConvoIds.current;
 
-      const previews = convos.map((c) => {
+      const previews = merged.map((c: any) => {
         const otherId = c.user_id_1 === currentUserId ? c.user_id_2 : c.user_id_1;
-        const profile = profiles.find((p) => p.user_id === otherId);
+        const profile = profiles.find((p: any) => p.user_id === otherId);
         return {
           id: c.id,
           otherUserId: otherId,
@@ -739,7 +740,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           otherUserBadge: profile?.member_badge || null,
           otherUserIsPaid: profile?.is_paid === true,
           otherUserCurrentStreak: profile?.current_streak ?? null,
-          lastMessagePreview: c.last_message_preview || null,
+          lastMessagePreview: c.last_message_preview
+            ? extractLegacyDirectMessageAction(c.last_message_preview).body
+            : null,
           lastMessageAt: c.last_message_at || null,
           hasUnread: unreadConvoIds.has(c.id),
         };
@@ -1044,17 +1047,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   const isAdmin = isLoggedIn && userEmail === "moorelouis3@gmail.com";
 
-  // Determine if navigation menu should be shown (only on content pages)
-  // Shows on: Bible main page (/Bible), book pages (/Bible/[book]), chapter pages (/Bible/[book]/[chapter]),
-  // Notes pages, People, Places, and Keywords pages
-  // Hidden on: landing, login, signup, dashboard, and main home page
-  const shouldShowNavMenu = isLoggedIn && !isBarePage && pathname && (
-    pathname.startsWith("/Bible") ||  // Matches /Bible, /Bible/[book], /Bible/[book]/[chapter]
-    pathname.startsWith("/notes") ||
-    pathname.startsWith("/people-in-the-bible") ||
-    pathname.startsWith("/places-in-the-bible") ||
-    pathname.startsWith("/keywords-in-the-bible")
-  ) && !pathname.startsWith("/dashboard");
+  const shouldShowNavMenu = isLoggedIn && !isBarePage && pathname && !pathname.startsWith("/dashboard");
+  const breadcrumbItems = buildBreadcrumbs(pathname);
+  const shouldShowBreadcrumbs = isLoggedIn && !isBarePage && breadcrumbItems.length > 0;
 
   async function handleLogout() {
     await supabase.auth.signOut();
@@ -1218,8 +1213,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <FeatureRenderPriorityProvider value={{ featureToursEnabled }}>
-      {/* NEW MESSAGE ALERT (admin only) */}
-      {isAdmin && <NewMessageAlert />}
 
       {/* ONBOARDING MODAL */}
       {userId && (
@@ -1378,101 +1371,28 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
                   {/* NAVIGATION DROPDOWN */}
                   {isNavMenuOpen && (
-                    <div className="absolute right-0 mt-2 w-48 max-w-[calc(100vw-2rem)] bg-white rounded-lg shadow-lg border border-gray-200 py-1.5 z-50">
-                      {/* BIBLE */}
-                      <Link
-                        href="/Bible"
-                        onClick={(e) => {
-                          if (pathname?.startsWith("/Bible")) {
-                            e.preventDefault();
-                          } else {
-                            setIsNavMenuOpen(false);
-                          }
-                        }}
-                        className={`block px-4 py-2.5 text-sm transition-all duration-150 ${
-                          pathname?.startsWith("/Bible")
-                            ? "bg-blue-50 text-blue-700 font-medium cursor-not-allowed"
-                            : "text-gray-700 hover:bg-blue-50 hover:text-blue-600 active:scale-[0.98]"
-                        }`}
-                      >
-                        Bible
-                      </Link>
-
-                      {/* NOTES */}
-                      <Link
-                        href="/notes"
-                        onClick={(e) => {
-                          if (pathname?.startsWith("/notes")) {
-                            e.preventDefault();
-                          } else {
-                            setIsNavMenuOpen(false);
-                          }
-                        }}
-                        className={`block px-4 py-2.5 text-sm transition-all duration-150 ${
-                          pathname?.startsWith("/notes")
-                            ? "bg-purple-50 text-purple-700 font-medium cursor-not-allowed"
-                            : "text-gray-700 hover:bg-purple-50 hover:text-purple-600 active:scale-[0.98]"
-                        }`}
-                      >
-                        Notes
-                      </Link>
-
-                      {/* PEOPLE IN THE BIBLE */}
-                      <Link
-                        href="/people-in-the-bible"
-                        onClick={(e) => {
-                          if (pathname?.startsWith("/people-in-the-bible")) {
-                            e.preventDefault();
-                          } else {
-                            setIsNavMenuOpen(false);
-                          }
-                        }}
-                        className={`block px-4 py-2.5 text-sm transition-all duration-150 ${
-                          pathname?.startsWith("/people-in-the-bible")
-                            ? "bg-green-50 text-green-700 font-medium cursor-not-allowed"
-                            : "text-gray-700 hover:bg-green-50 hover:text-green-600 active:scale-[0.98]"
-                        }`}
-                      >
-                        People in the Bible
-                      </Link>
-
-                      {/* PLACES IN THE BIBLE */}
-                      <Link
-                        href="/places-in-the-bible"
-                        onClick={(e) => {
-                          if (pathname?.startsWith("/places-in-the-bible")) {
-                            e.preventDefault();
-                          } else {
-                            setIsNavMenuOpen(false);
-                          }
-                        }}
-                        className={`block px-4 py-2.5 text-sm transition-all duration-150 ${
-                          pathname?.startsWith("/places-in-the-bible")
-                            ? "bg-amber-50 text-amber-700 font-medium cursor-not-allowed"
-                            : "text-gray-700 hover:bg-amber-50 hover:text-amber-600 active:scale-[0.98]"
-                        }`}
-                      >
-                        Places in the Bible
-                      </Link>
-
-                      {/* KEYWORDS IN THE BIBLE */}
-                      <Link
-                        href="/keywords-in-the-bible"
-                        onClick={(e) => {
-                          if (pathname?.startsWith("/keywords-in-the-bible")) {
-                            e.preventDefault();
-                          } else {
-                            setIsNavMenuOpen(false);
-                          }
-                        }}
-                        className={`block px-4 py-2.5 text-sm transition-all duration-150 ${
-                          pathname?.startsWith("/keywords-in-the-bible")
-                            ? "bg-red-50 text-red-700 font-medium cursor-not-allowed"
-                            : "text-gray-700 hover:bg-red-50 hover:text-red-600 active:scale-[0.98]"
-                        }`}
-                      >
-                        Keywords in the Bible
-                      </Link>
+                    <div className="absolute right-0 mt-2 w-64 max-w-[calc(100vw-2rem)] bg-white rounded-lg shadow-lg border border-gray-200 py-1.5 z-50">
+                      {APP_NAV_ITEMS.map((item) => {
+                        const active = isNavItemActive(pathname, item);
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={(event) => {
+                              if (active) {
+                                event.preventDefault();
+                              } else {
+                                setIsNavMenuOpen(false);
+                              }
+                            }}
+                            className={`block px-4 py-2.5 text-sm transition-all duration-150 ${
+                              active ? item.activeClasses : item.hoverClasses
+                            }`}
+                          >
+                            {item.label}
+                          </Link>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
@@ -1951,6 +1871,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       {/* PAGE CONTENT */}
       <main className={!isBarePage ? "pt-2 pb-2 bg-gray-50 min-h-screen" : ""}>
+        {shouldShowBreadcrumbs && (
+          <div className="max-w-5xl mx-auto px-4 pt-2">
+            <BibleStudyBreadcrumb items={breadcrumbItems} className="mb-2" />
+          </div>
+        )}
         {children}
       </main>
 

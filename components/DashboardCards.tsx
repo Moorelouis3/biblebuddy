@@ -5,11 +5,17 @@ import React from "react";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 
 interface DashboardCardsProps {
-  profile: any;
+  profile: { is_paid?: boolean; daily_credits?: number | null } | null;
   membershipStatus: string;
   daysRemaining: number | null;
   isLoadingLevel: boolean;
-  levelInfo: any;
+  levelInfo: {
+    level: number;
+    levelName: string;
+    identityText: string;
+    progressPercent: number;
+    pointsToNextLevel: number;
+  } | null;
   userName: string;
   handleCardClick: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, card: string, href: string) => void;
   setShowLevelInfoModal: (show: boolean) => void;
@@ -61,7 +67,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           <>
             <div className="flex items-start justify-between mb-2">
               <h2 className="text-xl font-semibold">
-                Level {levelInfo.level} "{levelInfo.levelName}"
+                Level {levelInfo.level} &quot;{levelInfo.levelName}&quot;
               </h2>
               <button
                 onClick={() => setShowLevelInfoModal(true)}
@@ -148,7 +154,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 
       <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}>
         <div className="bg-orange-100 border border-orange-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold text-orange-800">🧭 Bible Study Hub</h2>
+          <h2 className="text-xl font-semibold text-orange-800">🔨 Bible Study Tools</h2>
           <p className="text-gray-700 mt-1">A collection of Bible study tools</p>
         </div>
       </Link>

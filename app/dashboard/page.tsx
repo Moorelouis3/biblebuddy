@@ -211,7 +211,7 @@ export default function DashboardPage() {
       body: "This is where you can start reading Scripture, follow reading plans, and explore books of the Bible.",
     },
     guided_studies: {
-      title: "Welcome to Guided Studies",
+      title: "Welcome to Bible Study Tools",
       body: "This is where you can follow structured studies designed to help you understand Scripture step by step.",
     },
     bible_references: {
@@ -231,7 +231,7 @@ export default function DashboardPage() {
       body: "This chat lets you ask Bible questions instantly while you study so you can stay focused in your reading flow. Louis has been carefully trained for hours on biblical content and designed to search Scripture, filter out nonsense, and prioritize clear, Scripture-grounded answers. It’s like having a Bible study partner built directly into your reading experience.",
     },
     bible_study_hub: {
-      title: "Welcome to the Bible Study Hub",
+      title: "Welcome to Bible Study Tools",
       body: "Join the discussion and explore the Bible by topic. Dive into insights, tools, and foundational studies to grow your understanding.",
     },
   };
@@ -264,9 +264,9 @@ export default function DashboardPage() {
         </section>
 
         <section className="space-y-2">
-          <h2 className="text-lg md:text-xl font-semibold text-gray-900">🧭 Guided Studies</h2>
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">🔨 Bible Study Tools</h2>
           <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-            Find reading plans, devotionals, and structured study guides to go deeper.
+            Find reading plans, devotionals, and practical tools to go deeper in Scripture.
           </p>
         </section>
 
@@ -392,7 +392,7 @@ export default function DashboardPage() {
   const GUIDED_STUDIES_TOUR_CONTENT = (
     <div className="space-y-6">
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
-        📘 Guided Studies
+        🔨 Bible Study Tools
       </h1>
 
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">
@@ -431,26 +431,11 @@ export default function DashboardPage() {
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📚 Bible Study Guides</h2>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Study Guides go deeper.</p>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">These include:</p>
-        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• Detailed explanations of passages</li>
-          <li>• Historical and cultural context</li>
-          <li>• Connections across Scripture</li>
-          <li>• Structured breakdowns to help you understand what’s happening and why</li>
-        </ul>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-          If you want more than just reading — this is where you slow down and truly study.
-        </p>
-      </section>
-
-      <section className="space-y-2">
         <h2 className="text-lg md:text-xl font-semibold text-gray-900">🎯 Choose Your Style</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Some days you may want structure.</p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Some days you may want reflection.</p>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Some days you may want deep study.</p>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Guided Studies gives you all three.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Some days you may want a focused tool to keep moving.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Bible Study Tools gives you flexible ways to keep studying.</p>
       </section>
     </div>
   );

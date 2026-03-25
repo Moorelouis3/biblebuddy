@@ -18,13 +18,6 @@ const tools = [
     desc: "Different orders to read the Bible",
   },
   {
-    href: "/bible-study-guides",
-    bg: "bg-gray-100 border-gray-200",
-    emoji: "📚",
-    title: "Bible Study Guides",
-    desc: "Coming soon",
-  },
-  {
     href: "/bible-references",
     bg: "bg-purple-100 border-purple-200",
     emoji: "🔎",
@@ -46,11 +39,11 @@ export default function GuidedStudiesPage() {
       <nav className="text-sm text-gray-500">
         <Link href="/dashboard" className="hover:text-gray-700 transition">Dashboard</Link>
         <span className="mx-2">›</span>
-        <span className="text-gray-800 font-medium">Bible Study Hub</span>
+        <span className="text-gray-800 font-medium">Bible Study Tools</span>
       </nav>
 
       <div>
-        <h1 className="text-3xl font-bold text-orange-800 mb-1">🧭 Bible Study Hub</h1>
+        <h1 className="text-3xl font-bold text-orange-800 mb-1">🔨 Bible Study Tools</h1>
         <p className="text-gray-600">A collection of Bible study tools</p>
       </div>
 
