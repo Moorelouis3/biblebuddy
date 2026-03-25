@@ -209,7 +209,7 @@ export default function MessagesPage() {
       backdropColor="bg-black/45"
       zIndex="z-[70]"
     >
-      <div className="mx-4 w-full max-w-2xl rounded-[28px] border border-black/5 bg-[#fcfcfb] shadow-2xl">
+      <div className="h-[100dvh] w-screen overflow-hidden bg-[#fcfcfb] sm:mx-4 sm:h-auto sm:max-h-[calc(100dvh-2rem)] sm:w-full sm:max-w-2xl sm:rounded-[28px] sm:border sm:border-black/5 sm:shadow-2xl">
         <div className="flex items-center justify-between border-b border-black/5 px-5 py-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#4a9b6f]">Bible Buddy</p>
@@ -225,7 +225,7 @@ export default function MessagesPage() {
           </button>
         </div>
 
-        <div className="max-h-[78vh] overflow-y-auto px-4 py-4">
+        <div className="h-[calc(100dvh-5rem)] overflow-y-auto px-4 py-4 sm:h-auto sm:max-h-[78vh]">
           {loading ? (
             <div className="py-12 text-center text-sm text-gray-400">Loading...</div>
           ) : conversations.length === 0 ? (

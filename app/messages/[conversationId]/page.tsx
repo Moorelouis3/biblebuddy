@@ -623,7 +623,7 @@ export default function ConversationPage({
   if (loading) {
     return (
       <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
-        <div className="mx-4 w-full max-w-3xl rounded-[28px] bg-white px-6 py-16 text-center shadow-2xl">
+        <div className="h-[100dvh] w-screen bg-white px-6 py-16 text-center sm:mx-4 sm:h-auto sm:w-full sm:max-w-3xl sm:rounded-[28px] sm:shadow-2xl">
           <p className="text-sm text-gray-400">Loading conversation...</p>
         </div>
       </ModalShell>
@@ -633,7 +633,7 @@ export default function ConversationPage({
   if (notFound) {
     return (
       <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
-        <div className="mx-4 w-full max-w-md rounded-[28px] bg-white px-6 py-12 text-center shadow-2xl">
+        <div className="h-[100dvh] w-screen bg-white px-6 py-12 text-center sm:mx-4 sm:h-auto sm:w-full sm:max-w-md sm:rounded-[28px] sm:shadow-2xl">
           <p className="mb-4 text-4xl">?</p>
           <h1 className="mb-2 text-xl font-bold text-gray-900">Conversation not found</h1>
           <Link href="/messages" className="text-sm text-blue-600 hover:underline">
@@ -665,7 +665,7 @@ export default function ConversationPage({
   return (
     <>
       <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
-        <div className="mx-4 flex h-[84vh] w-full max-w-4xl flex-col overflow-hidden rounded-[32px] border border-gray-200 bg-[#f5f5f5] shadow-2xl">
+        <div className="flex h-[100dvh] w-screen flex-col overflow-hidden bg-[#f5f5f5] sm:mx-4 sm:h-[84vh] sm:w-full sm:max-w-4xl sm:rounded-[32px] sm:border sm:border-gray-200 sm:shadow-2xl">
           <div className="flex items-center gap-3 border-b border-gray-200 bg-white px-5 py-4">
             <button
               type="button"
