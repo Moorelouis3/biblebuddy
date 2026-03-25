@@ -23,6 +23,7 @@ import UserBadge from "@/components/UserBadge";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
 import LevelBadge from "@/components/LevelBadge";
+import MentionText from "@/components/MentionText";
 import { enrichBibleVerses } from "@/lib/bibleHighlighting";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { BIBLE_PEOPLE_LIST } from "@/lib/biblePeopleList";
@@ -434,6 +435,16 @@ const HOME_FEED_CATEGORIES = [
   "prayer_request_sunday",
 ] as const;
 
+const MANAGED_HOME_FEED_CATEGORIES = new Set<string>([
+  "weekly_trivia",
+  "weekly_poll",
+  "weekly_question",
+  "update_monday",
+  "who_was_this_friday",
+  "bible_study_saturday",
+  "prayer_request_sunday",
+]);
+
 function stripHtml(html: string): string {
   return html
     .replace(/<br\s*\/?>/gi, "\n")
@@ -537,6 +548,7 @@ function GroupCommentSection({
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
   const [replyText, setReplyText] = useState("");
   const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
+  const [likeAnimatingIds, setLikeAnimatingIds] = useState<Set<string>>(new Set());
   const [deletingCommentId, setDeletingCommentId] = useState<string | null>(null);
   const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
   const [editingCommentText, setEditingCommentText] = useState("");
@@ -645,6 +657,14 @@ function GroupCommentSection({
       await supabase.from("group_posts").update({ like_count: Math.max(0, comment.like_count - 1) }).eq("id", comment.id);
       setComments((prev) => prev.map((item) => item.id === comment.id ? { ...item, like_count: Math.max(0, item.like_count - 1), liked: false } : item));
     } else {
+      setLikeAnimatingIds((prev) => new Set(prev).add(comment.id));
+      window.setTimeout(() => {
+        setLikeAnimatingIds((prev) => {
+          const next = new Set(prev);
+          next.delete(comment.id);
+          return next;
+        });
+      }, 420);
       await supabase.from("group_post_likes").insert({ post_id: comment.id, user_id: userId });
       await supabase.from("group_posts").update({ like_count: comment.like_count + 1 }).eq("id", comment.id);
       setComments((prev) => prev.map((item) => item.id === comment.id ? { ...item, like_count: item.like_count + 1, liked: true } : item));
@@ -857,7 +877,11 @@ function GroupCommentSection({
                 </div>
               </div>
             ) : (
-              <p className="text-xs text-gray-700 mt-0.5 leading-relaxed whitespace-pre-wrap">{comment.content}</p>
+              <MentionText
+                text={comment.content}
+                items={mentionItems}
+                className="text-xs text-gray-700 mt-0.5 leading-relaxed whitespace-pre-wrap"
+              />
             )}
           </div>
           <div className="flex items-center gap-3 mt-1">
@@ -867,7 +891,7 @@ function GroupCommentSection({
               disabled={likeLoading.has(comment.id)}
               className="flex items-center gap-1 text-[10px] text-gray-400 hover:text-red-500 transition"
             >
-              <svg className="w-3 h-3" fill={comment.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={`w-3 h-3 ${likeAnimatingIds.has(comment.id) ? "animate-heart-pop" : ""}`} fill={comment.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
               {comment.like_count > 0 ? comment.like_count : ""}
@@ -956,18 +980,14 @@ function GroupCommentSection({
             {getInitial(displayName)}
           </div>
         )}
-        <textarea
+        <TextareaMentionInput
           value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
+          onChange={setNewComment}
+          mentionItems={mentionItems}
+          onEnterSubmit={() => void submitComment(newComment, null)}
           placeholder="Add a comment..."
           rows={1}
           className="flex-1 text-xs px-3 py-2 border border-[#eadfce] rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[#d6b18b] bg-white"
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault();
-              void submitComment(newComment, null);
-            }
-          }}
         />
         <button
           onClick={() => void submitComment(newComment, null)}
@@ -1741,6 +1761,7 @@ RULES:
   const [showMoreNav, setShowMoreNav] = useState(false);
   const [moreMenuPosition, setMoreMenuPosition] = useState<{ top: number; left: number } | null>(null);
   const [selectedHubItem, setSelectedHubItem] = useState<HubItemStatic | null>(null);
+  const [hubLikeAnimatingPaths, setHubLikeAnimatingPaths] = useState<Set<string>>(new Set());
   const moreButtonRef = useRef<HTMLButtonElement>(null);
 
   // Members
@@ -1970,7 +1991,9 @@ RULES:
   const [replyText, setReplyText] = useState("");
   const [submittingComment, setSubmittingComment] = useState(false);
   const [postLikeLoading, setPostLikeLoading] = useState(false);
+  const [seriesPostLikeAnimating, setSeriesPostLikeAnimating] = useState(false);
   const [commentLikeLoading, setCommentLikeLoading] = useState<Set<string>>(new Set());
+  const [seriesCommentLikeAnimatingIds, setSeriesCommentLikeAnimatingIds] = useState<Set<string>>(new Set());
   const [deletingSeriesCommentId, setDeletingSeriesCommentId] = useState<string | null>(null);
 
   // New Series modal
@@ -3032,6 +3055,9 @@ RULES:
   }
 
   function canEditFeedPost(post: Post) {
+    if (MANAGED_HOME_FEED_CATEGORIES.has(post.category)) {
+      return isLeaderOrMod;
+    }
     return post.user_id === userId;
   }
 
@@ -3332,6 +3358,15 @@ RULES:
       user_id: userId,
     });
     if (error) return;
+
+    setHubLikeAnimatingPaths((prev) => new Set(prev).add(item.path));
+    window.setTimeout(() => {
+      setHubLikeAnimatingPaths((prev) => {
+        const next = new Set(prev);
+        next.delete(item.path);
+        return next;
+      });
+    }, 420);
 
     const newLiker: ArticleLikeUser = {
       user_id: userId,
@@ -3728,6 +3763,8 @@ RULES:
       setSelectedPost(updated);
       setSeriesPosts((prev) => prev.map((p) => p.id === post.id ? updated : p));
     } else {
+      setSeriesPostLikeAnimating(true);
+      window.setTimeout(() => setSeriesPostLikeAnimating(false), 420);
       await supabase.from("group_series_post_likes").insert({ post_id: post.id, user_id: userId });
       await supabase.from("group_series_posts").update({ like_count: post.like_count + 1 }).eq("id", post.id);
       const updated = { ...post, like_count: post.like_count + 1, liked: true };
@@ -3745,6 +3782,14 @@ RULES:
       await supabase.from("group_series_post_comments").update({ like_count: Math.max(0, comment.like_count - 1) }).eq("id", comment.id);
       setComments((prev) => prev.map((c) => c.id === comment.id ? { ...c, like_count: Math.max(0, c.like_count - 1), liked: false } : c));
     } else {
+      setSeriesCommentLikeAnimatingIds((prev) => new Set(prev).add(comment.id));
+      window.setTimeout(() => {
+        setSeriesCommentLikeAnimatingIds((prev) => {
+          const next = new Set(prev);
+          next.delete(comment.id);
+          return next;
+        });
+      }, 420);
       await supabase.from("group_series_comment_likes").insert({ comment_id: comment.id, user_id: userId });
       await supabase.from("group_series_post_comments").update({ like_count: comment.like_count + 1 }).eq("id", comment.id);
       setComments((prev) => prev.map((c) => c.id === comment.id ? { ...c, like_count: c.like_count + 1, liked: true } : c));
@@ -4291,7 +4336,11 @@ RULES:
                   <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">{selectedSeries?.title}</p>
                   <p className="text-xs text-gray-500 mb-3">Week {selectedPost.week_number} Â· {selectedPost.published_at ? formatDate(selectedPost.published_at) : formatDate(selectedPost.created_at)}</p>
                   <h2 className="text-xl font-bold text-gray-900 mb-4 leading-snug">{selectedPost.title}</h2>
-                  <p className="text-gray-800 text-sm leading-relaxed whitespace-pre-wrap">{selectedPost.content}</p>
+                  <MentionText
+                    text={selectedPost.content}
+                    items={mentionItems}
+                    className="text-gray-800 text-sm leading-relaxed whitespace-pre-wrap"
+                  />
                 </div>
                 {/* Like bar */}
                 <div className="px-5 py-3 border-t border-gray-100 flex items-center gap-3">
@@ -4301,7 +4350,7 @@ RULES:
                     className="flex items-center gap-1.5 text-sm font-medium transition"
                     style={{ color: selectedPost.liked ? "#e53e3e" : "#9ca3af" }}
                   >
-                    <svg className="w-5 h-5" fill={selectedPost.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className={`w-5 h-5 ${seriesPostLikeAnimating ? "animate-heart-pop" : ""}`} fill={selectedPost.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
                     {selectedPost.like_count > 0 ? selectedPost.like_count : "Like"}
@@ -4340,7 +4389,11 @@ RULES:
                               <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} />
                               <span className="text-xs text-gray-400">{timeAgo(comment.created_at)}</span>
                             </div>
-                            <p className="text-sm text-gray-800 leading-relaxed">{comment.content}</p>
+                            <MentionText
+                              text={comment.content}
+                              items={mentionItems}
+                              className="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap"
+                            />
                             <div className="flex items-center gap-4 mt-2">
                               <button
                                 onClick={() => handleCommentLike(comment)}
@@ -4348,7 +4401,7 @@ RULES:
                                 className="flex items-center gap-1 text-xs transition"
                                 style={{ color: comment.liked ? "#e53e3e" : "#9ca3af" }}
                               >
-                                <svg className="w-3.5 h-3.5" fill={comment.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className={`w-3.5 h-3.5 ${seriesCommentLikeAnimatingIds.has(comment.id) ? "animate-heart-pop" : ""}`} fill={comment.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                 </svg>
                                 {comment.like_count > 0 ? comment.like_count : ""}
@@ -4415,14 +4468,18 @@ RULES:
                                     <UserBadge customBadge={reply.member_badge} isPaid={reply.is_paid} groupRole={reply.role} />
                                     <span className="text-xs text-gray-400">{timeAgo(reply.created_at)}</span>
                                   </div>
-                                  <p className="text-xs text-gray-800 leading-relaxed">{reply.content}</p>
+                                  <MentionText
+                                    text={reply.content}
+                                    items={mentionItems}
+                                    className="text-xs text-gray-800 leading-relaxed whitespace-pre-wrap"
+                                  />
                                   <button
                                     onClick={() => handleCommentLike(reply)}
                                     disabled={commentLikeLoading.has(reply.id)}
                                     className="flex items-center gap-1 text-xs mt-1 transition"
                                     style={{ color: reply.liked ? "#e53e3e" : "#9ca3af" }}
                                   >
-                                    <svg className="w-3 h-3" fill={reply.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg className={`w-3 h-3 ${seriesCommentLikeAnimatingIds.has(reply.id) ? "animate-heart-pop" : ""}`} fill={reply.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                     </svg>
                                     {reply.like_count > 0 ? reply.like_count : ""}
@@ -5083,7 +5140,7 @@ RULES:
                             className="flex items-center gap-1.5 text-sm transition"
                             style={{ color: hubItemStats[item.path]?.liked ? "#e53e3e" : "#7b7b7b" }}
                           >
-                            <svg className="w-4 h-4" fill={hubItemStats[item.path]?.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className={`w-4 h-4 ${hubLikeAnimatingPaths.has(item.path) ? "animate-heart-pop" : ""}`} fill={hubItemStats[item.path]?.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                             </svg>
                           </button>

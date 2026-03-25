@@ -271,3 +271,64 @@ export function insertMentionIntoEditor(editor: any, range: { from: number; to: 
     )
     .run();
 }
+
+type MentionTextSegment =
+  | { type: "text"; text: string }
+  | { type: "mention"; text: string; href: string; key: string };
+
+function isMentionBoundaryBefore(char: string | undefined) {
+  return !char || /\s|[>(]/.test(char);
+}
+
+function isMentionBoundaryAfter(char: string | undefined) {
+  return !char || /\s|[<.,!?):;]/.test(char);
+}
+
+export function splitTextWithMentions(text: string, items: MentionCatalogItem[]): MentionTextSegment[] {
+  if (!text || items.length === 0) {
+    return [{ type: "text", text }];
+  }
+
+  const sortedItems = [...items].sort((a, b) => b.label.length - a.label.length);
+  const segments: MentionTextSegment[] = [];
+  let cursor = 0;
+
+  while (cursor < text.length) {
+    if (text[cursor] !== "@" || !isMentionBoundaryBefore(text[cursor - 1])) {
+      let nextCursor = cursor + 1;
+      while (
+        nextCursor < text.length &&
+        (text[nextCursor] !== "@" || !isMentionBoundaryBefore(text[nextCursor - 1]))
+      ) {
+        nextCursor++;
+      }
+      segments.push({ type: "text", text: text.slice(cursor, nextCursor) });
+      cursor = nextCursor;
+      continue;
+    }
+
+    const mentionStart = cursor + 1;
+    const matchedItem = sortedItems.find((item) => {
+      const candidate = text.slice(mentionStart, mentionStart + item.label.length);
+      const nextChar = text[mentionStart + item.label.length];
+      return candidate.toLowerCase() === item.label.toLowerCase() && isMentionBoundaryAfter(nextChar);
+    });
+
+    if (!matchedItem) {
+      segments.push({ type: "text", text: "@" });
+      cursor += 1;
+      continue;
+    }
+
+    const mentionEnd = mentionStart + matchedItem.label.length;
+    segments.push({
+      type: "mention",
+      text: text.slice(cursor, mentionEnd),
+      href: matchedItem.href,
+      key: matchedItem.key,
+    });
+    cursor = mentionEnd;
+  }
+
+  return segments.filter((segment) => segment.text.length > 0);
+}

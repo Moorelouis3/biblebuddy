@@ -7,6 +7,7 @@ import { supabase } from "../../lib/supabaseClient";
 import { ModalShell } from "../../components/ModalShell";
 import UserBadge from "../../components/UserBadge";
 import StreakFlameBadge from "../../components/StreakFlameBadge";
+import { extractLegacyDirectMessageAction } from "../../lib/directMessageActions";
 
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
 
@@ -44,10 +45,14 @@ interface Conversation {
   hasUnread: boolean;
 }
 
+const PAGE_SIZE = 50;
+
 export default function MessagesPage() {
   const router = useRouter();
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -101,19 +106,22 @@ export default function MessagesPage() {
     };
   }, [currentUserId]);
 
-  async function fetchConversations(uid: string) {
-    setLoading(true);
+  async function fetchConversations(uid: string, append = false, offset = 0) {
+    if (append) setLoadingMore(true); else setLoading(true);
     try {
       const { data: convos } = await supabase
         .from("conversations")
         .select("id, user_id_1, user_id_2, last_message_at, last_message_preview")
         .or(`user_id_1.eq.${uid},user_id_2.eq.${uid}`)
-        .order("last_message_at", { ascending: false, nullsFirst: false });
+        .order("last_message_at", { ascending: false, nullsFirst: false })
+        .range(offset, offset + PAGE_SIZE - 1);
 
       if (!convos || convos.length === 0) {
-        setConversations([]);
+        if (!append) setConversations([]);
+        setHasMore(false);
         return;
       }
+      setHasMore(convos.length === PAGE_SIZE);
 
       const otherIds = convos.map((c) => (c.user_id_1 === uid ? c.user_id_2 : c.user_id_1));
 
@@ -153,29 +161,44 @@ export default function MessagesPage() {
 
       const unreadConvoIds = new Set((unreadResult.data || []).map((m) => m.conversation_id));
 
-      setConversations(
-        convos.map((c) => {
-          const otherId = c.user_id_1 === uid ? c.user_id_2 : c.user_id_1;
-          const profile = profiles.find((p) => p.user_id === otherId);
-          return {
-            id: c.id,
-            otherUserId: otherId,
-            otherUserName: profile?.display_name || profile?.username || "Bible Buddy",
-            otherUserImage: profile?.profile_image_url || null,
-            otherUserBadge: profile?.member_badge || null,
-            otherUserIsPaid: profile?.is_paid === true,
-            otherUserCurrentStreak: profile?.current_streak ?? null,
-            lastMessagePreview: c.last_message_preview || null,
-            lastMessageAt: c.last_message_at || null,
-            hasUnread: unreadConvoIds.has(c.id),
-          };
-        }),
-      );
+      const newItems = convos.map((c) => {
+        const otherId = c.user_id_1 === uid ? c.user_id_2 : c.user_id_1;
+        const profile = profiles.find((p) => p.user_id === otherId);
+        return {
+          id: c.id,
+          otherUserId: otherId,
+          otherUserName: profile?.display_name || profile?.username || "Bible Buddy",
+          otherUserImage: profile?.profile_image_url || null,
+          otherUserBadge: profile?.member_badge || null,
+          otherUserIsPaid: profile?.is_paid === true,
+          otherUserCurrentStreak: profile?.current_streak ?? null,
+          lastMessagePreview: c.last_message_preview
+            ? extractLegacyDirectMessageAction(c.last_message_preview).body
+            : null,
+          lastMessageAt: c.last_message_at || null,
+          hasUnread: unreadConvoIds.has(c.id),
+        };
+      });
+      // Unread conversations always float to the top, then sort by most recent
+      const sortConvos = (list: Conversation[]) =>
+        [...list].sort((a, b) => {
+          if (a.hasUnread !== b.hasUnread) return a.hasUnread ? -1 : 1;
+          return (b.lastMessageAt ?? "").localeCompare(a.lastMessageAt ?? "");
+        });
+
+      if (append) {
+        setConversations((prev) => {
+          const existingIds = new Set(prev.map((c) => c.id));
+          return sortConvos([...prev, ...newItems.filter((c) => !existingIds.has(c.id))]);
+        });
+      } else {
+        setConversations(sortConvos(newItems));
+      }
     } catch (error) {
       console.error("[MESSAGES_PAGE] Could not load conversations:", error);
-      setConversations([]);
+      if (!append) setConversations([]);
     } finally {
-      setLoading(false);
+      if (append) setLoadingMore(false); else setLoading(false);
     }
   }
 
@@ -281,6 +304,18 @@ export default function MessagesPage() {
                   </div>
                 );
               })}
+            </div>
+          )}
+          {hasMore && currentUserId && (
+            <div className="pt-3 pb-1 text-center">
+              <button
+                type="button"
+                onClick={() => void fetchConversations(currentUserId, true, conversations.length)}
+                disabled={loadingMore}
+                className="text-sm font-semibold px-5 py-2 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 transition disabled:opacity-50"
+              >
+                {loadingMore ? "Loading…" : "Load more"}
+              </button>
             </div>
           )}
         </div>

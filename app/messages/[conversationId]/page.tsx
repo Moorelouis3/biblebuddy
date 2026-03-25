@@ -3,10 +3,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { supabase } from "../../../lib/supabaseClient";
 import { ModalShell } from "../../../components/ModalShell";
 import UserBadge from "../../../components/UserBadge";
 import StreakFlameBadge from "../../../components/StreakFlameBadge";
+import { loadGroupPostMentions, type MentionCatalogItem } from "../../../lib/groupPostMentions";
+import { getDirectMessagePresentation } from "../../../lib/directMessageActions";
+import MentionText from "../../../components/MentionText";
+
+const TextareaMentionInput = dynamic(() => import("../../../components/TextareaMentionInput"), { ssr: false });
 
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
 const REPORT_REASONS = [
@@ -59,22 +65,13 @@ function formatHeaderStatus(lastActiveAt?: string | null): string {
   return `Active ${formatMsgTime(date.toISOString())}`;
 }
 
-function parseGroupInvite(content: string): { body: string; href: string | null } {
-  const match = content.match(/Open Bible Study Group:\s*(\/study-groups\/[^\s]+)/i);
-  if (!match) {
-    return { body: content, href: null };
-  }
-
-  const href = match[1];
-  const body = content.replace(match[0], "").trim();
-  return { body, href };
-}
-
 interface Message {
   id: string;
   sender_id: string;
   content: string;
   image_url?: string | null;
+  action_label?: string | null;
+  action_href?: string | null;
   read_at: string | null;
   created_at: string;
 }
@@ -114,6 +111,7 @@ export default function ConversationPage({
   const [notFound, setNotFound] = useState(false);
   const [newMessage, setNewMessage] = useState("");
   const [sending, setSending] = useState(false);
+  const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
   const [editingMessageId, setEditingMessageId] = useState<string | null>(null);
   const [editingContent, setEditingContent] = useState("");
   const [savingEdit, setSavingEdit] = useState(false);
@@ -192,6 +190,14 @@ export default function ConversationPage({
   }, [messages]);
 
   useEffect(() => {
+    let cancelled = false;
+    loadGroupPostMentions(supabase, null)
+      .then((items) => { if (!cancelled) setMentionItems(items); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
+
+  useEffect(() => {
     if (!editingMessageId) return;
     editInputRef.current?.focus();
   }, [editingMessageId]);
@@ -265,7 +271,7 @@ export default function ConversationPage({
 
       const { data: msgs } = await supabase
         .from("messages")
-        .select("id, sender_id, content, image_url, read_at, created_at")
+        .select("id, sender_id, content, image_url, action_label, action_href, read_at, created_at")
         .eq("conversation_id", conversationId)
         .order("created_at", { ascending: true });
 
@@ -313,7 +319,7 @@ export default function ConversationPage({
         async () => {
           const { data: latestMessages, error } = await supabase
             .from("messages")
-            .select("id, sender_id, content, image_url, read_at, created_at")
+            .select("id, sender_id, content, image_url, action_label, action_href, read_at, created_at")
             .eq("conversation_id", conversationId)
             .order("created_at", { ascending: true });
 
@@ -378,6 +384,8 @@ export default function ConversationPage({
       sender_id: userId,
       content: "",
       image_url: imageUrl,
+      action_label: null,
+      action_href: null,
       read_at: null,
       created_at: new Date().toISOString(),
     };
@@ -386,7 +394,7 @@ export default function ConversationPage({
     const { data: inserted, error } = await supabase
       .from("messages")
       .insert({ conversation_id: conversationId, sender_id: userId, content: "", image_url: imageUrl })
-      .select("id, sender_id, content, image_url, read_at, created_at")
+      .select("id, sender_id, content, image_url, action_label, action_href, read_at, created_at")
       .single();
 
     if (error) {
@@ -410,6 +418,8 @@ export default function ConversationPage({
       sender_id: userId,
       content,
       read_at: null,
+      action_label: null,
+      action_href: null,
       created_at: new Date().toISOString(),
     };
 
@@ -422,8 +432,10 @@ export default function ConversationPage({
           conversation_id: conversationId,
           sender_id: userId,
           content,
+          action_label: null,
+          action_href: null,
         })
-        .select("id, sender_id, content, image_url, read_at, created_at")
+        .select("id, sender_id, content, image_url, action_label, action_href, read_at, created_at")
         .single();
 
       if (error) {
@@ -747,7 +759,11 @@ export default function ConversationPage({
 
             {messages.map((msg) => {
               const isMine = msg.sender_id === userId;
-              const invite = parseGroupInvite(msg.content);
+              const presentation = getDirectMessagePresentation(
+                msg.content,
+                msg.action_label,
+                msg.action_href,
+              );
               const isEditing = editingMessageId === msg.id;
               const isSeen = msg.id === latestSeenMessageId;
               const canEdit = isMine && msg.id === latestOwnMessageId;
@@ -821,13 +837,17 @@ export default function ConversationPage({
                           />
                         ) : (
                           <>
-                            <p className="whitespace-pre-wrap">{invite.body}</p>
-                            {invite.href && (
+                            <MentionText
+                              text={presentation.body}
+                              items={mentionItems}
+                              className="whitespace-pre-wrap"
+                            />
+                            {presentation.action && (
                               <Link
-                                href={invite.href}
-                                className="mt-3 inline-flex rounded-2xl bg-gray-100 px-3 py-2 text-xs font-semibold text-gray-700 transition hover:bg-gray-200"
+                                href={presentation.action.href}
+                                className="mt-3 inline-flex min-h-10 items-center justify-center rounded-2xl border border-[#d8eadf] bg-[#eef7f1] px-4 py-2 text-sm font-semibold text-[#2f6f4f] transition hover:bg-[#e4f3ea]"
                               >
-                                Open Bible Study Group
+                                {presentation.action.label}
                               </Link>
                             )}
                           </>
@@ -908,14 +928,14 @@ export default function ConversationPage({
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   </button>
-                  <textarea
-                    ref={inputRef}
+                  <TextareaMentionInput
                     value={newMessage}
-                    onChange={(e) => setNewMessage(e.target.value)}
+                    onChange={setNewMessage}
+                    mentionItems={mentionItems}
                     onKeyDown={handleComposerKeyDown}
                     placeholder={`Message ${otherDisplay}`}
                     rows={1}
-                    className="max-h-36 flex-1 resize-none overflow-y-auto rounded-[24px] border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                    className="max-h-36 w-full resize-none overflow-y-auto rounded-[24px] border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300"
                     style={{ lineHeight: "1.5" }}
                   />
                   <button
