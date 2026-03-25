@@ -708,6 +708,220 @@ interface ReflectionEntry {
   liked?: boolean;
 }
 
+// ── Utility helpers (outside component so references are stable) ─────────────
+
+function timeAgo(dateStr: string) {
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return "just now";
+  if (mins < 60) return `${mins}m ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `${hrs}h ago`;
+  return `${Math.floor(hrs / 24)}d ago`;
+}
+
+function getInitial(name: string | null) { return (name || "?")[0].toUpperCase(); }
+const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
+function avatarBg(uid: string) {
+  let hash = 0;
+  for (let i = 0; i < uid.length; i++) hash = uid.charCodeAt(i) + ((hash << 5) - hash);
+  return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+}
+
+// ── ReflectionRow — defined OUTSIDE ReflectionSection so its identity is
+//    stable across re-renders. Defining it inside would cause React to unmount
+//    and remount it on every state change, breaking paste and focus. ──────────
+
+type ReflectionRowProps = {
+  reflection: ReflectionEntry;
+  depth?: number;
+  reflections: ReflectionEntry[];
+  userId: string;
+  currentUserBadge: string | null;
+  currentUserGroupRole: string | null;
+  activeMenuId: string | null;
+  setActiveMenuId: (id: string | null) => void;
+  deletingId: string | null;
+  likeLoading: Set<string>;
+  likeAnimatingIds: Set<string>;
+  replyingToId: string | null;
+  setReplyingToId: (id: string | null) => void;
+  replyText: string;
+  setReplyText: (text: string) => void;
+  submitting: boolean;
+  onDeleteReflection: (reflection: ReflectionEntry) => Promise<void>;
+  onToggleLike: (reflection: ReflectionEntry) => Promise<void>;
+  onSubmit: (parentId: string) => Promise<void>;
+};
+
+function ReflectionRow({
+  reflection,
+  depth = 0,
+  reflections,
+  userId,
+  currentUserBadge,
+  currentUserGroupRole,
+  activeMenuId,
+  setActiveMenuId,
+  deletingId,
+  likeLoading,
+  likeAnimatingIds,
+  replyingToId,
+  setReplyingToId,
+  replyText,
+  setReplyText,
+  submitting,
+  onDeleteReflection,
+  onToggleLike,
+  onSubmit,
+}: ReflectionRowProps) {
+  const name = reflection.display_name || "Anonymous";
+  const replies = reflections.filter((r) => r.parent_reflection_id === reflection.id);
+  const canDeleteReflection =
+    reflection.user_id === userId ||
+    currentUserBadge === "moderator" ||
+    currentUserGroupRole === "leader" ||
+    currentUserGroupRole === "moderator";
+
+  const sharedProps: Omit<ReflectionRowProps, "reflection" | "depth"> = {
+    reflections,
+    userId,
+    currentUserBadge,
+    currentUserGroupRole,
+    activeMenuId,
+    setActiveMenuId,
+    deletingId,
+    likeLoading,
+    likeAnimatingIds,
+    replyingToId,
+    setReplyingToId,
+    replyText,
+    setReplyText,
+    submitting,
+    onDeleteReflection,
+    onToggleLike,
+    onSubmit,
+  };
+
+  // Cap visual indent at 1 level (ml-10) so deep threads stay readable on mobile
+  const indentClass = depth === 0 ? "mt-4" : "ml-10 mt-3";
+
+  function handleReplyKeyDown(event: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+      event.preventDefault();
+      void onSubmit(reflection.id);
+    }
+  }
+
+  return (
+    <div className={`${indentClass} flex gap-3`}>
+      {reflection.profile_image_url ? (
+        <img src={reflection.profile_image_url} alt={name} className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-0.5" />
+      ) : (
+        <div
+          className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5"
+          style={{ backgroundColor: avatarBg(reflection.user_id) }}
+        >
+          {getInitial(name)}
+        </div>
+      )}
+      <div className="flex-1 min-w-0">
+        <div className="rounded-2xl bg-[#faf7f2] border border-[#efe5d9] px-3 py-2.5">
+          <div className="flex items-start gap-2">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs font-semibold text-gray-800">{name}</span>
+                <UserBadge
+                  customBadge={reflection.member_badge}
+                  isPaid={reflection.is_paid === true}
+                  groupRole={reflection.group_role}
+                />
+                <span className="text-xs text-gray-400">{timeAgo(reflection.created_at)}</span>
+              </div>
+              <p className="text-sm text-gray-700 mt-1 leading-relaxed whitespace-pre-wrap">{reflection.content}</p>
+            </div>
+            {canDeleteReflection && (
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setActiveMenuId(activeMenuId === reflection.id ? null : reflection.id)}
+                  className="w-7 h-7 rounded-full flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition"
+                  aria-label="Reflection options"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6h.01M12 12h.01M12 18h.01" />
+                  </svg>
+                </button>
+                {activeMenuId === reflection.id && (
+                  <div className="absolute right-0 top-8 z-10 min-w-[128px] rounded-xl border border-gray-200 bg-white shadow-lg overflow-hidden">
+                    <button
+                      type="button"
+                      onClick={() => void onDeleteReflection(reflection)}
+                      disabled={deletingId === reflection.id}
+                      className="w-full px-4 py-3 text-left text-sm font-medium text-red-600 hover:bg-red-50 transition disabled:opacity-50"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="flex items-center gap-4 mt-1 px-1">
+          <button
+            type="button"
+            onClick={() => void onToggleLike(reflection)}
+            disabled={likeLoading.has(reflection.id)}
+            className="flex items-center gap-1 text-xs transition"
+            style={{ color: reflection.liked ? "#e53e3e" : "#9ca3af" }}
+          >
+            <svg className={`w-3.5 h-3.5 ${likeAnimatingIds.has(reflection.id) ? "animate-heart-pop" : ""}`} fill={reflection.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            <span>{reflection.like_count > 0 ? reflection.like_count : "Like"}</span>
+          </button>
+          <button
+              type="button"
+              onClick={() => {
+                setReplyingToId(replyingToId === reflection.id ? null : reflection.id);
+                setReplyText("");
+              }}
+              className="text-xs text-gray-400 hover:text-[#b7794d] font-semibold transition"
+            >
+              Reply
+            </button>
+        </div>
+        {replyingToId === reflection.id && (
+          <div className="mt-2 flex gap-2 items-end">
+            <textarea
+              value={replyText}
+              onChange={(event) => setReplyText(event.target.value)}
+              onKeyDown={handleReplyKeyDown}
+              placeholder={`Reply to ${name}...`}
+              rows={1}
+              autoFocus
+              className="w-full text-sm px-3 py-2 border border-[#eadfce] rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[#d6b18b] bg-white"
+            />
+            <button
+              type="button"
+              onClick={() => void onSubmit(reflection.id)}
+              disabled={!replyText.trim() || submitting}
+              className="text-sm font-semibold text-white px-3 py-2 rounded-xl transition disabled:opacity-40 flex-shrink-0"
+              style={{ backgroundColor: "#4a9b6f" }}
+            >
+              Reply
+            </button>
+          </div>
+        )}
+        {replies.map((reply) => (
+          <ReflectionRow key={reply.id} reflection={reply} depth={Math.min(depth + 1, 1)} {...sharedProps} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ReflectionSection({
   lesson,
   userId,
@@ -745,6 +959,7 @@ function ReflectionSection({
   const [replyingToId, setReplyingToId] = useState<string | null>(null);
   const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
   const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
+  const [likeAnimatingIds, setLikeAnimatingIds] = useState<Set<string>>(new Set());
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -880,6 +1095,14 @@ function ReflectionSection({
       await supabase.from("series_reflections").update({ like_count: Math.max(0, reflection.like_count - 1) }).eq("id", reflection.id);
       setReflections((prev) => prev.map((item) => item.id === reflection.id ? { ...item, like_count: Math.max(0, item.like_count - 1), liked: false } : item));
     } else {
+      setLikeAnimatingIds((prev) => new Set(prev).add(reflection.id));
+      window.setTimeout(() => {
+        setLikeAnimatingIds((prev) => {
+          const next = new Set(prev);
+          next.delete(reflection.id);
+          return next;
+        });
+      }, 420);
       await supabase.from("series_reflection_likes").insert({ reflection_id: reflection.id, user_id: userId });
       await supabase.from("series_reflections").update({ like_count: reflection.like_count + 1 }).eq("id", reflection.id);
       setReflections((prev) => prev.map((item) => item.id === reflection.id ? { ...item, like_count: item.like_count + 1, liked: true } : item));
@@ -943,150 +1166,27 @@ function ReflectionSection({
     setDeletingId(null);
   }
 
-  function timeAgo(dateStr: string) {
-    const diff = Date.now() - new Date(dateStr).getTime();
-    const mins = Math.floor(diff / 60000);
-    if (mins < 1) return "just now";
-    if (mins < 60) return `${mins}m ago`;
-    const hrs = Math.floor(mins / 60);
-    if (hrs < 24) return `${hrs}h ago`;
-    return `${Math.floor(hrs / 24)}d ago`;
-  }
+  const topLevelReflections = reflections.filter((r) => !r.parent_reflection_id);
 
-  function getInitial(name: string | null) { return (name || "?")[0].toUpperCase(); }
-  const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
-  function avatarBg(uid: string) {
-    let hash = 0;
-    for (let i = 0; i < uid.length; i++) hash = uid.charCodeAt(i) + ((hash << 5) - hash);
-    return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
-  }
-
-  const topLevelReflections = reflections.filter((reflection) => !reflection.parent_reflection_id);
-  const repliesFor = (parentId: string) => reflections.filter((reflection) => reflection.parent_reflection_id === parentId);
-
-  function ReflectionRow({ reflection, indent = false }: { reflection: ReflectionEntry; indent?: boolean }) {
-    const name = reflection.display_name || "Anonymous";
-    const replies = repliesFor(reflection.id);
-    const canDeleteReflection =
-      reflection.user_id === userId ||
-      currentUserBadge === "moderator" ||
-      currentUserGroupRole === "leader" ||
-      currentUserGroupRole === "moderator";
-
-    return (
-      <div className={`${indent ? "ml-10 mt-3" : "mt-4"} flex gap-3`}>
-        {reflection.profile_image_url ? (
-          <img src={reflection.profile_image_url} alt={name} className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-0.5" />
-        ) : (
-          <div
-            className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5"
-            style={{ backgroundColor: avatarBg(reflection.user_id) }}
-          >
-            {getInitial(name)}
-          </div>
-        )}
-        <div className="flex-1 min-w-0">
-          <div className="rounded-2xl bg-[#faf7f2] border border-[#efe5d9] px-3 py-2.5">
-            <div className="flex items-start gap-2">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-xs font-semibold text-gray-800">{name}</span>
-                  <UserBadge
-                    customBadge={reflection.member_badge}
-                    isPaid={reflection.is_paid === true}
-                    groupRole={reflection.group_role}
-                  />
-                  <span className="text-xs text-gray-400">{timeAgo(reflection.created_at)}</span>
-                </div>
-                <p className="text-sm text-gray-700 mt-1 leading-relaxed whitespace-pre-wrap">{reflection.content}</p>
-              </div>
-              {canDeleteReflection && (
-                <div className="relative">
-                  <button
-                    type="button"
-                    onClick={() => setActiveMenuId(activeMenuId === reflection.id ? null : reflection.id)}
-                    className="w-7 h-7 rounded-full flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition"
-                    aria-label="Reflection options"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6h.01M12 12h.01M12 18h.01" />
-                    </svg>
-                  </button>
-                  {activeMenuId === reflection.id && (
-                    <div className="absolute right-0 top-8 z-10 min-w-[128px] rounded-xl border border-gray-200 bg-white shadow-lg overflow-hidden">
-                      <button
-                        type="button"
-                        onClick={() => void handleDeleteReflection(reflection)}
-                        disabled={deletingId === reflection.id}
-                        className="w-full px-4 py-3 text-left text-sm font-medium text-red-600 hover:bg-red-50 transition disabled:opacity-50"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="flex items-center gap-4 mt-1 px-1">
-            <button
-              type="button"
-              onClick={() => void handleToggleLike(reflection)}
-              disabled={likeLoading.has(reflection.id)}
-              className="flex items-center gap-1 text-xs transition"
-              style={{ color: reflection.liked ? "#e53e3e" : "#9ca3af" }}
-            >
-              <svg className="w-3.5 h-3.5" fill={reflection.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-              <span>{reflection.like_count > 0 ? reflection.like_count : "Like"}</span>
-            </button>
-            {!indent && (
-              <button
-                type="button"
-                onClick={() => {
-                  setReplyingToId(replyingToId === reflection.id ? null : reflection.id);
-                  setReplyText("");
-                }}
-                className="text-xs text-gray-400 hover:text-[#b7794d] font-semibold transition"
-              >
-                Reply
-              </button>
-            )}
-          </div>
-          {!indent && replyingToId === reflection.id && (
-            <div className="mt-2 flex gap-2 items-end">
-              <textarea
-                value={replyText}
-                onChange={(e) => setReplyText(e.target.value)}
-                placeholder={`Reply to ${name}...`}
-                rows={1}
-                className="flex-1 text-sm px-3 py-2 border border-[#eadfce] rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[#d6b18b] bg-white"
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    void handleSubmit(reflection.id);
-                  }
-                }}
-              />
-              <button
-                type="button"
-                onClick={() => void handleSubmit(reflection.id)}
-                disabled={!replyText.trim() || submitting}
-                className="text-sm font-semibold text-white px-3 py-2 rounded-xl transition disabled:opacity-40 flex-shrink-0"
-                style={{ backgroundColor: "#4a9b6f" }}
-              >
-                Reply
-              </button>
-            </div>
-          )}
-          {!indent && replies.map((reply) => (
-            <ReflectionRow key={reply.id} reflection={reply} indent />
-          ))}
-        </div>
-      </div>
-    );
-  }
+  const sharedRowProps: Omit<ReflectionRowProps, "reflection" | "depth"> = {
+    reflections,
+    userId,
+    currentUserBadge,
+    currentUserGroupRole,
+    activeMenuId,
+    setActiveMenuId,
+    deletingId,
+    likeLoading,
+    likeAnimatingIds,
+    replyingToId,
+    setReplyingToId,
+    replyText,
+    setReplyText,
+    submitting,
+    onDeleteReflection: handleDeleteReflection,
+    onToggleLike: handleToggleLike,
+    onSubmit: (parentId) => handleSubmit(parentId),
+  };
 
   return (
     <div>
@@ -1149,7 +1249,7 @@ function ReflectionSection({
         <div className="mt-4 flex flex-col gap-3">
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide">Group Reflections</p>
           {topLevelReflections.map((reflection) => (
-            <ReflectionRow key={reflection.id} reflection={reflection} />
+            <ReflectionRow key={reflection.id} reflection={reflection} {...sharedRowProps} />
           ))}
         </div>
       )}
@@ -1942,4 +2042,3 @@ export default function WeekLessonPage({
     </div>
   );
 }
-
