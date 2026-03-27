@@ -171,13 +171,18 @@ export default function AnalyticsPage() {
 
   // Retention metrics
   const [retentionData, setRetentionData] = useState<{
-    dauMauPct: number;
-    wauMauPct: number;
-    sevenDayReturnPct: number;
-    avgGapDays: number;
-    medianGapDays: number;
-    activeUserCount: number;
-    freqBuckets: Array<{ label: string; sublabel: string; count: number; pct: number; color: string }>;
+    active24h: number;
+    active7d: number;
+    active30d: number;
+    totalActions24h: number;
+    totalActions7d: number;
+    totalActions30d: number;
+    avgActionsPerActiveUser24h: number;
+    avgActionsPerActiveUser7d: number;
+    avgActionsPerActiveUser30d: number;
+    avgActiveDays30d: number;
+    powerUsers7d: number;
+    returnRate7d: number;
   } | null>(null);
   const [loadingRetention, setLoadingRetention] = useState(true);
 
@@ -1273,23 +1278,23 @@ export default function AnalyticsPage() {
           });
         } else if (action.action_type === "feed_post_thought") {
           const text = action.action_label
-            ? `On ${formattedDate} at ${formattedTime}, ${username} posted a thought: "${action.action_label}".${counterText}`
-            : `On ${formattedDate} at ${formattedTime}, ${username} posted a thought.${counterText}`;
+            ? `On ${formattedDate} at ${formattedTime}, ${username} posted in the group feed: "${action.action_label}".${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} posted in the group feed.${counterText}`;
           actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_thought" });
         } else if (action.action_type === "feed_post_prayer") {
-          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} posted a prayer.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_prayer" });
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} posted a prayer in the group feed.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_prayer" });
         } else if (action.action_type === "feed_post_prayer_request") {
-          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} posted a prayer request.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_prayer_request" });
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} posted a prayer request in the group feed.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_prayer_request" });
         } else if (action.action_type === "feed_post_photo") {
-          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} posted a photo.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_photo" });
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} posted a photo in the group feed.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_photo" });
         } else if (action.action_type === "feed_post_video") {
-          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} posted a video.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_video" });
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} posted a video in the group feed.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_video" });
         } else if (action.action_type === "feed_post_liked") {
-          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} liked a post.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_liked" });
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} liked a group feed post.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_liked" });
         } else if (action.action_type === "feed_post_commented") {
-          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} commented on a post.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_commented" });
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} commented on a group feed post.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_commented" });
         } else if (action.action_type === "feed_post_replied") {
-          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} replied to a comment.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_replied" });
+          actions.push({ date: formattedDate, text: `On ${formattedDate} at ${formattedTime}, ${username} replied in the group feed.${counterText}`, userId, username, sortKey: actionDate.getTime(), actionType: "feed_post_replied" });
         } else if (action.action_type === "buddy_added") {
           const text = action.action_label
             ? `On ${formattedDate} at ${formattedTime}, ${username} added ${action.action_label} as a Bible Buddy.${counterText}`
@@ -1742,11 +1747,11 @@ export default function AnalyticsPage() {
       case "trivia_question_answered":
         return "bg-emerald-50 border-l-4 border-emerald-500";
       case "user_login":
-        return "bg-blue-50 border-l-4 border-blue-500";
+        return "bg-purple-50 border-l-4 border-purple-500";
       case "user_upgraded":
         return "bg-amber-50 border-l-4 border-amber-500";
       case "user_signup":
-        return "bg-gray-50 border-l-4 border-gray-500";
+        return "bg-red-50 border-l-4 border-red-500";
       case "series_week_started":
         return "bg-indigo-50 border-l-4 border-indigo-500";
       default:
@@ -1778,13 +1783,6 @@ export default function AnalyticsPage() {
         case "Devotional Days Completed": return row.devotionalDaysCompleted;
         case "Reading Plan Chapters Completed": return row.readingPlanChaptersCompleted;
         case "Trivia Questions Answered": return row.triviaQuestionsAnswered;
-        case "Thoughts Posted": return row.feedThoughtsPosted;
-        case "Prayers Posted": return row.feedPrayersPosted;
-        case "Photos Posted": return row.feedPhotosPosted;
-        case "Videos Posted": return row.feedVideosPosted;
-        case "Post Likes": return row.feedPostLikes;
-        case "Comments": return row.feedComments;
-        case "Replies": return row.feedReplies;
         case "Buddies Added": return row.buddiesAdded;
         case "Group Messages": return row.groupMessagesSent;
         default: return 0;
@@ -2067,59 +2065,16 @@ export default function AnalyticsPage() {
               />
             </div>
 
-            {/* ROW 3: SOCIAL FEED */}
-            <h3 className="text-lg font-bold mt-6 mb-3">📱 Social Feed</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            <h3 className="text-lg font-bold mt-6 mb-3">Community</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-4">
               <OverviewCard
-                label="💭 Thoughts Posted"
-                value={overviewMetrics.feedThoughtsPosted}
-                onClick={() => setSelectedActionType(selectedActionType === "feed_post_thought" ? null : "feed_post_thought")}
-                isSelected={selectedActionType === "feed_post_thought"}
-              />
-              <OverviewCard
-                label="🙏 Prayers Posted"
-                value={overviewMetrics.feedPrayersPosted}
-                onClick={() => setSelectedActionType(selectedActionType === "feed_post_prayer" ? null : "feed_post_prayer")}
-                isSelected={selectedActionType === "feed_post_prayer"}
-              />
-              <OverviewCard
-                label="📷 Photos Posted"
-                value={overviewMetrics.feedPhotosPosted}
-                onClick={() => setSelectedActionType(selectedActionType === "feed_post_photo" ? null : "feed_post_photo")}
-                isSelected={selectedActionType === "feed_post_photo"}
-              />
-              <OverviewCard
-                label="🎬 Videos Posted"
-                value={overviewMetrics.feedVideosPosted}
-                onClick={() => setSelectedActionType(selectedActionType === "feed_post_video" ? null : "feed_post_video")}
-                isSelected={selectedActionType === "feed_post_video"}
-              />
-              <OverviewCard
-                label="❤️ Post Likes"
-                value={overviewMetrics.feedPostLikes}
-                onClick={() => setSelectedActionType(selectedActionType === "feed_post_liked" ? null : "feed_post_liked")}
-                isSelected={selectedActionType === "feed_post_liked"}
-              />
-              <OverviewCard
-                label="💬 Comments"
-                value={overviewMetrics.feedComments}
-                onClick={() => setSelectedActionType(selectedActionType === "feed_post_commented" ? null : "feed_post_commented")}
-                isSelected={selectedActionType === "feed_post_commented"}
-              />
-              <OverviewCard
-                label="↩️ Replies"
-                value={overviewMetrics.feedReplies}
-                onClick={() => setSelectedActionType(selectedActionType === "feed_post_replied" ? null : "feed_post_replied")}
-                isSelected={selectedActionType === "feed_post_replied"}
-              />
-              <OverviewCard
-                label="🤝 Buddies Added"
+                label="Buddies Added"
                 value={overviewMetrics.buddiesAdded}
                 onClick={() => setSelectedActionType(selectedActionType === "buddy_added" ? null : "buddy_added")}
                 isSelected={selectedActionType === "buddy_added"}
               />
               <OverviewCard
-                label="📨 Group Messages"
+                label="Group Messages"
                 value={overviewMetrics.groupMessagesSent}
                 onClick={() => setSelectedActionType(selectedActionType === "group_message_sent" ? null : "group_message_sent")}
                 isSelected={selectedActionType === "group_message_sent"}
@@ -2132,7 +2087,7 @@ export default function AnalyticsPage() {
       {/* ── RETENTION & ENGAGEMENT ─────────────────────────────────────────── */}
       <div className="mt-10 mb-10">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold">Retention & Engagement</h2>
+          <h2 className="text-2xl font-bold">Usage Overview</h2>
           <button
             onClick={() => loadRetentionData()}
             className="text-sm text-blue-600 hover:text-blue-800 font-medium"
@@ -2143,91 +2098,77 @@ export default function AnalyticsPage() {
 
         {loadingRetention ? (
           <div className="bg-white p-6 rounded-xl shadow text-center">
-            <p className="text-gray-500 text-sm">Computing retention metrics…</p>
+            <p className="text-gray-500 text-sm">Computing usage metrics...</p>
           </div>
         ) : retentionData ? (
           <div className="space-y-4">
-            {/* Top KPI row */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {/* DAU/MAU */}
               <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center">
-                <p className="text-xs text-gray-500 mb-1">DAU / MAU</p>
-                <p className={`text-3xl font-bold ${retentionData.dauMauPct >= 20 ? "text-green-600" : retentionData.dauMauPct >= 10 ? "text-yellow-600" : "text-red-500"}`}>
-                  {retentionData.dauMauPct}%
-                </p>
-                <p className="text-xs text-gray-400 mt-1">
-                  {retentionData.dauMauPct >= 20 ? "Excellent 🔥" : retentionData.dauMauPct >= 10 ? "Good 👍" : "Needs work"}
-                </p>
+                <p className="text-xs text-gray-500 mb-1">Active 24h</p>
+                <p className="text-3xl font-bold text-blue-600">{retentionData.active24h}</p>
+                <p className="text-xs text-gray-400 mt-1">Unique users with any action</p>
               </div>
 
-              {/* WAU/MAU */}
               <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center">
-                <p className="text-xs text-gray-500 mb-1">WAU / MAU</p>
-                <p className={`text-3xl font-bold ${retentionData.wauMauPct >= 50 ? "text-green-600" : retentionData.wauMauPct >= 30 ? "text-yellow-600" : "text-red-500"}`}>
-                  {retentionData.wauMauPct}%
-                </p>
-                <p className="text-xs text-gray-400 mt-1">Weekly stickiness</p>
+                <p className="text-xs text-gray-500 mb-1">Active 7d</p>
+                <p className="text-3xl font-bold text-green-600">{retentionData.active7d}</p>
+                <p className="text-xs text-gray-400 mt-1">Unique users this week</p>
               </div>
 
-              {/* 7-day return */}
               <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center">
-                <p className="text-xs text-gray-500 mb-1">7-Day Return Rate</p>
-                <p className={`text-3xl font-bold ${retentionData.sevenDayReturnPct >= 40 ? "text-green-600" : retentionData.sevenDayReturnPct >= 20 ? "text-yellow-600" : "text-red-500"}`}>
-                  {retentionData.sevenDayReturnPct}%
-                </p>
-                <p className="text-xs text-gray-400 mt-1">Came back this week</p>
+                <p className="text-xs text-gray-500 mb-1">Active 30d</p>
+                <p className="text-3xl font-bold text-indigo-600">{retentionData.active30d}</p>
+                <p className="text-xs text-gray-400 mt-1">Unique users this month</p>
               </div>
 
-              {/* Avg gap */}
               <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center">
-                <p className="text-xs text-gray-500 mb-1">Avg Session Gap</p>
-                <p className="text-3xl font-bold text-gray-800">
-                  {retentionData.avgGapDays === 0 ? "—" : `${retentionData.avgGapDays}d`}
-                </p>
-                <p className="text-xs text-gray-400 mt-1">Median: {retentionData.medianGapDays === 0 ? "—" : `${retentionData.medianGapDays}d`}</p>
+                <p className="text-xs text-gray-500 mb-1">Return Rate 7d</p>
+                <p className="text-3xl font-bold text-amber-600">{retentionData.returnRate7d}%</p>
+                <p className="text-xs text-gray-400 mt-1">Active in both weeks</p>
               </div>
             </div>
 
-            {/* Frequency distribution */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+                <p className="text-xs text-gray-500 mb-1">Avg Actions / Active User 24h</p>
+                <p className="text-3xl font-bold text-gray-900">{retentionData.avgActionsPerActiveUser24h}</p>
+                <p className="text-xs text-gray-400 mt-1">{retentionData.totalActions24h} total actions in 24h</p>
+              </div>
+
+              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+                <p className="text-xs text-gray-500 mb-1">Avg Actions / Active User 7d</p>
+                <p className="text-3xl font-bold text-gray-900">{retentionData.avgActionsPerActiveUser7d}</p>
+                <p className="text-xs text-gray-400 mt-1">{retentionData.totalActions7d} total actions in 7d</p>
+              </div>
+
+              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+                <p className="text-xs text-gray-500 mb-1">Avg Active Days / User 30d</p>
+                <p className="text-3xl font-bold text-gray-900">{retentionData.avgActiveDays30d}</p>
+                <p className="text-xs text-gray-400 mt-1">How often users came back this month</p>
+              </div>
+
+              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+                <p className="text-xs text-gray-500 mb-1">Power Users 7d</p>
+                <p className="text-3xl font-bold text-gray-900">{retentionData.powerUsers7d}</p>
+                <p className="text-xs text-gray-400 mt-1">Users with 5+ actions this week</p>
+              </div>
+            </div>
+
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5">
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <h3 className="text-sm font-bold text-gray-800">Login Frequency Distribution</h3>
-                  <p className="text-xs text-gray-400 mt-0.5">
-                    {retentionData.activeUserCount} active users · all time · inactive (30+ days) excluded
-                  </p>
-                </div>
+              <h3 className="text-sm font-bold text-gray-800">How to read this</h3>
+              <div className="mt-3 space-y-2 text-sm text-gray-600">
+                <p>Active means a unique user did any action in the app, not just a login.</p>
+                <p>Average actions per active user shows how much the average active person is actually using Bible Buddy.</p>
+                <p>Average active days per user shows how often people came back during the last 30 days.</p>
               </div>
-              <div className="space-y-2.5">
-                {retentionData.freqBuckets.map((b) => (
-                  <div key={b.label} className="flex items-center gap-3">
-                    <div className="w-28 text-xs text-gray-700 font-medium flex-shrink-0">{b.label}</div>
-                    <div className="flex-1 bg-gray-100 rounded-full h-4 overflow-hidden">
-                      <div
-                        className="h-4 rounded-full transition-all"
-                        style={{ width: `${b.pct}%`, backgroundColor: b.color, minWidth: b.count > 0 ? "4px" : "0" }}
-                      />
-                    </div>
-                    <div className="w-16 text-right text-xs text-gray-600 flex-shrink-0">
-                      <span className="font-semibold">{b.pct}%</span>
-                      <span className="text-gray-400"> ({b.count})</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <p className="text-xs text-gray-400 mt-4">
-                Based on average days between logins over the past 90 days.
-                Users with only one login session are counted as "one-time / rare."
-              </p>
             </div>
           </div>
         ) : (
           <div className="bg-white p-4 rounded-xl shadow">
-            <p className="text-gray-500 text-sm">No retention data available.</p>
+            <p className="text-gray-500 text-sm">No usage data available.</p>
           </div>
         )}
       </div>
-
       {/* MAIN SECTION SELECTOR (Dropdown/Tabs) */}
       <div className="mt-12 mb-6">
         <div className="flex items-center justify-between mb-4">
@@ -2403,13 +2344,6 @@ export default function AnalyticsPage() {
                     "Keywords Understood",
                     "Devotional Days Completed",
                     "Reading Plan Chapters Completed",
-                    "Thoughts Posted",
-                    "Prayers Posted",
-                    "Photos Posted",
-                    "Videos Posted",
-                    "Post Likes",
-                    "Comments",
-                    "Replies",
                     "Buddies Added",
                     "Group Messages",
                   ].map((metric) => (
@@ -2459,20 +2393,6 @@ export default function AnalyticsPage() {
                               return row.readingPlanChaptersCompleted;
                             case "Trivia Questions Answered":
                               return row.triviaQuestionsAnswered;
-                            case "Thoughts Posted":
-                              return row.feedThoughtsPosted;
-                            case "Prayers Posted":
-                              return row.feedPrayersPosted;
-                            case "Photos Posted":
-                              return row.feedPhotosPosted;
-                            case "Videos Posted":
-                              return row.feedVideosPosted;
-                            case "Post Likes":
-                              return row.feedPostLikes;
-                            case "Comments":
-                              return row.feedComments;
-                            case "Replies":
-                              return row.feedReplies;
                             case "Buddies Added":
                               return row.buddiesAdded;
                             case "Group Messages":
@@ -3112,3 +3032,4 @@ function OverviewCard({
     </div>
   );
 }
+

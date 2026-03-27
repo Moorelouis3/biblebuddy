@@ -3,11 +3,17 @@ import { createClient } from "@supabase/supabase-js";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
-const DAY = 86400000;
+const DAY_MS = 24 * 60 * 60 * 1000;
 
-function ago(ms: number, days: number) {
-  return new Date(ms - days * DAY).toISOString();
+type ActionRow = {
+  user_id: string | null;
+  created_at: string;
+};
+
+function getDayKey(dateIso: string) {
+  return dateIso.slice(0, 10);
 }
 
 export async function GET() {
@@ -24,130 +30,109 @@ export async function GET() {
 
   try {
     const now = Date.now();
+    const since60d = new Date(now - 60 * DAY_MS).toISOString();
+    const since30d = new Date(now - 30 * DAY_MS).toISOString();
+    const since14d = new Date(now - 14 * DAY_MS).toISOString();
+    const since7d = new Date(now - 7 * DAY_MS).toISOString();
+    const since24h = new Date(now - DAY_MS).toISOString();
 
-    // ── Fetch all login events (all time) ─────────────────────────────────
-    // Uses service role so RLS doesn't block. Fetch in pages of 10k to avoid
-    // hitting any server-side row cap.
-    const allLogins: { user_id: string; created_at: string }[] = [];
-    let page = 0;
-    const PAGE_SIZE = 10000;
-    while (true) {
-      const { data, error } = await db
-        .from("master_actions")
-        .select("user_id, created_at")
-        .eq("action_type", "user_login")
-        .order("created_at", { ascending: true })
-        .range(page * PAGE_SIZE, (page + 1) * PAGE_SIZE - 1);
+    const { data, error } = await db
+      .from("master_actions")
+      .select("user_id, created_at")
+      .gte("created_at", since60d)
+      .order("created_at", { ascending: false })
+      .limit(250000);
 
-      if (error) {
-        console.error("[RETENTION API] query error:", error);
-        break;
-      }
-      if (!data || data.length === 0) break;
-      allLogins.push(...data);
-      if (data.length < PAGE_SIZE) break;
-      page++;
+    if (error) {
+      console.error("[USAGE API] query error:", error);
+      return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    console.log(`[RETENTION API] total login rows fetched: ${allLogins.length}`);
+    const rows = ((data || []) as ActionRow[]).filter((row) => typeof row.user_id === "string" && row.user_id.length > 0);
 
-    // ── Build per-user date sets ──────────────────────────────────────────
-    const userDates = new Map<string, Set<string>>();
-    for (const row of allLogins) {
-      if (!row.user_id) continue;
-      const day = row.created_at.slice(0, 10);
-      if (!userDates.has(row.user_id)) userDates.set(row.user_id, new Set());
-      userDates.get(row.user_id)!.add(day);
+    const active24h = new Set<string>();
+    const active7d = new Set<string>();
+    const active30d = new Set<string>();
+    const prev7d = new Set<string>();
+
+    const actionsByUser7d = new Map<string, number>();
+    const actionsByUser30d = new Map<string, number>();
+    const activeDaysByUser30d = new Map<string, Set<string>>();
+
+    for (const row of rows) {
+      const userId = row.user_id as string;
+      const createdAt = row.created_at;
+
+      if (createdAt >= since24h) {
+        active24h.add(userId);
+      }
+
+      if (createdAt >= since7d) {
+        active7d.add(userId);
+        actionsByUser7d.set(userId, (actionsByUser7d.get(userId) || 0) + 1);
+      } else if (createdAt >= since14d) {
+        prev7d.add(userId);
+      }
+
+      if (createdAt >= since30d) {
+        active30d.add(userId);
+        actionsByUser30d.set(userId, (actionsByUser30d.get(userId) || 0) + 1);
+
+        if (!activeDaysByUser30d.has(userId)) {
+          activeDaysByUser30d.set(userId, new Set());
+        }
+        activeDaysByUser30d.get(userId)?.add(getDayKey(createdAt));
+      }
     }
 
-    // ── Cutoff strings ────────────────────────────────────────────────────
-    const thirtyDaysAgoStr = ago(now, 30).slice(0, 10);
-    const sevenDaysAgoStr  = ago(now, 7).slice(0, 10);
-    const oneDayAgoStr     = ago(now, 1).slice(0, 10);
+    const totalActions24h = rows.filter((row) => row.created_at >= since24h).length;
+    const totalActions7d = rows.filter((row) => row.created_at >= since7d).length;
+    const totalActions30d = rows.filter((row) => row.created_at >= since30d).length;
 
-    // ── DAU / WAU / MAU ───────────────────────────────────────────────────
-    let dauCount = 0, wauCount = 0, mauCount = 0;
-    const avgGaps: number[] = [];
+    const avgActionsPerActiveUser24h =
+      active24h.size > 0 ? Math.round((totalActions24h / active24h.size) * 10) / 10 : 0;
+    const avgActionsPerActiveUser7d =
+      active7d.size > 0 ? Math.round((totalActions7d / active7d.size) * 10) / 10 : 0;
+    const avgActionsPerActiveUser30d =
+      active30d.size > 0 ? Math.round((totalActions30d / active30d.size) * 10) / 10 : 0;
 
-    for (const [, dates] of userDates) {
-      const sorted = [...dates].sort();
-      const lastDay = sorted[sorted.length - 1];
-
-      // MAU = active in last 30 days
-      if (lastDay < thirtyDaysAgoStr) continue;
-      mauCount++;
-      if (lastDay >= sevenDaysAgoStr) wauCount++;
-      if (lastDay >= oneDayAgoStr) dauCount++;
-
-      // Frequency — avg gap between sessions (all-time history)
-      if (sorted.length < 2) {
-        avgGaps.push(999); // one-time user sentinel
-        continue;
-      }
-      let total = 0;
-      for (let i = 1; i < sorted.length; i++) {
-        total += (new Date(sorted[i]).getTime() - new Date(sorted[i - 1]).getTime()) / DAY;
-      }
-      avgGaps.push(total / (sorted.length - 1));
-    }
-
-    // ── Stickiness ────────────────────────────────────────────────────────
-    const dauMauPct = mauCount > 0 ? Math.round((dauCount / mauCount) * 100) : 0;
-    const wauMauPct = mauCount > 0 ? Math.round((wauCount / mauCount) * 100) : 0;
-
-    // ── Avg / median gap ─────────────────────────────────────────────────
-    const realGaps = avgGaps.filter((g) => g < 999);
-    const avgGapDays =
-      realGaps.length > 0
-        ? Math.round((realGaps.reduce((a, b) => a + b, 0) / realGaps.length) * 10) / 10
-        : 0;
-    const sortedGaps = [...realGaps].sort((a, b) => a - b);
-    const medianGapDays =
-      sortedGaps.length > 0
-        ? Math.round(sortedGaps[Math.floor(sortedGaps.length / 2)] * 10) / 10
+    const avgActiveDays30d =
+      activeDaysByUser30d.size > 0
+        ? Math.round(
+            (
+              [...activeDaysByUser30d.values()].reduce((sum, days) => sum + days.size, 0) /
+              activeDaysByUser30d.size
+            ) * 10
+          ) / 10
         : 0;
 
-    // ── 7-day return rate ─────────────────────────────────────────────────
-    const prevSet = new Set<string>();
-    const currSet = new Set<string>();
-    const fourteenDaysAgoStr = ago(now, 14).slice(0, 10);
-    for (const [userId, dates] of userDates) {
-      for (const d of dates) {
-        if (d >= fourteenDaysAgoStr && d < sevenDaysAgoStr) prevSet.add(userId);
-        if (d >= sevenDaysAgoStr) currSet.add(userId);
-      }
-    }
-    const returned = [...prevSet].filter((id) => currSet.has(id)).length;
-    const sevenDayReturnPct = prevSet.size > 0 ? Math.round((returned / prevSet.size) * 100) : 0;
-
-    // ── Frequency buckets ─────────────────────────────────────────────────
-    const BUCKETS = [
-      { label: "Daily",           sublabel: "≤ 1.5 days avg",          min: 0,    max: 1.5,      color: "#22c55e" },
-      { label: "Few times/week",  sublabel: "1.5 – 3.5 days avg",      min: 1.5,  max: 3.5,      color: "#84cc16" },
-      { label: "Weekly",          sublabel: "3.5 – 8 days avg",        min: 3.5,  max: 8,        color: "#eab308" },
-      { label: "Bi-weekly",       sublabel: "8 – 20 days avg",         min: 8,    max: 20,       color: "#f97316" },
-      { label: "Monthly",         sublabel: "20 – 40 days avg",        min: 20,   max: 40,       color: "#ef4444" },
-      { label: "One-time / rare", sublabel: "Only 1 login or 40+ days", min: 40,  max: Infinity, color: "#9ca3af" },
-    ];
-
-    const totalForBuckets = avgGaps.length;
-    const freqBuckets = BUCKETS.map((b) => {
-      const count = avgGaps.filter((g) => g >= b.min && g < b.max).length;
-      return { ...b, count, pct: totalForBuckets > 0 ? Math.round((count / totalForBuckets) * 100) : 0 };
-    });
+    const powerUsers7d = [...actionsByUser7d.values()].filter((count) => count >= 5).length;
+    const returningUsers7d = [...prev7d].filter((userId) => active7d.has(userId)).length;
+    const returnRate7d = prev7d.size > 0 ? Math.round((returningUsers7d / prev7d.size) * 100) : 0;
 
     return NextResponse.json({
-      dauMauPct,
-      wauMauPct,
-      sevenDayReturnPct,
-      avgGapDays,
-      medianGapDays,
-      activeUserCount: mauCount,
-      freqBuckets,
-      debug: { totalLoginRows: allLogins.length, uniqueUsers: userDates.size },
+      active24h: active24h.size,
+      active7d: active7d.size,
+      active30d: active30d.size,
+      totalActions24h,
+      totalActions7d,
+      totalActions30d,
+      avgActionsPerActiveUser24h,
+      avgActionsPerActiveUser7d,
+      avgActionsPerActiveUser30d,
+      avgActiveDays30d,
+      powerUsers7d,
+      returnRate7d,
+      debug: {
+        rowsFetched: rows.length,
+        unique24h: active24h.size,
+        unique7d: active7d.size,
+        unique30d: active30d.size,
+      },
     });
-  } catch (e: any) {
-    console.error("[RETENTION API] error:", e);
-    return NextResponse.json({ error: e?.message || "Failed" }, { status: 500 });
+  } catch (error) {
+    console.error("[USAGE API] error:", error);
+    const message = error instanceof Error ? error.message : "Failed";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
