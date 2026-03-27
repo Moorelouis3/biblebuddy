@@ -805,7 +805,7 @@ export default function AnalyticsPage() {
       const activeUsersCount = new Set(
         (activeUsersRowsResult.data || [])
           .map((row: { user_id: string | null }) => row.user_id)
-          .filter((userId): userId is string => typeof userId === "string" && userId.length > 0)
+          .filter((userId: string | null): userId is string => typeof userId === "string" && userId.length > 0)
       ).size;
       const totalActionsCount = totalActionsResult.count ?? 0;
       const totalActionsError = totalActionsResult.error;
