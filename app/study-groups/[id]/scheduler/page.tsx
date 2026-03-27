@@ -1497,7 +1497,7 @@ RULES:
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-5 px-4 py-6">
         <div className="flex items-center justify-between gap-4 px-1">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">Scheduler Feed</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">Post Queue</p>
             <h1 className="mt-1 text-xl font-bold text-gray-900">{group.cover_emoji ? `${group.cover_emoji} ` : ""}{group.name}</h1>
           </div>
           <div className="flex items-center gap-2">
@@ -1622,12 +1622,12 @@ RULES:
 
         {queueLoading ? (
           <div className="rounded-3xl border border-gray-200 bg-white px-6 py-12 text-center text-sm text-gray-500 shadow-sm">
-            Loading your scheduler feed...
+            Loading your post queue...
           </div>
         ) : schedulerFeed.length === 0 ? (
           <div className="rounded-3xl border border-dashed border-gray-200 bg-white px-6 py-12 text-center shadow-sm">
             <p className="text-lg font-bold text-gray-900">No drafts yet</p>
-            <p className="mt-2 text-sm text-gray-500">Save a post here and it will show up like your private home feed.</p>
+            <p className="mt-2 text-sm text-gray-500">Save a post here and it will show up with your other queued posts.</p>
           </div>
         ) : (
           <div className="flex flex-col gap-3">

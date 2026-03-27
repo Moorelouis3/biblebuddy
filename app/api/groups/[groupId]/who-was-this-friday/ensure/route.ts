@@ -52,7 +52,7 @@ export async function POST(
   try {
     const body = await request.json().catch(() => ({}));
     const targetDate = typeof body?.targetDate === "string" ? new Date(body.targetDate) : new Date();
-    const result = await ensureWeeklyGroupSeriesPost(supabaseAdmin, groupId, "who_was_this_friday", null, targetDate, { force: body?.force === true });
+    const result = await ensureWeeklyGroupSeriesPost(supabaseAdmin, groupId, "who_was_this_friday", userData.user.id, targetDate, { force: body?.force === true });
     return NextResponse.json(result);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Could not ensure Who Was This Friday.";
