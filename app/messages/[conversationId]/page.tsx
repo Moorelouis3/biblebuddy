@@ -571,30 +571,41 @@ export default function ConversationPage({
     );
 
     try {
-      const { error } = await supabase
-        .from("messages")
-        .update({ content: trimmed })
-        .eq("id", editingMessageId)
-        .eq("sender_id", userId);
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
 
-      if (error) {
-        console.error("[MESSAGES] Edit error:", error);
-        if (originalMessage) {
-          setMessages((prev) =>
-            prev.map((message) => (message.id === originalMessage.id ? originalMessage : message)),
-          );
-        }
-        return;
+      if (!session?.access_token) {
+        throw new Error("Could not verify your session.");
       }
 
-      await supabase
-        .from("conversations")
-        .update({
-          last_message_preview: trimmed.length > 80 ? `${trimmed.slice(0, 80)}...` : trimmed,
-        })
-        .eq("id", conversationId);
+      const response = await fetch("/api/messages/edit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({
+          messageId: editingMessageId,
+          content: trimmed,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not edit message.");
+      }
 
       cancelEditingMessage();
+      window.dispatchEvent(new Event("bb:refresh-unread-messages"));
+    } catch (error) {
+      console.error("[MESSAGES] Edit error:", error);
+      if (originalMessage) {
+        setMessages((prev) =>
+          prev.map((message) => (message.id === originalMessage.id ? originalMessage : message)),
+        );
+      }
     } finally {
       setSavingEdit(false);
     }
@@ -817,6 +828,7 @@ export default function ConversationPage({
               const senderImage = isMine ? myProfile?.profile_image_url : otherUser?.profile_image_url;
               const senderInitials = isMine ? myInitials : otherInitials;
               const senderColor = isMine ? myColor : otherColor;
+              const senderProfileHref = isMine ? (userId ? `/profile/${userId}` : null) : (otherUser?.user_id ? `/profile/${otherUser.user_id}` : null);
 
               return (
                 <div key={msg.id} className={`mb-5 flex ${isMine ? "justify-end" : "justify-start"}`}>
@@ -837,7 +849,13 @@ export default function ConversationPage({
                     )}
 
                     <div className={`flex min-w-0 flex-col gap-1 ${isMine ? "items-end" : "items-start"}`}>
-                      <div className="px-1 text-xs font-semibold text-gray-700">{senderName}</div>
+                      {senderProfileHref ? (
+                        <Link href={senderProfileHref} className="px-1 text-xs font-semibold text-gray-700 hover:underline">
+                          {senderName}
+                        </Link>
+                      ) : (
+                        <div className="px-1 text-xs font-semibold text-gray-700">{senderName}</div>
+                      )}
 
                       <div
                         className={`rounded-[24px] border px-4 py-3 text-sm leading-relaxed shadow-sm ${
