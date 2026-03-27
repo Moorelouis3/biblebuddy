@@ -1112,7 +1112,7 @@ export default function PublicProfilePage() {
                 </div>
               ) : null}
 
-              <div className="mb-3 flex pl-8 text-[11px] font-medium text-gray-500 sm:pl-10">
+              <div className="mb-3 flex pl-7 text-[11px] font-medium text-gray-500 sm:pl-10">
                 {heatMapMonthLabels.map((month, index) => (
                   <div key={`${month.label}-${index}`} className="w-3 mr-0.5 text-left sm:w-3.5 sm:mr-1">
                     {month.label}
