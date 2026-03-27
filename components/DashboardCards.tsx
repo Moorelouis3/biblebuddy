@@ -40,6 +40,8 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   dailyRecommendationCardSubtitle,
   onInviteBuddy,
 }) => {
+  const showFreeUpgradeCard = membershipStatus !== "pro" && profile?.is_paid !== true;
+
   return (
     <div className="flex flex-col gap-4">
       <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm relative">
@@ -126,6 +128,28 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
             Pro expires in {daysRemaining} {daysRemaining === 1 ? "day" : "days"}
           </p>
         </div>
+      )}
+
+      {showFreeUpgradeCard && (
+        <Link href="/upgrade">
+          <div className="bg-[#fff7ec] border border-[#f0d7b3] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative">
+            <span className="absolute right-4 top-4 text-[#b7791f] text-base" aria-hidden="true">↑</span>
+            <div className="flex items-start gap-3">
+              <div className="text-2xl leading-none">👑</div>
+              <div className="min-w-0">
+                <h2 className="text-xl font-semibold text-[#8a4b14]">Go Deeper With Pro</h2>
+                <p className="text-sm text-gray-700 mt-1 leading-relaxed">
+                  Unlock deeper Bible study, open the full devotional library, and keep your momentum going without daily credit limits.
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f6e4ca] text-[#9a5b1f]">Unlimited study access</span>
+                  <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f6e4ca] text-[#9a5b1f]">Full devotionals</span>
+                  <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f6e4ca] text-[#9a5b1f]">No daily credit wall</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Link>
       )}
 
       <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}>

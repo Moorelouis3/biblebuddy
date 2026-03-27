@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback, useRef, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
 import { triggerPostSuccess } from "@/components/PostSuccessEffect";
@@ -63,7 +63,14 @@ interface FeedComment {
   profile_image_url: string | null;
 }
 
-type MyProfile = { display_name: string | null; username: string | null; profile_image_url: string | null } | null;
+type MyProfile = {
+  display_name: string | null;
+  username: string | null;
+  profile_image_url: string | null;
+  is_paid?: boolean | null;
+} | null;
+
+const INLINE_UPGRADE_INTERVAL = 15;
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -1048,6 +1055,7 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showReportModal, setShowReportModal] = useState(false);
   const [reportReason, setReportReason] = useState("");
+  const [loveAnimating, setLoveAnimating] = useState(false);
   const [likersOpen, setLikersOpen] = useState(false);
   const [likers, setLikers] = useState<{ user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }[]>([]);
   const [likersLoading, setLikersLoading] = useState(false);
@@ -1209,18 +1217,26 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
       <div className="flex items-center gap-1 mt-4 flex-wrap">
         <div className={`flex items-center rounded-full text-xs border transition ${loveActive ? "border-green-400 bg-green-50" : "border-gray-200 bg-gray-50"}`}>
           <button
-            onClick={() => onReact(post.id, "love")}
+            type="button"
+            onClick={() => {
+              if (!loveActive) {
+                setLoveAnimating(true);
+                window.setTimeout(() => setLoveAnimating(false), 420);
+              }
+              onReact(post.id, "love");
+            }}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-full transition hover:scale-110 ${loveActive ? "text-green-700 font-semibold" : "text-gray-600"}`}
           >
-            <span>❤️</span>
+            <span className={loveAnimating ? "animate-heart-pop" : ""}>❤️</span>
           </button>
           {loveCount > 0 && (
-            <button onClick={openLikers} className={`pr-2.5 py-1 font-medium transition hover:underline ${loveActive ? "text-green-700" : "text-gray-600 hover:text-gray-900"}`}>
+            <button type="button" onClick={openLikers} className={`pr-2.5 py-1 font-medium transition hover:underline ${loveActive ? "text-green-700" : "text-gray-600 hover:text-gray-900"}`}>
               {loveCount}
             </button>
           )}
         </div>
         <button
+          type="button"
           onClick={() => setShowComments((v) => !v)}
           className="ml-auto flex items-center gap-1 text-xs text-gray-400 hover:text-green-600 transition"
         >
@@ -1465,10 +1481,61 @@ function ActivityPostCard({ activity }: { activity: FeedActivity }) {
 
 // ── Main Page ─────────────────────────────────────────────────────────────────
 
+function FeedUpgradeCard({ compact = false }: { compact?: boolean }) {
+  return (
+    <Link
+      href="/upgrade"
+      className={`block rounded-2xl border border-[#ead8c4] bg-[#fffaf4] shadow-sm transition hover:shadow-md ${
+        compact ? "px-4 py-4" : "px-5 py-5"
+      }`}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-sm font-semibold text-gray-900">Go deeper with Bible Buddy Pro</p>
+          <p className="text-sm text-gray-600 mt-1 leading-relaxed">
+            Unlock unlimited study, open every devotional, and keep going when God is already meeting you here.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Unlimited study access</span>
+            <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Full devotional library</span>
+            <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">No daily credit wall</span>
+          </div>
+        </div>
+        <div className="text-xl flex-shrink-0">👑</div>
+      </div>
+      <div className="mt-3">
+        <span
+          className="inline-flex rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+          style={{ backgroundColor: "#4a9b6f" }}
+        >
+          Upgrade to Pro
+        </span>
+      </div>
+    </Link>
+  );
+}
+
+function interleaveUpgradeCards<T extends { id: string }>(
+  items: T[],
+  shouldInsert: boolean,
+  renderItem: (item: T) => ReactNode
+) {
+  const nodes: ReactNode[] = [];
+
+  items.forEach((item, index) => {
+    nodes.push(renderItem(item));
+    if (shouldInsert && (index + 1) % INLINE_UPGRADE_INTERVAL === 0 && index < items.length - 1) {
+      nodes.push(<FeedUpgradeCard key={`upgrade-${index + 1}`} compact />);
+    }
+  });
+
+  return nodes;
+}
+
 export default function BbFeedPage() {
   const router = useRouter();
   const [userId, setUserId] = useState<string | null>(null);
-  const [myProfile, setMyProfile] = useState<{ display_name: string | null; username: string | null; profile_image_url: string | null } | null>(null);
+  const [myProfile, setMyProfile] = useState<MyProfile>(null);
   const [tab, setTab] = useState<Tab>("community");
   const [loading, setLoading] = useState(true);
   const [showFeedOnboarding, setShowFeedOnboarding] = useState(false);
@@ -1508,7 +1575,7 @@ export default function BbFeedPage() {
       setUserId(user.id);
       const { data: prof } = await supabase
         .from("profile_stats")
-        .select("display_name, username, profile_image_url, feed_onboarding_completed")
+        .select("display_name, username, profile_image_url, feed_onboarding_completed, is_paid")
         .eq("user_id", user.id)
         .maybeSingle();
       setMyProfile(prof ?? null);
@@ -1841,7 +1908,7 @@ export default function BbFeedPage() {
     const buddyPosts = rankedBuddiesFeed.filter((item) => item._kind === "post");
     return (
       <div className="flex flex-col gap-3">
-        {buddyPosts.map((item) => (
+        {interleaveUpgradeCards(buddyPosts, myProfile?.is_paid !== true, (item) => (
           <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
         ))}
       </div>
@@ -1862,7 +1929,7 @@ export default function BbFeedPage() {
 
     return (
       <div className="flex flex-col gap-3">
-        {posts.map((item) => (
+        {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) => (
           <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
         ))}
       </div>
@@ -1895,7 +1962,7 @@ export default function BbFeedPage() {
 
     return (
       <div className="flex flex-col gap-3">
-        {items.map((item) =>
+        {interleaveUpgradeCards(items, myProfile?.is_paid !== true, (item) =>
           item._kind === "post" ? (
             <PostCard
               key={`post-${item.id}`}
