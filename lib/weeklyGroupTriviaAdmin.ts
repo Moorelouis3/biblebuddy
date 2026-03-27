@@ -32,7 +32,15 @@ async function syncExistingTriviaOwnership(
   actorUserId: string,
   displayName: string,
 ) {
-  if (!existingPostId) return;
+  if (!existingPostId) return false;
+
+  const { data: existingPost } = await supabaseAdmin
+    .from("group_posts")
+    .select("id")
+    .eq("id", existingPostId)
+    .maybeSingle();
+
+  if (!existingPost) return false;
 
   await supabaseAdmin
     .from("group_posts")
@@ -41,6 +49,8 @@ async function syncExistingTriviaOwnership(
       display_name: displayName,
     })
     .eq("id", existingPostId);
+
+  return true;
 }
 
 function getBerlinDateParts(date: Date) {
@@ -117,12 +127,22 @@ export async function ensureWeeklyGroupTriviaPost(
 
   if (existingError) throw new Error(existingError.message || "Could not check weekly trivia.");
   if (existingSet) {
-    await syncExistingTriviaOwnership(supabaseAdmin, existingSet.post_id, resolvedActorUserId, displayName);
+    const existingPostStillPresent = await syncExistingTriviaOwnership(
+      supabaseAdmin,
+      existingSet.post_id,
+      resolvedActorUserId,
+      displayName,
+    );
+
+    if (!existingPostStillPresent) {
+      await supabaseAdmin.from("weekly_group_trivia_sets").delete().eq("id", existingSet.id);
+    } else {
     await supabaseAdmin
       .from("weekly_group_trivia_sets")
       .update({ created_by: resolvedActorUserId })
       .eq("id", existingSet.id);
     return { ok: true, skipped: true as const, reason: "already_exists", postId: existingSet.post_id };
+    }
   }
 
   const content =

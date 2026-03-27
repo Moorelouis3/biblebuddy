@@ -527,7 +527,7 @@ export default function StudyGroupSchedulerPage() {
   const recurringFeedItems = useMemo(() => {
     const items: RecurringPreviewItem[] = [];
 
-    for (let offset = 0; offset < 21 && items.length < 3; offset += 1) {
+    for (let offset = 0; offset < 21 && items.length < 7; offset += 1) {
       const item = getRecurringPreviewItem(getBerlinDateWithOffset(offset), seriesSnapshot);
       item.isPublished = publishedRecurringIds.has(item.scheduleId);
       if (dismissedRecurringIds.has(item.scheduleId)) continue;

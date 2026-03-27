@@ -124,7 +124,15 @@ async function syncExistingSeriesOwnership(
   actorUserId: string,
   displayName: string,
 ) {
-  if (!existingPostId) return;
+  if (!existingPostId) return false;
+
+  const { data: existingPost } = await supabaseAdmin
+    .from("group_posts")
+    .select("id")
+    .eq("id", existingPostId)
+    .maybeSingle();
+
+  if (!existingPost) return false;
 
   await supabaseAdmin
     .from("group_posts")
@@ -133,6 +141,8 @@ async function syncExistingSeriesOwnership(
       display_name: displayName,
     })
     .eq("id", existingPostId);
+
+  return true;
 }
 
 function getBerlinDateParts(date: Date) {
@@ -218,12 +228,22 @@ export async function ensureWeeklyGroupSeriesPost(
 
   if (existingError) throw new Error(existingError.message || "Could not check weekly series post.");
   if (existing) {
-    await syncExistingSeriesOwnership(supabaseAdmin, existing.post_id, resolvedActorUserId, displayName);
+    const existingPostStillPresent = await syncExistingSeriesOwnership(
+      supabaseAdmin,
+      existing.post_id,
+      resolvedActorUserId,
+      displayName,
+    );
+
+    if (!existingPostStillPresent) {
+      await supabaseAdmin.from("weekly_group_series_posts").delete().eq("id", existing.id);
+    } else {
     await supabaseAdmin
       .from("weekly_group_series_posts")
       .update({ created_by: resolvedActorUserId })
       .eq("id", existing.id);
     return { ok: true, skipped: true as const, reason: "already_exists", postId: existing.post_id };
+    }
   }
 
   const { data: post, error: postError } = await supabaseAdmin
