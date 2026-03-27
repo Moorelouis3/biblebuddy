@@ -115,7 +115,7 @@ export async function ensureWeeklyGroupTriviaPost(
 
   const trivia = buildWeeklyGroupTrivia(now);
 
-  const resolvedActorUserId = await resolveActorUserId(supabaseAdmin);
+  const resolvedActorUserId = await resolveActorUserId(supabaseAdmin, actorUserId);
   const displayName = await resolveDisplayName(supabaseAdmin, resolvedActorUserId);
 
   const { data: existingSet, error: existingError } = await supabaseAdmin

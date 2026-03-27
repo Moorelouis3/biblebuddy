@@ -215,7 +215,7 @@ export async function ensureWeeklyGroupSeriesPost(
       : SERIES_CONFIG[seriesKey].builder(now);
   const weekKey = getBerlinDateKey(now);
 
-  const resolvedActorUserId = await resolveActorUserId(supabaseAdmin);
+  const resolvedActorUserId = await resolveActorUserId(supabaseAdmin, actorUserId);
   const displayName = await resolveDisplayName(supabaseAdmin, resolvedActorUserId);
 
   const { data: existing, error: existingError } = await supabaseAdmin
