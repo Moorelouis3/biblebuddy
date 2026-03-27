@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import { markUserAsPaidAndTrackUpgrade } from "@/lib/server/upgradeTracking";
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
@@ -90,16 +91,15 @@ export async function POST(req: NextRequest) {
     trial_ends_at: trialEndsAt.toISOString(),
   });
 
-  // Grant 30-day Pro trial
-  await supabase.from("profile_stats").upsert(
-    {
-      user_id: user.id,
-      is_paid: true,
-      membership_status: "pro",
-      pro_expires_at: trialEndsAt.toISOString(),
-    },
-    { onConflict: "user_id" }
-  );
+  // Grant 30-day Pro trial and log the upgrade event if this is a new paid conversion
+  await markUserAsPaidAndTrackUpgrade({
+    supabase,
+    userId: user.id,
+    source: "ambassador_trial",
+    membershipStatus: "pro",
+    proExpiresAt: trialEndsAt.toISOString(),
+    actionLabel: "Ambassador 30-day Pro trial started",
+  });
 
   return NextResponse.json({ success: true, trialEndsAt: trialEndsAt.toISOString() });
 }

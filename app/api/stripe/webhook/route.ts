@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { createClient } from "@supabase/supabase-js";
+import { markUserAsPaidAndTrackUpgrade } from "@/lib/server/upgradeTracking";
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -75,28 +76,18 @@ export async function POST(req: NextRequest) {
   try {
     const supabase = getSupabaseAdminClient();
     console.log("[WEBHOOK] Updating is_paid for user_id:", userId);
-    const { data, error } = await supabase
-      .from("profile_stats")
-      .update({ is_paid: true })
-      .eq("user_id", userId)
-      .select("user_id")
-      .maybeSingle();
+    const amountTotal = typeof session.amount_total === "number"
+      ? `$${(session.amount_total / 100).toFixed(2)}`
+      : null;
 
-    if (error) {
-      console.error("[WEBHOOK] Failed to update profile_stats:", error);
-      return NextResponse.json(
-        { error: "Failed to update profile" },
-        { status: 500 }
-      );
-    }
-
-    if (!data) {
-      console.error("[WEBHOOK] No profile_stats row found for user_id", userId);
-      return NextResponse.json(
-        { error: "Profile not found" },
-        { status: 404 }
-      );
-    }
+    await markUserAsPaidAndTrackUpgrade({
+      supabase,
+      userId,
+      source: "stripe",
+      actionLabel: amountTotal
+        ? `Stripe checkout completed (${amountTotal})`
+        : "Stripe checkout completed",
+    });
 
     return NextResponse.json({ received: true });
   } catch (err) {

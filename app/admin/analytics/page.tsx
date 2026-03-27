@@ -8,6 +8,7 @@ type TimeFilter = "24h" | "7d" | "30d" | "1y" | "all";
 type OverviewMetrics = {
   signups: number;
   activeUsers: number;
+  upgrades: number;
   totalActions: number;
   chaptersRead: number;
   notesCreated: number;
@@ -32,6 +33,7 @@ type OverviewMetrics = {
 const INITIAL_METRICS: OverviewMetrics = {
   signups: 0,
   activeUsers: 0,
+  upgrades: 0,
   totalActions: 0,
   chaptersRead: 0,
   notesCreated: 0,
@@ -106,6 +108,7 @@ export default function AnalyticsPage() {
       feedReplies: number;
       buddiesAdded: number;
       groupMessagesSent: number;
+      upgrades: number;
       startDate: Date;
       endDate: Date;
     }>
@@ -572,6 +575,13 @@ export default function AnalyticsPage() {
           .from("group_posts").select("id", { count: "exact", head: true })
           .gte("created_at", bucketStart).lte("created_at", bucketEnd);
 
+        const { count: upgrades } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "user_upgraded")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
         return {
           period: bucket.label,
           signups: signups || 0,
@@ -596,6 +606,7 @@ export default function AnalyticsPage() {
           feedReplies: feedReplies || 0,
           buddiesAdded: buddiesAdded || 0,
           groupMessagesSent: groupMessagesSent || 0,
+          upgrades: upgrades || 0,
           startDate: bucket.start,
           endDate: bucket.end,
         };
@@ -634,6 +645,13 @@ export default function AnalyticsPage() {
           .from("user_signups")
           .select("id", { count: "exact", head: true }),
         "created_at"
+      );
+
+      const upgradesPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "user_upgraded")
       );
 
       // Active Users: count of logins within range (same as Stats Log "Logins")
@@ -736,6 +754,7 @@ export default function AnalyticsPage() {
 
       const [
         signupsResult,
+        upgradesResult,
         activeUsersRowsResult,
         totalActionsResult,
         chaptersResult,
@@ -758,6 +777,7 @@ export default function AnalyticsPage() {
         groupMessagesResult,
       ] = await Promise.all([
         signupsPromise,
+        upgradesPromise,
         activeUsersPromise,
         totalActionsPromise,
         chaptersPromise,
@@ -782,6 +802,8 @@ export default function AnalyticsPage() {
 
       const signupsCount = signupsResult.count ?? 0;
       const signupsError = signupsResult.error;
+      const upgradesCount = upgradesResult.count ?? 0;
+      const upgradesError = upgradesResult.error;
       const activeUsersError = activeUsersRowsResult.error;
       const activeUsersCount = activeUsersRowsResult.count ?? 0;
       const totalActionsCount = totalActionsResult.count ?? 0;
@@ -807,6 +829,7 @@ export default function AnalyticsPage() {
 
       if (
         signupsError ||
+        upgradesError ||
         activeUsersError ||
         totalActionsError ||
         chaptersError ||
@@ -821,6 +844,7 @@ export default function AnalyticsPage() {
       ) {
         console.error("[ANALYTICS_OVERVIEW] Error loading metrics:", {
           signupsError,
+          upgradesError,
           activeUsersError,
           totalActionsError,
           chaptersError,
@@ -846,6 +870,7 @@ export default function AnalyticsPage() {
       setOverviewMetrics({
         signups: signupsCount ?? 0,
         activeUsers: activeUsersCount,
+        upgrades: upgradesCount,
         totalActions: totalActionsCount ?? 0,
         chaptersRead: chaptersCount ?? 0,
         notesCreated: notesCount ?? 0,
@@ -1222,6 +1247,16 @@ export default function AnalyticsPage() {
             username,
             sortKey: actionDate.getTime(),
             actionType: "user_signup",
+          });
+        } else if (action.action_type === "user_upgraded") {
+          const detail = action.action_label ? ` via ${action.action_label}` : "";
+          actions.push({
+            date: formattedDate,
+            text: `On ${formattedDate} at ${formattedTime}, ${username} upgraded to Pro${detail}.${counterText}`,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "user_upgraded",
           });
         } else if (action.action_type === "trivia_question_answered") {
           const text = action.action_label
@@ -1669,6 +1704,7 @@ export default function AnalyticsPage() {
   function formatActionTypeName(actionType: string): string {
     const nameMap: Record<string, string> = {
       "user_signup": "Signups",
+      "user_upgraded": "Upgrades",
       "user_login": "Logins",
       "chapter_completed": "Chapters Read",
       "book_completed": "Books Completed",
@@ -1706,6 +1742,8 @@ export default function AnalyticsPage() {
         return "bg-emerald-50 border-l-4 border-emerald-500";
       case "user_login":
         return "bg-blue-50 border-l-4 border-blue-500";
+      case "user_upgraded":
+        return "bg-amber-50 border-l-4 border-amber-500";
       case "user_signup":
         return "bg-gray-50 border-l-4 border-gray-500";
       case "series_week_started":
@@ -1942,7 +1980,7 @@ export default function AnalyticsPage() {
         ) : (
           <>
             {/* ROW 1: USER ACTIVITY */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
               <OverviewCard
                 label="Signups"
                 value={overviewMetrics.signups}
@@ -1954,6 +1992,12 @@ export default function AnalyticsPage() {
                 value={overviewMetrics.activeUsers}
                 onClick={() => setSelectedActionType(null)}
                 isSelected={false}
+              />
+              <OverviewCard
+                label="Upgrades"
+                value={overviewMetrics.upgrades}
+                onClick={() => setSelectedActionType(selectedActionType === "user_upgraded" ? null : "user_upgraded")}
+                isSelected={selectedActionType === "user_upgraded"}
               />
               <OverviewCard
                 label="Total Actions"
@@ -3036,6 +3080,8 @@ function OverviewCard({
         return "bg-indigo-100 border border-indigo-200";
       case "Signups":
         return "bg-gray-100 border border-gray-200";
+      case "Upgrades":
+        return "bg-amber-100 border border-amber-200";
       case "Active Users":
         return "bg-blue-100 border border-blue-200";
       default:

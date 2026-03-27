@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
+import { markUserAsPaidAndTrackUpgrade } from "@/lib/server/upgradeTracking";
 
 type UpgradeCodeRequest = {
   code?: string;
@@ -67,27 +68,12 @@ export async function POST(req: NextRequest) {
 
   try {
     console.log("[UPGRADE_CODE] Updating is_paid for user_id:", user.id);
-    const { data, error } = await supabaseAdmin
-      .from("profile_stats")
-      .update({ is_paid: true })
-      .eq("user_id", user.id)
-      .select("user_id")
-      .maybeSingle();
-
-    if (error) {
-      console.error("[UPGRADE_CODE] Failed to update profile_stats:", error);
-      return NextResponse.json(
-        { error: "Failed to apply code" },
-        { status: 500 }
-      );
-    }
-
-    if (!data) {
-      return NextResponse.json(
-        { error: "Profile not found" },
-        { status: 404 }
-      );
-    }
+    await markUserAsPaidAndTrackUpgrade({
+      supabase: supabaseAdmin,
+      userId: user.id,
+      source: "lifetime_code",
+      actionLabel: "Lifetime upgrade code applied",
+    });
 
     return NextResponse.json({ success: true });
   } catch (err) {

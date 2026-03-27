@@ -150,6 +150,13 @@ export default function DashboardPage() {
   const [isSavingFeatureTour, setIsSavingFeatureTour] = useState(false);
   const [dailyRecommendationCard, setDailyRecommendationCard] = useState<DailyRecommendation | null>(null);
   const [isDailyRecommendationLoading, setIsDailyRecommendationLoading] = useState(true);
+  const [isOwnerDashboard, setIsOwnerDashboard] = useState(false);
+  const [ownerQuickStats, setOwnerQuickStats] = useState({
+    signups24h: 0,
+    activeUsers24h: 0,
+    upgrades24h: 0,
+  });
+  const [loadingOwnerQuickStats, setLoadingOwnerQuickStats] = useState(false);
 
   // Daily Welcome Overlay logic (with dev override)
   useEffect(() => {
@@ -653,6 +660,7 @@ export default function DashboardPage() {
 
       if (data?.user) {
         setUserId(data.user.id);
+        setIsOwnerDashboard(data.user.email === "moorelouis3@gmail.com");
         const meta: any = data.user.user_metadata || {};
         const first =
           meta.firstName ||
@@ -666,6 +674,90 @@ export default function DashboardPage() {
 
     loadUser();
   }, []);
+
+  useEffect(() => {
+    if (!isOwnerDashboard) return;
+
+    async function loadOwnerQuickStats() {
+      setLoadingOwnerQuickStats(true);
+      try {
+        const fromDate = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+
+        const [signupsResult, actionsResult, upgradesResult] = await Promise.all([
+          supabase
+            .from("user_signups")
+            .select("id", { count: "exact", head: true })
+            .gte("created_at", fromDate),
+          supabase
+            .from("master_actions")
+            .select("user_id")
+            .gte("created_at", fromDate),
+          supabase
+            .from("master_actions")
+            .select("id", { count: "exact", head: true })
+            .eq("action_type", "user_upgraded")
+            .gte("created_at", fromDate),
+        ]);
+
+        if (signupsResult.error || actionsResult.error || upgradesResult.error) {
+          console.error("[DASHBOARD_OWNER_STATS] Error loading quick stats:", {
+            signupsError: signupsResult.error,
+            actionsError: actionsResult.error,
+            upgradesError: upgradesResult.error,
+          });
+          setOwnerQuickStats({ signups24h: 0, activeUsers24h: 0, upgrades24h: 0 });
+          setLoadingOwnerQuickStats(false);
+          return;
+        }
+
+        const activeUsers24h = new Set(
+          (actionsResult.data || [])
+            .map((row) => row.user_id)
+            .filter((value): value is string => typeof value === "string" && value.length > 0)
+        ).size;
+
+        setOwnerQuickStats({
+          signups24h: signupsResult.count ?? 0,
+          activeUsers24h,
+          upgrades24h: upgradesResult.count ?? 0,
+        });
+      } catch (error) {
+        console.error("[DASHBOARD_OWNER_STATS] Unexpected error:", error);
+        setOwnerQuickStats({ signups24h: 0, activeUsers24h: 0, upgrades24h: 0 });
+      }
+      setLoadingOwnerQuickStats(false);
+    }
+
+    void loadOwnerQuickStats();
+  }, [isOwnerDashboard]);
+
+  function renderOwnerQuickStatsRow() {
+    if (!isOwnerDashboard) return null;
+
+    return (
+      <div className="mb-4">
+        <Link href="/admin/analytics" className="block">
+          <div className="grid grid-cols-3 gap-3 rounded-2xl border border-gray-200 bg-white p-3 shadow-sm hover:shadow-md transition">
+            {[
+              { label: "Signups 24h", value: ownerQuickStats.signups24h, tones: "bg-gray-100 border-gray-200" },
+              { label: "Active 24h", value: ownerQuickStats.activeUsers24h, tones: "bg-blue-100 border-blue-200" },
+              { label: "Upgrades 24h", value: ownerQuickStats.upgrades24h, tones: "bg-amber-100 border-amber-200" },
+            ].map((card) => (
+              <div
+                key={card.label}
+                className={`rounded-xl border px-3 py-4 text-center ${card.tones}`}
+              >
+                <p className="text-2xl font-bold text-gray-900">
+                  {loadingOwnerQuickStats ? "..." : card.value}
+                </p>
+                <p className="mt-1 text-xs font-medium text-gray-700">{card.label}</p>
+              </div>
+            ))}
+          </div>
+        </Link>
+      </div>
+    );
+  }
 
   useEffect(() => {
     async function loadFeatureTours() {
@@ -1292,6 +1384,8 @@ export default function DashboardPage() {
           </p>
         </div>
 
+        {renderOwnerQuickStatsRow()}
+
         {/* DASHBOARD CARDS */}
         <DashboardCards
           profile={profile}
@@ -1332,6 +1426,8 @@ export default function DashboardPage() {
             Welcome back, {userName}!
           </p>
         </div>
+
+        {renderOwnerQuickStatsRow()}
 
         {/* DASHBOARD CARDS */}
         <DashboardCards
