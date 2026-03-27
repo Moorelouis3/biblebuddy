@@ -208,7 +208,6 @@ export default function AnalyticsPage() {
             supabase
               .from("master_actions")
               .select("user_id")
-              .eq("action_type", "user_login")
               .gte("created_at", since)
           )
         );
@@ -450,11 +449,10 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
-        // Active Users (distinct users who logged in)
+        // Active Users (distinct users who did any action)
         const { data: activeUserRows, error: activeUserRowsError } = await supabase
           .from("master_actions")
           .select("user_id")
-          .eq("action_type", "user_login")
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
         const activeUsers = new Set((activeUserRows || []).map(row => row.user_id).filter(id => !!id && id !== "")).size;
@@ -654,12 +652,11 @@ export default function AnalyticsPage() {
           .eq("action_type", "user_upgraded")
       );
 
-      // Active Users: count of logins within range (same as Stats Log "Logins")
+      // Active Users: count of unique users who did any action within the range
       const activeUsersPromise = applyDateFilter(
         supabase
           .from("master_actions")
-          .select("id", { count: "exact", head: true })
-          .eq("action_type", "user_login")
+          .select("user_id")
       );
 
       // Total actions: all master_actions rows
@@ -805,7 +802,11 @@ export default function AnalyticsPage() {
       const upgradesCount = upgradesResult.count ?? 0;
       const upgradesError = upgradesResult.error;
       const activeUsersError = activeUsersRowsResult.error;
-      const activeUsersCount = activeUsersRowsResult.count ?? 0;
+      const activeUsersCount = new Set(
+        (activeUsersRowsResult.data || [])
+          .map((row) => row.user_id)
+          .filter((userId): userId is string => typeof userId === "string" && userId.length > 0)
+      ).size;
       const totalActionsCount = totalActionsResult.count ?? 0;
       const totalActionsError = totalActionsResult.error;
       const chaptersCount = chaptersResult.count ?? 0;
