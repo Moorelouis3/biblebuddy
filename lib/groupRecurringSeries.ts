@@ -91,6 +91,14 @@ function getPlainIntroBlocks(intro: string) {
     .filter((block) => !block.endsWith(":"));
 }
 
+function getFirstSentence(text: string) {
+  const cleaned = stripFormatting(text).replace(/\s+/g, " ").trim();
+  if (!cleaned) return "";
+
+  const match = cleaned.match(/.+?[.!?](?:\s|$)/);
+  return (match?.[0] || cleaned).trim();
+}
+
 function resolveSeriesWeekNumber(date: Date, seriesStartAt: string | null, totalWeeks = TOTAL_WEEKS) {
   if (!seriesStartAt) return 1;
 
@@ -108,7 +116,10 @@ export function buildBibleStudySaturdaySnapshot(
 ) {
   if (!snapshot) return null;
 
-  const weekNumber = resolveSeriesWeekNumber(date, snapshot.seriesStartAt, snapshot.totalWeeks ?? TOTAL_WEEKS);
+  const maxWeeks = Math.max(1, Math.min(snapshot.totalWeeks ?? TOTAL_WEEKS, TOTAL_WEEKS));
+  const currentWeekNumber = resolveSeriesWeekNumber(date, snapshot.seriesStartAt, maxWeeks);
+  const hasStarted = snapshot.seriesStartAt ? date.getTime() >= new Date(snapshot.seriesStartAt).getTime() : false;
+  const weekNumber = hasStarted ? Math.min(currentWeekNumber + 1, maxWeeks) : 1;
   const lesson = getSeriesWeekLesson(weekNumber);
 
   if (!lesson) return null;
@@ -529,35 +540,40 @@ export function buildBibleStudySaturdayPost(
   if (liveStudy) {
     const readingLine = `${liveStudy.lesson.readingReference} · Week ${liveStudy.weekNumber} of ${liveStudy.seriesTitle}`;
     const introBlocks = getPlainIntroBlocks(liveStudy.lesson.intro);
-    const promoLead = introBlocks[0] || liveStudy.introSnippet;
-    const promoSupport = introBlocks[1] || "This study is built to help you move through the week with structure instead of guessing what to focus on next.";
+    const promoLead = getFirstSentence(introBlocks[0] || liveStudy.introSnippet);
+    const promoSupport =
+      getFirstSentence(introBlocks[1] || "") ||
+      "This week is meant to give you one clear section to sit with instead of rushing through random chapters.";
+    const reflectionPreview = getFirstSentence(liveStudy.lesson.reflectionQuestion || "");
+    const triviaCount = liveStudy.lesson.triviaQuestions?.length || 0;
     const description =
-      `Bible Study Saturday is here.\n\n` +
-      `This week we are jumping into "${liveStudy.lesson.title}" - ${liveStudy.lesson.subtitle.toLowerCase()}.\n\n` +
-      `${readingLine}`;
+      `Week ${liveStudy.weekNumber} of ${liveStudy.seriesTitle} is live.\n\n` +
+      `This week's focus is "${liveStudy.lesson.title}" from ${liveStudy.lesson.readingReference}.\n\n` +
+      `Read it, take the quiz, and drop your reflection in the group.`;
 
     return {
       seriesKey: "bible_study_saturday",
       weekKey: getBerlinDateKey(date),
-      title: "This week's Bible Study is now live",
+      title: `Week ${liveStudy.weekNumber} Bible Study Preview`,
       description,
       contentHtml:
-        `<h1>Bible Study Saturday Is Live</h1>` +
-        `<p><strong>This week's study is ready and it is meant to be a full-group moment.</strong></p>` +
-        `<p>We are jumping into <strong>${liveStudy.lesson.title}</strong> - ${liveStudy.lesson.subtitle.toLowerCase()} - as we study <strong>${liveStudy.lesson.readingReference}</strong> together.</p>` +
-        `<h2>Why you should jump in</h2>` +
-        `<ul><li>🔥 This is part <strong>${liveStudy.weekNumber}</strong> of a bigger multi-part Bible study series.</li><li>📖 You can move through it throughout the week, not all at once.</li><li>💬 It gives you reading, notes, reflection, and a real group discussion point.</li></ul>` +
+        `<h1>Week ${liveStudy.weekNumber} Is Ready</h1>` +
+        `<p><strong>This week's Bible study is "${liveStudy.lesson.title}" and I really want you to do this one.</strong></p>` +
+        `<p>We are in <strong>${liveStudy.seriesTitle}</strong>, and this week's reading is <strong>${readingLine}</strong>.</p>` +
         `<p>${promoLead}</p>` +
         `<p>${promoSupport}</p>` +
-        `<p><strong>Reading for this week:</strong> ${readingLine}</p>` +
-        `<p><a href="${liveStudy.studyHref}" style="color:#8d5d38;font-weight:700;text-decoration:underline;">Open this week's Bible study</a></p>` +
-        `<p><strong>After you go through it, come back and tell the group what stood out to you most.</strong></p>`,
+        `<p>This is not just a reading. You will have the study notes, ${triviaCount > 0 ? `a ${triviaCount}-question trivia quiz, ` : ""}and a reflection question to help you really sit with the passage.</p>` +
+        (reflectionPreview
+          ? `<p><strong>This week's reflection:</strong> ${reflectionPreview}</p>`
+          : "") +
+        `<p><strong>Go through Week ${liveStudy.weekNumber}, then come back and share what stood out to you in the comments.</strong></p>` +
+        `<p style="margin-top:20px;"><a href="${liveStudy.studyHref}" style="display:inline-block;background:#4a9b6f;color:#ffffff;font-weight:700;text-decoration:none;padding:12px 18px;border-radius:999px;">Open Week ${liveStudy.weekNumber}</a></p>`,
     };
   }
-
   return buildFromTemplate("bible_study_saturday", SATURDAY_FEATURES, date);
 }
 
 export function buildPrayerRequestSundayPost(date = new Date()) {
   return buildFromTemplate("prayer_request_sunday", SUNDAY_FEATURES, date);
 }
+
