@@ -383,7 +383,7 @@ const FRIDAY_FEATURES: RecurringSeriesTemplate[] = [
     description: "This week's Who Was This Friday looks at Andrew and why quiet faithfulness still matters in the story of Jesus.",
     contentHtml:
       "<p><strong>This week we are looking at Andrew.</strong></p>" +
-      "<p>Andrew is easy to overlook because he often stands near louder people in the Gospel story. But his quiet faithfulness is exactly what makes him so important.</p>" +
+      "<p>Andrew was one of the first men Jesus called, and before that he had been a disciple of John the Baptist. He was Peter's brother, but Scripture keeps showing that Andrew had his own steady kind of faith long before he is remembered as standing near louder people. The first thing Andrew did after meeting Jesus was go find Peter and bring him to the Lord. That tells you a lot about him right away: Andrew was not trying to build his own name, he wanted other people to meet Jesus too. He may not be the loudest disciple in the story, but he is one of the clearest pictures of quiet faithfulness and humble evangelism.</p>" +
       "<h2>Why Andrew matters</h2>" +
       "<ul><li>🤝 He keeps bringing people to Jesus.</li><li>📍 He shows that influence does not have to be loud to be powerful.</li><li>💡 He reminds us that helping others get closer to Christ is real ministry.</li></ul>" +
       "<p>Andrew brings Peter. He helps bring the boy with the loaves and fish. He keeps showing up as someone willing to connect people to Jesus without needing the spotlight for himself.</p>" +
