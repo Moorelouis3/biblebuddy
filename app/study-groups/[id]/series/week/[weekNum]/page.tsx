@@ -21,6 +21,15 @@ interface WeekLessonPageProps {
   onBack?: () => void;
 }
 
+interface WeekFinisher {
+  user_id: string;
+  display_name: string;
+  profile_image_url: string | null;
+  member_badge: string | null;
+  is_paid: boolean;
+  group_role: string | null;
+}
+
 function getWeekUnlockDate(startDate: string, weekNum: number): string {
   const d = new Date(startDate);
   d.setDate(d.getDate() + (weekNum - 1) * 7);
@@ -1385,6 +1394,9 @@ export default function WeekLessonPage({
 
   const [showReadingModal, setShowReadingModal] = useState(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
+  const [weekFinishers, setWeekFinishers] = useState<WeekFinisher[]>([]);
+  const [loadingWeekFinishers, setLoadingWeekFinishers] = useState(false);
+  const [showWeekFinishersModal, setShowWeekFinishersModal] = useState(false);
   const completionShownRef = useRef(false);
 
   // â”€â”€ Bible term overlay state (same as Bible chapter page) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -1411,6 +1423,81 @@ export default function WeekLessonPage({
   const [learnedToast, setLearnedToast] = useState<string | null>(null);
 
   const lesson = getSeriesWeekLesson(weekNum);
+
+  async function loadWeekFinishers(currentSeriesId: string) {
+    setLoadingWeekFinishers(true);
+    try {
+      const { data: progressRows, error: progressError } = await supabase
+        .from("series_week_progress")
+        .select("user_id")
+        .eq("series_id", currentSeriesId)
+        .eq("week_number", weekNum)
+        .eq("reading_completed", true)
+        .eq("trivia_completed", true)
+        .eq("reflection_posted", true);
+
+      if (progressError) {
+        console.error("[WEEK_FINISHERS] Error loading progress:", progressError);
+        setWeekFinishers([]);
+        return;
+      }
+
+      const finisherIds = [...new Set((progressRows || []).map((row) => row.user_id).filter(Boolean))];
+      if (finisherIds.length === 0) {
+        setWeekFinishers([]);
+        return;
+      }
+
+      const [profilesRes, rolesRes] = await Promise.all([
+        supabase
+          .from("profile_stats")
+          .select("user_id, display_name, username, profile_image_url, is_paid, member_badge")
+          .in("user_id", finisherIds),
+        supabase
+          .from("group_members")
+          .select("user_id, role")
+          .eq("group_id", groupId)
+          .in("user_id", finisherIds),
+      ]);
+
+      const roleMap = new Map<string, string | null>();
+      (rolesRes.data || []).forEach((row) => {
+        roleMap.set(row.user_id, row.role || null);
+      });
+
+      const profileMap = new Map<string, WeekFinisher>();
+      (profilesRes.data || []).forEach((row) => {
+        profileMap.set(row.user_id, {
+          user_id: row.user_id,
+          display_name: row.display_name || row.username || "Bible Buddy",
+          profile_image_url: row.profile_image_url || null,
+          member_badge: row.member_badge || null,
+          is_paid: row.is_paid === true,
+          group_role: roleMap.get(row.user_id) ?? null,
+        });
+      });
+
+      const orderedFinishers = finisherIds.map((id) => {
+        return (
+          profileMap.get(id) || {
+            user_id: id,
+            display_name: "Bible Buddy",
+            profile_image_url: null,
+            member_badge: null,
+            is_paid: false,
+            group_role: roleMap.get(id) ?? null,
+          }
+        );
+      });
+
+      setWeekFinishers(orderedFinishers);
+    } catch (error) {
+      console.error("[WEEK_FINISHERS] Unexpected error:", error);
+      setWeekFinishers([]);
+    } finally {
+      setLoadingWeekFinishers(false);
+    }
+  }
 
   // â”€â”€ Resolve alias â†’ primary person name â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function resolvePersonName(clicked: string): string {
@@ -1453,6 +1540,7 @@ export default function WeekLessonPage({
 
       if (seriesRes.data?.id) {
         const sid = seriesRes.data.id;
+        void loadWeekFinishers(sid);
         const [scheduleRes, progressRowsRes, scoreRes] = await Promise.all([
           supabase.from("series_schedules").select("start_date, start_at").eq("series_id", sid).maybeSingle(),
           supabase
@@ -1651,6 +1739,8 @@ export default function WeekLessonPage({
       .from("series_week_progress")
       .upsert(patch, { onConflict: "user_id,series_id,week_number" });
 
+    void loadWeekFinishers(seriesId);
+
     const newReading = field === "reading_completed" ? value : readingDone;
     const newTrivia = field === "trivia_completed" ? value : triviaDone;
     const newReflection = field === "reflection_posted" ? value : reflectionDone;
@@ -1720,6 +1810,7 @@ export default function WeekLessonPage({
   }
 
   const totalDone = [readingDone, triviaDone, reflectionDone].filter(Boolean).length;
+  const visibleFinishers = weekFinishers.slice(0, 6);
 
   return (
     <div className={embedded ? "" : "min-h-screen bg-gray-50 pb-20"}>
@@ -1773,6 +1864,79 @@ export default function WeekLessonPage({
                 <p className={`text-xs mt-1 text-center ${s.done ? "text-green-600 font-semibold" : "text-gray-400"}`}>{s.label}</p>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm mb-6">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="text-xs font-semibold text-gray-500">Week Finishers</p>
+              <p className="text-sm font-bold text-gray-900 mt-1">
+                {weekFinishers.length} {weekFinishers.length === 1 ? "buddy has" : "buddies have"} finished all 3 parts of Week {weekNum}
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                Reading, trivia, and reflection all completed.
+              </p>
+            </div>
+            {weekFinishers.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setShowWeekFinishersModal(true)}
+                className="text-xs font-semibold text-blue-600 hover:text-blue-700 whitespace-nowrap"
+              >
+                View all
+              </button>
+            )}
+          </div>
+
+          <div className="mt-4">
+            {loadingWeekFinishers ? (
+              <div className="flex items-center gap-2 text-xs text-gray-400">
+                <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
+                <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
+                <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
+                <span className="ml-2">Loading finishers...</span>
+              </div>
+            ) : visibleFinishers.length > 0 ? (
+              <div className="flex items-center flex-wrap gap-2">
+                {visibleFinishers.map((finisher) => (
+                  <button
+                    key={finisher.user_id}
+                    type="button"
+                    onClick={() => setShowWeekFinishersModal(true)}
+                    className="group flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 pr-3 hover:bg-gray-100 transition"
+                  >
+                    {finisher.profile_image_url ? (
+                      <img
+                        src={finisher.profile_image_url}
+                        alt={finisher.display_name}
+                        className="w-9 h-9 rounded-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-9 h-9 rounded-full bg-[#4a9b6f] text-white text-xs font-bold flex items-center justify-center">
+                        {finisher.display_name.slice(0, 2).toUpperCase()}
+                      </div>
+                    )}
+                    <span className="text-xs font-semibold text-gray-700 max-w-[110px] truncate group-hover:text-gray-900">
+                      {finisher.display_name}
+                    </span>
+                  </button>
+                ))}
+                {weekFinishers.length > visibleFinishers.length && (
+                  <button
+                    type="button"
+                    onClick={() => setShowWeekFinishersModal(true)}
+                    className="h-9 px-3 rounded-full border border-gray-200 bg-white text-xs font-semibold text-gray-600 hover:bg-gray-50"
+                  >
+                    +{weekFinishers.length - visibleFinishers.length} more
+                  </button>
+                )}
+              </div>
+            ) : (
+              <p className="text-sm text-gray-500">
+                No full finishers yet. Once buddies complete reading, trivia, and reflection, they’ll show up here.
+              </p>
+            )}
           </div>
         </div>
 
@@ -1867,6 +2031,67 @@ export default function WeekLessonPage({
           groupId={groupId}
           onClose={() => setShowCompletionModal(false)}
         />
+      )}
+
+      {showWeekFinishersModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+          onClick={() => setShowWeekFinishersModal(false)}
+        >
+          <div
+            className="relative w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-3xl bg-white shadow-2xl border border-gray-200 p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setShowWeekFinishersModal(false)}
+              className="absolute right-4 top-4 text-xl text-gray-400 hover:text-gray-700"
+            >
+              ×
+            </button>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Week Finishers</p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Week {weekNum}</h2>
+            <p className="text-sm text-gray-500 mb-5">
+              {weekFinishers.length} {weekFinishers.length === 1 ? "buddy has" : "buddies have"} completed reading, trivia, and reflection.
+            </p>
+
+            {weekFinishers.length === 0 ? (
+              <p className="text-sm text-gray-500">No one has fully finished this week yet.</p>
+            ) : (
+              <div className="space-y-3">
+                {weekFinishers.map((finisher) => (
+                  <div
+                    key={finisher.user_id}
+                    className="flex items-center gap-3 rounded-2xl border border-gray-100 bg-gray-50 px-3 py-3"
+                  >
+                    {finisher.profile_image_url ? (
+                      <img
+                        src={finisher.profile_image_url}
+                        alt={finisher.display_name}
+                        className="w-11 h-11 rounded-full object-cover flex-shrink-0"
+                      />
+                    ) : (
+                      <div className="w-11 h-11 rounded-full bg-[#4a9b6f] text-white text-sm font-bold flex items-center justify-center flex-shrink-0">
+                        {finisher.display_name.slice(0, 2).toUpperCase()}
+                      </div>
+                    )}
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <p className="text-sm font-semibold text-gray-900 truncate">{finisher.display_name}</p>
+                        <UserBadge
+                          customBadge={finisher.member_badge}
+                          isPaid={finisher.is_paid}
+                          groupRole={finisher.group_role}
+                        />
+                      </div>
+                      <p className="text-xs text-gray-500">Finished all 3 parts</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
       )}
 
       {/* Credit limit modal */}
