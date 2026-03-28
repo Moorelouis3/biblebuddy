@@ -53,6 +53,40 @@ async function resolveFounderId(supabaseUrl: string, serviceKey: string, db: any
   return null;
 }
 
+async function claimOnboardingDay(db: any, userId: string, dayNumber: number): Promise<boolean> {
+  const now = new Date().toISOString();
+  const { data, error } = await db
+    .from("onboarding_dm_sent")
+    .upsert(
+      { user_id: userId, day_number: dayNumber, sent_at: now },
+      { onConflict: "user_id,day_number", ignoreDuplicates: true }
+    )
+    .select("user_id")
+    .single();
+
+  if (error) {
+    if (error.code === "PGRST116") {
+      return false;
+    }
+    console.error(`[WELCOME_DM] Failed to claim day ${dayNumber} for ${userId}:`, error.message);
+    return false;
+  }
+
+  return !!data;
+}
+
+async function releaseOnboardingClaim(db: any, userId: string, dayNumber: number) {
+  const { error } = await db
+    .from("onboarding_dm_sent")
+    .delete()
+    .eq("user_id", userId)
+    .eq("day_number", dayNumber);
+
+  if (error) {
+    console.error(`[WELCOME_DM] Failed to release day ${dayNumber} claim for ${userId}:`, error.message);
+  }
+}
+
 export async function POST(request: NextRequest) {
   let userId: string;
   let firstName: string | undefined;
@@ -89,15 +123,8 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Check if day 1 already sent (do this before the expensive founder lookup)
-  const { data: alreadySent } = await db
-    .from("onboarding_dm_sent")
-    .select("id")
-    .eq("user_id", userId)
-    .eq("day_number", 1)
-    .maybeSingle();
-
-  if (alreadySent) {
+  const claimed = await claimOnboardingDay(db, userId, 1);
+  if (!claimed) {
     return NextResponse.json({ ok: true, skipped: true });
   }
 
@@ -105,6 +132,7 @@ export async function POST(request: NextRequest) {
   const louisId = await resolveFounderId(supabaseUrl, serviceKey, db);
   if (!louisId) {
     console.error("[WELCOME_DM] Founder account not found.");
+    await releaseOnboardingClaim(db, userId, 1);
     return NextResponse.json({ error: "Founder account not found." }, { status: 404 });
   }
 
@@ -138,6 +166,7 @@ export async function POST(request: NextRequest) {
 
     if (convoError || !newConvo) {
       console.error("[WELCOME_DM] Failed to create conversation:", convoError?.message);
+      await releaseOnboardingClaim(db, userId, 1);
       return NextResponse.json({ error: "Failed to create conversation." }, { status: 500 });
     }
     conversationId = newConvo.id;
@@ -169,6 +198,7 @@ export async function POST(request: NextRequest) {
 
   if (msgResult.error) {
     console.error("[WELCOME_DM] Failed to insert message:", msgResult.error.message);
+    await releaseOnboardingClaim(db, userId, 1);
     return NextResponse.json({ error: "Failed to send message." }, { status: 500 });
   }
 
@@ -199,9 +229,6 @@ export async function POST(request: NextRequest) {
       created_at: now,
     });
   }
-
-  // Mark day 1 sent
-  await db.from("onboarding_dm_sent").insert({ user_id: userId, day_number: 1 });
 
   return NextResponse.json({ ok: true });
 }

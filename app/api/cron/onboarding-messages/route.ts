@@ -194,6 +194,43 @@ async function sendDM(
   }
 }
 
+async function claimOnboardingDay(db: any, userId: string, dayNumber: number): Promise<boolean> {
+  const now = new Date().toISOString();
+  const { data, error } = await db
+    .from("onboarding_dm_sent")
+    .upsert(
+      { user_id: userId, day_number: dayNumber, sent_at: now },
+      { onConflict: "user_id,day_number", ignoreDuplicates: true }
+    )
+    .select("user_id")
+    .single();
+
+  if (error) {
+    if (error.code === "PGRST116") {
+      return false;
+    }
+    console.error(`[ONBOARDING_DM] Failed to claim day ${dayNumber} for ${userId}:`, error.message);
+    return false;
+  }
+
+  return !!data;
+}
+
+async function releaseOnboardingClaim(db: any, userId: string, dayNumber: number) {
+  const { error } = await db
+    .from("onboarding_dm_sent")
+    .delete()
+    .eq("user_id", userId)
+    .eq("day_number", dayNumber);
+
+  if (error) {
+    console.error(
+      `[ONBOARDING_DM] Failed to release day ${dayNumber} claim for ${userId}:`,
+      error.message,
+    );
+  }
+}
+
 // ── Cron handler ─────────────────────────────────────────────────────────────
 
 export async function GET(request: NextRequest) {
@@ -318,13 +355,14 @@ export async function GET(request: NextRequest) {
     const batch = day1Pending.slice(i, i + BATCH);
     const results = await Promise.allSettled(
       batch.map(async (authUser) => {
+        const claimed = await claimOnboardingDay(supabaseAdmin, authUser.id, 1);
+        if (!claimed) return;
+
         const ok = await sendDM(supabaseAdmin, louisId!, louisName, authUser.id, MSG_DAY1);
         if (ok) {
-          await supabaseAdmin
-            .from("onboarding_dm_sent")
-            .insert({ user_id: authUser.id, day_number: 1 });
           stats.day1++;
         } else {
+          await releaseOnboardingClaim(supabaseAdmin, authUser.id, 1);
           stats.errors++;
         }
       })
@@ -356,13 +394,14 @@ export async function GET(request: NextRequest) {
       ? { label: "Open Bible Study Group", href: groupPath }
       : { label: "Open Profile Settings", href: profilePath };
 
+    const claimed = await claimOnboardingDay(supabaseAdmin, userId, 2);
+    if (!claimed) continue;
+
     const ok = await sendDM(supabaseAdmin, louisId, louisName, userId, msg, action);
     if (ok) {
-      await supabaseAdmin
-        .from("onboarding_dm_sent")
-        .insert({ user_id: userId, day_number: 2 });
       stats.day2++;
     } else {
+      await releaseOnboardingClaim(supabaseAdmin, userId, 2);
       stats.errors++;
     }
   }
@@ -385,13 +424,14 @@ export async function GET(request: NextRequest) {
       : MSG_DAY3_NO_GROUP(groupPath);
     const action = { label: "Open Bible Study Group", href: groupPath };
 
+    const claimed = await claimOnboardingDay(supabaseAdmin, userId, 3);
+    if (!claimed) continue;
+
     const ok = await sendDM(supabaseAdmin, louisId, louisName, userId, msg, action);
     if (ok) {
-      await supabaseAdmin
-        .from("onboarding_dm_sent")
-        .insert({ user_id: userId, day_number: 3 });
       stats.day3++;
     } else {
+      await releaseOnboardingClaim(supabaseAdmin, userId, 3);
       stats.errors++;
     }
   }
@@ -414,13 +454,14 @@ export async function GET(request: NextRequest) {
       : MSG_DAY4_NO_STUDY(groupPath);
     const action = studyAction ? null : { label: "Open Bible Study Group", href: groupPath };
 
+    const claimed = await claimOnboardingDay(supabaseAdmin, userId, 4);
+    if (!claimed) continue;
+
     const ok = await sendDM(supabaseAdmin, louisId, louisName, userId, msg, action);
     if (ok) {
-      await supabaseAdmin
-        .from("onboarding_dm_sent")
-        .insert({ user_id: userId, day_number: 4 });
       stats.day4++;
     } else {
+      await releaseOnboardingClaim(supabaseAdmin, userId, 4);
       stats.errors++;
     }
   }
