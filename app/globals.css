@@ -17,29 +17,43 @@
   cursor: pointer;
   color: #111111;
   text-decoration-line: underline;
-  text-decoration-style: wavy;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 0.18em;
-  transition: text-decoration-thickness 160ms ease, text-decoration-color 160ms ease;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: text-decoration-thickness 160ms ease, text-decoration-color 160ms ease, opacity 160ms ease;
+  opacity: 0.92;
 }
 
-/* PEOPLE — black text with blue squiggle */
+/* PEOPLE — black text with a soft blue dotted cue */
 .bible-highlight-people {
-  text-decoration-color: #2563eb;
+  text-decoration-color: rgba(37, 99, 235, 0.38);
 }
 
-/* PLACES — black text with green squiggle */
+/* PLACES — black text with a soft green dotted cue */
 .bible-highlight-places {
-  text-decoration-color: #16a34a;
+  text-decoration-color: rgba(22, 163, 74, 0.38);
 }
 
-/* KEYWORDS — black text with dark red squiggle */
+/* KEYWORDS — black text with a soft dark-red dotted cue */
 .bible-highlight-keywords {
-  text-decoration-color: #991b1b;
+  text-decoration-color: rgba(153, 27, 27, 0.34);
 }
 
 .bible-highlight:hover {
-  text-decoration-thickness: 2.5px;
+  text-decoration-thickness: 1.5px;
+  opacity: 1;
+}
+
+.bible-highlight-people:hover {
+  text-decoration-color: rgba(37, 99, 235, 0.68);
+}
+
+.bible-highlight-places:hover {
+  text-decoration-color: rgba(22, 163, 74, 0.68);
+}
+
+.bible-highlight-keywords:hover {
+  text-decoration-color: rgba(153, 27, 27, 0.62);
 }
 
 /* Plain text mode for chapter reading: keep enriched HTML, remove highlight colors */
