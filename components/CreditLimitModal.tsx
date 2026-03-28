@@ -50,20 +50,12 @@ export default function CreditLimitModal({
       resetInProgressRef.current = true;
       setIsResettingCredits(true);
 
-      const nowIso = new Date().toISOString();
-      const { error: resetError } = await supabase
-        .from("profile_stats")
-        .upsert(
-          {
-            user_id: userId,
-            daily_credits: 5,
-            last_credit_reset: nowIso,
-            updated_at: nowIso,
-          },
-          { onConflict: "user_id" }
-        );
+      const resetResponse = await fetch("/api/reset-daily-credits", {
+        method: "POST",
+      });
 
-      if (resetError) {
+      if (!resetResponse.ok) {
+        const resetError = await resetResponse.text().catch(() => "");
         console.error("[CREDITS] Failed to reset credits:", resetError);
         setIsResettingCredits(false);
         resetInProgressRef.current = false;

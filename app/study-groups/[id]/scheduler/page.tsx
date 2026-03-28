@@ -18,7 +18,8 @@ import {
   buildWhoWasThisFridayPost,
   type BibleStudySeriesSnapshot,
 } from "@/lib/groupRecurringSeries";
-import { BIBLE_PEOPLE_LIST } from "@/lib/biblePeopleList";
+import { resolveBibleReference } from "@/lib/bibleTermResolver";
+import { consumeCreditAction } from "@/lib/creditClient";
 import { buildWeeklyGroupPoll } from "@/lib/groupWeeklyPoll";
 import { buildWeeklyGroupQuestion } from "@/lib/groupWeeklyQuestion";
 import { buildWeeklyGroupTrivia } from "@/lib/groupWeeklyTrivia";
@@ -1003,15 +1004,15 @@ export default function StudyGroupSchedulerPage() {
       if (!type || !term) return;
 
       if (type === "people") {
-        setSelectedPerson({ name: term });
+        setSelectedPerson({ name: resolveBibleReference("people", term) });
         setSelectedPlace(null);
         setSelectedKeyword(null);
       } else if (type === "places") {
-        setSelectedPlace({ name: term });
+        setSelectedPlace({ name: resolveBibleReference("places", term) });
         setSelectedPerson(null);
         setSelectedKeyword(null);
       } else if (type === "keywords") {
-        setSelectedKeyword({ name: term });
+        setSelectedKeyword({ name: resolveBibleReference("keywords", term) });
         setSelectedPerson(null);
         setSelectedPlace(null);
       }
@@ -1040,37 +1041,14 @@ export default function StudyGroupSchedulerPage() {
       setPersonCreditBlocked(false);
 
       try {
-        const clickedTerm = selectedPersonName;
-        let primaryName = clickedTerm;
-
-        for (const person of BIBLE_PEOPLE_LIST) {
-          if (person.aliases?.some((alias) => alias.toLowerCase().trim() === clickedTerm.toLowerCase().trim())) {
-            primaryName = person.name;
-            break;
-          }
-          if (person.name.toLowerCase().trim() === clickedTerm.toLowerCase().trim()) {
-            primaryName = person.name;
-            break;
-          }
-        }
+        const primaryName = resolveBibleReference("people", selectedPersonName);
 
         const personNameKey = primaryName.toLowerCase().trim();
         const isCompleted = completedPeople.has(personNameKey);
         const isViewed = viewedPeople.has(personNameKey);
 
         if (adminUserId && !isCompleted && !isViewed) {
-          const creditResponse = await fetch("/api/consume-credit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ actionType: ACTION_TYPE.person_viewed }),
-          });
-
-          if (!creditResponse.ok) {
-            setPersonCreditBlocked(true);
-            return;
-          }
-
-          const creditResult = (await creditResponse.json()) as { ok: boolean };
+          const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, { userId: adminUserId });
           if (!creditResult.ok) {
             setPersonCreditBlocked(true);
             return;
@@ -1230,18 +1208,7 @@ FINAL RULES:
         const isViewed = viewedPlaces.has(normalizedPlace);
 
         if (adminUserId && !isCompleted && !isViewed) {
-          const creditResponse = await fetch("/api/consume-credit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ actionType: ACTION_TYPE.place_viewed }),
-          });
-
-          if (!creditResponse.ok) {
-            setPlaceCreditBlocked(true);
-            return;
-          }
-
-          const creditResult = (await creditResponse.json()) as { ok: boolean };
+          const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, { userId: adminUserId });
           if (!creditResult.ok) {
             setPlaceCreditBlocked(true);
             return;
@@ -1351,18 +1318,7 @@ Be accurate to Scripture.`,
         const isViewed = viewedKeywords.has(keywordKey);
 
         if (adminUserId && !isCompleted && !isViewed) {
-          const creditResponse = await fetch("/api/consume-credit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ actionType: ACTION_TYPE.keyword_viewed }),
-          });
-
-          if (!creditResponse.ok) {
-            setKeywordCreditBlocked(true);
-            return;
-          }
-
-          const creditResult = (await creditResponse.json()) as { ok: boolean };
+          const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, { userId: adminUserId });
           if (!creditResult.ok) {
             setKeywordCreditBlocked(true);
             return;

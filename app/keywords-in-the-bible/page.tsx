@@ -9,8 +9,8 @@ import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_KEYWORDS_LIST } from "../../lib/bibleKeywordsList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
+import { consumeCreditAction } from "../../lib/creditClient";
 import CreditLimitModal from "../../components/CreditLimitModal";
-import CreditToast from "../../components/CreditToast";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -66,7 +66,6 @@ function KeywordsInTheBiblePageContent() {
   const [username, setUsername] = useState<string | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
-  const [showCreditToast, setShowCreditToast] = useState(false);
 
   // Handle keyword selection with study view limit check
   const handleKeywordClick = async (keyword: BibleKeyword) => {
@@ -222,26 +221,7 @@ function KeywordsInTheBiblePageContent() {
             const isViewed = viewedKeywords.has(keywordKey);
 
             if (!isViewed) {
-              const creditResponse = await fetch("/api/consume-credit", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  actionType: ACTION_TYPE.keyword_viewed,
-                }),
-              });
-
-              if (!creditResponse.ok) {
-                setKeywordCreditBlocked(true);
-                return;
-              }
-
-              const creditResult = (await creditResponse.json()) as {
-                ok: boolean;
-                reason?: string;
-              };
-
+              const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, { userId });
               if (!creditResult.ok) {
                 setKeywordCreditBlocked(true);
                 return;
@@ -252,7 +232,6 @@ function KeywordsInTheBiblePageContent() {
                 next.add(keywordKey);
                 return next;
               });
-              setShowCreditToast(true);
             }
           }
         }
@@ -710,13 +689,6 @@ RULES:
           setNotesError(null);
         }}
       />
-
-      <CreditToast
-        open={showCreditToast}
-        message="1 credit used"
-        onClose={() => setShowCreditToast(false)}
-      />
-
 
     </div>
   );

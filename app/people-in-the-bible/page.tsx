@@ -10,9 +10,9 @@ import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_PEOPLE_LIST } from "../../lib/biblePeopleList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
+import { consumeCreditAction } from "../../lib/creditClient";
 import CreditLimitModal from "../../components/CreditLimitModal";
 import CreditEducationModal from "../../components/CreditEducationModal";
-import CreditToast from "../../components/CreditToast";
 // Utility to get/set session flag for education modal
 const EDUCATION_MODAL_SESSION_KEY = "bbCreditEducationModalShown";
 
@@ -488,7 +488,6 @@ function PeopleInTheBiblePageContent() {
   const [username, setUsername] = useState<string | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [viewedPeople, setViewedPeople] = useState<Set<string>>(new Set());
-  const [showCreditToast, setShowCreditToast] = useState(false);
 
   // Filter and sort people
   const filteredPeople = useMemo(() => {
@@ -644,26 +643,7 @@ function PeopleInTheBiblePageContent() {
             const isViewed = viewedPeople.has(personNameKey);
 
             if (!isViewed) {
-              const creditResponse = await fetch("/api/consume-credit", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  actionType: ACTION_TYPE.person_viewed,
-                }),
-              });
-
-              if (!creditResponse.ok) {
-                setPersonCreditBlocked(true);
-                return;
-              }
-
-              const creditResult = (await creditResponse.json()) as {
-                ok: boolean;
-                reason?: string;
-              };
-
+              const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, { userId });
               if (!creditResult.ok) {
                 setPersonCreditBlocked(true);
                 return;
@@ -674,7 +654,6 @@ function PeopleInTheBiblePageContent() {
                 next.add(personNameKey);
                 return next;
               });
-              setShowCreditToast(true);
             }
           }
         }
@@ -1159,13 +1138,6 @@ FINAL RULES:
           setNotesError(null);
         }}
       />
-
-      <CreditToast
-        open={showCreditToast}
-        message="1 credit used"
-        onClose={() => setShowCreditToast(false)}
-      />
-
     </div>
   );
 }

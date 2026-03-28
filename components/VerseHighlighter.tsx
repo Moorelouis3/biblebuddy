@@ -4,6 +4,7 @@ import { fetchHighlights, upsertHighlight, deleteHighlight } from "../lib/verseH
 import { ACTION_TYPE } from "../lib/actionTypes";
 import CreditLimitModal from "./CreditLimitModal";
 import { supabase } from "../lib/supabaseClient";
+import { consumeCreditAction } from "../lib/creditClient";
 
 interface VerseHighlighterProps {
   book: string;
@@ -108,59 +109,12 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
     if (!user) return;
     // --- REMOVE highlight ---
     if (color === prev) {
-      // Fetch profile_stats to check is_paid
-      const { data: profileStats, error } = await supabase
-        .from("profile_stats")
-        .select("is_paid, daily_credits")
-        .eq("user_id", user.id)
-        .maybeSingle();
-      // ...existing code...
-      if (!profileStats) {
-        return;
-      }
-      if (!profileStats.is_paid) {
-        // Increment daily_credits by 1 for free users
-        await supabase
-          .from("profile_stats")
-          .update({ daily_credits: (profileStats.daily_credits ?? 0) + 1 })
-          .eq("user_id", user.id);
-      }
       setHighlightMap((m) => { const n = { ...m }; delete n[verse]; return n; });
       await deleteHighlight(book, chapter, verse);
     } else if (color) {
       // --- ADD highlight ---
-      // Fetch profile_stats to check is_paid and credits
-      const { data: profileStats, error } = await supabase
-        .from("profile_stats")
-        .select("is_paid, daily_credits")
-        .eq("user_id", user.id)
-        .maybeSingle();
-      // ...existing code...
-      if (!profileStats) {
-        return;
-      }
-      if (profileStats.is_paid) {
-        // Paid users: allow highlight, do not decrement
-        setHighlightMap((m) => ({ ...m, [verse]: color }));
-        await upsertHighlight(book, chapter, verse, color);
-        return;
-      }
-      // Free users: check credits
-      if ((profileStats.daily_credits ?? 0) <= 0) {
-        setCreditBlocked(true);
-        return;
-      }
-      // Decrement credits safely
-      const { error: decErr, count, status, data: updateData } = await supabase
-        .from("profile_stats")
-        .update({ daily_credits: (profileStats.daily_credits ?? 0) - 1 })
-        .eq("user_id", user.id)
-        .gt("daily_credits", 0);
-      // Check if update affected a row
-      if (
-        decErr ||
-        (Array.isArray(updateData) && updateData && (updateData as unknown[]).length === 0)
-      ) {
+      const creditResult = await consumeCreditAction(ACTION_TYPE.verse_highlighted, { userId: user.id });
+      if (!creditResult.ok) {
         setCreditBlocked(true);
         return;
       }

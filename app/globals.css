@@ -15,21 +15,31 @@
 /* Bible highlight styles */
 .bible-highlight {
   cursor: pointer;
+  color: #111111;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-thickness 160ms ease, text-decoration-color 160ms ease;
 }
 
-/* PEOPLE — blue text only (no underline) */
+/* PEOPLE — black text with blue squiggle */
 .bible-highlight-people {
-  color: #1e40af;
+  text-decoration-color: #2563eb;
 }
 
-/* PLACES — green text only (no underline) */
+/* PLACES — black text with green squiggle */
 .bible-highlight-places {
-  color: #166534;
+  text-decoration-color: #16a34a;
 }
 
-/* KEYWORDS — dark red (solid, NOT bright), no underline */
+/* KEYWORDS — black text with dark red squiggle */
 .bible-highlight-keywords {
-  color: #7f1d1d; /* Dark red */
+  text-decoration-color: #991b1b;
+}
+
+.bible-highlight:hover {
+  text-decoration-thickness: 2.5px;
 }
 
 /* Plain text mode for chapter reading: keep enriched HTML, remove highlight colors */
@@ -218,6 +228,35 @@ a {
   100% { transform: scale(1); }
 }
 .animate-heart-pop { animation: heartPop 0.38s cubic-bezier(0.36,0.07,0.19,0.97) both; }
+
+button,
+[role="button"] {
+  transition:
+    transform 140ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    opacity 180ms ease;
+  transform: translateZ(0);
+}
+
+button:active:not(:disabled),
+[role="button"]:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button,
+  [role="button"] {
+    transition: none;
+  }
+
+  button:active:not(:disabled),
+  [role="button"]:active {
+    transform: none;
+  }
+}
 
 /* ── Toast slide-up / slide-down ─────────────────────────────────────────── */
 @keyframes toastIn {

@@ -7,8 +7,9 @@ import ReactMarkdown from "react-markdown";
 import { supabase } from "@/lib/supabaseClient";
 import { getSeriesWeekLesson, SeriesWeekLesson, SeriesTriviaQuestion } from "@/lib/seriesContent";
 import { enrichPlainText } from "@/lib/bibleHighlighting";
-import { BIBLE_PEOPLE_LIST } from "@/lib/biblePeopleList";
 import { ACTION_TYPE } from "@/lib/actionTypes";
+import { resolveBibleReference } from "@/lib/bibleTermResolver";
+import { consumeCreditAction } from "@/lib/creditClient";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import UserBadge from "@/components/UserBadge";
@@ -681,7 +682,9 @@ function LeaderboardView({ seriesId, weekNumber, userId }: { seriesId: string; w
         >
           <span className="text-lg w-6 text-center flex-shrink-0">{medals[i] || `${i + 1}.`}</span>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-gray-900 truncate">{e.display_name}{e.user_id === userId ? " (You)" : ""}</p>
+            <Link href={`/profile/${e.user_id}`} className="text-sm font-semibold text-gray-900 truncate hover:underline block">
+              {e.display_name}{e.user_id === userId ? " (You)" : ""}
+            </Link>
           </div>
           <p className="text-sm font-bold text-gray-800 flex-shrink-0">
             {e.score}/{e.total_questions}
@@ -830,7 +833,9 @@ function ReflectionRow({
           <div className="flex items-start gap-2">
             <div className="flex-1">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-semibold text-gray-800">{name}</span>
+                <Link href={`/profile/${reflection.user_id}`} className="text-xs font-semibold text-gray-800 hover:underline">
+                  {name}
+                </Link>
                 <UserBadge
                   customBadge={reflection.member_badge}
                   isPaid={reflection.is_paid === true}
@@ -1409,12 +1414,7 @@ export default function WeekLessonPage({
 
   // â”€â”€ Resolve alias â†’ primary person name â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function resolvePersonName(clicked: string): string {
-    const lower = clicked.toLowerCase().trim();
-    for (const p of BIBLE_PEOPLE_LIST) {
-      if (p.name.toLowerCase().trim() === lower) return p.name;
-      if (p.aliases?.some((a) => a.toLowerCase().trim() === lower)) return p.name;
-    }
-    return clicked;
+    return resolveBibleReference("people", clicked);
   }
   function normalizeMd(md: string): string {
     return md.replace(/^\s*[-&bull;*]\s+/gm, "").replace(/\n{3,}/g, "\n\n").trim();
@@ -1540,10 +1540,10 @@ export default function WeekLessonPage({
         setSelectedPerson({ name: resolvePersonName(term) });
         setSelectedPlace(null); setSelectedKeyword(null);
       } else if (type === "places") {
-        setSelectedPlace({ name: term });
+        setSelectedPlace({ name: resolveBibleReference("places", term) });
         setSelectedPerson(null); setSelectedKeyword(null);
       } else if (type === "keywords") {
-        setSelectedKeyword({ name: term });
+        setSelectedKeyword({ name: resolveBibleReference("keywords", term) });
         setSelectedPerson(null); setSelectedPlace(null);
       }
     };
@@ -1559,9 +1559,8 @@ export default function WeekLessonPage({
       try {
         const key = selectedPerson!.name.toLowerCase().trim();
         if (userId && !completedPeople.has(key) && !viewedPeople.has(key)) {
-          const r = await fetch("/api/consume-credit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ actionType: ACTION_TYPE.person_viewed }) });
-          const j = await r.json();
-          if (!r.ok || !j.ok) { setPersonCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
+          const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, { userId });
+          if (!creditResult.ok) { setPersonCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedPeople((p) => { const n = new Set(p); n.add(key); return n; });
         }
         const { data: cached } = await supabase.from("bible_people_notes").select("notes_text").eq("person_name", key).maybeSingle();
@@ -1590,9 +1589,8 @@ export default function WeekLessonPage({
       try {
         const key = selectedPlace!.name.toLowerCase().trim().replace(/\s+/g, "_");
         if (userId && !completedPlaces.has(key) && !viewedPlaces.has(key)) {
-          const r = await fetch("/api/consume-credit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ actionType: ACTION_TYPE.place_viewed }) });
-          const j = await r.json();
-          if (!r.ok || !j.ok) { setPlaceCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
+          const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, { userId });
+          if (!creditResult.ok) { setPlaceCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedPlaces((p) => { const n = new Set(p); n.add(key); return n; });
         }
         const { data: cached } = await supabase.from("places_in_the_bible_notes").select("notes_text").eq("normalized_place", key).maybeSingle();
@@ -1619,9 +1617,8 @@ export default function WeekLessonPage({
       try {
         const key = selectedKeyword!.name.toLowerCase().trim();
         if (userId && !completedKeywords.has(key) && !viewedKeywords.has(key)) {
-          const r = await fetch("/api/consume-credit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ actionType: ACTION_TYPE.keyword_viewed }) });
-          const j = await r.json();
-          if (!r.ok || !j.ok) { setKeywordCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
+          const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, { userId });
+          if (!creditResult.ok) { setKeywordCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedKeywords((p) => { const n = new Set(p); n.add(key); return n; });
         }
         const { data: cached } = await supabase.from("keywords_in_the_bible").select("notes_text").eq("keyword", key).maybeSingle();

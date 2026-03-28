@@ -9,8 +9,8 @@ import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_PLACES_LIST } from "../../lib/biblePlacesList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
+import { consumeCreditAction } from "../../lib/creditClient";
 import CreditLimitModal from "../../components/CreditLimitModal";
-import CreditToast from "../../components/CreditToast";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -53,7 +53,6 @@ function PlacesInTheBiblePageContent() {
   const [username, setUsername] = useState<string | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [viewedPlaces, setViewedPlaces] = useState<Set<string>>(new Set());
-  const [showCreditToast, setShowCreditToast] = useState(false);
 
   // Handle place selection with study view limit check
   const handlePlaceClick = async (place: BiblePlace) => {
@@ -212,26 +211,7 @@ function PlacesInTheBiblePageContent() {
             const isViewed = viewedPlaces.has(normalizedPlace);
 
             if (!isViewed) {
-              const creditResponse = await fetch("/api/consume-credit", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  actionType: ACTION_TYPE.place_viewed,
-                }),
-              });
-
-              if (!creditResponse.ok) {
-                setPlaceCreditBlocked(true);
-                return;
-              }
-
-              const creditResult = (await creditResponse.json()) as {
-                ok: boolean;
-                reason?: string;
-              };
-
+              const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, { userId });
               if (!creditResult.ok) {
                 setPlaceCreditBlocked(true);
                 return;
@@ -242,7 +222,6 @@ function PlacesInTheBiblePageContent() {
                 next.add(normalizedPlace);
                 return next;
               });
-              setShowCreditToast(true);
             }
           }
         }
@@ -703,13 +682,6 @@ RULES:
           setNotesError(null);
         }}
       />
-
-      <CreditToast
-        open={showCreditToast}
-        message="1 credit used"
-        onClose={() => setShowCreditToast(false)}
-      />
-
 
     </div>
   );

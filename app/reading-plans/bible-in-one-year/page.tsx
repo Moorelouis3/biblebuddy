@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabaseClient";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
+import { consumeCreditAction } from "../../../lib/creditClient";
 import { getCompletedChapters, isChapterCompleted } from "../../../lib/readingProgress";
 import {
   generateBibleInOneYearPlan,
@@ -307,27 +308,7 @@ export default function BibleInOneYearPage() {
     }
 
     const consume = async () => {
-      const creditResponse = await fetch("/api/consume-credit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          actionType: ACTION_TYPE.bible_in_one_year_day_viewed,
-        }),
-      });
-
-      if (!creditResponse.ok) {
-        setShowCreditBlocked(true);
-        setCanViewSelectedDay(false);
-        return;
-      }
-
-      const creditResult = (await creditResponse.json().catch(() => ({}))) as {
-        ok?: boolean;
-        reason?: string;
-      };
-
+      const creditResult = await consumeCreditAction(ACTION_TYPE.bible_in_one_year_day_viewed, { userId });
       if (creditResult.ok === false) {
         setShowCreditBlocked(true);
         setCanViewSelectedDay(false);
@@ -667,4 +648,3 @@ export default function BibleInOneYearPage() {
     </div>
   );
 }
-

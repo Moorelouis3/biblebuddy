@@ -7,6 +7,8 @@
  * Merged from current list and new unified 3-layer list.
  */
 
+import { EXPANDED_BIBLE_STUDY_KEYWORDS } from "./bibleKeywordExpansions";
+
 export type BibleKeywordEntry = {
   term: string;
 };
@@ -2778,5 +2780,6 @@ export const BIBLE_KEYWORDS_LIST: BibleKeywordEntry[] = dedupeKeywordEntries([
   ...BASE_BIBLE_KEYWORDS_LIST,
   ...USER_REQUESTED_KEYWORDS.map((term) => ({ term })),
   ...ADDITIONAL_USER_REQUESTED_KEYWORDS.map((term) => ({ term })),
+  ...EXPANDED_BIBLE_STUDY_KEYWORDS.map((term) => ({ term })),
   ...RITUAL_PURITY_KEYWORDS.map((term) => ({ term })),
 ]);

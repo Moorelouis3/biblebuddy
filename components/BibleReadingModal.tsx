@@ -5,8 +5,9 @@ import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 import ReactMarkdown from "react-markdown";
 import { enrichBibleVerses } from "../lib/bibleHighlighting";
-import { BIBLE_PEOPLE_LIST } from "../lib/biblePeopleList";
 import { ACTION_TYPE } from "../lib/actionTypes";
+import { resolveBibleReference } from "../lib/bibleTermResolver";
+import { consumeCreditAction } from "../lib/creditClient";
 import CreditLimitModal from "./CreditLimitModal";
 import { LouisAvatar } from "./LouisAvatar";
 
@@ -315,15 +316,15 @@ export default function BibleReadingModal({ book, chapter, onClose }: BibleReadi
 
       // Open overlay modal (same as clicking a card on People/Places/Keywords pages)
       if (type === "people") {
-        setSelectedPerson({ name: term });
+        setSelectedPerson({ name: resolveBibleReference("people", term) });
         setSelectedPlace(null);
         setSelectedKeyword(null);
       } else if (type === "places") {
-        setSelectedPlace({ name: term });
+        setSelectedPlace({ name: resolveBibleReference("places", term) });
         setSelectedPerson(null);
         setSelectedKeyword(null);
       } else if (type === "keywords") {
-        setSelectedKeyword({ name: term });
+        setSelectedKeyword({ name: resolveBibleReference("keywords", term) });
         setSelectedPerson(null);
         setSelectedPlace(null);
       }
@@ -376,23 +377,7 @@ export default function BibleReadingModal({ book, chapter, onClose }: BibleReadi
       try {
         if (!selectedPerson) return;
         
-        // Resolve alias to primary name if needed
-        const clickedTerm = selectedPerson.name;
-        let primaryName = clickedTerm;
-        
-        // Check if clicked term matches an alias - if so, use primary name
-        for (const person of BIBLE_PEOPLE_LIST) {
-          if (person.aliases && person.aliases.some(alias => 
-            alias.toLowerCase().trim() === clickedTerm.toLowerCase().trim()
-          )) {
-            primaryName = person.name;
-            break;
-          }
-          if (person.name.toLowerCase().trim() === clickedTerm.toLowerCase().trim()) {
-            primaryName = person.name;
-            break;
-          }
-        }
+        const primaryName = resolveBibleReference("people", selectedPerson.name);
         
         const personNameKey = primaryName.toLowerCase().trim();
 
@@ -401,26 +386,7 @@ export default function BibleReadingModal({ book, chapter, onClose }: BibleReadi
           const isViewed = viewedPeople.has(personNameKey);
 
           if (!isCompleted && !isViewed) {
-            const creditResponse = await fetch("/api/consume-credit", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                actionType: ACTION_TYPE.person_viewed,
-              }),
-            });
-
-            if (!creditResponse.ok) {
-              setPersonCreditBlocked(true);
-              return;
-            }
-
-            const creditResult = (await creditResponse.json()) as {
-              ok: boolean;
-              reason?: string;
-            };
-
+            const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, { userId });
             if (!creditResult.ok) {
               setPersonCreditBlocked(true);
               return;
@@ -602,26 +568,7 @@ FINAL RULES:
             const isViewed = viewedPlaces.has(normalizedPlace);
 
             if (!isViewed) {
-              const creditResponse = await fetch("/api/consume-credit", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  actionType: ACTION_TYPE.place_viewed,
-                }),
-              });
-
-              if (!creditResponse.ok) {
-                setPlaceCreditBlocked(true);
-                return;
-              }
-
-              const creditResult = (await creditResponse.json()) as {
-                ok: boolean;
-                reason?: string;
-              };
-
+              const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, { userId });
               if (!creditResult.ok) {
                 setPlaceCreditBlocked(true);
                 return;
@@ -750,26 +697,7 @@ Be accurate to Scripture.`;
             const isViewed = viewedKeywords.has(keywordKey);
 
             if (!isViewed) {
-              const creditResponse = await fetch("/api/consume-credit", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  actionType: ACTION_TYPE.keyword_viewed,
-                }),
-              });
-
-              if (!creditResponse.ok) {
-                setKeywordCreditBlocked(true);
-                return;
-              }
-
-              const creditResult = (await creditResponse.json()) as {
-                ok: boolean;
-                reason?: string;
-              };
-
+              const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, { userId });
               if (!creditResult.ok) {
                 setKeywordCreditBlocked(true);
                 return;
@@ -1153,4 +1081,3 @@ Be accurate to Scripture.`;
     </div>
   );
 }
-

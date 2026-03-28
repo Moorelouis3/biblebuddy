@@ -10,9 +10,12 @@
  * - Keywords: Highlight EVERY occurrence (DARK RED)
  */
 
-import { BIBLE_PEOPLE_LIST } from "./biblePeopleList";
-import { BIBLE_PLACES_LIST } from "./biblePlacesList";
 import { BIBLE_KEYWORDS_LIST } from "./bibleKeywordsList";
+import {
+  getAutoHighlightKeywordTerms,
+  getAutoHighlightPeopleTerms,
+  getAutoHighlightPlaceTerms,
+} from "./bibleTermResolver";
 
 const KEYWORD_SUFFIX_PATTERN = "(?:s|es|ed|ing|ves)?";
 const KEYWORD_MATCHING_RULESET = "all-occurrences-last-token-suffixes";
@@ -40,16 +43,13 @@ function createKeywordFingerprint(): string {
 }
 
 function createPeopleFingerprint(): string {
-  const peopleAndAliases = BIBLE_PEOPLE_LIST.flatMap((person) => [person.name, ...(person.aliases ?? [])]);
-  const dedupedSortedPeople = normalizeDedupedSortedTerms(peopleAndAliases);
+  const dedupedSortedPeople = normalizeDedupedSortedTerms(getAutoHighlightPeopleTerms());
 
   return createStableHash(dedupedSortedPeople.join("|"));
 }
 
 function createPlacesFingerprint(): string {
-  const dedupedSortedPlaces = normalizeDedupedSortedTerms(
-    BIBLE_PLACES_LIST.map((place) => place.name)
-  );
+  const dedupedSortedPlaces = normalizeDedupedSortedTerms(getAutoHighlightPlaceTerms());
 
   return createStableHash(dedupedSortedPlaces.join("|"));
 }
@@ -68,23 +68,15 @@ export const BIBLE_HIGHLIGHTING_VERSION_MARKER = `<!-- bible-highlighting:${BIBL
  * Extract plain string arrays from the UI page lists
  */
 function getPeopleNames(): string[] {
-  const names: string[] = [];
-  BIBLE_PEOPLE_LIST.forEach((person) => {
-    names.push(person.name);
-    // Include aliases
-    if (person.aliases) {
-      names.push(...person.aliases);
-    }
-  });
-  return names;
+  return getAutoHighlightPeopleTerms();
 }
 
 function getPlaceNames(): string[] {
-  return BIBLE_PLACES_LIST.map((place) => place.name);
+  return getAutoHighlightPlaceTerms();
 }
 
 function getKeywordNames(): string[] {
-  return BIBLE_KEYWORDS_LIST.map((keyword) => keyword.term);
+  return getAutoHighlightKeywordTerms();
 }
 
 /**
