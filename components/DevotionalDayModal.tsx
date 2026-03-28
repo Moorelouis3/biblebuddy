@@ -7,6 +7,7 @@ import { enrichPlainText } from "../lib/bibleHighlighting";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { consumeCreditAction } from "../lib/creditClient";
+import { findKeywordNotes, findPersonNotes, findPlaceNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
 import CreditLimitModal from "./CreditLimitModal";
 import { LouisAvatar } from "./LouisAvatar";
 
@@ -36,7 +37,7 @@ interface DevotionalDayModalProps {
   dayProgress: DayProgress | undefined;
   showCreditBlocked: boolean;
   onClose: () => void;
-  onBibleReadingClick: () => void;
+  onBibleReadingClick: (book: string, chapter: number) => void;
   onReadingComplete: () => void;
   onReflectionSave: (text: string) => void;
   onDayComplete: (reflectionText: string, readingCompleted: boolean) => void; // Called with current modal state values
@@ -266,19 +267,9 @@ export default function DevotionalDayModal({
           }
         }
 
-        // STEP 1: Check Supabase FIRST (use person_name column, not person)
-        const { data: existing, error: existingError } = await supabase
-          .from("bible_people_notes")
-          .select("notes_text")
-          .eq("person_name", personNameKey)
-          .maybeSingle();
-
-        if (existingError && existingError.code !== "PGRST116") {
-          console.error("Error checking existing notes:", existingError);
-        }
-
-        if (existing?.notes_text) {
-          setPersonNotes(existing.notes_text);
+        const existingNotes = await findPersonNotes(personNameKey);
+        if (existingNotes) {
+          setPersonNotes(existingNotes);
           setLoadingNotes(false);
           return;
         }
@@ -369,31 +360,7 @@ FINAL RULES:
         const json = await response.json();
         const generated = (json?.reply as string) ?? "";
 
-        // STEP 3: Race condition protection - check again before saving
-        const { data: existingCheck } = await supabase
-          .from("bible_people_notes")
-          .select("notes_text")
-          .eq("person_name", personNameKey)
-          .maybeSingle();
-
-        let notesText = "";
-        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
-          notesText = existingCheck.notes_text;
-        } else {
-          // STEP 4: Upsert
-          await supabase
-            .from("bible_people_notes")
-            .upsert({ person_name: personNameKey, notes_text: generated }, { onConflict: "person_name" });
-
-          // STEP 5: Re-read from DB
-          const { data: finalData } = await supabase
-            .from("bible_people_notes")
-            .select("notes_text")
-            .eq("person_name", personNameKey)
-            .single();
-          notesText = finalData?.notes_text || generated;
-        }
-
+        const notesText = await savePersonNotes(personNameKey, generated);
         setPersonNotes(notesText);
       } catch (err: any) {
         console.error("Error loading person notes:", err);
@@ -444,19 +411,9 @@ FINAL RULES:
           }
         }
 
-        // STEP 1: Check Supabase FIRST
-        const { data: existing, error: existingError } = await supabase
-          .from("places_in_the_bible_notes")
-          .select("notes_text")
-          .eq("normalized_place", normalizedPlace)
-          .maybeSingle();
-
-        if (existingError && existingError.code !== "PGRST116") {
-          console.error("Error checking existing notes:", existingError);
-        }
-
-        if (existing?.notes_text) {
-          setPlaceNotes(existing.notes_text);
+        const existingNotes = await findPlaceNotes(normalizedPlace);
+        if (existingNotes) {
+          setPlaceNotes(existingNotes);
           setLoadingNotes(false);
           return;
         }
@@ -504,12 +461,8 @@ Be accurate to Scripture.`;
         const data = await response.json();
         const generated = data.response || "";
 
-        // STEP 3: Save to Supabase
-        await supabase
-          .from("places_in_the_bible_notes")
-          .upsert({ place: selectedPlace.name, normalized_place: normalizedPlace, notes_text: generated }, { onConflict: "normalized_place" });
-
-        setPlaceNotes(generated);
+        const notesText = await savePlaceNotes(normalizedPlace, generated);
+        setPlaceNotes(notesText);
       } catch (err: any) {
         console.error("Error loading place notes:", err);
       } finally {
@@ -559,20 +512,10 @@ Be accurate to Scripture.`;
           }
         }
 
-        // STEP 1: Check Supabase FIRST
-        const { data: existingCheck, error: existingError } = await supabase
-          .from("keywords_in_the_bible")
-          .select("notes_text")
-          .eq("keyword", keywordKey)
-          .maybeSingle();
-
-        if (existingError && existingError.code !== "PGRST116") {
-          console.error("Error checking existing notes:", existingError);
-        }
-
+        const existingNotes = await findKeywordNotes(selectedKeyword.name);
         let notesText = "";
-        if (existingCheck?.notes_text) {
-          notesText = existingCheck.notes_text;
+        if (existingNotes) {
+          notesText = existingNotes;
         } else {
           // STEP 2: Generate notes using OpenAI
           const prompt = `You are Little Louis. 
@@ -620,16 +563,7 @@ Be accurate to Scripture.`;
           const json = await response.json();
           const generated = (json?.reply as string) ?? "";
 
-          await supabase
-            .from("keywords_in_the_bible")
-            .upsert({ keyword: selectedKeyword.name, notes_text: generated }, { onConflict: "keyword" });
-
-          const { data: finalData } = await supabase
-            .from("keywords_in_the_bible")
-            .select("notes_text")
-            .eq("keyword", keywordKey)
-            .single();
-          notesText = finalData?.notes_text || generated;
+          notesText = await saveKeywordNotes(selectedKeyword.name, generated);
         }
 
         setKeywordNotes(notesText);
@@ -729,7 +663,7 @@ Be accurate to Scripture.`;
                     <div className="flex-1">
                       <button
                         type="button"
-                        onClick={onBibleReadingClick}
+                        onClick={() => onBibleReadingClick(day.bible_reading_book, day.bible_reading_chapter)}
                         className="text-blue-600 hover:text-blue-700 font-medium underline text-left"
                       >
                         {(() => {

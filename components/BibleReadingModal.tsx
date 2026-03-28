@@ -8,6 +8,7 @@ import { enrichBibleVerses } from "../lib/bibleHighlighting";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { consumeCreditAction } from "../lib/creditClient";
+import { findKeywordNotes, findPersonNotes, findPlaceNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
 import CreditLimitModal from "./CreditLimitModal";
 import { LouisAvatar } from "./LouisAvatar";
 
@@ -104,6 +105,7 @@ export default function BibleReadingModal({ book, chapter, onClose }: BibleReadi
   const [personNotes, setPersonNotes] = useState<string | null>(null);
   const [placeNotes, setPlaceNotes] = useState<string | null>(null);
   const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
+  const [keywordNotesError, setKeywordNotesError] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [completedPeople, setCompletedPeople] = useState<Set<string>>(new Set());
@@ -400,19 +402,9 @@ export default function BibleReadingModal({ book, chapter, onClose }: BibleReadi
           }
         }
 
-        // STEP 1: Check Supabase FIRST (use person_name column)
-        const { data: existing, error: existingError } = await supabase
-          .from("bible_people_notes")
-          .select("notes_text")
-          .eq("person_name", personNameKey)
-          .maybeSingle();
-
-        if (existingError && existingError.code !== 'PGRST116') {
-          console.error("Error checking existing notes:", existingError);
-        }
-
-        if (existing?.notes_text && existing.notes_text.trim().length > 0) {
-          setPersonNotes(existing.notes_text);
+        const existingNotes = await findPersonNotes(personNameKey);
+        if (existingNotes) {
+          setPersonNotes(existingNotes);
           setLoadingNotes(false);
           return;
         }
@@ -508,31 +500,7 @@ FINAL RULES:
         const json = await response.json();
         const generated = (json?.reply as string) ?? "";
 
-        // STEP 3: Race condition protection
-        const { data: existingCheck } = await supabase
-          .from("bible_people_notes")
-          .select("notes_text")
-          .eq("person_name", personNameKey)
-          .maybeSingle();
-
-        let notesText = "";
-        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
-          notesText = existingCheck.notes_text;
-        } else {
-          // STEP 4: Upsert
-          await supabase
-            .from("bible_people_notes")
-            .upsert({ person_name: personNameKey, notes_text: generated }, { onConflict: "person_name" });
-
-          // STEP 5: Re-read from DB
-          const { data: finalData } = await supabase
-            .from("bible_people_notes")
-            .select("notes_text")
-            .eq("person_name", personNameKey)
-            .single();
-          notesText = finalData?.notes_text || generated;
-        }
-
+        const notesText = await savePersonNotes(personNameKey, generated);
         setPersonNotes(notesText);
       } catch (err: any) {
         console.error("Error loading person notes:", err);
@@ -583,14 +551,9 @@ FINAL RULES:
           }
         }
 
-        const { data: existing } = await supabase
-          .from("places_in_the_bible_notes")
-          .select("notes_text")
-          .eq("normalized_place", normalizedPlace)
-          .maybeSingle();
-
-        if (existing?.notes_text && existing.notes_text.trim().length > 0) {
-          setPlaceNotes(existing.notes_text);
+        const existingNotes = await findPlaceNotes(normalizedPlace);
+        if (existingNotes) {
+          setPlaceNotes(existingNotes);
           setLoadingNotes(false);
           return;
         }
@@ -658,11 +621,8 @@ Be accurate to Scripture.`;
         const json = await response.json();
         const generated = (json?.reply as string) ?? "";
 
-        await supabase
-          .from("places_in_the_bible_notes")
-          .upsert({ place: selectedPlace.name, normalized_place: normalizedPlace, notes_text: generated }, { onConflict: "normalized_place" });
-
-        setPlaceNotes(generated);
+        const notesText = await savePlaceNotes(normalizedPlace, generated);
+        setPlaceNotes(notesText);
       } catch (err: any) {
         console.error("Error loading place notes:", err);
       } finally {
@@ -677,6 +637,7 @@ Be accurate to Scripture.`;
   useEffect(() => {
     if (!selectedKeyword) {
       setKeywordNotes(null);
+      setKeywordNotesError(null);
       setKeywordCreditBlocked(false);
       return;
     }
@@ -684,6 +645,7 @@ Be accurate to Scripture.`;
     async function generateNotes() {
       setLoadingNotes(true);
       setKeywordNotes(null);
+      setKeywordNotesError(null);
       setKeywordCreditBlocked(false);
 
       try {
@@ -712,19 +674,10 @@ Be accurate to Scripture.`;
           }
         }
 
-        const { data: existingCheck, error: existingError } = await supabase
-          .from("keywords_in_the_bible")
-          .select("notes_text")
-          .eq("keyword", keywordKey)
-          .maybeSingle();
-
-        if (existingError && existingError.code !== "PGRST116") {
-          console.error("Error checking existing notes:", existingError);
-        }
-
+        const existingNotes = await findKeywordNotes(selectedKeyword.name);
         let notesText = "";
-        if (existingCheck?.notes_text) {
-          notesText = existingCheck.notes_text;
+        if (existingNotes) {
+          notesText = existingNotes;
         } else {
           const prompt = `You are Little Louis. 
 Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword.name}.
@@ -771,21 +724,13 @@ Be accurate to Scripture.`;
           const json = await response.json();
           const generated = (json?.reply as string) ?? "";
 
-          await supabase
-            .from("keywords_in_the_bible")
-            .upsert({ keyword: selectedKeyword.name, notes_text: generated }, { onConflict: "keyword" });
-
-          const { data: finalData } = await supabase
-            .from("keywords_in_the_bible")
-            .select("notes_text")
-            .eq("keyword", keywordKey)
-            .single();
-          notesText = finalData?.notes_text || generated;
+          notesText = await saveKeywordNotes(selectedKeyword.name, generated);
         }
 
         setKeywordNotes(notesText);
       } catch (err: any) {
         console.error("Error loading keyword notes:", err);
+        setKeywordNotesError("Couldn't load this keyword yet.");
       } finally {
         setLoadingNotes(false);
       }
@@ -991,6 +936,7 @@ Be accurate to Scripture.`;
             e.stopPropagation();
             setSelectedKeyword(null);
             setKeywordNotes(null);
+            setKeywordNotesError(null);
           }}
         >
           <div 
@@ -1003,13 +949,14 @@ Be accurate to Scripture.`;
                 e.stopPropagation();
                 setSelectedKeyword(null);
                 setKeywordNotes(null);
+                setKeywordNotesError(null);
               }}
               className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
             >
               ✕
             </button>
             <h2 className="text-3xl font-bold mb-2">{selectedKeyword.name}</h2>
-            {keywordCreditBlocked ? null : !keywordNotes ? (
+            {keywordCreditBlocked ? null : loadingNotes && !keywordNotes ? (
               <div className="flex flex-col items-center py-10 gap-5">
                 <div style={{ animation: "bounce 1s infinite" }}>
                   <LouisAvatar mood="think" size={72} />
@@ -1022,6 +969,21 @@ Be accurate to Scripture.`;
                   <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-2/3" />
                 </div>
                 <p className="text-sm text-gray-400 italic animate-pulse">{selectedKeyword.name} is loading…</p>
+              </div>
+            ) : !keywordNotes ? (
+              <div className="py-8 text-center">
+                <p className="text-sm text-gray-500 mb-4">{keywordNotesError || "Couldn't load this keyword yet."}</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setKeywordNotes(null);
+                    setKeywordNotesError(null);
+                    setSelectedKeyword({ name: selectedKeyword.name });
+                  }}
+                  className="inline-flex items-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+                >
+                  Retry
+                </button>
               </div>
             ) : (
               <div>

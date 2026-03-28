@@ -15,6 +15,7 @@ import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
 import DevotionalDayModal from "../../../components/DevotionalDayModal";
 import DevotionalDayCompletionModal from "../../../components/DevotionalDayCompletionModal";
+import BibleReadingModal from "../../../components/BibleReadingModal";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { consumeCreditAction } from "../../../lib/creditClient";
 
@@ -56,6 +57,7 @@ export default function DevotionalDetailPage() {
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [profileStats, setProfileStats] = useState<any>(null);
   const [selectedDay, setSelectedDay] = useState<DevotionalDay | null>(null);
+  const [selectedBibleReading, setSelectedBibleReading] = useState<{ book: string; chapter: number } | null>(null);
   const [showCreditBlocked, setShowCreditBlocked] = useState(false);
   const [showReadingRequiredModal, setShowReadingRequiredModal] = useState(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
@@ -244,14 +246,7 @@ export default function DevotionalDetailPage() {
   };
 
   const handleBibleReadingClick = (book: string, chapter: number) => {
-    // Set session storage to indicate we're coming from a devotional
-    // This allows the Bible chapter page to show the correct back link
-    if (typeof window !== "undefined") {
-      window.sessionStorage.setItem("bbFromReadingPlan", `devotional:${devotionalId}`);
-    }
-    // Open the full Bible chapter overlay route so users see the exact same
-    // experience as in the main Bible section (mark chapter done, notes, links, etc.).
-    router.push(`/Bible/${encodeURIComponent(book)}/${chapter}`);
+    setSelectedBibleReading({ book, chapter });
   };
 
   const handleDayComplete = async (dayNumber: number, reflectionText: string, readingCompleted: boolean) => {
@@ -724,10 +719,18 @@ export default function DevotionalDetailPage() {
           dayProgress={progress.get(selectedDay.day_number)}
           showCreditBlocked={showCreditBlocked}
           onClose={() => setSelectedDay(null)}
-          onBibleReadingClick={() => handleBibleReadingClick(selectedDay.bible_reading_book, selectedDay.bible_reading_chapter)}
+          onBibleReadingClick={handleBibleReadingClick}
           onReadingComplete={() => handleReadingComplete(selectedDay.day_number)}
           onReflectionSave={(text) => handleReflectionSave(selectedDay.day_number, text)}
           onDayComplete={(reflectionText, readingCompleted) => handleDayComplete(selectedDay.day_number, reflectionText, readingCompleted)}
+        />
+      )}
+
+      {selectedBibleReading && (
+        <BibleReadingModal
+          book={selectedBibleReading.book}
+          chapter={selectedBibleReading.chapter}
+          onClose={() => setSelectedBibleReading(null)}
         />
       )}
 
