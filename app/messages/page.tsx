@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
@@ -10,6 +10,7 @@ import StreakFlameBadge from "../../components/StreakFlameBadge";
 import { extractLegacyDirectMessageAction } from "../../lib/directMessageActions";
 
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
+const FETCH_BATCH_SIZE = 200;
 
 function avatarColor(uid: string): string {
   let hash = 0;
@@ -32,6 +33,8 @@ function formatTime(dateStr: string | null): string {
   return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
+type InboxBucket = "primary" | "general";
+
 interface Conversation {
   id: string;
   otherUserId: string;
@@ -43,17 +46,22 @@ interface Conversation {
   lastMessagePreview: string | null;
   lastMessageAt: string | null;
   hasUnread: boolean;
+  bucket: InboxBucket;
 }
 
-const PAGE_SIZE = 50;
+function sortConversations(list: Conversation[]) {
+  return [...list].sort((a, b) => {
+    if (a.hasUnread !== b.hasUnread) return a.hasUnread ? -1 : 1;
+    return (b.lastMessageAt ?? "").localeCompare(a.lastMessageAt ?? "");
+  });
+}
 
 export default function MessagesPage() {
   const router = useRouter();
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [loading, setLoading] = useState(true);
-  const [loadingMore, setLoadingMore] = useState(false);
-  const [hasMore, setHasMore] = useState(false);
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<InboxBucket>("primary");
 
   useEffect(() => {
     async function load() {
@@ -79,21 +87,9 @@ export default function MessagesPage() {
 
     const messageChannel = supabase
       .channel(`messages-page:${currentUserId}`)
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "messages" },
-        refresh,
-      )
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "conversations" },
-        refresh,
-      )
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "profile_stats" },
-        refresh,
-      )
+      .on("postgres_changes", { event: "*", schema: "public", table: "messages" }, refresh)
+      .on("postgres_changes", { event: "*", schema: "public", table: "conversations" }, refresh)
+      .on("postgres_changes", { event: "*", schema: "public", table: "profile_stats" }, refresh)
       .subscribe();
 
     window.addEventListener("focus", refresh);
@@ -106,39 +102,100 @@ export default function MessagesPage() {
     };
   }, [currentUserId]);
 
-  async function fetchConversations(uid: string, append = false, offset = 0) {
-    if (append) setLoadingMore(true); else setLoading(true);
-    try {
-      const { data: convos } = await supabase
-        .from("conversations")
-        .select("id, user_id_1, user_id_2, last_message_at, last_message_preview")
-        .or(`user_id_1.eq.${uid},user_id_2.eq.${uid}`)
-        .order("last_message_at", { ascending: false, nullsFirst: false })
-        .range(offset, offset + PAGE_SIZE - 1);
+  const primaryConversations = useMemo(
+    () => conversations.filter((conversation) => conversation.bucket === "primary"),
+    [conversations],
+  );
+  const generalConversations = useMemo(
+    () => conversations.filter((conversation) => conversation.bucket === "general"),
+    [conversations],
+  );
+  const visibleConversations = activeTab === "primary" ? primaryConversations : generalConversations;
 
-      if (!convos || convos.length === 0) {
-        if (!append) setConversations([]);
-        setHasMore(false);
+  useEffect(() => {
+    if (activeTab === "primary" && primaryConversations.length === 0 && generalConversations.length > 0) {
+      setActiveTab("general");
+    }
+    if (activeTab === "general" && generalConversations.length === 0 && primaryConversations.length > 0) {
+      setActiveTab("primary");
+    }
+  }, [activeTab, generalConversations.length, primaryConversations.length]);
+
+  async function fetchConversations(uid: string) {
+    setLoading(true);
+    try {
+      const rawConversations: Array<{
+        id: string;
+        user_id_1: string;
+        user_id_2: string;
+        last_message_at: string | null;
+        last_message_preview: string | null;
+      }> = [];
+
+      for (let offset = 0; ; offset += FETCH_BATCH_SIZE) {
+        const { data: batch } = await supabase
+          .from("conversations")
+          .select("id, user_id_1, user_id_2, last_message_at, last_message_preview")
+          .or(`user_id_1.eq.${uid},user_id_2.eq.${uid}`)
+          .order("last_message_at", { ascending: false, nullsFirst: false })
+          .range(offset, offset + FETCH_BATCH_SIZE - 1);
+
+        if (!batch || batch.length === 0) break;
+        rawConversations.push(...batch);
+        if (batch.length < FETCH_BATCH_SIZE) break;
+      }
+
+      if (rawConversations.length === 0) {
+        setConversations([]);
         return;
       }
-      setHasMore(convos.length === PAGE_SIZE);
 
-      const otherIds = convos.map((c) => (c.user_id_1 === uid ? c.user_id_2 : c.user_id_1));
+      const otherIds = rawConversations.map((conversation) =>
+        conversation.user_id_1 === uid ? conversation.user_id_2 : conversation.user_id_1,
+      );
+      const conversationIds = rawConversations.map((conversation) => conversation.id);
 
-      const [profilesResult, unreadResult] = await Promise.all([
-        supabase
-          .from("profile_stats")
-          .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
-          .in("user_id", otherIds),
-        supabase
-          .from("messages")
-          .select("conversation_id")
-          .in("conversation_id", convos.map((c) => c.id))
-          .neq("sender_id", uid)
-          .is("read_at", null),
+      const profileChunks = Array.from(
+        { length: Math.ceil(otherIds.length / FETCH_BATCH_SIZE) },
+        (_, index) => [...new Set(otherIds.slice(index * FETCH_BATCH_SIZE, (index + 1) * FETCH_BATCH_SIZE))],
+      ).filter((chunk) => chunk.length > 0);
+
+      const conversationChunks = Array.from(
+        { length: Math.ceil(conversationIds.length / FETCH_BATCH_SIZE) },
+        (_, index) => conversationIds.slice(index * FETCH_BATCH_SIZE, (index + 1) * FETCH_BATCH_SIZE),
+      ).filter((chunk) => chunk.length > 0);
+
+      const [profileResults, unreadResults, replyResults] = await Promise.all([
+        Promise.all(
+          profileChunks.map((chunk) =>
+            supabase
+              .from("profile_stats")
+              .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
+              .in("user_id", chunk),
+          ),
+        ),
+        Promise.all(
+          conversationChunks.map((chunk) =>
+            supabase
+              .from("messages")
+              .select("conversation_id")
+              .in("conversation_id", chunk)
+              .neq("sender_id", uid)
+              .is("read_at", null),
+          ),
+        ),
+        Promise.all(
+          conversationChunks.map((chunk) =>
+            supabase
+              .from("messages")
+              .select("conversation_id")
+              .in("conversation_id", chunk)
+              .neq("sender_id", uid),
+          ),
+        ),
       ]);
 
-      const profiles = [...(profilesResult.data || [])];
+      const profiles = profileResults.flatMap((result) => result.data || []);
       const missingIds = otherIds.filter((id) => !profiles.some((profile) => profile.user_id === id));
 
       if (missingIds.length > 0) {
@@ -159,56 +216,48 @@ export default function MessagesPage() {
         });
       }
 
-      const unreadConvoIds = new Set((unreadResult.data || []).map((m) => m.conversation_id));
+      const unreadConvoIds = new Set(
+        unreadResults.flatMap((result) => result.data || []).map((message) => message.conversation_id),
+      );
+      const repliedConvoIds = new Set(
+        replyResults.flatMap((result) => result.data || []).map((message) => message.conversation_id),
+      );
 
-      const newItems = convos.map((c) => {
-        const otherId = c.user_id_1 === uid ? c.user_id_2 : c.user_id_1;
-        const profile = profiles.find((p) => p.user_id === otherId);
+      const hydrated = rawConversations.map((conversation) => {
+        const otherId = conversation.user_id_1 === uid ? conversation.user_id_2 : conversation.user_id_1;
+        const profile = profiles.find((candidate) => candidate.user_id === otherId);
+
         return {
-          id: c.id,
+          id: conversation.id,
           otherUserId: otherId,
           otherUserName: profile?.display_name || profile?.username || "Bible Buddy",
           otherUserImage: profile?.profile_image_url || null,
           otherUserBadge: profile?.member_badge || null,
           otherUserIsPaid: profile?.is_paid === true,
           otherUserCurrentStreak: profile?.current_streak ?? null,
-          lastMessagePreview: c.last_message_preview
-            ? extractLegacyDirectMessageAction(c.last_message_preview).body
+          lastMessagePreview: conversation.last_message_preview
+            ? extractLegacyDirectMessageAction(conversation.last_message_preview).body
             : null,
-          lastMessageAt: c.last_message_at || null,
-          hasUnread: unreadConvoIds.has(c.id),
-        };
+          lastMessageAt: conversation.last_message_at || null,
+          hasUnread: unreadConvoIds.has(conversation.id),
+          bucket: repliedConvoIds.has(conversation.id) ? "primary" : "general",
+        } satisfies Conversation;
       });
-      // Unread conversations always float to the top, then sort by most recent
-      const sortConvos = (list: Conversation[]) =>
-        [...list].sort((a, b) => {
-          if (a.hasUnread !== b.hasUnread) return a.hasUnread ? -1 : 1;
-          return (b.lastMessageAt ?? "").localeCompare(a.lastMessageAt ?? "");
-        });
 
-      if (append) {
-        setConversations((prev) => {
-          const existingIds = new Set(prev.map((c) => c.id));
-          return sortConvos([...prev, ...newItems.filter((c) => !existingIds.has(c.id))]);
-        });
-      } else {
-        setConversations(sortConvos(newItems));
-      }
+      const primary = sortConversations(hydrated.filter((conversation) => conversation.bucket === "primary"));
+      const general = sortConversations(hydrated.filter((conversation) => conversation.bucket === "general"));
+
+      setConversations([...primary, ...general]);
     } catch (error) {
       console.error("[MESSAGES_PAGE] Could not load conversations:", error);
-      if (!append) setConversations([]);
+      setConversations([]);
     } finally {
-      if (append) setLoadingMore(false); else setLoading(false);
+      setLoading(false);
     }
   }
 
   return (
-    <ModalShell
-      isOpen={true}
-      onClose={() => router.back()}
-      backdropColor="bg-black/45"
-      zIndex="z-[70]"
-    >
+    <ModalShell isOpen={true} onClose={() => router.back()} backdropColor="bg-black/45" zIndex="z-[70]">
       <div className="h-[100dvh] w-screen overflow-hidden bg-[#fcfcfb] sm:mx-4 sm:h-auto sm:max-h-[calc(100dvh-2rem)] sm:w-full sm:max-w-2xl sm:rounded-[28px] sm:border sm:border-black/5 sm:shadow-2xl">
         <div className="flex items-center justify-between border-b border-black/5 px-5 py-4">
           <div>
@@ -226,6 +275,27 @@ export default function MessagesPage() {
         </div>
 
         <div className="h-[calc(100dvh-5rem)] overflow-y-auto px-4 py-4 sm:h-auto sm:max-h-[78vh]">
+          <div className="mb-4 inline-flex rounded-2xl border border-black/5 bg-white p-1 shadow-sm">
+            <button
+              type="button"
+              onClick={() => setActiveTab("primary")}
+              className={`rounded-2xl px-4 py-2 text-sm font-semibold transition ${
+                activeTab === "primary" ? "bg-[#4a9b6f] text-white" : "text-gray-500 hover:text-gray-800"
+              }`}
+            >
+              Primary ({primaryConversations.length})
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab("general")}
+              className={`rounded-2xl px-4 py-2 text-sm font-semibold transition ${
+                activeTab === "general" ? "bg-[#4a9b6f] text-white" : "text-gray-500 hover:text-gray-800"
+              }`}
+            >
+              General ({generalConversations.length})
+            </button>
+          </div>
+
           {loading ? (
             <div className="py-12 text-center text-sm text-gray-400">Loading...</div>
           ) : conversations.length === 0 ? (
@@ -241,12 +311,24 @@ export default function MessagesPage() {
                 Find People
               </Link>
             </div>
+          ) : visibleConversations.length === 0 ? (
+            <div className="rounded-3xl border border-dashed border-gray-200 bg-white p-12 text-center">
+              <p className="mb-4 text-4xl">{activeTab === "primary" ? "📥" : "🗂️"}</p>
+              <h2 className="mb-2 text-xl font-bold text-gray-900">
+                No {activeTab === "primary" ? "primary" : "general"} messages
+              </h2>
+              <p className="text-sm text-gray-500">
+                {activeTab === "primary"
+                  ? "Threads move here once the other person replies back."
+                  : "Outreach and onboarding threads stay here until somebody answers you."}
+              </p>
+            </div>
           ) : (
             <div className="overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm">
-              {conversations.map((convo, index) => {
+              {visibleConversations.map((convo, index) => {
                 const initials = convo.otherUserName
                   .split(" ")
-                  .map((w) => w[0])
+                  .map((word) => word[0])
                   .join("")
                   .slice(0, 2)
                   .toUpperCase();
@@ -257,20 +339,24 @@ export default function MessagesPage() {
                     role="button"
                     tabIndex={0}
                     onClick={() => router.push(`/messages/${convo.id}`)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
                         router.push(`/messages/${convo.id}`);
                       }
                     }}
-                    className={`w-full text-left transition-colors hover:bg-gray-50 cursor-pointer ${convo.hasUnread ? "bg-green-50/70" : ""} ${
-                      index < conversations.length - 1 ? "border-b border-gray-100" : ""
-                    }`}
+                    className={`w-full cursor-pointer text-left transition-colors hover:bg-gray-50 ${
+                      convo.hasUnread ? "bg-green-50/70" : ""
+                    } ${index < visibleConversations.length - 1 ? "border-b border-gray-100" : ""}`}
                   >
                     <div className="flex items-center gap-4 px-5 py-4">
                       <div className="flex-shrink-0">
                         {convo.otherUserImage ? (
-                          <img src={convo.otherUserImage} alt={convo.otherUserName} className="h-12 w-12 rounded-full object-cover" />
+                          <img
+                            src={convo.otherUserImage}
+                            alt={convo.otherUserName}
+                            className="h-12 w-12 rounded-full object-cover"
+                          />
                         ) : (
                           <div
                             className="flex h-12 w-12 items-center justify-center rounded-full font-bold text-white"
@@ -284,9 +370,15 @@ export default function MessagesPage() {
                       <div className="min-w-0 flex-1">
                         <div className="mb-0.5 flex items-center justify-between gap-2">
                           <div className="flex min-w-0 items-center gap-2">
-                            <p className={`truncate text-sm ${convo.hasUnread ? "font-bold text-gray-900" : "font-semibold text-gray-800"}`}>
+                            <Link
+                              href={`/profile/${convo.otherUserId}`}
+                              onClick={(event) => event.stopPropagation()}
+                              className={`truncate text-sm hover:underline ${
+                                convo.hasUnread ? "font-bold text-gray-900" : "font-semibold text-gray-800"
+                              }`}
+                            >
                               {convo.otherUserName}
-                            </p>
+                            </Link>
                             <StreakFlameBadge currentStreak={convo.otherUserCurrentStreak} />
                             <UserBadge customBadge={convo.otherUserBadge} isPaid={convo.otherUserIsPaid} />
                           </div>
@@ -304,18 +396,6 @@ export default function MessagesPage() {
                   </div>
                 );
               })}
-            </div>
-          )}
-          {hasMore && currentUserId && (
-            <div className="pt-3 pb-1 text-center">
-              <button
-                type="button"
-                onClick={() => void fetchConversations(currentUserId, true, conversations.length)}
-                disabled={loadingMore}
-                className="text-sm font-semibold px-5 py-2 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 transition disabled:opacity-50"
-              >
-                {loadingMore ? "Loading…" : "Load more"}
-              </button>
             </div>
           )}
         </div>

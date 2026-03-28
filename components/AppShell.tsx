@@ -158,6 +158,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     lastMessagePreview: string | null;
     lastMessageAt: string | null;
     hasUnread: boolean;
+    bucket: "primary" | "general";
   }>>([]);
   const [loadingPreviews, setLoadingPreviews] = useState(false);
   const [openConversationId, setOpenConversationId] = useState<string | null>(null);
@@ -721,13 +722,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       if (merged.length === 0) { setConversationPreviews([]); return; }
 
       const otherIds = merged.map((c: any) => c.user_id_1 === currentUserId ? c.user_id_2 : c.user_id_1);
-      const { data: profileData } = await supabase
-        .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
-        .in("user_id", [...new Set(otherIds)]);
+      const [profileResult, replyStatusResult] = await Promise.all([
+        supabase
+          .from("profile_stats")
+          .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak")
+          .in("user_id", [...new Set(otherIds)]),
+        supabase
+          .from("messages")
+          .select("conversation_id")
+          .in("conversation_id", merged.map((c: any) => c.id))
+          .neq("sender_id", currentUserId),
+      ]);
 
-      const profiles = profileData || [];
+      const profiles = profileResult.data || [];
       const unreadConvoIds = _cachedUnreadConvoIds.current;
+      const repliedConvoIds = new Set((replyStatusResult.data || []).map((m: any) => m.conversation_id));
 
       const previews = merged.map((c: any) => {
         const otherId = c.user_id_1 === currentUserId ? c.user_id_2 : c.user_id_1;
@@ -745,7 +754,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             : null,
           lastMessageAt: c.last_message_at || null,
           hasUnread: unreadConvoIds.has(c.id),
+          bucket: repliedConvoIds.has(c.id) ? "primary" : "general",
         };
+      });
+
+      previews.sort((a, b) => {
+        if (a.bucket !== b.bucket) return a.bucket === "primary" ? -1 : 1;
+        if (a.hasUnread !== b.hasUnread) return a.hasUnread ? -1 : 1;
+        return (b.lastMessageAt ?? "").localeCompare(a.lastMessageAt ?? "");
       });
 
       setConversationPreviews(previews);
@@ -1609,31 +1625,28 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                             <p className="text-xs text-gray-400">Add Buddies to start chatting!</p>
                           </div>
                         ) : (
-                          conversationPreviews.map((convo) => {
+                          conversationPreviews.map((convo, index) => {
                             const initials = convo.otherUserName.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
                             const COLORS = ["#4a9b6f","#5b8dd9","#c97b3e","#9b6bb5","#d45f7a","#3ea8a8"];
                             let hash = 0;
                             for (let i = 0; i < convo.otherUserId.length; i++) hash = convo.otherUserId.charCodeAt(i) + ((hash << 5) - hash);
                             const avatarBg = COLORS[Math.abs(hash) % COLORS.length];
+                            const previousBucket = index > 0 ? conversationPreviews[index - 1]?.bucket : null;
+                            const showBucketLabel = index === 0 || previousBucket !== convo.bucket;
 
                             return (
-                              <div
-                                key={convo.id}
-                                role="button"
-                                tabIndex={0}
-                                onClick={() => {
-                                  if (convo.hasUnread) {
-                                    setConversationPreviews((prev) =>
-                                      prev.map((c) => (c.id === convo.id ? { ...c, hasUnread: false } : c))
-                                    );
-                                    setUnreadMessageCount((count) => Math.max(0, count - 1));
-                                  }
-                                  setIsMessagesOpen(false);
-                                  setOpenConversationId(convo.id);
-                                }}
-                                onKeyDown={(e) => {
-                                  if (e.key === "Enter" || e.key === " ") {
-                                    e.preventDefault();
+                              <div key={convo.id}>
+                                {showBucketLabel && (
+                                  <div className="border-b border-gray-100 bg-gray-50 px-4 py-2">
+                                    <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500">
+                                      {convo.bucket === "primary" ? "Primary" : "General"}
+                                    </span>
+                                  </div>
+                                )}
+                                <div
+                                  role="button"
+                                  tabIndex={0}
+                                  onClick={() => {
                                     if (convo.hasUnread) {
                                       setConversationPreviews((prev) =>
                                         prev.map((c) => (c.id === convo.id ? { ...c, hasUnread: false } : c))
@@ -1642,42 +1655,59 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                     }
                                     setIsMessagesOpen(false);
                                     setOpenConversationId(convo.id);
-                                  }
-                                }}
-                                className={`w-full flex items-center gap-3 px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors text-left cursor-pointer ${convo.hasUnread ? "bg-green-50" : ""}`}
-                              >
-                                {/* Avatar */}
-                                <div className="flex-shrink-0">
-                                  {convo.otherUserImage ? (
-                                    <img src={convo.otherUserImage} alt={convo.otherUserName} className="w-10 h-10 rounded-full object-cover" />
-                                  ) : (
-                                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold" style={{ backgroundColor: avatarBg }}>
-                                      {initials}
+                                  }}
+                                  onKeyDown={(e) => {
+                                    if (e.key === "Enter" || e.key === " ") {
+                                      e.preventDefault();
+                                      if (convo.hasUnread) {
+                                        setConversationPreviews((prev) =>
+                                          prev.map((c) => (c.id === convo.id ? { ...c, hasUnread: false } : c))
+                                        );
+                                        setUnreadMessageCount((count) => Math.max(0, count - 1));
+                                      }
+                                      setIsMessagesOpen(false);
+                                      setOpenConversationId(convo.id);
+                                    }
+                                  }}
+                                  className={`w-full flex items-center gap-3 px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors text-left cursor-pointer ${convo.hasUnread ? "bg-green-50" : ""}`}
+                                >
+                                  <div className="flex-shrink-0">
+                                    {convo.otherUserImage ? (
+                                      <img src={convo.otherUserImage} alt={convo.otherUserName} className="w-10 h-10 rounded-full object-cover" />
+                                    ) : (
+                                      <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold" style={{ backgroundColor: avatarBg }}>
+                                        {initials}
+                                      </div>
+                                    )}
+                                  </div>
+
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-center justify-between gap-2">
+                                      <div className="flex min-w-0 items-center gap-2">
+                                        <Link
+                                          href={`/profile/${convo.otherUserId}`}
+                                          onClick={(e) => {
+                                            e.stopPropagation();
+                                            setIsMessagesOpen(false);
+                                          }}
+                                          className={`text-sm truncate hover:underline ${convo.hasUnread ? "font-bold text-gray-900" : "font-medium text-gray-800"}`}
+                                        >
+                                          {convo.otherUserName}
+                                        </Link>
+                                        <StreakFlameBadge currentStreak={convo.otherUserCurrentStreak} />
+                                        <UserBadge customBadge={convo.otherUserBadge} isPaid={convo.otherUserIsPaid} />
+                                      </div>
+                                      <span className="text-xs text-gray-400 flex-shrink-0">{formatMessageTime(convo.lastMessageAt)}</span>
                                     </div>
+                                    <p className={`text-xs truncate mt-0.5 ${convo.hasUnread ? "text-gray-800 font-medium" : "text-gray-400"}`}>
+                                      {convo.lastMessagePreview || "No messages yet"}
+                                    </p>
+                                  </div>
+
+                                  {convo.hasUnread && (
+                                    <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#4a9b6f" }} />
                                   )}
                                 </div>
-
-                                {/* Text */}
-                                <div className="flex-1 min-w-0">
-                                  <div className="flex items-center justify-between gap-2">
-                                    <div className="flex min-w-0 items-center gap-2">
-                                      <p className={`text-sm truncate ${convo.hasUnread ? "font-bold text-gray-900" : "font-medium text-gray-800"}`}>
-                                        {convo.otherUserName}
-                                      </p>
-                                      <StreakFlameBadge currentStreak={convo.otherUserCurrentStreak} />
-                                      <UserBadge customBadge={convo.otherUserBadge} isPaid={convo.otherUserIsPaid} />
-                                    </div>
-                                    <span className="text-xs text-gray-400 flex-shrink-0">{formatMessageTime(convo.lastMessageAt)}</span>
-                                  </div>
-                                  <p className={`text-xs truncate mt-0.5 ${convo.hasUnread ? "text-gray-800 font-medium" : "text-gray-400"}`}>
-                                    {convo.lastMessagePreview || "No messages yet"}
-                                  </p>
-                                </div>
-
-                                {/* Unread dot */}
-                                {convo.hasUnread && (
-                                  <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#4a9b6f" }} />
-                                )}
                               </div>
                             );
                           })
