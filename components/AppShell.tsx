@@ -738,7 +738,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       const unreadConvoIds = _cachedUnreadConvoIds.current;
       const repliedConvoIds = new Set((replyStatusResult.data || []).map((m: any) => m.conversation_id));
 
-      const previews = merged.map((c: any) => {
+      const previews: Array<{
+        id: string;
+        otherUserId: string;
+        otherUserName: string;
+        otherUserImage: string | null;
+        otherUserBadge: string | null;
+        otherUserIsPaid: boolean;
+        otherUserCurrentStreak: number | null;
+        lastMessagePreview: string | null;
+        lastMessageAt: string | null;
+        hasUnread: boolean;
+        bucket: "primary" | "general";
+      }> = merged.map((c: any) => {
         const otherId = c.user_id_1 === currentUserId ? c.user_id_2 : c.user_id_1;
         const profile = profiles.find((p: any) => p.user_id === otherId);
         return {
