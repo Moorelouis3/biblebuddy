@@ -108,13 +108,45 @@ async function resolveDisplayName(supabaseAdmin: SupabaseClient, userId: string)
 async function resolveActorUserId(supabaseAdmin: SupabaseClient, actorUserId?: string | null) {
   if (actorUserId) return actorUserId;
 
+  if (process.env.LOUIS_USER_ID) {
+    return process.env.LOUIS_USER_ID;
+  }
+
+  try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (supabaseUrl && serviceKey) {
+      const response = await fetch(
+        `${supabaseUrl}/auth/v1/admin/users?filter=${encodeURIComponent(`email=="${LOUIS_EMAIL}"`)}`,
+        {
+          headers: {
+            apikey: serviceKey,
+            Authorization: `Bearer ${serviceKey}`,
+          },
+        },
+      );
+
+      if (response.ok) {
+        const payload = await response.json();
+        const found = (payload?.users ?? []).find((user: { email?: string | null; id?: string | null }) =>
+          user.email?.toLowerCase() === LOUIS_EMAIL,
+        );
+        if (found?.id) {
+          return found.id;
+        }
+      }
+    }
+  } catch (_) {
+    // Fall through to listUsers fallback.
+  }
+
   const { data: louisUsers, error: louisError } = await supabaseAdmin.auth.admin.listUsers({
     page: 1,
     perPage: 1000,
   });
   if (louisError) throw new Error(louisError.message || "Could not load Louis account.");
   const louis = louisUsers.users.find((user) => user.email?.toLowerCase() === LOUIS_EMAIL);
-  if (!louis) throw new Error("Louis account not found.");
+  if (!louis) throw new Error("Louis user could not be found.");
   return louis.id;
 }
 
