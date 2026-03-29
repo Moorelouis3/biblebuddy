@@ -90,6 +90,9 @@ export default function DevotionalsPage() {
     if (title === "The Calling of Moses") {
       return "/callingofmosesdevotional.png";
     }
+    if (title === "The Heart of David") {
+      return "/heartofdaviddevotional.png";
+    }
     return null;
   };
 
