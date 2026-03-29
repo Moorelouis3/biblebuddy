@@ -11,6 +11,7 @@ import { consumeCreditAction } from "../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
 import CreditLimitModal from "./CreditLimitModal";
 import { LouisAvatar } from "./LouisAvatar";
+import { isChapterCompleted, markChapterDone } from "../lib/readingProgress";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -21,6 +22,7 @@ interface BibleReadingModalProps {
   book: string;
   chapter: number;
   onClose: () => void;
+  onMarkComplete?: () => void;
 }
 
 interface Verse {
@@ -90,7 +92,7 @@ function normalizeKeywordMarkdown(markdown: string): string {
     .trim();
 }
 
-export default function BibleReadingModal({ book, chapter, onClose }: BibleReadingModalProps) {
+export default function BibleReadingModal({ book, chapter, onClose, onMarkComplete }: BibleReadingModalProps) {
   const [sections, setSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -117,6 +119,8 @@ export default function BibleReadingModal({ book, chapter, onClose }: BibleReadi
   const [completedKeywords, setCompletedKeywords] = useState<Set<string>>(new Set());
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
   const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
+  const [chapterCompleted, setChapterCompleted] = useState(false);
+  const [markingChapterComplete, setMarkingChapterComplete] = useState(false);
 
   useEffect(() => {
     async function loadUserAndProgress() {
@@ -173,13 +177,33 @@ export default function BibleReadingModal({ book, chapter, onClose }: BibleReadi
           completedKeywordsSet.add(String(row.keyword_name || "").toLowerCase().trim());
         });
         setCompletedKeywords(completedKeywordsSet);
+        const alreadyCompleted = await isChapterCompleted(user.id, book, chapter);
+        setChapterCompleted(alreadyCompleted);
       } catch (err) {
         console.error("[BIBLE_READING_MODAL] Error loading user:", err);
       }
     }
 
     loadUserAndProgress();
-  }, []);
+  }, [book, chapter]);
+
+  async function handleMarkChapterComplete() {
+    if (!userId || chapterCompleted || markingChapterComplete) return;
+
+    try {
+      setMarkingChapterComplete(true);
+      await markChapterDone(userId, book, chapter);
+      setChapterCompleted(true);
+      onMarkComplete?.();
+    } catch (err) {
+      console.error("[BIBLE_READING_MODAL] Error marking chapter complete:", err);
+      alert("Failed to mark chapter complete. Please try again.");
+    } finally {
+      setMarkingChapterComplete(false);
+    }
+  }
+
+  const chapterNotesHref = `/bible-study-notes/${encodeURIComponent(book.toLowerCase())}?chapter=${chapter}`;
 
   useEffect(() => {
     async function loadChapter() {
@@ -802,6 +826,37 @@ Be accurate to Scripture.`;
                 </div>
               ))
             )}
+          </div>
+        )}
+
+        {!loading && !error && (
+          <div className="border-t border-gray-200 pt-5 flex flex-col sm:flex-row gap-3">
+            <button
+              type="button"
+              onClick={handleMarkChapterComplete}
+              disabled={!userId || chapterCompleted || markingChapterComplete}
+              className={`flex-1 rounded-xl px-5 py-3 text-sm font-semibold transition ${
+                chapterCompleted
+                  ? "bg-green-100 text-green-700 cursor-not-allowed"
+                  : !userId || markingChapterComplete
+                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  : "bg-blue-600 text-white hover:bg-blue-700"
+              }`}
+            >
+              {chapterCompleted
+                ? "Chapter Completed"
+                : markingChapterComplete
+                ? "Marking Complete..."
+                : "Mark Complete"}
+            </button>
+
+            <Link
+              href={chapterNotesHref}
+              onClick={onClose}
+              className="flex-1 rounded-xl border border-gray-300 bg-white px-5 py-3 text-center text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+            >
+              View Chapter Notes
+            </Link>
           </div>
         )}
       </div>

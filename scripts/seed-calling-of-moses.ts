@@ -719,9 +719,118 @@ That matters for all of us. A faithful life does not only finish its own race. I
   },
 };
 
+const chapterStoryExpansions: Record<number, string> = {
+  1: `If you read Exodus 1 slowly, the chapter keeps getting darker. First Pharaoh is worried. Then he starts controlling. Then he enslaves. Then he commands death. That is how evil often grows. It rarely starts by showing its full face at once. It hardens step by step.
+
+The chapter also makes room for quiet courage. Shiphrah and Puah do not look powerful on paper, but they fear God more than Pharaoh, and that changes the story. Before Moses is ever floating in a basket, God is already using brave obedience to protect the future.
+
+So day one of Moses' story is not really about comfort. It is about pressure, power, fear, and hidden courage. That is where the story starts. Not in glory, but in a world already at war with the purposes of God.`,
+  2: `Exodus 2 reads like a film. A mother hiding a child. A basket sealed and set in the reeds. A sister watching from a distance. A princess moved with compassion. Then the surprising turn: Moses' own mother is brought back into the story to nurse him.
+
+But the same chapter keeps moving. Moses grows up, sees the suffering of the Hebrew people, kills an Egyptian, gets exposed, and runs. So the chapter carries both rescue and failure. Mercy and impulsiveness. Protection and collapse.
+
+That is why Moses' story feels so human. Even in the chapter where God preserves his life, you can already see the cracks in the man he will become. God saves him early, but He is still going to have to shape him deeply.`,
+  3: `Hebrews 11 does something powerful with Moses' story. It does not just retell events. It tells you how heaven sees them. Moses' parents hid him by faith. Moses refused to be known only as Pharaoh's daughter's son by faith. He chose mistreatment with God's people over the temporary pleasures of sin by faith.
+
+That matters because the palace years were not just about identity tension. They were also about choices. Moses had access to comfort, status, and the full machinery of Egypt. But the deeper pull in him was toward the people of God and the promises of God.
+
+So this day is not random. It shows you that even before the burning bush, Moses' heart was already being bent away from Egypt's glory and toward God's story.`,
+  4: `Acts 7 lets Stephen retell Moses' early life with sharp focus. Moses is rescued, educated, mighty in words and deeds, then driven by a burden for his people. But when he tries to act in his own timing, he is rejected and forced to flee.
+
+Stephen's retelling shows the tragedy clearly: Moses thought the people would understand that God was using him to rescue them, but they did not. That had to be painful. He was already reaching toward calling, but he was reaching the wrong way.
+
+Then Midian comes into view again. Not as an accident, but as the next stage in the story. Acts 7 helps us see Moses' life as one long preparation, not just a collection of random scenes.`,
+  5: `Psalm 90 gives the wilderness years emotional weight. It sounds like a man who has watched years pass, graves multiply, people fade, and God remain. "Teach us to number our days" is not a throwaway line. It sounds like someone shaped by long time and hard ground.
+
+So while this day covers Moses' home in the wilderness, the Psalm lets you feel the deeper lesson of that season. Moses is not just passing time. He is learning how brief life is, how holy God is, and how much wisdom a human being really needs.
+
+That makes the Midian years feel less empty. They were not dead years. They were the years where Moses was learning how to see life through the eyes of eternity.`,
+  6: `Exodus 3 is one of those chapters where almost every line matters. Moses sees the bush, turns aside, hears his name, removes his sandals, and learns that the God speaking is the God of covenant history.
+
+Then God reveals His heart and His mission. He has seen. He has heard. He has come down. And Moses is the one He is sending. This is not just a mystical moment. It is the hinge of Moses' whole life.
+
+The chapter moves from wonder to assignment, from holy ground to hard calling. That is why it feels so alive. God is not only showing Moses something beautiful. He is bringing Moses into the burden of divine rescue.`,
+  7: `Exodus 4 keeps the burning bush conversation going, but now the focus shifts to Moses' resistance. Sign after sign, excuse after excuse. It is almost painful to watch because you can feel how afraid Moses is.
+
+But the chapter is also generous. God gives what Moses needs. A sign in the staff. A sign in the hand. Words for his mouth. Aaron as help. The chapter is not only about Moses doubting. It is about God patiently answering fear without surrendering the assignment.
+
+So this day really is the next part of the story. Moses has heard the call in Exodus 3. Now in Exodus 4 he has to wrestle with what it will cost him to say yes.`,
+  8: `Exodus 5 is where the story gets heavy fast. Moses and Aaron obey. Pharaoh mocks God. The workload increases. The people suffer more. And Moses becomes the face people blame.
+
+It is such an important chapter because it destroys the shallow idea that obedience always produces instant improvement. Sometimes obedience exposes the chains in a sharper way. Sometimes the enemy tightens down before the breakthrough comes.
+
+And right there at the end of the chapter, Moses talks back to God from the pain. That is not polished faith. That is wounded faith. But it is still faith, because he is still bringing it to the Lord.`,
+  9: `Exodus 6 feels like God speaking steady words into a shaken man. The chapter is packed with "I will" promises. God is almost rebuilding Moses from the inside by repeating what He intends to do.
+
+The people cannot fully hear because they are crushed in spirit. That makes the chapter even sadder and even more important. God's word is strong, but human despair can still be heavy.
+
+So the lesson here is not random encouragement. It is this: when the story gets dark, God often responds by saying again what He already said, until faith has something solid to stand on.`,
+  10: `Exodus 7 opens the plague story and changes the whole atmosphere. Aaron's staff becomes a serpent. The Nile turns to blood. Pharaoh sees power and still refuses to bow.
+
+This chapter is the first full collision between Egypt's world and the word of the Lord. Moses is no longer only the man with excuses. He is now standing in the court of power carrying God's message into enemy territory.
+
+That is part of the growth of Moses. His story is moving from inward hesitation to outward obedience. He is still dependent, still learning, but he is now walking into the exact place fear once told him to avoid.`,
+  11: `Exodus 8 keeps pressing the same conflict. Frogs. Gnats. Flies. Pharaoh says enough to sound close to surrender, then hardens again.
+
+That repetition is the point. This chapter lets you feel the grind of the battle. Moses is not winning through one speech. He is staying faithful through repeated cycles of resistance.
+
+It also gives you a close look at the human heart. Pharaoh wants relief without repentance. He wants the pain lifted without the pride broken. And that is a warning that still matters now.`,
+  12: `Exodus 9 raises the pressure again. Disease strikes livestock. Boils spread. Hail and fire fall. The chapter feels like judgment getting louder.
+
+Yet even here God gives warning, which means His justice is not careless. People are told what is coming. They are given room to respond. That detail matters.
+
+For Moses, this chapter keeps teaching the same thing at a deeper level: God is patient, powerful, and never confused about who is really in control.`,
+  13: `Exodus 10 brings locusts and then darkness, and the tone gets almost apocalyptic. Egypt is unraveling. What once looked unshakable is being stripped down in front of everyone.
+
+The darkness is especially powerful because it feels bigger than weather. It feels like a sign that Egypt's light was never ultimate. God's word can darken a kingdom and still keep His people moving toward freedom.
+
+Moses is still in that story, still carrying the next word of God into the same hardened room. That repeated obedience is part of the story too.`,
+  14: `Exodus 11 is quiet compared to the chapters around it, but the quiet feels heavy. God tells Moses the final plague is coming, and you can feel the story tightening toward its turning point.
+
+This chapter is about certainty. God knows what is next. He knows when Pharaoh will bend. He knows when Egypt will finally let go. Moses is not living inside random chaos. He is living inside a story God sees from beginning to end.
+
+That matters because sometimes the last warning before deliverance is the moment that proves God had the whole ending in His hand all along.`,
+  15: `Exodus 12 is full of movement. Lambs chosen. Blood placed. Bread baked in haste. Sandals on feet. Staffs in hand. It feels like a people standing in the doorway between slavery and freedom.
+
+Then the night falls and history turns. Egypt breaks. Pharaoh lets them go. The chapter is heavy and holy at the same time.
+
+For Moses, this is the night where years of waiting, confrontation, fear, and obedience all collide in one moment. The lesson of the chapter is not just that God delivers. It is that He delivers in a way that teaches His people to remember forever.`,
+  16: `Exodus 14 slows the whole escape down long enough for fear to explode. The people see the sea, see the army, and panic. Everything about the scene says trapped.
+
+Then Moses speaks one of the most important lines in his story: "Stand firm." That line matters because it shows who he is becoming. The man who once ran now stands. The man who once acted in flesh now waits on God under pressure.
+
+And then the sea opens. This chapter is not just a miracle chapter. It is a formation chapter. It shows what years of hearing God are producing inside Moses.`,
+  17: `Exodus 19 changes the story from deliverance to encounter. The people are out of Egypt, but now they must learn who the God is who brought them out.
+
+Thunder, smoke, boundaries, consecration, and fear fill the chapter. Moses moves up and down the mountain carrying God's words. He is no longer only a deliverer. He is becoming a mediator between holy presence and trembling people.
+
+That is why this day matters in the flow. Moses' story is not only about getting people free. It is about bringing them into covenant nearness with God.`,
+  18: `Exodus 32 is brutal because of the contrast. Moses is with God on the mountain while the people are making a calf below. Glory above. Idolatry below.
+
+When Moses comes down, the broken tablets show outwardly what has already been broken inwardly. But the chapter does not end with anger alone. It moves into intercession. Moses pleads. Moses stands in the gap.
+
+That means this chapter shows two crucial parts of Moses' heart at once: he can confront sin honestly, and he can still carry broken people before God in prayer.`,
+  19: `Numbers 11 puts you in the long middle of leadership. The miracles are behind, the promised land is ahead, and the daily burden is grinding Moses down.
+
+Complaints rise. Moses reaches his limit. He tells God the load is too heavy. That honesty is part of the chapter's power. It shows that even great leaders can crack under constant pressure.
+
+And God meets him there, not by shaming him, but by sharing the load. This day pushes the story forward by showing what Moses' calling costs over time.`,
+  20: `Deuteronomy 32 feels like Moses looking at the whole story from the end and turning it into a song. He is remembering covenant, warning Israel, and testifying to who God has been.
+
+This chapter gives Moses' final words the weight they deserve. He is not just ending a life. He is handing truth forward.`,
+  21: `Deuteronomy 34 is the final scene, and it is quiet in a holy way. Moses climbs, sees, and dies under God's care.
+
+The chapter does not read like a wasted life. It reads like the end of a long assignment carried out in the presence of God. Moses' story closes not with spectacle, but with faithfulness remembered.
+
+That is why the final lesson fits the whole devotional. The calling of Moses was never mainly about arriving somewhere famous. It was about hearing God, obeying God, and belonging to God all the way to the end.`,
+};
+
 const finalDevotionalDays: DevotionalDay[] = devotionalDays.map((day) => ({
   ...day,
   ...(devotionalDayOverrides[day.day_number] || {}),
+  devotional_text: chapterStoryExpansions[day.day_number]
+    ? `${(devotionalDayOverrides[day.day_number]?.devotional_text ?? day.devotional_text)}\n\n${chapterStoryExpansions[day.day_number]}`
+    : (devotionalDayOverrides[day.day_number]?.devotional_text ?? day.devotional_text),
 }));
 
 async function main() {

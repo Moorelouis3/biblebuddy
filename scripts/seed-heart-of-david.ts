@@ -355,6 +355,121 @@ That does not make sin light. David's failures were heavy. But it does show the 
   },
 ];
 
+const chapterStoryExpansions: Record<number, string> = {
+  1: `If you stay inside 1 Samuel 16, the whole scene builds tension on purpose. Jesse's older sons pass in front of Samuel, and each one looks like the obvious choice. The chapter forces you to feel how strong the pull of appearance is.
+
+Then David is brought in from the fields. That detail matters. He is not already in the room because no one expected him to be the answer. But God did. The oil is poured, and the Spirit of the Lord rushes upon him. That is the real turning point of the chapter.
+
+So day one is not just a lesson about humility. It is the opening scene of David's story. God starts with the overlooked son in the field and says, this is the one.`,
+  2: `Psalm 23 makes the shepherd years feel alive. Green pastures, still waters, dark valleys, a rod and staff, enemies at the table. David is not writing abstract poetry. He is turning real life with God into words.
+
+That is why this day works as the next chapter in the story. Before David is a warrior or king, he is a boy learning what kind of Shepherd God is. Those private revelations become part of what later gives him courage.
+
+The field is where David learns to trust God before he ever has to represent God in public.`,
+  3: `1 Samuel 17 does not just tell you David fought Goliath. It lets you watch the whole build. The giant taunts. Israel freezes. David arrives with lunch. He hears the insult. Everyone around him thinks he is too small, too young, too unrealistic.
+
+Then the chapter turns when David starts remembering. Lion. Bear. Deliverance. That is the real fuel of his courage. He is not just bold by temperament. He is interpreting the moment through what God has already done.
+
+By the time the stone flies, the battle is already theological. Goliath is big, but he is not ultimate. That is why this scene pushes David's story forward so strongly.`,
+  4: `1 Samuel 18 feels like the price of visibility. One song from the women and the atmosphere changes. David is successful, but Saul's eyes are no longer clean.
+
+The chapter keeps showing David acting wisely while Saul grows darker. That contrast matters. One man's success is producing humility and favor. The other man's insecurity is producing suspicion and rage.
+
+This is how the next chapter of David's life begins. Not with comfort after victory, but with the realization that public favor can put a target on your back.`,
+  5: `1 Samuel 19 turns the danger from emotional to physical. Spears are thrown. Orders are given. Escape becomes necessary.
+
+What makes the chapter heavy is that David is not running from a foreign enemy. He is running from the king he has faithfully served. That betrayal gives the story a different kind of pain.
+
+So this day is not just about fear. It is the moment David's life changes from rising public hero to hunted man living between promise and survival.`,
+  6: `1 Samuel 20 deepens the story by slowing it down enough to show friendship under pressure. Jonathan and David make plans, test Saul's intent, and speak honestly about what is happening.
+
+The chapter hurts because Jonathan can see what his father has become, and David can feel how unsafe the future is. Yet covenant friendship stands in the middle of all of that.
+
+That is why this day matters in the flow. David's story is not only about enemies and destiny. It is also about the people God gives you to help hold you steady while the story gets harder.`,
+  7: `1 Samuel 21 is one of those chapters that makes David feel painfully real. He lies. He scrambles. He survives however he can. He ends up in humiliating territory.
+
+That matters because the story is no longer clean heroism. The pressure is exposing fear and weakness too. David is still God's chosen man, but he is not gliding through this season untouched.
+
+So this day pushes the devotional forward by showing what promise looks like when it has to live through confusion, desperation, and strange survival moments.`,
+  8: `Psalm 27 sounds even stronger when you remember the chapters around it. David is not writing from a spa day. He is writing as someone who knows enemies, betrayal, and the need for courage.
+
+That is why the Psalm's hunger is so striking. In the middle of threat, he still wants God's presence. He is not only trying to escape pain. He is trying to stay near the Lord.
+
+This is the next part of the story because it lets you hear what David sounds like on the inside while the fugitive years are happening on the outside.`,
+  9: `1 Samuel 24 is full of suspense. The cave, the hidden men, Saul vulnerable, David with the chance to end it. The chapter wants you to feel how easy it would have been to justify the wrong choice.
+
+That is why David's restraint is so important. He does not only spare Saul. He refuses to grab the promise by violating God's heart. Even cutting the robe affects him deeply.
+
+So this day is a real turning point. David is proving what kind of man he will be while he waits to become king.`,
+  10: `1 Samuel 25 gives David a different kind of battle. No giant. No cave. No king. Just insult, ego, anger, and the speed with which a wounded man can head toward sin.
+
+Abigail enters the story at exactly the right moment, and the chapter becomes a picture of God using wisdom to stop a future king from creating unnecessary bloodshed.
+
+This keeps the story honest. David is brave, but he can still burn hot. He can still be redirected. And that humility to stop matters.`,
+  11: `1 Samuel 26 repeats the Saul test on purpose. The chapter is asking whether David's mercy in the cave was a one-time moment or a real pattern in his heart.
+
+David passes again. He takes the spear and water jug, but not Saul's life. He leaves judgment with God again.
+
+That is why this day moves the story. Repeated obedience shapes identity. David is becoming the kind of king who does not seize power through vengeance.`,
+  12: `2 Samuel 2 is quieter than the earlier chapters, but it matters because it shows promise unfolding slowly. David asks God, moves to Hebron, and begins reigning over Judah.
+
+The chapter still has tension. Division remains. Conflict remains. But the story has clearly shifted. David is not only surviving anymore. He is beginning to carry real kingship.
+
+That slow rise gives the story weight. God is fulfilling what He promised, but not in one easy leap.`,
+  13: `2 Samuel 5 feels like long-awaited arrival. The tribes come. Jerusalem is taken. Victories grow. David's reign strengthens.
+
+But even this chapter keeps showing dependence. David inquires of the Lord. He does not assume kingship means independence from God.
+
+That is why this day is more than a coronation scene. It is the chapter where David's public calling becomes visible in full, while still being tied to God's presence.`,
+  14: `2 Samuel 6 is one of the most vivid worship chapters in David's life. There is movement, music, awe, fear, and joy all at once.
+
+The chapter refuses to let worship become shallow. Uzzah's death shows holiness. David's dancing shows delight. Both are necessary.
+
+So this day keeps the story moving by showing what David does with power at his best: he turns it into worship before the Lord instead of image management before people.`,
+  15: `2 Samuel 7 deepens David beautifully. He wants to honor God, but God answers with something larger: covenant promise over David's line and future.
+
+Then David sits before the Lord in wonder. That posture matters. He is king, but here he is simply a man overwhelmed by grace.
+
+This is one of the strongest windows into David's heart because it shows him receiving, not performing. Listening, not striving.`,
+  16: `2 Samuel 11 is deliberately painful to read. David sees, sends, takes, hides, and finally arranges death. The chapter keeps descending.
+
+That structure matters because it shows how sin spreads when it is fed instead of stopped. This is not one slip. It is a chain of choices.
+
+So this day is the tragic turning point in the story. The man after God's heart has now wounded his own heart, his house, and many others.`,
+  17: `Psalm 51 gives the inside voice after the outside disaster. Mercy, cleansing, truth in the inward being, a clean heart, a renewed spirit. The language is broken and hopeful at the same time.
+
+That is why this day belongs exactly here. The story could not jump from Bathsheba to later consequences without stopping at repentance. This Psalm is the bridge.
+
+David cannot undo what he did, but he can stop lying about it before God. And that honesty becomes one of the most important lessons in his whole life.`,
+  18: `2 Samuel 12 is painful because grace and consequence stand together in the same chapter. Nathan confronts. David confesses. Forgiveness is spoken. Sorrow remains.
+
+That tension is exactly why this chapter matters. It teaches that restoration with God is real, but sin is never small just because mercy is available.
+
+This pushes the story forward into the second half of David's life, where he has to live not only as king, but as a forgiven man carrying the consequences of his own choices.`,
+  19: `2 Samuel 15 is heartbreaking on a different level. Absalom's rebellion makes David's pain intensely personal. The conflict is now inside his own house.
+
+The chapter feels heavy because David leaves Jerusalem weeping, barefoot, and humbled. Yet even there he keeps surrender in front of him. He sends the ark back. He leaves room for God.
+
+So this day shows what David looks like under deep family pain: shaken, grieving, but still not trying to control God.`,
+  20: `2 Samuel 22 lets David look backward and interpret his whole life through praise. The God who delivered him from enemies is the God he sings about now.
+
+That retrospective worship matters. The story has had fields, giants, caves, songs, sin, repentance, and rebellion. Now David names God as the rock underneath all of it.
+
+This day belongs near the end because it sounds like a man old enough to see his life as testimony, not just a pile of events.`,
+  21: `1 Kings 2 is not flashy, but it is the proper ending. David gives final words, thinks about what must come after him, and dies.
+
+The chapter lets the story close with inheritance, legacy, and unfinished things handed to the next generation. David's life was not neat, but it was full.
+
+So the final lesson is not that David was flawless. It is that a life can be marked by real worship, real collapse, real repentance, and real return to God all the way to the end.`,
+};
+
+const finalDevotionalDays: DevotionalDay[] = devotionalDays.map((day) => ({
+  ...day,
+  devotional_text: chapterStoryExpansions[day.day_number]
+    ? `${day.devotional_text}\n\n${chapterStoryExpansions[day.day_number]}`
+    : day.devotional_text,
+}));
+
 async function main() {
   console.log("Starting to seed 'The Heart of David' devotional...");
 
@@ -426,7 +541,7 @@ async function main() {
   let successCount = 0;
   let failCount = 0;
 
-  for (const day of devotionalDays) {
+  for (const day of finalDevotionalDays) {
     const parsed = parseBibleReading(day.bible_reading_reference);
 
     const { error } = await supabase.from("devotional_days").insert({

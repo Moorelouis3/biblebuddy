@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { getCompletedChapters, getBookTotalChapters } from "@/lib/readingProgress";
 import { supabase } from "@/lib/supabaseClient";
@@ -21,8 +21,10 @@ const BOOK_DESCRIPTIONS: Record<string, string> = {
 
 export default function BookBibleStudyNotesPage() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const bookParam = String(params.book);
   const bookKey = bookParam.toLowerCase();
+  const initialChapterParam = searchParams.get("chapter");
   
   // Get book display name (capitalize first letter of each word)
   const bookDisplayName = bookParam
@@ -49,6 +51,13 @@ export default function BookBibleStudyNotesPage() {
     }
     getUser();
   }, []);
+
+  useEffect(() => {
+    if (!initialChapterParam) return;
+    const parsed = Number(initialChapterParam);
+    if (!Number.isInteger(parsed) || parsed < 1) return;
+    setSelectedChapter(parsed);
+  }, [initialChapterParam]);
 
   useEffect(() => {
     async function loadCompletedChapters() {
@@ -290,5 +299,4 @@ export default function BookBibleStudyNotesPage() {
     </div>
   );
 }
-
 

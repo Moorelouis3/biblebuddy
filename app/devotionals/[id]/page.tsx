@@ -733,6 +733,11 @@ export default function DevotionalDetailPage() {
           book={selectedBibleReading.book}
           chapter={selectedBibleReading.chapter}
           onClose={() => setSelectedBibleReading(null)}
+          onMarkComplete={() => {
+            if (selectedDay) {
+              handleReadingComplete(selectedDay.day_number);
+            }
+          }}
         />
       )}
 
