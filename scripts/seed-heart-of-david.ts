@@ -463,11 +463,77 @@ The chapter lets the story close with inheritance, legacy, and unfinished things
 So the final lesson is not that David was flawless. It is that a life can be marked by real worship, real collapse, real repentance, and real return to God all the way to the end.`,
 };
 
+const cinematicExpansions: Record<number, string> = {
+  1: `1 Samuel 16 is built like a scene with tension in every step. Son after son stands in front of Samuel, and every time what looks strong enough to men is passed over by God.
+
+Then David is called in from the field. The smell of sheep follows him into the room, and God says this is the one. That is the first great shock of David's life: heaven chooses the boy no one even thought to bring in.`,
+  2: `The shepherd years matter because they are where David learns what courage looks like without applause. Lions, bears, night watch, music, prayer, and long hidden hours are forming him.
+
+Psalm 23 sounds richer when you remember it came from that world. David is learning the heart of a shepherd by living under the care of the Shepherd himself.`,
+  3: `1 Samuel 17 feels like a full episode all by itself. The giant taunts. Israel freezes. David arrives carrying lunch. His brothers dismiss him. Saul questions him.
+
+Then David steps into the valley with a sling and memory. He remembers what God already did in private, and that gives him courage in public. The giant falls, and David's world changes in one afternoon.`,
+  4: `After Goliath, music and praise turn dangerous. One song from the crowd is enough to poison Saul's heart. Spears start flying. Favor starts drawing fire.
+
+This is where David learns that public victory can open private warfare. The same success that lifts you can also expose who around you cannot handle God's hand on your life.`,
+  5: `1 Samuel 19 changes the pace from tension to pursuit. Saul is no longer only jealous. He is hunting. Michal helps David flee, and the house itself becomes unsafe.
+
+That chapter feels like the floor falling out. David has been anointed, but the road ahead now looks more like exile than kingship.`,
+  6: `Jonathan's friendship lands in the story like mercy. He should have been threatened by David, but instead he loves him and protects him.
+
+In 1 Samuel 20, their loyalty carries tears, danger, and covenant. This is the kind of friendship that keeps a person alive while the rest of the story is unraveling.`,
+  7: `1 Samuel 21 is rough because David is surviving, not shining. He is hungry, scared, improvising, and then humiliated in enemy territory.
+
+That messiness belongs in the story. The future king does not glide cleanly from calling to throne. He passes through odd, desperate, almost embarrassing chapters too.`,
+  8: `Psalm 27 sounds like David writing with enemies close enough to feel. He is not denying fear. He is speaking over fear with hunger for God.
+
+That is part of the drama of David's life. He keeps choosing the presence of God in chapters where most people would only be thinking about escape.`,
+  9: `The cave scene in 1 Samuel 24 is one of the great moral tests in David's life. Saul is right there. The chance looks obvious. David's men are ready.
+
+But David refuses to seize the throne through blood. Even cutting the robe stings his conscience. That is what makes the scene so strong: power is available, but David chooses restraint.`,
+  10: `1 Samuel 25 shows another battlefield, but this one is emotional instead of military. David is insulted, his anger flares, and he is already heading toward revenge when Abigail steps in.
+
+She changes the whole course of the chapter. Her wisdom stops David from staining his hands in a season where wounded pride could have wrecked his judgment.`,
+  11: `In 1 Samuel 26 the test comes back around, and that is what makes it powerful. Mercy once could have been chance. Mercy twice becomes character.
+
+David stands close enough to kill Saul again and still leaves the matter with God. Repeated surrender is shaping the kind of king he will become.`,
+  12: `2 Samuel 2 feels quieter, but it carries major emotional weight. David is finally stepping into kingship, but only partially. Judah crowns him, yet the full promise is still unfolding slowly.
+
+This is how a lot of God's fulfillments come. Not all at once, but piece by piece, while faith still has to stay awake.`,
+  13: `By 2 Samuel 5 the story opens wide. Jerusalem is taken. David's reign grows stronger. Victories stack up. The crown now looks real in public, not only promised in private.
+
+But the chapter keeps showing David asking God what to do. That is important. Arrival can be dangerous if it kills dependence.`,
+  14: `2 Samuel 6 is alive with noise, movement, holiness, and joy. The ark is coming, David is dancing, and the city is watching.
+
+But the chapter also stops cold at Uzzah's death, reminding everyone that God's presence is glorious and dangerous in the best sense. David's worship is strongest when delight and reverence stay together.`,
+  15: `2 Samuel 7 feels intimate after all the movement. David wants to build God a house, and instead God speaks covenant over David's house and future.
+
+Then David sits before the Lord stunned by grace. That image matters. A king sits small before a great God and realizes the promise is bigger than anything he could have built for himself.`,
+  16: `2 Samuel 11 descends scene by scene. A rooftop. A glance. A message sent. A body taken. A cover-up attempted. A faithful soldier killed.
+
+The chapter is dark because it shows how quickly desire, secrecy, and power can rot a person's judgment. David's story turns hard here on purpose.`,
+  17: `Psalm 51 sounds like the walls have finally come down. David is no longer hiding behind the mechanics of the sin. He is standing exposed before God asking for mercy and a clean heart.
+
+This is why the psalm is so powerful. It is not polished religion. It is a broken king telling the truth at last.`,
+  18: `2 Samuel 12 brings Nathan's confrontation like a blade. David hears the story, burns with anger, then hears the words: "You are the man."
+
+Forgiveness is spoken, but the chapter will not let consequence disappear. That is why it hits so hard. Grace is real, and damage is real too.`,
+  19: `By 2 Samuel 15, the sorrow is inside David's own house. Absalom turns the nation and the family into a wound at the same time.
+
+David leaves the city barefoot, weeping, and humbled. The mighty king now looks painfully human again, and that is exactly the point of the chapter.`,
+  20: `2 Samuel 22 sounds like an older David looking back through war, caves, songs, rescue, sin, and survival and saying God was the rock under all of it.
+
+It is worship with scar tissue in it. That is why the song feels earned.`,
+  21: `1 Kings 2 closes David's story without pretending it was neat. He gives final charges, thinks about what must come next, and dies after a life full of brilliance and fracture.
+
+That ending works because David's story was never about polished perfection. It was about a heart that kept getting called back toward God through every rise and collapse.`,
+};
+
 const finalDevotionalDays: DevotionalDay[] = devotionalDays.map((day) => ({
   ...day,
-  devotional_text: chapterStoryExpansions[day.day_number]
-    ? `${day.devotional_text}\n\n${chapterStoryExpansions[day.day_number]}`
-    : day.devotional_text,
+  devotional_text: [day.devotional_text, chapterStoryExpansions[day.day_number] ?? null, cinematicExpansions[day.day_number] ?? null]
+    .filter(Boolean)
+    .join("\n\n"),
 }));
 
 async function main() {

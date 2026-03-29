@@ -154,7 +154,7 @@ export default function DashboardPage() {
   const [ownerQuickStats, setOwnerQuickStats] = useState({
     signups24h: 0,
     activeUsers24h: 0,
-    totalUpgradedUsers: 0,
+    totalUsers: 0,
   });
   const [loadingOwnerQuickStats, setLoadingOwnerQuickStats] = useState(false);
 
@@ -683,7 +683,7 @@ export default function DashboardPage() {
       try {
         const fromDate = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
 
-        const [signupsResult, actionsResult, totalUpgradedUsersResult] = await Promise.all([
+        const [signupsResult, actionsResult, totalUsersResult] = await Promise.all([
           supabase
             .from("user_signups")
             .select("id", { count: "exact", head: true })
@@ -693,18 +693,17 @@ export default function DashboardPage() {
             .select("user_id")
             .gte("created_at", fromDate),
           supabase
-            .from("profile_stats")
-            .select("user_id", { count: "exact", head: true })
-            .eq("is_paid", true),
+            .from("user_signups")
+            .select("id", { count: "exact", head: true }),
         ]);
 
-        if (signupsResult.error || actionsResult.error || totalUpgradedUsersResult.error) {
+        if (signupsResult.error || actionsResult.error || totalUsersResult.error) {
           console.error("[DASHBOARD_OWNER_STATS] Error loading quick stats:", {
             signupsError: signupsResult.error,
             actionsError: actionsResult.error,
-            totalUpgradedUsersError: totalUpgradedUsersResult.error,
+            totalUsersError: totalUsersResult.error,
           });
-          setOwnerQuickStats({ signups24h: 0, activeUsers24h: 0, totalUpgradedUsers: 0 });
+          setOwnerQuickStats({ signups24h: 0, activeUsers24h: 0, totalUsers: 0 });
           setLoadingOwnerQuickStats(false);
           return;
         }
@@ -718,11 +717,11 @@ export default function DashboardPage() {
         setOwnerQuickStats({
           signups24h: signupsResult.count ?? 0,
           activeUsers24h,
-          totalUpgradedUsers: totalUpgradedUsersResult.count ?? 0,
+          totalUsers: totalUsersResult.count ?? 0,
         });
       } catch (error) {
         console.error("[DASHBOARD_OWNER_STATS] Unexpected error:", error);
-        setOwnerQuickStats({ signups24h: 0, activeUsers24h: 0, totalUpgradedUsers: 0 });
+        setOwnerQuickStats({ signups24h: 0, activeUsers24h: 0, totalUsers: 0 });
       }
       setLoadingOwnerQuickStats(false);
     }
@@ -740,7 +739,7 @@ export default function DashboardPage() {
             {[
               { label: "Signups 24h", value: ownerQuickStats.signups24h, tones: "bg-gray-100 border-gray-200" },
               { label: "Active 24h", value: ownerQuickStats.activeUsers24h, tones: "bg-blue-100 border-blue-200" },
-              { label: "Total Upgraded", value: ownerQuickStats.totalUpgradedUsers, tones: "bg-amber-100 border-amber-200" },
+              { label: "Total Users", value: ownerQuickStats.totalUsers, tones: "bg-amber-100 border-amber-200" },
             ].map((card) => (
               <div
                 key={card.label}

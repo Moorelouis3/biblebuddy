@@ -825,12 +825,82 @@ The chapter does not read like a wasted life. It reads like the end of a long as
 That is why the final lesson fits the whole devotional. The calling of Moses was never mainly about arriving somewhere famous. It was about hearing God, obeying God, and belonging to God all the way to the end.`,
 };
 
+const cinematicExpansions: Record<number, string> = {
+  1: `You can almost feel the air of Exodus 1 getting tighter with every paragraph. First there is growth. Then there is suspicion. Then there are whips, bricks, orders, and blood. Pharaoh is scared of what he cannot control, so he turns national fear into state cruelty.
+
+That is the world Moses is born into. His story does not begin in safety. It begins with oppressed mothers, crying homes, ruthless power, and a king trying to stop the future before it can breathe.`,
+  2: `Exodus 2 plays like a film. A mother sealing a basket. A sister hiding in the reeds. A princess stepping toward a crying baby. Then the wild turn: the child's own mother is brought back in to nurse him.
+
+But the chapter refuses to stay soft. Moses grows, sees injustice, kills a man, hides the body, gets exposed, and suddenly the protected child becomes a fugitive. Rescue and collapse live in the same chapter.`,
+  3: `Hebrews 11 lets you see the palace years from heaven's angle. Moses is not just confused about identity. He is choosing. He is refusing the full comfort of Egypt because something in him already knows he belongs with God's people more than Pharaoh's world.
+
+That makes day three important. Before Moses ever hears God's voice from the bush, the bend of his heart is already starting to pull away from Egypt's glory.`,
+  4: `Acts 7 makes Moses' failed rescue attempt feel even sharper. He is educated, gifted, and already reaching toward justice, but he moves ahead of God's timing and it blows up in his face.
+
+That is part of the drama of Moses' life. He can see the pain clearly, but seeing the pain is not the same as carrying the assignment God's way.`,
+  5: `Midian is not just a dot on a map. It is the place where Moses disappears from the spotlight and learns how it feels to live unknown. The man raised in courts now sits by a well like a stranger with no title left.
+
+That is where the next chapter begins. God often takes people out of the room they thought defined them and teaches them who they are somewhere quieter.`,
+  6: `The wilderness years have to be imagined the right way. Dust, routine, animals, family, silence, and long days that probably did not look impressive at all. Moses is not seeing miracles every morning. He is learning patience.
+
+And that matters because later he will have to lead stubborn people through hard ground. The hidden years are teaching him things the palace never could.`,
+  7: `Exodus 2 closes with groaning in Egypt and quiet preparation in Midian. The people are crying in one place while the answer is being shaped in another place.
+
+That is the cinematic tension of the chapter. Heaven is already moving on both sides of the story before anyone on earth can see how the lines will meet.`,
+  8: `Exodus 3 starts on what feels like a normal workday, and then the desert turns holy. A bush burns without burning up. Moses turns aside. God calls his name twice.
+
+That scene matters because the whole rest of Moses' life hangs on one decision to stop and pay attention. Calling begins when ordinary life gets interrupted and you actually listen.`,
+  9: `Take off your sandals. Hide your face. Listen carefully. Exodus 3 slows everything down so you feel the weight of who is speaking. Before there is mission, there is holiness.
+
+Moses is not receiving a life coach speech. He is standing before the God of Abraham, Isaac, and Jacob. The fear in him is right, because the ground itself has become sacred.`,
+  10: `When God says, "I have seen, I have heard, I have come down," the story shifts from suffering noticed to rescue beginning. Then comes the shock: Moses is the one being sent.
+
+This is where the chapter becomes intensely personal. The shepherd in exile is suddenly being pulled straight back into the wound he once ran from.`,
+  11: `The "Who am I?" question is not fake humility. It comes from a man who remembers the body in the sand, the years in hiding, and the sense that Egypt already spat him out once.
+
+That is why God's answer is so beautiful. He does not hand Moses a better self-image. He gives Moses His presence.`,
+  12: `Exodus 4 keeps stacking excuse on top of excuse until you can feel how badly Moses wants the calling to belong to someone else. Signs appear, but fear keeps talking.
+
+The chapter is cinematic because God keeps answering the very places Moses feels most unqualified. Staff, hand, mouth, brother, road. God keeps meeting him on the exact ground of his weakness.`,
+  13: `There is something painfully human about "Please send someone else." By then Moses knows this is real. The only thing left is plain resistance.
+
+And yet the story does not end there. God does not cancel the assignment. He adjusts help around it and keeps Moses moving toward obedience.`,
+  14: `Walking back into Egypt had to feel unreal. The land of failure becomes the land of assignment. The man who ran now walks back carrying the word of God instead of panic.
+
+That is part of the power of Moses' story. Obedience often sends you back toward the place where fear once owned you, but not as the same person.`,
+  15: `Exodus 5 is one of the hardest obedience chapters in Scripture because Moses obeys and everything gets worse. Pharaoh gets harsher. The people get crushed. Moses gets blamed.
+
+This is the episode where the story feels like it might fall apart. And still, the important thing is where Moses takes his confusion: back to God.`,
+  16: `By the time the plagues begin rolling through Egypt, the atmosphere has changed. Courtroom scenes, signs, magicians, blood in the Nile, and the slow humiliation of a whole empire.
+
+Moses is learning to walk back into the same hard room again and again with the same message until God's power becomes impossible to ignore.`,
+  17: `Passover night is full of tension. Families indoors. Blood on doorposts. Roasted lamb. Staffs in hand. The sound of judgment moving through Egypt and deliverance moving over God's people.
+
+For Moses, this is the night when the word he carried for so long finally becomes visible in history.`,
+  18: `Exodus 14 is one of the most cinematic chapters in the Bible because every direction looks like death. Water in front. Dust of chariots behind. Panic in the camp.
+
+Then comes the wind, the path through the sea, the walls of water, and Moses standing in a moment no human could have invented. The man who once fled Egypt now watches God crush Egypt's power.`,
+  19: `Numbers 11 shows what happens after the giant miracles are over and leadership becomes daily weight. Complaints do not stop. Need does not stop. Pressure does not stop.
+
+This is where Moses' story feels deeply human again. He is tired enough to say so. He is overwhelmed enough to say so. God meets him there with help, not shame.`,
+  20: `By Deuteronomy 32, Moses sounds like a man who has walked long enough with God to turn memory into warning and worship into inheritance. The desert has matured his voice.
+
+The story is not just ending. Moses is handing the next generation language strong enough to outlive him.`,
+  21: `Deuteronomy 34 closes like a final wide shot. Moses climbs, looks across the land, and sees what he spent his life moving toward. He does not step into it, but he does not die abandoned either.
+
+He dies seen by God, known by God, and remembered as a man who finished the work given to him. That is why the ending feels sad and strong at the same time.`,
+};
+
 const finalDevotionalDays: DevotionalDay[] = devotionalDays.map((day) => ({
   ...day,
   ...(devotionalDayOverrides[day.day_number] || {}),
-  devotional_text: chapterStoryExpansions[day.day_number]
-    ? `${(devotionalDayOverrides[day.day_number]?.devotional_text ?? day.devotional_text)}\n\n${chapterStoryExpansions[day.day_number]}`
-    : (devotionalDayOverrides[day.day_number]?.devotional_text ?? day.devotional_text),
+  devotional_text: [
+    devotionalDayOverrides[day.day_number]?.devotional_text ?? day.devotional_text,
+    chapterStoryExpansions[day.day_number] ?? null,
+    cinematicExpansions[day.day_number] ?? null,
+  ]
+    .filter(Boolean)
+    .join("\n\n"),
 }));
 
 async function main() {

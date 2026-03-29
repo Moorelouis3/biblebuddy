@@ -93,6 +93,9 @@ export default function DevotionalsPage() {
     if (title === "The Heart of David") {
       return "/heartofdaviddevotional.png";
     }
+    if (title === "The Obedience of Abraham") {
+      return "/obedienceofabraham.png";
+    }
     return null;
   };
 
