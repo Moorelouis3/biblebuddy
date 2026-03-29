@@ -87,6 +87,9 @@ export default function DevotionalsPage() {
     if (title === "The Faith of Job") {
       return "/faithofjob.png";
     }
+    if (title === "The Calling of Moses") {
+      return "/callingofmosesdevotional.png";
+    }
     return null;
   };
 
@@ -242,4 +245,3 @@ export default function DevotionalsPage() {
     </div>
   );
 }
-
