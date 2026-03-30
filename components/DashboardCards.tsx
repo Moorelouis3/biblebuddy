@@ -42,178 +42,188 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   onInviteBuddy,
 }) => {
   const showFreeUpgradeCard = membershipStatus !== "pro" && profile?.is_paid !== true;
+
   const recommendationThemeClasses = {
     rose: {
-      card: "border-[#f3c8c8] bg-gradient-to-br from-[#fff1f1] via-[#fff7f4] to-[#fff9ef]",
-      arrow: "text-[#d66f6f]",
-      eyebrow: "text-[#ca7a7a]",
-      pill: "border-[#efc9c9] bg-white/80 text-[#a45a5a]",
+      shell: "border-[#f3d6d6] bg-gradient-to-br from-[#fff6f4] via-[#fffaf8] to-[#fffdfb]",
+      accent: "text-[#c97979]",
+      chip: "border-[#efd3d3] bg-white text-[#a86060]",
+      stripe: "from-[#f6caca] to-[#f8e0c8]",
     },
     blue: {
-      card: "border-[#bfd5ff] bg-gradient-to-br from-[#eef5ff] via-[#f4f8ff] to-[#f6fbff]",
-      arrow: "text-[#5f8ee0]",
-      eyebrow: "text-[#6082c6]",
-      pill: "border-[#d8e4ff] bg-white/80 text-[#446bb0]",
+      shell: "border-[#cfe0ff] bg-gradient-to-br from-[#f3f7ff] via-[#f8fbff] to-[#fcfdff]",
+      accent: "text-[#5f84cc]",
+      chip: "border-[#dbe8ff] bg-white text-[#4768af]",
+      stripe: "from-[#bfd4ff] to-[#d7e7ff]",
     },
     green: {
-      card: "border-[#bedebe] bg-gradient-to-br from-[#eef9ee] via-[#f5fbf3] to-[#f8fdf5]",
-      arrow: "text-[#5da368]",
-      eyebrow: "text-[#5f9364]",
-      pill: "border-[#d6ead6] bg-white/80 text-[#467b4c]",
+      shell: "border-[#cfe7d1] bg-gradient-to-br from-[#f4fbf4] via-[#f8fdf8] to-[#fcfffc]",
+      accent: "text-[#5d9263]",
+      chip: "border-[#dbecdc] bg-white text-[#4b7c51]",
+      stripe: "from-[#c8e6cb] to-[#e3f3d7]",
     },
     purple: {
-      card: "border-[#d7c8f5] bg-gradient-to-br from-[#f5efff] via-[#faf7ff] to-[#fcfbff]",
-      arrow: "text-[#8b70c9]",
-      eyebrow: "text-[#8a6fc2]",
-      pill: "border-[#e6dcfb] bg-white/80 text-[#7357b1]",
+      shell: "border-[#dfd1f7] bg-gradient-to-br from-[#f8f4ff] via-[#fbf9ff] to-[#fefcff]",
+      accent: "text-[#876ec2]",
+      chip: "border-[#e8dffb] bg-white text-[#7057ac]",
+      stripe: "from-[#d8caf7] to-[#ebe2ff]",
     },
     gold: {
-      card: "border-[#ecd8a6] bg-gradient-to-br from-[#fff8e9] via-[#fffbee] to-[#fffdf7]",
-      arrow: "text-[#ba8b26]",
-      eyebrow: "text-[#b1832c]",
-      pill: "border-[#f1e3bc] bg-white/80 text-[#9a6d14]",
+      shell: "border-[#efdfb8] bg-gradient-to-br from-[#fff9ef] via-[#fffdf5] to-[#fffefb]",
+      accent: "text-[#af8430]",
+      chip: "border-[#f2e5c3] bg-white text-[#936915]",
+      stripe: "from-[#f0d58f] to-[#f7ebbe]",
     },
   } as const;
+
   const recommendationTheme =
     recommendationThemeClasses[dailyRecommendation?.cardTheme || "rose"] || recommendationThemeClasses.rose;
 
+  const recommendationMood =
+    dailyRecommendation?.cardTheme === "green"
+      ? "hands"
+      : dailyRecommendation?.cardTheme === "blue"
+        ? "bible"
+        : dailyRecommendation?.cardTheme === "purple"
+          ? "think"
+          : dailyRecommendation?.cardTheme === "gold"
+            ? "cool"
+            : "smile";
+
   return (
     <div className="flex flex-col gap-4">
-      <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm relative">
-        {isLoadingLevel ? (
-          <>
-            <div className="flex items-center gap-2 mb-2">
-              <h2 className="text-xl font-semibold">Loading</h2>
-              <div className="flex gap-1 items-center h-6">
-                <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_infinite]">.</span>
-                <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_0.2s_infinite]">.</span>
-                <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_0.4s_infinite]">.</span>
+      <div className="overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-sm">
+        <div className="bg-gradient-to-r from-[#f8fbff] via-white to-[#fffaf3] px-5 py-5 md:px-6">
+          {isLoadingLevel ? (
+            <>
+              <div className="flex items-center gap-2 mb-2">
+                <h2 className="text-xl font-semibold text-gray-900">Loading your dashboard</h2>
+                <div className="flex gap-1 items-center h-6">
+                  <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_infinite]">.</span>
+                  <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_0.2s_infinite]">.</span>
+                  <span className="text-gray-500 text-2xl animate-[bounce_1.4s_ease-in-out_0.4s_infinite]">.</span>
+                </div>
+              </div>
+              <div className="mb-3 h-3 rounded-full bg-gray-200 overflow-hidden">
+                <div className="h-full w-1/3 rounded-full bg-blue-300 animate-pulse"></div>
+              </div>
+              <div className="h-4 w-40 rounded bg-gray-200"></div>
+            </>
+          ) : levelInfo ? (
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0 flex-1">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="text-[11px] uppercase tracking-[0.22em] font-semibold text-gray-400">Your Progress</p>
+                    <h2 className="mt-1 text-[1.45rem] font-semibold text-gray-950">
+                      Level {levelInfo.level} "{levelInfo.levelName}"
+                    </h2>
+                  </div>
+                  <button
+                    onClick={() => setShowLevelInfoModal(true)}
+                    className="text-gray-400 hover:text-gray-600 text-lg font-bold w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-100 transition shrink-0"
+                    title="Learn about levels"
+                  >
+                    ?
+                  </button>
+                </div>
+                <p className="mt-2 text-sm text-gray-700">{levelInfo.identityText}</p>
+                <div className="mt-4 h-3 rounded-full bg-gray-200 overflow-hidden">
+                  <div
+                    className="h-full rounded-full bg-blue-500 transition-all duration-300"
+                    style={{ width: `${levelInfo.progressPercent}%` }}
+                  />
+                </div>
+                <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+                  <p className="font-medium text-gray-600">
+                    {levelInfo.pointsToNextLevel > 0
+                      ? `${levelInfo.pointsToNextLevel} points until Level ${levelInfo.level + 1}`
+                      : "You've reached the top level"}
+                  </p>
+                  {profile && profile.is_paid === false && (
+                    <p className="font-medium text-gray-600">
+                      Daily credits left: {profile.daily_credits ?? 0}
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
-            <p className="text-gray-700 text-sm mb-4">Loading your level...</p>
-            <div className="mb-3">
-              <div className="h-3 rounded-full bg-gray-200 overflow-hidden">
-                <div className="h-full bg-blue-300 rounded-full w-1/3 animate-pulse"></div>
+          ) : null}
+        </div>
+
+        <div className={`border-t px-5 py-4 md:px-6 ${recommendationTheme.shell}`}>
+          {isLoadingRecommendation ? (
+            <div className="flex items-center gap-3">
+              <div className="rounded-full bg-white/80 p-1.5 shadow-sm">
+                <LouisAvatar mood="wave" size={42} />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-gray-900">Louis is picking your next step</p>
+                <div className="flex items-center gap-1 mt-1">
+                  <span className="text-gray-500 text-sm">Loading</span>
+                  <span className="text-gray-500 text-xl animate-[bounce_1.4s_ease-in-out_infinite]">.</span>
+                  <span className="text-gray-500 text-xl animate-[bounce_1.4s_ease-in-out_0.2s_infinite]">.</span>
+                  <span className="text-gray-500 text-xl animate-[bounce_1.4s_ease-in-out_0.4s_infinite]">.</span>
+                </div>
               </div>
             </div>
-            <div className="flex items-center gap-1">
-              <div className="h-4 bg-gray-200 rounded w-32"></div>
-            </div>
-          </>
-        ) : levelInfo ? (
-          <>
-            <div className="flex items-start justify-between mb-2">
-              <h2 className="text-xl font-semibold">
-                Level {levelInfo.level} "{levelInfo.levelName}"
-              </h2>
-              <button
-                onClick={() => setShowLevelInfoModal(true)}
-                className="text-gray-400 hover:text-gray-600 text-lg font-bold w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
-                title="Learn about levels"
-              >
-                ?
-              </button>
-            </div>
-            <p className="text-gray-700 text-sm mb-4">{levelInfo.identityText}</p>
-            <div className="mb-3">
-              <div className="h-3 rounded-full bg-gray-200 overflow-hidden">
-                <div
-                  className="h-full bg-blue-500 rounded-full transition-all duration-300"
-                  style={{ width: `${levelInfo.progressPercent}%` }}
-                />
+          ) : dailyRecommendation && dailyRecommendationCardTitle && dailyRecommendationCardSubtitle ? (
+            <Link href={dailyRecommendation.primaryButtonHref} className="block">
+              <div className="flex items-start gap-3">
+                <div className="rounded-full border border-white/80 bg-white/85 p-1.5 shadow-sm shrink-0">
+                  <LouisAvatar mood={recommendationMood} size={44} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className={`text-[11px] uppercase tracking-[0.22em] font-semibold ${recommendationTheme.accent}`}>
+                        {dailyRecommendation.cardEyebrow || "Today's Recommendation"}
+                      </p>
+                      <h3 className="mt-1 text-lg font-semibold leading-tight text-gray-950">
+                        {dailyRecommendationCardTitle}
+                      </h3>
+                    </div>
+                    <span className={`shrink-0 rounded-full border px-3 py-1 text-xs font-semibold ${recommendationTheme.chip}`}>
+                      {dailyRecommendation.primaryButtonText} →
+                    </span>
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-700">{dailyRecommendationCardSubtitle}</p>
+                  {dailyRecommendation.contextLine ? (
+                    <p className="mt-2 text-xs leading-relaxed text-gray-500">{dailyRecommendation.contextLine}</p>
+                  ) : null}
+                </div>
               </div>
+            </Link>
+          ) : (
+            <div className="flex items-center gap-3">
+              <div className="rounded-full bg-white/80 p-1.5 shadow-sm">
+                <LouisAvatar mood="wave" size={42} />
+              </div>
+              <p className="text-sm text-gray-600">Louis will have a new next step for you soon.</p>
             </div>
-            <p className="text-sm text-gray-600 font-medium">
-              {levelInfo.pointsToNextLevel > 0
-                ? `You have ${levelInfo.pointsToNextLevel} points until Level ${levelInfo.level + 1}`
-                : "You've reached the top level"}
-            </p>
-            {profile && profile.is_paid === false && (
-              <p className="text-sm text-gray-600 font-medium mt-2">
-                Daily credits left: {profile.daily_credits ?? 0}
-              </p>
-            )}
-          </>
-        ) : null}
+          )}
+        </div>
       </div>
 
       {showFreeUpgradeCard && (
         <Link href="/upgrade">
-          <div className="bg-[#fff7ec] border border-[#f0d7b3] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative">
-            <span className="absolute right-4 top-4 text-[#b7791f] text-base" aria-hidden="true">↑</span>
-            <div className="flex items-start gap-3">
-              <div className="text-2xl leading-none">👑</div>
+          <div className="rounded-2xl border border-[#f0d7b3] bg-[#fff8ef] px-4 py-3 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative">
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#b7791f] text-base" aria-hidden="true">↑</span>
+            <div className="flex items-center gap-3 pr-7">
+              <div className="text-xl leading-none">👑</div>
               <div className="min-w-0">
-                <h2 className="text-xl font-semibold text-[#8a4b14]">Go Deeper With Pro</h2>
-                <p className="text-sm text-gray-700 mt-1 leading-relaxed">
-                  Unlock deeper Bible study, open the full devotional library, and keep your momentum going without daily credit limits.
+                <p className="text-sm font-semibold text-[#8a4b14]">Go Deeper With Pro</p>
+                <p className="text-xs leading-relaxed text-gray-600">
+                  Unlock the full devotional library and remove the daily credit wall.
                 </p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f6e4ca] text-[#9a5b1f]">Unlimited study access</span>
-                  <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f6e4ca] text-[#9a5b1f]">Full devotionals</span>
-                  <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f6e4ca] text-[#9a5b1f]">No daily credit wall</span>
-                </div>
               </div>
             </div>
           </div>
         </Link>
       )}
 
-      {isLoadingRecommendation ? (
-        <div className="rounded-2xl border border-[#f3c8c8] bg-gradient-to-br from-[#fff1f1] via-[#fff7f4] to-[#fff9ef] p-5 shadow-sm relative">
-          <h2 className="text-xl font-semibold">Today's Recommendation</h2>
-          <div className="flex items-center gap-1 mt-3">
-            <span className="text-gray-500 text-sm">Loading</span>
-            <span className="text-gray-500 text-xl animate-[bounce_1.4s_ease-in-out_infinite]">.</span>
-            <span className="text-gray-500 text-xl animate-[bounce_1.4s_ease-in-out_0.2s_infinite]">.</span>
-            <span className="text-gray-500 text-xl animate-[bounce_1.4s_ease-in-out_0.4s_infinite]">.</span>
-          </div>
-        </div>
-      ) : dailyRecommendation && dailyRecommendationCardTitle && dailyRecommendationCardSubtitle ? (
-        <Link href={dailyRecommendation.primaryButtonHref}>
-          <div className={`rounded-2xl border p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative ${recommendationTheme.card}`}>
-            <span className={`absolute right-4 top-4 text-base ${recommendationTheme.arrow}`} aria-hidden="true">→</span>
-            <div className="flex items-start justify-between gap-3">
-              <div className="flex items-start gap-3 min-w-0">
-                <div className="shrink-0 rounded-full border border-white/70 bg-white/70 p-1 shadow-sm">
-                  <LouisAvatar
-                    mood={
-                      dailyRecommendation.cardTheme === "green"
-                        ? "hands"
-                        : dailyRecommendation.cardTheme === "blue"
-                          ? "bible"
-                          : dailyRecommendation.cardTheme === "purple"
-                            ? "think"
-                            : dailyRecommendation.cardTheme === "gold"
-                              ? "cool"
-                              : "smile"
-                    }
-                    size={46}
-                  />
-                </div>
-                <div className="min-w-0">
-                  <p className={`text-[11px] uppercase tracking-[0.2em] font-semibold ${recommendationTheme.eyebrow}`}>
-                    {dailyRecommendation.cardEyebrow || "Today's Recommendation"}
-                  </p>
-                  <h2 className="text-[1.35rem] font-semibold text-gray-950 mt-1">
-                    ✨ {dailyRecommendationCardTitle}
-                  </h2>
-                </div>
-              </div>
-              <span className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${recommendationTheme.pill}`}>
-                {dailyRecommendation.primaryButtonText}
-              </span>
-            </div>
-            <p className="text-sm text-gray-700 mt-3 leading-relaxed">{dailyRecommendationCardSubtitle}</p>
-            {dailyRecommendation.contextLine ? (
-              <p className="text-xs text-gray-500 mt-3 leading-relaxed">{dailyRecommendation.contextLine}</p>
-            ) : null}
-          </div>
-        </Link>
-      ) : null}
-
       {membershipStatus === "pro" && daysRemaining !== null && daysRemaining > 0 && (
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-sm">
+        <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 shadow-sm">
           <p className="text-sm text-blue-800 font-medium">
             Pro expires in {daysRemaining} {daysRemaining === 1 ? "day" : "days"}
           </p>
