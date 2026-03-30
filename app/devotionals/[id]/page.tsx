@@ -11,6 +11,8 @@ function getCoverImage(title: string): string | null {
   if (title === "The Heart of David") return "/heartofdaviddevotional.png";
   if (title === "The Obedience of Abraham") return "/obedienceofabraham.png";
   if (title === "The Transforming of Paul") return "/transformingofpauldevotional.png";
+  if (title === "The Courage of Daniel") return "/courageofdaniel.png";
+  if (title === "The Rise of Esther") return "/RiseofEsther.png";
   return null;
 }
 import { useEffect, useState } from "react";

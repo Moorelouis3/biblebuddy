@@ -99,6 +99,12 @@ export default function DevotionalsPage() {
     if (title === "The Transforming of Paul") {
       return "/transformingofpauldevotional.png";
     }
+    if (title === "The Courage of Daniel") {
+      return "/courageofdaniel.png";
+    }
+    if (title === "The Rise of Esther") {
+      return "/RiseofEsther.png";
+    }
     return null;
   };
 
