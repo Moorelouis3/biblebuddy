@@ -50,6 +50,13 @@ function isMeaningfulActionType(actionType: string): boolean {
   return !NON_STREAK_ACTION_TYPES.has(actionType as typeof ACTION_TYPE.user_signup) && actionType !== ACTION_TYPE.user_login;
 }
 
+function getLocalDateString(date: Date): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 /**
  * Get profile stats for a user (from profile_stats table)
  */
@@ -130,7 +137,7 @@ export async function getHeatMapData(
       { actions: number; loginCount: number; meaningfulCount: number }
     >();
     data?.forEach((action) => {
-      const date = new Date(action.created_at).toISOString().slice(0, 10); // YYYY-MM-DD
+      const date = getLocalDateString(new Date(action.created_at));
       const current = actionsByDate.get(date) || {
         actions: 0,
         loginCount: 0,
@@ -152,7 +159,7 @@ export async function getHeatMapData(
     for (let i = daysToShow - 1; i >= 0; i--) {
       const date = new Date(today);
       date.setDate(date.getDate() - i);
-      const dateStr = date.toISOString().slice(0, 10);
+      const dateStr = getLocalDateString(date);
       const stats = actionsByDate.get(dateStr) || {
         actions: 0,
         loginCount: 0,

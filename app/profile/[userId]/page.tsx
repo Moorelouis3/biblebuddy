@@ -71,11 +71,26 @@ function getHeatMapCellClasses(level: HeatMapDay["level"]): string {
 
 function buildHeatMapWeeks(days: HeatMapDay[]) {
   const weeks: Array<Array<HeatMapDay | null>> = [];
-  for (let i = 0; i < days.length; i += 7) {
-    const week: Array<HeatMapDay | null> = days.slice(i, i + 7);
-    while (week.length < 7) week.push(null);
-    weeks.push(week);
+  if (days.length === 0) return weeks;
+
+  let currentWeek: Array<HeatMapDay | null> = [];
+  const firstDay = new Date(`${days[0].date}T00:00:00`);
+  const leadingNulls = firstDay.getDay();
+  for (let i = 0; i < leadingNulls; i++) currentWeek.push(null);
+
+  days.forEach((day) => {
+    currentWeek.push(day);
+    if (currentWeek.length === 7) {
+      weeks.push(currentWeek);
+      currentWeek = [];
+    }
+  });
+
+  if (currentWeek.length > 0) {
+    while (currentWeek.length < 7) currentWeek.push(null);
+    weeks.push(currentWeek);
   }
+
   return weeks;
 }
 
@@ -1112,60 +1127,64 @@ export default function PublicProfilePage() {
                 </div>
               ) : null}
 
-              <div className="mb-3 flex pl-7 text-[11px] font-medium text-gray-500 sm:pl-10">
-                {heatMapMonthLabels.map((month, index) => (
-                  <div key={`${month.label}-${index}`} className="w-3 mr-0.5 text-left sm:w-3.5 sm:mr-1">
-                    {month.label}
+              <div className="overflow-x-auto pb-1">
+                <div className="min-w-max">
+                  <div className="mb-3 flex pl-7 text-[11px] font-medium text-gray-500 sm:pl-10">
+                    {heatMapMonthLabels.map((month, index) => (
+                      <div key={`${month.label}-${index}`} className="w-3 mr-0.5 text-left sm:w-3.5 sm:mr-1">
+                        {month.label}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
 
-              <div className="flex gap-2 sm:gap-3">
-                <div className="grid grid-rows-7 gap-0.5 pt-[1px] text-[11px] text-gray-400 sm:gap-1 sm:text-xs">
-                  {HEATMAP_WEEKDAY_LABELS.map((label, index) => (
-                    <div key={label} className="h-3 w-5 leading-3 sm:h-3.5 sm:w-7 sm:leading-4">
-                      {index === 1 || index === 3 || index === 5 ? label : ""}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex gap-0.5 sm:gap-1">
-                  {heatMapWeeks.map((week, weekIndex) => (
-                    <div key={`week-${weekIndex}`} className="grid grid-rows-7 gap-0.5 sm:gap-1">
-                      {week.map((day, dayIndex) => (
-                        <button
-                          key={day ? day.date : `empty-${weekIndex}-${dayIndex}`}
-                          type="button"
-                          onMouseEnter={(event) => {
-                            if (!day || !heatMapCardRef.current) return;
-                            const cardRect = heatMapCardRef.current.getBoundingClientRect();
-                            const cellRect = event.currentTarget.getBoundingClientRect();
-                            setHoveredHeatMapDay({
-                              day,
-                              x: cellRect.left - cardRect.left + cellRect.width / 2,
-                              y: cellRect.top - cardRect.top,
-                            });
-                          }}
-                          onMouseLeave={() => setHoveredHeatMapDay((current) => (current?.day.date === day?.date ? null : current))}
-                          onFocus={(event) => {
-                            if (!day || !heatMapCardRef.current) return;
-                            const cardRect = heatMapCardRef.current.getBoundingClientRect();
-                            const cellRect = event.currentTarget.getBoundingClientRect();
-                            setHoveredHeatMapDay({
-                              day,
-                              x: cellRect.left - cardRect.left + cellRect.width / 2,
-                              y: cellRect.top - cardRect.top,
-                            });
-                          }}
-                          onBlur={() => setHoveredHeatMapDay((current) => (current?.day.date === day?.date ? null : current))}
-                          className={`h-3 w-3 rounded-[3px] border transition-transform hover:scale-110 focus:scale-110 focus:outline-none sm:h-3.5 sm:w-3.5 ${
-                            day ? getHeatMapCellClasses(day.level) : "border-transparent bg-transparent"
-                          } ${day ? "" : "pointer-events-none"}`}
-                          aria-label={day ? `${getHeatMapTooltip(day).countLabel} on ${getHeatMapTooltip(day).dateLabel}` : undefined}
-                        />
+                  <div className="flex gap-2 sm:gap-3">
+                    <div className="grid grid-rows-7 gap-0.5 pt-[1px] text-[11px] text-gray-400 sm:gap-1 sm:text-xs">
+                      {HEATMAP_WEEKDAY_LABELS.map((label, index) => (
+                        <div key={label} className="h-3 w-5 leading-3 sm:h-3.5 sm:w-7 sm:leading-4">
+                          {index === 1 || index === 3 || index === 5 ? label : ""}
+                        </div>
                       ))}
                     </div>
-                  ))}
+
+                    <div className="flex gap-0.5 sm:gap-1">
+                      {heatMapWeeks.map((week, weekIndex) => (
+                        <div key={`week-${weekIndex}`} className="grid grid-rows-7 gap-0.5 sm:gap-1">
+                          {week.map((day, dayIndex) => (
+                            <button
+                              key={day ? day.date : `empty-${weekIndex}-${dayIndex}`}
+                              type="button"
+                              onMouseEnter={(event) => {
+                                if (!day || !heatMapCardRef.current) return;
+                                const cardRect = heatMapCardRef.current.getBoundingClientRect();
+                                const cellRect = event.currentTarget.getBoundingClientRect();
+                                setHoveredHeatMapDay({
+                                  day,
+                                  x: cellRect.left - cardRect.left + cellRect.width / 2,
+                                  y: cellRect.top - cardRect.top,
+                                });
+                              }}
+                              onMouseLeave={() => setHoveredHeatMapDay((current) => (current?.day.date === day?.date ? null : current))}
+                              onFocus={(event) => {
+                                if (!day || !heatMapCardRef.current) return;
+                                const cardRect = heatMapCardRef.current.getBoundingClientRect();
+                                const cellRect = event.currentTarget.getBoundingClientRect();
+                                setHoveredHeatMapDay({
+                                  day,
+                                  x: cellRect.left - cardRect.left + cellRect.width / 2,
+                                  y: cellRect.top - cardRect.top,
+                                });
+                              }}
+                              onBlur={() => setHoveredHeatMapDay((current) => (current?.day.date === day?.date ? null : current))}
+                              className={`h-3 w-3 rounded-[3px] border transition-transform hover:scale-110 focus:scale-110 focus:outline-none sm:h-3.5 sm:w-3.5 ${
+                                day ? getHeatMapCellClasses(day.level) : "border-transparent bg-transparent"
+                              } ${day ? "" : "pointer-events-none"}`}
+                              aria-label={day ? `${getHeatMapTooltip(day).countLabel} on ${getHeatMapTooltip(day).dateLabel}` : undefined}
+                            />
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
 
