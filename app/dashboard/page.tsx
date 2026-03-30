@@ -683,7 +683,7 @@ export default function DashboardPage() {
       try {
         const fromDate = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
 
-        const [signupsResult, actionsResult, totalUsersResult] = await Promise.all([
+        const [signupsResult, actionsResult, totalUsersResponse] = await Promise.all([
           supabase
             .from("user_signups")
             .select("id", { count: "exact", head: true })
@@ -692,21 +692,21 @@ export default function DashboardPage() {
             .from("master_actions")
             .select("user_id")
             .gte("created_at", fromDate),
-          supabase
-            .from("user_signups")
-            .select("id", { count: "exact", head: true }),
+          fetch("/api/admin/total-users"),
         ]);
 
-        if (signupsResult.error || actionsResult.error || totalUsersResult.error) {
+        if (signupsResult.error || actionsResult.error || !totalUsersResponse.ok) {
           console.error("[DASHBOARD_OWNER_STATS] Error loading quick stats:", {
             signupsError: signupsResult.error,
             actionsError: actionsResult.error,
-            totalUsersError: totalUsersResult.error,
+            totalUsersError: totalUsersResponse.ok ? null : totalUsersResponse.statusText,
           });
           setOwnerQuickStats({ signups24h: 0, activeUsers24h: 0, totalUsers: 0 });
           setLoadingOwnerQuickStats(false);
           return;
         }
+
+        const totalUsersPayload = await totalUsersResponse.json();
 
         const activeUsers24h = new Set(
           (actionsResult.data || [])
@@ -717,7 +717,7 @@ export default function DashboardPage() {
         setOwnerQuickStats({
           signups24h: signupsResult.count ?? 0,
           activeUsers24h,
-          totalUsers: totalUsersResult.count ?? 0,
+          totalUsers: totalUsersPayload.totalUsers ?? 0,
         });
       } catch (error) {
         console.error("[DASHBOARD_OWNER_STATS] Unexpected error:", error);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { createClient } from "@supabase/supabase-js";
 import ReactMarkdown from "react-markdown";
 import { enrichPlainText } from "../lib/bibleHighlighting";
@@ -89,9 +89,6 @@ export default function DevotionalDayModal({
   const [readingChecked, setReadingChecked] = useState(dayProgress?.reading_completed || false);
   const [reflectionText, setReflectionText] = useState(dayProgress?.reflection_text || "");
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
-  
-  // Highlighting states
-  const [enrichedText, setEnrichedText] = useState<string>("");
   const devotionalTextRef = useRef<HTMLDivElement>(null);
   
   // Modal states for people/places/keywords (same as Bible chapter page)
@@ -183,10 +180,16 @@ export default function DevotionalDayModal({
     setHasUnsavedChanges(false);
   }, [dayProgress]);
 
-  // Apply highlighting to devotional text when day changes
-  useEffect(() => {
-    // No longer needed: enrichment and <br /> logic handled in render
-  }, [day.devotional_text]);
+  const devotionalParagraphs = useMemo(
+    () =>
+      day.devotional_text
+        ? day.devotional_text.split(/\n\s*\n/).map((para, idx) => ({
+            key: `${day.day_number}-${idx}`,
+            html: enrichPlainText(para),
+          }))
+        : [],
+    [day.day_number, day.devotional_text]
+  );
 
   // Event delegation for click handlers on enriched content (same as Bible chapter page)
   useEffect(() => {
@@ -634,15 +637,13 @@ Be accurate to Scripture.`;
               {/* DEVOTIONAL CONTENT SECTION */}
               <div className="mb-8" ref={devotionalTextRef}>
                 <div className="text-gray-700" style={{ fontSize: '1rem' }}>
-                  {day.devotional_text
-                    ? day.devotional_text.split(/\n\s*\n/).map((para, idx) => (
-                        <p
-                          key={idx}
-                          className="mb-4 leading-relaxed"
-                          dangerouslySetInnerHTML={{ __html: enrichPlainText(para) }}
-                        />
-                      ))
-                    : null}
+                  {devotionalParagraphs.map((para) => (
+                    <p
+                      key={para.key}
+                      className="mb-4 leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: para.html }}
+                    />
+                  ))}
                 </div>
               </div>
 
