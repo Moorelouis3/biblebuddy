@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { LouisAvatar } from "./LouisAvatar";
 
@@ -41,6 +41,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   dailyRecommendationCardSubtitle,
   onInviteBuddy,
 }) => {
+  const [showLevelDetails, setShowLevelDetails] = useState(false);
   const showFreeUpgradeCard = membershipStatus !== "pro" && profile?.is_paid !== true;
 
   const recommendationThemeClasses = {
@@ -98,7 +99,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   return (
     <div className="flex flex-col gap-4">
       <div className={`overflow-hidden rounded-[28px] border shadow-sm ${recommendationTheme.outer}`}>
-        <div className="px-5 py-5 md:px-6">
+        <div className="px-5 py-4 md:px-6">
           {isLoadingLevel ? (
             <>
               <div className="flex items-center gap-2 mb-2">
@@ -119,27 +120,36 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
               <div className="min-w-0 flex-1">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="text-[11px] uppercase tracking-[0.22em] font-semibold text-gray-400">Your Progress</p>
-                    <h2 className="mt-1 text-[1.45rem] font-semibold text-gray-950">
-                      Level {levelInfo.level} "{levelInfo.levelName}"
+                    <h2 className="pr-2 text-[1rem] font-semibold leading-tight text-gray-950 sm:text-[1.2rem]">
+                      You are a Level {levelInfo.level} "{levelInfo.levelName}"
                     </h2>
                   </div>
-                  <button
-                    onClick={() => setShowLevelInfoModal(true)}
-                    className="text-gray-400 hover:text-gray-600 text-lg font-bold w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-100 transition shrink-0"
-                    title="Learn about levels"
-                  >
-                    ?
-                  </button>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => setShowLevelDetails((current) => !current)}
+                      className="flex h-8 w-8 items-center justify-center rounded-full text-lg text-gray-400 transition hover:bg-gray-100 hover:text-gray-600"
+                      title={showLevelDetails ? "Hide level details" : "Show level details"}
+                      aria-label={showLevelDetails ? "Hide level details" : "Show level details"}
+                    >
+                      {showLevelDetails ? "⌃" : "⌄"}
+                    </button>
+                    <button
+                      onClick={() => setShowLevelInfoModal(true)}
+                      className="text-gray-400 hover:text-gray-600 text-lg font-bold w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-100 transition shrink-0"
+                      title="Learn about levels"
+                    >
+                      ?
+                    </button>
+                  </div>
                 </div>
-                <p className="mt-2 text-sm text-gray-700">{levelInfo.identityText}</p>
-                <div className="mt-4 h-3 rounded-full bg-gray-200 overflow-hidden">
+                <div className="mt-3 h-3 rounded-full bg-gray-200 overflow-hidden">
                   <div
                     className="h-full rounded-full bg-blue-500 transition-all duration-300"
                     style={{ width: `${levelInfo.progressPercent}%` }}
                   />
                 </div>
-                <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+                <div className="mt-3 space-y-1 text-sm">
                   <p className="font-medium text-gray-600">
                     {levelInfo.pointsToNextLevel > 0
                       ? `${levelInfo.pointsToNextLevel} points until Level ${levelInfo.level + 1}`
@@ -151,12 +161,15 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                     </p>
                   )}
                 </div>
+                {showLevelDetails ? (
+                  <p className="mt-3 text-sm text-gray-600">{levelInfo.identityText}</p>
+                ) : null}
               </div>
             </div>
           ) : null}
         </div>
 
-        <div className={`mx-3 mb-3 rounded-[22px] px-5 py-4 md:mx-4 md:px-6 ${recommendationTheme.inset} ${recommendationTheme.shell}`}>
+        <div className={`mx-3 mb-3 px-5 py-3 md:mx-4 md:px-6 ${recommendationTheme.inset} ${recommendationTheme.shell}`}>
           {isLoadingRecommendation ? (
             <div className="flex items-center gap-3">
               <div className="rounded-full bg-white/80 p-1.5 shadow-sm">
@@ -181,10 +194,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
-                      <p className={`text-[11px] uppercase tracking-[0.22em] font-semibold ${recommendationTheme.accent}`}>
-                        {dailyRecommendation.cardEyebrow || "Today's Recommendation"}
-                      </p>
-                      <h3 className="mt-1 text-lg font-semibold leading-tight text-gray-950">
+                      <h3 className="text-base font-semibold leading-tight text-gray-950 sm:text-lg">
                         {dailyRecommendationCardTitle}
                       </h3>
                     </div>
