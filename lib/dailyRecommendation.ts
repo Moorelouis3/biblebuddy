@@ -28,10 +28,26 @@ const BIBLE_BOOK_ORDER = [
 ] as const;
 
 type RecommendationTheme = "rose" | "blue" | "green" | "purple" | "gold";
+type RecommendationCategory =
+  | "profile"
+  | "group"
+  | "devotional"
+  | "reading_plan"
+  | "bible"
+  | "trivia"
+  | "reference"
+  | "upgrade"
+  | "general";
 
 interface RecommendationCandidate extends DailyRecommendation {
   priority: number;
 }
+
+type RecommendationHistory = {
+  shownAt: string;
+  key: string;
+  category: RecommendationCategory;
+};
 
 interface ProfileSnapshot {
   onboarding_completed?: boolean | null;
@@ -57,6 +73,8 @@ export interface DailyRecommendation {
   cardSubtitle?: string;
   cardEyebrow?: string;
   cardTheme?: RecommendationTheme;
+  recommendationKey?: string;
+  category?: RecommendationCategory;
 }
 
 const MEANINGFUL_ACTIONS = [
@@ -155,8 +173,128 @@ function pickHighestPriority(options: RecommendationCandidate[]): DailyRecommend
   return finalists[Math.floor(Math.random() * finalists.length)] ?? null;
 }
 
-function createRecommendation(input: Omit<RecommendationCandidate, "priority"> & { priority: number }): RecommendationCandidate {
-  return input;
+function getRecommendationHistory(): RecommendationHistory | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem("bb_daily_recommendation_history");
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as RecommendationHistory;
+    if (!parsed?.key || !parsed?.category || !parsed?.shownAt) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function saveRecommendationHistory(recommendation: DailyRecommendation) {
+  if (typeof window === "undefined") return;
+  if (!recommendation.recommendationKey || !recommendation.category) return;
+  const payload: RecommendationHistory = {
+    shownAt: new Date().toISOString(),
+    key: recommendation.recommendationKey,
+    category: recommendation.category,
+  };
+  try {
+    window.localStorage.setItem("bb_daily_recommendation_history", JSON.stringify(payload));
+  } catch {
+    // no-op
+  }
+}
+
+function getTodayActionSet(actions: { action_type: string; created_at: string }[]) {
+  const today = new Date().toISOString().slice(0, 10);
+  const todayActions = actions.filter((action) => action.created_at.slice(0, 10) === today);
+  return {
+    hasDevotional: todayActions.some((action) => action.action_type === "devotional_day_completed"),
+    hasReadingPlan: todayActions.some((action) => action.action_type === "reading_plan_chapter_completed"),
+    hasBible: todayActions.some((action) => action.action_type === "chapter_completed"),
+    hasTrivia: todayActions.some((action) => action.action_type === "trivia_question_answered"),
+    hasReference: todayActions.some((action) =>
+      action.action_type === "person_learned" ||
+      action.action_type === "place_discovered" ||
+      action.action_type === "keyword_mastered"
+    ),
+    hasGroup: todayActions.some((action) =>
+      action.action_type === "series_week_viewed" ||
+      action.action_type === "group_series_started" ||
+      action.action_type === "series_day_completed"
+    ),
+  };
+}
+
+function scoreRecommendation(
+  recommendation: RecommendationCandidate,
+  history: RecommendationHistory | null,
+  todayActions: ReturnType<typeof getTodayActionSet>,
+  suppressLevel1: boolean
+) {
+  let score = recommendation.priority;
+
+  if (suppressLevel1 && recommendation.level === 1) {
+    score -= 10;
+  }
+
+  if (history) {
+    const hoursSinceShown = (Date.now() - new Date(history.shownAt).getTime()) / 3600000;
+    if (hoursSinceShown < 36 && recommendation.recommendationKey === history.key) {
+      score -= 14;
+    } else if (hoursSinceShown < 18 && recommendation.category === history.category) {
+      score -= 7;
+    }
+  }
+
+  if (
+    (recommendation.category === "devotional" && todayActions.hasDevotional) ||
+    (recommendation.category === "reading_plan" && todayActions.hasReadingPlan) ||
+    (recommendation.category === "bible" && todayActions.hasBible) ||
+    (recommendation.category === "trivia" && todayActions.hasTrivia) ||
+    (recommendation.category === "reference" && todayActions.hasReference) ||
+    (recommendation.category === "group" && todayActions.hasGroup)
+  ) {
+    score -= 9;
+  }
+
+  const hour = new Date().getHours();
+  if (hour < 11 && (recommendation.category === "devotional" || recommendation.category === "bible" || recommendation.category === "reading_plan")) {
+    score += 2;
+  }
+  if (hour >= 17 && (recommendation.category === "group" || recommendation.category === "trivia" || recommendation.category === "reference")) {
+    score += 2;
+  }
+
+  return score;
+}
+
+function pickSmartRecommendation(
+  options: RecommendationCandidate[],
+  history: RecommendationHistory | null,
+  todayActions: ReturnType<typeof getTodayActionSet>,
+  suppressLevel1: boolean
+): DailyRecommendation | null {
+  if (!options.length) return null;
+
+  const scored = options.map((option) => ({
+    option,
+    score: scoreRecommendation(option, history, todayActions, suppressLevel1),
+  }));
+
+  const bestScore = Math.max(...scored.map((entry) => entry.score));
+  const finalists = scored
+    .filter((entry) => entry.score >= bestScore - 2)
+    .sort((a, b) => b.score - a.score)
+    .map((entry) => entry.option);
+
+  return finalists[Math.floor(Math.random() * finalists.length)] ?? null;
+}
+
+function createRecommendation(input: Omit<RecommendationCandidate, "priority" | "recommendationKey"> & { priority: number }): RecommendationCandidate {
+  const category = input.category || "general";
+  const recommendationKey = `${category}:${input.primaryButtonHref}:${input.cardTitle || input.primaryButtonText}`;
+  return {
+    ...input,
+    category,
+    recommendationKey,
+  };
 }
 
 export async function getDailyRecommendation(userId: string, suppressLevel1 = false): Promise<DailyRecommendation | null> {
@@ -233,6 +371,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         primaryButtonText: "Finish Profile",
         primaryButtonHref: "/settings",
         level: 2,
+        category: "profile",
         cardEyebrow: "Quick Win",
         cardTitle: "Set up your profile",
         cardSubtitle: "A completed profile makes the whole app feel more personal and more social.",
@@ -280,6 +419,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         primaryButtonText: `Continue Day ${nextDay}`,
         primaryButtonHref: `/devotionals/${activeDevotional.id}`,
         level: 1,
+        category: "devotional",
         cardEyebrow: "Keep Going",
         cardTitle: `Continue ${activeDevotional.title}`,
         cardSubtitle: `You already did the hard part by starting. Pick up with Day ${nextDay} and keep your momentum alive today.`,
@@ -296,6 +436,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         primaryButtonText: "Open Bible Study Group",
         primaryButtonHref: "/study-groups",
         level: 1,
+        category: "group",
         cardEyebrow: "Community",
         cardTitle: "Join the Bible Study Group",
         cardSubtitle: "This is where the live study, real discussion, and Bible Buddy community all come together.",
@@ -349,6 +490,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
               primaryButtonText: "Start Week 1",
               primaryButtonHref: `/study-groups/${seriesRow.group_id}/series`,
               level: 1,
+              category: "group",
               cardEyebrow: "Live Study",
               cardTitle: `Start ${seriesRow.title}`,
               cardSubtitle: "The study is already moving, but the right move is to begin with Week 1 and build from there.",
@@ -363,6 +505,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
               primaryButtonText: `Continue Week ${firstIncompleteWeek}`,
               primaryButtonHref: `/study-groups/${seriesRow.group_id}/series`,
               level: 1,
+              category: "group",
               cardEyebrow: "Next Step",
               cardTitle: `Continue with Week ${firstIncompleteWeek}`,
               cardSubtitle: "Stay in order. Finishing the next unfinished week will make the live study hit harder.",
@@ -390,6 +533,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
           primaryButtonText: "Check Group Activity",
           primaryButtonHref: `/study-groups/${memberGroupIds[0]}/chat`,
           level: 1,
+          category: "group",
           cardEyebrow: "Community",
           cardTitle: "Your group is active",
           cardSubtitle: "There is fresh conversation waiting for you in the study group right now.",
@@ -420,6 +564,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
           primaryButtonText: `Read ${nextChapter.book} ${nextChapter.chapter}`,
           primaryButtonHref: `/Bible/${nextChapter.book}/${nextChapter.chapter}`,
           level: 1,
+          category: "reading_plan",
           cardEyebrow: "Reading Plan",
           cardTitle: `Read ${nextChapter.book} ${nextChapter.chapter}`,
           cardSubtitle: "Your reading plan already has your next step ready. Open the next chapter and keep moving.",
@@ -438,6 +583,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
           primaryButtonText: "Continue Reading Plan",
           primaryButtonHref: isBibleBuddy ? "/reading-plans/bible-buddy" : "/reading-plans/bible-in-one-year",
           level: 1,
+          category: "reading_plan",
           cardEyebrow: "Reading Plan",
           cardTitle: `Continue ${planName}`,
           cardSubtitle: "You already have a plan in motion. The easiest win today is to pick it back up.",
@@ -465,6 +611,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
           primaryButtonText: `Read ${next.book} ${next.chapter}`,
           primaryButtonHref: `/Bible/${next.book}/${next.chapter}`,
           level: 2,
+          category: "bible",
           cardEyebrow: "Bible",
           cardTitle: "Continue reading",
           cardSubtitle: `You left off at ${label}. Your next chapter is already lined up for you.`,
@@ -480,6 +627,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         primaryButtonText: "Open the Bible",
         primaryButtonHref: "/Bible",
         level: 2,
+        category: "bible",
         cardEyebrow: "Start Here",
         cardTitle: "Open the Bible today",
         cardSubtitle: "If you are not sure what to do next, reading one chapter is still one of the best moves in the app.",
@@ -499,6 +647,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         primaryButtonText: "Play Bible Trivia",
         primaryButtonHref: "/bible-trivia",
         level: 2,
+        category: "trivia",
         cardEyebrow: "Challenge",
         cardTitle: "Do a round of Bible trivia",
         cardSubtitle: "This is one of the easiest ways to turn a few free minutes into real Bible repetition.",
@@ -549,6 +698,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
           primaryButtonText: current.cta,
           primaryButtonHref: current.href,
           level: 2,
+          category: "reference",
           cardEyebrow: "Bible Reference",
           cardTitle: current.title,
           cardSubtitle: current.subtitle,
@@ -564,6 +714,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         primaryButtonText: "Explore Keywords",
         primaryButtonHref: "/keywords-in-the-bible",
         level: 2,
+        category: "reference",
         cardEyebrow: "Bible Reference",
         cardTitle: "Try the Bible word tools",
         cardSubtitle: "Tap into the people, places, and keyword databases to make your reading easier to follow.",
@@ -586,6 +737,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         primaryButtonText: "Open the Bible",
         primaryButtonHref: "/Bible",
         level: 2,
+        category: "bible",
         cardEyebrow: "Fresh Momentum",
         cardTitle: "Go back to the verses you were in",
         cardSubtitle: "Your notes and highlights are usually a sign that God already had your attention there for a reason.",
@@ -606,6 +758,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         primaryButtonText: "View Devotionals",
         primaryButtonHref: "/devotionals",
         level: 2,
+        category: "devotional",
         cardEyebrow: "Devotional",
         cardTitle: "Pick up a devotional today",
         cardSubtitle: "A devotional is still one of the easiest ways to sit with Scripture in a guided way.",
@@ -613,8 +766,13 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
       }));
     }
 
-    const best = pickHighestPriority(candidates);
-    if (best) return best;
+    const todayActions = getTodayActionSet(allActions);
+    const history = getRecommendationHistory();
+    const best = pickSmartRecommendation(candidates, history, todayActions, suppressLevel1);
+    if (best) {
+      saveRecommendationHistory(best);
+      return best;
+    }
 
     const { data: recommendedDevotionals } = await supabase
       .from("devotionals")
@@ -623,32 +781,38 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
 
     const recommendedDevotional = pickRecommendedDevotional(recommendedDevotionals || []);
     if (recommendedDevotional) {
-      return {
+      const fallbackRecommendation: DailyRecommendation = {
         greeting: "Welcome to Bible Buddy.",
         contextLine: `${recommendedDevotional.title} is a strong place to begin if you want a guided story and a clear next step.`,
         recommendationLine: "Start with Day 1 today and let the app lead you into a simple, steady rhythm.",
         primaryButtonText: "Start Day 1",
         primaryButtonHref: `/devotionals/${recommendedDevotional.id}`,
         level: 2,
+        category: "devotional",
         cardEyebrow: "Start Here",
         cardTitle: `Start ${recommendedDevotional.title}`,
         cardSubtitle: "If you do not know where to begin, start with one strong story and let that become your habit.",
         cardTheme: "rose",
       };
+      saveRecommendationHistory(fallbackRecommendation);
+      return fallbackRecommendation;
     }
 
-    return {
+    const defaultRecommendation: DailyRecommendation = {
       greeting: "Welcome to Bible Buddy.",
       contextLine: "There is a lot here, but you only need one good next step.",
       recommendationLine: "Open the Bible today and start with one chapter.",
       primaryButtonText: "Open the Bible",
       primaryButtonHref: "/Bible",
       level: 2,
+      category: "bible",
       cardEyebrow: "Start Here",
       cardTitle: "Open the Bible today",
       cardSubtitle: "When in doubt, one chapter is still a real win.",
       cardTheme: "blue",
     };
+    saveRecommendationHistory(defaultRecommendation);
+    return defaultRecommendation;
   } catch (err) {
     console.error("[DAILY_RECOMMENDATION] Error:", err);
     return null;

@@ -45,34 +45,39 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 
   const recommendationThemeClasses = {
     rose: {
-      shell: "border-[#f3d6d6] bg-gradient-to-br from-[#fff6f4] via-[#fffaf8] to-[#fffdfb]",
+      outer: "border-[#eedbdb] bg-gradient-to-br from-[#fffaf8] via-[#fffdfb] to-[#fff9f6]",
+      shell: "bg-white/35",
       accent: "text-[#c97979]",
       chip: "border-[#efd3d3] bg-white text-[#a86060]",
-      stripe: "from-[#f6caca] to-[#f8e0c8]",
+      inset: "border-[#f3dede] bg-white/45",
     },
     blue: {
-      shell: "border-[#cfe0ff] bg-gradient-to-br from-[#f3f7ff] via-[#f8fbff] to-[#fcfdff]",
+      outer: "border-[#d8e5fb] bg-gradient-to-br from-[#f8fbff] via-[#fbfdff] to-[#f5f9ff]",
+      shell: "bg-white/35",
       accent: "text-[#5f84cc]",
       chip: "border-[#dbe8ff] bg-white text-[#4768af]",
-      stripe: "from-[#bfd4ff] to-[#d7e7ff]",
+      inset: "border-[#dde8fb] bg-white/45",
     },
     green: {
-      shell: "border-[#cfe7d1] bg-gradient-to-br from-[#f4fbf4] via-[#f8fdf8] to-[#fcfffc]",
+      outer: "border-[#d7e8d9] bg-gradient-to-br from-[#f8fdf8] via-[#fcfffc] to-[#f6fbf6]",
+      shell: "bg-white/35",
       accent: "text-[#5d9263]",
       chip: "border-[#dbecdc] bg-white text-[#4b7c51]",
-      stripe: "from-[#c8e6cb] to-[#e3f3d7]",
+      inset: "border-[#dcebdd] bg-white/45",
     },
     purple: {
-      shell: "border-[#dfd1f7] bg-gradient-to-br from-[#f8f4ff] via-[#fbf9ff] to-[#fefcff]",
+      outer: "border-[#e4daf5] bg-gradient-to-br from-[#fbf8ff] via-[#fefcff] to-[#f8f5ff]",
+      shell: "bg-white/35",
       accent: "text-[#876ec2]",
       chip: "border-[#e8dffb] bg-white text-[#7057ac]",
-      stripe: "from-[#d8caf7] to-[#ebe2ff]",
+      inset: "border-[#e8e0f8] bg-white/45",
     },
     gold: {
-      shell: "border-[#efdfb8] bg-gradient-to-br from-[#fff9ef] via-[#fffdf5] to-[#fffefb]",
+      outer: "border-[#f0e3c4] bg-gradient-to-br from-[#fffdf7] via-[#fffefb] to-[#fffaf1]",
+      shell: "bg-white/35",
       accent: "text-[#af8430]",
       chip: "border-[#f2e5c3] bg-white text-[#936915]",
-      stripe: "from-[#f0d58f] to-[#f7ebbe]",
+      inset: "border-[#f2e7cb] bg-white/45",
     },
   } as const;
 
@@ -92,8 +97,8 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-sm">
-        <div className="bg-gradient-to-r from-[#f8fbff] via-white to-[#fffaf3] px-5 py-5 md:px-6">
+      <div className={`overflow-hidden rounded-[28px] border shadow-sm ${recommendationTheme.outer}`}>
+        <div className="px-5 py-5 md:px-6">
           {isLoadingLevel ? (
             <>
               <div className="flex items-center gap-2 mb-2">
@@ -151,7 +156,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           ) : null}
         </div>
 
-        <div className={`border-t px-5 py-4 md:px-6 ${recommendationTheme.shell}`}>
+        <div className={`mx-3 mb-3 rounded-[22px] border px-5 py-4 md:mx-4 md:px-6 ${recommendationTheme.inset} ${recommendationTheme.shell}`}>
           {isLoadingRecommendation ? (
             <div className="flex items-center gap-3">
               <div className="rounded-full bg-white/80 p-1.5 shadow-sm">
