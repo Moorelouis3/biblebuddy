@@ -15,6 +15,37 @@ function getCoverImage(title: string): string | null {
   if (title === "The Rise of Esther") return "/RiseofEsther.png";
   return null;
 }
+
+function getPreviewDescription(title: string, fallback: string): string {
+  const descriptions: Record<string, string> = {
+    "The Tempting of Jesus":
+      "Jesus walks into the wilderness alone, hungry, and led by the Spirit. What follows is not a small private struggle, but a direct showdown between the Son of God and the voice of temptation. This devotional follows that tension closely, showing how Jesus answered pressure with truth instead of impulse. You will see the enemy's strategy, the power of Scripture, and the strength of obedience when no one else is watching. If you have ever felt tired, tempted, or spiritually stretched, this story will hit close to home.",
+    "The Testing of Joseph":
+      "Joseph's life turns from favored son to betrayed brother, from slave to prisoner, and from forgotten man to ruler in Egypt. Every chapter feels like another sharp turn in a story that should have broken him. This devotional lets you walk through the loneliness, injustice, waiting, and unexpected mercy that shaped Joseph's life. It is about dreams that seem delayed, suffering that makes no sense, and the quiet faithfulness that God still uses. If you have ever wondered what God is doing in a long painful season, Joseph's story speaks right into that question.",
+    "The Disciples of Jesus":
+      "These men were not polished heroes when Jesus called them. They were ordinary, rough, unsure, and often slower to understand than they should have been. This devotional follows their lives as Jesus teaches, corrects, stretches, and changes them from the inside out. You will watch fear turn into faith, confusion turn into conviction, and ordinary people become the foundation of a movement that changed the world. It is a story about calling, failure, growth, and what happens when people stay close to Jesus long enough to be transformed.",
+    "Women of the Bible":
+      "This devotional follows the lives of women who stood in pain, pressure, courage, grief, wisdom, and faith across the whole Bible story. Some were queens, some were mothers, some were outsiders, and some were nearly forgotten by the people around them. But every one of them reveals something important about how God works through real lives, not perfect ones. Their stories hold heartbreak, bravery, loss, loyalty, and redemption. As you move through each day, you begin to see that these women were never side notes in Scripture. They carried moments that shaped the story of God's people in lasting ways.",
+    "The Wisdom of Proverbs":
+      "Proverbs is not just a book of random one-liners. It is a guide for how to walk through real life with wisdom when emotions, pressure, money, pride, relationships, and temptation all pull at once. This devotional slows the book down so you can feel how wisdom speaks into everyday choices and the deeper direction of your life. It shows the difference between what looks smart for a moment and what is actually wise before God. If you want clearer thinking, steadier decisions, and a stronger grip on everyday faithfulness, this devotional will give you that kind of path.",
+    "The Faith of Job":
+      "Job's story begins with blessing and stability, then everything breaks almost at once. Family, health, security, and peace are ripped away, and what remains is a man trying to understand God in the middle of pain that feels far beyond explanation. This devotional walks you through the grief, questions, arguments, silence, and eventual awe that shape Job's life. It is not a shallow lesson about staying positive. It is a serious story about suffering, faith, and what it means to keep bringing your pain back to God when answers feel far away. If you have ever wrestled with why hard things happen, Job's story goes straight there.",
+    "The Calling of Moses":
+      "Moses' life begins under a death order and unfolds through exile, failure, fire, confrontation, wilderness, and the presence of God. He is raised in Pharaoh's world, broken in the desert, and then called back to the very place he once ran from. This devotional follows the full arc of his life so you can feel the fear, the pressure, the miracles, and the long cost of carrying a calling. It is a story about hearing God when you feel unqualified, obeying while things still look impossible, and staying faithful through years that feel heavy. By the end, Moses does not look like a perfect hero. He looks like a man who kept walking with God anyway.",
+    "The Heart of David":
+      "David's story moves from hidden fields to public battles, from worship to warfare, from caves to kingship, and from failure to repentance. He is brave, gifted, loved, hunted, crowned, broken, and restored across a life that never feels flat or simple. This devotional follows the rise and fall of David with all the emotion that makes his life unforgettable. It shows why his heart mattered, where it drifted, and how it kept getting pulled back toward God. If you want a story full of courage, weakness, worship, and return, David's life carries all of it.",
+    "The Obedience of Abraham":
+      "Abraham's story starts with a voice telling him to leave everything familiar and walk toward a future he cannot see yet. From there his life becomes a journey of altars, promises, failures, waiting, covenant, and costly surrender. This devotional follows that road closely so you can feel both the wonder and the strain of obeying God over a long stretch of life. Abraham is not a flawless man, but he is a man who keeps moving when God speaks. His story is about trusting before you understand, waiting when the promise feels delayed, and placing even your deepest gifts back into God's hands.",
+    "The Transforming of Paul":
+      "Paul's story begins with violence, certainty, and religious zeal aimed in the wrong direction. Then Jesus meets him, blinds him, remakes him, and sends him into a life of preaching, suffering, prison, endurance, and deep spiritual fire. This devotional follows the whole arc, from Saul the persecutor to Paul the apostle who finished his race still holding to Christ. You will walk through the road to Damascus, the missionary journeys, the beatings, the prison songs, the shipwrecks, and the final steady faith that marked his end. It is a story about how radically Jesus can change a life and keep changing it through every next season.",
+    "The Courage of Daniel":
+      "Most people know Daniel for the lions' den, but that was only one scene in a lifetime of faith under pressure. This devotional follows him from exile and identity testing to royal courts, impossible dreams, jealous enemies, and visions that reach all the way into the future. Daniel's life shows what it looks like to stay loyal to God inside a foreign system that keeps trying to reshape you. His courage is not built in one dramatic moment. It is built over years of prayer, wisdom, pressure, and unwavering devotion. If you want to see what steady faith looks like in a hostile world, Daniel's life gives that picture in full.",
+    "The Rise of Esther":
+      "Esther's story begins in exile, in loss, and in a world where powerful men make decisions that can crush whole peoples at once. She rises from hiddenness into the palace, but her real story begins when favor turns into responsibility and silence becomes dangerous. This devotional follows the tension, timing, fear, strategy, and courage that shaped her rise from orphan girl to the woman who stood for her people. It is full of reversals, sleepless nights, political danger, and providence moving in ways no one in the room can fully see. Esther's life proves that sometimes the place God gives you becomes holy the moment you finally use it with courage.",
+  };
+
+  return descriptions[title] ?? fallback;
+}
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -180,6 +211,9 @@ export default function DevotionalDetailPage() {
   const currentDay = getCurrentDay();
   const completedDays = Array.from(progress.values()).filter((p) => p.is_completed).length;
   const progressPercent = devotional ? (completedDays / devotional.total_days) * 100 : 0;
+  const previewDescription = devotional
+    ? getPreviewDescription(devotional.title, devotional.description)
+    : "";
 
   const isDayUnlocked = (dayNumber: number) => {
     if (userEmail === "moorelouis3@gmail.com") return true;
@@ -658,7 +692,7 @@ export default function DevotionalDetailPage() {
         {/* DESCRIPTION */}
         <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6">
           <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-            {devotional.description}
+            {previewDescription}
           </p>
         </div>
 
