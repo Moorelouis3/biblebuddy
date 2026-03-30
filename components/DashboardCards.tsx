@@ -49,35 +49,35 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
       shell: "bg-white/35",
       accent: "text-[#c97979]",
       chip: "border-[#efd3d3] bg-white text-[#a86060]",
-      inset: "border-[#f3dede] bg-white/45",
+      inset: "bg-white/25",
     },
     blue: {
       outer: "border-[#d8e5fb] bg-gradient-to-br from-[#f8fbff] via-[#fbfdff] to-[#f5f9ff]",
       shell: "bg-white/35",
       accent: "text-[#5f84cc]",
       chip: "border-[#dbe8ff] bg-white text-[#4768af]",
-      inset: "border-[#dde8fb] bg-white/45",
+      inset: "bg-white/25",
     },
     green: {
       outer: "border-[#d7e8d9] bg-gradient-to-br from-[#f8fdf8] via-[#fcfffc] to-[#f6fbf6]",
       shell: "bg-white/35",
       accent: "text-[#5d9263]",
       chip: "border-[#dbecdc] bg-white text-[#4b7c51]",
-      inset: "border-[#dcebdd] bg-white/45",
+      inset: "bg-white/25",
     },
     purple: {
       outer: "border-[#e4daf5] bg-gradient-to-br from-[#fbf8ff] via-[#fefcff] to-[#f8f5ff]",
       shell: "bg-white/35",
       accent: "text-[#876ec2]",
       chip: "border-[#e8dffb] bg-white text-[#7057ac]",
-      inset: "border-[#e8e0f8] bg-white/45",
+      inset: "bg-white/25",
     },
     gold: {
       outer: "border-[#f0e3c4] bg-gradient-to-br from-[#fffdf7] via-[#fffefb] to-[#fffaf1]",
       shell: "bg-white/35",
       accent: "text-[#af8430]",
       chip: "border-[#f2e5c3] bg-white text-[#936915]",
-      inset: "border-[#f2e7cb] bg-white/45",
+      inset: "bg-white/25",
     },
   } as const;
 
@@ -156,7 +156,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           ) : null}
         </div>
 
-        <div className={`mx-3 mb-3 rounded-[22px] border px-5 py-4 md:mx-4 md:px-6 ${recommendationTheme.inset} ${recommendationTheme.shell}`}>
+        <div className={`mx-3 mb-3 rounded-[22px] px-5 py-4 md:mx-4 md:px-6 ${recommendationTheme.inset} ${recommendationTheme.shell}`}>
           {isLoadingRecommendation ? (
             <div className="flex items-center gap-3">
               <div className="rounded-full bg-white/80 p-1.5 shadow-sm">
