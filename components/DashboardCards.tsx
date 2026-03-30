@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
+import { LouisAvatar } from "./LouisAvatar";
 
 interface DashboardCardsProps {
   profile: { is_paid?: boolean | null; daily_credits?: number | null } | null;
@@ -41,6 +42,40 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   onInviteBuddy,
 }) => {
   const showFreeUpgradeCard = membershipStatus !== "pro" && profile?.is_paid !== true;
+  const recommendationThemeClasses = {
+    rose: {
+      card: "border-[#f3c8c8] bg-gradient-to-br from-[#fff1f1] via-[#fff7f4] to-[#fff9ef]",
+      arrow: "text-[#d66f6f]",
+      eyebrow: "text-[#ca7a7a]",
+      pill: "border-[#efc9c9] bg-white/80 text-[#a45a5a]",
+    },
+    blue: {
+      card: "border-[#bfd5ff] bg-gradient-to-br from-[#eef5ff] via-[#f4f8ff] to-[#f6fbff]",
+      arrow: "text-[#5f8ee0]",
+      eyebrow: "text-[#6082c6]",
+      pill: "border-[#d8e4ff] bg-white/80 text-[#446bb0]",
+    },
+    green: {
+      card: "border-[#bedebe] bg-gradient-to-br from-[#eef9ee] via-[#f5fbf3] to-[#f8fdf5]",
+      arrow: "text-[#5da368]",
+      eyebrow: "text-[#5f9364]",
+      pill: "border-[#d6ead6] bg-white/80 text-[#467b4c]",
+    },
+    purple: {
+      card: "border-[#d7c8f5] bg-gradient-to-br from-[#f5efff] via-[#faf7ff] to-[#fcfbff]",
+      arrow: "text-[#8b70c9]",
+      eyebrow: "text-[#8a6fc2]",
+      pill: "border-[#e6dcfb] bg-white/80 text-[#7357b1]",
+    },
+    gold: {
+      card: "border-[#ecd8a6] bg-gradient-to-br from-[#fff8e9] via-[#fffbee] to-[#fffdf7]",
+      arrow: "text-[#ba8b26]",
+      eyebrow: "text-[#b1832c]",
+      pill: "border-[#f1e3bc] bg-white/80 text-[#9a6d14]",
+    },
+  } as const;
+  const recommendationTheme =
+    recommendationThemeClasses[dailyRecommendation?.cardTheme || "rose"] || recommendationThemeClasses.rose;
 
   return (
     <div className="flex flex-col gap-4">
@@ -69,7 +104,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           <>
             <div className="flex items-start justify-between mb-2">
               <h2 className="text-xl font-semibold">
-                Level {levelInfo.level} &quot;{levelInfo.levelName}&quot;
+                Level {levelInfo.level} "{levelInfo.levelName}"
               </h2>
               <button
                 onClick={() => setShowLevelInfoModal(true)}
@@ -125,8 +160,8 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
       )}
 
       {isLoadingRecommendation ? (
-        <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm relative">
-          <h2 className="text-xl font-semibold">✨ Today&apos;s Recommendation</h2>
+        <div className="rounded-2xl border border-[#f3c8c8] bg-gradient-to-br from-[#fff1f1] via-[#fff7f4] to-[#fff9ef] p-5 shadow-sm relative">
+          <h2 className="text-xl font-semibold">Today's Recommendation</h2>
           <div className="flex items-center gap-1 mt-3">
             <span className="text-gray-500 text-sm">Loading</span>
             <span className="text-gray-500 text-xl animate-[bounce_1.4s_ease-in-out_infinite]">.</span>
@@ -136,10 +171,43 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       ) : dailyRecommendation && dailyRecommendationCardTitle && dailyRecommendationCardSubtitle ? (
         <Link href={dailyRecommendation.primaryButtonHref}>
-          <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative">
-            <span className="absolute right-4 top-4 text-red-400 text-base" aria-hidden="true">→</span>
-            <h2 className="text-xl font-semibold">✨ {dailyRecommendationCardTitle}</h2>
-            <p className="text-sm text-gray-700 mt-2 leading-relaxed">{dailyRecommendationCardSubtitle}</p>
+          <div className={`rounded-2xl border p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative ${recommendationTheme.card}`}>
+            <span className={`absolute right-4 top-4 text-base ${recommendationTheme.arrow}`} aria-hidden="true">→</span>
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-start gap-3 min-w-0">
+                <div className="shrink-0 rounded-full border border-white/70 bg-white/70 p-1 shadow-sm">
+                  <LouisAvatar
+                    mood={
+                      dailyRecommendation.cardTheme === "green"
+                        ? "hands"
+                        : dailyRecommendation.cardTheme === "blue"
+                          ? "bible"
+                          : dailyRecommendation.cardTheme === "purple"
+                            ? "think"
+                            : dailyRecommendation.cardTheme === "gold"
+                              ? "cool"
+                              : "smile"
+                    }
+                    size={46}
+                  />
+                </div>
+                <div className="min-w-0">
+                  <p className={`text-[11px] uppercase tracking-[0.2em] font-semibold ${recommendationTheme.eyebrow}`}>
+                    {dailyRecommendation.cardEyebrow || "Today's Recommendation"}
+                  </p>
+                  <h2 className="text-[1.35rem] font-semibold text-gray-950 mt-1">
+                    ✨ {dailyRecommendationCardTitle}
+                  </h2>
+                </div>
+              </div>
+              <span className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${recommendationTheme.pill}`}>
+                {dailyRecommendation.primaryButtonText}
+              </span>
+            </div>
+            <p className="text-sm text-gray-700 mt-3 leading-relaxed">{dailyRecommendationCardSubtitle}</p>
+            {dailyRecommendation.contextLine ? (
+              <p className="text-xs text-gray-500 mt-3 leading-relaxed">{dailyRecommendation.contextLine}</p>
+            ) : null}
           </div>
         </Link>
       ) : null}
@@ -197,4 +265,3 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 };
 
 export default DashboardCards;
-

@@ -1211,6 +1211,13 @@ export default function DashboardPage() {
       return { title: null, subtitle: null };
     }
 
+    if (recommendationItem.cardTitle || recommendationItem.cardSubtitle) {
+      return {
+        title: recommendationItem.cardTitle || "Today's Recommendation",
+        subtitle: recommendationItem.cardSubtitle || recommendationItem.recommendationLine,
+      };
+    }
+
     const cta = recommendationItem.primaryButtonText;
     let subtitle = recommendationItem.recommendationLine;
     const devotionalTitleMatch =

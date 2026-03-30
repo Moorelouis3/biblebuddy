@@ -1582,8 +1582,13 @@ RULES:
           </div>
         ) : schedulerFeed.length === 0 ? (
           <div className="rounded-3xl border border-dashed border-gray-200 bg-white px-6 py-12 text-center shadow-sm">
-            <p className="text-lg font-bold text-gray-900">No drafts yet</p>
-            <p className="mt-2 text-sm text-gray-500">Save a post here and it will show up with your other queued posts.</p>
+            <div className="mx-auto flex w-fit rounded-full bg-[#f7f2ff] p-2 shadow-sm">
+              <LouisAvatar mood="think" size={54} />
+            </div>
+            <p className="mt-4 text-lg font-bold text-gray-900">No drafts yet</p>
+            <p className="mt-2 text-sm leading-relaxed text-gray-500">
+              Louis is ready when you are. Save a post here and it will show up with your other queued posts before it goes live on the real feed.
+            </p>
           </div>
         ) : (
           <div className="flex flex-col gap-3">

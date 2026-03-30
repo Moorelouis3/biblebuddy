@@ -1,14 +1,15 @@
 /**
  * Daily Recommendation Logic
  *
- * Determines what Lil Louis should recommend to the user on their first login each day.
- * Priority: Active devotional → Active reading plan → Last meaningful action → New user default
+ * The dashboard card and daily modal should feel like a smart nudge,
+ * not a generic banner. This file looks at what the user has already
+ * done, what they have ignored, and what is most likely to help them
+ * re-enter the app with momentum.
  */
 
 import { supabase } from "./supabaseClient";
 import { getBookTotalChapters } from "./readingProgress";
 
-/** Canonical Bible book order — used to find the next book after the last chapter */
 const BIBLE_BOOK_ORDER = [
   "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
   "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel",
@@ -24,20 +25,64 @@ const BIBLE_BOOK_ORDER = [
   "1 Timothy", "2 Timothy", "Titus", "Philemon",
   "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John",
   "Jude", "Revelation",
+] as const;
+
+type RecommendationTheme = "rose" | "blue" | "green" | "purple" | "gold";
+
+interface RecommendationCandidate extends DailyRecommendation {
+  priority: number;
+}
+
+interface ProfileSnapshot {
+  onboarding_completed?: boolean | null;
+  display_name?: string | null;
+  username?: string | null;
+  profile_image_url?: string | null;
+  bio?: string | null;
+  chapters_completed_count?: number | null;
+  trivia_questions_answered?: number | null;
+  people_learned_count?: number | null;
+  places_discovered_count?: number | null;
+  keywords_mastered_count?: number | null;
+}
+
+export interface DailyRecommendation {
+  greeting: string;
+  contextLine: string;
+  recommendationLine: string;
+  primaryButtonText: string;
+  primaryButtonHref: string;
+  level: 1 | 2;
+  cardTitle?: string;
+  cardSubtitle?: string;
+  cardEyebrow?: string;
+  cardTheme?: RecommendationTheme;
+}
+
+const MEANINGFUL_ACTIONS = [
+  "devotional_day_completed",
+  "reading_plan_chapter_completed",
+  "chapter_completed",
+  "person_learned",
+  "place_discovered",
+  "keyword_mastered",
+  "trivia_question_answered",
+  "note_created",
+  "verse_highlighted",
 ];
 
-/** Returns the next chapter after the given book + chapter, wrapping across book boundaries */
 function getNextBibleChapter(book: string, chapter: number): { book: string; chapter: number } {
   const total = getBookTotalChapters(book);
   if (chapter < total) return { book, chapter: chapter + 1 };
   const idx = BIBLE_BOOK_ORDER.findIndex((b) => b.toLowerCase() === book.toLowerCase());
-  if (idx !== -1 && idx < BIBLE_BOOK_ORDER.length - 1) return { book: BIBLE_BOOK_ORDER[idx + 1], chapter: 1 };
-  return { book: "Genesis", chapter: 1 }; // wrap after Revelation
+  if (idx !== -1 && idx < BIBLE_BOOK_ORDER.length - 1) {
+    return { book: BIBLE_BOOK_ORDER[idx + 1], chapter: 1 };
+  }
+  return { book: "Genesis", chapter: 1 };
 }
 
 function parseChapterReference(label: string | null | undefined): { book: string; chapter: number } | null {
   if (!label) return null;
-
   const match = label.match(/^(.+?)\s+(\d+)$/);
   if (!match) return null;
 
@@ -53,7 +98,6 @@ function pickRecommendedDevotional(
   if (!devotionals.length) return null;
 
   const preferredTitleMatchers = [/tempt/i, /joseph/i, /prayer/i, /psalm/i, /gospel/i];
-
   for (const matcher of preferredTitleMatchers) {
     const match = devotionals.find((devotional) => matcher.test(devotional.title));
     if (match) return match;
@@ -62,51 +106,25 @@ function pickRecommendedDevotional(
   return devotionals[0] ?? null;
 }
 
-function pickRandomRecommendation(options: DailyRecommendation[]): DailyRecommendation | null {
-  if (!options.length) return null;
-  return options[Math.floor(Math.random() * options.length)] ?? null;
+function daysSince(dateString: string | null | undefined): number | null {
+  if (!dateString) return null;
+  const parsed = new Date(dateString);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return Math.floor((Date.now() - parsed.getTime()) / 86400000);
 }
 
-export interface DailyRecommendation {
-  greeting: string;
-  contextLine: string;
-  recommendationLine: string;
-  primaryButtonText: string;
-  primaryButtonHref: string;
-  /** 1 = devotional/reading plan recommendation, 2 = activity-based or fallback */
-  level: 1 | 2;
-}
-
-const MEANINGFUL_ACTIONS = [
-  "devotional_day_completed",
-  "reading_plan_chapter_completed",
-  "chapter_completed",
-  "person_learned",
-  "place_discovered",
-  "keyword_mastered",
-  "trivia_question_answered",
-  "note_created",
-  "verse_highlighted",
-];
-
-/**
- * Returns a time prefix string, or null if it's been 14+ days (long ago).
- * null signals the caller to use "It's been a while since you last..." phrasing.
- */
 function timePrefix(date: Date): string | null {
-  const diffDays = Math.floor((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24));
+  const diffDays = Math.floor((Date.now() - date.getTime()) / 86400000);
   if (diffDays <= 1) return "Yesterday";
   if (diffDays <= 6) return "Earlier this week";
   return null;
 }
 
-/** Build a contextLine that handles both recent and long-ago phrasing */
 function contextLine(date: Date, recentPhrase: string, longAgoPhrase: string): string {
   const prefix = timePrefix(date);
   return prefix ? `${prefix} ${recentPhrase}` : longAgoPhrase;
 }
 
-/** Calculate current consecutive login streak from user_login action dates */
 function calculateStreak(actions: { action_type: string; created_at: string }[]): number {
   const loginDates = actions
     .filter((a) => a.action_type === "user_login")
@@ -117,8 +135,6 @@ function calculateStreak(actions: { action_type: string; created_at: string }[])
 
   const today = new Date().toISOString().slice(0, 10);
   const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
-
-  // Streak must include today or yesterday
   if (unique[0] !== today && unique[0] !== yesterday) return 0;
 
   let streak = 1;
@@ -132,19 +148,43 @@ function calculateStreak(actions: { action_type: string; created_at: string }[])
   return streak;
 }
 
+function pickHighestPriority(options: RecommendationCandidate[]): DailyRecommendation | null {
+  if (!options.length) return null;
+  const bestPriority = Math.max(...options.map((option) => option.priority));
+  const finalists = options.filter((option) => option.priority === bestPriority);
+  return finalists[Math.floor(Math.random() * finalists.length)] ?? null;
+}
+
+function createRecommendation(input: Omit<RecommendationCandidate, "priority"> & { priority: number }): RecommendationCandidate {
+  return input;
+}
+
 export async function getDailyRecommendation(userId: string, suppressLevel1 = false): Promise<DailyRecommendation | null> {
   try {
-    // Fetch recent actions for context
-    const { data: actions } = await supabase
-      .from("master_actions")
-      .select("action_type, action_label, created_at")
-      .eq("user_id", userId)
-      .order("created_at", { ascending: false })
-      .limit(100);
+    const [actionsRes, profileRes, membershipsRes] = await Promise.all([
+      supabase
+        .from("master_actions")
+        .select("action_type, action_label, created_at")
+        .eq("user_id", userId)
+        .order("created_at", { ascending: false })
+        .limit(150),
+      supabase
+        .from("profile_stats")
+        .select("onboarding_completed, display_name, username, profile_image_url, bio, chapters_completed_count, trivia_questions_answered, people_learned_count, places_discovered_count, keywords_mastered_count")
+        .eq("user_id", userId)
+        .maybeSingle(),
+      supabase
+        .from("group_members")
+        .select("group_id")
+        .eq("user_id", userId)
+        .eq("status", "approved")
+        .limit(10),
+    ]);
 
-    const allActions = actions || [];
+    const allActions = actionsRes.data || [];
+    const profile = (profileRes.data || {}) as ProfileSnapshot;
+    const memberGroupIds = (membershipsRes.data || []).map((row: { group_id: string }) => row.group_id);
 
-    // --- Greeting line ---
     const streak = calculateStreak(allActions);
     const lastMeaningful = allActions.find((a) => MEANINGFUL_ACTIONS.includes(a.action_type));
     const lastDevotionalCompletion = allActions.find((a) => a.action_type === "devotional_day_completed");
@@ -157,33 +197,49 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
     );
     const lastTriviaAction = allActions.find((a) => a.action_type === "trivia_question_answered");
     const lastBibleNoteAction = allActions.find((a) => a.action_type === "note_created" || a.action_type === "verse_highlighted");
-    const daysSinceActive = lastMeaningful
-      ? Math.floor((Date.now() - new Date(lastMeaningful.created_at).getTime()) / 86400000)
-      : null;
+    const daysSinceActive = lastMeaningful ? daysSince(lastMeaningful.created_at) : null;
 
-    let greeting: string;
+    let greeting = "Good to see you.";
     if (streak >= 2) {
       greeting = `You're on a ${streak} day streak.`;
     } else if (daysSinceActive !== null && daysSinceActive >= 7) {
       greeting = daysSinceActive >= 21
         ? "You've been away for a while. Welcome back."
         : `You haven't checked in for ${daysSinceActive} days. Welcome back.`;
-    } else {
-      greeting = "Good to see you.";
     }
 
-    const primaryCandidates: DailyRecommendation[] = [];
+    const candidates: RecommendationCandidate[] = [];
 
-    // Fetch group memberships early — used for series, notification, and live study checks
-    const { data: memberships } = await supabase
-      .from("group_members")
-      .select("group_id")
-      .eq("user_id", userId)
-      .eq("status", "approved")
-      .limit(10);
-    const memberGroupIds = (memberships || []).map((row: { group_id: string }) => row.group_id);
+    const hasDisplayName = !!(profile.display_name?.trim() || profile.username?.trim());
+    const hasPhoto = !!profile.profile_image_url;
+    const hasBio = !!profile.bio?.trim();
+    const profileMissingCount = [hasDisplayName, hasPhoto, hasBio].filter(Boolean).length;
+    const setupIncomplete = profile.onboarding_completed !== true || profileMissingCount < 2;
 
-    // --- PRIMARY CANDIDATE: Active devotional ---
+    if (setupIncomplete) {
+      const missingBits = [
+        hasDisplayName ? null : "your name",
+        hasPhoto ? null : "a photo",
+        hasBio ? null : "a short bio",
+      ].filter(Boolean);
+
+      candidates.push(createRecommendation({
+        priority: 100,
+        greeting,
+        contextLine: "Your profile is still one of the fastest ways to make Bible Buddy feel like real community.",
+        recommendationLine: missingBits.length > 0
+          ? `Add ${missingBits.join(", ")} so people can recognize you, and so the app feels more personal right away.`
+          : "Finish setting up your profile so the rest of the app feels more connected to you.",
+        primaryButtonText: "Finish Profile",
+        primaryButtonHref: "/settings",
+        level: 2,
+        cardEyebrow: "Quick Win",
+        cardTitle: "Set up your profile",
+        cardSubtitle: "A completed profile makes the whole app feel more personal and more social.",
+        cardTheme: "purple",
+      }));
+    }
+
     const { data: devotionalProgress } = await supabase
       .from("devotional_progress")
       .select("devotional_id, day_number, is_completed")
@@ -191,159 +247,131 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
       .eq("is_completed", true)
       .order("day_number", { ascending: false });
 
-    if (devotionalProgress && devotionalProgress.length > 0) {
-      const maxByDevotional: Record<string, number> = {};
-      for (const row of devotionalProgress) {
-        if (!maxByDevotional[row.devotional_id] || row.day_number > maxByDevotional[row.devotional_id]) {
-          maxByDevotional[row.devotional_id] = row.day_number;
-        }
+    const maxByDevotional: Record<string, number> = {};
+    for (const row of devotionalProgress || []) {
+      if (!maxByDevotional[row.devotional_id] || row.day_number > maxByDevotional[row.devotional_id]) {
+        maxByDevotional[row.devotional_id] = row.day_number;
       }
+    }
 
-      const { data: devotionals } = await supabase
-        .from("devotionals")
-        .select("id, title, total_days")
-        .in("id", Object.keys(maxByDevotional));
+    const devotionalIds = Object.keys(maxByDevotional);
+    const devotionalsRes = devotionalIds.length > 0
+      ? await supabase.from("devotionals").select("id, title, total_days").in("id", devotionalIds)
+      : { data: [] as Array<{ id: string; title: string; total_days?: number | null }> };
+    const activeDevotional = (devotionalsRes.data || []).find((dev) => (maxByDevotional[dev.id] || 0) < (dev.total_days || 0));
 
-      if (devotionals) {
-        for (const dev of devotionals) {
-          const maxDay = maxByDevotional[dev.id];
-          if (maxDay < dev.total_days) {
-            const nextDay = maxDay + 1;
-            const lastDevAction = allActions.find(
-              (a) => a.action_type === "devotional_day_completed" && a.action_label?.includes(dev.title)
-            );
-            const devContextLine = lastDevAction
-              ? contextLine(
-                  new Date(lastDevAction.created_at),
-                  `you finished Day ${maxDay} of the ${dev.title} devotional.`,
-                  `It's been a while since you last worked on the ${dev.title} devotional.`
-                )
-              : `You're in the middle of the ${dev.title} devotional and Day ${nextDay} is ready.`;
-            primaryCandidates.push({
-              greeting,
-              contextLine: devContextLine,
-              recommendationLine: `Pick up where you left off and continue with Day ${nextDay} today.`,
-              primaryButtonText: `Continue Day ${nextDay}`,
-              primaryButtonHref: `/devotionals/${dev.id}`,
-              level: 1 as const,
+    if (activeDevotional) {
+      const maxDay = maxByDevotional[activeDevotional.id];
+      const nextDay = maxDay + 1;
+      const lastDevAction = allActions.find(
+        (a) => a.action_type === "devotional_day_completed" && a.action_label?.includes(activeDevotional.title)
+      );
+      candidates.push(createRecommendation({
+        priority: 84,
+        greeting,
+        contextLine: lastDevAction
+          ? contextLine(
+              new Date(lastDevAction.created_at),
+              `you finished Day ${maxDay} of ${activeDevotional.title}.`,
+              `It's been a while since you last opened ${activeDevotional.title}.`
+            )
+          : `You already started ${activeDevotional.title}.`,
+        recommendationLine: `Day ${nextDay} is ready, and this is probably the cleanest place for you to pick the story back up today.`,
+        primaryButtonText: `Continue Day ${nextDay}`,
+        primaryButtonHref: `/devotionals/${activeDevotional.id}`,
+        level: 1,
+        cardEyebrow: "Keep Going",
+        cardTitle: `Continue ${activeDevotional.title}`,
+        cardSubtitle: `You already did the hard part by starting. Pick up with Day ${nextDay} and keep your momentum alive today.`,
+        cardTheme: "rose",
+      }));
+    }
+
+    if (memberGroupIds.length === 0) {
+      candidates.push(createRecommendation({
+        priority: 96,
+        greeting,
+        contextLine: "You have not stepped into the Bible Study Group yet.",
+        recommendationLine: "That is where the community side of Bible Buddy starts to click. You can follow the live study, read what other people are learning, and stop studying alone.",
+        primaryButtonText: "Open Bible Study Group",
+        primaryButtonHref: "/study-groups",
+        level: 1,
+        cardEyebrow: "Community",
+        cardTitle: "Join the Bible Study Group",
+        cardSubtitle: "This is where the live study, real discussion, and Bible Buddy community all come together.",
+        cardTheme: "green",
+      }));
+    } else {
+      const { data: currentSeriesRows } = await supabase
+        .from("group_series")
+        .select("id, group_id, title")
+        .in("group_id", memberGroupIds)
+        .eq("is_current", true)
+        .limit(10);
+
+      if (currentSeriesRows && currentSeriesRows.length > 0) {
+        const seriesIds = currentSeriesRows.map((row) => row.id);
+        const { data: progressRows } = await supabase
+          .from("series_week_progress")
+          .select("series_id, week_number, reading_completed, trivia_completed, reflection_posted")
+          .eq("user_id", userId)
+          .in("series_id", seriesIds);
+
+        for (const seriesRow of currentSeriesRows) {
+          const progressMap = new Map<number, { reading: boolean; trivia: boolean; reflection: boolean }>();
+          (progressRows || [])
+            .filter((row) => row.series_id === seriesRow.id)
+            .forEach((row) => {
+              progressMap.set(row.week_number, {
+                reading: row.reading_completed === true,
+                trivia: row.trivia_completed === true,
+                reflection: row.reflection_posted === true,
+              });
             });
-            break;
+
+          let firstIncompleteWeek = 1;
+          for (let week = 1; week <= 12; week++) {
+            const progress = progressMap.get(week);
+            const complete = !!(progress?.reading && progress?.trivia && progress?.reflection);
+            if (!complete) {
+              firstIncompleteWeek = week;
+              break;
+            }
+          }
+
+          const hasStartedAnyWeek = [...progressMap.values()].some((progress) => progress.reading || progress.trivia || progress.reflection);
+          if (!hasStartedAnyWeek) {
+            candidates.push(createRecommendation({
+              priority: 94,
+              greeting,
+              contextLine: `${seriesRow.title} is live in your Bible Study Group.`,
+              recommendationLine: "Do not jump into the middle of it. Start with Week 1 so the story, the teaching, and the group conversation all make sense from the beginning.",
+              primaryButtonText: "Start Week 1",
+              primaryButtonHref: `/study-groups/${seriesRow.group_id}/series`,
+              level: 1,
+              cardEyebrow: "Live Study",
+              cardTitle: `Start ${seriesRow.title}`,
+              cardSubtitle: "The study is already moving, but the right move is to begin with Week 1 and build from there.",
+              cardTheme: "green",
+            }));
+          } else {
+            candidates.push(createRecommendation({
+              priority: 90,
+              greeting,
+              contextLine: `You are partway through ${seriesRow.title}.`,
+              recommendationLine: `Your next best move is Week ${firstIncompleteWeek}. That keeps you in step with the group without skipping parts of the story.`,
+              primaryButtonText: `Continue Week ${firstIncompleteWeek}`,
+              primaryButtonHref: `/study-groups/${seriesRow.group_id}/series`,
+              level: 1,
+              cardEyebrow: "Next Step",
+              cardTitle: `Continue with Week ${firstIncompleteWeek}`,
+              cardSubtitle: "Stay in order. Finishing the next unfinished week will make the live study hit harder.",
+              cardTheme: "green",
+            }));
           }
         }
       }
-    }
 
-    // --- PRIMARY CANDIDATE: Active reading plan ---
-    const lastReadingPlan = allActions.find((a) => a.action_type === "reading_plan_chapter_completed");
-    if (lastReadingPlan) {
-      const colonIndex = (lastReadingPlan.action_label || "").indexOf(": ");
-      const planName = colonIndex !== -1 ? lastReadingPlan.action_label!.slice(0, colonIndex) : "your reading plan";
-      const chapterRef = colonIndex !== -1 ? lastReadingPlan.action_label!.slice(colonIndex + 2) : "a chapter";
-      const rpDate = new Date(lastReadingPlan.created_at);
-      const isBibleBuddy = planName.toLowerCase().includes("bible buddy");
-      const parsedChapter = parseChapterReference(chapterRef);
-
-      if (isBibleBuddy && parsedChapter) {
-        const nextChapter = getNextBibleChapter(parsedChapter.book, parsedChapter.chapter);
-        primaryCandidates.push({
-          greeting,
-          contextLine: contextLine(
-            rpDate,
-            `you finished ${chapterRef} in the Bible Buddy Reading Plan.`,
-            `It's been a while since you last opened the Bible Buddy Reading Plan.`
-          ),
-          recommendationLine: `Your next chapter is ${nextChapter.book} ${nextChapter.chapter}.`,
-          primaryButtonText: `Read ${nextChapter.book} ${nextChapter.chapter}`,
-          primaryButtonHref: `/Bible/${nextChapter.book}/${nextChapter.chapter}`,
-          level: 1 as const,
-        });
-      } else {
-        primaryCandidates.push({
-          greeting,
-          contextLine: contextLine(
-            rpDate,
-            `you read ${chapterRef} in ${planName}.`,
-            `It's been a while since you last read from ${planName}.`
-          ),
-          recommendationLine: `Jump back into ${planName} and keep the momentum going today.`,
-          primaryButtonText: "Continue Reading Plan",
-          primaryButtonHref: isBibleBuddy ? "/reading-plans/bible-buddy" : "/reading-plans/bible-in-one-year",
-          level: 1 as const,
-        });
-      }
-    }
-
-    // --- PRIMARY CANDIDATE: Continue Bible reading ---
-    if (lastBibleReading) {
-      const actionDate = new Date(lastBibleReading.created_at);
-      const label = lastBibleReading.action_label || "";
-      const chMatch = label.match(/^(.+?)\s+(\d+)$/);
-      if (chMatch) {
-        const chBook = chMatch[1];
-        const chNum = parseInt(chMatch[2], 10);
-        const next = getNextBibleChapter(chBook, chNum);
-        const nextLabel = `${next.book} ${next.chapter}`;
-        primaryCandidates.push({
-          greeting,
-          contextLine: contextLine(
-            actionDate,
-            `you finished ${label}.`,
-            `It's been a while since you last read in ${chBook}.`
-          ),
-          recommendationLine: `Keep reading by starting ${nextLabel} next.`,
-          primaryButtonText: `Read ${nextLabel}`,
-          primaryButtonHref: `/Bible/${next.book}/${next.chapter}`,
-          level: 2 as const,
-        });
-      } else {
-        primaryCandidates.push({
-          greeting,
-          contextLine: contextLine(
-            actionDate,
-            `you read ${label}.`,
-            `It's been a while since you last opened the Bible.`
-          ),
-          recommendationLine: "Open the Bible and continue where you left off.",
-          primaryButtonText: "Open Bible",
-          primaryButtonHref: "/Bible",
-          level: 2 as const,
-        });
-      }
-    }
-
-    // --- GROUP CANDIDATES ---
-    if (memberGroupIds.length > 0) {
-      // HIGH PRIORITY: Bible study series not yet started
-      const hasStartedSeries = allActions.some(
-        (a) =>
-          a.action_type === "series_week_viewed" ||
-          a.action_type === "group_series_started" ||
-          a.action_type === "series_day_completed"
-      );
-
-      if (!hasStartedSeries) {
-        const { data: seriesGroupPosts } = await supabase
-          .from("weekly_group_series_posts")
-          .select("group_id, title")
-          .in("group_id", memberGroupIds)
-          .eq("series_key", "bible_study_saturday")
-          .order("created_at", { ascending: true })
-          .limit(1);
-
-        const firstSeriesPost = seriesGroupPosts?.[0];
-        if (firstSeriesPost) {
-          primaryCandidates.push({
-            greeting,
-            contextLine: "Your Bible Study Group has an active Bible study series.",
-            recommendationLine: "Start with Week 1 and study the Word alongside the rest of the group.",
-            primaryButtonText: "Start Week 1 Bible Study",
-            primaryButtonHref: `/study-groups/${firstSeriesPost.group_id}/series/week/1`,
-            level: 1 as const,
-          });
-        }
-      }
-
-      // HIGH PRIORITY: Unread group notifications
       const { count: unreadGroupCount } = await supabase
         .from("notifications")
         .select("id", { count: "exact", head: true })
@@ -352,318 +380,274 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         .like("article_slug", "/study-groups/%");
 
       if (unreadGroupCount && unreadGroupCount > 0) {
-        const notifLine =
-          unreadGroupCount === 1
-            ? "There's new activity in your Bible Study Group."
-            : `There are ${unreadGroupCount} new things happening in your Bible Study Group.`;
-        primaryCandidates.push({
+        candidates.push(createRecommendation({
+          priority: 88,
           greeting,
-          contextLine: notifLine,
-          recommendationLine: "The group is active — check in and see what you missed.",
-          primaryButtonText: "Open Study Group",
+          contextLine: unreadGroupCount === 1
+            ? "There is new activity waiting in your Bible Study Group."
+            : `There are ${unreadGroupCount} new things happening in your Bible Study Group.`,
+          recommendationLine: "The group is moving right now. Drop back in and see what people posted before you lose the thread of the conversation.",
+          primaryButtonText: "Check Group Activity",
           primaryButtonHref: `/study-groups/${memberGroupIds[0]}/chat`,
-          level: 1 as const,
-        });
+          level: 1,
+          cardEyebrow: "Community",
+          cardTitle: "Your group is active",
+          cardSubtitle: "There is fresh conversation waiting for you in the study group right now.",
+          cardTheme: "green",
+        }));
       }
+    }
 
-      // SECONDARY: This week's live Bible study post
-      const { data: liveStudyPosts } = await supabase
-        .from("weekly_group_series_posts")
-        .select("group_id, title, description, created_at")
-        .eq("series_key", "bible_study_saturday")
-        .in("group_id", memberGroupIds)
-        .order("created_at", { ascending: false })
-        .limit(1);
+    if (lastReadingPlanCompletion) {
+      const colonIndex = (lastReadingPlanCompletion.action_label || "").indexOf(": ");
+      const planName = colonIndex !== -1 ? lastReadingPlanCompletion.action_label!.slice(0, colonIndex) : "your reading plan";
+      const chapterRef = colonIndex !== -1 ? lastReadingPlanCompletion.action_label!.slice(colonIndex + 2) : "a chapter";
+      const parsedChapter = parseChapterReference(chapterRef);
+      const actionDate = new Date(lastReadingPlanCompletion.created_at);
+      const isBibleBuddy = planName.toLowerCase().includes("bible buddy");
 
-      const liveStudy = liveStudyPosts?.[0];
-      if (liveStudy) {
-        primaryCandidates.push({
+      if (isBibleBuddy && parsedChapter) {
+        const nextChapter = getNextBibleChapter(parsedChapter.book, parsedChapter.chapter);
+        candidates.push(createRecommendation({
+          priority: 82,
           greeting,
           contextLine: contextLine(
-            new Date(liveStudy.created_at),
-            `your group has this week's Bible study ready.`,
-            `It's been a while since you checked your Bible Study Group.`
+            actionDate,
+            `you finished ${chapterRef} in the Bible Buddy Reading Plan.`,
+            `It's been a while since you last opened the Bible Buddy Reading Plan.`
           ),
-          recommendationLine: liveStudy.title || "Open this week's live Bible study in your group.",
-          primaryButtonText: "Open Study Group",
-          primaryButtonHref: `/study-groups/${liveStudy.group_id}/chat`,
-          level: 2 as const,
-        });
+          recommendationLine: `Your next chapter is ${nextChapter.book} ${nextChapter.chapter}, so you already know exactly where to jump back in.`,
+          primaryButtonText: `Read ${nextChapter.book} ${nextChapter.chapter}`,
+          primaryButtonHref: `/Bible/${nextChapter.book}/${nextChapter.chapter}`,
+          level: 1,
+          cardEyebrow: "Reading Plan",
+          cardTitle: `Read ${nextChapter.book} ${nextChapter.chapter}`,
+          cardSubtitle: "Your reading plan already has your next step ready. Open the next chapter and keep moving.",
+          cardTheme: "blue",
+        }));
+      } else {
+        candidates.push(createRecommendation({
+          priority: 81,
+          greeting,
+          contextLine: contextLine(
+            actionDate,
+            `you read ${chapterRef} in ${planName}.`,
+            `It's been a while since you last read from ${planName}.`
+          ),
+          recommendationLine: "Jump back into your reading plan while the rhythm is still there.",
+          primaryButtonText: "Continue Reading Plan",
+          primaryButtonHref: isBibleBuddy ? "/reading-plans/bible-buddy" : "/reading-plans/bible-in-one-year",
+          level: 1,
+          cardEyebrow: "Reading Plan",
+          cardTitle: `Continue ${planName}`,
+          cardSubtitle: "You already have a plan in motion. The easiest win today is to pick it back up.",
+          cardTheme: "blue",
+        }));
       }
     }
 
-    const randomPrimary = pickRandomRecommendation(primaryCandidates);
-    if (randomPrimary) {
-      return randomPrimary;
-    }
+    if (lastBibleReading) {
+      const actionDate = new Date(lastBibleReading.created_at);
+      const label = lastBibleReading.action_label || "";
+      const parsed = parseChapterReference(label);
 
-    // --- PRIORITY 4: Continue devotionals before anything else ---
-    if (lastDevotionalCompletion) {
-      return {
+      if (parsed) {
+        const next = getNextBibleChapter(parsed.book, parsed.chapter);
+        candidates.push(createRecommendation({
+          priority: 78,
+          greeting,
+          contextLine: contextLine(
+            actionDate,
+            `you finished ${label}.`,
+            `It's been a while since you last read in ${parsed.book}.`
+          ),
+          recommendationLine: `Keep going with ${next.book} ${next.chapter} so your Bible reading does not turn into another thing you meant to come back to.`,
+          primaryButtonText: `Read ${next.book} ${next.chapter}`,
+          primaryButtonHref: `/Bible/${next.book}/${next.chapter}`,
+          level: 2,
+          cardEyebrow: "Bible",
+          cardTitle: "Continue reading",
+          cardSubtitle: `You left off at ${label}. Your next chapter is already lined up for you.`,
+          cardTheme: "blue",
+        }));
+      }
+    } else if ((profile.chapters_completed_count || 0) === 0) {
+      candidates.push(createRecommendation({
+        priority: 77,
         greeting,
-        contextLine: contextLine(
-          new Date(lastDevotionalCompletion.created_at),
-          `you completed a devotional day.`,
-          `It's been a while since you last worked on a devotional.`
-        ),
-        recommendationLine: "Open your devotionals and continue where you left off.",
-        primaryButtonText: "View Devotionals",
-        primaryButtonHref: "/devotionals",
-        level: 2 as const,
-      };
+        contextLine: "You have not really started reading in the Bible yet.",
+        recommendationLine: "Open the Bible and begin somewhere simple today. One chapter is enough to get your habit moving.",
+        primaryButtonText: "Open the Bible",
+        primaryButtonHref: "/Bible",
+        level: 2,
+        cardEyebrow: "Start Here",
+        cardTitle: "Open the Bible today",
+        cardSubtitle: "If you are not sure what to do next, reading one chapter is still one of the best moves in the app.",
+        cardTheme: "blue",
+      }));
     }
 
-    // --- PRIORITY 5: Reference tools after Bible reading ---
+    const triviaDays = lastTriviaAction ? daysSince(lastTriviaAction.created_at) : null;
+    if (triviaDays === null || triviaDays >= 7) {
+      candidates.push(createRecommendation({
+        priority: triviaDays === null ? 72 : 76,
+        greeting,
+        contextLine: triviaDays === null
+          ? "You have not really touched Bible trivia yet."
+          : `It has been ${triviaDays} days since you last played Bible trivia.`,
+        recommendationLine: "Trivia is a fast way to wake your brain back up and test what has actually been sticking.",
+        primaryButtonText: "Play Bible Trivia",
+        primaryButtonHref: "/bible-trivia",
+        level: 2,
+        cardEyebrow: "Challenge",
+        cardTitle: "Do a round of Bible trivia",
+        cardSubtitle: "This is one of the easiest ways to turn a few free minutes into real Bible repetition.",
+        cardTheme: "gold",
+      }));
+    }
+
+    const totalReferenceActions =
+      (profile.people_learned_count || 0) +
+      (profile.places_discovered_count || 0) +
+      (profile.keywords_mastered_count || 0);
+
     if (lastReferenceAction) {
       const actionDate = new Date(lastReferenceAction.created_at);
       const label = lastReferenceAction.action_label || "";
+      const mapping = {
+        person_learned: {
+          title: "Explore another Bible person",
+          subtitle: "The people database helps Scripture feel less flat and much more connected.",
+          cta: "Explore People",
+          href: "/people-in-the-bible",
+        },
+        place_discovered: {
+          title: "Explore another Bible place",
+          subtitle: "Context changes how verses land. A place can explain a lot in just a few taps.",
+          cta: "Explore Places",
+          href: "/places-in-the-bible",
+        },
+        keyword_mastered: {
+          title: "Study another Bible keyword",
+          subtitle: "A single Bible word can open up a whole layer of meaning you would miss otherwise.",
+          cta: "Explore Keywords",
+          href: "/keywords-in-the-bible",
+        },
+      } as const;
 
-      switch (lastReferenceAction.action_type) {
-        case "person_learned":
-          return {
-            greeting,
-            contextLine: contextLine(
-              actionDate,
-              `you looked up ${label}.`,
-              `It's been a while since you last explored people in the Bible.`
-            ),
-            recommendationLine: "Open the people tool again and learn another Bible person today.",
-            primaryButtonText: "Explore People",
-            primaryButtonHref: "/people-in-the-bible",
-            level: 2 as const,
-          };
-
-        case "place_discovered":
-          return {
-            greeting,
-            contextLine: contextLine(
-              actionDate,
-              `you looked up ${label}.`,
-              `It's been a while since you last explored places in the Bible.`
-            ),
-            recommendationLine: "Open the places tool again and explore another Bible location today.",
-            primaryButtonText: "Explore Places",
-            primaryButtonHref: "/places-in-the-bible",
-            level: 2 as const,
-          };
-
-        case "keyword_mastered":
-          return {
-            greeting,
-            contextLine: contextLine(
-              actionDate,
-              `you looked up ${label}.`,
-              `It's been a while since you last explored Bible keywords.`
-            ),
-            recommendationLine: "Open the keywords tool again and dig into another key word today.",
-            primaryButtonText: "Explore Keywords",
-            primaryButtonHref: "/keywords-in-the-bible",
-            level: 2 as const,
-          };
+      const current = mapping[lastReferenceAction.action_type as keyof typeof mapping];
+      if (current) {
+        candidates.push(createRecommendation({
+          priority: 70,
+          greeting,
+          contextLine: contextLine(
+            actionDate,
+            `you last looked up ${label}.`,
+            "It's been a while since you used the Bible reference tools."
+          ),
+          recommendationLine: "Those tools are there to make hard words and names stop feeling distant. Go learn one more thing today.",
+          primaryButtonText: current.cta,
+          primaryButtonHref: current.href,
+          level: 2,
+          cardEyebrow: "Bible Reference",
+          cardTitle: current.title,
+          cardSubtitle: current.subtitle,
+          cardTheme: "purple",
+        }));
       }
-    }
-
-    // --- PRIORITY 6: Other meaningful actions ---
-    if (lastTriviaAction) {
-      return {
+    } else if (totalReferenceActions === 0) {
+      candidates.push(createRecommendation({
+        priority: 68,
         greeting,
-        contextLine: contextLine(
-          new Date(lastTriviaAction.created_at),
-          `you finished a round of trivia.`,
-          `It's been a while since you last played Bible trivia.`
-        ),
-        recommendationLine: "Play another round and keep building what you know.",
-        primaryButtonText: "Do Trivia",
-        primaryButtonHref: "/bible-trivia",
-        level: 2 as const,
-      };
+        contextLine: "You have not really used the people, places, and keyword tools yet.",
+        recommendationLine: "Those tools are one of the easiest ways to make the Bible feel clearer fast, especially when you hit a name or word you do not know.",
+        primaryButtonText: "Explore Keywords",
+        primaryButtonHref: "/keywords-in-the-bible",
+        level: 2,
+        cardEyebrow: "Bible Reference",
+        cardTitle: "Try the Bible word tools",
+        cardSubtitle: "Tap into the people, places, and keyword databases to make your reading easier to follow.",
+        cardTheme: "purple",
+      }));
     }
 
     if (lastBibleNoteAction) {
-      return {
+      candidates.push(createRecommendation({
+        priority: 66,
         greeting,
         contextLine: contextLine(
           new Date(lastBibleNoteAction.created_at),
           lastBibleNoteAction.action_type === "note_created"
-            ? `you created a note while reading.`
-            : `you highlighted some verses.`,
-          `It's been a while since you last opened the Bible.`
+            ? "you created a note while reading."
+            : "you highlighted verses while reading.",
+          "It's been a while since you last opened the Bible."
         ),
-        recommendationLine: "Open the Bible and keep going while it is still fresh.",
-        primaryButtonText: "Open Bible",
+        recommendationLine: "Go back while those thoughts are still fresh and keep building from what was already standing out to you.",
+        primaryButtonText: "Open the Bible",
         primaryButtonHref: "/Bible",
-        level: 2 as const,
-      };
+        level: 2,
+        cardEyebrow: "Fresh Momentum",
+        cardTitle: "Go back to the verses you were in",
+        cardSubtitle: "Your notes and highlights are usually a sign that God already had your attention there for a reason.",
+        cardTheme: "blue",
+      }));
     }
 
-    // --- PRIORITY 7: Fallback to last meaningful action if needed ---
-    if (lastMeaningful) {
-      const actionDate = new Date(lastMeaningful.created_at);
-      const label = lastMeaningful.action_label || "";
-
-      switch (lastMeaningful.action_type) {
-        case "chapter_completed": {
-          // action_label = "Proverbs 10" — parse book + chapter
-          const chMatch = label.match(/^(.+?)\s+(\d+)$/);
-          if (chMatch) {
-            const chBook = chMatch[1];
-            const chNum = parseInt(chMatch[2], 10);
-            const next = getNextBibleChapter(chBook, chNum);
-            const nextLabel = `${next.book} ${next.chapter}`;
-            return {
-              greeting,
-              contextLine: contextLine(
-                actionDate,
-                `you finished ${label}.`,
-                `It's been a while since you last read in ${chBook}.`
-              ),
-              recommendationLine: `Keep reading by starting ${nextLabel} next.`,
-              primaryButtonText: `Read ${nextLabel}`,
-              primaryButtonHref: `/Bible/${next.book}/${next.chapter}`,
-              level: 2 as const,
-            };
-          }
-          // Fallback if label doesn't parse (shouldn't happen)
-          return {
-            greeting,
-            contextLine: contextLine(
-              actionDate,
-              `you read ${label}.`,
-              `It's been a while since you last read ${label}.`
-            ),
-            recommendationLine: "Want to keep reading today?",
-            primaryButtonText: "Continue Reading",
-            primaryButtonHref: "/Bible",
-            level: 2 as const,
-          };
-        }
-
-        case "person_learned":
-          return {
-            greeting,
-            contextLine: contextLine(
-              actionDate,
-              `you looked up ${label}.`,
-              `It's been a while since you last explored people in the Bible.`
-            ),
-            recommendationLine: "Open the people tool again and learn another Bible person today.",
-            primaryButtonText: "Explore People",
-            primaryButtonHref: "/people-in-the-bible",
-            level: 2 as const,
-          };
-
-        case "place_discovered":
-          return {
-            greeting,
-            contextLine: contextLine(
-              actionDate,
-              `you looked up ${label}.`,
-              `It's been a while since you last explored places in the Bible.`
-            ),
-            recommendationLine: "Open the places tool again and explore another Bible location today.",
-            primaryButtonText: "Explore Places",
-            primaryButtonHref: "/places-in-the-bible",
-            level: 2 as const,
-          };
-
-        case "keyword_mastered":
-          return {
-            greeting,
-            contextLine: contextLine(
-              actionDate,
-              `you looked up ${label}.`,
-              `It's been a while since you last explored Bible keywords.`
-            ),
-            recommendationLine: "Open the keywords tool again and dig into another key word today.",
-            primaryButtonText: "Explore Keywords",
-            primaryButtonHref: "/keywords-in-the-bible",
-            level: 2 as const,
-          };
-
-        case "trivia_question_answered":
-          return {
-            greeting,
-            contextLine: contextLine(
-              actionDate,
-              `you finished a round of trivia.`,
-              `It's been a while since you last played Bible trivia.`
-            ),
-            recommendationLine: "Play another round and keep building what you know.",
-            primaryButtonText: "Do Trivia",
-            primaryButtonHref: "/bible-trivia",
-            level: 2 as const,
-          };
-
-        case "note_created":
-          return {
-            greeting,
-            contextLine: contextLine(
-              actionDate,
-              `you created a note while reading.`,
-              `It's been a while since you last opened the Bible.`
-            ),
-            recommendationLine: "Jump back into Scripture and keep reading from where you were studying.",
-            primaryButtonText: "Open Bible",
-            primaryButtonHref: "/Bible",
-            level: 2 as const,
-          };
-
-        case "verse_highlighted":
-          return {
-            greeting,
-            contextLine: contextLine(
-              actionDate,
-              `you highlighted some verses.`,
-              `It's been a while since you last opened the Bible.`
-            ),
-            recommendationLine: "Open the Bible and keep going while those verses are still fresh.",
-            primaryButtonText: "Open Bible",
-            primaryButtonHref: "/Bible",
-            level: 2 as const,
-          };
-
-        case "devotional_day_completed":
-          return {
-            greeting,
-            contextLine: contextLine(
-              actionDate,
-              `you completed a devotional day.`,
-              `It's been a while since you last worked on a devotional.`
-            ),
-            recommendationLine: "Pick a devotional and keep your consistency going today.",
-            primaryButtonText: "View Devotionals",
-            primaryButtonHref: "/devotionals",
-            level: 2 as const,
-          };
-      }
+    if (lastDevotionalCompletion && !activeDevotional) {
+      candidates.push(createRecommendation({
+        priority: 64,
+        greeting,
+        contextLine: contextLine(
+          new Date(lastDevotionalCompletion.created_at),
+          "you completed a devotional day.",
+          "It's been a while since you last worked on a devotional."
+        ),
+        recommendationLine: "Open your devotionals and keep the habit alive with the next story that speaks to where you are right now.",
+        primaryButtonText: "View Devotionals",
+        primaryButtonHref: "/devotionals",
+        level: 2,
+        cardEyebrow: "Devotional",
+        cardTitle: "Pick up a devotional today",
+        cardSubtitle: "A devotional is still one of the easiest ways to sit with Scripture in a guided way.",
+        cardTheme: "rose",
+      }));
     }
 
-    // --- PRIORITY 4: New user — recommend The Tempting of Jesus ---
+    const best = pickHighestPriority(candidates);
+    if (best) return best;
+
     const { data: recommendedDevotionals } = await supabase
       .from("devotionals")
       .select("id, title, total_days")
-      .limit(10);
+      .limit(20);
 
     const recommendedDevotional = pickRecommendedDevotional(recommendedDevotionals || []);
-
     if (recommendedDevotional) {
       return {
         greeting: "Welcome to Bible Buddy.",
-        contextLine: `You have not started a devotional yet, and ${recommendedDevotional.title} is a great place to begin.`,
-        recommendationLine: "Start with Day 1 today and build a simple daily habit.",
+        contextLine: `${recommendedDevotional.title} is a strong place to begin if you want a guided story and a clear next step.`,
+        recommendationLine: "Start with Day 1 today and let the app lead you into a simple, steady rhythm.",
         primaryButtonText: "Start Day 1",
         primaryButtonHref: `/devotionals/${recommendedDevotional.id}`,
-        level: 2 as const,
+        level: 2,
+        cardEyebrow: "Start Here",
+        cardTitle: `Start ${recommendedDevotional.title}`,
+        cardSubtitle: "If you do not know where to begin, start with one strong story and let that become your habit.",
+        cardTheme: "rose",
       };
     }
 
     return {
       greeting: "Welcome to Bible Buddy.",
-      contextLine: "There's a lot to explore here.",
-      recommendationLine: "Want to start reading the Bible today?",
-      primaryButtonText: "Open Bible",
+      contextLine: "There is a lot here, but you only need one good next step.",
+      recommendationLine: "Open the Bible today and start with one chapter.",
+      primaryButtonText: "Open the Bible",
       primaryButtonHref: "/Bible",
-      level: 2 as const,
+      level: 2,
+      cardEyebrow: "Start Here",
+      cardTitle: "Open the Bible today",
+      cardSubtitle: "When in doubt, one chapter is still a real win.",
+      cardTheme: "blue",
     };
   } catch (err) {
     console.error("[DAILY_RECOMMENDATION] Error:", err);

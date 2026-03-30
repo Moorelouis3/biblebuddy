@@ -13,6 +13,7 @@ import { recalculateTotalActions } from "../lib/recalculateTotalActions";
 import { FeatureRenderPriorityProvider } from "./FeatureRenderPriorityContext";
 import { CURRENT_UPDATE_VERSION } from "../lib/globalUpdateConfig";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
+import { LouisAvatar } from "./LouisAvatar";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../lib/profileName";
 import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
@@ -1503,7 +1504,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       )}
                       <div className="max-h-72 overflow-y-auto">
                         {notifications.length === 0 ? (
-                          <p className="text-sm text-gray-500 text-center py-6">No notifications yet.</p>
+                          <div className="flex flex-col items-center justify-center px-5 py-7 text-center">
+                            <div className="rounded-full bg-[#f4f8ff] p-2 shadow-sm">
+                              <LouisAvatar mood="wave" size={44} />
+                            </div>
+                            <p className="mt-3 text-sm font-semibold text-gray-800">No notifications yet</p>
+                            <p className="mt-1 text-xs leading-relaxed text-gray-500">
+                              Louis will keep this spot warm until your next update comes in.
+                            </p>
+                          </div>
                         ) : (
                           notifications.map((notif) => {
                             // Friendly label for the notification source
@@ -1633,8 +1642,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                           <p className="text-sm text-gray-400 text-center py-6">Loading...</p>
                         ) : conversationPreviews.length === 0 ? (
                           <div className="text-center py-8 px-4">
-                            <p className="text-sm text-gray-500 mb-1">No messages yet.</p>
-                            <p className="text-xs text-gray-400">Add Buddies to start chatting!</p>
+                            <div className="mx-auto flex w-fit rounded-full bg-[#eef7f1] p-2 shadow-sm">
+                              <LouisAvatar mood="hands" size={48} />
+                            </div>
+                            <p className="text-sm font-semibold text-gray-800 mt-3 mb-1">No messages yet</p>
+                            <p className="text-xs text-gray-500 leading-relaxed">
+                              Add a few Buddies and Louis will help this inbox start feeling alive.
+                            </p>
                           </div>
                         ) : (
                           conversationPreviews.map((convo, index) => {

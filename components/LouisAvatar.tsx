@@ -6,7 +6,12 @@ type LouisMood =
   | "think"
   | "pray"
   | "sheesh"
-  | "bible";
+  | "bible"
+  | "smile"
+  | "cool"
+  | "hands"
+  | "salute"
+  | "sideeye";
 
 type LouisAvatarProps = {
   mood?: LouisMood;
@@ -20,6 +25,11 @@ const moodToFile: Record<LouisMood, string> = {
   pray: "/louis/louis-pray.png",
   sheesh: "/louis/louis-sheesh.png",
   bible: "/louis/louis-bible.png",
+  smile: "/louis/louis-smile.png",
+  cool: "/louis/louis-cool.png",
+  hands: "/louis/louis-hands.png",
+  salute: "/louis/louis-salute.png",
+  sideeye: "/louis/louis-sideeye.png",
 };
 
 export function LouisAvatar({ mood = "wave", size = 72 }: LouisAvatarProps) {
