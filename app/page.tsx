@@ -7,87 +7,6 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 
-const heroBullets = [
-  "Understand hard words, people, and places without leaving your reading",
-  "Read with chapter reviews, notes, highlights, and guided help built in",
-  "Join a live Bible Study Group with weekly lessons, trivia, and reflection",
-];
-
-const featureCards = [
-  {
-    title: "Read the Bible and actually understand it",
-    body:
-      "Bible Buddy is built for the moment when you hit a verse, name, or phrase and realize you do not fully understand what you just read. Instead of leaving the app to search all over the internet, the help opens right inside your reading flow.",
-  },
-  {
-    title: "Tap into explanations while you read",
-    body:
-      "People, places, and Bible keywords are connected directly into the reading experience. Tap Moses, Babylon, covenant, or any hard term and get clear context fast, so the Bible starts making more sense while you are still in the chapter.",
-  },
-  {
-    title: "Study with structure, not guesswork",
-    body:
-      "When you do not know where to start, Bible Buddy gives you devotionals, reading plans, chapter reviews, guided notes, and study tools that walk you forward one step at a time.",
-  },
-];
-
-const platformHighlights = [
-  {
-    kicker: "The Bible Reader",
-    title: "Scripture, chapter reviews, highlights, and notes in one place",
-    body:
-      "Switch translations, save your place, mark what stands out, and open chapter notes without breaking your focus. This is built to help you stay inside the Bible longer.",
-  },
-  {
-    kicker: "Bible Study Group",
-    title: "Weekly live study lessons with a real community around them",
-    body:
-      "Each week, the Bible Study Group moves through a structured lesson with reading, trivia, reflection, discussion, and group momentum that keeps people coming back.",
-  },
-  {
-    kicker: "Bible Understanding Tools",
-    title: "People, places, keywords, devotionals, and guided study support",
-    body:
-      "Bible Buddy helps connect the story of Scripture for you. Learn the people, understand the setting, follow the bigger picture, and keep growing with practical tools that make hard parts feel clear.",
-  },
-];
-
-const studyFlow = [
-  {
-    step: "01",
-    title: "Read the chapter",
-    body:
-      "Open Scripture and keep your place with a reader built specifically for Bible study, not just passive scrolling.",
-  },
-  {
-    step: "02",
-    title: "Understand what you are reading",
-    body:
-      "Tap Bible words, people, and places. Open the chapter review. See what the text is saying and why it matters.",
-  },
-  {
-    step: "03",
-    title: "Go deeper with structure",
-    body:
-      "Use devotionals, reading plans, notes, chapter reviews, and study tools to stay consistent instead of guessing what to do next.",
-  },
-  {
-    step: "04",
-    title: "Study with other people too",
-    body:
-      "Step into the Bible Study Group for weekly lessons, reflection, trivia, discussion, and a real sense of shared momentum.",
-  },
-];
-
-const proofPoints = [
-  "Interactive Bible reader",
-  "Chapter reviews and notes",
-  "People, places, and keyword help",
-  "21-day devotionals",
-  "Weekly Bible study group lessons",
-  "Bible trivia and reading plans",
-];
-
 export default function LandingPage() {
   const router = useRouter();
   const [isChecking, setIsChecking] = useState(true);
@@ -163,13 +82,17 @@ export default function LandingPage() {
         user_id: user.id,
         email: user.email,
       });
-      if (insertError) console.error("Analytics insert failed (non-blocking):", insertError);
+
+      if (insertError) {
+        console.error("Analytics insert failed (non-blocking):", insertError);
+      }
     } catch (analyticsError) {
       console.error("Analytics insert error (non-blocking):", analyticsError);
     }
 
     try {
       const username = firstName.trim() || user.email?.split("@")[0] || "New User";
+
       const { error: actionError } = await supabase.from("master_actions").insert({
         user_id: user.id,
         username,
@@ -177,7 +100,10 @@ export default function LandingPage() {
         action_label: "Signed up for Bible Buddy",
         created_at: new Date().toISOString(),
       });
-      if (actionError) console.error("Signup action tracking failed (non-blocking):", actionError);
+
+      if (actionError) {
+        console.error("Signup action tracking failed (non-blocking):", actionError);
+      }
     } catch (actionTrackingError) {
       console.error("Signup action tracking error (non-blocking):", actionTrackingError);
     }
@@ -202,325 +128,290 @@ export default function LandingPage() {
 
   if (isChecking) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-gray-500">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      <header className="sticky top-0 z-30 border-b border-[#e9e5da] bg-white/95 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:px-6">
-          <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#eef4ff] shadow-sm">
-              <Image
-                src="/louis/louis-bible.png"
-                alt="Bible Buddy Logo"
-                width={28}
-                height={28}
-                className="h-7 w-7"
-              />
-            </div>
-            <div>
-              <p className="text-lg font-semibold tracking-tight text-gray-950">Bible Buddy</p>
-              <p className="text-xs uppercase tracking-[0.24em] text-[#7286a8]">Understand Scripture Better</p>
-            </div>
-          </div>
+    <div className="min-h-screen flex flex-col bg-white">
+      <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:py-6">
+        <div className="flex items-center gap-3">
+          <Image
+            src="/louis/louis-bible.png"
+            alt="Bible Buddy Logo"
+            width={32}
+            height={32}
+            className="h-8 w-8"
+          />
+          <div className="text-lg font-bold tracking-tight text-gray-900 md:text-xl">Bible Buddy</div>
+        </div>
 
-          <div className="flex items-center gap-3">
-            <Link
-              href="/login"
-              className="hidden text-sm font-medium text-gray-700 transition hover:text-gray-950 sm:inline-block"
-            >
-              Log In
-            </Link>
-            <button
-              type="button"
-              onClick={() => setShowSignupModal(true)}
-              className="rounded-full bg-[#2f63c8] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-[#2755ac]"
-            >
-              Start Free
-            </button>
-          </div>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/login"
+            className="text-sm font-medium text-gray-700 transition hover:text-gray-900 md:text-base"
+          >
+            Log In
+          </Link>
+          <button
+            type="button"
+            onClick={() => setShowSignupModal(true)}
+            className="inline-block rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 md:px-6 md:py-2.5 md:text-base"
+          >
+            Sign Up →
+          </button>
         </div>
       </header>
 
-      <main>
-        <section className="relative overflow-hidden bg-white">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(214,228,255,0.45),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(244,239,224,0.55),_transparent_26%)]" />
-          <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-4 pb-16 pt-12 md:px-6 md:pb-20 md:pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div>
-              <div className="inline-flex rounded-full border border-[#dbe4f5] bg-[#f8fbff] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-[#6f86ad] shadow-sm">
-                Built for people who want to understand the Bible
-              </div>
+      <main className="flex w-full justify-center px-4 pb-4 pt-8 md:pb-6 md:pt-10">
+        <div className="mx-auto w-full max-w-5xl">
+          <div className="mb-8 text-center md:mb-10">
+            <h1 className="mb-3 text-3xl font-bold leading-tight text-gray-900 md:mb-4 md:text-4xl lg:text-5xl">
+              Understand the Bible with Bible Buddy
+            </h1>
+            <p className="mx-auto max-w-2xl text-base text-gray-600 md:text-lg">
+              Read Scripture, understand hard chapters, learn the people and places behind the story,
+              and grow with guided tools, weekly Bible Study Group lessons, and real support that
+              help the Bible finally make sense.
+            </p>
+          </div>
 
-              <h1 className="mt-6 max-w-3xl text-4xl font-semibold tracking-tight text-gray-950 sm:text-5xl lg:text-6xl">
-                The Bible study app that helps you understand what you are reading.
-              </h1>
+          <div className="mb-2 md:mb-2">
+            <div className="relative mx-auto max-w-4xl">
+              <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-blue-50/50 to-gray-50/50 blur-2xl" />
 
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-700">
-                Bible Buddy is not just another place to read verses. It is a full Bible study experience designed to help you understand Scripture, follow the story, learn the context, and stay consistent with tools that actually work together.
-              </p>
-
-              <div className="mt-8 grid gap-3">
-                {heroBullets.map((bullet) => (
-                  <div
-                    key={bullet}
-                    className="flex items-start gap-3 rounded-2xl border border-[#e8edf7] bg-[#fbfdff] px-4 py-3 shadow-sm"
-                  >
-                    <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[#2f63c8]" />
-                    <p className="text-sm leading-6 text-gray-700 sm:text-[15px]">{bullet}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <button
-                  type="button"
-                  onClick={() => setShowSignupModal(true)}
-                  className="rounded-2xl bg-[#2f63c8] px-7 py-4 text-base font-semibold text-white shadow-lg transition hover:bg-[#2755ac]"
-                >
-                  Create Your Free Account
-                </button>
-                <Link
-                  href="/login"
-                  className="rounded-2xl border border-[#d9e3f4] bg-white px-7 py-4 text-center text-base font-semibold text-[#35568f] transition hover:bg-[#f7fbff]"
-                >
-                  Log In
-                </Link>
-              </div>
-
-              <div className="mt-8 flex flex-wrap gap-2">
-                {proofPoints.map((point) => (
-                  <span
-                    key={point}
-                    className="rounded-full border border-[#e5ebf6] bg-[#f8fbff] px-3 py-1.5 text-xs font-medium text-[#617898] sm:text-sm"
-                  >
-                    {point}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-[34px] bg-gradient-to-br from-[#e9f1ff]/70 via-transparent to-[#f6efe2]/70 blur-2xl" />
-              <div className="relative overflow-hidden rounded-[32px] border border-[#e8ebf2] bg-white shadow-[0_24px_70px_rgba(46,54,68,0.10)]">
-                <div className="border-b border-[#edf1f7] bg-[#fafcff] px-5 py-4">
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#7085aa]">Inside Bible Buddy</p>
-                      <h2 className="mt-1 text-xl font-semibold text-gray-950">Read, understand, study, and grow in one place</h2>
-                    </div>
-                    <div className="hidden rounded-2xl bg-[#eef4ff] px-3 py-2 text-right text-xs font-medium text-[#5e7aa8] sm:block">
-                      Built for daily Bible study
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-4 sm:p-5">
-                  <div className="overflow-hidden rounded-[26px] border border-[#e9edf5] bg-white">
-                    <Image
-                      src="/LandingPage1.png"
-                      alt="Bible Buddy app preview"
-                      width={1200}
-                      height={900}
-                      className="h-auto w-full object-cover"
-                      priority
-                    />
-                  </div>
-
-                  <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                    <div className="rounded-2xl border border-[#e8edf7] bg-[#fbfdff] px-4 py-3">
-                      <p className="text-xs uppercase tracking-[0.2em] text-[#7085aa]">Read</p>
-                      <p className="mt-1 text-sm text-gray-700">Stay in the chapter with notes, highlights, and review tools built in.</p>
-                    </div>
-                    <div className="rounded-2xl border border-[#e8edf7] bg-[#fbfdff] px-4 py-3">
-                      <p className="text-xs uppercase tracking-[0.2em] text-[#7085aa]">Understand</p>
-                      <p className="mt-1 text-sm text-gray-700">Tap people, places, and Bible words to understand the context without leaving the app.</p>
-                    </div>
-                    <div className="rounded-2xl border border-[#e8edf7] bg-[#fbfdff] px-4 py-3">
-                      <p className="text-xs uppercase tracking-[0.2em] text-[#7085aa]">Study Together</p>
-                      <p className="mt-1 text-sm text-gray-700">Follow weekly Bible Study Group lessons with reading, trivia, reflection, and discussion.</p>
-                    </div>
-                  </div>
+              <div className="p-2 md:p-3">
+                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                  <Image
+                    src="/LandingPage1.png"
+                    alt="Bible Buddy preview"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 900px"
+                    className="absolute left-0 top-0 h-full w-full object-contain"
+                    style={{
+                      WebkitMaskImage: "radial-gradient(120% 120% at 50% 40%, #000 70%, transparent 100%)",
+                      maskImage: "radial-gradient(120% 120% at 50% 40%, #000 70%, transparent 100%)",
+                    }}
+                    priority
+                  />
                 </div>
               </div>
             </div>
           </div>
-        </section>
 
-        <section className="mx-auto w-full max-w-7xl px-4 py-4 md:px-6 md:py-8">
-          <div className="rounded-[30px] border border-[#e7ebf3] bg-white px-6 py-8 shadow-sm md:px-10">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7085aa]">Why people stay with Bible Buddy</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-gray-950 md:text-4xl">
-                Most Bible apps help you read more.
-                <br />
-                Bible Buddy helps you understand more.
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-8 text-gray-700 md:text-lg">
-                If you have ever read a chapter, finished it, and still felt like you did not fully understand what was happening, Bible Buddy was built for that exact problem. This app brings Scripture, explanation, study tools, and community together so Bible study finally feels connected instead of scattered.
-              </p>
-            </div>
-
-            <div className="mt-8 grid gap-4 lg:grid-cols-3">
-              {featureCards.map((card) => (
-                <div
-                  key={card.title}
-                  className="rounded-[26px] border border-[#e7ebf3] bg-[#fbfdff] p-5 shadow-sm"
-                >
-                  <h3 className="text-xl font-semibold text-gray-950">{card.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-gray-700 md:text-[15px]">{card.body}</p>
-                </div>
-              ))}
-            </div>
+          <div className="mb-3 text-center md:mb-4">
+            <button
+              type="button"
+              onClick={() => setShowSignupModal(true)}
+              className="inline-block rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg transition hover:scale-105 hover:bg-blue-700 md:px-10 md:py-4 md:text-lg"
+            >
+              Start Studying Free →
+            </button>
+            <p className="mt-2 text-xs text-gray-500 md:text-sm">Create your Bible Buddy account now</p>
           </div>
-        </section>
-
-        <section className="mx-auto w-full max-w-7xl px-4 py-10 md:px-6 md:py-16">
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-            <div className="rounded-[30px] border border-[#dce6f4] bg-[#eef4ff] p-7 text-gray-950 shadow-sm md:p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#6881aa]">Bible Study Group</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-                Weekly Bible study lessons with a community around them.
-              </h2>
-              <p className="mt-4 text-base leading-8 text-gray-700">
-                Bible Buddy is not just a private reading app. Inside the Bible Study Group, you can follow a live weekly series with structured lessons, chapter reading, trivia, reflection, discussion, and group momentum that keeps people coming back.
-              </p>
-
-              <div className="mt-6 grid gap-3">
-                <div className="rounded-2xl border border-[#d9e5f6] bg-white px-4 py-3">
-                  <p className="text-sm font-semibold">Weekly lesson structure</p>
-                  <p className="mt-1 text-sm text-gray-700">Each series moves week by week so you are not guessing what to study next.</p>
-                </div>
-                <div className="rounded-2xl border border-[#d9e5f6] bg-white px-4 py-3">
-                  <p className="text-sm font-semibold">Reading, trivia, reflection, discussion</p>
-                  <p className="mt-1 text-sm text-gray-700">The lesson is not just content. It gives people a full flow for studying and engaging.</p>
-                </div>
-                <div className="rounded-2xl border border-[#d9e5f6] bg-white px-4 py-3">
-                  <p className="text-sm font-semibold">Real community and accountability</p>
-                  <p className="mt-1 text-sm text-gray-700">See what other people are learning, post your thoughts, and keep moving with the group.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid gap-4">
-              {platformHighlights.map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-[26px] border border-[#e7ebf3] bg-white p-6 shadow-sm"
-                >
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7085aa]">{item.kicker}</p>
-                  <h3 className="mt-2 text-2xl font-semibold text-gray-950">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-gray-700 md:text-[15px]">{item.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto w-full max-w-7xl px-4 py-4 md:px-6 md:py-8">
-          <div className="rounded-[30px] border border-[#e7ebf3] bg-white px-6 py-8 shadow-sm md:px-10">
-            <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7085aa]">How it works</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-gray-950 md:text-4xl">
-                One app. One study flow. A much clearer way to stay in Scripture.
-              </h2>
-            </div>
-
-            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {studyFlow.map((item) => (
-                <div
-                  key={item.step}
-                  className="rounded-[24px] border border-[#e7ebf3] bg-[#fbfdff] p-5 shadow-sm"
-                >
-                  <p className="text-sm font-semibold tracking-[0.22em] text-[#6f84a9]">{item.step}</p>
-                  <h3 className="mt-3 text-xl font-semibold text-gray-950">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-gray-700">{item.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto w-full max-w-7xl px-4 py-10 md:px-6 md:py-16">
-          <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="rounded-[30px] border border-[#e7ebf3] bg-white p-7 shadow-sm md:p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7085aa]">Built for real Bible readers</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-gray-950 md:text-4xl">
-                If you want to read the Bible more consistently and understand it more deeply, this is for you.
-              </h2>
-              <p className="mt-4 text-base leading-8 text-gray-700">
-                Bible Buddy was made for the person who wants more than a verse image, more than a random reading streak, and more than just getting through the chapter. It is for people who want to understand what is happening in Scripture, build a real habit, and grow with tools that actually support the way Bible study works in real life.
-              </p>
-
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <button
-                  type="button"
-                  onClick={() => setShowSignupModal(true)}
-                  className="rounded-2xl bg-[#2f63c8] px-7 py-4 text-base font-semibold text-white shadow-lg transition hover:bg-[#2755ac]"
-                >
-                  Start Studying Free
-                </button>
-                <Link
-                  href="/login"
-                  className="rounded-2xl border border-[#d9e3f4] bg-[#f8fbff] px-7 py-4 text-center text-base font-semibold text-[#35568f] transition hover:bg-white"
-                >
-                  I Already Have an Account
-                </Link>
-              </div>
-            </div>
-
-            <div className="rounded-[30px] border border-[#e7ebf3] bg-[#f8fbff] p-7 shadow-sm md:p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7085aa]">What you get</p>
-              <div className="mt-5 space-y-4">
-                {[
-                  "A serious Bible reader with built-in help",
-                  "Chapter reviews that explain what is happening",
-                  "Tap-to-open Bible words, places, and people",
-                  "Guided devotionals and reading plans",
-                  "Weekly Bible Study Group lessons and discussion",
-                  "Trivia, notes, highlights, and progress tracking",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[#2f63c8]" />
-                    <p className="text-sm leading-7 text-gray-700 md:text-[15px]">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        </div>
       </main>
 
-      <footer className="mt-6 border-t border-[#e7ebf3] bg-white">
-        <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-10 md:grid-cols-3 md:px-6 md:py-12">
+      <section className="w-full bg-white">
+        <div className="mx-auto max-w-6xl px-4 pb-12 pt-0 md:pb-16">
+          <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-3 md:gap-12">
+            <div className="space-y-3">
+              <svg
+                viewBox="0 0 24 24"
+                className="mx-auto h-8 w-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M2 6.5C2 5.12 3.12 4 4.5 4H12a3 3 0 0 1 3 3v13H4.5A2.5 2.5 0 0 0 2 22Z" />
+                <path d="M12 4h7.5A2.5 2.5 0 0 1 22 6.5V22H15" />
+              </svg>
+              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Interactive Bible</h3>
+              <p className="text-sm text-gray-600 md:text-base">
+                Read the Bible in a clean, focused way, save your place, and keep moving chapter by
+                chapter without losing your flow.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <svg
+                viewBox="0 0 24 24"
+                className="mx-auto h-8 w-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="3" />
+                <path d="M19.4 15a8 8 0 1 0-14.8 0" />
+                <path d="M12 2v2" />
+              </svg>
+              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Guided Studies</h3>
+              <p className="text-sm text-gray-600 md:text-base">
+                Follow devotionals, reading plans, and weekly Bible Study Group lessons with
+                reading, trivia, and reflection so you always know what to study next.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <svg
+                viewBox="0 0 24 24"
+                className="mx-auto h-8 w-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4" />
+                <path d="M12 8h.01" />
+              </svg>
+              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Bible Help</h3>
+              <p className="text-sm text-gray-600 md:text-base">
+                Tap people, places, and key Bible words to get fast context right inside your
+                reading, so hard passages start becoming clear.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <svg
+                viewBox="0 0 24 24"
+                className="mx-auto h-8 w-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="6" y="4" width="12" height="16" rx="2" />
+                <path d="M9 8h6" />
+                <path d="M9 12h6" />
+                <path d="M9 16h4" />
+              </svg>
+              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Chapter Reviews</h3>
+              <p className="text-sm text-gray-600 md:text-base">
+                Get a plain-language review of what happened in the chapter, why it matters, and how
+                it fits into the larger story of Scripture.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <svg
+                viewBox="0 0 24 24"
+                className="mx-auto h-8 w-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M9 12l2 2 4-4" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Bible Trivia</h3>
+              <p className="text-sm text-gray-600 md:text-base">
+                Lock in what you are learning with Bible trivia that helps you remember the people,
+                chapters, and stories you just studied.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <svg
+                viewBox="0 0 24 24"
+                className="mx-auto h-8 w-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 2c1.8 3.6 1.5 6.1 0 8.5 2.7-.2 4.5-2.1 4.5-4.8 3.3 3 3.7 8.1.6 11.6-2.9 3.3-8.2 3.4-11.1.3C2.1 14 2.6 8.9 6 6c0 2.7 1.9 4.6 4.6 4.8" />
+              </svg>
+              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Streak Tracker</h3>
+              <p className="text-sm text-gray-600 md:text-base">
+                Stay consistent, build a real habit, and keep your momentum going as you spend time
+                in the Bible day after day.
+              </p>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-12 max-w-4xl rounded-2xl border border-blue-100 bg-blue-50/60 px-6 py-7 text-center">
+            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">Study with the Bible Study Group each week</h2>
+            <p className="mx-auto mt-3 max-w-3xl text-sm leading-7 text-gray-600 md:text-base">
+              Bible Buddy is not just for solo reading. Join the Bible Study Group for weekly lessons
+              that guide you through a live series with chapter reading, trivia, reflection, and
+              discussion, so you can study the Bible with structure and with other people.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer className="mt-4 border-t border-gray-200 bg-white text-gray-700">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-10 md:grid-cols-3 md:py-12">
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-900">Connect with me</h3>
-            <ul className="mt-4 space-y-2 text-sm text-gray-600">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-900">
+              Connect with me
+            </h3>
+            <ul className="space-y-2 text-sm">
               <li>
-                <a href="https://www.youtube.com/@BibleStudyWithLouis" target="_blank" rel="noreferrer" className="transition hover:text-[#204ea6]">
+                <a
+                  href="https://www.youtube.com/@BibleStudyWithLouis"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-blue-600"
+                >
                   YouTube
                 </a>
               </li>
               <li>
-                <a href="https://www.instagram.com/biblestudywithlouis" target="_blank" rel="noreferrer" className="transition hover:text-[#204ea6]">
+                <a
+                  href="https://www.instagram.com/biblestudywithlouis"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-blue-600"
+                >
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="https://www.threads.net/@biblestudywithlouis" target="_blank" rel="noreferrer" className="transition hover:text-[#204ea6]">
+                <a
+                  href="https://www.threads.net/@biblestudywithlouis"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-blue-600"
+                >
                   Threads
                 </a>
               </li>
               <li>
-                <a href="https://www.tiktok.com/@biblestudywithlouis" target="_blank" rel="noreferrer" className="transition hover:text-[#204ea6]">
+                <a
+                  href="https://www.tiktok.com/@biblestudywithlouis"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-blue-600"
+                >
                   TikTok
                 </a>
               </li>
               <li>
-                <a href="https://www.facebook.com/profile.php?id=100085924826685" target="_blank" rel="noreferrer" className="transition hover:text-[#204ea6]">
+                <a
+                  href="https://www.facebook.com/profile.php?id=100085924826685"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-blue-600"
+                >
                   Facebook
                 </a>
               </li>
@@ -528,36 +419,39 @@ export default function LandingPage() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-900">Resources</h3>
-            <ul className="mt-4 space-y-2 text-sm text-gray-600">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-900">
+              Resources
+            </h3>
+            <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/contact" className="transition hover:text-[#204ea6]">
+                <Link href="/contact" className="transition-colors hover:text-blue-600">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="transition hover:text-[#204ea6]">
+                <Link href="/privacy" className="transition-colors hover:text-blue-600">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="transition hover:text-[#204ea6]">
+                <Link href="/terms" className="transition-colors hover:text-blue-600">
                   Terms of Service
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold text-gray-950">Bible Buddy</h3>
-            <p className="mt-3 max-w-sm text-sm leading-7 text-gray-600 md:text-[15px]">
-              A Bible study app built to help people understand Scripture with more clarity, better structure, and real community around the Word.
+          <div className="text-sm md:text-base">
+            <h3 className="mb-3 text-lg font-semibold text-gray-900">Bible Buddy</h3>
+            <p className="max-w-sm leading-relaxed text-gray-600">
+              A Bible study app built to help you read Scripture with more clarity, better context,
+              and a stronger daily study habit.
             </p>
           </div>
         </div>
 
-        <div className="border-t border-[#eceff6]">
-          <div className="mx-auto max-w-7xl px-4 py-4 text-center text-xs text-gray-500 md:px-6 md:text-right">
+        <div className="border-t border-gray-200">
+          <div className="mx-auto max-w-7xl px-4 py-4 text-center text-xs text-gray-500 md:text-right md:text-sm">
             © 2026 Bible Buddy
           </div>
         </div>
@@ -571,15 +465,13 @@ export default function LandingPage() {
               onClick={() => setShowSignupModal(false)}
               className="absolute right-4 top-3 text-sm text-gray-400 hover:text-gray-700"
             >
-              ×
+              ✕
             </button>
 
-            <h2 className="text-center text-xl font-bold text-gray-900 md:text-2xl">
+            <h2 className="mb-1 text-center text-xl font-bold text-gray-900 md:text-2xl">
               Create your free Bible Buddy account
             </h2>
-            <p className="mb-4 mt-1 text-center text-xs text-gray-500">
-              Free to use. No credit card required.
-            </p>
+            <p className="mb-4 text-center text-xs text-gray-500">Free to use. No credit card required.</p>
 
             <form onSubmit={handleSubmit} className="mt-2 space-y-3">
               <div className="flex gap-2">
@@ -632,11 +524,11 @@ export default function LandingPage() {
                 />
               </div>
 
-              {error ? (
+              {error && (
                 <p className="rounded-lg border border-red-100 bg-red-50 px-3 py-2 text-xs text-red-600">
                   {error}
                 </p>
-              ) : null}
+              )}
 
               <button
                 type="submit"
