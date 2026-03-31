@@ -84,6 +84,11 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 
   const recommendationTheme =
     recommendationThemeClasses[dailyRecommendation?.cardTheme || "rose"] || recommendationThemeClasses.rose;
+  const cardShellTheme = {
+    outer: "border-[#e7d3a5] bg-gradient-to-br from-[#fbf1d7] via-[#f9edcf] to-[#f4e3ba]",
+    shell: "",
+    inset: "",
+  };
 
   const recommendationMood =
     dailyRecommendation?.cardTheme === "green"
@@ -98,8 +103,8 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className={`overflow-hidden rounded-[28px] border shadow-sm ${recommendationTheme.outer}`}>
-        <div className="px-5 py-4 md:px-6">
+      <div className={`overflow-hidden rounded-[26px] border shadow-sm ${cardShellTheme.outer}`}>
+        <div className="px-4 py-3.5 md:px-5 md:py-4">
           {isLoadingLevel ? (
             <>
               <div className="flex items-center gap-2 mb-2">
@@ -120,15 +125,15 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
               <div className="min-w-0 flex-1">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <h2 className="pr-2 text-[1rem] font-semibold leading-tight text-gray-950 sm:text-[1.2rem]">
-                      You are a Level {levelInfo.level} "{levelInfo.levelName}"
+                    <h2 className="pr-2 text-[0.95rem] font-semibold leading-tight text-gray-950 sm:text-[1.1rem]">
+                      Level {levelInfo.level} "{levelInfo.levelName}"
                     </h2>
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     <button
                       type="button"
                       onClick={() => setShowLevelDetails((current) => !current)}
-                      className="flex h-8 w-8 items-center justify-center rounded-full text-lg text-gray-400 transition hover:bg-gray-100 hover:text-gray-600"
+                      className="flex h-7 w-7 items-center justify-center rounded-full text-base text-gray-400 transition hover:bg-gray-100 hover:text-gray-600"
                       title={showLevelDetails ? "Hide level details" : "Show level details"}
                       aria-label={showLevelDetails ? "Hide level details" : "Show level details"}
                     >
@@ -136,20 +141,20 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                     </button>
                     <button
                       onClick={() => setShowLevelInfoModal(true)}
-                      className="text-gray-400 hover:text-gray-600 text-lg font-bold w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-100 transition shrink-0"
+                      className="text-gray-400 hover:text-gray-600 text-sm font-bold w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-100 transition shrink-0"
                       title="Learn about levels"
                     >
                       ?
                     </button>
                   </div>
                 </div>
-                <div className="mt-3 h-3 rounded-full bg-gray-200 overflow-hidden">
+                <div className="mt-2.5 h-2.5 rounded-full bg-gray-200 overflow-hidden">
                   <div
                     className="h-full rounded-full bg-blue-500 transition-all duration-300"
                     style={{ width: `${levelInfo.progressPercent}%` }}
                   />
                 </div>
-                <div className="mt-3 space-y-1 text-sm">
+                <div className="mt-2.5 space-y-0.5 text-[13px] sm:text-sm">
                   <p className="font-medium text-gray-600">
                     {levelInfo.pointsToNextLevel > 0
                       ? `${levelInfo.pointsToNextLevel} points until Level ${levelInfo.level + 1}`
@@ -162,18 +167,18 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                   )}
                 </div>
                 {showLevelDetails ? (
-                  <p className="mt-3 text-sm text-gray-600">{levelInfo.identityText}</p>
+                  <p className="mt-2.5 text-sm text-gray-600">{levelInfo.identityText}</p>
                 ) : null}
               </div>
             </div>
           ) : null}
         </div>
 
-        <div className={`mx-3 mb-3 px-5 py-3 md:mx-4 md:px-6 ${recommendationTheme.inset} ${recommendationTheme.shell}`}>
+        <div className="mx-3 mb-3 px-4 py-2.5 md:mx-4 md:px-5">
           {isLoadingRecommendation ? (
             <div className="flex items-center gap-3">
-              <div className="rounded-full bg-white/80 p-1.5 shadow-sm">
-                <LouisAvatar mood="wave" size={42} />
+              <div className="rounded-full bg-white/80 p-1 shadow-sm">
+                <LouisAvatar mood="wave" size={38} />
               </div>
               <div>
                 <p className="text-sm font-semibold text-gray-900">Louis is picking your next step</p>
@@ -188,13 +193,13 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           ) : dailyRecommendation && dailyRecommendationCardTitle && dailyRecommendationCardSubtitle ? (
             <Link href={dailyRecommendation.primaryButtonHref} className="block">
               <div className="flex items-start gap-3">
-                <div className="rounded-full border border-white/80 bg-white/85 p-1.5 shadow-sm shrink-0">
-                  <LouisAvatar mood={recommendationMood} size={44} />
+                <div className="rounded-full border border-white/80 bg-white/85 p-1 shadow-sm shrink-0">
+                  <LouisAvatar mood={recommendationMood} size={38} />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
-                      <h3 className="text-base font-semibold leading-tight text-gray-950 sm:text-lg">
+                      <h3 className="text-[15px] font-semibold leading-tight text-gray-950 sm:text-base">
                         {dailyRecommendationCardTitle}
                       </h3>
                     </div>
@@ -202,17 +207,14 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                       {dailyRecommendation.primaryButtonText} →
                     </span>
                   </div>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-700">{dailyRecommendationCardSubtitle}</p>
-                  {dailyRecommendation.contextLine ? (
-                    <p className="mt-2 text-xs leading-relaxed text-gray-500">{dailyRecommendation.contextLine}</p>
-                  ) : null}
+                  <p className="mt-1.5 text-[13px] leading-relaxed text-gray-700 sm:text-sm">{dailyRecommendationCardSubtitle}</p>
                 </div>
               </div>
             </Link>
           ) : (
             <div className="flex items-center gap-3">
-              <div className="rounded-full bg-white/80 p-1.5 shadow-sm">
-                <LouisAvatar mood="wave" size={42} />
+              <div className="rounded-full bg-white/80 p-1 shadow-sm">
+                <LouisAvatar mood="wave" size={38} />
               </div>
               <p className="text-sm text-gray-600">Louis will have a new next step for you soon.</p>
             </div>

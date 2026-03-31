@@ -739,7 +739,7 @@ export default function DashboardPage() {
             {[
               { label: "Signups 24h", value: ownerQuickStats.signups24h, tones: "bg-gray-100 border-gray-200" },
               { label: "Active 24h", value: ownerQuickStats.activeUsers24h, tones: "bg-blue-100 border-blue-200" },
-              { label: "Total Users", value: ownerQuickStats.totalUsers, tones: "bg-amber-100 border-amber-200" },
+              { label: "Total Users", value: ownerQuickStats.totalUsers, tones: "bg-red-100 border-red-200" },
             ].map((card) => (
               <div
                 key={card.label}
