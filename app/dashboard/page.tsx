@@ -226,8 +226,8 @@ export default function DashboardPage() {
       body: "This section helps you quickly explore people, places, and keywords to understand biblical context.",
     },
     bible_trivia: {
-      title: "Welcome to Bible Trivia",
-      body: "This is where you can test what you’ve learned and strengthen your Bible knowledge through quizzes.",
+      title: "Welcome to Bible Study Games",
+      body: "This is where you can reinforce what you’ve learned through trivia and Scripture-based games like Scrambled.",
     },
     notes: {
       title: "Welcome to Notes",
@@ -285,9 +285,9 @@ export default function DashboardPage() {
         </section>
 
         <section className="space-y-2">
-          <h2 className="text-lg md:text-xl font-semibold text-gray-900">🎯 Bible Trivia</h2>
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">🎮 Bible Study Games</h2>
           <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-            Test your knowledge and reinforce what you’ve learned.
+            Use Trivia and Scrambled to turn Scripture into active learning.
           </p>
         </section>
 
@@ -518,43 +518,42 @@ export default function DashboardPage() {
   const BIBLE_TRIVIA_TOUR_CONTENT = (
     <div className="space-y-6">
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
-        🎯 Welcome to Bible Trivia
+        🎮 Welcome to Bible Study Games
       </h1>
 
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">Test what you know.</p>
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">Strengthen what you’ve learned.</p>
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">Discover what you missed.</p>
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-        Bible Trivia turns Scripture into active learning.
+        Bible Study Games turns Scripture into active learning.
       </p>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 All 66 Books</h2>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Every book of the Bible is included.</p>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 Trivia + Scrambled</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Each game mode helps you stay engaged with Scripture in a different way.</p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">You can:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• Select a specific book</li>
-          <li>• Test your knowledge chapter by chapter</li>
-          <li>• Reinforce what you just read</li>
+          <li>• Use Trivia to test what you remember</li>
+          <li>• Use Scrambled to lock key chapter words into memory</li>
+          <li>• Reinforce what you just read in a focused way</li>
         </ul>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">From Genesis to Revelation — it’s all here.</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">The experience starts simple and can keep growing over time.</p>
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">👤 Biblical Characters</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🧩 Scripture First</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-          There is also a People section focused on biblical figures.
+          These games are built around the Bible itself, not random word play.
         </p>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Test your knowledge on:</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">That means you can:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• Prophets</li>
-          <li>• Kings</li>
-          <li>• Apostles</li>
-          <li>• Disciples</li>
-          <li>• Major and minor characters</li>
+          <li>• Learn from specific books and chapters</li>
+          <li>• Stay close to the actual words of Scripture</li>
+          <li>• Build retention through repetition</li>
+          <li>• Strengthen recall after reading</li>
         </ul>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-          Understanding the people strengthens your understanding of the story.
+          The goal is not distraction. The goal is deeper Bible learning.
         </p>
       </section>
 
@@ -576,7 +575,7 @@ export default function DashboardPage() {
       <section className="space-y-2">
         <h2 className="text-lg md:text-xl font-semibold text-gray-900">🚀 Grow Through Repetition</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-          Use Bible Trivia after reading a chapter, finishing a book, or completing a study.
+          Use Bible Study Games after reading a chapter, finishing a book, or completing a study.
         </p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
           Learning happens best when you apply what you’ve read.

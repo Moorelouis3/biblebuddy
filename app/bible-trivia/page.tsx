@@ -6,6 +6,12 @@ export default function BibleTriviaPage() {
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
       <div className="max-w-4xl mx-auto px-4 pt-8">
+        <div className="mb-4">
+          <Link href="/bible-study-games" className="text-sm font-medium text-emerald-700 hover:text-emerald-800">
+            ← Back to Bible Study Games
+          </Link>
+        </div>
+
         {/* Header */}
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-semibold mb-2">🎯 Bible Trivia</h1>
@@ -40,7 +46,6 @@ export default function BibleTriviaPage() {
     </div>
   );
 }
-
 
 
 

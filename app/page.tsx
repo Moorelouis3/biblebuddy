@@ -319,10 +319,10 @@ export default function LandingPage() {
                 <path d="M9 12l2 2 4-4" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Bible Trivia</h3>
+              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Bible Study Games</h3>
               <p className="text-sm text-gray-600 md:text-base">
-                Lock in what you are learning with Bible trivia that helps you remember the people,
-                chapters, and stories you just studied.
+                Lock in what you are learning with Scripture-based games that help you remember the
+                people, chapters, and stories you just studied.
               </p>
             </div>
 

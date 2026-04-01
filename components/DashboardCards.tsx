@@ -264,10 +264,10 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       </Link>
 
-      <Link href="/bible-trivia" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-trivia")}>
+      <Link href="/bible-study-games" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-study-games")}>
         <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold">🎯 Bible Trivia</h2>
-          <p className="text-gray-700 mt-1">Test your Bible knowledge</p>
+          <h2 className="text-xl font-semibold">🎮 Bible Study Games</h2>
+          <p className="text-gray-700 mt-1">Play trivia and Scripture-based games</p>
         </div>
       </Link>
 
