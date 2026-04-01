@@ -272,8 +272,8 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
       </Link>
 
       <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}>
-        <div className="bg-red-100 border border-red-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold text-red-800">🔨 Bible Study Tools</h2>
+        <div className="bg-[#f6d6d9] border border-[#e8aeb5] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+          <h2 className="text-xl font-semibold text-gray-900">🔨 Bible Study Tools</h2>
           <p className="text-gray-700 mt-1">A collection of Bible study tools</p>
         </div>
       </Link>
