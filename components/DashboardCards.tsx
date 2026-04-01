@@ -264,13 +264,6 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       </Link>
 
-      <Link href="/bible-study-games" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-study-games")}>
-        <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold">🎮 Bible Study Games</h2>
-          <p className="text-gray-700 mt-1">Play trivia and Scripture-based games</p>
-        </div>
-      </Link>
-
       <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}>
         <div className="bg-[#f6d6d9] border border-[#e8aeb5] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
           <h2 className="text-xl font-semibold text-gray-900">🔨 Bible Study Tools</h2>
@@ -280,7 +273,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 
       <Link href="/bible-study-games" onClick={(event) => handleCardClick(event, "bible_study_games", "/bible-study-games")}>
         <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold">?? Bible Study Games</h2>
+          <h2 className="text-xl font-semibold">Bible Study Games</h2>
           <p className="text-gray-700 mt-1">Play our Bible-based games</p>
         </div>
       </Link>
@@ -299,3 +292,5 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 };
 
 export default DashboardCards;
+
+
