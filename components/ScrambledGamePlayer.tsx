@@ -2,12 +2,15 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { logActionToMasterActions } from "@/lib/actionRecorder";
+import { ACTION_TYPE } from "@/lib/actionTypes";
 import {
   SCRAMBLED_PROGRESS_STORAGE_KEY,
   type ScrambledChapterPack,
   type ScrambledProgressMap,
   getScrambledProgressKey,
 } from "@/lib/scrambledGameData";
+import { supabase } from "@/lib/supabaseClient";
 
 type LetterTile = {
   id: string;
@@ -67,6 +70,8 @@ export default function ScrambledGamePlayer({
   const [showResults, setShowResults] = useState(false);
   const [progressLoaded, setProgressLoaded] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [hintLevel, setHintLevel] = useState(0);
+  const [userId, setUserId] = useState<string | null>(null);
 
   const question = chapter.questions[currentQuestionIndex];
   const chapterKey = getScrambledProgressKey(bookSlug, chapter.chapter);
@@ -75,10 +80,24 @@ export default function ScrambledGamePlayer({
     setBankLetters(shuffleLetters(question.answer));
     setAnswerLetters([]);
     setStatus("idle");
+    setHintLevel(0);
   }, [question]);
 
   useEffect(() => {
     setProgressLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+
+    void supabase.auth.getUser().then(({ data }) => {
+      if (!mounted) return;
+      setUserId(data.user?.id ?? null);
+    });
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const resetAttempt = () => {
@@ -86,6 +105,8 @@ export default function ScrambledGamePlayer({
     setAnswerLetters([]);
     setStatus("idle");
   };
+
+  const hintLabel = hintLevel === 0 ? "Show hint" : hintLevel === 1 ? "More hint" : "Hint shown";
 
   const persistCompletion = (score: number) => {
     const current = readProgress();
@@ -117,6 +138,10 @@ export default function ScrambledGamePlayer({
     if (guess === question.answer.toLowerCase()) {
       setSolvedCount((value) => value + 1);
       setStatus("correct");
+      if (userId) {
+        const actionLabel = `${bookName} ${chapter.chapter} - ${question.answer}`;
+        void logActionToMasterActions(userId, ACTION_TYPE.scrambled_word_answered, actionLabel);
+      }
       return;
     }
 
@@ -165,7 +190,9 @@ export default function ScrambledGamePlayer({
         <div className="mx-auto max-w-xl rounded-[30px] border border-[#eadfcf] bg-white p-8 text-center shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#b37839]">Chapter Complete</p>
           <h1 className="mt-3 text-3xl font-bold text-gray-900">{bookName} {chapter.chapter}</h1>
-          <p className="mt-3 text-sm leading-7 text-gray-600">You finished all 10 scrambled prompts from this chapter.</p>
+          <p className="mt-3 text-sm leading-7 text-gray-600">
+            You finished all {chapter.questions.length} scrambled prompts from this chapter.
+          </p>
 
           <div className="mt-8 rounded-[24px] border border-[#d8e8dc] bg-[#f3fbf5] px-6 py-5">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2f6b47]">Words correct</p>
@@ -234,8 +261,29 @@ export default function ScrambledGamePlayer({
 
           <div>
             <h2 className="text-2xl font-bold text-gray-900">Unscramble the word</h2>
-            <p className="mt-3 text-sm font-semibold uppercase tracking-[0.14em] text-gray-500">Hint</p>
-            <p className="mt-1 text-sm leading-7 text-gray-700">{question.clue}</p>
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() => setHintLevel((current) => Math.min(2, current + 1))}
+                disabled={hintLevel >= 2}
+                className="rounded-2xl border border-[#d8e2ee] bg-white px-4 py-2 text-sm font-semibold text-[#2f4b6a] shadow-sm transition hover:bg-[#f7fbff] disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {hintLabel}
+              </button>
+              {hintLevel >= 1 ? (
+                <p className="text-sm leading-7 text-gray-700">
+                  <span className="font-semibold text-gray-900">Hint:</span> {question.clue}
+                </p>
+              ) : (
+                <p className="text-sm text-gray-500">Use a hint if you need a little help.</p>
+              )}
+            </div>
+            {hintLevel >= 2 ? (
+              <p className="mt-2 text-sm leading-7 text-gray-600">
+                Starts with <span className="font-semibold text-gray-900">{question.answer.charAt(0).toUpperCase()}</span>
+                {" "}and comes from <span className="font-semibold text-gray-900">{question.reference}</span>.
+              </p>
+            ) : null}
           </div>
 
           <div className="grid grid-cols-5 gap-2 sm:grid-cols-10">

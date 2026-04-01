@@ -224,6 +224,7 @@ const STREAK_ACTION_TYPES = [
   ACTION_TYPE.note_created,
   ACTION_TYPE.note_started,
   ACTION_TYPE.reading_plan_chapter_completed,
+  ACTION_TYPE.scrambled_word_answered,
   ACTION_TYPE.trivia_question_answered,
   ACTION_TYPE.trivia_started,
   ACTION_TYPE.chapter_notes_viewed,

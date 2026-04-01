@@ -105,7 +105,9 @@ export default function ScrambledBookClient({ book }: { book: ScrambledBookPack 
                   >
                     <p className="font-semibold">{book.name} {chapter.chapter}</p>
                     <p className="text-[11px] mt-1">
-                      {done ? `Finished - best score ${bestScore}/10` : "Click to play this chapter."}
+                      {done
+                        ? `Finished - best score ${bestScore}/${chapter.questions.length}`
+                        : `${chapter.questions.length} words in this chapter.`}
                     </p>
                   </Link>
                 );

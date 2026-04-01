@@ -17,6 +17,7 @@ type OverviewMetrics = {
   keywordsUnderstood: number;
   devotionalDaysCompleted: number;
   readingPlanChaptersCompleted: number;
+  scrambledWordsAnswered: number;
   triviaQuestionsAnswered: number;
   understandVerseOfTheDay: number;
   feedThoughtsPosted: number;
@@ -42,6 +43,7 @@ const INITIAL_METRICS: OverviewMetrics = {
   keywordsUnderstood: 0,
   devotionalDaysCompleted: 0,
   readingPlanChaptersCompleted: 0,
+  scrambledWordsAnswered: 0,
   triviaQuestionsAnswered: 0,
   understandVerseOfTheDay: 0,
   feedThoughtsPosted: 0,
@@ -97,6 +99,7 @@ export default function AnalyticsPage() {
       keywordsUnderstood: number;
       devotionalDaysCompleted: number;
       readingPlanChaptersCompleted: number;
+      scrambledWordsAnswered: number;
       triviaQuestionsAnswered: number;
       understandVerseOfTheDay: number;
       feedThoughtsPosted: number;
@@ -525,6 +528,14 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
+        // Scrambled words answered
+        const { count: scrambledWordsAnswered } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "scrambled_word_answered")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
         // Trivia Questions Answered
         const { count: triviaQuestionsAnswered } = await supabase
           .from("master_actions")
@@ -598,6 +609,7 @@ export default function AnalyticsPage() {
           keywordsUnderstood: keywordsUnderstood || 0,
           devotionalDaysCompleted: devotionalDaysCompleted || 0,
           readingPlanChaptersCompleted: readingPlanChaptersCompleted || 0,
+          scrambledWordsAnswered: scrambledWordsAnswered || 0,
           triviaQuestionsAnswered: triviaQuestionsAnswered || 0,
           understandVerseOfTheDay: understandVerseOfTheDay || 0,
           feedThoughtsPosted: feedThoughtsPosted || 0,
@@ -727,6 +739,14 @@ export default function AnalyticsPage() {
           .eq("action_type", "reading_plan_chapter_completed")
       );
 
+      // Scrambled words answered
+      const scrambledWordsPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "scrambled_word_answered")
+      );
+
       // Trivia questions answered
       const triviaQuestionsPromise = applyDateFilter(
         supabase
@@ -766,6 +786,7 @@ export default function AnalyticsPage() {
         keywordsResult,
         devotionalDaysResult,
         readingPlanChaptersResult,
+        scrambledWordsResult,
         triviaQuestionsResult,
         understandVerseOfTheDayResult,
         feedThoughtsResult,
@@ -789,6 +810,7 @@ export default function AnalyticsPage() {
         keywordsPromise,
         devotionalDaysPromise,
         readingPlanChaptersPromise,
+        scrambledWordsPromise,
         triviaQuestionsPromise,
         understandVerseOfTheDayPromise,
         feedThoughtsPromise,
@@ -828,6 +850,8 @@ export default function AnalyticsPage() {
       const devotionalDaysError = devotionalDaysResult.error;
       const readingPlanChaptersCount = readingPlanChaptersResult.count ?? 0;
       const readingPlanChaptersError = readingPlanChaptersResult.error;
+      const scrambledWordsCount = scrambledWordsResult.count ?? 0;
+      const scrambledWordsError = scrambledWordsResult.error;
       const triviaQuestionsCount = triviaQuestionsResult.count ?? 0;
       const triviaQuestionsError = triviaQuestionsResult.error;
       const understandVerseOfTheDayCount = understandVerseOfTheDayResult.count ?? 0;
@@ -845,6 +869,7 @@ export default function AnalyticsPage() {
         keywordsError ||
         devotionalDaysError ||
         readingPlanChaptersError ||
+        scrambledWordsError ||
         triviaQuestionsError ||
         understandVerseOfTheDayError
       ) {
@@ -860,6 +885,7 @@ export default function AnalyticsPage() {
           keywordsError,
           devotionalDaysError,
           readingPlanChaptersError,
+          scrambledWordsError,
           triviaQuestionsError,
           understandVerseOfTheDayError,
         });
@@ -885,6 +911,7 @@ export default function AnalyticsPage() {
         keywordsUnderstood: keywordsCount ?? 0,
         devotionalDaysCompleted: devotionalDaysCount ?? 0,
         readingPlanChaptersCompleted: readingPlanChaptersCount ?? 0,
+        scrambledWordsAnswered: scrambledWordsCount ?? 0,
         triviaQuestionsAnswered: triviaQuestionsCount ?? 0,
         understandVerseOfTheDay: understandVerseOfTheDayCount ?? 0,
         feedThoughtsPosted: feedThoughtsResult.count ?? 0,
@@ -1275,6 +1302,18 @@ export default function AnalyticsPage() {
             username,
             sortKey: actionDate.getTime(),
             actionType: "trivia_question_answered",
+          });
+        } else if (action.action_type === "scrambled_word_answered") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} solved a scrambled word (${action.action_label}).${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} solved a scrambled word.${counterText}`;
+          actions.push({
+            date: formattedDate,
+            text,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "scrambled_word_answered",
           });
         } else if (action.action_type === "feed_post_thought") {
           const text = action.action_label
@@ -1720,6 +1759,7 @@ export default function AnalyticsPage() {
       "keyword_mastered": "Keywords Understood",
       "devotional_day_completed": "Devotional Days Completed",
       "reading_plan_chapter_completed": "Reading Plan Chapters Completed",
+      "scrambled_word_answered": "Scrambled Words Answered",
       "trivia_question_answered": "Trivia Questions Answered",
     };
     return nameMap[actionType] || actionType.replace(/_/g, " ");
@@ -1744,6 +1784,8 @@ export default function AnalyticsPage() {
         return "bg-orange-50 border-l-4 border-orange-500";
       case "reading_plan_chapter_completed":
         return "bg-yellow-50 border-l-4 border-yellow-500";
+      case "scrambled_word_answered":
+        return "bg-rose-50 border-l-4 border-rose-400";
       case "trivia_question_answered":
         return "bg-emerald-50 border-l-4 border-emerald-500";
       case "user_login":
@@ -1782,6 +1824,7 @@ export default function AnalyticsPage() {
         case "Keywords Understood": return row.keywordsUnderstood;
         case "Devotional Days Completed": return row.devotionalDaysCompleted;
         case "Reading Plan Chapters Completed": return row.readingPlanChaptersCompleted;
+        case "Scrambled Words Answered": return row.scrambledWordsAnswered;
         case "Trivia Questions Answered": return row.triviaQuestionsAnswered;
         case "Buddies Added": return row.buddiesAdded;
         case "Group Messages": return row.groupMessagesSent;
@@ -2049,6 +2092,12 @@ export default function AnalyticsPage() {
                 value={overviewMetrics.readingPlanChaptersCompleted}
                 onClick={() => setSelectedActionType(selectedActionType === "reading_plan_chapter_completed" ? null : "reading_plan_chapter_completed")}
                 isSelected={selectedActionType === "reading_plan_chapter_completed"}
+              />
+              <OverviewCard
+                label="Scrambled Words Answered"
+                value={overviewMetrics.scrambledWordsAnswered}
+                onClick={() => setSelectedActionType(selectedActionType === "scrambled_word_answered" ? null : "scrambled_word_answered")}
+                isSelected={selectedActionType === "scrambled_word_answered"}
               />
               <OverviewCard
                 label="Trivia Questions Answered"
@@ -2344,6 +2393,7 @@ export default function AnalyticsPage() {
                     "Keywords Understood",
                     "Devotional Days Completed",
                     "Reading Plan Chapters Completed",
+                    "Scrambled Words Answered",
                     "Buddies Added",
                     "Group Messages",
                   ].map((metric) => (
@@ -2391,6 +2441,8 @@ export default function AnalyticsPage() {
                               return row.devotionalDaysCompleted;
                             case "Reading Plan Chapters Completed":
                               return row.readingPlanChaptersCompleted;
+                            case "Scrambled Words Answered":
+                              return row.scrambledWordsAnswered;
                             case "Trivia Questions Answered":
                               return row.triviaQuestionsAnswered;
                             case "Buddies Added":
@@ -2795,6 +2847,10 @@ export default function AnalyticsPage() {
                   <div className="bg-emerald-50 p-4 rounded-lg">
                     <p className="text-sm text-gray-600 mb-1">Trivia Questions Answered</p>
                     <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.triviaQuestionsAnswered.toLocaleString()}</p>
+                  </div>
+                  <div className="bg-rose-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Scrambled Words Answered</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.scrambledWordsAnswered.toLocaleString()}</p>
                   </div>
                 </div>
               </div>

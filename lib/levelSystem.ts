@@ -39,6 +39,7 @@ export const ACTION_POINT_WEIGHTS: Partial<Record<ActionType, number>> = {
   keyword_mastered: 6,
   trivia_started: 1,
   trivia_question_answered: 3,
+  scrambled_word_answered: 3,
   feed_post_thought: 5,
   feed_post_prayer: 5,
   feed_post_prayer_request: 5,
