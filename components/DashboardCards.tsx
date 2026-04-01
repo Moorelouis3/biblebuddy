@@ -137,7 +137,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                       title={showLevelDetails ? "Hide level details" : "Show level details"}
                       aria-label={showLevelDetails ? "Hide level details" : "Show level details"}
                     >
-                      {showLevelDetails ? "⌃" : "⌄"}
+                      {showLevelDetails ? "âŒƒ" : "âŒ„"}
                     </button>
                     <button
                       onClick={() => setShowLevelInfoModal(true)}
@@ -204,7 +204,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                       </h3>
                     </div>
                     <span className={`shrink-0 rounded-full border px-3 py-1 text-xs font-semibold ${recommendationTheme.chip}`}>
-                      {dailyRecommendation.primaryButtonText} →
+                      {dailyRecommendation.primaryButtonText} â†’
                     </span>
                   </div>
                   <p className="mt-1.5 text-[13px] leading-relaxed text-gray-700 sm:text-sm">{dailyRecommendationCardSubtitle}</p>
@@ -225,9 +225,9 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
       {showFreeUpgradeCard && (
         <Link href="/upgrade">
           <div className="rounded-2xl border border-[#f0d7b3] bg-[#fff8ef] px-4 py-3 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative">
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#b7791f] text-base" aria-hidden="true">↑</span>
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[#b7791f] text-base" aria-hidden="true">â†‘</span>
             <div className="flex items-center gap-3 pr-7">
-              <div className="text-xl leading-none">👑</div>
+              <div className="text-xl leading-none">ðŸ‘‘</div>
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-[#8a4b14]">Go Deeper With Pro</p>
                 <p className="text-xs leading-relaxed text-gray-600">
@@ -249,7 +249,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 
       <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}>
         <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold">📖 The Bible</h2>
+          <h2 className="text-xl font-semibold">ðŸ“– The Bible</h2>
           <p className="text-gray-700 mt-1">Read the complete Bible here</p>
         </div>
       </Link>
@@ -259,21 +259,21 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"
           style={{ backgroundColor: "#d4ecd4", borderWidth: 1, borderColor: "#b8ddb8" }}
         >
-          <h2 className="text-xl font-semibold">👥 Bible Study Group</h2>
+          <h2 className="text-xl font-semibold">ðŸ‘¥ Bible Study Group</h2>
           <p className="text-gray-700 mt-1">Study the Bible with us</p>
         </div>
       </Link>
 
       <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}>
         <div className="bg-[#f6d6d9] border border-[#e8aeb5] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold text-gray-900">🔨 Bible Study Tools</h2>
+          <h2 className="text-xl font-semibold text-gray-900">ðŸ”¨ Bible Study Tools</h2>
           <p className="text-gray-700 mt-1">A collection of Bible study tools</p>
         </div>
       </Link>
 
       <Link href="/bible-study-games" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-study-games")}>
         <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-          <h2 className="text-xl font-semibold">Bible Study Games</h2>
+          <h2 className="text-xl font-semibold">🎮 Bible Study Games</h2>
           <p className="text-gray-700 mt-1">Play our Bible-based games</p>
         </div>
       </Link>
@@ -283,8 +283,8 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         onClick={onInviteBuddy}
         className="w-full text-left bg-[#efe7ff] border border-[#ddd0ff] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative"
       >
-        <span className="absolute right-4 top-4 text-[#8a63d2] text-base" aria-hidden="true">↗</span>
-        <h2 className="text-xl font-semibold text-gray-900">↗ Invite a Bible Buddy</h2>
+        <span className="absolute right-4 top-4 text-[#8a63d2] text-base" aria-hidden="true">â†—</span>
+        <h2 className="text-xl font-semibold text-gray-900">â†— Invite a Bible Buddy</h2>
         <p className="text-gray-700 mt-1">Share by text, WhatsApp, or copy link.</p>
       </button>
     </div>
@@ -292,6 +292,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 };
 
 export default DashboardCards;
+
 
 
 
