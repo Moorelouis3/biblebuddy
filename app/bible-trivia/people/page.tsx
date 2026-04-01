@@ -1,31 +1,37 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabaseClient";
+import { useEffect, useState } from "react";
 import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
+import { LouisAvatar } from "@/components/LouisAvatar";
+import { BIBLE_GAME_ITEMS_PER_PAGE, BIBLE_GAME_PEOPLE, FREE_TRIVIA_PERSON_KEYS } from "@/lib/bibleStudyGameCatalog";
+import { supabase } from "@/lib/supabaseClient";
 
-interface PeopleProgress {
-  god: number;
-  jesus: number;
-  moses: number;
-  abraham: number;
-}
+const PERSON_TOTALS: Record<string, number> = {
+  god: 100,
+  jesus: 100,
+  moses: 100,
+  abraham: 100,
+};
 
 export default function PeopleOfTheBiblePage() {
-  const [progress, setProgress] = useState<PeopleProgress>({
-    god: 100,
-    jesus: 100,
-    moses: 100,
-    abraham: 100
-  });
+  const [progress, setProgress] = useState<Record<string, number>>(PERSON_TOTALS);
   const [loading, setLoading] = useState(true);
   const [isPaid, setIsPaid] = useState<boolean | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [page, setPage] = useState(0);
+
+  const startIndex = page * BIBLE_GAME_ITEMS_PER_PAGE;
+  const visiblePeople = BIBLE_GAME_PEOPLE.slice(startIndex, startIndex + BIBLE_GAME_ITEMS_PER_PAGE);
+  const hasPrevPage = page > 0;
+  const hasNextPage = startIndex + BIBLE_GAME_ITEMS_PER_PAGE < BIBLE_GAME_PEOPLE.length;
 
   useEffect(() => {
     async function fetchProgress() {
-      const { data: { user } } = await supabase.auth.getUser();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
       if (!user) {
         setIsPaid(false);
         setLoading(false);
@@ -40,174 +46,128 @@ export default function PeopleOfTheBiblePage() {
 
       setIsPaid(!!profileStats?.is_paid);
 
-      if (user) {
-// Fetch progress for all people categories
-        const { data: progressData, error } = await supabase
-          .from('trivia_question_progress')
-          .select('book, is_correct')
-          .eq('user_id', user.id)
-          .in('book', ['god', 'jesus', 'moses', 'abraham']);
+      const { data: progressData, error } = await supabase
+        .from("trivia_question_progress")
+        .select("book, is_correct")
+        .eq("user_id", user.id)
+        .in(
+          "book",
+          BIBLE_GAME_PEOPLE.map((person) => person.key),
+        );
 
-        if (error) {
-          console.error('Error fetching trivia progress:', error);
-        } else {
-          // Calculate remaining questions for each person
-          const personTotals = { god: 100, jesus: 100, moses: 100, abraham: 100 };
-          const correctCounts: Record<string, number> = {};
-
-          progressData?.forEach(p => {
-            if (p.is_correct) {
-              correctCounts[p.book] = (correctCounts[p.book] || 0) + 1;
-            }
-          });
-
-          setProgress({
-            god: Math.max(0, personTotals.god - (correctCounts.god || 0)),
-            jesus: Math.max(0, personTotals.jesus - (correctCounts.jesus || 0)),
-            moses: Math.max(0, personTotals.moses - (correctCounts.moses || 0)),
-            abraham: Math.max(0, personTotals.abraham - (correctCounts.abraham || 0))
-          });
-        }
+      if (error) {
+        console.error("Error fetching trivia progress:", error);
+        setLoading(false);
+        return;
       }
+
+      const correctCounts: Record<string, number> = {};
+      progressData?.forEach((entry) => {
+        if (entry.is_correct) {
+          correctCounts[entry.book] = (correctCounts[entry.book] || 0) + 1;
+        }
+      });
+
+      const nextProgress = Object.fromEntries(
+        BIBLE_GAME_PEOPLE.map((person) => [person.key, Math.max(0, PERSON_TOTALS[person.key] - (correctCounts[person.key] || 0))]),
+      );
+
+      setProgress(nextProgress);
       setLoading(false);
     }
+
     fetchProgress();
   }, []);
+
   return (
-    <div className="min-h-screen bg-gray-50 pb-12">
-      <div className="max-w-4xl mx-auto px-4 pt-8">
-        {/* Header */}
-        <div className="mb-8 text-center">
-          <h1 className="text-3xl font-semibold mb-2">👥 People of the Bible</h1>
-          <p className="text-gray-600">Learn about biblical characters</p>
-        </div>
+    <div className="min-h-screen bg-gray-50 py-8 px-4">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-3xl font-bold mb-1">People of the Bible</h1>
+        <p className="text-gray-700 mb-4">Trivia based on the characters of the Bible</p>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {/* God Deck Card */}
-          <Link
-            href="/bible-trivia/god"
-            className="relative bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-yellow-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
-          >
-            <div className="text-center">
-              <div className="text-6xl mb-4">✨</div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">God</h2>
-              <p className="text-gray-600 text-sm">
-                {loading ? "Loading..." : `${progress.god} Questions Remaining`}
-              </p>
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8">
+          <div className="mt-1 mb-4 flex items-start gap-3">
+            <LouisAvatar mood="think" size={56} />
+            <div className="relative w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 shadow-sm">
+              <div className="absolute -left-2 top-5 h-3 w-3 rotate-45 border-b border-l border-gray-200 bg-white" />
+              <p className="mb-2">Choose a person of the Bible and test how well you know their story.</p>
+              <p>God and Jesus are open for free users, and the other people stay locked the same way they already were.</p>
             </div>
-          </Link>
+          </div>
 
-          {/* Jesus Deck Card */}
-          <Link
-            href="/bible-trivia/jesus"
-            className="relative bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
-          >
-            <div className="text-center">
-              <div className="text-6xl mb-4">✝️</div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">Jesus</h2>
-              <p className="text-gray-600 text-sm">
-                {loading ? "Loading..." : `${progress.jesus} Questions Remaining`}
-              </p>
+          <div className="space-y-4">
+            <div className="grid grid-cols-3 gap-3 mt-2 md:grid-cols-4">
+              {visiblePeople.map((person) => {
+                const isLocked = isPaid === false && !FREE_TRIVIA_PERSON_KEYS.has(person.key);
+                const label = loading
+                  ? "Loading..."
+                  : `${progress[person.key] ?? PERSON_TOTALS[person.key]} questions remaining`;
+
+                const content = (
+                  <>
+                    <p className="font-semibold">{person.title}</p>
+                    <p className="mt-1 text-[11px]">{label}</p>
+                    {isLocked ? (
+                      <div className="absolute inset-0 flex items-end justify-center rounded-xl bg-black/45 pb-3">
+                        <span className="rounded-full bg-black/70 px-3 py-1 text-[11px] font-semibold text-white">Pro Users Only</span>
+                      </div>
+                    ) : null}
+                  </>
+                );
+
+                if (isLocked) {
+                  return (
+                    <button
+                      key={person.key}
+                      type="button"
+                      onClick={() => setShowUpgradeModal(true)}
+                      className="relative rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm shadow-sm transition"
+                    >
+                      {content}
+                    </button>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={person.key}
+                    href={person.triviaHref}
+                    className="relative rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm shadow-sm transition hover:scale-[1.01] hover:shadow-md"
+                  >
+                    {content}
+                  </Link>
+                );
+              })}
             </div>
-          </Link>
 
-          {/* Moses Deck Card */}
-          {isPaid === false ? (
-            <button
-              type="button"
-              onClick={() => setShowUpgradeModal(true)}
-              className="relative bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-2xl p-8 shadow-lg h-full transition-all duration-200 cursor-pointer text-left cursor-not-allowed pb-12"
-            >
-              <div className="text-center">
-                <div className="text-6xl mb-4">⛰️</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Moses</h2>
-                <p className="text-gray-600 text-sm">
-                  {loading ? "Loading..." : `${progress.moses} Questions Remaining`}
-                </p>
-              </div>
-              <div className="pointer-events-none absolute inset-0 bg-black/50">
-                <div className="flex justify-center items-end h-full pb-[10px]">
-                  <div
-                    className="pro-badge inline-flex items-center gap-2 rounded-full bg-black/70 px-3 py-1 text-xs font-semibold"
-                  >
-                    <span>🔒</span>
-                    <span>Pro Users Only</span>
-                  </div>
-                </div>
-              </div>
-            </button>
-          ) : (
-            <Link
-              href="/bible-trivia/moses"
-              className="relative bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
-            >
-              <div className="text-center">
-                <div className="text-6xl mb-4">⛰️</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Moses</h2>
-                <p className="text-gray-600 text-sm">
-                  {loading ? "Loading..." : `${progress.moses} Questions Remaining`}
-                </p>
-              </div>
-            </Link>
-          )}
+            <div className="flex items-center justify-between pt-2 text-xs sm:text-sm">
+              <button
+                type="button"
+                onClick={() => hasPrevPage && setPage((current) => current - 1)}
+                disabled={!hasPrevPage}
+                className={`text-blue-600 hover:underline ${!hasPrevPage ? "cursor-default text-gray-300" : ""}`}
+              >
+                Previous people
+              </button>
 
-          {/* Abraham Deck Card */}
-          {isPaid === false ? (
-            <button
-              type="button"
-              onClick={() => setShowUpgradeModal(true)}
-              className="relative bg-gradient-to-br from-green-50 to-teal-50 border-2 border-green-200 rounded-2xl p-8 shadow-lg h-full transition-all duration-200 cursor-pointer text-left cursor-not-allowed pb-12"
-            >
-              <div className="text-center">
-                <div className="text-6xl mb-4">🌾</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Abraham</h2>
-                <p className="text-gray-600 text-sm">
-                  {loading ? "Loading..." : `${progress.abraham} Questions Remaining`}
-                </p>
-              </div>
-              <div className="pointer-events-none absolute inset-0 bg-black/50">
-                <div className="flex justify-center items-end h-full pb-[10px]">
-                  <div
-                    className="pro-badge inline-flex items-center gap-2 rounded-full bg-black/70 px-3 py-1 text-xs font-semibold"
-                  >
-                    <span>🔒</span>
-                    <span>Pro Users Only</span>
-                  </div>
-                </div>
-              </div>
-            </button>
-          ) : (
-            <Link
-              href="/bible-trivia/abraham"
-              className="relative bg-gradient-to-br from-green-50 to-teal-50 border-2 border-green-200 rounded-2xl p-8 shadow-lg h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer"
-            >
-              <div className="text-center">
-                <div className="text-6xl mb-4">🌾</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Abraham</h2>
-                <p className="text-gray-600 text-sm">
-                  {loading ? "Loading..." : `${progress.abraham} Questions Remaining`}
-                </p>
-              </div>
-            </Link>
-          )}
-        </div>
+              <Link href="/bible-trivia" className="text-blue-600 hover:underline">
+                Change category
+              </Link>
 
-        {/* Back to Categories */}
-        <div className="mt-8 text-center">
-          <Link href="/bible-trivia" className="text-blue-600 hover:text-blue-800 font-medium">
-            ← Back to Categories
-          </Link>
+              <button
+                type="button"
+                onClick={() => hasNextPage && setPage((current) => current + 1)}
+                disabled={!hasNextPage}
+                className={`text-blue-600 hover:underline ${!hasNextPage ? "cursor-default text-gray-300" : ""}`}
+              >
+                Next people
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <UpgradeRequiredModal
-        isOpen={showUpgradeModal}
-        onClose={() => setShowUpgradeModal(false)}
-      />
+      <UpgradeRequiredModal isOpen={showUpgradeModal} onClose={() => setShowUpgradeModal(false)} />
     </div>
   );
 }
-
-
-

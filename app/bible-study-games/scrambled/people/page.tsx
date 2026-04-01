@@ -1,37 +1,71 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { LouisAvatar } from "@/components/LouisAvatar";
+import { BIBLE_GAME_ITEMS_PER_PAGE, BIBLE_GAME_PEOPLE } from "@/lib/bibleStudyGameCatalog";
 
 export default function ScrambledPeoplePage() {
+  const [page, setPage] = useState(0);
+
+  const startIndex = page * BIBLE_GAME_ITEMS_PER_PAGE;
+  const visiblePeople = BIBLE_GAME_PEOPLE.slice(startIndex, startIndex + BIBLE_GAME_ITEMS_PER_PAGE);
+  const hasPrevPage = page > 0;
+  const hasNextPage = startIndex + BIBLE_GAME_ITEMS_PER_PAGE < BIBLE_GAME_PEOPLE.length;
+
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-4">People of the Bible</h1>
+        <h1 className="text-3xl font-bold mb-1">People of the Bible</h1>
+        <p className="text-gray-700 mb-4">Words based on the characters of the Bible</p>
 
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8">
           <div className="mt-1 mb-4 flex items-start gap-3">
-            <LouisAvatar mood="wave" size={56} />
-            <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
-              <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
+            <LouisAvatar mood="think" size={56} />
+            <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800 w-full">
+              <div className="absolute -left-2 top-5 h-3 w-3 rotate-45 border-b border-l border-gray-200 bg-white" />
               <p className="mb-2">
-                I am getting the People of the Bible Scrambled packs ready next.
+                These people packs are the next natural step for Scrambled.
               </p>
-              <p>
-                For now, Genesis is live under Books of the Bible, so that is the best place to start playing today.
-              </p>
+              <p>The layout is here already, and the first live Scrambled words are still under Genesis while we build these out.</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-            <Link href="/bible-study-games/scrambled">
-              <div className="bg-[#dae7f7] border border-[#bdd2ee] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
-                <h2 className="text-xl font-semibold text-gray-900">?? Books of the Bible</h2>
-                <p className="text-gray-700 mt-1">Go play the Genesis Scrambled packs.</p>
-              </div>
-            </Link>
+          <div className="space-y-4">
+            <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-2">
+              {visiblePeople.map((person) => (
+                <div
+                  key={person.key}
+                  className="rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm text-gray-500 shadow-sm"
+                >
+                  <p className="font-semibold">{person.title}</p>
+                  <p className="mt-1 text-[11px]">Coming soon.</p>
+                </div>
+              ))}
+            </div>
 
-            <div className="bg-[#efe7ff] border border-[#ddd0ff] rounded-xl p-5 shadow-sm">
-              <h2 className="text-xl font-semibold text-gray-900">?? People of the Bible</h2>
-              <p className="text-gray-700 mt-1">Coming next.</p>
+            <div className="flex items-center justify-between pt-2 text-xs sm:text-sm">
+              <button
+                type="button"
+                onClick={() => hasPrevPage && setPage((current) => current - 1)}
+                disabled={!hasPrevPage}
+                className={`text-blue-600 hover:underline ${!hasPrevPage ? "cursor-default text-gray-300" : ""}`}
+              >
+                Previous people
+              </button>
+
+              <Link href="/bible-study-games/scrambled" className="text-blue-600 hover:underline">
+                Change category
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => hasNextPage && setPage((current) => current + 1)}
+                disabled={!hasNextPage}
+                className={`text-blue-600 hover:underline ${!hasNextPage ? "cursor-default text-gray-300" : ""}`}
+              >
+                Next people
+              </button>
             </div>
           </div>
         </div>

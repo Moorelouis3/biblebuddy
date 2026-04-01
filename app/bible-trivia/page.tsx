@@ -1,52 +1,49 @@
 "use client";
 
 import Link from "next/link";
+import { LouisAvatar } from "@/components/LouisAvatar";
 
 export default function BibleTriviaPage() {
   return (
-    <div className="min-h-screen bg-gray-50 pb-12">
-      <div className="max-w-4xl mx-auto px-4 pt-8">
+    <div className="min-h-screen bg-gray-50 py-8 px-4">
+      <div className="max-w-4xl mx-auto">
         <div className="mb-4">
           <Link href="/bible-study-games" className="text-sm font-medium text-emerald-700 hover:text-emerald-800">
-            ← Back to Bible Study Games
+            Back to Bible Study Games
           </Link>
         </div>
 
-        {/* Header */}
-        <div className="mb-8 text-center">
-          <h1 className="text-3xl font-semibold mb-2">🎯 Bible Trivia</h1>
-          <p className="text-gray-600">Choose a category to begin</p>
-        </div>
+        <h1 className="text-3xl font-bold mb-4">Bible Study Trivia</h1>
 
-        {/* Category Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {/* Books of the Bible Category */}
-          <Link href="/bible-trivia/books">
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full">
-              <div className="text-center">
-                <div className="text-6xl mb-4">📚</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Books of the Bible</h2>
-                <p className="text-gray-600 text-sm">Test your knowledge of biblical books</p>
-              </div>
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8">
+          <div className="mt-1 mb-5 flex items-start gap-3">
+            <LouisAvatar mood="think" size={56} />
+            <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
+              <div className="absolute -left-2 top-5 h-3 w-3 rotate-45 border-b border-l border-gray-200 bg-white" />
+              <p className="mb-2">
+                Use trivia to test what you remember after reading and studying Scripture.
+              </p>
+              <p>Pick whether you want questions from books of the Bible or from people of the Bible.</p>
             </div>
-          </Link>
+          </div>
 
-          {/* People of the Bible Category */}
-          <Link href="/bible-trivia/people">
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer h-full">
-              <div className="text-center">
-                <div className="text-6xl mb-4">👥</div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">People of the Bible</h2>
-                <p className="text-gray-600 text-sm">Learn about biblical characters</p>
+          <div className="space-y-4">
+            <Link href="/bible-trivia/books" className="block">
+              <div className="rounded-xl border border-[#c9d8f0] bg-[#dce7f7] p-5 shadow-sm transition hover:scale-[1.01] hover:shadow-md">
+                <h2 className="text-xl font-semibold text-gray-900">Books of the Bible</h2>
+                <p className="mt-1 text-gray-700">Trivia based on the books of the Bible</p>
               </div>
-            </div>
-          </Link>
+            </Link>
+
+            <Link href="/bible-trivia/people" className="block">
+              <div className="rounded-xl border border-[#ddd0ff] bg-[#efe7ff] p-5 shadow-sm transition hover:scale-[1.01] hover:shadow-md">
+                <h2 className="text-xl font-semibold text-gray-900">People of the Bible</h2>
+                <p className="mt-1 text-gray-700">Trivia based on the characters of the Bible</p>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
-
-
-
