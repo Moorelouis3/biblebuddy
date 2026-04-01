@@ -47,7 +47,7 @@ export default function ScrambledBookClient({ book }: { book: ScrambledBookPack 
   return (
     <div className="min-h-screen bg-[#f7f7f4] pb-14">
       <div className="mx-auto flex max-w-5xl flex-col gap-8 px-4 pt-8 sm:px-6 lg:px-8">
-        <div className="rounded-[28px] border border-[#eadfcf] bg-gradient-to-br from-[#fffaf2] via-white to-[#f8efe4] p-6 shadow-sm sm:p-8">
+        <div className="rounded-[28px] border border-[#eadfcf] bg-[#fff8ef] p-6 shadow-sm sm:p-8">
           <Link href="/bible-study-games/scrambled" className="text-sm font-semibold text-[#8d5f2d] hover:text-[#6d461d]">
             &lt;- Back to Scrambled
           </Link>

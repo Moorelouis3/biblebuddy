@@ -39,7 +39,7 @@ export const SCRAMBLED_BOOKS: ScrambledBookPack[] = [
     slug: "genesis",
     name: "Genesis",
     shortDescription: "Start with creation, the garden, and the first brokenness of sin.",
-    accentClassName: "border-rose-200 bg-gradient-to-br from-rose-50 via-white to-orange-50",
+    accentClassName: "border-[#e8b9c1] bg-[#f6dce1]",
     chapters: [
       {
         chapter: 1,
