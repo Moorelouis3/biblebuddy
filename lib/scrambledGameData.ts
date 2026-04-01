@@ -19,7 +19,9 @@ export interface ScrambledChapterPack {
 export interface ScrambledBookPack {
   slug: string;
   name: string;
+  shortLabel: string;
   shortDescription: string;
+  louisIntro: string;
   accentClassName: string;
   chapters: ScrambledChapterPack[];
 }
@@ -38,7 +40,10 @@ export const SCRAMBLED_BOOKS: ScrambledBookPack[] = [
   {
     slug: "genesis",
     name: "Genesis",
+    shortLabel: "The beginning of everything - creation, humanity, and the first promise of redemption.",
     shortDescription: "Start with creation, the garden, and the first brokenness of sin.",
+    louisIntro:
+      "Genesis means beginning, and Scrambled in Genesis is meant to help the biggest words in these opening chapters stay in your mind. You are not just playing with letters here - you are locking key Scripture words from creation, Eden, and the fall into memory one chapter at a time.",
     accentClassName: "border-[#e8b9c1] bg-[#f6dce1]",
     chapters: [
       {

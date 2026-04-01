@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { LouisAvatar } from "@/components/LouisAvatar";
 import {
   SCRAMBLED_PROGRESS_STORAGE_KEY,
   type ScrambledBookPack,
@@ -44,61 +45,89 @@ export default function ScrambledBookClient({ book }: { book: ScrambledBookPack 
     [book, progress],
   );
 
+  const latestPlayedProgress = useMemo(() => {
+    const played = book.chapters
+      .map((chapter) => progress[getScrambledProgressKey(book.slug, chapter.chapter)])
+      .filter((entry): entry is ScrambledChapterProgress => Boolean(entry?.lastPlayedAt))
+      .sort((left, right) => new Date(right.lastPlayedAt).getTime() - new Date(left.lastPlayedAt).getTime());
+
+    return played[0];
+  }, [book, progress]);
+
   return (
-    <div className="min-h-screen bg-[#f7f7f4] pb-14">
-      <div className="mx-auto flex max-w-5xl flex-col gap-8 px-4 pt-8 sm:px-6 lg:px-8">
-        <div className="rounded-[28px] border border-[#eadfcf] bg-[#fff8ef] p-6 shadow-sm sm:p-8">
-          <Link href="/bible-study-games/scrambled" className="text-sm font-semibold text-[#8d5f2d] hover:text-[#6d461d]">
-            &lt;- Back to Scrambled
-          </Link>
-          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#b37839]">Book Test Pack</p>
-              <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{book.name}</h1>
-              <p className="mt-3 max-w-2xl text-sm leading-7 text-gray-600 sm:text-[15px]">{book.shortDescription}</p>
-            </div>
-            <div className="rounded-2xl border border-[#f1d9b6] bg-[#fff7ea] px-4 py-3 text-sm text-[#8d5f2d] shadow-sm">
-              <p className="font-semibold">{completedCount} / {book.chapters.length} chapters completed</p>
-              <p className="mt-1 text-[#9d7445]">10 scrambled KJV words per chapter</p>
+    <div className="min-h-screen bg-gray-50 py-8 px-4">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-3xl font-bold mb-1">The {book.name}</h1>
+        <p className="text-gray-700 mb-4">{book.shortLabel}</p>
+
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 relative overflow-hidden">
+          <div className="mt-1 mb-4 flex items-start gap-3">
+            <LouisAvatar mood="bible" size={48} />
+            <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800 w-full">
+              <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
+              <div className="space-y-3">
+                <p>{book.louisIntro}</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          {book.chapters.map((chapter) => {
-            const chapterProgress = progress[getScrambledProgressKey(book.slug, chapter.chapter)];
-            const bestScore = chapterProgress?.bestScore ?? 0;
+          <div className="mb-4">
+            <div className="flex justify-between text-xs text-gray-600 mb-1">
+              <span>Progress in {book.name} Scrambled</span>
+              <span>
+                {completedCount === 0 ? "0" : Math.round((completedCount / book.chapters.length) * 100)}% ({completedCount} / {" "}
+                {book.chapters.length} chapters completed)
+              </span>
+            </div>
+            <div className="h-2 rounded-full bg-gray-200 overflow-hidden">
+              <div
+                className="h-full bg-blue-500 rounded-full transition-all"
+                style={{ width: `${(completedCount / book.chapters.length) * 100}%` }}
+              />
+            </div>
+          </div>
 
-            return (
-              <Link
-                key={chapter.chapter}
-                href={`/bible-study-games/scrambled/${book.slug}/${chapter.chapter}`}
-                className={`rounded-[26px] border p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${book.accentClassName}`}
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#a05e43]">Chapter {chapter.chapter}</p>
-                    <h2 className="mt-2 text-2xl font-bold text-gray-900">{book.name} {chapter.chapter}</h2>
-                  </div>
-                  <span
-                    className={`rounded-full px-3 py-1 text-xs font-semibold ${chapterProgress?.completed ? "bg-[#dcf5e3] text-[#256447]" : "bg-white/80 text-gray-600"}`}
+          <div className="space-y-4 mt-1">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
+              {book.chapters.map((chapter) => {
+                const chapterProgress = progress[getScrambledProgressKey(book.slug, chapter.chapter)];
+                const bestScore = chapterProgress?.bestScore ?? 0;
+                const done = !!chapterProgress?.completed;
+                const cardClasses = done
+                  ? "bg-green-100 border-green-300 text-green-800 cursor-pointer"
+                  : "bg-gray-100 border-gray-300 text-gray-500 cursor-pointer";
+
+                return (
+                  <Link
+                    key={chapter.chapter}
+                    href={`/bible-study-games/scrambled/${book.slug}/${chapter.chapter}`}
+                    className={`relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm block ${cardClasses}`}
                   >
-                    {chapterProgress?.completed ? "Completed" : "Ready"}
-                  </span>
-                </div>
+                    <p className="font-semibold">{book.name} {chapter.chapter}</p>
+                    <p className="text-[11px] mt-1">
+                      {done ? `Finished - best score ${bestScore}/10` : "Click to play this chapter."}
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
 
-                <p className="mt-4 text-sm leading-7 text-gray-600">{chapter.description}</p>
-
-                <div className="mt-5 flex items-center justify-between rounded-2xl border border-white/70 bg-white/70 px-4 py-3 text-sm">
-                  <div>
-                    <p className="font-semibold text-gray-900">Best score: {bestScore} / {chapter.questions.length}</p>
-                    <p className="mt-1 text-gray-500">{formatLastPlayed(chapterProgress)}</p>
-                  </div>
-                  <span className="font-semibold text-[#8d5f2d]">Play -&gt;</span>
-                </div>
+            <div className="mt-2 flex items-center justify-between text-xs sm:text-sm text-blue-600">
+              <Link href="/bible-study-games/scrambled" className="hover:underline">
+                Change category
               </Link>
-            );
-          })}
+              <Link href="/dashboard" className="hover:underline">
+                Home
+              </Link>
+              <span className="text-gray-500">{completedCount} chapters completed</span>
+            </div>
+
+            <p className="text-xs text-gray-500">
+              {completedCount > 0
+                ? formatLastPlayed(latestPlayedProgress)
+                : "Start with Genesis 1 and work forward chapter by chapter."}
+            </p>
+          </div>
         </div>
       </div>
     </div>
