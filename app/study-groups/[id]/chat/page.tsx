@@ -427,6 +427,7 @@ function getGroupPostCategory(activeTab: string): string {
 
 const HOME_FEED_CATEGORIES = [
   "general",
+  "scrambled_score_share",
   "weekly_trivia",
   "weekly_poll",
   "weekly_question",
@@ -445,6 +446,33 @@ const MANAGED_HOME_FEED_CATEGORIES = new Set<string>([
   "bible_study_saturday",
   "prayer_request_sunday",
 ]);
+
+function isScrambledScoreShare(post: Pick<Post, "category">) {
+  return post.category === "scrambled_score_share";
+}
+
+function parseScrambledSharePath(linkUrl: string | null | undefined) {
+  if (!linkUrl) return null;
+  const match = linkUrl.match(/\/bible-study-games\/scrambled\/([^/]+)\/(\d+)/i);
+  if (!match) return null;
+
+  const bookSlug = match[1];
+  const chapter = Number(match[2]);
+  if (!bookSlug || Number.isNaN(chapter)) return null;
+
+  const bookName = bookSlug
+    .split(/[-_]+/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+
+  return {
+    bookSlug,
+    bookName,
+    chapter,
+    chapterLabel: `${bookName} ${chapter}`,
+  };
+}
 
 function stripHtml(html: string): string {
   return html
@@ -3866,6 +3894,7 @@ RULES:
   const activeFeedTriviaSet = activeFeedPost ? weeklyTriviaByPostId[activeFeedPost.id] : undefined;
   const activeFeedQuestionSet = activeFeedPost ? weeklyQuestionByPostId[activeFeedPost.id] : undefined;
   const activeFeedCoverPost = activeFeedPost ? isHomeFeedCoverPost(activeFeedPost) : false;
+  const activeFeedScrambledShare = activeFeedPost ? isScrambledScoreShare(activeFeedPost) : false;
   const isLeader = userRole === "leader";
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
   const isLouisAdmin = userEmail === "moorelouis3@gmail.com";
@@ -5204,7 +5233,7 @@ RULES:
                   <UserBadge customBadge={activeFeedPost.member_badge} isPaid={activeFeedPost.is_paid} groupRole={activeFeedPost.role} />
                   <span className="text-xs text-gray-400">{timeAgo(activeFeedPost.created_at)}</span>
                 </div>
-                {activeFeedPost.title && !activeFeedCoverPost && (
+                {activeFeedPost.title && !activeFeedCoverPost && !activeFeedScrambledShare && (
                   <h2 className="text-xl font-bold text-gray-900 mt-2 leading-snug">{activeFeedPost.title}</h2>
                 )}
               </div>
@@ -5221,7 +5250,9 @@ RULES:
             </div>
 
             <div className="px-6 py-5">
-              {!activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && (
+              {activeFeedScrambledShare && renderScrambledShareCard(activeFeedPost)}
+
+              {!activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && !activeFeedScrambledShare && (
                 <div
                   className="prose prose-sm max-w-none text-gray-800 leading-relaxed [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:mt-6 [&_h2]:mb-3 [&_h2]:text-lg [&_h2]:font-bold [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5 [&_li]:my-1.5"
                   onClick={handleScriptureClick}
@@ -6138,6 +6169,7 @@ RULES:
           const pollSet = weeklyPollByPostId[post.id];
           const hasImagePost = Boolean(post.media_url && !isUploadedVideo(post.media_url) && !post.link_url);
           const isCoverOnlyFeedPost = isHomeFeedCoverPost(post);
+          const isScrambledSharePost = isScrambledScoreShare(post);
           const triviaSet = weeklyTriviaByPostId[post.id];
           const questionSet = weeklyQuestionByPostId[post.id];
           return (
@@ -6234,8 +6266,9 @@ RULES:
                 </div>
               )}
             </div>
-            {post.title && !isCoverOnlyFeedPost && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
-            {!pollSet && !triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && (
+            {post.title && !isCoverOnlyFeedPost && !isScrambledSharePost && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
+            {isScrambledSharePost && renderScrambledShareCard(post, true)}
+            {!pollSet && !triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && !isScrambledSharePost && (
               <p className={`text-sm text-gray-700 mt-3 leading-relaxed whitespace-pre-line line-clamp-4`}>
                 {getPostPreviewText(post.content)}
               </p>
@@ -6282,7 +6315,7 @@ RULES:
                 />
               </div>
             )}
-            {post.link_url && (() => {
+            {post.link_url && !isScrambledSharePost && (() => {
               const parsed = parseVideoEmbed(post.link_url);
               if (parsed.embedUrl) {
                 if (!parsed.portrait) {
@@ -6355,6 +6388,47 @@ RULES:
             </div>
           </div>
         )})}
+      </div>
+    );
+  }
+
+  function renderScrambledShareCard(post: Post, compact = false) {
+    const sharePath = parseScrambledSharePath(post.link_url);
+    const chapterLabel = sharePath?.chapterLabel || "this chapter";
+
+    return (
+      <div className={`mt-3 overflow-hidden rounded-[24px] border border-[#d9e5fb] bg-[linear-gradient(135deg,#eef4ff_0%,#f8fbff_55%,#eef8f1_100%)] ${compact ? "p-4" : "p-5"}`}>
+        <div className="flex items-start gap-3">
+          <div className="rounded-full border border-[#d7e2f8] bg-white/80 p-1 shadow-sm">
+            <LouisAvatar mood="wave" size={compact ? 46 : 54} />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5d7fc0]">Bible Study Games</p>
+            <h3 className={`mt-1 font-bold leading-snug text-gray-900 ${compact ? "text-base" : "text-lg"}`}>
+              {post.title || `I just played Scrambled in ${chapterLabel}.`}
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-[#48648f]">
+              {post.content || `Try ${chapterLabel} and see how many Bible words you can unscramble.`}
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <div className="rounded-full border border-[#d4e3bf] bg-[#eef7df] px-3 py-1 text-xs font-semibold text-[#60753d]">
+                Scrambled
+              </div>
+              <div className="rounded-full border border-[#d8e4fb] bg-white/80 px-3 py-1 text-xs font-semibold text-[#4e6795]">
+                {chapterLabel}
+              </div>
+              {post.link_url ? (
+                <Link
+                  href={post.link_url}
+                  onClick={(event) => event.stopPropagation()}
+                  className="rounded-full bg-[#4768af] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#35508a]"
+                >
+                  Play chapter
+                </Link>
+              ) : null}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

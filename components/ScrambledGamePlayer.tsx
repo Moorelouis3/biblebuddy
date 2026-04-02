@@ -99,6 +99,8 @@ export default function ScrambledGamePlayer({
   const [celebrateKey, setCelebrateKey] = useState(0);
   const [louieLine, setLouieLine] = useState("Tap the letters below and let's solve this word together.");
   const [recentReveal, setRecentReveal] = useState<{ index: number; letter: string; key: number } | null>(null);
+  const [shareState, setShareState] = useState<"idle" | "sharing" | "shared" | "limited" | "error">("idle");
+  const [shareMessage, setShareMessage] = useState<string | null>(null);
   const trackedQuestionIdsRef = useRef<Set<string>>(new Set());
 
   const question = chapter.questions[currentQuestionIndex];
@@ -160,6 +162,56 @@ export default function ScrambledGamePlayer({
     };
 
     writeProgress(current);
+  };
+
+  const shareScoreToGroup = async () => {
+    if (shareState === "sharing" || shareState === "shared") return;
+
+    const { data: sessionData } = await supabase.auth.getSession();
+    const accessToken = sessionData.session?.access_token;
+
+    if (!accessToken) {
+      setShareState("error");
+      setShareMessage("Please sign in again before sharing your score.");
+      return;
+    }
+
+    setShareState("sharing");
+    setShareMessage(null);
+
+    try {
+      const response = await fetch("/api/scrambled-share-score", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          bookSlug,
+          chapter: chapter.chapter,
+          score: solvedCount,
+          total: chapter.questions.length,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+
+      if (response.status === 429 || payload?.alreadySharedToday) {
+        setShareState("limited");
+        setShareMessage("You already shared a Scrambled score today.");
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error(payload?.error || "Could not share your score right now.");
+      }
+
+      setShareState("shared");
+      setShareMessage("Your Scrambled score is now in the Bible Study Group feed.");
+    } catch (error) {
+      setShareState("error");
+      setShareMessage(error instanceof Error ? error.message : "Could not share your score right now.");
+    }
   };
 
   const moveToNext = () => {
@@ -387,7 +439,15 @@ export default function ScrambledGamePlayer({
             <p className="mt-3 text-sm text-[#496a9b]">{encouragement}</p>
           </div>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            <button
+              type="button"
+              onClick={() => void shareScoreToGroup()}
+              disabled={shareState === "sharing" || shareState === "shared"}
+              className="rounded-2xl border border-[#d7e2f8] bg-[#eef4ff] px-4 py-3 text-sm font-semibold text-[#35508a] transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
+            >
+              {shareState === "sharing" ? "Sharing..." : shareState === "shared" ? "Score Shared" : "Share score"}
+            </button>
             <Link
               href={`/bible-study-games/scrambled/${bookSlug}/${chapter.chapter}`}
               className="rounded-2xl bg-[#4768af] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#35508a]"
@@ -401,6 +461,20 @@ export default function ScrambledGamePlayer({
               Back to Chapters
             </Link>
           </div>
+
+          {shareMessage ? (
+            <p
+              className={`mt-4 text-sm ${
+                shareState === "error"
+                  ? "text-[#b15454]"
+                  : shareState === "limited"
+                    ? "text-[#9b7a30]"
+                    : "text-[#496a9b]"
+              }`}
+            >
+              {shareMessage}
+            </p>
+          ) : null}
         </div>
       </div>
     );
