@@ -104,7 +104,9 @@ export async function POST(request: NextRequest) {
     .select("id, created_at")
     .eq("group_id", targetGroup.id)
     .eq("user_id", userData.user.id)
-    .eq("category", "scrambled_score_share")
+    .eq("category", "general")
+    .like("link_url", "/bible-study-games/scrambled/%")
+    .ilike("title", "I just unscrambled%")
     .gte("created_at", todayStart.toISOString())
     .order("created_at", { ascending: false })
     .limit(1)
@@ -145,7 +147,7 @@ export async function POST(request: NextRequest) {
       user_id: userData.user.id,
       display_name: displayName,
       title,
-      category: "scrambled_score_share",
+      category: "general",
       content,
       link_url: linkUrl,
     })
