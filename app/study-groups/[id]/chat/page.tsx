@@ -450,6 +450,12 @@ function isScrambledScoreShare(post: Pick<Post, "link_url" | "title">) {
   return Boolean(parseScrambledSharePath(post.link_url) && parseScrambledShareScore(post.title));
 }
 
+function isScrambledPromoPost(post: Pick<Post, "link_url" | "title" | "content">) {
+  if ((post.link_url || "").trim().toLowerCase() !== "/bible-study-games/scrambled") return false;
+  const promoText = `${post.title || ""} ${stripHtml(post.content || "")}`.toLowerCase();
+  return promoText.includes("scrambled");
+}
+
 function parseScrambledSharePath(linkUrl: string | null | undefined) {
   if (!linkUrl) return null;
   const match = linkUrl.match(/\/bible-study-games\/scrambled\/([^/]+)\/(\d+)/i);
@@ -493,6 +499,16 @@ function stripHtml(html: string): string {
     .replace(/&nbsp;|&#160;/gi, " ")
     .replace(/\u00a0/g, " ")
     .trim();
+}
+
+function getScrambledPromoSnippet(content: string | null | undefined) {
+  const text = stripHtml(content || "").replace(/\s+/g, " ").trim();
+  if (!text) {
+    return "Try the new Bible-based word game and see how many chapter words you can unscramble.";
+  }
+
+  const match = text.match(/.+?[.!?](?:\s|$)/);
+  return (match?.[0] || text).trim();
 }
 
 function getPostPreviewText(html: string): string {
@@ -3906,6 +3922,7 @@ RULES:
   const activeFeedQuestionSet = activeFeedPost ? weeklyQuestionByPostId[activeFeedPost.id] : undefined;
   const activeFeedCoverPost = activeFeedPost ? isHomeFeedCoverPost(activeFeedPost) : false;
   const activeFeedScrambledShare = activeFeedPost ? isScrambledScoreShare(activeFeedPost) : false;
+  const activeFeedScrambledPromo = activeFeedPost ? isScrambledPromoPost(activeFeedPost) : false;
   const isLeader = userRole === "leader";
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
   const isLouisAdmin = userEmail === "moorelouis3@gmail.com";
@@ -5244,7 +5261,7 @@ RULES:
                   <UserBadge customBadge={activeFeedPost.member_badge} isPaid={activeFeedPost.is_paid} groupRole={activeFeedPost.role} />
                   <span className="text-xs text-gray-400">{timeAgo(activeFeedPost.created_at)}</span>
                 </div>
-                {activeFeedPost.title && !activeFeedCoverPost && !activeFeedScrambledShare && (
+                {activeFeedPost.title && !activeFeedCoverPost && !activeFeedScrambledShare && !activeFeedScrambledPromo && (
                   <h2 className="text-xl font-bold text-gray-900 mt-2 leading-snug">{activeFeedPost.title}</h2>
                 )}
               </div>
@@ -5261,12 +5278,13 @@ RULES:
             </div>
 
             <div className="px-6 py-5">
-              {activeFeedScrambledShare && renderScrambledShareCard(activeFeedPost)}
+                {activeFeedScrambledShare && renderScrambledShareCard(activeFeedPost)}
+                {activeFeedScrambledPromo && renderScrambledPromoCard(activeFeedPost)}
 
-              {!activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && !activeFeedScrambledShare && (
-                <div
-                  className="prose prose-sm max-w-none text-gray-800 leading-relaxed [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:mt-6 [&_h2]:mb-3 [&_h2]:text-lg [&_h2]:font-bold [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5 [&_li]:my-1.5"
-                  onClick={handleScriptureClick}
+                {!activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && !activeFeedScrambledShare && !activeFeedScrambledPromo && (
+                  <div
+                    className="prose prose-sm max-w-none text-gray-800 leading-relaxed [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:mt-6 [&_h2]:mb-3 [&_h2]:text-lg [&_h2]:font-bold [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5 [&_li]:my-1.5"
+                    onClick={handleScriptureClick}
                   dangerouslySetInnerHTML={{ __html: getRenderablePostContent(activeFeedPost.content) }}
                 />
               )}
@@ -6180,7 +6198,8 @@ RULES:
           const pollSet = weeklyPollByPostId[post.id];
           const hasImagePost = Boolean(post.media_url && !isUploadedVideo(post.media_url) && !post.link_url);
           const isCoverOnlyFeedPost = isHomeFeedCoverPost(post);
-          const isScrambledSharePost = isScrambledScoreShare(post);
+            const isScrambledSharePost = isScrambledScoreShare(post);
+            const isScrambledPromo = isScrambledPromoPost(post);
           const triviaSet = weeklyTriviaByPostId[post.id];
           const questionSet = weeklyQuestionByPostId[post.id];
           return (
@@ -6277,12 +6296,13 @@ RULES:
                 </div>
               )}
             </div>
-            {post.title && !isCoverOnlyFeedPost && !isScrambledSharePost && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
-            {isScrambledSharePost && renderScrambledShareCard(post, true)}
-            {!pollSet && !triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && !isScrambledSharePost && (
-              <p className={`text-sm text-gray-700 mt-3 leading-relaxed whitespace-pre-line line-clamp-4`}>
-                {getPostPreviewText(post.content)}
-              </p>
+              {post.title && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
+              {isScrambledSharePost && renderScrambledShareCard(post, true)}
+              {isScrambledPromo && renderScrambledPromoCard(post, true)}
+              {!pollSet && !triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && (
+                <p className={`text-sm text-gray-700 mt-3 leading-relaxed whitespace-pre-line line-clamp-4`}>
+                  {getPostPreviewText(post.content)}
+                </p>
             )}
             {pollSet && (
               <div className="mt-3">
@@ -6326,7 +6346,7 @@ RULES:
                 />
               </div>
             )}
-            {post.link_url && !isScrambledSharePost && (() => {
+              {post.link_url && !isScrambledSharePost && !isScrambledPromo && (() => {
               const parsed = parseVideoEmbed(post.link_url);
               if (parsed.embedUrl) {
                 if (!parsed.portrait) {
@@ -6432,6 +6452,46 @@ RULES:
                   className="rounded-full bg-[#4768af] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#35508a]"
                 >
                   Unscramble
+                </Link>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </div>
+      );
+    }
+
+  function renderScrambledPromoCard(post: Post, compact = false) {
+    const promoCopy = getScrambledPromoSnippet(post.content);
+
+    return (
+      <div className={`mt-3 overflow-hidden rounded-[24px] border border-[#d9eadf] bg-[linear-gradient(135deg,#f4fbf5_0%,#fbfdf8_58%,#eef6ff_100%)] ${compact ? "p-4" : "p-5"}`}>
+        <div className="flex items-start gap-3">
+          <div className="rounded-full border border-[#d8e7da] bg-white/90 p-1 shadow-sm">
+            <LouisAvatar mood="bible" size={compact ? 46 : 54} />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5f8d68]">Update</p>
+            <h3 className={`mt-1 font-bold leading-snug text-gray-900 ${compact ? "text-base" : "text-lg"}`}>
+              {post.title || "I added Scrambled to Bible Buddy."}
+            </h3>
+            <p className={`mt-2 leading-relaxed text-gray-700 ${compact ? "text-sm" : "text-[15px]"}`}>
+              {promoCopy}
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <div className="rounded-full border border-[#d7e7bb] bg-[#eef8de] px-3 py-1 text-xs font-semibold text-[#61743d]">
+                Bible Study Games
+              </div>
+              <div className="rounded-full border border-[#d7e2f8] bg-white/80 px-3 py-1 text-xs font-semibold text-[#4e6795]">
+                New: Scrambled
+              </div>
+              {post.link_url ? (
+                <Link
+                  href={post.link_url}
+                  onClick={(event) => event.stopPropagation()}
+                  className="rounded-full bg-[#4768af] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#35508a]"
+                >
+                  Try Scrambled
                 </Link>
               ) : null}
             </div>
