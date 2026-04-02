@@ -469,13 +469,13 @@ function parseScrambledSharePath(linkUrl: string | null | undefined) {
     bookSlug,
     bookName,
     chapter,
-    chapterLabel: `${bookName} ${chapter}`,
+    chapterLabel: `${bookName}:${chapter}`,
   };
 }
 
 function parseScrambledShareScore(title: string | null | undefined) {
   if (!title) return null;
-  const match = title.match(/unscrambled\s+(\d+)\s+of\s+(\d+)/i);
+  const match = title.match(/unscrambled\s+(\d+)\/(\d+)/i);
   if (!match) return null;
 
   const score = Number(match[1]);
@@ -6406,7 +6406,6 @@ RULES:
   function renderScrambledShareCard(post: Post, compact = false) {
     const sharePath = parseScrambledSharePath(post.link_url);
     const chapterLabel = sharePath?.chapterLabel || "this chapter";
-    const scoreData = parseScrambledShareScore(post.title);
 
     return (
       <div className={`mt-3 overflow-hidden rounded-[24px] border border-[#d9e5fb] bg-[linear-gradient(135deg,#eef4ff_0%,#f8fbff_55%,#eef8f1_100%)] ${compact ? "p-4" : "p-5"}`}>
@@ -6419,16 +6418,6 @@ RULES:
             <h3 className={`mt-1 font-bold leading-snug text-gray-900 ${compact ? "text-base" : "text-lg"}`}>
               {post.title || `I just played Scrambled in ${chapterLabel}.`}
             </h3>
-            <p className="mt-2 text-sm leading-6 text-[#48648f]">
-              {post.content || `Try ${chapterLabel} and see how many Bible words you can unscramble.`}
-            </p>
-            {scoreData ? (
-              <div className="mt-4 flex flex-wrap items-center gap-3">
-                <div className="rounded-full border border-[#bfd3f5] bg-white/90 px-4 py-2 text-sm font-bold text-[#31528d] shadow-sm">
-                  Score: {scoreData.score} / {scoreData.total}
-                </div>
-              </div>
-            ) : null}
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <div className="rounded-full border border-[#d4e3bf] bg-[#eef7df] px-3 py-1 text-xs font-semibold text-[#60753d]">
                 Scrambled
@@ -6442,7 +6431,7 @@ RULES:
                   onClick={(event) => event.stopPropagation()}
                   className="rounded-full bg-[#4768af] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#35508a]"
                 >
-                  Play chapter
+                  Unscramble
                 </Link>
               ) : null}
             </div>

@@ -4,25 +4,12 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import {
-  SCRAMBLED_PROGRESS_STORAGE_KEY,
   type ScrambledBookPack,
   type ScrambledChapterProgress,
   type ScrambledProgressMap,
   getScrambledProgressKey,
 } from "@/lib/scrambledGameData";
-
-function readProgress(): ScrambledProgressMap {
-  if (typeof window === "undefined") return {};
-
-  try {
-    const raw = window.localStorage.getItem(SCRAMBLED_PROGRESS_STORAGE_KEY);
-    if (!raw) return {};
-    const parsed = JSON.parse(raw) as ScrambledProgressMap;
-    return parsed && typeof parsed === "object" ? parsed : {};
-  } catch {
-    return {};
-  }
-}
+import { supabase } from "@/lib/supabaseClient";
 
 function formatLastPlayed(progress?: ScrambledChapterProgress) {
   if (!progress?.lastPlayedAt) return "Not played yet";
@@ -35,10 +22,54 @@ function formatLastPlayed(progress?: ScrambledChapterProgress) {
 
 export default function ScrambledBookClient({ book }: { book: ScrambledBookPack }) {
   const [progress, setProgress] = useState<ScrambledProgressMap>({});
+  const [progressLoaded, setProgressLoaded] = useState(false);
 
   useEffect(() => {
-    setProgress(readProgress());
-  }, []);
+    let mounted = true;
+
+    const loadProgress = async () => {
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const accessToken = sessionData.session?.access_token;
+
+        if (!accessToken) {
+          if (mounted) {
+            setProgress({});
+            setProgressLoaded(true);
+          }
+          return;
+        }
+
+        const response = await fetch(`/api/scrambled-progress?book=${encodeURIComponent(book.slug)}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(payload?.error || "Could not load scrambled progress.");
+        }
+
+        if (mounted) {
+          setProgress((payload?.progress as ScrambledProgressMap) || {});
+          setProgressLoaded(true);
+        }
+      } catch (error) {
+        console.error("Failed to load scrambled progress", error);
+        if (mounted) {
+          setProgress({});
+          setProgressLoaded(true);
+        }
+      }
+    };
+
+    void loadProgress();
+
+    return () => {
+      mounted = false;
+    };
+  }, [book.slug]);
 
   const completedCount = useMemo(
     () => book.chapters.filter((chapter) => progress[getScrambledProgressKey(book.slug, chapter.chapter)]?.completed).length,
@@ -53,6 +84,10 @@ export default function ScrambledBookClient({ book }: { book: ScrambledBookPack 
 
     return played[0];
   }, [book, progress]);
+
+  if (!progressLoaded) {
+    return <div className="min-h-screen bg-gray-50 py-8 px-4 text-center text-sm text-gray-500">Loading Scrambled...</div>;
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">

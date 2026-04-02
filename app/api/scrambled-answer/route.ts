@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
     if (insertError) {
       console.error("Error inserting scrambled answer:", insertError);
       return NextResponse.json(
-        { error: "Failed to record scrambled answer" },
+        { error: insertError.message || "Failed to record scrambled answer" },
         { status: 500 }
       );
     }

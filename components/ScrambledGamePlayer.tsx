@@ -3,18 +3,23 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LouisAvatar } from "@/components/LouisAvatar";
-import {
-  SCRAMBLED_PROGRESS_STORAGE_KEY,
-  type ScrambledChapterPack,
-  type ScrambledProgressMap,
-  getScrambledProgressKey,
-} from "@/lib/scrambledGameData";
+import { getScrambledBook, type ScrambledChapterPack } from "@/lib/scrambledGameData";
 import { supabase } from "@/lib/supabaseClient";
 
 type LetterTile = {
   id: string;
   value: string;
   locked?: boolean;
+};
+
+type ScrambledBuddyRound = {
+  user_id: string;
+  display_name: string;
+  username: string | null;
+  profile_image_url: string | null;
+  score: number;
+  total: number;
+  completed_at: string | null;
 };
 
 function createTile(value: string, index: number, locked = false): LetterTile {
@@ -47,24 +52,6 @@ function buildBankTiles(answer: string, revealedLetters: number) {
       .filter(({ index }) => index >= revealedLetters)
       .map(({ value, index }) => createTile(value, index))
   );
-}
-
-function readProgress(): ScrambledProgressMap {
-  if (typeof window === "undefined") return {};
-
-  try {
-    const raw = window.localStorage.getItem(SCRAMBLED_PROGRESS_STORAGE_KEY);
-    if (!raw) return {};
-    const parsed = JSON.parse(raw) as ScrambledProgressMap;
-    return parsed && typeof parsed === "object" ? parsed : {};
-  } catch {
-    return {};
-  }
-}
-
-function writeProgress(next: ScrambledProgressMap) {
-  if (typeof window === "undefined") return;
-  window.localStorage.setItem(SCRAMBLED_PROGRESS_STORAGE_KEY, JSON.stringify(next));
 }
 
 function buildProgressPercent(currentIndex: number, total: number) {
@@ -101,10 +88,17 @@ export default function ScrambledGamePlayer({
   const [recentReveal, setRecentReveal] = useState<{ index: number; letter: string; key: number } | null>(null);
   const [shareState, setShareState] = useState<"idle" | "sharing" | "shared" | "limited" | "error">("idle");
   const [shareMessage, setShareMessage] = useState<string | null>(null);
+  const [buddyRounds, setBuddyRounds] = useState<ScrambledBuddyRound[]>([]);
+  const [loadingBuddyRounds, setLoadingBuddyRounds] = useState(false);
+  const [showBuddyRoundsModal, setShowBuddyRoundsModal] = useState(false);
   const trackedQuestionIdsRef = useRef<Set<string>>(new Set());
 
   const question = chapter.questions[currentQuestionIndex];
-  const chapterKey = getScrambledProgressKey(bookSlug, chapter.chapter);
+  const nextChapterPack = useMemo(() => {
+    const bookPack = getScrambledBook(bookSlug);
+    if (!bookPack) return null;
+    return bookPack.chapters.find((entry) => entry.chapter === chapter.chapter + 1) ?? null;
+  }, [bookSlug, chapter.chapter]);
 
   const confettiPieces = useMemo(
     () =>
@@ -151,18 +145,69 @@ export default function ScrambledGamePlayer({
     };
   }, []);
 
-  const persistCompletion = (score: number) => {
-    const current = readProgress();
-    const previous = current[chapterKey];
+  useEffect(() => {
+    let mounted = true;
 
-    current[chapterKey] = {
-      completed: true,
-      bestScore: Math.max(previous?.bestScore ?? 0, score),
-      lastPlayedAt: new Date().toISOString(),
+    const loadBuddyRounds = async () => {
+      if (!showResults) return;
+
+      setLoadingBuddyRounds(true);
+
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const accessToken = sessionData.session?.access_token;
+
+        if (!accessToken) {
+          if (mounted) {
+            setBuddyRounds([]);
+            setLoadingBuddyRounds(false);
+          }
+          return;
+        }
+
+        const response = await fetch(
+          `/api/scrambled-round-buddies?book=${encodeURIComponent(bookSlug)}&chapter=${chapter.chapter}`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          },
+        );
+
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(payload?.error || "Could not load buddies for this chapter.");
+        }
+
+        if (mounted) {
+          setBuddyRounds((payload?.buddies as ScrambledBuddyRound[]) || []);
+          setLoadingBuddyRounds(false);
+        }
+      } catch (error) {
+        console.error("Failed to load scrambled buddy rounds", error);
+        if (mounted) {
+          setBuddyRounds([]);
+          setLoadingBuddyRounds(false);
+        }
+      }
     };
 
-    writeProgress(current);
-  };
+    void loadBuddyRounds();
+
+    return () => {
+      mounted = false;
+    };
+  }, [bookSlug, chapter.chapter, showResults]);
+
+  const visibleBuddyRounds = useMemo(() => buddyRounds.slice(0, 6), [buddyRounds]);
+
+  const getBuddyInitials = (displayName: string) =>
+    displayName
+      .split(" ")
+      .map((word) => word[0] || "")
+      .join("")
+      .slice(0, 2)
+      .toUpperCase();
 
   const shareScoreToGroup = async () => {
     if (shareState === "sharing" || shareState === "shared") return;
@@ -216,7 +261,6 @@ export default function ScrambledGamePlayer({
 
   const moveToNext = () => {
     if (currentQuestionIndex === chapter.questions.length - 1) {
-      persistCompletion(solvedCount);
       setShowResults(true);
       return;
     }
@@ -446,13 +490,18 @@ export default function ScrambledGamePlayer({
               disabled={shareState === "sharing" || shareState === "shared"}
               className="rounded-2xl border border-[#d7e2f8] bg-[#eef4ff] px-4 py-3 text-sm font-semibold text-[#35508a] transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
             >
-              {shareState === "sharing" ? "Sharing..." : shareState === "shared" ? "Score Shared" : "Share score"}
+              {shareState === "sharing" ? (
+                <span className="flex items-center justify-center gap-2">
+                  <span className="h-4 w-4 rounded-full border-2 border-[#9fb8e8] border-t-[#35508a] animate-spin" />
+                  <span>Sharing to group...</span>
+                </span>
+              ) : shareState === "shared" ? "Score Shared" : "Share score"}
             </button>
             <Link
-              href={`/bible-study-games/scrambled/${bookSlug}/${chapter.chapter}`}
+              href={nextChapterPack ? `/bible-study-games/scrambled/${bookSlug}/${nextChapterPack.chapter}` : `/bible-study-games/scrambled/${bookSlug}/${chapter.chapter}`}
               className="rounded-2xl bg-[#4768af] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#35508a]"
             >
-              Play Chapter Again
+              {nextChapterPack ? "Play Next Chapter" : "Play Chapter Again"}
             </Link>
             <Link
               href={`/bible-study-games/scrambled/${bookSlug}`}
@@ -460,6 +509,85 @@ export default function ScrambledGamePlayer({
             >
               Back to Chapters
             </Link>
+          </div>
+
+          <div className="mt-8 rounded-[24px] border border-[#d8e4fb] bg-[#f6f9ff] px-5 py-5 text-left">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#5d7fc0]">Chapter Buddies</p>
+                <p className="mt-1 text-sm font-bold text-gray-900">
+                  {buddyRounds.length === 0
+                    ? `No buddies have finished ${bookName} ${chapter.chapter} yet.`
+                    : `${buddyRounds.length} ${buddyRounds.length === 1 ? "buddy has" : "buddies have"} also finished ${bookName} ${chapter.chapter}.`}
+                </p>
+                <p className="mt-1 text-xs text-[#6580aa]">
+                  See who has completed this chapter round and how they scored.
+                </p>
+              </div>
+              {buddyRounds.length > visibleBuddyRounds.length ? (
+                <button
+                  type="button"
+                  onClick={() => setShowBuddyRoundsModal(true)}
+                  className="text-xs font-semibold text-[#4768af] hover:text-[#35508a] whitespace-nowrap"
+                >
+                  See more
+                </button>
+              ) : null}
+            </div>
+
+            <div className="mt-4">
+              {loadingBuddyRounds ? (
+                <div className="flex items-center gap-2 text-xs text-gray-400">
+                  <div className="h-9 w-9 rounded-full bg-[#dfe8f8] animate-pulse" />
+                  <div className="h-9 w-9 rounded-full bg-[#dfe8f8] animate-pulse" />
+                  <div className="h-9 w-9 rounded-full bg-[#dfe8f8] animate-pulse" />
+                  <span className="ml-2">Loading buddies...</span>
+                </div>
+              ) : visibleBuddyRounds.length > 0 ? (
+                <div className="flex flex-wrap items-center gap-2">
+                  {visibleBuddyRounds.map((buddy) => (
+                    <Link
+                      key={buddy.user_id}
+                      href={`/profile/${buddy.user_id}`}
+                      className="group flex items-center gap-2 rounded-full border border-[#d8e4fb] bg-white pr-3 shadow-sm transition hover:bg-[#fbfdff]"
+                    >
+                      {buddy.profile_image_url ? (
+                        <img
+                          src={buddy.profile_image_url}
+                          alt={buddy.display_name}
+                          className="h-9 w-9 rounded-full object-cover"
+                        />
+                      ) : (
+                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#5c7fc1] text-xs font-bold text-white">
+                          {getBuddyInitials(buddy.display_name)}
+                        </div>
+                      )}
+                      <div className="min-w-0">
+                        <p className="max-w-[100px] truncate text-xs font-semibold text-gray-800 group-hover:text-gray-900">
+                          {buddy.display_name}
+                        </p>
+                        <p className="text-[11px] text-[#6b82ab]">
+                          {buddy.score}/{buddy.total}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                  {buddyRounds.length > visibleBuddyRounds.length ? (
+                    <button
+                      type="button"
+                      onClick={() => setShowBuddyRoundsModal(true)}
+                      className="h-9 rounded-full border border-[#d8e4fb] bg-white px-3 text-xs font-semibold text-gray-600 transition hover:bg-[#fbfdff]"
+                    >
+                      +{buddyRounds.length - visibleBuddyRounds.length} more
+                    </button>
+                  ) : null}
+                </div>
+              ) : (
+                <p className="text-sm text-gray-500">
+                  Once your buddies finish this chapter, they’ll show up here.
+                </p>
+              )}
+            </div>
           </div>
 
           {shareMessage ? (
@@ -474,6 +602,12 @@ export default function ScrambledGamePlayer({
             >
               {shareMessage}
             </p>
+          ) : null}
+
+          {shareState === "sharing" ? (
+            <div className="mt-4 overflow-hidden rounded-full bg-[#dfe8f8]">
+              <div className="h-1.5 w-full animate-[share-progress_1.2s_ease-in-out_infinite] bg-[linear-gradient(90deg,#7aa8ff_0%,#8fd9be_100%)]" />
+            </div>
           ) : null}
         </div>
       </div>
@@ -674,6 +808,65 @@ export default function ScrambledGamePlayer({
         </div>
       ) : null}
 
+      {showBuddyRoundsModal ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4" onClick={() => setShowBuddyRoundsModal(false)}>
+          <div
+            className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#5d7fc0]">Chapter Buddies</p>
+                <h2 className="mt-1 text-xl font-bold text-gray-900">{bookName} {chapter.chapter}</h2>
+                <p className="mt-1 text-sm text-gray-500">
+                  {buddyRounds.length} {buddyRounds.length === 1 ? "buddy has" : "buddies have"} finished this chapter round.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowBuddyRoundsModal(false)}
+                className="flex h-10 w-10 items-center justify-center rounded-full text-gray-500 transition hover:bg-gray-100"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="mt-5 max-h-[55vh] overflow-y-auto">
+              {buddyRounds.length === 0 ? (
+                <p className="py-6 text-center text-sm text-gray-500">No completed buddy rounds yet.</p>
+              ) : (
+                <div className="divide-y divide-gray-100">
+                  {buddyRounds.map((buddy) => (
+                    <div key={buddy.user_id} className="flex items-center gap-3 py-3">
+                      {buddy.profile_image_url ? (
+                        <img src={buddy.profile_image_url} alt={buddy.display_name} className="h-10 w-10 rounded-full object-cover flex-shrink-0" />
+                      ) : (
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#5c7fc1] text-sm font-bold text-white flex-shrink-0">
+                          {getBuddyInitials(buddy.display_name)}
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-semibold text-gray-900">{buddy.display_name}</p>
+                        <p className="text-xs text-gray-500">
+                          Score: {buddy.score}/{buddy.total}
+                        </p>
+                      </div>
+                      <Link
+                        href={`/profile/${buddy.user_id}`}
+                        onClick={() => setShowBuddyRoundsModal(false)}
+                        className="flex-shrink-0 rounded-full border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 transition hover:bg-gray-50"
+                      >
+                        View Profile
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <style jsx global>{`
         @keyframes confetti-fall {
           0% {
@@ -712,6 +905,18 @@ export default function ScrambledGamePlayer({
           100% {
             transform: translateX(-50%) translateY(-26px) scale(1);
             opacity: 0;
+          }
+        }
+
+        @keyframes share-progress {
+          0% {
+            transform: translateX(-65%);
+          }
+          50% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(65%);
           }
         }
       `}</style>

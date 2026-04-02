@@ -15,12 +15,7 @@ function toTitleCase(value: string) {
 
 function buildScoreTitle(score: number, total: number, chapterLabel: string) {
   const wordLabel = score === 1 ? "word" : "words";
-  return `I just unscrambled ${score} of ${total} ${wordLabel} in ${chapterLabel}.`;
-}
-
-function buildScoreBody(score: number, chapterLabel: string) {
-  const wordLabel = score === 1 ? "word" : "words";
-  return `I just unscrambled ${score} ${wordLabel} from ${chapterLabel}. How many can you score?`;
+  return `I just unscrambled ${score}/${total} ${wordLabel} from ${chapterLabel}. How many can you unscramble?`;
 }
 
 export async function POST(request: NextRequest) {
@@ -101,14 +96,13 @@ export async function POST(request: NextRequest) {
 
   const { data: existingShare, error: existingError } = await supabaseAdmin
     .from("group_posts")
-    .select("id, created_at")
+    .select("id")
     .eq("group_id", targetGroup.id)
     .eq("user_id", userData.user.id)
     .eq("category", "general")
     .like("link_url", "/bible-study-games/scrambled/%")
     .ilike("title", "I just unscrambled%")
     .gte("created_at", todayStart.toISOString())
-    .order("created_at", { ascending: false })
     .limit(1)
     .maybeSingle();
 
@@ -120,25 +114,17 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "You already shared a Scrambled score today.", alreadySharedToday: true }, { status: 429 });
   }
 
-  const { data: profile } = await supabaseAdmin
-    .from("profile_stats")
-    .select("display_name, username")
-    .eq("user_id", userData.user.id)
-    .maybeSingle();
-
   const displayName =
-    profile?.display_name?.trim() ||
-    profile?.username?.trim() ||
     userData.user.user_metadata?.firstName ||
     userData.user.user_metadata?.first_name ||
+    userData.user.user_metadata?.display_name ||
     (userData.user.email ? userData.user.email.split("@")[0] : null) ||
     "Buddy";
 
   const bookName = toTitleCase(bookSlug);
-  const chapterLabel = `${bookName} ${chapter}`;
+  const chapterLabel = `${bookName}:${chapter}`;
   const linkUrl = `/bible-study-games/scrambled/${bookSlug}/${chapter}`;
   const title = buildScoreTitle(score, total, chapterLabel);
-  const content = buildScoreBody(score, chapterLabel);
 
   const { data: newPost, error: insertError } = await supabaseAdmin
     .from("group_posts")
@@ -148,7 +134,7 @@ export async function POST(request: NextRequest) {
       display_name: displayName,
       title,
       category: "general",
-      content,
+      content: "",
       link_url: linkUrl,
     })
     .select("id, title, content, link_url, created_at")
