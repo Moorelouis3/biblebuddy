@@ -26,6 +26,15 @@ async function resolveActorUserId(supabaseAdmin: SupabaseClient, actorUserId?: s
   return louis.id;
 }
 
+async function resolvePostOwnerUserId(
+  supabaseAdmin: SupabaseClient,
+  leaderUserId?: string | null,
+  actorUserId?: string | null,
+) {
+  if (leaderUserId) return leaderUserId;
+  return resolveActorUserId(supabaseAdmin, actorUserId);
+}
+
 async function syncExistingPollOwnership(
   supabaseAdmin: SupabaseClient,
   existingPostId: string | null | undefined,
@@ -99,7 +108,7 @@ export async function ensureWeeklyGroupPollPost(
 ) {
   const { data: group, error: groupError } = await supabaseAdmin
     .from("study_groups")
-    .select("id, name")
+    .select("id, name, leader_user_id")
     .eq("id", groupId)
     .maybeSingle();
 
@@ -113,7 +122,8 @@ export async function ensureWeeklyGroupPollPost(
   const poll = buildWeeklyGroupPoll(now);
 
   const resolvedActorUserId = await resolveActorUserId(supabaseAdmin, actorUserId);
-  const displayName = await resolveDisplayName(supabaseAdmin, resolvedActorUserId);
+  const postOwnerUserId = await resolvePostOwnerUserId(supabaseAdmin, group.leader_user_id, actorUserId);
+  const displayName = await resolveDisplayName(supabaseAdmin, postOwnerUserId);
 
   const { data: existing, error: existingError } = await supabaseAdmin
     .from("weekly_group_polls")
@@ -127,7 +137,7 @@ export async function ensureWeeklyGroupPollPost(
     const existingPostStillPresent = await syncExistingPollOwnership(
       supabaseAdmin,
       existing.post_id,
-      resolvedActorUserId,
+      postOwnerUserId,
       displayName,
     );
 
@@ -148,7 +158,7 @@ export async function ensureWeeklyGroupPollPost(
     .from("group_posts")
     .insert({
       group_id: groupId,
-      user_id: resolvedActorUserId,
+      user_id: postOwnerUserId,
       display_name: displayName,
       title: poll.question,
       category: "weekly_poll",
