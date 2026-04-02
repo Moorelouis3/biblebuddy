@@ -15,7 +15,7 @@ const supabase = createClient(
 
 export async function POST(request: NextRequest) {
   try {
-    const { userId, bookName, bookSlug, chapter, questionId, answer, reference } = await request.json();
+    const { userId, bookName, bookSlug, chapter, questionId, answer, reference, username } = await request.json();
 
     if (!userId || !bookName || !bookSlug || !chapter || !questionId || !answer) {
       return NextResponse.json(
@@ -26,10 +26,26 @@ export async function POST(request: NextRequest) {
 
     const actionLabel = `${bookName} ${chapter} - ${questionId} - ${answer.toLowerCase()}${reference ? ` (${reference})` : ""}`;
 
+    let finalUsername = typeof username === "string" && username.trim().length > 0 ? username.trim() : null;
+
+    if (!finalUsername) {
+      const { data: profileStats } = await supabase
+        .from("profile_stats")
+        .select("display_name, username")
+        .eq("user_id", userId)
+        .maybeSingle();
+
+      finalUsername =
+        profileStats?.display_name?.trim() ||
+        profileStats?.username?.trim() ||
+        "User";
+    }
+
     const { error: insertError } = await supabase
       .from("master_actions")
       .insert({
         user_id: userId,
+        username: finalUsername,
         action_type: ACTION_TYPE.scrambled_word_answered,
         action_label: actionLabel,
       });

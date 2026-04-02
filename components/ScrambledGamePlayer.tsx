@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import {
   SCRAMBLED_PROGRESS_STORAGE_KEY,
@@ -95,9 +95,11 @@ export default function ScrambledGamePlayer({
   const [showHelp, setShowHelp] = useState(false);
   const [hintCount, setHintCount] = useState(0);
   const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
   const [celebrateKey, setCelebrateKey] = useState(0);
   const [louieLine, setLouieLine] = useState("Tap the letters below and let's solve this word together.");
   const [recentReveal, setRecentReveal] = useState<{ index: number; letter: string; key: number } | null>(null);
+  const trackedQuestionIdsRef = useRef<Set<string>>(new Set());
 
   const question = chapter.questions[currentQuestionIndex];
   const chapterKey = getScrambledProgressKey(bookSlug, chapter.chapter);
@@ -133,6 +135,13 @@ export default function ScrambledGamePlayer({
     void supabase.auth.getUser().then(({ data }) => {
       if (!mounted) return;
       setUserId(data.user?.id ?? null);
+      const meta: any = data.user?.user_metadata || {};
+      const nextUsername =
+        meta.firstName ||
+        meta.first_name ||
+        (data.user?.email ? data.user.email.split("@")[0] : null) ||
+        null;
+      setUsername(nextUsername);
     });
 
     return () => {
@@ -168,23 +177,63 @@ export default function ScrambledGamePlayer({
     setStatus("correct");
     setCelebrateKey((value) => value + 1);
     setLouieLine(`Nice work. ${question.answer} is right.`);
+    void trackSolvedWord();
+  };
 
-    if (userId) {
-      void fetch("/api/scrambled-answer", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId,
-          bookName,
-          bookSlug,
-          chapter: chapter.chapter,
-          questionId: question.id,
-          answer: question.answer,
-          reference: question.reference,
-        }),
-      });
+  const trackSolvedWord = async () => {
+    if (trackedQuestionIdsRef.current.has(question.id)) {
+      return;
+    }
+
+    let resolvedUserId = userId;
+    let resolvedUsername = username;
+
+    if (!resolvedUserId) {
+      const { data } = await supabase.auth.getUser();
+      resolvedUserId = data.user?.id ?? null;
+      const meta: any = data.user?.user_metadata || {};
+      resolvedUsername =
+        resolvedUsername ||
+        meta.firstName ||
+        meta.first_name ||
+        (data.user?.email ? data.user.email.split("@")[0] : null) ||
+        null;
+
+      if (resolvedUserId) {
+        setUserId(resolvedUserId);
+      }
+      if (resolvedUsername) {
+        setUsername(resolvedUsername);
+      }
+    }
+
+    if (!resolvedUserId) {
+      return;
+    }
+
+    trackedQuestionIdsRef.current.add(question.id);
+
+    const response = await fetch("/api/scrambled-answer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      keepalive: true,
+      body: JSON.stringify({
+        userId: resolvedUserId,
+        username: resolvedUsername,
+        bookName,
+        bookSlug,
+        chapter: chapter.chapter,
+        questionId: question.id,
+        answer: question.answer,
+        reference: question.reference,
+      }),
+    });
+
+    if (!response.ok) {
+      trackedQuestionIdsRef.current.delete(question.id);
+      console.error("Failed to record scrambled answer", await response.text().catch(() => ""));
     }
   };
 
