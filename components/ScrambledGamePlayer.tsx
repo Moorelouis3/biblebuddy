@@ -71,6 +71,10 @@ function buildProgressPercent(currentIndex: number, total: number) {
   return Math.round(((currentIndex + 1) / total) * 100);
 }
 
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 export default function ScrambledGamePlayer({
   bookName,
   bookSlug,
@@ -93,6 +97,7 @@ export default function ScrambledGamePlayer({
   const [userId, setUserId] = useState<string | null>(null);
   const [celebrateKey, setCelebrateKey] = useState(0);
   const [louieLine, setLouieLine] = useState("Tap the letters below and let's solve this word together.");
+  const [recentReveal, setRecentReveal] = useState<{ index: number; letter: string; key: number } | null>(null);
 
   const question = chapter.questions[currentQuestionIndex];
   const chapterKey = getScrambledProgressKey(bookSlug, chapter.chapter);
@@ -115,6 +120,7 @@ export default function ScrambledGamePlayer({
     setHintCount(0);
     setRevealedLetters(0);
     setLouieLine("Tap the letters below and let's solve this word together.");
+    setRecentReveal(null);
   }, [question]);
 
   useEffect(() => {
@@ -161,7 +167,7 @@ export default function ScrambledGamePlayer({
     setSolvedCount((value) => value + 1);
     setStatus("correct");
     setCelebrateKey((value) => value + 1);
-    setLouieLine(`Nice work. "${question.answer}" is right, and that one counts for your score.`);
+    setLouieLine(`Nice work. ${question.answer} is right.`);
 
     if (userId) {
       void fetch("/api/scrambled-answer", {
@@ -242,7 +248,7 @@ export default function ScrambledGamePlayer({
 
     if (hintCount === 0) {
       setHintCount(1);
-      setLouieLine(`Hint: ${question.clue}`);
+      setLouieLine(question.clue);
       return;
     }
 
@@ -251,18 +257,23 @@ export default function ScrambledGamePlayer({
     const nextSlots = buildAnswerSlots(question.answer, nextRevealCount);
     const nextBank = buildBankTiles(question.answer, nextRevealCount);
     const revealedLetter = answerLetters[nextRevealCount - 1];
+    const revealedIndex = nextRevealCount - 1;
 
     setHintCount((value) => value + 1);
     setRevealedLetters(nextRevealCount);
     setAnswerSlots(nextSlots);
     setBankLetters(nextBank);
     setStatus("idle");
+    setLouieLine(question.clue);
+    setRecentReveal((current) => ({
+      index: revealedIndex,
+      letter: revealedLetter,
+      key: (current?.key ?? 0) + 1,
+    }));
 
-    if (nextRevealCount === 1) {
-      setLouieLine(`I placed the first letter for you. ${question.clue}`);
-    } else {
-      setLouieLine(`I placed the next letter for you. The next one is ${revealedLetter}.`);
-    }
+    window.setTimeout(() => {
+      setRecentReveal((current) => (current?.index === revealedIndex ? null : current));
+    }, 900);
 
     if (nextRevealCount === answerLetters.length) {
       markCorrect();
@@ -275,6 +286,23 @@ export default function ScrambledGamePlayer({
       : revealedLetters < question.answer.length
         ? "Reveal next letter"
         : "Answer revealed";
+
+  const highlightedSourceLine = useMemo(() => {
+    const pattern = new RegExp(`(${escapeRegExp(question.answer)})`, "ig");
+    const parts = question.sourceLine.split(pattern);
+
+    return parts.map((part, index) => {
+      if (part.toLowerCase() === question.answer.toLowerCase()) {
+        return (
+          <span key={`${question.id}-line-${index}`} className="font-bold text-[#c14e5d]">
+            {part}
+          </span>
+        );
+      }
+
+      return <span key={`${question.id}-line-${index}`}>{part}</span>;
+    });
+  }, [question.answer, question.id, question.sourceLine]);
 
   const encouragement =
     solvedCount === chapter.questions.length
@@ -360,6 +388,7 @@ export default function ScrambledGamePlayer({
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5d7fc0]">Scrambled</p>
                 <h1 className="mt-1 text-3xl font-bold tracking-tight text-gray-900">{bookName} {chapter.chapter}</h1>
+                <p className="mt-1 text-sm font-medium text-[#5d7fc0]">{question.reference}</p>
                 <div className="mt-3 rounded-[24px] border border-[#d8e4fb] bg-[#f6f9ff] px-4 py-3">
                   <p className="text-sm leading-7 text-[#35508a]">{louieLine}</p>
                 </div>
@@ -383,7 +412,6 @@ export default function ScrambledGamePlayer({
             <div className="mt-5 flex flex-wrap items-start justify-between gap-4">
               <div>
                 <h2 className="text-2xl font-bold text-gray-900">Unscramble the word</h2>
-                <p className="mt-1 text-sm text-gray-500">{question.reference}</p>
               </div>
 
               <button
@@ -394,24 +422,6 @@ export default function ScrambledGamePlayer({
               >
                 {hintLabel}
               </button>
-            </div>
-
-            <div className="mt-4 rounded-[24px] border border-[#e0e7f4] bg-[#f8fbff] px-4 py-4">
-              {hintCount === 0 ? (
-                <p className="text-sm text-gray-500">Use a hint if you need a little help.</p>
-              ) : (
-                <div className="space-y-2">
-                  <p className="text-sm leading-7 text-gray-700">
-                    <span className="font-semibold text-gray-900">Hint:</span> {question.clue}
-                  </p>
-                  {revealedLetters > 0 ? (
-                    <p className="text-sm leading-7 text-gray-600">
-                      Louis has placed <span className="font-semibold text-gray-900">{revealedLetters}</span>{" "}
-                      {revealedLetters === 1 ? "letter" : "letters"} for you so far.
-                    </p>
-                  ) : null}
-                </div>
-              )}
             </div>
 
             <div className="relative mt-5">
@@ -429,20 +439,31 @@ export default function ScrambledGamePlayer({
 
               <div className="grid grid-cols-5 gap-2 sm:grid-cols-10">
                 {answerSlots.map((tile, index) => (
-                  <button
-                    key={`${question.id}-slot-${index}`}
-                    type="button"
-                    onClick={() => handleAnswerLetterClick(index)}
-                    className={`flex h-12 items-center justify-center rounded-2xl border text-lg font-bold uppercase transition ${
-                      tile
-                        ? tile.locked
-                          ? "border-[#bfd3f5] bg-[#edf4ff] text-[#31528d]"
-                          : "border-[#d5dbe5] bg-white text-gray-900 shadow-sm"
-                        : "border-[#e4e8ef] bg-[#f4f6f9] text-gray-300"
-                    }`}
-                  >
-                    {tile?.value ?? ""}
-                  </button>
+                  <div key={`${question.id}-slot-${index}`} className="relative">
+                    {recentReveal?.index === index ? (
+                      <span
+                        key={`reveal-${recentReveal.key}`}
+                        className="pointer-events-none absolute left-1/2 top-0 z-10 -translate-x-1/2 rounded-full bg-[#edf4ff] px-2 py-0.5 text-xs font-bold text-[#4768af] shadow-sm animate-[reveal-pop_850ms_ease-out_forwards]"
+                      >
+                        +{recentReveal.letter}
+                      </span>
+                    ) : null}
+                    <button
+                      type="button"
+                      onClick={() => handleAnswerLetterClick(index)}
+                      className={`flex h-12 w-full items-center justify-center rounded-2xl border text-lg font-bold uppercase transition ${
+                        tile
+                          ? tile.locked
+                            ? recentReveal?.index === index
+                              ? "border-[#95b5ef] bg-[#edf4ff] text-[#31528d] animate-[slot-pop_360ms_ease-out]"
+                              : "border-[#bfd3f5] bg-[#edf4ff] text-[#31528d]"
+                            : "border-[#d5dbe5] bg-white text-gray-900 shadow-sm"
+                          : "border-[#e4e8ef] bg-[#f4f6f9] text-gray-300"
+                      }`}
+                    >
+                      {tile?.value ?? ""}
+                    </button>
+                  </div>
                 ))}
               </div>
             </div>
@@ -491,9 +512,8 @@ export default function ScrambledGamePlayer({
             <div className="mt-4 min-h-10 text-sm leading-7">
               {status === "correct" ? (
                 <div className="rounded-[24px] border border-[#d8e4fb] bg-[#f6f9ff] px-4 py-4">
-                  <p className="font-semibold text-[#2f4b6a]">Correct. Louis found the verse for you.</p>
-                  <p className="mt-2 text-sm font-semibold text-gray-900">{question.reference}</p>
-                  <p className="mt-1 text-sm leading-7 text-gray-700">"{question.sourceLine}"</p>
+                  <p className="text-sm font-semibold text-gray-900">{question.reference}</p>
+                  <p className="mt-1 text-sm leading-7 text-gray-700">"{highlightedSourceLine}"</p>
                 </div>
               ) : status === "incorrect" ? (
                 <p className="font-semibold text-[#9a4d4d]">Not quite. Try a different order, or let Louis reveal the next letter.</p>
@@ -542,6 +562,32 @@ export default function ScrambledGamePlayer({
           }
           100% {
             transform: translateY(90px) scale(1.15);
+            opacity: 0;
+          }
+        }
+
+        @keyframes slot-pop {
+          0% {
+            transform: scale(0.82);
+          }
+          55% {
+            transform: scale(1.08);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        @keyframes reveal-pop {
+          0% {
+            transform: translateX(-50%) translateY(10px) scale(0.8);
+            opacity: 0;
+          }
+          20% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(-50%) translateY(-26px) scale(1);
             opacity: 0;
           }
         }
