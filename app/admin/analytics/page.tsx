@@ -1785,7 +1785,7 @@ export default function AnalyticsPage() {
       case "reading_plan_chapter_completed":
         return "bg-yellow-50 border-l-4 border-yellow-500";
       case "scrambled_word_answered":
-        return "bg-rose-50 border-l-4 border-rose-400";
+        return "bg-yellow-50 border-l-4 border-yellow-400";
       case "trivia_question_answered":
         return "bg-emerald-50 border-l-4 border-emerald-500";
       case "user_login":
@@ -2114,21 +2114,6 @@ export default function AnalyticsPage() {
               />
             </div>
 
-            <h3 className="text-lg font-bold mt-6 mb-3">Community</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-              <OverviewCard
-                label="Buddies Added"
-                value={overviewMetrics.buddiesAdded}
-                onClick={() => setSelectedActionType(selectedActionType === "buddy_added" ? null : "buddy_added")}
-                isSelected={selectedActionType === "buddy_added"}
-              />
-              <OverviewCard
-                label="Group Messages"
-                value={overviewMetrics.groupMessagesSent}
-                onClick={() => setSelectedActionType(selectedActionType === "group_message_sent" ? null : "group_message_sent")}
-                isSelected={selectedActionType === "group_message_sent"}
-              />
-            </div>
           </>
         )}
       </div>

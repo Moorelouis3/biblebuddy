@@ -1315,7 +1315,10 @@ export default function GroupChatPage() {
         const isViewed = viewedPeople.has(personNameKey);
 
         if (userId && !isCompleted && !isViewed) {
-          const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, { userId });
+          const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
+            userId,
+            actionLabel: selectedPersonName,
+          });
           if (!creditResult.ok) {
             setPersonCreditBlocked(true);
             return;
@@ -1475,7 +1478,10 @@ FINAL RULES:
         const isViewed = viewedPlaces.has(normalizedPlace);
 
         if (userId && !isCompleted && !isViewed) {
-          const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, { userId });
+          const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
+            userId,
+            actionLabel: selectedPlaceName,
+          });
           if (!creditResult.ok) {
             setPlaceCreditBlocked(true);
             return;
@@ -1585,7 +1591,10 @@ Be accurate to Scripture.`,
         const isViewed = viewedKeywords.has(keywordKey);
 
         if (userId && !isCompleted && !isViewed) {
-          const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, { userId });
+          const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, {
+            userId,
+            actionLabel: selectedKeywordName,
+          });
           if (!creditResult.ok) {
             setKeywordCreditBlocked(true);
             return;

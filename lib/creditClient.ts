@@ -74,7 +74,7 @@ function maybeShowCreditFeedback(userId: string, dailyCredits: number) {
 
 export async function consumeCreditAction(
   actionType: string,
-  options?: { userId?: string | null }
+  options?: { userId?: string | null; actionLabel?: string | null }
 ): Promise<CreditClientResult> {
   try {
     const response = await fetch("/api/consume-credit", {
@@ -82,7 +82,7 @@ export async function consumeCreditAction(
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ actionType }),
+      body: JSON.stringify({ actionType, actionLabel: options?.actionLabel ?? null }),
     });
 
     const result = (await response.json().catch(() => ({}))) as CreditClientResult;

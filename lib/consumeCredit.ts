@@ -50,7 +50,8 @@ function toDateString(value: string | null): string | null {
 
 export async function consumeCredit(
   userId: string,
-  actionType: ActionType
+  actionType: ActionType,
+  actionLabel?: string | null
 ): Promise<ConsumeCreditResult> {
   const supabaseAdmin = getSupabaseAdmin();
   if (!supabaseAdmin) {
@@ -75,12 +76,22 @@ export async function consumeCredit(
   }
 
   if (profileStats.is_paid) {
+    const insertData: {
+      user_id: string;
+      action_type: ActionType;
+      action_label?: string | null;
+    } = {
+      user_id: userId,
+      action_type: actionType,
+    };
+
+    if (actionLabel !== undefined && actionLabel !== null) {
+      insertData.action_label = actionLabel;
+    }
+
     const { error: actionError } = await supabaseAdmin
       .from("master_actions")
-      .insert({
-        user_id: userId,
-        action_type: actionType,
-      });
+      .insert(insertData);
 
     if (actionError) {
       console.error("[CONSUME_CREDIT] Error logging master_actions:", actionError);
@@ -127,12 +138,22 @@ export async function consumeCredit(
     return { ok: false, reason: "error" };
   }
 
+  const insertData: {
+    user_id: string;
+    action_type: ActionType;
+    action_label?: string | null;
+  } = {
+    user_id: userId,
+    action_type: actionType,
+  };
+
+  if (actionLabel !== undefined && actionLabel !== null) {
+    insertData.action_label = actionLabel;
+  }
+
   const { error: actionError } = await supabaseAdmin
     .from("master_actions")
-    .insert({
-      user_id: userId,
-      action_type: actionType,
-    });
+    .insert(insertData);
 
   if (actionError) {
     console.error("[CONSUME_CREDIT] Error logging master_actions:", actionError);

@@ -643,7 +643,10 @@ function PeopleInTheBiblePageContent() {
             const isViewed = viewedPeople.has(personNameKey);
 
             if (!isViewed) {
-              const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, { userId });
+              const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
+                userId,
+                actionLabel: selectedPerson.name,
+              });
               if (!creditResult.ok) {
                 setPersonCreditBlocked(true);
                 return;

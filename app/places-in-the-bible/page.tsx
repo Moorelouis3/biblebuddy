@@ -211,7 +211,10 @@ function PlacesInTheBiblePageContent() {
             const isViewed = viewedPlaces.has(normalizedPlace);
 
             if (!isViewed) {
-              const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, { userId });
+              const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
+                userId,
+                actionLabel: selectedPlace.name,
+              });
               if (!creditResult.ok) {
                 setPlaceCreditBlocked(true);
                 return;

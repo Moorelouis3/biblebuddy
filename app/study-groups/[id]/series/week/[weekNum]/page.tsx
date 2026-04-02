@@ -1647,7 +1647,10 @@ export default function WeekLessonPage({
       try {
         const key = selectedPerson!.name.toLowerCase().trim();
         if (userId && !completedPeople.has(key) && !viewedPeople.has(key)) {
-          const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, { userId });
+          const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
+            userId,
+            actionLabel: selectedPerson!.name,
+          });
           if (!creditResult.ok) { setPersonCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedPeople((p) => { const n = new Set(p); n.add(key); return n; });
         }
@@ -1677,7 +1680,10 @@ export default function WeekLessonPage({
       try {
         const key = selectedPlace!.name.toLowerCase().trim().replace(/\s+/g, "_");
         if (userId && !completedPlaces.has(key) && !viewedPlaces.has(key)) {
-          const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, { userId });
+          const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
+            userId,
+            actionLabel: selectedPlace!.name,
+          });
           if (!creditResult.ok) { setPlaceCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedPlaces((p) => { const n = new Set(p); n.add(key); return n; });
         }
@@ -1705,7 +1711,10 @@ export default function WeekLessonPage({
       try {
         const key = selectedKeyword!.name.toLowerCase().trim();
         if (userId && !completedKeywords.has(key) && !viewedKeywords.has(key)) {
-          const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, { userId });
+          const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, {
+            userId,
+            actionLabel: selectedKeyword!.name,
+          });
           if (!creditResult.ok) { setKeywordCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedKeywords((p) => { const n = new Set(p); n.add(key); return n; });
         }

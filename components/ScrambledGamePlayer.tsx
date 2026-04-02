@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { logActionToMasterActions } from "@/lib/actionRecorder";
-import { ACTION_TYPE } from "@/lib/actionTypes";
 import {
   SCRAMBLED_PROGRESS_STORAGE_KEY,
   type ScrambledChapterPack,
@@ -139,8 +137,21 @@ export default function ScrambledGamePlayer({
       setSolvedCount((value) => value + 1);
       setStatus("correct");
       if (userId) {
-        const actionLabel = `${bookName} ${chapter.chapter} - ${question.answer}`;
-        void logActionToMasterActions(userId, ACTION_TYPE.scrambled_word_answered, actionLabel);
+        void fetch("/api/scrambled-answer", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId,
+            bookName,
+            bookSlug,
+            chapter: chapter.chapter,
+            questionId: question.id,
+            answer: question.answer,
+            reference: question.reference,
+          }),
+        });
       }
       return;
     }

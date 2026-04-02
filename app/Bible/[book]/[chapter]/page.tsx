@@ -235,7 +235,10 @@ export default function BibleChapterPage() {
           const isViewed = viewedPeople.has(personNameKey);
 
           if (!isCompleted && !isViewed) {
-            const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, { userId });
+            const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
+              userId,
+              actionLabel: selectedPerson.name,
+            });
             if (!creditResult.ok) {
               setPersonCreditBlocked(true);
               return;
@@ -389,7 +392,10 @@ FINAL RULES:
             const isViewed = viewedPlaces.has(normalizedPlace);
 
             if (!isViewed) {
-              const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, { userId });
+              const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
+                userId,
+                actionLabel: selectedPlace.name,
+              });
               if (!creditResult.ok) {
                 setPlaceCreditBlocked(true);
                 return;
@@ -533,7 +539,10 @@ RULES:
             const isViewed = viewedKeywords.has(keywordKey);
 
             if (!isViewed) {
-              const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, { userId });
+              const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, {
+                userId,
+                actionLabel: selectedKeyword.name,
+              });
               if (!creditResult.ok) {
                 setKeywordCreditBlocked(true);
                 return;

@@ -7,6 +7,7 @@ import { ACTION_TYPE, isActionType } from "@/lib/actionTypes";
 
 type ConsumeCreditRequest = {
   actionType?: string;
+  actionLabel?: string;
 };
 
 
@@ -53,6 +54,7 @@ export async function POST(req: NextRequest) {
   }
 
   const actionType = typeof body.actionType === "string" ? body.actionType : "";
+  const actionLabel = typeof body.actionLabel === "string" ? body.actionLabel : undefined;
   if (!isAllowedActionType(actionType)) {
     return NextResponse.json(
       { ok: false, error: "Invalid action type" },
@@ -116,7 +118,7 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  const result = await consumeCredit(user.id, actionType);
+  const result = await consumeCredit(user.id, actionType, actionLabel);
 
   if (!result.ok && result.reason !== "no_credits") {
     return NextResponse.json(result, { status: 500 });

@@ -221,7 +221,10 @@ function KeywordsInTheBiblePageContent() {
             const isViewed = viewedKeywords.has(keywordKey);
 
             if (!isViewed) {
-              const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, { userId });
+              const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, {
+                userId,
+                actionLabel: selectedKeyword.name,
+              });
               if (!creditResult.ok) {
                 setKeywordCreditBlocked(true);
                 return;
