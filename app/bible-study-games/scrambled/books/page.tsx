@@ -38,7 +38,7 @@ export default function ScrambledBooksPage() {
               <p className="mb-2">
                 Pick a book of the Bible, and I&apos;ll give you Scripture words to unscramble from it.
               </p>
-              <p>Genesis and Exodus are live now, and the rest of the books can open up naturally as we add more packs.</p>
+              <p>Genesis, Exodus, and Leviticus are live now, and the rest of the books can open up naturally as we add more packs.</p>
             </div>
           </div>
 

@@ -81,6 +81,19 @@ function createExodusChapter(
   };
 }
 
+function createLeviticusChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Leviticus ${chapter}`,
+    description,
+    questions: createQuestions("leviticus", chapter, questions),
+  };
+}
+
 const GENESIS_CHAPTERS: ScrambledChapterPack[] = [
   createGenesisChapter(1, "Creation unfolds in order as God speaks light, sky, land, life, and humanity into place.", [
     ["light", "Genesis 1:3", "Let there be light", "The first thing God speaks into existence.", "easy"],
@@ -717,6 +730,198 @@ const EXODUS_CHAPTERS: ScrambledChapterPack[] = [
   ]),
 ];
 
+const LEVITICUS_CHAPTERS: ScrambledChapterPack[] = [
+  createLeviticusChapter(1, "Burnt offerings are introduced as worshippers bring animals to the LORD at the tabernacle.", [
+    ["burnt", "Leviticus 1:3", "If his offering be a burnt sacrifice", "The kind of sacrifice named first.", "easy"],
+    ["altar", "Leviticus 1:9", "the priest shall burn all on the altar", "Where the sacrifice was burned.", "easy"],
+    ["offering", "Leviticus 1:2", "bring an offering unto the LORD", "What the worshipper was to bring.", "easy"],
+    ["flock", "Leviticus 1:10", "if his offering be of the flocks", "The group word for sheep or goats.", "medium"],
+    ["blemish", "Leviticus 1:3", "a male without blemish", "What the animal must be without.", "medium"],
+  ]),
+  createLeviticusChapter(2, "Meat offerings of fine flour, oil, and frankincense are given with rules about leaven and salt.", [
+    ["flour", "Leviticus 2:1", "his offering shall be of fine flour", "The main ingredient of the meat offering.", "easy"],
+    ["oil", "Leviticus 2:1", "he shall pour oil upon it", "What was poured on the offering.", "easy"],
+    ["salt", "Leviticus 2:13", "with all thine offerings thou shalt offer salt", "What every offering needed.", "easy"],
+    ["leaven", "Leviticus 2:11", "Ye shall burn no leaven", "What was forbidden in the offering.", "medium"],
+    ["frankincense", "Leviticus 2:1", "put frankincense thereon", "The fragrant ingredient placed on the offering.", "medium"],
+  ]),
+  createLeviticusChapter(3, "Peace offerings are explained from the herd, flock, and goats as sacrifices of fellowship.", [
+    ["peace", "Leviticus 3:1", "if his oblation be a sacrifice of peace offering", "The kind of offering in this chapter.", "easy"],
+    ["fat", "Leviticus 3:3", "he shall offer of the sacrifice ... the fat", "The part repeatedly offered to the LORD.", "easy"],
+    ["kidneys", "Leviticus 3:4", "the two kidneys", "The body part named with the fat.", "medium"],
+    ["flock", "Leviticus 3:6", "if his offering for a sacrifice ... be of the flock", "The group source for one kind of peace offering.", "easy"],
+    ["sweet", "Leviticus 3:5", "an offering made by fire, of a sweet savour", "How the savour is described.", "medium"],
+  ]),
+  createLeviticusChapter(4, "Sin offerings are given for priests, rulers, and the congregation when they sin through ignorance.", [
+    ["sin", "Leviticus 4:2", "If a soul shall sin through ignorance", "What this chapter deals with.", "easy"],
+    ["blood", "Leviticus 4:6", "the priest shall dip his finger in the blood", "What was sprinkled before the LORD.", "easy"],
+    ["ignorance", "Leviticus 4:2", "sin through ignorance", "How the wrongdoing is described.", "medium"],
+    ["priest", "Leviticus 4:3", "If the priest that is anointed do sin", "The first person mentioned who might sin.", "easy"],
+    ["congregation", "Leviticus 4:13", "if the whole congregation of Israel sin", "The larger group that might also sin.", "medium"],
+  ]),
+  createLeviticusChapter(5, "Trespass and sin offerings are described for confession, uncleanness, and oath-breaking.", [
+    ["trespass", "Leviticus 5:6", "bring his trespass offering unto the LORD", "The offering named for certain wrongs.", "medium"],
+    ["confess", "Leviticus 5:5", "he shall confess that he hath sinned", "What the sinner had to do.", "easy"],
+    ["oath", "Leviticus 5:4", "if a soul swear", "The spoken promise that could bring guilt.", "easy"],
+    ["guilty", "Leviticus 5:2", "he also shall be unclean, and guilty", "How the person is described after the offense.", "medium"],
+    ["lamb", "Leviticus 5:6", "a female from the flock, a lamb", "One animal that could be brought.", "easy"],
+  ]),
+  createLeviticusChapter(6, "Restitution, continual fire, and priestly directions for several offerings are laid out.", [
+    ["restore", "Leviticus 6:4", "he shall restore that which he took violently away", "What the guilty person had to do.", "easy"],
+    ["fire", "Leviticus 6:13", "The fire shall ever be burning upon the altar", "What had to keep burning.", "easy"],
+    ["altar", "Leviticus 6:9", "the burnt offering ... upon the altar", "Where the fire kept burning.", "easy"],
+    ["ash", "Leviticus 6:10", "take up the ashes", "What the priest had to remove.", "medium"],
+    ["continual", "Leviticus 6:20", "a meat offering perpetual", "The chapter's theme of ongoing priestly service.", "medium"],
+  ]),
+  createLeviticusChapter(7, "The law of trespass, peace offerings, thanksgiving, and the forbidden fat and blood is given.", [
+    ["thanksgiving", "Leviticus 7:12", "if he offer it for a thanksgiving", "One reason for a peace offering.", "medium"],
+    ["fat", "Leviticus 7:23", "Ye shall eat no manner of fat", "What the people were forbidden to eat.", "easy"],
+    ["blood", "Leviticus 7:26", "ye shall eat no manner of blood", "What else they were forbidden to eat.", "easy"],
+    ["breast", "Leviticus 7:31", "the breast shall be Aaron's", "The part assigned to the priest.", "medium"],
+    ["wave", "Leviticus 7:30", "his own hands shall bring ... that it may be waved", "The offering motion named here.", "medium"],
+  ]),
+  createLeviticusChapter(8, "Moses consecrates Aaron and his sons with garments, oil, blood, and offerings.", [
+    ["aaron", "Leviticus 8:2", "Take Aaron and his sons with him", "The priest named first in this chapter.", "easy"],
+    ["anoint", "Leviticus 8:12", "he poured of the anointing oil", "What Moses did to consecrate Aaron.", "easy"],
+    ["garments", "Leviticus 8:7", "he put upon him the coat", "What Moses put on Aaron.", "easy"],
+    ["consecrate", "Leviticus 8:33", "until the days of your consecration be at an end", "What these seven days were for.", "medium"],
+    ["basket", "Leviticus 8:2", "and the basket of unleavened bread", "What was brought with the offerings.", "medium"],
+  ]),
+  createLeviticusChapter(9, "Aaron begins ministry, offers sacrifice, and the glory of the LORD appears with fire.", [
+    ["glory", "Leviticus 9:6", "the glory of the LORD shall appear unto you", "What Moses promised the people would appear.", "easy"],
+    ["fire", "Leviticus 9:24", "there came a fire out from before the LORD", "What came out and consumed the offering.", "easy"],
+    ["blessed", "Leviticus 9:22", "Aaron lifted up his hand toward the people, and blessed them", "What Aaron did toward the people.", "medium"],
+    ["calf", "Leviticus 9:2", "Take thee a young calf", "One animal Aaron was told to offer for sin.", "easy"],
+    ["shout", "Leviticus 9:24", "they shouted, and fell on their faces", "What the people did when they saw the fire.", "medium"],
+  ]),
+  createLeviticusChapter(10, "Nadab and Abihu offer strange fire and die before the LORD, and priests are warned about holy service.", [
+    ["strange", "Leviticus 10:1", "offered strange fire", "How the fire of Nadab and Abihu is described.", "easy"],
+    ["fire", "Leviticus 10:2", "there went out fire from the LORD", "What came out in judgment.", "easy"],
+    ["nadab", "Leviticus 10:1", "Nadab and Abihu", "One of Aaron's sons in this judgment.", "medium"],
+    ["abihu", "Leviticus 10:1", "Nadab and Abihu", "The other son named with Nadab.", "medium"],
+    ["holy", "Leviticus 10:3", "I will be sanctified in them that come nigh me", "What the LORD says about those who approach Him.", "medium"],
+  ]),
+  createLeviticusChapter(11, "Clean and unclean animals are distinguished for Israel's daily life.", [
+    ["clean", "Leviticus 11:47", "to make a difference between the unclean and the clean", "One side of the chapter's main contrast.", "easy"],
+    ["unclean", "Leviticus 11:4", "these shall ye not eat ... they are unclean", "The other side of the chapter's main contrast.", "easy"],
+    ["hoof", "Leviticus 11:3", "whatsoever parteth the hoof", "The foot feature named for clean beasts.", "medium"],
+    ["cheweth", "Leviticus 11:3", "and cheweth the cud", "What the clean beast also does.", "medium"],
+    ["wings", "Leviticus 11:20", "All fowls that creep, going upon all four", "The chapter's category dealing with flying creatures.", "easy"],
+  ]),
+  createLeviticusChapter(12, "Purification after childbirth is described with days of uncleanness and offerings.", [
+    ["woman", "Leviticus 12:2", "If a woman have conceived seed", "Who is addressed in this chapter.", "easy"],
+    ["unclean", "Leviticus 12:2", "then she shall be unclean seven days", "How she is described for a time.", "easy"],
+    ["days", "Leviticus 12:4", "she shall then continue in the blood of her purifying", "What the chapter counts for purification.", "easy"],
+    ["turtle", "Leviticus 12:8", "two turtles, or two young pigeons", "One bird that could be offered.", "medium"],
+    ["purifying", "Leviticus 12:4", "the blood of her purifying", "The process named in the chapter.", "medium"],
+  ]),
+  createLeviticusChapter(13, "Laws for leprosy in people and garments are given with priestly inspection and separation.", [
+    ["leprosy", "Leviticus 13:2", "he shall be brought unto Aaron the priest", "The disease examined throughout the chapter.", "medium"],
+    ["priest", "Leviticus 13:3", "the priest shall look on the plague", "Who had to inspect the plague.", "easy"],
+    ["plague", "Leviticus 13:3", "the plague in the skin", "The repeated word for the visible mark.", "easy"],
+    ["garment", "Leviticus 13:47", "The garment also that the plague of leprosy is in", "What else could have the plague.", "medium"],
+    ["shut", "Leviticus 13:4", "then the priest shall shut up him", "What the priest did for seven days.", "medium"],
+  ]),
+  createLeviticusChapter(14, "Cleansing for leprosy includes birds, blood, oil, and restoration to the camp.", [
+    ["cleanse", "Leviticus 14:2", "This shall be the law of the leper in the day of his cleansing", "What the chapter is about doing for the leper.", "easy"],
+    ["birds", "Leviticus 14:4", "take for him that is to be cleansed two birds alive", "What was taken for the cleansing ritual.", "easy"],
+    ["oil", "Leviticus 14:10", "and one log of oil", "What was used with the offering.", "easy"],
+    ["hyssop", "Leviticus 14:4", "and cedar wood, and scarlet, and hyssop", "The plant named with cedar wood and scarlet.", "medium"],
+    ["house", "Leviticus 14:34", "I put the plague of leprosy in a house", "Another place where a plague could appear.", "easy"],
+  ]),
+  createLeviticusChapter(15, "Bodily issues and ceremonial uncleanness are described with washing and waiting.", [
+    ["issue", "Leviticus 15:2", "When any man hath a running issue", "The condition named at the start.", "easy"],
+    ["water", "Leviticus 15:5", "he shall wash his clothes, and bathe himself in water", "What was used for cleansing.", "easy"],
+    ["unclean", "Leviticus 15:4", "Every bed, whereon he lieth ... shall be unclean", "How many touched things are described.", "easy"],
+    ["wash", "Leviticus 15:5", "shall wash his clothes", "What the person had to do with clothes.", "medium"],
+    ["even", "Leviticus 15:5", "and be unclean until the even", "The time marker repeated in the chapter.", "medium"],
+  ]),
+  createLeviticusChapter(16, "The Day of Atonement is established with the high priest, the scapegoat, and the mercy seat.", [
+    ["atonement", "Leviticus 16:30", "to make an atonement for you", "The great theme of this chapter.", "medium"],
+    ["goat", "Leviticus 16:8", "one lot for the LORD, and the other lot for the scapegoat", "The animal chosen by lot.", "easy"],
+    ["scapegoat", "Leviticus 16:10", "the goat, on which the lot fell to be the scapegoat", "The special goat sent away alive.", "medium"],
+    ["mercyseat", "Leviticus 16:14", "sprinkle it upon the mercy seat", "Where the blood was sprinkled.", "medium"],
+    ["holy", "Leviticus 16:2", "within the vail before the mercy seat", "The place Aaron entered carefully.", "easy"],
+  ]),
+  createLeviticusChapter(17, "Blood belongs to the LORD, sacrifices are centralized, and eating blood is forbidden.", [
+    ["blood", "Leviticus 17:11", "the life of the flesh is in the blood", "What carries the life of the flesh.", "easy"],
+    ["life", "Leviticus 17:11", "the life of the flesh", "What is said to be in the blood.", "easy"],
+    ["altar", "Leviticus 17:6", "the priest shall sprinkle the blood upon the altar", "Where the blood was sprinkled.", "easy"],
+    ["hunteth", "Leviticus 17:13", "whatsoever man there be ... which hunteth", "The KJV word for catching beast or fowl.", "medium"],
+    ["eateth", "Leviticus 17:10", "that eateth any manner of blood", "What the soul was forbidden to do with blood.", "medium"],
+  ]),
+  createLeviticusChapter(18, "Israel is warned against the sinful practices of Egypt and Canaan, including many unlawful relations.", [
+    ["nakedness", "Leviticus 18:6", "None of you shall approach ... to uncover their nakedness", "The repeated word in this chapter.", "medium"],
+    ["egypt", "Leviticus 18:3", "after the doings of the land of Egypt", "The former land Israel was told not to copy.", "easy"],
+    ["canaan", "Leviticus 18:3", "the land of Canaan, whither I bring you", "The land Israel was entering.", "easy"],
+    ["statutes", "Leviticus 18:4", "Ye shall do my judgments, and keep mine ordinances", "The kind of divine rules Israel had to keep.", "medium"],
+    ["abominations", "Leviticus 18:26", "that ye commit not any one of these abominations", "What these sinful acts are called.", "medium"],
+  ]),
+  createLeviticusChapter(19, "Holy living is applied to worship, justice, neighbor-love, and everyday conduct.", [
+    ["holy", "Leviticus 19:2", "Ye shall be holy", "What God says His people must be.", "easy"],
+    ["neighbour", "Leviticus 19:18", "thou shalt love thy neighbour as thyself", "Who Israel was told to love as self.", "easy"],
+    ["reap", "Leviticus 19:9", "When ye reap the harvest", "What Israel was not to finish entirely.", "medium"],
+    ["sabbath", "Leviticus 19:3", "ye shall keep my sabbaths", "The repeated holy day named here.", "easy"],
+    ["justice", "Leviticus 19:15", "Ye shall do no unrighteousness in judgment", "The fair theme in this chapter's commands.", "medium"],
+  ]),
+  createLeviticusChapter(20, "Punishments for grave sins are given, and Israel is called to be holy and separate.", [
+    ["holy", "Leviticus 20:7", "sanctify yourselves therefore, and be ye holy", "What Israel is told to be.", "easy"],
+    ["death", "Leviticus 20:2", "he shall surely be put to death", "The repeated penalty for certain sins.", "easy"],
+    ["molech", "Leviticus 20:2", "that giveth any of his seed unto Molech", "The false god named first.", "medium"],
+    ["wizard", "Leviticus 20:27", "a familiar spirit, or that is a wizard", "One kind of occult person named here.", "medium"],
+    ["separate", "Leviticus 20:24", "I have separated you from other people", "What God says He has done for Israel.", "medium"],
+  ]),
+  createLeviticusChapter(21, "Rules for priests and the high priest emphasize holiness in body, family, and service.", [
+    ["priest", "Leviticus 21:1", "Speak unto the priests", "Who this chapter directly addresses.", "easy"],
+    ["holy", "Leviticus 21:6", "They shall be holy unto their God", "What the priests must be.", "easy"],
+    ["daughter", "Leviticus 21:9", "the daughter of any priest", "The family relation named in a warning.", "medium"],
+    ["blemish", "Leviticus 21:17", "Whosoever ... hath any blemish", "What disqualified a priest from offering bread.", "medium"],
+    ["crown", "Leviticus 21:12", "the crown of the anointing oil", "What is said to be on the high priest.", "medium"],
+  ]),
+  createLeviticusChapter(22, "Holy things must be handled carefully, and offerings must be without blemish.", [
+    ["blemish", "Leviticus 22:21", "it shall be perfect to be accepted", "What an offering must not have.", "medium"],
+    ["holy", "Leviticus 22:2", "that they separate themselves from the holy things", "What the priests had to treat carefully.", "easy"],
+    ["accepted", "Leviticus 22:20", "it shall not be acceptable for you", "What the offering needed to be.", "medium"],
+    ["stranger", "Leviticus 22:10", "There shall no stranger eat of the holy thing", "Who was not to eat the holy thing.", "easy"],
+    ["bullock", "Leviticus 22:19", "ye shall offer at your own will a male without blemish, of the beeves", "One kind of acceptable animal.", "easy"],
+  ]),
+  createLeviticusChapter(23, "The feasts of the LORD are listed from Sabbath to Passover, Pentecost, trumpets, and tabernacles.", [
+    ["feasts", "Leviticus 23:2", "concerning the feasts of the LORD", "The major theme of the chapter.", "easy"],
+    ["sabbath", "Leviticus 23:3", "The sabbath of rest", "The first holy time named.", "easy"],
+    ["passover", "Leviticus 23:5", "the LORD'S passover", "The feast on the fourteenth day of the first month.", "easy"],
+    ["trumpets", "Leviticus 23:24", "a memorial of blowing of trumpets", "The special memorial in the seventh month.", "medium"],
+    ["tabernacles", "Leviticus 23:34", "the feast of tabernacles for seven days", "The feast near the end of the chapter.", "medium"],
+  ]),
+  createLeviticusChapter(24, "Oil, shewbread, blasphemy, and equal justice are set before the people.", [
+    ["bread", "Leviticus 24:5", "thou shalt take fine flour, and bake twelve cakes thereof", "What was set in two rows on the table.", "easy"],
+    ["lamp", "Leviticus 24:2", "to cause the lamps to burn continually", "What the pure oil was for.", "easy"],
+    ["blasphemed", "Leviticus 24:11", "the Israelitish woman's son blasphemed the name", "What the son did with the Name.", "medium"],
+    ["stones", "Leviticus 24:14", "let all the congregation stone him", "What the congregation had in hand for judgment.", "medium"],
+    ["eye", "Leviticus 24:20", "eye for eye", "The body part repeated in the justice line.", "easy"],
+  ]),
+  createLeviticusChapter(25, "The sabbath year and jubilee restore land, liberty, and mercy among God's people.", [
+    ["jubilee", "Leviticus 25:10", "ye shall hallow the fiftieth year", "The celebrated fiftieth year.", "medium"],
+    ["sabbath", "Leviticus 25:4", "a sabbath of rest unto the land", "What the land itself was to have.", "easy"],
+    ["liberty", "Leviticus 25:10", "proclaim liberty throughout all the land", "What was proclaimed in the fiftieth year.", "easy"],
+    ["redeem", "Leviticus 25:25", "then shall he redeem that which his brother sold", "What a near kinsman could do for land.", "medium"],
+    ["fiftieth", "Leviticus 25:10", "hallow the fiftieth year", "Which year became jubilee.", "medium"],
+  ]),
+  createLeviticusChapter(26, "Blessings for obedience and warnings for disobedience are spoken with covenant language throughout.", [
+    ["blessing", "Leviticus 26:3", "If ye walk in my statutes", "The positive side of the chapter's promises.", "medium"],
+    ["obedience", "Leviticus 26:3", "and keep my commandments, and do them", "What brings the chapter's favor.", "medium"],
+    ["rain", "Leviticus 26:4", "Then I will give you rain in due season", "What God promised in due season.", "easy"],
+    ["sword", "Leviticus 26:25", "I will bring a sword upon you", "One judgment named for disobedience.", "easy"],
+    ["covenant", "Leviticus 26:9", "I will establish my covenant with you", "What God said He would establish.", "easy"],
+  ]),
+  createLeviticusChapter(27, "Vows, dedicated persons, animals, houses, and tithes close the book with holy valuation rules.", [
+    ["vow", "Leviticus 27:2", "When a man shall make a singular vow", "The promise that opens this chapter.", "easy"],
+    ["tithe", "Leviticus 27:30", "all the tithe of the land", "The tenth that belongs to the LORD.", "easy"],
+    ["holy", "Leviticus 27:30", "it is holy unto the LORD", "How the tithe is described.", "easy"],
+    ["shekel", "Leviticus 27:3", "thy estimation shall be fifty shekels of silver", "The unit used in valuation.", "medium"],
+    ["redeem", "Leviticus 27:13", "then he shall add a fifth part", "What someone might do with a dedicated thing.", "medium"],
+  ]),
+];
+
 export const SCRAMBLED_BOOKS: ScrambledBookPack[] = [
   {
     slug: "genesis",
@@ -737,6 +942,16 @@ export const SCRAMBLED_BOOKS: ScrambledBookPack[] = [
       "Exodus is the great rescue story, and these Scrambled packs keep the plagues, Passover, wilderness moments, covenant words, and tabernacle pieces close to your memory one chapter at a time.",
     accentClassName: "border-[#ecd6a9] bg-[#f8ead0]",
     chapters: EXODUS_CHAPTERS,
+  },
+  {
+    slug: "leviticus",
+    name: "Leviticus",
+    shortLabel: "Offerings, holiness, priests, feasts, and covenant life as Israel learns to draw near to God.",
+    shortDescription: "Play through all 27 Leviticus chapters with Scripture words tied to sacrifices, holiness, atonement, feasts, and priestly service.",
+    louisIntro:
+      "Leviticus teaches Israel how to worship, how to stay clean, and how to live as a holy people near God's presence. These Scrambled packs keep the big worship, priest, feast, and atonement words easier to remember chapter by chapter.",
+    accentClassName: "border-[#c8ddb6] bg-[#e6f1d9]",
+    chapters: LEVITICUS_CHAPTERS,
   },
 ];
 
