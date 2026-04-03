@@ -1,7 +1,41 @@
+ "use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { LouisAvatar } from "@/components/LouisAvatar";
+import { ACTION_TYPE } from "@/lib/actionTypes";
+import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function ScrambledGamesPage() {
+  const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
+
+  useEffect(() => {
+    void supabase.auth.getUser().then(({ data }) => {
+      const user = data.user;
+      setUserId(user?.id ?? null);
+      const meta: any = user?.user_metadata || {};
+      setUsername(
+        meta.firstName ||
+          meta.first_name ||
+          (user?.email ? user.email.split("@")[0] : null) ||
+          null
+      );
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.scrambled_hub_viewed,
+      actionLabel: "Scrambled",
+      dedupeKey: "scrambled-hub-viewed",
+    }).catch((error) => console.error("[NAV] Failed to track Scrambled hub view:", error));
+  }, [userId, username]);
+
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
@@ -26,14 +60,40 @@ export default function ScrambledGamesPage() {
           </div>
 
           <div className="space-y-4">
-            <Link href="/bible-study-games/scrambled/books" className="block">
+            <Link
+              href="/bible-study-games/scrambled/books"
+              className="block"
+              onClick={() => {
+                if (!userId) return;
+                void trackNavigationActionOnce({
+                  userId,
+                  username,
+                  actionType: ACTION_TYPE.scrambled_category_opened,
+                  actionLabel: "Books of the Bible",
+                  dedupeKey: "scrambled-category:books",
+                }).catch((error) => console.error("[NAV] Failed to track Scrambled category click:", error));
+              }}
+            >
               <div className="rounded-xl border border-[#c9d8f0] bg-[#dce7f7] p-5 shadow-sm transition hover:scale-[1.01] hover:shadow-md">
                 <h2 className="text-xl font-semibold text-gray-900">Books of the Bible</h2>
                 <p className="mt-1 text-gray-700">Words based on the books of the Bible</p>
               </div>
             </Link>
 
-            <Link href="/bible-study-games/scrambled/people" className="block">
+            <Link
+              href="/bible-study-games/scrambled/people"
+              className="block"
+              onClick={() => {
+                if (!userId) return;
+                void trackNavigationActionOnce({
+                  userId,
+                  username,
+                  actionType: ACTION_TYPE.scrambled_category_opened,
+                  actionLabel: "People of the Bible",
+                  dedupeKey: "scrambled-category:people",
+                }).catch((error) => console.error("[NAV] Failed to track Scrambled category click:", error));
+              }}
+            >
               <div className="rounded-xl border border-[#ddd0ff] bg-[#efe7ff] p-5 shadow-sm transition hover:scale-[1.01] hover:shadow-md">
                 <h2 className="text-xl font-semibold text-gray-900">People of the Bible</h2>
                 <p className="mt-1 text-gray-700">Words based on the characters of the Bible</p>

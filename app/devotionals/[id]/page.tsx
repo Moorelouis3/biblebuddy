@@ -55,6 +55,7 @@ import DevotionalDayCompletionModal from "../../../components/DevotionalDayCompl
 import BibleReadingModal from "../../../components/BibleReadingModal";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { consumeCreditAction } from "../../../lib/creditClient";
+import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
 
 interface Devotional {
   id: string;
@@ -143,6 +144,24 @@ export default function DevotionalDetailPage() {
 
         setDevotional(devotionalData);
 
+        if (userId) {
+          const { data: authData } = await supabase.auth.getUser();
+          const meta: any = authData.user?.user_metadata || {};
+          const username =
+            meta.firstName ||
+            meta.first_name ||
+            (authData.user?.email ? authData.user.email.split("@")[0] : null) ||
+            null;
+
+          void trackNavigationActionOnce({
+            userId,
+            username,
+            actionType: ACTION_TYPE.devotional_opened,
+            actionLabel: devotionalData.title,
+            dedupeKey: `devotional-viewed:${devotionalId}`,
+          }).catch((error) => console.error("[NAV] Failed to track devotional detail view:", error));
+        }
+
         // Load days
         const { data: daysData, error: daysError } = await supabase
           .from("devotional_days")
@@ -227,6 +246,24 @@ export default function DevotionalDetailPage() {
       return;
     }
 
+    if (userId && devotional) {
+      const { data: authData } = await supabase.auth.getUser();
+      const meta: any = authData.user?.user_metadata || {};
+      const username =
+        meta.firstName ||
+        meta.first_name ||
+        (authData.user?.email ? authData.user.email.split("@")[0] : null) ||
+        null;
+
+      void trackNavigationActionOnce({
+        userId,
+        username,
+        actionType: ACTION_TYPE.devotional_day_opened,
+        actionLabel: `${devotional.title} - Day ${day.day_number}`,
+        dedupeKey: `devotional-day-opened:${devotionalId}:${day.day_number}`,
+      }).catch((error) => console.error("[NAV] Failed to track devotional day click:", error));
+    }
+
     const isFreeUser = profileStats?.is_paid !== true && userEmail !== "moorelouis3@gmail.com";
 
     // Free user logic — wait until freeDevotionalId is loaded
@@ -286,6 +323,25 @@ export default function DevotionalDetailPage() {
   };
 
   const handleBibleReadingClick = (book: string, chapter: number) => {
+    if (userId && devotional && selectedDay) {
+      void supabase.auth.getUser().then(({ data }) => {
+        const meta: any = data.user?.user_metadata || {};
+        const username =
+          meta.firstName ||
+          meta.first_name ||
+          (data.user?.email ? data.user.email.split("@")[0] : null) ||
+          null;
+
+        void trackNavigationActionOnce({
+          userId,
+          username,
+          actionType: ACTION_TYPE.devotional_bible_reading_opened,
+          actionLabel: `${devotional.title} - Day ${selectedDay.day_number} - ${book} ${chapter}`,
+          dedupeKey: `devotional-reading:${devotionalId}:${selectedDay.day_number}:${book.toLowerCase()}:${chapter}`,
+        }).catch((error) => console.error("[NAV] Failed to track devotional Bible reading click:", error));
+      });
+    }
+
     setSelectedBibleReading({ book, chapter });
   };
 
@@ -569,6 +625,24 @@ export default function DevotionalDetailPage() {
 
   const handleReflectionSave = async (dayNumber: number, reflectionText: string) => {
     if (!userId || !reflectionText.trim()) return;
+
+    if (devotional) {
+      const { data: authData } = await supabase.auth.getUser();
+      const meta: any = authData.user?.user_metadata || {};
+      const username =
+        meta.firstName ||
+        meta.first_name ||
+        (authData.user?.email ? authData.user.email.split("@")[0] : null) ||
+        null;
+
+      void trackNavigationActionOnce({
+        userId,
+        username,
+        actionType: ACTION_TYPE.devotional_reflection_saved,
+        actionLabel: `${devotional.title} - Day ${dayNumber}`,
+        dedupeKey: `devotional-reflection:${devotionalId}:${dayNumber}`,
+      }).catch((error) => console.error("[NAV] Failed to track devotional reflection save:", error));
+    }
 
     try {
       const { error } = await supabase

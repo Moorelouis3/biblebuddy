@@ -4,11 +4,13 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
+import { ACTION_TYPE } from "@/lib/actionTypes";
 import {
   BIBLE_GAME_BOOKS,
   BIBLE_GAME_ITEMS_PER_PAGE,
   FREE_TRIVIA_BOOK_KEYS,
 } from "@/lib/bibleStudyGameCatalog";
+import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import { supabase } from "@/lib/supabaseClient";
 
 const BOOK_TOTALS: Record<string, number> = Object.fromEntries(
@@ -22,6 +24,8 @@ export default function BooksOfTheBiblePage() {
   const [isPaid, setIsPaid] = useState<boolean | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [page, setPage] = useState(0);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
 
   const filteredBooks = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
@@ -49,6 +53,15 @@ export default function BooksOfTheBiblePage() {
         setLoading(false);
         return;
       }
+
+      setUserId(user.id);
+      const meta: any = user.user_metadata || {};
+      setUsername(
+        meta.firstName ||
+          meta.first_name ||
+          (user.email ? user.email.split("@")[0] : null) ||
+          null
+      );
 
       const { data: profileStats } = await supabase
         .from("profile_stats")
@@ -90,6 +103,17 @@ export default function BooksOfTheBiblePage() {
 
     fetchProgress();
   }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.trivia_category_opened,
+      actionLabel: "Books of the Bible page",
+      dedupeKey: "trivia-books-page-viewed",
+    }).catch((error) => console.error("[NAV] Failed to track trivia books page view:", error));
+  }, [userId, username]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -154,6 +178,16 @@ export default function BooksOfTheBiblePage() {
                   <Link
                     key={book.key}
                     href={book.triviaHref}
+                    onClick={() => {
+                      if (!userId) return;
+                      void trackNavigationActionOnce({
+                        userId,
+                        username,
+                        actionType: ACTION_TYPE.trivia_pack_opened,
+                        actionLabel: book.title,
+                        dedupeKey: `trivia-pack:${book.key}`,
+                      }).catch((error) => console.error("[NAV] Failed to track trivia pack click:", error));
+                    }}
                     className="relative rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm shadow-sm transition hover:scale-[1.01] hover:shadow-md"
                   >
                     {content}

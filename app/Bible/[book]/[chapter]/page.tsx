@@ -17,6 +17,7 @@ import { ACTION_TYPE } from "../../../../lib/actionTypes";
 import { resolveBibleReference } from "../../../../lib/bibleTermResolver";
 import { consumeCreditAction } from "../../../../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../../../../lib/bibleNotes";
+import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
 import CreditLimitModal from "../../../../components/CreditLimitModal";
 import CommentSection from "../../../../components/comments/CommentSection";
 
@@ -924,6 +925,20 @@ RULES:
     }
     loadUserAndProgress();
   }, []);
+
+  useEffect(() => {
+    if (!userId || !chapter) return;
+
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.bible_chapter_viewed,
+      actionLabel: `${book} ${chapter}`,
+      dedupeKey: `bible-chapter-viewed:${book.toLowerCase()}:${chapter}`,
+    }).catch((error) => {
+      console.error("[NAV] Failed to track Bible chapter view:", error);
+    });
+  }, [book, chapter, userId, username]);
 
   // Load featured characters for Matthew only
   useEffect(() => {

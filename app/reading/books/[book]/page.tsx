@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
+import { ACTION_TYPE } from "../../../../lib/actionTypes";
+import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
 import { getBookCurrentStep, isChapterCompleted, getCompletedChapters, getBookTotalChapters } from "../../../../lib/readingProgress";
 import { supabase } from "../../../../lib/supabaseClient";
 
@@ -171,6 +173,7 @@ export default function BookPage() {
   const [chapterPage, setChapterPage] = useState(0);
   const [completedChapters, setCompletedChapters] = useState<number[]>([]);
   const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -184,12 +187,33 @@ export default function BookPage() {
       if (user) {
         setUserId(user.id);
         setUserEmail(user.email || null);
+        const meta: any = user.user_metadata || {};
+        setUsername(
+          meta.firstName ||
+            meta.first_name ||
+            (user.email ? user.email.split("@")[0] : null) ||
+            "User"
+        );
       } else {
         setLoading(false);
       }
     }
     getUser();
   }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.bible_book_viewed,
+      actionLabel: bookDisplayName,
+      dedupeKey: `bible-book-viewed:${bookKey}`,
+    }).catch((error) => {
+      console.error("[NAV] Failed to track Bible book view:", error);
+    });
+  }, [bookDisplayName, bookKey, userId, username]);
 
   // load current step and completed chapters from database
   useEffect(() => {
@@ -316,6 +340,19 @@ export default function BookPage() {
                   <Link
                     key={chapter}
                     href={href}
+                    onClick={() => {
+                      if (!userId) return;
+
+                      void trackNavigationActionOnce({
+                        userId,
+                        username,
+                        actionType: ACTION_TYPE.bible_chapter_opened,
+                        actionLabel: `${bookDisplayName} ${chapter}`,
+                        dedupeKey: `bible-chapter-opened:${bookKey}:${chapter}`,
+                      }).catch((error) => {
+                        console.error("[NAV] Failed to track Bible chapter click:", error);
+                      });
+                    }}
                     className={`relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm block ${stateClasses}`}
                   >
                     {content}

@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { LouisAvatar } from "../../components/LouisAvatar";
+import { ACTION_TYPE } from "../../lib/actionTypes";
+import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { isBookComplete, getCurrentBook, getCompletedChapters, getTotalCompletedChapters } from "../../lib/readingProgress";
 import { supabase } from "../../lib/supabaseClient";
 
@@ -130,6 +132,20 @@ export default function ReadingPage() {
     }
     getUser();
   }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+
+    void trackNavigationActionOnce({
+      userId,
+      username: userName,
+      actionType: ACTION_TYPE.bible_reader_viewed,
+      actionLabel: "The Bible",
+      dedupeKey: "bible-reader-viewed",
+    }).catch((error) => {
+      console.error("[NAV] Failed to track Bible reader view:", error);
+    });
+  }, [userId, userName]);
 
   // Load book states from database (background, non-blocking)
   useEffect(() => {
@@ -259,6 +275,19 @@ export default function ReadingPage() {
                   <Link
                     key={book}
                     href={href}
+                    onClick={() => {
+                      if (!userId) return;
+
+                      void trackNavigationActionOnce({
+                        userId,
+                        username: userName,
+                        actionType: ACTION_TYPE.bible_book_opened,
+                        actionLabel: book,
+                        dedupeKey: `bible-book-opened:${book.toLowerCase()}`,
+                      }).catch((error) => {
+                        console.error("[NAV] Failed to track Bible book click:", error);
+                      });
+                    }}
                     className={`${baseClasses} block ${cardClasses}`}
                   >
                     <p className="font-semibold">{book}</p>

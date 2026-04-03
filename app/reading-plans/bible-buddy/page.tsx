@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabaseClient";
+import { ACTION_TYPE } from "../../../lib/actionTypes";
+import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
 import { getBookTotalChapters, getCompletedChapters } from "../../../lib/readingProgress";
 
 // The Bible Buddy Reading Plan order (exactly as requested)
@@ -182,6 +184,19 @@ export default function BibleBuddyReadingPlanPage() {
 
         const uid = user.id;
         setUserId(uid);
+        const meta: any = user.user_metadata || {};
+        const username =
+          meta.firstName ||
+          meta.first_name ||
+          (user.email ? user.email.split("@")[0] : null) ||
+          null;
+        void trackNavigationActionOnce({
+          userId: uid,
+          username,
+          actionType: ACTION_TYPE.reading_plan_opened,
+          actionLabel: "The Bible Buddy Reading Plan",
+          dedupeKey: "reading-plan-opened:bible-buddy",
+        }).catch((error) => console.error("[NAV] Failed to track Bible Buddy plan view:", error));
 
         // Single query for all completed chapters in this plan
         const planBookKeys = PLAN_BOOKS.map((book) => book.toLowerCase().trim());
@@ -286,6 +301,23 @@ export default function BibleBuddyReadingPlanPage() {
   }, [lastReadLocation]); // Only depend on lastReadLocation, not openSectionId
 
   const handleOpenChapter = (book: string, chapter: number) => {
+    if (userId) {
+      void supabase.auth.getUser().then(({ data }) => {
+        const meta: any = data.user?.user_metadata || {};
+        const username =
+          meta.firstName ||
+          meta.first_name ||
+          (data.user?.email ? data.user.email.split("@")[0] : null) ||
+          null;
+        void trackNavigationActionOnce({
+          userId,
+          username,
+          actionType: ACTION_TYPE.reading_plan_chapter_opened,
+          actionLabel: `The Bible Buddy Reading Plan - ${book} ${chapter}`,
+          dedupeKey: `reading-plan-chapter:bible-buddy:${book.toLowerCase()}:${chapter}`,
+        }).catch((error) => console.error("[NAV] Failed to track reading plan chapter click:", error));
+      });
+    }
     const slug = encodeURIComponent(book.toLowerCase().trim());
     // Reuse the existing Bible chapter overlay route.
     // Mark that we came from the Bible Buddy Reading Plan so the Bible page
@@ -525,5 +557,4 @@ export default function BibleBuddyReadingPlanPage() {
     </div>
   );
 }
-
 

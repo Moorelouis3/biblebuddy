@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
+import { ACTION_TYPE } from "../../lib/actionTypes";
+import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import UpgradeRequiredModal from "../../components/UpgradeRequiredModal";
 
 interface ReadingPlan {
@@ -33,6 +35,8 @@ export default function ReadingPlansPage() {
   const router = useRouter();
   const [isPaid, setIsPaid] = useState<boolean | null>(null);
   const [showPlanLocked, setShowPlanLocked] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadMembership() {
@@ -41,6 +45,15 @@ export default function ReadingPlansPage() {
         setIsPaid(false);
         return;
       }
+
+      setUserId(user.id);
+      const meta: any = user.user_metadata || {};
+      setUsername(
+        meta.firstName ||
+          meta.first_name ||
+          (user.email ? user.email.split("@")[0] : null) ||
+          null
+      );
 
       const { data } = await supabase
         .from("profile_stats")
@@ -53,6 +66,17 @@ export default function ReadingPlansPage() {
 
     loadMembership();
   }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.reading_plans_viewed,
+      actionLabel: "Bible Reading Plans",
+      dedupeKey: "reading-plans-viewed",
+    }).catch((error) => console.error("[NAV] Failed to track reading plans view:", error));
+  }, [userId, username]);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -92,6 +116,15 @@ export default function ReadingPlansPage() {
                     key={plan.id}
                     type="button"
                     onClick={() => {
+                      if (userId) {
+                        void trackNavigationActionOnce({
+                          userId,
+                          username,
+                          actionType: ACTION_TYPE.reading_plan_opened,
+                          actionLabel: plan.title,
+                          dedupeKey: `reading-plan-opened:${plan.id}`,
+                        }).catch((error) => console.error("[NAV] Failed to track reading plan click:", error));
+                      }
                       if (!isLocked) {
                         router.push(`/reading-plans/${plan.id}`);
                         return;
@@ -136,6 +169,16 @@ export default function ReadingPlansPage() {
                   <Link
                     key={plan.id}
                     href={`/reading-plans/${plan.id}`}
+                    onClick={() => {
+                      if (!userId) return;
+                      void trackNavigationActionOnce({
+                        userId,
+                        username,
+                        actionType: ACTION_TYPE.reading_plan_opened,
+                        actionLabel: plan.title,
+                        dedupeKey: `reading-plan-opened:${plan.id}`,
+                      }).catch((error) => console.error("[NAV] Failed to track reading plan click:", error));
+                    }}
                     className="block w-full"
                   >
                     <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 hover:shadow-xl hover:scale-[1.01] transition-all duration-200 cursor-pointer">
@@ -176,6 +219,15 @@ export default function ReadingPlansPage() {
                     key={plan.id}
                     type="button"
                     onClick={() => {
+                      if (userId) {
+                        void trackNavigationActionOnce({
+                          userId,
+                          username,
+                          actionType: ACTION_TYPE.reading_plan_opened,
+                          actionLabel: plan.title,
+                          dedupeKey: `reading-plan-opened:${plan.id}`,
+                        }).catch((error) => console.error("[NAV] Failed to track reading plan click:", error));
+                      }
                       if (!isLocked) {
                         router.push(`/reading-plans/${plan.id}`);
                         return;
@@ -220,6 +272,16 @@ export default function ReadingPlansPage() {
                   <Link
                     key={plan.id}
                     href={`/reading-plans/${plan.id}`}
+                    onClick={() => {
+                      if (!userId) return;
+                      void trackNavigationActionOnce({
+                        userId,
+                        username,
+                        actionType: ACTION_TYPE.reading_plan_opened,
+                        actionLabel: plan.title,
+                        dedupeKey: `reading-plan-opened:${plan.id}`,
+                      }).catch((error) => console.error("[NAV] Failed to track reading plan click:", error));
+                    }}
                     className="block w-full max-w-xs"
                   >
                     <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer">
@@ -252,5 +314,4 @@ export default function ReadingPlansPage() {
     </div>
   );
 }
-
 

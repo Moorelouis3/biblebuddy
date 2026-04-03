@@ -254,7 +254,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       </Link>
 
-      <Link href="/study-groups">
+      <Link href="/study-groups" onClick={(event) => handleCardClick(event, "bible_study_hub", "/study-groups")}>
         <div
           className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"
           style={{ backgroundColor: "#d4ecd4", borderWidth: 1, borderColor: "#b8ddb8" }}

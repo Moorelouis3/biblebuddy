@@ -1,17 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { LouisAvatar } from "@/components/LouisAvatar";
+import { ACTION_TYPE } from "@/lib/actionTypes";
 import {
   BIBLE_GAME_BOOKS,
   BIBLE_GAME_ITEMS_PER_PAGE,
   SCRAMBLED_LIVE_BOOK_KEYS,
 } from "@/lib/bibleStudyGameCatalog";
+import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function ScrambledBooksPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [page, setPage] = useState(0);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
 
   const filteredBooks = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
@@ -23,6 +28,31 @@ export default function ScrambledBooksPage() {
   const visibleBooks = filteredBooks.slice(startIndex, startIndex + BIBLE_GAME_ITEMS_PER_PAGE);
   const hasPrevPage = page > 0;
   const hasNextPage = startIndex + BIBLE_GAME_ITEMS_PER_PAGE < filteredBooks.length;
+
+  useEffect(() => {
+    void supabase.auth.getUser().then(({ data }) => {
+      const user = data.user;
+      setUserId(user?.id ?? null);
+      const meta: any = user?.user_metadata || {};
+      setUsername(
+        meta.firstName ||
+          meta.first_name ||
+          (user?.email ? user.email.split("@")[0] : null) ||
+          null
+      );
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.scrambled_books_viewed,
+      actionLabel: "Books of the Bible",
+      dedupeKey: "scrambled-books-viewed",
+    }).catch((error) => console.error("[NAV] Failed to track Scrambled books view:", error));
+  }, [userId, username]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -65,6 +95,16 @@ export default function ScrambledBooksPage() {
                     <Link
                       key={book.key}
                       href={`/bible-study-games/scrambled/${book.key}`}
+                      onClick={() => {
+                        if (!userId) return;
+                        void trackNavigationActionOnce({
+                          userId,
+                          username,
+                          actionType: ACTION_TYPE.scrambled_book_opened,
+                          actionLabel: book.title,
+                          dedupeKey: `scrambled-book-opened:${book.key}`,
+                        }).catch((error) => console.error("[NAV] Failed to track Scrambled book click:", error));
+                      }}
                       className="rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm shadow-sm transition hover:scale-[1.01] hover:shadow-md"
                     >
                       <p className="font-semibold">{book.title}</p>

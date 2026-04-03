@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { LouisAvatar } from "@/components/LouisAvatar";
+import { ACTION_TYPE } from "@/lib/actionTypes";
+import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import {
   type ScrambledBookPack,
   type ScrambledChapterProgress,
@@ -23,6 +25,8 @@ function formatLastPlayed(progress?: ScrambledChapterProgress) {
 export default function ScrambledBookClient({ book }: { book: ScrambledBookPack }) {
   const [progress, setProgress] = useState<ScrambledProgressMap>({});
   const [progressLoaded, setProgressLoaded] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -31,6 +35,18 @@ export default function ScrambledBookClient({ book }: { book: ScrambledBookPack 
       try {
         const { data: sessionData } = await supabase.auth.getSession();
         const accessToken = sessionData.session?.access_token;
+        const authUser = sessionData.session?.user ?? null;
+
+        if (mounted) {
+          setUserId(authUser?.id ?? null);
+          const meta: any = authUser?.user_metadata || {};
+          setUsername(
+            meta.firstName ||
+              meta.first_name ||
+              (authUser?.email ? authUser.email.split("@")[0] : null) ||
+              null
+          );
+        }
 
         if (!accessToken) {
           if (mounted) {
@@ -70,6 +86,17 @@ export default function ScrambledBookClient({ book }: { book: ScrambledBookPack 
       mounted = false;
     };
   }, [book.slug]);
+
+  useEffect(() => {
+    if (!userId) return;
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.scrambled_book_viewed,
+      actionLabel: book.name,
+      dedupeKey: `scrambled-book-viewed:${book.slug}`,
+    }).catch((error) => console.error("[NAV] Failed to track Scrambled book view:", error));
+  }, [book.name, book.slug, userId, username]);
 
   const completedCount = useMemo(
     () => book.chapters.filter((chapter) => progress[getScrambledProgressKey(book.slug, chapter.chapter)]?.completed).length,
@@ -136,6 +163,16 @@ export default function ScrambledBookClient({ book }: { book: ScrambledBookPack 
                   <Link
                     key={chapter.chapter}
                     href={`/bible-study-games/scrambled/${book.slug}/${chapter.chapter}`}
+                    onClick={() => {
+                      if (!userId) return;
+                      void trackNavigationActionOnce({
+                        userId,
+                        username,
+                        actionType: ACTION_TYPE.scrambled_chapter_opened,
+                        actionLabel: `${book.name} ${chapter.chapter}`,
+                        dedupeKey: `scrambled-chapter-opened:${book.slug}:${chapter.chapter}`,
+                      }).catch((error) => console.error("[NAV] Failed to track Scrambled chapter click:", error));
+                    }}
                     className={`relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm block ${cardClasses}`}
                   >
                     <p className="font-semibold">{book.name} {chapter.chapter}</p>

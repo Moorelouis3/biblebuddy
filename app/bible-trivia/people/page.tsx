@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
+import { ACTION_TYPE } from "@/lib/actionTypes";
 import { BIBLE_GAME_ITEMS_PER_PAGE, BIBLE_GAME_PEOPLE, FREE_TRIVIA_PERSON_KEYS } from "@/lib/bibleStudyGameCatalog";
+import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import { supabase } from "@/lib/supabaseClient";
 
 const PERSON_TOTALS: Record<string, number> = {
@@ -20,6 +22,8 @@ export default function PeopleOfTheBiblePage() {
   const [isPaid, setIsPaid] = useState<boolean | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [page, setPage] = useState(0);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
 
   const startIndex = page * BIBLE_GAME_ITEMS_PER_PAGE;
   const visiblePeople = BIBLE_GAME_PEOPLE.slice(startIndex, startIndex + BIBLE_GAME_ITEMS_PER_PAGE);
@@ -37,6 +41,15 @@ export default function PeopleOfTheBiblePage() {
         setLoading(false);
         return;
       }
+
+      setUserId(user.id);
+      const meta: any = user.user_metadata || {};
+      setUsername(
+        meta.firstName ||
+          meta.first_name ||
+          (user.email ? user.email.split("@")[0] : null) ||
+          null
+      );
 
       const { data: profileStats } = await supabase
         .from("profile_stats")
@@ -78,6 +91,17 @@ export default function PeopleOfTheBiblePage() {
 
     fetchProgress();
   }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.trivia_category_opened,
+      actionLabel: "People of the Bible page",
+      dedupeKey: "trivia-people-page-viewed",
+    }).catch((error) => console.error("[NAV] Failed to track trivia people page view:", error));
+  }, [userId, username]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -132,6 +156,16 @@ export default function PeopleOfTheBiblePage() {
                   <Link
                     key={person.key}
                     href={person.triviaHref}
+                    onClick={() => {
+                      if (!userId) return;
+                      void trackNavigationActionOnce({
+                        userId,
+                        username,
+                        actionType: ACTION_TYPE.trivia_pack_opened,
+                        actionLabel: person.title,
+                        dedupeKey: `trivia-pack:${person.key}`,
+                      }).catch((error) => console.error("[NAV] Failed to track trivia pack click:", error));
+                    }}
                     className="relative rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm shadow-sm transition hover:scale-[1.01] hover:shadow-md"
                   >
                     {content}

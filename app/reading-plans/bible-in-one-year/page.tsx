@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabaseClient";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { consumeCreditAction } from "../../../lib/creditClient";
+import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
 import { getCompletedChapters, isChapterCompleted } from "../../../lib/readingProgress";
 import {
   generateBibleInOneYearPlan,
@@ -116,6 +117,19 @@ export default function BibleInOneYearPage() {
 
         const uid = user.id;
         setUserId(uid);
+        const meta: any = user.user_metadata || {};
+        const username =
+          meta.firstName ||
+          meta.first_name ||
+          (user.email ? user.email.split("@")[0] : null) ||
+          null;
+        void trackNavigationActionOnce({
+          userId: uid,
+          username,
+          actionType: ACTION_TYPE.reading_plan_opened,
+          actionLabel: "Bible in One Year",
+          dedupeKey: "reading-plan-opened:bible-in-one-year",
+        }).catch((error) => console.error("[NAV] Failed to track Bible in One Year view:", error));
 
         // Load all completed chapters for all books in the plan
         const allBooks = new Set<string>();
@@ -245,6 +259,23 @@ export default function BibleInOneYearPage() {
   }, [openWeek, openMonth]);
 
   const handleOpenChapter = (book: string, chapter: number) => {
+    if (userId) {
+      void supabase.auth.getUser().then(({ data }) => {
+        const meta: any = data.user?.user_metadata || {};
+        const username =
+          meta.firstName ||
+          meta.first_name ||
+          (data.user?.email ? data.user.email.split("@")[0] : null) ||
+          null;
+        void trackNavigationActionOnce({
+          userId,
+          username,
+          actionType: ACTION_TYPE.reading_plan_chapter_opened,
+          actionLabel: `Bible in One Year - ${book} ${chapter}`,
+          dedupeKey: `reading-plan-chapter:bible-in-one-year:${book.toLowerCase()}:${chapter}`,
+        }).catch((error) => console.error("[NAV] Failed to track reading plan chapter click:", error));
+      });
+    }
     const slug = encodeURIComponent(book.toLowerCase().trim());
     if (typeof window !== "undefined") {
       window.sessionStorage.setItem("bbFromReadingPlan", "bible-in-one-year");
@@ -280,6 +311,24 @@ export default function BibleInOneYearPage() {
   const handleDayClick = (day: DayReading) => {
     if (!isDayUnlocked(day.dayNumber)) {
       return;
+    }
+
+    if (userId) {
+      void supabase.auth.getUser().then(({ data }) => {
+        const meta: any = data.user?.user_metadata || {};
+        const username =
+          meta.firstName ||
+          meta.first_name ||
+          (data.user?.email ? data.user.email.split("@")[0] : null) ||
+          null;
+        void trackNavigationActionOnce({
+          userId,
+          username,
+          actionType: ACTION_TYPE.reading_plan_day_opened,
+          actionLabel: `Bible in One Year - Day ${day.dayNumber}`,
+          dedupeKey: `reading-plan-day:bible-in-one-year:${day.dayNumber}`,
+        }).catch((error) => console.error("[NAV] Failed to track reading plan day click:", error));
+      });
     }
 
     setShowCreditBlocked(false);

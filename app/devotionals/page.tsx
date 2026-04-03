@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
+import { ACTION_TYPE } from "../../lib/actionTypes";
+import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 
 interface Devotional {
   id: string;
@@ -19,6 +21,8 @@ export default function DevotionalsPage() {
   const [isInstructionsExpanded, setIsInstructionsExpanded] = useState(true);
   const [dontShowAgain, setDontShowAgain] = useState(false);
   const [tempDontShowAgain, setTempDontShowAgain] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
 
   // Load "Don't show again" preference from localStorage
   useEffect(() => {
@@ -27,6 +31,20 @@ export default function DevotionalsPage() {
       setDontShowAgain(true);
       setIsInstructionsExpanded(false); // Start collapsed if user dismissed
     }
+  }, []);
+
+  useEffect(() => {
+    void supabase.auth.getUser().then(({ data }) => {
+      const user = data.user;
+      setUserId(user?.id ?? null);
+      const meta: any = user?.user_metadata || {};
+      setUsername(
+        meta.firstName ||
+          meta.first_name ||
+          (user?.email ? user.email.split("@")[0] : null) ||
+          null
+      );
+    });
   }, []);
 
   useEffect(() => {
@@ -52,6 +70,17 @@ export default function DevotionalsPage() {
 
     loadDevotionals();
   }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.devotionals_viewed,
+      actionLabel: "Devotionals",
+      dedupeKey: "devotionals-viewed",
+    }).catch((error) => console.error("[NAV] Failed to track devotionals view:", error));
+  }, [userId, username]);
 
   const handleToggleInstructions = () => {
     setIsInstructionsExpanded(!isInstructionsExpanded);
@@ -242,10 +271,30 @@ export default function DevotionalsPage() {
                   role="link"
                   tabIndex={0}
                   className="block w-full"
-                  onClick={() => router.push(`/devotionals/${devotional.id}`)}
+                  onClick={() => {
+                    if (userId) {
+                      void trackNavigationActionOnce({
+                        userId,
+                        username,
+                        actionType: ACTION_TYPE.devotional_opened,
+                        actionLabel: devotional.title,
+                        dedupeKey: `devotional-opened:${devotional.id}`,
+                      }).catch((error) => console.error("[NAV] Failed to track devotional click:", error));
+                    }
+                    router.push(`/devotionals/${devotional.id}`);
+                  }}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" || event.key === " ") {
                       event.preventDefault();
+                      if (userId) {
+                        void trackNavigationActionOnce({
+                          userId,
+                          username,
+                          actionType: ACTION_TYPE.devotional_opened,
+                          actionLabel: devotional.title,
+                          dedupeKey: `devotional-opened:${devotional.id}`,
+                        }).catch((error) => console.error("[NAV] Failed to track devotional click:", error));
+                      }
                       router.push(`/devotionals/${devotional.id}`);
                     }
                   }}

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LouisAvatar } from "@/components/LouisAvatar";
+import { ACTION_TYPE } from "@/lib/actionTypes";
+import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import { getScrambledBook, type ScrambledChapterPack } from "@/lib/scrambledGameData";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -146,6 +148,20 @@ export default function ScrambledGamePlayer({
   }, []);
 
   useEffect(() => {
+    if (!userId) return;
+
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.scrambled_chapter_opened,
+      actionLabel: `${bookName} ${chapter.chapter}`,
+      dedupeKey: `scrambled-chapter-view:${bookSlug}:${chapter.chapter}`,
+    }).catch((error) => {
+      console.error("[NAV] Failed to track Scrambled chapter view:", error);
+    });
+  }, [bookName, bookSlug, chapter.chapter, userId, username]);
+
+  useEffect(() => {
     let mounted = true;
 
     const loadBuddyRounds = async () => {
@@ -198,6 +214,20 @@ export default function ScrambledGamePlayer({
       mounted = false;
     };
   }, [bookSlug, chapter.chapter, showResults]);
+
+  useEffect(() => {
+    if (!showResults || !userId) return;
+
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.scrambled_chapter_completed,
+      actionLabel: `${bookName} ${chapter.chapter} - ${solvedCount}/${chapter.questions.length}`,
+      dedupeKey: `scrambled-chapter-completed:${bookSlug}:${chapter.chapter}`,
+    }).catch((error) => {
+      console.error("[NAV] Failed to track Scrambled chapter completion:", error);
+    });
+  }, [showResults, userId, username, bookName, bookSlug, chapter.chapter, chapter.questions.length, solvedCount]);
 
   const visibleBuddyRounds = useMemo(() => buddyRounds.slice(0, 6), [buddyRounds]);
 

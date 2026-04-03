@@ -16,6 +16,7 @@ import AdSlot from "../../components/AdSlot";
 import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
 import { getDailyRecommendation, type DailyRecommendation } from "../../lib/dailyRecommendation";
+import { ACTION_TYPE } from "../../lib/actionTypes";
 import {
   DEFAULT_FEATURE_TOURS,
   normalizeFeatureTours,
@@ -23,6 +24,7 @@ import {
   type FeatureToursState,
 } from "../../lib/featureTours";
 import { LEVEL_DEFINITIONS, calculateWeightedPoints, getLevelInfoFromPoints } from "../../lib/levelSystem";
+import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -157,6 +159,20 @@ export default function DashboardPage() {
     totalUsers: 0,
   });
   const [loadingOwnerQuickStats, setLoadingOwnerQuickStats] = useState(false);
+
+  useEffect(() => {
+    if (!userId) return;
+
+    void trackNavigationActionOnce({
+      userId,
+      username: userName,
+      actionType: ACTION_TYPE.dashboard_viewed,
+      actionLabel: "Dashboard",
+      dedupeKey: "dashboard-viewed",
+    }).catch((error) => {
+      console.error("[NAV] Failed to track dashboard view:", error);
+    });
+  }, [userId, userName]);
 
   // Daily Welcome Overlay logic (with dev override)
   useEffect(() => {
@@ -881,6 +897,26 @@ export default function DashboardPage() {
     tourKey: FeatureTourKey,
     path: string
   ) {
+    const dashboardCardLabelMap: Partial<Record<FeatureTourKey, string>> = {
+      bible: "The Bible",
+      bible_study_hub: "Bible Study Group",
+      guided_studies: "Bible Study Tools",
+      bible_trivia: "Bible Study Games",
+    };
+
+    if (userId) {
+      const actionLabel = dashboardCardLabelMap[tourKey] || path;
+      void trackNavigationActionOnce({
+        userId,
+        username: userName,
+        actionType: ACTION_TYPE.dashboard_card_opened,
+        actionLabel,
+        dedupeKey: `dashboard-card:${actionLabel}`,
+      }).catch((error) => {
+        console.error("[NAV] Failed to track dashboard card click:", error);
+      });
+    }
+
     if (!featureToursEnabled) {
       router.push(path);
       return;

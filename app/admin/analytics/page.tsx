@@ -10,6 +10,8 @@ type OverviewMetrics = {
   activeUsers: number;
   upgrades: number;
   totalActions: number;
+  navigationViews: number;
+  navigationClicks: number;
   chaptersRead: number;
   notesCreated: number;
   peopleLearned: number;
@@ -36,6 +38,8 @@ const INITIAL_METRICS: OverviewMetrics = {
   activeUsers: 0,
   upgrades: 0,
   totalActions: 0,
+  navigationViews: 0,
+  navigationClicks: 0,
   chaptersRead: 0,
   notesCreated: 0,
   peopleLearned: 0,
@@ -56,6 +60,42 @@ const INITIAL_METRICS: OverviewMetrics = {
   buddiesAdded: 0,
   groupMessagesSent: 0,
 };
+
+const NAVIGATION_VIEW_ACTION_TYPES = [
+  "guided_studies_viewed",
+  "devotionals_viewed",
+  "reading_plans_viewed",
+  "bible_study_games_viewed",
+  "trivia_hub_viewed",
+  "scrambled_hub_viewed",
+  "scrambled_books_viewed",
+  "dashboard_viewed",
+  "bible_reader_viewed",
+  "bible_book_viewed",
+  "scrambled_book_viewed",
+  "bible_chapter_viewed",
+] as const;
+
+const NAVIGATION_CLICK_ACTION_TYPES = [
+  "guided_study_tool_opened",
+  "devotional_opened",
+  "devotional_day_opened",
+  "devotional_bible_reading_opened",
+  "devotional_reflection_saved",
+  "reading_plan_opened",
+  "reading_plan_day_opened",
+  "reading_plan_chapter_opened",
+  "bible_game_opened",
+  "trivia_category_opened",
+  "trivia_pack_opened",
+  "scrambled_category_opened",
+  "scrambled_book_opened",
+  "scrambled_chapter_opened",
+  "scrambled_chapter_completed",
+  "dashboard_card_opened",
+  "bible_book_opened",
+  "bible_chapter_opened",
+] as const;
 
 export default function AnalyticsPage() {
   // Active Users By Window (filtered)
@@ -683,6 +723,20 @@ export default function AnalyticsPage() {
           .select("id", { count: "exact", head: true })
       );
 
+      const navigationViewsPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .in("action_type", [...NAVIGATION_VIEW_ACTION_TYPES])
+      );
+
+      const navigationClicksPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .in("action_type", [...NAVIGATION_CLICK_ACTION_TYPES])
+      );
+
       // Chapters read
       const chaptersPromise = applyDateFilter(
         supabase
@@ -779,6 +833,8 @@ export default function AnalyticsPage() {
         upgradesResult,
         activeUsersRowsResult,
         totalActionsResult,
+        navigationViewsResult,
+        navigationClicksResult,
         chaptersResult,
         notesResult,
         peopleResult,
@@ -803,6 +859,8 @@ export default function AnalyticsPage() {
         upgradesPromise,
         activeUsersPromise,
         totalActionsPromise,
+        navigationViewsPromise,
+        navigationClicksPromise,
         chaptersPromise,
         notesPromise,
         peoplePromise,
@@ -836,6 +894,10 @@ export default function AnalyticsPage() {
       ).size;
       const totalActionsCount = totalActionsResult.count ?? 0;
       const totalActionsError = totalActionsResult.error;
+      const navigationViewsCount = navigationViewsResult.count ?? 0;
+      const navigationViewsError = navigationViewsResult.error;
+      const navigationClicksCount = navigationClicksResult.count ?? 0;
+      const navigationClicksError = navigationClicksResult.error;
       const chaptersCount = chaptersResult.count ?? 0;
       const chaptersError = chaptersResult.error;
       const notesCount = notesResult.count ?? 0;
@@ -862,6 +924,8 @@ export default function AnalyticsPage() {
         upgradesError ||
         activeUsersError ||
         totalActionsError ||
+        navigationViewsError ||
+        navigationClicksError ||
         chaptersError ||
         notesError ||
         peopleError ||
@@ -878,6 +942,8 @@ export default function AnalyticsPage() {
           upgradesError,
           activeUsersError,
           totalActionsError,
+          navigationViewsError,
+          navigationClicksError,
           chaptersError,
           notesError,
           peopleError,
@@ -904,6 +970,8 @@ export default function AnalyticsPage() {
         activeUsers: activeUsersCount,
         upgrades: upgradesCount,
         totalActions: totalActionsCount ?? 0,
+        navigationViews: navigationViewsCount,
+        navigationClicks: navigationClicksCount,
         chaptersRead: chaptersCount ?? 0,
         notesCreated: notesCount ?? 0,
         peopleLearned: peopleCount ?? 0,
@@ -1015,7 +1083,11 @@ export default function AnalyticsPage() {
       }
 
       // Apply action type filter if selected
-      if (actionTypeFilter) {
+      if (actionTypeFilter === "navigation_views") {
+        query = query.in("action_type", [...NAVIGATION_VIEW_ACTION_TYPES]);
+      } else if (actionTypeFilter === "navigation_clicks") {
+        query = query.in("action_type", [...NAVIGATION_CLICK_ACTION_TYPES]);
+      } else if (actionTypeFilter) {
         query = query.eq("action_type", actionTypeFilter);
       }
 
@@ -1144,7 +1216,227 @@ export default function AnalyticsPage() {
         }
 
         // Only process allowed action types
-        if (action.action_type === "chapter_completed") {
+        if (action.action_type === "guided_studies_viewed") {
+          const text = `On ${formattedDate} at ${formattedTime}, ${username} viewed Bible Study Tools.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "guided_studies_viewed", url: "/guided-studies" });
+        } else if (action.action_type === "guided_study_tool_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened the Bible Study Tool "${action.action_label}".${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a Bible Study Tool.${counterText}`;
+          let toolUrl: string | undefined;
+          if (action.action_label === "Devotionals") toolUrl = "/devotionals";
+          else if (action.action_label === "Bible Reading Plans") toolUrl = "/reading-plans";
+          else if (action.action_label === "Bible References") toolUrl = "/bible-references";
+          else if (action.action_label === "Bible Study Notes") toolUrl = "/notes";
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "guided_study_tool_opened", url: toolUrl });
+        } else if (action.action_type === "devotionals_viewed") {
+          const text = `On ${formattedDate} at ${formattedTime}, ${username} viewed the devotionals page.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "devotionals_viewed", url: "/devotionals" });
+        } else if (action.action_type === "devotional_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened the devotional "${action.action_label}".${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a devotional.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "devotional_opened" });
+        } else if (action.action_type === "devotional_day_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a devotional day.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "devotional_day_opened" });
+        } else if (action.action_type === "devotional_bible_reading_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened the Bible reading for ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a devotional Bible reading.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "devotional_bible_reading_opened" });
+        } else if (action.action_type === "devotional_reflection_saved") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} saved a reflection for ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} saved a devotional reflection.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "devotional_reflection_saved" });
+        } else if (action.action_type === "reading_plans_viewed") {
+          const text = `On ${formattedDate} at ${formattedTime}, ${username} viewed Bible Reading Plans.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "reading_plans_viewed", url: "/reading-plans" });
+        } else if (action.action_type === "reading_plan_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened the reading plan "${action.action_label}".${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a reading plan.${counterText}`;
+          let planUrl: string | undefined;
+          if (action.action_label === "Bible in One Year") planUrl = "/reading-plans/bible-in-one-year";
+          else if (action.action_label === "The Bible Buddy Reading Plan") planUrl = "/reading-plans/bible-buddy";
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "reading_plan_opened", url: planUrl });
+        } else if (action.action_type === "reading_plan_day_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a reading plan day.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "reading_plan_day_opened" });
+        } else if (action.action_type === "reading_plan_chapter_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened a reading plan chapter (${action.action_label}).${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a reading plan chapter.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "reading_plan_chapter_opened" });
+        } else if (action.action_type === "bible_study_games_viewed") {
+          const text = `On ${formattedDate} at ${formattedTime}, ${username} viewed Bible Study Games.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "bible_study_games_viewed", url: "/bible-study-games" });
+        } else if (action.action_type === "bible_game_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a Bible game.${counterText}`;
+          let gameUrl: string | undefined;
+          if (action.action_label === "Bible Study Trivia") gameUrl = "/bible-trivia";
+          else if (action.action_label === "Scrambled") gameUrl = "/bible-study-games/scrambled";
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "bible_game_opened", url: gameUrl });
+        } else if (action.action_type === "trivia_hub_viewed") {
+          const text = `On ${formattedDate} at ${formattedTime}, ${username} viewed Bible Study Trivia.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "trivia_hub_viewed", url: "/bible-trivia" });
+        } else if (action.action_type === "trivia_category_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened Trivia ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a trivia category.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "trivia_category_opened" });
+        } else if (action.action_type === "trivia_pack_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened the trivia pack "${action.action_label}".${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a trivia pack.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "trivia_pack_opened" });
+        } else if (action.action_type === "scrambled_hub_viewed") {
+          const text = `On ${formattedDate} at ${formattedTime}, ${username} viewed Scrambled.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "scrambled_hub_viewed", url: "/bible-study-games/scrambled" });
+        } else if (action.action_type === "scrambled_category_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened Scrambled ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a Scrambled category.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "scrambled_category_opened" });
+        } else if (action.action_type === "scrambled_books_viewed") {
+          const text = `On ${formattedDate} at ${formattedTime}, ${username} viewed Scrambled Books of the Bible.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "scrambled_books_viewed", url: "/bible-study-games/scrambled/books" });
+        } else if (action.action_type === "scrambled_book_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened the Scrambled book "${action.action_label}".${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a Scrambled book.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "scrambled_book_opened" });
+        } else if (action.action_type === "scrambled_book_viewed") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} viewed the Scrambled book "${action.action_label}".${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} viewed a Scrambled book.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "scrambled_book_viewed" });
+        } else if (action.action_type === "scrambled_chapter_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened the Scrambled chapter ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a Scrambled chapter.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "scrambled_chapter_opened" });
+        } else if (action.action_type === "scrambled_chapter_completed") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} finished a Scrambled chapter (${action.action_label}).${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} finished a Scrambled chapter.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "scrambled_chapter_completed" });
+        } else if (action.action_type === "dashboard_viewed") {
+          const text = `On ${formattedDate} at ${formattedTime}, ${username} viewed the dashboard.${counterText}`;
+          actions.push({
+            date: formattedDate,
+            text,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "dashboard_viewed",
+            url: "/dashboard",
+          });
+        } else if (action.action_type === "dashboard_card_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened the dashboard card "${action.action_label}".${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a dashboard card.${counterText}`;
+          let cardUrl: string | undefined;
+          if (action.action_label === "The Bible") cardUrl = "/reading";
+          else if (action.action_label === "Bible Study Group") cardUrl = "/study-groups";
+          else if (action.action_label === "Bible Study Tools") cardUrl = "/guided-studies";
+          else if (action.action_label === "Bible Study Games") cardUrl = "/bible-study-games";
+          actions.push({
+            date: formattedDate,
+            text,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "dashboard_card_opened",
+            url: cardUrl,
+          });
+        } else if (action.action_type === "bible_reader_viewed") {
+          const text = `On ${formattedDate} at ${formattedTime}, ${username} viewed the Bible reader.${counterText}`;
+          actions.push({
+            date: formattedDate,
+            text,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "bible_reader_viewed",
+            url: "/reading",
+          });
+        } else if (action.action_type === "bible_book_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} clicked into ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} clicked into a Bible book.${counterText}`;
+          const bookUrl = action.action_label
+            ? `/reading/books/${encodeURIComponent(action.action_label.toLowerCase())}`
+            : undefined;
+          actions.push({
+            date: formattedDate,
+            text,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "bible_book_opened",
+            url: bookUrl,
+          });
+        } else if (action.action_type === "bible_book_viewed") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} viewed ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} viewed a Bible book.${counterText}`;
+          const bookUrl = action.action_label
+            ? `/reading/books/${encodeURIComponent(action.action_label.toLowerCase())}`
+            : undefined;
+          actions.push({
+            date: formattedDate,
+            text,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "bible_book_viewed",
+            url: bookUrl,
+          });
+        } else if (action.action_type === "bible_chapter_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} clicked into ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} clicked into a chapter.${counterText}`;
+          let chapterUrl: string | undefined;
+          if (action.action_label) {
+            const match = action.action_label.match(/^(.+?)\s+(\d+)$/);
+            if (match) chapterUrl = `/Bible/${encodeURIComponent(match[1].toLowerCase())}/${match[2]}`;
+          }
+          actions.push({
+            date: formattedDate,
+            text,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "bible_chapter_opened",
+            url: chapterUrl,
+          });
+        } else if (action.action_type === "bible_chapter_viewed") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} viewed ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} viewed a Bible chapter.${counterText}`;
+          let chapterUrl: string | undefined;
+          if (action.action_label) {
+            const match = action.action_label.match(/^(.+?)\s+(\d+)$/);
+            if (match) chapterUrl = `/Bible/${encodeURIComponent(match[1].toLowerCase())}/${match[2]}`;
+          }
+          actions.push({
+            date: formattedDate,
+            text,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "bible_chapter_viewed",
+            url: chapterUrl,
+          });
+        } else if (action.action_type === "chapter_completed") {
           const text = action.action_label
             ? `On ${formattedDate} at ${formattedTime}, ${username} completed ${action.action_label}.${counterText}`
             : `On ${formattedDate} at ${formattedTime}, ${username} completed a chapter.${counterText}`;
@@ -1748,9 +2040,41 @@ export default function AnalyticsPage() {
   // Format action type name for display
   function formatActionTypeName(actionType: string): string {
     const nameMap: Record<string, string> = {
+      "guided_studies_viewed": "Bible Study Tools Views",
+      "guided_study_tool_opened": "Bible Study Tool Opens",
+      "devotionals_viewed": "Devotional Page Views",
+      "devotional_opened": "Devotional Opens",
+      "devotional_day_opened": "Devotional Day Opens",
+      "devotional_bible_reading_opened": "Devotional Reading Opens",
+      "devotional_reflection_saved": "Devotional Reflections",
+      "reading_plans_viewed": "Reading Plan Views",
+      "reading_plan_opened": "Reading Plan Opens",
+      "reading_plan_day_opened": "Reading Plan Day Opens",
+      "reading_plan_chapter_opened": "Reading Plan Chapter Opens",
+      "bible_study_games_viewed": "Bible Study Games Views",
+      "bible_game_opened": "Bible Game Opens",
+      "trivia_hub_viewed": "Trivia Views",
+      "trivia_category_opened": "Trivia Category Opens",
+      "trivia_pack_opened": "Trivia Pack Opens",
+      "scrambled_hub_viewed": "Scrambled Views",
+      "scrambled_category_opened": "Scrambled Category Opens",
+      "scrambled_books_viewed": "Scrambled Books Views",
+      "scrambled_book_opened": "Scrambled Book Opens",
+      "scrambled_book_viewed": "Scrambled Book Views",
+      "scrambled_chapter_opened": "Scrambled Chapter Opens",
+      "scrambled_chapter_completed": "Scrambled Chapter Finishes",
       "user_signup": "Signups",
       "user_upgraded": "Upgrades",
       "user_login": "Logins",
+      "navigation_views": "Navigation Views",
+      "navigation_clicks": "Navigation Clicks",
+      "dashboard_viewed": "Dashboard Views",
+      "dashboard_card_opened": "Dashboard Card Clicks",
+      "bible_reader_viewed": "Bible Reader Views",
+      "bible_book_opened": "Bible Book Clicks",
+      "bible_book_viewed": "Bible Book Views",
+      "bible_chapter_opened": "Bible Chapter Clicks",
+      "bible_chapter_viewed": "Bible Chapter Views",
       "chapter_completed": "Chapters Read",
       "book_completed": "Books Completed",
       "note_created": "Notes Created",
@@ -1768,6 +2092,66 @@ export default function AnalyticsPage() {
   // Get color class for action type (reusing profile page colors)
   function getActionColorClass(actionType: string): string {
     switch (actionType) {
+      case "guided_studies_viewed":
+        return "bg-orange-50 border-l-4 border-orange-400";
+      case "guided_study_tool_opened":
+        return "bg-orange-50 border-l-4 border-orange-500";
+      case "devotionals_viewed":
+        return "bg-teal-50 border-l-4 border-teal-400";
+      case "devotional_opened":
+        return "bg-teal-50 border-l-4 border-teal-500";
+      case "devotional_day_opened":
+        return "bg-teal-50 border-l-4 border-teal-600";
+      case "devotional_bible_reading_opened":
+        return "bg-sky-50 border-l-4 border-sky-500";
+      case "devotional_reflection_saved":
+        return "bg-cyan-50 border-l-4 border-cyan-500";
+      case "reading_plans_viewed":
+        return "bg-amber-50 border-l-4 border-amber-400";
+      case "reading_plan_opened":
+        return "bg-amber-50 border-l-4 border-amber-500";
+      case "reading_plan_day_opened":
+        return "bg-amber-50 border-l-4 border-amber-600";
+      case "reading_plan_chapter_opened":
+        return "bg-lime-50 border-l-4 border-lime-500";
+      case "bible_study_games_viewed":
+        return "bg-emerald-50 border-l-4 border-emerald-400";
+      case "bible_game_opened":
+        return "bg-emerald-50 border-l-4 border-emerald-500";
+      case "trivia_hub_viewed":
+        return "bg-green-50 border-l-4 border-green-400";
+      case "trivia_category_opened":
+        return "bg-green-50 border-l-4 border-green-500";
+      case "trivia_pack_opened":
+        return "bg-green-50 border-l-4 border-green-600";
+      case "scrambled_hub_viewed":
+        return "bg-rose-50 border-l-4 border-rose-400";
+      case "scrambled_category_opened":
+        return "bg-rose-50 border-l-4 border-rose-500";
+      case "scrambled_books_viewed":
+        return "bg-rose-50 border-l-4 border-rose-600";
+      case "scrambled_book_opened":
+        return "bg-yellow-50 border-l-4 border-yellow-500";
+      case "scrambled_book_viewed":
+        return "bg-yellow-50 border-l-4 border-yellow-600";
+      case "scrambled_chapter_opened":
+        return "bg-yellow-50 border-l-4 border-yellow-700";
+      case "scrambled_chapter_completed":
+        return "bg-yellow-100 border-l-4 border-yellow-700";
+      case "dashboard_viewed":
+        return "bg-slate-50 border-l-4 border-slate-500";
+      case "dashboard_card_opened":
+        return "bg-sky-50 border-l-4 border-sky-500";
+      case "bible_reader_viewed":
+        return "bg-blue-50 border-l-4 border-blue-400";
+      case "bible_book_opened":
+        return "bg-indigo-50 border-l-4 border-indigo-400";
+      case "bible_book_viewed":
+        return "bg-indigo-50 border-l-4 border-indigo-500";
+      case "bible_chapter_opened":
+        return "bg-violet-50 border-l-4 border-violet-400";
+      case "bible_chapter_viewed":
+        return "bg-violet-50 border-l-4 border-violet-500";
       case "chapter_completed":
         return "bg-green-50 border-l-4 border-green-500";
       case "book_completed":
@@ -2046,6 +2430,18 @@ export default function AnalyticsPage() {
                 value={overviewMetrics.totalActions}
                 onClick={() => setSelectedActionType(null)}
                 isSelected={selectedActionType === null}
+              />
+              <OverviewCard
+                label="Navigation Views"
+                value={overviewMetrics.navigationViews}
+                onClick={() => setSelectedActionType(selectedActionType === "navigation_views" ? null : "navigation_views")}
+                isSelected={selectedActionType === "navigation_views"}
+              />
+              <OverviewCard
+                label="Navigation Clicks"
+                value={overviewMetrics.navigationClicks}
+                onClick={() => setSelectedActionType(selectedActionType === "navigation_clicks" ? null : "navigation_clicks")}
+                isSelected={selectedActionType === "navigation_clicks"}
               />
             </div>
 
@@ -3042,6 +3438,10 @@ function OverviewCard({
         return "bg-indigo-100 border border-indigo-200";
       case "Signups":
         return "bg-gray-100 border border-gray-200";
+      case "Navigation Views":
+        return "bg-slate-100 border border-slate-200";
+      case "Navigation Clicks":
+        return "bg-sky-100 border border-sky-200";
       case "Upgrades":
         return "bg-amber-100 border border-amber-200";
       case "Active Users":
