@@ -869,6 +869,27 @@ export default function DashboardPage() {
     };
   }, []);
 
+  function getVisibleDashboardTourTarget(spotlight: NonNullable<(typeof DASHBOARD_TOUR_STEPS)[number]["spotlight"]>) {
+    const targets = Array.from(document.querySelectorAll(`[data-dashboard-tour="${spotlight}"]`));
+
+    for (const target of targets) {
+      if (!(target instanceof HTMLElement)) continue;
+      const rect = target.getBoundingClientRect();
+      const styles = window.getComputedStyle(target);
+      const isVisible =
+        styles.display !== "none" &&
+        styles.visibility !== "hidden" &&
+        rect.width > 0 &&
+        rect.height > 0;
+
+      if (isVisible) {
+        return target;
+      }
+    }
+
+    return null;
+  }
+
   useEffect(() => {
     if (activeTourKey !== "dashboard" || dashboardTourStep < 0) return;
 
@@ -878,7 +899,7 @@ export default function DashboardPage() {
     if (!spotlight) return;
 
     const timeout = window.setTimeout(() => {
-      const target = document.querySelector(`[data-dashboard-tour="${spotlight}"]`);
+      const target = getVisibleDashboardTourTarget(spotlight);
       if (target instanceof HTMLElement) {
         target.scrollIntoView({ behavior: "smooth", block: "center" });
         const rect = target.getBoundingClientRect();
@@ -910,7 +931,7 @@ export default function DashboardPage() {
     function refreshDashboardTourAnchor() {
       const spotlight = DASHBOARD_TOUR_STEPS[dashboardTourStep]?.spotlight;
       if (!spotlight) return;
-      const target = document.querySelector(`[data-dashboard-tour="${spotlight}"]`);
+      const target = getVisibleDashboardTourTarget(spotlight);
       if (target instanceof HTMLElement) {
         const rect = target.getBoundingClientRect();
         setDashboardTourAnchor({
