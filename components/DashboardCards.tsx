@@ -66,8 +66,8 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   function getSpotlightClasses(target: DashboardCardsProps["dashboardTourSpotlight"]) {
     if (!dashboardTourSpotlight) return "";
     return dashboardTourSpotlight === target
-      ? "relative z-10 ring-[6px] ring-white ring-offset-4 ring-offset-[#9ebcee] shadow-[0_24px_70px_rgba(32,81,154,0.32)] scale-[1.03] brightness-[1.02]"
-      : "opacity-60";
+      ? "relative z-10 opacity-100 ring-[6px] ring-white ring-offset-4 ring-offset-[#9ebcee] shadow-[0_24px_70px_rgba(32,81,154,0.32)] scale-[1.03] brightness-[1.04] saturate-110"
+      : "opacity-40 saturate-75";
   }
 
   return (

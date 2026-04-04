@@ -103,7 +103,7 @@ export function FeatureTourModal({
             ? "max-w-[22rem] border-[#cadcf9] bg-white/95 px-4 py-4 sm:px-5"
             :
           isSpeechBubble
-            ? "mx-auto w-[min(100%,44rem)] border-[#cadcf9] bg-white/96 px-4 py-3 backdrop-blur-sm sm:px-5 sm:py-4"
+            ? "mx-auto w-[min(100%,48rem)] border-[#cadcf9] bg-white/97 px-3 py-3 backdrop-blur-sm sm:px-4"
             :
           isCoachmark
             ? "max-w-[28rem] border-[#c9d9f5] bg-gradient-to-br from-[#eef6ff] via-[#f4f8ff] to-[#eefaf6] px-4 py-4 sm:px-5 sm:py-5"
@@ -121,12 +121,32 @@ export function FeatureTourModal({
           </button>
         ) : null}
         <div className={`flex w-full flex-col ${isCoachmark || isSpeechBubble || isPrompt ? "items-start" : "items-center"}`}>
-          <div className={isCoachmark || isSpeechBubble || isPrompt ? "flex items-center gap-3" : "contents"}>
+          <div className={isCoachmark || isSpeechBubble || isPrompt ? "flex items-center gap-3 w-full" : "contents"}>
             <LouisAvatar mood="bible" size={isSpeechBubble ? 44 : isPrompt ? 48 : isCoachmark ? 54 : 64} />
             {isCoachmark || isSpeechBubble || isPrompt ? (
               <div className="min-w-0 flex-1">
-                <div className={`${isSpeechBubble ? "text-[1rem]" : isPrompt ? "text-[1.02rem]" : "text-[1.15rem] sm:text-[1.35rem]"} font-bold leading-tight text-blue-900`}>{title}</div>
+                {isSpeechBubble ? (
+                  <p className="text-sm leading-5 text-gray-700 sm:text-[15px]">
+                    <span className="font-semibold text-blue-900">{title}. </span>
+                    {body}
+                  </p>
+                ) : (
+                  <div className={`${isPrompt ? "text-[1.02rem]" : "text-[1.15rem] sm:text-[1.35rem]"} font-bold leading-tight text-blue-900`}>{title}</div>
+                )}
               </div>
+            ) : null}
+            {isSpeechBubble ? (
+              <button
+                type="button"
+                onMouseDown={handleButtonPressStart}
+                onPointerDown={handleButtonPressStart}
+                onTouchStart={handleButtonPressStart}
+                onClick={handlePrimaryClick}
+                disabled={!canAdvance || isSaving}
+                className="shrink-0 rounded-2xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-300"
+              >
+                {isSaving ? "Saving..." : primaryButtonText}
+              </button>
             ) : null}
           </div>
           {!isCoachmark && !isSpeechBubble && !isPrompt ? (
@@ -138,27 +158,14 @@ export function FeatureTourModal({
                 content
               ) : (
                 <div className="space-y-4">
-                  <p className={`${isCoachmark || isSpeechBubble || isPrompt ? "text-left" : "max-w-xl text-center"} ${isSpeechBubble ? "text-[13px] leading-6" : isPrompt ? "text-[14px] leading-6" : "text-sm leading-7 md:text-[15px]"} text-gray-600`}>{body}</p>
+                  {!isSpeechBubble ? (
+                    <p className={`${isCoachmark || isSpeechBubble || isPrompt ? "text-left" : "max-w-xl text-center"} ${isPrompt ? "text-[14px] leading-6" : "text-sm leading-7 md:text-[15px]"} text-gray-600`}>{body}</p>
+                  ) : null}
                 </div>
               )}
             </div>
           </div>
         </div>
-        {isSpeechBubble ? (
-          <div className="mt-3 flex w-full items-center justify-end border-t border-[#d7e4fb] pt-3">
-            <button
-              type="button"
-              onMouseDown={handleButtonPressStart}
-              onPointerDown={handleButtonPressStart}
-              onTouchStart={handleButtonPressStart}
-              onClick={handlePrimaryClick}
-              disabled={!canAdvance || isSaving}
-              className="rounded-2xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-300"
-            >
-              {isSaving ? "Saving..." : primaryButtonText}
-            </button>
-          </div>
-        ) : null}
         {!isSpeechBubble ? (
         <div className={`mx-auto mt-5 flex w-full max-w-2xl items-center ${secondaryButtonText ? "justify-between" : "justify-end"} gap-3`}>
           {secondaryButtonText ? (
