@@ -7,6 +7,7 @@
  * re-enter the app with momentum.
  */
 
+import { SCRAMBLED_BOOKS } from "./scrambledGameData";
 import { supabase } from "./supabaseClient";
 import { getBookTotalChapters } from "./readingProgress";
 
@@ -35,6 +36,7 @@ type RecommendationCategory =
   | "reading_plan"
   | "bible"
   | "trivia"
+  | "games"
   | "reference"
   | "upgrade"
   | "general";
@@ -91,9 +93,34 @@ const MEANINGFUL_ACTIONS = [
   "place_discovered",
   "keyword_mastered",
   "trivia_question_answered",
+  "scrambled_word_answered",
   "note_created",
   "verse_highlighted",
 ];
+
+function getScrambledBookSlug(book: string): string | null {
+  return SCRAMBLED_BOOKS.find((entry) => entry.name.toLowerCase() === book.toLowerCase())?.slug ?? null;
+}
+
+function parseScrambledCompletionLabel(
+  label: string | null | undefined,
+): { book: string; chapter: number; score: number; total: number } | null {
+  if (!label) return null;
+  const match = label.match(/^(.+?)\s+(\d+)\s+-\s+(\d+)\/(\d+)$/);
+  if (!match) return null;
+
+  const chapter = parseInt(match[2], 10);
+  const score = parseInt(match[3], 10);
+  const total = parseInt(match[4], 10);
+  if ([chapter, score, total].some((value) => Number.isNaN(value))) return null;
+
+  return {
+    book: match[1],
+    chapter,
+    score,
+    total,
+  };
+}
 
 function getNextBibleChapter(book: string, chapter: number): { book: string; chapter: number } {
   const total = getBookTotalChapters(book);
@@ -250,6 +277,12 @@ function getTodayActionSet(actions: { action_type: string; created_at: string }[
     hasReadingPlan: todayActions.some((action) => action.action_type === "reading_plan_chapter_completed"),
     hasBible: todayActions.some((action) => action.action_type === "chapter_completed"),
     hasTrivia: todayActions.some((action) => action.action_type === "trivia_question_answered"),
+    hasGames: todayActions.some(
+      (action) =>
+        action.action_type === "trivia_question_answered" ||
+        action.action_type === "scrambled_word_answered" ||
+        action.action_type === "scrambled_chapter_completed",
+    ),
     hasReference: todayActions.some((action) =>
       action.action_type === "person_learned" ||
       action.action_type === "place_discovered" ||
@@ -289,6 +322,7 @@ function scoreRecommendation(
     (recommendation.category === "reading_plan" && todayActions.hasReadingPlan) ||
     (recommendation.category === "bible" && todayActions.hasBible) ||
     (recommendation.category === "trivia" && todayActions.hasTrivia) ||
+    (recommendation.category === "games" && todayActions.hasGames) ||
     (recommendation.category === "reference" && todayActions.hasReference) ||
     (recommendation.category === "group" && todayActions.hasGroup)
   ) {
@@ -299,7 +333,15 @@ function scoreRecommendation(
   if (hour < 11 && (recommendation.category === "devotional" || recommendation.category === "bible" || recommendation.category === "reading_plan")) {
     score += 2;
   }
-  if (hour >= 17 && (recommendation.category === "group" || recommendation.category === "trivia" || recommendation.category === "reference")) {
+  if (
+    hour >= 17 &&
+    (
+      recommendation.category === "group" ||
+      recommendation.category === "trivia" ||
+      recommendation.category === "games" ||
+      recommendation.category === "reference"
+    )
+  ) {
     score += 2;
   }
 
@@ -375,6 +417,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
       a.action_type === "keyword_mastered"
     );
     const lastTriviaAction = allActions.find((a) => a.action_type === "trivia_question_answered");
+    const lastScrambledCompletion = allActions.find((a) => a.action_type === "scrambled_chapter_completed");
     const lastBibleNoteAction = allActions.find((a) => a.action_type === "note_created" || a.action_type === "verse_highlighted");
     const daysSinceActive = lastMeaningful ? daysSince(lastMeaningful.created_at) : null;
     const loginActions = allActions.filter((a) => a.action_type === "user_login");
@@ -725,6 +768,28 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         { title: "Hey, test yourself with a trivia round", subtitle: "If it has been a while, this is a quick way to get your mind back into Scripture." },
         { title: "Hey, wake your Bible memory back up", subtitle: "One trivia round is a simple way to get back in the app and do something useful." },
       ]));
+    }
+
+    if (lastScrambledCompletion) {
+      const scrambledProgress = parseScrambledCompletionLabel(lastScrambledCompletion.action_label);
+      if (scrambledProgress) {
+        const nextScrambledChapter = getNextBibleChapter(scrambledProgress.book, scrambledProgress.chapter);
+        const nextScrambledBookSlug = getScrambledBookSlug(nextScrambledChapter.book);
+
+        if (nextScrambledBookSlug) {
+          candidates.push(createRecommendation({
+            priority: 74,
+            greeting,
+            contextLine: `You finished ${scrambledProgress.book} ${scrambledProgress.chapter} in Scrambled.`,
+            recommendationLine: `You got ${scrambledProgress.score}/${scrambledProgress.total} words right. Try ${nextScrambledChapter.book} ${nextScrambledChapter.chapter} next.`,
+            primaryButtonText: "Play Scrambled",
+            primaryButtonHref: `/bible-study-games/scrambled/${nextScrambledBookSlug}/${nextScrambledChapter.chapter}`,
+            level: 2,
+            category: "games",
+            cardTheme: "gold",
+          }));
+        }
+      }
     }
 
     const totalReferenceActions =

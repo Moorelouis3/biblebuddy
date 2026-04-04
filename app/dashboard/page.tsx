@@ -1246,19 +1246,186 @@ export default function DashboardPage() {
       return { title: null, subtitle: null };
     }
 
+    const cta = recommendationItem.primaryButtonText;
+    const href = recommendationItem.primaryButtonHref;
+    const category = recommendationItem.category;
+    const liveStudyMatch =
+      recommendationItem.contextLine.match(/^(.+?) is live in your Bible Study Group\./i) ||
+      recommendationItem.contextLine.match(/^You are partway through (.+?)\./i);
+    const liveStudyTitle = liveStudyMatch?.[1]?.trim() || null;
+    const continueWeekMatch = cta.match(/Continue Week\s+(\d+)/i);
+    const startWeekMatch = cta.match(/Start Week\s+(\d+)/i);
+    const liveStudyWeek = continueWeekMatch?.[1] || startWeekMatch?.[1] || null;
+    const devotionalTitleMatch =
+      recommendationItem.contextLine.match(/of the (.+?) devotional/i) ||
+      recommendationItem.contextLine.match(/middle of the (.+?) devotional/i) ||
+      recommendationItem.contextLine.match(/^You already started (.+?)\./i);
+    const devotionalTitleFromCard = recommendationItem.cardTitle
+      ?.replace(/^Continue\s+/i, "")
+      ?.replace(/^Start\s+/i, "")
+      ?.trim();
+    const devotionalTitle = devotionalTitleFromCard || devotionalTitleMatch?.[1]?.trim() || null;
+    const continueDayMatch = cta.match(/Continue Day\s+(\d+)/i);
+    const startDayMatch = cta.match(/Start Day\s+(\d+)/i);
+
+    if (liveStudyTitle && liveStudyWeek) {
+      return {
+        title: `Week ${liveStudyWeek} Bible Study Ready`,
+        subtitle: `Week ${liveStudyWeek} of the ${liveStudyTitle} Bible study is now ready.`,
+      };
+    }
+
+    if (category === "devotional" && devotionalTitle && continueDayMatch) {
+      const nextDay = parseInt(continueDayMatch[1], 10);
+      const lastDay = Math.max(nextDay - 1, 1);
+      return {
+        title: `Continue with ${devotionalTitle}`,
+        subtitle: `You left off on Day ${lastDay}. Continue Day ${nextDay} today.`,
+      };
+    }
+
+    if (category === "devotional" && devotionalTitle && startDayMatch) {
+      return {
+        title: `Start ${devotionalTitle}`,
+        subtitle: "Day 1 is ready when you are.",
+      };
+    }
+
+    if (category === "devotional" && /view devotionals/i.test(cta)) {
+      return {
+        title: "Continue with a devotional",
+        subtitle: "Pick up where you left off and keep your devotional rhythm going.",
+      };
+    }
+
+    if (category === "profile" && /finish profile/i.test(cta)) {
+      return {
+        title: "Set up your Bible Buddy profile",
+        subtitle: "Add a profile picture and short bio so other Bible Buddies can get to know you.",
+      };
+    }
+
+    if (category === "general" && /turn on push alerts/i.test(cta)) {
+      return {
+        title: "Stay connected with Bible Buddy",
+        subtitle: "Turn on notifications so you can hear about new messages, group updates, and activity in the app.",
+      };
+    }
+
+    if (category === "reading_plan" && /read /i.test(cta)) {
+      const nextReadMatch = cta.match(/Read\s+(.+)/i);
+      const previousReadMatch = recommendationItem.contextLine.match(/finished\s+(.+?)\s+in the Bible Buddy Reading Plan/i);
+      const nextRead = nextReadMatch?.[1]?.trim() || "your next chapter";
+      const previousRead = previousReadMatch?.[1]?.trim();
+      return {
+        title: "Continue your reading plan",
+        subtitle: previousRead
+          ? `You read ${previousRead} last time. Continue with ${nextRead}.`
+          : `${nextRead} is ready when you are.`,
+      };
+    }
+
+    if (category === "reading_plan" && /continue reading plan/i.test(cta)) {
+      return {
+        title: "Continue your reading plan",
+        subtitle: "Pick up where you left off and keep your reading plan moving.",
+      };
+    }
+
+    if (category === "bible" && /read /i.test(cta)) {
+      const nextReadMatch = cta.match(/Read\s+(.+)/i);
+      const previousReadMatch = recommendationItem.contextLine.match(/finished\s+(.+?)\./i);
+      const nextRead = nextReadMatch?.[1]?.trim() || "your next chapter";
+      const previousRead = previousReadMatch?.[1]?.trim();
+      return {
+        title: "Continue reading the Bible",
+        subtitle: previousRead
+          ? `You read ${previousRead} last time. Continue with ${nextRead}.`
+          : `${nextRead} is ready for you next.`,
+      };
+    }
+
+    if (category === "bible" && /open the bible/i.test(cta)) {
+      return {
+        title: "Continue reading the Bible",
+        subtitle: "Open the Bible and keep your reading habit moving today.",
+      };
+    }
+
+    if (category === "trivia" && /play bible trivia/i.test(cta)) {
+      return {
+        title: "Play a round of Bible Trivia",
+        subtitle: "Test your Bible knowledge and see what is sticking from your reading.",
+      };
+    }
+
+    if ((category === "games" || href.includes("/bible-study-games/scrambled/")) && /play scrambled/i.test(cta)) {
+      const scrambledMatch = recommendationItem.contextLine.match(/^You finished\s+(.+?)\s+(\d+)\s+in Scrambled\./i);
+      const nextChapterMatch = recommendationItem.recommendationLine.match(/Try\s+(.+?)\s+(\d+)\s+next\./i);
+      const scoreMatch = recommendationItem.recommendationLine.match(/You got\s+(\d+)\/(\d+)\s+words right/i);
+      const book = scrambledMatch?.[1]?.trim() || nextChapterMatch?.[1]?.trim() || "this book";
+      const lastChapter = scrambledMatch?.[2]?.trim() || null;
+      const nextChapter = nextChapterMatch?.[2]?.trim() || null;
+      const score = scoreMatch ? `${scoreMatch[1]}/${scoreMatch[2]}` : null;
+
+      return {
+        title: "Play another round of Scrambled",
+        subtitle: score && lastChapter && nextChapter
+          ? `Last time you got ${score} for ${book} ${lastChapter}. Try ${book} ${nextChapter} now.`
+          : "Jump back into Scrambled and see how many Bible words you can unscramble next.",
+      };
+    }
+
+    if (category === "group" && /open bible study group/i.test(cta)) {
+      return {
+        title: "Join the Bible Study Group",
+        subtitle: "Follow the live study and see what other Bible Buddies are learning.",
+      };
+    }
+
+    if (category === "group" && /check group activity/i.test(cta)) {
+      return {
+        title: "See what is new in your group",
+        subtitle: "Open the group and catch up on the latest study conversation.",
+      };
+    }
+
+    if (category === "reference" && /explore people/i.test(cta)) {
+      return {
+        title: "Explore another Bible person",
+        subtitle: "Learn more about the people behind the story you are reading.",
+      };
+    }
+
+    if (category === "reference" && /explore places/i.test(cta)) {
+      return {
+        title: "Explore another Bible place",
+        subtitle: "A little context can make the next chapter land more clearly.",
+      };
+    }
+
+    if (category === "reference" && /explore keywords/i.test(cta)) {
+      return {
+        title: "Study another Bible keyword",
+        subtitle: "Open one more Bible word and make your reading easier to follow.",
+      };
+    }
+
+    if (category === "upgrade" && /see pro/i.test(cta)) {
+      return {
+        title: "See what Bible Buddy Pro unlocks",
+        subtitle: "Take a look at what opens up when the daily limits are gone.",
+      };
+    }
+
     if (recommendationItem.cardTitle || recommendationItem.cardSubtitle) {
       return {
-        title: recommendationItem.cardTitle || "Today's Recommendation",
+        title: recommendationItem.cardTitle || "Your next step in Bible Buddy",
         subtitle: recommendationItem.cardSubtitle || recommendationItem.recommendationLine,
       };
     }
 
-    const cta = recommendationItem.primaryButtonText;
     let subtitle = recommendationItem.recommendationLine;
-    const devotionalTitleMatch =
-      recommendationItem.contextLine.match(/of the (.+?) devotional/i) ||
-      recommendationItem.contextLine.match(/middle of the (.+?) devotional/i);
-    const devotionalTitle = devotionalTitleMatch?.[1]?.trim() || null;
 
     if (/continue day/i.test(cta)) {
       const dayMatch = cta.match(/Day\s+(\d+)/i);
@@ -1293,7 +1460,7 @@ export default function DashboardPage() {
     }
 
     return {
-      title: "Today's Recommendation",
+      title: "Your next step in Bible Buddy",
       subtitle,
     };
   }

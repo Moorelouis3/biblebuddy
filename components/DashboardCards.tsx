@@ -44,46 +44,6 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   const [showLevelDetails, setShowLevelDetails] = useState(false);
   const showFreeUpgradeCard = membershipStatus !== "pro" && profile?.is_paid !== true;
 
-  const recommendationThemeClasses = {
-    rose: {
-      outer: "border-[#eedbdb] bg-gradient-to-br from-[#fffaf8] via-[#fffdfb] to-[#fff9f6]",
-      shell: "bg-white/35",
-      accent: "text-[#c97979]",
-      chip: "border-[#efd3d3] bg-white text-[#a86060]",
-      inset: "bg-white/25",
-    },
-    blue: {
-      outer: "border-[#d8e5fb] bg-gradient-to-br from-[#f8fbff] via-[#fbfdff] to-[#f5f9ff]",
-      shell: "bg-white/35",
-      accent: "text-[#5f84cc]",
-      chip: "border-[#dbe8ff] bg-white text-[#4768af]",
-      inset: "bg-white/25",
-    },
-    green: {
-      outer: "border-[#d7e8d9] bg-gradient-to-br from-[#f8fdf8] via-[#fcfffc] to-[#f6fbf6]",
-      shell: "bg-white/35",
-      accent: "text-[#5d9263]",
-      chip: "border-[#dbecdc] bg-white text-[#4b7c51]",
-      inset: "bg-white/25",
-    },
-    purple: {
-      outer: "border-[#e4daf5] bg-gradient-to-br from-[#fbf8ff] via-[#fefcff] to-[#f8f5ff]",
-      shell: "bg-white/35",
-      accent: "text-[#876ec2]",
-      chip: "border-[#e8dffb] bg-white text-[#7057ac]",
-      inset: "bg-white/25",
-    },
-    gold: {
-      outer: "border-[#f0e3c4] bg-gradient-to-br from-[#fffdf7] via-[#fffefb] to-[#fffaf1]",
-      shell: "bg-white/35",
-      accent: "text-[#af8430]",
-      chip: "border-[#f2e5c3] bg-white text-[#936915]",
-      inset: "bg-white/25",
-    },
-  } as const;
-
-  const recommendationTheme =
-    recommendationThemeClasses[dailyRecommendation?.cardTheme || "rose"] || recommendationThemeClasses.rose;
   const cardShellTheme = {
     outer: "border-[#e7d3a5] bg-gradient-to-br from-[#fbf1d7] via-[#f9edcf] to-[#f4e3ba]",
     shell: "",
@@ -197,17 +157,10 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                   <LouisAvatar mood={recommendationMood} size={38} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <h3 className="text-[15px] font-semibold leading-tight text-gray-950 sm:text-base">
-                        {dailyRecommendationCardTitle}
-                      </h3>
-                    </div>
-                    <span className={`shrink-0 rounded-full border px-3 py-1 text-xs font-semibold ${recommendationTheme.chip}`}>
-                      {dailyRecommendation.primaryButtonText} {"→"}
-                    </span>
-                  </div>
-                  <p className="mt-1.5 text-[13px] leading-relaxed text-gray-700 sm:text-sm">{dailyRecommendationCardSubtitle}</p>
+                  <h3 className="text-[15px] font-semibold leading-tight text-gray-950 sm:text-base">
+                    {dailyRecommendationCardTitle}
+                  </h3>
+                  <p className="mt-1 text-[13px] leading-relaxed text-gray-700 sm:text-sm">{dailyRecommendationCardSubtitle}</p>
                 </div>
               </div>
             </Link>
@@ -292,6 +245,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 };
 
 export default DashboardCards;
+
 
 
 
