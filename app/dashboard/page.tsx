@@ -150,7 +150,8 @@ export default function DashboardPage() {
   const [activeTourKey, setActiveTourKey] = useState<FeatureTourKey | null>(null);
   const [pendingTourNavigation, setPendingTourNavigation] = useState<string | null>(null);
   const [isSavingFeatureTour, setIsSavingFeatureTour] = useState(false);
-  const [dashboardTourStep, setDashboardTourStep] = useState(0);
+  const [dashboardTourStep, setDashboardTourStep] = useState(-1);
+  const [dashboardTourAnchor, setDashboardTourAnchor] = useState<{ top: number; left: number; width: number; height: number } | null>(null);
   const [dailyRecommendationCard, setDailyRecommendationCard] = useState<DailyRecommendation | null>(null);
   const [isDailyRecommendationLoading, setIsDailyRecommendationLoading] = useState(true);
   const [isOwnerDashboard, setIsOwnerDashboard] = useState(false);
@@ -266,43 +267,43 @@ export default function DashboardPage() {
     spotlight: "overview" | "level" | "recommendation" | "bible" | "group" | "tools" | "games" | "invite" | null;
   }> = [
     {
-      title: "Welcome to Bible Buddy",
-      body: "This is your dashboard. It is your main study home where you can move through every part of Bible Buddy, from reading Scripture to studying, playing games, and inviting other people in.",
+      title: "This is your dashboard",
+      body: "This is where you can access every part of Bible Buddy and move through the app from one place.",
       spotlight: "overview",
     },
     {
       title: "This is your level",
-      body: "Every meaningful action you take inside Bible Buddy helps increase your level. It reflects your consistency and growth in the app over time.",
+      body: "Every meaningful action you take inside Bible Buddy increases your level and reflects your growth over time.",
       spotlight: "level",
     },
     {
       title: "This is your daily recommendation",
-      body: "Louis uses your activity inside Bible Buddy to suggest the next thing worth doing, so you can keep your momentum going without guessing where to go next.",
+      body: "This helps you know what to do next based on your activity inside Bible Buddy.",
       spotlight: "recommendation",
     },
     {
       title: "This is The Bible",
-      body: "This is where you can read the Bible, move through chapters, switch translations, and interact with Scripture as you study.",
+      body: "Here you can read the Bible, switch translations, and save your progress as you go.",
       spotlight: "bible",
     },
     {
       title: "This is the Bible Study Group",
-      body: "This is where you can study with other Bible Buddies, join the weekly Bible study series, and stay connected in the community.",
+      body: "Study the Bible with other Bible Buddy users through weekly studies and daily community activity.",
       spotlight: "group",
     },
     {
       title: "This is Bible Study Tools",
-      body: "This is where you can open devotionals, reading plans, people, places, keywords, and your own Bible study notes.",
+      body: "This is a collection of devotionals, reading plans, keyword databases, and your own Bible study notes.",
       spotlight: "tools",
     },
     {
       title: "This is Bible Study Games",
-      body: "This is where you can play Bible study games like Trivia and Scrambled to reinforce what you are reading in Scripture.",
+      body: "Here you can play Bible study games to reinforce what you are reading in Scripture.",
       spotlight: "games",
     },
     {
       title: "Invite another Bible Buddy",
-      body: "When you want to bring someone else in, use this card to send them an invite and help them start studying with you inside Bible Buddy.",
+      body: "Use this to invite another person to join Bible Buddy and study with you inside the app.",
       spotlight: "invite",
     },
   ];
@@ -852,12 +853,13 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (activeTourKey === "dashboard") {
-      setDashboardTourStep(0);
+      setDashboardTourStep(-1);
+      setDashboardTourAnchor(null);
     }
   }, [activeTourKey]);
 
   useEffect(() => {
-    if (activeTourKey !== "dashboard") return;
+    if (activeTourKey !== "dashboard" || dashboardTourStep < 0) return;
 
     const spotlight = DASHBOARD_TOUR_STEPS[dashboardTourStep]?.spotlight;
     if (!spotlight) return;
@@ -866,13 +868,51 @@ export default function DashboardPage() {
       const target = document.querySelector(`[data-dashboard-tour="${spotlight}"]`);
       if (target instanceof HTMLElement) {
         target.scrollIntoView({ behavior: "smooth", block: "center" });
+        const rect = target.getBoundingClientRect();
+        setDashboardTourAnchor({
+          top: rect.top,
+          left: rect.left,
+          width: rect.width,
+          height: rect.height,
+        });
       }
     }, 160);
 
     return () => window.clearTimeout(timeout);
   }, [activeTourKey, dashboardTourStep]);
 
+  useEffect(() => {
+    if (activeTourKey !== "dashboard" || dashboardTourStep < 0) return;
+
+    function refreshDashboardTourAnchor() {
+      const spotlight = DASHBOARD_TOUR_STEPS[dashboardTourStep]?.spotlight;
+      if (!spotlight) return;
+      const target = document.querySelector(`[data-dashboard-tour="${spotlight}"]`);
+      if (target instanceof HTMLElement) {
+        const rect = target.getBoundingClientRect();
+        setDashboardTourAnchor({
+          top: rect.top,
+          left: rect.left,
+          width: rect.width,
+          height: rect.height,
+        });
+      }
+    }
+
+    window.addEventListener("resize", refreshDashboardTourAnchor);
+    window.addEventListener("scroll", refreshDashboardTourAnchor, true);
+    return () => {
+      window.removeEventListener("resize", refreshDashboardTourAnchor);
+      window.removeEventListener("scroll", refreshDashboardTourAnchor, true);
+    };
+  }, [activeTourKey, dashboardTourStep]);
+
   async function handleTourUnderstand() {
+    if (activeTourKey === "dashboard" && dashboardTourStep < 0) {
+      setDashboardTourStep(0);
+      return;
+    }
+
     if (activeTourKey === "dashboard" && dashboardTourStep < DASHBOARD_TOUR_STEPS.length - 1) {
       setDashboardTourStep((current) => current + 1);
       return;
@@ -919,6 +959,8 @@ export default function DashboardPage() {
     setActiveTourKey(null);
     setPendingTourNavigation(null);
     setIsSavingFeatureTour(false);
+    setDashboardTourStep(-1);
+    setDashboardTourAnchor(null);
 
     if (nextPath) {
       router.push(nextPath);
@@ -929,7 +971,8 @@ export default function DashboardPage() {
     const nextPath = pendingTourNavigation;
     setActiveTourKey(null);
     setPendingTourNavigation(null);
-    setDashboardTourStep(0);
+    setDashboardTourStep(-1);
+    setDashboardTourAnchor(null);
 
     if (nextPath) {
       router.push(nextPath);
@@ -1759,29 +1802,24 @@ export default function DashboardPage() {
       {featureToursEnabled && activeTourKey && (
         <FeatureTourModal
           isOpen={true}
-          title={activeTourKey === "dashboard" ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.title ?? TOUR_COPY.dashboard.title : TOUR_COPY[activeTourKey].title}
-          body={activeTourKey === "dashboard" ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.body ?? TOUR_COPY.dashboard.body : TOUR_COPY[activeTourKey].body}
+          title={activeTourKey === "dashboard" && dashboardTourStep >= 0 ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.title ?? TOUR_COPY.dashboard.title : TOUR_COPY[activeTourKey].title}
+          body={activeTourKey === "dashboard" && dashboardTourStep >= 0 ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.body ?? TOUR_COPY.dashboard.body : "Do you want me to give you a quick tour of how the app works?"}
           primaryButtonText={
             activeTourKey === "dashboard"
-              ? dashboardTourStep === DASHBOARD_TOUR_STEPS.length - 1
-                ? "Start Exploring"
+              ? dashboardTourStep < 0
+                ? "Yes"
                 : "Next"
               : activeTourKey === "bible_trivia"
                 ? "Play Now"
                 : "Got it"
           }
-          secondaryButtonText={activeTourKey === "dashboard" ? "Later" : undefined}
+          secondaryButtonText={activeTourKey === "dashboard" && dashboardTourStep < 0 ? "Later" : undefined}
           onSecondary={activeTourKey === "dashboard" ? handleTourClose : undefined}
-          variant={activeTourKey === "dashboard" ? "coachmark" : "default"}
+          variant={activeTourKey === "dashboard" ? (dashboardTourStep < 0 ? "coachmark" : "speech-bubble") : "default"}
+          anchorRect={activeTourKey === "dashboard" && dashboardTourStep >= 0 ? dashboardTourAnchor : null}
           content={
             activeTourKey === "dashboard"
-              ? (
-                <div className="space-y-3">
-                  <p className="rounded-2xl bg-white/70 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#5f78a8]">
-                    Dashboard Tour {dashboardTourStep + 1} of {DASHBOARD_TOUR_STEPS.length}
-                  </p>
-                </div>
-              )
+              ? undefined
               : activeTourKey === "bible"
               ? BIBLE_TOUR_CONTENT
               : activeTourKey === "guided_studies"
