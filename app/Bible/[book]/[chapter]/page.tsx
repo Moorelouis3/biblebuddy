@@ -21,6 +21,12 @@ import { trackNavigationActionOnce } from "../../../../lib/navigationActionTrack
 import CreditLimitModal from "../../../../components/CreditLimitModal";
 import CommentSection from "../../../../components/comments/CommentSection";
 import { LEVEL_DEFINITIONS } from "../../../../lib/levelSystem";
+import { FeatureTourModal } from "../../../../components/FeatureTourModal";
+import {
+  DEFAULT_FEATURE_TOURS,
+  normalizeFeatureTours,
+  type FeatureToursState,
+} from "../../../../lib/featureTours";
 
 type Verse = {
   num: number;
@@ -116,7 +122,11 @@ export default function BibleChapterPage() {
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
   const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
   const [translation, setTranslation] = useState<"web" | "asv" | "kjv">("web");
-  const [plainTextMode, setPlainTextMode] = useState(false);
+  const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
+  const [showBibleReaderTour, setShowBibleReaderTour] = useState(false);
+  const [bibleReaderTourStep, setBibleReaderTourStep] = useState(-1);
+  const [isSavingBibleTour, setIsSavingBibleTour] = useState(false);
+  const [tourAnimationTick, setTourAnimationTick] = useState(0);
   
   // Completion tracking state (same as database pages)
   const [completedPeople, setCompletedPeople] = useState<Set<string>>(new Set());
@@ -128,17 +138,6 @@ export default function BibleChapterPage() {
   const [isAnimatingKeyword, setIsAnimatingKeyword] = useState(false);
   const [learnedToast, setLearnedToast] = useState<string | null>(null);
   const [fromReadingPlan, setFromReadingPlan] = useState(false);
-
-  useEffect(() => {
-    const storedValue = localStorage.getItem("bible_plain_text_mode");
-    if (storedValue !== null) {
-      setPlainTextMode(storedValue === "1");
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("bible_plain_text_mode", plainTextMode ? "1" : "0");
-  }, [plainTextMode]);
 
   // Normalize markdown functions (reused from People/Places/Keywords pages)
   function normalizePersonMarkdown(markdown: string): string {
@@ -186,6 +185,44 @@ export default function BibleChapterPage() {
     ];
   }
 
+  const BIBLE_READER_TOUR_STEPS = [
+    {
+      key: "translations",
+      title: "Translations",
+      body: "Pick WEB, ASV, or KJV to read this same chapter in different Bible translations.",
+    },
+    {
+      key: "summary",
+      title: "Louis Overview",
+      body: "Louis gives you a quick overview of the chapter before you start reading.",
+    },
+    {
+      key: "verses",
+      title: "Read the Verses",
+      body: "This is where you read the chapter verse by verse. Tap a verse number to highlight it.",
+    },
+    {
+      key: "words",
+      title: "Tap Underlined Words",
+      body: "Underlined words open extra Bible context for people, places, and keywords right in the chapter.",
+    },
+    {
+      key: "actions",
+      title: "Track and Study",
+      body: "Mark the chapter finished to track progress, open chapter notes, or take your own notes.",
+    },
+  ] as const;
+
+  const currentBibleReaderTourStep =
+    bibleReaderTourStep >= 0 ? BIBLE_READER_TOUR_STEPS[bibleReaderTourStep] : null;
+
+  function getBibleTourClasses(target: (typeof BIBLE_READER_TOUR_STEPS)[number]["key"]) {
+    if (!showBibleReaderTour || bibleReaderTourStep < 0 || !currentBibleReaderTourStep) return "";
+    return currentBibleReaderTourStep.key === target
+      ? "relative z-10 opacity-100 ring-[6px] ring-white ring-offset-4 ring-offset-[#9ebcee] shadow-[0_26px_80px_rgba(32,81,154,0.34)] scale-[1.02] brightness-[1.04] saturate-110 transition duration-300"
+      : "opacity-50 saturate-90 transition duration-300";
+  }
+
   // Event delegation for click handlers on enriched content
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -214,6 +251,109 @@ export default function BibleChapterPage() {
     document.addEventListener("click", handler);
     return () => document.removeEventListener("click", handler);
   }, []);
+
+  useEffect(() => {
+    if (!showBibleReaderTour || bibleReaderTourStep < 0 || !currentBibleReaderTourStep) return;
+
+    const target = document.querySelector(`[data-bible-tour="${currentBibleReaderTourStep.key}"]`);
+    if (target instanceof HTMLElement) {
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [showBibleReaderTour, bibleReaderTourStep, currentBibleReaderTourStep]);
+
+  useEffect(() => {
+    if (!showBibleReaderTour || bibleReaderTourStep < 0 || !currentBibleReaderTourStep) return;
+
+    let cleanup: (() => void) | undefined;
+
+    if (currentBibleReaderTourStep.key === "verses") {
+      const verseButton = verseContainerRef.current?.querySelector(".verse-line button");
+      if (verseButton instanceof HTMLElement) {
+        verseButton.classList.add("ring-4", "ring-yellow-300", "animate-pulse", "scale-110");
+        cleanup = () => {
+          verseButton.classList.remove("ring-4", "ring-yellow-300", "animate-pulse", "scale-110");
+        };
+      }
+    }
+
+    if (currentBibleReaderTourStep.key === "words") {
+      const word = verseContainerRef.current?.querySelector(".bible-highlight");
+      if (word instanceof HTMLElement) {
+        word.classList.add("bg-yellow-100", "rounded", "px-1", "animate-pulse");
+        cleanup = () => {
+          word.classList.remove("bg-yellow-100", "rounded", "px-1", "animate-pulse");
+        };
+      }
+    }
+
+    return () => {
+      cleanup?.();
+    };
+  }, [showBibleReaderTour, bibleReaderTourStep, currentBibleReaderTourStep, tourAnimationTick]);
+
+  async function handleBibleTourUnderstand() {
+    if (bibleReaderTourStep < 0) {
+      setBibleReaderTourStep(0);
+      setTourAnimationTick((current) => current + 1);
+      return;
+    }
+
+    if (bibleReaderTourStep < BIBLE_READER_TOUR_STEPS.length - 1) {
+      setBibleReaderTourStep((current) => current + 1);
+      setTourAnimationTick((current) => current + 1);
+      return;
+    }
+
+    if (!userId) {
+      setShowBibleReaderTour(false);
+      setBibleReaderTourStep(-1);
+      return;
+    }
+
+    setIsSavingBibleTour(true);
+
+    const mergedFeatureTours = {
+      ...featureTours,
+      bible: true,
+    };
+
+    const { error: updateError } = await supabase
+      .from("profile_stats")
+      .update({
+        feature_tours: mergedFeatureTours,
+      })
+      .eq("user_id", userId);
+
+    if (updateError) {
+      console.error("[FEATURE_TOURS] Error updating Bible reader tour:", updateError);
+
+      const { error: upsertError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            feature_tours: mergedFeatureTours,
+          },
+          { onConflict: "user_id" }
+        );
+
+      if (upsertError) {
+        console.error("[FEATURE_TOURS] Error upserting Bible reader tour:", upsertError);
+        setIsSavingBibleTour(false);
+        return;
+      }
+    }
+
+    setFeatureTours(mergedFeatureTours);
+    setShowBibleReaderTour(false);
+    setBibleReaderTourStep(-1);
+    setIsSavingBibleTour(false);
+  }
+
+  function handleBibleTourClose() {
+    setShowBibleReaderTour(false);
+    setBibleReaderTourStep(-1);
+  }
 
   // Load notes for selected person (reuse same logic as People page)
   useEffect(() => {
@@ -867,6 +1007,39 @@ RULES:
           (user.email ? user.email.split("@")[0] : null) ||
           "User";
         setUsername(extractedUsername);
+
+        const { data: profileStats, error: profileStatsError } = await supabase
+          .from("profile_stats")
+          .select("feature_tours")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        if (profileStatsError) {
+          console.error("[FEATURE_TOURS] Error loading Bible reader tour:", profileStatsError);
+        } else if (!profileStats) {
+          const { error: upsertError } = await supabase
+            .from("profile_stats")
+            .upsert(
+              {
+                user_id: user.id,
+                feature_tours: { ...DEFAULT_FEATURE_TOURS },
+              },
+              { onConflict: "user_id" }
+            );
+
+          if (upsertError) {
+            console.error("[FEATURE_TOURS] Error creating Bible reader tour profile row:", upsertError);
+          } else {
+            setFeatureTours({ ...DEFAULT_FEATURE_TOURS });
+            setShowBibleReaderTour(true);
+          }
+        } else {
+          const normalizedTours = normalizeFeatureTours(profileStats.feature_tours);
+          setFeatureTours(normalizedTours);
+          if (normalizedTours.bible !== true) {
+            setShowBibleReaderTour(true);
+          }
+        }
 
         // Fetch all completed people for this user (batch query)
         const { data: peopleData, error: peopleError } = await supabase
@@ -1615,26 +1788,29 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           <h1 className="text-3xl font-bold">
             {bookDisplayName} {chapter}
           </h1>
-          <div className="flex items-center gap-3">
-            <label className="inline-flex items-center gap-2 text-sm text-gray-700">
-              <input
-                type="checkbox"
-                checked={plainTextMode}
-                onChange={(e) => setPlainTextMode(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-              />
-              Plain text mode
-            </label>
-            <select
-              value={translation}
-              onChange={(e) => setTranslation(e.target.value as "web" | "asv" | "kjv")}
-              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              aria-label="Select Bible translation"
-            >
-              <option value="web">WEB</option>
-              <option value="asv">ASV</option>
-              <option value="kjv">KJV</option>
-            </select>
+          <div
+            data-bible-tour="translations"
+            className={`flex items-center gap-2 rounded-2xl border border-gray-200 bg-white p-1 shadow-sm ${getBibleTourClasses("translations")}`}
+          >
+            {([
+              { value: "web", label: "WEB" },
+              { value: "asv", label: "ASV" },
+              { value: "kjv", label: "KJV" },
+            ] as const).map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => setTranslation(option.value)}
+                className={`rounded-xl px-3 py-1.5 text-sm font-semibold transition ${
+                  translation === option.value
+                    ? "bg-blue-600 text-white shadow-sm"
+                    : "text-gray-700 hover:bg-blue-50"
+                }`}
+                aria-pressed={translation === option.value}
+              >
+                {option.label}
+              </button>
+            ))}
           </div>
         </div>
         <p className="text-gray-700 mb-4">
@@ -1642,7 +1818,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         </p>
 
         {/* LOUIS INSTRUCTION */}
-        <div className="mb-5 flex items-start gap-3">
+        <div data-bible-tour="summary" className={`mb-5 flex items-start gap-3 ${getBibleTourClasses("summary")}`}>
           <LouisAvatar mood="bible" size={40} />
           <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
             <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
@@ -1663,8 +1839,13 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
         {/* VERSE BLOCK */}
         <div 
+          data-bible-tour={currentBibleReaderTourStep?.key === "words" ? "words" : "verses"}
           ref={verseContainerRef}
-          className={`bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 mb-6 max-h-[60vh] overflow-y-auto ${plainTextMode ? "plain-text-mode" : ""}`}
+          className={`bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 mb-6 max-h-[60vh] overflow-y-auto ${
+            currentBibleReaderTourStep?.key === "words"
+              ? getBibleTourClasses("words")
+              : getBibleTourClasses("verses")
+          }`}
         >
           {sections.map((section) => (
             <div key={section.id} className="mb-8 last:mb-0">
@@ -1780,7 +1961,10 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         </div>
 
         {/* ACTION BUTTONS ROW */}
-        <div className="w-full max-w-3xl mx-auto flex flex-col md:flex-row items-center md:items-stretch md:justify-between gap-3 mb-4">
+        <div
+          data-bible-tour="actions"
+          className={`w-full max-w-3xl mx-auto flex flex-col md:flex-row items-center md:items-stretch md:justify-between gap-3 mb-4 ${getBibleTourClasses("actions")}`}
+        >
           {/* LEFT: Read Notes */}
           <button
             type="button"
@@ -1855,6 +2039,31 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       {/* CONGRATULATIONS MODAL */}
       {showCongratsModal && (
         <CongratsModalWithConfetti levelInfo={levelInfoForModal ?? undefined} />
+      )}
+
+      {showBibleReaderTour && (
+        <FeatureTourModal
+          isOpen={true}
+          title={
+            bibleReaderTourStep < 0
+              ? "This is the Bible Reader"
+              : currentBibleReaderTourStep?.title ?? "Bible Reader"
+          }
+          body={
+            bibleReaderTourStep < 0
+              ? "This is where you can interact with and read through the Bible chapter by chapter. Do you want to take the tour to learn how to use the Bible reader?"
+              : currentBibleReaderTourStep?.body ?? ""
+          }
+          primaryButtonText={bibleReaderTourStep < 0 ? "Yes" : bibleReaderTourStep === BIBLE_READER_TOUR_STEPS.length - 1 ? "Done" : "Next"}
+          secondaryButtonText={bibleReaderTourStep < 0 ? "Later" : undefined}
+          onSecondary={handleBibleTourClose}
+          variant={bibleReaderTourStep < 0 ? "prompt" : "speech-bubble"}
+          canAdvance={true}
+          closeOnBackdrop={bibleReaderTourStep < 0}
+          isSaving={isSavingBibleTour}
+          onClose={handleBibleTourClose}
+          onUnderstand={handleBibleTourUnderstand}
+        />
       )}
 
       {/* FEATURED CHARACTER MODAL */}
