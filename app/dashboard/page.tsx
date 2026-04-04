@@ -152,6 +152,7 @@ export default function DashboardPage() {
   const [isSavingFeatureTour, setIsSavingFeatureTour] = useState(false);
   const [dashboardTourStep, setDashboardTourStep] = useState(-1);
   const [dashboardTourAnchor, setDashboardTourAnchor] = useState<{ top: number; left: number; width: number; height: number } | null>(null);
+  const [dashboardTourCanAdvance, setDashboardTourCanAdvance] = useState(false);
   const [dailyRecommendationCard, setDailyRecommendationCard] = useState<DailyRecommendation | null>(null);
   const [isDailyRecommendationLoading, setIsDailyRecommendationLoading] = useState(true);
   const [isOwnerDashboard, setIsOwnerDashboard] = useState(false);
@@ -855,11 +856,14 @@ export default function DashboardPage() {
     if (activeTourKey === "dashboard") {
       setDashboardTourStep(-1);
       setDashboardTourAnchor(null);
+      setDashboardTourCanAdvance(false);
     }
   }, [activeTourKey]);
 
   useEffect(() => {
     if (activeTourKey !== "dashboard" || dashboardTourStep < 0) return;
+
+    setDashboardTourCanAdvance(false);
 
     const spotlight = DASHBOARD_TOUR_STEPS[dashboardTourStep]?.spotlight;
     if (!spotlight) return;
@@ -877,6 +881,16 @@ export default function DashboardPage() {
         });
       }
     }, 160);
+
+    return () => window.clearTimeout(timeout);
+  }, [activeTourKey, dashboardTourStep]);
+
+  useEffect(() => {
+    if (activeTourKey !== "dashboard" || dashboardTourStep < 0) return;
+
+    const timeout = window.setTimeout(() => {
+      setDashboardTourCanAdvance(true);
+    }, 350);
 
     return () => window.clearTimeout(timeout);
   }, [activeTourKey, dashboardTourStep]);
@@ -961,6 +975,7 @@ export default function DashboardPage() {
     setIsSavingFeatureTour(false);
     setDashboardTourStep(-1);
     setDashboardTourAnchor(null);
+    setDashboardTourCanAdvance(false);
 
     if (nextPath) {
       router.push(nextPath);
@@ -973,6 +988,7 @@ export default function DashboardPage() {
     setPendingTourNavigation(null);
     setDashboardTourStep(-1);
     setDashboardTourAnchor(null);
+    setDashboardTourCanAdvance(false);
 
     if (nextPath) {
       router.push(nextPath);
@@ -1815,8 +1831,9 @@ export default function DashboardPage() {
           }
           secondaryButtonText={activeTourKey === "dashboard" && dashboardTourStep < 0 ? "Later" : undefined}
           onSecondary={activeTourKey === "dashboard" ? handleTourClose : undefined}
-          variant={activeTourKey === "dashboard" ? (dashboardTourStep < 0 ? "coachmark" : "speech-bubble") : "default"}
+          variant={activeTourKey === "dashboard" ? (dashboardTourStep < 0 ? "prompt" : "speech-bubble") : "default"}
           anchorRect={activeTourKey === "dashboard" && dashboardTourStep >= 0 ? dashboardTourAnchor : null}
+          canAdvance={activeTourKey === "dashboard" ? dashboardTourCanAdvance : true}
           content={
             activeTourKey === "dashboard"
               ? undefined

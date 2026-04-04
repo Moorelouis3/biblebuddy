@@ -13,8 +13,9 @@ type FeatureTourModalProps = {
   primaryButtonText?: string;
   secondaryButtonText?: string;
   onSecondary?: () => void;
-  variant?: "default" | "coachmark" | "speech-bubble";
+  variant?: "default" | "coachmark" | "speech-bubble" | "prompt";
   anchorRect?: { top: number; left: number; width: number; height: number } | null;
+  canAdvance?: boolean;
   onClose: () => void;
   onUnderstand: () => void;
 };
@@ -30,11 +31,13 @@ export function FeatureTourModal({
   onSecondary,
   variant = "default",
   anchorRect = null,
+  canAdvance = true,
   onClose,
   onUnderstand,
 }: FeatureTourModalProps) {
   const isCoachmark = variant === "coachmark";
   const isSpeechBubble = variant === "speech-bubble";
+  const isPrompt = variant === "prompt";
 
   const bubbleStyle = useMemo(() => {
     if (!anchorRect || typeof window === "undefined") return undefined;
@@ -59,15 +62,18 @@ export function FeatureTourModal({
     <ModalShell
       isOpen={isOpen}
       onClose={onClose}
-      backdropColor={isCoachmark || isSpeechBubble ? "bg-black/20" : "bg-blue-50/90"}
-      scrollable={!isCoachmark && !isSpeechBubble}
+      backdropColor={isCoachmark || isSpeechBubble || isPrompt ? "bg-black/20" : "bg-blue-50/90"}
+      scrollable={!isCoachmark && !isSpeechBubble && !isPrompt}
       placement={isCoachmark ? "bottom" : "center"}
-      zIndex={isCoachmark || isSpeechBubble ? "z-[120]" : "z-50"}
+      zIndex={isCoachmark || isSpeechBubble || isPrompt ? "z-[120]" : "z-50"}
     >
       <div
         style={bubbleStyle}
         className={[
           "relative flex w-full flex-col rounded-[28px] border shadow-2xl",
+          isPrompt
+            ? "max-w-[22rem] border-[#cadcf9] bg-white/95 px-4 py-4 sm:px-5"
+            :
           isSpeechBubble
             ? "border-[#cadcf9] bg-white/95 px-4 py-3 backdrop-blur-sm"
             :
@@ -76,7 +82,7 @@ export function FeatureTourModal({
             : "my-6 max-w-[32rem] items-center border-blue-200 bg-gradient-to-br from-[#eef6ff] via-[#f4f9ff] to-[#eef8f8] px-5 py-5 sm:px-6 sm:py-6",
         ].join(" ")}
       >
-        {!isSpeechBubble ? (
+        {!isSpeechBubble && !isPrompt ? (
           <button
             type="button"
             onClick={onClose}
@@ -86,25 +92,25 @@ export function FeatureTourModal({
             X
           </button>
         ) : null}
-        <div className={`flex w-full flex-col ${isCoachmark || isSpeechBubble ? "items-start" : "items-center"}`}>
-          <div className={isCoachmark || isSpeechBubble ? "flex items-center gap-3" : "contents"}>
-            <LouisAvatar mood="bible" size={isSpeechBubble ? 44 : isCoachmark ? 54 : 64} />
-            {isCoachmark || isSpeechBubble ? (
+        <div className={`flex w-full flex-col ${isCoachmark || isSpeechBubble || isPrompt ? "items-start" : "items-center"}`}>
+          <div className={isCoachmark || isSpeechBubble || isPrompt ? "flex items-center gap-3" : "contents"}>
+            <LouisAvatar mood="bible" size={isSpeechBubble ? 44 : isPrompt ? 48 : isCoachmark ? 54 : 64} />
+            {isCoachmark || isSpeechBubble || isPrompt ? (
               <div className="min-w-0">
-                <div className={`${isSpeechBubble ? "text-[1rem]" : "text-[1.15rem] sm:text-[1.35rem]"} font-bold leading-tight text-blue-900`}>{title}</div>
+                <div className={`${isSpeechBubble ? "text-[1rem]" : isPrompt ? "text-[1.02rem]" : "text-[1.15rem] sm:text-[1.35rem]"} font-bold leading-tight text-blue-900`}>{title}</div>
               </div>
             ) : null}
           </div>
-          {!isCoachmark && !isSpeechBubble ? (
+          {!isCoachmark && !isSpeechBubble && !isPrompt ? (
             <div className="mb-3 mt-3 text-center text-[1.45rem] font-bold leading-tight text-blue-900 sm:text-3xl">{title}</div>
           ) : null}
           <div className="w-full">
-            <div className={`${isCoachmark || isSpeechBubble ? "mt-2" : "mx-auto max-h-[62vh] max-w-2xl overflow-y-auto px-1"} w-full`}>
+            <div className={`${isCoachmark || isSpeechBubble || isPrompt ? "mt-2" : "mx-auto max-h-[62vh] max-w-2xl overflow-y-auto px-1"} w-full`}>
               {content ? (
                 content
               ) : (
                 <div className="space-y-4">
-                  <p className={`${isCoachmark || isSpeechBubble ? "text-left" : "max-w-xl text-center"} ${isSpeechBubble ? "text-[13px] leading-6" : "text-sm leading-7 md:text-[15px]"} text-gray-600`}>{body}</p>
+                  <p className={`${isCoachmark || isSpeechBubble || isPrompt ? "text-left" : "max-w-xl text-center"} ${isSpeechBubble ? "text-[13px] leading-6" : isPrompt ? "text-[14px] leading-6" : "text-sm leading-7 md:text-[15px]"} text-gray-600`}>{body}</p>
                 </div>
               )}
             </div>
@@ -113,9 +119,10 @@ export function FeatureTourModal({
         {isSpeechBubble ? (
           <button
             type="button"
-            onClick={onUnderstand}
+            onClick={canAdvance ? onUnderstand : undefined}
             className="absolute inset-0 rounded-[28px]"
             aria-label="Continue dashboard tour"
+            disabled={!canAdvance}
           />
         ) : null}
         {!isSpeechBubble ? (
