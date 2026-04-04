@@ -117,13 +117,16 @@ export function FeatureTourModal({
           </div>
         </div>
         {isSpeechBubble ? (
-          <button
-            type="button"
-            onClick={canAdvance ? onUnderstand : undefined}
-            className="absolute inset-0 rounded-[28px]"
-            aria-label="Continue dashboard tour"
-            disabled={!canAdvance}
-          />
+          <div className="mt-3 flex w-full items-center justify-end">
+            <button
+              type="button"
+              onClick={onUnderstand}
+              disabled={!canAdvance || isSaving}
+              className="rounded-2xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-300"
+            >
+              {isSaving ? "Saving..." : primaryButtonText}
+            </button>
+          </div>
         ) : null}
         {!isSpeechBubble ? (
         <div className={`mx-auto mt-5 flex w-full max-w-2xl items-center ${secondaryButtonText ? "justify-between" : "justify-end"} gap-3`}>
