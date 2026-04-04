@@ -90,7 +90,7 @@ export function FeatureTourModal({
     <ModalShell
       isOpen={isOpen}
       onClose={closeOnBackdrop ? onClose : undefined}
-      backdropColor={isCoachmark || isSpeechBubble || isPrompt ? "bg-black/20" : "bg-blue-50/90"}
+      backdropColor={isCoachmark || isSpeechBubble || isPrompt ? "bg-black/10" : "bg-blue-50/90"}
       scrollable={!isCoachmark && !isSpeechBubble && !isPrompt}
       placement={isCoachmark || isSpeechBubble ? "bottom" : "center"}
       zIndex={isCoachmark || isSpeechBubble || isPrompt ? "z-[120]" : "z-50"}
