@@ -28,6 +28,12 @@ import { enrichBibleVerses } from "@/lib/bibleHighlighting";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
 import { consumeCreditAction } from "@/lib/creditClient";
+import { FeatureTourModal } from "@/components/FeatureTourModal";
+import {
+  DEFAULT_FEATURE_TOURS,
+  normalizeFeatureTours,
+  type FeatureToursState,
+} from "@/lib/featureTours";
 import {
   linkMentionItemsInHtml,
   loadGroupPostMentions,
@@ -1139,6 +1145,10 @@ export default function GroupChatPage() {
   const [devotionalPreviews, setDevotionalPreviews] = useState<Record<string, DevotionalPreview>>({});
   const [updateFeatureIndex, setUpdateFeatureIndex] = useState(0);
   const [activeTab, setActiveTab] = useState<string>("home");
+  const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
+  const [showGroupTour, setShowGroupTour] = useState(false);
+  const [groupTourStep, setGroupTourStep] = useState(-1);
+  const [isSavingGroupTour, setIsSavingGroupTour] = useState(false);
   const [showGroupInfoModal, setShowGroupInfoModal] = useState(false);
   const [selectedFeedPost, setSelectedFeedPost] = useState<Post | null>(null);
   const [selectedScripture, setSelectedScripture] = useState<{ reference: string; book: string; chapter: number } | null>(null);
@@ -2091,7 +2101,7 @@ RULES:
       const [{ data: profile }, streakData] = await Promise.all([
         supabase
           .from("profile_stats")
-          .select("display_name, username, profile_image_url, bio, location, is_paid, member_badge, current_streak")
+          .select("display_name, username, profile_image_url, bio, location, is_paid, member_badge, current_streak, feature_tours")
           .eq("user_id", user.id)
           .maybeSingle(),
         calculateStreakFromActions(user.id),
@@ -2104,6 +2114,11 @@ RULES:
       setUserIsPaid(!!profile?.is_paid);
       setUserMemberBadge(profile?.member_badge ?? null);
       setUserCurrentStreak(resolvedCurrentStreak);
+      const normalizedTours = normalizeFeatureTours(profile?.feature_tours);
+      setFeatureTours(normalizedTours);
+      if (normalizedTours.bible_study_hub !== true) {
+        setShowGroupTour(true);
+      }
 
       if (profile && profile.current_streak !== resolvedCurrentStreak) {
         await supabase
@@ -3931,6 +3946,115 @@ RULES:
   const selectedSeriesAccent = selectedSeries?.title.toLowerCase().includes("tempt")
     ? { buttonBg: "#b7794d" }
     : { buttonBg: SAGE };
+  const GROUP_TOUR_STEPS = [
+    {
+      key: "nav",
+      title: "Bible Study Group Navigation",
+      body: "Use these tabs to move through the group. Home is where daily activity happens, and Bible Studies is where the group series live.",
+      tab: "home" as const,
+    },
+    {
+      key: "bible_studies",
+      title: "Bible Studies",
+      body: "This is where you find our current and previous Bible study series so you can keep up with the group week by week.",
+      tab: "bible_studies" as const,
+    },
+    {
+      key: "home_feed",
+      title: "Home Feed",
+      body: "This is where you interact with other Bible Buddies through daily encouragement, updates, and discussion in the group.",
+      tab: "home" as const,
+    },
+  ] as const;
+  const currentGroupTourStep = groupTourStep >= 0 ? GROUP_TOUR_STEPS[groupTourStep] : null;
+
+  function getGroupTourClasses(target: (typeof GROUP_TOUR_STEPS)[number]["key"]) {
+    if (!showGroupTour || groupTourStep < 0 || !currentGroupTourStep) return "";
+    return currentGroupTourStep.key === target
+      ? "relative z-10 opacity-100 ring-[6px] ring-white ring-offset-4 ring-offset-[#cfe8cf] shadow-[0_26px_80px_rgba(74,155,111,0.28)] scale-[1.02] brightness-[1.04] saturate-110 transition duration-300"
+      : "opacity-55 saturate-90 transition duration-300";
+  }
+
+  useEffect(() => {
+    if (!showGroupTour || groupTourStep < 0 || !currentGroupTourStep) return;
+    if (activeTab !== currentGroupTourStep.tab) {
+      setSelectedSeries(null);
+      setSelectedSeriesWeek(null);
+      setSelectedPost(null);
+      setSelectedHubItem(null);
+      setActiveTab(currentGroupTourStep.tab);
+    }
+  }, [showGroupTour, groupTourStep, currentGroupTourStep, activeTab]);
+
+  useEffect(() => {
+    if (!showGroupTour || groupTourStep < 0 || !currentGroupTourStep) return;
+    const target = document.querySelector(`[data-group-tour="${currentGroupTourStep.key}"]`);
+    if (target instanceof HTMLElement) {
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [showGroupTour, groupTourStep, currentGroupTourStep, activeTab]);
+
+  async function handleGroupTourUnderstand() {
+    if (groupTourStep < 0) {
+      setGroupTourStep(0);
+      return;
+    }
+
+    if (groupTourStep < GROUP_TOUR_STEPS.length - 1) {
+      setGroupTourStep((current) => current + 1);
+      return;
+    }
+
+    if (!userId) {
+      setShowGroupTour(false);
+      setGroupTourStep(-1);
+      return;
+    }
+
+    setIsSavingGroupTour(true);
+
+    const mergedFeatureTours = {
+      ...featureTours,
+      bible_study_hub: true,
+    };
+
+    const { error: updateError } = await supabase
+      .from("profile_stats")
+      .update({
+        feature_tours: mergedFeatureTours,
+      })
+      .eq("user_id", userId);
+
+    if (updateError) {
+      console.error("[FEATURE_TOURS] Error updating group tour:", updateError);
+
+      const { error: upsertError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            feature_tours: mergedFeatureTours,
+          },
+          { onConflict: "user_id" }
+        );
+
+      if (upsertError) {
+        console.error("[FEATURE_TOURS] Error upserting group tour:", upsertError);
+        setIsSavingGroupTour(false);
+        return;
+      }
+    }
+
+    setFeatureTours(mergedFeatureTours);
+    setShowGroupTour(false);
+    setGroupTourStep(-1);
+    setIsSavingGroupTour(false);
+  }
+
+  function handleGroupTourClose() {
+    setShowGroupTour(false);
+    setGroupTourStep(-1);
+  }
 
   // â”€â”€ Render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   return (
@@ -4015,7 +4139,7 @@ RULES:
         </div>
 
         {/* Header navigation */}
-        <div className="max-w-2xl mx-auto px-4 pb-3">
+        <div data-group-tour="nav" className={`max-w-2xl mx-auto px-4 pb-3 ${getGroupTourClasses("nav")}`}>
           {(() => {
             const primaryTabs = [
               { key: "home", label: "Home" },
@@ -4153,7 +4277,7 @@ RULES:
           </div>
         )}
 
-        {!selectedHubItem && <div className="max-w-2xl mx-auto px-4 py-4">
+        {!selectedHubItem && <div data-group-tour={activeTab === "bible_studies" ? "bible_studies" : "home_feed"} className={`max-w-2xl mx-auto px-4 py-4 ${activeTab === "bible_studies" ? getGroupTourClasses("bible_studies") : getGroupTourClasses("home_feed")}`}>
 
           {activeTab === "home" && currentSeriesPreview && (() => {
             const cardState = getCurrentSeriesCardState(currentSeriesStartAt, currentSeriesPreview.total_weeks, nowTs);
@@ -5232,6 +5356,37 @@ RULES:
 
         </div>}
       </div>
+
+      {showGroupTour && (
+        <FeatureTourModal
+          isOpen={true}
+          title={
+            groupTourStep < 0
+              ? "Welcome to the Bible Study Group"
+              : currentGroupTourStep?.title ?? "Bible Study Group"
+          }
+          body={
+            groupTourStep < 0
+              ? "I’m right here. We do weekly Bible studies and daily encouragement with all the Bible Buddy members. Do you want to take a quick tour?"
+              : currentGroupTourStep?.body ?? ""
+          }
+          primaryButtonText={
+            groupTourStep < 0
+              ? "Yes"
+              : groupTourStep === GROUP_TOUR_STEPS.length - 1
+                ? "Done"
+                : "Next"
+          }
+          secondaryButtonText={groupTourStep < 0 ? "Later" : undefined}
+          onSecondary={handleGroupTourClose}
+          variant={groupTourStep < 0 ? "prompt" : "speech-bubble"}
+          canAdvance={true}
+          closeOnBackdrop={groupTourStep < 0}
+          isSaving={isSavingGroupTour}
+          onClose={handleGroupTourClose}
+          onUnderstand={handleGroupTourUnderstand}
+        />
+      )}
 
       <UpgradeRequiredModal
         isOpen={showDevotionalUpgradeModal}
