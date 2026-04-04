@@ -1886,7 +1886,7 @@ export default function DashboardPage() {
           secondaryButtonText={activeTourKey === "dashboard" && dashboardTourStep < 0 ? "Later" : undefined}
           onSecondary={activeTourKey === "dashboard" ? handleTourClose : undefined}
           variant={activeTourKey === "dashboard" ? (dashboardTourStep < 0 ? "prompt" : "speech-bubble") : "default"}
-          anchorRect={null}
+          anchorRect={activeTourKey === "dashboard" && dashboardTourStep >= 0 ? dashboardTourAnchor : null}
           canAdvance={activeTourKey === "dashboard" ? dashboardTourCanAdvance : true}
           closeOnBackdrop={!(activeTourKey === "dashboard" && dashboardTourStep >= 0)}
           content={

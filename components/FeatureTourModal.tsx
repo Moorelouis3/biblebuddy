@@ -44,25 +44,17 @@ export function FeatureTourModal({
   const bubbleStyle = useMemo(() => {
     if (typeof window === "undefined") return undefined;
 
-    if (isSpeechBubble && !anchorRect) {
-      const bubbleWidth = Math.min(320, window.innerWidth - 24);
-      return {
-        position: "fixed" as const,
-        top: 88,
-        left: Math.max(12, window.innerWidth / 2 - bubbleWidth / 2),
-        width: bubbleWidth,
-      };
-    }
+    if (isSpeechBubble) return undefined;
 
     if (!anchorRect) return undefined;
 
     const bubbleWidth = Math.min(320, window.innerWidth - 24);
     const centeredLeft = anchorRect.left + anchorRect.width / 2 - bubbleWidth / 2;
     const left = Math.max(12, Math.min(centeredLeft, window.innerWidth - bubbleWidth - 12));
-    const spaceAbove = anchorRect.top;
-    const top = spaceAbove > 180
-      ? Math.max(12, anchorRect.top - 138)
-      : Math.min(window.innerHeight - 148, anchorRect.top + anchorRect.height + 12);
+    const bubbleHeight = isSpeechBubble ? 150 : 180;
+    const preferredTop = anchorRect.top + anchorRect.height + 14;
+    const maxTop = window.innerHeight - bubbleHeight - 16;
+    const top = Math.max(12, Math.min(preferredTop, maxTop));
 
     return {
       position: "fixed" as const,
@@ -70,7 +62,7 @@ export function FeatureTourModal({
       left,
       width: bubbleWidth,
     };
-  }, [anchorRect]);
+  }, [anchorRect, isSpeechBubble]);
 
   function handlePrimaryClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
@@ -100,7 +92,7 @@ export function FeatureTourModal({
       onClose={closeOnBackdrop ? onClose : undefined}
       backdropColor={isCoachmark || isSpeechBubble || isPrompt ? "bg-black/20" : "bg-blue-50/90"}
       scrollable={!isCoachmark && !isSpeechBubble && !isPrompt}
-      placement={isCoachmark ? "bottom" : "center"}
+      placement={isCoachmark || isSpeechBubble ? "bottom" : "center"}
       zIndex={isCoachmark || isSpeechBubble || isPrompt ? "z-[120]" : "z-50"}
     >
       <div
@@ -111,7 +103,7 @@ export function FeatureTourModal({
             ? "max-w-[22rem] border-[#cadcf9] bg-white/95 px-4 py-4 sm:px-5"
             :
           isSpeechBubble
-            ? "border-[#cadcf9] bg-white/95 px-4 py-3 backdrop-blur-sm"
+            ? "mx-auto w-[min(100%,44rem)] border-[#cadcf9] bg-white/96 px-4 py-3 backdrop-blur-sm sm:px-5 sm:py-4"
             :
           isCoachmark
             ? "max-w-[28rem] border-[#c9d9f5] bg-gradient-to-br from-[#eef6ff] via-[#f4f8ff] to-[#eefaf6] px-4 py-4 sm:px-5 sm:py-5"
@@ -132,7 +124,7 @@ export function FeatureTourModal({
           <div className={isCoachmark || isSpeechBubble || isPrompt ? "flex items-center gap-3" : "contents"}>
             <LouisAvatar mood="bible" size={isSpeechBubble ? 44 : isPrompt ? 48 : isCoachmark ? 54 : 64} />
             {isCoachmark || isSpeechBubble || isPrompt ? (
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <div className={`${isSpeechBubble ? "text-[1rem]" : isPrompt ? "text-[1.02rem]" : "text-[1.15rem] sm:text-[1.35rem]"} font-bold leading-tight text-blue-900`}>{title}</div>
               </div>
             ) : null}
@@ -153,7 +145,7 @@ export function FeatureTourModal({
           </div>
         </div>
         {isSpeechBubble ? (
-          <div className="mt-3 flex w-full items-center justify-end">
+          <div className="mt-3 flex w-full items-center justify-end border-t border-[#d7e4fb] pt-3">
             <button
               type="button"
               onMouseDown={handleButtonPressStart}
