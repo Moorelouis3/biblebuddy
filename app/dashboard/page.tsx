@@ -1464,6 +1464,18 @@ export default function DashboardPage() {
   const inviteText = "I've been using Bible Buddy to read and study the Bible. Come join me.";
 
   async function handleInviteBuddy() {
+    if (userId) {
+      void trackNavigationActionOnce({
+        userId,
+        username: userName,
+        actionType: ACTION_TYPE.invite_buddy_opened,
+        actionLabel: "Invite a Bible Buddy",
+        dedupeKey: "dashboard-invite-buddy",
+      }).catch((error) => {
+        console.error("[NAV] Failed to track invite buddy click:", error);
+      });
+    }
+
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
         await navigator.share({

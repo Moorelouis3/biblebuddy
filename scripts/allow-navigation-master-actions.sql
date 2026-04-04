@@ -52,6 +52,7 @@ CHECK (
     'scrambled_chapter_completed',
     'dashboard_viewed',
     'dashboard_card_opened',
+    'invite_buddy_opened',
     'book_completed',
     'bible_in_one_year_day_viewed',
     'bible_reader_viewed',

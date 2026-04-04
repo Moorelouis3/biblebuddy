@@ -93,6 +93,7 @@ const NAVIGATION_CLICK_ACTION_TYPES = [
   "scrambled_chapter_opened",
   "scrambled_chapter_completed",
   "dashboard_card_opened",
+  "invite_buddy_opened",
   "bible_book_opened",
   "bible_chapter_opened",
 ] as const;
@@ -166,7 +167,7 @@ export default function AnalyticsPage() {
 
   // Admin Action Log
   const [actionLog, setActionLog] = useState<
-    Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string; url?: string; dmCount?: number }>
+    Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string; url?: string; dmCount?: number; actionLabel?: string | null }>
   >([]);
   const [loadingActionLog, setLoadingActionLog] = useState(true);
 
@@ -1058,7 +1059,7 @@ export default function AnalyticsPage() {
   // Build Admin Action Log from master_actions table (all users)
   async function buildAdminActionLog(filter?: TimeFilter, actionTypeFilter?: string | null) {
     setLoadingActionLog(true);
-    const actions: Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string; url?: string; dmCount?: number }> = [];
+    const actions: Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string; url?: string; dmCount?: number; actionLabel?: string | null }> = [];
 
     // Pre-fetch devotional title→ID map for URL derivation
     const devotionalIdMap = new Map<string, string>();
@@ -1356,6 +1357,18 @@ export default function AnalyticsPage() {
             sortKey: actionDate.getTime(),
             actionType: "dashboard_card_opened",
             url: cardUrl,
+            actionLabel: action.action_label,
+          });
+        } else if (action.action_type === "invite_buddy_opened") {
+          const text = `On ${formattedDate} at ${formattedTime}, ${username} clicked Invite a Bible Buddy.${counterText}`;
+          actions.push({
+            date: formattedDate,
+            text,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "invite_buddy_opened",
+            actionLabel: "Invite a Bible Buddy",
           });
         } else if (action.action_type === "bible_reader_viewed") {
           const text = `On ${formattedDate} at ${formattedTime}, ${username} viewed the Bible reader.${counterText}`;
@@ -2070,6 +2083,7 @@ export default function AnalyticsPage() {
       "navigation_clicks": "Navigation Clicks",
       "dashboard_viewed": "Dashboard Views",
       "dashboard_card_opened": "Dashboard Card Clicks",
+      "invite_buddy_opened": "Invite a Bible Buddy Clicks",
       "bible_reader_viewed": "Bible Reader Views",
       "bible_book_opened": "Bible Book Clicks",
       "bible_book_viewed": "Bible Book Views",
@@ -2089,99 +2103,138 @@ export default function AnalyticsPage() {
     return nameMap[actionType] || actionType.replace(/_/g, " ");
   }
 
-  // Get color class for action type (reusing profile page colors)
-  function getActionColorClass(actionType: string): string {
-    switch (actionType) {
-      case "guided_studies_viewed":
-        return "bg-orange-50 border-l-4 border-orange-400";
-      case "guided_study_tool_opened":
-        return "bg-orange-50 border-l-4 border-orange-500";
-      case "devotionals_viewed":
-        return "bg-teal-50 border-l-4 border-teal-400";
-      case "devotional_opened":
-        return "bg-teal-50 border-l-4 border-teal-500";
-      case "devotional_day_opened":
-        return "bg-teal-50 border-l-4 border-teal-600";
-      case "devotional_bible_reading_opened":
-        return "bg-sky-50 border-l-4 border-sky-500";
-      case "devotional_reflection_saved":
-        return "bg-cyan-50 border-l-4 border-cyan-500";
-      case "reading_plans_viewed":
-        return "bg-amber-50 border-l-4 border-amber-400";
-      case "reading_plan_opened":
-        return "bg-amber-50 border-l-4 border-amber-500";
-      case "reading_plan_day_opened":
-        return "bg-amber-50 border-l-4 border-amber-600";
-      case "reading_plan_chapter_opened":
-        return "bg-lime-50 border-l-4 border-lime-500";
-      case "bible_study_games_viewed":
-        return "bg-emerald-50 border-l-4 border-emerald-400";
-      case "bible_game_opened":
-        return "bg-emerald-50 border-l-4 border-emerald-500";
-      case "trivia_hub_viewed":
-        return "bg-green-50 border-l-4 border-green-400";
-      case "trivia_category_opened":
-        return "bg-green-50 border-l-4 border-green-500";
-      case "trivia_pack_opened":
-        return "bg-green-50 border-l-4 border-green-600";
-      case "scrambled_hub_viewed":
-        return "bg-rose-50 border-l-4 border-rose-400";
-      case "scrambled_category_opened":
-        return "bg-rose-50 border-l-4 border-rose-500";
-      case "scrambled_books_viewed":
-        return "bg-rose-50 border-l-4 border-rose-600";
-      case "scrambled_book_opened":
-        return "bg-yellow-50 border-l-4 border-yellow-500";
-      case "scrambled_book_viewed":
-        return "bg-yellow-50 border-l-4 border-yellow-600";
-      case "scrambled_chapter_opened":
-        return "bg-yellow-50 border-l-4 border-yellow-700";
-      case "scrambled_chapter_completed":
-        return "bg-yellow-100 border-l-4 border-yellow-700";
-      case "dashboard_viewed":
-        return "bg-slate-50 border-l-4 border-slate-500";
-      case "dashboard_card_opened":
-        return "bg-sky-50 border-l-4 border-sky-500";
-      case "bible_reader_viewed":
-        return "bg-blue-50 border-l-4 border-blue-400";
-      case "bible_book_opened":
-        return "bg-indigo-50 border-l-4 border-indigo-400";
-      case "bible_book_viewed":
-        return "bg-indigo-50 border-l-4 border-indigo-500";
-      case "bible_chapter_opened":
-        return "bg-violet-50 border-l-4 border-violet-400";
-      case "bible_chapter_viewed":
-        return "bg-violet-50 border-l-4 border-violet-500";
-      case "chapter_completed":
-        return "bg-green-50 border-l-4 border-green-500";
-      case "book_completed":
-        return "bg-green-100 border-l-4 border-green-600";
-      case "note_created":
-        return "bg-yellow-50 border-l-4 border-yellow-500";
-      case "person_learned":
-        return "bg-pink-50 border-l-4 border-pink-500";
-      case "place_discovered":
-        return "bg-cyan-50 border-l-4 border-cyan-500";
-      case "keyword_mastered":
-        return "bg-purple-50 border-l-4 border-purple-500";
-      case "devotional_day_completed":
-        return "bg-orange-50 border-l-4 border-orange-500";
-      case "reading_plan_chapter_completed":
-        return "bg-yellow-50 border-l-4 border-yellow-500";
-      case "scrambled_word_answered":
-        return "bg-yellow-50 border-l-4 border-yellow-400";
-      case "trivia_question_answered":
-        return "bg-emerald-50 border-l-4 border-emerald-500";
-      case "user_login":
-        return "bg-purple-50 border-l-4 border-purple-500";
-      case "user_upgraded":
-        return "bg-amber-50 border-l-4 border-amber-500";
-      case "user_signup":
-        return "bg-red-50 border-l-4 border-red-500";
-      case "series_week_started":
-        return "bg-indigo-50 border-l-4 border-indigo-500";
+  function getFeatureFamily(actionType: string, actionLabel?: string | null): "bible" | "groups" | "tools" | "games" | "invite" | "signup" | "login" | "default" {
+    if (actionType === "dashboard_card_opened") {
+      if (actionLabel === "The Bible") return "bible";
+      if (actionLabel === "Bible Study Group") return "groups";
+      if (actionLabel === "Bible Study Tools") return "tools";
+      if (actionLabel === "Bible Study Games") return "games";
+      if (actionLabel === "Invite a Bible Buddy") return "invite";
+    }
+
+    if (
+      [
+        "bible_reader_viewed",
+        "bible_book_opened",
+        "bible_book_viewed",
+        "bible_chapter_opened",
+        "bible_chapter_viewed",
+        "chapter_completed",
+        "book_completed",
+        "verse_highlighted",
+        "chapter_notes_viewed",
+      ].includes(actionType)
+    ) {
+      return "bible";
+    }
+
+    if (
+      [
+        "study_group_feed_viewed",
+        "study_group_article_opened",
+        "study_group_bible_study_card_opened",
+        "feed_post_thought",
+        "feed_post_prayer",
+        "feed_post_prayer_request",
+        "feed_post_photo",
+        "feed_post_video",
+        "feed_post_liked",
+        "feed_post_commented",
+        "feed_post_replied",
+        "group_message_sent",
+        "buddy_added",
+        "series_week_started",
+      ].includes(actionType)
+    ) {
+      return "groups";
+    }
+
+    if (
+      [
+        "guided_studies_viewed",
+        "guided_study_tool_opened",
+        "devotionals_viewed",
+        "devotional_opened",
+        "devotional_day_opened",
+        "devotional_bible_reading_opened",
+        "devotional_reflection_saved",
+        "devotional_day_completed",
+        "devotional_day_started",
+        "devotional_day_viewed",
+        "reading_plans_viewed",
+        "reading_plan_opened",
+        "reading_plan_day_opened",
+        "reading_plan_chapter_opened",
+        "reading_plan_chapter_completed",
+        "keyword_viewed",
+        "keyword_mastered",
+        "person_viewed",
+        "person_learned",
+        "place_viewed",
+        "place_discovered",
+        "note_started",
+        "note_created",
+        "understand_verse_of_the_day",
+      ].includes(actionType)
+    ) {
+      return "tools";
+    }
+
+    if (
+      [
+        "bible_study_games_viewed",
+        "bible_game_opened",
+        "trivia_hub_viewed",
+        "trivia_category_opened",
+        "trivia_pack_opened",
+        "trivia_question_answered",
+        "trivia_started",
+        "scrambled_hub_viewed",
+        "scrambled_category_opened",
+        "scrambled_books_viewed",
+        "scrambled_book_opened",
+        "scrambled_book_viewed",
+        "scrambled_chapter_opened",
+        "scrambled_chapter_completed",
+        "scrambled_word_answered",
+      ].includes(actionType)
+    ) {
+      return "games";
+    }
+
+    if (actionType === "invite_buddy_opened") {
+      return "invite";
+    }
+
+    if (actionType === "user_signup") {
+      return "signup";
+    }
+
+    if (actionType === "user_login") {
+      return "login";
+    }
+
+    return "default";
+  }
+
+  function getActionColorClass(actionType: string, actionLabel?: string | null): string {
+    switch (getFeatureFamily(actionType, actionLabel)) {
+      case "bible":
+        return "bg-[#dbeafe] border-l-4 border-[#93c5fd]";
+      case "groups":
+        return "bg-[#d4ecd4] border-l-4 border-[#9ecf9e]";
+      case "tools":
+        return "bg-[#f6d6d9] border-l-4 border-[#e8aeb5]";
+      case "games":
+        return "bg-[#d1fae5] border-l-4 border-[#86efac]";
+      case "invite":
+        return "bg-[#efe7ff] border-l-4 border-[#c4b5fd]";
+      case "signup":
+        return "bg-[#f3f4f6] border-l-4 border-[#9ca3af]";
+      case "login":
+        return "bg-white border-l-4 border-[#d1d5db]";
       default:
-        return "bg-gray-50 border-l-4 border-gray-400";
+        return "bg-gray-50 border-l-4 border-gray-300";
     }
   }
 
@@ -2664,7 +2717,7 @@ export default function AnalyticsPage() {
                     return (
                       <div
                         key={idx}
-                        className={`flex items-start justify-between mb-2 p-3 rounded ${getActionColorClass(action.actionType)}`}
+                        className={`flex items-start justify-between mb-2 p-3 rounded ${getActionColorClass(action.actionType, action.actionLabel)}`}
                       >
                         <div className="flex-1 min-w-0">
                           <p className="text-sm text-gray-900 leading-snug">

@@ -577,6 +577,25 @@ export function OnboardingModal({
                       </div>
                       <h3 className="text-lg font-semibold text-[#22457e]">Pro</h3>
                       <p className="mt-1 text-sm text-gray-600">Unlimited Bible study</p>
+                      <div className="mt-4 space-y-2">
+                        <div className="rounded-[18px] border border-[#cfe0ff] bg-[#f4f8ff] px-3 py-3">
+                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4f7fd6]">Monthly</p>
+                          <p className="mt-1 text-xl font-bold text-[#22457e]">$4.99</p>
+                          <p className="text-xs text-gray-500">per month</p>
+                        </div>
+                        <div className="rounded-[18px] border border-[#cfe0ff] bg-white px-3 py-3">
+                          <div className="flex items-center justify-between gap-3">
+                            <div>
+                              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4f7fd6]">Yearly</p>
+                              <p className="mt-1 text-xl font-bold text-[#22457e]">$50</p>
+                              <p className="text-xs text-gray-500">per year</p>
+                            </div>
+                            <span className="rounded-full bg-[#fff4bf] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#8a6a00]">
+                              Best Value
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                       <ul className="mt-4 space-y-2 text-sm leading-6 text-gray-700">
                         <li>Everything in Free</li>
                         <li>Unlimited people, places, and keywords</li>
