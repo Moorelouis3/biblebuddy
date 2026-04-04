@@ -16,6 +16,7 @@ type FeatureTourModalProps = {
   variant?: "default" | "coachmark" | "speech-bubble" | "prompt";
   anchorRect?: { top: number; left: number; width: number; height: number } | null;
   canAdvance?: boolean;
+  closeOnBackdrop?: boolean;
   onClose: () => void;
   onUnderstand: () => void;
 };
@@ -32,6 +33,7 @@ export function FeatureTourModal({
   variant = "default",
   anchorRect = null,
   canAdvance = true,
+  closeOnBackdrop = true,
   onClose,
   onUnderstand,
 }: FeatureTourModalProps) {
@@ -61,7 +63,7 @@ export function FeatureTourModal({
   return (
     <ModalShell
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={closeOnBackdrop ? onClose : undefined}
       backdropColor={isCoachmark || isSpeechBubble || isPrompt ? "bg-black/20" : "bg-blue-50/90"}
       scrollable={!isCoachmark && !isSpeechBubble && !isPrompt}
       placement={isCoachmark ? "bottom" : "center"}

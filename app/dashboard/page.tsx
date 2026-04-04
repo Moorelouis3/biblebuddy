@@ -1834,6 +1834,7 @@ export default function DashboardPage() {
           variant={activeTourKey === "dashboard" ? (dashboardTourStep < 0 ? "prompt" : "speech-bubble") : "default"}
           anchorRect={activeTourKey === "dashboard" && dashboardTourStep >= 0 ? dashboardTourAnchor : null}
           canAdvance={activeTourKey === "dashboard" ? dashboardTourCanAdvance : true}
+          closeOnBackdrop={!(activeTourKey === "dashboard" && dashboardTourStep >= 0)}
           content={
             activeTourKey === "dashboard"
               ? undefined
