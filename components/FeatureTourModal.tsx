@@ -60,6 +60,18 @@ export function FeatureTourModal({
     };
   }, [anchorRect]);
 
+  function handlePrimaryClick(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    event.stopPropagation();
+    onUnderstand();
+  }
+
+  function handleSecondaryClick(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    event.stopPropagation();
+    (onSecondary ?? onClose)?.();
+  }
+
   return (
     <ModalShell
       isOpen={isOpen}
@@ -122,7 +134,7 @@ export function FeatureTourModal({
           <div className="mt-3 flex w-full items-center justify-end">
             <button
               type="button"
-              onClick={onUnderstand}
+              onClick={handlePrimaryClick}
               disabled={!canAdvance || isSaving}
               className="rounded-2xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-300"
             >
@@ -135,7 +147,7 @@ export function FeatureTourModal({
           {secondaryButtonText ? (
             <button
               type="button"
-              onClick={onSecondary ?? onClose}
+              onClick={handleSecondaryClick}
               disabled={isSaving}
               className="rounded-2xl border border-white/80 bg-white/80 px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-60 md:text-base"
             >
@@ -144,7 +156,7 @@ export function FeatureTourModal({
           ) : null}
           <button
             type="button"
-            onClick={onUnderstand}
+            onClick={handlePrimaryClick}
             disabled={isSaving}
             className="rounded-2xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-300 md:text-base"
           >
