@@ -72,6 +72,16 @@ export function FeatureTourModal({
     (onSecondary ?? onClose)?.();
   }
 
+  function handleButtonPressStart(
+    event:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.PointerEvent<HTMLButtonElement>
+      | React.TouchEvent<HTMLButtonElement>
+  ) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
   return (
     <ModalShell
       isOpen={isOpen}
@@ -134,6 +144,9 @@ export function FeatureTourModal({
           <div className="mt-3 flex w-full items-center justify-end">
             <button
               type="button"
+              onMouseDown={handleButtonPressStart}
+              onPointerDown={handleButtonPressStart}
+              onTouchStart={handleButtonPressStart}
               onClick={handlePrimaryClick}
               disabled={!canAdvance || isSaving}
               className="rounded-2xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-300"
@@ -147,6 +160,9 @@ export function FeatureTourModal({
           {secondaryButtonText ? (
             <button
               type="button"
+              onMouseDown={handleButtonPressStart}
+              onPointerDown={handleButtonPressStart}
+              onTouchStart={handleButtonPressStart}
               onClick={handleSecondaryClick}
               disabled={isSaving}
               className="rounded-2xl border border-white/80 bg-white/80 px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-60 md:text-base"
@@ -156,6 +172,9 @@ export function FeatureTourModal({
           ) : null}
           <button
             type="button"
+            onMouseDown={handleButtonPressStart}
+            onPointerDown={handleButtonPressStart}
+            onTouchStart={handleButtonPressStart}
             onClick={handlePrimaryClick}
             disabled={isSaving}
             className="rounded-2xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-300 md:text-base"
