@@ -2,7 +2,7 @@
 "use client";
 export const dynamic = 'force-dynamic';
 
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import DashboardDailyWelcomeModal from "../../components/DashboardDailyWelcomeModal";
 import Link from "next/link";
 import "../../styles/pulse.css";
@@ -153,6 +153,7 @@ export default function DashboardPage() {
   const [dashboardTourStep, setDashboardTourStep] = useState(-1);
   const [dashboardTourAnchor, setDashboardTourAnchor] = useState<{ top: number; left: number; width: number; height: number } | null>(null);
   const [dashboardTourCanAdvance, setDashboardTourCanAdvance] = useState(false);
+  const dashboardTourAdvanceTimeoutRef = useRef<number | null>(null);
   const [dailyRecommendationCard, setDailyRecommendationCard] = useState<DailyRecommendation | null>(null);
   const [isDailyRecommendationLoading, setIsDailyRecommendationLoading] = useState(true);
   const [isOwnerDashboard, setIsOwnerDashboard] = useState(false);
@@ -861,6 +862,14 @@ export default function DashboardPage() {
   }, [activeTourKey]);
 
   useEffect(() => {
+    return () => {
+      if (dashboardTourAdvanceTimeoutRef.current) {
+        clearTimeout(dashboardTourAdvanceTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     if (activeTourKey !== "dashboard" || dashboardTourStep < 0) return;
 
     setDashboardTourCanAdvance(false);
@@ -923,12 +932,28 @@ export default function DashboardPage() {
 
   async function handleTourUnderstand() {
     if (activeTourKey === "dashboard" && dashboardTourStep < 0) {
-      setDashboardTourStep(0);
+      setDashboardTourCanAdvance(false);
+      setDashboardTourAnchor(null);
+      if (dashboardTourAdvanceTimeoutRef.current) {
+        clearTimeout(dashboardTourAdvanceTimeoutRef.current);
+      }
+      dashboardTourAdvanceTimeoutRef.current = window.setTimeout(() => {
+        setDashboardTourStep(0);
+        dashboardTourAdvanceTimeoutRef.current = null;
+      }, 160);
       return;
     }
 
     if (activeTourKey === "dashboard" && dashboardTourStep < DASHBOARD_TOUR_STEPS.length - 1) {
-      setDashboardTourStep((current) => current + 1);
+      setDashboardTourCanAdvance(false);
+      setDashboardTourAnchor(null);
+      if (dashboardTourAdvanceTimeoutRef.current) {
+        clearTimeout(dashboardTourAdvanceTimeoutRef.current);
+      }
+      dashboardTourAdvanceTimeoutRef.current = window.setTimeout(() => {
+        setDashboardTourStep((current) => current + 1);
+        dashboardTourAdvanceTimeoutRef.current = null;
+      }, 160);
       return;
     }
 
@@ -976,6 +1001,10 @@ export default function DashboardPage() {
     setDashboardTourStep(-1);
     setDashboardTourAnchor(null);
     setDashboardTourCanAdvance(false);
+    if (dashboardTourAdvanceTimeoutRef.current) {
+      clearTimeout(dashboardTourAdvanceTimeoutRef.current);
+      dashboardTourAdvanceTimeoutRef.current = null;
+    }
 
     if (nextPath) {
       router.push(nextPath);
@@ -989,6 +1018,10 @@ export default function DashboardPage() {
     setDashboardTourStep(-1);
     setDashboardTourAnchor(null);
     setDashboardTourCanAdvance(false);
+    if (dashboardTourAdvanceTimeoutRef.current) {
+      clearTimeout(dashboardTourAdvanceTimeoutRef.current);
+      dashboardTourAdvanceTimeoutRef.current = null;
+    }
 
     if (nextPath) {
       router.push(nextPath);
