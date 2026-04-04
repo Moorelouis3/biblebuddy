@@ -11,6 +11,9 @@ type FeatureTourModalProps = {
   content?: ReactNode;
   isSaving?: boolean;
   primaryButtonText?: string;
+  secondaryButtonText?: string;
+  onSecondary?: () => void;
+  variant?: "default" | "coachmark";
   onClose: () => void;
   onUnderstand: () => void;
 };
@@ -22,12 +25,31 @@ export function FeatureTourModal({
   content,
   isSaving = false,
   primaryButtonText = "Got it",
+  secondaryButtonText,
+  onSecondary,
+  variant = "default",
   onClose,
   onUnderstand,
 }: FeatureTourModalProps) {
+  const isCoachmark = variant === "coachmark";
+
   return (
-    <ModalShell isOpen={isOpen} onClose={onClose} backdropColor="bg-blue-50/90" scrollable={true}>
-      <div className="relative my-6 flex w-full max-w-[32rem] flex-col items-center rounded-[28px] border border-blue-200 bg-gradient-to-br from-[#eef6ff] via-[#f4f9ff] to-[#eef8f8] px-5 py-5 shadow-2xl sm:px-6 sm:py-6">
+    <ModalShell
+      isOpen={isOpen}
+      onClose={onClose}
+      backdropColor={isCoachmark ? "bg-black/35" : "bg-blue-50/90"}
+      scrollable={!isCoachmark}
+      placement={isCoachmark ? "bottom" : "center"}
+      zIndex={isCoachmark ? "z-[120]" : "z-50"}
+    >
+      <div
+        className={[
+          "relative flex w-full flex-col rounded-[28px] border shadow-2xl",
+          isCoachmark
+            ? "max-w-[28rem] border-[#c9d9f5] bg-gradient-to-br from-[#eef6ff] via-[#f4f8ff] to-[#eefaf6] px-4 py-4 sm:px-5 sm:py-5"
+            : "my-6 max-w-[32rem] items-center border-blue-200 bg-gradient-to-br from-[#eef6ff] via-[#f4f9ff] to-[#eef8f8] px-5 py-5 sm:px-6 sm:py-6",
+        ].join(" ")}
+      >
         <button
           type="button"
           onClick={onClose}
@@ -36,22 +58,41 @@ export function FeatureTourModal({
         >
           X
         </button>
-        <div className="flex w-full flex-col items-center">
-          <LouisAvatar mood="bible" size={64} />
-          <div className="mb-3 mt-3 text-center text-[1.45rem] font-bold leading-tight text-blue-900 sm:text-3xl">{title}</div>
+        <div className={`flex w-full flex-col ${isCoachmark ? "items-start" : "items-center"}`}>
+          <div className={isCoachmark ? "flex items-center gap-3" : "contents"}>
+            <LouisAvatar mood="bible" size={isCoachmark ? 54 : 64} />
+            {isCoachmark ? (
+              <div className="min-w-0">
+                <div className="text-[1.15rem] font-bold leading-tight text-blue-900 sm:text-[1.35rem]">{title}</div>
+              </div>
+            ) : null}
+          </div>
+          {!isCoachmark ? (
+            <div className="mb-3 mt-3 text-center text-[1.45rem] font-bold leading-tight text-blue-900 sm:text-3xl">{title}</div>
+          ) : null}
           <div className="w-full">
-            <div className="mx-auto max-h-[62vh] w-full max-w-2xl overflow-y-auto px-1">
+            <div className={`${isCoachmark ? "mt-3" : "mx-auto max-h-[62vh] max-w-2xl overflow-y-auto px-1"} w-full`}>
               {content ? (
                 content
               ) : (
                 <div className="space-y-4">
-                  <p className="max-w-xl text-center text-sm leading-7 text-gray-600 md:text-[15px]">{body}</p>
+                  <p className={`${isCoachmark ? "text-left" : "max-w-xl text-center"} text-sm leading-7 text-gray-600 md:text-[15px]`}>{body}</p>
                 </div>
               )}
             </div>
           </div>
         </div>
-        <div className="mx-auto mt-5 flex w-full max-w-2xl items-center justify-end gap-3">
+        <div className={`mx-auto mt-5 flex w-full max-w-2xl items-center ${secondaryButtonText ? "justify-between" : "justify-end"} gap-3`}>
+          {secondaryButtonText ? (
+            <button
+              type="button"
+              onClick={onSecondary ?? onClose}
+              disabled={isSaving}
+              className="rounded-2xl border border-white/80 bg-white/80 px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-60 md:text-base"
+            >
+              {secondaryButtonText}
+            </button>
+          ) : null}
           <button
             type="button"
             onClick={onUnderstand}

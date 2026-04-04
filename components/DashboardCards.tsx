@@ -25,6 +25,7 @@ interface DashboardCardsProps {
   dailyRecommendationCardTitle: string | null;
   dailyRecommendationCardSubtitle: string | null;
   onInviteBuddy: () => void;
+  dashboardTourSpotlight?: "overview" | "level" | "recommendation" | "bible" | "group" | "tools" | "games" | "invite" | null;
 }
 
 const DashboardCards: React.FC<DashboardCardsProps> = ({
@@ -40,6 +41,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   dailyRecommendationCardTitle,
   dailyRecommendationCardSubtitle,
   onInviteBuddy,
+  dashboardTourSpotlight = null,
 }) => {
   const [showLevelDetails, setShowLevelDetails] = useState(false);
   const showFreeUpgradeCard = membershipStatus !== "pro" && profile?.is_paid !== true;
@@ -61,10 +63,20 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
             ? "cool"
             : "smile";
 
+  function getSpotlightClasses(target: DashboardCardsProps["dashboardTourSpotlight"]) {
+    if (!dashboardTourSpotlight) return "";
+    return dashboardTourSpotlight === target
+      ? "ring-4 ring-white ring-offset-4 ring-offset-[#9ebcee] shadow-[0_18px_50px_rgba(0,0,0,0.22)] scale-[1.015]"
+      : "opacity-75";
+  }
+
   return (
     <div className="flex flex-col gap-4">
-      <div className={`overflow-hidden rounded-[26px] border shadow-sm ${cardShellTheme.outer}`}>
-        <div className="px-4 py-3.5 md:px-5 md:py-4">
+      <div
+        data-dashboard-tour="overview"
+        className={`overflow-hidden rounded-[26px] border shadow-sm transition duration-300 ${cardShellTheme.outer} ${getSpotlightClasses("overview")}`}
+      >
+        <div data-dashboard-tour="level" className={`px-4 py-3.5 transition duration-300 md:px-5 md:py-4 ${getSpotlightClasses("level")}`}>
           {isLoadingLevel ? (
             <>
               <div className="flex items-center gap-2 mb-2">
@@ -134,7 +146,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           ) : null}
         </div>
 
-        <div className="mx-3 mb-3 px-4 py-2.5 md:mx-4 md:px-5">
+        <div data-dashboard-tour="recommendation" className={`mx-3 mb-3 px-4 py-2.5 transition duration-300 md:mx-4 md:px-5 ${getSpotlightClasses("recommendation")}`}>
           {isLoadingRecommendation ? (
             <div className="flex items-center gap-3">
               <div className="rounded-full bg-white/80 p-1 shadow-sm">
@@ -201,7 +213,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
       )}
 
       <Link href="/reading" onClick={(event) => handleCardClick(event, "bible", "/reading")}>
-        <div className="bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+        <div data-dashboard-tour="bible" className={`bg-blue-100 border border-blue-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition duration-300 ${getSpotlightClasses("bible")}`}>
           <h2 className="text-xl font-semibold">📖 The Bible</h2>
           <p className="text-gray-700 mt-1">Read the complete Bible here</p>
         </div>
@@ -209,7 +221,8 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 
       <Link href="/study-groups" onClick={(event) => handleCardClick(event, "bible_study_hub", "/study-groups")}>
         <div
-          className="rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition"
+          data-dashboard-tour="group"
+          className={`rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition duration-300 ${getSpotlightClasses("group")}`}
           style={{ backgroundColor: "#d4ecd4", borderWidth: 1, borderColor: "#b8ddb8" }}
         >
           <h2 className="text-xl font-semibold">👥 Bible Study Group</h2>
@@ -218,14 +231,14 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
       </Link>
 
       <Link href="/guided-studies" onClick={(event) => handleCardClick(event, "guided_studies", "/guided-studies")}>
-        <div className="bg-[#f6d6d9] border border-[#e8aeb5] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+        <div data-dashboard-tour="tools" className={`bg-[#f6d6d9] border border-[#e8aeb5] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition duration-300 ${getSpotlightClasses("tools")}`}>
           <h2 className="text-xl font-semibold text-gray-900">🔨 Bible Study Tools</h2>
           <p className="text-gray-700 mt-1">A collection of Bible study tools</p>
         </div>
       </Link>
 
       <Link href="/bible-study-games" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-study-games")}>
-        <div className="bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition">
+        <div data-dashboard-tour="games" className={`bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition duration-300 ${getSpotlightClasses("games")}`}>
           <h2 className="text-xl font-semibold">🎮 Bible Study Games</h2>
           <p className="text-gray-700 mt-1">Play our Bible-based games</p>
         </div>
@@ -234,7 +247,8 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
       <button
         type="button"
         onClick={onInviteBuddy}
-        className="w-full text-left bg-[#efe7ff] border border-[#ddd0ff] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition relative"
+        data-dashboard-tour="invite"
+        className={`w-full text-left bg-[#efe7ff] border border-[#ddd0ff] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition duration-300 relative ${getSpotlightClasses("invite")}`}
       >
         <span className="absolute right-4 top-4 text-[#8a63d2] text-base" aria-hidden="true">↗</span>
         <h2 className="text-xl font-semibold text-gray-900">↗ Invite a Bible Buddy</h2>
