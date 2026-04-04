@@ -20,6 +20,7 @@ import { findKeywordNotes, findPersonNotes, findPlaceNotes, saveKeywordNotes, sa
 import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
 import CreditLimitModal from "../../../../components/CreditLimitModal";
 import CommentSection from "../../../../components/comments/CommentSection";
+import { LEVEL_DEFINITIONS } from "../../../../lib/levelSystem";
 
 type Verse = {
   num: number;
@@ -2335,7 +2336,8 @@ function CongratsModalWithConfetti({
     if (!levelInfo) {
       return "Great job — your consistency is paying off!";
     }
-    if (levelInfo.level >= 10) {
+    const topLevel = LEVEL_DEFINITIONS[LEVEL_DEFINITIONS.length - 1]?.level ?? 20;
+    if (levelInfo.level >= topLevel) {
       return "Great job — your consistency is paying off!";
     }
     const template = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
@@ -2529,6 +2531,8 @@ function LevelUpOverlay({
   level: number;
   onClose: () => void;
 }) {
+  const levelDefinition = LEVEL_DEFINITIONS.find((definition) => definition.level === level);
+
   useEffect(() => {
     const duration = 2000;
     const animationEnd = Date.now() + duration;
@@ -2579,11 +2583,17 @@ function LevelUpOverlay({
           <h2 className="text-6xl md:text-7xl font-extrabold mb-4 animate-in zoom-in duration-1000">
             Level {level} Unlocked! 🎉
           </h2>
+          {levelDefinition ? (
+            <p className="text-2xl md:text-3xl font-semibold text-white">
+              {levelDefinition.levelName}
+            </p>
+          ) : null}
           <div className="text-2xl md:text-3xl font-semibold text-blue-300 animate-pulse">
-            Amazing progress!
+            {levelDefinition?.identityText ?? "Amazing progress!"}
           </div>
         </div>
       </div>
     </div>
   );
 }
+

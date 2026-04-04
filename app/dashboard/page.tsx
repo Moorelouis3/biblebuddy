@@ -1786,7 +1786,7 @@ export default function DashboardPage() {
                           Level {definition.level} – {definition.levelName}
                           {" "}
                           <span className="text-xs font-medium text-gray-500">
-                            ({definition.minPoints} to {definition.maxPoints ?? "17,000+"} pts)
+                            ({definition.minPoints.toLocaleString()} to {definition.maxPoints !== null ? definition.maxPoints.toLocaleString() : `${definition.minPoints.toLocaleString()}+`} pts)
                           </span>
                         </p>
                         <p className="text-sm">{definition.identityText}</p>
