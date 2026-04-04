@@ -42,7 +42,19 @@ export function FeatureTourModal({
   const isPrompt = variant === "prompt";
 
   const bubbleStyle = useMemo(() => {
-    if (!anchorRect || typeof window === "undefined") return undefined;
+    if (typeof window === "undefined") return undefined;
+
+    if (isSpeechBubble && !anchorRect) {
+      const bubbleWidth = Math.min(320, window.innerWidth - 24);
+      return {
+        position: "fixed" as const,
+        top: 88,
+        left: Math.max(12, window.innerWidth / 2 - bubbleWidth / 2),
+        width: bubbleWidth,
+      };
+    }
+
+    if (!anchorRect) return undefined;
 
     const bubbleWidth = Math.min(320, window.innerWidth - 24);
     const centeredLeft = anchorRect.left + anchorRect.width / 2 - bubbleWidth / 2;
