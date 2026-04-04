@@ -242,7 +242,7 @@ export default function DashboardPage() {
       body: "This section helps you quickly explore people, places, and keywords to understand biblical context.",
     },
     bible_trivia: {
-      title: "Welcome to Bible Study Games",
+      title: "🎮 Welcome to Bible Study Games",
       body: "This is where you can reinforce what you’ve learned through trivia and Scripture-based games like Scrambled.",
     },
     notes: {
@@ -532,69 +532,37 @@ export default function DashboardPage() {
   );
 
   const BIBLE_TRIVIA_TOUR_CONTENT = (
-    <div className="space-y-6">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
-        🎮 Welcome to Bible Study Games
-      </h1>
-
-      <p className="text-sm md:text-[15px] text-gray-600 leading-7">Test what you know.</p>
-      <p className="text-sm md:text-[15px] text-gray-600 leading-7">Strengthen what you’ve learned.</p>
-      <p className="text-sm md:text-[15px] text-gray-600 leading-7">Discover what you missed.</p>
+    <div className="space-y-4">
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+        Test what you know, strengthen what you learn, and discover what you miss.
         Bible Study Games turns Scripture into active learning.
       </p>
 
-      <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 Trivia + Scrambled</h2>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Each game mode helps you stay engaged with Scripture in a different way.</p>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">You can:</p>
-        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• Use Trivia to test what you remember</li>
-          <li>• Use Scrambled to lock key chapter words into memory</li>
-          <li>• Reinforce what you just read in a focused way</li>
-        </ul>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">The experience starts simple and can keep growing over time.</p>
+      <section className="space-y-1.5">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">Two different games</h2>
       </section>
 
-      <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🧩 Scripture First</h2>
+      <section className="space-y-1.5">
+        <h3 className="text-base md:text-lg font-semibold text-gray-900">Trivia</h3>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-          These games are built around the Bible itself, not random word play.
-        </p>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">That means you can:</p>
-        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• Learn from specific books and chapters</li>
-          <li>• Stay close to the actual words of Scripture</li>
-          <li>• Build retention through repetition</li>
-          <li>• Strengthen recall after reading</li>
-        </ul>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-          The goal is not distraction. The goal is deeper Bible learning.
+          Use Trivia to test what you remember with questions from what you read in a flashcard-style Bible game.
         </p>
       </section>
 
-      <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🧠 Why Trivia Matters</h2>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Reading builds familiarity.</p>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Testing builds retention.</p>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Trivia helps:</p>
-        <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• Lock Scripture into memory</li>
-          <li>• Reveal knowledge gaps</li>
-          <li>• Increase long-term understanding</li>
-        </ul>
+      <section className="space-y-1.5">
+        <h3 className="text-base md:text-lg font-semibold text-gray-900">Scrambled</h3>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-          The more you engage, the stronger your foundation becomes.
+          Use Scrambled, a word-unscrambling game, to lock key chapter words into your memory.
         </p>
       </section>
 
-      <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🚀 Grow Through Repetition</h2>
+      <section className="space-y-1.5">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">Grow through repetition</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
           Use Bible Study Games after reading a chapter, finishing a book, or completing a study.
         </p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-          Learning happens best when you apply what you’ve read.
+          Learning happens best when you apply what you read.
         </p>
       </section>
     </div>
@@ -1703,6 +1671,7 @@ export default function DashboardPage() {
           isOpen={true}
           title={TOUR_COPY[activeTourKey].title}
           body={TOUR_COPY[activeTourKey].body}
+          primaryButtonText={activeTourKey === "bible_trivia" ? "Play Now" : "Got it"}
           content={
             activeTourKey === "dashboard"
               ? DASHBOARD_TOUR_CONTENT
@@ -1842,3 +1811,4 @@ export default function DashboardPage() {
     </>
   );
 }
+
