@@ -289,37 +289,37 @@ export function OnboardingModal({
 
   const title =
     step === 1
-      ? "Welcome to BibleBuddy"
+      ? "Welcome to Bible Buddy"
       : step === 2
-        ? "How did you hear about BibleBuddy?"
+        ? "How did you hear about Bible Buddy?"
         : step === 3
           ? "Where are you in your Bible journey right now?"
           : step === 4
-            ? "What do you hope to get from BibleBuddy?"
+            ? "What do you hope to get from Bible Buddy?"
             : step === 5
               ? "Set up your profile"
               : step === 6
-                ? "What you get inside BibleBuddy"
+                ? "What you get inside Bible Buddy"
                 : step === 7
-                  ? "Use BibleBuddy like an app"
-                  : "Go deeper with BibleBuddy Pro";
+                  ? "Use Bible Buddy like an app"
+                  : "Go deeper with Bible Buddy Pro";
 
   const louisLine =
     step === 1
-      ? "Hey, welcome to BibleBuddy. I am here to help you understand the Bible and actually keep coming back to it."
+      ? "Hey, welcome to Bible Buddy. I am here to help you understand the Bible and actually keep coming back to it."
       : step === 2
-        ? "Help me understand how people are finding us so we can keep growing BibleBuddy the right way."
+        ? "Help me understand how people are finding us so we can keep growing Bible Buddy the right way."
         : step === 3
-          ? "Tell me where you are right now so BibleBuddy can feel a little more like it was made for you."
+          ? "Tell me where you are right now so Bible Buddy can feel a little more like it was made for you."
           : step === 4
             ? "This helps me understand what matters most to you inside the app."
             : step === 5
-              ? "A photo and short bio make BibleBuddy feel like real community, not random usernames."
+              ? "A photo and short bio make Bible Buddy feel like real community, not random usernames."
               : step === 6
                 ? "Here is what is waiting for you inside the app once you finish setup."
                 : step === 7
-                  ? "BibleBuddy is still in beta, but you can already use it like a real app from your home screen."
-                  : "Start free if you want, or unlock the full BibleBuddy study experience right now.";
+                  ? "Bible Buddy is still in beta, but you can already use it like a real app from your home screen."
+                  : "Start free if you want, or unlock the full Bible Buddy study experience right now.";
 
   return (
     <ModalShell isOpen={isOpen} zIndex="z-[200]" backdropColor="bg-black/70" scrollable={true}>
@@ -340,17 +340,19 @@ export function OnboardingModal({
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#42639d]">{progressText}</p>
           </div>
 
-          <div className="mt-5 grid gap-5 md:grid-cols-[250px_minmax(0,1fr)] md:items-start">
-            <div className="rounded-[28px] border border-white/70 bg-white/40 px-4 py-5 shadow-sm">
-              <div className="flex items-center gap-3 md:flex-col md:items-start">
+          <div className="mt-5 space-y-4">
+            <div className="rounded-[28px] border border-white/70 bg-white/40 px-4 py-5 text-center shadow-sm sm:px-5">
+              <div className="mx-auto flex max-w-2xl flex-col items-center">
                 <div className="rounded-full border border-white/80 bg-white/80 p-1.5 shadow-sm">
                   <LouisAvatar mood="wave" size={66} />
                 </div>
-                <div className="min-w-0">
-                  <h2 className="text-[1.45rem] font-bold leading-tight text-[#1f3f77] sm:text-[1.7rem]">{title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-[#4d6082] sm:text-[15px]">{louisLine}</p>
-                  {step === 1 ? <p className="mt-2 text-sm leading-6 text-[#4d6082] sm:text-[15px]">This is a short onboarding to show you how BibleBuddy works and help you get started the right way.</p> : null}
-                </div>
+                <h2 className="mt-3 text-[1.45rem] font-bold leading-tight text-[#1f3f77] sm:text-[1.7rem]">{title}</h2>
+                <p className="mt-2 max-w-xl text-sm leading-6 text-[#4d6082] sm:text-[15px]">{louisLine}</p>
+                {step === 1 ? (
+                  <p className="mt-2 max-w-xl text-sm leading-6 text-[#4d6082] sm:text-[15px]">
+                    This is a short onboarding to show you how Bible Buddy works and help you get started the right way.
+                  </p>
+                ) : null}
               </div>
             </div>
 
@@ -365,9 +367,9 @@ export function OnboardingModal({
               {step === 1 ? (
                 <div className="space-y-4">
                   <div className="rounded-[22px] border border-white/70 bg-white/55 px-4 py-4">
-                    <h3 className="text-sm font-semibold text-gray-900 sm:text-[15px]">What BibleBuddy is really for</h3>
+                    <h3 className="text-sm font-semibold text-gray-900 sm:text-[15px]">What Bible Buddy is really for</h3>
                     <p className="mt-1.5 text-sm leading-6 text-gray-600 sm:text-[15px]">
-                      BibleBuddy is here to help you understand the Bible more clearly, build a habit of coming back to it,
+                      Bible Buddy is here to help you understand the Bible more clearly, build a habit of coming back to it,
                       and keep moving toward a real relationship with God.
                     </p>
                   </div>
@@ -492,7 +494,7 @@ export function OnboardingModal({
                       onChange={(event) => setBio(event.target.value)}
                       maxLength={140}
                       rows={4}
-                      placeholder="A short line about why you are here or what you want from BibleBuddy."
+                      placeholder="A short line about why you are here or what you want from Bible Buddy."
                       className="mt-3 w-full resize-none rounded-[18px] border border-white/80 bg-white/90 px-4 py-3 text-sm text-gray-700 outline-none transition focus:border-[#8cb0ec] focus:ring-2 focus:ring-[#cfe0ff] sm:text-[15px]"
                     />
                     <p className="mt-2 text-right text-xs text-gray-500">{bio.length}/140</p>
@@ -503,7 +505,7 @@ export function OnboardingModal({
               {step === 6 ? (
                 <div className="grid gap-3 sm:grid-cols-2">
                   <Feature title="The Bible" description="Read an interactive Bible, track your progress chapter by chapter, and switch between WEB, ASV, and KJV." />
-                  <Feature title="BibleBuddy Study Group" description="Join weekly studies, share daily insights, and grow with other Bible Buddies in one place." />
+                  <Feature title="Bible Buddy Study Group" description="Join weekly studies, share daily insights, and grow with other Bible Buddies in one place." />
                   <Feature title="Bible Study Tools" description="Use devotionals, reading plans, people, places, keywords, and your own study notes to go deeper." />
                   <Feature title="Bible Study Games" description="Play Bible Trivia and Scrambled to help lock key Bible ideas and chapter words into your memory." />
                 </div>
@@ -512,30 +514,30 @@ export function OnboardingModal({
               {step === 7 ? (
                 <div className="space-y-4">
                   <div className="rounded-[22px] border border-white/70 bg-white/55 px-4 py-4">
-                    <h3 className="text-sm font-semibold text-gray-900 sm:text-[15px]">BibleBuddy is still in beta</h3>
+                    <h3 className="text-sm font-semibold text-gray-900 sm:text-[15px]">Bible Buddy is still in beta</h3>
                     <p className="mt-1.5 text-sm leading-6 text-gray-600 sm:text-[15px]">
-                      That is why we are not in the App Store or Play Store yet, but you can still use BibleBuddy like an app.
+                      That is why we are not in the App Store or Play Store yet, but you can still use Bible Buddy like an app.
                     </p>
                   </div>
 
                   {isStandalone ? (
                     <div className="rounded-[22px] border border-white/70 bg-white/55 px-4 py-4">
                       <h3 className="text-sm font-semibold text-gray-900 sm:text-[15px]">You are already set up</h3>
-                      <p className="mt-1.5 text-sm leading-6 text-gray-600 sm:text-[15px]">BibleBuddy is already on your home screen.</p>
+                      <p className="mt-1.5 text-sm leading-6 text-gray-600 sm:text-[15px]">Bible Buddy is already on your home screen.</p>
                     </div>
                   ) : isIOS ? (
                     <div className="rounded-[22px] border border-white/70 bg-white/55 px-4 py-4">
                       <h3 className="text-sm font-semibold text-gray-900 sm:text-[15px]">Add it on iPhone or iPad</h3>
                       <ol className="mt-2 space-y-2 text-sm leading-6 text-gray-600 sm:text-[15px]">
-                        <li>1. Open BibleBuddy in Safari.</li>
+                        <li>1. Open Bible Buddy in Safari.</li>
                         <li>2. Tap Share.</li>
                         <li>3. Tap Add to Home Screen.</li>
                       </ol>
                     </div>
                   ) : canInstall ? (
                     <div className="rounded-[22px] border border-white/70 bg-white/55 px-4 py-4">
-                      <h3 className="text-sm font-semibold text-gray-900 sm:text-[15px]">Add BibleBuddy to your home screen</h3>
-                      <p className="mt-1.5 text-sm leading-6 text-gray-600 sm:text-[15px]">One tap and BibleBuddy opens like an app.</p>
+                      <h3 className="text-sm font-semibold text-gray-900 sm:text-[15px]">Add Bible Buddy to your home screen</h3>
+                      <p className="mt-1.5 text-sm leading-6 text-gray-600 sm:text-[15px]">One tap and Bible Buddy opens like an app.</p>
                       <button
                         type="button"
                         onClick={() => void onInstallPrompt?.()}
@@ -584,7 +586,7 @@ export function OnboardingModal({
                       <div className="mt-4 rounded-[18px] border border-[#cfe0ff] bg-[#f4f8ff] px-3 py-3">
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4f7fd6]">What You Unlock</p>
                         <p className="mt-1 text-sm leading-6 text-gray-600">
-                          Study without daily limits and use the full BibleBuddy experience the way it was meant to feel.
+                          Study without daily limits and use the full Bible Buddy experience the way it was meant to feel.
                         </p>
                       </div>
                     </div>
