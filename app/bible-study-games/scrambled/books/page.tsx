@@ -68,7 +68,7 @@ export default function ScrambledBooksPage() {
               <p className="mb-2">
                 Pick a book of the Bible, and I&apos;ll give you Scripture words to unscramble from it.
               </p>
-              <p>Genesis, Exodus, Leviticus, Numbers, Deuteronomy, and Joshua are live now, and the rest of the books can open up naturally as we add more packs.</p>
+              <p>Genesis, Exodus, Leviticus, Numbers, Deuteronomy, Joshua, Judges, Ruth, 1 Samuel, 2 Samuel, and 1 Kings are live now, and the rest of the books can open up naturally as we add more packs.</p>
             </div>
           </div>
 
