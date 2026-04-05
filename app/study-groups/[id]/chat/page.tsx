@@ -2116,9 +2116,7 @@ RULES:
       setUserCurrentStreak(resolvedCurrentStreak);
       const normalizedTours = normalizeFeatureTours(profile?.feature_tours);
       setFeatureTours(normalizedTours);
-      if (normalizedTours.bible_study_hub !== true) {
-        setShowGroupTour(true);
-      }
+      setShowGroupTour(false);
 
       if (profile && profile.current_streak !== resolvedCurrentStreak) {
         await supabase
