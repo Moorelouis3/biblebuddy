@@ -2460,6 +2460,58 @@ function createSecondThessaloniansChapter(
   };
 }
 
+function createFirstTimothyChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `1 Timothy ${chapter}`,
+    description,
+    questions: createQuestions("1timothy", chapter, questions),
+  };
+}
+
+function createSecondTimothyChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `2 Timothy ${chapter}`,
+    description,
+    questions: createQuestions("2timothy", chapter, questions),
+  };
+}
+
+function createTitusChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Titus ${chapter}`,
+    description,
+    questions: createQuestions("titus", chapter, questions),
+  };
+}
+
+function createPhilemonChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Philemon ${chapter}`,
+    description,
+    questions: createQuestions("philemon", chapter, questions),
+  };
+}
+
 const GENESIS_CHAPTERS: ScrambledChapterPack[] = [
   createGenesisChapter(1, "Creation unfolds in order as God speaks light, sky, land, life, and humanity into place.", [
     ["light", "Genesis 1:3", "Let there be light", "The first thing God speaks into existence.", "easy"],
@@ -8736,6 +8788,116 @@ const SECOND_THESSALONIANS_CHAPTERS: ScrambledChapterPack[] = [
   ]),
 ];
 
+const FIRST_TIMOTHY_CHAPTERS: ScrambledChapterPack[] = [
+  createFirstTimothyChapter(1, "Paul charges Timothy to guard sound doctrine, reject empty teaching, and remember the mercy of Christ toward sinners.", [
+    ["doctrine", "1 Timothy 1:3", "that they teach no other doctrine", "What Timothy is to stop people from teaching.", "medium"],
+    ["faith", "1 Timothy 1:4", "godly edifying which is in faith", "What God's work is based on.", "easy"],
+    ["love", "1 Timothy 1:5", "the end of the commandment is charity", "What the goal of the command is.", "easy"],
+    ["sinners", "1 Timothy 1:15", "Christ Jesus came into the world to save sinners", "Who Christ Jesus came into the world to save.", "easy"],
+    ["mercy", "1 Timothy 1:16", "I obtained mercy", "What Paul says he received as a pattern.", "medium"],
+  ]),
+  createFirstTimothyChapter(2, "Paul teaches prayer for all people, the one Mediator, and godly order in worship and conduct.", [
+    ["prayer", "1 Timothy 2:1", "supplications, prayers, intercessions", "What Paul first urges for all people.", "easy"],
+    ["truth", "1 Timothy 2:4", "come unto the knowledge of the truth", "What God wants all people to come to know.", "easy"],
+    ["mediator", "1 Timothy 2:5", "one mediator between God and men", "What Jesus Christ is between God and men.", "hard"],
+    ["ransom", "1 Timothy 2:6", "who gave himself a ransom for all", "What Christ gave Himself as.", "medium"],
+    ["modesty", "1 Timothy 2:9", "that women adorn themselves in modest apparel", "The quality Paul connects with apparel.", "hard"],
+  ]),
+  createFirstTimothyChapter(3, "Paul gives qualifications for overseers and deacons and celebrates the mystery of godliness centered in Christ.", [
+    ["bishop", "1 Timothy 3:1", "if a man desire the office of a bishop", "The leadership office named first in this chapter.", "medium"],
+    ["blameless", "1 Timothy 3:2", "A bishop then must be blameless", "How an overseer must be.", "hard"],
+    ["teach", "1 Timothy 3:2", "apt to teach", "What an overseer must be able to do.", "easy"],
+    ["deacons", "1 Timothy 3:8", "Likewise must the deacons be grave", "The second church office described in this chapter.", "medium"],
+    ["truth", "1 Timothy 3:15", "the pillar and ground of the truth", "What the church is called the pillar and ground of.", "easy"],
+  ]),
+  createFirstTimothyChapter(4, "Paul warns against later false teaching and tells Timothy to train himself in godliness, Scripture, teaching, and example.", [
+    ["spirit", "1 Timothy 4:1", "the Spirit speaketh expressly", "Who speaks expressly about later times.", "easy"],
+    ["demons", "1 Timothy 4:1", "doctrines of devils", "A modern word for the devils behind false teachings.", "medium"],
+    ["godliness", "1 Timothy 4:8", "godliness is profitable unto all things", "What is profitable for both this life and the life to come.", "medium"],
+    ["example", "1 Timothy 4:12", "be thou an example of the believers", "What Timothy is told to be to believers.", "easy"],
+    ["doctrine", "1 Timothy 4:16", "take heed unto thyself, and unto the doctrine", "What Timothy must watch closely along with his life.", "medium"],
+  ]),
+  createFirstTimothyChapter(5, "Paul teaches Timothy how to treat believers like family, care for widows, honor faithful elders, and act without partiality.", [
+    ["fathers", "1 Timothy 5:1", "intreat him as a father", "How Timothy is to treat older men.", "easy"],
+    ["widows", "1 Timothy 5:3", "Honour widows that are widows indeed", "Who the church is to honor in need.", "easy"],
+    ["provide", "1 Timothy 5:8", "if any provide not for his own", "What a person must do for relatives and family.", "medium"],
+    ["honour", "1 Timothy 5:17", "worthy of double honour", "What ruling elders who labor well are worthy of.", "medium"],
+    ["witnesses", "1 Timothy 5:19", "before two or three witnesses", "How many are needed for an accusation against an elder.", "hard"],
+  ]),
+  createFirstTimothyChapter(6, "Paul warns against greed, calls Timothy to flee love of money, fight the good fight, and guard what was entrusted to him.", [
+    ["gain", "1 Timothy 6:6", "godliness with contentment is great gain", "What godliness with contentment is called.", "easy"],
+    ["money", "1 Timothy 6:10", "the love of money is the root", "What love is described as a root of all kinds of evil.", "easy"],
+    ["fight", "1 Timothy 6:12", "Fight the good fight of faith", "What Timothy is told to do with faith.", "easy"],
+    ["light", "1 Timothy 6:16", "dwelling in the light which no man can approach unto", "What unapproachable place God dwells in.", "medium"],
+    ["knowledge", "1 Timothy 6:20", "science falsely so called", "The falsely named thing Timothy must avoid.", "hard"],
+  ]),
+];
+
+const SECOND_TIMOTHY_CHAPTERS: ScrambledChapterPack[] = [
+  createSecondTimothyChapter(1, "Paul urges Timothy toward courage, sound doctrine, and bold loyalty to the gospel in the face of suffering.", [
+    ["gift", "2 Timothy 1:6", "stir up the gift of God", "What Timothy is told to stir up.", "easy"],
+    ["fear", "2 Timothy 1:7", "God hath not given us the spirit of fear", "What spirit God has not given.", "easy"],
+    ["power", "2 Timothy 1:7", "but of power, and of love", "The first thing named in the spirit God has given.", "easy"],
+    ["ashamed", "2 Timothy 1:8", "Be not thou therefore ashamed", "What Timothy is told not to be of the testimony of the Lord.", "medium"],
+    ["deposit", "2 Timothy 1:14", "That good thing which was committed unto thee keep", "A modern word for the good thing entrusted to Timothy.", "hard"],
+  ]),
+  createSecondTimothyChapter(2, "Paul calls Timothy to endurance, faithful teaching, disciplined living, gentle correction, and a clean life fit for the Master's use.", [
+    ["grace", "2 Timothy 2:1", "be strong in the grace", "What Timothy is to be strong in.", "easy"],
+    ["soldier", "2 Timothy 2:3", "as a good soldier of Jesus Christ", "The first endurance picture Paul uses.", "easy"],
+    ["farmer", "2 Timothy 2:6", "The husbandman that laboureth", "The working image Paul uses for patient reward.", "medium"],
+    ["truth", "2 Timothy 2:15", "rightly dividing the word of truth", "What word Timothy must handle rightly.", "easy"],
+    ["vessel", "2 Timothy 2:21", "he shall be a vessel unto honour", "What a cleansed believer becomes unto honour.", "hard"],
+  ]),
+  createSecondTimothyChapter(3, "Paul warns about the last days, godless people, persecution, and the life-giving, God-breathed Scriptures Timothy has known since childhood.", [
+    ["perilous", "2 Timothy 3:1", "perilous times shall come", "How the last days are described.", "hard"],
+    ["power", "2 Timothy 3:5", "denying the power thereof", "What false godliness denies.", "easy"],
+    ["persecuted", "2 Timothy 3:12", "shall suffer persecution", "What everyone living godly in Christ Jesus will be.", "medium"],
+    ["scripture", "2 Timothy 3:16", "All scripture is given by inspiration of God", "What is said to be God-breathed.", "easy"],
+    ["righteousness", "2 Timothy 3:16", "instruction in righteousness", "What Scripture trains people in.", "hard"],
+  ]),
+  createSecondTimothyChapter(4, "Paul charges Timothy to preach the word, stay faithful to the end, and shares his own final testimony of a finished race and guarded faith.", [
+    ["preach", "2 Timothy 4:2", "Preach the word", "What Timothy is told to do first in this chapter.", "easy"],
+    ["myths", "2 Timothy 4:4", "shall be turned unto fables", "A modern word for the fables people turn to.", "medium"],
+    ["race", "2 Timothy 4:7", "I have finished my course", "A modern word for the course Paul says he has finished.", "medium"],
+    ["crown", "2 Timothy 4:8", "a crown of righteousness", "What is laid up for Paul.", "easy"],
+    ["parchments", "2 Timothy 4:13", "especially the parchments", "What Paul especially asks Timothy to bring.", "hard"],
+  ]),
+];
+
+const TITUS_CHAPTERS: ScrambledChapterPack[] = [
+  createTitusChapter(1, "Paul leaves Titus in Crete to appoint elders, protect sound doctrine, and silence destructive teachers.", [
+    ["elders", "Titus 1:5", "ordain elders in every city", "Who Titus is told to appoint in every city.", "easy"],
+    ["blameless", "Titus 1:6", "if any be blameless", "How an elder must be described.", "hard"],
+    ["doctrine", "Titus 1:9", "exhort and to convince the gainsayers", "The sound teaching elders must hold fast to.", "medium"],
+    ["gain", "Titus 1:11", "for filthy lucre's sake", "The dishonest motive behind false teaching.", "medium"],
+    ["truth", "Titus 1:14", "turn from the truth", "What false teachers turn away from.", "easy"],
+  ]),
+  createTitusChapter(2, "Paul teaches different groups in the church how to live in self-control, dignity, and grace-shaped obedience.", [
+    ["temperate", "Titus 2:2", "That the aged men be sober", "One of the first qualities older men are told to have.", "hard"],
+    ["modesty", "Titus 2:3", "in behaviour as becometh holiness", "A one-word summary of the holy behavior urged in this chapter.", "hard"],
+    ["grace", "Titus 2:11", "For the grace of God that bringeth salvation", "What has appeared bringing salvation.", "easy"],
+    ["godly", "Titus 2:12", "we should live soberly, righteously, and godly", "How believers are to live in this present world.", "medium"],
+    ["works", "Titus 2:14", "zealous of good works", "What Christ's redeemed people are to be zealous for.", "easy"],
+  ]),
+  createTitusChapter(3, "Paul reminds believers of mercy, renewal, good works, humility, and avoiding divisive quarrels that damage the church.", [
+    ["mercy", "Titus 3:5", "according to his mercy he saved us", "What God saved us according to.", "easy"],
+    ["renewing", "Titus 3:5", "renewing of the Holy Ghost", "The Spirit's work named with washing of regeneration.", "hard"],
+    ["heirs", "Titus 3:7", "made heirs according to the hope", "What justified believers are made according to hope.", "medium"],
+    ["good", "Titus 3:8", "maintain good works", "The adjective describing the works believers should maintain.", "easy"],
+    ["divisive", "Titus 3:10", "A man that is an heretick", "A modern word for the factious person Titus must warn and reject.", "medium"],
+  ]),
+];
+
+const PHILEMON_CHAPTERS: ScrambledChapterPack[] = [
+  createPhilemonChapter(1, "Paul appeals for Onesimus with tenderness, reconciliation, and gospel-shaped love that restores broken relationships.", [
+    ["love", "Philemon 1:5", "hearing of thy love and faith", "What Paul hears Philemon has toward the Lord and the saints.", "easy"],
+    ["heart", "Philemon 1:7", "the bowels of the saints are refreshed", "A modern word for the inner life Philemon refreshed in the saints.", "medium"],
+    ["onesimus", "Philemon 1:10", "I beseech thee for my son Onesimus", "The man Paul pleads for in this letter.", "easy"],
+    ["brother", "Philemon 1:16", "above a servant, a brother beloved", "How Paul says Onesimus should now be received.", "easy"],
+    ["charge", "Philemon 1:18", "put that on mine account", "What Paul says to do with anything Onesimus owes.", "medium"],
+  ]),
+];
+
 export const SCRAMBLED_BOOKS: ScrambledBookPack[] = [
   {
     slug: "genesis",
@@ -9256,6 +9418,46 @@ export const SCRAMBLED_BOOKS: ScrambledBookPack[] = [
       "2 Thessalonians keeps believers steady when confusion and pressure rise. These Scrambled packs keep the big words about endurance, judgment, truth, work, peace, and Christ's return close to your memory chapter by chapter.",
     accentClassName: "border-[#f0d6dc] bg-[#fff0f4]",
     chapters: SECOND_THESSALONIANS_CHAPTERS,
+  },
+  {
+    slug: "1timothy",
+    name: "1 Timothy",
+    shortLabel: "Sound doctrine, church order, godliness, faithful leadership, and steady warnings against false teaching.",
+    shortDescription: "Play through all 6 1 Timothy chapters with Scripture words tied to doctrine, prayer, leadership, godliness, honor, and faithful endurance.",
+    louisIntro:
+      "1 Timothy is practical, pastoral, and deeply steadying. These Scrambled packs keep the big words about doctrine, prayer, leadership, godliness, honor, and faithful endurance close to your memory chapter by chapter.",
+    accentClassName: "border-[#d3e5db] bg-[#edf8f2]",
+    chapters: FIRST_TIMOTHY_CHAPTERS,
+  },
+  {
+    slug: "2timothy",
+    name: "2 Timothy",
+    shortLabel: "Courage, endurance, faithful teaching, Scripture, and a strong finish in the face of suffering.",
+    shortDescription: "Play through all 4 2 Timothy chapters with Scripture words tied to courage, endurance, sound doctrine, Scripture, and finishing well.",
+    louisIntro:
+      "2 Timothy is personal, urgent, and full of steady courage. These Scrambled packs keep the big words about grace, endurance, Scripture, faithfulness, and finishing well close to your memory chapter by chapter.",
+    accentClassName: "border-[#e7d3c8] bg-[#fff1ea]",
+    chapters: SECOND_TIMOTHY_CHAPTERS,
+  },
+  {
+    slug: "titus",
+    name: "Titus",
+    shortLabel: "Healthy leadership, sound doctrine, grace-shaped living, and good works that make the gospel attractive.",
+    shortDescription: "Play through all 3 Titus chapters with Scripture words tied to elders, doctrine, grace, mercy, and good works.",
+    louisIntro:
+      "Titus is short, sharp, and deeply practical. These Scrambled packs keep the big words about leadership, doctrine, grace, mercy, and good works close to your memory chapter by chapter.",
+    accentClassName: "border-[#f2d9b5] bg-[#fff4e3]",
+    chapters: TITUS_CHAPTERS,
+  },
+  {
+    slug: "philemon",
+    name: "Philemon",
+    shortLabel: "A short personal letter about forgiveness, welcome, debt, and receiving a restored brother in the Lord.",
+    shortDescription: "Play through Philemon with Scripture words tied to love, refreshment, Onesimus, brotherhood, and gospel-shaped reconciliation.",
+    louisIntro:
+      "Philemon is short, personal, and deeply moving. This Scrambled pack keeps the big words about love, welcome, debt, forgiveness, and reconciliation close to your memory as you work through the letter.",
+    accentClassName: "border-[#d9cee8] bg-[#f2ebfb]",
+    chapters: PHILEMON_CHAPTERS,
   },
 ];
 
