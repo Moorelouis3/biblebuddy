@@ -89,5 +89,5 @@ export const BIBLE_GAME_PEOPLE: BibleGamePerson[] = [
 
 export const FREE_TRIVIA_BOOK_KEYS = new Set(["genesis", "exodus", "leviticus", "numbers"]);
 export const FREE_TRIVIA_PERSON_KEYS = new Set(["god", "jesus"]);
-export const SCRAMBLED_LIVE_BOOK_KEYS = new Set(["genesis", "exodus", "leviticus", "numbers", "deuteronomy", "joshua", "judges", "ruth", "1samuel", "2samuel", "1kings"]);
+export const SCRAMBLED_LIVE_BOOK_KEYS = new Set(["genesis", "exodus", "leviticus", "numbers", "deuteronomy", "joshua", "judges", "ruth", "1samuel", "2samuel", "1kings", "2kings", "1chronicles", "2chronicles", "ezra", "nehemiah", "esther", "job", "psalms", "proverbs", "ecclesiastes", "songofsongs", "isaiah", "jeremiah", "lamentations", "ezekiel", "daniel", "hosea", "joel"]);
 export const BIBLE_GAME_ITEMS_PER_PAGE = 12;
