@@ -2148,6 +2148,318 @@ function createJoelChapter(
   };
 }
 
+function createAmosChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Amos ${chapter}`,
+    description,
+    questions: createQuestions("amos", chapter, questions),
+  };
+}
+
+function createObadiahChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Obadiah ${chapter}`,
+    description,
+    questions: createQuestions("obadiah", chapter, questions),
+  };
+}
+
+function createJonahChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Jonah ${chapter}`,
+    description,
+    questions: createQuestions("jonah", chapter, questions),
+  };
+}
+
+function createMicahChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Micah ${chapter}`,
+    description,
+    questions: createQuestions("micah", chapter, questions),
+  };
+}
+
+function createNahumChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Nahum ${chapter}`,
+    description,
+    questions: createQuestions("nahum", chapter, questions),
+  };
+}
+
+function createHabakkukChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Habakkuk ${chapter}`,
+    description,
+    questions: createQuestions("habakkuk", chapter, questions),
+  };
+}
+
+function createZephaniahChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Zephaniah ${chapter}`,
+    description,
+    questions: createQuestions("zephaniah", chapter, questions),
+  };
+}
+
+function createHaggaiChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Haggai ${chapter}`,
+    description,
+    questions: createQuestions("haggai", chapter, questions),
+  };
+}
+
+function createZechariahChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Zechariah ${chapter}`,
+    description,
+    questions: createQuestions("zechariah", chapter, questions),
+  };
+}
+
+function createMalachiChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Malachi ${chapter}`,
+    description,
+    questions: createQuestions("malachi", chapter, questions),
+  };
+}
+
+function createMatthewChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Matthew ${chapter}`,
+    description,
+    questions: createQuestions("matthew", chapter, questions),
+  };
+}
+
+function createMarkChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Mark ${chapter}`,
+    description,
+    questions: createQuestions("mark", chapter, questions),
+  };
+}
+
+function createLukeChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Luke ${chapter}`,
+    description,
+    questions: createQuestions("luke", chapter, questions),
+  };
+}
+
+function createJohnChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `John ${chapter}`,
+    description,
+    questions: createQuestions("john", chapter, questions),
+  };
+}
+
+function createActsChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Acts ${chapter}`,
+    description,
+    questions: createQuestions("acts", chapter, questions),
+  };
+}
+
+function createRomansChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Romans ${chapter}`,
+    description,
+    questions: createQuestions("romans", chapter, questions),
+  };
+}
+
+function createFirstCorinthiansChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `1 Corinthians ${chapter}`,
+    description,
+    questions: createQuestions("1corinthians", chapter, questions),
+  };
+}
+
+function createSecondCorinthiansChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `2 Corinthians ${chapter}`,
+    description,
+    questions: createQuestions("2corinthians", chapter, questions),
+  };
+}
+
+function createGalatiansChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Galatians ${chapter}`,
+    description,
+    questions: createQuestions("galatians", chapter, questions),
+  };
+}
+
+function createEphesiansChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Ephesians ${chapter}`,
+    description,
+    questions: createQuestions("ephesians", chapter, questions),
+  };
+}
+
+function createPhilippiansChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Philippians ${chapter}`,
+    description,
+    questions: createQuestions("philippians", chapter, questions),
+  };
+}
+
+function createColossiansChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Colossians ${chapter}`,
+    description,
+    questions: createQuestions("colossians", chapter, questions),
+  };
+}
+
+function createFirstThessaloniansChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `1 Thessalonians ${chapter}`,
+    description,
+    questions: createQuestions("1thessalonians", chapter, questions),
+  };
+}
+
+function createSecondThessaloniansChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `2 Thessalonians ${chapter}`,
+    description,
+    questions: createQuestions("2thessalonians", chapter, questions),
+  };
+}
+
 const GENESIS_CHAPTERS: ScrambledChapterPack[] = [
   createGenesisChapter(1, "Creation unfolds in order as God speaks light, sky, land, life, and humanity into place.", [
     ["light", "Genesis 1:3", "Let there be light", "The first thing God speaks into existence.", "easy"],
@@ -6672,6 +6984,1758 @@ const JOEL_CHAPTERS: ScrambledChapterPack[] = [
   ]),
 ];
 
+const AMOS_CHAPTERS: ScrambledChapterPack[] = [
+  createAmosChapter(1, "Amos introduces himself, announces that the LORD roars from Zion, and begins a series of judgments on the nations.", [
+    ["tekoa", "Amos 1:1", "which was among the herdmen of Tekoa", "The town Amos came from.", "medium"],
+    ["herdmen", "Amos 1:1", "among the herdmen of Tekoa", "Amos's occupation at the start.", "hard"],
+    ["zion", "Amos 1:2", "The LORD will roar from Zion", "The place the LORD roars from.", "easy"],
+    ["carmel", "Amos 1:2", "the top of Carmel shall wither", "The mountain top said to wither.", "medium"],
+    ["damascus", "Amos 1:3", "For three transgressions of Damascus", "The first nation named in the judgments.", "hard"],
+  ]),
+  createAmosChapter(2, "Judgment continues on Moab, Judah, and especially Israel for rejecting God's law and oppressing the poor.", [
+    ["moab", "Amos 2:1", "For three transgressions of Moab", "The nation first addressed in Amos 2.", "easy"],
+    ["judah", "Amos 2:4", "For three transgressions of Judah", "The kingdom judged for rejecting the law.", "easy"],
+    ["silver", "Amos 2:6", "they sold the righteous for silver", "What the righteous were sold for.", "easy"],
+    ["poor", "Amos 2:6", "and the poor for a pair of shoes", "The people Israel was accused of selling cheaply.", "easy"],
+    ["amorite", "Amos 2:9", "Yet destroyed I the Amorite before them", "The people God reminds Israel He destroyed before them.", "medium"],
+  ]),
+  createAmosChapter(3, "Because Israel is uniquely known by God, their sins bring a unique accountability and coming judgment.", [
+    ["family", "Amos 3:1", "against the whole family", "Who the LORD speaks against in this chapter.", "easy"],
+    ["known", "Amos 3:2", "You only have I known", "What God says about Israel among all families of the earth.", "medium"],
+    ["lion", "Amos 3:4", "Will a lion roar in the forest", "The animal used in Amos's chain of questions.", "easy"],
+    ["samaria", "Amos 3:9", "publish in the palaces at Ashdod, and in the palaces in the land of Egypt", "The city whose unrest and oppression are to be seen.", "medium"],
+    ["bethel", "Amos 3:14", "I will visit the altars of Bethel", "The worship center whose altars will be judged.", "hard"],
+  ]),
+  createAmosChapter(4, "The people keep refusing to return to God despite repeated warnings through hardship, famine, drought, and disaster.", [
+    ["bashan", "Amos 4:1", "ye kine of Bashan", "The region named in the rebuke to wealthy women.", "hard"],
+    ["hooks", "Amos 4:2", "he will take you away with hooks", "What they will be taken away with.", "medium"],
+    ["gilgal", "Amos 4:4", "and at Gilgal multiply transgression", "The place named with Bethel in ironic condemnation.", "hard"],
+    ["return", "Amos 4:6", "yet have ye not returned unto me", "What God says they refused to do again and again.", "easy"],
+    ["god", "Amos 4:12", "prepare to meet thy God", "Who Israel is told to prepare to meet.", "easy"],
+  ]),
+  createAmosChapter(5, "A lament is raised over Israel, and the people are called to seek the LORD, hate evil, and let justice roll.", [
+    ["lamentation", "Amos 5:1", "Hear ye this word which I take up against you, even a lamentation", "What Amos takes up over Israel.", "hard"],
+    ["fallen", "Amos 5:2", "The virgin of Israel is fallen", "What Israel is said to be.", "medium"],
+    ["seek", "Amos 5:4", "Seek ye me, and ye shall live", "What the LORD tells the people to do.", "easy"],
+    ["justice", "Amos 5:24", "But let judgment run down as waters", "What should run down like waters.", "medium"],
+    ["waters", "Amos 5:24", "let judgment run down as waters", "What justice is compared to in the famous line.", "easy"],
+  ]),
+  createAmosChapter(6, "The complacent and wealthy are warned that luxury and self-confidence will not save them from exile.", [
+    ["ease", "Amos 6:1", "Woe to them that are at ease in Zion", "The condition of the complacent people warned here.", "easy"],
+    ["ivory", "Amos 6:4", "that lie upon beds of ivory", "The material their beds are made from.", "medium"],
+    ["bowls", "Amos 6:6", "that drink wine in bowls", "What they drink wine out of.", "medium"],
+    ["joseph", "Amos 6:6", "but they are not grieved for the affliction of Joseph", "The name tied to the nation's ruin they ignore.", "medium"],
+    ["exile", "Amos 6:7", "Therefore now shall they go captive", "What is coming first upon them.", "easy"],
+  ]),
+  createAmosChapter(7, "Amos sees visions of locusts, fire, and a plumbline, and then clashes with Amaziah the priest of Bethel.", [
+    ["locusts", "Amos 7:1", "he formed grasshoppers", "The first vision Amos sees.", "medium"],
+    ["fire", "Amos 7:4", "the Lord GOD called to contend by fire", "The second vision Amos sees.", "easy"],
+    ["plumbline", "Amos 7:7", "the Lord stood upon a wall made by a plumbline", "The measuring tool in the third vision.", "hard"],
+    ["amaziah", "Amos 7:10", "Then Amaziah the priest of Bethel sent to Jeroboam", "The priest who opposed Amos.", "hard"],
+    ["bethel", "Amos 7:13", "but prophesy not again any more at Bethel", "The place Amos is told not to prophesy anymore.", "medium"],
+  ]),
+  createAmosChapter(8, "The basket of summer fruit shows that the end has come, and a famine of hearing God's word is announced.", [
+    ["fruit", "Amos 8:1", "a basket of summer fruit", "What Amos sees in the vision.", "easy"],
+    ["end", "Amos 8:2", "The end is come upon my people of Israel", "What the basket symbolizes.", "easy"],
+    ["balances", "Amos 8:5", "falsifying the balances by deceit", "What the dishonest merchants falsify.", "hard"],
+    ["famine", "Amos 8:11", "I will send a famine in the land", "What God says He will send, though not of bread.", "easy"],
+    ["word", "Amos 8:11", "a famine ... of hearing the words of the LORD", "What people will hunger to hear.", "easy"],
+  ]),
+  createAmosChapter(9, "The LORD stands by the altar in judgment, yet the book ends with the restoration of David's fallen tabernacle.", [
+    ["altar", "Amos 9:1", "I saw the Lord standing upon the altar", "Where the Lord is standing in the vision.", "easy"],
+    ["escape", "Amos 9:1", "he that fleeth of them shall not flee away", "What no sinner will be able to do.", "medium"],
+    ["david", "Amos 9:11", "I will raise up the tabernacle of David", "Whose fallen tabernacle will be raised up.", "easy"],
+    ["tabernacle", "Amos 9:11", "the tabernacle of David that is fallen", "What God promises to rebuild.", "hard"],
+    ["reaper", "Amos 9:13", "the plowman shall overtake the reaper", "The worker overtaken in Amos's picture of abundance.", "medium"],
+  ]),
+];
+
+const OBADIAH_CHAPTERS: ScrambledChapterPack[] = [
+  createObadiahChapter(1, "Obadiah announces judgment on proud Edom for violence against Jacob, then ends with deliverance in Zion and the LORD's kingdom.", [
+    ["edom", "Obadiah 1:1", "we have heard a rumour from the LORD ... against Edom", "The nation Obadiah's vision is against.", "easy"],
+    ["pride", "Obadiah 1:3", "The pride of thine heart hath deceived thee", "What deceived Edom's heart.", "easy"],
+    ["eagle", "Obadiah 1:4", "Though thou exalt thyself as the eagle", "The bird image used for Edom's height.", "medium"],
+    ["zion", "Obadiah 1:17", "upon mount Zion shall be deliverance", "The mountain where deliverance will be found.", "easy"],
+    ["kingdom", "Obadiah 1:21", "and the kingdom shall be the LORD'S", "What the final verse says belongs to the LORD.", "medium"],
+  ]),
+];
+
+const JONAH_CHAPTERS: ScrambledChapterPack[] = [
+  createJonahChapter(1, "Jonah runs from the LORD, a great storm rises, and he is thrown into the sea before a great fish is appointed.", [
+    ["nineveh", "Jonah 1:2", "Arise, go to Nineveh", "The city Jonah was told to go to.", "easy"],
+    ["tarshish", "Jonah 1:3", "Jonah rose up to flee unto Tarshish", "The place Jonah fled toward instead.", "medium"],
+    ["joppa", "Jonah 1:3", "and went down to Joppa", "The port city Jonah went down to.", "medium"],
+    ["storm", "Jonah 1:4", "the LORD sent out a great wind into the sea", "What threatened to break the ship.", "easy"],
+    ["fish", "Jonah 1:17", "the LORD had prepared a great fish", "What God appointed to swallow Jonah.", "easy"],
+  ]),
+  createJonahChapter(2, "From inside the fish Jonah prays, remembers the LORD, and confesses that salvation belongs to Him.", [
+    ["prayed", "Jonah 2:1", "Then Jonah prayed unto the LORD his God", "What Jonah did from the fish's belly.", "easy"],
+    ["belly", "Jonah 2:1", "out of the fish's belly", "Where Jonah prayed from.", "medium"],
+    ["weed", "Jonah 2:5", "the weeds were wrapped about my head", "What was wrapped around Jonah's head.", "medium"],
+    ["temple", "Jonah 2:7", "my prayer came in unto thee, into thine holy temple", "Where Jonah says his prayer came.", "medium"],
+    ["salvation", "Jonah 2:9", "Salvation is of the LORD", "What Jonah says belongs to the LORD.", "hard"],
+  ]),
+  createJonahChapter(3, "Jonah finally goes to Nineveh, preaches a forty-day warning, and the whole city turns in repentance.", [
+    ["word", "Jonah 3:1", "the word of the LORD came unto Jonah the second time", "What came to Jonah again.", "easy"],
+    ["forty", "Jonah 3:4", "Yet forty days, and Nineveh shall be overthrown", "How many days Jonah announces.", "easy"],
+    ["fast", "Jonah 3:5", "and proclaimed a fast", "What the people of Nineveh proclaimed.", "easy"],
+    ["sackcloth", "Jonah 3:5", "and put on sackcloth", "What the people wore in repentance.", "medium"],
+    ["ashes", "Jonah 3:6", "and sat in ashes", "What the king of Nineveh sat in.", "easy"],
+  ]),
+  createJonahChapter(4, "Jonah is angry over God's mercy, a plant gives shade, and the book ends with God's question about compassion.", [
+    ["angry", "Jonah 4:1", "it displeased Jonah exceedingly, and he was very angry", "How Jonah felt when Nineveh was spared.", "easy"],
+    ["plant", "Jonah 4:6", "the LORD God prepared a gourd", "What God prepared to give Jonah shade.", "easy"],
+    ["worm", "Jonah 4:7", "God prepared a worm", "What struck the plant the next day.", "easy"],
+    ["wind", "Jonah 4:8", "God prepared a vehement east wind", "What God prepared after the plant withered.", "easy"],
+    ["pity", "Jonah 4:10", "thou hast had pity on the gourd", "What word God uses about Jonah's concern for the plant.", "medium"],
+  ]),
+];
+
+const MICAH_CHAPTERS: ScrambledChapterPack[] = [
+  createMicahChapter(1, "Micah announces the LORD's coming judgment on Samaria and Jerusalem, mourning over the spread of rebellion.", [
+    ["moresheth", "Micah 1:1", "The word of the LORD that came to Micah the Morasthite", "The town Micah is connected to.", "hard"],
+    ["samaria", "Micah 1:1", "which he saw concerning Samaria and Jerusalem", "One of the cities named in Micah's opening verse.", "easy"],
+    ["jerusalem", "Micah 1:1", "concerning Samaria and Jerusalem", "The other city named beside Samaria.", "easy"],
+    ["melt", "Micah 1:4", "the mountains shall be molten under him", "What the mountains will do under the LORD.", "medium"],
+    ["lachish", "Micah 1:13", "O thou inhabitant of Lachish", "The city called the beginning of sin to Zion.", "hard"],
+  ]),
+  createMicahChapter(2, "Micah condemns those who plan evil, seize land, and reject true prophecy, yet promises a gathered remnant.", [
+    ["beds", "Micah 2:1", "that devise iniquity, and work evil upon their beds", "Where the wicked plan evil.", "easy"],
+    ["fields", "Micah 2:2", "they covet fields, and take them by violence", "What they covet and seize.", "easy"],
+    ["violence", "Micah 2:2", "and take them by violence", "How they take what they covet.", "medium"],
+    ["remnant", "Micah 2:12", "I will surely assemble ... the remnant of Israel", "Who God promises to assemble.", "medium"],
+    ["sheep", "Micah 2:12", "I will put them together as the sheep of Bozrah", "What the remnant is compared to.", "easy"],
+  ]),
+  createMicahChapter(3, "Corrupt rulers and false prophets are exposed, while Micah speaks with Spirit-filled courage against sin.", [
+    ["justice", "Micah 3:1", "Is it not for you to know judgment?", "What rulers should have known.", "medium"],
+    ["flesh", "Micah 3:3", "who also eat the flesh of my people", "What the corrupt leaders are pictured as eating.", "easy"],
+    ["spirit", "Micah 3:8", "I am full of power by the spirit of the LORD", "What Micah says fills him with power.", "easy"],
+    ["power", "Micah 3:8", "I am full of power", "What Micah says he is full of.", "easy"],
+    ["zion", "Micah 3:12", "therefore shall Zion for your sake be plowed as a field", "The city that will be plowed like a field.", "easy"],
+  ]),
+  createMicahChapter(4, "The mountain of the LORD is exalted, nations stream to Him, peace is promised, and Zion's future restoration shines through pain.", [
+    ["mountain", "Micah 4:1", "the mountain of the house of the LORD", "What will be established in the last days.", "easy"],
+    ["nations", "Micah 4:2", "many nations shall come", "Who will stream to the LORD's mountain.", "easy"],
+    ["plowshares", "Micah 4:3", "they shall beat their swords into plowshares", "What swords will be turned into.", "hard"],
+    ["figtree", "Micah 4:4", "under his fig tree", "What each person will sit under in peace.", "medium"],
+    ["babylon", "Micah 4:10", "thou shalt go even to Babylon", "Where Zion will go before being redeemed.", "medium"],
+  ]),
+  createMicahChapter(5, "From Bethlehem comes a ruler for Israel, the remnant is preserved, and false securities are cut off.", [
+    ["bethlehem", "Micah 5:2", "But thou, Bethlehem Ephratah", "The town the ruler will come from.", "easy"],
+    ["ephratah", "Micah 5:2", "Bethlehem Ephratah", "The place name paired with Bethlehem.", "hard"],
+    ["peace", "Micah 5:5", "this man shall be the peace", "What the coming ruler shall be.", "easy"],
+    ["dew", "Micah 5:7", "the remnant of Jacob shall be in the midst of many people as a dew", "What the remnant is compared to among many people.", "medium"],
+    ["chariots", "Micah 5:10", "I will cut off thy horses ... and I will destroy thy chariots", "What God says He will destroy along with horses.", "medium"],
+  ]),
+  createMicahChapter(6, "The LORD brings His case against His people, rejects empty religion, and declares what He truly requires.", [
+    ["mountains", "Micah 6:2", "Hear ye, O mountains, the LORD'S controversy", "Who are called as witnesses in the LORD's case.", "easy"],
+    ["egypt", "Micah 6:4", "I brought thee up out of the land of Egypt", "The land God reminds Israel He brought them out of.", "easy"],
+    ["justice", "Micah 6:8", "to do justly", "One of the three things the LORD requires.", "easy"],
+    ["mercy", "Micah 6:8", "and to love mercy", "Another thing the LORD requires.", "easy"],
+    ["humbly", "Micah 6:8", "and to walk humbly with thy God", "How God's people are to walk with Him.", "medium"],
+  ]),
+  createMicahChapter(7, "Micah laments moral collapse, waits for the LORD, and ends the book with triumph in God's pardoning mercy.", [
+    ["watch", "Micah 7:7", "therefore I will look unto the LORD", "What Micah says he will do toward the LORD.", "medium"],
+    ["light", "Micah 7:8", "when I sit in darkness, the LORD shall be a light unto me", "What the LORD will be to Micah in darkness.", "easy"],
+    ["compassion", "Micah 7:19", "He will turn again, he will have compassion upon us", "What God will have upon His people.", "hard"],
+    ["sea", "Micah 7:19", "thou wilt cast all their sins into the depths of the sea", "Where God will cast their sins.", "easy"],
+    ["truth", "Micah 7:20", "Thou wilt perform the truth to Jacob", "What God will perform to Jacob.", "medium"],
+  ]),
+];
+
+const NAHUM_CHAPTERS: ScrambledChapterPack[] = [
+  createNahumChapter(1, "Nahum opens with a vision against Nineveh, showing the LORD as both a refuge for His people and an avenger against evil.", [
+    ["vision", "Nahum 1:1", "The burden of Nineveh. The book of the vision of Nahum", "How the book is described in the opening verse.", "medium"],
+    ["nineveh", "Nahum 1:1", "The burden of Nineveh", "The city at the center of Nahum's prophecy.", "easy"],
+    ["jealous", "Nahum 1:2", "God is jealous, and the LORD revengeth", "How the LORD is described in judgment.", "hard"],
+    ["anger", "Nahum 1:3", "The LORD is slow to anger", "What the LORD is slow to.", "easy"],
+    ["refuge", "Nahum 1:7", "The LORD is good, a strong hold in the day of trouble", "What the LORD is in the day of trouble.", "medium"],
+  ]),
+  createNahumChapter(2, "The attack on Nineveh is described in vivid battle imagery as the city is plundered and its strength collapses.", [
+    ["shield", "Nahum 2:3", "The shield of his mighty men is made red", "What is made red in the battle scene.", "easy"],
+    ["scarlet", "Nahum 2:3", "the valiant men are in scarlet", "The color of the warriors' clothing.", "medium"],
+    ["chariots", "Nahum 2:4", "The chariots shall rage in the streets", "What race furiously in the streets.", "easy"],
+    ["lions", "Nahum 2:11", "Where is the dwelling of the lions", "The animal imagery used for Assyria's power.", "easy"],
+    ["burn", "Nahum 2:13", "I will burn her chariots in the smoke", "What God says He will do to Nineveh's chariots.", "medium"],
+  ]),
+  createNahumChapter(3, "Nineveh's bloodshed, lies, and cruelty are exposed, and the city is shown to be beyond healing.", [
+    ["blood", "Nahum 3:1", "Woe to the bloody city", "What kind of city Nineveh is called.", "easy"],
+    ["lies", "Nahum 3:1", "it is all full of lies and robbery", "What fills the city besides robbery.", "easy"],
+    ["whips", "Nahum 3:2", "The noise of a whip", "One sound named in the battle scene.", "medium"],
+    ["locusts", "Nahum 3:15", "make thyself many as the locusts", "The insect image used for Nineveh's numbers.", "medium"],
+    ["healing", "Nahum 3:19", "There is no healing of thy bruise", "What Nahum says does not exist for Nineveh's wound.", "medium"],
+  ]),
+];
+
+const HABAKKUK_CHAPTERS: ScrambledChapterPack[] = [
+  createHabakkukChapter(1, "Habakkuk brings his complaint before God, wrestling with violence, injustice, and the rise of the Chaldeans.", [
+    ["burden", "Habakkuk 1:1", "The burden which Habakkuk the prophet did see", "How the prophecy is described in the opening verse.", "medium"],
+    ["violence", "Habakkuk 1:2", "cry out unto thee of violence", "What Habakkuk says fills the land.", "easy"],
+    ["law", "Habakkuk 1:4", "Therefore the law is slacked", "What Habakkuk says is slacked.", "easy"],
+    ["judgment", "Habakkuk 1:4", "judgment doth never go forth", "What Habakkuk says does not go forth properly.", "medium"],
+    ["chaldeans", "Habakkuk 1:6", "I raise up the Chaldeans", "The nation God says He is raising up.", "medium"],
+  ]),
+  createHabakkukChapter(2, "The prophet waits for God's answer, receives the vision, and hears the contrast between proud living and faith.", [
+    ["watch", "Habakkuk 2:1", "I will stand upon my watch", "Where Habakkuk says he will stand.", "easy"],
+    ["vision", "Habakkuk 2:2", "Write the vision", "What Habakkuk is told to write plainly.", "easy"],
+    ["tarry", "Habakkuk 2:3", "though it tarry, wait for it", "What the vision may seem to do before it comes.", "medium"],
+    ["faith", "Habakkuk 2:4", "the just shall live by his faith", "How the just shall live.", "easy"],
+    ["idol", "Habakkuk 2:18", "What profiteth the graven image", "The false object of worship condemned in the chapter.", "medium"],
+  ]),
+  createHabakkukChapter(3, "Habakkuk turns from complaint to prayer, remembers God's power, and chooses to rejoice even in hardship.", [
+    ["prayer", "Habakkuk 3:1", "A prayer of Habakkuk the prophet", "What chapter 3 begins as.", "easy"],
+    ["mercy", "Habakkuk 3:2", "in wrath remember mercy", "What Habakkuk asks God to remember.", "easy"],
+    ["brightness", "Habakkuk 3:4", "his brightness was as the light", "What is compared to light in God's appearing.", "hard"],
+    ["figtree", "Habakkuk 3:17", "Although the fig tree shall not blossom", "The tree named in Habakkuk's famous trust declaration.", "medium"],
+    ["rejoice", "Habakkuk 3:18", "Yet I will rejoice in the LORD", "What Habakkuk says he will do in the LORD.", "easy"],
+  ]),
+];
+
+const ZEPHANIAH_CHAPTERS: ScrambledChapterPack[] = [
+  createZephaniahChapter(1, "Zephaniah opens with sweeping judgment against Judah, idolatry, complacency, and the coming day of the LORD.", [
+    ["sweep", "Zephaniah 1:2", "I will utterly consume all things", "What God says He will do to the face of the land.", "easy"],
+    ["baal", "Zephaniah 1:4", "I will cut off the remnant of Baal", "The false worship named in Judah.", "easy"],
+    ["rooftops", "Zephaniah 1:5", "worship the host of heaven upon the housetops", "Where the star worshipers are said to worship.", "medium"],
+    ["sacrifice", "Zephaniah 1:7", "the LORD hath prepared a sacrifice", "How the coming judgment is pictured.", "medium"],
+    ["silver", "Zephaniah 1:18", "Neither their silver nor their gold shall be able to deliver them", "One thing Zephaniah says cannot rescue people in that day.", "easy"],
+  ]),
+  createZephaniahChapter(2, "The nations are warned, the humble are told to seek the LORD, and proud neighbors are brought low.", [
+    ["gather", "Zephaniah 2:1", "Gather yourselves together", "What the nation is told to do before judgment falls.", "easy"],
+    ["meek", "Zephaniah 2:3", "Seek ye the LORD, all ye meek of the earth", "Who is especially urged to seek the LORD.", "easy"],
+    ["gaza", "Zephaniah 2:4", "Gaza shall be forsaken", "The Philistine city named first in the judgment list.", "medium"],
+    ["pride", "Zephaniah 2:10", "This shall they have for their pride", "The sin Zephaniah says will bring down Moab and Ammon.", "easy"],
+    ["nineveh", "Zephaniah 2:13", "he will make Nineveh a desolation", "The Assyrian city Zephaniah says will become desolate.", "easy"],
+  ]),
+  createZephaniahChapter(3, "Jerusalem's corruption is exposed, but the book closes with a restored remnant, joy, and God's singing presence.", [
+    ["rebellious", "Zephaniah 3:1", "Woe to her that is filthy and polluted, to the oppressing city", "How the city is described at the start of the chapter.", "medium"],
+    ["wolves", "Zephaniah 3:3", "her judges are evening wolves", "The animal Zephaniah uses for corrupt judges.", "easy"],
+    ["humble", "Zephaniah 3:12", "an afflicted and poor people, and they shall trust in the name of the LORD", "The kind of remnant God says will remain.", "medium"],
+    ["sing", "Zephaniah 3:14", "Sing, O daughter of Zion", "What Zion is told to do because of coming restoration.", "easy"],
+    ["rejoice", "Zephaniah 3:17", "he will rejoice over thee with joy", "What the LORD will do over His people.", "easy"],
+  ]),
+];
+
+const HAGGAI_CHAPTERS: ScrambledChapterPack[] = [
+  createHaggaiChapter(1, "Haggai confronts the people's neglect of the temple and calls them to give careful thought to their priorities.", [
+    ["darius", "Haggai 1:1", "In the second year of Darius the king", "The king named at the start of Haggai.", "easy"],
+    ["zerubbabel", "Haggai 1:1", "unto Zerubbabel the son of Shealtiel", "The governor of Judah named in the opening verse.", "medium"],
+    ["houses", "Haggai 1:4", "for you, O ye, to dwell in your cieled houses", "What the people were focused on while God's house lay waste.", "easy"],
+    ["consider", "Haggai 1:5", "Consider your ways", "What Haggai repeatedly tells the people to do.", "easy"],
+    ["mountain", "Haggai 1:8", "Go up to the mountain, and bring wood", "Where the people are told to go for rebuilding materials.", "medium"],
+  ]),
+  createHaggaiChapter(2, "The rebuilding work is strengthened by promises of future glory, blessing, and God's sovereign choice of Zerubbabel.", [
+    ["glory", "Haggai 2:9", "The glory of this latter house shall be greater", "What God says the latter house will have more of.", "easy"],
+    ["peace", "Haggai 2:9", "in this place will I give peace", "What God promises to give in that place.", "easy"],
+    ["unclean", "Haggai 2:13", "shall it be unclean", "What something becomes when touched by defilement.", "medium"],
+    ["bless", "Haggai 2:19", "from this day will I bless you", "What God promises to do from that day forward.", "easy"],
+    ["signet", "Haggai 2:23", "I will make thee as a signet", "What God says Zerubbabel will be like.", "hard"],
+  ]),
+];
+
+const ZECHARIAH_CHAPTERS: ScrambledChapterPack[] = [
+  createZechariahChapter(1, "Zechariah opens with a call to return to the LORD and a night vision of horsemen, horns, and craftsmen.", [
+    ["return", "Zechariah 1:3", "Return unto me, saith the LORD", "What God tells the people to do.", "easy"],
+    ["myrtle", "Zechariah 1:8", "a man riding upon a red horse, and he stood among the myrtle trees", "The trees seen in the first night vision.", "medium"],
+    ["horns", "Zechariah 1:18", "I saw, and behold four horns", "What Zechariah sees after the horsemen.", "easy"],
+    ["craftsmen", "Zechariah 1:20", "the LORD shewed me four carpenters", "Who appears to cast down the horns.", "hard"],
+    ["jerusalem", "Zechariah 1:16", "I am returned to Jerusalem with mercies", "The city God says He has returned to.", "easy"],
+  ]),
+  createZechariahChapter(2, "A measuring line, a future city without walls, and the promise of God's fiery protection fill this chapter.", [
+    ["measuring", "Zechariah 2:1", "a man with a measuring line in his hand", "What kind of line the man is holding.", "medium"],
+    ["walls", "Zechariah 2:4", "Jerusalem shall be inhabited as towns without walls", "What Jerusalem will not need because of its growth.", "easy"],
+    ["fire", "Zechariah 2:5", "I... will be unto her a wall of fire round about", "What God will be around Jerusalem.", "easy"],
+    ["glory", "Zechariah 2:5", "and will be the glory in the midst of her", "What God will be in the middle of the city.", "easy"],
+    ["eye", "Zechariah 2:8", "he that toucheth you toucheth the apple of his eye", "What God's people are compared to here.", "easy"],
+  ]),
+  createZechariahChapter(3, "Joshua the high priest is cleansed, recommissioned, and pointed forward to the coming Branch.", [
+    ["satan", "Zechariah 3:1", "and Satan standing at his right hand", "Who stands accusing Joshua.", "easy"],
+    ["filthy", "Zechariah 3:3", "Joshua was clothed with filthy garments", "How Joshua's garments are described.", "easy"],
+    ["garments", "Zechariah 3:4", "I have caused thine iniquity to pass from thee", "What clothing is removed from Joshua.", "medium"],
+    ["branch", "Zechariah 3:8", "I will bring forth my servant the Branch", "The title of the coming servant.", "easy"],
+    ["stone", "Zechariah 3:9", "upon one stone shall be seven eyes", "What object with seven eyes is set before Joshua.", "easy"],
+  ]),
+  createZechariahChapter(4, "The lampstand, olive trees, and Zerubbabel's calling show that God's work moves forward by His Spirit.", [
+    ["lampstand", "Zechariah 4:2", "a candlestick all of gold", "The golden object seen in the vision.", "medium"],
+    ["olive", "Zechariah 4:3", "two olive trees by it", "What kind of trees stand beside the lampstand.", "easy"],
+    ["might", "Zechariah 4:6", "Not by might, nor by power", "What the work will not be accomplished by.", "easy"],
+    ["spirit", "Zechariah 4:6", "but by my spirit, saith the LORD", "How the work will be accomplished.", "easy"],
+    ["zerubbabel", "Zechariah 4:9", "The hands of Zerubbabel have laid the foundation", "Who both starts and finishes the house.", "hard"],
+  ]),
+  createZechariahChapter(5, "A flying scroll brings covenant judgment, and wickedness is carried away in a basket to Shinar.", [
+    ["scroll", "Zechariah 5:1", "I turned, and lifted up mine eyes, and looked, and behold a flying roll", "What Zechariah sees flying.", "easy"],
+    ["curse", "Zechariah 5:3", "This is the curse that goeth forth", "What the flying scroll represents.", "easy"],
+    ["thief", "Zechariah 5:3", "every one that stealeth shall be cut off", "One sinner singled out by the scroll.", "easy"],
+    ["basket", "Zechariah 5:6", "This is an ephah that goeth forth", "The container in the second vision.", "medium"],
+    ["shinar", "Zechariah 5:11", "To build it an house in the land of Shinar", "Where wickedness is carried away.", "hard"],
+  ]),
+  createZechariahChapter(6, "Four chariots go out over the earth, and Joshua receives a symbolic crown that points to the Branch.", [
+    ["chariots", "Zechariah 6:1", "behold, there came four chariots", "What comes out from between the mountains.", "easy"],
+    ["mountains", "Zechariah 6:1", "between two mountains", "What the chariots come out from.", "easy"],
+    ["crown", "Zechariah 6:11", "make crowns, and set them upon the head of Joshua", "What is placed on Joshua's head.", "easy"],
+    ["branch", "Zechariah 6:12", "Behold the man whose name is The Branch", "The title repeated in this chapter.", "easy"],
+    ["temple", "Zechariah 6:12", "he shall build the temple of the LORD", "What the Branch will build.", "easy"],
+  ]),
+  createZechariahChapter(7, "A question about fasting turns into a call for justice, mercy, and hearts that really listen to God.", [
+    ["fast", "Zechariah 7:3", "Should I weep in the fifth month", "The practice the people ask about.", "easy"],
+    ["justice", "Zechariah 7:9", "Execute true judgment", "What Zechariah says should be carried out.", "easy"],
+    ["mercy", "Zechariah 7:9", "and shew mercy and compassions", "What should be shown with compassion.", "easy"],
+    ["widow", "Zechariah 7:10", "Oppress not the widow", "One vulnerable person named in the warning.", "easy"],
+    ["adamant", "Zechariah 7:12", "they made their hearts as an adamant stone", "What kind of stone their hearts became like.", "hard"],
+  ]),
+  createZechariahChapter(8, "The tone turns warm and hopeful as Jerusalem is restored, fasting becomes feasting, and nations come to seek the LORD.", [
+    ["jealous", "Zechariah 8:2", "I was jealous for Zion", "How God describes His zeal for Zion.", "medium"],
+    ["truth", "Zechariah 8:3", "Jerusalem shall be called a city of truth", "What kind of city Jerusalem will be called.", "easy"],
+    ["streets", "Zechariah 8:4", "old men and old women shall dwell in the streets", "Where the restored people will dwell safely.", "easy"],
+    ["feasts", "Zechariah 8:19", "shall be to the house of Judah joy and gladness, and cheerful feasts", "What the fasts will become.", "medium"],
+    ["ten", "Zechariah 8:23", "ten men shall take hold", "How many men will take hold of one Jew.", "easy"],
+  ]),
+  createZechariahChapter(9, "Judgment falls on hostile cities, but a humble king arrives on a donkey and speaks peace to the nations.", [
+    ["donkey", "Zechariah 9:9", "lowly, and riding upon an ass", "What animal the coming king rides.", "easy"],
+    ["king", "Zechariah 9:9", "thy King cometh unto thee", "Who is coming to Zion.", "easy"],
+    ["peace", "Zechariah 9:10", "he shall speak peace unto the heathen", "What the king will speak to the nations.", "easy"],
+    ["covenant", "Zechariah 9:11", "by the blood of thy covenant", "What word explains the prisoners' release.", "medium"],
+    ["trumpet", "Zechariah 9:14", "the Lord GOD shall blow the trumpet", "What the Lord is pictured blowing.", "medium"],
+  ]),
+  createZechariahChapter(10, "The LORD promises rain, gathers His scattered people, and strengthens Judah like a mighty flock.", [
+    ["rain", "Zechariah 10:1", "Ask ye of the LORD rain", "What the people are told to ask from the LORD.", "easy"],
+    ["shepherds", "Zechariah 10:3", "Mine anger was kindled against the shepherds", "Who God says He is angry with.", "medium"],
+    ["flock", "Zechariah 10:3", "the LORD of hosts hath visited his flock", "How God describes His people here.", "easy"],
+    ["egypt", "Zechariah 10:10", "I will bring them again also out of the land of Egypt", "One land named in the promise of regathering.", "easy"],
+    ["gilead", "Zechariah 10:10", "and place shall not be found for them", "One region named as the regathered people's destination.", "hard"],
+  ]),
+  createZechariahChapter(11, "The shepherd theme darkens as false leadership is judged, favor is broken, and thirty pieces of silver appear.", [
+    ["shepherd", "Zechariah 11:4", "Feed the flock of the slaughter", "The role Zechariah is told to take on.", "easy"],
+    ["beauty", "Zechariah 11:7", "the one I called Beauty", "One of the two staffs named by Zechariah.", "medium"],
+    ["bands", "Zechariah 11:7", "the other I called Bands", "The second staff name.", "medium"],
+    ["silver", "Zechariah 11:12", "So they weighed for my price thirty pieces of silver", "What metal is named in the payment.", "easy"],
+    ["potter", "Zechariah 11:13", "cast it unto the potter", "Who the thirty pieces are thrown to.", "easy"],
+  ]),
+  createZechariahChapter(12, "Jerusalem becomes a burdensome stone, the nations gather, and mourning begins over the one who was pierced.", [
+    ["burdensome", "Zechariah 12:3", "I will make Jerusalem a burdensome stone", "How Jerusalem is described to the nations.", "hard"],
+    ["governors", "Zechariah 12:6", "I will make the governors of Judah like an hearth of fire", "The leaders singled out in Judah's strengthening.", "medium"],
+    ["supplication", "Zechariah 12:10", "the spirit of grace and of supplications", "What kind of spirit God pours out.", "hard"],
+    ["pierced", "Zechariah 12:10", "they shall look upon me whom they have pierced", "What has happened to the one they look upon.", "easy"],
+    ["mourning", "Zechariah 12:10", "and they shall mourn for him", "What the people will do in response.", "easy"],
+  ]),
+  createZechariahChapter(13, "A cleansing fountain is opened, idols and false prophets are removed, and the shepherd is struck.", [
+    ["fountain", "Zechariah 13:1", "a fountain opened to the house of David", "What is opened for cleansing from sin.", "easy"],
+    ["idols", "Zechariah 13:2", "I will cut off the names of the idols", "What God says He will cut off from the land.", "easy"],
+    ["prophets", "Zechariah 13:2", "and also I will cause the prophets", "One group God says He will remove from the land.", "easy"],
+    ["shepherd", "Zechariah 13:7", "Awake, O sword, against my shepherd", "Who the sword is awakened against.", "easy"],
+    ["third", "Zechariah 13:9", "I will bring the third part through the fire", "What fraction God says He will refine.", "easy"],
+  ]),
+  createZechariahChapter(14, "The final chapter describes the day of the LORD, living waters, and the holiness of everything belonging to God.", [
+    ["olives", "Zechariah 14:4", "his feet shall stand in that day upon the mount of Olives", "The mount named in the chapter's opening scene.", "easy"],
+    ["cleft", "Zechariah 14:4", "the mount of Olives shall cleave", "What happens to the mount.", "hard"],
+    ["waters", "Zechariah 14:8", "living waters shall go out from Jerusalem", "What will flow out from Jerusalem.", "easy"],
+    ["king", "Zechariah 14:9", "the LORD shall be king over all the earth", "What the LORD will be over all the earth.", "easy"],
+    ["bells", "Zechariah 14:20", "Upon the bells of the horses, HOLINESS UNTO THE LORD", "What horse item is marked with holiness.", "medium"],
+  ]),
+];
+
+const MALACHI_CHAPTERS: ScrambledChapterPack[] = [
+  createMalachiChapter(1, "Malachi opens by reminding Israel of God's love and confronting careless worship and blemished offerings.", [
+    ["love", "Malachi 1:2", "I have loved you, saith the LORD", "What God says first to His people.", "easy"],
+    ["jacob", "Malachi 1:2", "Was not Esau Jacob's brother", "The brother God says He loved.", "easy"],
+    ["edom", "Malachi 1:4", "Whereas Edom saith", "The nation named in contrast to Jacob.", "easy"],
+    ["priests", "Malachi 1:6", "O priests, that despise my name", "Who is directly rebuked for dishonoring God.", "easy"],
+    ["blind", "Malachi 1:8", "if ye offer the blind for sacrifice", "One kind of blemished offering God rejects.", "easy"],
+  ]),
+  createMalachiChapter(2, "The priests are warned, covenant faithfulness is defended, and marriage unfaithfulness is exposed.", [
+    ["covenant", "Malachi 2:4", "my covenant might be with Levi", "What God says was made with Levi.", "easy"],
+    ["levi", "Malachi 2:4", "my covenant was with him of life and peace", "The priestly line named in this chapter.", "easy"],
+    ["truth", "Malachi 2:6", "The law of truth was in his mouth", "What kind of law was in the faithful priest's mouth.", "easy"],
+    ["wife", "Malachi 2:14", "the wife of thy youth", "Who Malachi says men had dealt treacherously with.", "easy"],
+    ["divorce", "Malachi 2:16", "he hateth putting away", "What God says He hates.", "medium"],
+  ]),
+  createMalachiChapter(3, "A messenger prepares the way, God calls His people to return, and the faithful are remembered before Him.", [
+    ["messenger", "Malachi 3:1", "Behold, I will send my messenger", "Who God says He will send first.", "easy"],
+    ["refiner", "Malachi 3:2", "he is like a refiner's fire", "One image used for the Lord's purifying work.", "medium"],
+    ["levites", "Malachi 3:3", "he shall purify the sons of Levi", "Who will be purified like precious metal.", "medium"],
+    ["tithes", "Malachi 3:8", "In tithes and offerings", "What the people had withheld from God.", "easy"],
+    ["remembrance", "Malachi 3:16", "a book of remembrance was written", "What kind of book is written before the LORD.", "hard"],
+  ]),
+  createMalachiChapter(4, "The book closes with the day of the LORD, healing for those who fear God, and the promise of Elijah.", [
+    ["stubble", "Malachi 4:1", "all that do wickedly, shall be stubble", "What the wicked are compared to on that day.", "medium"],
+    ["sun", "Malachi 4:2", "the Sun of righteousness arise", "What rises for those who fear God's name.", "easy"],
+    ["healing", "Malachi 4:2", "with healing in his wings", "What comes with the Sun of righteousness.", "easy"],
+    ["moses", "Malachi 4:4", "Remember ye the law of Moses", "Whose law the people are told to remember.", "easy"],
+    ["elijah", "Malachi 4:5", "I will send you Elijah the prophet", "Who God promises to send before the great day.", "easy"],
+  ]),
+];
+
+const MATTHEW_CHAPTERS: ScrambledChapterPack[] = [
+  createMatthewChapter(1, "Matthew opens with Jesus' genealogy and the birth announcement given to Joseph.", [
+    ["jesus", "Matthew 1:21", "thou shalt call his name JESUS", "The name Joseph is told to give the child.", "easy"],
+    ["david", "Matthew 1:1", "The son of David", "One royal ancestor named in the opening verse.", "easy"],
+    ["joseph", "Matthew 1:19", "Then Joseph her husband", "The man betrothed to Mary.", "easy"],
+    ["angel", "Matthew 1:20", "the angel of the Lord appeared unto him in a dream", "Who appears to Joseph in a dream.", "easy"],
+    ["immanuel", "Matthew 1:23", "they shall call his name Emmanuel", "The name that means God with us.", "medium"],
+  ]),
+  createMatthewChapter(2, "Magi arrive, Herod plots, and Joseph protects Jesus by fleeing to Egypt.", [
+    ["magi", "Matthew 2:1", "there came wise men from the east", "The visitors who come seeking Jesus.", "medium"],
+    ["star", "Matthew 2:2", "for we have seen his star in the east", "What guided the visitors toward Jesus.", "easy"],
+    ["herod", "Matthew 2:1", "in the days of Herod the king", "The troubled king in this chapter.", "easy"],
+    ["egypt", "Matthew 2:14", "and departed into Egypt", "Where Joseph takes Mary and Jesus.", "easy"],
+    ["bethlehem", "Matthew 2:1", "Jesus was born in Bethlehem", "The town where Jesus is born.", "medium"],
+  ]),
+  createMatthewChapter(3, "John the Baptist prepares the way and baptizes Jesus in the Jordan.", [
+    ["john", "Matthew 3:1", "John the Baptist", "The preacher who appears in the wilderness.", "easy"],
+    ["repent", "Matthew 3:2", "Repent ye", "John's main call to the people.", "easy"],
+    ["camel", "Matthew 3:4", "John had his raiment of camel's hair", "The animal named in John's clothing.", "easy"],
+    ["jordan", "Matthew 3:6", "were baptized of him in Jordan", "The river where people were baptized.", "easy"],
+    ["dove", "Matthew 3:16", "the Spirit of God descending like a dove", "What the Spirit is compared to at Jesus' baptism.", "easy"],
+  ]),
+  createMatthewChapter(4, "Jesus is tempted in the wilderness, begins preaching, and calls His first disciples.", [
+    ["wilderness", "Matthew 4:1", "Jesus was led up of the Spirit into the wilderness", "Where Jesus is tested.", "medium"],
+    ["bread", "Matthew 4:3", "command that these stones be made bread", "What Satan says the stones should become.", "easy"],
+    ["devil", "Matthew 4:1", "to be tempted of the devil", "Who tempts Jesus.", "easy"],
+    ["galilee", "Matthew 4:12", "he departed into Galilee", "Where Jesus begins His public ministry.", "easy"],
+    ["nets", "Matthew 4:20", "they straightway left their nets", "What the first disciples leave behind.", "easy"],
+  ]),
+  createMatthewChapter(5, "The Sermon on the Mount begins with the Beatitudes, kingdom righteousness, and enemy love.", [
+    ["blessed", "Matthew 5:3", "Blessed are the poor in spirit", "The repeated opening word in the Beatitudes.", "easy"],
+    ["meek", "Matthew 5:5", "Blessed are the meek", "Who Jesus says will inherit the earth.", "easy"],
+    ["salt", "Matthew 5:13", "Ye are the salt of the earth", "What disciples are called in relation to the earth.", "easy"],
+    ["light", "Matthew 5:14", "Ye are the light of the world", "What disciples are called in relation to the world.", "easy"],
+    ["enemy", "Matthew 5:44", "Love your enemies", "Who Jesus says to love.", "easy"],
+  ]),
+  createMatthewChapter(6, "Jesus teaches on giving, prayer, fasting, treasure, and trusting God instead of worrying.", [
+    ["prayer", "Matthew 6:9", "After this manner therefore pray ye", "The spiritual practice Jesus models here.", "easy"],
+    ["father", "Matthew 6:9", "Our Father which art in heaven", "The first word Jesus teaches disciples to pray to God as.", "easy"],
+    ["treasures", "Matthew 6:19", "Lay not up for yourselves treasures upon earth", "What Jesus warns not to store up on earth.", "medium"],
+    ["mammon", "Matthew 6:24", "Ye cannot serve God and mammon", "The rival master named in this chapter.", "hard"],
+    ["tomorrow", "Matthew 6:34", "Take therefore no thought for the morrow", "The time period Jesus says not to worry about.", "easy"],
+  ]),
+  createMatthewChapter(7, "Jesus warns about judgment, false prophets, and the need to build on the rock.", [
+    ["judge", "Matthew 7:1", "Judge not", "What Jesus says not to do in a hypocritical way.", "easy"],
+    ["beam", "Matthew 7:3", "a beam is in thine own eye", "The larger object Jesus mentions in your own eye.", "easy"],
+    ["knock", "Matthew 7:7", "Ask, and it shall be given you; seek, and ye shall find; knock", "One of the three actions Jesus names in prayer.", "easy"],
+    ["gate", "Matthew 7:13", "Enter ye in at the strait gate", "What Jesus says to enter by.", "easy"],
+    ["rock", "Matthew 7:24", "I will liken him unto a wise man, which built his house upon a rock", "The foundation Jesus praises.", "easy"],
+  ]),
+  createMatthewChapter(8, "Jesus demonstrates authority through healing, calming the storm, and confronting demons.", [
+    ["leper", "Matthew 8:2", "there came a leper and worshipped him", "The first sick person healed in the chapter.", "easy"],
+    ["faith", "Matthew 8:10", "I have not found so great faith", "What Jesus praises in the centurion.", "easy"],
+    ["fever", "Matthew 8:14", "he saw his wife's mother laid, and sick of a fever", "What sickness Peter's mother-in-law had.", "easy"],
+    ["storm", "Matthew 8:24", "behold, there arose a great tempest", "What Jesus calms at sea.", "easy"],
+    ["swine", "Matthew 8:31", "suffer us to go away into the herd of swine", "The animals the demons enter.", "medium"],
+  ]),
+  createMatthewChapter(9, "Jesus forgives sins, calls Matthew, and continues healing while speaking of the harvest.", [
+    ["sins", "Matthew 9:2", "Thy sins be forgiven thee", "What Jesus forgives before healing the paralytic.", "easy"],
+    ["matthew", "Matthew 9:9", "he saw a man, named Matthew, sitting at the receipt of custom", "The tax collector Jesus calls.", "medium"],
+    ["mercy", "Matthew 9:13", "I will have mercy, and not sacrifice", "What Jesus says He desires rather than sacrifice.", "easy"],
+    ["daughter", "Matthew 9:18", "My daughter is even now dead", "Who the ruler asks Jesus to help.", "easy"],
+    ["harvest", "Matthew 9:37", "The harvest truly is plenteous", "What Jesus says is plentiful.", "easy"],
+  ]),
+  createMatthewChapter(10, "Jesus sends out the twelve and prepares them for mission, opposition, and faithfulness.", [
+    ["twelve", "Matthew 10:1", "he called unto him his twelve disciples", "How many disciples Jesus sends.", "easy"],
+    ["apostles", "Matthew 10:2", "the names of the twelve apostles are these", "What Matthew calls the twelve here.", "medium"],
+    ["sheep", "Matthew 10:6", "the lost sheep of the house of Israel", "What Israel is compared to.", "easy"],
+    ["peace", "Matthew 10:13", "let your peace come upon it", "What Jesus says to let rest on a worthy house.", "easy"],
+    ["sparrow", "Matthew 10:29", "Are not two sparrows sold for a farthing", "The bird Jesus uses to teach God's care.", "easy"],
+  ]),
+  createMatthewChapter(11, "John asks about Jesus, cities are warned, and Jesus invites the weary to find rest in Him.", [
+    ["john", "Matthew 11:2", "when John had heard in the prison", "Which prophet sends messengers to Jesus.", "easy"],
+    ["works", "Matthew 11:2", "he sent two of his disciples, And said unto him", "John asks about the Messiah based on His mighty works.", "medium"],
+    ["elijah", "Matthew 11:14", "this is Elias, which was for to come", "Who Jesus says John the Baptist fulfills.", "medium"],
+    ["rest", "Matthew 11:28", "I will give you rest", "What Jesus promises the weary.", "easy"],
+    ["yoke", "Matthew 11:29", "Take my yoke upon you", "What Jesus says to take upon yourself.", "easy"],
+  ]),
+  createMatthewChapter(12, "Sabbath controversy, healings, and warnings about hearts, words, and response fill this chapter.", [
+    ["sabbath", "Matthew 12:1", "At that time Jesus went on the sabbath day", "The day at the center of the disputes.", "easy"],
+    ["corn", "Matthew 12:1", "his disciples were an hungred, and began to pluck the ears of corn", "What the disciples pluck on the Sabbath.", "easy"],
+    ["withered", "Matthew 12:10", "a man which had his hand withered", "How the man's hand is described.", "medium"],
+    ["beelzebub", "Matthew 12:24", "This fellow doth not cast out devils, but by Beelzebub", "The name the Pharisees use for the ruler of devils.", "hard"],
+    ["sign", "Matthew 12:39", "An evil and adulterous generation seeketh after a sign", "What the generation is rebuked for seeking.", "easy"],
+  ]),
+  createMatthewChapter(13, "Jesus teaches in parables about the kingdom, seeds, fields, pearls, and nets.", [
+    ["sower", "Matthew 13:3", "Behold, a sower went forth to sow", "Who appears in Jesus' first parable here.", "easy"],
+    ["seed", "Matthew 13:4", "some seeds fell by the way side", "What is scattered in the parable.", "easy"],
+    ["tares", "Matthew 13:25", "his enemy came and sowed tares", "What the enemy sows among the wheat.", "medium"],
+    ["mustard", "Matthew 13:31", "The kingdom of heaven is like to a grain of mustard seed", "The small seed Jesus compares the kingdom to.", "medium"],
+    ["pearl", "Matthew 13:46", "one pearl of great price", "The valuable item the merchant finds.", "easy"],
+  ]),
+  createMatthewChapter(14, "John is killed, Jesus feeds the five thousand, and then walks on the sea.", [
+    ["herod", "Matthew 14:1", "Herod the tetrarch heard of the fame of Jesus", "The ruler who hears of Jesus and fears John has risen.", "easy"],
+    ["john", "Matthew 14:10", "he sent, and beheaded John in the prison", "Who is executed in this chapter.", "easy"],
+    ["loaves", "Matthew 14:17", "We have here but five loaves", "One of the foods Jesus multiplies.", "easy"],
+    ["fish", "Matthew 14:17", "and two fishes", "The second food Jesus multiplies.", "easy"],
+    ["waves", "Matthew 14:24", "the ship was now in the midst of the sea, tossed with waves", "What the boat is battered by.", "easy"],
+  ]),
+  createMatthewChapter(15, "Jesus confronts tradition, teaches about the heart, and feeds another great crowd.", [
+    ["tradition", "Matthew 15:2", "Why do thy disciples transgress the tradition of the elders", "What the Pharisees accuse the disciples of breaking.", "medium"],
+    ["heart", "Matthew 15:8", "their heart is far from me", "What Jesus says is far from God.", "easy"],
+    ["crumbs", "Matthew 15:27", "yet the dogs eat of the crumbs", "What the woman says falls from the master's table.", "hard"],
+    ["seven", "Matthew 15:34", "And they said, Seven", "How many loaves the disciples have before the second feeding.", "easy"],
+    ["baskets", "Matthew 15:37", "they took up of the broken meat that was left seven baskets full", "What is filled with leftovers.", "medium"],
+  ]),
+  createMatthewChapter(16, "Jesus warns about leaven, Peter confesses Christ, and the cross is introduced.", [
+    ["sign", "Matthew 16:1", "desired him that he would shew them a sign", "What the Pharisees and Sadducees ask for.", "easy"],
+    ["leaven", "Matthew 16:6", "Beware of the leaven of the Pharisees", "What Jesus warns the disciples about.", "medium"],
+    ["christ", "Matthew 16:16", "Thou art the Christ", "What Peter confesses Jesus to be.", "easy"],
+    ["keys", "Matthew 16:19", "I will give unto thee the keys of the kingdom", "What Jesus promises to give Peter.", "easy"],
+    ["cross", "Matthew 16:24", "let him deny himself, and take up his cross", "What Jesus says disciples must take up.", "easy"],
+  ]),
+  createMatthewChapter(17, "The transfiguration reveals Jesus' glory, and faith is taught again through healing and provision.", [
+    ["mountain", "Matthew 17:1", "bringeth them up into an high mountain", "Where the transfiguration takes place.", "easy"],
+    ["moses", "Matthew 17:3", "there appeared unto them Moses and Elias", "One of the two figures who appear with Jesus.", "easy"],
+    ["elias", "Matthew 17:3", "Moses and Elias talking with him", "The second figure who appears with Jesus.", "easy"],
+    ["cloud", "Matthew 17:5", "behold, a bright cloud overshadowed them", "What overshadows the disciples.", "easy"],
+    ["fish", "Matthew 17:27", "cast an hook, and take up the fish", "Where Peter finds the coin for the tribute money.", "easy"],
+  ]),
+  createMatthewChapter(18, "Jesus teaches about humility, stumbling blocks, forgiveness, and the shepherd who seeks the lost.", [
+    ["child", "Matthew 18:2", "Jesus called a little child unto him", "Who Jesus uses to teach humility.", "easy"],
+    ["millstone", "Matthew 18:6", "it were better for him that a millstone were hanged about his neck", "What Jesus says would be better for one who causes little ones to stumble.", "hard"],
+    ["sheep", "Matthew 18:12", "if a man have an hundred sheep", "The animal in the parable of the lost one.", "easy"],
+    ["brother", "Matthew 18:15", "if thy brother shall trespass against thee", "Who Jesus says to go and speak to privately.", "easy"],
+    ["forgive", "Matthew 18:21", "how oft shall my brother sin against me, and I forgive him", "What Peter asks about.", "easy"],
+  ]),
+  createMatthewChapter(19, "Jesus teaches on marriage, blesses children, and confronts the rich young ruler.", [
+    ["marriage", "Matthew 19:6", "What therefore God hath joined together", "The relationship Jesus is teaching about.", "medium"],
+    ["children", "Matthew 19:14", "Suffer little children, and forbid them not", "Who Jesus welcomes to come to Him.", "easy"],
+    ["camel", "Matthew 19:24", "It is easier for a camel to go through the eye of a needle", "The animal Jesus uses in His wealth warning.", "easy"],
+    ["needle", "Matthew 19:24", "the eye of a needle", "What tiny opening Jesus compares entry into the kingdom to.", "easy"],
+    ["throne", "Matthew 19:28", "sit upon twelve thrones", "What Jesus says the apostles will sit on.", "easy"],
+  ]),
+  createMatthewChapter(20, "A vineyard parable, a third passion prediction, and servant leadership frame this chapter.", [
+    ["vineyard", "Matthew 20:1", "an householder, which went out early in the morning to hire labourers into his vineyard", "Where the workers are hired to labor.", "medium"],
+    ["labourers", "Matthew 20:1", "to hire labourers", "Who the householder keeps hiring.", "medium"],
+    ["cup", "Matthew 20:22", "Are ye able to drink of the cup that I shall drink of", "What Jesus asks James and John about.", "easy"],
+    ["serve", "Matthew 20:28", "the Son of man came not to be ministered unto, but to minister", "What Jesus says He came to do.", "easy"],
+    ["blind", "Matthew 20:30", "behold, two blind men sitting by the way side", "Who cries out for mercy at the end of the chapter.", "easy"],
+  ]),
+  createMatthewChapter(21, "Jesus enters Jerusalem, cleanses the temple, and confronts leaders through actions and parables.", [
+    ["donkey", "Matthew 21:5", "thy King cometh unto thee... sitting upon an ass", "What Jesus rides into Jerusalem.", "easy"],
+    ["hosanna", "Matthew 21:9", "Hosanna to the son of David", "What the crowds shout as Jesus enters the city.", "medium"],
+    ["temple", "Matthew 21:12", "Jesus went into the temple of God", "What place Jesus cleanses.", "easy"],
+    ["fig", "Matthew 21:19", "he saw a fig tree in the way", "What kind of tree Jesus curses.", "easy"],
+    ["authority", "Matthew 21:23", "By what authority doest thou these things", "What the chief priests challenge Jesus about.", "medium"],
+  ]),
+  createMatthewChapter(22, "Jesus answers traps about taxes, resurrection, and the greatest commandment.", [
+    ["wedding", "Matthew 22:2", "The kingdom of heaven is like unto a certain king, which made a marriage for his son", "What kind of feast opens the chapter.", "easy"],
+    ["garment", "Matthew 22:11", "he saw there a man which had not on a wedding garment", "What the man is missing at the feast.", "medium"],
+    ["caesar", "Matthew 22:21", "Render therefore unto Caesar", "Whose things Jesus says to give back to Caesar.", "easy"],
+    ["resurrection", "Matthew 22:23", "the Sadducees, which say that there is no resurrection", "What doctrine the Sadducees deny.", "hard"],
+    ["commandment", "Matthew 22:36", "Which is the great commandment in the law", "What Jesus is asked to identify.", "medium"],
+  ]),
+  createMatthewChapter(23, "Jesus pronounces woes on the scribes and Pharisees and laments over Jerusalem.", [
+    ["pharisees", "Matthew 23:2", "The scribes and the Pharisees sit in Moses' seat", "The group Jesus strongly rebukes.", "easy"],
+    ["seat", "Matthew 23:2", "sit in Moses' seat", "What seat the scribes and Pharisees are said to sit in.", "medium"],
+    ["woe", "Matthew 23:13", "But woe unto you, scribes and Pharisees", "The repeated word of judgment in this chapter.", "easy"],
+    ["blind", "Matthew 23:16", "Woe unto you, ye blind guides", "How Jesus describes the guides.", "easy"],
+    ["jerusalem", "Matthew 23:37", "O Jerusalem, Jerusalem", "Which city Jesus laments over.", "easy"],
+  ]),
+  createMatthewChapter(24, "Jesus foretells the temple's fall, coming troubles, and the need to stay awake.", [
+    ["temple", "Matthew 24:1", "to shew him the buildings of the temple", "What building complex the disciples point out.", "easy"],
+    ["wars", "Matthew 24:6", "ye shall hear of wars and rumours of wars", "What Jesus says people will hear about.", "easy"],
+    ["tribulation", "Matthew 24:21", "For then shall be great tribulation", "The intense period Jesus describes.", "hard"],
+    ["elect", "Matthew 24:24", "if it were possible, they shall deceive the very elect", "Who false christs would try to deceive.", "medium"],
+    ["watch", "Matthew 24:42", "Watch therefore", "What Jesus tells His disciples to do.", "easy"],
+  ]),
+  createMatthewChapter(25, "Parables of readiness, faithfulness, and final judgment culminate in serving Christ through serving others.", [
+    ["virgins", "Matthew 25:1", "Then shall the kingdom of heaven be likened unto ten virgins", "Who appears in the opening parable.", "medium"],
+    ["lamps", "Matthew 25:1", "which took their lamps", "What the ten virgins take with them.", "easy"],
+    ["talents", "Matthew 25:15", "unto one he gave five talents", "What the master entrusts to his servants.", "medium"],
+    ["sheep", "Matthew 25:32", "he shall separate them one from another, as a shepherd divideth his sheep from the goats", "One of the two animal groups in the final judgment scene.", "easy"],
+    ["goats", "Matthew 25:32", "from the goats", "The second animal group in the judgment scene.", "easy"],
+  ]),
+  createMatthewChapter(26, "The plot intensifies through the anointing, the Last Supper, Gethsemane, and Jesus' arrest.", [
+    ["passover", "Matthew 26:2", "Ye know that after two days is the feast of the passover", "What feast Jesus says is near.", "easy"],
+    ["ointment", "Matthew 26:7", "having an alabaster box of very precious ointment", "What the woman pours on Jesus.", "medium"],
+    ["bread", "Matthew 26:26", "Jesus took bread, and blessed it", "One of the two elements Jesus shares at the supper.", "easy"],
+    ["cup", "Matthew 26:27", "he took the cup", "The second element Jesus shares at the supper.", "easy"],
+    ["gethsemane", "Matthew 26:36", "unto a place called Gethsemane", "Where Jesus goes to pray.", "hard"],
+  ]),
+  createMatthewChapter(27, "Jesus is condemned, crucified, buried, and guarded at the tomb.", [
+    ["pilate", "Matthew 27:2", "delivered him to Pontius Pilate the governor", "The governor who oversees Jesus' case.", "easy"],
+    ["silver", "Matthew 27:3", "Judas... brought again the thirty pieces of silver", "What Judas throws back to the chief priests.", "easy"],
+    ["cross", "Matthew 27:32", "they found a man of Cyrene, Simon by name: him they compelled to bear his cross", "What Simon is made to carry.", "easy"],
+    ["golgotha", "Matthew 27:33", "a place called Golgotha", "The place where Jesus is crucified.", "hard"],
+    ["tomb", "Matthew 27:60", "laid it in his own new tomb", "Where Joseph of Arimathaea places Jesus' body.", "easy"],
+  ]),
+  createMatthewChapter(28, "The resurrection is announced, Jesus appears, and the Great Commission is given.", [
+    ["angel", "Matthew 28:2", "the angel of the Lord descended from heaven", "Who rolls back the stone.", "easy"],
+    ["stone", "Matthew 28:2", "and rolled back the stone", "What is moved from the tomb.", "easy"],
+    ["risen", "Matthew 28:6", "He is not here: for he is risen", "What the angel says about Jesus.", "easy"],
+    ["galilee", "Matthew 28:7", "he goeth before you into Galilee", "Where the disciples are told they will see Jesus.", "easy"],
+    ["nations", "Matthew 28:19", "Go ye therefore, and teach all nations", "Who the disciples are sent to make disciples of.", "easy"],
+  ]),
+];
+
+const MARK_CHAPTERS: ScrambledChapterPack[] = [
+  createMarkChapter(1, "Mark moves fast from John the Baptist to Jesus' baptism, temptation, preaching, and first miracles.", [
+    ["gospel", "Mark 1:1", "The beginning of the gospel of Jesus Christ", "What Mark calls the opening message about Jesus.", "easy"],
+    ["john", "Mark 1:4", "John did baptize in the wilderness", "The forerunner preaching repentance.", "easy"],
+    ["repent", "Mark 1:4", "and preach the baptism of repentance", "What John calls people to do.", "easy"],
+    ["galilee", "Mark 1:14", "Jesus came into Galilee, preaching", "Where Jesus begins preaching in Mark.", "easy"],
+    ["leper", "Mark 1:40", "there came a leper to him", "One person Jesus heals near the end of the chapter.", "easy"],
+  ]),
+  createMarkChapter(2, "Jesus forgives sins, calls Levi, teaches on fasting, and confronts Sabbath controversy.", [
+    ["roof", "Mark 2:4", "they uncovered the roof where he was", "What the friends opened to lower the paralytic.", "easy"],
+    ["sins", "Mark 2:5", "Son, thy sins be forgiven thee", "What Jesus forgives before healing the man.", "easy"],
+    ["levi", "Mark 2:14", "he saw Levi the son of Alphaeus", "The tax collector Jesus calls.", "medium"],
+    ["fast", "Mark 2:18", "Why do the disciples of John and of the Pharisees fast", "The practice people question Jesus about.", "easy"],
+    ["sabbath", "Mark 2:27", "The sabbath was made for man", "The day Jesus teaches about at the end of the chapter.", "medium"],
+  ]),
+  createMarkChapter(3, "Jesus heals on the Sabbath, appoints the twelve, and answers accusations about His authority.", [
+    ["hand", "Mark 3:1", "there was a man there which had a withered hand", "What part of the man's body was withered.", "easy"],
+    ["anger", "Mark 3:5", "he looked round about on them with anger", "What Jesus feels toward their hard hearts.", "easy"],
+    ["twelve", "Mark 3:14", "he ordained twelve", "How many apostles Jesus appoints.", "easy"],
+    ["beelzebub", "Mark 3:22", "He hath Beelzebub", "The name the scribes use in their accusation.", "hard"],
+    ["family", "Mark 3:35", "the same is my brother, and my sister, and mother", "What Jesus redefines at the end of the chapter.", "medium"],
+  ]),
+  createMarkChapter(4, "Parables about hearing and the kingdom lead into the calming of the storm.", [
+    ["sower", "Mark 4:3", "Behold, there went out a sower to sow", "Who appears in the opening parable.", "easy"],
+    ["seed", "Mark 4:14", "The sower soweth the word", "What image represents the word.", "easy"],
+    ["lamp", "Mark 4:21", "Is a candle brought to be put under a bushel", "The object that should not be hidden.", "medium"],
+    ["mustard", "Mark 4:31", "It is like a grain of mustard seed", "The tiny seed Jesus uses for kingdom growth.", "medium"],
+    ["storm", "Mark 4:37", "there arose a great storm of wind", "What threatens the disciples on the sea.", "easy"],
+  ]),
+  createMarkChapter(5, "Jesus frees a demonized man, heals a bleeding woman, and raises Jairus' daughter.", [
+    ["legion", "Mark 5:9", "My name is Legion", "The name the demon gives.", "medium"],
+    ["swine", "Mark 5:13", "the unclean spirits went out, and entered into the swine", "The animals the demons enter.", "medium"],
+    ["jairus", "Mark 5:22", "one of the rulers of the synagogue, Jairus by name", "The ruler who asks Jesus to help his daughter.", "medium"],
+    ["faith", "Mark 5:34", "Daughter, thy faith hath made thee whole", "What Jesus says made the woman whole.", "easy"],
+    ["talitha", "Mark 5:41", "Talitha cumi", "The Aramaic word Jesus speaks to the little girl.", "hard"],
+  ]),
+  createMarkChapter(6, "Jesus is rejected in Nazareth, sends out the twelve, and feeds a great crowd in the wilderness.", [
+    ["nazareth", "Mark 6:1", "he came into his own country", "The hometown where Jesus is rejected.", "medium"],
+    ["staff", "Mark 6:8", "save a staff only", "What Jesus permits the disciples to take on the journey.", "easy"],
+    ["john", "Mark 6:16", "It is John, whom I beheaded", "Whom Herod thinks Jesus might be.", "easy"],
+    ["loaves", "Mark 6:38", "How many loaves have ye", "One of the foods in the feeding miracle.", "easy"],
+    ["basket", "Mark 6:43", "they took up twelve baskets full", "What the leftovers are gathered into.", "easy"],
+  ]),
+  createMarkChapter(7, "Jesus challenges tradition, teaches about the heart, and heals in Gentile territory.", [
+    ["tradition", "Mark 7:3", "holding the tradition of the elders", "What the Pharisees carefully keep.", "medium"],
+    ["heart", "Mark 7:6", "their heart is far from me", "What Jesus says is far from God.", "easy"],
+    ["corban", "Mark 7:11", "It is Corban", "The word used to avoid caring for parents.", "hard"],
+    ["dogs", "Mark 7:27", "It is not meet to take the children's bread, and to cast it unto the dogs", "The comparison Jesus uses with the Syrophoenician woman.", "medium"],
+    ["ears", "Mark 7:35", "the string of his tongue was loosed", "One body part Jesus opens for the deaf man.", "easy"],
+  ]),
+  createMarkChapter(8, "Another feeding, warnings about leaven, a blind man healed, and Peter's confession frame the chapter.", [
+    ["bread", "Mark 8:14", "they had forgotten to take bread", "What the disciples forgot to bring.", "easy"],
+    ["leaven", "Mark 8:15", "Beware of the leaven of the Pharisees", "What Jesus warns against.", "medium"],
+    ["blind", "Mark 8:22", "they bring a blind man unto him", "Who Jesus heals in stages.", "easy"],
+    ["christ", "Mark 8:29", "Thou art the Christ", "What Peter confesses Jesus to be.", "easy"],
+    ["cross", "Mark 8:34", "take up his cross", "What Jesus says disciples must take up.", "easy"],
+  ]),
+  createMarkChapter(9, "The transfiguration, a difficult exorcism, and teaching about humility and stumbling blocks fill the chapter.", [
+    ["mountain", "Mark 9:2", "Jesus taketh with him Peter, and James, and John, and leadeth them up into an high mountain", "Where the transfiguration happens.", "easy"],
+    ["moses", "Mark 9:4", "there appeared unto them Elias with Moses", "One of the figures who appears with Jesus.", "easy"],
+    ["cloud", "Mark 9:7", "there was a cloud that overshadowed them", "What overshadows the disciples.", "easy"],
+    ["faith", "Mark 9:24", "Lord, I believe; help thou mine unbelief", "What the father confesses needing more of.", "easy"],
+    ["fire", "Mark 9:49", "every one shall be salted with fire", "What everyone will be salted with.", "medium"],
+  ]),
+  createMarkChapter(10, "Jesus teaches on marriage, welcomes children, challenges the rich ruler, and keeps moving toward Jerusalem.", [
+    ["marriage", "Mark 10:9", "What therefore God hath joined together", "The relationship Jesus is teaching about.", "medium"],
+    ["children", "Mark 10:14", "Suffer the little children to come unto me", "Who Jesus welcomes.", "easy"],
+    ["camel", "Mark 10:25", "It is easier for a camel to go through the eye of a needle", "The animal in Jesus' warning about riches.", "easy"],
+    ["bartimaeus", "Mark 10:46", "blind Bartimaeus, the son of Timaeus", "The blind man healed near Jericho.", "hard"],
+    ["mercy", "Mark 10:47", "Jesus, thou Son of David, have mercy on me", "What Bartimaeus cries out for.", "easy"],
+  ]),
+  createMarkChapter(11, "Jesus enters Jerusalem, curses a fig tree, cleanses the temple, and faces questions about authority.", [
+    ["donkey", "Mark 11:2", "ye shall find a colt tied", "What Jesus rides into Jerusalem.", "easy"],
+    ["hosanna", "Mark 11:9", "Hosanna; Blessed is he that cometh", "What the crowd shouts on Jesus' entry.", "medium"],
+    ["fig", "Mark 11:13", "seeing a fig tree afar off having leaves", "The kind of tree Jesus approaches.", "easy"],
+    ["temple", "Mark 11:15", "Jesus went into the temple", "What place Jesus cleanses.", "easy"],
+    ["authority", "Mark 11:28", "By what authority doest thou these things", "What the leaders question Jesus about.", "medium"],
+  ]),
+  createMarkChapter(12, "Parables, debates, and warnings continue as Jesus teaches about vineyards, taxes, resurrection, and love.", [
+    ["vineyard", "Mark 12:1", "A certain man planted a vineyard", "The setting of the parable against the tenants.", "medium"],
+    ["stone", "Mark 12:10", "The stone which the builders rejected", "What becomes the head of the corner.", "easy"],
+    ["caesar", "Mark 12:17", "Render to Caesar the things that are Caesar's", "Whose things Jesus says to return.", "easy"],
+    ["commandment", "Mark 12:28", "Which is the first commandment of all", "What a scribe asks Jesus to identify.", "medium"],
+    ["widow", "Mark 12:42", "there came a certain poor widow", "Who gives two mites in the treasury.", "easy"],
+  ]),
+  createMarkChapter(13, "Jesus warns about coming troubles, persecution, deception, and the call to stay awake.", [
+    ["temple", "Mark 13:1", "what manner of stones and what buildings are here", "What the disciples admire at the start of the chapter.", "easy"],
+    ["wars", "Mark 13:7", "when ye shall hear of wars and rumours of wars", "What Jesus says His followers will hear about.", "easy"],
+    ["abomination", "Mark 13:14", "when ye shall see the abomination of desolation", "What sign Jesus says to watch for.", "hard"],
+    ["elect", "Mark 13:20", "for the elect's sake, whom he hath chosen", "Whose sake shortens the days.", "medium"],
+    ["watch", "Mark 13:37", "What I say unto you I say unto all, Watch", "What Jesus tells everyone to do.", "easy"],
+  ]),
+  createMarkChapter(14, "The Passover, betrayal, Gethsemane, arrest, and Peter's denial move the Gospel into its darkest night.", [
+    ["passover", "Mark 14:1", "After two days was the feast of the passover", "What feast is near at the opening.", "easy"],
+    ["ointment", "Mark 14:3", "an alabaster box of ointment of spikenard", "What the woman pours on Jesus.", "medium"],
+    ["bread", "Mark 14:22", "Jesus took bread", "One element Jesus gives at the supper.", "easy"],
+    ["cup", "Mark 14:23", "he took the cup", "The second element Jesus gives.", "easy"],
+    ["cock", "Mark 14:72", "the second time the cock crew", "What crows after Peter's denial.", "medium"],
+  ]),
+  createMarkChapter(15, "Jesus is handed over, crucified, mocked, and buried.", [
+    ["pilate", "Mark 15:1", "they delivered Jesus to Pilate", "The governor who questions Jesus.", "easy"],
+    ["barabbas", "Mark 15:7", "there was one named Barabbas", "The prisoner released instead of Jesus.", "hard"],
+    ["golgotha", "Mark 15:22", "they bring him unto the place Golgotha", "The place where Jesus is crucified.", "hard"],
+    ["cross", "Mark 15:32", "Let Christ the King of Israel descend now from the cross", "What Jesus is hanging on during the mockery.", "easy"],
+    ["veil", "Mark 15:38", "the veil of the temple was rent in twain", "What tears when Jesus dies.", "medium"],
+  ]),
+  createMarkChapter(16, "The empty tomb is discovered, the resurrection is announced, and the Gospel closes with proclamation.", [
+    ["stone", "Mark 16:4", "they saw that the stone was rolled away", "What the women find moved from the tomb.", "easy"],
+    ["angel", "Mark 16:5", "they saw a young man sitting on the right side", "Who speaks to the women at the tomb.", "easy"],
+    ["risen", "Mark 16:6", "he is risen; he is not here", "What the messenger says about Jesus.", "easy"],
+    ["galilee", "Mark 16:7", "there shall ye see him, as he said unto you", "Where the disciples are told Jesus is going ahead of them.", "easy"],
+    ["gospel", "Mark 16:15", "Go ye into all the world, and preach the gospel", "What Jesus tells them to preach.", "easy"],
+  ]),
+];
+
+const LUKE_CHAPTERS: ScrambledChapterPack[] = [
+  createLukeChapter(1, "Luke opens with careful history, angelic announcements, and songs of praise around John and Jesus.", [
+    ["theophilus", "Luke 1:3", "most excellent Theophilus", "The person Luke addresses at the beginning.", "hard"],
+    ["zechariah", "Luke 1:5", "a certain priest named Zacharias", "The priest who receives the first announcement.", "medium"],
+    ["elizabeth", "Luke 1:5", "his wife was of the daughters of Aaron, and her name was Elisabeth", "Zechariah's wife.", "medium"],
+    ["gabriel", "Luke 1:19", "I am Gabriel", "The angel who speaks to Zechariah and Mary.", "medium"],
+    ["mary", "Luke 1:27", "to a virgin espoused to a man whose name was Joseph", "The young woman visited by Gabriel.", "easy"],
+  ]),
+  createLukeChapter(2, "Jesus is born in Bethlehem, announced to shepherds, and recognized in the temple.", [
+    ["bethlehem", "Luke 2:4", "unto the city of David, which is called Bethlehem", "The city Joseph travels to.", "easy"],
+    ["manger", "Luke 2:7", "laid him in a manger", "Where the newborn Jesus is laid.", "easy"],
+    ["shepherds", "Luke 2:8", "there were in the same country shepherds", "Who first hears the angelic announcement.", "easy"],
+    ["simeon", "Luke 2:25", "there was a man in Jerusalem, whose name was Simeon", "The man who blesses the child Jesus in the temple.", "medium"],
+    ["anna", "Luke 2:36", "there was one Anna, a prophetess", "The prophetess who also speaks of Jesus.", "medium"],
+  ]),
+  createLukeChapter(3, "John the Baptist preaches repentance, Jesus is baptized, and Luke traces His lineage.", [
+    ["john", "Luke 3:2", "the word of God came unto John", "The prophet preaching in the wilderness.", "easy"],
+    ["vipers", "Luke 3:7", "O generation of vipers", "What John calls the crowds.", "hard"],
+    ["repentance", "Luke 3:8", "Bring forth therefore fruits worthy of repentance", "What kind of fruit John calls for.", "hard"],
+    ["jordan", "Luke 3:3", "all the country about Jordan", "The river region where John preaches.", "easy"],
+    ["dove", "Luke 3:22", "the Holy Ghost descended... like a dove", "What the Spirit is compared to at Jesus' baptism.", "easy"],
+  ]),
+  createLukeChapter(4, "Jesus is tempted, rejected in Nazareth, and begins to show His authority in word and power.", [
+    ["wilderness", "Luke 4:1", "was led by the Spirit into the wilderness", "Where Jesus is tempted.", "medium"],
+    ["bread", "Luke 4:3", "command this stone that it be made bread", "What the devil tells Jesus to make.", "easy"],
+    ["nazareth", "Luke 4:16", "he came to Nazareth, where he had been brought up", "Jesus' hometown.", "medium"],
+    ["isaiah", "Luke 4:17", "there was delivered unto him the book of the prophet Esaias", "The prophet Jesus reads in the synagogue.", "medium"],
+    ["capernaum", "Luke 4:31", "came down to Capernaum", "The city where Jesus continues ministry after Nazareth.", "hard"],
+  ]),
+  createLukeChapter(5, "A miraculous catch, healings, forgiveness, and Levi's calling shape this chapter.", [
+    ["fish", "Luke 5:6", "they inclosed a great multitude of fishes", "What the disciples catch in huge number.", "easy"],
+    ["peter", "Luke 5:8", "Simon Peter saw it", "Which disciple falls at Jesus' knees.", "easy"],
+    ["leper", "Luke 5:12", "behold a man full of leprosy", "Who Jesus cleanses in this chapter.", "easy"],
+    ["roof", "Luke 5:19", "they went upon the housetop", "What the friends use to lower the paralytic.", "easy"],
+    ["levi", "Luke 5:27", "he saw a publican, named Levi", "The tax collector Jesus calls.", "medium"],
+  ]),
+  createLukeChapter(6, "Sabbath controversy, the choosing of the twelve, blessings and woes, and radical love fill this chapter.", [
+    ["sabbath", "Luke 6:1", "on the second sabbath after the first", "The day at the center of the opening dispute.", "medium"],
+    ["grain", "Luke 6:1", "did eat, rubbing them in their hands", "What the disciples were eating from the fields.", "medium"],
+    ["twelve", "Luke 6:13", "of them he chose twelve", "How many apostles Jesus appoints.", "easy"],
+    ["blessed", "Luke 6:20", "Blessed be ye poor", "The repeated word opening the blessings.", "easy"],
+    ["enemy", "Luke 6:27", "Love your enemies", "Who Jesus commands disciples to love.", "easy"],
+  ]),
+  createLukeChapter(7, "Faith, compassion, and prophetic recognition appear through healings and unexpected responses to Jesus.", [
+    ["centurion", "Luke 7:2", "a certain centurion's servant", "The Roman officer whose servant is healed.", "medium"],
+    ["widow", "Luke 7:12", "behold, there was a dead man carried out, the only son of his mother, and she was a widow", "The grieving mother Jesus meets at Nain.", "medium"],
+    ["nain", "Luke 7:11", "he went into a city called Nain", "The town where Jesus raises the widow's son.", "hard"],
+    ["john", "Luke 7:19", "John calling unto him two of his disciples sent them to Jesus", "Who sends messengers to ask Jesus a question.", "easy"],
+    ["tears", "Luke 7:38", "began to wash his feet with tears", "What the woman uses to wet Jesus' feet.", "easy"],
+  ]),
+  createLukeChapter(8, "Women support the ministry, Jesus teaches in parables, calms a storm, and shows power over demons and disease.", [
+    ["women", "Luke 8:2", "certain women, which had been healed", "Who is specifically named as supporting Jesus' ministry.", "easy"],
+    ["sower", "Luke 8:5", "A sower went out to sow his seed", "The figure in the first parable.", "easy"],
+    ["storm", "Luke 8:23", "there came down a storm of wind on the lake", "What threatens the disciples on the lake.", "easy"],
+    ["legion", "Luke 8:30", "because many devils were entered into him", "The name given by the demonized man.", "medium"],
+    ["daughter", "Luke 8:42", "he had one only daughter, about twelve years of age", "Who Jairus asks Jesus to heal.", "easy"],
+  ]),
+  createLukeChapter(9, "Jesus sends the twelve, feeds the crowd, is confessed as Christ, and begins to speak about the cross.", [
+    ["twelve", "Luke 9:1", "he called his twelve disciples together", "How many disciples Jesus sends out.", "easy"],
+    ["herod", "Luke 9:7", "Herod the tetrarch heard of all that was done", "The ruler disturbed by Jesus' ministry.", "easy"],
+    ["loaves", "Luke 9:13", "we have no more but five loaves", "One of the foods in the feeding miracle.", "easy"],
+    ["christ", "Luke 9:20", "The Christ of God", "What Peter says Jesus is.", "easy"],
+    ["cross", "Luke 9:23", "take up his cross daily", "What Jesus says disciples must take up.", "easy"],
+  ]),
+  createLukeChapter(10, "Jesus sends out more workers and teaches through the good Samaritan and Mary's listening posture.", [
+    ["seventy", "Luke 10:1", "the Lord appointed other seventy also", "How many more workers Jesus sends.", "medium"],
+    ["harvest", "Luke 10:2", "The harvest truly is great", "What Jesus says is great but the laborers are few.", "easy"],
+    ["samaritan", "Luke 10:33", "a certain Samaritan, as he journeyed", "Who becomes the merciful neighbor in the parable.", "medium"],
+    ["oil", "Luke 10:34", "pouring in oil and wine", "One thing the Samaritan pours into the wounds.", "easy"],
+    ["mary", "Luke 10:39", "Mary, which also sat at Jesus' feet", "Who chooses the better part by listening.", "easy"],
+  ]),
+  createLukeChapter(11, "Jesus teaches on prayer, confronts accusations, and pronounces woes.", [
+    ["prayer", "Luke 11:1", "Lord, teach us to pray", "What the disciples ask Jesus to teach them.", "easy"],
+    ["father", "Luke 11:2", "Our Father which art in heaven", "How Jesus begins the model prayer here.", "easy"],
+    ["friend", "Luke 11:5", "Which of you shall have a friend", "Who appears in the midnight request parable.", "easy"],
+    ["beelzebub", "Luke 11:15", "He casteth out devils through Beelzebub", "The accusation made against Jesus.", "hard"],
+    ["sign", "Luke 11:29", "they seek a sign", "What Jesus says the generation is asking for.", "easy"],
+  ]),
+  createLukeChapter(12, "Jesus warns against hypocrisy, greed, fear, and anxiety while calling people to readiness.", [
+    ["leaven", "Luke 12:1", "Beware ye of the leaven of the Pharisees", "What Jesus warns is spreading hypocrisy.", "medium"],
+    ["sparrows", "Luke 12:6", "Are not five sparrows sold for two farthings", "The birds Jesus uses to teach God's care.", "medium"],
+    ["barns", "Luke 12:18", "I will pull down my barns", "What the rich fool plans to do.", "easy"],
+    ["soul", "Luke 12:20", "This night thy soul shall be required of thee", "What God says will be required that night.", "easy"],
+    ["watch", "Luke 12:37", "Blessed are those servants, whom the lord when he cometh shall find watching", "What the master wants to find His servants doing.", "easy"],
+  ]),
+  createLukeChapter(13, "Jesus calls for repentance, heals on the Sabbath, and teaches with kingdom images.", [
+    ["repent", "Luke 13:3", "except ye repent, ye shall all likewise perish", "What Jesus says people must do.", "easy"],
+    ["fig", "Luke 13:6", "A certain man had a fig tree planted in his vineyard", "The tree in Jesus' warning parable.", "easy"],
+    ["sabbath", "Luke 13:10", "he was teaching in one of the synagogues on the sabbath", "The day on which Jesus heals the bent woman.", "medium"],
+    ["mustard", "Luke 13:19", "It is like a grain of mustard seed", "The seed Jesus compares the kingdom to.", "medium"],
+    ["door", "Luke 13:24", "Strive to enter in at the strait gate", "The narrow entrance Jesus says to strive for.", "medium"],
+  ]),
+  createLukeChapter(14, "Humility, counting the cost, and kingdom invitation run through this chapter.", [
+    ["dropsy", "Luke 14:2", "a certain man before him which had the dropsy", "The illness of the man healed at the meal.", "hard"],
+    ["humble", "Luke 14:11", "he that humbleth himself shall be exalted", "The posture Jesus says will be exalted.", "easy"],
+    ["supper", "Luke 14:16", "A certain man made a great supper", "What the man in the parable prepares.", "easy"],
+    ["oxen", "Luke 14:19", "I have bought five yoke of oxen", "What one invited guest uses as an excuse.", "medium"],
+    ["cross", "Luke 14:27", "whosoever doth not bear his cross", "What Jesus says a disciple must bear.", "easy"],
+  ]),
+  createLukeChapter(15, "Jesus tells parables of lost things and joyful finding: sheep, coin, and son.", [
+    ["sheep", "Luke 15:4", "What man of you, having an hundred sheep", "The animal in the first lost-and-found parable.", "easy"],
+    ["coin", "Luke 15:8", "if she lose one piece of silver", "What the woman loses in the second parable.", "easy"],
+    ["father", "Luke 15:20", "when he was yet a great way off, his father saw him", "Who runs to the returning son.", "easy"],
+    ["robe", "Luke 15:22", "Bring forth the best robe", "What the father orders to be put on the son.", "medium"],
+    ["brother", "Luke 15:28", "therefore came his father out, and intreated him", "Who refuses to join the celebration.", "easy"],
+  ]),
+  createLukeChapter(16, "Stewardship, wealth, law, and the rich man with Lazarus shape this chapter.", [
+    ["steward", "Luke 16:1", "There was a certain rich man, which had a steward", "Who is accused of wasting goods.", "medium"],
+    ["mammon", "Luke 16:9", "Make to yourselves friends of the mammon of unrighteousness", "The wealth term Jesus uses in this chapter.", "hard"],
+    ["faithful", "Luke 16:10", "He that is faithful in that which is least", "What quality Jesus says matters in little things.", "easy"],
+    ["lazarus", "Luke 16:20", "there was a certain beggar named Lazarus", "The poor man laid at the rich man's gate.", "medium"],
+    ["bosom", "Luke 16:22", "was carried by the angels into Abraham's bosom", "Where Lazarus is carried.", "hard"],
+  ]),
+  createLukeChapter(17, "Jesus teaches on forgiveness, faith, gratitude, and the coming kingdom.", [
+    ["forgive", "Luke 17:3", "if he repent, forgive him", "What Jesus commands in response to repentance.", "easy"],
+    ["mustard", "Luke 17:6", "If ye had faith as a grain of mustard seed", "The seed Jesus uses to describe even tiny faith.", "medium"],
+    ["lepers", "Luke 17:12", "there met him ten men that were lepers", "Who cries out to Jesus together.", "medium"],
+    ["samaritan", "Luke 17:16", "and he was a Samaritan", "The one healed man who returns to give thanks.", "medium"],
+    ["kingdom", "Luke 17:21", "the kingdom of God is within you", "What Jesus says is not coming with outward observation.", "easy"],
+  ]),
+  createLukeChapter(18, "Persistent prayer, humility, children, wealth, and Bartimaeus all call for true dependence on God.", [
+    ["widow", "Luke 18:3", "there was a widow in that city", "Who keeps coming to the unjust judge.", "easy"],
+    ["judge", "Luke 18:2", "which feared not God, neither regarded man", "The official in the opening parable.", "easy"],
+    ["publican", "Luke 18:13", "the publican, standing afar off", "Who prays for mercy in the temple.", "hard"],
+    ["children", "Luke 18:16", "Suffer little children to come unto me", "Who Jesus welcomes into His presence.", "easy"],
+    ["blind", "Luke 18:35", "a certain blind man sat by the way side begging", "Who cries out as Jesus nears Jericho.", "easy"],
+  ]),
+  createLukeChapter(19, "Zacchaeus is transformed, a parable of minas is told, and Jesus enters Jerusalem weeping over the city.", [
+    ["zacchaeus", "Luke 19:2", "behold, there was a man named Zacchaeus", "The tax collector who climbs a tree.", "hard"],
+    ["sycamore", "Luke 19:4", "he climbed up into a sycomore tree", "What kind of tree Zacchaeus climbs.", "hard"],
+    ["salvation", "Luke 19:9", "This day is salvation come to this house", "What Jesus says has come to Zacchaeus' house.", "medium"],
+    ["minas", "Luke 19:13", "he delivered them ten pounds", "What the nobleman gives his servants in the parable.", "hard"],
+    ["jerusalem", "Luke 19:41", "when he was come near, he beheld the city, and wept over it", "The city Jesus weeps over.", "easy"],
+  ]),
+  createLukeChapter(20, "Authority is questioned, parables expose the leaders, and debates continue in the temple.", [
+    ["authority", "Luke 20:2", "Tell us, by what authority doest thou these things", "What the leaders ask Jesus about.", "medium"],
+    ["vineyard", "Luke 20:9", "A certain man planted a vineyard", "The setting of the parable against the husbandmen.", "medium"],
+    ["stone", "Luke 20:17", "The stone which the builders rejected", "What becomes the head of the corner.", "easy"],
+    ["caesar", "Luke 20:22", "Is it lawful for us to give tribute unto Caesar", "Whose tribute they ask Jesus about.", "easy"],
+    ["resurrection", "Luke 20:27", "the Sadducees, which deny that there is any resurrection", "What doctrine the Sadducees deny.", "hard"],
+  ]),
+  createLukeChapter(21, "The widow gives, the temple's future is described, and Jesus teaches about endurance and watchfulness.", [
+    ["widow", "Luke 21:2", "he saw also a certain poor widow", "Who gives two small mites.", "easy"],
+    ["mites", "Luke 21:2", "casting in thither two mites", "What the widow gives.", "hard"],
+    ["temple", "Luke 21:5", "how it was adorned with goodly stones", "What the disciples admire.", "easy"],
+    ["nations", "Luke 21:24", "Jerusalem shall be trodden down of the Gentiles", "Who will tread Jerusalem down for a time.", "medium"],
+    ["watch", "Luke 21:36", "Watch ye therefore, and pray always", "What Jesus tells disciples to do.", "easy"],
+  ]),
+  createLukeChapter(22, "The Passover meal, betrayal, prayer, arrest, and Peter's denial move the story toward the cross.", [
+    ["passover", "Luke 22:1", "the feast of unleavened bread drew nigh, which is called the Passover", "What feast is near.", "easy"],
+    ["judas", "Luke 22:3", "Then entered Satan into Judas", "Who agrees to betray Jesus.", "easy"],
+    ["bread", "Luke 22:19", "he took bread, and gave thanks", "One element Jesus shares at the supper.", "easy"],
+    ["cup", "Luke 22:20", "Likewise also the cup after supper", "The second element Jesus shares.", "easy"],
+    ["garden", "Luke 22:39", "he came out, and went, as he was wont, to the mount of Olives", "Where Jesus goes to pray after the meal.", "medium"],
+  ]),
+  createLukeChapter(23, "Jesus is tried, crucified, and buried, with mercy and innocence still shining through the suffering.", [
+    ["pilate", "Luke 23:1", "led him unto Pilate", "The governor Jesus is brought before.", "easy"],
+    ["herod", "Luke 23:7", "he sent him to Herod", "The ruler who also questions Jesus.", "easy"],
+    ["cross", "Luke 23:26", "they laid the cross on him", "What Simon of Cyrene is made to carry.", "easy"],
+    ["thief", "Luke 23:39", "one of the malefactors which were hanged", "The kind of criminal beside Jesus who speaks to Him.", "medium"],
+    ["tomb", "Luke 23:53", "laid it in a sepulchre that was hewn in stone", "Where Jesus' body is laid.", "easy"],
+  ]),
+  createLukeChapter(24, "The resurrection is announced, Scriptures are opened, and Jesus commissions His followers.", [
+    ["stone", "Luke 24:2", "they found the stone rolled away", "What the women find moved from the tomb.", "easy"],
+    ["angels", "Luke 24:4", "behold, two men stood by them in shining garments", "Who appears to the women at the tomb.", "medium"],
+    ["emmaus", "Luke 24:13", "went that same day to a village called Emmaus", "The village on the road with the two disciples.", "hard"],
+    ["bread", "Luke 24:30", "he took bread, and blessed it, and brake", "What Jesus breaks when their eyes are opened.", "easy"],
+    ["jerusalem", "Luke 24:52", "returned to Jerusalem with great joy", "Where the disciples return after Jesus' ascension.", "easy"],
+  ]),
+];
+
+const JOHN_CHAPTERS: ScrambledChapterPack[] = [
+  createJohnChapter(1, "John opens with the Word, light, witness, and the first disciples gathering around Jesus.", [
+    ["word", "John 1:1", "In the beginning was the Word", "How John opens his Gospel.", "easy"],
+    ["light", "John 1:4", "the life was the light of men", "What shines in the darkness.", "easy"],
+    ["lamb", "John 1:29", "Behold the Lamb of God", "What John the Baptist calls Jesus.", "easy"],
+    ["andrew", "John 1:40", "One of the two ... was Andrew", "Peter's brother who first followed Jesus.", "medium"],
+    ["nathanael", "John 1:47", "Behold an Israelite indeed", "The man Jesus saw under the fig tree.", "hard"],
+  ]),
+  createJohnChapter(2, "Water becomes wine at Cana, and Jesus cleanses the temple with zeal for His Father's house.", [
+    ["cana", "John 2:1", "there was a marriage in Cana of Galilee", "The town where Jesus' first sign happens.", "easy"],
+    ["wine", "John 2:9", "when the ruler of the feast had tasted the water that was made wine", "What the water became.", "easy"],
+    ["temple", "John 2:14", "he found in the temple those that sold", "What Jesus cleansed in Jerusalem.", "easy"],
+    ["cords", "John 2:15", "made a scourge of small cords", "What Jesus made to drive them out.", "medium"],
+    ["glory", "John 2:11", "manifested forth his glory", "What the sign at Cana revealed.", "medium"],
+  ]),
+  createJohnChapter(3, "Nicodemus comes by night, Jesus teaches new birth, and the chapter centers on belief and eternal life.", [
+    ["nicodemus", "John 3:1", "There was a man of the Pharisees, named Nicodemus", "The Pharisee who came to Jesus by night.", "hard"],
+    ["night", "John 3:2", "the same came to Jesus by night", "When Nicodemus came.", "easy"],
+    ["spirit", "John 3:6", "that which is born of the Spirit is spirit", "Who brings the new birth.", "easy"],
+    ["serpent", "John 3:14", "as Moses lifted up the serpent", "The Old Testament image Jesus uses.", "medium"],
+    ["world", "John 3:16", "God so loved the world", "What God so loved.", "easy"],
+  ]),
+  createJohnChapter(4, "Jesus meets the Samaritan woman, offers living water, and shows Himself to be the Savior of the world.", [
+    ["samaria", "John 4:4", "he must needs go through Samaria", "The region Jesus travels through.", "easy"],
+    ["water", "John 4:10", "he would have given thee living water", "What Jesus offers the woman.", "easy"],
+    ["well", "John 4:6", "Jesus therefore ... sat thus on the well", "Where Jesus sat while tired from the journey.", "easy"],
+    ["worship", "John 4:23", "the true worshippers shall worship the Father", "What the Father seeks in spirit and truth.", "medium"],
+    ["samaritans", "John 4:39", "many of the Samaritans of that city believed", "Who believed because of the woman's testimony.", "hard"],
+  ]),
+  createJohnChapter(5, "Jesus heals at Bethesda, then speaks about His authority, works, witness, and the Father's testimony.", [
+    ["bethesda", "John 5:2", "there is at Jerusalem by the sheep market a pool ... called Bethesda", "The pool where Jesus healed the sick man.", "hard"],
+    ["sabbath", "John 5:9", "and on the same day was the sabbath", "The day that stirred controversy after the healing.", "easy"],
+    ["father", "John 5:17", "My Father worketh hitherto, and I work", "Whom Jesus says is working.", "easy"],
+    ["judgment", "John 5:22", "the Father judgeth no man, but hath committed all judgment unto the Son", "What the Father committed to the Son.", "medium"],
+    ["moses", "John 5:46", "had ye believed Moses, ye would have believed me", "Who Jesus says wrote about Him.", "easy"],
+  ]),
+  createJohnChapter(6, "Bread multiplies, Jesus walks on the sea, and He teaches that He is the bread of life.", [
+    ["loaves", "John 6:9", "five barley loaves", "What the boy had before Jesus fed the crowd.", "easy"],
+    ["fish", "John 6:9", "and two small fishes", "What came with the loaves.", "easy"],
+    ["baskets", "John 6:13", "filled twelve baskets", "What the disciples filled with fragments.", "medium"],
+    ["bread", "John 6:35", "I am the bread of life", "What Jesus says He is.", "easy"],
+    ["murmured", "John 6:41", "The Jews then murmured at him", "What the Jews did when Jesus spoke about bread from heaven.", "hard"],
+  ]),
+  createJohnChapter(7, "Questions rise at the feast, Jesus teaches openly, and living water is promised.", [
+    ["feast", "John 7:2", "the Jews' feast of tabernacles was at hand", "The celebration near at hand in this chapter.", "easy"],
+    ["brethren", "John 7:3", "His brethren therefore said unto him", "Who first speaks to Jesus here.", "medium"],
+    ["doctrine", "John 7:16", "My doctrine is not mine", "What Jesus says came from the One who sent Him.", "medium"],
+    ["officers", "John 7:32", "the Pharisees and the chief priests sent officers", "Who were sent to take Jesus.", "hard"],
+    ["water", "John 7:38", "out of his belly shall flow rivers of living water", "What Jesus says will flow from the believer.", "easy"],
+  ]),
+  createJohnChapter(8, "Mercy, truth, light, freedom, and the bold claim 'I am' all shape this chapter.", [
+    ["stone", "John 8:7", "let him first cast a stone at her", "What Jesus mentions in the challenge to the accusers.", "easy"],
+    ["light", "John 8:12", "I am the light of the world", "What Jesus says He is.", "easy"],
+    ["truth", "John 8:32", "ye shall know the truth", "What Jesus says makes people free.", "easy"],
+    ["abraham", "John 8:39", "Abraham is our father", "The patriarch the crowd appeals to.", "easy"],
+    ["before", "John 8:58", "Before Abraham was, I am", "The word that starts Jesus' striking statement.", "medium"],
+  ]),
+  createJohnChapter(9, "A man born blind receives sight, and the chapter contrasts physical healing with spiritual blindness.", [
+    ["blind", "John 9:1", "a man which was blind from his birth", "The condition of the man Jesus saw.", "easy"],
+    ["clay", "John 9:6", "made clay of the spittle", "What Jesus made and placed on the man's eyes.", "easy"],
+    ["siloam", "John 9:7", "wash in the pool of Siloam", "The pool where the man was sent to wash.", "hard"],
+    ["pharisees", "John 9:13", "They brought to the Pharisees him", "Who the healed man was brought to.", "hard"],
+    ["worshipped", "John 9:38", "he worshipped him", "What the healed man did after Jesus revealed Himself.", "hard"],
+  ]),
+  createJohnChapter(10, "Jesus contrasts false shepherds with His own care and declares Himself the good shepherd.", [
+    ["shepherd", "John 10:11", "I am the good shepherd", "What Jesus says He is.", "easy"],
+    ["door", "John 10:9", "I am the door", "Another image Jesus uses for Himself.", "easy"],
+    ["voice", "John 10:27", "My sheep hear my voice", "What Jesus says His sheep hear.", "easy"],
+    ["hireling", "John 10:12", "he that is an hireling", "The paid worker who flees.", "hard"],
+    ["abundant", "John 10:10", "that they might have it more abundantly", "How Jesus says life is given.", "medium"],
+  ]),
+  createJohnChapter(11, "Lazarus dies and rises, grief turns to glory, and Jesus declares Himself the resurrection and the life.", [
+    ["lazarus", "John 11:1", "a certain man was sick, named Lazarus", "The man Jesus raised from the dead.", "easy"],
+    ["bethany", "John 11:1", "of Bethany, the town of Mary and her sister Martha", "The village where Lazarus lived.", "medium"],
+    ["martha", "John 11:20", "Then Martha, as soon as she heard", "The sister who first went to meet Jesus.", "easy"],
+    ["resurrection", "John 11:25", "I am the resurrection, and the life", "What Jesus says He is.", "hard"],
+    ["graveclothes", "John 11:44", "bound hand and foot with graveclothes", "What Lazarus came out wearing.", "hard"],
+  ]),
+  createJohnChapter(12, "Mary anoints Jesus, the crowd responds, and Jesus speaks about glory, grain, and being lifted up.", [
+    ["ointment", "John 12:3", "took a pound of ointment", "What Mary used to anoint Jesus' feet.", "hard"],
+    ["palm", "John 12:13", "took branches of palm trees", "What the crowd waved as Jesus entered.", "easy"],
+    ["colt", "John 12:14", "Jesus, when he had found a young ass", "The young animal Jesus sat on.", "medium"],
+    ["corn", "John 12:24", "Except a corn of wheat fall into the ground", "The grain image Jesus uses.", "easy"],
+    ["light", "John 12:35", "Yet a little while is the light with you", "What Jesus says is with them a little while longer.", "easy"],
+  ]),
+  createJohnChapter(13, "Jesus washes feet, exposes betrayal, and gives a new commandment of love.", [
+    ["feet", "John 13:5", "began to wash the disciples' feet", "What Jesus washed.", "easy"],
+    ["towel", "John 13:4", "took a towel, and girded himself", "What Jesus took before washing feet.", "medium"],
+    ["judas", "John 13:26", "he it is, to whom I shall give a sop", "The disciple identified as the betrayer.", "easy"],
+    ["sop", "John 13:26", "when I have dipped it", "The small piece Jesus gave Judas.", "hard"],
+    ["love", "John 13:34", "A new commandment I give unto you, That ye love one another", "What command Jesus gives anew.", "easy"],
+  ]),
+  createJohnChapter(14, "Jesus comforts His disciples with promises about the Father's house, the way, and the coming Comforter.", [
+    ["mansions", "John 14:2", "In my Father's house are many mansions", "What are in the Father's house.", "hard"],
+    ["way", "John 14:6", "I am the way, the truth, and the life", "The first title in Jesus' statement to Thomas.", "easy"],
+    ["father", "John 14:9", "he that hath seen me hath seen the Father", "Whom Jesus says they have seen in Him.", "easy"],
+    ["comforter", "John 14:16", "he shall give you another Comforter", "What Jesus says the Father will send.", "hard"],
+    ["peace", "John 14:27", "Peace I leave with you", "What Jesus leaves with His disciples.", "easy"],
+  ]),
+  createJohnChapter(15, "Jesus is the true vine, disciples are branches, and fruit, love, and abiding stay central.", [
+    ["vine", "John 15:1", "I am the true vine", "What Jesus says He is.", "easy"],
+    ["branches", "John 15:5", "ye are the branches", "What Jesus says His followers are.", "medium"],
+    ["fruit", "John 15:5", "the same bringeth forth much fruit", "What abiding in Christ produces.", "easy"],
+    ["abide", "John 15:4", "Abide in me, and I in you", "What Jesus tells His disciples to do.", "easy"],
+    ["friends", "John 15:15", "I have called you friends", "What Jesus calls His disciples.", "easy"],
+  ]),
+  createJohnChapter(16, "Jesus prepares the disciples for sorrow, persecution, the Spirit's work, and joy after grief.", [
+    ["comforter", "John 16:7", "if I depart, I will send him unto you", "The helper Jesus says will come after He departs.", "hard"],
+    ["reprove", "John 16:8", "he will reprove the world of sin", "What the Spirit will do to the world.", "hard"],
+    ["sorrow", "John 16:20", "ye shall be sorrowful, but your sorrow shall be turned into joy", "What will be turned into joy.", "easy"],
+    ["woman", "John 16:21", "A woman when she is in travail", "The example Jesus uses for sorrow turning to joy.", "easy"],
+    ["joy", "John 16:22", "your joy no man taketh from you", "What no one can take away.", "easy"],
+  ]),
+  createJohnChapter(17, "Jesus prays for glory, protection, unity, sanctification, and all who will believe.", [
+    ["glory", "John 17:1", "Father, the hour is come; glorify thy Son", "What Jesus asks the Father to give the Son.", "easy"],
+    ["eternal", "John 17:3", "this is life eternal", "The kind of life defined in this prayer.", "medium"],
+    ["world", "John 17:9", "I pray not for the world", "What Jesus says He is not praying for in that moment.", "easy"],
+    ["sanctify", "John 17:17", "Sanctify them through thy truth", "What Jesus asks the Father to do for His disciples.", "hard"],
+    ["unity", "John 17:21", "that they all may be one", "The togetherness Jesus prays for.", "medium"],
+  ]),
+  createJohnChapter(18, "Jesus is betrayed, arrested, examined, and Peter denies Him while the trial begins.", [
+    ["garden", "John 18:1", "where was a garden, into the which he entered", "Where Jesus went with His disciples.", "easy"],
+    ["judas", "John 18:2", "Judas also, which betrayed him", "The betrayer who knew the place.", "easy"],
+    ["sword", "John 18:10", "Simon Peter having a sword drew it", "What Peter drew.", "easy"],
+    ["cock", "John 18:27", "immediately the cock crew", "What sounded after Peter's denial.", "easy"],
+    ["pilate", "John 18:29", "Pilate then went out unto them", "The governor who questioned Jesus.", "medium"],
+  ]),
+  createJohnChapter(19, "Jesus is scourged, crucified, and buried, yet even here kingship and Scripture fulfillment stand out.", [
+    ["crown", "John 19:2", "platted a crown of thorns", "What the soldiers put on Jesus' head.", "easy"],
+    ["thorns", "John 19:2", "a crown of thorns", "What the crown was made from.", "medium"],
+    ["cross", "John 19:17", "bearing his cross", "What Jesus carried out to Golgotha.", "easy"],
+    ["golgotha", "John 19:17", "the place of a skull, which is called ... Golgotha", "The place where Jesus was crucified.", "hard"],
+    ["tomb", "John 19:41", "in the garden a new sepulchre", "Where Jesus was laid.", "easy"],
+  ]),
+  createJohnChapter(20, "The tomb is empty, Mary sees the risen Lord, and Thomas is called to believe.", [
+    ["stone", "John 20:1", "seeth the stone taken away from the sepulchre", "What Mary saw moved away.", "easy"],
+    ["napkin", "John 20:7", "the napkin, that was about his head", "What lay wrapped together in a place by itself.", "hard"],
+    ["mary", "John 20:16", "Jesus saith unto her, Mary", "The woman who first recognized the risen Jesus by name.", "easy"],
+    ["thomas", "John 20:24", "Thomas, one of the twelve", "The disciple who missed the first appearance.", "easy"],
+    ["believe", "John 20:31", "that ye might believe", "The stated purpose of John's Gospel.", "easy"],
+  ]),
+  createJohnChapter(21, "Jesus appears by the sea, restores Peter, and closes the Gospel with calling and witness.", [
+    ["fishes", "John 21:6", "they were not able to draw it for the multitude of fishes", "What filled the net after Jesus' instruction.", "medium"],
+    ["net", "John 21:11", "full of great fishes, an hundred and fifty and three", "What Simon Peter drew to land.", "easy"],
+    ["fire", "John 21:9", "they saw a fire of coals there", "What the disciples saw on the shore.", "easy"],
+    ["lambs", "John 21:15", "Feed my lambs", "What Jesus first tells Peter to feed.", "medium"],
+    ["follow", "John 21:22", "what is that to thee? follow thou me", "What Jesus tells Peter to do.", "easy"],
+  ]),
+];
+
+const ACTS_CHAPTERS: ScrambledChapterPack[] = [
+  createActsChapter(1, "Jesus speaks about the coming Spirit, ascends, and the disciples wait together before Matthias is chosen.", [
+    ["jerusalem", "Acts 1:4", "wait for the promise of the Father", "The city where the disciples were told to wait.", "easy"],
+    ["power", "Acts 1:8", "ye shall receive power", "What would come when the Holy Ghost came upon them.", "easy"],
+    ["witnesses", "Acts 1:8", "ye shall be witnesses unto me", "What Jesus says the disciples will be.", "medium"],
+    ["cloud", "Acts 1:9", "a cloud received him out of their sight", "What received Jesus as He ascended.", "easy"],
+    ["matthias", "Acts 1:26", "the lot fell upon Matthias", "The man chosen to take Judas's place.", "hard"],
+  ]),
+  createActsChapter(2, "The Spirit comes at Pentecost, Peter preaches, and the early church begins in power and unity.", [
+    ["pentecost", "Acts 2:1", "when the day of Pentecost was fully come", "The feast day when the Spirit came.", "hard"],
+    ["wind", "Acts 2:2", "a sound from heaven as of a rushing mighty wind", "What filled the house.", "easy"],
+    ["tongues", "Acts 2:3", "cloven tongues like as of fire", "What appeared on them.", "easy"],
+    ["repent", "Acts 2:38", "Repent, and be baptized", "Peter's first command in response to conviction.", "easy"],
+    ["thousand", "Acts 2:41", "about three thousand souls", "How many were added that day.", "medium"],
+  ]),
+  createActsChapter(3, "A lame man is healed at the temple gate, and Peter calls the crowd to repent in Jesus' name.", [
+    ["beautiful", "Acts 3:2", "the gate of the temple which is called Beautiful", "The gate where the lame man sat.", "hard"],
+    ["silver", "Acts 3:6", "Silver and gold have I none", "What Peter said he did not have.", "easy"],
+    ["walk", "Acts 3:6", "rise up and walk", "What Peter told the lame man to do.", "easy"],
+    ["leaped", "Acts 3:8", "walking, and leaping, and praising God", "What the healed man did in the temple.", "medium"],
+    ["refreshing", "Acts 3:19", "times of refreshing shall come", "What Peter says repentance will bring.", "hard"],
+  ]),
+  createActsChapter(4, "Peter and John face opposition, speak boldly before leaders, and the church prays for courage.", [
+    ["prison", "Acts 4:3", "they laid hands on them, and put them in hold", "Where Peter and John were placed.", "easy"],
+    ["boldness", "Acts 4:13", "when they saw the boldness of Peter and John", "What the rulers noticed.", "medium"],
+    ["corner", "Acts 4:11", "the stone which was set at nought", "The part of the building image tied to Jesus.", "easy"],
+    ["shaken", "Acts 4:31", "the place was shaken where they were assembled together", "What happened after they prayed.", "medium"],
+    ["barnabas", "Acts 4:36", "Joses, who by the apostles was surnamed Barnabas", "The man called son of consolation.", "hard"],
+  ]),
+  createActsChapter(5, "Holiness, judgment, miracles, imprisonment, and joyful suffering all mark this chapter.", [
+    ["ananias", "Acts 5:1", "a certain man named Ananias", "The man who lied about the price.", "hard"],
+    ["sapphira", "Acts 5:1", "with Sapphira his wife", "The wife who joined in the lie.", "hard"],
+    ["angel", "Acts 5:19", "the angel of the Lord by night opened the prison doors", "Who opened the prison doors.", "easy"],
+    ["gamaliel", "Acts 5:34", "there stood up one in the council, a Pharisee, named Gamaliel", "The Pharisee who advised caution.", "hard"],
+    ["rejoicing", "Acts 5:41", "they departed ... rejoicing", "How the apostles left after being beaten.", "medium"],
+  ]),
+  createActsChapter(6, "Seven servants are chosen, Stephen stands out in grace and power, and opposition rises again.", [
+    ["widows", "Acts 6:1", "their widows were neglected", "Who were overlooked in the daily ministration.", "medium"],
+    ["seven", "Acts 6:3", "look ye out among you seven men", "How many men were chosen for the task.", "easy"],
+    ["wisdom", "Acts 6:3", "full of the Holy Ghost and wisdom", "One quality the chosen men needed.", "easy"],
+    ["stephen", "Acts 6:5", "they chose Stephen", "The first man named among the seven.", "easy"],
+    ["angel", "Acts 6:15", "as it had been the face of an angel", "What Stephen's face looked like.", "easy"],
+  ]),
+  createActsChapter(7, "Stephen recounts Israel's history, confronts the council, and becomes the church's first martyr.", [
+    ["moses", "Acts 7:20", "in which time Moses was born", "The deliverer Stephen speaks about at length.", "easy"],
+    ["stiffnecked", "Acts 7:51", "Ye stiffnecked and uncircumcised", "How Stephen describes his hearers.", "hard"],
+    ["heavens", "Acts 7:56", "I see the heavens opened", "What Stephen sees opened.", "medium"],
+    ["stoned", "Acts 7:58", "cast him out of the city, and stoned him", "How Stephen was killed.", "easy"],
+    ["saul", "Acts 7:58", "a young man's feet, whose name was Saul", "The young man watching the garments.", "easy"],
+  ]),
+  createActsChapter(8, "Persecution scatters the church, Philip preaches in Samaria, and the Ethiopian eunuch believes.", [
+    ["samaria", "Acts 8:5", "Philip went down to the city of Samaria", "The city where Philip preached.", "easy"],
+    ["simon", "Acts 8:9", "there was a certain man, called Simon", "The sorcerer in Samaria.", "easy"],
+    ["sorcery", "Acts 8:11", "because that of long time he had bewitched them with sorceries", "What Simon had practiced.", "medium"],
+    ["ethiopian", "Acts 8:27", "behold, a man of Ethiopia", "The traveler Philip was sent to meet.", "hard"],
+    ["isaiah", "Acts 8:28", "sitting in his chariot read Esaias the prophet", "The prophet the eunuch was reading.", "hard"],
+  ]),
+  createActsChapter(9, "Saul meets the risen Jesus, receives sight, and begins the ministry that once seemed impossible.", [
+    ["saul", "Acts 9:1", "Saul, yet breathing out threatenings", "The persecutor at the start of the chapter.", "easy"],
+    ["damascus", "Acts 9:2", "desired of him letters to Damascus", "The city Saul was traveling toward.", "easy"],
+    ["light", "Acts 9:3", "there shined round about him a light", "What flashed around Saul from heaven.", "easy"],
+    ["ananias", "Acts 9:10", "there was a certain disciple at Damascus, named Ananias", "The disciple sent to Saul.", "hard"],
+    ["basket", "Acts 9:25", "let him down by the wall in a basket", "How Saul escaped the city.", "medium"],
+  ]),
+  createActsChapter(10, "Cornelius sees a vision, Peter sees the sheet, and the gospel clearly opens to the Gentiles.", [
+    ["cornelius", "Acts 10:1", "a certain man in Caesarea called Cornelius", "The centurion who feared God.", "hard"],
+    ["caesarea", "Acts 10:1", "a certain man in Caesarea", "The city where Cornelius lived.", "medium"],
+    ["sheet", "Acts 10:11", "a certain vessel descending unto him, as it had been a great sheet", "What Peter saw coming down from heaven.", "easy"],
+    ["gentiles", "Acts 10:45", "on the Gentiles also was poured out", "The people amazed the Jewish believers here.", "hard"],
+    ["water", "Acts 10:47", "Can any man forbid water", "What Peter mentions before baptism.", "easy"],
+  ]),
+  createActsChapter(11, "Peter explains God's work among the Gentiles, and Antioch becomes a key center of ministry.", [
+    ["peter", "Acts 11:4", "Peter rehearsed the matter from the beginning", "The apostle explaining what happened.", "easy"],
+    ["antioch", "Acts 11:26", "he came unto Antioch", "The city where disciples were first called Christians.", "hard"],
+    ["christians", "Acts 11:26", "the disciples were called Christians first in Antioch", "What the disciples were first called there.", "hard"],
+    ["barnabas", "Acts 11:22", "they sent forth Barnabas", "The man sent to Antioch.", "medium"],
+    ["famine", "Acts 11:28", "there should be great dearth", "What Agabus foretold would happen.", "easy"],
+  ]),
+  createActsChapter(12, "Herod kills James, Peter is delivered from prison, and the word of God keeps growing.", [
+    ["herod", "Acts 12:1", "Herod the king stretched forth his hands", "The king persecuting the church.", "easy"],
+    ["james", "Acts 12:2", "killed James the brother of John", "The apostle put to death by the sword.", "easy"],
+    ["chains", "Acts 12:6", "Peter was sleeping between two soldiers, bound with two chains", "What bound Peter in prison.", "medium"],
+    ["rhoda", "Acts 12:13", "a damsel came to hearken, named Rhoda", "The servant girl at the door.", "hard"],
+    ["worms", "Acts 12:23", "he was eaten of worms", "What struck Herod after taking glory.", "medium"],
+  ]),
+  createActsChapter(13, "The Spirit sends Barnabas and Saul, a sorcerer is rebuked, and the gospel is preached in Pisidian Antioch.", [
+    ["barnabas", "Acts 13:2", "Separate me Barnabas and Saul", "One of the two set apart by the Spirit.", "medium"],
+    ["saul", "Acts 13:2", "Separate me Barnabas and Saul", "The other man set apart with Barnabas.", "easy"],
+    ["cyprus", "Acts 13:4", "they departed unto Seleucia; and from thence they sailed to Cyprus", "The island where the mission first went.", "medium"],
+    ["elymas", "Acts 13:8", "Elymas the sorcerer", "The magician who resisted them.", "hard"],
+    ["gentiles", "Acts 13:46", "lo, we turn to the Gentiles", "The people Paul and Barnabas said they would turn to.", "hard"],
+  ]),
+  createActsChapter(14, "Paul and Barnabas preach boldly, suffer opposition, and leave strengthened disciples behind.", [
+    ["iconium", "Acts 14:1", "they went both together into the synagogue of the Jews", "The city where Jews and Greeks believed in great number.", "hard"],
+    ["lystra", "Acts 14:8", "there sat a certain man at Lystra", "The city where the cripple was healed.", "hard"],
+    ["zeus", "Acts 14:12", "they called Barnabas, Jupiter", "The false god title given to Barnabas.", "medium"],
+    ["stoned", "Acts 14:19", "having stoned Paul", "What the crowd did to Paul.", "easy"],
+    ["disciples", "Acts 14:22", "confirming the souls of the disciples", "Who Paul and Barnabas strengthened on the return trip.", "medium"],
+  ]),
+  createActsChapter(15, "The Jerusalem council protects the gospel of grace and sends a unifying letter to the churches.", [
+    ["circumcision", "Acts 15:1", "Except ye be circumcised", "The issue that caused the dispute.", "hard"],
+    ["council", "Acts 15:6", "the apostles and elders came together", "What kind of gathering formed in Jerusalem.", "medium"],
+    ["peter", "Acts 15:7", "Peter rose up", "The apostle who reminded them about Gentiles hearing the gospel.", "easy"],
+    ["james", "Acts 15:13", "James answered", "The leader who gave the final judgment speech.", "easy"],
+    ["letter", "Acts 15:23", "they wrote letters by them", "What the council sent with Judas and Silas.", "medium"],
+  ]),
+  createActsChapter(16, "Timothy joins, Lydia believes, a slave girl is delivered, and a jailer is saved at midnight.", [
+    ["timothy", "Acts 16:1", "behold, a certain disciple was there, named Timotheus", "The young disciple who joined Paul.", "hard"],
+    ["lydia", "Acts 16:14", "a certain woman named Lydia", "The seller of purple whose heart the Lord opened.", "hard"],
+    ["purple", "Acts 16:14", "a seller of purple", "What Lydia sold.", "medium"],
+    ["prison", "Acts 16:24", "who, having received such a charge, thrust them into the inner prison", "Where Paul and Silas were placed.", "easy"],
+    ["jailer", "Acts 16:29", "then he called for a light, and sprang in", "The man who asked how to be saved.", "medium"],
+  ]),
+  createActsChapter(17, "The gospel reaches Thessalonica, Berea, and Athens, where Paul speaks on Mars' hill.", [
+    ["thessalonica", "Acts 17:1", "they came to Thessalonica", "The city where some believed and others formed a mob.", "hard"],
+    ["berea", "Acts 17:10", "immediately sent away Paul and Silas by night unto Berea", "The city praised for searching the Scriptures daily.", "hard"],
+    ["athens", "Acts 17:15", "they that conducted Paul brought him unto Athens", "The city full of idols.", "easy"],
+    ["altar", "Acts 17:23", "I found an altar with this inscription", "What Paul found with 'TO THE UNKNOWN GOD'.", "easy"],
+    ["unknown", "Acts 17:23", "TO THE UNKNOWN GOD", "The word on the altar Paul used in his sermon.", "medium"],
+  ]),
+  createActsChapter(18, "Corinth becomes a major mission field, Aquila and Priscilla appear, and Apollos begins to grow.", [
+    ["corinth", "Acts 18:1", "Paul departed from Athens, and came to Corinth", "The city Paul entered after Athens.", "easy"],
+    ["aquila", "Acts 18:2", "found a certain Jew named Aquila", "The man Paul met from Pontus.", "hard"],
+    ["priscilla", "Acts 18:2", "with his wife Priscilla", "Aquila's wife.", "hard"],
+    ["tentmaker", "Acts 18:3", "for by their occupation they were tentmakers", "The work Paul shared with Aquila and Priscilla.", "hard"],
+    ["apollos", "Acts 18:24", "a certain Jew named Apollos", "The eloquent man mighty in the Scriptures.", "hard"],
+  ]),
+  createActsChapter(19, "Ephesus sees repentance, miracles, burning books, and public uproar over the gospel's power.", [
+    ["ephesus", "Acts 19:1", "Paul having passed through the upper coasts came to Ephesus", "The city where this chapter unfolds.", "medium"],
+    ["disciples", "Acts 19:1", "he found certain disciples", "Who Paul met first there.", "medium"],
+    ["handkerchiefs", "Acts 19:12", "from his body were brought unto the sick handkerchiefs", "The cloths carried from Paul.", "hard"],
+    ["books", "Acts 19:19", "many of them also which used curious arts brought their books together", "What the former magicians burned.", "easy"],
+    ["diana", "Acts 19:27", "the temple of the great goddess Diana", "The goddess named in the uproar.", "medium"],
+  ]),
+  createActsChapter(20, "Paul strengthens believers, Eutychus falls and rises, and the Ephesian elders hear a tearful farewell.", [
+    ["eutychus", "Acts 20:9", "a certain young man named Eutychus", "The young man who fell from the window.", "hard"],
+    ["window", "Acts 20:9", "being fallen into a deep sleep ... fell down from the third loft", "Where Eutychus fell from.", "easy"],
+    ["bread", "Acts 20:11", "when he therefore was come up again, and had broken bread", "What Paul did before continuing to speak.", "easy"],
+    ["elders", "Acts 20:17", "called the elders of the church", "Who Paul sent for from Ephesus.", "medium"],
+    ["wolves", "Acts 20:29", "grievous wolves enter in among you", "What Paul says will come after his departure.", "medium"],
+  ]),
+  createActsChapter(21, "Warnings continue, Paul reaches Jerusalem, and the temple arrest begins.", [
+    ["jerusalem", "Acts 21:17", "when we were come to Jerusalem", "The city Paul finally reaches.", "easy"],
+    ["caesarea", "Acts 21:8", "we entered into the house of Philip the evangelist", "The city where Paul stayed with Philip.", "hard"],
+    ["agabus", "Acts 21:10", "there came down from Judaea a certain prophet, named Agabus", "The prophet who bound his own hands and feet.", "hard"],
+    ["temple", "Acts 21:28", "men of Israel, help: This is the man", "The place where the crowd seized Paul.", "easy"],
+    ["chains", "Acts 21:33", "commanded him to be bound with two chains", "What the chief captain ordered for Paul.", "medium"],
+  ]),
+  createActsChapter(22, "Paul speaks to the crowd, recounts his conversion, and the Roman commander grows more cautious.", [
+    ["hebrew", "Acts 22:2", "when they heard that he spake in the Hebrew tongue", "The language Paul used to address the crowd.", "hard"],
+    ["gamaliel", "Acts 22:3", "brought up in this city at the feet of Gamaliel", "The teacher under whom Paul studied.", "hard"],
+    ["damascus", "Acts 22:6", "as I made my journey, and was come nigh unto Damascus", "The city near where the light appeared.", "easy"],
+    ["ananias", "Acts 22:12", "one Ananias, a devout man", "The man who came to Paul after the vision.", "hard"],
+    ["citizen", "Acts 22:28", "with a great sum obtained I this freedom", "What Paul says he was born as.", "medium"],
+  ]),
+  createActsChapter(23, "Paul stands before the council, division breaks out, and a plot against his life is uncovered.", [
+    ["council", "Acts 23:1", "Paul, earnestly beholding the council", "The group Paul addressed.", "medium"],
+    ["pharisees", "Acts 23:6", "I am a Pharisee, the son of a Pharisee", "The party Paul identifies with.", "hard"],
+    ["sadducees", "Acts 23:8", "the Sadducees say that there is no resurrection", "The group opposed to resurrection.", "hard"],
+    ["nephew", "Acts 23:16", "Paul's sister's son heard of their lying in wait", "The family member who heard the plot.", "hard"],
+    ["caesarea", "Acts 23:23", "make ready two hundred soldiers to go to Caesarea", "Where Paul was sent under guard.", "medium"],
+  ]),
+  createActsChapter(24, "Paul appears before Felix, answers accusations, and speaks about righteousness and judgment.", [
+    ["felix", "Acts 24:3", "seeing that by thee we enjoy great quietness", "The governor hearing Paul's case.", "medium"],
+    ["tertullus", "Acts 24:1", "with a certain orator named Tertullus", "The spokesman who accused Paul.", "hard"],
+    ["way", "Acts 24:14", "after the way which they call heresy", "What Paul says he worships God according to.", "easy"],
+    ["temperance", "Acts 24:25", "he reasoned of righteousness, temperance, and judgment to come", "One of the themes Paul reasoned about.", "hard"],
+    ["trembled", "Acts 24:25", "Felix trembled", "What Felix did while hearing Paul.", "medium"],
+  ]),
+  createActsChapter(25, "Festus hears the case, Paul appeals to Caesar, and the transfer to Rome draws near.", [
+    ["festus", "Acts 25:1", "Festus was come into the province", "The new governor who succeeds Felix.", "hard"],
+    ["caesar", "Acts 25:11", "I appeal unto Caesar", "Whom Paul appeals to.", "easy"],
+    ["jerusalem", "Acts 25:9", "Wilt thou go up to Jerusalem", "The city Festus asked Paul about.", "easy"],
+    ["accusers", "Acts 25:7", "the Jews which came down from Jerusalem stood round about", "Who brought many accusations.", "medium"],
+    ["rome", "Acts 25:12", "unto Caesar shalt thou go", "The great destination implied by Paul's appeal.", "easy"],
+  ]),
+  createActsChapter(26, "Paul gives his defense before Agrippa, recounting his calling and gospel mission.", [
+    ["agrippa", "Acts 26:1", "Agrippa said unto Paul", "The king hearing Paul's defense.", "hard"],
+    ["vision", "Acts 26:19", "I was not disobedient unto the heavenly vision", "What Paul says he obeyed.", "medium"],
+    ["light", "Acts 26:13", "I saw in the way a light from heaven", "What Paul saw at midday.", "easy"],
+    ["gentiles", "Acts 26:17", "delivering thee from the people, and from the Gentiles", "The people Paul was being sent to.", "hard"],
+    ["almost", "Acts 26:28", "Almost thou persuadest me to be a Christian", "Agrippa's famous word to Paul.", "medium"],
+  ]),
+  createActsChapter(27, "A dangerous voyage turns to shipwreck, but God's promise preserves every life aboard.", [
+    ["ship", "Acts 27:2", "entering into a ship of Adramyttium", "What carried Paul toward Rome.", "easy"],
+    ["storm", "Acts 27:14", "there arose against it a tempestuous wind", "What struck the ship with force.", "easy"],
+    ["angel", "Acts 27:23", "there stood by me this night the angel of God", "Who stood by Paul in the night.", "easy"],
+    ["island", "Acts 27:26", "we must be cast upon a certain island", "Where Paul says they must end up.", "easy"],
+    ["shipwreck", "Acts 27:41", "the hinder part was broken with the violence of the waves", "What happened to the vessel at the shore.", "hard"],
+  ]),
+  createActsChapter(28, "Malta gives way to Rome, where Paul keeps preaching with freedom at the end of Acts.", [
+    ["malta", "Acts 28:1", "they knew that the island was called Melita", "The island where they landed.", "hard"],
+    ["viper", "Acts 28:3", "there came a viper out of the heat", "What fastened on Paul's hand.", "medium"],
+    ["publius", "Acts 28:7", "whose name was Publius", "The chief man of the island.", "hard"],
+    ["rome", "Acts 28:16", "when we came to Rome", "The city Paul finally reached.", "easy"],
+    ["kingdom", "Acts 28:31", "preaching the kingdom of God", "What Paul preached in Rome.", "medium"],
+  ]),
+];
+
+const ROMANS_CHAPTERS: ScrambledChapterPack[] = [
+  createRomansChapter(1, "Paul introduces the gospel, celebrates faith in Rome, and shows the need for salvation for all.", [
+    ["gospel", "Romans 1:1", "separated unto the gospel of God", "What Paul says he was separated unto.", "easy"],
+    ["david", "Romans 1:3", "made of the seed of David", "The kingly line Jesus came through according to the flesh.", "easy"],
+    ["faith", "Romans 1:17", "The just shall live by faith", "What the just shall live by.", "easy"],
+    ["wrath", "Romans 1:18", "the wrath of God is revealed", "What is revealed from heaven against ungodliness.", "medium"],
+    ["creator", "Romans 1:25", "worshipped and served the creature more than the Creator", "Who is blessed for ever.", "medium"],
+  ]),
+  createRomansChapter(2, "Paul exposes hypocrisy, God's righteous judgment, and the need for inward transformation.", [
+    ["repentance", "Romans 2:4", "the goodness of God leadeth thee to repentance", "What God's goodness is meant to lead people toward.", "hard"],
+    ["deeds", "Romans 2:6", "Who will render to every man according to his deeds", "What God judges according to.", "easy"],
+    ["gentiles", "Romans 2:14", "when the Gentiles, which have not the law", "The people Paul says sometimes do by nature what the law requires.", "hard"],
+    ["conscience", "Romans 2:15", "their conscience also bearing witness", "What bears witness inside people.", "hard"],
+    ["heart", "Romans 2:29", "circumcision is that of the heart", "Where true circumcision is found.", "easy"],
+  ]),
+  createRomansChapter(3, "Universal sin is exposed, and justification by grace through faith in Jesus stands at the center.", [
+    ["oracles", "Romans 3:2", "unto them were committed the oracles of God", "What the Jews were entrusted with.", "hard"],
+    ["righteous", "Romans 3:10", "There is none righteous, no, not one", "What no one is on their own.", "medium"],
+    ["sinned", "Romans 3:23", "For all have sinned", "What all have done.", "easy"],
+    ["grace", "Romans 3:24", "Being justified freely by his grace", "How people are justified freely.", "easy"],
+    ["boasting", "Romans 3:27", "Where is boasting then? It is excluded", "What is excluded by justification through faith.", "hard"],
+  ]),
+  createRomansChapter(4, "Abraham shows that righteousness is counted through faith before works and before circumcision.", [
+    ["abraham", "Romans 4:1", "What shall we say then that Abraham", "The man Paul uses as the key example of faith.", "easy"],
+    ["credited", "Romans 4:3", "it was counted unto him for righteousness", "What happened to Abraham's faith.", "hard"],
+    ["circumcision", "Romans 4:10", "How was it then reckoned? when he was in circumcision", "The sign Abraham received after righteousness was counted.", "hard"],
+    ["promise", "Romans 4:13", "the promise, that he should be the heir of the world", "What did not come through the law.", "medium"],
+    ["glory", "Romans 4:20", "giving glory to God", "What Abraham gave to God through faith.", "easy"],
+  ]),
+  createRomansChapter(5, "Peace with God, hope in suffering, Christ's love, and Adam-Christ contrast shape this chapter.", [
+    ["peace", "Romans 5:1", "we have peace with God", "What justification by faith brings with God.", "easy"],
+    ["hope", "Romans 5:2", "rejoice in hope of the glory of God", "What believers rejoice in.", "easy"],
+    ["tribulation", "Romans 5:3", "tribulation worketh patience", "What begins the chain toward hope.", "hard"],
+    ["adam", "Romans 5:14", "from Adam to Moses", "The man through whom sin entered the world.", "easy"],
+    ["gift", "Romans 5:15", "the free gift is not like the offence", "What is contrasted with the trespass.", "easy"],
+  ]),
+  createRomansChapter(6, "Union with Christ means death to sin and a new life lived under grace.", [
+    ["baptized", "Romans 6:3", "so many of us as were baptized into Jesus Christ", "What believers are into Christ Jesus.", "medium"],
+    ["death", "Romans 6:4", "we are buried with him by baptism into death", "What baptism unites believers with.", "easy"],
+    ["crucified", "Romans 6:6", "our old man is crucified with him", "What happened to the old man.", "hard"],
+    ["master", "Romans 6:14", "sin shall not have dominion over you", "What sin shall no longer be over believers.", "medium"],
+    ["wages", "Romans 6:23", "the wages of sin is death", "What sin pays out.", "easy"],
+  ]),
+  createRomansChapter(7, "Paul explains the law, inner conflict, and the need for rescue beyond human effort.", [
+    ["law", "Romans 7:1", "the law hath dominion over a man", "What has authority while a person lives.", "easy"],
+    ["body", "Romans 7:4", "ye also are become dead to the law by the body of Christ", "What believers are joined to Christ through here.", "easy"],
+    ["holy", "Romans 7:12", "the law is holy", "How Paul describes the law.", "easy"],
+    ["struggle", "Romans 7:15", "that which I do I allow not", "What Paul describes between desire and action.", "medium"],
+    ["rescue", "Romans 7:24", "who shall deliver me from the body of this death?", "What Paul cries out for.", "medium"],
+  ]),
+  createRomansChapter(8, "Freedom, adoption, future glory, and unshakable love in Christ fill this chapter.", [
+    ["condemnation", "Romans 8:1", "There is therefore now no condemnation", "What there is none of for those in Christ.", "hard"],
+    ["spirit", "Romans 8:2", "the law of the Spirit of life", "Who sets believers free in Christ Jesus.", "easy"],
+    ["adoption", "Romans 8:15", "ye have received the Spirit of adoption", "What kind of Spirit believers have received.", "hard"],
+    ["purpose", "Romans 8:28", "called according to his purpose", "What all things work together under for those who love God.", "medium"],
+    ["separate", "Romans 8:39", "shall be able to separate us from the love of God", "What nothing can do to believers from God's love.", "medium"],
+  ]),
+  createRomansChapter(9, "Paul wrestles with Israel, election, mercy, and God's sovereign purposes.", [
+    ["israel", "Romans 9:4", "Who are Israelites", "The people whose privileges Paul lists with sorrow.", "easy"],
+    ["mercy", "Romans 9:15", "I will have mercy on whom I will have mercy", "What God says He will have on whom He chooses.", "medium"],
+    ["pharaoh", "Romans 9:17", "Even for this same purpose have I raised thee up", "The ruler Paul quotes as an example.", "medium"],
+    ["potter", "Romans 9:21", "Hath not the potter power over the clay", "The craftsman image Paul uses for God's authority.", "hard"],
+    ["gentiles", "Romans 9:24", "not of the Jews only, but also of the Gentiles", "The people also called by God besides Jews.", "hard"],
+  ]),
+  createRomansChapter(10, "Paul stresses righteousness by faith, confession, belief, and the need for gospel preaching.", [
+    ["zeal", "Romans 10:2", "they have a zeal of God", "What Israel has, but not according to knowledge.", "medium"],
+    ["confess", "Romans 10:9", "if thou shalt confess with thy mouth the Lord Jesus", "What believers are told to do with their mouth.", "medium"],
+    ["believe", "Romans 10:9", "and shalt believe in thine heart", "What believers are told to do in their heart.", "easy"],
+    ["beautiful", "Romans 10:15", "How beautiful are the feet", "How the feet of those preaching peace are described.", "hard"],
+    ["hearing", "Romans 10:17", "faith cometh by hearing", "What faith comes by.", "hard"],
+  ]),
+  createRomansChapter(11, "God preserves a remnant, warns Gentiles, and promises wisdom beyond human pride.", [
+    ["remnant", "Romans 11:5", "there is a remnant according to the election of grace", "What remains by grace.", "hard"],
+    ["olive", "Romans 11:17", "if some of the branches be broken off ... olive tree", "The tree image Paul uses for God's people.", "easy"],
+    ["branches", "Romans 11:17", "some of the branches be broken off", "What were broken off in the olive tree picture.", "medium"],
+    ["grafting", "Romans 11:23", "God is able to graft them in again", "What God can do again to natural branches.", "hard"],
+    ["wisdom", "Romans 11:33", "O the depth of the riches both of the wisdom", "One of the things Paul praises in God's ways.", "easy"],
+  ]),
+  createRomansChapter(12, "Living sacrifice, transformed minds, humility, gifts, and sincere love define practical worship.", [
+    ["sacrifice", "Romans 12:1", "present your bodies a living sacrifice", "What believers are told to present.", "medium"],
+    ["transformed", "Romans 12:2", "be ye transformed by the renewing of your mind", "What believers are told to be.", "hard"],
+    ["mind", "Romans 12:2", "the renewing of your mind", "What is renewed.", "easy"],
+    ["gifts", "Romans 12:6", "Having then gifts differing", "What believers have differing according to grace.", "easy"],
+    ["love", "Romans 12:9", "Let love be without dissimulation", "What must be sincere.", "easy"],
+  ]),
+  createRomansChapter(13, "Authorities, love, and waking up to holy living are all emphasized.", [
+    ["powers", "Romans 13:1", "the powers that be are ordained of God", "What are ordained by God.", "medium"],
+    ["tribute", "Romans 13:7", "tribute to whom tribute is due", "What Paul says to render to whom it is due.", "medium"],
+    ["love", "Romans 13:10", "love is the fulfilling of the law", "What fulfills the law.", "easy"],
+    ["night", "Romans 13:12", "The night is far spent", "What Paul says is far spent.", "easy"],
+    ["armour", "Romans 13:12", "let us put on the armour of light", "What believers are told to put on.", "hard"],
+  ]),
+  createRomansChapter(14, "Paul teaches patience about disputable matters and calls believers not to judge one another.", [
+    ["weak", "Romans 14:1", "Him that is weak in the faith receive ye", "Who should be welcomed without quarrels.", "easy"],
+    ["judge", "Romans 14:3", "let not him which eateth not judge him that eateth", "What believers are warned not to do to one another.", "easy"],
+    ["kingdom", "Romans 14:17", "the kingdom of God is not meat and drink", "What is not about food and drink.", "medium"],
+    ["peace", "Romans 14:17", "but righteousness, and peace, and joy in the Holy Ghost", "One of the things the kingdom of God is.", "easy"],
+    ["stumble", "Romans 14:13", "that no man put a stumblingblock", "What believers should not place before a brother.", "hard"],
+  ]),
+  createRomansChapter(15, "Christ's example, shared hope, Gentile mission, and Paul's travel plans fill this chapter.", [
+    ["patience", "Romans 15:4", "through patience and comfort of the scriptures", "What the Scriptures help produce before hope.", "medium"],
+    ["hope", "Romans 15:13", "the God of hope fill you with all joy and peace", "What kind of God Paul calls God here.", "easy"],
+    ["gentiles", "Romans 15:16", "the offering up of the Gentiles might be acceptable", "The people Paul describes his ministry among.", "hard"],
+    ["spain", "Romans 15:24", "whensoever I take my journey into Spain", "Where Paul hoped to travel.", "medium"],
+    ["ministry", "Romans 15:25", "now I go unto Jerusalem to minister unto the saints", "What Paul says he is going to do in Jerusalem.", "medium"],
+  ]),
+  createRomansChapter(16, "Greetings, warnings, and final praise close the letter with real names and deep affection.", [
+    ["phoebe", "Romans 16:1", "I commend unto you Phebe our sister", "The sister Paul commends first.", "hard"],
+    ["priscilla", "Romans 16:3", "Greet Priscilla and Aquila", "One of Paul's fellow workers greeted here.", "hard"],
+    ["aquila", "Romans 16:3", "Greet Priscilla and Aquila", "The husband greeted with Priscilla.", "hard"],
+    ["salute", "Romans 16:16", "Salute one another with an holy kiss", "What believers are told to do to one another.", "medium"],
+    ["wise", "Romans 16:19", "I would have you wise unto that which is good", "What Paul wants believers to be unto what is good.", "easy"],
+  ]),
+];
+
+const FIRST_CORINTHIANS_CHAPTERS: ScrambledChapterPack[] = [
+  createFirstCorinthiansChapter(1, "Paul calls the church to unity and centers everything on Christ crucified rather than human boasting.", [
+    ["division", "1 Corinthians 1:10", "that there be no divisions among you", "What Paul says should not be among them.", "easy"],
+    ["cross", "1 Corinthians 1:18", "the preaching of the cross", "What is foolishness to those who perish.", "easy"],
+    ["wisdom", "1 Corinthians 1:24", "Christ the power of God, and the wisdom of God", "What Christ is called alongside power.", "easy"],
+    ["foolish", "1 Corinthians 1:27", "God hath chosen the foolish things", "What God chose to confound the wise.", "medium"],
+    ["boast", "1 Corinthians 1:31", "He that glorieth, let him glory in the Lord", "What no one should do in self before God.", "medium"],
+  ]),
+  createFirstCorinthiansChapter(2, "Paul points away from worldly eloquence and toward the Spirit's revelation of Christ and God's wisdom.", [
+    ["crucified", "1 Corinthians 2:2", "Jesus Christ, and him crucified", "How Paul summarizes what he resolved to know among them.", "hard"],
+    ["spirit", "1 Corinthians 2:10", "God hath revealed them unto us by his Spirit", "Who reveals the deep things of God.", "easy"],
+    ["wisdom", "1 Corinthians 2:7", "we speak the wisdom of God in a mystery", "What Paul says he speaks.", "easy"],
+    ["natural", "1 Corinthians 2:14", "the natural man receiveth not", "The kind of person who does not receive the things of the Spirit.", "medium"],
+    ["mind", "1 Corinthians 2:16", "we have the mind of Christ", "What believers are said to have.", "easy"],
+  ]),
+  createFirstCorinthiansChapter(3, "Immaturity, jealousy, and pride are confronted while Paul explains God's field, building, and temple.", [
+    ["carnal", "1 Corinthians 3:3", "are ye not carnal", "How Paul describes them because of envy and strife.", "medium"],
+    ["planted", "1 Corinthians 3:6", "I have planted", "What Paul says he did.", "medium"],
+    ["apollos", "1 Corinthians 3:6", "Apollos watered", "Who Paul says watered.", "hard"],
+    ["foundation", "1 Corinthians 3:11", "other foundation can no man lay", "What no one can lay besides Jesus Christ.", "medium"],
+    ["temple", "1 Corinthians 3:16", "ye are the temple of God", "What believers together are called.", "easy"],
+  ]),
+  createFirstCorinthiansChapter(4, "Paul describes faithful stewardship, warns against pride, and corrects their inflated view of themselves.", [
+    ["stewards", "1 Corinthians 4:1", "stewards of the mysteries of God", "What ministers of Christ are called here.", "hard"],
+    ["faithful", "1 Corinthians 4:2", "it is required in stewards, that a man be found faithful", "What is required in stewards.", "medium"],
+    ["judge", "1 Corinthians 4:5", "judge nothing before the time", "What Paul says not to do before the Lord comes.", "easy"],
+    ["kingdom", "1 Corinthians 4:20", "the kingdom of God is not in word, but in power", "What is not in word only.", "easy"],
+    ["power", "1 Corinthians 4:20", "the kingdom of God is not in word, but in power", "What the kingdom of God is in.", "easy"],
+  ]),
+  createFirstCorinthiansChapter(5, "The church is told to confront serious sin so holiness and purity can be protected.", [
+    ["fornication", "1 Corinthians 5:1", "there is fornication among you", "The sin Paul says is being reported.", "hard"],
+    ["leaven", "1 Corinthians 5:6", "a little leaven leaveneth the whole lump", "The image Paul uses for sin spreading.", "medium"],
+    ["purge", "1 Corinthians 5:7", "Purge out therefore the old leaven", "What Paul tells them to do with the old leaven.", "medium"],
+    ["passover", "1 Corinthians 5:7", "Christ our passover is sacrificed for us", "What Paul calls Christ here.", "hard"],
+    ["wicked", "1 Corinthians 5:13", "put away from among yourselves that wicked person", "What kind of person must be removed.", "easy"],
+  ]),
+  createFirstCorinthiansChapter(6, "Paul warns against lawsuits among believers and calls them to honor God with their bodies.", [
+    ["saints", "1 Corinthians 6:2", "Do ye not know that the saints shall judge the world?", "Who Paul says will judge the world.", "medium"],
+    ["washed", "1 Corinthians 6:11", "but ye are washed", "What believers are said to be in Christ.", "medium"],
+    ["body", "1 Corinthians 6:19", "your body is the temple of the Holy Ghost", "What is the temple of the Holy Ghost.", "easy"],
+    ["price", "1 Corinthians 6:20", "ye are bought with a price", "What believers were bought with.", "easy"],
+    ["glorify", "1 Corinthians 6:20", "glorify God in your body", "What believers are told to do in their body.", "medium"],
+  ]),
+  createFirstCorinthiansChapter(7, "Marriage, singleness, calling, and contentment are all handled with pastoral wisdom.", [
+    ["marriage", "1 Corinthians 7:2", "let every man have his own wife", "The relationship Paul addresses first here.", "easy"],
+    ["gift", "1 Corinthians 7:7", "every man hath his proper gift of God", "What Paul says each person has from God in one way or another.", "easy"],
+    ["calling", "1 Corinthians 7:20", "Let every man abide in the same calling", "What each person should remain in.", "hard"],
+    ["circumcision", "1 Corinthians 7:19", "Circumcision is nothing", "What Paul says is nothing in itself.", "hard"],
+    ["careful", "1 Corinthians 7:32", "I would have you without carefulness", "What Paul wants them to be without.", "medium"],
+  ]),
+  createFirstCorinthiansChapter(8, "Knowledge, conscience, and love are weighed as Paul teaches about food offered to idols.", [
+    ["knowledge", "1 Corinthians 8:1", "knowledge puffeth up", "What puffs up without love.", "easy"],
+    ["charity", "1 Corinthians 8:1", "but charity edifieth", "What builds up instead.", "hard"],
+    ["idol", "1 Corinthians 8:4", "we know that an idol is nothing", "What Paul says is nothing in the world.", "easy"],
+    ["conscience", "1 Corinthians 8:7", "their conscience being weak", "What may be weak in some believers.", "hard"],
+    ["brother", "1 Corinthians 8:11", "through thy knowledge shall the weak brother perish", "Who Paul says can be harmed by careless freedom.", "easy"],
+  ]),
+  createFirstCorinthiansChapter(9, "Paul explains his rights, lays them down for the gospel, and uses athletic discipline as a model.", [
+    ["apostle", "1 Corinthians 9:1", "Am I not an apostle?", "The role Paul defends at the start.", "medium"],
+    ["gospel", "1 Corinthians 9:14", "they which preach the gospel should live of the gospel", "What Paul says preachers proclaim.", "easy"],
+    ["runner", "1 Corinthians 9:24", "they which run in a race run all", "The athlete image Paul uses first.", "hard"],
+    ["temperate", "1 Corinthians 9:25", "every man that striveth for the mastery is temperate", "How the athlete is described in all things.", "hard"],
+    ["crown", "1 Corinthians 9:25", "to obtain a corruptible crown; but we an incorruptible", "What the athlete seeks.", "easy"],
+  ]),
+  createFirstCorinthiansChapter(10, "Israel's wilderness failures become warnings, and Paul calls believers to flee idolatry and live for God's glory.", [
+    ["fathers", "1 Corinthians 10:1", "our fathers were under the cloud", "Who Paul says were under the cloud.", "easy"],
+    ["cloud", "1 Corinthians 10:1", "all passed through the sea", "What Israel was under in the wilderness.", "easy"],
+    ["temptation", "1 Corinthians 10:13", "There hath no temptation taken you", "What is common to man and comes with a way of escape.", "hard"],
+    ["idolatry", "1 Corinthians 10:14", "flee from idolatry", "What believers are told to flee.", "hard"],
+    ["glory", "1 Corinthians 10:31", "do all to the glory of God", "What everything should be done for.", "easy"],
+  ]),
+  createFirstCorinthiansChapter(11, "Paul addresses headship, worship order, and the seriousness of the Lord's Supper.", [
+    ["head", "1 Corinthians 11:3", "the head of every man is Christ", "The key image Paul uses for order in this chapter.", "easy"],
+    ["bread", "1 Corinthians 11:23", "the Lord Jesus the same night in which he was betrayed took bread", "What Jesus took in the Supper account.", "easy"],
+    ["cup", "1 Corinthians 11:25", "After the same manner also he took the cup", "What Jesus took after supper.", "easy"],
+    ["examine", "1 Corinthians 11:28", "let a man examine himself", "What a person should do before eating the bread.", "medium"],
+    ["judgment", "1 Corinthians 11:29", "eateth and drinketh damnation to himself", "What unworthy participation brings.", "medium"],
+  ]),
+  createFirstCorinthiansChapter(12, "Different gifts are given by one Spirit, and the church is pictured as one body with many members.", [
+    ["gifts", "1 Corinthians 12:4", "there are diversities of gifts", "What there are diversities of.", "easy"],
+    ["spirit", "1 Corinthians 12:4", "but the same Spirit", "Who is the same behind the gifts.", "easy"],
+    ["body", "1 Corinthians 12:12", "For as the body is one", "What the church is compared to.", "easy"],
+    ["members", "1 Corinthians 12:12", "and hath many members", "What the one body has many of.", "medium"],
+    ["honour", "1 Corinthians 12:23", "upon these we bestow more abundant honour", "What weaker-looking parts receive.", "medium"],
+  ]),
+  createFirstCorinthiansChapter(13, "Love stands above every gift and is described in unforgettable, practical ways.", [
+    ["charity", "1 Corinthians 13:1", "and have not charity", "What must be present or everything else is empty.", "hard"],
+    ["patient", "1 Corinthians 13:4", "Charity suffereth long", "One simple way love is described.", "medium"],
+    ["kind", "1 Corinthians 13:4", "and is kind", "Another simple way love is described.", "easy"],
+    ["endureth", "1 Corinthians 13:7", "beareth all things ... endureth all things", "What love does to all things.", "hard"],
+    ["faileth", "1 Corinthians 13:8", "Charity never faileth", "What love never does.", "medium"],
+  ]),
+  createFirstCorinthiansChapter(14, "Paul explains prophecy, tongues, and the need for worship that edifies and stays orderly.", [
+    ["prophecy", "1 Corinthians 14:1", "desire spiritual gifts, but rather that ye may prophesy", "What Paul especially wants them to desire.", "hard"],
+    ["tongues", "1 Corinthians 14:2", "he that speaketh in an unknown tongue", "The gift contrasted with prophecy.", "medium"],
+    ["edifying", "1 Corinthians 14:3", "speaketh unto men to edification", "What prophecy brings to the church.", "hard"],
+    ["trumpet", "1 Corinthians 14:8", "if the trumpet give an uncertain sound", "The instrument Paul uses as an example of clarity.", "medium"],
+    ["peace", "1 Corinthians 14:33", "God is not the author of confusion, but of peace", "What God is of instead of confusion.", "easy"],
+  ]),
+  createFirstCorinthiansChapter(15, "Paul anchors the church in Christ's resurrection and the sure victory over death.", [
+    ["gospel", "1 Corinthians 15:1", "I declare unto you the gospel", "What Paul says he is reminding them of.", "easy"],
+    ["buried", "1 Corinthians 15:4", "that he was buried", "What happened to Christ before He was raised.", "medium"],
+    ["resurrection", "1 Corinthians 15:12", "there is no resurrection of the dead", "What some were saying there was none of.", "hard"],
+    ["victory", "1 Corinthians 15:54", "Death is swallowed up in victory", "What death is swallowed up in.", "easy"],
+    ["steadfast", "1 Corinthians 15:58", "be ye stedfast, unmoveable", "How believers should be in the Lord's work.", "hard"],
+  ]),
+  createFirstCorinthiansChapter(16, "Paul closes with practical instructions, travel plans, warnings, affection, and grace.", [
+    ["collection", "1 Corinthians 16:1", "concerning the collection for the saints", "What Paul addresses first in the closing chapter.", "hard"],
+    ["macedonia", "1 Corinthians 16:5", "I do pass through Macedonia", "The region Paul planned to travel through.", "hard"],
+    ["timothy", "1 Corinthians 16:10", "if Timotheus come", "The coworker Paul mentions next.", "hard"],
+    ["watch", "1 Corinthians 16:13", "Watch ye, stand fast in the faith", "The first command in Paul's closing charge.", "easy"],
+    ["maranatha", "1 Corinthians 16:22", "Maranatha", "The Aramaic cry Paul includes near the end.", "hard"],
+  ]),
+];
+
+const SECOND_CORINTHIANS_CHAPTERS: ScrambledChapterPack[] = [
+  createSecondCorinthiansChapter(1, "Paul opens with comfort in suffering, integrity in ministry, and confidence in God's yes in Christ.", [
+    ["comfort", "2 Corinthians 1:3", "the God of all comfort", "What Paul says God is full of for His people.", "easy"],
+    ["suffering", "2 Corinthians 1:5", "the sufferings of Christ abound in us", "What Paul says abounds in them along with Christ's comfort.", "medium"],
+    ["dead", "2 Corinthians 1:9", "God which raiseth the dead", "Who Paul says they learned to trust instead of themselves.", "easy"],
+    ["promises", "2 Corinthians 1:20", "all the promises of God in him are yea", "What Paul says are yes in Christ.", "hard"],
+    ["seal", "2 Corinthians 1:22", "Who hath also sealed us", "What God has done to believers along with giving the Spirit.", "medium"],
+  ]),
+  createSecondCorinthiansChapter(2, "Paul urges restoration for the repentant and speaks of forgiveness, triumph, and sincerity in Christ.", [
+    ["forgive", "2 Corinthians 2:7", "ye ought rather to forgive him", "What Paul says should be shown to the repentant offender.", "easy"],
+    ["comfort", "2 Corinthians 2:7", "and comfort him", "What should accompany forgiveness.", "easy"],
+    ["devices", "2 Corinthians 2:11", "we are not ignorant of his devices", "What Satan has that believers should not ignore.", "hard"],
+    ["triumph", "2 Corinthians 2:14", "which always causeth us to triumph in Christ", "What God always causes His servants to do in Christ.", "medium"],
+    ["sincere", "2 Corinthians 2:17", "but as of sincerity, but as of God", "How Paul says he speaks before God in Christ.", "medium"],
+  ]),
+  createSecondCorinthiansChapter(3, "Paul contrasts old and new covenant ministry, emphasizing the Spirit, liberty, and transformation.", [
+    ["epistle", "2 Corinthians 3:2", "Ye are our epistle written in our hearts", "What Paul calls the Corinthians themselves.", "hard"],
+    ["spirit", "2 Corinthians 3:6", "the spirit giveth life", "Who gives life in the new covenant.", "easy"],
+    ["veil", "2 Corinthians 3:14", "the same veil untaken away", "What remains over old covenant reading without Christ.", "medium"],
+    ["liberty", "2 Corinthians 3:17", "there is liberty", "What is where the Spirit of the Lord is.", "hard"],
+    ["glory", "2 Corinthians 3:18", "changed into the same image from glory to glory", "What believers reflect and are changed in.", "easy"],
+  ]),
+  createSecondCorinthiansChapter(4, "Weak vessels carry great treasure as Paul keeps an eternal perspective in ministry hardship.", [
+    ["treasure", "2 Corinthians 4:7", "we have this treasure in earthen vessels", "What is carried in earthen vessels.", "medium"],
+    ["clay", "2 Corinthians 4:7", "earthen vessels", "What kind of jars Paul says hold the treasure.", "easy"],
+    ["pressed", "2 Corinthians 4:8", "troubled on every side, yet not distressed", "What Paul says they are on every side.", "medium"],
+    ["renewed", "2 Corinthians 4:16", "the inward man is renewed day by day", "What the inward man is each day.", "hard"],
+    ["unseen", "2 Corinthians 4:18", "while we look not at the things which are seen", "The kind of things Paul says believers focus on.", "medium"],
+  ]),
+  createSecondCorinthiansChapter(5, "Paul speaks of the heavenly dwelling, walking by faith, reconciliation, and new creation in Christ.", [
+    ["tent", "2 Corinthians 5:1", "if our earthly house of this tabernacle were dissolved", "What Paul uses as an image for the earthly body.", "easy"],
+    ["faith", "2 Corinthians 5:7", "we walk by faith, not by sight", "What believers walk by.", "easy"],
+    ["judgment", "2 Corinthians 5:10", "we must all appear before the judgment seat of Christ", "What seat everyone must appear before.", "medium"],
+    ["creation", "2 Corinthians 5:17", "he is a new creature", "What anyone in Christ is.", "medium"],
+    ["ambassadors", "2 Corinthians 5:20", "Now then we are ambassadors for Christ", "What Paul says believers are for Christ.", "hard"],
+  ]),
+  createSecondCorinthiansChapter(6, "Paul urges holy separation, perseverance in hardship, and openness of heart in ministry.", [
+    ["salvation", "2 Corinthians 6:2", "now is the day of salvation", "What today is called.", "easy"],
+    ["patience", "2 Corinthians 6:4", "approving ourselves as the ministers of God, in much patience", "One virtue Paul lists first in hardship.", "medium"],
+    ["yoke", "2 Corinthians 6:14", "Be ye not unequally yoked together", "What image Paul uses for wrong partnerships.", "easy"],
+    ["darkness", "2 Corinthians 6:14", "what communion hath light with darkness?", "What light is contrasted with.", "easy"],
+    ["temple", "2 Corinthians 6:16", "ye are the temple of the living God", "What believers are called here.", "easy"],
+  ]),
+  createSecondCorinthiansChapter(7, "Godly sorrow leads to repentance, Titus brings good news, and Paul rejoices in their response.", [
+    ["cleanse", "2 Corinthians 7:1", "let us cleanse ourselves", "What believers are told to do from all filthiness.", "medium"],
+    ["repentance", "2 Corinthians 7:10", "godly sorrow worketh repentance", "What godly sorrow produces.", "hard"],
+    ["sorrow", "2 Corinthians 7:10", "the sorrow of the world worketh death", "What kind of sorrow leads to death.", "easy"],
+    ["titus", "2 Corinthians 7:13", "we joyed the more exceedingly for the joy of Titus", "Whose joy especially encouraged Paul.", "hard"],
+    ["zeal", "2 Corinthians 7:11", "yea, what zeal", "One fruit of their godly sorrow.", "medium"],
+  ]),
+  createSecondCorinthiansChapter(8, "Paul highlights generous grace through the Macedonians and the example of Christ's self-giving.", [
+    ["macedonia", "2 Corinthians 8:1", "the grace of God bestowed on the churches of Macedonia", "The region whose churches are praised for generosity.", "hard"],
+    ["grace", "2 Corinthians 8:7", "see that ye abound in this grace also", "What Paul wants them to abound in regarding giving.", "easy"],
+    ["poor", "2 Corinthians 8:9", "though he was rich, yet for your sakes he became poor", "What Christ became for believers' sake.", "easy"],
+    ["abundance", "2 Corinthians 8:14", "your abundance may be a supply", "What Paul says can meet another's lack.", "hard"],
+    ["titus", "2 Corinthians 8:16", "God, which put the same earnest care into the heart of Titus", "Who is commended for earnest care.", "hard"],
+  ]),
+  createSecondCorinthiansChapter(9, "Paul teaches willing, cheerful generosity and thanksgiving that overflows to God.", [
+    ["bountifully", "2 Corinthians 9:6", "he which soweth bountifully shall reap also bountifully", "How one must sow to reap the same way.", "hard"],
+    ["cheerful", "2 Corinthians 9:7", "God loveth a cheerful giver", "How God loves the giver to be.", "medium"],
+    ["giver", "2 Corinthians 9:7", "God loveth a cheerful giver", "What kind of person is loved here.", "easy"],
+    ["seed", "2 Corinthians 9:10", "Now he that ministereth seed to the sower", "What God supplies to the sower.", "easy"],
+    ["thanksgiving", "2 Corinthians 9:11", "which causeth through us thanksgiving to God", "What generous ministry produces toward God.", "hard"],
+  ]),
+  createSecondCorinthiansChapter(10, "Paul answers criticism, describes spiritual warfare, and insists that boasting must stay in the Lord.", [
+    ["meekness", "2 Corinthians 10:1", "by the meekness and gentleness of Christ", "One attitude of Christ Paul appeals by.", "hard"],
+    ["weapons", "2 Corinthians 10:4", "the weapons of our warfare are not carnal", "What Paul says are not carnal.", "medium"],
+    ["strongholds", "2 Corinthians 10:4", "mighty through God to the pulling down of strong holds", "What the weapons pull down.", "hard"],
+    ["thought", "2 Corinthians 10:5", "bringing into captivity every thought", "What is to be brought into captivity to Christ.", "medium"],
+    ["boast", "2 Corinthians 10:17", "he that glorieth, let him glory in the Lord", "What must be only in the Lord.", "easy"],
+  ]),
+  createSecondCorinthiansChapter(11, "Paul warns about deception, false apostles, and boasts only in weakness and costly ministry.", [
+    ["serpent", "2 Corinthians 11:3", "as the serpent beguiled Eve", "The creature Paul mentions when warning about deception.", "medium"],
+    ["light", "2 Corinthians 11:14", "Satan himself is transformed into an angel of light", "What kind of angel Satan is said to appear as.", "easy"],
+    ["boast", "2 Corinthians 11:18", "seeing that many glory after the flesh, I will glory also", "What Paul begins doing ironically in this section.", "easy"],
+    ["shipwreck", "2 Corinthians 11:25", "thrice I suffered shipwreck", "One suffering Paul lists from his ministry.", "hard"],
+    ["weakness", "2 Corinthians 11:30", "I will glory of the things which concern mine infirmities", "What Paul says he will glory in.", "hard"],
+  ]),
+  createSecondCorinthiansChapter(12, "Paul recounts visions, the thorn in the flesh, and the grace that is sufficient in weakness.", [
+    ["heaven", "2 Corinthians 12:2", "such an one caught up to the third heaven", "Where Paul says a man in Christ was caught up.", "easy"],
+    ["thorn", "2 Corinthians 12:7", "there was given to me a thorn in the flesh", "What Paul says was given to him.", "easy"],
+    ["flesh", "2 Corinthians 12:7", "a thorn in the flesh", "Where the thorn was said to be.", "easy"],
+    ["grace", "2 Corinthians 12:9", "My grace is sufficient for thee", "What God says is sufficient.", "easy"],
+    ["perfect", "2 Corinthians 12:9", "my strength is made perfect in weakness", "What God's strength is made in weakness.", "medium"],
+  ]),
+  createSecondCorinthiansChapter(13, "Paul closes with warnings, self-examination, restoration, peace, and a Trinitarian blessing.", [
+    ["witnesses", "2 Corinthians 13:1", "In the mouth of two or three witnesses", "How every word is established.", "hard"],
+    ["examine", "2 Corinthians 13:5", "Examine yourselves, whether ye be in the faith", "What believers are told to do to themselves.", "medium"],
+    ["faith", "2 Corinthians 13:5", "whether ye be in the faith", "What believers are told to test themselves in.", "easy"],
+    ["restoration", "2 Corinthians 13:11", "Be perfect, be of good comfort", "What Paul urges them to aim for in the final exhortation.", "hard"],
+    ["fellowship", "2 Corinthians 13:14", "the communion of the Holy Ghost", "The shared participation named in the final blessing.", "hard"],
+  ]),
+];
+
+const GALATIANS_CHAPTERS: ScrambledChapterPack[] = [
+  createGalatiansChapter(1, "Paul defends the true gospel, his calling, and the divine source of his message.", [
+    ["gospel", "Galatians 1:6", "unto another gospel", "What the Galatians were in danger of turning to.", "easy"],
+    ["accursed", "Galatians 1:8", "let him be accursed", "What Paul says about anyone preaching a different gospel.", "hard"],
+    ["revelation", "Galatians 1:12", "by the revelation of Jesus Christ", "How Paul says he received the gospel.", "hard"],
+    ["church", "Galatians 1:13", "I persecuted the church of God", "What Paul says he once persecuted.", "easy"],
+    ["arabia", "Galatians 1:17", "I went into Arabia", "Where Paul says he went after his calling.", "hard"],
+  ]),
+  createGalatiansChapter(2, "Paul defends gospel freedom, confronts hypocrisy, and centers justification on faith in Christ.", [
+    ["titus", "Galatians 2:3", "Titus, who was with me, being a Greek", "The Greek believer not compelled to be circumcised.", "hard"],
+    ["freedom", "Galatians 2:4", "to spy out our liberty", "What false brethren tried to spy out.", "hard"],
+    ["peter", "Galatians 2:11", "I withstood Peter to the face", "The apostle Paul confronted publicly.", "medium"],
+    ["faith", "Galatians 2:16", "justified by the faith of Jesus Christ", "What Paul says justifies instead of works of the law.", "easy"],
+    ["crucified", "Galatians 2:20", "I am crucified with Christ", "What Paul says happened to him with Christ.", "hard"],
+  ]),
+  createGalatiansChapter(3, "Paul contrasts faith and law, shows Abraham as the model, and explains the temporary role of the law.", [
+    ["bewitched", "Galatians 3:1", "who hath bewitched you", "What Paul says seems to have happened to the Galatians.", "hard"],
+    ["spirit", "Galatians 3:2", "received ye the Spirit", "What they received by hearing with faith.", "easy"],
+    ["abraham", "Galatians 3:6", "Even as Abraham believed God", "The man Paul points to as the faith example.", "easy"],
+    ["curse", "Galatians 3:10", "as many as are of the works of the law are under the curse", "What law-keeping brings when treated as the basis of righteousness.", "medium"],
+    ["schoolmaster", "Galatians 3:24", "the law was our schoolmaster", "What Paul says the law was to bring us unto Christ.", "hard"],
+  ]),
+  createGalatiansChapter(4, "Paul moves from slavery to sonship, warns them against returning to bondage, and contrasts Hagar with Sarah.", [
+    ["son", "Galatians 4:7", "thou art no more a servant, but a son", "What the believer is now, not just a servant.", "easy"],
+    ["abba", "Galatians 4:6", "crying, Abba, Father", "The intimate name the Spirit leads believers to cry.", "hard"],
+    ["bondage", "Galatians 4:9", "desire again to be in bondage", "What Paul fears they are returning to.", "medium"],
+    ["hagar", "Galatians 4:24", "for these are the two covenants", "The bondwoman in Paul's allegory.", "hard"],
+    ["sarah", "Galatians 4:26", "Jerusalem which is above is free", "The freewoman tied to promise in Paul's contrast.", "medium"],
+  ]),
+  createGalatiansChapter(5, "Paul calls believers to stand in freedom, walk by the Spirit, and reject the works of the flesh.", [
+    ["liberty", "Galatians 5:1", "Stand fast therefore in the liberty", "What Christ has made believers free for.", "hard"],
+    ["circumcision", "Galatians 5:2", "if ye be circumcised, Christ shall profit you nothing", "The issue Paul warns against trusting in.", "hard"],
+    ["love", "Galatians 5:6", "faith which worketh by love", "What faith works through.", "easy"],
+    ["flesh", "Galatians 5:16", "ye shall not fulfil the lust of the flesh", "What walking in the Spirit keeps believers from gratifying.", "easy"],
+    ["fruit", "Galatians 5:22", "the fruit of the Spirit is love", "What the Spirit produces.", "easy"],
+  ]),
+  createGalatiansChapter(6, "Paul closes with restoration, burden-bearing, sowing and reaping, and boasting only in the cross.", [
+    ["gentleness", "Galatians 6:1", "restore such an one in the spirit of meekness", "The spirit in which a fallen person should be restored.", "hard"],
+    ["burdens", "Galatians 6:2", "Bear ye one another's burdens", "What believers are told to carry for each other.", "medium"],
+    ["sow", "Galatians 6:7", "whatsoever a man soweth, that shall he also reap", "What Paul says determines what a person will reap.", "easy"],
+    ["cross", "Galatians 6:14", "God forbid that I should glory, save in the cross", "What Paul says he will glory only in.", "easy"],
+    ["creation", "Galatians 6:15", "a new creature", "What matters instead of circumcision or uncircumcision.", "medium"],
+  ]),
+];
+
+const EPHESIANS_CHAPTERS: ScrambledChapterPack[] = [
+  createEphesiansChapter(1, "Paul opens with rich blessings in Christ, election, redemption, inheritance, and the sealing of the Spirit.", [
+    ["blessed", "Ephesians 1:3", "who hath blessed us", "What God has done to us with spiritual blessings.", "easy"],
+    ["chosen", "Ephesians 1:4", "he hath chosen us in him", "What God did before the foundation of the world.", "easy"],
+    ["adoption", "Ephesians 1:5", "unto the adoption of children", "The family word tied to God's predestining love.", "medium"],
+    ["blood", "Ephesians 1:7", "through his blood", "What redemption comes through.", "easy"],
+    ["sealed", "Ephesians 1:13", "ye were sealed", "What happened when believers received the Holy Spirit of promise.", "medium"],
+  ]),
+  createEphesiansChapter(2, "Grace rescues the dead, Christ brings peace, and strangers become one household and one temple in God.", [
+    ["mercy", "Ephesians 2:4", "rich in mercy", "What God is rich in.", "easy"],
+    ["grace", "Ephesians 2:8", "by grace are ye saved", "How believers are saved.", "easy"],
+    ["faith", "Ephesians 2:8", "through faith", "The response by which salvation is received.", "easy"],
+    ["peace", "Ephesians 2:14", "he is our peace", "What Christ Himself is for divided people.", "easy"],
+    ["temple", "Ephesians 2:21", "an holy temple in the Lord", "What the whole building grows into.", "medium"],
+  ]),
+  createEphesiansChapter(3, "Paul explains the mystery of Christ, the inclusion of the Gentiles, and prays for strength, love, and fullness.", [
+    ["mystery", "Ephesians 3:3", "by revelation he made known unto me the mystery", "The hidden plan Paul says was revealed to him.", "easy"],
+    ["gentiles", "Ephesians 3:6", "that the Gentiles should be fellowheirs", "The people now included as fellowheirs.", "medium"],
+    ["rooted", "Ephesians 3:17", "being rooted and grounded in love", "How believers are described in love.", "medium"],
+    ["love", "Ephesians 3:17", "grounded in love", "What believers are to be rooted in.", "easy"],
+    ["power", "Ephesians 3:20", "according to the power that worketh in us", "What works in us as God does exceedingly abundantly above all.", "medium"],
+  ]),
+  createEphesiansChapter(4, "Paul calls the church to unity, maturity, truth, and the daily putting off of the old self and putting on of the new.", [
+    ["unity", "Ephesians 4:3", "the unity of the Spirit", "What believers should endeavor to keep in the bond of peace.", "easy"],
+    ["body", "Ephesians 4:4", "There is one body", "The first of the one-ness statements in this chapter.", "easy"],
+    ["truth", "Ephesians 4:15", "speaking the truth in love", "What believers should speak in love.", "easy"],
+    ["old", "Ephesians 4:22", "put off concerning the former conversation the old man", "The word describing the former man to put off.", "easy"],
+    ["new", "Ephesians 4:24", "put on the new man", "The word describing what believers are to put on.", "easy"],
+  ]),
+  createEphesiansChapter(5, "Paul urges believers to walk in love and light, reject darkness, live wisely, and be filled with the Spirit.", [
+    ["imitate", "Ephesians 5:1", "Be ye therefore followers of God", "The action believers are called to take toward God.", "medium"],
+    ["light", "Ephesians 5:8", "now are ye light in the Lord", "What believers are now called in the Lord.", "easy"],
+    ["wisdom", "Ephesians 5:15", "not as fools, but as wise", "What believers are told to walk in carefully.", "medium"],
+    ["spirit", "Ephesians 5:18", "be filled with the Spirit", "Who believers are told to be filled with.", "easy"],
+    ["love", "Ephesians 5:2", "walk in love", "How believers are told to walk.", "easy"],
+  ]),
+  createEphesiansChapter(6, "Family instruction gives way to spiritual warfare as believers are called to stand in the full armor of God.", [
+    ["children", "Ephesians 6:1", "Children, obey your parents", "Who is addressed first in this chapter.", "easy"],
+    ["fathers", "Ephesians 6:4", "ye fathers, provoke not your children", "Who is told not to provoke children to wrath.", "easy"],
+    ["armour", "Ephesians 6:11", "Put on the whole armour of God", "What believers are told to put on.", "medium"],
+    ["sword", "Ephesians 6:17", "the sword of the Spirit", "The weapon that is the word of God.", "medium"],
+    ["prayer", "Ephesians 6:18", "Praying always with all prayer", "What believers are told to continue in always.", "easy"],
+  ]),
+];
+
+const PHILIPPIANS_CHAPTERS: ScrambledChapterPack[] = [
+  createPhilippiansChapter(1, "Paul writes with affection, joy, gospel purpose, and confidence that Christ will be honored in life or death.", [
+    ["gospel", "Philippians 1:12", "the furtherance of the gospel", "What Paul's imprisonment helped advance.", "easy"],
+    ["joy", "Philippians 1:4", "making request with joy", "What fills Paul's prayers for the Philippians.", "easy"],
+    ["gain", "Philippians 1:21", "to die is gain", "What Paul says death is for the believer.", "medium"],
+    ["christ", "Philippians 1:21", "to live is Christ", "Who Paul says life is centered on.", "easy"],
+    ["worthy", "Philippians 1:27", "let your conversation be as it becometh the gospel", "How believers are told to conduct themselves.", "medium"],
+  ]),
+  createPhilippiansChapter(2, "Paul calls believers to humility, unity, obedience, and the mind of Christ shown in His self-emptying and exaltation.", [
+    ["mind", "Philippians 2:5", "Let this mind be in you", "What believers are told to have in them like Christ.", "easy"],
+    ["servant", "Philippians 2:7", "took upon him the form of a servant", "What form Christ took.", "medium"],
+    ["cross", "Philippians 2:8", "even the death of the cross", "The kind of death Christ obeyed unto.", "easy"],
+    ["trembling", "Philippians 2:12", "with fear and trembling", "What comes with working out salvation.", "hard"],
+    ["lights", "Philippians 2:15", "ye shine as lights in the world", "What believers are said to shine as.", "medium"],
+  ]),
+  createPhilippiansChapter(3, "Paul rejects confidence in the flesh, treasures Christ above all, and presses forward toward the heavenly prize.", [
+    ["rejoice", "Philippians 3:1", "Rejoice in the Lord", "What Paul tells believers to do in the Lord.", "easy"],
+    ["loss", "Philippians 3:7", "those I counted loss for Christ", "What Paul calls his former gains compared with Christ.", "medium"],
+    ["dung", "Philippians 3:8", "I do count them but dung", "What Paul compares everything else to beside Christ.", "hard"],
+    ["goal", "Philippians 3:14", "I press toward the mark", "What Paul presses toward.", "easy"],
+    ["heaven", "Philippians 3:20", "our conversation is in heaven", "Where the believer's citizenship is.", "easy"],
+  ]),
+  createPhilippiansChapter(4, "Paul closes with joy, peace, prayer, contentment, generosity, and confidence in God's provision.", [
+    ["rejoice", "Philippians 4:4", "Rejoice in the Lord alway", "What believers are commanded to do always.", "easy"],
+    ["anxious", "Philippians 4:6", "Be careful for nothing", "A modern word for the worry believers are told to reject.", "medium"],
+    ["peace", "Philippians 4:7", "the peace of God", "What guards hearts and minds in Christ Jesus.", "easy"],
+    ["content", "Philippians 4:11", "I have learned, in whatsoever state I am, therewith to be content", "What Paul says he has learned to be.", "medium"],
+    ["strengthens", "Philippians 4:13", "Christ which strengtheneth me", "What Christ does for Paul in all things.", "hard"],
+  ]),
+];
+
+const COLOSSIANS_CHAPTERS: ScrambledChapterPack[] = [
+  createColossiansChapter(1, "Paul celebrates gospel fruit, prays for spiritual wisdom, and exalts Christ as Creator, Sustainer, Head, and Reconciler.", [
+    ["hope", "Colossians 1:5", "for the hope which is laid up for you in heaven", "What is laid up in heaven for believers.", "easy"],
+    ["darkness", "Colossians 1:13", "the power of darkness", "What God has delivered believers from.", "easy"],
+    ["image", "Colossians 1:15", "Who is the image of the invisible God", "What Christ is of the invisible God.", "medium"],
+    ["church", "Colossians 1:18", "the head of the body, the church", "What body Christ is head of.", "easy"],
+    ["glory", "Colossians 1:27", "the hope of glory", "What Christ in you is called.", "medium"],
+  ]),
+  createColossiansChapter(2, "Paul warns against deception, points to the fullness of Christ, and calls believers to reject empty philosophy and man-made rules.", [
+    ["wisdom", "Colossians 2:3", "all the treasures of wisdom and knowledge", "One of the treasures hidden in Christ.", "easy"],
+    ["christ", "Colossians 2:6", "As ye have therefore received Christ Jesus the Lord", "Who believers are told to continue in.", "easy"],
+    ["rooted", "Colossians 2:7", "Rooted and built up in him", "How believers are described in Christ.", "medium"],
+    ["fullness", "Colossians 2:9", "all the fulness of the Godhead bodily", "What dwells in Christ bodily.", "hard"],
+    ["cross", "Colossians 2:14", "nailing it to his cross", "Where the handwriting of ordinances was taken out of the way.", "easy"],
+  ]),
+  createColossiansChapter(3, "Paul calls believers to seek things above, put off the old self, and clothe themselves with love, peace, and the word of Christ.", [
+    ["above", "Colossians 3:1", "seek those things which are above", "Where believers are told to seek things.", "easy"],
+    ["hidden", "Colossians 3:3", "your life is hid with Christ in God", "What Paul says your life is with Christ in God.", "medium"],
+    ["love", "Colossians 3:14", "above all these things put on charity", "What binds everything together in perfectness.", "easy"],
+    ["peace", "Colossians 3:15", "let the peace of God rule in your hearts", "What should rule in believers' hearts.", "easy"],
+    ["richly", "Colossians 3:16", "Let the word of Christ dwell in you richly", "How the word of Christ should dwell in believers.", "hard"],
+  ]),
+  createColossiansChapter(4, "Paul closes with prayer, wise witness, gracious speech, faithful messengers, and final greetings from fellow workers.", [
+    ["prayer", "Colossians 4:2", "Continue in prayer", "What believers are told to continue in.", "easy"],
+    ["watch", "Colossians 4:2", "watch in the same with thanksgiving", "What believers are told to do in prayer.", "medium"],
+    ["door", "Colossians 4:3", "that God would open unto us a door", "What Paul asks prayer for God to open for the word.", "easy"],
+    ["grace", "Colossians 4:6", "Let your speech be alway with grace", "What speech should always be with.", "easy"],
+    ["chains", "Colossians 4:18", "Remember my bonds", "What Paul asks them to remember at the end.", "medium"],
+  ]),
+];
+
+const FIRST_THESSALONIANS_CHAPTERS: ScrambledChapterPack[] = [
+  createFirstThessaloniansChapter(1, "Paul celebrates the Thessalonians' faith, love, hope, gospel reception, and their turning from idols to serve the living God.", [
+    ["faith", "1 Thessalonians 1:3", "your work of faith", "What kind of work Paul remembers first.", "easy"],
+    ["love", "1 Thessalonians 1:3", "labour of love", "What kind of labor Paul remembers.", "easy"],
+    ["hope", "1 Thessalonians 1:3", "patience of hope", "What sustains their endurance in Jesus Christ.", "easy"],
+    ["idols", "1 Thessalonians 1:9", "turned to God from idols", "What the Thessalonians turned away from.", "medium"],
+    ["heaven", "1 Thessalonians 1:10", "to wait for his Son from heaven", "Where they wait for Jesus from.", "easy"],
+  ]),
+  createFirstThessaloniansChapter(2, "Paul defends his ministry with gentleness, integrity, fatherly care, and deep affection for the church.", [
+    ["gospel", "1 Thessalonians 2:2", "we were bold in our God to speak unto you the gospel", "What Paul says he boldly spoke despite suffering.", "easy"],
+    ["greed", "1 Thessalonians 2:5", "a cloke of covetousness", "The selfish motive Paul denies hiding behind.", "medium"],
+    ["mother", "1 Thessalonians 2:7", "as a nurse cherisheth her children", "The family image Paul uses for his gentle care.", "easy"],
+    ["blameless", "1 Thessalonians 2:10", "holily and justly and unblameably", "One of the words describing Paul's conduct.", "hard"],
+    ["crown", "1 Thessalonians 2:19", "our hope, or joy, or crown of rejoicing", "What Paul calls the Thessalonians before the Lord.", "medium"],
+  ]),
+  createFirstThessaloniansChapter(3, "Timothy brings encouraging news, Paul rejoices in their faith, and prays for love, holiness, and steadfastness.", [
+    ["timothy", "1 Thessalonians 3:2", "sent Timotheus, our brother", "The helper Paul sent to strengthen them.", "medium"],
+    ["faith", "1 Thessalonians 3:5", "to know your faith", "What Paul sent to find out about.", "easy"],
+    ["comforted", "1 Thessalonians 3:7", "we were comforted over you", "How Paul says he felt through their faith.", "medium"],
+    ["lord", "1 Thessalonians 3:8", "if ye stand fast in the Lord", "Who believers are to stand fast in.", "easy"],
+    ["saints", "1 Thessalonians 3:13", "with all his saints", "Who Jesus comes with in Paul's prayer.", "medium"],
+  ]),
+  createFirstThessaloniansChapter(4, "Paul calls believers to holiness, brotherly love, quiet work, and hope-filled understanding about the coming of the Lord.", [
+    ["sanctification", "1 Thessalonians 4:3", "this is the will of God, even your sanctification", "What Paul says is the will of God for believers.", "hard"],
+    ["holy", "1 Thessalonians 4:7", "God hath not called us unto uncleanness, but unto holiness", "What kind of life God has called believers to.", "easy"],
+    ["quiet", "1 Thessalonians 4:11", "study to be quiet", "The kind of life believers are told to lead.", "medium"],
+    ["clouds", "1 Thessalonians 4:17", "caught up together with them in the clouds", "Where believers are caught up to meet the Lord.", "easy"],
+    ["trumpet", "1 Thessalonians 4:16", "with the trump of God", "What sounds as the Lord descends from heaven.", "medium"],
+  ]),
+  createFirstThessaloniansChapter(5, "Paul teaches watchfulness, sober living, encouragement, prayer, thanksgiving, discernment, and full sanctification.", [
+    ["thief", "1 Thessalonians 5:2", "as a thief in the night", "How the day of the Lord comes.", "easy"],
+    ["light", "1 Thessalonians 5:5", "Ye are all the children of light", "What believers are called children of.", "easy"],
+    ["salvation", "1 Thessalonians 5:8", "for an helmet, the hope of salvation", "What hope is compared to a helmet.", "medium"],
+    ["pray", "1 Thessalonians 5:17", "Pray without ceasing", "What believers are told to do without ceasing.", "easy"],
+    ["thanks", "1 Thessalonians 5:18", "In every thing give thanks", "What believers should give in everything.", "easy"],
+  ]),
+];
+
+const SECOND_THESSALONIANS_CHAPTERS: ScrambledChapterPack[] = [
+  createSecondThessaloniansChapter(1, "Paul encourages believers under persecution, points to God's righteous judgment, and sets their hope on Christ's revealing.", [
+    ["faith", "2 Thessalonians 1:3", "your faith groweth exceedingly", "What Paul says is growing exceedingly.", "easy"],
+    ["persecutions", "2 Thessalonians 1:4", "all your persecutions and tribulations", "What Paul says the believers are enduring.", "hard"],
+    ["judgment", "2 Thessalonians 1:5", "a manifest token of the righteous judgment of God", "What their endurance shows about God.", "medium"],
+    ["angels", "2 Thessalonians 1:7", "with his mighty angels", "Who comes with the Lord Jesus from heaven.", "easy"],
+    ["glorified", "2 Thessalonians 1:10", "to be glorified in his saints", "What Christ will be in His saints on that day.", "medium"],
+  ]),
+  createSecondThessaloniansChapter(2, "Paul corrects confusion about the day of the Lord, warns about the man of sin, and calls believers to stand firm in truth.", [
+    ["rebellion", "2 Thessalonians 2:3", "except there come a falling away first", "The great turning away that must come first.", "hard"],
+    ["lawless", "2 Thessalonians 2:3", "that man of sin be revealed", "A one-word description of the man of sin.", "medium"],
+    ["temple", "2 Thessalonians 2:4", "so that he as God sitteth in the temple of God", "Where the man of sin sits.", "easy"],
+    ["lie", "2 Thessalonians 2:11", "that they should believe a lie", "What delusion leads people to believe.", "easy"],
+    ["traditions", "2 Thessalonians 2:15", "hold the traditions", "What believers are told to hold fast to.", "hard"],
+  ]),
+  createSecondThessaloniansChapter(3, "Paul asks for prayer, warns against idleness, commands steady work, and closes with discipline shaped by peace and grace.", [
+    ["word", "2 Thessalonians 3:1", "that the word of the Lord may have free course", "What Paul wants to spread rapidly and be glorified.", "easy"],
+    ["faithful", "2 Thessalonians 3:3", "the Lord is faithful", "What the Lord is as He strengthens and keeps believers.", "medium"],
+    ["patience", "2 Thessalonians 3:5", "the patient waiting for Christ", "What Paul prays the Lord will direct hearts into.", "medium"],
+    ["idle", "2 Thessalonians 3:6", "withdraw yourselves from every brother that walketh disorderly", "A one-word description of the disorderly worker Paul warns about.", "easy"],
+    ["peace", "2 Thessalonians 3:16", "the Lord of peace himself give you peace", "What Paul prays the Lord Himself will give.", "easy"],
+  ]),
+];
+
 export const SCRAMBLED_BOOKS: ScrambledBookPack[] = [
   {
     slug: "genesis",
@@ -6952,6 +9016,246 @@ export const SCRAMBLED_BOOKS: ScrambledBookPack[] = [
       "Joel is short, but it carries a powerful movement from disaster to repentance to restoration. These Scrambled packs keep the big warning words, Zion language, Spirit promise, and judgment images easier to remember chapter by chapter.",
     accentClassName: "border-[#e4c7b2] bg-[#f8e6da]",
     chapters: JOEL_CHAPTERS,
+  },
+  {
+    slug: "amos",
+    name: "Amos",
+    shortLabel: "Justice, warning, true worship, social corruption, coming judgment, and the promise of restoration.",
+    shortDescription: "Play through all 9 Amos chapters with Scripture words tied to justice, judgment, Bethel, visions, oppression, and David's restored tent.",
+    louisIntro:
+      "Amos is direct, bold, and deeply focused on justice. These Scrambled packs keep the big warning words, vision images, worship language, and restoration promises easier to remember chapter by chapter.",
+    accentClassName: "border-[#d4c6b6] bg-[#f1e7dd]",
+    chapters: AMOS_CHAPTERS,
+  },
+  {
+    slug: "obadiah",
+    name: "Obadiah",
+    shortLabel: "Pride, betrayal, Edom's downfall, Zion's deliverance, and the kingdom belonging to the LORD.",
+    shortDescription: "Play through Obadiah with Scripture words tied to Edom, pride, judgment, Zion, and God's final kingdom.",
+    louisIntro:
+      "Obadiah is short, sharp, and unforgettable. This Scrambled pack keeps the big warning words about pride, betrayal, Edom, Zion, and the LORD's kingdom easier to remember.",
+    accentClassName: "border-[#d8c7b8] bg-[#f3e6da]",
+    chapters: OBADIAH_CHAPTERS,
+  },
+  {
+    slug: "jonah",
+    name: "Jonah",
+    shortLabel: "Flight, storm, fish, repentance, mercy, and God's compassion reaching even Nineveh.",
+    shortDescription: "Play through all 4 Jonah chapters with Scripture words tied to Nineveh, Tarshish, the fish, repentance, and God's mercy.",
+    louisIntro:
+      "Jonah is short, memorable, and full of movement. These Scrambled packs keep the big travel words, storm images, repentance moments, and mercy themes easier to remember chapter by chapter.",
+    accentClassName: "border-[#c8d9b8] bg-[#ebf4df]",
+    chapters: JONAH_CHAPTERS,
+  },
+  {
+    slug: "micah",
+    name: "Micah",
+    shortLabel: "Judgment, justice, Bethlehem, remnant hope, true worship, and the God who delights in mercy.",
+    shortDescription: "Play through all 7 Micah chapters with Scripture words tied to justice, Zion, Bethlehem, remnant hope, and God's mercy.",
+    louisIntro:
+      "Micah is strong, clear, and full of both warning and hope. These Scrambled packs keep the big justice words, Bethlehem prophecy, Zion language, and mercy themes easier to remember chapter by chapter.",
+    accentClassName: "border-[#c7d4e7] bg-[#e8eef9]",
+    chapters: MICAH_CHAPTERS,
+  },
+  {
+    slug: "nahum",
+    name: "Nahum",
+    shortLabel: "Nineveh's fall, God's justice, battle imagery, and comfort for the oppressed through the end of cruelty.",
+    shortDescription: "Play through all 3 Nahum chapters with Scripture words tied to Nineveh, judgment, battle, refuge, and the end of oppression.",
+    louisIntro:
+      "Nahum is bold and intense, but it carries real comfort too. These Scrambled packs keep the big words about Nineveh, justice, refuge, battle, and the end of oppression easier to remember chapter by chapter.",
+    accentClassName: "border-[#d3c7e5] bg-[#efe8f8]",
+    chapters: NAHUM_CHAPTERS,
+  },
+  {
+    slug: "habakkuk",
+    name: "Habakkuk",
+    shortLabel: "Questions, waiting, faith, and rejoicing in God even when the fields and flocks fail.",
+    shortDescription: "Play through all 3 Habakkuk chapters with Scripture words tied to burden, vision, faith, mercy, and rejoicing in the Lord.",
+    louisIntro:
+      "Habakkuk starts with hard questions, but it grows into deep trust. These Scrambled packs keep the key words about waiting, faith, mercy, vision, and rejoicing close to your memory chapter by chapter.",
+    accentClassName: "border-[#cfdcbf] bg-[#edf5e4]",
+    chapters: HABAKKUK_CHAPTERS,
+  },
+  {
+    slug: "zephaniah",
+    name: "Zephaniah",
+    shortLabel: "The day of the LORD, judgment on pride, a humble remnant, and joy as God restores His people.",
+    shortDescription: "Play through all 3 Zephaniah chapters with Scripture words tied to judgment, seeking God, pride, humility, singing, and rejoicing.",
+    louisIntro:
+      "Zephaniah is strong about judgment, but it ends with joy and restoration. These Scrambled packs keep the big words about the day of the LORD, pride, humility, gathering, and rejoicing close to your memory chapter by chapter.",
+    accentClassName: "border-[#e3d3b3] bg-[#f7ecd7]",
+    chapters: ZEPHANIAH_CHAPTERS,
+  },
+  {
+    slug: "haggai",
+    name: "Haggai",
+    shortLabel: "Rebuild the temple, reorder your priorities, and trust God's promise of future glory and peace.",
+    shortDescription: "Play through all 2 Haggai chapters with Scripture words tied to rebuilding, glory, blessing, and faithful priorities.",
+    louisIntro:
+      "Haggai is short, direct, and really practical. These Scrambled packs keep the key words about rebuilding, priorities, blessing, glory, and God's promises close to your memory chapter by chapter.",
+    accentClassName: "border-[#d8c5b3] bg-[#f6e9df]",
+    chapters: HAGGAI_CHAPTERS,
+  },
+  {
+    slug: "zechariah",
+    name: "Zechariah",
+    shortLabel: "Return, rebuild, watch the visions unfold, and follow the book toward the coming King and final hope.",
+    shortDescription: "Play through all 14 Zechariah chapters with Scripture words tied to visions, cleansing, the Branch, the King, and future restoration.",
+    louisIntro:
+      "Zechariah moves from night visions to some of the most memorable promises in Scripture. These Scrambled packs keep the big words about return, cleansing, the Branch, the King, and final restoration close to your memory chapter by chapter.",
+    accentClassName: "border-[#c7d7ea] bg-[#e7f0fa]",
+    chapters: ZECHARIAH_CHAPTERS,
+  },
+  {
+    slug: "malachi",
+    name: "Malachi",
+    shortLabel: "God confronts empty worship, calls His people back, and closes the Old Testament with warning and hope.",
+    shortDescription: "Play through all 4 Malachi chapters with Scripture words tied to covenant faithfulness, tithes, the messenger, healing, and Elijah.",
+    louisIntro:
+      "Malachi is sharp, honest, and hopeful at the same time. These Scrambled packs keep the big words about worship, covenant, returning to God, the messenger, and the day of the LORD close to your memory chapter by chapter.",
+    accentClassName: "border-[#e0c7cf] bg-[#f8e8ec]",
+    chapters: MALACHI_CHAPTERS,
+  },
+  {
+    slug: "matthew",
+    name: "Matthew",
+    shortLabel: "From Jesus' birth to His resurrection, Matthew walks through the King, His kingdom, and the call to follow Him.",
+    shortDescription: "Play through all 28 Matthew chapters with Scripture words tied to the kingdom, parables, miracles, the cross, and the resurrection.",
+    louisIntro:
+      "Matthew keeps Jesus' teaching and mission front and center. These Scrambled packs keep the big words about the kingdom, discipleship, miracles, parables, the cross, and the resurrection close to your memory chapter by chapter.",
+    accentClassName: "border-[#c9dce1] bg-[#e6f2f3]",
+    chapters: MATTHEW_CHAPTERS,
+  },
+  {
+    slug: "mark",
+    name: "Mark",
+    shortLabel: "Fast-moving, vivid, and urgent, Mark shows Jesus in action with authority, compassion, and the path to the cross.",
+    shortDescription: "Play through all 16 Mark chapters with Scripture words tied to miracles, discipleship, the cross, and the resurrection.",
+    louisIntro:
+      "Mark moves quickly, but it still leaves you with the big moments. These Scrambled packs keep the key words about authority, healing, discipleship, the cross, and the resurrection close to your memory chapter by chapter.",
+    accentClassName: "border-[#d4d7c8] bg-[#eef1e4]",
+    chapters: MARK_CHAPTERS,
+  },
+  {
+    slug: "luke",
+    name: "Luke",
+    shortLabel: "Detailed, compassionate, and wide-reaching, Luke highlights Jesus as Savior for all people.",
+    shortDescription: "Play through all 24 Luke chapters with Scripture words tied to prayer, compassion, parables, salvation, the cross, and resurrection hope.",
+    louisIntro:
+      "Luke slows down for details that really matter. These Scrambled packs keep the key words about prayer, compassion, outsiders, parables, salvation, the cross, and resurrection hope close to your memory chapter by chapter.",
+    accentClassName: "border-[#d2d6ea] bg-[#eceffd]",
+    chapters: LUKE_CHAPTERS,
+  },
+  {
+    slug: "john",
+    name: "John",
+    shortLabel: "Signs, belief, glory, and the identity of Jesus as the Son who reveals the Father.",
+    shortDescription: "Play through all 21 John chapters with Scripture words tied to signs, light, bread, shepherd, vine, love, cross, and resurrection life.",
+    louisIntro:
+      "John is written so you may believe. These Scrambled packs keep the big words about signs, witness, belief, light, life, bread, shepherd, vine, the cross, and resurrection close to your memory chapter by chapter.",
+    accentClassName: "border-[#c8d8f1] bg-[#e8f1ff]",
+    chapters: JOHN_CHAPTERS,
+  },
+  {
+    slug: "acts",
+    name: "Acts",
+    shortLabel: "Spirit-filled witness, bold preaching, the spread of the gospel, and the church on mission.",
+    shortDescription: "Play through all 28 Acts chapters with Scripture words tied to Pentecost, witness, miracles, persecution, missionary journeys, and gospel expansion.",
+    louisIntro:
+      "Acts shows the risen Jesus continuing His work through the Holy Spirit and the church. These Scrambled packs keep the big words about witness, prayer, miracles, persecution, missions, and gospel expansion close to your memory chapter by chapter.",
+    accentClassName: "border-[#cbe1cf] bg-[#e8f5ea]",
+    chapters: ACTS_CHAPTERS,
+  },
+  {
+    slug: "romans",
+    name: "Romans",
+    shortLabel: "Gospel clarity, righteousness by faith, life in the Spirit, and deep teaching about grace and obedience.",
+    shortDescription: "Play through all 16 Romans chapters with Scripture words tied to faith, grace, righteousness, justification, Spirit-filled life, and practical obedience.",
+    louisIntro:
+      "Romans gives some of the clearest gospel teaching in the whole Bible. These Scrambled packs keep the big words about sin, grace, faith, righteousness, adoption, hope, and daily obedience close to your memory chapter by chapter.",
+    accentClassName: "border-[#d7c9ee] bg-[#efe8ff]",
+    chapters: ROMANS_CHAPTERS,
+  },
+  {
+    slug: "1corinthians",
+    name: "1 Corinthians",
+    shortLabel: "Unity, holiness, worship, spiritual gifts, resurrection hope, and love at the center of church life.",
+    shortDescription: "Play through all 16 1 Corinthians chapters with Scripture words tied to unity, the cross, holiness, gifts, love, worship, and resurrection victory.",
+    louisIntro:
+      "1 Corinthians is honest, corrective, and deeply practical. These Scrambled packs keep the big words about unity, holiness, worship, spiritual gifts, love, discipline, and resurrection hope close to your memory chapter by chapter.",
+    accentClassName: "border-[#f0d0c8] bg-[#fff0ec]",
+    chapters: FIRST_CORINTHIANS_CHAPTERS,
+  },
+  {
+    slug: "2corinthians",
+    name: "2 Corinthians",
+    shortLabel: "Comfort, integrity, weakness, generosity, reconciliation, and God's power shining through fragile servants.",
+    shortDescription: "Play through all 13 2 Corinthians chapters with Scripture words tied to comfort, new covenant ministry, generosity, weakness, reconciliation, and spiritual strength.",
+    louisIntro:
+      "2 Corinthians is deeply personal and full of ministry honesty. These Scrambled packs keep the big words about comfort, weakness, grace, reconciliation, generosity, and Christ's power close to your memory chapter by chapter.",
+    accentClassName: "border-[#d4e2f6] bg-[#edf5ff]",
+    chapters: SECOND_CORINTHIANS_CHAPTERS,
+  },
+  {
+    slug: "galatians",
+    name: "Galatians",
+    shortLabel: "Freedom in Christ, justification by faith, life in the Spirit, and a strong stand against legalism.",
+    shortDescription: "Play through all 6 Galatians chapters with Scripture words tied to gospel freedom, faith, law, promise, Spirit-led living, and the cross.",
+    louisIntro:
+      "Galatians is direct, urgent, and full of gospel freedom. These Scrambled packs keep the big words about faith, law, freedom, the Spirit, promise, and the cross close to your memory chapter by chapter.",
+    accentClassName: "border-[#f1d7b8] bg-[#fff2df]",
+    chapters: GALATIANS_CHAPTERS,
+  },
+  {
+    slug: "ephesians",
+    name: "Ephesians",
+    shortLabel: "Identity in Christ, grace, unity, holiness, love, and strength for spiritual battle.",
+    shortDescription: "Play through all 6 Ephesians chapters with Scripture words tied to grace, faith, peace, unity, holiness, love, and the armor of God.",
+    louisIntro:
+      "Ephesians is full of identity, unity, and spiritual strength. These Scrambled packs keep the big words about grace, peace, mystery, love, wisdom, and the armor of God close to your memory chapter by chapter.",
+    accentClassName: "border-[#cfe4f1] bg-[#eef8ff]",
+    chapters: EPHESIANS_CHAPTERS,
+  },
+  {
+    slug: "philippians",
+    name: "Philippians",
+    shortLabel: "Joy in Christ, humility, contentment, gospel partnership, and heavenly focus through every circumstance.",
+    shortDescription: "Play through all 4 Philippians chapters with Scripture words tied to joy, humility, Christ-centered living, peace, contentment, and gospel partnership.",
+    louisIntro:
+      "Philippians is warm, personal, and full of joy in Christ. These Scrambled packs keep the big words about humility, gospel purpose, contentment, peace, and heavenly focus close to your memory chapter by chapter.",
+    accentClassName: "border-[#f0d6a7] bg-[#fff4dc]",
+    chapters: PHILIPPIANS_CHAPTERS,
+  },
+  {
+    slug: "colossians",
+    name: "Colossians",
+    shortLabel: "The supremacy of Christ, fullness in Him, holy living, and a steady warning against empty teaching.",
+    shortDescription: "Play through all 4 Colossians chapters with Scripture words tied to Christ's supremacy, fullness, heavenly focus, prayer, and holy living.",
+    louisIntro:
+      "Colossians keeps bringing everything back to Christ. These Scrambled packs keep the big words about fullness, wisdom, peace, love, prayer, and the supremacy of Jesus close to your memory chapter by chapter.",
+    accentClassName: "border-[#d4e7cf] bg-[#eef8ea]",
+    chapters: COLOSSIANS_CHAPTERS,
+  },
+  {
+    slug: "1thessalonians",
+    name: "1 Thessalonians",
+    shortLabel: "Faith, love, hope, holiness, perseverance, and steady expectation of Christ's return.",
+    shortDescription: "Play through all 5 1 Thessalonians chapters with Scripture words tied to hope, holiness, gospel endurance, prayer, and the return of Christ.",
+    louisIntro:
+      "1 Thessalonians is warm, encouraging, and full of hope. These Scrambled packs keep the big words about faith, holiness, love, watchfulness, prayer, and Christ's return close to your memory chapter by chapter.",
+    accentClassName: "border-[#d8d3f0] bg-[#f2efff]",
+    chapters: FIRST_THESSALONIANS_CHAPTERS,
+  },
+  {
+    slug: "2thessalonians",
+    name: "2 Thessalonians",
+    shortLabel: "Endurance, truth, steady work, and calm confidence about Christ's return and God's justice.",
+    shortDescription: "Play through all 3 2 Thessalonians chapters with Scripture words tied to perseverance, the day of the Lord, truth, discipline, and peace.",
+    louisIntro:
+      "2 Thessalonians keeps believers steady when confusion and pressure rise. These Scrambled packs keep the big words about endurance, judgment, truth, work, peace, and Christ's return close to your memory chapter by chapter.",
+    accentClassName: "border-[#f0d6dc] bg-[#fff0f4]",
+    chapters: SECOND_THESSALONIANS_CHAPTERS,
   },
 ];
 
