@@ -2512,6 +2512,123 @@ function createPhilemonChapter(
   };
 }
 
+function createHebrewsChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Hebrews ${chapter}`,
+    description,
+    questions: createQuestions("hebrews", chapter, questions),
+  };
+}
+
+function createJamesChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `James ${chapter}`,
+    description,
+    questions: createQuestions("james", chapter, questions),
+  };
+}
+
+function createFirstPeterChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `1 Peter ${chapter}`,
+    description,
+    questions: createQuestions("1peter", chapter, questions),
+  };
+}
+
+function createSecondPeterChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `2 Peter ${chapter}`,
+    description,
+    questions: createQuestions("2peter", chapter, questions),
+  };
+}
+
+function createFirstJohnChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `1 John ${chapter}`,
+    description,
+    questions: createQuestions("1john", chapter, questions),
+  };
+}
+
+function createSecondJohnChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `2 John ${chapter}`,
+    description,
+    questions: createQuestions("2john", chapter, questions),
+  };
+}
+
+function createThirdJohnChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `3 John ${chapter}`,
+    description,
+    questions: createQuestions("3john", chapter, questions),
+  };
+}
+
+function createJudeChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Jude ${chapter}`,
+    description,
+    questions: createQuestions("jude", chapter, questions),
+  };
+}
+
+function createRevelationChapter(
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `Revelation ${chapter}`,
+    description,
+    questions: createQuestions("revelation", chapter, questions),
+  };
+}
+
 const GENESIS_CHAPTERS: ScrambledChapterPack[] = [
   createGenesisChapter(1, "Creation unfolds in order as God speaks light, sky, land, life, and humanity into place.", [
     ["light", "Genesis 1:3", "Let there be light", "The first thing God speaks into existence.", "easy"],
@@ -8898,6 +9015,425 @@ const PHILEMON_CHAPTERS: ScrambledChapterPack[] = [
   ]),
 ];
 
+const HEBREWS_CHAPTERS: ScrambledChapterPack[] = [
+  createHebrewsChapter(1, "The Son is presented as God's final word, greater than prophets and angels, radiant with divine glory and eternal rule.", [
+    ["prophets", "Hebrews 1:1", "God ... spake in time past unto the fathers by the prophets", "Who God spoke through in time past.", "easy"],
+    ["son", "Hebrews 1:2", "hath in these last days spoken unto us by his Son", "Who God has spoken by in these last days.", "easy"],
+    ["glory", "Hebrews 1:3", "the brightness of his glory", "What the Son perfectly radiates.", "easy"],
+    ["angels", "Hebrews 1:4", "being made so much better than the angels", "Who the Son is shown to be greater than.", "easy"],
+    ["throne", "Hebrews 1:8", "Thy throne, O God, is for ever and ever", "What is said to last forever and ever.", "medium"],
+  ]),
+  createHebrewsChapter(2, "A warning against drifting gives way to the wonder of Jesus sharing our humanity to defeat death and help the tempted.", [
+    ["heard", "Hebrews 2:1", "lest at any time we should let them slip", "What believers must give earnest heed to.", "easy"],
+    ["salvation", "Hebrews 2:3", "if we neglect so great salvation", "What must not be neglected.", "easy"],
+    ["death", "Hebrews 2:9", "that he by the grace of God should taste death for every man", "What Jesus tasted for every man.", "easy"],
+    ["brethren", "Hebrews 2:11", "he is not ashamed to call them brethren", "What Jesus is not ashamed to call believers.", "medium"],
+    ["priest", "Hebrews 2:17", "a merciful and faithful high priest", "The role Jesus becomes for His people.", "medium"],
+  ]),
+  createHebrewsChapter(3, "Jesus is greater than Moses, and the chapter warns against hard hearts, unbelief, and missing God's promised rest.", [
+    ["apostle", "Hebrews 3:1", "consider the Apostle and High Priest", "One title believers are told to consider in Jesus.", "medium"],
+    ["moses", "Hebrews 3:3", "worthy of more glory than Moses", "Who Jesus is said to surpass in glory.", "easy"],
+    ["house", "Hebrews 3:6", "whose house are we", "What believers are called if they hold fast.", "easy"],
+    ["hearts", "Hebrews 3:8", "Harden not your hearts", "What must not be hardened.", "easy"],
+    ["rest", "Hebrews 3:18", "that they should not enter into his rest", "What unbelief kept Israel from entering.", "easy"],
+  ]),
+  createHebrewsChapter(4, "God's rest remains open, His Word searches deeply, and Jesus invites us to the throne of grace with confidence.", [
+    ["promise", "Hebrews 4:1", "a promise being left us of entering into his rest", "What still remains about entering God's rest.", "medium"],
+    ["today", "Hebrews 4:7", "To day if ye will hear his voice", "The urgent time word repeated in this chapter.", "easy"],
+    ["word", "Hebrews 4:12", "the word of God is quick, and powerful", "What is described as living and powerful.", "easy"],
+    ["thoughts", "Hebrews 4:12", "a discerner of the thoughts and intents of the heart", "One thing God's Word discerns in the heart.", "medium"],
+    ["grace", "Hebrews 4:16", "come boldly unto the throne of grace", "The kind of throne believers may approach boldly.", "easy"],
+  ]),
+  createHebrewsChapter(5, "Jesus is the obedient high priest, and the chapter presses believers beyond immaturity toward deeper discernment.", [
+    ["priest", "Hebrews 5:1", "every high priest taken from among men", "The office described at the start of the chapter.", "easy"],
+    ["obedience", "Hebrews 5:8", "yet learned he obedience by the things which he suffered", "What Christ learned through suffering.", "medium"],
+    ["melchizedek", "Hebrews 5:10", "called of God an high priest after the order of Melchisedec", "The priestly order named for Jesus.", "hard"],
+    ["milk", "Hebrews 5:12", "ye have need of milk, and not of strong meat", "What immature believers still need.", "easy"],
+    ["meat", "Hebrews 5:14", "strong meat belongeth to them that are of full age", "What belongs to the mature.", "medium"],
+  ]),
+  createHebrewsChapter(6, "The chapter urges maturity, warns seriously about falling away, and anchors hope in God's oath and promise.", [
+    ["perfection", "Hebrews 6:1", "let us go on unto perfection", "What believers are urged to go on unto.", "medium"],
+    ["repentance", "Hebrews 6:1", "the foundation of repentance from dead works", "One foundation believers are told to move beyond.", "medium"],
+    ["thorns", "Hebrews 6:8", "beareth thorns and briers", "What the rejected ground produces.", "hard"],
+    ["oath", "Hebrews 6:17", "confirmed it by an oath", "What God used to confirm His promise.", "easy"],
+    ["anchor", "Hebrews 6:19", "Which hope we have as an anchor of the soul", "What hope is called for the soul.", "easy"],
+  ]),
+  createHebrewsChapter(7, "Melchizedek's priesthood points to Jesus, whose endless life secures a better priesthood and unending intercession.", [
+    ["salem", "Hebrews 7:1", "Melchisedec, king of Salem", "The city Melchizedek is king of.", "medium"],
+    ["spoils", "Hebrews 7:4", "gave the tenth of the spoils", "What Abraham gave a tenth from.", "medium"],
+    ["better", "Hebrews 7:7", "the less is blessed of the better", "What word describes the greater one in the blessing.", "easy"],
+    ["priesthood", "Hebrews 7:11", "what further need was there that another priest should rise", "The office being discussed throughout this chapter.", "hard"],
+    ["intercession", "Hebrews 7:25", "he ever liveth to make intercession for them", "What Jesus always lives to make.", "hard"],
+  ]),
+  createHebrewsChapter(8, "Jesus ministers in the true tabernacle and brings a better covenant written on hearts instead of stone.", [
+    ["heaven", "Hebrews 8:1", "on the right hand of the throne of the Majesty in the heavens", "Where Jesus is seated as high priest.", "easy"],
+    ["tabernacle", "Hebrews 8:2", "a minister of the sanctuary, and of the true tabernacle", "The true dwelling Jesus ministers in.", "medium"],
+    ["covenant", "Hebrews 8:6", "he is the mediator of a better covenant", "What Jesus mediates in better form.", "easy"],
+    ["minds", "Hebrews 8:10", "I will put my laws into their mind", "Where God says He will put His laws.", "medium"],
+    ["sins", "Hebrews 8:12", "their sins and their iniquities will I remember no more", "What God promises to remember no more.", "easy"],
+  ]),
+  createHebrewsChapter(9, "Earthly worship gives way to Christ's better blood, better sanctuary, and once-for-all cleansing of the conscience.", [
+    ["ordinances", "Hebrews 9:1", "ordinances of divine service", "What kind of regulations the first covenant had.", "hard"],
+    ["year", "Hebrews 9:7", "once every year", "How often the high priest entered the holiest place.", "easy"],
+    ["blood", "Hebrews 9:12", "by his own blood he entered in once", "What Christ entered with.", "easy"],
+    ["conscience", "Hebrews 9:14", "purge your conscience from dead works", "What Christ's blood purges.", "medium"],
+    ["appeared", "Hebrews 9:28", "unto them that look for him shall he appear", "What Christ will do the second time to those waiting for Him.", "medium"],
+  ]),
+  createHebrewsChapter(10, "The chapter celebrates Christ's once-for-all sacrifice and calls believers to draw near, hold fast, and endure faithfully.", [
+    ["shadow", "Hebrews 10:1", "the law having a shadow of good things to come", "What the law is said to have instead of the very image.", "medium"],
+    ["offering", "Hebrews 10:10", "through the offering of the body of Jesus Christ once for all", "What sanctifies believers once for all.", "easy"],
+    ["boldness", "Hebrews 10:19", "having therefore, brethren, boldness to enter", "What believers have to enter the holiest.", "medium"],
+    ["faith", "Hebrews 10:22", "draw near with a true heart in full assurance of faith", "What full assurance believers are told to have.", "easy"],
+    ["patience", "Hebrews 10:36", "ye have need of patience", "What believers are said to need to receive the promise.", "easy"],
+  ]),
+  createHebrewsChapter(11, "Faith fills the whole chapter as men and women trust God, endure, obey, and look for what they cannot yet see.", [
+    ["faith", "Hebrews 11:1", "faith is the substance of things hoped for", "What is defined at the start of the chapter.", "easy"],
+    ["elders", "Hebrews 11:2", "by it the elders obtained a good report", "Who obtained a good report by faith.", "medium"],
+    ["abel", "Hebrews 11:4", "By faith Abel offered unto God", "Who offered a more excellent sacrifice than Cain.", "easy"],
+    ["abraham", "Hebrews 11:8", "By faith Abraham, when he was called", "Who obeyed and went out not knowing where he went.", "easy"],
+    ["city", "Hebrews 11:10", "he looked for a city which hath foundations", "What Abraham looked for with foundations.", "easy"],
+  ]),
+  createHebrewsChapter(12, "Surrounded by witnesses, believers fix their eyes on Jesus, endure discipline, and receive an unshakable kingdom.", [
+    ["witnesses", "Hebrews 12:1", "so great a cloud of witnesses", "Who surrounds believers as they run.", "easy"],
+    ["race", "Hebrews 12:1", "let us run with patience the race", "What believers are told to run with patience.", "easy"],
+    ["jesus", "Hebrews 12:2", "Looking unto Jesus the author and finisher of our faith", "Who believers are to look unto.", "easy"],
+    ["joy", "Hebrews 12:2", "who for the joy that was set before him endured the cross", "What was set before Jesus as He endured the cross.", "easy"],
+    ["kingdom", "Hebrews 12:28", "receiving a kingdom which cannot be moved", "What believers are receiving that cannot be moved.", "medium"],
+  ]),
+  createHebrewsChapter(13, "The closing chapter ties faith to hospitality, contentment, praise, obedience, and the unchanging Jesus Christ.", [
+    ["hospitality", "Hebrews 13:2", "Be not forgetful to entertain strangers", "A modern word for entertaining strangers.", "hard"],
+    ["marriage", "Hebrews 13:4", "Marriage is honourable in all", "What is said to be honorable in all.", "easy"],
+    ["money", "Hebrews 13:5", "free from the love of money", "What believers must keep life free from loving.", "easy"],
+    ["forever", "Hebrews 13:8", "Jesus Christ the same yesterday, and to day, and for ever", "How long Jesus Christ remains the same.", "easy"],
+    ["praise", "Hebrews 13:15", "let us offer the sacrifice of praise", "The sacrifice believers are urged to offer continually.", "easy"],
+  ]),
+];
+
+const JAMES_CHAPTERS: ScrambledChapterPack[] = [
+  createJamesChapter(1, "James opens with trials, wisdom, temptation, obedience, and a faith that listens, does, and stays clean in the world.", [
+    ["trials", "James 1:2", "when ye fall into divers temptations", "What believers are told to count all joy when they face.", "easy"],
+    ["wisdom", "James 1:5", "If any of you lack wisdom", "What believers should ask God for if they lack it.", "easy"],
+    ["faith", "James 1:6", "let him ask in faith", "How a person must ask God.", "easy"],
+    ["mirror", "James 1:23", "beholding his natural face in a glass", "A modern word for the glass James uses as a picture.", "medium"],
+    ["widows", "James 1:27", "to visit the fatherless and widows in their affliction", "One group pure religion cares for in affliction.", "medium"],
+  ]),
+  createJamesChapter(2, "James rebukes favoritism and insists that living faith shows itself in mercy, obedience, and real works.", [
+    ["favoritism", "James 2:1", "have not the faith of our Lord Jesus Christ ... with respect of persons", "A modern word for showing respect of persons.", "hard"],
+    ["royal", "James 2:8", "If ye fulfil the royal law", "What kind of law James calls loving your neighbor.", "medium"],
+    ["mercy", "James 2:13", "mercy rejoiceth against judgment", "What rejoices against judgment.", "easy"],
+    ["works", "James 2:17", "faith, if it hath not works, is dead", "What living faith is said to have.", "easy"],
+    ["abraham", "James 2:21", "Was not Abraham our father justified by works", "Who James uses first as an example of faith in action.", "easy"],
+  ]),
+  createJamesChapter(3, "The chapter warns about the tongue and contrasts bitter envy with the pure wisdom that comes from above.", [
+    ["tongue", "James 3:5", "Even so the tongue is a little member", "The small member James says can boast great things.", "easy"],
+    ["fire", "James 3:6", "the tongue is a fire", "What James calls the tongue.", "easy"],
+    ["bridle", "James 3:3", "we put bits in the horses' mouths", "The control image James uses with horses.", "medium"],
+    ["wisdom", "James 3:13", "who is a wise man and endued with knowledge", "What quality from above James contrasts with envy.", "easy"],
+    ["peaceable", "James 3:17", "the wisdom that is from above is first pure, then peaceable", "One quality of heavenly wisdom right after pure.", "hard"],
+  ]),
+  createJamesChapter(4, "James exposes pride, quarrels, worldliness, boasting, and calls believers to humble themselves before God.", [
+    ["wars", "James 4:1", "From whence come wars and fightings among you", "What James says comes from desires within.", "easy"],
+    ["enmity", "James 4:4", "the friendship of the world is enmity with God", "What friendship with the world becomes toward God.", "medium"],
+    ["humble", "James 4:6", "God resisteth the proud, but giveth grace unto the humble", "The people God gives grace to.", "easy"],
+    ["flee", "James 4:7", "Resist the devil, and he will flee from you", "What the devil will do when resisted.", "easy"],
+    ["mist", "James 4:14", "For what is your life? It is even a vapour", "A modern word for the vapour James uses for life.", "medium"],
+  ]),
+  createJamesChapter(5, "James closes with warnings to the rich, patient endurance, prayer, healing, confession, and restoring wanderers.", [
+    ["harvest", "James 5:4", "the cries of them which have reaped are entered", "The work connected to the laborers crying out.", "medium"],
+    ["patience", "James 5:7", "Be patient therefore, brethren", "What believers are urged to have until the Lord's coming.", "easy"],
+    ["farmer", "James 5:7", "Behold, the husbandman waiteth for the precious fruit", "A modern word for the husbandman James uses as an example.", "medium"],
+    ["prayer", "James 5:16", "The effectual fervent prayer of a righteous man availeth much", "What availeth much in this chapter.", "easy"],
+    ["elijah", "James 5:17", "Elias was a man subject to like passions as we are", "The prophet James uses as a prayer example.", "medium"],
+  ]),
+];
+
+const FIRST_PETER_CHAPTERS: ScrambledChapterPack[] = [
+  createFirstPeterChapter(1, "Peter opens with living hope, holy living, enduring inheritance, and the precious blood of Christ.", [
+    ["hope", "1 Peter 1:3", "begotten us again unto a lively hope", "What believers are born again into through Christ's resurrection.", "easy"],
+    ["inheritance", "1 Peter 1:4", "to an inheritance incorruptible", "What is kept in heaven for believers.", "medium"],
+    ["gold", "1 Peter 1:7", "being much more precious than of gold", "What tested faith is compared against in value.", "easy"],
+    ["holy", "1 Peter 1:16", "Be ye holy; for I am holy", "What believers are called to be.", "easy"],
+    ["blood", "1 Peter 1:19", "with the precious blood of Christ", "What believers are redeemed with.", "easy"],
+  ]),
+  createFirstPeterChapter(2, "Believers are called living stones, a royal priesthood, and people who follow Christ's example in suffering.", [
+    ["milk", "1 Peter 2:2", "desire the sincere milk of the word", "What believers are told to desire for growth.", "easy"],
+    ["stone", "1 Peter 2:4", "a living stone, disallowed indeed of men", "What Christ is called in this chapter.", "easy"],
+    ["priesthood", "1 Peter 2:9", "a royal priesthood", "What believers are called along with a holy nation.", "hard"],
+    ["marvelous", "1 Peter 2:9", "into his marvellous light", "How God's light is described.", "hard"],
+    ["healed", "1 Peter 2:24", "by whose stripes ye were healed", "What believers are said to be by Christ's stripes.", "medium"],
+  ]),
+  createFirstPeterChapter(3, "Peter teaches gentle strength in relationships and calls believers to bless, answer with hope, and suffer for doing good.", [
+    ["spirit", "1 Peter 3:4", "the ornament of a meek and quiet spirit", "The inward quality Peter says is of great price before God.", "easy"],
+    ["honour", "1 Peter 3:7", "giving honour unto the wife", "What husbands are told to give.", "medium"],
+    ["blessing", "1 Peter 3:9", "not rendering evil for evil ... but contrariwise blessing", "What believers are to give instead of evil for evil.", "easy"],
+    ["hope", "1 Peter 3:15", "a reason of the hope that is in you", "What believers must be ready to answer for.", "easy"],
+    ["conscience", "1 Peter 3:16", "Having a good conscience", "What believers are told to keep good.", "medium"],
+  ]),
+  createFirstPeterChapter(4, "The chapter calls believers to sober love, faithful service, and joy when sharing in the sufferings of Christ.", [
+    ["prayer", "1 Peter 4:7", "watch unto prayer", "What sober-minded believers are told to watch unto.", "easy"],
+    ["charity", "1 Peter 4:8", "have fervent charity among yourselves", "The old KJV word Peter uses for fervent love.", "medium"],
+    ["hospitality", "1 Peter 4:9", "Use hospitality one to another without grudging", "What believers are told to use without grudging.", "hard"],
+    ["fiery", "1 Peter 4:12", "think it not strange concerning the fiery trial", "How the trial is described.", "medium"],
+    ["christian", "1 Peter 4:16", "if any man suffer as a Christian", "The name believers should not be ashamed to suffer under.", "medium"],
+  ]),
+  createFirstPeterChapter(5, "Peter ends with shepherding, humility, vigilance, resistance against the devil, and God's restoring grace.", [
+    ["elders", "1 Peter 5:1", "The elders which are among you I exhort", "Who Peter addresses first in this chapter.", "easy"],
+    ["shepherd", "1 Peter 5:2", "Feed the flock of God which is among you", "A modern word for the role elders are told to carry out.", "medium"],
+    ["humility", "1 Peter 5:5", "be clothed with humility", "What believers are told to be clothed with.", "hard"],
+    ["lion", "1 Peter 5:8", "your adversary the devil, as a roaring lion", "What animal the devil is compared to.", "easy"],
+    ["grace", "1 Peter 5:12", "this is the true grace of God wherein ye stand", "What Peter says believers stand in.", "easy"],
+  ]),
+];
+
+const SECOND_PETER_CHAPTERS: ScrambledChapterPack[] = [
+  createSecondPeterChapter(1, "Peter calls believers to grow steadily in godly character, remember the truth, and trust the prophetic word as a sure light.", [
+    ["godliness", "2 Peter 1:3", "all things that pertain unto life and godliness", "What God's power gives everything needed for.", "medium"],
+    ["nature", "2 Peter 1:4", "partakers of the divine nature", "What believers become partakers of through God's promises.", "medium"],
+    ["knowledge", "2 Peter 1:5", "and to virtue knowledge", "What Peter says to add to virtue.", "easy"],
+    ["election", "2 Peter 1:10", "make your calling and election sure", "What believers are told to make sure along with calling.", "hard"],
+    ["light", "2 Peter 1:19", "as unto a light that shineth in a dark place", "What prophecy is compared to in a dark place.", "easy"],
+  ]),
+  createSecondPeterChapter(2, "The chapter exposes false teachers, their greed, corruption, and the certain judgment that falls on those who distort the truth.", [
+    ["heresies", "2 Peter 2:1", "privily shall bring in damnable heresies", "What false teachers secretly bring in.", "hard"],
+    ["master", "2 Peter 2:1", "denying the Lord that bought them", "A close translation word for the Lord they deny.", "medium"],
+    ["words", "2 Peter 2:3", "through covetousness shall they with feigned words make merchandise of you", "What false teachers use to exploit people.", "easy"],
+    ["lot", "2 Peter 2:7", "delivered just Lot", "Who God delivered from the filthy conduct of the wicked.", "easy"],
+    ["vomit", "2 Peter 2:22", "The dog is turned to his own vomit again", "What the dog returns to in Peter's proverb.", "medium"],
+  ]),
+  createSecondPeterChapter(3, "Peter warns about scoffers, reminds believers of the Lord's patience, and points them toward holy lives and the coming new creation.", [
+    ["scoffers", "2 Peter 3:3", "there shall come in the last days scoffers", "Who Peter says will come in the last days.", "medium"],
+    ["word", "2 Peter 3:5", "by the word of God the heavens were of old", "What Peter says the heavens were made by.", "easy"],
+    ["flood", "2 Peter 3:6", "the world that then was, being overflowed with water, perished", "The judgment event Peter points back to.", "easy"],
+    ["patience", "2 Peter 3:9", "The Lord is not slack concerning his promise", "What explains why the Lord has not yet brought the end.", "easy"],
+    ["grow", "2 Peter 3:18", "grow in grace, and in the knowledge of our Lord", "What believers are commanded to do in grace and knowledge.", "easy"],
+  ]),
+];
+
+const FIRST_JOHN_CHAPTERS: ScrambledChapterPack[] = [
+  createFirstJohnChapter(1, "John opens with the Word of life, fellowship with God, walking in the light, and honest confession of sin.", [
+    ["life", "1 John 1:1", "the Word of life", "What John calls the Word from the beginning.", "easy"],
+    ["fellowship", "1 John 1:3", "that ye also may have fellowship with us", "What John says believers may have with one another and God.", "medium"],
+    ["light", "1 John 1:5", "God is light", "What God is said to be.", "easy"],
+    ["darkness", "1 John 1:5", "in him is no darkness at all", "What is not in God at all.", "easy"],
+    ["confess", "1 John 1:9", "If we confess our sins", "What believers are told to do with their sins.", "medium"],
+  ]),
+  createFirstJohnChapter(2, "John writes about Christ our advocate, obedience, love, antichrists, and remaining in what was heard from the beginning.", [
+    ["advocate", "1 John 2:1", "we have an advocate with the Father", "What Jesus Christ the righteous is called with the Father.", "hard"],
+    ["world", "1 John 2:15", "Love not the world", "What believers are told not to love.", "easy"],
+    ["father", "1 John 2:15", "the love of the Father is not in him", "Whose love is not in the one who loves the world.", "easy"],
+    ["antichrists", "1 John 2:18", "even now are there many antichrists", "Who John says are already present in the last time.", "hard"],
+    ["eternal", "1 John 2:25", "this is the promise ... even eternal life", "What kind of life Christ promised.", "medium"],
+  ]),
+  createFirstJohnChapter(3, "The chapter centers on being children of God, turning from sin, and loving one another in truth and action.", [
+    ["children", "1 John 3:1", "that we should be called the sons of God", "What believers are called because of the Father's love.", "easy"],
+    ["pure", "1 John 3:3", "even as he is pure", "How Christ is described in the hope of becoming like Him.", "easy"],
+    ["devil", "1 John 3:8", "he that committeth sin is of the devil", "Who ongoing sin is linked to in this chapter.", "easy"],
+    ["brother", "1 John 3:14", "We know that we have passed from death unto life, because we love the brethren", "Who believers love as evidence of life.", "easy"],
+    ["truth", "1 John 3:18", "let us not love in word ... but in deed and in truth", "How believers are told to love, along with deed.", "medium"],
+  ]),
+  createFirstJohnChapter(4, "John calls believers to test spirits, hold to the true confession of Christ, and be perfected in God's love.", [
+    ["spirits", "1 John 4:1", "believe not every spirit, but try the spirits", "What believers are told to test.", "medium"],
+    ["flesh", "1 John 4:2", "Jesus Christ is come in the flesh", "What true spirits confess Christ came in.", "easy"],
+    ["greater", "1 John 4:4", "greater is he that is in you", "What John says about the One in believers.", "easy"],
+    ["love", "1 John 4:8", "God is love", "What God is plainly called in this chapter.", "easy"],
+    ["fear", "1 John 4:18", "There is no fear in love", "What perfect love casts out.", "easy"],
+  ]),
+  createFirstJohnChapter(5, "John closes with faith in the Son of God, victory over the world, confidence in prayer, and assurance of eternal life.", [
+    ["born", "1 John 5:1", "whosoever believeth that Jesus is the Christ is born of God", "What believers are said to be of God.", "easy"],
+    ["burdensome", "1 John 5:3", "his commandments are not grievous", "A modern word for how God's commandments are not described.", "hard"],
+    ["world", "1 John 5:4", "this is the victory that overcometh the world", "What faith is said to overcome.", "easy"],
+    ["blood", "1 John 5:6", "This is he that came by water and blood", "What Jesus came by along with water.", "easy"],
+    ["idols", "1 John 5:21", "keep yourselves from idols", "What John's final warning tells believers to keep from.", "medium"],
+  ]),
+];
+
+const SECOND_JOHN_CHAPTERS: ScrambledChapterPack[] = [
+  createSecondJohnChapter(1, "John writes briefly but clearly about walking in truth, loving one another, keeping the commandment, and guarding the church from deceivers.", [
+    ["truth", "2 John 1:4", "I found of thy children walking in truth", "What John says some of the children are walking in.", "easy"],
+    ["love", "2 John 1:5", "that we love one another", "What believers are commanded to show one another.", "easy"],
+    ["commandment", "2 John 1:6", "This is the commandment, That ... ye should walk in it", "What believers are called to walk in.", "hard"],
+    ["deceivers", "2 John 1:7", "many deceivers are entered into the world", "Who John warns have entered the world.", "medium"],
+    ["house", "2 John 1:10", "receive him not into your house", "Where John says not to receive one who does not bring this doctrine.", "easy"],
+  ]),
+];
+
+const THIRD_JOHN_CHAPTERS: ScrambledChapterPack[] = [
+  createThirdJohnChapter(1, "John commends Gaius for walking in truth and showing hospitality, warns about Diotrephes, and points to Demetrius as a good example.", [
+    ["truth", "3 John 1:4", "that my children walk in truth", "What John says gives him great joy to hear believers are walking in.", "easy"],
+    ["brethren", "3 John 1:5", "thou doest faithfully whatsoever thou doest to the brethren", "Who Gaius is praised for helping faithfully.", "medium"],
+    ["strangers", "3 John 1:5", "and to strangers", "The people named along with the brethren in Gaius's hospitality.", "medium"],
+    ["diotrephes", "3 John 1:9", "Diotrephes, who loveth to have the preeminence", "The man John warns about in this letter.", "hard"],
+    ["demetrius", "3 John 1:12", "Demetrius hath good report of all men", "The man John speaks well of near the end of the letter.", "hard"],
+  ]),
+];
+
+const JUDE_CHAPTERS: ScrambledChapterPack[] = [
+  createJudeChapter(1, "Jude urges believers to contend for the faith, warns about corrupt teachers, recalls past judgments, and closes with a strong doxology of God's keeping power.", [
+    ["faith", "Jude 1:3", "that ye should earnestly contend for the faith", "What Jude says believers should earnestly contend for.", "easy"],
+    ["ungodly", "Jude 1:4", "ungodly men, turning the grace of our God into lasciviousness", "How Jude describes the men who crept in unnoticed.", "medium"],
+    ["michael", "Jude 1:9", "Michael the archangel", "The archangel named in Jude's warning example.", "hard"],
+    ["mercy", "Jude 1:21", "looking for the mercy of our Lord Jesus Christ unto eternal life", "What believers are told to look for while keeping themselves in God's love.", "easy"],
+    ["glory", "Jude 1:24", "to present you faultless before the presence of his glory", "What presence believers are presented before with exceeding joy.", "medium"],
+  ]),
+];
+
+const REVELATION_CHAPTERS: ScrambledChapterPack[] = [
+  createRevelationChapter(1, "John receives the opening vision of the risen Christ among the lampstands and is told to write what he sees.", [
+    ["lampstands", "Revelation 1:12", "I saw seven golden candlesticks", "What John sees when he turns to hear the voice.", "medium"],
+    ["alpha", "Revelation 1:8", "I am Alpha and Omega", "The first title paired with Omega in this chapter.", "easy"],
+    ["eyes", "Revelation 1:14", "his eyes were as a flame of fire", "What part of Christ's appearance is compared to fire.", "easy"],
+    ["stars", "Revelation 1:16", "he had in his right hand seven stars", "What Christ holds in His right hand.", "easy"],
+    ["sword", "Revelation 1:16", "out of his mouth went a sharp twoedged sword", "What comes from Christ's mouth in the vision.", "medium"],
+  ]),
+  createRevelationChapter(2, "Christ addresses the churches in Ephesus, Smyrna, Pergamos, and Thyatira with praise, warnings, and promises.", [
+    ["love", "Revelation 2:4", "thou hast left thy first love", "What the church in Ephesus is said to have left.", "easy"],
+    ["crown", "Revelation 2:10", "I will give thee a crown of life", "What the faithful unto death are promised.", "easy"],
+    ["manna", "Revelation 2:17", "I will give to eat of the hidden manna", "What the overcomer is promised along with a white stone.", "medium"],
+    ["jezebel", "Revelation 2:20", "thou sufferest that woman Jezebel", "The woman named in the warning to Thyatira.", "hard"],
+    ["works", "Revelation 2:19", "I know thy works, and charity, and service", "What Christ says He knows in Thyatira.", "easy"],
+  ]),
+  createRevelationChapter(3, "Christ speaks to Sardis, Philadelphia, and Laodicea, calling for wakefulness, endurance, and repentance.", [
+    ["white", "Revelation 3:5", "shall be clothed in white raiment", "The color of the raiment promised to the overcomer.", "easy"],
+    ["door", "Revelation 3:8", "I have set before thee an open door", "What Christ says He has set before Philadelphia.", "easy"],
+    ["lukewarm", "Revelation 3:16", "because thou art lukewarm", "How Laodicea is described instead of hot or cold.", "hard"],
+    ["gold", "Revelation 3:18", "buy of me gold tried in the fire", "What Christ tells Laodicea to buy tried in the fire.", "easy"],
+    ["knock", "Revelation 3:20", "I stand at the door, and knock", "What Christ says He is doing at the door.", "easy"],
+  ]),
+  createRevelationChapter(4, "John is taken into heaven to see God's throne, living creatures, and elders worshiping without ceasing.", [
+    ["throne", "Revelation 4:2", "behold, a throne was set in heaven", "What John sees set in heaven.", "easy"],
+    ["rainbow", "Revelation 4:3", "there was a rainbow round about the throne", "What surrounds the throne in appearance like an emerald.", "medium"],
+    ["elders", "Revelation 4:4", "four and twenty elders sitting", "Who sit on the surrounding seats.", "easy"],
+    ["thunderings", "Revelation 4:5", "proceeded lightnings and thunderings and voices", "What proceeds from the throne along with lightnings and voices.", "hard"],
+    ["holy", "Revelation 4:8", "Holy, holy, holy, Lord God Almighty", "The repeated word in the worship of the living creatures.", "easy"],
+  ]),
+  createRevelationChapter(5, "The sealed scroll appears, the Lamb is found worthy to open it, and heaven erupts in worship.", [
+    ["book", "Revelation 5:1", "a book written within and on the backside, sealed with seven seals", "What John sees in the right hand of Him on the throne.", "easy"],
+    ["seals", "Revelation 5:1", "sealed with seven seals", "What the scroll is closed with.", "easy"],
+    ["lion", "Revelation 5:5", "the Lion of the tribe of Juda", "The tribal title given to Christ here.", "medium"],
+    ["lamb", "Revelation 5:6", "stood a Lamb as it had been slain", "What John sees standing in the midst of the throne.", "easy"],
+    ["worthy", "Revelation 5:9", "Thou art worthy to take the book", "How heaven describes the Lamb.", "easy"],
+  ]),
+  createRevelationChapter(6, "The Lamb opens six seals, releasing riders, martyrs' cries, and terrifying signs of judgment.", [
+    ["horse", "Revelation 6:2", "behold a white horse", "The animal seen with the first seal.", "easy"],
+    ["peace", "Revelation 6:4", "to take peace from the earth", "What the second rider is given power to take.", "easy"],
+    ["balances", "Revelation 6:5", "he had a pair of balances in his hand", "What the black-horse rider holds.", "hard"],
+    ["death", "Revelation 6:8", "his name that sat on him was Death", "The name of the rider on the pale horse.", "easy"],
+    ["wrath", "Revelation 6:17", "the great day of his wrath is come", "What great day has come by the chapter's end.", "medium"],
+  ]),
+  createRevelationChapter(7, "God seals His servants and shows a vast multitude from every nation praising the Lamb.", [
+    ["seal", "Revelation 7:3", "till we have sealed the servants of our God", "What God's servants receive in their foreheads.", "easy"],
+    ["tribes", "Revelation 7:4", "of all the tribes of the children of Israel", "The larger groups named in the sealing count.", "medium"],
+    ["robes", "Revelation 7:9", "clothed with white robes", "What the great multitude is wearing.", "easy"],
+    ["palms", "Revelation 7:9", "and palms in their hands", "What the multitude holds in their hands.", "medium"],
+    ["tears", "Revelation 7:17", "God shall wipe away all tears from their eyes", "What God will wipe away from their eyes.", "easy"],
+  ]),
+  createRevelationChapter(8, "The seventh seal opens into silence, trumpets begin to sound, and devastating judgments strike earth and sky.", [
+    ["silence", "Revelation 8:1", "there was silence in heaven", "What fills heaven for about half an hour.", "easy"],
+    ["trumpets", "Revelation 8:2", "to them were given seven trumpets", "What the seven angels are given.", "easy"],
+    ["wormwood", "Revelation 8:11", "the name of the star is called Wormwood", "What the fallen star is called.", "hard"],
+    ["star", "Revelation 8:10", "there fell a great star from heaven", "What falls upon the rivers and fountains of waters.", "easy"],
+    ["eagle", "Revelation 8:13", "I heard an angel flying through the midst of heaven, saying, Woe, woe, woe", "A common translation uses this bird for the flying messenger here.", "hard"],
+  ]),
+  createRevelationChapter(9, "The fifth and sixth trumpets unleash locust torment and a vast army as judgment intensifies.", [
+    ["bottomless", "Revelation 9:1", "to him was given the key of the bottomless pit", "The word describing the pit opened by the fallen star.", "hard"],
+    ["locusts", "Revelation 9:3", "there came out of the smoke locusts upon the earth", "What comes out of the smoke onto the earth.", "easy"],
+    ["abaddon", "Revelation 9:11", "his name in the Hebrew tongue is Abaddon", "The Hebrew name of the king over the locusts.", "hard"],
+    ["euphrates", "Revelation 9:14", "which are bound in the great river Euphrates", "The river where the four angels are bound.", "hard"],
+    ["repent", "Revelation 9:20", "repented not of the works of their hands", "What humanity still does not do after the plagues.", "medium"],
+  ]),
+  createRevelationChapter(10, "A mighty angel appears with a little book, and John is told to eat it and prophesy again.", [
+    ["rainbow", "Revelation 10:1", "a rainbow was upon his head", "What is upon the mighty angel's head.", "easy"],
+    ["book", "Revelation 10:2", "he had in his hand a little book open", "What the mighty angel holds open in his hand.", "easy"],
+    ["thunders", "Revelation 10:4", "seven thunders had uttered their voices", "What speaks after the lion-like cry.", "medium"],
+    ["sweet", "Revelation 10:9", "it shall be in thy mouth sweet as honey", "How the little book tastes in John's mouth.", "easy"],
+    ["belly", "Revelation 10:9", "it shall make thy belly bitter", "What the little book makes bitter after it is eaten.", "medium"],
+  ]),
+  createRevelationChapter(11, "John measures the temple, two witnesses testify and rise again, and the seventh trumpet sounds.", [
+    ["reed", "Revelation 11:1", "there was given me a reed like unto a rod", "What John is given for measuring.", "medium"],
+    ["witnesses", "Revelation 11:3", "I will give power unto my two witnesses", "How many witnesses prophesy in this chapter.", "easy"],
+    ["sackcloth", "Revelation 11:3", "they shall prophesy ... clothed in sackcloth", "What the two witnesses are clothed in.", "medium"],
+    ["earthquake", "Revelation 11:13", "the same hour was there a great earthquake", "What strikes after the witnesses ascend.", "easy"],
+    ["kingdoms", "Revelation 11:15", "The kingdoms of this world are become the kingdoms of our Lord", "What have become the Lord's and His Christ's.", "medium"],
+  ]),
+  createRevelationChapter(12, "A woman, a dragon, and the male child appear as heaven's conflict and Satan's rage are revealed.", [
+    ["woman", "Revelation 12:1", "a woman clothed with the sun", "Who appears clothed with the sun.", "easy"],
+    ["dragon", "Revelation 12:3", "behold a great red dragon", "The red creature seen as another wonder in heaven.", "easy"],
+    ["stars", "Revelation 12:4", "his tail drew the third part of the stars of heaven", "What the dragon's tail casts to the earth.", "easy"],
+    ["michael", "Revelation 12:7", "Michael and his angels fought against the dragon", "The heavenly leader who fights the dragon.", "hard"],
+    ["brethren", "Revelation 12:10", "the accuser of our brethren is cast down", "Whose accuser is cast down.", "medium"],
+  ]),
+  createRevelationChapter(13, "Two beasts arise with terrifying authority, blasphemy, deception, and the infamous number of the beast.", [
+    ["beast", "Revelation 13:1", "I saw a beast rise up out of the sea", "What rises from the sea at the chapter's start.", "easy"],
+    ["crowns", "Revelation 13:1", "upon his horns ten crowns", "What is upon the beast's horns.", "medium"],
+    ["worship", "Revelation 13:4", "they worshipped the dragon", "What people do toward the dragon and beast.", "easy"],
+    ["image", "Revelation 13:14", "that they should make an image to the beast", "What people are told to make to the beast.", "easy"],
+    ["number", "Revelation 13:18", "his number is Six hundred threescore and six", "What Revelation 13:18 gives for the beast.", "medium"],
+  ]),
+  createRevelationChapter(14, "The Lamb stands with the sealed, angels announce judgment, and harvest imagery fills the chapter.", [
+    ["lamb", "Revelation 14:1", "a Lamb stood on the mount Sion", "Who stands on Mount Zion.", "easy"],
+    ["foreheads", "Revelation 14:1", "having his Father's name written in their foreheads", "Where the Father's name is written.", "medium"],
+    ["gospel", "Revelation 14:6", "having the everlasting gospel to preach", "What the angel has to preach to every nation.", "easy"],
+    ["babylon", "Revelation 14:8", "Babylon is fallen, is fallen", "What city is declared fallen.", "easy"],
+    ["winepress", "Revelation 14:19", "cast it into the great winepress of the wrath of God", "What image is used for God's wrath at the end.", "hard"],
+  ]),
+  createRevelationChapter(15, "Victors sing by the sea of glass as the final bowl judgments are prepared in heaven.", [
+    ["glass", "Revelation 15:2", "a sea of glass mingled with fire", "What kind of sea John sees mingled with fire.", "easy"],
+    ["harps", "Revelation 15:2", "having the harps of God", "What the victorious ones are holding.", "easy"],
+    ["moses", "Revelation 15:3", "they sing the song of Moses", "Whose song is named along with the Lamb's.", "easy"],
+    ["temple", "Revelation 15:5", "the temple of the tabernacle of the testimony in heaven was opened", "What in heaven is opened.", "easy"],
+    ["vials", "Revelation 15:7", "seven golden vials full of the wrath of God", "What the seven angels receive full of God's wrath.", "hard"],
+  ]),
+  createRevelationChapter(16, "The seven bowls are poured out, bringing sores, darkness, dried waters, and the gathering for Armageddon.", [
+    ["vials", "Revelation 16:1", "Go your ways, and pour out the vials of the wrath of God", "What the angels are told to pour out.", "medium"],
+    ["sores", "Revelation 16:2", "there fell a noisome and grievous sore", "What falls on those who had the mark of the beast.", "easy"],
+    ["blood", "Revelation 16:3", "it became as the blood of a dead man", "What the sea becomes like.", "easy"],
+    ["armageddon", "Revelation 16:16", "he gathered them together into a place ... Armageddon", "The place where they are gathered.", "hard"],
+    ["hail", "Revelation 16:21", "there fell upon men a great hail out of heaven", "What falls from heaven at the chapter's end.", "easy"],
+  ]),
+  createRevelationChapter(17, "Babylon is pictured as a great harlot riding the beast, and her mystery is explained.", [
+    ["harlot", "Revelation 17:1", "the judgment of the great whore", "The image used for Babylon in this chapter.", "medium"],
+    ["scarlet", "Revelation 17:3", "a scarlet coloured beast", "What color the beast is here.", "easy"],
+    ["forehead", "Revelation 17:5", "upon her forehead was a name written", "Where the mystery name is written.", "easy"],
+    ["mystery", "Revelation 17:5", "Mystery, Babylon the Great", "The opening word of the woman's written name.", "medium"],
+    ["kings", "Revelation 17:12", "the ten horns ... are ten kings", "What the ten horns are interpreted as.", "easy"],
+  ]),
+  createRevelationChapter(18, "Babylon falls, merchants mourn, and heaven is called to rejoice over her judgment.", [
+    ["fallen", "Revelation 18:2", "Babylon the great is fallen, is fallen", "What is repeated about Babylon.", "easy"],
+    ["merchants", "Revelation 18:11", "the merchants of the earth shall weep and mourn over her", "Who mourns because no one buys their cargo anymore.", "medium"],
+    ["smoke", "Revelation 18:18", "What city is like unto this great city", "What they see rising from her burning.", "easy"],
+    ["millstone", "Revelation 18:21", "a mighty angel took up a stone like a great millstone", "What kind of stone is cast into the sea.", "hard"],
+    ["rejoice", "Revelation 18:20", "Rejoice over her, thou heaven", "What heaven is told to do over Babylon.", "easy"],
+  ]),
+  createRevelationChapter(19, "Heaven shouts hallelujah, the marriage supper arrives, and Christ rides forth in victory.", [
+    ["hallelujah", "Revelation 19:1", "Alleluia; Salvation, and glory, and honour, and power", "The repeated praise word heard from heaven.", "medium"],
+    ["marriage", "Revelation 19:7", "the marriage of the Lamb is come", "What of the Lamb has come.", "easy"],
+    ["horse", "Revelation 19:11", "behold a white horse", "What John sees when heaven opens.", "easy"],
+    ["faithful", "Revelation 19:11", "he that sat upon him was called Faithful and True", "The first title given to the rider on the white horse.", "easy"],
+    ["word", "Revelation 19:13", "his name is called The Word of God", "The title given to the rider in verse 13.", "medium"],
+  ]),
+  createRevelationChapter(20, "Satan is bound, the thousand years are described, final judgment comes, and the book of life is opened.", [
+    ["chain", "Revelation 20:1", "having the key of the bottomless pit and a great chain", "What the angel has in his hand besides the key.", "easy"],
+    ["thousand", "Revelation 20:2", "bound him a thousand years", "How long Satan is bound.", "easy"],
+    ["books", "Revelation 20:12", "the books were opened", "What are opened before the dead are judged.", "easy"],
+    ["life", "Revelation 20:12", "another book was opened, which is the book of life", "Which book is singled out besides the others.", "easy"],
+    ["lake", "Revelation 20:14", "cast into the lake of fire", "Where death and hell are cast.", "easy"],
+  ]),
+  createRevelationChapter(21, "A new heaven and earth appear, the New Jerusalem descends, and God dwells with His people forever.", [
+    ["new", "Revelation 21:1", "a new heaven and a new earth", "What kind of heaven and earth John sees.", "easy"],
+    ["jerusalem", "Revelation 21:2", "the holy city, new Jerusalem", "What city comes down from God out of heaven.", "easy"],
+    ["tabernacle", "Revelation 21:3", "the tabernacle of God is with men", "What of God is said to be with men.", "medium"],
+    ["tears", "Revelation 21:4", "God shall wipe away all tears from their eyes", "What God wipes away in the new creation.", "easy"],
+    ["gates", "Revelation 21:12", "had a wall great and high, and had twelve gates", "How many gates the city has.", "easy"],
+  ]),
+  createRevelationChapter(22, "The river of life flows, final invitations are given, and Revelation closes with Jesus' promise to come quickly.", [
+    ["river", "Revelation 22:1", "a pure river of water of life", "What flows from the throne of God and of the Lamb.", "easy"],
+    ["tree", "Revelation 22:2", "the tree of life", "What stands by the river on either side.", "easy"],
+    ["curse", "Revelation 22:3", "there shall be no more curse", "What will be no more in the final city.", "easy"],
+    ["bright", "Revelation 22:16", "the bright and morning star", "The adjective paired with morning star.", "medium"],
+    ["come", "Revelation 22:20", "Surely I come quickly", "What Jesus says He does quickly.", "easy"],
+  ]),
+];
+
 export const SCRAMBLED_BOOKS: ScrambledBookPack[] = [
   {
     slug: "genesis",
@@ -9458,6 +9994,96 @@ export const SCRAMBLED_BOOKS: ScrambledBookPack[] = [
       "Philemon is short, personal, and deeply moving. This Scrambled pack keeps the big words about love, welcome, debt, forgiveness, and reconciliation close to your memory as you work through the letter.",
     accentClassName: "border-[#d9cee8] bg-[#f2ebfb]",
     chapters: PHILEMON_CHAPTERS,
+  },
+  {
+    slug: "hebrews",
+    name: "Hebrews",
+    shortLabel: "A deep call to hold fast to Christ, the better priest, better sacrifice, better covenant, and sure hope of faith.",
+    shortDescription: "Play through all 13 Hebrews chapters with Scripture words tied to Jesus, rest, priesthood, covenant, sacrifice, faith, and endurance.",
+    louisIntro:
+      "Hebrews is rich, weighty, and full of steadying truth about Jesus. These Scrambled packs keep the big words about priesthood, covenant, sacrifice, faith, endurance, and the better hope close to your memory chapter by chapter.",
+    accentClassName: "border-[#d8dfe8] bg-[#eef3f8]",
+    chapters: HEBREWS_CHAPTERS,
+  },
+  {
+    slug: "james",
+    name: "James",
+    shortLabel: "A practical call to steady faith, wise speech, humble obedience, patient endurance, and prayer-filled action.",
+    shortDescription: "Play through all 5 James chapters with Scripture words tied to trials, wisdom, works, the tongue, humility, patience, and prayer.",
+    louisIntro:
+      "James is direct, practical, and strong in all the right ways. These Scrambled packs keep the big words about wisdom, obedience, speech, humility, patience, and prayer close to your memory chapter by chapter.",
+    accentClassName: "border-[#dce6c8] bg-[#f1f8e6]",
+    chapters: JAMES_CHAPTERS,
+  },
+  {
+    slug: "1peter",
+    name: "1 Peter",
+    shortLabel: "Living hope, holy conduct, suffering with purpose, humble strength, and standing firm in the true grace of God.",
+    shortDescription: "Play through all 5 1 Peter chapters with Scripture words tied to hope, holiness, priesthood, suffering, humility, and grace.",
+    louisIntro:
+      "1 Peter is steady, resilient, and full of hope under pressure. These Scrambled packs keep the big words about holiness, suffering, witness, humility, and grace close to your memory chapter by chapter.",
+    accentClassName: "border-[#d8e8d4] bg-[#eef8eb]",
+    chapters: FIRST_PETER_CHAPTERS,
+  },
+  {
+    slug: "2peter",
+    name: "2 Peter",
+    shortLabel: "Growth in grace, firm truth, warnings about false teachers, and holy expectation for the Lord's return.",
+    shortDescription: "Play through all 3 2 Peter chapters with Scripture words tied to godliness, knowledge, prophecy, false teaching, patience, and growth.",
+    louisIntro:
+      "2 Peter is sharp, urgent, and deeply steadying. These Scrambled packs keep the big words about growth, truth, false teaching, judgment, patience, and holy living close to your memory chapter by chapter.",
+    accentClassName: "border-[#dbe3ef] bg-[#eef4fb]",
+    chapters: SECOND_PETER_CHAPTERS,
+  },
+  {
+    slug: "1john",
+    name: "1 John",
+    shortLabel: "Life, light, love, truth, confidence, and assurance for people who want to know they truly belong to God.",
+    shortDescription: "Play through all 5 1 John chapters with Scripture words tied to light, confession, obedience, love, truth, victory, and eternal life.",
+    louisIntro:
+      "1 John is clear, searching, and deeply reassuring. These Scrambled packs keep the big words about light, truth, obedience, love, discernment, and eternal life close to your memory chapter by chapter.",
+    accentClassName: "border-[#f0dfc8] bg-[#fff6ea]",
+    chapters: FIRST_JOHN_CHAPTERS,
+  },
+  {
+    slug: "2john",
+    name: "2 John",
+    shortLabel: "A short but direct call to truth, love, obedience, and watchfulness against deceivers.",
+    shortDescription: "Play through 2 John with Scripture words tied to truth, love, the commandment, discernment, and guarding the church.",
+    louisIntro:
+      "2 John is short, but it is sharp in the best way. This Scrambled pack keeps the big words about truth, love, obedience, discernment, and guarding the church close to your memory as you work through the letter.",
+    accentClassName: "border-[#dae8d2] bg-[#eff8ea]",
+    chapters: SECOND_JOHN_CHAPTERS,
+  },
+  {
+    slug: "3john",
+    name: "3 John",
+    shortLabel: "A personal letter about truth, hospitality, faithful support, and the contrast between pride and godly example.",
+    shortDescription: "Play through 3 John with Scripture words tied to truth, faithful hospitality, brotherly support, and godly example.",
+    louisIntro:
+      "3 John is personal, practical, and full of quiet leadership lessons. This Scrambled pack keeps the big words about truth, hospitality, faithful service, pride, and godly example close to your memory as you work through the letter.",
+    accentClassName: "border-[#e8d8c8] bg-[#fbf3ea]",
+    chapters: THIRD_JOHN_CHAPTERS,
+  },
+  {
+    slug: "jude",
+    name: "Jude",
+    shortLabel: "A short, urgent warning to contend for the faith, reject corruption, and stay in God's love while waiting for mercy.",
+    shortDescription: "Play through Jude with Scripture words tied to faith, warning, mercy, judgment, and God's power to keep His people.",
+    louisIntro:
+      "Jude is short, intense, and really important for discernment. This Scrambled pack keeps the big words about contending for the faith, mercy, judgment, false teachers, and God's keeping power close to your memory as you work through the letter.",
+    accentClassName: "border-[#d8dfc3] bg-[#f0f6e4]",
+    chapters: JUDE_CHAPTERS,
+  },
+  {
+    slug: "revelation",
+    name: "Revelation",
+    shortLabel: "Visions, worship, judgment, victory, and final hope as Jesus reigns and makes all things new.",
+    shortDescription: "Play through all 22 Revelation chapters with Scripture words tied to churches, seals, trumpets, beasts, Babylon, the Lamb, and the new creation.",
+    louisIntro:
+      "Revelation is vivid, worship-filled, and full of warning and hope. These Scrambled packs keep the big words about the Lamb, the throne, judgment, witness, endurance, Babylon, victory, and the new creation close to your memory chapter by chapter.",
+    accentClassName: "border-[#d7d2ef] bg-[#f1effd]",
+    chapters: REVELATION_CHAPTERS,
   },
 ];
 
