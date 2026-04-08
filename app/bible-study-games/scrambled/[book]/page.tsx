@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import ScrambledUpgradeGate from "@/components/ScrambledUpgradeGate";
 import ScrambledBookClient from "@/components/ScrambledBookClient";
 import { getScrambledBook } from "@/lib/scrambledGameData";
 
@@ -10,5 +11,9 @@ export default async function ScrambledBookPage({ params }: { params: Promise<{ 
     notFound();
   }
 
-  return <ScrambledBookClient book={bookPack} />;
+  return (
+    <ScrambledUpgradeGate bookSlug={bookPack.slug}>
+      <ScrambledBookClient book={bookPack} />
+    </ScrambledUpgradeGate>
+  );
 }

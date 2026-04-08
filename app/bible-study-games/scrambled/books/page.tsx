@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import {
   BIBLE_GAME_BOOKS,
   BIBLE_GAME_ITEMS_PER_PAGE,
+  FREE_SCRAMBLED_BOOK_KEYS,
   SCRAMBLED_LIVE_BOOK_KEYS,
 } from "@/lib/bibleStudyGameCatalog";
 import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
@@ -15,6 +17,8 @@ import { supabase } from "@/lib/supabaseClient";
 export default function ScrambledBooksPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [page, setPage] = useState(0);
+  const [isPaid, setIsPaid] = useState<boolean | null>(null);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
 
@@ -30,7 +34,7 @@ export default function ScrambledBooksPage() {
   const hasNextPage = startIndex + BIBLE_GAME_ITEMS_PER_PAGE < filteredBooks.length;
 
   useEffect(() => {
-    void supabase.auth.getUser().then(({ data }) => {
+    void supabase.auth.getUser().then(async ({ data }) => {
       const user = data.user;
       setUserId(user?.id ?? null);
       const meta: any = user?.user_metadata || {};
@@ -40,6 +44,19 @@ export default function ScrambledBooksPage() {
           (user?.email ? user.email.split("@")[0] : null) ||
           null
       );
+
+      if (!user) {
+        setIsPaid(false);
+        return;
+      }
+
+      const { data: profileStats } = await supabase
+        .from("profile_stats")
+        .select("is_paid")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      setIsPaid(profileStats?.is_paid === true);
     });
   }, []);
 
@@ -68,6 +85,7 @@ export default function ScrambledBooksPage() {
               <p className="mb-2">
                 Pick a book of the Bible, and I&apos;ll give you Scripture words to unscramble from it.
               </p>
+              <p>Free users can play the first four books now, and the locked ones stay reserved for Pro.</p>
             </div>
           </div>
 
@@ -88,8 +106,25 @@ export default function ScrambledBooksPage() {
             <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-2">
               {visibleBooks.map((book) => {
                 const isLive = SCRAMBLED_LIVE_BOOK_KEYS.has(book.key);
+                const isLocked = isPaid === false && !FREE_SCRAMBLED_BOOK_KEYS.has(book.key);
 
-                if (isLive) {
+                const content = (
+                  <>
+                    <p className="font-semibold">{book.title}</p>
+                    <p className="mt-1 text-[11px]">
+                      {isLive ? "Click to play this book." : "Coming soon."}
+                    </p>
+                    {isLocked ? (
+                      <div className="absolute inset-0 flex items-end justify-center rounded-xl bg-black/45 pb-3">
+                        <span className="rounded-full bg-black/70 px-3 py-1 text-[11px] font-semibold text-white">
+                          Pro Users Only
+                        </span>
+                      </div>
+                    ) : null}
+                  </>
+                );
+
+                if (isLive && !isLocked) {
                   return (
                     <Link
                       key={book.key}
@@ -104,21 +139,32 @@ export default function ScrambledBooksPage() {
                           dedupeKey: `scrambled-book-opened:${book.key}`,
                         }).catch((error) => console.error("[NAV] Failed to track Scrambled book click:", error));
                       }}
-                      className="rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm shadow-sm transition hover:scale-[1.01] hover:shadow-md"
+                      className="relative rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm shadow-sm transition hover:scale-[1.01] hover:shadow-md"
                     >
-                      <p className="font-semibold">{book.title}</p>
-                      <p className="mt-1 text-[11px]">Click to play this book.</p>
+                      {content}
                     </Link>
+                  );
+                }
+
+                if (isLocked) {
+                  return (
+                    <button
+                      key={book.key}
+                      type="button"
+                      onClick={() => setShowUpgradeModal(true)}
+                      className="relative rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm shadow-sm transition"
+                    >
+                      {content}
+                    </button>
                   );
                 }
 
                 return (
                   <div
                     key={book.key}
-                    className="rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm text-gray-500 shadow-sm"
+                    className="relative rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm text-gray-500 shadow-sm"
                   >
-                    <p className="font-semibold">{book.title}</p>
-                    <p className="mt-1 text-[11px]">Coming soon.</p>
+                    {content}
                   </div>
                 );
               })}
@@ -150,6 +196,11 @@ export default function ScrambledBooksPage() {
           </div>
         </div>
       </div>
+
+      <UpgradeRequiredModal
+        isOpen={showUpgradeModal}
+        onClose={() => setShowUpgradeModal(false)}
+      />
     </div>
   );
 }

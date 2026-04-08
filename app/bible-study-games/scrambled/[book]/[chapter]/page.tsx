@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import ScrambledUpgradeGate from "@/components/ScrambledUpgradeGate";
 import ScrambledGamePlayer from "@/components/ScrambledGamePlayer";
 import { getScrambledBook, getScrambledChapter } from "@/lib/scrambledGameData";
 
@@ -12,5 +13,13 @@ export default async function ScrambledChapterPage({ params }: { params: Promise
     notFound();
   }
 
-  return <ScrambledGamePlayer bookName={bookPack.name} bookSlug={bookPack.slug} chapter={chapterPack} />;
+  return (
+    <ScrambledUpgradeGate bookSlug={bookPack.slug}>
+      <ScrambledGamePlayer
+        bookName={bookPack.name}
+        bookSlug={bookPack.slug}
+        chapter={chapterPack}
+      />
+    </ScrambledUpgradeGate>
+  );
 }

@@ -1,17 +1,59 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
-import { BIBLE_GAME_ITEMS_PER_PAGE, BIBLE_GAME_PEOPLE } from "@/lib/bibleStudyGameCatalog";
+import {
+  BIBLE_GAME_ITEMS_PER_PAGE,
+  FREE_SCRAMBLED_PERSON_KEYS,
+  SCRAMBLED_GAME_PEOPLE,
+} from "@/lib/bibleStudyGameCatalog";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function ScrambledPeoplePage() {
+  const [searchQuery, setSearchQuery] = useState("");
   const [page, setPage] = useState(0);
+  const [isPaid, setIsPaid] = useState<boolean | null>(null);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+
+  const filteredPeople = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return SCRAMBLED_GAME_PEOPLE;
+    return SCRAMBLED_GAME_PEOPLE.filter((person) => person.title.toLowerCase().includes(query));
+  }, [searchQuery]);
 
   const startIndex = page * BIBLE_GAME_ITEMS_PER_PAGE;
-  const visiblePeople = BIBLE_GAME_PEOPLE.slice(startIndex, startIndex + BIBLE_GAME_ITEMS_PER_PAGE);
+  const visiblePeople = filteredPeople.slice(startIndex, startIndex + BIBLE_GAME_ITEMS_PER_PAGE);
   const hasPrevPage = page > 0;
-  const hasNextPage = startIndex + BIBLE_GAME_ITEMS_PER_PAGE < BIBLE_GAME_PEOPLE.length;
+  const hasNextPage = startIndex + BIBLE_GAME_ITEMS_PER_PAGE < filteredPeople.length;
+
+  useEffect(() => {
+    setPage(0);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    async function loadAccess() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        setIsPaid(false);
+        return;
+      }
+
+      const { data: profileStats } = await supabase
+        .from("profile_stats")
+        .select("is_paid")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      setIsPaid(profileStats?.is_paid === true);
+    }
+
+    void loadAccess();
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -25,23 +67,65 @@ export default function ScrambledPeoplePage() {
             <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800 w-full">
               <div className="absolute -left-2 top-5 h-3 w-3 rotate-45 border-b border-l border-gray-200 bg-white" />
               <p className="mb-2">
-                These people packs are the next natural step for Scrambled.
+                Pick a person of the Bible, and I&apos;ll give you Scripture words to unscramble from their story.
               </p>
-              <p>The layout is here already, and the first live Scrambled words are still under Genesis while we build these out.</p>
+              <p>Free users can play God, Jesus, Moses, and Abraham now, and the rest stay reserved for Pro.</p>
             </div>
+          </div>
+
+          <div className="mb-4">
+            <input
+              type="text"
+              placeholder="Search people..."
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
           </div>
 
           <div className="space-y-4">
             <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-2">
-              {visiblePeople.map((person) => (
-                <div
-                  key={person.key}
-                  className="rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm text-gray-500 shadow-sm"
-                >
-                  <p className="font-semibold">{person.title}</p>
-                  <p className="mt-1 text-[11px]">Coming soon.</p>
-                </div>
-              ))}
+              {visiblePeople.map((person) => {
+                const slug = person.scrambledHref.split("/").pop() ?? "";
+                const isLocked = isPaid === false && !FREE_SCRAMBLED_PERSON_KEYS.has(slug);
+
+                const content = (
+                  <>
+                    <p className="font-semibold">{person.title}</p>
+                    <p className="mt-1 text-[11px]">Click to play this person.</p>
+                    {isLocked ? (
+                      <div className="absolute inset-0 flex items-end justify-center rounded-xl bg-black/45 pb-3">
+                        <span className="rounded-full bg-black/70 px-3 py-1 text-[11px] font-semibold text-white">
+                          Pro Users Only
+                        </span>
+                      </div>
+                    ) : null}
+                  </>
+                );
+
+                if (isLocked) {
+                  return (
+                    <button
+                      key={person.key}
+                      type="button"
+                      onClick={() => setShowUpgradeModal(true)}
+                      className="relative rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm shadow-sm transition"
+                    >
+                      {content}
+                    </button>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={person.key}
+                    href={person.scrambledHref}
+                    className="relative rounded-xl border border-gray-300 bg-gray-100 px-3 py-3 text-left text-sm shadow-sm transition hover:scale-[1.01] hover:shadow-md"
+                  >
+                    {content}
+                  </Link>
+                );
+              })}
             </div>
 
             <div className="flex items-center justify-between pt-2 text-xs sm:text-sm">
@@ -70,6 +154,11 @@ export default function ScrambledPeoplePage() {
           </div>
         </div>
       </div>
+
+      <UpgradeRequiredModal
+        isOpen={showUpgradeModal}
+        onClose={() => setShowUpgradeModal(false)}
+      />
     </div>
   );
 }

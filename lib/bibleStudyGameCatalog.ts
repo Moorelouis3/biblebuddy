@@ -11,6 +11,12 @@ export interface BibleGamePerson {
   scrambledHref?: string;
 }
 
+export interface ScrambledGamePerson {
+  key: string;
+  title: string;
+  scrambledHref: string;
+}
+
 export const BIBLE_GAME_BOOKS: BibleGameBook[] = [
   { key: "genesis", title: "Genesis", triviaHref: "/bible-trivia/genesis" },
   { key: "exodus", title: "Exodus", triviaHref: "/bible-trivia/exodus" },
@@ -87,7 +93,45 @@ export const BIBLE_GAME_PEOPLE: BibleGamePerson[] = [
   { key: "abraham", title: "Abraham", triviaHref: "/bible-trivia/abraham" },
 ];
 
+export const SCRAMBLED_GAME_PEOPLE: ScrambledGamePerson[] = [
+  { key: "god", title: "God", scrambledHref: "/bible-study-games/scrambled/person-god" },
+  { key: "jesus", title: "Jesus", scrambledHref: "/bible-study-games/scrambled/person-jesus" },
+  { key: "moses", title: "Moses", scrambledHref: "/bible-study-games/scrambled/person-moses" },
+  { key: "abraham", title: "Abraham", scrambledHref: "/bible-study-games/scrambled/person-abraham" },
+  { key: "esther", title: "Esther", scrambledHref: "/bible-study-games/scrambled/person-esther" },
+  { key: "paul", title: "Paul", scrambledHref: "/bible-study-games/scrambled/person-paul" },
+  { key: "peter", title: "Peter", scrambledHref: "/bible-study-games/scrambled/person-peter" },
+  { key: "job", title: "Job", scrambledHref: "/bible-study-games/scrambled/person-job" },
+  { key: "matthew", title: "Matthew", scrambledHref: "/bible-study-games/scrambled/person-matthew" },
+  { key: "luke", title: "Luke", scrambledHref: "/bible-study-games/scrambled/person-luke" },
+  { key: "jacob", title: "Jacob", scrambledHref: "/bible-study-games/scrambled/person-jacob" },
+  { key: "joseph", title: "Joseph", scrambledHref: "/bible-study-games/scrambled/person-joseph" },
+  { key: "aaron", title: "Aaron", scrambledHref: "/bible-study-games/scrambled/person-aaron" },
+  { key: "david", title: "David", scrambledHref: "/bible-study-games/scrambled/person-david" },
+  { key: "noah", title: "Noah", scrambledHref: "/bible-study-games/scrambled/person-noah" },
+  { key: "daniel", title: "Daniel", scrambledHref: "/bible-study-games/scrambled/person-daniel" },
+  { key: "samuel", title: "Samuel", scrambledHref: "/bible-study-games/scrambled/person-samuel" },
+  { key: "isaac", title: "Isaac", scrambledHref: "/bible-study-games/scrambled/person-isaac" },
+  { key: "john-the-baptist", title: "John the Baptist", scrambledHref: "/bible-study-games/scrambled/person-john-the-baptist" },
+  { key: "mary", title: "Mary", scrambledHref: "/bible-study-games/scrambled/person-mary" },
+  { key: "ruth", title: "Ruth", scrambledHref: "/bible-study-games/scrambled/person-ruth" },
+  { key: "solomon", title: "Solomon", scrambledHref: "/bible-study-games/scrambled/person-solomon" },
+  { key: "elijah", title: "Elijah", scrambledHref: "/bible-study-games/scrambled/person-elijah" },
+  { key: "elisha", title: "Elisha", scrambledHref: "/bible-study-games/scrambled/person-elisha" },
+  { key: "joshua", title: "Joshua", scrambledHref: "/bible-study-games/scrambled/person-joshua" },
+  { key: "mary-magdalene", title: "Mary Magdalene", scrambledHref: "/bible-study-games/scrambled/person-mary-magdalene" },
+  { key: "timothy", title: "Timothy", scrambledHref: "/bible-study-games/scrambled/person-timothy" },
+  { key: "jonah", title: "Jonah", scrambledHref: "/bible-study-games/scrambled/person-jonah" },
+];
+
 export const FREE_TRIVIA_BOOK_KEYS = new Set(["genesis", "exodus", "leviticus", "numbers"]);
 export const FREE_TRIVIA_PERSON_KEYS = new Set(["god", "jesus"]);
+export const FREE_SCRAMBLED_BOOK_KEYS = new Set(["genesis", "exodus", "leviticus", "numbers"]);
+export const FREE_SCRAMBLED_PERSON_KEYS = new Set([
+  "person-god",
+  "person-jesus",
+  "person-moses",
+  "person-abraham",
+]);
 export const SCRAMBLED_LIVE_BOOK_KEYS = new Set(["genesis", "exodus", "leviticus", "numbers", "deuteronomy", "joshua", "judges", "ruth", "1samuel", "2samuel", "1kings", "2kings", "1chronicles", "2chronicles", "ezra", "nehemiah", "esther", "job", "psalms", "proverbs", "ecclesiastes", "songofsongs", "isaiah", "jeremiah", "lamentations", "ezekiel", "daniel", "hosea", "joel", "amos", "obadiah", "jonah", "micah", "nahum", "habakkuk", "zephaniah", "haggai", "zechariah", "malachi", "matthew", "mark", "luke", "john", "acts", "romans", "1corinthians", "2corinthians", "galatians", "ephesians", "philippians", "colossians", "1thessalonians", "2thessalonians", "1timothy", "2timothy", "titus", "philemon", "hebrews", "james", "1peter", "2peter", "1john", "2john", "3john", "jude", "revelation"]);
 export const BIBLE_GAME_ITEMS_PER_PAGE = 12;

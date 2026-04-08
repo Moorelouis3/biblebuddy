@@ -2629,6 +2629,21 @@ function createRevelationChapter(
   };
 }
 
+function createCharacterChapter(
+  slug: string,
+  label: string,
+  chapter: number,
+  description: string,
+  questions: RawQuestion[],
+): ScrambledChapterPack {
+  return {
+    chapter,
+    title: `${label} ${chapter}`,
+    description,
+    questions: createQuestions(slug, chapter, questions),
+  };
+}
+
 const GENESIS_CHAPTERS: ScrambledChapterPack[] = [
   createGenesisChapter(1, "Creation unfolds in order as God speaks light, sky, land, life, and humanity into place.", [
     ["light", "Genesis 1:3", "Let there be light", "The first thing God speaks into existence.", "easy"],
@@ -9434,6 +9449,426 @@ const REVELATION_CHAPTERS: ScrambledChapterPack[] = [
   ]),
 ];
 
+const GOD_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-god", "God", 1, "This pack centers on God's holiness, power, mercy, kingship, covenant faithfulness, and His nearness to His people throughout Scripture.", [
+    ["creator", "Genesis 1:1", "In the beginning God created", "A title that fits God's role at the very start of Scripture.", "easy"],
+    ["holy", "Isaiah 6:3", "Holy, holy, holy, is the LORD of hosts", "What the seraphim repeat about God.", "easy"],
+    ["shepherd", "Psalm 23:1", "The LORD is my shepherd", "The caring role God is compared to in Psalm 23.", "easy"],
+    ["refuge", "Psalm 46:1", "God is our refuge and strength", "What God is called in times of trouble.", "easy"],
+    ["jealous", "Exodus 34:14", "whose name is Jealous", "How God describes His covenant zeal.", "medium"],
+    ["merciful", "Exodus 34:6", "The LORD God, merciful and gracious", "One word God uses to describe His character to Moses.", "medium"],
+    ["king", "Psalm 47:7", "For God is the King of all the earth", "God's royal title in this psalm.", "easy"],
+    ["everlasting", "Isaiah 40:28", "the everlasting God, the LORD", "A word that points to God's unending nature.", "medium"],
+    ["light", "1 John 1:5", "God is light", "What God is plainly called in 1 John.", "easy"],
+    ["love", "1 John 4:8", "God is love", "What God is plainly called in 1 John 4.", "easy"],
+  ]),
+];
+
+const JESUS_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-jesus", "Jesus", 1, "This pack follows Jesus through His identity, miracles, compassion, teaching, death, resurrection, and promised return.", [
+    ["messiah", "John 1:41", "We have found the Messias", "Another title for Jesus meaning Christ.", "medium"],
+    ["savior", "Luke 2:11", "unto you is born ... a Saviour", "What the angel calls Jesus at His birth.", "easy"],
+    ["lamb", "John 1:29", "Behold the Lamb of God", "What John the Baptist calls Jesus.", "easy"],
+    ["teacher", "John 13:13", "Ye call me Master and Lord", "One role Jesus is given by His disciples.", "easy"],
+    ["bread", "John 6:35", "I am the bread of life", "What Jesus says He is in John 6.", "easy"],
+    ["shepherd", "John 10:11", "I am the good shepherd", "What Jesus says He is in John 10.", "easy"],
+    ["cross", "Philippians 2:8", "even the death of the cross", "What Jesus endured in obedience.", "easy"],
+    ["risen", "Matthew 28:6", "He is not here: for he is risen", "What the angel says about Jesus after the tomb is found empty.", "easy"],
+    ["lord", "Romans 10:9", "confess with thy mouth the Lord Jesus", "The title believers confess Jesus as.", "easy"],
+    ["coming", "Revelation 22:20", "Surely I come quickly", "What Jesus says He is doing quickly.", "medium"],
+  ]),
+];
+
+const MOSES_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-moses", "Moses", 1, "This pack tracks Moses from the river and the burning bush through Pharaoh, the wilderness, the law, and final blessing.", [
+    ["basket", "Exodus 2:3", "she took for him an ark of bulrushes", "A modern word for what Moses was placed in on the river.", "medium"],
+    ["pharaoh", "Exodus 5:1", "Let my people go", "The ruler Moses repeatedly confronts.", "easy"],
+    ["bush", "Exodus 3:2", "the bush burned with fire", "What Moses saw burning without being consumed.", "easy"],
+    ["staff", "Exodus 4:2", "And he said, A rod", "What God used in Moses' hand as a sign.", "medium"],
+    ["passover", "Exodus 12:11", "it is the LORD'S passover", "The feast tied to Israel's rescue from Egypt.", "medium"],
+    ["sea", "Exodus 14:21", "the waters were divided", "What God split for Israel through Moses.", "easy"],
+    ["sinai", "Exodus 19:20", "the LORD came down upon mount Sinai", "The mountain where Moses met God for the covenant.", "medium"],
+    ["tablets", "Exodus 31:18", "two tables of testimony", "A modern word for the stone writings Moses received.", "medium"],
+    ["meek", "Numbers 12:3", "the man Moses was very meek", "How Moses is described in Numbers 12.", "hard"],
+    ["blessing", "Deuteronomy 33:1", "This is the blessing, wherewith Moses", "What Moses gives Israel before his death.", "medium"],
+  ]),
+];
+
+const ABRAHAM_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-abraham", "Abraham", 1, "This pack follows Abraham through calling, covenant, promise, faith, intercession, sacrifice, and blessing.", [
+    ["called", "Genesis 12:1", "Get thee out of thy country", "What God did to Abraham at the start of his journey.", "easy"],
+    ["altar", "Genesis 12:7", "there builded he an altar", "What Abraham builds in worship.", "easy"],
+    ["covenant", "Genesis 15:18", "the LORD made a covenant with Abram", "What God made with Abram.", "medium"],
+    ["stars", "Genesis 15:5", "tell the stars, if thou be able to number them", "What God points to when promising descendants.", "easy"],
+    ["faith", "Genesis 15:6", "he believed in the LORD", "What Abraham shows in God's promise.", "easy"],
+    ["circumcision", "Genesis 17:10", "This is my covenant", "The covenant sign given to Abraham's house.", "hard"],
+    ["laughter", "Genesis 17:17", "Abraham fell upon his face, and laughed", "What Abraham does when hearing about Isaac's birth.", "medium"],
+    ["intercession", "Genesis 18:23", "Wilt thou also destroy the righteous with the wicked?", "A modern word for how Abraham pleads for Sodom.", "hard"],
+    ["isaac", "Genesis 22:2", "Take now thy son, thine only son Isaac", "The son Abraham is told to offer.", "easy"],
+    ["ram", "Genesis 22:13", "behold behind him a ram caught in a thicket", "What God provides in Isaac's place.", "easy"],
+  ]),
+];
+
+const ESTHER_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-esther", "Esther", 1, "This pack follows Esther through favor, courage, fasting, hidden identity, Haman's downfall, and the rescue of God's people.", [
+    ["queen", "Esther 2:17", "he set the royal crown upon her head", "The role Esther is given in Persia.", "easy"],
+    ["favor", "Esther 2:17", "the king loved Esther above all the women", "What Esther finds with the king.", "easy"],
+    ["mordecai", "Esther 2:7", "he brought up Hadassah, that is, Esther", "The relative who raised Esther.", "medium"],
+    ["fast", "Esther 4:16", "fast ye for me", "What Esther asks the Jews to do for her.", "easy"],
+    ["courage", "Esther 4:16", "if I perish, I perish", "The quality Esther shows before going to the king.", "medium"],
+    ["scepter", "Esther 5:2", "the king held out to Esther the golden sceptre", "What the king extends to Esther.", "medium"],
+    ["banquet", "Esther 5:4", "let the king and Haman come this day unto the banquet", "What Esther prepares before revealing Haman.", "medium"],
+    ["haman", "Esther 3:1", "the king promoted Haman", "The enemy who plotted against the Jews.", "easy"],
+    ["gallows", "Esther 7:10", "they hanged Haman on the gallows", "What Haman dies on.", "easy"],
+    ["purim", "Esther 9:26", "Wherefore they called these days Purim", "The feast established after the Jews' deliverance.", "hard"],
+  ]),
+];
+
+const PAUL_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-paul", "Paul", 1, "This pack follows Paul from persecution and conversion to preaching, suffering, letters, mission, and gospel endurance.", [
+    ["saul", "Acts 8:3", "As for Saul, he made havock of the church", "Paul's earlier name before his conversion.", "easy"],
+    ["damascus", "Acts 9:3", "as he journeyed, he came near Damascus", "The city near which Paul met Jesus.", "medium"],
+    ["light", "Acts 9:3", "there shined round about him a light from heaven", "What suddenly shines around Paul.", "easy"],
+    ["apostle", "Romans 1:1", "called to be an apostle", "The office Paul says he was called to.", "medium"],
+    ["grace", "1 Corinthians 15:10", "by the grace of God I am what I am", "What Paul says made him what he is.", "easy"],
+    ["thorn", "2 Corinthians 12:7", "there was given to me a thorn in the flesh", "What Paul says was given to keep him humble.", "medium"],
+    ["chains", "Ephesians 6:20", "for which I am an ambassador in bonds", "A word that fits Paul's imprisonments for the gospel.", "medium"],
+    ["mission", "Acts 13:2", "for the work whereunto I have called them", "A modern word for the work Paul is sent to do.", "hard"],
+    ["letters", "2 Peter 3:15", "our beloved brother Paul also", "What Paul is known for writing to the churches.", "easy"],
+    ["race", "2 Timothy 4:7", "I have finished my course", "A running image Paul uses for his finished life.", "easy"],
+  ]),
+];
+
+const PETER_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-peter", "Peter", 1, "This pack follows Peter from fishing and discipleship to confession, failure, restoration, preaching, and shepherding.", [
+    ["fisherman", "Matthew 4:18", "casting a net into the sea: for they were fishers", "Peter's trade before following Jesus.", "medium"],
+    ["rock", "Matthew 16:18", "thou art Peter", "The image tied to Peter's name.", "easy"],
+    ["confession", "Matthew 16:16", "Thou art the Christ, the Son of the living God", "A modern word for Peter's bold answer about Jesus.", "hard"],
+    ["water", "Matthew 14:29", "Peter was come down out of the ship, he walked on the water", "What Peter briefly walks on.", "easy"],
+    ["denied", "Matthew 26:75", "Peter remembered the word of Jesus", "What Peter did three times before the rooster crowed.", "medium"],
+    ["restored", "John 21:17", "Feed my sheep", "A word that describes what Jesus does for Peter after his failure.", "hard"],
+    ["pentecost", "Acts 2:14", "Peter, standing up with the eleven", "The feast day when Peter preached to the crowd in Jerusalem.", "hard"],
+    ["boldness", "Acts 4:13", "they saw the boldness of Peter and John", "What the rulers noticed in Peter.", "medium"],
+    ["vision", "Acts 10:11", "and saw heaven opened", "What Peter received before going to Cornelius.", "medium"],
+    ["shepherd", "1 Peter 5:2", "Feed the flock of God", "The pastoral role Peter tells elders to live out.", "medium"],
+  ]),
+];
+
+const JOB_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-job", "Job", 1, "This pack follows Job through suffering, endurance, lament, wisdom, God's greatness, and final restoration.", [
+    ["uz", "Job 1:1", "There was a man in the land of Uz", "The land where Job lived.", "medium"],
+    ["blameless", "Job 1:1", "that man was perfect and upright", "How Job's character is described.", "medium"],
+    ["satan", "Job 1:6", "Satan came also among them", "The accuser who appears in Job's testing.", "easy"],
+    ["boils", "Job 2:7", "smote Job with sore boils", "What covered Job's body.", "easy"],
+    ["ashes", "Job 2:8", "he sat down among the ashes", "Where Job sat in his misery.", "easy"],
+    ["friends", "Job 2:11", "Job's three friends heard", "Who came to comfort Job.", "easy"],
+    ["lament", "Job 3:1", "Job opened his mouth, and cursed his day", "A word for Job's deep cry over his suffering.", "hard"],
+    ["redeemer", "Job 19:25", "I know that my redeemer liveth", "The hope-filled word in Job's confession.", "hard"],
+    ["whirlwind", "Job 38:1", "the LORD answered Job out of the whirlwind", "What God spoke from.", "hard"],
+    ["restoration", "Job 42:10", "the LORD turned the captivity of Job", "A modern word for what God brought to Job at the end.", "hard"],
+  ]),
+];
+
+const MATTHEW_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-matthew", "Matthew", 1, "This pack follows Matthew from tax collecting to discipleship, gospel writing, and learning to follow Jesus.", [
+    ["publican", "Matthew 10:3", "Matthew the publican", "Matthew's former profession title.", "hard"],
+    ["receipt", "Matthew 9:9", "sitting at the receipt of custom", "Where Jesus found Matthew sitting.", "medium"],
+    ["followed", "Matthew 9:9", "he arose, and followed him", "What Matthew did when Jesus called him.", "easy"],
+    ["feast", "Luke 5:29", "Levi made him a great feast", "What Matthew prepared for Jesus.", "easy"],
+    ["sinners", "Matthew 9:10", "many publicans and sinners came", "The group Matthew hosted with Jesus.", "easy"],
+    ["disciple", "Matthew 10:1", "his twelve disciples", "What Matthew became in Jesus' inner circle.", "easy"],
+    ["gospel", "Matthew 1:1", "The book of the generation of Jesus Christ", "The kind of book Matthew wrote.", "easy"],
+    ["genealogy", "Matthew 1:1", "The book of the generation", "A modern word for the family record that opens Matthew.", "hard"],
+    ["mercy", "Matthew 9:13", "I will have mercy, and not sacrifice", "What Jesus emphasized when speaking around Matthew's calling.", "medium"],
+    ["kingdom", "Matthew 4:17", "the kingdom of heaven is at hand", "The main theme Matthew highlights in Jesus' message.", "easy"],
+  ]),
+];
+
+const LUKE_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-luke", "Luke", 1, "This pack follows Luke as careful historian, companion of Paul, and writer focused on Jesus and the early church.", [
+    ["physician", "Colossians 4:14", "Luke, the beloved physician", "Luke's profession.", "medium"],
+    ["beloved", "Colossians 4:14", "Luke, the beloved physician", "How Paul describes Luke.", "easy"],
+    ["order", "Luke 1:3", "to write unto thee in order", "How Luke says he planned his account.", "medium"],
+    ["certainty", "Luke 1:4", "that thou mightest know the certainty", "What Luke wanted Theophilus to know.", "medium"],
+    ["theophilus", "Luke 1:3", "most excellent Theophilus", "The man Luke addressed.", "hard"],
+    ["witnesses", "Luke 1:2", "eyewitnesses, and ministers of the word", "Who Luke says handed down the account.", "easy"],
+    ["companion", "2 Timothy 4:11", "Only Luke is with me", "A word for Luke's role beside Paul.", "medium"],
+    ["acts", "Acts 1:1", "The former treatise have I made", "The second book traditionally written by Luke.", "easy"],
+    ["careful", "Luke 1:3", "having had perfect understanding of all things from the very first", "A word that fits Luke's approach.", "hard"],
+    ["history", "Acts 1:1", "The former treatise have I made", "A word that fits Luke's record of Jesus and the church.", "easy"],
+  ]),
+];
+
+const JACOB_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-jacob", "Jacob", 1, "This pack follows Jacob through birthright, blessing, Bethel, wrestling, family struggle, and God's covenant faithfulness.", [
+    ["heel", "Genesis 25:26", "his hand took hold on Esau's heel", "What Jacob grabbed at birth.", "easy"],
+    ["birthright", "Genesis 25:33", "he sold his birthright unto Jacob", "What Esau sold to Jacob.", "medium"],
+    ["blessing", "Genesis 27:35", "thy brother came with subtilty, and hath taken away thy blessing", "What Jacob received from Isaac.", "easy"],
+    ["ladder", "Genesis 28:12", "behold a ladder set up on the earth", "What Jacob saw in his dream.", "medium"],
+    ["bethel", "Genesis 28:19", "he called the name of that place Bethel", "The place Jacob named after the dream.", "hard"],
+    ["rahel", "Genesis 29:18", "Jacob loved Rachel", "The spelling used in the KJV for the woman Jacob loved.", "hard"],
+    ["wrestled", "Genesis 32:24", "there wrestled a man with him", "What Jacob did all night before meeting Esau.", "medium"],
+    ["israel", "Genesis 32:28", "thy name shall be called no more Jacob, but Israel", "The new name God gave Jacob.", "easy"],
+    ["esau", "Genesis 33:4", "Esau ran to meet him", "Jacob's brother.", "easy"],
+    ["twelve", "Genesis 35:22", "the sons of Jacob were twelve", "How many sons Jacob had.", "easy"],
+  ]),
+];
+
+const JOSEPH_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-joseph", "Joseph", 1, "This pack follows Joseph through dreams, betrayal, slavery, prison, rise to power, and reconciliation.", [
+    ["dreams", "Genesis 37:5", "Joseph dreamed a dream", "What first stirred his brothers' jealousy.", "easy"],
+    ["coat", "Genesis 37:3", "a coat of many colours", "What Jacob gave Joseph.", "easy"],
+    ["pit", "Genesis 37:24", "they took him, and cast him into a pit", "Where Joseph's brothers threw him.", "easy"],
+    ["egypt", "Genesis 37:36", "sold him into Egypt", "Where Joseph was taken.", "easy"],
+    ["potiphar", "Genesis 39:1", "Potiphar, an officer of Pharaoh", "The Egyptian Joseph served.", "medium"],
+    ["prison", "Genesis 39:20", "Joseph's master took him, and put him into the prison", "Where Joseph was sent after false accusation.", "easy"],
+    ["pharaoh", "Genesis 41:14", "they brought him hastily out of the dungeon", "The ruler who summoned Joseph.", "easy"],
+    ["famine", "Genesis 41:30", "there shall arise after them seven years of famine", "What Joseph interpreted was coming.", "medium"],
+    ["forgave", "Genesis 50:21", "I will nourish you, and your little ones", "A word that fits Joseph's response to his brothers.", "hard"],
+    ["goshen", "Genesis 47:6", "in the land of Goshen let them dwell", "Where Joseph settled his family.", "hard"],
+  ]),
+];
+
+const AARON_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-aaron", "Aaron", 1, "This pack follows Aaron through Moses' calling, priesthood, the calf, blessing, and leadership in Israel.", [
+    ["brother", "Exodus 4:14", "is not Aaron the Levite thy brother?", "Aaron's relationship to Moses.", "easy"],
+    ["spokesman", "Exodus 4:16", "he shall be thy spokesman unto the people", "Aaron's role for Moses before Pharaoh.", "hard"],
+    ["rod", "Exodus 7:10", "Aaron cast down his rod before Pharaoh", "What Aaron threw down before Pharaoh.", "easy"],
+    ["priest", "Exodus 28:1", "that he may minister unto me in the priest's office", "Aaron's office.", "easy"],
+    ["ephod", "Exodus 28:6", "they shall make the ephod", "One priestly garment Aaron wore.", "hard"],
+    ["calf", "Exodus 32:4", "he had made it a molten calf", "What Aaron made at Sinai.", "easy"],
+    ["censer", "Numbers 16:46", "put fire therein from off the altar", "What Aaron used to make atonement among the people.", "hard"],
+    ["budded", "Numbers 17:8", "Aaron's rod for the house of Levi was budded", "What Aaron's rod did as God's sign.", "medium"],
+    ["blessing", "Numbers 6:24", "The LORD bless thee, and keep thee", "What Aaron was given for the people.", "medium"],
+    ["mount", "Numbers 20:28", "Aaron died there in the top of the mount", "Where Aaron died with Moses nearby.", "easy"],
+  ]),
+];
+
+const DAVID_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-david", "David", 1, "This pack follows David through anointing, shepherding, Goliath, kingship, worship, repentance, and covenant promise.", [
+    ["shepherd", "1 Samuel 16:11", "behold, he keepeth the sheep", "David's early work.", "easy"],
+    ["anointed", "1 Samuel 16:13", "Samuel took the horn of oil, and anointed him", "What Samuel did to David.", "medium"],
+    ["harp", "1 Samuel 16:23", "David took an harp, and played", "What David played for Saul.", "easy"],
+    ["goliath", "1 Samuel 17:4", "there went out a champion", "The giant David faced.", "easy"],
+    ["stone", "1 Samuel 17:49", "David put his hand in his bag, and took thence a stone", "What David used against Goliath.", "easy"],
+    ["psalms", "2 Samuel 23:1", "the sweet psalmist of Israel", "What songs David is especially known for.", "medium"],
+    ["ark", "2 Samuel 6:14", "David danced before the LORD", "What sacred object David brought to Jerusalem.", "easy"],
+    ["covenant", "2 Samuel 7:16", "thy throne shall be established for ever", "What God made with David in 2 Samuel 7.", "medium"],
+    ["repentance", "Psalm 51:1", "Have mercy upon me, O God", "A word that fits David's response after his sin.", "hard"],
+    ["throne", "2 Samuel 5:3", "they anointed David king over Israel", "The royal seat tied to David's reign.", "easy"],
+  ]),
+];
+
+const NOAH_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-noah", "Noah", 1, "This pack follows Noah through corruption, the ark, the flood, covenant mercy, and a new beginning on earth.", [
+    ["ark", "Genesis 6:14", "Make thee an ark of gopher wood", "What God told Noah to build.", "easy"],
+    ["righteous", "Genesis 6:9", "Noah was a just man and perfect", "How Noah is described among his generation.", "medium"],
+    ["gopher", "Genesis 6:14", "Make thee an ark of gopher wood", "The wood named for the ark.", "hard"],
+    ["flood", "Genesis 7:17", "the flood was forty days upon the earth", "What covered the earth in Noah's day.", "easy"],
+    ["raven", "Genesis 8:7", "he sent forth a raven", "The first bird Noah sent from the ark.", "medium"],
+    ["dove", "Genesis 8:8", "Also he sent forth a dove from him", "The bird that returned with evidence of dry land.", "easy"],
+    ["olive", "Genesis 8:11", "an olive leaf pluckt off", "What the dove brought back.", "easy"],
+    ["altar", "Genesis 8:20", "Noah builded an altar unto the LORD", "What Noah built after leaving the ark.", "easy"],
+    ["rainbow", "Genesis 9:13", "I do set my bow in the cloud", "The covenant sign God gave after the flood.", "easy"],
+    ["covenant", "Genesis 9:11", "I will establish my covenant with you", "What God established with Noah and the earth.", "medium"],
+  ]),
+];
+
+const DANIEL_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-daniel", "Daniel", 1, "This pack follows Daniel through exile, wisdom, prayer, dreams, lions, kingdoms, and steady faithfulness.", [
+    ["exile", "Daniel 1:1", "Nebuchadnezzar king of Babylon came unto Jerusalem", "A word that fits Daniel's setting in Babylon.", "medium"],
+    ["babylon", "Daniel 1:1", "Nebuchadnezzar king of Babylon", "The empire Daniel lived under.", "easy"],
+    ["pulse", "Daniel 1:12", "let them give us pulse to eat", "The simple food Daniel requested.", "hard"],
+    ["wisdom", "Daniel 1:20", "ten times better than all the magicians", "What God gave Daniel and his friends.", "easy"],
+    ["dream", "Daniel 2:19", "Then was the secret revealed unto Daniel in a night vision", "What Daniel interpreted for the king.", "easy"],
+    ["image", "Daniel 2:31", "Thou, O king, sawest, and behold a great image", "What appeared in Nebuchadnezzar's dream.", "medium"],
+    ["prayer", "Daniel 6:10", "he kneeled upon his knees three times a day, and prayed", "What Daniel continued doing despite the decree.", "easy"],
+    ["lions", "Daniel 6:16", "cast him into the den of lions", "The animals Daniel was thrown among.", "easy"],
+    ["vision", "Daniel 7:1", "Daniel had a dream and visions of his head", "What Daniel received about future kingdoms.", "medium"],
+    ["faithful", "Daniel 6:4", "they could find none occasion nor fault", "A word that fits Daniel's character in service.", "medium"],
+  ]),
+];
+
+const SAMUEL_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-samuel", "Samuel", 1, "This pack follows Samuel through Hannah's prayer, childhood calling, judging Israel, anointing kings, and faithful leadership.", [
+    ["hannah", "1 Samuel 1:20", "she called his name Samuel", "Samuel's mother.", "easy"],
+    ["prayer", "1 Samuel 1:27", "For this child I prayed", "How Hannah received Samuel.", "easy"],
+    ["temple", "1 Samuel 3:3", "the lamp of God went out in the temple of the LORD", "Where Samuel served as a boy.", "easy"],
+    ["voice", "1 Samuel 3:4", "the LORD called Samuel", "What Samuel heard in the night.", "easy"],
+    ["here", "1 Samuel 3:4", "And he answered, Here am I", "What Samuel answered when called.", "easy"],
+    ["judge", "1 Samuel 7:15", "Samuel judged Israel all the days of his life", "Samuel's leadership role in Israel.", "medium"],
+    ["mizpeh", "1 Samuel 7:5", "Gather all Israel to Mizpeh", "The place Samuel called Israel for repentance.", "hard"],
+    ["anointed", "1 Samuel 10:1", "Samuel took a vial of oil, and poured it upon his head", "What Samuel did to Saul and later David.", "medium"],
+    ["saul", "1 Samuel 10:24", "God save the king", "The first king Samuel presented to Israel.", "easy"],
+    ["prophet", "1 Samuel 3:20", "Samuel was established to be a prophet of the LORD", "The office Samuel held before God.", "medium"],
+  ]),
+];
+
+const ISAAC_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-isaac", "Isaac", 1, "This pack follows Isaac through promised birth, sacrifice, wells, covenant blessing, and family conflict.", [
+    ["promise", "Genesis 17:19", "Sarah thy wife shall bear thee a son indeed", "What kind of son Isaac was.", "easy"],
+    ["laughter", "Genesis 21:6", "God hath made me to laugh", "The meaning tied to Isaac's name.", "medium"],
+    ["altar", "Genesis 22:9", "they came to the place", "Where Abraham laid Isaac during the test.", "easy"],
+    ["well", "Genesis 26:18", "Isaac digged again the wells of water", "What Isaac reopened in Gerar.", "easy"],
+    ["rebekah", "Genesis 24:67", "Isaac brought her into his mother Sarah's tent", "Isaac's wife.", "easy"],
+    ["twins", "Genesis 25:24", "there were twins in her womb", "What Rebekah carried for Isaac.", "medium"],
+    ["jacob", "Genesis 27:27", "See, the smell of my son", "The son Isaac blessed through deception.", "easy"],
+    ["esau", "Genesis 25:28", "Isaac loved Esau", "The son Isaac favored for his game.", "easy"],
+    ["moriah", "Genesis 22:2", "get thee into the land of Moriah", "The region tied to Isaac's near-sacrifice.", "hard"],
+    ["hundredfold", "Genesis 26:12", "received in the same year an hundredfold", "What Isaac reaped in the land.", "hard"],
+  ]),
+];
+
+const JOHN_THE_BAPTIST_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-john-the-baptist", "John the Baptist", 1, "This pack follows John the Baptist through wilderness preaching, baptism, repentance, witness, and preparing the way for Jesus.", [
+    ["wilderness", "Matthew 3:1", "John the Baptist, preaching in the wilderness", "Where John preached.", "easy"],
+    ["locusts", "Matthew 3:4", "his meat was locusts and wild honey", "One food John ate.", "easy"],
+    ["honey", "Matthew 3:4", "wild honey", "The sweet food named with locusts.", "easy"],
+    ["repent", "Matthew 3:2", "Repent ye", "John's main call to the people.", "easy"],
+    ["baptize", "Matthew 3:11", "I indeed baptize you with water", "What John did in the Jordan.", "medium"],
+    ["lamb", "John 1:29", "Behold the Lamb of God", "What John called Jesus.", "easy"],
+    ["forerunner", "Matthew 3:3", "Prepare ye the way of the Lord", "A modern word for John's role before Jesus.", "hard"],
+    ["voice", "John 1:23", "I am the voice of one crying in the wilderness", "What John called himself.", "medium"],
+    ["decrease", "John 3:30", "He must increase, but I must decrease", "What John said must happen to him.", "hard"],
+    ["herod", "Matthew 14:3", "Herod had laid hold on John", "The ruler who imprisoned John.", "easy"],
+  ]),
+];
+
+const MARY_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-mary", "Mary", 1, "This pack follows Mary through annunciation, faith, worship, motherhood, sorrow, and devotion to Jesus.", [
+    ["virgin", "Luke 1:27", "to a virgin espoused to a man", "How Mary is described when Gabriel comes.", "easy"],
+    ["gabriel", "Luke 1:26", "the angel Gabriel was sent from God", "The angel who spoke to Mary.", "medium"],
+    ["favored", "Luke 1:28", "thou that art highly favoured", "How Mary is described by the angel.", "medium"],
+    ["magnify", "Luke 1:46", "My soul doth magnify the Lord", "The opening word of Mary's song in the KJV.", "hard"],
+    ["bethlehem", "Luke 2:4", "unto the city of David, which is called Bethlehem", "The town where Mary gave birth to Jesus.", "easy"],
+    ["manger", "Luke 2:7", "laid him in a manger", "Where Mary placed baby Jesus.", "easy"],
+    ["pondered", "Luke 2:19", "Mary kept all these things, and pondered them", "What Mary did with the things she heard.", "medium"],
+    ["mother", "John 19:26", "Woman, behold thy son!", "Mary's relationship to Jesus.", "easy"],
+    ["wedding", "John 2:1", "there was a marriage in Cana of Galilee; and the mother of Jesus was there", "The event where Mary told Jesus they had no wine.", "easy"],
+    ["servant", "Luke 1:38", "Behold the handmaid of the Lord", "A word Mary used of herself before God.", "medium"],
+  ]),
+];
+
+const RUTH_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-ruth", "Ruth", 1, "This pack follows Ruth through loyalty, gleaning, redemption, marriage, and God's quiet providence.", [
+    ["moabitess", "Ruth 1:22", "Ruth the Moabitess", "Ruth's national identity in the KJV.", "hard"],
+    ["naomi", "Ruth 1:16", "thy people shall be my people", "The mother-in-law Ruth refused to leave.", "easy"],
+    ["glean", "Ruth 2:2", "Let me now go to the field, and glean ears of corn", "What Ruth asked to do in the fields.", "medium"],
+    ["boaz", "Ruth 2:1", "a mighty man of wealth, of the family of Elimelech", "The man who showed Ruth kindness.", "easy"],
+    ["kindness", "Ruth 2:20", "he hath not left off his kindness", "What Naomi says God showed through Boaz.", "easy"],
+    ["wings", "Ruth 2:12", "under whose wings thou art come to trust", "What Ruth came under in trusting the LORD.", "medium"],
+    ["threshingfloor", "Ruth 3:6", "she went down unto the floor", "Where Ruth approached Boaz at night.", "hard"],
+    ["redeemer", "Ruth 3:9", "spread therefore thy skirt over thine handmaid; for thou art a near kinsman", "A word for Boaz's family role.", "medium"],
+    ["obed", "Ruth 4:17", "there is a son born to Naomi", "The son born to Ruth and Boaz.", "hard"],
+    ["david", "Ruth 4:22", "Obed begat Jesse, and Jesse begat David", "The king Ruth's line leads to.", "easy"],
+  ]),
+];
+
+const SOLOMON_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-solomon", "Solomon", 1, "This pack follows Solomon through wisdom, temple building, riches, proverbs, prayer, and tragic decline.", [
+    ["wisdom", "1 Kings 3:12", "I have given thee a wise and an understanding heart", "What Solomon asked God for.", "easy"],
+    ["temple", "1 Kings 6:1", "he began to build the house of the LORD", "What Solomon famously built.", "easy"],
+    ["proverbs", "1 Kings 4:32", "he spake three thousand proverbs", "What sayings Solomon is known for.", "medium"],
+    ["cedar", "1 Kings 5:6", "that they hew me cedar trees", "The wood Solomon requested from Lebanon.", "hard"],
+    ["queen", "1 Kings 10:1", "the queen of Sheba heard of the fame of Solomon", "The ruler who visited Solomon.", "easy"],
+    ["sheba", "1 Kings 10:1", "the queen of Sheba", "The place linked to the famous visiting queen.", "medium"],
+    ["riches", "1 Kings 10:23", "King Solomon exceeded all the kings of the earth for riches and for wisdom", "One thing Solomon exceeded other kings in.", "easy"],
+    ["prayer", "1 Kings 8:22", "Solomon stood before the altar of the LORD", "What Solomon offered at the temple dedication.", "easy"],
+    ["wives", "1 Kings 11:3", "he had seven hundred wives", "What led Solomon's heart astray.", "easy"],
+    ["vanity", "Ecclesiastes 1:2", "Vanity of vanities", "The famous word associated with Solomon's reflections in Ecclesiastes.", "medium"],
+  ]),
+];
+
+const ELIJAH_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-elijah", "Elijah", 1, "This pack follows Elijah through drought, ravens, Carmel, fire, the still small voice, and prophetic courage.", [
+    ["tishbite", "1 Kings 17:1", "Elijah the Tishbite", "Elijah's descriptive title.", "hard"],
+    ["drought", "1 Kings 17:1", "there shall not be dew nor rain", "What Elijah announced over Israel.", "medium"],
+    ["ravens", "1 Kings 17:6", "the ravens brought him bread and flesh", "What fed Elijah at the brook.", "easy"],
+    ["brook", "1 Kings 17:3", "hide thyself by the brook Cherith", "The place Elijah stayed during the drought.", "medium"],
+    ["widow", "1 Kings 17:9", "I have commanded a widow woman there to sustain thee", "Who cared for Elijah in Zarephath.", "easy"],
+    ["carmel", "1 Kings 18:19", "gather to me all Israel unto mount Carmel", "The mountain of Elijah's showdown.", "hard"],
+    ["fire", "1 Kings 18:38", "Then the fire of the LORD fell", "What God sent on Elijah's sacrifice.", "easy"],
+    ["baal", "1 Kings 18:21", "if Baal, then follow him", "The false god Elijah challenged.", "easy"],
+    ["juniper", "1 Kings 19:4", "came and sat down under a juniper tree", "What kind of tree Elijah sat under in despair.", "hard"],
+    ["whirlwind", "2 Kings 2:11", "Elijah went up by a whirlwind into heaven", "What carried Elijah to heaven.", "medium"],
+  ]),
+];
+
+const ELISHA_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-elisha", "Elisha", 1, "This pack follows Elisha through calling, double portion, miracles, healing, and prophetic ministry.", [
+    ["mantle", "1 Kings 19:19", "Elijah cast his mantle upon him", "What Elijah placed on Elisha.", "medium"],
+    ["ploughing", "1 Kings 19:19", "Elisha ... was plowing with twelve yoke", "What Elisha was doing when called.", "hard"],
+    ["double", "2 Kings 2:9", "let a double portion of thy spirit be upon me", "What Elisha asked for.", "easy"],
+    ["portion", "2 Kings 2:9", "let a double portion of thy spirit", "The word paired with double in Elisha's request.", "medium"],
+    ["jericho", "2 Kings 2:19", "the men of the city said unto Elisha", "The city where Elisha healed the waters.", "hard"],
+    ["oil", "2 Kings 4:6", "the oil stayed", "What multiplied for the widow.", "easy"],
+    ["shunammite", "2 Kings 4:8", "a great woman", "The woman who showed Elisha hospitality.", "hard"],
+    ["naaman", "2 Kings 5:14", "Then went he down, and dipped himself seven times", "The commander Elisha told to wash.", "medium"],
+    ["axehead", "2 Kings 6:6", "the iron did swim", "The lost tool Elisha made float.", "hard"],
+    ["chariots", "2 Kings 6:17", "the mountain was full of horses and chariots of fire", "What surrounded Elisha in protection.", "medium"],
+  ]),
+];
+
+const JOSHUA_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-joshua", "Joshua", 1, "This pack follows Joshua through courage, Jordan, Jericho, conquest, covenant renewal, and faithful leadership.", [
+    ["courage", "Joshua 1:9", "Be strong and of a good courage", "What God repeatedly told Joshua to have.", "easy"],
+    ["jordan", "Joshua 3:17", "all the Israelites passed over on dry ground", "The river Joshua led Israel across.", "easy"],
+    ["jericho", "Joshua 6:20", "the wall fell down flat", "The city whose walls fell.", "easy"],
+    ["trumpets", "Joshua 6:4", "seven priests shall bear before the ark seven trumpets", "What sounded around Jericho.", "medium"],
+    ["rahab", "Joshua 6:25", "Joshua saved Rahab the harlot alive", "The woman spared in Jericho.", "easy"],
+    ["sun", "Joshua 10:13", "the sun stood still", "What God caused to stand still for Joshua.", "easy"],
+    ["captain", "Joshua 5:14", "captain of the host of the LORD", "Who appeared to Joshua near Jericho.", "hard"],
+    ["inheritance", "Joshua 11:23", "Joshua took the whole land", "What Joshua distributed among the tribes.", "medium"],
+    ["covenant", "Joshua 24:25", "Joshua made a covenant with the people", "What Joshua renewed at Shechem.", "medium"],
+    ["choose", "Joshua 24:15", "choose you this day whom ye will serve", "What Joshua told Israel to do.", "easy"],
+  ]),
+];
+
+const MARY_MAGDALENE_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-mary-magdalene", "Mary Magdalene", 1, "This pack follows Mary Magdalene through deliverance, devotion, witnessing the cross, the empty tomb, and the risen Christ.", [
+    ["magdalene", "Luke 8:2", "Mary called Magdalene", "The name Mary is commonly known by.", "medium"],
+    ["devils", "Luke 8:2", "out of whom went seven devils", "What Jesus cast out of Mary Magdalene.", "medium"],
+    ["cross", "John 19:25", "stood by the cross of Jesus his mother, and his mother's sister, Mary the wife of Cleophas, and Mary Magdalene", "Where Mary Magdalene stayed near Jesus.", "easy"],
+    ["tomb", "John 20:1", "Mary Magdalene cometh early, when it was yet dark, unto the sepulchre", "Where Mary went early on the first day.", "easy"],
+    ["weepest", "John 20:15", "Woman, why weepest thou?", "The word Jesus asked Mary at the tomb.", "hard"],
+    ["gardener", "John 20:15", "she, supposing him to be the gardener", "Who Mary first thought Jesus was.", "medium"],
+    ["rabboni", "John 20:16", "She saith unto him, Rabboni", "What Mary called Jesus when she recognized Him.", "hard"],
+    ["witness", "John 20:18", "Mary Magdalene came and told the disciples", "A word for Mary's role after seeing the risen Jesus.", "medium"],
+    ["spices", "Mark 16:1", "had bought sweet spices", "What Mary and others brought to the tomb.", "medium"],
+    ["first", "Mark 16:9", "he appeared first to Mary Magdalene", "When Mary Magdalene saw the risen Jesus relative to others.", "easy"],
+  ]),
+];
+
+const TIMOTHY_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-timothy", "Timothy", 1, "This pack follows Timothy through discipleship, pastoral care, Scripture, courage, and faithful service with Paul.", [
+    ["disciple", "Acts 16:1", "behold, a certain disciple was there, named Timotheus", "What Timothy is called in Acts 16.", "easy"],
+    ["eunice", "2 Timothy 1:5", "which dwelt first in thy grandmother Lois, and thy mother Eunice", "Timothy's mother.", "hard"],
+    ["lois", "2 Timothy 1:5", "thy grandmother Lois", "Timothy's grandmother.", "hard"],
+    ["youth", "1 Timothy 4:12", "Let no man despise thy youth", "What Paul told Timothy not to let others despise.", "medium"],
+    ["doctrine", "1 Timothy 4:16", "Take heed unto thyself, and unto the doctrine", "What Paul told Timothy to keep close watch on.", "medium"],
+    ["scripture", "2 Timothy 3:16", "All scripture is given by inspiration of God", "What Paul said is God-breathed.", "easy"],
+    ["courage", "2 Timothy 1:7", "God hath not given us the spirit of fear", "A word that fits Paul's charge to Timothy.", "medium"],
+    ["gift", "2 Timothy 1:6", "stir up the gift of God", "What Timothy was told to stir up.", "easy"],
+    ["example", "1 Timothy 4:12", "be thou an example of the believers", "What Timothy was told to be.", "easy"],
+    ["faithful", "2 Timothy 2:2", "the same commit thou to faithful men", "What kind of men Timothy was to teach.", "easy"],
+  ]),
+];
+
+const JONAH_PERSON_CHAPTERS: ScrambledChapterPack[] = [
+  createCharacterChapter("person-jonah", "Jonah", 1, "This pack follows Jonah through fleeing, storm, fish, repentance preaching, Nineveh, and God's mercy.", [
+    ["nineveh", "Jonah 1:2", "Arise, go to Nineveh", "The city Jonah was sent to.", "easy"],
+    ["tarshish", "Jonah 1:3", "Jonah rose up to flee unto Tarshish", "The place Jonah tried to run to.", "medium"],
+    ["storm", "Jonah 1:4", "the LORD sent out a great wind into the sea", "What hit the ship Jonah boarded.", "easy"],
+    ["lot", "Jonah 1:7", "let us cast lots", "How the sailors identified Jonah.", "easy"],
+    ["fish", "Jonah 1:17", "the LORD had prepared a great fish", "What swallowed Jonah.", "easy"],
+    ["prayer", "Jonah 2:1", "Then Jonah prayed unto the LORD his God", "What Jonah offered from the fish's belly.", "easy"],
+    ["vomited", "Jonah 2:10", "the fish vomited out Jonah upon the dry land", "What the fish did to Jonah.", "hard"],
+    ["repentance", "Jonah 3:5", "the people of Nineveh believed God", "A word that fits Nineveh's response.", "hard"],
+    ["gourd", "Jonah 4:6", "the LORD God prepared a gourd", "What God prepared to shade Jonah in the KJV.", "hard"],
+    ["mercy", "Jonah 4:2", "for I knew that thou art a gracious God, and merciful", "What Jonah knew about God's character.", "medium"],
+  ]),
+];
+
 export const SCRAMBLED_BOOKS: ScrambledBookPack[] = [
   {
     slug: "genesis",
@@ -10084,6 +10519,286 @@ export const SCRAMBLED_BOOKS: ScrambledBookPack[] = [
       "Revelation is vivid, worship-filled, and full of warning and hope. These Scrambled packs keep the big words about the Lamb, the throne, judgment, witness, endurance, Babylon, victory, and the new creation close to your memory chapter by chapter.",
     accentClassName: "border-[#d7d2ef] bg-[#f1effd]",
     chapters: REVELATION_CHAPTERS,
+  },
+  {
+    slug: "person-god",
+    name: "God",
+    shortLabel: "Creator, King, Shepherd, Refuge, and holy covenant Lord revealed all through Scripture.",
+    shortDescription: "Play 10 Scrambled words centered on God's holiness, mercy, kingship, faithfulness, and nearness.",
+    louisIntro:
+      "This God pack keeps the big words about holiness, mercy, creation, kingship, and God's character close to your memory as you play.",
+    accentClassName: "border-[#d9e3f2] bg-[#edf4ff]",
+    chapters: GOD_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-jesus",
+    name: "Jesus",
+    shortLabel: "Savior, Lamb, Shepherd, Lord, risen King, and the center of the gospel story.",
+    shortDescription: "Play 10 Scrambled words centered on Jesus' identity, teaching, cross, resurrection, and promised return.",
+    louisIntro:
+      "This Jesus pack keeps the big words about the Savior, the Lamb, the cross, resurrection, and His return close to your memory as you play.",
+    accentClassName: "border-[#f1d8c3] bg-[#fff3ea]",
+    chapters: JESUS_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-moses",
+    name: "Moses",
+    shortLabel: "River, bush, Pharaoh, sea, Sinai, covenant, and wilderness leadership under God's call.",
+    shortDescription: "Play 10 Scrambled words centered on Moses' calling, the exodus, the law, and wilderness leadership.",
+    louisIntro:
+      "This Moses pack keeps the big words about calling, Pharaoh, rescue, Sinai, covenant, and wilderness leadership close to your memory as you play.",
+    accentClassName: "border-[#dce7cf] bg-[#eef8e6]",
+    chapters: MOSES_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-abraham",
+    name: "Abraham",
+    shortLabel: "Calling, covenant, promise, faith, intercession, Isaac, and the blessing of God.",
+    shortDescription: "Play 10 Scrambled words centered on Abraham's faith, covenant promises, and obedience.",
+    louisIntro:
+      "This Abraham pack keeps the big words about calling, covenant, stars, faith, Isaac, and God's provision close to your memory as you play.",
+    accentClassName: "border-[#e9dcc4] bg-[#fbf2e4]",
+    chapters: ABRAHAM_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-esther",
+    name: "Esther",
+    shortLabel: "Favor, courage, fasting, Haman, rescue, and providence in a dangerous royal setting.",
+    shortDescription: "Play 10 Scrambled words centered on Esther's courage, Haman's downfall, and the Jews' deliverance.",
+    louisIntro:
+      "This Esther pack keeps the big words about favor, fasting, courage, Haman, rescue, and providence close to your memory as you play.",
+    accentClassName: "border-[#f0d2dd] bg-[#fff0f5]",
+    chapters: ESTHER_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-paul",
+    name: "Paul",
+    shortLabel: "Conversion, mission, grace, letters, suffering, endurance, and gospel faithfulness.",
+    shortDescription: "Play 10 Scrambled words centered on Paul's conversion, mission, letters, and perseverance.",
+    louisIntro:
+      "This Paul pack keeps the big words about Damascus, grace, mission, suffering, letters, and endurance close to your memory as you play.",
+    accentClassName: "border-[#d7def1] bg-[#eef2ff]",
+    chapters: PAUL_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-peter",
+    name: "Peter",
+    shortLabel: "Fishing, confession, failure, restoration, bold preaching, and shepherding the flock.",
+    shortDescription: "Play 10 Scrambled words centered on Peter's discipleship, restoration, preaching, and leadership.",
+    louisIntro:
+      "This Peter pack keeps the big words about confession, water, denial, restoration, Pentecost, and shepherding close to your memory as you play.",
+    accentClassName: "border-[#dbe6d6] bg-[#f1f8ee]",
+    chapters: PETER_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-job",
+    name: "Job",
+    shortLabel: "Suffering, lament, friends, Redeemer, whirlwind, and restoration under God's wisdom.",
+    shortDescription: "Play 10 Scrambled words centered on Job's suffering, hope, and final restoration.",
+    louisIntro:
+      "This Job pack keeps the big words about suffering, lament, friends, the Redeemer, God's greatness, and restoration close to your memory as you play.",
+    accentClassName: "border-[#e5d8c8] bg-[#f8efe6]",
+    chapters: JOB_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-matthew",
+    name: "Matthew",
+    shortLabel: "Tax collector turned disciple and gospel writer, following Jesus into a new life and message.",
+    shortDescription: "Play 10 Scrambled words centered on Matthew's calling, discipleship, and gospel focus.",
+    louisIntro:
+      "This Matthew pack keeps the big words about calling, mercy, the gospel, and the kingdom close to your memory as you play.",
+    accentClassName: "border-[#d7e6f1] bg-[#eef8ff]",
+    chapters: MATTHEW_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-luke",
+    name: "Luke",
+    shortLabel: "Careful historian, beloved physician, and steady companion who recorded Jesus and the early church.",
+    shortDescription: "Play 10 Scrambled words centered on Luke's careful writing, witness gathering, and ministry partnership.",
+    louisIntro:
+      "This Luke pack keeps the big words about history, certainty, witnesses, and faithful service close to your memory as you play.",
+    accentClassName: "border-[#dde3f3] bg-[#f2f5ff]",
+    chapters: LUKE_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-jacob",
+    name: "Jacob",
+    shortLabel: "Birthright, blessing, Bethel, wrestling, family struggle, and a new name from God.",
+    shortDescription: "Play 10 Scrambled words centered on Jacob's journey, family conflict, covenant promises, and transformation.",
+    louisIntro:
+      "This Jacob pack keeps the big words about blessing, Bethel, wrestling, Israel, and God's faithfulness close to your memory as you play.",
+    accentClassName: "border-[#e8dcc9] bg-[#faf2e8]",
+    chapters: JACOB_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-joseph",
+    name: "Joseph",
+    shortLabel: "Dreams, betrayal, prison, Pharaoh, forgiveness, and providence in Egypt.",
+    shortDescription: "Play 10 Scrambled words centered on Joseph's dreams, suffering, rise to power, and reconciliation.",
+    louisIntro:
+      "This Joseph pack keeps the big words about dreams, Egypt, prison, Pharaoh, and forgiveness close to your memory as you play.",
+    accentClassName: "border-[#d7ead8] bg-[#eff8ef]",
+    chapters: JOSEPH_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-aaron",
+    name: "Aaron",
+    shortLabel: "Brother, spokesman, priest, calf, blessing, and leadership in Israel's wilderness story.",
+    shortDescription: "Play 10 Scrambled words centered on Aaron's priesthood, signs before Pharaoh, failures, and service.",
+    louisIntro:
+      "This Aaron pack keeps the big words about priesthood, blessing, the calf, and ministry beside Moses close to your memory as you play.",
+    accentClassName: "border-[#ece0c1] bg-[#fcf5e5]",
+    chapters: AARON_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-david",
+    name: "David",
+    shortLabel: "Shepherd, anointing, Goliath, psalms, repentance, and the throne of Israel.",
+    shortDescription: "Play 10 Scrambled words centered on David's calling, kingship, worship, and covenant promise.",
+    louisIntro:
+      "This David pack keeps the big words about shepherding, Goliath, worship, repentance, and covenant close to your memory as you play.",
+    accentClassName: "border-[#e7d7cf] bg-[#fbf1ed]",
+    chapters: DAVID_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-noah",
+    name: "Noah",
+    shortLabel: "Righteousness, the ark, the flood, birds, altar, and the rainbow covenant.",
+    shortDescription: "Play 10 Scrambled words centered on Noah's obedience, the flood, and God's covenant mercy.",
+    louisIntro:
+      "This Noah pack keeps the big words about the ark, the flood, the dove, the altar, and the rainbow close to your memory as you play.",
+    accentClassName: "border-[#d7e6ec] bg-[#eef8fb]",
+    chapters: NOAH_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-daniel",
+    name: "Daniel",
+    shortLabel: "Exile, wisdom, dreams, lions, visions, and faithful prayer in Babylon.",
+    shortDescription: "Play 10 Scrambled words centered on Daniel's faithfulness, wisdom, visions, and deliverance.",
+    louisIntro:
+      "This Daniel pack keeps the big words about Babylon, wisdom, prayer, lions, and visions close to your memory as you play.",
+    accentClassName: "border-[#d8def0] bg-[#edf2ff]",
+    chapters: DANIEL_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-samuel",
+    name: "Samuel",
+    shortLabel: "Prayer, calling, judging Israel, anointing kings, and faithful prophetic leadership.",
+    shortDescription: "Play 10 Scrambled words centered on Samuel's birth, calling, leadership, and obedience.",
+    louisIntro:
+      "This Samuel pack keeps the big words about Hannah, calling, prophecy, kings, and faithful leadership close to your memory as you play.",
+    accentClassName: "border-[#e5d9c7] bg-[#faf1e8]",
+    chapters: SAMUEL_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-isaac",
+    name: "Isaac",
+    shortLabel: "Promised son, laughter, altar, wells, blessing, and family tension in the covenant line.",
+    shortDescription: "Play 10 Scrambled words centered on Isaac's promised birth, covenant family, wells, and blessing.",
+    louisIntro:
+      "This Isaac pack keeps the big words about promise, laughter, wells, blessing, and covenant family close to your memory as you play.",
+    accentClassName: "border-[#efe1cf] bg-[#fdf4ea]",
+    chapters: ISAAC_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-john-the-baptist",
+    name: "John the Baptist",
+    shortLabel: "Wilderness preaching, repentance, baptism, witness, humility, and preparing the way for Jesus.",
+    shortDescription: "Play 10 Scrambled words centered on John's preaching, baptism, witness, and courage.",
+    louisIntro:
+      "This John the Baptist pack keeps the big words about repentance, the wilderness, baptism, witness, and humility close to your memory as you play.",
+    accentClassName: "border-[#d6e6d3] bg-[#eef8ec]",
+    chapters: JOHN_THE_BAPTIST_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-mary",
+    name: "Mary",
+    shortLabel: "Favor, faith, Bethlehem, worship, motherhood, and devotion around Jesus' life.",
+    shortDescription: "Play 10 Scrambled words centered on Mary's calling, song, faith, and nearness to Jesus.",
+    louisIntro:
+      "This Mary pack keeps the big words about favor, the manger, pondering, worship, and devotion close to your memory as you play.",
+    accentClassName: "border-[#f0d8e4] bg-[#fff1f7]",
+    chapters: MARY_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-ruth",
+    name: "Ruth",
+    shortLabel: "Loyalty, gleaning, Boaz, redemption, and quiet faithfulness that leads to David's line.",
+    shortDescription: "Play 10 Scrambled words centered on Ruth's loyalty, redemption, and providential story.",
+    louisIntro:
+      "This Ruth pack keeps the big words about loyalty, gleaning, redemption, and God's quiet providence close to your memory as you play.",
+    accentClassName: "border-[#ead8e8] bg-[#faf0fa]",
+    chapters: RUTH_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-solomon",
+    name: "Solomon",
+    shortLabel: "Wisdom, the temple, riches, proverbs, prayer, and the danger of drift.",
+    shortDescription: "Play 10 Scrambled words centered on Solomon's wisdom, temple building, writings, and decline.",
+    louisIntro:
+      "This Solomon pack keeps the big words about wisdom, the temple, proverbs, prayer, and riches close to your memory as you play.",
+    accentClassName: "border-[#eeddbf] bg-[#fbf4e3]",
+    chapters: SOLOMON_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-elijah",
+    name: "Elijah",
+    shortLabel: "Drought, ravens, Carmel, fire, courage, and God's whisper after the storm.",
+    shortDescription: "Play 10 Scrambled words centered on Elijah's miracles, courage, and prophetic ministry.",
+    louisIntro:
+      "This Elijah pack keeps the big words about ravens, Carmel, fire, courage, and the whirlwind close to your memory as you play.",
+    accentClassName: "border-[#dce5c9] bg-[#f3f9e8]",
+    chapters: ELIJAH_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-elisha",
+    name: "Elisha",
+    shortLabel: "Mantle, double portion, healing, oil, miracles, and faithful prophetic service.",
+    shortDescription: "Play 10 Scrambled words centered on Elisha's calling, miracles, and prophetic ministry.",
+    louisIntro:
+      "This Elisha pack keeps the big words about the mantle, double portion, healing, oil, and miracles close to your memory as you play.",
+    accentClassName: "border-[#d9e8d3] bg-[#eff8ed]",
+    chapters: ELISHA_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-joshua",
+    name: "Joshua",
+    shortLabel: "Courage, Jordan, Jericho, conquest, inheritance, and covenant renewal in the land.",
+    shortDescription: "Play 10 Scrambled words centered on Joshua's leadership, conquest, and covenant faithfulness.",
+    louisIntro:
+      "This Joshua pack keeps the big words about courage, Jordan, Jericho, inheritance, and covenant renewal close to your memory as you play.",
+    accentClassName: "border-[#d7e7f0] bg-[#eef8ff]",
+    chapters: JOSHUA_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-mary-magdalene",
+    name: "Mary Magdalene",
+    shortLabel: "Deliverance, devotion, the cross, the tomb, and being first to see the risen Jesus.",
+    shortDescription: "Play 10 Scrambled words centered on Mary Magdalene's devotion, witness, and resurrection encounter.",
+    louisIntro:
+      "This Mary Magdalene pack keeps the big words about devotion, the tomb, witness, and the risen Jesus close to your memory as you play.",
+    accentClassName: "border-[#f1dbe1] bg-[#fff3f6]",
+    chapters: MARY_MAGDALENE_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-timothy",
+    name: "Timothy",
+    shortLabel: "Discipleship, Scripture, courage, doctrine, example, and faithful ministry with Paul.",
+    shortDescription: "Play 10 Scrambled words centered on Timothy's calling, teaching, courage, and pastoral faithfulness.",
+    louisIntro:
+      "This Timothy pack keeps the big words about Scripture, courage, doctrine, example, and faithful ministry close to your memory as you play.",
+    accentClassName: "border-[#d8e2f2] bg-[#eef4ff]",
+    chapters: TIMOTHY_PERSON_CHAPTERS,
+  },
+  {
+    slug: "person-jonah",
+    name: "Jonah",
+    shortLabel: "Running, storm, fish, prayer, Nineveh, and learning about God's mercy.",
+    shortDescription: "Play 10 Scrambled words centered on Jonah's flight, rescue, preaching, and God's mercy.",
+    louisIntro:
+      "This Jonah pack keeps the big words about Nineveh, the storm, the fish, repentance, and mercy close to your memory as you play.",
+    accentClassName: "border-[#d9ebef] bg-[#eefafd]",
+    chapters: JONAH_PERSON_CHAPTERS,
   },
 ];
 
