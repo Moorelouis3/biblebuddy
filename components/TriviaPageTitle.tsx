@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { isChapterBasedTriviaRouteSlug } from "@/lib/triviaCatalog";
 
 const SMALL_WORDS = new Set(["of", "the", "and"]);
 
@@ -23,6 +24,11 @@ function formatTitle(slug: string): string {
 
 export default function TriviaPageTitle() {
   const pathname = usePathname() ?? "";
+  const chapterMatch = pathname.match(/^\/bible-trivia\/([^/]+)\/(\d+)\/?$/);
+  if (chapterMatch && isChapterBasedTriviaRouteSlug(chapterMatch[1])) {
+    return null;
+  }
+
   const match = pathname.match(/^\/bible-trivia\/([^/]+)\/?$/);
 
   if (!match) {
@@ -30,7 +36,7 @@ export default function TriviaPageTitle() {
   }
 
   const slug = match[1];
-  if (!slug || slug === "books") {
+  if (!slug || slug === "books" || isChapterBasedTriviaRouteSlug(slug)) {
     return null;
   }
 

@@ -1,0 +1,251 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { LouisAvatar } from "@/components/LouisAvatar";
+import { supabase } from "@/lib/supabaseClient";
+import { ACTION_TYPE } from "@/lib/actionTypes";
+import type { TriviaChapterPack } from "@/lib/triviaGameData";
+
+type TriviaGamePlayerProps = {
+  bookName: string;
+  bookSlug: string;
+  chapter: TriviaChapterPack;
+};
+
+async function fetchVerseText(reference: string) {
+  try {
+    const primaryRef = reference.split(/[;,]/)[0]?.trim() ?? reference.trim();
+    const normalizedRef = encodeURIComponent(primaryRef);
+    const response = await fetch(`https://bible-api.com/${normalizedRef}`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch verse");
+    }
+
+    const data = await response.json();
+    return data.text || "";
+  } catch (error) {
+    console.error("Error fetching verse:", error);
+    return "";
+  }
+}
+
+export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: TriviaGamePlayerProps) {
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [showResults, setShowResults] = useState(false);
+  const [verseText, setVerseText] = useState("");
+  const [loadingVerseText, setLoadingVerseText] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
+
+  const currentQuestion = chapter.questions[currentQuestionIndex];
+  const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadUser() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (cancelled || !user) {
+        return;
+      }
+
+      const creditResponse = await fetch("/api/consume-credit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          actionType: ACTION_TYPE.trivia_started,
+        }),
+      });
+
+      if (!creditResponse.ok || cancelled) {
+        return;
+      }
+
+      const creditResult = (await creditResponse.json()) as { ok: boolean };
+      if (!creditResult.ok || cancelled) {
+        return;
+      }
+
+      setUserId(user.id);
+    }
+
+    void loadUser();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  async function handleAnswerSelect(answer: string) {
+    if (selectedAnswer) {
+      return;
+    }
+
+    const answerIsCorrect = answer === currentQuestion.correctAnswer;
+    setSelectedAnswer(answer);
+
+    if (answerIsCorrect) {
+      setCorrectCount((current) => current + 1);
+    }
+
+    if (userId) {
+      try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+
+        const meta = (user?.user_metadata ?? {}) as Record<string, string | undefined>;
+        const username =
+          meta.firstName || meta.first_name || (user?.email ? user.email.split("@")[0] : null) || "User";
+
+        await fetch("/api/trivia-answer", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId,
+            questionId: currentQuestion.id,
+            username,
+            isCorrect: answerIsCorrect,
+            book: chapter.progressKey,
+          }),
+        });
+      } catch (error) {
+        console.error("Error recording trivia answer:", error);
+      }
+    }
+
+    setLoadingVerseText(true);
+    const nextVerseText = await fetchVerseText(currentQuestion.verse);
+    setVerseText(nextVerseText);
+    setLoadingVerseText(false);
+  }
+
+  function handleNext() {
+    if (currentQuestionIndex < chapter.questions.length - 1) {
+      setCurrentQuestionIndex((current) => current + 1);
+      setSelectedAnswer(null);
+      setVerseText("");
+      return;
+    }
+
+    setShowResults(true);
+  }
+
+  if (showResults) {
+    return (
+      <div className="min-h-screen bg-gray-50 px-4 py-8">
+        <div className="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
+          <h1 className="text-3xl font-bold text-gray-900">Chapter Complete</h1>
+          <p className="mt-3 text-5xl font-bold text-blue-600">
+            {correctCount}/{chapter.questions.length}
+          </p>
+          <p className="mt-3 text-gray-700">
+            {bookName} {chapter.chapter} finished.
+          </p>
+          <div className="mt-8 space-y-3">
+            <Link
+              href={`/bible-trivia/${bookSlug}/${chapter.chapter}`}
+              className="block rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700"
+            >
+              Play chapter again
+            </Link>
+            <Link
+              href={`/bible-trivia/${bookSlug}`}
+              className="block rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"
+            >
+              Back to chapters
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50 px-4 py-8">
+      <div className="mx-auto max-w-2xl">
+        <div className="mb-6 flex items-center justify-between gap-4">
+          <Link href={`/bible-trivia/${bookSlug}`} className="text-sm text-gray-600 transition hover:text-gray-900">
+            Back to chapters
+          </Link>
+          <p className="text-sm text-gray-600">
+            Question {currentQuestionIndex + 1} of {chapter.questions.length}
+          </p>
+        </div>
+
+        <div className="mb-4 flex items-start gap-3">
+          <LouisAvatar mood="bible" size={48} />
+          <div className="relative w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 shadow-sm">
+            <div className="absolute -left-2 top-5 h-3 w-3 rotate-45 border-b border-l border-gray-200 bg-white" />
+            <p>{chapter.description}</p>
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+          <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">
+            {bookName} {chapter.chapter}
+          </p>
+          <h1 className="mt-3 text-2xl font-bold text-gray-900">{currentQuestion.question}</h1>
+
+          <div className="mt-6 space-y-3">
+            {currentQuestion.options.map((option) => {
+              const isSelected = selectedAnswer === option.label;
+              const isRightOption = !!selectedAnswer && option.label === currentQuestion.correctAnswer;
+              const isWrongSelection = isSelected && option.label !== currentQuestion.correctAnswer;
+
+              return (
+                <button
+                  key={option.label}
+                  type="button"
+                  onClick={() => void handleAnswerSelect(option.label)}
+                  disabled={!!selectedAnswer}
+                  className={`w-full rounded-xl border px-4 py-3 text-left transition ${
+                    isRightOption
+                      ? "border-green-400 bg-green-50"
+                      : isWrongSelection
+                        ? "border-red-400 bg-red-50"
+                        : "border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50"
+                  }`}
+                >
+                  <span className="font-semibold text-gray-900">{option.label}.</span>{" "}
+                  <span className="text-gray-800">{option.text}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {selectedAnswer ? (
+            <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50 p-5">
+              <p className={`text-sm font-semibold ${isCorrect ? "text-green-700" : "text-red-700"}`}>
+                {isCorrect ? "Correct" : "Not quite"}
+              </p>
+              <p className="mt-3 text-sm font-semibold text-gray-900">{currentQuestion.verse}</p>
+              {loadingVerseText ? (
+                <p className="mt-2 text-sm text-gray-500">Loading verse...</p>
+              ) : verseText ? (
+                <p className="mt-2 text-sm italic leading-6 text-gray-700">{verseText}</p>
+              ) : null}
+              <p className="mt-3 text-sm leading-6 text-gray-700">{currentQuestion.explanation}</p>
+              <button
+                type="button"
+                onClick={handleNext}
+                className="mt-5 rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700"
+              >
+                {currentQuestionIndex < chapter.questions.length - 1 ? "Next question" : "See results"}
+              </button>
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}

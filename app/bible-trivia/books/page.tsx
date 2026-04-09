@@ -12,9 +12,14 @@ import {
 } from "@/lib/bibleStudyGameCatalog";
 import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import { supabase } from "@/lib/supabaseClient";
+import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "@/lib/triviaCatalog";
+
+const CHAPTER_BASED_TOTALS: Record<string, number> = Object.fromEntries(
+  CHAPTER_BASED_TRIVIA_BOOK_CONFIG.map((book) => [book.key, book.chapters * 5]),
+);
 
 const BOOK_TOTALS: Record<string, number> = Object.fromEntries(
-  BIBLE_GAME_BOOKS.map((book) => [book.key, book.key === "ruth" ? 50 : 100]),
+  BIBLE_GAME_BOOKS.map((book) => [book.key, CHAPTER_BASED_TOTALS[book.key] ?? (book.key === "ruth" ? 50 : 100)]),
 );
 
 export default function BooksOfTheBiblePage() {
@@ -74,11 +79,7 @@ export default function BooksOfTheBiblePage() {
       const { data: progressData, error } = await supabase
         .from("trivia_question_progress")
         .select("book, is_correct")
-        .eq("user_id", user.id)
-        .in(
-          "book",
-          BIBLE_GAME_BOOKS.map((book) => book.key),
-        );
+        .eq("user_id", user.id);
 
       if (error) {
         console.error("Error fetching trivia progress:", error);
@@ -88,7 +89,17 @@ export default function BooksOfTheBiblePage() {
 
       const correctCounts: Record<string, number> = {};
       progressData?.forEach((entry) => {
-        if (entry.is_correct) {
+        if (!entry.is_correct) {
+          return;
+        }
+
+        const matchingChapterBook = CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((book) => entry.book.startsWith(`${book.key}:`));
+        if (matchingChapterBook) {
+          correctCounts[matchingChapterBook.key] = (correctCounts[matchingChapterBook.key] || 0) + 1;
+          return;
+        }
+
+        if (entry.book in BOOK_TOTALS) {
           correctCounts[entry.book] = (correctCounts[entry.book] || 0) + 1;
         }
       });
@@ -127,7 +138,7 @@ export default function BooksOfTheBiblePage() {
             <div className="relative w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 shadow-sm">
               <div className="absolute -left-2 top-5 h-3 w-3 rotate-45 border-b border-l border-gray-200 bg-white" />
               <p className="mb-2">Pick a book of the Bible and test what you remember from it.</p>
-              <p>Free users can play the open books now, and the locked ones still stay reserved for Pro.</p>
+              <p>Genesis through Job now open chapter by chapter with five questions in each chapter pack.</p>
             </div>
           </div>
 
