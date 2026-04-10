@@ -24,6 +24,14 @@ export const CHAPTER_BASED_TRIVIA_BOOK_CONFIG: ChapterBasedTriviaBookConfig[] = 
   { key: "nehemiah", title: "Nehemiah", routeSlug: "nehemiah", chapters: 13 },
   { key: "esther", title: "Esther", routeSlug: "esther", chapters: 10 },
   { key: "job", title: "Job", routeSlug: "job", chapters: 42 },
+  { key: "psalms", title: "Psalms", routeSlug: "psalms", chapters: 150 },
+  { key: "proverbs", title: "Proverbs", routeSlug: "proverbs", chapters: 31 },
+  { key: "ecclesiastes", title: "Ecclesiastes", routeSlug: "ecclesiastes", chapters: 12 },
+  { key: "songofsongs", title: "Song of Songs", routeSlug: "song-of-songs", chapters: 8 },
+  { key: "isaiah", title: "Isaiah", routeSlug: "isaiah", chapters: 66 },
+  { key: "jeremiah", title: "Jeremiah", routeSlug: "jeremiah", chapters: 52 },
+  { key: "lamentations", title: "Lamentations", routeSlug: "lamentations", chapters: 5 },
+  { key: "ezekiel", title: "Ezekiel", routeSlug: "ezekiel", chapters: 48 },
 ];
 
 const configByKey = new Map(CHAPTER_BASED_TRIVIA_BOOK_CONFIG.map((book) => [book.key, book]));
