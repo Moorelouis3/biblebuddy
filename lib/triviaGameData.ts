@@ -46,7 +46,7 @@ function sanitizeTriviaQuestionText(raw: string): string {
   // - "from Hebrews 2:1"
   // - "in Genesis 1"
   text = text.replace(
-    /\s+(?:in|from|according to)\s+(?:[1-3]\s+)?(?:[A-Za-z]+(?:\s+[A-Za-z]+)*)\s+\d+(?:\s*(?::\s*\d+|\s+(?:verses?|verse)\s+\d+(?:\s*(?:-|to|through)\s*\d+)?)\b)?/gi,
+    /\s+(?:in|from|according to)\s+(?:[1-3]\s+)?(?:[A-Za-z]+(?:\s+[A-Za-z]+)*)\s+\d+(?:\s*(?::\s*\d+|\s+(?:verses?|verse)\s+\d+(?:\s*(?:-|\u2013|\u2014|to|through)\s*\d+)?)\b)?/gi,
     "",
   );
 
@@ -59,6 +59,10 @@ function sanitizeTriviaQuestionText(raw: string): string {
   // Cleanup spacing/punctuation after removals.
   text = text.replace(/\s{2,}/g, " ").trim();
   text = text.replace(/\s+([?.!,;:])/g, "$1");
+
+  // If a unicode dash slipped through in a verse range, remove any stray trailing "-6?"/"–6?"/"—6?"
+  // that can remain after stripping the reference.
+  text = text.replace(/([A-Za-z])\s*(?:-|\u2013|\u2014)\s*\d+\s*([?!.])/g, "$1$2");
   return text;
 }
 
