@@ -68,6 +68,10 @@ export const CHAPTER_BASED_TRIVIA_BOOK_CONFIG: ChapterBasedTriviaBookConfig[] = 
   { key: "1peter", title: "1 Peter", routeSlug: "1-peter", chapters: 5 },
   { key: "2peter", title: "2 Peter", routeSlug: "2-peter", chapters: 3 },
   { key: "1john", title: "1 John", routeSlug: "1-john", chapters: 5 },
+  { key: "2john", title: "2 John", routeSlug: "2-john", chapters: 1 },
+  { key: "3john", title: "3 John", routeSlug: "3-john", chapters: 1 },
+  { key: "jude", title: "Jude", routeSlug: "jude", chapters: 1 },
+  { key: "revelation", title: "Revelation", routeSlug: "revelation", chapters: 22 },
 ];
 
 const configByKey = new Map(CHAPTER_BASED_TRIVIA_BOOK_CONFIG.map((book) => [book.key, book]));

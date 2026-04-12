@@ -27,6 +27,7 @@ import {
   normalizeFeatureTours,
   type FeatureToursState,
 } from "../../../../lib/featureTours";
+import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../../../../lib/triviaCatalog";
 
 type Verse = {
   num: number;
@@ -2516,28 +2517,12 @@ function CongratsModalWithConfetti({
     "Revelation",
   ];
 
-  // Motivational messages with level progress
+  // Chapter completion messages that drive the next step (Trivia).
   const motivationalMessages = [
-    "Just {chaptersRemaining} more chapters until you level up.",
-    "You're closer than you think. {chaptersRemaining} chapters to go.",
-    "Keep reading. Only {chaptersRemaining} chapters until the next level.",
-    "Momentum matters. {chaptersRemaining} chapters left to level up.",
-    "Stay consistent. {chaptersRemaining} chapters until your next milestone.",
-    "You're building something real. {chaptersRemaining} chapters to go.",
-    "Small steps add up. {chaptersRemaining} chapters until the next level.",
-    "Don't stop now. {chaptersRemaining} chapters away from leveling up.",
-    "You're making progress. {chaptersRemaining} chapters left.",
-    "Keep showing up. {chaptersRemaining} chapters to reach the next level.",
-    "Every chapter counts. {chaptersRemaining} more to level up.",
-    "You're on a roll. {chaptersRemaining} chapters until the next level.",
-    "Discipline beats motivation. {chaptersRemaining} chapters to go.",
-    "You're walking it out. {chaptersRemaining} chapters remain.",
-    "One chapter at a time. {chaptersRemaining} until you level up.",
-    "Progress over perfection. {chaptersRemaining} chapters left.",
-    "You didn't come this far to stop. {chaptersRemaining} chapters to go.",
-    "Faithfulness compounds. {chaptersRemaining} chapters until the next level.",
-    "You're closer today than yesterday. {chaptersRemaining} chapters left.",
-    "Keep going. Your next level is {chaptersRemaining} chapters away.",
+    "Now that you read {chapterLabel}, let's test your understanding with a quick trivia quiz.",
+    "Great job finishing {chapterLabel}. Want to take the trivia quiz for this chapter?",
+    "You just finished {chapterLabel}. Ready to test what you remember with trivia?",
+    "Nice work on {chapterLabel}. Let's lock it in with a quick trivia quiz.",
   ];
 
   // Calculate random message using props (instant, no async delay)
@@ -2550,7 +2535,7 @@ function CongratsModalWithConfetti({
       return "Great job — your consistency is paying off!";
     }
     const template = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
-    return template.replace("{chaptersRemaining}", levelInfo.chaptersNeededForNext.toString());
+    return template.replace("{chapterLabel}", `${bookDisplayName} ${chapter}`);
   }, [levelInfo]);
 
   // Trigger confetti when component mounts
@@ -2635,20 +2620,13 @@ function CongratsModalWithConfetti({
     triggerConfetti();
   }, []);
 
-  const totalChapters = getBookTotalChapters(book);
-  const isLastChapter = chapter >= totalChapters;
-  
-  // Get next book name
-  const currentBookIndex = BOOKS.findIndex(b => b.toLowerCase() === book.toLowerCase());
-  const nextBook = currentBookIndex >= 0 && currentBookIndex < BOOKS.length - 1 ? BOOKS[currentBookIndex + 1] : null;
+  const triviaBookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
+  const resolvedTriviaBookKey = triviaBookKey === "songofsolomon" ? "songofsongs" : triviaBookKey;
+  const triviaRouteSlug =
+    CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.key === resolvedTriviaBookKey)?.routeSlug ?? resolvedTriviaBookKey;
 
   function handleContinueToNextChapter() {
-    if (isLastChapter) {
-      // Go to reading plan page to start next book
-      router.push("/reading");
-    } else {
-      router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/${chapter + 1}`);
-    }
+    router.push(`/bible-trivia/${triviaRouteSlug}/${chapter}`);
     setShowModal(false);
   }
 
@@ -2696,10 +2674,10 @@ function CongratsModalWithConfetti({
             <div className="flex flex-col items-center mb-6">
               <LouisAvatar mood="stareyes" size={80} />
               <h1 className="text-2xl md:text-3xl font-bold mt-4 text-center text-gray-900">
-                Congratulations! You just finished another chapter!
+                Congratulations! You just finished {bookDisplayName} {chapter}!
               </h1>
               <p className="text-base md:text-lg text-gray-700 mt-3 text-center">
-                {levelInfo ? randomMessage : "Great job — your consistency is paying off!"}
+                {levelInfo ? randomMessage : `Now that you read ${bookDisplayName} ${chapter}, let's test your understanding with a quick trivia quiz.`}
               </p>
             </div>
 
@@ -2711,7 +2689,7 @@ function CongratsModalWithConfetti({
                 onClick={handleContinueToNextChapter}
                 className="px-4 py-4 rounded-2xl text-sm md:text-base font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition text-center"
               >
-                {isLastChapter && nextBook ? `Start ${nextBook}` : "Continue to Next Chapter"}
+                Take trivia quiz
               </button>
             </div>
 

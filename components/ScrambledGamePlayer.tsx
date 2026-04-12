@@ -7,6 +7,7 @@ import { ACTION_TYPE } from "@/lib/actionTypes";
 import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import { getScrambledBook, type ScrambledChapterPack } from "@/lib/scrambledGameData";
 import { supabase } from "@/lib/supabaseClient";
+import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "@/lib/triviaCatalog";
 
 type LetterTile = {
   id: string;
@@ -493,6 +494,8 @@ export default function ScrambledGamePlayer({
   }
 
   if (showResults) {
+    const triviaRouteSlug =
+      CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.key === bookSlug)?.routeSlug ?? bookSlug;
     return (
       <div className="min-h-screen bg-[#f5f7fb] px-4 py-10">
         <div className="mx-auto max-w-xl rounded-[32px] border border-[#d8e4fb] bg-white p-8 text-center shadow-sm">
@@ -513,7 +516,7 @@ export default function ScrambledGamePlayer({
             <p className="mt-3 text-sm text-[#496a9b]">{encouragement}</p>
           </div>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
             <button
               type="button"
               onClick={() => void shareScoreToGroup()}
@@ -527,6 +530,12 @@ export default function ScrambledGamePlayer({
                 </span>
               ) : shareState === "shared" ? "Score Shared" : "Share score"}
             </button>
+            <Link
+              href={`/bible-trivia/${triviaRouteSlug}/${chapter.chapter}`}
+              className="rounded-2xl border border-[#d7e2f8] bg-white px-4 py-3 text-sm font-semibold text-[#35508a] transition hover:bg-[#fbfdff]"
+            >
+              Take Trivia Quiz
+            </Link>
             <Link
               href={nextChapterPack ? `/bible-study-games/scrambled/${bookSlug}/${nextChapterPack.chapter}` : `/bible-study-games/scrambled/${bookSlug}/${chapter.chapter}`}
               className="rounded-2xl bg-[#4768af] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#35508a]"

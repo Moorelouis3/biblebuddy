@@ -1,11 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import { LouisAvatar } from "@/components/LouisAvatar";
+import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import type { TriviaChapterPack } from "@/lib/triviaGameData";
+import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "@/lib/triviaCatalog";
+import { FREE_TRIVIA_BOOK_KEYS } from "@/lib/bibleStudyGameCatalog";
 
 type TriviaGamePlayerProps = {
   bookName: string;
@@ -31,6 +35,7 @@ async function fetchVerseText(reference: string) {
 }
 
 export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: TriviaGamePlayerProps) {
+  const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
@@ -38,6 +43,14 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
   const [verseText, setVerseText] = useState("");
   const [loadingVerseText, setLoadingVerseText] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
+  const [isPaid, setIsPaid] = useState<boolean | null>(null);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+
+  const bookKey = useMemo(() => {
+    return CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.routeSlug === bookSlug)?.key ?? bookSlug;
+  }, [bookSlug]);
+
+  const isFreeBook = FREE_TRIVIA_BOOK_KEYS.has(bookKey);
 
   const currentQuestion = chapter.questions[currentQuestionIndex];
   const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
@@ -50,7 +63,31 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
         data: { user },
       } = await supabase.auth.getUser();
 
-      if (cancelled || !user) {
+      if (cancelled) {
+        return;
+      }
+
+      if (!user) {
+        setIsPaid(false);
+        if (!isFreeBook) {
+          setShowUpgradeModal(true);
+        }
+        return;
+      }
+
+      setUserId(user.id);
+
+      const { data: profileStats } = await supabase
+        .from("profile_stats")
+        .select("is_paid")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      const paid = profileStats?.is_paid === true;
+      setIsPaid(paid);
+
+      if (!paid && !isFreeBook) {
+        setShowUpgradeModal(true);
         return;
       }
 
@@ -72,8 +109,6 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
       if (!creditResult.ok || cancelled) {
         return;
       }
-
-      setUserId(user.id);
     }
 
     void loadUser();
@@ -81,7 +116,38 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [isFreeBook]);
+
+  if (isPaid === false && !isFreeBook) {
+    return (
+      <div className="min-h-screen bg-gray-50 px-4 py-10">
+        <div className="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
+          <h1 className="text-2xl font-bold text-gray-900">Trivia Pro Feature</h1>
+          <p className="mt-3 text-gray-700">
+            This chapter quiz unlocks with Pro.
+          </p>
+          <div className="mt-8 space-y-3">
+            <button
+              type="button"
+              onClick={() => setShowUpgradeModal(true)}
+              className="block w-full rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700"
+            >
+              Upgrade to Pro
+            </button>
+            <button
+              type="button"
+              onClick={() => router.back()}
+              className="block w-full rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"
+            >
+              Go back
+            </button>
+          </div>
+        </div>
+
+        <UpgradeRequiredModal isOpen={showUpgradeModal} onClose={() => setShowUpgradeModal(false)} />
+      </div>
+    );
+  }
 
   async function handleAnswerSelect(answer: string) {
     if (selectedAnswer) {
@@ -141,6 +207,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
   }
 
   if (showResults) {
+    const scrambledHref = `/bible-study-games/scrambled/${bookKey}/${chapter.chapter}`;
     return (
       <div className="min-h-screen bg-gray-50 px-4 py-8">
         <div className="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
@@ -151,18 +218,27 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
           <p className="mt-3 text-gray-700">
             {bookName} {chapter.chapter} finished.
           </p>
+          <p className="mt-3 text-sm text-gray-600">
+            Now try Scrambled for this chapter to lock key words into memory.
+          </p>
           <div className="mt-8 space-y-3">
             <Link
-              href={`/bible-trivia/${bookSlug}/${chapter.chapter}`}
+              href={scrambledHref}
               className="block rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700"
             >
-              Play chapter again
+              Play Scrambled
             </Link>
             <Link
               href={`/bible-trivia/${bookSlug}`}
               className="block rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"
             >
               Back to chapters
+            </Link>
+            <Link
+              href={`/bible-trivia/${bookSlug}/${chapter.chapter}`}
+              className="block rounded-xl border border-gray-200 bg-white px-4 py-3 font-semibold text-gray-700 transition hover:bg-gray-50"
+            >
+              Play trivia again
             </Link>
           </div>
         </div>

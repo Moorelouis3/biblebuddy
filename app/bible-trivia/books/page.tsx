@@ -138,7 +138,7 @@ export default function BooksOfTheBiblePage() {
             <div className="relative w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 shadow-sm">
               <div className="absolute -left-2 top-5 h-3 w-3 rotate-45 border-b border-l border-gray-200 bg-white" />
               <p className="mb-2">Pick a book of the Bible and test what you remember from it.</p>
-              <p>Genesis through 1 John are fully chapter based with five real questions in each chapter pack.</p>
+              <p>Genesis through Revelation are fully chapter based with five real questions in each chapter pack.</p>
             </div>
           </div>
 
