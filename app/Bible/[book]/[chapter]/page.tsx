@@ -18,6 +18,7 @@ import { resolveBibleReference } from "../../../../lib/bibleTermResolver";
 import { consumeCreditAction } from "../../../../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../../../../lib/bibleNotes";
 import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
+import { triggerPoints } from "../../../../components/PointsPop";
 import CreditLimitModal from "../../../../components/CreditLimitModal";
 import CommentSection from "../../../../components/comments/CommentSection";
 import { LEVEL_DEFINITIONS } from "../../../../lib/levelSystem";
@@ -392,6 +393,18 @@ export default function BibleChapterPage() {
               next.add(personNameKey);
               return next;
             });
+
+            void trackNavigationActionOnce({
+              userId,
+              username,
+              actionType: ACTION_TYPE.person_viewed,
+              actionLabel: selectedPerson.name,
+              dedupeKey: `person-viewed:${personNameKey}`,
+            })
+              .then((logged) => {
+                if (logged) triggerPoints(1);
+              })
+              .catch((error) => console.error("[NAV] Failed to track person_viewed:", error));
           }
         }
 
@@ -549,6 +562,18 @@ FINAL RULES:
                 next.add(normalizedPlace);
                 return next;
               });
+
+              void trackNavigationActionOnce({
+                userId,
+                username,
+                actionType: ACTION_TYPE.place_viewed,
+                actionLabel: selectedPlace.name,
+                dedupeKey: `place-viewed:${normalizedPlace}`,
+              })
+                .then((logged) => {
+                  if (logged) triggerPoints(1);
+                })
+                .catch((error) => console.error("[NAV] Failed to track place_viewed:", error));
             }
           }
         }
@@ -696,6 +721,18 @@ RULES:
                 next.add(keywordKey);
                 return next;
               });
+
+              void trackNavigationActionOnce({
+                userId,
+                username,
+                actionType: ACTION_TYPE.keyword_viewed,
+                actionLabel: selectedKeyword.name,
+                dedupeKey: `keyword-viewed:${keywordKey}`,
+              })
+                .then((logged) => {
+                  if (logged) triggerPoints(1);
+                })
+                .catch((error) => console.error("[NAV] Failed to track keyword_viewed:", error));
             }
           }
         }
@@ -1571,8 +1608,9 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       
       await markChapterDone(userId, book, chapter);
       console.log(`[MARK_FINISHED] Successfully marked ${book} chapter ${chapter} as done`);
-      
+
       setIsCompleted(true);
+      triggerPoints(10);
 
       // Trigger confetti animation immediately
       triggerConfetti();

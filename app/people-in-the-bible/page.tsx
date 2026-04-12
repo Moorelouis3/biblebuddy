@@ -11,6 +11,8 @@ import { BIBLE_PEOPLE_LIST } from "../../lib/biblePeopleList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { consumeCreditAction } from "../../lib/creditClient";
+import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
+import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
 import CreditEducationModal from "../../components/CreditEducationModal";
 // Utility to get/set session flag for education modal
@@ -652,14 +654,26 @@ function PeopleInTheBiblePageContent() {
                 return;
               }
 
-              setViewedPeople((prev) => {
-                const next = new Set(prev);
-                next.add(personNameKey);
-                return next;
-              });
-            }
-          }
-        }
+               setViewedPeople((prev) => {
+                 const next = new Set(prev);
+                 next.add(personNameKey);
+                 return next;
+               });
+
+               void trackNavigationActionOnce({
+                 userId,
+                 username,
+                 actionType: ACTION_TYPE.person_viewed,
+                 actionLabel: selectedPerson.name,
+                 dedupeKey: `person-viewed:${personNameKey}`,
+               })
+                 .then((logged) => {
+                   if (logged) triggerPoints(1);
+                 })
+                 .catch((error) => console.error("[NAV] Failed to track person_viewed:", error));
+             }
+           }
+         }
 
         // STEP 1: Check database FIRST (mandatory short-circuit)
         const { data: existing, error: existingError } = await supabase

@@ -5,11 +5,13 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
+import { triggerPoints } from "@/components/PointsPop";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import type { TriviaChapterPack } from "@/lib/triviaGameData";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "@/lib/triviaCatalog";
 import { FREE_TRIVIA_BOOK_KEYS } from "@/lib/bibleStudyGameCatalog";
+import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 
 type TriviaGamePlayerProps = {
   bookName: string;
@@ -205,6 +207,25 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
 
     setShowResults(true);
   }
+
+  useEffect(() => {
+    if (!showResults || !userId) return;
+
+    void trackNavigationActionOnce({
+      userId,
+      actionType: ACTION_TYPE.trivia_chapter_completed,
+      actionLabel: `${bookName} ${chapter.chapter} - ${correctCount}/${chapter.questions.length}`,
+      dedupeKey: `trivia-chapter-completed:${bookKey}:${chapter.chapter}`,
+    })
+      .then((logged) => {
+        if (logged) {
+          triggerPoints(5);
+        }
+      })
+      .catch((error) => {
+        console.error("[NAV] Failed to track Trivia chapter completion:", error);
+      });
+  }, [showResults, userId, bookName, chapter.chapter, chapter.questions.length, correctCount, bookKey]);
 
   if (showResults) {
     const scrambledHref = `/bible-study-games/scrambled/${bookKey}/${chapter.chapter}`;

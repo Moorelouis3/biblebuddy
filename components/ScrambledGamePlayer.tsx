@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
+import { triggerPoints } from "@/components/PointsPop";
 import { getScrambledBook, type ScrambledChapterPack } from "@/lib/scrambledGameData";
 import { supabase } from "@/lib/supabaseClient";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "@/lib/triviaCatalog";
@@ -225,9 +226,15 @@ export default function ScrambledGamePlayer({
       actionType: ACTION_TYPE.scrambled_chapter_completed,
       actionLabel: `${bookName} ${chapter.chapter} - ${solvedCount}/${chapter.questions.length}`,
       dedupeKey: `scrambled-chapter-completed:${bookSlug}:${chapter.chapter}`,
-    }).catch((error) => {
-      console.error("[NAV] Failed to track Scrambled chapter completion:", error);
-    });
+    })
+      .then((logged) => {
+        if (logged) {
+          triggerPoints(5);
+        }
+      })
+      .catch((error) => {
+        console.error("[NAV] Failed to track Scrambled chapter completion:", error);
+      });
   }, [showResults, userId, username, bookName, bookSlug, chapter.chapter, chapter.questions.length, solvedCount]);
 
   const visibleBuddyRounds = useMemo(() => buddyRounds.slice(0, 6), [buddyRounds]);

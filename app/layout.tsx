@@ -5,6 +5,7 @@ import AppShell from "@/components/AppShell";
 import { SmokeDeleteEffect } from "@/components/SmokeDeleteEffect";
 import { PostSuccessEffect } from "@/components/PostSuccessEffect";
 import { AppToast } from "@/components/AppToast";
+import { PointsPop } from "@/components/PointsPop";
 import GlobalCreditFeedback from "@/components/GlobalCreditFeedback";
 import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
 // redeploy trigger
@@ -80,6 +81,7 @@ export default function RootLayout({
         <SmokeDeleteEffect />
         <PostSuccessEffect />
         <AppToast />
+        <PointsPop />
         <GlobalCreditFeedback />
         {/* ✅ VERCEL ANALYTICS */}
         <Analytics />
