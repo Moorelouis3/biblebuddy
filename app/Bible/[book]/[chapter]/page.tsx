@@ -2135,7 +2135,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
         {/* READER CONTROL BAR */}
         <div className="relative z-20 mb-5">
-          <div className="rounded-[26px] border border-blue-100 bg-white/90 shadow-sm backdrop-blur px-2 py-2 md:px-3 md:py-2.5">
+          <div className="rounded-[26px] border-0 bg-transparent px-0 py-0 shadow-none backdrop-blur md:border md:border-blue-100 md:bg-white/90 md:px-3 md:py-2.5 md:shadow-sm">
             <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               {/* Left: Previous + Book */}
               <div className="hidden md:flex items-center justify-between gap-2 md:justify-start">
@@ -2403,11 +2403,11 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   }}
                   aria-expanded={gamesMenuOpen}
                   aria-label="Bible menu, click here"
-                  className="bb-mark-pulse flex w-full items-center justify-between rounded-2xl border border-blue-500 bg-blue-600 px-4 py-3 text-left text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700"
+                  className="flex w-full items-center justify-between rounded-2xl border border-gray-300 bg-gray-100 px-4 py-3 text-left text-gray-800 shadow-sm transition hover:border-gray-400 hover:bg-gray-200"
                 >
                   <div className="flex flex-col">
                     <span className="text-sm font-extrabold uppercase tracking-[0.14em]">Bible Menu</span>
-                    <span className="text-xs font-medium text-blue-100">Click here</span>
+                    <span className="text-xs font-medium text-gray-500">Click here</span>
                   </div>
                   <span className="text-xl font-bold">{gamesMenuOpen ? "-" : "+"}</span>
                 </button>
