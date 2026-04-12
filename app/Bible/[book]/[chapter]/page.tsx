@@ -2087,7 +2087,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           <div className="rounded-[26px] border border-blue-100 bg-white/90 shadow-sm backdrop-blur px-2 py-2 md:px-3 md:py-2.5">
             <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               {/* Left: Previous + Book */}
-              <div className="flex items-center justify-between gap-2 md:justify-start">
+              <div className="hidden md:flex items-center justify-between gap-2 md:justify-start">
                 <div className="flex items-center gap-1.5">
                   <div className="group relative">
                     <button
@@ -2143,7 +2143,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               </div>
 
               {/* Center: Plain text toggle + Mark finished / checklist */}
-              <div className="flex items-center justify-center gap-2">
+              <div className="hidden md:flex items-center justify-center gap-2">
                 <label className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 transition hover:bg-blue-50 hover:border-blue-200 select-none">
                   <input
                     type="checkbox"
@@ -2313,31 +2313,75 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
             {/* Mobile quick actions */}
             <div className="mt-3 md:hidden" ref={gamesMenuRef}>
-              <button
-                type="button"
-                onClick={() => {
-                  setGamesMenuOpen((value) => !value);
-                  setTranslationMenuOpen(false);
-                }}
-                aria-expanded={gamesMenuOpen}
-                aria-label="Bible menu, click here"
-                className="bb-mark-pulse flex w-full items-center justify-between rounded-2xl border border-blue-500 bg-blue-600 px-4 py-3 text-left text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700"
-              >
-                <div className="flex flex-col">
-                  <span className="text-sm font-extrabold uppercase tracking-[0.18em]">Bible Menu</span>
-                  <span className="text-sm font-medium text-blue-100">Click here</span>
-                </div>
-                <span className="text-xl font-bold">{gamesMenuOpen ? "-" : "+"}</span>
-              </button>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setGamesMenuOpen((value) => !value);
+                    setTranslationMenuOpen(false);
+                  }}
+                  aria-expanded={gamesMenuOpen}
+                  aria-label="Bible menu, click here"
+                  className="bb-mark-pulse flex w-full items-center justify-between rounded-2xl border border-blue-500 bg-blue-600 px-4 py-3 text-left text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700"
+                >
+                  <div className="flex flex-col">
+                    <span className="text-sm font-extrabold uppercase tracking-[0.14em]">Bible Menu</span>
+                    <span className="text-xs font-medium text-blue-100">Click here</span>
+                  </div>
+                  <span className="text-xl font-bold">{gamesMenuOpen ? "-" : "+"}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (isSaving) return;
+                    if (isCompleted) {
+                      setShowChecklistModal(true);
+                      return;
+                    }
+                    void handleMarkFinished();
+                  }}
+                  aria-label={isCompleted ? "Open chapter checklist" : "Mark chapter completed"}
+                  className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-left text-white shadow-lg transition ${
+                    isCompleted
+                      ? "border-emerald-500 bg-emerald-600 shadow-emerald-200 hover:bg-emerald-700"
+                      : isSaving
+                        ? "border-blue-300 bg-blue-300 cursor-not-allowed shadow-blue-100"
+                        : "border-blue-500 bg-blue-600 shadow-blue-200 hover:bg-blue-700 bb-mark-pulse"
+                  }`}
+                >
+                  <div className="flex flex-col">
+                    <span className="text-sm font-extrabold uppercase tracking-[0.08em]">
+                      {isCompleted ? "Checklist" : "Mark Complete"}
+                    </span>
+                    <span className="text-xs font-medium text-blue-100">
+                      {isCompleted ? "Open chapter tasks" : "Finish this chapter"}
+                    </span>
+                  </div>
+                  <span className="text-lg font-bold">{isCompleted ? "✓" : "☑"}</span>
+                </button>
+              </div>
 
               {gamesMenuOpen && (
                 <div className="relative z-50 mt-2 overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-xl shadow-blue-100">
                   <div className="border-b border-blue-50 bg-gradient-to-r from-blue-50 to-sky-50 px-4 py-3">
                     <p className="text-sm font-semibold text-gray-900">Chapter tools</p>
-                    <p className="text-xs text-gray-600">Open your review, switch translations, or jump into chapter games.</p>
+                    <p className="text-xs text-gray-600">Browse books and chapters, switch translations, or jump into chapter tools.</p>
                   </div>
 
                   <div className="space-y-2 p-3">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowBooksModal(true);
+                        setGamesMenuOpen(false);
+                      }}
+                      className="flex w-full items-center justify-between rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
+                    >
+                      <span>Browse Books and Chapters</span>
+                      <span>Open</span>
+                    </button>
+
                     <button
                       type="button"
                       onClick={() => {

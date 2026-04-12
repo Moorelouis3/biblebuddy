@@ -36,7 +36,7 @@ export function PointsPop() {
       const t = setTimeout(() => {
         setItems((prev) => prev.filter((item) => item.id !== id));
         timersRef.current.delete(id);
-      }, 1100);
+      }, 1750);
       timersRef.current.set(id, t);
     }
 
@@ -57,7 +57,7 @@ export function PointsPop() {
       aria-hidden="true"
       style={{
         position: "fixed",
-        top: "5.25rem",
+        bottom: "6.5rem",
         right: "1rem",
         zIndex: 9998,
         pointerEvents: "none",
@@ -102,4 +102,3 @@ export function PointsPop() {
     </div>
   );
 }
-
