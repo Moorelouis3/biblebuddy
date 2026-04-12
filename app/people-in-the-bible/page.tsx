@@ -11,7 +11,6 @@ import { BIBLE_PEOPLE_LIST } from "../../lib/biblePeopleList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { consumeCreditAction } from "../../lib/creditClient";
-import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
 import CreditEducationModal from "../../components/CreditEducationModal";
@@ -660,17 +659,7 @@ function PeopleInTheBiblePageContent() {
                  return next;
                });
 
-               void trackNavigationActionOnce({
-                 userId,
-                 username,
-                 actionType: ACTION_TYPE.person_viewed,
-                 actionLabel: selectedPerson.name,
-                 dedupeKey: `person-viewed:${personNameKey}`,
-               })
-                 .then((logged) => {
-                   if (logged) triggerPoints(1);
-                 })
-                 .catch((error) => console.error("[NAV] Failed to track person_viewed:", error));
+               triggerPoints(1);
              }
            }
          }

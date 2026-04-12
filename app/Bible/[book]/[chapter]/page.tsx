@@ -87,6 +87,7 @@ export default function BibleChapterPage() {
   const [error, setError] = useState<string | null>(null);
   const loadingRef = useRef(false);
   const [showCongratsModal, setShowCongratsModal] = useState(false);
+  const [showChecklistModal, setShowChecklistModal] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [chapterSummary, setChapterSummary] = useState<string>("");
@@ -394,17 +395,7 @@ export default function BibleChapterPage() {
               return next;
             });
 
-            void trackNavigationActionOnce({
-              userId,
-              username,
-              actionType: ACTION_TYPE.person_viewed,
-              actionLabel: selectedPerson.name,
-              dedupeKey: `person-viewed:${personNameKey}`,
-            })
-              .then((logged) => {
-                if (logged) triggerPoints(1);
-              })
-              .catch((error) => console.error("[NAV] Failed to track person_viewed:", error));
+            triggerPoints(1);
           }
         }
 
@@ -563,17 +554,7 @@ FINAL RULES:
                 return next;
               });
 
-              void trackNavigationActionOnce({
-                userId,
-                username,
-                actionType: ACTION_TYPE.place_viewed,
-                actionLabel: selectedPlace.name,
-                dedupeKey: `place-viewed:${normalizedPlace}`,
-              })
-                .then((logged) => {
-                  if (logged) triggerPoints(1);
-                })
-                .catch((error) => console.error("[NAV] Failed to track place_viewed:", error));
+              triggerPoints(1);
             }
           }
         }
@@ -722,17 +703,7 @@ RULES:
                 return next;
               });
 
-              void trackNavigationActionOnce({
-                userId,
-                username,
-                actionType: ACTION_TYPE.keyword_viewed,
-                actionLabel: selectedKeyword.name,
-                dedupeKey: `keyword-viewed:${keywordKey}`,
-              })
-                .then((logged) => {
-                  if (logged) triggerPoints(1);
-                })
-                .catch((error) => console.error("[NAV] Failed to track keyword_viewed:", error));
+              triggerPoints(1);
             }
           }
         }
@@ -2016,18 +1987,24 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           {/* CENTER: Mark as Finished */}
           <button
             type="button"
-            onClick={handleMarkFinished}
-            disabled={isSaving || isCompleted}
+            onClick={() => {
+              if (isCompleted) {
+                setShowChecklistModal(true);
+                return;
+              }
+              handleMarkFinished();
+            }}
+            disabled={isSaving}
             className={`w-full md:w-auto px-6 py-3 rounded-full text-base font-semibold shadow-sm transition ${
               isCompleted
-                ? "bg-gray-400 text-white cursor-not-allowed"
+                ? "bg-emerald-600 text-white hover:bg-emerald-700"
                 : isSaving
                 ? "bg-blue-400 text-white cursor-not-allowed"
                 : "bg-blue-600 text-white hover:bg-blue-700"
             }`}
           >
             {isCompleted
-              ? "Completed"
+              ? "Chapter Checklist"
               : isSaving
               ? "Saving..."
               : `Mark ${bookDisplayName} ${chapter} as finished`}
@@ -2077,7 +2054,18 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
       {/* CONGRATULATIONS MODAL */}
       {showCongratsModal && (
-        <CongratsModalWithConfetti levelInfo={levelInfoForModal ?? undefined} />
+        <CongratsModalWithConfetti
+          levelInfo={levelInfoForModal ?? undefined}
+          withConfetti={true}
+          onRequestClose={() => setShowCongratsModal(false)}
+        />
+      )}
+
+      {showChecklistModal && (
+        <CongratsModalWithConfetti
+          withConfetti={false}
+          onRequestClose={() => setShowChecklistModal(false)}
+        />
       )}
 
       {showBibleReaderTour && (
@@ -2508,6 +2496,8 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 // Separate component to trigger confetti when modal mounts
 function CongratsModalWithConfetti({
   levelInfo,
+  withConfetti = true,
+  onRequestClose,
 }: {
   levelInfo?: {
     level: number;
@@ -2515,6 +2505,8 @@ function CongratsModalWithConfetti({
     nextLevel: number;
     leveledUp: boolean;
   };
+  withConfetti?: boolean;
+  onRequestClose?: () => void;
 }) {
   const params = useParams();
   const router = useRouter();
@@ -2530,6 +2522,11 @@ function CongratsModalWithConfetti({
 
   const [showLevelUpModal, setShowLevelUpModal] = useState(false);
   const [showModal, setShowModal] = useState(true);
+
+  function closeModal() {
+    setShowModal(false);
+    onRequestClose?.();
+  }
 
   // Show level-up overlay when levelInfo indicates a level up
   useEffect(() => {
@@ -2576,8 +2573,12 @@ function CongratsModalWithConfetti({
     return template.replace("{chapterLabel}", `${bookDisplayName} ${chapter}`);
   }, [levelInfo]);
 
-  // Trigger confetti when component mounts
+  // Trigger confetti when component mounts (only for the "just finished" moment).
   useEffect(() => {
+    if (!withConfetti) {
+      return;
+    }
+
     function triggerConfetti() {
       const duration = 1000;
       const animationEnd = Date.now() + duration;
@@ -2656,6 +2657,29 @@ function CongratsModalWithConfetti({
     }
 
     triggerConfetti();
+  }, [withConfetti]);
+
+  const [modalUserId, setModalUserId] = useState<string | null>(null);
+  const [checklist, setChecklist] = useState<{
+    notesReviewed: boolean;
+    triviaDone: boolean;
+    scrambledDone: boolean;
+  }>({
+    notesReviewed: false,
+    triviaDone: false,
+    scrambledDone: false,
+  });
+  const [loadingChecklist, setLoadingChecklist] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    void supabase.auth.getUser().then(({ data }) => {
+      if (cancelled) return;
+      setModalUserId(data.user?.id ?? null);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const triviaBookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
@@ -2663,24 +2687,85 @@ function CongratsModalWithConfetti({
   const triviaRouteSlug =
     CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.key === resolvedTriviaBookKey)?.routeSlug ?? resolvedTriviaBookKey;
 
+  async function refreshChecklist() {
+    if (!modalUserId) {
+      return;
+    }
+
+    setLoadingChecklist(true);
+
+    try {
+      const chapterLabel = `${bookDisplayName} ${chapter}`;
+
+      const [notesRes, triviaRes, scrambledRes] = await Promise.all([
+        supabase
+          .from("master_actions")
+          .select("id")
+          .eq("user_id", modalUserId)
+          .eq("action_type", ACTION_TYPE.chapter_notes_reviewed)
+          .eq("action_label", chapterLabel)
+          .limit(1)
+          .maybeSingle(),
+        supabase
+          .from("master_actions")
+          .select("id")
+          .eq("user_id", modalUserId)
+          .eq("action_type", ACTION_TYPE.trivia_chapter_completed)
+          .ilike("action_label", `${bookDisplayName} ${chapter}%`)
+          .limit(1)
+          .maybeSingle(),
+        supabase
+          .from("master_actions")
+          .select("id")
+          .eq("user_id", modalUserId)
+          .eq("action_type", ACTION_TYPE.scrambled_chapter_completed)
+          .ilike("action_label", `${bookDisplayName} ${chapter}%`)
+          .limit(1)
+          .maybeSingle(),
+      ]);
+
+      setChecklist({
+        notesReviewed: !!notesRes.data,
+        triviaDone: !!triviaRes.data,
+        scrambledDone: !!scrambledRes.data,
+      });
+    } finally {
+      setLoadingChecklist(false);
+    }
+  }
+
+  useEffect(() => {
+    if (!showModal || !modalUserId) {
+      return;
+    }
+
+    void refreshChecklist();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showModal, modalUserId, bookDisplayName, chapter]);
+
   function handleContinueToNextChapter() {
     router.push(`/bible-trivia/${triviaRouteSlug}/${chapter}`);
-    setShowModal(false);
+    closeModal();
   }
 
   function handleReadNotes() {
     router.push(`/reading-plan/${book}/${chapter}/notes`);
-    setShowModal(false);
+    closeModal();
+  }
+
+  function handlePlayScrambled() {
+    router.push(`/bible-study-games/scrambled/${book}/${chapter}`);
+    closeModal();
   }
 
   function handleTakeNotes() {
     router.push(`/notes?book=${book}&chapter=${chapter}`);
-    setShowModal(false);
+    closeModal();
   }
 
   function handleGoHome() {
     router.push("/dashboard");
-    setShowModal(false);
+    closeModal();
   }
 
   if (!showModal) return null;
@@ -2700,7 +2785,7 @@ function CongratsModalWithConfetti({
         <div className="relative w-full max-w-3xl md:max-w-4xl rounded-[32px] bg-white shadow-2xl shadow-black/30 ring-1 ring-black/10 p-2 md:p-3 mb-10 mt-10">
           {/* Close button */}
           <button
-            onClick={() => setShowModal(false)}
+            onClick={closeModal}
             className="absolute right-4 top-3 text-sm text-gray-500 hover:text-gray-800"
           >
             ✕
@@ -2720,15 +2805,120 @@ function CongratsModalWithConfetti({
             </div>
 
             {/* Action Buttons */}
-            <div className="grid grid-cols-1 gap-4 mb-6">
-              {/* Continue to Next Chapter or Start Next Book */}
-              <button
-                type="button"
-                onClick={handleContinueToNextChapter}
-                className="px-4 py-4 rounded-2xl text-sm md:text-base font-semibold bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition text-center"
-              >
-                Take trivia quiz
-              </button>
+            <div className="mb-6">
+              <div className="mx-auto max-w-2xl rounded-3xl border border-blue-100 bg-white/80 p-4 md:p-5 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
+                  Next Steps (Earn Points)
+                </p>
+                <p className="mt-2 text-sm text-gray-700">
+                  Pick any of these to lock in what you just read. Each one moves your level forward.
+                </p>
+
+                <div className="mt-4 grid grid-cols-1 gap-3">
+                  <button
+                    type="button"
+                    onClick={handleReadNotes}
+                    className={`w-full rounded-2xl border px-4 py-4 text-left transition ${
+                      checklist.notesReviewed
+                        ? "border-green-200 bg-green-50"
+                        : "border-gray-200 bg-white hover:border-blue-200 hover:bg-blue-50"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-base font-bold text-gray-900">
+                          Review {bookDisplayName} {chapter} Notes
+                        </p>
+                        <p className="mt-1 text-sm text-gray-700">
+                          Quick recap so you know what you just read meant.
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
+                          +2 pts
+                        </span>
+                        <span className={`text-xs font-semibold ${checklist.notesReviewed ? "text-emerald-700" : "text-gray-500"}`}>
+                          {checklist.notesReviewed ? "Completed" : "Not done"}
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleContinueToNextChapter}
+                    className={`w-full rounded-2xl border px-4 py-4 text-left transition ${
+                      checklist.triviaDone
+                        ? "border-green-200 bg-green-50"
+                        : "border-gray-200 bg-white hover:border-blue-200 hover:bg-blue-50"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-base font-bold text-gray-900">Take the Trivia Quiz</p>
+                        <p className="mt-1 text-sm text-gray-700">
+                          Earn up to 5 points based on how many you get right.
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-800">
+                          Up to +5
+                        </span>
+                        <span className={`text-xs font-semibold ${checklist.triviaDone ? "text-emerald-700" : "text-gray-500"}`}>
+                          {checklist.triviaDone ? "Completed" : "Not done"}
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handlePlayScrambled}
+                    className={`w-full rounded-2xl border px-4 py-4 text-left transition ${
+                      checklist.scrambledDone
+                        ? "border-green-200 bg-green-50"
+                        : "border-gray-200 bg-white hover:border-blue-200 hover:bg-blue-50"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-base font-bold text-gray-900">Play Scrambled</p>
+                        <p className="mt-1 text-sm text-gray-700">
+                          Earn up to 5 points by solving the chapter words.
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-800">
+                          Up to +5
+                        </span>
+                        <span className={`text-xs font-semibold ${checklist.scrambledDone ? "text-emerald-700" : "text-gray-500"}`}>
+                          {checklist.scrambledDone ? "Completed" : "Not done"}
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+
+                  <div className="w-full rounded-2xl border border-dashed border-gray-300 bg-gray-50 px-4 py-4 text-left">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-base font-bold text-gray-900">Post a Reflection</p>
+                        <p className="mt-1 text-sm text-gray-700">
+                          Coming next: each chapter will have a reflection prompt you can answer.
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <span className="rounded-full bg-gray-200 px-3 py-1 text-xs font-bold text-gray-700">
+                          Soon
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {loadingChecklist ? (
+                  <p className="mt-3 text-xs text-gray-500">Checking your progress...</p>
+                ) : null}
+              </div>
             </div>
 
             {/* Go Back Home Button */}

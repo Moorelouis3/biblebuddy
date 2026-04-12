@@ -10,7 +10,6 @@ import { BIBLE_PLACES_LIST } from "../../lib/biblePlacesList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { consumeCreditAction } from "../../lib/creditClient";
-import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
 
@@ -228,17 +227,7 @@ function PlacesInTheBiblePageContent() {
                 return next;
               });
 
-              void trackNavigationActionOnce({
-                userId,
-                username,
-                actionType: ACTION_TYPE.place_viewed,
-                actionLabel: selectedPlace.name,
-                dedupeKey: `place-viewed:${normalizedPlace}`,
-              })
-                .then((logged) => {
-                  if (logged) triggerPoints(1);
-                })
-                .catch((error) => console.error("[NAV] Failed to track place_viewed:", error));
+              triggerPoints(1);
             }
           }
         }

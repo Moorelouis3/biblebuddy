@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import CreditEducationModal from "@/components/CreditEducationModal";
+import { triggerPoints } from "@/components/PointsPop";
 
 const EDUCATION_MODAL_SESSION_KEY = "bbCreditEducationModalShown";
 export default function ChapterNotesPage() {
@@ -210,12 +211,50 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         },
         body: JSON.stringify({
           actionType: ACTION_TYPE.chapter_notes_viewed,
+          actionLabel: `${bookDisplayName} ${chapterNum}`,
         }),
       });
 
       if (!creditResponse.ok) {
         const errorText = await creditResponse.text();
         throw new Error(`Failed to check credits: ${creditResponse.statusText}. ${errorText}`);
+      }
+
+      const creditPayload = (await creditResponse.json().catch(() => ({}))) as { ok?: boolean; reason?: string };
+      if (creditPayload.ok !== true) {
+        setShowCreditBlocked(true);
+        return;
+      }
+
+      // Award +2 points once per chapter (persisted via master_actions)
+      if (userIdLocal) {
+        const reviewedLabel = `${bookDisplayName} ${chapterNum}`;
+        const { data: existingReviewed, error: reviewedError } = await supabase
+          .from("master_actions")
+          .select("id")
+          .eq("user_id", userIdLocal)
+          .eq("action_type", ACTION_TYPE.chapter_notes_reviewed)
+          .eq("action_label", reviewedLabel)
+          .limit(1)
+          .maybeSingle();
+
+        if (reviewedError && reviewedError.code !== "PGRST116") {
+          console.error("[CHAPTER_NOTES] Error checking notes reviewed:", reviewedError);
+        }
+
+        if (!existingReviewed) {
+          const { error: insertReviewedError } = await supabase.from("master_actions").insert({
+            user_id: userIdLocal,
+            action_type: ACTION_TYPE.chapter_notes_reviewed,
+            action_label: reviewedLabel,
+          });
+
+          if (insertReviewedError) {
+            console.error("[CHAPTER_NOTES] Error logging chapter_notes_reviewed:", insertReviewedError);
+          } else {
+            triggerPoints(2);
+          }
+        }
       }
 
       // 3. Fetch profile after deduction
@@ -472,4 +511,3 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     </>
   );
 }
-

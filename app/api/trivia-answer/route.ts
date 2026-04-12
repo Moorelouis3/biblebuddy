@@ -28,32 +28,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Format action_label (genesis01 -> genesis_01)
-    const actionLabel = questionId.replace(/(\w+)(\d+)/, '$1_$2');
-
-    console.log('Inserting trivia answer:', { userId, actionType: ACTION_TYPE.trivia_question_answered, actionLabel, username });
-
-    // Insert into master_actions using service role (bypasses RLS)
-    const { error: insertError } = await supabase
-      .from('master_actions')
-      .insert({
-        user_id: userId,
-        action_type: ACTION_TYPE.trivia_question_answered,
-        action_label: actionLabel,
-        username: username || 'User'
-      });
-
-    if (insertError) {
-      console.error('Error inserting trivia answer:', insertError);
-      return NextResponse.json(
-        { error: 'Failed to record trivia answer' },
-        { status: 500 }
-      );
-    }
-
-    // Insert or update trivia_question_progress
-    console.log('Attempting to upsert trivia progress:', { userId, book, questionId, isCorrect });
-    
-
+    const actionLabel = questionId.replace(/(\w+)(\d+)/, "$1_$2");
 
     // Check if user has ever answered this question before (correct or incorrect)
     const { data: existing, error: selectError } = await supabase
@@ -64,9 +39,55 @@ export async function POST(request: NextRequest) {
       .eq('question_id', questionId)
       .maybeSingle();
 
+    if (selectError) {
+      console.error("Error checking trivia progress:", selectError);
+      return NextResponse.json({ error: "Failed to record trivia progress" }, { status: 500 });
+    }
+
+    console.log("Inserting trivia answer:", {
+      userId,
+      actionType: ACTION_TYPE.trivia_question_answered,
+      actionLabel,
+      username,
+    });
+
+    // Always log the attempt for analytics/engagement (worth 0 points).
+    const { error: attemptError } = await supabase.from("master_actions").insert({
+      user_id: userId,
+      action_type: ACTION_TYPE.trivia_question_answered,
+      action_label: actionLabel,
+      username: username || "User",
+    });
+
+    if (attemptError) {
+      console.error("Error inserting trivia attempt:", attemptError);
+      return NextResponse.json({ error: "Failed to record trivia answer" }, { status: 500 });
+    }
+
+    let awardedPoint = false;
+
+    // Award 1 point only the first time the user gets this question correct.
+    const wasAlreadyCorrect = existing?.is_correct === true;
+    if (isCorrect === true && !wasAlreadyCorrect) {
+      const { error: correctError } = await supabase.from("master_actions").insert({
+        user_id: userId,
+        action_type: ACTION_TYPE.trivia_question_correct,
+        action_label: actionLabel,
+        username: username || "User",
+      });
+      if (correctError) {
+        console.error("Error inserting trivia correct:", correctError);
+        return NextResponse.json({ error: "Failed to record trivia answer" }, { status: 500 });
+      }
+      awardedPoint = true;
+    }
+
+    // Insert or update trivia_question_progress
+    console.log("Attempting to upsert trivia progress:", { userId, book, questionId, isCorrect });
+
     let progressError;
     if (existing) {
-      // Update progress (do not increment correct count, DB trigger handles XP)
+      // Update progress
       const { error } = await supabase
         .from('trivia_question_progress')
         .update({
@@ -86,7 +107,6 @@ export async function POST(request: NextRequest) {
           is_correct: isCorrect
         });
       progressError = error;
-      // No direct XP/leveling logic here; DB trigger handles it
     }
 
     if (progressError) {
@@ -100,7 +120,7 @@ export async function POST(request: NextRequest) {
 
     console.log('Successfully recorded trivia progress');
     console.log('Successfully inserted trivia answer into master_actions and trivia_question_progress');
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, awardedPoint });
   } catch (error) {
     console.error('Unexpected error in trivia-answer API:', error);
     return NextResponse.json(

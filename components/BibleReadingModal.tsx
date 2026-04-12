@@ -9,7 +9,6 @@ import { ACTION_TYPE } from "../lib/actionTypes";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { consumeCreditAction } from "../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
-import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
 import CreditLimitModal from "./CreditLimitModal";
 import { LouisAvatar } from "./LouisAvatar";
 import { isChapterCompleted, markChapterDone } from "../lib/readingProgress";
@@ -429,16 +428,7 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
               return next;
             });
 
-            void trackNavigationActionOnce({
-              userId,
-              actionType: ACTION_TYPE.person_viewed,
-              actionLabel: primaryName,
-              dedupeKey: `person-viewed:${personNameKey}`,
-            })
-              .then((logged) => {
-                if (logged) triggerPoints(1);
-              })
-              .catch((error) => console.error("[NAV] Failed to track person_viewed:", error));
+            triggerPoints(1);
           }
         }
 
@@ -591,16 +581,7 @@ FINAL RULES:
                 return next;
               });
 
-              void trackNavigationActionOnce({
-                userId,
-                actionType: ACTION_TYPE.place_viewed,
-                actionLabel: selectedPlace.name,
-                dedupeKey: `place-viewed:${normalizedPlace}`,
-              })
-                .then((logged) => {
-                  if (logged) triggerPoints(1);
-                })
-                .catch((error) => console.error("[NAV] Failed to track place_viewed:", error));
+              triggerPoints(1);
             }
           }
         }
@@ -728,16 +709,7 @@ Be accurate to Scripture.`;
                 return next;
               });
 
-              void trackNavigationActionOnce({
-                userId,
-                actionType: ACTION_TYPE.keyword_viewed,
-                actionLabel: selectedKeyword.name,
-                dedupeKey: `keyword-viewed:${keywordKey}`,
-              })
-                .then((logged) => {
-                  if (logged) triggerPoints(1);
-                })
-                .catch((error) => console.error("[NAV] Failed to track keyword_viewed:", error));
+              triggerPoints(1);
             }
           }
         }

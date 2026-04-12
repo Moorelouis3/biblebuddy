@@ -41,6 +41,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
+  const [earnedCorrectCount, setEarnedCorrectCount] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [verseText, setVerseText] = useState("");
   const [loadingVerseText, setLoadingVerseText] = useState(false);
@@ -173,7 +174,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
         const username =
           meta.firstName || meta.first_name || (user?.email ? user.email.split("@")[0] : null) || "User";
 
-        await fetch("/api/trivia-answer", {
+        const response = await fetch("/api/trivia-answer", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -186,6 +187,11 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
             book: chapter.progressKey,
           }),
         });
+
+        const payload = (await response.json().catch(() => ({}))) as { awardedPoint?: boolean };
+        if (payload.awardedPoint) {
+          setEarnedCorrectCount((current) => current + 1);
+        }
       } catch (error) {
         console.error("Error recording trivia answer:", error);
       }
@@ -219,13 +225,13 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
     })
       .then((logged) => {
         if (logged) {
-          triggerPoints(5);
+          triggerPoints(earnedCorrectCount);
         }
       })
       .catch((error) => {
         console.error("[NAV] Failed to track Trivia chapter completion:", error);
       });
-  }, [showResults, userId, bookName, chapter.chapter, chapter.questions.length, correctCount, bookKey]);
+  }, [showResults, userId, bookName, chapter.chapter, chapter.questions.length, earnedCorrectCount, bookKey]);
 
   if (showResults) {
     const scrambledHref = `/bible-study-games/scrambled/${bookKey}/${chapter.chapter}`;
@@ -242,6 +248,15 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
           <p className="mt-3 text-sm text-gray-600">
             Now try Scrambled for this chapter to lock key words into memory.
           </p>
+          {earnedCorrectCount > 0 ? (
+            <p className="mt-3 text-sm font-semibold text-emerald-700">
+              You earned +{earnedCorrectCount} points for new correct answers.
+            </p>
+          ) : (
+            <p className="mt-3 text-sm text-gray-600">
+              No new points this run (you already earned points for these questions before).
+            </p>
+          )}
           <div className="mt-8 space-y-3">
             <Link
               href={scrambledHref}

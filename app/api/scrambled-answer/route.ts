@@ -26,6 +26,28 @@ export async function POST(request: NextRequest) {
 
     const actionLabel = `${bookName} ${chapter} - ${questionId} - ${answer.toLowerCase()}${reference ? ` (${reference})` : ""}`;
 
+    // Prevent farming points: only record the first successful solve per user+book+chapter+questionId.
+    const { data: existingSolve, error: existingSolveError } = await supabase
+      .from("master_actions")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("action_type", ACTION_TYPE.scrambled_word_answered)
+      .ilike("action_label", `${bookName} ${chapter} - ${questionId} -%`)
+      .limit(1)
+      .maybeSingle();
+
+    if (existingSolveError && existingSolveError.code !== "PGRST116") {
+      console.error("Error checking existing scrambled solve:", existingSolveError);
+      return NextResponse.json(
+        { error: existingSolveError.message || "Failed to record scrambled answer" },
+        { status: 500 },
+      );
+    }
+
+    if (existingSolve) {
+      return NextResponse.json({ success: true, deduped: true });
+    }
+
     let finalUsername = typeof username === "string" && username.trim().length > 0 ? username.trim() : null;
 
     if (!finalUsername) {

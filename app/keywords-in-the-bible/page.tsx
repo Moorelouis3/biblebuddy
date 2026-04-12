@@ -10,7 +10,6 @@ import { BIBLE_KEYWORDS_LIST } from "../../lib/bibleKeywordsList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { consumeCreditAction } from "../../lib/creditClient";
-import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
 
@@ -238,17 +237,7 @@ function KeywordsInTheBiblePageContent() {
                 return next;
               });
 
-              void trackNavigationActionOnce({
-                userId,
-                username,
-                actionType: ACTION_TYPE.keyword_viewed,
-                actionLabel: selectedKeyword.name,
-                dedupeKey: `keyword-viewed:${keywordKey}`,
-              })
-                .then((logged) => {
-                  if (logged) triggerPoints(1);
-                })
-                .catch((error) => console.error("[NAV] Failed to track keyword_viewed:", error));
+              triggerPoints(1);
             }
           }
         }

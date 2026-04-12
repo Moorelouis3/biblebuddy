@@ -80,6 +80,7 @@ export default function ScrambledGamePlayer({
   const [answerSlots, setAnswerSlots] = useState<Array<LetterTile | null>>([]);
   const [revealedLetters, setRevealedLetters] = useState(0);
   const [solvedCount, setSolvedCount] = useState(0);
+  const [earnedSolveCount, setEarnedSolveCount] = useState(0);
   const [status, setStatus] = useState<"idle" | "incorrect" | "correct">("idle");
   const [showResults, setShowResults] = useState(false);
   const [progressLoaded, setProgressLoaded] = useState(false);
@@ -128,6 +129,11 @@ export default function ScrambledGamePlayer({
   useEffect(() => {
     setProgressLoaded(true);
   }, []);
+
+  useEffect(() => {
+    // Reset the "new points earned" counter each time a chapter run starts.
+    setEarnedSolveCount(0);
+  }, [bookSlug, chapter.chapter]);
 
   useEffect(() => {
     let mounted = true;
@@ -229,13 +235,13 @@ export default function ScrambledGamePlayer({
     })
       .then((logged) => {
         if (logged) {
-          triggerPoints(5);
+          triggerPoints(earnedSolveCount);
         }
       })
       .catch((error) => {
         console.error("[NAV] Failed to track Scrambled chapter completion:", error);
       });
-  }, [showResults, userId, username, bookName, bookSlug, chapter.chapter, chapter.questions.length, solvedCount]);
+  }, [showResults, userId, username, bookName, bookSlug, chapter.chapter, chapter.questions.length, solvedCount, earnedSolveCount]);
 
   const visibleBuddyRounds = useMemo(() => buddyRounds.slice(0, 6), [buddyRounds]);
 
@@ -368,6 +374,12 @@ export default function ScrambledGamePlayer({
     if (!response.ok) {
       trackedQuestionIdsRef.current.delete(question.id);
       console.error("Failed to record scrambled answer", await response.text().catch(() => ""));
+      return;
+    }
+
+    const payload = (await response.json().catch(() => ({}))) as { deduped?: boolean };
+    if (payload.deduped !== true) {
+      setEarnedSolveCount((current) => current + 1);
     }
   };
 
@@ -521,6 +533,15 @@ export default function ScrambledGamePlayer({
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#426ab2]">Words correct</p>
             <p className="mt-2 text-5xl font-bold text-[#1f4f9e]">{solvedCount} / {chapter.questions.length}</p>
             <p className="mt-3 text-sm text-[#496a9b]">{encouragement}</p>
+            {earnedSolveCount > 0 ? (
+              <p className="mt-3 text-sm font-semibold text-emerald-700">
+                You earned +{earnedSolveCount} points for new solved words.
+              </p>
+            ) : (
+              <p className="mt-3 text-sm text-[#496a9b]">
+                No new points this run (you already earned points for these words before).
+              </p>
+            )}
           </div>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
