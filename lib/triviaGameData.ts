@@ -34,6 +34,34 @@ export type TriviaBookPack = {
 
 const OPTION_LABELS = ["A", "B", "C", "D"] as const;
 
+function sanitizeTriviaQuestionText(raw: string): string {
+  let text = raw;
+
+  // Strip redundant chapter/verse references from question text, since the user is already
+  // inside a specific book+chapter when answering trivia.
+  //
+  // Examples removed:
+  // - "in 3 John 1 verse 2"
+  // - "according to 2 Peter 1 verses 3-4"
+  // - "from Hebrews 2:1"
+  // - "in Genesis 1"
+  text = text.replace(
+    /\s+(?:in|from|according to)\s+(?:[1-3]\s+)?(?:[A-Za-z]+(?:\s+[A-Za-z]+)*)\s+\d+(?:\s*(?::\s*\d+|\s+(?:verses?|verse)\s+\d+(?:\s*(?:-|to|through)\s*\d+)?)\b)?/gi,
+    "",
+  );
+
+  // Also handle parenthetical references like "(Hebrews 2:1)" when they appear.
+  text = text.replace(
+    /\s*\(\s*(?:[1-3]\s+)?(?:[A-Za-z]+(?:\s+[A-Za-z]+)*)\s+\d+(?::\s*\d+)?\s*\)\s*/gi,
+    " ",
+  );
+
+  // Cleanup spacing/punctuation after removals.
+  text = text.replace(/\s{2,}/g, " ").trim();
+  text = text.replace(/\s+([?.!,;:])/g, "$1");
+  return text;
+}
+
 function createQuestion(
   id: string,
   question: string,
@@ -44,7 +72,7 @@ function createQuestion(
 ): TriviaQuestion {
   return {
     id,
-    question,
+    question: sanitizeTriviaQuestionText(question),
     options: options.map((text, index) => ({
       label: OPTION_LABELS[index],
       text,
