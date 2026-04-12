@@ -43,6 +43,10 @@
     {
       "path": "/api/cron/prayer-request-sunday",
       "schedule": "0 16,17 * * 0"
+    },
+    {
+      "path": "/api/cron/weekly-bible-report",
+      "schedule": "0 18 * * 0"
     }
   ],
   "headers": [
