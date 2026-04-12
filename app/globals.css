@@ -56,12 +56,15 @@
   text-decoration-color: rgba(153, 27, 27, 0.62);
 }
 
-/* Plain text mode for chapter reading: keep enriched HTML, remove highlight colors */
+/* Plain text mode for chapter reading: keep enriched HTML, remove all highlight styling */
 .plain-text-mode .bible-highlight,
 .plain-text-mode .bible-highlight-people,
 .plain-text-mode .bible-highlight-places,
 .plain-text-mode .bible-highlight-keywords {
   color: #000000 !important;
+  text-decoration: none !important;
+  cursor: text !important;
+  opacity: 1 !important;
 }
 
 /* ✅ Global colors */
@@ -308,3 +311,18 @@ button:active:not(:disabled),
   100% { box-shadow: 0 0 0 3px rgba(99,102,241,0.1); }
 }
 .animate-focus-pop:focus { animation: focusPop 0.3s ease-out forwards; }
+
+/* ── Bible reader "Mark Finished" pulsing button ───────────────────────────── */
+@keyframes bbMarkPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.45);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+    transform: scale(1.04);
+  }
+}
+.bb-mark-pulse {
+  animation: bbMarkPulse 1.8s ease-in-out infinite;
+}

@@ -70,10 +70,12 @@ export default function ScrambledGamePlayer({
   bookName,
   bookSlug,
   chapter,
+  onClose,
 }: {
   bookName: string;
   bookSlug: string;
   chapter: ScrambledChapterPack;
+  onClose?: () => void;
 }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [bankLetters, setBankLetters] = useState<LetterTile[]>([]);
@@ -686,9 +688,15 @@ export default function ScrambledGamePlayer({
       <div className="min-h-screen bg-[#f5f7fb] pb-14">
         <div className="mx-auto flex max-w-3xl flex-col gap-5 px-4 pt-6 sm:px-6">
           <div className="flex items-center justify-between gap-4">
-            <Link href={`/bible-study-games/scrambled/${bookSlug}`} className="text-sm font-semibold text-[#4768af] hover:text-[#35508a]">
-              Back to Chapters
-            </Link>
+            {onClose ? (
+              <button type="button" onClick={onClose} className="text-sm font-semibold text-[#4768af] hover:text-[#35508a]">
+                ← Close
+              </button>
+            ) : (
+              <Link href={`/bible-study-games/scrambled/${bookSlug}`} className="text-sm font-semibold text-[#4768af] hover:text-[#35508a]">
+                Back to Chapters
+              </Link>
+            )}
             <div className="flex items-center gap-3">
               <button
                 type="button"
@@ -698,9 +706,11 @@ export default function ScrambledGamePlayer({
               >
                 ?
               </button>
-              <Link href={`/Bible/${bookSlug}/${chapter.chapter}`} className="text-sm font-semibold text-[#4768af] hover:text-[#35508a]">
-                Read chapter
-              </Link>
+              {!onClose && (
+                <Link href={`/Bible/${bookSlug}/${chapter.chapter}`} className="text-sm font-semibold text-[#4768af] hover:text-[#35508a]">
+                  Read chapter
+                </Link>
+              )}
             </div>
           </div>
 

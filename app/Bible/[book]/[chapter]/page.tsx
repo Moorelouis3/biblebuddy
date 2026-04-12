@@ -29,6 +29,12 @@ import {
   type FeatureToursState,
 } from "../../../../lib/featureTours";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../../../../lib/triviaCatalog";
+import { getTriviaChapter } from "../../../../lib/triviaGameData";
+import { getScrambledChapter } from "../../../../lib/scrambledGameData";
+import type { TriviaChapterPack } from "../../../../lib/triviaGameData";
+import type { ScrambledChapterPack } from "../../../../lib/scrambledGameData";
+import TriviaGamePlayer from "../../../../components/TriviaGamePlayer";
+import ScrambledGamePlayer from "../../../../components/ScrambledGamePlayer";
 
 type Verse = {
   num: number;
@@ -55,6 +61,21 @@ type BibleApiResponse = {
   translation_name: string;
   translation_note: string;
 };
+
+const ALL_BIBLE_BOOKS_SORTED = [
+  "1 Chronicles","1 Corinthians","1 John","1 Kings","1 Peter",
+  "1 Samuel","1 Thessalonians","1 Timothy","2 Chronicles",
+  "2 Corinthians","2 John","2 Kings","2 Peter","2 Samuel",
+  "2 Thessalonians","2 Timothy","3 John","Acts","Amos",
+  "Colossians","Daniel","Deuteronomy","Ecclesiastes","Ephesians",
+  "Esther","Exodus","Ezekiel","Ezra","Galatians","Genesis",
+  "Habakkuk","Haggai","Hebrews","Hosea","Isaiah","James",
+  "Jeremiah","Job","Joel","John","Jonah","Joshua","Jude",
+  "Judges","Lamentations","Leviticus","Luke","Malachi","Mark",
+  "Matthew","Micah","Nahum","Nehemiah","Numbers","Obadiah",
+  "Philemon","Philippians","Proverbs","Psalms","Revelation",
+  "Romans","Ruth","Song of Solomon","Titus","Zechariah","Zephaniah",
+];
 
 // ── Louis loading skeleton for database word overlays ────────────────────────
 function LouisLoadingCard({ name }: { name: string }) {
@@ -125,6 +146,11 @@ export default function BibleChapterPage() {
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
   const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
   const [translation, setTranslation] = useState<"web" | "asv" | "kjv">("web");
+  const [translationMenuOpen, setTranslationMenuOpen] = useState(false);
+  const [plainTextMode, setPlainTextMode] = useState(false);
+  const translationMenuRef = useRef<HTMLDivElement | null>(null);
+  const [gamesMenuOpen, setGamesMenuOpen] = useState(false);
+  const gamesMenuRef = useRef<HTMLDivElement | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [showBibleReaderTour, setShowBibleReaderTour] = useState(false);
   const [bibleReaderTourStep, setBibleReaderTourStep] = useState(-1);
@@ -141,6 +167,20 @@ export default function BibleChapterPage() {
   const [isAnimatingKeyword, setIsAnimatingKeyword] = useState(false);
   const [learnedToast, setLearnedToast] = useState<string | null>(null);
   const [fromReadingPlan, setFromReadingPlan] = useState(false);
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const [reviewNotesText, setReviewNotesText] = useState<string>("");
+  const [reviewLoading, setReviewLoading] = useState(false);
+  const [reviewError, setReviewError] = useState<string | null>(null);
+  const reviewLoadingRef = useRef(false);
+  const [showTriviaModal, setShowTriviaModal] = useState(false);
+  const [showScrambledModal, setShowScrambledModal] = useState(false);
+  const [triviaChapterPack, setTriviaChapterPack] = useState<TriviaChapterPack | null>(null);
+  const [scrambledChapterPack, setScrambledChapterPack] = useState<ScrambledChapterPack | null>(null);
+  const [reviewDone, setReviewDone] = useState(false);
+  const [triviaDone, setTriviaDone] = useState(false);
+  const [scrambledDone, setScrambledDone] = useState(false);
+  const [showBooksModal, setShowBooksModal] = useState(false);
+  const [booksModalSelectedBook, setBooksModalSelectedBook] = useState<string | null>(null);
 
   // Normalize markdown functions (reused from People/Places/Keywords pages)
   function normalizePersonMarkdown(markdown: string): string {
@@ -1409,6 +1449,35 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     }
   }
 
+  // Load game chapter packs + completion state
+  useEffect(() => {
+    const bookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
+    const resolvedKey = bookKey === "songofsolomon" ? "songofsongs" : bookKey;
+    const routeEntry = CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((e) => e.key === resolvedKey);
+    const routeSlug = routeEntry?.routeSlug ?? resolvedKey;
+
+    const trivia = getTriviaChapter(resolvedKey, chapter);
+    if (trivia) setTriviaChapterPack(trivia);
+
+    const scrambled = getScrambledChapter(resolvedKey, chapter);
+    if (scrambled) setScrambledChapterPack(scrambled);
+
+    // Check completion state from master_actions
+    async function checkDone() {
+      if (!userId) return;
+      const chapterLabel = `${book.split(" ").map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(" ")} ${chapter}`;
+      const [reviewRes, triviaRes, scrambledRes] = await Promise.all([
+        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.chapter_notes_reviewed).eq("action_label", chapterLabel).limit(1).maybeSingle(),
+        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.trivia_chapter_completed).ilike("action_label", `${chapterLabel}%`).limit(1).maybeSingle(),
+        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.scrambled_chapter_completed).ilike("action_label", `${chapterLabel}%`).limit(1).maybeSingle(),
+      ]);
+      setReviewDone(!!reviewRes.data);
+      setTriviaDone(!!triviaRes.data);
+      setScrambledDone(!!scrambledRes.data);
+    }
+    checkDone();
+  }, [book, chapter, userId]);
+
   // Load chapter summary
   useEffect(() => {
     async function loadSummary() {
@@ -1419,6 +1488,130 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     }
     loadSummary();
   }, [book, chapter]);
+
+  async function openReviewModal() {
+    setShowReviewModal(true);
+    if (reviewNotesText || reviewLoadingRef.current) return;
+    reviewLoadingRef.current = true;
+    setReviewLoading(true);
+    setReviewError(null);
+    try {
+      const bookKey = book.toLowerCase().trim();
+      const chapterNum = Number(chapter);
+
+      // 1. Log view + award +2 points once per chapter
+      if (userId) {
+        const reviewedLabel = `${bookDisplayName} ${chapterNum}`;
+
+        // Log chapter_notes_viewed (every time)
+        await supabase.from("master_actions").insert({
+          user_id: userId,
+          action_type: ACTION_TYPE.chapter_notes_viewed,
+          action_label: reviewedLabel,
+        });
+
+        // Award +2 points first time only (chapter_notes_reviewed)
+        const { data: existingReviewed } = await supabase
+          .from("master_actions")
+          .select("id")
+          .eq("user_id", userId)
+          .eq("action_type", ACTION_TYPE.chapter_notes_reviewed)
+          .eq("action_label", reviewedLabel)
+          .limit(1)
+          .maybeSingle();
+
+        if (!existingReviewed) {
+          const { error: insertErr } = await supabase.from("master_actions").insert({
+            user_id: userId,
+            action_type: ACTION_TYPE.chapter_notes_reviewed,
+            action_label: reviewedLabel,
+          });
+          if (!insertErr) {
+            triggerPoints(2);
+            setReviewDone(true);
+          }
+        } else {
+          setReviewDone(true);
+        }
+      }
+
+      // 2. Check bible_notes cache first
+      const { data: cached } = await supabase
+        .from("bible_notes")
+        .select("notes_text")
+        .eq("book", bookKey)
+        .eq("chapter", chapterNum)
+        .maybeSingle();
+
+      if (cached?.notes_text && cached.notes_text.trim().length > 0) {
+        setReviewNotesText(cached.notes_text);
+        return;
+      }
+
+      // 2. Not cached — generate via AI
+      const prompt = `You are Little Louis. Generate beginner friendly notes for ${bookDisplayName} chapter ${chapter} using this exact template and rules.
+
+TEMPLATE
+# 🧠 Big Idea of the Chapter
+One short paragraph explaining the heart of the chapter in simple English.
+
+# 🎬 What's Happening…
+Include three or four cinematic story movements. Each movement follows:
+[Emoji] **Story Moment Title** (ALWAYS bold the story moment title with **)
+A short paragraph of three to four sentences explaining what happens and why it matters. Smooth, simple, friendly language.
+
+# 📌 Key Themes
+List two or three themes. Each theme is one short sentence.
+
+# 🔗 Connections to the Bigger Story
+One or two simple connections to prophecy, covenant, or Jesus mission. Beginner friendly.
+
+# 🙌 Simple Life Application
+A short paragraph of three to four sentences explaining what this chapter shows about God and what the reader is invited to believe or do.
+
+# 🏁 One Sentence Summary
+A final strong sentence that captures the message.
+
+RULES
+DO NOT include a top-level header. Start directly with "# 🧠 Big Idea of the Chapter".
+No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
+
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }),
+      });
+      if (!response.ok) throw new Error("Failed to generate review");
+      const json = await response.json();
+      let generated = (json?.reply as string) ?? "";
+      if (!generated.trim()) throw new Error("Empty response from AI");
+
+      // Clean hyphens to match existing notes format
+      generated = generated.replace(/-/g, " ");
+
+      // 3. Upsert to bible_notes
+      await supabase.from("bible_notes").upsert(
+        { book: bookKey, chapter: chapterNum, notes_text: generated },
+        { onConflict: "book,chapter" }
+      );
+
+      // 4. Re-read from DB (single source of truth)
+      const { data: saved } = await supabase
+        .from("bible_notes")
+        .select("notes_text")
+        .eq("book", bookKey)
+        .eq("chapter", chapterNum)
+        .maybeSingle();
+
+      setReviewNotesText(saved?.notes_text ?? generated);
+    } catch (err: any) {
+      console.error("Review modal error:", err);
+      setReviewError("Couldn't load the chapter review. Please try again.");
+    } finally {
+      setReviewLoading(false);
+      reviewLoadingRef.current = false;
+    }
+  }
 
   // Detect if this chapter was opened from a reading plan or devotional
   const [sourceContext, setSourceContext] = useState<{
@@ -1477,6 +1670,11 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
+
+  // Trivia/scrambled route slug for the current book
+  const _triviaBookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
+  const _resolvedTriviaBookKey = _triviaBookKey === "songofsolomon" ? "songofsongs" : _triviaBookKey;
+  const triviaRouteSlug = CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((e) => e.key === _resolvedTriviaBookKey)?.routeSlug ?? _resolvedTriviaBookKey;
 
   // Determine back link:
   // - If opened from a reading plan or devotional, send users back there.
@@ -1582,15 +1780,11 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
       setIsCompleted(true);
       triggerPoints(10);
+      setShowCongratsModal(true);
+      setIsSaving(false);
 
-      // Trigger confetti animation immediately
+      // Trigger confetti animation
       triggerConfetti();
-
-      // Open congratulations modal after a brief delay to let confetti start
-      setTimeout(() => {
-        setShowCongratsModal(true);
-        setIsSaving(false);
-      }, 100);
 
       // ACTION TRACKING: Do this asynchronously after UI updates (fire-and-forget)
       // This doesn't block the UI from updating
@@ -1753,6 +1947,36 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
   }
 
 
+  // Translation menu click-outside handler — must be before any early returns
+  useEffect(() => {
+    if (!translationMenuOpen) return;
+
+    function onDocPointerDown(e: PointerEvent) {
+      const target = e.target as Node | null;
+      if (!target) return;
+      if (!translationMenuRef.current?.contains(target)) {
+        setTranslationMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", onDocPointerDown, true);
+    return () => document.removeEventListener("pointerdown", onDocPointerDown, true);
+  }, [translationMenuOpen]);
+
+  // Games menu click-outside handler — must be before any early returns
+  useEffect(() => {
+    if (!gamesMenuOpen) return;
+    function onDocPointerDown(e: PointerEvent) {
+      const target = e.target as Node | null;
+      if (!target) return;
+      if (!gamesMenuRef.current?.contains(target)) {
+        setGamesMenuOpen(false);
+      }
+    }
+    document.addEventListener("pointerdown", onDocPointerDown, true);
+    return () => document.removeEventListener("pointerdown", onDocPointerDown, true);
+  }, [gamesMenuOpen]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -1783,6 +2007,44 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     );
   }
 
+  const totalChaptersInBook = getBookTotalChapters(book);
+
+  function goPrevChapter() {
+    if (chapter <= 1) return;
+    router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/${chapter - 1}`);
+  }
+
+  function goNextChapter() {
+    if (chapter < totalChaptersInBook) {
+      router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/${chapter + 1}`);
+      return;
+    }
+
+    // Next book in biblical order (fallback to same book if already last).
+    const BOOKS_ORDER = [
+      "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+      "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+      "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther",
+      "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon",
+      "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel",
+      "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk",
+      "Zephaniah", "Haggai", "Zechariah", "Malachi",
+      "Matthew", "Mark", "Luke", "John", "Acts",
+      "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+      "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+      "1 Timothy", "2 Timothy", "Titus", "Philemon",
+      "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude",
+      "Revelation",
+    ];
+    const currentIndex = BOOKS_ORDER.findIndex((b) => b.toLowerCase() === book.toLowerCase());
+    const nextBook =
+      currentIndex >= 0 && currentIndex < BOOKS_ORDER.length - 1
+        ? BOOKS_ORDER[currentIndex + 1]
+        : bookDisplayName;
+
+    router.push(`/Bible/${encodeURIComponent(nextBook.toLowerCase())}/1`);
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto">
@@ -1798,37 +2060,10 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           <h1 className="text-3xl font-bold">
             {bookDisplayName} {chapter}
           </h1>
-          <div
-            data-bible-tour="translations"
-            className={`flex items-center gap-2 rounded-2xl border border-gray-200 bg-white p-1 shadow-sm ${getBibleTourClasses("translations")}`}
-          >
-            {([
-              { value: "web", label: "WEB" },
-              { value: "asv", label: "ASV" },
-              { value: "kjv", label: "KJV" },
-            ] as const).map((option) => (
-              <button
-                key={option.value}
-                type="button"
-                onClick={() => setTranslation(option.value)}
-                className={`rounded-xl px-3 py-1.5 text-sm font-semibold transition ${
-                  translation === option.value
-                    ? "bg-blue-600 text-white shadow-sm"
-                    : "text-gray-700 hover:bg-blue-50"
-                }`}
-                aria-pressed={translation === option.value}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
         </div>
-        <p className="text-gray-700 mb-4">
-          Reading {bookDisplayName} chapter {chapter}.
-        </p>
 
-        {/* LOUIS INSTRUCTION */}
-        <div data-bible-tour="summary" className={`mb-5 flex items-start gap-3 ${getBibleTourClasses("summary")}`}>
+        {/* LOUIS INSTRUCTION — above the control bar */}
+        <div data-bible-tour="summary" className={`mb-4 flex items-start gap-3 ${getBibleTourClasses("summary")}`}>
           <LouisAvatar mood="bible" size={40} />
           <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
             <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
@@ -1847,11 +2082,316 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           </div>
         </div>
 
+        {/* READER CONTROL BAR */}
+        <div className="relative z-20 mb-5">
+          <div className="rounded-[26px] border border-blue-100 bg-white/90 shadow-sm backdrop-blur px-2 py-2 md:px-3 md:py-2.5">
+            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              {/* Left: Previous + Book */}
+              <div className="flex items-center justify-between gap-2 md:justify-start">
+                <div className="flex items-center gap-1.5">
+                  <div className="group relative">
+                    <button
+                      type="button"
+                      onClick={goPrevChapter}
+                      disabled={chapter <= 1}
+                      aria-label="Previous chapter"
+                      className={`flex items-center justify-center rounded-xl border px-2.5 py-1.5 transition ${
+                        chapter <= 1
+                          ? "cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400"
+                          : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50 hover:border-blue-200"
+                      }`}
+                    >
+                      <span className="text-sm font-bold">←</span>
+                      <span className="ml-1.5 hidden sm:inline text-xs font-semibold">Prev</span>
+                    </button>
+                    <div className="pointer-events-none absolute left-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                      Previous chapter
+                    </div>
+                  </div>
+
+                  <div className="group relative">
+                    <button
+                      type="button"
+                      onClick={() => setShowBooksModal(true)}
+                      aria-label="Browse all Bible books"
+                      className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
+                    >
+                      <span className="text-base">📖</span>
+                      <span className="ml-1.5 hidden sm:inline text-xs font-semibold">Books</span>
+                    </button>
+                    <div className="pointer-events-none absolute left-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                      Browse all Bible books
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right-side on mobile: Next */}
+                <div className="md:hidden group relative">
+                  <button
+                    type="button"
+                    onClick={goNextChapter}
+                    aria-label="Next chapter"
+                    className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
+                  >
+                    <span className="hidden sm:inline text-xs font-semibold">Next</span>
+                    <span className="ml-1.5 text-sm font-bold">→</span>
+                  </button>
+                  <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                    Next chapter
+                  </div>
+                </div>
+              </div>
+
+              {/* Center: Plain text toggle + Mark finished / checklist */}
+              <div className="flex items-center justify-center gap-2">
+                <label className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 transition hover:bg-blue-50 hover:border-blue-200 select-none">
+                  <input
+                    type="checkbox"
+                    checked={plainTextMode}
+                    onChange={(e) => setPlainTextMode(e.target.checked)}
+                    className="h-3.5 w-3.5 accent-blue-600"
+                  />
+                  <span className="text-xs font-semibold text-gray-800">Plain text</span>
+                </label>
+                <div className="group relative">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (isSaving) return;
+                      if (isCompleted) {
+                        setShowChecklistModal(true);
+                        return;
+                      }
+                      void handleMarkFinished();
+                    }}
+                    aria-label={isCompleted ? "Open chapter checklist" : "Mark chapter completed"}
+                    className={`relative flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-bold transition ${
+                      isCompleted
+                        ? "bg-emerald-600 text-white hover:bg-emerald-700"
+                        : isSaving
+                          ? "bg-blue-300 text-white cursor-not-allowed"
+                          : "bg-blue-600 text-white hover:bg-blue-700 bb-mark-pulse"
+                    }`}
+                  >
+                    <span className="text-base">{isCompleted ? "✅" : "☑️"}</span>
+                    <span className="text-xs font-bold">
+                      {isCompleted ? "Chapter Checklist" : "Mark Chapter Completed"}
+                    </span>
+                  </button>
+                  <div className="pointer-events-none absolute left-1/2 top-full mt-2 z-50 hidden -translate-x-1/2 w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                    {isCompleted ? "Open your chapter checklist" : "Mark this chapter as completed"}
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Translation + Review + Trivia + Scrambled + Next */}
+              <div className="hidden md:flex items-center justify-end gap-1.5">
+                <div ref={translationMenuRef} className="group relative" data-bible-tour="translations">
+                  <button
+                    type="button"
+                    onClick={() => setTranslationMenuOpen((v) => !v)}
+                    aria-haspopup="menu"
+                    aria-expanded={translationMenuOpen}
+                    className={`flex items-center justify-center rounded-xl border bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200 ${getBibleTourClasses("translations")}`}
+                  >
+                    <span className="text-base">🌐</span>
+                    <span className="ml-1.5 text-xs font-semibold">{translation.toUpperCase()}</span>
+                  </button>
+                  {!translationMenuOpen && (
+                    <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                      Translation
+                    </div>
+                  )}
+
+                  {translationMenuOpen ? (
+                    <div
+                      role="menu"
+                      className="absolute right-0 top-full mt-2 z-50 w-40 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl"
+                    >
+                      {([
+                        { value: "web", label: "WEB" },
+                        { value: "asv", label: "ASV" },
+                        { value: "kjv", label: "KJV" },
+                      ] as const).map((option) => (
+                        <button
+                          key={option.value}
+                          type="button"
+                          role="menuitem"
+                          onClick={() => {
+                            setTranslation(option.value);
+                            setTranslationMenuOpen(false);
+                          }}
+                          className={`flex w-full items-center justify-between px-4 py-2.5 text-sm font-semibold transition ${
+                            translation === option.value ? "bg-blue-600 text-white" : "text-gray-800 hover:bg-blue-50"
+                          }`}
+                        >
+                          <span>{option.label}</span>
+                          {translation === option.value ? <span>✓</span> : null}
+                        </button>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+
+                <div className="group relative">
+                  <button
+                    type="button"
+                    onClick={openReviewModal}
+                    aria-label="Chapter review"
+                    className={`flex items-center justify-center rounded-xl border px-2.5 py-1.5 transition ${
+                      reviewDone
+                        ? "border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
+                        : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50 hover:border-blue-200"
+                    }`}
+                  >
+                    <span className="text-base">{reviewDone ? "✅" : "📝"}</span>
+                    <span className="ml-1.5 hidden lg:inline text-xs font-semibold">Review</span>
+                  </button>
+                  <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                    {reviewDone ? "Review done ✓" : "Chapter review"}
+                  </div>
+                </div>
+
+                {triviaChapterPack && (
+                  <div className="group relative">
+                    <button
+                      type="button"
+                      onClick={() => setShowTriviaModal(true)}
+                      aria-label="Trivia"
+                      className={`flex items-center justify-center rounded-xl border px-2.5 py-1.5 transition ${
+                        triviaDone
+                          ? "border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
+                          : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50 hover:border-blue-200"
+                      }`}
+                    >
+                      <span className="text-base">{triviaDone ? "✅" : "🧠"}</span>
+                      <span className="ml-1.5 text-xs font-semibold">Trivia</span>
+                    </button>
+                    <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                      {triviaDone ? "Trivia done ✓" : "Chapter trivia"}
+                    </div>
+                  </div>
+                )}
+
+                {scrambledChapterPack && (
+                  <div className="group relative">
+                    <button
+                      type="button"
+                      onClick={() => setShowScrambledModal(true)}
+                      aria-label="Scrambled"
+                      className={`flex items-center justify-center rounded-xl border px-2.5 py-1.5 transition ${
+                        scrambledDone
+                          ? "border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
+                          : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50 hover:border-blue-200"
+                      }`}
+                    >
+                      <span className="text-base">{scrambledDone ? "✅" : "🔀"}</span>
+                      <span className="ml-1.5 text-xs font-semibold">Scrambled</span>
+                    </button>
+                    <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                      {scrambledDone ? "Scrambled done ✓" : "Scrambled game"}
+                    </div>
+                  </div>
+                )}
+
+                <div className="group relative">
+                  <button
+                    type="button"
+                    onClick={goNextChapter}
+                    aria-label="Next chapter"
+                    className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
+                  >
+                    <span className="text-xs font-semibold">Next</span>
+                    <span className="ml-1.5 text-sm font-bold">→</span>
+                  </button>
+                  <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                    Next chapter
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile quick actions */}
+            <div className="mt-3 grid grid-cols-3 gap-2 md:hidden">
+              <button
+                type="button"
+                onClick={openReviewModal}
+                className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition ${reviewDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50"}`}
+              >
+                {reviewDone ? "✅" : "📝"} Review
+              </button>
+              <button
+                type="button"
+                onClick={() => setTranslationMenuOpen((v) => !v)}
+                className="rounded-2xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
+              >
+                🌐 {translation.toUpperCase()}
+              </button>
+              {triviaChapterPack && (
+                <button
+                  type="button"
+                  onClick={() => setShowTriviaModal(true)}
+                  className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition ${triviaDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50"}`}
+                >
+                  {triviaDone ? "✅" : "🧠"} Trivia
+                </button>
+              )}
+              {scrambledChapterPack && (
+                <button
+                  type="button"
+                  onClick={() => setShowScrambledModal(true)}
+                  className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition ${scrambledDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50"}`}
+                >
+                  {scrambledDone ? "✅" : "🔀"} Scrambled
+                </button>
+              )}
+              <label className="flex cursor-pointer items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-800 transition hover:bg-blue-50 select-none col-span-1">
+                <input
+                  type="checkbox"
+                  checked={plainTextMode}
+                  onChange={(e) => setPlainTextMode(e.target.checked)}
+                  className="h-4 w-4 accent-blue-600"
+                />
+                Plain
+              </label>
+
+              {translationMenuOpen ? (
+                <div className="col-span-3 relative z-50" ref={translationMenuRef}>
+                  <div className="mt-1 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg">
+                    {([
+                      { value: "web", label: "WEB" },
+                      { value: "asv", label: "ASV" },
+                      { value: "kjv", label: "KJV" },
+                    ] as const).map((option) => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => {
+                          setTranslation(option.value);
+                          setTranslationMenuOpen(false);
+                        }}
+                        className={`flex w-full items-center justify-between px-4 py-3 text-sm font-semibold transition ${
+                          translation === option.value ? "bg-blue-600 text-white" : "text-gray-800 hover:bg-blue-50"
+                        }`}
+                      >
+                        <span>{option.label}</span>
+                        {translation === option.value ? <span>✓</span> : null}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+
         {/* VERSE BLOCK */}
         <div 
           data-bible-tour={currentBibleReaderTourStep?.key === "words" ? "words" : "verses"}
           ref={verseContainerRef}
           className={`bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 mb-6 max-h-[60vh] overflow-y-auto ${
+            plainTextMode ? "plain-text-mode" : ""
+          } ${
             currentBibleReaderTourStep?.key === "words"
               ? getBibleTourClasses("words")
               : getBibleTourClasses("verses")
@@ -1902,133 +2442,6 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           ))}
         </div>
 
-        {/* NAVIGATION BUTTONS ROW */}
-        <div className="w-full max-w-3xl mx-auto flex flex-col md:flex-row items-center md:items-stretch md:justify-center gap-3 mb-4">
-          {/* Previous Chapter */}
-          {chapter > 1 ? (
-            <button
-              type="button"
-              onClick={() => router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/${chapter - 1}`)}
-              className="w-full md:w-auto px-6 py-3 rounded-full text-base font-semibold bg-white text-blue-700 border-2 border-blue-200 shadow-sm hover:bg-blue-50 hover:border-blue-300 transition text-center"
-            >
-              ← Previous Chapter
-            </button>
-          ) : (
-            <button
-              type="button"
-              disabled
-              className="w-full md:w-auto px-6 py-3 rounded-full text-base font-semibold bg-gray-100 text-gray-400 border-2 border-gray-200 cursor-not-allowed transition text-center"
-            >
-              ← Previous Chapter
-            </button>
-          )}
-
-          {/* Next Chapter */}
-          {chapter < getBookTotalChapters(book) ? (
-            <button
-              type="button"
-              onClick={() => router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/${chapter + 1}`)}
-              className="w-full md:w-auto px-6 py-3 rounded-full text-base font-semibold bg-white text-blue-700 border-2 border-blue-200 shadow-sm hover:bg-blue-50 hover:border-blue-300 transition text-center"
-            >
-              Next Chapter →
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={() => {
-                // Find next book in biblical order
-                const BOOKS_ORDER = [
-                  "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
-                  "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
-                  "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther",
-                  "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon",
-                  "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel",
-                  "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk",
-                  "Zephaniah", "Haggai", "Zechariah", "Malachi",
-                  "Matthew", "Mark", "Luke", "John", "Acts",
-                  "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
-                  "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
-                  "1 Timothy", "2 Timothy", "Titus", "Philemon",
-                  "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude",
-                  "Revelation",
-                ];
-                const currentIndex = BOOKS_ORDER.findIndex(
-                  (b) => b.toLowerCase() === book.toLowerCase()
-                );
-                if (currentIndex >= 0 && currentIndex < BOOKS_ORDER.length - 1) {
-                  const nextBook = BOOKS_ORDER[currentIndex + 1];
-                  router.push(`/Bible/${encodeURIComponent(nextBook.toLowerCase())}/1`);
-                } else {
-                  // Already at last book, go to first chapter of current book
-                  router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/1`);
-                }
-              }}
-              className="w-full md:w-auto px-6 py-3 rounded-full text-base font-semibold bg-white text-blue-700 border-2 border-blue-200 shadow-sm hover:bg-blue-50 hover:border-blue-300 transition text-center"
-            >
-              Next Book →
-            </button>
-          )}
-        </div>
-
-        {/* ACTION BUTTONS ROW */}
-        <div
-          data-bible-tour="actions"
-          className={`w-full max-w-3xl mx-auto flex flex-col md:flex-row items-center md:items-stretch md:justify-between gap-3 mb-4 ${getBibleTourClasses("actions")}`}
-        >
-          {/* LEFT: Read Notes */}
-          <button
-            type="button"
-            onClick={() => router.push(`/reading-plan/${book}/${chapter}/notes`)}
-            className="w-full md:w-auto px-4 py-3 rounded-full text-sm md:text-base font-semibold bg-white text-blue-700 border-2 border-blue-200 shadow-sm hover:bg-blue-50 hover:border-blue-300 transition text-center"
-          >
-            Read {bookDisplayName} {chapter} Notes
-          </button>
-
-          {/* CENTER: Mark as Finished */}
-          <button
-            type="button"
-            onClick={() => {
-              if (isCompleted) {
-                setShowChecklistModal(true);
-                return;
-              }
-              handleMarkFinished();
-            }}
-            disabled={isSaving}
-            className={`w-full md:w-auto px-6 py-3 rounded-full text-base font-semibold shadow-sm transition ${
-              isCompleted
-                ? "bg-emerald-600 text-white hover:bg-emerald-700"
-                : isSaving
-                ? "bg-blue-400 text-white cursor-not-allowed"
-                : "bg-blue-600 text-white hover:bg-blue-700"
-            }`}
-          >
-            {isCompleted
-              ? "Chapter Checklist"
-              : isSaving
-              ? "Saving..."
-              : `Mark ${bookDisplayName} ${chapter} as finished`}
-          </button>
-
-          {/* RIGHT: Take Notes */}
-          <button
-            type="button"
-            onClick={() => router.push(`/notes?book=${book}&chapter=${chapter}`)}
-            className="w-full md:w-auto px-4 py-3 rounded-full text-sm md:text-base font-semibold bg-white text-blue-700 border-2 border-blue-200 shadow-sm hover:bg-blue-50 hover:border-blue-300 transition text-center"
-          >
-            Take Notes on {bookDisplayName} {chapter}
-          </button>
-        </div>
-
-        {/* Go Back to Bible Books Button */}
-        <div className="flex flex-col items-center gap-4 mb-6">
-          <Link
-            href={backLink}
-            className="text-sm text-blue-600 hover:underline"
-          >
-            Go Back to Bible Books
-          </Link>
-        </div>
 
         <div className="mb-10">
           <div className="mx-auto mb-4 max-w-2xl rounded-2xl border border-blue-100 bg-gradient-to-br from-white via-blue-50 to-sky-50 p-5 shadow-sm">
@@ -2052,12 +2465,177 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         </div>
       </div>
 
+      {/* CHAPTER REVIEW MODAL */}
+      {showReviewModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          style={{ backgroundColor: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)" }}
+          onClick={() => setShowReviewModal(false)}
+        >
+          <div
+            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl bg-white shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-3xl border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-blue-50 text-lg">📝</div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-blue-600">Chapter Review</p>
+                  <h2 className="text-base font-bold text-gray-900">{bookDisplayName} {chapter}</h2>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowReviewModal(false)}
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200"
+                aria-label="Close review"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Body */}
+            <div className="px-6 py-5 pb-8">
+              {reviewLoading ? (
+                <div className="flex flex-col items-center gap-4 py-12">
+                  <div style={{ animation: "bounce 1s infinite" }}>
+                    <LouisAvatar mood="think" size={60} />
+                  </div>
+                  <p className="text-sm text-gray-400 italic animate-pulse">Little Louis is preparing your review…</p>
+                </div>
+              ) : reviewError ? (
+                <div className="py-10 text-center">
+                  <p className="text-sm text-red-500">{reviewError}</p>
+                  <button
+                    type="button"
+                    onClick={() => { reviewLoadingRef.current = false; openReviewModal(); }}
+                    className="mt-3 rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+                  >
+                    Try Again
+                  </button>
+                </div>
+              ) : (
+                <div className="max-w-none space-y-5 text-gray-800">
+                  <ReactMarkdown
+                    components={{
+                      h1: ({ children }) => (
+                        <h1 className="mt-6 mb-2 text-xl font-bold text-gray-900 first:mt-0">{children}</h1>
+                      ),
+                      h2: ({ children }) => (
+                        <h2 className="mt-5 mb-2 text-lg font-bold text-gray-900">{children}</h2>
+                      ),
+                      p: ({ children }) => (
+                        <p className="text-[15px] leading-relaxed text-gray-700">{children}</p>
+                      ),
+                      strong: ({ children }) => (
+                        <strong className="font-semibold text-gray-900">{children}</strong>
+                      ),
+                      li: ({ children }) => (
+                        <li className="ml-4 list-disc text-[15px] leading-relaxed text-gray-700">{children}</li>
+                      ),
+                    }}
+                  >
+                    {reviewNotesText}
+                  </ReactMarkdown>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TRIVIA MODAL */}
+      {showTriviaModal && triviaChapterPack && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4"
+          style={{ backgroundColor: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }}
+        >
+          <div className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl bg-gray-50 shadow-2xl">
+            <button
+              type="button"
+              onClick={() => setShowTriviaModal(false)}
+              className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300"
+              aria-label="Close trivia"
+            >
+              ✕
+            </button>
+            <TriviaGamePlayer
+              bookName={bookDisplayName}
+              bookSlug={triviaRouteSlug}
+              chapter={triviaChapterPack}
+              onClose={() => {
+                setShowTriviaModal(false);
+                // Refresh trivia done state
+                if (userId) {
+                  const chapterLabel = `${bookDisplayName} ${chapter}`;
+                  supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.trivia_chapter_completed).ilike("action_label", `${chapterLabel}%`).limit(1).maybeSingle().then(({ data }) => setTriviaDone(!!data));
+                }
+              }}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* SCRAMBLED MODAL */}
+      {showScrambledModal && scrambledChapterPack && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4"
+          style={{ backgroundColor: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }}
+        >
+          <div className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#f5f7fb] shadow-2xl">
+            <button
+              type="button"
+              onClick={() => {
+                setShowScrambledModal(false);
+                // Refresh scrambled done state
+                if (userId) {
+                  const chapterLabel = `${bookDisplayName} ${chapter}`;
+                  supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.scrambled_chapter_completed).ilike("action_label", `${chapterLabel}%`).limit(1).maybeSingle().then(({ data }) => setScrambledDone(!!data));
+                }
+              }}
+              className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300"
+              aria-label="Close scrambled"
+            >
+              ✕
+            </button>
+            <ScrambledGamePlayer
+              bookName={bookDisplayName}
+              bookSlug={triviaRouteSlug}
+              chapter={scrambledChapterPack}
+              onClose={() => {
+                setShowScrambledModal(false);
+                if (userId) {
+                  const chapterLabel = `${bookDisplayName} ${chapter}`;
+                  supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.scrambled_chapter_completed).ilike("action_label", `${chapterLabel}%`).limit(1).maybeSingle().then(({ data }) => setScrambledDone(!!data));
+                }
+              }}
+            />
+          </div>
+        </div>
+      )}
+
       {/* CONGRATULATIONS MODAL */}
       {showCongratsModal && (
         <CongratsModalWithConfetti
           levelInfo={levelInfoForModal ?? undefined}
           withConfetti={true}
           onRequestClose={() => setShowCongratsModal(false)}
+          reviewDone={reviewDone}
+          triviaDone={triviaDone}
+          scrambledDone={scrambledDone}
+          onOpenReview={() => {
+            setShowCongratsModal(false);
+            openReviewModal();
+          }}
+          onOpenTrivia={() => {
+            setShowCongratsModal(false);
+            setShowTriviaModal(true);
+          }}
+          onOpenScrambled={() => {
+            setShowCongratsModal(false);
+            setShowScrambledModal(true);
+          }}
         />
       )}
 
@@ -2065,6 +2643,21 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         <CongratsModalWithConfetti
           withConfetti={false}
           onRequestClose={() => setShowChecklistModal(false)}
+          reviewDone={reviewDone}
+          triviaDone={triviaDone}
+          scrambledDone={scrambledDone}
+          onOpenReview={() => {
+            setShowChecklistModal(false);
+            openReviewModal();
+          }}
+          onOpenTrivia={() => {
+            setShowChecklistModal(false);
+            setShowTriviaModal(true);
+          }}
+          onOpenScrambled={() => {
+            setShowChecklistModal(false);
+            setShowScrambledModal(true);
+          }}
         />
       )}
 
@@ -2489,6 +3082,64 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         </div>
       )}
 
+      {/* ── Books modal ───────────────────────────────────────────────────── */}
+      {showBooksModal && (
+        <div className="fixed inset-0 z-[60] bg-black/70 flex items-start justify-center overflow-y-auto p-4 py-8">
+          <div className="relative w-full max-w-2xl rounded-3xl bg-white shadow-2xl p-6">
+            <button
+              type="button"
+              onClick={() => { setShowBooksModal(false); setBooksModalSelectedBook(null); }}
+              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200"
+            >✕</button>
+
+            {!booksModalSelectedBook ? (
+              <>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Select a Book</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {ALL_BIBLE_BOOKS_SORTED.map((b) => (
+                    <button
+                      key={b}
+                      type="button"
+                      onClick={() => setBooksModalSelectedBook(b)}
+                      className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm font-semibold text-gray-800 text-left transition hover:bg-blue-50 hover:border-blue-300"
+                    >
+                      {b}
+                    </button>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="flex items-center gap-3 mb-4">
+                  <button
+                    type="button"
+                    onClick={() => setBooksModalSelectedBook(null)}
+                    className="text-sm font-semibold text-blue-600 hover:underline"
+                  >← Books</button>
+                  <h2 className="text-xl font-bold text-gray-900">{booksModalSelectedBook}</h2>
+                </div>
+                <div className="grid grid-cols-7 gap-2">
+                  {Array.from({ length: getBookTotalChapters(booksModalSelectedBook) }, (_, i) => i + 1).map((ch) => (
+                    <button
+                      key={ch}
+                      type="button"
+                      onClick={() => {
+                        setShowBooksModal(false);
+                        setBooksModalSelectedBook(null);
+                        router.push(`/Bible/${encodeURIComponent(booksModalSelectedBook)}/${ch}`);
+                      }}
+                      className="aspect-square rounded-xl border border-gray-200 bg-gray-50 text-sm font-bold text-gray-800 transition hover:bg-blue-600 hover:text-white hover:border-blue-600 flex items-center justify-center"
+                    >
+                      {ch}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
@@ -2498,6 +3149,12 @@ function CongratsModalWithConfetti({
   levelInfo,
   withConfetti = true,
   onRequestClose,
+  onOpenReview,
+  onOpenTrivia,
+  onOpenScrambled,
+  reviewDone,
+  triviaDone,
+  scrambledDone,
 }: {
   levelInfo?: {
     level: number;
@@ -2507,6 +3164,12 @@ function CongratsModalWithConfetti({
   };
   withConfetti?: boolean;
   onRequestClose?: () => void;
+  onOpenReview?: () => void;
+  onOpenTrivia?: () => void;
+  onOpenScrambled?: () => void;
+  reviewDone?: boolean;
+  triviaDone?: boolean;
+  scrambledDone?: boolean;
 }) {
   const params = useParams();
   const router = useRouter();
@@ -2669,6 +3332,11 @@ function CongratsModalWithConfetti({
     triviaDone: false,
     scrambledDone: false,
   });
+  const effectiveChecklist = {
+    notesReviewed: reviewDone ?? checklist.notesReviewed,
+    triviaDone: triviaDone ?? checklist.triviaDone,
+    scrambledDone: scrambledDone ?? checklist.scrambledDone,
+  };
   const [loadingChecklist, setLoadingChecklist] = useState(false);
 
   useEffect(() => {
@@ -2744,17 +3412,17 @@ function CongratsModalWithConfetti({
   }, [showModal, modalUserId, bookDisplayName, chapter]);
 
   function handleContinueToNextChapter() {
-    router.push(`/bible-trivia/${triviaRouteSlug}/${chapter}`);
+    onOpenTrivia?.();
     closeModal();
   }
 
   function handleReadNotes() {
-    router.push(`/reading-plan/${book}/${chapter}/notes`);
+    onOpenReview?.();
     closeModal();
   }
 
   function handlePlayScrambled() {
-    router.push(`/bible-study-games/scrambled/${book}/${chapter}`);
+    onOpenScrambled?.();
     closeModal();
   }
 
@@ -2819,7 +3487,7 @@ function CongratsModalWithConfetti({
                     type="button"
                     onClick={handleReadNotes}
                     className={`w-full rounded-2xl border px-4 py-4 text-left transition ${
-                      checklist.notesReviewed
+                      effectiveChecklist.notesReviewed
                         ? "border-green-200 bg-green-50"
                         : "border-gray-200 bg-white hover:border-blue-200 hover:bg-blue-50"
                     }`}
@@ -2837,8 +3505,8 @@ function CongratsModalWithConfetti({
                         <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
                           +2 pts
                         </span>
-                        <span className={`text-xs font-semibold ${checklist.notesReviewed ? "text-emerald-700" : "text-gray-500"}`}>
-                          {checklist.notesReviewed ? "Completed" : "Not done"}
+                        <span className={`text-xs font-semibold ${effectiveChecklist.notesReviewed ? "text-emerald-700" : "text-gray-500"}`}>
+                          {effectiveChecklist.notesReviewed ? "Completed" : "Not done"}
                         </span>
                       </div>
                     </div>
@@ -2848,7 +3516,7 @@ function CongratsModalWithConfetti({
                     type="button"
                     onClick={handleContinueToNextChapter}
                     className={`w-full rounded-2xl border px-4 py-4 text-left transition ${
-                      checklist.triviaDone
+                      effectiveChecklist.triviaDone
                         ? "border-green-200 bg-green-50"
                         : "border-gray-200 bg-white hover:border-blue-200 hover:bg-blue-50"
                     }`}
@@ -2864,8 +3532,8 @@ function CongratsModalWithConfetti({
                         <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-800">
                           Up to +5
                         </span>
-                        <span className={`text-xs font-semibold ${checklist.triviaDone ? "text-emerald-700" : "text-gray-500"}`}>
-                          {checklist.triviaDone ? "Completed" : "Not done"}
+                        <span className={`text-xs font-semibold ${effectiveChecklist.triviaDone ? "text-emerald-700" : "text-gray-500"}`}>
+                          {effectiveChecklist.triviaDone ? "Completed" : "Not done"}
                         </span>
                       </div>
                     </div>
@@ -2875,7 +3543,7 @@ function CongratsModalWithConfetti({
                     type="button"
                     onClick={handlePlayScrambled}
                     className={`w-full rounded-2xl border px-4 py-4 text-left transition ${
-                      checklist.scrambledDone
+                      effectiveChecklist.scrambledDone
                         ? "border-green-200 bg-green-50"
                         : "border-gray-200 bg-white hover:border-blue-200 hover:bg-blue-50"
                     }`}
@@ -2891,8 +3559,8 @@ function CongratsModalWithConfetti({
                         <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-800">
                           Up to +5
                         </span>
-                        <span className={`text-xs font-semibold ${checklist.scrambledDone ? "text-emerald-700" : "text-gray-500"}`}>
-                          {checklist.scrambledDone ? "Completed" : "Not done"}
+                        <span className={`text-xs font-semibold ${effectiveChecklist.scrambledDone ? "text-emerald-700" : "text-gray-500"}`}>
+                          {effectiveChecklist.scrambledDone ? "Completed" : "Not done"}
                         </span>
                       </div>
                     </div>

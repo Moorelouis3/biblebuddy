@@ -17,6 +17,7 @@ type TriviaGamePlayerProps = {
   bookName: string;
   bookSlug: string;
   chapter: TriviaChapterPack;
+  onClose?: () => void;
 };
 
 async function fetchVerseText(reference: string) {
@@ -36,7 +37,7 @@ async function fetchVerseText(reference: string) {
   }
 }
 
-export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: TriviaGamePlayerProps) {
+export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose }: TriviaGamePlayerProps) {
   const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -139,7 +140,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
             </button>
             <button
               type="button"
-              onClick={() => router.back()}
+              onClick={() => onClose ? onClose() : router.back()}
               className="block w-full rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"
             >
               Go back
@@ -258,18 +259,30 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
             </p>
           )}
           <div className="mt-8 space-y-3">
-            <Link
-              href={scrambledHref}
-              className="block rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700"
-            >
-              Play Scrambled
-            </Link>
-            <Link
-              href={`/bible-trivia/${bookSlug}`}
-              className="block rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"
-            >
-              Back to chapters
-            </Link>
+            {!onClose && (
+              <Link
+                href={scrambledHref}
+                className="block rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700"
+              >
+                Play Scrambled
+              </Link>
+            )}
+            {onClose ? (
+              <button
+                type="button"
+                onClick={onClose}
+                className="block w-full rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"
+              >
+                Close
+              </button>
+            ) : (
+              <Link
+                href={`/bible-trivia/${bookSlug}`}
+                className="block rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"
+              >
+                Back to chapters
+              </Link>
+            )}
             <Link
               href={`/bible-trivia/${bookSlug}/${chapter.chapter}`}
               className="block rounded-xl border border-gray-200 bg-white px-4 py-3 font-semibold text-gray-700 transition hover:bg-gray-50"
@@ -286,9 +299,15 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter }: Trivia
     <div className="min-h-screen bg-gray-50 px-4 py-8">
       <div className="mx-auto max-w-2xl">
         <div className="mb-6 flex items-center justify-between gap-4">
-          <Link href={`/bible-trivia/${bookSlug}`} className="text-sm text-gray-600 transition hover:text-gray-900">
-            Back to chapters
-          </Link>
+          {onClose ? (
+            <button type="button" onClick={onClose} className="text-sm text-gray-600 transition hover:text-gray-900">
+              ← Close
+            </button>
+          ) : (
+            <Link href={`/bible-trivia/${bookSlug}`} className="text-sm text-gray-600 transition hover:text-gray-900">
+              Back to chapters
+            </Link>
+          )}
           <p className="text-sm text-gray-600">
             Question {currentQuestionIndex + 1} of {chapter.questions.length}
           </p>
