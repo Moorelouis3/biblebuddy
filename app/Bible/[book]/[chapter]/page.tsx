@@ -2189,7 +2189,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 <div ref={translationMenuRef} className="group relative" data-bible-tour="translations">
                   <button
                     type="button"
-                    onClick={() => setTranslationMenuOpen((v) => !v)}
+                    onClick={() => setTranslationMenuOpen((value) => !value)}
                     aria-haspopup="menu"
                     aria-expanded={translationMenuOpen}
                     className={`flex items-center justify-center rounded-xl border bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200 ${getBibleTourClasses("translations")}`}
@@ -2226,7 +2226,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                           }`}
                         >
                           <span>{option.label}</span>
-                          {translation === option.value ? <span>✓</span> : null}
+                          {translation === option.value ? <span>Selected</span> : null}
                         </button>
                       ))}
                     </div>
@@ -2312,75 +2312,122 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             </div>
 
             {/* Mobile quick actions */}
-            <div className="mt-3 grid grid-cols-3 gap-2 md:hidden">
+            <div className="mt-3 md:hidden" ref={gamesMenuRef}>
               <button
                 type="button"
-                onClick={openReviewModal}
-                className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition ${reviewDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50"}`}
+                onClick={() => {
+                  setGamesMenuOpen((value) => !value);
+                  setTranslationMenuOpen(false);
+                }}
+                aria-expanded={gamesMenuOpen}
+                aria-label="Bible menu, click here"
+                className="bb-mark-pulse flex w-full items-center justify-between rounded-2xl border border-blue-500 bg-blue-600 px-4 py-3 text-left text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700"
               >
-                {reviewDone ? "✅" : "📝"} Review
+                <div className="flex flex-col">
+                  <span className="text-sm font-extrabold uppercase tracking-[0.18em]">Bible Menu</span>
+                  <span className="text-sm font-medium text-blue-100">Click here</span>
+                </div>
+                <span className="text-xl font-bold">{gamesMenuOpen ? "-" : "+"}</span>
               </button>
-              <button
-                type="button"
-                onClick={() => setTranslationMenuOpen((v) => !v)}
-                className="rounded-2xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
-              >
-                🌐 {translation.toUpperCase()}
-              </button>
-              {triviaChapterPack && (
-                <button
-                  type="button"
-                  onClick={() => setShowTriviaModal(true)}
-                  className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition ${triviaDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50"}`}
-                >
-                  {triviaDone ? "✅" : "🧠"} Trivia
-                </button>
-              )}
-              {scrambledChapterPack && (
-                <button
-                  type="button"
-                  onClick={() => setShowScrambledModal(true)}
-                  className={`rounded-2xl border px-3 py-2 text-sm font-semibold transition ${scrambledDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50"}`}
-                >
-                  {scrambledDone ? "✅" : "🔀"} Scrambled
-                </button>
-              )}
-              <label className="flex cursor-pointer items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-800 transition hover:bg-blue-50 select-none col-span-1">
-                <input
-                  type="checkbox"
-                  checked={plainTextMode}
-                  onChange={(e) => setPlainTextMode(e.target.checked)}
-                  className="h-4 w-4 accent-blue-600"
-                />
-                Plain
-              </label>
 
-              {translationMenuOpen ? (
-                <div className="col-span-3 relative z-50" ref={translationMenuRef}>
-                  <div className="mt-1 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg">
-                    {([
-                      { value: "web", label: "WEB" },
-                      { value: "asv", label: "ASV" },
-                      { value: "kjv", label: "KJV" },
-                    ] as const).map((option) => (
+              {gamesMenuOpen && (
+                <div className="relative z-50 mt-2 overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-xl shadow-blue-100">
+                  <div className="border-b border-blue-50 bg-gradient-to-r from-blue-50 to-sky-50 px-4 py-3">
+                    <p className="text-sm font-semibold text-gray-900">Chapter tools</p>
+                    <p className="text-xs text-gray-600">Open your review, switch translations, or jump into chapter games.</p>
+                  </div>
+
+                  <div className="space-y-2 p-3">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        openReviewModal();
+                        setGamesMenuOpen(false);
+                      }}
+                      className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${reviewDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:border-blue-200 hover:bg-blue-50"}`}
+                    >
+                      <span>Chapter Review</span>
+                      <span>{reviewDone ? "Done" : "Open"}</span>
+                    </button>
+
+                    <div className="rounded-2xl border border-gray-200 bg-white" ref={translationMenuRef}>
                       <button
-                        key={option.value}
+                        type="button"
+                        onClick={() => setTranslationMenuOpen((value) => !value)}
+                        aria-expanded={translationMenuOpen}
+                        className="flex w-full items-center justify-between px-4 py-3 text-sm font-semibold text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
+                      >
+                        <span>Translation</span>
+                        <span>{translation.toUpperCase()}</span>
+                      </button>
+
+                      {translationMenuOpen ? (
+                        <div className="border-t border-gray-100">
+                          {([
+                            { value: "web", label: "WEB" },
+                            { value: "asv", label: "ASV" },
+                            { value: "kjv", label: "KJV" },
+                          ] as const).map((option) => (
+                            <button
+                              key={option.value}
+                              type="button"
+                              onClick={() => {
+                                setTranslation(option.value);
+                                setTranslationMenuOpen(false);
+                                setGamesMenuOpen(false);
+                              }}
+                              className={`flex w-full items-center justify-between px-4 py-3 text-sm font-semibold transition ${
+                                translation === option.value ? "bg-blue-600 text-white" : "text-gray-800 hover:bg-blue-50"
+                              }`}
+                            >
+                              <span>{option.label}</span>
+                              {translation === option.value ? <span>Selected</span> : null}
+                            </button>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+
+                    {triviaChapterPack ? (
+                      <button
                         type="button"
                         onClick={() => {
-                          setTranslation(option.value);
-                          setTranslationMenuOpen(false);
+                          setShowTriviaModal(true);
+                          setGamesMenuOpen(false);
                         }}
-                        className={`flex w-full items-center justify-between px-4 py-3 text-sm font-semibold transition ${
-                          translation === option.value ? "bg-blue-600 text-white" : "text-gray-800 hover:bg-blue-50"
-                        }`}
+                        className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${triviaDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:border-blue-200 hover:bg-blue-50"}`}
                       >
-                        <span>{option.label}</span>
-                        {translation === option.value ? <span>✓</span> : null}
+                        <span>Trivia Quiz</span>
+                        <span>{triviaDone ? "Done" : "Play"}</span>
                       </button>
-                    ))}
+                    ) : null}
+
+                    {scrambledChapterPack ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowScrambledModal(true);
+                          setGamesMenuOpen(false);
+                        }}
+                        className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${scrambledDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:border-blue-200 hover:bg-blue-50"}`}
+                      >
+                        <span>Scrambled</span>
+                        <span>{scrambledDone ? "Done" : "Play"}</span>
+                      </button>
+                    ) : null}
+
+                    <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800 transition hover:border-blue-200 hover:bg-blue-50 select-none">
+                      <span>Plain Text Mode</span>
+                      <input
+                        type="checkbox"
+                        checked={plainTextMode}
+                        onChange={(e) => setPlainTextMode(e.target.checked)}
+                        className="h-5 w-5 accent-blue-600"
+                      />
+                    </label>
                   </div>
                 </div>
-              ) : null}
+              )}
             </div>
           </div>
         </div>
@@ -3679,4 +3726,7 @@ function LevelUpOverlay({
     </div>
   );
 }
+
+
+
 
