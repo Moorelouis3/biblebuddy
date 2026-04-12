@@ -181,6 +181,8 @@ export default function BibleChapterPage() {
   const [scrambledDone, setScrambledDone] = useState(false);
   const [showBooksModal, setShowBooksModal] = useState(false);
   const [booksModalSelectedBook, setBooksModalSelectedBook] = useState<string | null>(null);
+  const reflectionSectionRef = useRef<HTMLDivElement | null>(null);
+  const [highlightReflectionSection, setHighlightReflectionSection] = useState(false);
 
   // Normalize markdown functions (reused from People/Places/Keywords pages)
   function normalizePersonMarkdown(markdown: string): string {
@@ -1705,6 +1707,21 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
     [bookDisplayName, chapter, chapterSummary]
   );
 
+  function openReflectionSection() {
+    setHighlightReflectionSection(true);
+
+    window.setTimeout(() => {
+      reflectionSectionRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 120);
+
+    window.setTimeout(() => {
+      setHighlightReflectionSection(false);
+    }, 2600);
+  }
+
   // Trivia/scrambled route slug for the current book
   const _triviaBookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
   const _resolvedTriviaBookKey = _triviaBookKey === "songofsolomon" ? "songofsongs" : _triviaBookKey;
@@ -2568,8 +2585,12 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         </div>
 
 
-        <div className="mb-10">
-          <div className="mx-auto mb-4 max-w-2xl rounded-2xl border border-blue-100 bg-gradient-to-br from-white via-blue-50 to-sky-50 p-5 shadow-sm">
+        <div className="mb-10" ref={reflectionSectionRef}>
+          <div className={`mx-auto mb-4 max-w-2xl rounded-2xl border bg-gradient-to-br from-white via-blue-50 to-sky-50 p-5 shadow-sm transition-all duration-500 ${
+            highlightReflectionSection
+              ? "border-blue-400 ring-4 ring-blue-200 shadow-[0_0_0_6px_rgba(191,219,254,0.55)]"
+              : "border-blue-100"
+          }`}>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
               Chapter Reflection
             </p>
@@ -2584,12 +2605,16 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             </p>
           </div>
 
-          <CommentSection
-            articleSlug={chapterDiscussionSlug}
-            headingText={`${bookDisplayName} ${chapter} Reflection Answers`}
-            placeholderText={`Answer the reflection question for ${bookDisplayName} ${chapter}...`}
-            submitButtonText="Post Reflection"
-          />
+          <div className={`rounded-2xl transition-all duration-500 ${
+            highlightReflectionSection ? "ring-4 ring-blue-200/80" : ""
+          }`}>
+            <CommentSection
+              articleSlug={chapterDiscussionSlug}
+              headingText={`${bookDisplayName} ${chapter} Reflection Answers`}
+              placeholderText={`Answer the reflection question for ${bookDisplayName} ${chapter}...`}
+              submitButtonText="Post Reflection"
+            />
+          </div>
         </div>
       </div>
 
@@ -2764,6 +2789,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             setShowCongratsModal(false);
             setShowScrambledModal(true);
           }}
+          onOpenReflection={() => {
+            setShowCongratsModal(false);
+            openReflectionSection();
+          }}
         />
       )}
 
@@ -2785,6 +2814,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           onOpenScrambled={() => {
             setShowChecklistModal(false);
             setShowScrambledModal(true);
+          }}
+          onOpenReflection={() => {
+            setShowChecklistModal(false);
+            openReflectionSection();
           }}
         />
       )}
@@ -3280,6 +3313,7 @@ function CongratsModalWithConfetti({
   onOpenReview,
   onOpenTrivia,
   onOpenScrambled,
+  onOpenReflection,
   reviewDone,
   triviaDone,
   scrambledDone,
@@ -3295,6 +3329,7 @@ function CongratsModalWithConfetti({
   onOpenReview?: () => void;
   onOpenTrivia?: () => void;
   onOpenScrambled?: () => void;
+  onOpenReflection?: () => void;
   reviewDone?: boolean;
   triviaDone?: boolean;
   scrambledDone?: boolean;
@@ -3554,6 +3589,11 @@ function CongratsModalWithConfetti({
     closeModal();
   }
 
+  function handleOpenReflection() {
+    onOpenReflection?.();
+    closeModal();
+  }
+
   function handleTakeNotes() {
     router.push(`/notes?book=${book}&chapter=${chapter}`);
     closeModal();
@@ -3694,21 +3734,25 @@ function CongratsModalWithConfetti({
                     </div>
                   </button>
 
-                  <div className="w-full rounded-2xl border border-dashed border-gray-300 bg-gray-50 px-4 py-4 text-left">
+                  <button
+                    type="button"
+                    onClick={handleOpenReflection}
+                    className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-4 text-left transition hover:border-blue-200 hover:bg-blue-50"
+                  >
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <p className="text-base font-bold text-gray-900">Post a Reflection</p>
                         <p className="mt-1 text-sm text-gray-700">
-                          Coming next: each chapter will have a reflection prompt you can answer.
+                          Scroll to this chapter's reflection question and answer it below.
                         </p>
                       </div>
                       <div className="flex flex-col items-end gap-2">
-                        <span className="rounded-full bg-gray-200 px-3 py-1 text-xs font-bold text-gray-700">
-                          Soon
+                        <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-800">
+                          Open
                         </span>
                       </div>
                     </div>
-                  </div>
+                  </button>
                 </div>
 
                 {loadingChecklist ? (
