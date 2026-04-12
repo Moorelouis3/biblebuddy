@@ -1260,6 +1260,35 @@ RULES:
     return summary || "";
   }
 
+  function buildChapterReflectionQuestion(bookName: string, chapterNum: number, summary: string): string {
+    const fallback = `After reading ${bookName} ${chapterNum}, what stands out to you most, and why?`;
+    const cleanedSummary = summary.replace(/\s+/g, " ").trim();
+    if (!cleanedSummary) {
+      return fallback;
+    }
+
+    let topic = cleanedSummary
+      .replace(/^this chapter\s+(shows|is about|highlights|focuses on|emphasizes|reveals)\s+/i, "")
+      .replace(/^in this chapter,\s*/i, "")
+      .replace(/^we\s+(see|watch|follow)\s+/i, "")
+      .replace(/^the chapter\s+(shows|highlights|focuses on|emphasizes)\s+/i, "")
+      .split(/[.!?]/)[0]
+      .trim()
+      .replace(/^[,;:\-–—\s]+/, "")
+      .replace(/[,;:\-–—\s]+$/, "");
+
+    if (!topic) {
+      return fallback;
+    }
+
+    if (topic.length > 120) {
+      topic = `${topic.slice(0, 117).trim()}...`;
+    }
+
+    const normalizedTopic = topic.charAt(0).toLowerCase() + topic.slice(1);
+    return `After reading ${bookName} ${chapterNum}, what stands out to you most about ${normalizedTopic}?`;
+  }
+
   // Get chapter summary from notes (generate if needed)
   async function getChapterSummary(bookName: string, chapterNum: number): Promise<string> {
     if (summaryLoadingRef.current) {
@@ -1670,6 +1699,11 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
+
+  const chapterReflectionQuestion = useMemo(
+    () => buildChapterReflectionQuestion(bookDisplayName, chapter, chapterSummary),
+    [bookDisplayName, chapter, chapterSummary]
+  );
 
   // Trivia/scrambled route slug for the current book
   const _triviaBookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
@@ -2313,7 +2347,37 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
             {/* Mobile quick actions */}
             <div className="mt-3 md:hidden" ref={gamesMenuRef}>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (isSaving) return;
+                    if (isCompleted) {
+                      setShowChecklistModal(true);
+                      return;
+                    }
+                    void handleMarkFinished();
+                  }}
+                  aria-label={isCompleted ? "Open chapter checklist" : "Mark chapter completed"}
+                  className={`flex min-h-[5.5rem] w-full items-center justify-between rounded-2xl border px-4 py-4 text-left text-white shadow-lg transition ${
+                    isCompleted
+                      ? "border-emerald-500 bg-emerald-600 shadow-emerald-200 hover:bg-emerald-700"
+                      : isSaving
+                        ? "border-blue-300 bg-blue-300 cursor-not-allowed shadow-blue-100"
+                        : "border-blue-500 bg-blue-600 shadow-blue-200 hover:bg-blue-700 bb-mark-pulse"
+                  }`}
+                  >
+                    <div className="flex flex-col">
+                      <span className="text-sm font-extrabold uppercase tracking-[0.08em]">
+                        {isCompleted ? "Checklist" : "Mark Complete"}
+                      </span>
+                      <span className="mt-1 text-xs font-medium text-blue-100">
+                        {isCompleted ? "Open chapter tasks" : "Finish this chapter"}
+                      </span>
+                    </div>
+                    <span className="text-lg font-bold">{isCompleted ? "✓" : "☑"}</span>
+                  </button>
+
                 <button
                   type="button"
                   onClick={() => {
@@ -2329,36 +2393,6 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     <span className="text-xs font-medium text-blue-100">Click here</span>
                   </div>
                   <span className="text-xl font-bold">{gamesMenuOpen ? "-" : "+"}</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (isSaving) return;
-                    if (isCompleted) {
-                      setShowChecklistModal(true);
-                      return;
-                    }
-                    void handleMarkFinished();
-                  }}
-                  aria-label={isCompleted ? "Open chapter checklist" : "Mark chapter completed"}
-                  className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-left text-white shadow-lg transition ${
-                    isCompleted
-                      ? "border-emerald-500 bg-emerald-600 shadow-emerald-200 hover:bg-emerald-700"
-                      : isSaving
-                        ? "border-blue-300 bg-blue-300 cursor-not-allowed shadow-blue-100"
-                        : "border-blue-500 bg-blue-600 shadow-blue-200 hover:bg-blue-700 bb-mark-pulse"
-                  }`}
-                >
-                  <div className="flex flex-col">
-                    <span className="text-sm font-extrabold uppercase tracking-[0.08em]">
-                      {isCompleted ? "Checklist" : "Mark Complete"}
-                    </span>
-                    <span className="text-xs font-medium text-blue-100">
-                      {isCompleted ? "Open chapter tasks" : "Finish this chapter"}
-                    </span>
-                  </div>
-                  <span className="text-lg font-bold">{isCompleted ? "✓" : "☑"}</span>
                 </button>
               </div>
 
@@ -2537,20 +2571,23 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         <div className="mb-10">
           <div className="mx-auto mb-4 max-w-2xl rounded-2xl border border-blue-100 bg-gradient-to-br from-white via-blue-50 to-sky-50 p-5 shadow-sm">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
-              Chapter Discussion
+              Chapter Reflection
             </p>
             <h2 className="mt-2 text-2xl font-bold text-gray-900">
-              Talk Through {bookDisplayName} {chapter}
+              Answer this question
             </h2>
+            <p className="mt-3 text-base font-semibold leading-relaxed text-gray-900">
+              {chapterReflectionQuestion}
+            </p>
             <p className="mt-2 text-sm leading-relaxed text-gray-700">
-              Share what stood out to you, what challenged you, what encouraged you, or a verse you do not want to forget.
+              Share your answer below and join the reflection for {bookDisplayName} {chapter}.
             </p>
           </div>
 
           <CommentSection
             articleSlug={chapterDiscussionSlug}
-            headingText={`${bookDisplayName} ${chapter} Comments`}
-            placeholderText={`What stood out to you in ${bookDisplayName} ${chapter}?`}
+            headingText={`${bookDisplayName} ${chapter} Reflection Answers`}
+            placeholderText={`Answer the reflection question for ${bookDisplayName} ${chapter}...`}
             submitButtonText="Post Reflection"
           />
         </div>
