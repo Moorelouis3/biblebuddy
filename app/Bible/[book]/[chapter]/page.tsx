@@ -106,7 +106,7 @@ export default function BibleChapterPage() {
   const [sections, setSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const loadingRef = useRef(false);
+  const chapterRequestRef = useRef(0);
   const [showCongratsModal, setShowCongratsModal] = useState(false);
   const [showChecklistModal, setShowChecklistModal] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -857,17 +857,19 @@ RULES:
 
 
   useEffect(() => {
+    const requestId = chapterRequestRef.current + 1;
+    chapterRequestRef.current = requestId;
+    let cancelled = false;
+
     async function loadChapter() {
-      // Prevent double execution in React Strict Mode
-      if (loadingRef.current) {
-        return;
-      }
-      loadingRef.current = true;
+      const isCurrentRequest = () => !cancelled && chapterRequestRef.current === requestId;
 
       try {
         console.log("[CHAPTER_LOADING] start", { book, chapter, translation });
         setLoading(true);
         setError(null);
+        setSections([]);
+        setEnrichedContent(null);
 
         const shouldUseSupabaseCache = translation === "web";
 
@@ -887,6 +889,7 @@ RULES:
             const hasCurrentHighlightVersion = supabaseData.enriched_content.includes(BIBLE_HIGHLIGHTING_VERSION_MARKER);
 
             if (hasCurrentHighlightVersion) {
+              if (!isCurrentRequest()) return;
               setEnrichedContent(supabaseData.enriched_content);
               const content = supabaseData.content_json as any;
               if (content && content.verses) {
@@ -898,7 +901,6 @@ RULES:
                 setSections(convertToSections(verses, bookDisplay));
               }
               setLoading(false);
-              loadingRef.current = false;
               return;
             }
 
@@ -912,6 +914,7 @@ RULES:
               setSections(convertToSections(verses, bookDisplay));
 
               const regeneratedEnrichedContent = await enrichBibleVerses(verses);
+              if (!isCurrentRequest()) return;
               setEnrichedContent(regeneratedEnrichedContent);
 
               await supabase
@@ -920,8 +923,8 @@ RULES:
                 .eq("book", book)
                 .eq("chapter", chapter);
 
+              if (!isCurrentRequest()) return;
               setLoading(false);
-              loadingRef.current = false;
               return;
             }
 
@@ -942,6 +945,7 @@ RULES:
               
               // Generate enriched_content and save it
               const enriched = await enrichBibleVerses(verses);
+              if (!isCurrentRequest()) return;
               setEnrichedContent(enriched);
               
               // Update database with enriched_content
@@ -951,8 +955,8 @@ RULES:
                 .eq("book", book)
                 .eq("chapter", chapter);
               
+              if (!isCurrentRequest()) return;
               setLoading(false);
-              loadingRef.current = false;
               return;
             }
           }
@@ -975,6 +979,7 @@ RULES:
 
         // Step D: Generate enriched_content from verses
         const enriched = await enrichBibleVerses(apiData.verses);
+        if (!isCurrentRequest()) return;
         setEnrichedContent(enriched);
 
         // Step E: Save to Supabase ONCE - check first to prevent duplicates (WEB only)
@@ -1011,9 +1016,11 @@ RULES:
           .split(" ")
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
           .join(" ");
+        if (!isCurrentRequest()) return;
         setSections(convertToSections(apiData.verses, bookDisplay));
         console.log("[CHAPTER_LOADING] success", { book, chapter, translation, source: "bible-api" });
       } catch (err) {
+        if (!isCurrentRequest()) return;
         console.error("Error loading chapter:", err);
         const errMessage = err instanceof Error ? err.message : "Failed to load chapter";
         setError(
@@ -1022,20 +1029,23 @@ RULES:
             : errMessage
         );
       } finally {
+        if (!isCurrentRequest()) return;
         console.log("[CHAPTER_LOADING] end", { book, chapter, translation, hasError: !!error });
         setLoading(false);
-        loadingRef.current = false;
       }
     }
 
-      if (book && Number.isFinite(chapter) && chapter > 0) {
-        loadChapter();
-      } else {
-        setError("Invalid chapter route.");
-        setLoading(false);
-        loadingRef.current = false;
-      }
-    }, [book, chapter, translation]);
+    if (book && Number.isFinite(chapter) && chapter > 0) {
+      void loadChapter();
+    } else {
+      setError("Invalid chapter route.");
+      setLoading(false);
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [book, chapter, translation]);
 
   // Get user ID and load completion progress (same as database pages)
   useEffect(() => {
@@ -1263,7 +1273,7 @@ RULES:
   }
 
   function buildChapterReflectionQuestion(bookName: string, chapterNum: number, summary: string): string {
-    const fallback = `After reading ${bookName} ${chapterNum}, what stands out to you most, and why?`;
+    const fallback = "What stands out to you most in this chapter?";
     const cleanedSummary = summary.replace(/\s+/g, " ").trim();
     if (!cleanedSummary) {
       return fallback;
@@ -1275,6 +1285,8 @@ RULES:
       .replace(/^we\s+(see|watch|follow)\s+/i, "")
       .replace(/^the chapter\s+(shows|highlights|focuses on|emphasizes)\s+/i, "")
       .split(/[.!?]/)[0]
+      .split(/\s+(while|as|and then|leading to|which leads to)\s+/i)[0]
+      .split(/\s*,\s*/)[0]
       .trim()
       .replace(/^[,;:\-–—\s]+/, "")
       .replace(/[,;:\-–—\s]+$/, "");
@@ -1283,12 +1295,12 @@ RULES:
       return fallback;
     }
 
-    if (topic.length > 120) {
-      topic = `${topic.slice(0, 117).trim()}...`;
+    if (topic.length > 90) {
+      topic = `${topic.slice(0, 87).trim()}...`;
     }
 
     const normalizedTopic = topic.charAt(0).toLowerCase() + topic.slice(1);
-    return `After reading ${bookName} ${chapterNum}, what stands out to you most about ${normalizedTopic}?`;
+    return `What stands out to you most about ${normalizedTopic}?`;
   }
 
   // Get chapter summary from notes (generate if needed)
@@ -1496,11 +1508,12 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     // Check completion state from master_actions
     async function checkDone() {
       if (!userId) return;
-      const chapterLabel = `${book.split(" ").map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(" ")} ${chapter}`;
+      const chapterLabelBase = `${book.split(" ").map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(" ")} ${chapter}`;
+      const reviewOpenedLabel = `${chapterLabelBase} Review Opened`;
       const [reviewRes, triviaRes, scrambledRes] = await Promise.all([
-        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.chapter_notes_reviewed).eq("action_label", chapterLabel).limit(1).maybeSingle(),
-        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.trivia_chapter_completed).ilike("action_label", `${chapterLabel}%`).limit(1).maybeSingle(),
-        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.scrambled_chapter_completed).ilike("action_label", `${chapterLabel}%`).limit(1).maybeSingle(),
+        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.chapter_notes_viewed).eq("action_label", reviewOpenedLabel).limit(1).maybeSingle(),
+        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.trivia_chapter_completed).ilike("action_label", `${chapterLabelBase}%`).limit(1).maybeSingle(),
+        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.scrambled_chapter_completed).ilike("action_label", `${chapterLabelBase}%`).limit(1).maybeSingle(),
       ]);
       setReviewDone(!!reviewRes.data);
       setTriviaDone(!!triviaRes.data);
@@ -1532,14 +1545,15 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
       // 1. Log view + award +2 points once per chapter
       if (userId) {
-        const reviewedLabel = `${bookDisplayName} ${chapterNum}`;
+        const reviewOpenedLabel = `${bookDisplayName} ${chapterNum} Review Opened`;
 
         // Log chapter_notes_viewed (every time)
         await supabase.from("master_actions").insert({
           user_id: userId,
           action_type: ACTION_TYPE.chapter_notes_viewed,
-          action_label: reviewedLabel,
+          action_label: reviewOpenedLabel,
         });
+        setReviewDone(true);
 
         // Award +2 points first time only (chapter_notes_reviewed)
         const { data: existingReviewed } = await supabase
@@ -1547,7 +1561,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           .select("id")
           .eq("user_id", userId)
           .eq("action_type", ACTION_TYPE.chapter_notes_reviewed)
-          .eq("action_label", reviewedLabel)
+          .eq("action_label", reviewOpenedLabel)
           .limit(1)
           .maybeSingle();
 
@@ -1555,7 +1569,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           const { error: insertErr } = await supabase.from("master_actions").insert({
             user_id: userId,
             action_type: ACTION_TYPE.chapter_notes_reviewed,
-            action_label: reviewedLabel,
+            action_label: reviewOpenedLabel,
           });
           if (!insertErr) {
             triggerPoints(2);
@@ -3526,14 +3540,14 @@ function CongratsModalWithConfetti({
     setLoadingChecklist(true);
 
     try {
-      const chapterLabel = `${bookDisplayName} ${chapter}`;
+      const chapterLabel = `${bookDisplayName} ${chapter} Review Opened`;
 
       const [notesRes, triviaRes, scrambledRes] = await Promise.all([
         supabase
           .from("master_actions")
           .select("id")
           .eq("user_id", modalUserId)
-          .eq("action_type", ACTION_TYPE.chapter_notes_reviewed)
+          .eq("action_type", ACTION_TYPE.chapter_notes_viewed)
           .eq("action_label", chapterLabel)
           .limit(1)
           .maybeSingle(),
