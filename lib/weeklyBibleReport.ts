@@ -100,10 +100,6 @@ function formatCount(count: number, singular: string, plural = `${singular}s`) {
   return `${count} ${count === 1 ? singular : plural}`;
 }
 
-function withBlankLines(lines: string[]): string[] {
-  return lines.flatMap((line, index) => (index < lines.length - 1 ? [line, ""] : [line]));
-}
-
 function getDisplayName(profile: ProfileRow | null | undefined) {
   return profile?.display_name?.trim() || profile?.username?.trim() || "friend";
 }
@@ -832,21 +828,21 @@ export function buildWeeklyReportForUser(
     "",
     "Here is your personal Bible Buddy wrap-up for this week.",
     "",
-    "",
     "𝗬𝗢𝗨𝗥 𝗪𝗘𝗘𝗞",
-    ...withBlankLines(statLines),
     "",
+    ...statLines,
     "",
     "𝗪𝗛𝗬 𝗜𝗧 𝗠𝗔𝗧𝗧𝗘𝗥𝗦",
+    "",
     encouragementLine,
     "",
-    "",
     "𝗡𝗘𝗫𝗧 𝗦𝗧𝗘𝗣𝗦",
-    ...withBlankLines(nextStepLines),
     "",
+    ...nextStepLines,
     "",
     "𝗤𝗨𝗜𝗖𝗞 𝗔𝗖𝗧𝗜𝗢𝗡𝗦",
-    ...withBlankLines(quickActionLines.length ? quickActionLines : ["Quick Action: Open The Bible|/reading"]),
+    "",
+    ...(quickActionLines.length ? quickActionLines : ["Quick Action: Open The Bible|/reading"]),
     "",
     "Keep going.",
     "Louis",
@@ -865,3 +861,4 @@ export function buildWeeklyReportForUser(
     },
   };
 }
+
