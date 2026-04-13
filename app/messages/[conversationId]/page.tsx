@@ -883,6 +883,10 @@ export default function ConversationPage({
               );
               const bodyLines = presentation.body.split(/\r?\n/);
               const shouldInlineActionsUnderHeader = bodyLines.some((line) => isQuickActionsHeader(line)) && messageActions.length > 0;
+              const shouldInlineActionsBeforeSignature =
+                !shouldInlineActionsUnderHeader &&
+                messageActions.length > 0 &&
+                bodyLines.some((line) => line.trim().toLowerCase() === "keep going.");
               const isEditing = editingMessageId === msg.id;
               const isSeen = msg.id === latestSeenMessageId;
               const canEdit = isMine && msg.id === latestOwnMessageId;
@@ -986,31 +990,30 @@ export default function ConversationPage({
                                   return null;
                                 }
 
-                                return (
-                                  <div
-                                    key={`msg-line:${msg.id}:${lineIndex}`}
-                                    className={isWeeklyReportHeader(line) ? "mt-3 mb-2 font-black tracking-[0.14em]" : ""}
-                                  >
-                                    {splitInlineMessageLinks(line).map((segment, segmentIndex) =>
-                                      segment.type === "link" ? (
+                                const isKeepGoingLine = line.trim().toLowerCase() === "keep going.";
+                                const shouldInsertButtonsHere = shouldInlineActionsBeforeSignature && isKeepGoingLine;
+
+                                if (isQuickActionsHeader(line) && messageActions.length > 0) {
+                                  return (
+                                    <div key={`msg-actions:${msg.id}:${lineIndex}`} className="mt-2 flex flex-wrap gap-2">
+                                      {messageActions.map((action, index) => (
                                         <button
-                                          key={`msg-link:${msg.id}:${lineIndex}:${segmentIndex}`}
+                                          key={`${action.label}-${action.href}-${index}`}
                                           type="button"
-                                          onClick={() => handleActionNavigation(segment.href)}
-                                          className="font-semibold text-[#8d5d38] underline underline-offset-2"
+                                          onClick={() => handleActionNavigation(action.href)}
+                                          className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[#d8eadf] bg-[#eef7f1] px-4 py-2 text-sm font-semibold text-[#2f6f4f] transition hover:bg-[#e4f3ea]"
                                         >
-                                          {segment.label}
+                                          {action.label}
                                         </button>
-                                      ) : (
-                                        <MentionText
-                                          key={`msg-text:${msg.id}:${lineIndex}:${segmentIndex}`}
-                                          text={segment.value}
-                                          items={mentionItems}
-                                        />
-                                      ),
-                                    )}
-                                    {isQuickActionsHeader(line) && shouldInlineActionsUnderHeader && (
-                                      <div className="mt-2 flex flex-wrap gap-2">
+                                      ))}
+                                    </div>
+                                  );
+                                }
+
+                                return (
+                                  <div key={`msg-line:${msg.id}:${lineIndex}`}>
+                                    {shouldInsertButtonsHere && (
+                                      <div className="mb-3 flex flex-wrap gap-2">
                                         {messageActions.map((action, index) => (
                                           <button
                                             key={`${action.label}-${action.href}-${index}`}
@@ -1023,11 +1026,31 @@ export default function ConversationPage({
                                         ))}
                                       </div>
                                     )}
+                                    <div className={isWeeklyReportHeader(line) ? "mt-3 mb-2 font-black tracking-[0.14em]" : ""}>
+                                      {splitInlineMessageLinks(line).map((segment, segmentIndex) =>
+                                        segment.type === "link" ? (
+                                          <button
+                                            key={`msg-link:${msg.id}:${lineIndex}:${segmentIndex}`}
+                                            type="button"
+                                            onClick={() => handleActionNavigation(segment.href)}
+                                            className="font-semibold text-[#8d5d38] underline underline-offset-2"
+                                          >
+                                            {segment.label}
+                                          </button>
+                                        ) : (
+                                          <MentionText
+                                            key={`msg-text:${msg.id}:${lineIndex}:${segmentIndex}`}
+                                            text={segment.value}
+                                            items={mentionItems}
+                                          />
+                                        ),
+                                      )}
+                                    </div>
                                   </div>
                                 );
                               })}
                             </div>
-                            {messageActions.length > 0 && !shouldInlineActionsUnderHeader && (
+                            {messageActions.length > 0 && !shouldInlineActionsUnderHeader && !shouldInlineActionsBeforeSignature && (
                               <div className="mt-3 flex flex-wrap gap-2">
                                 {messageActions.map((action, index) => (
                                   <button
