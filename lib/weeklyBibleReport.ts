@@ -78,6 +78,7 @@ type Recommendation = {
   priority: number;
   line: string;
   action?: WeeklyReportAction | null;
+  quickActionLabel?: string;
 };
 
 function toSentenceCaseList(items: string[]): string {
@@ -524,6 +525,73 @@ function getSeriesRecommendation(
   return null;
 }
 
+function getUpgradeRecommendation(): Recommendation {
+  return {
+    key: "upgrade",
+    priority: 95,
+    line: "Upgrade to Pro Buddy so you can move through Bible Buddy without locks, open more study tools, and go deeper whenever you want to.",
+    action: { label: "Upgrade to Pro Buddy", href: "/upgrade" },
+    quickActionLabel: "Upgrade to Pro Buddy",
+  };
+}
+
+function getStreakRecommendation(profile: ProfileRow | undefined, actionCounts: Map<string, number>): Recommendation {
+  const streak = profile?.current_streak ?? 0;
+
+  if (streak <= 5) {
+    const action =
+      (actionCounts.get("trivia_chapter_completed") ?? 0) === 0
+        ? { label: "Try chapter trivia", href: "/bible-trivia/books" }
+        : { label: "Play Scrambled", href: "/bible-study-games/scrambled/books" };
+    return {
+      key: "streak-early",
+      priority: 72,
+      line: `You are still in the part where momentum matters most. Protect this ${formatCount(Math.max(streak, 1), "day")} streak and keep showing up so your level keeps moving.`,
+      action,
+      quickActionLabel: action.label,
+    };
+  }
+
+  if (streak < 15) {
+    return {
+      key: "streak-building",
+      priority: 72,
+      line: "You are building a real daily habit now. Stay steady, because this is the stretch where consistency starts changing how Bible Buddy feels to you.",
+      action: { label: "Read today's chapter", href: "/reading" },
+      quickActionLabel: "Read today's chapter",
+    };
+  }
+
+  if (streak < 25) {
+    return {
+      key: "streak-strong",
+      priority: 72,
+      line: `A ${formatCount(streak, "day")} streak is real momentum. Keep going, because your level is proving that this is turning into part of your daily life.`,
+      action: { label: "Keep the streak alive", href: "/reading" },
+      quickActionLabel: "Keep the streak alive",
+    };
+  }
+
+  if (streak < 30) {
+    const daysLeft = 30 - streak;
+    return {
+      key: "streak-countdown",
+      priority: 72,
+      line: `You are only ${daysLeft} ${daysLeft === 1 ? "day" : "days"} away from the fire emoji. Do not let up now, because you are right at the edge of it.`,
+      action: { label: "Finish one chapter today", href: "/reading" },
+      quickActionLabel: "Finish one chapter today",
+    };
+  }
+
+  return {
+    key: "streak-fire",
+    priority: 72,
+    line: "You already earned the fire emoji. Now the goal is to protect it and keep climbing one level at a time.",
+    action: { label: "Keep the fire going", href: "/reading" },
+    quickActionLabel: "Keep the fire going",
+  };
+}
+
 function pickRecommendations(
   userId: string,
   profile: ProfileRow | undefined,
@@ -549,8 +617,9 @@ function pickRecommendations(
     recommendations.push({
       key: "profile",
       priority: 100,
-      line: `Finish your profile by adding ${toSentenceCaseList(missingProfileBits.length ? missingProfileBits : ["the last missing details"])} so Bible Buddy feels more personal and people recognize you right away.`,
-      action: { label: "Finish Profile", href: "/settings" },
+      line: `Finish your profile by adding ${toSentenceCaseList(missingProfileBits.length ? missingProfileBits : ["the last missing details"])} so your page feels like you and the community side of Bible Buddy feels more real.`,
+      action: { label: "Finish your profile", href: `/profile/${userId}` },
+      quickActionLabel: "Finish your profile",
     });
   }
 
@@ -558,8 +627,9 @@ function pickRecommendations(
     recommendations.push({
       key: "notifications",
       priority: 96,
-      line: "Turn on notifications so you do not miss new messages, study updates, or the moments when the app is trying to pull you back into Scripture.",
-      action: { label: "Open Settings", href: "/settings" },
+      line: "Turn on notifications so Bible Buddy can actually pull you back in when a new message, study update, or important moment shows up.",
+      action: { label: "Turn on notifications", href: "/settings" },
+      quickActionLabel: "Turn on notifications",
     });
   }
 
@@ -571,6 +641,7 @@ function pickRecommendations(
       priority: 92,
       line: `Keep your devotional momentum going with Day ${activeDevotional.nextDay} of ${activeDevotional.devotional.title}.`,
       action: { label: `Continue ${activeDevotional.devotional.title}`, href: `/devotionals/${activeDevotional.devotional.id}` },
+      quickActionLabel: `Continue ${activeDevotional.devotional.title}`,
     });
   } else if ((actionCounts.get("devotional_day_completed") ?? 0) === 0) {
     recommendations.push({
@@ -578,6 +649,7 @@ function pickRecommendations(
       priority: 89,
       line: "Start a devotional this week if you want a simple guided way to stay consistent instead of deciding from scratch what to read every day.",
       action: { label: "Start a Devotional", href: "/devotionals" },
+      quickActionLabel: "Start a Devotional",
     });
   }
 
@@ -588,6 +660,7 @@ function pickRecommendations(
       priority: 87,
       line: seriesRecommendation.line,
       action: seriesRecommendation.action,
+      quickActionLabel: seriesRecommendation.action.label,
     });
   }
 
@@ -597,6 +670,7 @@ function pickRecommendations(
       priority: 86,
       line: "You were in the app this week, but you did not finish a Bible chapter yet. Reading one chapter is still the fastest way to move your understanding forward.",
       action: { label: "Open The Bible", href: "/reading" },
+      quickActionLabel: "Open The Bible",
     });
   }
 
@@ -606,6 +680,7 @@ function pickRecommendations(
       priority: 84,
       line: "Try a chapter trivia quiz after you read. It is one of the easiest ways to make sure the chapter actually stayed with you.",
       action: { label: "Take Trivia", href: "/bible-trivia/books" },
+      quickActionLabel: "Take Trivia",
     });
   }
 
@@ -615,6 +690,7 @@ function pickRecommendations(
       priority: 82,
       line: "Play one Scrambled round this week. It is a light way to lock Bible words from the chapter into your memory.",
       action: { label: "Play Scrambled", href: "/bible-study-games/scrambled/books" },
+      quickActionLabel: "Play Scrambled",
     });
   }
 
@@ -624,6 +700,7 @@ function pickRecommendations(
       priority: 80,
       line: "Open a chapter review after you read so you do not just finish the chapter and move on without slowing down to understand it.",
       action: { label: "Open The Bible", href: "/reading" },
+      quickActionLabel: "Open The Bible",
     });
   }
 
@@ -633,6 +710,7 @@ function pickRecommendations(
       priority: 78,
       line: "Capture at least one note or highlight this week. Writing something down is usually where the chapter starts becoming your own.",
       action: { label: "Open Notes", href: "/notes" },
+      quickActionLabel: "Open Notes",
     });
   }
 
@@ -642,20 +720,29 @@ function pickRecommendations(
       priority: 74,
       line: "Say something in the study group this week. Even one comment can turn Bible Buddy from a tool into an actual community for you.",
       action: { label: "Open Study Group", href: "/study-groups" },
+      quickActionLabel: "Open Study Group",
     });
   }
 
   recommendations.sort((a, b) => b.priority - a.priority);
-  const uniqueRecommendations: Recommendation[] = [];
-  const seen = new Set<string>();
-  for (const recommendation of recommendations) {
-    if (seen.has(recommendation.key)) continue;
-    seen.add(recommendation.key);
-    uniqueRecommendations.push(recommendation);
-    if (uniqueRecommendations.length === 3) break;
+  const first = recommendations[0] ?? {
+    key: "default-read",
+    priority: 1,
+    line: "Read one chapter this week so you keep moving instead of letting the momentum disappear.",
+    action: { label: "Open The Bible", href: "/reading" },
+    quickActionLabel: "Open The Bible",
+  };
+  const third = getStreakRecommendation(profile, actionCounts);
+
+  if (profile?.is_paid !== true) {
+    return [first, getUpgradeRecommendation(), third];
   }
 
-  return uniqueRecommendations;
+  if (first.key === third.key) {
+    return [first];
+  }
+
+  return [first, third];
 }
 
 export function buildWeeklyReportForUser(
@@ -684,53 +771,62 @@ export function buildWeeklyReportForUser(
   const groupMessages = count("group_message_sent");
 
   const statLines = [
-    chaptersRead ? `- You finished ${formatCount(chaptersRead, "Bible chapter")}.` : null,
-    devotionalsCompleted ? `- You completed ${formatCount(devotionalsCompleted, "devotional day")}.` : null,
-    chapterReviews ? `- You reviewed ${formatCount(chapterReviews, "chapter review")}.` : null,
-    triviaCompleted ? `- You finished ${formatCount(triviaCompleted, "trivia chapter")}.` : null,
-    scrambledCompleted ? `- You finished ${formatCount(scrambledCompleted, "Scrambled chapter")}.` : null,
+    chaptersRead ? `📖 You finished ${formatCount(chaptersRead, "Bible chapter")}.` : null,
+    devotionalsCompleted ? `🌿 You completed ${formatCount(devotionalsCompleted, "devotional day")}.` : null,
+    chapterReviews ? `📝 You reviewed ${formatCount(chapterReviews, "chapter review")}.` : null,
+    triviaCompleted ? `🧠 You finished ${formatCount(triviaCompleted, "trivia chapter")}.` : null,
+    scrambledCompleted ? `🔤 You finished ${formatCount(scrambledCompleted, "Scrambled chapter")}.` : null,
     peopleLearned || placesLearned || keywordsLearned
-      ? `- You explored ${toSentenceCaseList([
+      ? `🔎 You explored ${toSentenceCaseList([
           peopleLearned ? formatCount(peopleLearned, "person") : "",
           placesLearned ? formatCount(placesLearned, "place") : "",
           keywordsLearned ? formatCount(keywordsLearned, "keyword") : "",
         ].filter(Boolean))}.`
       : null,
     notesCreated || highlights
-      ? `- You made ${toSentenceCaseList([
+      ? `✍️ You made ${toSentenceCaseList([
           notesCreated ? formatCount(notesCreated, "note") : "",
           highlights ? formatCount(highlights, "verse highlight") : "",
         ].filter(Boolean))}.`
       : null,
     commentsPosted || repliesPosted || groupMessages
-      ? `- You showed up in community with ${toSentenceCaseList([
+      ? `🤝 You showed up in community with ${toSentenceCaseList([
           commentsPosted ? formatCount(commentsPosted, "comment") : "",
           repliesPosted ? formatCount(repliesPosted, "reply") : "",
           groupMessages ? formatCount(groupMessages, "message") : "",
         ].filter(Boolean))}.`
       : null,
-    `- You were active on ${formatCount(activeDays, "day")} this week and logged ${formatCount(actions.length, "action")}.`,
-    profile?.current_streak ? `- Your current streak is ${formatCount(profile.current_streak, "day")}.` : null,
-    profile?.current_level ? `- You are holding Level ${profile.current_level}${profile.member_badge ? ` with the ${profile.member_badge} badge` : ""}.` : null,
+    `📅 You were active on ${formatCount(activeDays, "day")} this week and logged ${formatCount(actions.length, "action")}.`,
+    profile?.current_streak ? `🔥 Your current streak is ${formatCount(profile.current_streak, "day")}.` : null,
+    profile?.current_level ? `⭐ You are holding Level ${profile.current_level}${profile.member_badge ? ` with the ${profile.member_badge} badge` : ""}.` : null,
   ].filter(Boolean) as string[];
 
   const recommendations = pickRecommendations(userId, profile, actions, context);
   const encouragementLine =
     chaptersRead + devotionalsCompleted + triviaCompleted + scrambledCompleted >= 3
-      ? "You put in real reps this week, and that kind of consistency does add up."
-      : "Even a small week still matters, because it keeps you connected to Scripture instead of drifting away from it.";
+      ? `You put in real reps this week, and that kind of consistency is exactly how your level keeps becoming more real. Level ${profile?.current_level ?? 1} means you are not just opening the app, you are actually growing in it.`
+      : `Even a small week still matters, because it keeps you connected to Scripture instead of drifting away from it. And Level ${profile?.current_level ?? 1} is still proof that the little things you do here are adding up.`;
+
+  const quickActionLines = recommendations
+    .map((recommendation) =>
+      recommendation.action && recommendation.quickActionLabel
+        ? `Quick Action: ${recommendation.quickActionLabel}|${recommendation.action.href}`
+        : null,
+    )
+    .filter(Boolean) as string[];
 
   const message = [
     `Hey ${firstName},`,
     "",
-    `I wanted to send you your Bible Buddy weekly report for ${formatWeekRange(weekKey)}.`,
+    "Here is your personal Bible Buddy wrap-up for this week.",
     "",
-    "Here is what you did this week:",
+    "𝗬𝗢𝗨𝗥 𝗪𝗘𝗘𝗞",
     ...statLines,
     "",
+    "𝗪𝗛𝗬 𝗜𝗧 𝗠𝗔𝗧𝗧𝗘𝗥𝗦",
     encouragementLine,
     "",
-    "My 3 recommendations for your next step:",
+    "𝗡𝗘𝗫𝗧 𝗦𝗧𝗘𝗣𝗦",
     ...(recommendations.length
       ? recommendations.map((recommendation, index) => `${index + 1}. ${recommendation.line}`)
       : [
@@ -739,13 +835,16 @@ export function buildWeeklyReportForUser(
           "3. Play one Scrambled round so the chapter sticks a little better.",
         ]),
     "",
+    "𝗤𝗨𝗜𝗖𝗞 𝗔𝗖𝗧𝗜𝗢𝗡𝗦",
+    ...(quickActionLines.length ? quickActionLines : ["Quick Action: Open The Bible|/reading"]),
+    "",
     "Keep going.",
     "Louis",
   ].join("\n");
 
   return {
     message,
-    action: recommendations[0]?.action ?? null,
+    action: null,
     stats: {
       activeDays,
       totalActions: actions.length,

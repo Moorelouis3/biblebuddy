@@ -6,6 +6,7 @@ export type DirectMessageAction = {
 export type DirectMessagePresentation = {
   body: string;
   action: DirectMessageAction | null;
+  actions: DirectMessageAction[];
 };
 
 type SupabaseLikeError = {
@@ -36,23 +37,62 @@ function stripDanglingWhitespace(text: string): string {
     .trim();
 }
 
+function extractInlineActions(content: string): { body: string; actions: DirectMessageAction[] } {
+  const actions: DirectMessageAction[] = [];
+  const bodyLines: string[] = [];
+
+  for (const rawLine of content.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line.toLowerCase().startsWith("action button:")) {
+      bodyLines.push(rawLine);
+      continue;
+    }
+
+    const payload = line.slice("action button:".length).trim();
+    const separatorIndex = payload.indexOf("|");
+    if (separatorIndex === -1) {
+      bodyLines.push(rawLine);
+      continue;
+    }
+
+    const label = payload.slice(0, separatorIndex).trim();
+    const href = payload.slice(separatorIndex + 1).trim();
+    if (!label || !href) {
+      bodyLines.push(rawLine);
+      continue;
+    }
+
+    actions.push({ label, href });
+  }
+
+  return {
+    body: stripDanglingWhitespace(bodyLines.join("\n")),
+    actions,
+  };
+}
+
 export function extractLegacyDirectMessageAction(content: string): DirectMessagePresentation {
+  const { body: contentWithoutInlineActions, actions: inlineActions } = extractInlineActions(content);
+
   for (const pattern of LEGACY_ACTION_PATTERNS) {
-    const match = content.match(pattern.regex);
+    const match = contentWithoutInlineActions.match(pattern.regex);
     if (match) {
+      const primaryAction = {
+        label: pattern.label,
+        href: match[1],
+      };
       return {
-        body: stripDanglingWhitespace(content.replace(match[0], "")),
-        action: {
-          label: pattern.label,
-          href: match[1],
-        },
+        body: stripDanglingWhitespace(contentWithoutInlineActions.replace(match[0], "")),
+        action: primaryAction,
+        actions: [primaryAction, ...inlineActions],
       };
     }
   }
 
   return {
-    body: content,
-    action: null,
+    body: stripDanglingWhitespace(contentWithoutInlineActions),
+    action: inlineActions[0] ?? null,
+    actions: inlineActions,
   };
 }
 
@@ -63,12 +103,17 @@ export function getDirectMessagePresentation(
 ): DirectMessagePresentation {
   if (actionLabel && actionHref) {
     const legacyPresentation = extractLegacyDirectMessageAction(content);
+    const primaryAction = {
+      label: actionLabel,
+      href: actionHref,
+    };
+    const remainingActions = legacyPresentation.actions.filter(
+      (action) => action.label !== actionLabel || action.href !== actionHref,
+    );
     return {
       body: stripDanglingWhitespace(legacyPresentation.body),
-      action: {
-        label: actionLabel,
-        href: actionHref,
-      },
+      action: primaryAction,
+      actions: [primaryAction, ...remainingActions],
     };
   }
 

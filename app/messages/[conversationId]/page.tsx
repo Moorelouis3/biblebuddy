@@ -65,6 +65,37 @@ function formatHeaderStatus(lastActiveAt?: string | null): string {
   return `Active ${formatMsgTime(date.toISOString())}`;
 }
 
+type InlineMessageSegment =
+  | { type: "text"; value: string }
+  | { type: "link"; label: string; href: string };
+
+function splitInlineMessageLinks(text: string): InlineMessageSegment[] {
+  const segments: InlineMessageSegment[] = [];
+  const pattern = /\[([^\]]+)\]\((\/[^)\s]+)\)/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      segments.push({ type: "text", value: text.slice(lastIndex, match.index) });
+    }
+    segments.push({ type: "link", label: match[1], href: match[2] });
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) {
+    segments.push({ type: "text", value: text.slice(lastIndex) });
+  }
+
+  return segments;
+}
+
+function parseQuickActionLine(line: string): { label: string; href: string } | null {
+  const match = line.match(/^\s*Quick Action:\s*(.+?)\|(\S.*)\s*$/i);
+  if (!match) return null;
+  return { label: match[1], href: match[2] };
+}
+
 interface Message {
   id: string;
   sender_id: string;
@@ -901,19 +932,61 @@ export default function ConversationPage({
                           />
                         ) : (
                           <>
-                            <MentionText
-                              text={presentation.body}
-                              items={mentionItems}
-                              className="whitespace-pre-wrap"
-                            />
-                            {presentation.action && (
-                              <button
-                                type="button"
-                                onClick={() => handleActionNavigation(presentation.action!.href)}
-                                className="mt-3 inline-flex min-h-10 items-center justify-center rounded-2xl border border-[#d8eadf] bg-[#eef7f1] px-4 py-2 text-sm font-semibold text-[#2f6f4f] transition hover:bg-[#e4f3ea]"
-                              >
-                                {presentation.action.label}
-                              </button>
+                            <div className="whitespace-pre-wrap">
+                              {presentation.body.split(/\r?\n/).map((line, lineIndex) => {
+                                const quickAction = parseQuickActionLine(line);
+
+                                if (quickAction) {
+                                  return (
+                                    <div key={`quick-action:${msg.id}:${lineIndex}`} className="mt-2">
+                                      <button
+                                        type="button"
+                                        onClick={() => handleActionNavigation(quickAction.href)}
+                                        className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[#d8eadf] bg-[#eef7f1] px-4 py-2 text-sm font-semibold text-[#2f6f4f] transition hover:bg-[#e4f3ea]"
+                                      >
+                                        {quickAction.label}
+                                      </button>
+                                    </div>
+                                  );
+                                }
+
+                                return (
+                                  <div key={`msg-line:${msg.id}:${lineIndex}`}>
+                                    {splitInlineMessageLinks(line).map((segment, segmentIndex) =>
+                                      segment.type === "link" ? (
+                                        <button
+                                          key={`msg-link:${msg.id}:${lineIndex}:${segmentIndex}`}
+                                          type="button"
+                                          onClick={() => handleActionNavigation(segment.href)}
+                                          className="font-semibold text-[#8d5d38] underline underline-offset-2"
+                                        >
+                                          {segment.label}
+                                        </button>
+                                      ) : (
+                                        <MentionText
+                                          key={`msg-text:${msg.id}:${lineIndex}:${segmentIndex}`}
+                                          text={segment.value}
+                                          items={mentionItems}
+                                        />
+                                      ),
+                                    )}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                            {presentation.actions.length > 0 && (
+                              <div className="mt-3 flex flex-wrap gap-2">
+                                {presentation.actions.map((action, index) => (
+                                  <button
+                                    key={`${action.label}-${action.href}-${index}`}
+                                    type="button"
+                                    onClick={() => handleActionNavigation(action.href)}
+                                    className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[#d8eadf] bg-[#eef7f1] px-4 py-2 text-sm font-semibold text-[#2f6f4f] transition hover:bg-[#e4f3ea]"
+                                  >
+                                    {action.label}
+                                  </button>
+                                ))}
+                              </div>
                             )}
                           </>
                         )}
