@@ -33,6 +33,24 @@ type OverviewMetrics = {
   groupMessagesSent: number;
 };
 
+type WeeklyReportCenterRow = {
+  userId: string;
+  username: string;
+  displayName: string;
+  totalActions: number;
+  lastActionAt: string;
+  sentAt: string | null;
+  isPaid: boolean;
+  currentLevel: number | null;
+};
+
+type WeeklyReportCenterSummary = {
+  activeUsers7d: number;
+  sentThisWeek: number;
+  unsentThisWeek: number;
+  totalActions7d: number;
+};
+
 const INITIAL_METRICS: OverviewMetrics = {
   signups: 0,
   activeUsers: 0,
@@ -163,7 +181,7 @@ export default function AnalyticsPage() {
   const [statsLogView, setStatsLogView] = useState<"list" | "graph">("list");
 
   // Main section selector (Action Log, Stats Log, Inbox)
-  const [activeSection, setActiveSection] = useState<"actions" | "stats" | "inbox">("actions");
+  const [activeSection, setActiveSection] = useState<"actions" | "stats" | "inbox" | "messages">("actions");
 
   // Admin Action Log
   const [actionLog, setActionLog] = useState<
@@ -212,6 +230,16 @@ export default function AnalyticsPage() {
   >([]);
   const [loadingRequests, setLoadingRequests] = useState(true);
   const [selectedRequest, setSelectedRequest] = useState<any | null>(null);
+
+  // Weekly Bible report center
+  const [weeklyReportRows, setWeeklyReportRows] = useState<WeeklyReportCenterRow[]>([]);
+  const [weeklyReportSummary, setWeeklyReportSummary] = useState<WeeklyReportCenterSummary>({
+    activeUsers7d: 0,
+    sentThisWeek: 0,
+    unsentThisWeek: 0,
+    totalActions7d: 0,
+  });
+  const [loadingWeeklyReportCenter, setLoadingWeeklyReportCenter] = useState(true);
 
   // Retention metrics
   const [retentionData, setRetentionData] = useState<{
@@ -277,6 +305,7 @@ export default function AnalyticsPage() {
     loadTotalUsers();
     loadFeedbackInbox();
     loadUserRequestsInbox();
+    loadWeeklyReportCenter();
   }, []);
 
   useEffect(() => {
@@ -1767,6 +1796,137 @@ export default function AnalyticsPage() {
     return `${hours}:${minutesStr} ${ampm}`;
   }
 
+  function getCurrentWeekKey(date = new Date()) {
+    const utc = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+    const day = utc.getUTCDay();
+    const diffToMonday = (day + 6) % 7;
+    utc.setUTCDate(utc.getUTCDate() - diffToMonday);
+    return utc.toISOString().slice(0, 10);
+  }
+
+  async function loadWeeklyReportCenter() {
+    setLoadingWeeklyReportCenter(true);
+    try {
+      const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+      const weekKey = getCurrentWeekKey();
+
+      const { data: recentActions, error: recentActionsError } = await supabase
+        .from("master_actions")
+        .select("user_id, created_at")
+        .gte("created_at", since)
+        .order("created_at", { ascending: false });
+
+      if (recentActionsError) {
+        console.error("[WEEKLY_REPORT_CENTER] Error loading recent actions:", recentActionsError);
+        setWeeklyReportRows([]);
+        setWeeklyReportSummary({
+          activeUsers7d: 0,
+          sentThisWeek: 0,
+          unsentThisWeek: 0,
+          totalActions7d: 0,
+        });
+        setLoadingWeeklyReportCenter(false);
+        return;
+      }
+
+      const actionRows = (recentActions || []).filter((row: any) => !!row.user_id);
+      const activityByUser = new Map<string, { totalActions: number; lastActionAt: string }>();
+
+      for (const row of actionRows as Array<{ user_id: string; created_at: string }>) {
+        const existing = activityByUser.get(row.user_id);
+        if (!existing) {
+          activityByUser.set(row.user_id, { totalActions: 1, lastActionAt: row.created_at });
+          continue;
+        }
+        existing.totalActions += 1;
+        if (row.created_at > existing.lastActionAt) {
+          existing.lastActionAt = row.created_at;
+        }
+      }
+
+      const activeUserIds = [...activityByUser.keys()];
+
+      const { data: sentRows, error: sentRowsError } = await supabase
+        .from("weekly_bible_report_sent")
+        .select("user_id, sent_at")
+        .eq("week_key", weekKey)
+        .order("sent_at", { ascending: false });
+
+      if (sentRowsError) {
+        console.error("[WEEKLY_REPORT_CENTER] Error loading sent rows:", sentRowsError);
+      }
+
+      const sentAtByUser = new Map<string, string>();
+      for (const row of (sentRows || []) as Array<{ user_id: string; sent_at: string }>) {
+        sentAtByUser.set(row.user_id, row.sent_at);
+      }
+
+      const profilesMap = new Map<string, {
+        user_id: string;
+        username: string | null;
+        display_name: string | null;
+        is_paid: boolean | null;
+        current_level: number | null;
+      }>();
+
+      for (let i = 0; i < activeUserIds.length; i += 250) {
+        const chunk = activeUserIds.slice(i, i + 250);
+        const { data: profiles, error: profilesError } = await supabase
+          .from("profile_stats")
+          .select("user_id, username, display_name, is_paid, current_level")
+          .in("user_id", chunk);
+
+        if (profilesError) {
+          console.error("[WEEKLY_REPORT_CENTER] Error loading profiles:", profilesError);
+          continue;
+        }
+
+        for (const profile of profiles || []) {
+          profilesMap.set(profile.user_id, profile);
+        }
+      }
+
+      const rows: WeeklyReportCenterRow[] = activeUserIds
+        .map((userId) => {
+          const profile = profilesMap.get(userId);
+          const activity = activityByUser.get(userId)!;
+          return {
+            userId,
+            username: profile?.username || "Unknown User",
+            displayName: profile?.display_name || profile?.username || "Unknown User",
+            totalActions: activity.totalActions,
+            lastActionAt: activity.lastActionAt,
+            sentAt: sentAtByUser.get(userId) || null,
+            isPaid: profile?.is_paid === true,
+            currentLevel: profile?.current_level ?? null,
+          };
+        })
+        .sort((a, b) => {
+          if (a.sentAt && !b.sentAt) return -1;
+          if (!a.sentAt && b.sentAt) return 1;
+          return new Date(b.lastActionAt).getTime() - new Date(a.lastActionAt).getTime();
+        });
+
+      setWeeklyReportRows(rows);
+      setWeeklyReportSummary({
+        activeUsers7d: activeUserIds.length,
+        sentThisWeek: rows.filter((row) => !!row.sentAt).length,
+        unsentThisWeek: rows.filter((row) => !row.sentAt).length,
+        totalActions7d: actionRows.length,
+      });
+    } catch (err) {
+      console.error("[WEEKLY_REPORT_CENTER] Unexpected error:", err);
+      setWeeklyReportRows([]);
+      setWeeklyReportSummary({
+        activeUsers7d: 0,
+        sentThisWeek: 0,
+        unsentThisWeek: 0,
+        totalActions7d: 0,
+      });
+    }
+    setLoadingWeeklyReportCenter(false);
+  }
+
   // Load feedback inbox from user_feedback table
   async function loadFeedbackInbox() {
     setLoadingInbox(true);
@@ -2659,17 +2819,19 @@ export default function AnalyticsPage() {
             {activeSection === "actions" && "Action Log (All Users)"}
             {activeSection === "stats" && "Stats Log"}
             {activeSection === "inbox" && "Inbox"}
+            {activeSection === "messages" && "Message Center"}
           </h2>
           <div className="inline-flex rounded-lg border border-gray-200 bg-white p-1 text-sm">
             {[
               { key: "actions", label: "Actions" },
               { key: "stats", label: "Stats Log" },
               { key: "inbox", label: "Inbox" },
+              { key: "messages", label: "Messages" },
             ].map((option) => (
               <button
                 key={option.key}
                 type="button"
-                onClick={() => setActiveSection(option.key as "actions" | "stats" | "inbox")}
+                onClick={() => setActiveSection(option.key as "actions" | "stats" | "inbox" | "messages")}
                 className={`px-4 py-2 rounded-md transition text-sm font-medium ${
                   activeSection === option.key
                     ? "bg-blue-600 text-white shadow-sm"
@@ -2920,6 +3082,102 @@ export default function AnalyticsPage() {
                     </div>
                   </div>
                 )}
+              </>
+            )}
+          </>
+        )}
+
+        {activeSection === "messages" && (
+          <>
+            {loadingWeeklyReportCenter ? (
+              <div className="bg-white p-4 rounded-xl shadow">
+                <p className="text-gray-500 text-sm">Loading weekly message center...</p>
+              </div>
+            ) : (
+              <>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                  <OverviewCard label="Active Users 7d" value={weeklyReportSummary.activeUsers7d} />
+                  <OverviewCard label="Reports Sent" value={weeklyReportSummary.sentThisWeek} />
+                  <OverviewCard label="Not Sent Yet" value={weeklyReportSummary.unsentThisWeek} />
+                  <OverviewCard label="Actions 7d" value={weeklyReportSummary.totalActions7d} />
+                </div>
+
+                <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                  <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900">Weekly Bible Report</h3>
+                      <p className="text-sm text-gray-500">
+                        Users with at least 1 action in the last 7 days, plus whether this week&apos;s report was sent.
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => loadWeeklyReportCenter()}
+                      className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                    >
+                      Refresh
+                    </button>
+                  </div>
+
+                  {weeklyReportRows.length === 0 ? (
+                    <div className="p-5 text-sm text-gray-500">No weekly report data found.</div>
+                  ) : (
+                    <div className="max-h-[34rem] overflow-auto">
+                      <table className="min-w-full text-sm">
+                        <thead className="sticky top-0 bg-gray-50 text-left text-xs uppercase tracking-wide text-gray-500">
+                          <tr>
+                            <th className="px-4 py-3">User</th>
+                            <th className="px-4 py-3">Actions 7d</th>
+                            <th className="px-4 py-3">Last Action</th>
+                            <th className="px-4 py-3">Level</th>
+                            <th className="px-4 py-3">Plan</th>
+                            <th className="px-4 py-3">Weekly Report</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {weeklyReportRows.map((row) => (
+                            <tr key={row.userId} className="border-t border-gray-100 hover:bg-gray-50">
+                              <td className="px-4 py-3 align-top">
+                                <div className="font-semibold text-gray-900">{row.displayName}</div>
+                                <div className="text-xs text-gray-500">@{row.username}</div>
+                                <a href={`/profile/${row.userId}`} className="text-xs font-semibold text-blue-600 hover:underline">
+                                  View profile →
+                                </a>
+                              </td>
+                              <td className="px-4 py-3 align-top font-semibold text-gray-900">{row.totalActions}</td>
+                              <td className="px-4 py-3 align-top text-gray-700">
+                                {formatAdminActionDate(new Date(row.lastActionAt))} at {formatAdminActionTime(new Date(row.lastActionAt))}
+                              </td>
+                              <td className="px-4 py-3 align-top text-gray-700">{row.currentLevel ?? "—"}</td>
+                              <td className="px-4 py-3 align-top">
+                                <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${
+                                  row.isPaid ? "bg-amber-100 text-amber-800" : "bg-gray-100 text-gray-700"
+                                }`}>
+                                  {row.isPaid ? "Pro Buddy" : "Free"}
+                                </span>
+                              </td>
+                              <td className="px-4 py-3 align-top">
+                                {row.sentAt ? (
+                                  <div>
+                                    <span className="inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-800">
+                                      Sent
+                                    </span>
+                                    <div className="mt-1 text-xs text-gray-500">
+                                      {formatAdminActionDate(new Date(row.sentAt))} at {formatAdminActionTime(new Date(row.sentAt))}
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <span className="inline-flex rounded-full bg-yellow-100 px-2.5 py-1 text-xs font-semibold text-yellow-800">
+                                    Not sent yet
+                                  </span>
+                                )}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </div>
               </>
             )}
           </>
