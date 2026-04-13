@@ -96,6 +96,23 @@ function parseQuickActionLine(line: string): { label: string; href: string } | n
   return { label: match[1], href: match[2] };
 }
 
+function parseLegacyActionButtonLine(line: string): { label: string; href: string } | null {
+  const match = line.match(/^\s*Action Button:\s*(.+?)\|(\S.*)\s*$/i);
+  if (!match) return null;
+  return { label: match[1], href: match[2] };
+}
+
+function isWeeklyReportHeader(line: string): boolean {
+  const normalized = line.replace(/[^\p{L}\p{N}]+/gu, "").toLowerCase();
+  return [
+    "yourweek",
+    "whyitmatters",
+    "nextsteps",
+    "quickactions",
+    "weeklybiblereport",
+  ].includes(normalized);
+}
+
 interface Message {
   id: string;
   sender_id: string;
@@ -852,6 +869,14 @@ export default function ConversationPage({
                 msg.action_label,
                 msg.action_href,
               );
+              const rawInlineActions = msg.content
+                .split(/\r?\n/)
+                .map((line) => parseQuickActionLine(line) ?? parseLegacyActionButtonLine(line))
+                .filter((action): action is { label: string; href: string } => !!action);
+              const messageActions = [...presentation.actions, ...rawInlineActions].filter(
+                (action, index, array) =>
+                  array.findIndex((candidate) => candidate.label === action.label && candidate.href === action.href) === index,
+              );
               const isEditing = editingMessageId === msg.id;
               const isSeen = msg.id === latestSeenMessageId;
               const canEdit = isMine && msg.id === latestOwnMessageId;
@@ -934,34 +959,28 @@ export default function ConversationPage({
                           <>
                             <div className="whitespace-pre-wrap">
                               {presentation.body.split(/\r?\n/).map((line, lineIndex) => {
+                                const quickAction = parseQuickActionLine(line);
+                                const legacyActionButton = parseLegacyActionButtonLine(line);
+
                                 if (line.trim() === "") {
                                   return (
                                     <div
                                       key={`msg-blank:${msg.id}:${lineIndex}`}
                                       aria-hidden="true"
-                                      className="h-8 sm:h-5"
+                                      className="h-6"
                                     />
                                   );
                                 }
 
-                                const quickAction = parseQuickActionLine(line);
-
-                                if (quickAction) {
-                                  return (
-                                    <div key={`quick-action:${msg.id}:${lineIndex}`} className="mt-2">
-                                      <button
-                                        type="button"
-                                        onClick={() => handleActionNavigation(quickAction.href)}
-                                        className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[#d8eadf] bg-[#eef7f1] px-4 py-2 text-sm font-semibold text-[#2f6f4f] transition hover:bg-[#e4f3ea]"
-                                      >
-                                        {quickAction.label}
-                                      </button>
-                                    </div>
-                                  );
+                                if (quickAction || legacyActionButton) {
+                                  return null;
                                 }
 
                                 return (
-                                  <div key={`msg-line:${msg.id}:${lineIndex}`}>
+                                  <div
+                                    key={`msg-line:${msg.id}:${lineIndex}`}
+                                    className={isWeeklyReportHeader(line) ? "mt-3 mb-2 font-black tracking-[0.14em]" : ""}
+                                  >
                                     {splitInlineMessageLinks(line).map((segment, segmentIndex) =>
                                       segment.type === "link" ? (
                                         <button
@@ -984,9 +1003,9 @@ export default function ConversationPage({
                                 );
                               })}
                             </div>
-                            {presentation.actions.length > 0 && (
+                            {messageActions.length > 0 && (
                               <div className="mt-3 flex flex-wrap gap-2">
-                                {presentation.actions.map((action, index) => (
+                                {messageActions.map((action, index) => (
                                   <button
                                     key={`${action.label}-${action.href}-${index}`}
                                     type="button"
