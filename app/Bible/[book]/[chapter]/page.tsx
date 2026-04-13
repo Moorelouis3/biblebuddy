@@ -145,7 +145,7 @@ export default function BibleChapterPage() {
   const [viewedPlaces, setViewedPlaces] = useState<Set<string>>(new Set());
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
   const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
-  const [translation, setTranslation] = useState<"web" | "asv" | "kjv">("web");
+  const [translation, setTranslation] = useState<"web" | "asv" | "kjv">("kjv");
   const [translationMenuOpen, setTranslationMenuOpen] = useState(false);
   const [plainTextMode, setPlainTextMode] = useState(false);
   const translationMenuRef = useRef<HTMLDivElement | null>(null);
