@@ -33,7 +33,6 @@ const LEGACY_ACTION_PATTERNS: Array<{
 function stripDanglingWhitespace(text: string): string {
   return text
     .replace(/[ \t]+\n/g, "\n")
-    .replace(/\n{3,}/g, "\n\n")
     .trim();
 }
 

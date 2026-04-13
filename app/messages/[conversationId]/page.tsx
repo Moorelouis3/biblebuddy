@@ -934,6 +934,16 @@ export default function ConversationPage({
                           <>
                             <div className="whitespace-pre-wrap">
                               {presentation.body.split(/\r?\n/).map((line, lineIndex) => {
+                                if (line.trim() === "") {
+                                  return (
+                                    <div
+                                      key={`msg-blank:${msg.id}:${lineIndex}`}
+                                      aria-hidden="true"
+                                      className="h-5"
+                                    />
+                                  );
+                                }
+
                                 const quickAction = parseQuickActionLine(line);
 
                                 if (quickAction) {
