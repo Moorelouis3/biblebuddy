@@ -1809,30 +1809,42 @@ export default function AnalyticsPage() {
     try {
       const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
       const weekKey = getCurrentWeekKey();
+      const actionRows: Array<{ user_id: string; created_at: string }> = [];
+      const pageSize = 1000;
 
-      const { data: recentActions, error: recentActionsError } = await supabase
-        .from("master_actions")
-        .select("user_id, created_at")
-        .gte("created_at", since)
-        .order("created_at", { ascending: false });
+      for (let from = 0; ; from += pageSize) {
+        const to = from + pageSize - 1;
+        const { data: recentActions, error: recentActionsError } = await supabase
+          .from("master_actions")
+          .select("user_id, created_at")
+          .gte("created_at", since)
+          .order("created_at", { ascending: false })
+          .range(from, to);
 
-      if (recentActionsError) {
-        console.error("[WEEKLY_REPORT_CENTER] Error loading recent actions:", recentActionsError);
-        setWeeklyReportRows([]);
-        setWeeklyReportSummary({
-          activeUsers7d: 0,
-          sentThisWeek: 0,
-          unsentThisWeek: 0,
-          totalActions7d: 0,
-        });
-        setLoadingWeeklyReportCenter(false);
-        return;
+        if (recentActionsError) {
+          console.error("[WEEKLY_REPORT_CENTER] Error loading recent actions:", recentActionsError);
+          setWeeklyReportRows([]);
+          setWeeklyReportSummary({
+            activeUsers7d: 0,
+            sentThisWeek: 0,
+            unsentThisWeek: 0,
+            totalActions7d: 0,
+          });
+          setLoadingWeeklyReportCenter(false);
+          return;
+        }
+
+        const batch = (recentActions || []).filter((row: any) => !!row.user_id) as Array<{ user_id: string; created_at: string }>;
+        actionRows.push(...batch);
+
+        if (batch.length < pageSize) {
+          break;
+        }
       }
 
-      const actionRows = (recentActions || []).filter((row: any) => !!row.user_id);
       const activityByUser = new Map<string, { totalActions: number; lastActionAt: string }>();
 
-      for (const row of actionRows as Array<{ user_id: string; created_at: string }>) {
+      for (const row of actionRows) {
         const existing = activityByUser.get(row.user_id);
         if (!existing) {
           activityByUser.set(row.user_id, { totalActions: 1, lastActionAt: row.created_at });
