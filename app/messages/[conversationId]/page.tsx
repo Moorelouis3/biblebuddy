@@ -939,7 +939,7 @@ export default function ConversationPage({
                                     <div
                                       key={`msg-blank:${msg.id}:${lineIndex}`}
                                       aria-hidden="true"
-                                      className="h-5"
+                                      className="h-8 sm:h-5"
                                     />
                                   );
                                 }

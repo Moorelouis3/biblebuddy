@@ -30,6 +30,8 @@ const LEGACY_ACTION_PATTERNS: Array<{
   },
 ];
 
+const QUICK_ACTION_LINE_PATTERN = /^\s*Quick Action:\s*(.+?)\|(\S.*)\s*$/i;
+
 function stripDanglingWhitespace(text: string): string {
   return text
     .replace(/[ \t]+\n/g, "\n")
@@ -42,6 +44,15 @@ function extractInlineActions(content: string): { body: string; actions: DirectM
 
   for (const rawLine of content.split(/\r?\n/)) {
     const line = rawLine.trim();
+    const quickActionMatch = line.match(QUICK_ACTION_LINE_PATTERN);
+    if (quickActionMatch) {
+      actions.push({
+        label: quickActionMatch[1].trim(),
+        href: quickActionMatch[2].trim(),
+      });
+      continue;
+    }
+
     if (!line.toLowerCase().startsWith("action button:")) {
       bodyLines.push(rawLine);
       continue;
