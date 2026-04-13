@@ -113,6 +113,10 @@ function isWeeklyReportHeader(line: string): boolean {
   ].includes(normalized);
 }
 
+function isQuickActionsHeader(line: string): boolean {
+  return line.replace(/[^\p{L}\p{N}]+/gu, "").toLowerCase() === "quickactions";
+}
+
 interface Message {
   id: string;
   sender_id: string;
@@ -877,6 +881,8 @@ export default function ConversationPage({
                 (action, index, array) =>
                   array.findIndex((candidate) => candidate.label === action.label && candidate.href === action.href) === index,
               );
+              const bodyLines = presentation.body.split(/\r?\n/);
+              const shouldInlineActionsUnderHeader = bodyLines.some((line) => isQuickActionsHeader(line)) && messageActions.length > 0;
               const isEditing = editingMessageId === msg.id;
               const isSeen = msg.id === latestSeenMessageId;
               const canEdit = isMine && msg.id === latestOwnMessageId;
@@ -958,11 +964,15 @@ export default function ConversationPage({
                         ) : (
                           <>
                             <div className="whitespace-pre-wrap">
-                              {presentation.body.split(/\r?\n/).map((line, lineIndex) => {
+                              {bodyLines.map((line, lineIndex) => {
                                 const quickAction = parseQuickActionLine(line);
                                 const legacyActionButton = parseLegacyActionButtonLine(line);
+                                const previousLine = lineIndex > 0 ? bodyLines[lineIndex - 1] : null;
 
                                 if (line.trim() === "") {
+                                  if (previousLine && isWeeklyReportHeader(previousLine)) {
+                                    return null;
+                                  }
                                   return (
                                     <div
                                       key={`msg-blank:${msg.id}:${lineIndex}`}
@@ -999,11 +1009,25 @@ export default function ConversationPage({
                                         />
                                       ),
                                     )}
+                                    {isQuickActionsHeader(line) && shouldInlineActionsUnderHeader && (
+                                      <div className="mt-2 flex flex-wrap gap-2">
+                                        {messageActions.map((action, index) => (
+                                          <button
+                                            key={`${action.label}-${action.href}-${index}`}
+                                            type="button"
+                                            onClick={() => handleActionNavigation(action.href)}
+                                            className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-[#d8eadf] bg-[#eef7f1] px-4 py-2 text-sm font-semibold text-[#2f6f4f] transition hover:bg-[#e4f3ea]"
+                                          >
+                                            {action.label}
+                                          </button>
+                                        ))}
+                                      </div>
+                                    )}
                                   </div>
                                 );
                               })}
                             </div>
-                            {messageActions.length > 0 && (
+                            {messageActions.length > 0 && !shouldInlineActionsUnderHeader && (
                               <div className="mt-3 flex flex-wrap gap-2">
                                 {messageActions.map((action, index) => (
                                   <button
