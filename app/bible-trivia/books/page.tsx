@@ -76,13 +76,20 @@ export default function BooksOfTheBiblePage() {
 
       setIsPaid(!!profileStats?.is_paid);
 
-      const { data: progressData, error } = await supabase
-        .from("trivia_question_progress")
-        .select("book, is_correct")
-        .eq("user_id", user.id);
+      const [{ data: progressData, error: progressError }, { data: completionData, error: completionError }] = await Promise.all([
+        supabase
+          .from("trivia_question_progress")
+          .select("book, is_correct")
+          .eq("user_id", user.id),
+        supabase
+          .from("master_actions")
+          .select("action_label")
+          .eq("user_id", user.id)
+          .eq("action_type", ACTION_TYPE.trivia_chapter_completed),
+      ]);
 
-      if (error) {
-        console.error("Error fetching trivia progress:", error);
+      if (progressError || completionError) {
+        console.error("Error fetching trivia progress:", progressError || completionError);
         setLoading(false);
         return;
       }
@@ -104,8 +111,37 @@ export default function BooksOfTheBiblePage() {
         }
       });
 
+      const completedChaptersByBook: Record<string, Set<number>> = {};
+      completionData?.forEach((entry) => {
+        const label = typeof entry.action_label === "string" ? entry.action_label : "";
+        const matchingBook = BIBLE_GAME_BOOKS.find((book) => label.toLowerCase().startsWith(`${book.title.toLowerCase()} `));
+        if (!matchingBook) {
+          return;
+        }
+
+        const remainder = label.slice(matchingBook.title.length).trim();
+        const chapterMatch = remainder.match(/^(\d+)\b/);
+        if (!chapterMatch) {
+          return;
+        }
+
+        if (!completedChaptersByBook[matchingBook.key]) {
+          completedChaptersByBook[matchingBook.key] = new Set<number>();
+        }
+
+        completedChaptersByBook[matchingBook.key].add(Number(chapterMatch[1]));
+      });
+
       const nextProgress = Object.fromEntries(
-        BIBLE_GAME_BOOKS.map((book) => [book.key, Math.max(0, (BOOK_TOTALS[book.key] ?? 100) - (correctCounts[book.key] || 0))]),
+        BIBLE_GAME_BOOKS.map((book) => {
+          const chapterBasedTotal = CHAPTER_BASED_TOTALS[book.key];
+          const completedChapters = completedChaptersByBook[book.key]?.size ?? 0;
+          const effectiveCorrectCount = chapterBasedTotal
+            ? Math.max(correctCounts[book.key] || 0, completedChapters * 5)
+            : (correctCounts[book.key] || 0);
+
+          return [book.key, Math.max(0, (BOOK_TOTALS[book.key] ?? 100) - effectiveCorrectCount)];
+        }),
       );
 
       setProgress(nextProgress);

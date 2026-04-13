@@ -14,6 +14,7 @@ export default function TriviaBookClient({ book }: TriviaBookClientProps) {
   const CHAPTERS_PER_PAGE = 12;
   const [completedCount, setCompletedCount] = useState(0);
   const [playedCounts, setPlayedCounts] = useState<Record<string, number>>({});
+  const [completedChapters, setCompletedChapters] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
   const [chapterPage, setChapterPage] = useState(0);
 
@@ -30,23 +31,46 @@ export default function TriviaBookClient({ book }: TriviaBookClientProps) {
         return;
       }
 
-      const { data, error } = await supabase
-        .from("trivia_question_progress")
-        .select("book, question_id, is_correct")
-        .eq("user_id", user.id);
+      const [{ data: answerData, error: answerError }, { data: completionData, error: completionError }] = await Promise.all([
+        supabase
+          .from("trivia_question_progress")
+          .select("book, question_id, is_correct")
+          .eq("user_id", user.id),
+        supabase
+          .from("master_actions")
+          .select("action_label")
+          .eq("user_id", user.id)
+          .eq("action_type", "trivia_chapter_completed")
+          .ilike("action_label", `${book.name} %`),
+      ]);
 
       if (cancelled) {
         return;
       }
 
-      if (error) {
-        console.error("Error fetching trivia chapter progress:", error);
+      if (answerError || completionError) {
+        console.error("Error fetching trivia chapter progress:", answerError || completionError);
         setLoading(false);
         return;
       }
 
+      const completedChapterKeys = new Set<string>();
+      completionData?.forEach((entry) => {
+        const label = typeof entry.action_label === "string" ? entry.action_label : "";
+        const match = label.match(new RegExp(`^${book.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s+(\\d+)\\b`, "i"));
+        if (!match) {
+          return;
+        }
+
+        const chapterNumber = Number(match[1]);
+        const chapterConfig = book.chapters.find((chapter) => chapter.chapter === chapterNumber);
+        if (chapterConfig) {
+          completedChapterKeys.add(chapterConfig.progressKey);
+        }
+      });
+
       const chapterCorrect = new Map<string, Set<string>>();
-      data?.forEach((entry) => {
+      answerData?.forEach((entry) => {
         if (!entry.book.startsWith(`${book.key}:`) || !entry.is_correct) {
           return;
         }
@@ -63,12 +87,14 @@ export default function TriviaBookClient({ book }: TriviaBookClientProps) {
 
       book.chapters.forEach((chapter) => {
         const answeredCorrectly = chapterCorrect.get(chapter.progressKey)?.size ?? 0;
-        nextPlayedCounts[chapter.progressKey] = answeredCorrectly;
-        if (answeredCorrectly >= chapter.questions.length) {
+        const isComplete = completedChapterKeys.has(chapter.progressKey) || answeredCorrectly >= chapter.questions.length;
+        nextPlayedCounts[chapter.progressKey] = isComplete ? chapter.questions.length : answeredCorrectly;
+        if (isComplete) {
           nextCompletedCount += 1;
         }
       });
 
+      setCompletedChapters(completedChapterKeys);
       setPlayedCounts(nextPlayedCounts);
       setCompletedCount(nextCompletedCount);
       setLoading(false);
@@ -125,7 +151,7 @@ export default function TriviaBookClient({ book }: TriviaBookClientProps) {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
               {visibleChapters.map((chapter) => {
                 const answeredCorrectly = playedCounts[chapter.progressKey] ?? 0;
-                const isComplete = answeredCorrectly >= chapter.questions.length;
+                const isComplete = completedChapters.has(chapter.progressKey) || answeredCorrectly >= chapter.questions.length;
                 const cardClasses = isComplete
                   ? "bg-green-100 border-green-300 text-green-800 cursor-pointer"
                   : "bg-gray-100 border-gray-300 text-gray-500 cursor-pointer";

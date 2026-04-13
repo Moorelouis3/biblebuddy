@@ -56,16 +56,25 @@ export async function GET(request: NextRequest) {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  const { data: actionRows, error: actionsError } = await supabaseAdmin
-    .from("master_actions")
-    .select("action_label, created_at")
-    .eq("user_id", userData.user.id)
-    .eq("action_type", "scrambled_word_answered")
-    .ilike("action_label", `${book.name} %`)
-    .order("created_at", { ascending: false });
+  const [{ data: wordRows, error: wordsError }, { data: completionRows, error: completionError }] = await Promise.all([
+    supabaseAdmin
+      .from("master_actions")
+      .select("action_label, created_at")
+      .eq("user_id", userData.user.id)
+      .eq("action_type", "scrambled_word_answered")
+      .ilike("action_label", `${book.name} %`)
+      .order("created_at", { ascending: false }),
+    supabaseAdmin
+      .from("master_actions")
+      .select("action_label, created_at")
+      .eq("user_id", userData.user.id)
+      .eq("action_type", "scrambled_chapter_completed")
+      .ilike("action_label", `${book.name} %`)
+      .order("created_at", { ascending: false }),
+  ]);
 
-  if (actionsError) {
-    return NextResponse.json({ error: actionsError.message || "Could not load scrambled progress." }, { status: 500 });
+  if (wordsError || completionError) {
+    return NextResponse.json({ error: wordsError?.message || completionError?.message || "Could not load scrambled progress." }, { status: 500 });
   }
 
   const progress: ScrambledProgressMap = {};
@@ -74,7 +83,7 @@ export async function GET(request: NextRequest) {
     const solvedIds = new Set<string>();
     let lastPlayedAt: string | null = null;
 
-    for (const row of actionRows || []) {
+    for (const row of wordRows || []) {
       const actionLabel = typeof row.action_label === "string" ? row.action_label : "";
       const questionId = parseQuestionId(actionLabel, book.name, chapter.chapter);
       if (!questionId) continue;
@@ -86,9 +95,23 @@ export async function GET(request: NextRequest) {
       solvedIds.add(questionId);
     }
 
-    const bestScore = Math.min(solvedIds.size, chapter.questions.length);
+    const hasCompletedChapterAction = (completionRows || []).some((row) => {
+      const actionLabel = typeof row.action_label === "string" ? row.action_label : "";
+      return actionLabel.startsWith(`${book.name} ${chapter.chapter} - `);
+    });
+
+    const completionRow = (completionRows || []).find((row) => {
+      const actionLabel = typeof row.action_label === "string" ? row.action_label : "";
+      return actionLabel.startsWith(`${book.name} ${chapter.chapter} - `);
+    });
+
+    if ((!lastPlayedAt || (completionRow?.created_at && new Date(completionRow.created_at).getTime() > new Date(lastPlayedAt).getTime()))) {
+      lastPlayedAt = completionRow?.created_at ?? lastPlayedAt;
+    }
+
+    const bestScore = hasCompletedChapterAction ? chapter.questions.length : Math.min(solvedIds.size, chapter.questions.length);
     progress[getScrambledProgressKey(book.slug, chapter.chapter)] = {
-      completed: bestScore >= chapter.questions.length,
+      completed: hasCompletedChapterAction || bestScore >= chapter.questions.length,
       bestScore,
       lastPlayedAt: lastPlayedAt || "",
     };

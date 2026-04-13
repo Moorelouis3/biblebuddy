@@ -38,7 +38,7 @@ export const ACTION_POINT_WEIGHTS: Partial<Record<ActionType, number>> = {
   place_discovered: 6,
   keyword_viewed: 1,
   keyword_mastered: 6,
-  trivia_started: 1,
+  trivia_started: 0,
   trivia_question_answered: 0,
   trivia_question_correct: 1,
   trivia_chapter_completed: 0,

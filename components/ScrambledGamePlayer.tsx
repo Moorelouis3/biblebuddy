@@ -370,6 +370,7 @@ export default function ScrambledGamePlayer({
         questionId: question.id,
         answer: question.answer,
         reference: question.reference,
+        revealedLettersUsed: revealedLetters,
       }),
     });
 
@@ -379,8 +380,8 @@ export default function ScrambledGamePlayer({
       return;
     }
 
-    const payload = (await response.json().catch(() => ({}))) as { deduped?: boolean };
-    if (payload.deduped !== true) {
+    const payload = (await response.json().catch(() => ({}))) as { deduped?: boolean; awardedPoint?: boolean };
+    if (payload.awardedPoint) {
       setEarnedSolveCount((current) => current + 1);
     }
   };
