@@ -100,6 +100,10 @@ function formatCount(count: number, singular: string, plural = `${singular}s`) {
   return `${count} ${count === 1 ? singular : plural}`;
 }
 
+function withBlankLines(lines: string[]): string[] {
+  return lines.flatMap((line, index) => (index < lines.length - 1 ? [line, ""] : [line]));
+}
+
 function getDisplayName(profile: ProfileRow | null | undefined) {
   return profile?.display_name?.trim() || profile?.username?.trim() || "friend";
 }
@@ -815,28 +819,30 @@ export function buildWeeklyReportForUser(
     )
     .filter(Boolean) as string[];
 
+  const nextStepLines = recommendations.length
+    ? recommendations.map((recommendation, index) => `${index + 1}. ${recommendation.line}`)
+    : [
+        "1. Open the Bible and finish one chapter.",
+        "2. Take the trivia quiz for that chapter.",
+        "3. Play one Scrambled round so the chapter sticks a little better.",
+      ];
+
   const message = [
     `Hey ${firstName},`,
     "",
     "Here is your personal Bible Buddy wrap-up for this week.",
     "",
     "𝗬𝗢𝗨𝗥 𝗪𝗘𝗘𝗞",
-    ...statLines,
+    ...withBlankLines(statLines),
     "",
     "𝗪𝗛𝗬 𝗜𝗧 𝗠𝗔𝗧𝗧𝗘𝗥𝗦",
     encouragementLine,
     "",
     "𝗡𝗘𝗫𝗧 𝗦𝗧𝗘𝗣𝗦",
-    ...(recommendations.length
-      ? recommendations.map((recommendation, index) => `${index + 1}. ${recommendation.line}`)
-      : [
-          "1. Open the Bible and finish one chapter.",
-          "2. Take the trivia quiz for that chapter.",
-          "3. Play one Scrambled round so the chapter sticks a little better.",
-        ]),
+    ...withBlankLines(nextStepLines),
     "",
     "𝗤𝗨𝗜𝗖𝗞 𝗔𝗖𝗧𝗜𝗢𝗡𝗦",
-    ...(quickActionLines.length ? quickActionLines : ["Quick Action: Open The Bible|/reading"]),
+    ...withBlankLines(quickActionLines.length ? quickActionLines : ["Quick Action: Open The Bible|/reading"]),
     "",
     "Keep going.",
     "Louis",
