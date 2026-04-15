@@ -34,6 +34,13 @@ export default function BibleBuddyTvShowPageClient({
     featuredEpisode ??
     null;
   const isMovie = title.contentType === "movie";
+  const detailMeta = [title.year, title.rating];
+  if (title.runtime && !["Documentary", "Documentary Special"].includes(title.runtime)) {
+    detailMeta.push(title.runtime);
+  }
+  if (title.seasonsLabel && title.seasonsLabel !== title.runtime) {
+    detailMeta.push(title.seasonsLabel);
+  }
   const recommendationHeading =
     title.category === "documentaries"
       ? "Check Out More Documentaries"
@@ -122,9 +129,7 @@ export default function BibleBuddyTvShowPageClient({
         </Link>
 
         <h1 className="mb-2 mt-4 text-3xl font-bold">{title.title}</h1>
-        <p className="mb-4 text-gray-600">
-          {title.year} • {title.rating} • {title.runtime} • {title.seasonsLabel}
-        </p>
+        <p className="mb-4 text-gray-600">{detailMeta.join(" • ")}</p>
 
         <div className="mb-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
           <div className="grid gap-6 md:grid-cols-[240px_1fr] md:items-start">

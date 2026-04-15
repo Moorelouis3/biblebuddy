@@ -1705,8 +1705,8 @@ export const estherMovieTitle: BibleBuddyTvTitle = {
   title: "Esther",
   badge: "Bible Buddy Movie",
   category: "movies",
-  poster: "/esthermovie.png",
-  heroImage: "/esthermovie.png",
+  poster: "/Esthermovie.png",
+  heroImage: "/Esthermovie.png",
   accentFrom: "#7c2d6f",
   accentTo: "#a21caf",
   year: "1999",
@@ -1757,7 +1757,7 @@ export const estherMovieTitle: BibleBuddyTvTitle = {
       duration: "3h",
       summary:
         "Esther is brought into the Persian court, conceals her Jewish identity, and is eventually called to risk her life before the king in order to stop Haman's plan to wipe out her people.",
-      thumbnail: "/esthermovie.png",
+      thumbnail: "/Esthermovie.png",
       youtubeUrl: "https://www.youtube.com/watch?v=6y_yJuFJ7uM",
       available: true,
       discussionSlug: "bible-buddy-tv-esther-movie",
@@ -3209,8 +3209,8 @@ export const twelveApostlesMovieTitle: BibleBuddyTvTitle = {
   id: "the-story-of-the-twelve-apostles",
   slug: "the-story-of-the-twelve-apostles",
   title: "The Story of the Twelve Apostles",
-  badge: "Bible Buddy Movie",
-  category: "movies",
+  badge: "Bible Buddy Documentary",
+  category: "documentaries",
   poster: "/12apostlesmovie.jpg",
   heroImage: "/12apostlesmovie.jpg",
   accentFrom: "#1d4ed8",
@@ -3226,7 +3226,7 @@ export const twelveApostlesMovieTitle: BibleBuddyTvTitle = {
     "The Story of the Twelve Apostles begins with ordinary men and follows what happened when Jesus called them into something far bigger than themselves. Fishermen, tax collectors, zealots, and overlooked men become the core witnesses of the Gospel story. The movie traces their early weakness, the shock of the crucifixion, the turning point of the resurrection, and the dangerous mission that carried the message of Jesus out into the known world.",
   vibe:
     "Calling, discipleship, failure, courage, resurrection hope, mission, and the early spread of the Gospel through imperfect people.",
-  continueWatchingLabel: "Movie: The Story of the Twelve Apostles",
+  continueWatchingLabel: "Documentary: The Story of the Twelve Apostles",
   inMyList: true,
   searchTags: [
     "movie",
@@ -3255,7 +3255,7 @@ export const twelveApostlesMovieTitle: BibleBuddyTvTitle = {
       id: "the-story-of-the-twelve-apostles-main",
       episodeNumber: 1,
       title: "The Story of the Twelve Apostles",
-      contentLabel: "Movie",
+      contentLabel: "Documentary",
       duration: "1h 32m",
       summary:
         "A full movie tracing the disciples from ordinary lives through the shock of the crucifixion, the reality of the resurrection, and the mission that sent them into the world with the Gospel.",

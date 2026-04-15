@@ -171,10 +171,6 @@ export default function BibleBuddyTvHomePage() {
   }, [liveTitles]);
   const myListTitles = liveTitles.filter((title) => myListIds.includes(title.id));
   const continueWatchingTitles = liveTitles.filter((title) => title.continueWatchingLabel);
-  const selectedShelfTitles = useMemo(() => {
-    if (activeCategory === "my-list") return myListTitles;
-    return liveTitles.filter((title) => title.category === activeCategory);
-  }, [activeCategory, liveTitles, myListTitles]);
   const fixedShelves = useMemo(
     () =>
       [
@@ -200,6 +196,15 @@ export default function BibleBuddyTvHomePage() {
 
     return () => window.clearInterval(intervalId);
   }, [featuredTitles.length, isDraggingFeatured]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const targetId = activeCategory === "my-list" ? "continue-watching" : `shelf-${activeCategory}`;
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [activeCategory]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -451,46 +456,20 @@ export default function BibleBuddyTvHomePage() {
               ▾
             </div>
           </div>
-          <p className="mt-3 text-sm text-gray-600">
-            {activeCategory === "my-list"
-              ? myListTitles.length
-                ? "Everything you have actually saved in Bible Buddy TV, ready to jump back into anytime."
-                : "Your My List is empty right now. Tap + My List on anything you want to save for later."
-              : bibleBuddyTvCategories.find((category) => category.id === activeCategory)?.description}
-          </p>
         </section>
 
-        <section className="mt-8">
+        <section id="continue-watching" className="mt-8">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-2xl font-bold text-gray-900">Continue Watching</h2>
-            <span className="text-sm font-semibold" style={{ color: CAROLINA_BLUE }}>
-              Bible Buddy TV
-            </span>
           </div>
           <PosterShelf titles={continueWatchingTitles} getProgressPercent={getProgressPercent} options={{ showProgress: true }} />
-        </section>
-
-        <section className="mt-8">
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-gray-900">
-              {categoryOptions.find((category) => category.id === activeCategory)?.label}
-            </h2>
-            <span className="text-sm font-semibold text-gray-500">
-              {activeCategory === "my-list" ? "Saved" : "Browse"}
-            </span>
-          </div>
-          <PosterShelf
-            titles={selectedShelfTitles}
-            getProgressPercent={getProgressPercent}
-            options={{ sectionTone: activeCategory === "my-list" ? "my-list" : "default" }}
-          />
         </section>
 
         {fixedShelves.map((shelf) => {
           if (!shelf.titles.length) return null;
 
           return (
-            <section key={shelf.id} className="mt-8">
+            <section key={shelf.id} id={`shelf-${shelf.id}`} className="mt-8">
               <div className="mb-4 flex items-center justify-between">
                 <h2 className="text-2xl font-bold text-gray-900">{shelf.label}</h2>
                 <span className="text-sm font-semibold text-gray-500">Browse</span>
