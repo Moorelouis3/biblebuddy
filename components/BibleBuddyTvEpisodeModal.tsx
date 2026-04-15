@@ -15,6 +15,9 @@ import CreditLimitModal from "./CreditLimitModal";
 import ReactMarkdown from "react-markdown";
 import { LouisAvatar } from "./LouisAvatar";
 
+const CAROLINA_BLUE = "#4B9CD3";
+const CAROLINA_BLUE_SOFT = "#EAF5FC";
+
 interface BibleBuddyTvEpisodeModalProps {
   title: BibleBuddyTvTitle;
   episode: BibleBuddyTvEpisode | null;
@@ -49,7 +52,7 @@ function renderStudyNotesDocumentHtml(markdown: string): string {
 }
 
 function normalizeMarkdownForModal(markdown: string): string {
-  return markdown.replace(/^\s*[-•*]\s+/gm, "").replace(/\n{3,}/g, "\n\n").trim();
+  return markdown.replace(/^\s*[-\u2022*]\s+/gm, "").replace(/\n{3,}/g, "\n\n").trim();
 }
 
 const notesUnlockLabel = (title: BibleBuddyTvTitle, episode: BibleBuddyTvEpisode) => `Bible Buddy TV Notes:${title.slug}:${episode.id}`;
@@ -107,6 +110,7 @@ export default function BibleBuddyTvEpisodeModal({ title, episode, isOpen, onClo
   const [selectedNotes, setSelectedNotes] = useState<string | null>(null);
   const [loadingSelectedNotes, setLoadingSelectedNotes] = useState(false);
   const [notesCreditBlocked, setNotesCreditBlocked] = useState(false);
+  const [isPaidUser, setIsPaidUser] = useState(false);
   const [personCreditBlocked, setPersonCreditBlocked] = useState(false);
   const [placeCreditBlocked, setPlaceCreditBlocked] = useState(false);
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
@@ -126,16 +130,19 @@ export default function BibleBuddyTvEpisodeModal({ title, episode, isOpen, onClo
       const { data: { user } } = await supabase.auth.getUser();
       setUserId(user?.id ?? null);
       if (!user?.id) {
+        setIsPaidUser(false);
         setCompletedPeople(new Set());
         setCompletedPlaces(new Set());
         setCompletedKeywords(new Set());
         return;
       }
-      const [peopleRes, placesRes, keywordsRes] = await Promise.all([
+      const [profileRes, peopleRes, placesRes, keywordsRes] = await Promise.all([
+        supabase.from("profile_stats").select("is_paid").eq("user_id", user.id).maybeSingle(),
         supabase.from("people_progress").select("person_name").eq("user_id", user.id),
         supabase.from("places_progress").select("place_name").eq("user_id", user.id),
         supabase.from("keywords_progress").select("keyword").eq("user_id", user.id),
       ]);
+      setIsPaidUser(Boolean(profileRes.data?.is_paid));
       setCompletedPeople(new Set((peopleRes.data || []).map((row: any) => String(row.person_name || "").toLowerCase().trim()).filter(Boolean)));
       setCompletedPlaces(new Set((placesRes.data || []).map((row: any) => String(row.place_name || "").toLowerCase().trim()).filter(Boolean)));
       setCompletedKeywords(new Set((keywordsRes.data || []).map((row: any) => String(row.keyword || "").toLowerCase().trim()).filter(Boolean)));
@@ -377,6 +384,17 @@ Keep it simple, biblical, and clear.`;
   const contentLabel = episode.contentLabel || (title.contentType === "movie" ? "Movie" : `Episode ${episode.episodeNumber}`);
   const contentTypeLabel = title.contentType === "movie" ? "movie" : "episode";
   const studyHeading = title.contentType === "movie" ? "Study this movie" : "Study this episode";
+  const notesSubjectLabel =
+    title.category === "documentaries"
+      ? "documentary"
+      : title.category === "bible-stories"
+        ? "animation"
+        : title.category === "sermons"
+          ? "sermon"
+          : title.contentType === "movie"
+            ? "movie"
+            : "episode";
+  const notesSubtitle = `Check out the Bible study notes for this ${notesSubjectLabel}.`;
   const reflectionHeading = title.contentType === "movie" ? "Movie Reflection" : "Episode Reflection";
   const averageRating = ratingRows.length ? ratingRows.reduce((sum, row) => sum + row.rating, 0) / ratingRows.length : 0;
   const averageRatingLabel = ratingRows.length ? `${averageRating.toFixed(1)}/5` : "Not rated";
@@ -391,7 +409,7 @@ Keep it simple, biblical, and clear.`;
       setNotesExpanded(false);
       return;
     }
-    if (!notesUnlocked) {
+    if (!notesUnlocked && !isPaidUser) {
       const creditResult = await consumeCreditAction(ACTION_TYPE.chapter_notes_viewed, {
         userId,
         actionLabel: notesUnlockLabel(title, currentEpisode),
@@ -432,7 +450,9 @@ Keep it simple, biblical, and clear.`;
       <div className="w-[min(92vw,980px)] rounded-[28px] border border-gray-200 bg-white text-gray-900 shadow-[0_30px_90px_rgba(0,0,0,0.25)]">
         <div className="flex items-start justify-between gap-4 border-b border-gray-200 px-5 py-4 sm:px-6">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-violet-600">Bible Buddy TV Player</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em]" style={{ color: CAROLINA_BLUE }}>
+              Bible Buddy TV Player
+            </p>
             <h2 className="mt-1 text-xl font-semibold sm:text-2xl">{contentLabel}: {episode.title}</h2>
           </div>
           <button type="button" onClick={onClose} className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-700 transition hover:bg-gray-100">
@@ -465,7 +485,12 @@ Keep it simple, biblical, and clear.`;
 
           <div className="mt-4 rounded-[22px] border border-gray-200 bg-gray-50 p-4 sm:p-5">
             <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600">
-              <span className="rounded-full bg-violet-100 px-3 py-1 font-medium text-violet-700">{contentLabel}</span>
+              <span
+                className="rounded-full px-3 py-1 font-medium"
+                style={{ backgroundColor: CAROLINA_BLUE_SOFT, color: CAROLINA_BLUE }}
+              >
+                {contentLabel}
+              </span>
               <span>{episode.duration}</span>
               <div className="flex items-center gap-1">
                 {[1, 2, 3, 4, 5].map((value) => (
@@ -476,7 +501,7 @@ Keep it simple, biblical, and clear.`;
                     className={`text-xl leading-none transition ${value <= currentUserRating ? "text-amber-400" : "text-gray-300 hover:text-amber-300"}`}
                     aria-label={`Rate this ${contentTypeLabel} ${value} star${value === 1 ? "" : "s"}`}
                   >
-                    ★
+                    {"\u2605"}
                   </button>
                 ))}
               </div>
@@ -489,7 +514,12 @@ Keep it simple, biblical, and clear.`;
             <div className="mt-3">
               <p className={`text-sm leading-7 text-gray-700 sm:text-[15px] ${!summaryExpanded ? "line-clamp-2" : ""}`}>{summaryText}</p>
               {summaryText.length > 180 ? (
-                <button type="button" onClick={() => setSummaryExpanded((prev) => !prev)} className="mt-2 text-sm font-semibold text-violet-700 hover:text-violet-800">
+                <button
+                  type="button"
+                  onClick={() => setSummaryExpanded((prev) => !prev)}
+                  className="mt-2 text-sm font-semibold"
+                  style={{ color: CAROLINA_BLUE }}
+                >
                   {summaryExpanded ? "Read less" : "Read more"}
                 </button>
               ) : null}
@@ -502,17 +532,19 @@ Keep it simple, biblical, and clear.`;
                 <div className="min-w-0">
                   <h3 className="text-xl font-bold text-gray-900">{studyHeading}</h3>
                   <p className="mt-1 text-sm text-gray-500">
-                    {notesUnlocked ? "Unlocked study notes with deeper breakdowns, people, places, and Scripture connections." : "Locked for free users. Tap to unlock with 1 credit."}
+                    {notesUnlocked
+                      ? notesSubtitle
+                      : isPaidUser
+                        ? notesSubtitle
+                        : `${notesSubtitle} Free users can unlock it with 1 credit.`}
                   </p>
                 </div>
                 <div className="shrink-0 text-right">
-                  {!notesUnlocked ? (
-                    <div className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-700">
-                      <span>🔒</span>
-                      <span>1 Credit</span>
-                    </div>
-                  ) : null}
-                  <div className="mt-2 text-lg text-gray-400">{notesExpanded ? "▲" : "▶"}</div>
+                  {!notesUnlocked && !isPaidUser ? (
+                    <div className="text-2xl text-gray-400">{"\u{1F512}"}</div>
+                  ) : (
+                    <div className="text-lg text-gray-400">{notesExpanded ? "▲" : "▼"}</div>
+                  )}
                 </div>
               </button>
 
@@ -560,7 +592,7 @@ Keep it simple, biblical, and clear.`;
       {selectedTarget ? (
         <ModalShell isOpen={selectedTarget !== null} onClose={closeSelectedTargetModal} zIndex="z-[90]" scrollable>
           <div className="relative w-[min(92vw,760px)] rounded-[28px] border border-gray-200 bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.25)] sm:p-8">
-            <button type="button" onClick={closeSelectedTargetModal} className="absolute right-4 top-4 text-xl text-gray-400 hover:text-gray-700">×</button>
+            <button type="button" onClick={closeSelectedTargetModal} className="absolute right-4 top-4 text-xl text-gray-400 hover:text-gray-700">&times;</button>
             <h2 className="mb-2 text-3xl font-bold text-gray-900">{selectedTarget.name}</h2>
             {loadingSelectedNotes ? (
               <div className="flex flex-col items-center gap-5 py-10">
@@ -621,3 +653,4 @@ Keep it simple, biblical, and clear.`;
     </ModalShell>
   );
 }
+

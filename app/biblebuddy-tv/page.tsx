@@ -13,18 +13,30 @@ import {
   type BibleBuddyTvCategory,
 } from "../../lib/bibleBuddyTvContent";
 
+const CAROLINA_BLUE = "#4B9CD3";
+const CAROLINA_BLUE_SOFT = "#EAF5FC";
+const CAROLINA_BLUE_BORDER = "#C8E2F3";
+
+const mobileCategoryOptions: Array<{ id: BibleBuddyTvCategory; label: string }> = [
+  { id: "tv", label: "TV Shows" },
+  { id: "movies", label: "Movies" },
+  { id: "bible-stories", label: "Animation" },
+  { id: "documentaries", label: "Documentary" },
+  { id: "sermons", label: "Sermons" },
+];
+
 function getCategoryCardStyle(category: BibleBuddyTvCategory) {
   switch (category) {
     case "tv":
-      return "border-[#ddd0ff] bg-[#efe7ff]";
+      return "border-[#C8E2F3] bg-[#EAF5FC]";
     case "movies":
       return "border-[#f0d7b3] bg-[#fff8ef]";
     case "sermons":
-      return "border-[#d8e7f8] bg-[#eef5ff]";
+      return "border-[#C8E2F3] bg-[#EAF5FC]";
     case "documentaries":
-      return "border-[#d9ddd4] bg-[#f4f6f1]";
+      return "border-[#C8E2F3] bg-[#EAF5FC]";
     case "bible-stories":
-      return "border-[#d7ead9] bg-[#eef8f0]";
+      return "border-[#C8E2F3] bg-[#EAF5FC]";
     default:
       return "border-gray-200 bg-white";
   }
@@ -96,7 +108,8 @@ export default function BibleBuddyTvHomePage() {
                     <div className="mt-4 grid grid-cols-2 gap-3">
                       <Link
                         href={`/biblebuddy-tv/shows/${featuredTitle.slug}`}
-                        className="rounded-xl bg-gray-900 px-4 py-3 text-base font-semibold text-white transition hover:bg-black"
+                        className="rounded-xl px-4 py-3 text-base font-semibold text-white transition"
+                        style={{ backgroundColor: CAROLINA_BLUE }}
                       >
                         ▶ Play
                       </Link>
@@ -121,15 +134,19 @@ export default function BibleBuddyTvHomePage() {
                 onClick={() => setFeaturedIndex(index)}
                 aria-label={`Show featured title ${featuredTitle.title}`}
                 className={`h-2.5 rounded-full transition-all ${
-                  index === featuredIndex ? "w-8 bg-violet-600" : "w-2.5 bg-gray-300 hover:bg-gray-400"
+                  index === featuredIndex ? "w-8" : "w-2.5 bg-gray-300 hover:bg-gray-400"
                 }`}
+                style={index === featuredIndex ? { backgroundColor: CAROLINA_BLUE } : undefined}
               />
             ))}
           </div>
         </section>
 
         <section className="mt-6 hidden rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:block md:p-6">
-          <div className="overflow-hidden rounded-[24px] border border-gray-200 bg-gradient-to-r from-[#faf7ff] via-white to-[#fff8ef]">
+          <div
+            className="overflow-hidden rounded-[24px] border border-gray-200 bg-gradient-to-r via-white to-[#fff8ef]"
+            style={{ backgroundImage: `linear-gradient(to right, ${CAROLINA_BLUE_SOFT}, white, #fff8ef)` }}
+          >
             <div
               className="flex transition-transform duration-700 ease-out"
               style={{ transform: `translateX(-${featuredIndex * 100}%)` }}
@@ -155,7 +172,9 @@ export default function BibleBuddyTvHomePage() {
                     </Link>
 
                     <div>
-                      <p className="text-sm font-semibold text-violet-700">Featured Right Now</p>
+                      <p className="text-sm font-semibold" style={{ color: CAROLINA_BLUE }}>
+                        Featured Right Now
+                      </p>
                       <h2 className="mt-1 text-2xl font-bold text-gray-900">{featuredTitle.title}</h2>
                       <p className="mt-2 text-sm text-gray-600">
                         {featuredTitle.year} • {featuredTitle.rating} • {featuredTitle.runtime}
@@ -174,7 +193,8 @@ export default function BibleBuddyTvHomePage() {
                       <div className="mt-5 flex flex-wrap gap-3">
                         <Link
                           href={`/biblebuddy-tv/shows/${featuredTitle.slug}`}
-                          className="rounded-lg bg-violet-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-violet-700"
+                          className="rounded-lg px-5 py-2.5 text-sm font-medium text-white transition"
+                          style={{ backgroundColor: CAROLINA_BLUE }}
                         >
                           Play
                         </Link>
@@ -200,15 +220,40 @@ export default function BibleBuddyTvHomePage() {
                 onClick={() => setFeaturedIndex(index)}
                 aria-label={`Show featured title ${featuredTitle.title}`}
                 className={`h-2.5 rounded-full transition-all ${
-                  index === featuredIndex ? "w-8 bg-violet-600" : "w-2.5 bg-gray-300 hover:bg-gray-400"
+                  index === featuredIndex ? "w-8" : "w-2.5 bg-gray-300 hover:bg-gray-400"
                 }`}
+                style={index === featuredIndex ? { backgroundColor: CAROLINA_BLUE } : undefined}
               />
             ))}
           </div>
         </section>
 
         <section id="tv-categories" className="mt-8">
-          <div className="flex flex-wrap gap-3">
+          <div className="md:hidden">
+            <div className="relative max-w-xs">
+              <select
+                value={activeCategory}
+                onChange={(event) => setActiveCategory(event.target.value as BibleBuddyTvCategory)}
+                className="w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-3 pr-12 text-sm font-medium text-gray-800 shadow-sm outline-none transition focus:ring-2"
+                style={{ ["--tw-ring-color" as string]: CAROLINA_BLUE }}
+                aria-label="Choose a Bible Buddy TV category"
+              >
+                {mobileCategoryOptions.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.label}
+                  </option>
+                ))}
+              </select>
+              <div
+                className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-sm font-bold"
+                style={{ color: CAROLINA_BLUE }}
+              >
+                ▾
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden flex-wrap gap-3 md:flex">
             {bibleBuddyTvCategories.map((category) => {
               const isActive = category.id === activeCategory;
               return (
@@ -218,9 +263,10 @@ export default function BibleBuddyTvHomePage() {
                   onClick={() => setActiveCategory(category.id)}
                   className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
                     isActive
-                      ? "bg-violet-600 text-white"
+                      ? "text-white"
                       : "border border-gray-200 bg-white text-gray-700 hover:bg-gray-100"
                   }`}
+                  style={isActive ? { backgroundColor: CAROLINA_BLUE } : undefined}
                 >
                   {category.label}
                 </button>
@@ -235,7 +281,9 @@ export default function BibleBuddyTvHomePage() {
         <section className="mt-8 md:hidden">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-2xl font-bold text-gray-900">Continue Watching</h2>
-            <span className="text-sm font-semibold text-violet-700">Bible Buddy TV</span>
+            <span className="text-sm font-semibold" style={{ color: CAROLINA_BLUE }}>
+              Bible Buddy TV
+            </span>
           </div>
           <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2">
             {continueWatchingTitles.map((title) => (
@@ -314,7 +362,9 @@ export default function BibleBuddyTvHomePage() {
                     />
                   </div>
                   <div className="mt-3">
-                    <p className="text-xs font-semibold text-violet-700">{title.badge}</p>
+                    <p className="text-xs font-semibold" style={{ color: CAROLINA_BLUE }}>
+                      {title.badge}
+                    </p>
                     <h3 className="mt-1 text-sm font-semibold text-gray-900 md:text-lg">{title.title}</h3>
                     <p className="mt-1 text-xs leading-relaxed text-gray-700 md:text-sm">{title.logline}</p>
                   </div>
@@ -331,7 +381,10 @@ export default function BibleBuddyTvHomePage() {
           </div>
 
           <Link href={`/biblebuddy-tv/shows/${promisedLandTitle.slug}`} className="block">
-            <div className="rounded-xl border border-[#ddd0ff] bg-[#f7f3ff] p-4 transition hover:shadow-md">
+            <div
+              className="rounded-xl border p-4 transition hover:shadow-md"
+              style={{ borderColor: CAROLINA_BLUE_BORDER, backgroundColor: CAROLINA_BLUE_SOFT }}
+            >
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                 <div className="relative h-28 w-full shrink-0 overflow-hidden rounded-lg sm:w-44">
                   <Image
@@ -343,11 +396,13 @@ export default function BibleBuddyTvHomePage() {
                   />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm font-semibold text-violet-700">Resume Watching</p>
+                  <p className="text-sm font-semibold" style={{ color: CAROLINA_BLUE }}>
+                    Resume Watching
+                  </p>
                   <h3 className="mt-1 text-xl font-semibold text-gray-900">{promisedLandTitle.title}</h3>
                   <p className="mt-1 text-sm text-gray-700">{promisedLandTitle.continueWatchingLabel}</p>
-                  <div className="mt-3 h-2 overflow-hidden rounded-full bg-violet-100">
-                    <div className="h-full w-[18%] rounded-full bg-violet-500" />
+                  <div className="mt-3 h-2 overflow-hidden rounded-full bg-[#D9EDF9]">
+                    <div className="h-full w-[18%] rounded-full" style={{ backgroundColor: CAROLINA_BLUE }} />
                   </div>
                 </div>
               </div>

@@ -10,6 +10,10 @@ import {
   type BibleBuddyTvTitle,
 } from "../lib/bibleBuddyTvContent";
 
+const CAROLINA_BLUE = "#4B9CD3";
+const CAROLINA_BLUE_SOFT = "#EAF5FC";
+const CAROLINA_BLUE_BORDER = "#C8E2F3";
+
 interface BibleBuddyTvShowPageClientProps {
   title: BibleBuddyTvTitle;
 }
@@ -70,16 +74,16 @@ export default function BibleBuddyTvShowPageClient({
           <Link href="/dashboard" className="transition hover:text-gray-700">
             Dashboard
           </Link>
-          <span className="mx-2">›</span>
+          <span className="mx-2">&gt;</span>
           <Link href="/biblebuddy-tv" className="transition hover:text-gray-700">
             Bible Buddy TV
           </Link>
-          <span className="mx-2">›</span>
+          <span className="mx-2">&gt;</span>
           <span className="font-medium text-gray-800">{title.title}</span>
         </nav>
 
         <Link href="/biblebuddy-tv" className="mt-4 inline-block text-blue-600 hover:underline">
-          ← Back to Bible Buddy TV
+          &larr; Back to Bible Buddy TV
         </Link>
 
         <h1 className="mb-2 mt-4 text-3xl font-bold">{title.title}</h1>
@@ -102,7 +106,10 @@ export default function BibleBuddyTvShowPageClient({
             </div>
 
             <div>
-              <div className="inline-flex rounded-full bg-violet-100 px-3 py-1 text-xs font-semibold text-violet-700">
+              <div
+                className="inline-flex rounded-full px-3 py-1 text-xs font-semibold"
+                style={{ backgroundColor: CAROLINA_BLUE_SOFT, color: CAROLINA_BLUE }}
+              >
                 {title.badge}
               </div>
               <p className="mt-4 whitespace-pre-line leading-relaxed text-gray-700">{title.overview}</p>
@@ -120,8 +127,13 @@ export default function BibleBuddyTvShowPageClient({
                 </div>
               ) : null}
 
-              <div className="mt-5 rounded-xl border border-[#ddd0ff] bg-[#f7f3ff] px-4 py-3">
-                <p className="text-sm font-semibold text-violet-700">{isMovie ? "Movie Tone" : "Show Tone"}</p>
+              <div
+                className="mt-5 rounded-xl border px-4 py-3"
+                style={{ borderColor: CAROLINA_BLUE_BORDER, backgroundColor: CAROLINA_BLUE_SOFT }}
+              >
+                <p className="text-sm font-semibold" style={{ color: CAROLINA_BLUE }}>
+                  {isMovie ? "Movie Tone" : "Show Tone"}
+                </p>
                 <p className="mt-1 text-sm leading-relaxed text-gray-700">{title.vibe}</p>
               </div>
 
@@ -129,16 +141,18 @@ export default function BibleBuddyTvShowPageClient({
                 <button
                   type="button"
                   onClick={() => markEpisodeWatched(continueEpisode)}
-                  className="mt-5 rounded-lg bg-violet-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-violet-700"
+                  className="mt-5 rounded-lg px-5 py-2.5 text-sm font-medium text-white transition"
+                  style={{ backgroundColor: CAROLINA_BLUE }}
                 >
-                  {isMovie ? "Watch Movie" : `Watch ${continueEpisode.contentLabel || `Episode ${continueEpisode.episodeNumber}`}`}
+                  {isMovie ? "\u25B6 Watch Now" : `Watch ${continueEpisode.contentLabel || `Episode ${continueEpisode.episodeNumber}`}`}
                 </button>
               ) : null}
             </div>
           </div>
         </div>
 
-        <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        {!isMovie ? (
+          <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
           <h2 className="mb-4 text-xl font-bold">{isMovie ? "Movie" : `${title.seasonsLabel} Episodes`}</h2>
           <div className="space-y-3">
             {title.episodes.map((episode) => (
@@ -149,7 +163,7 @@ export default function BibleBuddyTvShowPageClient({
                 disabled={!episode.available}
                 className={`w-full rounded-xl border p-3 text-left transition ${
                   episode.available
-                    ? "cursor-pointer border-gray-200 bg-white hover:border-violet-300 hover:bg-violet-50"
+                    ? "cursor-pointer border-gray-200 bg-white hover:bg-[#f5fbff]"
                     : "cursor-not-allowed border-gray-200 bg-gray-50 opacity-70"
                 }`}
               >
@@ -186,9 +200,14 @@ export default function BibleBuddyTvShowPageClient({
                         episode.available
                           ? watchedEpisodeIds.includes(episode.id)
                             ? "bg-emerald-100 text-emerald-700"
-                            : "bg-violet-100 text-violet-700"
+                            : ""
                           : "bg-gray-200 text-gray-700"
                       }`}
+                      style={
+                        episode.available && !watchedEpisodeIds.includes(episode.id)
+                          ? { backgroundColor: CAROLINA_BLUE_SOFT, color: CAROLINA_BLUE }
+                          : undefined
+                      }
                     >
                       {episode.available ? (watchedEpisodeIds.includes(episode.id) ? "Watched" : "Watch") : "Soon"}
                     </span>
@@ -197,7 +216,8 @@ export default function BibleBuddyTvShowPageClient({
               </button>
             ))}
           </div>
-        </div>
+          </div>
+        ) : null}
 
         {relatedTitles.length > 0 ? (
           <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
@@ -216,7 +236,9 @@ export default function BibleBuddyTvShowPageClient({
                       />
                     </div>
                     <div className="mt-3">
-                      <p className="text-xs font-semibold text-violet-700">{relatedTitle.badge}</p>
+                      <p className="text-xs font-semibold" style={{ color: CAROLINA_BLUE }}>
+                        {relatedTitle.badge}
+                      </p>
                       <h3 className="mt-1 text-sm font-semibold text-gray-900 md:text-lg">{relatedTitle.title}</h3>
                       <p className="mt-1 text-xs leading-relaxed text-gray-700 md:text-sm">{relatedTitle.logline}</p>
                     </div>
@@ -237,3 +259,4 @@ export default function BibleBuddyTvShowPageClient({
     </div>
   );
 }
+
