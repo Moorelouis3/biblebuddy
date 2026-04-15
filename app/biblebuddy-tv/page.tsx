@@ -18,12 +18,12 @@ const CAROLINA_BLUE = "#4B9CD3";
 const CAROLINA_BLUE_SOFT = "#EAF5FC";
 const CAROLINA_BLUE_BORDER = "#C8E2F3";
 
-const mobileCategoryOptions: Array<{ id: BibleBuddyTvCategory; label: string }> = [
-  { id: "tv", label: "TV Shows" },
+const categoryOptions: Array<{ id: BibleBuddyTvCategory; label: string }> = [
   { id: "movies", label: "Movies" },
-  { id: "bible-stories", label: "Animation" },
-  { id: "documentaries", label: "Documentary" },
+  { id: "tv", label: "TV Shows" },
   { id: "sermons", label: "Sermons" },
+  { id: "documentaries", label: "Documentary" },
+  { id: "bible-stories", label: "Cartoons" },
 ];
 
 function getCategoryCardStyle(category: BibleBuddyTvCategory) {
@@ -44,7 +44,7 @@ function getCategoryCardStyle(category: BibleBuddyTvCategory) {
 }
 
 export default function BibleBuddyTvHomePage() {
-  const [activeCategory, setActiveCategory] = useState<BibleBuddyTvCategory>("tv");
+  const [activeCategory, setActiveCategory] = useState<BibleBuddyTvCategory>("movies");
   const [featuredIndex, setFeaturedIndex] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [isDraggingFeatured, setIsDraggingFeatured] = useState(false);
@@ -56,7 +56,11 @@ export default function BibleBuddyTvHomePage() {
     [activeCategory]
   );
   const myListTitles = bibleBuddyTvTitles.filter((title) => title.inMyList);
-  const continueWatchingTitles = featuredTitles.filter((title) => title.continueWatchingLabel);
+  const continueWatchingTitles = bibleBuddyTvTitles.filter((title) => title.continueWatchingLabel);
+  const rotatingShelfCategories = useMemo(() => {
+    const randomized = [...categoryOptions].sort(() => Math.random() - 0.5);
+    return randomized.slice(0, 3);
+  }, []);
 
   useEffect(() => {
     if (featuredTitles.length <= 1) return;
@@ -93,6 +97,60 @@ export default function BibleBuddyTvHomePage() {
     dragStartXRef.current = null;
     setDragOffset(0);
     setIsDraggingFeatured(false);
+  }
+
+  function getProgressPercent(titleId: string) {
+    const progressMap: Record<string, number> = {
+      "gospel-of-john-movie": 22,
+      "moses-movie": 61,
+      "joseph-movie": 43,
+      "promised-land": 18,
+      "the-chosen": 34,
+    };
+    return progressMap[titleId] ?? 28;
+  }
+
+  function renderPosterShelf(
+    titles: typeof bibleBuddyTvTitles,
+    options?: { showProgress?: boolean; sectionTone?: "default" | "my-list" }
+  ) {
+    return (
+      <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 md:mx-0 md:px-0">
+        {titles.map((title) => (
+          <Link
+            key={title.id}
+            href={`/biblebuddy-tv/shows/${title.slug}`}
+            className="w-[138px] shrink-0 snap-start md:w-[184px]"
+          >
+            <div
+              className={`overflow-hidden rounded-2xl border shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
+                options?.sectionTone === "my-list" ? getCategoryCardStyle(title.category) : "border-gray-200 bg-white"
+              }`}
+            >
+              <div className="relative aspect-[2/3]">
+                <Image
+                  src={title.poster}
+                  alt={`${title.title} poster`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 138px, 184px"
+                />
+              </div>
+              {options?.showProgress ? (
+                <div className="px-3 pb-3 pt-2">
+                  <div className="h-1.5 overflow-hidden rounded-full bg-gray-200">
+                    <div
+                      className="h-full rounded-full"
+                      style={{ width: `${getProgressPercent(title.id)}%`, backgroundColor: CAROLINA_BLUE }}
+                    />
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </Link>
+        ))}
+      </div>
+    );
   }
 
   return (
@@ -256,220 +314,64 @@ export default function BibleBuddyTvHomePage() {
         </section>
 
         <section id="tv-categories" className="mt-8">
-          <div className="md:hidden">
-            <div className="relative max-w-xs">
-              <select
-                value={activeCategory}
-                onChange={(event) => setActiveCategory(event.target.value as BibleBuddyTvCategory)}
-                className="w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-3 pr-12 text-sm font-medium text-gray-800 shadow-sm outline-none transition focus:ring-2"
-                style={{ ["--tw-ring-color" as string]: CAROLINA_BLUE }}
-                aria-label="Choose a Bible Buddy TV category"
-              >
-                {mobileCategoryOptions.map((category) => (
-                  <option key={category.id} value={category.id}>
-                    {category.label}
-                  </option>
-                ))}
-              </select>
-              <div
-                className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-sm font-bold"
-                style={{ color: CAROLINA_BLUE }}
-              >
-                ▾
-              </div>
-            </div>
-          </div>
-
-          <div className="hidden flex-wrap gap-3 md:flex">
-            {bibleBuddyTvCategories.map((category) => {
-              const isActive = category.id === activeCategory;
-              return (
-                <button
-                  key={category.id}
-                  type="button"
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
-                    isActive
-                      ? "text-white"
-                      : "border border-gray-200 bg-white text-gray-700 hover:bg-gray-100"
-                  }`}
-                  style={isActive ? { backgroundColor: CAROLINA_BLUE } : undefined}
-                >
+          <div className="relative max-w-sm">
+            <select
+              value={activeCategory}
+              onChange={(event) => setActiveCategory(event.target.value as BibleBuddyTvCategory)}
+              className="w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-3 pr-12 text-sm font-medium text-gray-800 shadow-sm outline-none transition focus:ring-2"
+              style={{ ["--tw-ring-color" as string]: CAROLINA_BLUE }}
+              aria-label="Choose a Bible Buddy TV category"
+            >
+              {categoryOptions.map((category) => (
+                <option key={category.id} value={category.id}>
                   {category.label}
-                </button>
-              );
-            })}
+                </option>
+              ))}
+            </select>
+            <div
+              className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-sm font-bold"
+              style={{ color: CAROLINA_BLUE }}
+            >
+              ▾
+            </div>
           </div>
           <p className="mt-3 text-sm text-gray-600">
             {bibleBuddyTvCategories.find((category) => category.id === activeCategory)?.description}
           </p>
         </section>
 
-        <section className="mt-8 md:hidden">
+        <section className="mt-8">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-2xl font-bold text-gray-900">Continue Watching</h2>
             <span className="text-sm font-semibold" style={{ color: CAROLINA_BLUE }}>
               Bible Buddy TV
             </span>
           </div>
-          <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2">
-            {continueWatchingTitles.map((title) => (
-              <Link
-                key={title.id}
-                href={`/biblebuddy-tv/shows/${title.slug}`}
-                className="w-[138px] shrink-0 snap-start"
-              >
-                <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-                  <div className="relative aspect-[2/3]">
-                    <Image
-                      src={title.poster}
-                      alt={`${title.title} poster`}
-                      fill
-                      className="object-cover"
-                      sizes="138px"
-                    />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+          {renderPosterShelf(continueWatchingTitles, { showProgress: true })}
         </section>
 
-        <section className="mt-8 md:hidden">
+        <section className="mt-8">
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-gray-900">
-              {bibleBuddyTvCategories.find((category) => category.id === activeCategory)?.label}
-            </h2>
-            <span className="text-sm font-semibold text-gray-500">Browse</span>
-          </div>
-          <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2">
-            {filteredTitles.map((title) => (
-              <Link
-                key={title.id}
-                href={`/biblebuddy-tv/shows/${title.slug}`}
-                className="w-[138px] shrink-0 snap-start"
-              >
-                <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-                  <div className="relative aspect-[2/3]">
-                    <Image
-                      src={title.poster}
-                      alt={`${title.title} poster`}
-                      fill
-                      className="object-cover"
-                      sizes="138px"
-                    />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-6 hidden rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:block md:p-6">
-          <div className="mb-4">
-            <h2 className="text-2xl font-bold text-gray-900">
-              {bibleBuddyTvCategories.find((category) => category.id === activeCategory)?.label}
-            </h2>
-            <p className="mt-1 text-sm text-gray-600">
-              This section follows the same simple card flow as the rest of Bible Buddy.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-6">
-            {filteredTitles.map((title) => (
-              <Link key={title.id} href={`/biblebuddy-tv/shows/${title.slug}`} className="block">
-                <div className="cursor-pointer rounded-xl border border-gray-200 bg-white p-2 shadow-sm transition-all duration-200 hover:scale-[1.02] hover:shadow-xl md:p-4">
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
-                    <Image
-                      src={title.poster}
-                      alt={`${title.title} poster`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 45vw, 260px"
-                    />
-                  </div>
-                  <div className="mt-3">
-                    <p className="text-xs font-semibold" style={{ color: CAROLINA_BLUE }}>
-                      {title.badge}
-                    </p>
-                    <h3 className="mt-1 text-sm font-semibold text-gray-900 md:text-lg">{title.title}</h3>
-                    <p className="mt-1 text-xs leading-relaxed text-gray-700 md:text-sm">{title.logline}</p>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-8 hidden rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:block md:p-6">
-          <div className="mb-4">
-            <h2 className="text-2xl font-bold text-gray-900">Continue Watching</h2>
-            <p className="mt-1 text-sm text-gray-600">Pick up where you left off inside Bible Buddy.</p>
-          </div>
-
-          <Link href={`/biblebuddy-tv/shows/${promisedLandTitle.slug}`} className="block">
-            <div
-              className="rounded-xl border p-4 transition hover:shadow-md"
-              style={{ borderColor: CAROLINA_BLUE_BORDER, backgroundColor: CAROLINA_BLUE_SOFT }}
-            >
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                <div className="relative h-28 w-full shrink-0 overflow-hidden rounded-lg sm:w-44">
-                  <Image
-                    src={promisedLandTitle.poster}
-                    alt={`${promisedLandTitle.title} poster`}
-                    fill
-                    className="object-cover"
-                    sizes="176px"
-                  />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-sm font-semibold" style={{ color: CAROLINA_BLUE }}>
-                    Resume Watching
-                  </p>
-                  <h3 className="mt-1 text-xl font-semibold text-gray-900">{promisedLandTitle.title}</h3>
-                  <p className="mt-1 text-sm text-gray-700">{promisedLandTitle.continueWatchingLabel}</p>
-                  <div className="mt-3 h-2 overflow-hidden rounded-full bg-[#D9EDF9]">
-                    <div className="h-full w-[18%] rounded-full" style={{ backgroundColor: CAROLINA_BLUE }} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </section>
-
-        <section className="mt-8 hidden rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:block md:p-6">
-          <div className="mb-4">
             <h2 className="text-2xl font-bold text-gray-900">My List</h2>
-            <p className="mt-1 text-sm text-gray-600">Saved shows and collections you want to keep close.</p>
+            <span className="text-sm font-semibold text-gray-500">Saved</span>
           </div>
-
-          <div className="space-y-3">
-            {myListTitles.map((title) => (
-              <Link key={title.id} href={`/biblebuddy-tv/shows/${title.slug}`} className="block">
-                <div
-                  className={`rounded-xl border p-4 shadow-sm transition hover:shadow-md ${getCategoryCardStyle(title.category)}`}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="relative h-20 w-16 shrink-0 overflow-hidden rounded-lg border border-black/5">
-                      <Image
-                        src={title.poster}
-                        alt={`${title.title} poster`}
-                        fill
-                        className="object-cover"
-                        sizes="64px"
-                      />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs font-semibold text-gray-600">{title.badge}</p>
-                      <h3 className="mt-1 text-lg font-semibold text-gray-900">{title.title}</h3>
-                      <p className="mt-1 text-sm text-gray-700">{title.runtime}</p>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+          {renderPosterShelf(myListTitles, { sectionTone: "my-list" })}
         </section>
+
+        {rotatingShelfCategories.map((category) => {
+          const shelfTitles = bibleBuddyTvTitles.filter((title) => title.category === category.id);
+          if (!shelfTitles.length) return null;
+
+          return (
+            <section key={category.id} className="mt-8">
+              <div className="mb-4 flex items-center justify-between">
+                <h2 className="text-2xl font-bold text-gray-900">{category.label}</h2>
+                <span className="text-sm font-semibold text-gray-500">Browse</span>
+              </div>
+              {renderPosterShelf(shelfTitles)}
+            </section>
+          );
+        })}
       </div>
     </div>
   );

@@ -72,8 +72,8 @@ export const bibleBuddyTvCategories: Array<{
   },
   {
     id: "bible-stories",
-    label: "Bible Stories",
-    description: "Animated and story-first retellings for every age.",
+    label: "Cartoons",
+    description: "Animated and story-first Bible retellings for every age.",
   },
 ];
 
