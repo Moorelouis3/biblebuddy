@@ -2,12 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { ACTION_TYPE } from "../../lib/actionTypes";
 import {
-  bibleBuddyTvCategories,
+  bibleBuddyTvSermonTopics,
   bibleBuddyTvTitles,
   type BibleBuddyTvCategory,
 } from "../../lib/bibleBuddyTvContent";
+import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
+import { supabase } from "../../lib/supabaseClient";
 
 const CAROLINA_BLUE = "#4B9CD3";
 const CAROLINA_BLUE_SOFT = "#EAF5FC";
@@ -22,7 +26,7 @@ const categoryOptions: Array<{ id: HomeCategoryId; label: string }> = [
   { id: "tv", label: "TV Shows" },
   { id: "sermons", label: "Sermons" },
   { id: "documentaries", label: "Documentary" },
-  { id: "bible-stories", label: "Cartoons" },
+  { id: "bible-stories", label: "Animation" },
 ];
 
 function getCategoryCardStyle(category: BibleBuddyTvCategory) {
@@ -157,11 +161,13 @@ function PosterShelf({
 }
 
 export default function BibleBuddyTvHomePage() {
+  const router = useRouter();
   const [activeCategory, setActiveCategory] = useState<HomeCategoryId>("movies");
   const [featuredIndex, setFeaturedIndex] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [isDraggingFeatured, setIsDraggingFeatured] = useState(false);
   const [myListIds, setMyListIds] = useState<string[]>([]);
+  const [selectedSermonTopic, setSelectedSermonTopic] = useState("");
   const dragStartXRef = useRef<number | null>(null);
 
   const liveTitles = useMemo(() => bibleBuddyTvTitles.filter((title) => title.badge !== "Coming Soon"), []);
@@ -174,10 +180,10 @@ export default function BibleBuddyTvHomePage() {
   const fixedShelves = useMemo(
     () =>
       [
+        { id: "sermons" as const, label: "Sermons" },
         { id: "movies" as const, label: "Movies" },
         { id: "documentaries" as const, label: "Documentaries" },
-        { id: "sermons" as const, label: "Sermons" },
-        { id: "bible-stories" as const, label: "Cartoons" },
+        { id: "bible-stories" as const, label: "Animation" },
         { id: "tv" as const, label: "TV Shows" },
       ].map((shelf) => ({
         ...shelf,
@@ -185,6 +191,35 @@ export default function BibleBuddyTvHomePage() {
       })),
     [liveTitles]
   );
+
+  useEffect(() => {
+    async function loadUserAndTrackView() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user?.id) return;
+
+      const meta = (user.user_metadata || {}) as Record<string, string | undefined>;
+      const resolvedName =
+        meta.firstName ||
+        meta.first_name ||
+        (user.email ? user.email.split("@")[0] : null) ||
+        "User";
+
+      void trackNavigationActionOnce({
+        userId: user.id,
+        username: resolvedName,
+        actionType: ACTION_TYPE.bible_buddy_tv_viewed,
+        actionLabel: "Bible Buddy TV",
+        dedupeKey: "bible-buddy-tv-home",
+      }).catch((error) => {
+        console.error("[NAV] Failed to track Bible Buddy TV home view:", error);
+      });
+    }
+
+    void loadUserAndTrackView();
+  }, []);
 
   useEffect(() => {
     if (featuredTitles.length <= 1) return;
@@ -270,6 +305,12 @@ export default function BibleBuddyTvHomePage() {
       "the-chosen": 34,
     };
     return progressMap[titleId] ?? 28;
+  }
+
+  function handleSermonTopicChange(topic: string) {
+    setSelectedSermonTopic(topic);
+    if (!topic) return;
+    router.push(`/biblebuddy-tv/sermons/${topic}`);
   }
 
   return (
@@ -472,7 +513,32 @@ export default function BibleBuddyTvHomePage() {
             <section key={shelf.id} id={`shelf-${shelf.id}`} className="mt-8">
               <div className="mb-4 flex items-center justify-between">
                 <h2 className="text-2xl font-bold text-gray-900">{shelf.label}</h2>
-                <span className="text-sm font-semibold text-gray-500">Browse</span>
+                {shelf.id === "sermons" ? (
+                  <div className="relative">
+                    <select
+                      value={selectedSermonTopic}
+                      onChange={(event) => handleSermonTopicChange(event.target.value)}
+                      aria-label="Browse sermons by topic"
+                      className="appearance-none rounded-lg border border-gray-200 bg-white px-3 py-2 pr-10 text-sm font-semibold text-gray-700 shadow-sm outline-none transition focus:ring-2"
+                      style={{ ["--tw-ring-color" as string]: CAROLINA_BLUE }}
+                    >
+                      <option value="">Browse</option>
+                      {bibleBuddyTvSermonTopics.map((topic) => (
+                        <option key={topic.id} value={topic.id}>
+                          {topic.label}
+                        </option>
+                      ))}
+                    </select>
+                    <span
+                      className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm font-bold"
+                      style={{ color: CAROLINA_BLUE }}
+                    >
+                      ▾
+                    </span>
+                  </div>
+                ) : (
+                  <span className="text-sm font-semibold text-gray-500">Browse</span>
+                )}
               </div>
               <PosterShelf titles={shelf.titles} getProgressPercent={getProgressPercent} />
             </section>

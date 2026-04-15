@@ -5,6 +5,20 @@ export type BibleBuddyTvCategory =
   | "documentaries"
   | "bible-stories";
 
+export type BibleBuddyTvSermonTopic =
+  | "temptation"
+  | "lust"
+  | "peace"
+  | "hope"
+  | "anger"
+  | "money"
+  | "regret"
+  | "faith"
+  | "marriage"
+  | "divorce"
+  | "sin"
+  | "repenting";
+
 export interface BibleBuddyTvEpisode {
   id: string;
   episodeNumber: number;
@@ -42,6 +56,7 @@ export interface BibleBuddyTvTitle {
   continueWatchingLabel?: string;
   inMyList?: boolean;
   searchTags?: string[];
+  sermonTopics?: BibleBuddyTvSermonTopic[];
   episodes: BibleBuddyTvEpisode[];
 }
 
@@ -76,6 +91,28 @@ export const bibleBuddyTvCategories: Array<{
     description: "Animated and story-first Bible retellings for every age.",
   },
 ];
+
+export const bibleBuddyTvSermonTopics: Array<{
+  id: BibleBuddyTvSermonTopic;
+  label: string;
+}> = [
+  { id: "temptation", label: "Temptation" },
+  { id: "lust", label: "Lust" },
+  { id: "peace", label: "Peace" },
+  { id: "hope", label: "Hope" },
+  { id: "anger", label: "Anger" },
+  { id: "money", label: "Money" },
+  { id: "regret", label: "Regret" },
+  { id: "faith", label: "Faith" },
+  { id: "marriage", label: "Marriage" },
+  { id: "divorce", label: "Divorce" },
+  { id: "sin", label: "Sin" },
+  { id: "repenting", label: "Repenting" },
+];
+
+export function getBibleBuddyTvSermonTopicLabel(topic: BibleBuddyTvSermonTopic) {
+  return bibleBuddyTvSermonTopics.find((item) => item.id === topic)?.label ?? topic;
+}
 
 export const promisedLandTitle: BibleBuddyTvTitle = {
   id: "promised-land",
@@ -5207,6 +5244,2115 @@ It gives hurting people permission to grieve honestly, reject shallow answers, a
   ],
 };
 
+export const billyHolySpiritSermonTitle: BibleBuddyTvTitle = {
+  id: "billy-graham-holy-spirit",
+  slug: "billy-graham-holy-spirit",
+  title: "Billy Graham: The Holy Spirit",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/billyholyspiritsermon.png",
+  heroImage: "/billyholyspiritsermon.png",
+  accentFrom: "#2563eb",
+  accentTo: "#0f172a",
+  year: "1983",
+  rating: "All Ages",
+  runtime: "46m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "A Billy Graham sermon on the life-changing power of the Holy Spirit and the promise Jesus gives in John 14:16.",
+  overview:
+    "This Billy Graham message from Sacramento centers on one of Jesus' clearest promises about the Holy Spirit. Built around John 14:16, the sermon explains that the Holy Spirit is not a vague force or a side doctrine, but God's abiding presence with believers. The message moves through conviction, comfort, power, and new life, helping people understand why the Spirit matters for daily Christian living and not just special moments in church.",
+  vibe:
+    "Clear gospel preaching, Spirit-filled comfort, conviction, and simple biblical teaching about new life with God.",
+  continueWatchingLabel: "Sermon: The Holy Spirit",
+  inMyList: true,
+  sermonTopics: ["faith", "repenting"],
+  searchTags: [
+    "sermon",
+    "billy graham",
+    "holy spirit",
+    "john 14 16",
+    "helper",
+    "comforter",
+    "sacramento 1983",
+    "new life",
+    "spirit of god",
+    "gospel sermon",
+    "jesus promise",
+    "acts 1 8",
+    "romans 8",
+    "galatians 5",
+    "christian teaching",
+    "holy spirit sermon",
+    "abide with you forever",
+    "another helper",
+  ],
+  episodes: [
+    {
+      id: "billy-graham-holy-spirit-main",
+      episodeNumber: 1,
+      title: "The Holy Spirit",
+      contentLabel: "Sermon",
+      duration: "46m",
+      summary:
+        "Billy Graham explains Jesus' promise of another Helper, showing how the Holy Spirit brings conviction, comfort, power, and new life to believers.",
+      thumbnail: "/billyholyspiritsermon.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=zbKXkpiLcfk",
+      available: true,
+      discussionSlug: "bible-buddy-tv-billy-graham-holy-spirit",
+      reflectionQuestion: "What stood out to you most in this sermon?",
+      louisIntro:
+        "What makes this sermon strong is that it does not treat the Holy Spirit like a side topic for advanced Christians. It brings the Spirit right into the center of ordinary Christian life. Jesus says the Father will send another Helper, and Billy Graham leans into what that means for comfort, conviction, courage, and daily obedience. If somebody has ever felt confused about who the Holy Spirit is or why He matters, this is the kind of message that helps clear the fog.",
+      studyNotesDocument: `# The Promise of Another Helper
+
+Jesus says in **John 14:16**, "I will pray the Father, and He will give you another Helper, that He may abide with you forever."
+
+That verse matters because it shows that the Holy Spirit is not temporary help.
+He is God's ongoing presence with His people.
+
+This sermon works by slowing that promise down.
+
+Billy Graham is not only asking whether people believe in the Holy Spirit in theory.
+He is asking whether they understand what it means for the Spirit to actually dwell with them.
+
+# Where This Teaching Lives in Scripture
+
+The center verse is **John 14:16**, but the theme stretches across the New Testament.
+
+Important passages to keep open while listening:
+
+- **John 14:16-17** on the Helper who abides forever
+- **John 16:7-8** on the Spirit's coming and conviction
+- **Acts 1:8** on power for witness
+- **Romans 8:9-16** on the Spirit dwelling in believers
+- **Galatians 5:22-25** on the fruit of the Spirit
+
+That matters because the sermon is not inventing a new emphasis.
+It is pulling together one of the Bible's clearest threads about Christian life.
+
+# One Word Worth Noticing: Helper
+
+In John 14, the word often translated **Helper** can also be rendered Comforter, Advocate, or Counselor.
+
+That matters because no single English word captures the full idea.
+
+The point is not that the Spirit only comforts when people are sad.
+The point is that the Spirit comes alongside believers with:
+
+- help
+- truth
+- presence
+- strength
+- guidance
+
+So when Jesus promises "another Helper," He is not promising an abstract force.
+He is promising divine presence.
+
+# Why Jesus Says "Another"
+
+That word **another** matters.
+
+Jesus is saying the disciples will not be abandoned when He goes to the Father.
+
+The Spirit continues God's presence among His people.
+
+That is why John 14 feels so personal.
+The disciples are hearing hard news about Jesus leaving.
+And Jesus answers that fear with a promise:
+
+> You are not being left alone.
+
+That is still one of the strongest parts of the Holy Spirit's ministry.
+Believers are not expected to follow Christ by willpower alone.
+
+# The Holy Spirit Is Not Just a Doctrine
+
+One of the best parts of a sermon like this is how practical it becomes.
+
+The Holy Spirit is not only a line in a creed.
+He is part of lived Christianity.
+
+That means this message is pressing into real questions:
+
+- How does a believer actually change?
+- How does someone endure temptation?
+- How does conviction happen?
+- How does courage show up in ordinary life?
+
+The answer Billy Graham keeps moving toward is that the Spirit of God is active, personal, and powerful.
+
+# Conviction Comes Before Comfort
+
+The Holy Spirit comforts, but Scripture also shows that He convicts.
+
+Jesus says in **John 16:8** that the Spirit will convict the world concerning sin, righteousness, and judgment.
+
+That matters because new life does not begin with self-congratulation.
+It begins with truth.
+
+The Spirit exposes:
+
+- sin we excuse
+- pride we hide
+- resistance we defend
+
+But that conviction is not pointless shame.
+It is meant to bring people to Christ.
+
+So when Billy Graham talks about new life, he is not skipping repentance.
+He is showing that the Spirit pushes people toward Jesus, not away from Him.
+
+# Acts 1:8 and Power for Witness
+
+Another verse that belongs under a sermon like this is **Acts 1:8**:
+
+> "You will receive power when the Holy Spirit has come upon you, and you will be my witnesses..."
+
+That power is not mainly about spiritual performance.
+It is power to live faithfully and point to Christ.
+
+That matters because many people hear "power" and only think of dramatic moments.
+But in Acts, power also shows up as:
+
+- boldness
+- faithfulness
+- endurance
+- public witness
+
+The Spirit helps believers live openly for Jesus in a world that often pressures them toward silence.
+
+# Romans 8 Makes This Personal
+
+If John 14 gives the promise, **Romans 8** shows what life in the Spirit looks like.
+
+Paul says the Spirit dwells in believers.
+He says the Spirit bears witness that we are children of God.
+
+That matters because the Holy Spirit does not only work outwardly.
+He also works inwardly.
+
+Romans 8 turns this into identity language:
+
+- you are not left in the flesh
+- you belong to Christ
+- you are led by the Spirit
+- you can cry, "Abba, Father"
+
+That is why the Holy Spirit is central to assurance.
+The Christian life is not only trying harder.
+It is living from a new source of life.
+
+# The Fruit of the Spirit Shows the Difference
+
+One of the clearest ways to understand the Spirit's work is through **Galatians 5:22-23**.
+
+Paul gives the fruit of the Spirit:
+
+- love
+- joy
+- peace
+- patience
+- kindness
+- goodness
+- faithfulness
+- gentleness
+- self-control
+
+That matters because a sermon on the Holy Spirit should eventually touch real evidence.
+
+The Spirit does not only create emotional experiences.
+He produces transformation.
+
+If someone wants to know whether this teaching matters in ordinary life, Galatians 5 gives the answer.
+The Spirit changes character.
+
+# New Life Means More Than Religious Activity
+
+The sermon's language about new life is important.
+
+Christianity is not only behavior management.
+It is not only moral effort.
+
+New life means:
+
+- a new heart direction
+- new desires
+- new power for obedience
+- new relationship with God
+
+That is why the Holy Spirit is so central.
+Without the Spirit, Christianity becomes a heavy system people try to maintain on their own.
+With the Spirit, obedience becomes the overflow of God's life in us.
+
+# The Holy Spirit and Everyday Assurance
+
+One of the quiet strengths in this topic is how much it speaks to ordinary fear.
+
+People struggle with:
+
+- loneliness
+- doubt
+- weakness
+- inconsistency
+- fear of failure
+
+The promise of the Spirit answers that by saying God is not distant.
+
+He helps.
+He indwells.
+He leads.
+He convicts.
+He strengthens.
+
+That does not erase struggle overnight.
+But it means believers are not struggling alone.
+
+# A Good Question to Ask While Listening
+
+As this sermon plays, a strong question to carry is:
+
+> Am I trying to live the Christian life in my own strength?
+
+That question matters because many believers know Jesus' name but still operate as though growth depends entirely on personal effort.
+
+The New Testament keeps pulling the believer back to dependence on the Spirit.
+
+# Scripture Connections to Read After the Sermon
+
+If you want to go deeper after watching, read:
+
+- **John 14:15-17**
+- **John 16:7-15**
+- **Acts 1:4-8**
+- **Romans 8:1-17**
+- **Galatians 5:16-25**
+
+Those passages help frame the sermon in the larger Bible story of promise, indwelling, sanctification, and mission.
+
+# Final Takeaway
+
+This sermon matters because it makes the Holy Spirit feel immediate again.
+
+Not strange.
+Not distant.
+Not optional.
+
+Jesus promises another Helper.
+And that promise reaches into:
+
+- salvation
+- conviction
+- comfort
+- obedience
+- assurance
+- witness
+
+The Holy Spirit is not a side note in Christian life.
+He is part of how believers know, follow, and remain with Christ.`,
+    },
+  ],
+};
+
+export const philipAnthonyMitchellTemptationSermonTitle: BibleBuddyTvTitle = {
+  id: "philip-anthony-mitchell-break-free",
+  slug: "philip-anthony-mitchell-break-free",
+  title: "Philip Anthony Mitchell: Break Free",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/Philipbreakfreesermon.png",
+  heroImage: "/Philipbreakfreesermon.png",
+  accentFrom: "#1d4ed8",
+  accentTo: "#0f172a",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "58m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "A sermon about breaking sin's grip, resisting temptation, and walking in the holy purpose God has for your life.",
+  overview:
+    "This Philip Anthony Mitchell message presses hard on the reality of temptation, the schemes of the enemy, and the danger of letting sin quietly shape a life. But it is not only a warning sermon. It is also a freedom sermon. The message keeps pulling listeners back to the truth that God has not left His people powerless. In Christ, believers are called to resist, pursue holiness, and stop making peace with the very things trying to rob their purpose.",
+  vibe:
+    "Direct preaching, spiritual urgency, holiness, inner warfare, and strong encouragement to live free and focused.",
+  continueWatchingLabel: "Sermon: Break Free",
+  inMyList: true,
+  sermonTopics: ["temptation", "lust", "sin", "repenting"],
+  searchTags: [
+    "sermon",
+    "philip anthony mitchell",
+    "break free",
+    "temptation",
+    "sin",
+    "holiness",
+    "purpose",
+    "schemes of the enemy",
+    "resist temptation",
+    "spiritual warfare",
+    "obedience",
+    "self control",
+    "james 1",
+    "1 corinthians 10 13",
+    "ephesians 6",
+    "galatians 5",
+    "romans 6",
+    "tbn sermon",
+  ],
+  episodes: [
+    {
+      id: "philip-anthony-mitchell-break-free-main",
+      episodeNumber: 1,
+      title: "Break Free From the Grip of Temptation",
+      contentLabel: "Sermon",
+      duration: "58m",
+      summary:
+        "Philip Anthony Mitchell warns about the pull of sin while calling believers to resist temptation, pursue holiness, and walk in the purpose God has for them.",
+      thumbnail: "/Philipbreakfreesermon.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=vNoO3YQAPNM",
+      available: true,
+      discussionSlug: "bible-buddy-tv-philip-anthony-mitchell-break-free",
+      reflectionQuestion: "What stood out to you most in this sermon?",
+      louisIntro:
+        "This sermon lands because it does not treat temptation like a small side struggle. It treats it like a war for direction, intimacy with God, and purpose. Philip Anthony Mitchell pushes on the truth that sin is never content to stay small. It wants ground. It wants patterns. It wants permission. And the message keeps bringing listeners back to the fact that in Christ, believers are not powerless victims. They are called to resist, to be holy, and to stop surrendering to what Jesus died to free them from.",
+      studyNotesDocument: `# Temptation Is Never Just About One Moment
+
+One of the strongest things about a sermon like this is that it refuses to treat temptation like a random bad decision floating by itself.
+
+Temptation is connected to direction.
+It is connected to desire.
+It is connected to identity.
+
+That matters because people often think the battle is only about saying no in one isolated moment.
+But Scripture shows that temptation usually works deeper than that.
+
+It tries to shape:
+
+- habits
+- loyalties
+- thought patterns
+- private compromises
+
+So when Philip Anthony Mitchell talks about breaking free, he is not only talking about behavior cleanup.
+He is talking about spiritual freedom.
+
+# Where This Teaching Lives in Scripture
+
+This message fits especially well with a group of passages that help explain temptation, resistance, and holiness:
+
+- **James 1:13-15** on desire and the birth of sin
+- **1 Corinthians 10:13** on God's faithfulness in temptation
+- **Romans 6:11-14** on no longer being ruled by sin
+- **Galatians 5:16-17** on flesh and Spirit
+- **Ephesians 6:10-18** on the schemes of the devil
+- **1 Peter 1:15-16** on holiness
+
+That matters because the sermon is not just emotionally intense.
+It has strong biblical roots.
+
+# James 1 Helps Explain the Process
+
+One of the clearest passages for understanding temptation is **James 1:14-15**.
+
+James says a person is lured and enticed by his own desire.
+Then desire, when it has conceived, gives birth to sin.
+And sin, when fully grown, brings forth death.
+
+That progression matters.
+
+Sin rarely begins at full size.
+It grows.
+
+That is why sermons like this press urgency.
+If believers only pay attention once sin is already full-grown, they are fighting late.
+
+James teaches people to notice the earlier stages:
+
+- what is pulling the heart
+- what is being entertained in the mind
+- what is being justified in private
+
+# The Enemy Uses Schemes, Not Only Force
+
+When the sermon talks about the enemy, **Ephesians 6:11** is a helpful lens.
+
+Paul says to put on the whole armor of God so believers can stand against the schemes of the devil.
+
+The word **schemes** matters.
+
+That means temptation is not always loud.
+It is often strategic.
+
+The enemy works through:
+
+- lies
+- distortion
+- half-truths
+- appetite
+- weariness
+- secrecy
+
+That is why temptation can feel so persuasive.
+It often arrives dressed like relief, pleasure, control, or escape.
+
+# 1 Corinthians 10:13 Is a Freedom Verse
+
+One of the most important verses underneath a message like this is **1 Corinthians 10:13**:
+
+> "God is faithful... with the temptation He will also provide the way of escape..."
+
+That verse matters because it destroys the lie that believers are simply trapped with no real options.
+
+It does not say temptation is weak.
+It does not say the struggle is imaginary.
+
+It says God is faithful in the middle of it.
+
+That means the Christian response is not hopelessness.
+It is watchfulness and dependence.
+
+# Romans 6 Says Sin Is Not the Master Anymore
+
+If James explains temptation's growth pattern, **Romans 6** explains the believer's position.
+
+Paul says sin must not reign in your mortal body.
+He says believers are not under sin's dominion.
+
+That matters because many Christians still think about sin as though it owns them absolutely.
+
+But the Gospel says something stronger.
+
+In Christ:
+
+- sin is still fought
+- temptation is still real
+- but mastery has been broken
+
+That does not mean the battle disappears.
+It means the believer fights from a different place.
+
+# Holiness Is Not a Side Topic
+
+This sermon also matters because it keeps holiness in view.
+
+In some settings, holiness sounds old-fashioned or severe.
+But in Scripture, holiness is not mainly about religious performance.
+
+It is about belonging to God.
+
+**1 Peter 1:15-16** says:
+
+> "As He who called you is holy, you also be holy in all your conduct."
+
+That matters because holiness is not random moral pressure.
+It flows from who God is and who His people are called to be.
+
+So breaking free from temptation is not only about avoiding damage.
+It is about becoming more aligned with God's character.
+
+# Galatians 5 Shows the Inner Conflict
+
+Another key passage for this sermon is **Galatians 5:16-17**.
+
+Paul describes the tension between the flesh and the Spirit.
+
+That matters because believers often feel confused when they experience real inner conflict.
+They wonder why the struggle is still there.
+
+Galatians helps explain that war.
+
+The answer is not to pretend the flesh has no pull.
+The answer is to walk by the Spirit.
+
+That means temptation is not overcome merely by stronger determination.
+It is overcome through dependence, obedience, and closeness to God.
+
+# Purpose Gets Lost in Compromise
+
+One of the strongest pastoral ideas in a sermon like this is the connection between temptation and purpose.
+
+Sin does not only stain.
+It distracts.
+It drains.
+It delays.
+
+That matters because many people think purpose is only threatened by catastrophic failure.
+But often purpose is weakened by repeated compromise that dulls clarity and weakens intimacy with God.
+
+Temptation promises pleasure now.
+But it often steals focus later.
+
+# What Freedom Usually Looks Like
+
+Breaking free is rarely just one emotional altar moment and then no more struggle.
+
+Usually freedom involves:
+
+- confession
+- repentance
+- cutting off access points
+- renewed thinking
+- accountability
+- walking closely with the Spirit
+
+That matters because people can leave strong sermons inspired but vague.
+Scripture keeps freedom practical.
+
+# Questions This Sermon Should Make You Ask
+
+A message like this should make people slow down and ask:
+
+- What am I excusing that God is exposing?
+- What pattern keeps weakening my clarity?
+- Where have I confused grace with permission?
+- What would real repentance look like here?
+
+Those questions matter because temptation thrives in vagueness.
+Freedom usually starts when things become honest.
+
+# Scripture Connections to Read After the Sermon
+
+If you want to go deeper after watching, read:
+
+- **James 1:13-15**
+- **1 Corinthians 10:12-13**
+- **Romans 6:11-14**
+- **Galatians 5:16-25**
+- **Ephesians 6:10-18**
+- **Psalm 119:9-11**
+
+These passages help ground the sermon's urgency in the larger biblical language of resistance, holiness, and purpose.
+
+# Final Takeaway
+
+This sermon matters because it tells the truth about temptation without leaving people in defeat.
+
+Sin is serious.
+The enemy is active.
+Compromise is costly.
+
+But so is God's grace.
+So is the Spirit's power.
+So is the freedom Christ gives.
+
+The call is not just:
+
+- try harder
+
+The call is:
+
+- wake up
+- resist
+- walk by the Spirit
+- refuse agreement with sin
+- live like your purpose actually matters
+
+That is what breaking free starts to look like.`,
+    },
+  ],
+};
+
+export const stevenFurtickStressSermonTitle: BibleBuddyTvTitle = {
+  id: "steven-furtick-gods-working-stop-stressing",
+  slug: "steven-furtick-gods-working-stop-stressing",
+  title: "Steven Furtick: God's Working; Stop Stressing",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/StevenFurticksermonstress.png",
+  heroImage: "/StevenFurticksermonstress.png",
+  accentFrom: "#2563eb",
+  accentTo: "#111827",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "9m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "A short sermon on stress, silence, spiritual pressure, and learning to trust that God is still working.",
+  overview:
+    "This Steven Furtick message takes a compact but powerful look at stress through the lens of 2 Corinthians 7:5-7. The sermon leans into a truth many people need in real life: silence does not always mean absence, and pressure does not always mean God has stopped moving. By walking through inner turmoil, outside opposition, and the comfort God brings, the message calls listeners to stop interpreting every hard moment as failure and start trusting that God is still at work even before the breakthrough is visible.",
+  vibe:
+    "Fast, encouraging preaching about pressure, perspective, emotional strain, and learning to trust God in the middle of stress.",
+  continueWatchingLabel: "Sermon: Stop Stressing",
+  inMyList: true,
+  sermonTopics: ["hope", "peace", "faith"],
+  searchTags: [
+    "sermon",
+    "steven furtick",
+    "stress",
+    "anxiety",
+    "god is working",
+    "stop stressing",
+    "2 corinthians 7",
+    "2 corinthians 7 5 7",
+    "pressure",
+    "silence",
+    "restoration",
+    "comfort",
+    "encouragement",
+    "mental pressure",
+    "christian stress",
+    "hope",
+    "paul",
+    "titus",
+  ],
+  episodes: [
+    {
+      id: "steven-furtick-gods-working-stop-stressing-main",
+      episodeNumber: 1,
+      title: "God's Working; Stop Stressing",
+      contentLabel: "Sermon",
+      duration: "9m",
+      summary:
+        "Steven Furtick uses 2 Corinthians 7:5-7 to show that stress, silence, and pressure do not mean God has stopped working, and that comfort and restoration can still be on the way.",
+      thumbnail: "/StevenFurticksermonstress.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=njH4zHXU7V0",
+      available: true,
+      discussionSlug: "bible-buddy-tv-steven-furtick-stop-stressing",
+      reflectionQuestion: "What stood out to you most in this sermon?",
+      louisIntro:
+        "What makes this sermon helpful is how quickly it gets into something people actually live with every day: stress that starts shaping how they interpret everything. Steven Furtick pushes on the truth that silence is easy to misread, pressure is easy to personalize, and delay is easy to label as defeat. But 2 Corinthians 7 shows a different picture. God was still working in the middle of conflict outside and fear within. That is what gives this message strength. It reminds people that if the breakthrough is not visible yet, that does not mean Heaven is inactive.",
+      studyNotesDocument: `# Stress Changes the Way People Read Their Lives
+
+One of the strongest ideas in a sermon like this is that stress does not only make people tired.
+It can also make them interpret everything wrong.
+
+That matters because when people are under pressure, they often start reading silence as rejection, delay as failure, and struggle as proof that something has gone permanently wrong.
+
+The sermon pushes against that instinct.
+
+It reminds listeners that what they are feeling in the moment is not always the full truth about what God is doing.
+
+# Where This Teaching Lives in Scripture
+
+The core passage for this message is **2 Corinthians 7:5-7**.
+
+Paul says:
+
+> "For even when we came into Macedonia, our bodies had no rest, but we were afflicted at every turn - fighting without and fear within. But God, who comforts the downcast, comforted us by the coming of Titus..."
+
+That passage matters because it is brutally honest.
+
+Paul does not pretend ministry always feels triumphant.
+He describes:
+
+- exhaustion
+- conflict
+- inner fear
+- emotional strain
+
+But he also says God brought comfort.
+
+That is the tension the sermon lives in.
+
+# "Fighting Without and Fear Within"
+
+This phrase from **2 Corinthians 7:5** is one of the clearest biblical descriptions of stress.
+
+Paul is describing pressure from two directions:
+
+- external pressure
+- internal pressure
+
+That matters because many people assume stress only counts if the outside situation is hard.
+But Scripture shows the battle can be doubled:
+
+- problems at the door
+- fear in the heart
+
+The sermon works well because it names both.
+
+Some people are not only carrying difficult circumstances.
+They are also carrying the exhausting interpretations those circumstances keep creating inside them.
+
+# Silence Is Easy to Misread
+
+One of the message chapters is about being bad at interpreting silence.
+
+That lands because silence is one of the hardest things for people to handle spiritually.
+
+When prayers feel unanswered, people start filling the gap with assumptions.
+
+Common assumptions sound like:
+
+- God is not listening
+- nothing is changing
+- I missed my moment
+- I am on my own
+
+But Scripture often shows that silence and inactivity are not the same thing.
+
+That matters.
+
+God can be quiet without being absent.
+God can be unseen without being uninvolved.
+
+# God Comforts the Downcast
+
+Paul says in **2 Corinthians 7:6** that "God, who comforts the downcast, comforted us..."
+
+That title matters.
+
+Paul does not only say God gives comfort.
+He says God is the kind of God who comforts the downcast.
+
+That means divine comfort is not a side ministry.
+It is part of God's character.
+
+The word **downcast** matters too.
+It speaks to being low, burdened, discouraged, pressed down in spirit.
+
+So this sermon is not only for dramatic crisis.
+It is also for ordinary people carrying emotional weight they have been trying to hide.
+
+# Titus Shows That Comfort Can Arrive in a Form You Did Not Expect
+
+In 2 Corinthians 7, God's comfort came through the arrival of **Titus**.
+
+That matters because sometimes people expect comfort to arrive only in supernatural feelings.
+
+But in Scripture, God's comfort often comes through:
+
+- a person
+- a word
+- a report
+- a reminder
+- a timely presence
+
+The sermon works because it keeps people open to the ways God may already be answering, even if the answer is not packaged the way they expected.
+
+# Stress Makes the Enemy Feel Closer Than God
+
+One of the sermon chapters talks about why there is an enemy at the door.
+
+That is important because stress can make spiritual opposition feel louder than divine care.
+
+When people are tired, they are more vulnerable to:
+
+- suspicion
+- hopelessness
+- distorted thinking
+- exaggerated fear
+
+That is why a stressful season can become spiritually dangerous if it is not interpreted carefully.
+
+The enemy does not always need to destroy a person publicly.
+Sometimes all he needs to do is keep them emotionally flooded enough that they stop seeing clearly.
+
+# What Is Ahead Can Be Bigger Than What Is Pressing You Now
+
+Another strong move in this sermon is its emphasis on what is ahead.
+
+That matters because stress has a shrinking effect.
+It narrows vision.
+
+People start to believe:
+
+- this is all there is
+- this moment defines everything
+- the current pressure is the whole story
+
+But the biblical story repeatedly pushes against that.
+
+Paul's language shows that a hard chapter is not necessarily the final chapter.
+
+So when the sermon says what is ahead is important, it is calling listeners not to crown the current pressure as the final verdict on their life.
+
+# Restoration Is a Biblical Theme
+
+The sermon closes with restoration, and that is not just motivational language.
+It is a deeply biblical pattern.
+
+Restoration does not always mean instant reversal.
+But it does mean God is able to bring:
+
+- renewal
+- comfort
+- strength
+- fresh perspective
+- regained footing
+
+That matters because stress often convinces people that depletion is permanent.
+
+But Scripture keeps telling stories where God meets people in weakness and restores what felt lost.
+
+# Paul's Honesty Gives Permission for Ours
+
+One reason 2 Corinthians is such a powerful place to preach from is that Paul is unusually transparent.
+
+He does not sound polished here.
+He sounds human.
+
+That matters because some believers think strong faith means never admitting inner pressure.
+
+But Paul talks openly about fear within.
+
+That means honesty is not the enemy of faith.
+It can actually be part of faithful endurance.
+
+# Good Questions This Sermon Should Raise
+
+As people listen to this message, a few questions are worth carrying:
+
+- What silence have I already decided means God is absent?
+- What pressure am I letting define my identity?
+- Where am I reading temporary stress as permanent failure?
+- What comfort has God already sent that I have overlooked?
+
+Those questions matter because stress usually grows in unexamined interpretations.
+
+# Other Scriptures That Fit This Message
+
+If you want to go deeper after the sermon, read:
+
+- **Philippians 4:6-7** on anxiety and the peace of God
+- **Psalm 46:1-3** on God as refuge in trouble
+- **Isaiah 41:10** on fear and divine help
+- **Matthew 11:28-30** on coming to Jesus for rest
+- **1 Peter 5:7** on casting anxieties on Him
+
+These passages help widen the picture.
+Stress is real, but so is God's presence in the middle of it.
+
+# Final Takeaway
+
+This sermon matters because it helps people challenge one of stress's biggest lies:
+
+> If it feels heavy, God must have stopped working.
+
+2 Corinthians 7 says otherwise.
+
+There was:
+
+- pressure outside
+- fear inside
+- no rest in the body
+
+And still:
+
+- God was working
+- comfort was coming
+- restoration was not canceled
+
+That is the heart of the message.
+
+Do not let stress become your interpreter.
+Let Scripture do that.
+
+God may be doing more in the silence and strain than you can see yet.`,
+    },
+  ],
+};
+
+export const philRobertsonPeaceSermonTitle: BibleBuddyTvTitle = {
+  id: "phil-robertson-finding-peace-of-mind-in-christ",
+  slug: "phil-robertson-finding-peace-of-mind-in-christ",
+  title: "Phil Robertson: Finding Peace of Mind in Christ",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/PhilRobertsonsermon.png",
+  heroImage: "/PhilRobertsonsermon.png",
+  accentFrom: "#2563eb",
+  accentTo: "#111827",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "28m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "Phil Robertson shares how Christ brought peace, repentance, and a new life in place of chaos and worldly living.",
+  overview:
+    "This Phil Robertson message centers on the kind of peace that does not come from finally getting everything in life under control, but from being made right with God through Jesus Christ. Phil tells the story of who he used to be and how a relationship with Christ turned him away from destruction, selfishness, and empty living. The sermon lands on a simple but powerful truth: peace of mind is not found in worldly escape, but in forgiveness, new life, and steady trust in Jesus.",
+  vibe:
+    "Plainspoken testimony preaching, repentance, peace, new life, and gospel clarity rooted in personal transformation.",
+  continueWatchingLabel: "Sermon: Peace of Mind in Christ",
+  inMyList: true,
+  sermonTopics: ["peace", "regret", "repenting", "faith"],
+  searchTags: [
+    "sermon",
+    "phil robertson",
+    "peace",
+    "peace of mind",
+    "jesus christ",
+    "testimony",
+    "repentance",
+    "new life",
+    "forgiveness",
+    "transformation",
+    "duck dynasty",
+    "former life",
+    "christian peace",
+    "salvation",
+    "gospel",
+    "mind",
+    "rest in christ",
+    "former beer joint owner",
+  ],
+  episodes: [
+    {
+      id: "phil-robertson-finding-peace-of-mind-in-christ-main",
+      episodeNumber: 1,
+      title: "Finding Peace of Mind in Christ",
+      contentLabel: "Sermon",
+      duration: "28m",
+      summary:
+        "Phil Robertson shares how Jesus Christ brought him out of worldly living and into forgiveness, peace, and a transformed life.",
+      thumbnail: "/PhilRobertsonsermon.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=Y9DUqYZ-QUU",
+      available: true,
+      discussionSlug: "bible-buddy-tv-phil-robertson-peace-of-mind",
+      reflectionQuestion: "What stood out to you most in this sermon?",
+      louisIntro:
+        "What gives this sermon weight is that it is not talking about peace as a vague feeling. It is talking about peace as the result of a real change in direction. Phil Robertson speaks from a life that used to be driven by worldly desire, selfishness, and broken priorities, and the message keeps pointing back to what Christ does when He actually takes hold of a person. He forgives, He changes the heart, and He gives the kind of peace that chaos and pleasure never could.",
+      studyNotesDocument: `# Peace in Christ Is Not the Same as a Calm Circumstance
+
+One of the strongest things about a testimony sermon like this is that it reminds people peace is not the same thing as a smooth life.
+
+That matters because many people think peace comes from:
+
+- getting life organized
+- escaping consequences
+- reducing stress
+- finally controlling everything around them
+
+But biblical peace goes deeper than that.
+
+Peace in Christ begins with being reconciled to God.
+
+That is why this sermon works.
+It is not just about feeling better.
+It is about becoming different.
+
+# Testimony Matters Because the Gospel Changes Real Lives
+
+Phil Robertson's story matters because it shows what the Gospel looks like when it hits a real person in a real mess.
+
+Before Christ, he describes himself in dark terms.
+That honesty matters.
+
+The New Testament often shows that real conversion includes a clear recognition of the old life.
+
+Not for shame alone.
+But so grace is seen for what it really is.
+
+Testimony matters because it says:
+
+- this is who I was
+- this is what Christ confronted
+- this is what changed
+
+That is not performance.
+It is witness.
+
+# Peace Starts with Reconciliation
+
+One of the most important Bible ideas under a sermon like this is found in **Romans 5:1**:
+
+> "Therefore, since we have been justified by faith, we have peace with God through our Lord Jesus Christ."
+
+That verse matters because it shows peace is first vertical before it becomes emotional.
+
+Peace with God means:
+
+- guilt is dealt with
+- condemnation is answered
+- rebellion is no longer the final word
+
+So when someone talks about peace of mind in Christ, the deepest layer is not mental technique.
+It is reconciliation through Jesus.
+
+# Worldly Pleasure Cannot Hold the Soul Together
+
+The sermon's backstory matters because it exposes a pattern Scripture talks about often.
+
+A person can chase:
+
+- pleasure
+- appetite
+- status
+- independence
+
+And still end up restless.
+
+That matters because sin often advertises itself as freedom while quietly deepening chaos.
+
+The world says peace comes from getting what you want.
+Scripture keeps showing that peace comes from returning to the God you were made for.
+
+# Repentance Is Not Just Feeling Bad
+
+For a sermon like this to really land, repentance has to be understood correctly.
+
+Repentance is not only regret.
+It is a turn.
+
+That means:
+
+- a changed direction
+- a changed allegiance
+- a changed understanding of sin
+
+This matters because peace is not found by baptizing the old life.
+It is found when a person stops defending darkness and comes into the light.
+
+That is why testimony sermons often hit people hard.
+They show that change did not begin with self-improvement.
+It began with surrender.
+
+# Jesus Does More Than Clean Up the Outside
+
+Another strong biblical theme here is that Christ does not only polish behavior.
+He changes the inside.
+
+That idea fits passages like **2 Corinthians 5:17**:
+
+> "If anyone is in Christ, he is a new creation."
+
+That matters because many people want peace without transformation.
+
+But the Gospel offers something stronger:
+
+- forgiveness
+- new identity
+- new desires
+- new loyalty
+
+Peace of mind in Christ is not built on pretending the old self was fine.
+It is built on the truth that Jesus makes people new.
+
+# Peace Guards the Mind
+
+If this sermon is about peace of mind, **Philippians 4:6-7** belongs underneath it:
+
+> "Do not be anxious about anything... and the peace of God... will guard your hearts and your minds in Christ Jesus."
+
+That verse matters because peace is described like protection.
+
+It guards.
+
+That means peace is not only passive calm.
+It is God's steadying presence holding the inner life together when anxiety would normally scatter it.
+
+This connects well with testimony because a changed life is not only about leaving sin.
+It is also about learning where peace now comes from.
+
+# The Old Life Always Overpromises
+
+One quiet lesson in testimony preaching is that the old life always promises more than it delivers.
+
+It promises:
+
+- fun without cost
+- freedom without consequences
+- pleasure without damage
+
+But eventually the emptiness shows up.
+
+That matters because many people are still tempted to romanticize what Christ saved them from.
+
+This kind of sermon helps break that spell.
+
+It reminds people that Christ did not pull them out of a harmless phase.
+He pulled them out of destruction.
+
+# Peace and Family Restoration
+
+Because Phil's story includes the cost to family, this message also speaks to a major biblical pattern: sin does not stay private.
+
+It spills.
+
+It affects:
+
+- marriages
+- children
+- trust
+- stability
+
+That matters because peace in Christ often begins in one heart but starts healing damage that spread much wider.
+
+It does not erase the past instantly.
+But it starts restoration at the root.
+
+# A Changed Man Is a Different Kind of Witness
+
+Testimony also matters because transformation becomes public evidence.
+
+People knew who Phil had been.
+That makes the contrast meaningful.
+
+The Bible often uses changed lives as visible witness to the power of Christ.
+
+Not perfect lives.
+Changed lives.
+
+That is important.
+
+The Christian witness is not:
+
+- I fixed myself
+
+It is:
+
+- Jesus did in me what I could not do on my own
+
+# Good Questions This Sermon Should Raise
+
+As someone listens to this message, a few questions are worth asking:
+
+- What have I been calling peace that is really just distraction?
+- Where am I still trying to calm my soul with things that cannot save me?
+- Have I confused surface cleanup with real surrender to Christ?
+- What old pattern is Christ trying to break so something deeper can live?
+
+Those questions matter because peace of mind in Christ is not magic language.
+It is tied to truth, repentance, and trust.
+
+# Scripture Connections to Read After the Sermon
+
+If you want to go deeper after listening, read:
+
+- **Romans 5:1-5**
+- **Philippians 4:6-9**
+- **2 Corinthians 5:17-21**
+- **Colossians 3:1-15**
+- **Isaiah 26:3**
+
+These passages help show that peace, forgiveness, and transformation all belong together in the Christian life.
+
+# Final Takeaway
+
+This sermon matters because it strips peace down to its real source.
+
+Not money.
+Not pleasure.
+Not reputation.
+Not worldly escape.
+
+Peace of mind in Christ comes when:
+
+- guilt meets forgiveness
+- rebellion meets repentance
+- chaos meets the rule of Jesus
+- the old life stops being king
+
+That is why a changed life carries so much force.
+
+It tells the truth:
+
+- Christ does not only forgive people
+- He gives them a different center
+- and that different center is where peace begins.`,
+    },
+  ],
+};
+
+export const sarahJakesRobertsHopeSermonTitle: BibleBuddyTvTitle = {
+  id: "sarah-jakes-roberts-listen-for-your-breakthrough",
+  slug: "sarah-jakes-roberts-listen-for-your-breakthrough",
+  title: "Sarah Jakes Roberts: Listen For Your Breakthrough",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/SarahJakesRobertssermon.png",
+  heroImage: "/SarahJakesRobertssermon.png",
+  accentFrom: "#2563eb",
+  accentTo: "#111827",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "17m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "A hope-filled sermon about stillness, burnout, breakthrough, and learning to hear God's voice in the middle of pressure.",
+  overview:
+    "This Sarah Jakes Roberts message leans into a hard but healing truth: when life feels loud, rushed, and overwhelming, breakthrough often starts with stillness instead of striving. Built around Psalm 46:10, the sermon challenges the instinct to keep proving, pushing, and performing when the soul is already exhausted. The message points listeners back to a God who still speaks in the quiet, meets people at the edge of burnout, and gives hope to those who feel like they are breaking under the weight of life.",
+  vibe:
+    "Hope, stillness, emotional honesty, spiritual reset, and a strong reminder that God's voice is clearer than the noise around you.",
+  continueWatchingLabel: "Sermon: Listen For Your Breakthrough",
+  inMyList: true,
+  sermonTopics: ["hope", "faith"],
+  searchTags: [
+    "sermon",
+    "sarah jakes roberts",
+    "hope",
+    "breakthrough",
+    "stillness",
+    "be still",
+    "psalm 46 10",
+    "hearing god",
+    "burnout",
+    "rest",
+    "approval",
+    "striving",
+    "god's voice",
+    "encouragement",
+    "breaking point",
+    "christian hope",
+    "listen for your breakthrough",
+  ],
+  episodes: [
+    {
+      id: "sarah-jakes-roberts-listen-for-your-breakthrough-main",
+      episodeNumber: 1,
+      title: "Listen For Your Breakthrough",
+      contentLabel: "Sermon",
+      duration: "17m",
+      summary:
+        "Sarah Jakes Roberts calls listeners to stop striving, embrace stillness, and trust that God often speaks most clearly in the quiet places of pressure and exhaustion.",
+      thumbnail: "/SarahJakesRobertssermon.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=Dlwfpo_NK08",
+      available: true,
+      discussionSlug: "bible-buddy-tv-sarah-jakes-roberts-breakthrough",
+      reflectionQuestion: "What stood out to you most in this sermon?",
+      louisIntro:
+        "What makes this sermon hit is that it speaks to people who are tired in ways they can barely explain. Not just physically tired, but emotionally overextended, spiritually noisy, and constantly trying to prove something. Sarah Jakes Roberts keeps bringing the message back to a simple but difficult command: be still. That lands because stillness can feel threatening when someone has built their whole rhythm around motion. But Scripture keeps reminding people that hope is not always found in doing more. Sometimes it is found in finally getting quiet enough to hear God again.",
+      studyNotesDocument: `# Hope Often Begins Where Striving Ends
+
+One of the most important ideas in this sermon is that hope is not always born in movement.
+Sometimes it begins in stillness.
+
+That matters because many people have been trained to believe breakthrough only comes after:
+
+- more effort
+- more pressure
+- more proving
+- more control
+
+But the sermon pushes in a different direction.
+
+It says there are moments when the healthiest thing a person can do is stop moving long enough to hear what God is saying.
+
+# Psalm 46:10 Is the Center of the Message
+
+The core verse here is **Psalm 46:10**:
+
+> "Be still, and know that I am God."
+
+That verse matters because it is not merely a gentle inspirational line.
+It is a command rooted in God's sovereignty.
+
+The psalm is surrounded by chaos:
+
+- nations in uproar
+- mountains shaking
+- waters roaring
+
+And in the middle of all that, God says be still.
+
+That means stillness is not denial.
+It is trust.
+
+# Stillness Is Hard for People Who Are Used to Surviving Through Motion
+
+One reason this sermon connects is that many people do not know how to be still anymore.
+
+They know how to:
+
+- stay busy
+- keep producing
+- keep responding
+- keep proving
+
+That matters because striving can become an identity.
+
+If someone has learned to measure worth by output, then stillness can feel unproductive, unsafe, or even irresponsible.
+
+But Scripture keeps showing that constant motion is not the same thing as faithfulness.
+
+# God Is Not Usually Found in Inner Noise
+
+The sermon's line about God being found in stillness matters because inner noise can become one of the loudest obstacles in spiritual life.
+
+Noise is not only external.
+It can also sound like:
+
+- fear
+- insecurity
+- overthinking
+- performance
+- people-pleasing
+
+That matters because many people are asking why they cannot hear God's direction while staying buried under layers of mental and emotional noise they never let settle.
+
+# Striving for Approval Exhausts the Soul
+
+The message also raises a strong question about approval.
+
+That matters because a lot of spiritual exhaustion is connected to trying to earn something that God gives by grace.
+
+People strive for:
+
+- acceptance
+- validation
+- significance
+- certainty
+
+And when they do that long enough, they become spiritually tired before they even realize it.
+
+The Gospel pushes against that.
+
+Identity with God is not built by endless performance.
+It is received through relationship with Him.
+
+# A Breaking Point Is Not Always the End
+
+The sermon asks whether someone feels like they are at a breaking point.
+
+That matters because many people interpret breaking points only as failure.
+
+But in Scripture, breaking points can become places of clarity.
+
+They expose:
+
+- what has been unsustainable
+- what has been false support
+- what the soul was never meant to carry alone
+
+That is why a breaking point can also become a turning point.
+
+# Hope Does Not Ignore Overwhelm
+
+This sermon works because it does not pretend overwhelm is fake.
+
+Hope in Scripture is not shallow positivity.
+It is confidence in God while the pressure is still real.
+
+That matters because some people think they have to choose between honesty and faith.
+But the Bible keeps allowing both.
+
+Someone can be overwhelmed and still held.
+Someone can be tired and still be led.
+Someone can be unsure and still be known by God.
+
+# Elijah Shows What Exhaustion Can Sound Like
+
+A good Bible connection here is **1 Kings 19**.
+
+After a major victory, Elijah collapses under fear and exhaustion.
+
+That matters because breakthrough moments do not automatically remove human weakness.
+
+Elijah needed:
+
+- rest
+- food
+- quiet
+- renewed perspective
+
+And later, God's voice came not in wind, earthquake, or fire, but in a low whisper.
+
+That fits the sermon well.
+God often speaks most clearly when the noise settles.
+
+# Jesus Also Invites the Weary to Come Close
+
+Another important connection is **Matthew 11:28-30**:
+
+> "Come to me, all who labor and are heavy laden, and I will give you rest."
+
+That matters because hope is not just about hanging on.
+It is also about coming to the right source.
+
+Jesus does not shame the weary.
+He invites them.
+
+That changes the whole tone of a sermon like this.
+Stillness is not punishment.
+It is an invitation into trust.
+
+# Be Still Does Not Mean Do Nothing Forever
+
+It is important to understand what stillness does and does not mean.
+
+Stillness does not mean:
+
+- apathy
+- passivity
+- spiritual laziness
+
+Stillness means surrendering the frantic impulse to control everything before listening to God.
+
+That matters because a person can stay active in obedience without living in panic.
+
+The command is not to stop caring.
+It is to stop treating anxiety like lordship.
+
+# The Voice of God and the Pace of the Soul
+
+One quiet insight under the sermon is that people often want clarity from God without changing the pace that keeps drowning clarity out.
+
+That matters because if the soul is constantly racing, discernment becomes harder.
+
+Stillness makes room for:
+
+- attention
+- reflection
+- conviction
+- peace
+
+And that room is often where breakthrough begins.
+
+# Good Questions This Sermon Should Raise
+
+As someone listens to this message, a few questions are worth sitting with:
+
+- Where am I using busyness to avoid stillness?
+- What am I trying to prove that God never asked me to prove?
+- Have I confused motion with faith?
+- What noise has been louder to me than God's word?
+
+Those questions matter because breakthrough is not only about what changes around a person.
+It is also about what changes within them.
+
+# Other Scriptures That Fit This Message
+
+If you want to go deeper after the sermon, read:
+
+- **Psalm 46**
+- **1 Kings 19:1-18**
+- **Matthew 11:28-30**
+- **Isaiah 30:15**
+- **Philippians 4:6-9**
+
+These passages help frame stillness, trust, rest, and hope in the larger story of how God meets weary people.
+
+# Final Takeaway
+
+This sermon matters because it reminds tired people that breakthrough is not always on the other side of more effort.
+
+Sometimes breakthrough begins when:
+
+- the striving stops
+- the proving quiets down
+- the soul gets honest
+- and a person becomes still before God
+
+Psalm 46:10 is not a weak verse.
+It is a stabilizing verse.
+
+God is still God:
+
+- when life is loud
+- when the soul is tired
+- when the answer has not come yet
+- when a person feels close to breaking
+
+That is where hope lives.
+
+Not in noise.
+Not in panic.
+But in the stillness where God is known again.`,
+    },
+  ],
+};
+
+export const craigGroeschelPornBattlePlanSermonTitle: BibleBuddyTvTitle = {
+  id: "craig-groeschel-your-porn-battle-plan",
+  slug: "craig-groeschel-your-porn-battle-plan",
+  title: "Craig Groeschel: Your Porn Battle Plan",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/PornBattlePlan.png",
+  heroImage: "/PornBattlePlan.png",
+  accentFrom: "#2563eb",
+  accentTo: "#111827",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "34m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "A practical sermon on resisting sexual sin, breaking shame, and building a real battle plan against lust and porn.",
+  overview:
+    "This Pastor Craig message addresses sexual sin with honesty and urgency. Instead of pretending lust is a minor issue or that shame will fix it, the sermon treats the battle seriously and points listeners toward practical resistance. The message explains why sexual temptation is so powerful, why hidden compromise grows when it is left unchallenged, and why real freedom usually requires both spiritual surrender and concrete steps. More than a message about failure, it is a message about fighting back with truth, wisdom, and God's help.",
+  vibe:
+    "Direct, practical preaching about temptation, purity, shame, accountability, and building a serious plan for freedom.",
+  continueWatchingLabel: "Sermon: Porn Battle Plan",
+  inMyList: true,
+  sermonTopics: ["temptation", "lust", "sin", "repenting"],
+  searchTags: [
+    "sermon",
+    "pastor craig",
+    "craig groeschel",
+    "porn battle plan",
+    "sexual sin",
+    "lust",
+    "porn",
+    "adultery",
+    "purity",
+    "temptation",
+    "accountability",
+    "freedom",
+    "shame",
+    "self control",
+    "overcoming temptation",
+    "battle plan",
+    "christian purity",
+    "fight lust",
+  ],
+  episodes: [
+    {
+      id: "craig-groeschel-your-porn-battle-plan-main",
+      episodeNumber: 1,
+      title: "Your Porn Battle Plan",
+      contentLabel: "Sermon",
+      duration: "34m",
+      summary:
+        "Pastor Craig Groeschel gives a practical message on why sexual temptation is powerful and how believers can build a real plan to resist lust, porn, and sexual sin.",
+      thumbnail: "/PornBattlePlan.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=UEBKwpmKoG0",
+      available: true,
+      discussionSlug: "bible-buddy-tv-craig-groeschel-porn-battle-plan",
+      reflectionQuestion: "What stood out to you most in this sermon?",
+      louisIntro:
+        "What makes this sermon useful is that it does not only tell people to feel bad about sexual sin. It treats the fight seriously and practically. Pastor Craig pushes on the truth that sexual temptation grows strongest when it stays hidden, unchallenged, and unplanned for. Shame by itself does not free people. Real change usually requires truth, repentance, guardrails, and a decision to stop treating the battle casually. That is what gives the message strength. It tries to move people from vague regret into an actual plan.",
+      studyNotesDocument: `# Sexual Sin Is Powerful Because It Is Personal
+
+One of the reasons sermons like this matter is that sexual sin is rarely fought well when it is treated lightly.
+
+That matters because many people either minimize it or drown in shame over it.
+
+Neither response helps much.
+
+Sexual sin often carries unusual power because it connects to:
+
+- desire
+- secrecy
+- imagination
+- shame
+- habit
+
+So the battle usually needs more than vague guilt.
+It needs clarity and a plan.
+
+# Scripture Does Not Treat This Casually
+
+The Bible speaks with real seriousness about sexual sin.
+
+Important passages under a sermon like this include:
+
+- **1 Corinthians 6:18-20** on fleeing sexual immorality
+- **Matthew 5:27-30** on lust beginning in the heart
+- **James 1:14-15** on desire leading into sin
+- **Galatians 5:16-17** on flesh and Spirit
+- **Psalm 119:9-11** on guarding the heart through God's word
+
+That matters because the sermon is not creating urgency out of nowhere.
+Scripture already treats this as a serious spiritual issue.
+
+# Lust Does Not Stay in One Category
+
+One reason this topic matters is that lust rarely stays isolated.
+
+It affects:
+
+- attention
+- relationships
+- worship
+- integrity
+- thought life
+
+That matters because some sins can be compartmentalized in people's minds more easily.
+Sexual sin often reaches into identity and intimacy in a way that reshapes the whole inner life.
+
+# Shame Is Real, But Shame Alone Does Not Heal
+
+This sermon works best when it helps people distinguish between conviction and shame.
+
+Conviction says:
+
+- this is sin
+- bring it into the light
+- turn back to God
+
+Shame says:
+
+- this is who you are
+- hide
+- stay stuck
+
+That difference matters.
+
+The enemy often uses shame to keep people locked in the same cycle they already hate.
+So any real battle plan has to include not just grief over sin, but a path out of hiding.
+
+# Jesus Starts With the Heart
+
+In **Matthew 5:27-28**, Jesus makes it clear that the battle is not only about outward acts.
+He goes to the heart.
+
+That matters because many people want victory without addressing imagination, desire, and what they keep feeding internally.
+
+Jesus does not do that to crush people.
+He does it to show the battle begins earlier than most people admit.
+
+If someone only fights at the last second, they are usually fighting late.
+
+# James 1 Explains How Temptation Grows
+
+**James 1:14-15** helps explain why people often feel trapped.
+
+James says desire lures and entices, then gives birth to sin.
+
+That means temptation usually grows through stages.
+
+It often starts with:
+
+- curiosity
+- compromise
+- rationalization
+- secrecy
+
+That matters because freedom usually includes learning to recognize the earlier steps instead of only panicking at the final one.
+
+# 1 Corinthians 6 Uses Flight Language
+
+Paul says in **1 Corinthians 6:18**, "Flee from sexual immorality."
+
+That language matters.
+
+He does not say:
+
+- casually manage it
+- negotiate with it
+- see how close you can get
+
+He says flee.
+
+That means wise believers do not build battle plans around proximity.
+They build battle plans around distance.
+
+In practical terms, that often means:
+
+- removing access
+- changing patterns
+- limiting exposure
+- refusing the environments that feed compromise
+
+# A Battle Plan Needs More Than Willpower
+
+One of the strongest things a sermon like this can do is expose the weakness of pure willpower.
+
+Willpower matters, but by itself it is usually not enough.
+
+A real battle plan often includes:
+
+- confession
+- repentance
+- accountability
+- practical guardrails
+- renewed thought life
+- dependence on the Holy Spirit
+
+That matters because people often lose the same battle repeatedly and then assume change is impossible.
+Sometimes the issue is not the desire for freedom.
+It is the lack of an actual plan.
+
+# Guardrails Are Not Legalism
+
+Some people hear practical steps and immediately think of legalism.
+
+But guardrails are not the same thing as trying to earn God's love.
+
+Guardrails are wisdom.
+
+If someone knows what repeatedly weakens them, love for God and love for their own soul should push them toward real boundaries.
+
+That may include:
+
+- blocking access
+- changing screen habits
+- not staying isolated
+- telling the truth to someone safe
+
+That is not weakness.
+That is war.
+
+# The Holy Spirit and Self-Control
+
+**Galatians 5** matters here because sexual sin is not only beaten by external rules.
+
+Paul says the fruit of the Spirit includes self-control.
+
+That matters because the Christian battle is not:
+
+- try harder alone
+
+It is:
+
+- walk by the Spirit
+- starve the flesh
+- feed what strengthens obedience
+
+Freedom is not mechanical.
+It is relational.
+
+# Psalm 119 and Replacing the Inner Script
+
+Another strong connection is **Psalm 119:9-11**:
+
+> "How can a young man keep his way pure? By guarding it according to your word... I have stored up your word in my heart..."
+
+That matters because temptation is not only resisted by saying no.
+It is also resisted by filling the mind with something stronger and truer.
+
+People often fail when the only voice in the moment is the voice of desire.
+Scripture gives another voice.
+
+# Accountability Is an Act of Humility
+
+If this sermon pushes toward accountability, that matters.
+
+Sexual sin loves isolation.
+
+It grows in:
+
+- hidden patterns
+- private excuses
+- unchallenged access
+
+Bringing another believer into the battle does not make someone weak.
+It usually marks the beginning of serious change.
+
+# Good Questions This Sermon Should Raise
+
+As someone listens to this message, a few questions are worth asking:
+
+- What am I still hiding that needs to come into the light?
+- What patterns keep feeding temptation before I even notice it?
+- Have I been asking God for freedom without building any guardrails?
+- Am I trying to win a spiritual war with no actual plan?
+
+Those questions matter because freedom gets clearer when denial ends.
+
+# Scripture Connections to Read After the Sermon
+
+If you want to go deeper after the sermon, read:
+
+- **Matthew 5:27-30**
+- **1 Corinthians 6:12-20**
+- **James 1:12-15**
+- **Galatians 5:16-25**
+- **Psalm 119:9-11**
+
+These passages help keep the battle biblical, serious, and hope-filled without reducing it to shame.
+
+# Final Takeaway
+
+This sermon matters because it refuses two bad extremes:
+
+- acting like sexual sin is no big deal
+- acting like anyone caught in it is beyond hope
+
+The biblical answer is more serious and more hopeful than both.
+
+Sexual sin is dangerous.
+It should be fought.
+It should not be managed casually.
+
+But freedom is possible when people stop hiding, stop flirting with compromise, and start fighting with truth, boundaries, Spirit-dependence, and help from others.
+
+That is what a real battle plan starts to look like.`,
+    },
+  ],
+};
+
+export const daveRamseyMoneySermonTitle: BibleBuddyTvTitle = {
+  id: "dave-ramsey-how-to-take-hold-of-your-money",
+  slug: "dave-ramsey-how-to-take-hold-of-your-money",
+  title: "Dave Ramsey: How to Take Hold of Your Money",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/DaveRamsey.png",
+  heroImage: "/DaveRamsey.png",
+  accentFrom: "#2563eb",
+  accentTo: "#111827",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "38m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "A practical message on budgeting, stewardship, and learning to handle money in a way that honors God and brings clarity to life.",
+  overview:
+    "This Dave Ramsey message takes a direct, practical look at money through the lens of stewardship. The sermon treats money as more than math and more than stress. It argues that how people spend, save, plan, and manage their resources often reveals deeper habits of trust, discipline, and direction. The message helps listeners think about budgeting, financial wisdom, and intentional living, while pushing them to see that wise money management is not only about survival. It is also about living with purpose and refusing to let money chaos shape the whole course of life.",
+  vibe:
+    "Straightforward, practical teaching about stewardship, budgeting, discipline, wisdom, and aligning money habits with a healthy life.",
+  continueWatchingLabel: "Sermon: Take Hold of Your Money",
+  inMyList: true,
+  sermonTopics: ["money", "faith"],
+  searchTags: [
+    "sermon",
+    "dave ramsey",
+    "money",
+    "budgeting",
+    "stewardship",
+    "finances",
+    "money management",
+    "wisdom",
+    "christian money",
+    "budget",
+    "debt",
+    "saving",
+    "spending",
+    "proverbs",
+    "steward",
+    "financial peace",
+    "take hold of your money",
+  ],
+  episodes: [
+    {
+      id: "dave-ramsey-how-to-take-hold-of-your-money-main",
+      episodeNumber: 1,
+      title: "How to Take Hold of Your Money",
+      contentLabel: "Sermon",
+      duration: "38m",
+      summary:
+        "Dave Ramsey gives practical tools for budgeting and wise money management while showing why financial stewardship affects the direction of a whole life.",
+      thumbnail: "/DaveRamsey.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=1Rvhry4hg7M",
+      available: true,
+      discussionSlug: "bible-buddy-tv-dave-ramsey-money",
+      reflectionQuestion: "What stood out to you most in this sermon?",
+      louisIntro:
+        "What makes this sermon helpful is that it does not treat money as a side issue only for people who like spreadsheets. It treats money as a life issue. Dave Ramsey keeps pressing on the truth that spending habits, planning habits, and budgeting habits say something about discipline, values, and direction. That is why money can feel awkward but still matter so much. If people never take hold of it, it tends to quietly start taking hold of them.",
+      studyNotesDocument: `# Money Management Is Really a Stewardship Question
+
+One of the most helpful things about a message like this is that it shifts the conversation away from embarrassment and into stewardship.
+
+That matters because people often think money conversations are only about:
+
+- pressure
+- debt
+- fear
+- comparison
+
+But biblically, money is also about trust and responsibility.
+
+The central question becomes:
+
+> What am I doing with what God has placed in my hands?
+
+# Jesus Talks About Money More Than People Often Expect
+
+A sermon like this matters because Scripture does not avoid the subject.
+
+Jesus talks often about:
+
+- treasure
+- possessions
+- generosity
+- stewardship
+- masters
+
+That matters because money is never just about bills.
+It often exposes what rules the heart.
+
+Important passages to keep in view:
+
+- **Matthew 6:19-24** on treasure and masters
+- **Luke 16:10-11** on faithfulness with little
+- **Proverbs 21:5** on diligent planning
+- **Proverbs 22:7** on debt
+- **1 Timothy 6:6-10** on the love of money
+
+# Budgeting Is a Way of Telling the Truth
+
+One of the simplest but strongest points under a message like this is that a budget tells the truth.
+
+That matters because many people live financially in a fog.
+
+They feel pressure without knowing why.
+They feel behind without really measuring anything.
+They feel trapped without a plan.
+
+Budgeting forces clarity.
+
+It answers questions like:
+
+- what is coming in
+- what is going out
+- what keeps being ignored
+- what needs to change
+
+That is not just math.
+That is wisdom.
+
+# Proverbs Respects Planning
+
+**Proverbs 21:5** says:
+
+> "The plans of the diligent lead surely to abundance..."
+
+That verse matters because wise planning is not unspiritual.
+
+Some people act as if structure shows a lack of trust in God.
+But Proverbs repeatedly honors:
+
+- diligence
+- foresight
+- careful choices
+
+So a sermon about budgeting and money management fits the Bible well.
+Planning is not the enemy of faith.
+It can be one of the expressions of faithfulness.
+
+# Money Chaos Often Becomes Life Chaos
+
+The sermon's big insight is that how people spend money often shapes how they spend life.
+
+That matters because money problems rarely stay only in the financial column.
+They tend to spill into:
+
+- stress
+- relationships
+- emotional strain
+- future options
+
+When someone never takes hold of money habits, those habits often start shaping the pace and pressure of the whole household.
+
+# Matthew 6 Connects Money to the Heart
+
+Jesus says in **Matthew 6:21**:
+
+> "Where your treasure is, there your heart will be also."
+
+That matters because the issue is not only whether someone can balance numbers.
+The deeper issue is what money reveals.
+
+Spending often exposes:
+
+- priorities
+- fears
+- desires
+- loyalties
+
+That is why budgeting is not only external discipline.
+It can become heart-level discipleship.
+
+# Debt Changes How Freedom Feels
+
+Another verse that belongs here is **Proverbs 22:7**:
+
+> "The borrower is servant to the lender."
+
+That matters because debt is not only a number on paper.
+It can shape emotional life, decision-making, and future movement.
+
+A sermon like this helps people see that financial bondage is not neutral.
+
+That does not mean every debt story is identical.
+But it does mean wise stewardship takes obligation seriously and pushes toward greater freedom and margin over time.
+
+# Faithfulness Starts Small
+
+**Luke 16:10-11** matters in a message like this because Jesus links faithfulness in little things to larger trust.
+
+That means money habits matter not because cash is ultimate, but because stewardship is formative.
+
+Small acts of financial wisdom shape a person:
+
+- paying attention
+- making a plan
+- resisting impulse
+- honoring commitments
+
+Those are not glamorous habits.
+But they are deeply important habits.
+
+# The Love of Money Is Different From the Use of Money
+
+**1 Timothy 6:10** says the love of money is a root of all kinds of evil.
+
+That matters because the Bible does not say money itself is evil.
+
+The question is always what place it holds.
+
+Money can become:
+
+- an idol
+- a source of false safety
+- a measure of worth
+- a reason for greed
+
+A sermon like this is strongest when it keeps money in its proper place.
+It is a tool, not a god.
+
+# Stewardship Requires Intention
+
+One quiet lesson in budgeting sermons is that drift is expensive.
+
+Without intention, people tend to drift toward:
+
+- impulse
+- waste
+- avoidance
+- confusion
+
+That matters because good stewardship is rarely accidental.
+
+It usually grows through:
+
+- paying attention
+- setting priorities
+- making a plan
+- sticking to the plan when emotion says otherwise
+
+# Peace Often Follows Clarity
+
+Many people think peace comes when all the numbers become perfect.
+
+But often peace begins earlier than that.
+It begins when chaos starts turning into clarity.
+
+That matters because someone may still be in process and still feel relief simply because they have finally started facing reality with wisdom.
+
+A budget does not solve everything instantly.
+But it often breaks the spell of confusion.
+
+# Good Questions This Sermon Should Raise
+
+As someone listens to this message, a few questions are worth asking:
+
+- Do I know where my money is actually going?
+- What spending habits are quietly shaping my life?
+- Am I using money as a tool or leaning on it as a savior?
+- What would faithfulness look like in the next simple financial step?
+
+Those questions matter because stewardship begins with honesty.
+
+# Scripture Connections to Read After the Sermon
+
+If you want to go deeper after the sermon, read:
+
+- **Matthew 6:19-24**
+- **Luke 16:10-13**
+- **Proverbs 21:5**
+- **Proverbs 22:7**
+- **1 Timothy 6:6-10**
+
+These passages help frame money not as an awkward side topic, but as part of wisdom, discipleship, and daily faithfulness.
+
+# Final Takeaway
+
+This sermon matters because it makes a practical point with spiritual weight.
+
+Money may feel awkward.
+It may feel stressful.
+It may feel confusing.
+
+But ignoring it does not make it harmless.
+
+Wise stewardship means:
+
+- paying attention
+- making a plan
+- aligning spending with values
+- refusing to let money chaos run the whole story
+
+That is how taking hold of money becomes part of taking hold of life with wisdom.`,
+    },
+  ],
+};
+
 export const bibleBuddyTvTitles: BibleBuddyTvTitle[] = [
   promisedLandTitle,
   theChosenTitle,
@@ -5227,6 +7373,13 @@ export const bibleBuddyTvTitles: BibleBuddyTvTitle[] = [
   godWithUsAnimationTitle,
   johnTheBaptistAnimationTitle,
   jobAnimationTitle,
+  billyHolySpiritSermonTitle,
+  philipAnthonyMitchellTemptationSermonTitle,
+  stevenFurtickStressSermonTitle,
+  philRobertsonPeaceSermonTitle,
+  sarahJakesRobertsHopeSermonTitle,
+  craigGroeschelPornBattlePlanSermonTitle,
+  daveRamseyMoneySermonTitle,
   {
     id: "road-to-emmaus",
     slug: "road-to-emmaus",
