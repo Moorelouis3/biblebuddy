@@ -12,6 +12,7 @@ type OverviewMetrics = {
   totalActions: number;
   navigationViews: number;
   navigationClicks: number;
+  videosWatched: number;
   chaptersRead: number;
   notesCreated: number;
   peopleLearned: number;
@@ -58,6 +59,7 @@ const INITIAL_METRICS: OverviewMetrics = {
   totalActions: 0,
   navigationViews: 0,
   navigationClicks: 0,
+  videosWatched: 0,
   chaptersRead: 0,
   notesCreated: 0,
   peopleLearned: 0,
@@ -88,6 +90,7 @@ const NAVIGATION_VIEW_ACTION_TYPES = [
   "scrambled_hub_viewed",
   "scrambled_books_viewed",
   "dashboard_viewed",
+  "bible_buddy_tv_viewed",
   "bible_reader_viewed",
   "bible_book_viewed",
   "scrambled_book_viewed",
@@ -112,8 +115,22 @@ const NAVIGATION_CLICK_ACTION_TYPES = [
   "scrambled_chapter_completed",
   "dashboard_card_opened",
   "invite_buddy_opened",
+  "bible_buddy_tv_title_opened",
   "bible_book_opened",
   "bible_chapter_opened",
+] as const;
+
+const VIDEO_WATCH_ACTION_TYPES = [
+  "bible_buddy_tv_video_started",
+] as const;
+
+const DASHBOARD_CARD_BREAKDOWN_LABELS = [
+  "The Bible",
+  "Bible Study Group",
+  "Bible Study Tools",
+  "Bible Buddy TV",
+  "Bible Study Games",
+  "Share Bible Buddy",
 ] as const;
 
 export default function AnalyticsPage() {
@@ -137,6 +154,9 @@ export default function AnalyticsPage() {
   const [timeFilter, setTimeFilter] = useState<TimeFilter>("24h");
   const [overviewMetrics, setOverviewMetrics] =
     useState<OverviewMetrics>(INITIAL_METRICS);
+  const [dashboardCardBreakdown, setDashboardCardBreakdown] = useState<
+    Array<{ label: string; value: number }>
+  >(DASHBOARD_CARD_BREAKDOWN_LABELS.map((label) => ({ label, value: 0 })));
   const [loadingOverview, setLoadingOverview] = useState(true);
   const [overviewError, setOverviewError] = useState<string | null>(null);
 
@@ -151,6 +171,7 @@ export default function AnalyticsPage() {
       logins: number;
       activeUsers: number;
       totalActions: number;
+      videosWatched: number;
       chaptersRead: number;
       notesCreated: number;
       peopleLearned: number;
@@ -622,6 +643,13 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
+        const { count: videosWatched } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .in("action_type", [...VIDEO_WATCH_ACTION_TYPES])
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
         // Feed social actions — query source tables directly for accurate counts
         const { count: feedThoughtsPosted } = await supabase
           .from("feed_posts").select("id", { count: "exact", head: true })
@@ -672,6 +700,7 @@ export default function AnalyticsPage() {
           logins: logins || 0,
           activeUsers: activeUsers || 0,
           totalActions: totalActions || 0,
+          videosWatched: videosWatched || 0,
           chaptersRead: chaptersRead || 0,
           notesCreated: notesCreated || 0,
           peopleLearned: peopleLearned || 0,
@@ -765,6 +794,20 @@ export default function AnalyticsPage() {
           .from("master_actions")
           .select("id", { count: "exact", head: true })
           .in("action_type", [...NAVIGATION_CLICK_ACTION_TYPES])
+      );
+
+      const videosWatchedPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .in("action_type", [...VIDEO_WATCH_ACTION_TYPES])
+      );
+
+      const dashboardCardBreakdownPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("action_type, action_label")
+          .in("action_type", ["dashboard_card_opened", "invite_buddy_opened"])
       );
 
       // Chapters read
@@ -865,6 +908,8 @@ export default function AnalyticsPage() {
         totalActionsResult,
         navigationViewsResult,
         navigationClicksResult,
+        videosWatchedResult,
+        dashboardCardBreakdownResult,
         chaptersResult,
         notesResult,
         peopleResult,
@@ -891,6 +936,8 @@ export default function AnalyticsPage() {
         totalActionsPromise,
         navigationViewsPromise,
         navigationClicksPromise,
+        videosWatchedPromise,
+        dashboardCardBreakdownPromise,
         chaptersPromise,
         notesPromise,
         peoplePromise,
@@ -928,6 +975,8 @@ export default function AnalyticsPage() {
       const navigationViewsError = navigationViewsResult.error;
       const navigationClicksCount = navigationClicksResult.count ?? 0;
       const navigationClicksError = navigationClicksResult.error;
+      const videosWatchedCount = videosWatchedResult.count ?? 0;
+      const videosWatchedError = videosWatchedResult.error;
       const chaptersCount = chaptersResult.count ?? 0;
       const chaptersError = chaptersResult.error;
       const notesCount = notesResult.count ?? 0;
@@ -956,6 +1005,7 @@ export default function AnalyticsPage() {
         totalActionsError ||
         navigationViewsError ||
         navigationClicksError ||
+        videosWatchedError ||
         chaptersError ||
         notesError ||
         peopleError ||
@@ -974,6 +1024,7 @@ export default function AnalyticsPage() {
           totalActionsError,
           navigationViewsError,
           navigationClicksError,
+          videosWatchedError,
           chaptersError,
           notesError,
           peopleError,
@@ -987,13 +1038,26 @@ export default function AnalyticsPage() {
         });
         setOverviewError("Failed to load overview metrics.");
         setOverviewMetrics(INITIAL_METRICS);
+        setDashboardCardBreakdown(DASHBOARD_CARD_BREAKDOWN_LABELS.map((label) => ({ label, value: 0 })));
         setLoadingOverview(false);
         return;
       }
 
-      // Distinct login users
-      // Distinct active users
-      // Active Users: count of unique users who did any master action
+      const dashboardCardCounts = new Map<string, number>();
+      for (const row of dashboardCardBreakdownResult.data || []) {
+        const label =
+          row.action_type === "invite_buddy_opened"
+            ? "Share Bible Buddy"
+            : row.action_label || "Unknown";
+        dashboardCardCounts.set(label, (dashboardCardCounts.get(label) ?? 0) + 1);
+      }
+
+      setDashboardCardBreakdown(
+        DASHBOARD_CARD_BREAKDOWN_LABELS.map((label) => ({
+          label,
+          value: dashboardCardCounts.get(label) ?? 0,
+        }))
+      );
 
       setOverviewMetrics({
         signups: signupsCount ?? 0,
@@ -1002,6 +1066,7 @@ export default function AnalyticsPage() {
         totalActions: totalActionsCount ?? 0,
         navigationViews: navigationViewsCount,
         navigationClicks: navigationClicksCount,
+        videosWatched: videosWatchedCount,
         chaptersRead: chaptersCount ?? 0,
         notesCreated: notesCount ?? 0,
         peopleLearned: peopleCount ?? 0,
@@ -1027,6 +1092,7 @@ export default function AnalyticsPage() {
       console.error("[ANALYTICS_OVERVIEW] Unexpected error:", err);
       setOverviewError("Failed to load overview metrics.");
       setOverviewMetrics(INITIAL_METRICS);
+      setDashboardCardBreakdown(DASHBOARD_CARD_BREAKDOWN_LABELS.map((label) => ({ label, value: 0 })));
       setLoadingOverview(false);
     }
   }
@@ -1117,6 +1183,8 @@ export default function AnalyticsPage() {
         query = query.in("action_type", [...NAVIGATION_VIEW_ACTION_TYPES]);
       } else if (actionTypeFilter === "navigation_clicks") {
         query = query.in("action_type", [...NAVIGATION_CLICK_ACTION_TYPES]);
+      } else if (actionTypeFilter === "videos_watched") {
+        query = query.in("action_type", [...VIDEO_WATCH_ACTION_TYPES]);
       } else if (actionTypeFilter) {
         query = query.eq("action_type", actionTypeFilter);
       }
@@ -1369,6 +1437,41 @@ export default function AnalyticsPage() {
             actionType: "dashboard_viewed",
             url: "/dashboard",
           });
+        } else if (action.action_type === "bible_buddy_tv_viewed") {
+          const text = `On ${formattedDate} at ${formattedTime}, ${username} viewed Bible Buddy TV.${counterText}`;
+          actions.push({
+            date: formattedDate,
+            text,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "bible_buddy_tv_viewed",
+            url: "/biblebuddy-tv",
+          });
+        } else if (action.action_type === "bible_buddy_tv_title_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened the Bible Buddy TV title "${action.action_label}".${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened a Bible Buddy TV title.${counterText}`;
+          actions.push({
+            date: formattedDate,
+            text,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "bible_buddy_tv_title_opened",
+          });
+        } else if (action.action_type === "bible_buddy_tv_video_started") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} pressed play on ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} started a Bible Buddy TV video.${counterText}`;
+          actions.push({
+            date: formattedDate,
+            text,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "bible_buddy_tv_video_started",
+          });
         } else if (action.action_type === "dashboard_card_opened") {
           const text = action.action_label
             ? `On ${formattedDate} at ${formattedTime}, ${username} opened the dashboard card "${action.action_label}".${counterText}`
@@ -1377,6 +1480,7 @@ export default function AnalyticsPage() {
           if (action.action_label === "The Bible") cardUrl = "/reading";
           else if (action.action_label === "Bible Study Group") cardUrl = "/study-groups";
           else if (action.action_label === "Bible Study Tools") cardUrl = "/guided-studies";
+          else if (action.action_label === "Bible Buddy TV") cardUrl = "/biblebuddy-tv";
           else if (action.action_label === "Bible Study Games") cardUrl = "/bible-study-games";
           actions.push({
             date: formattedDate,
@@ -2253,9 +2357,13 @@ export default function AnalyticsPage() {
       "user_login": "Logins",
       "navigation_views": "Navigation Views",
       "navigation_clicks": "Navigation Clicks",
+      "videos_watched": "Videos Watched",
       "dashboard_viewed": "Dashboard Views",
       "dashboard_card_opened": "Dashboard Card Clicks",
       "invite_buddy_opened": "Invite a Bible Buddy Clicks",
+      "bible_buddy_tv_viewed": "Bible Buddy TV Views",
+      "bible_buddy_tv_title_opened": "Bible Buddy TV Title Opens",
+      "bible_buddy_tv_video_started": "Bible Buddy TV Plays",
       "bible_reader_viewed": "Bible Reader Views",
       "bible_book_opened": "Bible Book Clicks",
       "bible_book_viewed": "Bible Book Views",
@@ -2275,11 +2383,12 @@ export default function AnalyticsPage() {
     return nameMap[actionType] || actionType.replace(/_/g, " ");
   }
 
-  function getFeatureFamily(actionType: string, actionLabel?: string | null): "bible" | "groups" | "tools" | "games" | "invite" | "signup" | "login" | "default" {
+  function getFeatureFamily(actionType: string, actionLabel?: string | null): "bible" | "groups" | "tools" | "games" | "tv" | "invite" | "signup" | "login" | "default" {
     if (actionType === "dashboard_card_opened") {
       if (actionLabel === "The Bible") return "bible";
       if (actionLabel === "Bible Study Group") return "groups";
       if (actionLabel === "Bible Study Tools") return "tools";
+      if (actionLabel === "Bible Buddy TV") return "tv";
       if (actionLabel === "Bible Study Games") return "games";
       if (actionLabel === "Invite a Bible Buddy") return "invite";
     }
@@ -2298,6 +2407,16 @@ export default function AnalyticsPage() {
       ].includes(actionType)
     ) {
       return "bible";
+    }
+
+    if (
+      [
+        "bible_buddy_tv_viewed",
+        "bible_buddy_tv_title_opened",
+        "bible_buddy_tv_video_started",
+      ].includes(actionType)
+    ) {
+      return "tv";
     }
 
     if (
@@ -2399,6 +2518,8 @@ export default function AnalyticsPage() {
         return "bg-[#f6d6d9] border-l-4 border-[#e8aeb5]";
       case "games":
         return "bg-[#d1fae5] border-l-4 border-[#86efac]";
+      case "tv":
+        return "bg-[#eaf5fc] border-l-4 border-[#4B9CD3]";
       case "invite":
         return "bg-[#efe7ff] border-l-4 border-[#c4b5fd]";
       case "signup":
@@ -2426,6 +2547,7 @@ export default function AnalyticsPage() {
         case "Logins": return row.logins;
         case "Active Users": return row.activeUsers;
         case "Total Actions": return row.totalActions;
+        case "Videos Watched": return row.videosWatched;
         case "Chapters Read": return row.chaptersRead;
         case "Notes Created": return row.notesCreated;
         case "People Learned": return row.peopleLearned;
@@ -2670,6 +2792,39 @@ export default function AnalyticsPage() {
               />
             </div>
 
+            <div className="mb-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900">Dashboard Card Clicks</h3>
+                  <p className="text-sm text-gray-500">How many times each dashboard card was opened in this time frame.</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedActionType(selectedActionType === "dashboard_card_opened" ? null : "dashboard_card_opened")}
+                  className="text-sm font-semibold text-blue-600 hover:text-blue-800"
+                >
+                  View in Action Log
+                </button>
+              </div>
+              <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+                {dashboardCardBreakdown.map((card) => (
+                  <OverviewCard
+                    key={card.label}
+                    label={card.label}
+                    value={card.value}
+                    onClick={() =>
+                      setSelectedActionType(
+                        selectedActionType === (card.label === "Share Bible Buddy" ? "invite_buddy_opened" : "dashboard_card_opened")
+                          ? null
+                          : (card.label === "Share Bible Buddy" ? "invite_buddy_opened" : "dashboard_card_opened")
+                      )
+                    }
+                    isSelected={selectedActionType === (card.label === "Share Bible Buddy" ? "invite_buddy_opened" : "dashboard_card_opened")}
+                  />
+                ))}
+              </div>
+            </div>
+
             {/* ROW 2: BIBLE ENGAGEMENT */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
               <OverviewCard
@@ -2732,6 +2887,12 @@ export default function AnalyticsPage() {
                 value={overviewMetrics.understandVerseOfTheDay}
                 onClick={() => setSelectedActionType(selectedActionType === "understand_verse_of_the_day" ? null : "understand_verse_of_the_day")}
                 isSelected={selectedActionType === "understand_verse_of_the_day"}
+              />
+              <OverviewCard
+                label="Videos Watched"
+                value={overviewMetrics.videosWatched}
+                onClick={() => setSelectedActionType(selectedActionType === "videos_watched" ? null : "videos_watched")}
+                isSelected={selectedActionType === "videos_watched"}
               />
             </div>
 
@@ -2994,6 +3155,7 @@ export default function AnalyticsPage() {
                     "Signups",
                     "Logins",
                     "Total Actions",
+                    "Videos Watched",
                     "Chapters Read",
                     "Notes Created",
                     "People Learned",
@@ -3035,6 +3197,8 @@ export default function AnalyticsPage() {
                               return row.activeUsers;
                             case "Total Actions":
                               return row.totalActions;
+                            case "Videos Watched":
+                              return row.videosWatched;
                             case "Chapters Read":
                               return row.chaptersRead;
                             case "Notes Created":
@@ -3759,6 +3923,18 @@ function OverviewCard({
         return "bg-cyan-100 border border-cyan-200";
       case "Keywords Understood":
         return "bg-indigo-100 border border-indigo-200";
+      case "Devotional Days Completed":
+        return "bg-violet-100 border border-violet-200";
+      case "Reading Plan Chapters Completed":
+        return "bg-orange-100 border border-orange-200";
+      case "Scrambled Words Answered":
+        return "bg-emerald-100 border border-emerald-200";
+      case "Trivia Questions Answered":
+        return "bg-rose-100 border border-rose-200";
+      case "Understand This Verse Clicks":
+        return "bg-teal-100 border border-teal-200";
+      case "Videos Watched":
+        return "bg-blue-100 border border-blue-200";
       case "Signups":
         return "bg-gray-100 border border-gray-200";
       case "Navigation Views":

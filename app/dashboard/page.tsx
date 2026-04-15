@@ -1051,13 +1051,14 @@ export default function DashboardPage() {
 
   function handleCardClick(
     event: MouseEvent<HTMLAnchorElement>,
-    tourKey: FeatureTourKey,
+    tourKey: FeatureTourKey | "bible_buddy_tv",
     path: string
   ) {
-    const dashboardCardLabelMap: Partial<Record<FeatureTourKey, string>> = {
+    const dashboardCardLabelMap: Partial<Record<FeatureTourKey | "bible_buddy_tv", string>> = {
       bible: "The Bible",
       bible_study_hub: "Bible Study Group",
       guided_studies: "Bible Study Tools",
+      bible_buddy_tv: "Bible Buddy TV",
       bible_trivia: "Bible Study Games",
     };
 
@@ -1074,7 +1075,7 @@ export default function DashboardPage() {
       });
     }
 
-    if (!featureToursEnabled) {
+    if (!featureToursEnabled || tourKey === "bible_buddy_tv") {
       router.push(path);
       return;
     }

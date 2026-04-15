@@ -4,11 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import BibleBuddyTvEpisodeModal from "./BibleBuddyTvEpisodeModal";
+import { ACTION_TYPE } from "../lib/actionTypes";
+import { logActionToMasterActions } from "../lib/actionRecorder";
 import {
   bibleBuddyTvTitles,
   type BibleBuddyTvEpisode,
   type BibleBuddyTvTitle,
 } from "../lib/bibleBuddyTvContent";
+import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
+import { supabase } from "../lib/supabaseClient";
 
 const CAROLINA_BLUE = "#4B9CD3";
 const CAROLINA_BLUE_SOFT = "#EAF5FC";
@@ -26,6 +30,8 @@ export default function BibleBuddyTvShowPageClient({
   const [watchedEpisodeIds, setWatchedEpisodeIds] = useState<string[]>([]);
   const [lastWatchedEpisodeId, setLastWatchedEpisodeId] = useState<string | null>(null);
   const [isInMyList, setIsInMyList] = useState(false);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [userName, setUserName] = useState<string | null>(null);
 
   const storageKey = useMemo(() => `bbtv-progress:${title.slug}`, [title.slug]);
   const featuredEpisode = title.episodes[0] ?? null;
@@ -34,6 +40,16 @@ export default function BibleBuddyTvShowPageClient({
     featuredEpisode ??
     null;
   const isMovie = title.contentType === "movie";
+  const categoryLabel =
+    title.category === "documentaries"
+      ? "Documentary"
+      : title.category === "sermons"
+      ? "Sermon"
+      : title.category === "bible-stories"
+      ? "Animation"
+      : title.category === "movies"
+      ? "Movie"
+      : "TV Show";
   const detailMeta = [title.year, title.rating];
   if (title.runtime && !["Documentary", "Documentary Special"].includes(title.runtime)) {
     detailMeta.push(title.runtime);
@@ -50,7 +66,7 @@ export default function BibleBuddyTvShowPageClient({
       ? "Check Out More TV Shows"
       : title.category === "sermons"
       ? "Check Out More Sermons"
-      : "Check Out More Cartoons";
+      : "Check Out More Animation";
   const relatedTitles = bibleBuddyTvTitles
     .filter(
       (item) =>
@@ -60,6 +76,38 @@ export default function BibleBuddyTvShowPageClient({
         item.badge !== "Coming Soon"
     )
     .slice(0, 3);
+
+  useEffect(() => {
+    async function loadUserAndTrackTitle() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user?.id) return;
+
+      const meta = (user.user_metadata || {}) as Record<string, string | undefined>;
+      const resolvedName =
+        meta.firstName ||
+        meta.first_name ||
+        (user.email ? user.email.split("@")[0] : null) ||
+        "User";
+
+      setUserId(user.id);
+      setUserName(resolvedName);
+
+      void trackNavigationActionOnce({
+        userId: user.id,
+        username: resolvedName,
+        actionType: ACTION_TYPE.bible_buddy_tv_title_opened,
+        actionLabel: `${categoryLabel}: ${title.title}`,
+        dedupeKey: `bible-buddy-tv-title:${title.slug}`,
+      }).catch((error) => {
+        console.error("[NAV] Failed to track Bible Buddy TV title view:", error);
+      });
+    }
+
+    void loadUserAndTrackTitle();
+  }, [categoryLabel, title.slug, title.title]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -118,6 +166,13 @@ export default function BibleBuddyTvShowPageClient({
           lastWatchedEpisodeId: episode.id,
         })
       );
+    }
+
+    if (userId) {
+      const actionLabel = `${categoryLabel} • ${title.title} • ${episode.contentLabel || (isMovie ? "Movie" : `Episode ${episode.episodeNumber}`)} • ${episode.title}`;
+      void logActionToMasterActions(userId, ACTION_TYPE.bible_buddy_tv_video_started, actionLabel, userName).catch((error) => {
+        console.error("[NAV] Failed to track Bible Buddy TV video start:", error);
+      });
     }
   }
 

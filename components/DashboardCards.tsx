@@ -246,7 +246,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       </Link>
 
-      <Link href="/biblebuddy-tv">
+      <Link href="/biblebuddy-tv" onClick={(event) => handleCardClick(event, "bible_buddy_tv", "/biblebuddy-tv")}>
         <div className="rounded-xl border border-violet-200 bg-[#efe7ff] p-5 shadow-sm cursor-pointer transition duration-300 hover:scale-[1.01] hover:shadow-md">
           <h2 className="text-xl font-semibold text-gray-900">📺 Bible Buddy TV</h2>
           <p className="mt-1 text-gray-700">Stream Bible shows, movies, sermons, and more</p>
