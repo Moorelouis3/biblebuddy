@@ -13,6 +13,7 @@ import {
 const CAROLINA_BLUE = "#4B9CD3";
 const CAROLINA_BLUE_SOFT = "#EAF5FC";
 const CAROLINA_BLUE_BORDER = "#C8E2F3";
+const MY_LIST_STORAGE_KEY = "bbtv-my-list";
 
 interface BibleBuddyTvShowPageClientProps {
   title: BibleBuddyTvTitle;
@@ -24,6 +25,7 @@ export default function BibleBuddyTvShowPageClient({
   const [selectedEpisode, setSelectedEpisode] = useState<BibleBuddyTvEpisode | null>(null);
   const [watchedEpisodeIds, setWatchedEpisodeIds] = useState<string[]>([]);
   const [lastWatchedEpisodeId, setLastWatchedEpisodeId] = useState<string | null>(null);
+  const [isInMyList, setIsInMyList] = useState(false);
 
   const storageKey = useMemo(() => `bbtv-progress:${title.slug}`, [title.slug]);
   const featuredEpisode = title.episodes[0] ?? null;
@@ -32,8 +34,24 @@ export default function BibleBuddyTvShowPageClient({
     featuredEpisode ??
     null;
   const isMovie = title.contentType === "movie";
+  const recommendationHeading =
+    title.category === "documentaries"
+      ? "Check Out More Documentaries"
+      : title.category === "movies"
+      ? "Check Out More Movies"
+      : title.category === "tv"
+      ? "Check Out More TV Shows"
+      : title.category === "sermons"
+      ? "Check Out More Sermons"
+      : "Check Out More Cartoons";
   const relatedTitles = bibleBuddyTvTitles
-    .filter((item) => item.slug !== title.slug && item.episodes.length > 0)
+    .filter(
+      (item) =>
+        item.slug !== title.slug &&
+        item.episodes.length > 0 &&
+        item.category === title.category &&
+        item.badge !== "Coming Soon"
+    )
     .slice(0, 3);
 
   useEffect(() => {
@@ -48,6 +66,35 @@ export default function BibleBuddyTvShowPageClient({
       console.error("[BibleBuddyTvShowPageClient] Could not load local progress:", error);
     }
   }, [storageKey]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      const saved = window.localStorage.getItem(MY_LIST_STORAGE_KEY);
+      if (!saved) return;
+      const parsed = JSON.parse(saved) as string[];
+      setIsInMyList(Array.isArray(parsed) ? parsed.includes(title.id) : false);
+    } catch (error) {
+      console.error("[BibleBuddyTvShowPageClient] Could not load My List:", error);
+    }
+  }, [title.id]);
+
+  function toggleMyList() {
+    if (typeof window === "undefined") return;
+
+    try {
+      const saved = window.localStorage.getItem(MY_LIST_STORAGE_KEY);
+      const current = saved ? ((JSON.parse(saved) as string[]) || []) : [];
+      const next = current.includes(title.id)
+        ? current.filter((id) => id !== title.id)
+        : [...current, title.id];
+
+      window.localStorage.setItem(MY_LIST_STORAGE_KEY, JSON.stringify(next));
+      setIsInMyList(next.includes(title.id));
+    } catch (error) {
+      console.error("[BibleBuddyTvShowPageClient] Could not update My List:", error);
+    }
+  }
 
   function markEpisodeWatched(episode: BibleBuddyTvEpisode) {
     setSelectedEpisode(episode);
@@ -102,19 +149,6 @@ export default function BibleBuddyTvShowPageClient({
               </div>
               <p className="mt-4 whitespace-pre-line leading-relaxed text-gray-700">{title.overview}</p>
 
-              {title.searchTags?.length ? (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {title.searchTags.slice(0, 8).map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-600"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              ) : null}
-
               <div
                 className="mt-5 rounded-xl border px-4 py-3"
                 style={{ borderColor: CAROLINA_BLUE_BORDER, backgroundColor: CAROLINA_BLUE_SOFT }}
@@ -125,16 +159,25 @@ export default function BibleBuddyTvShowPageClient({
                 <p className="mt-1 text-sm leading-relaxed text-gray-700">{title.vibe}</p>
               </div>
 
-              {continueEpisode?.available ? (
+              <div className="mt-5 flex flex-wrap gap-3">
+                {continueEpisode?.available ? (
+                  <button
+                    type="button"
+                    onClick={() => markEpisodeWatched(continueEpisode)}
+                    className="rounded-lg px-5 py-2.5 text-sm font-medium text-white transition"
+                    style={{ backgroundColor: CAROLINA_BLUE }}
+                  >
+                    {isMovie ? "\u25B6 Watch Now" : `Watch ${continueEpisode.contentLabel || `Episode ${continueEpisode.episodeNumber}`}`}
+                  </button>
+                ) : null}
                 <button
                   type="button"
-                  onClick={() => markEpisodeWatched(continueEpisode)}
-                  className="mt-5 rounded-lg px-5 py-2.5 text-sm font-medium text-white transition"
-                  style={{ backgroundColor: CAROLINA_BLUE }}
+                  onClick={toggleMyList}
+                  className="rounded-lg bg-gray-100 px-5 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-200"
                 >
-                  {isMovie ? "\u25B6 Watch Now" : `Watch ${continueEpisode.contentLabel || `Episode ${continueEpisode.episodeNumber}`}`}
+                  {isInMyList ? "✓ In My List" : "+ My List"}
                 </button>
-              ) : null}
+              </div>
             </div>
           </div>
         </div>
@@ -209,7 +252,7 @@ export default function BibleBuddyTvShowPageClient({
 
         {relatedTitles.length > 0 ? (
           <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <h2 className="mb-4 text-xl font-bold">More in Bible Buddy TV</h2>
+            <h2 className="mb-4 text-xl font-bold">{recommendationHeading}</h2>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-6">
               {relatedTitles.map((relatedTitle) => (
                 <Link key={relatedTitle.id} href={`/biblebuddy-tv/shows/${relatedTitle.slug}`} className="block">

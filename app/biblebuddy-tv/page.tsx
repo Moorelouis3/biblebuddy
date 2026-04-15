@@ -6,19 +6,18 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   bibleBuddyTvCategories,
   bibleBuddyTvTitles,
-  gospelOfJohnMovieTitle,
-  josephMovieTitle,
-  mosesMovieTitle,
-  promisedLandTitle,
-  theChosenTitle,
   type BibleBuddyTvCategory,
 } from "../../lib/bibleBuddyTvContent";
 
 const CAROLINA_BLUE = "#4B9CD3";
 const CAROLINA_BLUE_SOFT = "#EAF5FC";
 const CAROLINA_BLUE_BORDER = "#C8E2F3";
+const MY_LIST_STORAGE_KEY = "bbtv-my-list";
 
-const categoryOptions: Array<{ id: BibleBuddyTvCategory; label: string }> = [
+type HomeCategoryId = BibleBuddyTvCategory | "my-list";
+
+const categoryOptions: Array<{ id: HomeCategoryId; label: string }> = [
+  { id: "my-list", label: "My List" },
   { id: "movies", label: "Movies" },
   { id: "tv", label: "TV Shows" },
   { id: "sermons", label: "Sermons" },
@@ -43,24 +42,153 @@ function getCategoryCardStyle(category: BibleBuddyTvCategory) {
   }
 }
 
+type ShelfTitle = (typeof bibleBuddyTvTitles)[number];
+
+function PosterShelf({
+  titles,
+  getProgressPercent,
+  options,
+}: {
+  titles: ShelfTitle[];
+  getProgressPercent: (titleId: string) => number;
+  options?: { showProgress?: boolean; sectionTone?: "default" | "my-list" };
+}) {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(titles.length > 0);
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const updateScrollState = () => {
+      const maxScrollLeft = container.scrollWidth - container.clientWidth;
+      setCanScrollLeft(container.scrollLeft > 8);
+      setCanScrollRight(container.scrollLeft < maxScrollLeft - 8);
+    };
+
+    updateScrollState();
+    container.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+
+    return () => {
+      container.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+    };
+  }, [titles]);
+
+  function scrollShelf(direction: "left" | "right") {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const scrollAmount = Math.max(container.clientWidth * 0.82, 220);
+    container.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  }
+
+  return (
+    <div className="relative">
+      <div
+        ref={scrollRef}
+        className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 no-scrollbar md:mx-0 md:px-0"
+      >
+        {titles.map((title) => (
+          <Link
+            key={title.id}
+            href={`/biblebuddy-tv/shows/${title.slug}`}
+            className="w-[138px] shrink-0 snap-start md:w-[184px]"
+          >
+            <div
+              className={`overflow-hidden rounded-2xl border shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
+                options?.sectionTone === "my-list" ? getCategoryCardStyle(title.category) : "border-gray-200 bg-white"
+              }`}
+            >
+              <div className="relative aspect-[2/3]">
+                <Image
+                  src={title.poster}
+                  alt={`${title.title} poster`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 138px, 184px"
+                />
+              </div>
+              {options?.showProgress ? (
+                <div className="px-3 pb-3 pt-2">
+                  <div className="h-1.5 overflow-hidden rounded-full bg-gray-200">
+                    <div
+                      className="h-full rounded-full"
+                      style={{ width: `${getProgressPercent(title.id)}%`, backgroundColor: CAROLINA_BLUE }}
+                    />
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {canScrollLeft ? (
+        <button
+          type="button"
+          onClick={() => scrollShelf("left")}
+          aria-label="Scroll shelf left"
+          className="absolute left-1 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-white/90 text-lg font-bold text-gray-900 shadow-md backdrop-blur sm:flex"
+          style={{ boxShadow: "0 10px 25px rgba(75, 156, 211, 0.18)" }}
+        >
+          ‹
+        </button>
+      ) : null}
+
+      {canScrollRight ? (
+        <button
+          type="button"
+          onClick={() => scrollShelf("right")}
+          aria-label="Scroll shelf right"
+          className="absolute right-1 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-white/90 text-lg font-bold text-gray-900 shadow-md backdrop-blur sm:flex"
+          style={{ boxShadow: "0 10px 25px rgba(75, 156, 211, 0.18)" }}
+        >
+          ›
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
 export default function BibleBuddyTvHomePage() {
-  const [activeCategory, setActiveCategory] = useState<BibleBuddyTvCategory>("movies");
+  const [activeCategory, setActiveCategory] = useState<HomeCategoryId>("movies");
   const [featuredIndex, setFeaturedIndex] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [isDraggingFeatured, setIsDraggingFeatured] = useState(false);
+  const [myListIds, setMyListIds] = useState<string[]>([]);
   const dragStartXRef = useRef<number | null>(null);
 
-  const featuredTitles = [gospelOfJohnMovieTitle, mosesMovieTitle, josephMovieTitle, promisedLandTitle, theChosenTitle];
-  const filteredTitles = useMemo(
-    () => bibleBuddyTvTitles.filter((title) => title.category === activeCategory),
-    [activeCategory]
+  const liveTitles = useMemo(() => bibleBuddyTvTitles.filter((title) => title.badge !== "Coming Soon"), []);
+  const featuredTitles = useMemo(() => {
+    const randomized = [...liveTitles].sort(() => Math.random() - 0.5);
+    return randomized.slice(0, Math.min(6, randomized.length));
+  }, [liveTitles]);
+  const myListTitles = liveTitles.filter((title) => myListIds.includes(title.id));
+  const continueWatchingTitles = liveTitles.filter((title) => title.continueWatchingLabel);
+  const selectedShelfTitles = useMemo(() => {
+    if (activeCategory === "my-list") return myListTitles;
+    return liveTitles.filter((title) => title.category === activeCategory);
+  }, [activeCategory, liveTitles, myListTitles]);
+  const fixedShelves = useMemo(
+    () =>
+      [
+        { id: "movies" as const, label: "Movies" },
+        { id: "documentaries" as const, label: "Documentaries" },
+        { id: "sermons" as const, label: "Sermons" },
+        { id: "bible-stories" as const, label: "Cartoons" },
+        { id: "tv" as const, label: "TV Shows" },
+      ].map((shelf) => ({
+        ...shelf,
+        titles: liveTitles.filter((title) => title.category === shelf.id),
+      })),
+    [liveTitles]
   );
-  const myListTitles = bibleBuddyTvTitles.filter((title) => title.inMyList);
-  const continueWatchingTitles = bibleBuddyTvTitles.filter((title) => title.continueWatchingLabel);
-  const rotatingShelfCategories = useMemo(() => {
-    const randomized = [...categoryOptions].sort(() => Math.random() - 0.5);
-    return randomized.slice(0, 3);
-  }, []);
 
   useEffect(() => {
     if (featuredTitles.length <= 1) return;
@@ -72,6 +200,35 @@ export default function BibleBuddyTvHomePage() {
 
     return () => window.clearInterval(intervalId);
   }, [featuredTitles.length, isDraggingFeatured]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    try {
+      const saved = window.localStorage.getItem(MY_LIST_STORAGE_KEY);
+      if (!saved) return;
+      const parsed = JSON.parse(saved) as string[];
+      if (Array.isArray(parsed)) {
+        setMyListIds(parsed);
+      }
+    } catch (error) {
+      console.error("[BibleBuddyTvHomePage] Could not load My List:", error);
+    }
+  }, []);
+
+  function toggleMyList(titleId: string) {
+    setMyListIds((current) => {
+      const next = current.includes(titleId)
+        ? current.filter((id) => id !== titleId)
+        : [...current, titleId];
+
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(MY_LIST_STORAGE_KEY, JSON.stringify(next));
+      }
+
+      return next;
+    });
+  }
 
   function handleFeaturedDragStart(clientX: number) {
     dragStartXRef.current = clientX;
@@ -108,49 +265,6 @@ export default function BibleBuddyTvHomePage() {
       "the-chosen": 34,
     };
     return progressMap[titleId] ?? 28;
-  }
-
-  function renderPosterShelf(
-    titles: typeof bibleBuddyTvTitles,
-    options?: { showProgress?: boolean; sectionTone?: "default" | "my-list" }
-  ) {
-    return (
-      <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 md:mx-0 md:px-0">
-        {titles.map((title) => (
-          <Link
-            key={title.id}
-            href={`/biblebuddy-tv/shows/${title.slug}`}
-            className="w-[138px] shrink-0 snap-start md:w-[184px]"
-          >
-            <div
-              className={`overflow-hidden rounded-2xl border shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
-                options?.sectionTone === "my-list" ? getCategoryCardStyle(title.category) : "border-gray-200 bg-white"
-              }`}
-            >
-              <div className="relative aspect-[2/3]">
-                <Image
-                  src={title.poster}
-                  alt={`${title.title} poster`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 138px, 184px"
-                />
-              </div>
-              {options?.showProgress ? (
-                <div className="px-3 pb-3 pt-2">
-                  <div className="h-1.5 overflow-hidden rounded-full bg-gray-200">
-                    <div
-                      className="h-full rounded-full"
-                      style={{ width: `${getProgressPercent(title.id)}%`, backgroundColor: CAROLINA_BLUE }}
-                    />
-                  </div>
-                </div>
-              ) : null}
-            </div>
-          </Link>
-        ))}
-      </div>
-    );
   }
 
   return (
@@ -198,12 +312,13 @@ export default function BibleBuddyTvHomePage() {
                       >
                         ▶ Play
                       </Link>
-                      <Link
-                        href={`/biblebuddy-tv/shows/${featuredTitle.slug}`}
+                      <button
+                        type="button"
+                        onClick={() => toggleMyList(featuredTitle.id)}
                         className="rounded-xl bg-gray-100 px-4 py-3 text-base font-semibold text-gray-800 transition hover:bg-gray-200"
                       >
-                        + My List
-                      </Link>
+                        {myListIds.includes(featuredTitle.id) ? "✓ In My List" : "+ My List"}
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -283,12 +398,13 @@ export default function BibleBuddyTvHomePage() {
                         >
                           Play
                         </Link>
-                        <Link
-                          href={`/biblebuddy-tv/shows/${featuredTitle.slug}`}
+                        <button
+                          type="button"
+                          onClick={() => toggleMyList(featuredTitle.id)}
                           className="rounded-lg bg-gray-100 px-5 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-200"
                         >
-                          + My List
-                        </Link>
+                          {myListIds.includes(featuredTitle.id) ? "✓ In My List" : "+ My List"}
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -317,7 +433,7 @@ export default function BibleBuddyTvHomePage() {
           <div className="relative max-w-sm">
             <select
               value={activeCategory}
-              onChange={(event) => setActiveCategory(event.target.value as BibleBuddyTvCategory)}
+              onChange={(event) => setActiveCategory(event.target.value as HomeCategoryId)}
               className="w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-3 pr-12 text-sm font-medium text-gray-800 shadow-sm outline-none transition focus:ring-2"
               style={{ ["--tw-ring-color" as string]: CAROLINA_BLUE }}
               aria-label="Choose a Bible Buddy TV category"
@@ -336,7 +452,11 @@ export default function BibleBuddyTvHomePage() {
             </div>
           </div>
           <p className="mt-3 text-sm text-gray-600">
-            {bibleBuddyTvCategories.find((category) => category.id === activeCategory)?.description}
+            {activeCategory === "my-list"
+              ? myListTitles.length
+                ? "Everything you have actually saved in Bible Buddy TV, ready to jump back into anytime."
+                : "Your My List is empty right now. Tap + My List on anything you want to save for later."
+              : bibleBuddyTvCategories.find((category) => category.id === activeCategory)?.description}
           </p>
         </section>
 
@@ -347,28 +467,35 @@ export default function BibleBuddyTvHomePage() {
               Bible Buddy TV
             </span>
           </div>
-          {renderPosterShelf(continueWatchingTitles, { showProgress: true })}
+          <PosterShelf titles={continueWatchingTitles} getProgressPercent={getProgressPercent} options={{ showProgress: true }} />
         </section>
 
         <section className="mt-8">
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-gray-900">My List</h2>
-            <span className="text-sm font-semibold text-gray-500">Saved</span>
+            <h2 className="text-2xl font-bold text-gray-900">
+              {categoryOptions.find((category) => category.id === activeCategory)?.label}
+            </h2>
+            <span className="text-sm font-semibold text-gray-500">
+              {activeCategory === "my-list" ? "Saved" : "Browse"}
+            </span>
           </div>
-          {renderPosterShelf(myListTitles, { sectionTone: "my-list" })}
+          <PosterShelf
+            titles={selectedShelfTitles}
+            getProgressPercent={getProgressPercent}
+            options={{ sectionTone: activeCategory === "my-list" ? "my-list" : "default" }}
+          />
         </section>
 
-        {rotatingShelfCategories.map((category) => {
-          const shelfTitles = bibleBuddyTvTitles.filter((title) => title.category === category.id);
-          if (!shelfTitles.length) return null;
+        {fixedShelves.map((shelf) => {
+          if (!shelf.titles.length) return null;
 
           return (
-            <section key={category.id} className="mt-8">
+            <section key={shelf.id} className="mt-8">
               <div className="mb-4 flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-gray-900">{category.label}</h2>
+                <h2 className="text-2xl font-bold text-gray-900">{shelf.label}</h2>
                 <span className="text-sm font-semibold text-gray-500">Browse</span>
               </div>
-              {renderPosterShelf(shelfTitles)}
+              <PosterShelf titles={shelf.titles} getProgressPercent={getProgressPercent} />
             </section>
           );
         })}

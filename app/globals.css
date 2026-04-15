@@ -97,6 +97,15 @@ html {
   overscroll-behavior: none;
 }
 
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* ✅ Any page wrapper using bg-gray-50 will match the global background */
 .bg-gray-50 {
   background-color: var(--background) !important;

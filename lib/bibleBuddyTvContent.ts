@@ -1699,12 +1699,2320 @@ It is an invitation to believe Him.`,
   ],
 };
 
+export const estherMovieTitle: BibleBuddyTvTitle = {
+  id: "esther-movie",
+  slug: "esther",
+  title: "Esther",
+  badge: "Bible Buddy Movie",
+  category: "movies",
+  poster: "/esthermovie.png",
+  heroImage: "/esthermovie.png",
+  accentFrom: "#7c2d6f",
+  accentTo: "#a21caf",
+  year: "1999",
+  rating: "TV-PG",
+  runtime: "3h",
+  seasonsLabel: "Movie",
+  contentType: "movie",
+  logline:
+    "Esther enters the Persian palace and risks everything to stop the destruction of the Jewish people.",
+  overview:
+    "The Bible Collection: Esther follows a Jewish woman who is drawn into the king of Persia's court and placed in a position of terrifying influence at exactly the moment her people face a planned genocide. The story moves through beauty, power, secrecy, courage, and providence as Esther and Mordecai navigate palace politics and trust that God can work even when He seems hidden.",
+  vibe:
+    "Royal tension, hidden identity, political danger, fasting, courage under pressure, and the kind of providence that turns a death sentence into deliverance.",
+  continueWatchingLabel: "Movie: Esther",
+  inMyList: true,
+  searchTags: [
+    "movie",
+    "esther",
+    "the bible collection esther",
+    "old testament",
+    "book of esther",
+    "persia",
+    "xerxes",
+    "ahasuerus",
+    "king of persia",
+    "queen esther",
+    "mordecai",
+    "haman",
+    "vashti",
+    "jewish people",
+    "genocide",
+    "purim",
+    "susa",
+    "palace",
+    "harem",
+    "hidden providence",
+    "courage",
+    "fasting",
+    "deliverance",
+    "old testament movie",
+  ],
+  episodes: [
+    {
+      id: "esther-movie-main",
+      episodeNumber: 1,
+      title: "Esther",
+      contentLabel: "Movie",
+      duration: "3h",
+      summary:
+        "Esther is brought into the Persian court, conceals her Jewish identity, and is eventually called to risk her life before the king in order to stop Haman's plan to wipe out her people.",
+      thumbnail: "/esthermovie.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=6y_yJuFJ7uM",
+      available: true,
+      discussionSlug: "bible-buddy-tv-esther-movie",
+      reflectionQuestion: "What did you think about this movie?",
+      louisIntro:
+        "Esther is one of the most tension-filled stories in the Old Testament because everything feels fragile at the same time. God's name is famously not spoken in the book, but His providence is all over the story. The palace looks powerful, the law looks final, and Haman looks untouchable, but the whole movie keeps showing that hidden faithfulness can still move through ordinary people, risky obedience, and moments that seem almost too perfectly timed to be accidental.",
+      studyNotesDocument: `# Esther Is a Story About Hidden Providence
+
+One of the first things people notice about Esther is that God's name is not mentioned directly in the book.
+
+That matters.
+
+Because Esther teaches you to watch for providence even when the story does not feel outwardly miraculous.
+
+There is no Red Sea here.
+No fire from heaven.
+No prophet stepping in with a dramatic speech from the Lord.
+
+Instead, the book gives you:
+
+- court politics
+- sleepless nights
+- reversals
+- timing
+- courage
+- hidden identity
+
+And through all of that, God is still moving.
+
+# Where This Movie Lives in Scripture
+
+This movie is based on the **Book of Esther**, mainly moving through **Esther 1-10**.
+
+That means it includes:
+
+- Queen Vashti's removal
+- Esther entering the king's harem
+- Mordecai's faithfulness
+- Haman's rise
+- the plot to destroy the Jewish people
+- Esther's fast
+- her approach to the king
+- Haman's downfall
+- the deliverance of the Jews
+
+This is one of the clearest reversal stories in the Old Testament.
+
+# The Persian Setting Matters
+
+The story takes place in the Persian Empire, especially in **Susa**.
+
+Susa was a major royal city.
+That matters because this is not a village-level conflict.
+This is imperial power.
+
+The king in Esther is usually identified as **Ahasuerus**, often connected with Xerxes I.
+So the movie is working in a world of massive political authority, court ceremony, decrees, and public displays of power.
+
+That world explains why Esther's courage matters so much.
+She is not pushing back against a private inconvenience.
+She is stepping into danger inside the heart of empire.
+
+# Esther Is More Than a Beauty Story
+
+People sometimes flatten Esther into the woman who became queen.
+
+But Scripture gives you much more than that.
+
+Esther is:
+
+- Jewish
+- vulnerable
+- strategically placed
+- under pressure
+- forced to grow into public courage
+
+Her Hebrew name is **Hadassah**, which means myrtle.
+The name **Esther** is the Persian name used in the court setting.
+
+That dual naming already hints at one of the major tensions in the book:
+
+- hidden identity
+- visible influence
+
+# Mordecai Matters a Lot
+
+Mordecai is not just Esther's older relative in the background.
+He is one of the moral anchors of the story.
+
+He raises Esther.
+He uncovers a plot against the king.
+He refuses to bow to Haman.
+And he becomes one of the key human instruments God uses to protect the Jewish people.
+
+That refusal to bow is a huge moment.
+
+It shows that Esther is not only about survival.
+It is also about allegiance.
+
+Mordecai understands that some forms of public compromise cost too much.
+
+# Haman and the Threat of Genocide
+
+Haman is not just a bad guy with a grudge.
+
+He is a proud official whose personal rage turns into a public plan of destruction.
+
+That is what makes him so dangerous.
+
+His offense begins with Mordecai.
+But his hatred expands toward an entire people.
+
+That is how evil often works.
+It takes wounded pride and grows it into something much larger and more destructive.
+
+The movie's central threat is tied to this reality:
+
+- Haman has influence
+- Persian law feels irreversible
+- the Jewish people look exposed
+
+So Esther is not stepping into a symbolic moment.
+She is stepping into a life-and-death crisis.
+
+# Fasting Before Action
+
+One of the most powerful parts of Esther is the fast.
+
+Before Esther goes in to the king, she tells Mordecai:
+
+> "Then I will go to the king, though it is against the law, and if I perish, I perish."
+> Esther 4:16
+
+That line carries the whole emotional weight of the book.
+
+It is courage, but not reckless courage.
+It is courage that has passed through prayerful seriousness.
+
+Fasting matters here because it shows dependence.
+Esther is not trusting charm or palace skill alone.
+She knows this moment requires more than strategy.
+
+# The Palace Is Full of Reversals
+
+Esther is one of the great reversal books of Scripture.
+
+Watch how the story turns:
+
+- the orphan becomes queen
+- the ignored faithful act gets remembered later
+- the proud man is humiliated
+- the threatened people are preserved
+- the gallows prepared for another become the instrument of judgment on the plotter
+
+This is why Esther feels so satisfying.
+
+The book keeps showing that God can turn the story without announcing Himself loudly.
+
+# One Word Worth Knowing
+
+The Jewish feast that comes out of this story is **Purim**.
+
+That word is tied to the casting of lots, because Haman cast lots to determine the day of destruction.
+
+And that is exactly what makes the ending so powerful.
+
+The very thing meant to seal the Jews' doom becomes part of the memory of their deliverance.
+
+# Why Esther Still Matters
+
+Esther matters because a lot of people know what it feels like to live in a world where God seems quiet.
+
+The book does not deny that feeling.
+
+Instead, it teaches you to look more carefully.
+
+Providence is still moving.
+Timing still matters.
+Faithfulness still matters.
+Courage still matters.
+
+And hidden obedience can still become the turning point in a much larger story.
+
+# Final Takeaway
+
+This movie helps you feel the pressure of Esther's world:
+
+- power at the top
+- danger in the middle
+- fear for the people
+- courage in the decisive moment
+
+But underneath all of it, the story is really about providence.
+
+God is not absent just because He is quiet.
+
+And Esther reminds you that sometimes the people God uses most powerfully are the ones placed in the right moment, called to act bravely, while trusting that He has been arranging more than they can see.`,
+    },
+  ],
+};
+
+export const jeremiahMovieTitle: BibleBuddyTvTitle = {
+  id: "jeremiah-movie",
+  slug: "jeremiah",
+  title: "Jeremiah",
+  badge: "Bible Buddy Movie",
+  category: "movies",
+  poster: "/Jeremiah.jpg",
+  heroImage: "/Jeremiah.jpg",
+  accentFrom: "#6b3f1d",
+  accentTo: "#92400e",
+  year: "1998",
+  rating: "TV-PG",
+  runtime: "3h",
+  seasonsLabel: "Movie",
+  contentType: "movie",
+  logline:
+    "Jeremiah is called to warn Judah of coming judgment, endure rejection, and keep speaking God's word as Jerusalem moves toward collapse.",
+  overview:
+    "The Bible Collection: Jeremiah follows the prophet from his calling into a ministry marked by warning, heartbreak, persecution, and faithfulness. As Judah hardens its heart and Babylon closes in, Jeremiah keeps calling the nation back to covenant loyalty while carrying the emotional cost of preaching a message people do not want to hear.",
+  vibe:
+    "Prophetic fire, national collapse, covenant warning, tears, resistance, and the kind of lonely obedience that keeps speaking truth even when nobody wants it.",
+  continueWatchingLabel: "Movie: Jeremiah",
+  inMyList: true,
+  searchTags: [
+    "movie",
+    "jeremiah",
+    "the bible collection jeremiah",
+    "old testament",
+    "book of jeremiah",
+    "prophet",
+    "major prophets",
+    "judah",
+    "jerusalem",
+    "babylon",
+    "nebuchadnezzar",
+    "temple",
+    "covenant",
+    "judgment",
+    "repentance",
+    "lament",
+    "baruch",
+    "weeping prophet",
+    "new covenant",
+    "exile",
+    "false prophets",
+    "idolatry",
+    "destruction of jerusalem",
+    "old testament movie",
+  ],
+  episodes: [
+    {
+      id: "jeremiah-movie-main",
+      episodeNumber: 1,
+      title: "Jeremiah",
+      contentLabel: "Movie",
+      duration: "3h",
+      summary:
+        "Jeremiah is called to confront Judah's rebellion, warn of Babylon's coming judgment, suffer rejection from kings and priests, and keep declaring that God will both judge sin and preserve a future hope.",
+      thumbnail: "/Jeremiah.jpg",
+      youtubeUrl: "https://www.youtube.com/watch?v=xNQvmnbNF1k&t=916s",
+      available: true,
+      discussionSlug: "bible-buddy-tv-jeremiah-movie",
+      reflectionQuestion: "What did you think about this movie?",
+      louisIntro:
+        "Jeremiah is one of the heaviest prophet stories in the whole Bible because he is not speaking into a small personal problem. He is speaking into the collapse of a nation. This movie works when you feel that weight. Jeremiah is not mainly a public motivational figure. He is a covenant prophet standing in the middle of idolatry, political denial, false reassurance, and coming judgment, still telling the truth when that truth costs him almost everything.",
+      studyNotesDocument: `# Jeremiah Is a Movie About Warning Before Collapse
+
+Jeremiah's story is not built around a quick victory arc.
+
+It is built around warning, heartbreak, resistance, and faithfulness.
+
+That matters because a lot of Bible readers know Jeremiah as the "weeping prophet," but the tears are not the whole story.
+
+Jeremiah is also:
+
+- courageous
+- relentless
+- painfully obedient
+- covenant-centered
+- anchored in God's word even when everyone around him wants softer messages
+
+This movie works when you understand that Jeremiah is preaching to a people who still want religion without repentance.
+
+# Where This Movie Lives in Scripture
+
+This movie draws mainly from the **Book of Jeremiah**, especially the prophet's call in **Jeremiah 1**, his warnings to Judah and Jerusalem, his conflict with kings, priests, and false prophets, and the broader fall of Jerusalem into Babylonian judgment.
+
+It also reaches into themes connected to:
+
+- **2 Kings 22-25**
+- **2 Chronicles 34-36**
+- the rise of Babylon
+- the destruction of Jerusalem
+- exile
+
+So this is not only one man's spiritual biography.
+It is the story of a prophet speaking at the edge of national ruin.
+
+# Jeremiah's Calling Starts Early and Feels Heavy Immediately
+
+Jeremiah's call in **Jeremiah 1** is one of the clearest prophetic call scenes in the Bible.
+
+> "Before I formed you in the womb I knew you, and before you were born I consecrated you."
+> Jeremiah 1:5
+
+That line matters because Jeremiah's ministry is not self-invented.
+He is not choosing a difficult public role out of personal ambition.
+He is being appointed by God into one.
+
+And from the beginning, the calling feels costly.
+
+Jeremiah protests his youth.
+God answers by giving him His word.
+
+That is a major pattern in prophetic ministry:
+
+- personal weakness
+- divine commissioning
+- a word stronger than the speaker
+
+# Judah Is Still Religious, But Spiritually Rotten
+
+One of the most important things this movie can help people see is that Jeremiah is not preaching to a people who have no spiritual language.
+
+He is preaching to a people who still have:
+
+- temple activity
+- ritual
+- leaders
+- public claims of belonging to God
+
+But underneath that, there is idolatry, injustice, stubbornness, and false security.
+
+That is why Jeremiah hits so hard.
+
+He keeps exposing the gap between outward religion and actual covenant faithfulness.
+
+The people think sacred symbols will protect them automatically.
+Jeremiah keeps saying covenant privilege does not cancel covenant responsibility.
+
+# Jerusalem and the Temple Matter Deeply Here
+
+Jerusalem is not just the background city in this story.
+It is the city where the covenant people live, where the temple stands, and where false confidence keeps growing.
+
+That is why Jeremiah's temple sermon matters so much.
+
+He is standing near the center of national religious identity and saying, in effect:
+
+- stop trusting appearances
+- stop assuming the temple guarantees safety
+- stop acting like God's house can cover unrepentant living
+
+That message is explosive.
+
+Because when sacred space gets turned into spiritual cover for rebellion, prophets have to speak plainly.
+
+# Babylon Is the Instrument of Judgment
+
+Babylon matters because it represents the historical form judgment will take.
+
+This is not abstract warning.
+This is real invasion, real siege, real collapse.
+
+Nebuchadnezzar and Babylon become the political force through which Judah's covenant rebellion is answered.
+
+That is one reason Jeremiah is such a sobering book.
+
+God is not only speaking morally in general terms.
+He is speaking into history.
+
+And history is about to move.
+
+# Baruch and the Cost of Writing the Word
+
+Baruch matters too.
+
+He is Jeremiah's scribe and close companion, and that tells you something important:
+
+Jeremiah's ministry is not just oral prophecy disappearing into the air.
+The word is being preserved, written, carried, and re-spoken.
+
+That matters because truth has to survive opposition.
+
+And Jeremiah's scroll story shows that even when kings burn the message, they cannot burn away the authority behind it.
+
+# False Prophets Make Everything Harder
+
+One of the hardest parts of Jeremiah's ministry is that he is not only fighting open rebellion.
+He is also surrounded by competing voices.
+
+That means the real pressure is not just:
+
+- will people listen to God
+
+It is also:
+
+- which message will they believe
+- the one that wounds before it heals
+- or the one that comforts without truth
+
+That is why false prophets matter so much in Jeremiah.
+
+They keep saying peace when judgment is near.
+They keep feeding denial when repentance is needed.
+
+That dynamic still feels familiar.
+
+# One Phrase Worth Knowing
+
+Jeremiah is deeply tied to the idea of **covenant**.
+
+The Hebrew word **berit** means covenant.
+
+That matters because Jeremiah is not just saying Judah made mistakes.
+He is saying Judah has broken relationship with the God who redeemed and claimed them.
+
+And then, in one of the most beautiful turns in the whole book, Jeremiah also speaks of a **new covenant** in **Jeremiah 31**.
+
+That means the prophet of judgment is also a prophet of hope.
+
+> "I will put my law within them, and I will write it on their hearts."
+> Jeremiah 31:33
+
+That line is huge.
+
+Because Jeremiah is not only announcing destruction.
+He is also announcing that God's final answer to sin will involve deeper transformation, not just external reform.
+
+# Jeremiah's Tears Are Not Weakness
+
+When people call Jeremiah the weeping prophet, they should not mean that he is fragile in a shallow sense.
+
+The tears matter because Jeremiah feels the weight of:
+
+- sin against God
+- coming judgment
+- human stubbornness
+- national disaster
+
+That kind of grief is not weakness.
+It is spiritual clarity with a human heart still alive inside it.
+
+Jeremiah does not become numb.
+He keeps feeling the burden of the message even while speaking it faithfully.
+
+# Final Takeaway
+
+This movie helps you feel what prophetic faithfulness looks like when the culture is collapsing.
+
+Jeremiah is not triumphant in the easy sense.
+He is faithful in the costly sense.
+
+He keeps standing.
+He keeps speaking.
+He keeps warning.
+He keeps grieving.
+
+And through him, Scripture reminds you that God is serious about covenant, serious about sin, and still serious about hope on the far side of judgment.
+
+That is why Jeremiah matters.
+
+He is the prophet who proves that hard truth and real hope can live in the same message.`,
+    },
+  ],
+};
+
+export const lostTreasuresDocumentaryTitle: BibleBuddyTvTitle = {
+  id: "lost-treasures-of-the-bible",
+  slug: "lost-treasures-of-the-bible",
+  title: "Lost Treasures of the Bible",
+  badge: "Bible Buddy Documentary",
+  category: "documentaries",
+  poster: "/losttreasures.png",
+  heroImage: "/losttreasures.png",
+  accentFrom: "#475569",
+  accentTo: "#334155",
+  year: "2024",
+  rating: "TV-PG",
+  runtime: "2h 10m",
+  seasonsLabel: "Mega Episode",
+  contentType: "movie",
+  logline:
+    "A documentary mega episode following archaeologists as they uncover new evidence connected to Babel, Solomon, and Herod.",
+  overview:
+    "Lost Treasures of the Bible brings together three full documentary episodes in one long-form archaeological deep dive. Across Iraq, ancient royal sites, and Herodian remains, experts investigate the Tower of Babel tradition, the age of King Solomon, and the real historical footprint of Herod, helping viewers connect Scripture, history, excavation, and interpretation.",
+  vibe:
+    "Archaeology, reconstruction, ancient cities, royal power, Bible history, and the tension between what the text says and what the ground is still revealing.",
+  continueWatchingLabel: "Documentary: Lost Treasures of the Bible",
+  inMyList: true,
+  searchTags: [
+    "documentary",
+    "lost treasures of the bible",
+    "mega episode",
+    "archaeology",
+    "biblical archaeology",
+    "old testament",
+    "new testament",
+    "tower of babel",
+    "babel",
+    "babylon",
+    "genesis 11",
+    "iraq",
+    "king solomon",
+    "solomon",
+    "temple",
+    "united monarchy",
+    "1 kings",
+    "2 chronicles",
+    "wisdom",
+    "jerusalem",
+    "king herod",
+    "herod the great",
+    "second temple",
+    "judea",
+    "rome",
+    "historical bible documentary",
+  ],
+  episodes: [
+    {
+      id: "lost-treasures-of-the-bible-main",
+      episodeNumber: 1,
+      title: "Lost Treasures of the Bible MEGA Episode",
+      contentLabel: "Documentary",
+      duration: "2h 10m",
+      summary:
+        "Archaeologists revisit the Tower of Babel tradition, investigate the world of King Solomon, and reconstruct the rise and brutality of Herod the Great through excavations, historical analysis, and CGI.",
+      thumbnail: "/losttreasures.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=vaOxOOZ9jkg",
+      available: true,
+      discussionSlug: "bible-buddy-tv-lost-treasures-of-the-bible",
+      reflectionQuestion: "What stood out to you most in this documentary?",
+      louisIntro:
+        "This documentary works best when you do not watch it like it is trying to replace the Bible. It is trying to help you picture the world around the Bible more clearly. That is why the three featured sections matter so much. Babel helps you think about human pride and early empire, Solomon forces you to ask what kind of kingdom and building age the Bible is describing, and Herod shows you how one of the most important rulers around the Gospel period used fear, architecture, and power to leave his mark on history.",
+      studyNotesDocument: `# This Documentary Is About More Than Artifacts
+
+What makes this documentary useful is that it is not just showing old stones.
+
+It is asking bigger questions:
+
+- What kind of world produced these Bible stories?
+- What did these cities and rulers actually look like?
+- How does archaeology help us understand the setting of Scripture?
+
+That matters because Bible study is not only about abstract ideas.
+It is also about real places, real kingdoms, real rulers, and real moments in history.
+
+# The Tower of Babel and the World of Genesis 11
+
+The Babel section points back to **Genesis 11:1-9**.
+
+That story is not mainly about architecture for architecture's sake.
+It is about unified human pride trying to build identity, security, and glory without submission to God.
+
+> "Come, let us build ourselves a city and a tower with its top in the heavens."
+> Genesis 11:4
+
+Babel matters because it ties together:
+
+- early urban power
+- empire-building
+- human self-exaltation
+- judgment through confusion and scattering
+
+Archaeology in Iraq matters here because ancient Mesopotamia was the world of massive city-building, temple towers, and imperial ambition. That does not mean every brick proves every detail directly. It means the documentary is helping you picture why a tower-city story like Babel would make sense inside that world.
+
+The bigger biblical takeaway is that Babel becomes an early picture of humanity trying to reach upward on its own terms.
+
+# Solomon: Wisdom, Wealth, Building, and Mystery
+
+The Solomon section is rooted mainly in:
+
+- **1 Kings 1-11**
+- **2 Chronicles 1-9**
+
+King Solomon is remembered for:
+
+- wisdom
+- wealth
+- international fame
+- temple construction
+- royal administration
+
+That is why archaeology around Solomon matters so much.
+
+If the Bible describes a king overseeing a major kingdom, large projects, and a significant court, people naturally want to know what material traces that era may have left behind.
+
+Solomon is not important only because he was rich.
+He is important because he stands at the height of Israel's united monarchy.
+
+He builds the temple in Jerusalem.
+He becomes known as a wisdom king.
+And he also becomes a warning, because later compromise and idolatry darken the second half of his story.
+
+So when you watch the documentary talk about Solomon, do not only think:
+
+- Did he have gold?
+- How big was the kingdom?
+
+Also think:
+
+- What did wisdom look like in public leadership?
+- What happens when blessing turns into spiritual drift?
+
+# Where Solomon Did What He Did
+
+Jerusalem is the major city tied to Solomon's reign because that is where the temple and royal center are most strongly connected.
+
+The temple matters because it becomes the symbolic center of Israel's worship life.
+Solomon's palace complex matters because it shows the kingdom taking visible political form.
+
+That is why the documentary's focus on location and excavation matters.
+
+Bible stories are not floating in empty space.
+They are tied to cities, courts, and building projects.
+
+# The Real King Herod
+
+Herod belongs to the New Testament world, especially the background around the Gospels.
+
+He is the ruler most people remember from:
+
+- the infancy account in **Matthew 2**
+- the slaughter tied to Bethlehem
+- his huge building legacy
+- his reputation for paranoia and violence
+
+Herod is one of the most important bridge figures between Bible history and Roman-era Judea.
+
+He is called "Herod the Great" because of political scale and building ambition, not because he was morally admirable.
+
+That distinction matters.
+
+The documentary is right to lean into both sides:
+
+- his construction power
+- his brutality
+
+Herod helps explain the world Jesus entered.
+
+He ruled under Rome.
+He expanded and rebuilt major sites.
+He knew how to use architecture, spectacle, and fear as tools of power.
+
+So when archaeology uncovers Herodian remains, it is not just helping us admire engineering.
+It is helping us picture the kind of political atmosphere surrounding the New Testament.
+
+# Why These Three Sections Belong Together
+
+At first glance, Babel, Solomon, and Herod seem far apart.
+
+But the documentary puts them together because they all touch power.
+
+- Babel shows collective human pride trying to rise
+- Solomon shows royal glory and the complexity of kingdom strength
+- Herod shows political power at its most calculated and image-driven
+
+So one of the smartest ways to study this mega episode is to ask:
+
+- What does power look like here?
+- What does it build?
+- What does it promise?
+- What does it hide?
+
+# One Word Worth Knowing
+
+The Hebrew word **migdal** means tower.
+That matters in the Babel section because the tower is not just a building feature. It becomes a symbol of ambition reaching upward without dependence on God.
+
+And in the Solomon section, the idea of wisdom is tied to **chokmah**, a word that means more than intelligence. It points to skilled, ordered, God-shaped understanding for life and leadership.
+
+# Final Takeaway
+
+This documentary is strongest when it helps you see that the Bible's world was real, layered, political, and physical.
+
+Babel reminds you that human pride scales up fast.
+Solomon reminds you that wisdom and glory can shape a kingdom for good, but blessing can still be mishandled.
+Herod reminds you that visible greatness can hide deep corruption.
+
+So the big value here is not just historical curiosity.
+It is clearer context.
+
+The more clearly you can picture the world around the Bible, the more texture you have when you go back to read the text itself.`,
+    },
+  ],
+};
+
+export const historyOfTheBibleDocumentaryTitle: BibleBuddyTvTitle = {
+  id: "history-of-the-bible",
+  slug: "history-of-the-bible",
+  title: "History of the Bible",
+  badge: "Bible Buddy Documentary",
+  category: "documentaries",
+  poster: "/thehistoryofthebible.png",
+  heroImage: "/thehistoryofthebible.png",
+  accentFrom: "#334155",
+  accentTo: "#1e293b",
+  year: "2024",
+  rating: "TV-PG",
+  runtime: "1h 23m",
+  seasonsLabel: "Documentary",
+  contentType: "movie",
+  logline:
+    "A documentary exploring who wrote the Bible, why it was written, when it was written, and why its manuscript history is considered reliable.",
+  overview:
+    "This History Channel documentary walks through the origin, writing, preservation, and reliability of the Bible. It asks who wrote the biblical books, why they were written, how ancient manuscripts were copied and preserved, and why both Old and New Testament transmission are treated so seriously by scholars and scribes across history.",
+  vibe:
+    "Bible history, manuscript evidence, scribal care, transmission, canon, ancient languages, and a steady documentary look at why the Bible has endured.",
+  continueWatchingLabel: "Documentary: History of the Bible",
+  inMyList: true,
+  searchTags: [
+    "documentary",
+    "history of the bible",
+    "who wrote the bible",
+    "why its reliable",
+    "history channel",
+    "bible documentary",
+    "manuscripts",
+    "reliability of the bible",
+    "old testament manuscripts",
+    "new testament manuscripts",
+    "dead sea scrolls",
+    "septuagint",
+    "scribes",
+    "canon",
+    "textual criticism",
+    "ancient manuscripts",
+    "bible transmission",
+    "hebrew bible",
+    "greek new testament",
+    "church fathers",
+    "ancient history",
+    "apologetics",
+    "origin of the bible",
+  ],
+  episodes: [
+    {
+      id: "history-of-the-bible-main",
+      episodeNumber: 1,
+      title: "History of the Bible - Who Wrote the Bible - Why It's Reliable?",
+      contentLabel: "Documentary",
+      duration: "1h 23m",
+      summary:
+        "This documentary traces the writing and preservation of the Bible, asking who wrote it, why it was written, how manuscripts were transmitted, and why scholars continue to view its textual history as remarkably strong.",
+      thumbnail: "/thehistoryofthebible.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=Ksp4kRn7lGk",
+      available: true,
+      discussionSlug: "bible-buddy-tv-history-of-the-bible-documentary",
+      reflectionQuestion: "What stood out to you most in this documentary?",
+      louisIntro:
+        "This documentary matters because a lot of people do not reject the Bible only on theological grounds. They reject it historically, assuming it was written too late, changed too often, or copied too loosely to trust. So a documentary like this is useful when it helps you slow down and ask better questions: who actually wrote these books, what kind of texts are they, how were they preserved, and what kind of manuscript support do we really have compared to other ancient works people accept much more easily.",
+      studyNotesDocument: `# This Documentary Is Asking Historical Questions About the Bible
+
+This is not mainly a documentary about one Bible story.
+
+It is about the Bible as a collection of writings.
+
+That means the big questions are things like:
+
+- Who wrote it?
+- When was it written?
+- Why was it written?
+- How was it preserved?
+- Why do people say it is reliable?
+
+Those questions matter because a lot of skepticism around the Bible starts before theology even begins. People assume the text has been changed beyond recognition or copied too loosely to trust. This documentary steps into that conversation.
+
+# The Bible Was Written Over Time, Not All at Once
+
+One of the first things people need to understand is that the Bible is not one book written by one human author in one moment.
+
+It is a library.
+
+That library includes:
+
+- law
+- history
+- wisdom
+- prophecy
+- Gospels
+- letters
+- apocalyptic writing
+
+The Old Testament was written across many centuries, mainly in Hebrew, with some Aramaic sections.
+The New Testament was written in the first century AD in Greek.
+
+That matters because when people ask, "Who wrote the Bible?" the honest answer is layered.
+
+Human authors wrote individual books.
+But the Bible presents itself as Scripture shaped under God's inspiration across a long historical span.
+
+# Why the Bible Was Written
+
+The books of the Bible were not all written for the exact same immediate reason.
+
+Some were written to:
+
+- preserve covenant law
+- record Israel's history
+- call people to repentance
+- express worship and lament
+- testify to the life, death, and resurrection of Jesus
+- guide churches
+- warn, teach, and encourage believers
+
+So when this documentary asks why the Bible was written, it is really asking why these writings mattered enough to be preserved, copied, and passed down generation after generation.
+
+# The Old Testament Manuscript Story Matters a Lot
+
+One of the strongest parts of this conversation is the Old Testament manuscript tradition.
+
+The broad point is not that every copy is identical in every tiny mark.
+The point is that the transmission is remarkably careful and stable across time.
+
+The documentary's emphasis on the **Dead Sea Scrolls**, the **Septuagint**, and Hebrew manuscript tradition is important because these witnesses help scholars compare texts across centuries.
+
+## Dead Sea Scrolls
+
+The Dead Sea Scrolls matter because they pushed our manuscript evidence much earlier than many people expected before their discovery.
+
+That means when people say, "How do we know the Old Testament wasn't rewritten much later?" the scrolls become one of the most important parts of the answer.
+
+## Septuagint
+
+The **Septuagint** is the Greek translation of the Old Testament produced before the time of Christ.
+
+That matters because it shows the Hebrew Scriptures were already established and being translated for wider use before the New Testament era.
+
+## Hebrew Scribes
+
+The scribes matter because copying Scripture was not treated casually.
+
+The documentary is right to stress how carefully trained scribes were. Their work was not improvisational. It was disciplined, reverent, and exacting.
+
+# The New Testament Manuscript Story Is Also Strong
+
+The New Testament manuscript evidence is one of the biggest historical strengths in Bible reliability discussions.
+
+The key point is not that there are zero textual questions.
+The key point is that we have an unusually large number of manuscripts and fragments, many of them far closer to the originals than what we have for most ancient works.
+
+That matters because history always works with surviving copies, not the lost original autographs.
+
+And when you compare the New Testament manuscript tradition to works like Caesar, Herodotus, or Thucydides, the Bible's manuscript base looks unusually rich.
+
+# Reliability Does Not Mean There Are No Variants
+
+This is important.
+
+When Christians say the Bible is reliable, they do not usually mean that every manuscript copy is free of every copying variation.
+
+They mean that the textual tradition is so full and so well-attested that the original wording can be identified with a very high degree of confidence.
+
+That distinction matters because people sometimes hear "variants" and imagine total chaos.
+But the larger manuscript picture points in the opposite direction.
+
+The reason scholars can discuss variants is precisely because there is so much manuscript evidence to compare.
+
+# Why Comparison with Other Ancient Books Helps
+
+The documentary's comparison with Homer, Caesar, Pliny, Herodotus, and others helps make one big point:
+
+People trust ancient texts all the time with far less manuscript support.
+
+That does not prove every theological claim in the Bible automatically.
+But it does challenge the lazy claim that the Bible is historically unique in being too unstable to know.
+
+If anything, the manuscript base makes it one of the best-attested documents from the ancient world.
+
+# The Church Fathers Matter Too
+
+Another powerful point is that much of the New Testament can be reconstructed from quotations in the early church fathers.
+
+That matters because it shows the New Testament was not only copied in manuscripts.
+It was also:
+
+- preached
+- cited
+- discussed
+- defended
+
+So the text was living inside the church's public memory very early.
+
+# One Word Worth Knowing
+
+The word **canon** matters here.
+
+Canon refers to the recognized collection of books received as Scripture.
+
+That matters because the Bible was not thrown together randomly. The recognition of these books happened in historical communities that believed they were receiving writings with divine authority, not inventing authority out of nowhere.
+
+# Final Takeaway
+
+This documentary is most helpful when it pushes you to separate a popular myth from the actual evidence.
+
+The myth says:
+
+- the Bible was changed beyond recognition
+- the text was copied too loosely to trust
+- we have no real idea what the originals said
+
+The historical picture is much stronger than that.
+
+The Bible was written over time by real authors in real history.
+It was copied with extraordinary care.
+It is supported by a huge manuscript tradition.
+And its textual foundation compares very strongly with other ancient writings people treat as reliable every day.
+
+So the real question is not whether the Bible has survived history.
+It has.
+
+The real question becomes what you will do with a text that has been preserved, studied, copied, and carried with that much seriousness across the centuries.`,
+    },
+  ],
+};
+
+export const storyOfGodDocumentaryTitle: BibleBuddyTvTitle = {
+  id: "the-story-of-god",
+  slug: "the-story-of-god",
+  title: "The Story of God",
+  badge: "Bible Buddy Documentary",
+  category: "documentaries",
+  poster: "/thestoryofGod.jpg",
+  heroImage: "/thestoryofGod.jpg",
+  accentFrom: "#1d4ed8",
+  accentTo: "#0f172a",
+  year: "2017",
+  rating: "TV-PG",
+  runtime: "Documentary Special",
+  seasonsLabel: "Morgan Freeman",
+  contentType: "movie",
+  logline:
+    "Morgan Freeman travels through some of humanity's biggest spiritual questions, tracing what people mean by the chosen one, heaven and hell, and the search for proof that God is real.",
+  overview:
+    "The Story of God moves like a spiritual road trip. Morgan Freeman steps into sacred spaces, old ideas, and modern questions to explore how people across the world imagine divine calling, life after death, and the evidence of God's presence. Instead of treating faith as one flat topic, the documentary tells a bigger story about humanity's longing to be known by God, judged by God, rescued by God, and convinced that God is not silent.",
+  vibe:
+    "Big questions, global faith traditions, spiritual longing, afterlife, revelation, and a documentary that keeps asking why human beings still reach for God.",
+  continueWatchingLabel: "Documentary: The Story of God",
+  inMyList: true,
+  searchTags: [
+    "documentary",
+    "the story of god",
+    "morgan freeman",
+    "chosen one",
+    "heaven and hell",
+    "proof of god",
+    "who is chosen by god",
+    "afterlife",
+    "faith documentary",
+    "god documentary",
+    "history channel",
+    "religion",
+    "spiritual questions",
+    "heaven",
+    "hell",
+    "divine presence",
+    "miracles",
+    "belief",
+    "theology",
+    "bible worldview",
+    "old testament",
+    "new testament",
+  ],
+  episodes: [
+    {
+      id: "the-story-of-god-main",
+      episodeNumber: 1,
+      title: "The Story of God",
+      contentLabel: "Documentary",
+      duration: "Documentary Special",
+      summary:
+        "Morgan Freeman follows three huge faith questions: who is chosen by God, what people mean by heaven and hell, and whether there is still any proof of the divine in the modern world.",
+      thumbnail: "/thestoryofGod.jpg",
+      youtubeUrl: "https://www.youtube.com/watch?v=6lJlgbh0AMM",
+      available: true,
+      discussionSlug: "bible-buddy-tv-the-story-of-god-documentary",
+      reflectionQuestion: "What stood out to you most in this documentary?",
+      louisIntro:
+        "What makes this documentary interesting is that it is not just listing religious facts. It is following the questions people keep carrying no matter what culture they come from. Who gets called by God. What happens after death. And how do you know God is real in a world that keeps acting like the spiritual life is fading away. Morgan Freeman walks through those questions like a guide, but the real value for Bible Buddy is learning how these ideas connect back to Scripture and why the Bible speaks so directly to all three.",
+      studyNotesDocument: `# This Documentary Is Really About Humanity Searching for God
+
+The Story of God is built around three big movements:
+
+- the chosen one
+- heaven and hell
+- proof of God
+
+That matters because those are not random topics.
+
+They are some of the deepest questions people ask:
+
+- Does God choose people for a purpose?
+- Is there judgment or reward beyond this life?
+- Can God's presence still be known now?
+
+So even though the documentary moves across cultures and voices, the deeper story is about human longing.
+
+People want to know:
+
+- if their lives matter
+- if history is going somewhere
+- if justice is real
+- if God is near or silent
+
+# The Chosen One Theme Connects Strongly to the Bible
+
+The first major movement is about chosen people.
+
+Almost every faith tradition has some version of that idea, but the Bible gives this theme a very particular shape.
+
+In Scripture, being chosen is not mostly about celebrity.
+It is about calling, responsibility, and purpose.
+
+Think about:
+
+- **Abraham** in **Genesis 12**
+- **Moses** in **Exodus 3**
+- **David** in **1 Samuel 16**
+- **Israel** as a covenant people in **Deuteronomy 7**
+- **Jesus** as the chosen servant and Son
+
+That means chosenness in the Bible is not just, "God liked this person more."
+
+It is more like:
+
+- God sets someone apart
+- God gives them an assignment
+- that assignment usually costs something
+- and through that calling, other people are meant to be blessed
+
+That is why this part of the documentary matters.
+It presses the question of whether calling is about privilege or mission.
+
+Biblically, it is mission.
+
+# One Word Worth Knowing
+
+The Hebrew word **bachar** means "to choose."
+
+That word matters because divine choice in the Bible is usually tied to covenant purpose, not random favoritism.
+
+God chooses Abraham so that all the families of the earth can be blessed through him.
+God chooses Israel so they can be a people who reflect His name.
+God chooses leaders and prophets so truth can be spoken into history.
+
+So when the documentary talks about the chosen one, Bible readers should hear a deeper question underneath it:
+
+What does God call people to carry?
+
+# Heaven and Hell Are Not Just Abstract Ideas
+
+The second movement turns toward heaven and hell.
+
+This is where a lot of people start thinking only in terms of cartoons, clouds, flames, and pop-culture imagery.
+
+But biblically, the conversation is deeper than that.
+
+The Bible treats eternal destiny as connected to:
+
+- holiness
+- justice
+- communion with God
+- judgment
+- restoration
+
+Heaven in the biblical imagination is not mainly about escaping earth forever.
+It is about life with God, the fulfillment of His kingdom, and the final setting-right of all things.
+
+Hell is not just a dramatic scare image.
+It is tied to judgment, separation, and the seriousness of rejecting God.
+
+So when the documentary asks whether heaven and hell are future realities or present experiences, that is a worthwhile question.
+
+Because the Bible does show that:
+
+- people can taste the life of God's kingdom now
+- people can also taste the destruction of rebellion now
+
+But the Bible does not flatten those ideas into mere metaphors.
+It keeps a future horizon in view.
+
+# Why This Changes the Way People Live
+
+The documentary is right to suggest that heaven and hell shape life in the present.
+
+What you think happens after death influences:
+
+- what you fear
+- what you hope for
+- what you endure
+- how you define justice
+
+That is why resurrection, judgment, and eternal life matter so much in the New Testament.
+
+If death is not the end, then life is not random.
+
+And if judgment is real, then evil does not get the final word.
+
+# Proof of God Is About Presence, Not Just Debate
+
+The third movement asks whether we have cut God out of modern life or whether there are still moments when the divine breaks in.
+
+That is one of the most important parts of this documentary.
+
+Because many people think the only way to talk about proof is through argument.
+
+Arguments matter.
+Reason matters.
+History matters.
+
+But the Bible also talks about God's reality through:
+
+- creation
+- conscience
+- revelation
+- miracles
+- providence
+- Christ Himself
+
+So "proof of God" in a Bible sense is not just one category.
+
+It includes:
+
+- the witness of the world
+- the witness of Scripture
+- the witness of Jesus
+- the witness of transformed lives
+
+That does not erase doubt.
+But it does show that God's self-disclosure is bigger than one debate format.
+
+# Scripture Connections That Help Here
+
+If you want to connect this documentary back to the Bible, some key passages are:
+
+- **Genesis 12** for divine calling and chosenness
+- **Exodus 3** for God's call on Moses
+- **Deuteronomy 7** for Israel as a chosen people
+- **Psalm 19** for creation declaring God's glory
+- **Ecclesiastes 3:11** for eternity set in the human heart
+- **John 14** for Jesus on the Father's house
+- **Matthew 25** for judgment language
+- **Acts 17** for God not being far from any one of us
+- **Romans 1** for creation and the knowledge of God
+
+That is one of the best ways to study a documentary like this.
+Do not leave it floating in spiritual conversation only.
+Anchor it back into Scripture.
+
+# A Couple of People and Ideas to Keep Straight
+
+## Abraham
+
+Abraham is one of the clearest Bible examples of a chosen person.
+
+He is chosen in **Genesis 12**, but that calling is immediately tied to promise and blessing for others.
+His story shows that divine calling usually begins with trust before it becomes visible influence.
+
+## Moses
+
+Moses is another key figure because his chosenness is tied to deliverance.
+God calls him out of the wilderness and sends him back into crisis.
+
+That is important.
+The chosen person in Scripture is often the one being sent into difficulty, not away from it.
+
+## Heaven
+
+In Christian thought, heaven is not mainly a vague peaceful place.
+It is life with God, the fulfillment of His promises, and the final home of His people.
+
+## Hell
+
+Hell matters because it reminds us that evil, rebellion, and rejection of God are not morally weightless.
+The Bible's language here is serious because justice is serious.
+
+# Final Takeaway
+
+This documentary works best when you let it push you toward the deeper question:
+
+Why do these themes keep appearing everywhere?
+
+Why do people across time keep asking about:
+
+- chosenness
+- eternity
+- proof of God
+
+The Bible's answer is that humanity was made for God.
+
+That is why people keep reaching for transcendence.
+That is why judgment and hope matter.
+That is why the question of God's presence does not go away.
+
+So the value of this documentary is not just that it collects spiritual ideas.
+
+It helps you see that people are still haunted by God-sized questions.
+
+And Scripture does not run from those questions.
+It speaks into them directly.`,
+    },
+  ],
+};
+
+export const deadSeaScrollDetectivesTitle: BibleBuddyTvTitle = {
+  id: "dead-sea-scroll-detectives",
+  slug: "dead-sea-scroll-detectives",
+  title: "Dead Sea Scroll Detectives",
+  badge: "Bible Buddy Documentary",
+  category: "documentaries",
+  poster: "/Deadseascrolls.jpg",
+  heroImage: "/Deadseascrolls.jpg",
+  accentFrom: "#475569",
+  accentTo: "#0f172a",
+  year: "2019",
+  rating: "TV-PG",
+  runtime: "53m",
+  seasonsLabel: "NOVA Documentary",
+  contentType: "movie",
+  logline:
+    "Scientists use advanced imaging, material analysis, and manuscript investigation to test suspicious scroll fragments and digitally recover hidden writing from the Dead Sea Scrolls world.",
+  overview:
+    "Dead Sea Scroll Detectives plays like a manuscript mystery. The documentary follows scholars and scientists as they examine newly surfaced fragments that may be modern forgeries, while also using imaging technology to recover text from damaged scroll remains. Instead of treating the Dead Sea Scrolls like museum trivia, it shows why these discoveries matter for understanding the preservation of Scripture, the Jewish world before Jesus, and the careful work it takes to separate real evidence from fake claims.",
+  vibe:
+    "Ancient manuscripts, science, biblical history, hidden text, forensic analysis, and the tension between discovery and deception.",
+  continueWatchingLabel: "Documentary: Dead Sea Scroll Detectives",
+  inMyList: true,
+  searchTags: [
+    "documentary",
+    "dead sea scrolls",
+    "dead sea scroll detectives",
+    "nova",
+    "manuscripts",
+    "scrolls",
+    "qumran",
+    "second temple",
+    "hebrew bible",
+    "old testament",
+    "jewish scriptures",
+    "textual criticism",
+    "forgery",
+    "ancient fragments",
+    "imaging technology",
+    "manuscript recovery",
+    "bible documentary",
+    "desert caves",
+    "isaiah scroll",
+    "ancient judaism",
+  ],
+  episodes: [
+    {
+      id: "dead-sea-scroll-detectives-main",
+      episodeNumber: 1,
+      title: "Dead Sea Scroll Detectives",
+      contentLabel: "Documentary",
+      duration: "53m",
+      summary:
+        "A Nova documentary following the scientific hunt to test suspicious Dead Sea Scroll fragments and recover hidden writing from damaged manuscripts using advanced imaging.",
+      thumbnail: "/Deadseascrolls.jpg",
+      youtubeUrl: "https://www.youtube.com/watch?v=INV9eLQa7Jc",
+      available: true,
+      discussionSlug: "bible-buddy-tv-dead-sea-scroll-detectives",
+      reflectionQuestion: "What stood out to you most in this documentary?",
+      louisIntro:
+        "This documentary is strong because it shows that Bible history is not only about old claims. It is also about ongoing investigation. The Dead Sea Scrolls matter because they brought people face to face with very early copies of biblical texts and Jewish writings from the world before Jesus. But this film also shows that excitement can attract fraud, so careful scholarship has to do two things at once: protect real evidence and test suspicious pieces honestly. That tension makes the whole thing feel alive.",
+      studyNotesDocument: `# This Documentary Is About Evidence, Recovery, and Discernment
+
+Dead Sea Scroll Detectives is not just a documentary about ancient scrolls sitting behind glass.
+
+It is about the process of investigation.
+
+That matters because a lot of people imagine Bible manuscript history as something settled in the past with no new questions.
+But the Dead Sea Scrolls world still raises major questions about:
+
+- what is authentic
+- what is forged
+- what can technology recover
+- and what these texts tell us about the Bible before the time of Jesus
+
+So the documentary works almost like a detective story.
+
+# Why the Dead Sea Scrolls Matter So Much
+
+The Dead Sea Scrolls were discovered near **Qumran**, by the Dead Sea, beginning in the mid-20th century.
+
+They matter because they include:
+
+- biblical manuscripts
+- copies of Scripture
+- community writings
+- sectarian texts
+- other Jewish literature from the Second Temple period
+
+That makes them one of the biggest manuscript discoveries in biblical history.
+
+For Bible readers, one major reason they matter is that they give much earlier manuscript witnesses to parts of the Old Testament than many people previously had access to.
+
+That helps scholars compare later copies with much older ones and ask:
+
+- how stable was the text
+- what kinds of variations appear
+- how carefully was Scripture transmitted
+
+# Qumran Is an Important Place to Know
+
+Qumran sits near the northwest shore of the Dead Sea.
+
+That location matters because the caves in that region became the hiding place of these scrolls and fragments.
+The harsh desert environment also helped preserve materials that would have decayed elsewhere.
+
+So geography matters here.
+
+The wilderness did not just hold biblical stories.
+It also helped preserve biblical manuscripts.
+
+# The Documentary's Big Tension: Real or Fake?
+
+One of the strongest parts of this documentary is the question of suspicious fragments.
+
+That matters because once something as valuable as the Dead Sea Scrolls becomes famous, the market gets dangerous.
+
+People want:
+
+- prestige
+- ownership
+- rare fragments
+- headlines
+
+And wherever money and status gather, forgery becomes a real threat.
+
+So this documentary is not anti-faith.
+It is pro-honesty.
+
+That distinction matters.
+
+Testing whether fragments are genuine is not attacking the Bible.
+It is protecting the historical record.
+
+# Technology Is Doing More Than Looking Closer
+
+Another major theme in this documentary is imaging technology.
+
+That part is fascinating because it shows that damaged manuscripts are not always unreadable forever.
+
+Through digital imaging and analysis, researchers can sometimes recover writing hidden in:
+
+- charred remains
+- faded surfaces
+- damaged layers
+- fragments too fragile to open physically
+
+That means science becomes a servant to history here.
+
+Instead of replacing the text, it helps reveal the text.
+
+# One Word Worth Knowing
+
+The word **palimpsest** is useful in manuscript study, though not every damaged text is exactly one. It refers to a manuscript page that has been reused, where earlier writing may still be detectable underneath later material.
+
+And the broader idea matters for this documentary:
+
+sometimes old writing is still there even when the human eye cannot immediately see it.
+
+That is why imaging matters so much.
+
+# What This Connects To in Bible Study
+
+For Bible Buddy, this documentary connects strongly to the question of textual reliability.
+
+It overlaps with themes like:
+
+- preservation of Scripture
+- manuscript history
+- Jewish copying traditions
+- the world of the Hebrew Bible before Jesus
+
+If you pair this with the History of the Bible documentary, the connection gets even clearer.
+
+That one asks whether the Bible is reliable.
+This one shows part of the real-world evidence work behind that conversation.
+
+# The Scrolls and the World Before Jesus
+
+The Dead Sea Scrolls are not just valuable because they contain biblical books.
+
+They are also valuable because they help us picture Jewish life, expectation, language, and scriptural engagement in the Second Temple era.
+
+That means they help illuminate the world into which Jesus was born.
+
+This is one reason scroll discoveries matter so much:
+
+- they help with text history
+- they help with historical context
+- they help with religious setting
+
+So even when a fragment is not directly a Bible passage, it can still help us understand the world around the Bible.
+
+# Why Forgery Detection Matters Spiritually Too
+
+There is a quiet spiritual lesson in this documentary.
+
+Truth should not be afraid of examination.
+
+If a fragment is real, careful testing helps confirm it.
+If a fragment is fake, careful testing helps expose it.
+
+Either way, honesty serves the truth.
+
+That is a healthy principle not only for archaeology, but for Christian thinking more broadly.
+
+God's truth does not need manipulation.
+It does not need fake proof.
+It does not need inflated claims.
+
+It can stand under scrutiny.
+
+# Scripture Connections
+
+This documentary is more about manuscripts than one direct Bible chapter, but it connects naturally to:
+
+- **Psalm 119** and the enduring word of God
+- **Isaiah 40:8** on the word of God standing forever
+- **Luke 4** where Jesus reads from Isaiah in a scroll
+- **2 Timothy 3:16** on Scripture's authority
+
+It also connects to the broader Old Testament manuscript tradition that the Dead Sea Scrolls help illuminate.
+
+# Final Takeaway
+
+This documentary is useful because it shows that the world of the Bible is not only a world of belief.
+It is also a world of documents, fragments, caves, science, language, preservation, and testing.
+
+The Dead Sea Scrolls matter because they help anchor the Bible in real manuscript history.
+And the investigation into suspicious fragments matters because truth is worth protecting from fraud.
+
+So the big lesson here is not just, "Ancient scrolls are cool."
+
+It is this:
+
+the closer people look, the more serious the manuscript story becomes.
+
+And that should make Bible readers more thoughtful, not less confident.`,
+    },
+  ],
+};
+
+export const twelveApostlesMovieTitle: BibleBuddyTvTitle = {
+  id: "the-story-of-the-twelve-apostles",
+  slug: "the-story-of-the-twelve-apostles",
+  title: "The Story of the Twelve Apostles",
+  badge: "Bible Buddy Movie",
+  category: "movies",
+  poster: "/12apostlesmovie.jpg",
+  heroImage: "/12apostlesmovie.jpg",
+  accentFrom: "#1d4ed8",
+  accentTo: "#1e3a8a",
+  year: "2024",
+  rating: "TV-PG",
+  runtime: "1h 32m",
+  seasonsLabel: "Feature Film",
+  contentType: "movie",
+  logline:
+    "A dramatized retelling of the men Jesus chose, following their fear, failure, calling, and mission as the Gospel begins moving into the world.",
+  overview:
+    "The Story of the Twelve Apostles begins with ordinary men and follows what happened when Jesus called them into something far bigger than themselves. Fishermen, tax collectors, zealots, and overlooked men become the core witnesses of the Gospel story. The movie traces their early weakness, the shock of the crucifixion, the turning point of the resurrection, and the dangerous mission that carried the message of Jesus out into the known world.",
+  vibe:
+    "Calling, discipleship, failure, courage, resurrection hope, mission, and the early spread of the Gospel through imperfect people.",
+  continueWatchingLabel: "Movie: The Story of the Twelve Apostles",
+  inMyList: true,
+  searchTags: [
+    "movie",
+    "twelve apostles",
+    "disciples",
+    "jesus",
+    "gospels",
+    "peter",
+    "john",
+    "james",
+    "matthew",
+    "judas",
+    "simon the zealot",
+    "andrew",
+    "thomas",
+    "philip",
+    "bartholomew",
+    "resurrection",
+    "great commission",
+    "acts",
+    "new testament",
+    "gospel mission",
+  ],
+  episodes: [
+    {
+      id: "the-story-of-the-twelve-apostles-main",
+      episodeNumber: 1,
+      title: "The Story of the Twelve Apostles",
+      contentLabel: "Movie",
+      duration: "1h 32m",
+      summary:
+        "A full movie tracing the disciples from ordinary lives through the shock of the crucifixion, the reality of the resurrection, and the mission that sent them into the world with the Gospel.",
+      thumbnail: "/12apostlesmovie.jpg",
+      youtubeUrl: "https://www.youtube.com/watch?v=5tJbgPQxxzI&t=1531s",
+      available: true,
+      discussionSlug: "bible-buddy-tv-the-story-of-the-twelve-apostles",
+      reflectionQuestion: "What stood out to you most in this movie?",
+      louisIntro:
+        "What makes this movie interesting is that it does not start with famous heroes. It starts with regular men who would not have looked impressive on paper. That is one of the biggest Gospel themes right away. Jesus does not build His mission by choosing the obvious elite. He calls real people with real flaws, then shapes them through proximity, failure, grace, resurrection hope, and Spirit-empowered purpose. If you watch this movie with that in mind, it becomes less about ancient biography and more about what discipleship actually does to a person.",
+      studyNotesDocument: `# This Movie Is About Ordinary Men Becoming Gospel Witnesses
+
+The Story of the Twelve Apostles works when you do not watch it like a list of names.
+
+It is about transformation.
+
+These men begin as:
+
+- fishermen
+- workers
+- local men
+- complicated personalities
+- people with fear, pride, confusion, and limits
+
+And yet they become the core witnesses of Jesus' ministry, death, resurrection, and mission.
+
+That is one of the most important things in the whole New Testament.
+
+The Gospel did not spread first through polished celebrities.
+It spread through disciples.
+
+# The Apostles Matter Because Jesus Chose Them on Purpose
+
+The Gospels make it clear that Jesus did not gather this group randomly.
+
+He called them.
+
+That matters because the apostles become foundational witnesses.
+They are there to:
+
+- hear His teaching
+- watch His miracles
+- misunderstand Him at times
+- witness His suffering
+- encounter His resurrection
+- carry His message outward
+
+So this movie is not just trying to tell us about interesting personalities.
+It is tracing the foundation of the early church's witness.
+
+# The Twelve Connect Most Strongly to the Gospels and Acts
+
+This story lives mainly across:
+
+- **Matthew**
+- **Mark**
+- **Luke**
+- **John**
+- **Acts**
+
+The calling scenes, inner conflicts, failures, and resurrection appearances all come from the Gospel record.
+Then the mission theme expands strongly into **Acts**, where the apostles begin proclaiming Christ publicly.
+
+That means this movie sits right at the hinge between:
+
+- following Jesus
+- and being sent by Jesus
+
+# A Few of the Main Men to Keep Straight
+
+## Peter
+
+Peter is one of the clearest examples of raw disciple energy.
+
+He is bold, impulsive, and often the first to speak.
+That can be a strength and a weakness.
+
+He confesses Jesus as the Christ.
+He also denies Him three times.
+
+That is why Peter matters so much.
+He shows that failure is real, but restoration is also real.
+
+When Jesus later strengthens Peter, you see grace turning weakness into leadership.
+
+## James and John
+
+James and John are called the **sons of thunder**.
+
+That tells you they were not soft, quiet personalities in the easy sense.
+They carried intensity.
+
+This matters because Jesus did not erase personality.
+He redirected it.
+
+The fire in them needed formation.
+
+## Matthew
+
+Matthew stands out because he comes from the tax collector world.
+
+That means he would have been seen by many as compromised, suspect, or disloyal.
+And yet Jesus still calls him.
+
+That is a huge Gospel theme:
+
+Jesus keeps calling the people others would write off.
+
+## Simon the Zealot
+
+Simon matters because zealotry carried political force.
+
+This is a reminder that the disciples were not all coming from the same emotional or ideological place.
+Jesus gathered men shaped by different instincts and backgrounds.
+
+That makes the unity of the group more striking.
+
+## Judas Iscariot
+
+Judas matters because his story keeps the disciples from becoming cartoon heroes.
+
+He is near Jesus.
+He hears the teaching.
+He sees what the others see.
+
+And yet betrayal still grows in him.
+
+That is sobering.
+
+Being around holy things is not the same as surrendering your heart.
+
+# One Word Worth Knowing
+
+The Greek word **apostolos** means "one who is sent."
+
+That matters because the apostles are not just students sitting in a classroom.
+They are sent ones.
+
+The shift from disciple to apostolic witness is a major movement in the New Testament.
+
+They follow Jesus.
+Then they are sent in His name.
+
+# The Crucifixion Breaks Their Confidence
+
+One of the strongest parts of the apostles' story is that the crucifixion initially looks like collapse.
+
+That matters because we often read the end of the Gospel story with too much hindsight.
+
+But in the moment, the disciples experience:
+
+- fear
+- confusion
+- discouragement
+- uncertainty
+
+The cross is not immediately processed by them as victory.
+
+It feels like loss.
+
+And that is why the resurrection matters so much.
+
+The resurrection does not simply comfort sad followers.
+It rebuilds the entire meaning of the mission.
+
+# Resurrection Turns Followers into Witnesses
+
+The resurrection is the turning point of this story.
+
+Without it, the apostles remain a discouraged group around a failed movement.
+
+With it, everything changes.
+
+Now they become men who are convinced:
+
+- Jesus is alive
+- death has been defeated
+- the kingdom message must go out
+
+That is why the apostles become so bold in Acts.
+The boldness is not personality alone.
+It is resurrection conviction.
+
+# The Mission Is Bigger Than Their Backgrounds
+
+Another key thing this movie can help people see is that Jesus' mission is bigger than the natural profile of the men He called.
+
+On paper, this group does not look like the obvious force that would carry the Gospel outward for generations.
+
+That is the point.
+
+The power of the mission is not based on their résumé.
+It is based on:
+
+- Christ's authority
+- the truth of the resurrection
+- the empowering work of God
+
+That should encourage Bible readers today.
+
+God often uses people who seem small before He uses people who seem impressive.
+
+# This Also Connects to the Church Today
+
+The apostles are unique in salvation history, but their story still teaches the church a lot.
+
+It teaches that:
+
+- calling matters more than image
+- closeness to Jesus changes people
+- failure does not have to be final
+- the Gospel must move outward
+
+That is why apostolic stories are not just history.
+They are pattern-shaping.
+
+# Scripture Connections to Read with This Movie
+
+If you want to go deeper after this movie, good places to read are:
+
+- **Matthew 4** for the calling of fishermen
+- **Mark 3** for the naming of the Twelve
+- **Luke 5** for Peter's early calling moment
+- **John 13-21** for betrayal, denial, restoration, and resurrection encounters
+- **Acts 1-4** for the apostles after the resurrection
+
+Those passages help you watch the movie with the Bible open in your mind.
+
+# Final Takeaway
+
+This movie is really about what Jesus does with unremarkable people.
+
+He calls them.
+He teaches them.
+He corrects them.
+He lets their weakness get exposed.
+He meets them again after failure.
+And then He sends them.
+
+That is why the twelve apostles matter so much.
+
+They are not mainly famous because they were naturally extraordinary.
+
+They are extraordinary because Jesus turned ordinary men into witnesses who helped carry the Gospel into the world.`,
+    },
+  ],
+};
+
+export const peterAndPaulDocumentaryTitle: BibleBuddyTvTitle = {
+  id: "peter-and-paul",
+  slug: "peter-and-paul",
+  title: "Peter & Paul",
+  badge: "Bible Buddy Documentary",
+  category: "documentaries",
+  poster: "/peterandpaulmovie.jpg",
+  heroImage: "/peterandpaulmovie.jpg",
+  accentFrom: "#1e3a8a",
+  accentTo: "#334155",
+  year: "PBS",
+  rating: "TV-PG",
+  runtime: "Documentary",
+  seasonsLabel: "Empires",
+  contentType: "movie",
+  logline:
+    "A documentary look at two of the most important early Christian leaders, tracing how Peter and Paul carried the Gospel with very different personalities, backgrounds, and pressures.",
+  overview:
+    "Peter & Paul works best when you watch it as the story of two men who were united by Jesus but not identical in style, background, or calling. Peter comes out of the world of the original disciples and the early Jerusalem church. Paul comes out of persecution, dramatic conversion, missionary movement, and public theological conflict. The documentary can be read through the tension between these two leaders, not as enemies in a shallow sense, but as men who had to figure out how the Gospel would move across Jewish and Gentile worlds without losing its center.",
+  vibe:
+    "Church history, apostolic leadership, tension, mission, Jewish and Gentile questions, and the spread of the Gospel under pressure.",
+  continueWatchingLabel: "Documentary: Peter & Paul",
+  inMyList: true,
+  searchTags: [
+    "documentary",
+    "peter and paul",
+    "peter",
+    "paul",
+    "pbs empires",
+    "acts",
+    "galatians",
+    "jerusalem church",
+    "antioch",
+    "gentiles",
+    "jews and gentiles",
+    "early church",
+    "apostles",
+    "church history",
+    "gospel mission",
+    "pauline letters",
+    "rome",
+    "new testament",
+    "apostolic conflict",
+    "leadership",
+  ],
+  episodes: [
+    {
+      id: "peter-and-paul-main",
+      episodeNumber: 1,
+      title: "Peter & Paul",
+      contentLabel: "Documentary",
+      duration: "Documentary",
+      summary:
+        "A PBS documentary exploring Peter and Paul as major early church leaders whose different callings, personalities, and conflicts helped shape the spread of Christianity.",
+      thumbnail: "/peterandpaulmovie.jpg",
+      youtubeUrl: "https://www.youtube.com/watch?v=3XVqwppXtH8",
+      available: true,
+      discussionSlug: "bible-buddy-tv-peter-and-paul-documentary",
+      reflectionQuestion: "What stood out to you most in this documentary?",
+      louisIntro:
+        "This documentary gets interesting when you stop flattening Peter and Paul into one generic apostle type. They do not feel the same, lead the same, or carry the same assignment. Peter is tied closely to the original disciple circle and the early Jewish-Christian world. Paul is the missionary theologian pushing the Gospel outward into Gentile space. That creates overlap, unity, tension, and some real conflict. But that conflict actually helps show how serious the early church was about protecting the truth of the Gospel while still learning how to live it out together.",
+      studyNotesDocument: `# This Documentary Is About Unity Without Sameness
+
+Peter & Paul is most helpful when you do not watch it like a simple biography of two famous church men.
+
+It is really about how the Gospel moved through two very different leaders.
+
+That matters because Peter and Paul are not interchangeable.
+
+They overlap.
+They serve the same Christ.
+They preach the same saving Gospel.
+
+But they do not arrive with the same story.
+
+# Peter and Paul Come from Different Worlds
+
+Peter comes from the original disciple circle.
+
+He is:
+
+- one of the Twelve
+- part of Jesus' earthly ministry story
+- present through major Gospel moments
+- strongly tied to the Jerusalem-centered early church
+
+Paul comes from a different route entirely.
+
+He is:
+
+- a former persecutor
+- dramatically converted
+- deeply trained
+- heavily involved in Gentile mission
+- a letter writer and missionary strategist
+
+That means one of the key strengths of this documentary is that it lets you feel how different their roads are.
+
+# Peter Represents the Earlier Apostolic Circle
+
+Peter matters because he is one of the most visible disciples in the Gospels.
+
+He is outspoken.
+He is often first to respond.
+He is bold, and sometimes unstable.
+
+He confesses Christ.
+He walks on water briefly.
+He cuts off an ear.
+He denies Jesus three times.
+He is restored.
+
+That arc matters because Peter becomes a huge example of grace reshaping a leader.
+
+By the time you get into Acts, Peter is no longer just the impulsive disciple.
+He becomes a major witness in the early church.
+
+# Paul Represents the Expansion of the Mission
+
+Paul matters because he helps you see how far the Gospel was going to move.
+
+His conversion is one of the biggest turning points in Acts.
+
+He begins as an enemy of the church.
+Then he becomes one of its strongest missionary voices.
+
+That matters because Paul's whole life becomes proof that Jesus does not only forgive failure.
+He can completely redirect opposition into mission.
+
+Paul also matters because so much of the New Testament's teaching for churches comes through his letters.
+
+# The "Beef" Between Peter and Paul Is Real, But It Needs Context
+
+One reason this documentary has real tension is that Peter and Paul do have conflict.
+
+The clearest moment is in **Galatians 2**, where Paul says he opposed Peter to his face.
+
+That matters because it shows the early church was not fake-unified in a shallow way.
+
+There were real questions about:
+
+- Jews and Gentiles eating together
+- table fellowship
+- pressure from religious expectations
+- how the Gospel reshapes identity
+
+Paul sees Peter pulling back under pressure.
+And Paul treats that as serious because it sends the wrong message about the Gospel.
+
+So yes, there is "beef."
+But it is not petty drama.
+It is theological and practical tension around how the truth of Christ gets lived out.
+
+# One Word Worth Knowing
+
+The word **apostolos** means "one sent out."
+
+That matters here because both Peter and Paul are sent men, but their sending works out differently.
+
+Peter is strongly tied to the earliest apostolic witness among Jewish believers.
+Paul is especially associated with mission into Gentile territory.
+
+So they are united in Christ while carrying distinct emphases.
+
+# Acts Helps Hold Their Stories Together
+
+If you want to read this documentary with the Bible in mind, **Acts** is one of the most important books for it.
+
+Acts helps you see:
+
+- Peter preaching early in Jerusalem
+- the church's early growth
+- key turning points around Gentiles
+- Paul's conversion and missionary movement
+
+Acts is important because it does not make the church feel static.
+It shows movement, conflict, adaptation, and expansion.
+
+That is exactly the kind of setting where Peter and Paul become so important.
+
+# Galatians Helps You Feel the Conflict More Sharply
+
+If Acts gives you the big movement, **Galatians** gives you one of the sharpest windows into apostolic tension.
+
+Paul's confrontation with Peter matters because it shows:
+
+- leadership can wobble under pressure
+- truth still has to be protected
+- even major leaders can need correction
+
+That should humble every Christian leader.
+
+The early church was not held together by pretending no one ever struggled.
+It was held together by fighting to keep the Gospel central.
+
+# Peter and Paul Are Both Necessary in Different Ways
+
+Another important takeaway is that the church needed both kinds of men.
+
+It needed:
+
+- Peter's eyewitness closeness to Jesus' earthly ministry
+- Paul's missionary and theological force
+
+That balance matters.
+
+The church is healthiest when it does not confuse one leadership style for the only faithful one.
+
+Peter and Paul help show that strong Christian leadership can look different while still being accountable to the same Lord.
+
+# Places That Matter in This Story
+
+## Jerusalem
+
+Jerusalem matters because it is the center of the earliest church story after the resurrection and Pentecost.
+Peter is especially tied to that world.
+
+## Antioch
+
+Antioch matters because it becomes a huge mission center and one of the places where Jewish-Gentile questions get lived out in real community.
+That is why the Peter-Paul tension around shared table life matters so much.
+
+## Rome
+
+Rome matters because both Peter and Paul become deeply associated with the wider spread of Christianity into the imperial world.
+The Gospel is no longer staying in one narrow corner.
+
+# Scripture Connections to Read with This Documentary
+
+If you want to go deeper, read:
+
+- **Matthew 16** for Peter's confession
+- **John 21** for Peter's restoration
+- **Acts 2, 10, and 15** for Peter's leadership and Gentile turning points
+- **Acts 9 and 13-28** for Paul's conversion and mission
+- **Galatians 2** for the confrontation between Paul and Peter
+
+Those texts help you feel the documentary's tension inside Scripture, not just in later storytelling.
+
+# Final Takeaway
+
+Peter & Paul matters because it reminds you that the early church did not grow through one personality type.
+
+It grew through leaders who were:
+
+- gifted differently
+- tested differently
+- called differently
+
+Peter shows you grace restoring a disciple.
+Paul shows you grace redirecting an enemy.
+
+And their conflict shows that unity in the church is not built by avoiding hard truth.
+It is built by submitting everything, even leadership tension, to the Gospel of Jesus Christ.`,
+    },
+  ],
+};
+
+export const shroudOfTurinDocumentaryTitle: BibleBuddyTvTitle = {
+  id: "the-shroud-of-turin",
+  slug: "the-shroud-of-turin",
+  title: "The Shroud of Turin",
+  badge: "Bible Buddy Documentary",
+  category: "documentaries",
+  poster: "/Shroudmovie.png",
+  heroImage: "/Shroudmovie.png",
+  accentFrom: "#475569",
+  accentTo: "#1e293b",
+  year: "2024",
+  rating: "TV-PG",
+  runtime: "Documentary",
+  seasonsLabel: "Historical Special",
+  contentType: "movie",
+  logline:
+    "A documentary exploring the mystery, debate, and image analysis surrounding the Shroud of Turin and the claim that it may preserve traces of Jesus' burial cloth.",
+  overview:
+    "The Shroud of Turin follows one of Christianity's most debated relics through history, science, and visual reconstruction. The documentary centers on the linen cloth many associate with Jesus' burial, asking whether the faint image, blood-like markings, and material evidence point to authenticity, artistry, or something still unresolved. By using graphic analysis and modern imaging, it tells the story of why this object keeps drawing believers, skeptics, and historians back into the same question: what exactly are we looking at?",
+  vibe:
+    "Christian history, relic debate, burial cloth imagery, forensic questions, resurrection-era context, and the tension between faith, evidence, and controversy.",
+  continueWatchingLabel: "Documentary: The Shroud of Turin",
+  inMyList: true,
+  searchTags: [
+    "documentary",
+    "shroud of turin",
+    "turin",
+    "jesus burial cloth",
+    "relic",
+    "christian relic",
+    "passion of christ",
+    "burial cloth",
+    "forensic analysis",
+    "holy artifact",
+    "history documentary",
+    "resurrection context",
+    "gospels",
+    "crucifixion",
+    "jesus",
+    "linen cloth",
+    "blood stains",
+    "image analysis",
+    "church history",
+    "controversial relic",
+  ],
+  episodes: [
+    {
+      id: "the-shroud-of-turin-main",
+      episodeNumber: 1,
+      title: "The Shroud of Turin: History's Most Controversial Relic",
+      contentLabel: "Documentary",
+      duration: "Documentary",
+      summary:
+        "A historical and forensic documentary investigating the Shroud of Turin through image reconstruction, relic history, and the long-running debate over whether it could be linked to Jesus' burial.",
+      thumbnail: "/Shroudmovie.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=Nj5IK_nU4hs",
+      available: true,
+      discussionSlug: "bible-buddy-tv-the-shroud-of-turin",
+      reflectionQuestion: "What stood out to you most in this documentary?",
+      louisIntro:
+        "This documentary is strongest when you do not watch it like one relic is going to prove the whole Christian faith by itself. That is not the real value here. The real value is seeing why the Shroud of Turin has held attention for so long. It sits right at the intersection of crucifixion imagery, burial customs, church history, and the question of whether an object can carry traces of an event Christians already believe happened. That makes it fascinating, but it also means you have to watch with both curiosity and caution.",
+      studyNotesDocument: `# This Documentary Is About a Relic, But Also About Christian Memory
+
+The Shroud of Turin is not just interesting because it is old.
+
+It is interesting because people connect it to Jesus.
+
+That raises huge questions:
+
+- is it authentic
+- is it later devotional art
+- what does the image show
+- why has this cloth held such influence for so long
+
+That is why this documentary matters.
+
+It is not only about one piece of fabric.
+It is about how Christianity remembers the crucifixion, burial, and resurrection.
+
+# Why the Shroud of Turin Is So Controversial
+
+The controversy exists because the claims are enormous.
+
+Many people have believed the shroud could be the burial cloth of Jesus.
+Others argue it is a later artifact, image, or medieval creation.
+
+So the debate is intense because the stakes feel high.
+
+If it is authentic, it becomes one of the most famous material objects ever connected to Christian history.
+If it is not, it still becomes a major case study in how relic devotion and historical claims develop.
+
+# This Connects Strongly to the Burial of Jesus
+
+The Shroud discussion naturally points Bible readers back to the Gospel burial accounts.
+
+Important passages include:
+
+- **Matthew 27**
+- **Mark 15**
+- **Luke 23**
+- **John 19**
+
+These burial scenes matter because they frame what Christians already believe happened:
+
+- Jesus really died
+- His body was handled
+- He was buried
+- the tomb becomes central to resurrection testimony
+
+That means the shroud question is not floating in random history.
+It sits close to the passion narrative.
+
+# John Matters a Lot Here
+
+**John 19-20** is especially important because John pays attention to burial cloth details.
+
+That matters because when people discuss a relic like this, they often bring John's language into the conversation.
+
+John helps keep the burial story physical and concrete.
+Jesus is not presented as vaguely disappearing into myth.
+His death and burial are treated as real events in time and space.
+
+# One Word Worth Knowing
+
+The Greek word **sindon** is often associated with a linen cloth or shroud-like burial fabric in Gospel burial discussions.
+
+That matters because the burial of Jesus is told in material terms, not only symbolic ones.
+
+Cloth, tomb, spices, body, stone, and witnesses all matter in the passion story.
+
+# Why Image Analysis Is Such a Big Deal
+
+One of the documentary's main hooks is the use of graphic and imaging technology.
+
+That matters because the Shroud of Turin debate is not only theological.
+It is visual and forensic.
+
+Researchers want to know things like:
+
+- how the image formed
+- whether the markings resemble blood
+- whether the body proportions line up with crucifixion trauma
+- whether the image behaves like paint, stain, scorch, or something else
+
+That is why the shroud keeps pulling in experts from different worlds.
+
+It is not only a church-history object.
+It is also a forensic puzzle.
+
+# Faith and Proof Need to Be Kept in the Right Order
+
+This is one of the most important Bible Buddy takeaways.
+
+Christian faith does not stand or fall on one relic.
+
+The resurrection claim is rooted in:
+
+- the testimony of Scripture
+- the witness of the apostles
+- the early church's proclamation
+- the person of Jesus Himself
+
+So if someone studies the shroud, that can be interesting and valuable.
+But the cloth is not the foundation of Christianity.
+
+Jesus is.
+
+That keeps the conversation healthy.
+
+# The Real Value of a Documentary Like This
+
+A documentary like this helps people imagine the physical world around the crucifixion more clearly.
+
+It pushes you to think about:
+
+- what Roman execution did to the body
+- what Jewish burial looked like
+- why cloth and tomb details matter
+- how Christian memory can become attached to objects
+
+So even if someone stays uncertain about the shroud's authenticity, the documentary can still deepen their sense that the Gospel story happened in the real world.
+
+# A Few Themes to Keep Straight
+
+## Relic
+
+A relic is a physical object associated with a holy person, event, or sacred history.
+
+That matters because relics can become powerful devotionally, but they also require careful historical examination.
+
+## Crucifixion
+
+The Shroud debate often circles back to whether the image reflects wounds that match crucifixion.
+
+That matters because the cross is central to Christian faith, not just emotionally, but historically and theologically.
+
+## Burial
+
+Burial matters because the resurrection is not about vague survival.
+It is about a truly dead Jesus who was buried and then raised.
+
+# Scripture Connections to Read Alongside This
+
+If you want to pair this documentary with the Bible, good passages are:
+
+- **Isaiah 53** for the suffering servant background
+- **Matthew 27-28**
+- **Mark 15-16**
+- **Luke 23-24**
+- **John 19-20**
+- **1 Corinthians 15** for the centrality of death, burial, and resurrection
+
+These passages help keep the relic conversation anchored to the Gospel itself.
+
+# Final Takeaway
+
+The Shroud of Turin remains compelling because it sits where history, devotion, suffering, and mystery meet.
+
+People look at it and ask whether they are seeing:
+
+- a witness
+- an artwork
+- a symbol
+- or a historical remnant
+
+That question probably keeps it controversial.
+
+But the documentary is still useful because it reminds you that Christianity is not a faith of abstract ideas only.
+It is a faith rooted in body, blood, burial, tomb, and resurrection claims made in history.
+
+So the biggest value here is not that one cloth solves every question.
+It is that the documentary pushes you back toward the physical seriousness of the Gospel story itself.`,
+    },
+  ],
+};
+
 export const bibleBuddyTvTitles: BibleBuddyTvTitle[] = [
   promisedLandTitle,
   theChosenTitle,
   mosesMovieTitle,
   josephMovieTitle,
+  twelveApostlesMovieTitle,
   gospelOfJohnMovieTitle,
+  estherMovieTitle,
+  jeremiahMovieTitle,
+  lostTreasuresDocumentaryTitle,
+  historyOfTheBibleDocumentaryTitle,
+  storyOfGodDocumentaryTitle,
+  deadSeaScrollDetectivesTitle,
+  peterAndPaulDocumentaryTitle,
+  shroudOfTurinDocumentaryTitle,
   {
     id: "road-to-emmaus",
     slug: "road-to-emmaus",
