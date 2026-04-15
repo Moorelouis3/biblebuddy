@@ -1,11 +1,12 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   bibleBuddyTvCategories,
   bibleBuddyTvTitles,
+  gospelOfJohnMovieTitle,
   josephMovieTitle,
   mosesMovieTitle,
   promisedLandTitle,
@@ -45,8 +46,11 @@ function getCategoryCardStyle(category: BibleBuddyTvCategory) {
 export default function BibleBuddyTvHomePage() {
   const [activeCategory, setActiveCategory] = useState<BibleBuddyTvCategory>("tv");
   const [featuredIndex, setFeaturedIndex] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDraggingFeatured, setIsDraggingFeatured] = useState(false);
+  const dragStartXRef = useRef<number | null>(null);
 
-  const featuredTitles = [mosesMovieTitle, josephMovieTitle, promisedLandTitle, theChosenTitle];
+  const featuredTitles = [gospelOfJohnMovieTitle, mosesMovieTitle, josephMovieTitle, promisedLandTitle, theChosenTitle];
   const filteredTitles = useMemo(
     () => bibleBuddyTvTitles.filter((title) => title.category === activeCategory),
     [activeCategory]
@@ -56,26 +60,45 @@ export default function BibleBuddyTvHomePage() {
 
   useEffect(() => {
     if (featuredTitles.length <= 1) return;
+    if (isDraggingFeatured) return;
 
     const intervalId = window.setInterval(() => {
       setFeaturedIndex((prev) => (prev + 1) % featuredTitles.length);
     }, 10000);
 
     return () => window.clearInterval(intervalId);
-  }, [featuredTitles.length]);
+  }, [featuredTitles.length, isDraggingFeatured]);
+
+  function handleFeaturedDragStart(clientX: number) {
+    dragStartXRef.current = clientX;
+    setIsDraggingFeatured(true);
+    setDragOffset(0);
+  }
+
+  function handleFeaturedDragMove(clientX: number) {
+    if (dragStartXRef.current === null) return;
+    setDragOffset(clientX - dragStartXRef.current);
+  }
+
+  function handleFeaturedDragEnd() {
+    if (dragStartXRef.current === null) return;
+    const swipeThreshold = 70;
+
+    if (dragOffset <= -swipeThreshold) {
+      setFeaturedIndex((prev) => (prev + 1) % featuredTitles.length);
+    } else if (dragOffset >= swipeThreshold) {
+      setFeaturedIndex((prev) => (prev - 1 + featuredTitles.length) % featuredTitles.length);
+    }
+
+    dragStartXRef.current = null;
+    setDragOffset(0);
+    setIsDraggingFeatured(false);
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="mx-auto max-w-5xl px-4 py-8">
-        <nav className="text-sm text-gray-500">
-          <Link href="/dashboard" className="transition hover:text-gray-700">
-            Dashboard
-          </Link>
-          <span className="mx-2">›</span>
-          <span className="font-medium text-gray-800">Bible Buddy TV</span>
-        </nav>
-
-        <div className="mt-6">
+        <div>
           <h1 className="mb-2 text-3xl font-bold">Bible Buddy TV</h1>
           <p className="text-gray-600">
             Bible shows, movies, sermons, documentaries, and story-based video content inside Bible Buddy.
@@ -85,8 +108,12 @@ export default function BibleBuddyTvHomePage() {
         <section className="mt-6 md:hidden">
           <div className="overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-sm">
             <div
-              className="flex transition-transform duration-700 ease-out"
-              style={{ transform: `translateX(-${featuredIndex * 100}%)` }}
+              className={`flex ${isDraggingFeatured ? "" : "transition-transform duration-500 ease-out"}`}
+              style={{ transform: `translateX(calc(-${featuredIndex * 100}% + ${dragOffset}px))` }}
+              onTouchStart={(event) => handleFeaturedDragStart(event.touches[0].clientX)}
+              onTouchMove={(event) => handleFeaturedDragMove(event.touches[0].clientX)}
+              onTouchEnd={handleFeaturedDragEnd}
+              onTouchCancel={handleFeaturedDragEnd}
             >
               {featuredTitles.map((featuredTitle) => (
                 <div key={featuredTitle.id} className="min-w-full p-3">
@@ -447,3 +474,4 @@ export default function BibleBuddyTvHomePage() {
     </div>
   );
 }
+

@@ -1395,11 +1395,316 @@ It is about betrayal, endurance, wisdom, and forgiveness, but underneath all of 
   ],
 };
 
+export const gospelOfJohnMovieTitle: BibleBuddyTvTitle = {
+  id: "gospel-of-john-movie",
+  slug: "gospel-of-john",
+  title: "The Gospel of John",
+  badge: "Bible Buddy Movie",
+  category: "movies",
+  poster: "/gospelofjohn.jpg",
+  heroImage: "/gospelofjohn.jpg",
+  accentFrom: "#3b82f6",
+  accentTo: "#1d4ed8",
+  year: "2003",
+  rating: "PG-13",
+  runtime: "3h",
+  seasonsLabel: "Movie",
+  contentType: "movie",
+  logline:
+    "A full-screen retelling of John's Gospel that stays close to the text and follows Jesus from eternity language to crucifixion and resurrection.",
+  overview:
+    "This film walks through the Gospel of John almost scene by scene, letting the words and signs of Jesus carry the story. It highlights the identity of Christ, the testimony of witnesses, the growing tension with religious leaders, and the steady movement toward the cross, all while keeping John's deep spiritual themes front and center.",
+  vibe:
+    "Direct Scripture, reflective pacing, bold Christology, intimate disciple moments, miracles as signs, and a steady build toward the cross and resurrection.",
+  continueWatchingLabel: "Movie: The Gospel of John",
+  inMyList: true,
+  searchTags: [
+    "movie",
+    "the gospel of john",
+    "gospel of john",
+    "john movie",
+    "jesus",
+    "christopher plummer",
+    "henry ian cusick",
+    "stuart bunce",
+    "new testament",
+    "gospel",
+    "john",
+    "john the baptist",
+    "disciples",
+    "peter",
+    "nicodemus",
+    "samaritan woman",
+    "lazarus",
+    "mary",
+    "martha",
+    "judea",
+    "galilee",
+    "samaria",
+    "jerusalem",
+    "signs",
+    "i am",
+    "word made flesh",
+    "crucifixion",
+    "resurrection",
+    "eternal life",
+    "new testament movie",
+  ],
+  episodes: [
+    {
+      id: "gospel-of-john-movie-main",
+      episodeNumber: 1,
+      title: "The Gospel of John",
+      contentLabel: "Movie",
+      duration: "3h",
+      summary:
+        "John's Gospel unfolds from the opening declaration that the Word was with God and was God, through the signs and sayings of Jesus, into the cross, the empty tomb, and the invitation to believe.",
+      thumbnail: "/gospelofjohn.jpg",
+      youtubeUrl: "https://www.youtube.com/watch?v=-k0D_qFPb4o",
+      available: true,
+      discussionSlug: "bible-buddy-tv-gospel-of-john-movie",
+      reflectionQuestion: "What stood out to you most in this movie?",
+      louisIntro:
+        "This movie is different from a lot of Bible films because it does not mainly feel like a dramatized remix. It feels like John is trying to preach through a camera. That matters, because the Gospel of John is not only giving you events from Jesus' life. It is constantly telling you what those events mean. Every sign, every conversation, every \"I am\" saying, every conflict, and every miracle is pushing you toward one question: who is Jesus really? So as you watch, do not only track the scenes. Track the identity claim underneath the scenes.",
+      studyNotesDocument: `# The Gospel of John Is Trying to Do Something Very Specific
+
+John is not writing a random collection of Jesus moments.
+
+He is building a case.
+
+Not just that Jesus existed.
+Not just that Jesus taught well.
+Not just that Jesus did miracles.
+
+John is writing so people will believe.
+
+That is why this movie feels so direct.
+Because the Gospel itself is direct.
+
+John tells you near the end why he wrote:
+
+> "These are written so that you may believe that Jesus is the Christ, the Son of God, and that by believing you may have life in his name."
+> John 20:31
+
+That verse is basically the mission statement for the whole movie.
+
+# Where This Movie Lives in Scripture
+
+This movie covers the Gospel of **John**, moving across the whole book from **John 1** to **John 21**.
+
+That means it includes:
+
+- the eternal Word language in chapter 1
+- John the Baptist's witness
+- Jesus calling the first disciples
+- signs like Cana, the healing stories, and Lazarus
+- the long private teaching sections
+- the upper room
+- the crucifixion
+- the resurrection
+
+Unlike some movies that pull from all four Gospels at once, this one stays close to John's own voice.
+
+# John Starts Higher Than the Other Gospels
+
+Matthew starts with genealogy.
+Mark starts with ministry movement.
+Luke starts with careful historical framing.
+
+John starts in eternity.
+
+> "In the beginning was the Word, and the Word was with God, and the Word was God."
+> John 1:1
+
+That is huge.
+
+John wants you to understand from the start that Jesus is not only another prophet stepping into history.
+He is the eternal Son.
+
+The Greek word **Logos** means Word.
+In John, that word carries the idea of divine self-expression, reason, revelation, and presence.
+
+So when John says the Word became flesh, he is saying God has come near in a visible, personal way.
+
+# Why the Signs Matter So Much
+
+John does not just call them miracles.
+He often calls them **signs**.
+
+That matters because a sign points beyond itself.
+
+The water into wine is not just about impressive power.
+It points to abundance and messianic joy.
+
+The feeding of the five thousand is not just about bread.
+It points to Jesus as the true bread of life.
+
+The healing of the blind man is not just about restored sight.
+It points to spiritual blindness and revelation.
+
+The raising of Lazarus is not just about one family being comforted.
+It points to Jesus as resurrection and life.
+
+John is always asking you not only, "What happened?"
+but also, "What is this showing you about Jesus?"
+
+# Important People the Movie Keeps Putting in Front of You
+
+There are several people in John's Gospel you need to understand to really feel what is happening.
+
+## John the Baptist
+
+John the Baptist is the witness, not the light.
+
+That distinction matters.
+His whole job is to point away from himself and toward Jesus.
+
+John 1 keeps pressing that because witness is one of the major themes of this Gospel.
+
+## Nicodemus
+
+Nicodemus represents sincere but limited religious understanding.
+He is careful, educated, and spiritually serious.
+But he still struggles to grasp what Jesus means by new birth.
+
+His conversation in **John 3** gives you one of the clearest examples in the whole Gospel that natural understanding is not enough.
+
+## The Samaritan Woman
+
+This scene in **John 4** matters deeply because it brings together:
+
+- ethnicity
+- worship
+- shame
+- thirst
+- revelation
+
+Jesus crosses social boundaries on purpose.
+He speaks to a Samaritan woman publicly, which already breaks expectations.
+Then He exposes her life without crushing her and reveals Himself in a way that turns her into a witness.
+
+That is classic John.
+Revelation leads to testimony.
+
+## Lazarus, Mary, and Martha
+
+Bethany becomes one of the most emotionally powerful places in the Gospel.
+
+When Lazarus dies, the movie is not just showing grief.
+It is showing that Jesus' power over death is moving closer and closer to the cross.
+
+And notice this: raising Lazarus is one of the clearest signs in the whole Gospel, but it also intensifies the plot against Jesus.
+
+That is deeply Johannine.
+The brighter the sign, the harder some hearts push back.
+
+# Places Matter in John's Gospel Too
+
+John keeps moving through meaningful locations.
+
+## Galilee
+
+Galilee is where public signs begin to gather momentum.
+It becomes a place where glory starts to show itself in ordinary settings.
+
+## Samaria
+
+Samaria matters because it shows Jesus reaching across old hostility.
+The Gospel is already hinting that this message will not stay boxed inside narrow boundaries.
+
+## Jerusalem
+
+Jerusalem is the tension city.
+It is the place of feasts, conflict, temple imagery, and rising pressure.
+By the time you get deeper into John, Jerusalem feels like the stage where belief and unbelief clash in the sharpest way.
+
+# The “I Am” Sayings Are a Big Deal
+
+One of John's strongest features is the repeated **"I am"** language.
+
+Jesus says:
+
+- I am the bread of life
+- I am the light of the world
+- I am the door
+- I am the good shepherd
+- I am the resurrection and the life
+- I am the way, the truth, and the life
+- I am the true vine
+
+This is not accidental wording.
+
+It reaches back to **Exodus 3**, where God reveals Himself to Moses.
+So every time Jesus speaks this way, John is doing more than giving you a poetic image.
+He is putting divine identity right in front of you.
+
+# The Cross in John Is Still Suffering, But It Is Also Glory
+
+John never softens the pain of the cross.
+But he also keeps showing it as the place where Jesus is lifted up in glory.
+
+That is one of the big differences in tone you feel here.
+
+Jesus is not losing control.
+He is laying His life down.
+
+That is why John 10 matters so much behind the whole movie:
+
+> "No one takes it from me, but I lay it down of my own accord."
+> John 10:18
+
+The crucifixion is brutal.
+But in John, it is also purposeful.
+It is the hour toward which the whole Gospel has been moving.
+
+# Resurrection and Belief
+
+The resurrection scenes are not only victory scenes.
+They are belief scenes.
+
+Mary Magdalene, Thomas, and the disciples all show you different responses to the risen Christ.
+
+Thomas especially matters because a lot of people know what it is like to want certainty.
+And yet John does not leave Thomas in unbelief.
+He brings him to one of the clearest confessions in the whole book:
+
+> "My Lord and my God!"
+> John 20:28
+
+That confession is the right ending note for this movie.
+Because after all the signs, all the words, all the questions, and all the opposition, the Gospel is still pressing you toward worship.
+
+# Final Takeaway
+
+The Gospel of John is not mainly asking whether Jesus was interesting.
+It is asking whether He is who He said He is.
+
+This movie works when you watch it with that in mind.
+
+It is about:
+
+- identity
+- witness
+- belief
+- eternal life
+- the glory of Christ
+
+John is inviting you past surface admiration.
+He wants you to see the Son, trust the Son, and receive life in His name.
+
+And that is why this story still hits so hard.
+It is not only information about Jesus.
+It is an invitation to believe Him.`,
+    },
+  ],
+};
+
 export const bibleBuddyTvTitles: BibleBuddyTvTitle[] = [
   promisedLandTitle,
   theChosenTitle,
   mosesMovieTitle,
   josephMovieTitle,
+  gospelOfJohnMovieTitle,
   {
     id: "road-to-emmaus",
     slug: "road-to-emmaus",

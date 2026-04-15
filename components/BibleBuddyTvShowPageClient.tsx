@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -70,19 +70,7 @@ export default function BibleBuddyTvShowPageClient({
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
       <div className="mx-auto max-w-5xl px-4 py-8">
-        <nav className="text-sm text-gray-500">
-          <Link href="/dashboard" className="transition hover:text-gray-700">
-            Dashboard
-          </Link>
-          <span className="mx-2">&gt;</span>
-          <Link href="/biblebuddy-tv" className="transition hover:text-gray-700">
-            Bible Buddy TV
-          </Link>
-          <span className="mx-2">&gt;</span>
-          <span className="font-medium text-gray-800">{title.title}</span>
-        </nav>
-
-        <Link href="/biblebuddy-tv" className="mt-4 inline-block text-blue-600 hover:underline">
+        <Link href="/biblebuddy-tv" className="inline-block text-blue-600 hover:underline">
           &larr; Back to Bible Buddy TV
         </Link>
 
@@ -259,4 +247,5 @@ export default function BibleBuddyTvShowPageClient({
     </div>
   );
 }
+
 
