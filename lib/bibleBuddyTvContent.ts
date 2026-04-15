@@ -72,7 +72,7 @@ export const bibleBuddyTvCategories: Array<{
   },
   {
     id: "bible-stories",
-    label: "Cartoons",
+    label: "Animation",
     description: "Animated and story-first Bible retellings for every age.",
   },
 ];
@@ -3998,6 +3998,1215 @@ It is that the documentary pushes you back toward the physical seriousness of th
   ],
 };
 
+export const queenJezebelAnimationTitle: BibleBuddyTvTitle = {
+  id: "the-story-of-queen-jezebel",
+  slug: "the-story-of-queen-jezebel",
+  title: "The Story of Queen Jezebel",
+  badge: "Bible Buddy Animation",
+  category: "bible-stories",
+  poster: "/Jezebelmovie.png",
+  heroImage: "/Jezebelmovie.png",
+  accentFrom: "#7f1d1d",
+  accentTo: "#431407",
+  year: "2024",
+  rating: "TV-PG",
+  runtime: "1h 20m",
+  seasonsLabel: "Animated Feature",
+  contentType: "movie",
+  logline:
+    "A documentary-style biblical animation tracing Jezebel's rise, her attack on worship of the living God, and the certainty of divine judgment.",
+  overview:
+    "The Story of Queen Jezebel follows one of the darkest and most confrontational figures in the Old Testament. Set in the days of Ahab and Elijah, the film traces Jezebel's rise in Israel, the spread of Baal worship, the persecution of God's prophets, and the showdown between royal power and the word of the Lord. It plays like a warning story, showing how deception, violence, idolatry, and unchecked authority can shape a nation for a season, but never overturn God's judgment in the end.",
+  vibe:
+    "Old Testament conflict, prophetic confrontation, idolatry, royal corruption, divine justice, and a warning story about power without repentance.",
+  continueWatchingLabel: "Animation: The Story of Queen Jezebel",
+  inMyList: true,
+  searchTags: [
+    "animation",
+    "queen jezebel",
+    "jezebel",
+    "ahab",
+    "elijah",
+    "baal worship",
+    "old testament",
+    "1 kings",
+    "prophets",
+    "idolatry",
+    "divine judgment",
+    "israel",
+    "samaria",
+    "naboth",
+    "spiritual corruption",
+    "bible animation",
+    "biblical warning",
+    "judgment",
+    "elijah and jezebel",
+    "story of jezebel",
+  ],
+  episodes: [
+    {
+      id: "the-story-of-queen-jezebel-main",
+      episodeNumber: 1,
+      title: "The Story of Queen Jezebel",
+      contentLabel: "Animation",
+      duration: "1h 20m",
+      summary:
+        "An animated retelling of Jezebel's rise to power, the spread of Baal worship, the persecution of God's prophets, and the eventual fulfillment of divine judgment.",
+      thumbnail: "/Jezebelmovie.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=EBSTxiHAX60&list=WL&index=2&t=622s",
+      available: true,
+      discussionSlug: "bible-buddy-tv-the-story-of-queen-jezebel",
+      reflectionQuestion: "What stood out to you most in this animation?",
+      louisIntro:
+        "This story matters because Jezebel is not just a villain name people throw around. She becomes one of the clearest Bible pictures of what happens when political power, false worship, intimidation, and spiritual rebellion all get fused together. The animation works when you feel that she is not only opposing Elijah. She is trying to reshape Israel's worship and moral direction entirely. That is why her story still lands as a warning.",
+      studyNotesDocument: `# Jezebel Is a Warning Story About Power Turned Against God
+
+The Story of Queen Jezebel is not just an Old Testament character sketch.
+
+It is a warning.
+
+Jezebel's story brings together:
+
+- political power
+- false worship
+- violence
+- intimidation
+- prophetic confrontation
+- divine judgment
+
+That is why her name lasts.
+
+She becomes one of the clearest biblical pictures of what happens when a ruler does not just sin personally, but helps lead a people into spiritual corruption.
+
+# Where This Story Lives in Scripture
+
+This animation mainly draws from:
+
+- **1 Kings 16**
+- **1 Kings 18**
+- **1 Kings 19**
+- **1 Kings 21**
+- **2 Kings 9**
+
+That means Jezebel's story stretches across multiple moments.
+
+It is not only about one scene.
+It is about a pattern:
+
+- idolatry rises
+- prophets are opposed
+- truth is challenged
+- judgment is announced
+- judgment is fulfilled
+
+# Jezebel Enters Israel Through the House of Ahab
+
+Jezebel is introduced as the wife of **Ahab**, king of Israel.
+
+That matters because Ahab is already a deeply compromised king.
+But Jezebel intensifies the situation.
+
+She is tied closely to the worship of **Baal** and **Asherah**, and her presence pushes Israel further into organized idolatry.
+
+So this is not just about one bad queen with a bad attitude.
+It is about national spiritual direction.
+
+# One Word Worth Knowing
+
+The Hebrew word **Baal** can refer to "lord" or "master," but in this context it refers to the false god whose worship became a major rival to covenant faithfulness in Israel.
+
+That matters because the conflict in Jezebel's story is not vague spirituality versus spirituality.
+
+It is the living God confronting false worship directly.
+
+# Elijah and Jezebel Represent a Major Spiritual Clash
+
+One of the strongest parts of this story is the Elijah connection.
+
+Elijah stands as a prophet of the Lord in a time when the royal house is supporting false worship.
+
+That means the conflict is not merely personal.
+
+It is a clash between:
+
+- covenant faithfulness
+- and organized rebellion
+
+The showdown on **Mount Carmel** in **1 Kings 18** matters because it exposes the emptiness of Baal worship publicly.
+
+That scene is one of the clearest Bible reminders that God does not need to compete for power.
+He reveals who He is.
+
+And yet after that victory, Jezebel's threat still sends Elijah into fear.
+
+That matters too.
+
+It shows how intimidation can still hit even after clear moments of God's power.
+
+# Jezebel Is Also About Persecution
+
+Jezebel is remembered not only for idolatry, but for targeting God's prophets.
+
+That matters because false worship often does not stay private.
+It becomes hostile toward truth.
+
+So Jezebel's story is also a persecution story.
+
+She does not simply prefer a different religious style.
+She uses influence and fear to suppress the servants of God.
+
+# Naboth's Vineyard Shows Her Moral Corruption Clearly
+
+One of the darkest moments in Jezebel's story is **1 Kings 21**.
+
+That chapter matters because it shows how power can manipulate justice.
+
+Naboth refuses to hand over his inheritance.
+Jezebel then engineers false accusation and death so Ahab can take what he wants.
+
+That scene matters because it shows:
+
+- greed
+- abuse of authority
+- false witness
+- murder hidden under public process
+
+This is why Jezebel's story is not only about theology.
+It is also about corruption.
+
+# Divine Judgment Is Slow, But It Comes
+
+One of the key Bible themes in Jezebel's story is that evil can look entrenched for a while.
+
+That matters for readers today.
+
+There are seasons when wickedness looks secure.
+There are seasons when intimidation seems effective.
+There are seasons when truth-tellers look outnumbered.
+
+But the Bible does not leave Jezebel's story unresolved.
+
+Judgment comes.
+
+And when **2 Kings 9** fulfills that judgment, the message is clear:
+
+God's word does not fail.
+
+# Why Jezebel Still Matters
+
+Jezebel matters because her story warns against more than one ancient queen.
+
+It warns against:
+
+- power without accountability
+- spirituality without truth
+- violence wrapped in authority
+- manipulation dressed as leadership
+
+That is why the name still carries weight in Christian vocabulary.
+
+It became a shorthand warning because the pattern behind the person is so destructive.
+
+# A Few Key People to Keep Straight
+
+## Ahab
+
+Ahab matters because he is not a passive background figure.
+He is the king who should have led Israel in covenant faithfulness, but instead becomes deeply compromised.
+
+## Elijah
+
+Elijah matters because he is the prophetic counterweight in this whole story.
+He shows what it looks like to stand against national spiritual corruption even when the odds look terrible.
+
+## Naboth
+
+Naboth matters because his story keeps Jezebel's sin from being reduced to abstract evil.
+He is a real victim of corrupted power.
+
+# Scripture Connections to Read with This Animation
+
+If you want to read alongside this story, go to:
+
+- **1 Kings 16** for Ahab and Jezebel's rise
+- **1 Kings 18** for Carmel
+- **1 Kings 19** for Elijah under threat
+- **1 Kings 21** for Naboth's vineyard
+- **2 Kings 9** for the judgment on Jezebel
+
+Those passages help show that this is one of the Bible's clearest long-form warning arcs.
+
+# Final Takeaway
+
+The Story of Queen Jezebel is powerful because it reminds you that evil does not always come looking chaotic at first.
+
+Sometimes it comes dressed in authority.
+Sometimes it comes through policy, pressure, and persuasion.
+Sometimes it builds systems that try to normalize rebellion.
+
+But Scripture is clear:
+
+God sees.
+God speaks.
+God judges.
+
+And Jezebel's story stands as a permanent warning that no amount of power can cancel the certainty of God's word.`,
+    },
+  ],
+};
+
+export const danielAnimationTitle: BibleBuddyTvTitle = {
+  id: "the-story-of-daniel",
+  slug: "the-story-of-daniel",
+  title: "The Story of Daniel",
+  badge: "Bible Buddy Animation",
+  category: "bible-stories",
+  poster: "/Danielmovie.png",
+  heroImage: "/Danielmovie.png",
+  accentFrom: "#1d4ed8",
+  accentTo: "#1e40af",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "1h 6m",
+  seasonsLabel: "Animated Feature",
+  contentType: "movie",
+  logline:
+    "An animated retelling of Daniel's faith in exile, his life of prayer, and the night God shut the mouths of lions.",
+  overview:
+    "The Story of Daniel brings one of the Bible's most beloved courage stories into animated form. Set during Israel's exile, the film follows Daniel as he remains faithful to God in a foreign empire, refuses to compromise his prayer life, and faces the lions' den with calm trust. It is a story about more than surviving danger. It is about steady faith, public pressure, and the kind of prayer life that stays rooted in God even when obedience becomes costly.",
+  vibe:
+    "Faith under pressure, prayer, courage, exile, kings and kingdoms, and a quiet confidence that God is still in control.",
+  continueWatchingLabel: "Animation: The Story of Daniel",
+  inMyList: true,
+  searchTags: [
+    "animation",
+    "daniel",
+    "daniel in the lions den",
+    "lions den",
+    "prayer",
+    "faith",
+    "courage",
+    "old testament",
+    "babylon",
+    "medo persia",
+    "king darius",
+    "exile",
+    "bible animation",
+    "daniel 6",
+    "biblical courage",
+    "god rescues daniel",
+    "prophet daniel",
+    "faithfulness",
+    "animated bible movie",
+    "story of daniel",
+  ],
+  episodes: [
+    {
+      id: "the-story-of-daniel-main",
+      episodeNumber: 1,
+      title: "The Story of Daniel",
+      contentLabel: "Animation",
+      duration: "1h 6m",
+      summary:
+        "An animated Bible movie showing Daniel's life of prayer, his refusal to compromise, and the night God delivered him from the lions' den.",
+      thumbnail: "/Danielmovie.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=KplCQ_YuC4E&list=WL&index=3&t=1506s",
+      available: true,
+      discussionSlug: "bible-buddy-tv-the-story-of-daniel",
+      reflectionQuestion: "What stood out to you most in this animation?",
+      louisIntro:
+        "Daniel's story is powerful because his courage does not come from loud confidence. It comes from disciplined faith. He is the kind of person who has already decided who he belongs to long before the crisis hits. That is why the lions' den moment matters so much. It is dramatic, but it is not random. It is the visible test of a hidden life of prayer, consistency, and trust in God in the middle of a hostile culture.",
+      studyNotesDocument: `# Daniel Is a Story About Faithfulness Before the Crisis
+
+The Story of Daniel is often remembered for one scene:
+
+- the lions' den
+
+And that scene matters.
+
+But Daniel's story is bigger than surviving one night.
+
+It is about:
+
+- exile
+- prayer
+- consistency
+- integrity
+- courage under public pressure
+
+That is why Daniel still speaks so strongly today.
+
+The lions' den is not where his faith starts.
+It is where his long-standing faith gets tested publicly.
+
+# Where This Story Lives in Scripture
+
+This animation is centered mainly in **Daniel 6**, but Daniel's larger story stretches across the whole book of Daniel.
+
+That matters because Daniel is not only a man thrown into danger.
+He is a faithful servant of God living in exile under foreign kings.
+
+His story includes:
+
+- wisdom
+- prayer
+- interpretation
+- political pressure
+- loyalty to God over empire
+
+# Daniel Lives in Exile
+
+One of the most important things to understand is that Daniel is living away from home.
+
+He is part of Judah's exile world.
+
+That matters because Daniel's faith is not being lived out in easy surroundings.
+He is trying to stay faithful to God inside a foreign kingdom with different power structures and values.
+
+So right away, Daniel becomes a major Bible example of how to live for God in a culture that does not naturally honor Him.
+
+# One Word Worth Knowing
+
+The Hebrew and Aramaic world of Daniel matters because the book itself moves in the setting of empire, court life, and exile.
+
+A key idea here is **faithfulness**.
+
+Daniel does not stay strong because he improvises in the moment.
+He stays strong because his life has already been ordered around God.
+
+# Prayer Is the Hidden Strength of the Story
+
+One of the best things about Daniel's story is that prayer is not just a small background detail.
+
+It is central.
+
+Daniel keeps praying even when prayer becomes politically dangerous.
+
+That matters because the story shows that prayer is not only something believers do in private comfort.
+Prayer can become an act of loyalty.
+
+Daniel's prayer life tells you that his relationship with God is not negotiable.
+
+He does not change when the pressure rises.
+
+# The Lions' Den Is About More Than Fear
+
+When people think of the lions' den, they usually think first about danger.
+
+That makes sense.
+
+But the deeper issue in **Daniel 6** is worship and allegiance.
+
+Daniel is being pressured to live as if the king's command outranks God's claim on his life.
+
+That is why the den matters.
+
+It is not only a threat story.
+It is a loyalty story.
+
+Will Daniel bend when obedience costs him something?
+
+He does not.
+
+# Darius Matters in This Story
+
+King **Darius** matters because he shows how political systems can become traps even when a ruler is not presented as the main villain in the same way others are.
+
+He becomes bound by his own decree.
+
+That matters because the story shows how earthly power is limited.
+
+Kings make laws.
+God still rules over life and death.
+
+# God's Deliverance Is the Turning Point
+
+When God shuts the mouths of the lions, the story becomes one of the clearest Old Testament pictures of divine rescue.
+
+That does not mean faith always leads to immediate earthly deliverance in every case.
+But in Daniel's story, God makes His power unmistakably visible.
+
+The message is clear:
+
+- God sees
+- God is able
+- God is not absent in exile
+
+# Daniel Also Points Beyond the Lions' Den
+
+Daniel matters because he becomes a model for later believers too.
+
+He shows:
+
+- you can live faithfully in hostile surroundings
+- you can stay rooted in prayer
+- you can carry integrity in public life
+- you can trust God even when obedience raises the cost
+
+That is why Daniel is not only a children's Bible story.
+It is one of the Bible's great discipleship stories.
+
+# Scripture Connections to Read with This Animation
+
+If you want to go deeper, read:
+
+- **Daniel 1** for Daniel's early faithfulness
+- **Daniel 2** for God's wisdom over earthly kingdoms
+- **Daniel 3** for related courage under pressure in the fiery furnace story
+- **Daniel 6** for the lions' den
+- **Psalm 55** and **Psalm 57** for prayer and trust under threat
+
+These passages help you see that Daniel's courage is part of a larger life with God.
+
+# Final Takeaway
+
+The Story of Daniel is powerful because it shows that courage is often built in quiet places before it is seen in dramatic ones.
+
+Daniel prays.
+Daniel stays steady.
+Daniel does not compromise.
+And when the crisis comes, he belongs to God the same way he did before it came.
+
+That is the real beauty of this story.
+
+God is worthy of trust not only when the den opens, but long before it does.
+
+And Daniel becomes a lasting picture of faith that stays rooted when the whole world around it tries to make it bend.`,
+    },
+  ],
+};
+
+export const godWithUsAnimationTitle: BibleBuddyTvTitle = {
+  id: "god-with-us",
+  slug: "god-with-us",
+  title: "God With Us",
+  badge: "Bible Buddy Animation",
+  category: "bible-stories",
+  poster: "/Godwithusmovie.png",
+  heroImage: "/Godwithusmovie.png",
+  accentFrom: "#2563eb",
+  accentTo: "#0f172a",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "1h 24m",
+  seasonsLabel: "Animated Feature",
+  contentType: "movie",
+  logline:
+    "An anime-style animated retelling of the life of Jesus, from His arrival into the world to His teaching, miracles, death, and resurrection.",
+  overview:
+    "God With Us is an anime-style animation built around the life of Jesus Christ. The movie follows His birth, calling, miracles, compassion, confrontations, crucifixion, and resurrection with a visual style that feels bold and emotional while staying rooted in the Gospel story. More than a highlight reel, it tells the larger story of who Jesus is: the promised Messiah, the Son who came near, and the Savior whose life reshaped history.",
+  vibe:
+    "Gospel story, anime-style emotion, compassion, miracles, sacrifice, resurrection hope, and a sweeping retelling of the life of Christ.",
+  continueWatchingLabel: "Animation: God With Us",
+  inMyList: true,
+  searchTags: [
+    "animation",
+    "god with us",
+    "life of jesus",
+    "jesus christ",
+    "anime bible movie",
+    "gospels",
+    "nativity",
+    "miracles",
+    "disciples",
+    "cross",
+    "resurrection",
+    "messiah",
+    "immanuel",
+    "son of god",
+    "animated jesus movie",
+    "matthew",
+    "mark",
+    "luke",
+    "john",
+    "christian animation",
+  ],
+  episodes: [
+    {
+      id: "god-with-us-main",
+      episodeNumber: 1,
+      title: "God With Us",
+      contentLabel: "Animation",
+      duration: "1h 24m",
+      summary:
+        "An anime-style animated movie following the life of Jesus through His teaching, miracles, sacrifice, and resurrection.",
+      thumbnail: "/Godwithusmovie.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=1EH34j00B2M&list=WL&index=4&t=1381s",
+      available: true,
+      discussionSlug: "bible-buddy-tv-god-with-us",
+      reflectionQuestion: "What stood out to you most in this animation?",
+      louisIntro:
+        "This animation works best when you see it as more than a visual summary of Jesus' life. It is trying to carry the emotional weight of the Gospel story. The anime-style approach actually fits that well because the life of Jesus is full of wonder, tenderness, authority, grief, confrontation, and victory. If the movie helps you feel both the nearness of Christ and the cost of His mission, then it is doing something meaningful.",
+      studyNotesDocument: `# This Animation Is About More Than Events from Jesus' Life
+
+God With Us is not just trying to run through a sequence of famous scenes.
+
+It is telling the story of who Jesus is.
+
+That matters because the life of Christ is not important only because of what He did.
+It is important because of who He is:
+
+- the promised Messiah
+- the Son of God
+- the Word made flesh
+- the Savior who came near
+
+That is why a title like **God With Us** matters so much.
+
+It points to one of the deepest truths in the whole Gospel story:
+
+God did not stay distant.
+
+# The Title Connects to Immanuel
+
+The phrase "God with us" points straight into the Gospel identity of Jesus.
+
+In **Matthew 1**, Jesus is connected to the name **Immanuel**, which means:
+
+> God with us
+
+That matters because Jesus is not presented as merely another teacher or prophet.
+He is the arrival of God's saving presence in a unique and world-changing way.
+
+# This Story Lives Across the Four Gospels
+
+This animation pulls from the broad life of Jesus, which means it naturally connects to:
+
+- **Matthew**
+- **Mark**
+- **Luke**
+- **John**
+
+Each Gospel gives a different angle, but together they show:
+
+- His birth
+- His ministry
+- His teaching
+- His miracles
+- His suffering
+- His death
+- His resurrection
+
+So the best way to watch a movie like this is to remember that it is standing on the Gospel witness.
+
+# One Word Worth Knowing
+
+The word **Gospel** means good news.
+
+That matters because the life of Jesus is not just interesting history.
+It is announced in Scripture as good news for the world.
+
+The good news is not only that Jesus lived.
+It is that through His life, death, and resurrection, God acted to save.
+
+# Jesus' Ministry Is Full of Compassion and Authority
+
+One reason the life of Jesus keeps working so well in animated form is that His ministry is full of scenes that carry emotional and spiritual weight.
+
+You see Him:
+
+- healing the sick
+- teaching crowds
+- calling disciples
+- confronting hypocrisy
+- welcoming the overlooked
+- calming fear
+
+That matters because Jesus does not only preach truth.
+He embodies it.
+
+His authority is never cold.
+His compassion is never weak.
+
+# The Miracles Matter
+
+The miracles are not random wonders dropped into the story for spectacle.
+
+They matter because they reveal who Jesus is.
+
+When Jesus heals, restores, calms storms, feeds crowds, and casts out demons, the point is not only power.
+The point is that the kingdom of God is breaking in through Him.
+
+That is why miracle scenes are so important in any retelling of His life.
+
+# The Cross Is the Center
+
+No retelling of Jesus' life can stay only in the inspiring parts.
+
+The cross is central.
+
+That matters because Jesus did not come only to teach beautiful things.
+He came to give Himself.
+
+The crucifixion matters because it shows:
+
+- the seriousness of sin
+- the cost of redemption
+- the depth of Christ's love
+
+So if this animation handles the cross seriously, it is touching the heart of the Christian message.
+
+# The Resurrection Changes Everything
+
+The resurrection is the turning point that makes the Gospel more than tragedy.
+
+Without the resurrection, the story ends in grief.
+
+With the resurrection, the story becomes victory, vindication, and hope.
+
+That is why the life of Jesus cannot be told faithfully if the story stops at death.
+
+The resurrection is not an extra ending.
+It is the confirmation of who He is.
+
+# This Animation Can Help People Feel the Story Again
+
+Sometimes people know the life of Jesus so well that they stop feeling its force.
+
+Animation can help there.
+
+A strong visual retelling can make people slow down and notice again:
+
+- the tenderness of Jesus
+- the pressure around His ministry
+- the awe of the miracles
+- the pain of the cross
+- the hope of the resurrection
+
+That is one of the real gifts of a project like this.
+
+# Scripture Connections to Read with This
+
+If you want to go deeper after watching, read:
+
+- **Matthew 1-28**
+- **Mark 1-16**
+- **Luke 1-24**
+- **John 1-21**
+- **Isaiah 53**
+- **Philippians 2**
+
+Those passages help hold together the identity, mission, suffering, and exaltation of Christ.
+
+# Final Takeaway
+
+God With Us matters because the life of Jesus is not just the story of a good man.
+
+It is the story of God's presence entering history in a saving way.
+
+Jesus teaches, heals, calls, suffers, dies, and rises.
+And through all of it, Scripture keeps making the same point:
+
+this is the One the world has been waiting for.
+
+That is why the life of Christ never gets old.
+
+It is not only beautiful.
+It is the center of the Christian story itself.`,
+    },
+  ],
+};
+
+export const johnTheBaptistAnimationTitle: BibleBuddyTvTitle = {
+  id: "the-story-of-john-the-baptist",
+  slug: "the-story-of-john-the-baptist",
+  title: "The Story of John the Baptist",
+  badge: "Bible Buddy Animation",
+  category: "bible-stories",
+  poster: "/Jphnthebapristmovieanimation.png",
+  heroImage: "/Jphnthebapristmovieanimation.png",
+  accentFrom: "#0f766e",
+  accentTo: "#164e63",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "1h 8m",
+  seasonsLabel: "Animated Feature",
+  contentType: "movie",
+  logline:
+    "An animated retelling of John the Baptist, the prophet who prepared the way for Jesus with courage, repentance, and unwavering truth.",
+  overview:
+    "The Story of John the Baptist follows the final great prophet before Jesus' public ministry. Set at the edge of the Old and New Testament world, the animation traces John's calling, his life of bold repentance preaching, his baptizing ministry, and his fearless commitment to truth even when it put him in danger. It is a story about more than one preacher in the wilderness. It is about preparation, conviction, and the kind of life that points away from itself and toward the Lamb of God.",
+  vibe:
+    "Prophetic courage, repentance, wilderness calling, baptism, bold truth-telling, and the joy of preparing the way for Jesus.",
+  continueWatchingLabel: "Animation: The Story of John the Baptist",
+  inMyList: true,
+  searchTags: [
+    "animation",
+    "john the baptist",
+    "john the baptist movie",
+    "prepare the way",
+    "repentance",
+    "baptism",
+    "prophet",
+    "new testament",
+    "bridge between old and new testament",
+    "jesus",
+    "lamb of god",
+    "wilderness",
+    "luke 3",
+    "matthew 3",
+    "mark 1",
+    "john 1",
+    "herod",
+    "faithfulness",
+    "boldness",
+    "animated bible story",
+  ],
+  episodes: [
+    {
+      id: "the-story-of-john-the-baptist-main",
+      episodeNumber: 1,
+      title: "The Story of John the Baptist",
+      contentLabel: "Animation",
+      duration: "1h 8m",
+      summary:
+        "An animated Bible story showing John the Baptist's prophetic calling, his message of repentance, and his role in preparing the way for Jesus.",
+      thumbnail: "/Jphnthebapristmovieanimation.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=1-j0MGgQ8DU&list=WL&index=5&t=711s",
+      available: true,
+      discussionSlug: "bible-buddy-tv-the-story-of-john-the-baptist",
+      reflectionQuestion: "What stood out to you most in this animation?",
+      louisIntro:
+        "John the Baptist matters because he does not build a life around being impressive. He builds a life around being faithful. His whole assignment is to prepare people for Jesus, which means he becomes one of the clearest Bible pictures of what it looks like to speak the truth boldly without trying to make the story about yourself. That is why his voice still feels strong all these years later.",
+      studyNotesDocument: `# John the Baptist Is a Bridge Figure
+
+The Story of John the Baptist is powerful because John stands at a turning point in the Bible.
+
+He is not just another preacher.
+
+He is the prophetic bridge between:
+
+- the expectation built through the Old Testament
+- and the public arrival of Jesus in the New Testament
+
+That matters because John's whole life has a direction.
+
+He is preparing the way.
+
+# Where This Story Lives in Scripture
+
+John the Baptist appears across:
+
+- **Matthew 3**
+- **Mark 1**
+- **Luke 1 and 3**
+- **John 1**
+
+Those passages matter because they show both his identity and his role.
+
+Luke especially helps frame John's birth and calling.
+The Gospels then show his preaching, baptizing, and his witness to Jesus.
+
+# John Is the Final Prophet Before Christ's Public Ministry
+
+One of the most important things to understand is that John feels like the end of one era and the start of another.
+
+He carries the prophetic weight and tone of the Old Testament.
+But he is announcing that the Messiah is now near.
+
+That is why people often describe him as the bridge between the Testaments.
+
+He does not replace the prophets before him.
+He completes that line of witness by pointing directly to Jesus.
+
+# One Word Worth Knowing
+
+The word **repentance** is central to John's ministry.
+
+Repentance in the Bible is not just feeling bad.
+It means a real turning:
+
+- turning from sin
+- turning from compromise
+- turning toward God
+
+That matters because John's preaching is not built on shallow inspiration.
+It is a call to get ready for the Lord by changing direction.
+
+# "Prepare the Way" Is a Huge Theme
+
+One of the key texts tied to John is:
+
+> **Luke 3:4**
+> "Prepare the way for the Lord; make His paths straight."
+
+That line matters because John's life is about preparation.
+
+He is preparing hearts.
+He is confronting spiritual laziness.
+He is calling people to seriousness before God.
+
+So this is not just a story about one man in the wilderness.
+It is about what it means to make room for the coming King.
+
+# John's Courage Is One of the Main Reasons He Matters
+
+John is remembered for boldness.
+
+That matters because he does not soften the truth to stay safe.
+
+He speaks clearly to:
+
+- crowds
+- religious people
+- political power
+
+And that eventually costs him deeply.
+
+This is one reason his story still speaks today.
+John reminds believers that truth-telling rooted in obedience matters, even when the culture around you wants compromise instead.
+
+# Baptism Matters in His Story
+
+John's baptizing ministry is one of the strongest visible signs in his life.
+
+That matters because it shows public response.
+
+People are not only hearing a message.
+They are being called into visible repentance and preparation.
+
+John's baptism is not the full Christian baptism shaped by Jesus' death and resurrection later on, but it is still a powerful sign of readiness, cleansing, and turning toward God.
+
+# John Points Beyond Himself
+
+One of the most beautiful things about John the Baptist is that he does not try to keep the spotlight.
+
+He points away from himself and toward Jesus.
+
+That matters because spiritual leaders can easily become attached to their own importance.
+
+John does the opposite.
+
+He knows his identity.
+But he also knows his limits.
+
+He is the forerunner, not the Messiah.
+
+That is why his witness to Jesus as the **Lamb of God** matters so much.
+
+# The Wilderness Is Important Here Too
+
+John's wilderness setting matters.
+
+In the Bible, the wilderness is often a place of:
+
+- testing
+- purification
+- dependence
+- preparation
+
+So John's ministry location is not random.
+The wilderness fits the message.
+
+It strips away distraction and forces the focus back onto God.
+
+# Herod Shows the Cost of Prophetic Truth
+
+John's conflict with **Herod** matters because it shows that his courage is not abstract.
+
+He tells the truth even when it reaches into powerful people's lives.
+
+That means his ministry is not only emotionally stirring.
+It is morally costly.
+
+John does not edit his convictions to protect his comfort.
+
+That is one reason he remains such a strong example of integrity.
+
+# Scripture Connections to Read with This Animation
+
+If you want to go deeper after watching, read:
+
+- **Luke 1** for John's birth story
+- **Matthew 3**
+- **Mark 1**
+- **Luke 3**
+- **John 1**
+- **Malachi 3** and **Isaiah 40** for the prophetic backdrop
+
+Those passages help show why John's life carries so much weight in the Gospel story.
+
+# Final Takeaway
+
+The Story of John the Baptist is powerful because it reminds you that some of the most important people in God's story are the ones who prepare the way for someone greater.
+
+John preaches repentance.
+John baptizes.
+John tells the truth.
+John points to Jesus.
+
+And in all of that, he becomes a picture of conviction, humility, and courage.
+
+That is why his voice still echoes.
+
+He teaches us that a faithful life does not need to make itself the center.
+It needs to make straight paths for the Lord.`,
+    },
+  ],
+};
+
+export const jobAnimationTitle: BibleBuddyTvTitle = {
+  id: "the-story-of-job",
+  slug: "the-story-of-job",
+  title: "The Story of Job",
+  badge: "Bible Buddy Animation",
+  category: "bible-stories",
+  poster: "/jobmovie.png",
+  heroImage: "/jobmovie.png",
+  accentFrom: "#7c2d12",
+  accentTo: "#431407",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "1h 5m",
+  seasonsLabel: "Animated Feature",
+  contentType: "movie",
+  logline:
+    "An animated retelling of Job's suffering, endurance, and hard-won trust in God through loss, questioning, and restoration.",
+  overview:
+    "The Story of Job brings one of Scripture's deepest suffering stories into animated form. The film follows Job through devastating loss, painful questioning, the failure of shallow answers, and the long journey of trusting God when life no longer makes sense. It is not a simple story about quick victory. It is a story about faith that survives darkness, hope that refuses to die, and a God who is still present even when His ways are hard to understand.",
+  vibe:
+    "Suffering, endurance, trust, wrestling with God, wisdom, and a quiet hope that holds on in the dark.",
+  continueWatchingLabel: "Animation: The Story of Job",
+  inMyList: true,
+  searchTags: [
+    "animation",
+    "job",
+    "story of job",
+    "suffering",
+    "faith",
+    "patience",
+    "hope",
+    "old testament",
+    "wisdom literature",
+    "job movie",
+    "biblical suffering",
+    "loss",
+    "redemption",
+    "god restores job",
+    "animated bible story",
+    "endurance",
+    "why do people suffer",
+    "book of job",
+    "trials",
+    "trust in god",
+  ],
+  episodes: [
+    {
+      id: "the-story-of-job-main",
+      episodeNumber: 1,
+      title: "The Story of Job",
+      contentLabel: "Animation",
+      duration: "1h 5m",
+      summary:
+        "An animated Bible story showing Job's devastating losses, his struggle to understand suffering, and his enduring trust in God through trial and restoration.",
+      thumbnail: "/jobmovie.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=sgnWqTvN4Bs&list=WL&index=6&t=37s",
+      available: true,
+      discussionSlug: "bible-buddy-tv-the-story-of-job",
+      reflectionQuestion: "What stood out to you most in this animation?",
+      louisIntro:
+        "Job's story matters because it refuses to give easy answers to hard pain. It does not pretend suffering is simple, and it does not reduce faith to smiling through everything. Job wrestles, grieves, questions, and still does not let go of God. That is why his story has helped believers for centuries. It gives language for suffering without telling hurting people to fake peace they do not yet feel.",
+      studyNotesDocument: `# Job Is a Story About Faith When Life Stops Making Sense
+
+The Story of Job is one of the Bible's deepest and hardest stories.
+
+That matters because Job does not live inside a simple problem-solution pattern.
+
+He experiences:
+
+- devastating loss
+- physical suffering
+- emotional grief
+- confusion
+- bad counsel
+- long waiting
+
+And the story still holds on to the question of faith.
+
+That is why Job keeps speaking across generations.
+
+It helps people face suffering without pretending everything is easy.
+
+# Where This Story Lives in Scripture
+
+This animation draws from the **Book of Job**, one of the Bible's wisdom books.
+
+That matters because Job is not only telling a biography.
+It is asking wisdom-level questions about:
+
+- suffering
+- justice
+- faithfulness
+- the limits of human understanding
+
+So when you watch Job, you are stepping into one of the Bible's great wrestling books.
+
+# Job Begins with Integrity, Not Failure
+
+One of the first important things to understand is that Job's suffering is not presented as punishment for some secret wicked life.
+
+That matters a lot.
+
+Because many people assume suffering always works in a straight line:
+
+- bad things happen because you did bad things
+
+But Job challenges that simplistic thinking.
+
+He is presented at the start as upright and God-fearing.
+
+That means the story immediately pushes against shallow formulas.
+
+# One Word Worth Knowing
+
+The word **integrity** matters in Job's story.
+
+Integrity means wholeness, uprightness, and inner consistency.
+
+Job is not perfect.
+But he is genuinely devoted to God.
+
+That is why his suffering becomes such a hard theological problem for the people around him.
+
+If a faithful man can suffer like this, then easy religious formulas are not enough.
+
+# Job's Losses Are Meant to Feel Heavy
+
+The story of Job does not ease into pain slowly.
+
+It hits hard.
+
+Job loses:
+
+- possessions
+- servants
+- children
+- health
+
+That matters because the story wants you to feel the collapse.
+
+Job is not being asked to trust God through a small inconvenience.
+He is standing in the middle of devastation.
+
+# The Friends Represent Bad Explanations
+
+One of the most important parts of Job is the role of his friends.
+
+At first, they show up in silence, and that silence is one of the most compassionate moments in the whole book.
+
+But then they start talking.
+
+And their explanations become part of the pain.
+
+That matters because people often rush to explain suffering instead of sitting with it honestly.
+
+The friends keep trying to force Job into a neat system:
+
+- you must have done something
+- God must be punishing you directly
+- repentance should solve this quickly
+
+But the book keeps exposing how inadequate those answers are.
+
+# Job Teaches That Faith Can Still Ask Questions
+
+Another reason Job matters is that he does not stay silent in fake religious politeness.
+
+He speaks.
+He laments.
+He questions.
+He cries out.
+
+That matters because the Bible does not present honest lament as a lack of faith.
+
+Job's speech is part of faithful wrestling.
+
+He keeps turning his pain toward God, not away from Him.
+
+That is important.
+
+Even when Job is confused, he is still engaging God.
+
+# God's Response Is Bigger Than a Simple Explanation
+
+When God finally speaks, He does not hand Job a tidy chart explaining every detail.
+
+That matters because sometimes people want the book of Job to end with a paragraph that solves the problem of suffering completely.
+
+It does not.
+
+Instead, God reveals His greatness, wisdom, and rule over a world far larger than Job can see.
+
+That is not God avoiding the issue.
+It is God showing that human understanding is limited.
+
+Job does not get full control over the mystery.
+But he does get a clearer vision of who God is.
+
+# Restoration Matters, But It Does Not Erase the Pain
+
+The restoration at the end of Job matters.
+
+It shows grace, mercy, and God's ability to restore what was shattered.
+
+But it is important not to read that ending in a shallow way.
+
+The point is not:
+
+- suffering is no big deal because things got better later
+
+The point is that God is still able to bring life after devastation.
+
+That is different.
+
+# Job Still Speaks to Believers Today
+
+Job matters because many believers know what it feels like to ask:
+
+- why is this happening
+- where is God in this
+- how do I keep trusting when I do not understand
+
+The book does not answer every question the way people might want.
+But it gives space for grief, honesty, reverence, and endurance.
+
+That is why Job is such a gift.
+
+It tells hurting people that faith does not require pretending.
+
+# Scripture Connections to Read with This Animation
+
+If you want to go deeper after watching, read:
+
+- **Job 1-2** for the beginning of the suffering
+- **Job 3** for lament
+- **Job 38-42** for God's response and restoration
+- **James 5:11** for New Testament reflection on Job's endurance
+- **Psalm 13** and **Psalm 42** for other examples of faithful lament
+
+These passages help show that Job belongs to the Bible's larger language of grief and trust.
+
+# Final Takeaway
+
+The Story of Job is powerful because it teaches that faith is not only for easy seasons.
+
+Faith can survive:
+
+- loss
+- silence
+- confusion
+- delay
+
+Job does not get through suffering by understanding everything.
+He gets through it by holding on to God through the darkness.
+
+That is why his story still matters.
+
+It gives hurting people permission to grieve honestly, reject shallow answers, and keep trusting the God whose wisdom is bigger than their pain.`,
+    },
+  ],
+};
+
 export const bibleBuddyTvTitles: BibleBuddyTvTitle[] = [
   promisedLandTitle,
   theChosenTitle,
@@ -4013,6 +5222,11 @@ export const bibleBuddyTvTitles: BibleBuddyTvTitle[] = [
   deadSeaScrollDetectivesTitle,
   peterAndPaulDocumentaryTitle,
   shroudOfTurinDocumentaryTitle,
+  queenJezebelAnimationTitle,
+  danielAnimationTitle,
+  godWithUsAnimationTitle,
+  johnTheBaptistAnimationTitle,
+  jobAnimationTitle,
   {
     id: "road-to-emmaus",
     slug: "road-to-emmaus",
