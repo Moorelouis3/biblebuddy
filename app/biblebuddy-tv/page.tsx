@@ -40,6 +40,7 @@ export default function BibleBuddyTvHomePage() {
     [activeCategory]
   );
   const myListTitles = bibleBuddyTvTitles.filter((title) => title.inMyList);
+  const continueWatchingTitles = featuredTitles.filter((title) => title.continueWatchingLabel);
 
   useEffect(() => {
     if (featuredTitles.length <= 1) return;
@@ -69,7 +70,65 @@ export default function BibleBuddyTvHomePage() {
           </p>
         </div>
 
-        <section className="mt-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:p-6">
+        <section className="mt-6 md:hidden">
+          <div className="overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-sm">
+            <div
+              className="flex transition-transform duration-700 ease-out"
+              style={{ transform: `translateX(-${featuredIndex * 100}%)` }}
+            >
+              {featuredTitles.map((featuredTitle) => (
+                <div key={featuredTitle.id} className="min-w-full p-3">
+                  <Link href={`/biblebuddy-tv/shows/${featuredTitle.slug}`} className="block">
+                    <div className="relative aspect-[4/5] overflow-hidden rounded-[24px]">
+                      <Image
+                        src={featuredTitle.poster}
+                        alt={`${featuredTitle.title} poster`}
+                        fill
+                        className="object-cover"
+                        sizes="100vw"
+                      />
+                    </div>
+                  </Link>
+
+                  <div className="px-1 pb-2 pt-4 text-center">
+                    <h2 className="text-3xl font-black tracking-[0.18em] text-gray-900">{featuredTitle.title}</h2>
+                    <p className="mt-2 text-sm font-medium text-gray-500">{featuredTitle.rating} • {featuredTitle.runtime}</p>
+                    <div className="mt-4 grid grid-cols-2 gap-3">
+                      <Link
+                        href={`/biblebuddy-tv/shows/${featuredTitle.slug}`}
+                        className="rounded-xl bg-gray-900 px-4 py-3 text-base font-semibold text-white transition hover:bg-black"
+                      >
+                        ▶ Play
+                      </Link>
+                      <Link
+                        href={`/biblebuddy-tv/shows/${featuredTitle.slug}`}
+                        className="rounded-xl bg-gray-100 px-4 py-3 text-base font-semibold text-gray-800 transition hover:bg-gray-200"
+                      >
+                        + My List
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-4 flex items-center justify-center gap-2">
+            {featuredTitles.map((featuredTitle, index) => (
+              <button
+                key={featuredTitle.id}
+                type="button"
+                onClick={() => setFeaturedIndex(index)}
+                aria-label={`Show featured title ${featuredTitle.title}`}
+                className={`h-2.5 rounded-full transition-all ${
+                  index === featuredIndex ? "w-8 bg-violet-600" : "w-2.5 bg-gray-300 hover:bg-gray-400"
+                }`}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-6 hidden rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:block md:p-6">
           <div className="overflow-hidden rounded-[24px] border border-gray-200 bg-gradient-to-r from-[#faf7ff] via-white to-[#fff8ef]">
             <div
               className="flex transition-transform duration-700 ease-out"
@@ -173,7 +232,65 @@ export default function BibleBuddyTvHomePage() {
           </p>
         </section>
 
-        <section className="mt-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:p-6">
+        <section className="mt-8 md:hidden">
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-gray-900">Continue Watching</h2>
+            <span className="text-sm font-semibold text-violet-700">Bible Buddy TV</span>
+          </div>
+          <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2">
+            {continueWatchingTitles.map((title) => (
+              <Link
+                key={title.id}
+                href={`/biblebuddy-tv/shows/${title.slug}`}
+                className="w-[138px] shrink-0 snap-start"
+              >
+                <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                  <div className="relative aspect-[2/3]">
+                    <Image
+                      src={title.poster}
+                      alt={`${title.title} poster`}
+                      fill
+                      className="object-cover"
+                      sizes="138px"
+                    />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-8 md:hidden">
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-gray-900">
+              {bibleBuddyTvCategories.find((category) => category.id === activeCategory)?.label}
+            </h2>
+            <span className="text-sm font-semibold text-gray-500">Browse</span>
+          </div>
+          <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2">
+            {filteredTitles.map((title) => (
+              <Link
+                key={title.id}
+                href={`/biblebuddy-tv/shows/${title.slug}`}
+                className="w-[138px] shrink-0 snap-start"
+              >
+                <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                  <div className="relative aspect-[2/3]">
+                    <Image
+                      src={title.poster}
+                      alt={`${title.title} poster`}
+                      fill
+                      className="object-cover"
+                      sizes="138px"
+                    />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-6 hidden rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:block md:p-6">
           <div className="mb-4">
             <h2 className="text-2xl font-bold text-gray-900">
               {bibleBuddyTvCategories.find((category) => category.id === activeCategory)?.label}
@@ -207,7 +324,7 @@ export default function BibleBuddyTvHomePage() {
           </div>
         </section>
 
-        <section className="mt-8 rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:p-6">
+        <section className="mt-8 hidden rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:block md:p-6">
           <div className="mb-4">
             <h2 className="text-2xl font-bold text-gray-900">Continue Watching</h2>
             <p className="mt-1 text-sm text-gray-600">Pick up where you left off inside Bible Buddy.</p>
@@ -238,7 +355,7 @@ export default function BibleBuddyTvHomePage() {
           </Link>
         </section>
 
-        <section className="mt-8 rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:p-6">
+        <section className="mt-8 hidden rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:block md:p-6">
           <div className="mb-4">
             <h2 className="text-2xl font-bold text-gray-900">My List</h2>
             <p className="mt-1 text-sm text-gray-600">Saved shows and collections you want to keep close.</p>
