@@ -396,7 +396,7 @@ export default function CommentSection({
   return (
     <section className="mt-0">
       <div className="mx-auto max-w-2xl">
-        <h2 className="mb-2 text-xl font-bold text-gray-900">{headingText}</h2>
+        {headingText ? <h2 className="mb-2 text-xl font-bold text-gray-900">{headingText}</h2> : null}
         {error && <div className="mb-3 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">{error}</div>}
         {user && !replyTo && (
           <form onSubmit={handlePost} className="flex items-end gap-3">

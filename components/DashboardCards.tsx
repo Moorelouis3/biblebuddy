@@ -246,6 +246,13 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       </Link>
 
+      <Link href="/biblebuddy-tv">
+        <div className="rounded-xl border border-violet-200 bg-[#efe7ff] p-5 shadow-sm cursor-pointer transition duration-300 hover:scale-[1.01] hover:shadow-md">
+          <h2 className="text-xl font-semibold text-gray-900">📺 Bible Buddy TV</h2>
+          <p className="mt-1 text-gray-700">Stream Bible shows, movies, sermons, and more</p>
+        </div>
+      </Link>
+
       <Link href="/bible-study-games" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-study-games")}>
         <div data-dashboard-tour="games" className={`bg-emerald-100 border border-emerald-200 rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition duration-300 ${getSpotlightClasses("games")}`}>
           <h2 className="text-xl font-semibold">🎮 Bible Study Games</h2>
@@ -257,10 +264,10 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         type="button"
         onClick={onInviteBuddy}
         data-dashboard-tour="invite"
-        className={`w-full text-left bg-[#efe7ff] border border-[#ddd0ff] rounded-xl p-5 shadow-sm cursor-pointer hover:shadow-md hover:scale-[1.01] transition duration-300 relative ${getSpotlightClasses("invite")}`}
+        className={`relative w-full rounded-xl border border-gray-300 bg-gray-100 p-5 text-left shadow-sm cursor-pointer transition duration-300 hover:scale-[1.01] hover:shadow-md ${getSpotlightClasses("invite")}`}
       >
-        <span className="absolute right-4 top-4 text-[#8a63d2] text-base" aria-hidden="true">↗</span>
-        <h2 className="text-xl font-semibold text-gray-900">↗ Invite a Bible Buddy</h2>
+        <span className="absolute right-4 top-4 text-gray-500 text-base" aria-hidden="true">↗</span>
+        <h2 className="text-xl font-semibold text-gray-900">↗ Share Bible Buddy</h2>
         <p className="text-gray-700 mt-1">Share by text, WhatsApp, or copy link.</p>
       </button>
     </div>
