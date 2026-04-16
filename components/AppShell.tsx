@@ -10,6 +10,7 @@ import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
 import { recalculateTotalActions } from "../lib/recalculateTotalActions";
+import { syncCurrentStreakToProfileStats } from "../lib/profileStats";
 import { FeatureRenderPriorityProvider } from "./FeatureRenderPriorityContext";
 import { CURRENT_UPDATE_VERSION } from "../lib/globalUpdateConfig";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
@@ -63,6 +64,7 @@ async function runBackgroundSessionSync(currentUserId: string) {
   const tasks: Promise<unknown>[] = [
     trackUserActivity(currentUserId),
     recalculateTotalActions(currentUserId),
+    syncCurrentStreakToProfileStats(currentUserId),
   ];
 
   if (shouldSyncNotesCount(currentUserId)) {

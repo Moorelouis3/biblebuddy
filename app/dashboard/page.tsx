@@ -3,7 +3,6 @@
 export const dynamic = 'force-dynamic';
 
 import { useEffect, useRef, useState, type MouseEvent } from "react";
-import DashboardDailyWelcomeModal from "../../components/DashboardDailyWelcomeModal";
 import Link from "next/link";
 import "../../styles/pulse.css";
 import DashboardCards from "../../components/DashboardCards";
@@ -27,9 +26,6 @@ import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
-
-const STREAK_KEY = "bbReadingStreakDays";
-const LAST_DATE_KEY = "bbReadingLastDate";
 
 const BOOKS = [
   // Gospels & Acts
@@ -111,16 +107,10 @@ const BOOKS = [
 
 export default function DashboardPage() {
   // All useState declarations appear first, before any useEffect
-  const [showDailyWelcome, setShowDailyWelcome] = useState(false);
-  const [isReturningUser, setIsReturningUser] = useState(false);
-  const [lastAction, setLastAction] = useState<{ action_type: string; action_label: string } | null>(null);
-  const [recommendation, setRecommendation] = useState<string | null>(null);
   const router = useRouter();
   const { featureToursEnabled } = useFeatureRenderPriority();
   const [userName, setUserName] = useState<string>("buddy");
   const [userId, setUserId] = useState<string | null>(null);
-  const [streakDays, setStreakDays] = useState<number>(0);
-  const [daysSinceLastReading, setDaysSinceLastReading] = useState<number>(0);
   const [currentMatthewStep, setCurrentMatthewStep] = useState(0);
   const [totalCompletedChapters, setTotalCompletedChapters] = useState<number>(0);
   const [currentBook, setCurrentBook] = useState<string | null>(null);
@@ -143,7 +133,7 @@ export default function DashboardPage() {
   const [membershipStatus, setMembershipStatus] = useState<string | null>(null);
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
-  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null } | null>(null);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null } | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
   const [activeTourKey, setActiveTourKey] = useState<FeatureTourKey | null>(null);
@@ -175,56 +165,6 @@ export default function DashboardPage() {
       console.error("[NAV] Failed to track dashboard view:", error);
     });
   }, [userId, userName]);
-
-  // Daily Welcome Overlay logic (with dev override)
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    // DEV OVERRIDE: show overlay if ?showWelcome=1 is in the URL
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("showWelcome") === "1") {
-      setShowDailyWelcome(true);
-      setIsReturningUser(false);
-      setLastAction(null);
-      setRecommendation(null);
-      return;
-    }
-    // Only run after profile loads
-    if (!profile) return;
-
-    // Get today's date string (YYYY-MM-DD)
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, "0");
-    const dd = String(today.getDate()).padStart(2, "0");
-    const todayStr = `${yyyy}-${mm}-${dd}`;
-
-    // Only show overlay if not already open and date is not today
-    if (!showDailyWelcome && profile.verse_of_the_day_shown !== todayStr) {
-      setShowDailyWelcome(true);
-      setIsReturningUser(false);
-      setLastAction(null);
-      setRecommendation(null);
-    }
-  }, [profile, showDailyWelcome]);
-
-  // Daily Welcome Modal close handler
-  const handleCloseDailyWelcome = async () => {
-    setShowDailyWelcome(false);
-    // Update verse_of_the_day_shown in profile_stats to today
-    if (userId) {
-      const today = new Date();
-      const yyyy = today.getFullYear();
-      const mm = String(today.getMonth() + 1).padStart(2, "0");
-      const dd = String(today.getDate()).padStart(2, "0");
-      const todayStr = `${yyyy}-${mm}-${dd}`;
-      await supabase
-        .from("profile_stats")
-        .update({ verse_of_the_day_shown: todayStr })
-        .eq("user_id", userId);
-      // Update local profile state so overlay doesn't show again until tomorrow
-      setProfile((prev) => prev ? { ...prev, verse_of_the_day_shown: todayStr } : prev);
-    }
-  };
 
   const TOUR_COPY: Record<FeatureTourKey, { title: string; body: string }> = {
     dashboard: {
@@ -1133,7 +1073,7 @@ export default function DashboardPage() {
         // 2. Fetch profile_stats for dashboard display
         const { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, is_paid, daily_credits, last_active_date, verse_of_the_day_shown")
+          .select("total_actions, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak")
           .eq("user_id", userId)
           .single();
 
@@ -1153,6 +1093,7 @@ export default function DashboardPage() {
                 : 0,
             last_active_date: profileData.last_active_date ?? null,
             verse_of_the_day_shown: profileData.verse_of_the_day_shown ?? null,
+            current_streak: profileData.current_streak ?? 0,
           });
         }
 
@@ -1202,6 +1143,7 @@ export default function DashboardPage() {
           groupCommentCount,
           groupLikeGivenCount,
           likesReceivedCount: groupLikesReceivedCount + feedLikesReceivedCount,
+          streakBonusPoints: Math.max(0, profileData?.current_streak ?? 0),
         });
 
         const levelData = getLevelInfoFromPoints(weightedPoints.totalPoints);
@@ -1324,58 +1266,6 @@ export default function DashboardPage() {
     loadOtherDashboardData();
   }, []);
 
-  // simple local streak system stored in localStorage
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const today = new Date();
-    const todayStr = today.toISOString().slice(0, 10);
-
-    let storedStreak = Number(
-      window.localStorage.getItem(STREAK_KEY) || "0"
-    );
-    const lastDateStr = window.localStorage.getItem(LAST_DATE_KEY);
-
-    // first time ever
-    if (!lastDateStr) {
-      storedStreak = 1;
-      window.localStorage.setItem(STREAK_KEY, String(storedStreak));
-      window.localStorage.setItem(LAST_DATE_KEY, todayStr);
-      setStreakDays(storedStreak);
-      setDaysSinceLastReading(0);
-      return;
-    }
-
-    const lastDate = new Date(lastDateStr + "T00:00:00");
-    const diffMs = today.getTime() - lastDate.getTime();
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-    // opened again on the same day
-    if (diffDays === 0) {
-      if (!storedStreak) storedStreak = 1;
-      setStreakDays(storedStreak);
-      setDaysSinceLastReading(0);
-      return;
-    }
-
-    // yesterday â€“ continue streak
-    if (diffDays === 1) {
-      storedStreak = storedStreak ? storedStreak + 1 : 1;
-      window.localStorage.setItem(STREAK_KEY, String(storedStreak));
-      window.localStorage.setItem(LAST_DATE_KEY, todayStr);
-      setStreakDays(storedStreak);
-      setDaysSinceLastReading(1);
-      return;
-    }
-
-    // gap of 2+ days or time weirdness â€“ reset streak
-    storedStreak = 1;
-    window.localStorage.setItem(STREAK_KEY, String(storedStreak));
-    window.localStorage.setItem(LAST_DATE_KEY, todayStr);
-    setStreakDays(storedStreak);
-    setDaysSinceLastReading(diffDays > 0 ? diffDays : 0);
-  }, []);
-
   // subtitle for reading card (based on preloaded progress)
   const readingSubtitle = totalCompletedChapters === 0
     ? "Start your Bible reading plan here"
@@ -1443,15 +1333,6 @@ export default function DashboardPage() {
 
   return (
     <>
-      {/* Daily Welcome Overlay (isolated, safe) */}
-      <DashboardDailyWelcomeModal
-        open={showDailyWelcome}
-        onClose={handleCloseDailyWelcome}
-        isReturningUser={isReturningUser}
-        lastAction={lastAction}
-        recommendation={recommendation}
-        userId={userId}
-      />
       <div className="min-h-screen bg-gray-50 pb-12">
       {/* DESKTOP LAYOUT: Left Ad | Content | Right Ad */}
       <div className="hidden lg:flex max-w-7xl mx-auto px-4 mt-8 gap-6">
@@ -1595,9 +1476,9 @@ export default function DashboardPage() {
 
               <div className="space-y-6 text-gray-700">
                 <p className="text-base leading-relaxed">
-                  Bible Buddy isn't about speed, streaks, or competing with other people.
+                  Bible Buddy isn't about competing with other people.
                   <br />
-                  It's about understanding the Bible deeply, one step at a time.
+                  It's about understanding the Bible deeply, one step at a time, and being rewarded for showing up consistently.
                 </p>
 
                 <div>
@@ -1608,6 +1489,7 @@ export default function DashboardPage() {
                     <li>🧠 Learning people, places, keywords, and taking notes</li>
                     <li>👥 Posting in the group, commenting, and joining community activity</li>
                     <li>❤️ Liking posts or comments, and earning likes from other Buddies</li>
+                    <li>🔥 Keeping your streak alive by logging in each day</li>
                     <li>🎯 Trivia, study opens, highlights, and other meaningful app actions</li>
                   </ul>
                   <p className="mt-3 text-sm">Bigger study actions are worth more points than lighter actions like likes.</p>
@@ -1631,6 +1513,13 @@ export default function DashboardPage() {
                     <div className="bg-gray-50 p-3 rounded-lg">
                       <p className="font-semibold text-gray-900">Earned engagement counts too</p>
                       <p>If other Buddies like your posts or comments, that also gives you points because your activity is helping the community.</p>
+                    </div>
+                    <div className="bg-orange-50 p-3 rounded-lg border border-orange-100">
+                      <p className="font-semibold text-gray-900">Streak bonus points</p>
+                      <p>
+                        Every day you log in on a streak, you get bonus level points equal to that streak day.
+                        Day 1 gives you 1 bonus point. Day 10 gives you 10 bonus points. Day 45 gives you 45 bonus points.
+                      </p>
                     </div>
                   </div>
                 </div>

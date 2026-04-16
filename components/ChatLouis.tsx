@@ -10,8 +10,9 @@ import { buildPersistedFeatureTours, DEFAULT_FEATURE_TOURS, normalizeFeatureTour
 import { useFeatureRenderPriority } from "./FeatureRenderPriorityContext";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
 import { buildLouisGuideChatMessage, getLouisPageGuide } from "../lib/louisGuidance";
-import { getVerseIntro, getVerseOfTheDay } from "../lib/verseOfTheDay";
+import { getVerseIntro, getVerseOfTheDay, type VerseOfTheDayEntry } from "../lib/verseOfTheDay";
 import { LOUIS_MOMENT_EVENT, type LouisMomentDetail, type LouisMomentReply } from "../lib/louisMoments";
+import { syncCurrentStreakToProfileStats } from "../lib/profileStats";
 
 type MessageRole = "user" | "assistant";
 
@@ -27,6 +28,8 @@ type QuickReplyAction =
   | "daily_yes"
   | "daily_no"
   | "daily_verse"
+  | "daily_verse_explain"
+  | "daily_verse_skip"
   | "daily_recommendation"
   | "daily_continue"
   | "daily_talk"
@@ -226,6 +229,26 @@ function getTimeOfDayGreeting() {
   return "Good evening";
 }
 
+function buildVerseExplanationMessage(verse: VerseOfTheDayEntry) {
+  const sections = verse.explanationSections ?? [];
+  const parts = sections
+    .map((section) => {
+      const heading = section.heading?.trim();
+      const body = section.body?.trim();
+      if (!body) return null;
+      if (!heading) return body;
+      return `${heading}: ${body}`;
+    })
+    .filter((value): value is string => Boolean(value));
+
+  return [
+    `Yeah, let me break that down a little more.`,
+    `When you slow this verse down, here's the bigger picture.`,
+    ...parts,
+    `That’s why this verse is not just something to read. It’s something to carry with you today.`,
+  ].join("\n\n");
+}
+
 function normalizeOnboardingGoal(value: string | null | undefined) {
   if (!value) return null;
 
@@ -313,38 +336,38 @@ function getStreakCelebrationLine(currentStreak: number) {
   }
 
   if (currentStreak === 1) {
-    return "You're on day 1 right now. Once you hit 30 days, you earn the fire and your habit really starts to feel real.";
+    return "You're on day 1 right now, and that also means you just picked up 1 extra level point from your streak. Once you hit 30 days, you earn the fire and your habit really starts to feel real.";
   }
 
   if (currentStreak === 2) {
-    return "This is your second day in a row. That's how a habit starts getting real.";
+    return "This is your second day in a row. That's how a habit starts getting real, and your streak just gave you 2 extra level points today.";
   }
 
   if (currentStreak === 3) {
-    return "You're on day 3 now. That's real momentum, not just a random check-in.";
+    return "You're on day 3 now. That's real momentum, not just a random check-in, and your streak just added 3 extra level points.";
   }
 
   if (currentStreak === 4) {
-    return "Four days in a row is big. Most people talk about consistency, but this is what consistency actually looks like.";
+    return "Four days in a row is big. Most people talk about consistency, but this is what consistency actually looks like, and your streak just gave you 4 extra level points.";
   }
 
   if (currentStreak === 5) {
-    return "Five straight days is strong. You're not just visiting Bible Buddy now. You're building something.";
+    return "Five straight days is strong. You're not just visiting Bible Buddy now. You're building something, and you just picked up 5 extra level points from your streak.";
   }
 
   if (currentStreak === 6) {
-    return "Six days in a row is serious. You're close to a full week of showing up for your walk with God.";
+    return "Six days in a row is serious. You're close to a full week of showing up for your walk with God, and your streak just gave you 6 extra level points.";
   }
 
   if (currentStreak === 7) {
-    return "A full week in a row is strong. That's how Bible study starts becoming part of your real life.";
+    return "A full week in a row is strong. That's how Bible study starts becoming part of your real life, and today your streak gave you 7 extra level points.";
   }
 
   if (currentStreak < 30) {
-    return `You're on day ${currentStreak}. Keep stacking days like this and the fire is coming.`;
+    return `You're on day ${currentStreak}, which means you just got ${currentStreak} extra level points from your streak today. Keep stacking days like this and the fire is coming.`;
   }
 
-  return `You're on day ${currentStreak}, and you've already earned the fire. Now it's about protecting the habit and growing deeper.`;
+  return `You're on day ${currentStreak}, and you've already earned the fire. You also just picked up ${currentStreak} extra level points from your streak today. Now it's about protecting the habit and growing deeper.`;
 }
 
 function buildHabitNudgeFromCards(openedCards: string[]): LouisHabitNudge | null {
@@ -1095,23 +1118,26 @@ export function ChatLouis() {
         }
       }
 
-      const { data: profileStats, error: profileError } = await supabase
-        .from("profile_stats")
-        .select("*")
-        .eq("user_id", user.id)
-        .maybeSingle();
+      const [{ data: profileStats, error: profileError }, streakData] = await Promise.all([
+        supabase
+          .from("profile_stats")
+          .select("*")
+          .eq("user_id", user.id)
+          .maybeSingle(),
+        syncCurrentStreakToProfileStats(user.id),
+      ]);
 
       if (cancelled) return;
 
       if (profileError) {
         console.error("[LOUIS] Error loading profile context:", profileError);
         setLouisFeatureTours({ ...DEFAULT_FEATURE_TOURS });
-        setCurrentStreak(0);
+        setCurrentStreak(streakData.currentStreak ?? 0);
         setUserProfileImageUrl(null);
         setBibleExperienceLevel(null);
       } else {
         setLouisFeatureTours(normalizeFeatureTours(profileStats?.feature_tours));
-        setCurrentStreak(profileStats?.current_streak ?? 0);
+        setCurrentStreak(streakData.currentStreak);
         setUserProfileImageUrl(profileStats?.profile_image_url ?? null);
         setBibleExperienceLevel(profileStats?.bible_experience_level ?? null);
         setConversationMemory({
@@ -1450,6 +1476,8 @@ export function ChatLouis() {
     if (!louisUserId) return;
     rememberDailyGreetingSeen(louisUserId);
     setHasUnseenDailyGreeting(false);
+    const today = new Date().toISOString().slice(0, 10);
+    persistLouisProfile({ verse_of_the_day_shown: today, louis_last_check_in_at: new Date().toISOString() });
   }
 
   function rememberGuidePromptShown() {
@@ -1523,9 +1551,15 @@ export function ChatLouis() {
       }\n\n${experienceTone}\n\nThe best way to start is simple: pick one devotional and let me walk with you through it day by day.\n\nYou do one thing a day. I'll help with the rest.\n\nHow are you doing today?`;
     } else if (currentStreak === 2 && primaryDevotional && devotionalNextDay) {
       message = `${getTimeOfDayGreeting()}. Welcome back,${formattedGoal ? ` friend` : ""}.\n\nYou're on day 2.\n\nThis is how habits actually start.\n\nYesterday you finished day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}.\n\nReady for day ${devotionalNextDay}?\n\nHow are you doing today?`;
-    } else if (currentStreak >= 3 && primaryDevotional && primaryDevotional.dayNumber >= 3) {
+    } else if (currentStreak === 3 && primaryDevotional && primaryDevotional.dayNumber >= 3) {
       message = `${getTimeOfDayGreeting()}. Welcome back.\n\nDay 3 looks good on you.\n\nYou're not just browsing anymore. You're building something now.\n\nYou finished day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}.\n\nIf you want, after that we can reinforce it with something interactive.\n\nHow are you doing today?`;
-    } else if (currentStreak >= 7) {
+    } else if (currentStreak === 4) {
+      message = `${getTimeOfDayGreeting()}. Welcome back.\n\nFour days in a row.\n\nThat is where this starts turning from interest into rhythm.\n\nKeep it simple today. Protect the streak, and let me point you to the right next step.\n\nHow are you doing today?`;
+    } else if (currentStreak === 5) {
+      message = `${getTimeOfDayGreeting()}. Welcome back.\n\nFive straight days. That's strong.\n\nYesterday mattered, and today matters too.\n\nI'll help you keep this going without overcomplicating it.\n\nHow are you doing today?`;
+    } else if (currentStreak === 6) {
+      message = `${getTimeOfDayGreeting()}. Welcome back.\n\nSix days in a row.\n\nYou're right on the edge of a full week now.\n\nLet's not waste the momentum. Show up today and keep building.\n\nHow are you doing today?`;
+    } else if (currentStreak === 7) {
       message = `${getTimeOfDayGreeting()}. Welcome back.\n\nSeven days in a row. That's real consistency.\n\nMost people say they want to grow. Fewer actually show up for a full week. You did.\n\nYou've got a base now, and I'm going to help you build on it.\n\nHow are you doing today?`;
     } else {
       const streakIntro =
@@ -1580,6 +1614,13 @@ export function ChatLouis() {
       markRecommendationSeenLocal();
     }
     persistLouisProfile({ louis_last_check_in_at: new Date().toISOString() });
+    if (currentStreak > 7) {
+      appendAssistantMessage(
+        `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nYou're on day ${currentStreak} right now.\n\n${getStreakCelebrationLine(currentStreak)}`,
+      );
+      await shareVerseOfTheDayInChat();
+      return;
+    }
 
     appendAssistantMessage(buildDailyConversationMessage());
     seedQuickReplies(getDailyQuickReplies());
@@ -1601,6 +1642,13 @@ export function ChatLouis() {
       markRecommendationSeenLocal();
     }
     persistLouisProfile({ louis_last_check_in_at: new Date().toISOString() });
+    if (currentStreak > 7) {
+      appendAssistantMessage(
+        `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nYou're on day ${currentStreak} right now.\n\n${getStreakCelebrationLine(currentStreak)}`,
+      );
+      await shareVerseOfTheDayInChat();
+      return;
+    }
     appendAssistantMessage(buildDailyConversationMessage());
     seedQuickReplies(getDailyQuickReplies());
   }
@@ -1652,18 +1700,50 @@ export function ChatLouis() {
   }
 
   async function shareVerseOfTheDayInChat() {
-    const firstSection = todayVerse.explanationSections[0];
-    const secondSection = todayVerse.explanationSections[1];
-
     appendAssistantMessage(
-      `${todayVerseIntro}\n\n${todayVerse.reference}\n\n${todayVerse.text}\n\n${todayVerse.subtitle}\n\n${firstSection?.body ?? ""}${secondSection?.body ? `\n\n${secondSection.body}` : ""}\n\nWant me to break it down more, or do you want a recommendation for what to do next today?`,
+      `${todayVerseIntro}\n\n${todayVerse.reference}\n\n${todayVerse.text}\n\n${todayVerse.subtitle}\n\nDo you want me to explain this verse a little more?`,
     );
 
     seedQuickReplies([
-      { id: "verse-rec", label: "Give me a recommendation", action: "daily_recommendation" },
+      { id: "verse-explain", label: "Yes, explain it", action: "daily_verse_explain" },
+      { id: "verse-skip", label: "No, keep going", action: "daily_verse_skip" },
       { id: "verse-talk", label: "Let's talk about it", action: "daily_talk" },
-      { id: "verse-open-page", label: "Open verse page", action: "recommendation_open" },
     ]);
+  }
+
+  async function shareDailyRecommendationAfterVerse(preface?: string) {
+    if (louisRecommendation) {
+      await shareRecommendationInChat(
+        preface ?? `You're on day ${currentStreak}. Keep that streak alive by doing this next.`,
+      );
+      return;
+    }
+
+    if (lastMasterActionSummary) {
+      appendAssistantMessage(
+        `${preface ?? `You're on day ${currentStreak}. Keep that streak alive by doing this next.`}\n\n${lastMasterActionSummary.summary}\n\n${lastMasterActionSummary.followUp}`,
+      );
+      seedQuickReplies(
+        [
+          lastMasterActionSummary.continueLabel && lastMasterActionSummary.continueHref
+            ? { id: "verse-continue-last", label: lastMasterActionSummary.continueLabel, action: "daily_continue" as const }
+            : null,
+          { id: "verse-rec-fallback", label: "Today's verse again", action: "daily_verse" as const },
+          { id: "verse-talk-fallback", label: "Let's talk", action: "daily_talk" as const },
+        ].filter(Boolean) as QuickReply[],
+      );
+      return;
+    }
+
+    if (habitNudge) {
+      appendAssistantMessage(
+        `${preface ?? `You're on day ${currentStreak}. Keep that streak alive by doing this next.`}\n\n${habitNudge.summary}`,
+      );
+      seedQuickReplies([
+        { id: "verse-nudge", label: habitNudge.label, action: "daily_try_missing" as const },
+        { id: "verse-talk-fallback", label: "Let's talk", action: "daily_talk" as const },
+      ]);
+    }
   }
 
   async function handleQuickReply(reply: QuickReply) {
@@ -1688,6 +1768,12 @@ export function ChatLouis() {
             ? `That's good to hear.\n\nSince this is your first time, how about we do this together?\n\nThe best first move is to pick one devotional and let me guide you through it day by day.`
             : currentStreak === 2 && primaryDevotional
               ? `Love that.\n\nDay 2 matters because this is when the habit starts getting real.\n\nGo back into ${primaryDevotional.title} and do the next day first.`
+              : currentStreak === 4
+                ? `Love that.\n\nFour days in means this is starting to become real.\n\nKeep the streak alive first, then if you want I can stretch you into one more feature after that.`
+                : currentStreak === 5
+                  ? `Love that.\n\nFive straight days is strong.\n\nToday I want you to protect the streak first, then build on it with the next right step.`
+                  : currentStreak === 6
+                    ? `Love that.\n\nSix days in a row means you are right on the edge of a full week.\n\nDo not waste the momentum today.`
               : currentStreak >= 3 && primaryDevotional?.dayNumber && primaryDevotional.dayNumber >= 3 && !louisFeatureRollout.trivia_intro_seen
                 ? `Love that.\n\nYou've already got some momentum.\n\nAfter your devotional today, I want you to try something that reinforces it too.`
                 : currentStreak >= 7 && !louisFeatureRollout.group_intro_seen
@@ -1711,6 +1797,9 @@ export function ChatLouis() {
               : null,
             currentStreak === 2 && primaryDevotional
               ? { id: "daily-good-rec", label: `Start day ${Math.min(primaryDevotional.dayNumber + 1, primaryDevotional.totalDays || primaryDevotional.dayNumber + 1)}`, action: "daily_recommendation" as const }
+              : null,
+            currentStreak === 4 || currentStreak === 5 || currentStreak === 6
+              ? { id: "daily-good-rec-streak", label: "Keep the streak going", action: "daily_recommendation" as const }
               : null,
             currentStreak >= 3 && primaryDevotional?.dayNumber && primaryDevotional.dayNumber >= 3 && !louisFeatureRollout.trivia_intro_seen
               ? { id: "daily-good-rec", label: "Open trivia", action: "daily_recommendation" as const }
@@ -1797,6 +1886,17 @@ export function ChatLouis() {
         break;
       case "daily_verse":
         await shareVerseOfTheDayInChat();
+        break;
+      case "daily_verse_explain":
+        appendAssistantMessage(buildVerseExplanationMessage(todayVerse));
+        await shareDailyRecommendationAfterVerse(
+          `And look, you're on day ${currentStreak}. Keep that streak alive by doing this today.`,
+        );
+        break;
+      case "daily_verse_skip":
+        await shareDailyRecommendationAfterVerse(
+          `Alright. You're on day ${currentStreak}. Keep that streak alive by doing this today.`,
+        );
         break;
       case "daily_recommendation":
         await shareRecommendationInChat("Here’s what I think would be good for you today.");

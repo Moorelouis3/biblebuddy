@@ -336,6 +336,29 @@ export async function calculateStreakFromActions(
   }
 }
 
+export async function syncCurrentStreakToProfileStats(
+  userId: string
+): Promise<StreakData> {
+  const streakData = await calculateStreakFromActions(userId);
+
+  const { error } = await supabase
+    .from("profile_stats")
+    .upsert(
+      {
+        user_id: userId,
+        current_streak: streakData.currentStreak,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: "user_id" },
+    );
+
+  if (error) {
+    console.error("[STREAK] Error syncing current_streak to profile_stats:", error);
+  }
+
+  return streakData;
+}
+
 /**
  * Get day of week abbreviation (S, M, T, W, T, F, S)
  */

@@ -7,6 +7,7 @@
 
 import { supabase } from "./supabaseClient";
 import { ACTION_TYPE } from "./actionTypes";
+import { syncCurrentStreakToProfileStats } from "./profileStats";
 
 // In-memory lock to prevent concurrent calls racing past the localStorage check
 const inFlight = new Set<string>();
@@ -86,6 +87,8 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
       // Continue anyway - we still want to update last_active_date
     }
 
+    const streakData = await syncCurrentStreakToProfileStats(userId);
+
     // Update profile_stats with last_active_date
     const { error: statsError } = await supabase
       .from("profile_stats")
@@ -94,6 +97,7 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
           user_id: userId,
           last_active_date: today,
           username: username,
+          current_streak: streakData.currentStreak,
           updated_at: new Date().toISOString(),
         },
         {

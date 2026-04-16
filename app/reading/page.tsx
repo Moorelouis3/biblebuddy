@@ -244,8 +244,6 @@ export default function ReadingPage() {
 
         {/* MAIN CARD */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8">
-          {false && (
-          <>
           {/* LOUIS TALKING */}
           <div className="mt-1 mb-4 flex items-start gap-3">
             <LouisAvatar mood="bible" size={56} />
@@ -260,8 +258,6 @@ export default function ReadingPage() {
             </div>
           </div>
 
-          </>
-          )}
           {/* BOOK GRID */}
           <div className="space-y-4">
             <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-2">

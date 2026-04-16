@@ -235,6 +235,7 @@ export function calculateWeightedPoints(options: {
   groupCommentCount: number;
   groupLikeGivenCount: number;
   likesReceivedCount: number;
+  streakBonusPoints?: number;
 }) {
   const studyPoints = options.actionTypes.reduce((total, actionType) => {
     return total + (ACTION_POINT_WEIGHTS[actionType as ActionType] ?? 0);
@@ -245,7 +246,9 @@ export function calculateWeightedPoints(options: {
     options.groupCommentCount * SOCIAL_POINT_WEIGHTS.groupCommentCreated +
     options.groupLikeGivenCount * SOCIAL_POINT_WEIGHTS.groupLikeGiven;
 
-  const bonusPoints = options.likesReceivedCount * SOCIAL_POINT_WEIGHTS.likeReceived;
+  const bonusPoints =
+    options.likesReceivedCount * SOCIAL_POINT_WEIGHTS.likeReceived +
+    Math.max(0, options.streakBonusPoints ?? 0);
   const totalPoints = studyPoints + socialPoints + bonusPoints;
 
   return {
