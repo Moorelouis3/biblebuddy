@@ -61,6 +61,7 @@ type DevotionalRow = {
 };
 
 export type WeeklyBibleReport = {
+  title?: string | null;
   message: string;
   action: WeeklyReportAction | null;
   stats: {
@@ -320,6 +321,35 @@ export async function sendDirectMessage(
     return true;
   } catch (error: any) {
     console.error("[WEEKLY_REPORT] Unexpected error sending DM:", error?.message);
+    return false;
+  }
+}
+
+export async function sendLouisInboxMessage(
+  db: any,
+  userId: string,
+  report: WeeklyBibleReport,
+): Promise<boolean> {
+  try {
+    const { error } = await db.from("louis_inbox_messages").insert({
+      user_id: userId,
+      kind: "weekly_bible_report",
+      title: report.title ?? "Your Weekly Bible Report",
+      content: report.message,
+      action_label: report.action?.label ?? null,
+      action_href: report.action?.href ?? null,
+      meta: { stats: report.stats },
+      created_at: new Date().toISOString(),
+    });
+
+    if (error) {
+      console.error("[WEEKLY_REPORT] Failed to insert Louis inbox message:", error.message);
+      return false;
+    }
+
+    return true;
+  } catch (error: any) {
+    console.error("[WEEKLY_REPORT] Unexpected error inserting Louis inbox message:", error?.message);
     return false;
   }
 }
@@ -918,6 +948,116 @@ export function buildWeeklyReportForUser(
 
   return {
     message,
+    action: null,
+    stats: {
+      activeDays,
+      totalActions: actions.length,
+      chaptersRead,
+      triviaCompleted,
+      scrambledCompleted,
+      devotionalsCompleted,
+    },
+  };
+}
+
+export function buildWeeklyLouisReportForUser(
+  userId: string,
+  actions: WeeklyActionRow[],
+  context: WeeklyContext,
+  weekKey: string,
+): WeeklyBibleReport {
+  const profile = context.profileMap.get(userId);
+  const firstName = getFirstName(profile);
+  const activeDays = new Set(actions.map((action) => action.created_at.slice(0, 10))).size;
+  const count = (actionType: string) => actions.filter((action) => action.action_type === actionType).length;
+
+  const chaptersRead = count("chapter_completed");
+  const devotionalsCompleted = count("devotional_day_completed");
+  const triviaCompleted = count("trivia_chapter_completed");
+  const scrambledCompleted = count("scrambled_chapter_completed");
+  const peopleLearned = count("person_learned");
+  const placesLearned = count("place_discovered");
+  const keywordsLearned = count("keyword_mastered");
+  const notesCreated = count("note_created");
+  const highlights = count("verse_highlighted");
+  const chapterReviews = count("chapter_notes_reviewed");
+  const commentsPosted = count("feed_post_commented");
+  const repliesPosted = count("feed_post_replied");
+  const groupMessages = count("group_message_sent");
+
+  const statLines = [
+    chaptersRead ? `📖 You finished ${formatCount(chaptersRead, "Bible chapter")}.` : null,
+    devotionalsCompleted ? `🌿 You completed ${formatCount(devotionalsCompleted, "devotional day")}.` : null,
+    chapterReviews ? `📝 You opened ${formatCount(chapterReviews, "chapter review")}.` : null,
+    triviaCompleted ? `🧠 You finished ${formatCount(triviaCompleted, "trivia chapter")}.` : null,
+    scrambledCompleted ? `🔤 You finished ${formatCount(scrambledCompleted, "Scrambled chapter")}.` : null,
+    peopleLearned || placesLearned || keywordsLearned
+      ? `🔎 You explored ${toSentenceCaseList([
+          peopleLearned ? formatCount(peopleLearned, "person") : "",
+          placesLearned ? formatCount(placesLearned, "place") : "",
+          keywordsLearned ? formatCount(keywordsLearned, "keyword") : "",
+        ].filter(Boolean))}.`
+      : null,
+    notesCreated || highlights
+      ? `✍️ You made ${toSentenceCaseList([
+          notesCreated ? formatCount(notesCreated, "note") : "",
+          highlights ? formatCount(highlights, "verse highlight") : "",
+        ].filter(Boolean))}.`
+      : null,
+    commentsPosted || repliesPosted || groupMessages
+      ? `🤝 You showed up in community with ${toSentenceCaseList([
+          commentsPosted ? formatCount(commentsPosted, "comment") : "",
+          repliesPosted ? formatCount(repliesPosted, "reply") : "",
+          groupMessages ? formatCount(groupMessages, "message") : "",
+        ].filter(Boolean))}.`
+      : null,
+    `📅 You were active on ${formatCount(activeDays, "day")} this week and logged ${formatCount(actions.length, "action")}.`,
+    profile?.current_streak ? `🔥 Your current streak is ${formatCount(profile.current_streak, "day")}.` : null,
+    profile?.current_level ? `⭐ You are holding Level ${profile.current_level} in Bible Buddy.` : null,
+  ].filter(Boolean) as string[];
+
+  const recommendations = pickRecommendations(userId, profile, actions, context);
+  const encouragementLine =
+    chaptersRead + devotionalsCompleted + triviaCompleted + scrambledCompleted >= 3
+      ? `You put in real reps this week, and that kind of consistency is exactly how your level keeps becoming more real. Level ${profile?.current_level ?? 1} means you are not just opening the app, you are actually growing in it.`
+      : `Even a small week still matters, because it keeps you connected to Scripture instead of drifting away from it. And Level ${profile?.current_level ?? 1} is still proof that the little things you do here are adding up.`;
+
+  const quickActionLines = recommendations
+    .map((recommendation) =>
+      recommendation.action && recommendation.quickActionLabel
+        ? `👉 ${recommendation.quickActionLabel}: ${recommendation.action.href}`
+        : null,
+    )
+    .filter(Boolean) as string[];
+
+  const nextStepLines = recommendations.length
+    ? recommendations.map((recommendation, index) => `${index + 1}. ${recommendation.line}`)
+    : [
+        "1. Open the Bible and finish one chapter.",
+        "2. Take the trivia quiz for that chapter.",
+        "3. Play one Scrambled round so the chapter sticks a little better.",
+      ];
+
+  return {
+    title: `Weekly Bible Report • ${formatWeekRange(weekKey)}`,
+    message: [
+      `Hey ${firstName}, here’s your weekly Bible report.`,
+      "",
+      "📊 Your week",
+      ...statLines,
+      "",
+      "💭 Why it matters",
+      encouragementLine,
+      "",
+      "➡️ What I think you should do next",
+      ...nextStepLines,
+      "",
+      "⚡ Quick action",
+      ...(quickActionLines.length ? quickActionLines : ["👉 Open The Bible: /reading"]),
+      "",
+      "Keep showing up.",
+      "Louis",
+    ].join("\n"),
     action: null,
     stats: {
       activeDays,

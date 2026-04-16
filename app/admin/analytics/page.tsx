@@ -43,7 +43,6 @@ type WeeklyReportCenterRow = {
   sentAt: string | null;
   isPaid: boolean;
   currentLevel: number | null;
-  bucketDay: string | null;
 };
 
 type WeeklyReportCenterSummary = {
@@ -263,10 +262,8 @@ export default function AnalyticsPage() {
     totalActions7d: 0,
   });
   const [loadingWeeklyReportCenter, setLoadingWeeklyReportCenter] = useState(true);
-  const [savingWeeklyBucketUserId, setSavingWeeklyBucketUserId] = useState<string | null>(null);
   const [sendingWeeklyReports, setSendingWeeklyReports] = useState(false);
   const [weeklyReportStatus, setWeeklyReportStatus] = useState<string | null>(null);
-  const [seededFounderBucket, setSeededFounderBucket] = useState(false);
 
   // Ambassador / Buddy Partners
   type AmbassadorReferral = { referred_user_id: string; username: string; profile_image_url: string | null; trial_started_at: string; trial_ends_at: string };
@@ -335,28 +332,6 @@ export default function AnalyticsPage() {
       setSelectedActionLabel(null);
     }
   }, [selectedActionType, selectedActionLabel]);
-
-  useEffect(() => {
-    if (seededFounderBucket || loadingWeeklyReportCenter || savingWeeklyBucketUserId) {
-      return;
-    }
-
-    const founderRow = weeklyReportRows.find((row) => {
-      const displayName = row.displayName.trim().toLowerCase();
-      const username = row.username.trim().toLowerCase();
-      return displayName === "louis moore" || username === "moorelouis3" || username === "louis moore";
-    });
-
-    if (founderRow && !founderRow.bucketDay) {
-      setSeededFounderBucket(true);
-      void updateWeeklyReportBucket(founderRow.userId, "thursday");
-      return;
-    }
-
-    if (founderRow) {
-      setSeededFounderBucket(true);
-    }
-  }, [weeklyReportRows, seededFounderBucket, loadingWeeklyReportCenter, savingWeeklyBucketUserId]);
 
   // Load active users (within last 60 minutes)
   async function loadActiveUsers() {
@@ -1986,19 +1961,6 @@ export default function AnalyticsPage() {
         sentAtByUser.set(row.user_id, row.sent_at);
       }
 
-      const { data: bucketRows, error: bucketRowsError } = await supabase
-        .from("weekly_bible_report_buckets")
-        .select("user_id, bucket_day");
-
-      if (bucketRowsError) {
-        console.error("[WEEKLY_REPORT_CENTER] Error loading buckets:", bucketRowsError);
-      }
-
-      const bucketDayByUser = new Map<string, string>();
-      for (const row of (bucketRows || []) as Array<{ user_id: string; bucket_day: string }>) {
-        bucketDayByUser.set(row.user_id, row.bucket_day);
-      }
-
       const profilesMap = new Map<string, {
         user_id: string;
         username: string | null;
@@ -2037,7 +1999,6 @@ export default function AnalyticsPage() {
             sentAt: sentAtByUser.get(userId) || null,
             isPaid: profile?.is_paid === true,
             currentLevel: profile?.current_level ?? null,
-            bucketDay: bucketDayByUser.get(userId) || null,
           };
         })
         .sort((a, b) => {
@@ -2066,39 +2027,14 @@ export default function AnalyticsPage() {
     setLoadingWeeklyReportCenter(false);
   }
 
-  async function updateWeeklyReportBucket(userId: string, bucketDay: string) {
-    setSavingWeeklyBucketUserId(userId);
-    setWeeklyReportStatus(null);
-    try {
-      const response = await fetch("/api/admin/weekly-bible-report", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "set_bucket", userId, bucketDay }),
-      });
-
-      const result = await response.json();
-      if (!response.ok) {
-        throw new Error(result?.error || "Failed to save weekly report bucket.");
-      }
-
-      setWeeklyReportStatus(`Weekly report day saved: ${bucketDay}.`);
-      await loadWeeklyReportCenter();
-    } catch (error) {
-      console.error("[WEEKLY_REPORT_CENTER] Failed to update bucket:", error);
-      setWeeklyReportStatus(error instanceof Error ? error.message : "Failed to update weekly report day.");
-    } finally {
-      setSavingWeeklyBucketUserId(null);
-    }
-  }
-
-  async function sendWeeklyReports(limit = 50) {
+  async function sendWeeklyReportsNow() {
     setSendingWeeklyReports(true);
     setWeeklyReportStatus(null);
     try {
       const response = await fetch("/api/admin/weekly-bible-report", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "send_today", limit }),
+        body: JSON.stringify({ type: "send_now" }),
       });
 
       const result = await response.json();
@@ -2107,7 +2043,7 @@ export default function AnalyticsPage() {
       }
 
       setWeeklyReportStatus(
-        `Sent ${result.sent ?? 0} weekly reports for ${result.bucketDay ?? "today"} and skipped ${result.skipped ?? 0}.`,
+        `Sent ${result.sent ?? 0} Louis weekly reports and skipped ${result.skipped ?? 0}.`,
       );
       await loadWeeklyReportCenter();
     } catch (error) {
@@ -3270,16 +3206,16 @@ export default function AnalyticsPage() {
                     <div>
                       <h3 className="text-lg font-bold text-gray-900">Weekly Bible Report</h3>
                       <p className="text-sm text-gray-500">
-                        Users with at least 1 action in the last 7 days, the weekday they belong to, and whether this week&apos;s report was sent.
+                        Every Thursday around 6:30 PM, active users from the last 7 days get their weekly Bible report inside Little Louis chat.
                       </p>
                     </div>
                     <div className="flex items-center gap-3">
                       <button
-                        onClick={() => sendWeeklyReports(50)}
+                        onClick={() => sendWeeklyReportsNow()}
                         disabled={sendingWeeklyReports}
                         className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
                       >
-                        {sendingWeeklyReports ? "Sending..." : "Send 50 Today"}
+                        {sendingWeeklyReports ? "Sending..." : "Send Thursday Report Now"}
                       </button>
                       <button
                         onClick={() => loadWeeklyReportCenter()}
@@ -3308,8 +3244,7 @@ export default function AnalyticsPage() {
                             <th className="px-4 py-3">Last Action</th>
                             <th className="px-4 py-3">Level</th>
                             <th className="px-4 py-3">Plan</th>
-                            <th className="px-4 py-3">Send Day</th>
-                            <th className="px-4 py-3">Weekly Report</th>
+                            <th className="px-4 py-3">Louis Report</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -3335,25 +3270,10 @@ export default function AnalyticsPage() {
                                 </span>
                               </td>
                               <td className="px-4 py-3 align-top">
-                                <select
-                                  value={row.bucketDay || ""}
-                                  onChange={(event) => updateWeeklyReportBucket(row.userId, event.target.value)}
-                                  disabled={savingWeeklyBucketUserId === row.userId}
-                                  className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-gray-700 focus:border-blue-500 focus:outline-none"
-                                >
-                                  <option value="" disabled>Select day</option>
-                                  {["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"].map((day) => (
-                                    <option key={day} value={day}>
-                                      {day.charAt(0).toUpperCase() + day.slice(1)}
-                                    </option>
-                                  ))}
-                                </select>
-                              </td>
-                              <td className="px-4 py-3 align-top">
                                 {row.sentAt ? (
                                   <div>
                                     <span className="inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-800">
-                                      Sent
+                                      Sent in Louis
                                     </span>
                                     <div className="mt-1 text-xs text-gray-500">
                                       {formatAdminActionDate(new Date(row.sentAt))} at {formatAdminActionTime(new Date(row.sentAt))}
@@ -3361,7 +3281,7 @@ export default function AnalyticsPage() {
                                   </div>
                                 ) : (
                                   <span className="inline-flex rounded-full bg-yellow-100 px-2.5 py-1 text-xs font-semibold text-yellow-800">
-                                    Not sent yet
+                                    Waiting for Thursday
                                   </span>
                                 )}
                               </td>

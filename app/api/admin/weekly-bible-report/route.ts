@@ -2,16 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import {
   buildWeeklyContext,
-  buildWeeklyReportForUser,
+  buildWeeklyLouisReportForUser,
   claimWeeklyReport,
-  ensureWeeklyBuckets,
   fetchRecentActions,
-  getBucketDay,
   getWeekKey,
   releaseWeeklyClaim,
   resolveFounderId,
-  sendDirectMessage,
-  type WeeklyBucketDay,
+  sendLouisInboxMessage,
 } from "@/lib/weeklyBibleReport";
 
 export const runtime = "nodejs";
@@ -19,15 +16,6 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-const VALID_BUCKET_DAYS: WeeklyBucketDay[] = [
-  "sunday",
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday",
-];
 
 function getDb() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -42,7 +30,7 @@ function getDb() {
   });
 }
 
-async function sendTodayBucket(limit = 50) {
+async function sendWeeklyLouisReportsNow() {
   const db: any = getDb();
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -56,17 +44,8 @@ async function sendTodayBucket(limit = 50) {
     throw new Error("Founder account not found.");
   }
 
-  const { data: louisProfile } = await db
-    .from("profile_stats")
-    .select("display_name, username")
-    .eq("user_id", louisId)
-    .maybeSingle();
-  const louisName = louisProfile?.display_name || louisProfile?.username || "Louis";
-
   const since = new Date(Date.now() - 7 * DAY_MS).toISOString();
   const weekKey = getWeekKey();
-  const bucketDay = getBucketDay();
-
   const recentActions = await fetchRecentActions(db, since);
   const actionsByUser = new Map<string, Array<{ user_id: string; action_type: string; action_label: string | null; created_at: string }>>();
 
@@ -77,20 +56,14 @@ async function sendTodayBucket(limit = 50) {
     actionsByUser.set(action.user_id, bucket);
   }
 
-  const allActiveUserIds = [...actionsByUser.keys()];
-  const bucketMap = await ensureWeeklyBuckets(db, allActiveUserIds, bucketDay);
-
-  let activeUserIds = allActiveUserIds
-    .filter((userId) => bucketMap.get(userId) === bucketDay)
-    .sort((leftUserId, rightUserId) => {
-      const leftActions = actionsByUser.get(leftUserId) ?? [];
-      const rightActions = actionsByUser.get(rightUserId) ?? [];
-      if (rightActions.length !== leftActions.length) {
-        return rightActions.length - leftActions.length;
-      }
-      return (rightActions[0]?.created_at || "").localeCompare(leftActions[0]?.created_at || "");
-    })
-    .slice(0, Math.max(1, limit));
+  const activeUserIds = [...actionsByUser.keys()].sort((leftUserId, rightUserId) => {
+    const leftActions = actionsByUser.get(leftUserId) ?? [];
+    const rightActions = actionsByUser.get(rightUserId) ?? [];
+    if (rightActions.length !== leftActions.length) {
+      return rightActions.length - leftActions.length;
+    }
+    return (rightActions[0]?.created_at || "").localeCompare(leftActions[0]?.created_at || "");
+  });
 
   const context = await buildWeeklyContext(db, activeUserIds);
 
@@ -105,7 +78,7 @@ async function sendTodayBucket(limit = 50) {
       continue;
     }
 
-    const report = buildWeeklyReportForUser(userId, userActions, context, weekKey);
+    const report = buildWeeklyLouisReportForUser(userId, userActions, context, weekKey);
     let claimed = false;
 
     try {
@@ -115,7 +88,7 @@ async function sendTodayBucket(limit = 50) {
         continue;
       }
 
-      const ok = await sendDirectMessage(db, louisId, louisName, userId, report.message, report.action);
+      const ok = await sendLouisInboxMessage(db, userId, report);
       if (!ok) {
         await releaseWeeklyClaim(db, userId, weekKey);
         errors++;
@@ -134,9 +107,7 @@ async function sendTodayBucket(limit = 50) {
 
   return {
     ok: true,
-    bucketDay,
-    usersConsidered: activeUserIds.length,
-    usersActiveLast7d: allActiveUserIds.length,
+    usersActiveLast7d: activeUserIds.length,
     sent,
     skipped,
     errors,
@@ -153,36 +124,8 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    if (body?.type === "set_bucket") {
-      const userId = String(body?.userId || "").trim();
-      const bucketDay = String(body?.bucketDay || "").trim().toLowerCase() as WeeklyBucketDay;
-
-      if (!userId || !VALID_BUCKET_DAYS.includes(bucketDay)) {
-        return NextResponse.json({ error: "Invalid user or bucket day." }, { status: 400 });
-      }
-
-      const { error } = await db
-        .from("weekly_bible_report_buckets")
-        .upsert(
-          {
-            user_id: userId,
-            bucket_day: bucketDay,
-            updated_at: new Date().toISOString(),
-          },
-          { onConflict: "user_id" },
-        );
-
-      if (error) {
-        console.error("[ADMIN_WEEKLY_REPORT] Failed to save bucket:", error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
-      }
-
-      return NextResponse.json({ ok: true, userId, bucketDay });
-    }
-
-    if (body?.type === "send_today") {
-      const limit = Number.isFinite(Number(body?.limit)) ? Number(body.limit) : 50;
-      const result = await sendTodayBucket(limit);
+    if (body?.type === "send_now") {
+      const result = await sendWeeklyLouisReportsNow();
       return NextResponse.json(result);
     }
 

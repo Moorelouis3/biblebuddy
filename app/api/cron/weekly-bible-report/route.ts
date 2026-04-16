@@ -2,13 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import {
   buildWeeklyContext,
-  buildWeeklyReportForUser,
+  buildWeeklyLouisReportForUser,
   claimWeeklyReport,
   fetchRecentActions,
   getWeekKey,
   releaseWeeklyClaim,
+  sendLouisInboxMessage,
   resolveFounderId,
-  sendDirectMessage,
 } from "@/lib/weeklyBibleReport";
 
 export const runtime = "nodejs";
@@ -16,11 +16,21 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const DAY_MS = 24 * 60 * 60 * 1000;
+const REPORT_TIMEZONE = process.env.WEEKLY_REPORT_TIMEZONE || "America/New_York";
 
 function isAuthorized(request: NextRequest) {
   const secret = process.env.CRON_SECRET;
   if (!secret) return true;
   return request.headers.get("authorization") === `Bearer ${secret}`;
+}
+
+function isThursdayInReportTimezone(anchorDate = new Date()) {
+  const weekday = new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    timeZone: REPORT_TIMEZONE,
+  }).format(anchorDate);
+
+  return weekday.toLowerCase() === "thursday";
 }
 
 export async function GET(request: NextRequest) {
@@ -34,6 +44,14 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Server not configured." }, { status: 500 });
   }
 
+  if (!isThursdayInReportTimezone()) {
+    return NextResponse.json({
+      ok: true,
+      skipped: true,
+      reason: `Weekly Bible report only sends on Thursday in ${REPORT_TIMEZONE}.`,
+    });
+  }
+
   const db: any = createClient(supabaseUrl, serviceKey, {
     auth: { autoRefreshToken: false, persistSession: false },
   });
@@ -43,16 +61,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Founder account not found." }, { status: 404 });
   }
 
-  const { data: louisProfile } = await db
-    .from("profile_stats")
-    .select("display_name, username")
-    .eq("user_id", louisId)
-    .maybeSingle();
-  const louisName = louisProfile?.display_name || louisProfile?.username || "Louis";
-
   const dryRun = request.nextUrl.searchParams.get("dryRun") === "1";
-  const limitParam = request.nextUrl.searchParams.get("limit");
-  const limit = limitParam ? Math.max(1, parseInt(limitParam, 10)) : null;
   const since = new Date(Date.now() - 7 * DAY_MS).toISOString();
   const weekKey = getWeekKey();
 
@@ -67,23 +76,27 @@ export async function GET(request: NextRequest) {
       actionsByUser.set(action.user_id, bucket);
     }
 
-    let activeUserIds = [...actionsByUser.keys()];
-    if (limit) {
-      activeUserIds = activeUserIds.slice(0, limit);
-    }
+    const activeUserIds = [...actionsByUser.keys()].sort((leftUserId, rightUserId) => {
+      const leftActions = actionsByUser.get(leftUserId) ?? [];
+      const rightActions = actionsByUser.get(rightUserId) ?? [];
+      if (rightActions.length !== leftActions.length) {
+        return rightActions.length - leftActions.length;
+      }
+      return (rightActions[0]?.created_at || "").localeCompare(leftActions[0]?.created_at || "");
+    });
 
     if (!activeUserIds.length) {
       return NextResponse.json({
         ok: true,
         sent: 0,
         skipped: 0,
-        usersConsidered: 0,
+        usersActiveLast7d: 0,
         timestamp: new Date().toISOString(),
       });
     }
 
     const context = await buildWeeklyContext(db, activeUserIds);
-    const previews: Array<{ userId: string; preview: string; actionLabel: string | null }> = [];
+    const previews: Array<{ userId: string; preview: string; title: string | null }> = [];
     let sent = 0;
     let skipped = 0;
     let errors = 0;
@@ -95,11 +108,11 @@ export async function GET(request: NextRequest) {
         continue;
       }
 
-      const report = buildWeeklyReportForUser(userId, userActions, context, weekKey);
+      const report = buildWeeklyLouisReportForUser(userId, userActions, context, weekKey);
       previews.push({
         userId,
         preview: report.message.slice(0, 220),
-        actionLabel: report.action?.label ?? null,
+        title: report.title ?? null,
       });
 
       if (dryRun) continue;
@@ -112,7 +125,7 @@ export async function GET(request: NextRequest) {
           continue;
         }
 
-        const ok = await sendDirectMessage(db, louisId, louisName, userId, report.message, report.action);
+        const ok = await sendLouisInboxMessage(db, userId, report);
         if (!ok) {
           await releaseWeeklyClaim(db, userId, weekKey);
           errors++;
@@ -135,6 +148,7 @@ export async function GET(request: NextRequest) {
       since,
       weekKey,
       usersConsidered: activeUserIds.length,
+      usersActiveLast7d: activeUserIds.length,
       sent,
       skipped,
       errors,
@@ -147,6 +161,15 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(
         {
           error: "weekly_bible_report_sent table is missing. Run scripts/create-weekly-bible-report-sent.sql first.",
+        },
+        { status: 500 },
+      );
+    }
+
+    if (message.toLowerCase().includes("louis_inbox_messages")) {
+      return NextResponse.json(
+        {
+          error: "louis_inbox_messages table is missing. Run scripts/create-louis-inbox-messages.sql first.",
         },
         { status: 500 },
       );

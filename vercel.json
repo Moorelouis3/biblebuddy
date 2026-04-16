@@ -46,7 +46,7 @@
     },
     {
       "path": "/api/cron/weekly-bible-report",
-      "schedule": "0 18 * * 0"
+      "schedule": "30 22 * * 4"
     }
   ],
   "headers": [

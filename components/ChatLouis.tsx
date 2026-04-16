@@ -19,6 +19,18 @@ type MessageRole = "user" | "assistant";
 type Message = {
   role: MessageRole;
   content: string;
+  serverMessageId?: string | null;
+};
+
+type LouisInboxMessageRow = {
+  id: string;
+  title: string | null;
+  content: string;
+  action_label: string | null;
+  action_href: string | null;
+  created_at: string;
+  consumed_at: string | null;
+  kind: string;
 };
 
 type QuickReplyAction =
@@ -812,6 +824,7 @@ export function ChatLouis() {
   const [hasLouisHistory, setHasLouisHistory] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [quickReplies, setQuickReplies] = useState<QuickReply[]>([]);
+  const [pendingInboxMessageIds, setPendingInboxMessageIds] = useState<string[]>([]);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [isListening, setIsListening] = useState(false);
@@ -1126,6 +1139,7 @@ export function ChatLouis() {
         setConversationMemory({ summary: null, topic: null, resolved: true });
         setLouisFeatureRollout({ ...DEFAULT_LOUIS_FEATURE_ROLLOUT });
         setUserProfileImageUrl(null);
+        setPendingInboxMessageIds([]);
         setHasUnseenRecommendation(false);
         return;
       }
@@ -1191,6 +1205,30 @@ export function ChatLouis() {
           if (typeof window !== "undefined") {
             window.localStorage.setItem(getRolloutStorageKey(user.id), JSON.stringify(nextRollout));
           }
+        }
+      }
+
+      const { data: louisInboxRows, error: louisInboxError } = await supabase
+        .from("louis_inbox_messages")
+        .select("id, title, content, action_label, action_href, created_at, consumed_at, kind")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: true })
+        .limit(25);
+
+      if (!cancelled) {
+        if (louisInboxError) {
+          console.warn("[LOUIS] Could not load Louis inbox messages:", louisInboxError.message);
+          setPendingInboxMessageIds([]);
+        } else {
+          const inboxRows = (louisInboxRows ?? []) as LouisInboxMessageRow[];
+          setMessages((prev) => {
+            const merged = mergeServerMessages(prev, inboxRows).slice(-60);
+            setHasLouisHistory(merged.length > 0);
+            return merged;
+          });
+          setPendingInboxMessageIds(
+            inboxRows.filter((row) => !row.consumed_at).map((row) => row.id),
+          );
         }
       }
 
@@ -1462,6 +1500,7 @@ export function ChatLouis() {
   );
 
   const hasPendingLouisMoment =
+    pendingInboxMessageIds.length > 0 ||
     hasPendingDevotionalChallengePrompt ||
     hasPendingDevotionalStartPrompt ||
     (pathname === "/dashboard" && (hasUnseenDailyGreeting || (hasUnseenRecommendation && Boolean(louisRecommendation))));
@@ -1477,6 +1516,31 @@ export function ChatLouis() {
     : hasPendingDevotionalChallengePrompt || (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional)
       ? "Type yes or no..."
       : "Talk to Louis...";
+
+  function formatInboxMessage(row: LouisInboxMessageRow) {
+    const actionLine =
+      row.action_label && row.action_href ? `\n\n👉 ${row.action_label}: ${row.action_href}` : "";
+    const titleLine = row.title ? `${row.title}\n\n` : "";
+    return `${titleLine}${row.content}${actionLine}`.trim();
+  }
+
+  function mergeServerMessages(existingMessages: Message[], inboxRows: LouisInboxMessageRow[]) {
+    const existingIds = new Set(
+      existingMessages.map((message) => message.serverMessageId).filter((value): value is string => Boolean(value)),
+    );
+
+    const nextMessages = [...existingMessages];
+    for (const row of inboxRows) {
+      if (existingIds.has(row.id)) continue;
+      nextMessages.push({
+        role: "assistant",
+        content: formatInboxMessage(row),
+        serverMessageId: row.id,
+      });
+    }
+
+    return nextMessages;
+  }
 
   function appendAssistantMessage(content: string) {
     setMessages((prev) => [...prev, { role: "assistant", content }]);
@@ -1588,6 +1652,23 @@ export function ChatLouis() {
       .then(({ error }) => {
         if (error) {
           console.warn("[LOUIS] Profile update skipped:", error.message);
+        }
+      });
+  }
+
+  function markInboxMessagesSeen() {
+    if (!louisUserId || pendingInboxMessageIds.length === 0) return;
+
+    const ids = [...pendingInboxMessageIds];
+    setPendingInboxMessageIds([]);
+    void supabase
+      .from("louis_inbox_messages")
+      .update({ consumed_at: new Date().toISOString() })
+      .eq("user_id", louisUserId)
+      .in("id", ids)
+      .then(({ error }) => {
+        if (error) {
+          console.warn("[LOUIS] Could not mark inbox messages as seen:", error.message);
         }
       });
   }
@@ -2076,12 +2157,17 @@ export function ChatLouis() {
   async function handleChatButtonClick() {
     setIsOpen(true);
     setQuickReplies([]);
+    markInboxMessagesSeen();
 
     if (featureToursEnabled && louisFeatureTours.chat_widget !== true) {
       void markChatWidgetSeen();
     }
 
     const latestMessage = messages[messages.length - 1];
+
+    if (pendingInboxMessageIds.length > 0) {
+      return;
+    }
 
     if (pathname === "/dashboard" && (hasUnseenDailyGreeting || hasUnseenRecommendation)) {
       const dailyConversationMessage = buildDailyConversationMessage();
