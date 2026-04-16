@@ -9,6 +9,7 @@ export type BibleBuddyTvSermonTopic =
   | "holy spirit"
   | "temptation"
   | "lust"
+  | "stress"
   | "peace"
   | "hope"
   | "anger"
@@ -7982,7 +7983,7 @@ export const stevenFurtickStressSermonTitle: BibleBuddyTvTitle = {
     "Fast, encouraging preaching about pressure, perspective, emotional strain, and learning to trust God in the middle of stress.",
   continueWatchingLabel: "Sermon: Stop Stressing",
   inMyList: true,
-  sermonTopics: ["hope", "peace", "faith"],
+  sermonTopics: ["stress", "hope", "peace", "faith"],
   searchTags: [
     "sermon",
     "steven furtick",

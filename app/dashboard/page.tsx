@@ -13,7 +13,6 @@ import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompleted
 import { getProfileStats } from "../../lib/profileStats";
 
 import AdSlot from "../../components/AdSlot";
-import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import {
@@ -1075,25 +1074,8 @@ export default function DashboardPage() {
       });
     }
 
-    if (!featureToursEnabled || tourKey === "bible_buddy_tv") {
-      router.push(path);
-      return;
-    }
-
-    if (!featureToursLoaded) {
-      router.push(path);
-      return;
-    }
-
     event.preventDefault();
-
-    if (featureTours[tourKey] === true) {
-      router.push(path);
-      return;
-    }
-
-    setActiveTourKey(tourKey);
-    setPendingTourNavigation(path);
+    router.push(path);
   }
 
   // Load Pro expiration data
@@ -1596,59 +1578,18 @@ export default function DashboardPage() {
         <div className="lg:hidden h-20" />
       )}
 
-      {featureToursEnabled && activeTourKey && (
-        <FeatureTourModal
-          isOpen={true}
-          title={activeTourKey === "dashboard" && dashboardTourStep >= 0 ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.title ?? TOUR_COPY.dashboard.title : TOUR_COPY[activeTourKey].title}
-          body={activeTourKey === "dashboard" && dashboardTourStep >= 0 ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.body ?? TOUR_COPY.dashboard.body : "Do you want me to give you a quick tour of how the app works?"}
-          primaryButtonText={
-            activeTourKey === "dashboard"
-              ? dashboardTourStep < 0
-                ? "Yes"
-                : "Next"
-              : activeTourKey === "bible_trivia"
-                ? "Play Now"
-                : "Got it"
-          }
-          secondaryButtonText={activeTourKey === "dashboard" && dashboardTourStep < 0 ? "Later" : undefined}
-          onSecondary={activeTourKey === "dashboard" ? handleTourClose : undefined}
-          variant={activeTourKey === "dashboard" ? (dashboardTourStep < 0 ? "prompt" : "speech-bubble") : "default"}
-          anchorRect={activeTourKey === "dashboard" && dashboardTourStep >= 0 ? dashboardTourAnchor : null}
-          canAdvance={activeTourKey === "dashboard" ? dashboardTourCanAdvance : true}
-          closeOnBackdrop={!(activeTourKey === "dashboard" && dashboardTourStep >= 0)}
-          content={
-            activeTourKey === "dashboard"
-              ? undefined
-              : activeTourKey === "bible"
-              ? BIBLE_TOUR_CONTENT
-              : activeTourKey === "guided_studies"
-              ? GUIDED_STUDIES_TOUR_CONTENT
-                : activeTourKey === "bible_references"
-                ? BIBLE_REFERENCES_TOUR_CONTENT
-              : activeTourKey === "bible_trivia"
-              ? BIBLE_TRIVIA_TOUR_CONTENT
-                  : activeTourKey === "notes"
-                  ? NOTES_TOUR_CONTENT
-              : undefined
-          }
-          isSaving={isSavingFeatureTour}
-          onClose={handleTourClose}
-          onUnderstand={handleTourUnderstand}
-        />
-      )}
-
       {/* Level Info Modal */}
       {showLevelInfoModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold">ðŸ§­ How Levels Work in Bible Buddy</h2>
+                <h2 className="text-2xl font-bold">How Levels Work in Bible Buddy</h2>
                 <button
                   onClick={() => setShowLevelInfoModal(false)}
                   className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
                 >
-                  Ã—
+                  ×
                 </button>
               </div>
 
@@ -1660,20 +1601,20 @@ export default function DashboardPage() {
                 </p>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900">ðŸ”‘ What Counts as Progress?</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900">What Counts as Progress?</h3>
                   <p className="mb-2">You earn weighted points across Bible Buddy, such as:</p>
                   <ul className="list-none space-y-2 ml-4">
-                    <li>ðŸ“– Finishing a Bible chapter, devotional day, or reading plan chapter</li>
-                    <li>ðŸ‘¤ Learning people, places, keywords, and taking notes</li>
-                    <li>ðŸ‘¥ Posting in the group, commenting, and joining community activity</li>
-                    <li>â¤ï¸ Liking posts or comments, and earning likes from other Buddies</li>
-                    <li>ðŸŽ¯ Trivia, study opens, highlights, and other meaningful app actions</li>
+                    <li>📖 Finishing a Bible chapter, devotional day, or reading plan chapter</li>
+                    <li>🧠 Learning people, places, keywords, and taking notes</li>
+                    <li>👥 Posting in the group, commenting, and joining community activity</li>
+                    <li>❤️ Liking posts or comments, and earning likes from other Buddies</li>
+                    <li>🎯 Trivia, study opens, highlights, and other meaningful app actions</li>
                   </ul>
                   <p className="mt-3 text-sm">Bigger study actions are worth more points than lighter actions like likes.</p>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900">âš–ï¸ How Points Work</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900">How Points Work</h3>
                   <div className="space-y-3 text-sm text-gray-700">
                     <div className="bg-gray-50 p-3 rounded-lg">
                       <p className="font-semibold text-gray-900">Higher-point actions</p>
@@ -1695,44 +1636,43 @@ export default function DashboardPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900">ðŸ§  Why Levels Exist</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900">Why Levels Exist</h3>
                   <p className="mb-2">Levels help you:</p>
                   <ul className="list-none space-y-2 ml-4">
-                    <li>â€¢ See your personal growth over time</li>
-                    <li>â€¢ Stay encouraged</li>
-                    <li>â€¢ Build a deeper understanding of Scripture</li>
+                    <li>• See your personal growth over time</li>
+                    <li>• Stay encouraged</li>
+                    <li>• Build a deeper understanding of Scripture</li>
                   </ul>
                   <div className="mt-3 space-y-1 text-sm">
-                    <p>âŒ No leaderboards</p>
-                    <p>âŒ No competition</p>
-                    <p>âœ… Just your journey with God</p>
+                    <p>❌ No leaderboards</p>
+                    <p>❌ No competition</p>
+                    <p>✅ Just your journey with God</p>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900">ðŸ·ï¸ Bible Buddy Levels</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900">Bible Buddy Levels</h3>
                   <div className="space-y-3">
                     {LEVEL_DEFINITIONS.map((definition) => (
                       <div key={definition.level} className="bg-gray-50 p-3 rounded-lg">
                         <p className="font-semibold text-gray-900">
-                          Level {definition.level} â€“ {definition.levelName}
+                          Level {definition.level} Bible Buddy
                           {" "}
                           <span className="text-xs font-medium text-gray-500">
                             ({definition.minPoints.toLocaleString()} to {definition.maxPoints !== null ? definition.maxPoints.toLocaleString() : `${definition.minPoints.toLocaleString()}+`} pts)
                           </span>
                         </p>
-                        <p className="text-sm">{definition.identityText}</p>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <p className="font-semibold text-blue-900 mb-1">ðŸ™Œ Final Encouragement</p>
+                  <p className="font-semibold text-blue-900 mb-1">Final Encouragement</p>
                   <p className="text-sm text-blue-800">
                     There's no rush.
                     <br />
-                    The goal isn't to finish fast â€” it's to understand deeply.
+                    The goal isn't to finish fast - it's to understand deeply.
                   </p>
                 </div>
 

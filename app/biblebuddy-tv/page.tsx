@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import {
-  bibleBuddyTvSermonTopics,
   bibleBuddyTvTitles,
   type BibleBuddyTvCategory,
 } from "../../lib/bibleBuddyTvContent";
@@ -160,7 +159,8 @@ export default function BibleBuddyTvHomePage() {
   const [dragOffset, setDragOffset] = useState(0);
   const [isDraggingFeatured, setIsDraggingFeatured] = useState(false);
   const [myListIds, setMyListIds] = useState<string[]>([]);
-  const [selectedSermonTopic, setSelectedSermonTopic] = useState("");
+  const [loadingTitleSlug, setLoadingTitleSlug] = useState<string | null>(null);
+  const [pressedTitleSlug, setPressedTitleSlug] = useState<string | null>(null);
   const dragStartXRef = useRef<number | null>(null);
 
   const liveTitles = useMemo(() => bibleBuddyTvTitles.filter((title) => title.badge !== "Coming Soon"), []);
@@ -179,7 +179,10 @@ export default function BibleBuddyTvHomePage() {
         { id: "tv" as const, label: "TV Shows" },
       ].map((shelf) => ({
         ...shelf,
-        titles: liveTitles.filter((title) => title.category === shelf.id),
+        titles:
+          shelf.id === "sermons"
+            ? [...liveTitles.filter((title) => title.category === shelf.id)].sort(() => Math.random() - 0.5)
+            : liveTitles.filter((title) => title.category === shelf.id),
       })),
     [liveTitles]
   );
@@ -290,12 +293,6 @@ export default function BibleBuddyTvHomePage() {
     return progressMap[titleId] ?? 28;
   }
 
-  function handleSermonTopicChange(topic: string) {
-    setSelectedSermonTopic(topic);
-    if (!topic) return;
-    router.push(`${getBrowsePageHref("sermons")}?topic=${topic}`);
-  }
-
   function handleBrowseSelection(next: BibleBuddyTvBrowseKey) {
     if (next === "home") {
       router.push("/biblebuddy-tv");
@@ -304,8 +301,31 @@ export default function BibleBuddyTvHomePage() {
     router.push(getBrowsePageHref(next));
   }
 
+  function openFeaturedTitle(slug: string) {
+    setPressedTitleSlug(slug);
+    window.setTimeout(() => {
+      setLoadingTitleSlug(slug);
+      router.push(`/biblebuddy-tv/shows/${slug}`);
+    }, 110);
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
+      {loadingTitleSlug ? (
+        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-white/86 backdrop-blur-sm">
+          <div className="mx-4 w-full max-w-xs rounded-3xl border border-[#C8E2F3] bg-white px-6 py-7 text-center shadow-2xl">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#EAF5FC]">
+              <div
+                className="h-8 w-8 animate-spin rounded-full border-[3px] border-[#C8E2F3] border-t-[#4B9CD3]"
+                aria-hidden="true"
+              />
+            </div>
+            <p className="mt-4 text-lg font-semibold text-gray-900">Opening Bible Buddy TV</p>
+            <p className="mt-1 text-sm text-gray-600">Getting your video page ready...</p>
+          </div>
+        </div>
+      ) : null}
+
       <div className="mx-auto max-w-5xl px-4 py-8">
         <div>
           <h1 className="mb-2 text-3xl font-bold">Bible Buddy TV</h1>
@@ -326,7 +346,11 @@ export default function BibleBuddyTvHomePage() {
             >
               {featuredTitles.map((featuredTitle) => (
                 <div key={featuredTitle.id} className="min-w-full p-3">
-                  <Link href={`/biblebuddy-tv/shows/${featuredTitle.slug}`} className="block">
+                  <button
+                    type="button"
+                    onClick={() => openFeaturedTitle(featuredTitle.slug)}
+                    className="block w-full text-left"
+                  >
                     <div className="relative aspect-[4/5] overflow-hidden rounded-[24px]">
                       <Image
                         src={featuredTitle.poster}
@@ -336,19 +360,22 @@ export default function BibleBuddyTvHomePage() {
                         sizes="100vw"
                       />
                     </div>
-                  </Link>
+                  </button>
 
                   <div className="px-1 pt-3 text-center">
                     <h2 className="text-3xl font-black tracking-[0.18em] text-gray-900">{featuredTitle.title}</h2>
                     <p className="mt-2 text-sm font-medium text-gray-500">{featuredTitle.rating} • {featuredTitle.runtime}</p>
                     <div className="mt-4 grid grid-cols-2 gap-3">
-                      <Link
-                        href={`/biblebuddy-tv/shows/${featuredTitle.slug}`}
-                        className="rounded-xl px-4 py-3 text-base font-semibold text-white transition"
+                      <button
+                        type="button"
+                        onClick={() => openFeaturedTitle(featuredTitle.slug)}
+                        className={`rounded-xl px-4 py-3 text-base font-semibold text-white transition duration-150 ${
+                          pressedTitleSlug === featuredTitle.slug ? "scale-[0.97] shadow-inner" : "scale-100"
+                        }`}
                         style={{ backgroundColor: CAROLINA_BLUE }}
                       >
-                        ▶ Play
-                      </Link>
+                        {loadingTitleSlug === featuredTitle.slug ? "Loading..." : "▶ Play"}
+                      </button>
                       <button
                         type="button"
                         onClick={() => toggleMyList(featuredTitle.id)}
@@ -391,9 +418,10 @@ export default function BibleBuddyTvHomePage() {
               {featuredTitles.map((featuredTitle) => (
                 <div key={featuredTitle.id} className="min-w-full p-4 md:p-5">
                   <div className="grid gap-5 md:grid-cols-[180px_1fr] md:items-center">
-                    <Link
-                      href={`/biblebuddy-tv/shows/${featuredTitle.slug}`}
-                      className="mx-auto block max-w-[180px] md:mx-0"
+                    <button
+                      type="button"
+                      onClick={() => openFeaturedTitle(featuredTitle.slug)}
+                      className="mx-auto block max-w-[180px] text-left md:mx-0"
                     >
                       <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:scale-[1.01] hover:shadow-md">
                         <div className="relative aspect-[4/5]">
@@ -406,7 +434,7 @@ export default function BibleBuddyTvHomePage() {
                           />
                         </div>
                       </div>
-                    </Link>
+                    </button>
 
                     <div>
                       <p className="text-sm font-semibold" style={{ color: CAROLINA_BLUE }}>
@@ -418,13 +446,16 @@ export default function BibleBuddyTvHomePage() {
                       </p>
                       <p className="mt-4 text-sm leading-relaxed text-gray-700">{featuredTitle.overview}</p>
                       <div className="mt-5 flex flex-wrap gap-3">
-                        <Link
-                          href={`/biblebuddy-tv/shows/${featuredTitle.slug}`}
-                          className="rounded-lg px-5 py-2.5 text-sm font-medium text-white transition"
+                        <button
+                          type="button"
+                          onClick={() => openFeaturedTitle(featuredTitle.slug)}
+                          className={`rounded-lg px-5 py-2.5 text-sm font-medium text-white transition duration-150 ${
+                            pressedTitleSlug === featuredTitle.slug ? "scale-[0.97] shadow-inner" : "scale-100"
+                          }`}
                           style={{ backgroundColor: CAROLINA_BLUE }}
                         >
-                          Play
-                        </Link>
+                          {loadingTitleSlug === featuredTitle.slug ? "Loading..." : "Play"}
+                        </button>
                         <button
                           type="button"
                           onClick={() => toggleMyList(featuredTitle.id)}
@@ -495,33 +526,9 @@ export default function BibleBuddyTvHomePage() {
               <div className="mb-4 flex items-center justify-between">
                 <h2 className="text-2xl font-bold text-gray-900">{shelf.label}</h2>
                 {shelf.id === "sermons" ? (
-                  <div className="flex items-center gap-3">
-                    <Link href={getBrowsePageHref("sermons")} className="text-sm font-semibold text-gray-500 hover:text-gray-800">
-                      Browse
-                    </Link>
-                    <div className="relative">
-                      <select
-                        value={selectedSermonTopic}
-                        onChange={(event) => handleSermonTopicChange(event.target.value)}
-                        aria-label="Browse sermons by topic"
-                        className="appearance-none rounded-lg border border-gray-200 bg-white px-3 py-2 pr-10 text-sm font-semibold text-gray-700 shadow-sm outline-none transition focus:ring-2"
-                        style={{ ["--tw-ring-color" as string]: CAROLINA_BLUE }}
-                      >
-                        <option value="">Topic</option>
-                        {bibleBuddyTvSermonTopics.map((topic) => (
-                          <option key={topic.id} value={topic.id}>
-                            {topic.label}
-                          </option>
-                        ))}
-                      </select>
-                      <span
-                        className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm font-bold"
-                        style={{ color: CAROLINA_BLUE }}
-                      >
-                        ▾
-                      </span>
-                    </div>
-                  </div>
+                  <Link href={getBrowsePageHref("sermons")} className="text-sm font-semibold text-gray-500 hover:text-gray-800">
+                    Browse
+                  </Link>
                 ) : (
                   <Link href={getBrowsePageHref(shelf.id)} className="text-sm font-semibold text-gray-500 hover:text-gray-800">
                     Browse

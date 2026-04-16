@@ -2889,7 +2889,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         />
       )}
 
-      {showBibleReaderTour && (
+      {false && showBibleReaderTour && (
         <FeatureTourModal
           isOpen={true}
           title={

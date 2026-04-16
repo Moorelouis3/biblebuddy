@@ -30,6 +30,41 @@ const GOALS = [
 ] as const;
 const GOAL_KEY = "bb_onboarding_goal";
 
+function normalizeGoalValue(goal: string | null | undefined) {
+  if (!goal) return null;
+  switch (goal) {
+    case "Understand the Bible better":
+    case "understand_bible_better":
+      return "understand_bible_better";
+    case "Build a habit of reading the Bible":
+    case "build_bible_habit":
+      return "build_bible_habit";
+    case "Stay consistent with devotionals and study plans":
+    case "stay_consistent":
+      return "stay_consistent";
+    case "Study with other Bible Buddies":
+    case "study_with_buddies":
+      return "study_with_buddies";
+    default:
+      return null;
+  }
+}
+
+function hydrateGoalLabel(goal: string | null | undefined) {
+  switch (normalizeGoalValue(goal)) {
+    case "understand_bible_better":
+      return "Understand the Bible better";
+    case "build_bible_habit":
+      return "Build a habit of reading the Bible";
+    case "stay_consistent":
+      return "Stay consistent with devotionals and study plans";
+    case "study_with_buddies":
+      return "Study with other Bible Buddies";
+    default:
+      return null;
+  }
+}
+
 function Choice({
   label,
   description,
@@ -132,7 +167,8 @@ export function OnboardingModal({
 
     if (typeof window !== "undefined") {
       const storedGoal = window.localStorage.getItem(GOAL_KEY);
-      if (storedGoal && GOALS.includes(storedGoal as (typeof GOALS)[number])) setGoal(storedGoal);
+      const hydratedGoal = hydrateGoalLabel(storedGoal);
+      if (hydratedGoal && GOALS.includes(hydratedGoal as (typeof GOALS)[number])) setGoal(hydratedGoal);
       else setGoal(null);
     }
   }, [isOpen, initialTrafficSource, initialBibleExperienceLevel]);
@@ -167,6 +203,7 @@ export function OnboardingModal({
     onboarding_completed?: boolean;
     profile_image_url?: string;
     bio?: string;
+    onboarding_goal?: string;
   }) {
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
     if (sessionError) throw sessionError;
@@ -213,7 +250,20 @@ export function OnboardingModal({
 
     if (step === 4) {
       if (!goal) return;
-      if (typeof window !== "undefined") window.localStorage.setItem(GOAL_KEY, goal);
+      const normalizedGoal = normalizeGoalValue(goal);
+      if (typeof window !== "undefined" && normalizedGoal) {
+        window.localStorage.setItem(GOAL_KEY, normalizedGoal);
+      }
+      if (normalizedGoal) {
+        try {
+          setIsSaving(true);
+          await persistProfileStats({ onboarding_goal: normalizedGoal });
+        } catch (persistError) {
+          console.warn("[ONBOARDING] Could not save onboarding_goal to profile_stats yet:", persistError);
+        } finally {
+          setIsSaving(false);
+        }
+      }
       goToStep(5, 1);
       return;
     }
