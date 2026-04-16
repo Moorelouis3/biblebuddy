@@ -117,6 +117,79 @@ export function getWeekKey(anchorDate = new Date()) {
   return utc.toISOString().slice(0, 10);
 }
 
+const WEEKDAY_BUCKETS = [
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+] as const;
+
+export type WeeklyBucketDay = (typeof WEEKDAY_BUCKETS)[number];
+
+export function getBucketDay(anchorDate = new Date()): WeeklyBucketDay {
+  const timeZone = process.env.WEEKLY_REPORT_TIMEZONE || "America/New_York";
+  const weekday = new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    timeZone,
+  })
+    .format(anchorDate)
+    .toLowerCase() as WeeklyBucketDay;
+
+  return WEEKDAY_BUCKETS.includes(weekday) ? weekday : "monday";
+}
+
+export async function fetchWeeklyBuckets(db: any, userIds: string[]) {
+  const rows: Array<{ user_id: string; bucket_day: WeeklyBucketDay }> = [];
+
+  for (const chunk of chunkArray(userIds, 250)) {
+    const { data, error } = await db
+      .from("weekly_bible_report_buckets")
+      .select("user_id, bucket_day")
+      .in("user_id", chunk);
+
+    if (error) throw error;
+    rows.push(...(((data as Array<{ user_id: string; bucket_day: WeeklyBucketDay }>) ?? [])));
+  }
+
+  return new Map(rows.map((row) => [row.user_id, row.bucket_day]));
+}
+
+export async function ensureWeeklyBuckets(
+  db: any,
+  userIds: string[],
+  bucketDay: WeeklyBucketDay,
+) {
+  if (!userIds.length) {
+    return new Map<string, WeeklyBucketDay>();
+  }
+
+  const existing = await fetchWeeklyBuckets(db, userIds);
+  const missingUserIds = userIds.filter((userId) => !existing.has(userId));
+
+  if (missingUserIds.length) {
+    const payload = missingUserIds.map((userId) => ({
+      user_id: userId,
+      bucket_day: bucketDay,
+      updated_at: new Date().toISOString(),
+    }));
+
+    const { error } = await db
+      .from("weekly_bible_report_buckets")
+      .upsert(payload, { onConflict: "user_id", ignoreDuplicates: true });
+
+    if (error) throw error;
+
+    for (const userId of missingUserIds) {
+      existing.set(userId, bucketDay);
+    }
+  }
+
+  return existing;
+}
+
 function formatWeekRange(weekStart: string) {
   const start = new Date(`${weekStart}T00:00:00.000Z`);
   const end = new Date(start.getTime() + 6 * MILLIS_PER_DAY);
