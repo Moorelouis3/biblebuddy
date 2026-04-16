@@ -111,6 +111,8 @@ type LouisConversationMemory = {
   resolved: boolean;
 };
 
+type LouisNewUserChallengeStep = "none" | "choose_devotional" | "choose_start_day" | "daily_track";
+
 const DEFAULT_LOUIS_FEATURE_ROLLOUT: LouisFeatureRolloutState = {
   dashboard_intro_seen: false,
   devotionals_intro_seen: false,
@@ -195,6 +197,17 @@ function getGoalStorageKey() {
 
 function getRolloutStorageKey(userId: string) {
   return `bb:louis:rollout:${userId}`;
+}
+
+function getNewUserChallengeStorageKey(userId: string) {
+  return `bb:louis:new-user-challenge:${userId}`;
+}
+
+function normalizeNewUserChallengeStep(value: string | null | undefined): LouisNewUserChallengeStep {
+  if (value === "choose_devotional" || value === "choose_start_day" || value === "daily_track") {
+    return value;
+  }
+  return "none";
 }
 
 function hasSeenGuidePrompt(userId: string, guideId: string) {
@@ -310,6 +323,21 @@ function formatOnboardingGoal(goal: string | null | undefined) {
       return "study with other Bible Buddies";
     default:
       return null;
+  }
+}
+
+function buildNewUserChallengeLine(goal: string | null | undefined) {
+  switch (normalizeOnboardingGoal(goal)) {
+    case "build_bible_habit":
+      return "You said you want to build a better Bible habit, and that's what I want to help you do.";
+    case "understand_bible_better":
+      return "You said you want to understand the Bible better, and that's what I want to help you do.";
+    case "stay_consistent":
+      return "You said you want to stay consistent, and that's what I want to help you do.";
+    case "study_with_buddies":
+      return "You said you want to study with other Bible Buddies, and that's what I want to help you do.";
+    default:
+      return "I want to help you build a real Bible habit in here, not just browse around once and disappear.";
   }
 }
 
@@ -774,6 +802,12 @@ export function ChatLouis() {
   const [louisFeatureRollout, setLouisFeatureRollout] = useState<LouisFeatureRolloutState>({
     ...DEFAULT_LOUIS_FEATURE_ROLLOUT,
   });
+  const [newUserChallengeStep, setNewUserChallengeStep] = useState<LouisNewUserChallengeStep>("none");
+  const [selectedDevotionalForChallenge, setSelectedDevotionalForChallenge] = useState<{
+    id: string;
+    title: string;
+    totalDays: number;
+  } | null>(null);
   const [userProfileImageUrl, setUserProfileImageUrl] = useState<string | null>(null);
   const [hasLouisHistory, setHasLouisHistory] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -1363,6 +1397,51 @@ export function ChatLouis() {
     };
   }, [pathname]);
 
+  useEffect(() => {
+    if (!louisUserId || typeof window === "undefined") return;
+    setNewUserChallengeStep(
+      normalizeNewUserChallengeStep(window.localStorage.getItem(getNewUserChallengeStorageKey(louisUserId))),
+    );
+  }, [louisUserId, pathname]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadSelectedDevotionalForChallenge() {
+      const parts = pathname.split("/").filter(Boolean);
+      if (parts[0] !== "devotionals" || !parts[1]) {
+        if (!cancelled) setSelectedDevotionalForChallenge(null);
+        return;
+      }
+
+      const devotionalId = parts[1];
+      const { data, error } = await supabase
+        .from("devotionals")
+        .select("id, title, total_days")
+        .eq("id", devotionalId)
+        .maybeSingle();
+
+      if (cancelled) return;
+
+      if (error || !data) {
+        setSelectedDevotionalForChallenge(null);
+        return;
+      }
+
+      setSelectedDevotionalForChallenge({
+        id: data.id,
+        title: data.title,
+        totalDays: data.total_days ?? 21,
+      });
+    }
+
+    void loadSelectedDevotionalForChallenge();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [pathname]);
+
   const hasPendingPageGuide = Boolean(
     featureToursEnabled &&
       currentPageGuide &&
@@ -1370,19 +1449,43 @@ export function ChatLouis() {
       (!louisUserId || !hasSeenGuidePrompt(louisUserId, currentPageGuide.id)),
   );
 
+  const hasPendingDevotionalChallengePrompt =
+    pathname === "/devotionals" &&
+    newUserChallengeStep === "choose_devotional" &&
+    !primaryDevotional;
+
+  const hasPendingDevotionalStartPrompt = Boolean(
+    pathname.startsWith("/devotionals/") &&
+      selectedDevotionalForChallenge &&
+      !primaryDevotional &&
+      (newUserChallengeStep === "choose_devotional" || newUserChallengeStep === "choose_start_day"),
+  );
+
   const hasPendingLouisMoment =
     hasPendingPageGuide ||
+    hasPendingDevotionalChallengePrompt ||
+    hasPendingDevotionalStartPrompt ||
     (pathname === "/dashboard" && (hasUnseenDailyGreeting || (hasUnseenRecommendation && Boolean(louisRecommendation))));
 
-  const emptyStatePrompt = currentPageGuide
+  const emptyStatePrompt = hasPendingDevotionalStartPrompt
+    ? "Type today or tomorrow."
+    : hasPendingDevotionalChallengePrompt || (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional)
+      ? "Type yes or no."
+      : currentPageGuide
     ? currentPageGuide.id === "dashboard"
       ? "Ask me anything about the dashboard."
       : currentPageGuide.id === "bible_buddy_tv"
         ? "Ask me anything about Bible Buddy TV."
         : currentPageGuide.id === "bible_trivia"
           ? "Ask me anything about Bible trivia."
-          : "Ask me anything about reading the Bible here."
+        : "Ask me anything about reading the Bible here."
     : "Ask me a question about your Bible reading.";
+
+  const inputPlaceholder = hasPendingDevotionalStartPrompt
+    ? "Type today or tomorrow..."
+    : hasPendingDevotionalChallengePrompt || (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional)
+      ? "Type yes or no..."
+      : "Talk to Louis...";
 
   function appendAssistantMessage(content: string) {
     setMessages((prev) => [...prev, { role: "assistant", content }]);
@@ -1498,6 +1601,12 @@ export function ChatLouis() {
       });
   }
 
+  function persistNewUserChallengeStep(step: LouisNewUserChallengeStep) {
+    setNewUserChallengeStep(step);
+    if (!louisUserId || typeof window === "undefined") return;
+    window.localStorage.setItem(getNewUserChallengeStorageKey(louisUserId), step);
+  }
+
   function markRolloutSeenLocal(key: keyof LouisFeatureRolloutState) {
     if (!louisUserId || typeof window === "undefined") return;
     const nextRollout = {
@@ -1514,6 +1623,9 @@ export function ChatLouis() {
   }
 
   function getDailyQuickReplies(): QuickReply[] {
+    if (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional) {
+      return [];
+    }
     return [
       { id: "daily-good", label: "Good", action: "daily_good" },
       { id: "daily-okay", label: "Okay", action: "daily_okay" },
@@ -1530,7 +1642,6 @@ export function ChatLouis() {
   }
 
   function buildDailyConversationMessage() {
-    const formattedGoal = formatOnboardingGoal(onboardingGoal);
     const devotionalNextDay = primaryDevotional ? Math.min(primaryDevotional.dayNumber + 1, primaryDevotional.totalDays || primaryDevotional.dayNumber + 1) : null;
     const experienceTone =
       bibleExperienceLevel === "Just getting started"
@@ -1544,23 +1655,19 @@ export function ChatLouis() {
     let message = "";
 
     if (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional) {
-      message = `${getTimeOfDayGreeting()}.\n\nWelcome to Bible Buddy.\n\nThis is your dashboard. This is your home base inside the app.\n\n${
-        formattedGoal
-          ? `You told me you want to ${formattedGoal}.`
-          : "You don't need to do everything at once in here."
-      }\n\n${experienceTone}\n\nThe best way to start is simple: pick one devotional and let me walk with you through it day by day.\n\nYou do one thing a day. I'll help with the rest.\n\nHow are you doing today?`;
+      message = `${getTimeOfDayGreeting()}.\n\nHey, welcome to Bible Buddy.\n\nYou just took a really big step.\n\nMost people sign up for an app like this and never even log in. You did.\n\nThat tells me you really do want to get into Scripture.\n\n${buildNewUserChallengeLine(onboardingGoal)}\n\n${experienceTone}\n\nSo let's keep this simple.\n\nFor the next 21 days, let's build that by walking through one devotional together day by day.\n\nAre you down for that?\n\nType yes or no below.`;
     } else if (currentStreak === 2 && primaryDevotional && devotionalNextDay) {
-      message = `${getTimeOfDayGreeting()}. Welcome back,${formattedGoal ? ` friend` : ""}.\n\nYou're on day 2.\n\nThis is how habits actually start.\n\nYesterday you finished day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}.\n\nReady for day ${devotionalNextDay}?\n\nHow are you doing today?`;
+      message = `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nYou're on day 2.\n\nThis is how habits actually start.\n\nYesterday you finished day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}.\n\nReady for day ${devotionalNextDay}?`;
     } else if (currentStreak === 3 && primaryDevotional && primaryDevotional.dayNumber >= 3) {
-      message = `${getTimeOfDayGreeting()}. Welcome back.\n\nDay 3 looks good on you.\n\nYou're not just browsing anymore. You're building something now.\n\nYou finished day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}.\n\nIf you want, after that we can reinforce it with something interactive.\n\nHow are you doing today?`;
+      message = `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nDay 3 looks good on you.\n\nYou're not just browsing anymore. You're building something now.\n\nYou finished day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}.\n\nAfter that, if you want, we can reinforce it with something interactive.`;
     } else if (currentStreak === 4) {
-      message = `${getTimeOfDayGreeting()}. Welcome back.\n\nFour days in a row.\n\nThat is where this starts turning from interest into rhythm.\n\nKeep it simple today. Protect the streak, and let me point you to the right next step.\n\nHow are you doing today?`;
+      message = `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nFour days in a row.\n\nThat is where this starts turning from interest into rhythm.\n\nKeep it simple today. Protect the streak, and let me point you to the right next step.`;
     } else if (currentStreak === 5) {
-      message = `${getTimeOfDayGreeting()}. Welcome back.\n\nFive straight days. That's strong.\n\nYesterday mattered, and today matters too.\n\nI'll help you keep this going without overcomplicating it.\n\nHow are you doing today?`;
+      message = `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nFive straight days. That's strong.\n\nYesterday mattered, and today matters too.\n\nI'll help you keep this going without overcomplicating it.`;
     } else if (currentStreak === 6) {
-      message = `${getTimeOfDayGreeting()}. Welcome back.\n\nSix days in a row.\n\nYou're right on the edge of a full week now.\n\nLet's not waste the momentum. Show up today and keep building.\n\nHow are you doing today?`;
+      message = `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nSix days in a row.\n\nYou're right on the edge of a full week now.\n\nLet's not waste the momentum. Show up today and keep building.`;
     } else if (currentStreak === 7) {
-      message = `${getTimeOfDayGreeting()}. Welcome back.\n\nSeven days in a row. That's real consistency.\n\nMost people say they want to grow. Fewer actually show up for a full week. You did.\n\nYou've got a base now, and I'm going to help you build on it.\n\nHow are you doing today?`;
+      message = `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nSeven days in a row. That's real consistency.\n\nMost people say they want to grow. Fewer actually show up for a full week. You did.\n\nYou've got a base now, and I'm going to help you build on it.`;
     } else {
       const streakIntro =
         currentStreak > 0
@@ -1572,9 +1679,7 @@ export function ChatLouis() {
         : `${streakIntro}\n\nI'm Louis.\n\nYou can talk to me like a regular person in here.\n\nIf I ask you something, just type back or use the voice button.\n\n${getStreakCelebrationLine(currentStreak)}\n\nHow are you doing today?`;
 
       if (!hasLouisHistory && pathname === "/dashboard") {
-        message += formattedGoal
-          ? `\n\nYou told us you want to ${formattedGoal}.\n\nLet's build that together one day at a time.`
-          : "\n\nSince this is your first time here, let's build your Bible study habit together one day at a time.";
+        message += `\n\n${buildNewUserChallengeLine(onboardingGoal)}\n\nLet's build that together one day at a time.`;
       }
     }
 
@@ -2018,6 +2123,21 @@ export function ChatLouis() {
       return;
     }
 
+    if (hasPendingDevotionalChallengePrompt) {
+      appendAssistantMessage(
+        "This is the devotional page.\n\nThese are the different devotionals.\n\nEach one covers a different story, person, or part of the Bible.\n\nAs a free member, you get access to one devotional.\n\nCheck them out and pick one devotional.",
+      );
+      return;
+    }
+
+    if (hasPendingDevotionalStartPrompt && selectedDevotionalForChallenge) {
+      persistNewUserChallengeStep("choose_start_day");
+      appendAssistantMessage(
+        `Perfect. You picked ${selectedDevotionalForChallenge.title}.\n\nDo you want to start today or tomorrow?\n\nType today or tomorrow below.`,
+      );
+      return;
+    }
+
     if (hasPendingPageGuide) {
       const guideWasPrompted =
         louisUserId &&
@@ -2048,6 +2168,46 @@ export function ChatLouis() {
 
   async function handleChatTourUnderstand() {}
 
+  async function handleStructuredLouisInput(trimmed: string) {
+    const normalized = trimmed.trim().toLowerCase();
+    const isNewDashboardChallenge =
+      pathname === "/dashboard" &&
+      (!hasLouisHistory || louisJourneyStage === "new_user") &&
+      !primaryDevotional;
+
+    if (isNewDashboardChallenge && (normalized === "yes" || normalized === "no")) {
+      if (normalized === "yes") {
+        persistNewUserChallengeStep("choose_devotional");
+        markRolloutSeenLocal("devotionals_intro_seen");
+        appendAssistantMessage(
+          "Perfect.\n\nThat's the right first move.\n\nI'm sending you to the devotional page now.\n\nPick one devotional, and then I'll help you decide whether to start today or tomorrow.",
+        );
+        router.push("/devotionals");
+      } else {
+        appendAssistantMessage(
+          "That's alright.\n\nIf you change your mind, just type yes and I'll walk you into it.\n\nBut the best first step in Bible Buddy is still to pick one devotional and let me help you stay with it day by day.",
+        );
+      }
+      return true;
+    }
+
+    if (hasPendingDevotionalStartPrompt && selectedDevotionalForChallenge && (normalized === "today" || normalized === "tomorrow")) {
+      persistNewUserChallengeStep("daily_track");
+      if (normalized === "today") {
+        appendAssistantMessage(
+          `Let's start now.\n\nOpen day 1 of ${selectedDevotionalForChallenge.title} below and start today.\n\nOnce you finish it, I'll help you with the next step.`,
+        );
+      } else {
+        appendAssistantMessage(
+          `That's fine.\n\nTomorrow we'll start day 1 of ${selectedDevotionalForChallenge.title} together.\n\nJust come back, keep the streak alive, and I'll point you straight into it.`,
+        );
+      }
+      return true;
+    }
+
+    return false;
+  }
+
   async function handleSend() {
     const trimmed = input.trim();
     if (!trimmed) return;
@@ -2071,6 +2231,11 @@ export function ChatLouis() {
       louis_last_conversation_topic: nextConversationMemory.topic,
       louis_last_conversation_resolved: nextConversationMemory.resolved,
     });
+
+    if (await handleStructuredLouisInput(trimmed)) {
+      setIsSending(false);
+      return;
+    }
 
     try {
       const res = await fetch("/api/chat", {
@@ -2423,7 +2588,7 @@ export function ChatLouis() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Talk to Louis..."
+                  placeholder={inputPlaceholder}
                   rows={1}
                   className="flex-1 text-xs border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white resize-none min-h-[36px] max-h-[120px] overflow-y-auto"
                 />
