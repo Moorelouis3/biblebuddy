@@ -134,6 +134,32 @@ export default function BibleBuddyTvShowPageClient({
     }
   }, [title.id]);
 
+  async function ensureTrackingUser() {
+    if (userId) {
+      return { resolvedUserId: userId, resolvedUserName: userName };
+    }
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user?.id) {
+      return { resolvedUserId: null, resolvedUserName: null };
+    }
+
+    const meta = (user.user_metadata || {}) as Record<string, string | undefined>;
+    const resolvedName =
+      meta.firstName ||
+      meta.first_name ||
+      (user.email ? user.email.split("@")[0] : null) ||
+      "User";
+
+    setUserId(user.id);
+    setUserName(resolvedName);
+
+    return { resolvedUserId: user.id, resolvedUserName: resolvedName };
+  }
+
   function toggleMyList() {
     if (typeof window === "undefined") return;
 
@@ -151,7 +177,7 @@ export default function BibleBuddyTvShowPageClient({
     }
   }
 
-  function markEpisodeWatched(episode: BibleBuddyTvEpisode) {
+  async function markEpisodeWatched(episode: BibleBuddyTvEpisode) {
     setSelectedEpisode(episode);
 
     const nextWatchedIds = Array.from(new Set([...watchedEpisodeIds, episode.id]));
@@ -168,9 +194,16 @@ export default function BibleBuddyTvShowPageClient({
       );
     }
 
-    if (userId) {
+    const { resolvedUserId, resolvedUserName } = await ensureTrackingUser();
+
+    if (resolvedUserId) {
       const actionLabel = `${categoryLabel} • ${title.title} • ${episode.contentLabel || (isMovie ? "Movie" : `Episode ${episode.episodeNumber}`)} • ${episode.title}`;
-      void logActionToMasterActions(userId, ACTION_TYPE.bible_buddy_tv_video_started, actionLabel, userName).catch((error) => {
+      void logActionToMasterActions(
+        resolvedUserId,
+        ACTION_TYPE.bible_buddy_tv_video_started,
+        actionLabel,
+        resolvedUserName
+      ).catch((error) => {
         console.error("[NAV] Failed to track Bible Buddy TV video start:", error);
       });
     }
@@ -223,7 +256,7 @@ export default function BibleBuddyTvShowPageClient({
                 {continueEpisode?.available ? (
                   <button
                     type="button"
-                    onClick={() => markEpisodeWatched(continueEpisode)}
+                    onClick={() => void markEpisodeWatched(continueEpisode)}
                     className="rounded-lg px-5 py-2.5 text-sm font-medium text-white transition"
                     style={{ backgroundColor: CAROLINA_BLUE }}
                   >
@@ -250,7 +283,7 @@ export default function BibleBuddyTvShowPageClient({
               <button
                 key={episode.id}
                 type="button"
-                onClick={() => episode.available && markEpisodeWatched(episode)}
+                onClick={() => episode.available && void markEpisodeWatched(episode)}
                 disabled={!episode.available}
                 className={`w-full rounded-xl border p-3 text-left transition ${
                   episode.available

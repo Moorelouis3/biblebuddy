@@ -10,6 +10,11 @@ import {
   bibleBuddyTvTitles,
   type BibleBuddyTvCategory,
 } from "../../lib/bibleBuddyTvContent";
+import {
+  bibleBuddyTvBrowseOptions,
+  getBrowsePageHref,
+  type BibleBuddyTvBrowseKey,
+} from "../../lib/bibleBuddyTvBrowse";
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { supabase } from "../../lib/supabaseClient";
 
@@ -17,17 +22,6 @@ const CAROLINA_BLUE = "#4B9CD3";
 const CAROLINA_BLUE_SOFT = "#EAF5FC";
 const CAROLINA_BLUE_BORDER = "#C8E2F3";
 const MY_LIST_STORAGE_KEY = "bbtv-my-list";
-
-type HomeCategoryId = BibleBuddyTvCategory | "my-list";
-
-const categoryOptions: Array<{ id: HomeCategoryId; label: string }> = [
-  { id: "my-list", label: "My List" },
-  { id: "movies", label: "Movies" },
-  { id: "tv", label: "TV Shows" },
-  { id: "sermons", label: "Sermons" },
-  { id: "documentaries", label: "Documentary" },
-  { id: "bible-stories", label: "Animation" },
-];
 
 function getCategoryCardStyle(category: BibleBuddyTvCategory) {
   switch (category) {
@@ -162,7 +156,6 @@ function PosterShelf({
 
 export default function BibleBuddyTvHomePage() {
   const router = useRouter();
-  const [activeCategory, setActiveCategory] = useState<HomeCategoryId>("movies");
   const [featuredIndex, setFeaturedIndex] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [isDraggingFeatured, setIsDraggingFeatured] = useState(false);
@@ -175,7 +168,6 @@ export default function BibleBuddyTvHomePage() {
     const randomized = [...liveTitles].sort(() => Math.random() - 0.5);
     return randomized.slice(0, Math.min(6, randomized.length));
   }, [liveTitles]);
-  const myListTitles = liveTitles.filter((title) => myListIds.includes(title.id));
   const continueWatchingTitles = liveTitles.filter((title) => title.continueWatchingLabel);
   const fixedShelves = useMemo(
     () =>
@@ -231,15 +223,6 @@ export default function BibleBuddyTvHomePage() {
 
     return () => window.clearInterval(intervalId);
   }, [featuredTitles.length, isDraggingFeatured]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const targetId = activeCategory === "my-list" ? "continue-watching" : `shelf-${activeCategory}`;
-    const target = document.getElementById(targetId);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, [activeCategory]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -310,7 +293,15 @@ export default function BibleBuddyTvHomePage() {
   function handleSermonTopicChange(topic: string) {
     setSelectedSermonTopic(topic);
     if (!topic) return;
-    router.push(`/biblebuddy-tv/sermons/${topic}`);
+    router.push(`${getBrowsePageHref("sermons")}?topic=${topic}`);
+  }
+
+  function handleBrowseSelection(next: BibleBuddyTvBrowseKey) {
+    if (next === "home") {
+      router.push("/biblebuddy-tv");
+      return;
+    }
+    router.push(getBrowsePageHref(next));
   }
 
   return (
@@ -347,7 +338,7 @@ export default function BibleBuddyTvHomePage() {
                     </div>
                   </Link>
 
-                  <div className="px-1 pb-2 pt-4 text-center">
+                  <div className="px-1 pt-3 text-center">
                     <h2 className="text-3xl font-black tracking-[0.18em] text-gray-900">{featuredTitle.title}</h2>
                     <p className="mt-2 text-sm font-medium text-gray-500">{featuredTitle.rating} • {featuredTitle.runtime}</p>
                     <div className="mt-4 grid grid-cols-2 gap-3">
@@ -388,7 +379,7 @@ export default function BibleBuddyTvHomePage() {
           </div>
         </section>
 
-        <section className="mt-6 hidden rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:block md:p-6">
+        <section className="mt-6 hidden rounded-xl border border-gray-200 bg-white p-4 shadow-sm md:block">
           <div
             className="overflow-hidden rounded-[24px] border border-gray-200 bg-gradient-to-r via-white to-[#fff8ef]"
             style={{ backgroundImage: `linear-gradient(to right, ${CAROLINA_BLUE_SOFT}, white, #fff8ef)` }}
@@ -398,11 +389,11 @@ export default function BibleBuddyTvHomePage() {
               style={{ transform: `translateX(-${featuredIndex * 100}%)` }}
             >
               {featuredTitles.map((featuredTitle) => (
-                <div key={featuredTitle.id} className="min-w-full p-4 md:p-6">
-                  <div className="grid gap-5 md:grid-cols-[220px_1fr] md:items-center">
+                <div key={featuredTitle.id} className="min-w-full p-4 md:p-5">
+                  <div className="grid gap-5 md:grid-cols-[180px_1fr] md:items-center">
                     <Link
                       href={`/biblebuddy-tv/shows/${featuredTitle.slug}`}
-                      className="mx-auto block max-w-[220px] md:mx-0"
+                      className="mx-auto block max-w-[180px] md:mx-0"
                     >
                       <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:scale-[1.01] hover:shadow-md">
                         <div className="relative aspect-[4/5]">
@@ -411,7 +402,7 @@ export default function BibleBuddyTvHomePage() {
                             alt={`${featuredTitle.title} poster`}
                             fill
                             className="object-cover"
-                            sizes="220px"
+                            sizes="180px"
                           />
                         </div>
                       </div>
@@ -426,16 +417,6 @@ export default function BibleBuddyTvHomePage() {
                         {featuredTitle.year} • {featuredTitle.rating} • {featuredTitle.runtime}
                       </p>
                       <p className="mt-4 text-sm leading-relaxed text-gray-700">{featuredTitle.overview}</p>
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {featuredTitle.searchTags?.slice(0, 5).map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-full border border-gray-200 bg-white/80 px-3 py-1 text-xs font-medium text-gray-600"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
                       <div className="mt-5 flex flex-wrap gap-3">
                         <Link
                           href={`/biblebuddy-tv/shows/${featuredTitle.slug}`}
@@ -478,15 +459,15 @@ export default function BibleBuddyTvHomePage() {
         <section id="tv-categories" className="mt-8">
           <div className="relative max-w-sm">
             <select
-              value={activeCategory}
-              onChange={(event) => setActiveCategory(event.target.value as HomeCategoryId)}
+              value="home"
+              onChange={(event) => handleBrowseSelection(event.target.value as BibleBuddyTvBrowseKey)}
               className="w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-3 pr-12 text-sm font-medium text-gray-800 shadow-sm outline-none transition focus:ring-2"
               style={{ ["--tw-ring-color" as string]: CAROLINA_BLUE }}
               aria-label="Choose a Bible Buddy TV category"
             >
-              {categoryOptions.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.label}
+              {bibleBuddyTvBrowseOptions.map((option) => (
+                <option key={option.id} value={option.id}>
+                  {option.label}
                 </option>
               ))}
             </select>
@@ -514,30 +495,37 @@ export default function BibleBuddyTvHomePage() {
               <div className="mb-4 flex items-center justify-between">
                 <h2 className="text-2xl font-bold text-gray-900">{shelf.label}</h2>
                 {shelf.id === "sermons" ? (
-                  <div className="relative">
-                    <select
-                      value={selectedSermonTopic}
-                      onChange={(event) => handleSermonTopicChange(event.target.value)}
-                      aria-label="Browse sermons by topic"
-                      className="appearance-none rounded-lg border border-gray-200 bg-white px-3 py-2 pr-10 text-sm font-semibold text-gray-700 shadow-sm outline-none transition focus:ring-2"
-                      style={{ ["--tw-ring-color" as string]: CAROLINA_BLUE }}
-                    >
-                      <option value="">Browse</option>
-                      {bibleBuddyTvSermonTopics.map((topic) => (
-                        <option key={topic.id} value={topic.id}>
-                          {topic.label}
-                        </option>
-                      ))}
-                    </select>
-                    <span
-                      className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm font-bold"
-                      style={{ color: CAROLINA_BLUE }}
-                    >
-                      ▾
-                    </span>
+                  <div className="flex items-center gap-3">
+                    <Link href={getBrowsePageHref("sermons")} className="text-sm font-semibold text-gray-500 hover:text-gray-800">
+                      Browse
+                    </Link>
+                    <div className="relative">
+                      <select
+                        value={selectedSermonTopic}
+                        onChange={(event) => handleSermonTopicChange(event.target.value)}
+                        aria-label="Browse sermons by topic"
+                        className="appearance-none rounded-lg border border-gray-200 bg-white px-3 py-2 pr-10 text-sm font-semibold text-gray-700 shadow-sm outline-none transition focus:ring-2"
+                        style={{ ["--tw-ring-color" as string]: CAROLINA_BLUE }}
+                      >
+                        <option value="">Topic</option>
+                        {bibleBuddyTvSermonTopics.map((topic) => (
+                          <option key={topic.id} value={topic.id}>
+                            {topic.label}
+                          </option>
+                        ))}
+                      </select>
+                      <span
+                        className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm font-bold"
+                        style={{ color: CAROLINA_BLUE }}
+                      >
+                        ▾
+                      </span>
+                    </div>
                   </div>
                 ) : (
-                  <span className="text-sm font-semibold text-gray-500">Browse</span>
+                  <Link href={getBrowsePageHref(shelf.id)} className="text-sm font-semibold text-gray-500 hover:text-gray-800">
+                    Browse
+                  </Link>
                 )}
               </div>
               <PosterShelf titles={shelf.titles} getProgressPercent={getProgressPercent} />
