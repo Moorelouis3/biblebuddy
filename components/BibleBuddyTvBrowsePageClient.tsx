@@ -95,6 +95,7 @@ export default function BibleBuddyTvBrowsePageClient({
   const pageTitle = getBrowsePageTitle(browseKey);
   const pageDescription = getBrowsePageDescription(browseKey);
   const activeSubcategoryLabel = subcategories.find((subcategory) => subcategory.id === selectedSubcategory)?.label ?? "Popular";
+  const subcategoryLabel = browseKey === "sermons" ? "Sermon Themes" : `${pageTitle} Buckets`;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -120,7 +121,7 @@ export default function BibleBuddyTvBrowsePageClient({
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div className="min-w-[220px]">
                   <p className="mb-2 text-sm font-semibold" style={{ color: CAROLINA_BLUE }}>
-                    {pageTitle} Buckets
+                    {subcategoryLabel}
                   </p>
                   <div className="relative">
                     <select
