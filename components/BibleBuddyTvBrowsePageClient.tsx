@@ -155,28 +155,6 @@ export default function BibleBuddyTvBrowsePageClient({
                 ) : null}
               </div>
 
-              {visibleSubcategories.length > 1 ? (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {visibleSubcategories.map((subcategory) => {
-                    const active = subcategory.id === selectedSubcategory;
-                    return (
-                      <button
-                        key={subcategory.id}
-                        type="button"
-                        onClick={() => setSelectedSubcategory(subcategory.id)}
-                        className="rounded-full border px-4 py-2 text-sm font-semibold transition"
-                        style={
-                          active
-                            ? { borderColor: CAROLINA_BLUE, backgroundColor: CAROLINA_BLUE_SOFT, color: CAROLINA_BLUE }
-                            : undefined
-                        }
-                      >
-                        {subcategory.label}
-                      </button>
-                    );
-                  })}
-                </div>
-              ) : null}
             </section>
 
             <section className="mt-8">
