@@ -43,6 +43,7 @@ type WeeklyReportCenterRow = {
   sentAt: string | null;
   isPaid: boolean;
   currentLevel: number | null;
+  bucketDay: string | null;
 };
 
 type WeeklyReportCenterSummary = {
@@ -162,6 +163,7 @@ export default function AnalyticsPage() {
 
   // Action type filter for Action Log
   const [selectedActionType, setSelectedActionType] = useState<string | null>(null);
+  const [selectedActionLabel, setSelectedActionLabel] = useState<string | null>(null);
 
   // Stats Log
   const [statsLogData, setStatsLogData] = useState<
@@ -261,23 +263,10 @@ export default function AnalyticsPage() {
     totalActions7d: 0,
   });
   const [loadingWeeklyReportCenter, setLoadingWeeklyReportCenter] = useState(true);
-
-  // Retention metrics
-  const [retentionData, setRetentionData] = useState<{
-    active24h: number;
-    active7d: number;
-    active30d: number;
-    totalActions24h: number;
-    totalActions7d: number;
-    totalActions30d: number;
-    avgActionsPerActiveUser24h: number;
-    avgActionsPerActiveUser7d: number;
-    avgActionsPerActiveUser30d: number;
-    avgActiveDays30d: number;
-    powerUsers7d: number;
-    returnRate7d: number;
-  } | null>(null);
-  const [loadingRetention, setLoadingRetention] = useState(true);
+  const [savingWeeklyBucketUserId, setSavingWeeklyBucketUserId] = useState<string | null>(null);
+  const [sendingWeeklyReports, setSendingWeeklyReports] = useState(false);
+  const [weeklyReportStatus, setWeeklyReportStatus] = useState<string | null>(null);
+  const [seededFounderBucket, setSeededFounderBucket] = useState(false);
 
   // Ambassador / Buddy Partners
   type AmbassadorReferral = { referred_user_id: string; username: string; profile_image_url: string | null; trial_started_at: string; trial_ends_at: string };
@@ -322,7 +311,6 @@ export default function AnalyticsPage() {
       setLoadingActiveUsers(false);
     }
     fetchActiveUsers();
-    loadRetentionData();
     loadTotalUsers();
     loadFeedbackInbox();
     loadUserRequestsInbox();
@@ -331,12 +319,44 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
     loadOverviewMetrics(timeFilter);
-    buildAdminActionLog(timeFilter, selectedActionType);
+    buildAdminActionLog(timeFilter, selectedActionType, selectedActionLabel);
     loadStatsLog(timeFilter);
     loadDevotionalStats();
     loadReadingPlanStats();
     loadAmbassadors();
-  }, [timeFilter, selectedActionType]);
+  }, [timeFilter, selectedActionType, selectedActionLabel]);
+
+  useEffect(() => {
+    if (
+      selectedActionType !== "dashboard_card_opened" &&
+      selectedActionType !== "invite_buddy_opened" &&
+      selectedActionLabel !== null
+    ) {
+      setSelectedActionLabel(null);
+    }
+  }, [selectedActionType, selectedActionLabel]);
+
+  useEffect(() => {
+    if (seededFounderBucket || loadingWeeklyReportCenter || savingWeeklyBucketUserId) {
+      return;
+    }
+
+    const founderRow = weeklyReportRows.find((row) => {
+      const displayName = row.displayName.trim().toLowerCase();
+      const username = row.username.trim().toLowerCase();
+      return displayName === "louis moore" || username === "moorelouis3" || username === "louis moore";
+    });
+
+    if (founderRow && !founderRow.bucketDay) {
+      setSeededFounderBucket(true);
+      void updateWeeklyReportBucket(founderRow.userId, "thursday");
+      return;
+    }
+
+    if (founderRow) {
+      setSeededFounderBucket(true);
+    }
+  }, [weeklyReportRows, seededFounderBucket, loadingWeeklyReportCenter, savingWeeklyBucketUserId]);
 
   // Load active users (within last 60 minutes)
   async function loadActiveUsers() {
@@ -362,21 +382,6 @@ export default function AnalyticsPage() {
       setFilteredActiveUsers(0);
       setLoadingFilteredActiveUsers(false);
     }
-  }
-
-  // ── Retention & Engagement ────────────────────────────────────────────────
-  async function loadRetentionData() {
-    setLoadingRetention(true);
-    try {
-      const res = await fetch("/api/admin/retention");
-      if (!res.ok) throw new Error(`Retention API error: ${res.status}`);
-      const data = await res.json();
-      console.log("[RETENTION] API response:", data.debug);
-      setRetentionData(data);
-    } catch (e) {
-      console.error("[RETENTION] Error:", e);
-    }
-    setLoadingRetention(false);
   }
 
   // Load total users from auth.users
@@ -1152,7 +1157,7 @@ export default function AnalyticsPage() {
   }
 
   // Build Admin Action Log from master_actions table (all users)
-  async function buildAdminActionLog(filter?: TimeFilter, actionTypeFilter?: string | null) {
+  async function buildAdminActionLog(filter?: TimeFilter, actionTypeFilter?: string | null, actionLabelFilter?: string | null) {
     setLoadingActionLog(true);
     const actions: Array<{ date: string; text: string; sortKey: number; actionType: string; userId: string | null; username: string; url?: string; dmCount?: number; actionLabel?: string | null }> = [];
 
@@ -1187,6 +1192,10 @@ export default function AnalyticsPage() {
         query = query.in("action_type", [...VIDEO_WATCH_ACTION_TYPES]);
       } else if (actionTypeFilter) {
         query = query.eq("action_type", actionTypeFilter);
+      }
+
+      if (actionLabelFilter) {
+        query = query.eq("action_label", actionLabelFilter);
       }
 
       query = query.limit(200); // Limit to 200 most recent actions
@@ -1977,6 +1986,19 @@ export default function AnalyticsPage() {
         sentAtByUser.set(row.user_id, row.sent_at);
       }
 
+      const { data: bucketRows, error: bucketRowsError } = await supabase
+        .from("weekly_bible_report_buckets")
+        .select("user_id, bucket_day");
+
+      if (bucketRowsError) {
+        console.error("[WEEKLY_REPORT_CENTER] Error loading buckets:", bucketRowsError);
+      }
+
+      const bucketDayByUser = new Map<string, string>();
+      for (const row of (bucketRows || []) as Array<{ user_id: string; bucket_day: string }>) {
+        bucketDayByUser.set(row.user_id, row.bucket_day);
+      }
+
       const profilesMap = new Map<string, {
         user_id: string;
         username: string | null;
@@ -2015,6 +2037,7 @@ export default function AnalyticsPage() {
             sentAt: sentAtByUser.get(userId) || null,
             isPaid: profile?.is_paid === true,
             currentLevel: profile?.current_level ?? null,
+            bucketDay: bucketDayByUser.get(userId) || null,
           };
         })
         .sort((a, b) => {
@@ -2041,6 +2064,58 @@ export default function AnalyticsPage() {
       });
     }
     setLoadingWeeklyReportCenter(false);
+  }
+
+  async function updateWeeklyReportBucket(userId: string, bucketDay: string) {
+    setSavingWeeklyBucketUserId(userId);
+    setWeeklyReportStatus(null);
+    try {
+      const response = await fetch("/api/admin/weekly-bible-report", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "set_bucket", userId, bucketDay }),
+      });
+
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result?.error || "Failed to save weekly report bucket.");
+      }
+
+      setWeeklyReportStatus(`Weekly report day saved: ${bucketDay}.`);
+      await loadWeeklyReportCenter();
+    } catch (error) {
+      console.error("[WEEKLY_REPORT_CENTER] Failed to update bucket:", error);
+      setWeeklyReportStatus(error instanceof Error ? error.message : "Failed to update weekly report day.");
+    } finally {
+      setSavingWeeklyBucketUserId(null);
+    }
+  }
+
+  async function sendWeeklyReports(limit = 50) {
+    setSendingWeeklyReports(true);
+    setWeeklyReportStatus(null);
+    try {
+      const response = await fetch("/api/admin/weekly-bible-report", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "send_today", limit }),
+      });
+
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result?.error || "Failed to send weekly reports.");
+      }
+
+      setWeeklyReportStatus(
+        `Sent ${result.sent ?? 0} weekly reports for ${result.bucketDay ?? "today"} and skipped ${result.skipped ?? 0}.`,
+      );
+      await loadWeeklyReportCenter();
+    } catch (error) {
+      console.error("[WEEKLY_REPORT_CENTER] Failed to send weekly reports:", error);
+      setWeeklyReportStatus(error instanceof Error ? error.message : "Failed to send weekly reports.");
+    } finally {
+      setSendingWeeklyReports(false);
+    }
   }
 
   // Load feedback inbox from user_feedback table
@@ -2763,7 +2838,10 @@ export default function AnalyticsPage() {
               <OverviewCard
                 label="Active Users"
                 value={overviewMetrics.activeUsers}
-                onClick={() => setSelectedActionType(null)}
+                onClick={() => {
+                  setSelectedActionType(null);
+                  setSelectedActionLabel(null);
+                }}
                 isSelected={false}
               />
               <OverviewCard
@@ -2775,53 +2853,43 @@ export default function AnalyticsPage() {
               <OverviewCard
                 label="Total Actions"
                 value={overviewMetrics.totalActions}
-                onClick={() => setSelectedActionType(null)}
-                isSelected={selectedActionType === null}
-              />
-              <OverviewCard
-                label="Navigation Views"
-                value={overviewMetrics.navigationViews}
-                onClick={() => setSelectedActionType(selectedActionType === "navigation_views" ? null : "navigation_views")}
-                isSelected={selectedActionType === "navigation_views"}
-              />
-              <OverviewCard
-                label="Navigation Clicks"
-                value={overviewMetrics.navigationClicks}
-                onClick={() => setSelectedActionType(selectedActionType === "navigation_clicks" ? null : "navigation_clicks")}
-                isSelected={selectedActionType === "navigation_clicks"}
+                onClick={() => {
+                  setSelectedActionType(null);
+                  setSelectedActionLabel(null);
+                }}
+                isSelected={selectedActionType === null && selectedActionLabel === null}
               />
             </div>
 
-            <div className="mb-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-              <div className="mb-4 flex items-center justify-between gap-3">
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900">Dashboard Card Clicks</h3>
-                  <p className="text-sm text-gray-500">How many times each dashboard card was opened in this time frame.</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setSelectedActionType(selectedActionType === "dashboard_card_opened" ? null : "dashboard_card_opened")}
-                  className="text-sm font-semibold text-blue-600 hover:text-blue-800"
-                >
-                  View in Action Log
-                </button>
+            <div className="mb-6">
+              <div className="mb-3">
+                <h3 className="text-lg font-bold text-gray-900">Dashboard Card Clicks</h3>
+                <p className="text-sm text-gray-500">How many times each dashboard card was opened in this time frame.</p>
               </div>
               <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-                {dashboardCardBreakdown.map((card) => (
-                  <OverviewCard
-                    key={card.label}
-                    label={card.label}
-                    value={card.value}
-                    onClick={() =>
-                      setSelectedActionType(
-                        selectedActionType === (card.label === "Share Bible Buddy" ? "invite_buddy_opened" : "dashboard_card_opened")
-                          ? null
-                          : (card.label === "Share Bible Buddy" ? "invite_buddy_opened" : "dashboard_card_opened")
-                      )
-                    }
-                    isSelected={selectedActionType === (card.label === "Share Bible Buddy" ? "invite_buddy_opened" : "dashboard_card_opened")}
-                  />
-                ))}
+                {dashboardCardBreakdown.map((card) => {
+                  const actionType = card.label === "Share Bible Buddy" ? "invite_buddy_opened" : "dashboard_card_opened";
+                  const actionLabel = card.label === "Share Bible Buddy" ? null : card.label;
+                  const isSelected = selectedActionType === actionType && selectedActionLabel === actionLabel;
+
+                  return (
+                    <OverviewCard
+                      key={card.label}
+                      label={card.label}
+                      value={card.value}
+                      onClick={() => {
+                        if (isSelected) {
+                          setSelectedActionType(null);
+                          setSelectedActionLabel(null);
+                          return;
+                        }
+                        setSelectedActionType(actionType);
+                        setSelectedActionLabel(actionLabel);
+                      }}
+                      isSelected={isSelected}
+                    />
+                  );
+                })}
               </div>
             </div>
 
@@ -2901,90 +2969,6 @@ export default function AnalyticsPage() {
       </div>
 
       {/* ── RETENTION & ENGAGEMENT ─────────────────────────────────────────── */}
-      <div className="mt-10 mb-10">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-2xl font-bold">Usage Overview</h2>
-          <button
-            onClick={() => loadRetentionData()}
-            className="text-sm text-blue-600 hover:text-blue-800 font-medium"
-          >
-            Refresh
-          </button>
-        </div>
-
-        {loadingRetention ? (
-          <div className="bg-white p-6 rounded-xl shadow text-center">
-            <p className="text-gray-500 text-sm">Computing usage metrics...</p>
-          </div>
-        ) : retentionData ? (
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center">
-                <p className="text-xs text-gray-500 mb-1">Active 24h</p>
-                <p className="text-3xl font-bold text-blue-600">{retentionData.active24h}</p>
-                <p className="text-xs text-gray-400 mt-1">Unique users with any action</p>
-              </div>
-
-              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center">
-                <p className="text-xs text-gray-500 mb-1">Active 7d</p>
-                <p className="text-3xl font-bold text-green-600">{retentionData.active7d}</p>
-                <p className="text-xs text-gray-400 mt-1">Unique users this week</p>
-              </div>
-
-              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center">
-                <p className="text-xs text-gray-500 mb-1">Active 30d</p>
-                <p className="text-3xl font-bold text-indigo-600">{retentionData.active30d}</p>
-                <p className="text-xs text-gray-400 mt-1">Unique users this month</p>
-              </div>
-
-              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm text-center">
-                <p className="text-xs text-gray-500 mb-1">Return Rate 7d</p>
-                <p className="text-3xl font-bold text-amber-600">{retentionData.returnRate7d}%</p>
-                <p className="text-xs text-gray-400 mt-1">Active in both weeks</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-                <p className="text-xs text-gray-500 mb-1">Avg Actions / Active User 24h</p>
-                <p className="text-3xl font-bold text-gray-900">{retentionData.avgActionsPerActiveUser24h}</p>
-                <p className="text-xs text-gray-400 mt-1">{retentionData.totalActions24h} total actions in 24h</p>
-              </div>
-
-              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-                <p className="text-xs text-gray-500 mb-1">Avg Actions / Active User 7d</p>
-                <p className="text-3xl font-bold text-gray-900">{retentionData.avgActionsPerActiveUser7d}</p>
-                <p className="text-xs text-gray-400 mt-1">{retentionData.totalActions7d} total actions in 7d</p>
-              </div>
-
-              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-                <p className="text-xs text-gray-500 mb-1">Avg Active Days / User 30d</p>
-                <p className="text-3xl font-bold text-gray-900">{retentionData.avgActiveDays30d}</p>
-                <p className="text-xs text-gray-400 mt-1">How often users came back this month</p>
-              </div>
-
-              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-                <p className="text-xs text-gray-500 mb-1">Power Users 7d</p>
-                <p className="text-3xl font-bold text-gray-900">{retentionData.powerUsers7d}</p>
-                <p className="text-xs text-gray-400 mt-1">Users with 5+ actions this week</p>
-              </div>
-            </div>
-
-            <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5">
-              <h3 className="text-sm font-bold text-gray-800">How to read this</h3>
-              <div className="mt-3 space-y-2 text-sm text-gray-600">
-                <p>Active means a unique user did any action in the app, not just a login.</p>
-                <p>Average actions per active user shows how much the average active person is actually using Bible Buddy.</p>
-                <p>Average active days per user shows how often people came back during the last 30 days.</p>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="bg-white p-4 rounded-xl shadow">
-            <p className="text-gray-500 text-sm">No usage data available.</p>
-          </div>
-        )}
-      </div>
       {/* MAIN SECTION SELECTOR (Dropdown/Tabs) */}
       <div className="mt-12 mb-6">
         <div className="flex items-center justify-between mb-4">
@@ -3020,13 +3004,16 @@ export default function AnalyticsPage() {
         {/* ACTION LOG SECTION */}
         {activeSection === "actions" && (
           <>
-            {selectedActionType && (
+            {(selectedActionType || selectedActionLabel) && (
               <div className="flex items-center justify-between mb-4">
                 <p className="text-sm text-gray-600">
-                  Showing only: <span className="font-semibold">{formatActionTypeName(selectedActionType)}</span>
+                  Showing only: <span className="font-semibold">{selectedActionLabel || formatActionTypeName(selectedActionType!)}</span>
                 </p>
                 <button
-                  onClick={() => setSelectedActionType(null)}
+                  onClick={() => {
+                    setSelectedActionType(null);
+                    setSelectedActionLabel(null);
+                  }}
                   className="text-sm text-blue-600 hover:text-blue-700 font-medium"
                 >
                   Clear Filter
@@ -3283,16 +3270,31 @@ export default function AnalyticsPage() {
                     <div>
                       <h3 className="text-lg font-bold text-gray-900">Weekly Bible Report</h3>
                       <p className="text-sm text-gray-500">
-                        Users with at least 1 action in the last 7 days, plus whether this week&apos;s report was sent.
+                        Users with at least 1 action in the last 7 days, the weekday they belong to, and whether this week&apos;s report was sent.
                       </p>
                     </div>
-                    <button
-                      onClick={() => loadWeeklyReportCenter()}
-                      className="text-sm text-blue-600 hover:text-blue-800 font-medium"
-                    >
-                      Refresh
-                    </button>
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => sendWeeklyReports(50)}
+                        disabled={sendingWeeklyReports}
+                        className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        {sendingWeeklyReports ? "Sending..." : "Send 50 Today"}
+                      </button>
+                      <button
+                        onClick={() => loadWeeklyReportCenter()}
+                        className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                      >
+                        Refresh
+                      </button>
+                    </div>
                   </div>
+
+                  {weeklyReportStatus && (
+                    <div className="border-b border-gray-100 bg-blue-50 px-5 py-3 text-sm text-blue-800">
+                      {weeklyReportStatus}
+                    </div>
+                  )}
 
                   {weeklyReportRows.length === 0 ? (
                     <div className="p-5 text-sm text-gray-500">No weekly report data found.</div>
@@ -3306,6 +3308,7 @@ export default function AnalyticsPage() {
                             <th className="px-4 py-3">Last Action</th>
                             <th className="px-4 py-3">Level</th>
                             <th className="px-4 py-3">Plan</th>
+                            <th className="px-4 py-3">Send Day</th>
                             <th className="px-4 py-3">Weekly Report</th>
                           </tr>
                         </thead>
@@ -3330,6 +3333,21 @@ export default function AnalyticsPage() {
                                 }`}>
                                   {row.isPaid ? "Pro Buddy" : "Free"}
                                 </span>
+                              </td>
+                              <td className="px-4 py-3 align-top">
+                                <select
+                                  value={row.bucketDay || ""}
+                                  onChange={(event) => updateWeeklyReportBucket(row.userId, event.target.value)}
+                                  disabled={savingWeeklyBucketUserId === row.userId}
+                                  className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-gray-700 focus:border-blue-500 focus:outline-none"
+                                >
+                                  <option value="" disabled>Select day</option>
+                                  {["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"].map((day) => (
+                                    <option key={day} value={day}>
+                                      {day.charAt(0).toUpperCase() + day.slice(1)}
+                                    </option>
+                                  ))}
+                                </select>
                               </td>
                               <td className="px-4 py-3 align-top">
                                 {row.sentAt ? (
@@ -3935,12 +3953,20 @@ function OverviewCard({
         return "bg-teal-100 border border-teal-200";
       case "Videos Watched":
         return "bg-blue-100 border border-blue-200";
+      case "The Bible":
+        return "bg-blue-100 border border-blue-200";
+      case "Bible Study Group":
+        return "bg-green-100 border border-green-200";
+      case "Bible Study Tools":
+        return "bg-rose-100 border border-rose-200";
+      case "Bible Buddy TV":
+        return "bg-violet-100 border border-violet-200";
+      case "Bible Study Games":
+        return "bg-cyan-100 border border-cyan-200";
+      case "Share Bible Buddy":
+        return "bg-gray-100 border border-gray-200";
       case "Signups":
         return "bg-gray-100 border border-gray-200";
-      case "Navigation Views":
-        return "bg-slate-100 border border-slate-200";
-      case "Navigation Clicks":
-        return "bg-sky-100 border border-sky-200";
       case "Upgrades":
         return "bg-amber-100 border border-amber-200";
       case "Active Users":
