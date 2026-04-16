@@ -27,6 +27,7 @@ export default function BibleBuddyTvShowPageClient({
   title,
 }: BibleBuddyTvShowPageClientProps) {
   const [selectedEpisode, setSelectedEpisode] = useState<BibleBuddyTvEpisode | null>(null);
+  const [openingEpisodeId, setOpeningEpisodeId] = useState<string | null>(null);
   const [watchedEpisodeIds, setWatchedEpisodeIds] = useState<string[]>([]);
   const [lastWatchedEpisodeId, setLastWatchedEpisodeId] = useState<string | null>(null);
   const [isInMyList, setIsInMyList] = useState(false);
@@ -178,6 +179,7 @@ export default function BibleBuddyTvShowPageClient({
   }
 
   async function markEpisodeWatched(episode: BibleBuddyTvEpisode) {
+    setOpeningEpisodeId(episode.id);
     setSelectedEpisode(episode);
 
     const nextWatchedIds = Array.from(new Set([...watchedEpisodeIds, episode.id]));
@@ -208,6 +210,19 @@ export default function BibleBuddyTvShowPageClient({
       });
     }
   }
+
+  useEffect(() => {
+    if (!selectedEpisode) {
+      setOpeningEpisodeId(null);
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      setOpeningEpisodeId(null);
+    }, 500);
+
+    return () => window.clearTimeout(timeout);
+  }, [selectedEpisode]);
 
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
@@ -260,7 +275,11 @@ export default function BibleBuddyTvShowPageClient({
                     className="rounded-lg px-5 py-2.5 text-sm font-medium text-white transition"
                     style={{ backgroundColor: CAROLINA_BLUE }}
                   >
-                    {isMovie ? "\u25B6 Watch Now" : `Watch ${continueEpisode.contentLabel || `Episode ${continueEpisode.episodeNumber}`}`}
+                    {openingEpisodeId === continueEpisode.id
+                      ? "Opening..."
+                      : isMovie
+                        ? "\u25B6 Watch Now"
+                        : `Watch ${continueEpisode.contentLabel || `Episode ${continueEpisode.episodeNumber}`}`}
                   </button>
                 ) : null}
                 <button
@@ -333,7 +352,13 @@ export default function BibleBuddyTvShowPageClient({
                           : undefined
                       }
                     >
-                      {episode.available ? (watchedEpisodeIds.includes(episode.id) ? "Watched" : "Watch") : "Soon"}
+                      {episode.available
+                        ? openingEpisodeId === episode.id
+                          ? "Opening..."
+                          : watchedEpisodeIds.includes(episode.id)
+                            ? "Watched"
+                            : "Watch"
+                        : "Soon"}
                     </span>
                   </div>
                 </div>

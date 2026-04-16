@@ -6,6 +6,7 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import "../../styles/pulse.css";
 import DashboardCards from "../../components/DashboardCards";
+import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
@@ -794,6 +795,14 @@ export default function DashboardPage() {
   }, [featureToursEnabled]);
 
   useEffect(() => {
+    if (!featureToursEnabled || !featureToursLoaded || activeTourKey || !userId) return;
+    if (featureTours.dashboard !== true) {
+      setPendingTourNavigation(null);
+      setActiveTourKey("dashboard");
+    }
+  }, [activeTourKey, featureTours, featureToursEnabled, featureToursLoaded, userId]);
+
+  useEffect(() => {
     if (activeTourKey === "dashboard") {
       setDashboardTourStep(-1);
       setDashboardTourAnchor(null);
@@ -1016,6 +1025,13 @@ export default function DashboardPage() {
     }
 
     event.preventDefault();
+
+    if (featureToursEnabled && featureToursLoaded && tourKey !== "dashboard" && featureTours[tourKey as FeatureTourKey] !== true) {
+      setPendingTourNavigation(path);
+      setActiveTourKey(tourKey as FeatureTourKey);
+      return;
+    }
+
     router.push(path);
   }
 
@@ -1642,6 +1658,39 @@ export default function DashboardPage() {
           </div>
         </div>
       )}
+
+      {activeTourKey ? (
+        <FeatureTourModal
+          isOpen={true}
+          title={
+            activeTourKey === "dashboard" && dashboardTourStep >= 0
+              ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.title ?? TOUR_COPY.dashboard.title
+              : TOUR_COPY[activeTourKey].title
+          }
+          body={
+            activeTourKey === "dashboard" && dashboardTourStep >= 0
+              ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.body ?? TOUR_COPY.dashboard.body
+              : TOUR_COPY[activeTourKey].body
+          }
+          content={activeTourKey === "dashboard" && dashboardTourStep < 0 ? DASHBOARD_TOUR_CONTENT : undefined}
+          primaryButtonText={
+            activeTourKey === "dashboard"
+              ? dashboardTourStep < 0
+                ? "I understand"
+                : dashboardTourStep === DASHBOARD_TOUR_STEPS.length - 1
+                  ? "Done"
+                  : "Next"
+              : "I understand"
+          }
+          variant={activeTourKey === "dashboard" && dashboardTourStep >= 0 ? "coachmark" : "default"}
+          anchorRect={activeTourKey === "dashboard" ? dashboardTourAnchor : null}
+          canAdvance={activeTourKey === "dashboard" ? (dashboardTourStep < 0 ? true : dashboardTourCanAdvance) : true}
+          closeOnBackdrop={activeTourKey !== "dashboard" || dashboardTourStep < 0}
+          isSaving={isSavingFeatureTour}
+          onClose={handleTourClose}
+          onUnderstand={handleTourUnderstand}
+        />
+      ) : null}
 
 
     </div>

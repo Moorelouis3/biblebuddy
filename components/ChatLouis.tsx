@@ -1462,7 +1462,6 @@ export function ChatLouis() {
   );
 
   const hasPendingLouisMoment =
-    hasPendingPageGuide ||
     hasPendingDevotionalChallengePrompt ||
     hasPendingDevotionalStartPrompt ||
     (pathname === "/dashboard" && (hasUnseenDailyGreeting || (hasUnseenRecommendation && Boolean(louisRecommendation))));
@@ -1471,15 +1470,7 @@ export function ChatLouis() {
     ? "Type today or tomorrow."
     : hasPendingDevotionalChallengePrompt || (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional)
       ? "Type yes or no."
-      : currentPageGuide
-    ? currentPageGuide.id === "dashboard"
-      ? "Ask me anything about the dashboard."
-      : currentPageGuide.id === "bible_buddy_tv"
-        ? "Ask me anything about Bible Buddy TV."
-        : currentPageGuide.id === "bible_trivia"
-          ? "Ask me anything about Bible trivia."
-        : "Ask me anything about reading the Bible here."
-    : "Ask me a question about your Bible reading.";
+      : "Ask me a question about your Bible reading.";
 
   const inputPlaceholder = hasPendingDevotionalStartPrompt
     ? "Type today or tomorrow..."
@@ -1702,12 +1693,6 @@ export function ChatLouis() {
       }
     }
 
-    if (hasPendingPageGuide && currentPageGuide?.id === "dashboard") {
-      message += hasLouisHistory
-        ? "\n\nAnd if you want, I can show you around the dashboard too."
-        : "\n\nYou're on the dashboard right now, and I can walk you through it when you're ready.";
-    }
-
     return message;
   }
 
@@ -1889,11 +1874,7 @@ export function ChatLouis() {
                       : habitNudge
                         ? `Love that.\n\n${getStreakCelebrationLine(currentStreak)}\n\n${habitNudge.summary}`
                         : "Love that.\n\nDo you want today's verse, do you want a recommendation, or do you want me to show you something on this page?"
-                    : currentPageGuide
-                      ? pathname === "/dashboard"
-                        ? `That's good to hear.\n\nIt's great to have you here.\n\nSince this is your first time, how about we do this together?\n\nI can show you the dashboard, then help you take your first real step in Bible Buddy.`
-                        : `That's good to hear.\n\nIt's great to have you here.\n\nSince you're on ${currentPageGuide.title.toLowerCase()}, do you want me to show you how this page works?`
-                      : "That's good to hear.\n\nIt's great to have you here.\n\nDo you want today's verse, a recommendation, or help with the page you're on?",
+                    : "That's good to hear.\n\nIt's great to have you here.\n\nDo you want today's verse, or do you want me to recommend the next best thing to do today?",
         );
         seedQuickReplies(
           [
@@ -1912,7 +1893,6 @@ export function ChatLouis() {
             currentStreak >= 7 && !louisFeatureRollout.group_intro_seen
               ? { id: "daily-good-rec", label: "Show me the group", action: "daily_recommendation" as const }
               : null,
-            currentPageGuide ? { id: "daily-intro-help", label: "Show me this page", action: "daily_intro_help" as const } : null,
             { id: "daily-good-verse", label: "Today's verse", action: "daily_verse" as const },
             { id: "daily-good-rec-default", label: "Recommend something", action: "daily_recommendation" as const },
             lastMasterActionSummary?.continueHref && lastMasterActionSummary.continueLabel
@@ -1928,13 +1908,10 @@ export function ChatLouis() {
             ? habitNudge
               ? `Alright.\n\nLet's keep it simple then.\n\n${habitNudge.summary}`
               : "Alright.\n\nLet's keep it simple then.\n\nDo you want today's verse, do you want me to recommend one good next step, or do you want help with the page you're on?"
-            : currentPageGuide
-              ? `That's alright.\n\nWe can keep it simple.\n\nSince you're on ${currentPageGuide.title.toLowerCase()}, do you want me to show you how this page works?`
-              : "That's alright.\n\nWe can keep it simple.\n\nDo you want today's verse, a recommendation, or help with the page you're on?",
+            : "That's alright.\n\nWe can keep it simple.\n\nDo you want today's verse, or do you want me to recommend one good next step?",
         );
         seedQuickReplies(
           [
-            currentPageGuide ? { id: "daily-okay-help", label: "Show me this page", action: "daily_intro_help" as const } : null,
             { id: "daily-okay-verse", label: "Today's verse", action: "daily_verse" as const },
             { id: "daily-okay-rec", label: "Recommend something", action: "daily_recommendation" as const },
             { id: "daily-okay-talk", label: "I want to talk", action: "daily_talk" as const },
@@ -1946,14 +1923,11 @@ export function ChatLouis() {
         appendAssistantMessage(
           hasLouisHistory
             ? "I'm sorry you're feeling like that.\n\nWhat's going on?\n\nTell me straight, and we'll try to move toward something in the Word that can help in this moment."
-            : currentPageGuide
-              ? `I'm sorry you're feeling like that.\n\nHopefully the Word can help meet you in this moment.\n\nI see you're on ${currentPageGuide.title.toLowerCase()}.\n\nIf you want, tell me what's wrong, or I can show you how this page works and help you start somewhere simple.`
-              : "I'm sorry you're feeling like that.\n\nHopefully the Word can help meet you in this moment.\n\nTell me what's going on, and I'll help you find somewhere solid to start.",
+            : "I'm sorry you're feeling like that.\n\nHopefully the Word can help meet you in this moment.\n\nTell me what's going on, and I'll help you find somewhere solid to start.",
         );
         seedQuickReplies(
           [
             { id: "daily-bad-talk", label: "What's wrong", action: "daily_talk" as const },
-            currentPageGuide ? { id: "daily-bad-help", label: "Show me this page", action: "daily_intro_help" as const } : null,
             { id: "daily-bad-verse", label: "Give me today's verse", action: "daily_verse" as const },
           ].filter(Boolean) as QuickReply[],
         );
@@ -1983,9 +1957,7 @@ export function ChatLouis() {
               ? { id: "daily-no-rec", label: "What do you recommend?", action: "daily_recommendation" as const }
               : null,
             habitNudge ? { id: "daily-no-nudge", label: habitNudge.label, action: "daily_try_missing" as const } : null,
-            hasPendingPageGuide && currentPageGuide?.id === "dashboard"
-              ? { id: "daily-no-guide", label: "Show me the dashboard", action: "guide_show" as const }
-              : { id: "daily-no-talk", label: "I changed my mind", action: "daily_talk" as const },
+            { id: "daily-no-talk", label: "I changed my mind", action: "daily_talk" as const },
           ].filter(Boolean) as QuickReply[],
         );
         break;
@@ -2138,26 +2110,6 @@ export function ChatLouis() {
       return;
     }
 
-    if (hasPendingPageGuide) {
-      const guideWasPrompted =
-        louisUserId &&
-        typeof window !== "undefined" &&
-        currentPageGuide &&
-        window.localStorage.getItem(getGuidePromptKey(louisUserId, currentPageGuide.id)) === "1";
-
-      if (latestMessage?.role === "assistant" && latestMessage.content === currentPageGuide?.ask) {
-        seedQuickReplies(getGuideQuickReplies());
-        return;
-      }
-
-      if (guideWasPrompted) {
-        seedQuickReplies(getGuideQuickReplies());
-        return;
-      }
-
-      await beginPageGuideConversation();
-      return;
-    }
   }
 
   async function handleLouisGuideSecondary() {}
