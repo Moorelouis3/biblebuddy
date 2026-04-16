@@ -52,6 +52,18 @@ type WeeklyReportCenterSummary = {
   totalActions7d: number;
 };
 
+type LouisReportLogRow = {
+  id: string;
+  userId: string;
+  username: string;
+  displayName: string;
+  createdAt: string;
+  consumedAt: string | null;
+  isPaid: boolean;
+  currentLevel: number | null;
+  title: string | null;
+};
+
 const INITIAL_METRICS: OverviewMetrics = {
   signups: 0,
   activeUsers: 0,
@@ -264,6 +276,8 @@ export default function AnalyticsPage() {
   const [loadingWeeklyReportCenter, setLoadingWeeklyReportCenter] = useState(true);
   const [sendingWeeklyReports, setSendingWeeklyReports] = useState(false);
   const [weeklyReportStatus, setWeeklyReportStatus] = useState<string | null>(null);
+  const [louisReportLogRows, setLouisReportLogRows] = useState<LouisReportLogRow[]>([]);
+  const [loadingLouisReportLog, setLoadingLouisReportLog] = useState(true);
 
   // Ambassador / Buddy Partners
   type AmbassadorReferral = { referred_user_id: string; username: string; profile_image_url: string | null; trial_started_at: string; trial_ends_at: string };
@@ -312,6 +326,7 @@ export default function AnalyticsPage() {
     loadFeedbackInbox();
     loadUserRequestsInbox();
     loadWeeklyReportCenter();
+    loadLouisReportLog();
   }, []);
 
   useEffect(() => {
@@ -2027,6 +2042,81 @@ export default function AnalyticsPage() {
     setLoadingWeeklyReportCenter(false);
   }
 
+  async function loadLouisReportLog() {
+    setLoadingLouisReportLog(true);
+    try {
+      const { data: messageRows, error: messageError } = await supabase
+        .from("louis_inbox_messages")
+        .select("id, user_id, title, created_at, consumed_at")
+        .eq("kind", "weekly_bible_report")
+        .order("created_at", { ascending: false })
+        .limit(250);
+
+      if (messageError) {
+        console.error("[LOUIS_REPORT_LOG] Error loading Louis inbox messages:", messageError);
+        setLouisReportLogRows([]);
+        setLoadingLouisReportLog(false);
+        return;
+      }
+
+      const userIds = Array.from(
+        new Set(((messageRows || []) as Array<{ user_id: string }>).map((row) => row.user_id).filter(Boolean)),
+      );
+
+      const profileMap = new Map<string, {
+        user_id: string;
+        username: string | null;
+        display_name: string | null;
+        is_paid: boolean | null;
+        current_level: number | null;
+      }>();
+
+      for (let i = 0; i < userIds.length; i += 250) {
+        const chunk = userIds.slice(i, i + 250);
+        const { data: profiles, error: profilesError } = await supabase
+          .from("profile_stats")
+          .select("user_id, username, display_name, is_paid, current_level")
+          .in("user_id", chunk);
+
+        if (profilesError) {
+          console.error("[LOUIS_REPORT_LOG] Error loading profiles:", profilesError);
+          continue;
+        }
+
+        for (const profile of profiles || []) {
+          profileMap.set(profile.user_id, profile);
+        }
+      }
+
+      const rows: LouisReportLogRow[] = ((messageRows || []) as Array<{
+        id: string;
+        user_id: string;
+        title: string | null;
+        created_at: string;
+        consumed_at: string | null;
+      }>).map((row) => {
+        const profile = profileMap.get(row.user_id);
+        return {
+          id: row.id,
+          userId: row.user_id,
+          username: profile?.username || "Unknown User",
+          displayName: profile?.display_name || profile?.username || "Unknown User",
+          createdAt: row.created_at,
+          consumedAt: row.consumed_at,
+          isPaid: profile?.is_paid === true,
+          currentLevel: profile?.current_level ?? null,
+          title: row.title ?? null,
+        };
+      });
+
+      setLouisReportLogRows(rows);
+    } catch (error) {
+      console.error("[LOUIS_REPORT_LOG] Unexpected error:", error);
+      setLouisReportLogRows([]);
+    }
+    setLoadingLouisReportLog(false);
+  }
+
   async function sendWeeklyReportsNow() {
     setSendingWeeklyReports(true);
     setWeeklyReportStatus(null);
@@ -2046,6 +2136,7 @@ export default function AnalyticsPage() {
         `Sent ${result.sent ?? 0} Louis weekly reports and skipped ${result.skipped ?? 0}.`,
       );
       await loadWeeklyReportCenter();
+      await loadLouisReportLog();
     } catch (error) {
       console.error("[WEEKLY_REPORT_CENTER] Failed to send weekly reports:", error);
       setWeeklyReportStatus(error instanceof Error ? error.message : "Failed to send weekly reports.");
@@ -3588,6 +3679,92 @@ export default function AnalyticsPage() {
                   </div>
                 ))
               )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* LITTLE LOUIS WEEKLY REPORT LOG */}
+      <div className="mt-4 mb-12">
+        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-blue-50">
+            <div>
+              <span className="text-xl font-bold text-blue-900">Little Louis Weekly Report Log</span>
+              <p className="text-xs text-blue-700 mt-1">
+                Shows who got the weekly Louis report and whether they opened Louis and consumed it.
+              </p>
+              <p className="text-[11px] text-gray-500 mt-1">
+                Louis replies are not fully tracked server-side yet, so this shows sent and opened status for now.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => loadLouisReportLog()}
+              className="text-xs text-blue-700 hover:text-blue-900 font-semibold transition"
+            >
+              Refresh
+            </button>
+          </div>
+
+          {loadingLouisReportLog ? (
+            <p className="text-sm text-gray-400 px-5 py-4">Loading...</p>
+          ) : louisReportLogRows.length === 0 ? (
+            <p className="text-sm text-gray-400 px-5 py-4">No Louis weekly report messages found yet.</p>
+          ) : (
+            <div className="max-h-[32rem] overflow-auto">
+              <table className="min-w-full text-sm">
+                <thead className="sticky top-0 bg-gray-50 text-left text-xs uppercase tracking-wide text-gray-500">
+                  <tr>
+                    <th className="px-4 py-3">User</th>
+                    <th className="px-4 py-3">Report</th>
+                    <th className="px-4 py-3">Sent</th>
+                    <th className="px-4 py-3">Opened</th>
+                    <th className="px-4 py-3">Level</th>
+                    <th className="px-4 py-3">Plan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {louisReportLogRows.map((row) => (
+                    <tr key={row.id} className="border-t border-gray-100 hover:bg-gray-50">
+                      <td className="px-4 py-3 align-top">
+                        <div className="font-semibold text-gray-900">{row.displayName}</div>
+                        <div className="text-xs text-gray-500">@{row.username}</div>
+                        <a href={`/profile/${row.userId}`} className="text-xs font-semibold text-blue-600 hover:underline">
+                          View profile →
+                        </a>
+                      </td>
+                      <td className="px-4 py-3 align-top text-gray-700">{row.title || "Weekly Bible Report"}</td>
+                      <td className="px-4 py-3 align-top text-gray-700">
+                        {formatAdminActionDate(new Date(row.createdAt))} at {formatAdminActionTime(new Date(row.createdAt))}
+                      </td>
+                      <td className="px-4 py-3 align-top">
+                        {row.consumedAt ? (
+                          <div>
+                            <span className="inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-800">
+                              Opened in Louis
+                            </span>
+                            <div className="mt-1 text-xs text-gray-500">
+                              {formatAdminActionDate(new Date(row.consumedAt))} at {formatAdminActionTime(new Date(row.consumedAt))}
+                            </div>
+                          </div>
+                        ) : (
+                          <span className="inline-flex rounded-full bg-yellow-100 px-2.5 py-1 text-xs font-semibold text-yellow-800">
+                            Not opened yet
+                          </span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3 align-top text-gray-700">{row.currentLevel ?? "—"}</td>
+                      <td className="px-4 py-3 align-top">
+                        <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${
+                          row.isPaid ? "bg-amber-100 text-amber-800" : "bg-gray-100 text-gray-700"
+                        }`}>
+                          {row.isPaid ? "Pro Buddy" : "Free"}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </div>
