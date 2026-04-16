@@ -1,6 +1,7 @@
 export type FeatureTourKey =
   | "dashboard"
   | "bible"
+  | "bible_buddy_tv"
   | "guided_studies"
   | "bible_references"
   | "bible_trivia"
@@ -13,6 +14,7 @@ export type FeatureToursState = Record<FeatureTourKey, boolean>;
 export const DEFAULT_FEATURE_TOURS: FeatureToursState = {
   dashboard: false,
   bible: false,
+  bible_buddy_tv: false,
   guided_studies: false,
   bible_references: false,
   bible_trivia: false,
@@ -33,6 +35,7 @@ export function normalizeFeatureTours(raw: unknown): FeatureToursState {
   return {
     dashboard: source.dashboard === true,
     bible: source.bible === true,
+    bible_buddy_tv: source.bible_buddy_tv === true,
     guided_studies: source.guided_studies === true,
     bible_references:
       source.bible_references === true || source.bible_reference === true,

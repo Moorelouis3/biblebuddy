@@ -1,18 +1,39 @@
 // components/ChatLouis.tsx
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { LouisAvatar } from "./LouisAvatar";
 import { supabase } from "../lib/supabaseClient";
 import { FeatureTourModal } from "./FeatureTourModal";
 import { DEFAULT_FEATURE_TOURS, normalizeFeatureTours } from "../lib/featureTours";
 import { useFeatureRenderPriority } from "./FeatureRenderPriorityContext";
+import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
+import { buildLouisGuideChatMessage, getLouisPageGuide } from "../lib/louisGuidance";
 
 type MessageRole = "user" | "assistant";
 
 type Message = {
   role: MessageRole;
   content: string;
+};
+
+type QuickReplyAction =
+  | "daily_ok"
+  | "daily_prayer"
+  | "daily_recommendation"
+  | "daily_talk"
+  | "guide_show"
+  | "guide_later"
+  | "guide_question"
+  | "recommendation_open"
+  | "recommendation_question"
+  | "recommendation_later";
+
+type QuickReply = {
+  id: string;
+  label: string;
+  action: QuickReplyAction;
 };
 
 // Type for SpeechRecognition (Web Speech API)
@@ -61,14 +82,72 @@ declare global {
   }
 }
 
+function getRecommendationSeenKey(userId: string) {
+  const today = new Date().toISOString().slice(0, 10);
+  return `bb:louis:recommendation:${userId}:${today}`;
+}
+
+function getDailyGreetingSeenKey(userId: string) {
+  const today = new Date().toISOString().slice(0, 10);
+  return `bb:louis:greeting:${userId}:${today}`;
+}
+
+function getChatStorageKey(userId: string) {
+  return `bb:louis:chat:${userId}`;
+}
+
+function getMemoryStorageKey(userId: string) {
+  return `bb:louis:memory:${userId}`;
+}
+
+function getGuidePromptKey(userId: string, guideId: string) {
+  return `bb:louis:guide-prompt:${userId}:${guideId}`;
+}
+
+function hasSeenRecommendation(userId: string) {
+  if (typeof window === "undefined") return false;
+  return window.localStorage.getItem(getRecommendationSeenKey(userId)) === "1";
+}
+
+function rememberRecommendationSeen(userId: string) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(getRecommendationSeenKey(userId), "1");
+}
+
+function hasSeenDailyGreeting(userId: string) {
+  if (typeof window === "undefined") return false;
+  return window.localStorage.getItem(getDailyGreetingSeenKey(userId)) === "1";
+}
+
+function rememberDailyGreetingSeen(userId: string) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(getDailyGreetingSeenKey(userId), "1");
+}
+
+function getTimeOfDayGreeting() {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good morning";
+  if (hour < 18) return "Good afternoon";
+  return "Good evening";
+}
+
+function renderLouisGuideContent(_guide?: unknown) {
+  return null;
+}
+
 export function ChatLouis() {
   const { featureToursEnabled } = useFeatureRenderPriority();
+  const pathname = usePathname();
+  const router = useRouter();
+  const currentPageGuide = useMemo(() => getLouisPageGuide(pathname), [pathname]);
   const [isOpen, setIsOpen] = useState(false);
-  const [showChatTourModal, setShowChatTourModal] = useState(false);
-  const [isSavingChatTour, setIsSavingChatTour] = useState(false);
-  const [chatTourUserId, setChatTourUserId] = useState<string | null>(null);
-  const [chatFeatureTours, setChatFeatureTours] = useState({ ...DEFAULT_FEATURE_TOURS });
+  const [louisUserId, setLouisUserId] = useState<string | null>(null);
+  const [louisFeatureTours, setLouisFeatureTours] = useState({ ...DEFAULT_FEATURE_TOURS });
+  const [louisRecommendation, setLouisRecommendation] = useState<DailyRecommendation | null>(null);
+  const [hasUnseenRecommendation, setHasUnseenRecommendation] = useState(false);
+  const [hasUnseenDailyGreeting, setHasUnseenDailyGreeting] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [quickReplies, setQuickReplies] = useState<QuickReply[]>([]);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [isListening, setIsListening] = useState(false);
@@ -86,6 +165,12 @@ export function ChatLouis() {
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
+  const showLouisGuideModal = false;
+  const louisGuideView: "intro" | "tour" | "recommendation" = "intro";
+  const showChatTourModal = false;
+  const isSavingChatTour = false;
+  const setLouisGuideView = (_value: "intro" | "tour" | "recommendation") => {};
+  const setShowChatTourModal = (_value: boolean) => {};
 
   // Format voice text with paragraph breaks
   function formatVoiceText(text: string, prevText: string): string {
@@ -312,85 +397,168 @@ export function ChatLouis() {
     }
   }, [input]);
 
+  useEffect(() => {
+    if (!louisUserId || typeof window === "undefined") return;
+    window.localStorage.setItem(getChatStorageKey(louisUserId), JSON.stringify(messages.slice(-40)));
+
+    const latestUserMessage = [...messages].reverse().find((message) => message.role === "user");
+    if (!latestUserMessage) return;
+
+    window.localStorage.setItem(
+      getMemoryStorageKey(louisUserId),
+      JSON.stringify({
+        lastUserMessage: latestUserMessage.content,
+        lastUserAt: new Date().toISOString(),
+      }),
+    );
+  }, [messages, louisUserId]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadLouisContext() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (cancelled) return;
+
+      if (!user) {
+        setLouisUserId(null);
+        setLouisFeatureTours({ ...DEFAULT_FEATURE_TOURS });
+        setLouisRecommendation(null);
+        setHasUnseenRecommendation(false);
+        return;
+      }
+
+      setLouisUserId(user.id);
+
+      if (typeof window !== "undefined") {
+        try {
+          const storedMessages = window.localStorage.getItem(getChatStorageKey(user.id));
+          setMessages(storedMessages ? (JSON.parse(storedMessages) as Message[]) : []);
+        } catch {
+          setMessages([]);
+        }
+      }
+
+      const { data: profileStats, error: profileError } = await supabase
+        .from("profile_stats")
+        .select("feature_tours, level_1_skipped_date")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      if (cancelled) return;
+
+      if (profileError) {
+        console.error("[LOUIS] Error loading profile context:", profileError);
+        setLouisFeatureTours({ ...DEFAULT_FEATURE_TOURS });
+      } else {
+        setLouisFeatureTours(normalizeFeatureTours(profileStats?.feature_tours));
+      }
+
+      const shouldLoadRecommendation = pathname === "/dashboard";
+      if (!shouldLoadRecommendation) {
+        setLouisRecommendation(null);
+        setHasUnseenRecommendation(false);
+        setHasUnseenDailyGreeting(false);
+        return;
+      }
+
+      let suppressLevel1 = false;
+      if (profileStats?.level_1_skipped_date) {
+        const skippedDate = new Date(profileStats.level_1_skipped_date);
+        const diffDays = Math.floor((Date.now() - skippedDate.getTime()) / (1000 * 60 * 60 * 24));
+        if (diffDays < 3) suppressLevel1 = true;
+      }
+
+      const recommendation = await getDailyRecommendation(user.id, suppressLevel1);
+      if (cancelled) return;
+
+      setLouisRecommendation(recommendation);
+      setHasUnseenRecommendation(Boolean(recommendation) && !hasSeenRecommendation(user.id));
+      setHasUnseenDailyGreeting(!hasSeenDailyGreeting(user.id));
+    }
+
+    void loadLouisContext();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [pathname]);
+
+  const hasPendingPageGuide = Boolean(
+    featureToursEnabled &&
+      currentPageGuide &&
+      louisFeatureTours[currentPageGuide.featureKey] !== true,
+  );
+
+  const hasPendingLouisMoment =
+    hasPendingPageGuide ||
+    (pathname === "/dashboard" && (hasUnseenDailyGreeting || (hasUnseenRecommendation && Boolean(louisRecommendation))));
+
+  const emptyStatePrompt = currentPageGuide
+    ? currentPageGuide.id === "dashboard"
+      ? "Ask me anything about the dashboard."
+      : currentPageGuide.id === "bible_buddy_tv"
+        ? "Ask me anything about Bible Buddy TV."
+        : currentPageGuide.id === "bible_trivia"
+          ? "Ask me anything about Bible trivia."
+          : "Ask me anything about reading the Bible here."
+    : "Ask me a question about your Bible reading.";
+
+  function appendAssistantMessage(content: string) {
+    setMessages((prev) => [...prev, { role: "assistant", content }]);
+  }
+
+  function appendUserMessage(content: string) {
+    setMessages((prev) => [...prev, { role: "user", content }]);
+  }
+
   function toggleListening() {
     setIsListening((prev) => !prev);
   }
 
-  async function handleChatButtonClick() {
-    if (!featureToursEnabled) {
-      setIsOpen(true);
-      return;
-    }
+  async function markCurrentGuideSeen() {
+    if (!louisUserId || !currentPageGuide) return;
 
-    const {
-      data: { session },
-      error: sessionError,
-    } = await supabase.auth.getSession();
+    const mergedFeatureTours = {
+      ...louisFeatureTours,
+      [currentPageGuide.featureKey]: true,
+    };
 
-    if (sessionError) {
-      console.error("[FEATURE_TOURS] Error loading session for chat tour:", sessionError);
-      return;
-    }
-
-    const authUserId = session?.user?.id;
-
-    if (!authUserId) {
-      setIsOpen(true);
-      return;
-    }
-
-    setChatTourUserId(authUserId);
-
-    const { data: profileStats, error: profileStatsError } = await supabase
+    const { error: updateError } = await supabase
       .from("profile_stats")
-      .select("feature_tours")
-      .eq("user_id", authUserId)
-      .maybeSingle();
+      .update({
+        feature_tours: mergedFeatureTours,
+      })
+      .eq("user_id", louisUserId);
 
-    if (profileStatsError) {
-      console.error("[FEATURE_TOURS] Error loading chat tour status:", profileStatsError);
-      return;
-    }
-
-    if (!profileStats) {
+    if (updateError) {
       const { error: upsertError } = await supabase
         .from("profile_stats")
         .upsert(
           {
-            user_id: authUserId,
-            feature_tours: { ...DEFAULT_FEATURE_TOURS },
+            user_id: louisUserId,
+            feature_tours: mergedFeatureTours,
           },
-          { onConflict: "user_id" }
+          { onConflict: "user_id" },
         );
 
       if (upsertError) {
-        console.error("[FEATURE_TOURS] Error creating chat tour profile row:", upsertError);
+        console.error("[LOUIS] Error saving page guide state:", upsertError);
         return;
       }
-
-      setChatFeatureTours({ ...DEFAULT_FEATURE_TOURS });
-      setShowChatTourModal(true);
-      return;
     }
 
-    const normalizedTours = normalizeFeatureTours(profileStats.feature_tours);
-    setChatFeatureTours(normalizedTours);
-
-    if (normalizedTours.chat_widget === true) {
-      setIsOpen(true);
-      return;
-    }
-
-    setShowChatTourModal(true);
+    setLouisFeatureTours(mergedFeatureTours);
   }
 
-  async function handleChatTourUnderstand() {
-    if (!chatTourUserId) return;
-
-    setIsSavingChatTour(true);
+  async function markChatWidgetSeen() {
+    if (!louisUserId) return;
 
     const mergedFeatureTours = {
-      ...chatFeatureTours,
+      ...louisFeatureTours,
       chat_widget: true,
     };
 
@@ -399,33 +567,284 @@ export function ChatLouis() {
       .update({
         feature_tours: mergedFeatureTours,
       })
-      .eq("user_id", chatTourUserId);
+      .eq("user_id", louisUserId);
 
     if (updateError) {
-      console.error("[FEATURE_TOURS] Error updating chat tour:", updateError);
-
       const { error: upsertError } = await supabase
         .from("profile_stats")
         .upsert(
           {
-            user_id: chatTourUserId,
+            user_id: louisUserId,
             feature_tours: mergedFeatureTours,
           },
-          { onConflict: "user_id" }
+          { onConflict: "user_id" },
         );
 
       if (upsertError) {
-        console.error("[FEATURE_TOURS] Error upserting chat tour:", upsertError);
-        setIsSavingChatTour(false);
+        console.error("[LOUIS] Error saving chat widget state:", upsertError);
         return;
       }
     }
 
-    setChatFeatureTours(mergedFeatureTours);
-    setShowChatTourModal(false);
-    setIsSavingChatTour(false);
-    setIsOpen(true);
+    setLouisFeatureTours(mergedFeatureTours);
   }
+
+  function markRecommendationSeenLocal() {
+    if (!louisUserId) return;
+    rememberRecommendationSeen(louisUserId);
+    setHasUnseenRecommendation(false);
+  }
+
+  function markDailyGreetingSeenLocal() {
+    if (!louisUserId) return;
+    rememberDailyGreetingSeen(louisUserId);
+    setHasUnseenDailyGreeting(false);
+  }
+
+  function rememberGuidePromptShown() {
+    if (!louisUserId || !currentPageGuide || typeof window === "undefined") return;
+    window.localStorage.setItem(getGuidePromptKey(louisUserId, currentPageGuide.id), "1");
+  }
+
+  function seedQuickReplies(nextReplies: QuickReply[]) {
+    setQuickReplies(nextReplies);
+  }
+
+  function getDailyQuickReplies(): QuickReply[] {
+    return [
+      { id: "daily-ok", label: "I'm doing okay", action: "daily_ok" },
+      { id: "daily-prayer", label: "I need prayer", action: "daily_prayer" },
+      { id: "daily-rec", label: "Give me a recommendation", action: "daily_recommendation" },
+      hasPendingPageGuide && currentPageGuide?.id === "dashboard"
+        ? { id: "daily-dashboard-guide", label: "Show me the dashboard", action: "guide_show" }
+        : { id: "daily-talk", label: "I just want to talk", action: "daily_talk" },
+    ].filter(Boolean) as QuickReply[];
+  }
+
+  function getGuideQuickReplies(): QuickReply[] {
+    return [
+      { id: "guide-show", label: "Yes, show me", action: "guide_show" },
+      { id: "guide-question", label: "I have a question", action: "guide_question" },
+      { id: "guide-later", label: "Not right now", action: "guide_later" },
+    ];
+  }
+
+  function buildDailyConversationMessage() {
+    let message = `${getTimeOfDayGreeting()}. How are you doing today?`;
+
+    if (louisUserId && typeof window !== "undefined") {
+      const rawMemory = window.localStorage.getItem(getMemoryStorageKey(louisUserId));
+      if (rawMemory) {
+        try {
+          const parsed = JSON.parse(rawMemory) as { lastUserMessage?: string; lastUserAt?: string };
+          if (parsed.lastUserMessage && parsed.lastUserAt) {
+            const diffHours = (Date.now() - new Date(parsed.lastUserAt).getTime()) / 3600000;
+            if (diffHours >= 12) {
+              message += `\n\nLast time you mentioned "${parsed.lastUserMessage.slice(0, 90)}${parsed.lastUserMessage.length > 90 ? "..." : ""}"\n\nHow did that go?`;
+            }
+          }
+        } catch {
+          // no-op
+        }
+      }
+    }
+
+    message += "\n\nDo you want to talk about anything, or would you want a recommendation on what to do today?";
+
+    if (hasPendingPageGuide && currentPageGuide?.id === "dashboard") {
+      message += "\n\nIf you want, I can also show you how the dashboard works.";
+    }
+
+    return message;
+  }
+
+  async function beginDailyConversation() {
+    if (hasUnseenDailyGreeting) {
+      markDailyGreetingSeenLocal();
+    }
+
+    appendAssistantMessage(buildDailyConversationMessage());
+    seedQuickReplies(getDailyQuickReplies());
+  }
+
+  async function beginPageGuideConversation() {
+    if (!currentPageGuide) return;
+
+    rememberGuidePromptShown();
+    appendAssistantMessage(currentPageGuide.ask);
+    seedQuickReplies(getGuideQuickReplies());
+  }
+
+  async function startDailyConversation() {
+    if (hasUnseenDailyGreeting) {
+      markDailyGreetingSeenLocal();
+    }
+    appendAssistantMessage(buildDailyConversationMessage());
+    seedQuickReplies(
+      [
+        { id: "daily-ok", label: "I’m doing okay", action: "daily_ok" },
+        { id: "daily-prayer", label: "I need prayer", action: "daily_prayer" },
+        { id: "daily-rec", label: "Give me a recommendation", action: "daily_recommendation" },
+        hasPendingPageGuide && currentPageGuide?.id === "dashboard"
+          ? { id: "daily-dashboard-guide", label: "Show me the dashboard", action: "guide_show" }
+          : { id: "daily-talk", label: "I just want to talk", action: "daily_talk" },
+      ].filter(Boolean) as QuickReply[],
+    );
+  }
+
+  async function startPageGuideConversation() {
+    if (!currentPageGuide) return;
+
+    appendAssistantMessage(currentPageGuide.ask);
+    seedQuickReplies([
+      { id: "guide-show", label: "Yes, show me", action: "guide_show" },
+      { id: "guide-question", label: "I have a question", action: "guide_question" },
+      { id: "guide-later", label: "Not right now", action: "guide_later" },
+    ]);
+  }
+
+  async function shareRecommendationInChat() {
+    if (!louisRecommendation) return;
+
+    markRecommendationSeenLocal();
+    appendAssistantMessage(
+      `${louisRecommendation.greeting}\n\n${louisRecommendation.contextLine}\n\nHere’s what I think you should do next:\n\n${louisRecommendation.recommendationLine}`,
+    );
+    seedQuickReplies([
+      {
+        id: "recommendation-open",
+        label: louisRecommendation.primaryButtonText,
+        action: "recommendation_open",
+      },
+      { id: "recommendation-question", label: "Tell me more", action: "recommendation_question" },
+      { id: "recommendation-later", label: "Maybe later", action: "recommendation_later" },
+    ]);
+  }
+
+  async function handleQuickReply(reply: QuickReply) {
+    appendUserMessage(reply.label);
+    setQuickReplies([]);
+
+    switch (reply.action) {
+      case "daily_ok":
+        appendAssistantMessage(
+          "I’m glad to hear that.\n\nIf you want, I can give you a recommendation for today, or you can tell me what’s on your mind and we can talk through it.",
+        );
+        seedQuickReplies([
+          { id: "ok-rec", label: "Give me a recommendation", action: "daily_recommendation" },
+          { id: "ok-talk", label: "Let’s talk", action: "daily_talk" },
+        ]);
+        break;
+      case "daily_prayer":
+        appendAssistantMessage(
+          "Absolutely.\n\nFather, meet them right where they are today. Give them peace, clarity, strength, and a real sense that You are near.\n\nIf you want, tell me what’s been heavy and we can talk through it together.",
+        );
+        seedQuickReplies([
+          { id: "prayer-rec", label: "Give me a recommendation", action: "daily_recommendation" },
+          { id: "prayer-talk", label: "I want to talk", action: "daily_talk" },
+        ]);
+        break;
+      case "daily_recommendation":
+        await shareRecommendationInChat();
+        break;
+      case "daily_talk":
+        appendAssistantMessage("I’m here.\n\nTell me what’s going on and let’s talk about it.");
+        break;
+      case "guide_show":
+        if (currentPageGuide) {
+          await markCurrentGuideSeen();
+          appendAssistantMessage(buildLouisGuideChatMessage(currentPageGuide));
+          seedQuickReplies([
+            { id: "guide-follow-up", label: "I have a question", action: "guide_question" },
+            pathname === "/dashboard" && louisRecommendation
+              ? { id: "guide-then-rec", label: "Give me a recommendation", action: "daily_recommendation" }
+              : { id: "guide-later-2", label: "That helps", action: "guide_later" },
+          ]);
+        }
+        break;
+      case "guide_later":
+        if (hasPendingPageGuide) {
+          await markCurrentGuideSeen();
+        }
+        appendAssistantMessage("No problem.\n\nIf you want help with this page later, just tap me and ask.");
+        break;
+      case "guide_question":
+        if (hasPendingPageGuide) {
+          await markCurrentGuideSeen();
+        }
+        appendAssistantMessage(
+          currentPageGuide
+            ? `${currentPageGuide.chatStarter}\n\nWhat do you want help with on this page?`
+            : "What do you want help with?",
+        );
+        break;
+      case "recommendation_open":
+        if (louisRecommendation) {
+          router.push(louisRecommendation.primaryButtonHref);
+        }
+        break;
+      case "recommendation_question":
+        appendAssistantMessage("Ask me anything about that recommendation and I’ll break it down for you.");
+        break;
+      case "recommendation_later":
+        appendAssistantMessage("That’s fine.\n\nIf you want the recommendation later, just ask me and I’ll bring it back up.");
+        break;
+      default:
+        break;
+    }
+  }
+
+  async function handleChatButtonClick() {
+    setIsOpen(true);
+    setQuickReplies([]);
+
+    if (featureToursEnabled && louisFeatureTours.chat_widget !== true) {
+      void markChatWidgetSeen();
+    }
+
+    const latestMessage = messages[messages.length - 1];
+
+    if (pathname === "/dashboard" && (hasUnseenDailyGreeting || hasUnseenRecommendation)) {
+      const dailyConversationMessage = buildDailyConversationMessage();
+
+      if (latestMessage?.role === "assistant" && latestMessage.content === dailyConversationMessage) {
+        seedQuickReplies(getDailyQuickReplies());
+        return;
+      }
+
+      await beginDailyConversation();
+      return;
+    }
+
+    if (hasPendingPageGuide) {
+      const guideWasPrompted =
+        louisUserId &&
+        typeof window !== "undefined" &&
+        currentPageGuide &&
+        window.localStorage.getItem(getGuidePromptKey(louisUserId, currentPageGuide.id)) === "1";
+
+      if (latestMessage?.role === "assistant" && latestMessage.content === currentPageGuide?.ask) {
+        seedQuickReplies(getGuideQuickReplies());
+        return;
+      }
+
+      if (guideWasPrompted) {
+        seedQuickReplies(getGuideQuickReplies());
+        return;
+      }
+
+      await beginPageGuideConversation();
+      return;
+    }
+  }
+
+  async function handleLouisGuideSecondary() {}
+
+  async function handleLouisGuideClose() {}
+
+  async function handleLouisGuidePrimary() {}
+
+  async function handleChatTourUnderstand() {}
 
   async function handleSend() {
     const trimmed = input.trim();
@@ -435,6 +854,7 @@ export function ChatLouis() {
     const newMessages: Message[] = [...messages, userMessage];
 
     setMessages(newMessages);
+    setQuickReplies([]);
     setInput("");
     setIsSending(true);
 
@@ -442,7 +862,18 @@ export function ChatLouis() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: newMessages }),
+        body: JSON.stringify({
+          messages: newMessages,
+          pageContext: currentPageGuide
+            ? {
+                pathname,
+                guideId: currentPageGuide.id,
+                title: currentPageGuide.title,
+                chatStarter: currentPageGuide.chatStarter,
+                bullets: currentPageGuide.bullets,
+              }
+            : { pathname },
+        }),
       });
 
       if (!res.ok) {
@@ -540,10 +971,20 @@ export function ChatLouis() {
             cursor: isDragging ? "grabbing" : "grab",
             touchAction: "none",
           }}
-          className="z-[70] rounded-full shadow-xl flex items-center justify-center"
+          className={`z-[70] rounded-full shadow-xl flex items-center justify-center transition-transform ${
+            hasPendingLouisMoment ? "animate-[bounce_1.7s_ease-in-out_infinite]" : ""
+          }`}
           aria-label="Chat with Louis"
         >
-          <div className="w-20 h-20 rounded-full bg-black/5 flex items-center justify-center">
+          <div className="relative w-20 h-20 rounded-full bg-black/5 flex items-center justify-center">
+            {hasPendingLouisMoment ? (
+              <>
+                <span className="absolute inset-0 rounded-full border-4 border-sky-300/60 animate-ping" />
+                <span className="absolute -right-1 top-0 rounded-full bg-sky-500 px-2 py-0.5 text-[10px] font-semibold text-white shadow-sm">
+                  New
+                </span>
+              </>
+            ) : null}
             <LouisAvatar mood="bible" size={64} />
           </div>
         </button>
@@ -595,7 +1036,7 @@ export function ChatLouis() {
             {messages.length === 0 && (
               <div className="flex items-center justify-center h-full">
                 <p className="text-xs text-gray-500 text-center">
-                  Ask me a question about your Bible reading.
+                  {emptyStatePrompt}
                 </p>
               </div>
             )}
@@ -622,6 +1063,22 @@ export function ChatLouis() {
                 </div>
               </div>
             ))}
+            {quickReplies.length > 0 && (
+              <div className="flex flex-wrap gap-2 pt-2">
+                {quickReplies.map((reply) => (
+                  <button
+                    key={reply.id}
+                    type="button"
+                    onClick={() => {
+                      void handleQuickReply(reply);
+                    }}
+                    className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1.5 text-xs font-semibold text-sky-700 transition hover:bg-sky-100"
+                  >
+                    {reply.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Input area */}
@@ -635,7 +1092,7 @@ export function ChatLouis() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Ask a Bible question..."
+                  placeholder="Talk to Louis..."
                   rows={1}
                   className="flex-1 text-xs border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white resize-none min-h-[36px] max-h-[120px] overflow-y-auto"
                 />
@@ -702,7 +1159,76 @@ export function ChatLouis() {
         </div>
       )}
 
-      {featureToursEnabled && (
+      {false && (currentPageGuide || louisRecommendation) && (
+        <FeatureTourModal
+          isOpen={showLouisGuideModal}
+          title={
+            louisGuideView === "recommendation"
+              ? louisRecommendation?.cardTitle || "Louis has your next step"
+              : currentPageGuide?.title || "Louis has something for you"
+          }
+          body={
+            louisGuideView === "recommendation"
+              ? louisRecommendation?.contextLine || ""
+              : currentPageGuide?.intro || ""
+          }
+          content={
+            louisGuideView === "recommendation" ? (
+              <div className="space-y-5">
+                <div className="rounded-2xl border border-sky-100 bg-sky-50/60 px-4 py-3">
+                  <p className="text-sm font-semibold text-sky-900">
+                    {louisRecommendation?.greeting || "Here’s what I noticed today."}
+                  </p>
+                  <p className="mt-2 text-sm leading-7 text-gray-600 md:text-[15px]">
+                    {louisRecommendation?.contextLine}
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <h2 className="text-base font-semibold text-gray-900 md:text-lg">Here&apos;s what I think you should do next</h2>
+                  <p className="text-sm leading-7 text-gray-600 md:text-[15px]">
+                    {louisRecommendation?.recommendationLine}
+                  </p>
+                </div>
+              </div>
+            ) : louisGuideView === "tour" && currentPageGuide ? (
+              renderLouisGuideContent(currentPageGuide)
+            ) : currentPageGuide ? (
+              <div className="space-y-5">
+                <div className="rounded-2xl border border-sky-100 bg-sky-50/60 px-4 py-3">
+                  <p className="text-sm leading-7 text-gray-600 md:text-[15px]">{currentPageGuide?.prompt || ""}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    await markCurrentGuideSeen();
+                    setLouisGuideView("tour");
+                  }}
+                  className="rounded-2xl border border-sky-200 bg-white px-4 py-3 text-sm font-semibold text-sky-700 transition hover:bg-sky-50"
+                >
+                  Take the tour
+                </button>
+              </div>
+            ) : undefined
+          }
+          primaryButtonText={
+            louisGuideView === "recommendation"
+              ? louisRecommendation?.primaryButtonText || "Open it"
+              : "I get it"
+          }
+          secondaryButtonText="Ask Louis"
+          onSecondary={() => {
+            void handleLouisGuideSecondary();
+          }}
+          onClose={() => {
+            void handleLouisGuideClose();
+          }}
+          onUnderstand={() => {
+            void handleLouisGuidePrimary();
+          }}
+        />
+      )}
+
+      {false && featureToursEnabled && (
         <FeatureTourModal
           isOpen={showChatTourModal}
           title="Welcome to Chat with Louis"

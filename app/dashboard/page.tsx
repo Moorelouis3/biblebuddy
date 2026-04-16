@@ -161,6 +161,7 @@ export default function DashboardPage() {
     signups24h: 0,
     activeUsers24h: 0,
     totalUsers: 0,
+    upgrades24h: 0,
   });
   const [loadingOwnerQuickStats, setLoadingOwnerQuickStats] = useState(false);
 
@@ -236,6 +237,10 @@ export default function DashboardPage() {
     bible: {
       title: "Welcome to The Bible Section",
       body: "This is where you can start reading Scripture, follow reading plans, and explore books of the Bible.",
+    },
+    bible_buddy_tv: {
+      title: "Welcome to Bible Buddy TV",
+      body: "This is where you can watch Bible shows, movies, sermons, documentaries, and animation inside Bible Buddy.",
     },
     guided_studies: {
       title: "Welcome to Bible Study Tools",
@@ -717,7 +722,7 @@ export default function DashboardPage() {
       try {
         const fromDate = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
 
-        const [signupsResult, actionsResult, totalUsersResponse] = await Promise.all([
+        const [signupsResult, actionsResult, upgradesResult, totalUsersResponse] = await Promise.all([
           supabase
             .from("user_signups")
             .select("id", { count: "exact", head: true })
@@ -726,16 +731,22 @@ export default function DashboardPage() {
             .from("master_actions")
             .select("user_id")
             .gte("created_at", fromDate),
+          supabase
+            .from("master_actions")
+            .select("id", { count: "exact", head: true })
+            .eq("action_type", "user_upgraded")
+            .gte("created_at", fromDate),
           fetch("/api/admin/total-users"),
         ]);
 
-        if (signupsResult.error || actionsResult.error || !totalUsersResponse.ok) {
+        if (signupsResult.error || actionsResult.error || upgradesResult.error || !totalUsersResponse.ok) {
           console.error("[DASHBOARD_OWNER_STATS] Error loading quick stats:", {
             signupsError: signupsResult.error,
             actionsError: actionsResult.error,
+            upgradesError: upgradesResult.error,
             totalUsersError: totalUsersResponse.ok ? null : totalUsersResponse.statusText,
           });
-          setOwnerQuickStats({ signups24h: 0, activeUsers24h: 0, totalUsers: 0 });
+          setOwnerQuickStats({ signups24h: 0, activeUsers24h: 0, totalUsers: 0, upgrades24h: 0 });
           setLoadingOwnerQuickStats(false);
           return;
         }
@@ -752,10 +763,11 @@ export default function DashboardPage() {
           signups24h: signupsResult.count ?? 0,
           activeUsers24h,
           totalUsers: totalUsersPayload.totalUsers ?? 0,
+          upgrades24h: upgradesResult.count ?? 0,
         });
       } catch (error) {
         console.error("[DASHBOARD_OWNER_STATS] Unexpected error:", error);
-        setOwnerQuickStats({ signups24h: 0, activeUsers24h: 0, totalUsers: 0 });
+        setOwnerQuickStats({ signups24h: 0, activeUsers24h: 0, totalUsers: 0, upgrades24h: 0 });
       }
       setLoadingOwnerQuickStats(false);
     }
@@ -769,20 +781,23 @@ export default function DashboardPage() {
     return (
       <div className="mb-4">
         <Link href="/admin/analytics" className="block">
-          <div className="grid grid-cols-3 gap-3 rounded-2xl border border-gray-200 bg-white p-3 shadow-sm hover:shadow-md transition">
+          <div className="grid grid-cols-4 gap-2 rounded-2xl border border-gray-200 bg-white p-2.5 shadow-sm transition hover:shadow-md sm:gap-3 sm:p-3">
             {[
               { label: "Signups 24h", value: ownerQuickStats.signups24h, tones: "bg-gray-100 border-gray-200" },
               { label: "Active 24h", value: ownerQuickStats.activeUsers24h, tones: "bg-blue-100 border-blue-200" },
+              { label: "Upgrades", value: ownerQuickStats.upgrades24h, tones: "bg-emerald-100 border-emerald-200" },
               { label: "Total Users", value: ownerQuickStats.totalUsers, tones: "bg-red-100 border-red-200" },
             ].map((card) => (
               <div
                 key={card.label}
-                className={`rounded-xl border px-3 py-4 text-center ${card.tones}`}
+                className={`rounded-xl border px-2 py-3 text-center sm:px-3 sm:py-4 ${card.tones}`}
               >
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-xl font-bold text-gray-900 sm:text-2xl">
                   {loadingOwnerQuickStats ? "..." : card.value}
                 </p>
-                <p className="mt-1 text-xs font-medium text-gray-700">{card.label}</p>
+                <p className="mt-1 text-[10px] font-medium leading-tight text-gray-700 sm:text-xs">
+                  {card.label}
+                </p>
               </div>
             ))}
           </div>
@@ -805,7 +820,6 @@ export default function DashboardPage() {
         console.error("[FEATURE_TOURS] Error loading feature_tours:", error);
         setFeatureTours({ ...DEFAULT_FEATURE_TOURS });
         setFeatureToursLoaded(true);
-        setActiveTourKey("dashboard");
         setPendingTourNavigation(null);
         return;
       }
@@ -827,7 +841,6 @@ export default function DashboardPage() {
 
         setFeatureTours({ ...DEFAULT_FEATURE_TOURS });
         setFeatureToursLoaded(true);
-        setActiveTourKey("dashboard");
         setPendingTourNavigation(null);
         return;
       }
@@ -835,11 +848,6 @@ export default function DashboardPage() {
       const normalizedFeatureTours = normalizeFeatureTours(data.feature_tours);
       setFeatureTours(normalizedFeatureTours);
       setFeatureToursLoaded(true);
-
-      if (normalizedFeatureTours.dashboard !== true) {
-        setActiveTourKey("dashboard");
-        setPendingTourNavigation(null);
-      }
     }
 
     loadFeatureTours();
