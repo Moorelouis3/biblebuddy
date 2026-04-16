@@ -55,10 +55,12 @@ export default function BibleBuddyTvBrowsePageClient({
   initialSubcategory?: string;
 }) {
   const [myListIds, setMyListIds] = useState<string[]>([]);
-  const [showAllSubcategories, setShowAllSubcategories] = useState(false);
 
   const liveTitles = useMemo(() => bibleBuddyTvTitles.filter((title) => title.badge !== "Coming Soon"), []);
-  const subcategories = browseKey === "my-list" ? [] : getBrowseSubcategories(browseKey);
+  const subcategories = useMemo(
+    () => (browseKey === "my-list" ? [] : getBrowseSubcategories(browseKey)),
+    [browseKey]
+  );
   const [selectedSubcategory, setSelectedSubcategory] = useState(initialSubcategory || subcategories[0]?.id || "popular");
 
   useEffect(() => {
@@ -90,7 +92,6 @@ export default function BibleBuddyTvBrowsePageClient({
       ? categoryTitles
       : categoryTitles.filter((title) => matchesBrowseSubcategory(browseKey, selectedSubcategory, title.id));
 
-  const visibleSubcategories = showAllSubcategories ? subcategories : subcategories.slice(0, 5);
   const pageTitle = getBrowsePageTitle(browseKey);
   const pageDescription = getBrowsePageDescription(browseKey);
   const activeSubcategoryLabel = subcategories.find((subcategory) => subcategory.id === selectedSubcategory)?.label ?? "Popular";
@@ -144,15 +145,6 @@ export default function BibleBuddyTvBrowsePageClient({
                   </div>
                 </div>
 
-                {subcategories.length > 5 ? (
-                  <button
-                    type="button"
-                    onClick={() => setShowAllSubcategories((prev) => !prev)}
-                    className="self-start rounded-full border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-600 transition hover:bg-gray-50"
-                  >
-                    {showAllSubcategories ? "Show less buckets" : `Show ${subcategories.length - visibleSubcategories.length} more buckets`}
-                  </button>
-                ) : null}
               </div>
 
             </section>

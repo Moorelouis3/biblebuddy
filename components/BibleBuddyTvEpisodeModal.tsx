@@ -103,6 +103,7 @@ export default function BibleBuddyTvEpisodeModal({ title, episode, isOpen, onClo
   const [summaryExpanded, setSummaryExpanded] = useState(false);
   const [notesUnlocked, setNotesUnlocked] = useState(false);
   const [notesLoading, setNotesLoading] = useState(false);
+  const [playerLoading, setPlayerLoading] = useState(true);
   const [generatedNotes, setGeneratedNotes] = useState<string | null>(null);
   const notesRef = useRef<HTMLDivElement>(null);
   const [userId, setUserId] = useState<string | null>(null);
@@ -177,12 +178,18 @@ export default function BibleBuddyTvEpisodeModal({ title, episode, isOpen, onClo
     setSummaryExpanded(false);
     setNotesUnlocked(false);
     setNotesLoading(false);
+    setPlayerLoading(true);
     setGeneratedNotes(null);
     setSelectedTarget(null);
     setSelectedNotes(null);
     setLoadingSelectedNotes(false);
     setNotesCreditBlocked(false);
   }, [episode?.id]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    setPlayerLoading(Boolean(episode?.youtubeUrl));
+  }, [episode?.youtubeUrl, isOpen]);
 
   useEffect(() => {
     if (!episode || !isOpen || !userId) return;
@@ -463,14 +470,47 @@ Keep it simple, biblical, and clear.`;
         <div className="px-4 pb-4 pt-4 sm:px-6 sm:pb-6">
           <div className="overflow-hidden rounded-[22px] border border-gray-200 bg-black">
             {episode.youtubeUrl ? (
-              <div className="aspect-video w-full">
+              <div className="relative aspect-video w-full bg-gray-950">
+                {playerLoading ? (
+                  <div className="absolute inset-0 z-[1] flex flex-col justify-between bg-gradient-to-br from-slate-950 via-gray-950 to-black p-5 sm:p-7">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="space-y-3">
+                        <div className="h-3 w-24 animate-pulse rounded-full bg-white/10" />
+                        <div className="h-5 w-48 animate-pulse rounded-full bg-white/15" />
+                      </div>
+                      <div className="h-8 w-20 animate-pulse rounded-full bg-white/10" />
+                    </div>
+                    <div className="flex flex-1 items-center justify-center">
+                      <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/10 bg-white/5 shadow-[0_0_40px_rgba(255,255,255,0.08)]">
+                        <div className="ml-1 h-0 w-0 border-y-[14px] border-y-transparent border-l-[22px] border-l-white/70" />
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="h-2 flex-1 animate-pulse rounded-full bg-white/10" />
+                        <div className="h-2 w-24 animate-pulse rounded-full bg-white/10" />
+                      </div>
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex items-center gap-2">
+                          <div className="h-8 w-8 animate-pulse rounded-full bg-white/10" />
+                          <div className="h-8 w-8 animate-pulse rounded-full bg-white/10" />
+                          <div className="h-8 w-8 animate-pulse rounded-full bg-white/10" />
+                        </div>
+                        <p className="text-xs font-medium uppercase tracking-[0.24em] text-white/60">
+                          Loading player...
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
                 <iframe
-                  className="h-full w-full"
+                  className={`h-full w-full transition-opacity duration-300 ${playerLoading ? "opacity-0" : "opacity-100"}`}
                   src={getYouTubeEmbedUrl(episode.youtubeUrl)}
                   title={`${episode.title} video player`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
+                  onLoad={() => setPlayerLoading(false)}
                 />
               </div>
             ) : (
