@@ -10,6 +10,12 @@ export type FeatureTourKey =
   | "bible_study_hub";
 
 export type FeatureToursState = Record<FeatureTourKey, boolean>;
+export const CURRENT_IN_APP_ONBOARDING_VERSION = 2;
+
+type FeatureToursRecord = Partial<Record<FeatureTourKey, unknown>> & {
+  bible_reference?: unknown;
+  onboarding_version?: unknown;
+};
 
 export const DEFAULT_FEATURE_TOURS: FeatureToursState = {
   dashboard: false,
@@ -23,14 +29,26 @@ export const DEFAULT_FEATURE_TOURS: FeatureToursState = {
   bible_study_hub: false,
 };
 
+export function buildPersistedFeatureTours(
+  state: Partial<FeatureToursState> = {}
+): FeatureToursState & { onboarding_version: number } {
+  return {
+    ...DEFAULT_FEATURE_TOURS,
+    ...state,
+    onboarding_version: CURRENT_IN_APP_ONBOARDING_VERSION,
+  };
+}
+
 export function normalizeFeatureTours(raw: unknown): FeatureToursState {
   if (!raw || typeof raw !== "object") {
     return { ...DEFAULT_FEATURE_TOURS };
   }
 
-  const source = raw as Partial<Record<FeatureTourKey, unknown>> & {
-    bible_reference?: unknown;
-  };
+  const source = raw as FeatureToursRecord;
+
+  if (source.onboarding_version !== CURRENT_IN_APP_ONBOARDING_VERSION) {
+    return { ...DEFAULT_FEATURE_TOURS };
+  }
 
   return {
     dashboard: source.dashboard === true,
