@@ -129,19 +129,14 @@ export function matchesBrowseSubcategory(
 ) {
   if (subcategoryId === "popular") return true;
 
+  const normalizeTopicId = (value: string) => value.trim().toLowerCase().replace(/\s+/g, "-");
+
   switch (key) {
-    case "sermons":
-      return (
-        {
-          "billy-graham-holy-spirit": ["holy-spirit"],
-          "philip-anthony-mitchell-break-free": ["temptation"],
-          "steven-furtick-gods-working-stop-stressing": ["stress"],
-          "phil-robertson-finding-peace-of-mind-in-christ": ["peace"],
-          "sarah-jakes-roberts-listen-for-your-breakthrough": ["hope"],
-          "craig-groeschel-your-porn-battle-plan": ["addiction"],
-          "dave-ramsey-how-to-take-hold-of-your-money": ["money"],
-        } as Record<string, string[]>
-      )[titleId]?.includes(subcategoryId) ?? false;
+    case "sermons": {
+      const title = bibleBuddyTvTitles.find((entry) => entry.id === titleId);
+      if (!title?.sermonTopics?.length) return false;
+      return title.sermonTopics.map(normalizeTopicId).includes(subcategoryId);
+    }
     case "movies":
       return (
         {

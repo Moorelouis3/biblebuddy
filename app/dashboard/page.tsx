@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 export const dynamic = 'force-dynamic';
 
@@ -15,9 +15,9 @@ import { getProfileStats } from "../../lib/profileStats";
 import AdSlot from "../../components/AdSlot";
 import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
-import { getDailyRecommendation, type DailyRecommendation } from "../../lib/dailyRecommendation";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import {
+  buildPersistedFeatureTours,
   DEFAULT_FEATURE_TOURS,
   normalizeFeatureTours,
   type FeatureTourKey,
@@ -154,8 +154,6 @@ export default function DashboardPage() {
   const [dashboardTourAnchor, setDashboardTourAnchor] = useState<{ top: number; left: number; width: number; height: number } | null>(null);
   const [dashboardTourCanAdvance, setDashboardTourCanAdvance] = useState(false);
   const dashboardTourAdvanceTimeoutRef = useRef<number | null>(null);
-  const [dailyRecommendationCard, setDailyRecommendationCard] = useState<DailyRecommendation | null>(null);
-  const [isDailyRecommendationLoading, setIsDailyRecommendationLoading] = useState(true);
   const [isOwnerDashboard, setIsOwnerDashboard] = useState(false);
   const [ownerQuickStats, setOwnerQuickStats] = useState({
     signups24h: 0,
@@ -251,8 +249,8 @@ export default function DashboardPage() {
       body: "This section helps you quickly explore people, places, and keywords to understand biblical context.",
     },
     bible_trivia: {
-      title: "🎮 Welcome to Bible Study Games",
-      body: "This is where you can reinforce what you’ve learned through trivia and Scripture-based games like Scrambled.",
+      title: "ðŸŽ® Welcome to Bible Study Games",
+      body: "This is where you can reinforce what youâ€™ve learned through trivia and Scripture-based games like Scrambled.",
     },
     notes: {
       title: "Welcome to Notes",
@@ -260,7 +258,7 @@ export default function DashboardPage() {
     },
     chat_widget: {
       title: "Welcome to Chat with Louis",
-      body: "This chat lets you ask Bible questions instantly while you study so you can stay focused in your reading flow. Louis has been carefully trained for hours on biblical content and designed to search Scripture, filter out nonsense, and prioritize clear, Scripture-grounded answers. It’s like having a Bible study partner built directly into your reading experience.",
+      body: "This chat lets you ask Bible questions instantly while you study so you can stay focused in your reading flow. Louis has been carefully trained for hours on biblical content and designed to search Scripture, filter out nonsense, and prioritize clear, Scripture-grounded answers. Itâ€™s like having a Bible study partner built directly into your reading experience.",
     },
     bible_study_hub: {
       title: "Welcome to Bible Study Tools",
@@ -275,42 +273,42 @@ export default function DashboardPage() {
   }> = [
     {
       title: "This is your dashboard",
-      body: "This is where you can access every part of Bible Buddy and move through the app from one place.",
+      body: "This is your home. This is your main page in Bible Buddy, and this is where you can access everything inside the app.",
       spotlight: "overview",
     },
     {
       title: "This is your level",
-      body: "Every meaningful action you take inside Bible Buddy increases your level and reflects your growth over time.",
+      body: "Everything you do inside Bible Buddy gives you points, and those points help you level up over time.",
       spotlight: "level",
     },
     {
-      title: "This is your daily recommendation",
-      body: "This helps you know what to do next based on your activity inside Bible Buddy.",
-      spotlight: "recommendation",
+      title: "This is your main page",
+      body: "This is where you can move through Bible Buddy every day. Just click one of the cards to start.",
+      spotlight: null,
     },
     {
       title: "This is The Bible",
-      body: "Here you can read the Bible, switch translations, and save your progress as you go.",
+      body: "This is your full Bible reader where you can read Scripture, highlight verses, save progress, and interact with the Word of God.",
       spotlight: "bible",
     },
     {
       title: "This is the Bible Study Group",
-      body: "Study the Bible with other Bible Buddy users through weekly studies and daily community activity.",
+      body: "This is where you interact with other Bible Buddies inside the app through weekly series and daily conversations.",
       spotlight: "group",
     },
     {
       title: "This is Bible Study Tools",
-      body: "This is a collection of devotionals, reading plans, keyword databases, and your own Bible study notes.",
+      body: "This is where you can access devotionals, reading plans, and study tools like the people, places, and keyword databases.",
       spotlight: "tools",
     },
     {
       title: "This is Bible Study Games",
-      body: "Here you can play Bible study games to reinforce what you are reading in Scripture.",
+      body: "Play our Bible-based games, including trivia and Scrabble-style challenges, to reinforce what you are learning.",
       spotlight: "games",
     },
     {
       title: "Invite another Bible Buddy",
-      body: "Use this to invite another person to join Bible Buddy and study with you inside the app.",
+      body: "Do you know somebody else who would like to be a Bible Buddy too? Click this button and share the app with them.",
       spotlight: "invite",
     },
   ];
@@ -322,76 +320,70 @@ export default function DashboardPage() {
       </h1>
 
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-        This is your Bible study command center. Here’s how everything works:
+        This is your home. This is your main page in Bible Buddy. This is where you can access everything inside the app.
       </p>
 
       <div className="space-y-5">
         <section className="space-y-2">
-          <h2 className="text-lg md:text-xl font-semibold text-gray-900">📈 Level &amp; Points</h2>
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">🏆 Your Level</h2>
           <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-            Complete actions, earn points, and level up.
-            <br />Click the question mark on the card to learn how leveling works.
+            The first card you have is your level. Everything you do inside Bible Buddy gives you points, and those points help you level up.
           </p>
         </section>
 
         <section className="space-y-2">
           <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 The Bible</h2>
           <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-            Read Scripture here without distractions.
-            <br />Your progress and study flow stay in one place.
+            This is your full Bible reader where you can highlight, save, and interact with the Word of God.
           </p>
         </section>
 
         <section className="space-y-2">
-          <h2 className="text-lg md:text-xl font-semibold text-gray-900">🔨 Bible Study Tools</h2>
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">👥 Bible Study Group</h2>
           <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-            Find reading plans, devotionals, and practical tools to go deeper in Scripture.
+            This is where you interact with other Bible Buddies inside of the app. We study the Bible together in the weekly series and daily conversations.
           </p>
         </section>
 
         <section className="space-y-2">
-          <h2 className="text-lg md:text-xl font-semibold text-gray-900">📚 Bible References</h2>
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">🛠️ Bible Study Tools</h2>
           <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-            Look up people, places, and keywords to understand context instantly.
+            This is where you can access all our Bible study tools, including devotionals, reading plans, and keyword databases.
+          </p>
+        </section>
+
+        <section className="space-y-2">
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">📺 Bible Buddy TV</h2>
+          <p className="text-sm md:text-[15px] text-gray-600 leading-7">
+            This is where you can stream Bible shows, movies, sermons, documentaries, and more.
           </p>
         </section>
 
         <section className="space-y-2">
           <h2 className="text-lg md:text-xl font-semibold text-gray-900">🎮 Bible Study Games</h2>
           <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-            Use Trivia and Scrambled to turn Scripture into active learning.
+            Play our Bible-based games, including trivia and Scrabble-style challenges.
           </p>
         </section>
 
         <section className="space-y-2">
-          <h2 className="text-lg md:text-xl font-semibold text-gray-900">📝 Notes</h2>
+          <h2 className="text-lg md:text-xl font-semibold text-gray-900">🤝 Share Bible Buddy</h2>
           <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-            Create, save, and organize your personal Bible study notes.
-          </p>
-        </section>
-
-        <section className="space-y-2">
-          <h2 className="text-lg md:text-xl font-semibold text-gray-900">🤖 Little Louis (Chat Icon)</h2>
-          <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-            Your AI Bible Buddy.
-            <br />Ask questions about Scripture, history, or context anytime.
-          </p>
-        </section>
-
-        <section className="space-y-2">
-          <h2 className="text-lg md:text-xl font-semibold text-gray-900">⚙️ Menu (Top Right Corner)</h2>
-          <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-            Access your profile, settings, analytics, and account details.
+            Do you think you know somebody else who would like to be a Bible Buddy? Then click this button to share the app with them.
           </p>
         </section>
       </div>
+
+      <p className="text-sm md:text-[15px] font-medium text-gray-700 leading-7">
+        👉 Just click one of the cards to start.
+      </p>
     </div>
   );
 
   const BIBLE_TOUR_CONTENT = (
     <div className="space-y-6">
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
-        📖 The Bible
+        ðŸ“– The Bible
       </h1>
 
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">
@@ -401,53 +393,53 @@ export default function DashboardPage() {
       </p>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🔤 Choose Your Translation</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ”¤ Choose Your Translation</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Select from three translations:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• WEB – World English Bible</li>
-          <li>• ASV – American Standard Version</li>
-          <li>• KJV – King James Version</li>
+          <li>â€¢ WEB â€“ World English Bible</li>
+          <li>â€¢ ASV â€“ American Standard Version</li>
+          <li>â€¢ KJV â€“ King James Version</li>
         </ul>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">You can switch translations anytime while reading.</p>
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📚 Browse the Books</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ“š Browse the Books</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">You can:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• View books in Biblical order</li>
-          <li>• Or sort them Alphabetically</li>
+          <li>â€¢ View books in Biblical order</li>
+          <li>â€¢ Or sort them Alphabetically</li>
         </ul>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Click any book to see its chapters.</p>
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 Read a Chapter</h2>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">When you open a chapter, you’ll see:</p>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ“– Read a Chapter</h2>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">When you open a chapter, youâ€™ll see:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• A short overview from Little Louis explaining what’s happening</li>
-          <li>• The full chapter text</li>
-          <li>• Verse numbers for easy reference</li>
+          <li>â€¢ A short overview from Little Louis explaining whatâ€™s happening</li>
+          <li>â€¢ The full chapter text</li>
+          <li>â€¢ Verse numbers for easy reference</li>
         </ul>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Everything stays clean and distraction-free.</p>
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">⬅️➡️ Navigate Easily</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">â¬…ï¸âž¡ï¸ Navigate Easily</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Under each chapter you can:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• Go to the Previous or Next chapter</li>
-          <li>• Return to the book overview</li>
+          <li>â€¢ Go to the Previous or Next chapter</li>
+          <li>â€¢ Return to the book overview</li>
         </ul>
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🧠 Go Deeper</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ§  Go Deeper</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Below the chapter, you can:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• Tap “Read [Chapter] Notes” for a full breakdown</li>
-          <li>• Tap “Take Notes” to write your own thoughts</li>
-          <li>• Mark the chapter as Completed</li>
+          <li>â€¢ Tap â€œRead [Chapter] Notesâ€ for a full breakdown</li>
+          <li>â€¢ Tap â€œTake Notesâ€ to write your own thoughts</li>
+          <li>â€¢ Mark the chapter as Completed</li>
         </ul>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
           Completed chapters appear highlighted so you can track your progress.
@@ -455,13 +447,13 @@ export default function DashboardPage() {
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🤖 Use Little Louis Anytime</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ¤– Use Little Louis Anytime</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Tap the chat icon to ask questions about:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• Scripture</li>
-          <li>• History</li>
-          <li>• Context</li>
-          <li>• Meaning</li>
+          <li>â€¢ Scripture</li>
+          <li>â€¢ History</li>
+          <li>â€¢ Context</li>
+          <li>â€¢ Meaning</li>
         </ul>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Your AI Bible Buddy is always available.</p>
       </section>
@@ -471,7 +463,7 @@ export default function DashboardPage() {
   const GUIDED_STUDIES_TOUR_CONTENT = (
     <div className="space-y-6">
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
-        🔨 Bible Study Tools
+        ðŸ”¨ Bible Study Tools
       </h1>
 
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">
@@ -481,12 +473,12 @@ export default function DashboardPage() {
       </p>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 Bible Reading Plans</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ“– Bible Reading Plans</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
           Reading Plans guide you through Scripture in a structured order.
         </p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-          Instead of choosing randomly, you follow a clear path — whether that’s reading the entire Bible, focusing on specific themes, or moving through the story in a logical flow.
+          Instead of choosing randomly, you follow a clear path â€” whether thatâ€™s reading the entire Bible, focusing on specific themes, or moving through the story in a logical flow.
         </p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
           Pick a plan, follow the chapters, and let your progress build over time.
@@ -494,23 +486,23 @@ export default function DashboardPage() {
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🌅 Devotionals</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸŒ… Devotionals</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
           Devotionals are short, focused daily readings.
         </p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Each devotional includes:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• A selected passage</li>
-          <li>• Reflection or explanation</li>
-          <li>• Practical application</li>
+          <li>â€¢ A selected passage</li>
+          <li>â€¢ Reflection or explanation</li>
+          <li>â€¢ Practical application</li>
         </ul>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-          They’re designed to help you stay consistent and connect Scripture to everyday life.
+          Theyâ€™re designed to help you stay consistent and connect Scripture to everyday life.
         </p>
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🎯 Choose Your Style</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸŽ¯ Choose Your Style</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Some days you may want structure.</p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Some days you may want reflection.</p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Some days you may want a focused tool to keep moving.</p>
@@ -522,7 +514,7 @@ export default function DashboardPage() {
   const BIBLE_REFERENCES_TOUR_CONTENT = (
     <div className="space-y-6">
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
-        📚 Welcome to Bible References
+        ðŸ“š Welcome to Bible References
       </h1>
 
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">
@@ -533,27 +525,27 @@ export default function DashboardPage() {
       </p>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">👤 People</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ‘¤ People</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Explore thousands of biblical figures.</p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Learn:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• Who they were</li>
-          <li>• Where they lived</li>
-          <li>• What role they played</li>
-          <li>• How they connect to the bigger story</li>
+          <li>â€¢ Who they were</li>
+          <li>â€¢ Where they lived</li>
+          <li>â€¢ What role they played</li>
+          <li>â€¢ How they connect to the bigger story</li>
         </ul>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Understanding the people brings Scripture to life.</p>
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📍 Places</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ“ Places</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">The Bible happened in real locations.</p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">See:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• Cities</li>
-          <li>• Regions</li>
-          <li>• Nations</li>
-          <li>• Geographic context</li>
+          <li>â€¢ Cities</li>
+          <li>â€¢ Regions</li>
+          <li>â€¢ Nations</li>
+          <li>â€¢ Geographic context</li>
         </ul>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
           Knowing where events happened helps you understand why they happened.
@@ -561,24 +553,24 @@ export default function DashboardPage() {
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🔑 Key Words</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ”‘ Key Words</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
           Many powerful truths in Scripture depend on specific words.
         </p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Study:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• Important biblical terms</li>
-          <li>• Repeated themes</li>
-          <li>• Cultural meanings</li>
-          <li>• Original context</li>
+          <li>â€¢ Important biblical terms</li>
+          <li>â€¢ Repeated themes</li>
+          <li>â€¢ Cultural meanings</li>
+          <li>â€¢ Original context</li>
         </ul>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-          You cannot fully grasp the message if you don’t understand the words.
+          You cannot fully grasp the message if you donâ€™t understand the words.
         </p>
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🧠 Go Deeper</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ§  Go Deeper</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Bible References is your context engine.</p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">When something feels unclear, look it up.</p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Clarity leads to confidence.</p>
@@ -627,23 +619,23 @@ export default function DashboardPage() {
   const NOTES_TOUR_CONTENT = (
     <div className="space-y-6">
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
-        📝 Welcome to Notes
+        ðŸ“ Welcome to Notes
       </h1>
 
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">Reading Scripture is powerful.</p>
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">Writing it down makes it transformational.</p>
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-        Taking notes helps you slow down, reflect, and truly understand what you’re reading.
+        Taking notes helps you slow down, reflect, and truly understand what youâ€™re reading.
       </p>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">✍️ Why Notes Matter</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">âœï¸ Why Notes Matter</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">When you write:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• You process Scripture more deeply</li>
-          <li>• You remember what you study</li>
-          <li>• You see patterns and connections</li>
-          <li>• You build your own personal commentary over time</li>
+          <li>â€¢ You process Scripture more deeply</li>
+          <li>â€¢ You remember what you study</li>
+          <li>â€¢ You see patterns and connections</li>
+          <li>â€¢ You build your own personal commentary over time</li>
         </ul>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
           Faith grows when reflection becomes intentional.
@@ -651,14 +643,14 @@ export default function DashboardPage() {
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📚 Two Ways to Take Notes</h2>
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 Guided Notes (GROW Method)</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ“š Two Ways to Take Notes</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ“– Guided Notes (GROW Method)</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Use the GROW method to structure your study:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• G — Get the passage</li>
-          <li>• R — Research the context</li>
-          <li>• O — Observe what stands out</li>
-          <li>• W — Write your reflection</li>
+          <li>â€¢ G â€” Get the passage</li>
+          <li>â€¢ R â€” Research the context</li>
+          <li>â€¢ O â€” Observe what stands out</li>
+          <li>â€¢ W â€” Write your reflection</li>
         </ul>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
           This helps you go deeper instead of just reading quickly.
@@ -666,22 +658,22 @@ export default function DashboardPage() {
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🗒 Free Form Notes</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ—’ Free Form Notes</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">Prefer to write freely?</p>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">You can:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-          <li>• Create personal reflections</li>
-          <li>• Record prayers</li>
-          <li>• Write sermon notes</li>
-          <li>• Capture insights while reading</li>
+          <li>â€¢ Create personal reflections</li>
+          <li>â€¢ Record prayers</li>
+          <li>â€¢ Write sermon notes</li>
+          <li>â€¢ Capture insights while reading</li>
         </ul>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-          No structure required — just your thoughts and Scripture.
+          No structure required â€” just your thoughts and Scripture.
         </p>
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">🔁 Your Notes Stay Organized</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ” Your Notes Stay Organized</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
           Notes are connected to books and chapters so you can revisit them anytime.
         </p>
@@ -830,7 +822,7 @@ export default function DashboardPage() {
           .upsert(
             {
               user_id: userId,
-              feature_tours: { ...DEFAULT_FEATURE_TOURS },
+              feature_tours: buildPersistedFeatureTours(),
             },
             { onConflict: "user_id" }
           );
@@ -998,7 +990,7 @@ export default function DashboardPage() {
     const { error: updateError } = await supabase
       .from("profile_stats")
       .update({
-        feature_tours: mergedFeatureTours,
+        feature_tours: buildPersistedFeatureTours(mergedFeatureTours),
       })
       .eq("user_id", userId);
 
@@ -1010,7 +1002,7 @@ export default function DashboardPage() {
         .upsert(
           {
             user_id: userId,
-            feature_tours: mergedFeatureTours,
+            feature_tours: buildPersistedFeatureTours(mergedFeatureTours),
           },
           { onConflict: "user_id" }
         );
@@ -1277,7 +1269,7 @@ export default function DashboardPage() {
           ],
           9: [
             "You read with wisdom and awareness.",
-            "Context matters — and you see it.",
+            "Context matters â€” and you see it.",
             "Your understanding is strong.",
           ],
           10: [
@@ -1384,7 +1376,7 @@ export default function DashboardPage() {
       return;
     }
 
-    // yesterday – continue streak
+    // yesterday â€“ continue streak
     if (diffDays === 1) {
       storedStreak = storedStreak ? storedStreak + 1 : 1;
       window.localStorage.setItem(STREAK_KEY, String(storedStreak));
@@ -1394,7 +1386,7 @@ export default function DashboardPage() {
       return;
     }
 
-    // gap of 2+ days or time weirdness – reset streak
+    // gap of 2+ days or time weirdness â€“ reset streak
     storedStreak = 1;
     window.localStorage.setItem(STREAK_KEY, String(storedStreak));
     window.localStorage.setItem(LAST_DATE_KEY, todayStr);
@@ -1406,230 +1398,6 @@ export default function DashboardPage() {
   const readingSubtitle = totalCompletedChapters === 0
     ? "Start your Bible reading plan here"
     : "Continue reading your Bible here";
-
-  function buildDailyRecommendationCardCopy(recommendationItem: DailyRecommendation | null) {
-    if (!recommendationItem) {
-      return { title: null, subtitle: null };
-    }
-
-    const cta = recommendationItem.primaryButtonText;
-    const href = recommendationItem.primaryButtonHref;
-    const category = recommendationItem.category;
-    const liveStudyMatch =
-      recommendationItem.contextLine.match(/^(.+?) is live in your Bible Study Group\./i) ||
-      recommendationItem.contextLine.match(/^You are partway through (.+?)\./i);
-    const liveStudyTitle = liveStudyMatch?.[1]?.trim() || null;
-    const continueWeekMatch = cta.match(/Continue Week\s+(\d+)/i);
-    const startWeekMatch = cta.match(/Start Week\s+(\d+)/i);
-    const liveStudyWeek = continueWeekMatch?.[1] || startWeekMatch?.[1] || null;
-    const devotionalTitleMatch =
-      recommendationItem.contextLine.match(/of the (.+?) devotional/i) ||
-      recommendationItem.contextLine.match(/middle of the (.+?) devotional/i) ||
-      recommendationItem.contextLine.match(/^You already started (.+?)\./i);
-    const devotionalTitleFromCard = recommendationItem.cardTitle
-      ?.replace(/^Continue\s+/i, "")
-      ?.replace(/^Start\s+/i, "")
-      ?.trim();
-    const devotionalTitle = devotionalTitleFromCard || devotionalTitleMatch?.[1]?.trim() || null;
-    const continueDayMatch = cta.match(/Continue Day\s+(\d+)/i);
-    const startDayMatch = cta.match(/Start Day\s+(\d+)/i);
-
-    if (liveStudyTitle && liveStudyWeek) {
-      return {
-        title: `Week ${liveStudyWeek} Bible Study Ready`,
-        subtitle: `Week ${liveStudyWeek} of the ${liveStudyTitle} Bible study is now ready.`,
-      };
-    }
-
-    if (category === "devotional" && devotionalTitle && continueDayMatch) {
-      const nextDay = parseInt(continueDayMatch[1], 10);
-      const lastDay = Math.max(nextDay - 1, 1);
-      return {
-        title: `Continue with ${devotionalTitle}`,
-        subtitle: `You left off on Day ${lastDay}. Continue Day ${nextDay} today.`,
-      };
-    }
-
-    if (category === "devotional" && devotionalTitle && startDayMatch) {
-      return {
-        title: `Start ${devotionalTitle}`,
-        subtitle: "Day 1 is ready when you are.",
-      };
-    }
-
-    if (category === "devotional" && /view devotionals/i.test(cta)) {
-      return {
-        title: "Continue with a devotional",
-        subtitle: "Pick up where you left off and keep your devotional rhythm going.",
-      };
-    }
-
-    if (category === "profile" && /finish profile/i.test(cta)) {
-      return {
-        title: "Set up your Bible Buddy profile",
-        subtitle: "Add a profile picture and short bio so other Bible Buddies can get to know you.",
-      };
-    }
-
-    if (category === "general" && /turn on push alerts/i.test(cta)) {
-      return {
-        title: "Stay connected with Bible Buddy",
-        subtitle: "Turn on notifications so you can hear about new messages, group updates, and activity in the app.",
-      };
-    }
-
-    if (category === "reading_plan" && /read /i.test(cta)) {
-      const nextReadMatch = cta.match(/Read\s+(.+)/i);
-      const previousReadMatch = recommendationItem.contextLine.match(/finished\s+(.+?)\s+in the Bible Buddy Reading Plan/i);
-      const nextRead = nextReadMatch?.[1]?.trim() || "your next chapter";
-      const previousRead = previousReadMatch?.[1]?.trim();
-      return {
-        title: "Continue your reading plan",
-        subtitle: previousRead
-          ? `You read ${previousRead} last time. Continue with ${nextRead}.`
-          : `${nextRead} is ready when you are.`,
-      };
-    }
-
-    if (category === "reading_plan" && /continue reading plan/i.test(cta)) {
-      return {
-        title: "Continue your reading plan",
-        subtitle: "Pick up where you left off and keep your reading plan moving.",
-      };
-    }
-
-    if (category === "bible" && /read /i.test(cta)) {
-      const nextReadMatch = cta.match(/Read\s+(.+)/i);
-      const previousReadMatch = recommendationItem.contextLine.match(/finished\s+(.+?)\./i);
-      const nextRead = nextReadMatch?.[1]?.trim() || "your next chapter";
-      const previousRead = previousReadMatch?.[1]?.trim();
-      return {
-        title: "Continue reading the Bible",
-        subtitle: previousRead
-          ? `You read ${previousRead} last time. Continue with ${nextRead}.`
-          : `${nextRead} is ready for you next.`,
-      };
-    }
-
-    if (category === "bible" && /open the bible/i.test(cta)) {
-      return {
-        title: "Continue reading the Bible",
-        subtitle: "Open the Bible and keep your reading habit moving today.",
-      };
-    }
-
-    if (category === "trivia" && /play bible trivia/i.test(cta)) {
-      return {
-        title: "Play a round of Bible Trivia",
-        subtitle: "Test your Bible knowledge and see what is sticking from your reading.",
-      };
-    }
-
-    if ((category === "games" || href.includes("/bible-study-games/scrambled/")) && /play scrambled/i.test(cta)) {
-      const scrambledMatch = recommendationItem.contextLine.match(/^You finished\s+(.+?)\s+(\d+)\s+in Scrambled\./i);
-      const nextChapterMatch = recommendationItem.recommendationLine.match(/Try\s+(.+?)\s+(\d+)\s+next\./i);
-      const scoreMatch = recommendationItem.recommendationLine.match(/You got\s+(\d+)\/(\d+)\s+words right/i);
-      const book = scrambledMatch?.[1]?.trim() || nextChapterMatch?.[1]?.trim() || "this book";
-      const lastChapter = scrambledMatch?.[2]?.trim() || null;
-      const nextChapter = nextChapterMatch?.[2]?.trim() || null;
-      const score = scoreMatch ? `${scoreMatch[1]}/${scoreMatch[2]}` : null;
-
-      return {
-        title: "Play another round of Scrambled",
-        subtitle: score && lastChapter && nextChapter
-          ? `Last time you got ${score} for ${book} ${lastChapter}. Try ${book} ${nextChapter} now.`
-          : "Jump back into Scrambled and see how many Bible words you can unscramble next.",
-      };
-    }
-
-    if (category === "group" && /open bible study group/i.test(cta)) {
-      return {
-        title: "Join the Bible Study Group",
-        subtitle: "Follow the live study and see what other Bible Buddies are learning.",
-      };
-    }
-
-    if (category === "group" && /check group activity/i.test(cta)) {
-      return {
-        title: "See what is new in your group",
-        subtitle: "Open the group and catch up on the latest study conversation.",
-      };
-    }
-
-    if (category === "reference" && /explore people/i.test(cta)) {
-      return {
-        title: "Explore another Bible person",
-        subtitle: "Learn more about the people behind the story you are reading.",
-      };
-    }
-
-    if (category === "reference" && /explore places/i.test(cta)) {
-      return {
-        title: "Explore another Bible place",
-        subtitle: "A little context can make the next chapter land more clearly.",
-      };
-    }
-
-    if (category === "reference" && /explore keywords/i.test(cta)) {
-      return {
-        title: "Study another Bible keyword",
-        subtitle: "Open one more Bible word and make your reading easier to follow.",
-      };
-    }
-
-    if (category === "upgrade" && /see pro/i.test(cta)) {
-      return {
-        title: "See what Bible Buddy Pro unlocks",
-        subtitle: "Take a look at what opens up when the daily limits are gone.",
-      };
-    }
-
-    if (recommendationItem.cardTitle || recommendationItem.cardSubtitle) {
-      return {
-        title: recommendationItem.cardTitle || "Your next step in Bible Buddy",
-        subtitle: recommendationItem.cardSubtitle || recommendationItem.recommendationLine,
-      };
-    }
-
-    let subtitle = recommendationItem.recommendationLine;
-
-    if (/continue day/i.test(cta)) {
-      const dayMatch = cta.match(/Day\s+(\d+)/i);
-      subtitle = dayMatch
-        ? `Continue Day ${dayMatch[1]} of ${devotionalTitle || "your devotional"}.`
-        : `Continue ${devotionalTitle || "your devotional"} today.`;
-    } else if (/start day/i.test(cta)) {
-      subtitle = devotionalTitle
-        ? `Start ${devotionalTitle} today.`
-        : "Start a devotional today.";
-    } else if (/continue reading plan/i.test(cta)) {
-      subtitle = "Continue your reading plan where you left off.";
-    } else if (/read /i.test(cta)) {
-      const readMatch = cta.match(/Read\s+(.+)/i);
-      subtitle = readMatch
-        ? `Continue reading with ${readMatch[1]}.`
-        : "Continue reading in the Bible today.";
-    } else if (/view devotionals/i.test(cta)) {
-      subtitle = "Continue one of your devotionals today.";
-    } else if (/explore people/i.test(cta)) {
-      subtitle = "Explore another person in the Bible today.";
-    } else if (/explore places/i.test(cta)) {
-      subtitle = "Explore another place in the Bible today.";
-    } else if (/explore keywords/i.test(cta)) {
-      subtitle = "Explore another Bible keyword today.";
-    } else if (/do trivia/i.test(cta)) {
-      subtitle = "Play a round of Bible trivia today.";
-    } else if (/open study group/i.test(cta)) {
-      subtitle = "Open this week's live study in your group.";
-    } else if (/open bible/i.test(cta)) {
-      subtitle = "Continue reading in the Bible today.";
-    }
-
-    return {
-      title: "Your next step in Bible Buddy",
-      subtitle,
-    };
-  }
 
   /**
    * FEATURE FLAG: Set to true to enable ads
@@ -1657,7 +1425,6 @@ export default function DashboardPage() {
   // - User is logged in
   // - User is NOT a Pro member
   const shouldShowAds = ENABLE_ADS && userId && membershipStatus !== "pro";
-  const dailyRecommendationCardCopy = buildDailyRecommendationCardCopy(dailyRecommendationCard);
   const inviteLink = typeof window !== "undefined" ? `${window.location.origin}/signup` : "https://www.biblebuddy.com/signup";
   const inviteText = "I've been using Bible Buddy to read and study the Bible. Come join me.";
 
@@ -1692,47 +1459,6 @@ export default function DashboardPage() {
     }
   }
 
-  useEffect(() => {
-    let cancelled = false;
-
-    async function loadDailyRecommendationCard() {
-      if (!userId) {
-        setDailyRecommendationCard(null);
-        return;
-      }
-
-      try {
-        const { data } = await supabase
-          .from("profile_stats")
-          .select("level_1_skipped_date")
-          .eq("user_id", userId)
-          .maybeSingle();
-
-        let suppressLevel1 = false;
-        if (data?.level_1_skipped_date) {
-          const skippedDate = new Date(data.level_1_skipped_date);
-          const diffDays = Math.floor((Date.now() - skippedDate.getTime()) / (1000 * 60 * 60 * 24));
-          if (diffDays < 3) suppressLevel1 = true;
-        }
-
-        const nextRecommendation = await getDailyRecommendation(userId, suppressLevel1);
-        if (!cancelled) setDailyRecommendationCard(nextRecommendation);
-      } catch (error) {
-        if (!cancelled) {
-          console.warn("Error loading daily recommendation card:", error);
-          setDailyRecommendationCard(null);
-        }
-      } finally {
-        if (!cancelled) setIsDailyRecommendationLoading(false);
-      }
-    }
-
-    void loadDailyRecommendationCard();
-    return () => {
-      cancelled = true;
-    };
-  }, [userId]);
-
   return (
     <>
       {/* Daily Welcome Overlay (isolated, safe) */}
@@ -1760,7 +1486,7 @@ export default function DashboardPage() {
           </aside>
         )}
 
-        {/* MAIN CONTENT – CENTERED COLUMN */}
+        {/* MAIN CONTENT â€“ CENTERED COLUMN */}
         <div className="flex-1 max-w-lg mx-auto">
         {/* GREETING */}
         <div className="mb-4">
@@ -1781,10 +1507,6 @@ export default function DashboardPage() {
           userName={userName}
           handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
           setShowLevelInfoModal={setShowLevelInfoModal}
-          isLoadingRecommendation={isDailyRecommendationLoading}
-          dailyRecommendation={dailyRecommendationCard}
-          dailyRecommendationCardTitle={dailyRecommendationCardCopy.title}
-          dailyRecommendationCardSubtitle={dailyRecommendationCardCopy.subtitle}
           onInviteBuddy={handleInviteBuddy}
           dashboardTourSpotlight={activeTourKey === "dashboard" ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.spotlight ?? null : null}
         />
@@ -1825,10 +1547,6 @@ export default function DashboardPage() {
           userName={userName}
           handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
           setShowLevelInfoModal={setShowLevelInfoModal}
-          isLoadingRecommendation={isDailyRecommendationLoading}
-          dailyRecommendation={dailyRecommendationCard}
-          dailyRecommendationCardTitle={dailyRecommendationCardCopy.title}
-          dailyRecommendationCardSubtitle={dailyRecommendationCardCopy.subtitle}
           onInviteBuddy={handleInviteBuddy}
           dashboardTourSpotlight={activeTourKey === "dashboard" ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.spotlight ?? null : null}
         />
@@ -1925,12 +1643,12 @@ export default function DashboardPage() {
           <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold">🧭 How Levels Work in Bible Buddy</h2>
+                <h2 className="text-2xl font-bold">ðŸ§­ How Levels Work in Bible Buddy</h2>
                 <button
                   onClick={() => setShowLevelInfoModal(false)}
                   className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
                 >
-                  ×
+                  Ã—
                 </button>
               </div>
 
@@ -1942,20 +1660,20 @@ export default function DashboardPage() {
                 </p>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900">🔑 What Counts as Progress?</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900">ðŸ”‘ What Counts as Progress?</h3>
                   <p className="mb-2">You earn weighted points across Bible Buddy, such as:</p>
                   <ul className="list-none space-y-2 ml-4">
-                    <li>📖 Finishing a Bible chapter, devotional day, or reading plan chapter</li>
-                    <li>👤 Learning people, places, keywords, and taking notes</li>
-                    <li>👥 Posting in the group, commenting, and joining community activity</li>
-                    <li>❤️ Liking posts or comments, and earning likes from other Buddies</li>
-                    <li>🎯 Trivia, study opens, highlights, and other meaningful app actions</li>
+                    <li>ðŸ“– Finishing a Bible chapter, devotional day, or reading plan chapter</li>
+                    <li>ðŸ‘¤ Learning people, places, keywords, and taking notes</li>
+                    <li>ðŸ‘¥ Posting in the group, commenting, and joining community activity</li>
+                    <li>â¤ï¸ Liking posts or comments, and earning likes from other Buddies</li>
+                    <li>ðŸŽ¯ Trivia, study opens, highlights, and other meaningful app actions</li>
                   </ul>
                   <p className="mt-3 text-sm">Bigger study actions are worth more points than lighter actions like likes.</p>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900">⚖️ How Points Work</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900">âš–ï¸ How Points Work</h3>
                   <div className="space-y-3 text-sm text-gray-700">
                     <div className="bg-gray-50 p-3 rounded-lg">
                       <p className="font-semibold text-gray-900">Higher-point actions</p>
@@ -1977,27 +1695,27 @@ export default function DashboardPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900">🧠 Why Levels Exist</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900">ðŸ§  Why Levels Exist</h3>
                   <p className="mb-2">Levels help you:</p>
                   <ul className="list-none space-y-2 ml-4">
-                    <li>• See your personal growth over time</li>
-                    <li>• Stay encouraged</li>
-                    <li>• Build a deeper understanding of Scripture</li>
+                    <li>â€¢ See your personal growth over time</li>
+                    <li>â€¢ Stay encouraged</li>
+                    <li>â€¢ Build a deeper understanding of Scripture</li>
                   </ul>
                   <div className="mt-3 space-y-1 text-sm">
-                    <p>❌ No leaderboards</p>
-                    <p>❌ No competition</p>
-                    <p>✅ Just your journey with God</p>
+                    <p>âŒ No leaderboards</p>
+                    <p>âŒ No competition</p>
+                    <p>âœ… Just your journey with God</p>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-gray-900">🏷️ Bible Buddy Levels</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900">ðŸ·ï¸ Bible Buddy Levels</h3>
                   <div className="space-y-3">
                     {LEVEL_DEFINITIONS.map((definition) => (
                       <div key={definition.level} className="bg-gray-50 p-3 rounded-lg">
                         <p className="font-semibold text-gray-900">
-                          Level {definition.level} – {definition.levelName}
+                          Level {definition.level} â€“ {definition.levelName}
                           {" "}
                           <span className="text-xs font-medium text-gray-500">
                             ({definition.minPoints.toLocaleString()} to {definition.maxPoints !== null ? definition.maxPoints.toLocaleString() : `${definition.minPoints.toLocaleString()}+`} pts)
@@ -2010,11 +1728,11 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <p className="font-semibold text-blue-900 mb-1">🙌 Final Encouragement</p>
+                  <p className="font-semibold text-blue-900 mb-1">ðŸ™Œ Final Encouragement</p>
                   <p className="text-sm text-blue-800">
                     There's no rush.
                     <br />
-                    The goal isn't to finish fast — it's to understand deeply.
+                    The goal isn't to finish fast â€” it's to understand deeply.
                   </p>
                 </div>
 
@@ -2037,4 +1755,5 @@ export default function DashboardPage() {
     </>
   );
 }
+
 

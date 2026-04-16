@@ -6,6 +6,7 @@ export type BibleBuddyTvCategory =
   | "bible-stories";
 
 export type BibleBuddyTvSermonTopic =
+  | "holy spirit"
   | "temptation"
   | "lust"
   | "peace"
@@ -96,6 +97,7 @@ export const bibleBuddyTvSermonTopics: Array<{
   id: BibleBuddyTvSermonTopic;
   label: string;
 }> = [
+  { id: "holy spirit", label: "Holy Spirit" },
   { id: "temptation", label: "Temptation" },
   { id: "lust", label: "Lust" },
   { id: "peace", label: "Peace" },
@@ -5267,7 +5269,7 @@ export const billyHolySpiritSermonTitle: BibleBuddyTvTitle = {
     "Clear gospel preaching, Spirit-filled comfort, conviction, and simple biblical teaching about new life with God.",
   continueWatchingLabel: "Sermon: The Holy Spirit",
   inMyList: true,
-  sermonTopics: ["faith", "repenting"],
+  sermonTopics: ["holy spirit", "faith", "repenting"],
   searchTags: [
     "sermon",
     "billy graham",
@@ -5550,6 +5552,1804 @@ And that promise reaches into:
 
 The Holy Spirit is not a side note in Christian life.
 He is part of how believers know, follow, and remain with Christ.`,
+    },
+  ],
+};
+
+export const drCharlesStanleyHolySpiritSermonTitle: BibleBuddyTvTitle = {
+  id: "dr-charles-stanley-walking-in-the-holy-spirit",
+  slug: "dr-charles-stanley-walking-in-the-holy-spirit",
+  title: "Dr. Charles Stanley: Walking in the Holy Spirit",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/HolySpiritDrCharlesStanley.png",
+  heroImage: "/HolySpiritDrCharlesStanley.png",
+  accentFrom: "#1d4ed8",
+  accentTo: "#0f172a",
+  year: "2000s",
+  rating: "All Ages",
+  runtime: "28m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "A Dr. Charles Stanley sermon on who the Holy Spirit is, why believers need Him, and how to walk in step with His guidance every day.",
+  overview:
+    "This Charles Stanley message slows down one of the most important parts of the Christian life: learning to walk with the Holy Spirit instead of trying to live for God in your own strength. The sermon explains that the Holy Spirit is not an impersonal force but the personal presence of God with His people. It moves through dependence, obedience, Scripture, sensitivity to conviction, and the kind of fruitful life that only comes when a believer learns to rely on the Spirit fully.",
+  vibe:
+    "Steady biblical preaching, calm clarity, practical discipleship, and a deep emphasis on dependence on the Spirit of God.",
+  continueWatchingLabel: "Sermon: Walking in the Holy Spirit",
+  inMyList: true,
+  sermonTopics: ["holy spirit", "faith", "repenting"],
+  searchTags: [
+    "sermon",
+    "dr charles stanley",
+    "charles stanley",
+    "walking in the holy spirit",
+    "holy spirit",
+    "spirit of god",
+    "john 14 16",
+    "john 14 17",
+    "john 16",
+    "acts 1 8",
+    "acts 2",
+    "romans 8",
+    "galatians 5",
+    "1 corinthians 2",
+    "ephesians 4 30",
+    "helper",
+    "comforter",
+    "fruit of the spirit",
+    "guidance of the spirit",
+    "christian life",
+    "obedience",
+    "walk in the spirit",
+  ],
+  episodes: [
+    {
+      id: "dr-charles-stanley-walking-in-the-holy-spirit-main",
+      episodeNumber: 1,
+      title: "Walking in the Holy Spirit",
+      contentLabel: "Sermon",
+      duration: "28m",
+      summary:
+        "Dr. Charles Stanley explains who the Holy Spirit is, why believers need Him, and how sensitivity to His guidance changes the Christian life.",
+      thumbnail: "/HolySpiritDrCharlesStanley.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=r-9L2-aVR4I",
+      available: true,
+      discussionSlug: "bible-buddy-tv-dr-charles-stanley-walking-in-the-holy-spirit",
+      reflectionQuestion: "What stood out to you most in this sermon?",
+      louisIntro:
+        "What makes this sermon helpful is that it takes the Holy Spirit out of the vague category and brings Him back into everyday Christian life. Charles Stanley is not talking about the Spirit like a church buzzword. He is talking about the Spirit as the personal presence of God who leads, convicts, teaches, strengthens, and produces fruit. If somebody has ever tried to follow Jesus mostly by effort and discipline alone, this kind of sermon reminds them that the Christian life was always meant to be lived in dependence.",
+      studyNotesDocument: `# Walking in the Holy Spirit Starts With Knowing Who He Is
+
+One of the most important things about a sermon like this is that it slows the Christian life down enough to ask a basic question:
+
+> Who exactly is the Holy Spirit?
+
+That matters because many believers talk about the Holy Spirit without ever becoming clear on whether they mean:
+
+- a feeling
+- a church atmosphere
+- spiritual energy
+- or the personal presence of God
+
+Dr. Charles Stanley pushes in the right direction.
+
+The Holy Spirit is not an impersonal force.
+He is not only an emotional moment in worship.
+He is not only a doctrine to agree with.
+
+He is the Spirit of God, personally present and active among God's people.
+
+# Start in John 14
+
+One of the clearest places to begin is **John 14:16-17**.
+
+Jesus says:
+
+> "I will pray the Father, and He will give you another Helper, that He may abide with you forever."
+
+That verse matters because it tells us several things right away.
+
+The Holy Spirit is:
+
+- **given by the Father**
+- **promised by Jesus**
+- **another Helper**
+- **with believers forever**
+
+That means the Spirit is not temporary backup.
+He is part of the ongoing life of every believer.
+
+## “Another Helper” Matters
+
+The word **Helper** is doing a lot of work.
+
+Depending on translation, this can be rendered:
+
+- Helper
+- Comforter
+- Advocate
+- Counselor
+
+That matters because no one English word says everything.
+
+The Spirit:
+
+- comes alongside
+- strengthens
+- teaches
+- convicts
+- comforts
+- leads
+
+So when Jesus says **another Helper**, He is saying His people will not be abandoned.
+
+# The Holy Spirit Is a Person, Not a Force
+
+This is one of the biggest things a sermon like this has to make clear.
+
+The Holy Spirit is not just “God’s power” in the abstract.
+He is personal.
+
+Scripture speaks about the Spirit in personal ways:
+
+- He **teaches** in **John 14:26**
+- He **guides** in **John 16:13**
+- He can be **grieved** in **Ephesians 4:30**
+- He **intercedes** in **Romans 8:26**
+
+That matters because you do not grieve electricity.
+You do not fellowship with a vague force.
+You do not receive guidance from an impersonal energy.
+
+The Spirit is someone believers know, obey, and walk with.
+
+# Where the Holy Spirit Shows Up in the Bible
+
+If somebody wants to understand the Holy Spirit better, it helps to see that He is not only a New Testament idea.
+
+He appears across the Bible.
+
+## In the Old Testament
+
+The Spirit is present from the beginning.
+
+### **Genesis 1:2**
+The Spirit of God is present over the waters at creation.
+
+That matters because the Spirit belongs to God's creative work from the very start.
+
+### **Exodus 31:1-5**
+Bezalel is filled with the Spirit for wisdom, skill, and craftsmanship.
+
+That matters because the Spirit's work is not limited to preaching moments.
+He also empowers people for faithful work.
+
+### **Numbers 11:25**
+The Spirit rests on the elders to help carry leadership.
+
+### **1 Samuel 16:13**
+The Spirit comes upon David.
+
+That matters because the Spirit is tied to calling, empowerment, leadership, and God's presence with His chosen people.
+
+## In the Gospels
+
+The Holy Spirit is everywhere around the life of Jesus.
+
+### **Luke 1**
+The Spirit is active in the birth narratives around John the Baptist and Jesus.
+
+### **Matthew 3:16**
+The Spirit descends at Jesus' baptism.
+
+That matters because the public ministry of Jesus is openly marked by the Spirit's presence.
+
+### **Luke 4:1**
+Jesus is led by the Spirit into the wilderness.
+
+### **Luke 4:18**
+Jesus reads, “The Spirit of the Lord is upon Me.”
+
+That means the ministry of Jesus is not disconnected from the ministry of the Spirit.
+
+## In Acts
+
+If John 14 gives the promise, Acts shows the promise arriving in power.
+
+### **Acts 1:8**
+> "You will receive power when the Holy Spirit has come upon you..."
+
+This power is not mainly for spiritual performance.
+It is power for witness, courage, and faithfulness.
+
+### **Acts 2**
+Pentecost shows the church launched by the Spirit's coming.
+
+That matters because Christianity is never meant to be a movement sustained by human effort alone.
+
+## In the Letters
+
+The epistles make the Spirit personal and practical.
+
+### **Romans 8**
+This chapter is one of the most important places in the whole Bible for understanding life in the Spirit.
+
+Paul teaches that the Spirit:
+
+- dwells in believers
+- gives life
+- leads God's children
+- bears witness that we belong to God
+- helps in weakness
+
+### **Galatians 5**
+Here we see the contrast between the flesh and the Spirit.
+
+This is one of the clearest breakdowns for everyday life.
+
+The Spirit produces:
+
+- love
+- joy
+- peace
+- patience
+- kindness
+- goodness
+- faithfulness
+- gentleness
+- self-control
+
+That matters because the Spirit's presence is not only measured by emotion.
+It is measured by fruit.
+
+# What the Holy Spirit Does
+
+This sermon pushes listeners to stop treating the Spirit like an optional extra.
+
+So what does the Holy Spirit actually do?
+
+## 1. He Convicts
+
+**John 16:8** says the Spirit convicts the world concerning sin, righteousness, and judgment.
+
+That means the Spirit exposes what is wrong, not to destroy people, but to bring them to Christ.
+
+Conviction is different from hopeless shame.
+
+Conviction says:
+
+- this is sin
+- you cannot stay here
+- come back to Jesus
+
+## 2. He Helps Us Understand Scripture
+
+This is a huge piece of what the user asked for.
+
+The Spirit is not only present when people pray or worship.
+He helps believers understand the Word.
+
+### **1 Corinthians 2:12-14**
+Paul says spiritual truth is discerned spiritually.
+
+That matters because Bible reading is not only an intellectual project.
+It is not less than study, but it is more than study.
+
+The Spirit opens blind spots.
+He makes truth land.
+He presses Scripture into the heart.
+
+That is why believers should pray before reading:
+
+> Holy Spirit, help me see what is here.
+
+## 3. He Leads
+
+Romans 8 speaks about being led by the Spirit.
+
+That does not always mean dramatic impressions.
+Often it looks like:
+
+- conviction toward obedience
+- sensitivity to sin
+- clarity through Scripture
+- wisdom in decisions
+
+The Spirit's leading never pulls a believer away from God's Word.
+He leads in ways that agree with the character and truth of God.
+
+## 4. He Empowers Obedience
+
+This sermon is right to say that the Spirit empowers believers to resist sin and obey the Father.
+
+That is exactly where many people fail in practice.
+
+They know what is right.
+They may even want what is right.
+But they keep trying to do it in bare willpower.
+
+The New Testament does not teach self-powered Christianity.
+
+It teaches dependence.
+
+### **Galatians 5:16**
+> "Walk by the Spirit, and you will not fulfill the lust of the flesh."
+
+That verse matters because it does not only say “stop sinning.”
+It gives the deeper direction:
+
+Walk by the Spirit.
+
+## 5. He Produces Fruit
+
+Fruit is one of the clearest evidences of the Spirit's work.
+
+A person can talk a lot about the Spirit.
+But Galatians 5 keeps asking:
+
+- Is there more love?
+- More peace?
+- More patience?
+- More self-control?
+
+That is where the conversation gets real.
+
+# Walking in the Spirit Is Daily Dependence
+
+The title itself matters.
+
+Not visiting.
+Not hearing about.
+Not debating.
+
+Walking.
+
+Walking in the Spirit means:
+
+- living with awareness of God's presence
+- yielding quickly when convicted
+- depending on God instead of ego
+- staying near Scripture
+- obeying what God already made clear
+
+That is why this sermon works best when it becomes practical.
+
+A believer walks in the Spirit by:
+
+- praying honestly
+- staying in the Word
+- confessing sin quickly
+- obeying what God has already shown
+- refusing to numb conviction
+
+# One Verse Breakdown: John 14:16
+
+Let’s slow that key verse down one more time.
+
+> "I will pray the Father, and He will give you another Helper, that He may abide with you forever."
+
+## “I will pray the Father”
+Jesus is the one speaking.
+The gift of the Spirit is rooted in Jesus' work and Jesus' promise.
+
+## “He will give you”
+The Spirit is gift, not achievement.
+Believers do not earn Him by spiritual performance.
+
+## “another Helper”
+This means God's people are not left unsupported.
+
+## “abide with you forever”
+This is one of the strongest parts.
+
+The Spirit's presence is not meant to be occasional.
+He abides.
+He remains.
+
+That is why the Christian life is never meant to be lived alone.
+
+# Why This Matters for Real Life
+
+Many believers live tired Christian lives because they are trying to do spiritual things without spiritual dependence.
+
+That shows up as:
+
+- reading without prayer
+- fighting sin without surrender
+- serving without intimacy
+- obeying without joy
+- knowing Bible facts without real fellowship with God
+
+This sermon is trying to pull people back to the source.
+
+Without the Spirit, people can still be religious.
+But they will not be deeply fruitful.
+
+# Scripture Connections to Read After This Sermon
+
+If someone wants to keep studying the Holy Spirit after this, these are strong places to go:
+
+- **Genesis 1:2**
+- **Exodus 31:1-5**
+- **1 Samuel 16:13**
+- **John 14:16-17**
+- **John 14:26**
+- **John 16:7-15**
+- **Acts 1:8**
+- **Acts 2**
+- **Romans 8:1-27**
+- **1 Corinthians 2:12-14**
+- **Galatians 5:16-25**
+- **Ephesians 4:30**
+
+That list shows the Spirit in creation, calling, Christ's ministry, the church, and everyday Christian growth.
+
+# Final Takeaway
+
+This sermon matters because it reminds believers that the Christian life is not supposed to be lived through strain alone.
+
+The Holy Spirit:
+
+- teaches
+- convicts
+- comforts
+- leads
+- empowers
+- produces fruit
+
+He is not a side topic.
+He is central to real Christian life.
+
+So the right question after a sermon like this is not only:
+
+> Do I believe in the Holy Spirit?
+
+It is:
+
+> Am I actually walking with Him?
+
+That is where this message lands.
+
+Not on theory alone.
+
+But on daily dependence, obedience, sensitivity, and real fellowship with God.`,
+    },
+  ],
+};
+
+export const priscillaShirerHolySpiritSermonTitle: BibleBuddyTvTitle = {
+  id: "priscilla-shirer-holy-spirit",
+  slug: "priscilla-shirer-holy-spirit",
+  title: "Priscilla Shirer: The Power of the Holy Spirit",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/PriscillaShirerHolySpirit.png",
+  heroImage: "/PriscillaShirerHolySpirit.png",
+  accentFrom: "#2563eb",
+  accentTo: "#0f172a",
+  year: "2020s",
+  rating: "All Ages",
+  runtime: "31m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "A Priscilla Shirer sermon on the importance, guidance, and transforming power of the Holy Spirit in everyday Christian life.",
+  overview:
+    "In this message, Priscilla Shirer walks through why the Holy Spirit is essential for believers who want more than surface-level faith. The sermon centers on the Spirit's power, God's presence in hard seasons, and the way faith becomes stronger when believers stop trying to carry everything alone. It connects the Holy Spirit to courage, endurance, discernment, and the deep personal love of God that meets people in real life challenges.",
+  vibe:
+    "Bold encouragement, Spirit-led faith, practical hope, and clear biblical teaching about God's presence in the middle of life's pressure.",
+  continueWatchingLabel: "Sermon: The Power of the Holy Spirit",
+  inMyList: true,
+  sermonTopics: ["holy spirit", "faith", "hope"],
+  searchTags: [
+    "sermon",
+    "priscilla shirer",
+    "holy spirit",
+    "power of the holy spirit",
+    "spirit of god",
+    "faith",
+    "hope",
+    "guidance",
+    "god's love",
+    "overcoming challenges",
+    "john 14",
+    "acts 1 8",
+    "romans 8",
+    "galatians 5",
+    "comforter",
+    "helper",
+    "encouragement",
+    "christian women sermon",
+    "holy spirit sermon",
+    "transformative faith",
+  ],
+  episodes: [
+    {
+      id: "priscilla-shirer-holy-spirit-main",
+      episodeNumber: 1,
+      title: "The Power of the Holy Spirit",
+      contentLabel: "Sermon",
+      duration: "31m",
+      summary:
+        "Priscilla Shirer explains why the Holy Spirit is essential for strength, discernment, faith, and endurance in the real pressures of life.",
+      thumbnail: "/PriscillaShirerHolySpirit.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=Ov1cxFUw2EA",
+      available: true,
+      discussionSlug: "bible-buddy-tv-priscilla-shirer-holy-spirit",
+      reflectionQuestion: "What stood out to you most in this sermon?",
+      louisIntro:
+        "This sermon works because it does not talk about the Holy Spirit like a distant church topic. Priscilla Shirer brings the conversation right into real life pressure. She keeps pushing toward the truth that believers were never supposed to carry fear, confusion, and spiritual battles by themselves. The Spirit is God's personal presence, power, and guidance for people who need strength in the middle of ordinary life.",
+      studyNotesDocument: `# The Holy Spirit Is Meant to Be Experienced, Not Just Mentioned
+
+One of the strongest parts of a sermon like this is that it refuses to let the Holy Spirit stay abstract.
+
+That matters because a lot of believers know the phrase **Holy Spirit**, but they do not always know how to connect that truth to everyday life.
+
+Priscilla Shirer pushes in a practical direction.
+
+The question becomes:
+
+> What changes when a believer actually depends on the Holy Spirit?
+
+That is the right question because Scripture never presents the Spirit as a side doctrine for extra-deep Christians.
+
+The Spirit is central to the Christian life.
+
+# The Holy Spirit Is God's Personal Presence
+
+Before talking about power, guidance, or comfort, it helps to settle something basic:
+
+The Holy Spirit is not an impersonal force.
+
+He is the personal presence of God with His people.
+
+That matters because people sometimes speak about the Spirit as if He is:
+
+- a vibe
+- an emotional moment
+- spiritual energy
+- or just a symbol of God's nearness
+
+But Scripture is stronger than that.
+
+The Holy Spirit teaches.
+The Holy Spirit leads.
+The Holy Spirit convicts.
+The Holy Spirit comforts.
+The Holy Spirit can be grieved.
+
+That is personal language.
+
+# John 14 Matters Here
+
+One of the most important places to ground a sermon like this is **John 14:16-17**.
+
+Jesus says:
+
+> "And I will ask the Father, and he will give you another Helper, to be with you forever, even the Spirit of truth..."
+
+That verse matters because Jesus is preparing His disciples for life after His visible earthly ministry.
+
+They are about to face:
+
+- fear
+- confusion
+- pressure
+- uncertainty
+
+And Jesus answers all of that with a promise.
+
+Not just instruction.
+Not just memory.
+Not just inspiration.
+
+A Helper.
+
+That means the Christian life is not meant to be lived by memory of Jesus alone, but by the ongoing presence of God through the Spirit.
+
+# One Word Worth Noticing: Helper
+
+The word **Helper** in John 14 can also carry the sense of comforter, advocate, counselor, or one who comes alongside.
+
+That matters because it broadens the picture.
+
+The Holy Spirit:
+
+- strengthens
+- counsels
+- comforts
+- supports
+- and leads
+
+So when life gets heavy, the Spirit is not only giving distant truth.
+
+He is coming alongside the believer.
+
+# The Holy Spirit and Power
+
+Another important verse for this topic is **Acts 1:8**:
+
+> "But you will receive power when the Holy Spirit has come upon you..."
+
+That word **power** matters because many Christians feel weak in the places that matter most.
+
+They feel weak:
+
+- in temptation
+- in fear
+- in grief
+- in decision making
+- in spiritual consistency
+
+Acts 1:8 reminds believers that the Holy Spirit does not only comfort.
+He empowers.
+
+And that power is not mainly about spiritual performance.
+
+It is power for:
+
+- witness
+- boldness
+- endurance
+- obedience
+- spiritual clarity
+
+That means when Priscilla Shirer talks about overcoming life's challenges, she is not pointing people to positive thinking.
+
+She is pointing them to divine help.
+
+# Romans 8 Makes This Deeply Personal
+
+If John 14 gives the promise and Acts 1 gives the power, **Romans 8** gives the ongoing daily reality.
+
+Romans 8 matters because it shows the Spirit's work in identity, assurance, and inward transformation.
+
+The chapter teaches that the Spirit:
+
+- dwells in believers
+- gives life
+- leads God's children
+- helps in weakness
+
+That matters because the Spirit is not only for public ministry moments.
+
+He is for private struggle too.
+
+## Romans 8:14
+
+> "For all who are led by the Spirit of God are sons of God."
+
+That verse matters because it connects the Spirit directly to belonging.
+
+The Spirit's guidance is not random spiritual energy.
+It is family language.
+
+God leads His children.
+
+## Romans 8:26
+
+> "Likewise the Spirit helps us in our weakness..."
+
+That verse is huge for people going through pressure.
+
+It means the Spirit does not wait for believers to become strong enough.
+He helps them while they are weak.
+
+That is one of the most comforting truths about the Holy Spirit in all of Scripture.
+
+# Galatians 5 Shows the Fruit
+
+Another important place to read with a sermon like this is **Galatians 5:22-23**.
+
+The fruit of the Spirit is:
+
+- love
+- joy
+- peace
+- patience
+- kindness
+- goodness
+- faithfulness
+- gentleness
+- self-control
+
+That matters because the Spirit does not only produce emotional moments.
+He produces transformation.
+
+If someone wants to know whether the Spirit is really at work, Galatians 5 points them toward character.
+
+The Spirit changes how a believer lives.
+
+# The Holy Spirit Helps Believers Discern
+
+One of the most important practical themes around the Holy Spirit is discernment.
+
+Believers need help knowing:
+
+- what is true
+- what is wise
+- what is just emotional noise
+- what lines up with God's Word
+
+That is where the Spirit's role matters deeply.
+
+The Spirit never leads people away from Scripture.
+He helps them understand it, apply it, and obey it.
+
+That is why the Holy Spirit is not separated from the Bible.
+
+He inspired Scripture.
+He illuminates Scripture.
+He helps believers walk in its truth.
+
+# The Spirit and Everyday Battle
+
+When a sermon connects the Holy Spirit to life's challenges, that matters because life presses people hard.
+
+People are carrying:
+
+- anxiety
+- spiritual fatigue
+- temptation
+- disappointment
+- confusion about the future
+
+The Spirit's presence changes how those battles are faced.
+
+Not because Christians never struggle.
+But because they do not struggle alone.
+
+That is one of the best takeaways here.
+
+The Spirit is not only for church settings.
+He is for Tuesday morning pressure.
+He is for private battles.
+He is for moments when faith feels thin.
+
+# Places the Holy Spirit Shows Up Across the Bible
+
+If someone wants to study the Spirit more deeply, it helps to trace Him through Scripture.
+
+## Genesis 1:2
+
+The Spirit of God is present at creation.
+
+That matters because the Spirit is not a late Bible addition.
+
+## Exodus 31:1-5
+
+The Spirit fills Bezalel with skill for sacred work.
+
+That shows the Spirit empowers service and wisdom.
+
+## Ezekiel 36:26-27
+
+God promises a new heart and His Spirit within His people.
+
+That matters because the Spirit is tied to inner renewal.
+
+## Luke 4:18
+
+Jesus ministers in the power of the Spirit.
+
+That shows how central the Spirit is to the ministry of Christ Himself.
+
+## Acts 2
+
+The Spirit is poured out at Pentecost.
+
+That marks a major shift in the life and witness of the church.
+
+# Final Takeaway
+
+This sermon matters because it reminds believers that the Holy Spirit is not optional.
+
+He is not extra.
+He is not only for dramatic church moments.
+
+He is God's presence for:
+
+- strength
+- clarity
+- conviction
+- comfort
+- obedience
+- endurance
+
+If life feels heavy, confusing, or spiritually dry, the answer is not to pretend to be stronger than you are.
+
+The answer is to depend more deeply on the One Jesus promised.
+
+The Holy Spirit is not far away.
+
+He is God's help for the believer right now.`,
+    },
+  ],
+};
+
+export const paulWasherHolySpiritSermonTitle: BibleBuddyTvTitle = {
+  id: "paul-washer-power-of-the-holy-spirit",
+  slug: "paul-washer-power-of-the-holy-spirit",
+  title: "Paul Washer: The Power of the Holy Spirit",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/PaulWasherholyspiritsermon.png",
+  heroImage: "/PaulWasherholyspiritsermon.png",
+  accentFrom: "#1d4ed8",
+  accentTo: "#0f172a",
+  year: "2010s",
+  rating: "All Ages",
+  runtime: "55m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "A Paul Washer sermon on the true evidence of the Holy Spirit's power in a believer's life: boldness for Christ, love for God, and real sanctification.",
+  overview:
+    "In this message, Paul Washer pushes past shallow ideas about spiritual power and asks a harder biblical question: what does the Holy Spirit's presence actually produce in a Christian? The sermon argues that the truest ongoing evidence of the Spirit is not centered on dramatic sign gifts, but on holiness, love for God, growth in obedience, and courage to speak of Christ. It is a strong call to examine the fruit of the Spirit's work in everyday life rather than chasing outward spectacle.",
+  vibe:
+    "Serious biblical preaching, conviction, holiness, bold witness, and a sharp focus on the Spirit's power in sanctification.",
+  continueWatchingLabel: "Sermon: The Power of the Holy Spirit",
+  inMyList: true,
+  sermonTopics: ["holy spirit", "faith", "repenting", "sin"],
+  searchTags: [
+    "sermon",
+    "paul washer",
+    "holy spirit",
+    "power of the holy spirit",
+    "spirit of god",
+    "sanctification",
+    "holiness",
+    "boldness for christ",
+    "love for god",
+    "fruit of the spirit",
+    "acts 1 8",
+    "galatians 5",
+    "romans 8",
+    "john 14",
+    "obedience",
+    "christian life",
+    "sign gifts",
+    "spiritual evidence",
+    "holy spirit sermon",
+    "true conversion",
+  ],
+  episodes: [
+    {
+      id: "paul-washer-power-of-the-holy-spirit-main",
+      episodeNumber: 1,
+      title: "The Power of the Holy Spirit",
+      contentLabel: "Sermon",
+      duration: "55m",
+      summary:
+        "Paul Washer teaches that the Holy Spirit's power is most clearly seen in holiness, boldness for Christ, love for God, and ongoing sanctification.",
+      thumbnail: "/PaulWasherholyspiritsermon.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=lC-u9izpCBU",
+      available: true,
+      discussionSlug: "bible-buddy-tv-paul-washer-holy-spirit",
+      reflectionQuestion: "What stood out to you most in this sermon?",
+      louisIntro:
+        "This sermon is strong because Paul Washer does not let people stay vague about the Holy Spirit. He keeps pressing on the difference between being impressed by dramatic things and actually being transformed by God. His point is that the Spirit's power shows up in a changed life, deeper holiness, love for Christ, and real boldness in witness. That makes this a hard but healthy sermon for anybody who wants to know whether they are measuring spiritual life by biblical standards.",
+      studyNotesDocument: `# The Power of the Holy Spirit Is Not Measured by Hype
+
+One of the biggest strengths of this sermon is that it asks a question a lot of Christians need to hear again:
+
+> What is the real evidence that the Holy Spirit is at work in a person?
+
+That matters because many people answer that question by pointing first to dramatic experiences.
+
+They think about:
+
+- signs
+- gifts
+- emotional intensity
+- visible moments that feel unusual
+
+Paul Washer pushes the conversation somewhere more searching and more biblical.
+
+He is asking whether the Spirit's power is producing:
+
+- holiness
+- boldness for Christ
+- love for God
+- ongoing sanctification
+
+That shift matters because Scripture consistently points believers back to transformation, not spectacle.
+
+# Acts 1:8 and Boldness for Christ
+
+One of the key verses for a sermon like this is **Acts 1:8**:
+
+> "But you will receive power when the Holy Spirit has come upon you, and you will be my witnesses..."
+
+That verse matters because it shows one of the clearest results of the Spirit's power.
+
+Witness.
+
+The Spirit empowers believers to speak of Christ with courage.
+
+That does not always look flashy.
+
+Sometimes it looks like:
+
+- clarity in conversation
+- courage under pressure
+- willingness to identify with Jesus
+- faithfulness in hostile environments
+
+That matters because the Spirit's power is not mainly about drawing attention to the believer.
+
+It is about helping the believer point to Christ.
+
+# The Holy Spirit Produces Love for God
+
+Another important part of this kind of sermon is that it keeps the Christian life personal.
+
+The Spirit does not only help with ministry activity.
+He awakens love for God.
+
+That matters because somebody can be fascinated by spiritual topics while still cold toward the Lord Himself.
+
+The Spirit's work is deeper than fascination.
+
+He produces:
+
+- affection for Christ
+- hunger for God's Word
+- grief over sin
+- desire for obedience
+
+That is one reason the Holy Spirit can never be reduced to spiritual energy.
+
+He brings the believer into living fellowship with God.
+
+# Romans 8 Matters for This Conversation
+
+If a sermon is going to talk seriously about the Spirit's power in the believer, **Romans 8** has to be in the room.
+
+Romans 8 shows that the Spirit:
+
+- dwells in believers
+- leads believers
+- helps in weakness
+- testifies to their identity as children of God
+
+That matters because the Spirit's power is not only external.
+
+It is inward and personal.
+
+## Romans 8:13
+
+> "For if by the Spirit you put to death the deeds of the body, you will live."
+
+That verse is especially important here.
+
+It shows that the Spirit's power is connected to sanctification.
+
+The Spirit helps believers fight sin.
+
+That means if somebody wants to know whether the Spirit is really active in a life, one major place to look is not only excitement.
+
+Look at the war against sin.
+
+Look at repentance.
+Look at growth in obedience.
+
+# Sanctification Is a Major Evidence
+
+Paul Washer's emphasis on sanctification matters because it protects the Christian life from becoming shallow.
+
+Sanctification means the ongoing work of God making a believer more holy.
+
+It does not mean instant perfection.
+It does not mean a believer never struggles.
+
+It means the Spirit is producing a real pattern of transformation over time.
+
+That can show up in:
+
+- a cleaner conscience
+- deeper repentance
+- increasing hatred of sin
+- stronger desire for obedience
+- more visible fruit of godliness
+
+That matters because the Holy Spirit is not only present to make believers feel spiritual.
+
+He is present to make them holy.
+
+# Galatians 5 Helps You See the Fruit
+
+One of the clearest passages for this is **Galatians 5:22-23**.
+
+The fruit of the Spirit is:
+
+- love
+- joy
+- peace
+- patience
+- kindness
+- goodness
+- faithfulness
+- gentleness
+- self-control
+
+That matters because fruit is steady evidence.
+
+It is not flashy.
+It is not always loud.
+But it is real.
+
+If somebody wants to know whether the Spirit's power is showing up in a life, Galatians 5 says to look at character.
+
+The Spirit changes who a person is becoming.
+
+# John 14 Reminds Us the Spirit Is a Helper
+
+It also helps to read this sermon beside **John 14:16-17**, where Jesus promises another Helper.
+
+That matters because the Spirit's role is not only to empower witness, but to remain with believers.
+
+The Spirit helps them:
+
+- understand truth
+- walk with Christ
+- endure hardship
+- resist sin
+- remain close to God
+
+So when a believer is being sanctified, that is not self-improvement.
+
+That is the Helper actively at work.
+
+# The Danger of Chasing the Wrong Evidence
+
+One reason this sermon matters is because Christians can start chasing the wrong things.
+
+They can begin measuring spiritual life by:
+
+- emotional intensity
+- unusual experiences
+- dramatic moments
+- spiritual language that sounds impressive
+
+But if those things are not producing:
+
+- humility
+- holiness
+- obedience
+- love for God
+- boldness for Christ
+
+then the measuring system is broken.
+
+That is part of the warning here.
+
+Scripture does not tell believers to ignore spiritual gifts.
+But it does refuse to let gifts replace godliness.
+
+# The Holy Spirit and Holiness
+
+The Spirit is called **Holy** Spirit.
+
+That matters because His presence is tied to holiness by definition.
+
+He works to make believers more like Christ.
+
+That means a sermon on the Spirit should eventually land on the question:
+
+> Is my life being made more holy?
+
+Not just:
+
+> Am I having intense spiritual moments?
+
+The Spirit's power can be seen when a person:
+
+- confesses sin quickly
+- turns from compromise
+- grows in purity
+- obeys the Word
+- values Christ more than the world
+
+# The Spirit's Power in Ordinary Christian Life
+
+Another important takeaway is that the Spirit's power often shows up in ordinary faithfulness.
+
+That can look like:
+
+- staying faithful in prayer
+- speaking of Christ when it is costly
+- resisting temptation
+- loving God when life is hard
+- walking in repentance day after day
+
+That matters because ordinary obedience is not boring in God's eyes.
+
+It is evidence of divine life.
+
+# Scripture Connections to Read with This Sermon
+
+If someone wants to go deeper after watching, these are strong places to read:
+
+- **John 14:16-17** for the promise of the Helper
+- **Acts 1:8** for power to witness
+- **Romans 8:1-17** for sanctification and life in the Spirit
+- **Galatians 5:16-25** for the conflict with the flesh and the fruit of the Spirit
+- **2 Corinthians 3:18** for transformation into Christ's image
+
+Those passages help keep the sermon grounded in the larger Bible story of what the Spirit actually does.
+
+# Final Takeaway
+
+This sermon matters because it clears away weak ideas of spiritual power.
+
+The Holy Spirit's presence is not mainly proven by spectacle.
+
+It is proven in a believer's life by:
+
+- boldness for Christ
+- love for God
+- hatred of sin
+- growth in holiness
+- steady sanctification
+
+That is a serious message, but it is also a hopeful one.
+
+Because it means the Spirit is at work in places many believers overlook.
+
+He is at work in repentance.
+He is at work in obedience.
+He is at work in the long slow change that makes a believer look more like Jesus.`,
+    },
+  ],
+};
+
+export const jackieHillPerryTemptationSermonTitle: BibleBuddyTvTitle = {
+  id: "jackie-hill-perry-resisting-temptation",
+  slug: "jackie-hill-perry-resisting-temptation",
+  title: "Jackie Hill Perry: Resisting Temptation",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/JackieHillPerryResistingTemptation.png",
+  heroImage: "/JackieHillPerryResistingTemptation.png",
+  accentFrom: "#0f766e",
+  accentTo: "#0f172a",
+  year: "2020s",
+  rating: "All Ages",
+  runtime: "41m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "A Jackie Hill Perry sermon on why sin feels so tempting, how spiritual warfare works, and how believers can fight temptation daily.",
+  overview:
+    "In this message, Jackie Hill Perry deals honestly with the pull of temptation and the spiritual war behind it. She explains that sin feels powerful because it often promises immediate pleasure, relief, or satisfaction, but that promise never tells the whole truth. The sermon moves through desire, spiritual warfare, daily resistance, and the believer's need for truth, discipline, and dependence on God. It is a sharp reminder that resisting temptation is not passive; it is part of daily Christian battle.",
+  vibe:
+    "Honest biblical confrontation, spiritual warfare, practical holiness, and direct encouragement to fight sin seriously.",
+  continueWatchingLabel: "Sermon: Resisting Temptation",
+  inMyList: true,
+  sermonTopics: ["temptation", "sin", "repenting", "faith"],
+  searchTags: [
+    "sermon",
+    "jackie hill perry",
+    "resisting temptation",
+    "temptation",
+    "sin",
+    "spiritual warfare",
+    "devil",
+    "lust",
+    "desire",
+    "holiness",
+    "repentance",
+    "sanctification",
+    "romans 7",
+    "james 1",
+    "1 corinthians 10 13",
+    "ephesians 6",
+    "christian discipline",
+    "fight sin",
+    "resist the devil",
+    "obedience",
+  ],
+  episodes: [
+    {
+      id: "jackie-hill-perry-resisting-temptation-main",
+      episodeNumber: 1,
+      title: "Resisting Temptation",
+      contentLabel: "Sermon",
+      duration: "41m",
+      summary:
+        "Jackie Hill Perry teaches why sin feels attractive, how spiritual warfare works in daily life, and how believers can actively resist temptation.",
+      thumbnail: "/JackieHillPerryResistingTemptation.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=uOVz0PhQIH4",
+      available: true,
+      discussionSlug: "bible-buddy-tv-jackie-hill-perry-resisting-temptation",
+      reflectionQuestion: "What stood out to you most in this sermon?",
+      louisIntro:
+        "This sermon is strong because it does not act surprised that temptation feels good. Jackie Hill Perry starts with the honesty that sin would not pull so hard if it did not promise something people actually want. But that is exactly why the fight matters. She keeps bringing the listener back to the truth that spiritual warfare is not only dramatic moments. It is often the daily decision to believe God over whatever sin is offering right now.",
+      studyNotesDocument: `# Temptation Feels Powerful Because It Promises Something
+
+One of the best parts of this sermon is that it starts with honesty.
+
+Sin is tempting because it usually promises:
+
+- pleasure
+- relief
+- control
+- escape
+- comfort
+- approval
+
+That matters because people often lose the battle against temptation before they ever become honest about why it feels attractive.
+
+Jackie Hill Perry is not pretending sin looks ugly on the front end.
+
+She is saying the pull is real.
+And that is exactly why believers need truth and spiritual vigilance.
+
+# James 1 Helps Explain the Process
+
+One of the clearest places to understand temptation is **James 1:14-15**.
+
+James says a person is tempted when he is lured and enticed by his own desire.
+
+Then desire conceives and gives birth to sin.
+And sin, when fully grown, brings forth death.
+
+That matters because temptation has a pattern.
+
+It often moves like this:
+
+- desire wakes up
+- desire gets fed
+- desire becomes rationalized
+- sin gets embraced
+- consequences follow
+
+James is important because it shows temptation is not random.
+
+It works through disordered desire.
+
+# Desire Is Not Always Neutral
+
+This is an important part of the conversation.
+
+People often speak as if every desire should be trusted just because it feels strong.
+
+But Scripture does not teach that.
+
+The Bible teaches that desire can be:
+
+- healthy
+- disordered
+- selfish
+- godly
+- corrupted
+
+That matters because part of resisting temptation is learning not to bow to every internal urge.
+
+A strong desire is not automatically a righteous one.
+
+# Romans 7 Shows the Inner Conflict
+
+Jackie Hill Perry's emphasis also fits closely with **Romans 7**.
+
+Paul talks about the tension of wanting to do good while still feeling the presence of evil near at hand.
+
+That matters because many believers think inner conflict means they are uniquely broken.
+
+But Romans 7 reminds them that the battle with sin is real.
+
+The issue is not whether temptation exists.
+The issue is what happens when it shows up.
+
+## Romans 7:21
+
+> "So I find it to be a law that when I want to do right, evil lies close at hand."
+
+That verse matters because it is painfully familiar.
+
+Many believers know exactly what that feels like.
+
+They want to obey God.
+But temptation shows up close, persuasive, and personal.
+
+This sermon is helpful because it does not shame that battle.
+It teaches believers how to fight it.
+
+# 1 Corinthians 10:13 Gives Hope
+
+Another major verse for temptation is **1 Corinthians 10:13**.
+
+Paul says no temptation has overtaken believers except what is common to man, and God is faithful.
+He will not let them be tempted beyond what they can bear, but with the temptation He will also provide the way of escape.
+
+That matters because temptation often lies.
+
+It says:
+
+- you have to do this
+- there is no way out
+- this is too strong
+- you will not survive obedience
+
+But 1 Corinthians 10:13 says God is faithful in the middle of the fight.
+
+The way of escape may not always feel easy.
+But it exists.
+
+# Spiritual Warfare Is Often Ordinary
+
+One of the strongest themes here is spiritual warfare.
+
+That matters because many people think warfare only means dramatic or unusual moments.
+
+But Scripture often presents the battle more practically.
+
+Spiritual warfare can look like:
+
+- lies believed in the mind
+- desires fed in secrecy
+- compromise justified slowly
+- discouragement used to weaken resolve
+- repeated sin becoming normal
+
+That is why a sermon like this matters.
+
+It brings warfare into everyday Christian life.
+
+# Ephesians 6 and the Need for Armor
+
+**Ephesians 6:10-18** belongs right beside a sermon like this.
+
+Paul tells believers to put on the whole armor of God because the struggle is not merely against flesh and blood.
+
+That means temptation is not only psychological.
+There is real spiritual opposition.
+
+The armor matters because believers need:
+
+- truth
+- righteousness
+- readiness in the gospel
+- faith
+- salvation confidence
+- the Word of God
+- prayer
+
+That is not passive language.
+
+It is battle language.
+
+# Sin Never Shows You the Full Price
+
+Another important insight behind this sermon is that temptation advertises pleasure without showing cost.
+
+Sin will often highlight:
+
+- what feels good now
+- what seems easier now
+- what satisfies now
+
+But it hides:
+
+- shame
+- bondage
+- spiritual dullness
+- relational damage
+- distance from God
+
+That matters because resisting temptation often requires remembering the full story instead of only the immediate offer.
+
+# Holiness Is a Daily Fight
+
+The sermon is also strong because it treats holiness as active.
+
+Holiness is not drifting into better behavior by accident.
+
+It often requires:
+
+- saying no quickly
+- cutting off access points
+- telling the truth
+- confessing sin
+- refusing to play with compromise
+- staying near Scripture
+
+That matters because people sometimes want freedom without war.
+
+But sanctification usually involves repeated resistance.
+
+# The Devil Loves Half-Truths
+
+If a sermon deals with the traps of the devil, this is important.
+
+The enemy often works through distortion.
+
+He does not always start with blatant rebellion.
+
+He often whispers:
+
+- it is not that serious
+- you deserve this
+- just this once
+- nobody will know
+- you can repent later
+
+That is why Scripture and discernment matter so much.
+
+Temptation becomes stronger when lies stay unchallenged.
+
+# Jesus Models Resistance
+
+The clearest New Testament picture of resisting temptation is **Matthew 4**.
+
+Jesus is tempted in the wilderness, and each time He answers with Scripture.
+
+That matters because resisting temptation is not only about trying harder emotionally.
+
+It involves:
+
+- knowing truth
+- speaking truth
+- trusting God more than the offer in front of you
+
+Jesus shows that temptation is fought through submission to the Father's Word.
+
+# Practical Questions This Sermon Should Raise
+
+After hearing a message like this, some honest questions matter:
+
+- What kind of sin keeps making promises to me?
+- What desire underneath it keeps getting fed?
+- What lie do I keep believing in the moment of temptation?
+- What escape route has God already been giving me that I keep ignoring?
+
+Those questions matter because temptation often loses some of its strength when it is exposed clearly.
+
+# Scripture Connections to Read After the Sermon
+
+If someone wants to keep studying temptation after this, these are strong places to go:
+
+- **James 1:13-15**
+- **Romans 7**
+- **1 Corinthians 10:13**
+- **Ephesians 6:10-18**
+- **Matthew 4:1-11**
+- **Galatians 5:16-17**
+
+These passages help show the nature of desire, the reality of the battle, and the believer's hope in the fight.
+
+# Final Takeaway
+
+This sermon matters because it refuses to soften the reality of sin.
+
+Temptation is real because it offers something the flesh wants.
+
+But the Holy Spirit, the Word of God, and the faithfulness of God are stronger than what sin advertises.
+
+Believers are not called to flirt with temptation.
+
+They are called to:
+
+- expose it
+- fight it
+- resist it
+- and keep choosing Christ over whatever sin is promising
+
+That is spiritual warfare in daily life.
+
+And that is where real growth begins.`,
+    },
+  ],
+};
+
+export const bryceCrawfordTemptationSermonTitle: BibleBuddyTvTitle = {
+  id: "bryce-crawford-how-to-overcome-temptation",
+  slug: "bryce-crawford-how-to-overcome-temptation",
+  title: "Bryce Crawford: How To Overcome Temptation",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/BryceCrawfordPodcast.png",
+  heroImage: "/BryceCrawfordPodcast.png",
+  accentFrom: "#0f766e",
+  accentTo: "#0f172a",
+  year: "2020s",
+  rating: "All Ages",
+  runtime: "46m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "A Bryce Crawford sermon on practical ways to fight temptation and walk in obedience when sin keeps trying to pull you back in.",
+  overview:
+    "In this message, Bryce Crawford focuses on the daily battle against temptation and the practical choices believers have to make if they want to walk in holiness. The sermon leans into the reality that temptation is persistent, personal, and often tied to patterns that keep repeating unless they are exposed and fought with truth. It centers on resisting sin, renewing the mind, depending on God in weakness, and taking real action instead of pretending the battle is not there.",
+  vibe:
+    "Direct discipleship, practical repentance, serious talk about temptation, and clear encouragement to fight sin with discipline and dependence on God.",
+  continueWatchingLabel: "Sermon: How To Overcome Temptation",
+  inMyList: true,
+  sermonTopics: ["temptation", "sin", "repenting", "faith"],
+  searchTags: [
+    "sermon",
+    "bryce crawford",
+    "how to overcome temptation",
+    "temptation",
+    "sin",
+    "repentance",
+    "holiness",
+    "discipline",
+    "spiritual warfare",
+    "renew your mind",
+    "obedience",
+    "james 1",
+    "1 corinthians 10 13",
+    "galatians 5",
+    "romans 12",
+    "fight sin",
+    "resist temptation",
+    "christian living",
+    "self control",
+    "faithfulness",
+  ],
+  episodes: [
+    {
+      id: "bryce-crawford-how-to-overcome-temptation-main",
+      episodeNumber: 1,
+      title: "How To Overcome Temptation",
+      contentLabel: "Sermon",
+      duration: "46m",
+      summary:
+        "Bryce Crawford gives practical biblical teaching on how believers can resist temptation, break sinful patterns, and walk in obedience.",
+      thumbnail: "/BryceCrawfordPodcast.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=teIMEKfVkqg&t=825s",
+      available: true,
+      discussionSlug: "bible-buddy-tv-bryce-crawford-overcome-temptation",
+      reflectionQuestion: "What stood out to you most in this sermon?",
+      louisIntro:
+        "What makes this sermon useful is that it treats temptation like a real fight that needs real strategy. Bryce Crawford keeps bringing the conversation back to practical obedience. He is not acting like people beat temptation by wishing harder. He is pushing toward truth, discipline, renewed thinking, and honest dependence on God. That makes this a good sermon for people who are tired of repeating the same patterns and want to know how to actually fight back.",
+      studyNotesDocument: `# Overcoming Temptation Starts With Taking the Battle Seriously
+
+One of the biggest reasons people keep losing to temptation is because they try to fight a serious battle with casual habits.
+
+That matters because temptation is not weak.
+
+It is often:
+
+- repeated
+- strategic
+- personal
+- connected to old habits
+- tied to real desires and vulnerabilities
+
+So a sermon on overcoming temptation needs to do more than say "just stop."
+
+It has to help believers understand how the battle works.
+
+# James 1 Shows Where Temptation Begins
+
+One of the clearest passages for this is **James 1:14-15**.
+
+James says each person is tempted when he is lured and enticed by his own desire.
+Then desire conceives and gives birth to sin, and sin brings forth death.
+
+That matters because temptation often starts before the outward act.
+
+It starts in:
+
+- desire
+- imagination
+- rationalization
+- internal agreement with what is being offered
+
+That means overcoming temptation requires more than cleaning up behavior on the outside.
+
+It requires dealing with what is happening underneath.
+
+# 1 Corinthians 10:13 Gives Real Hope
+
+Another core passage is **1 Corinthians 10:13**.
+
+Paul says no temptation has overtaken believers except what is common to man, and God is faithful.
+He will provide a way of escape.
+
+That matters because temptation usually lies in the moment.
+
+It says:
+
+- you cannot resist this
+- this is too strong
+- there is no real way out
+
+But Scripture says God is faithful in the middle of the pressure.
+
+The way of escape may require humility, honesty, and quick action.
+But it is there.
+
+# Temptation Grows in the Dark
+
+One of the practical truths behind a message like this is that secret patterns get stronger when they stay hidden.
+
+That matters because sin thrives in concealment.
+
+People often keep repeating the same cycle:
+
+- temptation shows up
+- they entertain it
+- they give in
+- they feel shame
+- they hide
+- then the pattern repeats
+
+Breaking that cycle usually requires bringing the fight into the light before the pattern gets stronger.
+
+# Romans 12 and the Renewed Mind
+
+If temptation is going to be fought well, the mind has to be addressed.
+
+That is why **Romans 12:2** matters:
+
+> "Do not be conformed to this world, but be transformed by the renewal of your mind..."
+
+That verse matters because a believer cannot keep feeding worldly thinking and expect strong resistance in temptation.
+
+Overcoming temptation is tied to:
+
+- what you think about
+- what you normalize
+- what voices shape you
+- what truth is active in your mind
+
+That means victory is not only about emergency resistance in the moment.
+
+It is also about what you have been building into your mind before the moment comes.
+
+# Galatians 5 Shows the Deeper Conflict
+
+**Galatians 5:16-17** is another key text.
+
+Paul says to walk by the Spirit, and you will not gratify the desires of the flesh.
+
+That matters because temptation is connected to a deeper war between flesh and Spirit.
+
+The Christian is not just trying to behave better.
+The Christian is learning to live from a different power source.
+
+That is why sermons about temptation should never end with self-effort alone.
+
+They must come back to dependence on the Spirit of God.
+
+# Self-Control Is Part of Spiritual Maturity
+
+The fruit of the Spirit in **Galatians 5:22-23** ends with self-control.
+
+That matters because self-control is not only personality strength.
+
+It is evidence of God's work in a believer.
+
+When somebody wants to overcome temptation, one of the questions is:
+
+> What kind of person am I becoming under the Spirit's leadership?
+
+Because temptation is not only fought by saying no once.
+
+It is fought by becoming someone who increasingly desires what pleases God more than what feeds the flesh.
+
+# Practical Resistance Matters
+
+One reason a sermon like this helps is that it moves the listener toward action.
+
+Overcoming temptation often requires practical changes like:
+
+- cutting off access to triggers
+- changing patterns that keep leading to compromise
+- telling the truth to trusted people
+- staying close to Scripture
+- refusing to linger around what weakens resolve
+
+That matters because people sometimes pray for freedom while protecting the environment that keeps feeding temptation.
+
+Prayer matters deeply.
+But wisdom matters too.
+
+# Ephesians 6 Reminds You This Is War
+
+**Ephesians 6:10-18** matters because temptation is not only a discipline issue.
+
+It is also part of spiritual warfare.
+
+Believers need:
+
+- truth
+- righteousness
+- faith
+- the Word of God
+- prayer
+
+That means temptation should not be approached casually.
+
+The armor of God is not symbolic decoration.
+It is battle language for a real conflict.
+
+# Shame Can Keep People Stuck
+
+Another big issue in temptation is shame.
+
+After sin, many believers do not run to God.
+They hide from Him.
+
+That matters because shame can become another trap.
+
+It whispers:
+
+- you always do this
+- you are fake
+- there is no point trying again
+
+But conviction leads back to God.
+Shame often tries to keep people away from Him.
+
+That is why repentance matters so much.
+
+Repentance is not fake religious guilt.
+It is returning to God honestly.
+
+# Jesus Shows What Resistance Looks Like
+
+In **Matthew 4**, Jesus answers temptation with Scripture.
+
+That matters because resisting temptation requires truth to be active, not only admired.
+
+Jesus does not debate with temptation emotionally.
+He answers with the Word of God.
+
+That means a believer who wants to overcome temptation needs Scripture close at hand, not far away in theory.
+
+# Good Questions to Ask
+
+After a sermon like this, these questions matter:
+
+- What temptation keeps showing up in my life?
+- What desire underneath it keeps getting fed?
+- What lie do I tend to believe in that moment?
+- What pattern do I need to cut off if I am serious about change?
+- What would the way of escape look like for me before the temptation even arrives?
+
+Those questions matter because vague repentance rarely breaks concrete patterns.
+
+# Scripture Connections to Read After the Sermon
+
+If someone wants to keep studying this, these are strong passages:
+
+- **James 1:14-15**
+- **1 Corinthians 10:13**
+- **Romans 12:1-2**
+- **Galatians 5:16-25**
+- **Ephesians 6:10-18**
+- **Matthew 4:1-11**
+
+These passages give a solid biblical framework for desire, escape, renewal, spiritual warfare, and practical resistance.
+
+# Final Takeaway
+
+This sermon matters because it treats temptation like a fight that can actually be fought.
+
+Not perfectly.
+Not easily.
+But seriously and biblically.
+
+Overcoming temptation means:
+
+- telling the truth
+- renewing the mind
+- depending on the Spirit
+- cutting off what feeds sin
+- choosing obedience in the moment
+
+That is how change begins.
+
+Not by pretending temptation is weak.
+
+But by believing God is stronger.`,
     },
   ],
 };
@@ -5847,6 +7647,314 @@ The call is:
 - live like your purpose actually matters
 
 That is what breaking free starts to look like.`,
+    },
+  ],
+};
+
+export const drDavidJeremiahTemptationSermonTitle: BibleBuddyTvTitle = {
+  id: "dr-david-jeremiah-how-to-overcome-temptation",
+  slug: "dr-david-jeremiah-how-to-overcome-temptation",
+  title: "Dr. David Jeremiah: How to Overcome Temptation",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/TemptationDrDavidJeremiah.png",
+  heroImage: "/TemptationDrDavidJeremiah.png",
+  accentFrom: "#1d4ed8",
+  accentTo: "#0f172a",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "14m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "A sermon on resisting temptation, trusting God's escape plan, and walking in spiritual victory through Christ.",
+  overview:
+    "In this message, Dr. David Jeremiah gives a clear biblical strategy for fighting temptation without panic or defeat. He reminds believers that temptation is universal, that even Jesus was tempted, and that God never leaves His people without help in the middle of the battle. The sermon leans hard on 1 Corinthians 10:13, practical preparation, and the responsibility believers have to actually choose the way of escape God provides.",
+  vibe:
+    "Clear biblical teaching, practical strategy, steady encouragement, and serious discipleship for people who want to stop losing the same battles.",
+  continueWatchingLabel: "Sermon: How to Overcome Temptation",
+  inMyList: true,
+  sermonTopics: ["temptation", "sin", "repenting", "faith"],
+  searchTags: [
+    "sermon",
+    "dr david jeremiah",
+    "david jeremiah",
+    "how to overcome temptation",
+    "temptation",
+    "sin",
+    "resist temptation",
+    "victory over temptation",
+    "1 corinthians 10 13",
+    "way of escape",
+    "jesus tempted",
+    "spiritual warfare",
+    "purity",
+    "obedience",
+    "self control",
+    "practical steps",
+  ],
+  episodes: [
+    {
+      id: "dr-david-jeremiah-how-to-overcome-temptation-main",
+      episodeNumber: 1,
+      title: "How to Overcome Temptation",
+      contentLabel: "Sermon",
+      duration: "14m",
+      summary:
+        "Dr. David Jeremiah teaches that temptation is common, not the same thing as sin, and always comes with a God-provided way of escape that believers must choose.",
+      thumbnail: "/TemptationDrDavidJeremiah.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=j2d-vgveT5c",
+      available: true,
+      discussionSlug: "bible-buddy-tv-dr-david-jeremiah-overcome-temptation",
+      reflectionQuestion: "What stood out to you most in this sermon?",
+      louisIntro:
+        "What makes this sermon helpful is how clear it is. Dr. David Jeremiah does not act like temptation is rare, weird, or proof somebody has already failed. He slows the whole conversation down and shows that the real issue is not whether temptation shows up, but what a believer does when it does. He keeps bringing the message back to God's faithfulness, personal responsibility, and the practical need to prepare before the pressure hits.",
+      studyNotesDocument: `# Temptation Has to Be Understood Before It Can Be Fought
+
+One of the best things about a sermon like this is that it takes the confusion out of the fight.
+
+People often mix up three different things:
+
+- temptation
+- desire
+- sin
+
+That matters because if those are all treated like the same thing, people usually either panic or give up.
+
+Dr. David Jeremiah keeps the issue cleaner than that.
+
+Temptation is real.
+Temptation is common.
+Temptation is serious.
+
+But temptation itself is not yet the same thing as surrender.
+
+# Even Jesus Was Tempted
+
+One of the strongest starting points is the reminder that even Jesus faced temptation.
+
+That matters because temptation is not proof that someone is fake, weak, or automatically dirty.
+
+**Matthew 4:1-11** shows Jesus being tempted in the wilderness.
+
+He was tempted:
+
+- physically
+- spiritually
+- emotionally
+- in identity
+- in timing
+- in power
+
+That means temptation often presses on real areas of hunger, weariness, desire, and opportunity.
+
+Jesus did not sin.
+
+But He did face the pressure.
+
+That matters because believers need to know the appearance of temptation is not the same thing as moral collapse.
+
+# 1 Corinthians 10:13 Is the Main Battle Verse
+
+This sermon really centers on **1 Corinthians 10:13**:
+
+> "No temptation has overtaken you that is not common to man. God is faithful..."
+
+That verse matters because it destroys the lie that your struggle is uniquely impossible.
+
+Temptation loves isolation.
+
+It whispers:
+
+- nobody gets this
+- nobody struggles like this
+- this is stronger than you
+- there is no way out
+
+Paul says that is not true.
+
+The temptation may feel personal.
+But it is not uncommon.
+
+And more importantly, **God is faithful** in it.
+
+That line matters because the verse is not mainly celebrating human willpower.
+
+It is pointing to the faithfulness of God in the middle of pressure.
+
+# God Always Provides a Way of Escape
+
+The next major truth in 1 Corinthians 10:13 is that God provides **the way of escape**.
+
+That does not always mean the temptation disappears instantly.
+
+It means God provides a real path of obedience in the moment.
+
+That might look like:
+
+- leaving the room
+- shutting the app
+- texting somebody
+- changing the conversation
+- refusing the second thought
+- walking away before compromise grows
+
+That matters because a lot of people pray for freedom while ignoring the escape route right in front of them.
+
+The way of escape is often very practical.
+
+And very immediate.
+
+# Temptation Is Not Sin, but Giving In Is
+
+That distinction is one of the clearest parts of this sermon.
+
+Temptation is the pressure.
+Sin is the surrender.
+
+That matters because believers often feel condemned too early.
+
+But it also matters because some people go too far the other way and start treating temptation casually.
+
+Scripture gives a better balance.
+
+**James 1:14-15** shows the progression:
+
+- desire is enticed
+- sin is conceived
+- death grows from unchecked rebellion
+
+James is important because it explains that temptation becomes more dangerous when it is entertained.
+
+That means the goal is not to stare at temptation and prove spiritual strength.
+
+The goal is to respond quickly and wisely.
+
+# The Strongest Believers Often Face Fiercer Pressure
+
+One of the interesting points in this message is the reminder that spiritual maturity does not remove temptation.
+
+In many cases, stronger believers face sharper temptations because the enemy wants to weaken useful people.
+
+That matters because some believers think:
+
+- if I were really growing, this would stop
+- if I still feel this battle, I must be failing
+
+But Scripture shows something more realistic.
+
+Jesus was full of the Spirit and still faced the wilderness.
+
+That means temptation is not always a sign of spiritual failure.
+
+Sometimes it is part of spiritual resistance.
+
+# God Sets the Limits
+
+Another part of **1 Corinthians 10:13** says God will not allow believers to be tempted beyond what they are able.
+
+That truth matters because temptation often feels absolute in the moment.
+
+It feels like:
+
+- I have to give in
+- I cannot stop this
+- this is too strong
+
+But the verse says God sets the boundary line.
+
+That does not make the fight easy.
+
+It does mean the fight is not hopeless.
+
+God is still Lord over the battlefield.
+
+# You Have to Choose the Way of Escape
+
+This is where the sermon gets practical in the best way.
+
+God provides the escape.
+
+But believers still have to choose it.
+
+That means temptation is never only a theology conversation.
+
+It becomes a decision.
+
+That is why sermons like this matter.
+
+They help people prepare before the pressure moment instead of trying to invent a strategy in the middle of it.
+
+Real victory often starts before the temptation arrives.
+
+# Practical Ways to Prepare Before the Battle
+
+One of the biggest reasons people keep losing to the same temptations is because they prepare for them too late.
+
+A biblical strategy for victory usually includes:
+
+- naming the real weakness honestly
+- knowing the situations that trigger compromise
+- keeping Scripture close
+- cutting off access points
+- refusing private excuses
+- staying accountable
+
+That matters because temptation grows in vagueness.
+
+But clarity weakens it.
+
+Some useful passages to keep close for this fight are:
+
+- **Matthew 4:1-11**
+- **James 1:14-15**
+- **1 Corinthians 10:13**
+- **Romans 6:11-14**
+- **Galatians 5:16-17**
+- **Ephesians 6:10-18**
+
+# Spiritual Victory Is Not Passive
+
+This sermon does a good job showing that victory is not automatic just because a believer knows the right verses.
+
+Truth has to be used.
+
+The way of escape has to be chosen.
+
+The battle has to be treated seriously.
+
+That means resisting temptation includes:
+
+- watchfulness
+- prayer
+- obedience
+- quick decisions
+- real boundaries
+
+Not fear.
+Not self-hatred.
+Not pretending the struggle is harmless.
+
+# Final Takeaway
+
+This sermon matters because it tells the truth without making people feel trapped.
+
+Temptation is real.
+But so is God's faithfulness.
+
+The escape is real.
+The responsibility is real.
+And victory in Christ is real too.
+
+The takeaway is simple:
+
+- temptation is common
+- temptation is not the same thing as sin
+- God provides a way out
+- believers have to choose it
+- preparation matters before the battle begins
+
+That is how temptation gets fought with clarity instead of panic.`,
     },
   ],
 };
@@ -7374,7 +9482,13 @@ export const bibleBuddyTvTitles: BibleBuddyTvTitle[] = [
   johnTheBaptistAnimationTitle,
   jobAnimationTitle,
   billyHolySpiritSermonTitle,
+  drCharlesStanleyHolySpiritSermonTitle,
+  priscillaShirerHolySpiritSermonTitle,
+  paulWasherHolySpiritSermonTitle,
+  jackieHillPerryTemptationSermonTitle,
+  bryceCrawfordTemptationSermonTitle,
   philipAnthonyMitchellTemptationSermonTitle,
+  drDavidJeremiahTemptationSermonTitle,
   stevenFurtickStressSermonTitle,
   philRobertsonPeaceSermonTitle,
   sarahJakesRobertsHopeSermonTitle,

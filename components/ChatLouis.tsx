@@ -1,4 +1,4 @@
-// components/ChatLouis.tsx
+﻿// components/ChatLouis.tsx
 "use client";
 
 import { useState, useEffect, useRef, useMemo } from "react";
@@ -6,10 +6,11 @@ import { usePathname, useRouter } from "next/navigation";
 import { LouisAvatar } from "./LouisAvatar";
 import { supabase } from "../lib/supabaseClient";
 import { FeatureTourModal } from "./FeatureTourModal";
-import { DEFAULT_FEATURE_TOURS, normalizeFeatureTours } from "../lib/featureTours";
+import { buildPersistedFeatureTours, DEFAULT_FEATURE_TOURS, normalizeFeatureTours } from "../lib/featureTours";
 import { useFeatureRenderPriority } from "./FeatureRenderPriorityContext";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
 import { buildLouisGuideChatMessage, getLouisPageGuide } from "../lib/louisGuidance";
+import { getVerseIntro, getVerseOfTheDay } from "../lib/verseOfTheDay";
 
 type MessageRole = "user" | "assistant";
 
@@ -19,10 +20,17 @@ type Message = {
 };
 
 type QuickReplyAction =
-  | "daily_ok"
-  | "daily_prayer"
+  | "daily_good"
+  | "daily_okay"
+  | "daily_bad"
+  | "daily_yes"
+  | "daily_no"
+  | "daily_verse"
   | "daily_recommendation"
+  | "daily_continue"
   | "daily_talk"
+  | "daily_intro_help"
+  | "daily_intro_later"
   | "guide_show"
   | "guide_later"
   | "guide_question"
@@ -34,6 +42,13 @@ type QuickReply = {
   id: string;
   label: string;
   action: QuickReplyAction;
+};
+
+type LouisLastActionSummary = {
+  summary: string;
+  followUp: string;
+  continueLabel: string | null;
+  continueHref: string | null;
 };
 
 // Type for SpeechRecognition (Web Speech API)
@@ -104,6 +119,11 @@ function getGuidePromptKey(userId: string, guideId: string) {
   return `bb:louis:guide-prompt:${userId}:${guideId}`;
 }
 
+function hasSeenGuidePrompt(userId: string, guideId: string) {
+  if (typeof window === "undefined") return false;
+  return window.localStorage.getItem(getGuidePromptKey(userId, guideId)) === "1";
+}
+
 function hasSeenRecommendation(userId: string) {
   if (typeof window === "undefined") return false;
   return window.localStorage.getItem(getRecommendationSeenKey(userId)) === "1";
@@ -135,17 +155,125 @@ function renderLouisGuideContent(_guide?: unknown) {
   return null;
 }
 
+function getEncodedBibleHref(book: string, chapter: number) {
+  return `/Bible/${encodeURIComponent(book)}/${chapter}`;
+}
+
+function summarizeLastMasterAction(action: {
+  action_type?: string | null;
+  action_label?: string | null;
+} | null): LouisLastActionSummary | null {
+  if (!action?.action_type) return null;
+
+  const label = action.action_label?.trim();
+
+  if (action.action_type === "chapter_completed" || action.action_type === "reading_plan_chapter_completed") {
+    const match = label?.match(/^(.+?)\s+(\d+)$/);
+    if (match) {
+      const book = match[1];
+      const chapter = Number.parseInt(match[2], 10);
+      if (!Number.isNaN(chapter)) {
+        const nextChapter = chapter + 1;
+        return {
+          summary: `Last time you were in ${book} ${chapter}.`,
+          followUp: `Do you want to continue with ${book} ${nextChapter}?`,
+          continueLabel: `Continue ${book} ${nextChapter}`,
+          continueHref: getEncodedBibleHref(book, nextChapter),
+        };
+      }
+    }
+  }
+
+  if (action.action_type === "devotional_day_completed" && label) {
+    return {
+      summary: `Last time you were in ${label}.`,
+      followUp: "Do you want to keep going with that devotional?",
+      continueLabel: "Open devotionals",
+      continueHref: "/devotionals",
+    };
+  }
+
+  if (
+    action.action_type === "bible_buddy_tv_video_started" ||
+    action.action_type === "bible_buddy_tv_title_opened"
+  ) {
+    return {
+      summary: label ? `Last time you were watching ${label}.` : "Last time you were in Bible Buddy TV.",
+      followUp: "Do you want to pick that back up?",
+      continueLabel: "Open Bible Buddy TV",
+      continueHref: "/biblebuddy-tv",
+    };
+  }
+
+  if (action.action_type === "trivia_question_answered") {
+    return {
+      summary: label ? `Last time you were working through ${label}.` : "Last time you were in Bible Trivia.",
+      followUp: "Do you want to jump back into Bible Trivia?",
+      continueLabel: "Open Bible Trivia",
+      continueHref: "/bible-trivia",
+    };
+  }
+
+  if (action.action_type === "scrambled_word_answered" || action.action_type === "scrambled_chapter_completed") {
+    return {
+      summary: label ? `Last time you were playing ${label}.` : "Last time you were in Scrambled.",
+      followUp: "Do you want to go back there?",
+      continueLabel: "Open Bible Study Games",
+      continueHref: "/bible-study-games",
+    };
+  }
+
+  if (action.action_type === "dashboard_card_opened" && label) {
+    const href =
+      label === "The Bible"
+        ? "/reading"
+        : label === "Bible Study Group"
+          ? "/study-groups"
+          : label === "Bible Study Tools"
+            ? "/guided-studies"
+            : label === "Bible Buddy TV"
+              ? "/biblebuddy-tv"
+              : label === "Bible Study Games"
+                ? "/bible-study-games"
+                : null;
+
+    return {
+      summary: `Last time you opened ${label}.`,
+      followUp: "Do you want to go back there today?",
+      continueLabel: href ? `Open ${label}` : null,
+      continueHref: href,
+    };
+  }
+
+  if (label) {
+    return {
+      summary: `Last time you were in ${label}.`,
+      followUp: "Do you want to pick that back up?",
+      continueLabel: null,
+      continueHref: null,
+    };
+  }
+
+  return null;
+}
+
 export function ChatLouis() {
   const { featureToursEnabled } = useFeatureRenderPriority();
   const pathname = usePathname();
   const router = useRouter();
   const currentPageGuide = useMemo(() => getLouisPageGuide(pathname), [pathname]);
+  const todayVerse = useMemo(() => getVerseOfTheDay(), []);
+  const todayVerseIntro = useMemo(() => getVerseIntro(), []);
   const [isOpen, setIsOpen] = useState(false);
   const [louisUserId, setLouisUserId] = useState<string | null>(null);
   const [louisFeatureTours, setLouisFeatureTours] = useState({ ...DEFAULT_FEATURE_TOURS });
   const [louisRecommendation, setLouisRecommendation] = useState<DailyRecommendation | null>(null);
   const [hasUnseenRecommendation, setHasUnseenRecommendation] = useState(false);
   const [hasUnseenDailyGreeting, setHasUnseenDailyGreeting] = useState(false);
+  const [lastMasterActionSummary, setLastMasterActionSummary] = useState<LouisLastActionSummary | null>(null);
+  const [currentStreak, setCurrentStreak] = useState<number>(0);
+  const [userProfileImageUrl, setUserProfileImageUrl] = useState<string | null>(null);
+  const [hasLouisHistory, setHasLouisHistory] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [quickReplies, setQuickReplies] = useState<QuickReply[]>([]);
   const [input, setInput] = useState("");
@@ -165,12 +293,21 @@ export function ChatLouis() {
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
+  const messagesContainerRef = useRef<HTMLDivElement | null>(null);
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const showLouisGuideModal = false;
   const louisGuideView: "intro" | "tour" | "recommendation" = "intro";
   const showChatTourModal = false;
   const isSavingChatTour = false;
   const setLouisGuideView = (_value: "intro" | "tour" | "recommendation") => {};
   const setShowChatTourModal = (_value: boolean) => {};
+  const userInitial = useMemo(() => {
+    const lastUserMessage = [...messages].reverse().find((message) => message.role === "user")?.content?.trim();
+    if (lastUserMessage) return lastUserMessage.charAt(0).toUpperCase();
+    const trimmed = input.trim();
+    if (trimmed) return trimmed.charAt(0).toUpperCase();
+    return "Y";
+  }, [input, messages]);
 
   // Format voice text with paragraph breaks
   function formatVoiceText(text: string, prevText: string): string {
@@ -427,6 +564,9 @@ export function ChatLouis() {
         setLouisUserId(null);
         setLouisFeatureTours({ ...DEFAULT_FEATURE_TOURS });
         setLouisRecommendation(null);
+        setLastMasterActionSummary(null);
+        setCurrentStreak(0);
+        setUserProfileImageUrl(null);
         setHasUnseenRecommendation(false);
         return;
       }
@@ -436,15 +576,18 @@ export function ChatLouis() {
       if (typeof window !== "undefined") {
         try {
           const storedMessages = window.localStorage.getItem(getChatStorageKey(user.id));
-          setMessages(storedMessages ? (JSON.parse(storedMessages) as Message[]) : []);
+          const parsedMessages = storedMessages ? (JSON.parse(storedMessages) as Message[]) : [];
+          setMessages(parsedMessages);
+          setHasLouisHistory(parsedMessages.length > 0);
         } catch {
           setMessages([]);
+          setHasLouisHistory(false);
         }
       }
 
       const { data: profileStats, error: profileError } = await supabase
         .from("profile_stats")
-        .select("feature_tours, level_1_skipped_date")
+        .select("feature_tours, level_1_skipped_date, current_streak, profile_image_url")
         .eq("user_id", user.id)
         .maybeSingle();
 
@@ -453,16 +596,37 @@ export function ChatLouis() {
       if (profileError) {
         console.error("[LOUIS] Error loading profile context:", profileError);
         setLouisFeatureTours({ ...DEFAULT_FEATURE_TOURS });
+        setCurrentStreak(0);
+        setUserProfileImageUrl(null);
       } else {
         setLouisFeatureTours(normalizeFeatureTours(profileStats?.feature_tours));
+        setCurrentStreak(profileStats?.current_streak ?? 0);
+        setUserProfileImageUrl(profileStats?.profile_image_url ?? null);
       }
 
       const shouldLoadRecommendation = pathname === "/dashboard";
       if (!shouldLoadRecommendation) {
         setLouisRecommendation(null);
+        setLastMasterActionSummary(null);
         setHasUnseenRecommendation(false);
         setHasUnseenDailyGreeting(false);
         return;
+      }
+
+      const { data: actionRows } = await supabase
+        .from("master_actions")
+        .select("action_type, action_label, created_at")
+        .eq("user_id", user.id)
+        .not("action_type", "in", '("user_login","dashboard_viewed","bible_buddy_tv_viewed","bible_buddy_tv_title_opened")')
+        .order("created_at", { ascending: false })
+        .limit(8);
+
+      if (!cancelled) {
+        const lastMeaningfulAction =
+          actionRows?.find((row) => Boolean(row?.action_type && row?.action_label)) ??
+          actionRows?.[0] ??
+          null;
+        setLastMasterActionSummary(summarizeLastMasterAction(lastMeaningfulAction));
       }
 
       let suppressLevel1 = false;
@@ -490,7 +654,8 @@ export function ChatLouis() {
   const hasPendingPageGuide = Boolean(
     featureToursEnabled &&
       currentPageGuide &&
-      louisFeatureTours[currentPageGuide.featureKey] !== true,
+      louisFeatureTours[currentPageGuide.featureKey] !== true &&
+      (!louisUserId || !hasSeenGuidePrompt(louisUserId, currentPageGuide.id)),
   );
 
   const hasPendingLouisMoment =
@@ -530,7 +695,7 @@ export function ChatLouis() {
     const { error: updateError } = await supabase
       .from("profile_stats")
       .update({
-        feature_tours: mergedFeatureTours,
+        feature_tours: buildPersistedFeatureTours(mergedFeatureTours),
       })
       .eq("user_id", louisUserId);
 
@@ -540,7 +705,7 @@ export function ChatLouis() {
         .upsert(
           {
             user_id: louisUserId,
-            feature_tours: mergedFeatureTours,
+            feature_tours: buildPersistedFeatureTours(mergedFeatureTours),
           },
           { onConflict: "user_id" },
         );
@@ -565,7 +730,7 @@ export function ChatLouis() {
     const { error: updateError } = await supabase
       .from("profile_stats")
       .update({
-        feature_tours: mergedFeatureTours,
+        feature_tours: buildPersistedFeatureTours(mergedFeatureTours),
       })
       .eq("user_id", louisUserId);
 
@@ -575,7 +740,7 @@ export function ChatLouis() {
         .upsert(
           {
             user_id: louisUserId,
-            feature_tours: mergedFeatureTours,
+            feature_tours: buildPersistedFeatureTours(mergedFeatureTours),
           },
           { onConflict: "user_id" },
         );
@@ -612,13 +777,10 @@ export function ChatLouis() {
 
   function getDailyQuickReplies(): QuickReply[] {
     return [
-      { id: "daily-ok", label: "I'm doing okay", action: "daily_ok" },
-      { id: "daily-prayer", label: "I need prayer", action: "daily_prayer" },
-      { id: "daily-rec", label: "Give me a recommendation", action: "daily_recommendation" },
-      hasPendingPageGuide && currentPageGuide?.id === "dashboard"
-        ? { id: "daily-dashboard-guide", label: "Show me the dashboard", action: "guide_show" }
-        : { id: "daily-talk", label: "I just want to talk", action: "daily_talk" },
-    ].filter(Boolean) as QuickReply[];
+      { id: "daily-good", label: "Good", action: "daily_good" },
+      { id: "daily-okay", label: "Okay", action: "daily_okay" },
+      { id: "daily-bad", label: "Not great", action: "daily_bad" },
+    ];
   }
 
   function getGuideQuickReplies(): QuickReply[] {
@@ -630,7 +792,14 @@ export function ChatLouis() {
   }
 
   function buildDailyConversationMessage() {
-    let message = `${getTimeOfDayGreeting()}. How are you doing today?`;
+    const streakLine =
+      currentStreak > 0
+        ? `${getTimeOfDayGreeting()}. Welcome back. You're on a ${currentStreak}-day streak.\n\n`
+        : `${getTimeOfDayGreeting()}.\n\n`;
+
+    let message = hasLouisHistory
+      ? `${streakLine}How are you doing today?\n\nYou can just talk to me like a regular person.`
+      : `${streakLine}I'm Louis.\n\nYou can talk to me like a regular person in here.\n\nIf I ask you something, you can just type back or use the voice button.\n\nSo first, how are you doing today?`;
 
     if (louisUserId && typeof window !== "undefined") {
       const rawMemory = window.localStorage.getItem(getMemoryStorageKey(louisUserId));
@@ -640,7 +809,7 @@ export function ChatLouis() {
           if (parsed.lastUserMessage && parsed.lastUserAt) {
             const diffHours = (Date.now() - new Date(parsed.lastUserAt).getTime()) / 3600000;
             if (diffHours >= 12) {
-              message += `\n\nLast time you mentioned "${parsed.lastUserMessage.slice(0, 90)}${parsed.lastUserMessage.length > 90 ? "..." : ""}"\n\nHow did that go?`;
+              message += `\n\nLast time you mentioned "${parsed.lastUserMessage.slice(0, 90)}${parsed.lastUserMessage.length > 90 ? "..." : ""}".\n\nHow did that go?`;
             }
           }
         } catch {
@@ -649,10 +818,10 @@ export function ChatLouis() {
       }
     }
 
-    message += "\n\nDo you want to talk about anything, or would you want a recommendation on what to do today?";
-
     if (hasPendingPageGuide && currentPageGuide?.id === "dashboard") {
-      message += "\n\nIf you want, I can also show you how the dashboard works.";
+      message += hasLouisHistory
+        ? "\n\nAnd if you want, I can show you around the dashboard too."
+        : "\n\nSince you're on the dashboard, I can also show you how this page works when you're ready.";
     }
 
     return message;
@@ -661,6 +830,9 @@ export function ChatLouis() {
   async function beginDailyConversation() {
     if (hasUnseenDailyGreeting) {
       markDailyGreetingSeenLocal();
+    }
+    if (hasUnseenRecommendation) {
+      markRecommendationSeenLocal();
     }
 
     appendAssistantMessage(buildDailyConversationMessage());
@@ -679,17 +851,11 @@ export function ChatLouis() {
     if (hasUnseenDailyGreeting) {
       markDailyGreetingSeenLocal();
     }
+    if (hasUnseenRecommendation) {
+      markRecommendationSeenLocal();
+    }
     appendAssistantMessage(buildDailyConversationMessage());
-    seedQuickReplies(
-      [
-        { id: "daily-ok", label: "I’m doing okay", action: "daily_ok" },
-        { id: "daily-prayer", label: "I need prayer", action: "daily_prayer" },
-        { id: "daily-rec", label: "Give me a recommendation", action: "daily_recommendation" },
-        hasPendingPageGuide && currentPageGuide?.id === "dashboard"
-          ? { id: "daily-dashboard-guide", label: "Show me the dashboard", action: "guide_show" }
-          : { id: "daily-talk", label: "I just want to talk", action: "daily_talk" },
-      ].filter(Boolean) as QuickReply[],
-    );
+    seedQuickReplies(getDailyQuickReplies());
   }
 
   async function startPageGuideConversation() {
@@ -703,12 +869,12 @@ export function ChatLouis() {
     ]);
   }
 
-  async function shareRecommendationInChat() {
+  async function shareRecommendationInChat(preface?: string) {
     if (!louisRecommendation) return;
 
     markRecommendationSeenLocal();
     appendAssistantMessage(
-      `${louisRecommendation.greeting}\n\n${louisRecommendation.contextLine}\n\nHere’s what I think you should do next:\n\n${louisRecommendation.recommendationLine}`,
+      `${louisRecommendation.greeting}\n\n${louisRecommendation.contextLine}\n\nHereâ€™s what I think you should do next:\n\n${louisRecommendation.recommendationLine}`,
     );
     seedQuickReplies([
       {
@@ -721,34 +887,138 @@ export function ChatLouis() {
     ]);
   }
 
+  async function shareVerseOfTheDayInChat() {
+    const firstSection = todayVerse.explanationSections[0];
+    const secondSection = todayVerse.explanationSections[1];
+
+    appendAssistantMessage(
+      `${todayVerseIntro}\n\n${todayVerse.reference}\n\n${todayVerse.text}\n\n${todayVerse.subtitle}\n\n${firstSection?.body ?? ""}${secondSection?.body ? `\n\n${secondSection.body}` : ""}\n\nWant me to break it down more, or do you want a recommendation for what to do next today?`,
+    );
+
+    seedQuickReplies([
+      { id: "verse-rec", label: "Give me a recommendation", action: "daily_recommendation" },
+      { id: "verse-talk", label: "Let's talk about it", action: "daily_talk" },
+      { id: "verse-open-page", label: "Open verse page", action: "recommendation_open" },
+    ]);
+  }
+
   async function handleQuickReply(reply: QuickReply) {
     appendUserMessage(reply.label);
     setQuickReplies([]);
 
     switch (reply.action) {
-      case "daily_ok":
+      case "daily_yes":
         appendAssistantMessage(
-          "I’m glad to hear that.\n\nIf you want, I can give you a recommendation for today, or you can tell me what’s on your mind and we can talk through it.",
+          "Alright.\n\nWhat's on your mind?\n\nTell me straight, and I'll help you figure out what to do with it.",
         );
-        seedQuickReplies([
-          { id: "ok-rec", label: "Give me a recommendation", action: "daily_recommendation" },
-          { id: "ok-talk", label: "Let’s talk", action: "daily_talk" },
-        ]);
         break;
-      case "daily_prayer":
+      case "daily_good":
         appendAssistantMessage(
-          "Absolutely.\n\nFather, meet them right where they are today. Give them peace, clarity, strength, and a real sense that You are near.\n\nIf you want, tell me what’s been heavy and we can talk through it together.",
+          hasLouisHistory
+            ? lastMasterActionSummary
+              ? `Love that.\n\nLast time you were in ${lastMasterActionSummary.summary.replace(/^Last time you were in\s+/i, "").replace(/\.$/, "")}\n\nDo you want to pick that back up, hear today's verse, or let me recommend something solid for today?`
+              : "Love that.\n\nDo you want today's verse, do you want a recommendation, or do you want me to show you something on this page?"
+            : currentPageGuide
+              ? `That's good to hear.\n\nIt's great to have you here.\n\nSince you're on ${currentPageGuide.title.toLowerCase()}, do you want me to show you how this page works?`
+              : "That's good to hear.\n\nIt's great to have you here.\n\nDo you want today's verse, a recommendation, or help with the page you're on?",
         );
-        seedQuickReplies([
-          { id: "prayer-rec", label: "Give me a recommendation", action: "daily_recommendation" },
-          { id: "prayer-talk", label: "I want to talk", action: "daily_talk" },
-        ]);
+        seedQuickReplies(
+          [
+            currentPageGuide ? { id: "daily-intro-help", label: "Show me this page", action: "daily_intro_help" as const } : null,
+            { id: "daily-good-verse", label: "Today's verse", action: "daily_verse" as const },
+            { id: "daily-good-rec", label: "Recommend something", action: "daily_recommendation" as const },
+            lastMasterActionSummary?.continueHref && lastMasterActionSummary.continueLabel
+              ? { id: "daily-good-continue", label: lastMasterActionSummary.continueLabel, action: "daily_continue" as const }
+              : null,
+          ].filter(Boolean) as QuickReply[],
+        );
+        break;
+      case "daily_okay":
+        appendAssistantMessage(
+          hasLouisHistory
+            ? "Alright.\n\nLet's keep it simple then.\n\nDo you want today's verse, do you want me to recommend one good next step, or do you want help with the page you're on?"
+            : currentPageGuide
+              ? `That's alright.\n\nWe can keep it simple.\n\nSince you're on ${currentPageGuide.title.toLowerCase()}, do you want me to show you how this page works?`
+              : "That's alright.\n\nWe can keep it simple.\n\nDo you want today's verse, a recommendation, or help with the page you're on?",
+        );
+        seedQuickReplies(
+          [
+            currentPageGuide ? { id: "daily-okay-help", label: "Show me this page", action: "daily_intro_help" as const } : null,
+            { id: "daily-okay-verse", label: "Today's verse", action: "daily_verse" as const },
+            { id: "daily-okay-rec", label: "Recommend something", action: "daily_recommendation" as const },
+            { id: "daily-okay-talk", label: "I want to talk", action: "daily_talk" as const },
+          ].filter(Boolean) as QuickReply[],
+        );
+        break;
+      case "daily_bad":
+        appendAssistantMessage(
+          hasLouisHistory
+            ? "I'm sorry you're feeling like that.\n\nWhat's going on?\n\nTell me straight, and we'll try to move toward something in the Word that can help in this moment."
+            : currentPageGuide
+              ? `I'm sorry you're feeling like that.\n\nHopefully the Word can help meet you in this moment.\n\nI see you're on ${currentPageGuide.title.toLowerCase()}.\n\nIf you want, tell me what's wrong, or I can show you how this page works and help you start somewhere simple.`
+              : "I'm sorry you're feeling like that.\n\nHopefully the Word can help meet you in this moment.\n\nTell me what's going on, and I'll help you find somewhere solid to start.",
+        );
+        seedQuickReplies(
+          [
+            { id: "daily-bad-talk", label: "What's wrong", action: "daily_talk" as const },
+            currentPageGuide ? { id: "daily-bad-help", label: "Show me this page", action: "daily_intro_help" as const } : null,
+            { id: "daily-bad-verse", label: "Give me today's verse", action: "daily_verse" as const },
+          ].filter(Boolean) as QuickReply[],
+        );
+        break;
+      case "daily_no":
+        appendAssistantMessage(
+          lastMasterActionSummary
+            ? `Alright.\n\nThen what do you want to do today in Bible Buddy?\n\n${lastMasterActionSummary.summary}\n\n${lastMasterActionSummary.followUp}`
+            : louisRecommendation
+              ? "Alright.\n\nThen what do you want to do today in Bible Buddy?\n\nI can point you to the next thing that makes sense, or I can give you today's verse and let’s start there."
+              : "Alright.\n\nThen what do you want to do today in Bible Buddy?\n\nI can give you today's verse, help you get back into the Bible, or point you somewhere solid to start.",
+        );
+        seedQuickReplies(
+          [
+            lastMasterActionSummary?.continueHref && lastMasterActionSummary.continueLabel
+              ? { id: "daily-continue", label: lastMasterActionSummary.continueLabel, action: "daily_continue" as const }
+              : null,
+            { id: "daily-no-verse", label: "Tell me today's verse", action: "daily_verse" as const },
+            louisRecommendation
+              ? { id: "daily-no-rec", label: "What do you recommend?", action: "daily_recommendation" as const }
+              : null,
+            hasPendingPageGuide && currentPageGuide?.id === "dashboard"
+              ? { id: "daily-no-guide", label: "Show me the dashboard", action: "guide_show" as const }
+              : { id: "daily-no-talk", label: "I changed my mind", action: "daily_talk" as const },
+          ].filter(Boolean) as QuickReply[],
+        );
+        break;
+      case "daily_verse":
+        await shareVerseOfTheDayInChat();
         break;
       case "daily_recommendation":
-        await shareRecommendationInChat();
+        await shareRecommendationInChat("Here’s what I think would be good for you today.");
+        break;
+      case "daily_continue":
+        if (lastMasterActionSummary?.continueHref) {
+          router.push(lastMasterActionSummary.continueHref);
+        }
         break;
       case "daily_talk":
-        appendAssistantMessage("I’m here.\n\nTell me what’s going on and let’s talk about it.");
+        appendAssistantMessage("I'm here.\n\nTell me what's going on, and I'll help you sort through it.");
+        break;
+      case "daily_intro_help":
+        if (currentPageGuide) {
+          await markCurrentGuideSeen();
+          appendAssistantMessage(
+            `${currentPageGuide.chatStarter}\n\n${buildLouisGuideChatMessage(currentPageGuide)}`,
+          );
+          seedQuickReplies([
+            { id: "guide-follow-up", label: "I have a question", action: "guide_question" },
+            louisRecommendation
+              ? { id: "guide-then-rec", label: "What do you recommend?", action: "daily_recommendation" }
+              : { id: "guide-later-2", label: "That helps", action: "guide_later" },
+          ]);
+        }
+        break;
+      case "daily_intro_later":
+        appendAssistantMessage("No problem.\n\nWhenever you're ready, tap me and I'll help you out.");
         break;
       case "guide_show":
         if (currentPageGuide) {
@@ -757,7 +1027,7 @@ export function ChatLouis() {
           seedQuickReplies([
             { id: "guide-follow-up", label: "I have a question", action: "guide_question" },
             pathname === "/dashboard" && louisRecommendation
-              ? { id: "guide-then-rec", label: "Give me a recommendation", action: "daily_recommendation" }
+              ? { id: "guide-then-rec", label: "What do you recommend?", action: "daily_recommendation" }
               : { id: "guide-later-2", label: "That helps", action: "guide_later" },
           ]);
         }
@@ -779,15 +1049,17 @@ export function ChatLouis() {
         );
         break;
       case "recommendation_open":
-        if (louisRecommendation) {
+        if (reply.id === "verse-open-page") {
+          router.push("/verse-of-the-day");
+        } else if (louisRecommendation) {
           router.push(louisRecommendation.primaryButtonHref);
         }
         break;
       case "recommendation_question":
-        appendAssistantMessage("Ask me anything about that recommendation and I’ll break it down for you.");
+        appendAssistantMessage("Ask me anything about that recommendation and I'll break it down for you.");
         break;
       case "recommendation_later":
-        appendAssistantMessage("That’s fine.\n\nIf you want the recommendation later, just ask me and I’ll bring it back up.");
+        appendAssistantMessage("That's fine.\n\nIf you want the recommendation later, just ask me and I'll bring it back up.");
         break;
       default:
         break;
@@ -873,6 +1145,16 @@ export function ChatLouis() {
                 bullets: currentPageGuide.bullets,
               }
             : { pathname },
+          louisContext: {
+            isFirstTimeLouis: !hasLouisHistory,
+            currentStreak,
+            hasPendingPageGuide,
+            pageGuideTitle: currentPageGuide?.title ?? null,
+            lastActionSummary: lastMasterActionSummary?.summary ?? null,
+            lastActionFollowUp: lastMasterActionSummary?.followUp ?? null,
+            recommendationLine: louisRecommendation?.recommendationLine ?? null,
+            recommendationHref: louisRecommendation?.primaryButtonHref ?? null,
+          },
         }),
       });
 
@@ -950,6 +1232,19 @@ export function ChatLouis() {
     };
   }, [isDragging, dragOffset]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const frame = window.requestAnimationFrame(() => {
+      messagesEndRef.current?.scrollIntoView({ block: "end" });
+      if (messagesContainerRef.current) {
+        messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+      }
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [isOpen, messages, quickReplies]);
+
   return (
     <>
       {/* Floating avatar button */}
@@ -1025,12 +1320,13 @@ export function ChatLouis() {
               className="text-gray-500 hover:text-gray-700 text-base leading-none"
               onPointerDown={(e) => e.stopPropagation()}
             >
-              ✕
+              âœ•
             </button>
           </div>
 
           {/* Messages area */}
-          <div 
+          <div
+            ref={messagesContainerRef}
             className="flex-1 overflow-y-auto px-4 py-3 space-y-2.5 bg-white"
           >
             {messages.length === 0 && (
@@ -1046,21 +1342,46 @@ export function ChatLouis() {
                 key={i}
                 className={
                   m.role === "user"
-                    ? "flex justify-end"
-                    : "flex justify-start"
+                    ? "flex items-end justify-end gap-2.5"
+                    : "flex items-end justify-start gap-2.5"
                 }
               >
-                <div
-                  className={
-                    m.role === "user"
-                      ? "bg-blue-600 text-white px-3 py-2 rounded-2xl rounded-tr-sm max-w-[80%] shadow-sm"
-                      : "bg-gray-100 text-gray-800 px-3 py-2 rounded-2xl rounded-tl-sm max-w-[80%] shadow-sm"
-                  }
-                >
-                  <p className="text-xs whitespace-pre-line leading-relaxed break-words">
-                    {m.content}
-                  </p>
+                {m.role === "assistant" ? (
+                  <div className="shrink-0">
+                    <div className="overflow-hidden rounded-full border border-sky-100 bg-white p-0.5 shadow-sm">
+                      <LouisAvatar mood="bible" size={30} />
+                    </div>
+                  </div>
+                ) : null}
+                <div className={m.role === "user" ? "max-w-[78%] text-right" : "max-w-[78%]"}>
+                  <div className={m.role === "user" ? "mb-1 text-[10px] font-medium text-slate-500" : "mb-1 text-[10px] font-medium text-slate-500"}>
+                    {m.role === "user" ? "You" : "Louis"}
+                  </div>
+                  <div
+                    className={
+                      m.role === "user"
+                        ? "inline-block rounded-[22px] rounded-br-md border border-[#b8d9ef] bg-[#7BAFD4] px-3.5 py-2.5 text-left text-slate-950 shadow-sm"
+                        : "inline-block rounded-[22px] rounded-bl-md border border-gray-200 bg-white px-3.5 py-2.5 text-gray-800 shadow-sm"
+                    }
+                  >
+                    <p className="text-xs whitespace-pre-line leading-relaxed break-words">
+                      {m.content}
+                    </p>
+                  </div>
                 </div>
+                {m.role === "user" ? (
+                  userProfileImageUrl ? (
+                    <img
+                      src={userProfileImageUrl}
+                      alt="Your profile picture"
+                      className="h-8 w-8 shrink-0 rounded-full border border-[#b8d9ef] object-cover shadow-sm"
+                    />
+                  ) : (
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#b8d9ef] bg-[#e8f3fb] text-[11px] font-semibold text-[#214761] shadow-sm">
+                      {userInitial}
+                    </div>
+                  )
+                ) : null}
               </div>
             ))}
             {quickReplies.length > 0 && (
@@ -1079,6 +1400,7 @@ export function ChatLouis() {
                 ))}
               </div>
             )}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Input area */}
@@ -1177,7 +1499,7 @@ export function ChatLouis() {
               <div className="space-y-5">
                 <div className="rounded-2xl border border-sky-100 bg-sky-50/60 px-4 py-3">
                   <p className="text-sm font-semibold text-sky-900">
-                    {louisRecommendation?.greeting || "Here’s what I noticed today."}
+                    {louisRecommendation?.greeting || "Hereâ€™s what I noticed today."}
                   </p>
                   <p className="mt-2 text-sm leading-7 text-gray-600 md:text-[15px]">
                     {louisRecommendation?.contextLine}
@@ -1244,15 +1566,15 @@ export function ChatLouis() {
               </p>
 
               <section className="space-y-2">
-                <h2 className="text-lg md:text-xl font-semibold text-gray-900">💬 Ask Questions Anytime</h2>
+                <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ’¬ Ask Questions Anytime</h2>
                 <p className="text-sm md:text-[15px] text-gray-600 leading-7">
                   While reading Scripture, you can open Chat with Louis and ask:
                 </p>
                 <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-                  <li>• What does this verse mean?</li>
-                  <li>• Who is this person?</li>
-                  <li>• What is the historical context?</li>
-                  <li>• How does this connect to the rest of the Bible?</li>
+                  <li>â€¢ What does this verse mean?</li>
+                  <li>â€¢ Who is this person?</li>
+                  <li>â€¢ What is the historical context?</li>
+                  <li>â€¢ How does this connect to the rest of the Bible?</li>
                 </ul>
                 <p className="text-sm md:text-[15px] text-gray-600 leading-7">
                   You never have to leave your study flow.
@@ -1260,14 +1582,14 @@ export function ChatLouis() {
               </section>
 
               <section className="space-y-2">
-                <h2 className="text-lg md:text-xl font-semibold text-gray-900">📖 Scripture Focused Answers</h2>
+                <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ“– Scripture Focused Answers</h2>
                 <p className="text-sm md:text-[15px] text-gray-600 leading-7">
                   Louis has been carefully trained on biblical content and designed to:
                 </p>
                 <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
-                  <li>• Search Scripture</li>
-                  <li>• Filter out nonsense</li>
-                  <li>• Prioritize clear, Scripture grounded answers</li>
+                  <li>â€¢ Search Scripture</li>
+                  <li>â€¢ Filter out nonsense</li>
+                  <li>â€¢ Prioritize clear, Scripture grounded answers</li>
                 </ul>
                 <p className="text-sm md:text-[15px] text-gray-600 leading-7">
                   The goal is clarity, not confusion.
@@ -1275,7 +1597,7 @@ export function ChatLouis() {
               </section>
 
               <section className="space-y-2">
-                <h2 className="text-lg md:text-xl font-semibold text-gray-900">🧠 Study Without Breaking Flow</h2>
+                <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸ§  Study Without Breaking Flow</h2>
                 <p className="text-sm md:text-[15px] text-gray-600 leading-7">
                   Instead of switching apps or searching the internet, your study partner is built directly into BibleBuddy.
                 </p>
@@ -1293,3 +1615,4 @@ export function ChatLouis() {
     </>
   );
 }
+
