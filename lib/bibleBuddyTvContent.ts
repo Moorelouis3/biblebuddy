@@ -101,6 +101,7 @@ export const bibleBuddyTvSermonTopics: Array<{
   { id: "holy spirit", label: "Holy Spirit" },
   { id: "temptation", label: "Temptation" },
   { id: "lust", label: "Lust" },
+  { id: "stress", label: "Stress" },
   { id: "peace", label: "Peace" },
   { id: "hope", label: "Hope" },
   { id: "anger", label: "Anger" },
@@ -8252,6 +8253,602 @@ God may be doing more in the silence and strain than you can see yet.`,
   ],
 };
 
+export const joyceMeyerStressSermonTitle: BibleBuddyTvTitle = {
+  id: "joyce-meyer-stress",
+  slug: "joyce-meyer-stress",
+  title: "Joyce Meyer: Stress",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/JoyceMeyerstress.png",
+  heroImage: "/JoyceMeyerstress.png",
+  accentFrom: "#2563eb",
+  accentTo: "#111827",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "27m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "Joyce Meyer teaches how stress drains peace, clouds judgment, and keeps people from living with the steadiness God wants for them.",
+  overview:
+    "This Joyce Meyer message focuses on the way stress takes over the mind, emotions, and daily life when people carry too much pressure without giving it to God. The sermon pushes listeners to stop living wound tight, stop trying to control everything, and learn what it looks like to trust God with both the big burdens and the small daily irritations. It is a practical teaching on peace, priorities, and refusing to let pressure run your life.",
+  vibe:
+    "Practical teaching about stress, peace, emotional pressure, trust, and learning to live lighter in God's presence.",
+  continueWatchingLabel: "Sermon: Stress",
+  inMyList: true,
+  sermonTopics: ["stress", "peace", "hope", "faith"],
+  searchTags: [
+    "sermon",
+    "joyce meyer",
+    "stress",
+    "stress sermon",
+    "pressure",
+    "peace",
+    "faith",
+    "anxiety",
+    "worry",
+    "trust god",
+    "rest in god",
+    "christian stress",
+  ],
+  episodes: [
+    {
+      id: "joyce-meyer-stress-main",
+      episodeNumber: 1,
+      title: "Stress",
+      contentLabel: "Sermon",
+      duration: "27m",
+      summary:
+        "Joyce Meyer teaches that stress grows when people try to carry what should be handed to God, and that peace starts with trust, surrender, and healthier rhythms.",
+      thumbnail: "/JoyceMeyerstress.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=G9qpVRfm4BE",
+      available: true,
+      discussionSlug: "bible-buddy-tv-joyce-meyer-stress",
+      reflectionQuestion: "What is creating the most stress in your life right now?",
+      louisIntro:
+        "What helps in a sermon like this is that it does not treat stress like a small inconvenience. It treats it like something that can quietly start governing your thoughts, your reactions, and even your view of God. Joyce Meyer's angle is simple but needed: stress often reveals where trust is weak, where pressure is piling up, and where peace has been replaced with control. The message points people back to the truth that God never asked them to carry life without His help.",
+      studyNotesDocument: `# Stress Usually Starts Before the Breakdown
+
+Most people do not wake up one day already in burnout.
+
+Stress usually builds quietly.
+
+It builds through:
+
+- pressure people never name
+- responsibilities they never put down
+- thoughts they never challenge
+- fear they keep calling preparation
+
+That is why a sermon on stress matters.
+It is not only about calming down.
+It is about learning how to live without letting pressure become your ruler.
+
+# What Scripture Says About Carrying Pressure
+
+One of the clearest verses for a message like this is **1 Peter 5:7**:
+
+> "Casting all your anxieties on Him, because He cares for you."
+
+That verse matters because it is not a vague emotional idea.
+It is an instruction.
+
+Believers are told to cast their anxieties on God.
+
+That means:
+
+- stress is real
+- pressure is real
+- but carrying it alone is not the plan
+
+# Stress Often Reveals a Control Problem
+
+One reason stress takes over so easily is because people often feel responsible for outcomes they cannot actually control.
+
+That creates a life where:
+
+- everything feels urgent
+- everything feels personal
+- everything feels like it will collapse without them
+
+But peace starts returning when people admit the truth:
+
+- I am responsible for obedience
+- God is responsible for sovereignty
+
+That is a huge difference.
+
+# Peace Is Not the Same Thing as an Easy Life
+
+This kind of sermon matters because it reminds people that peace is not the same as having no schedule, no pressure, or no hard season.
+
+Biblical peace is steadiness in the middle of a real world.
+
+That is why verses like **Philippians 4:6-7** matter:
+
+> "Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God..."
+
+Paul does not say hard things disappear first.
+He says anxious people are invited into prayer first.
+
+# Practical Questions Stress Should Raise
+
+If stress keeps showing up, it is worth asking:
+
+- what am I trying to carry that belongs to God
+- where have I replaced trust with control
+- what rhythm in my life is not healthy
+- what am I replaying in my thoughts that I need to release
+
+Those questions matter because stress gets stronger when it stays unnamed.
+
+# Other Helpful Passages
+
+- **Matthew 11:28-30**
+- **Psalm 55:22**
+- **Isaiah 26:3**
+- **John 14:27**
+- **Psalm 46:10**
+
+# Final Takeaway
+
+Stress is not always a sign that you care deeply.
+Sometimes it is a sign that you have been carrying more than God asked you to carry.
+
+Peace comes back when trust comes back.
+
+That is the real heartbeat of a message like this.`,
+    },
+  ],
+};
+
+export const craigGroeschelBurnoutSermonTitle: BibleBuddyTvTitle = {
+  id: "craig-groeschel-beating-burnout",
+  slug: "craig-groeschel-beating-burnout",
+  title: "Craig Groeschel: Beating Burnout",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/BeatingBurnoutcraig.png",
+  heroImage: "/BeatingBurnoutcraig.png",
+  accentFrom: "#2563eb",
+  accentTo: "#111827",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "33m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "Craig Groeschel addresses burnout by showing how exhausted people drift into unhealthy rhythms and why rest, surrender, and wise limits matter.",
+  overview:
+    "This Craig Groeschel sermon focuses on burnout, the kind of exhaustion that goes beyond being busy and starts emptying a person's joy, clarity, and strength. The message presses into the danger of nonstop striving and the false belief that being overworked automatically means being faithful. Instead, it calls people back to God's way of living with wisdom, boundaries, and spiritual dependence instead of running themselves into the ground.",
+  vibe:
+    "Direct, practical preaching on burnout, limits, emotional exhaustion, rest, and learning to live from surrender instead of overdrive.",
+  continueWatchingLabel: "Sermon: Beating Burnout",
+  inMyList: true,
+  sermonTopics: ["stress", "hope", "peace", "faith"],
+  searchTags: [
+    "sermon",
+    "craig groeschel",
+    "burnout",
+    "beating burnout",
+    "stress",
+    "exhaustion",
+    "rest",
+    "overwork",
+    "balance",
+    "peace",
+    "christian burnout",
+  ],
+  episodes: [
+    {
+      id: "craig-groeschel-beating-burnout-main",
+      episodeNumber: 1,
+      title: "Beating Burnout",
+      contentLabel: "Sermon",
+      duration: "33m",
+      summary:
+        "Craig Groeschel confronts burnout by showing how unhealthy pace and pressure wear people down, and why God calls His people to wiser rhythms.",
+      thumbnail: "/BeatingBurnoutcraig.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=XAtTkMpACFc&t=345s",
+      available: true,
+      discussionSlug: "bible-buddy-tv-craig-groeschel-beating-burnout",
+      reflectionQuestion: "Are you tired because life is hard, or because your pace is unhealthy?",
+      louisIntro:
+        "Burnout sermons hit differently because they force people to ask whether their pace is actually sustainable. Craig Groeschel's strength in a message like this is that he does not glorify exhaustion. He treats burnout like a warning light. Something in the rhythm, expectations, or pressure load is off. That matters because a lot of believers call themselves faithful when they are really just spiritually and emotionally fried.",
+      studyNotesDocument: `# Burnout Is More Than Being Busy
+
+Burnout is not just having a full schedule.
+
+It is what happens when pressure keeps draining you faster than you are being restored.
+
+That means burnout often includes:
+
+- emotional exhaustion
+- spiritual numbness
+- irritability
+- loss of joy
+- constant mental fatigue
+
+That matters because many people are not just tired.
+They are depleted.
+
+# God Did Not Design People for Endless Output
+
+One of the clearest biblical themes around stress and burnout is that human beings are limited by design.
+
+That is not failure.
+That is creation.
+
+Even the rhythm of Sabbath in Scripture teaches that people were not built for nonstop production.
+
+Verses like **Mark 6:31** matter:
+
+> "Come away by yourselves to a desolate place and rest a while."
+
+Jesus said that to men who were actively serving.
+Rest was not rebellion.
+It was wisdom.
+
+# Burnout Can Make You Mistake Urgency for Importance
+
+When someone lives in constant pressure, everything starts to feel equally urgent.
+
+That creates a life where:
+
+- the loudest thing wins
+- prayer gets pushed aside
+- rest feels irresponsible
+- the soul keeps running behind the body
+
+This is why messages on burnout matter.
+They force people to ask not just what they are doing, but what they are becoming.
+
+# Rest Is Not Laziness
+
+For many believers, one of the biggest internal battles is guilt around rest.
+
+They assume:
+
+- slowing down means they are weak
+- boundaries mean they care less
+- rest means they are falling behind
+
+But biblically, wise rest is part of faithful living.
+
+Rest says:
+
+- I am not God
+- the world will keep turning without me
+- my calling does not require self-destruction
+
+# Burnout Usually Reveals Deeper Heart Issues Too
+
+Burnout is often connected to more than schedule.
+
+Sometimes it reveals:
+
+- approval addiction
+- fear of disappointing people
+- lack of trust in God
+- identity wrapped in performance
+
+That is why beating burnout is not only about time management.
+It is also about surrender.
+
+# Helpful Scriptures for This Fight
+
+- **Matthew 11:28-30**
+- **Psalm 23**
+- **Exodus 20:8-10**
+- **Mark 6:31**
+- **Isaiah 40:28-31**
+
+# Final Takeaway
+
+Burnout is not a badge of honor.
+It is a warning sign.
+
+God calls His people to faithfulness, not self-destruction.
+
+If your pace is crushing your joy, prayer, peace, and clarity, something needs to change.
+
+That is what makes a message like this useful.
+It reminds people that healthy rhythms are spiritual too.`,
+    },
+  ],
+};
+
+export const tdJakesStressSermonTitle: BibleBuddyTvTitle = {
+  id: "td-jakes-stress",
+  slug: "td-jakes-stress",
+  title: "T.D. Jakes: Stress",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/TDJakesstress.png",
+  heroImage: "/TDJakesstress.png",
+  accentFrom: "#2563eb",
+  accentTo: "#111827",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "24m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "T.D. Jakes speaks to people carrying pressure, emotional strain, and inward weight, calling them to bring that burden to God instead of breaking under it.",
+  overview:
+    "This T.D. Jakes message deals with stress in a way that feels pastoral and urgent. It speaks to the inner pressure people carry when responsibility, fear, pain, and expectation all pile up at once. The sermon pushes listeners to stop pretending they are fine when they are overloaded, and instead bring their real burden to God, who can hold what would crush them if they tried to hold it alone.",
+  vibe:
+    "Strong, emotional preaching about burden, inner strain, trust, surrender, and finding God's strength in stressful seasons.",
+  continueWatchingLabel: "Sermon: Stress",
+  inMyList: true,
+  sermonTopics: ["stress", "hope", "peace", "faith"],
+  searchTags: [
+    "sermon",
+    "td jakes",
+    "stress",
+    "pressure",
+    "burden",
+    "anxiety",
+    "hope",
+    "peace",
+    "strength",
+    "christian stress",
+  ],
+  episodes: [
+    {
+      id: "td-jakes-stress-main",
+      episodeNumber: 1,
+      title: "Stress",
+      contentLabel: "Sermon",
+      duration: "24m",
+      summary:
+        "T.D. Jakes addresses the crushing weight of stress and points listeners back to the God who can carry what they cannot.",
+      thumbnail: "/TDJakesstress.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=Tvj_f5WbsBM",
+      available: true,
+      discussionSlug: "bible-buddy-tv-td-jakes-stress",
+      reflectionQuestion: "What burden have you been carrying like it all depends on you?",
+      louisIntro:
+        "A sermon like this matters because some people are not just dealing with stress. They are dealing with pressure that is starting to shape their identity. T.D. Jakes is strong in this lane because he talks to the emotional and spiritual weight people carry when they feel stretched, responsible, and worn thin. The message lands best when people realize stress is not only about schedule. Sometimes it is about what the soul has been trying to hold in silence.",
+      studyNotesDocument: `# Stress Becomes Dangerous When People Normalize It
+
+One of the hardest things about stress is that people can get so used to it that they stop treating it like a warning sign.
+
+They call it:
+
+- just life
+- just adulthood
+- just responsibility
+
+But pressure that stays unchecked can start damaging:
+
+- peace
+- clarity
+- relationships
+- prayer life
+- emotional health
+
+That is why a sermon on stress can be so important.
+It interrupts the normalization.
+
+# Burden Language Runs All Through Scripture
+
+The Bible talks often about burden because God knows what it is like for people to carry more than they were made to hold alone.
+
+One key verse is **Psalm 55:22**:
+
+> "Cast your burden on the Lord, and He will sustain you."
+
+That verse matters because the instruction is not:
+
+- deny the burden
+- fake the burden away
+- manage the burden by yourself
+
+It is:
+
+- cast it on the Lord
+
+That is deeply practical.
+
+# Some Stress Is Emotional Before It Is Physical
+
+People often talk about stress only in physical terms.
+
+But some of the heaviest pressure starts inwardly.
+
+Things like:
+
+- fear
+- grief
+- unresolved pain
+- pressure to hold everyone together
+- silent disappointment
+
+That means someone can look composed while feeling crushed inside.
+
+This kind of sermon helps because it gives permission to stop pretending.
+
+# Peace Comes from Surrender, Not Pretending to Be Stronger
+
+One of the lies stress tells is that strength means carrying everything quietly.
+
+But biblical strength often looks more like surrender than self-protection.
+
+Verses like **Matthew 11:28-30** are powerful here:
+
+> "Come to me, all who labor and are heavy laden, and I will give you rest."
+
+Jesus does not invite only the disciplined.
+He invites the burdened.
+
+# God Can Hold What Is Crushing You
+
+That is one of the most important truths in a stress message.
+
+Some pressures feel too large because they are.
+
+That does not mean they are too large for God.
+
+It means they were never meant to be carried without Him.
+
+# Helpful Passages for Stress and Burden
+
+- **Psalm 55:22**
+- **Matthew 11:28-30**
+- **Philippians 4:6-7**
+- **Isaiah 41:10**
+- **1 Peter 5:7**
+
+# Final Takeaway
+
+Stress becomes spiritually dangerous when people stop bringing it to God.
+
+Peace begins returning when people stop performing strength and start practicing surrender.
+
+That is where this message lands.
+
+What is too heavy for you is not too heavy for God.`,
+    },
+  ],
+};
+
+export const jerryFlowersStressSermonTitle: BibleBuddyTvTitle = {
+  id: "jerry-flowers-stress",
+  slug: "jerry-flowers-stress",
+  title: "Jerry Flowers: Stress",
+  badge: "Bible Buddy Sermon",
+  category: "sermons",
+  poster: "/JerryFlowersstress.png",
+  heroImage: "/JerryFlowersstress.png",
+  accentFrom: "#2563eb",
+  accentTo: "#111827",
+  year: "2024",
+  rating: "All Ages",
+  runtime: "19m",
+  seasonsLabel: "Sermon Message",
+  contentType: "movie",
+  logline:
+    "Jerry Flowers speaks to people who are mentally and emotionally worn down, pointing them toward God's peace and healthier spiritual patterns.",
+  overview:
+    "This Jerry Flowers message is aimed at people who feel mentally overloaded, emotionally stretched, and spiritually tired. The sermon treats stress as something that can quietly reshape a person's inner life if it is left unchecked. Instead of only telling listeners to calm down, it points them toward surrender, healthier rhythms, and God's ability to give peace in the middle of pressure.",
+  vibe:
+    "Straightforward, relatable preaching about stress, mental overload, emotional pressure, surrender, and peace.",
+  continueWatchingLabel: "Sermon: Stress",
+  inMyList: true,
+  sermonTopics: ["stress", "hope", "peace", "faith"],
+  searchTags: [
+    "sermon",
+    "jerry flowers",
+    "stress",
+    "mental pressure",
+    "emotional pressure",
+    "peace",
+    "hope",
+    "faith",
+    "christian stress",
+  ],
+  episodes: [
+    {
+      id: "jerry-flowers-stress-main",
+      episodeNumber: 1,
+      title: "Stress",
+      contentLabel: "Sermon",
+      duration: "19m",
+      summary:
+        "Jerry Flowers addresses the emotional and spiritual effects of stress and urges listeners to find peace through surrender and dependence on God.",
+      thumbnail: "/JerryFlowersstress.png",
+      youtubeUrl: "https://www.youtube.com/watch?v=OZhvMxHESfs",
+      available: true,
+      discussionSlug: "bible-buddy-tv-jerry-flowers-stress",
+      reflectionQuestion: "What part of your life feels the most overloaded right now?",
+      louisIntro:
+        "What makes this kind of sermon useful is how close it feels to everyday life. Some people are not in dramatic crisis. They are just steadily worn down. Jerry Flowers speaks into that kind of stress. The message recognizes that emotional overload can become spiritual drift if it is not dealt with honestly, and that peace does not grow from pretending everything is fine.",
+      studyNotesDocument: `# Stress Can Build Quietly Until It Starts Running Your Life
+
+Stress is often subtle at first.
+
+It starts with:
+
+- too many things on your mind
+- not enough rest
+- emotional pressure you never process
+- responsibilities you keep stacking
+
+Over time, that pressure can shape how you think, react, and pray.
+
+That is why sermons on stress are not small-topic sermons.
+They are discipleship sermons.
+
+# Pressure Changes the Inner Life
+
+When people live under constant stress, it usually affects more than mood.
+
+It can affect:
+
+- patience
+- joy
+- focus
+- prayer
+- trust
+
+That matters because stress is not only external.
+It becomes internal.
+
+# God Offers More Than Relief
+
+The Bible does not only promise that God sees burden.
+It promises that He gives something in the middle of it.
+
+One of the clearest verses is **John 14:27**:
+
+> "Peace I leave with you; my peace I give to you. I do not give to you as the world gives..."
+
+That matters because the peace Jesus gives is different from temporary relief.
+
+It is deeper.
+It can stay steady even while circumstances are still unsettled.
+
+# Stress Needs Surrender, Not Just Strategy
+
+Practical tools matter.
+Healthy rhythms matter.
+Rest matters.
+
+But messages like this also remind people that stress has a spiritual side.
+
+If pressure is making someone:
+
+- more anxious
+- more reactive
+- more distant from God
+- more hopeless
+
+then the solution cannot only be scheduling better.
+
+It also involves surrender.
+
+# Helpful Scriptures for a Stress Season
+
+- **John 14:27**
+- **Philippians 4:6-7**
+- **Psalm 46:10**
+- **Isaiah 26:3**
+- **1 Peter 5:7**
+
+# Final Takeaway
+
+Stress does not have to be the voice that leads your day.
+
+God offers peace, steadiness, and help for people who are mentally and emotionally overloaded.
+
+That is the real strength of a sermon like this.
+
+It reminds listeners that pressure does not have to become identity.`,
+    },
+  ],
+};
+
 export const philRobertsonPeaceSermonTitle: BibleBuddyTvTitle = {
   id: "phil-robertson-finding-peace-of-mind-in-christ",
   slug: "phil-robertson-finding-peace-of-mind-in-christ",
@@ -9491,6 +10088,10 @@ export const bibleBuddyTvTitles: BibleBuddyTvTitle[] = [
   philipAnthonyMitchellTemptationSermonTitle,
   drDavidJeremiahTemptationSermonTitle,
   stevenFurtickStressSermonTitle,
+  joyceMeyerStressSermonTitle,
+  craigGroeschelBurnoutSermonTitle,
+  tdJakesStressSermonTitle,
+  jerryFlowersStressSermonTitle,
   philRobertsonPeaceSermonTitle,
   sarahJakesRobertsHopeSermonTitle,
   craigGroeschelPornBattlePlanSermonTitle,

@@ -251,21 +251,34 @@ export async function calculateStreakFromActions(
 ): Promise<StreakData> {
   try {
     console.log(`[STREAK] Fetching actions for user_id: ${userId}`);
-    
-    // Get all actions EXCEPT user_login (filtering for valid streak actions)
-    const { data, error } = await supabase
-      .from("master_actions")
-      .select("created_at, action_type")
-      .eq("user_id", userId)
-      .in("action_type", STREAK_ACTION_TYPES)
-      .order("created_at", { ascending: false });
+
+    const [actionsResponse, appLoginsResponse] = await Promise.all([
+      supabase
+        .from("master_actions")
+        .select("created_at, action_type")
+        .eq("user_id", userId)
+        .in("action_type", STREAK_ACTION_TYPES)
+        .order("created_at", { ascending: false }),
+      supabase
+        .from("app_logins")
+        .select("created_at")
+        .eq("user_id", userId)
+        .order("created_at", { ascending: false }),
+    ]);
+
+    const { data, error } = actionsResponse;
+    const { data: appLogins, error: appLoginsError } = appLoginsResponse;
 
     if (error) {
-      console.error("[STREAK] Error fetching actions for streak:", error);
+      console.error("[STREAK] Error fetching master_actions for streak:", error);
       return { currentStreak: 0, last7Days: [] };
     }
 
-    console.log(`[STREAK] Found ${data?.length || 0} valid streak actions`);
+    if (appLoginsError) {
+      console.error("[STREAK] Error fetching app_logins for streak:", appLoginsError);
+    }
+
+    console.log(`[STREAK] Found ${data?.length || 0} valid streak actions and ${appLogins?.length || 0} app logins`);
 
     // Helper function to get YYYY-MM-DD from a Date in local timezone
     const getLocalDateString = (date: Date): string => {
@@ -284,6 +297,15 @@ export async function calculateStreakFromActions(
       const dateStr = getLocalDateString(actionDate);
       completedDates.add(dateStr);
       console.log(`[STREAK] Action on ${dateStr} (${action.action_type}) - UTC was: ${action.created_at}`);
+    });
+
+    appLogins?.forEach((login) => {
+      const loginDate = new Date(login.created_at);
+      const dateStr = getLocalDateString(loginDate);
+      if (!completedDates.has(dateStr)) {
+        console.log(`[STREAK] App login on ${dateStr} - UTC was: ${login.created_at}`);
+      }
+      completedDates.add(dateStr);
     });
 
     console.log(`[STREAK] Active dates:`, Array.from(completedDates).sort());

@@ -9,7 +9,7 @@ import DashboardCards from "../../components/DashboardCards";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
-import { getProfileStats } from "../../lib/profileStats";
+import { getProfileStats, syncCurrentStreakToProfileStats } from "../../lib/profileStats";
 
 import AdSlot from "../../components/AdSlot";
 import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
@@ -127,6 +127,7 @@ export default function DashboardPage() {
     progressPercent: number;
   } | null>(null);
   const [showLevelInfoModal, setShowLevelInfoModal] = useState(false);
+  const [showStreakBadgeModal, setShowStreakBadgeModal] = useState(false);
   const [showCommunityModal, setShowCommunityModal] = useState(false);
   const [motivationalMessage, setMotivationalMessage] = useState<string>("");
   const [proExpiresAt, setProExpiresAt] = useState<string | null>(null);
@@ -1082,6 +1083,11 @@ export default function DashboardPage() {
         }
 
         const profileData = data;
+        const streakData = await syncCurrentStreakToProfileStats(userId).catch((error) => {
+          console.error("[DASHBOARD] Failed to sync streak:", error);
+          return null;
+        });
+        const resolvedCurrentStreak = streakData?.currentStreak ?? profileData?.current_streak ?? 0;
         if (profileData) {
           setProfile({
             is_paid: profileData.is_paid === true,
@@ -1093,7 +1099,7 @@ export default function DashboardPage() {
                 : 0,
             last_active_date: profileData.last_active_date ?? null,
             verse_of_the_day_shown: profileData.verse_of_the_day_shown ?? null,
-            current_streak: profileData.current_streak ?? 0,
+            current_streak: resolvedCurrentStreak,
           });
         }
 
@@ -1143,7 +1149,7 @@ export default function DashboardPage() {
           groupCommentCount,
           groupLikeGivenCount,
           likesReceivedCount: groupLikesReceivedCount + feedLikesReceivedCount,
-          streakBonusPoints: Math.max(0, profileData?.current_streak ?? 0),
+          streakBonusPoints: Math.max(0, resolvedCurrentStreak),
         });
 
         const levelData = getLevelInfoFromPoints(weightedPoints.totalPoints);
@@ -1368,8 +1374,10 @@ export default function DashboardPage() {
           isLoadingLevel={isLoadingLevel}
           levelInfo={levelInfo}
           userName={userName}
+          currentStreak={profile?.current_streak ?? 0}
           handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
           setShowLevelInfoModal={setShowLevelInfoModal}
+          setShowStreakBadgeModal={setShowStreakBadgeModal}
           onInviteBuddy={handleInviteBuddy}
           dashboardTourSpotlight={activeTourKey === "dashboard" ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.spotlight ?? null : null}
         />
@@ -1408,8 +1416,10 @@ export default function DashboardPage() {
           isLoadingLevel={isLoadingLevel}
           levelInfo={levelInfo}
           userName={userName}
+          currentStreak={profile?.current_streak ?? 0}
           handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
           setShowLevelInfoModal={setShowLevelInfoModal}
+          setShowStreakBadgeModal={setShowStreakBadgeModal}
           onInviteBuddy={handleInviteBuddy}
           dashboardTourSpotlight={activeTourKey === "dashboard" ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.spotlight ?? null : null}
         />
@@ -1573,6 +1583,60 @@ export default function DashboardPage() {
                     Close
                   </button>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showStreakBadgeModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+          <div className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl bg-white">
+            <div className="p-6">
+              <div className="mb-5 flex items-center justify-between">
+                <h2 className="text-2xl font-bold">Streak Badge</h2>
+                <button
+                  onClick={() => setShowStreakBadgeModal(false)}
+                  className="text-2xl font-bold text-gray-500 hover:text-gray-700"
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className="space-y-4 text-gray-700">
+                <div className="flex items-center gap-3 rounded-xl bg-gray-50 px-4 py-3">
+                  <span
+                    className={`text-3xl ${(profile?.current_streak ?? 0) >= 30 ? "" : "grayscale opacity-60"}`}
+                    aria-hidden="true"
+                  >
+                    🔥
+                  </span>
+                  <div>
+                    <p className="font-semibold text-gray-900">{profile?.current_streak ?? 0} Day Streak</p>
+                    <p className="text-sm text-gray-600">
+                      {profile?.current_streak ?? 0 >= 30 ? "You earned the fire badge." : "Keep logging in daily to unlock the fire badge."}
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-sm leading-7">
+                  This is the streak badge. Hit <span className="font-semibold">30 days in a row</span> of logging in and you earn it.
+                </p>
+
+                <p className="text-sm leading-7">
+                  Before 30 days, the fire stays gray. Once you reach 30 straight days, the badge turns fully active.
+                </p>
+
+                <p className="text-sm leading-7">
+                  Your streak also gives you extra level points every day you keep it alive, so showing up daily helps you grow faster.
+                </p>
+
+                <button
+                  onClick={() => setShowStreakBadgeModal(false)}
+                  className="w-full rounded-lg bg-blue-600 px-6 py-2 text-white hover:bg-blue-700"
+                >
+                  Got it
+                </button>
               </div>
             </div>
           </div>

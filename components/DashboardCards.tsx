@@ -14,8 +14,10 @@ interface DashboardCardsProps {
     pointsToNextLevel: number;
   } | null;
   userName: string;
+  currentStreak: number;
   handleCardClick: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, card: string, href: string) => void;
   setShowLevelInfoModal: (show: boolean) => void;
+  setShowStreakBadgeModal: (show: boolean) => void;
   onInviteBuddy: () => void;
   dashboardTourSpotlight?: "overview" | "level" | "recommendation" | "bible" | "group" | "tools" | "games" | "invite" | null;
 }
@@ -26,8 +28,10 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   daysRemaining,
   isLoadingLevel,
   levelInfo,
+  currentStreak,
   handleCardClick,
   setShowLevelInfoModal,
+  setShowStreakBadgeModal,
   onInviteBuddy,
   dashboardTourSpotlight = null,
 }) => {
@@ -36,6 +40,8 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   const cardShellTheme = {
     outer: "border-[#e7d3a5] bg-gradient-to-br from-[#fbf1d7] via-[#f9edcf] to-[#f4e3ba]",
   };
+  const hasFireBadge = currentStreak >= 30;
+  const streakLabel = `${currentStreak} Day Streak`;
 
   function getSpotlightClasses(target: DashboardCardsProps["dashboardTourSpotlight"]) {
     if (!dashboardTourSpotlight) return "";
@@ -98,15 +104,26 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                     style={{ width: `${levelInfo.progressPercent}%` }}
                   />
                 </div>
-                <div className="mt-2.5 space-y-0.5 text-[13px] sm:text-sm">
-                  <p className="font-medium text-gray-600">
+                <div className="mt-2.5 flex items-center justify-between gap-3 text-[13px] sm:text-sm">
+                  <p className="min-w-0 font-medium text-gray-600">
                     {levelInfo.pointsToNextLevel > 0
                       ? `${levelInfo.pointsToNextLevel} points until Level ${levelInfo.level + 1}`
                       : "You've reached the top level"}
                   </p>
-                  {profile && profile.is_paid === false ? (
-                    <p className="font-medium text-gray-600">Daily credits left: {profile.daily_credits ?? 0}</p>
-                  ) : null}
+                  <button
+                    type="button"
+                    onClick={() => setShowStreakBadgeModal(true)}
+                    className={`inline-flex shrink-0 items-center gap-1.5 text-gray-900 transition hover:opacity-75 ${hasFireBadge ? "font-semibold" : "font-medium"}`}
+                    title="Learn about the streak badge"
+                  >
+                    <span
+                      className={`text-base leading-none transition ${hasFireBadge ? "" : "grayscale opacity-60"}`}
+                      aria-hidden="true"
+                    >
+                      🔥
+                    </span>
+                    <span>{streakLabel}</span>
+                  </button>
                 </div>
               </div>
             </div>
