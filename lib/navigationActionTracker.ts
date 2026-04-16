@@ -12,7 +12,9 @@ type NavigationActionOptions = {
 };
 
 function buildStorageKey(userId: string, dedupeKey: string) {
-  return `bb_nav_action:${userId}:${dedupeKey}`;
+  const now = new Date();
+  const localDayKey = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+  return `bb_nav_action:${userId}:${dedupeKey}:${localDayKey}`;
 }
 
 export async function trackNavigationActionOnce({
@@ -27,8 +29,15 @@ export async function trackNavigationActionOnce({
   }
 
   const storageKey = buildStorageKey(userId, dedupeKey);
+  const storage = (() => {
+    try {
+      return window.localStorage;
+    } catch {
+      return window.sessionStorage;
+    }
+  })();
 
-  if (window.sessionStorage.getItem(storageKey) === "1") {
+  if (storage.getItem(storageKey) === "1") {
     return false;
   }
 
@@ -37,13 +46,13 @@ export async function trackNavigationActionOnce({
   }
 
   inFlight.add(storageKey);
-  window.sessionStorage.setItem(storageKey, "1");
+  storage.setItem(storageKey, "1");
 
   try {
     await logActionToMasterActions(userId, actionType, actionLabel, username ?? null);
     return true;
   } catch (error) {
-    window.sessionStorage.removeItem(storageKey);
+    storage.removeItem(storageKey);
     throw error;
   } finally {
     inFlight.delete(storageKey);

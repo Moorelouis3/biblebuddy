@@ -12,6 +12,7 @@ import type { TriviaChapterPack } from "@/lib/triviaGameData";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "@/lib/triviaCatalog";
 import { FREE_TRIVIA_BOOK_KEYS } from "@/lib/bibleStudyGameCatalog";
 import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
+import { dispatchLouisMoment } from "@/lib/louisMoments";
 
 type TriviaGamePlayerProps = {
   bookName: string;
@@ -233,6 +234,37 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
         console.error("[NAV] Failed to track Trivia chapter completion:", error);
       });
   }, [showResults, userId, bookName, chapter.chapter, chapter.questions.length, earnedCorrectCount, bookKey]);
+
+  useEffect(() => {
+    if (!showResults) return;
+
+    const scrambledHref = `/bible-study-games/scrambled/${bookKey}/${chapter.chapter}`;
+    const chapterHref = `/bible-trivia/${bookSlug}`;
+
+    dispatchLouisMoment({
+      message:
+        correctCount === chapter.questions.length
+          ? `Nice work. You just finished trivia for ${bookName} ${chapter.chapter} and got a perfect score.\n\nIf you want to lock this chapter in even more, I'd go try Scrambled next.`
+          : `Nice work. You just finished trivia for ${bookName} ${chapter.chapter} and got ${correctCount} out of ${chapter.questions.length}.\n\nIf you want, keep the momentum going and reinforce this chapter with Scrambled.`,
+      replies: [
+        {
+          id: `trivia-scrambled-${bookKey}-${chapter.chapter}`,
+          label: "Play Scrambled",
+          href: scrambledHref,
+        },
+        {
+          id: `trivia-chapters-${bookKey}-${chapter.chapter}`,
+          label: "Back to trivia chapters",
+          href: chapterHref,
+        },
+        {
+          id: `trivia-takeaway-${bookKey}-${chapter.chapter}`,
+          label: "What should I take from this?",
+          message: `Pay attention to the questions that slowed you down in ${bookName} ${chapter.chapter}. Those usually show you which part of the chapter needs one more pass.`,
+        },
+      ],
+    });
+  }, [showResults, correctCount, chapter.questions.length, chapter.chapter, bookName, bookKey, bookSlug]);
 
   if (showResults) {
     const scrambledHref = `/bible-study-games/scrambled/${bookKey}/${chapter.chapter}`;

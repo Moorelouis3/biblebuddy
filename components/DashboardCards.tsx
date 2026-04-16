@@ -2,9 +2,6 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-import type { DailyRecommendation } from "../lib/dailyRecommendation";
-import { LouisAvatar } from "./LouisAvatar";
-
 interface DashboardCardsProps {
   profile: { is_paid?: boolean | null; daily_credits?: number | null } | null;
   membershipStatus: string;
@@ -20,10 +17,6 @@ interface DashboardCardsProps {
   userName: string;
   handleCardClick: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, card: string, href: string) => void;
   setShowLevelInfoModal: (show: boolean) => void;
-  isLoadingRecommendation: boolean;
-  dailyRecommendation: DailyRecommendation | null;
-  dailyRecommendationCardTitle: string | null;
-  dailyRecommendationCardSubtitle: string | null;
   onInviteBuddy: () => void;
   dashboardTourSpotlight?: "overview" | "level" | "recommendation" | "bible" | "group" | "tools" | "games" | "invite" | null;
 }
@@ -36,10 +29,6 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   levelInfo,
   handleCardClick,
   setShowLevelInfoModal,
-  isLoadingRecommendation,
-  dailyRecommendation,
-  dailyRecommendationCardTitle,
-  dailyRecommendationCardSubtitle,
   onInviteBuddy,
   dashboardTourSpotlight = null,
 }) => {
@@ -51,17 +40,6 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
     shell: "",
     inset: "",
   };
-
-  const recommendationMood =
-    dailyRecommendation?.cardTheme === "green"
-      ? "hands"
-      : dailyRecommendation?.cardTheme === "blue"
-        ? "bible"
-        : dailyRecommendation?.cardTheme === "purple"
-          ? "think"
-          : dailyRecommendation?.cardTheme === "gold"
-            ? "cool"
-            : "smile";
 
   function getSpotlightClasses(target: DashboardCardsProps["dashboardTourSpotlight"]) {
     if (!dashboardTourSpotlight) return "";
@@ -153,46 +131,6 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
               </div>
             </div>
           ) : null}
-        </div>
-
-        <div data-dashboard-tour="recommendation" className={`mx-3 mb-3 px-4 py-2.5 transition duration-300 md:mx-4 md:px-5 ${getSpotlightClasses("recommendation")}`}>
-          {isLoadingRecommendation ? (
-            <div className="flex items-center gap-3">
-              <div className="rounded-full bg-white/80 p-1 shadow-sm">
-                <LouisAvatar mood="wave" size={38} />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-gray-900">Louis is picking your next step</p>
-                <div className="flex items-center gap-1 mt-1">
-                  <span className="text-gray-500 text-sm">Loading</span>
-                  <span className="text-gray-500 text-xl animate-[bounce_1.4s_ease-in-out_infinite]">.</span>
-                  <span className="text-gray-500 text-xl animate-[bounce_1.4s_ease-in-out_0.2s_infinite]">.</span>
-                  <span className="text-gray-500 text-xl animate-[bounce_1.4s_ease-in-out_0.4s_infinite]">.</span>
-                </div>
-              </div>
-            </div>
-          ) : dailyRecommendation && dailyRecommendationCardTitle && dailyRecommendationCardSubtitle ? (
-            <Link href={dailyRecommendation.primaryButtonHref} className="block">
-              <div className="flex items-start gap-3">
-                <div className="rounded-full border border-white/80 bg-white/85 p-1 shadow-sm shrink-0">
-                  <LouisAvatar mood={recommendationMood} size={38} />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-[15px] font-semibold leading-tight text-gray-950 sm:text-base">
-                    {dailyRecommendationCardTitle}
-                  </h3>
-                  <p className="mt-1 text-[13px] leading-relaxed text-gray-700 sm:text-sm">{dailyRecommendationCardSubtitle}</p>
-                </div>
-              </div>
-            </Link>
-          ) : (
-            <div className="flex items-center gap-3">
-              <div className="rounded-full bg-white/80 p-1 shadow-sm">
-                <LouisAvatar mood="wave" size={38} />
-              </div>
-              <p className="text-sm text-gray-600">Louis will have a new next step for you soon.</p>
-            </div>
-          )}
         </div>
       </div>
 

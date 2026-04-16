@@ -19,11 +19,13 @@ import { consumeCreditAction } from "../../../../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../../../../lib/bibleNotes";
 import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
 import { triggerPoints } from "../../../../components/PointsPop";
+import { dispatchLouisMoment } from "../../../../lib/louisMoments";
 import CreditLimitModal from "../../../../components/CreditLimitModal";
 import CommentSection from "../../../../components/comments/CommentSection";
 import { LEVEL_DEFINITIONS } from "../../../../lib/levelSystem";
 import { FeatureTourModal } from "../../../../components/FeatureTourModal";
 import {
+  buildPersistedFeatureTours,
   DEFAULT_FEATURE_TOURS,
   normalizeFeatureTours,
   type FeatureToursState,
@@ -365,7 +367,7 @@ export default function BibleChapterPage() {
     const { error: updateError } = await supabase
       .from("profile_stats")
       .update({
-        feature_tours: mergedFeatureTours,
+        feature_tours: buildPersistedFeatureTours(mergedFeatureTours),
       })
       .eq("user_id", userId);
 
@@ -377,7 +379,7 @@ export default function BibleChapterPage() {
         .upsert(
           {
             user_id: userId,
-            feature_tours: mergedFeatureTours,
+            feature_tours: buildPersistedFeatureTours(mergedFeatureTours),
           },
           { onConflict: "user_id" }
         );
@@ -1083,7 +1085,7 @@ RULES:
             .upsert(
               {
                 user_id: user.id,
-                feature_tours: { ...DEFAULT_FEATURE_TOURS },
+                feature_tours: buildPersistedFeatureTours(),
               },
               { onConflict: "user_id" }
             );
@@ -1736,6 +1738,56 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
     }, 2600);
   }
 
+  function sendChapterLouisMoment(type: "completed" | "checklist") {
+    const chapterLabel = `${book} chapter ${chapter}`;
+    const notesLine =
+      "📖 I’d start with the chapter notes. If you’re on the free plan, that will use 1 credit from your day.";
+    const triviaLine = triviaDone
+      ? "🎯 Trivia for this chapter is already done."
+      : "🎯 After that, try the trivia for this chapter and see what actually stuck.";
+    const scrambledLine = scrambledDone
+      ? "🔀 Scrambled for this chapter is already done too."
+      : "🔀 Then hit Scrambled if you want to lock the key words in better.";
+
+    dispatchLouisMoment({
+      message:
+        type === "completed"
+          ? `Nice work. You just completed ${chapterLabel}.\n\n${notesLine}\n\n${triviaLine}\n\n${scrambledLine}\n\n💭 And before you leave, drop a reflection so this chapter does not just pass by you.`
+          : `You already finished ${chapterLabel}.\n\nHere’s the checklist I’d point you back to.\n\n${notesLine}\n\n${triviaLine}\n\n${scrambledLine}`,
+      replies: [
+        {
+          id: `chapter-notes-${book}-${chapter}`,
+          label: "How do I open the notes?",
+          message: "Tap Chapter Review on this page and start there. That's the best next move if you want to understand the chapter better.",
+        },
+        !triviaDone
+          ? {
+              id: `chapter-trivia-${book}-${chapter}`,
+              label: "Open trivia",
+              href: `/bible-trivia/${triviaRouteSlug}/${chapter}`,
+            }
+          : null,
+        !scrambledDone
+          ? {
+              id: `chapter-scrambled-${book}-${chapter}`,
+              label: "Open scrambled",
+              href: `/bible-study-games/scrambled/${_resolvedTriviaBookKey}/${chapter}`,
+            }
+          : null,
+        {
+          id: `chapter-reflection-${book}-${chapter}`,
+          label: "Where should I reflect?",
+          message: "Scroll down to the reflection section on this chapter page and write one honest thought before you move on.",
+        },
+      ].filter(Boolean) as Array<{
+        id: string;
+        label: string;
+        href?: string;
+        message?: string;
+      }>,
+    });
+  }
+
   // Trivia/scrambled route slug for the current book
   const _triviaBookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
   const _resolvedTriviaBookKey = _triviaBookKey === "songofsolomon" ? "songofsongs" : _triviaBookKey;
@@ -1845,7 +1897,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
       setIsCompleted(true);
       triggerPoints(10);
-      setShowCongratsModal(true);
+      sendChapterLouisMoment("completed");
       setIsSaving(false);
 
       // Trigger confetti animation
@@ -2224,7 +2276,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     onClick={() => {
                       if (isSaving) return;
                       if (isCompleted) {
-                        setShowChecklistModal(true);
+                        sendChapterLouisMoment("checklist");
                         return;
                       }
                       void handleMarkFinished();
@@ -2384,7 +2436,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   onClick={() => {
                     if (isSaving) return;
                     if (isCompleted) {
-                      setShowChecklistModal(true);
+                      sendChapterLouisMoment("checklist");
                       return;
                     }
                     void handleMarkFinished();
@@ -2583,6 +2635,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                         <VerseHighlighter
                           book={book}
                           chapter={chapter}
+                          plainTextMode={plainTextMode}
                           verses={section.verses.map(v => ({
                             number: v.num,
                             text: v.text,

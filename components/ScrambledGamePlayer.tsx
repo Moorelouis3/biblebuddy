@@ -9,6 +9,7 @@ import { triggerPoints } from "@/components/PointsPop";
 import { getScrambledBook, type ScrambledChapterPack } from "@/lib/scrambledGameData";
 import { supabase } from "@/lib/supabaseClient";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "@/lib/triviaCatalog";
+import { dispatchLouisMoment } from "@/lib/louisMoments";
 
 type LetterTile = {
   id: string;
@@ -244,6 +245,41 @@ export default function ScrambledGamePlayer({
         console.error("[NAV] Failed to track Scrambled chapter completion:", error);
       });
   }, [showResults, userId, username, bookName, bookSlug, chapter.chapter, chapter.questions.length, solvedCount, earnedSolveCount]);
+
+  useEffect(() => {
+    if (!showResults) return;
+
+    const triviaRouteSlug =
+      CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.key === bookSlug)?.routeSlug ?? bookSlug;
+    const triviaHref = `/bible-trivia/${triviaRouteSlug}/${chapter.chapter}`;
+    const nextHref = nextChapterPack
+      ? `/bible-study-games/scrambled/${bookSlug}/${nextChapterPack.chapter}`
+      : `/bible-study-games/scrambled/${bookSlug}/${chapter.chapter}`;
+
+    dispatchLouisMoment({
+      message:
+        solvedCount === chapter.questions.length
+          ? `You finished Scrambled for ${bookName} ${chapter.chapter} and solved every word.\n\nThat's a strong way to lock key words into memory.`
+          : `You finished Scrambled for ${bookName} ${chapter.chapter} and solved ${solvedCount} out of ${chapter.questions.length} words.\n\nThat still counts as real work. If you want, you can keep building on it from here.`,
+      replies: [
+        {
+          id: `scrambled-trivia-${bookSlug}-${chapter.chapter}`,
+          label: "Take trivia quiz",
+          href: triviaHref,
+        },
+        {
+          id: `scrambled-next-${bookSlug}-${chapter.chapter}`,
+          label: nextChapterPack ? "Play next chapter" : "Play again",
+          href: nextHref,
+        },
+        {
+          id: `scrambled-memory-${bookSlug}-${chapter.chapter}`,
+          label: "Why does this help?",
+          message: `Scrambled helps you slow down and really notice the names, places, and words inside ${bookName} ${chapter.chapter}. That's part of how Scripture starts sticking.`,
+        },
+      ],
+    });
+  }, [showResults, solvedCount, chapter.questions.length, chapter.chapter, bookName, bookSlug, nextChapterPack]);
 
   const visibleBuddyRounds = useMemo(() => buddyRounds.slice(0, 6), [buddyRounds]);
 

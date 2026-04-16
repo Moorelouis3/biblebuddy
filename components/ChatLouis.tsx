@@ -11,6 +11,7 @@ import { useFeatureRenderPriority } from "./FeatureRenderPriorityContext";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
 import { buildLouisGuideChatMessage, getLouisPageGuide } from "../lib/louisGuidance";
 import { getVerseIntro, getVerseOfTheDay } from "../lib/verseOfTheDay";
+import { LOUIS_MOMENT_EVENT, type LouisMomentDetail, type LouisMomentReply } from "../lib/louisMoments";
 
 type MessageRole = "user" | "assistant";
 
@@ -34,6 +35,10 @@ type QuickReplyAction =
   | "guide_show"
   | "guide_later"
   | "guide_question"
+  | "daily_try_missing"
+  | "open_devotionals"
+  | "moment_navigate"
+  | "moment_message"
   | "recommendation_open"
   | "recommendation_question"
   | "recommendation_later";
@@ -42,6 +47,8 @@ type QuickReply = {
   id: string;
   label: string;
   action: QuickReplyAction;
+  href?: string;
+  message?: string;
 };
 
 type LouisLastActionSummary = {
@@ -49,6 +56,12 @@ type LouisLastActionSummary = {
   followUp: string;
   continueLabel: string | null;
   continueHref: string | null;
+};
+
+type LouisHabitNudge = {
+  summary: string;
+  label: string;
+  href: string;
 };
 
 // Type for SpeechRecognition (Web Speech API)
@@ -119,6 +132,10 @@ function getGuidePromptKey(userId: string, guideId: string) {
   return `bb:louis:guide-prompt:${userId}:${guideId}`;
 }
 
+function getGoalStorageKey() {
+  return "bb_onboarding_goal";
+}
+
 function hasSeenGuidePrompt(userId: string, guideId: string) {
   if (typeof window === "undefined") return false;
   return window.localStorage.getItem(getGuidePromptKey(userId, guideId)) === "1";
@@ -149,6 +166,88 @@ function getTimeOfDayGreeting() {
   if (hour < 12) return "Good morning";
   if (hour < 18) return "Good afternoon";
   return "Good evening";
+}
+
+function getStreakCelebrationLine(currentStreak: number) {
+  if (currentStreak <= 0) {
+    return "This is a fresh start, and that's fine. Just do one real thing with God today and let that be enough.";
+  }
+
+  if (currentStreak === 1) {
+    return "You're on day 1 right now. Once you hit 30 days, you earn the fire and your habit really starts to feel real.";
+  }
+
+  if (currentStreak === 2) {
+    return "This is your second day in a row. That's how a habit starts getting real.";
+  }
+
+  if (currentStreak === 3) {
+    return "You're on day 3 now. That's real momentum, not just a random check-in.";
+  }
+
+  if (currentStreak === 4) {
+    return "Four days in a row is big. Most people talk about consistency, but this is what consistency actually looks like.";
+  }
+
+  if (currentStreak === 5) {
+    return "Five straight days is strong. You're not just visiting Bible Buddy now. You're building something.";
+  }
+
+  if (currentStreak === 6) {
+    return "Six days in a row is serious. You're close to a full week of showing up for your walk with God.";
+  }
+
+  if (currentStreak === 7) {
+    return "A full week in a row is strong. That's how Bible study starts becoming part of your real life.";
+  }
+
+  if (currentStreak < 30) {
+    return `You're on day ${currentStreak}. Keep stacking days like this and the fire is coming.`;
+  }
+
+  return `You're on day ${currentStreak}, and you've already earned the fire. Now it's about protecting the habit and growing deeper.`;
+}
+
+function buildHabitNudgeFromCards(openedCards: string[]): LouisHabitNudge | null {
+  const seen = new Set(openedCards);
+
+  if (!seen.has("Bible Study Group")) {
+    return {
+      summary:
+        "I've noticed you haven't tried the Bible Study Group yet. You do not have to study alone in here.",
+      label: "Try the group",
+      href: "/study-groups",
+    };
+  }
+
+  if (!seen.has("Bible Study Games")) {
+    return {
+      summary:
+        "You've been showing up, but you still haven't tried Bible Study Games. That's one of the easiest ways to lock in what you're learning.",
+      label: "Try Bible Study Games",
+      href: "/bible-study-games",
+    };
+  }
+
+  if (!seen.has("Bible Buddy TV")) {
+    return {
+      summary:
+        "You still haven't tried Bible Buddy TV. If you want something easier to ease into today, that could be a good move.",
+      label: "Try Bible Buddy TV",
+      href: "/biblebuddy-tv",
+    };
+  }
+
+  if (!seen.has("Bible Study Tools")) {
+    return {
+      summary:
+        "You haven't opened the study tools yet. That's where devotionals, reading plans, and the deeper study side of Bible Buddy really opens up.",
+      label: "Open study tools",
+      href: "/guided-studies",
+    };
+  }
+
+  return null;
 }
 
 function renderLouisGuideContent(_guide?: unknown) {
@@ -271,7 +370,9 @@ export function ChatLouis() {
   const [hasUnseenRecommendation, setHasUnseenRecommendation] = useState(false);
   const [hasUnseenDailyGreeting, setHasUnseenDailyGreeting] = useState(false);
   const [lastMasterActionSummary, setLastMasterActionSummary] = useState<LouisLastActionSummary | null>(null);
+  const [habitNudge, setHabitNudge] = useState<LouisHabitNudge | null>(null);
   const [currentStreak, setCurrentStreak] = useState<number>(0);
+  const [onboardingGoal, setOnboardingGoal] = useState<string | null>(null);
   const [userProfileImageUrl, setUserProfileImageUrl] = useState<string | null>(null);
   const [hasLouisHistory, setHasLouisHistory] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -286,6 +387,7 @@ export function ChatLouis() {
   const animationFrameRef = useRef<number | null>(null);
   const [audioLevels, setAudioLevels] = useState<number[]>([]);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const [viewportSize, setViewportSize] = useState({ width: 1280, height: 800 });
   
   // Dragging state
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -329,6 +431,21 @@ export function ChatLouis() {
   }
 
   // Initialize Speech Recognition
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const syncViewport = () => {
+      setViewportSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    syncViewport();
+    window.addEventListener("resize", syncViewport);
+    return () => window.removeEventListener("resize", syncViewport);
+  }, []);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -565,7 +682,9 @@ export function ChatLouis() {
         setLouisFeatureTours({ ...DEFAULT_FEATURE_TOURS });
         setLouisRecommendation(null);
         setLastMasterActionSummary(null);
+        setHabitNudge(null);
         setCurrentStreak(0);
+        setOnboardingGoal(null);
         setUserProfileImageUrl(null);
         setHasUnseenRecommendation(false);
         return;
@@ -583,6 +702,8 @@ export function ChatLouis() {
           setMessages([]);
           setHasLouisHistory(false);
         }
+
+        setOnboardingGoal(window.localStorage.getItem(getGoalStorageKey()));
       }
 
       const { data: profileStats, error: profileError } = await supabase
@@ -608,6 +729,7 @@ export function ChatLouis() {
       if (!shouldLoadRecommendation) {
         setLouisRecommendation(null);
         setLastMasterActionSummary(null);
+        setHabitNudge(null);
         setHasUnseenRecommendation(false);
         setHasUnseenDailyGreeting(false);
         return;
@@ -627,6 +749,20 @@ export function ChatLouis() {
           actionRows?.[0] ??
           null;
         setLastMasterActionSummary(summarizeLastMasterAction(lastMeaningfulAction));
+      }
+
+      const { data: dashboardCardRows } = await supabase
+        .from("master_actions")
+        .select("action_label")
+        .eq("user_id", user.id)
+        .eq("action_type", "dashboard_card_opened")
+        .limit(50);
+
+      if (!cancelled) {
+        const openedCards = (dashboardCardRows ?? [])
+          .map((row) => row.action_label)
+          .filter((label): label is string => typeof label === "string" && label.length > 0);
+        setHabitNudge(buildHabitNudgeFromCards(openedCards));
       }
 
       let suppressLevel1 = false;
@@ -792,14 +928,20 @@ export function ChatLouis() {
   }
 
   function buildDailyConversationMessage() {
-    const streakLine =
+    const streakIntro =
       currentStreak > 0
-        ? `${getTimeOfDayGreeting()}. Welcome back. You're on a ${currentStreak}-day streak.\n\n`
-        : `${getTimeOfDayGreeting()}.\n\n`;
+        ? `${getTimeOfDayGreeting()}. Welcome back.\n\nYou're on day ${currentStreak} right now.`
+        : `${getTimeOfDayGreeting()}.\n\nThis is a good day to start something real.`;
 
     let message = hasLouisHistory
-      ? `${streakLine}How are you doing today?\n\nYou can just talk to me like a regular person.`
-      : `${streakLine}I'm Louis.\n\nYou can talk to me like a regular person in here.\n\nIf I ask you something, you can just type back or use the voice button.\n\nSo first, how are you doing today?`;
+      ? `${streakIntro}\n\n${getStreakCelebrationLine(currentStreak)}\n\nHow are you doing today?`
+      : `${streakIntro}\n\nI'm Louis.\n\nYou can talk to me like a regular person in here.\n\nIf I ask you something, just type back or use the voice button.\n\n${getStreakCelebrationLine(currentStreak)}\n\nHow are you doing today?`;
+
+    if (!hasLouisHistory && pathname === "/dashboard") {
+      message += onboardingGoal
+        ? `\n\nYou told us you want to ${onboardingGoal.toLowerCase()}.\n\nLet's build that together one day at a time.`
+        : "\n\nSince this is your first time here, let's build your Bible study habit together one day at a time.";
+    }
 
     if (louisUserId && typeof window !== "undefined") {
       const rawMemory = window.localStorage.getItem(getMemoryStorageKey(louisUserId));
@@ -821,7 +963,7 @@ export function ChatLouis() {
     if (hasPendingPageGuide && currentPageGuide?.id === "dashboard") {
       message += hasLouisHistory
         ? "\n\nAnd if you want, I can show you around the dashboard too."
-        : "\n\nSince you're on the dashboard, I can also show you how this page works when you're ready.";
+        : "\n\nYou're on the dashboard right now, and I can walk you through it when you're ready.";
     }
 
     return message;
@@ -916,10 +1058,14 @@ export function ChatLouis() {
         appendAssistantMessage(
           hasLouisHistory
             ? lastMasterActionSummary
-              ? `Love that.\n\nLast time you were in ${lastMasterActionSummary.summary.replace(/^Last time you were in\s+/i, "").replace(/\.$/, "")}\n\nDo you want to pick that back up, hear today's verse, or let me recommend something solid for today?`
-              : "Love that.\n\nDo you want today's verse, do you want a recommendation, or do you want me to show you something on this page?"
+              ? `Love that.\n\n${getStreakCelebrationLine(currentStreak)}\n\n${lastMasterActionSummary.summary}\n\n${lastMasterActionSummary.followUp}`
+              : habitNudge
+                ? `Love that.\n\n${getStreakCelebrationLine(currentStreak)}\n\n${habitNudge.summary}`
+                : "Love that.\n\nDo you want today's verse, do you want a recommendation, or do you want me to show you something on this page?"
             : currentPageGuide
-              ? `That's good to hear.\n\nIt's great to have you here.\n\nSince you're on ${currentPageGuide.title.toLowerCase()}, do you want me to show you how this page works?`
+              ? pathname === "/dashboard"
+                ? `That's good to hear.\n\nIt's great to have you here.\n\nSince this is your first time, how about we do this together?\n\nI can show you the dashboard, then help you take your first real step in Bible Buddy.`
+                : `That's good to hear.\n\nIt's great to have you here.\n\nSince you're on ${currentPageGuide.title.toLowerCase()}, do you want me to show you how this page works?`
               : "That's good to hear.\n\nIt's great to have you here.\n\nDo you want today's verse, a recommendation, or help with the page you're on?",
         );
         seedQuickReplies(
@@ -930,13 +1076,16 @@ export function ChatLouis() {
             lastMasterActionSummary?.continueHref && lastMasterActionSummary.continueLabel
               ? { id: "daily-good-continue", label: lastMasterActionSummary.continueLabel, action: "daily_continue" as const }
               : null,
+            habitNudge ? { id: "daily-good-nudge", label: habitNudge.label, action: "daily_try_missing" as const } : null,
           ].filter(Boolean) as QuickReply[],
         );
         break;
       case "daily_okay":
         appendAssistantMessage(
           hasLouisHistory
-            ? "Alright.\n\nLet's keep it simple then.\n\nDo you want today's verse, do you want me to recommend one good next step, or do you want help with the page you're on?"
+            ? habitNudge
+              ? `Alright.\n\nLet's keep it simple then.\n\n${habitNudge.summary}`
+              : "Alright.\n\nLet's keep it simple then.\n\nDo you want today's verse, do you want me to recommend one good next step, or do you want help with the page you're on?"
             : currentPageGuide
               ? `That's alright.\n\nWe can keep it simple.\n\nSince you're on ${currentPageGuide.title.toLowerCase()}, do you want me to show you how this page works?`
               : "That's alright.\n\nWe can keep it simple.\n\nDo you want today's verse, a recommendation, or help with the page you're on?",
@@ -947,6 +1096,7 @@ export function ChatLouis() {
             { id: "daily-okay-verse", label: "Today's verse", action: "daily_verse" as const },
             { id: "daily-okay-rec", label: "Recommend something", action: "daily_recommendation" as const },
             { id: "daily-okay-talk", label: "I want to talk", action: "daily_talk" as const },
+            habitNudge ? { id: "daily-okay-nudge", label: habitNudge.label, action: "daily_try_missing" as const } : null,
           ].filter(Boolean) as QuickReply[],
         );
         break;
@@ -970,6 +1120,8 @@ export function ChatLouis() {
         appendAssistantMessage(
           lastMasterActionSummary
             ? `Alright.\n\nThen what do you want to do today in Bible Buddy?\n\n${lastMasterActionSummary.summary}\n\n${lastMasterActionSummary.followUp}`
+            : habitNudge
+              ? `Alright.\n\nThen what do you want to do today in Bible Buddy?\n\n${habitNudge.summary}`
             : louisRecommendation
               ? "Alright.\n\nThen what do you want to do today in Bible Buddy?\n\nI can point you to the next thing that makes sense, or I can give you today's verse and let’s start there."
               : "Alright.\n\nThen what do you want to do today in Bible Buddy?\n\nI can give you today's verse, help you get back into the Bible, or point you somewhere solid to start.",
@@ -983,6 +1135,7 @@ export function ChatLouis() {
             louisRecommendation
               ? { id: "daily-no-rec", label: "What do you recommend?", action: "daily_recommendation" as const }
               : null,
+            habitNudge ? { id: "daily-no-nudge", label: habitNudge.label, action: "daily_try_missing" as const } : null,
             hasPendingPageGuide && currentPageGuide?.id === "dashboard"
               ? { id: "daily-no-guide", label: "Show me the dashboard", action: "guide_show" as const }
               : { id: "daily-no-talk", label: "I changed my mind", action: "daily_talk" as const },
@@ -1000,6 +1153,11 @@ export function ChatLouis() {
           router.push(lastMasterActionSummary.continueHref);
         }
         break;
+      case "daily_try_missing":
+        if (habitNudge?.href) {
+          router.push(habitNudge.href);
+        }
+        break;
       case "daily_talk":
         appendAssistantMessage("I'm here.\n\nTell me what's going on, and I'll help you sort through it.");
         break;
@@ -1010,11 +1168,16 @@ export function ChatLouis() {
             `${currentPageGuide.chatStarter}\n\n${buildLouisGuideChatMessage(currentPageGuide)}`,
           );
           seedQuickReplies([
-            { id: "guide-follow-up", label: "I have a question", action: "guide_question" },
+            pathname === "/dashboard"
+              ? { id: "guide-start-devotional", label: "Let's start with a devotional", action: "open_devotionals" }
+              : { id: "guide-follow-up", label: "I have a question", action: "guide_question" },
+            pathname === "/dashboard"
+              ? { id: "guide-follow-up-question", label: "I have a question", action: "guide_question" }
+              : null,
             louisRecommendation
               ? { id: "guide-then-rec", label: "What do you recommend?", action: "daily_recommendation" }
               : { id: "guide-later-2", label: "That helps", action: "guide_later" },
-          ]);
+          ].filter(Boolean) as QuickReply[]);
         }
         break;
       case "daily_intro_later":
@@ -1047,6 +1210,19 @@ export function ChatLouis() {
             ? `${currentPageGuide.chatStarter}\n\nWhat do you want help with on this page?`
             : "What do you want help with?",
         );
+        break;
+      case "open_devotionals":
+        router.push("/devotionals");
+        break;
+      case "moment_navigate":
+        if (reply.href) {
+          router.push(reply.href);
+        }
+        break;
+      case "moment_message":
+        if (reply.message) {
+          appendAssistantMessage(reply.message);
+        }
         break;
       case "recommendation_open":
         if (reply.id === "verse-open-page") {
@@ -1148,10 +1324,12 @@ export function ChatLouis() {
           louisContext: {
             isFirstTimeLouis: !hasLouisHistory,
             currentStreak,
+            onboardingGoal,
             hasPendingPageGuide,
             pageGuideTitle: currentPageGuide?.title ?? null,
             lastActionSummary: lastMasterActionSummary?.summary ?? null,
             lastActionFollowUp: lastMasterActionSummary?.followUp ?? null,
+            habitNudge: habitNudge?.summary ?? null,
             recommendationLine: louisRecommendation?.recommendationLine ?? null,
             recommendationHref: louisRecommendation?.primaryButtonHref ?? null,
           },
@@ -1245,6 +1423,72 @@ export function ChatLouis() {
     return () => window.cancelAnimationFrame(frame);
   }, [isOpen, messages, quickReplies]);
 
+  useEffect(() => {
+    function onLouisMoment(event: Event) {
+      const detail = (event as CustomEvent<LouisMomentDetail>).detail;
+      if (!detail?.message) return;
+
+      setIsOpen(true);
+      appendAssistantMessage(detail.message);
+      seedQuickReplies(
+        (detail.replies ?? []).map((reply: LouisMomentReply) => ({
+          id: reply.id,
+          label: reply.label,
+          action: reply.href ? "moment_navigate" : "moment_message",
+          href: reply.href,
+          message: reply.message,
+        })),
+      );
+    }
+
+    document.addEventListener(LOUIS_MOMENT_EVENT, onLouisMoment);
+    return () => document.removeEventListener(LOUIS_MOMENT_EVENT, onLouisMoment);
+  }, []);
+
+  const bubbleStyle =
+    position.x === 0 && position.y === 0
+      ? {
+          position: "fixed" as const,
+          bottom: "1rem",
+          right: "1rem",
+        }
+      : {
+          position: "fixed" as const,
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+        };
+
+  const panelWidth = 360;
+  const panelHeight = 500;
+  const viewportPadding = 16;
+  const bubbleSize = 80;
+  const customPanelLeft =
+    position.x === 0
+      ? null
+      : Math.min(
+          Math.max(position.x + bubbleSize - panelWidth, viewportPadding),
+          Math.max(viewportPadding, viewportSize.width - panelWidth - viewportPadding),
+        );
+  const customPanelTop =
+    position.y === 0
+      ? null
+      : Math.min(
+          Math.max(position.y - panelHeight + bubbleSize, viewportPadding),
+          Math.max(viewportPadding, viewportSize.height - panelHeight - viewportPadding),
+        );
+  const panelStyle =
+    position.x === 0 && position.y === 0
+      ? {
+          position: "fixed" as const,
+          bottom: "6rem",
+          right: "1rem",
+        }
+      : {
+          position: "fixed" as const,
+          left: `${customPanelLeft ?? viewportPadding}px`,
+          top: `${customPanelTop ?? viewportPadding}px`,
+        };
+
   return (
     <>
       {/* Floating avatar button */}
@@ -1258,11 +1502,7 @@ export function ChatLouis() {
           }}
           onPointerDown={handlePointerDown}
           style={{
-            position: "fixed",
-            bottom: position.y === 0 ? "1rem" : undefined,
-            right: position.x === 0 ? "1rem" : undefined,
-            left: position.x !== 0 ? `${position.x}px` : undefined,
-            top: position.y !== 0 ? `${position.y}px` : undefined,
+            ...bubbleStyle,
             cursor: isDragging ? "grabbing" : "grab",
             touchAction: "none",
           }}
@@ -1290,11 +1530,7 @@ export function ChatLouis() {
         <div
           ref={panelRef}
           style={{
-            position: "fixed",
-            bottom: position.y === 0 ? "6rem" : undefined,
-            right: position.x === 0 ? "1rem" : undefined,
-            left: position.x !== 0 ? `${position.x}px` : undefined,
-            top: position.y !== 0 ? `${position.y}px` : undefined,
+            ...panelStyle,
             cursor: isDragging ? "grabbing" : "default",
           }}
           className="z-[70] w-[360px] h-[500px] rounded-t-2xl bg-white border border-gray-200 shadow-2xl flex flex-col"

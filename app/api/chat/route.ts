@@ -503,10 +503,12 @@ LOUIS USER CONTEXT
 
 First time talking to Louis: ${louisContext?.isFirstTimeLouis ? "yes" : "no"}
 Current streak: ${louisContext?.currentStreak ?? 0}
+Onboarding goal: ${louisContext?.onboardingGoal || "none"}
 Has pending page guide: ${louisContext?.hasPendingPageGuide ? "yes" : "no"}
 Current page guide title: ${louisContext?.pageGuideTitle || "none"}
 Last action summary: ${louisContext?.lastActionSummary || "none"}
 Last action follow-up: ${louisContext?.lastActionFollowUp || "none"}
+Habit nudge: ${louisContext?.habitNudge || "none"}
 Recommendation available: ${louisContext?.recommendationLine || "none"}
 
 Use this to sound aware of the user's situation.
@@ -516,6 +518,10 @@ If they seem unsure, gently guide them toward the best next step.
 If they are first-time, be more welcoming and explain yourself naturally.
 
 If they already have momentum, sound like you remember that and help them keep it going.
+
+If an onboarding goal is present, use that language naturally.
+
+For example, if they said they want to build a Bible habit, help them feel like you remember that and you are doing it with them.
 `;
     }
 

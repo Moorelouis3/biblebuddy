@@ -56,6 +56,7 @@ import BibleReadingModal from "../../../components/BibleReadingModal";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { consumeCreditAction } from "../../../lib/creditClient";
 import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
+import { dispatchLouisMoment } from "../../../lib/louisMoments";
 
 interface Devotional {
   id: string;
@@ -98,8 +99,6 @@ export default function DevotionalDetailPage() {
   const [selectedBibleReading, setSelectedBibleReading] = useState<{ book: string; chapter: number } | null>(null);
   const [showCreditBlocked, setShowCreditBlocked] = useState(false);
   const [showReadingRequiredModal, setShowReadingRequiredModal] = useState(false);
-  const [showCompletionModal, setShowCompletionModal] = useState(false);
-  const [completedDayNumber, setCompletedDayNumber] = useState<number | null>(null);
   const [showProModal, setShowProModal] = useState(false);
   const [freeDevotionalId, setFreeDevotionalId] = useState<string | null | undefined>(undefined);
   const [showChooseFreeModal, setShowChooseFreeModal] = useState(false);
@@ -322,6 +321,49 @@ export default function DevotionalDetailPage() {
     }
   };
 
+  const sendDevotionalLouisMoment = (dayNumber: number) => {
+    if (!devotional) return;
+
+    const nextDay = dayNumber + 1;
+    const hasNextDay = devotional.total_days >= nextDay;
+    const isTestingOfJoseph = devotional.title === "The Testing of Joseph";
+
+    dispatchLouisMoment({
+      message: hasNextDay
+        ? `Great job. You just completed day ${dayNumber} of ${devotional.title}.\n\nThat's how real Bible habits get built.\n\nTomorrow, come back and I'll walk you into day ${nextDay}.\n\nAnd before you leave, you could reinforce this by jumping into something interactive.`
+        : `Great job. You just finished ${devotional.title}.\n\nThat's a real win.\n\nNow would be a good time to lock some of it in with something interactive or go start your next devotional.`,
+      replies: [
+        hasNextDay
+          ? {
+              id: `devotional-next-${devotional.id}-${nextDay}`,
+              label: `Come back for day ${nextDay}`,
+              message: `When you come back, I'll point you straight into day ${nextDay} of ${devotional.title}. Just keep showing up one day at a time.`,
+            }
+          : {
+              id: `devotional-back-${devotional.id}`,
+              label: "Pick another devotional",
+              href: "/devotionals",
+            },
+        isTestingOfJoseph
+          ? {
+              id: `devotional-trivia-${devotional.id}-${dayNumber}`,
+              label: "Try Joseph trivia",
+              href: "/bible-trivia/joseph",
+            }
+          : {
+              id: `devotional-games-${devotional.id}-${dayNumber}`,
+              label: "Try a Bible game",
+              href: "/bible-study-games",
+            },
+        {
+          id: `devotional-talk-${devotional.id}-${dayNumber}`,
+          label: "What should I take from this?",
+          message: `Sit with what stood out to you most from day ${dayNumber}. If one part keeps sticking, that's probably the part God wants you to carry with you today.`,
+        },
+      ],
+    });
+  };
+
   const handleBibleReadingClick = (book: string, chapter: number) => {
     if (userId && devotional && selectedDay) {
       void supabase.auth.getUser().then(({ data }) => {
@@ -420,10 +462,9 @@ export default function DevotionalDetailPage() {
         });
       }
 
-      // Show celebration modal if this was a NEW completion (not already completed)
+      // Route new devotional completion into Louis instead of a separate celebration modal
       if (!wasAlreadyCompleted && devotional) {
-        setCompletedDayNumber(dayNumber);
-        setShowCompletionModal(true);
+        sendDevotionalLouisMoment(dayNumber);
       }
 
       // ACTION TRACKING: Only log if this is a NEW completion (not already completed)
@@ -885,18 +926,6 @@ export default function DevotionalDetailPage() {
             </button>
           </div>
         </div>
-      )}
-
-      {/* DEVOTIONAL DAY COMPLETION CELEBRATION MODAL */}
-      {showCompletionModal && completedDayNumber && devotional && (
-        <DevotionalDayCompletionModal
-          dayNumber={completedDayNumber}
-          devotionalTitle={devotional.title}
-          onClose={() => {
-            setShowCompletionModal(false);
-            setCompletedDayNumber(null);
-          }}
-        />
       )}
 
       {/* FREE DEVOTIONAL CHOICE MODAL */}
