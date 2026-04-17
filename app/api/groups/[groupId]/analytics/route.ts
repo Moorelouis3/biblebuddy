@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { buildGroupSchedule } from "@/lib/groupSchedule";
 import type { BibleStudySeriesSnapshot } from "@/lib/groupRecurringSeries";
+import { getLiveStreakMapForUsers } from "@/lib/serverStreaks";
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 const BERLIN_TIME_ZONE = "Europe/Berlin";
@@ -103,10 +104,6 @@ export async function GET(
   const supabaseAdmin = createClient(supabaseUrl, serviceKey, {
     auth: { autoRefreshToken: false, persistSession: false },
   });
-
-  const { data: louisUser } = await supabaseAdmin.auth.admin.listUsers();
-  const louisId =
-    louisUser?.users?.find((user) => (user.email || "").toLowerCase() === ADMIN_EMAIL)?.id || null;
 
   const { data: group, error: groupError } = await supabaseAdmin
     .from("study_groups")
@@ -230,37 +227,42 @@ export async function GET(
     (row) => new Date(row.created_at).getTime() >= new Date(twentyFourHoursAgoIso).getTime(),
   );
   const uniqueBibleStudyCardVisitors24h = new Set(recentBibleStudyCardActions.map((row) => row.user_id).filter(Boolean)).size;
-  const approvedMemberIds = Array.from(
-    new Set(
-      (groupMembersResult.data || [])
-        .map((row) => row.user_id)
-        .filter((value): value is string => Boolean(value)),
+  const { data: allProfileRows } = await supabaseAdmin
+    .from("profile_stats")
+    .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, last_active_date");
+
+  const fireBuddyProfilesPromise = Promise.resolve({
+    data: ((allProfileRows || []) as Array<{
+      user_id: string;
+      display_name: string | null;
+      username: string | null;
+      profile_image_url: string | null;
+      member_badge: string | null;
+      is_paid: boolean | null;
+      current_streak: number | null;
+      current_level: number | null;
+      last_active_date: string | null;
+    }>),
+    error: null,
+  });
+
+  const [fireBuddyProfilesResult, liveStreakMap] = await Promise.all([
+    fireBuddyProfilesPromise,
+    getLiveStreakMapForUsers(
+      supabaseAdmin,
+      (allProfileRows || []).map((row) => row.user_id).filter(Boolean) as string[],
     ),
-  ).filter((userId) => userId !== louisId);
+  ]);
+  const fireBuddyProfiles = fireBuddyProfilesResult.data || [];
 
-  const { data: fireBuddyProfiles } = approvedMemberIds.length
-    ? await supabaseAdmin
-        .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, last_active_date")
-        .in("user_id", approvedMemberIds)
-    : {
-        data: [] as Array<{
-          user_id: string;
-          display_name: string | null;
-          username: string | null;
-          profile_image_url: string | null;
-          member_badge: string | null;
-          is_paid: boolean | null;
-          current_streak: number | null;
-          current_level: number | null;
-          last_active_date: string | null;
-        }>,
-      };
-
-  const fireStreakBuddies = (fireBuddyProfiles || [])
-    .filter((profile) => (profile.current_streak ?? 0) >= 30)
+  const fireStreakBuddies = fireBuddyProfiles
+    .map((profile) => ({
+      ...profile,
+      live_current_streak: liveStreakMap.get(profile.user_id) ?? profile.current_streak ?? 0,
+    }))
+    .filter((profile) => profile.live_current_streak >= 30)
     .sort((a, b) => {
-      const streakDiff = (b.current_streak ?? 0) - (a.current_streak ?? 0);
+      const streakDiff = b.live_current_streak - a.live_current_streak;
       if (streakDiff !== 0) return streakDiff;
       const activeDiff =
         new Date(b.last_active_date || 0).getTime() - new Date(a.last_active_date || 0).getTime();
@@ -276,7 +278,7 @@ export async function GET(
       profileImageUrl: profile.profile_image_url ?? null,
       memberBadge: profile.member_badge ?? null,
       isPaid: !!profile.is_paid,
-      currentStreak: profile.current_streak ?? 0,
+      currentStreak: profile.live_current_streak,
       currentLevel: profile.current_level ?? null,
       lastActiveDate: profile.last_active_date ?? null,
     }));
@@ -354,7 +356,6 @@ export async function GET(
     });
 
   const topBuddyIds = Array.from(activeBuddyScoreMap.entries())
-    .filter(([userId]) => userId !== louisId)
     .map(([userId, counts]) => ({
       userId,
       posts: counts.posts,

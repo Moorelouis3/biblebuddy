@@ -254,8 +254,6 @@ export default function StudyGroupAnalyticsPage() {
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
   const [selectedMetricKey, setSelectedMetricKey] = useState<string | null>("feed_visitors");
   const [chartWeekOffset, setChartWeekOffset] = useState(0);
-  const [selectedBuddyBoardTab, setSelectedBuddyBoardTab] = useState<"fire_30">("fire_30");
-  const [fireThreshold, setFireThreshold] = useState<30 | 60 | 100>(30);
   const [isSharingFireBoard, setIsSharingFireBoard] = useState(false);
   const [fireBoardMessage, setFireBoardMessage] = useState<string | null>(null);
   const [adminUserId, setAdminUserId] = useState<string | null>(null);
@@ -395,9 +393,7 @@ export default function StudyGroupAnalyticsPage() {
     return { days, maxValue, weekLabel };
   }, [chartWeekOffset, selectedMetricConfig]);
 
-  const filteredFireBuddies = useMemo(() => {
-    return (data?.fireStreakBuddies || []).filter((buddy) => buddy.currentStreak >= fireThreshold);
-  }, [data?.fireStreakBuddies, fireThreshold]);
+  const filteredFireBuddies = useMemo(() => data?.fireStreakBuddies || [], [data?.fireStreakBuddies]);
 
   const calendarEvents = useMemo<CalendarEvent[]>(() => {
     if (!data) return [];
@@ -494,7 +490,7 @@ export default function StudyGroupAnalyticsPage() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ threshold: fireThreshold }),
+        body: JSON.stringify({ threshold: 30 }),
       });
 
       const payload = await response.json();
@@ -828,30 +824,17 @@ export default function StudyGroupAnalyticsPage() {
                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#b06a2a]">Bible Buddy Fire Board</p>
                 <h2 className="mt-2 text-xl font-bold text-gray-900">30-Day Fire Emoji</h2>
                 <p className="mt-2 max-w-2xl text-sm text-gray-600">
-                  Ranked by who has held the fire badge the longest. Click a buddy name to open their profile, and share the top fire Bible buddies back into the group feed.
+                  Ranked by who has held the fire badge the longest. Click a buddy name to open their profile, and share these fire Bible buddies back into the group feed.
                 </p>
               </div>
               <div className="flex items-center gap-3 flex-wrap">
                 <button
                   type="button"
-                  onClick={() => setSelectedBuddyBoardTab("fire_30")}
-                  className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                    selectedBuddyBoardTab === "fire_30"
-                      ? "bg-[#f5b553] text-[#4b2a11]"
-                      : "border border-[#eadfce] bg-white text-gray-600"
-                  }`}
+                  onClick={() => undefined}
+                  className="hidden"
                 >
                   🔥 30-Day Fire Emoji
                 </button>
-                <select
-                  value={String(fireThreshold)}
-                  onChange={(event) => setFireThreshold(Number(event.target.value) as 30 | 60 | 100)}
-                  className="rounded-2xl border border-[#e6dccd] bg-white px-4 py-2.5 text-sm font-semibold text-gray-700"
-                >
-                  <option value="30">30+ days</option>
-                  <option value="60">60+ days</option>
-                  <option value="100">100+ days</option>
-                </select>
                 <button
                   type="button"
                   onClick={() => void handleShareFireBoard()}
@@ -873,13 +856,13 @@ export default function StudyGroupAnalyticsPage() {
               <div className="flex items-center justify-between gap-3 border-b border-[#f1e7da] pb-3">
                 <div>
                   <p className="text-lg font-bold text-gray-900">{filteredFireBuddies.length} fire Bible buddies</p>
-                  <p className="text-sm text-gray-500">Showing buddies with a current streak of {fireThreshold} days or more.</p>
+                  <p className="text-sm text-gray-500">Showing Bible buddies with a current streak of 30 days or more.</p>
                 </div>
               </div>
 
               {filteredFireBuddies.length === 0 ? (
                 <div className="mt-4 rounded-2xl bg-[#fcfbf8] px-4 py-5 text-sm text-gray-500">
-                  No Bible buddies in this group have reached the {fireThreshold}-day fire badge yet.
+                  No Bible buddies in this group have reached the 30-day fire badge yet.
                 </div>
               ) : (
                 <div className="mt-4 space-y-3">
@@ -927,7 +910,7 @@ export default function StudyGroupAnalyticsPage() {
                       <div className="mt-4 h-3 overflow-hidden rounded-full bg-[#edf6ed]">
                         <div
                           className="h-full rounded-full bg-[#6cab71]"
-                          style={{ width: `${Math.max(26, Math.min(100, Math.round((buddy.currentStreak / Math.max(fireThreshold, 100)) * 100)))}%` }}
+                          style={{ width: `${Math.max(26, Math.min(100, Math.round((buddy.currentStreak / 100) * 100)))}%` }}
                         />
                       </div>
                     </div>

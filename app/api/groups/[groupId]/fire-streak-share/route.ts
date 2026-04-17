@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { getLiveStreakMapForUsers } from "@/lib/serverStreaks";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -122,38 +123,45 @@ export async function POST(
     return NextResponse.json({ error: "Study group not found." }, { status: 404 });
   }
 
-  const { data: memberships, error: membershipError } = await supabaseAdmin
-    .from("group_members")
-    .select("user_id")
-    .eq("group_id", groupId)
-    .eq("status", "approved");
+  const { data: allProfiles, error: profilesLoadError } = await supabaseAdmin
+    .from("profile_stats")
+    .select("user_id, display_name, username, profile_image_url, current_streak, current_level");
 
-  if (membershipError) {
-    return NextResponse.json({ error: membershipError.message || "Could not load group members." }, { status: 500 });
+  if (profilesLoadError) {
+    return NextResponse.json({ error: profilesLoadError.message || "Could not load Bible Buddy streaks." }, { status: 500 });
   }
 
-  const memberIds = Array.from(new Set((memberships || []).map((row) => row.user_id).filter(Boolean)));
+  const memberIds = Array.from(new Set((allProfiles || []).map((row) => row.user_id).filter(Boolean)));
 
-  const { data: profiles, error: profilesError } = memberIds.length
-    ? await supabaseAdmin
-        .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url, current_streak, current_level")
-        .in("user_id", memberIds)
-    : { data: [], error: null };
+  const profilesPromise = Promise.resolve({
+    data: allProfiles || [],
+    error: null,
+  });
+
+  const [profilesResult, liveStreakMap] = await Promise.all([
+    profilesPromise,
+    getLiveStreakMapForUsers(supabaseAdmin, memberIds),
+  ]);
+  const profiles = profilesResult.data || [];
+  const profilesError = profilesResult.error;
 
   if (profilesError) {
     return NextResponse.json({ error: profilesError.message || "Could not load buddy streaks." }, { status: 500 });
   }
 
-  const buddies = (profiles || [])
-    .filter((profile) => (profile.current_streak ?? 0) >= threshold)
-    .sort((a, b) => (b.current_streak ?? 0) - (a.current_streak ?? 0))
+  const buddies = profiles
+    .map((profile) => ({
+      ...profile,
+      live_current_streak: liveStreakMap.get(profile.user_id) ?? profile.current_streak ?? 0,
+    }))
+    .filter((profile) => profile.live_current_streak >= threshold)
+    .sort((a, b) => b.live_current_streak - a.live_current_streak)
     .slice(0, 10)
     .map((profile, index) => ({
       rank: index + 1,
       displayName: profile.display_name || profile.username || "Buddy",
       profileImageUrl: profile.profile_image_url ?? null,
-      currentStreak: profile.current_streak ?? 0,
+      currentStreak: profile.live_current_streak,
       currentLevel: profile.current_level ?? null,
     }));
 
