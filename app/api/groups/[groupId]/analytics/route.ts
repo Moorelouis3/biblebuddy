@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { buildGroupSchedule } from "@/lib/groupSchedule";
 import type { BibleStudySeriesSnapshot } from "@/lib/groupRecurringSeries";
+import { getLiveStreakMapForRecentUsers } from "@/lib/serverStreaks";
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 const BERLIN_TIME_ZONE = "Europe/Berlin";
@@ -228,9 +229,12 @@ export async function GET(
     (row) => new Date(row.created_at).getTime() >= new Date(twentyFourHoursAgoIso).getTime(),
   );
   const uniqueBibleStudyCardVisitors24h = new Set(recentBibleStudyCardActions.map((row) => row.user_id).filter(Boolean)).size;
-  const { data: allProfileRows } = await supabaseAdmin
+  const [{ data: allProfileRows }, liveRecentStreakMap] = await Promise.all([
+    supabaseAdmin
     .from("profile_stats")
-    .select("*");
+    .select("*"),
+    getLiveStreakMapForRecentUsers(supabaseAdmin, 120),
+  ]);
 
   const fireBuddyProfiles = ((allProfileRows || []) as Array<{
     user_id: string;
@@ -245,10 +249,36 @@ export async function GET(
     has_fire_streak_badge?: boolean | null;
     fire_streak_awarded_at?: string | null;
   }>);
-  const fireStreakBuddies = fireBuddyProfiles
-    .filter((profile) => Boolean(profile.has_fire_streak_badge) || (profile.current_streak ?? 0) >= 30)
+  const fireProfileMap = new Map(
+    fireBuddyProfiles
+      .filter((profile) => profile.user_id)
+      .map((profile) => [profile.user_id, profile]),
+  );
+
+  const fireBuddyIds = new Set<string>();
+  fireBuddyProfiles.forEach((profile) => {
+    if (Boolean(profile.has_fire_streak_badge) || (profile.current_streak ?? 0) >= 30) {
+      fireBuddyIds.add(profile.user_id);
+    }
+  });
+  liveRecentStreakMap.forEach((streak, userId) => {
+    if (streak >= 30 && fireProfileMap.has(userId)) {
+      fireBuddyIds.add(userId);
+    }
+  });
+
+  const fireStreakBuddies = Array.from(fireBuddyIds)
+    .map((userId) => {
+      const profile = fireProfileMap.get(userId);
+      if (!profile) return null;
+      return {
+        ...profile,
+        resolvedCurrentStreak: liveRecentStreakMap.get(userId) ?? profile.current_streak ?? 0,
+      };
+    })
+    .filter((profile): profile is NonNullable<typeof profile> => Boolean(profile))
     .sort((a, b) => {
-      const streakDiff = (b.current_streak ?? 0) - (a.current_streak ?? 0);
+      const streakDiff = (b.resolvedCurrentStreak ?? 0) - (a.resolvedCurrentStreak ?? 0);
       if (streakDiff !== 0) return streakDiff;
       const awardedDiff = String(a.fire_streak_awarded_at || "").localeCompare(String(b.fire_streak_awarded_at || ""));
       if (awardedDiff !== 0) return awardedDiff;
@@ -266,7 +296,7 @@ export async function GET(
       profileImageUrl: profile.profile_image_url ?? null,
       memberBadge: profile.member_badge ?? null,
       isPaid: !!profile.is_paid,
-      currentStreak: profile.current_streak ?? 0,
+      currentStreak: profile.resolvedCurrentStreak ?? 0,
       currentLevel: profile.current_level ?? null,
       lastActiveDate: profile.last_active_date ?? null,
     }));
