@@ -489,25 +489,41 @@ export async function calculateUnifiedStreakFromActions(
 export async function syncCurrentStreakToProfileStats(
   userId: string
 ): Promise<StreakData> {
-  const streakData = await calculateUnifiedStreakFromActions(userId);
-  const nowIso = new Date().toISOString();
-  const hasFireStreakBadge = streakData.currentStreak >= 30;
-
   const { data: existingProfile } = await supabase
     .from("profile_stats")
     .select("*")
     .eq("user_id", userId)
     .maybeSingle();
 
+  const streakData = await calculateUnifiedStreakFromActions(userId);
+  const nowIso = new Date().toISOString();
+  const existingCurrentStreak = Number((existingProfile as any)?.current_streak || 0);
+  const existingHasFireBadge = Boolean((existingProfile as any)?.has_fire_streak_badge) || existingCurrentStreak >= 30;
+
+  // Protect real fire streaks from being overwritten by a weak client-side recalc.
+  // Strong downward corrections should come from the dedicated server/cron refresh path.
+  const resolvedCurrentStreak =
+    existingHasFireBadge && streakData.currentStreak < 30
+      ? existingCurrentStreak
+      : streakData.currentStreak;
+
+  const resolvedStreakData: StreakData =
+    resolvedCurrentStreak === streakData.currentStreak
+      ? streakData
+      : {
+          currentStreak: resolvedCurrentStreak,
+          last7Days: streakData.last7Days,
+        };
+
   const fireStreakAwardedAt =
-    hasFireStreakBadge
+    resolvedCurrentStreak >= 30
       ? (existingProfile as any)?.fire_streak_awarded_at || nowIso
       : null;
 
   const fullPayload = {
     user_id: userId,
-    current_streak: streakData.currentStreak,
-    has_fire_streak_badge: hasFireStreakBadge,
+    current_streak: resolvedCurrentStreak,
+    has_fire_streak_badge: resolvedCurrentStreak >= 30,
     fire_streak_awarded_at: fireStreakAwardedAt,
     fire_streak_last_checked_at: nowIso,
     updated_at: nowIso,
@@ -515,7 +531,7 @@ export async function syncCurrentStreakToProfileStats(
 
   const legacyPayload = {
     user_id: userId,
-    current_streak: streakData.currentStreak,
+    current_streak: resolvedCurrentStreak,
     updated_at: nowIso,
   };
 
@@ -537,7 +553,7 @@ export async function syncCurrentStreakToProfileStats(
     console.error("[STREAK] Error syncing current_streak to profile_stats:", error);
   }
 
-  return streakData;
+  return resolvedStreakData;
 }
 
 /**
