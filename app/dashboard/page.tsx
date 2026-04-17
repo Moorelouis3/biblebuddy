@@ -2,7 +2,7 @@
 "use client";
 export const dynamic = 'force-dynamic';
 
-import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import "../../styles/pulse.css";
 import DashboardCards from "../../components/DashboardCards";
@@ -141,10 +141,6 @@ export default function DashboardPage() {
   const [activeTourKey, setActiveTourKey] = useState<FeatureTourKey | null>(null);
   const [pendingTourNavigation, setPendingTourNavigation] = useState<string | null>(null);
   const [isSavingFeatureTour, setIsSavingFeatureTour] = useState(false);
-  const [dashboardTourStep, setDashboardTourStep] = useState(-1);
-  const [dashboardTourAnchor, setDashboardTourAnchor] = useState<{ top: number; left: number; width: number; height: number } | null>(null);
-  const [dashboardTourCanAdvance, setDashboardTourCanAdvance] = useState(false);
-  const dashboardTourAdvanceTimeoutRef = useRef<number | null>(null);
   const [isOwnerDashboard, setIsOwnerDashboard] = useState(false);
   const [ownerQuickStats, setOwnerQuickStats] = useState({
     signups24h: 0,
@@ -207,61 +203,10 @@ export default function DashboardPage() {
     },
   };
 
-  const DASHBOARD_TOUR_STEPS: Array<{
-    title: string;
-    body: string;
-    spotlight: "overview" | "level" | "recommendation" | "bible" | "group" | "tools" | "games" | "invite" | null;
-  }> = [
-    {
-      title: "This is your dashboard",
-      body: "This is your home. This is your main page in Bible Buddy, and this is where you can access everything inside the app.",
-      spotlight: "overview",
-    },
-    {
-      title: "This is your level",
-      body: "Everything you do inside Bible Buddy gives you points, and those points help you level up over time.",
-      spotlight: "level",
-    },
-    {
-      title: "This is your main page",
-      body: "This is where you can move through Bible Buddy every day. Just click one of the cards to start.",
-      spotlight: null,
-    },
-    {
-      title: "This is The Bible",
-      body: "This is your full Bible reader where you can read Scripture, highlight verses, save progress, and interact with the Word of God.",
-      spotlight: "bible",
-    },
-    {
-      title: "This is the Bible Study Group",
-      body: "This is where you interact with other Bible Buddies inside the app through weekly series and daily conversations.",
-      spotlight: "group",
-    },
-    {
-      title: "This is Bible Study Tools",
-      body: "This is where you can access devotionals, reading plans, and study tools like the people, places, and keyword databases.",
-      spotlight: "tools",
-    },
-    {
-      title: "This is Bible Study Games",
-      body: "Play our Bible-based games, including trivia and Scrabble-style challenges, to reinforce what you are learning.",
-      spotlight: "games",
-    },
-    {
-      title: "Invite another Bible Buddy",
-      body: "Do you know somebody else who would like to be a Bible Buddy too? Click this button and share the app with them.",
-      spotlight: "invite",
-    },
-  ];
-
   const DASHBOARD_TOUR_CONTENT = (
-    <div className="space-y-6">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
-        Welcome to Your Dashboard
-      </h1>
-
+    <div className="space-y-5">
       <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-        This is your home. This is your main page in Bible Buddy. This is where you can access everything inside the app.
+        This is your home base inside Bible Buddy. Everything starts here.
       </p>
 
       <div className="space-y-5">
@@ -802,131 +747,7 @@ export default function DashboardPage() {
     }
   }, [activeTourKey, featureTours, featureToursEnabled, featureToursLoaded, userId]);
 
-  useEffect(() => {
-    if (activeTourKey === "dashboard") {
-      setDashboardTourStep(-1);
-      setDashboardTourAnchor(null);
-      setDashboardTourCanAdvance(false);
-    }
-  }, [activeTourKey]);
-
-  useEffect(() => {
-    return () => {
-      if (dashboardTourAdvanceTimeoutRef.current) {
-        clearTimeout(dashboardTourAdvanceTimeoutRef.current);
-      }
-    };
-  }, []);
-
-  function getVisibleDashboardTourTarget(spotlight: NonNullable<(typeof DASHBOARD_TOUR_STEPS)[number]["spotlight"]>) {
-    const targets = Array.from(document.querySelectorAll(`[data-dashboard-tour="${spotlight}"]`));
-
-    for (const target of targets) {
-      if (!(target instanceof HTMLElement)) continue;
-      const rect = target.getBoundingClientRect();
-      const styles = window.getComputedStyle(target);
-      const isVisible =
-        styles.display !== "none" &&
-        styles.visibility !== "hidden" &&
-        rect.width > 0 &&
-        rect.height > 0;
-
-      if (isVisible) {
-        return target;
-      }
-    }
-
-    return null;
-  }
-
-  useEffect(() => {
-    if (activeTourKey !== "dashboard" || dashboardTourStep < 0) return;
-
-    setDashboardTourCanAdvance(false);
-
-    const spotlight = DASHBOARD_TOUR_STEPS[dashboardTourStep]?.spotlight;
-    if (!spotlight) return;
-
-    const timeout = window.setTimeout(() => {
-      const target = getVisibleDashboardTourTarget(spotlight);
-      if (target instanceof HTMLElement) {
-        target.scrollIntoView({ behavior: "smooth", block: "center" });
-        const rect = target.getBoundingClientRect();
-        setDashboardTourAnchor({
-          top: rect.top,
-          left: rect.left,
-          width: rect.width,
-          height: rect.height,
-        });
-      }
-    }, 160);
-
-    return () => window.clearTimeout(timeout);
-  }, [activeTourKey, dashboardTourStep]);
-
-  useEffect(() => {
-    if (activeTourKey !== "dashboard" || dashboardTourStep < 0) return;
-
-    const timeout = window.setTimeout(() => {
-      setDashboardTourCanAdvance(true);
-    }, 350);
-
-    return () => window.clearTimeout(timeout);
-  }, [activeTourKey, dashboardTourStep]);
-
-  useEffect(() => {
-    if (activeTourKey !== "dashboard" || dashboardTourStep < 0) return;
-
-    function refreshDashboardTourAnchor() {
-      const spotlight = DASHBOARD_TOUR_STEPS[dashboardTourStep]?.spotlight;
-      if (!spotlight) return;
-      const target = getVisibleDashboardTourTarget(spotlight);
-      if (target instanceof HTMLElement) {
-        const rect = target.getBoundingClientRect();
-        setDashboardTourAnchor({
-          top: rect.top,
-          left: rect.left,
-          width: rect.width,
-          height: rect.height,
-        });
-      }
-    }
-
-    window.addEventListener("resize", refreshDashboardTourAnchor);
-    window.addEventListener("scroll", refreshDashboardTourAnchor, true);
-    return () => {
-      window.removeEventListener("resize", refreshDashboardTourAnchor);
-      window.removeEventListener("scroll", refreshDashboardTourAnchor, true);
-    };
-  }, [activeTourKey, dashboardTourStep]);
-
   async function handleTourUnderstand() {
-    if (activeTourKey === "dashboard" && dashboardTourStep < 0) {
-      setDashboardTourCanAdvance(false);
-      setDashboardTourAnchor(null);
-      if (dashboardTourAdvanceTimeoutRef.current) {
-        clearTimeout(dashboardTourAdvanceTimeoutRef.current);
-      }
-      dashboardTourAdvanceTimeoutRef.current = window.setTimeout(() => {
-        setDashboardTourStep(0);
-        dashboardTourAdvanceTimeoutRef.current = null;
-      }, 160);
-      return;
-    }
-
-    if (activeTourKey === "dashboard" && dashboardTourStep < DASHBOARD_TOUR_STEPS.length - 1) {
-      setDashboardTourCanAdvance(false);
-      setDashboardTourAnchor(null);
-      if (dashboardTourAdvanceTimeoutRef.current) {
-        clearTimeout(dashboardTourAdvanceTimeoutRef.current);
-      }
-      dashboardTourAdvanceTimeoutRef.current = window.setTimeout(() => {
-        setDashboardTourStep((current) => current + 1);
-        dashboardTourAdvanceTimeoutRef.current = null;
-      }, 160);
-      return;
-    }
-
     if (!activeTourKey || !userId) return;
 
     setIsSavingFeatureTour(true);
@@ -968,13 +789,6 @@ export default function DashboardPage() {
     setActiveTourKey(null);
     setPendingTourNavigation(null);
     setIsSavingFeatureTour(false);
-    setDashboardTourStep(-1);
-    setDashboardTourAnchor(null);
-    setDashboardTourCanAdvance(false);
-    if (dashboardTourAdvanceTimeoutRef.current) {
-      clearTimeout(dashboardTourAdvanceTimeoutRef.current);
-      dashboardTourAdvanceTimeoutRef.current = null;
-    }
 
     if (nextPath) {
       router.push(nextPath);
@@ -985,13 +799,6 @@ export default function DashboardPage() {
     const nextPath = pendingTourNavigation;
     setActiveTourKey(null);
     setPendingTourNavigation(null);
-    setDashboardTourStep(-1);
-    setDashboardTourAnchor(null);
-    setDashboardTourCanAdvance(false);
-    if (dashboardTourAdvanceTimeoutRef.current) {
-      clearTimeout(dashboardTourAdvanceTimeoutRef.current);
-      dashboardTourAdvanceTimeoutRef.current = null;
-    }
 
     if (nextPath) {
       router.push(nextPath);
@@ -1395,7 +1202,7 @@ export default function DashboardPage() {
           setShowLevelInfoModal={setShowLevelInfoModal}
           setShowStreakBadgeModal={setShowStreakBadgeModal}
           onInviteBuddy={handleInviteBuddy}
-          dashboardTourSpotlight={activeTourKey === "dashboard" ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.spotlight ?? null : null}
+          dashboardTourSpotlight={null}
         />
         </div>
 
@@ -1437,7 +1244,7 @@ export default function DashboardPage() {
           setShowLevelInfoModal={setShowLevelInfoModal}
           setShowStreakBadgeModal={setShowStreakBadgeModal}
           onInviteBuddy={handleInviteBuddy}
-          dashboardTourSpotlight={activeTourKey === "dashboard" ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.spotlight ?? null : null}
+          dashboardTourSpotlight={null}
         />
       </div>
 
@@ -1662,30 +1469,14 @@ export default function DashboardPage() {
       {activeTourKey ? (
         <FeatureTourModal
           isOpen={true}
-          title={
-            activeTourKey === "dashboard" && dashboardTourStep >= 0
-              ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.title ?? TOUR_COPY.dashboard.title
-              : TOUR_COPY[activeTourKey].title
-          }
-          body={
-            activeTourKey === "dashboard" && dashboardTourStep >= 0
-              ? DASHBOARD_TOUR_STEPS[dashboardTourStep]?.body ?? TOUR_COPY.dashboard.body
-              : TOUR_COPY[activeTourKey].body
-          }
-          content={activeTourKey === "dashboard" && dashboardTourStep < 0 ? DASHBOARD_TOUR_CONTENT : undefined}
-          primaryButtonText={
-            activeTourKey === "dashboard"
-              ? dashboardTourStep < 0
-                ? "I understand"
-                : dashboardTourStep === DASHBOARD_TOUR_STEPS.length - 1
-                  ? "Done"
-                  : "Next"
-              : "I understand"
-          }
-          variant={activeTourKey === "dashboard" && dashboardTourStep >= 0 ? "coachmark" : "default"}
-          anchorRect={activeTourKey === "dashboard" ? dashboardTourAnchor : null}
-          canAdvance={activeTourKey === "dashboard" ? (dashboardTourStep < 0 ? true : dashboardTourCanAdvance) : true}
-          closeOnBackdrop={activeTourKey !== "dashboard" || dashboardTourStep < 0}
+          title={TOUR_COPY[activeTourKey].title}
+          body={TOUR_COPY[activeTourKey].body}
+          content={activeTourKey === "dashboard" ? DASHBOARD_TOUR_CONTENT : undefined}
+          primaryButtonText="I understand"
+          variant="default"
+          anchorRect={null}
+          canAdvance={true}
+          closeOnBackdrop={true}
           isSaving={isSavingFeatureTour}
           onClose={handleTourClose}
           onUnderstand={handleTourUnderstand}
