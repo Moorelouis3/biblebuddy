@@ -18,7 +18,7 @@ import { TOTAL_WEEKS, getSeriesWeekLesson } from "@/lib/seriesContent";
 import { parseWeeklyTriviaQuestions } from "@/lib/groupWeeklyTrivia";
 import { parseWeeklyPollOptions, type WeeklyGroupPollRecord } from "@/lib/groupWeeklyPoll";
 import type { WeeklyGroupQuestionRecord } from "@/lib/groupWeeklyQuestion";
-import { calculateStreakFromActions } from "@/lib/profileStats";
+import { calculateUnifiedStreakFromActions } from "@/lib/profileStats";
 import UserBadge from "@/components/UserBadge";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
@@ -2094,7 +2094,7 @@ RULES:
           .select("display_name, username, profile_image_url, bio, location, is_paid, member_badge, current_streak, feature_tours")
           .eq("user_id", user.id)
           .maybeSingle(),
-        calculateStreakFromActions(user.id),
+        calculateUnifiedStreakFromActions(user.id),
       ]);
       const resolvedCurrentStreak = streakData.currentStreak ?? profile?.current_streak ?? null;
       setDisplayName(profile?.display_name || profile?.username || user.email?.split("@")[0] || "Buddy");
@@ -2362,12 +2362,47 @@ RULES:
   useEffect(() => {
     if (!group || !userId || activeTab !== "home" || typeof window === "undefined") return;
 
-    const todayKey = new Date().toISOString().slice(0, 10);
-    const storageKey = `bb:group-home-view:${group.id}:${userId}:${todayKey}`;
-    if (window.localStorage.getItem(storageKey) === "1") return;
+    let cancelled = false;
 
-    window.localStorage.setItem(storageKey, "1");
-    void logActionToMasterActions(userId, "study_group_feed_viewed", group.id, displayName || null);
+    void (async () => {
+      const now = Date.now();
+      const storageKey = `bb:group-home-view:${group.id}:${userId}`;
+      const previousLoggedAt = window.localStorage.getItem(storageKey);
+      if (previousLoggedAt) {
+        const previousTime = Number(previousLoggedAt);
+        if (Number.isFinite(previousTime) && now - previousTime < 24 * 60 * 60 * 1000) {
+          return;
+        }
+      }
+
+      const sinceIso = new Date(now - 24 * 60 * 60 * 1000).toISOString();
+      const { data: recentFeedViews, error: recentFeedViewsError } = await supabase
+        .from("master_actions")
+        .select("created_at")
+        .eq("user_id", userId)
+        .eq("action_type", "study_group_feed_viewed")
+        .eq("action_label", group.id)
+        .gte("created_at", sinceIso)
+        .limit(1);
+
+      if (cancelled) return;
+
+      if (recentFeedViewsError) {
+        console.error("[GROUP_FEED] Could not verify recent feed-open actions:", recentFeedViewsError);
+      }
+
+      if ((recentFeedViews || []).length > 0) {
+        window.localStorage.setItem(storageKey, String(now));
+        return;
+      }
+
+      window.localStorage.setItem(storageKey, String(now));
+      void logActionToMasterActions(userId, "study_group_feed_viewed", group.id, displayName || null);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, [activeTab, displayName, group, userId]);
 
   useEffect(() => {

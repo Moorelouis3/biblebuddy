@@ -252,7 +252,7 @@ export default function StudyGroupAnalyticsPage() {
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<AnalyticsPayload | null>(null);
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
-  const [selectedMetricKey, setSelectedMetricKey] = useState<string | null>("feed_visitors");
+  const [selectedMetricKey, setSelectedMetricKey] = useState<string | null>("posts");
   const [chartWeekOffset, setChartWeekOffset] = useState(0);
   const [isSharingFireBoard, setIsSharingFireBoard] = useState(false);
   const [fireBoardMessage, setFireBoardMessage] = useState<string | null>(null);
@@ -298,7 +298,7 @@ export default function StudyGroupAnalyticsPage() {
   const queueEditorText = stripSchedulerHtml(queueEditorHtml);
 
   const metricCards = [
-    { key: "feed_visitors", label: "Feed Visitors", value: data?.metrics.bibleStudyCardClicks24h ?? 0, helper: `${data?.metrics.uniqueBibleStudyCardVisitors24h ?? 0} unique buddies clicked the Bible study card in the last 24 hours` },
+    { key: null, label: "Feed Visitors", value: data?.metrics.uniqueFeedVisitors ?? 0, helper: `${data?.metrics.totalFeedVisits ?? 0} total group feed opens in the last 24 hours` },
     { key: "posts", label: "Posts", value: data?.metrics.posts ?? 0, helper: "Top-level group posts" },
     { key: "comments", label: "Comments", value: data?.metrics.comments ?? 0, helper: "Replies and discussion" },
     { key: "likes", label: "Likes", value: data?.metrics.likes ?? 0, helper: "Group post likes" },
@@ -335,16 +335,15 @@ export default function StudyGroupAnalyticsPage() {
           valueLabel: "reads",
           series: data?.charts.articleReadsDaily || [],
         };
-      case "feed_visitors":
       default:
         return {
-          title: "Feed Visitors Trend",
-          helper: "Bible study card clicks by day, one week at a time.",
-          valueLabel: "clicks",
-          series: (data?.charts.bibleStudyCardDaily || []).map((entry) => ({
+          title: "Posts Trend",
+          helper: "Top-level group posts by day, one week at a time.",
+          valueLabel: "posts",
+          series: (data?.charts.postsDaily || []).map((entry) => ({
             dateKey: entry.dateKey,
             label: entry.label,
-            total: entry.totalClicks,
+            total: entry.total,
             uniqueVisitors: entry.uniqueVisitors,
           })),
         };
@@ -970,50 +969,6 @@ export default function StudyGroupAnalyticsPage() {
               </div>
             </div>
           ) : null}
-
-          <div className="mt-8 rounded-3xl border border-[#dce8dc] bg-[#f8fcf7] p-5">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#6f8d6c]">Recurring Schedule</p>
-            <p className="mt-2 text-sm text-gray-600">
-              The recurring day schedule now lives inside the scheduler feed, where the next upcoming drops stay pinned at the top like compact feed cards.
-            </p>
-            <div className="mt-5 rounded-3xl border border-[#d4ecd4] bg-white p-5">
-              <p className="text-sm font-semibold text-gray-900">What changed</p>
-              <p className="mt-2 text-sm leading-6 text-gray-600">
-                Instead of managing recurring posts from a calendar widget here, the scheduler now shows the next two upcoming drops at the top of the feed so they feel closer to the real post flow.
-              </p>
-              <Link
-                href={`/study-groups/${groupId}/scheduler`}
-                className="mt-4 inline-flex rounded-2xl bg-[#4a9b6f] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-              >
-                Open Scheduler Feed
-              </Link>
-            </div>
-          </div>
-
-          <div className="mt-8 rounded-3xl border border-[#e5e7eb] bg-white p-5 shadow-sm">
-            <div className="flex items-start justify-between gap-4 flex-wrap">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-gray-400">Home Feed Scheduler</p>
-                <p className="mt-2 text-lg font-bold text-gray-900">Private scheduler feed</p>
-                <p className="mt-2 max-w-2xl text-sm text-gray-600">
-                  The scheduler now lives on its own page so it can feel like the real home feed composer and preview flow instead of an analytics widget.
-                </p>
-              </div>
-              <Link
-                href={`/study-groups/${groupId}/scheduler`}
-                className="rounded-2xl bg-[#4a9b6f] px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-              >
-                Open Scheduler
-              </Link>
-            </div>
-
-            <div className="mt-5 rounded-3xl border border-[#d4ecd4] bg-[#f9fcf9] p-5">
-              <p className="text-sm font-semibold text-gray-900">What moved</p>
-              <p className="mt-2 text-sm leading-6 text-gray-600">
-                Your cover drafts and text-only thread drafts now live in a dedicated private scheduler feed. You can save drafts with no time, click any queued post to preview it like a real home feed post, and post it from there when ready.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 

@@ -143,7 +143,8 @@ export async function GET(
       .from("master_actions")
       .select("user_id, username, created_at")
       .eq("action_type", "study_group_feed_viewed")
-      .eq("action_label", groupId),
+      .eq("action_label", groupId)
+      .gte("created_at", twentyFourHoursAgoIso),
     supabaseAdmin
       .from("master_actions")
       .select("user_id, username, created_at")
