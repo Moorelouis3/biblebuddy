@@ -274,19 +274,19 @@ export async function GET(
 
   const groupPostIds = (groupPostIdsResult.data || []).map((row) => row.id);
   let likeCount = 0;
-  let postRowsDetailed: Array<{ id: string; user_id: string | null; created_at: string | null; parent_post_id: string | null }> = [];
+  let postRowsDetailed: Array<{ id: string; user_id: string | null; created_at: string | null; parent_post_id: string | null; like_count?: number | null }> = [];
   let likeRowsDetailed: Array<{ user_id: string | null; created_at: string | null }> = [];
   let recentLikeRows: Array<{ post_id: string; user_id: string | null; created_at: string | null }> = [];
 
   if (groupPostIds.length > 0) {
-    const [{ count }, detailedPostsResult, detailedLikesResult] = await Promise.all([
+    const [_, detailedPostsResult, detailedLikesResult] = await Promise.all([
       supabaseAdmin
         .from("group_post_likes")
         .select("post_id", { count: "exact", head: true })
         .in("post_id", groupPostIds),
       supabaseAdmin
         .from("group_posts")
-        .select("id, user_id, created_at, parent_post_id")
+        .select("id, user_id, created_at, parent_post_id, like_count")
         .eq("group_id", groupId)
         .gte("created_at", ninetyDaysAgoIso),
       supabaseAdmin
@@ -295,9 +295,9 @@ export async function GET(
         .in("post_id", groupPostIds)
         .gte("created_at", ninetyDaysAgoIso),
     ]);
-    likeCount = count || 0;
     postRowsDetailed = detailedPostsResult.data || [];
     likeRowsDetailed = detailedLikesResult.data || [];
+    likeCount = postRowsDetailed.reduce((total, row) => total + (row.like_count || 0), 0);
 
     const { data: recentLikesResult } = await supabaseAdmin
       .from("group_post_likes")
