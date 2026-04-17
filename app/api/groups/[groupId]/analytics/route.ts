@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { buildGroupSchedule } from "@/lib/groupSchedule";
 import type { BibleStudySeriesSnapshot } from "@/lib/groupRecurringSeries";
-import { getLiveStreakMapForUsers } from "@/lib/serverStreaks";
+import { getLiveStreakMapForRecentUsers } from "@/lib/serverStreaks";
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 const BERLIN_TIME_ZONE = "Europe/Berlin";
@@ -249,10 +249,7 @@ export async function GET(
 
   const [fireBuddyProfilesResult, liveStreakMap] = await Promise.all([
     fireBuddyProfilesPromise,
-    getLiveStreakMapForUsers(
-      supabaseAdmin,
-      (allProfileRows || []).map((row) => row.user_id).filter(Boolean) as string[],
-    ),
+    getLiveStreakMapForRecentUsers(supabaseAdmin, 60),
   ]);
   const fireBuddyProfiles = fireBuddyProfilesResult.data || [];
 

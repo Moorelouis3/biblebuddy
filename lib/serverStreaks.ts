@@ -134,3 +134,60 @@ export async function getLiveStreakMapForUsers(
 
   return streakMap;
 }
+
+export async function getLiveStreakMapForRecentUsers(
+  supabase: SupabaseClient,
+  lookbackDays = 60,
+) {
+  const since = new Date();
+  since.setUTCDate(since.getUTCDate() - lookbackDays);
+  const sinceIso = since.toISOString();
+
+  const [actionsResponse, appLoginsResponse] = await Promise.all([
+    supabase
+      .from("master_actions")
+      .select("user_id, created_at, action_type")
+      .gte("created_at", sinceIso)
+      .order("created_at", { ascending: false }),
+    supabase
+      .from("app_logins")
+      .select("user_id, created_at")
+      .gte("created_at", sinceIso)
+      .order("created_at", { ascending: false }),
+  ]);
+
+  if (actionsResponse.error) {
+    throw actionsResponse.error;
+  }
+  if (appLoginsResponse.error) {
+    throw appLoginsResponse.error;
+  }
+
+  const completedDatesByUser = new Map<string, Set<string>>();
+  const ensureUserSet = (userId: string) => {
+    let existing = completedDatesByUser.get(userId);
+    if (!existing) {
+      existing = new Set<string>();
+      completedDatesByUser.set(userId, existing);
+    }
+    return existing;
+  };
+
+  (actionsResponse.data || []).forEach((row) => {
+    if (!row.user_id) return;
+    if (!STREAK_ACTION_TYPES.has(row.action_type)) return;
+    ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at));
+  });
+
+  (appLoginsResponse.data || []).forEach((row) => {
+    if (!row.user_id) return;
+    ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at));
+  });
+
+  const streakMap = new Map<string, number>();
+  completedDatesByUser.forEach((completedDates, userId) => {
+    streakMap.set(userId, calculateStreakFromCompletedDates(completedDates));
+  });
+
+  return streakMap;
+}

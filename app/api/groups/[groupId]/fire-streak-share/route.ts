@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { getLiveStreakMapForUsers } from "@/lib/serverStreaks";
+import { getLiveStreakMapForRecentUsers } from "@/lib/serverStreaks";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -140,7 +140,7 @@ export async function POST(
 
   const [profilesResult, liveStreakMap] = await Promise.all([
     profilesPromise,
-    getLiveStreakMapForUsers(supabaseAdmin, memberIds),
+    getLiveStreakMapForRecentUsers(supabaseAdmin, 60),
   ]);
   const profiles = profilesResult.data || [];
 
