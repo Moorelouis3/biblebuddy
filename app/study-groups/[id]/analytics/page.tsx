@@ -6,6 +6,9 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import StreakFlameBadge from "@/components/StreakFlameBadge";
+import LevelBadge from "@/components/LevelBadge";
+import UserBadge from "@/components/UserBadge";
 
 type AnalyticsPayload = {
   group: {
@@ -78,6 +81,17 @@ type AnalyticsPayload = {
     comments: number;
     likes: number;
     score: number;
+  }>;
+  fireStreakBuddies: Array<{
+    rank: number;
+    userId: string;
+    displayName: string;
+    profileImageUrl: string | null;
+    memberBadge: string | null;
+    isPaid: boolean;
+    currentStreak: number;
+    currentLevel: number | null;
+    lastActiveDate: string | null;
   }>;
   schedule: Array<{
     key: string;
@@ -220,6 +234,16 @@ function getGroupActionColorClass(actionType: string) {
   return "bg-[#fcfbf8]";
 }
 
+function getInitial(name: string) {
+  return (name || "B").trim().charAt(0).toUpperCase() || "B";
+}
+
+function avatarColor(seed: string) {
+  const palette = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
+  const sum = seed.split("").reduce((total, char) => total + char.charCodeAt(0), 0);
+  return palette[sum % palette.length];
+}
+
 export default function StudyGroupAnalyticsPage() {
   const params = useParams();
   const router = useRouter();
@@ -230,6 +254,10 @@ export default function StudyGroupAnalyticsPage() {
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
   const [selectedMetricKey, setSelectedMetricKey] = useState<string | null>("feed_visitors");
   const [chartWeekOffset, setChartWeekOffset] = useState(0);
+  const [selectedBuddyBoardTab, setSelectedBuddyBoardTab] = useState<"fire_30">("fire_30");
+  const [fireThreshold, setFireThreshold] = useState<30 | 60 | 100>(30);
+  const [isSharingFireBoard, setIsSharingFireBoard] = useState(false);
+  const [fireBoardMessage, setFireBoardMessage] = useState<string | null>(null);
   const [adminUserId, setAdminUserId] = useState<string | null>(null);
   const [carouselQueue, setCarouselQueue] = useState<CarouselQueueItem[]>([]);
   const [queueLoading, setQueueLoading] = useState(false);
@@ -367,6 +395,10 @@ export default function StudyGroupAnalyticsPage() {
     return { days, maxValue, weekLabel };
   }, [chartWeekOffset, selectedMetricConfig]);
 
+  const filteredFireBuddies = useMemo(() => {
+    return (data?.fireStreakBuddies || []).filter((buddy) => buddy.currentStreak >= fireThreshold);
+  }, [data?.fireStreakBuddies, fireThreshold]);
+
   const calendarEvents = useMemo<CalendarEvent[]>(() => {
     if (!data) return [];
     return data.schedule
@@ -440,6 +472,41 @@ export default function StudyGroupAnalyticsPage() {
       setQueueError(getErrorMessage(err, "Could not load the home feed scheduler."));
     } finally {
       setQueueLoading(false);
+    }
+  }
+
+  async function handleShareFireBoard() {
+    if (isSharingFireBoard) return;
+
+    setIsSharingFireBoard(true);
+    setFireBoardMessage(null);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch(`/api/groups/${groupId}/fire-streak-share`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ threshold: fireThreshold }),
+      });
+
+      const payload = await response.json();
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not share the fire streak post.");
+      }
+
+      setFireBoardMessage(`Shared the top ${payload.sharedCount} fire Bible buddies to the group feed.`);
+    } catch (err) {
+      setFireBoardMessage(getErrorMessage(err, "Could not share the fire streak post."));
+    } finally {
+      setIsSharingFireBoard(false);
     }
   }
 
@@ -749,6 +816,121 @@ export default function StudyGroupAnalyticsPage() {
                         </span>
                       </div>
                     </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-5 rounded-3xl border border-[#efe5d9] bg-[#fffdf9] p-5 shadow-sm">
+            <div className="flex items-start justify-between gap-4 flex-wrap">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#b06a2a]">Bible Buddy Fire Board</p>
+                <h2 className="mt-2 text-xl font-bold text-gray-900">30-Day Fire Emoji</h2>
+                <p className="mt-2 max-w-2xl text-sm text-gray-600">
+                  Ranked by who has held the fire badge the longest. Click a buddy name to open their profile, and share the top fire Bible buddies back into the group feed.
+                </p>
+              </div>
+              <div className="flex items-center gap-3 flex-wrap">
+                <button
+                  type="button"
+                  onClick={() => setSelectedBuddyBoardTab("fire_30")}
+                  className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                    selectedBuddyBoardTab === "fire_30"
+                      ? "bg-[#f5b553] text-[#4b2a11]"
+                      : "border border-[#eadfce] bg-white text-gray-600"
+                  }`}
+                >
+                  🔥 30-Day Fire Emoji
+                </button>
+                <select
+                  value={String(fireThreshold)}
+                  onChange={(event) => setFireThreshold(Number(event.target.value) as 30 | 60 | 100)}
+                  className="rounded-2xl border border-[#e6dccd] bg-white px-4 py-2.5 text-sm font-semibold text-gray-700"
+                >
+                  <option value="30">30+ days</option>
+                  <option value="60">60+ days</option>
+                  <option value="100">100+ days</option>
+                </select>
+                <button
+                  type="button"
+                  onClick={() => void handleShareFireBoard()}
+                  disabled={isSharingFireBoard || filteredFireBuddies.length === 0}
+                  className="rounded-2xl bg-[#4a9b6f] px-4 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
+                >
+                  {isSharingFireBoard ? "Sharing..." : "Share Fire Buddies"}
+                </button>
+              </div>
+            </div>
+
+            {fireBoardMessage ? (
+              <div className="mt-4 rounded-2xl border border-[#e6dccd] bg-white px-4 py-3 text-sm text-gray-700">
+                {fireBoardMessage}
+              </div>
+            ) : null}
+
+            <div className="mt-5 rounded-3xl border border-[#efe5d9] bg-white p-4">
+              <div className="flex items-center justify-between gap-3 border-b border-[#f1e7da] pb-3">
+                <div>
+                  <p className="text-lg font-bold text-gray-900">{filteredFireBuddies.length} fire Bible buddies</p>
+                  <p className="text-sm text-gray-500">Showing buddies with a current streak of {fireThreshold} days or more.</p>
+                </div>
+              </div>
+
+              {filteredFireBuddies.length === 0 ? (
+                <div className="mt-4 rounded-2xl bg-[#fcfbf8] px-4 py-5 text-sm text-gray-500">
+                  No Bible buddies in this group have reached the {fireThreshold}-day fire badge yet.
+                </div>
+              ) : (
+                <div className="mt-4 space-y-3">
+                  {filteredFireBuddies.map((buddy) => (
+                    <div
+                      key={buddy.userId}
+                      className="rounded-[26px] border border-[#ebe3d8] bg-[#fffdf9] px-4 py-4 shadow-sm"
+                    >
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex min-w-0 items-center gap-3">
+                          <div className="text-3xl font-extrabold leading-none text-gray-900">#{buddy.rank}</div>
+                          {buddy.profileImageUrl ? (
+                            <img
+                              src={buddy.profileImageUrl}
+                              alt={buddy.displayName}
+                              className="h-12 w-12 rounded-full object-cover"
+                            />
+                          ) : (
+                            <div
+                              className="flex h-12 w-12 items-center justify-center rounded-full text-sm font-bold text-white"
+                              style={{ backgroundColor: avatarColor(buddy.userId) }}
+                            >
+                              {getInitial(buddy.displayName)}
+                            </div>
+                          )}
+                          <div className="min-w-0">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <Link href={`/profile/${buddy.userId}`} className="text-lg font-bold text-gray-900 hover:underline">
+                                {buddy.displayName}
+                              </Link>
+                              <StreakFlameBadge currentStreak={buddy.currentStreak} />
+                              <LevelBadge currentLevel={buddy.currentLevel} />
+                              <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
+                            </div>
+                            <p className="mt-1 text-sm text-gray-500">
+                              Last active {buddy.lastActiveDate ? new Date(buddy.lastActiveDate).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "recently"}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="shrink-0 text-right">
+                          <p className="text-2xl font-extrabold text-gray-900">{buddy.currentStreak}</p>
+                          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">days</p>
+                        </div>
+                      </div>
+                      <div className="mt-4 h-3 overflow-hidden rounded-full bg-[#edf6ed]">
+                        <div
+                          className="h-full rounded-full bg-[#6cab71]"
+                          style={{ width: `${Math.max(26, Math.min(100, Math.round((buddy.currentStreak / Math.max(fireThreshold, 100)) * 100)))}%` }}
+                        />
+                      </div>
+                    </div>
                   ))}
                 </div>
               )}

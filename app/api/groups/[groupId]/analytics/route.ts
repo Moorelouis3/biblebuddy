@@ -110,7 +110,7 @@ export async function GET(
 
   const { data: group, error: groupError } = await supabaseAdmin
     .from("study_groups")
-    .select("id, name, cover_emoji")
+    .select("id, name, cover_emoji, leader_user_id")
     .eq("id", groupId)
     .maybeSingle();
 
@@ -124,6 +124,7 @@ export async function GET(
   const ninetyDaysAgoIso = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000).toISOString();
 
   const [
+    groupMembersResult,
     feedViewActions,
     articleReadActions,
     bibleStudyCardOpenActions,
@@ -136,6 +137,11 @@ export async function GET(
     weeklyQuestionResult,
     currentSeriesResult,
   ] = await Promise.all([
+    supabaseAdmin
+      .from("group_members")
+      .select("user_id, role")
+      .eq("group_id", groupId)
+      .eq("status", "approved"),
     supabaseAdmin
       .from("master_actions")
       .select("user_id, username, created_at")
@@ -224,6 +230,57 @@ export async function GET(
     (row) => new Date(row.created_at).getTime() >= new Date(twentyFourHoursAgoIso).getTime(),
   );
   const uniqueBibleStudyCardVisitors24h = new Set(recentBibleStudyCardActions.map((row) => row.user_id).filter(Boolean)).size;
+  const approvedMemberIds = Array.from(
+    new Set(
+      (groupMembersResult.data || [])
+        .map((row) => row.user_id)
+        .filter((value): value is string => Boolean(value)),
+    ),
+  ).filter((userId) => userId !== louisId);
+
+  const { data: fireBuddyProfiles } = approvedMemberIds.length
+    ? await supabaseAdmin
+        .from("profile_stats")
+        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, last_active_date")
+        .in("user_id", approvedMemberIds)
+    : {
+        data: [] as Array<{
+          user_id: string;
+          display_name: string | null;
+          username: string | null;
+          profile_image_url: string | null;
+          member_badge: string | null;
+          is_paid: boolean | null;
+          current_streak: number | null;
+          current_level: number | null;
+          last_active_date: string | null;
+        }>,
+      };
+
+  const fireStreakBuddies = (fireBuddyProfiles || [])
+    .filter((profile) => (profile.current_streak ?? 0) >= 30)
+    .sort((a, b) => {
+      const streakDiff = (b.current_streak ?? 0) - (a.current_streak ?? 0);
+      if (streakDiff !== 0) return streakDiff;
+      const activeDiff =
+        new Date(b.last_active_date || 0).getTime() - new Date(a.last_active_date || 0).getTime();
+      if (activeDiff !== 0) return activeDiff;
+      const aName = a.display_name || a.username || "Buddy";
+      const bName = b.display_name || b.username || "Buddy";
+      return aName.localeCompare(bName);
+    })
+    .map((profile, index) => ({
+      rank: index + 1,
+      userId: profile.user_id,
+      displayName: profile.display_name || profile.username || "Buddy",
+      profileImageUrl: profile.profile_image_url ?? null,
+      memberBadge: profile.member_badge ?? null,
+      isPaid: !!profile.is_paid,
+      currentStreak: profile.current_streak ?? 0,
+      currentLevel: profile.current_level ?? null,
+      lastActiveDate: profile.last_active_date ?? null,
+    }));
+
   const groupPostIds = (groupPostIdsResult.data || []).map((row) => row.id);
   let likeCount = 0;
   let postRowsDetailed: Array<{ id: string; user_id: string | null; created_at: string | null; parent_post_id: string | null }> = [];
@@ -524,6 +581,7 @@ export async function GET(
     },
     recentActions,
     mostActiveBuddies,
+    fireStreakBuddies,
     schedule: buildGroupSchedule(new Date(), {
       bibleStudySeriesSnapshot,
     }),
