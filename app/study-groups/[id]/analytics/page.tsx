@@ -252,7 +252,7 @@ export default function StudyGroupAnalyticsPage() {
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<AnalyticsPayload | null>(null);
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
-  const [selectedMetricKey, setSelectedMetricKey] = useState<string | null>("posts");
+  const [selectedMetricKey, setSelectedMetricKey] = useState<string | null>(null);
   const [chartWeekOffset, setChartWeekOffset] = useState(0);
   const [isSharingFireBoard, setIsSharingFireBoard] = useState(false);
   const [fireBoardMessage, setFireBoardMessage] = useState<string | null>(null);
@@ -298,7 +298,7 @@ export default function StudyGroupAnalyticsPage() {
   const queueEditorText = stripSchedulerHtml(queueEditorHtml);
 
   const metricCards = [
-    { key: null, label: "Feed Visitors", value: data?.metrics.uniqueFeedVisitors ?? 0, helper: `${data?.metrics.totalFeedVisits ?? 0} total group feed opens in the last 24 hours` },
+    { key: "feed_visitors", label: "Feed Visitors", value: data?.metrics.uniqueFeedVisitors ?? 0, helper: `${data?.metrics.totalFeedVisits ?? 0} total group feed opens in the last 24 hours` },
     { key: "posts", label: "Posts", value: data?.metrics.posts ?? 0, helper: "Top-level group posts" },
     { key: "comments", label: "Comments", value: data?.metrics.comments ?? 0, helper: "Replies and discussion" },
     { key: "likes", label: "Likes", value: data?.metrics.likes ?? 0, helper: "Group post likes" },
@@ -307,6 +307,8 @@ export default function StudyGroupAnalyticsPage() {
 
   const selectedMetricConfig = useMemo(() => {
     switch (selectedMetricKey) {
+      case "feed_visitors":
+        return null;
       case "posts":
         return {
           title: "Posts Trend",
@@ -336,21 +338,12 @@ export default function StudyGroupAnalyticsPage() {
           series: data?.charts.articleReadsDaily || [],
         };
       default:
-        return {
-          title: "Posts Trend",
-          helper: "Top-level group posts by day, one week at a time.",
-          valueLabel: "posts",
-          series: (data?.charts.postsDaily || []).map((entry) => ({
-            dateKey: entry.dateKey,
-            label: entry.label,
-            total: entry.total,
-            uniqueVisitors: entry.uniqueVisitors,
-          })),
-        };
+        return null;
     }
   }, [data, selectedMetricKey]);
 
   const selectedMetricChart = useMemo(() => {
+    if (!selectedMetricConfig) return null;
     const today = new Date();
     const berlinToday = getBerlinDateParts(today);
     const weekdayOrder: Record<string, number> = {
@@ -391,6 +384,23 @@ export default function StudyGroupAnalyticsPage() {
 
     return { days, maxValue, weekLabel };
   }, [chartWeekOffset, selectedMetricConfig]);
+
+  const filteredRecentActions = useMemo(() => {
+    const actions = data?.recentActions || [];
+    if (!selectedMetricKey) return actions;
+
+    const metricActionMap: Record<string, string[]> = {
+      feed_visitors: ["study_group_feed_viewed"],
+      posts: ["group_post_created"],
+      comments: ["group_comment_created", "group_reply_created"],
+      likes: ["group_post_liked", "group_comment_liked", "group_reply_liked"],
+      article_reads: ["study_group_article_opened"],
+    };
+
+    const allowedTypes = metricActionMap[selectedMetricKey] || [];
+    if (allowedTypes.length === 0) return actions;
+    return actions.filter((action) => allowedTypes.includes(action.actionType));
+  }, [data?.recentActions, selectedMetricKey]);
 
   const filteredFireBuddies = useMemo(() => data?.fireStreakBuddies || [], [data?.fireStreakBuddies]);
 
@@ -790,13 +800,13 @@ export default function StudyGroupAnalyticsPage() {
               </p>
             </div>
             <div className="max-h-[420px] overflow-y-auto px-4 py-4">
-              {data.recentActions.length === 0 ? (
+              {filteredRecentActions.length === 0 ? (
                 <div className="rounded-2xl bg-[#fcfbf8] px-4 py-5 text-sm text-gray-500">
-                  No group activity yet.
+                  {selectedMetricKey ? "No actions for this filter yet." : "No group activity yet."}
                 </div>
               ) : (
                 <div className="space-y-2">
-                  {data.recentActions.map((action, index) => (
+                  {filteredRecentActions.map((action, index) => (
                     <button
                       key={`${action.created_at}-${index}`}
                       type="button"
@@ -922,7 +932,7 @@ export default function StudyGroupAnalyticsPage() {
             </div>
           </div>
 
-          {selectedMetricKey ? (
+          {selectedMetricConfig && selectedMetricChart ? (
             <div className="mt-5 rounded-3xl border border-[#dce8dc] bg-[#f8fcf7] p-5">
               <div className="flex items-center justify-between gap-4 flex-wrap">
                 <div>
