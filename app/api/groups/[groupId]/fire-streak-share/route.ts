@@ -138,16 +138,21 @@ export async function POST(
     profile_image_url: string | null;
     current_streak: number | null;
     current_level: number | null;
+    last_active_date?: string | null;
     has_fire_streak_badge?: boolean | null;
     fire_streak_awarded_at?: string | null;
   }>;
+
+  const fireRecentCutoff = new Date();
+  fireRecentCutoff.setUTCDate(fireRecentCutoff.getUTCDate() - 90);
+  const fireRecentCutoffKey = fireRecentCutoff.toISOString().slice(0, 10);
 
   const fireBuddyCandidateProfiles = profiles.filter((profile) => {
     if (!profile.user_id) return false;
     if (Boolean(profile.has_fire_streak_badge)) return true;
     if (Boolean(profile.fire_streak_awarded_at)) return true;
     if ((profile.current_streak ?? 0) >= Math.max(25, threshold)) return true;
-    return false;
+    return Boolean(profile.last_active_date && profile.last_active_date >= fireRecentCutoffKey);
   });
 
   const liveFireStreakMap = await getLiveStreakMapForUsers(

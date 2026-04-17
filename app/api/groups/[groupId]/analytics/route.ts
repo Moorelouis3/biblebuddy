@@ -247,12 +247,16 @@ export async function GET(
     fire_streak_awarded_at?: string | null;
   }>);
 
+  const fireRecentCutoff = new Date();
+  fireRecentCutoff.setUTCDate(fireRecentCutoff.getUTCDate() - 90);
+  const fireRecentCutoffKey = fireRecentCutoff.toISOString().slice(0, 10);
+
   const fireBuddyCandidateProfiles = fireBuddyProfiles.filter((profile) => {
     if (!profile.user_id) return false;
     if (Boolean(profile.has_fire_streak_badge)) return true;
     if (Boolean(profile.fire_streak_awarded_at)) return true;
     if ((profile.current_streak ?? 0) >= 25) return true;
-    return false;
+    return Boolean(profile.last_active_date && profile.last_active_date >= fireRecentCutoffKey);
   });
 
   const liveFireStreakMap = await getLiveStreakMapForUsers(
