@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { getLiveStreakMapForUsers } from "@/lib/serverStreaks";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -141,15 +142,33 @@ export async function POST(
     fire_streak_awarded_at?: string | null;
   }>;
 
-  const buddies = profiles
+  const fireBuddyCandidateProfiles = profiles.filter((profile) => {
+    if (!profile.user_id) return false;
+    if (Boolean(profile.has_fire_streak_badge)) return true;
+    if (Boolean(profile.fire_streak_awarded_at)) return true;
+    if ((profile.current_streak ?? 0) >= Math.max(25, threshold)) return true;
+    return false;
+  });
+
+  const liveFireStreakMap = await getLiveStreakMapForUsers(
+    supabaseAdmin,
+    fireBuddyCandidateProfiles.map((profile) => profile.user_id),
+    400,
+  );
+
+  const buddies = fireBuddyCandidateProfiles
+    .map((profile) => ({
+      ...profile,
+      resolved_current_streak: liveFireStreakMap.get(profile.user_id) ?? profile.current_streak ?? 0,
+    }))
     .filter((profile) => {
       if (threshold <= 30) {
-        return Boolean(profile.has_fire_streak_badge) || (profile.current_streak ?? 0) >= 30;
+        return Boolean(profile.has_fire_streak_badge) || Boolean(profile.fire_streak_awarded_at) || (profile.resolved_current_streak ?? 0) >= 30;
       }
-      return (profile.current_streak ?? 0) >= threshold;
+      return (profile.resolved_current_streak ?? 0) >= threshold;
     })
     .sort((a, b) => {
-      const streakDiff = (b.current_streak ?? 0) - (a.current_streak ?? 0);
+      const streakDiff = (b.resolved_current_streak ?? 0) - (a.resolved_current_streak ?? 0);
       if (streakDiff !== 0) return streakDiff;
       return String(a.fire_streak_awarded_at || "").localeCompare(String(b.fire_streak_awarded_at || ""));
     })
@@ -158,7 +177,7 @@ export async function POST(
       rank: index + 1,
       displayName: profile.display_name || profile.username || "Buddy",
       profileImageUrl: profile.profile_image_url ?? null,
-      currentStreak: profile.current_streak ?? 0,
+      currentStreak: profile.resolved_current_streak ?? 0,
       currentLevel: profile.current_level ?? null,
     }));
 
