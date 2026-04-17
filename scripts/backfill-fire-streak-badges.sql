@@ -64,13 +64,36 @@ ordered_days as (
   from distinct_days
   where active_day <= timezone('America/New_York', now())::date
 ),
+anchors as (
+  select
+    dd.user_id,
+    case
+      when exists (
+        select 1
+        from distinct_days today_days
+        where today_days.user_id = dd.user_id
+          and today_days.active_day = timezone('America/New_York', now())::date
+      ) then timezone('America/New_York', now())::date
+      when exists (
+        select 1
+        from distinct_days yesterday_days
+        where yesterday_days.user_id = dd.user_id
+          and yesterday_days.active_day = timezone('America/New_York', now())::date - interval '1 day'
+      ) then (timezone('America/New_York', now())::date - interval '1 day')::date
+      else null
+    end as anchor_day
+  from distinct_days dd
+  group by dd.user_id
+),
 streak_rows as (
   select
-    user_id,
-    active_day,
-    rn,
-    (timezone('America/New_York', now())::date - ((rn - 1) * interval '1 day'))::date as expected_day
+    od.user_id,
+    od.active_day,
+    od.rn,
+    (a.anchor_day - ((od.rn - 1) * interval '1 day'))::date as expected_day
   from ordered_days
+  join anchors a on a.user_id = od.user_id
+  where a.anchor_day is not null
 ),
 current_streaks as (
   select

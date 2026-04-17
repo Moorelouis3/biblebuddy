@@ -58,10 +58,23 @@ export function getStreakDateKey(dateInput: Date | string) {
 }
 
 export function calculateStreakFromCompletedDates(completedDates: Set<string>) {
-  const todayKey = getStreakDateKey(new Date());
+  const today = new Date();
+  const todayKey = getStreakDateKey(today);
+  const yesterday = new Date(today);
+  yesterday.setUTCDate(yesterday.getUTCDate() - 1);
+  const yesterdayKey = getStreakDateKey(yesterday);
+
+  let cursor: Date;
+  if (completedDates.has(todayKey)) {
+    cursor = new Date(`${todayKey}T12:00:00Z`);
+  } else if (completedDates.has(yesterdayKey)) {
+    cursor = new Date(`${yesterdayKey}T12:00:00Z`);
+  } else {
+    return 0;
+  }
+
   let currentStreak = 0;
-  let cursor = new Date(`${todayKey}T12:00:00Z`);
-  let cursorKey = todayKey;
+  let cursorKey = getStreakDateKey(cursor);
 
   while (completedDates.has(cursorKey)) {
     currentStreak += 1;

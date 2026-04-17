@@ -63,6 +63,34 @@ function getLocalDateString(date: Date): string {
   return getStreakDateKey(date);
 }
 
+function calculateAnchoredCurrentStreak(completedDates: Set<string>) {
+  const today = new Date();
+  const todayStr = getLocalDateString(today);
+  const yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yesterdayStr = getLocalDateString(yesterday);
+
+  let checkDate: Date;
+  if (completedDates.has(todayStr)) {
+    checkDate = today;
+  } else if (completedDates.has(yesterdayStr)) {
+    checkDate = yesterday;
+  } else {
+    return 0;
+  }
+
+  let currentStreak = 0;
+  let checkDateStr = getLocalDateString(checkDate);
+
+  while (completedDates.has(checkDateStr)) {
+    currentStreak += 1;
+    checkDate.setDate(checkDate.getDate() - 1);
+    checkDateStr = getLocalDateString(checkDate);
+  }
+
+  return currentStreak;
+}
+
 /**
  * Get profile stats for a user (from profile_stats table)
  */
@@ -357,26 +385,12 @@ export async function calculateStreakFromActions(
 
     console.log(`[STREAK] Active dates:`, Array.from(completedDates).sort());
 
-    // Calculate current streak (walk backward from today in LOCAL timezone)
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const todayStr = getLocalDateString(today);
     console.log(`[STREAK] Today (local): ${todayStr}`);
 
-    let currentStreak = 0;
-    let checkDate = new Date(today);
-    let checkDateStr = todayStr;
-
-    // Walk backward day by day (using local dates)
-    while (true) {
-      if (completedDates.has(checkDateStr)) {
-        currentStreak++;
-        checkDate.setDate(checkDate.getDate() - 1);
-        checkDateStr = getLocalDateString(checkDate);
-      } else {
-        break; // Streak breaks
-      }
-    }
+    const currentStreak = calculateAnchoredCurrentStreak(completedDates);
 
     // Generate last 7 days (using local dates)
     const last7Days: Array<{ date: string; completed: boolean }> = [];
@@ -453,17 +467,8 @@ export async function calculateUnifiedStreakFromActions(
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const todayStr = getLocalDateString(today);
 
-    let currentStreak = 0;
-    let checkDate = new Date(today);
-    let checkDateStr = todayStr;
-
-    while (completedDates.has(checkDateStr)) {
-      currentStreak += 1;
-      checkDate.setDate(checkDate.getDate() - 1);
-      checkDateStr = getLocalDateString(checkDate);
-    }
+    const currentStreak = calculateAnchoredCurrentStreak(completedDates);
 
     const last7Days: Array<{ date: string; completed: boolean }> = [];
     for (let i = 6; i >= 0; i--) {
