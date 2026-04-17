@@ -6,6 +6,7 @@
 
 import { supabase } from "./supabaseClient";
 import { ACTION_TYPE } from "./actionTypes";
+import { getStreakDateKey } from "./serverStreaks";
 
 export interface ProfileStats {
   total_actions: number;
@@ -32,6 +33,9 @@ export interface ProfileStats {
   profile_image_url?: string | null;
   last_active_at?: string | null;
   profile_is_public?: boolean;
+  has_fire_streak_badge?: boolean;
+  fire_streak_awarded_at?: string | null;
+  fire_streak_last_checked_at?: string | null;
 }
 
 export interface HeatMapDay {
@@ -46,15 +50,17 @@ const NON_STREAK_ACTION_TYPES = new Set([
   ACTION_TYPE.user_signup,
 ]);
 
+type ActivitySummaryByDate = Map<
+  string,
+  { actions: number; loginCount: number; meaningfulCount: number }
+>;
+
 function isMeaningfulActionType(actionType: string): boolean {
   return !NON_STREAK_ACTION_TYPES.has(actionType as typeof ACTION_TYPE.user_signup) && actionType !== ACTION_TYPE.user_login;
 }
 
 function getLocalDateString(date: Date): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  return getStreakDateKey(date);
 }
 
 /**
@@ -120,38 +126,7 @@ export async function getHeatMapData(
     const daysAgo = new Date();
     daysAgo.setDate(daysAgo.getDate() - (daysToShow - 1));
 
-    const { data, error } = await supabase
-      .from("master_actions")
-      .select("created_at, action_type")
-      .eq("user_id", userId)
-      .gte("created_at", daysAgo.toISOString())
-      .order("created_at", { ascending: true });
-
-    if (error) {
-      console.error("[PROFILE] Error fetching heat map data:", error);
-      return [];
-    }
-
-    const actionsByDate = new Map<
-      string,
-      { actions: number; loginCount: number; meaningfulCount: number }
-    >();
-    data?.forEach((action) => {
-      const date = getLocalDateString(new Date(action.created_at));
-      const current = actionsByDate.get(date) || {
-        actions: 0,
-        loginCount: 0,
-        meaningfulCount: 0,
-      };
-      current.actions += 1;
-      if (action.action_type === ACTION_TYPE.user_login) {
-        current.loginCount += 1;
-      }
-      if (isMeaningfulActionType(action.action_type)) {
-        current.meaningfulCount += 1;
-      }
-      actionsByDate.set(date, current);
-    });
+    const { byDate: actionsByDate } = await getUserActivitySummary(userId, daysAgo.toISOString());
 
     // Generate array for the last 364 days
     const heatMapData: HeatMapDay[] = [];
@@ -245,6 +220,78 @@ const STREAK_ACTION_TYPES = [
   ACTION_TYPE.study_group_article_opened,
   ACTION_TYPE.study_group_bible_study_card_opened,
 ];
+
+async function getUserActivitySummary(
+  userId: string,
+  sinceIso: string,
+): Promise<{
+  byDate: ActivitySummaryByDate;
+  completedDates: Set<string>;
+}> {
+  const [actionsResponse, appLoginsResponse] = await Promise.all([
+    supabase
+      .from("master_actions")
+      .select("created_at, action_type")
+      .eq("user_id", userId)
+      .gte("created_at", sinceIso)
+      .order("created_at", { ascending: true }),
+    supabase
+      .from("app_logins")
+      .select("created_at")
+      .eq("user_id", userId)
+      .gte("created_at", sinceIso)
+      .order("created_at", { ascending: true }),
+  ]);
+
+  const { data: actions, error: actionsError } = actionsResponse;
+  const { data: appLogins, error: appLoginsError } = appLoginsResponse;
+
+  if (actionsError) {
+    throw actionsError;
+  }
+
+  if (appLoginsError) {
+    console.error("[PROFILE] Error fetching app_logins:", appLoginsError);
+  }
+
+  const byDate: ActivitySummaryByDate = new Map();
+  const completedDates = new Set<string>();
+
+  function ensureDay(dateStr: string) {
+    const current = byDate.get(dateStr) || {
+      actions: 0,
+      loginCount: 0,
+      meaningfulCount: 0,
+    };
+    byDate.set(dateStr, current);
+    return current;
+  }
+
+  actions?.forEach((action) => {
+    const dateStr = getLocalDateString(new Date(action.created_at));
+    const current = ensureDay(dateStr);
+    current.actions += 1;
+    if (action.action_type === ACTION_TYPE.user_login) {
+      current.loginCount += 1;
+    }
+    if (STREAK_ACTION_TYPES.includes(action.action_type as (typeof STREAK_ACTION_TYPES)[number])) {
+      completedDates.add(dateStr);
+    }
+    if (isMeaningfulActionType(action.action_type)) {
+      current.meaningfulCount += 1;
+    }
+  });
+
+  appLogins?.forEach((login) => {
+    const dateStr = getLocalDateString(new Date(login.created_at));
+    const current = ensureDay(dateStr);
+    current.actions += 1;
+    current.loginCount += 1;
+    completedDates.add(dateStr);
+  });
+
+  return { byDate, completedDates };
+}
 
 export async function calculateStreakFromActions(
   userId: string
@@ -358,21 +405,133 @@ export async function calculateStreakFromActions(
   }
 }
 
+export async function getUnifiedHeatMapData(
+  userId: string
+): Promise<HeatMapDay[]> {
+  try {
+    const daysToShow = 182;
+    const daysAgo = new Date();
+    daysAgo.setDate(daysAgo.getDate() - (daysToShow - 1));
+    const { byDate } = await getUserActivitySummary(userId, daysAgo.toISOString());
+
+    const heatMapData: HeatMapDay[] = [];
+    const today = new Date();
+    for (let i = daysToShow - 1; i >= 0; i--) {
+      const date = new Date(today);
+      date.setDate(date.getDate() - i);
+      const dateStr = getLocalDateString(date);
+      const stats = byDate.get(dateStr) || {
+        actions: 0,
+        loginCount: 0,
+        meaningfulCount: 0,
+      };
+      const level: 0 | 1 | 2 =
+        stats.meaningfulCount > 0 ? 2 : stats.loginCount > 0 ? 1 : 0;
+      heatMapData.push({
+        date: dateStr,
+        loginCount: stats.loginCount,
+        meaningfulCount: stats.meaningfulCount,
+        level,
+        actions: stats.actions,
+      });
+    }
+
+    return heatMapData;
+  } catch (err) {
+    console.error("[PROFILE] Error in getUnifiedHeatMapData:", err);
+    return [];
+  }
+}
+
+export async function calculateUnifiedStreakFromActions(
+  userId: string
+): Promise<StreakData> {
+  try {
+    const lookback = new Date();
+    lookback.setDate(lookback.getDate() - 400);
+    const { completedDates } = await getUserActivitySummary(userId, lookback.toISOString());
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const todayStr = getLocalDateString(today);
+
+    let currentStreak = 0;
+    let checkDate = new Date(today);
+    let checkDateStr = todayStr;
+
+    while (completedDates.has(checkDateStr)) {
+      currentStreak += 1;
+      checkDate.setDate(checkDate.getDate() - 1);
+      checkDateStr = getLocalDateString(checkDate);
+    }
+
+    const last7Days: Array<{ date: string; completed: boolean }> = [];
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date(today);
+      date.setDate(date.getDate() - i);
+      const dateStr = getLocalDateString(date);
+      last7Days.push({
+        date: dateStr,
+        completed: completedDates.has(dateStr),
+      });
+    }
+
+    return {
+      currentStreak,
+      last7Days,
+    };
+  } catch (err) {
+    console.error("[PROFILE] Error calculating unified streak:", err);
+    return { currentStreak: 0, last7Days: [] };
+  }
+}
+
 export async function syncCurrentStreakToProfileStats(
   userId: string
 ): Promise<StreakData> {
-  const streakData = await calculateStreakFromActions(userId);
+  const streakData = await calculateUnifiedStreakFromActions(userId);
+  const nowIso = new Date().toISOString();
+  const hasFireStreakBadge = streakData.currentStreak >= 30;
 
-  const { error } = await supabase
+  const { data: existingProfile } = await supabase
+    .from("profile_stats")
+    .select("*")
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  const fireStreakAwardedAt =
+    hasFireStreakBadge
+      ? (existingProfile as any)?.fire_streak_awarded_at || nowIso
+      : null;
+
+  const fullPayload = {
+    user_id: userId,
+    current_streak: streakData.currentStreak,
+    has_fire_streak_badge: hasFireStreakBadge,
+    fire_streak_awarded_at: fireStreakAwardedAt,
+    fire_streak_last_checked_at: nowIso,
+    updated_at: nowIso,
+  };
+
+  const legacyPayload = {
+    user_id: userId,
+    current_streak: streakData.currentStreak,
+    updated_at: nowIso,
+  };
+
+  let { error } = await supabase
     .from("profile_stats")
     .upsert(
-      {
-        user_id: userId,
-        current_streak: streakData.currentStreak,
-        updated_at: new Date().toISOString(),
-      },
+      fullPayload,
       { onConflict: "user_id" },
     );
+
+  if (error && /has_fire_streak_badge|fire_streak_awarded_at|fire_streak_last_checked_at/i.test(error.message || "")) {
+    const legacyResponse = await supabase
+      .from("profile_stats")
+      .upsert(legacyPayload, { onConflict: "user_id" });
+    error = legacyResponse.error;
+  }
 
   if (error) {
     console.error("[STREAK] Error syncing current_streak to profile_stats:", error);

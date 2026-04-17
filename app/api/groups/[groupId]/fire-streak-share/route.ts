@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { getLiveStreakMapForRecentUsers } from "@/lib/serverStreaks";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -125,38 +124,41 @@ export async function POST(
 
   const { data: allProfiles, error: profilesLoadError } = await supabaseAdmin
     .from("profile_stats")
-    .select("user_id, display_name, username, profile_image_url, current_streak, current_level");
+    .select("*");
 
   if (profilesLoadError) {
     return NextResponse.json({ error: profilesLoadError.message || "Could not load Bible Buddy streaks." }, { status: 500 });
   }
 
-  const memberIds = Array.from(new Set((allProfiles || []).map((row) => row.user_id).filter(Boolean)));
-
-  const profilesPromise = Promise.resolve({
-    data: allProfiles || [],
-    error: null,
-  });
-
-  const [profilesResult, liveStreakMap] = await Promise.all([
-    profilesPromise,
-    getLiveStreakMapForRecentUsers(supabaseAdmin, 60),
-  ]);
-  const profiles = profilesResult.data || [];
+  const profiles = (allProfiles || []) as Array<{
+    user_id: string;
+    display_name: string | null;
+    username: string | null;
+    profile_image_url: string | null;
+    current_streak: number | null;
+    current_level: number | null;
+    has_fire_streak_badge?: boolean | null;
+    fire_streak_awarded_at?: string | null;
+  }>;
 
   const buddies = profiles
-    .map((profile) => ({
-      ...profile,
-      live_current_streak: liveStreakMap.get(profile.user_id) ?? profile.current_streak ?? 0,
-    }))
-    .filter((profile) => profile.live_current_streak >= threshold)
-    .sort((a, b) => b.live_current_streak - a.live_current_streak)
+    .filter((profile) => {
+      if (threshold <= 30) {
+        return Boolean(profile.has_fire_streak_badge) || (profile.current_streak ?? 0) >= 30;
+      }
+      return (profile.current_streak ?? 0) >= threshold;
+    })
+    .sort((a, b) => {
+      const streakDiff = (b.current_streak ?? 0) - (a.current_streak ?? 0);
+      if (streakDiff !== 0) return streakDiff;
+      return String(a.fire_streak_awarded_at || "").localeCompare(String(b.fire_streak_awarded_at || ""));
+    })
     .slice(0, 10)
     .map((profile, index) => ({
       rank: index + 1,
       displayName: profile.display_name || profile.username || "Buddy",
       profileImageUrl: profile.profile_image_url ?? null,
-      currentStreak: profile.live_current_streak,
+      currentStreak: profile.current_streak ?? 0,
       currentLevel: profile.current_level ?? null,
     }));
 
