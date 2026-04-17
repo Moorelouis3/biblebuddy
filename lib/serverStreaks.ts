@@ -3,7 +3,7 @@ import { ACTION_TYPE } from "./actionTypes";
 
 export const STREAK_TIME_ZONE = "America/New_York";
 
-const STREAK_ACTION_TYPES = new Set([
+const STREAK_ACTION_TYPES: Set<string> = new Set([
   ACTION_TYPE.user_login,
   ACTION_TYPE.chapter_completed,
   ACTION_TYPE.book_completed,
