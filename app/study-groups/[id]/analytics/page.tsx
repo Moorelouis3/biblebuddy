@@ -493,9 +493,10 @@ export default function StudyGroupAnalyticsPage() {
         body: JSON.stringify({ threshold: 30 }),
       });
 
-      const payload = await response.json();
+      const raw = await response.text();
+      const payload = raw ? JSON.parse(raw) : null;
       if (!response.ok) {
-        throw new Error(payload.error || "Could not share the fire streak post.");
+        throw new Error(payload?.error || "Could not share the fire streak post.");
       }
 
       setFireBoardMessage(`Shared the top ${payload.sharedCount} fire Bible buddies to the group feed.`);
@@ -599,9 +600,10 @@ export default function StudyGroupAnalyticsPage() {
         body: JSON.stringify({ queueId: queueItem.id }),
       });
 
-      const payload = await response.json();
+      const raw = await response.text();
+      const payload = raw ? JSON.parse(raw) : null;
       if (!response.ok) {
-        throw new Error(payload.error || "Could not post this carousel to the home feed.");
+        throw new Error(payload?.error || "Could not post this carousel to the home feed.");
       }
 
       if (adminUserId) {
@@ -674,9 +676,10 @@ export default function StudyGroupAnalyticsPage() {
           },
         });
 
-        const payload = await response.json();
+        const raw = await response.text();
+        const payload = raw ? JSON.parse(raw) : null;
         if (!response.ok) {
-          throw new Error(payload.error || "Could not load analytics.");
+          throw new Error(payload?.error || "Could not load analytics.");
         }
 
         if (!cancelled) {

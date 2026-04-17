@@ -76,6 +76,7 @@ export async function GET(
   request: NextRequest,
   context: { params: Promise<{ groupId: string }> },
 ) {
+  try {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -587,4 +588,11 @@ export async function GET(
       bibleStudySeriesSnapshot,
     }),
   });
+  } catch (error) {
+    console.error("[GROUP_ANALYTICS] Failed to load analytics:", error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Could not load analytics." },
+      { status: 500 },
+    );
+  }
 }
