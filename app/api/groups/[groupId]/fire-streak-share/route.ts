@@ -143,11 +143,6 @@ export async function POST(
     getLiveStreakMapForUsers(supabaseAdmin, memberIds),
   ]);
   const profiles = profilesResult.data || [];
-  const profilesError = profilesResult.error;
-
-  if (profilesError) {
-    return NextResponse.json({ error: profilesError.message || "Could not load buddy streaks." }, { status: 500 });
-  }
 
   const buddies = profiles
     .map((profile) => ({
