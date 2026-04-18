@@ -229,12 +229,16 @@ export async function GET(
     (row) => new Date(row.created_at).getTime() >= new Date(twentyFourHoursAgoIso).getTime(),
   );
   const uniqueBibleStudyCardVisitors24h = new Set(recentBibleStudyCardActions.map((row) => row.user_id).filter(Boolean)).size;
-  const [{ data: allProfileRows }, liveRecentStreakMap] = await Promise.all([
+  const [{ data: allProfileRows, error: fireProfilesError }, liveRecentStreakMap] = await Promise.all([
     supabaseAdmin
     .from("profile_stats")
-    .select("*"),
+    .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, last_active_date, has_fire_streak_badge, fire_streak_awarded_at"),
     getLiveStreakMapForRecentUsers(supabaseAdmin, 120),
   ]);
+
+  if (fireProfilesError) {
+    return NextResponse.json({ error: fireProfilesError.message || "Could not load fire board profiles." }, { status: 500 });
+  }
 
   const fireBuddyProfiles = ((allProfileRows || []) as Array<{
     user_id: string;
@@ -256,14 +260,14 @@ export async function GET(
   );
 
   const fireBuddyIds = new Set<string>();
-  fireBuddyProfiles.forEach((profile) => {
-    if (Boolean(profile.has_fire_streak_badge) || (profile.current_streak ?? 0) >= 30) {
-      fireBuddyIds.add(profile.user_id);
-    }
-  });
   liveRecentStreakMap.forEach((streak, userId) => {
     if (streak >= 30 && fireProfileMap.has(userId)) {
       fireBuddyIds.add(userId);
+    }
+  });
+  fireBuddyProfiles.forEach((profile) => {
+    if (Boolean(profile.has_fire_streak_badge) || (profile.current_streak ?? 0) >= 30) {
+      fireBuddyIds.add(profile.user_id);
     }
   });
 

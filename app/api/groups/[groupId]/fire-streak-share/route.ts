@@ -126,7 +126,7 @@ export async function POST(
   const [{ data: allProfiles, error: profilesLoadError }, liveRecentStreakMap] = await Promise.all([
     supabaseAdmin
       .from("profile_stats")
-      .select("*"),
+      .select("user_id, display_name, username, profile_image_url, current_streak, current_level, last_active_date, has_fire_streak_badge, fire_streak_awarded_at"),
     getLiveStreakMapForRecentUsers(supabaseAdmin, 120),
   ]);
 
