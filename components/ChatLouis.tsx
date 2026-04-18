@@ -2698,7 +2698,7 @@ export function ChatLouis() {
               className="text-gray-500 hover:text-gray-700 text-base leading-none"
               onPointerDown={(e) => e.stopPropagation()}
             >
-              âœ•
+              ✕
             </button>
           </div>
 

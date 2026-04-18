@@ -502,15 +502,13 @@ export async function syncCurrentStreakToProfileStats(
 
   const streakData = await calculateUnifiedStreakFromActions(userId);
   const nowIso = new Date().toISOString();
-  const existingCurrentStreak = Number((existingProfile as any)?.current_streak || 0);
-  const existingHasFireBadge = Boolean((existingProfile as any)?.has_fire_streak_badge) || existingCurrentStreak >= 30;
+  const existingHasFireBadge =
+    Boolean((existingProfile as any)?.has_fire_streak_badge) ||
+    Number((existingProfile as any)?.current_streak || 0) >= 30;
 
-  // Protect real fire streaks from being overwritten by a weak client-side recalc.
-  // Strong downward corrections should come from the dedicated server/cron refresh path.
-  const resolvedCurrentStreak =
-    existingHasFireBadge && streakData.currentStreak < 30
-      ? existingCurrentStreak
-      : streakData.currentStreak;
+  // Keep the fire badge protected if it was already earned,
+  // but always store the live streak count so inflated old numbers do not linger.
+  const resolvedCurrentStreak = streakData.currentStreak;
 
   const resolvedStreakData: StreakData =
     resolvedCurrentStreak === streakData.currentStreak
@@ -520,15 +518,15 @@ export async function syncCurrentStreakToProfileStats(
           last7Days: streakData.last7Days,
         };
 
-  const fireStreakAwardedAt =
-    resolvedCurrentStreak >= 30
-      ? (existingProfile as any)?.fire_streak_awarded_at || nowIso
-      : null;
+  const hasFireStreakBadge = existingHasFireBadge || resolvedCurrentStreak >= 30;
+  const fireStreakAwardedAt = hasFireStreakBadge
+    ? (existingProfile as any)?.fire_streak_awarded_at || nowIso
+    : null;
 
   const fullPayload = {
     user_id: userId,
     current_streak: resolvedCurrentStreak,
-    has_fire_streak_badge: resolvedCurrentStreak >= 30,
+    has_fire_streak_badge: hasFireStreakBadge,
     fire_streak_awarded_at: fireStreakAwardedAt,
     fire_streak_last_checked_at: nowIso,
     updated_at: nowIso,
