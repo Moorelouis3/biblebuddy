@@ -115,6 +115,13 @@ function getHeatMapTooltip(day: HeatMapDay) {
   };
 }
 
+function getBrowserDateKey(date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 interface BuddyProfile {
   user_id: string;
   display_name: string | null;
@@ -635,12 +642,12 @@ export default function PublicProfilePage() {
 
     if (error || !masterActions) { setActionLog([]); return; }
 
-    const loginDates = new Set<string>();
-    for (const action of masterActions) {
-      const actionDate = new Date(action.created_at);
-      const dateKey = actionDate.toISOString().split("T")[0];
-      const d = formatActionDate(actionDate);
-      const label = action.action_label?.trim() || null;
+      const loginDates = new Set<string>();
+      for (const action of masterActions) {
+        const actionDate = new Date(action.created_at);
+        const dateKey = getBrowserDateKey(actionDate);
+        const d = formatActionDate(actionDate);
+        const label = action.action_label?.trim() || null;
 
       if (action.action_type === "chapter_completed") {
         let url: string | undefined;

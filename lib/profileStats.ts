@@ -257,30 +257,55 @@ async function getUserActivitySummary(
   byDate: ActivitySummaryByDate;
   completedDates: Set<string>;
 }> {
-  const [actionsResponse, appLoginsResponse] = await Promise.all([
-    supabase
+  const pageSize = 1000;
+  const actions: Array<{ created_at: string; action_type: string }> = [];
+  const appLogins: Array<{ created_at: string }> = [];
+
+  let from = 0;
+  while (true) {
+    const actionsResponse = await supabase
       .from("master_actions")
       .select("created_at, action_type")
       .eq("user_id", userId)
       .gte("created_at", sinceIso)
-      .order("created_at", { ascending: true }),
-    supabase
+      .order("created_at", { ascending: false })
+      .range(from, from + pageSize - 1);
+
+    const { data, error } = actionsResponse;
+    if (error) {
+      throw error;
+    }
+
+    const chunk = data || [];
+    actions.push(...chunk);
+    if (chunk.length < pageSize) {
+      break;
+    }
+    from += pageSize;
+  }
+
+  from = 0;
+  while (true) {
+    const appLoginsResponse = await supabase
       .from("app_logins")
       .select("created_at")
       .eq("user_id", userId)
       .gte("created_at", sinceIso)
-      .order("created_at", { ascending: true }),
-  ]);
+      .order("created_at", { ascending: false })
+      .range(from, from + pageSize - 1);
 
-  const { data: actions, error: actionsError } = actionsResponse;
-  const { data: appLogins, error: appLoginsError } = appLoginsResponse;
+    const { data, error } = appLoginsResponse;
+    if (error) {
+      console.error("[PROFILE] Error fetching app_logins:", error);
+      break;
+    }
 
-  if (actionsError) {
-    throw actionsError;
-  }
-
-  if (appLoginsError) {
-    console.error("[PROFILE] Error fetching app_logins:", appLoginsError);
+    const chunk = data || [];
+    appLogins.push(...chunk);
+    if (chunk.length < pageSize) {
+      break;
+    }
+    from += pageSize;
   }
 
   const byDate: ActivitySummaryByDate = new Map();
@@ -296,7 +321,7 @@ async function getUserActivitySummary(
     return current;
   }
 
-  actions?.forEach((action) => {
+  actions.forEach((action) => {
     const dateStr = getLocalDateString(new Date(action.created_at));
     const current = ensureDay(dateStr);
     current.actions += 1;
@@ -311,7 +336,7 @@ async function getUserActivitySummary(
     }
   });
 
-  appLogins?.forEach((login) => {
+  appLogins.forEach((login) => {
     const dateStr = getLocalDateString(new Date(login.created_at));
     const current = ensureDay(dateStr);
     current.actions += 1;
