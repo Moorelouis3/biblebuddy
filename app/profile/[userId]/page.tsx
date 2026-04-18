@@ -9,6 +9,7 @@ import {
   type HeatMapDay,
   type ProfileStats,
   type StreakData,
+  calculateUnifiedStreakFromActions,
   syncCurrentStreakToProfileStats,
 } from "../../../lib/profileStats";
 import { syncNotesCount, shouldSyncNotesCount } from "../../../lib/syncNotesCount";
@@ -281,10 +282,7 @@ export default function PublicProfilePage() {
       const [streakData, heatMapData] = await Promise.all([
         user?.id === profileUserId
           ? syncCurrentStreakToProfileStats(profileUserId)
-          : Promise.resolve({
-              currentStreak: profileData.current_streak ?? 0,
-              last7Days: [],
-            } satisfies StreakData),
+          : calculateUnifiedStreakFromActions(profileUserId),
         getUnifiedHeatMapData(profileUserId),
       ]);
       setStreak(streakData);

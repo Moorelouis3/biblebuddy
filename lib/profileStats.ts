@@ -6,7 +6,6 @@
 
 import { supabase } from "./supabaseClient";
 import { ACTION_TYPE } from "./actionTypes";
-import { getStreakDateKey } from "./serverStreaks";
 
 export interface ProfileStats {
   total_actions: number;
@@ -60,18 +59,21 @@ function isMeaningfulActionType(actionType: string): boolean {
 }
 
 function getLocalDateString(date: Date): string {
-  return getStreakDateKey(date);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
 function shiftStreakDateKey(dateKey: string, days: number) {
   const [year, month, day] = dateKey.split("-").map(Number);
-  const date = new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
-  date.setUTCDate(date.getUTCDate() + days);
-  return getStreakDateKey(date);
+  const date = new Date(year, month - 1, day, 12, 0, 0);
+  date.setDate(date.getDate() + days);
+  return getLocalDateString(date);
 }
 
 function calculateAnchoredCurrentStreak(completedDates: Set<string>) {
-  const todayKey = getStreakDateKey(new Date());
+  const todayKey = getLocalDateString(new Date());
   const yesterdayKey = shiftStreakDateKey(todayKey, -1);
 
   let cursorKey: string | null = null;

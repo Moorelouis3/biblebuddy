@@ -54,6 +54,7 @@ type QuickReplyAction =
   | "open_devotionals"
   | "moment_navigate"
   | "moment_message"
+  | "moment_close"
   | "recommendation_open"
   | "recommendation_question"
   | "recommendation_later";
@@ -137,6 +138,7 @@ type LouisDailyActionTarget = {
   question: string;
   href: string | null;
   yesFollowUp: string;
+  nextDevotionalDayNumber?: number | null;
 };
 
 type LouisInputPromptState = {
@@ -1899,14 +1901,19 @@ export function ChatLouis() {
 
   function getDailyActionTarget(): LouisDailyActionTarget {
     if (primaryDevotional) {
+      const nextDay = Math.min(
+        primaryDevotional.dayNumber + 1,
+        primaryDevotional.totalDays || primaryDevotional.dayNumber + 1,
+      );
       return {
         kind: "devotional",
         summaryLines: currentStreak > 0
           ? ["Yesterday you completed", `Day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}`]
           : ["Last time you were on", `Day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}`],
         question: currentStreak > 0 ? "Ready for the next day?" : "Do you want to continue?",
-        href: `/devotionals/${primaryDevotional.id}`,
+        href: `/devotionals/${primaryDevotional.id}?day=${nextDay}&from=louis-daily`,
         yesFollowUp: currentStreak > 0 ? "Let’s keep your streak alive" : "Picking up where you left off\n\nLet’s keep going",
+        nextDevotionalDayNumber: nextDay,
       };
     }
 
@@ -2138,10 +2145,13 @@ export function ChatLouis() {
           break;
         }
         if (getDailyActionTarget().href) {
-          appendAssistantMessage(getDailyActionTarget().yesFollowUp);
+          const dailyTarget = getDailyActionTarget();
+          if (dailyTarget.kind !== "devotional") {
+            appendAssistantMessage(dailyTarget.yesFollowUp);
+          }
           clearLouisInputPrompt();
           setIsOpen(false);
-          router.push(getDailyActionTarget().href as string);
+          router.push(dailyTarget.href as string);
         }
         break;
       case "daily_no":
@@ -2249,6 +2259,9 @@ export function ChatLouis() {
         if (reply.message) {
           appendAssistantMessage(reply.message);
         }
+        break;
+      case "moment_close":
+        setIsOpen(false);
         break;
       case "recommendation_open":
         if (reply.id === "verse-open-page") {
@@ -2576,7 +2589,7 @@ export function ChatLouis() {
         (detail.replies ?? []).map((reply: LouisMomentReply) => ({
           id: reply.id,
           label: reply.label,
-          action: reply.href ? "moment_navigate" : "moment_message",
+          action: reply.close ? "moment_close" : reply.href ? "moment_navigate" : "moment_message",
           href: reply.href,
           message: reply.message,
         })),
@@ -2631,6 +2644,10 @@ export function ChatLouis() {
           top: `${customPanelTop ?? viewportPadding}px`,
         };
 
+  const isLouisActive = hasPendingLouisMoment;
+  const bubbleOuterSize = isLouisActive ? "h-20 w-20" : "h-16 w-16";
+  const avatarSize = isLouisActive ? 64 : 52;
+
   return (
     <>
       {/* Floating avatar button */}
@@ -2648,21 +2665,21 @@ export function ChatLouis() {
             cursor: isDragging ? "grabbing" : "grab",
             touchAction: "none",
           }}
-          className={`z-[70] rounded-full shadow-xl flex items-center justify-center transition-transform ${
-            hasPendingLouisMoment ? "animate-[bounce_1.7s_ease-in-out_infinite]" : ""
+          className={`z-[70] rounded-full shadow-xl flex items-center justify-center transition-all duration-300 ${
+            hasPendingLouisMoment ? "animate-[bounce_1.25s_ease-in-out_infinite]" : "scale-95"
           }`}
           aria-label="Chat with Louis"
         >
-          <div className="relative w-20 h-20 rounded-full bg-black/5 flex items-center justify-center">
+          <div className={`relative ${bubbleOuterSize} rounded-full flex items-center justify-center ${isLouisActive ? "bg-sky-100/80" : "bg-black/5 grayscale"}`}>
             {hasPendingLouisMoment ? (
               <>
-                <span className="absolute inset-0 rounded-full border-4 border-sky-300/60 animate-ping" />
+                <span className="absolute inset-0 rounded-full border-4 border-sky-300/70 animate-ping [animation-duration:1.15s]" />
                 <span className="absolute -right-1 top-0 rounded-full bg-sky-500 px-2 py-0.5 text-[10px] font-semibold text-white shadow-sm">
                   New
                 </span>
               </>
             ) : null}
-            <LouisAvatar mood="bible" size={64} />
+            <LouisAvatar mood="bible" size={avatarSize} />
           </div>
         </button>
       )}
@@ -2785,7 +2802,7 @@ export function ChatLouis() {
 
           {quickReplies.length > 0 ? (
             <div className="border-t border-gray-200 bg-white px-3 py-3">
-              <div className="grid grid-cols-2 gap-2">
+              <div className={`gap-2 ${quickReplies.length === 1 ? "flex justify-end" : "grid grid-cols-2"}`}>
                 {quickReplies.map((reply) => (
                   <button
                     key={reply.id}
@@ -2794,7 +2811,9 @@ export function ChatLouis() {
                     className={
                       reply.label === "Yes"
                         ? "w-full rounded-lg bg-[#6fb48b] px-3 py-2 text-xs font-semibold text-white transition hover:bg-[#5ea27a]"
-                        : "w-full rounded-lg bg-[#e98585] px-3 py-2 text-xs font-semibold text-white transition hover:bg-[#d96d6d]"
+                        : reply.label === "No"
+                          ? "w-full rounded-lg bg-[#e98585] px-3 py-2 text-xs font-semibold text-white transition hover:bg-[#d96d6d]"
+                          : "rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-700 transition hover:bg-gray-50"
                     }
                   >
                     {reply.label}

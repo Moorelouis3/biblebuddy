@@ -46,8 +46,8 @@ function getPreviewDescription(title: string, fallback: string): string {
 
   return descriptions[title] ?? fallback;
 }
-import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
 import DevotionalDayModal from "../../../components/DevotionalDayModal";
@@ -83,9 +83,41 @@ interface DayProgress {
   reflection_text: string | null;
 }
 
+function getLouisDayTopic(day: DevotionalDay) {
+  const title = day.day_title?.trim();
+  if (title) return title;
+  return `day ${day.day_number}`;
+}
+
+function getLouisDaySnippet(day: DevotionalDay) {
+  const raw = (day.devotional_text || "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!raw) return "Stay present with what God is teaching you in this section.";
+
+  const sentenceMatch = raw.match(/(.+?[.!?])\s+/);
+  const firstSentence = sentenceMatch?.[1] || raw;
+  return firstSentence.length > 180 ? `${firstSentence.slice(0, 177).trim()}...` : firstSentence;
+}
+
+function buildLouisDayStartMessage(devotional: Devotional, day: DevotionalDay) {
+  const topic = getLouisDayTopic(day);
+  const snippet = getLouisDaySnippet(day);
+
+  return [
+    `You are stepping into day ${day.day_number} of ${devotional.title}.`,
+    `Today is about ${topic}.`,
+    snippet,
+    "Read the devotional, then do the Bible reading, and answer the reflection question.",
+    "Start reading and I am always here if you have a question.",
+  ].join("\n\n");
+}
+
 export default function DevotionalDetailPage() {
   const params = useParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const devotionalId = params.id as string;
 
   const [devotional, setDevotional] = useState<Devotional | null>(null);
@@ -104,6 +136,7 @@ export default function DevotionalDetailPage() {
   const [showChooseFreeModal, setShowChooseFreeModal] = useState(false);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [pendingDayClick, setPendingDayClick] = useState<DevotionalDay | null>(null);
+  const handledLouisDayRef = useRef<string | null>(null);
 
   useEffect(() => {
     async function loadUserAndProfile() {
@@ -302,6 +335,46 @@ export default function DevotionalDetailPage() {
     setShowCreditBlocked(false);
     setSelectedDay(day);
   };
+
+  useEffect(() => {
+    if (!devotional || days.length === 0) return;
+
+    const requestedDay = Number.parseInt(searchParams.get("day") || "", 10);
+    const fromLouisDaily = searchParams.get("from") === "louis-daily";
+
+    if (!requestedDay || Number.isNaN(requestedDay) || !fromLouisDaily) {
+      return;
+    }
+
+    const requestKey = `${devotionalId}:${requestedDay}`;
+    if (handledLouisDayRef.current === requestKey) {
+      return;
+    }
+
+    const day = days.find((entry) => entry.day_number === requestedDay);
+    if (!day) {
+      handledLouisDayRef.current = requestKey;
+      router.replace(`/devotionals/${devotionalId}`);
+      return;
+    }
+
+    handledLouisDayRef.current = requestKey;
+
+    void (async () => {
+      await handleDayClick(day);
+      dispatchLouisMoment({
+        message: buildLouisDayStartMessage(devotional, day),
+        replies: [
+          {
+            id: `devotional-close-${devotional.id}-${day.day_number}`,
+            label: "Close",
+            close: true,
+          },
+        ],
+      });
+      router.replace(`/devotionals/${devotionalId}`);
+    })();
+  }, [days, devotional, devotionalId, router, searchParams]);
 
   const handleConfirmFreeChoice = async () => {
     if (!userId) return;

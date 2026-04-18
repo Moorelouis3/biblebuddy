@@ -7,6 +7,7 @@ export type LouisMomentReply = {
   label: string;
   href?: string;
   message?: string;
+  close?: boolean;
 };
 
 export type LouisMomentDetail = {
@@ -18,4 +19,3 @@ export function dispatchLouisMoment(detail: LouisMomentDetail) {
   if (typeof document === "undefined") return;
   document.dispatchEvent(new CustomEvent(LOUIS_MOMENT_EVENT, { detail }));
 }
-
