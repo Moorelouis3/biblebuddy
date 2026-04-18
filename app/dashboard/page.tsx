@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompletedChapters } from "../../lib/readingProgress";
 import { getProfileStats, syncCurrentStreakToProfileStats } from "../../lib/profileStats";
+import { getDailyRecommendation, type DailyRecommendation } from "../../lib/dailyRecommendation";
+import { buildLouisRecommendationHandoff, storeLouisRouteHandoff } from "../../lib/louisRouteHandoff";
 
 import AdSlot from "../../components/AdSlot";
 import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
@@ -135,7 +137,8 @@ export default function DashboardPage() {
   const [membershipStatus, setMembershipStatus] = useState<string | null>(null);
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
-  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null } | null>(null);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
+  const [primaryRecommendation, setPrimaryRecommendation] = useState<DailyRecommendation | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
   const [activeTourKey, setActiveTourKey] = useState<FeatureTourKey | null>(null);
@@ -163,6 +166,30 @@ export default function DashboardPage() {
       console.error("[NAV] Failed to track dashboard view:", error);
     });
   }, [userId, userName]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadPrimaryRecommendation() {
+      if (!userId) return;
+      try {
+        const recommendation = await getDailyRecommendation(userId);
+        if (!cancelled) {
+          setPrimaryRecommendation(recommendation);
+        }
+      } catch (error) {
+        console.error("[DASHBOARD] Failed to load primary recommendation:", error);
+        if (!cancelled) {
+          setPrimaryRecommendation(null);
+        }
+      }
+    }
+
+    void loadPrimaryRecommendation();
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
 
   const TOUR_COPY: Record<FeatureTourKey, { title: string; body: string }> = {
     dashboard: {
@@ -805,17 +832,18 @@ export default function DashboardPage() {
     }
   }
 
-  function handleCardClick(
+  async function handleCardClick(
     event: MouseEvent<HTMLAnchorElement>,
-    tourKey: FeatureTourKey | "bible_buddy_tv",
+    tourKey: FeatureTourKey | "bible_buddy_tv" | "recommendation",
     path: string
   ) {
-    const dashboardCardLabelMap: Partial<Record<FeatureTourKey | "bible_buddy_tv", string>> = {
+    const dashboardCardLabelMap: Partial<Record<FeatureTourKey | "bible_buddy_tv" | "recommendation", string>> = {
       bible: "The Bible",
       bible_study_hub: "Bible Study Group",
       guided_studies: "Bible Study Tools",
       bible_buddy_tv: "Bible Buddy TV",
       bible_trivia: "Bible Study Games",
+      recommendation: "Recommended For You",
     };
 
     if (userId) {
@@ -833,7 +861,20 @@ export default function DashboardPage() {
 
     event.preventDefault();
 
-    if (featureToursEnabled && featureToursLoaded && tourKey !== "dashboard" && featureTours[tourKey as FeatureTourKey] !== true) {
+    if (tourKey === "recommendation" && primaryRecommendation) {
+      const handoff = await buildLouisRecommendationHandoff(primaryRecommendation);
+      if (handoff) {
+        storeLouisRouteHandoff(handoff);
+      }
+    }
+
+    if (
+      featureToursEnabled &&
+      featureToursLoaded &&
+      tourKey !== "dashboard" &&
+      tourKey !== "recommendation" &&
+      featureTours[tourKey as FeatureTourKey] !== true
+    ) {
       setPendingTourNavigation(path);
       setActiveTourKey(tourKey as FeatureTourKey);
       return;
@@ -897,7 +938,7 @@ export default function DashboardPage() {
         // 2. Fetch profile_stats for dashboard display
         const { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak")
+          .select("total_actions, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, profile_image_url, display_name, username")
           .eq("user_id", userId)
           .maybeSingle();
 
@@ -922,6 +963,9 @@ export default function DashboardPage() {
           last_active_date: profileData?.last_active_date ?? null,
           verse_of_the_day_shown: profileData?.verse_of_the_day_shown ?? null,
           current_streak: resolvedCurrentStreak,
+          profile_image_url: profileData?.profile_image_url ?? null,
+          display_name: profileData?.display_name ?? null,
+          username: profileData?.username ?? null,
         });
 
         const [
@@ -1183,6 +1227,7 @@ export default function DashboardPage() {
         {/* DASHBOARD CARDS */}
         <DashboardCards
           profile={profile}
+          primaryRecommendation={primaryRecommendation}
           membershipStatus={membershipStatus ?? ""}
           daysRemaining={daysRemaining}
           isLoadingLevel={isLoadingLevel}
@@ -1217,6 +1262,7 @@ export default function DashboardPage() {
         {/* DASHBOARD CARDS */}
         <DashboardCards
           profile={profile}
+          primaryRecommendation={primaryRecommendation}
           membershipStatus={membershipStatus ?? ""}
           daysRemaining={daysRemaining}
           isLoadingLevel={isLoadingLevel}

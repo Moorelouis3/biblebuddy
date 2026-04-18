@@ -13,6 +13,7 @@ import { buildLouisGuideChatMessage, getLouisPageGuide } from "../lib/louisGuida
 import { getVerseIntro, getVerseOfTheDay, type VerseOfTheDayEntry } from "../lib/verseOfTheDay";
 import { LOUIS_MOMENT_EVENT, type LouisMomentDetail, type LouisMomentReply } from "../lib/louisMoments";
 import { syncCurrentStreakToProfileStats } from "../lib/profileStats";
+import { consumeLouisRouteHandoff } from "../lib/louisRouteHandoff";
 
 type MessageRole = "user" | "assistant";
 
@@ -906,6 +907,7 @@ export function ChatLouis() {
   const [quickReplies, setQuickReplies] = useState<QuickReply[]>([]);
   const [louisInputPrompt, setLouisInputPrompt] = useState<LouisInputPromptState>(DEFAULT_LOUIS_INPUT_PROMPT);
   const [pendingInboxMessageIds, setPendingInboxMessageIds] = useState<string[]>([]);
+  const [pendingRouteHandoff, setPendingRouteHandoff] = useState(false);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [isListening, setIsListening] = useState(false);
@@ -1606,6 +1608,7 @@ export function ChatLouis() {
 
   const hasPendingLouisMoment =
     pendingInboxMessageIds.length > 0 ||
+    pendingRouteHandoff ||
     hasPendingDevotionalChallengePrompt ||
     hasPendingDevotionalStartPrompt ||
     (pathname === "/dashboard" && hasUnseenDailyGreeting);
@@ -2284,6 +2287,7 @@ export function ChatLouis() {
   async function handleChatButtonClick() {
     setIsOpen(true);
     setQuickReplies([]);
+    setPendingRouteHandoff(false);
     markInboxMessagesSeen();
 
     if (featureToursEnabled && louisFeatureTours.chat_widget !== true) {
@@ -2577,6 +2581,15 @@ export function ChatLouis() {
 
     return () => window.clearTimeout(timeout);
   }, [input, isOpen, louisInputPrompt, messages]);
+
+  useEffect(() => {
+    const handoff = consumeLouisRouteHandoff(pathname);
+    if (!handoff?.message) return;
+
+    appendAssistantMessage(handoff.message);
+    seedQuickReplies([]);
+    setPendingRouteHandoff(true);
+  }, [pathname]);
 
   useEffect(() => {
     function onLouisMoment(event: Event) {

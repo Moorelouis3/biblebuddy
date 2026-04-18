@@ -109,7 +109,8 @@ function buildLouisDayStartMessage(devotional: Devotional, day: DevotionalDay) {
     `You are stepping into day ${day.day_number} of ${devotional.title}.`,
     `Today is about ${topic}.`,
     snippet,
-    "Read the devotional, then do the Bible reading, and answer the reflection question.",
+    `Read the devotional first, then do the reading in ${day.bible_reading_book} ${day.bible_reading_chapter}.`,
+    "When you finish, answer the reflection question so you can really lock in what stood out.",
     "Start reading and I am always here if you have a question.",
   ].join("\n\n");
 }
@@ -340,9 +341,11 @@ export default function DevotionalDetailPage() {
     if (!devotional || days.length === 0) return;
 
     const requestedDay = Number.parseInt(searchParams.get("day") || "", 10);
-    const fromLouisDaily = searchParams.get("from") === "louis-daily";
+    const fromLouis = searchParams.get("from");
+    const shouldHandleLouisDay =
+      fromLouis === "louis-daily" || fromLouis === "louis-recommendation";
 
-    if (!requestedDay || Number.isNaN(requestedDay) || !fromLouisDaily) {
+    if (!requestedDay || Number.isNaN(requestedDay) || !shouldHandleLouisDay) {
       return;
     }
 
@@ -364,13 +367,6 @@ export default function DevotionalDetailPage() {
       await handleDayClick(day);
       dispatchLouisMoment({
         message: buildLouisDayStartMessage(devotional, day),
-        replies: [
-          {
-            id: `devotional-close-${devotional.id}-${day.day_number}`,
-            label: "Close",
-            close: true,
-          },
-        ],
       });
       router.replace(`/devotionals/${devotionalId}`);
     })();

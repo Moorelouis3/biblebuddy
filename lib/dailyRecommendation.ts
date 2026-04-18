@@ -78,6 +78,7 @@ export interface DailyRecommendation {
   cardTheme?: RecommendationTheme;
   recommendationKey?: string;
   category?: RecommendationCategory;
+  imageHint?: string;
 }
 
 type LouisMessageTemplate = {
@@ -505,7 +506,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
           : `You already started ${activeDevotional.title}.`,
         recommendationLine: `Day ${nextDay} is ready, and this is probably the cleanest place for you to pick the story back up today.`,
         primaryButtonText: `Continue Day ${nextDay}`,
-        primaryButtonHref: `/devotionals/${activeDevotional.id}`,
+        primaryButtonHref: `/devotionals/${activeDevotional.id}?day=${nextDay}&from=louis-recommendation`,
         level: 1,
         category: "devotional",
         cardEyebrow: "Keep Going",
@@ -972,7 +973,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         contextLine: `${recommendedDevotional.title} is a strong place to begin if you want a guided story and a clear next step.`,
         recommendationLine: "Start with Day 1 today and let the app lead you into a simple, steady rhythm.",
         primaryButtonText: "Start Day 1",
-        primaryButtonHref: `/devotionals/${recommendedDevotional.id}`,
+        primaryButtonHref: `/devotionals/${recommendedDevotional.id}?day=1&from=louis-recommendation`,
         level: 2,
         category: "devotional",
         cardEyebrow: "Start Here",
