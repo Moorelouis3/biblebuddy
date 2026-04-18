@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { buildGroupSchedule } from "@/lib/groupSchedule";
 import type { BibleStudySeriesSnapshot } from "@/lib/groupRecurringSeries";
+import { getLiveStreakMapForRecentUsers } from "@/lib/serverStreaks";
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 const BERLIN_TIME_ZONE = "Europe/Berlin";
@@ -228,9 +229,12 @@ export async function GET(
     (row) => new Date(row.created_at).getTime() >= new Date(twentyFourHoursAgoIso).getTime(),
   );
   const uniqueBibleStudyCardVisitors24h = new Set(recentBibleStudyCardActions.map((row) => row.user_id).filter(Boolean)).size;
-  const { data: allProfileRows, error: fireProfilesError } = await supabaseAdmin
-    .from("profile_stats")
-    .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, last_active_date, has_fire_streak_badge, fire_streak_awarded_at");
+  const [{ data: allProfileRows, error: fireProfilesError }, recentLiveStreakMap] = await Promise.all([
+    supabaseAdmin
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, last_active_date, has_fire_streak_badge, fire_streak_awarded_at"),
+    getLiveStreakMapForRecentUsers(supabaseAdmin, 60),
+  ]);
 
   if (fireProfilesError) {
     return NextResponse.json({ error: fireProfilesError.message || "Could not load fire board profiles." }, { status: 500 });
@@ -250,10 +254,19 @@ export async function GET(
     fire_streak_awarded_at?: string | null;
   }>);
   const fireStreakBuddies = fireBuddyProfiles
-    .filter((profile) => Boolean(profile.has_fire_streak_badge) || (profile.current_streak ?? 0) >= 30)
+    .map((profile) => {
+      const liveCurrentStreak = recentLiveStreakMap.get(profile.user_id);
+      const resolvedCurrentStreak = liveCurrentStreak ?? profile.current_streak ?? 0;
+      const hasResolvedFireBadge = Boolean(profile.has_fire_streak_badge) || resolvedCurrentStreak >= 30;
+      return {
+        ...profile,
+        resolvedCurrentStreak,
+        hasResolvedFireBadge,
+      };
+    })
+    .filter((profile) => profile.hasResolvedFireBadge)
     .map((profile) => ({
       ...profile,
-      resolvedCurrentStreak: profile.current_streak ?? 0,
     }))
     .filter((profile): profile is NonNullable<typeof profile> => Boolean(profile))
     .sort((a, b) => {

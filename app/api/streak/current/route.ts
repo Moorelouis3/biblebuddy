@@ -9,6 +9,7 @@ export const dynamic = "force-dynamic";
 
 export async function POST(_req: NextRequest) {
   try {
+    const body = await _req.json().catch(() => null);
     const cookieStore = await cookies();
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -40,13 +41,18 @@ export async function POST(_req: NextRequest) {
       auth: { autoRefreshToken: false, persistSession: false },
     });
 
+    const targetUserId =
+      typeof body?.userId === "string" && body.userId.trim().length > 0
+        ? body.userId.trim()
+        : user.id;
+
     const [{ data: existingProfile, error: existingProfileError }, liveStreakMap] = await Promise.all([
       supabaseAdmin
         .from("profile_stats")
         .select("current_streak, has_fire_streak_badge, fire_streak_awarded_at")
-        .eq("user_id", user.id)
+        .eq("user_id", targetUserId)
         .maybeSingle(),
-      getLiveStreakMapForUsers(supabaseAdmin, [user.id], 400),
+      getLiveStreakMapForUsers(supabaseAdmin, [targetUserId], 400),
     ]);
 
     if (existingProfileError) {
@@ -56,14 +62,14 @@ export async function POST(_req: NextRequest) {
       );
     }
 
-    const currentStreak = liveStreakMap.get(user.id) ?? 0;
+    const currentStreak = liveStreakMap.get(targetUserId) ?? 0;
     const nowIso = new Date().toISOString();
     const hasFireStreakBadge =
       Boolean(existingProfile?.has_fire_streak_badge) ||
       currentStreak >= 30;
 
     const payload = {
-      user_id: user.id,
+      user_id: targetUserId,
       current_streak: currentStreak,
       has_fire_streak_badge: hasFireStreakBadge,
       fire_streak_awarded_at: hasFireStreakBadge
@@ -85,7 +91,7 @@ export async function POST(_req: NextRequest) {
         .from("profile_stats")
         .upsert(
           {
-            user_id: user.id,
+            user_id: targetUserId,
             current_streak: currentStreak,
             updated_at: nowIso,
           },
