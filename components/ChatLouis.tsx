@@ -165,7 +165,7 @@ const DEFAULT_LOUIS_INPUT_PROMPT: LouisInputPromptState = {
   userMessageCount: 0,
 };
 
-const DAILY_LOUIS_FLOW_VERSION = "v2";
+const DAILY_LOUIS_FLOW_VERSION = "v3";
 
 // Type for SpeechRecognition (Web Speech API)
 interface SpeechRecognitionResult {
@@ -1661,6 +1661,33 @@ export function ChatLouis() {
     setMessages((prev) => [...prev, { role: "user", content }]);
   }
 
+  function isDailyLouisMessage(content: string) {
+    return (
+      content.includes("Would you like to start a devotional?") ||
+      content.includes("Today is your first day") ||
+      content.includes("Today is a new start") ||
+      content.includes("You have not been here in") ||
+      (content.includes("You are on a ") && content.includes(" day streak")) ||
+      content.includes("Ready for the next day?") ||
+      content.includes("Do you want to continue?") ||
+      content.includes("Want to play again?")
+    );
+  }
+
+  function removeLatestDailyLouisMessage() {
+    setMessages((prev) => {
+      const next = [...prev];
+      for (let index = next.length - 1; index >= 0; index -= 1) {
+        const message = next[index];
+        if (message.role === "assistant" && isDailyLouisMessage(message.content)) {
+          next.splice(index, 1);
+          break;
+        }
+      }
+      return next;
+    });
+  }
+
   function getUserMessageCount() {
     return messages.filter((message) => message.role === "user").length;
   }
@@ -1974,6 +2001,7 @@ export function ChatLouis() {
     }
     persistLouisProfile({ louis_last_check_in_at: new Date().toISOString() });
 
+    removeLatestDailyLouisMessage();
     appendAssistantMessage(buildDailyConversationMessage());
     seedQuickReplies([
       { id: "daily-yes", label: "Yes", action: "daily_yes" },
@@ -2559,23 +2587,6 @@ export function ChatLouis() {
     return () => document.removeEventListener(LOUIS_MOMENT_EVENT, onLouisMoment);
   }, []);
 
-  useEffect(() => {
-    if (
-      pathname !== "/dashboard" ||
-      !hasUnseenDailyGreeting ||
-      isOpen ||
-      pendingInboxMessageIds.length > 0
-    ) {
-      return;
-    }
-
-    const timeout = window.setTimeout(() => {
-      void handleChatButtonClick();
-    }, 350);
-
-    return () => window.clearTimeout(timeout);
-  }, [hasUnseenDailyGreeting, isOpen, pathname, pendingInboxMessageIds.length]);
-
   const bubbleStyle =
     position.x === 0 && position.y === 0
       ? {
@@ -2756,7 +2767,7 @@ export function ChatLouis() {
 
           {quickReplies.length > 0 ? (
             <div className="border-t border-gray-200 bg-white px-3 py-3">
-              <div className="space-y-2">
+              <div className="grid grid-cols-2 gap-2">
                 {quickReplies.map((reply) => (
                   <button
                     key={reply.id}
@@ -2764,8 +2775,8 @@ export function ChatLouis() {
                     onClick={() => void handleQuickReply(reply)}
                     className={
                       reply.label === "Yes"
-                        ? "w-full rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
-                        : "w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-800 transition hover:bg-gray-50"
+                        ? "w-full rounded-lg bg-[#6fb48b] px-3 py-2 text-xs font-semibold text-white transition hover:bg-[#5ea27a]"
+                        : "w-full rounded-lg bg-[#e98585] px-3 py-2 text-xs font-semibold text-white transition hover:bg-[#d96d6d]"
                     }
                   >
                     {reply.label}
