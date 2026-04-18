@@ -10,6 +10,7 @@
 
 import { supabase } from "./supabaseClient";
 import type { ActionType } from "./actionTypes";
+import { syncCurrentStreakToProfileStats } from "./profileStats";
 
 /**
  * Log an action to master_actions table ONLY
@@ -71,6 +72,12 @@ export async function logActionToMasterActions(
     if (actionError) {
       console.error("[ACTION] Error logging action to master_actions:", actionError);
       throw actionError;
+    }
+
+    try {
+      await syncCurrentStreakToProfileStats(userId);
+    } catch (streakError) {
+      console.error("[ACTION] Error syncing streak after action:", streakError);
     }
   } catch (err) {
     console.error("[ACTION] Error in logActionToMasterActions:", err);

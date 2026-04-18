@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
   try {
     const { data: profileRows, error: profileError } = await supabaseAdmin
       .from("profile_stats")
-      .select("*");
+      .select("user_id, current_streak, has_fire_streak_badge, fire_streak_awarded_at");
 
     if (profileError) {
       return NextResponse.json({ error: profileError.message || "Could not load profile stats." }, { status: 500 });
@@ -39,22 +39,11 @@ export async function GET(request: NextRequest) {
     const allProfiles = (profileRows || []) as Array<{
       user_id: string;
       current_streak?: number | null;
-      last_active_date?: string | null;
       has_fire_streak_badge?: boolean | null;
       fire_streak_awarded_at?: string | null;
     }>;
 
-    const recentCutoff = new Date();
-    recentCutoff.setUTCDate(recentCutoff.getUTCDate() - 90);
-    const recentCutoffKey = recentCutoff.toISOString().slice(0, 10);
-
-    const candidateProfiles = allProfiles.filter((profile) => {
-      if (!profile.user_id) return false;
-      if (Boolean(profile.has_fire_streak_badge)) return true;
-      if ((profile.current_streak ?? 0) >= 25) return true;
-      return Boolean(profile.last_active_date && profile.last_active_date >= recentCutoffKey);
-    });
-
+    const candidateProfiles = allProfiles.filter((profile) => Boolean(profile.user_id));
     const candidateUserIds = candidateProfiles.map((profile) => profile.user_id);
     const liveStreakMap = await getLiveStreakMapForUsers(supabaseAdmin, candidateUserIds, 400);
     const nowIso = new Date().toISOString();
