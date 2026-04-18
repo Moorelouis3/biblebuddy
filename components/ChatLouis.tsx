@@ -129,6 +129,16 @@ type LouisPromptMode = "default" | "yes_no" | "today_tomorrow";
 
 type LouisPromptIntent = "none" | "new_user_challenge" | "verse_explain" | "page_guide";
 
+type LouisDailyFlowType = "none" | "new_user" | "fell_off" | "active" | "devotional_start";
+
+type LouisDailyActionTarget = {
+  kind: "devotional" | "reading" | "study" | "game" | "default";
+  summaryLines: string[];
+  question: string;
+  href: string | null;
+  yesFollowUp: string;
+};
+
 type LouisInputPromptState = {
   mode: LouisPromptMode;
   intent: LouisPromptIntent;
@@ -154,6 +164,8 @@ const DEFAULT_LOUIS_INPUT_PROMPT: LouisInputPromptState = {
   hinted: false,
   userMessageCount: 0,
 };
+
+const DAILY_LOUIS_FLOW_VERSION = "v2";
 
 // Type for SpeechRecognition (Web Speech API)
 interface SpeechRecognitionResult {
@@ -208,7 +220,7 @@ function getRecommendationSeenKey(userId: string) {
 
 function getDailyGreetingSeenKey(userId: string) {
   const today = new Date().toISOString().slice(0, 10);
-  return `bb:louis:greeting:${userId}:${today}`;
+  return `bb:louis:greeting:${DAILY_LOUIS_FLOW_VERSION}:${userId}:${today}`;
 }
 
 function getChatStorageKey(userId: string) {
@@ -373,6 +385,21 @@ function buildNewUserChallengeLine(goal: string | null | undefined) {
   }
 }
 
+function toGoalHelpLine(goal: string | null | undefined) {
+  switch (normalizeOnboardingGoal(goal)) {
+    case "build_bible_habit":
+      return "This will help you stay consistent every day";
+    case "understand_bible_better":
+      return "This will help you understand what you are reading";
+    case "stay_consistent":
+      return "This will help you stay consistent every day";
+    case "study_with_buddies":
+      return "This will help you grow closer to God";
+    default:
+      return "This will help you build a daily Bible habit";
+  }
+}
+
 function normalizeFeatureRollout(value: unknown): LouisFeatureRolloutState {
   if (!value || typeof value !== "object") {
     return { ...DEFAULT_LOUIS_FEATURE_ROLLOUT };
@@ -428,6 +455,25 @@ function getStreakCelebrationLine(currentStreak: number) {
   }
 
   return `You're on day ${currentStreak}, and you've already earned the fire. You also just picked up ${currentStreak} extra level points from your streak today. Now it's about protecting the habit and growing deeper.`;
+}
+
+function getDailyStreakMotivation(currentStreak: number) {
+  if (currentStreak >= 30) {
+    if (currentStreak === 30) {
+      return "30 days of consistency 🔥\n\nYou earned the fire today\n\nThat is real consistency";
+    }
+    return `${currentStreak} days of consistency 🔥\n\nThat is real consistency`;
+  }
+
+  if (currentStreak >= 15) {
+    return "You are getting close to a 30 day streak🔥";
+  }
+
+  if (currentStreak >= 7) {
+    return "This is where habits start forming";
+  }
+
+  return "Keep it going";
 }
 
 function buildHabitNudgeFromCards(openedCards: string[]): LouisHabitNudge | null {
@@ -515,6 +561,15 @@ function summarizeLastMasterAction(action: {
       followUp: "Do you want to keep going with that devotional?",
       continueLabel: "Open devotionals",
       continueHref: "/devotionals",
+    };
+  }
+
+  if (action.action_type === "series_week_started" && label) {
+    return {
+      summary: `Last time you were in ${label}.`,
+      followUp: "Do you want to continue?",
+      continueLabel: "Open Bible Study Series",
+      continueHref: "/study-groups",
     };
   }
 
@@ -822,6 +877,8 @@ export function ChatLouis() {
   const [lastMasterActionSummary, setLastMasterActionSummary] = useState<LouisLastActionSummary | null>(null);
   const [habitNudge, setHabitNudge] = useState<LouisHabitNudge | null>(null);
   const [currentStreak, setCurrentStreak] = useState<number>(0);
+  const [lastActiveDate, setLastActiveDate] = useState<string | null>(null);
+  const [userFirstName, setUserFirstName] = useState<string | null>(null);
   const [onboardingGoal, setOnboardingGoal] = useState<string | null>(null);
   const [bibleExperienceLevel, setBibleExperienceLevel] = useState<string | null>(null);
   const [louisJourneyStage, setLouisJourneyStage] = useState<LouisJourneyStage>("new_user");
@@ -835,6 +892,7 @@ export function ChatLouis() {
     ...DEFAULT_LOUIS_FEATURE_ROLLOUT,
   });
   const [newUserChallengeStep, setNewUserChallengeStep] = useState<LouisNewUserChallengeStep>("none");
+  const [dailyFlowType, setDailyFlowType] = useState<LouisDailyFlowType>("none");
   const [selectedDevotionalForChallenge, setSelectedDevotionalForChallenge] = useState<{
     id: string;
     title: string;
@@ -1112,6 +1170,12 @@ export function ChatLouis() {
     }
   }, [isOpen, isListening]);
 
+  useEffect(() => {
+    setIsOpen(false);
+    setQuickReplies([]);
+    clearLouisInputPrompt();
+  }, [pathname]);
+
   // Auto-resize textarea
   useEffect(() => {
     if (textareaRef.current) {
@@ -1155,6 +1219,7 @@ export function ChatLouis() {
         setCurrentStreak(0);
         setOnboardingGoal(null);
         setBibleExperienceLevel(null);
+        setUserFirstName(null);
         setLouisJourneyStage("new_user");
         setPrimaryDevotional(null);
         setConversationMemory({ summary: null, topic: null, resolved: true });
@@ -1166,6 +1231,13 @@ export function ChatLouis() {
       }
 
       setLouisUserId(user.id);
+
+      const authFirstName =
+        typeof user.user_metadata?.first_name === "string"
+          ? user.user_metadata.first_name.trim()
+          : typeof user.user_metadata?.name === "string"
+            ? user.user_metadata.name.trim().split(/\s+/)[0] || null
+            : null;
 
       if (typeof window !== "undefined") {
         try {
@@ -1202,13 +1274,23 @@ export function ChatLouis() {
         console.error("[LOUIS] Error loading profile context:", profileError);
         setLouisFeatureTours({ ...DEFAULT_FEATURE_TOURS });
         setCurrentStreak(streakData.currentStreak ?? 0);
+        setLastActiveDate(null);
         setUserProfileImageUrl(null);
         setBibleExperienceLevel(null);
+        setUserFirstName(authFirstName);
       } else {
         setLouisFeatureTours(normalizeFeatureTours(profileStats?.feature_tours));
         setCurrentStreak(streakData.currentStreak);
+        setLastActiveDate(profileStats?.last_active_date ?? null);
         setUserProfileImageUrl(profileStats?.profile_image_url ?? null);
         setBibleExperienceLevel(profileStats?.bible_experience_level ?? null);
+        setUserFirstName(
+          typeof profileStats?.display_name === "string" && profileStats.display_name.trim()
+            ? profileStats.display_name.trim().split(/\s+/)[0]
+            : typeof profileStats?.username === "string" && profileStats.username.trim()
+              ? profileStats.username.trim().split(/\s+/)[0]
+              : authFirstName,
+        );
         setConversationMemory({
           summary: profileStats?.louis_last_conversation_summary ?? null,
           topic: profileStats?.louis_last_conversation_topic ?? null,
@@ -1445,7 +1527,7 @@ export function ChatLouis() {
       if (cancelled) return;
 
       setLouisRecommendation(journeyRecommendation);
-      setHasUnseenRecommendation(Boolean(journeyRecommendation) && !hasSeenRecommendation(user.id));
+      setHasUnseenRecommendation(false);
       setHasUnseenDailyGreeting(!hasSeenDailyGreeting(user.id));
     }
 
@@ -1524,7 +1606,7 @@ export function ChatLouis() {
     pendingInboxMessageIds.length > 0 ||
     hasPendingDevotionalChallengePrompt ||
     hasPendingDevotionalStartPrompt ||
-    (pathname === "/dashboard" && (hasUnseenDailyGreeting || (hasUnseenRecommendation && Boolean(louisRecommendation))));
+    (pathname === "/dashboard" && hasUnseenDailyGreeting);
 
   const emptyStatePrompt = louisInputPrompt.mode === "today_tomorrow"
     ? "Type today or tomorrow."
@@ -1780,17 +1862,6 @@ export function ChatLouis() {
     clearLouisInputPrompt();
   }
 
-  function getDailyQuickReplies(): QuickReply[] {
-    if (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional) {
-      return [];
-    }
-    return [
-      { id: "daily-good", label: "Good", action: "daily_good" },
-      { id: "daily-okay", label: "Okay", action: "daily_okay" },
-      { id: "daily-bad", label: "Not great", action: "daily_bad" },
-    ];
-  }
-
   function getGuideQuickReplies(): QuickReply[] {
     return [
       { id: "guide-show", label: "Yes, show me", action: "guide_show" },
@@ -1799,96 +1870,116 @@ export function ChatLouis() {
     ];
   }
 
-  function buildDailyConversationMessage() {
-    const devotionalNextDay = primaryDevotional ? Math.min(primaryDevotional.dayNumber + 1, primaryDevotional.totalDays || primaryDevotional.dayNumber + 1) : null;
-    const experienceTone =
-      bibleExperienceLevel === "Just getting started"
-        ? "I'll keep this simple and walk with you step by step."
-        : bibleExperienceLevel === "Been studying for a while"
-          ? "You've already got some foundation, so let's turn that into consistency."
-          : bibleExperienceLevel === "Studying deeply for years"
-            ? "You've already spent real time in the Word, so let's make that rhythm stronger in here."
-            : "Let's keep building your rhythm in the Word.";
+  function getDailyActionTarget(): LouisDailyActionTarget {
+    if (primaryDevotional) {
+      return {
+        kind: "devotional",
+        summaryLines: currentStreak > 0
+          ? ["Yesterday you completed", `Day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}`]
+          : ["Last time you were on", `Day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}`],
+        question: currentStreak > 0 ? "Ready for the next day?" : "Do you want to continue?",
+        href: `/devotionals/${primaryDevotional.id}`,
+        yesFollowUp: currentStreak > 0 ? "Let’s keep your streak alive" : "Picking up where you left off\n\nLet’s keep going",
+      };
+    }
 
-    let message = "";
+    if (lastMasterActionSummary?.continueHref) {
+      const href = lastMasterActionSummary.continueHref;
+      const kind =
+        href.includes("/Bible/") || href === "/reading"
+          ? "reading"
+          : href.includes("/study-groups")
+            ? "study"
+            : href.includes("/bible-trivia") || href.includes("/bible-study-games")
+              ? "game"
+              : "default";
+
+      return {
+        kind,
+        summaryLines: lastMasterActionSummary.summary.split("\n\n").filter(Boolean),
+        question: lastMasterActionSummary.followUp.replace(/\?+$/, "") + "?",
+        href,
+        yesFollowUp: currentStreak > 0 ? "Let’s keep your streak alive" : "Picking up where you left off\n\nLet’s keep going",
+      };
+    }
+
+    return {
+      kind: "default",
+      summaryLines: [
+        "I recommend starting with a devotional",
+        "It is a short daily reading",
+        "that helps you stay structured and build a habit",
+      ],
+      question: "Would you like to start a devotional?",
+      href: "/devotionals",
+      yesFollowUp: "Let’s get you started",
+    };
+  }
+
+  function buildDailyConversationMessage() {
+    const name = userFirstName || "there";
+    const daysSinceLastActive = (() => {
+      if (!lastActiveDate) return null;
+      const today = new Date();
+      const lastActive = new Date(`${lastActiveDate}T12:00:00`);
+      const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      const lastDate = new Date(lastActive.getFullYear(), lastActive.getMonth(), lastActive.getDate());
+      return Math.max(0, Math.round((todayDate.getTime() - lastDate.getTime()) / 86400000));
+    })();
+    const target = getDailyActionTarget();
 
     if (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional) {
-      message = `${getTimeOfDayGreeting()}.\n\nHey, welcome to Bible Buddy.\n\nYou just took a really big step.\n\nMost people sign up for an app like this and never even log in. You did.\n\nThat tells me you really do want to get into Scripture.\n\n${buildNewUserChallengeLine(onboardingGoal)}\n\n${experienceTone}\n\nSo let's keep this simple.\n\nFor the next 21 days, let's build that by walking through one devotional together day by day.\n\nAre you down for that?\n\nType yes or no below.`;
-    } else if (currentStreak === 2 && primaryDevotional && devotionalNextDay) {
-      message = `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nYou're on day 2.\n\nThis is how habits actually start.\n\nYesterday you finished day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}.\n\nReady for day ${devotionalNextDay}?`;
-    } else if (currentStreak === 3 && primaryDevotional && primaryDevotional.dayNumber >= 3) {
-      message = `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nDay 3 looks good on you.\n\nYou're not just browsing anymore. You're building something now.\n\nYou finished day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}.\n\nAfter that, if you want, we can reinforce it with something interactive.`;
-    } else if (currentStreak === 4) {
-      message = `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nFour days in a row.\n\nThat is where this starts turning from interest into rhythm.\n\nKeep it simple today. Protect the streak, and let me point you to the right next step.`;
-    } else if (currentStreak === 5) {
-      message = `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nFive straight days. That's strong.\n\nYesterday mattered, and today matters too.\n\nI'll help you keep this going without overcomplicating it.`;
-    } else if (currentStreak === 6) {
-      message = `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nSix days in a row.\n\nYou're right on the edge of a full week now.\n\nLet's not waste the momentum. Show up today and keep building.`;
-    } else if (currentStreak === 7) {
-      message = `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nSeven days in a row. That's real consistency.\n\nMost people say they want to grow. Fewer actually show up for a full week. You did.\n\nYou've got a base now, and I'm going to help you build on it.`;
-    } else {
-      const streakIntro =
-        currentStreak > 0
-          ? `${getTimeOfDayGreeting()}. Welcome back.\n\nYou're on day ${currentStreak} right now.`
-          : `${getTimeOfDayGreeting()}.\n\nThis is a good day to start something real.`;
-
-      message = hasLouisHistory
-        ? `${streakIntro}\n\n${getStreakCelebrationLine(currentStreak)}\n\nHow are you doing today?`
-        : `${streakIntro}\n\nI'm Louis.\n\nYou can talk to me like a regular person in here.\n\nIf I ask you something, just type back or use the voice button.\n\n${getStreakCelebrationLine(currentStreak)}\n\nHow are you doing today?`;
-
-      if (!hasLouisHistory && pathname === "/dashboard") {
-        message += `\n\n${buildNewUserChallengeLine(onboardingGoal)}\n\nLet's build that together one day at a time.`;
-      }
+      setDailyFlowType("new_user");
+      return [
+        `Hey ${name} 👋`,
+        "Welcome to Bible Buddy",
+        "Today is your first day",
+        "Let’s start your streak",
+        onboardingGoal ? `You said you want to ${formatOnboardingGoal(onboardingGoal)}` : "",
+        onboardingGoal ? "The best way to do that is to stay consistent daily" : "",
+        "I recommend starting with a devotional",
+        "It is a short daily reading",
+        "that helps you stay structured and build a habit",
+        "Would you like to start a devotional?",
+      ].filter(Boolean).join("\n\n");
     }
 
-    if (!conversationMemory.resolved && conversationMemory.summary) {
-      message += `\n\nLast time you mentioned "${conversationMemory.summary}".\n\nHow has that been going?`;
-    } else if (louisUserId && typeof window !== "undefined") {
-      const rawMemory = window.localStorage.getItem(getMemoryStorageKey(louisUserId));
-      if (rawMemory) {
-        try {
-          const parsed = JSON.parse(rawMemory) as { lastUserMessage?: string; lastUserAt?: string };
-          if (parsed.lastUserMessage && parsed.lastUserAt) {
-            const diffHours = (Date.now() - new Date(parsed.lastUserAt).getTime()) / 3600000;
-            if (diffHours >= 12) {
-              message += `\n\nLast time you mentioned "${parsed.lastUserMessage.slice(0, 90)}${parsed.lastUserMessage.length > 90 ? "..." : ""}".\n\nHow did that go?`;
-            }
-          }
-        } catch {
-          // no-op
-        }
-      }
+    if ((daysSinceLastActive ?? 0) >= 3) {
+      setDailyFlowType("fell_off");
+      return [
+        `Welcome back ${name} 👋`,
+        `You have not been here in ${daysSinceLastActive} days`,
+        "But that is okay",
+        "Today is a new start",
+        "God gives us a new day",
+        "Let’s use this one",
+        ...target.summaryLines,
+        target.question,
+      ].join("\n\n");
     }
 
-    return message;
+    setDailyFlowType("active");
+    return [
+      `Good to see you ${name} 👋`,
+      `You are on a ${currentStreak} day streak`,
+      getDailyStreakMotivation(currentStreak),
+      ...target.summaryLines,
+      target.question,
+    ].join("\n\n");
   }
 
   async function beginDailyConversation() {
     if (hasUnseenDailyGreeting) {
       markDailyGreetingSeenLocal();
     }
-    if (hasUnseenRecommendation) {
-      markRecommendationSeenLocal();
-    }
     persistLouisProfile({ louis_last_check_in_at: new Date().toISOString() });
-    if (currentStreak > 7) {
-      appendAssistantMessage(
-        `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nYou're on day ${currentStreak} right now.\n\n${getStreakCelebrationLine(currentStreak)}`,
-      );
-      await shareVerseOfTheDayInChat();
-      return;
-    }
 
     appendAssistantMessage(buildDailyConversationMessage());
-    if (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional) {
-      setTypedReplyPrompt(
-        "yes_no",
-        "new_user_challenge",
-        "I'm right here with you. Just type yes or no and I'll guide you into the first step.",
-      );
-      return;
-    }
-    clearLouisInputPrompt();
+    seedQuickReplies([
+      { id: "daily-yes", label: "Yes", action: "daily_yes" },
+      { id: "daily-no", label: "No", action: "daily_no" },
+    ]);
+    setTypedReplyPrompt("yes_no", "none", "You can type yes or no, or tap the buttons.");
   }
 
   async function beginPageGuideConversation() {
@@ -1897,33 +1988,6 @@ export function ChatLouis() {
     rememberGuidePromptShown();
     appendAssistantMessage(currentPageGuide.ask);
     seedQuickReplies(getGuideQuickReplies());
-  }
-
-  async function startDailyConversation() {
-    if (hasUnseenDailyGreeting) {
-      markDailyGreetingSeenLocal();
-    }
-    if (hasUnseenRecommendation) {
-      markRecommendationSeenLocal();
-    }
-    persistLouisProfile({ louis_last_check_in_at: new Date().toISOString() });
-    if (currentStreak > 7) {
-      appendAssistantMessage(
-        `${getTimeOfDayGreeting()}.\n\nWelcome back.\n\nYou're on day ${currentStreak} right now.\n\n${getStreakCelebrationLine(currentStreak)}`,
-      );
-      await shareVerseOfTheDayInChat();
-      return;
-    }
-    appendAssistantMessage(buildDailyConversationMessage());
-    if (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional) {
-      setTypedReplyPrompt(
-        "yes_no",
-        "new_user_challenge",
-        "Just type yes or no and I'll walk you into the devotional flow.",
-      );
-      return;
-    }
-    clearLouisInputPrompt();
   }
 
   async function startPageGuideConversation() {
@@ -2030,118 +2094,39 @@ export function ChatLouis() {
 
     switch (reply.action) {
       case "daily_yes":
-        appendAssistantMessage(
-          "Alright.\n\nWhat's on your mind?\n\nTell me straight, and I'll help you figure out what to do with it.",
-        );
-        break;
-      case "daily_good":
-        appendAssistantMessage(
-          !primaryDevotional && pathname === "/dashboard"
-            ? `That's good to hear.\n\nSince this is your first time, how about we do this together?\n\nThe best first move is to pick one devotional and let me guide you through it day by day.`
-            : currentStreak === 2 && primaryDevotional
-              ? `Love that.\n\nDay 2 matters because this is when the habit starts getting real.\n\nGo back into ${primaryDevotional.title} and do the next day first.`
-              : currentStreak === 4
-                ? `Love that.\n\nFour days in means this is starting to become real.\n\nKeep the streak alive first, then if you want I can stretch you into one more feature after that.`
-                : currentStreak === 5
-                  ? `Love that.\n\nFive straight days is strong.\n\nToday I want you to protect the streak first, then build on it with the next right step.`
-                  : currentStreak === 6
-                    ? `Love that.\n\nSix days in a row means you are right on the edge of a full week.\n\nDo not waste the momentum today.`
-              : currentStreak >= 3 && primaryDevotional?.dayNumber && primaryDevotional.dayNumber >= 3 && !louisFeatureRollout.trivia_intro_seen
-                ? `Love that.\n\nYou've already got some momentum.\n\nAfter your devotional today, I want you to try something that reinforces it too.`
-                : currentStreak >= 7 && !louisFeatureRollout.group_intro_seen
-                  ? `Love that.\n\nYou've built enough consistency now that I want to introduce something new.\n\nYou do not have to do this alone in Bible Buddy.`
-                  : hasLouisHistory
-                    ? lastMasterActionSummary
-                      ? `Love that.\n\n${getStreakCelebrationLine(currentStreak)}\n\n${lastMasterActionSummary.summary}\n\n${lastMasterActionSummary.followUp}`
-                      : habitNudge
-                        ? `Love that.\n\n${getStreakCelebrationLine(currentStreak)}\n\n${habitNudge.summary}`
-                        : "Love that.\n\nDo you want today's verse, do you want a recommendation, or do you want me to show you something on this page?"
-                    : "That's good to hear.\n\nIt's great to have you here.\n\nDo you want today's verse, or do you want me to recommend the next best thing to do today?",
-        );
-        seedQuickReplies(
-          [
-            !primaryDevotional && pathname === "/dashboard"
-              ? { id: "daily-good-devotional", label: "Show me devotionals", action: "open_devotionals" as const }
-              : null,
-            currentStreak === 2 && primaryDevotional
-              ? { id: "daily-good-rec", label: `Start day ${Math.min(primaryDevotional.dayNumber + 1, primaryDevotional.totalDays || primaryDevotional.dayNumber + 1)}`, action: "daily_recommendation" as const }
-              : null,
-            currentStreak === 4 || currentStreak === 5 || currentStreak === 6
-              ? { id: "daily-good-rec-streak", label: "Keep the streak going", action: "daily_recommendation" as const }
-              : null,
-            currentStreak >= 3 && primaryDevotional?.dayNumber && primaryDevotional.dayNumber >= 3 && !louisFeatureRollout.trivia_intro_seen
-              ? { id: "daily-good-rec", label: "Open trivia", action: "daily_recommendation" as const }
-              : null,
-            currentStreak >= 7 && !louisFeatureRollout.group_intro_seen
-              ? { id: "daily-good-rec", label: "Show me the group", action: "daily_recommendation" as const }
-              : null,
-            { id: "daily-good-verse", label: "Today's verse", action: "daily_verse" as const },
-            { id: "daily-good-rec-default", label: "Recommend something", action: "daily_recommendation" as const },
-            lastMasterActionSummary?.continueHref && lastMasterActionSummary.continueLabel
-              ? { id: "daily-good-continue", label: lastMasterActionSummary.continueLabel, action: "daily_continue" as const }
-              : null,
-            habitNudge ? { id: "daily-good-nudge", label: habitNudge.label, action: "daily_try_missing" as const } : null,
-          ].filter(Boolean) as QuickReply[],
-        );
-        break;
-      case "daily_okay":
-        appendAssistantMessage(
-          hasLouisHistory
-            ? habitNudge
-              ? `Alright.\n\nLet's keep it simple then.\n\n${habitNudge.summary}`
-              : "Alright.\n\nLet's keep it simple then.\n\nDo you want today's verse, do you want me to recommend one good next step, or do you want help with the page you're on?"
-            : "That's alright.\n\nWe can keep it simple.\n\nDo you want today's verse, or do you want me to recommend one good next step?",
-        );
-        seedQuickReplies(
-          [
-            { id: "daily-okay-verse", label: "Today's verse", action: "daily_verse" as const },
-            { id: "daily-okay-rec", label: "Recommend something", action: "daily_recommendation" as const },
-            { id: "daily-okay-talk", label: "I want to talk", action: "daily_talk" as const },
-            habitNudge ? { id: "daily-okay-nudge", label: habitNudge.label, action: "daily_try_missing" as const } : null,
-          ].filter(Boolean) as QuickReply[],
-        );
-        break;
-      case "daily_bad":
-        appendAssistantMessage(
-          hasLouisHistory
-            ? "I'm sorry you're feeling like that.\n\nWhat's going on?\n\nTell me straight, and we'll try to move toward something in the Word that can help in this moment."
-            : "I'm sorry you're feeling like that.\n\nHopefully the Word can help meet you in this moment.\n\nTell me what's going on, and I'll help you find somewhere solid to start.",
-        );
-        seedQuickReplies(
-          [
-            { id: "daily-bad-talk", label: "What's wrong", action: "daily_talk" as const },
-            { id: "daily-bad-verse", label: "Give me today's verse", action: "daily_verse" as const },
-          ].filter(Boolean) as QuickReply[],
-        );
+        if (dailyFlowType === "new_user") {
+          markRolloutSeenLocal("devotionals_intro_seen");
+          appendAssistantMessage("Perfect\n\nI’m sending you to the devotional page now");
+          clearLouisInputPrompt();
+          setIsOpen(false);
+          router.push("/devotionals");
+          break;
+        }
+        if (dailyFlowType === "devotional_start" && selectedDevotionalForChallenge) {
+          appendAssistantMessage("Let’s start Day 1");
+          clearLouisInputPrompt();
+          setIsOpen(false);
+          router.push(`/devotionals/${selectedDevotionalForChallenge.id}`);
+          break;
+        }
+        if (getDailyActionTarget().href) {
+          appendAssistantMessage(getDailyActionTarget().yesFollowUp);
+          clearLouisInputPrompt();
+          setIsOpen(false);
+          router.push(getDailyActionTarget().href as string);
+        }
         break;
       case "daily_no":
         appendAssistantMessage(
-          !primaryDevotional && pathname === "/dashboard"
-            ? "Alright.\n\nThen let me point you the right way.\n\nIf you want to get something real out of Bible Buddy, start with one devotional and let me help you stay with it."
-            : lastMasterActionSummary
-              ? `Alright.\n\nThen what do you want to do today in Bible Buddy?\n\n${lastMasterActionSummary.summary}\n\n${lastMasterActionSummary.followUp}`
-              : habitNudge
-                ? `Alright.\n\nThen what do you want to do today in Bible Buddy?\n\n${habitNudge.summary}`
-                : louisRecommendation
-                  ? "Alright.\n\nThen what do you want to do today in Bible Buddy?\n\nI can point you to the next thing that makes sense, or I can give you today's verse and let’s start there."
-                  : "Alright.\n\nThen what do you want to do today in Bible Buddy?\n\nI can give you today's verse, help you get back into the Bible, or point you somewhere solid to start.",
+          dailyFlowType === "new_user"
+            ? "Alright\n\nFeel free to explore around\n\nIf you want structure or direction\n\njust come back and I will guide you"
+            : dailyFlowType === "fell_off"
+              ? "All good\n\nIf you want help getting back on track\n\nI am here"
+              : dailyFlowType === "devotional_start"
+                ? "No problem\n\nPick another devotional if you want\n\nI will be here"
+                : "No problem\n\nCome back when you are ready\n\nI will be here",
         );
-        seedQuickReplies(
-          [
-            !primaryDevotional && pathname === "/dashboard"
-              ? { id: "daily-no-devotional", label: "Show me devotionals", action: "open_devotionals" as const }
-              : null,
-            lastMasterActionSummary?.continueHref && lastMasterActionSummary.continueLabel
-              ? { id: "daily-continue", label: lastMasterActionSummary.continueLabel, action: "daily_continue" as const }
-              : null,
-            { id: "daily-no-verse", label: "Tell me today's verse", action: "daily_verse" as const },
-            louisRecommendation
-              ? { id: "daily-no-rec", label: "What do you recommend?", action: "daily_recommendation" as const }
-              : null,
-            habitNudge ? { id: "daily-no-nudge", label: habitNudge.label, action: "daily_try_missing" as const } : null,
-            { id: "daily-no-talk", label: "I changed my mind", action: "daily_talk" as const },
-          ].filter(Boolean) as QuickReply[],
-        );
+        clearLouisInputPrompt();
         break;
       case "daily_verse":
         await shareVerseOfTheDayInChat();
@@ -2270,14 +2255,14 @@ export function ChatLouis() {
       return;
     }
 
-    if (pathname === "/dashboard" && (hasUnseenDailyGreeting || hasUnseenRecommendation)) {
+    if (pathname === "/dashboard" && hasUnseenDailyGreeting) {
       const dailyConversationMessage = buildDailyConversationMessage();
 
       if (latestMessage?.role === "assistant" && latestMessage.content === dailyConversationMessage) {
         if (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional) {
           setTypedReplyPrompt(
             "yes_no",
-            "new_user_challenge",
+            "none",
             "You can answer me right here. Just type yes or no.",
           );
         }
@@ -2290,21 +2275,22 @@ export function ChatLouis() {
 
     if (hasPendingDevotionalChallengePrompt) {
       appendAssistantMessage(
-        "This is the devotional page.\n\nThese are the different devotionals.\n\nEach one covers a different story, person, or part of the Bible.\n\nAs a free member, you get access to one devotional.\n\nCheck them out and pick one devotional.",
+        "This is the devotional page\n\nPick one devotional\n\nto get started\n\nTake your time and choose one\n\nthat stands out to you",
       );
       return;
     }
 
       if (hasPendingDevotionalStartPrompt && selectedDevotionalForChallenge) {
+        setDailyFlowType("devotional_start");
         persistNewUserChallengeStep("choose_start_day");
         appendAssistantMessage(
-          `Perfect. You picked ${selectedDevotionalForChallenge.title}.\n\nDo you want to start today or tomorrow?\n\nType today or tomorrow below.`,
+          `Good choice\n\n${selectedDevotionalForChallenge.title}\n\n${toGoalHelpLine(onboardingGoal)}\n\nReady to start Day 1?`,
         );
-        setTypedReplyPrompt(
-          "today_tomorrow",
-          "none",
-          "Just type today or tomorrow and I'll line up the next step for you.",
-        );
+        seedQuickReplies([
+          { id: "devotional-start-yes", label: "Yes", action: "daily_yes" },
+          { id: "devotional-start-no", label: "No", action: "daily_no" },
+        ]);
+        setTypedReplyPrompt("yes_no", "none", "You can type yes or no, or tap the buttons.");
         return;
       }
 
@@ -2320,33 +2306,6 @@ export function ChatLouis() {
 
   async function handleStructuredLouisInput(trimmed: string) {
     const normalized = trimmed.trim().toLowerCase();
-    const isNewDashboardChallenge =
-      pathname === "/dashboard" &&
-      (!hasLouisHistory || louisJourneyStage === "new_user") &&
-      !primaryDevotional;
-
-    if ((isNewDashboardChallenge || louisInputPrompt.intent === "new_user_challenge") && (normalized === "yes" || normalized === "no")) {
-      if (normalized === "yes") {
-        persistNewUserChallengeStep("choose_devotional");
-        markRolloutSeenLocal("devotionals_intro_seen");
-        appendAssistantMessage(
-          "Perfect.\n\nThat's the right first move.\n\nI'm sending you to the devotional page now.\n\nPick one devotional, and then I'll help you decide whether to start today or tomorrow.",
-        );
-        clearLouisInputPrompt();
-        router.push("/devotionals");
-      } else {
-        appendAssistantMessage(
-          "That's alright.\n\nIf you change your mind, just type yes and I'll walk you into it.\n\nBut the best first step in Bible Buddy is still to pick one devotional and let me help you stay with it day by day.",
-        );
-        setTypedReplyPrompt(
-          "yes_no",
-          "new_user_challenge",
-          "No pressure. If you want me to help you start, just type yes.",
-        );
-      }
-      return true;
-    }
-
     if (louisInputPrompt.intent === "verse_explain" && (normalized === "yes" || normalized === "no")) {
       clearLouisInputPrompt();
       if (normalized === "yes") {
@@ -2378,17 +2337,13 @@ export function ChatLouis() {
       return true;
     }
 
-    if (hasPendingDevotionalStartPrompt && selectedDevotionalForChallenge && (normalized === "today" || normalized === "tomorrow")) {
-      persistNewUserChallengeStep("daily_track");
-      clearLouisInputPrompt();
-      if (normalized === "today") {
-        appendAssistantMessage(
-          `Let's start now.\n\nOpen day 1 of ${selectedDevotionalForChallenge.title} below and start today.\n\nOnce you finish it, I'll help you with the next step.`,
-        );
+    if (louisInputPrompt.mode === "yes_no" && (normalized === "yes" || normalized === "no")) {
+      if (normalized === "yes") {
+        clearLouisInputPrompt();
+        await handleQuickReply({ id: "typed-yes", label: "Yes", action: "daily_yes" });
       } else {
-        appendAssistantMessage(
-          `That's fine.\n\nTomorrow we'll start day 1 of ${selectedDevotionalForChallenge.title} together.\n\nJust come back, keep the streak alive, and I'll point you straight into it.`,
-        );
+        clearLouisInputPrompt();
+        await handleQuickReply({ id: "typed-no", label: "No", action: "daily_no" });
       }
       return true;
     }
@@ -2604,6 +2559,23 @@ export function ChatLouis() {
     return () => document.removeEventListener(LOUIS_MOMENT_EVENT, onLouisMoment);
   }, []);
 
+  useEffect(() => {
+    if (
+      pathname !== "/dashboard" ||
+      !hasUnseenDailyGreeting ||
+      isOpen ||
+      pendingInboxMessageIds.length > 0
+    ) {
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      void handleChatButtonClick();
+    }, 350);
+
+    return () => window.clearTimeout(timeout);
+  }, [hasUnseenDailyGreeting, isOpen, pathname, pendingInboxMessageIds.length]);
+
   const bubbleStyle =
     position.x === 0 && position.y === 0
       ? {
@@ -2781,6 +2753,27 @@ export function ChatLouis() {
             ))}
             <div ref={messagesEndRef} />
           </div>
+
+          {quickReplies.length > 0 ? (
+            <div className="border-t border-gray-200 bg-white px-3 py-3">
+              <div className="space-y-2">
+                {quickReplies.map((reply) => (
+                  <button
+                    key={reply.id}
+                    type="button"
+                    onClick={() => void handleQuickReply(reply)}
+                    className={
+                      reply.label === "Yes"
+                        ? "w-full rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+                        : "w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-800 transition hover:bg-gray-50"
+                    }
+                  >
+                    {reply.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : null}
 
           {/* Input area */}
           <div 
