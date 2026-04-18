@@ -5,11 +5,11 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
 import {
-  calculateStreakFromActions,
-  getHeatMapData,
+  getUnifiedHeatMapData,
   type HeatMapDay,
   type ProfileStats,
   type StreakData,
+  syncCurrentStreakToProfileStats,
 } from "../../../lib/profileStats";
 import { syncNotesCount, shouldSyncNotesCount } from "../../../lib/syncNotesCount";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../../../lib/syncChaptersCount";
@@ -272,11 +272,24 @@ export default function PublicProfilePage() {
       }
 
       const [streakData, heatMapData] = await Promise.all([
-        calculateStreakFromActions(profileUserId),
-        getHeatMapData(profileUserId),
+        user?.id === profileUserId
+          ? syncCurrentStreakToProfileStats(profileUserId)
+          : Promise.resolve({
+              currentStreak: profileData.current_streak ?? 0,
+              last7Days: [],
+            } satisfies StreakData),
+        getUnifiedHeatMapData(profileUserId),
       ]);
       setStreak(streakData);
       setHeatMapDays(heatMapData);
+      setStats((prev) =>
+        prev
+          ? {
+              ...prev,
+              current_streak: streakData.currentStreak,
+            }
+          : prev,
+      );
 
       const { data: completedChapters, error: chaptersError } = await supabase
         .from("completed_chapters")
@@ -830,7 +843,22 @@ export default function PublicProfilePage() {
   }
 
   // ── Derived display values ────────────────────────────────────────────────
-  const displayStats = stats || { total_actions: 0, chapters_completed_count: 0, notes_created_count: 0, people_learned_count: 0, places_discovered_count: 0, keywords_mastered_count: 0, trivia_questions_answered: 0, last_active_date: null, current_streak: 0 };
+  const displayStats = stats
+    ? {
+        ...stats,
+        current_streak: streak?.currentStreak ?? stats.current_streak ?? 0,
+      }
+    : {
+        total_actions: 0,
+        chapters_completed_count: 0,
+        notes_created_count: 0,
+        people_learned_count: 0,
+        places_discovered_count: 0,
+        keywords_mastered_count: 0,
+        trivia_questions_answered: 0,
+        last_active_date: null,
+        current_streak: 0,
+      };
   const displayStreak = streak || { currentStreak: 0, last7Days: [] };
   const heatMapWeeks = buildHeatMapWeeks(heatMapDays);
   const heatMapMonthLabels = getHeatMapMonthLabels(heatMapWeeks);

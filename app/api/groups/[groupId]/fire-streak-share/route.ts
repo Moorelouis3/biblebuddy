@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { getLiveStreakMapForRecentUsers } from "@/lib/serverStreaks";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -123,12 +122,9 @@ export async function POST(
     return NextResponse.json({ error: "Study group not found." }, { status: 404 });
   }
 
-  const [{ data: allProfiles, error: profilesLoadError }, liveRecentStreakMap] = await Promise.all([
-    supabaseAdmin
-      .from("profile_stats")
-      .select("user_id, display_name, username, profile_image_url, current_streak, current_level, last_active_date, has_fire_streak_badge, fire_streak_awarded_at"),
-    getLiveStreakMapForRecentUsers(supabaseAdmin, 120),
-  ]);
+  const { data: allProfiles, error: profilesLoadError } = await supabaseAdmin
+    .from("profile_stats")
+    .select("user_id, display_name, username, profile_image_url, current_streak, current_level, last_active_date, has_fire_streak_badge, fire_streak_awarded_at");
 
   if (profilesLoadError) {
     return NextResponse.json({ error: profilesLoadError.message || "Could not load Bible Buddy streaks." }, { status: 500 });
@@ -146,38 +142,17 @@ export async function POST(
     fire_streak_awarded_at?: string | null;
   }>;
 
-  const profileById = new Map(
-    profiles
-      .filter((profile) => profile.user_id)
-      .map((profile) => [profile.user_id, profile]),
-  );
-  const candidateIds = new Set<string>();
-  profiles.forEach((profile) => {
-    if (threshold <= 30) {
-      if (Boolean(profile.has_fire_streak_badge) || (profile.current_streak ?? 0) >= 30) {
-        candidateIds.add(profile.user_id);
+  const buddies = profiles
+    .filter((profile) => {
+      if (threshold <= 30) {
+        return Boolean(profile.has_fire_streak_badge) || (profile.current_streak ?? 0) >= 30;
       }
-      return;
-    }
-    if ((profile.current_streak ?? 0) >= threshold) {
-      candidateIds.add(profile.user_id);
-    }
-  });
-  liveRecentStreakMap.forEach((streak, userId) => {
-    if (streak >= threshold && profileById.has(userId)) {
-      candidateIds.add(userId);
-    }
-  });
-
-  const buddies = Array.from(candidateIds)
-    .map((userId) => {
-      const profile = profileById.get(userId);
-      if (!profile) return null;
-      return {
-        ...profile,
-        resolvedCurrentStreak: liveRecentStreakMap.get(userId) ?? profile.current_streak ?? 0,
-      };
+      return (profile.current_streak ?? 0) >= threshold;
     })
+    .map((profile) => ({
+      ...profile,
+      resolvedCurrentStreak: profile.current_streak ?? 0,
+    }))
     .filter((profile): profile is NonNullable<typeof profile> => Boolean(profile))
     .sort((a, b) => {
       const streakDiff = (b.resolvedCurrentStreak ?? 0) - (a.resolvedCurrentStreak ?? 0);
