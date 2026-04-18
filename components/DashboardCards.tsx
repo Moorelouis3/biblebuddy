@@ -13,7 +13,6 @@ interface DashboardCardsProps {
     progressPercent: number;
     pointsToNextLevel: number;
   } | null;
-  userName: string;
   currentStreak: number;
   handleCardClick: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, card: string, href: string) => void;
   setShowLevelInfoModal: (show: boolean) => void;

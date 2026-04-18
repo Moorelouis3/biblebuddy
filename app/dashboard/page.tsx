@@ -1178,13 +1178,6 @@ export default function DashboardPage() {
 
         {/* MAIN CONTENT â€“ CENTERED COLUMN */}
         <div className="flex-1 max-w-lg mx-auto">
-        {/* GREETING */}
-        <div className="mb-4">
-          <p className="text-2xl font-semibold text-center">
-            Welcome back, {userName}!
-          </p>
-        </div>
-
         {renderOwnerQuickStatsRow()}
 
         {/* DASHBOARD CARDS */}
@@ -1194,7 +1187,6 @@ export default function DashboardPage() {
           daysRemaining={daysRemaining}
           isLoadingLevel={isLoadingLevel}
           levelInfo={levelInfo}
-          userName={userName}
           currentStreak={profile?.current_streak ?? 0}
           handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
           setShowLevelInfoModal={setShowLevelInfoModal}
@@ -1220,13 +1212,6 @@ export default function DashboardPage() {
 
       {/* MOBILE LAYOUT: Content Only (Ads shown at bottom) */}
       <div className="lg:hidden max-w-lg mx-auto px-4 mt-8">
-        {/* GREETING */}
-        <div className="mb-4">
-          <p className="text-2xl font-semibold text-center">
-            Welcome back, {userName}!
-          </p>
-        </div>
-
         {renderOwnerQuickStatsRow()}
 
         {/* DASHBOARD CARDS */}
@@ -1236,7 +1221,6 @@ export default function DashboardPage() {
           daysRemaining={daysRemaining}
           isLoadingLevel={isLoadingLevel}
           levelInfo={levelInfo}
-          userName={userName}
           currentStreak={profile?.current_streak ?? 0}
           handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
           setShowLevelInfoModal={setShowLevelInfoModal}
