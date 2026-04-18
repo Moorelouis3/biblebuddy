@@ -2762,6 +2762,24 @@ export function ChatLouis() {
                 ) : null}
               </div>
             ))}
+            {isSending ? (
+              <div className="flex items-end justify-start gap-2.5">
+                <div className="shrink-0">
+                  <div className="overflow-hidden rounded-full border border-sky-100 bg-white p-0.5 shadow-sm">
+                    <LouisAvatar mood="bible" size={30} />
+                  </div>
+                </div>
+                <div className="max-w-[78%]">
+                  <div className="mb-1 text-[10px] font-medium text-slate-500">Louis</div>
+                  <div className="inline-flex items-center gap-1 rounded-[22px] rounded-bl-md border border-gray-200 bg-white px-3.5 py-3 text-gray-800 shadow-sm">
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.2s]" />
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.1s]" />
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400" />
+                    <span className="ml-2 text-[11px] text-slate-500">Louis is typing...</span>
+                  </div>
+                </div>
+              </div>
+            ) : null}
             <div ref={messagesEndRef} />
           </div>
 

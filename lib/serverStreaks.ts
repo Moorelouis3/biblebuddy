@@ -85,6 +85,76 @@ export function calculateStreakFromCompletedDates(completedDates: Set<string>) {
   return currentStreak;
 }
 
+async function fetchAllMasterActionRows(
+  supabase: SupabaseClient,
+  userIds: string[],
+  sinceIso: string,
+) {
+  const pageSize = 1000;
+  let from = 0;
+  const rows: Array<{ user_id: string | null; created_at: string; action_type: string }> = [];
+
+  while (true) {
+    const response = await supabase
+      .from("master_actions")
+      .select("user_id, created_at, action_type")
+      .in("user_id", userIds)
+      .gte("created_at", sinceIso)
+      .order("created_at", { ascending: false })
+      .range(from, from + pageSize - 1);
+
+    if (response.error) {
+      throw response.error;
+    }
+
+    const chunk = response.data || [];
+    rows.push(...chunk);
+
+    if (chunk.length < pageSize) {
+      break;
+    }
+
+    from += pageSize;
+  }
+
+  return rows;
+}
+
+async function fetchAllAppLoginRows(
+  supabase: SupabaseClient,
+  userIds: string[],
+  sinceIso: string,
+) {
+  const pageSize = 1000;
+  let from = 0;
+  const rows: Array<{ user_id: string | null; created_at: string }> = [];
+
+  while (true) {
+    const response = await supabase
+      .from("app_logins")
+      .select("user_id, created_at")
+      .in("user_id", userIds)
+      .gte("created_at", sinceIso)
+      .order("created_at", { ascending: false })
+      .range(from, from + pageSize - 1);
+
+    if (response.error) {
+      throw response.error;
+    }
+
+    const chunk = response.data || [];
+    rows.push(...chunk);
+
+    if (chunk.length < pageSize) {
+      break;
+    }
+
+    from += pageSize;
+  }
+
+  return rows;
+}
+
 export async function getLiveStreakMapForUsers(
   supabase: SupabaseClient,
   userIds: string[],
@@ -97,27 +167,10 @@ export async function getLiveStreakMapForUsers(
   since.setUTCDate(since.getUTCDate() - lookbackDays);
   const sinceIso = since.toISOString();
 
-  const [actionsResponse, appLoginsResponse] = await Promise.all([
-    supabase
-      .from("master_actions")
-      .select("user_id, created_at, action_type")
-      .in("user_id", normalizedIds)
-      .gte("created_at", sinceIso)
-      .order("created_at", { ascending: false }),
-    supabase
-      .from("app_logins")
-      .select("user_id, created_at")
-      .in("user_id", normalizedIds)
-      .gte("created_at", sinceIso)
-      .order("created_at", { ascending: false }),
+  const [actionRows, appLoginRows] = await Promise.all([
+    fetchAllMasterActionRows(supabase, normalizedIds, sinceIso),
+    fetchAllAppLoginRows(supabase, normalizedIds, sinceIso),
   ]);
-
-  if (actionsResponse.error) {
-    throw actionsResponse.error;
-  }
-  if (appLoginsResponse.error) {
-    throw appLoginsResponse.error;
-  }
 
   const completedDatesByUser = new Map<string, Set<string>>();
   const ensureUserSet = (userId: string) => {
@@ -129,13 +182,13 @@ export async function getLiveStreakMapForUsers(
     return existing;
   };
 
-  (actionsResponse.data || []).forEach((row) => {
+  actionRows.forEach((row) => {
     if (!row.user_id) return;
     if (!STREAK_ACTION_TYPES.has(row.action_type as typeof ACTION_TYPE[keyof typeof ACTION_TYPE])) return;
     ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at));
   });
 
-  (appLoginsResponse.data || []).forEach((row) => {
+  appLoginRows.forEach((row) => {
     if (!row.user_id) return;
     ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at));
   });
@@ -156,24 +209,46 @@ export async function getLiveStreakMapForRecentUsers(
   since.setUTCDate(since.getUTCDate() - lookbackDays);
   const sinceIso = since.toISOString();
 
-  const [actionsResponse, appLoginsResponse] = await Promise.all([
-    supabase
+  const pageSize = 1000;
+  const actionRows: Array<{ user_id: string | null; created_at: string; action_type: string }> = [];
+  const appLoginRows: Array<{ user_id: string | null; created_at: string }> = [];
+
+  let from = 0;
+  while (true) {
+    const response = await supabase
       .from("master_actions")
       .select("user_id, created_at, action_type")
       .gte("created_at", sinceIso)
-      .order("created_at", { ascending: false }),
-    supabase
+      .order("created_at", { ascending: false })
+      .range(from, from + pageSize - 1);
+
+    if (response.error) {
+      throw response.error;
+    }
+
+    const chunk = response.data || [];
+    actionRows.push(...chunk);
+    if (chunk.length < pageSize) break;
+    from += pageSize;
+  }
+
+  from = 0;
+  while (true) {
+    const response = await supabase
       .from("app_logins")
       .select("user_id, created_at")
       .gte("created_at", sinceIso)
-      .order("created_at", { ascending: false }),
-  ]);
+      .order("created_at", { ascending: false })
+      .range(from, from + pageSize - 1);
 
-  if (actionsResponse.error) {
-    throw actionsResponse.error;
-  }
-  if (appLoginsResponse.error) {
-    throw appLoginsResponse.error;
+    if (response.error) {
+      throw response.error;
+    }
+
+    const chunk = response.data || [];
+    appLoginRows.push(...chunk);
+    if (chunk.length < pageSize) break;
+    from += pageSize;
   }
 
   const completedDatesByUser = new Map<string, Set<string>>();
@@ -186,13 +261,13 @@ export async function getLiveStreakMapForRecentUsers(
     return existing;
   };
 
-  (actionsResponse.data || []).forEach((row) => {
+  actionRows.forEach((row) => {
     if (!row.user_id) return;
     if (!STREAK_ACTION_TYPES.has(row.action_type)) return;
     ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at));
   });
 
-  (appLoginsResponse.data || []).forEach((row) => {
+  appLoginRows.forEach((row) => {
     if (!row.user_id) return;
     ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at));
   });
