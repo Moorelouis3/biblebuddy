@@ -495,69 +495,28 @@ export async function calculateUnifiedStreakFromActions(
 export async function syncCurrentStreakToProfileStats(
   userId: string
 ): Promise<StreakData> {
-  const { data: existingProfile } = await supabase
-    .from("profile_stats")
-    .select("*")
-    .eq("user_id", userId)
-    .maybeSingle();
+  if (typeof window !== "undefined") {
+    try {
+      const response = await fetch("/api/streak/current", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId }),
+      });
 
-  const streakData = await calculateUnifiedStreakFromActions(userId);
-  const nowIso = new Date().toISOString();
-  const existingHasFireBadge =
-    Boolean((existingProfile as any)?.has_fire_streak_badge) ||
-    Number((existingProfile as any)?.current_streak || 0) >= 30;
+      const payload = await response.json().catch(() => null);
+      if (response.ok && payload?.streakData) {
+        return payload.streakData as StreakData;
+      }
 
-  // Keep the fire badge protected if it was already earned,
-  // but always store the live streak count so inflated old numbers do not linger.
-  const resolvedCurrentStreak = streakData.currentStreak;
-
-  const resolvedStreakData: StreakData =
-    resolvedCurrentStreak === streakData.currentStreak
-      ? streakData
-      : {
-          currentStreak: resolvedCurrentStreak,
-          last7Days: streakData.last7Days,
-        };
-
-  const hasFireStreakBadge = existingHasFireBadge || resolvedCurrentStreak >= 30;
-  const fireStreakAwardedAt = hasFireStreakBadge
-    ? (existingProfile as any)?.fire_streak_awarded_at || nowIso
-    : null;
-
-  const fullPayload = {
-    user_id: userId,
-    current_streak: resolvedCurrentStreak,
-    has_fire_streak_badge: hasFireStreakBadge,
-    fire_streak_awarded_at: fireStreakAwardedAt,
-    fire_streak_last_checked_at: nowIso,
-    updated_at: nowIso,
-  };
-
-  const legacyPayload = {
-    user_id: userId,
-    current_streak: resolvedCurrentStreak,
-    updated_at: nowIso,
-  };
-
-  let { error } = await supabase
-    .from("profile_stats")
-    .upsert(
-      fullPayload,
-      { onConflict: "user_id" },
-    );
-
-  if (error && /has_fire_streak_badge|fire_streak_awarded_at|fire_streak_last_checked_at/i.test(error.message || "")) {
-    const legacyResponse = await supabase
-      .from("profile_stats")
-      .upsert(legacyPayload, { onConflict: "user_id" });
-    error = legacyResponse.error;
+      console.error("[STREAK] Server sync failed, falling back to local calculation:", payload);
+    } catch (error) {
+      console.error("[STREAK] Server sync request failed, falling back to local calculation:", error);
+    }
   }
 
-  if (error) {
-    console.error("[STREAK] Error syncing current_streak to profile_stats:", error);
-  }
-
-  return resolvedStreakData;
+  return calculateUnifiedStreakFromActions(userId);
 }
 
 /**

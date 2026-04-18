@@ -18,7 +18,7 @@ import { TOTAL_WEEKS, getSeriesWeekLesson } from "@/lib/seriesContent";
 import { parseWeeklyTriviaQuestions } from "@/lib/groupWeeklyTrivia";
 import { parseWeeklyPollOptions, type WeeklyGroupPollRecord } from "@/lib/groupWeeklyPoll";
 import type { WeeklyGroupQuestionRecord } from "@/lib/groupWeeklyQuestion";
-import { calculateUnifiedStreakFromActions } from "@/lib/profileStats";
+import { syncCurrentStreakToProfileStats } from "@/lib/profileStats";
 import UserBadge from "@/components/UserBadge";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
@@ -2094,7 +2094,7 @@ RULES:
           .select("display_name, username, profile_image_url, bio, location, is_paid, member_badge, current_streak, feature_tours")
           .eq("user_id", user.id)
           .maybeSingle(),
-        calculateUnifiedStreakFromActions(user.id),
+        syncCurrentStreakToProfileStats(user.id),
       ]);
       const resolvedCurrentStreak = streakData.currentStreak ?? profile?.current_streak ?? null;
       setDisplayName(profile?.display_name || profile?.username || user.email?.split("@")[0] || "Buddy");
@@ -2104,13 +2104,6 @@ RULES:
       setUserIsPaid(!!profile?.is_paid);
       setUserMemberBadge(profile?.member_badge ?? null);
       setUserCurrentStreak(resolvedCurrentStreak);
-      if (profile && profile.current_streak !== resolvedCurrentStreak) {
-        await supabase
-          .from("profile_stats")
-          .update({ current_streak: resolvedCurrentStreak })
-          .eq("user_id", user.id);
-      }
-
       const { data: membership } = await supabase
         .from("group_members")
         .select("status, role")
