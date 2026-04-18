@@ -63,29 +63,30 @@ function getLocalDateString(date: Date): string {
   return getStreakDateKey(date);
 }
 
-function calculateAnchoredCurrentStreak(completedDates: Set<string>) {
-  const today = new Date();
-  const todayStr = getLocalDateString(today);
-  const yesterday = new Date(today);
-  yesterday.setDate(yesterday.getDate() - 1);
-  const yesterdayStr = getLocalDateString(yesterday);
+function shiftStreakDateKey(dateKey: string, days: number) {
+  const [year, month, day] = dateKey.split("-").map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+  date.setUTCDate(date.getUTCDate() + days);
+  return getStreakDateKey(date);
+}
 
-  let checkDate: Date;
-  if (completedDates.has(todayStr)) {
-    checkDate = today;
-  } else if (completedDates.has(yesterdayStr)) {
-    checkDate = yesterday;
+function calculateAnchoredCurrentStreak(completedDates: Set<string>) {
+  const todayKey = getStreakDateKey(new Date());
+  const yesterdayKey = shiftStreakDateKey(todayKey, -1);
+
+  let cursorKey: string | null = null;
+  if (completedDates.has(todayKey)) {
+    cursorKey = todayKey;
+  } else if (completedDates.has(yesterdayKey)) {
+    cursorKey = yesterdayKey;
   } else {
     return 0;
   }
 
   let currentStreak = 0;
-  let checkDateStr = getLocalDateString(checkDate);
-
-  while (completedDates.has(checkDateStr)) {
+  while (cursorKey && completedDates.has(cursorKey)) {
     currentStreak += 1;
-    checkDate.setDate(checkDate.getDate() - 1);
-    checkDateStr = getLocalDateString(checkDate);
+    cursorKey = shiftStreakDateKey(cursorKey, -1);
   }
 
   return currentStreak;

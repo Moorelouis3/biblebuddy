@@ -899,7 +899,7 @@ export default function DashboardPage() {
           .from("profile_stats")
           .select("total_actions, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak")
           .eq("user_id", userId)
-          .single();
+          .maybeSingle();
 
         if (error && error.code !== "PGRST116") {
           throw error;
@@ -911,20 +911,18 @@ export default function DashboardPage() {
           return null;
         });
         const resolvedCurrentStreak = streakData?.currentStreak ?? profileData?.current_streak ?? 0;
-        if (profileData) {
-          setProfile({
-            is_paid: profileData.is_paid === true,
-            daily_credits:
-              typeof resetJson.daily_credits === "number"
-                ? resetJson.daily_credits
-                : typeof profileData.daily_credits === "number"
+        setProfile({
+          is_paid: profileData?.is_paid === true,
+          daily_credits:
+            typeof resetJson.daily_credits === "number"
+              ? resetJson.daily_credits
+              : typeof profileData?.daily_credits === "number"
                 ? profileData.daily_credits
                 : 0,
-            last_active_date: profileData.last_active_date ?? null,
-            verse_of_the_day_shown: profileData.verse_of_the_day_shown ?? null,
-            current_streak: resolvedCurrentStreak,
-          });
-        }
+          last_active_date: profileData?.last_active_date ?? null,
+          verse_of_the_day_shown: profileData?.verse_of_the_day_shown ?? null,
+          current_streak: resolvedCurrentStreak,
+        });
 
         const [
           actionsResult,
