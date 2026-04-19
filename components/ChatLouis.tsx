@@ -77,6 +77,12 @@ type LouisLastActionSummary = {
   continueHref: string | null;
 };
 
+type LouisActionRow = {
+  action_type: string | null;
+  action_label: string | null;
+  created_at: string;
+};
+
 type LouisHabitNudge = {
   key: "group" | "trivia" | "tv" | "notes";
   summary: string;
@@ -135,13 +141,39 @@ type LouisPromptIntent = "none" | "new_user_challenge" | "verse_explain" | "page
 
 type LouisDailyFlowType = "none" | "new_user" | "fell_off" | "active" | "devotional_start";
 
+type LouisDailyMomentKind = "first" | "second";
+
 type LouisDailyActionTarget = {
+  key: string;
   kind: "devotional" | "reading" | "study" | "game" | "default";
+  category: "devotional" | "reading" | "group" | "trivia" | "scrambled" | "tv" | "notes" | "profile" | "default";
   summaryLines: string[];
+  whyLine: string;
   question: string;
   href: string | null;
   yesFollowUp: string;
   nextDevotionalDayNumber?: number | null;
+};
+
+type LouisActionPreference = "devotional" | "reading" | "group" | "trivia" | "scrambled" | "tv" | "notes";
+
+type LouisBehaviorContext = {
+  currentStreak: number;
+  goal: string | null;
+  primaryDevotional: LouisPrimaryDevotional | null;
+  lastMasterActionSummary: LouisLastActionSummary | null;
+  actionRows: LouisActionRow[];
+  dashboardCardsOpened: string[];
+  profileComplete: boolean;
+  missingProfilePhoto: boolean;
+  missingProfileBio: boolean;
+  currentPollQuestion: string | null;
+  hasAnsweredCurrentPoll: boolean;
+  currentSeriesTitle: string | null;
+  hasStartedCurrentSeries: boolean;
+  strongestPreference: LouisActionPreference | null;
+  leastUsedPreference: LouisActionPreference | null;
+  lastTvLabel: string | null;
 };
 
 type LouisInputPromptState = {
@@ -228,6 +260,16 @@ function getDailyGreetingSeenKey(userId: string) {
   return `bb:louis:greeting:${DAILY_LOUIS_FLOW_VERSION}:${userId}:${today}`;
 }
 
+function getDailyGreetingShownAtKey(userId: string) {
+  const today = new Date().toISOString().slice(0, 10);
+  return `bb:louis:greeting-at:${DAILY_LOUIS_FLOW_VERSION}:${userId}:${today}`;
+}
+
+function getDailySecondRecommendationSeenKey(userId: string) {
+  const today = new Date().toISOString().slice(0, 10);
+  return `bb:louis:second:${DAILY_LOUIS_FLOW_VERSION}:${userId}:${today}`;
+}
+
 function getChatStorageKey(userId: string) {
   return `bb:louis:chat:${userId}`;
 }
@@ -282,6 +324,26 @@ function hasSeenDailyGreeting(userId: string) {
 function rememberDailyGreetingSeen(userId: string) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(getDailyGreetingSeenKey(userId), "1");
+}
+
+function getDailyGreetingShownAt(userId: string) {
+  if (typeof window === "undefined") return null;
+  return window.localStorage.getItem(getDailyGreetingShownAtKey(userId));
+}
+
+function rememberDailyGreetingShownAt(userId: string) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(getDailyGreetingShownAtKey(userId), new Date().toISOString());
+}
+
+function hasSeenSecondRecommendation(userId: string) {
+  if (typeof window === "undefined") return false;
+  return window.localStorage.getItem(getDailySecondRecommendationSeenKey(userId)) === "1";
+}
+
+function rememberSecondRecommendationSeen(userId: string) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(getDailySecondRecommendationSeenKey(userId), "1");
 }
 
 function getTimeOfDayGreeting() {
@@ -463,22 +525,311 @@ function getStreakCelebrationLine(currentStreak: number) {
 }
 
 function getDailyStreakMotivation(currentStreak: number) {
+  if (currentStreak <= 0) {
+    return "Today is a fresh start, so make it count.";
+  }
+
   if (currentStreak >= 30) {
     if (currentStreak === 30) {
-      return "30 days of consistency 🔥\n\nYou earned the fire today\n\nThat is real consistency";
+      return "You did it. 30 days in a row. That fire is yours now.";
     }
-    return `${currentStreak} days of consistency 🔥\n\nThat is real consistency`;
+    return `You are on day ${currentStreak}. You built this habit. Stay on it.`;
   }
 
-  if (currentStreak >= 15) {
-    return "You are getting close to a 30 day streak🔥";
+  if (currentStreak === 29) {
+    return "One more day. Do not quit now.";
   }
 
-  if (currentStreak >= 7) {
-    return "This is where habits start forming";
+  if (currentStreak >= 21) {
+    return `You are on day ${currentStreak}. The fire is getting close now, so do not ease up.`;
   }
 
-  return "Keep it going";
+  if (currentStreak >= 11) {
+    return `You are on day ${currentStreak}. You already built momentum. Protect it.`;
+  }
+
+  return `You are on day ${currentStreak}. You are building something now. Small days matter.`;
+}
+
+function getStreakIdentityLine(currentStreak: number) {
+  if (currentStreak <= 0) {
+    return "A fresh start still counts. Just do one real thing today.";
+  }
+
+  if (currentStreak === 30) {
+    return "Most people never make it to 30 days. You did.";
+  }
+
+  if (currentStreak > 30) {
+    return "This is not a random streak anymore. This is part of who you are now.";
+  }
+
+  if (currentStreak === 29) {
+    return "You are one day away from the fire. Finish strong.";
+  }
+
+  if (currentStreak >= 21) {
+    return "The fire badge is close now. Stay locked in.";
+  }
+
+  if (currentStreak >= 11) {
+    return "Now it is about keeping the rhythm going.";
+  }
+
+  return "This is how a real habit gets built.";
+}
+
+function categoryForActionType(actionType: string | null | undefined): LouisActionPreference | null {
+  switch (actionType) {
+    case "devotional_day_completed":
+    case "devotional_day_started":
+    case "devotional_day_viewed":
+      return "devotional";
+    case "chapter_completed":
+    case "reading_plan_chapter_completed":
+    case "verse_highlighted":
+    case "chapter_notes_viewed":
+      return "reading";
+    case "trivia_question_answered":
+    case "trivia_started":
+    case "trivia_chapter_completed":
+      return "trivia";
+    case "scrambled_word_answered":
+    case "scrambled_chapter_completed":
+      return "scrambled";
+    case "bible_buddy_tv_video_started":
+    case "bible_buddy_tv_title_opened":
+    case "bible_buddy_tv_viewed":
+      return "tv";
+    case "study_group_feed_viewed":
+    case "study_group_article_opened":
+    case "study_group_bible_study_card_opened":
+    case "series_week_started":
+    case "group_message_sent":
+    case "feed_post_thought":
+    case "feed_post_prayer":
+    case "feed_post_prayer_request":
+    case "feed_post_photo":
+    case "feed_post_video":
+    case "feed_post_commented":
+    case "feed_post_replied":
+      return "group";
+    case "person_learned":
+    case "place_discovered":
+    case "keyword_mastered":
+    case "note_created":
+      return "notes";
+    default:
+      return null;
+  }
+}
+
+function getActionWindowCount(rows: LouisActionRow[], preference: LouisActionPreference, windowDays: number) {
+  const threshold = Date.now() - windowDays * 86400000;
+  return rows.reduce((count, row) => {
+    const createdAt = new Date(row.created_at).getTime();
+    if (Number.isNaN(createdAt) || createdAt < threshold) return count;
+    return categoryForActionType(row.action_type) === preference ? count + 1 : count;
+  }, 0);
+}
+
+function getStrongestAndWeakestPreferences(rows: LouisActionRow[]) {
+  const preferences: LouisActionPreference[] = ["devotional", "reading", "group", "trivia", "scrambled", "tv", "notes"];
+  const withCounts = preferences.map((preference) => ({
+    preference,
+    count14: getActionWindowCount(rows, preference, 14),
+    count30: getActionWindowCount(rows, preference, 30),
+  }));
+
+  const strongest =
+    withCounts
+      .filter((entry) => entry.count14 > 0)
+      .sort((a, b) => b.count14 - a.count14)[0]?.preference ?? null;
+
+  const weakest =
+    withCounts
+      .filter((entry) => strongest !== entry.preference)
+      .sort((a, b) => a.count30 - b.count30)[0]?.preference ?? null;
+
+  return { strongestPreference: strongest, leastUsedPreference: weakest };
+}
+
+function buildFallbackTarget(goal: string | null, currentStreak: number): LouisDailyActionTarget {
+  return {
+    key: "fallback-devotional",
+    kind: "devotional",
+    category: "devotional",
+    summaryLines: ["Your best move today is to start a devotional."],
+    whyLine:
+      currentStreak > 0
+        ? "That keeps your streak moving and gives your Bible time some structure."
+        : `${toGoalHelpLine(goal)} and gives you one clear place to start.`,
+    question: "Ready to jump in?",
+    href: "/devotionals",
+    yesFollowUp: "Let's get you into a devotional and keep this moving.",
+  };
+}
+
+function buildBehaviorRecommendations(context: LouisBehaviorContext) {
+  const candidates: Array<LouisDailyActionTarget & { score: number; secondOnly?: boolean }> = [];
+
+  if (context.primaryDevotional) {
+    const nextDay = Math.min(
+      context.primaryDevotional.dayNumber + 1,
+      context.primaryDevotional.totalDays || context.primaryDevotional.dayNumber + 1,
+    );
+    candidates.push({
+      key: `devotional-next-${context.primaryDevotional.id}-${nextDay}`,
+      kind: "devotional",
+      category: "devotional",
+      score: 10 + (context.strongestPreference === "devotional" ? 8 : 0) + (context.currentStreak > 0 ? 7 : 0),
+      summaryLines: [`Your best move today is to finish day ${nextDay} of ${context.primaryDevotional.title}.`],
+      whyLine: `${toGoalHelpLine(context.goal)} and keeps your habit moving.`,
+      question: "Ready to jump in?",
+      href: `/devotionals/${context.primaryDevotional.id}?day=${nextDay}&from=louis-daily`,
+      yesFollowUp: `Let's get you into day ${nextDay} and keep your rhythm going.`,
+      nextDevotionalDayNumber: nextDay,
+    });
+  }
+
+  if (context.lastMasterActionSummary?.continueHref) {
+    const href = context.lastMasterActionSummary.continueHref;
+    const isBible = href.includes("/Bible/") || href === "/reading";
+    const isGroup = href.includes("/study-groups");
+    const isGame = href.includes("/bible-trivia") || href.includes("/scrambled") || href.includes("/bible-study-games");
+
+    candidates.push({
+      key: `resume-${href}`,
+      kind: isBible ? "reading" : isGroup ? "study" : isGame ? "game" : "default",
+      category: isBible ? "reading" : isGroup ? "group" : isGame ? "trivia" : "default",
+      score: 10 + (isBible && context.strongestPreference === "reading" ? 8 : 0) + (isGroup ? 6 : 0),
+      summaryLines: [
+        context.lastMasterActionSummary.continueLabel
+          ? `Your best move today is to ${context.lastMasterActionSummary.continueLabel.toLowerCase()}.`
+          : "Your best move today is to pick up where you left off.",
+      ],
+      whyLine: "You already did the hard part by starting, so finishing this is the easiest win today.",
+      question: isBible ? "Want to keep reading?" : isGroup ? "Want to keep going there?" : "Want to pick that back up?",
+      href,
+      yesFollowUp: "Perfect. Pick up where you left off and keep the momentum alive.",
+    });
+  }
+
+  if (context.strongestPreference === "trivia") {
+    candidates.push({
+      key: "trivia-habit",
+      kind: "game",
+      category: "trivia",
+      score: 8 + (context.currentStreak > 0 ? 7 : 0),
+      summaryLines: ["Your best move today is a Bible trivia round."],
+      whyLine: "You keep coming back to trivia, so let it reinforce what you have been learning.",
+      question: "Want to test yourself?",
+      href: "/bible-trivia",
+      yesFollowUp: "Let's run a quick trivia round and lock it in.",
+    });
+  }
+
+  if (context.strongestPreference === "tv") {
+    candidates.push({
+      key: "tv-habit",
+      kind: "default",
+      category: "tv",
+      score: 8,
+      summaryLines: [`Your best move today is one sermon in Bible Buddy TV${context.lastTvLabel ? ` that fits with ${context.lastTvLabel}.` : "."}`],
+      whyLine: "That matches the teaching content you already spend time with in here.",
+      question: "Want to watch it now?",
+      href: "/biblebuddy-tv",
+      yesFollowUp: "Let's get you into Bible Buddy TV and keep you growing.",
+    });
+  }
+
+  if (context.currentPollQuestion && !context.hasAnsweredCurrentPoll) {
+    candidates.push({
+      key: "group-poll",
+      kind: "study",
+      category: "group",
+      score: 6 + (context.strongestPreference === "group" ? 8 : 0),
+      summaryLines: ["Your best move today is to vote in the Bible Study Group poll."],
+      whyLine: `The group is talking about ${context.currentPollQuestion}, and being part of that keeps you connected.`,
+      question: "Want to go vote?",
+      href: "/study-groups",
+      yesFollowUp: "Let's head into the group and get your vote in.",
+    });
+  }
+
+  if (context.currentSeriesTitle && !context.hasStartedCurrentSeries) {
+    candidates.push({
+      key: "group-series",
+      kind: "study",
+      category: "group",
+      score: 6 + (context.strongestPreference === "group" ? 8 : 0),
+      summaryLines: [`Your best move today is to start week 1 of ${context.currentSeriesTitle}.`],
+      whyLine: "The Bible Study Group is one of the best ways to stay consistent because you are not doing this alone.",
+      question: "Want to jump in?",
+      href: "/study-groups",
+      yesFollowUp: "Let's get you into the group series and start from week 1.",
+    });
+  }
+
+  if (context.leastUsedPreference === "scrambled") {
+    candidates.push({
+      key: "discover-scrambled",
+      kind: "game",
+      category: "scrambled",
+      score: 4,
+      secondOnly: true,
+      summaryLines: ["I want to push you a little further with Scrambled today."],
+      whyLine: "It is quick, it is fun, and it helps you remember what you have been reading.",
+      question: "Want to try it?",
+      href: "/bible-study-games",
+      yesFollowUp: "Let's open Bible Study Games and get into Scrambled.",
+    });
+  }
+
+  if (context.leastUsedPreference === "notes") {
+    candidates.push({
+      key: "discover-notes",
+      kind: "default",
+      category: "notes",
+      score: 4,
+      secondOnly: true,
+      summaryLines: ["I want to push you a little deeper with the study tools today."],
+      whyLine: "That is where people, places, keywords, and notes start making the Bible feel clearer.",
+      question: "Want to go deeper?",
+      href: "/guided-studies",
+      yesFollowUp: "Let's open the study tools and go deeper today.",
+    });
+  }
+
+  if (context.missingProfilePhoto || context.missingProfileBio) {
+    candidates.push({
+      key: context.missingProfilePhoto ? "profile-photo" : "profile-bio",
+      kind: "default",
+      category: "profile",
+      score: 3,
+      secondOnly: true,
+      summaryLines: [
+        context.missingProfilePhoto
+          ? "I want you to add a profile picture today."
+          : "I want you to finish your profile bio today.",
+      ],
+      whyLine:
+        "Let people know who they are studying with. That makes the community side of Bible Buddy feel real.",
+      question: context.missingProfilePhoto ? "Want to upload one now?" : "Want to finish that now?",
+      href: "/profile",
+      yesFollowUp: "Let's clean up your profile and make it feel complete.",
+    });
+  }
+
+  const ranked = candidates.sort((a, b) => b.score - a.score);
+  const primary = ranked.find((candidate) => !candidate.secondOnly) ?? buildFallbackTarget(context.goal, context.currentStreak);
+  const secondary =
+    ranked.find((candidate) => candidate.key !== primary.key && candidate.secondOnly) ??
+    ranked.find((candidate) => candidate.key !== primary.key && candidate.category === "group") ??
+    ranked.find((candidate) => candidate.key !== primary.key) ??
+    null;
+
+  return { primary, secondary };
 }
 
 function buildHabitNudgeFromCards(openedCards: string[]): LouisHabitNudge | null {
@@ -879,8 +1230,11 @@ export function ChatLouis() {
   const [louisRecommendation, setLouisRecommendation] = useState<LouisJourneyRecommendation | null>(null);
   const [hasUnseenRecommendation, setHasUnseenRecommendation] = useState(false);
   const [hasUnseenDailyGreeting, setHasUnseenDailyGreeting] = useState(false);
+  const [hasUnseenSecondRecommendation, setHasUnseenSecondRecommendation] = useState(false);
   const [lastMasterActionSummary, setLastMasterActionSummary] = useState<LouisLastActionSummary | null>(null);
   const [habitNudge, setHabitNudge] = useState<LouisHabitNudge | null>(null);
+  const [primaryDailyActionTarget, setPrimaryDailyActionTarget] = useState<LouisDailyActionTarget | null>(null);
+  const [secondaryDailyActionTarget, setSecondaryDailyActionTarget] = useState<LouisDailyActionTarget | null>(null);
   const [currentStreak, setCurrentStreak] = useState<number>(0);
   const [lastActiveDate, setLastActiveDate] = useState<string | null>(null);
   const [userFirstName, setUserFirstName] = useState<string | null>(null);
@@ -897,7 +1251,7 @@ export function ChatLouis() {
     ...DEFAULT_LOUIS_FEATURE_ROLLOUT,
   });
   const [newUserChallengeStep, setNewUserChallengeStep] = useState<LouisNewUserChallengeStep>("none");
-  const [dailyFlowType, setDailyFlowType] = useState<LouisDailyFlowType>("none");
+  const [dailyFlowType, setDailyFlowType] = useState<LouisDailyFlowType | "second_layer">("none");
   const [selectedDevotionalForChallenge, setSelectedDevotionalForChallenge] = useState<{
     id: string;
     title: string;
@@ -1347,8 +1701,11 @@ export function ChatLouis() {
         setLastMasterActionSummary(null);
         setHabitNudge(null);
         setPrimaryDevotional(null);
+        setPrimaryDailyActionTarget(null);
+        setSecondaryDailyActionTarget(null);
         setHasUnseenRecommendation(false);
         setHasUnseenDailyGreeting(false);
+        setHasUnseenSecondRecommendation(false);
         return;
       }
 
@@ -1375,13 +1732,42 @@ export function ChatLouis() {
         .eq("action_type", "dashboard_card_opened")
         .limit(50);
 
-      const { data: devotionalProgressRows } = await supabase
-        .from("devotional_progress")
-        .select("devotional_id, day_number, completed_at")
-        .eq("user_id", user.id)
-        .eq("is_completed", true)
-        .order("completed_at", { ascending: false })
-        .limit(20);
+      const [
+        { data: devotionalProgressRows },
+        { data: currentPollRow },
+        { data: currentSeriesRow },
+      ] = await Promise.all([
+        supabase
+          .from("devotional_progress")
+          .select("devotional_id, day_number, completed_at")
+          .eq("user_id", user.id)
+          .eq("is_completed", true)
+          .order("completed_at", { ascending: false })
+          .limit(20),
+        supabase
+          .from("weekly_group_polls")
+          .select("id, question, subject_title, group_id")
+          .order("created_at", { ascending: false })
+          .limit(1)
+          .maybeSingle(),
+        supabase
+          .from("group_series")
+          .select("id, title")
+          .eq("is_current", true)
+          .order("created_at", { ascending: false })
+          .limit(1)
+          .maybeSingle(),
+      ]);
+
+      const { data: currentPollVoteRows } =
+        currentPollRow?.id
+          ? await supabase
+              .from("weekly_group_poll_votes")
+              .select("id")
+              .eq("poll_id", currentPollRow.id)
+              .eq("user_id", user.id)
+              .limit(1)
+          : { data: [] as Array<{ id: string }> };
 
       let nextPrimaryDevotional: LouisPrimaryDevotional | null = null;
       const devotionalIds = Array.from(
@@ -1464,6 +1850,42 @@ export function ChatLouis() {
           .filter((label): label is string => typeof label === "string" && label.length > 0),
       );
 
+      const dashboardCardsOpened = (dashboardCardRows ?? [])
+        .map((row) => row.action_label)
+        .filter((label): label is string => typeof label === "string" && label.length > 0);
+
+      const { strongestPreference, leastUsedPreference } = getStrongestAndWeakestPreferences(
+        (actionRows ?? []) as LouisActionRow[],
+      );
+
+      const behaviorTargets = buildBehaviorRecommendations({
+        currentStreak: streakData.currentStreak ?? 0,
+        goal:
+          normalizeOnboardingGoal(profileStats?.onboarding_goal) ??
+          normalizeOnboardingGoal(
+            typeof window !== "undefined" ? window.localStorage.getItem(getGoalStorageKey()) : null,
+          ),
+        primaryDevotional: nextPrimaryDevotional,
+        lastMasterActionSummary: summarizeLastMasterAction(
+          actionRows?.find((row) => Boolean(row?.action_type && row?.action_label)) ?? actionRows?.[0] ?? null,
+        ),
+        actionRows: (actionRows ?? []) as LouisActionRow[],
+        dashboardCardsOpened,
+        profileComplete: Boolean(profileStats?.profile_image_url && profileStats?.bio?.trim()),
+        missingProfilePhoto: !Boolean(profileStats?.profile_image_url),
+        missingProfileBio: !Boolean(profileStats?.bio?.trim()),
+        currentPollQuestion: currentPollRow?.subject_title || currentPollRow?.question || null,
+        hasAnsweredCurrentPoll: Boolean(currentPollVoteRows && currentPollVoteRows.length > 0),
+        currentSeriesTitle: currentSeriesRow?.title ?? null,
+        hasStartedCurrentSeries: actionTypeSet.has("series_week_started") || actionTypeSet.has("study_group_bible_study_card_opened"),
+        strongestPreference,
+        leastUsedPreference,
+        lastTvLabel:
+          actionRows?.find(
+            (row) => row.action_type === "bible_buddy_tv_video_started" || row.action_type === "bible_buddy_tv_title_opened",
+          )?.action_label ?? null,
+      });
+
       const journeyRecommendation =
         buildLouisJourneyRecommendation({
           currentStreak: profileStats?.current_streak ?? 0,
@@ -1483,6 +1905,8 @@ export function ChatLouis() {
 
       if (!cancelled) {
         setHabitNudge(nextHabitNudge);
+        setPrimaryDailyActionTarget(behaviorTargets.primary);
+        setSecondaryDailyActionTarget(behaviorTargets.secondary);
       }
 
       if (!cancelled && profileStats) {
@@ -1535,6 +1959,13 @@ export function ChatLouis() {
       setLouisRecommendation(journeyRecommendation);
       setHasUnseenRecommendation(false);
       setHasUnseenDailyGreeting(!hasSeenDailyGreeting(user.id));
+      const firstShownAt = getDailyGreetingShownAt(user.id);
+      const secondReady =
+        Boolean(firstShownAt) &&
+        !hasSeenSecondRecommendation(user.id) &&
+        Boolean(behaviorTargets.secondary) &&
+        Date.now() - new Date(firstShownAt as string).getTime() >= 6 * 60 * 60 * 1000;
+      setHasUnseenSecondRecommendation(secondReady);
     }
 
     void loadLouisContext();
@@ -1613,7 +2044,7 @@ export function ChatLouis() {
     pendingRouteHandoff ||
     hasPendingDevotionalChallengePrompt ||
     hasPendingDevotionalStartPrompt ||
-    (pathname === "/dashboard" && hasUnseenDailyGreeting);
+    (pathname === "/dashboard" && (hasUnseenDailyGreeting || hasUnseenSecondRecommendation));
 
   const emptyStatePrompt = louisInputPrompt.mode === "today_tomorrow"
     ? "Type today or tomorrow."
@@ -1621,7 +2052,7 @@ export function ChatLouis() {
       ? "Type yes or no."
       : hasPendingDevotionalStartPrompt
     ? "Type today or tomorrow."
-    : hasPendingDevotionalChallengePrompt || (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional)
+    : hasPendingDevotionalChallengePrompt || (pathname === "/dashboard" && (hasUnseenDailyGreeting || hasUnseenSecondRecommendation))
       ? "Type yes or no."
       : "Ask me a question about your Bible reading.";
 
@@ -1631,7 +2062,7 @@ export function ChatLouis() {
       ? "Type yes or no..."
       : hasPendingDevotionalStartPrompt
     ? "Type today or tomorrow..."
-    : hasPendingDevotionalChallengePrompt || (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional)
+    : hasPendingDevotionalChallengePrompt || (pathname === "/dashboard" && (hasUnseenDailyGreeting || hasUnseenSecondRecommendation))
       ? "Type yes or no..."
       : "Talk to Louis...";
 
@@ -1811,9 +2242,16 @@ export function ChatLouis() {
   function markDailyGreetingSeenLocal() {
     if (!louisUserId) return;
     rememberDailyGreetingSeen(louisUserId);
+    rememberDailyGreetingShownAt(louisUserId);
     setHasUnseenDailyGreeting(false);
     const today = new Date().toISOString().slice(0, 10);
     persistLouisProfile({ verse_of_the_day_shown: today, louis_last_check_in_at: new Date().toISOString() });
+  }
+
+  function markSecondRecommendationSeenLocal() {
+    if (!louisUserId) return;
+    rememberSecondRecommendationSeen(louisUserId);
+    setHasUnseenSecondRecommendation(false);
   }
 
   function rememberGuidePromptShown() {
@@ -1919,58 +2357,19 @@ export function ChatLouis() {
     ];
   }
 
-  function getDailyActionTarget(): LouisDailyActionTarget {
-    if (primaryDevotional) {
-      const nextDay = Math.min(
-        primaryDevotional.dayNumber + 1,
-        primaryDevotional.totalDays || primaryDevotional.dayNumber + 1,
-      );
-      return {
-        kind: "devotional",
-        summaryLines: currentStreak > 0
-          ? ["Yesterday you completed", `Day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}`]
-          : ["Last time you were on", `Day ${primaryDevotional.dayNumber} of ${primaryDevotional.title}`],
-        question: currentStreak > 0 ? "Ready for the next day?" : "Do you want to continue?",
-        href: `/devotionals/${primaryDevotional.id}?day=${nextDay}&from=louis-daily`,
-        yesFollowUp: currentStreak > 0 ? "Let’s keep your streak alive" : "Picking up where you left off\n\nLet’s keep going",
-        nextDevotionalDayNumber: nextDay,
-      };
+  function getDailyActionTarget(momentKind: LouisDailyMomentKind = "first"): LouisDailyActionTarget {
+    if (momentKind === "second" && secondaryDailyActionTarget) {
+      return secondaryDailyActionTarget;
     }
 
-    if (lastMasterActionSummary?.continueHref) {
-      const href = lastMasterActionSummary.continueHref;
-      const kind =
-        href.includes("/Bible/") || href === "/reading"
-          ? "reading"
-          : href.includes("/study-groups")
-            ? "study"
-            : href.includes("/bible-trivia") || href.includes("/bible-study-games")
-              ? "game"
-              : "default";
-
-      return {
-        kind,
-        summaryLines: lastMasterActionSummary.summary.split("\n\n").filter(Boolean),
-        question: lastMasterActionSummary.followUp.replace(/\?+$/, "") + "?",
-        href,
-        yesFollowUp: currentStreak > 0 ? "Let’s keep your streak alive" : "Picking up where you left off\n\nLet’s keep going",
-      };
+    if (primaryDailyActionTarget) {
+      return primaryDailyActionTarget;
     }
 
-    return {
-      kind: "default",
-      summaryLines: [
-        "I recommend starting with a devotional",
-        "It is a short daily reading",
-        "that helps you stay structured and build a habit",
-      ],
-      question: "Would you like to start a devotional?",
-      href: "/devotionals",
-      yesFollowUp: "Let’s get you started",
-    };
+    return buildFallbackTarget(onboardingGoal, currentStreak);
   }
 
-  function buildDailyConversationMessage() {
+  function buildDailyConversationMessage(momentKind: LouisDailyMomentKind = "first") {
     const name = userFirstName || "there";
     const daysSinceLastActive = (() => {
       if (!lastActiveDate) return null;
@@ -1980,7 +2379,7 @@ export function ChatLouis() {
       const lastDate = new Date(lastActive.getFullYear(), lastActive.getMonth(), lastActive.getDate());
       return Math.max(0, Math.round((todayDate.getTime() - lastDate.getTime()) / 86400000));
     })();
-    const target = getDailyActionTarget();
+    const target = getDailyActionTarget(momentKind);
 
     if (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional) {
       setDailyFlowType("new_user");
@@ -1998,6 +2397,18 @@ export function ChatLouis() {
       ].filter(Boolean).join("\n\n");
     }
 
+    if (momentKind === "second") {
+      setDailyFlowType("second_layer");
+      return [
+        `Welcome back again, ${name}.`,
+        "You already handled your main step today.",
+        getStreakIdentityLine(currentStreak),
+        ...target.summaryLines,
+        target.whyLine,
+        target.question,
+      ].join("\n\n");
+    }
+
     if ((daysSinceLastActive ?? 0) >= 3) {
       setDailyFlowType("fell_off");
       return [
@@ -2008,6 +2419,7 @@ export function ChatLouis() {
         "God gives us a new day",
         "Let’s use this one",
         ...target.summaryLines,
+        target.whyLine,
         target.question,
       ].join("\n\n");
     }
@@ -2015,20 +2427,25 @@ export function ChatLouis() {
     setDailyFlowType("active");
     return [
       `Good to see you ${name} 👋`,
-      `You are on a ${currentStreak} day streak`,
       getDailyStreakMotivation(currentStreak),
       ...target.summaryLines,
+      target.whyLine,
       target.question,
     ].join("\n\n");
   }
 
-  async function beginDailyConversation() {
-    const dailyConversationMessage = buildDailyConversationMessage();
+  async function beginDailyConversation(momentKind: LouisDailyMomentKind = "first") {
+    const dailyConversationMessage = buildDailyConversationMessage(momentKind);
 
-    if (hasUnseenDailyGreeting) {
+    if (momentKind === "first" && hasUnseenDailyGreeting) {
       markDailyGreetingSeenLocal();
     }
-    persistLouisProfile({ louis_last_check_in_at: new Date().toISOString() });
+    if (momentKind === "second") {
+      markSecondRecommendationSeenLocal();
+      persistLouisProfile({ louis_last_recommendation_at: new Date().toISOString() });
+    } else {
+      persistLouisProfile({ louis_last_check_in_at: new Date().toISOString() });
+    }
 
     removeLatestDailyLouisMessage();
     appendAssistantMessage(dailyConversationMessage);
@@ -2167,14 +2584,16 @@ export function ChatLouis() {
           router.push(`/devotionals/${selectedDevotionalForChallenge.id}`);
           break;
         }
-        if (getDailyActionTarget().href) {
-          const dailyTarget = getDailyActionTarget();
+        {
+          const dailyTarget = getDailyActionTarget(dailyFlowType === "second_layer" ? "second" : "first");
+          if (dailyTarget.href) {
           if (dailyTarget.kind !== "devotional") {
             appendAssistantMessage(dailyTarget.yesFollowUp);
           }
           clearLouisInputPrompt();
           setIsOpen(false);
           router.push(dailyTarget.href as string);
+          }
         }
         break;
       case "daily_no":
@@ -2183,6 +2602,8 @@ export function ChatLouis() {
             ? "Alright\n\nFeel free to explore around\n\nIf you want structure or direction\n\njust come back and I will guide you"
             : dailyFlowType === "fell_off"
               ? "All good\n\nIf you want help getting back on track\n\nI am here"
+              : dailyFlowType === "second_layer"
+                ? "All good\n\nThat can wait for later\n\nI will be here if you want another push."
               : dailyFlowType === "devotional_start"
                 ? "No problem\n\nPick another devotional if you want\n\nI will be here"
                 : "No problem\n\nCome back when you are ready\n\nI will be here",
@@ -2334,7 +2755,7 @@ export function ChatLouis() {
         return;
       }
 
-      await beginDailyConversation();
+      await beginDailyConversation(hasUnseenDailyGreeting ? "first" : "second");
       return;
     }
 

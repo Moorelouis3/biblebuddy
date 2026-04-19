@@ -332,11 +332,19 @@ export default function LittleLouisAdminPage() {
     () => [
       {
         title: "Daily opener",
-        text: "Louis sends one main dashboard message on the first login of the day and pushes the next step.",
+        text: "Louis sends one main dashboard message on the first login of the day, and that message is based on streak band plus real user behavior.",
+      },
+      {
+        title: "Second recommendation",
+        text: "Louis gets one more recommendation shot six hours later if the user opens the dashboard again, and it is meant to push expansion instead of repeating the same thing.",
       },
       {
         title: "Route handoffs",
         text: "Recommendation clicks and guided flows can hand the user into the next page with a Louis follow up.",
+      },
+      {
+        title: "Bible Study Group push",
+        text: "Louis can now push the current poll, current series, and other group activity as part of the daily recommendation logic.",
       },
       {
         title: "Inbox reports",
