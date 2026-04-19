@@ -14,6 +14,8 @@ import { getVerseIntro, getVerseOfTheDay, type VerseOfTheDayEntry } from "../lib
 import { LOUIS_MOMENT_EVENT, type LouisMomentDetail, type LouisMomentReply } from "../lib/louisMoments";
 import { syncCurrentStreakToProfileStats } from "../lib/profileStats";
 import { consumeLouisRouteHandoff } from "../lib/louisRouteHandoff";
+import { logActionToMasterActions } from "@/lib/actionRecorder";
+import { ACTION_TYPE } from "@/lib/actionTypes";
 
 type MessageRole = "user" | "assistant";
 
@@ -1660,10 +1662,25 @@ export function ChatLouis() {
 
   function appendAssistantMessage(content: string) {
     setMessages((prev) => [...prev, { role: "assistant", content }]);
+    void logLouisAction(ACTION_TYPE.louis_ai_message_sent, toLouisLogLabel(content));
   }
 
   function appendUserMessage(content: string) {
     setMessages((prev) => [...prev, { role: "user", content }]);
+    void logLouisAction(ACTION_TYPE.louis_user_message_sent, toLouisLogLabel(content));
+  }
+
+  function toLouisLogLabel(content: string, maxLength = 180) {
+    return content.replace(/\s+/g, " ").trim().slice(0, maxLength);
+  }
+
+  async function logLouisAction(actionType: typeof ACTION_TYPE[keyof typeof ACTION_TYPE], label?: string | null) {
+    if (!louisUserId) return;
+    try {
+      await logActionToMasterActions(louisUserId, actionType, label ?? null);
+    } catch (error) {
+      console.warn("[LOUIS] Could not log action:", actionType, error);
+    }
   }
 
   function isDailyLouisMessage(content: string) {
@@ -2006,13 +2023,16 @@ export function ChatLouis() {
   }
 
   async function beginDailyConversation() {
+    const dailyConversationMessage = buildDailyConversationMessage();
+
     if (hasUnseenDailyGreeting) {
       markDailyGreetingSeenLocal();
     }
     persistLouisProfile({ louis_last_check_in_at: new Date().toISOString() });
 
     removeLatestDailyLouisMessage();
-    appendAssistantMessage(buildDailyConversationMessage());
+    appendAssistantMessage(dailyConversationMessage);
+    void logLouisAction(ACTION_TYPE.louis_daily_message_shown, toLouisLogLabel(dailyConversationMessage));
     seedQuickReplies([
       { id: "daily-yes", label: "Yes", action: "daily_yes" },
       { id: "daily-no", label: "No", action: "daily_no" },
@@ -2410,6 +2430,7 @@ export function ChatLouis() {
     const newMessages: Message[] = [...messages, userMessage];
 
     setMessages(newMessages);
+    void logLouisAction(ACTION_TYPE.louis_user_message_sent, toLouisLogLabel(trimmed));
     setQuickReplies([]);
     clearLouisInputPrompt();
     setInput("");
@@ -2475,6 +2496,10 @@ export function ChatLouis() {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
+      void logLouisAction(
+        ACTION_TYPE.louis_ai_message_sent,
+        toLouisLogLabel(assistantMessage.content),
+      );
     } catch (err) {
       const errorMessage: Message = {
         role: "assistant",
@@ -2482,6 +2507,10 @@ export function ChatLouis() {
           "Sorry, something went wrong. Please try again in a moment.",
       };
       setMessages((prev) => [...prev, errorMessage]);
+      void logLouisAction(
+        ACTION_TYPE.louis_ai_message_sent,
+        toLouisLogLabel(errorMessage.content),
+      );
     } finally {
       setIsSending(false);
     }
@@ -2551,6 +2580,11 @@ export function ChatLouis() {
   }, [isOpen, messages]);
 
   useEffect(() => {
+    if (!isOpen) return;
+    void logLouisAction(ACTION_TYPE.louis_opened, pathname);
+  }, [isOpen, pathname, louisUserId]);
+
+  useEffect(() => {
     if (!isOpen || louisInputPrompt.mode === "default" || louisInputPrompt.hinted || !louisInputPrompt.hint) {
       return;
     }
@@ -2587,6 +2621,10 @@ export function ChatLouis() {
     if (!handoff?.message) return;
 
     appendAssistantMessage(handoff.message);
+    void logLouisAction(
+      ACTION_TYPE.louis_route_handoff_shown,
+      toLouisLogLabel(`${pathname} ${handoff.message}`),
+    );
     seedQuickReplies([]);
     setPendingRouteHandoff(true);
   }, [pathname]);

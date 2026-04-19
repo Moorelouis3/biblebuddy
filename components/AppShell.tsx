@@ -1878,6 +1878,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                           Analytics
                         </Link>
                         <Link
+                          href="/admin/little-louis"
+                          onClick={() => setIsProfileMenuOpen(false)}
+                          className={`block px-4 py-2 text-sm ${
+                            pathname?.startsWith("/admin/little-louis")
+                              ? "bg-sky-100 text-black font-medium"
+                              : "text-gray-700 hover:bg-gray-100"
+                          }`}
+                        >
+                          Little Louis
+                        </Link>
+                        <Link
                           href="/comments-admin"
                           onClick={() => setIsProfileMenuOpen(false)}
                           className={`block px-4 py-2 text-sm ${
