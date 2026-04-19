@@ -142,6 +142,59 @@ export function buildBreadcrumbs(pathname: string | null | undefined): Breadcrum
   const segments = pathname.split("/").filter(Boolean);
   const breadcrumbs: BreadcrumbItem[] = [{ label: "Dashboard", href: "/dashboard" }];
 
+  if (segments[0] === "reading") {
+    if (segments.length === 1) {
+      return [...breadcrumbs, { label: "The Bible" }];
+    }
+
+    if (segments[1] === "books") {
+      const bookSegment = segments[2];
+      const bookHref = bookSegment ? `/reading/books/${bookSegment}` : undefined;
+
+      breadcrumbs.push({ label: "The Bible", href: "/reading" });
+
+      if (bookSegment) {
+        breadcrumbs.push({
+          label: segmentLabel(bookSegment, "books"),
+          href: segments.length > 3 ? bookHref : undefined,
+        });
+      }
+
+      for (let index = 3; index < segments.length; index += 1) {
+        const segment = segments[index];
+        breadcrumbs.push({
+          label: segmentLabel(segment, segments[index - 1]),
+          href: index === segments.length - 1 ? undefined : `${bookHref}/${segment}`,
+        });
+      }
+
+      return breadcrumbs;
+    }
+  }
+
+  if (segments[0] === "Bible") {
+    breadcrumbs.push({ label: "The Bible", href: "/reading" });
+
+    const bookSegment = segments[1];
+    if (bookSegment) {
+      const bookHref = `/reading/books/${bookSegment}`;
+      breadcrumbs.push({
+        label: segmentLabel(bookSegment, "Bible"),
+        href: segments.length > 2 ? bookHref : undefined,
+      });
+    }
+
+    for (let index = 2; index < segments.length; index += 1) {
+      const segment = segments[index];
+      breadcrumbs.push({
+        label: segmentLabel(segment, segments[index - 1]),
+        href: undefined,
+      });
+    }
+
+    return breadcrumbs;
+  }
+
   let cumulative = "";
   segments.forEach((segment, index) => {
     cumulative += `/${segment}`;
