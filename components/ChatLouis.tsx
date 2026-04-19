@@ -3051,6 +3051,10 @@ export function ChatLouis() {
       return;
     }
 
+    if (hadPendingRouteHandoff) {
+      return;
+    }
+
     if (pathname === "/dashboard" && hasUnseenDailyGreeting) {
       const dailyConversationMessage = buildDailyConversationMessage();
 
