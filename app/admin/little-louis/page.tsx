@@ -64,6 +64,16 @@ type LouisDashboardMetrics = {
   unreadInboxMessages: number;
 };
 
+type LouisOpportunityMetrics = {
+  totalChancesToday: number;
+  loginChancesToday: number;
+  chapterChancesToday: number;
+  devotionalChancesToday: number;
+  triviaChancesToday: number;
+  scrambledChancesToday: number;
+  onboardingDoneToday: number;
+};
+
 const LOUIS_ACTION_TYPES = [
   "louis_opened",
   "louis_user_message_sent",
@@ -266,6 +276,15 @@ export default function LittleLouisAdminPage() {
     louisInboxSentToday: 0,
     unreadInboxMessages: 0,
   });
+  const [opportunityMetrics, setOpportunityMetrics] = useState<LouisOpportunityMetrics>({
+    totalChancesToday: 0,
+    loginChancesToday: 0,
+    chapterChancesToday: 0,
+    devotionalChancesToday: 0,
+    triviaChancesToday: 0,
+    scrambledChancesToday: 0,
+    onboardingDoneToday: 0,
+  });
   const [topUsers, setTopUsers] = useState<LouisTopUser[]>([]);
   const [actionLog, setActionLog] = useState<LouisLogEntry[]>([]);
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
@@ -291,7 +310,7 @@ export default function LittleLouisAdminPage() {
         const sinceIso = getSinceIso(timeFilter);
         const todayStartIso = getTodayStartIso();
 
-        const [actions, inboxResponse] = await Promise.all([
+        const [actions, inboxResponse, todayOpportunityActionsResponse, onboardingDoneTodayResponse] = await Promise.all([
           fetchPagedLouisActions(sinceIso),
           supabase
             .from("louis_inbox_messages")
@@ -299,13 +318,37 @@ export default function LittleLouisAdminPage() {
             .gte("created_at", sinceIso)
             .order("created_at", { ascending: false })
             .limit(500),
+          supabase
+            .from("master_actions")
+            .select("action_type, user_id", { count: "exact" })
+            .gte("created_at", todayStartIso)
+            .in("action_type", [
+              "user_login",
+              "chapter_completed",
+              "reading_plan_chapter_completed",
+              "devotional_day_completed",
+              "trivia_chapter_completed",
+              "scrambled_chapter_completed",
+            ]),
+          supabase
+            .from("profile_stats")
+            .select("user_id", { count: "exact", head: true })
+            .eq("onboarding_completed", true)
+            .gte("updated_at", todayStartIso),
         ]);
 
         if (inboxResponse.error) {
           throw inboxResponse.error;
         }
+        if (todayOpportunityActionsResponse.error) {
+          throw todayOpportunityActionsResponse.error;
+        }
+        if (onboardingDoneTodayResponse.error) {
+          throw onboardingDoneTodayResponse.error;
+        }
 
         const inboxRows = (inboxResponse.data ?? []) as LouisInboxRow[];
+        const todayOpportunityActions = (todayOpportunityActionsResponse.data ?? []) as Pick<LouisActionRow, "action_type" | "user_id">[];
         const userIds = [...new Set(actions.map((row) => row.user_id).filter(Boolean) as string[])];
         const profilesById = await fetchProfilesByIds(userIds);
 
@@ -330,6 +373,42 @@ export default function LittleLouisAdminPage() {
           routeHandoffsToday: routeHandoffsToday.length,
           louisInboxSentToday: inboxRows.filter((row) => row.created_at >= todayStartIso).length,
           unreadInboxMessages: inboxRows.filter((row) => !row.consumed_at).length,
+        });
+
+        const loginChancesToday = new Set(
+          todayOpportunityActions
+            .filter((row) => row.action_type === "user_login")
+            .map((row) => row.user_id)
+            .filter(Boolean),
+        ).size;
+        const chapterChancesToday = todayOpportunityActions.filter(
+          (row) => row.action_type === "chapter_completed" || row.action_type === "reading_plan_chapter_completed",
+        ).length;
+        const devotionalChancesToday = todayOpportunityActions.filter(
+          (row) => row.action_type === "devotional_day_completed",
+        ).length;
+        const triviaChancesToday = todayOpportunityActions.filter(
+          (row) => row.action_type === "trivia_chapter_completed",
+        ).length;
+        const scrambledChancesToday = todayOpportunityActions.filter(
+          (row) => row.action_type === "scrambled_chapter_completed",
+        ).length;
+        const onboardingDoneToday = onboardingDoneTodayResponse.count ?? 0;
+
+        setOpportunityMetrics({
+          totalChancesToday:
+            loginChancesToday +
+            chapterChancesToday +
+            devotionalChancesToday +
+            triviaChancesToday +
+            scrambledChancesToday +
+            onboardingDoneToday,
+          loginChancesToday,
+          chapterChancesToday,
+          devotionalChancesToday,
+          triviaChancesToday,
+          scrambledChancesToday,
+          onboardingDoneToday,
         });
 
         const topUserMap = new Map<string, LouisTopUser>();
@@ -474,6 +553,23 @@ export default function LittleLouisAdminPage() {
         <MetricCard label="Route handoffs today" value={loading ? "..." : metrics.routeHandoffsToday.toString()} />
         <MetricCard label="Inbox messages today" value={loading ? "..." : metrics.louisInboxSentToday.toString()} />
         <MetricCard label="Unread Louis inbox" value={loading ? "..." : metrics.unreadInboxMessages.toString()} />
+      </div>
+
+      <div className="mb-4">
+        <h2 className="text-xl font-semibold text-gray-900">Louis chances today</h2>
+        <p className="text-sm text-gray-600 mt-1">
+          These cards show the moments where Louis had a real chance to step in and guide somebody today.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-7 gap-4 mb-8">
+        <MetricCard label="Total chances today" value={loading ? "..." : opportunityMetrics.totalChancesToday.toString()} />
+        <MetricCard label="Logins today" value={loading ? "..." : opportunityMetrics.loginChancesToday.toString()} />
+        <MetricCard label="Bible chapters explained today" value={loading ? "..." : opportunityMetrics.chapterChancesToday.toString()} />
+        <MetricCard label="Devotional follow-ups today" value={loading ? "..." : opportunityMetrics.devotionalChancesToday.toString()} />
+        <MetricCard label="Trivia follow-ups today" value={loading ? "..." : opportunityMetrics.triviaChancesToday.toString()} />
+        <MetricCard label="Scrambled follow-ups today" value={loading ? "..." : opportunityMetrics.scrambledChancesToday.toString()} />
+        <MetricCard label="Onboardings done today" value={loading ? "..." : opportunityMetrics.onboardingDoneToday.toString()} />
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-[1.1fr_0.9fr] gap-6 mb-8">
