@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { LouisAvatar } from "./LouisAvatar";
 import { supabase } from "../lib/supabaseClient";
 import { FeatureTourModal } from "./FeatureTourModal";
@@ -176,6 +176,32 @@ type LouisBehaviorContext = {
   lastTvLabel: string | null;
 };
 
+type LouisPageContext = {
+  pathname: string;
+  routeKind:
+    | "dashboard"
+    | "bible_home"
+    | "bible_book"
+    | "bible_chapter"
+    | "devotionals_home"
+    | "devotional_day"
+    | "reading_plan"
+    | "trivia"
+    | "scrambled"
+    | "group"
+    | "tv"
+    | "profile"
+    | "other";
+  book: string | null;
+  chapter: number | null;
+  verseReferenceHint: string | null;
+  devotionalId: string | null;
+  devotionalDay: number | null;
+  notesForChapter: boolean;
+  triviaContext: string | null;
+  scrambledContext: string | null;
+};
+
 type LouisInputPromptState = {
   mode: LouisPromptMode;
   intent: LouisPromptIntent;
@@ -258,6 +284,76 @@ function getRecommendationSeenKey(userId: string) {
 function getDailyGreetingSeenKey(userId: string) {
   const today = new Date().toISOString().slice(0, 10);
   return `bb:louis:greeting:${DAILY_LOUIS_FLOW_VERSION}:${userId}:${today}`;
+}
+
+function parsePositiveInt(value: string | null | undefined) {
+  if (!value) return null;
+  const parsed = Number.parseInt(value, 10);
+  return Number.isNaN(parsed) ? null : parsed;
+}
+
+function decodePathSegment(value: string | null | undefined) {
+  if (!value) return null;
+  return decodeURIComponent(value).replace(/-/g, " ");
+}
+
+function buildLouisPageContext(pathname: string | null | undefined, searchParams: URLSearchParams | null): LouisPageContext {
+  const safePathname = pathname || "/";
+  const segments = safePathname.split("/").filter(Boolean);
+  const routeKind: LouisPageContext["routeKind"] = (() => {
+    if (safePathname === "/dashboard") return "dashboard";
+    if (safePathname === "/reading" || safePathname === "/Bible") return "bible_home";
+    if (segments[0] === "reading" && segments[1] === "books" && segments[2]) return "bible_book";
+    if (segments[0] === "Bible" && segments[1] && segments[2]) return "bible_chapter";
+    if (safePathname === "/devotionals") return "devotionals_home";
+    if (segments[0] === "devotionals" && segments[1]) return "devotional_day";
+    if (segments[0] === "reading-plans" || segments[0] === "reading-plan") return "reading_plan";
+    if (segments[0] === "bible-trivia") return "trivia";
+    if (segments[0] === "scrambled") return "scrambled";
+    if (segments[0] === "study-groups") return "group";
+    if (segments[0] === "biblebuddy-tv") return "tv";
+    if (segments[0] === "profile") return "profile";
+    return "other";
+  })();
+
+  const bibleBookSegment =
+    routeKind === "bible_book"
+      ? segments[2]
+      : routeKind === "bible_chapter"
+        ? segments[1]
+        : null;
+  const book = decodePathSegment(bibleBookSegment);
+  const chapter =
+    routeKind === "bible_chapter"
+      ? parsePositiveInt(segments[2])
+      : routeKind === "reading_plan"
+        ? parsePositiveInt(segments[2] ?? null)
+        : null;
+  const devotionalDay =
+    routeKind === "devotional_day"
+      ? parsePositiveInt(searchParams?.get("day"))
+      : null;
+
+  return {
+    pathname: safePathname,
+    routeKind,
+    book,
+    chapter,
+    verseReferenceHint: book && chapter ? `${book} ${chapter}` : book,
+    devotionalId: routeKind === "devotional_day" ? segments[1] ?? null : null,
+    devotionalDay,
+    notesForChapter:
+      searchParams?.get("notes") === "1" ||
+      safePathname.includes("/notes"),
+    triviaContext:
+      routeKind === "trivia"
+        ? decodePathSegment(segments[1] ?? searchParams?.get("book") ?? null)
+        : null,
+    scrambledContext:
+      routeKind === "scrambled"
+        ? decodePathSegment(segments[1] ?? searchParams?.get("book") ?? null)
+        : null,
+  };
 }
 
 function getDailyGreetingShownAtKey(userId: string) {
@@ -1220,8 +1316,13 @@ function buildLouisJourneyRecommendation({
 export function ChatLouis() {
   const { featureToursEnabled } = useFeatureRenderPriority();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const router = useRouter();
   const currentPageGuide = useMemo(() => getLouisPageGuide(pathname), [pathname]);
+  const louisPageContext = useMemo(
+    () => buildLouisPageContext(pathname, searchParams),
+    [pathname, searchParams],
+  );
   const todayVerse = useMemo(() => getVerseOfTheDay(), []);
   const todayVerseIntro = useMemo(() => getVerseIntro(), []);
   const [isOpen, setIsOpen] = useState(false);
@@ -2885,15 +2986,17 @@ export function ChatLouis() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: newMessages,
-          pageContext: currentPageGuide
-            ? {
-                pathname,
-                guideId: currentPageGuide.id,
-                title: currentPageGuide.title,
-                chatStarter: currentPageGuide.chatStarter,
-                bullets: currentPageGuide.bullets,
-              }
-            : { pathname },
+          pageContext: {
+            ...louisPageContext,
+            ...(currentPageGuide
+              ? {
+                  guideId: currentPageGuide.id,
+                  title: currentPageGuide.title,
+                  chatStarter: currentPageGuide.chatStarter,
+                  bullets: currentPageGuide.bullets,
+                }
+              : {}),
+          },
           louisContext: {
             isFirstTimeLouis: !hasLouisHistory,
             currentStreak,

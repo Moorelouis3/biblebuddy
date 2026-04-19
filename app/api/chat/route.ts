@@ -491,9 +491,35 @@ CURRENT PAGE CONTEXT
 
 The user is currently on: ${pageContext.pathname}
 
+Route kind: ${pageContext?.routeKind || "unknown"}
+Current Bible book: ${pageContext?.book || "none"}
+Current Bible chapter: ${pageContext?.chapter ?? "none"}
+Current verse reference hint: ${pageContext?.verseReferenceHint || "none"}
+Current devotional id: ${pageContext?.devotionalId || "none"}
+Current devotional day: ${pageContext?.devotionalDay ?? "none"}
+Chapter notes open for this chapter: ${pageContext?.notesForChapter ? "yes" : "no"}
+Current trivia context: ${pageContext?.triviaContext || "none"}
+Current scrambled context: ${pageContext?.scrambledContext || "none"}
+
 If they ask a question about how the current page works, answer like you are already there with them inside the app.
 Keep it practical and explain what they can click, what each feature does, and what the best next step is on that page.
-`;
+
+If they use local language like:
+- verse 6
+- this verse
+- this chapter
+- this book
+- this devotional day
+- this trivia
+- this scrambled game
+
+you should resolve that against the current page context above.
+
+Examples:
+- if the current page is Genesis 1 and they say "verse 6", treat it as Genesis 1:6
+- if the current page is a devotional day and they say "this day", treat it as that current devotional day
+- if the current page is a trivia or scrambled page, assume they mean that exact chapter or game context unless they clearly say otherwise
+  `;
     }
 
     if (louisContext) {
