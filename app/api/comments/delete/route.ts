@@ -6,6 +6,7 @@ const ADMIN_EMAIL = "moorelouis3@gmail.com";
 
 type DeleteKind =
   | "article_comment"
+  | "feed_post_comment"
   | "group_feed_comment"
   | "series_post_comment"
   | "series_reflection";
@@ -88,6 +89,49 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ ok: true, deletedIds });
+  }
+
+  if (kind === "feed_post_comment") {
+    const { data: target, error } = await supabaseAdmin
+      .from("feed_post_comments")
+      .select("id, user_id, post_id")
+      .eq("id", commentId)
+      .maybeSingle();
+
+    if (error || !target) {
+      return NextResponse.json({ error: "Comment not found." }, { status: 404 });
+    }
+
+    if (!isAdmin && !isGlobalModerator && target.user_id !== requester.id) {
+      return NextResponse.json({ error: "Forbidden." }, { status: 403 });
+    }
+
+    const { data: replies } = await supabaseAdmin
+      .from("feed_post_comments")
+      .select("id")
+      .eq("parent_comment_id", commentId);
+
+    const deletedIds = [commentId, ...(replies || []).map((row) => row.id)];
+    const { error: deleteError } = await supabaseAdmin
+      .from("feed_post_comments")
+      .delete()
+      .in("id", deletedIds);
+
+    if (deleteError) {
+      return NextResponse.json({ error: deleteError.message || "Could not delete comment." }, { status: 500 });
+    }
+
+    const { count } = await supabaseAdmin
+      .from("feed_post_comments")
+      .select("id", { count: "exact", head: true })
+      .eq("post_id", target.post_id);
+
+    await supabaseAdmin
+      .from("feed_posts")
+      .update({ comment_count: count ?? 0 })
+      .eq("id", target.post_id);
+
+    return NextResponse.json({ ok: true, deletedIds, nextCommentCount: count ?? 0 });
   }
 
   if (kind === "group_feed_comment") {

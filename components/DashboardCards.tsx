@@ -6,7 +6,6 @@ import type { DailyRecommendation } from "../lib/dailyRecommendation";
 
 interface DashboardCardsProps {
   profile: { is_paid?: boolean | null; daily_credits?: number | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null;
-  primaryRecommendation: DailyRecommendation | null;
   membershipStatus: string;
   daysRemaining: number | null;
   isLoadingLevel: boolean;
@@ -25,7 +24,6 @@ interface DashboardCardsProps {
 
 const DashboardCards: React.FC<DashboardCardsProps> = ({
   profile,
-  primaryRecommendation,
   membershipStatus,
   daysRemaining,
   isLoadingLevel,
@@ -89,32 +87,6 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 
   return (
     <div className="flex flex-col gap-4">
-      {primaryRecommendation ? (
-        <Link href={primaryRecommendation.primaryButtonHref} onClick={(event) => handleCardClick(event, "recommendation", primaryRecommendation.primaryButtonHref)}>
-          <div className="cursor-pointer overflow-hidden rounded-[26px] border border-gray-200 bg-white p-4 shadow-sm transition duration-300 hover:scale-[1.01] hover:shadow-md">
-            <div className="flex items-center gap-4">
-              <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-gray-200 bg-gray-50">
-                {(() => {
-                  const visual = getRecommendationVisual(primaryRecommendation);
-                  return <span className="text-3xl">{visual.emoji}</span>;
-                })()}
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500">
-                  {primaryRecommendation.cardEyebrow || "Recommended For You"}
-                </p>
-                <h2 className="mt-1 text-xl font-semibold leading-tight text-gray-900">
-                  {primaryRecommendation.cardTitle || primaryRecommendation.primaryButtonText}
-                </h2>
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                  {primaryRecommendation.cardSubtitle || primaryRecommendation.recommendationLine}
-                </p>
-              </div>
-            </div>
-          </div>
-        </Link>
-      ) : null}
-
       <div
         data-dashboard-tour="overview"
         className={`overflow-hidden rounded-[26px] border shadow-sm transition duration-300 ${cardShellTheme.outer} ${getSpotlightClasses("overview")}`}

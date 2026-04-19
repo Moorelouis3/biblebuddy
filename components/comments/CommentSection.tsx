@@ -17,6 +17,8 @@ import {
   type MentionCatalogItem,
 } from "@/lib/groupPostMentions";
 
+const ADMIN_EMAIL = "moorelouis3@gmail.com";
+
 function uuidv4() {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     const r = (Math.random() * 16) | 0;
@@ -99,7 +101,10 @@ export default function CommentSection({
   const [error, setError] = useState<string | null>(null);
   const [currentUserBadge, setCurrentUserBadge] = useState<string | null>(null);
   const [currentUserProfileImage, setCurrentUserProfileImage] = useState<string | null>(null);
-  const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
+  const [currentUserIsAdmin, setCurrentUserIsAdmin] = useState(false);
+  const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
+  const [editingCommentText, setEditingCommentText] = useState("");
+  const [savingCommentId, setSavingCommentId] = useState<string | null>(null);
   const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
 
   const hydrateUser = useCallback(async (userId?: string | null, email?: string | null) => {
@@ -107,6 +112,7 @@ export default function CommentSection({
       setUser(null);
       setCurrentUserBadge(null);
       setCurrentUserProfileImage(null);
+      setCurrentUserIsAdmin(false);
       return;
     }
 
@@ -137,9 +143,11 @@ export default function CommentSection({
         .maybeSingle();
       setCurrentUserBadge(profileRow?.member_badge ?? null);
       setCurrentUserProfileImage(profileRow?.profile_image_url ?? null);
+      setCurrentUserIsAdmin(email === ADMIN_EMAIL);
     } catch {
       setCurrentUserBadge(null);
       setCurrentUserProfileImage(null);
+      setCurrentUserIsAdmin(email === ADMIN_EMAIL);
     }
 
     setUser({ id: userId, name: displayName });
@@ -317,7 +325,6 @@ export default function CommentSection({
   const handleDelete = async (id: string) => {
     triggerSmokeDelete();
     setLoading(true);
-    setActiveMenuId(null);
     try {
       const { data: sessionData } = await supabase.auth.getSession();
       const accessToken = sessionData.session?.access_token;
@@ -350,6 +357,72 @@ export default function CommentSection({
     setLoading(false);
   };
 
+  function canDeleteComment(comment: Comment) {
+    return (
+      !!user &&
+      (
+        comment.user_id === user.id ||
+        currentUserBadge === "moderator" ||
+        currentUserIsAdmin
+      )
+    );
+  }
+
+  function canEditComment(comment: Comment) {
+    return !!user && comment.user_id === user.id;
+  }
+
+  const handleSaveCommentEdit = async (comment: Comment) => {
+    const nextContent = editingCommentText.trim();
+    if (!nextContent || savingCommentId) return;
+
+    setSavingCommentId(comment.id);
+    setError(null);
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch("/api/comments/edit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          kind: "article_comment",
+          commentId: comment.id,
+          content: nextContent,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not save comment.");
+      }
+
+      setComments((prev) =>
+        prev.map((item) =>
+          item.id === comment.id
+            ? {
+                ...item,
+                content: payload.comment?.content ?? nextContent,
+                updated_at: payload.comment?.updated_at ?? new Date().toISOString(),
+              }
+            : item
+        )
+      );
+      setEditingCommentId(null);
+      setEditingCommentText("");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not save comment.");
+    }
+    setSavingCommentId(null);
+  };
+
   const renderComments = (items: Comment[], depth = 0) =>
     items.length === 0
       ? null
@@ -357,7 +430,7 @@ export default function CommentSection({
           <div
             key={c.id}
             id={`comment-${c.id}`}
-            className={`${depth === 0 ? "mt-4" : "ml-10 mt-3"} flex gap-3 transition-all`}
+            className={`${depth === 0 ? "mt-4" : "ml-6 mt-3 pl-3 border-l border-[#e8ddd0]"} flex gap-3 transition-all`}
           >
             <Link href={`/profile/${c.user_id}`} className="mt-0.5 flex-shrink-0">
               {c.profile_image_url ? (
@@ -384,38 +457,47 @@ export default function CommentSection({
                       <UserBadge customBadge={c.member_badge} isPaid={c.is_paid === true} />
                       <span className="text-xs text-gray-400">{timeAgo(c.created_at)}</span>
                     </div>
-                    <MentionText
-                      text={c.content}
-                      items={mentionItems}
-                      className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-gray-700"
-                    />
-                  </div>
-                  {user && (user.id === c.user_id || currentUserBadge === "moderator") && (
-                    <div className="relative">
-                      <button
-                        type="button"
-                        onClick={() => setActiveMenuId(activeMenuId === c.id ? null : c.id)}
-                        className="flex h-7 w-7 items-center justify-center rounded-full text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
-                        aria-label="Comment options"
-                      >
-                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6h.01M12 12h.01M12 18h.01" />
-                        </svg>
-                      </button>
-                      {activeMenuId === c.id && (
-                        <div className="absolute right-0 top-8 z-10 min-w-[128px] overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg">
+                    {editingCommentId === c.id ? (
+                      <div className="mt-2 space-y-2">
+                        <TextareaMentionInput
+                          className="w-full resize-none rounded-xl border border-[#ead8c4] bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#d6b18b]"
+                          rows={3}
+                          value={editingCommentText}
+                          onChange={setEditingCommentText}
+                          mentionItems={mentionItems}
+                          placeholder="Edit your comment..."
+                          required
+                        />
+                        <div className="flex items-center gap-2">
                           <button
                             type="button"
-                            onClick={() => void handleDelete(c.id)}
-                            disabled={loading}
-                            className="w-full px-4 py-3 text-left text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50"
+                            onClick={() => void handleSaveCommentEdit(c)}
+                            disabled={savingCommentId === c.id || !editingCommentText.trim()}
+                            className="rounded-xl px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
+                            style={{ backgroundColor: "#5a9a5a" }}
                           >
-                            Delete
+                            {savingCommentId === c.id ? "Saving..." : "Save"}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setEditingCommentId(null);
+                              setEditingCommentText("");
+                            }}
+                            className="rounded-xl border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 transition hover:bg-gray-50"
+                          >
+                            Cancel
                           </button>
                         </div>
-                      )}
-                    </div>
-                  )}
+                      </div>
+                    ) : (
+                      <MentionText
+                        text={c.content}
+                        items={mentionItems}
+                        className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-gray-700"
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
               <div className="mt-1 flex items-center gap-4 px-1">
@@ -428,6 +510,30 @@ export default function CommentSection({
                 >
                   Reply
                 </button>
+                {canEditComment(c) && editingCommentId !== c.id && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEditingCommentId(c.id);
+                      setEditingCommentText(c.content);
+                      setReplyTo(null);
+                      setContent("");
+                    }}
+                    className="text-xs font-semibold text-gray-400 transition hover:text-[#4a9b6f]"
+                  >
+                    Edit
+                  </button>
+                )}
+                {canDeleteComment(c) && (
+                  <button
+                    type="button"
+                    onClick={() => void handleDelete(c.id)}
+                    disabled={loading}
+                    className="text-xs font-semibold text-gray-400 transition hover:text-red-500 disabled:opacity-50"
+                  >
+                    Delete
+                  </button>
+                )}
               </div>
               {replyTo === c.id && (
                 <form onSubmit={handlePost} className="mt-2 flex items-end gap-2">

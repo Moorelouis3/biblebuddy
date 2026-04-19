@@ -68,9 +68,11 @@ type MyProfile = {
   username: string | null;
   profile_image_url: string | null;
   is_paid?: boolean | null;
+  member_badge?: string | null;
 } | null;
 
 const INLINE_UPGRADE_INTERVAL = 15;
+const ADMIN_EMAIL = "moorelouis3@gmail.com";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -715,10 +717,11 @@ function Avatar({ userId, displayName, imageUrl, size = 9 }: {
 
 // ── Comment Section ───────────────────────────────────────────────────────────
 
-function CommentSection({ postId, myId, myProfile, onCountChange, highlightCommentId }: {
+function CommentSection({ postId, myId, myProfile, currentUserIsAdmin, onCountChange, highlightCommentId }: {
   postId: string;
   myId: string;
   myProfile: MyProfile;
+  currentUserIsAdmin: boolean;
   onCountChange: (delta: number) => void;
   highlightCommentId?: string | null;
 }) {
@@ -728,6 +731,10 @@ function CommentSection({ postId, myId, myProfile, onCountChange, highlightComme
   const [submitting, setSubmitting] = useState(false);
   const [replyingTo, setReplyingTo] = useState<string | null>(null); // parent comment id
   const [replyText, setReplyText] = useState("");
+  const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
+  const [editingCommentText, setEditingCommentText] = useState("");
+  const [savingCommentId, setSavingCommentId] = useState<string | null>(null);
+  const currentUserBadge = myProfile?.member_badge ?? null;
 
   useEffect(() => {
     async function load() {
@@ -781,6 +788,120 @@ function CommentSection({ postId, myId, myProfile, onCountChange, highlightComme
     setSubmitting(false);
   }
 
+  function canDeleteComment(comment: FeedComment) {
+    return (
+      comment.user_id === myId ||
+      currentUserBadge === "moderator" ||
+      currentUserIsAdmin
+    );
+  }
+
+  function canEditComment(comment: FeedComment) {
+    return comment.user_id === myId;
+  }
+
+  async function handleDeleteComment(comment: FeedComment) {
+    if (submitting) return;
+    triggerSmokeDelete();
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch("/api/comments/delete", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          kind: "feed_post_comment",
+          commentId: comment.id,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not delete this comment.");
+      }
+
+      const deletedIds = new Set<string>((payload.deletedIds || []) as string[]);
+      if (deletedIds.size === 0) deletedIds.add(comment.id);
+
+      setComments((prev) => prev.filter((item) => !deletedIds.has(item.id)));
+
+      if (typeof payload.nextCommentCount === "number") {
+        onCountChange(payload.nextCommentCount - comments.length);
+      } else {
+        onCountChange(-deletedIds.size);
+      }
+
+      if (replyingTo && deletedIds.has(replyingTo)) {
+        setReplyingTo(null);
+        setReplyText("");
+      }
+
+      if (editingCommentId && deletedIds.has(editingCommentId)) {
+        setEditingCommentId(null);
+        setEditingCommentText("");
+      }
+    } catch (error) {
+      console.error("Failed to delete feed comment:", error);
+    }
+  }
+
+  async function handleSaveCommentEdit(comment: FeedComment) {
+    const nextContent = editingCommentText.trim();
+    if (!nextContent || savingCommentId) return;
+
+    setSavingCommentId(comment.id);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch("/api/comments/edit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          kind: "feed_post_comment",
+          commentId: comment.id,
+          content: nextContent,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not save this comment.");
+      }
+
+      setComments((prev) =>
+        prev.map((item) =>
+          item.id === comment.id
+            ? { ...item, content: payload.comment?.content ?? nextContent }
+            : item
+        )
+      );
+      setEditingCommentId(null);
+      setEditingCommentText("");
+    } catch (error) {
+      console.error("Failed to edit feed comment:", error);
+    }
+
+    setSavingCommentId(null);
+  }
+
   const topLevel = comments.filter((c) => !c.parent_comment_id);
   const replies = (parentId: string) => comments.filter((c) => c.parent_comment_id === parentId);
 
@@ -797,7 +918,10 @@ function CommentSection({ postId, myId, myProfile, onCountChange, highlightComme
       }
     }, [isHighlightComment]);
     return (
-      <div ref={commentRowRef} className={`flex gap-2 ${indent ? "ml-8 mt-1" : "mt-2"} ${isHighlightComment ? "rounded-xl ring-2 ring-green-300 p-1 -mx-1" : ""}`}>
+      <div
+        ref={commentRowRef}
+        className={`flex gap-2 ${indent ? "ml-6 mt-3 pl-3 border-l border-[#e8ddd0]" : "mt-2"} ${isHighlightComment ? "rounded-xl ring-2 ring-green-300 p-1 -mx-1" : ""}`}
+      >
         <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0 mt-0.5">
           <Avatar userId={comment.user_id} displayName={name} imageUrl={comment.profile_image_url} size={6} />
         </Link>
@@ -806,7 +930,38 @@ function CommentSection({ postId, myId, myProfile, onCountChange, highlightComme
             <Link href={`/profile/${comment.user_id}`} className="text-xs font-semibold text-gray-800 hover:underline">
               {name}
             </Link>
-            <p className="text-xs text-gray-700 mt-0.5 leading-relaxed">{comment.content}</p>
+            {editingCommentId === comment.id ? (
+              <div className="mt-2 space-y-2">
+                <textarea
+                  value={editingCommentText}
+                  onChange={(e) => setEditingCommentText(e.target.value)}
+                  rows={3}
+                  className="w-full resize-none rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => void handleSaveCommentEdit(comment)}
+                    disabled={savingCommentId === comment.id || !editingCommentText.trim()}
+                    className="rounded-xl bg-[#4a9b6f] px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
+                  >
+                    {savingCommentId === comment.id ? "Saving..." : "Save"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEditingCommentId(null);
+                      setEditingCommentText("");
+                    }}
+                    className="rounded-xl border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 transition hover:bg-gray-100"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <p className="text-xs text-gray-700 mt-0.5 leading-relaxed whitespace-pre-wrap">{comment.content}</p>
+            )}
           </div>
           <div className="flex items-center gap-3 mt-0.5 px-1">
             <span className="text-[10px] text-gray-400">{timeAgo(comment.created_at)}</span>
@@ -821,6 +976,29 @@ function CommentSection({ postId, myId, myProfile, onCountChange, highlightComme
                 Reply
               </button>
             )}
+            {canEditComment(comment) && editingCommentId !== comment.id && (
+              <button
+                type="button"
+                onClick={() => {
+                  setEditingCommentId(comment.id);
+                  setEditingCommentText(comment.content);
+                  setReplyingTo(null);
+                  setReplyText("");
+                }}
+                className="text-[10px] text-gray-400 hover:text-green-600 font-semibold transition"
+              >
+                Edit
+              </button>
+            )}
+            {canDeleteComment(comment) && (
+              <button
+                type="button"
+                onClick={() => void handleDeleteComment(comment)}
+                className="text-[10px] text-gray-400 hover:text-red-500 font-semibold transition"
+              >
+                Delete
+              </button>
+            )}
           </div>
           {/* Reply input */}
           {!indent && replyingTo === comment.id && (
@@ -828,6 +1006,12 @@ function CommentSection({ postId, myId, myProfile, onCountChange, highlightComme
               <textarea
                 value={replyText}
                 onChange={(e) => setReplyText(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    void submitComment(replyText, comment.id);
+                  }
+                }}
                 placeholder={`Reply to ${name}...`}
                 rows={1}
                 autoFocus
@@ -1025,10 +1209,11 @@ function VideoBlock({ post }: { post: FeedPost }) {
 
 // ── Post Card ─────────────────────────────────────────────────────────────────
 
-function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountChange, onDelete, highlightPostId, highlightCommentId }: {
+function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onReact, onCommentCountChange, onDelete, highlightPostId, highlightCommentId }: {
   post: FeedPost;
   myId: string;
   myProfile: MyProfile;
+  currentUserIsAdmin: boolean;
   myReactions: Set<string>;
   onReact: (postId: string, reaction: string) => void;
   onCommentCountChange: (postId: string, delta: number) => void;
@@ -1252,6 +1437,7 @@ function PostCard({ post, myId, myProfile, myReactions, onReact, onCommentCountC
           postId={post.id}
           myId={myId}
           myProfile={myProfile}
+          currentUserIsAdmin={currentUserIsAdmin}
           highlightCommentId={isHighlighted ? highlightCommentId : null}
           onCountChange={(delta) => {
             setLocalCommentCount((n) => n + delta);
@@ -1536,6 +1722,7 @@ export default function BbFeedPage() {
   const router = useRouter();
   const [userId, setUserId] = useState<string | null>(null);
   const [myProfile, setMyProfile] = useState<MyProfile>(null);
+  const [currentUserIsAdmin, setCurrentUserIsAdmin] = useState(false);
   const [tab, setTab] = useState<Tab>("community");
   const [loading, setLoading] = useState(true);
   const [showFeedOnboarding, setShowFeedOnboarding] = useState(false);
@@ -1573,9 +1760,10 @@ export default function BbFeedPage() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) { router.push("/login"); return; }
       setUserId(user.id);
+      setCurrentUserIsAdmin(user.email === ADMIN_EMAIL);
       const { data: prof } = await supabase
         .from("profile_stats")
-        .select("display_name, username, profile_image_url, feed_onboarding_completed, is_paid")
+        .select("display_name, username, profile_image_url, feed_onboarding_completed, is_paid, member_badge")
         .eq("user_id", user.id)
         .maybeSingle();
       setMyProfile(prof ?? null);
@@ -1909,7 +2097,7 @@ export default function BbFeedPage() {
     return (
       <div className="flex flex-col gap-3">
         {interleaveUpgradeCards(buddyPosts, myProfile?.is_paid !== true, (item) => (
-          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
+          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
         ))}
       </div>
     );
@@ -1930,7 +2118,7 @@ export default function BbFeedPage() {
     return (
       <div className="flex flex-col gap-3">
         {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) => (
-          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
+          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
         ))}
       </div>
     );
@@ -1969,6 +2157,7 @@ export default function BbFeedPage() {
               post={item as FeedPost}
               myId={userId!}
               myProfile={myProfile}
+              currentUserIsAdmin={currentUserIsAdmin}
               myReactions={myReactions}
               onReact={handleReact}
               onCommentCountChange={handleCommentCountChange}

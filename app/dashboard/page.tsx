@@ -874,6 +874,7 @@ export default function DashboardPage() {
       featureToursEnabled &&
       featureToursLoaded &&
       tourKey !== "dashboard" &&
+      tourKey !== "bible" &&
       tourKey !== "recommendation" &&
       featureTours[tourKey as FeatureTourKey] !== true
     ) {
@@ -1235,7 +1236,6 @@ export default function DashboardPage() {
         {/* DASHBOARD CARDS */}
         <DashboardCards
           profile={profile}
-          primaryRecommendation={primaryRecommendation}
           membershipStatus={membershipStatus ?? ""}
           daysRemaining={daysRemaining}
           isLoadingLevel={isLoadingLevel}
@@ -1270,7 +1270,6 @@ export default function DashboardPage() {
         {/* DASHBOARD CARDS */}
         <DashboardCards
           profile={profile}
-          primaryRecommendation={primaryRecommendation}
           membershipStatus={membershipStatus ?? ""}
           daysRemaining={daysRemaining}
           isLoadingLevel={isLoadingLevel}

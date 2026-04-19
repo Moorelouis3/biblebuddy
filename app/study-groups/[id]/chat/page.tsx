@@ -2042,6 +2042,9 @@ RULES:
   const [replyingToId, setReplyingToId] = useState<string | null>(null);
   const [replyText, setReplyText] = useState("");
   const [submittingComment, setSubmittingComment] = useState(false);
+  const [editingSeriesCommentId, setEditingSeriesCommentId] = useState<string | null>(null);
+  const [editingSeriesCommentText, setEditingSeriesCommentText] = useState("");
+  const [savingSeriesCommentId, setSavingSeriesCommentId] = useState<string | null>(null);
   const [postLikeLoading, setPostLikeLoading] = useState(false);
   const [seriesPostLikeAnimating, setSeriesPostLikeAnimating] = useState(false);
   const [commentLikeLoading, setCommentLikeLoading] = useState<Set<string>>(new Set());
@@ -3910,6 +3913,58 @@ RULES:
     );
   }
 
+  function canEditSeriesComment(comment: SeriesComment) {
+    return comment.user_id === userId;
+  }
+
+  async function handleSaveSeriesCommentEdit(comment: SeriesComment) {
+    const nextContent = editingSeriesCommentText.trim();
+    if (!nextContent || savingSeriesCommentId) return;
+
+    setSavingSeriesCommentId(comment.id);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch("/api/comments/edit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          kind: "series_post_comment",
+          commentId: comment.id,
+          content: nextContent,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not save this comment.");
+      }
+
+      setComments((prev) =>
+        prev.map((item) =>
+          item.id === comment.id
+            ? { ...item, content: payload.comment?.content ?? nextContent }
+            : item
+        )
+      );
+      setEditingSeriesCommentId(null);
+      setEditingSeriesCommentText("");
+    } catch (error) {
+      console.error("Failed to edit series comment:", error);
+    }
+
+    setSavingSeriesCommentId(null);
+  }
+
   async function handleDeleteSeriesComment(comment: SeriesComment) {
     triggerSmokeDelete();
     if (!userId || deletingSeriesCommentId) return;
@@ -3957,6 +4012,10 @@ RULES:
       if (replyingToId && deletedIds.has(replyingToId)) {
         setReplyingToId(null);
         setReplyText("");
+      }
+      if (editingSeriesCommentId && deletedIds.has(editingSeriesCommentId)) {
+        setEditingSeriesCommentId(null);
+        setEditingSeriesCommentText("");
       }
     } catch (error) {
       console.error("Failed to delete series comment:", error);
@@ -4469,11 +4528,45 @@ RULES:
                               <UserBadge customBadge={comment.member_badge} isPaid={comment.is_paid} groupRole={comment.role} />
                               <span className="text-xs text-gray-400">{timeAgo(comment.created_at)}</span>
                             </div>
-                            <MentionText
-                              text={comment.content}
-                              items={mentionItems}
-                              className="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap"
-                            />
+                            {editingSeriesCommentId === comment.id ? (
+                              <div className="space-y-2">
+                                <TextareaMentionInput
+                                  value={editingSeriesCommentText}
+                                  onChange={setEditingSeriesCommentText}
+                                  mentionItems={mentionItems}
+                                  rows={3}
+                                  autoFocus
+                                  className="w-full text-sm bg-gray-100 rounded-xl px-3 py-2 outline-none text-gray-900 placeholder-gray-400 resize-none"
+                                />
+                                <div className="flex items-center gap-2">
+                                  <button
+                                    type="button"
+                                    onClick={() => void handleSaveSeriesCommentEdit(comment)}
+                                    disabled={savingSeriesCommentId === comment.id || !editingSeriesCommentText.trim()}
+                                    className="rounded-xl px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
+                                    style={{ backgroundColor: SAGE }}
+                                  >
+                                    {savingSeriesCommentId === comment.id ? "Saving..." : "Save"}
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setEditingSeriesCommentId(null);
+                                      setEditingSeriesCommentText("");
+                                    }}
+                                    className="rounded-xl border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 transition hover:bg-gray-50"
+                                  >
+                                    Cancel
+                                  </button>
+                                </div>
+                              </div>
+                            ) : (
+                              <MentionText
+                                text={comment.content}
+                                items={mentionItems}
+                                className="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap"
+                              />
+                            )}
                             <div className="flex items-center gap-4 mt-2">
                               <button
                                 onClick={() => handleCommentLike(comment)}
@@ -4492,6 +4585,20 @@ RULES:
                               >
                                 Reply
                               </button>
+                              {canEditSeriesComment(comment) && editingSeriesCommentId !== comment.id && (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setEditingSeriesCommentId(comment.id);
+                                    setEditingSeriesCommentText(comment.content);
+                                    setReplyingToId(null);
+                                    setReplyText("");
+                                  }}
+                                  className="text-xs text-gray-400 hover:text-[#4a9b6f] transition"
+                                >
+                                  Edit
+                                </button>
+                              )}
                               {canDeleteSeriesComment(comment) && (
                                 <button
                                   type="button"
@@ -4530,7 +4637,7 @@ RULES:
 
                             {/* Replies */}
                             {comments.filter((c) => c.parent_comment_id === comment.id).map((reply) => (
-                              <div key={reply.id} className="mt-3 ml-4 flex items-start gap-2">
+                              <div key={reply.id} className="mt-3 ml-6 pl-3 border-l border-[#e8ddd0] flex items-start gap-2">
                                 <Link href={`/profile/${reply.user_id}`} className="flex-shrink-0">
                                   {reply.profile_image_url ? (
                                     <img src={reply.profile_image_url} alt={reply.display_name} className="w-6 h-6 rounded-full object-cover hover:opacity-80 transition" />
@@ -4548,32 +4655,82 @@ RULES:
                                     <UserBadge customBadge={reply.member_badge} isPaid={reply.is_paid} groupRole={reply.role} />
                                     <span className="text-xs text-gray-400">{timeAgo(reply.created_at)}</span>
                                   </div>
-                                  <MentionText
-                                    text={reply.content}
-                                    items={mentionItems}
-                                    className="text-xs text-gray-800 leading-relaxed whitespace-pre-wrap"
-                                  />
-                                  <button
-                                    onClick={() => handleCommentLike(reply)}
-                                    disabled={commentLikeLoading.has(reply.id)}
-                                    className="flex items-center gap-1 text-xs mt-1 transition"
-                                    style={{ color: reply.liked ? "#e53e3e" : "#9ca3af" }}
-                                  >
-                                    <svg className={`w-3 h-3 ${seriesCommentLikeAnimatingIds.has(reply.id) ? "animate-heart-pop" : ""}`} fill={reply.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                    </svg>
-                                    {reply.like_count > 0 ? reply.like_count : ""}
-                                  </button>
-                                  {canDeleteSeriesComment(reply) && (
-                                    <button
-                                      type="button"
-                                      onClick={() => void handleDeleteSeriesComment(reply)}
-                                      disabled={deletingSeriesCommentId === reply.id}
-                                      className="text-xs text-gray-400 hover:text-red-500 transition disabled:opacity-50 mt-1"
-                                    >
-                                      {deletingSeriesCommentId === reply.id ? "Deleting..." : "Delete"}
-                                    </button>
+                                  {editingSeriesCommentId === reply.id ? (
+                                    <div className="space-y-2">
+                                      <TextareaMentionInput
+                                        value={editingSeriesCommentText}
+                                        onChange={setEditingSeriesCommentText}
+                                        mentionItems={mentionItems}
+                                        rows={3}
+                                        autoFocus
+                                        className="w-full text-xs bg-gray-100 rounded-xl px-3 py-2 outline-none text-gray-900 placeholder-gray-400 resize-none"
+                                      />
+                                      <div className="flex items-center gap-2">
+                                        <button
+                                          type="button"
+                                          onClick={() => void handleSaveSeriesCommentEdit(reply)}
+                                          disabled={savingSeriesCommentId === reply.id || !editingSeriesCommentText.trim()}
+                                          className="rounded-xl px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
+                                          style={{ backgroundColor: SAGE }}
+                                        >
+                                          {savingSeriesCommentId === reply.id ? "Saving..." : "Save"}
+                                        </button>
+                                        <button
+                                          type="button"
+                                          onClick={() => {
+                                            setEditingSeriesCommentId(null);
+                                            setEditingSeriesCommentText("");
+                                          }}
+                                          className="rounded-xl border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 transition hover:bg-gray-50"
+                                        >
+                                          Cancel
+                                        </button>
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    <MentionText
+                                      text={reply.content}
+                                      items={mentionItems}
+                                      className="text-xs text-gray-800 leading-relaxed whitespace-pre-wrap"
+                                    />
                                   )}
+                                  <div className="flex items-center gap-3 mt-1">
+                                    <button
+                                      onClick={() => handleCommentLike(reply)}
+                                      disabled={commentLikeLoading.has(reply.id)}
+                                      className="flex items-center gap-1 text-xs transition"
+                                      style={{ color: reply.liked ? "#e53e3e" : "#9ca3af" }}
+                                    >
+                                      <svg className={`w-3 h-3 ${seriesCommentLikeAnimatingIds.has(reply.id) ? "animate-heart-pop" : ""}`} fill={reply.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                      </svg>
+                                      {reply.like_count > 0 ? reply.like_count : ""}
+                                    </button>
+                                    {canEditSeriesComment(reply) && editingSeriesCommentId !== reply.id && (
+                                      <button
+                                        type="button"
+                                        onClick={() => {
+                                          setEditingSeriesCommentId(reply.id);
+                                          setEditingSeriesCommentText(reply.content);
+                                          setReplyingToId(null);
+                                          setReplyText("");
+                                        }}
+                                        className="text-xs text-gray-400 hover:text-[#4a9b6f] transition"
+                                      >
+                                        Edit
+                                      </button>
+                                    )}
+                                    {canDeleteSeriesComment(reply) && (
+                                      <button
+                                        type="button"
+                                        onClick={() => void handleDeleteSeriesComment(reply)}
+                                        disabled={deletingSeriesCommentId === reply.id}
+                                        className="text-xs text-gray-400 hover:text-red-500 transition disabled:opacity-50"
+                                      >
+                                        {deletingSeriesCommentId === reply.id ? "Deleting..." : "Delete"}
+                                      </button>
+                                    )}
+                                  </div>
                                 </div>
                               </div>
                             ))}

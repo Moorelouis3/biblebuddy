@@ -751,9 +751,12 @@ type ReflectionRowProps = {
   userId: string;
   currentUserBadge: string | null;
   currentUserGroupRole: string | null;
-  activeMenuId: string | null;
-  setActiveMenuId: (id: string | null) => void;
   deletingId: string | null;
+  editingId: string | null;
+  editingText: string;
+  setEditingId: (id: string | null) => void;
+  setEditingText: (text: string) => void;
+  savingId: string | null;
   likeLoading: Set<string>;
   likeAnimatingIds: Set<string>;
   replyingToId: string | null;
@@ -762,6 +765,7 @@ type ReflectionRowProps = {
   setReplyText: (text: string) => void;
   submitting: boolean;
   onDeleteReflection: (reflection: ReflectionEntry) => Promise<void>;
+  onSaveEdit: (reflection: ReflectionEntry) => Promise<void>;
   onToggleLike: (reflection: ReflectionEntry) => Promise<void>;
   onSubmit: (parentId: string) => Promise<void>;
 };
@@ -773,9 +777,12 @@ function ReflectionRow({
   userId,
   currentUserBadge,
   currentUserGroupRole,
-  activeMenuId,
-  setActiveMenuId,
   deletingId,
+  editingId,
+  editingText,
+  setEditingId,
+  setEditingText,
+  savingId,
   likeLoading,
   likeAnimatingIds,
   replyingToId,
@@ -784,6 +791,7 @@ function ReflectionRow({
   setReplyText,
   submitting,
   onDeleteReflection,
+  onSaveEdit,
   onToggleLike,
   onSubmit,
 }: ReflectionRowProps) {
@@ -794,15 +802,19 @@ function ReflectionRow({
     currentUserBadge === "moderator" ||
     currentUserGroupRole === "leader" ||
     currentUserGroupRole === "moderator";
+  const canEditReflection = reflection.user_id === userId;
 
   const sharedProps: Omit<ReflectionRowProps, "reflection" | "depth"> = {
     reflections,
     userId,
     currentUserBadge,
     currentUserGroupRole,
-    activeMenuId,
-    setActiveMenuId,
     deletingId,
+    editingId,
+    editingText,
+    setEditingId,
+    setEditingText,
+    savingId,
     likeLoading,
     likeAnimatingIds,
     replyingToId,
@@ -811,15 +823,15 @@ function ReflectionRow({
     setReplyText,
     submitting,
     onDeleteReflection,
+    onSaveEdit,
     onToggleLike,
     onSubmit,
   };
 
-  // Cap visual indent at 1 level (ml-10) so deep threads stay readable on mobile
-  const indentClass = depth === 0 ? "mt-4" : "ml-10 mt-3";
+  const indentClass = depth === 0 ? "mt-4" : "ml-6 mt-3 pl-3 border-l border-[#e8ddd0]";
 
   function handleReplyKeyDown(event: React.KeyboardEvent<HTMLTextAreaElement>) {
-    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+    if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
       void onSubmit(reflection.id);
     }
@@ -840,7 +852,7 @@ function ReflectionRow({
       <div className="flex-1 min-w-0">
         <div className="rounded-2xl bg-[#faf7f2] border border-[#efe5d9] px-3 py-2.5">
           <div className="flex items-start gap-2">
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <Link href={`/profile/${reflection.user_id}`} className="text-xs font-semibold text-gray-800 hover:underline">
                   {name}
@@ -852,34 +864,40 @@ function ReflectionRow({
                 />
                 <span className="text-xs text-gray-400">{timeAgo(reflection.created_at)}</span>
               </div>
-              <p className="text-sm text-gray-700 mt-1 leading-relaxed whitespace-pre-wrap">{reflection.content}</p>
-            </div>
-            {canDeleteReflection && (
-              <div className="relative">
-                <button
-                  type="button"
-                  onClick={() => setActiveMenuId(activeMenuId === reflection.id ? null : reflection.id)}
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition"
-                  aria-label="Reflection options"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6h.01M12 12h.01M12 18h.01" />
-                  </svg>
-                </button>
-                {activeMenuId === reflection.id && (
-                  <div className="absolute right-0 top-8 z-10 min-w-[128px] rounded-xl border border-gray-200 bg-white shadow-lg overflow-hidden">
+              {editingId === reflection.id ? (
+                <div className="mt-2 space-y-2">
+                  <textarea
+                    value={editingText}
+                    onChange={(event) => setEditingText(event.target.value)}
+                    rows={3}
+                    className="w-full rounded-2xl border border-[#ead8c4] bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-[#d6b18b] resize-none"
+                  />
+                  <div className="flex items-center gap-2">
                     <button
                       type="button"
-                      onClick={() => void onDeleteReflection(reflection)}
-                      disabled={deletingId === reflection.id}
-                      className="w-full px-4 py-3 text-left text-sm font-medium text-red-600 hover:bg-red-50 transition disabled:opacity-50"
+                      onClick={() => void onSaveEdit(reflection)}
+                      disabled={savingId === reflection.id || !editingText.trim()}
+                      className="rounded-xl px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
+                      style={{ backgroundColor: "#5a9a5a" }}
                     >
-                      Delete
+                      {savingId === reflection.id ? "Saving..." : "Save"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditingId(null);
+                        setEditingText("");
+                      }}
+                      className="rounded-xl border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 transition hover:bg-gray-50"
+                    >
+                      Cancel
                     </button>
                   </div>
-                )}
-              </div>
-            )}
+                </div>
+              ) : (
+                <p className="text-sm text-gray-700 mt-1 leading-relaxed whitespace-pre-wrap">{reflection.content}</p>
+              )}
+            </div>
           </div>
         </div>
         <div className="flex items-center gap-4 mt-1 px-1">
@@ -905,6 +923,30 @@ function ReflectionRow({
             >
               Reply
             </button>
+          {canEditReflection && editingId !== reflection.id && (
+            <button
+              type="button"
+              onClick={() => {
+                setEditingId(reflection.id);
+                setEditingText(reflection.content);
+                setReplyingToId(null);
+                setReplyText("");
+              }}
+              className="text-xs text-gray-400 hover:text-[#4a9b6f] font-semibold transition"
+            >
+              Edit
+            </button>
+          )}
+          {canDeleteReflection && (
+            <button
+              type="button"
+              onClick={() => void onDeleteReflection(reflection)}
+              disabled={deletingId === reflection.id}
+              className="text-xs text-gray-400 hover:text-red-500 font-semibold transition disabled:opacity-50"
+            >
+              {deletingId === reflection.id ? "Deleting..." : "Delete"}
+            </button>
+          )}
         </div>
         {replyingToId === reflection.id && (
           <div className="mt-2 flex gap-2 items-end">
@@ -971,7 +1013,9 @@ function ReflectionSection({
   const [loadingReflections, setLoadingReflections] = useState(true);
   const [reflectionError, setReflectionError] = useState<string | null>(null);
   const [replyingToId, setReplyingToId] = useState<string | null>(null);
-  const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editingText, setEditingText] = useState("");
+  const [savingEditId, setSavingEditId] = useState<string | null>(null);
   const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
   const [likeAnimatingIds, setLikeAnimatingIds] = useState<Set<string>>(new Set());
   const [deletingId, setDeletingId] = useState<string | null>(null);
@@ -1129,11 +1173,57 @@ function ReflectionSection({
     });
   }
 
+  async function handleSaveReflectionEdit(reflection: ReflectionEntry) {
+    const nextContent = editingText.trim();
+    if (!nextContent || savingEditId) return;
+
+    setSavingEditId(reflection.id);
+    setReflectionError(null);
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+
+      if (!accessToken) {
+        throw new Error("Could not verify your session.");
+      }
+
+      const response = await fetch("/api/comments/edit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          kind: "series_reflection",
+          commentId: reflection.id,
+          content: nextContent,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Could not save reflection.");
+      }
+
+      setReflections((prev) =>
+        prev.map((item) =>
+          item.id === reflection.id
+            ? { ...item, content: payload.comment?.content ?? nextContent }
+            : item
+        )
+      );
+      setEditingId(null);
+      setEditingText("");
+    } catch (error) {
+      setReflectionError(error instanceof Error ? error.message : "Could not save reflection.");
+    }
+    setSavingEditId(null);
+  }
+
   async function handleDeleteReflection(reflection: ReflectionEntry) {
     triggerSmokeDelete();
     if (deletingId) return;
     setDeletingId(reflection.id);
-    setActiveMenuId(null);
     try {
       const { data: sessionData } = await supabase.auth.getSession();
       const accessToken = sessionData.session?.access_token;
@@ -1187,9 +1277,12 @@ function ReflectionSection({
     userId,
     currentUserBadge,
     currentUserGroupRole,
-    activeMenuId,
-    setActiveMenuId,
     deletingId,
+    editingId,
+    editingText,
+    setEditingId,
+    setEditingText,
+    savingId: savingEditId,
     likeLoading,
     likeAnimatingIds,
     replyingToId,
@@ -1198,6 +1291,7 @@ function ReflectionSection({
     setReplyText,
     submitting,
     onDeleteReflection: handleDeleteReflection,
+    onSaveEdit: handleSaveReflectionEdit,
     onToggleLike: handleToggleLike,
     onSubmit: (parentId) => handleSubmit(parentId),
   };
