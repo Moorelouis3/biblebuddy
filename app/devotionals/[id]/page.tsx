@@ -393,44 +393,40 @@ export default function DevotionalDetailPage() {
   const sendDevotionalLouisMoment = (dayNumber: number) => {
     if (!devotional) return;
 
-    const nextDay = dayNumber + 1;
-    const hasNextDay = devotional.total_days >= nextDay;
-    const isTestingOfJoseph = devotional.title === "The Testing of Joseph";
+    const suggestedNextDay = dayNumber + 1;
+    const hasSuggestedNextDay = devotional.total_days >= suggestedNextDay;
+    const shouldSuggestJosephTrivia = devotional.title === "The Testing of Joseph";
+    const recommendation = shouldSuggestJosephTrivia
+      ? {
+          message: hasSuggestedNextDay
+            ? `Hey, you just completed day ${dayNumber} of ${devotional.title}. Great job.\n\nA good next move is Joseph trivia.\n\nThat will help you test what you just took in before you move on to day ${suggestedNextDay}.\n\nDo you want to do that now?`
+            : `Hey, you just finished ${devotional.title}. Great job.\n\nA good next move is Joseph trivia.\n\nThat will help you lock in what stood out from this devotional.\n\nDo you want to do that now?`,
+          yesHref: "/bible-trivia/joseph",
+        }
+      : {
+          message: hasSuggestedNextDay
+            ? `Hey, you just completed day ${dayNumber} of ${devotional.title}. Great job.\n\nA good next move is a quick Bible game.\n\nThat helps reinforce what you just read before you come back for day ${suggestedNextDay}.\n\nDo you want to do that now?`
+            : `Hey, you just finished ${devotional.title}. Great job.\n\nA good next move is a quick Bible game.\n\nThat helps reinforce what stood out before you jump into something new.\n\nDo you want to do that now?`,
+          yesHref: "/bible-study-games",
+        };
 
     dispatchLouisMoment({
-      message: hasNextDay
-        ? `Great job. You just completed day ${dayNumber} of ${devotional.title}.\n\nThat's how real Bible habits get built.\n\nTomorrow, come back and I'll walk you into day ${nextDay}.\n\nAnd before you leave, you could reinforce this by jumping into something interactive.`
-        : `Great job. You just finished ${devotional.title}.\n\nThat's a real win.\n\nNow would be a good time to lock some of it in with something interactive or go start your next devotional.`,
+      message: recommendation.message,
+      openMode: "badge",
       replies: [
-        hasNextDay
-          ? {
-              id: `devotional-next-${devotional.id}-${nextDay}`,
-              label: `Come back for day ${nextDay}`,
-              message: `When you come back, I'll point you straight into day ${nextDay} of ${devotional.title}. Just keep showing up one day at a time.`,
-            }
-          : {
-              id: `devotional-back-${devotional.id}`,
-              label: "Pick another devotional",
-              href: "/devotionals",
-            },
-        isTestingOfJoseph
-          ? {
-              id: `devotional-trivia-${devotional.id}-${dayNumber}`,
-              label: "Try Joseph trivia",
-              href: "/bible-trivia/joseph",
-            }
-          : {
-              id: `devotional-games-${devotional.id}-${dayNumber}`,
-              label: "Try a Bible game",
-              href: "/bible-study-games",
-            },
         {
-          id: `devotional-talk-${devotional.id}-${dayNumber}`,
-          label: "What should I take from this?",
-          message: `Sit with what stood out to you most from day ${dayNumber}. If one part keeps sticking, that's probably the part God wants you to carry with you today.`,
+          id: `devotional-next-yes-${devotional.id}-${dayNumber}`,
+          label: "Yes",
+          href: recommendation.yesHref,
+        },
+        {
+          id: `devotional-next-no-${devotional.id}-${dayNumber}`,
+          label: "No",
+          message: "That is fine. I am here if you want help with the next step.",
         },
       ],
     });
+    return;
   };
 
   const handleBibleReadingClick = (book: string, chapter: number) => {

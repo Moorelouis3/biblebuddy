@@ -2634,7 +2634,6 @@ export function ChatLouis() {
       const detail = (event as CustomEvent<LouisMomentDetail>).detail;
       if (!detail?.message) return;
 
-      setIsOpen(true);
       appendAssistantMessage(detail.message);
       seedQuickReplies(
         (detail.replies ?? []).map((reply: LouisMomentReply) => ({
@@ -2645,11 +2644,16 @@ export function ChatLouis() {
           message: reply.message,
         })),
       );
+      if (detail.openMode === "badge" && !isOpen) {
+        setPendingRouteHandoff(true);
+        return;
+      }
+      setIsOpen(true);
     }
 
     document.addEventListener(LOUIS_MOMENT_EVENT, onLouisMoment);
     return () => document.removeEventListener(LOUIS_MOMENT_EVENT, onLouisMoment);
-  }, []);
+  }, [isOpen]);
 
   const bubbleStyle =
     position.x === 0 && position.y === 0

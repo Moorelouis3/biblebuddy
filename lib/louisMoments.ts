@@ -13,6 +13,7 @@ export type LouisMomentReply = {
 export type LouisMomentDetail = {
   message: string;
   replies?: LouisMomentReply[];
+  openMode?: "open" | "badge";
 };
 
 export function dispatchLouisMoment(detail: LouisMomentDetail) {

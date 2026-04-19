@@ -1739,6 +1739,73 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
   }
 
   function sendChapterLouisMoment(type: "completed" | "checklist") {
+    const chapterDisplayLabel = `${bookDisplayName} ${chapter}`;
+    const recommendation = (() => {
+      if (!triviaDone && triviaChapterPack) {
+        return {
+          message:
+            type === "completed"
+              ? `Hey, you just completed ${chapterDisplayLabel}. Great job.\n\nThe best next move is trivia for this chapter.\n\nThat will show you what actually stuck while it is still fresh.\n\nDo you want to do that now?`
+              : `You already finished ${chapterDisplayLabel}.\n\nThe best next move now is trivia for this chapter.\n\nThat is the easiest way to see what you really remember.\n\nDo you want to do that now?`,
+          yesHref: `/bible-trivia/${triviaRouteSlug}/${chapter}`,
+        };
+      }
+
+      if (!scrambledDone && scrambledChapterPack) {
+        return {
+          message:
+            type === "completed"
+              ? `Hey, you just completed ${chapterDisplayLabel}. Great job.\n\nA good next move is Scrambled for this chapter.\n\nThat helps lock the key words and ideas in better.\n\nDo you want to do that now?`
+              : `You already finished ${chapterDisplayLabel}.\n\nA good next move now is Scrambled for this chapter.\n\nThat helps lock the key words and ideas in better.\n\nDo you want to do that now?`,
+          yesHref: `/bible-study-games/scrambled/${_resolvedTriviaBookKey}/${chapter}`,
+        };
+      }
+
+      if (!reviewDone) {
+        return {
+          message:
+            type === "completed"
+              ? `Hey, you just completed ${chapterDisplayLabel}. Great job.\n\nI would go into the chapter notes next.\n\nThat is where you slow down and really see what this chapter is saying.\n\nDo you want to do that now?`
+              : `You already finished ${chapterDisplayLabel}.\n\nI would go into the chapter notes next.\n\nThat is the best way to go deeper before you move on.\n\nDo you want to do that now?`,
+          yesMessage:
+            "Tap Chapter Review on this page and start there. That is the best next move if you want to understand the chapter better.",
+        };
+      }
+
+      return {
+        message:
+          type === "completed"
+            ? `Hey, you just completed ${chapterDisplayLabel}. Great job.\n\nBefore you leave, answer the reflection question for this chapter.\n\nThat keeps this from becoming something you read and forget.\n\nDo you want to do that now?`
+            : `You already finished ${chapterDisplayLabel}.\n\nBefore you move on, answer the reflection question for this chapter.\n\nThat is how you slow down and make it personal.\n\nDo you want to do that now?`,
+        yesMessage:
+          "Scroll down to the reflection section on this page and answer the chapter reflection question before you move on.",
+      };
+    })();
+
+    dispatchLouisMoment({
+      message: recommendation.message,
+      openMode: "badge",
+      replies: [
+        recommendation.yesHref
+          ? {
+              id: `chapter-next-yes-${book}-${chapter}`,
+              label: "Yes",
+              href: recommendation.yesHref,
+            }
+          : {
+              id: `chapter-next-yes-${book}-${chapter}`,
+              label: "Yes",
+              message: recommendation.yesMessage,
+            },
+        {
+          id: `chapter-next-no-${book}-${chapter}`,
+          label: "No",
+          message: "That is fine. I am here if you want me to help you with the next step.",
+        },
+      ],
+    });
+    return;
+
     const chapterLabel = `${book} chapter ${chapter}`;
     const notesLine =
       "📖 I’d start with the chapter notes. If you’re on the free plan, that will use 1 credit from your day.";
