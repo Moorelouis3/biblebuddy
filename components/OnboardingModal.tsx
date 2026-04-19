@@ -220,10 +220,6 @@ export function OnboardingModal({
     setMessages((prev) => [...prev, { id: `${Date.now()}-${prev.length}-assistant`, role: "assistant", content }]);
   }
 
-  function appendUserMessage(content: string) {
-    setMessages((prev) => [...prev, { id: `${Date.now()}-${prev.length}-user`, role: "user", content }]);
-  }
-
   async function appendAssistantWithDelay(content: string, delay = 450) {
     setIsTyping(true);
     await wait(delay);
@@ -277,7 +273,6 @@ export function OnboardingModal({
   }
 
   async function handleIntroAnswer(answer: "Yes" | "No") {
-    appendUserMessage(answer);
     if (answer === "No") {
       setShowNoLoopPopup(true);
       return;
@@ -300,7 +295,6 @@ export function OnboardingModal({
   }
 
   async function handleSourceSelect(value: string) {
-    appendUserMessage(value);
     setSource(value);
     setIsSaving(true);
     setError(null);
@@ -316,7 +310,6 @@ export function OnboardingModal({
   }
 
   async function handleExperienceSelect(value: string) {
-    appendUserMessage(value);
     setExperience(value);
     setIsSaving(true);
     setError(null);
@@ -339,7 +332,6 @@ export function OnboardingModal({
   }
 
   async function handleGoalSelect(value: string) {
-    appendUserMessage(value);
     setGoal(value);
     const normalizedGoal = normalizeGoalValue(value);
     if (typeof window !== "undefined" && normalizedGoal) {
@@ -399,7 +391,6 @@ export function OnboardingModal({
         profile_image_url: publicUrl,
       });
 
-      appendUserMessage("Profile done");
       await appendAssistantWithDelay("perfect, now you’re part of the community", 350);
       setStage("upgrade");
       await showStagePrompt("upgrade");
@@ -411,13 +402,18 @@ export function OnboardingModal({
   }
 
   async function handleUpgradeChoice(choice: "Continue Free" | "Upgrade") {
-    appendUserMessage(choice);
-    setFinalizingUpgradeChoice(choice === "Upgrade");
+    if (choice === "Upgrade") {
+      setFinalizingUpgradeChoice(true);
+      await handleFinish(true);
+      return;
+    }
+
+    setFinalizingUpgradeChoice(false);
     setStage("final");
     await showStagePrompt("final");
   }
 
-  async function handleFinish() {
+  async function handleFinish(upgradeOverride?: boolean) {
     if (isSaving) return;
     setIsSaving(true);
     setError(null);
@@ -426,7 +422,7 @@ export function OnboardingModal({
       if (typeof window !== "undefined") {
         window.localStorage.removeItem(getStartedKey(userId));
       }
-      onFinished(Boolean(finalizingUpgradeChoice));
+      onFinished(typeof upgradeOverride === "boolean" ? upgradeOverride : Boolean(finalizingUpgradeChoice));
     } catch (saveError: any) {
       setError(saveError?.message || "Could not finish onboarding.");
     } finally {
