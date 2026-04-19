@@ -2245,8 +2245,7 @@ export function ChatLouis() {
     rememberDailyGreetingSeen(louisUserId);
     rememberDailyGreetingShownAt(louisUserId);
     setHasUnseenDailyGreeting(false);
-    const today = new Date().toISOString().slice(0, 10);
-    persistLouisProfile({ verse_of_the_day_shown: today, louis_last_check_in_at: new Date().toISOString() });
+    persistLouisProfile({ louis_last_check_in_at: new Date().toISOString() });
   }
 
   function markSecondRecommendationSeenLocal() {

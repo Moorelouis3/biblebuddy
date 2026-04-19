@@ -244,23 +244,18 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
     dispatchLouisMoment({
       message:
         correctCount === chapter.questions.length
-          ? `Nice work. You just finished trivia for ${bookName} ${chapter.chapter} and got a perfect score.\n\nIf you want to lock this chapter in even more, I'd go try Scrambled next.`
-          : `Nice work. You just finished trivia for ${bookName} ${chapter.chapter} and got ${correctCount} out of ${chapter.questions.length}.\n\nIf you want, keep the momentum going and reinforce this chapter with Scrambled.`,
+          ? `Nice work. You just finished trivia for ${bookName} ${chapter.chapter} and got a perfect score.\n\nIf you want to lock this chapter in even more, Scrambled is the best next move.\n\nDo you want to play it now?`
+          : `Nice work. You just finished trivia for ${bookName} ${chapter.chapter} and got ${correctCount} out of ${chapter.questions.length}.\n\nIf you want to keep the momentum going, Scrambled is the best next move.\n\nDo you want to play it now?`,
       replies: [
         {
           id: `trivia-scrambled-${bookKey}-${chapter.chapter}`,
-          label: "Play Scrambled",
+          label: "Yes",
           href: scrambledHref,
         },
         {
-          id: `trivia-chapters-${bookKey}-${chapter.chapter}`,
-          label: "Back to trivia chapters",
-          href: chapterHref,
-        },
-        {
-          id: `trivia-takeaway-${bookKey}-${chapter.chapter}`,
-          label: "What should I take from this?",
-          message: `Pay attention to the questions that slowed you down in ${bookName} ${chapter.chapter}. Those usually show you which part of the chapter needs one more pass.`,
+          id: `trivia-scrambled-no-${bookKey}-${chapter.chapter}`,
+          label: "No",
+          message: "No problem.\n\nIf you want to come back to Scrambled later, I will be here.",
         },
       ],
     });

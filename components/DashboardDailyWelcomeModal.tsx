@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { ModalShell } from "./ModalShell";
 import { logActionToMasterActions } from "../lib/actionRecorder";
 import { getVerseIntro, getVerseOfTheDay } from "../lib/verseOfTheDay";
+import { supabase } from "../lib/supabaseClient";
 
 const LOUIS_AVATAR_SRC = "/louis/louis-bible.png";
 
@@ -21,6 +22,25 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
   const router = useRouter();
 
   const handleAcknowledge = async (navigateToVerse?: boolean) => {
+    const today = new Date().toISOString().slice(0, 10);
+
+    if (userId) {
+      const { error } = await supabase
+        .from("profile_stats")
+        .update({ verse_of_the_day_shown: today })
+        .eq("user_id", userId);
+
+      if (error) {
+        await supabase.from("profile_stats").upsert(
+          {
+            user_id: userId,
+            verse_of_the_day_shown: today,
+          },
+          { onConflict: "user_id" },
+        );
+      }
+    }
+
     if (navigateToVerse && userId) {
       await logActionToMasterActions(userId, "understand_verse_of_the_day");
     }

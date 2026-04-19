@@ -6,6 +6,7 @@ import { useEffect, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import "../../styles/pulse.css";
 import DashboardCards from "../../components/DashboardCards";
+import DashboardDailyWelcomeModal from "../../components/DashboardDailyWelcomeModal";
 import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
@@ -132,6 +133,7 @@ export default function DashboardPage() {
   const [showLevelInfoModal, setShowLevelInfoModal] = useState(false);
   const [showStreakBadgeModal, setShowStreakBadgeModal] = useState(false);
   const [showCommunityModal, setShowCommunityModal] = useState(false);
+  const [showVerseOfTheDayModal, setShowVerseOfTheDayModal] = useState(false);
   const [motivationalMessage, setMotivationalMessage] = useState<string>("");
   const [proExpiresAt, setProExpiresAt] = useState<string | null>(null);
   const [membershipStatus, setMembershipStatus] = useState<string | null>(null);
@@ -1115,6 +1117,12 @@ export default function DashboardPage() {
     };
   }, [userId]);
 
+  useEffect(() => {
+    if (!userId || !profile) return;
+    const today = new Date().toISOString().slice(0, 10);
+    setShowVerseOfTheDayModal(profile.verse_of_the_day_shown !== today);
+  }, [userId, profile]);
+
   // Load other dashboard data (separate, non-blocking)
   useEffect(() => {
     async function loadOtherDashboardData() {
@@ -1321,6 +1329,17 @@ export default function DashboardPage() {
       )}
 
       {/* Level Info Modal */}
+      <DashboardDailyWelcomeModal
+        open={showVerseOfTheDayModal}
+        onClose={() => {
+          const today = new Date().toISOString().slice(0, 10);
+          setShowVerseOfTheDayModal(false);
+          setProfile((prev) => (prev ? { ...prev, verse_of_the_day_shown: today } : prev));
+        }}
+        isReturningUser={true}
+        userId={userId}
+      />
+
       {showLevelInfoModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
