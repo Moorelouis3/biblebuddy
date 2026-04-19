@@ -1494,7 +1494,7 @@ export default function DashboardPage() {
         </div>
       )}
 
-      {activeTourKey ? (
+      {activeTourKey && TOUR_COPY[activeTourKey] ? (
         <FeatureTourModal
           isOpen={true}
           title={TOUR_COPY[activeTourKey].title}
