@@ -50,10 +50,7 @@ const BIBLE_BOOKS_GUIDE: LouisPageGuide = {
   chatStarter:
     "We're on the Bible books page right now. I can help you find where to start, explain how the books are organized, or help you pick your next book.",
   bullets: [
-    "📚 Click any book card to open that book and move into its chapters.",
-    "↔️ Use Previous books and Next books to move through all 66 books without feeling overwhelmed.",
-    "🔤 Switch on Alphabetical Order if you want to find a book faster.",
-    "📈 Open Your Bible Study Stats when you want to see how much Scripture you've completed.",
+    "Click any book to open it and move into its chapters, use the reader to track your progress, and ask me if you want help choosing where to start.",
   ],
 };
 
@@ -67,10 +64,7 @@ const BIBLE_READER_GUIDE: LouisPageGuide = {
   chatStarter:
     "We're inside the Bible reader right now. I can help you understand this chapter, the tools on the page, or how to study it better.",
   bullets: [
-    "🎯 You can click the verse numbers to highlight a verse that stands out.",
-    "📝 Click chapter review or chapter notes to get a deeper breakdown of what you're reading.",
-    "✅ Mark the chapter as finished when you're done so you get credit and keep your progress moving.",
-    "🔎 If you get stuck on a word, person, or place, ask Louis right here instead of leaving the app.",
+    "Read the chapter here, tap verse numbers to highlight, open Chapter Notes to go deeper, switch translations if you need to, and mark the chapter complete when you're done so I can guide your next step.",
   ],
 };
 
@@ -146,3 +140,4 @@ export function buildLouisGuideChatMessage(guide: LouisPageGuide) {
   const bulletLines = guide.bullets.join("\n\n");
   return `${guide.title}.\n\n${bulletLines}`;
 }
+
