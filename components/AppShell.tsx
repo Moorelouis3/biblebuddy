@@ -1242,6 +1242,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     void checkFullNameRequirement(userId);
   }, [userId, isLoggedIn, showOnboardingModal]);
 
+  useEffect(() => {
+    if (!isLoggedIn || !userId || !showOnboardingModal) return;
+    if (!pathname) return;
+    if (pathname === "/dashboard") return;
+    if (HIDDEN_ROUTES.includes(pathname)) return;
+    router.replace("/dashboard");
+  }, [isLoggedIn, userId, showOnboardingModal, pathname, router]);
+
   return (
     <FeatureRenderPriorityProvider value={{ featureToursEnabled }}>
 
