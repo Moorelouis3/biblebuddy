@@ -1261,6 +1261,7 @@ export function ChatLouis() {
   const [hasLouisHistory, setHasLouisHistory] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [quickReplies, setQuickReplies] = useState<QuickReply[]>([]);
+  const [pendingMomentReplies, setPendingMomentReplies] = useState<QuickReply[]>([]);
   const [louisInputPrompt, setLouisInputPrompt] = useState<LouisInputPromptState>(DEFAULT_LOUIS_INPUT_PROMPT);
   const [pendingInboxMessageIds, setPendingInboxMessageIds] = useState<string[]>([]);
   const [pendingRouteHandoff, setPendingRouteHandoff] = useState(false);
@@ -2726,6 +2727,8 @@ export function ChatLouis() {
   }
 
   async function handleChatButtonClick() {
+    const hadPendingRouteHandoff = pendingRouteHandoff;
+    const unreadMomentReplies = pendingMomentReplies;
     setIsOpen(true);
     setQuickReplies([]);
     setPendingRouteHandoff(false);
@@ -2738,6 +2741,16 @@ export function ChatLouis() {
     const latestMessage = messages[messages.length - 1];
 
     if (pendingInboxMessageIds.length > 0) {
+      return;
+    }
+
+    if (hadPendingRouteHandoff && unreadMomentReplies.length > 0) {
+      setQuickReplies(unreadMomentReplies);
+      setPendingMomentReplies([]);
+      const labels = unreadMomentReplies.map((reply) => reply.label.toLowerCase());
+      if (labels.includes("yes") && labels.includes("no")) {
+        setTypedReplyPrompt("yes_no", "none", "You can type yes or no, or tap the buttons.");
+      }
       return;
     }
 
@@ -3055,16 +3068,21 @@ export function ChatLouis() {
       const detail = (event as CustomEvent<LouisMomentDetail>).detail;
       if (!detail?.message) return;
 
+      const mappedReplies = (detail.replies ?? []).map((reply: LouisMomentReply) => ({
+        id: reply.id,
+        label: reply.label,
+        action: reply.close ? "moment_close" : reply.href ? "moment_navigate" : "moment_message",
+        href: reply.href,
+        message: reply.message,
+      })) as QuickReply[];
+
       appendAssistantMessage(detail.message);
-      seedQuickReplies(
-        (detail.replies ?? []).map((reply: LouisMomentReply) => ({
-          id: reply.id,
-          label: reply.label,
-          action: reply.close ? "moment_close" : reply.href ? "moment_navigate" : "moment_message",
-          href: reply.href,
-          message: reply.message,
-        })),
-      );
+      seedQuickReplies(mappedReplies);
+      setPendingMomentReplies(mappedReplies);
+      const labels = mappedReplies.map((reply) => reply.label.toLowerCase());
+      if (labels.includes("yes") && labels.includes("no")) {
+        setTypedReplyPrompt("yes_no", "none", "You can type yes or no, or tap the buttons.");
+      }
       if (detail.openMode === "badge" && !isOpen) {
         setPendingRouteHandoff(true);
         return;
