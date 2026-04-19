@@ -212,6 +212,7 @@ async function fetchProfilesByIds(userIds: string[]) {
 export default function LittleLouisAdminPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [trackingWarning, setTrackingWarning] = useState<string | null>(null);
   const [timeFilter, setTimeFilter] = useState<LouisTimeFilter>("7d");
   const [metrics, setMetrics] = useState<LouisDashboardMetrics>({
     louisMessagesToday: 0,
@@ -241,6 +242,8 @@ export default function LittleLouisAdminPage() {
           return;
         }
 
+        setTrackingWarning(null);
+
         const sinceIso = getSinceIso(timeFilter);
         const todayStartIso = getTodayStartIso();
 
@@ -261,6 +264,12 @@ export default function LittleLouisAdminPage() {
         const inboxRows = (inboxResponse.data ?? []) as LouisInboxRow[];
         const userIds = [...new Set(actions.map((row) => row.user_id).filter(Boolean) as string[])];
         const profilesById = await fetchProfilesByIds(userIds);
+
+        if (actions.length === 0 && inboxRows.length > 0) {
+          setTrackingWarning(
+            "Little Louis inbox messages exist, but no Louis actions were recorded in master_actions. Run scripts/allow-little-louis-master-actions.sql in Supabase so Louis analytics can track opens, replies, and daily messages.",
+          );
+        }
 
         const todayActions = actions.filter((row) => row.created_at >= todayStartIso);
         const userMessagesToday = todayActions.filter((row) => row.action_type === "louis_user_message_sent");
@@ -388,6 +397,12 @@ export default function LittleLouisAdminPage() {
       {error ? (
         <div className="rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-700">
           {error}
+        </div>
+      ) : null}
+
+      {trackingWarning ? (
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-800 mb-6">
+          {trackingWarning}
         </div>
       ) : null}
 
