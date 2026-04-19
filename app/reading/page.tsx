@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { isBookComplete, getCurrentBook, getCompletedChapters, getTotalCompletedChapters } from "../../lib/readingProgress";
 import { supabase } from "../../lib/supabaseClient";
+import { dispatchLouisMoment } from "../../lib/louisMoments";
 
 // All 66 books of the Bible - standard Bible order (Genesis → Revelation)
 const BOOKS = [
@@ -99,6 +100,7 @@ export default function ReadingPage() {
     chaptersCompleted: number;
     bibleCompletionPercent: number;
   } | null>(null);
+  const louisIntroQueuedRef = useRef(false);
 
   // book pagination - apply alphabetical sort if toggle is ON
   const booksToDisplay = alphabeticalOrder 
@@ -146,6 +148,23 @@ export default function ReadingPage() {
       console.error("[NAV] Failed to track Bible reader view:", error);
     });
   }, [userId, userName]);
+
+  useEffect(() => {
+    if (louisIntroQueuedRef.current) return;
+    if (!userName) return;
+
+    louisIntroQueuedRef.current = true;
+    dispatchLouisMoment({
+      openMode: "badge",
+      message: [
+        `Hey ${userName}, you just entered the Bible reader.`,
+        `This is where you can open all 66 books and move chapter by chapter through Scripture.`,
+        `Tap any book to open it and move into its chapters.`,
+        `As you read, you can track your progress and grow your level by actually spending time in the Word.`,
+        `If you want help finding where to start, click me and I will guide you.`,
+      ].join("\n\n"),
+    });
+  }, [userName]);
 
   // Load book states from database (background, non-blocking)
   useEffect(() => {
@@ -244,8 +263,7 @@ export default function ReadingPage() {
 
         {/* MAIN CARD */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8">
-          {/* LOUIS TALKING */}
-          <div className="mt-1 mb-4 flex items-start gap-3">
+          {false ? <div className="mt-1 mb-4 flex items-start gap-3">
             <LouisAvatar mood="bible" size={56} />
             <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
               <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
@@ -256,7 +274,7 @@ export default function ReadingPage() {
                 This is just God's Word — and I'm here to help you understand it as you read.
               </p>
             </div>
-          </div>
+          </div> : null}
 
           {/* BOOK GRID */}
           <div className="space-y-4">

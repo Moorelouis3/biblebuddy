@@ -23,7 +23,6 @@ import { dispatchLouisMoment } from "../../../../lib/louisMoments";
 import CreditLimitModal from "../../../../components/CreditLimitModal";
 import CommentSection from "../../../../components/comments/CommentSection";
 import { LEVEL_DEFINITIONS } from "../../../../lib/levelSystem";
-import { FeatureTourModal } from "../../../../components/FeatureTourModal";
 import {
   buildPersistedFeatureTours,
   DEFAULT_FEATURE_TOURS,
@@ -77,6 +76,19 @@ const ALL_BIBLE_BOOKS_SORTED = [
   "Matthew","Micah","Nahum","Nehemiah","Numbers","Obadiah",
   "Philemon","Philippians","Proverbs","Psalms","Revelation",
   "Romans","Ruth","Song of Solomon","Titus","Zechariah","Zephaniah",
+];
+
+const BIBLE_BOOKS_IN_ORDER = [
+  "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+  "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+  "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job", "Psalms",
+  "Proverbs", "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah", "Lamentations",
+  "Ezekiel", "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum",
+  "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi",
+  "Matthew", "Mark", "Luke", "John", "Acts", "Romans", "1 Corinthians", "2 Corinthians",
+  "Galatians", "Ephesians", "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+  "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter", "2 Peter",
+  "1 John", "2 John", "3 John", "Jude", "Revelation",
 ];
 
 // ── Louis loading skeleton for database word overlays ────────────────────────
@@ -154,10 +166,10 @@ export default function BibleChapterPage() {
   const [gamesMenuOpen, setGamesMenuOpen] = useState(false);
   const gamesMenuRef = useRef<HTMLDivElement | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
-  const [showBibleReaderTour, setShowBibleReaderTour] = useState(false);
-  const [bibleReaderTourStep, setBibleReaderTourStep] = useState(-1);
-  const [isSavingBibleTour, setIsSavingBibleTour] = useState(false);
-  const [tourAnimationTick, setTourAnimationTick] = useState(0);
+  const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
+  const [chapterSummaryLoaded, setChapterSummaryLoaded] = useState(false);
+  const louisChapterPromptRef = useRef<string | null>(null);
+  const bibleGuideShownThisVisitRef = useRef(false);
   
   // Completion tracking state (same as database pages)
   const [completedPeople, setCompletedPeople] = useState<Set<string>>(new Set());
@@ -232,44 +244,6 @@ export default function BibleChapterPage() {
     ];
   }
 
-  const BIBLE_READER_TOUR_STEPS = [
-    {
-      key: "translations",
-      title: "Translations",
-      body: "Pick WEB, ASV, or KJV to read this same chapter in different Bible translations.",
-    },
-    {
-      key: "summary",
-      title: "Louis Overview",
-      body: "Louis gives you a quick overview of the chapter before you start reading.",
-    },
-    {
-      key: "verses",
-      title: "Read the Verses",
-      body: "This is where you read the chapter verse by verse. Tap a verse number to highlight it.",
-    },
-    {
-      key: "words",
-      title: "Tap Underlined Words",
-      body: "Underlined words open extra Bible context for people, places, and keywords right in the chapter.",
-    },
-    {
-      key: "actions",
-      title: "Track and Study",
-      body: "Mark the chapter finished to track progress, open chapter notes, or take your own notes.",
-    },
-  ] as const;
-
-  const currentBibleReaderTourStep =
-    bibleReaderTourStep >= 0 ? BIBLE_READER_TOUR_STEPS[bibleReaderTourStep] : null;
-
-  function getBibleTourClasses(target: (typeof BIBLE_READER_TOUR_STEPS)[number]["key"]) {
-    if (!showBibleReaderTour || bibleReaderTourStep < 0 || !currentBibleReaderTourStep) return "";
-    return currentBibleReaderTourStep.key === target
-      ? "relative z-10 opacity-100 ring-[6px] ring-white ring-offset-4 ring-offset-[#9ebcee] shadow-[0_26px_80px_rgba(32,81,154,0.34)] scale-[1.02] brightness-[1.04] saturate-110 transition duration-300"
-      : "opacity-50 saturate-90 transition duration-300";
-  }
-
   // Event delegation for click handlers on enriched content
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -299,65 +273,8 @@ export default function BibleChapterPage() {
     return () => document.removeEventListener("click", handler);
   }, []);
 
-  useEffect(() => {
-    if (!showBibleReaderTour || bibleReaderTourStep < 0 || !currentBibleReaderTourStep) return;
-
-    const target = document.querySelector(`[data-bible-tour="${currentBibleReaderTourStep.key}"]`);
-    if (target instanceof HTMLElement) {
-      target.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  }, [showBibleReaderTour, bibleReaderTourStep, currentBibleReaderTourStep]);
-
-  useEffect(() => {
-    if (!showBibleReaderTour || bibleReaderTourStep < 0 || !currentBibleReaderTourStep) return;
-
-    let cleanup: (() => void) | undefined;
-
-    if (currentBibleReaderTourStep.key === "verses") {
-      const verseButton = verseContainerRef.current?.querySelector(".verse-line button");
-      if (verseButton instanceof HTMLElement) {
-        verseButton.classList.add("ring-4", "ring-yellow-300", "animate-pulse", "scale-110");
-        cleanup = () => {
-          verseButton.classList.remove("ring-4", "ring-yellow-300", "animate-pulse", "scale-110");
-        };
-      }
-    }
-
-    if (currentBibleReaderTourStep.key === "words") {
-      const word = verseContainerRef.current?.querySelector(".bible-highlight");
-      if (word instanceof HTMLElement) {
-        word.classList.add("bg-yellow-100", "rounded", "px-1", "animate-pulse");
-        cleanup = () => {
-          word.classList.remove("bg-yellow-100", "rounded", "px-1", "animate-pulse");
-        };
-      }
-    }
-
-    return () => {
-      cleanup?.();
-    };
-  }, [showBibleReaderTour, bibleReaderTourStep, currentBibleReaderTourStep, tourAnimationTick]);
-
-  async function handleBibleTourUnderstand() {
-    if (bibleReaderTourStep < 0) {
-      setBibleReaderTourStep(0);
-      setTourAnimationTick((current) => current + 1);
-      return;
-    }
-
-    if (bibleReaderTourStep < BIBLE_READER_TOUR_STEPS.length - 1) {
-      setBibleReaderTourStep((current) => current + 1);
-      setTourAnimationTick((current) => current + 1);
-      return;
-    }
-
-    if (!userId) {
-      setShowBibleReaderTour(false);
-      setBibleReaderTourStep(-1);
-      return;
-    }
-
-    setIsSavingBibleTour(true);
+  async function markBibleReaderGuideSeen() {
+    if (!userId || featureTours.bible === true) return;
 
     const mergedFeatureTours = {
       ...featureTours,
@@ -372,34 +289,24 @@ export default function BibleChapterPage() {
       .eq("user_id", userId);
 
     if (updateError) {
-      console.error("[FEATURE_TOURS] Error updating Bible reader tour:", updateError);
-
-      const { error: upsertError } = await supabase
-        .from("profile_stats")
-        .upsert(
-          {
-            user_id: userId,
-            feature_tours: buildPersistedFeatureTours(mergedFeatureTours),
-          },
-          { onConflict: "user_id" }
-        );
-
-      if (upsertError) {
-        console.error("[FEATURE_TOURS] Error upserting Bible reader tour:", upsertError);
-        setIsSavingBibleTour(false);
-        return;
-      }
+      console.error("[FEATURE_TOURS] Error saving Bible reader guide state:", updateError);
+      return;
     }
 
     setFeatureTours(mergedFeatureTours);
-    setShowBibleReaderTour(false);
-    setBibleReaderTourStep(-1);
-    setIsSavingBibleTour(false);
   }
 
-  function handleBibleTourClose() {
-    setShowBibleReaderTour(false);
-    setBibleReaderTourStep(-1);
+  function hashLouisSeed(input: string) {
+    let hash = 0;
+    for (let index = 0; index < input.length; index += 1) {
+      hash = (hash * 31 + input.charCodeAt(index)) >>> 0;
+    }
+    return hash;
+  }
+
+  function pickLouisVariant(seed: string, options: string[]) {
+    if (options.length === 0) return "";
+    return options[hashLouisSeed(seed) % options.length];
   }
 
   // Load notes for selected person (reuse same logic as People page)
@@ -1094,14 +1001,10 @@ RULES:
             console.error("[FEATURE_TOURS] Error creating Bible reader tour profile row:", upsertError);
           } else {
             setFeatureTours({ ...DEFAULT_FEATURE_TOURS });
-            setShowBibleReaderTour(true);
           }
         } else {
           const normalizedTours = normalizeFeatureTours(profileStats.feature_tours);
           setFeatureTours(normalizedTours);
-          if (normalizedTours.bible !== true) {
-            setShowBibleReaderTour(true);
-          }
         }
 
         // Fetch all completed people for this user (batch query)
@@ -1157,6 +1060,7 @@ RULES:
       } catch (err) {
         console.error("Error loading user and progress:", err);
       } finally {
+        setFeatureToursLoaded(true);
         setLoadingProgress(false);
       }
     }
@@ -1527,10 +1431,12 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
   // Load chapter summary
   useEffect(() => {
     async function loadSummary() {
+      setChapterSummaryLoaded(false);
       if (book && chapter) {
         const summary = await getChapterSummary(book, chapter);
         setChapterSummary(summary);
       }
+      setChapterSummaryLoaded(true);
     }
     loadSummary();
   }, [book, chapter]);
@@ -1653,7 +1559,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
       setReviewNotesText(saved?.notes_text ?? generated);
     } catch (err: any) {
       console.error("Review modal error:", err);
-      setReviewError("Couldn't load the chapter review. Please try again.");
+      setReviewError("Couldn't load the chapter notes. Please try again.");
     } finally {
       setReviewLoading(false);
       reviewLoadingRef.current = false;
@@ -1723,6 +1629,107 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
     [bookDisplayName, chapter, chapterSummary]
   );
 
+  useEffect(() => {
+    louisChapterPromptRef.current = null;
+    bibleGuideShownThisVisitRef.current = false;
+  }, [bookDisplayName, chapter]);
+
+  useEffect(() => {
+    if (!featureToursLoaded) return;
+
+    const promptKey = `${bookDisplayName}:${chapter}:${featureTours.bible === true ? "chapter" : "guide"}:${chapterSummaryLoaded ? chapterSummary : "pending"}`;
+    if (louisChapterPromptRef.current === promptKey) return;
+
+    if (featureTours.bible !== true) {
+      louisChapterPromptRef.current = promptKey;
+      bibleGuideShownThisVisitRef.current = true;
+      dispatchLouisMoment({
+        openMode: "badge",
+        message: [
+          "Hey, this is the Bible reader.",
+          "This is where you actually read Scripture chapter by chapter inside Bible Buddy.",
+          "You can tap people, places, and keywords to learn what they mean without leaving the app.",
+          "You can change translations, open Chapter Notes, and use trivia or Scrambled when you want to go deeper.",
+          "If you want to highlight something, tap the verse number.",
+          "And when you finish, mark the chapter complete so I know you are done.",
+          "If you have any questions while you read, just click me and ask.",
+        ].join("\n\n"),
+      });
+      void markBibleReaderGuideSeen();
+      return;
+    }
+
+    if (bibleGuideShownThisVisitRef.current) return;
+    if (!chapterSummaryLoaded) return;
+
+    const currentBookIndex = BIBLE_BOOKS_IN_ORDER.findIndex((item) => item.toLowerCase() === bookDisplayName.toLowerCase());
+    const previousBookName = currentBookIndex > 0 ? BIBLE_BOOKS_IN_ORDER[currentBookIndex - 1] : null;
+
+    const introLine = pickLouisVariant(`${bookDisplayName}:${chapter}:intro`, [
+      `Hey, you are about to read ${bookDisplayName} ${chapter}.`,
+      `Good choice. You are about to read ${bookDisplayName} ${chapter}.`,
+      `Alright, you are stepping into ${bookDisplayName} ${chapter} now.`,
+      `Let’s get into ${bookDisplayName} ${chapter}.`,
+      `You are opening ${bookDisplayName} ${chapter} now.`,
+    ]);
+
+    const bridgeLine = chapter === 1 && previousBookName
+      ? pickLouisVariant(`${bookDisplayName}:${chapter}:bridge`, [
+          `If you just finished ${previousBookName}, this is the next part of the story, so watch what changes and what carries over here.`,
+          `${bookDisplayName} picks up after ${previousBookName}, so keep the bigger story in mind while you read this opening chapter.`,
+          `You are starting a new book, but it still connects to what came before, so pay attention to how ${bookDisplayName} moves the story forward.`,
+        ])
+      : pickLouisVariant(`${bookDisplayName}:${chapter}:bridge`, [
+          "Pay attention to how this chapter connects to what came right before it and where it starts pushing the story next.",
+          "Keep the flow of the story in mind here because this chapter builds on what you just read.",
+          "Watch how this chapter carries the story forward and shifts the focus as it unfolds.",
+        ]);
+
+    const transitionLine = chapter === 1
+      ? pickLouisVariant(`${bookDisplayName}:${chapter}:transition`, [
+          "You are stepping into a new part of the story now, so pay attention to what changes and what carries over.",
+          "This is the start of a new part of the story, so watch how the focus shifts here.",
+          "A new book always brings a new angle, so read this one with fresh eyes and keep the bigger story in mind.",
+        ])
+      : pickLouisVariant(`${bookDisplayName}:${chapter}:transition`, [
+          "This chapter picks up right where the story was moving, so keep the flow of what you just read in mind.",
+          "Do not read this chapter like it stands alone. It keeps building on what came right before it.",
+          "Stay with the story here because this chapter keeps pushing the same thread forward.",
+        ]);
+
+    const summaryLine = chapterSummary || pickLouisVariant(`${bookDisplayName}:${chapter}:summary-fallback`, [
+      "Read closely and look for what God is showing, what people are doing, and what changes by the end of the chapter.",
+      "As you read, pay attention to the tension, the response, and what this chapter reveals about God.",
+      "Look for the main movement in the chapter and what truth rises to the surface as you read.",
+    ]);
+
+    const studyLine = pickLouisVariant(`${bookDisplayName}:${chapter}:study`, [
+      "Read the chapter slowly, take notes on what stands out, and click any people, places, or keywords that need more context.",
+      "Take your time with this chapter, notice what stands out, and use the study tools if anything needs more explanation.",
+      "Slow down in this chapter, watch for what stands out, and use the built in study tools whenever you need help.",
+    ]);
+
+    const completionLine = pickLouisVariant(`${bookDisplayName}:${chapter}:complete`, [
+      "When you finish, mark the chapter complete so I know you are done and can guide you to the next step.",
+      "After you finish reading, mark the chapter complete so I know you are ready for whatever comes next.",
+      "Once you are done, mark the chapter complete so I can keep moving you forward.",
+    ]);
+
+    louisChapterPromptRef.current = promptKey;
+    dispatchLouisMoment({
+      openMode: "badge",
+      message: [
+        introLine,
+        bridgeLine,
+        transitionLine,
+        summaryLine,
+        studyLine,
+        "If you have any questions while you read, I am here to help.",
+        completionLine,
+      ].join("\n\n"),
+    });
+  }, [bookDisplayName, chapter, chapterSummary, chapterSummaryLoaded, featureTours.bible, featureToursLoaded]);
+
   function openReflectionSection() {
     setHighlightReflectionSection(true);
 
@@ -1768,7 +1775,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               ? `Hey, you just completed ${chapterDisplayLabel}. Great job.\n\nI would go into the chapter notes next.\n\nThat is where you slow down and really see what this chapter is saying.\n\nDo you want to do that now?`
               : `You already finished ${chapterDisplayLabel}.\n\nI would go into the chapter notes next.\n\nThat is the best way to go deeper before you move on.\n\nDo you want to do that now?`,
           yesMessage:
-            "Tap Chapter Review on this page and start there. That is the best next move if you want to understand the chapter better.",
+            "Tap Chapter Notes on this page and start there. That is the best next move if you want to understand the chapter better.",
         };
       }
 
@@ -1825,7 +1832,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         {
           id: `chapter-notes-${book}-${chapter}`,
           label: "How do I open the notes?",
-          message: "Tap Chapter Review on this page and start there. That's the best next move if you want to understand the chapter better.",
+          message: "Tap Chapter Notes on this page and start there. That's the best next move if you want to understand the chapter better.",
         },
         !triviaDone
           ? {
@@ -2247,7 +2254,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         </div>
 
         {/* LOUIS INSTRUCTION — above the control bar */}
-        <div data-bible-tour="summary" className={`mb-4 flex items-start gap-3 ${getBibleTourClasses("summary")}`}>
+        {false ? <div className="mb-4 flex items-start gap-3">
           <LouisAvatar mood="bible" size={40} />
           <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
             <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
@@ -2264,7 +2271,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               </p>
             )}
           </div>
-        </div>
+        </div> : null}
 
         {/* READER CONTROL BAR */}
         <div className="relative z-20 mb-5">
@@ -2370,13 +2377,13 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
               {/* Right: Translation + Review + Trivia + Scrambled + Next */}
               <div className="hidden md:flex items-center justify-end gap-1.5">
-                <div ref={translationMenuRef} className="group relative" data-bible-tour="translations">
+                <div ref={translationMenuRef} className="group relative">
                   <button
                     type="button"
                     onClick={() => setTranslationMenuOpen((value) => !value)}
                     aria-haspopup="menu"
                     aria-expanded={translationMenuOpen}
-                    className={`flex items-center justify-center rounded-xl border bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200 ${getBibleTourClasses("translations")}`}
+                    className="flex items-center justify-center rounded-xl border bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
                   >
                     <span className="text-base">🌐</span>
                     <span className="ml-1.5 text-xs font-semibold">{translation.toUpperCase()}</span>
@@ -2421,7 +2428,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   <button
                     type="button"
                     onClick={openReviewModal}
-                    aria-label="Chapter review"
+                    aria-label="Chapter notes"
                     className={`flex items-center justify-center rounded-xl border px-2.5 py-1.5 transition ${
                       reviewDone
                         ? "border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
@@ -2429,10 +2436,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     }`}
                   >
                     <span className="text-base">{reviewDone ? "✅" : "📝"}</span>
-                    <span className="ml-1.5 hidden lg:inline text-xs font-semibold">Review</span>
+                    <span className="ml-1.5 hidden lg:inline text-xs font-semibold">Notes</span>
                   </button>
                   <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
-                    {reviewDone ? "Review done ✓" : "Chapter review"}
+                    {reviewDone ? "Notes done ✓" : "Chapter notes"}
                   </div>
                 </div>
 
@@ -2574,7 +2581,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                       }}
                       className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${reviewDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:border-blue-200 hover:bg-blue-50"}`}
                     >
-                      <span>Chapter Review</span>
+                      <span>Chapter Notes</span>
                       <span>{reviewDone ? "Done" : "Open"}</span>
                     </button>
 
@@ -2661,15 +2668,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         </div>
 
         {/* VERSE BLOCK */}
-        <div 
-          data-bible-tour={currentBibleReaderTourStep?.key === "words" ? "words" : "verses"}
+        <div
           ref={verseContainerRef}
           className={`bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 mb-6 max-h-[60vh] overflow-y-auto ${
             plainTextMode ? "plain-text-mode" : ""
-          } ${
-            currentBibleReaderTourStep?.key === "words"
-              ? getBibleTourClasses("words")
-              : getBibleTourClasses("verses")
           }`}
         >
           {sections.map((section) => (
@@ -2752,7 +2754,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         </div>
       </div>
 
-      {/* CHAPTER REVIEW MODAL */}
+      {/* CHAPTER NOTES MODAL */}
       {showReviewModal && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -2768,7 +2770,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               <div className="flex items-center gap-3">
                 <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-blue-50 text-lg">📝</div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-blue-600">Chapter Review</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-blue-600">Chapter Notes</p>
                   <h2 className="text-base font-bold text-gray-900">{bookDisplayName} {chapter}</h2>
                 </div>
               </div>
@@ -2789,7 +2791,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   <div style={{ animation: "bounce 1s infinite" }}>
                     <LouisAvatar mood="think" size={60} />
                   </div>
-                  <p className="text-sm text-gray-400 italic animate-pulse">Little Louis is preparing your review…</p>
+                  <p className="text-sm text-gray-400 italic animate-pulse">Little Louis is preparing your notes…</p>
                 </div>
               ) : reviewError ? (
                 <div className="py-10 text-center">
@@ -2953,31 +2955,6 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             setShowChecklistModal(false);
             openReflectionSection();
           }}
-        />
-      )}
-
-      {showBibleReaderTour && (
-        <FeatureTourModal
-          isOpen={true}
-          title={
-            bibleReaderTourStep < 0
-              ? "This is the Bible Reader"
-              : currentBibleReaderTourStep?.title ?? "Bible Reader"
-          }
-          body={
-            bibleReaderTourStep < 0
-              ? "This is where you can interact with and read through the Bible chapter by chapter. Do you want to take the tour to learn how to use the Bible reader?"
-              : currentBibleReaderTourStep?.body ?? ""
-          }
-          primaryButtonText={bibleReaderTourStep < 0 ? "Yes" : bibleReaderTourStep === BIBLE_READER_TOUR_STEPS.length - 1 ? "Done" : "Next"}
-          secondaryButtonText={bibleReaderTourStep < 0 ? "Later" : undefined}
-          onSecondary={handleBibleTourClose}
-          variant={bibleReaderTourStep < 0 ? "prompt" : "speech-bubble"}
-          canAdvance={true}
-          closeOnBackdrop={bibleReaderTourStep < 0}
-          isSaving={isSavingBibleTour}
-          onClose={handleBibleTourClose}
-          onUnderstand={handleBibleTourUnderstand}
         />
       )}
 
