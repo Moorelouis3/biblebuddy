@@ -51,6 +51,7 @@ type LouisLogEntry = {
   displayName: string;
   username: string;
   detail: string;
+  shortDetail?: string;
 };
 
 type LouisDashboardMetrics = {
@@ -103,6 +104,43 @@ function compactText(value: string | null | undefined, maxLength = 140) {
   return text.length > maxLength ? `${text.slice(0, maxLength - 3)}...` : text;
 }
 
+function prettifyLouisPath(value: string | null | undefined) {
+  const text = (value ?? "").trim();
+  if (!text) return "inside the app";
+
+  if (text === "/dashboard") return "the dashboard";
+  if (text === "/reading" || text === "/Bible") return "the Bible reader home";
+  if (text === "/devotionals") return "the devotionals page";
+  if (text === "/study-groups") return "The Bible Study Group";
+  if (text === "/bible-trivia") return "the Bible trivia page";
+  if (text === "/bible-study-games/scrambled") return "the Scrambled page";
+  if (text === "/bible-study-games") return "the Bible study games page";
+  if (text.startsWith("/Bible/")) {
+    const parts = text.split("/").filter(Boolean);
+    const book = decodeURIComponent(parts[1] || "").replace(/-/g, " ");
+    const chapter = parts[2];
+    const prettyBook = book
+      .split(" ")
+      .filter(Boolean)
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+    return chapter ? `${prettyBook} ${chapter}` : prettyBook || "the Bible reader";
+  }
+
+  if (text.startsWith("/reading/books/")) {
+    const parts = text.split("/").filter(Boolean);
+    const book = decodeURIComponent(parts[2] || "").replace(/-/g, " ");
+    const prettyBook = book
+      .split(" ")
+      .filter(Boolean)
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+    return prettyBook || "a Bible book page";
+  }
+
+  return text.replace(/^\//, "");
+}
+
 function describeLouisAction(action: LouisActionRow, profile?: LouisProfileRow): LouisLogEntry {
   const displayName = profile?.display_name?.trim() || profile?.username?.trim() || action.username?.trim() || "Buddy";
   const username = profile?.username?.trim() || action.username?.trim() || "buddy";
@@ -112,51 +150,56 @@ function describeLouisAction(action: LouisActionRow, profile?: LouisProfileRow):
       return {
         id: `${action.created_at}-${action.user_id}-${action.action_type}`,
         createdAt: action.created_at,
-        type: "User Message",
+        type: "Buddy sent Louis a message",
         userId: action.user_id,
         displayName,
         username,
         detail: compactText(action.action_label),
+        shortDetail: "Buddy typed a message to Louis.",
       };
     case "louis_ai_message_sent":
       return {
         id: `${action.created_at}-${action.user_id}-${action.action_type}`,
         createdAt: action.created_at,
-        type: "Louis Reply",
+        type: "Louis sent a message",
         userId: action.user_id,
         displayName,
         username,
         detail: compactText(action.action_label),
+        shortDetail: "Louis sent a reply back.",
       };
     case "louis_daily_message_shown":
       return {
         id: `${action.created_at}-${action.user_id}-${action.action_type}`,
         createdAt: action.created_at,
-        type: "Daily Message",
+        type: "Louis showed the daily message",
         userId: action.user_id,
         displayName,
         username,
         detail: compactText(action.action_label || "Louis showed the daily dashboard message."),
+        shortDetail: "Louis showed the main daily check-in.",
       };
     case "louis_route_handoff_shown":
       return {
         id: `${action.created_at}-${action.user_id}-${action.action_type}`,
         createdAt: action.created_at,
-        type: "Route Handoff",
+        type: "Louis followed them into a page",
         userId: action.user_id,
         displayName,
         username,
         detail: compactText(action.action_label || "Louis handed the user off into a page."),
+        shortDetail: "Louis gave a follow-up message on the page they opened.",
       };
     default:
       return {
         id: `${action.created_at}-${action.user_id}-${action.action_type}`,
         createdAt: action.created_at,
-        type: "Louis Opened",
+        type: "Buddy opened Louis",
         userId: action.user_id,
         displayName,
         username,
-        detail: compactText(action.action_label || "Louis was opened."),
+        detail: `They opened Louis while on ${prettifyLouisPath(action.action_label)}.`,
+        shortDetail: `Opened on ${prettifyLouisPath(action.action_label)}.`,
       };
   }
 }
@@ -377,7 +420,11 @@ export default function LittleLouisAdminPage() {
       ? actionLog.filter((entry) => entry.userId === selectedUserId)
       : actionLog;
 
-    return selectedUserId ? filtered : filtered.slice(0, 150);
+    if (selectedUserId) {
+      return [...filtered].sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+    }
+
+    return filtered.slice(0, 150);
   }, [actionLog, selectedUserId]);
 
   return (
@@ -503,7 +550,7 @@ export default function LittleLouisAdminPage() {
               </h2>
               <p className="text-sm text-gray-600 mt-1">
                 {selectedTopUser
-                  ? "Everything this buddy sent to Louis, what Louis sent back, and the other Louis moments tied to them."
+                  ? "This shows the story in order, starting with what happened first and then what happened next."
                   : "What users sent to Louis, what Louis sent back, and when the special Louis flows fired."}
               </p>
             </div>
@@ -533,10 +580,15 @@ export default function LittleLouisAdminPage() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <p className="text-sm font-semibold text-gray-900">{entry.type}</p>
-                    <p className="text-sm text-gray-700 mt-1 break-words">
-                      <span className="font-medium">{entry.displayName}</span>
-                      {entry.username ? <span className="text-gray-500"> @{entry.username}</span> : null}
-                    </p>
+                    {selectedTopUser ? null : (
+                      <p className="text-sm text-gray-700 mt-1 break-words">
+                        <span className="font-medium">{entry.displayName}</span>
+                        {entry.username ? <span className="text-gray-500"> @{entry.username}</span> : null}
+                      </p>
+                    )}
+                    {entry.shortDetail ? (
+                      <p className="text-sm text-gray-500 mt-2 break-words">{entry.shortDetail}</p>
+                    ) : null}
                     <p className="text-sm text-gray-600 mt-2 break-words">{entry.detail}</p>
                   </div>
                   <p className="text-xs text-gray-500 shrink-0">{formatDateTime(entry.createdAt)}</p>
