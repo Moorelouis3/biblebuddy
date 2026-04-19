@@ -237,6 +237,19 @@ const DEFAULT_LOUIS_INPUT_PROMPT: LouisInputPromptState = {
 
 const DAILY_LOUIS_FLOW_VERSION = "v3";
 
+const LOUIS_OPENING_GREETINGS = [
+  "How can I help you today?",
+  "What can I do for you today?",
+  "What do you need help with today?",
+  "Tell me what you want to do and I'll help you get there.",
+  "What are we working on today?",
+  "How can I guide you right now?",
+  "What do you want to open or understand today?",
+  "I'm here.\n\nWhat do you need help with?",
+  "Tell me where you want to go and I'll take you there.",
+  "What can I help you find today?",
+] as const;
+
 // Type for SpeechRecognition (Web Speech API)
 interface SpeechRecognitionResult {
   [key: number]: SpeechRecognitionAlternative;
@@ -3063,20 +3076,29 @@ export function ChatLouis() {
       return;
     }
 
-      if (hasPendingDevotionalStartPrompt && selectedDevotionalForChallenge) {
-        setDailyFlowType("devotional_start");
-        persistNewUserChallengeStep("choose_start_day");
-        appendAssistantMessage(
-          `Good choice\n\n${selectedDevotionalForChallenge.title}\n\n${toGoalHelpLine(onboardingGoal)}\n\nReady to start Day 1?`,
-        );
-        seedQuickReplies([
-          { id: "devotional-start-yes", label: "Yes", action: "daily_yes" },
-          { id: "devotional-start-no", label: "No", action: "daily_no" },
-        ]);
-        setTypedReplyPrompt("yes_no", "none", "You can type yes or no, or tap the buttons.");
-        return;
-      }
+    if (hasPendingDevotionalStartPrompt && selectedDevotionalForChallenge) {
+      setDailyFlowType("devotional_start");
+      persistNewUserChallengeStep("choose_start_day");
+      appendAssistantMessage(
+        `Good choice\n\n${selectedDevotionalForChallenge.title}\n\n${toGoalHelpLine(onboardingGoal)}\n\nReady to start Day 1?`,
+      );
+      seedQuickReplies([
+        { id: "devotional-start-yes", label: "Yes", action: "daily_yes" },
+        { id: "devotional-start-no", label: "No", action: "daily_no" },
+      ]);
+      setTypedReplyPrompt("yes_no", "none", "You can type yes or no, or tap the buttons.");
+      return;
+    }
 
+    const openingIndex =
+      Math.abs(
+        [...`${pathname}-${messages.length}-${new Date().getMinutes()}`].reduce(
+          (sum, char) => sum + char.charCodeAt(0),
+          0,
+        ),
+      ) % LOUIS_OPENING_GREETINGS.length;
+
+    appendAssistantMessage(LOUIS_OPENING_GREETINGS[openingIndex]);
   }
 
   async function handleLouisGuideSecondary() {}
