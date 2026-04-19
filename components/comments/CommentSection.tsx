@@ -9,6 +9,13 @@ import UserBadge from "@/components/UserBadge";
 import LevelBadge from "@/components/LevelBadge";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
 import { triggerToast } from "@/components/AppToast";
+import TextareaMentionInput from "@/components/TextareaMentionInput";
+import MentionText from "@/components/MentionText";
+import {
+  extractMentionedItemsFromText,
+  loadGroupPostMentions,
+  type MentionCatalogItem,
+} from "@/lib/groupPostMentions";
 
 function uuidv4() {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
@@ -93,6 +100,7 @@ export default function CommentSection({
   const [currentUserBadge, setCurrentUserBadge] = useState<string | null>(null);
   const [currentUserProfileImage, setCurrentUserProfileImage] = useState<string | null>(null);
   const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
+  const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
 
   const hydrateUser = useCallback(async (userId?: string | null, email?: string | null) => {
     if (!userId) {
@@ -236,23 +244,71 @@ export default function CommentSection({
     };
   }, [fetchComments, hydrateUser]);
 
+  useEffect(() => {
+    void (async () => {
+      try {
+        const items = await loadGroupPostMentions(supabase);
+        setMentionItems(items);
+      } catch (mentionError) {
+        console.error("[CommentSection] Could not load mention items:", mentionError);
+      }
+    })();
+  }, []);
+
+  async function notifyMentionedUsers(
+    commentId: string,
+    text: string,
+  ) {
+    if (!user) return;
+
+    const mentionedUsers = extractMentionedItemsFromText(text, mentionItems, ["user"])
+      .map((item) => {
+        const userId = item.key.startsWith("user:") ? item.key.slice(5) : null;
+        return userId ? { userId, label: item.label } : null;
+      })
+      .filter((item): item is { userId: string; label: string } => Boolean(item))
+      .filter((item) => item.userId !== user.id);
+
+    if (mentionedUsers.length === 0) return;
+
+    const notificationRows = mentionedUsers.map((mentionedUser) => ({
+      user_id: mentionedUser.userId,
+      type: "comment_mention",
+      from_user_id: user.id,
+      from_user_name: user.name,
+      article_slug: articleSlug,
+      comment_id: commentId,
+      message: `${user.name} mentioned you in a comment.`,
+    }));
+
+    const { error: notificationError } = await supabase
+      .from("notifications")
+      .insert(notificationRows);
+
+    if (notificationError) {
+      console.error("[CommentSection] Could not send mention notifications:", notificationError);
+    }
+  }
+
   const handlePost = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user || !content.trim()) return;
     setLoading(true);
-    const { error } = await supabase.from("article_comments").insert({
-      id: uuidv4(),
+    const insertedId = uuidv4();
+    const { data: insertedComment, error } = await supabase.from("article_comments").insert({
+      id: insertedId,
       article_slug: articleSlug,
       user_id: user.id,
       user_name: user.name,
       content,
       parent_id: replyTo,
-    });
+    }).select("id").single();
     setLoading(false);
     setContent("");
     setReplyTo(null);
     if (error) setError(error.message);
     else {
+      await notifyMentionedUsers(insertedComment?.id || insertedId, content.trim());
       triggerToast("Comment posted!");
       void fetchComments();
     }
@@ -328,7 +384,11 @@ export default function CommentSection({
                       <UserBadge customBadge={c.member_badge} isPaid={c.is_paid === true} />
                       <span className="text-xs text-gray-400">{timeAgo(c.created_at)}</span>
                     </div>
-                    <p className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-gray-700">{c.content}</p>
+                    <MentionText
+                      text={c.content}
+                      items={mentionItems}
+                      className="mt-1 whitespace-pre-wrap text-sm leading-relaxed text-gray-700"
+                    />
                   </div>
                   {user && (user.id === c.user_id || currentUserBadge === "moderator") && (
                     <div className="relative">
@@ -371,11 +431,13 @@ export default function CommentSection({
               </div>
               {replyTo === c.id && (
                 <form onSubmit={handlePost} className="mt-2 flex items-end gap-2">
-                  <textarea
+                  <TextareaMentionInput
                     className="w-full resize-none rounded-xl border border-[#eadfce] bg-white px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
                     rows={1}
                     value={content}
-                    onChange={(e) => setContent(e.target.value)}
+                    onChange={setContent}
+                    mentionItems={mentionItems}
+                    onEnterSubmit={() => void handlePost({ preventDefault() {} } as React.FormEvent)}
                     placeholder="Write a reply..."
                     required
                   />
@@ -415,11 +477,13 @@ export default function CommentSection({
               </Link>
             )}
             <div className="flex flex-1 items-end gap-2 rounded-2xl bg-gray-100 px-4 py-3">
-              <textarea
+              <TextareaMentionInput
                 className="max-h-28 flex-1 resize-none bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none"
                 rows={1}
                 value={content}
-                onChange={(e) => setContent(e.target.value)}
+                onChange={setContent}
+                mentionItems={mentionItems}
+                onEnterSubmit={() => void handlePost({ preventDefault() {} } as React.FormEvent)}
                 placeholder={placeholderText}
                 required
               />

@@ -6,7 +6,7 @@ export type MentionCatalogItem = {
   key: string;
   label: string;
   href: string;
-  kind: "devotional" | "book" | "person" | "place" | "keyword" | "reading_plan" | "series";
+  kind: "devotional" | "book" | "person" | "place" | "keyword" | "reading_plan" | "series" | "user";
   searchText: string;
 };
 
@@ -116,6 +116,35 @@ export async function loadGroupPostMentions(
   groupId?: string | null,
 ) {
   const items = [...STATIC_MENTION_CATALOG];
+  const seenUserIds = new Set<string>();
+
+  const { data: userProfiles, error: userProfilesError } = await supabaseClient
+    .from("profile_stats")
+    .select("user_id, display_name, username")
+    .or("display_name.not.is.null,username.not.is.null")
+    .order("display_name", { ascending: true });
+
+  if (userProfilesError) {
+    throw new Error(userProfilesError.message || "Could not load people for mentions.");
+  }
+
+  (userProfiles || []).forEach((profile: { user_id: string; display_name: string | null; username: string | null }) => {
+    if (!profile.user_id || seenUserIds.has(profile.user_id)) return;
+    const label = profile.display_name?.trim() || profile.username?.trim();
+    if (!label) return;
+    seenUserIds.add(profile.user_id);
+    items.push({
+      key: `user:${profile.user_id}`,
+      label,
+      href: `/profile/${profile.user_id}`,
+      kind: "user",
+      searchText: normalizeSearchText(
+        [label, profile.username || "", profile.display_name || "", label.replace(/\s+/g, "")]
+          .filter(Boolean)
+          .join(" "),
+      ),
+    });
+  });
 
   const { data: devotionals, error: devotionalError } = await supabaseClient
     .from("devotionals")
@@ -200,6 +229,7 @@ export function getMentionCategoryLabel(kind: MentionCatalogItem["kind"]) {
     case "keyword": return "Keyword";
     case "reading_plan": return "Reading Plan";
     case "series": return "Bible Series";
+    case "user": return "Member";
     default: return "Mention";
   }
 }
@@ -240,7 +270,7 @@ export function getActiveMentionQueryFromTextarea(
   selectionStart: number,
 ): { query: string; atIndex: number } | null {
   const textBefore = value.slice(0, selectionStart);
-  const match = textBefore.match(/(^|\s)@([^\s]*)$/);
+  const match = textBefore.match(/(^|\s)@([^\n\r]*)$/);
   if (!match) return null;
   const atIndex = textBefore.lastIndexOf("@");
   return { query: match[2], atIndex };
@@ -331,4 +361,35 @@ export function splitTextWithMentions(text: string, items: MentionCatalogItem[])
   }
 
   return segments.filter((segment) => segment.text.length > 0);
+}
+
+export function extractMentionedItemsFromText(
+  text: string,
+  items: MentionCatalogItem[],
+  kinds?: MentionCatalogItem["kind"][],
+) {
+  if (!text || items.length === 0) return [] as MentionCatalogItem[];
+
+  const allowedKinds = kinds ? new Set(kinds) : null;
+  const sortedItems = [...items]
+    .filter((item) => !allowedKinds || allowedKinds.has(item.kind))
+    .sort((a, b) => b.label.length - a.label.length);
+  const seen = new Set<string>();
+  const matches: MentionCatalogItem[] = [];
+
+  for (let cursor = 0; cursor < text.length; cursor += 1) {
+    if (text[cursor] !== "@" || !isMentionBoundaryBefore(text[cursor - 1])) continue;
+    const mentionStart = cursor + 1;
+    const matchedItem = sortedItems.find((item) => {
+      const candidate = text.slice(mentionStart, mentionStart + item.label.length);
+      const nextChar = text[mentionStart + item.label.length];
+      return candidate.toLowerCase() === item.label.toLowerCase() && isMentionBoundaryAfter(nextChar);
+    });
+
+    if (!matchedItem || seen.has(matchedItem.key)) continue;
+    seen.add(matchedItem.key);
+    matches.push(matchedItem);
+  }
+
+  return matches;
 }

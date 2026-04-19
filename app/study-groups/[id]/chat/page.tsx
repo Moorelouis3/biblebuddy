@@ -29,6 +29,7 @@ import { ACTION_TYPE } from "@/lib/actionTypes";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
 import { consumeCreditAction } from "@/lib/creditClient";
 import {
+  extractMentionedItemsFromText,
   linkMentionItemsInHtml,
   loadGroupPostMentions,
   type MentionCatalogItem,
@@ -737,7 +738,7 @@ function GroupCommentSection({
     setSubmitting(true);
     setSubmitError(null);
     const text = content.trim();
-    const { error } = await supabase
+    const { data: insertedComment, error } = await supabase
       .from("group_posts")
       .insert({
         group_id: groupId,
@@ -746,9 +747,40 @@ function GroupCommentSection({
         category: post.category,
         content: text,
         parent_post_id: parentId ?? post.id,
-      });
+      })
+      .select("id")
+      .single();
 
     if (!error) {
+      const mentionedUsers = extractMentionedItemsFromText(text, mentionItems, ["user"])
+        .map((item) => {
+          const mentionedUserId = item.key.startsWith("user:") ? item.key.slice(5) : null;
+          return mentionedUserId ? { userId: mentionedUserId, label: item.label } : null;
+        })
+        .filter((item): item is { userId: string; label: string } => Boolean(item))
+        .filter((item) => item.userId !== userId);
+
+      if (mentionedUsers.length > 0 && insertedComment?.id) {
+        const notificationRows = mentionedUsers.map((mentionedUser) => ({
+          user_id: mentionedUser.userId,
+          type: "group_comment_mention",
+          from_user_id: userId,
+          from_user_name: displayName,
+          article_slug: `/study-groups/${groupId}/chat`,
+          post_id: post.id,
+          comment_id: insertedComment.id,
+          message: `${displayName} mentioned you in a comment in The Bible Study Group.`,
+        }));
+
+        const { error: notificationError } = await supabase
+          .from("notifications")
+          .insert(notificationRows);
+
+        if (notificationError) {
+          console.error("Could not send group comment mention notifications:", notificationError);
+        }
+      }
+
       await loadComments();
       onCountChange(1);
       triggerToast("Comment posted!");
