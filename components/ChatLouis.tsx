@@ -202,6 +202,13 @@ type LouisPageContext = {
   scrambledContext: string | null;
 };
 
+type LouisDirectRoute =
+  | {
+      href: string;
+      reply: string;
+    }
+  | null;
+
 type LouisInputPromptState = {
   mode: LouisPromptMode;
   intent: LouisPromptIntent;
@@ -354,6 +361,184 @@ function buildLouisPageContext(pathname: string | null | undefined, searchParams
         ? decodePathSegment(segments[1] ?? searchParams?.get("book") ?? null)
         : null,
   };
+}
+
+const BIBLE_BOOK_NAMES = [
+  "Genesis",
+  "Exodus",
+  "Leviticus",
+  "Numbers",
+  "Deuteronomy",
+  "Joshua",
+  "Judges",
+  "Ruth",
+  "1 Samuel",
+  "2 Samuel",
+  "1 Kings",
+  "2 Kings",
+  "1 Chronicles",
+  "2 Chronicles",
+  "Ezra",
+  "Nehemiah",
+  "Esther",
+  "Job",
+  "Psalms",
+  "Proverbs",
+  "Ecclesiastes",
+  "Song of Solomon",
+  "Isaiah",
+  "Jeremiah",
+  "Lamentations",
+  "Ezekiel",
+  "Daniel",
+  "Hosea",
+  "Joel",
+  "Amos",
+  "Obadiah",
+  "Jonah",
+  "Micah",
+  "Nahum",
+  "Habakkuk",
+  "Zephaniah",
+  "Haggai",
+  "Zechariah",
+  "Malachi",
+  "Matthew",
+  "Mark",
+  "Luke",
+  "John",
+  "Acts",
+  "Romans",
+  "1 Corinthians",
+  "2 Corinthians",
+  "Galatians",
+  "Ephesians",
+  "Philippians",
+  "Colossians",
+  "1 Thessalonians",
+  "2 Thessalonians",
+  "1 Timothy",
+  "2 Timothy",
+  "Titus",
+  "Philemon",
+  "Hebrews",
+  "James",
+  "1 Peter",
+  "2 Peter",
+  "1 John",
+  "2 John",
+  "3 John",
+  "Jude",
+  "Revelation",
+] as const;
+
+function normalizeForLouisMatch(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+function toBibleBookSegment(book: string) {
+  return encodeURIComponent(book.toLowerCase());
+}
+
+function toGameBookSlug(book: string) {
+  if (book === "Song of Solomon") return "song-of-songs";
+  return book.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+
+function findBibleBookInText(text: string) {
+  const normalizedText = normalizeForLouisMatch(text);
+  const sortedBooks = [...BIBLE_BOOK_NAMES].sort((a, b) => normalizeForLouisMatch(b).length - normalizeForLouisMatch(a).length);
+
+  for (const book of sortedBooks) {
+    if (normalizedText.includes(normalizeForLouisMatch(book))) {
+      return book;
+    }
+  }
+
+  return null;
+}
+
+function buildDirectRouteFromMessage(message: string, currentPage: LouisPageContext): LouisDirectRoute {
+  const trimmed = message.trim();
+  const normalized = trimmed.toLowerCase();
+
+  const simpleRoutes: Array<{ match: RegExp; href: string; reply: string }> = [
+    { match: /\b(dashboard|home)\b/, href: "/dashboard", reply: "Okay.\n\nI’m taking you to the dashboard now." },
+    { match: /\b(the )?bible( reader)?\b/, href: "/reading", reply: "Okay.\n\nI’m opening the Bible reader now." },
+    { match: /\bdevotionals?\b/, href: "/devotionals", reply: "Okay.\n\nI’m taking you to the devotionals page now." },
+    { match: /\b(reading plans?|plans?)\b/, href: "/reading-plans", reply: "Okay.\n\nI’m opening the reading plans now." },
+    { match: /\b(group|bible study group|the group)\b/, href: "/study-groups", reply: "Okay.\n\nI’m taking you to The Bible Study Group now." },
+    { match: /\b(tv|sermons?|bible buddy tv)\b/, href: "/biblebuddy-tv", reply: "Okay.\n\nI’m opening Bible Buddy TV now." },
+    { match: /\b(profile)\b/, href: "/profile", reply: "Okay.\n\nI’m taking you to your profile now." },
+    { match: /\b(settings?)\b/, href: "/settings", reply: "Okay.\n\nI’m opening settings now." },
+    { match: /\b(study tools?|guided studies?)\b/, href: "/guided-studies", reply: "Okay.\n\nI’m taking you to the study tools now." },
+    { match: /\b(trivia)\b/, href: "/bible-trivia", reply: "Okay.\n\nI’m opening Bible Trivia now." },
+    { match: /\b(scrambled)\b/, href: "/bible-study-games/scrambled", reply: "Okay.\n\nI’m opening Scrambled now." },
+  ];
+
+  const wantsNavigation = /\b(show|open|take me|go to|bring me|load)\b/.test(normalized);
+  const book = findBibleBookInText(trimmed);
+  const chapterMatch = normalized.match(/\bchapter\s+(\d+)\b|\b(\d+)\b/);
+  const chapter = chapterMatch ? Number.parseInt(chapterMatch[1] || chapterMatch[2], 10) : null;
+
+  if (book && chapter && /\btrivia\b/.test(normalized)) {
+    return {
+      href: `/bible-trivia/${toGameBookSlug(book)}/${chapter}`,
+      reply: `Okay.\n\nI’m opening ${book} ${chapter} trivia now.`,
+    };
+  }
+
+  if (book && chapter && /\bscrambled\b/.test(normalized)) {
+    return {
+      href: `/bible-study-games/scrambled/${toGameBookSlug(book)}/${chapter}`,
+      reply: `Okay.\n\nI’m opening ${book} ${chapter} scrambled now.`,
+    };
+  }
+
+  if (book && chapter && /\b(notes|chapter notes)\b/.test(normalized)) {
+    return {
+      href: `/Bible/${toBibleBookSegment(book)}/${chapter}`,
+      reply: `Okay.\n\nI’m opening ${book} ${chapter}.\n\nTap Chapter Notes on that page and you’ll be right where you need to be.`,
+    };
+  }
+
+  if (book && chapter && wantsNavigation) {
+    return {
+      href: `/Bible/${toBibleBookSegment(book)}/${chapter}`,
+      reply: `Okay.\n\nI’m opening ${book} ${chapter} now.`,
+    };
+  }
+
+  if (!book && chapter && currentPage.book && /\btrivia\b/.test(normalized)) {
+    return {
+      href: `/bible-trivia/${toGameBookSlug(currentPage.book)}/${chapter}`,
+      reply: `Okay.\n\nI’m opening ${currentPage.book} ${chapter} trivia now.`,
+    };
+  }
+
+  if (!book && chapter && currentPage.book && /\bscrambled\b/.test(normalized)) {
+    return {
+      href: `/bible-study-games/scrambled/${toGameBookSlug(currentPage.book)}/${chapter}`,
+      reply: `Okay.\n\nI’m opening ${currentPage.book} ${chapter} scrambled now.`,
+    };
+  }
+
+  if (!book && chapter && currentPage.routeKind === "bible_chapter" && wantsNavigation) {
+    return {
+      href: `/Bible/${toBibleBookSegment(currentPage.book || "")}/${chapter}`,
+      reply: `Okay.\n\nI’m opening ${currentPage.book} ${chapter} now.`,
+    };
+  }
+
+  if (wantsNavigation) {
+    for (const route of simpleRoutes) {
+      if (route.match.test(normalized)) {
+        return { href: route.href, reply: route.reply };
+      }
+    }
+  }
+
+  return null;
 }
 
 function getDailyGreetingShownAtKey(userId: string) {
@@ -2977,6 +3162,15 @@ export function ChatLouis() {
 
     if (await handleStructuredLouisInput(trimmed)) {
       setIsSending(false);
+      return;
+    }
+
+    const directRoute = buildDirectRouteFromMessage(trimmed, louisPageContext);
+    if (directRoute) {
+      appendAssistantMessage(directRoute.reply);
+      setIsSending(false);
+      setIsOpen(false);
+      router.push(directRoute.href);
       return;
     }
 
