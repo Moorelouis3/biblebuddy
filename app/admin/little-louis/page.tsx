@@ -225,6 +225,7 @@ export default function LittleLouisAdminPage() {
   });
   const [topUsers, setTopUsers] = useState<LouisTopUser[]>([]);
   const [actionLog, setActionLog] = useState<LouisLogEntry[]>([]);
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadLouisDashboard() {
@@ -323,7 +324,6 @@ export default function LittleLouisAdminPage() {
 
         setActionLog(
           actions
-            .slice(0, 150)
             .map((action) => describeLouisAction(action, action.user_id ? profilesById.get(action.user_id) : undefined)),
         );
       } catch (loadError: any) {
@@ -366,6 +366,19 @@ export default function LittleLouisAdminPage() {
     ],
     [],
   );
+
+  const selectedTopUser = useMemo(
+    () => topUsers.find((user) => user.userId === selectedUserId) ?? null,
+    [selectedUserId, topUsers],
+  );
+
+  const displayedActionLog = useMemo(() => {
+    const filtered = selectedUserId
+      ? actionLog.filter((entry) => entry.userId === selectedUserId)
+      : actionLog;
+
+    return selectedUserId ? filtered : filtered.slice(0, 150);
+  }, [actionLog, selectedUserId]);
 
   return (
     <div className="max-w-6xl mx-auto p-4">
@@ -432,7 +445,16 @@ export default function LittleLouisAdminPage() {
               <p className="text-sm text-gray-500">No Louis activity yet in this window.</p>
             ) : (
               topUsers.map((user, index) => (
-                <div key={user.userId} className="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3">
+                <button
+                  key={user.userId}
+                  type="button"
+                  onClick={() => setSelectedUserId((current) => (current === user.userId ? null : user.userId))}
+                  className={`w-full rounded-2xl border px-4 py-3 text-left transition ${
+                    selectedUserId === user.userId
+                      ? "border-sky-300 bg-sky-50 shadow-sm"
+                      : "border-gray-200 bg-gray-50 hover:border-sky-200 hover:bg-sky-50/40"
+                  }`}
+                >
                   <div className="flex items-center justify-between gap-3">
                     <div className="min-w-0">
                       <p className="text-sm text-gray-500">#{index + 1}</p>
@@ -449,7 +471,7 @@ export default function LittleLouisAdminPage() {
                     <span className="rounded-full bg-white px-3 py-1 border border-gray-200">{user.currentStreak ?? 0} day streak</span>
                     <span className="rounded-full bg-white px-3 py-1 border border-gray-200">{user.opens} opens</span>
                   </div>
-                </div>
+                </button>
               ))
             )}
           </div>
@@ -474,19 +496,36 @@ export default function LittleLouisAdminPage() {
 
       <section className="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm">
         <div className="mb-4">
-          <h2 className="text-xl font-semibold text-gray-900">Louis action log</h2>
-          <p className="text-sm text-gray-600 mt-1">
-            What users sent to Louis, what Louis sent back, and when the special Louis flows fired.
-          </p>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900">
+                {selectedTopUser ? `${selectedTopUser.name}'s Louis history` : "Louis action log"}
+              </h2>
+              <p className="text-sm text-gray-600 mt-1">
+                {selectedTopUser
+                  ? "Everything this buddy sent to Louis, what Louis sent back, and the other Louis moments tied to them."
+                  : "What users sent to Louis, what Louis sent back, and when the special Louis flows fired."}
+              </p>
+            </div>
+            {selectedTopUser ? (
+              <button
+                type="button"
+                onClick={() => setSelectedUserId(null)}
+                className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              >
+                Show everyone
+              </button>
+            ) : null}
+          </div>
         </div>
 
         <div className="space-y-3 max-h-[720px] overflow-y-auto pr-1">
           {loading ? (
             <p className="text-sm text-gray-500">Loading...</p>
-          ) : actionLog.length === 0 ? (
+          ) : displayedActionLog.length === 0 ? (
             <p className="text-sm text-gray-500">No Louis actions found in this window.</p>
           ) : (
-            actionLog.map((entry) => (
+            displayedActionLog.map((entry) => (
               <div
                 key={entry.id}
                 className="rounded-2xl border border-gray-200 bg-white px-4 py-3 hover:bg-gray-50 transition-colors"
