@@ -2558,7 +2558,6 @@ export function ChatLouis() {
   }
 
   async function handleQuickReply(reply: QuickReply) {
-    appendUserMessage(reply.label);
     setQuickReplies([]);
 
     if (["daily_good", "daily_okay", "daily_no", "daily_verse", "daily_recommendation", "daily_continue"].includes(reply.action)) {
