@@ -408,13 +408,19 @@ Genesis 38 shows us that God does not abandon people at their worst. He confront
     subtitle: "Faithfulness in service and in temptation",
     readingReference: "Genesis 39",
     readingApiQuery: "genesis+39",
-    intro: `Genesis 39 shows us something Joseph will need for the rest of his story.
+    intro: `Genesis 39 brings the camera back to Joseph after the hard detour through Judah and Tamar.
 
-God's presence does not disappear just because the setting got unfair.
+Joseph is no longer in Canaan. He is in Egypt, bought into Potiphar's house, and living as property in a foreign land.
 
-Joseph is a slave in Egypt, but the text keeps repeating one line: the Lord was with Joseph.
+But this chapter keeps repeating one line that changes how we read everything else: the LORD was with Joseph.
 
-This chapter also brings the test with Potiphar's wife, which means Joseph is not only being tested by suffering. He is also being tested by opportunity, desire, and private pressure.`,
+Genesis 39 is not just about suffering. It is about faithfulness in work, holiness under pressure, and God's presence in a place that still feels deeply unfair.
+
+Joseph rises in Potiphar's house, refuses temptation in private, gets falsely accused, and ends the chapter in prison.
+
+And still, God does not leave him.
+
+This chapter teaches us that God's favor does not always look like comfort. Sometimes it looks like strength, integrity, and steady faithfulness in a place you never would have chosen.`,
     reflectionQuestion:
       "Genesis 39 shows Joseph being faithful in work, in private temptation, and in unfair suffering. Which part challenges you more right now: being consistent when no one sees it, refusing temptation when it costs you, or trusting God when obedience does not seem to pay off quickly?",
     triviaQuestions: [
@@ -431,13 +437,17 @@ This chapter also brings the test with Potiphar's wife, which means Joseph is no
     subtitle: "Serving faithfully while being forgotten",
     readingReference: "Genesis 40",
     readingApiQuery: "genesis+40",
-    intro: `Genesis 40 is a chapter about waiting in a place that feels too small for the promise over your life.
+    intro: `Genesis 40 opens with Joseph still in prison after doing the right thing in Genesis 39.
 
-Joseph is in prison, but he still notices other people, serves them, and gives God the credit for interpretation.
+He is not vindicated, not released, and not rewarded for obedience.
 
-He does not become bitter and closed off. He keeps showing up faithfully.
+Instead, this chapter shows what faithfulness looks like after disappointment, when life does not immediately improve.
 
-Then the chapter ends with one of the hardest lines in Joseph's story: the cupbearer forgets him.`,
+Joseph keeps serving, notices the pain of others, and gives God the credit when Pharaoh's officials have dreams in prison.
+
+One man is restored. One man is executed. And Joseph stays right where he is.
+
+Genesis 40 is about waiting, faithfulness, and the ache of being forgotten by people while still being positioned by God.`,
     reflectionQuestion:
       "What do you do when it feels like you have been faithful and still forgotten? Genesis 40 asks whether you can keep serving, keep noticing others, and keep trusting God even when the person who could have helped you walks away and forgets your name.",
     triviaQuestions: [
@@ -454,15 +464,21 @@ Then the chapter ends with one of the hardest lines in Joseph's story: the cupbe
     subtitle: "God's timing and God-given wisdom",
     readingReference: "Genesis 41",
     readingApiQuery: "genesis+41",
-    intro: `Genesis 41 is one of the clearest examples in the Bible that God's timing can look slow until suddenly it looks fast.
+    intro: `Genesis 41 is not about dreams first. It is about timing.
 
-Joseph goes from forgotten prisoner to standing before Pharaoh in a single chapter.
+Joseph has already spent years being betrayed, enslaved, falsely accused, and forgotten.
 
-Pharaoh has troubling dreams that none of Egypt's wise men can interpret. Only then does the cupbearer remember Joseph.
+And then Genesis quietly says two whole years passed after the cupbearer forgot him.
 
-Joseph is rushed out, brought before power, and still gives God the credit.
+No breakthrough. No explanation. Just waiting.
 
-This chapter is about wisdom, timing, preparation, and the way God can raise someone in a moment after years of hidden testing.`,
+But when the time is finally right, God flips the story fast.
+
+Pharaoh dreams, Egypt's wisest men fail, Joseph is brought out of prison, and the forgotten prisoner becomes the man who prepares a nation to survive famine.
+
+Genesis 41 shows us that God is never late. He is precise.
+
+And when He opens the door, the years of preparation suddenly make sense.`,
     reflectionQuestion:
       "Genesis 41 asks whether you trust God's timing enough to stay ready before the door opens. If the opportunity you have been waiting on came suddenly, would your heart be ready to give God the credit and carry the responsibility well?",
     triviaQuestions: [
@@ -479,15 +495,19 @@ This chapter is about wisdom, timing, preparation, and the way God can raise som
     subtitle: "Famine, fear, and awakening conscience",
     readingReference: "Genesis 42",
     readingApiQuery: "genesis+42",
-    intro: `Genesis 42 brings Joseph's brothers back into his life, but they do not know it is him.
+    intro: `Genesis 42 brings Joseph's brothers back into his life, but not in the way anyone would have imagined.
 
-The famine has pushed them into Egypt and right in front of the brother they sold.
+It has been almost twenty years since they sold Joseph, and now the famine has pushed them right into the presence of the brother they think is gone forever.
 
 Joseph recognizes them immediately. They do not recognize him.
 
-This chapter is also about conscience. Their old sin is not dead inside them.
+This chapter is about conscience, pressure, and the way buried guilt starts speaking when God brings old sin back to the surface.
 
-When the pressure rises, their guilt starts talking.`,
+The brothers come for grain, but what they really walk into is confrontation.
+
+Joseph does not reveal himself right away. He tests them.
+
+Not because he wants revenge, but because truth has to come out before healing can begin.`,
     reflectionQuestion:
       "Genesis 42 shows how old sin can stay buried for years and still rise back up under pressure. Is there anything unresolved in your life that only seems quiet because it has not been pressed yet? What would honest repentance look like before pressure exposes it for you?",
     triviaQuestions: [

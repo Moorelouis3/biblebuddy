@@ -6,7 +6,7 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "@/lib/supabaseClient";
 import { getSeriesWeekLesson, SeriesWeekLesson, SeriesTriviaQuestion } from "@/lib/seriesContent";
-import { hasLazySeriesNotes, loadSeriesNotesContent } from "@/lib/seriesNotes";
+import { hasLazySeriesNotes, loadSeriesNotesContent, type SeriesNotesContent } from "@/lib/seriesNotes";
 import { enrichPlainText } from "@/lib/bibleHighlighting";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
@@ -245,17 +245,63 @@ function NotesSection({
 }) {
   const [showNotesModal, setShowNotesModal] = useState(false);
   const [notesLoading, setNotesLoading] = useState(false);
-  const [notesSource, setNotesSource] = useState<string | null>(null);
+  const [notesSource, setNotesSource] = useState<SeriesNotesContent>(null);
   const [notesHTML, setNotesHTML] = useState<string | null>(null);
   const [notesError, setNotesError] = useState<string | null>(null);
   const hasNotesAvailable = hasLazySeriesNotes(seriesTitle, lesson.weekNumber) || Boolean(lesson.notes?.trim());
+
+  useEffect(() => {
+    if (!isPaid || !hasNotesAvailable) return;
+    if (notesSource || notesHTML || notesLoading) return;
+
+    let cancelled = false;
+
+    async function prefetchNotes() {
+      setNotesLoading(true);
+      try {
+        const loaded = await loadSeriesNotesContent(seriesTitle, lesson.weekNumber, lesson.notes ?? null);
+        if (cancelled) return;
+        if (!loaded.content && !loaded.html) return;
+
+        setNotesSource(loaded.content ?? null);
+
+        if (loaded.html) {
+          setNotesHTML(loaded.html);
+          return;
+        }
+
+        if (loaded.content) {
+          const combinedNotes = Array.isArray(loaded.content) ? loaded.content.join("\n\n") : loaded.content;
+          window.setTimeout(() => {
+            if (cancelled) return;
+            setNotesHTML(parseIntroToHTML(combinedNotes));
+          }, 30);
+        }
+      } catch (error) {
+        if (!cancelled) {
+          console.error("[SERIES_NOTES] Failed to prefetch notes", error);
+        }
+      } finally {
+        if (!cancelled) {
+          setNotesLoading(false);
+        }
+      }
+    }
+
+    void prefetchNotes();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [hasNotesAvailable, isPaid, lesson.notes, lesson.weekNumber, notesHTML, notesLoading, notesSource, seriesTitle]);
 
   useEffect(() => {
     if (!showNotesModal || !notesSource) return;
     if (notesHTML) return;
 
     const timer = window.setTimeout(() => {
-      setNotesHTML(parseIntroToHTML(notesSource));
+      const combinedNotes = Array.isArray(notesSource) ? notesSource.join("\n\n") : notesSource;
+      setNotesHTML(parseIntroToHTML(combinedNotes));
     }, 30);
 
     return () => window.clearTimeout(timer);
@@ -267,17 +313,21 @@ function NotesSection({
     setShowNotesModal(true);
     setNotesError(null);
 
-    if (notesSource) return;
+    if (notesSource || notesHTML) return;
 
     setNotesLoading(true);
     try {
       const loaded = await loadSeriesNotesContent(seriesTitle, lesson.weekNumber, lesson.notes ?? null);
-      if (!loaded) {
+      if (!loaded.content && !loaded.html) {
         setNotesError("These notes are not ready yet.");
         return;
       }
-      setNotesSource(loaded);
-      setNotesHTML(null);
+      setNotesSource(loaded.content ?? null);
+      if (loaded.html) {
+        setNotesHTML(loaded.html);
+      } else {
+        setNotesHTML(null);
+      }
     } catch (error) {
       console.error("[SERIES_NOTES] Failed to load notes", error);
       setNotesError("Study notes could not be loaded right now. Please try again.");
