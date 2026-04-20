@@ -22,6 +22,14 @@ export function parseSeriesNotesToHTML(intro: string): string {
 
     const lines = trimmed.split("\n").map((l) => l.trim());
 
+    if (lines.length === 1 && lines[0].startsWith("# ")) {
+      const text = applyInlineHtml(lines[0].slice(2));
+      parts.push(
+        `<h1 style="font-size:1.2rem;font-weight:800;color:#111827;margin-top:1.6rem;margin-bottom:0.5rem">${text}</h1>`
+      );
+      continue;
+    }
+
     if (lines.length === 1 && lines[0].startsWith("## ")) {
       const text = applyInlineHtml(lines[0].slice(3));
       parts.push(
