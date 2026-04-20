@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { isBookComplete, getCurrentBook, getCompletedChapters, getTotalCompletedChapters } from "../../lib/readingProgress";
 import { supabase } from "../../lib/supabaseClient";
-import { dispatchLouisMoment } from "../../lib/louisMoments";
 
 // All 66 books of the Bible - standard Bible order (Genesis → Revelation)
 const BOOKS = [
@@ -100,7 +99,6 @@ export default function ReadingPage() {
     chaptersCompleted: number;
     bibleCompletionPercent: number;
   } | null>(null);
-  const louisIntroQueuedRef = useRef(false);
 
   // book pagination - apply alphabetical sort if toggle is ON
   const booksToDisplay = alphabeticalOrder 
@@ -148,23 +146,6 @@ export default function ReadingPage() {
       console.error("[NAV] Failed to track Bible reader view:", error);
     });
   }, [userId, userName]);
-
-  useEffect(() => {
-    if (louisIntroQueuedRef.current) return;
-    if (!userName) return;
-
-    louisIntroQueuedRef.current = true;
-    dispatchLouisMoment({
-      openMode: "badge",
-      message: [
-        `Hey ${userName}, you just entered the Bible reader.`,
-        `This is where you can open all 66 books and move chapter by chapter through Scripture.`,
-        `Tap any book to open it and move into its chapters.`,
-        `As you read, you can track your progress and grow your level by actually spending time in the Word.`,
-        `If you want help finding where to start, click me and I will guide you.`,
-      ].join("\n\n"),
-    });
-  }, [userName]);
 
   // Load book states from database (background, non-blocking)
   useEffect(() => {
