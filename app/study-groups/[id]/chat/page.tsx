@@ -178,6 +178,18 @@ interface Series {
   created_at: string;
 }
 
+function buildSeriesPreviewRecord(title: string): Series {
+  return {
+    id: `preview-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    title,
+    description: null,
+    total_weeks: getSeriesTotalWeeks(title),
+    current_week: 1,
+    is_current: false,
+    created_at: new Date().toISOString(),
+  };
+}
+
 interface CurrentSeriesPreview {
   id: string;
   title: string;
@@ -5289,8 +5301,13 @@ RULES:
               ) : (
                 <div className="flex flex-col gap-3">
                   {PLANNED_BIBLE_STUDY_SERIES.map((planned, index) => {
+                    const matchingSeries =
+                      seriesList.find((series) => series.title.trim().toLowerCase() === planned.title.trim().toLowerCase()) ??
+                      null;
                     const liveSeries = index === 0 ? (seriesList.find((series) => series.is_current) ?? seriesList[0] ?? null) : null;
+                    const previewSeries = matchingSeries ?? (isLeader ? buildSeriesPreviewRecord(planned.title) : liveSeries);
                     const isLive = index === 0 && !!liveSeries;
+                    const canOpen = isLive || isLeader;
                     const startLabel = isLive && currentSeriesStartAt ? formatDateTimeLabel(currentSeriesStartAt) : null;
                     const startCountdown =
                       isLive && currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs
@@ -5301,11 +5318,11 @@ RULES:
                         key={planned.key}
                         type="button"
                         onClick={() => {
-                          if (isLive && liveSeries) setSelectedSeries(liveSeries);
+                          if (canOpen && previewSeries) setSelectedSeries(previewSeries);
                         }}
-                        disabled={!isLive}
+                        disabled={!canOpen}
                         className={`w-full rounded-xl p-4 shadow-sm text-left transition border ${
-                          isLive
+                          canOpen
                             ? "bg-white border-gray-200 hover:shadow-md"
                             : "bg-gray-50 border-gray-200 opacity-55 cursor-not-allowed"
                         }`}
@@ -5351,6 +5368,8 @@ RULES:
                                   )}
                                 </p>
                               </>
+                            ) : canOpen ? (
+                              <p className="text-xs text-amber-600 mt-2">Preview unlocked for leaders</p>
                             ) : (
                               <p className="text-xs text-gray-400 mt-2">🔒 Locked until this series is released</p>
                             )}
@@ -5359,6 +5378,10 @@ RULES:
                             {isLive ? (
                               <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{ backgroundColor: "#d4ecd4", color: SAGE }}>
                                 Active
+                              </span>
+                            ) : canOpen ? (
+                              <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700">
+                                Preview
                               </span>
                             ) : (
                               <span className="text-xs text-gray-400">🔒</span>

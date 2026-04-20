@@ -1472,6 +1472,7 @@ export default function WeekLessonPage({
   const router = useRouter();
   const groupId = embeddedGroupId ?? (params.id as string);
   const weekNum = embeddedWeekNum ?? parseInt(params.weekNum as string, 10);
+  const isEmbeddedPreviewSeries = Boolean(embeddedSeriesId && embeddedSeriesId.startsWith("preview-"));
 
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
@@ -1638,7 +1639,7 @@ export default function WeekLessonPage({
 
       setLoading(false);
 
-      if (seriesRes.data?.id) {
+      if (seriesRes.data?.id && !isEmbeddedPreviewSeries) {
         const sid = seriesRes.data.id;
         void loadWeekFinishers(sid);
         const [scheduleRes, progressRowsRes, scoreRes] = await Promise.all([
@@ -1700,7 +1701,7 @@ export default function WeekLessonPage({
       }
     }
     init();
-  }, [embeddedSeriesId, embeddedSeriesTitle, groupId, weekNum, router]);
+  }, [embeddedSeriesId, embeddedSeriesTitle, groupId, isEmbeddedPreviewSeries, weekNum, router]);
 
   // â”€â”€ Load completed people/places/keywords for this user â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
