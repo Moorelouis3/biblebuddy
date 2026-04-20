@@ -1,4 +1,4 @@
-import { TOTAL_WEEKS, getSeriesWeekLesson } from "./seriesContent";
+import { getSeriesTotalWeeks, getSeriesWeekLesson } from "./seriesContent";
 
 const BERLIN_TIME_ZONE = "Europe/Berlin";
 const WEEK_IN_MS = 7 * 24 * 60 * 60 * 1000;
@@ -99,14 +99,14 @@ function getFirstSentence(text: string) {
   return (match?.[0] || cleaned).trim();
 }
 
-function resolveSeriesWeekNumber(date: Date, seriesStartAt: string | null, totalWeeks = TOTAL_WEEKS) {
+function resolveSeriesWeekNumber(date: Date, seriesStartAt: string | null, totalWeeks: number) {
   if (!seriesStartAt) return 1;
 
   const diff = date.getTime() - new Date(seriesStartAt).getTime();
   if (diff <= 0) return 1;
 
   const computedWeek = Math.floor(diff / WEEK_IN_MS) + 1;
-  const maxWeeks = Math.max(1, Math.min(totalWeeks || TOTAL_WEEKS, TOTAL_WEEKS));
+  const maxWeeks = Math.max(1, totalWeeks || 1);
   return Math.max(1, Math.min(computedWeek, maxWeeks));
 }
 
@@ -116,11 +116,11 @@ export function buildBibleStudySaturdaySnapshot(
 ) {
   if (!snapshot) return null;
 
-  const maxWeeks = Math.max(1, Math.min(snapshot.totalWeeks ?? TOTAL_WEEKS, TOTAL_WEEKS));
+  const maxWeeks = Math.max(1, snapshot.totalWeeks ?? getSeriesTotalWeeks(snapshot.seriesTitle));
   const currentWeekNumber = resolveSeriesWeekNumber(date, snapshot.seriesStartAt, maxWeeks);
   const hasStarted = snapshot.seriesStartAt ? date.getTime() >= new Date(snapshot.seriesStartAt).getTime() : false;
   const weekNumber = hasStarted ? Math.min(currentWeekNumber + 1, maxWeeks) : 1;
-  const lesson = getSeriesWeekLesson(weekNumber);
+  const lesson = getSeriesWeekLesson(weekNumber, snapshot.seriesTitle);
 
   if (!lesson) return null;
 
@@ -382,13 +382,14 @@ const FRIDAY_FEATURES: RecurringSeriesTemplate[] = [
     title: "Who was Andrew in the Bible?",
     description: "This week's Who Was This Friday looks at Andrew and why quiet faithfulness still matters in the story of Jesus.",
     contentHtml:
+      "<h1>Andrew: The Disciple Who Kept Bringing People to Jesus</h1>" +
       "<p><strong>This week we are looking at Andrew.</strong></p>" +
       "<p>Andrew was one of the first men Jesus called, and before that he had been a disciple of John the Baptist. He was Peter's brother, but Scripture keeps showing that Andrew had his own steady kind of faith long before he is remembered as standing near louder people. The first thing Andrew did after meeting Jesus was go find Peter and bring him to the Lord. That tells you a lot about him right away: Andrew was not trying to build his own name, he wanted other people to meet Jesus too. He may not be the loudest disciple in the story, but he is one of the clearest pictures of quiet faithfulness and humble evangelism.</p>" +
       "<h2>Why Andrew matters</h2>" +
-      "<ul><li>🤝 He keeps bringing people to Jesus.</li><li>📍 He shows that influence does not have to be loud to be powerful.</li><li>💡 He reminds us that helping others get closer to Christ is real ministry.</li></ul>" +
+      "<ul><li>&#129309; He keeps bringing people to Jesus.</li><li>&#128205; He shows that influence does not have to be loud to be powerful.</li><li>&#128161; He reminds us that helping others get closer to Christ is real ministry.</li></ul>" +
       "<p>Andrew brings Peter. He helps bring the boy with the loaves and fish. He keeps showing up as someone willing to connect people to Jesus without needing the spotlight for himself.</p>" +
       "<h2>Where to read it in the Bible</h2>" +
-      "<ul><li>📍 John 1:35-42</li><li>📍 John 6:8-9</li><li>📍 John 12:20-22</li><li>📍 Matthew 4:18-20</li></ul>" +
+      "<ul><li>&#128214; John 1:35-42</li><li>&#128214; John 6:8-9</li><li>&#128214; John 12:20-22</li><li>&#128214; Matthew 4:18-20</li></ul>" +
       "<h2>The real takeaway</h2>" +
       "<p>Andrew reminds us that some of the strongest kingdom work happens quietly. Not every calling looks dramatic from the outside. Some people are builders, introducers, and faithful connectors. Heaven notices that kind of obedience.</p>" +
       "<p><strong>Drop into the comments after you read:</strong> Do you relate more to loud leadership or quiet faithfulness?</p>",

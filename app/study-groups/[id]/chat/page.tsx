@@ -14,7 +14,7 @@ import { supabase } from "../../../../lib/supabaseClient";
 import { HOME_FEED_COVER_MARKER } from "@/lib/groupFeedCarouselScheduler";
 import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
-import { TOTAL_WEEKS, getSeriesWeekLesson } from "@/lib/seriesContent";
+import { getSeriesTotalWeeks, getSeriesWeekLesson } from "@/lib/seriesContent";
 import { parseWeeklyTriviaQuestions } from "@/lib/groupWeeklyTrivia";
 import { parseWeeklyPollOptions, type WeeklyGroupPollRecord } from "@/lib/groupWeeklyPoll";
 import type { WeeklyGroupQuestionRecord } from "@/lib/groupWeeklyQuestion";
@@ -238,7 +238,7 @@ interface WeekAnalytics {
 
 const PLANNED_BIBLE_STUDY_SERIES = [
   { key: "temptation_of_jesus", title: "The Temptation of Jesus", subtitle: "5-week group study" },
-  { key: "testing_of_joseph", title: "The Testing of Joseph", subtitle: "Coming next" },
+  { key: "testing_of_joseph", title: "The Testing of Joseph", subtitle: "14-week group study" },
   { key: "wisdom_of_proverbs", title: "The Wisdom of Proverbs", subtitle: "Coming later" },
   { key: "faith_of_job", title: "The Faith of Job", subtitle: "Coming later" },
   { key: "calling_of_moses", title: "The Calling of Moses", subtitle: "Coming later" },
@@ -3579,13 +3579,13 @@ RULES:
       id: currentSeries.id,
       title: currentSeries.title,
       description: currentSeries.description,
-      total_weeks: currentSeries.total_weeks,
+      total_weeks: getSeriesTotalWeeks(currentSeries.title),
       current_week: currentSeries.current_week,
     } : null);
     setLoadingSeries(false);
   }
 
-  async function loadSeriesAnalytics(seriesId: string) {
+  async function loadSeriesAnalytics(seriesId: string, seriesTitle?: string) {
     setLoadingAnalytics(true);
 
     const [progressRes, triviaRes, reflectionsRes] = await Promise.all([
@@ -3635,7 +3635,8 @@ RULES:
     }
 
     const analyticsMap = new Map<number, WeekAnalytics>();
-    for (let wn = 1; wn <= TOTAL_WEEKS; wn++) {
+    const totalWeeks = getSeriesTotalWeeks(seriesTitle);
+    for (let wn = 1; wn <= totalWeeks; wn++) {
       const weekProgress = progressRows.filter((r) => r.week_number === wn);
       analyticsMap.set(wn, {
         starters: weekProgress.length,
@@ -4760,6 +4761,8 @@ RULES:
               <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
                 {(() => {
                   const isTemptationSeries = selectedSeries.title.toLowerCase().includes("tempt");
+                  const isJosephSeries = selectedSeries.title.toLowerCase().includes("joseph");
+                  const selectedSeriesWeekCount = getSeriesTotalWeeks(selectedSeries.title);
                   const seriesAccent = isTemptationSeries
                     ? {
                         softBg: "#fff4ea",
@@ -4797,6 +4800,15 @@ RULES:
                                 style={{ objectPosition: "center 42%" }}
                               />
                             </div>
+                          ) : isJosephSeries ? (
+                            <div className="relative h-48 sm:h-56 bg-[#dcefdc]">
+                              <img
+                                src="/newtesting.png"
+                                alt="The Testing of Joseph study cover"
+                                className="w-full h-full object-cover"
+                                style={{ objectPosition: "center 40%" }}
+                              />
+                            </div>
                           ) : (
                             <div className="bg-white/35 px-4 py-6">
                               <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: seriesAccent.mutedText }}>
@@ -4815,7 +4827,7 @@ RULES:
                         <div className="flex items-start justify-between gap-3">
                           <div className="flex-1">
                             <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: seriesAccent.mutedText }}>
-                              {selectedSeries.total_weeks}-week group study
+                              {selectedSeriesWeekCount}-week group study
                             </p>
                             <h3 className="text-lg font-bold text-gray-900 mt-1">{selectedSeries.title}</h3>
                           </div>
@@ -4895,6 +4907,46 @@ RULES:
                                   <div className="space-y-1.5 pt-1">
                                     {[
                                       "📖 Main focus: Luke 4:1-30",
+                                      "📝 Includes detailed notes and verse explanation",
+                                      "🎯 Trivia questions and reflection prompts each week",
+                                      "🤝 Built for shared discussion and group study",
+                                    ].map((item) => (
+                                      <p key={item} className="text-sm text-gray-700 leading-relaxed">{item}</p>
+                                    ))}
+                                  </div>
+                                </>
+                              ) : isJosephSeries ? (
+                                <>
+                                  <p className="text-sm text-gray-700 leading-relaxed">
+                                    This is a 14 week Bible study series through Genesis 37 to Genesis 50. We are following Joseph chapter by chapter, but we are also paying attention to the bigger family story around him, the long waiting, the repeated testing, and the way God keeps working through betrayal, prison, pressure, and forgiveness.
+                                  </p>
+
+                                  <div className="space-y-2.5">
+                                    <div>
+                                      <p className="font-semibold text-gray-900 mb-1">🔥 What we will cover</p>
+                                      <p className="text-sm text-gray-700 leading-relaxed">
+                                        We will cover Joseph's dreams, the pit, slavery, prison, Pharaoh's court, the famine, the brothers returning, Judah's growth, Joseph's forgiveness, and the final hope that points beyond Egypt.
+                                      </p>
+                                    </div>
+
+                                    <div>
+                                      <p className="font-semibold text-gray-900 mb-1">💬 How this group study works</p>
+                                      <p className="text-sm text-gray-700 leading-relaxed">
+                                        Each week includes the chapter reading, detailed notes, trivia questions, reflection prompts, and group discussion so we can slow down and really understand the story instead of rushing past it.
+                                      </p>
+                                    </div>
+
+                                    <div>
+                                      <p className="font-semibold text-gray-900 mb-1">🗓️ Weekly release rhythm</p>
+                                      <p className="text-sm text-gray-700 leading-relaxed">
+                                        Once the series starts, one chapter unlocks each week. The goal is for the group to move together, reflect together, and watch the testing of Joseph unfold in order.
+                                      </p>
+                                    </div>
+                                  </div>
+
+                                  <div className="space-y-1.5 pt-1">
+                                    {[
+                                      "📖 Main focus: Genesis 37-50",
                                       "📝 Includes detailed notes and verse explanation",
                                       "🎯 Trivia questions and reflection prompts each week",
                                       "🤝 Built for shared discussion and group study",
@@ -4991,7 +5043,7 @@ RULES:
                     onClick={async () => {
                       const next = !showAnalytics;
                       setShowAnalytics(next);
-                      if (next && !analyticsLoaded) await loadSeriesAnalytics(selectedSeries.id);
+                      if (next && !analyticsLoaded) await loadSeriesAnalytics(selectedSeries.id, selectedSeries.title);
                     }}
                     className="w-full rounded-2xl border border-indigo-200 bg-indigo-50 px-4 py-3 text-left transition hover:bg-indigo-100"
                   >
@@ -5030,8 +5082,8 @@ RULES:
                       {loadingAnalytics ? (
                         <div className="text-center text-sm text-gray-400 py-6">Loading analytics...</div>
                       ) : (
-                        Array.from({ length: TOTAL_WEEKS }, (_, i) => i + 1).map((wn) => {
-                          const lesson = getSeriesWeekLesson(wn);
+                        Array.from({ length: getSeriesTotalWeeks(selectedSeries.title) }, (_, i) => i + 1).map((wn) => {
+                          const lesson = getSeriesWeekLesson(wn, selectedSeries.title);
                           const data = weekAnalytics.get(wn);
                           if (!data) return null;
                           const hasAny = data.starters > 0;
@@ -5095,7 +5147,7 @@ RULES:
                         })
                       )}
                       <button
-                        onClick={() => { setAnalyticsLoaded(false); void loadSeriesAnalytics(selectedSeries.id); }}
+                        onClick={() => { setAnalyticsLoaded(false); void loadSeriesAnalytics(selectedSeries.id, selectedSeries.title); }}
                         className="text-xs text-indigo-600 hover:text-indigo-800 transition font-semibold"
                       >
                         ↻ Refresh
@@ -5110,8 +5162,8 @@ RULES:
                 return (
                   <div className="flex flex-col gap-3">
                     <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-1">Week Lessons</p>
-                    {Array.from({ length: TOTAL_WEEKS }, (_, i) => i + 1).map((wn) => {
-                      const lesson = getSeriesWeekLesson(wn);
+                    {Array.from({ length: getSeriesTotalWeeks(selectedSeries.title) }, (_, i) => i + 1).map((wn) => {
+                      const lesson = getSeriesWeekLesson(wn, selectedSeries.title);
                       const prog = seriesWeekProgress[wn] ?? { reading: false, trivia: false, reflection: false };
                       const done = [prog.reading, prog.trivia, prog.reflection].filter(Boolean).length;
                       const complete = done === 3;

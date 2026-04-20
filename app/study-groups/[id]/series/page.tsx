@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
-import { TOTAL_WEEKS, getSeriesWeekLesson } from "@/lib/seriesContent";
+import { getSeriesTotalWeeks, getSeriesWeekLesson } from "@/lib/seriesContent";
 
 interface AnalyticsUser {
   user_id: string;
@@ -182,7 +182,8 @@ export default function SeriesOverviewPage() {
       });
 
       const isLeader = memberRes.data?.role === "leader";
-      const cards: WeekCard[] = Array.from({ length: TOTAL_WEEKS }, (_, i) => {
+      const totalWeeks = getSeriesTotalWeeks(seriesRes.data.title);
+      const cards: WeekCard[] = Array.from({ length: totalWeeks }, (_, i) => {
         const wn = i + 1;
         const prog = progMap[wn] ?? { reading: false, trivia: false, reflection: false };
         const previousWeekComplete = wn === 1
@@ -295,7 +296,7 @@ export default function SeriesOverviewPage() {
     }
 
     const analyticsMap = new Map<number, WeekAnalytics>();
-    const maxWeek = TOTAL_WEEKS;
+    const maxWeek = getSeriesTotalWeeks(seriesTitle);
 
     for (let wn = 1; wn <= maxWeek; wn++) {
       const weekProgress = progressRows.filter((r) => r.week_number === wn);
@@ -346,7 +347,7 @@ export default function SeriesOverviewPage() {
 
         <div className="flex flex-col gap-4">
           {weeks.map((w) => {
-            const lesson = getSeriesWeekLesson(w.weekNumber);
+            const lesson = getSeriesWeekLesson(w.weekNumber, seriesTitle);
             const done = [w.reading, w.trivia, w.reflection].filter(Boolean).length;
             const hasContent = !!lesson;
 
@@ -540,8 +541,8 @@ export default function SeriesOverviewPage() {
                 {loadingAnalytics ? (
                   <div className="text-center text-sm text-gray-400 py-6">Loading analytics...</div>
                 ) : (
-                  Array.from({ length: TOTAL_WEEKS }, (_, i) => i + 1).map((wn) => {
-                    const lesson = getSeriesWeekLesson(wn);
+                  Array.from({ length: getSeriesTotalWeeks(seriesTitle) }, (_, i) => i + 1).map((wn) => {
+                    const lesson = getSeriesWeekLesson(wn, seriesTitle);
                     const data = weekAnalytics.get(wn);
                     if (!data) return null;
                     const hasAny = data.starters > 0 || data.readers.length > 0 || data.triviaScores.length > 0 || data.reflectors.length > 0;

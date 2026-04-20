@@ -1516,7 +1516,7 @@ export default function WeekLessonPage({
   const [isAnimatingKeyword, setIsAnimatingKeyword] = useState(false);
   const [learnedToast, setLearnedToast] = useState<string | null>(null);
 
-  const lesson = getSeriesWeekLesson(weekNum);
+  const lesson = getSeriesWeekLesson(weekNum, seriesTitle);
 
   async function loadWeekFinishers(currentSeriesId: string) {
     setLoadingWeekFinishers(true);

@@ -1,5 +1,7 @@
 ﻿// lib/seriesContent.ts
-// Hardcoded content for "The Temptation of Jesus" 5-week series
+// Hardcoded content for Bible study series
+
+import { TESTING_OF_JOSEPH } from "./testingOfJosephSeries";
 
 export interface SeriesTriviaQuestion {
   id: string;
@@ -2185,7 +2187,26 @@ Jesus did not come out of the wilderness smaller. He came out stronger.
 
 That does not mean the wilderness felt easy. It means faithful obedience produced something solid. And that same God still uses wilderness seasons to prepare His people for what is next.`;
 
-export function getSeriesWeekLesson(weekNumber: number): SeriesWeekLesson | undefined {
+export function getSeriesKeyFromTitle(seriesTitle?: string | null) {
+  const normalized = (seriesTitle || "").toLowerCase();
+  if (normalized.includes("joseph")) return "testing_of_joseph" as const;
+  return "temptation_of_jesus" as const;
+}
+
+export function getSeriesTotalWeeks(seriesTitle?: string | null) {
+  return getSeriesKeyFromTitle(seriesTitle) === "testing_of_joseph"
+    ? TESTING_OF_JOSEPH.length
+    : TEMPTATION_OF_JESUS.length;
+}
+
+export function getSeriesWeekLesson(
+  weekNumber: number,
+  seriesTitle?: string | null,
+): SeriesWeekLesson | undefined {
+  if (getSeriesKeyFromTitle(seriesTitle) === "testing_of_joseph") {
+    return TESTING_OF_JOSEPH.find((w) => w.weekNumber === weekNumber);
+  }
+
   const lesson = TEMPTATION_OF_JESUS.find((w) => w.weekNumber === weekNumber);
   if (!lesson) return undefined;
   if (weekNumber === 1) {
@@ -2249,6 +2270,6 @@ export function getSeriesWeekLesson(weekNumber: number): SeriesWeekLesson | unde
   return lesson;
 }
 
-export const TOTAL_WEEKS = 5;
+export const TOTAL_WEEKS = TEMPTATION_OF_JESUS.length;
 
 
