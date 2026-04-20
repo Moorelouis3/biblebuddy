@@ -7,7 +7,7 @@ import { triggerToast } from "@/components/AppToast";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import ReactMarkdown from "react-markdown";
-import { useEffect, useState, useRef, type MouseEvent } from "react";
+import { useEffect, useMemo, useState, useRef, type MouseEvent } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../../lib/supabaseClient";
@@ -273,6 +273,15 @@ function resolveSeriesStart(schedule: { start_at?: string | null; start_date?: s
   if (schedule.start_at) return schedule.start_at;
   if (schedule.start_date) return `${schedule.start_date}T00:00:00`;
   return null;
+}
+
+function getNextSaturdayStartAt(nowTs: number) {
+  const now = new Date(nowTs);
+  const next = new Date(now);
+  const daysUntilSaturday = (6 - now.getDay() + 7) % 7 || 7;
+  next.setDate(now.getDate() + daysUntilSaturday);
+  next.setHours(9, 0, 0, 0);
+  return next.toISOString();
 }
 
 function normalizeSeriesTitle(title: string | null | undefined) {
@@ -1951,6 +1960,27 @@ RULES:
   const [loadingPostLikers, setLoadingPostLikers] = useState(false);
   const [deepLinkedCommentId, setDeepLinkedCommentId] = useState<string | null>(null);
 
+  const homeFeedSeriesPreview = useMemo(() => {
+    if (normalizeSeriesTitle(currentSeriesPreview?.title) === "the testing of joseph" && currentSeriesPreview) {
+      return currentSeriesPreview;
+    }
+
+    const josephSeries =
+      seriesList.find((series) => normalizeSeriesTitle(series.title) === "the testing of joseph") ?? null;
+
+    return josephSeries
+      ? buildCurrentSeriesPreview(josephSeries)
+      : buildCurrentSeriesPreview(buildSeriesPreviewRecord("The Testing of Joseph"));
+  }, [currentSeriesPreview, seriesList]);
+
+  const homeFeedSeriesStartAt = useMemo(() => {
+    if (normalizeSeriesTitle(currentSeriesPreview?.title) === "the testing of joseph" && currentSeriesStartAt) {
+      return currentSeriesStartAt;
+    }
+
+    return getNextSaturdayStartAt(nowTs);
+  }, [currentSeriesPreview, currentSeriesStartAt, nowTs]);
+
   function getUpdateCardPushDismissKey(currentUserId: string) {
     return `bb:update-card-push-dismissed:${currentUserId}`;
   }
@@ -2546,10 +2576,11 @@ RULES:
     }
 
     const knownCurrentSeries =
+      seriesList.find((series) => normalizeSeriesTitle(series.title) === normalizeSeriesTitle(homeFeedSeriesPreview?.title)) ??
       seriesList.find((series) => series.is_current) ??
-      (currentSeriesPreview
+      (homeFeedSeriesPreview
         ? {
-            ...currentSeriesPreview,
+            ...homeFeedSeriesPreview,
             is_current: true,
             created_at: new Date().toISOString(),
           }
@@ -4370,9 +4401,9 @@ RULES:
 
         {!selectedHubItem && <div className="max-w-2xl mx-auto px-4 py-4">
 
-          {activeTab === "home" && currentSeriesPreview && (() => {
-            const cardState = getCurrentSeriesCardState(currentSeriesStartAt, currentSeriesPreview.total_weeks, nowTs);
-            const bannerMeta = getSeriesBannerMeta(currentSeriesPreview.title);
+          {activeTab === "home" && homeFeedSeriesPreview && (() => {
+            const cardState = getCurrentSeriesCardState(homeFeedSeriesStartAt, homeFeedSeriesPreview.total_weeks, nowTs);
+            const bannerMeta = getSeriesBannerMeta(homeFeedSeriesPreview.title);
             return (
               <>
                 <button
@@ -4402,18 +4433,18 @@ RULES:
                   </div>
                   <div className="px-5 py-4">
                     <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
-                      {currentSeriesPreview.total_weeks}-week group study
+                      {homeFeedSeriesPreview.total_weeks}-week group study
                     </p>
-                    <p className="mt-1 text-lg font-semibold text-gray-900">{currentSeriesPreview.title}</p>
-                    {currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs ? (
+                    <p className="mt-1 text-lg font-semibold text-gray-900">{homeFeedSeriesPreview.title}</p>
+                    {homeFeedSeriesStartAt && new Date(homeFeedSeriesStartAt).getTime() > nowTs ? (
                       <div className="mt-2 flex items-center justify-between gap-3">
                         <p
                           className="text-base font-bold whitespace-nowrap"
                           style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
                         >
-                          Study starts in {formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)}
+                          Week 1 starts in {formatCountdown(new Date(homeFeedSeriesStartAt).getTime(), nowTs)}
                         </p>
-                        <p className="text-xs text-gray-600 text-right whitespace-nowrap">{formatDateTimeLabel(currentSeriesStartAt)}</p>
+                        <p className="text-xs text-gray-600 text-right whitespace-nowrap">{formatDateTimeLabel(homeFeedSeriesStartAt)}</p>
                       </div>
                     ) : (
                       <p
@@ -4424,9 +4455,9 @@ RULES:
                       </p>
                     )}
                     <p className="text-sm text-gray-600 mt-2">
-                      {getSeriesPromoDescription(currentSeriesPreview.title, currentSeriesPreview.description)}
+                      {getSeriesPromoDescription(homeFeedSeriesPreview.title, homeFeedSeriesPreview.description)}
                     </p>
-                    {!currentSeriesStartAt || new Date(currentSeriesStartAt).getTime() <= nowTs ? (
+                    {!homeFeedSeriesStartAt || new Date(homeFeedSeriesStartAt).getTime() <= nowTs ? (
                       <p className="text-sm text-gray-600 mt-1">{cardState.detail}</p>
                     ) : null}
                   </div>
