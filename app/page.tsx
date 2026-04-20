@@ -139,7 +139,7 @@ export default function LandingPage() {
       <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:py-6">
         <div className="flex items-center gap-3">
           <Image
-            src="/louis/louis-bible.png"
+            src="/louis/newiconlouis.png"
             alt="Bible Buddy Logo"
             width={32}
             height={32}
