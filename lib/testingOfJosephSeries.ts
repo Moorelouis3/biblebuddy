@@ -115,7 +115,8 @@ And it starts here:
 
 ## Genesis 37:1 - Jacob in the Land of Promise
 
-"Jacob lived in the land of his father's sojournings, in the land of Canaan."
+> Genesis 37:1
+> Jacob lived in the land of his father's sojournings, in the land of Canaan.
 
 The Hebrew word for sojournings is **gur**.
 
@@ -135,7 +136,10 @@ Same promise. Same waiting. Same tension between what God said and what they cur
 
 ## Genesis 37:2 - Joseph Steps Into the Story
 
-"These are the generations of Jacob. Joseph, being seventeen years old, was pasturing the flock with his brothers... and Joseph brought a bad report of them to their father."
+> Genesis 37:2
+> These are the generations of Jacob.
+>
+> Joseph, being seventeen years old, was pasturing the flock with his brothers... and Joseph brought a bad report of them to their father.
 
 The phrase "these are the generations" comes from the Hebrew word **toledot**.
 
@@ -167,7 +171,8 @@ That does not justify the brothers' later violence, but it helps explain why res
 
 ## Genesis 37:3-4 - Israel Loved Joseph More
 
-"Now Israel loved Joseph more than any other of his sons... and he made him a robe of many colors."
+> Genesis 37:3-4
+> Now Israel loved Joseph more than any other of his sons... and he made him a robe of many colors.
 
 The name Israel is still Jacob, but it emphasizes covenant identity after his encounter with God in Genesis 32.
 
@@ -203,9 +208,15 @@ That is a lesson by itself.
 
 Everything God shows you is not meant to be announced immediately.
 
+> Genesis 37:5-11
+> Joseph's dreams about the sheaves, and then the sun, moon, and stars, point toward future authority and recognition.
+
 ## Jacob Sends Joseph
 
 Joseph is sent from Hebron toward Shechem and then farther to Dothan to check on his brothers and the flock.
+
+> Genesis 37:12-17
+> Jacob sends Joseph to check on his brothers, and Joseph keeps going until he finds them in Dothan.
 
 That was not a casual errand. It was oversight.
 
@@ -216,6 +227,9 @@ Favor put a robe on his back, but it also painted a target there.
 ## The Plot and the Pit
 
 The brothers see him from far away and conspire before he even arrives.
+
+> Genesis 37:18-24
+> The brothers see Joseph from far away, plot against him, strip off the robe, and throw him into an empty pit.
 
 They call him "this dreamer."
 
@@ -231,6 +245,9 @@ That matters because they are attacking the symbol of favor before they attack t
 
 Then comes one of the coldest details in the chapter: they sit down to eat.
 
+> Genesis 37:25-28
+> Joseph is sold for twenty shekels of silver and carried toward Egypt.
+
 Joseph is in the pit, and they are having lunch.
 
 Judah then asks what profit there is in killing him and proposes selling him instead.
@@ -245,6 +262,9 @@ God is actually moving Joseph directly into the place where the dreams will even
 
 The brothers dip the robe in blood and bring it to Jacob.
 
+> Genesis 37:31-35
+> The brothers stain the robe with blood, deceive Jacob, and leave him mourning what he believes is Joseph's death.
+
 They do not even say Joseph is dead directly. They let Jacob identify the robe and say the words himself.
 
 That makes the deception even darker.
@@ -256,6 +276,9 @@ In other words, he believes this grief will stay with him until death.
 ## Potiphar
 
 The chapter ends with Joseph sold again, now into the house of Potiphar in Egypt.
+
+> Genesis 37:36
+> Meanwhile the Midianites had sold him in Egypt to Potiphar, an officer of Pharaoh, the captain of the guard.
 
 Potiphar is close to Pharaoh and close to power.
 
