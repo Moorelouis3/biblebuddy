@@ -1,5 +1,6 @@
 import type { SeriesWeekLesson } from "./seriesContent";
 import { TESTING_OF_JOSEPH_WEEK_ONE_NOTES } from "./testingOfJosephWeekOneNotes";
+import { TESTING_OF_JOSEPH_WEEK_TWO_NOTES } from "./testingOfJosephWeekTwoNotes";
 
 function q(
   id: string,
@@ -387,15 +388,20 @@ export const TESTING_OF_JOSEPH: SeriesWeekLesson[] = [
     subtitle: "God's purposes in a morally broken chapter",
     readingReference: "Genesis 38",
     readingApiQuery: "genesis+38",
-    intro: `Genesis 38 feels like a strange interruption in Joseph's story, but it is here for a reason.
+    intro: `Genesis 38 does not come out of nowhere.
 
-The spotlight shifts away from Joseph and lands on Judah, one of the very brothers who helped sell him.
+It begins in the shadow of Joseph being sold, Jacob grieving, and a house full of silence and guilt.
 
-This chapter is messy. There is deception, sexual sin, hypocrisy, and public exposure.
+The spotlight shifts away from Joseph and lands on Judah, one of the very brothers who helped make that pain possible.
 
-But it also shows something important: God does not stop working just because a family line is morally broken.
+This chapter is messy on purpose. It gives us grief, drift, hypocrisy, injustice, exposure, and the beginning of change.
 
-Judah's chapter matters because the tribe of Judah will later become the royal line, and eventually the line of David and Jesus.`,
+But that is exactly why it matters.
+
+Before Judah becomes the man who later offers himself for Benjamin, he has to be exposed and humbled first.
+
+Genesis 38 shows us that God does not abandon people at their worst. He confronts them there and keeps His purposes moving forward.`,
+    notes: TESTING_OF_JOSEPH_WEEK_TWO_NOTES,
     reflectionQuestion:
       "Genesis 38 exposes hidden sin, hypocrisy, and the damage caused when people refuse responsibility. Where does this chapter challenge you most: in owning your failures, in avoiding double standards, or in trusting that God can still work through messy history?",
     triviaQuestions: [
