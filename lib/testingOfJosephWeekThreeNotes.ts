@@ -1,7 +1,5 @@
 export const TESTING_OF_JOSEPH_WEEK_THREE_NOTES = [
-  `Let Me Be Real With You,
-
-Genesis 38 feels like a hard left turn in the middle of Joseph's story.
+  `Genesis 38 feels like a hard left turn in the middle of Joseph's story.
 
 One chapter we are watching a seventeen year old kid betrayed by his brothers, thrown into a pit, and sold off like property.
 

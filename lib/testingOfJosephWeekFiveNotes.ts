@@ -1,7 +1,5 @@
 export const TESTING_OF_JOSEPH_WEEK_FIVE_NOTES = [
-  `Let Me Be Real With You,
-
-Would you wait 13 years for the promise of God?
+  `Would you wait 13 years for the promise of God?
 
 Not 13 days.
 Not 13 months.

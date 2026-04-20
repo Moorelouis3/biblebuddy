@@ -1,7 +1,5 @@
 export const TESTING_OF_JOSEPH_WEEK_SIX_NOTES = [
-  `Let Me Be Real With You,
-
-It has been almost twenty years since Joseph was sold by his brothers.
+  `It has been almost twenty years since Joseph was sold by his brothers.
 
 The teenager who was thrown into a pit is now a grown man, around forty years old, living a life no one could have predicted.
 

@@ -1,7 +1,5 @@
 export const TESTING_OF_JOSEPH_WEEK_FOUR_NOTES = [
-  `Let Me Be Real With You,
-
-In Genesis 39, Joseph was living the high life, well, as high as life could get for a slave.
+  `In Genesis 39, Joseph was living the high life, well, as high as life could get for a slave.
 
 He rose from the bottom to become the head man in Potiphar's house.
 

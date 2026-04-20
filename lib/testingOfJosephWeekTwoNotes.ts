@@ -1,7 +1,5 @@
 export const TESTING_OF_JOSEPH_WEEK_TWO_NOTES = [
-  `Let Me Be Real With You,
-
-Genesis 38 does not begin out of nowhere.
+  `Genesis 38 does not begin out of nowhere.
 
 It begins in the shadow of Genesis 37.
 
