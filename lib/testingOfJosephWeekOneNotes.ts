@@ -1704,25 +1704,5 @@ And every choice has consequences.
 Before moving on, take a moment to sit with what you just read.
 
 This chapter is not meant to be rushed.
-It is meant to be wrestled with.
-
-## Reflection Questions - Genesis 37
-
-1️⃣ Who do you think carries the most responsibility in this chapter?
-Joseph for being reckless with his dreams?
-The brothers for letting jealousy turn into violence?
-Or Jacob for failing to lead his household with wisdom?
-Why?
-
-2️⃣ What warning did Genesis 37 give you personally?
-Was it about sharing too much too soon?
-Favor drawing resentment?
-Or ignoring tension until it explodes?
-
-3️⃣ Where do you see yourself in this story right now?
-Trying to carry a calling you do not fully understand yet?
-Struggling with comparison or jealousy?
-Or realizing that silence has allowed damage to grow?
-
-If you want to share, you can post your response in the discussion below.`,
+It is meant to be wrestled with.`,
 ].join("\n\n");

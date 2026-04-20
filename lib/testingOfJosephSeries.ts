@@ -364,7 +364,7 @@ export const TESTING_OF_JOSEPH: SeriesWeekLesson[] = [
     readingApiQuery: "genesis+37",
     intro: WEEK_ONE_INTRO,
     reflectionQuestion:
-      "Genesis 37 is full of favoritism, jealousy, immaturity, and pain. Where did this chapter hit you most personally: carrying something God showed you too early, feeling the sting of comparison, or seeing how family wounds can grow when nobody deals with them honestly?",
+      "Who do you think carries the most responsibility in Genesis 37: Joseph for being reckless with his dreams, the brothers for letting jealousy turn into violence, or Jacob for failing to lead his household with wisdom? Why?",
     triviaQuestions: [
       q("j1q1", "How old was Joseph when Genesis 37 introduces him?", ["12", "17", "20", "30"], "B", "Genesis 37:2 says Joseph was seventeen years old."),
       q("j1q2", "What did Joseph bring back to his father about his brothers?", ["A peace offering", "A dream report", "A bad report", "A written letter"], "C", "Genesis 37:2 says Joseph brought a bad report of them to their father."),
