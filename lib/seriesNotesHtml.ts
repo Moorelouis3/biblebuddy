@@ -1,3 +1,100 @@
+const KNOWN_EMOJI_FIXES: Array<[string, string]> = [
+  ["ðŸŒŠ", "🌊"],
+  ["ðŸž", "🍞"],
+  ["ðŸ‹", "🐋"],
+  ["ðŸ ", "🏠"],
+  ["ðŸ˜¤", "😤"],
+  ["ðŸŒ™", "🌙"],
+  ["ðŸ’”", "💔"],
+  ["ðŸ˜ ", "😠"],
+  ["â³", "⏳"],
+  ["ðŸ˜ž", "😞"],
+  ["ðŸ¤", "🤍"],
+  ["ðŸ™", "🙏"],
+  ["ðŸ‘¤", "👤"],
+  ["ðŸšï¸", "🏚️"],
+  ["ðŸª™", "🪙"],
+  ["ðŸ”¥", "🔥"],
+  ["ðŸ‘´", "👴"],
+  ["ðŸ‘¨", "👨"],
+  ["ðŸ§”", "🧔"],
+  ["ðŸ’¤", "💤"],
+  ["ðŸ¤©", "🤩"],
+  ["ðŸ˜¡", "😡"],
+  ["ðŸ§±", "🧱"],
+  ["â›“", "⛓"],
+  ["âš–ï¸", "⚖️"],
+  ["ðŸ”’", "🔒"],
+  ["ðŸš°", "🚰"],
+  ["ðŸš¢", "🚢"],
+  ["ðŸ›•", "🛕"],
+  ["ðŸŒ¾", "🌾"],
+  ["ðŸ·", "🍷"],
+  ["â˜ ï¸", "☠️"],
+  ["ðŸ‘¥", "👥"],
+  ["ðŸ‘‘", "👑"],
+  ["ðŸ§ ", "🧠"],
+  ["ðŸ‘¨â€ðŸ³", "👨‍🍳"],
+  ["ðŸ›ï¸", "🏛️"],
+  ["ðŸ¥£", "🥣"],
+  ["ðŸ©º", "🩺"],
+  ["ðŸ“‹", "📋"],
+  ["ðŸŒ", "🌍"],
+  ["ðŸœï¸", "🏜️"],
+  ["ðŸ—¡ï¸", "🗡️"],
+  ["ðŸª", "🐪"],
+  ["ðŸ•°ï¸", "🕰️"],
+  ["ðŸ„", "🐄"],
+  ["ðŸ§µ", "🧵"],
+  ["ðŸ›", "🛐"],
+  ["ðŸ’°", "💰"],
+  ["âŒ", "❌"],
+];
+
+function normalizeKnownArtifacts(text: string): string {
+  let result = text;
+  for (const [broken, fixed] of KNOWN_EMOJI_FIXES) {
+    result = result.split(broken).join(fixed);
+  }
+  return result;
+}
+
+function addLeadingEmojiIfHelpful(text: string): string {
+  const trimmed = text.trim();
+  if (!trimmed) return trimmed;
+
+  const firstCode = trimmed.codePointAt(0) ?? 0;
+  if (firstCode > 0x00ff) return trimmed;
+
+  const emojiRules: Array<[RegExp, string]> = [
+    [/^work ethic/i, "🛠️"],
+    [/^trustworthiness/i, "🤝"],
+    [/^false accusation/i, "⚖️"],
+    [/^leadership/i, "🏛️"],
+    [/^integrity/i, "🙏"],
+    [/^commander/i, "👑"],
+    [/^captain/i, "⚔️"],
+    [/^foreign /i, "🌍"],
+    [/^betrayed/i, "🩸"],
+    [/^stripped/i, "👕"],
+    [/^(dragged|enslaved|slave|chains?)/i, "⛓️"],
+    [/^sold/i, "💰"],
+    [/^private affairs/i, "🏠"],
+    [/^(household valuables|finances|resources|profit)/i, "💰"],
+    [/^(internal operations|logistics|storage)/i, "📦"],
+    [/^(servant assignments|discipline|supervised)/i, "👥"],
+    [/^(order|wise|wisdom)/i, "🧠"],
+  ];
+
+  for (const [pattern, emoji] of emojiRules) {
+    if (pattern.test(trimmed)) {
+      return `${emoji} ${trimmed}`;
+    }
+  }
+
+  return trimmed;
+}
+
 function escapeHtml(text: string): string {
   return text
     .replace(/&/g, "&amp;")
@@ -6,7 +103,7 @@ function escapeHtml(text: string): string {
 }
 
 function applyInlineHtml(text: string): string {
-  let inner = escapeHtml(text);
+  let inner = escapeHtml(normalizeKnownArtifacts(text));
   inner = inner.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
   inner = inner.replace(/\*([^*<\n]+?)\*/g, "<em>$1</em>");
   return inner;
@@ -22,18 +119,19 @@ export function parseSeriesNotesToHTML(intro: string): string {
 
     const lines = trimmed.split("\n").map((l) => l.trim());
 
-    if (lines.length === 1 && lines[0].startsWith("# ")) {
-      const text = applyInlineHtml(lines[0].slice(2));
+    const headingMatch = lines.length === 1 ? lines[0].match(/^(#{1,4})\s+(.+)$/) : null;
+    if (headingMatch) {
+      const level = headingMatch[1].length;
+      const text = applyInlineHtml(headingMatch[2]);
+      const headingTag = level === 1 ? "h1" : level === 2 ? "h2" : "h3";
+      const style =
+        level === 1
+          ? "font-size:1.2rem;font-weight:800;color:#111827;margin-top:1.6rem;margin-bottom:0.5rem"
+          : level === 2
+            ? "font-size:1.05rem;font-weight:800;color:#111827;margin-top:1.5rem;margin-bottom:0.4rem;padding-bottom:0.3rem;border-bottom:2px solid #f3f4f6"
+            : "font-size:0.98rem;font-weight:800;color:#1f2937;margin-top:1.15rem;margin-bottom:0.35rem";
       parts.push(
-        `<h1 style="font-size:1.2rem;font-weight:800;color:#111827;margin-top:1.6rem;margin-bottom:0.5rem">${text}</h1>`
-      );
-      continue;
-    }
-
-    if (lines.length === 1 && lines[0].startsWith("## ")) {
-      const text = applyInlineHtml(lines[0].slice(3));
-      parts.push(
-        `<h2 style="font-size:1.05rem;font-weight:800;color:#111827;margin-top:1.5rem;margin-bottom:0.4rem;padding-bottom:0.3rem;border-bottom:2px solid #f3f4f6">${text}</h2>`
+        `<${headingTag} style="${style}">${text}</${headingTag}>`
       );
       continue;
     }
@@ -50,7 +148,7 @@ export function parseSeriesNotesToHTML(intro: string): string {
 
     if (lines.every((l) => l.startsWith("- "))) {
       const items = lines.map((l) => {
-        const html = applyInlineHtml(l.slice(2));
+        const html = applyInlineHtml(addLeadingEmojiIfHelpful(l.slice(2)));
         return `<li style="display:flex;gap:0.5rem;align-items:flex-start;padding:0.15rem 0;font-size:0.875rem;color:#374151;line-height:1.6">` +
           `<span style="flex-shrink:0;line-height:1.6">&bull;</span><span>${html}</span></li>`;
       }).join("");
