@@ -241,13 +241,13 @@ const IDLE_GREETING_COOLDOWN_MS = 3 * 60 * 60 * 1000;
 const LOUIS_OPENING_GREETINGS = [
   "How can I help you today?",
   "What can I do for you today?",
+  "Do you have a question today?",
   "What do you need help with today?",
-  "Tell me what you want to do and I'll help you get there.",
-  "What are we working on today?",
-  "How can I guide you right now?",
-  "What do you want to open or understand today?",
-  "I'm here.\n\nWhat do you need help with?",
-  "Tell me where you want to go and I'll take you there.",
+  "How can I guide you today?",
+  "Is there something you want help with today?",
+  "What can I help you with today?",
+  "Do you need help with anything today?",
+  "Is there a question I can help with today?",
   "What can I help you find today?",
 ] as const;
 
@@ -2380,21 +2380,26 @@ export function ChatLouis() {
       (newUserChallengeStep === "choose_devotional" || newUserChallengeStep === "choose_start_day"),
   );
 
+  const hasPendingDashboardDailyPrompt =
+    pathname === "/dashboard" &&
+    !isDashboardVerseModalOpen &&
+    (hasUnseenDailyGreeting || hasUnseenSecondRecommendation);
+
   const hasPendingLouisMoment =
     pendingInboxMessageIds.length > 0 ||
     pendingRouteHandoff ||
     hasPendingPageGuide ||
     hasPendingDevotionalChallengePrompt ||
     hasPendingDevotionalStartPrompt ||
-    (pathname === "/dashboard" && (hasUnseenDailyGreeting || hasUnseenSecondRecommendation));
+    hasPendingDashboardDailyPrompt;
 
   const emptyStatePrompt = louisInputPrompt.mode === "today_tomorrow"
     ? "Type today or tomorrow."
     : louisInputPrompt.mode === "yes_no"
       ? "Type yes or no."
-      : hasPendingDevotionalStartPrompt
+    : hasPendingDevotionalStartPrompt
     ? "Type today or tomorrow."
-    : hasPendingDevotionalChallengePrompt || (pathname === "/dashboard" && (hasUnseenDailyGreeting || hasUnseenSecondRecommendation))
+    : hasPendingDevotionalChallengePrompt || hasPendingDashboardDailyPrompt
       ? "Type yes or no."
       : "Ask me a question about your Bible reading.";
 
@@ -2402,9 +2407,9 @@ export function ChatLouis() {
     ? "Type today or tomorrow..."
     : louisInputPrompt.mode === "yes_no"
       ? "Type yes or no..."
-      : hasPendingDevotionalStartPrompt
+    : hasPendingDevotionalStartPrompt
     ? "Type today or tomorrow..."
-    : hasPendingDevotionalChallengePrompt || (pathname === "/dashboard" && (hasUnseenDailyGreeting || hasUnseenSecondRecommendation))
+    : hasPendingDevotionalChallengePrompt || hasPendingDashboardDailyPrompt
       ? "Type yes or no..."
       : "Talk to Louis...";
 
@@ -3128,7 +3133,7 @@ export function ChatLouis() {
       return;
     }
 
-    if (pathname === "/dashboard" && (hasUnseenDailyGreeting || hasUnseenSecondRecommendation)) {
+    if (hasPendingDashboardDailyPrompt) {
       const momentKind: LouisDailyMomentKind = hasUnseenDailyGreeting ? "first" : "second";
       const dailyConversationMessage = buildDailyConversationMessage(momentKind);
 

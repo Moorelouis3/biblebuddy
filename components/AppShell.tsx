@@ -260,14 +260,22 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         throw new Error("Push notifications are not supported on this device.");
       }
 
-      const permission = await Notification.requestPermission();
+      const permission =
+        Notification.permission === "granted"
+          ? "granted"
+          : await Notification.requestPermission();
       setPushPermission(permission);
 
       if (permission !== "granted") {
-        throw new Error("Notifications were not allowed.");
+        throw new Error(
+          "Notifications are blocked in this browser. Open your browser or phone site settings for Bible Buddy, allow notifications, then tap Enable again.",
+        );
       }
 
       await ensurePushSubscription(userId);
+      if (typeof window !== "undefined") {
+        window.localStorage.removeItem(getPushPromptDismissKey(userId));
+      }
       hidePushPrompt(true);
     } catch (error: any) {
       setPushError(error?.message || "Could not enable push alerts.");

@@ -193,11 +193,7 @@ export default function DashboardPage() {
     };
   }, [userId]);
 
-  const TOUR_COPY: Record<FeatureTourKey, { title: string; body: string }> = {
-    dashboard: {
-      title: "Welcome to Bible Buddy",
-      body: "Let me show you how your dashboard works so you know exactly where to go inside the app.",
-    },
+  const TOUR_COPY: Partial<Record<FeatureTourKey, { title: string; body: string }>> = {
     bible: {
       title: "Welcome to The Bible Section",
       body: "This is where you can start reading Scripture, follow reading plans, and explore books of the Bible.",
@@ -772,7 +768,6 @@ export default function DashboardPage() {
     if (!featureToursEnabled || !featureToursLoaded || activeTourKey || !userId) return;
     if (featureTours.dashboard !== true) {
       setPendingTourNavigation(null);
-      setActiveTourKey("dashboard");
     }
   }, [activeTourKey, featureTours, featureToursEnabled, featureToursLoaded, userId]);
 
@@ -868,19 +863,6 @@ export default function DashboardPage() {
       if (handoff) {
         storeLouisRouteHandoff(handoff);
       }
-    }
-
-    if (
-      featureToursEnabled &&
-      featureToursLoaded &&
-      tourKey !== "dashboard" &&
-      tourKey !== "bible" &&
-      tourKey !== "recommendation" &&
-      featureTours[tourKey as FeatureTourKey] !== true
-    ) {
-      setPendingTourNavigation(path);
-      setActiveTourKey(tourKey as FeatureTourKey);
-      return;
     }
 
     router.push(path);
