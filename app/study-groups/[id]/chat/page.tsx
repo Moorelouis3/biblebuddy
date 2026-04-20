@@ -4753,6 +4753,8 @@ RULES:
               embedded
               embeddedGroupId={groupId}
               embeddedWeekNum={selectedSeriesWeek}
+              embeddedSeriesId={selectedSeries.id}
+              embeddedSeriesTitle={selectedSeries.title}
               onBack={() => setSelectedSeriesWeek(null)}
             />
           ) : activeTab === "bible_studies" && selectedSeries ? (
@@ -4993,11 +4995,15 @@ RULES:
               </div>
 
               {/* Week Lessons â€” inline cards when series is current */}
-              {isLeader && selectedSeries.is_current && (
+              {isLeader && (
                 <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
                   <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-1">Series Control Panel</p>
-                  <p className="text-sm text-amber-800 mb-3">Set the Week 1 start date and time. Every other week unlocks automatically 7 days later.</p>
-                  {!seriesStartDate || editingSeriesStart ? (
+                  <p className="text-sm text-amber-800 mb-3">
+                    {selectedSeries.is_current
+                      ? "Set the Week 1 start date and time. Every other week unlocks automatically 7 days later."
+                      : "This series is not live yet. You can still preview every week below while you build it."}
+                  </p>
+                  {selectedSeries.is_current && (!seriesStartDate || editingSeriesStart) ? (
                     <div className="space-y-2">
                       <div className="flex gap-2 flex-col sm:flex-row">
                         <input
@@ -5018,7 +5024,7 @@ RULES:
                         <p className="text-xs text-red-600">{seriesStartSaveError}</p>
                       )}
                     </div>
-                  ) : (
+                  ) : selectedSeries.is_current && seriesStartDate ? (
                     <div className="rounded-xl border border-amber-200 bg-white px-4 py-3">
                       <p className="text-sm font-semibold" style={{ color: "#d62828" }}>
                         Study starts in {formatCountdown(new Date(seriesStartDate).getTime(), nowTs)}
@@ -5031,7 +5037,11 @@ RULES:
                         Change start time
                       </button>
                     </div>
-                  )}
+                  ) : selectedSeries.is_current ? (
+                    <div className="rounded-xl border border-amber-200 bg-white px-4 py-3">
+                      <p className="text-sm text-amber-800">Set a start time to unlock the live weekly release.</p>
+                    </div>
+                  ) : null}
                 </div>
               )}
 
@@ -5157,8 +5167,9 @@ RULES:
                 </div>
               )}
 
-              {selectedSeries.is_current && (() => {
+              {(selectedSeries.is_current || isLeader) && (() => {
                 const sd = seriesStartDate;
+                const isPreviewSeries = !selectedSeries.is_current;
                 return (
                   <div className="flex flex-col gap-3">
                     <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-1">Week Lessons</p>
@@ -5170,7 +5181,7 @@ RULES:
                       const previousWeek = seriesWeekProgress[wn - 1] ?? { reading: false, trivia: false, reflection: false };
                       const previousWeekComplete = wn === 1 ? true : (previousWeek.reading && previousWeek.trivia && previousWeek.reflection);
                       const lockState = getWeekLockState(sd, wn, isLeader, previousWeekComplete);
-                      const unlocked = lockState.unlocked;
+                      const unlocked = isPreviewSeries ? true : lockState.unlocked;
                       return (
                         <div
                           key={wn}
@@ -5194,7 +5205,11 @@ RULES:
                                 <span className="text-xs text-gray-400 flex-shrink-0">🔒</span>
                               )}
                             </div>
-                            {!unlocked && <p className="text-xs text-gray-400 mt-1">{lockState.lockedMessage}</p>}
+                            {isPreviewSeries ? (
+                              <p className="text-xs text-amber-600 mt-1">Preview mode for leaders only</p>
+                            ) : !unlocked ? (
+                              <p className="text-xs text-gray-400 mt-1">{lockState.lockedMessage}</p>
+                            ) : null}
                           </div>
                           <div className="px-4 pb-3">
                             {unlocked && lesson ? (
@@ -5204,7 +5219,7 @@ RULES:
                                 className="w-full py-2 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
                                 style={{ backgroundColor: "#4a9b6f" }}
                               >
-                                {complete ? "Review" : done > 0 ? "Continue" : "Start"}
+                                {isPreviewSeries ? "Preview" : complete ? "Review" : done > 0 ? "Continue" : "Start"}
                               </button>
                             ) : (
                               <button

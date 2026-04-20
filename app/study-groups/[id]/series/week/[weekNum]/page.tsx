@@ -17,6 +17,8 @@ import UserBadge from "@/components/UserBadge";
 interface WeekLessonPageProps {
   embeddedGroupId?: string;
   embeddedWeekNum?: number;
+  embeddedSeriesId?: string;
+  embeddedSeriesTitle?: string;
   embedded?: boolean;
   onBack?: () => void;
 }
@@ -1461,6 +1463,8 @@ function SmallLouisLoadingModal({
 export default function WeekLessonPage({
   embeddedGroupId,
   embeddedWeekNum,
+  embeddedSeriesId,
+  embeddedSeriesTitle,
   embedded = false,
   onBack,
 }: WeekLessonPageProps = {}) {
@@ -1610,7 +1614,9 @@ export default function WeekLessonPage({
       const [memberRes, groupRes, seriesRes, profileRes] = await Promise.all([
         supabase.from("group_members").select("role").eq("group_id", groupId).eq("user_id", user.id).maybeSingle(),
         supabase.from("study_groups").select("name").eq("id", groupId).maybeSingle(),
-        supabase.from("group_series").select("id, title").eq("group_id", groupId).eq("is_current", true).maybeSingle(),
+        embeddedSeriesId
+          ? Promise.resolve({ data: { id: embeddedSeriesId, title: embeddedSeriesTitle ?? "Bible Series" }, error: null })
+          : supabase.from("group_series").select("id, title").eq("group_id", groupId).eq("is_current", true).maybeSingle(),
         supabase.from("profile_stats").select("display_name, username, profile_image_url, is_paid, member_badge").eq("user_id", user.id).maybeSingle(),
       ]);
 
@@ -1694,7 +1700,7 @@ export default function WeekLessonPage({
       }
     }
     init();
-  }, [groupId, weekNum, router]);
+  }, [embeddedSeriesId, embeddedSeriesTitle, groupId, weekNum, router]);
 
   // â”€â”€ Load completed people/places/keywords for this user â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
