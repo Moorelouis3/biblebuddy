@@ -3,141 +3,165 @@ import type { FeatureTourKey } from "./featureTours";
 export type LouisGuideId =
   | "dashboard"
   | "bible_books"
-  | "bible_reader"
+  | "bible_study_hub"
   | "bible_trivia"
   | "bible_buddy_tv"
-  | "devotionals";
+  | "devotionals"
+  | "bible_references";
 
 export type LouisPageGuide = {
   id: LouisGuideId;
   featureKey: FeatureTourKey;
   title: string;
-  intro?: string;
-  ask: string;
-  prompt?: string;
-  chatStarter: string;
-  bullets: string[];
+};
+
+type GuideMessageOptions = {
+  firstName: string | null;
+  isPaidUser: boolean;
 };
 
 const DASHBOARD_GUIDE: LouisPageGuide = {
   id: "dashboard",
   featureKey: "dashboard",
-  title: "This is your dashboard",
-  intro: "This is your home. This is your main page in Bible Buddy. This is where you can access everything inside the app.",
-  ask: "You want me to show you how the dashboard works and where each card takes you?",
-  prompt: "You want me to show you how the dashboard works and where each card takes you?",
-  chatStarter:
-    "We're on your dashboard right now. This is where you can access everything inside Bible Buddy. I can show you what each card does, where to start, or what your next step should be today.",
-  bullets: [
-    "🏆 **YOUR LEVEL CARD**\nThis lets you know what level you are on Bible Buddy. Everything you do inside the app gives you points, and those points help you level up.",
-    "📖 **THE BIBLE**\nThis is your full Bible reader where you can read Scripture, highlight verses, save progress, and interact with the Word of God.",
-    "👥 **BIBLE STUDY GROUP**\nThis is where you interact with other Bible Buddies inside the app. We study the Bible together through weekly series and daily conversation.",
-    "🛠️ **BIBLE STUDY TOOLS**\nThis is where you can access devotionals, reading plans, and the deeper study side of Bible Buddy, including people, places, and keyword tools.",
-    "📺 **BIBLE BUDDY TV**\nThis is where you can stream Bible shows, movies, sermons, documentaries, animation, and more.",
-    "🎮 **BIBLE STUDY GAMES**\nThis is where you can play Bible-based games like trivia and Scrabble-style challenges to help lock in what you're learning.",
-    "🤝 **SHARE BIBLE BUDDY**\nDo you know somebody else who would like to be a Bible Buddy too? Tap that card and send them the app.",
-    "👉 **JUST CLICK ONE OF THE CARDS TO START.**",
-  ],
+  title: "Dashboard",
 };
 
 const BIBLE_BOOKS_GUIDE: LouisPageGuide = {
   id: "bible_books",
   featureKey: "bible",
-  title: "This is the Bible reader",
-  intro: "This is where you move through the books of the Bible inside Bible Buddy.",
-  ask: "You want me to show you how to move around the Bible reader and pick a book?",
-  prompt: "You want me to show you how to move around the Bible reader and pick a book?",
-  chatStarter:
-    "We're on the Bible books page right now. I can help you find where to start, explain how the books are organized, or help you pick your next book.",
-  bullets: [
-    "Click any book to open it and move into its chapters, use the reader to track your progress, and ask me if you want help choosing where to start.",
-  ],
+  title: "Bible Reader",
 };
 
-const BIBLE_READER_GUIDE: LouisPageGuide = {
-  id: "bible_reader",
-  featureKey: "bible",
-  title: "This is the Bible reader",
-  intro: "This chapter page is where reading and study tools come together.",
-  ask: "You want the quick breakdown of how this chapter page works?",
-  prompt: "You want the quick breakdown of how this chapter page works?",
-  chatStarter:
-    "We're inside the Bible reader right now. I can help you understand this chapter, the tools on the page, or how to study it better.",
-  bullets: [
-    "Read the chapter here, tap verse numbers to highlight, open Chapter Notes to go deeper, switch translations if you need to, and mark the chapter complete when you're done so I can guide your next step.",
-  ],
+const BIBLE_STUDY_GROUP_GUIDE: LouisPageGuide = {
+  id: "bible_study_hub",
+  featureKey: "bible_study_hub",
+  title: "The Bible Study Group",
 };
 
 const TRIVIA_GUIDE: LouisPageGuide = {
   id: "bible_trivia",
   featureKey: "bible_trivia",
-  title: "This is Bible trivia",
-  intro: "This is where you reinforce what you know with Bible trivia.",
-  ask: "You want me to show you how trivia works before you jump in?",
-  prompt: "You want me to show you how trivia works before you jump in?",
-  chatStarter:
-    "We're on Bible trivia right now. I can help you understand the categories, how scoring works, or where to start.",
-  bullets: [
-    "🎮 Pick a category or a book and answer one question at a time.",
-    "🧠 Trivia is one of the fastest ways to reinforce what you've already been reading.",
-    "🙌 You do not need to get everything right for it to help you learn.",
-    "❓ If a question confuses you, ask Louis and we can break the verse or story down together.",
-  ],
+  title: "Bible Study Games",
 };
 
 const TV_GUIDE: LouisPageGuide = {
   id: "bible_buddy_tv",
   featureKey: "bible_buddy_tv",
-  title: "This is Bible Buddy TV",
-  intro: "This is where Bible Buddy's videos, sermons, and movies live.",
-  ask: "You want me to show you how Bible Buddy TV is organized?",
-  prompt: "You want me to show you how Bible Buddy TV is organized?",
-  chatStarter:
-    "We're in Bible Buddy TV right now. This is where you can watch Bible shows, movies, sermons, documentaries, and animation without leaving Bible Buddy. I can show you how it works and help you find a good next watch.",
-  bullets: [
-    "🏠 STREAMING HOME\nThis page is built to help you move through Bible Buddy TV the same way you move through the rest of the app.",
-    "⭐ FEATURED RIGHT NOW\nThis is where I surface something strong to watch first so you do not have to overthink what to pick.",
-    "▶️ CONTINUE WATCHING\nThis is where you can jump back into anything you already started without searching for it again.",
-    "🎞️ BROWSE BY CATEGORY\nMove through sermons, movies, documentaries, animation, and TV shows depending on what kind of content you want today.",
-    "📖 EVERY TITLE GOES DEEPER\nWhen you open something, you can watch it inside Bible Buddy and study the notes under it too.",
-    "👉 JUST TAP A TITLE TO START\nAnd if you want, I can help you pick the best one for today.",
-  ],
+  title: "Bible Buddy TV",
 };
 
 const DEVOTIONALS_GUIDE: LouisPageGuide = {
   id: "devotionals",
   featureKey: "guided_studies",
-  title: "This is the devotional page",
-  intro: "This is where you can start a devotional and build a real Bible habit one day at a time.",
-  ask: "You want me to show you how devotionals work and help you pick a good one?",
-  prompt: "You want me to show you how devotionals work and help you pick a good one?",
-  chatStarter:
-    "We're on the devotional page right now. Each devotional covers a different topic, Bible story, or growth area. I can help you figure out what fits you best today.",
-  bullets: [
-    "🏠 **THIS IS YOUR DEVOTIONAL SHELF**\nThis page is where you come when you want something guided instead of trying to figure everything out on your own.",
-    "📚 **EACH DEVOTIONAL HAS A DIFFERENT FOCUS**\nSome walk through a Bible story. Some help with a spiritual habit. Some take one big theme and break it down day by day.",
-    "🕊️ **FREE USERS CAN START WITH ONE**\nYou can still get real value here on the free plan. If you ever hit the limit, that is where upgrading starts making more sense.",
-    "⏱️ **DO ONE DAY AT A TIME**\nDo not rush it. Read the devotional, read the Bible passage, and sit with the reflection question.",
-    "🔥 **THIS IS A STRONG PLACE TO BUILD A HABIT**\nIf you want structure, this is one of the best places to start because it gives you a simple daily rhythm.",
-    "👉 **JUST PICK ONE TO START**\nIf you want, I can help you choose the best devotional for where you are right now.",
-  ],
+  title: "Devotionals",
+};
+
+const REFERENCES_GUIDE: LouisPageGuide = {
+  id: "bible_references",
+  featureKey: "bible_references",
+  title: "Bible Tools",
 };
 
 export function getLouisPageGuide(pathname: string | null): LouisPageGuide | null {
   if (!pathname) return null;
 
   if (pathname === "/dashboard") return DASHBOARD_GUIDE;
-  if (pathname === "/reading") return BIBLE_BOOKS_GUIDE;
-  if (pathname.startsWith("/reading/books/") || pathname.startsWith("/Bible/")) return BIBLE_READER_GUIDE;
-  if (pathname === "/bible-trivia" || pathname.startsWith("/bible-trivia/")) return TRIVIA_GUIDE;
+  if (pathname === "/reading" || pathname === "/Bible") return BIBLE_BOOKS_GUIDE;
+  if (
+    pathname === "/study-groups" ||
+    pathname.endsWith("/chat") ||
+    pathname.endsWith("/series") ||
+    pathname.includes("/study-groups/")
+  ) {
+    return BIBLE_STUDY_GROUP_GUIDE;
+  }
+  if (
+    pathname === "/bible-study-games" ||
+    pathname.startsWith("/bible-study-games/scrambled") ||
+    pathname === "/bible-trivia" ||
+    pathname.startsWith("/bible-trivia/")
+  ) {
+    return TRIVIA_GUIDE;
+  }
   if (pathname === "/biblebuddy-tv" || pathname.startsWith("/biblebuddy-tv/")) return TV_GUIDE;
-  if (pathname === "/devotionals" || pathname.startsWith("/devotionals/")) return DEVOTIONALS_GUIDE;
+  if (pathname === "/devotionals") return DEVOTIONALS_GUIDE;
+  if (pathname === "/bible-reference" || pathname === "/bible-references") return REFERENCES_GUIDE;
 
   return null;
 }
 
-export function buildLouisGuideChatMessage(guide: LouisPageGuide) {
-  const bulletLines = guide.bullets.join("\n\n");
-  return `${guide.title}.\n\n${bulletLines}`;
+function requireFirstName(firstName: string | null) {
+  return typeof firstName === "string" && firstName.trim() ? firstName.trim() : null;
 }
 
+export function buildLouisGuideChatMessage(
+  guide: LouisPageGuide,
+  options: GuideMessageOptions,
+) {
+  const name = requireFirstName(options.firstName);
+  if (!name) {
+    return "I need your first name on your profile before I do this guide.\n\nAdd your name first and come back, and I will walk you through it.";
+  }
+
+  switch (guide.id) {
+    case "dashboard":
+      return [
+        `hey ${name}, this is your dashboard`,
+        "this is your home base in Bible Buddy where everything starts",
+        "use this page to jump into the Bible, devotionals, the group, games, and the rest of the app",
+        "if you ever feel lost, click me and I will help you find your next step",
+      ].join("\n\n");
+    case "bible_books":
+      return [
+        `hey ${name}, you just entered the Bible reader`,
+        "this is where you can open all 66 books and move chapter by chapter through Scripture",
+        "tap any book to start reading and track your progress as you grow your faith by actually spending time in the Word",
+        "if you ever have any questions while reading the Bible, click me and I’ll be happy to help",
+      ].join("\n\n");
+    case "bible_study_hub":
+      return [
+        `hey ${name}, this is the Bible study group`,
+        "this is where you can connect with other Bible Buddies and grow together",
+        "we also run weekly Bible studies and daily faith conversations here",
+        "don’t just read alone, be part of something",
+      ].join("\n\n");
+    case "bible_references":
+      return [
+        `hey ${name}, this is your Bible tools section`,
+        "here you can access devotionals, reading plans, and deeper study resources",
+        "you can also explore people, places, and keywords from the Bible with full explanations",
+        "use this when you want to go deeper",
+      ].join("\n\n");
+    case "devotionals":
+      return options.isPaidUser
+        ? [
+            `hey ${name}, this is the devotional library`,
+            "devotionals are designed to help you build a daily Bible habit",
+            "as a Pro member, you have full access to the entire library",
+            "pick one and stay consistent daily",
+          ].join("\n\n")
+        : [
+            `hey ${name}, this is the devotional library`,
+            "devotionals are designed to help you build a daily Bible habit",
+            "as a free user, you get access to one devotional",
+            "if you want full access, you can upgrade here",
+            "but if not, pick one and come back daily to complete the reading and reflection",
+          ].join("\n\n");
+    case "bible_buddy_tv":
+      return [
+        `hey ${name}, this is BibleBuddy TV`,
+        "here you’ll find sermons, Christian movies, documentaries, and Bible based content",
+        "everything is organized to help you grow while you watch",
+        "use this when you want to learn in a different way",
+      ].join("\n\n");
+    case "bible_trivia":
+      return [
+        `hey ${name}, this is where you can test and grow your knowledge of the Word`,
+        "play trivia or scrambled to challenge yourself",
+        "learning doesn’t always have to be serious",
+        "use this to sharpen what you’ve been reading",
+      ].join("\n\n");
+    default:
+      return "";
+  }
+}
