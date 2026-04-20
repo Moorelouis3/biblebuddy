@@ -24,21 +24,6 @@ export async function loadSeriesNotesContent(
 ): Promise<SeriesNotesPayload> {
   const seriesKey = getSeriesKeyFromTitle(seriesTitle);
 
-  if (seriesKey === "testing_of_joseph" && weekNumber === 1) {
-    const { data, error } = await supabase
-      .from("bible_notes")
-      .select("notes_text")
-      .eq("book", "genesis")
-      .eq("chapter", 37)
-      .maybeSingle();
-
-    if (!error && data?.notes_text) {
-      return {
-        content: data.notes_text,
-      };
-    }
-  }
-
   if (seriesKey) {
     const { data, error } = await supabase
       .from("series_week_notes")
