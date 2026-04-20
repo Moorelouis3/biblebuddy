@@ -1673,30 +1673,6 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
       `You are opening ${bookDisplayName} ${chapter} now.`,
     ]);
 
-    const bridgeLine = chapter === 1 && previousBookName
-      ? pickLouisVariant(`${bookDisplayName}:${chapter}:bridge`, [
-          `If you just finished ${previousBookName}, this is the next part of the story, so watch what changes and what carries over here.`,
-          `${bookDisplayName} picks up after ${previousBookName}, so keep the bigger story in mind while you read this opening chapter.`,
-          `You are starting a new book, but it still connects to what came before, so pay attention to how ${bookDisplayName} moves the story forward.`,
-        ])
-      : pickLouisVariant(`${bookDisplayName}:${chapter}:bridge`, [
-          "Pay attention to how this chapter connects to what came right before it and where it starts pushing the story next.",
-          "Keep the flow of the story in mind here because this chapter builds on what you just read.",
-          "Watch how this chapter carries the story forward and shifts the focus as it unfolds.",
-        ]);
-
-    const transitionLine = chapter === 1
-      ? pickLouisVariant(`${bookDisplayName}:${chapter}:transition`, [
-          "You are stepping into a new part of the story now, so pay attention to what changes and what carries over.",
-          "This is the start of a new part of the story, so watch how the focus shifts here.",
-          "A new book always brings a new angle, so read this one with fresh eyes and keep the bigger story in mind.",
-        ])
-      : pickLouisVariant(`${bookDisplayName}:${chapter}:transition`, [
-          "This chapter picks up right where the story was moving, so keep the flow of what you just read in mind.",
-          "Do not read this chapter like it stands alone. It keeps building on what came right before it.",
-          "Stay with the story here because this chapter keeps pushing the same thread forward.",
-        ]);
-
     const summaryLine = chapterSummary || pickLouisVariant(`${bookDisplayName}:${chapter}:summary-fallback`, [
       "Read closely and look for what God is showing, what people are doing, and what changes by the end of the chapter.",
       "As you read, pay attention to the tension, the response, and what this chapter reveals about God.",
@@ -1720,8 +1696,6 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
       openMode: "badge",
       message: [
         introLine,
-        bridgeLine,
-        transitionLine,
         summaryLine,
         studyLine,
         "If you have any questions while you read, I am here to help.",
