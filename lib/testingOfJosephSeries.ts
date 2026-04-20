@@ -1,4 +1,5 @@
 import type { SeriesWeekLesson } from "./seriesContent";
+import { TESTING_OF_JOSEPH_WEEK_ONE_NOTES } from "./testingOfJosephWeekOneNotes";
 
 function q(
   id: string,
@@ -369,7 +370,7 @@ export const TESTING_OF_JOSEPH: SeriesWeekLesson[] = [
     readingReference: "Genesis 37",
     readingApiQuery: "genesis+37",
     intro: WEEK_ONE_INTRO,
-    notes: WEEK_ONE_NOTES,
+    notes: TESTING_OF_JOSEPH_WEEK_ONE_NOTES,
     reflectionQuestion:
       "Genesis 37 is full of favoritism, jealousy, immaturity, and pain. Where did this chapter hit you most personally: carrying something God showed you too early, feeling the sting of comparison, or seeing how family wounds can grow when nobody deals with them honestly?",
     triviaQuestions: [

@@ -297,6 +297,29 @@ function NotesSection({
           </div>
         </div>
 
+        {!expanded && isPaid && (
+          <div className="border-b border-gray-100 bg-gradient-to-br from-emerald-50 via-white to-emerald-50 px-5 py-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">Chapter Notes</p>
+            <h3 className="mt-2 text-lg font-bold text-gray-900">
+              Want to understand {lesson.readingReference} better?
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-gray-700">
+              Check out the Chapter Notes.
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-gray-700">
+              They include Hebrew and Greek word meanings, cultural and historical context, and verse-by-verse breakdowns.
+            </p>
+            <button
+              type="button"
+              onClick={handleToggle}
+              className="mt-4 inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-bold text-white transition hover:opacity-90"
+              style={{ backgroundColor: "#4a9b6f" }}
+            >
+              Click Here to Open
+            </button>
+          </div>
+        )}
+
         {expanded && (isPaid ? (
           <div
             className="px-5 pt-4 pb-5 flex flex-col gap-3"
