@@ -308,7 +308,7 @@ function getSeriesBannerMeta(title: string | null | undefined) {
       src: "/testingofjoseph.png",
       alt: "The Testing of Joseph study banner",
       bg: "#dcefdc",
-      objectPosition: "center 40%",
+      objectPosition: "center 68%",
     };
   }
 
@@ -4432,12 +4432,8 @@ RULES:
                     </div>
                   </div>
                   <div className="px-5 py-4">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
-                      {homeFeedSeriesPreview.total_weeks}-week group study
-                    </p>
-                    <p className="mt-1 text-lg font-semibold text-gray-900">{homeFeedSeriesPreview.title}</p>
                     {homeFeedSeriesStartAt && new Date(homeFeedSeriesStartAt).getTime() > nowTs ? (
-                      <div className="mt-2 flex items-center justify-between gap-3">
+                      <div className="flex items-center justify-between gap-3">
                         <p
                           className="text-base font-bold whitespace-nowrap"
                           style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
@@ -4454,9 +4450,6 @@ RULES:
                         {cardState.headline}
                       </p>
                     )}
-                    <p className="text-sm text-gray-600 mt-2">
-                      {getSeriesPromoDescription(homeFeedSeriesPreview.title, homeFeedSeriesPreview.description)}
-                    </p>
                     {!homeFeedSeriesStartAt || new Date(homeFeedSeriesStartAt).getTime() <= nowTs ? (
                       <p className="text-sm text-gray-600 mt-1">{cardState.detail}</p>
                     ) : null}
