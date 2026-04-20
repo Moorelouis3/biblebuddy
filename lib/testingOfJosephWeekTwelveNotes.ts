@@ -58,7 +58,7 @@ Deeper than Joseph’s arrangement.
 
 He sees what God is doing.`,
 
-  `## Why Genesis 48 Matters
+  `## 🧠 Why Genesis 48 Matters
 
 Genesis 48 matters because it brings together family tenderness and covenant vision in the same chapter.
 
@@ -82,7 +82,7 @@ How does the covenant keep moving?
 
 Those are the questions in the room.`,
 
-  `## Genesis 48:1-4 - Jacob Remembers the God Who Appeared to Him
+  `## 📍 Genesis 48:1-4 - Jacob Remembers the God Who Appeared to Him
 
 > Genesis 48:1
 > And it came to pass after these things, that one told Joseph, Behold, thy father is sick...
@@ -148,7 +148,7 @@ That means Genesis 48 is not just about human intention.
 
 It is about divine continuity.`,
 
-  `## Genesis 48:5-7 - Ephraim and Manasseh Are Counted as Jacob's Sons
+  `## 📍 Genesis 48:5-7 - Ephraim and Manasseh Are Counted as Jacob's Sons
 
 > Genesis 48:5
 > And now thy two sons, Ephraim and Manasseh... are mine; as Reuben and Simeon, they shall be mine.
@@ -210,7 +210,7 @@ Love.
 
 Rachel is still present in the emotional background of this moment.`,
 
-  `## Genesis 48:8-14 - Jacob Crosses His Hands
+  `## 📍 Genesis 48:8-14 - Jacob Crosses His Hands
 
 > Genesis 48:8
 > And Israel beheld Joseph's sons, and said, Who are these?
@@ -282,7 +282,7 @@ Sometimes we position things exactly the way they make sense to us.
 
 And God still crosses what we arranged because He sees something we do not.`,
 
-  `## Genesis 48:15-16 - Jacob Blesses Joseph Through the Boys
+  `## 📍 Genesis 48:15-16 - Jacob Blesses Joseph Through the Boys
 
 > Genesis 48:15
 > And he blessed Joseph, and said, God, before whom my fathers Abraham and Isaac did walk...
@@ -341,7 +341,7 @@ God has guarded me through things I could not have survived by myself.
 
 And now he asks that same redeeming God to bless the boys.`,
 
-  `## Genesis 48:17-20 - Joseph Tries to Correct Him, and Jacob Refuses
+  `## 📍 Genesis 48:17-20 - Joseph Tries to Correct Him, and Jacob Refuses
 
 > Genesis 48:17
 > And when Joseph saw that his father laid his right hand upon the head of Ephraim, it displeased him...
@@ -416,7 +416,7 @@ That means this moment becomes part of Israel’s blessing memory.
 
 These boys become a lasting point of reference inside the covenant people.`,
 
-  `## Genesis 48:21-22 - Joseph Gets a Word About the Future
+  `## 📍 Genesis 48:21-22 - Joseph Gets a Word About the Future
 
 > Genesis 48:21
 > And Israel said unto Joseph, Behold, I die: but God shall be with you, and bring you again unto the land of your fathers.
@@ -470,7 +470,7 @@ Joseph, once stripped of inheritance by betrayal, is now publicly honored in the
 
 That is another quiet reversal in the Joseph story.`,
 
-  `## What Genesis 48 Is Really Showing Us
+  `## 🔍 What Genesis 48 Is Really Showing Us
 
 Genesis 48 is showing us that God’s blessing is not mechanical.
 
@@ -507,7 +507,7 @@ That is both humbling and comforting.
 Humbling because we do not get to manage God.
 Comforting because His wisdom is deeper than our arrangements.`,
 
-  `## Pause and Reflect
+  `## 💬 Pause and Reflect
 
 Genesis 48 asks whether you trust God enough to let Him cross your neat expectations.
 

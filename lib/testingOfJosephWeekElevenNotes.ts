@@ -51,7 +51,7 @@ This chapter shows what it looks like to live wisely in the place where God has 
 
 without forgetting the bigger promise over your life.`,
 
-  `## Why Genesis 47 Matters
+  `## 🧠 Why Genesis 47 Matters
 
 Genesis 47 matters because it joins practical wisdom and covenant perspective in the same chapter.
 
@@ -81,7 +81,7 @@ He is carrying weight.
 
 That is a big part of the testing too.`,
 
-  `## Genesis 47:1-6 - Joseph Settles the Family in Goshen
+  `## 📍 Genesis 47:1-6 - Joseph Settles the Family in Goshen
 
 > Genesis 47:1
 > Then Joseph came and told Pharaoh, and said, My father and my brethren... are come out of the land of Canaan...
@@ -170,7 +170,7 @@ That should not be missed.
 
 Years of quiet faithfulness are now creating space for an entire household to live in safety.`,
 
-  `## Genesis 47:7-10 - Jacob Stands Before Pharaoh
+  `## 📍 Genesis 47:7-10 - Jacob Stands Before Pharaoh
 
 > Genesis 47:7
 > And Joseph brought in Jacob his father, and set him before Pharaoh...
@@ -252,7 +252,7 @@ You can acknowledge God’s faithfulness and still say,
 
 "This road was hard."`,
 
-  `## Genesis 47:11-12 - Joseph Provides for the Household
+  `## 📍 Genesis 47:11-12 - Joseph Provides for the Household
 
 > Genesis 47:11
 > And Joseph placed his father and his brethren, and gave them a possession in the land of Egypt...
@@ -299,7 +299,7 @@ yet Egypt is still not their promised land.
 
 That tension will matter more and more as the Bible story moves forward.`,
 
-  `## Genesis 47:13-26 - Joseph Manages the Famine with Real Policy
+  `## 📍 Genesis 47:13-26 - Joseph Manages the Famine with Real Policy
 
 > Genesis 47:13
 > And there was no bread in all the land; for the famine was very sore...
@@ -404,7 +404,7 @@ He is a man who learned enough through suffering to lead well under pressure.
 
 That is a different kind of maturity.`,
 
-  `## Genesis 47:27 - Israel Grows in Goshen
+  `## 📍 Genesis 47:27 - Israel Grows in Goshen
 
 > Genesis 47:27
 > And Israel dwelt in the land of Egypt, in the country of Goshen; and they had possessions therein, and grew, and multiplied exceedingly.
@@ -435,7 +435,7 @@ But Genesis shows us something more nuanced.
 
 God can multiply His people even in a place that is not their ultimate home.`,
 
-  `## Genesis 47:28-31 - Jacob Makes Joseph Swear
+  `## 📍 Genesis 47:28-31 - Jacob Makes Joseph Swear
 
 > Genesis 47:28
 > And Jacob lived in the land of Egypt seventeen years...
@@ -503,7 +503,7 @@ After speaking of death, burial, and promise, he worships.
 
 Because even at the edge of death, Jacob's hope is still connected to the God who promised more than his eyes had yet fully seen.`,
 
-  `## What Genesis 47 Is Really Showing Us
+  `## 🔍 What Genesis 47 Is Really Showing Us
 
 Genesis 47 is showing us how to live faithfully in the tension between present responsibility and future promise.
 

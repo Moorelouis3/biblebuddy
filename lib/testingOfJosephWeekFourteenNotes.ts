@@ -51,7 +51,7 @@ who are you when the covering is gone?
 Genesis 50 answers that for the brothers.
 And it answers it for Joseph too.`,
 
-  `## Why Genesis 50 Matters
+  `## 🧠 Why Genesis 50 Matters
 
 Genesis 50 matters because it closes Genesis by holding together three things people often separate:
 
@@ -87,7 +87,7 @@ But not belonging to Egypt.
 
 And that tension matters for anyone who knows what it is like to live in provision while still waiting for fulfillment.`,
 
-  `## A Quick Bridge From Genesis 49 to Genesis 50
+  `## 🌉 A Quick Bridge From Genesis 49 to Genesis 50
 
 At the end of Genesis 49, Jacob finished blessing his sons, gave instructions about his burial, drew up his feet into the bed, and died.
 

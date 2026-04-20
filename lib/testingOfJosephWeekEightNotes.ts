@@ -66,7 +66,7 @@ Because before Joseph can reveal himself in Genesis 45, he has to know whether r
 
 Genesis 44 gives him that answer.`,
 
-  `## Why Genesis 44 Matters
+  `## 🧠 Why Genesis 44 Matters
 
 Genesis 44 matters because it answers one of the biggest questions in the whole Joseph story:
 
@@ -98,7 +98,7 @@ That is why this chapter is so powerful.
 
 Joseph is about to find out that the men standing before him are no longer the exact men who threw him into a pit.`,
 
-  `## Genesis 44:1-5 - Joseph Sets the Final Test
+  `## 📍 Genesis 44:1-5 - Joseph Sets the Final Test
 
 > Genesis 44:1
 > And he commanded the steward of his house, saying, Fill the men's sacks with food, as much as they can carry...
@@ -186,7 +186,7 @@ Now that same kind of moment is being set up again.
 
 This is the final exam.`,
 
-  `## Genesis 44:6-10 - The Brothers Speak with Confidence
+  `## 📍 Genesis 44:6-10 - The Brothers Speak with Confidence
 
 > Genesis 44:6
 > And he overtook them, and he spake unto them these same words.
@@ -255,7 +255,7 @@ This is no longer just about a missing cup.
 
 This is about whether they will abandon another brother when the cost gets high.`,
 
-  `## Genesis 44:11-13 - The Cup Is Found, and the Brothers Tear Their Clothes
+  `## 📍 Genesis 44:11-13 - The Cup Is Found, and the Brothers Tear Their Clothes
 
 > Genesis 44:11
 > Then they speedily took down every man his sack to the ground...
@@ -330,7 +330,7 @@ So when the brothers tear their garments here, the text is showing us:
 
 That alone already tells us this family is not where it was in Genesis 37.`,
 
-  `## Genesis 44:14-17 - Judah Draws Near
+  `## 📍 Genesis 44:14-17 - Judah Draws Near
 
 > Genesis 44:14
 > And Judah and his brethren came to Joseph's house...
@@ -397,7 +397,7 @@ Genesis 37 is hanging over this room like a shadow.
 
 And now Judah has to answer it.`,
 
-  `## Genesis 44:18-29 - Judah's Plea Begins
+  `## 📍 Genesis 44:18-29 - Judah's Plea Begins
 
 > Genesis 44:18
 > Then Judah came near unto him, and said...
@@ -455,7 +455,7 @@ That is not small.
 
 That is evidence of transformation.`,
 
-  `## Genesis 44:30-34 - Judah Offers Himself Instead
+  `## 📍 Genesis 44:30-34 - Judah Offers Himself Instead
 
 > Genesis 44:30
 > Now therefore when I come to thy servant my father, and the lad be not with us...
@@ -553,7 +553,7 @@ But after this?
 
 The ground is finally ready.`,
 
-  `## What Genesis 44 Is Really Showing Us
+  `## 🔍 What Genesis 44 Is Really Showing Us
 
 Genesis 44 is showing us that testing can reveal transformation.
 

@@ -63,7 +63,7 @@ It is the sound of a man who has suffered deeply, healed slowly, and now has eno
 
 God was doing more than I knew while I was in the middle of all of it.`,
 
-  `## Why Genesis 45 Matters
+  `## 🧠 Why Genesis 45 Matters
 
 Genesis 45 matters because it is the chapter where Joseph interprets his life out loud.
 
@@ -96,7 +96,7 @@ No longer just the survivor.
 
 He is now a man who can hold pain and providence in the same sentence.`,
 
-  `## Genesis 45:1-3 - Joseph Reveals Himself
+  `## 📍 Genesis 45:1-3 - Joseph Reveals Himself
 
 > Genesis 45:1
 > Then Joseph could not refrain himself before all them that stood by him...
@@ -201,7 +201,7 @@ And of course they are.
 
 Because sometimes grace is most terrifying at first when the person you wronged finally has the right to answer back.`,
 
-  `## Genesis 45:4-8 - "You Sold Me... God Sent Me"
+  `## 📍 Genesis 45:4-8 - "You Sold Me... God Sent Me"
 
 > Genesis 45:4
 > Come near to me, I pray you...
@@ -301,7 +301,7 @@ It does not mean it was fair on the human level.
 
 It means God was building something larger than Joseph could see when he was in the pit or prison.`,
 
-  `## Genesis 45:9-15 - Joseph Calls for Jacob and Embraces His Brothers
+  `## 📍 Genesis 45:9-15 - Joseph Calls for Jacob and Embraces His Brothers
 
 > Genesis 45:9
 > Haste ye, and go up to my father...
@@ -375,7 +375,7 @@ His refusal to retaliate does that.
 
 Only then can conversation begin.`,
 
-  `## Genesis 45:16-20 - Pharaoh Enters the Story with Favor
+  `## 📍 Genesis 45:16-20 - Pharaoh Enters the Story with Favor
 
 > Genesis 45:16
 > And the fame thereof was heard in Pharaoh's house, saying, Joseph's brethren are come...
@@ -434,7 +434,7 @@ It is spiritually resonant too.
 
 Sometimes God’s next provision requires leaving behind what once felt necessary.`,
 
-  `## Genesis 45:21-24 - Provision for the Journey and One Final Warning
+  `## 📍 Genesis 45:21-24 - Provision for the Journey and One Final Warning
 
 > Genesis 45:21
 > And the children of Israel did so: and Joseph gave them wagons...
@@ -494,7 +494,7 @@ That is wisdom.
 Forgiveness is not only about the big emotional moment.
 It also pays attention to what could quietly poison the next stage.`,
 
-  `## Genesis 45:25-28 - Jacob Hears the News and His Spirit Revives
+  `## 📍 Genesis 45:25-28 - Jacob Hears the News and His Spirit Revives
 
 > Genesis 45:25
 > And they went up out of Egypt, and came into the land of Canaan unto Jacob their father,
@@ -572,7 +572,7 @@ I get to see my son.
 
 Hope has entered the story again.`,
 
-  `## What Genesis 45 Is Really Showing Us
+  `## 🔍 What Genesis 45 Is Really Showing Us
 
 Genesis 45 is showing us that grace is strongest when it comes from a position of power.
 

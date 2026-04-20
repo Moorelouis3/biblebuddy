@@ -61,7 +61,7 @@ He is naming the kind of men they have been...
 
 and the kind of future that kind of life tends to produce.`,
 
-  `## Why Genesis 49 Matters
+  `## 🧠 Why Genesis 49 Matters
 
 Genesis 49 matters because it is one of the clearest places in Genesis where family history and prophetic destiny come together.
 
@@ -90,7 +90,7 @@ what are you becoming?
 what are you passing on?
 what would your pattern sound like if somebody spoke it out loud?`,
 
-  `## Genesis 49:1-2 - Jacob Calls the Sons Together
+  `## 📍 Genesis 49:1-2 - Jacob Calls the Sons Together
 
 > Genesis 49:1
 > And Jacob called unto his sons, and said, Gather yourselves together, that I may tell you that which shall befall you in the last days.
@@ -138,7 +138,7 @@ That tension matters.
 
 The father who lived the mess is now speaking as the covenant head over the future of the family.`,
 
-  `## Genesis 49:3-4 - Reuben: Privilege Lost Through Instability
+  `## 📍 Genesis 49:3-4 - Reuben: Privilege Lost Through Instability
 
 > Genesis 49:3
 > Reuben, thou art my firstborn, my might, and the beginning of my strength...
@@ -201,7 +201,7 @@ That is not only Reuben’s warning.
 
 It is a warning for anyone who assumes opportunity is enough without character.`,
 
-  `## Genesis 49:5-7 - Simeon and Levi: Violence Leaves a Mark
+  `## 📍 Genesis 49:5-7 - Simeon and Levi: Violence Leaves a Mark
 
 > Genesis 49:5
 > Simeon and Levi are brethren; instruments of cruelty are in their habitations.
@@ -266,7 +266,7 @@ But the original warning stands:
 
 violent character leaves generational consequences.`,
 
-  `## Genesis 49:8-12 - Judah: Praise, Rule, and the Scepter
+  `## 📍 Genesis 49:8-12 - Judah: Praise, Rule, and the Scepter
 
 > Genesis 49:8
 > Judah, thou art he whom thy brethren shall praise...
@@ -355,7 +355,7 @@ That does not erase what Judah did.
 
 It shows that repentance, responsibility, and God’s purpose can redirect a life in a powerful way.`,
 
-  `## Genesis 49:13-21 - Zebulun, Issachar, Dan, Gad, Asher, Naphtali
+  `## 📍 Genesis 49:13-21 - Zebulun, Issachar, Dan, Gad, Asher, Naphtali
 
 > Genesis 49:13-21
 
@@ -410,7 +410,7 @@ They help shape how the tribes will later be understood.
 Not every son gets equal space.
 But each one is still spoken into with intention.`,
 
-  `## Genesis 49:22-26 - Joseph: Fruitfulness Through Affliction
+  `## 📍 Genesis 49:22-26 - Joseph: Fruitfulness Through Affliction
 
 > Genesis 49:22
 > Joseph is a fruitful bough, even a fruitful bough by a well...
@@ -475,7 +475,7 @@ Joseph’s life was fruitful because God upheld him.
 
 That is one of the clearest summaries of the whole Joseph story.`,
 
-  `## Genesis 49:27 - Benjamin
+  `## 📍 Genesis 49:27 - Benjamin
 
 > Genesis 49:27
 > Benjamin shall ravin as a wolf...
@@ -492,7 +492,7 @@ Again, Genesis 49 is not only about who these men have seemed to be in one seaso
 
 It is about what their lines will become.`,
 
-  `## Genesis 49:28-33 - Jacob Finishes, Gives Burial Instructions, and Dies
+  `## 📍 Genesis 49:28-33 - Jacob Finishes, Gives Burial Instructions, and Dies
 
 > Genesis 49:28
 > All these are the twelve tribes of Israel...
@@ -542,7 +542,7 @@ There is something deeply weighty about that ending.
 
 The man whose life was full of wrestling ends by speaking over the future and then being gathered to his people.`,
 
-  `## What Genesis 49 Is Really Showing Us
+  `## 🔍 What Genesis 49 Is Really Showing Us
 
 Genesis 49 is showing us that blessing and exposure are not opposites.
 
@@ -572,7 +572,7 @@ So Genesis 49 is not merely the end of Jacob’s life.
 
 It is one of the places where the road to kingship and Messiah becomes unmistakably clearer.`,
 
-  `## Pause and Reflect
+  `## 💬 Pause and Reflect
 
 Genesis 49 asks a hard question:
 

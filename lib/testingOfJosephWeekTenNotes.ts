@@ -64,7 +64,7 @@ That is where Jacob is.
 
 And that is why Genesis 46 matters so much.`,
 
-  `## Why Genesis 46 Matters
+  `## 🧠 Why Genesis 46 Matters
 
 Genesis 46 matters because it shows us that transition can still be holy.
 
@@ -87,7 +87,7 @@ If Genesis 45 was the chapter of revelation, Genesis 46 is the chapter of moveme
 The truth has been spoken.
 Now the family has to travel into the future God has prepared.`,
 
-  `## Genesis 46:1-4 - God Meets Jacob at Beersheba
+  `## 📍 Genesis 46:1-4 - God Meets Jacob at Beersheba
 
 > Genesis 46:1
 > And Israel took his journey with all that he had, and came to Beersheba, and offered sacrifices unto the God of his father Isaac.
@@ -220,7 +220,7 @@ The son he thought was dead will now be the son present at his death.
 
 That is mercy.`,
 
-  `## Genesis 46:5-7 - The Family Moves with Everything They Have
+  `## 📍 Genesis 46:5-7 - The Family Moves with Everything They Have
 
 > Genesis 46:5
 > And Jacob rose up from Beersheba: and the sons of Israel carried Jacob their father...
@@ -281,7 +281,7 @@ It is family shaped.
 Generational.
 Embodied.`,
 
-  `## Genesis 46:8-27 - Why the Genealogy Matters
+  `## 📍 Genesis 46:8-27 - Why the Genealogy Matters
 
 > Genesis 46:8
 > And these are the names of the children of Israel, which came into Egypt...
@@ -341,7 +341,7 @@ Names matter to Him.
 
 And that matters to us too.`,
 
-  `## Genesis 46:28-30 - Judah Goes Ahead, and Jacob Sees Joseph Again
+  `## 📍 Genesis 46:28-30 - Judah Goes Ahead, and Jacob Sees Joseph Again
 
 > Genesis 46:28
 > And he sent Judah before him unto Joseph, to direct his face unto Goshen...
@@ -418,7 +418,7 @@ The son he mourned as dead is alive.
 
 The grief story he lived under for years has been broken open by joy.`,
 
-  `## Genesis 46:31-34 - Joseph Prepares the Family for Pharaoh
+  `## 📍 Genesis 46:31-34 - Joseph Prepares the Family for Pharaoh
 
 > Genesis 46:31
 > And Joseph said unto his brethren, and unto his father's house, I will go up, and shew Pharaoh...
@@ -461,7 +461,7 @@ That is wise leadership.
 Provision is not only about food.
 Sometimes it is about the right distance to preserve identity.`,
 
-  `## What Genesis 46 Is Really Showing Us
+  `## 🔍 What Genesis 46 Is Really Showing Us
 
 Genesis 46 is showing us that God is present in transition.
 
