@@ -3,6 +3,10 @@ import {
   type BibleBuddyTvCategory,
 } from "./bibleBuddyTvContent";
 
+function isCrossListedWingfeather(key: Exclude<BibleBuddyTvBrowseKey, "home" | "my-list">, titleId: string) {
+  return titleId === "wingfeather-saga" && (key === "tv" || key === "bible-stories");
+}
+
 export type BibleBuddyTvBrowseKey = BibleBuddyTvCategory | "home" | "my-list";
 
 export type BibleBuddyTvBrowseSubcategory = {
@@ -119,7 +123,11 @@ export function getBrowseSubcategories(
 }
 
 export function getTitlesForBrowseCategory(key: Exclude<BibleBuddyTvBrowseKey, "home" | "my-list">) {
-  return bibleBuddyTvTitles.filter((title) => title.badge !== "Coming Soon" && title.category === key);
+  return bibleBuddyTvTitles.filter(
+    (title) =>
+      title.badge !== "Coming Soon" &&
+      (title.category === key || isCrossListedWingfeather(key, title.id))
+  );
 }
 
 export function matchesBrowseSubcategory(
@@ -162,6 +170,7 @@ export function matchesBrowseSubcategory(
     case "bible-stories":
       return (
         {
+          "wingfeather-saga": ["popular", "faith-under-fire"],
           "queen-jezebel-animation": ["old-testament", "prophets", "bible-characters"],
           "daniel-animation": ["old-testament", "prophets", "bible-characters", "faith-under-fire"],
           "god-with-us-animation": ["jesus-story", "bible-characters"],
@@ -172,6 +181,7 @@ export function matchesBrowseSubcategory(
     case "tv":
       return (
         {
+          "wingfeather-saga": ["popular", "comedy-drama", "discipleship"],
           "promised-land": ["wilderness", "comedy-drama"],
           "the-chosen": ["jesus-stories", "discipleship"],
         } as Record<string, string[]>

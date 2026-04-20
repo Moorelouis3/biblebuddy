@@ -41,6 +41,10 @@ function getCategoryCardStyle(category: BibleBuddyTvCategory) {
 
 type ShelfTitle = (typeof bibleBuddyTvTitles)[number];
 
+function isTitleInShelf(title: ShelfTitle, shelfId: BibleBuddyTvCategory) {
+  return title.category === shelfId || (title.id === "wingfeather-saga" && (shelfId === "tv" || shelfId === "bible-stories"));
+}
+
 function PosterShelf({
   titles,
   getProgressPercent,
@@ -181,8 +185,8 @@ export default function BibleBuddyTvHomePage() {
         ...shelf,
         titles:
           shelf.id === "sermons"
-            ? [...liveTitles.filter((title) => title.category === shelf.id)].sort(() => Math.random() - 0.5)
-            : liveTitles.filter((title) => title.category === shelf.id),
+            ? [...liveTitles.filter((title) => isTitleInShelf(title, shelf.id))].sort(() => Math.random() - 0.5)
+            : liveTitles.filter((title) => isTitleInShelf(title, shelf.id)),
       })),
     [liveTitles]
   );
