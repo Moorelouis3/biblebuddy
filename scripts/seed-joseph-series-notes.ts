@@ -4,6 +4,7 @@ dotenv.config({ path: resolve(process.cwd(), ".env") });
 dotenv.config({ path: resolve(process.cwd(), ".env.local") });
 
 import { createClient } from "@supabase/supabase-js";
+import { parseSeriesNotesToHTML } from "../lib/seriesNotesHtml";
 import { TESTING_OF_JOSEPH_WEEK_ONE_NOTES } from "../lib/testingOfJosephWeekOneNotes";
 import { TESTING_OF_JOSEPH_WEEK_TWO_NOTES } from "../lib/testingOfJosephWeekTwoNotes";
 import { TESTING_OF_JOSEPH_WEEK_THREE_NOTES } from "../lib/testingOfJosephWeekThreeNotes";
@@ -26,12 +27,42 @@ function normalizeNotes(value: string | string[]): string {
 }
 
 const rows = [
-  { series_key: "testing_of_joseph", week_number: 1, notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_ONE_NOTES) },
-  { series_key: "testing_of_joseph", week_number: 2, notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_TWO_NOTES) },
-  { series_key: "testing_of_joseph", week_number: 3, notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_THREE_NOTES) },
-  { series_key: "testing_of_joseph", week_number: 4, notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_FOUR_NOTES) },
-  { series_key: "testing_of_joseph", week_number: 5, notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_FIVE_NOTES) },
-  { series_key: "testing_of_joseph", week_number: 6, notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_SIX_NOTES) },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 1,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_ONE_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_ONE_NOTES)),
+  },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 2,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_TWO_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_TWO_NOTES)),
+  },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 3,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_THREE_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_THREE_NOTES)),
+  },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 4,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_FOUR_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_FOUR_NOTES)),
+  },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 5,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_FIVE_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_FIVE_NOTES)),
+  },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 6,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_SIX_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_SIX_NOTES)),
+  },
 ];
 
 async function main() {

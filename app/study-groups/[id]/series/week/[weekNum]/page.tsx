@@ -251,51 +251,6 @@ function NotesSection({
   const hasNotesAvailable = hasLazySeriesNotes(seriesTitle, lesson.weekNumber) || Boolean(lesson.notes?.trim());
 
   useEffect(() => {
-    if (!isPaid || !hasNotesAvailable) return;
-    if (notesSource || notesHTML || notesLoading) return;
-
-    let cancelled = false;
-
-    async function prefetchNotes() {
-      setNotesLoading(true);
-      try {
-        const loaded = await loadSeriesNotesContent(seriesTitle, lesson.weekNumber, lesson.notes ?? null);
-        if (cancelled) return;
-        if (!loaded.content && !loaded.html) return;
-
-        setNotesSource(loaded.content ?? null);
-
-        if (loaded.html) {
-          setNotesHTML(loaded.html);
-          return;
-        }
-
-        if (loaded.content) {
-          const combinedNotes = Array.isArray(loaded.content) ? loaded.content.join("\n\n") : loaded.content;
-          window.setTimeout(() => {
-            if (cancelled) return;
-            setNotesHTML(parseIntroToHTML(combinedNotes));
-          }, 30);
-        }
-      } catch (error) {
-        if (!cancelled) {
-          console.error("[SERIES_NOTES] Failed to prefetch notes", error);
-        }
-      } finally {
-        if (!cancelled) {
-          setNotesLoading(false);
-        }
-      }
-    }
-
-    void prefetchNotes();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [hasNotesAvailable, isPaid, lesson.notes, lesson.weekNumber, notesHTML, notesLoading, notesSource, seriesTitle]);
-
-  useEffect(() => {
     if (!showNotesModal || !notesSource) return;
     if (notesHTML) return;
 
