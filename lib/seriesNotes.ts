@@ -11,7 +11,7 @@ export function hasLazySeriesNotes(seriesTitle: string | null | undefined, weekN
   const seriesKey = getSeriesKeyFromTitle(seriesTitle);
 
   if (seriesKey === "testing_of_joseph") {
-    return weekNumber === 1 || weekNumber === 2 || weekNumber === 3 || weekNumber === 4 || weekNumber === 5 || weekNumber === 6;
+    return weekNumber === 1 || weekNumber === 2 || weekNumber === 3 || weekNumber === 4 || weekNumber === 5 || weekNumber === 6 || weekNumber === 7;
   }
 
   return false;
@@ -69,6 +69,11 @@ export async function loadSeriesNotesContent(
     if (weekNumber === 6) {
       const mod = await import("./testingOfJosephWeekSixNotes");
       return { content: mod.TESTING_OF_JOSEPH_WEEK_SIX_NOTES };
+    }
+
+    if (weekNumber === 7) {
+      const mod = await import("./testingOfJosephWeekSevenNotes");
+      return { content: mod.TESTING_OF_JOSEPH_WEEK_SEVEN_NOTES };
     }
   }
 

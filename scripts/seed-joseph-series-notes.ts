@@ -11,6 +11,7 @@ import { TESTING_OF_JOSEPH_WEEK_THREE_NOTES } from "../lib/testingOfJosephWeekTh
 import { TESTING_OF_JOSEPH_WEEK_FOUR_NOTES } from "../lib/testingOfJosephWeekFourNotes";
 import { TESTING_OF_JOSEPH_WEEK_FIVE_NOTES } from "../lib/testingOfJosephWeekFiveNotes";
 import { TESTING_OF_JOSEPH_WEEK_SIX_NOTES } from "../lib/testingOfJosephWeekSixNotes";
+import { TESTING_OF_JOSEPH_WEEK_SEVEN_NOTES } from "../lib/testingOfJosephWeekSevenNotes";
 
 const SUPABASE_URL = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -63,6 +64,12 @@ const rows = [
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_SIX_NOTES),
     notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_SIX_NOTES)),
   },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 7,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_SEVEN_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_SEVEN_NOTES)),
+  },
 ];
 
 async function main() {
@@ -75,7 +82,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log("Seeded Testing of Joseph week notes 1-6 into series_week_notes.");
+  console.log("Seeded Testing of Joseph week notes 1-7 into series_week_notes.");
 }
 
 main().catch((error) => {
