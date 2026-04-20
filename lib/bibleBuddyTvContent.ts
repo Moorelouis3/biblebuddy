@@ -10065,8 +10065,8 @@ export const wingfeatherSagaTitle: BibleBuddyTvTitle = {
   title: "The Wingfeather Saga",
   badge: "Bible Buddy TV",
   category: "tv",
-  poster: "/banner.png",
-  heroImage: "/banner.png",
+  poster: "/TheWingfeatherSaga.jpg",
+  heroImage: "/TheWingfeatherSaga.jpg",
   accentFrom: "#1e3a8a",
   accentTo: "#0f766e",
   year: "Season 1",
@@ -10107,7 +10107,7 @@ export const wingfeatherSagaTitle: BibleBuddyTvTitle = {
       duration: "Episode",
       summary:
         "The story opens by introducing the Wingfeather family, the danger around them, and the deeper questions of identity and courage that will shape the season.",
-      thumbnail: "/banner.png",
+      thumbnail: "/TheWingfeatherSaga.jpg",
       youtubeUrl: "https://www.youtube.com/watch?v=qBkL9M5mo3Y",
       available: true,
       louisIntro:
@@ -10121,7 +10121,7 @@ export const wingfeatherSagaTitle: BibleBuddyTvTitle = {
       duration: "Episode",
       summary:
         "The pressure around the family keeps growing, and the story digs deeper into trust, responsibility, and what it means to stand firm when things start getting harder.",
-      thumbnail: "/banner.png",
+      thumbnail: "/TheWingfeatherSaga.jpg",
       youtubeUrl: "https://www.youtube.com/watch?v=zhI68ckJXyY",
       available: true,
       reflectionQuestion: "How did this episode show courage or sacrifice?",
@@ -10133,7 +10133,7 @@ export const wingfeatherSagaTitle: BibleBuddyTvTitle = {
       duration: "Episode",
       summary:
         "As the story moves forward, the family faces more danger and more truth starts coming to the surface, pushing each person to respond.",
-      thumbnail: "/banner.png",
+      thumbnail: "/TheWingfeatherSaga.jpg",
       youtubeUrl: "https://www.youtube.com/watch?v=CSrggG_TRjo",
       available: true,
       reflectionQuestion: "What truth started becoming clearer in this episode?",
@@ -10145,7 +10145,7 @@ export const wingfeatherSagaTitle: BibleBuddyTvTitle = {
       duration: "Episode",
       summary:
         "This part of the season keeps building the family story while showing the cost of doing what is right when fear and danger are still close.",
-      thumbnail: "/banner.png",
+      thumbnail: "/TheWingfeatherSaga.jpg",
       youtubeUrl: "https://www.youtube.com/watch?v=fyMZh1mEP48",
       available: true,
       reflectionQuestion: "Where did you see someone stand firm in this episode?",
@@ -10157,7 +10157,7 @@ export const wingfeatherSagaTitle: BibleBuddyTvTitle = {
       duration: "Episode",
       summary:
         "The season keeps pressing into courage, family loyalty, and the kind of choices people make when the truth costs something.",
-      thumbnail: "/banner.png",
+      thumbnail: "/TheWingfeatherSaga.jpg",
       youtubeUrl: "https://www.youtube.com/watch?v=B_8l8G5VEu0",
       available: true,
       reflectionQuestion: "What choice in this episode felt the hardest or most important?",
@@ -10169,7 +10169,7 @@ export const wingfeatherSagaTitle: BibleBuddyTvTitle = {
       duration: "Episode",
       summary:
         "Episode 6 keeps the story moving with more danger, more identity questions, and more chances to see courage and truth tested under pressure.",
-      thumbnail: "/banner.png",
+      thumbnail: "/TheWingfeatherSaga.jpg",
       youtubeUrl: "https://youtu.be/byNJSGuuUr8",
       available: true,
       reflectionQuestion: "How did this episode connect courage with doing what is right?",
