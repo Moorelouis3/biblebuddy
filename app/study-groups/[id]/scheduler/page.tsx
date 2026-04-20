@@ -16,6 +16,7 @@ import {
   buildPrayerRequestSundayPost,
   buildUpdateMondayPost,
   buildWhoWasThisFridayPost,
+  getBerlinDateKey,
   type BibleStudySeriesSnapshot,
 } from "@/lib/groupRecurringSeries";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
@@ -148,6 +149,89 @@ function getBerlinDateWithOffset(offsetDays: number) {
   const date = new Date(Date.UTC(berlin.year, berlin.month - 1, berlin.day, 12, 0, 0));
   date.setUTCDate(date.getUTCDate() + offsetDays);
   return date;
+}
+
+function getBerlinDateTimeParts(date: Date) {
+  const formatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Berlin",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  });
+
+  const parts = Object.fromEntries(
+    formatter
+      .formatToParts(date)
+      .filter((part) => part.type !== "literal")
+      .map((part) => [part.type, part.value]),
+  ) as Record<string, string>;
+
+  return {
+    year: Number(parts.year),
+    month: Number(parts.month),
+    day: Number(parts.day),
+    hour: Number(parts.hour),
+    minute: Number(parts.minute),
+  };
+}
+
+function getTimeZoneOffsetMinutes(date: Date, timeZone: string) {
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    timeZoneName: "shortOffset",
+    hour: "2-digit",
+  });
+  const zoneName = formatter.formatToParts(date).find((part) => part.type === "timeZoneName")?.value || "GMT+0";
+  const match = zoneName.match(/GMT([+-])(\d{1,2})(?::?(\d{2}))?/i);
+  if (!match) return 0;
+  const sign = match[1] === "-" ? -1 : 1;
+  const hours = Number(match[2] || 0);
+  const minutes = Number(match[3] || 0);
+  return sign * (hours * 60 + minutes);
+}
+
+function convertBerlinLocalInputToIso(value: string) {
+  if (!value) return null;
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/);
+  if (!match) return null;
+
+  const [, yearRaw, monthRaw, dayRaw, hourRaw, minuteRaw] = match;
+  const year = Number(yearRaw);
+  const month = Number(monthRaw);
+  const day = Number(dayRaw);
+  const hour = Number(hourRaw);
+  const minute = Number(minuteRaw);
+
+  const firstGuess = new Date(Date.UTC(year, month - 1, day, hour, minute, 0));
+  const firstOffset = getTimeZoneOffsetMinutes(firstGuess, "Europe/Berlin");
+  const adjusted = new Date(Date.UTC(year, month - 1, day, hour, minute, 0) - firstOffset * 60_000);
+  const finalOffset = getTimeZoneOffsetMinutes(adjusted, "Europe/Berlin");
+  const finalDate = finalOffset === firstOffset
+    ? adjusted
+    : new Date(Date.UTC(year, month - 1, day, hour, minute, 0) - finalOffset * 60_000);
+
+  return finalDate.toISOString();
+}
+
+function formatIsoForBerlinInput(iso: string | null | undefined) {
+  if (!iso) return "";
+  const parts = getBerlinDateTimeParts(new Date(iso));
+  const pad = (value: number) => String(value).padStart(2, "0");
+  return `${parts.year}-${pad(parts.month)}-${pad(parts.day)}T${pad(parts.hour)}:${pad(parts.minute)}`;
+}
+
+function formatQueueDateTime(iso: string | null | undefined) {
+  if (!iso) return "Not scheduled";
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: "Europe/Berlin",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(new Date(iso));
 }
 
 function parseBibleReference(reference: string) {
@@ -298,7 +382,9 @@ function getRecurringPreviewItem(
 }
 
 function queueStatusLabel(item: QueueItem) {
-  return item.status === "published" ? "Posted" : "Draft";
+  if (item.status === "published") return "Posted";
+  if (item.status === "scheduled") return "Scheduled";
+  return "Draft";
 }
 
 function getInitial(name: string) {
@@ -393,6 +479,7 @@ export default function StudyGroupSchedulerPage() {
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
 
   const [newPostTitle, setNewPostTitle] = useState("");
+  const [queueScheduledFor, setQueueScheduledFor] = useState("");
   const [composerMode, setComposerMode] = useState<"text" | "photo" | "video">("text");
   const [composerPhotoFile, setComposerPhotoFile] = useState<File | null>(null);
   const [composerPhotoPreview, setComposerPhotoPreview] = useState<string | null>(null);
@@ -539,6 +626,35 @@ export default function StudyGroupSchedulerPage() {
   }, [dismissedRecurringIds, publishedRecurringIds, seriesSnapshot]);
   const selectedRecurringItem =
     recurringFeedItems.find((item) => item.scheduleId === selectedRecurringItemKey) || null;
+  const schedulerCalendarDays = useMemo(() => {
+    return Array.from({ length: 14 }, (_, offset) => {
+      const date = getBerlinDateWithOffset(offset);
+      const dateKey = getBerlinDateKey(date);
+      const recurring = recurringFeedItems
+        .filter((item) => getBerlinDateKey(new Date(item.releaseIso)) === dateKey)
+        .map((item) => ({
+          id: item.scheduleId,
+          title: item.title,
+          kind: "recurring" as const,
+          timeLabel: formatQueueDateTime(item.releaseIso),
+        }));
+      const custom = carouselQueue
+        .filter((item) => item.status === "scheduled" && item.scheduled_for && getBerlinDateKey(new Date(item.scheduled_for)) === dateKey)
+        .map((item) => ({
+          id: item.id,
+          title: item.title || "Scheduled post",
+          kind: "custom" as const,
+          timeLabel: formatQueueDateTime(item.scheduled_for),
+        }));
+
+      return {
+        date,
+        dateKey,
+        recurring,
+        custom,
+      };
+    });
+  }, [carouselQueue, recurringFeedItems]);
 
   async function loadCarouselQueue(currentUserId: string) {
     setQueueLoading(true);
@@ -615,6 +731,7 @@ export default function StudyGroupSchedulerPage() {
     setEditingQueueItemId(null);
     setShowPostComposerModal(false);
     setNewPostTitle("");
+    setQueueScheduledFor("");
     postEditor?.commands.clearContent();
     setComposerPhotoFile(null);
     setComposerPhotoPreview(null);
@@ -631,6 +748,7 @@ export default function StudyGroupSchedulerPage() {
     setEditingQueueItemId(item.id);
     setShowPostComposerModal(true);
     setNewPostTitle(item.title || "");
+    setQueueScheduledFor(formatIsoForBerlinInput(item.scheduled_for));
     postEditor?.commands.setContent(item.caption || "");
     setComposerPhotoFile(null);
     setComposerVideoFile(null);
@@ -711,8 +829,8 @@ export default function StudyGroupSchedulerPage() {
         title: newPostTitle.trim() || null,
         caption: normalizedContent || null,
         cover_image_url: mediaUrl,
-        scheduled_for: null,
-        status: "draft" as const,
+        scheduled_for: convertBerlinLocalInputToIso(queueScheduledFor),
+        status: queueScheduledFor ? ("scheduled" as const) : ("draft" as const),
       };
 
       if (editingQueueItemId) {
@@ -756,8 +874,9 @@ export default function StudyGroupSchedulerPage() {
         body: JSON.stringify({ queueId: queueItem.id }),
       });
 
-      const payload = await response.json();
-      if (!response.ok) throw new Error(payload.error || "Could not post this to the home feed.");
+      const raw = await response.text();
+      const payload = raw ? JSON.parse(raw) : null;
+      if (!response.ok) throw new Error(payload?.error || "Could not post this to the home feed.");
 
       if (adminUserId) await loadCarouselQueue(adminUserId);
       setSelectedQueueItemId(null);
@@ -1585,6 +1704,63 @@ RULES:
           )}
         </div>
 
+        <div className="rounded-3xl border border-gray-200 bg-white p-4 shadow-sm">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">Berlin Calendar</p>
+            <h2 className="mt-1 text-lg font-bold text-gray-900">Daily posts and your scheduled posts</h2>
+            <p className="mt-1 text-sm text-gray-500">
+              See the Bible Study Group daily posts and your custom scheduled posts together by day.
+            </p>
+          </div>
+
+          <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+            {schedulerCalendarDays.map((day) => (
+              <div key={day.dateKey} className="rounded-2xl border border-[#ece6dd] bg-[#fcfbf8] p-4">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-gray-400">
+                  {new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Berlin", weekday: "short" }).format(day.date)}
+                </p>
+                <p className="mt-1 text-sm font-semibold text-gray-900">
+                  {new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Berlin", month: "short", day: "numeric" }).format(day.date)}
+                </p>
+
+                <div className="mt-3 space-y-2">
+                  {day.recurring.map((item) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => setSelectedRecurringItemKey(item.id)}
+                      className="w-full rounded-xl border border-[#dce8dc] bg-white px-3 py-2 text-left transition hover:shadow-sm"
+                    >
+                      <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#4a9b6f]">Daily post</p>
+                      <p className="mt-1 text-sm font-semibold text-gray-900">{item.title}</p>
+                      <p className="mt-1 text-xs text-gray-500">{item.timeLabel}</p>
+                    </button>
+                  ))}
+
+                  {day.custom.map((item) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => setSelectedQueueItemId(item.id)}
+                      className="w-full rounded-xl border border-[#ead8c4] bg-white px-3 py-2 text-left transition hover:shadow-sm"
+                    >
+                      <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#8d5d38]">Your scheduled post</p>
+                      <p className="mt-1 text-sm font-semibold text-gray-900">{item.title}</p>
+                      <p className="mt-1 text-xs text-gray-500">{item.timeLabel}</p>
+                    </button>
+                  ))}
+
+                  {day.recurring.length === 0 && day.custom.length === 0 ? (
+                    <div className="rounded-xl border border-dashed border-[#e5ddd2] px-3 py-3 text-xs text-gray-400">
+                      Nothing scheduled yet
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {queueLoading ? (
           <div className="rounded-3xl border border-gray-200 bg-white px-6 py-12 text-center text-sm text-gray-500 shadow-sm">
             Loading your post queue...
@@ -1631,7 +1807,13 @@ RULES:
                         <span className="rounded-full bg-[#eef7f1] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#4a9b6f]">
                           {queueStatusLabel(item)}
                         </span>
-                        <span className="text-xs text-gray-400">{item.status === "published" && item.published_at ? `Posted ${timeAgo(item.published_at)}` : timeAgo(item.created_at)}</span>
+                        <span className="text-xs text-gray-400">
+                          {item.status === "published" && item.published_at
+                            ? `Posted ${timeAgo(item.published_at)}`
+                            : item.status === "scheduled" && item.scheduled_for
+                              ? `Posts ${formatQueueDateTime(item.scheduled_for)}`
+                              : timeAgo(item.created_at)}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -1687,6 +1869,8 @@ RULES:
             </div>
 
             <div className="px-6 py-5 space-y-4">
+              {queueError ? <p className="text-sm text-red-500">{queueError}</p> : null}
+
               <div>
                 <label className="block text-sm font-semibold text-gray-800 mb-2">Title</label>
                 <input
@@ -1696,6 +1880,19 @@ RULES:
                   placeholder="Add a title for your post"
                   className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
                 />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-800 mb-2">Schedule in Berlin time</label>
+                <input
+                  type="datetime-local"
+                  value={queueScheduledFor}
+                  onChange={(event) => setQueueScheduledFor(event.target.value)}
+                  className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
+                />
+                <p className="mt-2 text-xs text-gray-500">
+                  Leave this empty to keep it as a draft. Add a Berlin date and time if you want it to post automatically.
+                </p>
               </div>
 
               <div>
@@ -1813,7 +2010,7 @@ RULES:
                 </div>
               )}
 
-              {(composerUploadError || queueError) && <p className="text-sm text-red-500">{composerUploadError || queueError}</p>}
+              {composerUploadError && <p className="text-sm text-red-500">{composerUploadError}</p>}
 
               <div className="flex items-center justify-end gap-3 pt-2">
                 <button
@@ -1847,7 +2044,9 @@ RULES:
                   <span className="text-xs text-gray-400">
                     {selectedQueueItem.status === "published" && selectedQueueItem.published_at
                       ? `Posted ${timeAgo(selectedQueueItem.published_at)}`
-                      : `${queueStatusLabel(selectedQueueItem)} - ${timeAgo(selectedQueueItem.created_at)}`}
+                      : selectedQueueItem.status === "scheduled" && selectedQueueItem.scheduled_for
+                        ? `Scheduled for ${formatQueueDateTime(selectedQueueItem.scheduled_for)}`
+                        : `${queueStatusLabel(selectedQueueItem)} - ${timeAgo(selectedQueueItem.created_at)}`}
                   </span>
                 </div>
                 {selectedQueueItem.title ? <h2 className="mt-2 text-xl font-bold leading-snug text-gray-900">{selectedQueueItem.title}</h2> : null}
@@ -1862,6 +2061,8 @@ RULES:
             </div>
 
             <div className="px-6 py-5">
+              {queueError ? <p className="mb-4 text-sm text-red-500">{queueError}</p> : null}
+
               {selectedQueueItem.caption ? (
                 <div
                   className="prose prose-sm max-w-none text-gray-800 leading-relaxed"
@@ -1909,7 +2110,7 @@ RULES:
                     disabled={publishingQueueId === selectedQueueItem.id}
                     className="rounded-xl bg-[#4a9b6f] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
                   >
-                    {publishingQueueId === selectedQueueItem.id ? "Posting..." : "Post to Home Feed"}
+                    {publishingQueueId === selectedQueueItem.id ? "Posting..." : selectedQueueItem.status === "scheduled" ? "Post Now" : "Post to Home Feed"}
                   </button>
                 ) : (
                   <Link href={`/study-groups/${groupId}/chat`} className="rounded-xl bg-[#4a9b6f] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90">
