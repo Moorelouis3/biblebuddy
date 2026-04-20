@@ -305,10 +305,10 @@ function getSeriesBannerMeta(title: string | null | undefined) {
 
   if (normalizedTitle === "the testing of joseph") {
     return {
-      src: "/testingofjoseph.png",
+      src: "/josephbanner.png",
       alt: "The Testing of Joseph study banner",
       bg: "#dcefdc",
-      objectPosition: "center 68%",
+      objectPosition: "center 30%",
     };
   }
 
@@ -336,6 +336,19 @@ function getSeriesPromoDescription(title: string | null | undefined, fallback?: 
   }
 
   return fallback || "A guided Bible Buddy study through Scripture with notes, trivia, reflection, and group discussion.";
+}
+
+function getSeriesCardCover(title: string | null | undefined): string | null {
+  const normalizedTitle = normalizeSeriesTitle(title);
+
+  if (normalizedTitle === "the temptation of jesus") return "/TheTemptingofjesusstudy.png";
+  if (normalizedTitle === "the testing of joseph") return "/testingofjoseph.png";
+  if (normalizedTitle === "the wisdom of proverbs") return "/WisdomofProverbs.png";
+  if (normalizedTitle === "the calling of moses") return "/callingofmosesdevotional.png";
+  if (normalizedTitle === "the faith of job") return "/faithofjob.png";
+  if (normalizedTitle === "the heart of david") return "/heartofdaviddevotional.png";
+
+  return null;
 }
 
 function selectFeaturedSeriesPreview(
@@ -4432,8 +4445,11 @@ RULES:
                     </div>
                   </div>
                   <div className="px-5 py-4">
+                    <p className="text-lg font-semibold text-gray-900">
+                      {homeFeedSeriesPreview.title}
+                    </p>
                     {homeFeedSeriesStartAt && new Date(homeFeedSeriesStartAt).getTime() > nowTs ? (
-                      <div className="flex items-center justify-between gap-3">
+                      <div className="mt-2 flex items-center justify-between gap-3">
                         <p
                           className="text-base font-bold whitespace-nowrap"
                           style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
@@ -5420,8 +5436,8 @@ RULES:
               {loadingSeries ? (
                 <p className="text-sm text-gray-400 text-center py-8">Loading...</p>
               ) : (
-                <div className="flex flex-col gap-3">
-                  {PLANNED_BIBLE_STUDY_SERIES.map((planned, index) => {
+                <div className="flex flex-col gap-5">
+                  {PLANNED_BIBLE_STUDY_SERIES.map((planned) => {
                     const matchingSeries =
                       seriesList.find((series) => normalizeSeriesTitle(series.title) === normalizeSeriesTitle(planned.title)) ??
                       null;
@@ -5434,6 +5450,21 @@ RULES:
                       isLive && currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs
                         ? formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)
                         : null;
+                    const isJosephSeries = normalizeSeriesTitle(planned.title) === "the testing of joseph";
+                    const isTemptationSeries = normalizeSeriesTitle(planned.title) === "the temptation of jesus";
+                    const coverSrc = getSeriesCardCover(planned.title);
+                    const josephStartLabel = formatDateTimeLabel(homeFeedSeriesStartAt);
+                    const josephCountdown =
+                      isJosephSeries && new Date(homeFeedSeriesStartAt).getTime() > nowTs
+                        ? formatCountdown(new Date(homeFeedSeriesStartAt).getTime(), nowTs)
+                        : null;
+                    const statusLabel = isLive
+                      ? "Current Study"
+                      : isJosephSeries
+                        ? "Starts Saturday"
+                        : canOpen
+                          ? "Preview"
+                          : "Locked";
                     return (
                       <button
                         key={planned.key}
@@ -5442,71 +5473,95 @@ RULES:
                           if (canOpen && previewSeries) setSelectedSeries(previewSeries);
                         }}
                         disabled={!canOpen}
-                        className={`w-full rounded-xl p-4 shadow-sm text-left transition border ${
+                        className={`w-full rounded-2xl border text-left transition-all duration-200 overflow-hidden ${
                           canOpen
-                            ? "bg-white border-gray-200 hover:shadow-md"
-                            : "bg-gray-50 border-gray-200 opacity-55 cursor-not-allowed"
+                            ? "bg-white border-gray-200 shadow-sm hover:shadow-xl hover:scale-[1.01]"
+                            : "bg-white border-gray-200 shadow-sm opacity-80 cursor-not-allowed"
                         }`}
                       >
-                        <div className="flex items-start justify-between gap-3">
-                          <div className="flex-1 min-w-0">
-                            <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: isLive ? "#4f7e54" : "#9ca3af" }}>
-                            {planned.subtitle}
-                          </p>
-                          <p className="text-base font-semibold text-gray-900 mt-1">{planned.title}</p>
-                          {isLive ? (
-                              <>
-                                <p className="text-xs text-gray-500 mt-1 line-clamp-2">
-                                  {getSeriesPromoDescription(planned.title, liveSeries?.description)}
-                                </p>
-                                <p className="text-xs mt-2">
-                                  {startCountdown ? (
-                                    <>
-                                      <span className="text-gray-600">Study starts in </span>
-                                      <span className="font-bold" style={{ color: "#d62828" }}>{startCountdown}</span>
-                                      {startLabel && <span className="text-gray-500"> ({startLabel})</span>}
-                                    </>
-                                  ) : currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() <= nowTs ? (
-                                    (() => {
-                                      const startTs = new Date(currentSeriesStartAt).getTime();
-                                      const totalWeeks = liveSeries?.total_weeks ?? 1;
-                                      const weeksSinceStart = Math.floor((nowTs - startTs) / (7 * 24 * 60 * 60 * 1000));
-                                      const liveWeek = Math.min(totalWeeks, weeksSinceStart + 1);
-                                      if (liveWeek < totalWeeks) {
-                                        const nextUnlockTs = startTs + liveWeek * 7 * 24 * 60 * 60 * 1000;
-                                        return (
-                                          <>
-                                            <span className="font-semibold" style={{ color: "#4f7e54" }}>Week {liveWeek} Active</span>
-                                            <span className="text-gray-500"> · Week {liveWeek + 1} ready in </span>
-                                            <span className="font-bold" style={{ color: "#d62828" }}>{formatCountdown(nextUnlockTs, nowTs)}</span>
-                                          </>
-                                        );
-                                      }
-                                      return <span className="font-semibold" style={{ color: "#4f7e54" }}>Week {liveWeek} Active · Final week</span>;
-                                    })()
-                                  ) : (
-                                    <span className="text-gray-400">Start date coming soon</span>
-                                  )}
-                                </p>
-                              </>
-                            ) : canOpen ? (
-                              <p className="text-xs text-amber-600 mt-2">Preview unlocked for leaders</p>
+                        <div className="p-2 sm:p-3">
+                          <div className="rounded-xl overflow-hidden border border-gray-200 bg-gray-100">
+                            {coverSrc ? (
+                              <img
+                                src={coverSrc}
+                                alt={`${planned.title} cover`}
+                                className={`w-full h-40 sm:h-48 object-cover transition ${isTemptationSeries ? "" : "grayscale"}`}
+                                style={{
+                                  objectPosition: isJosephSeries ? "center 30%" : isTemptationSeries ? "center 42%" : "center center",
+                                }}
+                              />
                             ) : (
-                              <p className="text-xs text-gray-400 mt-2">🔒 Locked until this series is released</p>
+                              <div className="h-40 sm:h-48 bg-gradient-to-br from-gray-100 to-gray-200" />
                             )}
                           </div>
-                          <div className="flex flex-col items-end gap-2 flex-shrink-0">
-                            {isLive ? (
-                              <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{ backgroundColor: "#d4ecd4", color: SAGE }}>
-                                Active
-                              </span>
-                            ) : canOpen ? (
-                              <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700">
-                                Preview
-                              </span>
-                            ) : (
-                              <span className="text-xs text-gray-400">🔒</span>
-                            )}
+                        </div>
+                        <div className="px-4 pb-4 pt-1">
+                          <div className="flex items-center justify-between gap-3">
+                            <p className="text-lg font-semibold text-gray-900 leading-tight">{planned.title}</p>
+                            <span
+                              className={`text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ${
+                                isLive
+                                  ? "bg-[#d4ecd4] text-[#4f7e54]"
+                                  : isJosephSeries
+                                    ? "bg-[#fff1f1] text-[#d62828]"
+                                    : canOpen
+                                      ? "bg-amber-100 text-amber-700"
+                                      : "bg-gray-100 text-gray-500"
+                              }`}
+                            >
+                              {statusLabel}
+                            </span>
+                          </div>
+                          <p className="mt-1 text-sm text-gray-500">{planned.subtitle}</p>
+                          {isJosephSeries && josephCountdown ? (
+                            <div className="mt-3">
+                              <p className="text-base font-bold" style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}>
+                                Week 1 starts in {josephCountdown}
+                              </p>
+                              <p className="text-xs text-gray-500 mt-1">{josephStartLabel}</p>
+                            </div>
+                          ) : isLive ? (
+                            <p className="text-sm mt-3 text-gray-600">
+                              {startCountdown ? (
+                                <>
+                                  <span>Study starts in </span>
+                                  <span className="font-bold" style={{ color: "#d62828" }}>{startCountdown}</span>
+                                  {startLabel ? <span className="text-gray-500"> · {startLabel}</span> : null}
+                                </>
+                              ) : currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() <= nowTs ? (
+                                (() => {
+                                  const startTs = new Date(currentSeriesStartAt).getTime();
+                                  const totalWeeks = liveSeries?.total_weeks ?? 1;
+                                  const weeksSinceStart = Math.floor((nowTs - startTs) / (7 * 24 * 60 * 60 * 1000));
+                                  const liveWeek = Math.min(totalWeeks, weeksSinceStart + 1);
+                                  if (liveWeek < totalWeeks) {
+                                    const nextUnlockTs = startTs + liveWeek * 7 * 24 * 60 * 60 * 1000;
+                                    return (
+                                      <>
+                                        <span className="font-semibold" style={{ color: "#4f7e54" }}>Week {liveWeek} Active</span>
+                                        <span> · Week {liveWeek + 1} ready in </span>
+                                        <span className="font-bold" style={{ color: "#d62828" }}>{formatCountdown(nextUnlockTs, nowTs)}</span>
+                                      </>
+                                    );
+                                  }
+                                  return <span className="font-semibold" style={{ color: "#4f7e54" }}>Week {liveWeek} Active · Final week</span>;
+                                })()
+                              ) : (
+                                <span className="text-gray-400">Start date coming soon</span>
+                              )}
+                            </p>
+                          ) : canOpen ? (
+                            <p className="mt-3 text-sm text-amber-600">Preview unlocked for leaders</p>
+                          ) : (
+                            <p className="mt-3 text-sm text-gray-400">Locked until this series is released</p>
+                          )}
+                          <div className="mt-4 flex items-center justify-between text-sm">
+                            <span className="font-medium text-gray-500">
+                              {planned.title === "The Temptation of Jesus" ? "Current full-color cover" : "Coming next in the lineup"}
+                            </span>
+                            <span className={`font-semibold ${canOpen ? "text-[#8d5d38]" : "text-gray-400"}`}>
+                              {canOpen ? "Open Study" : "Locked"}
+                            </span>
                           </div>
                         </div>
                       </button>
