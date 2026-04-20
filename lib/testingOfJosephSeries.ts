@@ -1,6 +1,4 @@
 import type { SeriesWeekLesson } from "./seriesContent";
-import { TESTING_OF_JOSEPH_WEEK_ONE_NOTES } from "./testingOfJosephWeekOneNotes";
-import { TESTING_OF_JOSEPH_WEEK_TWO_NOTES } from "./testingOfJosephWeekTwoNotes";
 
 function q(
   id: string,
@@ -49,9 +47,8 @@ Joseph's testing does not begin in Egypt.
 
 It begins at home.`;
 
-const WEEK_ONE_NOTES = `Let Me Be Real With You,
-
-The first time I read Joseph's story, it didn't hit me.
+const WEEK_ONE_NOTES = "";
+/*
 
 Compared to:
 
@@ -357,12 +354,7 @@ The chapter ends with Joseph sold again, now into the house of Potiphar in Egypt
 > Genesis 37:36
 > Meanwhile the Midianites had sold him in Egypt to Potiphar, an officer of Pharaoh, the captain of the guard.
 
-Potiphar is close to Pharaoh and close to power.
-
-So the chapter closes with Jacob grieving in Canaan and Joseph entering Egypt in chains.
-
-The testing has officially begun.`;
-
+*/
 export const TESTING_OF_JOSEPH: SeriesWeekLesson[] = [
   {
     weekNumber: 1,
@@ -371,7 +363,6 @@ export const TESTING_OF_JOSEPH: SeriesWeekLesson[] = [
     readingReference: "Genesis 37",
     readingApiQuery: "genesis+37",
     intro: WEEK_ONE_INTRO,
-    notes: TESTING_OF_JOSEPH_WEEK_ONE_NOTES,
     reflectionQuestion:
       "Genesis 37 is full of favoritism, jealousy, immaturity, and pain. Where did this chapter hit you most personally: carrying something God showed you too early, feeling the sting of comparison, or seeing how family wounds can grow when nobody deals with them honestly?",
     triviaQuestions: [
@@ -401,7 +392,6 @@ But that is exactly why it matters.
 Before Judah becomes the man who later offers himself for Benjamin, he has to be exposed and humbled first.
 
 Genesis 38 shows us that God does not abandon people at their worst. He confronts them there and keeps His purposes moving forward.`,
-    notes: TESTING_OF_JOSEPH_WEEK_TWO_NOTES,
     reflectionQuestion:
       "Genesis 38 exposes hidden sin, hypocrisy, and the damage caused when people refuse responsibility. Where does this chapter challenge you most: in owning your failures, in avoiding double standards, or in trusting that God can still work through messy history?",
     triviaQuestions: [

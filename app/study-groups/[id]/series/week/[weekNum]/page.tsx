@@ -6,6 +6,7 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "@/lib/supabaseClient";
 import { getSeriesWeekLesson, SeriesWeekLesson, SeriesTriviaQuestion } from "@/lib/seriesContent";
+import { hasLazySeriesNotes, loadSeriesNotesContent } from "@/lib/seriesNotes";
 import { enrichPlainText } from "@/lib/bibleHighlighting";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
@@ -233,71 +234,66 @@ function FreeIntroSection({ lesson }: { lesson: SeriesWeekLesson }) {
 
 function NotesSection({
   lesson,
+  seriesTitle,
   isPaid,
   onUnlock,
 }: {
   lesson: SeriesWeekLesson;
+  seriesTitle?: string | null;
   isPaid: boolean;
   onUnlock: () => void;
 }) {
-  const [expanded, setExpanded] = useState(!isPaid);
+  const [showNotesModal, setShowNotesModal] = useState(false);
   const [notesLoading, setNotesLoading] = useState(false);
-  const notesHTML = isPaid && expanded ? parseIntroToHTML(lesson.notes ?? lesson.intro) : "";
+  const [notesSource, setNotesSource] = useState<string | null>(null);
+  const [notesHTML, setNotesHTML] = useState<string | null>(null);
+  const [notesError, setNotesError] = useState<string | null>(null);
+  const hasNotesAvailable = hasLazySeriesNotes(seriesTitle, lesson.weekNumber) || Boolean(lesson.notes?.trim());
 
   useEffect(() => {
-    setExpanded(!isPaid);
-  }, [isPaid]);
+    if (!showNotesModal || !notesSource) return;
+    if (notesHTML) return;
 
-  useEffect(() => {
-    if (!notesLoading) return;
     const timer = window.setTimeout(() => {
-      setExpanded(true);
-      setNotesLoading(false);
-    }, 180);
-    return () => window.clearTimeout(timer);
-  }, [notesLoading]);
+      setNotesHTML(parseIntroToHTML(notesSource));
+    }, 30);
 
-  function handleToggle() {
-    if (!isPaid) return;
-    if (expanded) {
-      setExpanded(false);
-      return;
-    }
+    return () => window.clearTimeout(timer);
+  }, [notesHTML, notesSource, showNotesModal]);
+
+  async function handleOpenNotes() {
+    if (!isPaid || !hasNotesAvailable) return;
+
+    setShowNotesModal(true);
+    setNotesError(null);
+
+    if (notesSource) return;
+
     setNotesLoading(true);
+    try {
+      const loaded = await loadSeriesNotesContent(seriesTitle, lesson.weekNumber, lesson.notes ?? null);
+      if (!loaded) {
+        setNotesError("These notes are not ready yet.");
+        return;
+      }
+      setNotesSource(loaded);
+      setNotesHTML(null);
+    } catch (error) {
+      console.error("[SERIES_NOTES] Failed to load notes", error);
+      setNotesError("Study notes could not be loaded right now. Please try again.");
+    } finally {
+      setNotesLoading(false);
+    }
   }
 
   return (
     <>
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
-        <div className="w-full px-5 py-4 border-b border-gray-100 bg-gray-50 flex items-center justify-between gap-3 text-left">
-          <div>
-            <p className="text-base font-bold text-gray-900">Study Notes</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${isPaid ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"}`}>
-              {isPaid ? "Unlocked" : "Locked"}
-            </span>
-            {isPaid && (
-              <button
-                type="button"
-                onClick={handleToggle}
-                aria-expanded={expanded}
-                className="text-gray-400 transition hover:text-gray-600"
-              >
-                <svg
-                  className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : ""}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-            )}
-          </div>
+        <div className="px-5 py-4 border-b border-gray-100 bg-gray-50 text-left">
+          <p className="text-base font-bold text-gray-900">Study Notes</p>
         </div>
 
-        {!expanded && isPaid && (
+        {isPaid && (
           <div className="border-b border-gray-100 bg-gradient-to-br from-emerald-50 via-white to-emerald-50 px-5 py-5">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">Chapter Notes</p>
             <h3 className="mt-2 text-lg font-bold text-gray-900">
@@ -311,21 +307,17 @@ function NotesSection({
             </p>
             <button
               type="button"
-              onClick={handleToggle}
+              onClick={handleOpenNotes}
+              disabled={!hasNotesAvailable}
               className="mt-4 inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-bold text-white transition hover:opacity-90"
-              style={{ backgroundColor: "#4a9b6f" }}
+              style={!hasNotesAvailable ? { backgroundColor: "#94a3b8", cursor: "not-allowed" } : { backgroundColor: "#4a9b6f" }}
             >
-              Click Here to Open
+              {hasNotesAvailable ? "Click Here to Open" : "Notes Coming Soon"}
             </button>
           </div>
         )}
 
-        {expanded && (isPaid ? (
-          <div
-            className="px-5 pt-4 pb-5 flex flex-col gap-3"
-            dangerouslySetInnerHTML={{ __html: notesHTML }}
-          />
-        ) : (
+        {!isPaid && (
           <div className="px-5 py-5">
             <p className="text-base font-semibold text-gray-900 mb-3">Read The Study Notes</p>
             <p className="text-xs font-semibold text-amber-600 uppercase tracking-wide mb-3">Upgrade for full access</p>
@@ -349,7 +341,7 @@ function NotesSection({
               Unlock Notes
             </button>
           </div>
-        ))}
+        )}
       </div>
 
       {notesLoading && (
@@ -357,6 +349,45 @@ function NotesSection({
           title="Loading Study Notes"
           subtitle={`Getting your Week ${lesson.weekNumber} notes ready...`}
         />
+      )}
+
+      {showNotesModal && (
+        <div
+          className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
+          onClick={() => setShowNotesModal(false)}
+        >
+          <div
+            className="relative w-full max-w-4xl max-h-[88vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl my-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="sticky top-0 z-10 border-b border-gray-100 bg-white px-5 py-4 sm:px-6">
+              <button
+                type="button"
+                onClick={() => setShowNotesModal(false)}
+                className="absolute right-4 top-4 text-xl text-gray-400 hover:text-gray-700"
+              >
+                ×
+              </button>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">Chapter Notes</p>
+              <h3 className="mt-1 pr-8 text-xl font-bold text-gray-900">
+                {lesson.readingReference} Study Notes
+              </h3>
+            </div>
+
+            <div className="px-5 py-5 sm:px-6">
+              {notesError ? (
+                <p className="text-sm text-red-600">{notesError}</p>
+              ) : !notesHTML ? (
+                <p className="text-sm text-gray-600">Loading your study notes...</p>
+              ) : (
+                <div
+                  className="flex flex-col gap-3"
+                  dangerouslySetInnerHTML={{ __html: notesHTML }}
+                />
+              )}
+            </div>
+          </div>
+        </div>
       )}
     </>
   );
@@ -2098,6 +2129,7 @@ export default function WeekLessonPage({
 
           <NotesSection
             lesson={lesson}
+            seriesTitle={seriesTitle}
             isPaid={isPaid}
             onUnlock={() => router.push("/upgrade")}
           />
