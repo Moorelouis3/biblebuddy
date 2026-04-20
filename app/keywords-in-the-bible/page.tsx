@@ -10,6 +10,7 @@ import { BIBLE_KEYWORDS_LIST } from "../../lib/bibleKeywordsList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { consumeCreditAction } from "../../lib/creditClient";
+import { requestLouisNotes } from "../../lib/requestLouisNotes";
 import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
 
@@ -335,32 +336,7 @@ RULES:
 - Total length about 200–300 words
 - Do NOT include the keyword name as a header`;
 
-        const response = await fetch("/api/chat", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            messages: [
-              {
-                role: "user",
-                content: prompt,
-              },
-            ],
-          }),
-        });
-
-        if (!response.ok) {
-          const errorText = await response.text();
-          throw new Error(`Failed to generate notes: ${response.statusText}. ${errorText}`);
-        }
-
-        const json = await response.json();
-        const generated = (json?.reply as string) ?? "";
-
-        if (!generated || generated.trim().length === 0) {
-          throw new Error("Generated notes are empty.");
-        }
+        const generated = await requestLouisNotes(prompt);
 
         // STEP 3: Race condition protection - check again before saving
         const { data: existingCheck, error: checkError } = await supabase

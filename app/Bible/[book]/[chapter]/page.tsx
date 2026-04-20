@@ -17,6 +17,7 @@ import { ACTION_TYPE } from "../../../../lib/actionTypes";
 import { resolveBibleReference } from "../../../../lib/bibleTermResolver";
 import { consumeCreditAction } from "../../../../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../../../../lib/bibleNotes";
+import { requestLouisNotes } from "../../../../lib/requestLouisNotes";
 import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
 import { triggerPoints } from "../../../../components/PointsPop";
 import { dispatchLouisMoment } from "../../../../lib/louisMoments";
@@ -435,24 +436,7 @@ FINAL RULES:
 - No lists without emojis
 - Keep it cinematic, Bible study focused, and clear`;
         
-        const response = await fetch("/api/chat", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            messages: [
-              {
-                role: "user",
-                content: prompt,
-              },
-            ],
-          }),
-        });
-
-        if (!response.ok) throw new Error(`Failed to generate notes: ${response.statusText}`);
-        const json = await response.json();
-        const generated = (json?.reply as string) ?? "";
+        const generated = await requestLouisNotes(prompt);
 
         const notesText = await savePersonNotes(personNameKey, generated);
         setPersonNotes(notesText);
@@ -582,24 +566,7 @@ RULES:
 - Total length about 200–300 words
 - Do NOT include the place name as a header`;
         
-        const response = await fetch("/api/chat", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            messages: [
-              {
-                role: "user",
-                content: prompt,
-              },
-            ],
-          }),
-        });
-
-        if (!response.ok) throw new Error(`Failed to generate notes`);
-        const json = await response.json();
-        const generated = (json?.reply as string) ?? "";
+        const generated = await requestLouisNotes(prompt);
 
         const notesText = await savePlaceNotes(normalizedPlace, generated);
         setPlaceNotes(notesText);
@@ -731,24 +698,7 @@ RULES:
 - Total length about 200–300 words
 - Do NOT include the keyword name as a header`;
         
-        const response = await fetch("/api/chat", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            messages: [
-              {
-                role: "user",
-                content: prompt,
-              },
-            ],
-          }),
-        });
-
-        if (!response.ok) throw new Error(`Failed to generate notes`);
-        const json = await response.json();
-        const generated = (json?.reply as string) ?? "";
+        const generated = await requestLouisNotes(prompt);
 
         const notesText = await saveKeywordNotes(selectedKeyword.name, generated);
 
