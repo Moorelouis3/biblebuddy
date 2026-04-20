@@ -1,14 +1,13 @@
 import { createClient } from "@supabase/supabase-js";
 import {
   buildWeeklyContext,
-  buildWeeklyReportForUser,
+  buildWeeklyLouisReportForUser,
   fetchRecentActions,
   getWeekKey,
-  sendDirectMessage,
+  sendLouisInboxMessage,
 } from "@/lib/weeklyBibleReport";
 
 const TARGET_USER_ID = "c36fe21d-cca0-4561-b543-b6dba8290316";
-const LOUIS_USER_ID = "669d4404-5eee-49ee-a112-2ecbd573e22a";
 
 async function main() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -29,23 +28,11 @@ async function main() {
   const userActions = recentActions.filter((action) => action.user_id === TARGET_USER_ID);
 
   const context = await buildWeeklyContext(db, [TARGET_USER_ID]);
-  const report = buildWeeklyReportForUser(TARGET_USER_ID, userActions, context, weekKey);
-
-  const { data: louisProfile, error: louisError } = await db
-    .from("profile_stats")
-    .select("display_name, username")
-    .eq("user_id", LOUIS_USER_ID)
-    .maybeSingle();
-
-  if (louisError) {
-    throw louisError;
-  }
-
-  const louisName = louisProfile?.display_name || louisProfile?.username || "Louis";
-  const ok = await sendDirectMessage(db, LOUIS_USER_ID, louisName, TARGET_USER_ID, report.message, report.action);
+  const report = buildWeeklyLouisReportForUser(TARGET_USER_ID, userActions, context, weekKey);
+  const ok = await sendLouisInboxMessage(db, TARGET_USER_ID, report);
 
   if (!ok) {
-    throw new Error("Failed to send the real weekly report DM.");
+    throw new Error("Failed to send the real weekly report through Louis.");
   }
 
   console.log(
@@ -56,6 +43,7 @@ async function main() {
         weekKey,
         stats: report.stats,
         action: report.action,
+        title: report.title,
         preview: report.message,
       },
       null,

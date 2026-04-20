@@ -1124,6 +1124,24 @@ export default function DashboardPage() {
     setShowVerseOfTheDayModal(profile.verse_of_the_day_shown !== today);
   }, [userId, profile]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    window.dispatchEvent(
+      new CustomEvent("bb:dashboard-verse-modal-state", {
+        detail: { open: showVerseOfTheDayModal },
+      }),
+    );
+
+    return () => {
+      window.dispatchEvent(
+        new CustomEvent("bb:dashboard-verse-modal-state", {
+          detail: { open: false },
+        }),
+      );
+    };
+  }, [showVerseOfTheDayModal]);
+
   // Load other dashboard data (separate, non-blocking)
   useEffect(() => {
     async function loadOtherDashboardData() {

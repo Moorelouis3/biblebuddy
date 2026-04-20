@@ -250,6 +250,8 @@ const LOUIS_OPENING_GREETINGS = [
   "What can I help you find today?",
 ] as const;
 
+const DASHBOARD_VERSE_MODAL_EVENT = "bb:dashboard-verse-modal-state";
+
 // Type for SpeechRecognition (Web Speech API)
 interface SpeechRecognitionResult {
   [key: number]: SpeechRecognitionAlternative;
@@ -1564,6 +1566,7 @@ export function ChatLouis() {
   const [louisInputPrompt, setLouisInputPrompt] = useState<LouisInputPromptState>(DEFAULT_LOUIS_INPUT_PROMPT);
   const [pendingInboxMessageIds, setPendingInboxMessageIds] = useState<string[]>([]);
   const [pendingRouteHandoff, setPendingRouteHandoff] = useState(false);
+  const [isDashboardVerseModalOpen, setIsDashboardVerseModalOpen] = useState(false);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [isListening, setIsListening] = useState(false);
@@ -2274,6 +2277,18 @@ export function ChatLouis() {
       cancelled = true;
     };
   }, [pathname]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    function handleVerseModalState(event: Event) {
+      const detail = (event as CustomEvent<{ open?: boolean }>).detail;
+      setIsDashboardVerseModalOpen(detail?.open === true);
+    }
+
+    window.addEventListener(DASHBOARD_VERSE_MODAL_EVENT, handleVerseModalState as EventListener);
+    return () => window.removeEventListener(DASHBOARD_VERSE_MODAL_EVENT, handleVerseModalState as EventListener);
+  }, []);
 
   useEffect(() => {
     if (!louisUserId || typeof window === "undefined") return;
@@ -3024,6 +3039,10 @@ export function ChatLouis() {
   }
 
   async function handleChatButtonClick() {
+    if (pathname === "/dashboard" && isDashboardVerseModalOpen) {
+      return;
+    }
+
     const hadPendingRouteHandoff = pendingRouteHandoff;
     const unreadMomentReplies = pendingMomentReplies;
     setIsOpen(true);
