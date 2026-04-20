@@ -2774,6 +2774,7 @@ export function ChatLouis() {
   async function beginPageGuideConversation() {
     if (!currentPageGuide) return;
 
+    await markCurrentGuideSeen();
     rememberGuidePromptShown();
     appendAssistantMessage(currentPageGuide.ask);
     seedQuickReplies(getGuideQuickReplies());
@@ -2782,6 +2783,8 @@ export function ChatLouis() {
   async function startPageGuideConversation() {
     if (!currentPageGuide) return;
 
+    await markCurrentGuideSeen();
+    rememberGuidePromptShown();
     appendAssistantMessage(currentPageGuide.ask);
     seedQuickReplies([
       { id: "guide-show", label: "Yes, show me", action: "guide_show" },
