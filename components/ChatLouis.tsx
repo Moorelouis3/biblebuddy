@@ -1539,6 +1539,7 @@ export function ChatLouis() {
   const [currentStreak, setCurrentStreak] = useState<number>(0);
   const [lastActiveDate, setLastActiveDate] = useState<string | null>(null);
   const [userFirstName, setUserFirstName] = useState<string | null>(null);
+  const [isPaidUser, setIsPaidUser] = useState(false);
   const [onboardingGoal, setOnboardingGoal] = useState<string | null>(null);
   const [bibleExperienceLevel, setBibleExperienceLevel] = useState<string | null>(null);
   const [louisJourneyStage, setLouisJourneyStage] = useState<LouisJourneyStage>("new_user");
@@ -1940,6 +1941,7 @@ export function ChatLouis() {
         setLastActiveDate(null);
         setUserProfileImageUrl(null);
         setBibleExperienceLevel(null);
+        setIsPaidUser(false);
         setUserFirstName(authFirstName);
       } else {
         setLouisFeatureTours(normalizeFeatureTours(profileStats?.feature_tours));
@@ -1947,6 +1949,7 @@ export function ChatLouis() {
         setLastActiveDate(profileStats?.last_active_date ?? null);
         setUserProfileImageUrl(profileStats?.profile_image_url ?? null);
         setBibleExperienceLevel(profileStats?.bible_experience_level ?? null);
+        setIsPaidUser(profileStats?.is_paid === true);
         setUserFirstName(
           typeof profileStats?.display_name === "string" && profileStats.display_name.trim()
             ? profileStats.display_name.trim().split(/\s+/)[0]
@@ -2338,8 +2341,7 @@ export function ChatLouis() {
   const hasPendingPageGuide = Boolean(
     featureToursEnabled &&
       currentPageGuide &&
-      louisFeatureTours[currentPageGuide.featureKey] !== true &&
-      (!louisUserId || !hasSeenGuidePrompt(louisUserId, currentPageGuide.id)),
+      louisFeatureTours[currentPageGuide.featureKey] !== true,
   );
 
   const hasPendingDevotionalChallengePrompt =
@@ -2357,6 +2359,7 @@ export function ChatLouis() {
   const hasPendingLouisMoment =
     pendingInboxMessageIds.length > 0 ||
     pendingRouteHandoff ||
+    hasPendingPageGuide ||
     hasPendingDevotionalChallengePrompt ||
     hasPendingDevotionalStartPrompt ||
     (pathname === "/dashboard" && (hasUnseenDailyGreeting || hasUnseenSecondRecommendation));
@@ -2775,22 +2778,26 @@ export function ChatLouis() {
     if (!currentPageGuide) return;
 
     await markCurrentGuideSeen();
-    rememberGuidePromptShown();
-    appendAssistantMessage(currentPageGuide.ask);
-    seedQuickReplies(getGuideQuickReplies());
+    appendAssistantMessage(
+      buildLouisGuideChatMessage(currentPageGuide, {
+        firstName: userFirstName,
+        isPaidUser,
+      }),
+    );
+    clearLouisInputPrompt();
   }
 
   async function startPageGuideConversation() {
     if (!currentPageGuide) return;
 
     await markCurrentGuideSeen();
-    rememberGuidePromptShown();
-    appendAssistantMessage(currentPageGuide.ask);
-    seedQuickReplies([
-      { id: "guide-show", label: "Yes, show me", action: "guide_show" },
-      { id: "guide-question", label: "I have a question", action: "guide_question" },
-      { id: "guide-later", label: "Not right now", action: "guide_later" },
-    ]);
+    appendAssistantMessage(
+      buildLouisGuideChatMessage(currentPageGuide, {
+        firstName: userFirstName,
+        isPaidUser,
+      }),
+    );
+    clearLouisInputPrompt();
   }
 
   async function shareRecommendationInChat(preface?: string) {
@@ -2960,7 +2967,10 @@ export function ChatLouis() {
         if (currentPageGuide) {
           await markCurrentGuideSeen();
           appendAssistantMessage(
-            `${currentPageGuide.chatStarter}\n\n${buildLouisGuideChatMessage(currentPageGuide)}`,
+            buildLouisGuideChatMessage(currentPageGuide, {
+              firstName: userFirstName,
+              isPaidUser,
+            }),
           );
           seedQuickReplies([
             pathname === "/dashboard"
@@ -2981,7 +2991,12 @@ export function ChatLouis() {
       case "guide_show":
         if (currentPageGuide) {
           await markCurrentGuideSeen();
-          appendAssistantMessage(buildLouisGuideChatMessage(currentPageGuide));
+          appendAssistantMessage(
+            buildLouisGuideChatMessage(currentPageGuide, {
+              firstName: userFirstName,
+              isPaidUser,
+            }),
+          );
           seedQuickReplies([
             { id: "guide-follow-up", label: "I have a question", action: "guide_question" },
             pathname === "/dashboard" && louisRecommendation
@@ -3002,7 +3017,7 @@ export function ChatLouis() {
         }
         appendAssistantMessage(
           currentPageGuide
-            ? `${currentPageGuide.chatStarter}\n\nWhat do you want help with on this page?`
+            ? "What do you want help with on this page?"
             : "What do you want help with?",
         );
         break;
@@ -3063,6 +3078,18 @@ export function ChatLouis() {
       return;
     }
 
+    if (hasPendingPageGuide && currentPageGuide) {
+      await markCurrentGuideSeen();
+      appendAssistantMessage(
+        buildLouisGuideChatMessage(currentPageGuide, {
+          firstName: userFirstName,
+          isPaidUser,
+        }),
+      );
+      clearLouisInputPrompt();
+      return;
+    }
+
     if (hadPendingRouteHandoff && unreadMomentReplies.length > 0) {
       setQuickReplies(unreadMomentReplies);
       setPendingMomentReplies([]);
@@ -3077,8 +3104,9 @@ export function ChatLouis() {
       return;
     }
 
-    if (pathname === "/dashboard" && hasUnseenDailyGreeting) {
-      const dailyConversationMessage = buildDailyConversationMessage();
+    if (pathname === "/dashboard" && (hasUnseenDailyGreeting || hasUnseenSecondRecommendation)) {
+      const momentKind: LouisDailyMomentKind = hasUnseenDailyGreeting ? "first" : "second";
+      const dailyConversationMessage = buildDailyConversationMessage(momentKind);
 
       if (latestMessage?.role === "assistant" && latestMessage.content === dailyConversationMessage) {
         if (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional) {
@@ -3091,7 +3119,7 @@ export function ChatLouis() {
         return;
       }
 
-      await beginDailyConversation(hasUnseenDailyGreeting ? "first" : "second");
+      await beginDailyConversation(momentKind);
       return;
     }
 
@@ -3148,22 +3176,6 @@ export function ChatLouis() {
         await shareDailyRecommendationAfterVerse(
           `Alright. You're on day ${currentStreak}. Keep that streak alive by doing this today.`,
         );
-      }
-      return true;
-    }
-
-    if (louisInputPrompt.intent === "page_guide" && (normalized === "yes" || normalized === "no")) {
-      clearLouisInputPrompt();
-      if (normalized === "yes") {
-        if (currentPageGuide) {
-          await markCurrentGuideSeen();
-          appendAssistantMessage(buildLouisGuideChatMessage(currentPageGuide));
-        }
-      } else {
-        if (hasPendingPageGuide) {
-          await markCurrentGuideSeen();
-        }
-        appendAssistantMessage("No problem.\n\nIf you want help with this page later, just tap me and ask.");
       }
       return true;
     }
@@ -3234,8 +3246,6 @@ export function ChatLouis() {
               ? {
                   guideId: currentPageGuide.id,
                   title: currentPageGuide.title,
-                  chatStarter: currentPageGuide.chatStarter,
-                  bullets: currentPageGuide.bullets,
                 }
               : {}),
           },
@@ -3749,7 +3759,7 @@ export function ChatLouis() {
           body={
             louisGuideView === "recommendation"
               ? louisRecommendation?.contextLine || ""
-              : currentPageGuide?.intro || ""
+              : ""
           }
           content={
             louisGuideView === "recommendation" ? (
@@ -3774,7 +3784,7 @@ export function ChatLouis() {
             ) : currentPageGuide ? (
               <div className="space-y-5">
                 <div className="rounded-2xl border border-sky-100 bg-sky-50/60 px-4 py-3">
-                  <p className="text-sm leading-7 text-gray-600 md:text-[15px]">{currentPageGuide?.prompt || ""}</p>
+                  <p className="text-sm leading-7 text-gray-600 md:text-[15px]"></p>
                 </div>
                 <button
                   type="button"
