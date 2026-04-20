@@ -236,6 +236,7 @@ const DEFAULT_LOUIS_INPUT_PROMPT: LouisInputPromptState = {
 };
 
 const DAILY_LOUIS_FLOW_VERSION = "v3";
+const IDLE_GREETING_COOLDOWN_MS = 3 * 60 * 60 * 1000;
 
 const LOUIS_OPENING_GREETINGS = [
   "How can I help you today?",
@@ -570,6 +571,10 @@ function getChatStorageKey(userId: string) {
   return `bb:louis:chat:${userId}`;
 }
 
+function getIdleGreetingShownAtKey(userId: string) {
+  return `bb:louis:idle-greeting-at:${DAILY_LOUIS_FLOW_VERSION}:${userId}`;
+}
+
 function getMemoryStorageKey(userId: string) {
   return `bb:louis:memory:${userId}`;
 }
@@ -627,9 +632,27 @@ function getDailyGreetingShownAt(userId: string) {
   return window.localStorage.getItem(getDailyGreetingShownAtKey(userId));
 }
 
+function getIdleGreetingShownAt(userId: string) {
+  if (typeof window === "undefined") return null;
+  return window.localStorage.getItem(getIdleGreetingShownAtKey(userId));
+}
+
 function rememberDailyGreetingShownAt(userId: string) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(getDailyGreetingShownAtKey(userId), new Date().toISOString());
+}
+
+function rememberIdleGreetingShownAt(userId: string) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(getIdleGreetingShownAtKey(userId), new Date().toISOString());
+}
+
+function canShowIdleGreeting(userId: string) {
+  const lastShownAt = getIdleGreetingShownAt(userId);
+  if (!lastShownAt) return true;
+
+  const elapsed = Date.now() - new Date(lastShownAt).getTime();
+  return elapsed >= IDLE_GREETING_COOLDOWN_MS;
 }
 
 function hasSeenSecondRecommendation(userId: string) {
@@ -2339,7 +2362,8 @@ export function ChatLouis() {
   }, [pathname]);
 
   const hasPendingPageGuide = Boolean(
-    featureToursEnabled &&
+    pathname !== "/dashboard" &&
+      featureToursEnabled &&
       currentPageGuide &&
       louisFeatureTours[currentPageGuide.featureKey] !== true,
   );
@@ -3152,6 +3176,11 @@ export function ChatLouis() {
         ),
       ) % LOUIS_OPENING_GREETINGS.length;
 
+    if (!louisUserId || !canShowIdleGreeting(louisUserId)) {
+      return;
+    }
+
+    rememberIdleGreetingShownAt(louisUserId);
     appendAssistantMessage(LOUIS_OPENING_GREETINGS[openingIndex]);
   }
 

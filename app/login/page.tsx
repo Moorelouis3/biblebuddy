@@ -119,7 +119,7 @@ export default function LoginPage() {
         {/* Left: Logo + Text */}
         <div className="flex items-center gap-3">
           <Image
-            src="/louis/newiconlouis.png"
+            src="/louis/louis-wave.png"
             alt="Bible Buddy Logo"
             width={32}
             height={32}

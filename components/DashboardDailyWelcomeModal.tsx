@@ -7,7 +7,7 @@ import { logActionToMasterActions } from "../lib/actionRecorder";
 import { getVerseIntro, getVerseOfTheDay } from "../lib/verseOfTheDay";
 import { supabase } from "../lib/supabaseClient";
 
-const LOUIS_AVATAR_SRC = "/louis/newiconlouis.png";
+const LOUIS_AVATAR_SRC = "/louis/louis-wave.png";
 
 export type DashboardDailyWelcomeModalProps = {
   open: boolean;

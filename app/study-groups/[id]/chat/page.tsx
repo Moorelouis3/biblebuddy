@@ -198,6 +198,11 @@ interface CurrentSeriesPreview {
   current_week: number;
 }
 
+type SeriesPreviewSelection = {
+  preview: CurrentSeriesPreview | null;
+  startAt: string | null;
+};
+
 
 interface SeriesPost {
   id: string;
@@ -249,8 +254,8 @@ interface WeekAnalytics {
 }
 
 const PLANNED_BIBLE_STUDY_SERIES = [
-  { key: "temptation_of_jesus", title: "The Temptation of Jesus", subtitle: "5-week group study" },
   { key: "testing_of_joseph", title: "The Testing of Joseph", subtitle: "14-week group study" },
+  { key: "temptation_of_jesus", title: "The Temptation of Jesus", subtitle: "5-week group study" },
   { key: "wisdom_of_proverbs", title: "The Wisdom of Proverbs", subtitle: "Coming later" },
   { key: "faith_of_job", title: "The Faith of Job", subtitle: "Coming later" },
   { key: "calling_of_moses", title: "The Calling of Moses", subtitle: "Coming later" },
@@ -268,6 +273,80 @@ function resolveSeriesStart(schedule: { start_at?: string | null; start_date?: s
   if (schedule.start_at) return schedule.start_at;
   if (schedule.start_date) return `${schedule.start_date}T00:00:00`;
   return null;
+}
+
+function normalizeSeriesTitle(title: string | null | undefined) {
+  return (title || "").trim().toLowerCase();
+}
+
+function buildCurrentSeriesPreview(series: Pick<Series, "id" | "title" | "description" | "current_week"> | null): CurrentSeriesPreview | null {
+  if (!series) return null;
+
+  return {
+    id: series.id,
+    title: series.title,
+    description: series.description,
+    total_weeks: getSeriesTotalWeeks(series.title),
+    current_week: series.current_week,
+  };
+}
+
+function getSeriesBannerMeta(title: string | null | undefined) {
+  const normalizedTitle = normalizeSeriesTitle(title);
+
+  if (normalizedTitle === "the testing of joseph") {
+    return {
+      src: "/testingofjoseph.png",
+      alt: "The Testing of Joseph study banner",
+      bg: "#dcefdc",
+      objectPosition: "center 40%",
+    };
+  }
+
+  if (normalizedTitle === "the temptation of jesus") {
+    return {
+      src: "/TheTemptingofjesusstudy.png",
+      alt: "The Temptation of Jesus study banner",
+      bg: "#ead4c0",
+      objectPosition: "center 42%",
+    };
+  }
+
+  return null;
+}
+
+function getSeriesPromoDescription(title: string | null | undefined, fallback?: string | null) {
+  const normalizedTitle = normalizeSeriesTitle(title);
+
+  if (normalizedTitle === "the testing of joseph") {
+    return "A 14 week Bible study through Genesis 37 to 50 on betrayal, waiting, testing, forgiveness, and how God keeps working through Joseph's whole story.";
+  }
+
+  if (normalizedTitle === "the temptation of jesus") {
+    return "A 5 week Bible study through Jesus in the wilderness, breaking down temptation, obedience, and spiritual endurance week by week.";
+  }
+
+  return fallback || "A guided Bible Buddy study through Scripture with notes, trivia, reflection, and group discussion.";
+}
+
+function selectFeaturedSeriesPreview(
+  rows: Series[],
+  scheduleMap: Map<string, string | null>,
+  nowTs: number,
+): SeriesPreviewSelection {
+  const currentSeries = rows.find((series) => series.is_current) ?? rows[0] ?? null;
+  const upcomingJoseph = rows.find((series) => {
+    if (normalizeSeriesTitle(series.title) !== "the testing of joseph") return false;
+    const startAt = scheduleMap.get(series.id);
+    return Boolean(startAt) && new Date(startAt as string).getTime() > nowTs;
+  }) ?? null;
+
+  const featuredSeries = upcomingJoseph ?? currentSeries;
+
+  return {
+    preview: buildCurrentSeriesPreview(featuredSeries),
+    startAt: featuredSeries ? (scheduleMap.get(featuredSeries.id) ?? null) : null,
+  };
 }
 
 function formatDateTimeLabel(dateStr: string): string {
@@ -2177,25 +2256,26 @@ RULES:
         .order("display_order", { ascending: true });
       setHubCategories(hubCats || []);
 
-      const { data: currentSeriesData } = await supabase
+      const { data: currentSeriesRows } = await supabase
         .from("group_series")
-        .select("id, title, description, total_weeks, current_week")
+        .select("id, title, description, total_weeks, current_week, is_current, created_at")
         .eq("group_id", groupId)
-        .eq("is_current", true)
-        .maybeSingle();
+        .order("created_at", { ascending: false });
 
-      setCurrentSeriesPreview(currentSeriesData ?? null);
-
-      if (currentSeriesData?.id) {
-        const { data: scheduleData } = await supabase
+      const previewRows = (currentSeriesRows || []) as Series[];
+      const previewSeriesIds = previewRows.map((series) => series.id);
+      const { data: previewScheduleRows } = previewSeriesIds.length
+        ? await supabase
           .from("series_schedules")
-          .select("start_date, start_at")
-          .eq("series_id", currentSeriesData.id)
-          .maybeSingle();
-        setCurrentSeriesStartAt(resolveSeriesStart(scheduleData));
-      } else {
-        setCurrentSeriesStartAt(null);
-      }
+          .select("series_id, start_date, start_at")
+          .in("series_id", previewSeriesIds)
+        : { data: [] as Array<{ series_id: string; start_date: string | null; start_at: string | null }> };
+      const previewScheduleMap = new Map(
+        (previewScheduleRows || []).map((row) => [row.series_id, resolveSeriesStart(row)]),
+      );
+      const featuredPreview = selectFeaturedSeriesPreview(previewRows, previewScheduleMap, Date.now());
+      setCurrentSeriesPreview(featuredPreview.preview);
+      setCurrentSeriesStartAt(featuredPreview.startAt);
 
       // Handle ?tab=bible_studies from detail page link
       const tabParam = searchParams.get("tab");
@@ -3586,14 +3666,19 @@ RULES:
       .order("created_at", { ascending: false });
     const rows = data || [];
     setSeriesList(rows);
-    const currentSeries = rows.find((series) => series.is_current) ?? rows[0] ?? null;
-    setCurrentSeriesPreview(currentSeries ? {
-      id: currentSeries.id,
-      title: currentSeries.title,
-      description: currentSeries.description,
-      total_weeks: getSeriesTotalWeeks(currentSeries.title),
-      current_week: currentSeries.current_week,
-    } : null);
+    const seriesIds = rows.map((series) => series.id);
+    const { data: scheduleRows } = seriesIds.length
+      ? await supabase
+        .from("series_schedules")
+        .select("series_id, start_date, start_at")
+        .in("series_id", seriesIds)
+      : { data: [] as Array<{ series_id: string; start_date: string | null; start_at: string | null }> };
+    const scheduleMap = new Map(
+      (scheduleRows || []).map((row) => [row.series_id, resolveSeriesStart(row)]),
+    );
+    const featuredPreview = selectFeaturedSeriesPreview(rows, scheduleMap, Date.now());
+    setCurrentSeriesPreview(featuredPreview.preview);
+    setCurrentSeriesStartAt(featuredPreview.startAt);
     setLoadingSeries(false);
   }
 
@@ -4287,6 +4372,7 @@ RULES:
 
           {activeTab === "home" && currentSeriesPreview && (() => {
             const cardState = getCurrentSeriesCardState(currentSeriesStartAt, currentSeriesPreview.total_weeks, nowTs);
+            const bannerMeta = getSeriesBannerMeta(currentSeriesPreview.title);
             return (
               <>
                 <button
@@ -4294,25 +4380,33 @@ RULES:
                   onClick={() => void handleOpenBibleStudyCard()}
                   className="w-full mb-4 text-left rounded-2xl border shadow-sm hover:shadow-md transition overflow-hidden"
                   style={{ backgroundColor: "#f4e2d2", borderColor: "#d9b896" }}
-                >
-                  <div
-                    className="px-4 pt-4 pb-3"
-                    style={{ borderBottom: "1px solid #d9b896" }}
                   >
-                    <div className="rounded-2xl overflow-hidden border shadow-sm" style={{ borderColor: "rgba(116, 74, 45, 0.16)" }}>
-                      <div className="relative h-32 sm:h-40 bg-[#ead4c0]">
-                        <img
-                          src="/TheTemptingofjesusstudy.png"
-                          alt="The Temptation of Jesus study banner"
-                          className="w-full h-full object-cover"
-                          style={{ objectPosition: "center 42%" }}
-                        />
-                      </div>
+                    <div
+                      className="px-4 pt-4 pb-3"
+                      style={{ borderBottom: "1px solid #d9b896" }}
+                    >
+                      <div className="rounded-2xl overflow-hidden border shadow-sm" style={{ borderColor: "rgba(116, 74, 45, 0.16)" }}>
+                        {bannerMeta ? (
+                          <div className="relative h-32 sm:h-40" style={{ backgroundColor: bannerMeta.bg }}>
+                            <img
+                              src={bannerMeta.src}
+                              alt={bannerMeta.alt}
+                              className="w-full h-full object-cover"
+                              style={{ objectPosition: bannerMeta.objectPosition }}
+                            />
+                          </div>
+                        ) : (
+                          <div className="relative h-32 sm:h-40 bg-[#ead4c0]" />
+                        )}
                     </div>
                   </div>
                   <div className="px-5 py-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                      {currentSeriesPreview.total_weeks}-week group study
+                    </p>
+                    <p className="mt-1 text-lg font-semibold text-gray-900">{currentSeriesPreview.title}</p>
                     {currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs ? (
-                      <div className="flex items-center justify-between gap-3">
+                      <div className="mt-2 flex items-center justify-between gap-3">
                         <p
                           className="text-base font-bold whitespace-nowrap"
                           style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
@@ -4323,12 +4417,15 @@ RULES:
                       </div>
                     ) : (
                       <p
-                        className="text-lg font-bold"
+                        className="mt-2 text-lg font-bold"
                         style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
                       >
                         {cardState.headline}
                       </p>
                     )}
+                    <p className="text-sm text-gray-600 mt-2">
+                      {getSeriesPromoDescription(currentSeriesPreview.title, currentSeriesPreview.description)}
+                    </p>
                     {!currentSeriesStartAt || new Date(currentSeriesStartAt).getTime() <= nowTs ? (
                       <p className="text-sm text-gray-600 mt-1">{cardState.detail}</p>
                     ) : null}
@@ -4817,7 +4914,7 @@ RULES:
                           ) : isJosephSeries ? (
                             <div className="relative h-48 sm:h-56 bg-[#dcefdc]">
                               <img
-                                src="/newtesting.png"
+                                src="/testingofjoseph.png"
                                 alt="The Testing of Joseph study cover"
                                 className="w-full h-full object-cover"
                                 style={{ objectPosition: "center 40%" }}
@@ -5302,11 +5399,11 @@ RULES:
                 <div className="flex flex-col gap-3">
                   {PLANNED_BIBLE_STUDY_SERIES.map((planned, index) => {
                     const matchingSeries =
-                      seriesList.find((series) => series.title.trim().toLowerCase() === planned.title.trim().toLowerCase()) ??
+                      seriesList.find((series) => normalizeSeriesTitle(series.title) === normalizeSeriesTitle(planned.title)) ??
                       null;
-                    const liveSeries = index === 0 ? (seriesList.find((series) => series.is_current) ?? seriesList[0] ?? null) : null;
+                    const isLive = normalizeSeriesTitle(currentSeriesPreview?.title) === normalizeSeriesTitle(planned.title);
+                    const liveSeries = isLive ? matchingSeries : null;
                     const previewSeries = matchingSeries ?? (isLeader ? buildSeriesPreviewRecord(planned.title) : liveSeries);
-                    const isLive = index === 0 && !!liveSeries;
                     const canOpen = isLive || isLeader;
                     const startLabel = isLive && currentSeriesStartAt ? formatDateTimeLabel(currentSeriesStartAt) : null;
                     const startCountdown =
@@ -5330,13 +5427,13 @@ RULES:
                         <div className="flex items-start justify-between gap-3">
                           <div className="flex-1 min-w-0">
                             <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: isLive ? "#4f7e54" : "#9ca3af" }}>
-                              {planned.subtitle}
-                            </p>
-                            <p className="text-base font-semibold text-gray-900 mt-1">{planned.title}</p>
-                            {isLive ? (
+                            {planned.subtitle}
+                          </p>
+                          <p className="text-base font-semibold text-gray-900 mt-1">{planned.title}</p>
+                          {isLive ? (
                               <>
                                 <p className="text-xs text-gray-500 mt-1 line-clamp-2">
-                                  {liveSeries?.description || "A guided Bible Buddy study through Luke 4:1-30 with notes, trivia, reflection, and group discussion."}
+                                  {getSeriesPromoDescription(planned.title, liveSeries?.description)}
                                 </p>
                                 <p className="text-xs mt-2">
                                   {startCountdown ? (

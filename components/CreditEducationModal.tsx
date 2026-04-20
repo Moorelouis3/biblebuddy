@@ -60,7 +60,7 @@ export default function CreditEducationModal({ open, onClose, userId, ignoreCred
         <div className="rounded-2xl bg-blue-50 px-3 md:px-4 py-3 md:py-4">
           {/* Header with Louis avatar */}
           <div className="flex flex-col items-center mb-4">
-            <img src="/louis/newiconlouis.png" alt="Louis avatar" width={64} height={64} className="rounded-full select-none mx-auto" />
+            <img src="/louis/louis-wave.png" alt="Louis avatar" width={64} height={64} className="rounded-full select-none mx-auto" />
             <h1 className="text-2xl md:text-3xl font-bold mt-3 text-center text-gray-900">
               Hey! You’re about to unlock a Bible Insight 👀
             </h1>
