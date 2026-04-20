@@ -12,6 +12,13 @@ import { TESTING_OF_JOSEPH_WEEK_FOUR_NOTES } from "../lib/testingOfJosephWeekFou
 import { TESTING_OF_JOSEPH_WEEK_FIVE_NOTES } from "../lib/testingOfJosephWeekFiveNotes";
 import { TESTING_OF_JOSEPH_WEEK_SIX_NOTES } from "../lib/testingOfJosephWeekSixNotes";
 import { TESTING_OF_JOSEPH_WEEK_SEVEN_NOTES } from "../lib/testingOfJosephWeekSevenNotes";
+import { TESTING_OF_JOSEPH_WEEK_EIGHT_NOTES } from "../lib/testingOfJosephWeekEightNotes";
+import { TESTING_OF_JOSEPH_WEEK_NINE_NOTES } from "../lib/testingOfJosephWeekNineNotes";
+import { TESTING_OF_JOSEPH_WEEK_TEN_NOTES } from "../lib/testingOfJosephWeekTenNotes";
+import { TESTING_OF_JOSEPH_WEEK_ELEVEN_NOTES } from "../lib/testingOfJosephWeekElevenNotes";
+import { TESTING_OF_JOSEPH_WEEK_TWELVE_NOTES } from "../lib/testingOfJosephWeekTwelveNotes";
+import { TESTING_OF_JOSEPH_WEEK_THIRTEEN_NOTES } from "../lib/testingOfJosephWeekThirteenNotes";
+import { TESTING_OF_JOSEPH_WEEK_FOURTEEN_NOTES } from "../lib/testingOfJosephWeekFourteenNotes";
 
 const SUPABASE_URL = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -70,6 +77,48 @@ const rows = [
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_SEVEN_NOTES),
     notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_SEVEN_NOTES)),
   },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 8,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_EIGHT_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_EIGHT_NOTES)),
+  },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 9,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_NINE_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_NINE_NOTES)),
+  },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 10,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_TEN_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_TEN_NOTES)),
+  },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 11,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_ELEVEN_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_ELEVEN_NOTES)),
+  },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 12,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_TWELVE_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_TWELVE_NOTES)),
+  },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 13,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_THIRTEEN_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_THIRTEEN_NOTES)),
+  },
+  {
+    series_key: "testing_of_joseph",
+    week_number: 14,
+    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_FOURTEEN_NOTES),
+    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_FOURTEEN_NOTES)),
+  },
 ];
 
 async function main() {
@@ -82,7 +131,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log("Seeded Testing of Joseph week notes 1-7 into series_week_notes.");
+  console.log("Seeded Testing of Joseph week notes 1-14 into series_week_notes.");
 }
 
 main().catch((error) => {
