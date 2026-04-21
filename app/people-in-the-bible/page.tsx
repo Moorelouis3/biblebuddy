@@ -420,22 +420,55 @@ function normalizePersonMarkdown(markdown: string): string {
 }
 
 function PeopleInTheBiblePageContent() {
+    function extractCompactPersonMeaning(markdown: string): string {
+      const normalized = normalizePersonMarkdown(markdown);
+      const sections = normalized.split(/\n(?=# )/).map((section) => section.trim()).filter(Boolean);
+      const preferred =
+        sections.find((section) => /^# .*who .* is/i.test(section)) ||
+        sections.find((section) => /^# .*what this person means/i.test(section)) ||
+        sections[0] ||
+        normalized;
+
+      const withoutHeader = preferred.replace(/^#\s+[^\n]+\n*/i, "").trim();
+      return `# 👤 Who This Person Is\n\n${withoutHeader}`;
+    }
+
+    function isLegacyPersonNotes(markdown: string): boolean {
+      const normalized = normalizePersonMarkdown(markdown);
+      const headerMatches = normalized.match(/^# /gm) || [];
+      return (
+        headerMatches.length > 1 ||
+        /their role|key moments|where you find|why this person matters/i.test(normalized) ||
+        normalized.length > 420
+      );
+    }
+
+    function buildPersonPrompt(person: string): string {
+      return `You are Little Louis.
+
+Generate a short Bible explanation for the person "${person}".
+
+Return markdown with exactly this structure:
+
+# 👤 Who This Person Is
+
+Then write only 2 to 5 warm, beginner friendly sentences in 1 to 3 short paragraphs.
+
+Rules:
+- Explain only who the person is
+- No extra sections
+- No bullet points
+- No key moments list
+- No where to find them section
+- No applications list
+- Keep it under 120 words
+- Sound clear simple and pastoral`;
+    }
+
     function buildQuickPersonFallback(person: string): string {
-      return `# Who This Person Is
+      return `# 👤 Who This Person Is
 
-${person} is someone you will come across in Scripture, and this quick profile is here to help you keep reading without waiting on the full study notes.
-
-People in the Bible often matter because of their faith, failure, leadership, family line, or the way God worked through their story.
-
-# Why This Person Matters
-
-Understanding who ${person} is can make a passage much clearer and help you catch the bigger story around the verse you are reading.
-
-Sometimes one person appears only briefly, but their role still carries important meaning in the chapter.
-
-# Quick note
-
-We are getting the full study notes for ${person} ready in the background. The next time you open this profile, the deeper version should be ready.`;
+${person} is someone you meet in Scripture, and Louis is still getting the full explanation ready.`;
     }
 
     const searchParams = useSearchParams();
@@ -502,6 +535,7 @@ We are getting the full study notes for ${person} ready in the background. The n
   const generatingPersonNotesRef = useRef<Set<string>>(new Set());
   const [personNotes, setPersonNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
+  const [generationProgress, setGenerationProgress] = useState(0);
   const [notesError, setNotesError] = useState<string | null>(null);
   const [personCreditBlocked, setPersonCreditBlocked] = useState(false);
   const [completedPeople, setCompletedPeople] = useState<Set<string>>(new Set());
@@ -632,6 +666,26 @@ We are getting the full study notes for ${person} ready in the background. The n
     selectedPersonNameRef.current = selectedPerson?.name.toLowerCase().trim() || null;
   }, [selectedPerson]);
 
+  useEffect(() => {
+    if (!loadingNotes || personNotes || !selectedPerson) {
+      if (!loadingNotes) setGenerationProgress(0);
+      return;
+    }
+
+    setGenerationProgress(7);
+    const interval = setInterval(() => {
+      setGenerationProgress((prev) => {
+        if (prev >= 95) return prev;
+        if (prev < 25) return prev + 10;
+        if (prev < 50) return prev + 7;
+        if (prev < 75) return prev + 4;
+        return prev + 2;
+      });
+    }, 900);
+
+    return () => clearInterval(interval);
+  }, [loadingNotes, personNotes, selectedPerson]);
+
   // Generate notes when a person is selected
   useEffect(() => {
     if (!selectedPerson) {
@@ -700,11 +754,68 @@ We are getting the full study notes for ${person} ready in the background. The n
           console.error("[bible_people_notes] Error checking bible_people_notes:", existingError);
         }
 
-        // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
-        // DO NOT continue to generation - this prevents duplicate ChatGPT calls
+        const generateAndStorePersonNotes = async () => {
+          if (generatingPersonNotesRef.current.has(personNameKey)) return;
+          generatingPersonNotesRef.current.add(personNameKey);
+
+          try {
+            const generated = await requestLouisNotes(buildPersonPrompt(selectedPerson.name));
+            const compactGenerated = extractCompactPersonMeaning(generated);
+
+            const { error: upsertError } = await supabase
+              .from("bible_people_notes")
+              .upsert(
+                {
+                  person_name: personNameKey,
+                  notes_text: compactGenerated,
+                },
+                {
+                  onConflict: "person_name",
+                }
+              );
+
+            if (upsertError) {
+              console.error("[bible_people_notes] Error upserting notes to bible_people_notes:", upsertError);
+            }
+
+            if (selectedPersonNameRef.current === personNameKey) {
+              setGenerationProgress(100);
+              setPersonNotes(compactGenerated);
+              setNotesError(null);
+              setLoadingNotes(false);
+            }
+          } catch (backgroundError: any) {
+            console.error("Error generating person notes in background:", backgroundError);
+            if (selectedPersonNameRef.current === personNameKey) {
+              setNotesError("Louis could not explain this person right now. Please try again.");
+              setLoadingNotes(false);
+            }
+          } finally {
+            generatingPersonNotesRef.current.delete(personNameKey);
+          }
+        };
+
         if (existing?.notes_text && existing.notes_text.trim().length > 0) {
           console.log(`[bible_people_notes] Found existing notes for ${person.name}, returning immediately (ChatGPT will NOT be called)`);
-          setPersonNotes(existing.notes_text);
+          setPersonNotes(extractCompactPersonMeaning(existing.notes_text));
+          setLoadingNotes(false);
+
+          if (isLegacyPersonNotes(existing.notes_text)) {
+            void generateAndStorePersonNotes();
+          }
+          return;
+        }
+
+        setPersonNotes(null);
+        setGenerationProgress(7);
+        void generateAndStorePersonNotes();
+        return;
+
+        // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
+        // DO NOT continue to generation - this prevents duplicate ChatGPT calls
+        if ((existing?.notes_text?.trim().length || 0) > 0) {
+          console.log(`[bible_people_notes] Found existing notes for ${person?.name ?? "this person"}, returning immediately (ChatGPT will NOT be called)`);
+          setPersonNotes(existing?.notes_text || "");
           setLoadingNotes(false);
           return;
         }
@@ -715,11 +826,11 @@ We are getting the full study notes for ${person} ready in the background. The n
 
         // STEP 2: Generate notes using ChatGPT
         // Determine gender for pronoun usage (simple heuristic - can be improved)
-        const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti|Bernice|Drusilla|Euodia|Syntyche|Chloe|Nympha|Tryphaena|Tryphosa|Julia|Claudia|Persis)/i.test(selectedPerson.name);
+        const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti|Bernice|Drusilla|Euodia|Syntyche|Chloe|Nympha|Tryphaena|Tryphosa|Julia|Claudia|Persis)/i.test(selectedPerson?.name ?? "this person");
         const pronoun = isFemale ? "Her" : "Him";
         const whoPronoun = isFemale ? "She" : "He";
         
-        const prompt = `You are Little Louis. Generate Bible study style notes for ${selectedPerson.name} from Scripture using the EXACT markdown structure below.
+        const prompt = `You are Little Louis. Generate Bible study style notes for ${selectedPerson?.name ?? "this person"} from Scripture using the EXACT markdown structure below.
 
 CRITICAL RENDERING RULES (MANDATORY):
 - Use ONLY markdown
@@ -796,7 +907,7 @@ FINAL RULES:
 - No lists without emojis
 - Keep it cinematic, Bible study focused, and clear`;
 
-        notesText = buildQuickPersonFallback(selectedPerson.name);
+        notesText = buildQuickPersonFallback(selectedPerson?.name ?? "this person");
         setPersonNotes(notesText);
         setLoadingNotes(false);
 
@@ -820,10 +931,10 @@ FINAL RULES:
               let fullNotesText = generated;
 
               if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
-                console.log(`[bible_people_notes] Notes were created by another request for ${selectedPerson.name}, using existing (skipping save)`);
+                console.log(`[bible_people_notes] Notes were created by another request for ${selectedPerson?.name ?? "this person"}, using existing (skipping save)`);
                 fullNotesText = existingCheck.notes_text;
               } else {
-                console.log(`[bible_people_notes] Upserting notes for ${selectedPerson.name}`);
+                console.log(`[bible_people_notes] Upserting notes for ${selectedPerson?.name ?? "this person"}`);
                 const { error: upsertError } = await supabase
                   .from("bible_people_notes")
                   .upsert(
@@ -1103,8 +1214,28 @@ FINAL RULES:
             )}
 
             {personCreditBlocked ? null : loadingNotes && !personNotes ? (
-              <div className="text-center py-12 text-gray-500">
-                Loading notes...
+              <div className="py-10">
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-amber-50 text-4xl shadow-sm ring-1 ring-amber-100">
+                    🤔
+                  </div>
+                  <div className="text-lg font-semibold text-gray-900">Louis is checking this one for you</div>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-gray-600">
+                    <span className="font-semibold text-gray-900">{selectedPerson.name}</span> has never been opened before.
+                    Please allow up to 20 seconds while Louis generates a short explanation.
+                  </p>
+                  <div className="mt-5 w-full max-w-md">
+                    <div className="h-3 overflow-hidden rounded-full bg-gray-100 ring-1 ring-gray-200">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-blue-500 via-sky-400 to-emerald-400 transition-all duration-500"
+                        style={{ width: `${generationProgress}%` }}
+                      />
+                    </div>
+                    <div className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+                      {Math.min(generationProgress, 100)}%
+                    </div>
+                  </div>
+                </div>
               </div>
             ) : notesError ? (
               <div className="text-center py-12 text-red-600">
@@ -1115,17 +1246,17 @@ FINAL RULES:
                 <ReactMarkdown
                   components={{
                     h1: ({ node, ...props }) => (
-                      <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
+                      <h1 className="text-lg md:text-xl font-bold mt-3 mb-3 text-gray-900" {...props} />
                     ),
                     p: ({ node, ...props }) => (
-                      <p className="mb-4 leading-relaxed" {...props} />
+                      <p className="mb-4 text-[15px] leading-relaxed text-gray-700" {...props} />
                     ),
                     strong: ({ node, ...props }) => (
                       <strong className="font-bold" {...props} />
                     ),
                   }}
                 >
-                  {normalizePersonMarkdown(personNotes)}
+                  {extractCompactPersonMeaning(personNotes)}
                 </ReactMarkdown>
 
                 {/* COMPLETION STATUS */}

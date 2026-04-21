@@ -39,22 +39,55 @@ function normalizePlaceMarkdown(markdown: string): string {
 }
 
 function PlacesInTheBiblePageContent() {
+  function extractCompactPlaceMeaning(markdown: string): string {
+    const normalized = normalizePlaceMarkdown(markdown);
+    const sections = normalized.split(/\n(?=# )/).map((section) => section.trim()).filter(Boolean);
+    const preferred =
+      sections.find((section) => /^# .*what this place is/i.test(section)) ||
+      sections.find((section) => /^# .*what this/i.test(section)) ||
+      sections[0] ||
+      normalized;
+
+    const withoutHeader = preferred.replace(/^#\s+[^\n]+\n*/i, "").trim();
+    return `# 📍 What This Place Is\n\n${withoutHeader}`;
+  }
+
+  function isLegacyPlaceNotes(markdown: string): boolean {
+    const normalized = normalizePlaceMarkdown(markdown);
+    const headerMatches = normalized.match(/^# /gm) || [];
+    return (
+      headerMatches.length > 1 ||
+      /where it appears|key moments|where you find|why this place matters/i.test(normalized) ||
+      normalized.length > 420
+    );
+  }
+
+  function buildPlacePrompt(place: string): string {
+    return `You are Little Louis.
+
+Generate a short Bible explanation for the place "${place}".
+
+Return markdown with exactly this structure:
+
+# 📍 What This Place Is
+
+Then write only 2 to 5 warm, beginner friendly sentences in 1 to 3 short paragraphs.
+
+Rules:
+- Explain only what the place is and why it matters in simple terms
+- No extra sections
+- No bullet points
+- No key moments list
+- No where to find it section
+- No applications list
+- Keep it under 120 words
+- Sound clear simple and pastoral`;
+  }
+
   function buildQuickPlaceFallback(place: string): string {
-    return `# What This Place Is
+    return `# 📍 What This Place Is
 
-${place} is a Bible place that helps shape the story around it, and this quick note is here to help you keep moving without waiting on the full study notes.
-
-Places in Scripture often matter because of geography, covenant events, battles, worship, travel, exile, or major turning points in God’s story.
-
-# Why This Place Matters
-
-Understanding ${place} can help you see why a chapter happens where it happens and what that setting adds to the meaning of the passage.
-
-Sometimes a place is more than a location. It can become a symbol of promise, warning, rescue, or judgment.
-
-# Quick note
-
-We are getting the full study notes for ${place} ready in the background. The next time you open this place, the deeper version should be ready.`;
+${place} is a Bible place, and Louis is still getting the full explanation ready.`;
   }
 
   const router = useRouter();
@@ -67,6 +100,7 @@ We are getting the full study notes for ${place} ready in the background. The ne
   const generatingPlaceNotesRef = useRef<Set<string>>(new Set());
   const [placeNotes, setPlaceNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
+  const [generationProgress, setGenerationProgress] = useState(0);
   const [notesError, setNotesError] = useState<string | null>(null);
   const [placeCreditBlocked, setPlaceCreditBlocked] = useState(false);
   const [completedPlaces, setCompletedPlaces] = useState<Set<string>>(new Set());
@@ -109,6 +143,26 @@ We are getting the full study notes for ${place} ready in the background. The ne
   useEffect(() => {
     selectedPlaceNameRef.current = selectedPlace?.name.toLowerCase().trim().replace(/\s+/g, "_") || null;
   }, [selectedPlace]);
+
+  useEffect(() => {
+    if (!loadingNotes || placeNotes || !selectedPlace) {
+      if (!loadingNotes) setGenerationProgress(0);
+      return;
+    }
+
+    setGenerationProgress(7);
+    const interval = setInterval(() => {
+      setGenerationProgress((prev) => {
+        if (prev >= 95) return prev;
+        if (prev < 25) return prev + 10;
+        if (prev < 50) return prev + 7;
+        if (prev < 75) return prev + 4;
+        return prev + 2;
+      });
+    }, 900);
+
+    return () => clearInterval(interval);
+  }, [loadingNotes, placeNotes, selectedPlace]);
 
   // Filter and sort places
   const filteredPlaces = useMemo(() => {
@@ -268,11 +322,69 @@ We are getting the full study notes for ${place} ready in the background. The ne
           console.error("[places_in_the_bible_notes] Error checking places_in_the_bible_notes:", existingError);
         }
 
+        const generateAndStorePlaceNotes = async () => {
+          if (generatingPlaceNotesRef.current.has(normalizedPlace)) return;
+          generatingPlaceNotesRef.current.add(normalizedPlace);
+
+          try {
+            const generated = await requestLouisNotes(buildPlacePrompt(selectedPlace.name));
+            const compactGenerated = extractCompactPlaceMeaning(generated);
+
+            const { error: upsertError } = await supabase
+              .from("places_in_the_bible_notes")
+              .upsert(
+                {
+                  place: selectedPlace.name,
+                  normalized_place: normalizedPlace,
+                  notes_text: compactGenerated,
+                },
+                {
+                  onConflict: "normalized_place",
+                }
+              );
+
+            if (upsertError) {
+              console.error("[places_in_the_bible_notes] Error upserting notes to places_in_the_bible_notes:", upsertError);
+            }
+
+            if (selectedPlaceNameRef.current === normalizedPlace) {
+              setGenerationProgress(100);
+              setPlaceNotes(compactGenerated);
+              setNotesError(null);
+              setLoadingNotes(false);
+            }
+          } catch (backgroundError: any) {
+            console.error("Error generating place notes in background:", backgroundError);
+            if (selectedPlaceNameRef.current === normalizedPlace) {
+              setNotesError("Louis could not explain this place right now. Please try again.");
+              setLoadingNotes(false);
+            }
+          } finally {
+            generatingPlaceNotesRef.current.delete(normalizedPlace);
+          }
+        };
+
+        if (existing?.notes_text && existing.notes_text.trim().length > 0) {
+          console.log(`[places_in_the_bible_notes] Found existing notes for ${selectedPlace?.name ?? "this place"}, returning immediately (ChatGPT will NOT be called)`);
+          setPlaceNotes(extractCompactPlaceMeaning(existing.notes_text));
+          setLoadingNotes(false);
+
+          if (isLegacyPlaceNotes(existing.notes_text)) {
+            void generateAndStorePlaceNotes();
+          }
+          return;
+        }
+
+        setPlaceNotes(null);
+        setGenerationProgress(7);
+        void generateAndStorePlaceNotes();
+        return;
+
         // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
         // DO NOT continue to generation - this prevents duplicate ChatGPT calls
-        if (existing?.notes_text && existing.notes_text.trim().length > 0) {
-          console.log(`[places_in_the_bible_notes] Found existing notes for ${selectedPlace.name}, returning immediately (ChatGPT will NOT be called)`);
-          setPlaceNotes(existing.notes_text);
+        if ((existing?.notes_text?.trim().length || 0) > 0) {
+          console.log(`[places_in_the_bible_notes] Found existing notes for ${selectedPlace?.name ?? "this place"}, returning immediately (ChatGPT will NOT be called)`);
+          setPlaceNotes(existing?.notes_text || "");
           setLoadingNotes(false);
           return;
         }
@@ -284,7 +396,7 @@ We are getting the full study notes for ${place} ready in the background. The ne
         // STEP 2: Generate notes using ChatGPT
         const prompt = `You are Little Louis.
 
-Generate beginner friendly Bible notes about the PLACE: ${selectedPlace.name}.
+Generate beginner friendly Bible notes about the PLACE: ${selectedPlace?.name ?? "this place"}.
 
 Follow this EXACT markdown template and rules.
 
@@ -350,7 +462,7 @@ RULES:
 - Total length about 200–300 words
 - Do NOT include the place name as a header`;
 
-        notesText = buildQuickPlaceFallback(selectedPlace.name);
+        notesText = buildQuickPlaceFallback(selectedPlace?.name ?? "this place");
         setPlaceNotes(notesText);
         setLoadingNotes(false);
 
@@ -374,15 +486,15 @@ RULES:
               let fullNotesText = generated;
 
               if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
-                console.log(`[places_in_the_bible_notes] Notes were created by another request for ${selectedPlace.name}, using existing (skipping save)`);
+                console.log(`[places_in_the_bible_notes] Notes were created by another request for ${selectedPlace?.name ?? "this place"}, using existing (skipping save)`);
                 fullNotesText = existingCheck.notes_text;
               } else {
-                console.log(`[places_in_the_bible_notes] Upserting notes for ${selectedPlace.name}`);
+                console.log(`[places_in_the_bible_notes] Upserting notes for ${selectedPlace?.name ?? "this place"}`);
                 const { error: upsertError } = await supabase
                   .from("places_in_the_bible_notes")
                   .upsert(
                     {
-                      place: selectedPlace.name,
+                      place: selectedPlace?.name ?? "this place",
                       normalized_place: normalizedPlace,
                       notes_text: generated,
                     },
@@ -647,8 +759,28 @@ RULES:
             <h2 className="text-3xl font-bold mb-2">{selectedPlace.name}</h2>
 
             {placeCreditBlocked ? null : loadingNotes && !placeNotes ? (
-              <div className="text-center py-12 text-gray-500">
-                Loading notes...
+              <div className="py-10">
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-amber-50 text-4xl shadow-sm ring-1 ring-amber-100">
+                    🤔
+                  </div>
+                  <div className="text-lg font-semibold text-gray-900">Louis is checking this one for you</div>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-gray-600">
+                    <span className="font-semibold text-gray-900">{selectedPlace.name}</span> has never been opened before.
+                    Please allow up to 20 seconds while Louis generates a short explanation.
+                  </p>
+                  <div className="mt-5 w-full max-w-md">
+                    <div className="h-3 overflow-hidden rounded-full bg-gray-100 ring-1 ring-gray-200">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-blue-500 via-sky-400 to-emerald-400 transition-all duration-500"
+                        style={{ width: `${generationProgress}%` }}
+                      />
+                    </div>
+                    <div className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+                      {Math.min(generationProgress, 100)}%
+                    </div>
+                  </div>
+                </div>
               </div>
             ) : notesError ? (
               <div className="text-center py-12 text-red-600">
@@ -659,17 +791,17 @@ RULES:
                 <ReactMarkdown
                   components={{
                     h1: ({ node, ...props }) => (
-                      <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
+                      <h1 className="text-lg md:text-xl font-bold mt-3 mb-3 text-gray-900" {...props} />
                     ),
                     p: ({ node, ...props }) => (
-                      <p className="mb-4 leading-relaxed" {...props} />
+                      <p className="mb-4 text-[15px] leading-relaxed text-gray-700" {...props} />
                     ),
                     strong: ({ node, ...props }) => (
                       <strong className="font-bold" {...props} />
                     ),
                   }}
                 >
-                  {normalizePlaceMarkdown(placeNotes)}
+                  {extractCompactPlaceMeaning(placeNotes)}
                 </ReactMarkdown>
 
                 {/* COMPLETION STATUS */}

@@ -52,22 +52,55 @@ function normalizeKeywordMarkdown(markdown: string): string {
 }
 
 function KeywordsInTheBiblePageContent() {
+  function extractCompactKeywordMeaning(markdown: string): string {
+    const normalized = normalizeKeywordMarkdown(markdown);
+    const sections = normalized.split(/\n(?=# )/).map((section) => section.trim()).filter(Boolean);
+    const preferred =
+      sections.find((section) => /^# .*what this keyword means/i.test(section)) ||
+      sections.find((section) => /^# .*what this/i.test(section)) ||
+      sections[0] ||
+      normalized;
+
+    const withoutHeader = preferred.replace(/^#\s+[^\n]+\n*/i, "").trim();
+    return `# 📖 What This Keyword Means\n\n${withoutHeader}`;
+  }
+
+  function isLegacyKeywordNotes(markdown: string): boolean {
+    const normalized = normalizeKeywordMarkdown(markdown);
+    const headerMatches = normalized.match(/^# /gm) || [];
+    return (
+      headerMatches.length > 1 ||
+      /where it appears|key verses|where you find|why this keyword matters/i.test(normalized) ||
+      normalized.length > 420
+    );
+  }
+
+  function buildKeywordPrompt(keyword: string): string {
+    return `You are Little Louis.
+
+Generate a short Bible explanation for the keyword "${keyword}".
+
+Return markdown with exactly this structure:
+
+# 📖 What This Keyword Means
+
+Then write only 2 to 5 warm, beginner friendly sentences in 1 to 3 short paragraphs.
+
+Rules:
+- Explain only the meaning
+- No extra sections
+- No bullet points
+- No key verses
+- No where it appears section
+- No applications list
+- Keep it under 120 words
+- Sound clear simple and pastoral`;
+  }
+
   function buildQuickKeywordFallback(keyword: string): string {
-    return `# What is this concept?
+    return `# 📖 What This Keyword Means
 
-${keyword} is an important Bible word or idea. This quick meaning is here to help you keep moving without waiting on the full study notes.
-
-In Scripture, words like this usually point to a bigger theme about God, wisdom, sin, promise, judgment, mercy, or redemption depending on the passage.
-
-# Why does it matter?
-
-Understanding ${keyword} can help you catch what a verse is really emphasizing instead of reading past an important idea too quickly.
-
-Even when the word seems simple, it often carries deeper meaning across the Bible.
-
-# Quick note
-
-We are getting the full study notes for ${keyword} ready in the background. The next time you open it, the deeper version should be ready.`;
+${keyword} is an important Bible word or idea in Scripture. Louis is still getting the full meaning ready.`;
   }
 
   const router = useRouter();
@@ -80,6 +113,7 @@ We are getting the full study notes for ${keyword} ready in the background. The 
   const generatingKeywordNotesRef = useRef<Set<string>>(new Set());
   const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
+  const [generationProgress, setGenerationProgress] = useState(0);
   const [notesError, setNotesError] = useState<string | null>(null);
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
   const [completedKeywords, setCompletedKeywords] = useState<Set<string>>(new Set());
@@ -122,6 +156,26 @@ We are getting the full study notes for ${keyword} ready in the background. The 
   useEffect(() => {
     selectedKeywordNameRef.current = selectedKeyword?.name.toLowerCase().trim() || null;
   }, [selectedKeyword]);
+
+  useEffect(() => {
+    if (!loadingNotes || keywordNotes || !selectedKeyword) {
+      if (!loadingNotes) setGenerationProgress(0);
+      return;
+    }
+
+    setGenerationProgress(7);
+    const interval = setInterval(() => {
+      setGenerationProgress((prev) => {
+        if (prev >= 95) return prev;
+        if (prev < 25) return prev + 10;
+        if (prev < 50) return prev + 7;
+        if (prev < 75) return prev + 4;
+        return prev + 2;
+      });
+    }, 900);
+
+    return () => clearInterval(interval);
+  }, [loadingNotes, keywordNotes, selectedKeyword]);
 
   // Filter and sort keywords
   const filteredKeywords = useMemo(() => {
@@ -268,6 +322,47 @@ We are getting the full study notes for ${keyword} ready in the background. The 
         }
 
         // STEP 1: Check database FIRST (mandatory short-circuit)
+        const generateAndStoreKeywordNotes = async () => {
+          if (generatingKeywordNotesRef.current.has(keywordKey)) return;
+          generatingKeywordNotesRef.current.add(keywordKey);
+
+          try {
+            const generated = await requestLouisNotes(buildKeywordPrompt(selectedKeyword.name));
+            const compactGenerated = extractCompactKeywordMeaning(generated);
+
+            const { error: upsertError } = await supabase
+              .from("keywords_in_the_bible")
+              .upsert(
+                {
+                  keyword: keywordKey,
+                  notes_text: compactGenerated,
+                },
+                {
+                  onConflict: "keyword",
+                }
+              );
+
+            if (upsertError) {
+              console.error("[keywords_in_the_bible] Error upserting notes to keywords_in_the_bible:", upsertError);
+            }
+
+            if (selectedKeywordNameRef.current === keywordKey) {
+              setGenerationProgress(100);
+              setKeywordNotes(compactGenerated);
+              setNotesError(null);
+              setLoadingNotes(false);
+            }
+          } catch (backgroundError: any) {
+            console.error("Error generating keyword notes in background:", backgroundError);
+            if (selectedKeywordNameRef.current === keywordKey) {
+              setNotesError("Louis could not explain this keyword right now. Please try again.");
+              setLoadingNotes(false);
+            }
+          } finally {
+            generatingKeywordNotesRef.current.delete(keywordKey);
+          }
+        };
+
         const { data: existing, error: existingError } = await supabase
           .from("keywords_in_the_bible")
           .select("notes_text")
@@ -281,11 +376,19 @@ We are getting the full study notes for ${keyword} ready in the background. The 
         // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
         // DO NOT continue to generation - this prevents duplicate ChatGPT calls
         if (existing?.notes_text && existing.notes_text.trim().length > 0) {
-          console.log(`[keywords_in_the_bible] Found existing notes for ${selectedKeyword.name}, returning immediately (ChatGPT will NOT be called)`);
-          setKeywordNotes(existing.notes_text);
+          console.log(`[keywords_in_the_bible] Found existing notes for ${selectedKeyword?.name ?? "this keyword"}, returning immediately (ChatGPT will NOT be called)`);
+          setKeywordNotes(extractCompactKeywordMeaning(existing.notes_text));
           setLoadingNotes(false);
+          if (isLegacyKeywordNotes(existing.notes_text)) {
+            void generateAndStoreKeywordNotes();
+          }
           return;
         }
+
+        setKeywordNotes(null);
+        setGenerationProgress(7);
+        void generateAndStoreKeywordNotes();
+        return;
 
         // GUARANTEE: If we reach here, notes do NOT exist in database
         // This is the ONLY path where ChatGPT should be called
@@ -294,7 +397,7 @@ We are getting the full study notes for ${keyword} ready in the background. The 
         // STEP 2: Generate notes using ChatGPT
         const prompt = `You are Little Louis.
 
-Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword.name}.
+Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword?.name ?? "this keyword"}.
 
 Follow this EXACT markdown template and rules.
 
@@ -360,7 +463,7 @@ RULES:
 - Total length about 200–300 words
 - Do NOT include the keyword name as a header`;
 
-        notesText = buildQuickKeywordFallback(selectedKeyword.name);
+        notesText = buildQuickKeywordFallback(selectedKeyword?.name ?? "this keyword");
         setKeywordNotes(notesText);
         setLoadingNotes(false);
 
@@ -652,8 +755,28 @@ RULES:
             <h2 className="text-3xl font-bold mb-2">{selectedKeyword.name}</h2>
 
             {keywordCreditBlocked ? null : loadingNotes && !keywordNotes ? (
-              <div className="text-center py-12 text-gray-500">
-                Loading notes...
+              <div className="py-10">
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-amber-50 text-4xl shadow-sm ring-1 ring-amber-100">
+                    🤔
+                  </div>
+                  <div className="text-lg font-semibold text-gray-900">Louis is checking this one for you</div>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-gray-600">
+                    <span className="font-semibold text-gray-900">{selectedKeyword.name}</span> has never been opened before.
+                    Please allow up to 20 seconds while Louis generates a short meaning for it.
+                  </p>
+                  <div className="mt-5 w-full max-w-md">
+                    <div className="h-3 overflow-hidden rounded-full bg-gray-100 ring-1 ring-gray-200">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-blue-500 via-sky-400 to-emerald-400 transition-all duration-500"
+                        style={{ width: `${generationProgress}%` }}
+                      />
+                    </div>
+                    <div className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+                      {Math.min(generationProgress, 100)}%
+                    </div>
+                  </div>
+                </div>
               </div>
             ) : notesError ? (
               <div className="text-center py-12 text-red-600">
@@ -664,17 +787,17 @@ RULES:
                 <ReactMarkdown
                   components={{
                     h1: ({ node, ...props }) => (
-                      <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
+                      <h1 className="text-lg md:text-xl font-bold mt-3 mb-3 text-gray-900" {...props} />
                     ),
                     p: ({ node, ...props }) => (
-                      <p className="mb-4 leading-relaxed" {...props} />
+                      <p className="mb-4 text-[15px] leading-relaxed text-gray-700" {...props} />
                     ),
                     strong: ({ node, ...props }) => (
                       <strong className="font-bold" {...props} />
                     ),
                   }}
                 >
-                  {normalizeKeywordMarkdown(keywordNotes)}
+                  {extractCompactKeywordMeaning(keywordNotes)}
                 </ReactMarkdown>
 
                 {/* COMPLETION STATUS */}
