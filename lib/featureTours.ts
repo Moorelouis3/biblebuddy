@@ -1,8 +1,12 @@
 export type FeatureTourKey =
   | "dashboard"
   | "bible"
+  | "bible_chapter_main"
+  | "bible_chapter_tools"
   | "bible_buddy_tv"
   | "guided_studies"
+  | "devotional_day"
+  | "bible_year_day"
   | "bible_references"
   | "bible_trivia"
   | "notes"
@@ -10,7 +14,7 @@ export type FeatureTourKey =
   | "bible_study_hub";
 
 export type FeatureToursState = Record<FeatureTourKey, boolean>;
-export const CURRENT_IN_APP_ONBOARDING_VERSION = 2;
+export const CURRENT_IN_APP_ONBOARDING_VERSION = 3;
 
 type FeatureToursRecord = Partial<Record<FeatureTourKey, unknown>> & {
   bible_reference?: unknown;
@@ -20,8 +24,12 @@ type FeatureToursRecord = Partial<Record<FeatureTourKey, unknown>> & {
 export const DEFAULT_FEATURE_TOURS: FeatureToursState = {
   dashboard: false,
   bible: false,
+  bible_chapter_main: false,
+  bible_chapter_tools: false,
   bible_buddy_tv: false,
   guided_studies: false,
+  devotional_day: false,
+  bible_year_day: false,
   bible_references: false,
   bible_trivia: false,
   notes: false,
@@ -53,8 +61,12 @@ export function normalizeFeatureTours(raw: unknown): FeatureToursState {
   return {
     dashboard: source.dashboard === true,
     bible: source.bible === true,
+    bible_chapter_main: source.bible_chapter_main === true,
+    bible_chapter_tools: source.bible_chapter_tools === true,
     bible_buddy_tv: source.bible_buddy_tv === true,
     guided_studies: source.guided_studies === true,
+    devotional_day: source.devotional_day === true,
+    bible_year_day: source.bible_year_day === true,
     bible_references:
       source.bible_references === true || source.bible_reference === true,
     bible_trivia: source.bible_trivia === true,
