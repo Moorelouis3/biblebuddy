@@ -111,6 +111,24 @@ function LouisLoadingCard({ name }: { name: string }) {
   );
 }
 
+function buildQuickKeywordFallback(keyword: string): string {
+  return `# What is this concept?
+
+${keyword} is an important Bible word or idea. This quick meaning is here to help you keep reading without getting stuck.
+
+In the Bible, words like this usually connect to a bigger theme about God, wisdom, obedience, judgment, promise, or redemption depending on the verse.
+
+# Why does it matter?
+
+Understanding ${keyword} helps you slow down and catch what the passage is really pointing to instead of skipping past an important idea.
+
+This word often carries more weight than it first seems, so even a simple definition can help the whole verse make more sense.
+
+# Quick note
+
+We are getting the full study notes for ${keyword} ready in the background. The next time you tap it, the deeper version should be ready.`;
+}
+
 export default function BibleChapterPage() {
   const params = useParams();
   const router = useRouter();
@@ -149,6 +167,8 @@ export default function BibleChapterPage() {
   const [selectedPerson, setSelectedPerson] = useState<{ name: string } | null>(null);
   const [selectedPlace, setSelectedPlace] = useState<{ name: string } | null>(null);
   const [selectedKeyword, setSelectedKeyword] = useState<{ name: string } | null>(null);
+  const selectedKeywordNameRef = useRef<string | null>(null);
+  const generatingKeywordNotesRef = useRef<Set<string>>(new Set());
   const [personNotes, setPersonNotes] = useState<string | null>(null);
   const [placeNotes, setPlaceNotes] = useState<string | null>(null);
   const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
@@ -221,6 +241,10 @@ export default function BibleChapterPage() {
       .trim();
   }
 
+  useEffect(() => {
+    selectedKeywordNameRef.current = selectedKeyword?.name.toLowerCase().trim() || null;
+  }, [selectedKeyword]);
+
   // Normalize book name for API (e.g., "1 Samuel" -> "1samuel", "Matthew" -> "matthew")
   function normalizeBookName(bookName: string): string {
     // Remove spaces and convert to lowercase
@@ -274,12 +298,12 @@ export default function BibleChapterPage() {
     return () => document.removeEventListener("click", handler);
   }, []);
 
-  async function markBibleReaderGuideSeen() {
-    if (!userId || featureTours.bible === true) return;
+  async function markBibleFeatureSeen(featureKey: keyof FeatureToursState) {
+    if (!userId || featureTours[featureKey] === true) return;
 
     const mergedFeatureTours = {
       ...featureTours,
-      bible: true,
+      [featureKey]: true,
     };
 
     const { error: updateError } = await supabase
@@ -698,11 +722,28 @@ RULES:
 - Total length about 200–300 words
 - Do NOT include the keyword name as a header`;
         
-        const generated = await requestLouisNotes(prompt);
+        setKeywordNotes(buildQuickKeywordFallback(selectedKeyword.name));
+        setKeywordNotesError(null);
 
-        const notesText = await saveKeywordNotes(selectedKeyword.name, generated);
+        if (!generatingKeywordNotesRef.current.has(keywordKey)) {
+          generatingKeywordNotesRef.current.add(keywordKey);
 
-        setKeywordNotes(notesText);
+          void (async () => {
+            try {
+              const generated = await requestLouisNotes(prompt);
+              const notesText = await saveKeywordNotes(selectedKeyword.name, generated);
+
+              if (selectedKeywordNameRef.current === keywordKey) {
+                setKeywordNotes(notesText);
+                setKeywordNotesError(null);
+              }
+            } catch (backgroundError) {
+              console.error("Error generating keyword notes in background:", backgroundError);
+            } finally {
+              generatingKeywordNotesRef.current.delete(keywordKey);
+            }
+          })();
+        }
       } catch (err: any) {
         console.error("Error loading keyword notes:", err);
         setKeywordNotesError("Couldn't load this keyword yet.");
@@ -1587,33 +1628,47 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
   useEffect(() => {
     if (!featureToursLoaded) return;
 
-    const promptKey = `${bookDisplayName}:${chapter}:${featureTours.bible === true ? "chapter" : "guide"}:${chapterSummaryLoaded ? chapterSummary : "pending"}`;
+    const promptKey = `${bookDisplayName}:${chapter}:${featureTours.bible_chapter_main === true ? "chapter" : "guide"}:${chapterSummaryLoaded ? chapterSummary : "pending"}`;
     if (louisChapterPromptRef.current === promptKey) return;
 
-    if (featureTours.bible !== true) {
+    if (!chapterSummaryLoaded) return;
+
+    if (featureTours.bible_chapter_main !== true) {
       louisChapterPromptRef.current = promptKey;
       bibleGuideShownThisVisitRef.current = true;
       dispatchLouisMoment({
         openMode: "badge",
         message: [
-          "Hey, this is the Bible reader.",
-          "This is where you actually read Scripture chapter by chapter inside Bible Buddy.",
-          "You can tap people, places, and keywords to learn what they mean without leaving the app.",
-          "You can change translations, open Chapter Notes, and use trivia or Scrambled when you want to go deeper.",
-          "If you want to highlight something, tap the verse number.",
-          "And when you finish, mark the chapter complete so I know you are done.",
-          "If you have any questions while you read, just click me and ask.",
+          `you’re reading ${bookDisplayName} ${chapter} now`,
+          chapterSummary || "This chapter moves the story forward and shows you something important about God, people, and what happens next.",
+          "read this chapter slowly and pay attention to what stands out",
+          "you can tap any person, place, or word you don’t understand to get more context",
+          "if you have any questions while you read, I’m here to help",
+          "when you’re done, mark the chapter as complete so we can reflect on it",
         ].join("\n\n"),
       });
-      void markBibleReaderGuideSeen();
+      void markBibleFeatureSeen("bible_chapter_main");
+      return;
+    }
+
+    if (featureTours.bible_chapter_tools !== true) {
+      louisChapterPromptRef.current = promptKey;
+      bibleGuideShownThisVisitRef.current = true;
+      dispatchLouisMoment({
+        openMode: "badge",
+        message: [
+          "quick tip",
+          "you can change the Bible translation anytime between King James, ASV, and WEB",
+          "you can also open chapter notes for a deeper breakdown or test yourself with trivia and scrambled",
+          "you can tap any verse number to highlight it",
+          "use these tools to go deeper, not just read",
+        ].join("\n\n"),
+      });
+      void markBibleFeatureSeen("bible_chapter_tools");
       return;
     }
 
     if (bibleGuideShownThisVisitRef.current) return;
-    if (!chapterSummaryLoaded) return;
-
-    const currentBookIndex = BIBLE_BOOKS_IN_ORDER.findIndex((item) => item.toLowerCase() === bookDisplayName.toLowerCase());
-    const previousBookName = currentBookIndex > 0 ? BIBLE_BOOKS_IN_ORDER[currentBookIndex - 1] : null;
 
     const introLine = pickLouisVariant(`${bookDisplayName}:${chapter}:intro`, [
       `Hey, you are about to read ${bookDisplayName} ${chapter}.`,
@@ -1652,7 +1707,15 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         completionLine,
       ].join("\n\n"),
     });
-  }, [bookDisplayName, chapter, chapterSummary, chapterSummaryLoaded, featureTours.bible, featureToursLoaded]);
+  }, [
+    bookDisplayName,
+    chapter,
+    chapterSummary,
+    chapterSummaryLoaded,
+    featureTours.bible_chapter_main,
+    featureTours.bible_chapter_tools,
+    featureToursLoaded,
+  ]);
 
   function openReflectionSection() {
     setHighlightReflectionSection(true);

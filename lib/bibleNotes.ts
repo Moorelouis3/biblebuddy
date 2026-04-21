@@ -133,8 +133,7 @@ export async function findKeywordNotes(keyword: string): Promise<string | null> 
     const { data, error } = await supabase
       .from("keywords_in_the_bible")
       .select("notes_text")
-      .ilike("keyword", normalized)
-      .limit(1)
+      .eq("keyword", normalized)
       .maybeSingle();
 
     if (error && error.code !== "PGRST116") {
