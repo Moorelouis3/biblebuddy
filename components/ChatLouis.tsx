@@ -1,7 +1,7 @@
 ﻿// components/ChatLouis.tsx
 "use client";
 
-import { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { LouisAvatar } from "./LouisAvatar";
 import { supabase } from "../lib/supabaseClient";
@@ -555,6 +555,42 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
   }
 
   return null;
+}
+
+function renderLouisFormattedText(content: string) {
+  const blocks = content.split(/\n{2,}/);
+
+  return blocks.map((block, blockIndex) => {
+    const parts = block.split(/(\*\*[^*]+\*\*)/g);
+
+    return (
+      <p
+        key={`block-${blockIndex}`}
+        className={blockIndex === 0 ? "text-xs leading-relaxed break-words" : "mt-3 text-xs leading-relaxed break-words"}
+      >
+        {parts.map((part, partIndex) => {
+          if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
+            return (
+              <strong key={`part-${blockIndex}-${partIndex}`} className="font-semibold text-gray-900">
+                {part.slice(2, -2)}
+              </strong>
+            );
+          }
+
+          return (
+            <React.Fragment key={`part-${blockIndex}-${partIndex}`}>
+              {part.split("\n").map((line, lineIndex, lines) => (
+                <React.Fragment key={`line-${blockIndex}-${partIndex}-${lineIndex}`}>
+                  {line}
+                  {lineIndex < lines.length - 1 ? <br /> : null}
+                </React.Fragment>
+              ))}
+            </React.Fragment>
+          );
+        })}
+      </p>
+    );
+  });
 }
 
 function getDailyGreetingShownAtKey(userId: string) {
@@ -3640,9 +3676,13 @@ export function ChatLouis() {
                         : "inline-block rounded-[22px] rounded-bl-md border border-gray-200 bg-white px-3.5 py-2.5 text-gray-800 shadow-sm"
                     }
                   >
-                    <p className="text-xs whitespace-pre-line leading-relaxed break-words">
-                      {m.content}
-                    </p>
+                    {m.role === "assistant" ? (
+                      <div>{renderLouisFormattedText(m.content)}</div>
+                    ) : (
+                      <p className="text-xs whitespace-pre-line leading-relaxed break-words">
+                        {m.content}
+                      </p>
+                    )}
                   </div>
                 </div>
                 {m.role === "user" ? (
