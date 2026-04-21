@@ -1178,9 +1178,38 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
 
   const ranked = candidates.sort((a, b) => b.score - a.score);
   const primary = ranked.find((candidate) => !candidate.secondOnly) ?? buildFallbackTarget(context.goal, context.currentStreak);
+  const expansionCategories: Array<LouisDailyActionTarget["category"]> = [
+    "group",
+    "trivia",
+    "scrambled",
+    "tv",
+    "notes",
+    "profile",
+  ];
   const secondary =
-    ranked.find((candidate) => candidate.key !== primary.key && candidate.secondOnly) ??
-    ranked.find((candidate) => candidate.key !== primary.key && candidate.category === "group") ??
+    ranked.find(
+      (candidate) =>
+        candidate.key !== primary.key &&
+        candidate.secondOnly &&
+        candidate.category !== primary.category,
+    ) ??
+    ranked.find(
+      (candidate) =>
+        candidate.key !== primary.key &&
+        candidate.category !== primary.category &&
+        expansionCategories.includes(candidate.category),
+    ) ??
+    ranked.find(
+      (candidate) =>
+        candidate.key !== primary.key &&
+        candidate.category !== primary.category &&
+        candidate.category === "group",
+    ) ??
+    ranked.find(
+      (candidate) =>
+        candidate.key !== primary.key &&
+        candidate.category !== primary.category,
+    ) ??
     ranked.find((candidate) => candidate.key !== primary.key) ??
     null;
 
