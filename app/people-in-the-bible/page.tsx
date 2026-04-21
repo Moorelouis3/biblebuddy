@@ -1193,7 +1193,7 @@ FINAL RULES:
       {/* PERSON PROFILE MODAL */}
       {selectedPerson && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl min-h-[420px] max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+          <div className="relative w-full max-w-2xl min-h-[300px] max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
             <button
               type="button"
               onClick={() => {
@@ -1213,7 +1213,7 @@ FINAL RULES:
               </p>
             )}
 
-            {personCreditBlocked ? null : loadingNotes && !personNotes ? (
+            {personCreditBlocked ? null : (loadingNotes || (!notesError && !personNotes)) ? (
               <div className="py-10">
                 <div className="flex flex-col items-center text-center">
                   <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-amber-50 text-4xl shadow-sm ring-1 ring-amber-100">
@@ -1259,11 +1259,7 @@ FINAL RULES:
                   {extractCompactPersonMeaning(personNotes)}
                 </ReactMarkdown>
               </div>
-            ) : (
-              <div className="text-center py-12 text-gray-500">
-                No notes available yet.
-              </div>
-            )}
+            ) : null}
           </div>
         </div>
       )}
