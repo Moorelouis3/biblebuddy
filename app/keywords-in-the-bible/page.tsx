@@ -2,7 +2,7 @@
 
 export const dynamic = "force-dynamic";
 
-import { Suspense, useState, useEffect, useMemo } from "react";
+import { Suspense, useState, useEffect, useMemo, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "../../lib/supabaseClient";
@@ -52,12 +52,32 @@ function normalizeKeywordMarkdown(markdown: string): string {
 }
 
 function KeywordsInTheBiblePageContent() {
+  function buildQuickKeywordFallback(keyword: string): string {
+    return `# What is this concept?
+
+${keyword} is an important Bible word or idea. This quick meaning is here to help you keep moving without waiting on the full study notes.
+
+In Scripture, words like this usually point to a bigger theme about God, wisdom, sin, promise, judgment, mercy, or redemption depending on the passage.
+
+# Why does it matter?
+
+Understanding ${keyword} can help you catch what a verse is really emphasizing instead of reading past an important idea too quickly.
+
+Even when the word seems simple, it often carries deeper meaning across the Bible.
+
+# Quick note
+
+We are getting the full study notes for ${keyword} ready in the background. The next time you open it, the deeper version should be ready.`;
+  }
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const [keywords] = useState<BibleKeyword[]>(createStaticKeywords());
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [selectedKeyword, setSelectedKeyword] = useState<BibleKeyword | null>(null);
+  const selectedKeywordNameRef = useRef<string | null>(null);
+  const generatingKeywordNotesRef = useRef<Set<string>>(new Set());
   const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
   const [notesError, setNotesError] = useState<string | null>(null);
@@ -98,6 +118,10 @@ function KeywordsInTheBiblePageContent() {
     setSelectedLetter(null);
     setSelectedKeyword(matchedKeyword);
   }, [keywords, searchParams]);
+
+  useEffect(() => {
+    selectedKeywordNameRef.current = selectedKeyword?.name.toLowerCase().trim() || null;
+  }, [selectedKeyword]);
 
   // Filter and sort keywords
   const filteredKeywords = useMemo(() => {
@@ -336,62 +360,72 @@ RULES:
 - Total length about 200–300 words
 - Do NOT include the keyword name as a header`;
 
-        const generated = await requestLouisNotes(prompt);
-
-        // STEP 3: Race condition protection - check again before saving
-        const { data: existingCheck, error: checkError } = await supabase
-          .from("keywords_in_the_bible")
-          .select("notes_text")
-          .eq("keyword", keywordKey)
-          .maybeSingle();
-
-        if (checkError && checkError.code !== 'PGRST116') {
-          console.error("[keywords_in_the_bible] Error checking for duplicates:", checkError);
-        }
-
-        // MANDATORY: If row exists now, use it and DO NOT save (another request created it)
-        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
-          console.log(`[keywords_in_the_bible] Notes were created by another request for ${selectedKeyword.name}, using existing (skipping save)`);
-          notesText = existingCheck.notes_text;
-        } else {
-          // No row exists - upsert to handle race conditions gracefully
-          console.log(`[keywords_in_the_bible] Upserting notes for ${selectedKeyword.name}`);
-          const { error: upsertError } = await supabase
-            .from("keywords_in_the_bible")
-            .upsert(
-              {
-                keyword: keywordKey,
-                notes_text: generated,
-              },
-              {
-                onConflict: "keyword",
-              }
-            );
-
-          if (upsertError) {
-            console.error("[keywords_in_the_bible] Error upserting notes to keywords_in_the_bible:", upsertError);
-            // Continue to use generated text even if save fails
-            notesText = generated;
-          } else {
-            // STEP 4: Re-read from database (never trust in-memory generated text)
-            const { data: savedData, error: readError } = await supabase
-              .from("keywords_in_the_bible")
-              .select("notes_text")
-              .eq("keyword", keywordKey)
-              .maybeSingle();
-
-            if (readError) {
-              console.error("[keywords_in_the_bible] Error re-reading notes:", readError);
-              notesText = generated;
-            } else if (savedData?.notes_text) {
-              notesText = savedData.notes_text;
-            } else {
-              notesText = generated;
-            }
-          }
-        }
-
+        notesText = buildQuickKeywordFallback(selectedKeyword.name);
         setKeywordNotes(notesText);
+        setLoadingNotes(false);
+
+        if (!generatingKeywordNotesRef.current.has(keywordKey)) {
+          generatingKeywordNotesRef.current.add(keywordKey);
+
+          void (async () => {
+            try {
+              const generated = await requestLouisNotes(prompt);
+
+              const { data: existingCheck, error: checkError } = await supabase
+                .from("keywords_in_the_bible")
+                .select("notes_text")
+                .eq("keyword", keywordKey)
+                .maybeSingle();
+
+              if (checkError && checkError.code !== "PGRST116") {
+                console.error("[keywords_in_the_bible] Error checking for duplicates:", checkError);
+              }
+
+              let fullNotesText = generated;
+
+              if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
+                fullNotesText = existingCheck.notes_text;
+              } else {
+                const { error: upsertError } = await supabase
+                  .from("keywords_in_the_bible")
+                  .upsert(
+                    {
+                      keyword: keywordKey,
+                      notes_text: generated,
+                    },
+                    {
+                      onConflict: "keyword",
+                    }
+                  );
+
+                if (upsertError) {
+                  console.error("[keywords_in_the_bible] Error upserting notes to keywords_in_the_bible:", upsertError);
+                } else {
+                  const { data: savedData, error: readError } = await supabase
+                    .from("keywords_in_the_bible")
+                    .select("notes_text")
+                    .eq("keyword", keywordKey)
+                    .maybeSingle();
+
+                  if (readError) {
+                    console.error("[keywords_in_the_bible] Error re-reading notes:", readError);
+                  } else if (savedData?.notes_text) {
+                    fullNotesText = savedData.notes_text;
+                  }
+                }
+              }
+
+              if (selectedKeywordNameRef.current === keywordKey) {
+                setKeywordNotes(fullNotesText);
+                setNotesError(null);
+              }
+            } catch (backgroundError: any) {
+              console.error("Error generating keyword notes in background:", backgroundError);
+            } finally {
+              generatingKeywordNotesRef.current.delete(keywordKey);
+            }
+          })();
+        }
       } catch (err: any) {
         console.error("Error loading or generating notes:", err);
         setNotesError(err?.message || "Failed to load notes");
@@ -617,7 +651,7 @@ RULES:
 
             <h2 className="text-3xl font-bold mb-2">{selectedKeyword.name}</h2>
 
-            {keywordCreditBlocked ? null : loadingNotes ? (
+            {keywordCreditBlocked ? null : loadingNotes && !keywordNotes ? (
               <div className="text-center py-12 text-gray-500">
                 Loading notes...
               </div>
