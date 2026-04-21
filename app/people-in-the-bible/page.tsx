@@ -754,7 +754,7 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
           console.error("[bible_people_notes] Error checking bible_people_notes:", existingError);
         }
 
-        const generateAndStorePersonNotes = async () => {
+        const generateAndStorePersonNotes = async (updateVisible: boolean) => {
           if (generatingPersonNotesRef.current.has(personNameKey)) return;
           generatingPersonNotesRef.current.add(personNameKey);
 
@@ -778,7 +778,7 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
               console.error("[bible_people_notes] Error upserting notes to bible_people_notes:", upsertError);
             }
 
-            if (selectedPersonNameRef.current === personNameKey) {
+            if (updateVisible && selectedPersonNameRef.current === personNameKey) {
               setGenerationProgress(100);
               setPersonNotes(compactGenerated);
               setNotesError(null);
@@ -801,14 +801,14 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
           setLoadingNotes(false);
 
           if (isLegacyPersonNotes(existing.notes_text)) {
-            void generateAndStorePersonNotes();
+            void generateAndStorePersonNotes(false);
           }
           return;
         }
 
         setPersonNotes(null);
         setGenerationProgress(7);
-        void generateAndStorePersonNotes();
+        void generateAndStorePersonNotes(true);
         return;
 
         // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
@@ -1193,7 +1193,7 @@ FINAL RULES:
       {/* PERSON PROFILE MODAL */}
       {selectedPerson && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+          <div className="relative w-full max-w-2xl min-h-[420px] max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
             <button
               type="button"
               onClick={() => {
@@ -1258,15 +1258,6 @@ FINAL RULES:
                 >
                   {extractCompactPersonMeaning(personNotes)}
                 </ReactMarkdown>
-
-                {/* COMPLETION STATUS */}
-                {userId && completedPeople.has(selectedPerson.name.toLowerCase().trim()) && (
-                  <div className="mt-8 pt-6 border-t border-gray-200">
-                    <div className="w-full px-6 py-3 rounded-lg font-medium bg-green-100 text-green-700 text-center">
-                      ✓ {selectedPerson.name} completed
-                    </div>
-                  </div>
-                )}
               </div>
             ) : (
               <div className="text-center py-12 text-gray-500">

@@ -322,7 +322,7 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
           console.error("[places_in_the_bible_notes] Error checking places_in_the_bible_notes:", existingError);
         }
 
-        const generateAndStorePlaceNotes = async () => {
+        const generateAndStorePlaceNotes = async (updateVisible: boolean) => {
           if (generatingPlaceNotesRef.current.has(normalizedPlace)) return;
           generatingPlaceNotesRef.current.add(normalizedPlace);
 
@@ -347,7 +347,7 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
               console.error("[places_in_the_bible_notes] Error upserting notes to places_in_the_bible_notes:", upsertError);
             }
 
-            if (selectedPlaceNameRef.current === normalizedPlace) {
+            if (updateVisible && selectedPlaceNameRef.current === normalizedPlace) {
               setGenerationProgress(100);
               setPlaceNotes(compactGenerated);
               setNotesError(null);
@@ -370,14 +370,14 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
           setLoadingNotes(false);
 
           if (isLegacyPlaceNotes(existing.notes_text)) {
-            void generateAndStorePlaceNotes();
+            void generateAndStorePlaceNotes(false);
           }
           return;
         }
 
         setPlaceNotes(null);
         setGenerationProgress(7);
-        void generateAndStorePlaceNotes();
+        void generateAndStorePlaceNotes(true);
         return;
 
         // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
@@ -743,7 +743,7 @@ RULES:
       {/* PLACE MODAL */}
       {selectedPlace && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+          <div className="relative w-full max-w-2xl min-h-[420px] max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
             <button
               type="button"
               onClick={() => {
@@ -803,15 +803,6 @@ RULES:
                 >
                   {extractCompactPlaceMeaning(placeNotes)}
                 </ReactMarkdown>
-
-                {/* COMPLETION STATUS */}
-                {userId && completedPlaces.has(selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_")) && (
-                  <div className="mt-8 pt-6 border-t border-gray-200">
-                    <div className="w-full px-6 py-3 rounded-lg font-medium bg-green-100 text-green-700 text-center">
-                      ✓ {selectedPlace.name} completed
-                    </div>
-                  </div>
-                )}
               </div>
             ) : (
               <div className="text-center py-12 text-gray-500">

@@ -322,7 +322,7 @@ ${keyword} is an important Bible word or idea in Scripture. Louis is still getti
         }
 
         // STEP 1: Check database FIRST (mandatory short-circuit)
-        const generateAndStoreKeywordNotes = async () => {
+        const generateAndStoreKeywordNotes = async (updateVisible: boolean) => {
           if (generatingKeywordNotesRef.current.has(keywordKey)) return;
           generatingKeywordNotesRef.current.add(keywordKey);
 
@@ -346,7 +346,7 @@ ${keyword} is an important Bible word or idea in Scripture. Louis is still getti
               console.error("[keywords_in_the_bible] Error upserting notes to keywords_in_the_bible:", upsertError);
             }
 
-            if (selectedKeywordNameRef.current === keywordKey) {
+            if (updateVisible && selectedKeywordNameRef.current === keywordKey) {
               setGenerationProgress(100);
               setKeywordNotes(compactGenerated);
               setNotesError(null);
@@ -380,14 +380,14 @@ ${keyword} is an important Bible word or idea in Scripture. Louis is still getti
           setKeywordNotes(extractCompactKeywordMeaning(existing.notes_text));
           setLoadingNotes(false);
           if (isLegacyKeywordNotes(existing.notes_text)) {
-            void generateAndStoreKeywordNotes();
+            void generateAndStoreKeywordNotes(false);
           }
           return;
         }
 
         setKeywordNotes(null);
         setGenerationProgress(7);
-        void generateAndStoreKeywordNotes();
+        void generateAndStoreKeywordNotes(true);
         return;
 
         // GUARANTEE: If we reach here, notes do NOT exist in database
@@ -739,7 +739,7 @@ RULES:
       {/* KEYWORD MODAL */}
       {selectedKeyword && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+          <div className="relative w-full max-w-2xl min-h-[420px] max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
             <button
               type="button"
               onClick={() => {
@@ -799,15 +799,6 @@ RULES:
                 >
                   {extractCompactKeywordMeaning(keywordNotes)}
                 </ReactMarkdown>
-
-                {/* COMPLETION STATUS */}
-                {userId && completedKeywords.has(selectedKeyword.name.toLowerCase().trim()) && (
-                  <div className="mt-8 pt-6 border-t border-gray-200">
-                    <div className="w-full px-6 py-3 rounded-lg font-medium bg-green-100 text-green-700 text-center">
-                      ✓ {selectedKeyword.name} completed
-                    </div>
-                  </div>
-                )}
               </div>
             ) : (
               <div className="text-center py-12 text-gray-500">
