@@ -2,7 +2,7 @@
 
 export const dynamic = "force-dynamic";
 
-import { Suspense, useState, useEffect, useMemo } from "react";
+import { Suspense, useState, useEffect, useMemo, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
@@ -39,12 +39,32 @@ function normalizePlaceMarkdown(markdown: string): string {
 }
 
 function PlacesInTheBiblePageContent() {
+  function buildQuickPlaceFallback(place: string): string {
+    return `# What This Place Is
+
+${place} is a Bible place that helps shape the story around it, and this quick note is here to help you keep moving without waiting on the full study notes.
+
+Places in Scripture often matter because of geography, covenant events, battles, worship, travel, exile, or major turning points in God’s story.
+
+# Why This Place Matters
+
+Understanding ${place} can help you see why a chapter happens where it happens and what that setting adds to the meaning of the passage.
+
+Sometimes a place is more than a location. It can become a symbol of promise, warning, rescue, or judgment.
+
+# Quick note
+
+We are getting the full study notes for ${place} ready in the background. The next time you open this place, the deeper version should be ready.`;
+  }
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const [places] = useState<BiblePlace[]>(createStaticPlaces());
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [selectedPlace, setSelectedPlace] = useState<BiblePlace | null>(null);
+  const selectedPlaceNameRef = useRef<string | null>(null);
+  const generatingPlaceNotesRef = useRef<Set<string>>(new Set());
   const [placeNotes, setPlaceNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
   const [notesError, setNotesError] = useState<string | null>(null);
@@ -85,6 +105,10 @@ function PlacesInTheBiblePageContent() {
     setSelectedLetter(null);
     setSelectedPlace(matchedPlace);
   }, [places, searchParams]);
+
+  useEffect(() => {
+    selectedPlaceNameRef.current = selectedPlace?.name.toLowerCase().trim().replace(/\s+/g, "_") || null;
+  }, [selectedPlace]);
 
   // Filter and sort places
   const filteredPlaces = useMemo(() => {
@@ -326,63 +350,75 @@ RULES:
 - Total length about 200–300 words
 - Do NOT include the place name as a header`;
 
-        const generated = await requestLouisNotes(prompt);
-
-        // STEP 3: Race condition protection - check again before saving
-        const { data: existingCheck, error: checkError } = await supabase
-          .from("places_in_the_bible_notes")
-          .select("notes_text")
-          .eq("normalized_place", normalizedPlace)
-          .maybeSingle();
-
-        if (checkError && checkError.code !== 'PGRST116') {
-          console.error("[places_in_the_bible_notes] Error checking for duplicates:", checkError);
-        }
-
-        // MANDATORY: If row exists now, use it and DO NOT save (another request created it)
-        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
-          console.log(`[places_in_the_bible_notes] Notes were created by another request for ${selectedPlace.name}, using existing (skipping save)`);
-          notesText = existingCheck.notes_text;
-        } else {
-          // No row exists - upsert to handle race conditions gracefully
-          console.log(`[places_in_the_bible_notes] Upserting notes for ${selectedPlace.name}`);
-          const { error: upsertError } = await supabase
-            .from("places_in_the_bible_notes")
-            .upsert(
-              {
-                place: selectedPlace.name,
-                normalized_place: normalizedPlace,
-                notes_text: generated,
-              },
-              {
-                onConflict: "normalized_place",
-              }
-            );
-
-          if (upsertError) {
-            console.error("[places_in_the_bible_notes] Error upserting notes to places_in_the_bible_notes:", upsertError);
-            // Continue to use generated text even if save fails
-            notesText = generated;
-          } else {
-            // STEP 4: Re-read from database (never trust in-memory generated text)
-            const { data: savedData, error: readError } = await supabase
-              .from("places_in_the_bible_notes")
-              .select("notes_text")
-              .eq("normalized_place", normalizedPlace)
-              .maybeSingle();
-
-            if (readError) {
-              console.error("[places_in_the_bible_notes] Error re-reading notes:", readError);
-              notesText = generated;
-            } else if (savedData?.notes_text) {
-              notesText = savedData.notes_text;
-            } else {
-              notesText = generated;
-            }
-          }
-        }
-
+        notesText = buildQuickPlaceFallback(selectedPlace.name);
         setPlaceNotes(notesText);
+        setLoadingNotes(false);
+
+        if (!generatingPlaceNotesRef.current.has(normalizedPlace)) {
+          generatingPlaceNotesRef.current.add(normalizedPlace);
+
+          void (async () => {
+            try {
+              const generated = await requestLouisNotes(prompt);
+
+              const { data: existingCheck, error: checkError } = await supabase
+                .from("places_in_the_bible_notes")
+                .select("notes_text")
+                .eq("normalized_place", normalizedPlace)
+                .maybeSingle();
+
+              if (checkError && checkError.code !== 'PGRST116') {
+                console.error("[places_in_the_bible_notes] Error checking for duplicates:", checkError);
+              }
+
+              let fullNotesText = generated;
+
+              if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
+                console.log(`[places_in_the_bible_notes] Notes were created by another request for ${selectedPlace.name}, using existing (skipping save)`);
+                fullNotesText = existingCheck.notes_text;
+              } else {
+                console.log(`[places_in_the_bible_notes] Upserting notes for ${selectedPlace.name}`);
+                const { error: upsertError } = await supabase
+                  .from("places_in_the_bible_notes")
+                  .upsert(
+                    {
+                      place: selectedPlace.name,
+                      normalized_place: normalizedPlace,
+                      notes_text: generated,
+                    },
+                    {
+                      onConflict: "normalized_place",
+                    }
+                  );
+
+                if (upsertError) {
+                  console.error("[places_in_the_bible_notes] Error upserting notes to places_in_the_bible_notes:", upsertError);
+                } else {
+                  const { data: savedData, error: readError } = await supabase
+                    .from("places_in_the_bible_notes")
+                    .select("notes_text")
+                    .eq("normalized_place", normalizedPlace)
+                    .maybeSingle();
+
+                  if (readError) {
+                    console.error("[places_in_the_bible_notes] Error re-reading notes:", readError);
+                  } else if (savedData?.notes_text) {
+                    fullNotesText = savedData.notes_text;
+                  }
+                }
+              }
+
+              if (selectedPlaceNameRef.current === normalizedPlace) {
+                setPlaceNotes(fullNotesText);
+                setNotesError(null);
+              }
+            } catch (backgroundError: any) {
+              console.error("Error generating place notes in background:", backgroundError);
+            } finally {
+              generatingPlaceNotesRef.current.delete(normalizedPlace);
+            }
+          })();
+        }
       } catch (err: any) {
         console.error("Error loading or generating notes:", err);
         setNotesError(err?.message || "Failed to load notes");
@@ -610,7 +646,7 @@ RULES:
 
             <h2 className="text-3xl font-bold mb-2">{selectedPlace.name}</h2>
 
-            {placeCreditBlocked ? null : loadingNotes ? (
+            {placeCreditBlocked ? null : loadingNotes && !placeNotes ? (
               <div className="text-center py-12 text-gray-500">
                 Loading notes...
               </div>

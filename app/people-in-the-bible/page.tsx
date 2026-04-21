@@ -420,6 +420,24 @@ function normalizePersonMarkdown(markdown: string): string {
 }
 
 function PeopleInTheBiblePageContent() {
+    function buildQuickPersonFallback(person: string): string {
+      return `# Who This Person Is
+
+${person} is someone you will come across in Scripture, and this quick profile is here to help you keep reading without waiting on the full study notes.
+
+People in the Bible often matter because of their faith, failure, leadership, family line, or the way God worked through their story.
+
+# Why This Person Matters
+
+Understanding who ${person} is can make a passage much clearer and help you catch the bigger story around the verse you are reading.
+
+Sometimes one person appears only briefly, but their role still carries important meaning in the chapter.
+
+# Quick note
+
+We are getting the full study notes for ${person} ready in the background. The next time you open this profile, the deeper version should be ready.`;
+    }
+
     const searchParams = useSearchParams();
     // Credit state for modal logic
     const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; ignore_credit_phase1: boolean | null } | null>(null);
@@ -480,6 +498,8 @@ function PeopleInTheBiblePageContent() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [selectedPerson, setSelectedPerson] = useState<BiblePerson | null>(null);
+  const selectedPersonNameRef = useRef<string | null>(null);
+  const generatingPersonNotesRef = useRef<Set<string>>(new Set());
   const [personNotes, setPersonNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
   const [notesError, setNotesError] = useState<string | null>(null);
@@ -607,6 +627,10 @@ function PeopleInTheBiblePageContent() {
     setSelectedLetter(null);
     setSelectedPerson(matchedPerson);
   }, [people, searchParams]);
+
+  useEffect(() => {
+    selectedPersonNameRef.current = selectedPerson?.name.toLowerCase().trim() || null;
+  }, [selectedPerson]);
 
   // Generate notes when a person is selected
   useEffect(() => {
@@ -772,62 +796,74 @@ FINAL RULES:
 - No lists without emojis
 - Keep it cinematic, Bible study focused, and clear`;
 
-        const generated = await requestLouisNotes(prompt);
-
-        // STEP 3: Race condition protection - check again before saving
-        const { data: existingCheck, error: checkError } = await supabase
-          .from("bible_people_notes")
-          .select("notes_text")
-          .eq("person_name", personNameKey)
-          .maybeSingle();
-
-        if (checkError && checkError.code !== 'PGRST116') {
-          console.error("[bible_people_notes] Error checking for duplicates:", checkError);
-        }
-
-        // MANDATORY: If row exists now, use it and DO NOT save (another request created it)
-        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
-          console.log(`[bible_people_notes] Notes were created by another request for ${selectedPerson.name}, using existing (skipping save)`);
-          notesText = existingCheck.notes_text;
-        } else {
-          // No row exists - upsert to handle race conditions gracefully
-          console.log(`[bible_people_notes] Upserting notes for ${selectedPerson.name}`);
-          const { error: upsertError } = await supabase
-            .from("bible_people_notes")
-            .upsert(
-              {
-                person_name: personNameKey,
-                notes_text: generated,
-              },
-              {
-                onConflict: "person_name",
-              }
-            );
-
-          if (upsertError) {
-            console.error("[bible_people_notes] Error upserting notes to bible_people_notes:", upsertError);
-            // Continue to use generated text even if save fails
-            notesText = generated;
-          } else {
-            // STEP 4: Re-read from database (never trust in-memory generated text)
-            const { data: savedData, error: readError } = await supabase
-              .from("bible_people_notes")
-              .select("notes_text")
-              .eq("person_name", personNameKey)
-              .maybeSingle();
-
-            if (readError) {
-              console.error("[bible_people_notes] Error re-reading notes:", readError);
-              notesText = generated;
-            } else if (savedData?.notes_text) {
-              notesText = savedData.notes_text;
-            } else {
-              notesText = generated;
-            }
-          }
-        }
-
+        notesText = buildQuickPersonFallback(selectedPerson.name);
         setPersonNotes(notesText);
+        setLoadingNotes(false);
+
+        if (!generatingPersonNotesRef.current.has(personNameKey)) {
+          generatingPersonNotesRef.current.add(personNameKey);
+
+          void (async () => {
+            try {
+              const generated = await requestLouisNotes(prompt);
+
+              const { data: existingCheck, error: checkError } = await supabase
+                .from("bible_people_notes")
+                .select("notes_text")
+                .eq("person_name", personNameKey)
+                .maybeSingle();
+
+              if (checkError && checkError.code !== 'PGRST116') {
+                console.error("[bible_people_notes] Error checking for duplicates:", checkError);
+              }
+
+              let fullNotesText = generated;
+
+              if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
+                console.log(`[bible_people_notes] Notes were created by another request for ${selectedPerson.name}, using existing (skipping save)`);
+                fullNotesText = existingCheck.notes_text;
+              } else {
+                console.log(`[bible_people_notes] Upserting notes for ${selectedPerson.name}`);
+                const { error: upsertError } = await supabase
+                  .from("bible_people_notes")
+                  .upsert(
+                    {
+                      person_name: personNameKey,
+                      notes_text: generated,
+                    },
+                    {
+                      onConflict: "person_name",
+                    }
+                  );
+
+                if (upsertError) {
+                  console.error("[bible_people_notes] Error upserting notes to bible_people_notes:", upsertError);
+                } else {
+                  const { data: savedData, error: readError } = await supabase
+                    .from("bible_people_notes")
+                    .select("notes_text")
+                    .eq("person_name", personNameKey)
+                    .maybeSingle();
+
+                  if (readError) {
+                    console.error("[bible_people_notes] Error re-reading notes:", readError);
+                  } else if (savedData?.notes_text) {
+                    fullNotesText = savedData.notes_text;
+                  }
+                }
+              }
+
+              if (selectedPersonNameRef.current === personNameKey) {
+                setPersonNotes(fullNotesText);
+                setNotesError(null);
+              }
+            } catch (backgroundError: any) {
+              console.error("Error generating person notes in background:", backgroundError);
+            } finally {
+              generatingPersonNotesRef.current.delete(personNameKey);
+            }
+          })();
+        }
       } catch (err: any) {
         console.error("Error loading or generating notes:", err);
         setNotesError(err?.message || "Failed to load notes");
@@ -1066,7 +1102,7 @@ FINAL RULES:
               </p>
             )}
 
-            {personCreditBlocked ? null : loadingNotes ? (
+            {personCreditBlocked ? null : loadingNotes && !personNotes ? (
               <div className="text-center py-12 text-gray-500">
                 Loading notes...
               </div>
