@@ -18,8 +18,14 @@ import { buildLouisRecommendationHandoff, storeLouisRouteHandoff } from "../../l
 import {
   ensureLouisDailyTaskCycle,
   getLouisDailyTaskCycleStartedAt,
+  hasSeenLouisDailyTaskCelebration,
   hasActiveLouisDailyTaskCycle,
+  rememberLouisDailyTaskBonusAwarded,
+  rememberLouisDailyTaskCelebrationSeen,
 } from "../../lib/louisDailyFlow";
+import { LouisAvatar } from "../../components/LouisAvatar";
+import { ModalShell } from "../../components/ModalShell";
+import { triggerPoints } from "../../components/PointsPop";
 
 import AdSlot from "../../components/AdSlot";
 import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
@@ -142,6 +148,7 @@ export default function DashboardPage() {
   const [showVerseOfTheDayModal, setShowVerseOfTheDayModal] = useState(false);
   const [showLouisDailyTasksModal, setShowLouisDailyTasksModal] = useState(false);
   const [louisDailyTaskCycleStartedAt, setLouisDailyTaskCycleStartedAt] = useState<string | null>(null);
+  const [showDailyTaskCelebrationModal, setShowDailyTaskCelebrationModal] = useState(false);
   const [isLoadingDailyTaskSummary, setIsLoadingDailyTaskSummary] = useState(true);
   const [dailyTaskCompletedCount, setDailyTaskCompletedCount] = useState(0);
   const [dailyTaskTotalCount, setDailyTaskTotalCount] = useState(5);
@@ -1178,6 +1185,16 @@ export default function DashboardPage() {
       setDailyTaskTotalCount(checklistData.tasks.length || 5);
       setDailyTaskNextTitle(checklistData.nextTaskTitle);
       setDailyTaskSummaryLine(checklistData.summaryLine);
+      if (
+        checklistData.allDone &&
+        louisDailyTaskCycleStartedAt &&
+        !hasSeenLouisDailyTaskCelebration(userId, louisDailyTaskCycleStartedAt)
+      ) {
+        rememberLouisDailyTaskBonusAwarded(userId, louisDailyTaskCycleStartedAt);
+        rememberLouisDailyTaskCelebrationSeen(userId, louisDailyTaskCycleStartedAt);
+        triggerPoints(10);
+        setShowDailyTaskCelebrationModal(true);
+      }
     } catch (error) {
       console.error("[DASHBOARD] Could not load daily task summary:", error);
       setDailyTaskCompletedCount(0);
@@ -1499,6 +1516,34 @@ export default function DashboardPage() {
         currentStreak={profile?.current_streak ?? 0}
         cycleStartedAt={louisDailyTaskCycleStartedAt}
       />
+
+      <ModalShell
+        isOpen={showDailyTaskCelebrationModal}
+        onClose={() => setShowDailyTaskCelebrationModal(false)}
+        backdropColor="bg-black/45"
+      >
+        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
+          <div className="bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-6 py-8 text-center">
+            <div className="flex justify-center">
+              <LouisAvatar mood="wave" size={68} />
+            </div>
+            <h2 className="mt-4 text-3xl font-bold text-[#21304f]">Congrats!</h2>
+            <p className="mt-3 text-base font-semibold text-[#355487]">
+              You completed today&apos;s Bible task.
+            </p>
+            <p className="mt-2 text-sm leading-6 text-[#58709d]">
+              All 5 tasks are done and your +10 bonus is locked in for this 24-hour cycle.
+            </p>
+            <button
+              type="button"
+              onClick={() => setShowDailyTaskCelebrationModal(false)}
+              className="mt-5 inline-flex rounded-full bg-[#7aa7df] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5f93d3]"
+            >
+              Keep Going
+            </button>
+          </div>
+        </div>
+      </ModalShell>
 
       {showLevelInfoModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">

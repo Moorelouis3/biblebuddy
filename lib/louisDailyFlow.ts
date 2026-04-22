@@ -19,6 +19,14 @@ function getSecondRecommendationSeenKey(userId: string, cycleStartedAt: string) 
   return `bb:louis:daily-task-second:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:${cycleStartedAt}`;
 }
 
+function getDailyTaskBonusAwardedKey(userId: string, cycleStartedAt: string) {
+  return `bb:louis:daily-task-bonus:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:${cycleStartedAt}`;
+}
+
+function getDailyTaskCelebrationSeenKey(userId: string, cycleStartedAt: string) {
+  return `bb:louis:daily-task-celebration:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:${cycleStartedAt}`;
+}
+
 function isWithinActiveWindow(iso: string | null | undefined) {
   if (!iso) return false;
   const parsed = new Date(iso);
@@ -85,6 +93,26 @@ export function getLouisDailyTaskTarget(userId: string, cycleStartedAt: string) 
 export function rememberLouisDailyTaskTarget(userId: string, cycleStartedAt: string, target: LouisDailyTaskTarget) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(getDailyTaskTargetKey(userId, cycleStartedAt), JSON.stringify(target));
+}
+
+export function hasLouisDailyTaskBonusAwarded(userId: string, cycleStartedAt: string) {
+  if (typeof window === "undefined") return false;
+  return window.localStorage.getItem(getDailyTaskBonusAwardedKey(userId, cycleStartedAt)) === "1";
+}
+
+export function rememberLouisDailyTaskBonusAwarded(userId: string, cycleStartedAt: string) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(getDailyTaskBonusAwardedKey(userId, cycleStartedAt), "1");
+}
+
+export function hasSeenLouisDailyTaskCelebration(userId: string, cycleStartedAt: string) {
+  if (typeof window === "undefined") return false;
+  return window.localStorage.getItem(getDailyTaskCelebrationSeenKey(userId, cycleStartedAt)) === "1";
+}
+
+export function rememberLouisDailyTaskCelebrationSeen(userId: string, cycleStartedAt: string) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(getDailyTaskCelebrationSeenKey(userId, cycleStartedAt), "1");
 }
 
 export function hasSeenLouisSecondRecommendation(userId: string) {

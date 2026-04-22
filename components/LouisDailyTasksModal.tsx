@@ -8,13 +8,17 @@ import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../lib/triviaCatalog";
 import { getTriviaChapter } from "../lib/triviaGameData";
 import { getScrambledChapter } from "../lib/scrambledGameData";
 import { ACTION_TYPE } from "../lib/actionTypes";
-import { logActionToMasterActions } from "../lib/actionRecorder";
 import {
   getLouisDailyTaskTarget,
   getLouisDailyTaskTimeLeftMs,
+  hasLouisDailyTaskBonusAwarded,
+  hasSeenLouisDailyTaskCelebration,
+  rememberLouisDailyTaskBonusAwarded,
+  rememberLouisDailyTaskCelebrationSeen,
   rememberLouisDailyTaskTarget,
 } from "../lib/louisDailyFlow";
 import { LouisAvatar } from "./LouisAvatar";
+import { triggerPoints } from "./PointsPop";
 
 type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled";
 
@@ -91,10 +95,6 @@ function normalizeBookKey(book: string) {
 
 function buildChapterLabel(book: string, chapter: number) {
   return `${book} ${chapter}`;
-}
-
-function buildTaskBonusLabel(devotionalId: string, dayNumber: number, cycleStartedAt: string) {
-  return `Louis Daily Task Bonus - ${devotionalId} - Day ${dayNumber} - ${cycleStartedAt}`;
 }
 
 function formatCompletedAtLabel(iso: string | null | undefined) {
@@ -189,7 +189,7 @@ export async function fetchLouisDailyChecklistData(
   const hasTrivia = Boolean(getTriviaChapter(resolvedBookKey, day.bible_reading_chapter));
   const hasScrambled = Boolean(getScrambledChapter(resolvedBookKey, day.bible_reading_chapter));
 
-  const [todayProgressRes, actionsRes, bonusRes, completedChapterRes, notesHistoryRes] = await Promise.all([
+  const [todayProgressRes, actionsRes, completedChapterRes, notesHistoryRes] = await Promise.all([
     supabase
       .from("devotional_progress")
       .select("devotional_id, day_number, is_completed, reading_completed, completed_at")
@@ -203,14 +203,6 @@ export async function fetchLouisDailyChecklistData(
       .eq("user_id", userId)
       .gte("created_at", cycleStartedAt)
       .order("created_at", { ascending: false }),
-    supabase
-      .from("master_actions")
-      .select("id")
-      .eq("user_id", userId)
-      .eq("action_type", ACTION_TYPE.louis_daily_task_bonus)
-      .eq("action_label", buildTaskBonusLabel(activeDevotional.id, nextDayNumber, cycleStartedAt))
-      .limit(1)
-      .maybeSingle(),
     supabase
       .from("completed_chapters")
       .select("id, completed_at")
@@ -232,7 +224,6 @@ export async function fetchLouisDailyChecklistData(
 
   if (todayProgressRes.error) throw todayProgressRes.error;
   if (actionsRes.error) throw actionsRes.error;
-  if (bonusRes.error) throw bonusRes.error;
   if (completedChapterRes.error) throw completedChapterRes.error;
   if (notesHistoryRes.error) throw notesHistoryRes.error;
 
@@ -336,16 +327,7 @@ export async function fetchLouisDailyChecklistData(
   const completedCount = tasks.filter((task) => task.done).length;
   const allDone = completedCount === tasks.length;
   const nextTaskTitle = tasks.find((task) => !task.done)?.title ?? null;
-  let bonusAwarded = Boolean(bonusRes.data);
-
-  if (allDone && !bonusAwarded) {
-    await logActionToMasterActions(
-      userId,
-      ACTION_TYPE.louis_daily_task_bonus,
-      buildTaskBonusLabel(activeDevotional.id, nextDayNumber, cycleStartedAt),
-    );
-    bonusAwarded = true;
-  }
+  const bonusAwarded = allDone || hasLouisDailyTaskBonusAwarded(userId, cycleStartedAt);
 
   return {
     title: "Daily Bible Task",
@@ -395,6 +377,7 @@ export default function LouisDailyTasksModal({
   const [timeLeftMs, setTimeLeftMs] = useState(0);
   const [showHelp, setShowHelp] = useState(false);
   const [animatedDoneKinds, setAnimatedDoneKinds] = useState<Record<string, boolean>>({});
+  const [showCelebration, setShowCelebration] = useState(false);
 
   useEffect(() => {
     if (!open || !userId) return;
@@ -453,6 +436,20 @@ export default function LouisDailyTasksModal({
     return Math.round((data.completedCount / data.tasks.length) * 100);
   }, [data]);
 
+  useEffect(() => {
+    if (!open || !userId || !cycleStartedAt || !data?.allDone) return;
+
+    if (!hasLouisDailyTaskBonusAwarded(userId, cycleStartedAt)) {
+      rememberLouisDailyTaskBonusAwarded(userId, cycleStartedAt);
+      triggerPoints(10);
+    }
+
+    if (!hasSeenLouisDailyTaskCelebration(userId, cycleStartedAt)) {
+      rememberLouisDailyTaskCelebrationSeen(userId, cycleStartedAt);
+      setShowCelebration(true);
+    }
+  }, [open, userId, cycleStartedAt, data]);
+
   function handleOpenTask(task: TaskState) {
     if (!task.href || task.disabled) return;
     onClose();
@@ -462,6 +459,29 @@ export default function LouisDailyTasksModal({
   return (
     <ModalShell isOpen={open} onClose={onClose} backdropColor="bg-black/45" scrollable={true}>
       <div className="relative my-6 w-full max-w-xl overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
+        {showCelebration ? (
+          <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/96 px-6 text-center">
+            <div className="w-full max-w-md rounded-[28px] border border-[#d7e4f7] bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-6 py-8 shadow-xl">
+              <div className="flex justify-center">
+                <LouisAvatar mood="wave" size={64} />
+              </div>
+              <h3 className="mt-4 text-3xl font-bold text-[#21304f]">Congrats!</h3>
+              <p className="mt-3 text-base font-semibold text-[#355487]">
+                You completed today&apos;s Bible task.
+              </p>
+              <p className="mt-2 text-sm leading-6 text-[#58709d]">
+                All 5 tasks are complete and your +10 bonus is locked in for this 24-hour cycle.
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowCelebration(false)}
+                className="mt-5 inline-flex rounded-full bg-[#7aa7df] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5f93d3]"
+              >
+                Keep Going
+              </button>
+            </div>
+          </div>
+        ) : null}
         <button
           type="button"
           onClick={() => setShowHelp((prev) => !prev)}
