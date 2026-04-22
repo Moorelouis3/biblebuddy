@@ -46,7 +46,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   );
 
   const cardShellTheme = {
-    outer: "border-[#d7e4f7] bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff]",
+    outer: "border-[#ecd8b2] bg-gradient-to-br from-[#fff6e8] via-[#fffaf2] to-[#fff2db]",
   };
 
   function getSpotlightClasses(target: DashboardCardsProps["dashboardTourSpotlight"]) {
@@ -99,13 +99,13 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                       {dailyTaskNextTitle ? `Next: ${dailyTaskNextTitle}` : "Tap to reopen your daily Bible checklist."}
                     </p>
                   </div>
-                  <div className="shrink-0 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#5570a3] shadow-sm">
-                    {dailyTaskCompletedCount}/{safeDailyTaskTotal}
-                  </div>
+                    <div className="shrink-0 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#9b6a21] shadow-sm">
+                      {dailyTaskCompletedCount}/{safeDailyTaskTotal}
+                    </div>
                 </div>
                 <div className="mt-3 overflow-hidden rounded-full bg-gray-200">
                   <div
-                    className="h-2.5 rounded-full bg-[#7aa7df] transition-all duration-300"
+                    className="h-2.5 rounded-full bg-[#d8aa57] transition-all duration-300"
                     style={{ width: `${dailyTaskProgressPercent}%` }}
                   />
                 </div>
@@ -113,7 +113,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                   <p className="min-w-0 font-medium text-gray-600">
                     {dailyTaskSummaryLine || `${dailyTaskCompletedCount} out of ${safeDailyTaskTotal} daily tasks done`}
                   </p>
-                  <span className="shrink-0 text-sm font-semibold text-[#5570a3]">Open</span>
+                  <span className="shrink-0 text-sm font-semibold text-[#9b6a21]">Open</span>
                 </div>
               </div>
             </div>

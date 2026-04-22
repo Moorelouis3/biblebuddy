@@ -1194,6 +1194,28 @@ export default function DashboardPage() {
   }, [loadDailyTaskSummary]);
 
   useEffect(() => {
+    function refreshDailyTaskSummary() {
+      void loadDailyTaskSummary();
+    }
+
+    function handleVisibilityChange() {
+      if (document.visibilityState === "visible") {
+        void loadDailyTaskSummary();
+      }
+    }
+
+    window.addEventListener("focus", refreshDailyTaskSummary);
+    window.addEventListener("bb:daily-task-progress-updated", refreshDailyTaskSummary);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("focus", refreshDailyTaskSummary);
+      window.removeEventListener("bb:daily-task-progress-updated", refreshDailyTaskSummary);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [loadDailyTaskSummary]);
+
+  useEffect(() => {
     function handleOpenLevelInfo() {
       setShowLevelInfoModal(true);
     }

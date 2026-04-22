@@ -336,6 +336,11 @@ export default function BibleChapterPage() {
     return options[hashLouisSeed(seed) % options.length];
   }
 
+  function buildChapterIntroSeenKey() {
+    const userScope = userId || "guest";
+    return `bb:louis:chapter-intro:${userScope}:${bookDisplayName}:${chapter}`;
+  }
+
   // Load notes for selected person (reuse same logic as People page)
   useEffect(() => {
     if (!selectedPerson) {
@@ -1455,6 +1460,9 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           action_label: reviewOpenedLabel,
         });
         setReviewDone(true);
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new CustomEvent("bb:daily-task-progress-updated"));
+        }
 
         // Award +2 points first time only (chapter_notes_reviewed)
         const { data: existingReviewed } = await supabase
@@ -1475,9 +1483,15 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           if (!insertErr) {
             triggerPoints(2);
             setReviewDone(true);
+            if (typeof window !== "undefined") {
+              window.dispatchEvent(new CustomEvent("bb:daily-task-progress-updated"));
+            }
           }
         } else {
           setReviewDone(true);
+          if (typeof window !== "undefined") {
+            window.dispatchEvent(new CustomEvent("bb:daily-task-progress-updated"));
+          }
         }
       }
 
@@ -1629,15 +1643,30 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
   useEffect(() => {
     if (!featureToursLoaded) return;
+    if (!chapterSummaryLoaded) return;
+
+    const openedFromDailyTaskNotes =
+      searchParams.get("from") === "louis-daily-task" && searchParams.get("notes") === "1";
+
+    if (openedFromDailyTaskNotes) return;
+
+    const chapterIntroSeenKey = buildChapterIntroSeenKey();
+    const chapterIntroAlreadySeen =
+      typeof window !== "undefined" && window.localStorage.getItem(chapterIntroSeenKey) === "1";
 
     const promptKey = `${bookDisplayName}:${chapter}:${featureTours.bible_chapter_main === true ? "chapter" : "guide"}:${chapterSummaryLoaded ? chapterSummary : "pending"}`;
     if (louisChapterPromptRef.current === promptKey) return;
+    if (chapterIntroAlreadySeen) return;
 
-    if (!chapterSummaryLoaded) return;
+    const markChapterIntroSeen = () => {
+      if (typeof window === "undefined") return;
+      window.localStorage.setItem(chapterIntroSeenKey, "1");
+    };
 
     if (featureTours.bible_chapter_main !== true) {
       louisChapterPromptRef.current = promptKey;
       bibleGuideShownThisVisitRef.current = true;
+      markChapterIntroSeen();
       dispatchLouisMoment({
         openMode: "badge",
         message: [
@@ -1656,6 +1685,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
     if (featureTours.bible_chapter_tools !== true) {
       louisChapterPromptRef.current = promptKey;
       bibleGuideShownThisVisitRef.current = true;
+      markChapterIntroSeen();
       dispatchLouisMoment({
         openMode: "badge",
         message: [
@@ -1699,6 +1729,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
     ]);
 
     louisChapterPromptRef.current = promptKey;
+    markChapterIntroSeen();
     dispatchLouisMoment({
       openMode: "badge",
       message: [
@@ -1717,6 +1748,8 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
     featureTours.bible_chapter_main,
     featureTours.bible_chapter_tools,
     featureToursLoaded,
+    searchParams,
+    userId,
   ]);
 
   function openReflectionSection() {
