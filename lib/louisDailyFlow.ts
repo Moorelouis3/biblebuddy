@@ -2,8 +2,17 @@ export const LOUIS_DAILY_TASK_FLOW_VERSION = 1;
 export const LOUIS_DAILY_TASK_WINDOW_MS = 24 * 60 * 60 * 1000;
 export const LOUIS_SECOND_RECOMMENDATION_DELAY_MS = 6 * 60 * 60 * 1000;
 
+export type LouisDailyTaskTarget = {
+  devotionalId: string;
+  dayNumber: number;
+};
+
 function getDailyTaskCycleKey(userId: string) {
   return `bb:louis:daily-task-cycle:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}`;
+}
+
+function getDailyTaskTargetKey(userId: string, cycleStartedAt: string) {
+  return `bb:louis:daily-task-target:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:${cycleStartedAt}`;
 }
 
 function getSecondRecommendationSeenKey(userId: string, cycleStartedAt: string) {
@@ -24,6 +33,13 @@ export function getLouisDailyTaskCycleStartedAt(userId: string) {
   if (!isWithinActiveWindow(stored)) {
     if (stored) {
       window.localStorage.removeItem(getDailyTaskCycleKey(userId));
+      const prefix = `bb:louis:daily-task-target:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:`;
+      for (let index = window.localStorage.length - 1; index >= 0; index -= 1) {
+        const key = window.localStorage.key(index);
+        if (key?.startsWith(prefix)) {
+          window.localStorage.removeItem(key);
+        }
+      }
     }
     return null;
   }
@@ -49,6 +65,26 @@ export function getLouisDailyTaskTimeLeftMs(userId: string) {
   if (!cycleStartedAt) return 0;
   const elapsed = Date.now() - new Date(cycleStartedAt).getTime();
   return Math.max(0, LOUIS_DAILY_TASK_WINDOW_MS - elapsed);
+}
+
+export function getLouisDailyTaskTarget(userId: string, cycleStartedAt: string) {
+  if (typeof window === "undefined") return null;
+  const raw = window.localStorage.getItem(getDailyTaskTargetKey(userId, cycleStartedAt));
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw) as LouisDailyTaskTarget;
+    if (!parsed?.devotionalId || typeof parsed.dayNumber !== "number") {
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+export function rememberLouisDailyTaskTarget(userId: string, cycleStartedAt: string, target: LouisDailyTaskTarget) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(getDailyTaskTargetKey(userId, cycleStartedAt), JSON.stringify(target));
 }
 
 export function hasSeenLouisSecondRecommendation(userId: string) {

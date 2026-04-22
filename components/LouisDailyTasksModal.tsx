@@ -9,7 +9,11 @@ import { getTriviaChapter } from "../lib/triviaGameData";
 import { getScrambledChapter } from "../lib/scrambledGameData";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { logActionToMasterActions } from "../lib/actionRecorder";
-import { getLouisDailyTaskTimeLeftMs } from "../lib/louisDailyFlow";
+import {
+  getLouisDailyTaskTarget,
+  getLouisDailyTaskTimeLeftMs,
+  rememberLouisDailyTaskTarget,
+} from "../lib/louisDailyFlow";
 import { LouisAvatar } from "./LouisAvatar";
 
 type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled";
@@ -136,17 +140,33 @@ export async function fetchLouisDailyChecklistData(
   if (devotionalsResponse.error) throw devotionalsResponse.error;
 
   const devotionals = (devotionalsResponse.data || []) as DevotionalRow[];
-  const activeDevotional =
+  const recommendedDevotional =
     devotionals.find((devotional) => {
       const maxDay = maxByDevotional.get(devotional.id) ?? 0;
       return maxDay < (devotional.total_days || 0);
     }) ?? pickRecommendedDevotional(devotionals);
 
-  if (!activeDevotional) {
+  if (!recommendedDevotional) {
     throw new Error("No devotional is available for today's checklist.");
   }
 
-  const nextDayNumber = (maxByDevotional.get(activeDevotional.id) ?? 0) + 1;
+  const storedTarget = getLouisDailyTaskTarget(userId, cycleStartedAt);
+  const activeDevotional =
+    (storedTarget
+      ? devotionals.find((devotional) => devotional.id === storedTarget.devotionalId) ?? null
+      : null) ?? recommendedDevotional;
+
+  const nextDayNumber =
+    storedTarget?.devotionalId === activeDevotional.id
+      ? storedTarget.dayNumber
+      : (maxByDevotional.get(activeDevotional.id) ?? 0) + 1;
+
+  if (!storedTarget || storedTarget.devotionalId !== activeDevotional.id || storedTarget.dayNumber !== nextDayNumber) {
+    rememberLouisDailyTaskTarget(userId, cycleStartedAt, {
+      devotionalId: activeDevotional.id,
+      dayNumber: nextDayNumber,
+    });
+  }
 
   const { data: dayRow, error: dayError } = await supabase
     .from("devotional_days")
@@ -169,7 +189,7 @@ export async function fetchLouisDailyChecklistData(
   const hasTrivia = Boolean(getTriviaChapter(resolvedBookKey, day.bible_reading_chapter));
   const hasScrambled = Boolean(getScrambledChapter(resolvedBookKey, day.bible_reading_chapter));
 
-  const [todayProgressRes, actionsRes, bonusRes, completedChapterRes] = await Promise.all([
+  const [todayProgressRes, actionsRes, bonusRes, completedChapterRes, notesHistoryRes] = await Promise.all([
     supabase
       .from("devotional_progress")
       .select("devotional_id, day_number, is_completed, reading_completed, completed_at")
@@ -199,16 +219,28 @@ export async function fetchLouisDailyChecklistData(
       .eq("chapter", day.bible_reading_chapter)
       .limit(1)
       .maybeSingle(),
+    supabase
+      .from("master_actions")
+      .select("action_type, action_label, created_at")
+      .eq("user_id", userId)
+      .in("action_type", [ACTION_TYPE.chapter_notes_reviewed, ACTION_TYPE.chapter_notes_viewed])
+      .eq("action_label", reviewOpenedLabel)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle(),
   ]);
 
   if (todayProgressRes.error) throw todayProgressRes.error;
   if (actionsRes.error) throw actionsRes.error;
   if (bonusRes.error) throw bonusRes.error;
   if (completedChapterRes.error) throw completedChapterRes.error;
+  if (notesHistoryRes.error) throw notesHistoryRes.error;
 
   const actionRows = actionsRes.data || [];
   const todayProgress = todayProgressRes.data as DevotionalProgressRow | null;
-  const notesAction = actionRows.find(
+  const notesAction =
+    notesHistoryRes.data ||
+    actionRows.find(
     (row) =>
       (row.action_type === ACTION_TYPE.chapter_notes_reviewed ||
         row.action_type === ACTION_TYPE.chapter_notes_viewed) &&
@@ -472,14 +504,12 @@ export default function LouisDailyTasksModal({
           <div className="mt-4 rounded-[22px] border border-[#d7e4f7] bg-white/95 px-4 py-3 shadow-sm">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7190c7]">Time Left</p>
-                <p className="mt-1 text-2xl font-bold text-[#21304f]">
+                <p className="text-2xl font-bold text-[#21304f]">
                   {loading ? formatCountdown(timeLeftMs) : data?.timeLeftLabel || formatCountdown(timeLeftMs)}
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7190c7]">Progress</p>
-                <p className="mt-1 text-base font-semibold text-[#21304f]">
+                <p className="text-base font-semibold text-[#21304f]">
                   {loading ? "0 out of 5 completed" : data?.progressLabel || "0 out of 5 completed"}
                 </p>
               </div>

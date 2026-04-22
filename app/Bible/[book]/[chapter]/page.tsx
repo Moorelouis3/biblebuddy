@@ -1441,10 +1441,6 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
   async function openReviewModal() {
     setShowReviewModal(true);
-    if (reviewNotesText || reviewLoadingRef.current) return;
-    reviewLoadingRef.current = true;
-    setReviewLoading(true);
-    setReviewError(null);
     try {
       const bookKey = book.toLowerCase().trim();
       const chapterNum = Number(chapter);
@@ -1494,6 +1490,11 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           }
         }
       }
+
+      if (reviewNotesText || reviewLoadingRef.current) return;
+      reviewLoadingRef.current = true;
+      setReviewLoading(true);
+      setReviewError(null);
 
       // 2. Check bible_notes cache first
       const { data: cached } = await supabase
