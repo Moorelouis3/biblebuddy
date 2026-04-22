@@ -178,6 +178,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [pushError, setPushError] = useState<string | null>(null);
   const [showPushPrompt, setShowPushPrompt] = useState(false);
   const [pushPromptClosing, setPushPromptClosing] = useState(false);
+  const [headerCurrentLevel, setHeaderCurrentLevel] = useState<number>(1);
+  const [headerCurrentStreak, setHeaderCurrentStreak] = useState<number>(0);
 
   const visibleUnreadNotificationCount = notifications.filter(
     (notification) => notification.type !== "direct_message" && !notification.is_read,
@@ -282,6 +284,22 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     } finally {
       setPushLoading(false);
     }
+  }
+
+  async function loadHeaderDashboardStats(currentUserId: string) {
+    const { data, error } = await supabase
+      .from("profile_stats")
+      .select("current_level, current_streak")
+      .eq("user_id", currentUserId)
+      .maybeSingle();
+
+    if (error) {
+      console.warn("[APPSHELL] Could not load header dashboard stats:", error);
+      return;
+    }
+
+    setHeaderCurrentLevel(typeof data?.current_level === "number" && data.current_level > 0 ? data.current_level : 1);
+    setHeaderCurrentStreak(typeof data?.current_streak === "number" && data.current_streak > 0 ? data.current_streak : 0);
   }
 
   async function checkOnboardingStatus(currentUserId: string) {
@@ -1006,6 +1024,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         if (DAILY_RECOMMENDATIONS_ENABLED) {
           void checkDailyRecommendation(session.user.id);
         }
+        void loadHeaderDashboardStats(session.user.id);
         void fetchNotifications(session.user.id);
         void refreshUnreadMessageCount(session.user.id);
       } else {
@@ -1016,6 +1035,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setInitialTrafficSource(null);
         setInitialBibleExperienceLevel(null);
         setNotifications([]);
+        setHeaderCurrentLevel(1);
+        setHeaderCurrentStreak(0);
       }
 
       // Sync notes count on initial session check if user is logged in (non-blocking)
@@ -1050,6 +1071,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           setUsername(extractedUsername);
           void checkOnboardingStatus(session.user.id);
           void checkUpdateStatus(session.user.id);
+          void loadHeaderDashboardStats(session.user.id);
           void fetchNotifications(session.user.id);
           void refreshUnreadMessageCount(session.user.id);
         } else {
@@ -1060,6 +1082,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           setInitialTrafficSource(null);
           setInitialBibleExperienceLevel(null);
           setNotifications([]);
+          setHeaderCurrentLevel(1);
+          setHeaderCurrentStreak(0);
         }
 
         // Sync notes count when user logs in or session changes (non-blocking)
@@ -1081,6 +1105,38 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (!userId || pathname !== "/dashboard") return;
+
+    void loadHeaderDashboardStats(userId);
+
+    const refresh = () => {
+      void loadHeaderDashboardStats(userId);
+    };
+
+    window.addEventListener("focus", refresh);
+    return () => {
+      window.removeEventListener("focus", refresh);
+    };
+  }, [pathname, userId]);
+
+  useEffect(() => {
+    function handleDashboardStatsSync(event: Event) {
+      const customEvent = event as CustomEvent<{ level?: number; streak?: number }>;
+      if (typeof customEvent.detail?.level === "number" && customEvent.detail.level > 0) {
+        setHeaderCurrentLevel(customEvent.detail.level);
+      }
+      if (typeof customEvent.detail?.streak === "number" && customEvent.detail.streak >= 0) {
+        setHeaderCurrentStreak(customEvent.detail.streak);
+      }
+    }
+
+    window.addEventListener("bb:dashboard-stats-sync", handleDashboardStatsSync as EventListener);
+    return () => {
+      window.removeEventListener("bb:dashboard-stats-sync", handleDashboardStatsSync as EventListener);
+    };
+  }, []);
+
   // Treat iframe-embedded pages the same as bare pages (no shell/nav)
   const isBarePage = HIDDEN_ROUTES.includes(pathname ?? "/") || isEmbedded;
 
@@ -1089,6 +1145,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const shouldShowNavMenu = isLoggedIn && !isBarePage && pathname && !pathname.startsWith("/dashboard");
   const breadcrumbItems = buildBreadcrumbs(pathname);
   const shouldShowBreadcrumbs = isLoggedIn && !isBarePage && breadcrumbItems.length > 0;
+  const showDashboardStatusButtons = Boolean(isLoggedIn && pathname === "/dashboard");
 
   async function handleLogout() {
     await supabase.auth.signOut();
@@ -1443,6 +1500,39 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     </div>
                   )}
                 </div>
+              )}
+
+              {showDashboardStatusButtons && (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(new CustomEvent("bb:dashboard-open-streak-info"));
+                    }}
+                    className="relative flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors"
+                    aria-label={`Open streak details for ${headerCurrentStreak} day streak`}
+                    title={`${headerCurrentStreak} day streak`}
+                  >
+                    <span
+                      className={`text-base leading-none ${headerCurrentStreak >= 30 ? "" : "grayscale opacity-60"}`}
+                      aria-hidden="true"
+                    >
+                      🔥
+                    </span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.dispatchEvent(new CustomEvent("bb:dashboard-open-level-info"));
+                    }}
+                    className="relative flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-sm font-semibold text-gray-700 transition-colors"
+                    aria-label={`Open level details for level ${headerCurrentLevel}`}
+                    title={`Level ${headerCurrentLevel}`}
+                  >
+                    {headerCurrentLevel}
+                  </button>
+                </>
               )}
 
               {/* NOTIFICATION BELL */}

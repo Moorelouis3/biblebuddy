@@ -2,22 +2,24 @@
 
 import Link from "next/link";
 import React from "react";
-import type { DailyRecommendation } from "../lib/dailyRecommendation";
 
 interface DashboardCardsProps {
-  profile: { is_paid?: boolean | null; daily_credits?: number | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null;
+  profile: {
+    is_paid?: boolean | null;
+    daily_credits?: number | null;
+    profile_image_url?: string | null;
+    display_name?: string | null;
+    username?: string | null;
+  } | null;
   membershipStatus: string;
   daysRemaining: number | null;
-  isLoadingLevel: boolean;
-  levelInfo: {
-    level: number;
-    progressPercent: number;
-    pointsToNextLevel: number;
-  } | null;
-  currentStreak: number;
+  isLoadingDailyTasks: boolean;
+  dailyTaskCompletedCount: number;
+  dailyTaskTotalCount: number;
+  dailyTaskNextTitle: string | null;
+  dailyTaskSummaryLine: string | null;
   handleCardClick: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, card: string, href: string) => void;
-  setShowLevelInfoModal: (show: boolean) => void;
-  setShowStreakBadgeModal: (show: boolean) => void;
+  onOpenDailyTasks: () => void;
   onInviteBuddy: () => void;
   dashboardTourSpotlight?: "overview" | "level" | "recommendation" | "bible" | "group" | "tools" | "games" | "invite" | null;
 }
@@ -26,53 +28,26 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   profile,
   membershipStatus,
   daysRemaining,
-  isLoadingLevel,
-  levelInfo,
-  currentStreak,
+  isLoadingDailyTasks,
+  dailyTaskCompletedCount,
+  dailyTaskTotalCount,
+  dailyTaskNextTitle,
+  dailyTaskSummaryLine,
   handleCardClick,
-  setShowLevelInfoModal,
-  setShowStreakBadgeModal,
+  onOpenDailyTasks,
   onInviteBuddy,
   dashboardTourSpotlight = null,
 }) => {
   const showFreeUpgradeCard = membershipStatus !== "pro" && profile?.is_paid !== true;
+  const safeDailyTaskTotal = Math.max(5, dailyTaskTotalCount || 5);
+  const dailyTaskProgressPercent = Math.max(
+    0,
+    Math.min(100, Math.round((dailyTaskCompletedCount / safeDailyTaskTotal) * 100)),
+  );
 
   const cardShellTheme = {
-    outer: "border-[#e7d3a5] bg-gradient-to-br from-[#fbf1d7] via-[#f9edcf] to-[#f4e3ba]",
+    outer: "border-[#d7e4f7] bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff]",
   };
-  const hasFireBadge = currentStreak >= 30;
-  const streakLabel = `${currentStreak} Day Streak`;
-
-  function getRecommendationVisual(recommendation: DailyRecommendation) {
-    const title = `${recommendation.cardTitle || ""} ${recommendation.cardSubtitle || ""}`.toLowerCase();
-    const href = recommendation.primaryButtonHref.toLowerCase();
-
-    if (href.includes("/biblebuddy-tv")) {
-      return { type: "emoji" as const, emoji: "📺" };
-    }
-    if (href.includes("/bible-trivia") || href.includes("/bible-study-games")) {
-      return { type: "emoji" as const, emoji: "🎮" };
-    }
-    if (href.includes("/study-groups")) {
-      return { type: "emoji" as const, emoji: "👥" };
-    }
-    if (href.includes("/keywords") || href.includes("/people") || href.includes("/places")) {
-      return { type: "emoji" as const, emoji: "🧠" };
-    }
-    if (href.includes("/bible") || href.includes("/reading")) {
-      return { type: "emoji" as const, emoji: "📖" };
-    }
-
-    if (title.includes("profile") || title.includes("photo") || title.includes("bio")) {
-      return { type: "emoji" as const, emoji: "👤" };
-    }
-
-    if (title.includes("devotional") || title.includes("day ")) {
-      return { type: "emoji" as const, emoji: "🌅" };
-    }
-
-    return { type: "emoji" as const, emoji: "✨" };
-  }
 
   function getSpotlightClasses(target: DashboardCardsProps["dashboardTourSpotlight"]) {
     if (!dashboardTourSpotlight) return "";
@@ -91,14 +66,16 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         data-dashboard-tour="overview"
         className={`overflow-hidden rounded-[26px] border shadow-sm transition duration-300 ${cardShellTheme.outer} ${getSpotlightClasses("overview")}`}
       >
-        <div
+        <button
+          type="button"
+          onClick={onOpenDailyTasks}
           data-dashboard-tour="level"
-          className={`px-4 py-3.5 transition duration-300 md:px-5 md:py-4 ${getSpotlightClasses("level")}`}
+          className={`block w-full px-4 py-3.5 text-left transition duration-300 md:px-5 md:py-4 ${getSpotlightClasses("level")}`}
         >
-          {isLoadingLevel ? (
+          {isLoadingDailyTasks ? (
             <>
               <div className="mb-2 flex items-center gap-2">
-                <h2 className="text-xl font-semibold text-gray-900">Loading your dashboard</h2>
+                <h2 className="text-xl font-semibold text-gray-900">Daily Task</h2>
                 <div className="flex h-6 items-center gap-1">
                   <span className="animate-[bounce_1.4s_ease-in-out_infinite] text-2xl text-gray-500">.</span>
                   <span className="animate-[bounce_1.4s_ease-in-out_0.2s_infinite] text-2xl text-gray-500">.</span>
@@ -106,60 +83,42 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                 </div>
               </div>
               <div className="mb-3 h-3 overflow-hidden rounded-full bg-gray-200">
-                <div className="h-full w-1/3 animate-pulse rounded-full bg-blue-300" />
+                <div className="h-full w-1/3 animate-pulse rounded-full bg-[#9dc1ee]" />
               </div>
-              <div className="h-4 w-40 rounded bg-gray-200" />
+              <div className="h-4 w-48 rounded bg-gray-200" />
             </>
-          ) : levelInfo ? (
+          ) : (
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0 flex-1">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <h2 className="pr-2 text-[0.95rem] font-semibold leading-tight text-gray-950 sm:text-[1.1rem]">
-                      You are a Level {levelInfo.level} Bible Buddy
+                      Daily Task
                     </h2>
+                    <p className="mt-1 text-sm text-gray-600">
+                      {dailyTaskNextTitle ? `Next: ${dailyTaskNextTitle}` : "Tap to reopen your daily Bible checklist."}
+                    </p>
                   </div>
-                  <div className="flex items-center gap-2 shrink-0">
-                    <button
-                      onClick={() => setShowLevelInfoModal(true)}
-                      className="flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold text-gray-400 transition hover:bg-gray-100 hover:text-gray-600"
-                      title="Learn about levels"
-                    >
-                      ?
-                    </button>
+                  <div className="shrink-0 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#5570a3] shadow-sm">
+                    {dailyTaskCompletedCount}/{safeDailyTaskTotal}
                   </div>
                 </div>
-                <div className="mt-2.5 overflow-hidden rounded-full bg-gray-200">
+                <div className="mt-3 overflow-hidden rounded-full bg-gray-200">
                   <div
-                    className="h-2.5 rounded-full bg-blue-500 transition-all duration-300"
-                    style={{ width: `${levelInfo.progressPercent}%` }}
+                    className="h-2.5 rounded-full bg-[#7aa7df] transition-all duration-300"
+                    style={{ width: `${dailyTaskProgressPercent}%` }}
                   />
                 </div>
                 <div className="mt-2.5 flex items-center justify-between gap-3 text-[13px] sm:text-sm">
                   <p className="min-w-0 font-medium text-gray-600">
-                    {levelInfo.pointsToNextLevel > 0
-                      ? `${levelInfo.pointsToNextLevel} points until Level ${levelInfo.level + 1}`
-                      : "You've reached the top level"}
+                    {dailyTaskSummaryLine || `${dailyTaskCompletedCount} out of ${safeDailyTaskTotal} daily tasks done`}
                   </p>
-                  <button
-                    type="button"
-                    onClick={() => setShowStreakBadgeModal(true)}
-                    className={`inline-flex shrink-0 items-center gap-1.5 text-gray-900 transition hover:opacity-75 ${hasFireBadge ? "font-semibold" : "font-medium"}`}
-                    title="Learn about the streak badge"
-                  >
-                    <span
-                      className={`text-base leading-none transition ${hasFireBadge ? "" : "grayscale opacity-60"}`}
-                      aria-hidden="true"
-                    >
-                      🔥
-                    </span>
-                    <span>{streakLabel}</span>
-                  </button>
+                  <span className="shrink-0 text-sm font-semibold text-[#5570a3]">Open</span>
                 </div>
               </div>
             </div>
-          ) : null}
-        </div>
+          )}
+        </button>
       </div>
 
       {showFreeUpgradeCard ? (

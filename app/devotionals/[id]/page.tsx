@@ -60,6 +60,12 @@ import { dispatchLouisMoment } from "../../../lib/louisMoments";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../../../lib/triviaCatalog";
 import { getTriviaChapter } from "../../../lib/triviaGameData";
 import { getScrambledChapter } from "../../../lib/scrambledGameData";
+import {
+  buildPersistedFeatureTours,
+  DEFAULT_FEATURE_TOURS,
+  normalizeFeatureTours,
+  type FeatureToursState,
+} from "../../../lib/featureTours";
 
 interface Devotional {
   id: string;
@@ -109,12 +115,11 @@ function buildLouisDayStartMessage(devotional: Devotional, day: DevotionalDay) {
   const snippet = getLouisDaySnippet(day);
 
   return [
-    `You are stepping into day ${day.day_number} of ${devotional.title}.`,
-    `Today is about ${topic}.`,
+    "this is your devotional for today",
+    `Day ${day.day_number} of ${devotional.title} is about ${topic}.`,
     snippet,
-    `Read the devotional first, then do the reading in ${day.bible_reading_book} ${day.bible_reading_chapter}.`,
-    "When you finish, answer the reflection question so you can really lock in what stood out.",
-    "Start reading and I am always here if you have a question.",
+    "take your time reading through it and really think about what it means",
+    "this isn’t about rushing, it’s about building consistency and understanding",
   ].join("\n\n");
 }
 
@@ -156,6 +161,8 @@ export default function DevotionalDetailPage() {
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [pendingDayClick, setPendingDayClick] = useState<DevotionalDay | null>(null);
   const handledLouisDayRef = useRef<string | null>(null);
+  const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
+  const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
 
   useEffect(() => {
     async function loadUserAndProfile() {
@@ -165,17 +172,55 @@ export default function DevotionalDetailPage() {
       if (user?.id) {
         const { data: stats } = await supabase
           .from("profile_stats")
-          .select("is_paid, free_devotional_id")
+          .select("is_paid, free_devotional_id, feature_tours")
           .eq("user_id", user.id)
           .maybeSingle();
         setProfileStats(stats);
         setFreeDevotionalId((stats as any)?.free_devotional_id ?? null);
+        setFeatureTours(normalizeFeatureTours((stats as any)?.feature_tours));
+        setFeatureToursLoaded(true);
       } else {
         setFreeDevotionalId(null);
+        setFeatureToursLoaded(true);
       }
     }
     loadUserAndProfile();
   }, []);
+
+  async function markFeatureTourSeen(featureKey: keyof FeatureToursState) {
+    if (!userId || featureTours[featureKey] === true) return;
+
+    const nextTours = {
+      ...featureTours,
+      [featureKey]: true,
+    };
+
+    const { error: updateError } = await supabase
+      .from("profile_stats")
+      .update({
+        feature_tours: buildPersistedFeatureTours(nextTours),
+      })
+      .eq("user_id", userId);
+
+    if (updateError) {
+      const { error: upsertError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            feature_tours: buildPersistedFeatureTours(nextTours),
+          },
+          { onConflict: "user_id" },
+        );
+
+      if (upsertError) {
+        console.error("[FEATURE_TOURS] Could not save devotional day tour:", upsertError);
+        return;
+      }
+    }
+
+    setFeatureTours(nextTours);
+  }
 
   useEffect(() => {
     async function loadDevotional() {
@@ -361,7 +406,7 @@ export default function DevotionalDetailPage() {
     const requestedDay = Number.parseInt(searchParams.get("day") || "", 10);
     const fromLouis = searchParams.get("from");
     const shouldHandleLouisDay =
-      fromLouis === "louis-daily" || fromLouis === "louis-recommendation";
+      fromLouis === "louis-daily" || fromLouis === "louis-recommendation" || fromLouis === "louis-daily-task";
 
     if (!requestedDay || Number.isNaN(requestedDay) || !shouldHandleLouisDay) {
       return;
@@ -389,6 +434,17 @@ export default function DevotionalDetailPage() {
       router.replace(`/devotionals/${devotionalId}`);
     })();
   }, [days, devotional, devotionalId, router, searchParams]);
+
+  useEffect(() => {
+    if (!selectedDay || !devotional || !featureToursLoaded) return;
+    if (featureTours.devotional_day === true) return;
+
+    dispatchLouisMoment({
+      openMode: "badge",
+      message: buildLouisDayStartMessage(devotional, selectedDay),
+    });
+    void markFeatureTourSeen("devotional_day");
+  }, [selectedDay, devotional, featureTours.devotional_day, featureToursLoaded]);
 
   const handleConfirmFreeChoice = async () => {
     if (!userId) return;
