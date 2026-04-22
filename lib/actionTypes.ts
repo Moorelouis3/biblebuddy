@@ -79,6 +79,7 @@ export const ACTION_TYPES = [
   "louis_ai_message_sent",
   "louis_daily_message_shown",
   "louis_route_handoff_shown",
+  "louis_daily_task_bonus",
 ] as const;
 
 export type ActionType = (typeof ACTION_TYPES)[number];
@@ -164,6 +165,7 @@ export const ACTION_TYPE = {
   louis_ai_message_sent: "louis_ai_message_sent",
   louis_daily_message_shown: "louis_daily_message_shown",
   louis_route_handoff_shown: "louis_route_handoff_shown",
+  louis_daily_task_bonus: "louis_daily_task_bonus",
 } as const satisfies Record<ActionType, ActionType>;
 
 export function isActionType(value: string): value is ActionType {

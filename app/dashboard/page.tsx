@@ -7,6 +7,7 @@ import Link from "next/link";
 import "../../styles/pulse.css";
 import DashboardCards from "../../components/DashboardCards";
 import DashboardDailyWelcomeModal from "../../components/DashboardDailyWelcomeModal";
+import LouisDailyTasksModal from "../../components/LouisDailyTasksModal";
 import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
@@ -14,6 +15,7 @@ import { getCurrentBook, getCompletedChapters, isBookComplete, getTotalCompleted
 import { getProfileStats, syncCurrentStreakToProfileStats } from "../../lib/profileStats";
 import { getDailyRecommendation, type DailyRecommendation } from "../../lib/dailyRecommendation";
 import { buildLouisRecommendationHandoff, storeLouisRouteHandoff } from "../../lib/louisRouteHandoff";
+import { ensureLouisDailyTaskCycle, hasActiveLouisDailyTaskCycle } from "../../lib/louisDailyFlow";
 
 import AdSlot from "../../components/AdSlot";
 import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
@@ -134,6 +136,8 @@ export default function DashboardPage() {
   const [showStreakBadgeModal, setShowStreakBadgeModal] = useState(false);
   const [showCommunityModal, setShowCommunityModal] = useState(false);
   const [showVerseOfTheDayModal, setShowVerseOfTheDayModal] = useState(false);
+  const [showLouisDailyTasksModal, setShowLouisDailyTasksModal] = useState(false);
+  const [louisDailyTaskCycleStartedAt, setLouisDailyTaskCycleStartedAt] = useState<string | null>(null);
   const [motivationalMessage, setMotivationalMessage] = useState<string>("");
   const [proExpiresAt, setProExpiresAt] = useState<string | null>(null);
   const [membershipStatus, setMembershipStatus] = useState<string | null>(null);
@@ -1124,6 +1128,17 @@ export default function DashboardPage() {
     };
   }, [showVerseOfTheDayModal]);
 
+  useEffect(() => {
+    if (!userId || !profile || showVerseOfTheDayModal || typeof window === "undefined") return;
+    if (hasActiveLouisDailyTaskCycle(userId)) return;
+
+    const cycleStartedAt = ensureLouisDailyTaskCycle(userId);
+    if (!cycleStartedAt) return;
+
+    setLouisDailyTaskCycleStartedAt(cycleStartedAt);
+    setShowLouisDailyTasksModal(true);
+  }, [userId, profile, showVerseOfTheDayModal]);
+
   // Load other dashboard data (separate, non-blocking)
   useEffect(() => {
     async function loadOtherDashboardData() {
@@ -1337,6 +1352,14 @@ export default function DashboardPage() {
         }}
         isReturningUser={true}
         userId={userId}
+      />
+
+      <LouisDailyTasksModal
+        open={showLouisDailyTasksModal}
+        onClose={() => setShowLouisDailyTasksModal(false)}
+        userId={userId}
+        currentStreak={profile?.current_streak ?? 0}
+        cycleStartedAt={louisDailyTaskCycleStartedAt}
       />
 
       {showLevelInfoModal && (

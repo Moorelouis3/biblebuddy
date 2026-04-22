@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useMemo } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { supabase } from "../../../../lib/supabaseClient";
@@ -132,6 +132,7 @@ We are getting the full study notes for ${keyword} ready in the background. The 
 export default function BibleChapterPage() {
   const params = useParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const bookParam = decodeURIComponent(String(params.book));
   const book = bookParam;
   const chapter = Number(params.chapter);
@@ -218,6 +219,7 @@ export default function BibleChapterPage() {
   const [booksModalSelectedBook, setBooksModalSelectedBook] = useState<string | null>(null);
   const reflectionSectionRef = useRef<HTMLDivElement | null>(null);
   const [highlightReflectionSection, setHighlightReflectionSection] = useState(false);
+  const autoOpenedNotesRef = useRef(false);
 
   // Normalize markdown functions (reused from People/Places/Keywords pages)
   function normalizePersonMarkdown(markdown: string): string {
@@ -1731,6 +1733,17 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
       setHighlightReflectionSection(false);
     }, 2600);
   }
+
+  useEffect(() => {
+    if (searchParams.get("notes") !== "1") {
+      autoOpenedNotesRef.current = false;
+      return;
+    }
+
+    if (autoOpenedNotesRef.current) return;
+    autoOpenedNotesRef.current = true;
+    void openReviewModal();
+  }, [searchParams, book, chapter, userId]);
 
   function sendChapterLouisMoment(type: "completed" | "checklist") {
     const chapterDisplayLabel = `${bookDisplayName} ${chapter}`;

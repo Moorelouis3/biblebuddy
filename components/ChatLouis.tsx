@@ -14,6 +14,10 @@ import { getVerseIntro, getVerseOfTheDay, type VerseOfTheDayEntry } from "../lib
 import { LOUIS_MOMENT_EVENT, type LouisMomentDetail, type LouisMomentReply } from "../lib/louisMoments";
 import { syncCurrentStreakToProfileStats } from "../lib/profileStats";
 import { consumeLouisRouteHandoff } from "../lib/louisRouteHandoff";
+import {
+  isLouisSecondRecommendationReady,
+  rememberLouisSecondRecommendationSeen,
+} from "../lib/louisDailyFlow";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 
@@ -2352,13 +2356,10 @@ export function ChatLouis() {
 
       setLouisRecommendation(journeyRecommendation);
       setHasUnseenRecommendation(false);
-      setHasUnseenDailyGreeting(!hasSeenDailyGreeting(user.id));
-      const firstShownAt = getDailyGreetingShownAt(user.id);
+      setHasUnseenDailyGreeting(false);
       const secondReady =
-        Boolean(firstShownAt) &&
-        !hasSeenSecondRecommendation(user.id) &&
         Boolean(behaviorTargets.secondary) &&
-        Date.now() - new Date(firstShownAt as string).getTime() >= 6 * 60 * 60 * 1000;
+        isLouisSecondRecommendationReady(user.id);
       setHasUnseenSecondRecommendation(secondReady);
     }
 
@@ -2448,7 +2449,7 @@ export function ChatLouis() {
   const hasPendingDashboardDailyPrompt =
     pathname === "/dashboard" &&
     !isDashboardVerseModalOpen &&
-    (hasUnseenDailyGreeting || hasUnseenSecondRecommendation);
+    hasUnseenSecondRecommendation;
 
   const hasPendingLouisMoment =
     pendingInboxMessageIds.length > 0 ||
@@ -2661,7 +2662,7 @@ export function ChatLouis() {
 
   function markSecondRecommendationSeenLocal() {
     if (!louisUserId) return;
-    rememberSecondRecommendationSeen(louisUserId);
+    rememberLouisSecondRecommendationSeen(louisUserId);
     setHasUnseenSecondRecommendation(false);
   }
 
