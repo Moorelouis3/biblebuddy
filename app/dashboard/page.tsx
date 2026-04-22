@@ -1539,7 +1539,7 @@ export default function DashboardPage() {
               onClick={() => setShowDailyTaskCelebrationModal(false)}
               className="mt-5 inline-flex rounded-full bg-[#7aa7df] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5f93d3]"
             >
-              Keep Going
+              OK
             </button>
           </div>
         </div>

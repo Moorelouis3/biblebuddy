@@ -460,7 +460,7 @@ export default function LouisDailyTasksModal({
     <ModalShell isOpen={open} onClose={onClose} backdropColor="bg-black/45" scrollable={true}>
       <div className="relative my-6 w-full max-w-xl overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
         {showCelebration ? (
-          <div className="absolute inset-0 z-20 flex items-center justify-center bg-white/96 px-6 text-center">
+          <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/35 px-6 text-center backdrop-blur-[1px]">
             <div className="w-full max-w-md rounded-[28px] border border-[#d7e4f7] bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-6 py-8 shadow-xl">
               <div className="flex justify-center">
                 <LouisAvatar mood="wave" size={64} />
@@ -477,7 +477,7 @@ export default function LouisDailyTasksModal({
                 onClick={() => setShowCelebration(false)}
                 className="mt-5 inline-flex rounded-full bg-[#7aa7df] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5f93d3]"
               >
-                Keep Going
+                OK
               </button>
             </div>
           </div>
