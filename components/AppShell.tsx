@@ -180,6 +180,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [pushPromptClosing, setPushPromptClosing] = useState(false);
   const [headerCurrentLevel, setHeaderCurrentLevel] = useState<number>(1);
   const [headerCurrentStreak, setHeaderCurrentStreak] = useState<number>(0);
+  const [headerProfileImageUrl, setHeaderProfileImageUrl] = useState<string | null>(null);
 
   const visibleUnreadNotificationCount = notifications.filter(
     (notification) => notification.type !== "direct_message" && !notification.is_read,
@@ -289,7 +290,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   async function loadHeaderDashboardStats(currentUserId: string) {
     const { data, error } = await supabase
       .from("profile_stats")
-      .select("current_level, current_streak")
+      .select("current_level, current_streak, profile_image_url")
       .eq("user_id", currentUserId)
       .maybeSingle();
 
@@ -300,6 +301,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
     setHeaderCurrentLevel(typeof data?.current_level === "number" && data.current_level > 0 ? data.current_level : 1);
     setHeaderCurrentStreak(typeof data?.current_streak === "number" && data.current_streak > 0 ? data.current_streak : 0);
+    setHeaderProfileImageUrl(typeof data?.profile_image_url === "string" && data.profile_image_url.trim() ? data.profile_image_url : null);
   }
 
   async function checkOnboardingStatus(currentUserId: string) {
@@ -1037,6 +1039,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setNotifications([]);
         setHeaderCurrentLevel(1);
         setHeaderCurrentStreak(0);
+        setHeaderProfileImageUrl(null);
       }
 
       // Sync notes count on initial session check if user is logged in (non-blocking)
@@ -1084,6 +1087,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           setNotifications([]);
           setHeaderCurrentLevel(1);
           setHeaderCurrentStreak(0);
+          setHeaderProfileImageUrl(null);
         }
 
         // Sync notes count when user logs in or session changes (non-blocking)
@@ -1509,7 +1513,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     onClick={() => {
                       window.dispatchEvent(new CustomEvent("bb:dashboard-open-streak-info"));
                     }}
-                    className="relative flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors"
+                    className="relative flex h-9 items-center gap-1.5 rounded-full bg-gray-200 px-3 hover:bg-gray-300 text-gray-700 transition-colors"
                     aria-label={`Open streak details for ${headerCurrentStreak} day streak`}
                     title={`${headerCurrentStreak} day streak`}
                   >
@@ -1518,6 +1522,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       aria-hidden="true"
                     >
                       🔥
+                    </span>
+                    <span className="text-xs font-semibold leading-none text-gray-700">
+                      {headerCurrentStreak}
                     </span>
                   </button>
 
@@ -1868,23 +1875,33 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 <button
                   type="button"
                   onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
-                  className="flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors"
+                  className="flex items-center justify-center w-9 h-9 overflow-hidden rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors"
                   aria-label="Profile menu"
                   aria-expanded={isProfileMenuOpen}
                 >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  {headerProfileImageUrl ? (
+                    <Image
+                      src={headerProfileImageUrl}
+                      alt="Your profile"
+                      width={36}
+                      height={36}
+                      className="h-full w-full object-cover"
                     />
-                  </svg>
+                  ) : (
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                  )}
                 </button>
 
                 {/* DROPDOWN MENU */}
