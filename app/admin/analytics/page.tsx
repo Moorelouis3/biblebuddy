@@ -52,6 +52,28 @@ type WeeklyReportCenterSummary = {
   totalActions7d: number;
 };
 
+type VideoAnalyticsTopVideo = {
+  videoId: string;
+  episodeTitle: string;
+  seriesTitle: string;
+  category: string;
+  viewers: number;
+  started: number;
+  completed: number;
+  minutesPlayed: number;
+  averageWatchPercent: number;
+  lastWatchedAt: string | null;
+};
+
+type VideoAnalyticsSummary = {
+  totalMinutesPlayed: number;
+  uniqueViewers: number;
+  videosStarted: number;
+  videosCompleted: number;
+  averageWatchPercent: number;
+  topVideos: VideoAnalyticsTopVideo[];
+};
+
 type LouisReportLogRow = {
   id: string;
   userId: string;
@@ -91,6 +113,15 @@ const INITIAL_METRICS: OverviewMetrics = {
   feedReplies: 0,
   buddiesAdded: 0,
   groupMessagesSent: 0,
+};
+
+const INITIAL_VIDEO_ANALYTICS: VideoAnalyticsSummary = {
+  totalMinutesPlayed: 0,
+  uniqueViewers: 0,
+  videosStarted: 0,
+  videosCompleted: 0,
+  averageWatchPercent: 0,
+  topVideos: [],
 };
 
 const NAVIGATION_VIEW_ACTION_TYPES = [
@@ -171,6 +202,10 @@ export default function AnalyticsPage() {
   >(DASHBOARD_CARD_BREAKDOWN_LABELS.map((label) => ({ label, value: 0 })));
   const [loadingOverview, setLoadingOverview] = useState(true);
   const [overviewError, setOverviewError] = useState<string | null>(null);
+  const [videoAnalytics, setVideoAnalytics] =
+    useState<VideoAnalyticsSummary>(INITIAL_VIDEO_ANALYTICS);
+  const [loadingVideoAnalytics, setLoadingVideoAnalytics] = useState(true);
+  const [videoAnalyticsError, setVideoAnalyticsError] = useState<string | null>(null);
 
   // Action type filter for Action Log
   const [selectedActionType, setSelectedActionType] = useState<string | null>(null);
@@ -331,6 +366,7 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
     loadOverviewMetrics(timeFilter);
+    loadVideoAnalytics(timeFilter);
     buildAdminActionLog(timeFilter, selectedActionType, selectedActionLabel);
     loadStatsLog(timeFilter);
     loadDevotionalStats();
@@ -458,6 +494,30 @@ export default function AnalyticsPage() {
       return new Date(now.getTime() - 365 * 24 * 60 * 60 * 1000).toISOString();
     }
     return null;
+  }
+
+  async function loadVideoAnalytics(filter: TimeFilter) {
+    setLoadingVideoAnalytics(true);
+    setVideoAnalyticsError(null);
+
+    try {
+      const response = await fetch(`/api/admin/video-analytics?filter=${filter}`);
+      if (!response.ok) {
+        setVideoAnalytics(INITIAL_VIDEO_ANALYTICS);
+        setVideoAnalyticsError("Failed to load video analytics.");
+        setLoadingVideoAnalytics(false);
+        return;
+      }
+
+      const data = await response.json();
+      setVideoAnalytics(data.summary || INITIAL_VIDEO_ANALYTICS);
+      setLoadingVideoAnalytics(false);
+    } catch (error) {
+      console.error("[VIDEO_ANALYTICS] Error loading video analytics:", error);
+      setVideoAnalytics(INITIAL_VIDEO_ANALYTICS);
+      setVideoAnalyticsError("Failed to load video analytics.");
+      setLoadingVideoAnalytics(false);
+    }
   }
 
   // Load Stats Log - aggregated stats by time buckets
@@ -2996,6 +3056,85 @@ export default function AnalyticsPage() {
       </div>
 
       {/* ── RETENTION & ENGAGEMENT ─────────────────────────────────────────── */}
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <div className="mb-4">
+          <h2 className="text-2xl font-bold">Bible Buddy TV Analytics</h2>
+          <p className="text-sm text-gray-500">
+            Track who watched videos in this time frame, how many minutes were played, and which titles are getting the most traction.
+          </p>
+        </div>
+
+        {videoAnalyticsError && (
+          <p className="mb-3 text-sm text-red-600">{videoAnalyticsError}</p>
+        )}
+
+        {loadingVideoAnalytics ? (
+          <div className="rounded-xl border border-gray-100 bg-gray-50 p-6 text-center">
+            <p className="text-sm text-gray-500">Loading video analytics...</p>
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-5 mb-6">
+              <OverviewCard label="Minutes Played" value={videoAnalytics.totalMinutesPlayed} />
+              <OverviewCard label="Unique Viewers" value={videoAnalytics.uniqueViewers} />
+              <OverviewCard label="Videos Started" value={videoAnalytics.videosStarted} />
+              <OverviewCard label="Videos Completed" value={videoAnalytics.videosCompleted} />
+              <OverviewCard label="Avg Watch %" value={videoAnalytics.averageWatchPercent} />
+            </div>
+
+            <div className="rounded-2xl border border-gray-100 overflow-hidden">
+              <div className="flex items-center justify-between px-5 py-4 bg-gray-50 border-b border-gray-100">
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900">Top Videos</h3>
+                  <p className="text-sm text-gray-500">
+                    Which videos were watched, how many users watched them, and how far people got.
+                  </p>
+                </div>
+              </div>
+
+              {videoAnalytics.topVideos.length === 0 ? (
+                <div className="p-5 text-sm text-gray-500">No video activity in this time frame yet.</div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="min-w-full text-sm">
+                    <thead className="bg-white text-left text-xs uppercase tracking-wide text-gray-500">
+                      <tr>
+                        <th className="px-4 py-3">Video</th>
+                        <th className="px-4 py-3">Series</th>
+                        <th className="px-4 py-3">Users</th>
+                        <th className="px-4 py-3">Starts</th>
+                        <th className="px-4 py-3">Completed</th>
+                        <th className="px-4 py-3">Minutes</th>
+                        <th className="px-4 py-3">Avg Watched</th>
+                        <th className="px-4 py-3">Last Seen</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {videoAnalytics.topVideos.map((video) => (
+                        <tr key={video.videoId} className="border-t border-gray-100">
+                          <td className="px-4 py-3 font-medium text-gray-900">{video.episodeTitle}</td>
+                          <td className="px-4 py-3 text-gray-600">{video.seriesTitle}</td>
+                          <td className="px-4 py-3 text-gray-700">{video.viewers}</td>
+                          <td className="px-4 py-3 text-gray-700">{video.started}</td>
+                          <td className="px-4 py-3 text-gray-700">{video.completed}</td>
+                          <td className="px-4 py-3 text-gray-700">{video.minutesPlayed}</td>
+                          <td className="px-4 py-3 text-gray-700">{video.averageWatchPercent}%</td>
+                          <td className="px-4 py-3 text-gray-500">
+                            {video.lastWatchedAt
+                              ? `${formatAdminActionDate(new Date(video.lastWatchedAt))} ${formatAdminActionTime(new Date(video.lastWatchedAt))}`
+                              : "—"}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          </>
+        )}
+      </div>
+
       {/* MAIN SECTION SELECTOR (Dropdown/Tabs) */}
       <div className="mt-12 mb-6">
         <div className="flex items-center justify-between mb-4">
@@ -4050,6 +4189,16 @@ function OverviewCard({
         return "bg-teal-100 border border-teal-200";
       case "Videos Watched":
         return "bg-blue-100 border border-blue-200";
+      case "Minutes Played":
+        return "bg-sky-100 border border-sky-200";
+      case "Unique Viewers":
+        return "bg-indigo-100 border border-indigo-200";
+      case "Videos Started":
+        return "bg-violet-100 border border-violet-200";
+      case "Videos Completed":
+        return "bg-emerald-100 border border-emerald-200";
+      case "Avg Watch %":
+        return "bg-amber-100 border border-amber-200";
       case "The Bible":
         return "bg-blue-100 border border-blue-200";
       case "Bible Study Group":

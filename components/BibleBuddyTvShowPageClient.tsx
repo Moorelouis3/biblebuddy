@@ -13,6 +13,7 @@ import {
 } from "../lib/bibleBuddyTvContent";
 import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
 import { supabase } from "../lib/supabaseClient";
+import { getVideoProgressForVideos, type VideoProgressRow } from "../lib/videoProgress";
 
 const CAROLINA_BLUE = "#4B9CD3";
 const CAROLINA_BLUE_SOFT = "#EAF5FC";
@@ -28,13 +29,12 @@ export default function BibleBuddyTvShowPageClient({
 }: BibleBuddyTvShowPageClientProps) {
   const [selectedEpisode, setSelectedEpisode] = useState<BibleBuddyTvEpisode | null>(null);
   const [openingEpisodeId, setOpeningEpisodeId] = useState<string | null>(null);
-  const [watchedEpisodeIds, setWatchedEpisodeIds] = useState<string[]>([]);
+  const [videoProgressByEpisode, setVideoProgressByEpisode] = useState<Record<string, VideoProgressRow>>({});
   const [lastWatchedEpisodeId, setLastWatchedEpisodeId] = useState<string | null>(null);
   const [isInMyList, setIsInMyList] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [userName, setUserName] = useState<string | null>(null);
 
-  const storageKey = useMemo(() => `bbtv-progress:${title.slug}`, [title.slug]);
   const featuredEpisode = title.episodes[0] ?? null;
   const continueEpisode =
     title.episodes.find((episode) => episode.id === lastWatchedEpisodeId) ??
@@ -113,19 +113,6 @@ export default function BibleBuddyTvShowPageClient({
   useEffect(() => {
     if (typeof window === "undefined") return;
     try {
-      const saved = window.localStorage.getItem(storageKey);
-      if (!saved) return;
-      const parsed = JSON.parse(saved) as { watchedEpisodeIds?: string[]; lastWatchedEpisodeId?: string | null };
-      setWatchedEpisodeIds(parsed.watchedEpisodeIds || []);
-      setLastWatchedEpisodeId(parsed.lastWatchedEpisodeId || null);
-    } catch (error) {
-      console.error("[BibleBuddyTvShowPageClient] Could not load local progress:", error);
-    }
-  }, [storageKey]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
       const saved = window.localStorage.getItem(MY_LIST_STORAGE_KEY);
       if (!saved) return;
       const parsed = JSON.parse(saved) as string[];
@@ -134,6 +121,45 @@ export default function BibleBuddyTvShowPageClient({
       console.error("[BibleBuddyTvShowPageClient] Could not load My List:", error);
     }
   }, [title.id]);
+
+  useEffect(() => {
+    if (!userId) {
+      setVideoProgressByEpisode({});
+      setLastWatchedEpisodeId(null);
+      return;
+    }
+
+    const currentUserId = userId;
+    let cancelled = false;
+
+    async function loadVideoProgress() {
+      try {
+        const rows = await getVideoProgressForVideos(
+          currentUserId,
+          title.episodes.filter((episode) => episode.youtubeUrl).map((episode) => episode.id),
+        );
+        if (cancelled) return;
+
+        const byEpisode = rows.reduce<Record<string, VideoProgressRow>>((acc, row) => {
+          acc[row.video_id] = row;
+          return acc;
+        }, {});
+
+        setVideoProgressByEpisode(byEpisode);
+        setLastWatchedEpisodeId(rows[0]?.video_id ?? null);
+      } catch (error) {
+        if (!cancelled) {
+          console.error("[BibleBuddyTvShowPageClient] Could not load video progress:", error);
+        }
+      }
+    }
+
+    void loadVideoProgress();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [title.episodes, userId]);
 
   async function ensureTrackingUser() {
     if (userId) {
@@ -181,20 +207,7 @@ export default function BibleBuddyTvShowPageClient({
   async function markEpisodeWatched(episode: BibleBuddyTvEpisode) {
     setOpeningEpisodeId(episode.id);
     setSelectedEpisode(episode);
-
-    const nextWatchedIds = Array.from(new Set([...watchedEpisodeIds, episode.id]));
-    setWatchedEpisodeIds(nextWatchedIds);
     setLastWatchedEpisodeId(episode.id);
-
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(
-        storageKey,
-        JSON.stringify({
-          watchedEpisodeIds: nextWatchedIds,
-          lastWatchedEpisodeId: episode.id,
-        })
-      );
-    }
 
     const { resolvedUserId, resolvedUserName } = await ensureTrackingUser();
 
@@ -208,6 +221,24 @@ export default function BibleBuddyTvShowPageClient({
       ).catch((error) => {
         console.error("[NAV] Failed to track Bible Buddy TV video start:", error);
       });
+    }
+  }
+
+  async function refreshEpisodeProgress() {
+    if (!userId) return;
+    try {
+      const rows = await getVideoProgressForVideos(
+        userId,
+        title.episodes.filter((episode) => episode.youtubeUrl).map((episode) => episode.id),
+      );
+      const byEpisode = rows.reduce<Record<string, VideoProgressRow>>((acc, row) => {
+        acc[row.video_id] = row;
+        return acc;
+      }, {});
+      setVideoProgressByEpisode(byEpisode);
+      setLastWatchedEpisodeId(rows[0]?.video_id ?? null);
+    } catch (error) {
+      console.error("[BibleBuddyTvShowPageClient] Could not refresh video progress:", error);
     }
   }
 
@@ -341,13 +372,13 @@ export default function BibleBuddyTvShowPageClient({
                     <span
                       className={`inline-flex rounded-full px-3 py-1.5 text-sm font-semibold ${
                         episode.available
-                          ? watchedEpisodeIds.includes(episode.id)
+                          ? videoProgressByEpisode[episode.id]?.completed
                             ? "bg-emerald-100 text-emerald-700"
                             : ""
                           : "bg-gray-200 text-gray-700"
                       }`}
                       style={
-                        episode.available && !watchedEpisodeIds.includes(episode.id)
+                        episode.available && !videoProgressByEpisode[episode.id]?.completed
                           ? { backgroundColor: CAROLINA_BLUE_SOFT, color: CAROLINA_BLUE }
                           : undefined
                       }
@@ -355,9 +386,11 @@ export default function BibleBuddyTvShowPageClient({
                       {episode.available
                         ? openingEpisodeId === episode.id
                           ? "Opening..."
-                          : watchedEpisodeIds.includes(episode.id)
-                            ? "Watched"
-                            : "Watch"
+                          : videoProgressByEpisode[episode.id]?.completed
+                            ? "Completed"
+                            : (videoProgressByEpisode[episode.id]?.current_time || 0) > 0
+                              ? "Resume"
+                              : "Watch"
                         : "Soon"}
                     </span>
                   </div>
@@ -403,7 +436,10 @@ export default function BibleBuddyTvShowPageClient({
         title={title}
         episode={selectedEpisode}
         isOpen={selectedEpisode !== null}
-        onClose={() => setSelectedEpisode(null)}
+        onClose={() => {
+          setSelectedEpisode(null);
+          void refreshEpisodeProgress();
+        }}
       />
     </div>
   );

@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ModalShell } from "./ModalShell";
 import type { BibleBuddyTvEpisode, BibleBuddyTvTitle } from "../lib/bibleBuddyTvContent";
-import { getYouTubeEmbedUrl } from "../lib/bibleBuddyTvContent";
 import CommentSection from "./comments/CommentSection";
 import { supabase } from "../lib/supabaseClient";
 import { enrichPlainText } from "../lib/bibleHighlighting";
@@ -14,6 +13,7 @@ import { findKeywordNotes, findPersonNotes, findPlaceNotes, saveKeywordNotes, sa
 import CreditLimitModal from "./CreditLimitModal";
 import ReactMarkdown from "react-markdown";
 import { LouisAvatar } from "./LouisAvatar";
+import YouTubeTrackedPlayer from "./YouTubeTrackedPlayer";
 
 const CAROLINA_BLUE = "#4B9CD3";
 const CAROLINA_BLUE_SOFT = "#EAF5FC";
@@ -503,14 +503,13 @@ Keep it simple, biblical, and clear.`;
                     </div>
                   </div>
                 ) : null}
-                <iframe
-                  className={`h-full w-full transition-opacity duration-300 ${playerLoading ? "opacity-0" : "opacity-100"}`}
-                  src={getYouTubeEmbedUrl(episode.youtubeUrl)}
-                  title={`${episode.title} video player`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                  onLoad={() => setPlayerLoading(false)}
+                <YouTubeTrackedPlayer
+                  userId={userId}
+                  videoId={episode.id}
+                  youtubeUrl={episode.youtubeUrl}
+                  title={episode.title}
+                  autoplay={true}
+                  onLoadingChange={setPlayerLoading}
                 />
               </div>
             ) : (
