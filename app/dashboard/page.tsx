@@ -147,6 +147,7 @@ export default function DashboardPage() {
   const [showCommunityModal, setShowCommunityModal] = useState(false);
   const [showVerseOfTheDayModal, setShowVerseOfTheDayModal] = useState(false);
   const [showStreakMotivationModal, setShowStreakMotivationModal] = useState(false);
+  const [showStreakMotivationTaskPrompt, setShowStreakMotivationTaskPrompt] = useState(false);
   const [showLouisDailyTasksModal, setShowLouisDailyTasksModal] = useState(false);
   const [louisDailyTaskCycleStartedAt, setLouisDailyTaskCycleStartedAt] = useState<string | null>(null);
   const [showDailyTaskCelebrationModal, setShowDailyTaskCelebrationModal] = useState(false);
@@ -1246,6 +1247,7 @@ export default function DashboardPage() {
     if (!cycleStartedAt) return;
 
     setLouisDailyTaskCycleStartedAt(cycleStartedAt);
+    setShowStreakMotivationTaskPrompt(true);
     setShowStreakMotivationModal(true);
   }, [userId, profile, showVerseOfTheDayModal]);
 
@@ -1332,6 +1334,7 @@ export default function DashboardPage() {
     }
 
     function handleOpenStreakInfo() {
+      setShowStreakMotivationTaskPrompt(false);
       setShowStreakMotivationModal(true);
     }
 
@@ -1602,11 +1605,14 @@ export default function DashboardPage() {
         userId={userId}
       />
 
-      <ModalShell
-        isOpen={showStreakMotivationModal && !showVerseOfTheDayModal}
-        onClose={() => setShowStreakMotivationModal(false)}
-        backdropColor="bg-black/45"
-      >
+        <ModalShell
+          isOpen={showStreakMotivationModal && !showVerseOfTheDayModal}
+          onClose={() => {
+            setShowStreakMotivationModal(false);
+            setShowStreakMotivationTaskPrompt(false);
+          }}
+          backdropColor="bg-black/45"
+        >
         <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
           <div className="bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-6 py-7 text-center">
             <div className="flex justify-center">
@@ -1627,31 +1633,39 @@ export default function DashboardPage() {
             <p className="mt-3 text-sm leading-7 text-[#4f678e]">
               {streakMotivation.body}
             </p>
-            <p className="mt-4 text-sm font-semibold text-[#355487]">
-              {streakMotivation.followUp}
-            </p>
-            <div className="mt-6 flex items-center justify-center gap-3">
-              <button
-                type="button"
-                onClick={() => {
-                  setShowStreakMotivationModal(false);
-                  setShowLouisDailyTasksModal(true);
-                }}
-                className="inline-flex min-w-[120px] justify-center rounded-full bg-[#6fb48b] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5ea27a]"
-              >
-                Yes
-              </button>
-              <button
-                type="button"
-                onClick={() => setShowStreakMotivationModal(false)}
-                className="inline-flex min-w-[120px] justify-center rounded-full bg-[#e98585] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#d96d6d]"
-              >
-                No
-              </button>
+              {showStreakMotivationTaskPrompt && (
+                <>
+                  <p className="mt-4 text-sm font-semibold text-[#355487]">
+                    {streakMotivation.followUp}
+                  </p>
+                  <div className="mt-6 flex items-center justify-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowStreakMotivationModal(false);
+                        setShowStreakMotivationTaskPrompt(false);
+                        setShowLouisDailyTasksModal(true);
+                      }}
+                      className="inline-flex min-w-[120px] justify-center rounded-full bg-[#6fb48b] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5ea27a]"
+                    >
+                      Yes
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowStreakMotivationModal(false);
+                        setShowStreakMotivationTaskPrompt(false);
+                      }}
+                      className="inline-flex min-w-[120px] justify-center rounded-full bg-[#e98585] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#d96d6d]"
+                    >
+                      No
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
-        </div>
-      </ModalShell>
+        </ModalShell>
 
       <LouisDailyTasksModal
         open={showLouisDailyTasksModal && !showVerseOfTheDayModal && !showStreakMotivationModal}
