@@ -1146,9 +1146,9 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!userId || !profile || showVerseOfTheDayModal || typeof window === "undefined") return;
-    if (hasActiveLouisDailyTaskCycle(userId)) return;
-
-    const cycleStartedAt = ensureLouisDailyTaskCycle(userId);
+    const cycleStartedAt = hasActiveLouisDailyTaskCycle(userId)
+      ? getLouisDailyTaskCycleStartedAt(userId)
+      : ensureLouisDailyTaskCycle(userId);
     if (!cycleStartedAt) return;
 
     setLouisDailyTaskCycleStartedAt(cycleStartedAt);
@@ -1507,7 +1507,7 @@ export default function DashboardPage() {
       />
 
       <LouisDailyTasksModal
-        open={showLouisDailyTasksModal}
+        open={showLouisDailyTasksModal && !showVerseOfTheDayModal}
         onClose={() => {
           setShowLouisDailyTasksModal(false);
           void loadDailyTaskSummary();

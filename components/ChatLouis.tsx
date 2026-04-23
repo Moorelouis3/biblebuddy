@@ -11,9 +11,7 @@ import { useFeatureRenderPriority } from "./FeatureRenderPriorityContext";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
 import { buildLouisGuideChatMessage, getLouisPageGuide } from "../lib/louisGuidance";
 import { getVerseIntro, getVerseOfTheDay, type VerseOfTheDayEntry } from "../lib/verseOfTheDay";
-import { LOUIS_MOMENT_EVENT, type LouisMomentDetail, type LouisMomentReply } from "../lib/louisMoments";
 import { syncCurrentStreakToProfileStats } from "../lib/profileStats";
-import { consumeLouisRouteHandoff } from "../lib/louisRouteHandoff";
 import {
   isLouisSecondRecommendationReady,
   rememberLouisSecondRecommendationSeen,
@@ -2069,28 +2067,8 @@ export function ChatLouis() {
         }
       }
 
-      const { data: louisInboxRows, error: louisInboxError } = await supabase
-        .from("louis_inbox_messages")
-        .select("id, title, content, action_label, action_href, created_at, consumed_at, kind")
-        .eq("user_id", user.id)
-        .order("created_at", { ascending: true })
-        .limit(25);
-
       if (!cancelled) {
-        if (louisInboxError) {
-          console.warn("[LOUIS] Could not load Louis inbox messages:", louisInboxError.message);
-          setPendingInboxMessageIds([]);
-        } else {
-          const inboxRows = (louisInboxRows ?? []) as LouisInboxMessageRow[];
-          setMessages((prev) => {
-            const merged = mergeServerMessages(prev, inboxRows).slice(-60);
-            setHasLouisHistory(merged.length > 0);
-            return merged;
-          });
-          setPendingInboxMessageIds(
-            inboxRows.filter((row) => !row.consumed_at).map((row) => row.id),
-          );
-        }
+        setPendingInboxMessageIds([]);
       }
 
       const shouldLoadRecommendation = pathname === "/dashboard";
@@ -2427,37 +2405,11 @@ export function ChatLouis() {
     };
   }, [pathname]);
 
-  const hasPendingPageGuide = Boolean(
-    pathname !== "/dashboard" &&
-      featureToursEnabled &&
-      currentPageGuide &&
-      louisFeatureTours[currentPageGuide.featureKey] !== true,
-  );
-
-  const hasPendingDevotionalChallengePrompt =
-    pathname === "/devotionals" &&
-    newUserChallengeStep === "choose_devotional" &&
-    !primaryDevotional;
-
-  const hasPendingDevotionalStartPrompt = Boolean(
-    pathname.startsWith("/devotionals/") &&
-      selectedDevotionalForChallenge &&
-      !primaryDevotional &&
-      (newUserChallengeStep === "choose_devotional" || newUserChallengeStep === "choose_start_day"),
-  );
-
-  const hasPendingDashboardDailyPrompt =
-    pathname === "/dashboard" &&
-    !isDashboardVerseModalOpen &&
-    hasUnseenSecondRecommendation;
-
-  const hasPendingLouisMoment =
-    pendingInboxMessageIds.length > 0 ||
-    pendingRouteHandoff ||
-    hasPendingPageGuide ||
-    hasPendingDevotionalChallengePrompt ||
-    hasPendingDevotionalStartPrompt ||
-    hasPendingDashboardDailyPrompt;
+  const hasPendingPageGuide = false;
+  const hasPendingDevotionalChallengePrompt = false;
+  const hasPendingDevotionalStartPrompt = false;
+  const hasPendingDashboardDailyPrompt = false;
+  const hasPendingLouisMoment = false;
 
   const emptyStatePrompt = louisInputPrompt.mode === "today_tomorrow"
     ? "Type today or tomorrow."
@@ -3155,9 +3107,6 @@ export function ChatLouis() {
     if (pathname === "/dashboard" && isDashboardVerseModalOpen) {
       return;
     }
-
-    const hadPendingRouteHandoff = pendingRouteHandoff;
-    const unreadMomentReplies = pendingMomentReplies;
     setIsOpen(true);
     setQuickReplies([]);
     setPendingRouteHandoff(false);
@@ -3169,75 +3118,6 @@ export function ChatLouis() {
 
     const latestMessage = messages[messages.length - 1];
 
-    if (pendingInboxMessageIds.length > 0) {
-      return;
-    }
-
-    if (hasPendingPageGuide && currentPageGuide) {
-      await markCurrentGuideSeen();
-      appendAssistantMessage(
-        buildLouisGuideChatMessage(currentPageGuide, {
-          firstName: userFirstName,
-          isPaidUser,
-        }),
-      );
-      clearLouisInputPrompt();
-      return;
-    }
-
-    if (hadPendingRouteHandoff && unreadMomentReplies.length > 0) {
-      setQuickReplies(unreadMomentReplies);
-      setPendingMomentReplies([]);
-      const labels = unreadMomentReplies.map((reply) => reply.label.toLowerCase());
-      if (labels.includes("yes") && labels.includes("no")) {
-        setTypedReplyPrompt("yes_no", "none", "You can type yes or no, or tap the buttons.");
-      }
-      return;
-    }
-
-    if (hadPendingRouteHandoff) {
-      return;
-    }
-
-    if (hasPendingDashboardDailyPrompt) {
-      const momentKind: LouisDailyMomentKind = hasUnseenDailyGreeting ? "first" : "second";
-      const dailyConversationMessage = buildDailyConversationMessage(momentKind);
-
-      if (latestMessage?.role === "assistant" && latestMessage.content === dailyConversationMessage) {
-        if (pathname === "/dashboard" && (!hasLouisHistory || louisJourneyStage === "new_user") && !primaryDevotional) {
-          setTypedReplyPrompt(
-            "yes_no",
-            "none",
-            "You can answer me right here. Just type yes or no.",
-          );
-        }
-        return;
-      }
-
-      await beginDailyConversation(momentKind);
-      return;
-    }
-
-    if (hasPendingDevotionalChallengePrompt) {
-      appendAssistantMessage(
-        "This is the devotional page\n\nPick one devotional\n\nto get started\n\nTake your time and choose one\n\nthat stands out to you",
-      );
-      return;
-    }
-
-    if (hasPendingDevotionalStartPrompt && selectedDevotionalForChallenge) {
-      setDailyFlowType("devotional_start");
-      persistNewUserChallengeStep("choose_start_day");
-      appendAssistantMessage(
-        `Good choice\n\n${selectedDevotionalForChallenge.title}\n\n${toGoalHelpLine(onboardingGoal)}\n\nReady to start Day 1?`,
-      );
-      seedQuickReplies([
-        { id: "devotional-start-yes", label: "Yes", action: "daily_yes" },
-        { id: "devotional-start-no", label: "No", action: "daily_no" },
-      ]);
-      setTypedReplyPrompt("yes_no", "none", "You can type yes or no, or tap the buttons.");
-      return;
-    }
 
     const openingIndex =
       Math.abs(
@@ -3502,50 +3382,6 @@ export function ChatLouis() {
 
     return () => window.clearTimeout(timeout);
   }, [input, isOpen, louisInputPrompt, messages]);
-
-  useEffect(() => {
-    const handoff = consumeLouisRouteHandoff(pathname);
-    if (!handoff?.message) return;
-
-    appendAssistantMessage(handoff.message);
-    void logLouisAction(
-      ACTION_TYPE.louis_route_handoff_shown,
-      toLouisLogLabel(`${pathname} ${handoff.message}`),
-    );
-    seedQuickReplies([]);
-    setPendingRouteHandoff(true);
-  }, [pathname]);
-
-  useEffect(() => {
-    function onLouisMoment(event: Event) {
-      const detail = (event as CustomEvent<LouisMomentDetail>).detail;
-      if (!detail?.message) return;
-
-      const mappedReplies = (detail.replies ?? []).map((reply: LouisMomentReply) => ({
-        id: reply.id,
-        label: reply.label,
-        action: reply.close ? "moment_close" : reply.href ? "moment_navigate" : "moment_message",
-        href: reply.href,
-        message: reply.message,
-      })) as QuickReply[];
-
-      appendAssistantMessage(detail.message);
-      seedQuickReplies(mappedReplies);
-      setPendingMomentReplies(mappedReplies);
-      const labels = mappedReplies.map((reply) => reply.label.toLowerCase());
-      if (labels.includes("yes") && labels.includes("no")) {
-        setTypedReplyPrompt("yes_no", "none", "You can type yes or no, or tap the buttons.");
-      }
-      if (detail.openMode === "badge" && !isOpen) {
-        setPendingRouteHandoff(true);
-        return;
-      }
-      setIsOpen(true);
-    }
-
-    document.addEventListener(LOUIS_MOMENT_EVENT, onLouisMoment);
-    return () => document.removeEventListener(LOUIS_MOMENT_EVENT, onLouisMoment);
-  }, [isOpen]);
 
   const bubbleStyle =
     position.x === 0 && position.y === 0
