@@ -146,6 +146,7 @@ export default function DashboardPage() {
   const [showStreakBadgeModal, setShowStreakBadgeModal] = useState(false);
   const [showCommunityModal, setShowCommunityModal] = useState(false);
   const [showVerseOfTheDayModal, setShowVerseOfTheDayModal] = useState(false);
+  const [showStreakMotivationModal, setShowStreakMotivationModal] = useState(false);
   const [showLouisDailyTasksModal, setShowLouisDailyTasksModal] = useState(false);
   const [louisDailyTaskCycleStartedAt, setLouisDailyTaskCycleStartedAt] = useState<string | null>(null);
   const [showDailyTaskCelebrationModal, setShowDailyTaskCelebrationModal] = useState(false);
@@ -174,6 +175,99 @@ export default function DashboardPage() {
     upgrades24h: 0,
   });
   const [loadingOwnerQuickStats, setLoadingOwnerQuickStats] = useState(false);
+
+  function getStreakMotivation(streak: number) {
+    const safeStreak = Math.max(0, Math.floor(streak));
+    const toFire = Math.max(0, 30 - safeStreak);
+
+    if (safeStreak >= 3650) {
+      return {
+        headline: `${safeStreak} day streak`,
+        body: "Ten years of showing up is wild. This is no longer a phase. This is part of who you are now.",
+        followUp: "Do you want to start your daily Bible task?",
+      };
+    }
+
+    if (safeStreak === 30) {
+      return {
+        headline: "You earned the fire badge",
+        body: "Congrats, you hit 30 days in a row and unlocked the fire badge. Great job showing up and staying consistent.",
+        followUp: "Do you want to start your daily Bible task?",
+      };
+    }
+
+    if (safeStreak === 0) {
+      return {
+        headline: "A fresh start",
+        body: "Today is a perfect day to start a new Bible reading streak. One honest day with the Word can become something strong.",
+        followUp: "Do you want to start your daily Bible task?",
+      };
+    }
+
+    const exactDayMessages: Record<number, string> = {
+      1: "Today is a perfect day to start a new Bible reading streak. Day 1 always matters because it means you showed up.",
+      2: "Hey, this makes 2 days in a row. You are heating up now, and the habit is already starting to form.",
+      3: "Wow, now you're cooking. Three days in a row of taking in the Word is a strong start.",
+      4: "Okay, now you're just showing off. Four days in a row is the kind of momentum that changes people.",
+      5: "Did you know if you hit 30 days logging in to Bible Buddy you earn the fire badge? You're already 5 days into the climb.",
+      6: "Six days in a row is not random anymore. You're building rhythm now.",
+      7: "One full week. That's how real consistency starts to look.",
+      14: "Two full weeks in a row is strong. Your habit is getting roots now.",
+      21: "Three weeks in. At this point you're proving you can live with this kind of consistency.",
+      29: "You're right there. One more day and that fire badge is yours.",
+    };
+
+    if (exactDayMessages[safeStreak]) {
+      return {
+        headline: `${safeStreak} day streak`,
+        body: exactDayMessages[safeStreak],
+        followUp: "Do you want to start your daily Bible task?",
+      };
+    }
+
+    const dayMod = safeStreak % 6;
+    const phaseTemplates = (() => {
+      if (safeStreak < 10) {
+        return [
+          `You're on day ${safeStreak}, and that early momentum matters more than people think. Keep protecting it.`,
+          `${safeStreak} days in a row is a real start. The streak is young, but it's alive now.`,
+          `Day ${safeStreak} means you're stacking days now, not just having random good moments.`,
+        ];
+      }
+      if (safeStreak < 30) {
+        return [
+          `${safeStreak} days in a row is serious progress. Keep going, because you're only ${toFire} day${toFire === 1 ? "" : "s"} from the fire badge.`,
+          `This is day ${safeStreak}, and your consistency is getting harder to ignore. The fire badge is coming into view now.`,
+          `${safeStreak} days deep means this habit is starting to feel real. Stay with it and the fire badge gets closer fast.`,
+        ];
+      }
+      if (safeStreak < 100) {
+        return [
+          `${safeStreak} days in a row is strong. You already earned the fire, and now you're building beyond the badge.`,
+          `You are ${safeStreak} days into this streak now. That's the kind of consistency that starts shaping a life.`,
+          `At ${safeStreak} days, this is bigger than motivation. This is discipline turning into identity.`,
+        ];
+      }
+      if (safeStreak < 365) {
+        return [
+          `${safeStreak} days in a row is powerful. You're not just visiting the Word now. You're living near it.`,
+          `${safeStreak} days deep and still going. That's the kind of faithfulness that keeps changing a person slowly and for real.`,
+          `This streak is at ${safeStreak} days now. You have built something steady, and steady is strong.`,
+        ];
+      }
+      return [
+        `${safeStreak} days in a row is rare. You've built a long obedience kind of rhythm here.`,
+        `You're sitting at ${safeStreak} straight days now. This is what faithfulness looks like over time.`,
+        `${safeStreak} days deep means the habit is no longer fragile. It's part of your life now.`,
+      ];
+    })();
+
+    return {
+      headline: `${safeStreak} day streak`,
+      body: phaseTemplates[dayMod % phaseTemplates.length],
+      followUp: "Do you want to start your daily Bible task?",
+    };
+  }
 
   useEffect(() => {
     if (!userId) return;
@@ -1152,7 +1246,7 @@ export default function DashboardPage() {
     if (!cycleStartedAt) return;
 
     setLouisDailyTaskCycleStartedAt(cycleStartedAt);
-    setShowLouisDailyTasksModal(true);
+    setShowStreakMotivationModal(true);
   }, [userId, profile, showVerseOfTheDayModal]);
 
   useEffect(() => {
@@ -1360,6 +1454,8 @@ export default function DashboardPage() {
     }
   }
 
+  const streakMotivation = getStreakMotivation(profile?.current_streak ?? 0);
+
   return (
     <>
       <div className="min-h-screen bg-gray-50 pb-12">
@@ -1506,8 +1602,53 @@ export default function DashboardPage() {
         userId={userId}
       />
 
+      <ModalShell
+        isOpen={showStreakMotivationModal && !showVerseOfTheDayModal}
+        onClose={() => setShowStreakMotivationModal(false)}
+        backdropColor="bg-black/45"
+      >
+        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
+          <div className="bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-6 py-7 text-center">
+            <div className="flex justify-center">
+              <LouisAvatar mood={(profile?.current_streak ?? 0) >= 30 ? "stareyes" : "wave"} size={66} />
+            </div>
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#5f86bd]">
+              Daily Streak
+            </p>
+            <h2 className="mt-2 text-3xl font-bold text-[#21304f]">
+              {streakMotivation.headline}
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-[#4f678e]">
+              {streakMotivation.body}
+            </p>
+            <p className="mt-4 text-sm font-semibold text-[#355487]">
+              {streakMotivation.followUp}
+            </p>
+            <div className="mt-6 flex items-center justify-center gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowStreakMotivationModal(false);
+                  setShowLouisDailyTasksModal(true);
+                }}
+                className="inline-flex min-w-[120px] justify-center rounded-full bg-[#6fb48b] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5ea27a]"
+              >
+                Yes
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowStreakMotivationModal(false)}
+                className="inline-flex min-w-[120px] justify-center rounded-full bg-[#e98585] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#d96d6d]"
+              >
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      </ModalShell>
+
       <LouisDailyTasksModal
-        open={showLouisDailyTasksModal && !showVerseOfTheDayModal}
+        open={showLouisDailyTasksModal && !showVerseOfTheDayModal && !showStreakMotivationModal}
         onClose={() => {
           setShowLouisDailyTasksModal(false);
           void loadDailyTaskSummary();
