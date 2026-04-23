@@ -1560,6 +1560,47 @@ export default function DashboardPage() {
               </div>
 
               <div className="space-y-6 text-gray-700">
+                {levelInfo ? (
+                  <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 p-4 shadow-sm">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-500">
+                          Your Level
+                        </p>
+                        <h3 className="mt-1 text-2xl font-bold text-gray-900">
+                          Level {levelInfo.level} Bible Buddy
+                        </h3>
+                        <p className="mt-1 text-sm text-gray-600">
+                          {levelInfo.totalPoints.toLocaleString()} total points
+                        </p>
+                      </div>
+                      <div className="rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-blue-600 shadow-sm">
+                        {Math.round(levelInfo.progressPercent)}%
+                      </div>
+                    </div>
+
+                    <div className="mt-4 overflow-hidden rounded-full bg-blue-100">
+                      <div
+                        className="h-3 rounded-full bg-blue-500 transition-all duration-300"
+                        style={{ width: `${Math.max(0, Math.min(100, levelInfo.progressPercent))}%` }}
+                      />
+                    </div>
+
+                    <div className="mt-3 flex items-center justify-between gap-4 text-sm">
+                      <p className="font-medium text-gray-700">
+                        {levelInfo.pointsToNextLevel > 0
+                          ? `${levelInfo.pointsToNextLevel.toLocaleString()} points until Level ${levelInfo.level + 1}`
+                          : "You are at the top level right now."}
+                      </p>
+                      <p className="text-gray-500">
+                        {levelInfo.levelStart.toLocaleString()}
+                        {" - "}
+                        {levelInfo.levelEnd.toLocaleString()}
+                      </p>
+                    </div>
+                  </div>
+                ) : null}
+
                 <p className="text-base leading-relaxed">
                   Bible Buddy isn't about competing with other people.
                   <br />
