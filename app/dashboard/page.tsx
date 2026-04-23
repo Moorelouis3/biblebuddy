@@ -1703,9 +1703,9 @@ export default function DashboardPage() {
             <p className="mt-3 text-base font-semibold text-[#355487]">
               You completed today&apos;s Bible task.
             </p>
-            <p className="mt-2 text-sm leading-6 text-[#58709d]">
-              All 5 tasks are done and your +10 bonus is locked in for this 24-hour cycle.
-            </p>
+              <p className="mt-2 text-sm leading-6 text-[#58709d]">
+               All 5 tasks are done and your +10 bonus is locked in for this 25-hour cycle.
+              </p>
             <button
               type="button"
               onClick={() => setShowDailyTaskCelebrationModal(false)}

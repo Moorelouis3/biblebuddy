@@ -662,7 +662,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 You completed today&apos;s Bible task.
               </p>
               <p className="mt-2 text-sm leading-6 text-[#58709d]">
-                All 5 tasks are complete and your +10 bonus is locked in for this 24-hour cycle.
+                All 5 tasks are complete and your +10 bonus is locked in for this 25-hour cycle.
               </p>
               <button
                 type="button"
@@ -705,7 +705,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           {showHelp ? (
             <div className="mt-4 rounded-[22px] border border-[#d7e4f7] bg-white/95 px-4 py-3 text-left shadow-sm">
               <p className="text-sm leading-6 text-[#51627f]">
-                This is your 24-hour Bible checklist. Finish the five tasks anytime before the timer runs out. If you complete all five, you earn a +10 bonus.
+                This is your 25-hour Bible checklist. Finish the five tasks anytime before the timer runs out. If you complete all five, you earn a +10 bonus.
               </p>
             </div>
           ) : null}
