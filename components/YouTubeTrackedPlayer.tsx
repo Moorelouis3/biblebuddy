@@ -48,20 +48,45 @@ function loadYouTubeIframeApi() {
   if (window.__bbYoutubeApiPromise) return window.__bbYoutubeApiPromise;
 
   window.__bbYoutubeApiPromise = new Promise((resolve, reject) => {
+    let pollInterval: ReturnType<typeof setInterval> | null = null;
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+    const cleanup = () => {
+      if (pollInterval) clearInterval(pollInterval);
+      if (timeoutId) clearTimeout(timeoutId);
+      pollInterval = null;
+      timeoutId = null;
+    };
+    const finish = () => {
+      cleanup();
+      resolve(window.YT);
+    };
+
     const existingScript = document.querySelector('script[src="https://www.youtube.com/iframe_api"]');
     if (!existingScript) {
       const script = document.createElement("script");
       script.src = "https://www.youtube.com/iframe_api";
       script.async = true;
-      script.onerror = () => reject(new Error("Could not load YouTube IFrame API."));
+      script.onerror = () => {
+        cleanup();
+        reject(new Error("Could not load YouTube IFrame API."));
+      };
       document.head.appendChild(script);
     }
 
     const previousReady = window.onYouTubeIframeAPIReady;
     window.onYouTubeIframeAPIReady = () => {
       previousReady?.();
-      resolve(window.YT);
+      finish();
     };
+
+    pollInterval = setInterval(() => {
+      if (window.YT?.Player) finish();
+    }, 150);
+
+    timeoutId = setTimeout(() => {
+      cleanup();
+      reject(new Error("Timed out waiting for YouTube IFrame API."));
+    }, 12000);
   });
 
   return window.__bbYoutubeApiPromise;
@@ -87,7 +112,10 @@ export default function YouTubeTrackedPlayer({
   const [resumeLoaded, setResumeLoaded] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const youtubeVideoId = useMemo(() => extractYouTubeVideoId(youtubeUrl), [youtubeUrl]);
+  const youtubeVideoId = useMemo(
+    () => videoId || extractYouTubeVideoId(youtubeUrl),
+    [videoId, youtubeUrl]
+  );
 
   function setPlayerLoading(next: boolean) {
     setLoading(next);
@@ -244,7 +272,7 @@ export default function YouTubeTrackedPlayer({
         playerRef.current = null;
       }
     };
-  }, [youtubeVideoId, autoplay, title, resumeLoaded]);
+  }, [youtubeVideoId, autoplay]);
 
   useEffect(() => {
     if (!resumeLoaded || !resumeTime || !playerRef.current || resumeAppliedRef.current) return;

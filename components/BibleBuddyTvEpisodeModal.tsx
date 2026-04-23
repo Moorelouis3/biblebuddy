@@ -504,6 +504,7 @@ Keep it simple, biblical, and clear.`;
                   </div>
                 ) : null}
                 <YouTubeTrackedPlayer
+                  key={episode.id}
                   userId={userId}
                   videoId={episode.id}
                   youtubeUrl={episode.youtubeUrl}
