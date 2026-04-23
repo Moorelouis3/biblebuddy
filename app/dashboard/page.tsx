@@ -184,7 +184,7 @@ export default function DashboardPage() {
       return {
         headline: `${safeStreak} day streak`,
         body: "Ten years of showing up is wild. This is no longer a phase. This is part of who you are now.",
-        followUp: "Do you want to start your daily Bible task?",
+         followUp: "Do you want to start your Daily Bible Tasks?",
       };
     }
 
@@ -192,7 +192,7 @@ export default function DashboardPage() {
       return {
         headline: "You earned the fire badge",
         body: "Congrats, you hit 30 days in a row and unlocked the fire badge. Great job showing up and staying consistent.",
-        followUp: "Do you want to start your daily Bible task?",
+         followUp: "Do you want to start your Daily Bible Tasks?",
       };
     }
 
@@ -200,7 +200,7 @@ export default function DashboardPage() {
       return {
         headline: "A fresh start",
         body: "Today is a perfect day to start a new Bible reading streak. One honest day with the Word can become something strong.",
-        followUp: "Do you want to start your daily Bible task?",
+         followUp: "Do you want to start your Daily Bible Tasks?",
       };
     }
 
@@ -221,7 +221,7 @@ export default function DashboardPage() {
       return {
         headline: `${safeStreak} day streak`,
         body: exactDayMessages[safeStreak],
-        followUp: "Do you want to start your daily Bible task?",
+         followUp: "Do you want to start your Daily Bible Tasks?",
       };
     }
 
@@ -265,7 +265,7 @@ export default function DashboardPage() {
     return {
       headline: `${safeStreak} day streak`,
       body: phaseTemplates[dayMod % phaseTemplates.length],
-      followUp: "Do you want to start your daily Bible task?",
+       followUp: "Do you want to start your Daily Bible Tasks?",
     };
   }
 
@@ -1615,9 +1615,15 @@ export default function DashboardPage() {
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#5f86bd]">
               Daily Streak
             </p>
-            <h2 className="mt-2 text-3xl font-bold text-[#21304f]">
-              {streakMotivation.headline}
-            </h2>
+              <h2 className="mt-2 flex items-center justify-center gap-2 text-3xl font-bold text-[#21304f]">
+                <span
+                  className={`leading-none ${(profile?.current_streak ?? 0) >= 30 ? "" : "grayscale opacity-60"}`}
+                  aria-hidden="true"
+                >
+                  🔥
+                </span>
+                <span>{streakMotivation.headline}</span>
+              </h2>
             <p className="mt-3 text-sm leading-7 text-[#4f678e]">
               {streakMotivation.body}
             </p>
