@@ -177,6 +177,10 @@ export default function DashboardPage() {
   });
   const [loadingOwnerQuickStats, setLoadingOwnerQuickStats] = useState(false);
 
+  function getStreakMotivationSeenKey(currentUserId: string, cycleStartedAt: string) {
+    return `bb:streak-motivation-seen:${currentUserId}:${cycleStartedAt}`;
+  }
+
   function getStreakMotivation(streak: number) {
     const safeStreak = Math.max(0, Math.floor(streak));
     const toFire = Math.max(0, 30 - safeStreak);
@@ -1246,9 +1250,16 @@ export default function DashboardPage() {
       : ensureLouisDailyTaskCycle(userId);
     if (!cycleStartedAt) return;
 
+    const seenKey = getStreakMotivationSeenKey(userId, cycleStartedAt);
+    if (window.localStorage.getItem(seenKey) === "1") {
+      setLouisDailyTaskCycleStartedAt(cycleStartedAt);
+      return;
+    }
+
     setLouisDailyTaskCycleStartedAt(cycleStartedAt);
     setShowStreakMotivationTaskPrompt(true);
     setShowStreakMotivationModal(true);
+    window.localStorage.setItem(seenKey, "1");
   }, [userId, profile, showVerseOfTheDayModal]);
 
   useEffect(() => {
