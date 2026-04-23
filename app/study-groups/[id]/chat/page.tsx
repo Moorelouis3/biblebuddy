@@ -723,6 +723,9 @@ function GroupCommentSection({
   const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
   const [editingCommentText, setEditingCommentText] = useState("");
   const [savingCommentId, setSavingCommentId] = useState<string | null>(null);
+  const [showCommentLikesFor, setShowCommentLikesFor] = useState<GroupFeedComment | null>(null);
+  const [commentLikers, setCommentLikers] = useState<ArticleLikeUser[]>([]);
+  const [loadingCommentLikers, setLoadingCommentLikers] = useState(false);
 
   async function loadComments() {
     setLoading(true);
@@ -763,8 +766,7 @@ function GroupCommentSection({
         .in("user_id", userIds),
       supabase
         .from("group_post_likes")
-        .select("post_id")
-        .eq("user_id", userId)
+        .select("post_id, user_id")
         .in("post_id", allRows.map((row) => row.id)),
       supabase
         .from("group_members")
@@ -788,11 +790,20 @@ function GroupCommentSection({
     (memberships || []).forEach((membership) => {
       roleMap[membership.user_id] = membership.role;
     });
-    const likedSet = new Set((likes || []).map((like) => like.post_id));
+    const likedSet = new Set(
+      (likes || [])
+        .filter((like) => like.user_id === userId)
+        .map((like) => like.post_id)
+    );
+    const likeCountMap: Record<string, number> = {};
+    (likes || []).forEach((like) => {
+      likeCountMap[like.post_id] = (likeCountMap[like.post_id] || 0) + 1;
+    });
 
     setComments(
       allRows.map((row) => ({
         ...row,
+        like_count: likeCountMap[row.id] || 0,
         liked: likedSet.has(row.id),
         profile_image_url: imageMap[row.user_id] ?? null,
         role: roleMap[row.user_id] || "member",
@@ -844,6 +855,50 @@ function GroupCommentSection({
       next.delete(comment.id);
       return next;
     });
+  }
+
+  async function openCommentLikes(comment: GroupFeedComment) {
+    setShowCommentLikesFor(comment);
+    setLoadingCommentLikers(true);
+
+    const { data: likeRows } = await supabase
+      .from("group_post_likes")
+      .select("user_id")
+      .eq("post_id", comment.id);
+
+    const likerIds = [...new Set((likeRows || []).map((row) => row.user_id))];
+    setComments((prev) =>
+      prev.map((item) =>
+        item.id === comment.id ? { ...item, like_count: likerIds.length } : item
+      )
+    );
+
+    if (likerIds.length === 0) {
+      setCommentLikers([]);
+      setLoadingCommentLikers(false);
+      return;
+    }
+
+    const { data: profiles } = await supabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url, is_paid, member_badge, current_streak, current_level")
+      .in("user_id", likerIds);
+
+    setCommentLikers(
+      likerIds.map((userIdValue) => {
+        const profile = (profiles || []).find((row) => row.user_id === userIdValue);
+        return {
+          user_id: userIdValue,
+          display_name: profile?.display_name || profile?.username || "Buddy",
+          profile_image_url: profile?.profile_image_url ?? null,
+          is_paid: !!profile?.is_paid,
+          member_badge: profile?.member_badge ?? null,
+          current_streak: profile?.current_streak ?? null,
+          current_level: profile?.current_level ?? null,
+        };
+      }),
+    );
+    setLoadingCommentLikers(false);
   }
 
   async function submitComment(content: string, parentId: string | null) {
@@ -1097,6 +1152,15 @@ function GroupCommentSection({
               </svg>
               {comment.like_count > 0 ? comment.like_count : ""}
             </button>
+            {comment.like_count > 0 && (
+              <button
+                type="button"
+                onClick={() => void openCommentLikes(comment)}
+                className="text-[10px] text-gray-400 hover:text-gray-700 transition"
+              >
+                {comment.like_count === 1 ? "1 like" : `${comment.like_count} likes`}
+              </button>
+            )}
             <button
               onClick={() => {
                 setReplyingTo(replyingTo === comment.id ? null : comment.id);
@@ -1200,6 +1264,72 @@ function GroupCommentSection({
         </button>
       </div>
       {submitError && <p className="mt-2 text-xs text-red-500">{submitError}</p>}
+      {showCommentLikesFor && (
+        <div
+          className="fixed inset-0 z-[180] flex items-center justify-center bg-black/45 px-4"
+          onClick={() => setShowCommentLikesFor(null)}
+        >
+          <div
+            className="w-full max-w-sm rounded-[28px] bg-white shadow-2xl border border-[#e7ded2] overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 py-4 border-b border-[#f2e8dc]">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">Liked By</p>
+                <h3 className="text-base font-bold text-gray-900 mt-1">Comment Likes</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowCommentLikesFor(null)}
+                className="w-9 h-9 rounded-full border border-gray-200 text-gray-500 hover:text-gray-700 hover:border-gray-300 transition"
+              >
+                ×
+              </button>
+            </div>
+            <div className="max-h-[60vh] overflow-y-auto px-5 py-4">
+              {loadingCommentLikers ? (
+                <p className="text-sm text-gray-400 text-center py-8">Loading likes...</p>
+              ) : commentLikers.length === 0 ? (
+                <p className="text-sm text-gray-400 text-center py-8">No likes yet.</p>
+              ) : (
+                <div className="space-y-3">
+                  {commentLikers.map((liker) => (
+                    <Link
+                      key={liker.user_id}
+                      href={`/profile/${liker.user_id}`}
+                      className="flex items-center gap-3 rounded-2xl border border-[#f1e6da] px-3 py-2 hover:bg-[#fffaf4] transition"
+                      onClick={() => setShowCommentLikesFor(null)}
+                    >
+                      {liker.profile_image_url ? (
+                        <img
+                          src={liker.profile_image_url}
+                          alt={liker.display_name}
+                          className="h-10 w-10 rounded-full object-cover"
+                        />
+                      ) : (
+                        <div
+                          className="h-10 w-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
+                          style={{ backgroundColor: avatarColor(liker.user_id) }}
+                        >
+                          {getInitial(liker.display_name)}
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-sm font-semibold text-gray-900 truncate">{liker.display_name}</span>
+                          <StreakFlameBadge currentStreak={liker.current_streak} />
+                          <LevelBadge currentLevel={liker.current_level} />
+                          <UserBadge customBadge={liker.member_badge} isPaid={liker.is_paid} />
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -3228,6 +3358,15 @@ RULES:
       .eq("post_id", post.id);
 
     const likerIds = [...new Set((likeRows || []).map((row) => row.user_id))];
+
+    setPosts((prev) =>
+      prev.map((item) =>
+        item.id === post.id ? { ...item, like_count: likerIds.length } : item
+      )
+    );
+    setSelectedFeedPost((prev) =>
+      prev?.id === post.id ? { ...prev, like_count: likerIds.length } : prev
+    );
 
     if (likerIds.length === 0) {
       setPostLikers([]);
