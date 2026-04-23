@@ -1332,7 +1332,7 @@ export default function DashboardPage() {
     }
 
     function handleOpenStreakInfo() {
-      setShowStreakBadgeModal(true);
+      setShowStreakMotivationModal(true);
     }
 
     function handleOpenDailyTasks() {
