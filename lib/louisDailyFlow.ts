@@ -1,5 +1,5 @@
 export const LOUIS_DAILY_TASK_FLOW_VERSION = 1;
-export const LOUIS_DAILY_TASK_WINDOW_MS = 25 * 60 * 60 * 1000;
+export const LOUIS_DAILY_TASK_WINDOW_MS = 24 * 60 * 60 * 1000;
 export const LOUIS_SECOND_RECOMMENDATION_DELAY_MS = 6 * 60 * 60 * 1000;
 
 export type LouisDailyTaskTarget = {
