@@ -96,7 +96,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                       Daily Task
                     </h2>
                     <p className="mt-1 text-sm text-gray-600">
-                      {dailyTaskNextTitle ? `Next: ${dailyTaskNextTitle}` : "Tap to reopen your daily Bible checklist."}
+                      {dailyTaskNextTitle ? `Next: ${dailyTaskNextTitle}` : "Tap to view your daily Bible checklist."}
                     </p>
                   </div>
                     <div className="shrink-0 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#9b6a21] shadow-sm">
@@ -109,11 +109,10 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                     style={{ width: `${dailyTaskProgressPercent}%` }}
                   />
                 </div>
-                <div className="mt-2.5 flex items-center justify-between gap-3 text-[13px] sm:text-sm">
+                <div className="mt-2.5 text-[13px] sm:text-sm">
                   <p className="min-w-0 font-medium text-gray-600">
                     {dailyTaskSummaryLine || `${dailyTaskCompletedCount} out of ${safeDailyTaskTotal} daily tasks done`}
                   </p>
-                  <span className="shrink-0 text-sm font-semibold text-[#9b6a21]">Open</span>
                 </div>
               </div>
             </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
@@ -181,10 +180,26 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [headerCurrentLevel, setHeaderCurrentLevel] = useState<number>(1);
   const [headerCurrentStreak, setHeaderCurrentStreak] = useState<number>(0);
   const [headerProfileImageUrl, setHeaderProfileImageUrl] = useState<string | null>(null);
+  const [headerProfileName, setHeaderProfileName] = useState<string>("You");
+  const [headerProfileImageFailed, setHeaderProfileImageFailed] = useState(false);
 
   const visibleUnreadNotificationCount = notifications.filter(
     (notification) => notification.type !== "direct_message" && !notification.is_read,
   ).length;
+
+  const headerProfileInitials = headerProfileName
+    .split(" ")
+    .map((word) => word[0] || "")
+    .join("")
+    .slice(0, 2)
+    .toUpperCase() || "Y";
+
+  const headerAvatarPalette = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
+  let headerAvatarHash = 0;
+  for (let i = 0; i < headerProfileName.length; i++) {
+    headerAvatarHash = headerProfileName.charCodeAt(i) + ((headerAvatarHash << 5) - headerAvatarHash);
+  }
+  const headerAvatarBg = headerAvatarPalette[Math.abs(headerAvatarHash) % headerAvatarPalette.length];
 
   function getPushPromptDismissKey(currentUserId: string) {
     return `bb:push-prompt-dismissed:${currentUserId}`;
@@ -290,7 +305,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   async function loadHeaderDashboardStats(currentUserId: string) {
     const { data, error } = await supabase
       .from("profile_stats")
-      .select("current_level, current_streak, profile_image_url")
+      .select("current_level, current_streak, profile_image_url, display_name, username")
       .eq("user_id", currentUserId)
       .maybeSingle();
 
@@ -302,6 +317,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setHeaderCurrentLevel(typeof data?.current_level === "number" && data.current_level > 0 ? data.current_level : 1);
     setHeaderCurrentStreak(typeof data?.current_streak === "number" && data.current_streak > 0 ? data.current_streak : 0);
     setHeaderProfileImageUrl(typeof data?.profile_image_url === "string" && data.profile_image_url.trim() ? data.profile_image_url : null);
+    setHeaderProfileImageFailed(false);
+    setHeaderProfileName(
+      typeof data?.display_name === "string" && data.display_name.trim()
+        ? data.display_name.trim()
+        : typeof data?.username === "string" && data.username.trim()
+          ? data.username.trim()
+          : "You",
+    );
   }
 
   async function checkOnboardingStatus(currentUserId: string) {
@@ -1879,28 +1902,20 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   aria-label="Profile menu"
                   aria-expanded={isProfileMenuOpen}
                 >
-                  {headerProfileImageUrl ? (
-                    <Image
+                  {headerProfileImageUrl && !headerProfileImageFailed ? (
+                    <img
                       src={headerProfileImageUrl}
                       alt="Your profile"
-                      width={36}
-                      height={36}
                       className="h-full w-full object-cover"
+                      onError={() => setHeaderProfileImageFailed(true)}
                     />
                   ) : (
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                    <div
+                      className="flex h-full w-full items-center justify-center text-xs font-bold text-white"
+                      style={{ backgroundColor: headerAvatarBg }}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      />
-                    </svg>
+                      {headerProfileInitials}
+                    </div>
                   )}
                 </button>
 
