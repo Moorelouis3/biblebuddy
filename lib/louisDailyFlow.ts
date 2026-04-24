@@ -1,11 +1,26 @@
-export const LOUIS_DAILY_TASK_FLOW_VERSION = 1;
-export const LOUIS_DAILY_TASK_WINDOW_MS = 24 * 60 * 60 * 1000;
+export const LOUIS_DAILY_TASK_FLOW_VERSION = 2;
 export const LOUIS_SECOND_RECOMMENDATION_DELAY_MS = 6 * 60 * 60 * 1000;
 
 export type LouisDailyTaskTarget = {
   devotionalId: string;
   dayNumber: number;
 };
+
+function getLocalDayKey(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function getLocalDayStartIso(date = new Date()) {
+  const localMidnight = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0, 0);
+  return localMidnight.toISOString();
+}
+
+function getNextLocalDayStartMs(date = new Date()) {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0, 0).getTime();
+}
 
 function getDailyTaskCycleKey(userId: string) {
   return `bb:louis:daily-task-cycle:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}`;
@@ -27,30 +42,44 @@ function getDailyTaskCelebrationSeenKey(userId: string, cycleStartedAt: string) 
   return `bb:louis:daily-task-celebration:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:${cycleStartedAt}`;
 }
 
-function isWithinActiveWindow(iso: string | null | undefined) {
-  if (!iso) return false;
-  const parsed = new Date(iso);
-  if (Number.isNaN(parsed.getTime())) return false;
-  const elapsed = Date.now() - parsed.getTime();
-  return elapsed >= 0 && elapsed < LOUIS_DAILY_TASK_WINDOW_MS;
+function clearDailyTaskScopedKeys(userId: string) {
+  if (typeof window === "undefined") return;
+  const prefixes = [
+    `bb:louis:daily-task-target:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:`,
+    `bb:louis:daily-task-second:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:`,
+    `bb:louis:daily-task-bonus:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:`,
+    `bb:louis:daily-task-celebration:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:`,
+  ];
+
+  for (let index = window.localStorage.length - 1; index >= 0; index -= 1) {
+    const key = window.localStorage.key(index);
+    if (key && prefixes.some((prefix) => key.startsWith(prefix))) {
+      window.localStorage.removeItem(key);
+    }
+  }
+}
+
+export function getBibleBuddyLocalDayKey(date = new Date()) {
+  return getLocalDayKey(date);
+}
+
+export function getBibleBuddyLocalDayStartIso(date = new Date()) {
+  return getLocalDayStartIso(date);
 }
 
 export function getLouisDailyTaskCycleStartedAt(userId: string) {
   if (typeof window === "undefined") return null;
   const stored = window.localStorage.getItem(getDailyTaskCycleKey(userId));
-  if (!isWithinActiveWindow(stored)) {
+  const expected = getLocalDayStartIso();
+
+  if (stored !== expected) {
     if (stored) {
       window.localStorage.removeItem(getDailyTaskCycleKey(userId));
-      const prefix = `bb:louis:daily-task-target:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:`;
-      for (let index = window.localStorage.length - 1; index >= 0; index -= 1) {
-        const key = window.localStorage.key(index);
-        if (key?.startsWith(prefix)) {
-          window.localStorage.removeItem(key);
-        }
-      }
+      clearDailyTaskScopedKeys(userId);
     }
     return null;
   }
+
   return stored;
 }
 
@@ -63,7 +92,7 @@ export function ensureLouisDailyTaskCycle(userId: string) {
   const existing = getLouisDailyTaskCycleStartedAt(userId);
   if (existing) return existing;
 
-  const next = new Date().toISOString();
+  const next = getLocalDayStartIso();
   window.localStorage.setItem(getDailyTaskCycleKey(userId), next);
   return next;
 }
@@ -71,8 +100,7 @@ export function ensureLouisDailyTaskCycle(userId: string) {
 export function getLouisDailyTaskTimeLeftMs(userId: string) {
   const cycleStartedAt = getLouisDailyTaskCycleStartedAt(userId);
   if (!cycleStartedAt) return 0;
-  const elapsed = Date.now() - new Date(cycleStartedAt).getTime();
-  return Math.max(0, LOUIS_DAILY_TASK_WINDOW_MS - elapsed);
+  return Math.max(0, getNextLocalDayStartMs() - Date.now());
 }
 
 export function getLouisDailyTaskTarget(userId: string, cycleStartedAt: string) {

@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { ModalShell } from "./ModalShell";
 import { logActionToMasterActions } from "../lib/actionRecorder";
+import { getBibleBuddyLocalDayKey } from "../lib/louisDailyFlow";
 import { getVerseIntro, getVerseOfTheDay } from "../lib/verseOfTheDay";
 import { supabase } from "../lib/supabaseClient";
 
@@ -22,7 +23,7 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
   const router = useRouter();
 
   const handleAcknowledge = async (navigateToVerse?: boolean) => {
-    const today = new Date().toISOString().slice(0, 10);
+    const today = getBibleBuddyLocalDayKey();
 
     if (userId) {
       const { error } = await supabase

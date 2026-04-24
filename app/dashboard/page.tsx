@@ -17,6 +17,7 @@ import { getDailyRecommendation, type DailyRecommendation } from "../../lib/dail
 import { buildLouisRecommendationHandoff, storeLouisRouteHandoff } from "../../lib/louisRouteHandoff";
 import {
   ensureLouisDailyTaskCycle,
+  getBibleBuddyLocalDayKey,
   getLouisDailyTaskCycleStartedAt,
   hasSeenLouisDailyTaskCelebration,
   hasActiveLouisDailyTaskCycle,
@@ -1221,7 +1222,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!userId || !profile) return;
-    const today = new Date().toISOString().slice(0, 10);
+    const today = getBibleBuddyLocalDayKey();
     setShowVerseOfTheDayModal(profile.verse_of_the_day_shown !== today);
   }, [userId, profile]);
 
@@ -1605,13 +1606,13 @@ export default function DashboardPage() {
       )}
 
       {/* Level Info Modal */}
-      <DashboardDailyWelcomeModal
-        open={showVerseOfTheDayModal}
-        onClose={() => {
-          const today = new Date().toISOString().slice(0, 10);
-          setShowVerseOfTheDayModal(false);
-          setProfile((prev) => (prev ? { ...prev, verse_of_the_day_shown: today } : prev));
-        }}
+        <DashboardDailyWelcomeModal
+          open={showVerseOfTheDayModal}
+          onClose={() => {
+            const today = getBibleBuddyLocalDayKey();
+            setShowVerseOfTheDayModal(false);
+            setProfile((prev) => (prev ? { ...prev, verse_of_the_day_shown: today } : prev));
+          }}
         isReturningUser={true}
         userId={userId}
       />
