@@ -1,11 +1,9 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
 import { ModalShell } from "./ModalShell";
-import { logActionToMasterActions } from "../lib/actionRecorder";
 import { getBibleBuddyLocalDayKey } from "../lib/louisDailyFlow";
-import { getVerseIntro, getVerseOfTheDay } from "../lib/verseOfTheDay";
+import { getVerseOfTheDay } from "../lib/verseOfTheDay";
 import { supabase } from "../lib/supabaseClient";
 
 const LOUIS_AVATAR_SRC = "/louis/louis-wave.png";
@@ -20,9 +18,7 @@ export type DashboardDailyWelcomeModalProps = {
 };
 
 export default function DashboardDailyWelcomeModal({ open, onClose, userId }: DashboardDailyWelcomeModalProps) {
-  const router = useRouter();
-
-  const handleAcknowledge = async (navigateToVerse?: boolean) => {
+  const handleAcknowledge = async () => {
     const today = getBibleBuddyLocalDayKey();
 
     if (userId) {
@@ -42,26 +38,18 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
       }
     }
 
-    if (navigateToVerse && userId) {
-      await logActionToMasterActions(userId, "understand_verse_of_the_day");
-    }
-
     await onClose();
-
-    if (navigateToVerse) {
-      router.push("/verse-of-the-day");
-    }
   };
 
   const verse = getVerseOfTheDay();
-  const intro = getVerseIntro();
+  const explanation = verse.explanationSections.map((section) => section.body.trim()).join(" ");
 
   return (
-    <ModalShell isOpen={open} onClose={onClose} backdropColor="bg-black/45" scrollable={true}>
+    <ModalShell isOpen={open} onClose={handleAcknowledge} backdropColor="bg-black/45" scrollable={true}>
       <div className="relative my-8 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d9e7ff] bg-white shadow-2xl">
         <button
           type="button"
-          onClick={onClose}
+          onClick={handleAcknowledge}
           className="absolute right-4 top-4 z-10 text-xl text-[#7a97c7] transition hover:text-[#365b98]"
           aria-label="Close verse of the day"
         >
@@ -79,7 +67,6 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
           <p className="mb-3 text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-[#5d7fb7]">
             Verse of the Day
           </p>
-          <div className="mb-4 text-center text-base font-medium text-[#15335f]">{intro}</div>
 
           <div className="rounded-[26px] border border-[#d9e7ff] bg-white/95 px-5 py-5 text-center shadow-sm">
             <div className="mb-3 text-xl font-bold italic leading-8 text-[#17335f]">"{verse.text}"</div>
@@ -89,18 +76,14 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
         </div>
 
         <div className="w-full bg-white px-6 pb-6 pt-5 sm:px-8">
+          <p className="text-sm leading-7 text-[#445b80]">
+            {explanation}
+          </p>
           <button
-            onClick={() => handleAcknowledge(true)}
+            onClick={handleAcknowledge}
             className="w-full rounded-2xl bg-[#3f6fb2] px-4 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-[#335f9a]"
           >
-            Understand This Verse
-          </button>
-          <button
-            onClick={() => handleAcknowledge(false)}
-            className="mt-3 w-full bg-transparent p-0 text-sm text-[#4a72ad] hover:underline"
-            style={{ background: "none", border: "none" }}
-          >
-            Skip Today's Verse
+            Close
           </button>
         </div>
       </div>

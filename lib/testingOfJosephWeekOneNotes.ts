@@ -1,5 +1,7 @@
 export const TESTING_OF_JOSEPH_WEEK_ONE_NOTES = [
-  `Let Me Be Real With You,
+  `![Joseph Week 1 Header](/Joseph01Header.png)
+
+Let Me Be Real With You,
 
 The first time I read Joseph's story, it didn't hit me.
 
@@ -78,6 +80,8 @@ and turns him into one of the most powerful men in the world.
 🔥 And not without testing.
 
 ## Why the Story of Joseph Matters
+
+![Why the Story of Joseph Matters](/Joseph02FamilyPic.png)
 
 Most of Genesis follows one family line over generations.
 
@@ -174,6 +178,8 @@ Still unfulfilled.
 
 ## What Is an Altar?
 
+![What Is an Altar](/Joseph03altar.png)
+
 You see altars mentioned a lot with Abraham, so let's slow down and explain why.
 
 An altar in that time was not in a church building.
@@ -240,6 +246,8 @@ And that the land belonged to God before it ever belonged to Abraham's family.`,
 - And the spotlight lands mainly on Joseph
 
 ## Jacob's Family Setup
+
+![Jacob's Family Setup](/Joseph04Familysetup.png)
 
 Jacob had four wives bearing him children.
 
@@ -371,6 +379,8 @@ This isn't a strict rule.
 But it is a pattern that shows up again and again in Genesis.`,
   `## Why Jacob Loved Joseph More
 
+![Why Jacob Loved Joseph More](/Joseph05JacobRachel.png)
+
 The Bible says Jacob loved Joseph more than all his sons because he was born to him in his old age.
 
 And on the surface, that sounds unfair. Favoritism never works out well.
@@ -435,6 +445,8 @@ And honestly?
 They didn't make it hard for Joseph to stand out.
 
 ## The Robe of Many Colors
+
+![The Robe of Many Colors](/Joseph06Coatcolors.png)
 
 This is where the tension explodes.
 
@@ -546,6 +558,8 @@ And this hatred doesn't stay quiet for long.
 It's about to turn into action.
 
 ## Genesis 37:5-11 - The Dreams
+
+![Genesis 37 Dreams](/Joseph07dreams.png)
 
 > Genesis 37:5
 > And Joseph dreamed a dream, and he told it his brethren: and they hated him yet the more.
@@ -736,6 +750,8 @@ Daughters (like Dinah) mattered socially, but weren't counted in this symbolic "
 
 Sun & Moon = Father and Mother (the household heads).
 
+![Family Dreams](/Joseph08familydreams.png)
+
 ## "Your Mother?" - But Rachel Has Died
 
 Jacob says, "Shall I and your mother and your brothers bow...?"
@@ -838,6 +854,8 @@ Jacob wanted to know:
 🧭 Are they following the plan
 
 Joseph's role was to observe and report.
+
+![What Jacob Actually Asked For](/joseph09walking.png)
 
 That explains verse 2.
 
@@ -1000,6 +1018,8 @@ Right in the line of fire.`,
 > Come now therefore, and let us slay him, and cast him into some pit, and we will say, Some evil beast hath devoured him: and we shall see what will become of his dreams.
 
 ## The Boiling Point
+
+![The Boiling Point](/joseph10brothers.png)
 
 They see him before he sees them.
 
@@ -1213,6 +1233,8 @@ And the testing has fully begun.
 
 ## Genesis 37:25-28
 
+![Genesis 37:25–28](/joseph11pit.png)
+
 > Genesis 37:25
 > And they sat down to eat bread: and they lifted up their eyes and looked, and, behold, a company of Ishmeelites came from Gilead with their camels bearing spicery and balm and myrrh, going to carry it down to Egypt.
 
@@ -1394,6 +1416,8 @@ And the road to Egypt becomes the road God uses to fulfill everything they tried
 
 ## Genesis 37:29-30
 
+![Genesis 37:29–30](/joseph12ruben.png)
+
 > Genesis 37:29
 > And Reuben returned unto the pit; and, behold, Joseph was not in the pit; and he rent his clothes
 
@@ -1457,7 +1481,7 @@ To do the right thing.
 
 And now that chance is gone.
 
-## Genesis 37:31-35
+## 📖 Genesis 37:31-35
 
 > Genesis 37:31
 > And they took Joseph's coat, and killed a kid of the goats, and dipped the coat in the blood;
@@ -1509,7 +1533,9 @@ This is cold.
 Not only do they sell their brother.
 They let their father believe fate took him.
 
-## Jacob's Grief
+## 💔 Jacob's Grief
+
+![Jacob's Grief](/joseph13jacobsad.png)
 
 The moment Jacob sees the robe, he collapses.
 
@@ -1543,7 +1569,7 @@ This was not a phase.
 
 He refuses to move on.
 
-## I Will Go Down to Sheol
+## ⚫ I Will Go Down to Sheol
 
 All his sons and daughters try to comfort him.
 
@@ -1596,7 +1622,9 @@ And he's been sold again.
 This time, not to traders
 but to a powerful Egyptian official.
 
-## Who Was Potiphar
+![Joseph in Egypt](/joseph14slave.png)
+
+## 👑 Who Was Potiphar
 
 Potiphar was not just a random man.
 
@@ -1624,7 +1652,7 @@ to the house of a man who works directly for the most powerful ruler in the worl
 
 That matters.
 
-## Cliffhanger Ending
+## 🎬 Cliffhanger Ending
 
 Genesis 37 ends like a split screen.
 

@@ -119,6 +119,18 @@ export function parseSeriesNotesToHTML(intro: string): string {
 
     const lines = trimmed.split("\n").map((l) => l.trim());
 
+    const imageMatch = lines.length === 1 ? lines[0].match(/^!\[(.*?)\]\((\/[^)]+)\)$/) : null;
+    if (imageMatch) {
+      const alt = escapeHtml(imageMatch[1] || "Study image");
+      const src = escapeHtml(imageMatch[2]);
+      parts.push(
+        `<div style="margin:0.85rem 0 1rem 0">` +
+          `<img src="${src}" alt="${alt}" style="display:block;width:100%;max-width:680px;margin:0 auto;border-radius:1rem;box-shadow:none;border:none;outline:none;object-fit:cover;background:none" />` +
+        `</div>`
+      );
+      continue;
+    }
+
     const headingMatch = lines.length === 1 ? lines[0].match(/^(#{1,4})\s+(.+)$/) : null;
     if (headingMatch) {
       const level = headingMatch[1].length;

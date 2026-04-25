@@ -133,6 +133,18 @@ function parseIntroToHTML(intro: string): string {
 
     const lines = trimmed.split("\n").map((l) => l.trim());
 
+    const imageMatch = lines.length === 1 ? lines[0].match(/^!\[(.*?)\]\((\/[^)]+)\)$/) : null;
+    if (imageMatch) {
+      const alt = applyInlineHtml(imageMatch[1] || "Study image");
+      const src = imageMatch[2].replace(/"/g, "&quot;");
+      parts.push(
+        `<div style="margin:0.85rem 0 1rem 0">` +
+          `<img src="${src}" alt="${alt}" style="display:block;width:100%;max-width:680px;margin:0 auto;border-radius:1rem;box-shadow:none;border:none;outline:none;object-fit:cover;background:none" />` +
+        `</div>`
+      );
+      continue;
+    }
+
     // ## Section header
     if (lines.length === 1 && lines[0].startsWith("## ")) {
       const text = applyInlineHtml(lines[0].slice(3));
