@@ -23,6 +23,8 @@ interface BibleBuddyTvEpisodeModalProps {
   episode: BibleBuddyTvEpisode | null;
   isOpen: boolean;
   onClose: () => void;
+  onShare?: (episode: BibleBuddyTvEpisode) => Promise<void> | void;
+  sharingEpisodeId?: string | null;
 }
 
 type HighlightTarget =
@@ -98,7 +100,14 @@ Use these existing notes as a seed to expand and deepen:
 ${seedNotes}`;
 }
 
-export default function BibleBuddyTvEpisodeModal({ title, episode, isOpen, onClose }: BibleBuddyTvEpisodeModalProps) {
+export default function BibleBuddyTvEpisodeModal({
+  title,
+  episode,
+  isOpen,
+  onClose,
+  onShare,
+  sharingEpisodeId = null,
+}: BibleBuddyTvEpisodeModalProps) {
   const [notesExpanded, setNotesExpanded] = useState(false);
   const [summaryExpanded, setSummaryExpanded] = useState(false);
   const [notesUnlocked, setNotesUnlocked] = useState(false);
@@ -462,9 +471,21 @@ Keep it simple, biblical, and clear.`;
             </p>
             <h2 className="mt-1 text-xl font-semibold sm:text-2xl">{contentLabel}: {episode.title}</h2>
           </div>
-          <button type="button" onClick={onClose} className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-700 transition hover:bg-gray-100">
-            Close
-          </button>
+          <div className="flex items-center gap-2">
+            {onShare ? (
+              <button
+                type="button"
+                onClick={() => void onShare(episode)}
+                disabled={sharingEpisodeId === episode.id}
+                className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                {sharingEpisodeId === episode.id ? "Sharing..." : "Share"}
+              </button>
+            ) : null}
+            <button type="button" onClick={onClose} className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-700 transition hover:bg-gray-100">
+              Close
+            </button>
+          </div>
         </div>
 
         <div className="px-4 pb-4 pt-4 sm:px-6 sm:pb-6">

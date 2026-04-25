@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import BibleBuddyTvEpisodeModal from "./BibleBuddyTvEpisodeModal";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { logActionToMasterActions } from "../lib/actionRecorder";
@@ -27,6 +28,8 @@ interface BibleBuddyTvShowPageClientProps {
 export default function BibleBuddyTvShowPageClient({
   title,
 }: BibleBuddyTvShowPageClientProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [selectedEpisode, setSelectedEpisode] = useState<BibleBuddyTvEpisode | null>(null);
   const [openingEpisodeId, setOpeningEpisodeId] = useState<string | null>(null);
   const [videoProgressByEpisode, setVideoProgressByEpisode] = useState<Record<string, VideoProgressRow>>({});
@@ -34,6 +37,9 @@ export default function BibleBuddyTvShowPageClient({
   const [isInMyList, setIsInMyList] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [userName, setUserName] = useState<string | null>(null);
+  const [sharingEpisodeId, setSharingEpisodeId] = useState<string | null>(null);
+  const [shareMessage, setShareMessage] = useState<string | null>(null);
+  const [handledEpisodeParam, setHandledEpisodeParam] = useState<string | null>(null);
 
   const featuredEpisode = title.episodes[0] ?? null;
   const continueEpisode =
@@ -78,6 +84,8 @@ export default function BibleBuddyTvShowPageClient({
     )
     .slice(0, 3);
 
+  const requestedEpisodeId = searchParams.get("episode");
+
   useEffect(() => {
     async function loadUserAndTrackTitle() {
       const {
@@ -121,6 +129,18 @@ export default function BibleBuddyTvShowPageClient({
       console.error("[BibleBuddyTvShowPageClient] Could not load My List:", error);
     }
   }, [title.id]);
+
+  useEffect(() => {
+    if (!requestedEpisodeId) {
+      setHandledEpisodeParam(null);
+      return;
+    }
+    if (selectedEpisode || handledEpisodeParam === requestedEpisodeId) return;
+    const requestedEpisode = title.episodes.find((episode) => episode.id === requestedEpisodeId && episode.available) ?? null;
+    if (!requestedEpisode) return;
+    setHandledEpisodeParam(requestedEpisodeId);
+    void markEpisodeWatched(requestedEpisode);
+  }, [requestedEpisodeId, selectedEpisode, handledEpisodeParam, title.episodes]);
 
   useEffect(() => {
     if (!userId) {
@@ -224,6 +244,46 @@ export default function BibleBuddyTvShowPageClient({
     }
   }
 
+  async function shareEpisodeToGroup(episode: BibleBuddyTvEpisode) {
+    if (sharingEpisodeId) return;
+    setSharingEpisodeId(episode.id);
+    setShareMessage(null);
+
+    try {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      const token = session?.access_token;
+      if (!token) {
+        throw new Error("Sign in first to share Bible Buddy TV videos.");
+      }
+
+      const response = await fetch("/api/biblebuddy-tv/share-to-group", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          showSlug: title.slug,
+          episodeId: episode.id,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload?.error || "Could not share this video right now.");
+      }
+
+      setShareMessage("Shared to the group feed.");
+    } catch (error) {
+      setShareMessage(error instanceof Error ? error.message : "Could not share this video right now.");
+    } finally {
+      setSharingEpisodeId(null);
+    }
+  }
+
   async function refreshEpisodeProgress() {
     if (!userId) return;
     try {
@@ -313,6 +373,16 @@ export default function BibleBuddyTvShowPageClient({
                         : `Watch ${continueEpisode.contentLabel || `Episode ${continueEpisode.episodeNumber}`}`}
                   </button>
                 ) : null}
+                {continueEpisode?.available ? (
+                  <button
+                    type="button"
+                    onClick={() => void shareEpisodeToGroup(continueEpisode)}
+                    disabled={sharingEpisodeId === continueEpisode.id}
+                    className="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-70"
+                  >
+                    {sharingEpisodeId === continueEpisode.id ? "Sharing..." : "Share to Group"}
+                  </button>
+                ) : null}
                 <button
                   type="button"
                   onClick={toggleMyList}
@@ -321,6 +391,11 @@ export default function BibleBuddyTvShowPageClient({
                   {isInMyList ? "✓ In My List" : "+ My List"}
                 </button>
               </div>
+              {shareMessage ? (
+                <p className={`mt-3 text-sm ${shareMessage === "Shared to the group feed." ? "text-emerald-700" : "text-rose-600"}`}>
+                  {shareMessage}
+                </p>
+              ) : null}
             </div>
           </div>
         </div>
@@ -436,8 +511,13 @@ export default function BibleBuddyTvShowPageClient({
         title={title}
         episode={selectedEpisode}
         isOpen={selectedEpisode !== null}
+        onShare={shareEpisodeToGroup}
+        sharingEpisodeId={sharingEpisodeId}
         onClose={() => {
           setSelectedEpisode(null);
+          if (requestedEpisodeId) {
+            router.replace(`/biblebuddy-tv/shows/${title.slug}`, { scroll: false });
+          }
           void refreshEpisodeProgress();
         }}
       />

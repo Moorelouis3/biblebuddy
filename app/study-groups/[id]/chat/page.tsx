@@ -570,6 +570,27 @@ function isScrambledPromoPost(post: Pick<Post, "link_url" | "title" | "content">
   return promoText.includes("scrambled");
 }
 
+function parseBibleBuddyTvSharePath(linkUrl: string | null | undefined) {
+  if (!linkUrl) return null;
+
+  try {
+    const parsed = new URL(linkUrl, "https://biblebuddy.local");
+    const match = parsed.pathname.match(/^\/biblebuddy-tv\/shows\/([^/?#]+)/i);
+    if (!match) return null;
+
+    return {
+      slug: decodeURIComponent(match[1]),
+      episodeId: parsed.searchParams.get("episode"),
+    };
+  } catch {
+    return null;
+  }
+}
+
+function isBibleBuddyTvSharePost(post: Pick<Post, "link_url" | "title">) {
+  return Boolean(parseBibleBuddyTvSharePath(post.link_url) && (post.title || "").toLowerCase().includes("📺"));
+}
+
 function parseScrambledSharePath(linkUrl: string | null | undefined) {
   if (!linkUrl) return null;
   const match = linkUrl.match(/\/bible-study-games\/scrambled\/([^/]+)\/(\d+)/i);
@@ -4411,6 +4432,7 @@ RULES:
   const activeFeedCoverPost = activeFeedPost ? isHomeFeedCoverPost(activeFeedPost) : false;
   const activeFeedScrambledShare = activeFeedPost ? isScrambledScoreShare(activeFeedPost) : false;
   const activeFeedScrambledPromo = activeFeedPost ? isScrambledPromoPost(activeFeedPost) : false;
+  const activeFeedBibleBuddyTvShare = activeFeedPost ? isBibleBuddyTvSharePost(activeFeedPost) : false;
   const isLeader = userRole === "leader";
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
   const isLouisAdmin = userEmail === "moorelouis3@gmail.com";
@@ -5970,7 +5992,7 @@ RULES:
                   <UserBadge customBadge={activeFeedPost.member_badge} isPaid={activeFeedPost.is_paid} groupRole={activeFeedPost.role} />
                   <span className="text-xs text-gray-400">{timeAgo(activeFeedPost.created_at)}</span>
                 </div>
-                {activeFeedPost.title && !activeFeedCoverPost && !activeFeedScrambledShare && !activeFeedScrambledPromo && (
+                {activeFeedPost.title && !activeFeedCoverPost && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare && (
                   <h2 className="text-xl font-bold text-gray-900 mt-2 leading-snug">{activeFeedPost.title}</h2>
                 )}
               </div>
@@ -5989,8 +6011,9 @@ RULES:
             <div className="px-6 py-5">
                 {activeFeedScrambledShare && renderScrambledShareCard(activeFeedPost)}
                 {activeFeedScrambledPromo && renderScrambledPromoCard(activeFeedPost)}
+                {activeFeedBibleBuddyTvShare && renderBibleBuddyTvShareCard(activeFeedPost)}
 
-                {!activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && !activeFeedScrambledShare && !activeFeedScrambledPromo && (
+                {!activeFeedCoverPost && !activeFeedPollSet && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare && (
                   <div
                     className="prose prose-sm max-w-none text-gray-800 leading-relaxed [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:mt-6 [&_h2]:mb-3 [&_h2]:text-lg [&_h2]:font-bold [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5 [&_li]:my-1.5"
                     onClick={handleScriptureClick}
@@ -6907,8 +6930,9 @@ RULES:
           const pollSet = weeklyPollByPostId[post.id];
           const hasImagePost = Boolean(post.media_url && !isUploadedVideo(post.media_url) && !post.link_url);
           const isCoverOnlyFeedPost = isHomeFeedCoverPost(post);
-            const isScrambledSharePost = isScrambledScoreShare(post);
-            const isScrambledPromo = isScrambledPromoPost(post);
+          const isScrambledSharePost = isScrambledScoreShare(post);
+          const isScrambledPromo = isScrambledPromoPost(post);
+          const isBibleBuddyTvShare = isBibleBuddyTvSharePost(post);
           const triviaSet = weeklyTriviaByPostId[post.id];
           const questionSet = weeklyQuestionByPostId[post.id];
           return (
@@ -7005,10 +7029,11 @@ RULES:
                 </div>
               )}
             </div>
-              {post.title && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
+              {post.title && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && <h3 className={`font-bold text-gray-900 leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
               {isScrambledSharePost && renderScrambledShareCard(post, true)}
               {isScrambledPromo && renderScrambledPromoCard(post, true)}
-              {!pollSet && !triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && (
+              {isBibleBuddyTvShare && renderBibleBuddyTvShareCard(post, true)}
+              {!pollSet && !triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (
                 <p className={`text-sm text-gray-700 mt-3 leading-relaxed whitespace-pre-line line-clamp-4`}>
                   {getPostPreviewText(post.content)}
                 </p>
@@ -7055,7 +7080,7 @@ RULES:
                 />
               </div>
             )}
-              {post.link_url && !isScrambledSharePost && !isScrambledPromo && (() => {
+              {post.link_url && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (() => {
               const parsed = parseVideoEmbed(post.link_url);
               if (parsed.embedUrl) {
                 if (!parsed.portrait) {
@@ -7201,6 +7226,56 @@ RULES:
                   className="rounded-full bg-[#4768af] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#35508a]"
                 >
                   Try Scrambled
+                </Link>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </div>
+      );
+    }
+
+  function renderBibleBuddyTvShareCard(post: Post, compact = false) {
+    return (
+      <div className={`mt-3 overflow-hidden rounded-[24px] border border-[#d8e4fb] bg-[linear-gradient(135deg,#eef4ff_0%,#f9fbff_55%,#eef8ff_100%)] ${compact ? "p-4" : "p-5"}`}>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+          {post.media_url ? (
+            <div className={`relative overflow-hidden rounded-2xl border border-[#d8e4fb] bg-white/80 shadow-sm ${compact ? "h-28 w-full sm:w-40" : "h-32 w-full sm:w-48"}`}>
+              <img
+                src={post.media_url}
+                alt={post.title || "Bible Buddy TV thumbnail"}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          ) : null}
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-3">
+              <div className="rounded-full border border-[#d8e4fb] bg-white/90 p-1 shadow-sm">
+                <LouisAvatar mood="wave" size={compact ? 42 : 50} />
+              </div>
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5d7fc0]">Bible Buddy TV</p>
+                <h3 className={`mt-1 font-bold leading-snug text-gray-900 ${compact ? "text-base" : "text-lg"}`}>
+                  {post.title || "Bible Buddy TV"}
+                </h3>
+              </div>
+            </div>
+            {post.content ? (
+              <p className={`mt-3 leading-relaxed text-gray-700 ${compact ? "text-sm" : "text-[15px]"}`}>
+                {stripHtml(post.content)}
+              </p>
+            ) : null}
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <div className="rounded-full border border-[#d8e4fb] bg-white/85 px-3 py-1 text-xs font-semibold text-[#4e6795]">
+                Shared Video
+              </div>
+              {post.link_url ? (
+                <Link
+                  href={post.link_url}
+                  onClick={(event) => event.stopPropagation()}
+                  className="rounded-full bg-[#4768af] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#35508a]"
+                >
+                  Watch in Bible Buddy TV
                 </Link>
               ) : null}
             </div>
