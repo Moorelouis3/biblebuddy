@@ -178,8 +178,8 @@ export default function DashboardPage() {
   });
   const [loadingOwnerQuickStats, setLoadingOwnerQuickStats] = useState(false);
 
-  function getStreakMotivationSeenKey(currentUserId: string, cycleStartedAt: string) {
-    return `bb:streak-motivation-seen:${currentUserId}:${cycleStartedAt}`;
+  function getStreakMotivationSeenKey(currentUserId: string, dayKey: string) {
+    return `bb:streak-motivation-seen:${currentUserId}:${dayKey}`;
   }
 
   function getStreakMotivation(streak: number) {
@@ -1251,7 +1251,8 @@ export default function DashboardPage() {
       : ensureLouisDailyTaskCycle(userId);
     if (!cycleStartedAt) return;
 
-    const seenKey = getStreakMotivationSeenKey(userId, cycleStartedAt);
+    const dayKey = getBibleBuddyLocalDayKey();
+    const seenKey = getStreakMotivationSeenKey(userId, dayKey);
     if (window.localStorage.getItem(seenKey) === "1") {
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
       return;
