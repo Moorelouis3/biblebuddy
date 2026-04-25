@@ -4005,13 +4005,45 @@ RULES:
   }
 
   async function handleSetCurrentSeries(series: Series) {
-    if (!group) return;
+    if (!group || !userId) return;
+    let targetSeries = series;
+
+    if (series.id.startsWith("preview-")) {
+      const normalizedTitle = normalizeSeriesTitle(series.title);
+      const existingSeries = seriesList.find((item) => normalizeSeriesTitle(item.title) === normalizedTitle) ?? null;
+
+      if (existingSeries) {
+        targetSeries = existingSeries;
+      } else {
+        const { data: createdSeries, error: createSeriesError } = await supabase
+          .from("group_series")
+          .insert({
+            group_id: group.id,
+            title: series.title,
+            description: series.description ?? null,
+            total_weeks: series.total_weeks,
+            created_by: userId,
+          })
+          .select("id, title, description, total_weeks, current_week, is_current, created_at")
+          .single();
+
+        if (createSeriesError || !createdSeries) {
+          setSeriesStartSaveError(createSeriesError?.message || "Could not create that series yet.");
+          return;
+        }
+
+        targetSeries = createdSeries as Series;
+        setSeriesList((prev) => [targetSeries, ...prev]);
+        setSelectedSeries(targetSeries);
+      }
+    }
+
     // Set all series for this group to is_current = false
     await supabase.from("group_series").update({ is_current: false }).eq("group_id", group.id);
     // Set this one to true, and update current_week to 1
-    await supabase.from("group_series").update({ is_current: true }).eq("id", series.id);
-    setSeriesList((prev) => prev.map((s) => ({ ...s, is_current: s.id === series.id })));
-    setSelectedSeries((prev) => prev ? { ...prev, is_current: true } : prev);
+    await supabase.from("group_series").update({ is_current: true }).eq("id", targetSeries.id);
+    setSeriesList((prev) => prev.map((s) => ({ ...s, is_current: s.id === targetSeries.id })));
+    setSelectedSeries((prev) => (prev ? { ...(prev.id === series.id ? targetSeries : prev), is_current: true } : prev));
   }
 
   async function handleSaveSeriesStartDate() {
@@ -4019,9 +4051,41 @@ RULES:
     setSavingSeriesStartDate(true);
     setSeriesStartSaveError(null);
     const startAtIso = new Date(seriesStartDateInput).toISOString();
+    let targetSeries = selectedSeries;
+
+    if (selectedSeries.id.startsWith("preview-")) {
+      const normalizedTitle = normalizeSeriesTitle(selectedSeries.title);
+      const existingSeries = seriesList.find((item) => normalizeSeriesTitle(item.title) === normalizedTitle) ?? null;
+
+      if (existingSeries) {
+        targetSeries = existingSeries;
+      } else {
+        const { data: createdSeries, error: createSeriesError } = await supabase
+          .from("group_series")
+          .insert({
+            group_id: group.id,
+            title: selectedSeries.title,
+            description: selectedSeries.description ?? null,
+            total_weeks: selectedSeries.total_weeks,
+            created_by: userId,
+          })
+          .select("id, title, description, total_weeks, current_week, is_current, created_at")
+          .single();
+
+        if (createSeriesError || !createdSeries) {
+          setSeriesStartSaveError(createSeriesError?.message || "Could not create that series yet.");
+          setSavingSeriesStartDate(false);
+          return;
+        }
+
+        targetSeries = createdSeries as Series;
+        setSeriesList((prev) => [targetSeries, ...prev]);
+        setSelectedSeries(targetSeries);
+      }
+    }
 
     const payload = {
-      series_id: selectedSeries.id,
+      series_id: targetSeries.id,
       group_id: group.id,
       start_date: seriesStartDateInput.slice(0, 10),
       start_at: startAtIso,
@@ -4031,7 +4095,7 @@ RULES:
     const { data: existingSchedule } = await supabase
       .from("series_schedules")
       .select("id")
-      .eq("series_id", selectedSeries.id)
+      .eq("series_id", targetSeries.id)
       .maybeSingle();
 
     const saveResult = existingSchedule?.id
@@ -4063,7 +4127,7 @@ RULES:
     const { error: setCurrentError } = await supabase
       .from("group_series")
       .update({ is_current: true, current_week: 1 })
-      .eq("id", selectedSeries.id);
+      .eq("id", targetSeries.id);
 
     if (setCurrentError) {
       setSeriesStartSaveError(setCurrentError.message || "The start time saved, but the current series could not be updated.");
@@ -4074,7 +4138,7 @@ RULES:
     const { data: refreshedSchedule, error: refreshError } = await supabase
       .from("series_schedules")
       .select("start_date, start_at")
-      .eq("series_id", selectedSeries.id)
+      .eq("series_id", targetSeries.id)
       .maybeSingle();
 
     if (refreshError) {
@@ -4086,9 +4150,9 @@ RULES:
     const resolvedStart = resolveSeriesStart(refreshedSchedule);
     setSeriesStartDate(resolvedStart);
     setCurrentSeriesStartAt(resolvedStart);
-    setSeriesList((prev) => prev.map((series) => ({ ...series, is_current: series.id === selectedSeries.id })));
-    setSelectedSeries((prev) => (prev ? { ...prev, is_current: true, current_week: 1 } : prev));
-    setCurrentSeriesPreview(buildCurrentSeriesPreview(selectedSeries));
+    setSeriesList((prev) => prev.map((series) => ({ ...series, is_current: series.id === targetSeries.id })));
+    setSelectedSeries((prev) => (prev ? { ...(prev.id === selectedSeries.id ? targetSeries : prev), is_current: true, current_week: 1 } : prev));
+    setCurrentSeriesPreview(buildCurrentSeriesPreview(targetSeries));
     setSeriesStartDateInput(resolvedStart ? toDateTimeLocalValue(resolvedStart) : "");
     setEditingSeriesStart(!resolvedStart);
     setSavingSeriesStartDate(false);
