@@ -555,7 +555,7 @@ export function buildBibleStudySaturdayPost(
     return {
       seriesKey: "bible_study_saturday",
       weekKey: getBerlinDateKey(date),
-      title: `Week ${liveStudy.weekNumber} Bible Study Preview`,
+      title: `Week ${liveStudy.weekNumber} Is Now Live`,
       description,
       contentHtml:
         `<h1>Week ${liveStudy.weekNumber} Is Ready</h1>` +
