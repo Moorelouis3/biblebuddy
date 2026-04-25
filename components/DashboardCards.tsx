@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
+import { LouisAvatar } from "./LouisAvatar";
 
 interface DashboardCardsProps {
   profile: {
@@ -18,6 +19,7 @@ interface DashboardCardsProps {
   dailyTaskTotalCount: number;
   dailyTaskNextTitle: string | null;
   dailyTaskSummaryLine: string | null;
+  dailyTaskTimeLeftLabel?: string | null;
   handleCardClick: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, card: string, href: string) => void;
   onOpenDailyTasks: () => void;
   onInviteBuddy: () => void;
@@ -33,6 +35,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   dailyTaskTotalCount,
   dailyTaskNextTitle,
   dailyTaskSummaryLine,
+  dailyTaskTimeLeftLabel,
   handleCardClick,
   onOpenDailyTasks,
   onInviteBuddy,
@@ -44,6 +47,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
     0,
     Math.min(100, Math.round((dailyTaskCompletedCount / safeDailyTaskTotal) * 100)),
   );
+  const allDailyTasksDone = dailyTaskCompletedCount >= safeDailyTaskTotal;
 
   const cardShellTheme = {
     outer: "border-[#ecd8b2] bg-gradient-to-br from-[#fff6e8] via-[#fffaf2] to-[#fff2db]",
@@ -90,30 +94,56 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           ) : (
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0 flex-1">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <h2 className="pr-2 text-[0.95rem] font-semibold leading-tight text-gray-950 sm:text-[1.1rem]">
-                      Daily Task
-                    </h2>
-                    <p className="mt-1 text-sm text-gray-600">
-                      {dailyTaskNextTitle ? `Next: ${dailyTaskNextTitle}` : "Tap to view your daily Bible checklist."}
+                {allDailyTasksDone ? (
+                  <div className="rounded-[22px] border border-[#f0d58a] bg-[linear-gradient(135deg,#fff7df_0%,#fffaf0_55%,#fff1c9_100%)] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)]">
+                    <div className="flex items-center gap-3">
+                      <div className="rounded-full border border-white/90 bg-white/85 p-1.5 shadow-sm">
+                        <LouisAvatar mood="stareyes" size={48} />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#b37a12]">
+                          Daily Bible Tasks
+                        </p>
+                        <h2 className="mt-1 text-base font-bold leading-tight text-gray-950 sm:text-lg">
+                          You have finished all of today&apos;s Bible tasks
+                        </h2>
+                      </div>
+                    </div>
+                    <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-white/70">
+                      <div className="h-full w-full animate-[pulse_2s_ease-in-out_infinite] rounded-full bg-[#9fce85]" />
+                    </div>
+                    <p className="mt-3 text-sm font-medium text-[#7a5a1b]">
+                      Your next daily tasks start in {dailyTaskTimeLeftLabel || "24h 0m"}
                     </p>
                   </div>
-                    <div className="shrink-0 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#9b6a21] shadow-sm">
-                      {dailyTaskCompletedCount}/{safeDailyTaskTotal}
+                ) : (
+                  <>
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <h2 className="pr-2 text-[0.95rem] font-semibold leading-tight text-gray-950 sm:text-[1.1rem]">
+                          Daily Task
+                        </h2>
+                        <p className="mt-1 text-sm text-gray-600">
+                          {dailyTaskNextTitle ? `Next: ${dailyTaskNextTitle}` : "Tap to view your daily Bible checklist."}
+                        </p>
+                      </div>
+                      <div className="shrink-0 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#9b6a21] shadow-sm">
+                        {dailyTaskCompletedCount}/{safeDailyTaskTotal}
+                      </div>
                     </div>
-                </div>
-                <div className="mt-3 overflow-hidden rounded-full bg-gray-200">
-                  <div
-                    className="h-2.5 rounded-full bg-[#d8aa57] transition-all duration-300"
-                    style={{ width: `${dailyTaskProgressPercent}%` }}
-                  />
-                </div>
-                <div className="mt-2.5 text-[13px] sm:text-sm">
-                  <p className="min-w-0 font-medium text-gray-600">
-                    {dailyTaskSummaryLine || `${dailyTaskCompletedCount} out of ${safeDailyTaskTotal} daily tasks done`}
-                  </p>
-                </div>
+                    <div className="mt-3 overflow-hidden rounded-full bg-gray-200">
+                      <div
+                        className="h-2.5 rounded-full bg-[#d8aa57] transition-all duration-300"
+                        style={{ width: `${dailyTaskProgressPercent}%` }}
+                      />
+                    </div>
+                    <div className="mt-2.5 text-[13px] sm:text-sm">
+                      <p className="min-w-0 font-medium text-gray-600">
+                        {dailyTaskSummaryLine || `${dailyTaskCompletedCount} out of ${safeDailyTaskTotal} daily tasks done`}
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           )}

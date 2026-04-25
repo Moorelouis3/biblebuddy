@@ -19,6 +19,7 @@ import {
   ensureLouisDailyTaskCycle,
   getBibleBuddyLocalDayKey,
   getLouisDailyTaskCycleStartedAt,
+  getLouisDailyTaskTimeLeftMs,
   hasSeenLouisDailyTaskCelebration,
   hasActiveLouisDailyTaskCycle,
   rememberLouisDailyTaskBonusAwarded,
@@ -157,6 +158,7 @@ export default function DashboardPage() {
   const [dailyTaskTotalCount, setDailyTaskTotalCount] = useState(5);
   const [dailyTaskNextTitle, setDailyTaskNextTitle] = useState<string | null>(null);
   const [dailyTaskSummaryLine, setDailyTaskSummaryLine] = useState<string | null>(null);
+  const [dailyTaskTimeLeftLabel, setDailyTaskTimeLeftLabel] = useState<string | null>(null);
   const [motivationalMessage, setMotivationalMessage] = useState<string>("");
   const [proExpiresAt, setProExpiresAt] = useState<string | null>(null);
   const [membershipStatus, setMembershipStatus] = useState<string | null>(null);
@@ -1272,6 +1274,30 @@ export default function DashboardPage() {
     }
   }, [userId]);
 
+  useEffect(() => {
+    if (!userId || !louisDailyTaskCycleStartedAt) {
+      setDailyTaskTimeLeftLabel(null);
+      return;
+    }
+    const currentUserId = userId;
+
+    function formatTimeLeft(ms: number) {
+      const totalMinutes = Math.max(0, Math.floor(ms / 60000));
+      const hours = Math.floor(totalMinutes / 60);
+      const minutes = totalMinutes % 60;
+      if (hours <= 0) return `${minutes}m`;
+      return `${hours}h ${minutes}m`;
+    }
+
+    function updateTimeLeft() {
+      setDailyTaskTimeLeftLabel(formatTimeLeft(getLouisDailyTaskTimeLeftMs(currentUserId)));
+    }
+
+    updateTimeLeft();
+    const interval = window.setInterval(updateTimeLeft, 30000);
+    return () => window.clearInterval(interval);
+  }, [userId, louisDailyTaskCycleStartedAt]);
+
   const loadDailyTaskSummary = useCallback(async () => {
     if (!userId || !profile || !louisDailyTaskCycleStartedAt) {
       setIsLoadingDailyTaskSummary(false);
@@ -1504,6 +1530,7 @@ export default function DashboardPage() {
           dailyTaskTotalCount={dailyTaskTotalCount}
           dailyTaskNextTitle={dailyTaskNextTitle}
           dailyTaskSummaryLine={dailyTaskSummaryLine}
+          dailyTaskTimeLeftLabel={dailyTaskTimeLeftLabel}
           handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
           onOpenDailyTasks={() => {
             const cycleStartedAt = userId
@@ -1547,6 +1574,7 @@ export default function DashboardPage() {
           dailyTaskTotalCount={dailyTaskTotalCount}
           dailyTaskNextTitle={dailyTaskNextTitle}
           dailyTaskSummaryLine={dailyTaskSummaryLine}
+          dailyTaskTimeLeftLabel={dailyTaskTimeLeftLabel}
           handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
           onOpenDailyTasks={() => {
             const cycleStartedAt = userId
