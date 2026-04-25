@@ -95,9 +95,9 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0 flex-1">
                 {allDailyTasksDone ? (
-                  <div className="rounded-[22px] border border-[#f0d58a] bg-[linear-gradient(135deg,#fff7df_0%,#fffaf0_55%,#fff1c9_100%)] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)]">
+                  <>
                     <div className="flex items-center gap-3">
-                      <div className="rounded-full border border-white/90 bg-white/85 p-1.5 shadow-sm">
+                      <div className="rounded-full border border-white/90 bg-white/70 p-1.5 shadow-sm">
                         <LouisAvatar mood="stareyes" size={48} />
                       </div>
                       <div className="min-w-0">
@@ -115,7 +115,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
                     <p className="mt-3 text-sm font-medium text-[#7a5a1b]">
                       Your next daily tasks start in {dailyTaskTimeLeftLabel || "24h 0m"}
                     </p>
-                  </div>
+                  </>
                 ) : (
                   <>
                     <div className="flex items-start justify-between gap-3">
