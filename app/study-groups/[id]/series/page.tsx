@@ -216,10 +216,35 @@ export default function SeriesOverviewPage() {
     if (!startDateInput || !seriesId || !userId) return;
     setSavingDate(true);
     const startAtIso = new Date(startDateInput).toISOString();
-    await supabase.from("series_schedules").upsert(
+    const scheduleResult = await supabase.from("series_schedules").upsert(
       { series_id: seriesId, group_id: groupId, start_date: startDateInput.slice(0, 10), start_at: startAtIso, created_by: userId },
       { onConflict: "series_id" }
     );
+    if (scheduleResult.error) {
+      setSavingDate(false);
+      return;
+    }
+
+    const clearCurrentResult = await supabase
+      .from("group_series")
+      .update({ is_current: false })
+      .eq("group_id", groupId);
+
+    if (clearCurrentResult.error) {
+      setSavingDate(false);
+      return;
+    }
+
+    const setCurrentResult = await supabase
+      .from("group_series")
+      .update({ is_current: true, current_week: 1 })
+      .eq("id", seriesId);
+
+    if (setCurrentResult.error) {
+      setSavingDate(false);
+      return;
+    }
+
     setStartDate(startAtIso);
     setEditingStartDate(false);
     setWeeks((prev) =>

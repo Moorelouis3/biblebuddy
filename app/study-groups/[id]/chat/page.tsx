@@ -4049,6 +4049,28 @@ RULES:
       return;
     }
 
+    const { error: clearCurrentError } = await supabase
+      .from("group_series")
+      .update({ is_current: false })
+      .eq("group_id", group.id);
+
+    if (clearCurrentError) {
+      setSeriesStartSaveError(clearCurrentError.message || "The start time saved, but the current series could not be updated.");
+      setSavingSeriesStartDate(false);
+      return;
+    }
+
+    const { error: setCurrentError } = await supabase
+      .from("group_series")
+      .update({ is_current: true, current_week: 1 })
+      .eq("id", selectedSeries.id);
+
+    if (setCurrentError) {
+      setSeriesStartSaveError(setCurrentError.message || "The start time saved, but the current series could not be updated.");
+      setSavingSeriesStartDate(false);
+      return;
+    }
+
     const { data: refreshedSchedule, error: refreshError } = await supabase
       .from("series_schedules")
       .select("start_date, start_at")
@@ -4064,6 +4086,9 @@ RULES:
     const resolvedStart = resolveSeriesStart(refreshedSchedule);
     setSeriesStartDate(resolvedStart);
     setCurrentSeriesStartAt(resolvedStart);
+    setSeriesList((prev) => prev.map((series) => ({ ...series, is_current: series.id === selectedSeries.id })));
+    setSelectedSeries((prev) => (prev ? { ...prev, is_current: true, current_week: 1 } : prev));
+    setCurrentSeriesPreview(buildCurrentSeriesPreview(selectedSeries));
     setSeriesStartDateInput(resolvedStart ? toDateTimeLocalValue(resolvedStart) : "");
     setEditingSeriesStart(!resolvedStart);
     setSavingSeriesStartDate(false);
