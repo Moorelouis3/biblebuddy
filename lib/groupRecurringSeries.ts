@@ -119,7 +119,7 @@ export function buildBibleStudySaturdaySnapshot(
   const maxWeeks = Math.max(1, snapshot.totalWeeks ?? getSeriesTotalWeeks(snapshot.seriesTitle));
   const currentWeekNumber = resolveSeriesWeekNumber(date, snapshot.seriesStartAt, maxWeeks);
   const hasStarted = snapshot.seriesStartAt ? date.getTime() >= new Date(snapshot.seriesStartAt).getTime() : false;
-  const weekNumber = hasStarted ? Math.min(currentWeekNumber + 1, maxWeeks) : 1;
+  const weekNumber = hasStarted ? currentWeekNumber : 1;
   const lesson = getSeriesWeekLesson(weekNumber, snapshot.seriesTitle);
 
   if (!lesson) return null;
