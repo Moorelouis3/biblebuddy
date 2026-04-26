@@ -257,9 +257,7 @@ const PLANNED_BIBLE_STUDY_SERIES = [
   { key: "testing_of_joseph", title: "The Testing of Joseph", subtitle: "14-week group study" },
   { key: "temptation_of_jesus", title: "The Temptation of Jesus", subtitle: "5-week group study" },
   { key: "wisdom_of_proverbs", title: "The Wisdom of Proverbs", subtitle: "Coming later" },
-  { key: "faith_of_job", title: "The Faith of Job", subtitle: "Coming later" },
   { key: "calling_of_moses", title: "The Calling of Moses", subtitle: "Coming later" },
-  { key: "heart_of_david", title: "The Heart of David", subtitle: "Coming later" },
 ] as const;
 
 function getWeekUnlockDate(startDate: string, weekNum: number): string {
@@ -1432,6 +1430,7 @@ export default function GroupChatPage() {
   const [hideInstallSetupCard, setHideInstallSetupCard] = useState(false);
   const [hideUpgradeSetupCard, setHideUpgradeSetupCard] = useState(false);
   const [showDevotionalUpgradeModal, setShowDevotionalUpgradeModal] = useState(false);
+  const [showPastStudyProModal, setShowPastStudyProModal] = useState(false);
   const [devotionalPreviews, setDevotionalPreviews] = useState<Record<string, DevotionalPreview>>({});
   const [updateFeatureIndex, setUpdateFeatureIndex] = useState(0);
   const [activeTab, setActiveTab] = useState<string>("home");
@@ -5694,21 +5693,27 @@ RULES:
                     const isLive = normalizeSeriesTitle(currentSeriesPreview?.title) === normalizeSeriesTitle(planned.title);
                     const liveSeries = isLive ? matchingSeries : null;
                     const previewSeries = matchingSeries ?? (isLeader ? buildSeriesPreviewRecord(planned.title) : liveSeries);
-                    const canOpen = isLive || isLeader;
+                    const isJosephSeries = normalizeSeriesTitle(planned.title) === "the testing of joseph";
+                    const isTemptationSeries = normalizeSeriesTitle(planned.title) === "the temptation of jesus";
+                    const isPastStudy = isTemptationSeries;
+                    const canOpenPastStudy = isPastStudy && (userIsPaid || isLeader);
+                    const canOpen = isLive || isLeader || canOpenPastStudy;
                     const startLabel = isLive && currentSeriesStartAt ? formatDateTimeLabel(currentSeriesStartAt) : null;
                     const startCountdown =
                       isLive && currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs
                         ? formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)
                         : null;
-                    const isJosephSeries = normalizeSeriesTitle(planned.title) === "the testing of joseph";
-                    const isTemptationSeries = normalizeSeriesTitle(planned.title) === "the temptation of jesus";
                     const coverSrc = getSeriesCardCover(planned.title);
                     const josephStartLabel = formatDateTimeLabel(homeFeedSeriesStartAt);
                     const josephCountdown =
                       isJosephSeries && new Date(homeFeedSeriesStartAt).getTime() > nowTs
                         ? formatCountdown(new Date(homeFeedSeriesStartAt).getTime(), nowTs)
                         : null;
-                    const statusLabel = isLive
+                    const statusLabel = isPastStudy
+                      ? userIsPaid || isLeader
+                        ? "Past Study"
+                        : "Pro Only"
+                      : isLive
                       ? "Current Study"
                       : isJosephSeries
                         ? "Starts Saturday"
@@ -5720,26 +5725,46 @@ RULES:
                         key={planned.key}
                         type="button"
                         onClick={() => {
+                          if (isPastStudy && !canOpenPastStudy) {
+                            setShowPastStudyProModal(true);
+                            return;
+                          }
                           if (canOpen && previewSeries) setSelectedSeries(previewSeries);
                         }}
-                        disabled={!canOpen}
                         className={`w-full rounded-2xl border text-left transition-all duration-200 overflow-hidden ${
                           canOpen
                             ? "bg-white border-gray-200 shadow-sm hover:shadow-xl hover:scale-[1.01]"
-                            : "bg-white border-gray-200 shadow-sm opacity-80 cursor-not-allowed"
+                            : isPastStudy
+                              ? "bg-white border-gray-200 shadow-sm hover:shadow-lg"
+                              : "bg-white border-gray-200 shadow-sm opacity-80 cursor-not-allowed"
                         }`}
                       >
                         <div className="p-2 sm:p-3">
-                          <div className="rounded-xl overflow-hidden border border-gray-200 bg-gray-100">
+                          <div className="relative rounded-xl overflow-hidden border border-gray-200 bg-gray-100">
                             {coverSrc ? (
-                              <img
-                                src={coverSrc}
-                                alt={`${planned.title} cover`}
-                                className={`w-full h-40 sm:h-48 object-cover transition ${isTemptationSeries ? "" : "grayscale"}`}
-                                style={{
-                                  objectPosition: isJosephSeries ? "center 30%" : isTemptationSeries ? "center 42%" : "center center",
-                                }}
-                              />
+                              <>
+                                <img
+                                  src={coverSrc}
+                                  alt={`${planned.title} cover`}
+                                  className={`w-full h-40 sm:h-48 object-cover transition ${isTemptationSeries ? "" : "grayscale"}`}
+                                  style={{
+                                    objectPosition: isJosephSeries ? "center 30%" : isTemptationSeries ? "center 42%" : "center center",
+                                  }}
+                                />
+                                {isPastStudy ? (
+                                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-4">
+                                    <div
+                                      className={`rounded-xl px-4 py-2 text-center text-base sm:text-lg font-black uppercase tracking-wide shadow-lg ${
+                                        canOpenPastStudy
+                                          ? "bg-black/65 text-white"
+                                          : "bg-[#d62828]/90 text-white"
+                                      }`}
+                                    >
+                                      {canOpenPastStudy ? "Click to do past study" : "Locked for free users"}
+                                    </div>
+                                  </div>
+                                ) : null}
+                              </>
                             ) : (
                               <div className="h-40 sm:h-48 bg-gradient-to-br from-gray-100 to-gray-200" />
                             )}
@@ -5750,7 +5775,11 @@ RULES:
                             <p className="text-lg font-semibold text-gray-900 leading-tight">{planned.title}</p>
                             <span
                               className={`text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ${
-                                isLive
+                                isPastStudy
+                                  ? canOpenPastStudy
+                                    ? "bg-[#efe0ff] text-[#7d4ab3]"
+                                    : "bg-[#fff1f1] text-[#d62828]"
+                                  : isLive
                                   ? "bg-[#d4ecd4] text-[#4f7e54]"
                                   : isJosephSeries
                                     ? "bg-[#fff1f1] text-[#d62828]"
@@ -5763,7 +5792,13 @@ RULES:
                             </span>
                           </div>
                           <p className="mt-1 text-sm text-gray-500">{planned.subtitle}</p>
-                          {isJosephSeries && josephCountdown ? (
+                          {isPastStudy ? (
+                            <p className={`mt-3 text-sm font-semibold ${canOpenPastStudy ? "text-[#7d4ab3]" : "text-[#d62828]"}`}>
+                              {canOpenPastStudy
+                                ? "Pro users can revisit this completed Bible study anytime."
+                                : "Upgrade to Pro to unlock access to past Bible studies."}
+                            </p>
+                          ) : isJosephSeries && josephCountdown ? (
                             <div className="mt-3">
                               <p className="text-base font-bold" style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}>
                                 Week 1 starts in {josephCountdown}
@@ -5807,10 +5842,22 @@ RULES:
                           )}
                           <div className="mt-4 flex items-center justify-between text-sm">
                             <span className="font-medium text-gray-500">
-                              {planned.title === "The Temptation of Jesus" ? "Current full-color cover" : "Coming next in the lineup"}
+                              {isPastStudy
+                                ? canOpenPastStudy
+                                  ? "Replay the finished study anytime"
+                                  : "Past studies are unlocked with Pro"
+                                : planned.title === "The Testing of Joseph"
+                                  ? "Current featured study"
+                                  : "Coming next in the lineup"}
                             </span>
                             <span className={`font-semibold ${canOpen ? "text-[#8d5d38]" : "text-gray-400"}`}>
-                              {canOpen ? "Open Study" : "Locked"}
+                              {isPastStudy
+                                ? canOpenPastStudy
+                                  ? "Open Past Study"
+                                  : "Pro Locked"
+                                : canOpen
+                                  ? "Open Study"
+                                  : "Locked"}
                             </span>
                           </div>
                         </div>
@@ -5968,6 +6015,48 @@ RULES:
         isOpen={showDevotionalUpgradeModal}
         onClose={() => setShowDevotionalUpgradeModal(false)}
       />
+
+      {showPastStudyProModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          onClick={() => setShowPastStudyProModal(false)}
+        >
+          <div
+            className="w-full max-w-sm rounded-3xl bg-white p-6 shadow-xl modal-panel-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-center">
+              <LouisAvatar mood="wave" size={64} />
+            </div>
+            <h3 className="mt-4 text-center text-2xl font-bold text-gray-900">Past Bible Studies</h3>
+            <p className="mt-3 text-center text-sm leading-6 text-gray-600">
+              You need to upgrade to Pro to unlock access to past Bible studies like
+              {" "}
+              <span className="font-semibold text-gray-900">The Temptation of Jesus</span>.
+            </p>
+            <div className="mt-6 flex gap-3">
+              <button
+                type="button"
+                onClick={() => setShowPastStudyProModal(false)}
+                className="flex-1 rounded-2xl border border-gray-200 px-4 py-3 text-sm font-semibold text-gray-600 transition hover:bg-gray-50"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowPastStudyProModal(false);
+                  router.push("/upgrade");
+                }}
+                className="flex-1 rounded-2xl px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+                style={{ backgroundColor: "#5a9a5a" }}
+              >
+                Upgrade to Pro
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {activeFeedPost && (
         <div
