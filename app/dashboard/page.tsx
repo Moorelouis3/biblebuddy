@@ -42,6 +42,10 @@ import {
 import { LEVEL_DEFINITIONS, calculateWeightedPoints, getLevelInfoFromPoints } from "../../lib/levelSystem";
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 
+const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
+const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
+const JESSICA_BONUS_POPUP_KEY = "bb:bonus-popup:jessica-1000:v1";
+
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
 
@@ -153,6 +157,8 @@ export default function DashboardPage() {
   const [showLouisDailyTasksModal, setShowLouisDailyTasksModal] = useState(false);
   const [louisDailyTaskCycleStartedAt, setLouisDailyTaskCycleStartedAt] = useState<string | null>(null);
   const [showDailyTaskCelebrationModal, setShowDailyTaskCelebrationModal] = useState(false);
+  const [showJessicaBonusModal, setShowJessicaBonusModal] = useState(false);
+  const [hasJessicaBonusAward, setHasJessicaBonusAward] = useState(false);
   const [isLoadingDailyTaskSummary, setIsLoadingDailyTaskSummary] = useState(true);
   const [dailyTaskCompletedCount, setDailyTaskCompletedCount] = useState(0);
   const [dailyTaskTotalCount, setDailyTaskTotalCount] = useState(5);
@@ -1083,7 +1089,7 @@ export default function DashboardPage() {
         ] = await Promise.all([
           supabase
             .from("master_actions")
-            .select("action_type")
+            .select("action_type, action_label")
             .eq("user_id", userId),
           supabase
             .from("group_posts")
@@ -1099,7 +1105,22 @@ export default function DashboardPage() {
             .eq("user_id", userId),
         ]);
 
+        const adminBonusActionRows = (actionsResult.data || []).filter((row) =>
+          row?.action_label === JESSICA_BONUS_ACTION_LABEL,
+        );
+        if (!didCancel) {
+          setHasJessicaBonusAward(adminBonusActionRows.length > 0);
+        }
+
+        const manualBonusPoints = adminBonusActionRows.reduce((total, row) => {
+          const match = typeof row?.action_label === "string"
+            ? row.action_label.match(/^admin_bonus_points:(\d+):/)
+            : null;
+          return total + (match ? Number(match[1]) || 0 : 0);
+        }, 0);
+
         const actionTypes = (actionsResult.data || [])
+          .filter((row) => row?.action_label !== JESSICA_BONUS_ACTION_LABEL)
           .map((row) => row.action_type)
           .filter((actionType): actionType is string => typeof actionType === "string" && actionType !== "group_message_sent");
 
@@ -1122,6 +1143,7 @@ export default function DashboardPage() {
           groupLikeGivenCount,
           likesReceivedCount: groupLikesReceivedCount + feedLikesReceivedCount,
           streakBonusPoints: Math.max(0, resolvedCurrentStreak),
+          manualBonusPoints,
         });
 
         const levelData = getLevelInfoFromPoints(weightedPoints.totalPoints);
@@ -1221,6 +1243,12 @@ export default function DashboardPage() {
       didCancel = true;
     };
   }, [userId]);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || userId !== JESSICA_BONUS_USER_ID || !hasJessicaBonusAward) return;
+    if (window.localStorage.getItem(JESSICA_BONUS_POPUP_KEY) === "1") return;
+    setShowJessicaBonusModal(true);
+  }, [hasJessicaBonusAward, userId]);
 
   useEffect(() => {
     if (!userId || !profile) return;
@@ -1742,6 +1770,41 @@ export default function DashboardPage() {
               className="mt-5 inline-flex rounded-full bg-[#7aa7df] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5f93d3]"
             >
               OK
+            </button>
+          </div>
+        </div>
+      </ModalShell>
+
+      <ModalShell
+        isOpen={showJessicaBonusModal}
+        onClose={() => {
+          if (typeof window !== "undefined") {
+            window.localStorage.setItem(JESSICA_BONUS_POPUP_KEY, "1");
+          }
+          setShowJessicaBonusModal(false);
+        }}
+        backdropColor="bg-black/50"
+      >
+        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
+          <div className="bg-gradient-to-br from-[#fff7d9] via-[#fffdf4] to-[#fff1c2] px-6 py-8 text-center">
+            <div className="flex justify-center">
+              <LouisAvatar mood="stareyes" size={72} />
+            </div>
+            <h2 className="mt-4 text-3xl font-bold text-[#2b3550]">Hey Jessica</h2>
+            <p className="mt-3 text-base leading-7 text-[#5b6480]">
+              You have been awarded <span className="font-bold text-[#1f2937]">1000 bonus points</span>.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.localStorage.setItem(JESSICA_BONUS_POPUP_KEY, "1");
+                }
+                setShowJessicaBonusModal(false);
+              }}
+              className="mt-6 inline-flex rounded-full bg-[#7aa7df] px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5f93d3]"
+            >
+              Close
             </button>
           </div>
         </div>
