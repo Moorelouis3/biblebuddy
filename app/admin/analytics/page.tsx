@@ -19,6 +19,7 @@ type OverviewMetrics = {
   placesDiscovered: number;
   keywordsUnderstood: number;
   devotionalDaysCompleted: number;
+  dailyBibleTasksCompleted: number;
   readingPlanChaptersCompleted: number;
   scrambledWordsAnswered: number;
   triviaQuestionsAnswered: number;
@@ -100,6 +101,7 @@ const INITIAL_METRICS: OverviewMetrics = {
   placesDiscovered: 0,
   keywordsUnderstood: 0,
   devotionalDaysCompleted: 0,
+  dailyBibleTasksCompleted: 0,
   readingPlanChaptersCompleted: 0,
   scrambledWordsAnswered: 0,
   triviaQuestionsAnswered: 0,
@@ -167,6 +169,14 @@ const VIDEO_WATCH_ACTION_TYPES = [
   "bible_buddy_tv_video_started",
 ] as const;
 
+const DAILY_BIBLE_TASK_ACTION_TYPES = [
+  "devotional_day_completed",
+  "chapter_completed",
+  "chapter_notes_reviewed",
+  "trivia_chapter_completed",
+  "scrambled_chapter_completed",
+] as const;
+
 const DASHBOARD_CARD_BREAKDOWN_LABELS = [
   "The Bible",
   "Bible Study Group",
@@ -226,6 +236,7 @@ export default function AnalyticsPage() {
       placesDiscovered: number;
       keywordsUnderstood: number;
       devotionalDaysCompleted: number;
+      dailyBibleTasksCompleted: number;
       readingPlanChaptersCompleted: number;
       scrambledWordsAnswered: number;
       triviaQuestionsAnswered: number;
@@ -666,6 +677,13 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
+        const { count: dailyBibleTasksCompleted } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .in("action_type", [...DAILY_BIBLE_TASK_ACTION_TYPES])
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
         // Reading Plan Chapters Completed
         const { count: readingPlanChaptersCompleted } = await supabase
           .from("master_actions")
@@ -762,6 +780,7 @@ export default function AnalyticsPage() {
           placesDiscovered: placesDiscovered || 0,
           keywordsUnderstood: keywordsUnderstood || 0,
           devotionalDaysCompleted: devotionalDaysCompleted || 0,
+          dailyBibleTasksCompleted: dailyBibleTasksCompleted || 0,
           readingPlanChaptersCompleted: readingPlanChaptersCompleted || 0,
           scrambledWordsAnswered: scrambledWordsAnswered || 0,
           triviaQuestionsAnswered: triviaQuestionsAnswered || 0,
@@ -913,6 +932,13 @@ export default function AnalyticsPage() {
           .eq("action_type", "devotional_day_completed")
       );
 
+      const dailyBibleTasksPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .in("action_type", [...DAILY_BIBLE_TASK_ACTION_TYPES])
+      );
+
       // Reading Plan chapters completed
       const readingPlanChaptersPromise = applyDateFilter(
         supabase
@@ -971,6 +997,7 @@ export default function AnalyticsPage() {
         placesResult,
         keywordsResult,
         devotionalDaysResult,
+        dailyBibleTasksResult,
         readingPlanChaptersResult,
         scrambledWordsResult,
         triviaQuestionsResult,
@@ -999,6 +1026,7 @@ export default function AnalyticsPage() {
         placesPromise,
         keywordsPromise,
         devotionalDaysPromise,
+        dailyBibleTasksPromise,
         readingPlanChaptersPromise,
         scrambledWordsPromise,
         triviaQuestionsPromise,
@@ -1044,6 +1072,8 @@ export default function AnalyticsPage() {
       const keywordsError = keywordsResult.error;
       const devotionalDaysCount = devotionalDaysResult.count ?? 0;
       const devotionalDaysError = devotionalDaysResult.error;
+      const dailyBibleTasksCount = dailyBibleTasksResult.count ?? 0;
+      const dailyBibleTasksError = dailyBibleTasksResult.error;
       const readingPlanChaptersCount = readingPlanChaptersResult.count ?? 0;
       const readingPlanChaptersError = readingPlanChaptersResult.error;
       const scrambledWordsCount = scrambledWordsResult.count ?? 0;
@@ -1067,6 +1097,7 @@ export default function AnalyticsPage() {
         placesError ||
         keywordsError ||
         devotionalDaysError ||
+        dailyBibleTasksError ||
         readingPlanChaptersError ||
         scrambledWordsError ||
         triviaQuestionsError ||
@@ -1086,6 +1117,7 @@ export default function AnalyticsPage() {
           placesError,
           keywordsError,
           devotionalDaysError,
+          dailyBibleTasksError,
           readingPlanChaptersError,
           scrambledWordsError,
           triviaQuestionsError,
@@ -1128,6 +1160,7 @@ export default function AnalyticsPage() {
         placesDiscovered: placesCount ?? 0,
         keywordsUnderstood: keywordsCount ?? 0,
         devotionalDaysCompleted: devotionalDaysCount ?? 0,
+        dailyBibleTasksCompleted: dailyBibleTasksCount ?? 0,
         readingPlanChaptersCompleted: readingPlanChaptersCount ?? 0,
         scrambledWordsAnswered: scrambledWordsCount ?? 0,
         triviaQuestionsAnswered: triviaQuestionsCount ?? 0,
@@ -1240,6 +1273,8 @@ export default function AnalyticsPage() {
         query = query.in("action_type", [...NAVIGATION_CLICK_ACTION_TYPES]);
       } else if (actionTypeFilter === "videos_watched") {
         query = query.in("action_type", [...VIDEO_WATCH_ACTION_TYPES]);
+      } else if (actionTypeFilter === "daily_bible_tasks_completed") {
+        query = query.in("action_type", [...DAILY_BIBLE_TASK_ACTION_TYPES]);
       } else if (actionTypeFilter) {
         query = query.eq("action_type", actionTypeFilter);
       }
@@ -2520,6 +2555,7 @@ export default function AnalyticsPage() {
       "navigation_views": "Navigation Views",
       "navigation_clicks": "Navigation Clicks",
       "videos_watched": "Videos Watched",
+      "daily_bible_tasks_completed": "Daily Bible Tasks Completed",
       "dashboard_viewed": "Dashboard Views",
       "dashboard_card_opened": "Dashboard Card Clicks",
       "invite_buddy_opened": "Invite a Bible Buddy Clicks",
@@ -2538,6 +2574,8 @@ export default function AnalyticsPage() {
       "place_discovered": "Places Discovered",
       "keyword_mastered": "Keywords Understood",
       "devotional_day_completed": "Devotional Days Completed",
+      "chapter_notes_reviewed": "Chapter Notes Reviewed",
+      "trivia_chapter_completed": "Trivia Chapters Completed",
       "reading_plan_chapter_completed": "Reading Plan Chapters Completed",
       "scrambled_word_answered": "Scrambled Words Answered",
       "trivia_question_answered": "Trivia Questions Answered",
@@ -3017,6 +3055,12 @@ export default function AnalyticsPage() {
                 value={overviewMetrics.devotionalDaysCompleted}
                 onClick={() => setSelectedActionType(selectedActionType === "devotional_day_completed" ? null : "devotional_day_completed")}
                 isSelected={selectedActionType === "devotional_day_completed"}
+              />
+              <OverviewCard
+                label="Daily Bible Tasks Completed"
+                value={overviewMetrics.dailyBibleTasksCompleted}
+                onClick={() => setSelectedActionType(selectedActionType === "daily_bible_tasks_completed" ? null : "daily_bible_tasks_completed")}
+                isSelected={selectedActionType === "daily_bible_tasks_completed"}
               />
               <OverviewCard
                 label="Reading Plan Chapters Completed"
@@ -3962,6 +4006,10 @@ export default function AnalyticsPage() {
                     <p className="text-sm text-gray-600 mb-1">Devotional Days Completed</p>
                     <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.devotionalDaysCompleted.toLocaleString()}</p>
                   </div>
+                  <div className="bg-lime-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Daily Bible Tasks Completed</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.dailyBibleTasksCompleted.toLocaleString()}</p>
+                  </div>
                   <div className="bg-yellow-50 p-4 rounded-lg">
                     <p className="text-sm text-gray-600 mb-1">Reading Plan Chapters Completed</p>
                     <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.readingPlanChaptersCompleted.toLocaleString()}</p>
@@ -4179,6 +4227,8 @@ function OverviewCard({
         return "bg-indigo-100 border border-indigo-200";
       case "Devotional Days Completed":
         return "bg-violet-100 border border-violet-200";
+      case "Daily Bible Tasks Completed":
+        return "bg-lime-100 border border-lime-200";
       case "Reading Plan Chapters Completed":
         return "bg-orange-100 border border-orange-200";
       case "Scrambled Words Answered":
