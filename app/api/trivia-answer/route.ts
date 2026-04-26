@@ -66,9 +66,8 @@ export async function POST(request: NextRequest) {
 
     let awardedPoint = false;
 
-    // Award 1 point only the first time the user gets this question correct.
-    const wasAlreadyCorrect = existing?.is_correct === true;
-    if (isCorrect === true && !wasAlreadyCorrect) {
+    // Award 1 point for every correct answer in the round.
+    if (isCorrect === true) {
       const { error: correctError } = await supabase.from("master_actions").insert({
         user_id: userId,
         action_type: ACTION_TYPE.trivia_question_correct,
@@ -82,7 +81,7 @@ export async function POST(request: NextRequest) {
       awardedPoint = true;
     }
 
-    // Insert or update trivia_question_progress
+    // Keep progress sticky once a question has ever been answered correctly.
     console.log("Attempting to upsert trivia progress:", { userId, book, questionId, isCorrect });
 
     let progressError;
@@ -91,7 +90,7 @@ export async function POST(request: NextRequest) {
       const { error } = await supabase
         .from('trivia_question_progress')
         .update({
-          is_correct: isCorrect,
+          is_correct: existing.is_correct === true || isCorrect === true,
           answered_at: new Date().toISOString()
         })
         .eq('id', existing.id);
@@ -116,6 +115,32 @@ export async function POST(request: NextRequest) {
         { error: 'Failed to record trivia progress' },
         { status: 500 }
       );
+    }
+
+    // Keep profile_stats.trivia_questions_answered in sync for profile analytics cards.
+    const { data: currentStats, error: statsFetchError } = await supabase
+      .from("profile_stats")
+      .select("user_id, trivia_questions_answered")
+      .eq("user_id", userId)
+      .maybeSingle();
+
+    if (statsFetchError) {
+      console.error("Error fetching profile_stats for trivia sync:", statsFetchError);
+    } else {
+      const nextTriviaCount = (currentStats?.trivia_questions_answered || 0) + 1;
+      const { error: statsUpdateError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            trivia_questions_answered: nextTriviaCount,
+          },
+          { onConflict: "user_id" },
+        );
+
+      if (statsUpdateError) {
+        console.error("Error updating profile_stats trivia_questions_answered:", statsUpdateError);
+      }
     }
 
     console.log('Successfully recorded trivia progress');

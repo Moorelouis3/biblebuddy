@@ -123,6 +123,32 @@ export async function getProfileStats(userId: string): Promise<ProfileStats | nu
     return newData as ProfileStats;
   }
 
+  try {
+    const { count: triviaQuestionsAnsweredCount, error: triviaCountError } = await supabase
+      .from("master_actions")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", userId)
+      .eq("action_type", ACTION_TYPE.trivia_question_answered);
+
+    if (!triviaCountError && typeof triviaQuestionsAnsweredCount === "number") {
+      const merged = {
+        ...data,
+        trivia_questions_answered: triviaQuestionsAnsweredCount,
+      } as ProfileStats;
+
+      if ((data.trivia_questions_answered ?? 0) !== triviaQuestionsAnsweredCount) {
+        void supabase
+          .from("profile_stats")
+          .update({ trivia_questions_answered: triviaQuestionsAnsweredCount })
+          .eq("user_id", userId);
+      }
+
+      return merged;
+    }
+  } catch (countError) {
+    console.error("[PROFILE] Error syncing trivia question count:", countError);
+  }
+
   return data as ProfileStats;
 }
 

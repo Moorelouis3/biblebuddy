@@ -238,21 +238,6 @@ const meta: any = user.user_metadata || {};
           console.log('Successfully recorded trivia answer');
         }
 
-        // Increment profile_stats.trivia_questions_answered
-        const { data: currentStats } = await supabase
-          .from('profile_stats')
-          .select('trivia_questions_answered')
-          .eq('user_id', userId)
-          .single();
-        
-        if (currentStats) {
-          await supabase
-            .from('profile_stats')
-            .update({
-              trivia_questions_answered: (currentStats.trivia_questions_answered || 0) + 1
-            })
-            .eq('user_id', userId);
-        }
       } catch (error) {
         console.error("Error tracking trivia question:", error);
       }
@@ -462,7 +447,6 @@ const meta: any = user.user_metadata || {};
     </div>
   );
 }
-
 
 
 
