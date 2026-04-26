@@ -32,6 +32,7 @@ export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => null);
   const showSlug = typeof body?.showSlug === "string" ? body.showSlug.trim() : "";
   const episodeId = typeof body?.episodeId === "string" ? body.episodeId.trim() : "";
+  const userMessage = typeof body?.message === "string" ? body.message.trim() : "";
 
   if (!showSlug || !episodeId) {
     return NextResponse.json({ error: "Missing share details." }, { status: 400 });
@@ -96,7 +97,7 @@ export async function POST(request: NextRequest) {
   const contentLabel =
     episode.contentLabel || (tvTitle.contentType === "movie" ? "Movie" : `Episode ${episode.episodeNumber}`);
   const shareTitle = `📺 ${tvTitle.title} — ${contentLabel}: ${episode.title}`;
-  const shareContent = episode.summary || tvTitle.logline || "";
+  const shareContent = [userMessage, episode.summary || tvTitle.logline || ""].filter(Boolean).join("\n\n");
   const linkUrl = `/biblebuddy-tv/shows/${tvTitle.slug}?episode=${encodeURIComponent(episode.id)}`;
   const mediaUrl = episode.thumbnail || tvTitle.heroImage || tvTitle.poster || null;
 

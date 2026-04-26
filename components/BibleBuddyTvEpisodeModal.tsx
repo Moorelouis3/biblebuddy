@@ -24,6 +24,7 @@ interface BibleBuddyTvEpisodeModalProps {
   isOpen: boolean;
   onClose: () => void;
   onShare?: (episode: BibleBuddyTvEpisode) => Promise<void> | void;
+  onShareRequestOpen?: (episode: BibleBuddyTvEpisode) => void;
   sharingEpisodeId?: string | null;
 }
 
@@ -106,6 +107,7 @@ export default function BibleBuddyTvEpisodeModal({
   isOpen,
   onClose,
   onShare,
+  onShareRequestOpen,
   sharingEpisodeId = null,
 }: BibleBuddyTvEpisodeModalProps) {
   const [notesExpanded, setNotesExpanded] = useState(false);
@@ -475,7 +477,13 @@ Keep it simple, biblical, and clear.`;
             {onShare ? (
               <button
                 type="button"
-                onClick={() => void onShare(episode)}
+                onClick={() => {
+                  if (onShareRequestOpen) {
+                    onShareRequestOpen(episode);
+                    return;
+                  }
+                  void onShare(episode);
+                }}
                 disabled={sharingEpisodeId === episode.id}
                 className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-70"
               >

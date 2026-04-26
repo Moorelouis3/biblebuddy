@@ -39,6 +39,8 @@ export default function BibleBuddyTvShowPageClient({
   const [userName, setUserName] = useState<string | null>(null);
   const [sharingEpisodeId, setSharingEpisodeId] = useState<string | null>(null);
   const [shareMessage, setShareMessage] = useState<string | null>(null);
+  const [shareDraft, setShareDraft] = useState("");
+  const [shareEpisode, setShareEpisode] = useState<BibleBuddyTvEpisode | null>(null);
   const [handledEpisodeParam, setHandledEpisodeParam] = useState<string | null>(null);
 
   const featuredEpisode = title.episodes[0] ?? null;
@@ -244,7 +246,19 @@ export default function BibleBuddyTvShowPageClient({
     }
   }
 
-  async function shareEpisodeToGroup(episode: BibleBuddyTvEpisode) {
+  function openShareModal(episode: BibleBuddyTvEpisode) {
+    setShareMessage(null);
+    setShareDraft("");
+    setShareEpisode(episode);
+  }
+
+  function closeShareModal() {
+    if (sharingEpisodeId) return;
+    setShareEpisode(null);
+    setShareDraft("");
+  }
+
+  async function shareEpisodeToGroup(episode: BibleBuddyTvEpisode, message?: string) {
     if (sharingEpisodeId) return;
     setSharingEpisodeId(episode.id);
     setShareMessage(null);
@@ -259,6 +273,8 @@ export default function BibleBuddyTvShowPageClient({
         throw new Error("Sign in first to share Bible Buddy TV videos.");
       }
 
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 15000);
       const response = await fetch("/api/biblebuddy-tv/share-to-group", {
         method: "POST",
         headers: {
@@ -268,8 +284,11 @@ export default function BibleBuddyTvShowPageClient({
         body: JSON.stringify({
           showSlug: title.slug,
           episodeId: episode.id,
+          message: (message || "").trim(),
         }),
+        signal: controller.signal,
       });
+      window.clearTimeout(timeout);
 
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
@@ -277,8 +296,14 @@ export default function BibleBuddyTvShowPageClient({
       }
 
       setShareMessage("Shared to the group feed.");
+      setShareEpisode(null);
+      setShareDraft("");
     } catch (error) {
-      setShareMessage(error instanceof Error ? error.message : "Could not share this video right now.");
+      if (error instanceof Error && error.name === "AbortError") {
+        setShareMessage("Sharing took too long. Please try again.");
+      } else {
+        setShareMessage(error instanceof Error ? error.message : "Could not share this video right now.");
+      }
     } finally {
       setSharingEpisodeId(null);
     }
@@ -376,11 +401,11 @@ export default function BibleBuddyTvShowPageClient({
                 {continueEpisode?.available ? (
                   <button
                     type="button"
-                    onClick={() => void shareEpisodeToGroup(continueEpisode)}
+                    onClick={() => openShareModal(continueEpisode)}
                     disabled={sharingEpisodeId === continueEpisode.id}
                     className="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-70"
                   >
-                    {sharingEpisodeId === continueEpisode.id ? "Sharing..." : "Share to Group"}
+                    Share to Group
                   </button>
                 ) : null}
                 <button
@@ -512,6 +537,7 @@ export default function BibleBuddyTvShowPageClient({
         episode={selectedEpisode}
         isOpen={selectedEpisode !== null}
         onShare={shareEpisodeToGroup}
+        onShareRequestOpen={openShareModal}
         sharingEpisodeId={sharingEpisodeId}
         onClose={() => {
           setSelectedEpisode(null);
@@ -521,6 +547,76 @@ export default function BibleBuddyTvShowPageClient({
           void refreshEpisodeProgress();
         }}
       />
+
+      {shareEpisode ? (
+        <div
+          className="fixed inset-0 z-[90] flex items-center justify-center bg-black/50 p-4"
+          onClick={closeShareModal}
+        >
+          <div
+            className="w-full max-w-lg rounded-[28px] border border-gray-200 bg-white p-6 shadow-[0_30px_90px_rgba(0,0,0,0.25)]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em]" style={{ color: CAROLINA_BLUE }}>
+                  Share to Group
+                </p>
+                <h3 className="mt-1 text-2xl font-bold text-gray-900">{shareEpisode.title}</h3>
+                <p className="mt-1 text-sm text-gray-500">
+                  Add something about this video before you share it to the group feed.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={closeShareModal}
+                className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-700 transition hover:bg-gray-100"
+              >
+                Close
+              </button>
+            </div>
+
+            <textarea
+              value={shareDraft}
+              onChange={(event) => setShareDraft(event.target.value)}
+              placeholder="Write something about this video for the group..."
+              className="mt-5 min-h-[140px] w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 text-gray-800 outline-none transition focus:border-[#4B9CD3] focus:ring-2 focus:ring-[#4B9CD3]/15"
+              maxLength={600}
+            />
+
+            <div className="mt-2 flex items-center justify-between text-xs text-gray-500">
+              <span>Your note will appear above the video summary.</span>
+              <span>{shareDraft.length}/600</span>
+            </div>
+
+            {shareMessage ? (
+              <p className={`mt-4 text-sm ${shareMessage === "Shared to the group feed." ? "text-emerald-700" : "text-rose-600"}`}>
+                {shareMessage}
+              </p>
+            ) : null}
+
+            <div className="mt-6 flex justify-end gap-3">
+              <button
+                type="button"
+                onClick={closeShareModal}
+                disabled={sharingEpisodeId === shareEpisode.id}
+                className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => void shareEpisodeToGroup(shareEpisode, shareDraft)}
+                disabled={sharingEpisodeId === shareEpisode.id}
+                className="rounded-2xl px-5 py-3 text-sm font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-70"
+                style={{ backgroundColor: CAROLINA_BLUE }}
+              >
+                {sharingEpisodeId === shareEpisode.id ? "Sharing..." : "Share to Group"}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
