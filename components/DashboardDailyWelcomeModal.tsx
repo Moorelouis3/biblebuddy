@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ModalShell } from "./ModalShell";
 import { getBibleBuddyLocalDayKey } from "../lib/louisDailyFlow";
 import { getVerseOfTheDay } from "../lib/verseOfTheDay";
@@ -18,6 +18,14 @@ export type DashboardDailyWelcomeModalProps = {
 };
 
 export default function DashboardDailyWelcomeModal({ open, onClose, userId }: DashboardDailyWelcomeModalProps) {
+  const [showExplanation, setShowExplanation] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      setShowExplanation(false);
+    }
+  }, [open]);
+
   const handleAcknowledge = async () => {
     const today = getBibleBuddyLocalDayKey();
 
@@ -42,7 +50,31 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
   };
 
   const verse = getVerseOfTheDay();
-  const explanation = verse.explanationSections.map((section) => section.body.trim()).join(" ");
+  const explanationBlocks = useMemo(
+    () =>
+      verse.explanationSections
+        .map((section) => section.body.trim())
+        .filter(Boolean)
+        .flatMap((body) =>
+          body
+            .replace(/[–—]/g, ", ")
+            .replace(/\s+/g, " ")
+            .split(/(?<=[.!?])\s+/)
+            .reduce<string[]>((chunks, sentence, index) => {
+              const cleanSentence = sentence.trim();
+              if (!cleanSentence) return chunks;
+              if (index % 2 === 0) {
+                chunks.push(cleanSentence);
+              } else {
+                chunks[chunks.length - 1] = `${chunks[chunks.length - 1]} ${cleanSentence}`.trim();
+              }
+              return chunks;
+            }, [])
+            .map((block) => block.trim())
+            .filter(Boolean),
+        ),
+    [verse],
+  );
 
   return (
     <ModalShell isOpen={open} onClose={handleAcknowledge} backdropColor="bg-black/45" scrollable={true}>
@@ -76,10 +108,28 @@ export default function DashboardDailyWelcomeModal({ open, onClose, userId }: Da
         </div>
 
         <div className="w-full bg-white px-6 pb-6 pt-5 sm:px-8">
-          <p className="text-sm leading-7 text-[#445b80]">
-            {explanation}
-          </p>
+          {!showExplanation ? (
+            <button
+              type="button"
+              onClick={() => setShowExplanation(true)}
+              className="mb-4 w-full rounded-2xl border border-[#d9e7ff] bg-[#f5f9ff] px-4 py-3 text-center text-sm font-semibold text-[#3f6fb2] transition hover:bg-[#edf4ff]"
+            >
+              Do you want to understand this verse?
+            </button>
+          ) : (
+            <div className="mb-4 rounded-[22px] border border-[#d9e7ff] bg-[#f8fbff] px-4 py-4">
+              <p className="mb-3 text-sm font-semibold text-[#3e67a7]">Understanding this verse</p>
+              <div className="space-y-3">
+                {explanationBlocks.map((block, index) => (
+                  <p key={`${verse.reference}-explanation-${index}`} className="text-sm leading-7 text-[#445b80]">
+                    {block}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
           <button
+            type="button"
             onClick={handleAcknowledge}
             className="w-full rounded-2xl bg-[#3f6fb2] px-4 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-[#335f9a]"
           >
