@@ -5746,7 +5746,9 @@ RULES:
                                 <img
                                   src={coverSrc}
                                   alt={`${planned.title} cover`}
-                                  className={`w-full h-40 sm:h-48 object-cover transition ${isTemptationSeries ? "" : "grayscale"}`}
+                                  className={`w-full h-40 sm:h-48 object-cover transition ${
+                                    isJosephSeries ? "" : isTemptationSeries ? "grayscale" : "grayscale"
+                                  }`}
                                   style={{
                                     objectPosition: isJosephSeries ? "center 30%" : isTemptationSeries ? "center 42%" : "center center",
                                   }}
@@ -5756,7 +5758,7 @@ RULES:
                                     <div
                                       className={`rounded-xl px-4 py-2 text-center text-base sm:text-lg font-black uppercase tracking-wide shadow-lg ${
                                         canOpenPastStudy
-                                          ? "bg-black/65 text-white"
+                                          ? "bg-white/82 text-[#d62828]"
                                           : "bg-[#d62828]/90 text-white"
                                       }`}
                                     >
