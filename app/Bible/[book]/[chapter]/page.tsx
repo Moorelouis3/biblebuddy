@@ -141,8 +141,6 @@ export default function BibleChapterPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const chapterRequestRef = useRef(0);
-  const [showCongratsModal, setShowCongratsModal] = useState(false);
-  const [showChecklistModal, setShowChecklistModal] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [chapterSummary, setChapterSummary] = useState<string>("");
@@ -190,8 +188,6 @@ export default function BibleChapterPage() {
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
   const [chapterSummaryLoaded, setChapterSummaryLoaded] = useState(false);
-  const louisChapterPromptRef = useRef<string | null>(null);
-  const bibleGuideShownThisVisitRef = useRef(false);
   
   // Completion tracking state (same as database pages)
   const [completedPeople, setCompletedPeople] = useState<Set<string>>(new Set());
@@ -220,6 +216,8 @@ export default function BibleChapterPage() {
   const reflectionSectionRef = useRef<HTMLDivElement | null>(null);
   const [highlightReflectionSection, setHighlightReflectionSection] = useState(false);
   const autoOpenedNotesRef = useRef(false);
+  const louisChapterPromptRef = useRef<string | null>(null);
+  const bibleGuideShownThisVisitRef = useRef(false);
 
   // Normalize markdown functions (reused from People/Places/Keywords pages)
   function normalizePersonMarkdown(markdown: string): string {
@@ -1162,15 +1160,13 @@ RULES:
       .replace(/Big Idea of the Chapter/gi, "") // Remove header text if present
       .trim();
 
-    // Extract first 1-2 sentences (up to 2 sentences)
+    // Extract first 3 sentences so the Louis chapter box feels more complete
     const sentences = summary.match(/[^.!?]+[.!?]+/g) || [];
     if (sentences.length > 0) {
-      // Take first 1-2 sentences
-      const selectedSentences = sentences.slice(0, 2);
+      const selectedSentences = sentences.slice(0, 3);
       summary = selectedSentences.join(" ").trim();
     } else if (summary.length > 0) {
-      // If no sentence-ending punctuation, take first 200 characters
-      summary = summary.substring(0, 200).trim();
+      summary = summary.substring(0, 320).trim();
     }
 
     return summary || "";
@@ -1638,11 +1634,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
   );
 
   useEffect(() => {
-    louisChapterPromptRef.current = null;
-    bibleGuideShownThisVisitRef.current = false;
-  }, [bookDisplayName, chapter]);
-
-  useEffect(() => {
+    return;
     if (!featureToursLoaded) return;
     if (!chapterSummaryLoaded) return;
 
@@ -2005,7 +1997,6 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
       setIsCompleted(true);
       triggerPoints(10);
-      sendChapterLouisMoment("completed");
       setIsSaving(false);
 
       // Trigger confetti animation
@@ -2288,7 +2279,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         </div>
 
         {/* LOUIS INSTRUCTION — above the control bar */}
-        {false ? <div className="mb-4 flex items-start gap-3">
+        {true ? <div className="mb-4 flex items-start gap-3">
           <LouisAvatar mood="bible" size={40} />
           <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
             <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
@@ -2367,7 +2358,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 </div>
               </div>
 
-              {/* Center: Plain text toggle + Mark finished / checklist */}
+              {/* Center: Plain text toggle + Mark finished */}
               <div className="hidden md:flex items-center justify-center gap-2">
                 <label className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 transition hover:bg-blue-50 hover:border-blue-200 select-none">
                   <input
@@ -2384,12 +2375,11 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     onClick={() => {
                       if (isSaving) return;
                       if (isCompleted) {
-                        sendChapterLouisMoment("checklist");
                         return;
                       }
                       void handleMarkFinished();
                     }}
-                    aria-label={isCompleted ? "Open chapter checklist" : "Mark chapter completed"}
+                    aria-label={isCompleted ? "Chapter completed" : "Mark chapter completed"}
                     className={`relative flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-bold transition ${
                       isCompleted
                         ? "bg-emerald-600 text-white hover:bg-emerald-700"
@@ -2400,11 +2390,11 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   >
                     <span className="text-base">{isCompleted ? "✅" : "☑️"}</span>
                     <span className="text-xs font-bold">
-                      {isCompleted ? "Chapter Checklist" : "Mark Chapter Completed"}
+                      {isCompleted ? "Chapter Completed" : "Mark Chapter Completed"}
                     </span>
                   </button>
                   <div className="pointer-events-none absolute left-1/2 top-full mt-2 z-50 hidden -translate-x-1/2 w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
-                    {isCompleted ? "Open your chapter checklist" : "Mark this chapter as completed"}
+                    {isCompleted ? "This chapter is completed" : "Mark this chapter as completed"}
                   </div>
                 </div>
               </div>
@@ -2544,12 +2534,11 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   onClick={() => {
                     if (isSaving) return;
                     if (isCompleted) {
-                      sendChapterLouisMoment("checklist");
                       return;
                     }
                     void handleMarkFinished();
                   }}
-                  aria-label={isCompleted ? "Open chapter checklist" : "Mark chapter completed"}
+                  aria-label={isCompleted ? "Chapter completed" : "Mark chapter completed"}
                   className={`flex min-h-[5.5rem] w-full items-center justify-between rounded-2xl border px-4 py-4 text-left text-white shadow-lg transition ${
                     isCompleted
                       ? "border-emerald-500 bg-emerald-600 shadow-emerald-200 hover:bg-emerald-700"
@@ -2560,10 +2549,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   >
                     <div className="flex flex-col">
                       <span className="text-sm font-extrabold uppercase tracking-[0.08em]">
-                        {isCompleted ? "Checklist" : "Mark Complete"}
+                        {isCompleted ? "Completed" : "Mark Complete"}
                       </span>
                       <span className="mt-1 text-xs font-medium text-blue-100">
-                        {isCompleted ? "Open chapter tasks" : "Finish this chapter"}
+                        {isCompleted ? "This chapter is finished" : "Finish this chapter"}
                       </span>
                     </div>
                     <span className="text-lg font-bold">{isCompleted ? "✓" : "☑"}</span>
@@ -2937,61 +2926,6 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           </div>
         </div>
       )}
-
-      {/* CONGRATULATIONS MODAL */}
-      {showCongratsModal && (
-        <CongratsModalWithConfetti
-          levelInfo={levelInfoForModal ?? undefined}
-          withConfetti={true}
-          onRequestClose={() => setShowCongratsModal(false)}
-          reviewDone={reviewDone}
-          triviaDone={triviaDone}
-          scrambledDone={scrambledDone}
-          onOpenReview={() => {
-            setShowCongratsModal(false);
-            openReviewModal();
-          }}
-          onOpenTrivia={() => {
-            setShowCongratsModal(false);
-            setShowTriviaModal(true);
-          }}
-          onOpenScrambled={() => {
-            setShowCongratsModal(false);
-            setShowScrambledModal(true);
-          }}
-          onOpenReflection={() => {
-            setShowCongratsModal(false);
-            openReflectionSection();
-          }}
-        />
-      )}
-
-      {showChecklistModal && (
-        <CongratsModalWithConfetti
-          withConfetti={false}
-          onRequestClose={() => setShowChecklistModal(false)}
-          reviewDone={reviewDone}
-          triviaDone={triviaDone}
-          scrambledDone={scrambledDone}
-          onOpenReview={() => {
-            setShowChecklistModal(false);
-            openReviewModal();
-          }}
-          onOpenTrivia={() => {
-            setShowChecklistModal(false);
-            setShowTriviaModal(true);
-          }}
-          onOpenScrambled={() => {
-            setShowChecklistModal(false);
-            setShowScrambledModal(true);
-          }}
-          onOpenReflection={() => {
-            setShowChecklistModal(false);
-            openReflectionSection();
-          }}
-        />
-      )}
-
       {/* FEATURED CHARACTER MODAL */}
       <FeaturedCharacterModal
         character={selectedCharacter}
