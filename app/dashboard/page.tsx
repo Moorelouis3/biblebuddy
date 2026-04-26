@@ -190,6 +190,10 @@ export default function DashboardPage() {
     return `bb:streak-motivation-seen:${currentUserId}:${dayKey}`;
   }
 
+  function getDashboardDailySequenceSeenKey(currentUserId: string, dayKey: string) {
+    return `bb:dashboard-daily-sequence-seen:${currentUserId}:${dayKey}`;
+  }
+
   function getStreakMotivation(streak: number) {
     const safeStreak = Math.max(0, Math.floor(streak));
     const toFire = Math.max(0, 30 - safeStreak);
@@ -1283,7 +1287,13 @@ export default function DashboardPage() {
 
     const dayKey = getBibleBuddyLocalDayKey();
     const seenKey = getStreakMotivationSeenKey(userId, dayKey);
+    const dailySequenceSeenKey = getDashboardDailySequenceSeenKey(userId, dayKey);
+    if (window.localStorage.getItem(dailySequenceSeenKey) === "1") {
+      setLouisDailyTaskCycleStartedAt(cycleStartedAt);
+      return;
+    }
     if (window.localStorage.getItem(seenKey) === "1") {
+      window.localStorage.setItem(dailySequenceSeenKey, "1");
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
       return;
     }
@@ -1292,6 +1302,7 @@ export default function DashboardPage() {
     setShowStreakMotivationTaskPrompt(true);
     setShowStreakMotivationModal(true);
     window.localStorage.setItem(seenKey, "1");
+    window.localStorage.setItem(dailySequenceSeenKey, "1");
   }, [userId, profile, showVerseOfTheDayModal]);
 
   useEffect(() => {

@@ -895,6 +895,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setShowBuddyCelebration(true);
   }
 
+  function getBuddyCelebrationSeenKey(notificationId: string) {
+    return `bb:buddy-celebration-seen:${notificationId}`;
+  }
+
   async function fetchNotifications(currentUserId: string) {
     const { data } = await supabase
       .from("notifications")
@@ -910,10 +914,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       setNotifications(visibleNotifications);
       // Trigger celebration for the sender when they see an unread buddy_accepted notification
       const unreadAccepted = visibleNotifications.find(
-        (n) => n.type === "buddy_accepted" && !n.is_read && n.from_user_id && !shownCelebrationIds.current.has(n.id)
+        (n) =>
+          n.type === "buddy_accepted" &&
+          !n.is_read &&
+          n.from_user_id &&
+          !shownCelebrationIds.current.has(n.id) &&
+          (typeof window === "undefined" || window.localStorage.getItem(getBuddyCelebrationSeenKey(n.id)) !== "1")
       );
       if (unreadAccepted && unreadAccepted.from_user_id) {
         shownCelebrationIds.current.add(unreadAccepted.id);
+        if (typeof window !== "undefined") {
+          window.localStorage.setItem(getBuddyCelebrationSeenKey(unreadAccepted.id), "1");
+        }
         // Mark it read silently
         void supabase.from("notifications").update({ is_read: true }).eq("id", unreadAccepted.id);
         setNotifications((prev) =>
