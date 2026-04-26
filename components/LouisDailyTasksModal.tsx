@@ -42,6 +42,10 @@ type DevotionalRow = {
   total_days: number | null;
 };
 
+type ProfileStatsDevotionalRow = {
+  free_devotional_id?: string | null;
+};
+
 type DevotionalDayRow = {
   devotional_id: string;
   day_number: number;
@@ -114,56 +118,146 @@ function formatCompletedAtLabel(iso: string | null | undefined) {
   return `Done ${date.toLocaleDateString("en-US", { month: "short", day: "numeric" })}`;
 }
 
+function buildChooseDevotionalChecklistData(userId: string): ChecklistData {
+  return {
+    title: "Daily Bible Task",
+    streakLine: "Today still counts. Let’s build momentum again.",
+    contextLine: "Choose a devotional first so I can build your daily Bible tasks.",
+    timeLeftLabel: formatCountdown(getLouisDailyTaskTimeLeftMs(userId)),
+    progressLabel: "0 out of 5 completed",
+    summaryLine: "Choose a devotional first to unlock today’s full checklist.",
+    bonusLine: "Pick a devotional to get your 5 daily Bible tasks.",
+    nextTaskTitle: "Choose a Devotional",
+    tasks: [
+      {
+        kind: "devotional",
+        title: "Choose a Devotional",
+        pointsLabel: "Start here",
+        href: "/devotionals",
+        done: false,
+      },
+      {
+        kind: "reading",
+        title: "Read today’s chapter",
+        pointsLabel: "+5 pts",
+        href: null,
+        done: false,
+        disabled: true,
+      },
+      {
+        kind: "notes",
+        title: "Review today’s notes",
+        pointsLabel: "+5 pts",
+        href: null,
+        done: false,
+        disabled: true,
+      },
+      {
+        kind: "trivia",
+        title: "Play today’s trivia",
+        pointsLabel: "Up to +5",
+        href: null,
+        done: false,
+        disabled: true,
+      },
+      {
+        kind: "scrambled",
+        title: "Play today’s scrambled",
+        pointsLabel: "Up to +5",
+        href: null,
+        done: false,
+        disabled: true,
+      },
+    ],
+    completedCount: 0,
+    allDone: false,
+    bonusAwarded: false,
+  };
+}
+
 export async function fetchLouisDailyChecklistData(
   userId: string,
   currentStreak: number,
   cycleStartedAt: string,
 ): Promise<ChecklistData> {
-  const { data: completedRows, error: completedError } = await supabase
-    .from("devotional_progress")
-    .select("devotional_id, day_number, is_completed, reading_completed, completed_at")
-    .eq("user_id", userId)
-    .eq("is_completed", true)
-    .order("completed_at", { ascending: false });
+  const [{ data: progressRows, error: progressError }, { data: profileStatsRow, error: profileStatsError }] = await Promise.all([
+    supabase
+      .from("devotional_progress")
+      .select("devotional_id, day_number, is_completed, reading_completed, completed_at")
+      .eq("user_id", userId)
+      .order("completed_at", { ascending: false }),
+    supabase
+      .from("profile_stats")
+      .select("free_devotional_id")
+      .eq("user_id", userId)
+      .maybeSingle(),
+  ]);
 
-  if (completedError) throw completedError;
+  if (progressError) throw progressError;
+  if (profileStatsError) throw profileStatsError;
+
+  const completedRows = (progressRows || []).filter((row: DevotionalProgressRow) => row.is_completed === true);
+
+  const maxStartedByDevotional = new Map<string, number>();
+  (progressRows || []).forEach((row: DevotionalProgressRow) => {
+    const current = maxStartedByDevotional.get(row.devotional_id) ?? 0;
+    if (row.day_number > current) {
+      maxStartedByDevotional.set(row.devotional_id, row.day_number);
+    }
+  });
 
   const maxByDevotional = new Map<string, number>();
-  (completedRows || []).forEach((row: DevotionalProgressRow) => {
+  completedRows.forEach((row: DevotionalProgressRow) => {
     const current = maxByDevotional.get(row.devotional_id) ?? 0;
     if (row.day_number > current) {
       maxByDevotional.set(row.devotional_id, row.day_number);
     }
   });
 
-  const devotionalIds = [...new Set((completedRows || []).map((row: DevotionalProgressRow) => row.devotional_id))];
-  const devotionalsResponse = devotionalIds.length > 0
-    ? await supabase.from("devotionals").select("id, title, total_days").in("id", devotionalIds)
-    : await supabase.from("devotionals").select("id, title, total_days").limit(30);
+  const freeDevotionalId = (profileStatsRow as ProfileStatsDevotionalRow | null)?.free_devotional_id ?? null;
 
-  if (devotionalsResponse.error) throw devotionalsResponse.error;
+  const { data: allDevotionals, error: allDevotionalsError } = await supabase
+    .from("devotionals")
+    .select("id, title, total_days")
+    .limit(50);
 
-  const devotionals = (devotionalsResponse.data || []) as DevotionalRow[];
+  if (allDevotionalsError) throw allDevotionalsError;
+
+  const devotionals = (allDevotionals || []) as DevotionalRow[];
+  const hasChosenOrStartedDevotional = Boolean(freeDevotionalId) || (progressRows || []).length > 0;
+
+  if (!hasChosenOrStartedDevotional) {
+    return buildChooseDevotionalChecklistData(userId);
+  }
+
   const recommendedDevotional =
     devotionals.find((devotional) => {
       const maxDay = maxByDevotional.get(devotional.id) ?? 0;
       return maxDay < (devotional.total_days || 0);
-    }) ?? pickRecommendedDevotional(devotionals);
+    }) ??
+    (freeDevotionalId ? devotionals.find((devotional) => devotional.id === freeDevotionalId) ?? null : null) ??
+    pickRecommendedDevotional(devotionals);
 
   if (!recommendedDevotional) {
-    throw new Error("No devotional is available for today's checklist.");
+    return buildChooseDevotionalChecklistData(userId);
   }
 
   const storedTarget = getLouisDailyTaskTarget(userId, cycleStartedAt);
   const activeDevotional =
     (storedTarget
       ? devotionals.find((devotional) => devotional.id === storedTarget.devotionalId) ?? null
-      : null) ?? recommendedDevotional;
+      : null) ??
+    (freeDevotionalId ? devotionals.find((devotional) => devotional.id === freeDevotionalId) ?? null : null) ??
+    recommendedDevotional;
 
+  const activeTotalDays = Math.max(1, activeDevotional.total_days || 1);
+  const computedNextDay = Math.min((maxByDevotional.get(activeDevotional.id) ?? 0) + 1, activeTotalDays);
   const nextDayNumber =
-    storedTarget?.devotionalId === activeDevotional.id
+    storedTarget?.devotionalId === activeDevotional.id &&
+    storedTarget.dayNumber >= 1 &&
+    storedTarget.dayNumber <= activeTotalDays
       ? storedTarget.dayNumber
-      : (maxByDevotional.get(activeDevotional.id) ?? 0) + 1;
+      : computedNextDay;
 
   if (!storedTarget || storedTarget.devotionalId !== activeDevotional.id || storedTarget.dayNumber !== nextDayNumber) {
     rememberLouisDailyTaskTarget(userId, cycleStartedAt, {
@@ -181,7 +275,7 @@ export async function fetchLouisDailyChecklistData(
 
   if (dayError) throw dayError;
   if (!dayRow) {
-    throw new Error("Could not find the next devotional day for this checklist.");
+    return buildChooseDevotionalChecklistData(userId);
   }
 
   const day = dayRow as DevotionalDayRow;
