@@ -11,6 +11,7 @@
 import { supabase } from "./supabaseClient";
 import type { ActionType } from "./actionTypes";
 import { syncCurrentStreakToProfileStats } from "./profileStats";
+import { getBibleBuddyLocalDayKey } from "./louisDailyFlow";
 
 /**
  * Log an action to master_actions table ONLY
@@ -105,7 +106,7 @@ export async function recordAction(
     await logActionToMasterActions(userId, actionType, actionLabel, username);
 
     // STEP 2: Update profile_stats
-    const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+    const today = getBibleBuddyLocalDayKey();
 
     // Get current stats
     const { data: currentStats, error: fetchError } = await supabase

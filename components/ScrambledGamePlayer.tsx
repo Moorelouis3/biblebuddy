@@ -82,7 +82,8 @@ export default function ScrambledGamePlayer({
   const [bankLetters, setBankLetters] = useState<LetterTile[]>([]);
   const [answerSlots, setAnswerSlots] = useState<Array<LetterTile | null>>([]);
   const [revealedLetters, setRevealedLetters] = useState(0);
-  const [solvedCount, setSolvedCount] = useState(0);
+  const [completedSolveCount, setCompletedSolveCount] = useState(0);
+  const [scoredSolveCount, setScoredSolveCount] = useState(0);
   const [earnedSolveCount, setEarnedSolveCount] = useState(0);
   const [status, setStatus] = useState<"idle" | "incorrect" | "correct">("idle");
   const [showResults, setShowResults] = useState(false);
@@ -94,6 +95,7 @@ export default function ScrambledGamePlayer({
   const [celebrateKey, setCelebrateKey] = useState(0);
   const [louieLine, setLouieLine] = useState("Tap the letters below and let's solve this word together.");
   const [recentReveal, setRecentReveal] = useState<{ index: number; letter: string; key: number } | null>(null);
+  const [pointNotice, setPointNotice] = useState<string | null>(null);
   const [shareState, setShareState] = useState<"idle" | "sharing" | "shared" | "limited" | "error">("idle");
   const [shareMessage, setShareMessage] = useState<string | null>(null);
   const [buddyRounds, setBuddyRounds] = useState<ScrambledBuddyRound[]>([]);
@@ -127,6 +129,7 @@ export default function ScrambledGamePlayer({
     setRevealedLetters(0);
     setLouieLine("Tap the letters below and let's solve this word together.");
     setRecentReveal(null);
+    setPointNotice(null);
   }, [question]);
 
   useEffect(() => {
@@ -230,12 +233,12 @@ export default function ScrambledGamePlayer({
     if (!showResults || !userId) return;
 
     void trackNavigationActionOnce({
-      userId,
-      username,
-      actionType: ACTION_TYPE.scrambled_chapter_completed,
-      actionLabel: `${bookName} ${chapter.chapter} - ${solvedCount}/${chapter.questions.length}`,
-      dedupeKey: `scrambled-chapter-completed:${bookSlug}:${chapter.chapter}`,
-    })
+        userId,
+        username,
+        actionType: ACTION_TYPE.scrambled_chapter_completed,
+        actionLabel: `${bookName} ${chapter.chapter} - ${scoredSolveCount}/${chapter.questions.length}`,
+        dedupeKey: `scrambled-chapter-completed:${bookSlug}:${chapter.chapter}`,
+      })
       .then((logged) => {
         if (logged) {
           triggerPoints(earnedSolveCount);
@@ -244,7 +247,7 @@ export default function ScrambledGamePlayer({
       .catch((error) => {
         console.error("[NAV] Failed to track Scrambled chapter completion:", error);
       });
-  }, [showResults, userId, username, bookName, bookSlug, chapter.chapter, chapter.questions.length, solvedCount, earnedSolveCount]);
+  }, [showResults, userId, username, bookName, bookSlug, chapter.chapter, chapter.questions.length, scoredSolveCount, earnedSolveCount]);
 
   useEffect(() => {
     if (!showResults) return;
@@ -257,10 +260,10 @@ export default function ScrambledGamePlayer({
       : `/bible-study-games/scrambled/${bookSlug}/${chapter.chapter}`;
 
     dispatchLouisMoment({
-      message:
-        solvedCount === chapter.questions.length
-          ? `You finished Scrambled for ${bookName} ${chapter.chapter} and solved every word.\n\nThat's a strong way to lock key words into memory.`
-          : `You finished Scrambled for ${bookName} ${chapter.chapter} and solved ${solvedCount} out of ${chapter.questions.length} words.\n\nThat still counts as real work. If you want, you can keep building on it from here.`,
+        message:
+          scoredSolveCount === chapter.questions.length
+            ? `You finished Scrambled for ${bookName} ${chapter.chapter} and solved every word.\n\nThat's a strong way to lock key words into memory.`
+            : `You finished Scrambled for ${bookName} ${chapter.chapter} and solved ${scoredSolveCount} out of ${chapter.questions.length} words.\n\nThat still counts as real work. If you want, you can keep building on it from here.`,
       replies: [
         {
           id: `scrambled-trivia-${bookSlug}-${chapter.chapter}`,
@@ -279,7 +282,7 @@ export default function ScrambledGamePlayer({
         },
       ],
     });
-  }, [showResults, solvedCount, chapter.questions.length, chapter.chapter, bookName, bookSlug, nextChapterPack]);
+  }, [showResults, scoredSolveCount, chapter.questions.length, chapter.chapter, bookName, bookSlug, nextChapterPack]);
 
   const visibleBuddyRounds = useMemo(() => buddyRounds.slice(0, 6), [buddyRounds]);
 
@@ -313,12 +316,12 @@ export default function ScrambledGamePlayer({
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
-        body: JSON.stringify({
-          bookSlug,
-          chapter: chapter.chapter,
-          score: solvedCount,
-          total: chapter.questions.length,
-        }),
+          body: JSON.stringify({
+            bookSlug,
+            chapter: chapter.chapter,
+            score: scoredSolveCount,
+            total: chapter.questions.length,
+          }),
       });
 
       const payload = await response.json().catch(() => ({}));
@@ -351,7 +354,11 @@ export default function ScrambledGamePlayer({
   };
 
   const markCorrect = () => {
-    setSolvedCount((value) => value + 1);
+    const scoredWord = hintCount === 0;
+    setCompletedSolveCount((value) => value + 1);
+    if (scoredWord) {
+      setScoredSolveCount((value) => value + 1);
+    }
     setStatus("correct");
     setCelebrateKey((value) => value + 1);
     setLouieLine(`Nice work. ${question.answer} is right.`);
@@ -406,7 +413,7 @@ export default function ScrambledGamePlayer({
         questionId: question.id,
         answer: question.answer,
         reference: question.reference,
-        revealedLettersUsed: revealedLetters,
+        hintCountUsed: hintCount,
       }),
     });
 
@@ -483,6 +490,7 @@ export default function ScrambledGamePlayer({
     if (hintCount === 0) {
       setHintCount(1);
       setLouieLine(question.clue);
+      setPointNotice("You can still solve this word, but it will count for progress only now.");
       return;
     }
 
@@ -499,6 +507,11 @@ export default function ScrambledGamePlayer({
     setBankLetters(nextBank);
     setStatus("idle");
     setLouieLine(question.clue);
+    setPointNotice(
+      hintCount + 1 >= 1
+        ? "You can still solve this word, but it will count for progress only now."
+        : null
+    );
     setRecentReveal((current) => ({
       index: revealedIndex,
       letter: revealedLetter,
@@ -539,11 +552,11 @@ export default function ScrambledGamePlayer({
   }, [question.answer, question.id, question.sourceLine]);
 
   const encouragement =
-    solvedCount === chapter.questions.length
+    scoredSolveCount === chapter.questions.length
       ? "Perfect chapter run."
-      : solvedCount >= Math.max(4, chapter.questions.length - 1)
+      : scoredSolveCount >= Math.max(4, chapter.questions.length - 1)
         ? "Strong work. You really know this chapter."
-        : solvedCount >= Math.ceil(chapter.questions.length / 2)
+        : scoredSolveCount >= Math.ceil(chapter.questions.length / 2)
           ? "Solid progress. The chapter is starting to stick."
           : "Good first pass. Play it again and the words will lock in faster.";
 
@@ -570,11 +583,15 @@ export default function ScrambledGamePlayer({
 
           <div className="mt-8 rounded-[24px] border border-[#d8e4fb] bg-[#f6f9ff] px-6 py-5">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#426ab2]">Words correct</p>
-            <p className="mt-2 text-5xl font-bold text-[#1f4f9e]">{solvedCount} / {chapter.questions.length}</p>
+            <p className="mt-2 text-5xl font-bold text-[#1f4f9e]">{scoredSolveCount} / {chapter.questions.length}</p>
             <p className="mt-3 text-sm text-[#496a9b]">{encouragement}</p>
             {earnedSolveCount > 0 ? (
               <p className="mt-3 text-sm font-semibold text-emerald-700">
                 You earned +{earnedSolveCount} points for new solved words.
+              </p>
+            ) : completedSolveCount > scoredSolveCount ? (
+              <p className="mt-3 text-sm text-[#496a9b]">
+                Hints helped on this round, so those words counted for progress but not for points.
               </p>
             ) : (
               <p className="mt-3 text-sm text-[#496a9b]">
@@ -770,7 +787,7 @@ export default function ScrambledGamePlayer({
           <div className="rounded-[30px] border border-[#d8e4fb] bg-white px-5 py-5 shadow-sm">
             <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-gray-700">
               <p className="font-semibold">Word {currentQuestionIndex + 1} of {chapter.questions.length}</p>
-              <p>Number of words correct: {solvedCount}</p>
+              <p>Number of words correct: {scoredSolveCount}</p>
             </div>
 
             <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-[#dfe8f8]">
@@ -794,6 +811,10 @@ export default function ScrambledGamePlayer({
                 {hintLabel}
               </button>
             </div>
+
+            {pointNotice ? (
+              <p className="mt-3 text-sm font-medium text-[#c85252]">{pointNotice}</p>
+            ) : null}
 
             <div className="relative mt-5">
               {status === "correct" ? (
@@ -910,7 +931,7 @@ export default function ScrambledGamePlayer({
             <p className="mt-4 text-sm leading-7 text-gray-700">Tap letters below to build the word in the correct order.</p>
             <p className="mt-2 text-sm leading-7 text-gray-700">Tap a placed letter if you want to send it back and try another spot.</p>
             <p className="mt-2 text-sm leading-7 text-gray-700">Every time you ask for more help, Louis can place another letter for you.</p>
-            <p className="mt-2 text-sm leading-7 text-gray-700">Even if Louis reveals the whole word, it still counts. The goal is to learn the Scripture word.</p>
+            <p className="mt-2 text-sm leading-7 text-gray-700">If you use any hint on a word, you can still finish it for progress, but that word will not count as correct for points.</p>
             <button
               type="button"
               onClick={() => setShowHelp(false)}

@@ -550,12 +550,13 @@ export async function syncCurrentStreakToProfileStats(
 ): Promise<StreakData> {
   if (typeof window !== "undefined") {
     try {
+      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       const response = await fetch("/api/streak/current", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId }),
+        body: JSON.stringify({ userId, timeZone }),
       });
 
       const payload = await response.json().catch(() => null);

@@ -42,10 +42,21 @@ const STREAK_ACTION_TYPES: Set<string> = new Set([
   ACTION_TYPE.study_group_bible_study_card_opened,
 ]);
 
-export function getStreakDateKey(dateInput: Date | string) {
+function resolveStreakTimeZone(timeZone?: string) {
+  if (!timeZone) return STREAK_TIME_ZONE;
+  try {
+    new Intl.DateTimeFormat("en-US", { timeZone }).format(new Date());
+    return timeZone;
+  } catch {
+    return STREAK_TIME_ZONE;
+  }
+}
+
+export function getStreakDateKey(dateInput: Date | string, timeZone?: string) {
   const date = typeof dateInput === "string" ? new Date(dateInput) : dateInput;
+  const resolvedTimeZone = resolveStreakTimeZone(timeZone);
   const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: STREAK_TIME_ZONE,
+    timeZone: resolvedTimeZone,
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -57,12 +68,13 @@ export function getStreakDateKey(dateInput: Date | string) {
   return `${values.year}-${values.month}-${values.day}`;
 }
 
-export function calculateStreakFromCompletedDates(completedDates: Set<string>) {
+export function calculateStreakFromCompletedDates(completedDates: Set<string>, timeZone?: string) {
+  const resolvedTimeZone = resolveStreakTimeZone(timeZone);
   const today = new Date();
-  const todayKey = getStreakDateKey(today);
+  const todayKey = getStreakDateKey(today, resolvedTimeZone);
   const yesterday = new Date(today);
   yesterday.setUTCDate(yesterday.getUTCDate() - 1);
-  const yesterdayKey = getStreakDateKey(yesterday);
+  const yesterdayKey = getStreakDateKey(yesterday, resolvedTimeZone);
 
   let cursor: Date;
   if (completedDates.has(todayKey)) {
@@ -74,12 +86,12 @@ export function calculateStreakFromCompletedDates(completedDates: Set<string>) {
   }
 
   let currentStreak = 0;
-  let cursorKey = getStreakDateKey(cursor);
+  let cursorKey = getStreakDateKey(cursor, resolvedTimeZone);
 
   while (completedDates.has(cursorKey)) {
     currentStreak += 1;
     cursor.setUTCDate(cursor.getUTCDate() - 1);
-    cursorKey = getStreakDateKey(cursor);
+    cursorKey = getStreakDateKey(cursor, resolvedTimeZone);
   }
 
   return currentStreak;
@@ -159,7 +171,9 @@ export async function getLiveStreakMapForUsers(
   supabase: SupabaseClient,
   userIds: string[],
   lookbackDays = 400,
+  timeZone?: string,
 ) {
+  const resolvedTimeZone = resolveStreakTimeZone(timeZone);
   const normalizedIds = Array.from(new Set(userIds.filter(Boolean)));
   if (normalizedIds.length === 0) return new Map<string, number>();
 
@@ -185,17 +199,20 @@ export async function getLiveStreakMapForUsers(
   actionRows.forEach((row) => {
     if (!row.user_id) return;
     if (!STREAK_ACTION_TYPES.has(row.action_type as typeof ACTION_TYPE[keyof typeof ACTION_TYPE])) return;
-    ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at));
+    ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at, resolvedTimeZone));
   });
 
   appLoginRows.forEach((row) => {
     if (!row.user_id) return;
-    ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at));
+    ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at, resolvedTimeZone));
   });
 
   const streakMap = new Map<string, number>();
   normalizedIds.forEach((userId) => {
-    streakMap.set(userId, calculateStreakFromCompletedDates(completedDatesByUser.get(userId) || new Set<string>()));
+    streakMap.set(
+      userId,
+      calculateStreakFromCompletedDates(completedDatesByUser.get(userId) || new Set<string>(), resolvedTimeZone),
+    );
   });
 
   return streakMap;
@@ -204,7 +221,9 @@ export async function getLiveStreakMapForUsers(
 export async function getLiveStreakMapForRecentUsers(
   supabase: SupabaseClient,
   lookbackDays = 60,
+  timeZone?: string,
 ) {
+  const resolvedTimeZone = resolveStreakTimeZone(timeZone);
   const since = new Date();
   since.setUTCDate(since.getUTCDate() - lookbackDays);
   const sinceIso = since.toISOString();
@@ -264,17 +283,17 @@ export async function getLiveStreakMapForRecentUsers(
   actionRows.forEach((row) => {
     if (!row.user_id) return;
     if (!STREAK_ACTION_TYPES.has(row.action_type)) return;
-    ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at));
+    ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at, resolvedTimeZone));
   });
 
   appLoginRows.forEach((row) => {
     if (!row.user_id) return;
-    ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at));
+    ensureUserSet(row.user_id).add(getStreakDateKey(row.created_at, resolvedTimeZone));
   });
 
   const streakMap = new Map<string, number>();
   completedDatesByUser.forEach((completedDates, userId) => {
-    streakMap.set(userId, calculateStreakFromCompletedDates(completedDates));
+    streakMap.set(userId, calculateStreakFromCompletedDates(completedDates, resolvedTimeZone));
   });
 
   return streakMap;

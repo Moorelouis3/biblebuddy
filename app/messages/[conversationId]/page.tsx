@@ -458,6 +458,7 @@ export default function ConversationPage({
     setPhotoPreview({ file, url: objectUrl });
     // Reset file input so same file can be selected again
     e.target.value = "";
+    inputRef.current?.focus();
   }
 
   async function handleSendPhoto() {
@@ -525,15 +526,22 @@ export default function ConversationPage({
   }
 
   async function handleSend() {
-    if (!newMessage.trim() || !userId || sending || blockState) return;
+    const photoState = photoPreview;
     const content = newMessage.trim();
-    setNewMessage("");
+    if ((!content && !photoState) || !userId || sending || uploadingPhoto || blockState) return;
+
+    if (content) setNewMessage("");
+    if (photoState) {
+      setPhotoPreview(null);
+      setUploadingPhoto(true);
+    }
     setSending(true);
 
     const optimisticMsg: Message = {
       id: `temp-${Date.now()}`,
       sender_id: userId,
       content,
+      image_url: photoState?.url ?? null,
       read_at: null,
       action_label: null,
       action_href: null,
@@ -543,12 +551,26 @@ export default function ConversationPage({
     setMessages((prev) => [...prev, optimisticMsg]);
 
     try {
+      let imageUrl: string | null = null;
+      if (photoState) {
+        const ext = photoState.file.name.split(".").pop() ?? "jpg";
+        const path = `dm-photos/${conversationId}/${userId}-${Date.now()}.${ext}`;
+        const { error: uploadError } = await supabase.storage.from("post-media").upload(path, photoState.file, { upsert: false });
+        if (uploadError) {
+          console.error("[DM PHOTO] Upload failed:", uploadError);
+          throw uploadError;
+        }
+        const { data: urlData } = supabase.storage.from("post-media").getPublicUrl(path);
+        imageUrl = urlData?.publicUrl ?? null;
+      }
+
       const { data: inserted, error } = await supabase
         .from("messages")
         .insert({
           conversation_id: conversationId,
           sender_id: userId,
           content,
+          image_url: imageUrl,
         })
         .select("id, sender_id, content, image_url, read_at, created_at")
         .single();
@@ -557,17 +579,25 @@ export default function ConversationPage({
         console.error("[MESSAGES] Send error:", error);
         setMessages((prev) => prev.filter((message) => message.id !== optimisticMsg.id));
         setNewMessage(content);
+        if (photoState) setPhotoPreview(photoState);
         return;
       }
 
       const normalizedInserted: Message = { ...inserted, action_label: null, action_href: null };
       setMessages((prev) => prev.map((message) => (message.id === optimisticMsg.id ? normalizedInserted : message)));
 
+      const previewText =
+        content.length > 0
+          ? content.length > 80
+            ? `${content.slice(0, 80)}...`
+            : content
+          : "Photo";
+
       await supabase
         .from("conversations")
         .update({
           last_message_at: inserted.created_at,
-          last_message_preview: content.length > 80 ? `${content.slice(0, 80)}...` : content,
+          last_message_preview: previewText,
         })
         .eq("id", conversationId);
 
@@ -584,7 +614,7 @@ export default function ConversationPage({
           },
           body: JSON.stringify({
             conversationId,
-            preview: content.length > 80 ? `${content.slice(0, 80)}...` : content,
+            preview: previewText,
           }),
         }).catch((error) => {
           console.warn("[MESSAGES] Could not create direct message notification:", error);
@@ -592,8 +622,17 @@ export default function ConversationPage({
       }
 
       window.dispatchEvent(new Event("bb:refresh-unread-messages"));
+      if (photoState) {
+        URL.revokeObjectURL(photoState.url);
+      }
+    } catch (error) {
+      console.error("[MESSAGES] Send failed:", error);
+      setMessages((prev) => prev.filter((message) => message.id !== optimisticMsg.id));
+      setNewMessage(content);
+      if (photoState) setPhotoPreview(photoState);
     } finally {
       setSending(false);
+      setUploadingPhoto(false);
       inputRef.current?.focus();
     }
   }
@@ -1128,15 +1167,6 @@ export default function ConversationPage({
                         ×
                       </button>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => void handleSendPhoto()}
-                      disabled={uploadingPhoto}
-                      className="flex h-10 items-center gap-2 rounded-full px-4 text-sm font-semibold text-white transition disabled:opacity-50"
-                      style={{ backgroundColor: "#4a9b6f" }}
-                    >
-                      {uploadingPhoto ? "Sending..." : "Send Photo"}
-                    </button>
                   </div>
                 )}
                 <div className="mx-auto flex max-w-3xl items-end gap-2">
@@ -1173,9 +1203,9 @@ export default function ConversationPage({
                   <button
                     type="button"
                     onClick={() => void handleSend()}
-                    disabled={!newMessage.trim() || sending}
+                    disabled={(!newMessage.trim() && !photoPreview) || sending || uploadingPhoto}
                     className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-white transition disabled:opacity-40"
-                    style={{ backgroundColor: "#4a9b6f" }}
+                    style={{ backgroundColor: (newMessage.trim() || photoPreview) ? "#4a9b6f" : "#cbd5e1" }}
                   >
                     <svg className="h-5 w-5 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />

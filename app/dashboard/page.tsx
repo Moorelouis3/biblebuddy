@@ -154,6 +154,7 @@ export default function DashboardPage() {
   const [showVerseOfTheDayModal, setShowVerseOfTheDayModal] = useState(false);
   const [showStreakMotivationModal, setShowStreakMotivationModal] = useState(false);
   const [showStreakMotivationTaskPrompt, setShowStreakMotivationTaskPrompt] = useState(false);
+  const [pendingDailyStreakSequence, setPendingDailyStreakSequence] = useState(false);
   const [showLouisDailyTasksModal, setShowLouisDailyTasksModal] = useState(false);
   const [louisDailyTaskCycleStartedAt, setLouisDailyTaskCycleStartedAt] = useState<string | null>(null);
   const [showDailyTaskCelebrationModal, setShowDailyTaskCelebrationModal] = useState(false);
@@ -192,6 +193,10 @@ export default function DashboardPage() {
 
   function getDashboardDailySequenceSeenKey(currentUserId: string, dayKey: string) {
     return `bb:dashboard-daily-sequence-seen:${currentUserId}:${dayKey}`;
+  }
+
+  function getStreakPointsShownKey(currentUserId: string, dayKey: string) {
+    return `bb:streak-points-shown:${currentUserId}:${dayKey}`;
   }
 
   function getStreakMotivation(streak: number) {
@@ -1123,8 +1128,19 @@ export default function DashboardPage() {
           return total + (match ? Number(match[1]) || 0 : 0);
         }, 0);
 
+        const streakAwardedPoints = (actionsResult.data || []).reduce((total, row) => {
+          const match = typeof row?.action_label === "string"
+            ? row.action_label.match(/^streak_day:(\d+):\d{4}-\d{2}-\d{2}$/)
+            : null;
+          return total + (match ? Number(match[1]) || 0 : 0);
+        }, 0);
+
         const actionTypes = (actionsResult.data || [])
           .filter((row) => row?.action_label !== JESSICA_BONUS_ACTION_LABEL)
+          .filter((row) => {
+            if (row?.action_type !== ACTION_TYPE.scrambled_word_answered) return true;
+            return typeof row?.action_label === "string" ? !row.action_label.includes("[no-point]") : true;
+          })
           .map((row) => row.action_type)
           .filter((actionType): actionType is string => typeof actionType === "string" && actionType !== "group_message_sent");
 
@@ -1146,7 +1162,7 @@ export default function DashboardPage() {
           groupCommentCount,
           groupLikeGivenCount,
           likesReceivedCount: groupLikesReceivedCount + feedLikesReceivedCount,
-          streakBonusPoints: Math.max(0, resolvedCurrentStreak),
+          streakBonusPoints: streakAwardedPoints,
           manualBonusPoints,
         });
 
@@ -1257,7 +1273,11 @@ export default function DashboardPage() {
   useEffect(() => {
     if (!userId || !profile) return;
     const today = getBibleBuddyLocalDayKey();
-    setShowVerseOfTheDayModal(profile.verse_of_the_day_shown !== today);
+    const shouldShowVerse = profile.verse_of_the_day_shown !== today;
+    setShowVerseOfTheDayModal(shouldShowVerse);
+    if (!shouldShowVerse) {
+      setPendingDailyStreakSequence(false);
+    }
   }, [userId, profile]);
 
   useEffect(() => {
@@ -1279,31 +1299,51 @@ export default function DashboardPage() {
   }, [showVerseOfTheDayModal]);
 
   useEffect(() => {
-    if (!userId || !profile || showVerseOfTheDayModal || typeof window === "undefined") return;
+    if (
+      !userId ||
+      !profile ||
+      !pendingDailyStreakSequence ||
+      showVerseOfTheDayModal ||
+      typeof window === "undefined"
+    ) return;
     const cycleStartedAt = hasActiveLouisDailyTaskCycle(userId)
       ? getLouisDailyTaskCycleStartedAt(userId)
       : ensureLouisDailyTaskCycle(userId);
-    if (!cycleStartedAt) return;
+    if (!cycleStartedAt) {
+      setPendingDailyStreakSequence(false);
+      return;
+    }
 
     const dayKey = getBibleBuddyLocalDayKey();
     const seenKey = getStreakMotivationSeenKey(userId, dayKey);
     const dailySequenceSeenKey = getDashboardDailySequenceSeenKey(userId, dayKey);
     if (window.localStorage.getItem(dailySequenceSeenKey) === "1") {
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
+      setPendingDailyStreakSequence(false);
       return;
     }
     if (window.localStorage.getItem(seenKey) === "1") {
       window.localStorage.setItem(dailySequenceSeenKey, "1");
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
+      setPendingDailyStreakSequence(false);
       return;
     }
 
     setLouisDailyTaskCycleStartedAt(cycleStartedAt);
     setShowStreakMotivationTaskPrompt(true);
     setShowStreakMotivationModal(true);
+    const streakPointsShownKey = getStreakPointsShownKey(userId, dayKey);
+    if (window.localStorage.getItem(streakPointsShownKey) !== "1") {
+      const streakPoints = Math.min(30, Math.max(0, profile.current_streak ?? 0));
+      if (streakPoints > 0) {
+        triggerPoints(streakPoints);
+      }
+      window.localStorage.setItem(streakPointsShownKey, "1");
+    }
     window.localStorage.setItem(seenKey, "1");
     window.localStorage.setItem(dailySequenceSeenKey, "1");
-  }, [userId, profile, showVerseOfTheDayModal]);
+    setPendingDailyStreakSequence(false);
+  }, [userId, profile, pendingDailyStreakSequence, showVerseOfTheDayModal]);
 
   useEffect(() => {
     if (!userId || typeof window === "undefined") return;
@@ -1680,6 +1720,7 @@ export default function DashboardPage() {
             const today = getBibleBuddyLocalDayKey();
             setShowVerseOfTheDayModal(false);
             setProfile((prev) => (prev ? { ...prev, verse_of_the_day_shown: today } : prev));
+            setPendingDailyStreakSequence(true);
           }}
         isReturningUser={true}
         userId={userId}

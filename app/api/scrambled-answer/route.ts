@@ -15,7 +15,7 @@ const supabase = createClient(
 
 export async function POST(request: NextRequest) {
   try {
-    const { userId, bookName, bookSlug, chapter, questionId, answer, reference, username, revealedLettersUsed } = await request.json();
+    const { userId, bookName, bookSlug, chapter, questionId, answer, reference, username, hintCountUsed } = await request.json();
 
     if (!userId || !bookName || !bookSlug || !chapter || !questionId || !answer) {
       return NextResponse.json(
@@ -24,13 +24,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const revealedLettersCount =
-      typeof revealedLettersUsed === "number" && Number.isFinite(revealedLettersUsed)
-        ? Math.max(0, Math.floor(revealedLettersUsed))
+    const hintCount =
+      typeof hintCountUsed === "number" && Number.isFinite(hintCountUsed)
+        ? Math.max(0, Math.floor(hintCountUsed))
         : 0;
-    const awardedPoint = revealedLettersCount < 2;
+    const awardedPoint = hintCount === 0;
 
-    const actionLabel = `${bookName} ${chapter} - ${questionId} - ${answer.toLowerCase()}${reference ? ` (${reference})` : ""}`;
+    const actionLabelBase = `${bookName} ${chapter} - ${questionId} - ${answer.toLowerCase()}${reference ? ` (${reference})` : ""}`;
+    const actionLabel = awardedPoint ? actionLabelBase : `${actionLabelBase} [no-point]`;
 
     // Prevent farming points: only record the first successful solve per user+book+chapter+questionId.
     const { data: existingSolve, error: existingSolveError } = await supabase
@@ -69,23 +70,21 @@ export async function POST(request: NextRequest) {
         "User";
     }
 
-    if (awardedPoint) {
-      const { error: insertError } = await supabase
-        .from("master_actions")
-        .insert({
-          user_id: userId,
-          username: finalUsername,
-          action_type: ACTION_TYPE.scrambled_word_answered,
-          action_label: actionLabel,
-        });
+    const { error: insertError } = await supabase
+      .from("master_actions")
+      .insert({
+        user_id: userId,
+        username: finalUsername,
+        action_type: ACTION_TYPE.scrambled_word_answered,
+        action_label: actionLabel,
+      });
 
-      if (insertError) {
-        console.error("Error inserting scrambled answer:", insertError);
-        return NextResponse.json(
-          { error: insertError.message || "Failed to record scrambled answer" },
-          { status: 500 }
-        );
-      }
+    if (insertError) {
+      console.error("Error inserting scrambled answer:", insertError);
+      return NextResponse.json(
+        { error: insertError.message || "Failed to record scrambled answer" },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ success: true, awardedPoint });

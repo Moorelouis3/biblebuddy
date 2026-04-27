@@ -3545,38 +3545,48 @@ RULES:
       return;
     }
 
-    const { data: newPost, error } = await supabase
-      .from("group_posts")
-      .insert({
-        group_id: group.id,
-        user_id: userId,
-        display_name: displayName,
-        title: newPostTitle.trim() || null,
-        category: getGroupPostCategory(activeTab),
-        content: normalizedContent,
-        media_url: mediaUrl,
-        link_url: linkUrl,
-      })
-      .select("id, user_id, display_name, title, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
-      .single();
+    const { data: sessionData } = await supabase.auth.getSession();
+    const accessToken = sessionData.session?.access_token;
 
-    if (error) {
-      console.error("Group post insert failed:", error);
-      setComposerUploadError(error.message || "Post failed to publish. Please try again.");
+    if (!accessToken) {
+      setComposerUploadError("Could not verify your session.");
       setSubmitting(false);
       return;
     }
 
+    let payload: any = null;
+    try {
+      const response = await fetch(`/api/groups/${group.id}/create-post`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          title: newPostTitle.trim(),
+          category: getGroupPostCategory(activeTab),
+          content: normalizedContent,
+          mediaUrl,
+          linkUrl,
+        }),
+      });
+
+      payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.error || "Post failed to publish. Please try again.");
+      }
+    } catch (error) {
+      console.error("Group post create failed:", error);
+      setComposerUploadError(error instanceof Error ? error.message : "Post failed to publish. Please try again.");
+      setSubmitting(false);
+      return;
+    }
+
+    const newPost = payload?.post as Post | undefined;
+
     if (newPost) {
       setPosts((prev) => sortPinnedPostsFirst([{
         ...newPost,
-        comment_count: 0,
-        role: userRole,
-        liked: false,
-        profile_image_url: userProfileImage,
-        is_paid: userIsPaid,
-        member_badge: userMemberBadge,
-        current_streak: userCurrentStreak,
       }, ...prev]));
       resetPostComposer();
       setShowPostComposerModal(false);

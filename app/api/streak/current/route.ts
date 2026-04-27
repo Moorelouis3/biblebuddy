@@ -45,6 +45,10 @@ export async function POST(_req: NextRequest) {
       typeof body?.userId === "string" && body.userId.trim().length > 0
         ? body.userId.trim()
         : user.id;
+    const targetTimeZone =
+      typeof body?.timeZone === "string" && body.timeZone.trim().length > 0
+        ? body.timeZone.trim()
+        : undefined;
 
     const [{ data: existingProfile, error: existingProfileError }, liveStreakMap] = await Promise.all([
       supabaseAdmin
@@ -52,7 +56,7 @@ export async function POST(_req: NextRequest) {
         .select("current_streak, has_fire_streak_badge, fire_streak_awarded_at")
         .eq("user_id", targetUserId)
         .maybeSingle(),
-      getLiveStreakMapForUsers(supabaseAdmin, [targetUserId], 400),
+      getLiveStreakMapForUsers(supabaseAdmin, [targetUserId], 400, targetTimeZone),
     ]);
 
     if (existingProfileError) {

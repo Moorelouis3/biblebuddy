@@ -42,6 +42,7 @@ export default function GroupWeeklyTriviaCard({
   const [selected, setSelected] = useState<"A" | "B" | "C" | "D" | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [score, setScore] = useState(0);
+  const [earnedCorrectCount, setEarnedCorrectCount] = useState(0);
   const [savedScore, setSavedScore] = useState<number | null>(null);
   const [saving, setSaving] = useState(false);
   const [loadingBoard, setLoadingBoard] = useState(true);
@@ -147,16 +148,57 @@ export default function GroupWeeklyTriviaCard({
     setScore(finalScore);
     setPhase("done");
     setSaving(false);
+    if (earnedCorrectCount > 0) {
+      const { triggerPoints } = await import("@/components/PointsPop");
+      triggerPoints(earnedCorrectCount);
+    }
     await loadLeaderboard();
     onAfterComplete?.();
   }
 
-  function handleSelect(label: "A" | "B" | "C" | "D") {
+  async function handleSelect(label: "A" | "B" | "C" | "D") {
     if (revealed) return;
+    const isCorrect = label === currentQuestion.correctAnswer;
     setSelected(label);
-    if (label === currentQuestion.correctAnswer) {
+    if (isCorrect) {
       setScore((prev) => prev + 1);
     }
+
+    if (userId) {
+      try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+
+        const meta = (user?.user_metadata ?? {}) as Record<string, string | undefined>;
+        const username =
+          meta.firstName || meta.first_name || (user?.email ? user.email.split("@")[0] : null) || "User";
+
+        const response = await fetch("/api/trivia-answer", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId,
+            questionId: currentQuestion.id,
+            username,
+            isCorrect,
+            book: `weekly_group_${triviaSet.id}`,
+          }),
+        });
+
+        const payload = (await response.json().catch(() => ({}))) as { awardedPoint?: boolean };
+        if (!response.ok) {
+          console.error("[GROUP TRIVIA] Failed to record trivia answer:", payload);
+        } else if (payload.awardedPoint) {
+          setEarnedCorrectCount((current) => current + 1);
+        }
+      } catch (error) {
+        console.error("[GROUP TRIVIA] Error recording trivia answer:", error);
+      }
+    }
+
     setRevealed(true);
   }
 

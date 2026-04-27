@@ -8,6 +8,7 @@
 import { supabase } from "./supabaseClient";
 import { ACTION_TYPE } from "./actionTypes";
 import { syncCurrentStreakToProfileStats } from "./profileStats";
+import { getBibleBuddyLocalDayKey } from "./louisDailyFlow";
 
 // In-memory lock to prevent concurrent calls racing past the localStorage check
 const inFlight = new Set<string>();
@@ -22,7 +23,7 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
   try {
     // Check if we've already logged activity for this user in this session
     const sessionKey = `activity_logged_${userId}`;
-    const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+    const today = getBibleBuddyLocalDayKey();
 
     if (typeof window !== "undefined") {
       const lastLogged = localStorage.getItem(sessionKey);
@@ -74,13 +75,15 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
 
     // Insert into master_actions (user_login has no action_label)
     console.log("[MASTER_ACTIONS] inserting:", { action_type: ACTION_TYPE.user_login, action_label: null });
-    const { error: actionError } = await supabase
+    const { data: insertedAction, error: actionError } = await supabase
       .from("master_actions")
       .insert({
         user_id: userId,
         username: username ?? null,
         action_type: ACTION_TYPE.user_login,
-      });
+      })
+      .select("id")
+      .single();
 
     if (actionError) {
       console.error("[TRACK_ACTIVITY] Error logging to master_actions:", actionError);
@@ -88,6 +91,19 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
     }
 
     const streakData = await syncCurrentStreakToProfileStats(userId);
+
+    if (insertedAction?.id) {
+      const streakBonusPoints = Math.min(30, Math.max(0, streakData.currentStreak));
+      const streakBonusLabel = `streak_day:${streakBonusPoints}:${today}`;
+      const { error: labelUpdateError } = await supabase
+        .from("master_actions")
+        .update({ action_label: streakBonusLabel })
+        .eq("id", insertedAction.id);
+
+      if (labelUpdateError) {
+        console.error("[TRACK_ACTIVITY] Error saving streak bonus label:", labelUpdateError);
+      }
+    }
 
     // Update profile_stats with last_active_date
     const { error: statsError } = await supabase
