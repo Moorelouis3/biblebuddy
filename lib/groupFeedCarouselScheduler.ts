@@ -49,15 +49,59 @@ async function resolveDisplayName(supabaseAdmin: SupabaseClient, userId: string)
   return data?.display_name || data?.username || "Louis";
 }
 
+async function queueHasLivePublishedPost(
+  supabaseAdmin: SupabaseClient,
+  publishedPostId: string | null,
+) {
+  if (!publishedPostId) return false;
+
+  const { data, error } = await supabaseAdmin
+    .from("group_posts")
+    .select("id")
+    .eq("id", publishedPostId)
+    .maybeSingle();
+
+  if (error) {
+    throw new Error(error.message || "Could not verify published group post.");
+  }
+
+  return Boolean(data?.id);
+}
+
+async function repairGhostPublishedQueueItem(
+  supabaseAdmin: SupabaseClient,
+  item: Pick<GroupFeedCarouselQueueItem, "id" | "scheduled_for">,
+) {
+  const resetStatus = item.scheduled_for ? "scheduled" : "draft";
+  const { error } = await supabaseAdmin
+    .from("group_feed_carousel_queue")
+    .update({
+      status: resetStatus,
+      published_post_id: null,
+      published_at: null,
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", item.id);
+
+  if (error) {
+    throw new Error(error.message || "Could not repair scheduled post status.");
+  }
+}
+
 export async function publishGroupFeedCarouselItem(
   supabaseAdmin: SupabaseClient,
   item: GroupFeedCarouselQueueItem,
 ) {
   if (item.published_post_id || item.status === "published") {
-    return {
-      alreadyPublished: true,
-      postId: item.published_post_id,
-    };
+    const postStillExists = await queueHasLivePublishedPost(supabaseAdmin, item.published_post_id);
+    if (postStillExists) {
+      return {
+        alreadyPublished: true,
+        postId: item.published_post_id,
+      };
+    }
+
+    await repairGhostPublishedQueueItem(supabaseAdmin, item);
   }
 
   const displayName = await resolveDisplayName(supabaseAdmin, item.created_by);
@@ -107,6 +151,28 @@ export async function publishGroupFeedCarouselItem(
 
 export async function publishDueGroupFeedCarouselItems(supabaseAdmin: SupabaseClient) {
   const nowIso = new Date().toISOString();
+
+  const { data: publishedItems, error: publishedItemsError } = await supabaseAdmin
+    .from("group_feed_carousel_queue")
+    .select("id, scheduled_for, published_post_id")
+    .eq("status", "published")
+    .not("published_post_id", "is", null)
+    .limit(100);
+
+  if (publishedItemsError) {
+    throw new Error(publishedItemsError.message || "Could not load published scheduled posts.");
+  }
+
+  for (const item of publishedItems || []) {
+    const postStillExists = await queueHasLivePublishedPost(supabaseAdmin, item.published_post_id);
+    if (!postStillExists) {
+      await repairGhostPublishedQueueItem(
+        supabaseAdmin,
+        item as Pick<GroupFeedCarouselQueueItem, "id" | "scheduled_for">,
+      );
+    }
+  }
+
   const { data: dueItems, error } = await supabaseAdmin
     .from("group_feed_carousel_queue")
     .select("id, group_id, created_by, post_style, title, caption, cover_image_url, scheduled_for, status, published_post_id, published_at")

@@ -668,7 +668,56 @@ export default function StudyGroupSchedulerPage() {
         .order("created_at", { ascending: false });
 
       if (loadError) throw loadError;
-      setCarouselQueue((data || []) as QueueItem[]);
+
+      const rows = (data || []) as QueueItem[];
+      const publishedIds = rows
+        .filter((item) => item.status === "published" && item.published_post_id)
+        .map((item) => item.published_post_id as string);
+
+      if (publishedIds.length > 0) {
+        const { data: livePosts, error: livePostsError } = await supabase
+          .from("group_posts")
+          .select("id")
+          .in("id", publishedIds);
+
+        if (livePostsError) throw livePostsError;
+
+        const liveIdSet = new Set((livePosts || []).map((row) => row.id));
+        const ghostItems = rows.filter(
+          (item) => item.status === "published" && item.published_post_id && !liveIdSet.has(item.published_post_id),
+        );
+
+        if (ghostItems.length > 0) {
+          await Promise.all(
+            ghostItems.map((item) =>
+              supabase
+                .from("group_feed_carousel_queue")
+                .update({
+                  status: item.scheduled_for ? "scheduled" : "draft",
+                  published_post_id: null,
+                  published_at: null,
+                })
+                .eq("id", item.id),
+            ),
+          );
+
+          const repairedRows = rows.map((item) =>
+            ghostItems.some((ghost) => ghost.id === item.id)
+              ? {
+                  ...item,
+                  status: item.scheduled_for ? ("scheduled" as const) : ("draft" as const),
+                  published_post_id: null,
+                  published_at: null,
+                }
+              : item,
+          );
+
+          setCarouselQueue(repairedRows);
+          return;
+        }
+      }
+
+      setCarouselQueue(rows);
     } catch (err) {
       setQueueError(getErrorMessage(err, "Could not load your private feed."));
     } finally {
