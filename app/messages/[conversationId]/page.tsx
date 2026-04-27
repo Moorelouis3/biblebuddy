@@ -439,14 +439,7 @@ export default function ConversationPage({
       )
       .subscribe();
 
-    const focusRefresh = () => {
-      void loadConversation(currentUserId);
-    };
-
-    window.addEventListener("focus", focusRefresh);
-
     return () => {
-      window.removeEventListener("focus", focusRefresh);
       void supabase.removeChannel(channel);
     };
   }, [conversationId, userId]);
