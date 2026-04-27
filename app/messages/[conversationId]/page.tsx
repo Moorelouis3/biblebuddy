@@ -3,16 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { supabase } from "../../../lib/supabaseClient";
 import { ModalShell } from "../../../components/ModalShell";
 import UserBadge from "../../../components/UserBadge";
 import StreakFlameBadge from "../../../components/StreakFlameBadge";
-import { loadGroupPostMentions, type MentionCatalogItem } from "../../../lib/groupPostMentions";
 import { getDirectMessagePresentation, isMissingDirectMessageActionColumnError } from "../../../lib/directMessageActions";
 import MentionText from "../../../components/MentionText";
-
-const TextareaMentionInput = dynamic(() => import("../../../components/TextareaMentionInput"), { ssr: false });
 
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
 const REPORT_REASONS = [
@@ -165,7 +161,6 @@ export default function ConversationPage({
   const [notFound, setNotFound] = useState(false);
   const [newMessage, setNewMessage] = useState("");
   const [sending, setSending] = useState(false);
-  const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
   const [editingMessageId, setEditingMessageId] = useState<string | null>(null);
   const [editingContent, setEditingContent] = useState("");
   const [savingEdit, setSavingEdit] = useState(false);
@@ -247,14 +242,6 @@ export default function ConversationPage({
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
-
-  useEffect(() => {
-    let cancelled = false;
-    loadGroupPostMentions(supabase, null)
-      .then((items) => { if (!cancelled) setMentionItems(items); })
-      .catch(() => {});
-    return () => { cancelled = true; };
-  }, []);
 
   useEffect(() => {
     if (!editingMessageId) return;
@@ -1072,11 +1059,11 @@ export default function ConversationPage({
                                             {segment.label}
                                           </button>
                                         ) : (
-                                          <MentionText
-                                            key={`msg-text:${msg.id}:${lineIndex}:${segmentIndex}`}
-                                            text={segment.value}
-                                            items={mentionItems}
-                                          />
+                                            <MentionText
+                                              key={`msg-text:${msg.id}:${lineIndex}:${segmentIndex}`}
+                                              text={segment.value}
+                                              items={[]}
+                                            />
                                         ),
                                       )}
                                     </div>
@@ -1167,16 +1154,16 @@ export default function ConversationPage({
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   </button>
-                  <TextareaMentionInput
-                    value={newMessage}
-                    onChange={setNewMessage}
-                    mentionItems={mentionItems}
-                    onKeyDown={handleComposerKeyDown}
-                    placeholder={`Message ${otherDisplay}`}
-                    rows={1}
-                    className="max-h-36 w-full resize-none overflow-y-auto rounded-[24px] border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300"
-                    style={{ lineHeight: "1.5" }}
-                  />
+                    <textarea
+                      ref={inputRef}
+                      value={newMessage}
+                      onChange={(e) => setNewMessage(e.target.value)}
+                      onKeyDown={handleComposerKeyDown}
+                      placeholder={`Message ${otherDisplay}`}
+                      rows={1}
+                      className="max-h-36 w-full resize-none overflow-y-auto rounded-[24px] border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                      style={{ lineHeight: "1.5" }}
+                    />
                   <button
                     type="button"
                     onClick={() => void handleSend()}
