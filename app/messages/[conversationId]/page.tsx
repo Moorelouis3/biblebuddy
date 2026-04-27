@@ -551,59 +551,43 @@ export default function ConversationPage({
     setMessages((prev) => [...prev, optimisticMsg]);
 
     try {
-      let imageUrl: string | null = null;
-      if (photoState) {
-        const ext = photoState.file.name.split(".").pop() ?? "jpg";
-        const path = `dm-photos/${conversationId}/${userId}-${Date.now()}.${ext}`;
-        const { error: uploadError } = await supabase.storage.from("post-media").upload(path, photoState.file, { upsert: false });
-        if (uploadError) {
-          console.error("[DM PHOTO] Upload failed:", uploadError);
-          throw uploadError;
-        }
-        const { data: urlData } = supabase.storage.from("post-media").getPublicUrl(path);
-        imageUrl = urlData?.publicUrl ?? null;
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session?.access_token) {
+        throw new Error("Missing session.");
       }
 
-      const { data: inserted, error } = await supabase
-        .from("messages")
-        .insert({
-          conversation_id: conversationId,
-          sender_id: userId,
-          content,
-          image_url: imageUrl,
-        })
-        .select("id, sender_id, content, image_url, read_at, created_at")
-        .single();
+      const formData = new FormData();
+      formData.append("conversationId", conversationId);
+      formData.append("content", content);
+      if (photoState) {
+        formData.append("photo", photoState.file);
+      }
 
-      if (error) {
-        console.error("[MESSAGES] Send error:", error);
+      const response = await fetch("/api/messages/send", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${session.access_token}`,
+        },
+        body: formData,
+      });
+
+      const payload = await response.json().catch(() => null);
+
+      if (!response.ok || !payload?.message) {
+        console.error("[MESSAGES] Send error:", payload);
         setMessages((prev) => prev.filter((message) => message.id !== optimisticMsg.id));
         setNewMessage(content);
         if (photoState) setPhotoPreview(photoState);
         return;
       }
 
-      const normalizedInserted: Message = { ...inserted, action_label: null, action_href: null };
+      const normalizedInserted: Message = payload.message as Message;
       setMessages((prev) => prev.map((message) => (message.id === optimisticMsg.id ? normalizedInserted : message)));
 
-      const previewText =
-        content.length > 0
-          ? content.length > 80
-            ? `${content.slice(0, 80)}...`
-            : content
-          : "Photo";
-
-      await supabase
-        .from("conversations")
-        .update({
-          last_message_at: inserted.created_at,
-          last_message_preview: previewText,
-        })
-        .eq("id", conversationId);
-
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+      const previewText = typeof payload?.preview === "string" && payload.preview.trim().length > 0 ? payload.preview : "Photo";
 
       if (session?.access_token) {
         void fetch("/api/messages/notify", {
