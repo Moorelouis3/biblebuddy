@@ -466,13 +466,13 @@ export default function ConversationPage({
     const { file } = photoPreview;
     const ext = file.name.split(".").pop() ?? "jpg";
     const path = `dm-photos/${conversationId}/${userId}-${Date.now()}.${ext}`;
-    const { error: uploadError } = await supabase.storage.from("avatars").upload(path, file, { upsert: false });
+    const { error: uploadError } = await supabase.storage.from("post-media").upload(path, file, { upsert: false });
     if (uploadError) {
       console.error("[DM PHOTO] Upload failed:", uploadError);
       setUploadingPhoto(false);
       return;
     }
-    const { data: urlData } = supabase.storage.from("avatars").getPublicUrl(path);
+    const { data: urlData } = supabase.storage.from("post-media").getPublicUrl(path);
     const imageUrl = urlData?.publicUrl ?? null;
     URL.revokeObjectURL(photoPreview.url);
     setPhotoPreview(null);
@@ -501,6 +501,24 @@ export default function ConversationPage({
       const normalizedInserted: Message = { ...inserted, action_label: null, action_href: null };
       setMessages((prev) => prev.map((m) => (m.id === optimisticMsg.id ? normalizedInserted : m)));
       await supabase.from("conversations").update({ last_message_at: inserted.created_at, last_message_preview: "📷 Photo" }).eq("id", conversationId);
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session?.access_token) {
+        void fetch("/api/messages/notify", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session.access_token}`,
+          },
+          body: JSON.stringify({
+            conversationId,
+            preview: "Photo",
+          }),
+        }).catch((notifyError) => {
+          console.warn("[MESSAGES] Could not create direct message photo notification:", notifyError);
+        });
+      }
       window.dispatchEvent(new Event("bb:refresh-unread-messages"));
     }
     setUploadingPhoto(false);
@@ -581,7 +599,7 @@ export default function ConversationPage({
   }
 
   function handleComposerKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
-    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       void handleSend();
     }
@@ -664,7 +682,7 @@ export default function ConversationPage({
   }
 
   function handleEditKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
-    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       void handleSaveEdit();
     }
@@ -1164,7 +1182,7 @@ export default function ConversationPage({
                     </svg>
                   </button>
                 </div>
-                <p className="mt-2 text-center text-[10px] text-gray-400">Enter for new line | Ctrl+Enter to send</p>
+                <p className="mt-2 text-center text-[10px] text-gray-400">Enter to send | Shift+Enter for new line</p>
               </>
             )}
           </div>
