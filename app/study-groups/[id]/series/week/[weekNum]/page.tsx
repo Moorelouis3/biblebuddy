@@ -139,7 +139,7 @@ function parseIntroToHTML(intro: string): string {
       const src = imageMatch[2].replace(/"/g, "&quot;");
       parts.push(
         `<div style="margin:0.85rem 0 1rem 0">` +
-          `<img src="${src}" alt="${alt}" style="display:block;width:100%;max-width:680px;margin:0 auto;border-radius:1rem;box-shadow:none;border:none;outline:none;object-fit:cover;background:none" />` +
+          `<img src="${src}" alt="${alt}" loading="eager" decoding="sync" style="display:block;width:100%;max-width:680px;margin:0 auto;border-radius:1rem;box-shadow:none;border:none;outline:none;object-fit:cover;background:none" />` +
         `</div>`
       );
       continue;
@@ -262,31 +262,74 @@ function NotesSection({
   const [notesError, setNotesError] = useState<string | null>(null);
   const hasNotesAvailable = hasLazySeriesNotes(seriesTitle, lesson.weekNumber) || Boolean(lesson.notes?.trim());
 
+  useEffect(() => {
+    if (!isPaid || !hasNotesAvailable || notesHTML || notesError) return;
+
+    let cancelled = false;
+
+    void (async () => {
+      try {
+        const loaded = await loadSeriesNotesContent(seriesTitle, lesson.weekNumber, lesson.notes ?? null);
+        if (cancelled) return;
+
+        if (!loaded.content && !loaded.html) {
+          setNotesError("These notes are not ready yet.");
+          return;
+        }
+
+        const nextHtml = loaded.html
+          ? loaded.html
+          : (() => {
+              const combinedNotes = Array.isArray(loaded.content) ? loaded.content.join("\n\n") : loaded.content ?? "";
+              return combinedNotes ? parseIntroToHTML(combinedNotes) : null;
+            })();
+
+        setNotesSource(loaded.content ?? null);
+        setNotesHTML(nextHtml);
+      } catch (error) {
+        if (cancelled) return;
+        console.error("[SERIES_NOTES] Failed to preload notes", error);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [hasNotesAvailable, isPaid, lesson.notes, lesson.weekNumber, notesError, notesHTML, seriesTitle]);
+
   async function handleOpenNotes() {
     if (!isPaid || !hasNotesAvailable) return;
 
-    setShowNotesModal(true);
     setNotesError(null);
 
-    if (notesSource || notesHTML) return;
+    if (notesHTML || notesError) {
+      setShowNotesModal(true);
+      return;
+    }
 
     setNotesLoading(true);
     try {
       const loaded = await loadSeriesNotesContent(seriesTitle, lesson.weekNumber, lesson.notes ?? null);
       if (!loaded.content && !loaded.html) {
         setNotesError("These notes are not ready yet.");
+        setShowNotesModal(true);
         return;
       }
+
+      const nextHtml = loaded.html
+        ? loaded.html
+        : (() => {
+            const combinedNotes = Array.isArray(loaded.content) ? loaded.content.join("\n\n") : loaded.content ?? "";
+            return combinedNotes ? parseIntroToHTML(combinedNotes) : null;
+          })();
+
       setNotesSource(loaded.content ?? null);
-      if (loaded.html) {
-        setNotesHTML(loaded.html);
-      } else {
-        const combinedNotes = Array.isArray(loaded.content) ? loaded.content.join("\n\n") : loaded.content ?? "";
-        setNotesHTML(combinedNotes ? parseIntroToHTML(combinedNotes) : null);
-      }
+      setNotesHTML(nextHtml);
+      setShowNotesModal(true);
     } catch (error) {
       console.error("[SERIES_NOTES] Failed to load notes", error);
       setNotesError("Study notes could not be loaded right now. Please try again.");
+      setShowNotesModal(true);
     } finally {
       setNotesLoading(false);
     }
@@ -380,20 +423,18 @@ function NotesSection({
               </h3>
             </div>
 
-            <div className="px-5 py-5 sm:px-6">
-              {notesError ? (
-                <p className="text-sm text-red-600">{notesError}</p>
-              ) : !notesHTML ? (
-                <p className="text-sm text-gray-600">Loading your study notes...</p>
-              ) : (
-                <div
-                  className="flex flex-col gap-3"
-                  dangerouslySetInnerHTML={{ __html: notesHTML }}
-                />
-              )}
+              <div className="px-5 py-5 sm:px-6">
+                {notesError ? (
+                  <p className="text-sm text-red-600">{notesError}</p>
+                ) : (
+                  <div
+                    className="flex flex-col gap-3"
+                    dangerouslySetInnerHTML={{ __html: notesHTML ?? "" }}
+                  />
+                )}
+              </div>
             </div>
           </div>
-        </div>
       )}
     </>
   );
