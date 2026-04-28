@@ -262,18 +262,6 @@ function NotesSection({
   const [notesError, setNotesError] = useState<string | null>(null);
   const hasNotesAvailable = hasLazySeriesNotes(seriesTitle, lesson.weekNumber) || Boolean(lesson.notes?.trim());
 
-  useEffect(() => {
-    if (!showNotesModal || !notesSource) return;
-    if (notesHTML) return;
-
-    const timer = window.setTimeout(() => {
-      const combinedNotes = Array.isArray(notesSource) ? notesSource.join("\n\n") : notesSource;
-      setNotesHTML(parseIntroToHTML(combinedNotes));
-    }, 30);
-
-    return () => window.clearTimeout(timer);
-  }, [notesHTML, notesSource, showNotesModal]);
-
   async function handleOpenNotes() {
     if (!isPaid || !hasNotesAvailable) return;
 
@@ -293,7 +281,8 @@ function NotesSection({
       if (loaded.html) {
         setNotesHTML(loaded.html);
       } else {
-        setNotesHTML(null);
+        const combinedNotes = Array.isArray(loaded.content) ? loaded.content.join("\n\n") : loaded.content ?? "";
+        setNotesHTML(combinedNotes ? parseIntroToHTML(combinedNotes) : null);
       }
     } catch (error) {
       console.error("[SERIES_NOTES] Failed to load notes", error);
