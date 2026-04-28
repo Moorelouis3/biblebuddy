@@ -1,5 +1,5 @@
 ﻿"use client";
-import { useEffect, useState, useRef } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
 import Link from "next/link";
@@ -199,7 +199,7 @@ function parseIntroToHTML(intro: string): string {
 
 function IntroSection({ lesson }: { lesson: SeriesWeekLesson }) {
   const [expanded, setExpanded] = useState(false);
-  const introHTML = parseIntroToHTML(lesson.intro);
+  const introHTML = useMemo(() => parseIntroToHTML(lesson.intro), [lesson.intro]);
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
@@ -228,7 +228,7 @@ function IntroSection({ lesson }: { lesson: SeriesWeekLesson }) {
 
 // â”€â”€ Section Card wrapper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function FreeIntroSection({ lesson }: { lesson: SeriesWeekLesson }) {
-  const introHTML = parseIntroToHTML(lesson.intro);
+  const introHTML = useMemo(() => parseIntroToHTML(lesson.intro), [lesson.intro]);
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
@@ -243,6 +243,8 @@ function FreeIntroSection({ lesson }: { lesson: SeriesWeekLesson }) {
     </div>
   );
 }
+
+const MemoFreeIntroSection = memo(FreeIntroSection);
 
 function NotesSection({
   lesson,
@@ -439,6 +441,8 @@ function NotesSection({
     </>
   );
 }
+
+const MemoNotesSection = memo(NotesSection);
 
 function SectionCard({
   title,
@@ -1622,7 +1626,10 @@ export default function WeekLessonPage({
   const [isAnimatingKeyword, setIsAnimatingKeyword] = useState(false);
   const [learnedToast, setLearnedToast] = useState<string | null>(null);
 
-  const lesson = getSeriesWeekLesson(weekNum, seriesTitle);
+  const lesson = useMemo(() => getSeriesWeekLesson(weekNum, seriesTitle), [weekNum, seriesTitle]);
+  const handleUnlockNotes = useCallback(() => {
+    router.push("/upgrade");
+  }, [router]);
 
   async function loadWeekFinishers(currentSeriesId: string) {
     setLoadingWeekFinishers(true);
@@ -2154,7 +2161,7 @@ export default function WeekLessonPage({
         {/* Sections */}
         <div className="flex flex-col gap-4">
           {/* Intro */}
-          <FreeIntroSection lesson={lesson} />
+          <MemoFreeIntroSection lesson={lesson} />
 
           {/* Section 1: Reading */}
           <SectionCard title="Assigned Reading">
@@ -2174,11 +2181,11 @@ export default function WeekLessonPage({
             </div>
           </SectionCard>
 
-          <NotesSection
+          <MemoNotesSection
             lesson={lesson}
             seriesTitle={seriesTitle}
             isPaid={isPaid}
-            onUnlock={() => router.push("/upgrade")}
+            onUnlock={handleUnlockNotes}
           />
 
           {/* Section 2: Trivia */}
