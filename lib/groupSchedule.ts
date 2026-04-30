@@ -8,11 +8,10 @@ import {
   buildUpdateMondayPost,
   buildWhoWasThisFridayPost,
 } from "./groupRecurringSeries";
-
-const BERLIN_TIME_ZONE = "Europe/Berlin";
+import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
 
 function getBerlinDate(date = new Date()) {
-  return new Date(date.toLocaleString("en-US", { timeZone: BERLIN_TIME_ZONE }));
+  return new Date(date.toLocaleString("en-US", { timeZone: GROUP_SCHEDULE_TIME_ZONE }));
 }
 
 function nextBerlinOccurrence(targetDay: number, hour: number, minute: number, from = new Date()) {
@@ -39,7 +38,7 @@ function addWeeks(date: Date, weeks: number) {
 
 function formatScheduleDate(date: Date) {
   return date.toLocaleString("en-US", {
-    timeZone: BERLIN_TIME_ZONE,
+    timeZone: GROUP_SCHEDULE_TIME_ZONE,
     weekday: "long",
     month: "long",
     day: "numeric",

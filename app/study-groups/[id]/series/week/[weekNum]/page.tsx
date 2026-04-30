@@ -9,6 +9,7 @@ import { getSeriesWeekLesson, SeriesWeekLesson, SeriesTriviaQuestion } from "@/l
 import { hasLazySeriesNotes, loadSeriesNotesContent, type SeriesNotesContent } from "@/lib/seriesNotes";
 import { enrichPlainText } from "@/lib/bibleHighlighting";
 import { ACTION_TYPE } from "@/lib/actionTypes";
+import { requestAutoReplyDraft } from "@/lib/requestAutoReplyDraft";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
 import { consumeCreditAction } from "@/lib/creditClient";
 import CreditLimitModal from "@/components/CreditLimitModal";
@@ -383,15 +384,17 @@ function NotesSection({
             <p className="mt-2 text-sm leading-relaxed text-gray-700">
               They include Hebrew and Greek word meanings, cultural and historical context, and verse-by-verse breakdowns.
             </p>
-            <button
-              type="button"
-              onClick={handleOpenNotes}
-              disabled={!hasNotesAvailable}
-              className="mt-4 inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-bold text-white transition hover:opacity-90"
-              style={!hasNotesAvailable ? { backgroundColor: "#94a3b8", cursor: "not-allowed" } : { backgroundColor: "#4a9b6f" }}
-            >
-              {hasNotesAvailable ? "Click Here to Open" : "Notes Coming Soon"}
-            </button>
+            <div className="mt-4 flex justify-center">
+              <button
+                type="button"
+                onClick={handleOpenNotes}
+                disabled={!hasNotesAvailable}
+                className="inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-bold text-white transition hover:opacity-90"
+                style={!hasNotesAvailable ? { backgroundColor: "#94a3b8", cursor: "not-allowed" } : { backgroundColor: "#4a9b6f" }}
+              >
+                {hasNotesAvailable ? "Click Here to Open" : "Notes Coming Soon"}
+              </button>
+            </div>
           </div>
         )}
 
@@ -898,10 +901,12 @@ type ReflectionRowProps = {
   replyText: string;
   setReplyText: (text: string) => void;
   submitting: boolean;
+  autoReplyLoadingId: string | null;
   onDeleteReflection: (reflection: ReflectionEntry) => Promise<void>;
   onSaveEdit: (reflection: ReflectionEntry) => Promise<void>;
   onToggleLike: (reflection: ReflectionEntry) => Promise<void>;
   onSubmit: (parentId: string) => Promise<void>;
+  onAutoReply: (reflection: ReflectionEntry) => Promise<void>;
 };
 
 function ReflectionRow({
@@ -924,10 +929,12 @@ function ReflectionRow({
   replyText,
   setReplyText,
   submitting,
+  autoReplyLoadingId,
   onDeleteReflection,
   onSaveEdit,
   onToggleLike,
   onSubmit,
+  onAutoReply,
 }: ReflectionRowProps) {
   const name = reflection.display_name || "Anonymous";
   const replies = reflections.filter((r) => r.parent_reflection_id === reflection.id);
@@ -956,10 +963,12 @@ function ReflectionRow({
     replyText,
     setReplyText,
     submitting,
+    autoReplyLoadingId,
     onDeleteReflection,
     onSaveEdit,
     onToggleLike,
     onSubmit,
+    onAutoReply,
   };
 
   const indentClass = depth === 0 ? "mt-4" : "ml-6 mt-3 pl-3 border-l border-[#e8ddd0]";
@@ -1057,6 +1066,14 @@ function ReflectionRow({
             >
               Reply
             </button>
+          <button
+            type="button"
+            onClick={() => void onAutoReply(reflection)}
+            disabled={autoReplyLoadingId === reflection.id}
+            className="text-xs text-gray-400 hover:text-[#4a9b6f] font-semibold transition disabled:opacity-50"
+          >
+            {autoReplyLoadingId === reflection.id ? "Writing..." : "Auto Reply"}
+          </button>
           {canEditReflection && editingId !== reflection.id && (
             <button
               type="button"
@@ -1153,6 +1170,7 @@ function ReflectionSection({
   const [likeLoading, setLikeLoading] = useState<Set<string>>(new Set());
   const [likeAnimatingIds, setLikeAnimatingIds] = useState<Set<string>>(new Set());
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [autoReplyLoadingId, setAutoReplyLoadingId] = useState<string | null>(null);
 
   useEffect(() => {
     setHasCompletedReflection(done);
@@ -1404,6 +1422,27 @@ function ReflectionSection({
     setDeletingId(null);
   }
 
+  async function handleAutoReply(reflection: ReflectionEntry) {
+    if (autoReplyLoadingId) return;
+    setAutoReplyLoadingId(reflection.id);
+    setReplyingToId(reflection.id);
+    setReflectionError(null);
+
+    try {
+      const draft = await requestAutoReplyDraft({
+        originalPostTitle: lesson.title,
+        originalPostContent: lesson.reflectionQuestion,
+        targetCommentContent: reflection.content,
+        targetDisplayName: reflection.display_name || "Anonymous",
+      });
+      setReplyText(draft);
+    } catch (error) {
+      setReflectionError(error instanceof Error ? error.message : "Could not generate a reply draft.");
+    }
+
+    setAutoReplyLoadingId(null);
+  }
+
   const topLevelReflections = reflections.filter((r) => !r.parent_reflection_id);
 
   const sharedRowProps: Omit<ReflectionRowProps, "reflection" | "depth"> = {
@@ -1424,10 +1463,12 @@ function ReflectionSection({
     replyText,
     setReplyText,
     submitting,
+    autoReplyLoadingId,
     onDeleteReflection: handleDeleteReflection,
     onSaveEdit: handleSaveReflectionEdit,
     onToggleLike: handleToggleLike,
     onSubmit: (parentId) => handleSubmit(parentId),
+    onAutoReply: handleAutoReply,
   };
 
   return (

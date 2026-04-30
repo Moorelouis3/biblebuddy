@@ -1,6 +1,5 @@
+import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
 import { getSeriesTotalWeeks, getSeriesWeekLesson } from "./seriesContent";
-
-const BERLIN_TIME_ZONE = "Europe/Berlin";
 const WEEK_IN_MS = 7 * 24 * 60 * 60 * 1000;
 
 type RecurringSeriesTemplate = {
@@ -18,7 +17,7 @@ export type BibleStudySeriesSnapshot = {
 
 function getBerlinDateParts(date: Date) {
   const formatter = new Intl.DateTimeFormat("en-CA", {
-    timeZone: BERLIN_TIME_ZONE,
+    timeZone: GROUP_SCHEDULE_TIME_ZONE,
     year: "numeric",
     month: "2-digit",
     day: "2-digit",

@@ -11,6 +11,7 @@ import { supabase } from "../../lib/supabaseClient";
 import { FeedOnboardingModal } from "../../components/FeedOnboardingModal";
 import { ModalShell } from "../../components/ModalShell";
 import { logActionToMasterActions } from "../../lib/actionRecorder";
+import { requestAutoReplyDraft } from "../../lib/requestAutoReplyDraft";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -717,8 +718,10 @@ function Avatar({ userId, displayName, imageUrl, size = 9 }: {
 
 // ── Comment Section ───────────────────────────────────────────────────────────
 
-function CommentSection({ postId, myId, myProfile, currentUserIsAdmin, onCountChange, highlightCommentId }: {
+function CommentSection({ postId, postTitle, postContent, myId, myProfile, currentUserIsAdmin, onCountChange, highlightCommentId }: {
   postId: string;
+  postTitle?: string | null;
+  postContent?: string | null;
   myId: string;
   myProfile: MyProfile;
   currentUserIsAdmin: boolean;
@@ -734,6 +737,7 @@ function CommentSection({ postId, myId, myProfile, currentUserIsAdmin, onCountCh
   const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
   const [editingCommentText, setEditingCommentText] = useState("");
   const [savingCommentId, setSavingCommentId] = useState<string | null>(null);
+  const [autoReplyLoadingId, setAutoReplyLoadingId] = useState<string | null>(null);
   const currentUserBadge = myProfile?.member_badge ?? null;
 
   useEffect(() => {
@@ -902,6 +906,26 @@ function CommentSection({ postId, myId, myProfile, currentUserIsAdmin, onCountCh
     setSavingCommentId(null);
   }
 
+  async function handleAutoReply(comment: FeedComment) {
+    if (autoReplyLoadingId) return;
+    setAutoReplyLoadingId(comment.id);
+    setReplyingTo(comment.id);
+
+    try {
+      const draft = await requestAutoReplyDraft({
+        originalPostTitle: postTitle || null,
+        originalPostContent: postContent || null,
+        targetCommentContent: comment.content,
+        targetDisplayName: comment.display_name || comment.username || "Bible Buddy",
+      });
+      setReplyText(draft);
+    } catch (error) {
+      triggerToast(error instanceof Error ? error.message : "Could not generate a reply draft.");
+    }
+
+    setAutoReplyLoadingId(null);
+  }
+
   const topLevel = comments.filter((c) => !c.parent_comment_id);
   const replies = (parentId: string) => comments.filter((c) => c.parent_comment_id === parentId);
 
@@ -974,6 +998,16 @@ function CommentSection({ postId, myId, myProfile, currentUserIsAdmin, onCountCh
                 className="text-[10px] text-gray-400 hover:text-green-600 font-semibold transition"
               >
                 Reply
+              </button>
+            )}
+            {!indent && (
+              <button
+                type="button"
+                onClick={() => void handleAutoReply(comment)}
+                disabled={autoReplyLoadingId === comment.id}
+                className="text-[10px] text-gray-400 hover:text-[#4a9b6f] font-semibold transition disabled:opacity-50"
+              >
+                {autoReplyLoadingId === comment.id ? "Writing..." : "Auto Reply"}
               </button>
             )}
             {canEditComment(comment) && editingCommentId !== comment.id && (
@@ -1435,6 +1469,8 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
       {showComments && (
         <CommentSection
           postId={post.id}
+          postTitle={post.link_title || post.verse_ref || post.post_type}
+          postContent={post.verse_text || post.content}
           myId={myId}
           myProfile={myProfile}
           currentUserIsAdmin={currentUserIsAdmin}

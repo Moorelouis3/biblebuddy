@@ -634,6 +634,47 @@ function stripHtml(html: string): string {
     .trim();
 }
 
+async function generateAutoReplyDraft(
+  groupId: string,
+  originalPostTitle: string | null | undefined,
+  originalPostContent: string,
+  targetCommentContent: string,
+  targetDisplayName: string | null | undefined,
+) {
+  const { data: sessionData } = await supabase.auth.getSession();
+  const accessToken = sessionData.session?.access_token;
+
+  if (!accessToken) {
+    throw new Error("Could not verify your session.");
+  }
+
+  const response = await fetch(`/api/groups/${groupId}/auto-reply`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({
+      originalPostTitle: originalPostTitle || "",
+      originalPostContent,
+      targetCommentContent,
+      targetDisplayName: targetDisplayName || "Buddy",
+    }),
+  });
+
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(payload.error || "Could not generate a reply draft.");
+  }
+
+  const reply = typeof payload.reply === "string" ? payload.reply.trim() : "";
+  if (!reply) {
+    throw new Error("Could not generate a reply draft.");
+  }
+
+  return reply;
+}
+
 function getScrambledPromoSnippet(content: string | null | undefined) {
   const text = stripHtml(content || "").replace(/\s+/g, " ").trim();
   if (!text) {
@@ -745,6 +786,7 @@ function GroupCommentSection({
   const [showCommentLikesFor, setShowCommentLikesFor] = useState<GroupFeedComment | null>(null);
   const [commentLikers, setCommentLikers] = useState<ArticleLikeUser[]>([]);
   const [loadingCommentLikers, setLoadingCommentLikers] = useState(false);
+  const [autoReplyLoadingId, setAutoReplyLoadingId] = useState<string | null>(null);
 
   async function loadComments() {
     setLoading(true);
@@ -981,6 +1023,28 @@ function GroupCommentSection({
     setSubmitting(false);
   }
 
+  async function handleAutoReply(comment: GroupFeedComment) {
+    if (autoReplyLoadingId) return;
+    setAutoReplyLoadingId(comment.id);
+    setSubmitError(null);
+    setReplyingTo(comment.id);
+
+    try {
+      const draft = await generateAutoReplyDraft(
+        groupId,
+        post.title,
+        post.content,
+        comment.content,
+        comment.display_name,
+      );
+      setReplyText(draft);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Could not generate a reply draft.");
+    }
+
+    setAutoReplyLoadingId(null);
+  }
+
   function canDeleteComment(comment: GroupFeedComment) {
     return (
       comment.user_id === userId ||
@@ -1188,6 +1252,14 @@ function GroupCommentSection({
               className="text-[10px] text-gray-400 hover:text-[#b7794d] font-semibold transition"
             >
               Reply
+            </button>
+            <button
+              type="button"
+              onClick={() => void handleAutoReply(comment)}
+              disabled={autoReplyLoadingId === comment.id}
+              className="text-[10px] text-gray-400 hover:text-[#4a9b6f] font-semibold transition disabled:opacity-50"
+            >
+              {autoReplyLoadingId === comment.id ? "Writing..." : "Auto Reply"}
             </button>
             {canEditComment(comment) && editingCommentId !== comment.id && (
               <button
@@ -2333,6 +2405,7 @@ RULES:
   const [seriesPostLikeAnimating, setSeriesPostLikeAnimating] = useState(false);
   const [commentLikeLoading, setCommentLikeLoading] = useState<Set<string>>(new Set());
   const [seriesCommentLikeAnimatingIds, setSeriesCommentLikeAnimatingIds] = useState<Set<string>>(new Set());
+  const [seriesAutoReplyLoadingId, setSeriesAutoReplyLoadingId] = useState<string | null>(null);
   const [deletingSeriesCommentId, setDeletingSeriesCommentId] = useState<string | null>(null);
 
   // New Series modal
@@ -4304,6 +4377,27 @@ RULES:
     setSubmittingComment(false);
   }
 
+  async function handleSeriesAutoReply(comment: SeriesComment) {
+    if (!group || !selectedPost || seriesAutoReplyLoadingId) return;
+    setSeriesAutoReplyLoadingId(comment.id);
+    setReplyingToId(comment.id);
+
+    try {
+      const draft = await generateAutoReplyDraft(
+        group.id,
+        selectedPost.title,
+        selectedPost.content,
+        comment.content,
+        comment.display_name,
+      );
+      setReplyText(draft);
+    } catch (error) {
+      triggerToast(error instanceof Error ? error.message : "Could not generate a reply draft.");
+    }
+
+    setSeriesAutoReplyLoadingId(null);
+  }
+
   function canDeleteSeriesComment(comment: SeriesComment) {
     return (
       comment.user_id === userId ||
@@ -4993,6 +5087,14 @@ RULES:
                                 className="text-xs text-gray-400 hover:text-gray-700 transition"
                               >
                                 Reply
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => void handleSeriesAutoReply(comment)}
+                                disabled={seriesAutoReplyLoadingId === comment.id}
+                                className="text-xs text-gray-400 hover:text-[#4a9b6f] transition disabled:opacity-50"
+                              >
+                                {seriesAutoReplyLoadingId === comment.id ? "Writing..." : "Auto Reply"}
                               </button>
                               {canEditSeriesComment(comment) && editingSeriesCommentId !== comment.id && (
                                 <button

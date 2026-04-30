@@ -1,6 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { buildWeeklyGroupTrivia } from "./groupWeeklyTrivia";
-const BERLIN_TIME_ZONE = "Europe/Berlin";
+import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 
 async function resolveDisplayName(supabaseAdmin: SupabaseClient, userId: string) {
@@ -64,7 +64,7 @@ async function syncExistingTriviaOwnership(
 
 function getBerlinDateParts(date: Date) {
   const formatter = new Intl.DateTimeFormat("en-GB", {
-    timeZone: BERLIN_TIME_ZONE,
+    timeZone: GROUP_SCHEDULE_TIME_ZONE,
     year: "numeric",
     month: "2-digit",
     day: "2-digit",

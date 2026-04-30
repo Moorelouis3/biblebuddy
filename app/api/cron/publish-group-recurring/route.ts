@@ -4,6 +4,7 @@ import { ensureWeeklyGroupPollPost } from "@/lib/weeklyGroupPollAdmin";
 import { ensureWeeklyGroupQuestionPost } from "@/lib/weeklyGroupQuestionAdmin";
 import { ensureWeeklyGroupSeriesPost } from "@/lib/weeklyGroupSeriesPostAdmin";
 import { ensureWeeklyGroupTriviaPost } from "@/lib/weeklyGroupTriviaAdmin";
+import { GROUP_SCHEDULE_TIME_ZONE } from "@/lib/groupScheduleTimeZone";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -16,7 +17,7 @@ function isAuthorized(request: NextRequest) {
 
 function getBerlinWeekday(date: Date) {
   return new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Europe/Berlin",
+    timeZone: GROUP_SCHEDULE_TIME_ZONE,
     weekday: "short",
   }).format(date) as "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun";
 }

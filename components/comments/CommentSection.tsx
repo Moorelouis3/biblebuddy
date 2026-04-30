@@ -11,6 +11,7 @@ import StreakFlameBadge from "@/components/StreakFlameBadge";
 import { triggerToast } from "@/components/AppToast";
 import TextareaMentionInput from "@/components/TextareaMentionInput";
 import MentionText from "@/components/MentionText";
+import { requestAutoReplyDraft } from "@/lib/requestAutoReplyDraft";
 import {
   extractMentionedItemsFromText,
   loadGroupPostMentions,
@@ -106,6 +107,7 @@ export default function CommentSection({
   const [editingCommentText, setEditingCommentText] = useState("");
   const [savingCommentId, setSavingCommentId] = useState<string | null>(null);
   const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
+  const [autoReplyLoadingId, setAutoReplyLoadingId] = useState<string | null>(null);
 
   const hydrateUser = useCallback(async (userId?: string | null, email?: string | null) => {
     if (!userId) {
@@ -423,6 +425,27 @@ export default function CommentSection({
     setSavingCommentId(null);
   };
 
+  const handleAutoReply = async (comment: Comment) => {
+    if (autoReplyLoadingId) return;
+    setAutoReplyLoadingId(comment.id);
+    setError(null);
+    setReplyTo(comment.id);
+
+    try {
+      const draft = await requestAutoReplyDraft({
+        originalPostTitle: headingText || articleSlug,
+        originalPostContent: `Article: ${articleSlug}`,
+        targetCommentContent: comment.content,
+        targetDisplayName: comment.user_name,
+      });
+      setContent(draft);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not generate a reply draft.");
+    }
+
+    setAutoReplyLoadingId(null);
+  };
+
   const renderComments = (items: Comment[], depth = 0) =>
     items.length === 0
       ? null
@@ -509,6 +532,14 @@ export default function CommentSection({
                   }}
                 >
                   Reply
+                </button>
+                <button
+                  type="button"
+                  onClick={() => void handleAutoReply(c)}
+                  disabled={autoReplyLoadingId === c.id}
+                  className="text-xs font-semibold text-gray-400 transition hover:text-[#4a9b6f] disabled:opacity-50"
+                >
+                  {autoReplyLoadingId === c.id ? "Writing..." : "Auto Reply"}
                 </button>
                 {canEditComment(c) && editingCommentId !== c.id && (
                   <button

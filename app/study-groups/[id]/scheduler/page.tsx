@@ -19,6 +19,7 @@ import {
   getBerlinDateKey,
   type BibleStudySeriesSnapshot,
 } from "@/lib/groupRecurringSeries";
+import { GROUP_SCHEDULE_TIME_ZONE } from "@/lib/groupScheduleTimeZone";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
 import { consumeCreditAction } from "@/lib/creditClient";
 import { buildWeeklyGroupPoll } from "@/lib/groupWeeklyPoll";
@@ -122,7 +123,7 @@ function formatCountdown(isoDate: string, now: number): string {
 
 function getBerlinDateParts(date = new Date()) {
   const formatter = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Europe/Berlin",
+    timeZone: GROUP_SCHEDULE_TIME_ZONE,
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -153,7 +154,7 @@ function getBerlinDateWithOffset(offsetDays: number) {
 
 function getBerlinDateTimeParts(date: Date) {
   const formatter = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Europe/Berlin",
+    timeZone: GROUP_SCHEDULE_TIME_ZONE,
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -206,9 +207,9 @@ function convertBerlinLocalInputToIso(value: string) {
   const minute = Number(minuteRaw);
 
   const firstGuess = new Date(Date.UTC(year, month - 1, day, hour, minute, 0));
-  const firstOffset = getTimeZoneOffsetMinutes(firstGuess, "Europe/Berlin");
+  const firstOffset = getTimeZoneOffsetMinutes(firstGuess, GROUP_SCHEDULE_TIME_ZONE);
   const adjusted = new Date(Date.UTC(year, month - 1, day, hour, minute, 0) - firstOffset * 60_000);
-  const finalOffset = getTimeZoneOffsetMinutes(adjusted, "Europe/Berlin");
+  const finalOffset = getTimeZoneOffsetMinutes(adjusted, GROUP_SCHEDULE_TIME_ZONE);
   const finalDate = finalOffset === firstOffset
     ? adjusted
     : new Date(Date.UTC(year, month - 1, day, hour, minute, 0) - finalOffset * 60_000);
@@ -226,7 +227,7 @@ function formatIsoForBerlinInput(iso: string | null | undefined) {
 function formatQueueDateTime(iso: string | null | undefined) {
   if (!iso) return "Not scheduled";
   return new Intl.DateTimeFormat("en-US", {
-    timeZone: "Europe/Berlin",
+    timeZone: GROUP_SCHEDULE_TIME_ZONE,
     month: "short",
     day: "numeric",
     hour: "numeric",
@@ -1766,10 +1767,10 @@ RULES:
             {schedulerCalendarDays.map((day) => (
               <div key={day.dateKey} className="rounded-2xl border border-[#ece6dd] bg-[#fcfbf8] p-4">
                 <p className="text-xs font-bold uppercase tracking-[0.14em] text-gray-400">
-                  {new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Berlin", weekday: "short" }).format(day.date)}
+                  {new Intl.DateTimeFormat("en-US", { timeZone: GROUP_SCHEDULE_TIME_ZONE, weekday: "short" }).format(day.date)}
                 </p>
                 <p className="mt-1 text-sm font-semibold text-gray-900">
-                  {new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Berlin", month: "short", day: "numeric" }).format(day.date)}
+                  {new Intl.DateTimeFormat("en-US", { timeZone: GROUP_SCHEDULE_TIME_ZONE, month: "short", day: "numeric" }).format(day.date)}
                 </p>
 
                 <div className="mt-3 space-y-2">
