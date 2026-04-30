@@ -14,12 +14,14 @@ import { consumeCreditAction } from "@/lib/creditClient";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import UserBadge from "@/components/UserBadge";
+import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
 
 interface WeekLessonPageProps {
   embeddedGroupId?: string;
   embeddedWeekNum?: number;
   embeddedSeriesId?: string;
   embeddedSeriesTitle?: string;
+  embeddedSeriesIsCurrent?: boolean;
   embedded?: boolean;
   onBack?: () => void;
 }
@@ -251,11 +253,17 @@ function NotesSection({
   seriesTitle,
   isPaid,
   onUnlock,
+  onComplete,
+  userId,
+  displayName,
 }: {
   lesson: SeriesWeekLesson;
   seriesTitle?: string | null;
   isPaid: boolean;
   onUnlock: () => void;
+  onComplete?: () => void;
+  userId?: string | null;
+  displayName?: string | null;
 }) {
   const [showNotesModal, setShowNotesModal] = useState(false);
   const [notesLoading, setNotesLoading] = useState(false);
@@ -299,12 +307,30 @@ function NotesSection({
     };
   }, [hasNotesAvailable, isPaid, lesson.notes, lesson.weekNumber, notesError, notesHTML, seriesTitle]);
 
+  async function recordNotesOpen() {
+    if (!userId) return;
+    try {
+      await Promise.all([
+        supabase.from("master_actions").insert({
+          user_id: userId,
+          username: displayName || null,
+          action_type: ACTION_TYPE.series_week_notes_opened,
+          action_label: `${seriesTitle || "Bible Series"} Week ${lesson.weekNumber} Notes`,
+        }),
+        onComplete?.(),
+      ]);
+    } catch (error) {
+      console.error("[SERIES_NOTES] Failed to record notes open", error);
+    }
+  }
+
   async function handleOpenNotes() {
     if (!isPaid || !hasNotesAvailable) return;
 
     setNotesError(null);
 
     if (notesHTML || notesError) {
+      if (notesHTML) void recordNotesOpen();
       setShowNotesModal(true);
       return;
     }
@@ -325,11 +351,12 @@ function NotesSection({
             return combinedNotes ? parseIntroToHTML(combinedNotes) : null;
           })();
 
-      setNotesSource(loaded.content ?? null);
-      setNotesHTML(nextHtml);
-      setShowNotesModal(true);
-    } catch (error) {
-      console.error("[SERIES_NOTES] Failed to load notes", error);
+        setNotesSource(loaded.content ?? null);
+        setNotesHTML(nextHtml);
+        void recordNotesOpen();
+        setShowNotesModal(true);
+      } catch (error) {
+        console.error("[SERIES_NOTES] Failed to load notes", error);
       setNotesError("Study notes could not be loaded right now. Please try again.");
       setShowNotesModal(true);
     } finally {
@@ -1500,7 +1527,7 @@ function CompletionModal({ weekNumber, groupId, onClose }: { weekNumber: number;
         <div className="text-6xl mb-4 animate-bounce">🙏</div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Week {weekNumber} Complete!</h2>
         <p className="text-sm text-gray-500 mb-6">
-          You've finished the reading, trivia, and reflection for this week. Keep it up!
+          You've finished the reading, notes, trivia, and reflection for this week. Keep it up!
         </p>
 
         <Link
@@ -1570,6 +1597,7 @@ export default function WeekLessonPage({
   embeddedWeekNum,
   embeddedSeriesId,
   embeddedSeriesTitle,
+  embeddedSeriesIsCurrent,
   embedded = false,
   onBack,
 }: WeekLessonPageProps = {}) {
@@ -1592,6 +1620,7 @@ export default function WeekLessonPage({
   const [accessDeniedMessage, setAccessDeniedMessage] = useState<string | null>(null);
 
   const [readingDone, setReadingDone] = useState(false);
+  const [notesDone, setNotesDone] = useState(false);
   const [triviaDone, setTriviaDone] = useState(false);
   const [reflectionDone, setReflectionDone] = useState(false);
   const [savedTriviaScore, setSavedTriviaScore] = useState<number | null>(null);
@@ -1640,6 +1669,7 @@ export default function WeekLessonPage({
         .eq("series_id", currentSeriesId)
         .eq("week_number", weekNum)
         .eq("reading_completed", true)
+        .eq("notes_completed", true)
         .eq("trivia_completed", true)
         .eq("reflection_posted", true);
 
@@ -1754,7 +1784,7 @@ export default function WeekLessonPage({
           supabase.from("series_schedules").select("start_date, start_at").eq("series_id", sid).maybeSingle(),
           supabase
             .from("series_week_progress")
-            .select("week_number, reading_completed, trivia_completed, reflection_posted")
+            .select("week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
             .eq("user_id", user.id)
             .eq("series_id", sid),
           supabase
@@ -1766,18 +1796,15 @@ export default function WeekLessonPage({
             .maybeSingle(),
         ]);
 
-        const progressMap: Record<number, { reading: boolean; trivia: boolean; reflection: boolean }> = {};
+        const progressMap: Record<number, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }> = {};
         (progressRowsRes.data || []).forEach((row) => {
-          progressMap[row.week_number] = {
-            reading: row.reading_completed ?? false,
-            trivia: row.trivia_completed ?? false,
-            reflection: row.reflection_posted ?? false,
-          };
+          progressMap[row.week_number] = toSeriesWeekProgressState(row);
         });
 
         const currentWeek = progressMap[weekNum];
         if (currentWeek) {
           setReadingDone(currentWeek.reading);
+          setNotesDone(currentWeek.notes);
           setTriviaDone(currentWeek.trivia);
           setReflectionDone(currentWeek.reflection);
         } else {
@@ -1795,16 +1822,21 @@ export default function WeekLessonPage({
           setSavedTriviaScore(scoreRes.data.score);
         }
 
-        const previousWeek = progressMap[weekNum - 1] ?? { reading: false, trivia: false, reflection: false };
-        const previousWeekComplete = weekNum === 1 ? true : (previousWeek.reading && previousWeek.trivia && previousWeek.reflection);
-        const accessState = getWeekAccessState(
-          resolveSeriesStart(scheduleRes.data),
-          weekNum,
-          isLeader,
-          previousWeekComplete
-        );
-        if (!accessState.allowed) {
-          setAccessDeniedMessage(accessState.message);
+        const isArchivedEmbeddedSeries = embedded === true && embeddedSeriesIsCurrent === false;
+        const shouldBypassArchivedLocks = isArchivedEmbeddedSeries && profileRes.data?.is_paid === true;
+
+        if (!shouldBypassArchivedLocks) {
+          const previousWeek = progressMap[weekNum - 1] ?? toSeriesWeekProgressState();
+          const previousWeekComplete = weekNum === 1 ? true : isSeriesWeekComplete(previousWeek);
+          const accessState = getWeekAccessState(
+            resolveSeriesStart(scheduleRes.data),
+            weekNum,
+            isLeader,
+            previousWeekComplete
+          );
+          if (!accessState.allowed) {
+            setAccessDeniedMessage(accessState.message);
+          }
         }
       }
     }
@@ -1943,7 +1975,7 @@ export default function WeekLessonPage({
     load();
   }, [selectedKeyword, userId, completedKeywords, viewedKeywords]);
 
-  async function updateProgressValue(field: "reading_completed" | "trivia_completed" | "reflection_posted", value: boolean) {
+  async function updateProgressValue(field: "reading_completed" | "notes_completed" | "trivia_completed" | "reflection_posted", value: boolean) {
     if (!userId || !seriesId) return;
 
     const patch: Record<string, boolean | string | number> = {
@@ -1960,16 +1992,22 @@ export default function WeekLessonPage({
     void loadWeekFinishers(seriesId);
 
     const newReading = field === "reading_completed" ? value : readingDone;
+    const newNotes = field === "notes_completed" ? value : notesDone;
     const newTrivia = field === "trivia_completed" ? value : triviaDone;
     const newReflection = field === "reflection_posted" ? value : reflectionDone;
 
-    if (newReading && newTrivia && newReflection && !completionShownRef.current) {
+    if (isSeriesWeekComplete({
+      reading: newReading,
+      notes: newNotes,
+      trivia: newTrivia,
+      reflection: newReflection,
+    }) && !completionShownRef.current) {
       completionShownRef.current = true;
       setShowCompletionModal(true);
     }
   }
 
-  async function updateProgress(field: "reading_completed" | "trivia_completed" | "reflection_posted") {
+  async function updateProgress(field: "reading_completed" | "notes_completed" | "trivia_completed" | "reflection_posted") {
     await updateProgressValue(field, true);
   }
 
@@ -1982,6 +2020,12 @@ export default function WeekLessonPage({
     setSavedTriviaScore(score);
     setTriviaDone(true);
     updateProgress("trivia_completed");
+  }
+
+  function handleNotesComplete() {
+    if (notesDone) return Promise.resolve();
+    setNotesDone(true);
+    return updateProgress("notes_completed");
   }
 
   function handleReflectionCompletionChange(completed: boolean) {
@@ -2027,7 +2071,12 @@ export default function WeekLessonPage({
     );
   }
 
-  const totalDone = [readingDone, triviaDone, reflectionDone].filter(Boolean).length;
+  const totalDone = countCompletedSeriesWeekSections({
+    reading: readingDone,
+    notes: notesDone,
+    trivia: triviaDone,
+    reflection: reflectionDone,
+  });
   const visibleFinishers = weekFinishers.slice(0, 6);
 
   return (
@@ -2069,11 +2118,12 @@ export default function WeekLessonPage({
         <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm mb-6">
           <div className="flex items-center justify-between mb-2">
             <p className="text-xs font-semibold text-gray-500">This Week's Progress</p>
-            <p className="text-xs font-bold text-gray-700">{totalDone}/3 complete</p>
+            <p className="text-xs font-bold text-gray-700">{totalDone}/{SERIES_WEEK_TOTAL_SECTIONS} complete</p>
           </div>
           <div className="flex gap-1.5">
             {[
               { label: "Reading", done: readingDone },
+              { label: "Read Notes", done: notesDone },
               { label: "Trivia", done: triviaDone },
               { label: "Reflection", done: reflectionDone },
             ].map((s) => (
@@ -2090,10 +2140,10 @@ export default function WeekLessonPage({
             <div>
               <p className="text-xs font-semibold text-gray-500">Week Finishers</p>
               <p className="text-sm font-bold text-gray-900 mt-1">
-                {weekFinishers.length} {weekFinishers.length === 1 ? "buddy has" : "buddies have"} finished all 3 parts of Week {weekNum}
+                {weekFinishers.length} {weekFinishers.length === 1 ? "buddy has" : "buddies have"} finished all 4 parts of Week {weekNum}
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                Reading, trivia, and reflection all completed.
+                Reading, notes, trivia, and reflection all completed.
               </p>
             </div>
             {weekFinishers.length > 0 && (
@@ -2152,7 +2202,7 @@ export default function WeekLessonPage({
               </div>
             ) : (
               <p className="text-sm text-gray-500">
-                No full finishers yet. Once buddies complete reading, trivia, and reflection, they’ll show up here.
+                No full finishers yet. Once buddies complete reading, notes, trivia, and reflection, they’ll show up here.
               </p>
             )}
           </div>
@@ -2186,9 +2236,12 @@ export default function WeekLessonPage({
             seriesTitle={seriesTitle}
             isPaid={isPaid}
             onUnlock={handleUnlockNotes}
+            onComplete={handleNotesComplete}
+            userId={userId}
+            displayName={displayName}
           />
 
-          {/* Section 2: Trivia */}
+          {/* Section 3: Trivia */}
           <SectionCard title="Trivia">
             <TriviaQuiz
               lesson={lesson}
@@ -2213,7 +2266,7 @@ export default function WeekLessonPage({
             </div>
           )}
 
-          {/* Section 3: Reflection */}
+          {/* Section 4: Reflection */}
           <SectionCard title="Reflection">
             <ReflectionSection
               lesson={lesson}
@@ -2271,7 +2324,7 @@ export default function WeekLessonPage({
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Week Finishers</p>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Week {weekNum}</h2>
             <p className="text-sm text-gray-500 mb-5">
-              {weekFinishers.length} {weekFinishers.length === 1 ? "buddy has" : "buddies have"} completed reading, trivia, and reflection.
+              {weekFinishers.length} {weekFinishers.length === 1 ? "buddy has" : "buddies have"} completed reading, notes, trivia, and reflection.
             </p>
 
             {weekFinishers.length === 0 ? (
@@ -2303,7 +2356,7 @@ export default function WeekLessonPage({
                           groupRole={finisher.group_role}
                         />
                       </div>
-                      <p className="text-xs text-gray-500">Finished all 3 parts</p>
+                      <p className="text-xs text-gray-500">Finished all 4 parts</p>
                     </div>
                   </div>
                 ))}

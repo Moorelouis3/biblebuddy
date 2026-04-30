@@ -14,6 +14,7 @@ type OverviewMetrics = {
   navigationClicks: number;
   videosWatched: number;
   chaptersRead: number;
+  weeklyNotesOpened: number;
   notesCreated: number;
   peopleLearned: number;
   placesDiscovered: number;
@@ -96,6 +97,7 @@ const INITIAL_METRICS: OverviewMetrics = {
   navigationClicks: 0,
   videosWatched: 0,
   chaptersRead: 0,
+  weeklyNotesOpened: 0,
   notesCreated: 0,
   peopleLearned: 0,
   placesDiscovered: 0,
@@ -231,6 +233,7 @@ export default function AnalyticsPage() {
       totalActions: number;
       videosWatched: number;
       chaptersRead: number;
+      weeklyNotesOpened: number;
       notesCreated: number;
       peopleLearned: number;
       placesDiscovered: number;
@@ -637,6 +640,14 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
+        // Weekly Notes Opened
+        const { count: weeklyNotesOpened } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "series_week_notes_opened")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
         // Notes Created
         const { count: notesCreated } = await supabase
           .from("master_actions")
@@ -775,6 +786,7 @@ export default function AnalyticsPage() {
           totalActions: totalActions || 0,
           videosWatched: videosWatched || 0,
           chaptersRead: chaptersRead || 0,
+          weeklyNotesOpened: weeklyNotesOpened || 0,
           notesCreated: notesCreated || 0,
           peopleLearned: peopleLearned || 0,
           placesDiscovered: placesDiscovered || 0,
@@ -892,6 +904,14 @@ export default function AnalyticsPage() {
           .eq("action_type", "chapter_completed")
       );
 
+      // Weekly study notes opened
+      const weeklyNotesOpenedPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "series_week_notes_opened")
+      );
+
       // Notes created (from actions)
       const notesPromise = applyDateFilter(
         supabase
@@ -992,6 +1012,7 @@ export default function AnalyticsPage() {
         videosWatchedResult,
         dashboardCardBreakdownResult,
         chaptersResult,
+        weeklyNotesOpenedResult,
         notesResult,
         peopleResult,
         placesResult,
@@ -1021,6 +1042,7 @@ export default function AnalyticsPage() {
         videosWatchedPromise,
         dashboardCardBreakdownPromise,
         chaptersPromise,
+        weeklyNotesOpenedPromise,
         notesPromise,
         peoplePromise,
         placesPromise,
@@ -1062,6 +1084,8 @@ export default function AnalyticsPage() {
       const videosWatchedError = videosWatchedResult.error;
       const chaptersCount = chaptersResult.count ?? 0;
       const chaptersError = chaptersResult.error;
+      const weeklyNotesOpenedCount = weeklyNotesOpenedResult.count ?? 0;
+      const weeklyNotesOpenedError = weeklyNotesOpenedResult.error;
       const notesCount = notesResult.count ?? 0;
       const notesError = notesResult.error;
       const peopleCount = peopleResult.count ?? 0;
@@ -1092,6 +1116,7 @@ export default function AnalyticsPage() {
         navigationClicksError ||
         videosWatchedError ||
         chaptersError ||
+        weeklyNotesOpenedError ||
         notesError ||
         peopleError ||
         placesError ||
@@ -1112,6 +1137,7 @@ export default function AnalyticsPage() {
           navigationClicksError,
           videosWatchedError,
           chaptersError,
+          weeklyNotesOpenedError,
           notesError,
           peopleError,
           placesError,
@@ -1155,6 +1181,7 @@ export default function AnalyticsPage() {
         navigationClicks: navigationClicksCount,
         videosWatched: videosWatchedCount,
         chaptersRead: chaptersCount ?? 0,
+        weeklyNotesOpened: weeklyNotesOpenedCount ?? 0,
         notesCreated: notesCount ?? 0,
         peopleLearned: peopleCount ?? 0,
         placesDiscovered: placesCount ?? 0,
@@ -1906,6 +1933,11 @@ export default function AnalyticsPage() {
             ? `On ${formattedDate} at ${formattedTime}, ${username} started ${action.action_label}.${counterText}`
             : `On ${formattedDate} at ${formattedTime}, ${username} started a Bible series week.${counterText}`;
           actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "series_week_started", url: "/groups" });
+        } else if (action.action_type === "series_week_notes_opened") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} opened ${action.action_label}.${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} opened weekly Bible study notes.${counterText}`;
+          actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "series_week_notes_opened", url: "/groups" });
         }
         // Ignore all other action types
       }
@@ -2555,6 +2587,7 @@ export default function AnalyticsPage() {
       "navigation_views": "Navigation Views",
       "navigation_clicks": "Navigation Clicks",
       "videos_watched": "Videos Watched",
+      "series_week_notes_opened": "Weekly Notes Opened",
       "daily_bible_tasks_completed": "Daily Bible Tasks Completed",
       "dashboard_viewed": "Dashboard Views",
       "dashboard_card_opened": "Dashboard Card Clicks",
@@ -2604,6 +2637,7 @@ export default function AnalyticsPage() {
         "book_completed",
         "verse_highlighted",
         "chapter_notes_viewed",
+        "series_week_notes_opened",
       ].includes(actionType)
     ) {
       return "bible";
@@ -2635,6 +2669,7 @@ export default function AnalyticsPage() {
         "group_message_sent",
         "buddy_added",
         "series_week_started",
+        "series_week_notes_opened",
       ].includes(actionType)
     ) {
       return "groups";
@@ -2749,6 +2784,7 @@ export default function AnalyticsPage() {
         case "Total Actions": return row.totalActions;
         case "Videos Watched": return row.videosWatched;
         case "Chapters Read": return row.chaptersRead;
+        case "Weekly Notes Opened": return row.weeklyNotesOpened;
         case "Notes Created": return row.notesCreated;
         case "People Learned": return row.peopleLearned;
         case "Places Discovered": return row.placesDiscovered;
@@ -3025,6 +3061,12 @@ export default function AnalyticsPage() {
                 value={overviewMetrics.chaptersRead}
                 onClick={() => setSelectedActionType(selectedActionType === "chapter_completed" ? null : "chapter_completed")}
                 isSelected={selectedActionType === "chapter_completed"}
+              />
+              <OverviewCard
+                label="Weekly Notes Opened"
+                value={overviewMetrics.weeklyNotesOpened}
+                onClick={() => setSelectedActionType(selectedActionType === "series_week_notes_opened" ? null : "series_week_notes_opened")}
+                isSelected={selectedActionType === "series_week_notes_opened"}
               />
               <OverviewCard
                 label="Notes Created"
@@ -3398,6 +3440,8 @@ export default function AnalyticsPage() {
                               return row.videosWatched;
                             case "Chapters Read":
                               return row.chaptersRead;
+                            case "Weekly Notes Opened":
+                              return row.weeklyNotesOpened;
                             case "Notes Created":
                               return row.notesCreated;
                             case "People Learned":
@@ -3986,6 +4030,10 @@ export default function AnalyticsPage() {
                     <p className="text-sm text-gray-600 mb-1">Chapters Read</p>
                     <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.chaptersRead.toLocaleString()}</p>
                   </div>
+                  <div className="bg-amber-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Weekly Notes Opened</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.weeklyNotesOpened.toLocaleString()}</p>
+                  </div>
                   <div className="bg-yellow-50 p-4 rounded-lg">
                     <p className="text-sm text-gray-600 mb-1">Notes Created</p>
                     <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.notesCreated.toLocaleString()}</p>
@@ -4214,6 +4262,8 @@ function OverviewCard({
         return "bg-purple-100 border border-purple-200";
       case "Chapters Read":
         return "bg-green-100 border border-green-200";
+      case "Weekly Notes Opened":
+        return "bg-amber-100 border border-amber-200";
       case "Bible Completion":
         return "bg-orange-100 border border-orange-200";
       case "Notes Created":

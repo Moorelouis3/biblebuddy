@@ -28,6 +28,7 @@ import { enrichBibleVerses } from "@/lib/bibleHighlighting";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
 import { consumeCreditAction } from "@/lib/creditClient";
+import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
 import {
   extractMentionedItemsFromText,
   linkMentionItemsInHtml,
@@ -256,8 +257,7 @@ interface WeekAnalytics {
 const PLANNED_BIBLE_STUDY_SERIES = [
   { key: "testing_of_joseph", title: "The Testing of Joseph", subtitle: "14-week group study" },
   { key: "temptation_of_jesus", title: "The Temptation of Jesus", subtitle: "5-week group study" },
-  { key: "wisdom_of_proverbs", title: "The Wisdom of Proverbs", subtitle: "Coming later" },
-  { key: "calling_of_moses", title: "The Calling of Moses", subtitle: "Coming later" },
+  { key: "wisdom_of_proverbs", title: "The Wisdom of Proverbs", subtitle: "31-week group study" },
 ] as const;
 
 function getWeekUnlockDate(startDate: string, weekNum: number): string {
@@ -2102,7 +2102,7 @@ RULES:
   const [seriesPosts, setSeriesPosts] = useState<SeriesPost[]>([]);
   const [loadingSeriesPosts, setLoadingSeriesPosts] = useState(false);
   const [seriesStartDate, setSeriesStartDate] = useState<string | null>(null);
-  const [seriesWeekProgress, setSeriesWeekProgress] = useState<Record<number, { reading: boolean; trivia: boolean; reflection: boolean }>>({});
+  const [seriesWeekProgress, setSeriesWeekProgress] = useState<Record<number, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }>>({});
   const [seriesStartDateInput, setSeriesStartDateInput] = useState("");
   const [savingSeriesStartDate, setSavingSeriesStartDate] = useState(false);
   const [seriesStartSaveError, setSeriesStartSaveError] = useState<string | null>(null);
@@ -2842,11 +2842,11 @@ RULES:
     // Load week progress for current user
     if (userId) {
       supabase.from("series_week_progress")
-        .select("week_number, reading_completed, trivia_completed, reflection_posted")
+        .select("week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
         .eq("user_id", userId).eq("series_id", selectedSeries.id)
         .then(({ data }) => {
-          const map: Record<number, { reading: boolean; trivia: boolean; reflection: boolean }> = {};
-          (data || []).forEach((p) => { map[p.week_number] = { reading: p.reading_completed, trivia: p.trivia_completed, reflection: p.reflection_posted }; });
+          const map: Record<number, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }> = {};
+          (data || []).forEach((p) => { map[p.week_number] = toSeriesWeekProgressState(p); });
           setSeriesWeekProgress(map);
         });
     }
@@ -3901,7 +3901,7 @@ RULES:
     const [progressRes, triviaRes, reflectionsRes] = await Promise.all([
       supabase
         .from("series_week_progress")
-        .select("user_id, week_number, reading_completed, trivia_completed, reflection_posted")
+        .select("user_id, week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
         .eq("series_id", seriesId),
       supabase
         .from("series_trivia_scores")
@@ -5163,6 +5163,7 @@ RULES:
               embeddedWeekNum={selectedSeriesWeek}
               embeddedSeriesId={selectedSeries.id}
               embeddedSeriesTitle={selectedSeries.title}
+              embeddedSeriesIsCurrent={selectedSeries.is_current}
               onBack={() => setSelectedSeriesWeek(null)}
             />
           ) : activeTab === "bible_studies" && selectedSeries ? (
@@ -5575,21 +5576,22 @@ RULES:
                 </div>
               )}
 
-              {(selectedSeries.is_current || isLeader) && (() => {
+              {(selectedSeries.is_current || isLeader || (userIsPaid && !selectedSeries.id.startsWith("preview-"))) && (() => {
                 const sd = seriesStartDate;
-                const isPreviewSeries = !selectedSeries.is_current;
+                const isPreviewSeries = selectedSeries.id.startsWith("preview-");
+                const hasArchivedPaidAccess = userIsPaid && !selectedSeries.is_current && !isPreviewSeries;
                 return (
                   <div className="flex flex-col gap-3">
                     <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-1">Week Lessons</p>
                     {Array.from({ length: getSeriesTotalWeeks(selectedSeries.title) }, (_, i) => i + 1).map((wn) => {
                       const lesson = getSeriesWeekLesson(wn, selectedSeries.title);
-                      const prog = seriesWeekProgress[wn] ?? { reading: false, trivia: false, reflection: false };
-                      const done = [prog.reading, prog.trivia, prog.reflection].filter(Boolean).length;
-                      const complete = done === 3;
-                      const previousWeek = seriesWeekProgress[wn - 1] ?? { reading: false, trivia: false, reflection: false };
-                      const previousWeekComplete = wn === 1 ? true : (previousWeek.reading && previousWeek.trivia && previousWeek.reflection);
+                      const prog = seriesWeekProgress[wn] ?? toSeriesWeekProgressState();
+                      const done = countCompletedSeriesWeekSections(prog);
+                      const complete = isSeriesWeekComplete(prog);
+                      const previousWeek = seriesWeekProgress[wn - 1] ?? toSeriesWeekProgressState();
+                      const previousWeekComplete = wn === 1 ? true : isSeriesWeekComplete(previousWeek);
                       const lockState = getWeekLockState(sd, wn, isLeader, previousWeekComplete);
-                      const unlocked = isPreviewSeries ? true : lockState.unlocked;
+                      const unlocked = isPreviewSeries || hasArchivedPaidAccess ? true : lockState.unlocked;
                       return (
                         <div
                           key={wn}
@@ -5607,7 +5609,7 @@ RULES:
                               {complete ? (
                                 <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-green-100 text-green-700 flex-shrink-0">✓ Done</span>
                               ) : unlocked && lesson ? (
-                                done > 0 ? <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-600 flex-shrink-0">{done}/3</span>
+                                done > 0 ? <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-600 flex-shrink-0">{done}/{SERIES_WEEK_TOTAL_SECTIONS}</span>
                                 : <span className="text-xs text-gray-400 flex-shrink-0">Not started</span>
                               ) : (
                                 <span className="text-xs text-gray-400 flex-shrink-0">🔒</span>
@@ -5615,6 +5617,8 @@ RULES:
                             </div>
                             {isPreviewSeries ? (
                               <p className="text-xs text-amber-600 mt-1">Preview mode for leaders only</p>
+                            ) : hasArchivedPaidAccess ? (
+                              <p className="text-xs text-gray-500 mt-1">Past study unlocked for paid users.</p>
                             ) : !unlocked ? (
                               <p className="text-xs text-gray-400 mt-1">{lockState.lockedMessage}</p>
                             ) : null}
@@ -5705,6 +5709,7 @@ RULES:
                     const previewSeries = matchingSeries ?? (isLeader ? buildSeriesPreviewRecord(planned.title) : liveSeries);
                     const isJosephSeries = normalizeSeriesTitle(planned.title) === "the testing of joseph";
                     const isTemptationSeries = normalizeSeriesTitle(planned.title) === "the temptation of jesus";
+                    const isWisdomSeries = normalizeSeriesTitle(planned.title) === "the wisdom of proverbs";
                     const isPastStudy = isTemptationSeries;
                     const canOpenPastStudy = isPastStudy && (userIsPaid || isLeader);
                     const canOpen = isLive || isLeader || canOpenPastStudy;
@@ -5723,11 +5728,13 @@ RULES:
                       ? userIsPaid || isLeader
                         ? "Past Study"
                         : "Pro Only"
+                      : isWisdomSeries
+                        ? "Next Bible Study"
                       : isLive
                       ? "Current Study"
                       : isJosephSeries
                         ? "Starts Saturday"
-                        : canOpen
+                      : canOpen
                           ? "Preview"
                           : "Locked";
                     return (
@@ -5757,25 +5764,12 @@ RULES:
                                   src={coverSrc}
                                   alt={`${planned.title} cover`}
                                   className={`w-full h-40 sm:h-48 object-cover transition ${
-                                    isJosephSeries ? "" : isTemptationSeries ? "grayscale" : "grayscale"
+                                    isJosephSeries || isTemptationSeries ? "" : isWisdomSeries ? "" : "grayscale"
                                   }`}
                                   style={{
                                     objectPosition: isJosephSeries ? "center 30%" : isTemptationSeries ? "center 42%" : "center center",
                                   }}
                                 />
-                                {isPastStudy ? (
-                                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-4">
-                                    <div
-                                      className={`rounded-xl px-4 py-2 text-center text-base sm:text-lg font-black uppercase tracking-wide shadow-lg ${
-                                        canOpenPastStudy
-                                          ? "bg-white/82 text-[#d62828]"
-                                          : "bg-[#d62828]/90 text-white"
-                                      }`}
-                                    >
-                                      {canOpenPastStudy ? "Click to do past study" : "Locked for free users"}
-                                    </div>
-                                  </div>
-                                ) : null}
                               </>
                             ) : (
                               <div className="h-40 sm:h-48 bg-gradient-to-br from-gray-100 to-gray-200" />
@@ -5804,13 +5798,7 @@ RULES:
                             </span>
                           </div>
                           <p className="mt-1 text-sm text-gray-500">{planned.subtitle}</p>
-                          {isPastStudy ? (
-                            <p className={`mt-3 text-sm font-semibold ${canOpenPastStudy ? "text-[#7d4ab3]" : "text-[#d62828]"}`}>
-                              {canOpenPastStudy
-                                ? "Pro users can revisit this completed Bible study anytime."
-                                : "Upgrade to Pro to unlock access to past Bible studies."}
-                            </p>
-                          ) : isJosephSeries && josephCountdown ? (
+                          {isJosephSeries && josephCountdown ? (
                             <div className="mt-3">
                               <p className="text-base font-bold" style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}>
                                 Week 1 starts in {josephCountdown}
@@ -5836,7 +5824,7 @@ RULES:
                                     return (
                                       <>
                                         <span className="font-semibold" style={{ color: "#4f7e54" }}>Week {liveWeek} Active</span>
-                                        <span> · Week {liveWeek + 1} ready in </span>
+                                        <span> · Week {liveWeek + 1} live in </span>
                                         <span className="font-bold" style={{ color: "#d62828" }}>{formatCountdown(nextUnlockTs, nowTs)}</span>
                                       </>
                                     );
@@ -5847,31 +5835,33 @@ RULES:
                                 <span className="text-gray-400">Start date coming soon</span>
                               )}
                             </p>
-                          ) : canOpen ? (
+                          ) : !isPastStudy && !isWisdomSeries && canOpen ? (
                             <p className="mt-3 text-sm text-amber-600">Preview unlocked for leaders</p>
-                          ) : (
+                          ) : !isPastStudy && !isWisdomSeries && !canOpen ? (
                             <p className="mt-3 text-sm text-gray-400">Locked until this series is released</p>
+                          ) : null}
+                          {!(isTemptationSeries || isJosephSeries || isWisdomSeries) && (
+                            <div className="mt-4 flex items-center justify-between text-sm">
+                              <span className="font-medium text-gray-500">
+                                {isPastStudy
+                                  ? canOpenPastStudy
+                                    ? "Replay the finished study anytime"
+                                    : "Past studies are unlocked with Pro"
+                                  : planned.title === "The Testing of Joseph"
+                                    ? "Current featured study"
+                                    : "Coming next in the lineup"}
+                              </span>
+                              <span className={`font-semibold ${canOpen ? "text-[#8d5d38]" : "text-gray-400"}`}>
+                                {isPastStudy
+                                  ? canOpenPastStudy
+                                    ? "Open Past Study"
+                                    : "Pro Locked"
+                                  : canOpen
+                                    ? "Open Study"
+                                    : "Locked"}
+                              </span>
+                            </div>
                           )}
-                          <div className="mt-4 flex items-center justify-between text-sm">
-                            <span className="font-medium text-gray-500">
-                              {isPastStudy
-                                ? canOpenPastStudy
-                                  ? "Replay the finished study anytime"
-                                  : "Past studies are unlocked with Pro"
-                                : planned.title === "The Testing of Joseph"
-                                  ? "Current featured study"
-                                  : "Coming next in the lineup"}
-                            </span>
-                            <span className={`font-semibold ${canOpen ? "text-[#8d5d38]" : "text-gray-400"}`}>
-                              {isPastStudy
-                                ? canOpenPastStudy
-                                  ? "Open Past Study"
-                                  : "Pro Locked"
-                                : canOpen
-                                  ? "Open Study"
-                                  : "Locked"}
-                            </span>
-                          </div>
                         </div>
                       </button>
                     );

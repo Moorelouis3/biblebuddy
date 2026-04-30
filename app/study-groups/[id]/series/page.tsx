@@ -4,6 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import { getSeriesTotalWeeks, getSeriesWeekLesson } from "@/lib/seriesContent";
+import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
 
 interface AnalyticsUser {
   user_id: string;
@@ -29,6 +30,7 @@ interface WeekCard {
   unlockDate: string | null;
   lockedMessage: string | null;
   reading: boolean;
+  notes: boolean;
   trivia: boolean;
   reflection: boolean;
   complete: boolean;
@@ -163,7 +165,7 @@ export default function SeriesOverviewPage() {
       const [scheduleRes, progressRes] = await Promise.all([
         supabase.from("series_schedules").select("start_date, start_at").eq("series_id", sid).maybeSingle(),
         supabase.from("series_week_progress")
-          .select("week_number, reading_completed, trivia_completed, reflection_posted")
+          .select("week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
           .eq("user_id", user.id).eq("series_id", sid),
       ]);
 
@@ -172,23 +174,19 @@ export default function SeriesOverviewPage() {
       if (sd) setStartDateInput(toDateTimeLocalValue(sd));
       setEditingStartDate(!sd);
 
-      const progMap: Record<number, { reading: boolean; trivia: boolean; reflection: boolean }> = {};
+      const progMap: Record<number, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }> = {};
       (progressRes.data || []).forEach((p) => {
-        progMap[p.week_number] = {
-          reading: p.reading_completed,
-          trivia: p.trivia_completed,
-          reflection: p.reflection_posted,
-        };
+        progMap[p.week_number] = toSeriesWeekProgressState(p);
       });
 
       const isLeader = memberRes.data?.role === "leader";
       const totalWeeks = getSeriesTotalWeeks(seriesRes.data.title);
       const cards: WeekCard[] = Array.from({ length: totalWeeks }, (_, i) => {
         const wn = i + 1;
-        const prog = progMap[wn] ?? { reading: false, trivia: false, reflection: false };
+        const prog = progMap[wn] ?? toSeriesWeekProgressState();
         const previousWeekComplete = wn === 1
           ? true
-          : !!(progMap[wn - 1]?.reading && progMap[wn - 1]?.trivia && progMap[wn - 1]?.reflection);
+          : isSeriesWeekComplete(progMap[wn - 1] ?? toSeriesWeekProgressState());
         const lockState = getWeekLockState(sd, wn, isLeader, previousWeekComplete);
         return {
           weekNumber: wn,
@@ -196,9 +194,10 @@ export default function SeriesOverviewPage() {
           unlockDate: lockState.unlockDate,
           lockedMessage: lockState.lockedMessage,
           reading: prog.reading,
+          notes: prog.notes,
           trivia: prog.trivia,
           reflection: prog.reflection,
-          complete: prog.reading && prog.trivia && prog.reflection,
+          complete: isSeriesWeekComplete(prog),
         };
       });
       setWeeks(cards);
@@ -274,7 +273,7 @@ export default function SeriesOverviewPage() {
     const [progressRes, triviaRes, reflectionsRes] = await Promise.all([
       supabase
         .from("series_week_progress")
-        .select("user_id, week_number, reading_completed, trivia_completed, reflection_posted")
+        .select("user_id, week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
         .eq("series_id", seriesId),
       supabase
         .from("series_trivia_scores")
@@ -373,7 +372,12 @@ export default function SeriesOverviewPage() {
         <div className="flex flex-col gap-4">
           {weeks.map((w) => {
             const lesson = getSeriesWeekLesson(w.weekNumber, seriesTitle);
-            const done = [w.reading, w.trivia, w.reflection].filter(Boolean).length;
+            const done = countCompletedSeriesWeekSections({
+              reading: w.reading,
+              notes: w.notes,
+              trivia: w.trivia,
+              reflection: w.reflection,
+            });
             const hasContent = !!lesson;
 
             return (
@@ -399,7 +403,7 @@ export default function SeriesOverviewPage() {
                         done === 0 ? (
                           <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-gray-100 text-gray-500">Not Started</span>
                         ) : (
-                          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-600">In Progress · {done}/3</span>
+                          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-600">In Progress · {done}/{SERIES_WEEK_TOTAL_SECTIONS}</span>
                         )
                       ) : !w.unlocked ? (
                         <span className="text-xs text-gray-400">Locked</span>
@@ -411,6 +415,7 @@ export default function SeriesOverviewPage() {
                     <div className="flex gap-2 mt-3">
                       {[
                         { label: "Reading", done: w.reading },
+                        { label: "Read Notes", done: w.notes },
                         { label: "Trivia", done: w.trivia },
                         { label: "Reflection", done: w.reflection },
                       ].map((s) => (

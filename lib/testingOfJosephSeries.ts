@@ -25,23 +25,49 @@ const WEEK_ONE_INTRO = `Joseph's story did not hit me the first time I read it.
 
 Compared to the Red Sea splitting, manna falling from heaven, or Jonah being swallowed by a great fish, it felt too normal.
 
-No fire from the sky. No giant public miracle. Just family tension, jealousy, dreams, and betrayal.
+## Why Joseph Matters So Much
+
+No fire from the sky. No giant public miracle. Just:
+
+- 🏠 family tension
+- 😤 jealousy
+- 🌙 dreams
+- 💔 betrayal
 
 But that is exactly why Joseph matters so much.
 
 His story is not built around one dramatic moment. It is built around the kind of pain people actually live through.
 
+## Where the Testing Begins
+
 Genesis 37 is where the testing begins.
 
-We meet a seventeen year old who is favored, immature, and carrying dreams he does not yet know how to handle. We also meet brothers whose jealousy has been growing for a long time and a father whose favoritism has damaged the whole house.
+We meet:
+
+- 👦 a seventeen year old who is favored, immature, and carrying dreams he does not yet know how to handle
+- 👥 brothers whose jealousy has been growing for a long time
+- 👴 a father whose favoritism has damaged the whole house
 
 This chapter is not just Joseph's backstory. It is the setup for everything that follows.
 
-What starts with a robe, a report, and two dreams will eventually move an entire family into Egypt and set the stage for Israel becoming a nation.
+What starts with:
+
+- 👕 a robe
+- 📝 a report
+- 🌙 two dreams
+
+will eventually move an entire family into Egypt and set the stage for Israel becoming a nation.
+
+## Read This Chapter Slowly
 
 So read this chapter slowly.
 
-Pay attention to the family tension, the symbols, the geography, and the way God is still moving even when every person in the story seems messy.
+Pay attention to:
+
+- 🔥 the family tension
+- 🧭 the symbols
+- 🗺️ the geography
+- 🙏 the way God is still moving even when every person in the story seems messy
 
 Joseph's testing does not begin in Egypt.
 

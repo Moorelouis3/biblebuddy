@@ -96,7 +96,11 @@ export async function buildLouisRecommendationHandoff(
   const label = normalizeRecommendationLabel(recommendation);
   const seed = `${recommendation.recommendationKey || recommendation.primaryButtonHref}:${recommendation.category || "general"}`;
 
-  if (targetPath.startsWith("/devotionals/")) {
+  if (
+    targetPath.startsWith("/devotionals/") ||
+    targetPath.startsWith("/Bible/") ||
+    targetPath === "/reading"
+  ) {
     return null;
   }
 

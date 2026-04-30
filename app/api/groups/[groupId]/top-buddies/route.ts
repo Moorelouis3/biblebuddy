@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { getLiveStreakMapForUsers } from "@/lib/serverStreaks";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -111,15 +112,24 @@ export async function GET(
     .sort((a, b) => b.score - a.score || b.posts - a.posts || b.comments - a.comments || b.likes - a.likes)
     .slice(0, 10);
 
-  const { data: profiles } = ranked.length
-    ? await supabaseAdmin
+  const profilesPromise = ranked.length
+    ? supabaseAdmin
         .from("profile_stats")
         .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level")
         .in("user_id", ranked.map((entry) => entry.userId))
-    : { data: [] as Array<any> };
+    : Promise.resolve({ data: [] as Array<any>, error: null });
+
+  const [profilesResult, liveStreakMap] = await Promise.all([
+    profilesPromise,
+    getLiveStreakMapForUsers(
+      supabaseAdmin,
+      ranked.map((entry) => entry.userId),
+    ),
+  ]);
+  const profiles = profilesResult.data || [];
 
   const buddies = ranked.map((entry, index) => {
-    const profile = (profiles || []).find((row) => row.user_id === entry.userId);
+    const profile = profiles.find((row) => row.user_id === entry.userId);
     return {
       rank: index + 1,
       userId: entry.userId,
@@ -127,7 +137,7 @@ export async function GET(
       profileImageUrl: profile?.profile_image_url ?? null,
       memberBadge: profile?.member_badge ?? null,
       isPaid: !!profile?.is_paid,
-      currentStreak: profile?.current_streak ?? null,
+      currentStreak: liveStreakMap.get(entry.userId) ?? profile?.current_streak ?? null,
       currentLevel: profile?.current_level ?? null,
       posts: entry.posts,
       comments: entry.comments,

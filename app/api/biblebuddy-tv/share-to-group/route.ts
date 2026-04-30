@@ -6,14 +6,6 @@ import { ACTION_TYPE } from "@/lib/actionTypes";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-function getOfficialGroup(groups: Array<{ id: string; name: string }> | null) {
-  return (
-    groups?.find((row) => row.name === "Bible Buddy Study Group") ??
-    groups?.find((row) => row.name === "Hope Nation") ??
-    null
-  );
-}
-
 export async function POST(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -57,40 +49,67 @@ export async function POST(request: NextRequest) {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  const { data: groups, error: groupError } = await supabaseAdmin
+  const { data: primaryGroup, error: primaryGroupError } = await supabaseAdmin
     .from("study_groups")
-    .select("id, name, created_at")
-    .in("name", ["Bible Buddy Study Group", "Hope Nation"])
-    .order("created_at", { ascending: false });
+    .select("id, name")
+    .eq("name", "Bible Buddy Study Group")
+    .maybeSingle();
 
-  if (groupError) {
-    return NextResponse.json({ error: groupError.message || "Could not load the study group." }, { status: 500 });
+  if (primaryGroupError) {
+    return NextResponse.json({ error: primaryGroupError.message || "Could not load the study group." }, { status: 500 });
   }
 
-  const targetGroup = getOfficialGroup(groups as Array<{ id: string; name: string }> | null);
+  let targetGroup = primaryGroup;
+  if (!targetGroup) {
+    const { data: fallbackGroup, error: fallbackGroupError } = await supabaseAdmin
+      .from("study_groups")
+      .select("id, name")
+      .eq("name", "Hope Nation")
+      .maybeSingle();
+
+    if (fallbackGroupError) {
+      return NextResponse.json({ error: fallbackGroupError.message || "Could not load the study group." }, { status: 500 });
+    }
+
+    targetGroup = fallbackGroup;
+  }
+
   if (!targetGroup) {
     return NextResponse.json({ error: "Official study group not found." }, { status: 404 });
   }
 
-  const { data: membership, error: membershipError } = await supabaseAdmin
-    .from("group_members")
-    .select("status")
-    .eq("group_id", targetGroup.id)
-    .eq("user_id", userData.user.id)
-    .maybeSingle();
+  const [{ data: membership, error: membershipError }, { data: profile, error: profileError }] = await Promise.all([
+    supabaseAdmin
+      .from("group_members")
+      .select("role")
+      .eq("group_id", targetGroup.id)
+      .eq("user_id", userData.user.id)
+      .eq("status", "approved")
+      .maybeSingle(),
+    supabaseAdmin
+      .from("profile_stats")
+      .select("display_name, username")
+      .eq("user_id", userData.user.id)
+      .maybeSingle(),
+  ]);
 
   if (membershipError) {
     return NextResponse.json({ error: membershipError.message || "Could not verify group membership." }, { status: 500 });
   }
 
-  if (membership?.status !== "approved") {
+  if (profileError) {
+    return NextResponse.json({ error: profileError.message || "Could not load your profile." }, { status: 500 });
+  }
+
+  if (!membership) {
     return NextResponse.json({ error: "Join the study group first to share Bible Buddy TV videos." }, { status: 403 });
   }
 
   const displayName =
+    profile?.display_name ||
+    profile?.username ||
     userData.user.user_metadata?.firstName ||
     userData.user.user_metadata?.first_name ||
-    userData.user.user_metadata?.display_name ||
     (userData.user.email ? userData.user.email.split("@")[0] : null) ||
     "Buddy";
 
@@ -113,23 +132,32 @@ export async function POST(request: NextRequest) {
       media_url: mediaUrl,
       link_url: linkUrl,
     })
-    .select("id, title, content, media_url, link_url, created_at")
+    .select("id, user_id, display_name, title, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
     .single();
 
   if (insertError || !newPost) {
     return NextResponse.json({ error: insertError?.message || "Could not share this video right now." }, { status: 500 });
   }
 
-  await supabaseAdmin.from("master_actions").insert({
+  void supabaseAdmin.from("master_actions").insert({
     user_id: userData.user.id,
     username: displayName,
     action_type: ACTION_TYPE.group_message_sent,
     action_label: `Shared Bible Buddy TV: ${tvTitle.title} • ${episode.title}`,
+  }).then(({ error }) => {
+    if (error) {
+      console.error("[TV_SHARE] Failed to record master action", error);
+    }
   });
 
   return NextResponse.json({
     ok: true,
-    post: newPost,
+    post: {
+      ...newPost,
+      comment_count: 0,
+      role: membership.role || "member",
+      liked: false,
+    },
     groupId: targetGroup.id,
   });
 }

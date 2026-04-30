@@ -3,6 +3,15 @@ import { createClient } from "@supabase/supabase-js";
 import { normalizeCustomMemberBadge } from "@/lib/userBadges";
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
+const MANAGED_HOME_FEED_CATEGORIES = new Set([
+  "weekly_trivia",
+  "weekly_poll",
+  "weekly_question",
+  "update_monday",
+  "who_was_this_friday",
+  "bible_study_saturday",
+  "prayer_request_sunday",
+]);
 
 export async function POST(
   request: NextRequest,
@@ -58,7 +67,7 @@ export async function POST(
 
   const { data: targetPost, error: postError } = await supabaseAdmin
     .from("group_posts")
-    .select("id, user_id, group_id, parent_post_id, media_url, link_url")
+    .select("id, user_id, group_id, parent_post_id, media_url, link_url, category")
     .eq("id", postId)
     .eq("group_id", groupId)
     .maybeSingle();
@@ -76,7 +85,13 @@ export async function POST(
     .maybeSingle();
 
   const canModerateGroup = membership?.role === "leader" || membership?.role === "moderator";
-  if (!isAdmin && !isGlobalModerator && !canModerateGroup && targetPost.user_id !== requester.id) {
+  const isManagedHomeFeedPost = MANAGED_HOME_FEED_CATEGORIES.has(targetPost.category ?? "");
+
+  if (isManagedHomeFeedPost && !isAdmin && !isGlobalModerator && !canModerateGroup) {
+    return NextResponse.json({ error: "Only the group leader can edit this post." }, { status: 403 });
+  }
+
+  if (!isManagedHomeFeedPost && !isAdmin && !isGlobalModerator && !canModerateGroup && targetPost.user_id !== requester.id) {
     return NextResponse.json({ error: "Forbidden." }, { status: 403 });
   }
 

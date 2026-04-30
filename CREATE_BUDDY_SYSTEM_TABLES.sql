@@ -105,6 +105,8 @@ CREATE TABLE IF NOT EXISTS public.messages (
   conversation_id uuid NOT NULL REFERENCES public.conversations(id) ON DELETE CASCADE,
   sender_id       uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   content         text NOT NULL,
+  action_label    text,
+  action_href     text,
   read_at         timestamptz,
   created_at      timestamptz NOT NULL DEFAULT now()
 );

@@ -8,6 +8,7 @@
  */
 
 import { SCRAMBLED_BOOKS } from "./scrambledGameData";
+import { isSeriesWeekComplete, toSeriesWeekProgressState } from "./seriesWeekProgress";
 import { supabase } from "./supabaseClient";
 import { getBookTotalChapters } from "./readingProgress";
 
@@ -546,33 +547,29 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         const seriesIds = currentSeriesRows.map((row) => row.id);
         const { data: progressRows } = await supabase
           .from("series_week_progress")
-          .select("series_id, week_number, reading_completed, trivia_completed, reflection_posted")
+          .select("series_id, week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
           .eq("user_id", userId)
           .in("series_id", seriesIds);
 
         for (const seriesRow of currentSeriesRows) {
-          const progressMap = new Map<number, { reading: boolean; trivia: boolean; reflection: boolean }>();
+          const progressMap = new Map<number, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }>();
           (progressRows || [])
             .filter((row) => row.series_id === seriesRow.id)
             .forEach((row) => {
-              progressMap.set(row.week_number, {
-                reading: row.reading_completed === true,
-                trivia: row.trivia_completed === true,
-                reflection: row.reflection_posted === true,
-              });
+              progressMap.set(row.week_number, toSeriesWeekProgressState(row));
             });
 
           let firstIncompleteWeek = 1;
           for (let week = 1; week <= 12; week++) {
             const progress = progressMap.get(week);
-            const complete = !!(progress?.reading && progress?.trivia && progress?.reflection);
+            const complete = progress ? isSeriesWeekComplete(progress) : false;
             if (!complete) {
               firstIncompleteWeek = week;
               break;
             }
           }
 
-          const hasStartedAnyWeek = [...progressMap.values()].some((progress) => progress.reading || progress.trivia || progress.reflection);
+          const hasStartedAnyWeek = [...progressMap.values()].some((progress) => progress.reading || progress.notes || progress.trivia || progress.reflection);
           if (!hasStartedAnyWeek) {
             candidates.push(withLouisCard(createRecommendation({
               priority: 94,

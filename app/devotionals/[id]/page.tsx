@@ -56,7 +56,6 @@ import BibleReadingModal from "../../../components/BibleReadingModal";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { consumeCreditAction } from "../../../lib/creditClient";
 import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
-import { dispatchLouisMoment } from "../../../lib/louisMoments";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../../../lib/triviaCatalog";
 import { getTriviaChapter } from "../../../lib/triviaGameData";
 import { getScrambledChapter } from "../../../lib/scrambledGameData";
@@ -428,21 +427,13 @@ export default function DevotionalDetailPage() {
 
     void (async () => {
       await handleDayClick(day);
-      dispatchLouisMoment({
-        message: buildLouisDayStartMessage(devotional, day),
-      });
       router.replace(`/devotionals/${devotionalId}`);
     })();
   }, [days, devotional, devotionalId, router, searchParams]);
 
   useEffect(() => {
-    if (!selectedDay || !devotional || !featureToursLoaded) return;
+    if (!selectedDay || !featureToursLoaded) return;
     if (featureTours.devotional_day === true) return;
-
-    dispatchLouisMoment({
-      openMode: "badge",
-      message: buildLouisDayStartMessage(devotional, selectedDay),
-    });
     void markFeatureTourSeen("devotional_day");
   }, [selectedDay, devotional, featureTours.devotional_day, featureToursLoaded]);
 
@@ -462,75 +453,6 @@ export default function DevotionalDetailPage() {
       setSelectedDay(pendingDayClick);
       setPendingDayClick(null);
     }
-  };
-
-  const sendDevotionalLouisMoment = async (day: DevotionalDay) => {
-    if (!devotional || !userId) return;
-
-    const suggestedNextDay = day.day_number + 1;
-    const hasSuggestedNextDay = devotional.total_days >= suggestedNextDay;
-    const { chapterLabelBase, resolvedBookKey, triviaRouteSlug, triviaPack, scrambledPack } =
-      getDevotionalReadingGameConfig(day);
-
-    const [triviaRes, scrambledRes] = await Promise.all([
-      triviaPack
-        ? supabase
-            .from("master_actions")
-            .select("id")
-            .eq("user_id", userId)
-            .eq("action_type", ACTION_TYPE.trivia_chapter_completed)
-            .ilike("action_label", `${chapterLabelBase}%`)
-            .limit(1)
-            .maybeSingle()
-        : Promise.resolve({ data: null } as { data: { id?: string } | null }),
-      scrambledPack
-        ? supabase
-            .from("master_actions")
-            .select("id")
-            .eq("user_id", userId)
-            .eq("action_type", ACTION_TYPE.scrambled_chapter_completed)
-            .ilike("action_label", `${chapterLabelBase}%`)
-            .limit(1)
-            .maybeSingle()
-        : Promise.resolve({ data: null } as { data: { id?: string } | null }),
-    ]);
-
-    const recommendation = !triviaRes.data && triviaPack
-      ? {
-          message: hasSuggestedNextDay
-            ? `Hey, you just completed day ${day.day_number} of ${devotional.title}. Great job.\n\nYour reading for today was ${chapterLabelBase}.\n\nThe best next move is trivia for that chapter so you can test what actually stuck before day ${suggestedNextDay}.\n\nDo you want to do that now?`
-            : `Hey, you just finished ${devotional.title}. Great job.\n\nYour last reading was ${chapterLabelBase}.\n\nThe best next move is trivia for that chapter so you can lock in what stood out.\n\nDo you want to do that now?`,
-          yesHref: `/bible-trivia/${triviaRouteSlug}/${day.bible_reading_chapter}`,
-        }
-      : !scrambledRes.data && scrambledPack
-        ? {
-            message: hasSuggestedNextDay
-              ? `Hey, you just completed day ${day.day_number} of ${devotional.title}. Great job.\n\nYour reading for today was ${chapterLabelBase}.\n\nA good next move is Scrambled for that chapter so the key words and ideas stay with you before day ${suggestedNextDay}.\n\nDo you want to do that now?`
-              : `Hey, you just finished ${devotional.title}. Great job.\n\nYour last reading was ${chapterLabelBase}.\n\nA good next move is Scrambled for that chapter so the key words and ideas stay with you a little longer.\n\nDo you want to do that now?`,
-            yesHref: `/bible-study-games/scrambled/${resolvedBookKey}/${day.bible_reading_chapter}`,
-          }
-        : null;
-
-    if (!recommendation) {
-      return;
-    }
-
-    dispatchLouisMoment({
-      message: recommendation.message,
-      openMode: "badge",
-      replies: [
-        {
-          id: `devotional-next-yes-${devotional.id}-${day.day_number}`,
-          label: "Yes",
-          href: recommendation.yesHref,
-        },
-        {
-          id: `devotional-next-no-${devotional.id}-${day.day_number}`,
-          label: "No",
-          message: "That is fine. I am here if you want help with the next step.",
-        },
-      ],
-    });
   };
 
   const handleBibleReadingClick = (book: string, chapter: number) => {
@@ -629,14 +551,6 @@ export default function DevotionalDetailPage() {
           },
           p_is_public: true,
         });
-      }
-
-      // Route new devotional completion into Louis instead of a separate celebration modal
-      if (!wasAlreadyCompleted && devotional) {
-        const completedDay = days.find((entry) => entry.day_number === dayNumber);
-        if (completedDay) {
-          await sendDevotionalLouisMoment(completedDay);
-        }
       }
 
       // ACTION TRACKING: Only log if this is a NEW completion (not already completed)

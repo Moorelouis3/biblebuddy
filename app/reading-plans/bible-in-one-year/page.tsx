@@ -7,6 +7,7 @@ import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { consumeCreditAction } from "../../../lib/creditClient";
 import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
 import { getCompletedChapters, isChapterCompleted } from "../../../lib/readingProgress";
+import { dispatchLouisMoment } from "../../../lib/louisMoments";
 import {
   generateBibleInOneYearPlan,
   getCurrentDayNumber,
@@ -17,6 +18,12 @@ import {
   type WeekReading,
 } from "../../../lib/bibleInOneYearPlan";
 import CreditLimitModal from "../../../components/CreditLimitModal";
+import {
+  buildPersistedFeatureTours,
+  DEFAULT_FEATURE_TOURS,
+  normalizeFeatureTours,
+  type FeatureToursState,
+} from "../../../lib/featureTours";
 
 type DayProgress = {
   completedChapters: Set<string>; // "book:chapter" format
@@ -43,6 +50,8 @@ export default function BibleInOneYearPage() {
   const [loading, setLoading] = useState(true);
   const [currentDayNumber, setCurrentDayNumber] = useState(1);
   const [nextIncompleteDay, setNextIncompleteDay] = useState<number | null>(null);
+  const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
+  const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
   const weekRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const monthRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
@@ -130,6 +139,15 @@ export default function BibleInOneYearPage() {
           actionLabel: "Bible in One Year",
           dedupeKey: "reading-plan-opened:bible-in-one-year",
         }).catch((error) => console.error("[NAV] Failed to track Bible in One Year view:", error));
+
+        const { data: profileStats } = await supabase
+          .from("profile_stats")
+          .select("feature_tours")
+          .eq("user_id", uid)
+          .maybeSingle();
+
+        setFeatureTours(normalizeFeatureTours(profileStats?.feature_tours));
+        setFeatureToursLoaded(true);
 
         // Load all completed chapters for all books in the plan
         const allBooks = new Set<string>();
@@ -244,6 +262,41 @@ export default function BibleInOneYearPage() {
 
     loadUserAndProgress();
   }, [plan, currentDayNumber]);
+
+  async function markFeatureTourSeen(featureKey: keyof FeatureToursState) {
+    if (!userId || featureTours[featureKey] === true) return;
+
+    const nextTours = {
+      ...featureTours,
+      [featureKey]: true,
+    };
+
+    const { error: updateError } = await supabase
+      .from("profile_stats")
+      .update({
+        feature_tours: buildPersistedFeatureTours(nextTours),
+      })
+      .eq("user_id", userId);
+
+    if (updateError) {
+      const { error: upsertError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            feature_tours: buildPersistedFeatureTours(nextTours),
+          },
+          { onConflict: "user_id" },
+        );
+
+      if (upsertError) {
+        console.error("[FEATURE_TOURS] Could not save Bible in a Year tour:", upsertError);
+        return;
+      }
+    }
+
+    setFeatureTours(nextTours);
+  }
 
   // Scroll to current month/week when it opens
   useEffect(() => {
@@ -375,6 +428,26 @@ export default function BibleInOneYearPage() {
 
     consume();
   }, [selectedDay, viewedDays, dayProgress]);
+
+  useEffect(() => {
+    if (!selectedDay || !featureToursLoaded) return;
+    if (featureTours.bible_year_day === true) return;
+
+    const chapterList = selectedDay.chapters
+      .map((chapter) => `${chapter.book} ${chapter.chapter}`)
+      .join(", ");
+
+    dispatchLouisMoment({
+      openMode: "badge",
+      message: [
+        `you’re on day ${selectedDay.dayNumber}`,
+        `today you’ll be reading ${chapterList}`,
+        "take your time and stay consistent",
+        "every day you complete moves you forward",
+      ].join("\n\n"),
+    });
+    void markFeatureTourSeen("bible_year_day");
+  }, [selectedDay, featureTours.bible_year_day, featureToursLoaded]);
 
   if (loading || !plan) {
     return (

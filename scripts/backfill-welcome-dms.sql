@@ -80,8 +80,8 @@ BEGIN
     END IF;
 
     -- Insert the message
-    INSERT INTO messages (conversation_id, sender_id, content, created_at)
-    VALUES (v_convo_id, v_louis_id, v_msg, v_now);
+    INSERT INTO messages (conversation_id, sender_id, content, action_label, action_href, created_at)
+    VALUES (v_convo_id, v_louis_id, v_msg, null, null, v_now);
 
     -- Update conversation metadata
     UPDATE conversations

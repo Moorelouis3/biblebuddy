@@ -10,6 +10,7 @@ interface VerseHighlighterProps {
   book: string;
   chapter: number;
   verses: Array<{ number: number; text: string; enrichedHtml?: string }>;
+  plainTextMode?: boolean;
 }
 
 // Utility to extract the inner HTML for a verse from enriched HTML
@@ -27,7 +28,7 @@ function getEnrichedHtmlForVerse(enrichedHtml: string | undefined, fallback: str
 }
 
 
-export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapter, verses }) => {
+export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapter, verses, plainTextMode = false }) => {
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
   const [picker, setPicker] = useState<{ verse: number; anchor: { x: number; y: number } } | null>(null);
   const [loading, setLoading] = useState(false);
@@ -149,7 +150,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({ book, chapte
           <span
             className="verse-text break-words text-base leading-relaxed flex-1"
             // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted HTML from server-side enrichment
-            dangerouslySetInnerHTML={{ __html: getEnrichedHtmlForVerse(v.enrichedHtml, v.text) }}
+            dangerouslySetInnerHTML={{ __html: plainTextMode ? v.text : getEnrichedHtmlForVerse(v.enrichedHtml, v.text) }}
           />
           {/* Share to Feed button — visible on row hover */}
         </div>

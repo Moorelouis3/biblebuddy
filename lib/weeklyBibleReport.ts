@@ -1,4 +1,5 @@
 import { getDirectMessagePreview, isMissingDirectMessageActionColumnError } from "@/lib/directMessageActions";
+import { isSeriesWeekComplete, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
 
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 const MILLIS_PER_DAY = 24 * 60 * 60 * 1000;
@@ -44,6 +45,7 @@ type SeriesWeekProgressRow = {
   series_id: string;
   week_number: number;
   reading_completed: boolean | null;
+  notes_completed: boolean | null;
   trivia_completed: boolean | null;
   reflection_posted: boolean | null;
 };
@@ -483,7 +485,7 @@ async function fetchSeriesProgress(db: any, userIds: string[], seriesIds: string
     for (const seriesChunk of chunkArray(seriesIds, 120)) {
       const { data, error } = await db
         .from("series_week_progress")
-        .select("user_id, series_id, week_number, reading_completed, trivia_completed, reflection_posted")
+        .select("user_id, series_id, week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
         .in("user_id", userChunk)
         .in("series_id", seriesChunk);
       if (error) throw error;
@@ -605,18 +607,14 @@ function getSeriesRecommendation(
     };
   }
 
-  const progressMap = new Map<number, { reading: boolean; trivia: boolean; reflection: boolean }>();
+  const progressMap = new Map<number, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }>();
   for (const row of progressRows) {
-    progressMap.set(row.week_number, {
-      reading: row.reading_completed === true,
-      trivia: row.trivia_completed === true,
-      reflection: row.reflection_posted === true,
-    });
+    progressMap.set(row.week_number, toSeriesWeekProgressState(row));
   }
 
   for (let week = 1; week <= 12; week++) {
     const progress = progressMap.get(week);
-    const complete = !!(progress?.reading && progress?.trivia && progress?.reflection);
+    const complete = progress ? isSeriesWeekComplete(progress) : false;
     if (!complete) {
       return {
         action: { label: `Continue Week ${week}`, href: `/study-groups/${currentSeries.groupId}/series` },

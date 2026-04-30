@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS public.series_week_progress (
   series_id           uuid REFERENCES public.group_series(id) ON DELETE CASCADE,
   week_number         int NOT NULL,
   reading_completed   boolean DEFAULT false,
+  notes_completed     boolean DEFAULT false,
   trivia_completed    boolean DEFAULT false,
   reflection_posted   boolean DEFAULT false,
   completed_at        timestamptz,

@@ -14,6 +14,12 @@ interface Devotional {
   total_days: number;
 }
 
+const HIDDEN_DEVOTIONAL_TITLES = new Set([
+  "The Calling of Moses",
+]);
+
+const NEXT_BIBLE_STUDY_TITLE = "The Wisdom of Proverbs";
+
 export default function DevotionalsPage() {
   const router = useRouter();
   const [devotionals, setDevotionals] = useState<Devotional[]>([]);
@@ -137,6 +143,31 @@ export default function DevotionalsPage() {
     return null;
   };
 
+  const getDevotionalVisual = (devotional: Devotional) => {
+    const coverImage = getCoverImage(devotional.title);
+    if (coverImage) {
+      return (
+        <img
+          src={coverImage}
+          alt={`${devotional.title} cover`}
+          className="w-full h-auto rounded-lg object-contain"
+        />
+      );
+    }
+
+    return (
+      <div className="w-full min-h-[150px] md:min-h-[260px] rounded-lg bg-gradient-to-br from-amber-50 via-white to-emerald-50 border border-amber-100 flex flex-col items-center justify-center px-4 py-6 text-center">
+        <div className="text-3xl md:text-5xl mb-3">📖</div>
+        <div className="text-sm md:text-base font-semibold text-gray-900 leading-tight">
+          {devotional.title}
+        </div>
+        <div className="mt-2 text-xs md:text-sm text-gray-600">
+          {devotional.total_days} day devotional
+        </div>
+      </div>
+    );
+  };
+
 
   if (loading) {
     return (
@@ -244,22 +275,26 @@ export default function DevotionalsPage() {
           )}
         </div>
 
-        {devotionals.length === 0 ? (
+        {devotionals.filter((devotional) => !HIDDEN_DEVOTIONAL_TITLES.has(devotional.title)).length === 0 ? (
           <div className="text-gray-500">
             No devotionals available yet. Check back soon!
           </div>
         ) : (
           <div className="grid grid-cols-3 gap-3 md:gap-8">
-            {devotionals.map((devotional) => {
-              const coverImage = getCoverImage(devotional.title);
-              if (!coverImage) return null;
+            {devotionals
+              .filter((devotional) => !HIDDEN_DEVOTIONAL_TITLES.has(devotional.title))
+              .map((devotional) => {
+              const isNextBibleStudy = devotional.title === NEXT_BIBLE_STUDY_TITLE;
               const card = (
                 <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-2 md:p-5 hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer">
-                  <img
-                    src={coverImage}
-                    alt={`${devotional.title} cover`}
-                    className="w-full h-auto rounded-lg object-contain"
-                  />
+                  {isNextBibleStudy && (
+                    <div className="mb-2 text-center">
+                      <span className="inline-flex rounded-full bg-amber-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-amber-800 md:text-xs">
+                        Next Bible Study
+                      </span>
+                    </div>
+                  )}
+                  {getDevotionalVisual(devotional)}
                   <div className="mt-2 text-xs md:text-lg font-semibold text-gray-900 text-center leading-tight">
                     {devotional.title}
                   </div>
