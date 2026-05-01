@@ -4453,7 +4453,7 @@ RULES:
   }
 
   async function handleSeriesAutoComment() {
-    if (!group || !selectedPost || seriesAutoCommentLoading || selectedPost.user_id === userId) return;
+    if (!group || !selectedPost || seriesAutoCommentLoading) return;
     setSeriesAutoCommentLoading(true);
 
     try {
@@ -4462,7 +4462,7 @@ RULES:
         selectedPost.title,
         selectedPost.content,
         selectedPost.content,
-        selectedPost.display_name,
+        group.name || "Bible Study Group",
       );
       setNewCommentText(draft);
     } catch (error) {
@@ -6860,16 +6860,14 @@ RULES:
                 onChange={(e) => setNewCommentText(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleAddComment(null); } }}
               />
-              {selectedPost.user_id !== userId && (
-                <button
-                  type="button"
-                  onClick={() => void handleSeriesAutoComment()}
-                  disabled={seriesAutoCommentLoading}
-                  className="flex-shrink-0 px-3 h-8 rounded-xl border border-gray-200 text-xs font-semibold text-gray-500 transition hover:text-[#4a9b6f] hover:border-[#cfe4d8] disabled:opacity-50 bg-white"
-                >
-                  {seriesAutoCommentLoading ? "Writing..." : "Auto Comment"}
-                </button>
-              )}
+              <button
+                type="button"
+                onClick={() => void handleSeriesAutoComment()}
+                disabled={seriesAutoCommentLoading}
+                className="flex-shrink-0 px-3 h-8 rounded-xl border border-gray-200 text-xs font-semibold text-gray-500 transition hover:text-[#4a9b6f] hover:border-[#cfe4d8] disabled:opacity-50 bg-white"
+              >
+                {seriesAutoCommentLoading ? "Writing..." : "Auto Comment"}
+              </button>
               <button
                 onClick={() => handleAddComment(null)}
                 disabled={!newCommentText.trim() || submittingComment}
