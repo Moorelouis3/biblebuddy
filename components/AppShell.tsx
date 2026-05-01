@@ -1021,17 +1021,26 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       prev.map((n) => (n.id === notif.id ? { ...n, is_read: true } : n))
     );
     setIsNotifOpen(false);
-    // Social feed notifications deep-link to the specific post/comment
-    if (notif.type === "buddy_posted" || notif.type === "feed_post_liked" || notif.type === "feed_post_commented" || notif.type === "feed_post_replied") {
-      router.push("/dashboard");
+
+    const buildHrefWithTargets = (baseHref: string) => {
+      const url = new URL(baseHref, "https://biblebuddy.local");
+      if (notif.post_id) url.searchParams.set("post", notif.post_id);
+      if (notif.comment_id) url.searchParams.set("comment", notif.comment_id);
+      return `${url.pathname}${url.search}${url.hash}`;
+    };
+
+    // Social feed notifications deep-link to the exact post/comment.
+    if (
+      notif.type === "buddy_posted" ||
+      notif.type === "feed_post_liked" ||
+      notif.type === "feed_post_commented" ||
+      notif.type === "feed_post_replied"
+    ) {
+      router.push(buildHrefWithTargets("/bb-feed"));
       return;
     }
     if (notif.article_slug?.startsWith("/study-groups/")) {
-      const searchParams = new URLSearchParams();
-      if (notif.post_id) searchParams.set("post", notif.post_id);
-      if (notif.comment_id) searchParams.set("comment", notif.comment_id);
-      const query = searchParams.toString();
-      router.push(query ? `${notif.article_slug}?${query}` : notif.article_slug);
+      router.push(buildHrefWithTargets(notif.article_slug));
       return;
     }
     const hash = notif.comment_id ? `#comment-${notif.comment_id}` : "";

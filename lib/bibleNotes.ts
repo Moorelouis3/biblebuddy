@@ -1,4 +1,5 @@
 import { supabase } from "./supabaseClient";
+import { buildQuickPopupFallback, extractCompactPopupMeaning } from "./biblePopupContent";
 
 type NotesKind = "people" | "places" | "keywords";
 
@@ -55,8 +56,46 @@ async function getCachedOrLoad(
   }
 }
 
+async function loadSingleNotesRow(
+  table: "bible_people_notes" | "places_in_the_bible_notes" | "keywords_in_the_bible",
+  column: "person_name" | "normalized_place" | "keyword",
+  normalizedKey: string
+): Promise<string | null> {
+  const { data: exactRows, error: exactError } = await supabase
+    .from(table)
+    .select("notes_text")
+    .eq(column, normalizedKey)
+    .limit(1);
+
+  if (exactError) {
+    throw exactError;
+  }
+
+  const exactText = Array.isArray(exactRows) ? exactRows[0]?.notes_text : null;
+  if (typeof exactText === "string" && exactText.trim()) {
+    return exactText;
+  }
+
+  if (table !== "keywords_in_the_bible") {
+    return null;
+  }
+
+  const { data: insensitiveRows, error: insensitiveError } = await supabase
+    .from(table)
+    .select("notes_text")
+    .ilike(column, normalizedKey)
+    .limit(1);
+
+  if (insensitiveError) {
+    throw insensitiveError;
+  }
+
+  const insensitiveText = Array.isArray(insensitiveRows) ? insensitiveRows[0]?.notes_text : null;
+  return typeof insensitiveText === "string" && insensitiveText.trim() ? insensitiveText : null;
+}
+
 async function persistAndCache(kind: NotesKind, normalizedKey: string, notesText: string): Promise<string> {
-  const trimmed = notesText.trim();
+  const trimmed = extractCompactPopupMeaning(kind, notesText.trim());
   if (!trimmed) {
     return notesText;
   }
@@ -84,17 +123,8 @@ export async function findPersonNotes(person: string): Promise<string | null> {
   if (!normalized) return null;
 
   return getCachedOrLoad("people", normalized, async () => {
-    const { data, error } = await supabase
-      .from("bible_people_notes")
-      .select("notes_text")
-      .eq("person_name", normalized)
-      .maybeSingle();
-
-    if (error && error.code !== "PGRST116") {
-      throw error;
-    }
-
-    return data?.notes_text?.trim() ? data.notes_text : null;
+    const notesText = await loadSingleNotesRow("bible_people_notes", "person_name", normalized);
+    return notesText ? extractCompactPopupMeaning("people", notesText) : null;
   });
 }
 
@@ -107,17 +137,8 @@ export async function findPlaceNotes(place: string): Promise<string | null> {
   if (!normalized) return null;
 
   return getCachedOrLoad("places", normalized, async () => {
-    const { data, error } = await supabase
-      .from("places_in_the_bible_notes")
-      .select("notes_text")
-      .eq("normalized_place", normalized)
-      .maybeSingle();
-
-    if (error && error.code !== "PGRST116") {
-      throw error;
-    }
-
-    return data?.notes_text?.trim() ? data.notes_text : null;
+    const notesText = await loadSingleNotesRow("places_in_the_bible_notes", "normalized_place", normalized);
+    return notesText ? extractCompactPopupMeaning("places", notesText) : null;
   });
 }
 
@@ -130,20 +151,23 @@ export async function findKeywordNotes(keyword: string): Promise<string | null> 
   if (!normalized) return null;
 
   return getCachedOrLoad("keywords", normalized, async () => {
-    const { data, error } = await supabase
-      .from("keywords_in_the_bible")
-      .select("notes_text")
-      .eq("keyword", normalized)
-      .maybeSingle();
-
-    if (error && error.code !== "PGRST116") {
-      throw error;
-    }
-
-    return data?.notes_text?.trim() ? data.notes_text : null;
+    const notesText = await loadSingleNotesRow("keywords_in_the_bible", "keyword", normalized);
+    return notesText ? extractCompactPopupMeaning("keywords", notesText) : null;
   });
 }
 
 export async function saveKeywordNotes(keyword: string, notesText: string): Promise<string> {
   return persistAndCache("keywords", normalizeKeywordNotesKey(keyword), notesText);
+}
+
+export async function getPersonPopupNotes(person: string): Promise<string> {
+  return (await findPersonNotes(person)) ?? buildQuickPopupFallback("people", person);
+}
+
+export async function getPlacePopupNotes(place: string): Promise<string> {
+  return (await findPlaceNotes(place)) ?? buildQuickPopupFallback("places", place);
+}
+
+export async function getKeywordPopupNotes(keyword: string): Promise<string> {
+  return (await findKeywordNotes(keyword)) ?? buildQuickPopupFallback("keywords", keyword);
 }

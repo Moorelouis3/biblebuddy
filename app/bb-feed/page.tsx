@@ -718,8 +718,9 @@ function Avatar({ userId, displayName, imageUrl, size = 9 }: {
 
 // ── Comment Section ───────────────────────────────────────────────────────────
 
-function CommentSection({ postId, postTitle, postContent, myId, myProfile, currentUserIsAdmin, onCountChange, highlightCommentId }: {
+function CommentSection({ postId, postUserId, postTitle, postContent, myId, myProfile, currentUserIsAdmin, onCountChange, highlightCommentId }: {
   postId: string;
+  postUserId: string;
   postTitle?: string | null;
   postContent?: string | null;
   myId: string;
@@ -738,6 +739,7 @@ function CommentSection({ postId, postTitle, postContent, myId, myProfile, curre
   const [editingCommentText, setEditingCommentText] = useState("");
   const [savingCommentId, setSavingCommentId] = useState<string | null>(null);
   const [autoReplyLoadingId, setAutoReplyLoadingId] = useState<string | null>(null);
+  const [autoCommentLoading, setAutoCommentLoading] = useState(false);
   const currentUserBadge = myProfile?.member_badge ?? null;
 
   useEffect(() => {
@@ -926,6 +928,25 @@ function CommentSection({ postId, postTitle, postContent, myId, myProfile, curre
     setAutoReplyLoadingId(null);
   }
 
+  async function handleAutoComment() {
+    if (autoCommentLoading || postUserId === myId) return;
+    setAutoCommentLoading(true);
+
+    try {
+      const draft = await requestAutoReplyDraft({
+        originalPostTitle: postTitle || null,
+        originalPostContent: postContent || null,
+        targetCommentContent: postContent || postTitle || "",
+        targetDisplayName: "Bible Buddy",
+      });
+      setNewComment(draft);
+    } catch (error) {
+      triggerToast(error instanceof Error ? error.message : "Could not generate a comment draft.");
+    }
+
+    setAutoCommentLoading(false);
+  }
+
   const topLevel = comments.filter((c) => !c.parent_comment_id);
   const replies = (parentId: string) => comments.filter((c) => c.parent_comment_id === parentId);
 
@@ -1096,6 +1117,16 @@ function CommentSection({ postId, postTitle, postContent, myId, myProfile, curre
             }
           }}
         />
+        {postUserId !== myId && (
+          <button
+            type="button"
+            onClick={() => void handleAutoComment()}
+            disabled={autoCommentLoading}
+            className="text-xs font-semibold text-gray-500 px-3 py-2 rounded-xl border border-gray-200 transition hover:text-[#4a9b6f] hover:border-[#cfe4d8] disabled:opacity-50 flex-shrink-0"
+          >
+            {autoCommentLoading ? "Writing..." : "Auto Comment"}
+          </button>
+        )}
         <button
           onClick={() => submitComment(newComment, null)}
           disabled={!newComment.trim() || submitting}
@@ -1469,6 +1500,7 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
       {showComments && (
         <CommentSection
           postId={post.id}
+          postUserId={post.user_id}
           postTitle={post.link_title || post.verse_ref || post.post_type}
           postContent={post.verse_text || post.content}
           myId={myId}

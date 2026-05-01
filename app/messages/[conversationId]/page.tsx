@@ -1063,6 +1063,7 @@ export default function ConversationPage({
                                               key={`msg-text:${msg.id}:${lineIndex}:${segmentIndex}`}
                                               text={segment.value}
                                               items={[]}
+                                              enableUrlLinks
                                             />
                                         ),
                                       )}

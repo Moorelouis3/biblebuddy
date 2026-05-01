@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { ensureWeeklyGroupPollPost } from "@/lib/weeklyGroupPollAdmin";
+import { canManageGroupScheduler } from "@/lib/groupSchedulerAccess";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -37,15 +38,14 @@ export async function POST(
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  const { data: membership } = await supabaseAdmin
-    .from("group_members")
-    .select("user_id")
-    .eq("group_id", groupId)
-    .eq("user_id", userData.user.id)
-    .eq("status", "approved")
-    .maybeSingle();
+  const allowed = await canManageGroupScheduler(
+    supabaseAdmin,
+    groupId,
+    userData.user.id,
+    userData.user.email,
+  );
 
-  if (!membership) {
+  if (!allowed) {
     return NextResponse.json({ error: "Forbidden." }, { status: 403 });
   }
 

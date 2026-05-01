@@ -16,7 +16,7 @@ import { logStudyView } from "../../../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../../../lib/actionTypes";
 import { resolveBibleReference } from "../../../../lib/bibleTermResolver";
 import { consumeCreditAction } from "../../../../lib/creditClient";
-import { findKeywordNotes, findPersonNotes, findPlaceNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../../../../lib/bibleNotes";
+import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../../../../lib/bibleNotes";
 import { requestLouisNotes } from "../../../../lib/requestLouisNotes";
 import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
 import { triggerPoints } from "../../../../components/PointsPop";
@@ -109,24 +109,6 @@ function LouisLoadingCard({ name }: { name: string }) {
       <p className="text-sm text-gray-400 italic animate-pulse">{name} is loading…</p>
     </div>
   );
-}
-
-function buildQuickKeywordFallback(keyword: string): string {
-  return `# What is this concept?
-
-${keyword} is an important Bible word or idea. This quick meaning is here to help you keep reading without getting stuck.
-
-In the Bible, words like this usually connect to a bigger theme about God, wisdom, obedience, judgment, promise, or redemption depending on the verse.
-
-# Why does it matter?
-
-Understanding ${keyword} helps you slow down and catch what the passage is really pointing to instead of skipping past an important idea.
-
-This word often carries more weight than it first seems, so even a simple definition can help the whole verse make more sense.
-
-# Quick note
-
-We are getting the full study notes for ${keyword} ready in the background. The next time you tap it, the deeper version should be ready.`;
 }
 
 export default function BibleChapterPage() {
@@ -354,7 +336,7 @@ export default function BibleChapterPage() {
 
       try {
         if (!selectedPerson) return;
-        const personNameKey = selectedPerson.name.toLowerCase().trim();
+        const personNameKey = selectedPerson!.name.toLowerCase().trim();
 
         if (userId) {
           const isCompleted = completedPeople.has(personNameKey);
@@ -363,7 +345,7 @@ export default function BibleChapterPage() {
           if (!isCompleted && !isViewed) {
             const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
               userId,
-              actionLabel: selectedPerson.name,
+              actionLabel: selectedPerson!.name,
             });
             if (!creditResult.ok) {
               setPersonCreditBlocked(true);
@@ -380,6 +362,9 @@ export default function BibleChapterPage() {
           }
         }
 
+        setPersonNotes(await getPersonPopupNotes(selectedPerson!.name));
+        return;
+
         const existingNotes = await findPersonNotes(personNameKey);
         if (existingNotes) {
           setPersonNotes(existingNotes);
@@ -389,11 +374,11 @@ export default function BibleChapterPage() {
 
         // STEP 2: Generate notes using ChatGPT (same as People page)
         // Determine gender for pronoun usage (simple heuristic - can be improved)
-        const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti|Bernice|Drusilla|Euodia|Syntyche|Chloe|Nympha|Tryphaena|Tryphosa|Julia|Claudia|Persis)/i.test(selectedPerson.name);
+        const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti|Bernice|Drusilla|Euodia|Syntyche|Chloe|Nympha|Tryphaena|Tryphosa|Julia|Claudia|Persis)/i.test(selectedPerson!.name);
         const pronoun = isFemale ? "Her" : "Him";
         const whoPronoun = isFemale ? "She" : "He";
         
-        const prompt = `You are Little Louis. Generate Bible study style notes for ${selectedPerson.name} from Scripture using the EXACT markdown structure below.
+        const prompt = `You are Little Louis. Generate Bible study style notes for ${selectedPerson!.name} from Scripture using the EXACT markdown structure below.
 
 CRITICAL RENDERING RULES (MANDATORY):
 - Use ONLY markdown
@@ -494,7 +479,7 @@ FINAL RULES:
 
       try {
         if (!selectedPlace) return;
-        const normalizedPlace = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
+        const normalizedPlace = selectedPlace!.name.toLowerCase().trim().replace(/\s+/g, "_");
 
         if (userId) {
           const isCompleted = completedPlaces.has(normalizedPlace);
@@ -505,7 +490,7 @@ FINAL RULES:
             if (!isViewed) {
               const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
                 userId,
-                actionLabel: selectedPlace.name,
+                actionLabel: selectedPlace!.name,
               });
               if (!creditResult.ok) {
                 setPlaceCreditBlocked(true);
@@ -523,6 +508,9 @@ FINAL RULES:
           }
         }
 
+        setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
+        return;
+
         const existingNotes = await findPlaceNotes(normalizedPlace);
         if (existingNotes) {
           setPlaceNotes(existingNotes);
@@ -533,7 +521,7 @@ FINAL RULES:
         // STEP 2: Generate notes using ChatGPT (same as Places page)
         const prompt = `You are Little Louis.
 
-Generate beginner friendly Bible notes about the PLACE: ${selectedPlace.name}.
+Generate beginner friendly Bible notes about the PLACE: ${selectedPlace!.name}.
 
 Follow this EXACT markdown template and rules.
 
@@ -626,7 +614,7 @@ RULES:
 
       try {
         if (!selectedKeyword) return;
-        const keywordKey = selectedKeyword.name.toLowerCase().trim();
+        const keywordKey = selectedKeyword!.name.toLowerCase().trim();
 
         if (userId) {
           const isCompleted = completedKeywords.has(keywordKey);
@@ -637,7 +625,7 @@ RULES:
             if (!isViewed) {
               const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, {
                 userId,
-                actionLabel: selectedKeyword.name,
+                actionLabel: selectedKeyword!.name,
               });
               if (!creditResult.ok) {
                 setKeywordCreditBlocked(true);
@@ -655,7 +643,11 @@ RULES:
           }
         }
 
-        const existingNotes = await findKeywordNotes(selectedKeyword.name);
+        setKeywordNotes(await getKeywordPopupNotes(selectedKeyword!.name));
+        setKeywordNotesError(null);
+        return;
+
+        const existingNotes = await findKeywordNotes(selectedKeyword!.name);
         if (existingNotes) {
           setKeywordNotes(existingNotes);
           setLoadingNotes(false);
@@ -665,7 +657,7 @@ RULES:
         // STEP 2: Generate notes using ChatGPT (same as Keywords page)
         const prompt = `You are Little Louis.
 
-Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword.name}.
+Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword!.name}.
 
 Follow this EXACT markdown template and rules.
 
@@ -727,7 +719,7 @@ RULES:
 - Total length about 200–300 words
 - Do NOT include the keyword name as a header`;
         
-        setKeywordNotes(buildQuickKeywordFallback(selectedKeyword.name));
+        setKeywordNotes(await getKeywordPopupNotes(selectedKeyword!.name));
         setKeywordNotesError(null);
 
         if (!generatingKeywordNotesRef.current.has(keywordKey)) {
@@ -736,7 +728,7 @@ RULES:
           void (async () => {
             try {
               const generated = await requestLouisNotes(prompt);
-              const notesText = await saveKeywordNotes(selectedKeyword.name, generated);
+              const notesText = await saveKeywordNotes(selectedKeyword!.name, generated);
 
               if (selectedKeywordNameRef.current === keywordKey) {
                 setKeywordNotes(notesText);

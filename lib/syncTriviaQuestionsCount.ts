@@ -1,12 +1,11 @@
 /**
  * Sync Trivia Questions Count Utility
  *
- * Syncs the trivia_questions_answered in profile_stats by counting from master_actions.
+ * Syncs the trivia_questions_answered in profile_stats by counting unique question progress rows.
  * This is called on login and when a new day is detected.
  */
 
 import { supabase } from "./supabaseClient";
-import { ACTION_TYPE } from "./actionTypes";
 
 /**
  * Sync trivia questions answered count from master_actions table to profile_stats
@@ -15,12 +14,11 @@ import { ACTION_TYPE } from "./actionTypes";
  */
 export async function syncTriviaQuestionsCount(userId: string): Promise<boolean> {
   try {
-    // Count all trivia_question_answered actions for this user
+    // Count unique trivia questions the user has answered.
     const { count, error: countError } = await supabase
-      .from("master_actions")
+      .from("trivia_question_progress")
       .select("*", { count: "exact", head: true })
-      .eq("user_id", userId)
-      .eq("action_type", ACTION_TYPE.trivia_question_answered);
+      .eq("user_id", userId);
 
     if (countError) {
       console.error("[SYNC TRIVIA] Error counting trivia questions:", countError);

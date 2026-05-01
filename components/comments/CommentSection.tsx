@@ -304,23 +304,44 @@ export default function CommentSection({
     e.preventDefault();
     if (!user || !content.trim()) return;
     setLoading(true);
+    const trimmedContent = content.trim();
     const insertedId = uuidv4();
     const { data: insertedComment, error } = await supabase.from("article_comments").insert({
       id: insertedId,
       article_slug: articleSlug,
       user_id: user.id,
       user_name: user.name,
-      content,
+      content: trimmedContent,
       parent_id: replyTo,
     }).select("id").single();
     setLoading(false);
-    setContent("");
-    setReplyTo(null);
-    if (error) setError(error.message);
-    else {
-      await notifyMentionedUsers(insertedComment?.id || insertedId, content.trim());
+    if (error) {
+      setError(error.message);
+    } else {
+      const postedCommentId = insertedComment?.id || insertedId;
+      setComments((prev) => [
+        ...prev,
+        {
+          id: postedCommentId,
+          article_slug: articleSlug,
+          user_id: user.id,
+          user_name: user.name,
+          content: trimmedContent,
+          parent_id: replyTo,
+          created_at: new Date().toISOString(),
+          updated_at: null,
+          is_deleted: false,
+          profile_image_url: currentUserProfileImage,
+          member_badge: currentUserBadge,
+          is_paid: null,
+          current_level: null,
+          current_streak: null,
+        },
+      ]);
+      setContent("");
+      setReplyTo(null);
+      await notifyMentionedUsers(postedCommentId, trimmedContent);
       triggerToast("Comment posted!");
-      void fetchComments();
     }
   };
 

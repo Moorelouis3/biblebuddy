@@ -787,6 +787,7 @@ function GroupCommentSection({
   const [commentLikers, setCommentLikers] = useState<ArticleLikeUser[]>([]);
   const [loadingCommentLikers, setLoadingCommentLikers] = useState(false);
   const [autoReplyLoadingId, setAutoReplyLoadingId] = useState<string | null>(null);
+  const [autoCommentLoading, setAutoCommentLoading] = useState(false);
 
   async function loadComments() {
     setLoading(true);
@@ -981,6 +982,28 @@ function GroupCommentSection({
       .single();
 
     if (!error) {
+      const insertedId = insertedComment?.id ?? crypto.randomUUID();
+      setComments((prev) => [
+        ...prev,
+        {
+          id: insertedId,
+          user_id: userId,
+          display_name: displayName,
+          category: post.category,
+          content: text,
+          like_count: 0,
+          created_at: new Date().toISOString(),
+          parent_post_id: parentId ?? post.id,
+          liked: false,
+          profile_image_url: userProfileImage,
+          role: currentUserRole || "member",
+          is_paid: false,
+          member_badge: currentUserBadge,
+          current_streak: null,
+          current_level: null,
+        },
+      ]);
+
       const mentionedUsers = extractMentionedItemsFromText(text, mentionItems, ["user"])
         .map((item) => {
           const mentionedUserId = item.key.startsWith("user:") ? item.key.slice(5) : null;
@@ -989,7 +1012,7 @@ function GroupCommentSection({
         .filter((item): item is { userId: string; label: string } => Boolean(item))
         .filter((item) => item.userId !== userId);
 
-      if (mentionedUsers.length > 0 && insertedComment?.id) {
+      if (mentionedUsers.length > 0) {
         const notificationRows = mentionedUsers.map((mentionedUser) => ({
           user_id: mentionedUser.userId,
           type: "group_comment_mention",
@@ -997,7 +1020,7 @@ function GroupCommentSection({
           from_user_name: displayName,
           article_slug: `/study-groups/${groupId}/chat`,
           post_id: post.id,
-          comment_id: insertedComment.id,
+          comment_id: insertedId,
           message: `${displayName} mentioned you in a comment in The Bible Study Group.`,
         }));
 
@@ -1010,7 +1033,6 @@ function GroupCommentSection({
         }
       }
 
-      await loadComments();
       onCountChange(1);
       triggerToast("Comment posted!");
       void logActionToMasterActions(userId, "group_message_sent", `group-post:${post.id}`);
@@ -1043,6 +1065,27 @@ function GroupCommentSection({
     }
 
     setAutoReplyLoadingId(null);
+  }
+
+  async function handleAutoComment() {
+    if (autoCommentLoading || post.user_id === userId) return;
+    setAutoCommentLoading(true);
+    setSubmitError(null);
+
+    try {
+      const draft = await generateAutoReplyDraft(
+        groupId,
+        post.title,
+        post.content,
+        post.content,
+        post.display_name || "Bible Buddy",
+      );
+      setNewComment(draft);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Could not generate a comment draft.");
+    }
+
+    setAutoCommentLoading(false);
   }
 
   function canDeleteComment(comment: GroupFeedComment) {
@@ -1233,7 +1276,7 @@ function GroupCommentSection({
               <svg className={`w-3 h-3 ${likeAnimatingIds.has(comment.id) ? "animate-heart-pop" : ""}`} fill={comment.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
-              {comment.like_count > 0 ? comment.like_count : ""}
+              {comment.like_count}
             </button>
             {comment.like_count > 0 && (
               <button
@@ -1345,6 +1388,16 @@ function GroupCommentSection({
           rows={1}
           className="flex-1 text-xs px-3 py-2 border border-[#eadfce] rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[#d6b18b] bg-white"
         />
+        {post.user_id !== userId && (
+          <button
+            type="button"
+            onClick={() => void handleAutoComment()}
+            disabled={autoCommentLoading}
+            className="text-xs font-semibold text-gray-500 px-3 py-2 rounded-xl border border-[#eadfce] transition hover:text-[#4a9b6f] hover:border-[#cfe4d8] disabled:opacity-50 flex-shrink-0"
+          >
+            {autoCommentLoading ? "Writing..." : "Auto Comment"}
+          </button>
+        )}
         <button
           onClick={() => void submitComment(newComment, null)}
           disabled={!newComment.trim() || submitting}
@@ -2406,6 +2459,7 @@ RULES:
   const [commentLikeLoading, setCommentLikeLoading] = useState<Set<string>>(new Set());
   const [seriesCommentLikeAnimatingIds, setSeriesCommentLikeAnimatingIds] = useState<Set<string>>(new Set());
   const [seriesAutoReplyLoadingId, setSeriesAutoReplyLoadingId] = useState<string | null>(null);
+  const [seriesAutoCommentLoading, setSeriesAutoCommentLoading] = useState(false);
   const [deletingSeriesCommentId, setDeletingSeriesCommentId] = useState<string | null>(null);
 
   // New Series modal
@@ -4398,6 +4452,26 @@ RULES:
     setSeriesAutoReplyLoadingId(null);
   }
 
+  async function handleSeriesAutoComment() {
+    if (!group || !selectedPost || seriesAutoCommentLoading || selectedPost.user_id === userId) return;
+    setSeriesAutoCommentLoading(true);
+
+    try {
+      const draft = await generateAutoReplyDraft(
+        group.id,
+        selectedPost.title,
+        selectedPost.content,
+        selectedPost.content,
+        selectedPost.display_name,
+      );
+      setNewCommentText(draft);
+    } catch (error) {
+      triggerToast(error instanceof Error ? error.message : "Could not generate a comment draft.");
+    }
+
+    setSeriesAutoCommentLoading(false);
+  }
+
   function canDeleteSeriesComment(comment: SeriesComment) {
     return (
       comment.user_id === userId ||
@@ -4995,7 +5069,7 @@ RULES:
                     <svg className={`w-5 h-5 ${seriesPostLikeAnimating ? "animate-heart-pop" : ""}`} fill={selectedPost.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
-                    {selectedPost.like_count > 0 ? selectedPost.like_count : "Like"}
+                    {selectedPost.like_count}
                   </button>
                   <span className="text-xs text-gray-400">{selectedPost.comment_count} comment{selectedPost.comment_count !== 1 ? "s" : ""}</span>
                 </div>
@@ -5080,7 +5154,7 @@ RULES:
                                 <svg className={`w-3.5 h-3.5 ${seriesCommentLikeAnimatingIds.has(comment.id) ? "animate-heart-pop" : ""}`} fill={comment.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                 </svg>
-                                {comment.like_count > 0 ? comment.like_count : ""}
+                                {comment.like_count}
                               </button>
                               <button
                                 onClick={() => setReplyingToId(replyingToId === comment.id ? null : comment.id)}
@@ -5215,7 +5289,7 @@ RULES:
                                       <svg className={`w-3 h-3 ${seriesCommentLikeAnimatingIds.has(reply.id) ? "animate-heart-pop" : ""}`} fill={reply.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                       </svg>
-                                      {reply.like_count > 0 ? reply.like_count : ""}
+                                      {reply.like_count}
                                     </button>
                                     {canEditSeriesComment(reply) && editingSeriesCommentId !== reply.id && (
                                       <button
@@ -6274,7 +6348,7 @@ RULES:
                   <svg className={`w-4 h-4 ${likeAnimatingIds.has(activeFeedPost.id) ? "animate-heart-pop" : ""}`} fill={activeFeedPost.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
-                  <span>{activeFeedPost.like_count > 0 ? activeFeedPost.like_count : ""}</span>
+                  <span>{activeFeedPost.like_count}</span>
                 </button>
                 <button
                   type="button"
@@ -6786,6 +6860,16 @@ RULES:
                 onChange={(e) => setNewCommentText(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleAddComment(null); } }}
               />
+              {selectedPost.user_id !== userId && (
+                <button
+                  type="button"
+                  onClick={() => void handleSeriesAutoComment()}
+                  disabled={seriesAutoCommentLoading}
+                  className="flex-shrink-0 px-3 h-8 rounded-xl border border-gray-200 text-xs font-semibold text-gray-500 transition hover:text-[#4a9b6f] hover:border-[#cfe4d8] disabled:opacity-50 bg-white"
+                >
+                  {seriesAutoCommentLoading ? "Writing..." : "Auto Comment"}
+                </button>
+              )}
               <button
                 onClick={() => handleAddComment(null)}
                 disabled={!newCommentText.trim() || submittingComment}

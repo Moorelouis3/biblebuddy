@@ -8,7 +8,7 @@ import { enrichBibleVerses } from "../lib/bibleHighlighting";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { consumeCreditAction } from "../lib/creditClient";
-import { findKeywordNotes, findPersonNotes, findPlaceNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
+import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
 import CreditLimitModal from "./CreditLimitModal";
 import { LouisAvatar } from "./LouisAvatar";
 import { isChapterCompleted, markChapterDone } from "../lib/readingProgress";
@@ -404,7 +404,7 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
       try {
         if (!selectedPerson) return;
         
-        const primaryName = resolveBibleReference("people", selectedPerson.name);
+        const primaryName = resolveBibleReference("people", selectedPerson!.name);
         
         const personNameKey = primaryName.toLowerCase().trim();
 
@@ -431,6 +431,9 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
             triggerPoints(1);
           }
         }
+
+        setPersonNotes(await getPersonPopupNotes(selectedPerson!.name));
+        return;
 
         const existingNotes = await findPersonNotes(personNameKey);
         if (existingNotes) {
@@ -557,7 +560,7 @@ FINAL RULES:
 
       try {
         if (!selectedPlace) return;
-        const normalizedPlace = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
+        const normalizedPlace = selectedPlace!.name.toLowerCase().trim().replace(/\s+/g, "_");
 
         if (userId) {
           const isCompleted = completedPlaces.has(normalizedPlace);
@@ -568,7 +571,7 @@ FINAL RULES:
             if (!isViewed) {
               const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
                 userId,
-                actionLabel: selectedPlace.name,
+                actionLabel: selectedPlace!.name,
               });
               if (!creditResult.ok) {
                 setPlaceCreditBlocked(true);
@@ -586,6 +589,9 @@ FINAL RULES:
           }
         }
 
+        setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
+        return;
+
         const existingNotes = await findPlaceNotes(normalizedPlace);
         if (existingNotes) {
           setPlaceNotes(existingNotes);
@@ -596,7 +602,7 @@ FINAL RULES:
         // Generate notes using OpenAI
         const prompt = `You are Little Louis.
 
-Generate beginner friendly Bible notes about the PLACE: ${selectedPlace.name}.
+Generate beginner friendly Bible notes about the PLACE: ${selectedPlace!.name}.
 
 Follow this EXACT markdown template and rules.
 
@@ -604,34 +610,34 @@ TEMPLATE:
 
 # Where is this place?
 
-One short paragraph explaining where ${selectedPlace.name} is located (region, country, significance) and why it matters in the Bible.
+One short paragraph explaining where ${selectedPlace!.name} is located (region, country, significance) and why it matters in the Bible.
 
 
 
-# What happens at ${selectedPlace.name}?
+# What happens at ${selectedPlace!.name}?
 
-Include two or three specific Bible references where ${selectedPlace.name} appears. Each reference should include the book, chapter, and verse (e.g., "Genesis 12:1-9"). After each reference, write one sentence explaining what happens in that passage at ${selectedPlace.name}.
-
-
-
-# Why is ${selectedPlace.name} significant?
-
-List two or three key reasons why ${selectedPlace.name} matters in the Bible story. Each point should be one sentence. Keep it simple and beginner-friendly.
+Include two or three specific Bible references where ${selectedPlace!.name} appears. Each reference should include the book, chapter, and verse (e.g., "Genesis 12:1-9"). After each reference, write one sentence explaining what happens in that passage at ${selectedPlace!.name}.
 
 
 
-# How does ${selectedPlace.name} connect to Jesus?
+# Why is ${selectedPlace!.name} significant?
 
-One short paragraph connecting ${selectedPlace.name} to Jesus, prophecy, or the bigger story of redemption. Keep it simple and clear.
+List two or three key reasons why ${selectedPlace!.name} matters in the Bible story. Each point should be one sentence. Keep it simple and beginner-friendly.
 
 
 
-# What can we learn from ${selectedPlace.name}?
+# How does ${selectedPlace!.name} connect to Jesus?
+
+One short paragraph connecting ${selectedPlace!.name} to Jesus, prophecy, or the bigger story of redemption. Keep it simple and clear.
+
+
+
+# What can we learn from ${selectedPlace!.name}?
 
 One short paragraph with a simple, practical life application related to place, journey, or God's presence.
 
 RULES
-DO NOT include a header like "${selectedPlace.name} Notes" or any title at the beginning. Start directly with "# Where is this place?".
+DO NOT include a header like "${selectedPlace!.name} Notes" or any title at the beginning. Start directly with "# Where is this place?".
 Keep emojis in headers if helpful, but focus on clarity.
 No images. No Greek or Hebrew words unless essential (and then explain simply).
 Keep it cinematic, warm, simple. Do not overwhelm beginners.
@@ -685,7 +691,7 @@ Be accurate to Scripture.`;
 
       try {
         if (!selectedKeyword) return;
-        const keywordKey = selectedKeyword.name.toLowerCase().trim();
+        const keywordKey = selectedKeyword!.name.toLowerCase().trim();
 
         if (userId) {
           const isCompleted = completedKeywords.has(keywordKey);
@@ -696,7 +702,7 @@ Be accurate to Scripture.`;
             if (!isViewed) {
               const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, {
                 userId,
-                actionLabel: selectedKeyword.name,
+                actionLabel: selectedKeyword!.name,
               });
               if (!creditResult.ok) {
                 setKeywordCreditBlocked(true);
@@ -714,32 +720,36 @@ Be accurate to Scripture.`;
           }
         }
 
-        const existingNotes = await findKeywordNotes(selectedKeyword.name);
+        setKeywordNotes(await getKeywordPopupNotes(selectedKeyword!.name));
+        setKeywordNotesError(null);
+        return;
+
+        const existingNotes = await findKeywordNotes(selectedKeyword!.name);
         let notesText = "";
         if (existingNotes) {
-          notesText = existingNotes;
+          notesText = existingNotes ?? "";
         } else {
           const prompt = `You are Little Louis. 
-Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword.name}.
+Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword!.name}.
 
 TEMPLATE
 # What is this concept?
-One short paragraph explaining what ${selectedKeyword.name} means in the Bible in simple, everyday language.
+One short paragraph explaining what ${selectedKeyword!.name} means in the Bible in simple, everyday language.
 
-# Where do we see ${selectedKeyword.name} in Scripture?
-Include two or three specific Bible references where ${selectedKeyword.name} appears or is explained. Each reference should include the book, chapter, and verse (e.g., "Genesis 15:1-21"). After each reference, write one sentence explaining how ${selectedKeyword.name} is used or shown in that passage.
+# Where do we see ${selectedKeyword!.name} in Scripture?
+Include two or three specific Bible references where ${selectedKeyword!.name} appears or is explained. Each reference should include the book, chapter, and verse (e.g., "Genesis 15:1-21"). After each reference, write one sentence explaining how ${selectedKeyword!.name} is used or shown in that passage.
 
-# Why does ${selectedKeyword.name} matter?
-List two or three key reasons why understanding ${selectedKeyword.name} is important for reading the Bible. Each point should be one sentence. Keep it simple and beginner-friendly.
+# Why does ${selectedKeyword!.name} matter?
+List two or three key reasons why understanding ${selectedKeyword!.name} is important for reading the Bible. Each point should be one sentence. Keep it simple and beginner-friendly.
 
-# How does ${selectedKeyword.name} connect to Jesus?
-One short paragraph connecting ${selectedKeyword.name} to Jesus, the gospel, or the bigger story of redemption. Keep it simple and clear.
+# How does ${selectedKeyword!.name} connect to Jesus?
+One short paragraph connecting ${selectedKeyword!.name} to Jesus, the gospel, or the bigger story of redemption. Keep it simple and clear.
 
-# What does ${selectedKeyword.name} mean for us today?
-One short paragraph with a simple, practical life application. How can understanding ${selectedKeyword.name} help us follow God better?
+# What does ${selectedKeyword!.name} mean for us today?
+One short paragraph with a simple, practical life application. How can understanding ${selectedKeyword!.name} help us follow God better?
 
 RULES
-DO NOT include a header like "${selectedKeyword.name} Notes" or any title at the beginning. Start directly with "# What is this concept?".
+DO NOT include a header like "${selectedKeyword!.name} Notes" or any title at the beginning. Start directly with "# What is this concept?".
 Keep emojis in headers if helpful, but focus on clarity.
 No images. No Greek or Hebrew words unless essential (and then explain simply).
 Keep it cinematic, warm, simple. Do not overwhelm beginners.
@@ -764,7 +774,7 @@ Be accurate to Scripture.`;
           const json = await response.json();
           const generated = (json?.reply as string) ?? "";
 
-          notesText = await saveKeywordNotes(selectedKeyword.name, generated);
+          notesText = await saveKeywordNotes(selectedKeyword!.name, generated);
         }
 
         setKeywordNotes(notesText);

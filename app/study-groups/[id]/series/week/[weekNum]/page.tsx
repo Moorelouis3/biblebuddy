@@ -1,6 +1,6 @@
 ﻿"use client";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
@@ -11,6 +11,7 @@ import { enrichPlainText } from "@/lib/bibleHighlighting";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { requestAutoReplyDraft } from "@/lib/requestAutoReplyDraft";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
+import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "@/lib/bibleNotes";
 import { consumeCreditAction } from "@/lib/creditClient";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
@@ -272,11 +273,13 @@ function NotesSection({
   const [notesHTML, setNotesHTML] = useState<string | null>(null);
   const [notesError, setNotesError] = useState<string | null>(null);
   const hasNotesAvailable = hasLazySeriesNotes(seriesTitle, lesson.weekNumber) || Boolean(lesson.notes?.trim());
+  const preloadStartedRef = useRef(false);
 
   useEffect(() => {
-    if (!isPaid || !hasNotesAvailable || notesHTML || notesError) return;
+    if (!isPaid || !hasNotesAvailable || notesHTML || notesError || preloadStartedRef.current) return;
 
     let cancelled = false;
+    preloadStartedRef.current = true;
 
     void (async () => {
       try {
@@ -299,6 +302,7 @@ function NotesSection({
         setNotesHTML(nextHtml);
       } catch (error) {
         if (cancelled) return;
+        preloadStartedRef.current = false;
         console.error("[SERIES_NOTES] Failed to preload notes", error);
       }
     })();
@@ -472,7 +476,17 @@ function NotesSection({
   );
 }
 
-const MemoNotesSection = memo(NotesSection);
+const MemoNotesSection = memo(NotesSection, (prev, next) => {
+  return (
+    prev.isPaid === next.isPaid &&
+    prev.userId === next.userId &&
+    prev.displayName === next.displayName &&
+    prev.seriesTitle === next.seriesTitle &&
+    prev.lesson.weekNumber === next.lesson.weekNumber &&
+    prev.lesson.readingReference === next.lesson.readingReference &&
+    prev.lesson.notes === next.lesson.notes
+  );
+});
 
 function SectionCard({
   title,
@@ -884,6 +898,7 @@ function avatarBg(uid: string) {
 type ReflectionRowProps = {
   reflection: ReflectionEntry;
   depth?: number;
+  targetCommentId?: string | null;
   reflections: ReflectionEntry[];
   userId: string;
   currentUserBadge: string | null;
@@ -912,6 +927,7 @@ type ReflectionRowProps = {
 function ReflectionRow({
   reflection,
   depth = 0,
+  targetCommentId,
   reflections,
   userId,
   currentUserBadge,
@@ -938,6 +954,7 @@ function ReflectionRow({
 }: ReflectionRowProps) {
   const name = reflection.display_name || "Anonymous";
   const replies = reflections.filter((r) => r.parent_reflection_id === reflection.id);
+  const isTargetReflection = targetCommentId === reflection.id;
   const canDeleteReflection =
     reflection.user_id === userId ||
     currentUserBadge === "moderator" ||
@@ -946,6 +963,7 @@ function ReflectionRow({
   const canEditReflection = reflection.user_id === userId;
 
   const sharedProps: Omit<ReflectionRowProps, "reflection" | "depth"> = {
+    targetCommentId,
     reflections,
     userId,
     currentUserBadge,
@@ -981,7 +999,10 @@ function ReflectionRow({
   }
 
   return (
-    <div className={`${indentClass} flex gap-3`}>
+    <div
+      id={`comment-${reflection.id}`}
+      className={`${indentClass} flex gap-3 transition-colors duration-700 ${isTargetReflection ? "rounded-2xl ring-1 ring-[#e8ddd0] px-2 py-1" : ""}`}
+    >
       {reflection.profile_image_url ? (
         <img src={reflection.profile_image_url} alt={name} className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-0.5" />
       ) : (
@@ -1054,7 +1075,7 @@ function ReflectionRow({
             <svg className={`w-3.5 h-3.5 ${likeAnimatingIds.has(reflection.id) ? "animate-heart-pop" : ""}`} fill={reflection.liked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
-            <span>{reflection.like_count > 0 ? reflection.like_count : "Like"}</span>
+            <span>{reflection.like_count}</span>
           </button>
           <button
               type="button"
@@ -1142,6 +1163,7 @@ function ReflectionSection({
   currentUserBadge,
   currentUserIsPaid,
   currentUserGroupRole,
+  targetCommentId,
 }: {
   lesson: SeriesWeekLesson;
   userId: string;
@@ -1155,6 +1177,7 @@ function ReflectionSection({
   currentUserBadge: string | null;
   currentUserIsPaid: boolean;
   currentUserGroupRole: string | null;
+  targetCommentId?: string | null;
 }) {
   const [text, setText] = useState("");
   const [replyText, setReplyText] = useState("");
@@ -1175,6 +1198,16 @@ function ReflectionSection({
   useEffect(() => {
     setHasCompletedReflection(done);
   }, [done]);
+
+  useEffect(() => {
+    if (!targetCommentId || loadingReflections) return;
+    const timer = window.setTimeout(() => {
+      const target = document.getElementById(`comment-${targetCommentId}`);
+      if (!target) return;
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 150);
+    return () => window.clearTimeout(timer);
+  }, [targetCommentId, loadingReflections, reflections.length]);
 
   useEffect(() => {
     async function loadReflections() {
@@ -1446,6 +1479,7 @@ function ReflectionSection({
   const topLevelReflections = reflections.filter((r) => !r.parent_reflection_id);
 
   const sharedRowProps: Omit<ReflectionRowProps, "reflection" | "depth"> = {
+    targetCommentId,
     reflections,
     userId,
     currentUserBadge,
@@ -1644,8 +1678,10 @@ export default function WeekLessonPage({
 }: WeekLessonPageProps = {}) {
   const params = useParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const groupId = embeddedGroupId ?? (params.id as string);
   const weekNum = embeddedWeekNum ?? parseInt(params.weekNum as string, 10);
+  const targetCommentId = searchParams.get("comment");
   const isEmbeddedPreviewSeries = Boolean(embeddedSeriesId && embeddedSeriesId.startsWith("preview-"));
 
   const [loading, setLoading] = useState(true);
@@ -1927,17 +1963,20 @@ export default function WeekLessonPage({
     async function load() {
       setLoadingNotes(true); setPersonNotes(null); setPersonCreditBlocked(false);
       try {
-        const key = selectedPerson!.name.toLowerCase().trim();
+        const primaryName = resolveBibleReference("people", selectedPerson!.name);
+        const key = primaryName.toLowerCase().trim();
         if (userId && !completedPeople.has(key) && !viewedPeople.has(key)) {
           const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
             userId,
-            actionLabel: selectedPerson!.name,
+            actionLabel: primaryName,
           });
           if (!creditResult.ok) { setPersonCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedPeople((p) => { const n = new Set(p); n.add(key); return n; });
         }
+        setPersonNotes(await getPersonPopupNotes(primaryName));
+        return;
         const { data: cached } = await supabase.from("bible_people_notes").select("notes_text").eq("person_name", key).maybeSingle();
-        if (cached?.notes_text) { setPersonNotes(cached.notes_text); setLoadingNotes(false); return; }
+        if (cached?.notes_text) { setPersonNotes(cached?.notes_text ?? ""); setLoadingNotes(false); return; }
         const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti)/i.test(selectedPerson!.name);
         const pr = isFemale ? "Her" : "Him"; const wp = isFemale ? "She" : "He";
         const prompt = `You are Little Louis. Generate Bible study notes for ${selectedPerson!.name}.\n\nTemplate:\n# 👤 Who ${wp} Is\n\n(two short paragraphs)\n\n\n\n# 📖 Their Role in the Story\n\n(two to three short paragraphs)\n\n\n\n# 🔥 Key Moments\n\n🔥 sentence\n🔥 sentence\n🔥 sentence\n\n\n\n# 📍 Where You Find ${pr}\n\n📖 Book Chapter\n📖 Book Chapter\n\n\n\n# 🌱 Why This Person Matters\n\n(two short paragraphs)\n\nRules: # headers only, double blank lines between sections, emoji bullets only, no hyphens, ~200-250 words, do NOT put their name as a header.`;
@@ -1945,7 +1984,7 @@ export default function WeekLessonPage({
         const json = await res.json();
         const generated = json?.reply ?? "";
         const { data: check } = await supabase.from("bible_people_notes").select("notes_text").eq("person_name", key).maybeSingle();
-        if (check?.notes_text) { setPersonNotes(check.notes_text); } else {
+        if (check?.notes_text) { setPersonNotes(check?.notes_text ?? ""); } else {
           await supabase.from("bible_people_notes").upsert({ person_name: key, notes_text: generated }, { onConflict: "person_name" });
           setPersonNotes(generated);
         }
@@ -1969,14 +2008,16 @@ export default function WeekLessonPage({
           if (!creditResult.ok) { setPlaceCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedPlaces((p) => { const n = new Set(p); n.add(key); return n; });
         }
+        setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
+        return;
         const { data: cached } = await supabase.from("places_in_the_bible_notes").select("notes_text").eq("normalized_place", key).maybeSingle();
-        if (cached?.notes_text) { setPlaceNotes(cached.notes_text); setLoadingNotes(false); return; }
+        if (cached?.notes_text) { setPlaceNotes(cached?.notes_text ?? ""); setLoadingNotes(false); return; }
         const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the PLACE: ${selectedPlace!.name}.\n\nTemplate:\n# ðŸ§­ What This Place Is\n\n(two short paragraphs)\n\n\n\n# ðŸ—ºï¸ Where It Appears in the Story\n\n(two short paragraphs)\n\n\n\n# ðŸ”‘ Key Moments Connected to This Place\n\n🔥 sentence\n🔥 sentence\n🔥 sentence\n\n\n\n# 📖 Where You Find It in Scripture\n\n📖 Book Chapter\n📖 Book Chapter\n\n\n\n# 🌱 Why This Place Matters\n\n(two short paragraphs)\n\nRules: # headers, double blank lines, emoji bullets, no hyphens, ~200 words, no place name as header.`;
         const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }) });
         const json = await res.json();
         const generated = json?.reply ?? "";
         const { data: check } = await supabase.from("places_in_the_bible_notes").select("notes_text").eq("normalized_place", key).maybeSingle();
-        if (check?.notes_text) { setPlaceNotes(check.notes_text); } else {
+        if (check?.notes_text) { setPlaceNotes(check?.notes_text ?? ""); } else {
           await supabase.from("places_in_the_bible_notes").upsert({ place: selectedPlace!.name, normalized_place: key, notes_text: generated }, { onConflict: "normalized_place" });
           setPlaceNotes(generated);
         }
@@ -2000,14 +2041,16 @@ export default function WeekLessonPage({
           if (!creditResult.ok) { setKeywordCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedKeywords((p) => { const n = new Set(p); n.add(key); return n; });
         }
+        setKeywordNotes(await getKeywordPopupNotes(selectedKeyword!.name));
+        return;
         const { data: cached } = await supabase.from("keywords_in_the_bible").select("notes_text").eq("keyword", key).maybeSingle();
-        if (cached?.notes_text) { setKeywordNotes(cached.notes_text); setLoadingNotes(false); return; }
+        if (cached?.notes_text) { setKeywordNotes(cached?.notes_text ?? ""); setLoadingNotes(false); return; }
         const prompt = `You are Little Louis. Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword!.name}.\n\nTemplate:\n# 📖 What This Keyword Means\n\n(two short paragraphs)\n\n\n\n# ðŸ” Where It Appears in Scripture\n\n(two short paragraphs)\n\n\n\n# ðŸ”‘ Key Verses Using This Keyword\n\n🔥 sentence\n🔥 sentence\n🔥 sentence\n\n\n\n# ðŸ“š Where You Find It in the Bible\n\n📖 Book Chapter\n📖 Book Chapter\n\n\n\n# 🌱 Why This Keyword Matters\n\n(two short paragraphs)\n\nRules: # headers, double blank lines, emoji bullets, no hyphens, ~200 words, no keyword as header.`;
         const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: [{ role: "user", content: prompt }] }) });
         const json = await res.json();
         const generated = json?.reply ?? "";
         const { data: check } = await supabase.from("keywords_in_the_bible").select("notes_text").eq("keyword", key).maybeSingle();
-        if (check?.notes_text) { setKeywordNotes(check.notes_text); } else {
+        if (check?.notes_text) { setKeywordNotes(check?.notes_text ?? ""); } else {
           await supabase.from("keywords_in_the_bible").upsert({ keyword: selectedKeyword!.name, notes_text: generated }, { onConflict: "keyword" });
           setKeywordNotes(generated);
         }
@@ -2057,17 +2100,17 @@ export default function WeekLessonPage({
     updateProgress("reading_completed");
   }
 
-  function handleTriviaComplete(score: number) {
+  const handleTriviaComplete = useCallback((score: number) => {
     setSavedTriviaScore(score);
     setTriviaDone(true);
-    updateProgress("trivia_completed");
-  }
+    void updateProgress("trivia_completed");
+  }, []);
 
-  function handleNotesComplete() {
+  const handleNotesComplete = useCallback(() => {
     if (notesDone) return Promise.resolve();
     setNotesDone(true);
     return updateProgress("notes_completed");
-  }
+  }, [notesDone]);
 
   function handleReflectionCompletionChange(completed: boolean) {
     setReflectionDone(completed);
@@ -2322,6 +2365,7 @@ export default function WeekLessonPage({
               currentUserBadge={memberBadge}
               currentUserIsPaid={isPaid}
               currentUserGroupRole={currentGroupRole}
+              targetCommentId={targetCommentId}
             />
           </SectionCard>
         </div>

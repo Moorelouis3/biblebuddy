@@ -732,45 +732,56 @@ export default function StudyGroupSchedulerPage() {
       triviaResult,
       pollResult,
       questionResult,
+      livePostsResult,
     ] = await Promise.all([
       supabase
         .from("weekly_group_series_posts")
-        .select("series_key, week_key")
+        .select("series_key, week_key, post_id")
         .eq("group_id", groupId)
         .order("created_at", { ascending: false })
         .limit(30),
       supabase
         .from("weekly_group_trivia_sets")
-        .select("week_key")
+        .select("week_key, post_id")
         .eq("group_id", groupId)
         .order("created_at", { ascending: false })
         .limit(12),
       supabase
         .from("weekly_group_polls")
-        .select("week_key")
+        .select("week_key, post_id")
         .eq("group_id", groupId)
         .order("created_at", { ascending: false })
         .limit(12),
       supabase
         .from("weekly_group_questions")
-        .select("week_key")
+        .select("week_key, post_id")
         .eq("group_id", groupId)
         .order("created_at", { ascending: false })
         .limit(12),
+      supabase
+        .from("group_posts")
+        .select("id")
+        .eq("group_id", groupId)
+        .is("parent_post_id", null),
     ]);
 
     const nextPublishedIds = new Set<string>();
+    const livePostIds = new Set((livePostsResult.data || []).map((row: { id: string }) => row.id));
 
-    (weeklySeriesResult.data || []).forEach((row: { series_key: string; week_key: string }) => {
+    (weeklySeriesResult.data || []).forEach((row: { series_key: string; week_key: string; post_id: string | null }) => {
+      if (!row.post_id || !livePostIds.has(row.post_id)) return;
       nextPublishedIds.add(`${row.series_key}:${row.week_key}`);
     });
-    (triviaResult.data || []).forEach((row: { week_key: string }) => {
+    (triviaResult.data || []).forEach((row: { week_key: string; post_id: string | null }) => {
+      if (!row.post_id || !livePostIds.has(row.post_id)) return;
       nextPublishedIds.add(`trivia_tuesday:${row.week_key}`);
     });
-    (pollResult.data || []).forEach((row: { week_key: string }) => {
+    (pollResult.data || []).forEach((row: { week_key: string; post_id: string | null }) => {
+      if (!row.post_id || !livePostIds.has(row.post_id)) return;
       nextPublishedIds.add(`opinion_wednesday:${row.week_key}`);
     });
-    (questionResult.data || []).forEach((row: { week_key: string }) => {
+    (questionResult.data || []).forEach((row: { week_key: string; post_id: string | null }) => {
+      if (!row.post_id || !livePostIds.has(row.post_id)) return;
       nextPublishedIds.add(`truth_thursday:${row.week_key}`);
     });
 

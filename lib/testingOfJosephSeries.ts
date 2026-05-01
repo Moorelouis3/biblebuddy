@@ -407,17 +407,48 @@ export const TESTING_OF_JOSEPH: SeriesWeekLesson[] = [
     readingApiQuery: "genesis+38",
     intro: `Genesis 38 does not come out of nowhere.
 
-It begins in the shadow of Joseph being sold, Jacob grieving, and a house full of silence and guilt.
+It lands right after Joseph is sold and Jacob is shattered. The family is already fractured, heavy, and morally unstable, and now the story turns away from Joseph for a moment to show us what is happening inside the house that betrayed him.
 
-The spotlight shifts away from Joseph and lands on Judah, one of the very brothers who helped make that pain possible.
+## Where This Chapter Begins
 
-This chapter is messy on purpose. It gives us grief, drift, hypocrisy, injustice, exposure, and the beginning of change.
+This chapter begins in the shadow of:
 
-But that is exactly why it matters.
+- ?? Joseph being sold
+- ?? Jacob grieving
+- ?? a family carrying guilt and silence
 
-Before Judah becomes the man who later offers himself for Benjamin, he has to be exposed and humbled first.
+The spotlight shifts away from Joseph and lands on Judah, one of the very brothers who helped create that pain.
 
-Genesis 38 shows us that God does not abandon people at their worst. He confronts them there and keeps His purposes moving forward.`,
+## Why This Chapter Matters
+
+Genesis 38 can feel surprising at first, but it belongs here. It shows us what kind of heart Judah still has before grace begins reshaping him.
+
+This chapter gives us:
+
+- ?? grief
+- ??? drift
+- ?? hypocrisy
+- ?? injustice
+- ?? exposure
+- ?? the beginning of change
+
+Before Judah becomes the man who later offers himself for Benjamin, he has to be brought low and forced to face the truth about himself.
+
+## What To Watch For
+
+As you read, pay attention to:
+
+- ?? how quickly Judah drifts when he moves away from his brothers
+- ?? how Tamar sees the moral failure that Judah is trying to hide
+- ?? how public exposure becomes the doorway to private humility
+
+## The Bigger Takeaway
+
+Genesis 38 shows us that God does not abandon people at their worst.
+
+He confronts them there, exposes what is crooked, and keeps His purposes moving forward even through a deeply broken family line.
+
+Read this chapter slowly. Let the discomfort do its work. This is not a polished chapter, but it is an important one, because God is still at work in the mess.`,
     reflectionQuestion:
       "Genesis 38 exposes hidden sin, hypocrisy, and the damage caused when people refuse responsibility. Where does this chapter challenge you most: in owning your failures, in avoiding double standards, or in trusting that God can still work through messy history?",
     triviaQuestions: [
@@ -436,17 +467,56 @@ Genesis 38 shows us that God does not abandon people at their worst. He confront
     readingApiQuery: "genesis+39",
     intro: `Genesis 39 brings the camera back to Joseph after the hard detour through Judah and Tamar.
 
-Joseph is no longer in Canaan. He is in Egypt, bought into Potiphar's house, and living as property in a foreign land.
+Joseph is no longer in Canaan, no longer near his father, and no longer living anything like the life he once knew. But this chapter makes something clear right away: Joseph may be far from home, but he is not far from God.
 
-But this chapter keeps repeating one line that changes how we read everything else: the LORD was with Joseph.
+## Where Joseph Is Now
 
-Genesis 39 is not just about suffering. It is about faithfulness in work, holiness under pressure, and God's presence in a place that still feels deeply unfair.
+Joseph is:
 
-Joseph rises in Potiphar's house, refuses temptation in private, gets falsely accused, and ends the chapter in prison.
+- ???? in Egypt
+- ?? bought into Potiphar's house
+- ?? living as property in a foreign land
+
+Everything about his circumstances says loss, but the deeper reality of the chapter says presence.
+
+## The Line That Changes Everything
+
+Genesis 39 keeps repeating one line that changes how we read every scene:
+
+the LORD was with Joseph.
+
+This chapter is not just about suffering. It is about:
+
+- ??? faithfulness in work
+- ??? holiness under pressure
+- ?? God's presence in a place that still feels deeply unfair
+
+## What Happens in This Chapter
+
+Joseph:
+
+- ?? rises in Potiphar's house
+- ?? refuses temptation in private
+- ?? gets falsely accused
+- ?? ends the chapter in prison
 
 And still, God does not leave him.
 
-This chapter teaches us that God's favor does not always look like comfort. Sometimes it looks like strength, integrity, and steady faithfulness in a place you never would have chosen.`,
+## What To Watch For
+
+As you read, pay attention to:
+
+- ?? how Joseph serves with excellence even when no one owes him anything
+- ?? how he thinks about temptation first as a sin against God
+- ?? how faithfulness stays visible even when the outcome looks unfair
+
+## The Bigger Takeaway
+
+God's favor does not always look like comfort.
+
+Sometimes it looks like strength, integrity, and steady obedience in a place you never would have chosen.
+
+Read this chapter looking for God's presence in the ordinary and the painful. Genesis 39 teaches us that even in loss, prison, and false accusation, God can still be shaping a faithful life.`,
     reflectionQuestion:
       "Genesis 39 shows Joseph being faithful in work, in private temptation, and in unfair suffering. Which part challenges you more right now: being consistent when no one sees it, refusing temptation when it costs you, or trusting God when obedience does not seem to pay off quickly?",
     triviaQuestions: [
@@ -465,15 +535,51 @@ This chapter teaches us that God's favor does not always look like comfort. Some
     readingApiQuery: "genesis+40",
     intro: `Genesis 40 opens with Joseph still in prison after doing the right thing in Genesis 39.
 
-He is not vindicated, not released, and not rewarded for obedience.
+That matters. He obeyed, resisted temptation, and honored God, and the immediate result was not rescue. It was a cell. This chapter lives in that painful space between obedience and visible reward.
 
-Instead, this chapter shows what faithfulness looks like after disappointment, when life does not immediately improve.
+## What Has Not Happened Yet
 
-Joseph keeps serving, notices the pain of others, and gives God the credit when Pharaoh's officials have dreams in prison.
+Joseph is:
 
-One man is restored. One man is executed. And Joseph stays right where he is.
+- ? not vindicated
+- ? not released
+- ? not rewarded for obedience
 
-Genesis 40 is about waiting, faithfulness, and the ache of being forgotten by people while still being positioned by God.`,
+He is still waiting in the place where faithfulness seems to have gone unnoticed.
+
+## What This Chapter Is Really About
+
+Genesis 40 shows what faithfulness looks like after disappointment, when life does not immediately get better.
+
+Joseph:
+
+- ?? keeps serving
+- ?? notices the pain of others
+- ??? gives God the credit when Pharaoh's officials have dreams in prison
+
+## What Happens Next
+
+- ?? one man is restored
+- ?? one man is executed
+- ?? Joseph stays right where he is
+
+## What To Watch For
+
+As you read, pay attention to:
+
+- ?? how Joseph stays useful even in prison
+- ?? how quickly he points interpretation back to God
+- ?? how painful it is when the cupbearer walks away and forgets him
+
+## The Bigger Takeaway
+
+Genesis 40 is about:
+
+- ? waiting
+- ??? faithfulness
+- ?? the ache of being forgotten by people while still being positioned by God
+
+Read this chapter with patience. Not every faithful season has quick closure. Sometimes God is building steadiness in the very place where you hoped to be rescued first.`,
     reflectionQuestion:
       "What do you do when it feels like you have been faithful and still forgotten? Genesis 40 asks whether you can keep serving, keep noticing others, and keep trusting God even when the person who could have helped you walks away and forgets your name.",
     triviaQuestions: [
@@ -492,19 +598,49 @@ Genesis 40 is about waiting, faithfulness, and the ache of being forgotten by pe
     readingApiQuery: "genesis+41",
     intro: `Genesis 41 is not about dreams first. It is about timing.
 
-Joseph has already spent years being betrayed, enslaved, falsely accused, and forgotten.
+Joseph has already spent years in places he did not choose, carrying pain he did not deserve, and waiting through silence he could not control. Then Genesis quietly tells us that two whole years passed after the cupbearer forgot him.
 
-And then Genesis quietly says two whole years passed after the cupbearer forgot him.
+## What Joseph Has Already Endured
 
-No breakthrough. No explanation. Just waiting.
+Joseph has already lived through:
+
+- ?? betrayal
+- ?? slavery
+- ?? false accusation
+- ??? being forgotten
+
+## What That Waiting Felt Like
+
+For Joseph, the delay likely felt like:
+
+- ?? no breakthrough
+- ?? no explanation
+- ? just waiting
+
+## When God Moves
 
 But when the time is finally right, God flips the story fast.
 
-Pharaoh dreams, Egypt's wisest men fail, Joseph is brought out of prison, and the forgotten prisoner becomes the man who prepares a nation to survive famine.
+- ?? Pharaoh dreams
+- ?? Egypt's wisest men fail
+- ?? Joseph is brought out of prison
+- ?? the forgotten prisoner becomes the man who prepares a nation to survive famine
+
+## What To Watch For
+
+As you read, pay attention to:
+
+- ?? how Joseph gives God the credit instead of using the moment to glorify himself
+- ??? how prison years prepared him for palace responsibility
+- ?? how suddenly God's long-hidden work becomes visible
+
+## The Bigger Takeaway
 
 Genesis 41 shows us that God is never late. He is precise.
 
-And when He opens the door, the years of preparation suddenly make sense.`,
+When He opens the door, the years of preparation suddenly make sense in a way they did not while you were living them.
+
+Read this chapter with that in mind. Joseph did not waste in the waiting, and neither does God.`,
     reflectionQuestion:
       "Genesis 41 asks whether you trust God's timing enough to stay ready before the door opens. If the opportunity you have been waiting on came suddenly, would your heart be ready to give God the credit and carry the responsibility well?",
     triviaQuestions: [
@@ -523,17 +659,51 @@ And when He opens the door, the years of preparation suddenly make sense.`,
     readingApiQuery: "genesis+42",
     intro: `Genesis 42 brings Joseph's brothers back into his life, but not in the way anyone would have imagined.
 
-It has been almost twenty years since they sold Joseph, and now the famine has pushed them right into the presence of the brother they think is gone forever.
+It has been almost twenty years since they sold him, and now famine pushes them right into the presence of the brother they assume is gone forever. They arrive looking for grain, but what they really walk into is the beginning of exposure.
 
-Joseph recognizes them immediately. They do not recognize him.
+## Why They Came to Egypt
 
-This chapter is about conscience, pressure, and the way buried guilt starts speaking when God brings old sin back to the surface.
+The famine has stripped away their options.
 
-The brothers come for grain, but what they really walk into is confrontation.
+What once felt buried is now being dragged back into the light by circumstances they cannot control.
+
+## What Joseph Knows
+
+- ?? Joseph recognizes them immediately
+- ? they do not recognize him
+- ?? Joseph can now see what they have become under pressure
+
+## What This Chapter Is About
+
+This chapter is about:
+
+- ?? conscience
+- ?? pressure
+- ??? the way buried guilt starts speaking when God brings old sin back to the surface
+
+The brothers come for food, but what they find is confrontation.
+
+## Why Joseph Tests Them
 
 Joseph does not reveal himself right away. He tests them.
 
-Not because he wants revenge, but because truth has to come out before healing can begin.`,
+Not because he wants revenge, but because truth has to come out before healing can begin.
+
+## What To Watch For
+
+As you read, pay attention to:
+
+- ?? how quickly the brothers connect present trouble to old sin
+- ?? how God uses pressure to uncover what years of silence never healed
+- ?? how Joseph's test becomes a mirror for their conscience
+
+## The Bigger Takeaway
+
+Genesis 42 reminds us that unresolved sin does not disappear just because time passes.
+
+Sometimes God allows pressure, not to destroy us, but to bring honesty to the surface so repentance can finally begin.
+
+Read this chapter slowly and listen to the brothers' words. Their fear tells you a lot about what guilt has been doing in them all along.`,
     reflectionQuestion:
       "Genesis 42 shows how old sin can stay buried for years and still rise back up under pressure. Is there anything unresolved in your life that only seems quiet because it has not been pressed yet? What would honest repentance look like before pressure exposes it for you?",
     triviaQuestions: [
@@ -552,13 +722,48 @@ Not because he wants revenge, but because truth has to come out before healing c
     readingApiQuery: "genesis+43",
     intro: `Genesis 43 is about what happens when fear finally collides with necessity.
 
-Jacob does not want to let Benjamin go, but the famine does not care about fear.
+Jacob does not want to let Benjamin go, but the famine does not care about fear. The family has reached the point where staying safe is no longer possible, and that pressure forces movement.
+
+## The Tension In This Chapter
+
+Everyone feels the weight here:
+
+- ?? Jacob fears another devastating loss
+- ?? the brothers have to return to Egypt
+- ?? the famine keeps tightening its grip
+
+Obedience is no longer abstract. It now costs something personal.
+
+## What Starts Changing
 
 Judah steps forward and takes responsibility in a new way, which shows his character is beginning to change.
 
-The brothers return to Egypt, and Joseph sees Benjamin.
+That matters because the Judah we are seeing now is not the exact same Judah we met earlier.
 
-The pressure is still building, but grace also starts peeking through the story.`,
+## What Happens When They Return
+
+- ?? the brothers return to Egypt
+- ??? Joseph sees Benjamin
+- ?? the pressure keeps building
+- ?? Joseph is moved more deeply than anyone around him understands
+
+And yet grace also starts peeking through the story.
+
+## What To Watch For
+
+As you read, pay attention to:
+
+- ?? Judah's willingness to carry responsibility
+- ?? Joseph's hidden emotion when he sees Benjamin
+- ??? the strange mix of fear, kindness, and suspense at Joseph's table
+
+## The Bigger Takeaway
+
+Genesis 43 shows us that trust is often tested when obedience becomes costly.
+
+Sometimes the next step of healing begins only when fear stops being the loudest voice in the room.
+
+Read this chapter noticing both the tension and the tenderness. God is still working, even before anyone fully understands what He is doing.`,
     reflectionQuestion:
       "Genesis 43 asks what you are holding so tightly that fear is running your decisions. Where might God be pushing you to trust Him more deeply, not because the risk feels small, but because the need to obey has become bigger than the fear?",
     triviaQuestions: [
@@ -577,13 +782,45 @@ The pressure is still building, but grace also starts peeking through the story.
     readingApiQuery: "genesis+44",
     intro: `Genesis 44 is one of the most emotionally intense chapters in Joseph's story.
 
-Joseph sets up a final test by having his silver cup placed in Benjamin's sack.
+By this point the pressure has been building for several chapters, and now Joseph sets up one final test. The question is no longer whether the brothers feel uncomfortable. The question is whether they have actually changed.
+
+## The Final Test
+
+Joseph has his silver cup placed in Benjamin's sack.
+
+That means the beloved younger brother is now put in danger, and the brothers are forced into a moment that echoes the past.
+
+## What This Chapter Reveals
 
 This chapter reveals whether these brothers are still the same men who abandoned Joseph years earlier.
 
-When Benjamin is threatened, Judah steps into the gap and offers himself instead.
+Will they protect themselves and sacrifice another son of Rachel, or will something different happen this time?
 
-The brother who once helped sell Joseph is now willing to suffer in another brother's place.`,
+## Judah's Turning Point
+
+When Benjamin is threatened, Judah:
+
+- ?? steps into the gap
+- ?? offers himself instead
+- ??? speaks with honesty, grief, and responsibility
+
+The brother who once helped sell Joseph is now willing to suffer in another brother's place.
+
+## What To Watch For
+
+As you read, pay attention to:
+
+- ?? how the test recreates an old family wound
+- ?? how Judah's speech reveals real transformation
+- ?? how repentance becomes visible not just in words, but in sacrifice
+
+## The Bigger Takeaway
+
+Genesis 44 forces the question of whether people can really change.
+
+This chapter answers that real grace can reshape a person so deeply that they no longer protect self the way they once did.
+
+Read Judah's speech slowly. It is one of the most important turning points in the whole Joseph story.`,
     reflectionQuestion:
       "Genesis 44 forces the question of whether people can really change. Where have you seen God changing you from the kind of person who protects self first into the kind of person who takes responsibility, tells the truth, and stands in the gap for others?",
     triviaQuestions: [
@@ -602,13 +839,51 @@ The brother who once helped sell Joseph is now willing to suffer in another brot
     readingApiQuery: "genesis+45",
     intro: `Genesis 45 is the release after all the built-up pressure of the previous chapters.
 
-Joseph can no longer control himself, so he sends everyone out and reveals who he is.
+Everything that has been tightening now finally breaks open. Joseph can no longer hold back his emotion, and the brothers are suddenly standing in the truth they never expected to face.
 
-The brothers are forced to face the living brother they betrayed.
+## The Moment Everything Breaks Open
 
-But Joseph does not use that moment to crush them.
+Joseph sends everyone out and reveals who he is.
 
-He interprets the whole story through God's providence and preserving purpose.`,
+That moment is not small. The living brother they betrayed is standing in front of them with power they do not control.
+
+## What The Brothers Must Face
+
+The brothers are forced to face:
+
+- ?? their past sin
+- ?? the shock of Joseph being alive
+- ?? the possibility of judgment
+
+## What Joseph Does Not Do
+
+Joseph does not use that moment to crush them.
+
+He does not deny the evil, but he also does not let evil have the final word.
+
+## How Joseph Sees The Story
+
+He interprets the whole story through:
+
+- ?? God's providence
+- ?? God's preserving purpose
+- ?? a bigger plan that was at work even through human betrayal
+
+## What To Watch For
+
+As you read, pay attention to:
+
+- ?? Joseph's tears and tenderness
+- ?? how he names the wrong without becoming ruled by it
+- ?? how God's saving purpose stretches beyond one family wound
+
+## The Bigger Takeaway
+
+Genesis 45 shows us what grace can look like after betrayal.
+
+It does not pretend the wound was small, but it does place the story under God's larger hand.
+
+Read this chapter slowly and let the contrast sink in. The men who sold Joseph now stand before a brother who could destroy them, and instead they meet mercy.`,
     reflectionQuestion:
       "Joseph's words in Genesis 45 do not deny the wrong done to him, but they do place the story under God's bigger hand. Where do you need God's help to move from replaying the wound toward seeing how He may still be at work in a painful story that was never okay on its own?",
     triviaQuestions: [
@@ -627,13 +902,45 @@ He interprets the whole story through God's providence and preserving purpose.`,
     readingApiQuery: "genesis+46",
     intro: `Genesis 46 is about a major transition.
 
-Jacob, now called Israel, is leaving Canaan and going down to Egypt.
+Jacob, now called Israel, is leaving Canaan and going down to Egypt. That is not a small move geographically, emotionally, or spiritually. This family is stepping into a new chapter, and with that comes fear, memory, and uncertainty.
+
+## The Journey Begins
+
+Jacob is leaving the land that has been tied to promise and identity.
+
+Even with Joseph alive, this is still a painful and unfamiliar road.
+
+## What God Says On The Way
 
 Before the journey continues, God meets Jacob at Beersheba and tells him not to be afraid.
 
 That matters because even this move into Egypt is not outside God's plan.
 
-The genealogy in this chapter shows the covenant story moving with a real family into a new land.`,
+## Why The Genealogy Matters
+
+The genealogy in this chapter shows the covenant story moving with:
+
+- ??????????? a real family
+- ?? a real journey
+- ?? a move into a new land
+
+This is not random movement. It is covenant history still unfolding.
+
+## What To Watch For
+
+As you read, pay attention to:
+
+- ?? the comfort in God's words to Jacob
+- ?? the realism of the family actually making the move
+- ?? the emotional weight of Joseph and Jacob seeing each other again
+
+## The Bigger Takeaway
+
+Genesis 46 reminds us that major transitions can still be under God's hand even when they are uncomfortable.
+
+The place that looks unfamiliar to us may still be a place God has already prepared in His plan.
+
+Read this chapter with that in mind. God is not only Lord of the destination. He is also Lord of the journey.`,
     reflectionQuestion:
       "Genesis 46 reminds us that major transitions can still be under God's hand even when they are uncomfortable. Where do you need to hear God's 'do not be afraid' in your own life right now as you step into a place, season, or responsibility that feels unfamiliar?",
     triviaQuestions: [
@@ -652,11 +959,44 @@ The genealogy in this chapter shows the covenant story moving with a real family
     readingApiQuery: "genesis+47",
     intro: `Genesis 47 shows Joseph not just as a survivor, but as a wise administrator.
 
+The same man who once managed a prison now manages a national crisis. This chapter lets us watch Joseph carry responsibility well while his family is being preserved in the middle of a severe famine.
+
+## What Joseph Is Doing
+
 Jacob's family is settled in Goshen, and Joseph carefully handles how they are presented before Pharaoh.
 
-The famine keeps intensifying across the land, and Joseph manages the crisis with real wisdom.
+He is not reacting carelessly. He is leading with wisdom.
 
-At the same time, Jacob keeps his heart pointed toward God's promise and asks to be buried in Canaan, not Egypt.`,
+## What The Famine Reveals
+
+The famine keeps intensifying across the land, and Joseph manages the crisis with real insight and structure.
+
+This chapter is deeply practical, which is part of what makes it powerful.
+
+## What Jacob Still Wants
+
+At the same time, Jacob keeps his heart pointed toward God's promise and asks to be buried:
+
+- not in Egypt
+- but in Canaan
+
+Even in provision, he has not forgotten where the deeper promise rests.
+
+## What To Watch For
+
+As you read, pay attention to:
+
+- ?? Joseph's wisdom in handling people, power, and policy
+- ?? how Goshen becomes both protection and provision for the family
+- ??? how Jacob keeps his hope tied to God's promise beyond the present moment
+
+## The Bigger Takeaway
+
+Genesis 47 shows that spiritual maturity is not only seen in dramatic moments. It is also seen in wise stewardship.
+
+Joseph handles real-world responsibility without losing sight of God's hand, and Jacob enjoys present provision without losing sight of future promise.
+
+Read this chapter looking for both kinds of faithfulness.`,
     reflectionQuestion:
       "Genesis 47 shows Joseph handling real responsibility with wisdom while Jacob keeps his heart pointed toward God's larger promise. How do you stay faithful in the practical responsibilities right in front of you without losing sight of the deeper things God has said over your life?",
     triviaQuestions: [
@@ -675,11 +1015,41 @@ At the same time, Jacob keeps his heart pointed toward God's promise and asks to
     readingApiQuery: "genesis+48",
     intro: `Genesis 48 slows down and gives us one of the most meaningful blessing scenes in Joseph's story.
 
+The pace changes here. We move from famine strategy and public responsibility into a deeply personal moment around family, legacy, and covenant blessing.
+
+## Who Comes For The Blessing
+
 Joseph brings his sons, Manasseh and Ephraim, to Jacob for blessing.
 
-Joseph expects the older son to receive the stronger blessing, but Jacob deliberately crosses his hands.
+This is about more than affection. It is about inheritance, identity, and what will be carried forward.
 
-That moment shows again that God is not trapped by human ordering systems.`,
+## What Joseph Expects
+
+Joseph expects the older son to receive the stronger blessing.
+
+From a human perspective, that makes sense. It fits the normal order.
+
+## What Jacob Does Instead
+
+Jacob deliberately crosses his hands.
+
+That moment shows again that God is not trapped by human ordering systems.
+
+## What To Watch For
+
+As you read, pay attention to:
+
+- ? the deliberate nature of Jacob's crossed hands
+- ?? Joseph's surprise when the blessing does not follow expected order
+- ?? the continuing Genesis pattern of God overturning neat human assumptions
+
+## The Bigger Takeaway
+
+Genesis 48 reminds us that God is free to work beyond the systems people expect Him to stay inside.
+
+His wisdom is not random, but it is often surprising, and it regularly humbles our neat ideas about rank and control.
+
+Read this chapter with open hands. Sometimes God's blessing crosses the lines we assumed He would keep.`,
     reflectionQuestion:
       "Genesis 48 reminds us that God is not locked into the expectations people build around status, order, or human strategy. Where have you seen God work in a way that crossed your assumptions and forced you to trust His wisdom over your own neat plan?",
     triviaQuestions: [
@@ -698,11 +1068,48 @@ That moment shows again that God is not trapped by human ordering systems.`,
     readingApiQuery: "genesis+49",
     intro: `Genesis 49 is not a light chapter.
 
-Jacob gathers his sons and speaks words that are part blessing, part rebuke, and part prophetic unveiling.
+Jacob gathers his sons for final words, but these are not soft sentimental goodbyes. They are weighty, honest, prophetic words that expose character, speak consequences, and reveal the future shape of the tribes.
 
-He addresses the real character and legacy of each son.
+## What Jacob Does Here
 
-Judah receives the most far-reaching promise, which points toward kingship and later messianic hope.`,
+Jacob speaks words that are:
+
+- ?? part blessing
+- ?? part rebuke
+- ?? part prophetic unveiling
+
+This chapter is personal, but it is also historic.
+
+## What He Addresses
+
+Jacob addresses the real character and legacy of each son.
+
+He is not flattering them. He is naming what is actually there.
+
+## Why Judah Stands Out
+
+Judah receives the most far-reaching promise, which points toward:
+
+- ?? kingship
+- ? later messianic hope
+
+That matters for the rest of Scripture, not just for this family moment.
+
+## What To Watch For
+
+As you read, pay attention to:
+
+- ?? how each word reflects the character that has already been forming
+- ?? how blessing and warning can exist in the same chapter
+- ?? how Judah's promise begins opening the door toward the royal line
+
+## The Bigger Takeaway
+
+Genesis 49 makes us face the reality that patterns of character carry consequences.
+
+This chapter is a reminder that who we become matters, and that God's larger story is still unfolding even through imperfect people and complicated family histories.
+
+Read this chapter slowly. Some lines comfort, some cut, and some look far beyond Jacob's bedside into the future.`,
     reflectionQuestion:
       "Genesis 49 makes us face the reality that patterns of character carry consequences. If someone had to summarize the strongest spiritual pattern in your life right now, what would they say it is and would that description feel like a blessing, a warning, or both?",
     triviaQuestions: [
@@ -721,13 +1128,49 @@ Judah receives the most far-reaching promise, which points toward kingship and l
     readingApiQuery: "genesis+50",
     intro: `Genesis 50 closes Joseph's story with grief, fear, forgiveness, and hope.
 
+This final chapter carries the weight of endings, but it does not end in despair. The story closes with tears, unfinished tension, and a steady confidence that God is still leading the future.
+
+## What Happens First
+
 Jacob dies, and Joseph honors him by burying him in Canaan.
+
+That burial matters because it keeps the family's eyes tied to God's promise, even while they are still living in Egypt.
+
+## What The Brothers Fear
 
 After the funeral, the brothers panic and fear Joseph will finally repay them for what they did.
 
-Joseph answers with one of the most famous lines in Genesis: what they meant for evil, God meant for good.
+Even after reconciliation, old guilt still trembles under the surface.
 
-The story ends in Egypt, but it ends with eyes still looking toward God's promise.`,
+## Joseph's Answer
+
+Joseph answers with one of the most famous lines in Genesis:
+
+what they meant for evil, God meant for good.
+
+He does not call evil good. He declares that evil did not outrun God's purpose.
+
+## How The Story Ends
+
+The story ends in Egypt, but it ends with eyes still looking toward God's promise.
+
+Joseph speaks about a future visitation of God and asks that his bones be carried up when that day comes.
+
+## What To Watch For
+
+As you read, pay attention to:
+
+- ?? the tenderness Joseph shows in grief and forgiveness
+- ??? the way he answers fear without revenge
+- ?? the hope that keeps reaching beyond Egypt toward what God will still do
+
+## The Bigger Takeaway
+
+Genesis 50 asks whether you believe God can tell a bigger story than the evil people have done.
+
+It reminds us that betrayal, loss, and death are real, but they are not final rulers over the people of God.
+
+Read this closing chapter with gratitude. Joseph's story ends with faith still looking forward, and that is part of what makes the whole journey so powerful.`,
     reflectionQuestion:
       "Genesis 50 asks whether you believe God can tell a bigger story than the evil people have done. Where do you need grace to release bitterness, and where do you need faith to believe that pain, betrayal, and loss are not stronger than God's long-term purpose?",
     triviaQuestions: [

@@ -44,30 +44,34 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Failed to record trivia progress" }, { status: 500 });
     }
 
-    console.log("Inserting trivia answer:", {
-      userId,
-      actionType: ACTION_TYPE.trivia_question_answered,
-      actionLabel,
-      username,
-    });
+    const isFirstAnswerForQuestion = !existing;
+    const isFirstCorrectForQuestion = isCorrect === true && existing?.is_correct !== true;
 
-    // Always log the attempt for analytics/engagement (worth 0 points).
-    const { error: attemptError } = await supabase.from("master_actions").insert({
-      user_id: userId,
-      action_type: ACTION_TYPE.trivia_question_answered,
-      action_label: actionLabel,
-      username: username || "User",
-    });
+    if (isFirstAnswerForQuestion) {
+      console.log("Inserting first trivia answer:", {
+        userId,
+        actionType: ACTION_TYPE.trivia_question_answered,
+        actionLabel,
+        username,
+      });
 
-    if (attemptError) {
-      console.error("Error inserting trivia attempt:", attemptError);
-      return NextResponse.json({ error: "Failed to record trivia answer" }, { status: 500 });
+      const { error: attemptError } = await supabase.from("master_actions").insert({
+        user_id: userId,
+        action_type: ACTION_TYPE.trivia_question_answered,
+        action_label: actionLabel,
+        username: username || "User",
+      });
+
+      if (attemptError) {
+        console.error("Error inserting trivia attempt:", attemptError);
+        return NextResponse.json({ error: "Failed to record trivia answer" }, { status: 500 });
+      }
     }
 
     let awardedPoint = false;
 
-    // Award 1 point for every correct answer in the round.
-    if (isCorrect === true) {
+    // Award 1 point only the first time a user gets a question correct.
+    if (isFirstCorrectForQuestion) {
       const { error: correctError } = await supabase.from("master_actions").insert({
         user_id: userId,
         action_type: ACTION_TYPE.trivia_question_correct,
@@ -117,23 +121,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Keep profile_stats.trivia_questions_answered in sync for profile analytics cards.
-    const { data: currentStats, error: statsFetchError } = await supabase
-      .from("profile_stats")
-      .select("user_id, trivia_questions_answered")
-      .eq("user_id", userId)
-      .maybeSingle();
+    // Keep profile_stats.trivia_questions_answered aligned with unique answered questions.
+    const { count: uniqueAnsweredCount, error: statsCountError } = await supabase
+      .from("trivia_question_progress")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", userId);
 
-    if (statsFetchError) {
-      console.error("Error fetching profile_stats for trivia sync:", statsFetchError);
+    if (statsCountError) {
+      console.error("Error counting trivia_question_progress for profile_stats sync:", statsCountError);
     } else {
-      const nextTriviaCount = (currentStats?.trivia_questions_answered || 0) + 1;
       const { error: statsUpdateError } = await supabase
         .from("profile_stats")
         .upsert(
           {
             user_id: userId,
-            trivia_questions_answered: nextTriviaCount,
+            trivia_questions_answered: uniqueAnsweredCount || 0,
           },
           { onConflict: "user_id" },
         );

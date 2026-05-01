@@ -125,10 +125,9 @@ export async function getProfileStats(userId: string): Promise<ProfileStats | nu
 
   try {
     const { count: triviaQuestionsAnsweredCount, error: triviaCountError } = await supabase
-      .from("master_actions")
+      .from("trivia_question_progress")
       .select("id", { count: "exact", head: true })
-      .eq("user_id", userId)
-      .eq("action_type", ACTION_TYPE.trivia_question_answered);
+      .eq("user_id", userId);
 
     if (!triviaCountError && typeof triviaQuestionsAnsweredCount === "number") {
       const merged = {

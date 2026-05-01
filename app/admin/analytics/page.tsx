@@ -24,6 +24,7 @@ type OverviewMetrics = {
   readingPlanChaptersCompleted: number;
   scrambledWordsAnswered: number;
   triviaQuestionsAnswered: number;
+  triviaQuestionsCorrect: number;
   understandVerseOfTheDay: number;
   feedThoughtsPosted: number;
   feedPrayersPosted: number;
@@ -107,6 +108,7 @@ const INITIAL_METRICS: OverviewMetrics = {
   readingPlanChaptersCompleted: 0,
   scrambledWordsAnswered: 0,
   triviaQuestionsAnswered: 0,
+  triviaQuestionsCorrect: 0,
   understandVerseOfTheDay: 0,
   feedThoughtsPosted: 0,
   feedPrayersPosted: 0,
@@ -243,6 +245,7 @@ export default function AnalyticsPage() {
       readingPlanChaptersCompleted: number;
       scrambledWordsAnswered: number;
       triviaQuestionsAnswered: number;
+      triviaQuestionsCorrect: number;
       understandVerseOfTheDay: number;
       feedThoughtsPosted: number;
       feedPrayersPosted: number;
@@ -719,6 +722,13 @@ export default function AnalyticsPage() {
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
+        const { count: triviaQuestionsCorrect } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "trivia_question_correct")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
         // Understand This Verse clicks
         const { count: understandVerseOfTheDay } = await supabase
           .from("master_actions")
@@ -796,6 +806,7 @@ export default function AnalyticsPage() {
           readingPlanChaptersCompleted: readingPlanChaptersCompleted || 0,
           scrambledWordsAnswered: scrambledWordsAnswered || 0,
           triviaQuestionsAnswered: triviaQuestionsAnswered || 0,
+          triviaQuestionsCorrect: triviaQuestionsCorrect || 0,
           understandVerseOfTheDay: understandVerseOfTheDay || 0,
           feedThoughtsPosted: feedThoughtsPosted || 0,
           feedPrayersPosted: feedPrayersPosted || 0,
@@ -983,6 +994,13 @@ export default function AnalyticsPage() {
           .eq("action_type", "trivia_question_answered")
       );
 
+      const triviaQuestionsCorrectPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "trivia_question_correct")
+      );
+
       // Understand This Verse clicks
       const understandVerseOfTheDayPromise = applyDateFilter(
         supabase
@@ -1022,6 +1040,7 @@ export default function AnalyticsPage() {
         readingPlanChaptersResult,
         scrambledWordsResult,
         triviaQuestionsResult,
+        triviaQuestionsCorrectResult,
         understandVerseOfTheDayResult,
         feedThoughtsResult,
         feedPrayersResult,
@@ -1052,6 +1071,7 @@ export default function AnalyticsPage() {
         readingPlanChaptersPromise,
         scrambledWordsPromise,
         triviaQuestionsPromise,
+        triviaQuestionsCorrectPromise,
         understandVerseOfTheDayPromise,
         feedThoughtsPromise,
         feedPrayersPromise,
@@ -1104,6 +1124,8 @@ export default function AnalyticsPage() {
       const scrambledWordsError = scrambledWordsResult.error;
       const triviaQuestionsCount = triviaQuestionsResult.count ?? 0;
       const triviaQuestionsError = triviaQuestionsResult.error;
+      const triviaQuestionsCorrectCount = triviaQuestionsCorrectResult.count ?? 0;
+      const triviaQuestionsCorrectError = triviaQuestionsCorrectResult.error;
       const understandVerseOfTheDayCount = understandVerseOfTheDayResult.count ?? 0;
       const understandVerseOfTheDayError = understandVerseOfTheDayResult.error;
 
@@ -1126,6 +1148,7 @@ export default function AnalyticsPage() {
         readingPlanChaptersError ||
         scrambledWordsError ||
         triviaQuestionsError ||
+        triviaQuestionsCorrectError ||
         understandVerseOfTheDayError
       ) {
         console.error("[ANALYTICS_OVERVIEW] Error loading metrics:", {
@@ -1147,6 +1170,7 @@ export default function AnalyticsPage() {
           readingPlanChaptersError,
           scrambledWordsError,
           triviaQuestionsError,
+          triviaQuestionsCorrectError,
           understandVerseOfTheDayError,
         });
         setOverviewError("Failed to load overview metrics.");
@@ -1191,6 +1215,7 @@ export default function AnalyticsPage() {
         readingPlanChaptersCompleted: readingPlanChaptersCount ?? 0,
         scrambledWordsAnswered: scrambledWordsCount ?? 0,
         triviaQuestionsAnswered: triviaQuestionsCount ?? 0,
+        triviaQuestionsCorrect: triviaQuestionsCorrectCount ?? 0,
         understandVerseOfTheDay: understandVerseOfTheDayCount ?? 0,
         feedThoughtsPosted: feedThoughtsResult.count ?? 0,
         feedPrayersPosted: feedPrayersResult.count ?? 0,
@@ -1861,6 +1886,18 @@ export default function AnalyticsPage() {
             username,
             sortKey: actionDate.getTime(),
             actionType: "trivia_question_answered",
+          });
+        } else if (action.action_type === "trivia_question_correct") {
+          const text = action.action_label
+            ? `On ${formattedDate} at ${formattedTime}, ${username} got a trivia question correct (${action.action_label}).${counterText}`
+            : `On ${formattedDate} at ${formattedTime}, ${username} got a trivia question correct.${counterText}`;
+          actions.push({
+            date: formattedDate,
+            text,
+            userId,
+            username,
+            sortKey: actionDate.getTime(),
+            actionType: "trivia_question_correct",
           });
         } else if (action.action_type === "scrambled_word_answered") {
           const text = action.action_label
@@ -2612,6 +2649,7 @@ export default function AnalyticsPage() {
       "reading_plan_chapter_completed": "Reading Plan Chapters Completed",
       "scrambled_word_answered": "Scrambled Words Answered",
       "trivia_question_answered": "Trivia Questions Answered",
+      "trivia_question_correct": "Trivia Questions Correct",
     };
     return nameMap[actionType] || actionType.replace(/_/g, " ");
   }
@@ -2793,6 +2831,7 @@ export default function AnalyticsPage() {
         case "Reading Plan Chapters Completed": return row.readingPlanChaptersCompleted;
         case "Scrambled Words Answered": return row.scrambledWordsAnswered;
         case "Trivia Questions Answered": return row.triviaQuestionsAnswered;
+        case "Trivia Questions Correct": return row.triviaQuestionsCorrect;
         case "Buddies Added": return row.buddiesAdded;
         case "Group Messages": return row.groupMessagesSent;
         default: return 0;
@@ -3122,6 +3161,12 @@ export default function AnalyticsPage() {
                 onClick={() => setSelectedActionType(selectedActionType === "trivia_question_answered" ? null : "trivia_question_answered")}
                 isSelected={selectedActionType === "trivia_question_answered"}
               />
+              <OverviewCard
+                label="Trivia Questions Correct"
+                value={overviewMetrics.triviaQuestionsCorrect}
+                onClick={() => setSelectedActionType(selectedActionType === "trivia_question_correct" ? null : "trivia_question_correct")}
+                isSelected={selectedActionType === "trivia_question_correct"}
+              />
               {/* New Card: Understand This Verse Clicks */}
               <OverviewCard
                 label="Understand This Verse Clicks"
@@ -3403,6 +3448,8 @@ export default function AnalyticsPage() {
                     "Devotional Days Completed",
                     "Reading Plan Chapters Completed",
                     "Scrambled Words Answered",
+                    "Trivia Questions Answered",
+                    "Trivia Questions Correct",
                     "Buddies Added",
                     "Group Messages",
                   ].map((metric) => (
@@ -3458,6 +3505,8 @@ export default function AnalyticsPage() {
                               return row.scrambledWordsAnswered;
                             case "Trivia Questions Answered":
                               return row.triviaQuestionsAnswered;
+                            case "Trivia Questions Correct":
+                              return row.triviaQuestionsCorrect;
                             case "Buddies Added":
                               return row.buddiesAdded;
                             case "Group Messages":
@@ -4066,6 +4115,10 @@ export default function AnalyticsPage() {
                     <p className="text-sm text-gray-600 mb-1">Trivia Questions Answered</p>
                     <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.triviaQuestionsAnswered.toLocaleString()}</p>
                   </div>
+                  <div className="bg-fuchsia-50 p-4 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Trivia Questions Correct</p>
+                    <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.triviaQuestionsCorrect.toLocaleString()}</p>
+                  </div>
                   <div className="bg-rose-50 p-4 rounded-lg">
                     <p className="text-sm text-gray-600 mb-1">Scrambled Words Answered</p>
                     <p className="text-2xl font-bold text-gray-900">{selectedStatsRow.scrambledWordsAnswered.toLocaleString()}</p>
@@ -4285,6 +4338,8 @@ function OverviewCard({
         return "bg-emerald-100 border border-emerald-200";
       case "Trivia Questions Answered":
         return "bg-rose-100 border border-rose-200";
+      case "Trivia Questions Correct":
+        return "bg-fuchsia-100 border border-fuchsia-200";
       case "Understand This Verse Clicks":
         return "bg-teal-100 border border-teal-200";
       case "Videos Watched":

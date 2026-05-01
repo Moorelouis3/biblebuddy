@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { publishGroupFeedCarouselItem, type GroupFeedCarouselQueueItem } from "@/lib/groupFeedCarouselScheduler";
+import { canManageGroupScheduler } from "@/lib/groupSchedulerAccess";
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 
@@ -30,8 +31,8 @@ export async function POST(
   });
   const { data: userData, error: userError } = await supabaseAuth.auth.getUser(token);
 
-  if (userError || !userData.user || userData.user.email !== ADMIN_EMAIL) {
-    return NextResponse.json({ error: "Forbidden." }, { status: 403 });
+  if (userError || !userData.user) {
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
 
   const { groupId } = await context.params;
@@ -45,6 +46,14 @@ export async function POST(
   const supabaseAdmin = createClient(supabaseUrl, serviceKey, {
     auth: { autoRefreshToken: false, persistSession: false },
   });
+
+  const allowed =
+    userData.user.email === ADMIN_EMAIL ||
+    await canManageGroupScheduler(supabaseAdmin, groupId, userData.user.id, userData.user.email);
+
+  if (!allowed) {
+    return NextResponse.json({ error: "Forbidden." }, { status: 403 });
+  }
 
   const { data: queueItem, error: queueError } = await supabaseAdmin
     .from("group_feed_carousel_queue")
