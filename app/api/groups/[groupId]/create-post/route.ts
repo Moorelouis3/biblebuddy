@@ -72,9 +72,13 @@ export async function POST(
     requester.user_metadata?.first_name ||
     (requester.email ? requester.email.split("@")[0] : "Buddy");
 
-  const { data: newPost, error: insertError } = await supabaseAdmin
+  const postId = crypto.randomUUID();
+  const createdAt = new Date().toISOString();
+
+  const { error: insertError } = await supabaseAdmin
     .from("group_posts")
     .insert({
+      id: postId,
       group_id: groupId,
       user_id: requester.id,
       display_name: displayName,
@@ -83,18 +87,27 @@ export async function POST(
       content,
       media_url: mediaUrl,
       link_url: linkUrl,
-    })
-    .select("id, user_id, display_name, title, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
-    .single();
+    });
 
-  if (insertError || !newPost) {
+  if (insertError) {
     return NextResponse.json({ error: insertError?.message || "Post failed to publish." }, { status: 500 });
   }
 
   return NextResponse.json({
     ok: true,
     post: {
-      ...newPost,
+      id: postId,
+      user_id: requester.id,
+      display_name: displayName,
+      title: title || null,
+      category,
+      content,
+      like_count: 0,
+      is_pinned: false,
+      created_at: createdAt,
+      parent_post_id: null,
+      media_url: mediaUrl,
+      link_url: linkUrl,
       comment_count: 0,
       role: membership.role || "member",
       liked: false,

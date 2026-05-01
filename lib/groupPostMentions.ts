@@ -258,15 +258,7 @@ export async function loadGroupPostMentions(
     throw new Error(devotionalError.message || "Could not load devotionals for mentions.");
   }
 
-  (devotionals || []).forEach((devotional: DynamicMentionRow) => {
-    items.push({
-      key: `devotional:${devotional.id}`,
-      label: devotional.title,
-      href: `/devotionals/${devotional.id}`,
-      kind: "devotional",
-      searchText: normalizeSearchText(`${devotional.title} devotional`),
-    });
-  });
+  const normalizedSeriesTitleSet = new Set<string>();
 
   if (groupId) {
     const { data: seriesRows, error: seriesError } = await supabaseClient
@@ -280,15 +272,35 @@ export async function loadGroupPostMentions(
     }
 
     (seriesRows || []).forEach((series: DynamicMentionRow) => {
+      normalizedSeriesTitleSet.add(normalizeSearchText(series.title));
+    });
+
+    (seriesRows || []).forEach((series: DynamicMentionRow) => {
+      const hasMatchingDevotionalTitle = (devotionals || []).some(
+        (devotional: DynamicMentionRow) => normalizeSearchText(devotional.title) === normalizeSearchText(series.title),
+      );
+      const label = hasMatchingDevotionalTitle ? `${series.title} Bible Series` : `${series.title} Series`;
       items.push({
         key: `series:${series.id}`,
-        label: `${series.title} Series`,
+        label,
         href: `/study-groups/${groupId}/series`,
         kind: "series",
-        searchText: normalizeSearchText(`${series.title} series bible series`),
+        searchText: normalizeSearchText(`${series.title} ${label} bible series weekly study`),
       });
     });
   }
+
+  (devotionals || []).forEach((devotional: DynamicMentionRow) => {
+    const hasMatchingSeriesTitle = normalizedSeriesTitleSet.has(normalizeSearchText(devotional.title));
+    const label = hasMatchingSeriesTitle ? `${devotional.title} Devotional` : devotional.title;
+    items.push({
+      key: `devotional:${devotional.id}`,
+      label,
+      href: `/devotionals/${devotional.id}`,
+      kind: "devotional",
+      searchText: normalizeSearchText(`${devotional.title} ${label} devotional daily study`),
+    });
+  });
 
   return items;
 }
