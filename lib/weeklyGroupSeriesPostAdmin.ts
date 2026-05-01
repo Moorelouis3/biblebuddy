@@ -7,6 +7,10 @@ import {
   buildWhoWasThisFridayPost,
   getBerlinDateKey,
 } from "./groupRecurringSeries";
+import {
+  normalizeRecurringOverridePayload,
+  type RecurringSeriesOverridePayload,
+} from "./groupRecurringOverrides";
 import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 
@@ -254,6 +258,25 @@ export async function ensureWeeklyGroupSeriesPost(
       ? buildBibleStudySaturdayPost(now, bibleStudySnapshot)
       : SERIES_CONFIG[seriesKey].builder(now);
   const weekKey = getBerlinDateKey(now);
+  const { data: overrideRow } = await supabaseAdmin
+    .from("group_recurring_post_overrides")
+    .select("override_payload")
+    .eq("group_id", groupId)
+    .eq("schedule_key", seriesKey)
+    .eq("week_key", weekKey)
+    .maybeSingle();
+  const seriesOverride = normalizeRecurringOverridePayload(
+    seriesKey,
+    overrideRow?.override_payload,
+  ) as RecurringSeriesOverridePayload | null;
+  const resolvedSeries = seriesOverride
+    ? {
+        ...series,
+        title: seriesOverride.title,
+        description: seriesOverride.description,
+        contentHtml: seriesOverride.contentHtml,
+      }
+    : series;
 
   const resolvedActorUserId = await resolveActorUserId(supabaseAdmin, actorUserId);
   const postOwnerUserId = await resolvePostOwnerUserId(supabaseAdmin, group.leader_user_id, actorUserId);
@@ -293,9 +316,9 @@ export async function ensureWeeklyGroupSeriesPost(
       group_id: groupId,
       user_id: postOwnerUserId,
       display_name: displayName,
-      title: series.title,
+      title: resolvedSeries.title,
       category: seriesKey,
-      content: series.contentHtml,
+      content: resolvedSeries.contentHtml,
     })
     .select("id")
     .single();
@@ -312,9 +335,9 @@ export async function ensureWeeklyGroupSeriesPost(
       week_key: weekKey,
       series_key: seriesKey,
       subject_title: SERIES_CONFIG[seriesKey].label,
-      title: series.title,
-      description: series.description,
-      content_html: series.contentHtml,
+      title: resolvedSeries.title,
+      description: resolvedSeries.description,
+      content_html: resolvedSeries.contentHtml,
       created_by: resolvedActorUserId,
     });
 

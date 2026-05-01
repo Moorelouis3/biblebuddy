@@ -12,6 +12,16 @@ import { LouisAvatar } from "@/components/LouisAvatar";
 import PostMentionSuggestions from "@/components/PostMentionSuggestions";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import {
+  type GroupRecurringOverrideRow,
+  type RecurringOverridePayload,
+  type RecurringPollOverridePayload,
+  type RecurringQuestionOverridePayload,
+  type RecurringScheduleKey,
+  type RecurringSeriesOverridePayload,
+  type RecurringTriviaOverridePayload,
+  normalizeRecurringOverridePayload,
+} from "@/lib/groupRecurringOverrides";
+import {
   buildBibleStudySaturdayPost,
   buildPrayerRequestSundayPost,
   buildUpdateMondayPost,
@@ -46,7 +56,8 @@ type GroupSeriesRow = {
 
 type RecurringPreviewItem = {
   scheduleId: string;
-  key: "update_monday" | "trivia_tuesday" | "opinion_wednesday" | "truth_thursday" | "who_was_this_friday" | "bible_study_saturday" | "prayer_request_sunday";
+  key: RecurringScheduleKey;
+  weekKey: string;
   label: string;
   accent: string;
   releaseIso: string;
@@ -55,6 +66,8 @@ type RecurringPreviewItem = {
   description: string | null;
   contentHtml: string;
   pollOptions?: string[];
+  defaultOverridePayload: RecurringOverridePayload;
+  supplementalHtml?: string;
   endpoint: string;
 };
 
@@ -270,6 +283,7 @@ function getRecurringPreviewItem(
       return {
         scheduleId: `update_monday:${post.weekKey}`,
         key: "update_monday",
+        weekKey: post.weekKey,
         label: "Update Monday",
         accent: "#5a9a5a",
         releaseIso: date.toISOString(),
@@ -277,6 +291,12 @@ function getRecurringPreviewItem(
         title: post.title,
         description: post.description,
         contentHtml: post.contentHtml,
+        defaultOverridePayload: {
+          kind: "series",
+          title: post.title,
+          description: post.description,
+          contentHtml: post.contentHtml,
+        },
         endpoint: "update-monday",
       };
     }
@@ -285,20 +305,29 @@ function getRecurringPreviewItem(
       const questionsHtml = trivia.questions
         .map((q, i) => `<li><strong>Q${i + 1}:</strong> ${q.question}</li>`)
         .join("");
+      const supplementalHtml =
+        `<ol>${questionsHtml}</ol>` +
+        `<p>Tap into this week's 10-question Bible trivia, see your score, and compare with the group board below.</p>`;
       return {
         scheduleId: `trivia_tuesday:${trivia.weekKey}`,
         key: "trivia_tuesday",
+        weekKey: trivia.weekKey,
         label: "Trivia Tuesday",
         accent: "#4a9b6f",
         releaseIso: date.toISOString(),
         isPublished: false,
         title: `Weekly Bible Trivia: ${trivia.subjectTitle}`,
-        description: `${trivia.subjectLine} ${trivia.intro}`,
+        description: trivia.intro,
         contentHtml:
-          `<p><strong>${trivia.subjectLine}</strong></p>` +
+          `<p><strong>${trivia.subjectTitle}</strong></p>` +
           `<p>${trivia.intro}</p>` +
-          `<ol>${questionsHtml}</ol>` +
-          `<p>Tap into this week's 10-question Bible trivia, see your score, and compare with the group board below.</p>`,
+          supplementalHtml,
+        defaultOverridePayload: {
+          kind: "trivia",
+          subjectTitle: trivia.subjectTitle,
+          intro: trivia.intro,
+        },
+        supplementalHtml,
         endpoint: "weekly-trivia",
       };
     }
@@ -307,6 +336,7 @@ function getRecurringPreviewItem(
       return {
         scheduleId: `opinion_wednesday:${poll.weekKey}`,
         key: "opinion_wednesday",
+        weekKey: poll.weekKey,
         label: "Opinion Wednesday",
         accent: "#5d7ec2",
         releaseIso: date.toISOString(),
@@ -315,6 +345,12 @@ function getRecurringPreviewItem(
         description: poll.intro,
         contentHtml: poll.intro ? `<p>${poll.intro}</p>` : "",
         pollOptions: poll.options.map((option) => option.text),
+        defaultOverridePayload: {
+          kind: "poll",
+          question: poll.question,
+          intro: poll.intro || "",
+          options: poll.options.map((option) => option.text),
+        },
         endpoint: "weekly-poll",
       };
     }
@@ -323,6 +359,7 @@ function getRecurringPreviewItem(
       return {
         scheduleId: `truth_thursday:${question.weekKey}`,
         key: "truth_thursday",
+        weekKey: question.weekKey,
         label: "Truth Thursday",
         accent: "#b7794d",
         releaseIso: date.toISOString(),
@@ -330,6 +367,12 @@ function getRecurringPreviewItem(
         title: question.prompt,
         description: question.intro,
         contentHtml: `<p>${question.intro}</p><p>${question.commentPrompt}</p>`,
+        defaultOverridePayload: {
+          kind: "question",
+          prompt: question.prompt,
+          intro: question.intro,
+          commentPrompt: question.commentPrompt,
+        },
         endpoint: "weekly-question",
       };
     }
@@ -338,6 +381,7 @@ function getRecurringPreviewItem(
       return {
         scheduleId: `who_was_this_friday:${post.weekKey}`,
         key: "who_was_this_friday",
+        weekKey: post.weekKey,
         label: "Who Was This Friday",
         accent: "#a2684f",
         releaseIso: date.toISOString(),
@@ -345,6 +389,12 @@ function getRecurringPreviewItem(
         title: post.title,
         description: post.description,
         contentHtml: post.contentHtml,
+        defaultOverridePayload: {
+          kind: "series",
+          title: post.title,
+          description: post.description,
+          contentHtml: post.contentHtml,
+        },
         endpoint: "who-was-this-friday",
       };
     }
@@ -353,6 +403,7 @@ function getRecurringPreviewItem(
       return {
         scheduleId: `bible_study_saturday:${post.weekKey}`,
         key: "bible_study_saturday",
+        weekKey: post.weekKey,
         label: "Bible Study Saturday",
         accent: "#8d5d38",
         releaseIso: date.toISOString(),
@@ -360,6 +411,12 @@ function getRecurringPreviewItem(
         title: post.title,
         description: post.description,
         contentHtml: post.contentHtml,
+        defaultOverridePayload: {
+          kind: "series",
+          title: post.title,
+          description: post.description,
+          contentHtml: post.contentHtml,
+        },
         endpoint: "bible-study-saturday",
       };
     }
@@ -369,6 +426,7 @@ function getRecurringPreviewItem(
       return {
         scheduleId: `prayer_request_sunday:${post.weekKey}`,
         key: "prayer_request_sunday",
+        weekKey: post.weekKey,
         label: "Prayer Request Sunday",
         accent: "#7b5ca8",
         releaseIso: date.toISOString(),
@@ -376,6 +434,12 @@ function getRecurringPreviewItem(
         title: post.title,
         description: post.description,
         contentHtml: post.contentHtml,
+        defaultOverridePayload: {
+          kind: "series",
+          title: post.title,
+          description: post.description,
+          contentHtml: post.contentHtml,
+        },
         endpoint: "prayer-request-sunday",
       };
     }
@@ -406,6 +470,92 @@ function isUploadedVideo(url: string | null | undefined) {
 
 function getRenderablePostContent(content: string) {
   return linkBibleReferencesInHtml(content || "<p></p>");
+}
+
+function decodeHtmlEntities(text: string) {
+  return text
+    .replace(/&nbsp;|&#160;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">");
+}
+
+function htmlToEditableText(html: string) {
+  return decodeHtmlEntities(
+    html
+      .replace(/<br\s*\/?>/gi, "\n")
+      .replace(/<\/(p|div|h1|h2|h3|h4|h5|h6)>/gi, "\n\n")
+      .replace(/<li[^>]*>/gi, "• ")
+      .replace(/<\/li>/gi, "\n")
+      .replace(/<[^>]+>/g, "")
+      .replace(/\u00a0/g, " ")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim(),
+  );
+}
+
+function escapeHtml(text: string) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function editableTextToHtml(text: string) {
+  const normalized = text.trim();
+  if (!normalized) return "<p></p>";
+
+  return normalized
+    .split(/\n{2,}/)
+    .map((block) => `<p>${escapeHtml(block).replace(/\n/g, "<br/>")}</p>`)
+    .join("");
+}
+
+function applyRecurringOverrideToItem(
+  item: RecurringPreviewItem,
+  overridePayload: RecurringOverridePayload,
+): RecurringPreviewItem {
+  if (overridePayload.kind === "series") {
+    return {
+      ...item,
+      title: overridePayload.title,
+      description: overridePayload.description,
+      contentHtml: overridePayload.contentHtml,
+    };
+  }
+
+  if (overridePayload.kind === "trivia") {
+    return {
+      ...item,
+      title: `Weekly Bible Trivia: ${overridePayload.subjectTitle}`,
+      description: overridePayload.intro,
+      contentHtml:
+        `<p><strong>${overridePayload.subjectTitle}</strong></p>` +
+        `<p>${overridePayload.intro}</p>` +
+        (item.supplementalHtml || ""),
+    };
+  }
+
+  if (overridePayload.kind === "poll") {
+    return {
+      ...item,
+      title: overridePayload.question,
+      description: overridePayload.intro || null,
+      contentHtml: overridePayload.intro ? `<p>${overridePayload.intro}</p>` : "",
+      pollOptions: overridePayload.options,
+    };
+  }
+
+  return {
+    ...item,
+    title: overridePayload.prompt,
+    description: overridePayload.intro,
+    contentHtml: `<p>${overridePayload.intro}</p><p>${overridePayload.commentPrompt}</p>`,
+  };
 }
 
 function getPostPreviewText(content: string) {
@@ -454,14 +604,20 @@ export default function StudyGroupSchedulerPage() {
   const [selectedQueueItemId, setSelectedQueueItemId] = useState<string | null>(null);
   const [editingQueueItemId, setEditingQueueItemId] = useState<string | null>(null);
   const [selectedRecurringItemKey, setSelectedRecurringItemKey] = useState<string | null>(null);
+  const [editingRecurringItemKey, setEditingRecurringItemKey] = useState<string | null>(null);
   const [showPostComposerModal, setShowPostComposerModal] = useState(false);
   const [publishingRecurringKey, setPublishingRecurringKey] = useState<string | null>(null);
+  const [savingRecurringOverride, setSavingRecurringOverride] = useState(false);
+  const [resettingRecurringOverride, setResettingRecurringOverride] = useState(false);
+  const [recurringEditError, setRecurringEditError] = useState<string | null>(null);
   const [selectedScripture, setSelectedScripture] = useState<ScriptureSelection | null>(null);
   const [scriptureHtml, setScriptureHtml] = useState<string | null>(null);
   const [loadingScripture, setLoadingScripture] = useState(false);
   const [publishedRecurringIds, setPublishedRecurringIds] = useState<Set<string>>(new Set());
   const [dismissedRecurringIds, setDismissedRecurringIds] = useState<Set<string>>(new Set());
+  const [recurringOverridesByScheduleId, setRecurringOverridesByScheduleId] = useState<Record<string, RecurringOverridePayload>>({});
   const [recurringExpanded, setRecurringExpanded] = useState(false);
+  const [expandedCalendarDayKey, setExpandedCalendarDayKey] = useState<string | null>(null);
   const [schedulerNow, setSchedulerNow] = useState(() => Date.now());
   const [selectedPerson, setSelectedPerson] = useState<{ name: string } | null>(null);
   const [selectedPlace, setSelectedPlace] = useState<{ name: string } | null>(null);
@@ -487,6 +643,10 @@ export default function StudyGroupSchedulerPage() {
   const [composerVideoFile, setComposerVideoFile] = useState<File | null>(null);
   const [composerVideoPreview, setComposerVideoPreview] = useState<string | null>(null);
   const [composerVideoDurationError, setComposerVideoDurationError] = useState(false);
+  const [recurringEditTitle, setRecurringEditTitle] = useState("");
+  const [recurringEditDescription, setRecurringEditDescription] = useState("");
+  const [recurringEditBody, setRecurringEditBody] = useState("");
+  const [recurringEditPollOptions, setRecurringEditPollOptions] = useState("");
   const [composerUploadError, setComposerUploadError] = useState<string | null>(null);
   const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
 
@@ -617,16 +777,23 @@ export default function StudyGroupSchedulerPage() {
     const items: RecurringPreviewItem[] = [];
 
     for (let offset = 0; offset < 21 && items.length < 7; offset += 1) {
-      const item = getRecurringPreviewItem(getBerlinDateWithOffset(offset), seriesSnapshot);
+      const baseItem = getRecurringPreviewItem(getBerlinDateWithOffset(offset), seriesSnapshot);
+      const overridePayload = recurringOverridesByScheduleId[baseItem.scheduleId];
+      const item = overridePayload ? applyRecurringOverrideToItem(baseItem, overridePayload) : baseItem;
       item.isPublished = publishedRecurringIds.has(item.scheduleId);
       if (dismissedRecurringIds.has(item.scheduleId)) continue;
       items.push(item);
     }
 
     return items;
-  }, [dismissedRecurringIds, publishedRecurringIds, seriesSnapshot]);
+  }, [dismissedRecurringIds, publishedRecurringIds, recurringOverridesByScheduleId, seriesSnapshot]);
   const selectedRecurringItem =
     recurringFeedItems.find((item) => item.scheduleId === selectedRecurringItemKey) || null;
+  const editingRecurringItem =
+    recurringFeedItems.find((item) => item.scheduleId === editingRecurringItemKey) || null;
+  const selectedRecurringOverride = selectedRecurringItem
+    ? recurringOverridesByScheduleId[selectedRecurringItem.scheduleId] || null
+    : null;
   const schedulerCalendarDays = useMemo(() => {
     return Array.from({ length: 14 }, (_, offset) => {
       const date = getBerlinDateWithOffset(offset);
@@ -656,6 +823,7 @@ export default function StudyGroupSchedulerPage() {
       };
     });
   }, [carouselQueue, recurringFeedItems]);
+  const activeCalendarDayKey = expandedCalendarDayKey ?? schedulerCalendarDays[0]?.dateKey ?? null;
 
   async function loadCarouselQueue(currentUserId: string) {
     setQueueLoading(true);
@@ -723,6 +891,37 @@ export default function StudyGroupSchedulerPage() {
       setQueueError(getErrorMessage(err, "Could not load your private feed."));
     } finally {
       setQueueLoading(false);
+    }
+  }
+
+  async function loadRecurringOverrides() {
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) throw new Error("Could not verify your session.");
+
+      const response = await fetch(`/api/groups/${groupId}/recurring-overrides`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload?.error || "Could not load recurring post edits.");
+
+      const nextOverrides: Record<string, RecurringOverridePayload> = {};
+      const rows = Array.isArray(payload?.rows) ? (payload.rows as GroupRecurringOverrideRow[]) : [];
+      rows.forEach((row) => {
+        if (!row?.schedule_key || !row?.week_key) return;
+        const normalized = normalizeRecurringOverridePayload(row.schedule_key, row.override_payload);
+        if (!normalized) return;
+        nextOverrides[`${row.schedule_key}:${row.week_key}`] = normalized;
+      });
+
+      setRecurringOverridesByScheduleId(nextOverrides);
+    } catch (err) {
+      setQueueError(getErrorMessage(err, "Could not load recurring post edits."));
     }
   }
 
@@ -1017,6 +1216,181 @@ export default function StudyGroupSchedulerPage() {
     }
   }
 
+  function startEditingRecurringItem(item: RecurringPreviewItem) {
+    const payload = recurringOverridesByScheduleId[item.scheduleId] || item.defaultOverridePayload;
+    setRecurringEditError(null);
+    setEditingRecurringItemKey(item.scheduleId);
+
+    if (payload.kind === "series") {
+      setRecurringEditTitle(payload.title);
+      setRecurringEditDescription(payload.description || "");
+      setRecurringEditBody(htmlToEditableText(payload.contentHtml));
+      setRecurringEditPollOptions("");
+      return;
+    }
+
+    if (payload.kind === "trivia") {
+      setRecurringEditTitle(payload.subjectTitle);
+      setRecurringEditDescription(payload.intro);
+      setRecurringEditBody("");
+      setRecurringEditPollOptions("");
+      return;
+    }
+
+    if (payload.kind === "poll") {
+      setRecurringEditTitle(payload.question);
+      setRecurringEditDescription(payload.intro);
+      setRecurringEditBody("");
+      setRecurringEditPollOptions(payload.options.join("\n"));
+      return;
+    }
+
+    setRecurringEditTitle(payload.prompt);
+    setRecurringEditDescription(payload.intro);
+    setRecurringEditBody(payload.commentPrompt);
+    setRecurringEditPollOptions("");
+  }
+
+  function closeRecurringEditor() {
+    setEditingRecurringItemKey(null);
+    setRecurringEditError(null);
+    setRecurringEditTitle("");
+    setRecurringEditDescription("");
+    setRecurringEditBody("");
+    setRecurringEditPollOptions("");
+  }
+
+  async function handleSaveRecurringOverride() {
+    if (!editingRecurringItem) return;
+
+    const scheduleKey = editingRecurringItem.key;
+    let overridePayload: RecurringOverridePayload | null = null;
+
+    if (editingRecurringItem.defaultOverridePayload.kind === "series") {
+      if (!recurringEditTitle.trim() || !recurringEditBody.trim()) {
+        setRecurringEditError("Add a title and message before saving.");
+        return;
+      }
+      overridePayload = {
+        kind: "series",
+        title: recurringEditTitle.trim(),
+        description: recurringEditDescription.trim() || null,
+        contentHtml: editableTextToHtml(recurringEditBody),
+      } satisfies RecurringSeriesOverridePayload;
+    } else if (editingRecurringItem.defaultOverridePayload.kind === "trivia") {
+      if (!recurringEditTitle.trim() || !recurringEditDescription.trim()) {
+        setRecurringEditError("Add a trivia title and intro before saving.");
+        return;
+      }
+      overridePayload = {
+        kind: "trivia",
+        subjectTitle: recurringEditTitle.trim(),
+        intro: recurringEditDescription.trim(),
+      } satisfies RecurringTriviaOverridePayload;
+    } else if (editingRecurringItem.defaultOverridePayload.kind === "poll") {
+      const options = recurringEditPollOptions
+        .split("\n")
+        .map((option) => option.trim())
+        .filter(Boolean);
+      if (!recurringEditTitle.trim() || options.length < 2) {
+        setRecurringEditError("Add a poll question and at least two options.");
+        return;
+      }
+      overridePayload = {
+        kind: "poll",
+        question: recurringEditTitle.trim(),
+        intro: recurringEditDescription.trim(),
+        options,
+      } satisfies RecurringPollOverridePayload;
+    } else {
+      if (!recurringEditTitle.trim() || !recurringEditDescription.trim() || !recurringEditBody.trim()) {
+        setRecurringEditError("Add a prompt, intro, and comment prompt before saving.");
+        return;
+      }
+      overridePayload = {
+        kind: "question",
+        prompt: recurringEditTitle.trim(),
+        intro: recurringEditDescription.trim(),
+        commentPrompt: recurringEditBody.trim(),
+      } satisfies RecurringQuestionOverridePayload;
+    }
+
+    setSavingRecurringOverride(true);
+    setRecurringEditError(null);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) throw new Error("Could not verify your session.");
+
+      const response = await fetch(`/api/groups/${groupId}/recurring-overrides`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          scheduleKey,
+          weekKey: editingRecurringItem.weekKey,
+          overridePayload,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload?.error || "Could not save recurring post edits.");
+
+      setRecurringOverridesByScheduleId((prev) => ({
+        ...prev,
+        [editingRecurringItem.scheduleId]: overridePayload as RecurringOverridePayload,
+      }));
+      closeRecurringEditor();
+    } catch (err) {
+      setRecurringEditError(getErrorMessage(err, "Could not save recurring post edits."));
+    } finally {
+      setSavingRecurringOverride(false);
+    }
+  }
+
+  async function handleResetRecurringOverride(item: RecurringPreviewItem) {
+    setResettingRecurringOverride(true);
+    setRecurringEditError(null);
+
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      if (!token) throw new Error("Could not verify your session.");
+
+      const response = await fetch(`/api/groups/${groupId}/recurring-overrides`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          scheduleKey: item.key,
+          weekKey: item.weekKey,
+        }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload?.error || "Could not reset recurring post edits.");
+
+      setRecurringOverridesByScheduleId((prev) => {
+        const next = { ...prev };
+        delete next[item.scheduleId];
+        return next;
+      });
+
+      if (editingRecurringItemKey === item.scheduleId) {
+        closeRecurringEditor();
+      }
+    } catch (err) {
+      setRecurringEditError(getErrorMessage(err, "Could not reset recurring post edits."));
+    } finally {
+      setResettingRecurringOverride(false);
+    }
+  }
+
   function handleScriptureClick(event: MouseEvent<HTMLDivElement>) {
     const target = event.target as HTMLElement | null;
     const scriptureButton = target?.closest(".scripture-ref-link") as HTMLElement | null;
@@ -1104,6 +1478,7 @@ export default function StudyGroupSchedulerPage() {
         await Promise.all([
           loadCarouselQueue(user.id),
           loadPublishedRecurringItems(),
+          loadRecurringOverrides(),
         ]);
       } catch (err) {
         if (!cancelled) setError(getErrorMessage(err, "Could not load the scheduler."));
@@ -1119,13 +1494,13 @@ export default function StudyGroupSchedulerPage() {
   }, [groupId, router]);
 
   useEffect(() => {
-    if (!selectedQueueItemId && !selectedRecurringItemKey) return undefined;
+    if (!selectedQueueItemId && !selectedRecurringItemKey && !editingRecurringItemKey) return undefined;
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = originalOverflow;
     };
-  }, [selectedQueueItemId, selectedRecurringItemKey]);
+  }, [editingRecurringItemKey, selectedQueueItemId, selectedRecurringItemKey]);
 
   useEffect(() => {
     let cancelled = false;
@@ -1774,51 +2149,78 @@ RULES:
             </p>
           </div>
 
-          <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
-            {schedulerCalendarDays.map((day) => (
-              <div key={day.dateKey} className="rounded-2xl border border-[#ece6dd] bg-[#fcfbf8] p-4">
-                <p className="text-xs font-bold uppercase tracking-[0.14em] text-gray-400">
-                  {new Intl.DateTimeFormat("en-US", { timeZone: GROUP_SCHEDULE_TIME_ZONE, weekday: "short" }).format(day.date)}
-                </p>
-                <p className="mt-1 text-sm font-semibold text-gray-900">
-                  {new Intl.DateTimeFormat("en-US", { timeZone: GROUP_SCHEDULE_TIME_ZONE, month: "short", day: "numeric" }).format(day.date)}
-                </p>
+          <div className="mt-4 max-h-[34rem] overflow-y-auto pr-1">
+            <div className="flex flex-col gap-3">
+              {schedulerCalendarDays.map((day) => {
+                const isOpen = activeCalendarDayKey === day.dateKey;
+                const totalItems = day.recurring.length + day.custom.length;
+                const summaryLabel =
+                  totalItems === 0
+                    ? "Nothing scheduled"
+                    : `${day.recurring.length} daily post${day.recurring.length === 1 ? "" : "s"} • ${day.custom.length} custom post${day.custom.length === 1 ? "" : "s"}`;
 
-                <div className="mt-3 space-y-2">
-                  {day.recurring.map((item) => (
+                return (
+                  <div key={day.dateKey} className="rounded-2xl border border-[#ece6dd] bg-[#fcfbf8]">
                     <button
-                      key={item.id}
                       type="button"
-                      onClick={() => setSelectedRecurringItemKey(item.id)}
-                      className="w-full rounded-xl border border-[#dce8dc] bg-white px-3 py-2 text-left transition hover:shadow-sm"
+                      onClick={() => setExpandedCalendarDayKey((prev) => (prev === day.dateKey ? null : day.dateKey))}
+                      className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left"
                     >
-                      <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#4a9b6f]">Daily post</p>
-                      <p className="mt-1 text-sm font-semibold text-gray-900">{item.title}</p>
-                      <p className="mt-1 text-xs text-gray-500">{item.timeLabel}</p>
+                      <div className="min-w-0">
+                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-gray-400">
+                          {new Intl.DateTimeFormat("en-US", { timeZone: GROUP_SCHEDULE_TIME_ZONE, weekday: "long" }).format(day.date)}
+                        </p>
+                        <p className="mt-1 text-sm font-semibold text-gray-900">
+                          {new Intl.DateTimeFormat("en-US", { timeZone: GROUP_SCHEDULE_TIME_ZONE, month: "short", day: "numeric" }).format(day.date)}
+                        </p>
+                        <p className="mt-1 text-xs text-gray-500">{summaryLabel}</p>
+                      </div>
+                      <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-[#e7ddd0] bg-white text-sm text-gray-500">
+                        {isOpen ? "−" : "+"}
+                      </span>
                     </button>
-                  ))}
 
-                  {day.custom.map((item) => (
-                    <button
-                      key={item.id}
-                      type="button"
-                      onClick={() => setSelectedQueueItemId(item.id)}
-                      className="w-full rounded-xl border border-[#ead8c4] bg-white px-3 py-2 text-left transition hover:shadow-sm"
-                    >
-                      <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#8d5d38]">Your scheduled post</p>
-                      <p className="mt-1 text-sm font-semibold text-gray-900">{item.title}</p>
-                      <p className="mt-1 text-xs text-gray-500">{item.timeLabel}</p>
-                    </button>
-                  ))}
+                    {isOpen ? (
+                      <div className="border-t border-[#efe7dc] px-4 pb-4 pt-3">
+                        <div className="space-y-2">
+                          {day.recurring.map((item) => (
+                            <button
+                              key={item.id}
+                              type="button"
+                              onClick={() => setSelectedRecurringItemKey(item.id)}
+                              className="w-full rounded-xl border border-[#dce8dc] bg-white px-3 py-2 text-left transition hover:shadow-sm"
+                            >
+                              <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#4a9b6f]">Daily post</p>
+                              <p className="mt-1 text-sm font-semibold text-gray-900">{item.title}</p>
+                              <p className="mt-1 text-xs text-gray-500">{item.timeLabel}</p>
+                            </button>
+                          ))}
 
-                  {day.recurring.length === 0 && day.custom.length === 0 ? (
-                    <div className="rounded-xl border border-dashed border-[#e5ddd2] px-3 py-3 text-xs text-gray-400">
-                      Nothing scheduled yet
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-            ))}
+                          {day.custom.map((item) => (
+                            <button
+                              key={item.id}
+                              type="button"
+                              onClick={() => setSelectedQueueItemId(item.id)}
+                              className="w-full rounded-xl border border-[#ead8c4] bg-white px-3 py-2 text-left transition hover:shadow-sm"
+                            >
+                              <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#8d5d38]">Your scheduled post</p>
+                              <p className="mt-1 text-sm font-semibold text-gray-900">{item.title}</p>
+                              <p className="mt-1 text-xs text-gray-500">{item.timeLabel}</p>
+                            </button>
+                          ))}
+
+                          {day.recurring.length === 0 && day.custom.length === 0 ? (
+                            <div className="rounded-xl border border-dashed border-[#e5ddd2] px-3 py-3 text-xs text-gray-400">
+                              Nothing scheduled yet
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -2184,6 +2586,135 @@ RULES:
         </div>
       ) : null}
 
+      {editingRecurringItem ? (
+        <div className="fixed inset-0 z-[55] flex items-center justify-center bg-black/45 px-4 modal-backdrop-in" onClick={closeRecurringEditor}>
+          <div className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-3xl bg-white shadow-xl modal-panel-in" onClick={(event) => event.stopPropagation()}>
+            <div className="flex items-start justify-between gap-4 border-b border-[#efe5d9] px-6 py-5">
+              <div className="min-w-0">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: editingRecurringItem.accent }}>
+                  Edit Scheduled Post
+                </p>
+                <h2 className="mt-2 text-xl font-bold leading-snug text-gray-900">{editingRecurringItem.label}</h2>
+                <p className="mt-1 text-sm text-gray-500">{formatQueueDateTime(editingRecurringItem.releaseIso)}</p>
+              </div>
+              <button
+                type="button"
+                onClick={closeRecurringEditor}
+                className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-gray-500 transition hover:bg-gray-100"
+              >
+                x
+              </button>
+            </div>
+
+            <div className="space-y-4 px-6 py-5">
+              {recurringEditError ? <p className="text-sm text-red-500">{recurringEditError}</p> : null}
+
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-800">
+                  {editingRecurringItem.defaultOverridePayload.kind === "trivia"
+                    ? "Trivia title"
+                    : editingRecurringItem.defaultOverridePayload.kind === "question"
+                      ? "Prompt"
+                      : editingRecurringItem.defaultOverridePayload.kind === "poll"
+                        ? "Question"
+                        : "Title"}
+                </label>
+                <input
+                  type="text"
+                  value={recurringEditTitle}
+                  onChange={(event) => setRecurringEditTitle(event.target.value)}
+                  className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-800">
+                  {editingRecurringItem.defaultOverridePayload.kind === "question"
+                    ? "Intro"
+                    : editingRecurringItem.defaultOverridePayload.kind === "trivia"
+                      ? "Trivia intro"
+                      : editingRecurringItem.defaultOverridePayload.kind === "poll"
+                        ? "Short intro"
+                        : "Short description"}
+                </label>
+                <textarea
+                  value={recurringEditDescription}
+                  onChange={(event) => setRecurringEditDescription(event.target.value)}
+                  rows={editingRecurringItem.defaultOverridePayload.kind === "series" ? 4 : 3}
+                  className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
+                />
+              </div>
+
+              {editingRecurringItem.defaultOverridePayload.kind === "series" ? (
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-800">Post message</label>
+                  <textarea
+                    value={recurringEditBody}
+                    onChange={(event) => setRecurringEditBody(event.target.value)}
+                    rows={12}
+                    className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3 text-sm leading-relaxed text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
+                  />
+                  <p className="mt-2 text-xs text-gray-500">Line breaks stay in place when this scheduled post goes live.</p>
+                </div>
+              ) : null}
+
+              {editingRecurringItem.defaultOverridePayload.kind === "question" ? (
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-800">Comment prompt</label>
+                  <textarea
+                    value={recurringEditBody}
+                    onChange={(event) => setRecurringEditBody(event.target.value)}
+                    rows={5}
+                    className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3 text-sm leading-relaxed text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
+                  />
+                </div>
+              ) : null}
+
+              {editingRecurringItem.defaultOverridePayload.kind === "poll" ? (
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-800">Poll options</label>
+                  <textarea
+                    value={recurringEditPollOptions}
+                    onChange={(event) => setRecurringEditPollOptions(event.target.value)}
+                    rows={6}
+                    className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3 text-sm leading-relaxed text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
+                  />
+                  <p className="mt-2 text-xs text-gray-500">Use one option per line.</p>
+                </div>
+              ) : null}
+
+              <div className="flex items-center justify-end gap-3 pt-2">
+                {recurringOverridesByScheduleId[editingRecurringItem.scheduleId] ? (
+                  <button
+                    type="button"
+                    onClick={() => void handleResetRecurringOverride(editingRecurringItem)}
+                    disabled={resettingRecurringOverride}
+                    className="rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:opacity-50"
+                  >
+                    {resettingRecurringOverride ? "Resetting..." : "Reset to Default"}
+                  </button>
+                ) : null}
+                <button
+                  type="button"
+                  onClick={closeRecurringEditor}
+                  className="rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={() => void handleSaveRecurringOverride()}
+                  disabled={savingRecurringOverride}
+                  className="rounded-xl bg-[#4a9b6f] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
+                >
+                  {savingRecurringOverride ? "Saving..." : "Save Edits"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       {selectedRecurringItem ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in" onClick={() => setSelectedRecurringItemKey(null)}>
           <div className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-3xl bg-white shadow-xl modal-panel-in" onClick={(event) => event.stopPropagation()}>
@@ -2196,6 +2727,11 @@ RULES:
                   <span className="rounded-full bg-[#f6f7f4] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-gray-500">
                     {selectedRecurringItem.isPublished ? "Already Posted" : "Ready to Post"}
                   </span>
+                  {selectedRecurringOverride ? (
+                    <span className="rounded-full bg-[#eef7ff] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[#35618b]">
+                      Edited
+                    </span>
+                  ) : null}
                 </div>
                 <h2 className="mt-2 text-xl font-bold leading-snug text-gray-900">{selectedRecurringItem.title}</h2>
               </div>
@@ -2241,14 +2777,33 @@ RULES:
                     </Link>
                   </>
                 ) : (
-                  <button
-                    type="button"
-                    onClick={() => void handlePublishRecurringItem(selectedRecurringItem)}
-                    disabled={publishingRecurringKey === selectedRecurringItem.key}
-                    className="rounded-xl bg-[#4a9b6f] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
-                  >
-                    {publishingRecurringKey === selectedRecurringItem.key ? "Posting..." : "Post to Home Feed"}
-                  </button>
+                  <>
+                    {selectedRecurringOverride ? (
+                      <button
+                        type="button"
+                        onClick={() => void handleResetRecurringOverride(selectedRecurringItem)}
+                        disabled={resettingRecurringOverride}
+                        className="rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:opacity-50"
+                      >
+                        {resettingRecurringOverride ? "Resetting..." : "Reset Edits"}
+                      </button>
+                    ) : null}
+                    <button
+                      type="button"
+                      onClick={() => startEditingRecurringItem(selectedRecurringItem)}
+                      className="rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+                    >
+                      Edit Scheduled Post
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => void handlePublishRecurringItem(selectedRecurringItem)}
+                      disabled={publishingRecurringKey === selectedRecurringItem.key}
+                      className="rounded-xl bg-[#4a9b6f] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
+                    >
+                      {publishingRecurringKey === selectedRecurringItem.key ? "Posting..." : "Post to Home Feed"}
+                    </button>
+                  </>
                 )}
               </div>
             </div>

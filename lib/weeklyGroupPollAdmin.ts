@@ -1,5 +1,9 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { buildWeeklyGroupPoll } from "./groupWeeklyPoll";
+import {
+  normalizeRecurringOverridePayload,
+  type RecurringPollOverridePayload,
+} from "./groupRecurringOverrides";
 import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 
@@ -120,6 +124,28 @@ export async function ensureWeeklyGroupPollPost(
   }
 
   const poll = buildWeeklyGroupPoll(now);
+  const { data: overrideRow } = await supabaseAdmin
+    .from("group_recurring_post_overrides")
+    .select("override_payload")
+    .eq("group_id", groupId)
+    .eq("schedule_key", "opinion_wednesday")
+    .eq("week_key", poll.weekKey)
+    .maybeSingle();
+  const pollOverride = normalizeRecurringOverridePayload(
+    "opinion_wednesday",
+    overrideRow?.override_payload,
+  ) as RecurringPollOverridePayload | null;
+  const resolvedPoll = pollOverride
+    ? {
+        ...poll,
+        question: pollOverride.question,
+        intro: pollOverride.intro,
+        options: pollOverride.options.map((text, index) => ({
+          ...(poll.options[index] || { key: `custom_${index + 1}` }),
+          text,
+        })),
+      }
+    : poll;
 
   const resolvedActorUserId = await resolveActorUserId(supabaseAdmin, actorUserId);
   const postOwnerUserId = await resolvePostOwnerUserId(supabaseAdmin, group.leader_user_id, actorUserId);
@@ -160,7 +186,7 @@ export async function ensureWeeklyGroupPollPost(
       group_id: groupId,
       user_id: postOwnerUserId,
       display_name: displayName,
-      title: poll.question,
+      title: resolvedPoll.question,
       category: "weekly_poll",
       content,
     })
@@ -176,12 +202,12 @@ export async function ensureWeeklyGroupPollPost(
     .insert({
       group_id: groupId,
       post_id: post.id,
-      week_key: poll.weekKey,
-      poll_key: poll.pollKey,
-      subject_title: poll.subjectTitle,
-      question: poll.question,
-      intro: poll.intro,
-      options: poll.options,
+      week_key: resolvedPoll.weekKey,
+      poll_key: resolvedPoll.pollKey,
+      subject_title: resolvedPoll.subjectTitle,
+      question: resolvedPoll.question,
+      intro: resolvedPoll.intro,
+      options: resolvedPoll.options,
       created_by: resolvedActorUserId,
     });
 
@@ -190,5 +216,5 @@ export async function ensureWeeklyGroupPollPost(
     throw new Error(pollError.message || "Could not save weekly poll.");
   }
 
-  return { ok: true, skipped: false as const, postId: post.id, weekKey: poll.weekKey };
+  return { ok: true, skipped: false as const, postId: post.id, weekKey: resolvedPoll.weekKey };
 }

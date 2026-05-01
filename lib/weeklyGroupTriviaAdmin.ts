@@ -1,5 +1,9 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { buildWeeklyGroupTrivia } from "./groupWeeklyTrivia";
+import {
+  normalizeRecurringOverridePayload,
+  type RecurringTriviaOverridePayload,
+} from "./groupRecurringOverrides";
 import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 
@@ -123,6 +127,24 @@ export async function ensureWeeklyGroupTriviaPost(
   }
 
   const trivia = buildWeeklyGroupTrivia(now);
+  const { data: overrideRow } = await supabaseAdmin
+    .from("group_recurring_post_overrides")
+    .select("override_payload")
+    .eq("group_id", groupId)
+    .eq("schedule_key", "trivia_tuesday")
+    .eq("week_key", trivia.weekKey)
+    .maybeSingle();
+  const triviaOverride = normalizeRecurringOverridePayload(
+    "trivia_tuesday",
+    overrideRow?.override_payload,
+  ) as RecurringTriviaOverridePayload | null;
+  const resolvedTrivia = triviaOverride
+    ? {
+        ...trivia,
+        subjectTitle: triviaOverride.subjectTitle,
+        intro: triviaOverride.intro,
+      }
+    : trivia;
 
   const resolvedActorUserId = await resolveActorUserId(supabaseAdmin, actorUserId);
   const postOwnerUserId = await resolvePostOwnerUserId(supabaseAdmin, group.leader_user_id, actorUserId);
@@ -156,8 +178,8 @@ export async function ensureWeeklyGroupTriviaPost(
   }
 
   const content =
-    `<p><strong>${trivia.subjectLine}</strong></p>` +
-    `<p>${trivia.intro}</p>` +
+    `<p><strong>${resolvedTrivia.subjectTitle}</strong></p>` +
+    `<p>${resolvedTrivia.intro}</p>` +
     `<p>Tap into this week's 10-question Bible trivia, see your score, and compare with the group board below.</p>`;
 
   const { data: post, error: postError } = await supabaseAdmin
@@ -166,7 +188,7 @@ export async function ensureWeeklyGroupTriviaPost(
       group_id: groupId,
       user_id: postOwnerUserId,
       display_name: displayName,
-      title: "Weekly Bible Trivia",
+      title: `Weekly Bible Trivia: ${resolvedTrivia.subjectTitle}`,
       category: "weekly_trivia",
       content,
     })
@@ -182,11 +204,11 @@ export async function ensureWeeklyGroupTriviaPost(
     .insert({
       group_id: groupId,
       post_id: post.id,
-      week_key: trivia.weekKey,
-      subject_key: trivia.subjectKey,
-      subject_title: trivia.subjectTitle,
-      intro: trivia.intro,
-      questions: trivia.questions,
+      week_key: resolvedTrivia.weekKey,
+      subject_key: resolvedTrivia.subjectKey,
+      subject_title: resolvedTrivia.subjectTitle,
+      intro: resolvedTrivia.intro,
+      questions: resolvedTrivia.questions,
       created_by: resolvedActorUserId,
     });
 
@@ -195,5 +217,5 @@ export async function ensureWeeklyGroupTriviaPost(
     throw new Error(setError.message || "Could not save weekly trivia.");
   }
 
-  return { ok: true, skipped: false as const, postId: post.id, weekKey: trivia.weekKey };
+  return { ok: true, skipped: false as const, postId: post.id, weekKey: resolvedTrivia.weekKey };
 }

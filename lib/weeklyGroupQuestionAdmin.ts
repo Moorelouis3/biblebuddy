@@ -1,5 +1,9 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { buildWeeklyGroupQuestion } from "./groupWeeklyQuestion";
+import {
+  normalizeRecurringOverridePayload,
+  type RecurringQuestionOverridePayload,
+} from "./groupRecurringOverrides";
 import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 
@@ -120,6 +124,25 @@ export async function ensureWeeklyGroupQuestionPost(
   }
 
   const question = buildWeeklyGroupQuestion(now);
+  const { data: overrideRow } = await supabaseAdmin
+    .from("group_recurring_post_overrides")
+    .select("override_payload")
+    .eq("group_id", groupId)
+    .eq("schedule_key", "truth_thursday")
+    .eq("week_key", question.weekKey)
+    .maybeSingle();
+  const questionOverride = normalizeRecurringOverridePayload(
+    "truth_thursday",
+    overrideRow?.override_payload,
+  ) as RecurringQuestionOverridePayload | null;
+  const resolvedQuestion = questionOverride
+    ? {
+        ...question,
+        prompt: questionOverride.prompt,
+        intro: questionOverride.intro,
+        commentPrompt: questionOverride.commentPrompt,
+      }
+    : question;
 
   const resolvedActorUserId = await resolveActorUserId(supabaseAdmin, actorUserId);
   const postOwnerUserId = await resolvePostOwnerUserId(supabaseAdmin, group.leader_user_id, actorUserId);
@@ -153,8 +176,8 @@ export async function ensureWeeklyGroupQuestionPost(
   }
 
   const content =
-    `<p>${question.intro}</p>` +
-    `<p>${question.commentPrompt}</p>`;
+    `<p>${resolvedQuestion.intro}</p>` +
+    `<p>${resolvedQuestion.commentPrompt}</p>`;
 
   const { data: post, error: postError } = await supabaseAdmin
     .from("group_posts")
@@ -162,7 +185,7 @@ export async function ensureWeeklyGroupQuestionPost(
       group_id: groupId,
       user_id: postOwnerUserId,
       display_name: displayName,
-      title: question.prompt,
+      title: resolvedQuestion.prompt,
       category: "weekly_question",
       content,
     })
@@ -178,12 +201,12 @@ export async function ensureWeeklyGroupQuestionPost(
     .insert({
       group_id: groupId,
       post_id: post.id,
-      week_key: question.weekKey,
-      prompt_key: question.promptKey,
-      subject_title: question.subjectTitle,
-      prompt: question.prompt,
-      intro: question.intro,
-      comment_prompt: question.commentPrompt,
+      week_key: resolvedQuestion.weekKey,
+      prompt_key: resolvedQuestion.promptKey,
+      subject_title: resolvedQuestion.subjectTitle,
+      prompt: resolvedQuestion.prompt,
+      intro: resolvedQuestion.intro,
+      comment_prompt: resolvedQuestion.commentPrompt,
       created_by: resolvedActorUserId,
     });
 
@@ -192,5 +215,5 @@ export async function ensureWeeklyGroupQuestionPost(
     throw new Error(questionError.message || "Could not save weekly question.");
   }
 
-  return { ok: true, skipped: false as const, postId: post.id, weekKey: question.weekKey };
+  return { ok: true, skipped: false as const, postId: post.id, weekKey: resolvedQuestion.weekKey };
 }
