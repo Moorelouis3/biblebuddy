@@ -1,5 +1,4 @@
-"use client";
-
+﻿"use client";
 import { useEffect, useState, useRef, useMemo } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -92,7 +91,7 @@ const BIBLE_BOOKS_IN_ORDER = [
   "1 John", "2 John", "3 John", "Jude", "Revelation",
 ];
 
-// ── Louis loading skeleton for database word overlays ────────────────────────
+// ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Louis loading skeleton for database word overlays ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬
 function LouisLoadingCard({ name }: { name: string }) {
   return (
     <div className="flex flex-col items-center py-10 gap-5">
@@ -106,8 +105,26 @@ function LouisLoadingCard({ name }: { name: string }) {
         <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-4/5" />
         <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-2/3" />
       </div>
-      <p className="text-sm text-gray-400 italic animate-pulse">{name} is loading…</p>
+      <p className="text-sm text-gray-400 italic animate-pulse">{name} is loadingÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦</p>
     </div>
+  );
+}
+
+function LoadingDots() {
+  const [dotCount, setDotCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDotCount((prev) => (prev + 1) % 4);
+    }, 400);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <p className="mt-6 text-center text-sm font-medium text-gray-500">
+      Loading{".".repeat(dotCount)}
+    </p>
   );
 }
 
@@ -203,10 +220,10 @@ export default function BibleChapterPage() {
 
   function stripPopupIntro(markdown: string): string {
     return markdown
-      .replace(/^Hey friend,\s*Little Louis here\s*[—-]\s*/i, "")
+      .replace(/^Hey friend,\s*Little Louis here\s*[ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â-]\s*/i, "")
       .replace(/^Hey friend,\s*Little Louis here\s*/i, "")
       .replace(/^Hey friend,\s*/i, "")
-      .replace(/^Little Louis here\s*[—-]\s*/i, "")
+      .replace(/^Little Louis here\s*[ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â-]\s*/i, "")
       .replace(/^Little Louis here\s*/i, "")
       .replace(/^Hey, quick one about [^.]+\.\s*/i, "")
       .replace(/^Hey, here's the quick meaning of [^.]+\.\s*/i, "")
@@ -216,21 +233,21 @@ export default function BibleChapterPage() {
   // Normalize markdown functions (reused from People/Places/Keywords pages)
   function normalizePersonMarkdown(markdown: string): string {
     return stripPopupIntro(markdown)
-      .replace(/^\s*[-•*]\s+/gm, "")
+      .replace(/^\s*[-ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢*]\s+/gm, "")
       .replace(/\n{3,}/g, "\n\n")
       .trim();
   }
 
   function normalizePlaceMarkdown(markdown: string): string {
     return stripPopupIntro(markdown)
-      .replace(/^\s*[-•*]\s+/gm, "")
+      .replace(/^\s*[-ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢*]\s+/gm, "")
       .replace(/\n{3,}/g, "\n\n")
       .trim();
   }
 
   function normalizeKeywordMarkdown(markdown: string): string {
     return markdown
-      .replace(/^\s*[-•*]\s+/gm, "")
+      .replace(/^\s*[-ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢*]\s+/gm, "")
       .replace(/\n{3,}/g, "\n\n")
       .trim();
   }
@@ -348,16 +365,17 @@ export default function BibleChapterPage() {
 
       try {
         if (!selectedPerson) return;
-        const personNameKey = selectedPerson!.name.toLowerCase().trim();
+        const personName = selectedPerson.name;
+        const personNameKey = personName.toLowerCase().trim();
+
+        const notesText = await getPersonPopupNotes(personName);
+        setPersonNotes(notesText);
 
         if (userId) {
-          const isCompleted = completedPeople.has(personNameKey);
-          const isViewed = viewedPeople.has(personNameKey);
-
-          if (!isCompleted && !isViewed) {
+          void (async () => {
             const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
               userId,
-              actionLabel: selectedPerson!.name,
+              actionLabel: personName,
             });
             if (!creditResult.ok) {
               setPersonCreditBlocked(true);
@@ -371,101 +389,23 @@ export default function BibleChapterPage() {
             });
 
             triggerPoints(1);
-          }
+            if (typeof window !== "undefined") {
+              const stamp = String(Date.now());
+              const progressEvent = new CustomEvent("bb:study-progress-changed", {
+                detail: { actionType: ACTION_TYPE.person_viewed, person: personName, at: stamp },
+              });
+              window.dispatchEvent(progressEvent);
+              if (typeof document !== "undefined") {
+                document.dispatchEvent(
+                  new CustomEvent("bb:study-progress-changed", {
+                    detail: { actionType: ACTION_TYPE.person_viewed, person: personName, at: stamp },
+                  })
+                );
+              }
+              window.localStorage.setItem("bb:last-study-progress-change", stamp);
+            }
+          })();
         }
-
-        setPersonNotes(await getPersonPopupNotes(selectedPerson!.name));
-        return;
-
-        const existingNotes = await findPersonNotes(personNameKey);
-        if (existingNotes) {
-          setPersonNotes(existingNotes);
-          setLoadingNotes(false);
-          return;
-        }
-
-        // STEP 2: Generate notes using ChatGPT (same as People page)
-        // Determine gender for pronoun usage (simple heuristic - can be improved)
-        const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti|Bernice|Drusilla|Euodia|Syntyche|Chloe|Nympha|Tryphaena|Tryphosa|Julia|Claudia|Persis)/i.test(selectedPerson!.name);
-        const pronoun = isFemale ? "Her" : "Him";
-        const whoPronoun = isFemale ? "She" : "He";
-        
-        const prompt = `You are Little Louis. Generate Bible study style notes for ${selectedPerson!.name} from Scripture using the EXACT markdown structure below.
-
-CRITICAL RENDERING RULES (MANDATORY):
-- Use ONLY markdown
-- Use SINGLE # for all section headers
-- INSERT TWO FULL LINE BREAKS AFTER EVERY SECTION
-- INSERT TWO FULL LINE BREAKS AFTER EVERY PARAGRAPH GROUP
-- DO NOT use markdown bullet characters (*, -, •)
-- Use EMOJIS as bullets instead
-- Emojis must start each bullet line
-- No hyphens anywhere
-- No compact spacing
-- Spacing matters more than word count
-
-The person's name is already shown in the UI. DO NOT include their name as a header.
-
----
-
-TEMPLATE (FOLLOW EXACTLY):
-
-# 👤 Who ${whoPronoun} Is
-
-Write two short paragraphs explaining who this person is.
-
-
-
-
-# 📖 Their Role in the Story
-
-Write two to three short paragraphs explaining what role this person plays in the biblical narrative.
-
-
-
-
-# 🔥 Key Moments
-
-🔥 Short sentence describing a key moment.
-
-🔥 Short sentence describing a key moment.
-
-🔥 Short sentence describing a key moment.
-
-🔥 Short sentence describing a key moment.
-
-
-
-
-# 📍 Where You Find ${pronoun}
-
-📖 Book Chapter range
-
-📖 Book Chapter range
-
-📖 Book Chapter range
-
-
-
-
-# 🌱 Why This Person Matters
-
-Write two to three short paragraphs explaining why this person is important and what we learn from them.
-
-
-
-
-FINAL RULES:
-- Every section must be separated by TWO blank lines
-- Every paragraph block must be separated by TWO blank lines
-- Do not compress content
-- No lists without emojis
-- Keep it cinematic, Bible study focused, and clear`;
-        
-        const generated = await requestLouisNotes(prompt);
-
-        const notesText = await savePersonNotes(personNameKey, generated);
-        setPersonNotes(notesText);
       } catch (err: any) {
         console.error("Error loading person notes:", err);
       } finally {
@@ -474,7 +414,7 @@ FINAL RULES:
     }
 
     generateNotes();
-  }, [selectedPerson, userId, completedPeople, viewedPeople]);
+  }, [selectedPerson, userId]);
 
   // Load notes for selected place (reuse same logic as Places page)
   useEffect(() => {
@@ -493,34 +433,36 @@ FINAL RULES:
         if (!selectedPlace) return;
         const normalizedPlace = selectedPlace!.name.toLowerCase().trim().replace(/\s+/g, "_");
 
-        if (userId) {
-          const isCompleted = completedPlaces.has(normalizedPlace);
-
-          if (!isCompleted) {
-            const isViewed = viewedPlaces.has(normalizedPlace);
-
-            if (!isViewed) {
-              const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
-                userId,
-                actionLabel: selectedPlace!.name,
-              });
-              if (!creditResult.ok) {
-                setPlaceCreditBlocked(true);
-                return;
-              }
-
-              setViewedPlaces((prev) => {
-                const next = new Set(prev);
-                next.add(normalizedPlace);
-                return next;
-              });
-
-              triggerPoints(1);
-            }
-          }
-        }
-
         setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
+        if (userId) {
+          void (async () => {
+            const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
+              userId,
+              actionLabel: selectedPlace!.name,
+            });
+            if (!creditResult.ok) {
+              setPlaceCreditBlocked(true);
+              return;
+            }
+
+            triggerPoints(1);
+            if (typeof window !== "undefined") {
+              const stamp = String(Date.now());
+              const progressEvent = new CustomEvent("bb:study-progress-changed", {
+                detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
+              });
+              window.dispatchEvent(progressEvent);
+              if (typeof document !== "undefined") {
+                document.dispatchEvent(
+                  new CustomEvent("bb:study-progress-changed", {
+                    detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
+                  })
+                );
+              }
+              window.localStorage.setItem("bb:last-study-progress-change", stamp);
+            }
+          })();
+        }
         return;
 
         const existingNotes = await findPlaceNotes(normalizedPlace);
@@ -539,45 +481,45 @@ Follow this EXACT markdown template and rules.
 
 TEMPLATE:
 
-# 🧭 What This Place Is
+# ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â­ What This Place Is
 
 (two short paragraphs)
 
 
 
 
-# 🗺️ Where It Appears in the Story
+# ÃƒÂ°Ã…Â¸Ã¢â‚¬â€Ã‚ÂºÃƒÂ¯Ã‚Â¸Ã‚Â Where It Appears in the Story
 
 (two to three short paragraphs)
 
 
 
 
-# 🔑 Key Moments Connected to This Place
+# ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬Ëœ Key Moments Connected to This Place
 
-🔥 sentence  
+ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¥ sentence  
 
-🔥 sentence  
+ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¥ sentence  
 
-🔥 sentence  
+ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¥ sentence  
 
-🔥 sentence  
-
-
-
-
-# 📖 Where You Find It in Scripture
-
-📖 Book Chapter–Chapter  
-
-📖 Book Chapter–Chapter  
-
-📖 Book Chapter–Chapter  
+ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¥ sentence  
 
 
 
 
-# 🌱 Why This Place Matters
+# ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬â€œ Where You Find It in Scripture
+
+ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬â€œ Book ChapterÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Chapter  
+
+ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬â€œ Book ChapterÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Chapter  
+
+ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬â€œ Book ChapterÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Chapter  
+
+
+
+
+# ÃƒÂ°Ã…Â¸Ã…â€™Ã‚Â± Why This Place Matters
 
 (two to three short paragraphs)
 
@@ -592,7 +534,7 @@ RULES:
 - No meta commentary
 - No deep theology
 - Cinematic but simple
-- Total length about 200–300 words
+- Total length about 200ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“300 words
 - Do NOT include the place name as a header`;
         
         const generated = await requestLouisNotes(prompt);
@@ -675,45 +617,45 @@ Follow this EXACT markdown template and rules.
 
 TEMPLATE:
 
-# 📖 What This Keyword Means
+# ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬â€œ What This Keyword Means
 
 (two short paragraphs)
 
 
 
 
-# 🔍 Where It Appears in Scripture
+# ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â Where It Appears in Scripture
 
 (two to three short paragraphs)
 
 
 
 
-# 🔑 Key Verses Using This Keyword
+# ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬Ëœ Key Verses Using This Keyword
 
-🔥 sentence  
+ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¥ sentence  
 
-🔥 sentence  
+ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¥ sentence  
 
-🔥 sentence  
+ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¥ sentence  
 
-🔥 sentence  
-
-
-
-
-# 📚 Where You Find It in the Bible
-
-📖 Book Chapter–Chapter  
-
-📖 Book Chapter–Chapter  
-
-📖 Book Chapter–Chapter  
+ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â¥ sentence  
 
 
 
 
-# 🌱 Why This Keyword Matters
+# ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…Â¡ Where You Find It in the Bible
+
+ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬â€œ Book ChapterÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Chapter  
+
+ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬â€œ Book ChapterÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Chapter  
+
+ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬â€œ Book ChapterÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“Chapter  
+
+
+
+
+# ÃƒÂ°Ã…Â¸Ã…â€™Ã‚Â± Why This Keyword Matters
 
 (two to three short paragraphs)
 
@@ -728,7 +670,7 @@ RULES:
 - No meta commentary
 - No deep theology
 - Cinematic but simple
-- Total length about 200–300 words
+- Total length about 200ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“300 words
 - Do NOT include the keyword name as a header`;
         
         setKeywordNotes(await getKeywordPopupNotes(selectedKeyword!.name));
@@ -1128,14 +1070,14 @@ RULES:
       return "";
     }
 
-    // Find the "🧠 **Big Idea of the Chapter**" section
-    // Match variations: "🧠 **Big Idea of the Chapter**" or "🧠 Big Idea of the Chapter"
-    // Extract text until the next emoji header (🎬, 📌, 🔗, 🙌, 🏁)
+    // Find the "ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â  **Big Idea of the Chapter**" section
+    // Match variations: "ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â  **Big Idea of the Chapter**" or "ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â  Big Idea of the Chapter"
+    // Extract text until the next emoji header (ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¬, ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™, ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€, ÃƒÂ°Ã…Â¸Ã¢â€žÂ¢Ã…â€™, ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â)
     const patterns = [
-      /🧠\s*\*\*Big Idea of the Chapter\*\*\s*\n([\s\S]*?)(?=\n#\s*🎬|\n#\s*📌|\n#\s*🔗|\n#\s*🙌|\n#\s*🏁|🎬|📌|🔗|🙌|🏁|$)/i,
-      /🧠\s*Big Idea of the Chapter\s*\n([\s\S]*?)(?=\n#\s*🎬|\n#\s*📌|\n#\s*🔗|\n#\s*🙌|\n#\s*🏁|🎬|📌|🔗|🙌|🏁|$)/i,
-      /\*\*🧠\s*Big Idea of the Chapter\*\*\s*\n([\s\S]*?)(?=\n#\s*🎬|\n#\s*📌|\n#\s*🔗|\n#\s*🙌|\n#\s*🏁|🎬|📌|🔗|🙌|🏁|$)/i,
-      /Big Idea of the Chapter\s*\n([\s\S]*?)(?=\n#\s*🎬|\n#\s*📌|\n#\s*🔗|\n#\s*🙌|\n#\s*🏁|🎬|📌|🔗|🙌|🏁|$)/i,
+      /ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â \s*\*\*Big Idea of the Chapter\*\*\s*\n([\s\S]*?)(?=\n#\s*ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¬|\n#\s*ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™|\n#\s*ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€|\n#\s*ÃƒÂ°Ã…Â¸Ã¢â€žÂ¢Ã…â€™|\n#\s*ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â|ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¬|ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™|ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€|ÃƒÂ°Ã…Â¸Ã¢â€žÂ¢Ã…â€™|ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â|$)/i,
+      /ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â \s*Big Idea of the Chapter\s*\n([\s\S]*?)(?=\n#\s*ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¬|\n#\s*ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™|\n#\s*ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€|\n#\s*ÃƒÂ°Ã…Â¸Ã¢â€žÂ¢Ã…â€™|\n#\s*ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â|ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¬|ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™|ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€|ÃƒÂ°Ã…Â¸Ã¢â€žÂ¢Ã…â€™|ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â|$)/i,
+      /\*\*ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â \s*Big Idea of the Chapter\*\*\s*\n([\s\S]*?)(?=\n#\s*ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¬|\n#\s*ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™|\n#\s*ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€|\n#\s*ÃƒÂ°Ã…Â¸Ã¢â€žÂ¢Ã…â€™|\n#\s*ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â|ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¬|ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™|ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€|ÃƒÂ°Ã…Â¸Ã¢â€žÂ¢Ã…â€™|ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â|$)/i,
+      /Big Idea of the Chapter\s*\n([\s\S]*?)(?=\n#\s*ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¬|\n#\s*ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™|\n#\s*ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€|\n#\s*ÃƒÂ°Ã…Â¸Ã¢â€žÂ¢Ã…â€™|\n#\s*ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â|ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¬|ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™|ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€|ÃƒÂ°Ã…Â¸Ã¢â€žÂ¢Ã…â€™|ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â|$)/i,
     ];
 
     let summary = "";
@@ -1160,7 +1102,7 @@ RULES:
       .replace(/`(.*?)`/g, "$1") // Remove code
       .replace(/^\s*[-*+]\s+/gm, "") // Remove list markers
       .replace(/^\s*\d+\.\s+/gm, "") // Remove numbered list markers
-      .replace(/🧠/g, "") // Remove emoji if present
+      .replace(/ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â /g, "") // Remove emoji if present
       .replace(/Big Idea of the Chapter/gi, "") // Remove header text if present
       .trim();
 
@@ -1192,8 +1134,8 @@ RULES:
       .split(/\s+(while|as|and then|leading to|which leads to)\s+/i)[0]
       .split(/\s*,\s*/)[0]
       .trim()
-      .replace(/^[,;:\-–—\s]+/, "")
-      .replace(/[,;:\-–—\s]+$/, "");
+      .replace(/^[,;:\-ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â\s]+/, "")
+      .replace(/[,;:\-ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â\s]+$/, "");
 
     if (!topic) {
       return fallback;
@@ -1254,29 +1196,29 @@ RULES:
 You are Little Louis. Generate beginner friendly notes for ${bookDisplayName} chapter ${chapterNum} using this exact template and rules.
 
 TEMPLATE
-# 🧠 Big Idea of the Chapter
+# ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â  Big Idea of the Chapter
 One short paragraph explaining the heart of the chapter in simple English.
 
-# 🎬 What's Happening…
+# ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¬ What's HappeningÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦
 Include three or four cinematic story movements. Each movement follows:
 [Emoji] **Story Moment Title** (ALWAYS bold the story moment title with **)
 A short paragraph of three to four sentences explaining what happens and why it matters. Smooth, simple, friendly language. Do not use hyphens. Do not break the story into too many pieces. Keep it beginner friendly and emotional.
-IMPORTANT: Every subsection title under "What's Happening" MUST be wrapped in **bold** markdown. Example: 🌳 **Family Tree of Jesus** (not just 🌳 Family Tree of Jesus).
+IMPORTANT: Every subsection title under "What's Happening" MUST be wrapped in **bold** markdown. Example: ÃƒÂ°Ã…Â¸Ã…â€™Ã‚Â³ **Family Tree of Jesus** (not just ÃƒÂ°Ã…Â¸Ã…â€™Ã‚Â³ Family Tree of Jesus).
 
-# 📌 Key Themes
+# ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™ Key Themes
 List two or three themes. Each theme is one short sentence.
 
-# 🔗 Connections to the Bigger Story
+# ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€ Connections to the Bigger Story
 List one or two simple connections to prophecy, covenant, or Jesus mission. Extremely beginner friendly.
 
-# 🙌 Simple Life Application
+# ÃƒÂ°Ã…Â¸Ã¢â€žÂ¢Ã…â€™ Simple Life Application
 A short paragraph of three to four sentences explaining what this chapter shows about God, about Jesus, and about what the reader is invited to believe or do.
 
-# 🏁 One Sentence Summary
+# ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â One Sentence Summary
 A final strong sentence that captures the message.
 
 RULES
-DO NOT include a top-level header like "${bookDisplayName} Chapter ${chapterNum} Notes" or any chapter title at the beginning. Start directly with "# 🧠 Big Idea of the Chapter".
+DO NOT include a top-level header like "${bookDisplayName} Chapter ${chapterNum} Notes" or any chapter title at the beginning. Start directly with "# ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â  Big Idea of the Chapter".
 Keep emojis in the headers. Use proper markdown formatting:
 - "Big Idea of the Chapter" should be formatted as # (h1)
 - "What's Happening" should be formatted as # (h1)
@@ -1509,32 +1451,32 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         return;
       }
 
-      // 2. Not cached — generate via AI
+      // 2. Not cached ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â generate via AI
       const prompt = `You are Little Louis. Generate beginner friendly notes for ${bookDisplayName} chapter ${chapter} using this exact template and rules.
 
 TEMPLATE
-# 🧠 Big Idea of the Chapter
+# ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â  Big Idea of the Chapter
 One short paragraph explaining the heart of the chapter in simple English.
 
-# 🎬 What's Happening…
+# ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¬ What's HappeningÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦
 Include three or four cinematic story movements. Each movement follows:
 [Emoji] **Story Moment Title** (ALWAYS bold the story moment title with **)
 A short paragraph of three to four sentences explaining what happens and why it matters. Smooth, simple, friendly language.
 
-# 📌 Key Themes
+# ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã…â€™ Key Themes
 List two or three themes. Each theme is one short sentence.
 
-# 🔗 Connections to the Bigger Story
+# ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬â€ Connections to the Bigger Story
 One or two simple connections to prophecy, covenant, or Jesus mission. Beginner friendly.
 
-# 🙌 Simple Life Application
+# ÃƒÂ°Ã…Â¸Ã¢â€žÂ¢Ã…â€™ Simple Life Application
 A short paragraph of three to four sentences explaining what this chapter shows about God and what the reader is invited to believe or do.
 
-# 🏁 One Sentence Summary
+# ÃƒÂ°Ã…Â¸Ã‚ÂÃ‚Â One Sentence Summary
 A final strong sentence that captures the message.
 
 RULES
-DO NOT include a top-level header. Start directly with "# 🧠 Big Idea of the Chapter".
+DO NOT include a top-level header. Start directly with "# ÃƒÂ°Ã…Â¸Ã‚Â§Ã‚Â  Big Idea of the Chapter".
 No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
       const response = await fetch("/api/chat", {
@@ -1667,12 +1609,12 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
       dispatchLouisMoment({
         openMode: "badge",
         message: [
-          `you’re reading ${bookDisplayName} ${chapter} now`,
+          `youÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢re reading ${bookDisplayName} ${chapter} now`,
           chapterSummary || "This chapter moves the story forward and shows you something important about God, people, and what happens next.",
           "read this chapter slowly and pay attention to what stands out",
-          "you can tap any person, place, or word you don’t understand to get more context",
-          "if you have any questions while you read, I’m here to help",
-          "when you’re done, mark the chapter as complete so we can reflect on it",
+          "you can tap any person, place, or word you donÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢t understand to get more context",
+          "if you have any questions while you read, IÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢m here to help",
+          "when youÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢re done, mark the chapter as complete so we can reflect on it",
         ].join("\n\n"),
       });
       void markBibleFeatureSeen("bible_chapter_main");
@@ -1703,7 +1645,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
       `Hey, you are about to read ${bookDisplayName} ${chapter}.`,
       `Good choice. You are about to read ${bookDisplayName} ${chapter}.`,
       `Alright, you are stepping into ${bookDisplayName} ${chapter} now.`,
-      `Let’s get into ${bookDisplayName} ${chapter}.`,
+      `LetÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s get into ${bookDisplayName} ${chapter}.`,
       `You are opening ${bookDisplayName} ${chapter} now.`,
     ]);
 
@@ -1845,19 +1787,19 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
 
     const chapterLabel = `${book} chapter ${chapter}`;
     const notesLine =
-      "📖 I’d start with the chapter notes. If you’re on the free plan, that will use 1 credit from your day.";
+      "ÃƒÂ°Ã…Â¸Ã¢â‚¬Å“Ã¢â‚¬â€œ IÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢d start with the chapter notes. If youÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢re on the free plan, that will use 1 credit from your day.";
     const triviaLine = triviaDone
-      ? "🎯 Trivia for this chapter is already done."
-      : "🎯 After that, try the trivia for this chapter and see what actually stuck.";
+      ? "ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¯ Trivia for this chapter is already done."
+      : "ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Â¯ After that, try the trivia for this chapter and see what actually stuck.";
     const scrambledLine = scrambledDone
-      ? "🔀 Scrambled for this chapter is already done too."
-      : "🔀 Then hit Scrambled if you want to lock the key words in better.";
+      ? "ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â€šÂ¬ Scrambled for this chapter is already done too."
+      : "ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â€šÂ¬ Then hit Scrambled if you want to lock the key words in better.";
 
     dispatchLouisMoment({
       message:
         type === "completed"
-          ? `Nice work. You just completed ${chapterLabel}.\n\n${notesLine}\n\n${triviaLine}\n\n${scrambledLine}\n\n💭 And before you leave, drop a reflection so this chapter does not just pass by you.`
-          : `You already finished ${chapterLabel}.\n\nHere’s the checklist I’d point you back to.\n\n${notesLine}\n\n${triviaLine}\n\n${scrambledLine}`,
+          ? `Nice work. You just completed ${chapterLabel}.\n\n${notesLine}\n\n${triviaLine}\n\n${scrambledLine}\n\nÃƒÂ°Ã…Â¸Ã¢â‚¬â„¢Ã‚Â­ And before you leave, drop a reflection so this chapter does not just pass by you.`
+          : `You already finished ${chapterLabel}.\n\nHereÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s the checklist IÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢d point you back to.\n\n${notesLine}\n\n${triviaLine}\n\n${scrambledLine}`,
       replies: [
         {
           id: `chapter-notes-${book}-${chapter}`,
@@ -2489,6 +2431,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
                       {triviaDone ? "Trivia done ✓" : "Chapter trivia"}
                     </div>
+                
                   </div>
                 )}
 
@@ -2713,15 +2656,11 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   <>
                     {(() => {
                       const VerseHighlighter = require("../../../../components/VerseHighlighter").VerseHighlighter;
-                      // If enrichedContent is available, split it into per-verse HTML
                       let enrichedPerVerse: Record<number, string> = {};
                       if (enrichedContent) {
-                        // Remove version marker and split by <p ...>...</p>
-                        const html = enrichedContent.replace(/<!--.*?-->/, '').trim();
-                        // Match all <p ...>...</p> blocks
+                        const html = enrichedContent.replace(/<!--.*?-->/, "").trim();
                         const verseBlocks = Array.from(html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g));
                         verseBlocks.forEach((block, idx) => {
-                          // Try to extract the verse number from the badge
                           const badgeMatch = block[1].match(/<span[^>]*>(\d+)<\/span>/);
                           const verseNum = badgeMatch ? parseInt(badgeMatch[1], 10) : idx + 1;
                           enrichedPerVerse[verseNum] = `<p>${block[1]}</p>`;
@@ -2732,10 +2671,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                           book={book}
                           chapter={chapter}
                           plainTextMode={plainTextMode}
-                          verses={section.verses.map(v => ({
+                          verses={section.verses.map((v) => ({
                             number: v.num,
                             text: v.text,
-                            enrichedHtml: enrichedPerVerse[v.num]
+                            enrichedHtml: enrichedPerVerse[v.num],
                           }))}
                         />
                       );
@@ -2948,14 +2887,22 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               }}
               className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
             >
-              ✕
+              &times;
             </button>
             <div className="mb-4 flex justify-center">
               <LouisAvatar mood="wave" size={64} />
             </div>
             <h2 className="mb-4 text-center text-3xl font-bold">{selectedPerson.name}</h2>
-            {personCreditBlocked ? null : !personNotes ? (
-              <LouisLoadingCard name={selectedPerson.name} />
+            {personCreditBlocked ? null : loadingNotes && !personNotes ? (
+              <div className="py-8">
+                <div className="space-y-4">
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-3/4 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-2/3 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
+                </div>
+                <LoadingDots />
+              </div>
             ) : (
               <div>
                 <ReactMarkdown
@@ -2971,90 +2918,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     ),
                   }}
                 >
-                  {normalizePersonMarkdown(personNotes)}
+                  {normalizePersonMarkdown(personNotes ?? "")}
                 </ReactMarkdown>
 
-                {/* MARK AS FINISHED BUTTON (same as database pages) */}
-                {userId && (
-                  <div className="mt-8 pt-6 border-t border-gray-200">
-                    {(() => {
-                      const personKey = selectedPerson.name.toLowerCase().trim();
-                      const isCompleted = completedPeople.has(personKey);
-                      return (
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            if (!userId || isCompleted) return;
-
-                            const personNameKey = selectedPerson.name.toLowerCase().trim();
-                            const personDisplayName = selectedPerson.name.split(" ").map((w) => {
-                              if (/^\d+$/.test(w)) return w;
-                              return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
-                            }).join(" ");
-
-                            // Immediately animate, close modal, show Louis toast
-                            setIsAnimatingPerson(true);
-                            setTimeout(() => {
-                              setSelectedPerson(null);
-                              setPersonNotes(null);
-                              setIsAnimatingPerson(false);
-                              setLearnedToast(`${personDisplayName} has been learned! 🙌`);
-                              setTimeout(() => setLearnedToast(null), 3500);
-                            }, 250);
-
-                            // Background DB work (fire-and-forget)
-                            (async () => {
-                              try {
-                                const { error } = await supabase
-                                  .from("people_progress")
-                                  .upsert({ user_id: userId, person_name: personNameKey }, { onConflict: "user_id,person_name" });
-
-                                if (!error) {
-                                  setCompletedPeople((prev) => { const n = new Set(prev); n.add(personNameKey); return n; });
-
-                                  const { data: { user: authUser } } = await supabase.auth.getUser();
-                                  const meta: any = authUser?.user_metadata || {};
-                                  const actionUsername = meta.firstName || meta.first_name || (authUser?.email?.split("@")[0]) || "User";
-
-                                  await supabase.from("master_actions").insert({
-                                    user_id: userId, username: actionUsername,
-                                    action_type: ACTION_TYPE.person_learned, action_label: personDisplayName,
-                                  });
-
-                                  const { count } = await supabase.from("people_progress").select("*", { count: "exact", head: true }).eq("user_id", userId);
-                                  if (count !== null) {
-                                    const { data: stats } = await supabase.from("profile_stats").select("username, chapters_completed_count, notes_created_count, places_discovered_count, keywords_mastered_count").eq("user_id", userId).maybeSingle();
-                                    await supabase.from("profile_stats").upsert({
-                                      user_id: userId,
-                                      username: stats?.username || actionUsername,
-                                      people_learned_count: count,
-                                      total_actions: (stats?.chapters_completed_count || 0) + (stats?.notes_created_count || 0) + count + (stats?.places_discovered_count || 0) + (stats?.keywords_mastered_count || 0),
-                                      updated_at: new Date().toISOString(),
-                                    }, { onConflict: "user_id" });
-                                  }
-                                }
-                              } catch (err) {
-                                console.error("Error saving person progress:", err);
-                              }
-                            })();
-                          }}
-                          className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-                            isCompleted
-                              ? "bg-green-100 text-green-700 cursor-not-allowed"
-                              : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"
-                          }`}
-                          style={isAnimatingPerson ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}
-                        >
-                          {isCompleted
-                            ? `✓ ${selectedPerson.name} learned`
-                            : `Mark ${selectedPerson.name} as Learned`}
-                        </button>
-                      );
-                    })()}
-                  </div>
-                )}
+                
               </div>
             )}
           </div>
@@ -3073,7 +2940,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               }}
               className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
             >
-              ✕
+              &times;
             </button>
             <div className="mb-4 flex justify-center">
               <LouisAvatar mood="wave" size={64} />
@@ -3098,70 +2965,6 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 >
                   {normalizePlaceMarkdown(placeNotes)}
                 </ReactMarkdown>
-
-                {userId && (
-                  <div className="mt-8 pt-6 border-t border-gray-200">
-                    {(() => {
-                      const placeKey = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
-                      const isCompleted = completedPlaces.has(placeKey);
-                      const placeDisplayName = selectedPlace.name.split(" ").map((w) => {
-                        if (/^\d+$/.test(w)) return w;
-                        return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
-                      }).join(" ");
-                      return (
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            if (!userId || isCompleted) return;
-
-                            setIsAnimatingPlace(true);
-                            setTimeout(() => {
-                              setSelectedPlace(null); setPlaceNotes(null); setIsAnimatingPlace(false);
-                              setLearnedToast(`${placeDisplayName} has been learned! 🙌`);
-                              setTimeout(() => setLearnedToast(null), 3500);
-                            }, 250);
-
-                            (async () => {
-                              try {
-                                const { error } = await supabase.from("places_progress").upsert(
-                                  { user_id: userId, place_name: placeKey }, { onConflict: "user_id,place_name" }
-                                );
-                                if (!error) {
-                                  setCompletedPlaces((prev) => { const n = new Set(prev); n.add(placeKey); return n; });
-                                  const { data: { user: authUser } } = await supabase.auth.getUser();
-                                  const meta: any = authUser?.user_metadata || {};
-                                  const actionUsername = meta.firstName || meta.first_name || (authUser?.email?.split("@")[0]) || "User";
-                                  await supabase.from("master_actions").insert({
-                                    user_id: userId, username: actionUsername,
-                                    action_type: ACTION_TYPE.place_discovered, action_label: placeDisplayName,
-                                  });
-                                  const { count } = await supabase.from("places_progress").select("*", { count: "exact", head: true }).eq("user_id", userId);
-                                  if (count !== null) {
-                                    const { data: stats } = await supabase.from("profile_stats").select("username, chapters_completed_count, notes_created_count, people_learned_count, keywords_mastered_count").eq("user_id", userId).maybeSingle();
-                                    await supabase.from("profile_stats").upsert({
-                                      user_id: userId, username: stats?.username || actionUsername,
-                                      places_discovered_count: count,
-                                      total_actions: (stats?.chapters_completed_count || 0) + (stats?.notes_created_count || 0) + (stats?.people_learned_count || 0) + count + (stats?.keywords_mastered_count || 0),
-                                      updated_at: new Date().toISOString(),
-                                    }, { onConflict: "user_id" });
-                                  }
-                                }
-                              } catch (err) { console.error("Error saving place progress:", err); }
-                            })();
-                          }}
-                          className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-                            isCompleted ? "bg-green-100 text-green-700 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"
-                          }`}
-                          style={isAnimatingPlace ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}
-                        >
-                          {isCompleted ? `✓ ${selectedPlace.name} learned` : `Mark ${selectedPlace.name} as Learned`}
-                        </button>
-                      );
-                    })()}
-                  </div>
-                )}
               </div>
             )}
           </div>
@@ -3181,7 +2984,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               }}
               className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
             >
-              ✕
+              &times;
             </button>
             <div className="mb-4 flex justify-center">
               <LouisAvatar mood="wave" size={64} />
@@ -3250,7 +3053,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                             setIsAnimatingKeyword(true);
                             setTimeout(() => {
                               setSelectedKeyword(null); setKeywordNotes(null); setIsAnimatingKeyword(false);
-                              setLearnedToast(`${kwDisplayName} has been learned! 🙌`);
+                              setLearnedToast(`${kwDisplayName} has been learned! ÃƒÂ°Ã…Â¸Ã¢â€žÂ¢Ã…â€™`);
                               setTimeout(() => setLearnedToast(null), 3500);
                             }, 250);
 
@@ -3287,7 +3090,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                           }`}
                           style={isAnimatingKeyword ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}
                         >
-                          {isCompleted ? `✓ ${selectedKeyword?.name ?? ""} learned` : `Mark ${selectedKeyword?.name ?? ""} as Learned`}
+                          {isCompleted ? `ÃƒÂ¢Ã…â€œÃ¢â‚¬Å“ ${selectedKeyword?.name ?? ""} learned` : `Mark ${selectedKeyword?.name ?? ""} as Learned`}
                         </button>
                       );
                     })()}
@@ -3332,7 +3135,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         }}
       />
 
-      {/* ── Louis "learned" toast ──────────────────────────────────────────── */}
+      {/* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Louis "learned" toast ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */}
       {learnedToast && (
         <div
           className="fixed bottom-24 left-1/2 z-50 flex items-center gap-3 bg-white border border-green-200 rounded-2xl shadow-2xl px-4 py-3"
@@ -3343,7 +3146,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         </div>
       )}
 
-      {/* ── Books modal ───────────────────────────────────────────────────── */}
+      {/* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Books modal ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */}
       {showBooksModal && (
         <div className="fixed inset-0 z-[60] bg-black/70 flex items-start justify-center overflow-y-auto p-4 py-8">
           <div className="relative w-full max-w-2xl rounded-3xl bg-white shadow-2xl p-6">
@@ -3351,7 +3154,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               type="button"
               onClick={() => { setShowBooksModal(false); setBooksModalSelectedBook(null); }}
               className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200"
-            >✕</button>
+            >ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¢</button>
 
             {!booksModalSelectedBook ? (
               <>
@@ -3376,7 +3179,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                     type="button"
                     onClick={() => setBooksModalSelectedBook(null)}
                     className="text-sm font-semibold text-blue-600 hover:underline"
-                  >← Books</button>
+                  >ÃƒÂ¢Ã¢â‚¬Â Ã‚Â Books</button>
                   <h2 className="text-xl font-bold text-gray-900">{booksModalSelectedBook}</h2>
                 </div>
                 <div className="grid grid-cols-7 gap-2">
@@ -3489,11 +3292,11 @@ function CongratsModalWithConfetti({
   // Calculate random message using props (instant, no async delay)
   const randomMessage = useMemo(() => {
     if (!levelInfo) {
-      return "Great job — your consistency is paying off!";
+      return "Great job ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â your consistency is paying off!";
     }
     const topLevel = LEVEL_DEFINITIONS[LEVEL_DEFINITIONS.length - 1]?.level ?? 20;
     if (levelInfo.level >= topLevel) {
-      return "Great job — your consistency is paying off!";
+      return "Great job ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â your consistency is paying off!";
     }
     const template = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
     return template.replace("{chapterLabel}", `${bookDisplayName} ${chapter}`);
@@ -3724,7 +3527,7 @@ function CongratsModalWithConfetti({
             onClick={closeModal}
             className="absolute right-4 top-3 text-sm text-gray-500 hover:text-gray-800"
           >
-            ✕
+            ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¢
           </button>
 
           {/* Inner light blue column */}
@@ -3930,13 +3733,13 @@ function LevelUpOverlay({
           className="absolute -top-4 -right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white text-xl font-bold transition"
           aria-label="Close"
         >
-          ❌
+          ÃƒÂ¢Ã‚ÂÃ…â€™
         </button>
 
         {/* Level Up Content */}
         <div className="animate-in zoom-in duration-700">
           <h2 className="text-6xl md:text-7xl font-extrabold mb-4 animate-in zoom-in duration-1000">
-            Level {level} Unlocked! 🎉
+            Level {level} Unlocked! ÃƒÂ°Ã…Â¸Ã…Â½Ã¢â‚¬Â°
           </h2>
           {levelDefinition ? (
             <p className="text-2xl md:text-3xl font-semibold text-white">

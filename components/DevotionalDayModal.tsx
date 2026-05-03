@@ -11,6 +11,7 @@ import { consumeCreditAction } from "../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
 import CreditLimitModal from "./CreditLimitModal";
 import { LouisAvatar } from "./LouisAvatar";
+import { triggerPoints } from "./PointsPop";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -254,20 +255,34 @@ export default function DevotionalDayModal({
 
         if (userId) {
           const isCompleted = completedPeople.has(personNameKey);
-          const isViewed = viewedPeople.has(personNameKey);
+          const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
+            userId,
+            actionLabel: primaryName,
+          });
+          if (!creditResult.ok) {
+            setPersonCreditBlocked(true);
+            return;
+          }
 
-          if (!isCompleted && !isViewed) {
-            const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, { userId });
-            if (!creditResult.ok) {
-              setPersonCreditBlocked(true);
-              return;
-            }
+          setViewedPeople((prev) => {
+            const next = new Set(prev);
+            next.add(personNameKey);
+            return next;
+          });
 
-            setViewedPeople((prev) => {
-              const next = new Set(prev);
-              next.add(personNameKey);
-              return next;
+          triggerPoints(1);
+          if (typeof window !== "undefined") {
+            const stamp = String(Date.now());
+            const progressEvent = new CustomEvent("bb:study-progress-changed", {
+              detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
             });
+            window.dispatchEvent(progressEvent);
+            if (typeof document !== "undefined") {
+              document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
+                detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
+              }));
+            }
+            window.localStorage.setItem("bb:last-study-progress-change", stamp);
           }
 
           if (!isCompleted) {
@@ -384,7 +399,7 @@ FINAL RULES:
     }
 
     generateNotes();
-  }, [selectedPerson, userId, completedPeople, viewedPeople]);
+  }, [selectedPerson, userId]);
 
   // Load notes for selected place (reuse same logic as Bible chapter page)
   useEffect(() => {
@@ -403,36 +418,38 @@ FINAL RULES:
         if (!selectedPlace) return;
         const normalizedPlace = selectedPlace!.name.toLowerCase().trim().replace(/\s+/g, "_");
 
-        if (userId) {
-          const isCompleted = completedPlaces.has(normalizedPlace);
-
-          if (!isCompleted) {
-            const isViewed = viewedPlaces.has(normalizedPlace);
-
-            if (!isViewed) {
-              const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, { userId });
-              if (!creditResult.ok) {
-                setPlaceCreditBlocked(true);
-                return;
-              }
-
-              setViewedPlaces((prev) => {
-                const next = new Set(prev);
-                next.add(normalizedPlace);
-                return next;
-              });
-            }
-          }
-
-          if (!isCompleted) {
-            const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId, username });
-            if (result.inserted) {
-              setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
-            }
-          }
-        }
-
         setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
+        if (userId) {
+          void (async () => {
+            const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, { userId });
+            if (!creditResult.ok) {
+              setPlaceCreditBlocked(true);
+              return;
+            }
+
+            triggerPoints(1);
+            if (typeof window !== "undefined") {
+              const stamp = String(Date.now());
+              const progressEvent = new CustomEvent("bb:study-progress-changed", {
+                detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
+              });
+              window.dispatchEvent(progressEvent);
+              if (typeof document !== "undefined") {
+                document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
+                  detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
+                }));
+              }
+              window.localStorage.setItem("bb:last-study-progress-change", stamp);
+            }
+
+            if (!completedPlaces.has(normalizedPlace)) {
+              const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId, username });
+              if (result.inserted) {
+                setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
+              }
+            }
+          })();
+        }
         return;
 
         const existingNotes = await findPlaceNotes(normalizedPlace);
@@ -819,57 +836,6 @@ Be accurate to Scripture.`;
                 </ReactMarkdown>
 
                 {/* MARK PERSON AS FINISHED (shares logic with People/Bible pages) */}
-                {userId && (
-                  <div className="hidden">
-                    {(() => {
-                      const primaryName = resolveBibleReference("people", selectedPerson.name);
-
-                      const personNameKey = primaryName.toLowerCase().trim();
-                      const isCompleted = completedPeople.has(personNameKey);
-
-                      const personDisplayName = primaryName.split(" ").map((w) => { if (/^\d+$/.test(w)) return w; return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(); }).join(" ");
-                      return (
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation(); e.preventDefault();
-                            if (!userId || isCompleted) return;
-                            setIsAnimatingPerson(true);
-                            setTimeout(() => {
-                              setIsAnimatingPerson(false); setSelectedPerson(null); setPersonNotes(null);
-                              setLearnedToast(`${personDisplayName} has been learned! 🙌`);
-                              setTimeout(() => setLearnedToast(null), 3500);
-                            }, 250);
-                            (async () => {
-                              try {
-                                const { error } = await supabase.from("people_progress").upsert({ user_id: userId, person_name: personNameKey }, { onConflict: "user_id,person_name" });
-                                if (!error) {
-                                  setCompletedPeople((prev) => { const n = new Set(prev); n.add(personNameKey); return n; });
-                                  const { data: { user: authUser } } = await supabase.auth.getUser();
-                                  const meta: any = authUser?.user_metadata || {};
-                                  const actionUsername = meta.firstName || meta.first_name || (authUser?.email?.split("@")[0]) || "User";
-                                  await supabase.from("master_actions").insert({ user_id: userId, username: actionUsername, action_type: "person_learned", action_label: personDisplayName });
-                                  const { count } = await supabase.from("people_progress").select("*", { count: "exact", head: true }).eq("user_id", userId);
-                                  if (count !== null) {
-                                    const { data: stats } = await supabase.from("profile_stats").select("username, chapters_completed_count, notes_created_count, places_discovered_count, keywords_mastered_count").eq("user_id", userId).maybeSingle();
-                                    await supabase.from("profile_stats").upsert({ user_id: userId, username: stats?.username || actionUsername, people_learned_count: count, total_actions: (stats?.chapters_completed_count || 0) + (stats?.notes_created_count || 0) + count + (stats?.places_discovered_count || 0) + (stats?.keywords_mastered_count || 0), updated_at: new Date().toISOString() }, { onConflict: "user_id" });
-                                  }
-                                }
-                              } catch (err) { console.error("[DevotionalDayModal] person save error:", err); }
-                            })();
-                          }}
-                          disabled={isCompleted}
-                          className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-                            isCompleted ? "bg-green-100 text-green-700 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"
-                          }`}
-                          style={isAnimatingPerson ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}
-                        >
-                          {isCompleted ? `✓ ${selectedPerson.name} learned` : `Mark ${selectedPerson.name} as Learned`}
-                        </button>
-                      );
-                    })()}
-                  </div>
-                )}
               </div>
             )}
           </div>
@@ -902,7 +868,7 @@ Be accurate to Scripture.`;
             >
               ✕
             </button>
-            <h2 className="text-3xl font-bold mb-2">{selectedPlace.name}</h2>
+            <div className="mb-4 flex justify-center">`r`n              <LouisAvatar mood="wave" size={64} />`r`n            </div>`r`n            <h2 className="mb-4 text-center text-3xl font-bold">{selectedPlace.name}</h2>
             {placeCreditBlocked ? null : !placeNotes ? (
               <div className="flex flex-col items-center py-10 gap-5">
                 <div style={{ animation: "bounce 1s infinite" }}><LouisAvatar mood="think" size={72} /></div>
@@ -930,53 +896,6 @@ Be accurate to Scripture.`;
                 >
                   {normalizePlaceMarkdown(placeNotes)}
                 </ReactMarkdown>
-
-                {userId && (
-                  <div className="hidden">
-                    {(() => {
-                      const placeKey = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
-                      const isCompleted = completedPlaces.has(placeKey);
-                      const placeDisplayName = selectedPlace.name.split(" ").map((w) => { if (/^\d+$/.test(w)) return w; return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(); }).join(" ");
-                      return (
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation(); e.preventDefault();
-                            if (!userId || isCompleted) return;
-                            setIsAnimatingPlace(true);
-                            setTimeout(() => {
-                              setIsAnimatingPlace(false); setSelectedPlace(null); setPlaceNotes(null);
-                              setLearnedToast(`${placeDisplayName} has been learned! 🙌`);
-                              setTimeout(() => setLearnedToast(null), 3500);
-                            }, 250);
-                            (async () => {
-                              try {
-                                const { error } = await supabase.from("places_progress").upsert({ user_id: userId, place_name: placeKey }, { onConflict: "user_id,place_name" });
-                                if (!error) {
-                                  setCompletedPlaces((prev) => { const n = new Set(prev); n.add(placeKey); return n; });
-                                  const { data: { user: authUser } } = await supabase.auth.getUser();
-                                  const meta: any = authUser?.user_metadata || {};
-                                  const au = meta.firstName || meta.first_name || (authUser?.email?.split("@")[0]) || "User";
-                                  await supabase.from("master_actions").insert({ user_id: userId, username: au, action_type: "place_discovered", action_label: placeDisplayName });
-                                  const { count } = await supabase.from("places_progress").select("*", { count: "exact", head: true }).eq("user_id", userId);
-                                  if (count !== null) {
-                                    const { data: stats } = await supabase.from("profile_stats").select("username, chapters_completed_count, notes_created_count, people_learned_count, keywords_mastered_count").eq("user_id", userId).maybeSingle();
-                                    await supabase.from("profile_stats").upsert({ user_id: userId, username: stats?.username || au, places_discovered_count: count, total_actions: (stats?.chapters_completed_count || 0) + (stats?.notes_created_count || 0) + (stats?.people_learned_count || 0) + count + (stats?.keywords_mastered_count || 0), updated_at: new Date().toISOString() }, { onConflict: "user_id" });
-                                  }
-                                }
-                              } catch (err) { console.error("[DevotionalDayModal] place save error:", err); }
-                            })();
-                          }}
-                          disabled={isCompleted}
-                          className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${isCompleted ? "bg-green-100 text-green-700 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"}`}
-                          style={isAnimatingPlace ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}
-                        >
-                          {isCompleted ? `✓ ${selectedPlace.name} learned` : `Mark ${selectedPlace.name} as Learned`}
-                        </button>
-                      );
-                    })()}
-                  </div>
-                )}
               </div>
             )}
           </div>
@@ -1037,53 +956,6 @@ Be accurate to Scripture.`;
                 >
                   {normalizeKeywordMarkdown(keywordNotes)}
                 </ReactMarkdown>
-
-                {userId && (
-                  <div className="hidden">
-                    {(() => {
-                      const keywordKey = selectedKeyword.name.toLowerCase().trim();
-                      const isCompleted = completedKeywords.has(keywordKey);
-                      const kwDisplay = selectedKeyword.name.split(" ").map((w) => { if (/^\d+$/.test(w)) return w; return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(); }).join(" ");
-                      return (
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation(); e.preventDefault();
-                            if (!userId || isCompleted) return;
-                            setIsAnimatingKeyword(true);
-                            setTimeout(() => {
-                              setIsAnimatingKeyword(false); setSelectedKeyword(null); setKeywordNotes(null);
-                              setLearnedToast(`${kwDisplay} has been learned! 🙌`);
-                              setTimeout(() => setLearnedToast(null), 3500);
-                            }, 250);
-                            (async () => {
-                              try {
-                                const { error } = await supabase.from("keywords_progress").upsert({ user_id: userId, keyword: keywordKey }, { onConflict: "user_id,keyword" });
-                                if (!error) {
-                                  setCompletedKeywords((prev) => { const n = new Set(prev); n.add(keywordKey); return n; });
-                                  const { data: { user: authUser } } = await supabase.auth.getUser();
-                                  const meta: any = authUser?.user_metadata || {};
-                                  const au = meta.firstName || meta.first_name || (authUser?.email?.split("@")[0]) || "User";
-                                  await supabase.from("master_actions").insert({ user_id: userId, username: au, action_type: "keyword_mastered", action_label: kwDisplay });
-                                  const { count } = await supabase.from("keywords_progress").select("*", { count: "exact", head: true }).eq("user_id", userId);
-                                  if (count !== null) {
-                                    const { data: stats } = await supabase.from("profile_stats").select("username, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count").eq("user_id", userId).maybeSingle();
-                                    await supabase.from("profile_stats").upsert({ user_id: userId, username: stats?.username || au, keywords_mastered_count: count, total_actions: (stats?.chapters_completed_count || 0) + (stats?.notes_created_count || 0) + (stats?.people_learned_count || 0) + (stats?.places_discovered_count || 0) + count, updated_at: new Date().toISOString() }, { onConflict: "user_id" });
-                                  }
-                                }
-                              } catch (err) { console.error("[DevotionalDayModal] keyword save error:", err); }
-                            })();
-                          }}
-                          disabled={isCompleted}
-                          className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${isCompleted ? "bg-green-100 text-green-700 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"}`}
-                          style={isAnimatingKeyword ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}
-                        >
-                          {isCompleted ? `✓ ${selectedKeyword.name} learned` : `Mark ${selectedKeyword.name} as Learned`}
-                        </button>
-                      );
-                    })()}
-                  </div>
-                )}
               </div>
             )}
           </div>
@@ -1143,3 +1015,4 @@ Be accurate to Scripture.`;
     </div>
   );
 }
+

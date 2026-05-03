@@ -16,6 +16,7 @@ import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "@
 import { consumeCreditAction } from "@/lib/creditClient";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
+import { triggerPoints } from "@/components/PointsPop";
 import UserBadge from "@/components/UserBadge";
 import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
 
@@ -1966,13 +1967,27 @@ export default function WeekLessonPage({
       try {
         const primaryName = resolveBibleReference("people", selectedPerson!.name);
         const key = primaryName.toLowerCase().trim();
-        if (userId && !completedPeople.has(key) && !viewedPeople.has(key)) {
+        if (userId) {
           const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
             userId,
             actionLabel: primaryName,
           });
           if (!creditResult.ok) { setPersonCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedPeople((p) => { const n = new Set(p); n.add(key); return n; });
+          triggerPoints(1);
+          if (typeof window !== "undefined") {
+            const stamp = String(Date.now());
+            const progressEvent = new CustomEvent("bb:study-progress-changed", {
+              detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
+            });
+            window.dispatchEvent(progressEvent);
+            if (typeof document !== "undefined") {
+              document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
+                detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
+              }));
+            }
+            window.localStorage.setItem("bb:last-study-progress-change", stamp);
+          }
         }
         if (userId && !completedPeople.has(key)) {
           const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId, username: displayName });
@@ -1998,7 +2013,7 @@ export default function WeekLessonPage({
       } catch { /* silent */ } finally { setLoadingNotes(false); }
     }
     load();
-  }, [selectedPerson, userId, completedPeople, viewedPeople]);
+  }, [selectedPerson, userId]);
 
   // â”€â”€ Place notes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
@@ -2007,21 +2022,36 @@ export default function WeekLessonPage({
       setLoadingNotes(true); setPlaceNotes(null); setPlaceCreditBlocked(false);
       try {
         const key = selectedPlace!.name.toLowerCase().trim().replace(/\s+/g, "_");
-        if (userId && !completedPlaces.has(key) && !viewedPlaces.has(key)) {
-          const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
-            userId,
-            actionLabel: selectedPlace!.name,
-          });
-          if (!creditResult.ok) { setPlaceCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
-          setViewedPlaces((p) => { const n = new Set(p); n.add(key); return n; });
-        }
-        if (userId && !completedPlaces.has(key)) {
-          const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId, username: displayName });
-          if (result.inserted) {
-            setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
-          }
-        }
         setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
+        if (userId) {
+          void (async () => {
+            const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
+              userId,
+              actionLabel: selectedPlace!.name,
+            });
+            if (!creditResult.ok) { setPlaceCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
+            triggerPoints(1);
+            if (typeof window !== "undefined") {
+              const stamp = String(Date.now());
+              const progressEvent = new CustomEvent("bb:study-progress-changed", {
+                detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
+              });
+              window.dispatchEvent(progressEvent);
+              if (typeof document !== "undefined") {
+                document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
+                  detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
+                }));
+              }
+              window.localStorage.setItem("bb:last-study-progress-change", stamp);
+            }
+            if (!completedPlaces.has(key)) {
+              const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId, username: displayName });
+              if (result.inserted) {
+                setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
+              }
+            }
+          })();
+        }
         return;
         const { data: cached } = await supabase.from("places_in_the_bible_notes").select("notes_text").eq("normalized_place", key).maybeSingle();
         if (cached?.notes_text) { setPlaceNotes(cached?.notes_text ?? ""); setLoadingNotes(false); return; }
@@ -2539,8 +2569,11 @@ export default function WeekLessonPage({
         ) : (
           <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
             <div className="relative w-full max-w-xl max-h-[82vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-5 sm:p-6 my-8">
-              <button type="button" onClick={() => { setSelectedPlace(null); setPlaceNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
-              <h2 className="text-2xl font-bold mb-4">{selectedPlace.name}</h2>
+              <button type="button" onClick={() => { setSelectedPlace(null); setPlaceNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+              <div className="mb-4 flex justify-center">
+                <LouisAvatar mood="wave" size={64} />
+              </div>
+              <h2 className="mb-4 text-center text-2xl font-bold">{selectedPlace.name}</h2>
               {placeCreditBlocked || !placeNotes ? null : (
               <div>
                 <ReactMarkdown components={{
@@ -2548,29 +2581,6 @@ export default function WeekLessonPage({
                   p:  ({ ...p }) => <p className="mb-4 leading-relaxed text-gray-700" {...p} />,
                   strong: ({ ...p }) => <strong className="font-bold" {...p} />,
                 }}>{normalizeMd(placeNotes)}</ReactMarkdown>
-                {userId && (() => {
-                  const key = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
-                  const done = completedPlaces.has(key);
-                  const displayName = selectedPlace.name.split(" ").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
-                  return (
-                    <div className="hidden">
-                      <button type="button" onClick={() => {
-                        if (done || !userId) return;
-                        setIsAnimatingPlace(true);
-                        setTimeout(() => {
-                          setSelectedPlace(null); setPlaceNotes(null); setIsAnimatingPlace(false);
-                          setLearnedToast(`${displayName} has been learned! 🙌`);
-                          setTimeout(() => setLearnedToast(null), 3500);
-                        }, 250);
-                        supabase.from("places_progress").upsert({ user_id: userId, place_name: key }, { onConflict: "user_id,place_name" })
-                          .then(() => setCompletedPlaces((p) => { const n = new Set(p); n.add(key); return n; }));
-                      }} className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${done ? "bg-green-100 text-green-700 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"}`}
-                        style={isAnimatingPlace ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}>
-                        {done ? `âœ“ ${selectedPlace.name} learned` : `Mark ${selectedPlace.name} as Learned`}
-                      </button>
-                    </div>
-                  );
-                })()}
               </div>
               )}
             </div>

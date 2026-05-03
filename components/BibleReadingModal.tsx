@@ -411,25 +411,34 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
 
         if (userId) {
           const isCompleted = completedPeople.has(personNameKey);
-          const isViewed = viewedPeople.has(personNameKey);
+          const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
+            userId,
+            actionLabel: primaryName,
+          });
+          if (!creditResult.ok) {
+            setPersonCreditBlocked(true);
+            return;
+          }
 
-          if (!isCompleted && !isViewed) {
-            const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
-              userId,
-              actionLabel: primaryName,
+          setViewedPeople((prev) => {
+            const next = new Set(prev);
+            next.add(personNameKey);
+            return next;
+          });
+
+          triggerPoints(1);
+          if (typeof window !== "undefined") {
+            const stamp = String(Date.now());
+            const progressEvent = new CustomEvent("bb:study-progress-changed", {
+              detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
             });
-            if (!creditResult.ok) {
-              setPersonCreditBlocked(true);
-              return;
+            window.dispatchEvent(progressEvent);
+            if (typeof document !== "undefined") {
+              document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
+                detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
+              }));
             }
-
-            setViewedPeople((prev) => {
-              const next = new Set(prev);
-              next.add(personNameKey);
-              return next;
-            });
-
-            triggerPoints(1);
+            window.localStorage.setItem("bb:last-study-progress-change", stamp);
           }
 
           if (!isCompleted) {
@@ -551,7 +560,7 @@ FINAL RULES:
     }
 
     generateNotes();
-  }, [selectedPerson, userId, completedPeople, viewedPeople]);
+  }, [selectedPerson, userId]);
 
   // Load notes for selected place (reuse same logic as Bible chapter page)
   useEffect(() => {
@@ -570,41 +579,41 @@ FINAL RULES:
         if (!selectedPlace) return;
         const normalizedPlace = selectedPlace!.name.toLowerCase().trim().replace(/\s+/g, "_");
 
-        if (userId) {
-          const isCompleted = completedPlaces.has(normalizedPlace);
-
-          if (!isCompleted) {
-            const isViewed = viewedPlaces.has(normalizedPlace);
-
-            if (!isViewed) {
-              const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
-                userId,
-                actionLabel: selectedPlace!.name,
-              });
-              if (!creditResult.ok) {
-                setPlaceCreditBlocked(true);
-                return;
-              }
-
-              setViewedPlaces((prev) => {
-                const next = new Set(prev);
-                next.add(normalizedPlace);
-                return next;
-              });
-
-              triggerPoints(1);
-            }
-          }
-
-          if (!isCompleted) {
-            const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId });
-            if (result.inserted) {
-              setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
-            }
-          }
-        }
-
         setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
+        if (userId) {
+          void (async () => {
+            const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
+              userId,
+              actionLabel: selectedPlace!.name,
+            });
+            if (!creditResult.ok) {
+              setPlaceCreditBlocked(true);
+              return;
+            }
+
+            triggerPoints(1);
+            if (typeof window !== "undefined") {
+              const stamp = String(Date.now());
+              const progressEvent = new CustomEvent("bb:study-progress-changed", {
+                detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
+              });
+              window.dispatchEvent(progressEvent);
+              if (typeof document !== "undefined") {
+                document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
+                  detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
+                }));
+              }
+              window.localStorage.setItem("bb:last-study-progress-change", stamp);
+            }
+
+            if (!completedPlaces.has(normalizedPlace)) {
+              const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId });
+              if (result.inserted) {
+                setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
+              }
+            }
+          })();
+        }
         return;
 
         const existingNotes = await findPlaceNotes(normalizedPlace);
@@ -993,7 +1002,10 @@ Be accurate to Scripture.`;
             >
               ✕
             </button>
-            <h2 className="text-3xl font-bold mb-2">{selectedPlace.name}</h2>
+            <div className="mb-4 flex justify-center">
+              <LouisAvatar mood="wave" size={64} />
+            </div>
+            <h2 className="mb-4 text-center text-3xl font-bold">{selectedPlace.name}</h2>
             {placeCreditBlocked ? null : !placeNotes ? (
               <div className="flex flex-col items-center py-10 gap-5">
                 <div style={{ animation: "bounce 1s infinite" }}>
@@ -1146,3 +1158,4 @@ Be accurate to Scripture.`;
     </div>
   );
 }
+

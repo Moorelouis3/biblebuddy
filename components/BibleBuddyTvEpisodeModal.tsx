@@ -15,6 +15,7 @@ import CreditLimitModal from "./CreditLimitModal";
 import ReactMarkdown from "react-markdown";
 import { LouisAvatar } from "./LouisAvatar";
 import YouTubeTrackedPlayer from "./YouTubeTrackedPlayer";
+import { triggerPoints } from "./PointsPop";
 
 const CAROLINA_BLUE = "#4B9CD3";
 const CAROLINA_BLUE_SOFT = "#EAF5FC";
@@ -259,18 +260,35 @@ export default function BibleBuddyTvEpisodeModal({
       setPersonCreditBlocked(false);
       setPlaceCreditBlocked(false);
       setKeywordCreditBlocked(false);
-      try {
-        if (currentTarget.type === "people") {
-          const primaryName = resolveBibleReference("people", currentTarget.name);
-          const key = primaryName.toLowerCase().trim();
-          if (userId && !completedPeople.has(key) && !viewedPeople.has(key)) {
-            const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, { userId });
+        try {
+          if (currentTarget.type === "people") {
+            const primaryName = resolveBibleReference("people", currentTarget.name);
+            const key = primaryName.toLowerCase().trim();
+            if (userId) {
+            const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
+              userId,
+              actionLabel: primaryName,
+            });
             if (!creditResult.ok) {
               setPersonCreditBlocked(true);
               setLoadingSelectedNotes(false);
               return;
             }
             setViewedPeople((prev) => new Set(prev).add(key));
+            triggerPoints(1);
+            if (typeof window !== "undefined") {
+              const stamp = String(Date.now());
+              const progressEvent = new CustomEvent("bb:study-progress-changed", {
+                detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
+              });
+              window.dispatchEvent(progressEvent);
+              if (typeof document !== "undefined") {
+                document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
+                  detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
+                }));
+              }
+              window.localStorage.setItem("bb:last-study-progress-change", stamp);
+            }
           }
           if (userId && !completedPeople.has(key)) {
             const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId });
@@ -282,22 +300,37 @@ export default function BibleBuddyTvEpisodeModal({
         }
         if (currentTarget.type === "places") {
           const normalizedPlace = currentTarget.name.toLowerCase().trim().replace(/\s+/g, "_");
-          if (userId && !completedPlaces.has(normalizedPlace) && !viewedPlaces.has(normalizedPlace)) {
-            const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, { userId });
-            if (!creditResult.ok) {
-              setPlaceCreditBlocked(true);
-              setLoadingSelectedNotes(false);
-              return;
-            }
-            setViewedPlaces((prev) => new Set(prev).add(normalizedPlace));
-          }
-          if (userId && !completedPlaces.has(normalizedPlace)) {
-            const result = await ensureBibleEntityLearned({ kind: "places", name: currentTarget.name, userId });
-            if (result.inserted) {
-              setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
-            }
-          }
           setSelectedNotes(await getPlacePopupNotes(currentTarget.name));
+          if (userId) {
+            void (async () => {
+              const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, { userId });
+              if (!creditResult.ok) {
+                setPlaceCreditBlocked(true);
+                setLoadingSelectedNotes(false);
+                return;
+              }
+              triggerPoints(1);
+              if (typeof window !== "undefined") {
+                const stamp = String(Date.now());
+                const progressEvent = new CustomEvent("bb:study-progress-changed", {
+                  detail: { actionType: ACTION_TYPE.place_viewed, place: currentTarget.name, at: stamp },
+                });
+                window.dispatchEvent(progressEvent);
+                if (typeof document !== "undefined") {
+                  document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
+                    detail: { actionType: ACTION_TYPE.place_viewed, place: currentTarget.name, at: stamp },
+                  }));
+                }
+                window.localStorage.setItem("bb:last-study-progress-change", stamp);
+              }
+              if (!completedPlaces.has(normalizedPlace)) {
+                const result = await ensureBibleEntityLearned({ kind: "places", name: currentTarget.name, userId });
+                if (result.inserted) {
+                  setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
+                }
+              }
+            })();
+          }
         }
         if (currentTarget.type === "keywords") {
           const key = currentTarget.name.toLowerCase().trim();
@@ -325,7 +358,7 @@ export default function BibleBuddyTvEpisodeModal({
       }
     }
     void loadSelectedNotes();
-  }, [selectedTarget, userId, completedPeople, completedPlaces, completedKeywords, viewedPeople, viewedPlaces, viewedKeywords]);
+  }, [selectedTarget, userId, completedPeople, completedPlaces, completedKeywords]);
 
   if (!episode) return null;
 

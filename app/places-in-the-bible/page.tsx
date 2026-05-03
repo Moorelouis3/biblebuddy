@@ -5,12 +5,13 @@ export const dynamic = "force-dynamic";
 import { Suspense, useState, useEffect, useMemo, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import { useRouter, useSearchParams } from "next/navigation";
+import { LouisAvatar } from "../../components/LouisAvatar";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_PLACES_LIST } from "../../lib/biblePlacesList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { consumeCreditAction } from "../../lib/creditClient";
-import { requestLouisNotes } from "../../lib/requestLouisNotes";
+import { findPlaceNotes } from "../../lib/bibleNotes";
 import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
 
@@ -36,6 +37,20 @@ function normalizePlaceMarkdown(markdown: string): string {
     .replace(/^\s*[-•*]\s+/gm, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
+}
+
+function LoadingDots() {
+  const [dots, setDots] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDots((prev) => (prev.length >= 3 ? "" : `${prev}.`));
+    }, 400);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return <p className="pt-8 text-center text-2xl text-gray-900">Loading{dots}</p>;
 }
 
 function PlacesInTheBiblePageContent() {
@@ -97,18 +112,38 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [selectedPlace, setSelectedPlace] = useState<BiblePlace | null>(null);
   const selectedPlaceNameRef = useRef<string | null>(null);
-  const generatingPlaceNotesRef = useRef<Set<string>>(new Set());
   const [placeNotes, setPlaceNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
-  const [generationProgress, setGenerationProgress] = useState(0);
+  const [generationProgress] = useState(0);
   const [notesError, setNotesError] = useState<string | null>(null);
   const [placeCreditBlocked, setPlaceCreditBlocked] = useState(false);
   const [completedPlaces, setCompletedPlaces] = useState<Set<string>>(new Set());
   const [loadingProgress, setLoadingProgress] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [viewedPlaces, setViewedPlaces] = useState<Set<string>>(new Set());
+
+  const incrementPlaceViewProfileStats = async (resolvedUserId: string) => {
+    try {
+      const { data: currentStats } = await supabase
+        .from("profile_stats")
+        .select("username, total_actions, last_active_date")
+        .eq("user_id", resolvedUserId)
+        .maybeSingle();
+
+      const today = new Date().toISOString().slice(0, 10);
+      const finalUsername = currentStats?.username || username || "User";
+
+      await supabase.from("profile_stats").upsert({
+        user_id: resolvedUserId,
+        username: finalUsername,
+        total_actions: (currentStats?.total_actions || 0) + 1,
+        last_active_date: today,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: "user_id" });
+    } catch (err) {
+      console.error("Error updating place view profile stats:", err);
+    }
+  };
 
   // Handle place selection with study view limit check
   const handlePlaceClick = async (place: BiblePlace) => {
@@ -143,26 +178,6 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
   useEffect(() => {
     selectedPlaceNameRef.current = selectedPlace?.name.toLowerCase().trim().replace(/\s+/g, "_") || null;
   }, [selectedPlace]);
-
-  useEffect(() => {
-    if (!loadingNotes || placeNotes || !selectedPlace) {
-      if (!loadingNotes) setGenerationProgress(0);
-      return;
-    }
-
-    setGenerationProgress(7);
-    const interval = setInterval(() => {
-      setGenerationProgress((prev) => {
-        if (prev >= 95) return prev;
-        if (prev < 25) return prev + 10;
-        if (prev < 50) return prev + 7;
-        if (prev < 75) return prev + 4;
-        return prev + 2;
-      });
-    }, 900);
-
-    return () => clearInterval(interval);
-  }, [loadingNotes, placeNotes, selectedPlace]);
 
   // Filter and sort places
   const filteredPlaces = useMemo(() => {
@@ -255,6 +270,8 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
     if (!selectedPlace) {
       setPlaceNotes(null);
       setPlaceCreditBlocked(false);
+      setNotesError(null);
+      setLoadingNotes(false);
       return;
     }
 
@@ -285,32 +302,51 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
           .replace(/\s+/g, "_");
 
         if (userId) {
-          const isCompleted = completedPlaces.has(normalizedPlace);
-
-          if (!isCompleted) {
-            const isViewed = viewedPlaces.has(normalizedPlace);
-
-            if (!isViewed) {
-              const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
-                userId,
-                actionLabel: selectedPlace.name,
-              });
-              if (!creditResult.ok) {
-                setPlaceCreditBlocked(true);
-                return;
-              }
-
-              setViewedPlaces((prev) => {
-                const next = new Set(prev);
-                next.add(normalizedPlace);
-                return next;
-              });
-
-              triggerPoints(1);
-            }
+          const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
+            userId,
+            actionLabel: selectedPlace.name,
+          });
+          if (!creditResult.ok) {
+            setPlaceCreditBlocked(true);
+            setLoadingNotes(false);
+            return;
           }
+
+          triggerPoints(1);
+          if (typeof window !== "undefined") {
+            const stamp = String(Date.now());
+            const progressEvent = new CustomEvent("bb:study-progress-changed", {
+              detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace.name, at: stamp },
+            });
+            window.dispatchEvent(progressEvent);
+            if (typeof document !== "undefined") {
+              document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
+                detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace.name, at: stamp },
+              }));
+            }
+            window.localStorage.setItem("bb:last-study-progress-change", stamp);
+          }
+          void incrementPlaceViewProfileStats(userId);
         }
 
+        const loadedNotes = await findPlaceNotes(selectedPlace.name);
+        if (selectedPlaceNameRef.current !== normalizedPlace) {
+          return;
+        }
+
+        if (!loadedNotes?.trim()) {
+          setPlaceNotes(null);
+          setNotesError("Couldn't load this place yet.");
+          setLoadingNotes(false);
+          return;
+        }
+
+        setPlaceNotes(normalizePlaceMarkdown(loadedNotes));
+        setNotesError(null);
+        setLoadingNotes(false);
+        return;
+
+        /*
         // STEP 1: Check database FIRST (mandatory short-circuit)
         const { data: existing, error: existingError } = await supabase
           .from("places_in_the_bible_notes")
@@ -531,6 +567,7 @@ RULES:
             }
           })();
         }
+        */
       } catch (err: any) {
         console.error("Error loading or generating notes:", err);
         setNotesError(err?.message || "Failed to load notes");
@@ -540,7 +577,7 @@ RULES:
     }
 
     generateNotes();
-  }, [selectedPlace, userId, loadingProgress, completedPlaces, viewedPlaces]);
+  }, [selectedPlace, userId, loadingProgress, completedPlaces]);
 
   // Mark place as complete (called automatically when notes load)
   const markPlaceAsComplete = async () => {
@@ -756,9 +793,12 @@ RULES:
               ✕
             </button>
 
-            <h2 className="text-3xl font-bold mb-2">{selectedPlace.name}</h2>
+            <div className="mb-4 flex justify-center">
+              <LouisAvatar mood="wave" size={64} />
+            </div>
+            <h2 className="mb-4 text-center text-3xl font-bold">{selectedPlace.name}</h2>
 
-            {placeCreditBlocked ? null : (loadingNotes || (!notesError && !placeNotes)) ? (
+            {placeCreditBlocked ? null : loadingNotes && !placeNotes ? (
               <div className="py-10">
                 <div className="flex flex-col items-center text-center">
                   <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-amber-50 text-4xl shadow-sm ring-1 ring-amber-100">
@@ -801,7 +841,7 @@ RULES:
                     ),
                   }}
                 >
-                  {extractCompactPlaceMeaning(placeNotes)}
+                  {normalizePlaceMarkdown(placeNotes)}
                 </ReactMarkdown>
               </div>
             ) : null}
@@ -831,3 +871,4 @@ export default function PlacesInTheBiblePage() {
     </Suspense>
   );
 }
+
