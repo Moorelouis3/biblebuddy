@@ -171,6 +171,7 @@ export default function DashboardPage() {
   const [membershipStatus, setMembershipStatus] = useState<string | null>(null);
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
+  const [levelRefreshTick, setLevelRefreshTick] = useState(0);
   const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
   const [primaryRecommendation, setPrimaryRecommendation] = useState<DailyRecommendation | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
@@ -1038,6 +1039,15 @@ export default function DashboardPage() {
   }, [membershipStatus, proExpiresAt]);
 
   // Load level data based on total_actions (FAST - only queries total_actions)
+  const refreshLevelData = useCallback(() => {
+    setLevelRefreshTick((value) => value + 1);
+  }, []);
+
+  const openLevelInfoModal = useCallback(() => {
+    refreshLevelData();
+    setShowLevelInfoModal(true);
+  }, [refreshLevelData]);
+
   useEffect(() => {
     let didCancel = false;
     async function loadLevelDataAndMaybeResetCredits() {
@@ -1262,7 +1272,57 @@ export default function DashboardPage() {
     return () => {
       didCancel = true;
     };
-  }, [userId]);
+  }, [userId, levelRefreshTick]);
+
+  useEffect(() => {
+    function handlePointsChange() {
+      refreshLevelData();
+    }
+
+    function handleStudyProgressChange() {
+      refreshLevelData();
+    }
+
+    function handleVisibilityChange() {
+      if (typeof document !== "undefined" && document.visibilityState === "visible") {
+        refreshLevelData();
+      }
+    }
+
+    function handleWindowFocus() {
+      refreshLevelData();
+    }
+
+    function handleStorage(event: StorageEvent) {
+      if (event.key === "bb:last-study-progress-change") {
+        refreshLevelData();
+      }
+    }
+
+    if (typeof document !== "undefined") {
+      document.addEventListener("bb:points", handlePointsChange as EventListener);
+      document.addEventListener("bb:study-progress-changed", handleStudyProgressChange as EventListener);
+      document.addEventListener("visibilitychange", handleVisibilityChange);
+    }
+    if (typeof window !== "undefined") {
+      window.addEventListener("bb:study-progress-changed", handleStudyProgressChange as EventListener);
+      window.addEventListener("focus", handleWindowFocus);
+      window.addEventListener("storage", handleStorage);
+    }
+
+    return () => {
+      if (typeof document !== "undefined") {
+        document.removeEventListener("bb:points", handlePointsChange as EventListener);
+        document.removeEventListener("bb:study-progress-changed", handleStudyProgressChange as EventListener);
+        document.removeEventListener("visibilitychange", handleVisibilityChange);
+      }
+      if (typeof window !== "undefined") {
+        window.removeEventListener("bb:study-progress-changed", handleStudyProgressChange as EventListener);
+        window.removeEventListener("focus", handleWindowFocus);
+        window.removeEventListener("storage", handleStorage);
+      }
+    };
+  }, [refreshLevelData]);
 
   useEffect(() => {
     if (typeof window === "undefined" || userId !== JESSICA_BONUS_USER_ID || !hasJessicaBonusAward) return;
@@ -1448,7 +1508,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     function handleOpenLevelInfo() {
-      setShowLevelInfoModal(true);
+      openLevelInfoModal();
     }
 
     function handleOpenStreakInfo() {
@@ -1475,7 +1535,7 @@ export default function DashboardPage() {
       window.removeEventListener("bb:dashboard-open-streak-info", handleOpenStreakInfo);
       window.removeEventListener("bb:dashboard-open-daily-tasks", handleOpenDailyTasks);
     };
-  }, [userId]);
+  }, [openLevelInfoModal, userId]);
 
   useEffect(() => {
     window.dispatchEvent(
@@ -1877,7 +1937,11 @@ export default function DashboardPage() {
               </div>
 
               <div className="space-y-6 text-gray-700">
-                {levelInfo ? (
+                {isLoadingLevel ? (
+                  <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 p-4 shadow-sm">
+                    <p className="text-sm font-medium text-gray-600">Loading your latest level points...</p>
+                  </div>
+                ) : levelInfo ? (
                   <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 via-white to-blue-50 p-4 shadow-sm">
                     <div className="flex items-start justify-between gap-4">
                       <div>

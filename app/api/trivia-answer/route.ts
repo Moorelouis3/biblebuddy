@@ -44,28 +44,27 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Failed to record trivia progress" }, { status: 500 });
     }
 
-    const isFirstAnswerForQuestion = !existing;
     const isFirstCorrectForQuestion = isCorrect === true && existing?.is_correct !== true;
 
-    if (isFirstAnswerForQuestion) {
-      console.log("Inserting first trivia answer:", {
-        userId,
-        actionType: ACTION_TYPE.trivia_question_answered,
-        actionLabel,
-        username,
-      });
+    console.log("Logging trivia answer event:", {
+      userId,
+      actionType: ACTION_TYPE.trivia_question_answered,
+      actionLabel,
+      username,
+    });
 
-      const { error: attemptError } = await supabase.from("master_actions").insert({
-        user_id: userId,
-        action_type: ACTION_TYPE.trivia_question_answered,
-        action_label: actionLabel,
-        username: username || "User",
-      });
+    // Log every answer event to master_actions so analytics can track daily trivia activity
+    // across Bible trivia, group trivia, and weekly study trivia.
+    const { error: attemptError } = await supabase.from("master_actions").insert({
+      user_id: userId,
+      action_type: ACTION_TYPE.trivia_question_answered,
+      action_label: actionLabel,
+      username: username || "User",
+    });
 
-      if (attemptError) {
-        console.error("Error inserting trivia attempt:", attemptError);
-        return NextResponse.json({ error: "Failed to record trivia answer" }, { status: 500 });
-      }
+    if (attemptError) {
+      console.error("Error inserting trivia attempt:", attemptError);
+      return NextResponse.json({ error: "Failed to record trivia answer" }, { status: 500 });
     }
 
     let awardedPoint = false;
@@ -122,6 +121,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Keep profile_stats.trivia_questions_answered aligned with unique answered questions.
+    // master_actions is the event log for analytics, while trivia_question_progress is the
+    // unique progress source for user profile stats.
     const { count: uniqueAnsweredCount, error: statsCountError } = await supabase
       .from("trivia_question_progress")
       .select("id", { count: "exact", head: true })

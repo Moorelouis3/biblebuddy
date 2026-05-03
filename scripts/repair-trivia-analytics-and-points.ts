@@ -241,26 +241,24 @@ async function main() {
 
   const triviaActions = await fetchAllTriviaActions();
 
-  const seenKeys = new Set<string>();
-  const duplicateRows: TriviaActionRow[] = [];
+  const seenCorrectKeys = new Set<string>();
+  const duplicateCorrectRows: TriviaActionRow[] = [];
   const impactedUsers = new Set<string>();
 
   for (const row of triviaActions) {
+    if (row.action_type !== ACTION_TYPE.trivia_question_correct) {
+      continue;
+    }
     const dedupeKey = `${row.user_id}::${row.action_type}::${row.action_label || ""}`;
-    if (seenKeys.has(dedupeKey)) {
-      duplicateRows.push(row);
+    if (seenCorrectKeys.has(dedupeKey)) {
+      duplicateCorrectRows.push(row);
       impactedUsers.add(row.user_id);
       continue;
     }
-    seenKeys.add(dedupeKey);
+    seenCorrectKeys.add(dedupeKey);
   }
 
-  const duplicateAnsweredCount = duplicateRows.filter((row) => row.action_type === ACTION_TYPE.trivia_question_answered).length;
-  const duplicateCorrectCount = duplicateRows.filter((row) => row.action_type === ACTION_TYPE.trivia_question_correct).length;
-
-  console.log(`[TRIVIA REPAIR] Found ${duplicateRows.length} duplicate trivia action rows.`);
-  console.log(`[TRIVIA REPAIR] Duplicate answered rows: ${duplicateAnsweredCount}.`);
-  console.log(`[TRIVIA REPAIR] Duplicate correct rows: ${duplicateCorrectCount}.`);
+  console.log(`[TRIVIA REPAIR] Found ${duplicateCorrectRows.length} duplicate trivia correct rows.`);
   console.log(`[TRIVIA REPAIR] Impacted users: ${impactedUsers.size}.`);
 
   const correctProgressRows = await fetchAllCorrectTriviaProgress();
@@ -294,8 +292,8 @@ async function main() {
   console.log(`[TRIVIA REPAIR] Missing correct rows to backfill: ${missingCorrectRows.length}.`);
   console.log(`[TRIVIA REPAIR] Users needing correct-point backfill: ${missingCorrectUsers.size}.`);
 
-  if (!dryRun && duplicateRows.length > 0) {
-    for (const ids of chunk(duplicateRows.map((row) => row.id), 500)) {
+  if (!dryRun && duplicateCorrectRows.length > 0) {
+    for (const ids of chunk(duplicateCorrectRows.map((row) => row.id), 500)) {
       const { error: deleteError } = await supabase
         .from("master_actions")
         .delete()
@@ -305,7 +303,7 @@ async function main() {
         throw deleteError;
       }
     }
-    console.log("[TRIVIA REPAIR] Deleted duplicate trivia master_actions rows.");
+    console.log("[TRIVIA REPAIR] Deleted duplicate trivia_question_correct rows.");
   }
 
   if (!dryRun && missingCorrectRows.length > 0) {
@@ -356,15 +354,14 @@ async function main() {
     try {
       console.log(`[TRIVIA REPAIR] Syncing user ${userId}...`);
       const [
-        answeredCountResult,
+        answeredProgressCountResult,
         correctCountResult,
         profileCountsResult,
       ] = await Promise.all([
         supabase
-          .from("master_actions")
+          .from("trivia_question_progress")
           .select("id", { count: "exact", head: true })
-          .eq("user_id", userId)
-          .eq("action_type", ACTION_TYPE.trivia_question_answered),
+          .eq("user_id", userId),
         supabase
           .from("master_actions")
           .select("id", { count: "exact", head: true })
@@ -377,9 +374,9 @@ async function main() {
           .limit(1),
       ]);
 
-      if (answeredCountResult.error) {
-        console.error(`[TRIVIA REPAIR] answeredCountResult error for ${userId}: ${formatError(answeredCountResult.error)}`);
-        throw answeredCountResult.error;
+      if (answeredProgressCountResult.error) {
+        console.error(`[TRIVIA REPAIR] answeredProgressCountResult error for ${userId}: ${formatError(answeredProgressCountResult.error)}`);
+        throw answeredProgressCountResult.error;
       }
       if (correctCountResult.error) {
         console.error(`[TRIVIA REPAIR] correctCountResult error for ${userId}: ${formatError(correctCountResult.error)}`);
@@ -390,7 +387,7 @@ async function main() {
         throw profileCountsResult.error;
       }
 
-      const triviaQuestionsAnswered = answeredCountResult.count || 0;
+      const triviaQuestionsAnswered = answeredProgressCountResult.count || 0;
       const triviaCorrectCount = correctCountResult.count || 0;
       const profileCounts = Array.isArray(profileCountsResult.data)
         ? (profileCountsResult.data[0] as ProfileCountRow | undefined) ?? null

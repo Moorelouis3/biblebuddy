@@ -201,16 +201,28 @@ export default function BibleChapterPage() {
   const louisChapterPromptRef = useRef<string | null>(null);
   const bibleGuideShownThisVisitRef = useRef(false);
 
+  function stripPopupIntro(markdown: string): string {
+    return markdown
+      .replace(/^Hey friend,\s*Little Louis here\s*[—-]\s*/i, "")
+      .replace(/^Hey friend,\s*Little Louis here\s*/i, "")
+      .replace(/^Hey friend,\s*/i, "")
+      .replace(/^Little Louis here\s*[—-]\s*/i, "")
+      .replace(/^Little Louis here\s*/i, "")
+      .replace(/^Hey, quick one about [^.]+\.\s*/i, "")
+      .replace(/^Hey, here's the quick meaning of [^.]+\.\s*/i, "")
+      .trim();
+  }
+
   // Normalize markdown functions (reused from People/Places/Keywords pages)
   function normalizePersonMarkdown(markdown: string): string {
-    return markdown
+    return stripPopupIntro(markdown)
       .replace(/^\s*[-•*]\s+/gm, "")
       .replace(/\n{3,}/g, "\n\n")
       .trim();
   }
 
   function normalizePlaceMarkdown(markdown: string): string {
-    return markdown
+    return stripPopupIntro(markdown)
       .replace(/^\s*[-•*]\s+/gm, "")
       .replace(/\n{3,}/g, "\n\n")
       .trim();
@@ -2938,7 +2950,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             >
               ✕
             </button>
-            <h2 className="text-3xl font-bold mb-2">{selectedPerson.name}</h2>
+            <div className="mb-4 flex justify-center">
+              <LouisAvatar mood="wave" size={64} />
+            </div>
+            <h2 className="mb-4 text-center text-3xl font-bold">{selectedPerson.name}</h2>
             {personCreditBlocked ? null : !personNotes ? (
               <LouisLoadingCard name={selectedPerson.name} />
             ) : (
@@ -2946,10 +2961,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 <ReactMarkdown
                   components={{
                     h1: ({ ...props }) => (
-                      <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
+                      <h1 className="mt-3 mb-3 text-lg font-bold text-gray-900 md:text-xl" {...props} />
                     ),
                     p: ({ ...props }) => (
-                      <p className="mb-4 leading-relaxed" {...props} />
+                      <p className="mb-4 text-[15px] leading-relaxed text-gray-700" {...props} />
                     ),
                     strong: ({ ...props }) => (
                       <strong className="font-bold" {...props} />
@@ -3060,7 +3075,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             >
               ✕
             </button>
-            <h2 className="text-3xl font-bold mb-2">{selectedPlace.name}</h2>
+            <div className="mb-4 flex justify-center">
+              <LouisAvatar mood="wave" size={64} />
+            </div>
+            <h2 className="mb-4 text-center text-3xl font-bold">{selectedPlace.name}</h2>
             {placeCreditBlocked ? null : !placeNotes ? (
               <LouisLoadingCard name={selectedPlace.name} />
             ) : (
@@ -3068,10 +3086,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 <ReactMarkdown
                   components={{
                     h1: ({ ...props }) => (
-                      <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
+                      <h1 className="mt-3 mb-3 text-lg font-bold text-gray-900 md:text-xl" {...props} />
                     ),
                     p: ({ ...props }) => (
-                      <p className="mb-4 leading-relaxed" {...props} />
+                      <p className="mb-4 text-[15px] leading-relaxed text-gray-700" {...props} />
                     ),
                     strong: ({ ...props }) => (
                       <strong className="font-bold" {...props} />
@@ -3165,9 +3183,20 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             >
               ✕
             </button>
-            <h2 className="text-3xl font-bold mb-2">{selectedKeyword.name}</h2>
+            <div className="mb-4 flex justify-center">
+              <LouisAvatar mood="wave" size={64} />
+            </div>
+            <h2 className="mb-4 text-center text-3xl font-bold">{selectedKeyword.name}</h2>
             {keywordCreditBlocked ? null : loadingNotes && !keywordNotes ? (
-              <LouisLoadingCard name={selectedKeyword.name} />
+              <div className="py-8">
+                <div className="space-y-4">
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-3/4 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-2/3 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
+                </div>
+                <p className="pt-6 text-center text-sm italic text-gray-500">Loading...</p>
+              </div>
             ) : !keywordNotes ? (
               <div className="py-8 text-center">
                 <p className="text-sm text-gray-500 mb-4">{keywordNotesError || "Couldn't load this keyword yet."}</p>
@@ -3188,10 +3217,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 <ReactMarkdown
                   components={{
                     h1: ({ ...props }) => (
-                      <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
+                      <h1 className="mt-3 mb-3 text-lg font-bold text-gray-900 md:text-xl" {...props} />
                     ),
                     p: ({ ...props }) => (
-                      <p className="mb-4 leading-relaxed" {...props} />
+                      <p className="mb-4 text-[15px] leading-relaxed text-gray-700" {...props} />
                     ),
                     strong: ({ ...props }) => (
                       <strong className="font-bold" {...props} />
@@ -3201,12 +3230,12 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   {normalizeKeywordMarkdown(keywordNotes)}
                 </ReactMarkdown>
 
-                {userId && (
+                {selectedKeyword && false && userId && (
                   <div className="mt-8 pt-6 border-t border-gray-200">
                     {(() => {
-                      const keywordKey = selectedKeyword.name.toLowerCase().trim();
+                      const keywordKey = (selectedKeyword?.name ?? "").toLowerCase().trim();
                       const isCompleted = completedKeywords.has(keywordKey);
-                      const kwDisplayName = selectedKeyword.name.split(" ").map((w) => {
+                      const kwDisplayName = (selectedKeyword?.name ?? "").split(" ").map((w) => {
                         if (/^\d+$/.test(w)) return w;
                         return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
                       }).join(" ");
@@ -3258,7 +3287,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                           }`}
                           style={isAnimatingKeyword ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}
                         >
-                          {isCompleted ? `✓ ${selectedKeyword.name} learned` : `Mark ${selectedKeyword.name} as Learned`}
+                          {isCompleted ? `✓ ${selectedKeyword?.name ?? ""} learned` : `Mark ${selectedKeyword?.name ?? ""} as Learned`}
                         </button>
                       );
                     })()}
@@ -3922,7 +3951,3 @@ function LevelUpOverlay({
     </div>
   );
 }
-
-
-
-

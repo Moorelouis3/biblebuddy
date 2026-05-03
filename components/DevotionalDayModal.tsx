@@ -5,6 +5,7 @@ import { createClient } from "@supabase/supabase-js";
 import ReactMarkdown from "react-markdown";
 import { enrichPlainText } from "../lib/bibleHighlighting";
 import { ACTION_TYPE } from "../lib/actionTypes";
+import { ensureBibleEntityLearned } from "../lib/bibleEntityProgress";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { consumeCreditAction } from "../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
@@ -268,6 +269,13 @@ export default function DevotionalDayModal({
               return next;
             });
           }
+
+          if (!isCompleted) {
+            const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId, username });
+            if (result.inserted) {
+              setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
+            }
+          }
         }
 
         setPersonNotes(await getPersonPopupNotes(primaryName));
@@ -415,6 +423,13 @@ FINAL RULES:
               });
             }
           }
+
+          if (!isCompleted) {
+            const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId, username });
+            if (result.inserted) {
+              setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
+            }
+          }
         }
 
         setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
@@ -517,6 +532,13 @@ Be accurate to Scripture.`;
                 next.add(keywordKey);
                 return next;
               });
+            }
+          }
+
+          if (!isCompleted) {
+            const result = await ensureBibleEntityLearned({ kind: "keywords", name: selectedKeyword!.name, userId, username });
+            if (result.inserted) {
+              setCompletedKeywords((prev) => new Set(prev).add(result.normalizedKey));
             }
           }
         }
@@ -798,7 +820,7 @@ Be accurate to Scripture.`;
 
                 {/* MARK PERSON AS FINISHED (shares logic with People/Bible pages) */}
                 {userId && (
-                  <div className="mt-8 pt-6 border-t border-gray-200">
+                  <div className="hidden">
                     {(() => {
                       const primaryName = resolveBibleReference("people", selectedPerson.name);
 
@@ -910,7 +932,7 @@ Be accurate to Scripture.`;
                 </ReactMarkdown>
 
                 {userId && (
-                  <div className="mt-8 pt-6 border-t border-gray-200">
+                  <div className="hidden">
                     {(() => {
                       const placeKey = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
                       const isCompleted = completedPlaces.has(placeKey);
@@ -1017,7 +1039,7 @@ Be accurate to Scripture.`;
                 </ReactMarkdown>
 
                 {userId && (
-                  <div className="mt-8 pt-6 border-t border-gray-200">
+                  <div className="hidden">
                     {(() => {
                       const keywordKey = selectedKeyword.name.toLowerCase().trim();
                       const isCompleted = completedKeywords.has(keywordKey);

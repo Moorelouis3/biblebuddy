@@ -9,6 +9,7 @@ import { getSeriesWeekLesson, SeriesWeekLesson, SeriesTriviaQuestion } from "@/l
 import { hasLazySeriesNotes, loadSeriesNotesContent, type SeriesNotesContent } from "@/lib/seriesNotes";
 import { enrichPlainText } from "@/lib/bibleHighlighting";
 import { ACTION_TYPE } from "@/lib/actionTypes";
+import { ensureBibleEntityLearned } from "@/lib/bibleEntityProgress";
 import { requestAutoReplyDraft } from "@/lib/requestAutoReplyDraft";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "@/lib/bibleNotes";
@@ -1973,6 +1974,12 @@ export default function WeekLessonPage({
           if (!creditResult.ok) { setPersonCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedPeople((p) => { const n = new Set(p); n.add(key); return n; });
         }
+        if (userId && !completedPeople.has(key)) {
+          const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId, username: displayName });
+          if (result.inserted) {
+            setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
+          }
+        }
         setPersonNotes(await getPersonPopupNotes(primaryName));
         return;
         const { data: cached } = await supabase.from("bible_people_notes").select("notes_text").eq("person_name", key).maybeSingle();
@@ -2008,6 +2015,12 @@ export default function WeekLessonPage({
           if (!creditResult.ok) { setPlaceCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedPlaces((p) => { const n = new Set(p); n.add(key); return n; });
         }
+        if (userId && !completedPlaces.has(key)) {
+          const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId, username: displayName });
+          if (result.inserted) {
+            setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
+          }
+        }
         setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
         return;
         const { data: cached } = await supabase.from("places_in_the_bible_notes").select("notes_text").eq("normalized_place", key).maybeSingle();
@@ -2040,6 +2053,12 @@ export default function WeekLessonPage({
           });
           if (!creditResult.ok) { setKeywordCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedKeywords((p) => { const n = new Set(p); n.add(key); return n; });
+        }
+        if (userId && !completedKeywords.has(key)) {
+          const result = await ensureBibleEntityLearned({ kind: "keywords", name: selectedKeyword!.name, userId, username: displayName });
+          if (result.inserted) {
+            setCompletedKeywords((prev) => new Set(prev).add(result.normalizedKey));
+          }
         }
         setKeywordNotes(await getKeywordPopupNotes(selectedKeyword!.name));
         return;
@@ -2485,7 +2504,7 @@ export default function WeekLessonPage({
                   const done = completedPeople.has(key);
                   const displayName = selectedPerson.name.split(" ").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
                   return (
-                    <div className="mt-6 pt-4 border-t border-gray-100">
+                    <div className="hidden">
                       <button type="button" onClick={() => {
                         if (done || !userId) return;
                         setIsAnimatingPerson(true);
@@ -2534,7 +2553,7 @@ export default function WeekLessonPage({
                   const done = completedPlaces.has(key);
                   const displayName = selectedPlace.name.split(" ").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
                   return (
-                    <div className="mt-6 pt-4 border-t border-gray-100">
+                    <div className="hidden">
                       <button type="button" onClick={() => {
                         if (done || !userId) return;
                         setIsAnimatingPlace(true);
@@ -2583,7 +2602,7 @@ export default function WeekLessonPage({
                   const done = completedKeywords.has(key);
                   const displayName = selectedKeyword.name.split(" ").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
                   return (
-                    <div className="mt-6 pt-4 border-t border-gray-100">
+                    <div className="hidden">
                       <button type="button" onClick={() => {
                         if (done || !userId) return;
                         setIsAnimatingKeyword(true);

@@ -679,7 +679,7 @@ export default function AnalyticsPage() {
         const { count: keywordsUnderstood } = await supabase
           .from("master_actions")
           .select("id", { count: "exact", head: true })
-          .eq("action_type", "keyword_mastered")
+          .eq("action_type", "keyword_viewed")
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
@@ -947,12 +947,20 @@ export default function AnalyticsPage() {
           .eq("action_type", "place_discovered")
       );
 
-      // Keywords understood (keyword_mastered)
+      // Keywords opened (keyword_viewed)
+      const keywordViewsPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "keyword_viewed")
+      );
+
+      // Keywords understood (tracked from keyword_viewed opens)
       const keywordsPromise = applyDateFilter(
         supabase
           .from("master_actions")
           .select("id", { count: "exact", head: true })
-          .eq("action_type", "keyword_mastered")
+          .eq("action_type", "keyword_viewed")
       );
 
       // Devotional days completed
@@ -1034,6 +1042,7 @@ export default function AnalyticsPage() {
         notesResult,
         peopleResult,
         placesResult,
+        keywordViewsResult,
         keywordsResult,
         devotionalDaysResult,
         dailyBibleTasksResult,
@@ -1065,6 +1074,7 @@ export default function AnalyticsPage() {
         notesPromise,
         peoplePromise,
         placesPromise,
+        keywordViewsPromise,
         keywordsPromise,
         devotionalDaysPromise,
         dailyBibleTasksPromise,
@@ -2642,6 +2652,7 @@ export default function AnalyticsPage() {
       "note_created": "Notes Created",
       "person_learned": "People Learned",
       "place_discovered": "Places Discovered",
+      "keyword_viewed": "Keywords Understood",
       "keyword_mastered": "Keywords Understood",
       "devotional_day_completed": "Devotional Days Completed",
       "chapter_notes_reviewed": "Chapter Notes Reviewed",
@@ -3120,16 +3131,16 @@ export default function AnalyticsPage() {
                 isSelected={selectedActionType === "person_learned"}
               />
               <OverviewCard
+                label="Keywords Understood"
+                value={overviewMetrics.keywordsUnderstood}
+                onClick={() => setSelectedActionType(selectedActionType === "keyword_viewed" ? null : "keyword_viewed")}
+                isSelected={selectedActionType === "keyword_viewed"}
+              />
+              <OverviewCard
                 label="Places Discovered"
                 value={overviewMetrics.placesDiscovered}
                 onClick={() => setSelectedActionType(selectedActionType === "place_discovered" ? null : "place_discovered")}
                 isSelected={selectedActionType === "place_discovered"}
-              />
-              <OverviewCard
-                label="Keywords Understood"
-                value={overviewMetrics.keywordsUnderstood}
-                onClick={() => setSelectedActionType(selectedActionType === "keyword_mastered" ? null : "keyword_mastered")}
-                isSelected={selectedActionType === "keyword_mastered"}
               />
               <OverviewCard
                 label="Devotional Days Completed"

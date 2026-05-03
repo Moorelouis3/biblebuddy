@@ -6,6 +6,7 @@ import { createClient } from "@supabase/supabase-js";
 import ReactMarkdown from "react-markdown";
 import { enrichBibleVerses } from "../lib/bibleHighlighting";
 import { ACTION_TYPE } from "../lib/actionTypes";
+import { ensureBibleEntityLearned } from "../lib/bibleEntityProgress";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { consumeCreditAction } from "../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
@@ -430,6 +431,13 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
 
             triggerPoints(1);
           }
+
+          if (!isCompleted) {
+            const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId });
+            if (result.inserted) {
+              setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
+            }
+          }
         }
 
         setPersonNotes(await getPersonPopupNotes(selectedPerson!.name));
@@ -587,6 +595,13 @@ FINAL RULES:
               triggerPoints(1);
             }
           }
+
+          if (!isCompleted) {
+            const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId });
+            if (result.inserted) {
+              setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
+            }
+          }
         }
 
         setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
@@ -716,6 +731,13 @@ Be accurate to Scripture.`;
               });
 
               triggerPoints(1);
+            }
+          }
+
+          if (!isCompleted) {
+            const result = await ensureBibleEntityLearned({ kind: "keywords", name: selectedKeyword!.name, userId });
+            if (result.inserted) {
+              setCompletedKeywords((prev) => new Set(prev).add(result.normalizedKey));
             }
           }
         }

@@ -8,8 +8,9 @@ import { supabase } from "../lib/supabaseClient";
 import { enrichPlainText } from "../lib/bibleHighlighting";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { ACTION_TYPE } from "../lib/actionTypes";
+import { ensureBibleEntityLearned } from "../lib/bibleEntityProgress";
 import { consumeCreditAction } from "../lib/creditClient";
-import { findKeywordNotes, findPersonNotes, findPlaceNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
+import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import CreditLimitModal from "./CreditLimitModal";
 import ReactMarkdown from "react-markdown";
 import { LouisAvatar } from "./LouisAvatar";
@@ -271,42 +272,13 @@ export default function BibleBuddyTvEpisodeModal({
             }
             setViewedPeople((prev) => new Set(prev).add(key));
           }
-          const existing = await findPersonNotes(key);
-          if (existing) {
-            setSelectedNotes(existing);
-            setLoadingSelectedNotes(false);
-            return;
+          if (userId && !completedPeople.has(key)) {
+            const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId });
+            if (result.inserted) {
+              setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
+            }
           }
-          const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Zipporah|Miriam)/i.test(primaryName);
-          const pronoun = isFemale ? "Her" : "Him";
-          const whoPronoun = isFemale ? "She" : "He";
-          const prompt = `You are Bible Buddy. Generate Bible study style notes for ${primaryName} from Scripture using markdown.
-
-Use this exact structure:
-
-# Who ${whoPronoun} Is
-Write two short paragraphs.
-
-# Their Role in the Story
-Write two to three short paragraphs.
-
-# Key Moments
-- Short sentence
-- Short sentence
-- Short sentence
-
-# Where You Find ${pronoun}
-- Book and chapter range
-- Book and chapter range
-
-# Why This Person Matters
-Write two short paragraphs.
-
-Keep it clear, warm, biblical, and beginner friendly.`;
-          const response = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: prompt, growMode: false }) });
-          if (!response.ok) throw new Error("Failed to generate person notes");
-          const json = await response.json();
-          setSelectedNotes(await savePersonNotes(key, (json?.reply as string) ?? ""));
+          setSelectedNotes(await getPersonPopupNotes(primaryName));
         }
         if (currentTarget.type === "places") {
           const normalizedPlace = currentTarget.name.toLowerCase().trim().replace(/\s+/g, "_");
@@ -319,34 +291,13 @@ Keep it clear, warm, biblical, and beginner friendly.`;
             }
             setViewedPlaces((prev) => new Set(prev).add(normalizedPlace));
           }
-          const existing = await findPlaceNotes(normalizedPlace);
-          if (existing) {
-            setSelectedNotes(existing);
-            setLoadingSelectedNotes(false);
-            return;
+          if (userId && !completedPlaces.has(normalizedPlace)) {
+            const result = await ensureBibleEntityLearned({ kind: "places", name: currentTarget.name, userId });
+            if (result.inserted) {
+              setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
+            }
           }
-          const prompt = `You are Bible Buddy. Generate beginner friendly Bible notes about the PLACE: ${currentTarget.name}.
-
-Use this structure:
-
-# Where is this place?
-One short paragraph.
-
-# What happens here?
-Include two or three specific Bible references and one sentence each.
-
-# Why is this place significant?
-- One sentence
-- One sentence
-
-# How does this connect to the larger Bible story?
-One short paragraph.
-
-Keep it clear, warm, and Scripture-focused.`;
-          const response = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: prompt, growMode: false }) });
-          if (!response.ok) throw new Error("Failed to generate place notes");
-          const json = await response.json();
-          setSelectedNotes(await savePlaceNotes(normalizedPlace, (json?.reply || json?.response || "") as string));
+          setSelectedNotes(await getPlacePopupNotes(currentTarget.name));
         }
         if (currentTarget.type === "keywords") {
           const key = currentTarget.name.toLowerCase().trim();
@@ -359,34 +310,13 @@ Keep it clear, warm, and Scripture-focused.`;
             }
             setViewedKeywords((prev) => new Set(prev).add(key));
           }
-          const existing = await findKeywordNotes(currentTarget.name);
-          if (existing) {
-            setSelectedNotes(existing);
-            setLoadingSelectedNotes(false);
-            return;
+          if (userId && !completedKeywords.has(key)) {
+            const result = await ensureBibleEntityLearned({ kind: "keywords", name: currentTarget.name, userId });
+            if (result.inserted) {
+              setCompletedKeywords((prev) => new Set(prev).add(result.normalizedKey));
+            }
           }
-          const prompt = `You are Bible Buddy. Generate beginner friendly Bible notes about the KEYWORD: ${currentTarget.name}.
-
-Use this structure:
-
-# What is this concept?
-One short paragraph.
-
-# Where do we see it in Scripture?
-Include two or three specific Bible references and one sentence each.
-
-# Why does it matter?
-- One sentence
-- One sentence
-
-# How does it connect to Jesus and the bigger story?
-One short paragraph.
-
-Keep it simple, biblical, and clear.`;
-          const response = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: prompt, growMode: false }) });
-          if (!response.ok) throw new Error("Failed to generate keyword notes");
-          const json = await response.json();
-          setSelectedNotes(await saveKeywordNotes(key, (json?.reply || json?.response || "") as string));
+          setSelectedNotes(await getKeywordPopupNotes(currentTarget.name));
         }
       } catch (error) {
         console.error("[BibleBuddyTvEpisodeModal] Error loading highlighted term notes:", error);

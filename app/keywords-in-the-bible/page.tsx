@@ -1,16 +1,17 @@
-"use client";
+﻿"use client";
 
 export const dynamic = "force-dynamic";
 
 import { Suspense, useState, useEffect, useMemo, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+import { LouisAvatar } from "../../components/LouisAvatar";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_KEYWORDS_LIST } from "../../lib/bibleKeywordsList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { consumeCreditAction } from "../../lib/creditClient";
-import { requestLouisNotes } from "../../lib/requestLouisNotes";
+import { findKeywordNotes } from "../../lib/bibleNotes";
 import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
 
@@ -46,63 +47,33 @@ function createStaticKeywords(): BibleKeyword[] {
 
 function normalizeKeywordMarkdown(markdown: string): string {
   return markdown
-    .replace(/^\s*[-•*]\s+/gm, "")
+    .replace(/^Hey friend,\s*Little Louis here\s*[—-]\s*/i, "")
+    .replace(/^Hey friend,\s*/i, "")
+    .replace(/^Little Louis here\s*[—-]\s*/i, "")
+    .replace(/^\s*[-â€¢*]\s+/gm, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
 }
 
+function LoadingDots() {
+  const [dotCount, setDotCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDotCount((prev) => (prev + 1) % 4);
+    }, 400);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <p className="mt-6 text-center text-sm font-medium text-gray-500">
+      Loading{".".repeat(dotCount)}
+    </p>
+  );
+}
+
 function KeywordsInTheBiblePageContent() {
-  function extractCompactKeywordMeaning(markdown: string): string {
-    const normalized = normalizeKeywordMarkdown(markdown);
-    const sections = normalized.split(/\n(?=# )/).map((section) => section.trim()).filter(Boolean);
-    const preferred =
-      sections.find((section) => /^# .*what this keyword means/i.test(section)) ||
-      sections.find((section) => /^# .*what this/i.test(section)) ||
-      sections[0] ||
-      normalized;
-
-    const withoutHeader = preferred.replace(/^#\s+[^\n]+\n*/i, "").trim();
-    return `# 📖 What This Keyword Means\n\n${withoutHeader}`;
-  }
-
-  function isLegacyKeywordNotes(markdown: string): boolean {
-    const normalized = normalizeKeywordMarkdown(markdown);
-    const headerMatches = normalized.match(/^# /gm) || [];
-    return (
-      headerMatches.length > 1 ||
-      /where it appears|key verses|where you find|why this keyword matters/i.test(normalized) ||
-      normalized.length > 420
-    );
-  }
-
-  function buildKeywordPrompt(keyword: string): string {
-    return `You are Little Louis.
-
-Generate a short Bible explanation for the keyword "${keyword}".
-
-Return markdown with exactly this structure:
-
-# 📖 What This Keyword Means
-
-Then write only 2 to 5 warm, beginner friendly sentences in 1 to 3 short paragraphs.
-
-Rules:
-- Explain only the meaning
-- No extra sections
-- No bullet points
-- No key verses
-- No where it appears section
-- No applications list
-- Keep it under 120 words
-- Sound clear simple and pastoral`;
-  }
-
-  function buildQuickKeywordFallback(keyword: string): string {
-    return `# 📖 What This Keyword Means
-
-${keyword} is an important Bible word or idea in Scripture. Louis is still getting the full meaning ready.`;
-  }
-
   const router = useRouter();
   const searchParams = useSearchParams();
   const [keywords] = useState<BibleKeyword[]>(createStaticKeywords());
@@ -110,10 +81,9 @@ ${keyword} is an important Bible word or idea in Scripture. Louis is still getti
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [selectedKeyword, setSelectedKeyword] = useState<BibleKeyword | null>(null);
   const selectedKeywordNameRef = useRef<string | null>(null);
-  const generatingKeywordNotesRef = useRef<Set<string>>(new Set());
+  const keywordPopupCacheRef = useRef<Map<string, string>>(new Map());
   const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
-  const [generationProgress, setGenerationProgress] = useState(0);
   const [notesError, setNotesError] = useState<string | null>(null);
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
   const [completedKeywords, setCompletedKeywords] = useState<Set<string>>(new Set());
@@ -121,10 +91,41 @@ ${keyword} is an important Bible word or idea in Scripture. Louis is still getti
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
+
+  const incrementKeywordViewProfileStats = async (resolvedUserId: string) => {
+    try {
+      const { data: currentStats } = await supabase
+        .from("profile_stats")
+        .select("username, total_actions, last_active_date")
+        .eq("user_id", resolvedUserId)
+        .maybeSingle();
+
+      const today = new Date().toISOString().slice(0, 10);
+      const finalUsername = currentStats?.username || username || "User";
+
+      await supabase.from("profile_stats").upsert({
+        user_id: resolvedUserId,
+        username: finalUsername,
+        total_actions: (currentStats?.total_actions || 0) + 1,
+        last_active_date: today,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: "user_id" });
+    } catch (err) {
+      console.error("Error updating keyword view profile stats:", err);
+    }
+  };
 
   // Handle keyword selection with study view limit check
   const handleKeywordClick = async (keyword: BibleKeyword) => {
+    const keywordKey = keyword.name.toLowerCase().trim();
+    const cachedNotes = keywordPopupCacheRef.current.get(keywordKey);
+
+    if (cachedNotes) {
+      setKeywordNotes(cachedNotes);
+      setNotesError(null);
+      setLoadingNotes(false);
+    }
+
     if (!userId) {
       setSelectedKeyword(keyword);
       return;
@@ -132,7 +133,6 @@ ${keyword} is an important Bible word or idea in Scripture. Louis is still getti
 
     console.log("[KEYWORDS_PAGE] Keyword clicked:", keyword.name);
 
-    // Log study view for analytics (no restrictions)
     const insertSuccess = await logStudyView(userId, username, "keyword");
     if (!insertSuccess) {
       console.error("[KEYWORDS_PAGE] Failed to log study_view, but allowing access anyway");
@@ -156,26 +156,6 @@ ${keyword} is an important Bible word or idea in Scripture. Louis is still getti
   useEffect(() => {
     selectedKeywordNameRef.current = selectedKeyword?.name.toLowerCase().trim() || null;
   }, [selectedKeyword]);
-
-  useEffect(() => {
-    if (!loadingNotes || keywordNotes || !selectedKeyword) {
-      if (!loadingNotes) setGenerationProgress(0);
-      return;
-    }
-
-    setGenerationProgress(7);
-    const interval = setInterval(() => {
-      setGenerationProgress((prev) => {
-        if (prev >= 95) return prev;
-        if (prev < 25) return prev + 10;
-        if (prev < 50) return prev + 7;
-        if (prev < 75) return prev + 4;
-        return prev + 2;
-      });
-    }, 900);
-
-    return () => clearInterval(interval);
-  }, [loadingNotes, keywordNotes, selectedKeyword]);
 
   // Filter and sort keywords
   const filteredKeywords = useMemo(() => {
@@ -263,282 +243,103 @@ ${keyword} is an important Bible word or idea in Scripture. Louis is still getti
     loadUserAndProgress();
   }, []);
 
-  // Generate notes when a keyword is selected
+  // Load popup notes when a keyword is selected
   useEffect(() => {
     if (!selectedKeyword) {
       setKeywordNotes(null);
       setKeywordCreditBlocked(false);
+      setNotesError(null);
+      setLoadingNotes(false);
       return;
     }
 
     if (userId && loadingProgress) {
       setLoadingNotes(true);
       setNotesError(null);
-      setKeywordNotes(null);
       setKeywordCreditBlocked(false);
       return;
     }
 
-    async function generateNotes() {
+    async function loadNotes() {
+      const keyword = selectedKeyword;
+      if (!keyword) {
+        setLoadingNotes(false);
+        return;
+      }
+      const keywordKey = keyword.name.toLowerCase().trim();
+
       try {
         setLoadingNotes(true);
         setNotesError(null);
-        setKeywordNotes(null);
         setKeywordCreditBlocked(false);
 
-        const keyword = selectedKeyword;
-        if (!keyword) {
-          return;
-        }
-
-        // Normalize: lowercase, trim
-        const keywordKey = keyword.name.toLowerCase().trim();
-
         if (userId) {
-          const isCompleted = completedKeywords.has(keywordKey);
-
-          if (!isCompleted) {
-            const isViewed = viewedKeywords.has(keywordKey);
-
-            if (!isViewed) {
-              const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, {
-                userId,
-                actionLabel: selectedKeyword.name,
-              });
-              if (!creditResult.ok) {
-                setKeywordCreditBlocked(true);
-                return;
-              }
-
-              setViewedKeywords((prev) => {
-                const next = new Set(prev);
-                next.add(keywordKey);
-                return next;
-              });
-
-              triggerPoints(1);
-            }
+          const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, {
+            userId,
+            actionLabel: keyword.name,
+          });
+          if (!creditResult.ok) {
+            setKeywordCreditBlocked(true);
+            setLoadingNotes(false);
+            return;
           }
+
+          triggerPoints(1);
+          if (typeof window !== "undefined") {
+            const stamp = String(Date.now());
+            const progressEvent = new CustomEvent("bb:study-progress-changed", {
+              detail: { actionType: ACTION_TYPE.keyword_viewed, keyword: keyword.name, at: stamp },
+            });
+            window.dispatchEvent(progressEvent);
+            if (typeof document !== "undefined") {
+              document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
+                detail: { actionType: ACTION_TYPE.keyword_viewed, keyword: keyword.name, at: stamp },
+              }));
+            }
+            window.localStorage.setItem("bb:last-study-progress-change", stamp);
+          }
+          void incrementKeywordViewProfileStats(userId);
         }
 
-        // STEP 1: Check database FIRST (mandatory short-circuit)
-        const generateAndStoreKeywordNotes = async (updateVisible: boolean) => {
-          if (generatingKeywordNotesRef.current.has(keywordKey)) return;
-          generatingKeywordNotesRef.current.add(keywordKey);
-
-          try {
-            const generated = await requestLouisNotes(buildKeywordPrompt(selectedKeyword.name));
-            const compactGenerated = extractCompactKeywordMeaning(generated);
-
-            const { error: upsertError } = await supabase
-              .from("keywords_in_the_bible")
-              .upsert(
-                {
-                  keyword: keywordKey,
-                  notes_text: compactGenerated,
-                },
-                {
-                  onConflict: "keyword",
-                }
-              );
-
-            if (upsertError) {
-              console.error("[keywords_in_the_bible] Error upserting notes to keywords_in_the_bible:", upsertError);
-            }
-
-            if (updateVisible && selectedKeywordNameRef.current === keywordKey) {
-              setGenerationProgress(100);
-              setKeywordNotes(compactGenerated);
-              setNotesError(null);
-              setLoadingNotes(false);
-            }
-          } catch (backgroundError: any) {
-            console.error("Error generating keyword notes in background:", backgroundError);
-            if (selectedKeywordNameRef.current === keywordKey) {
-              setNotesError("Louis could not explain this keyword right now. Please try again.");
-              setLoadingNotes(false);
-            }
-          } finally {
-            generatingKeywordNotesRef.current.delete(keywordKey);
-          }
-        };
-
-        const { data: existing, error: existingError } = await supabase
-          .from("keywords_in_the_bible")
-          .select("notes_text")
-          .eq("keyword", keywordKey)
-          .maybeSingle();
-
-        if (existingError && existingError.code !== 'PGRST116') {
-          console.error("[keywords_in_the_bible] Error checking keywords_in_the_bible:", existingError);
-        }
-
-        // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
-        // DO NOT continue to generation - this prevents duplicate ChatGPT calls
-        if (existing?.notes_text && existing.notes_text.trim().length > 0) {
-          console.log(`[keywords_in_the_bible] Found existing notes for ${selectedKeyword?.name ?? "this keyword"}, returning immediately (ChatGPT will NOT be called)`);
-          setKeywordNotes(extractCompactKeywordMeaning(existing.notes_text));
+        const cachedNotes = keywordPopupCacheRef.current.get(keywordKey);
+        if (cachedNotes) {
+          setKeywordNotes(cachedNotes);
           setLoadingNotes(false);
-          if (isLegacyKeywordNotes(existing.notes_text)) {
-            void generateAndStoreKeywordNotes(false);
-          }
           return;
         }
 
-        setKeywordNotes(null);
-        setGenerationProgress(7);
-        void generateAndStoreKeywordNotes(true);
-        return;
+        const loadedNotes = await findKeywordNotes(keyword.name);
 
-        // GUARANTEE: If we reach here, notes do NOT exist in database
-        // This is the ONLY path where ChatGPT should be called
-        let notesText = "";
-
-        // STEP 2: Generate notes using ChatGPT
-        const prompt = `You are Little Louis.
-
-Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword?.name ?? "this keyword"}.
-
-Follow this EXACT markdown template and rules.
-
-TEMPLATE:
-
-# 📖 What This Keyword Means
-
-(two short paragraphs)
-
-
-
-
-
-# 🔍 Where It Appears in Scripture
-
-(two to three short paragraphs)
-
-
-
-
-
-# 🔑 Key Verses Using This Keyword
-
-🔥 sentence  
-
-🔥 sentence  
-
-🔥 sentence  
-
-🔥 sentence  
-
-
-
-
-
-# 📚 Where You Find It in the Bible
-
-📖 Book Chapter–Chapter  
-
-📖 Book Chapter–Chapter  
-
-📖 Book Chapter–Chapter  
-
-
-
-
-
-# 🌱 Why This Keyword Matters
-
-(two to three short paragraphs)
-
-
-
-RULES:
-- Use # for all section headers
-- Double line breaks between sections
-- No hyphens anywhere
-- Use emoji bullets only
-- No lists with dashes
-- No meta commentary
-- No deep theology
-- Cinematic but simple
-- Total length about 200–300 words
-- Do NOT include the keyword name as a header`;
-
-        notesText = buildQuickKeywordFallback(selectedKeyword?.name ?? "this keyword");
-        setKeywordNotes(notesText);
-        setLoadingNotes(false);
-
-        if (!generatingKeywordNotesRef.current.has(keywordKey)) {
-          generatingKeywordNotesRef.current.add(keywordKey);
-
-          void (async () => {
-            try {
-              const generated = await requestLouisNotes(prompt);
-
-              const { data: existingCheck, error: checkError } = await supabase
-                .from("keywords_in_the_bible")
-                .select("notes_text")
-                .eq("keyword", keywordKey)
-                .maybeSingle();
-
-              if (checkError && checkError.code !== "PGRST116") {
-                console.error("[keywords_in_the_bible] Error checking for duplicates:", checkError);
-              }
-
-              let fullNotesText = generated;
-
-              if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
-                fullNotesText = existingCheck.notes_text;
-              } else {
-                const { error: upsertError } = await supabase
-                  .from("keywords_in_the_bible")
-                  .upsert(
-                    {
-                      keyword: keywordKey,
-                      notes_text: generated,
-                    },
-                    {
-                      onConflict: "keyword",
-                    }
-                  );
-
-                if (upsertError) {
-                  console.error("[keywords_in_the_bible] Error upserting notes to keywords_in_the_bible:", upsertError);
-                } else {
-                  const { data: savedData, error: readError } = await supabase
-                    .from("keywords_in_the_bible")
-                    .select("notes_text")
-                    .eq("keyword", keywordKey)
-                    .maybeSingle();
-
-                  if (readError) {
-                    console.error("[keywords_in_the_bible] Error re-reading notes:", readError);
-                  } else if (savedData?.notes_text) {
-                    fullNotesText = savedData.notes_text;
-                  }
-                }
-              }
-
-              if (selectedKeywordNameRef.current === keywordKey) {
-                setKeywordNotes(fullNotesText);
-                setNotesError(null);
-              }
-            } catch (backgroundError: any) {
-              console.error("Error generating keyword notes in background:", backgroundError);
-            } finally {
-              generatingKeywordNotesRef.current.delete(keywordKey);
-            }
-          })();
+        if (selectedKeywordNameRef.current !== keywordKey) {
+          return;
         }
+
+        if (!loadedNotes?.trim()) {
+          setKeywordNotes(null);
+          setNotesError("Couldn't load this keyword yet.");
+          setLoadingNotes(false);
+          return;
+        }
+
+        const normalizedNotes = normalizeKeywordMarkdown(loadedNotes);
+        keywordPopupCacheRef.current.set(keywordKey, normalizedNotes);
+        setKeywordNotes(normalizedNotes);
+        setNotesError(null);
       } catch (err: any) {
-        console.error("Error loading or generating notes:", err);
-        setNotesError(err?.message || "Failed to load notes");
+        console.error("Error loading keyword notes:", err);
+        if (selectedKeywordNameRef.current === keywordKey) {
+          setKeywordNotes(null);
+          setNotesError(err?.message || "Failed to load notes");
+        }
       } finally {
-        setLoadingNotes(false);
+        if (selectedKeywordNameRef.current === keywordKey) {
+          setLoadingNotes(false);
+        }
       }
     }
 
-    generateNotes();
-  }, [selectedKeyword, userId, loadingProgress, completedKeywords, viewedKeywords]);
+    void loadNotes();
+  }, [selectedKeyword, userId, loadingProgress]);
 
   // Mark keyword as complete (called automatically when notes load)
   const markKeywordAsComplete = async () => {
@@ -550,7 +351,10 @@ RULES:
       const { error } = await supabase
         .from("keywords_progress")
         .upsert({ user_id: userId, keyword_name: keywordNameKey }, { onConflict: "user_id,keyword_name" });
-      if (error) { console.error("Error auto-marking keyword:", error); return; }
+      if (error) {
+        console.error("Error auto-marking keyword:", error);
+        return;
+      }
 
       const { data: { user: authUser } } = await supabase.auth.getUser();
       let actionUsername = "User";
@@ -558,16 +362,51 @@ RULES:
         const meta: any = authUser.user_metadata || {};
         actionUsername = meta.firstName || meta.first_name || (authUser.email ? authUser.email.split("@")[0] : null) || "User";
       }
-      const keywordDisplayName = selectedKeyword.name.split(" ").map((w: string) => /^\d+$/.test(w) ? w : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(" ");
-      await supabase.from("master_actions").insert({ user_id: userId, username: actionUsername, action_type: ACTION_TYPE.keyword_mastered, action_label: keywordDisplayName });
 
-      const { count } = await supabase.from("keywords_progress").select("*", { count: "exact", head: true }).eq("user_id", userId);
-      const { data: currentStats } = await supabase.from("profile_stats").select("username, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count").eq("user_id", userId).maybeSingle();
+      const keywordDisplayName = selectedKeyword.name
+        .split(" ")
+        .map((w: string) => /^\d+$/.test(w) ? w : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+        .join(" ");
+
+      await supabase.from("master_actions").insert({
+        user_id: userId,
+        username: actionUsername,
+        action_type: ACTION_TYPE.keyword_mastered,
+        action_label: keywordDisplayName,
+      });
+
+      const { count } = await supabase
+        .from("keywords_progress")
+        .select("*", { count: "exact", head: true })
+        .eq("user_id", userId);
+
+      const { data: currentStats } = await supabase
+        .from("profile_stats")
+        .select("username, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count")
+        .eq("user_id", userId)
+        .maybeSingle();
+
       const finalUsername = currentStats?.username || username || "User";
-      const totalActions = (currentStats?.chapters_completed_count || 0) + (currentStats?.notes_created_count || 0) + (currentStats?.people_learned_count || 0) + (currentStats?.places_discovered_count || 0) + (count || 0);
-      await supabase.from("profile_stats").upsert({ user_id: userId, username: finalUsername, keywords_mastered_count: count || 0, total_actions: totalActions, updated_at: new Date().toISOString() }, { onConflict: "user_id" });
+      const totalActions =
+        (currentStats?.chapters_completed_count || 0) +
+        (currentStats?.notes_created_count || 0) +
+        (currentStats?.people_learned_count || 0) +
+        (currentStats?.places_discovered_count || 0) +
+        (count || 0);
 
-      setCompletedKeywords((prev) => { const next = new Set(prev); next.add(keywordNameKey); return next; });
+      await supabase.from("profile_stats").upsert({
+        user_id: userId,
+        username: finalUsername,
+        keywords_mastered_count: count || 0,
+        total_actions: totalActions,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: "user_id" });
+
+      setCompletedKeywords((prev) => {
+        const next = new Set(prev);
+        next.add(keywordNameKey);
+        return next;
+      });
     } catch (err) {
       console.error("Error auto-marking keyword:", err);
     }
@@ -575,7 +414,11 @@ RULES:
 
   // Auto-mark keyword as complete when notes finish loading
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => { if (keywordNotes && userId && selectedKeyword) { markKeywordAsComplete(); } }, [keywordNotes]);
+  useEffect(() => {
+    if (keywordNotes && userId && selectedKeyword) {
+      markKeywordAsComplete();
+    }
+  }, [keywordNotes]);
 
   // Scroll to letter section
   const scrollToLetter = (letter: string) => {
@@ -749,38 +592,38 @@ RULES:
               }}
               className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
             >
-              ✕
+              &times;
             </button>
 
-            <h2 className="text-3xl font-bold mb-2">{selectedKeyword.name}</h2>
+            <div className="mb-4 flex justify-center">
+              <LouisAvatar mood="wave" size={64} />
+            </div>
+            <h2 className="mb-4 text-center text-3xl font-bold">{selectedKeyword.name}</h2>
 
-            {keywordCreditBlocked ? null : (loadingNotes || (!notesError && !keywordNotes)) ? (
-              <div className="py-10">
-                <div className="flex flex-col items-center text-center">
-                  <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-amber-50 text-4xl shadow-sm ring-1 ring-amber-100">
-                    🤔
-                  </div>
-                  <div className="text-lg font-semibold text-gray-900">Louis is checking this one for you</div>
-                  <p className="mt-2 max-w-md text-sm leading-relaxed text-gray-600">
-                    <span className="font-semibold text-gray-900">{selectedKeyword.name}</span> has never been opened before.
-                    Please allow up to 20 seconds while Louis generates a short meaning for it.
-                  </p>
-                  <div className="mt-5 w-full max-w-md">
-                    <div className="h-3 overflow-hidden rounded-full bg-gray-100 ring-1 ring-gray-200">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-blue-500 via-sky-400 to-emerald-400 transition-all duration-500"
-                        style={{ width: `${generationProgress}%` }}
-                      />
-                    </div>
-                    <div className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-                      {Math.min(generationProgress, 100)}%
-                    </div>
-                  </div>
+            {keywordCreditBlocked ? null : loadingNotes && !keywordNotes ? (
+              <div className="py-8">
+                <div className="space-y-4">
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-3/4 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-2/3 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
                 </div>
+                <LoadingDots />
               </div>
             ) : notesError ? (
-              <div className="text-center py-12 text-red-600">
-                {notesError}
+              <div className="py-8 text-center">
+                <p className="mb-4 text-sm text-gray-500">{notesError}</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setKeywordNotes(null);
+                    setNotesError(null);
+                    setSelectedKeyword({ ...selectedKeyword });
+                  }}
+                  className="inline-flex items-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+                >
+                  Retry
+                </button>
               </div>
             ) : keywordNotes ? (
               <div>
@@ -797,7 +640,7 @@ RULES:
                     ),
                   }}
                 >
-                  {extractCompactKeywordMeaning(keywordNotes)}
+                  {normalizeKeywordMarkdown(keywordNotes)}
                 </ReactMarkdown>
               </div>
             ) : null}
@@ -827,3 +670,6 @@ export default function KeywordsInTheBiblePage() {
     </Suspense>
   );
 }
+
+
+

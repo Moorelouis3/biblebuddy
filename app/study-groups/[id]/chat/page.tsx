@@ -26,6 +26,8 @@ import LevelBadge from "@/components/LevelBadge";
 import MentionText from "@/components/MentionText";
 import { enrichBibleVerses } from "@/lib/bibleHighlighting";
 import { ACTION_TYPE } from "@/lib/actionTypes";
+import { ensureBibleEntityLearned } from "@/lib/bibleEntityProgress";
+import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "@/lib/bibleNotes";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
 import { consumeCreditAction } from "@/lib/creditClient";
 import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
@@ -1784,7 +1786,6 @@ export default function GroupChatPage() {
 
       try {
         const primaryName = resolveBibleReference("people", selectedPersonName);
-
         const personNameKey = primaryName.toLowerCase().trim();
         const isCompleted = completedPeople.has(personNameKey);
         const isViewed = viewedPeople.has(personNameKey);
@@ -1802,130 +1803,14 @@ export default function GroupChatPage() {
           setViewedPeople((prev) => new Set(prev).add(personNameKey));
         }
 
-        const { data: existing, error: existingError } = await supabase
-          .from("bible_people_notes")
-          .select("notes_text")
-          .eq("person_name", personNameKey)
-          .maybeSingle();
-
-        if (existingError && existingError.code !== "PGRST116") {
-          console.error("Error checking existing person notes:", existingError);
+        if (userId && !isCompleted) {
+          const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId });
+          if (result.inserted) {
+            setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
+          }
         }
 
-        if (existing?.notes_text?.trim()) {
-          setPersonNotes(existing.notes_text);
-          return;
-        }
-
-        const isFemale = /^(Mary|Martha|Sarah|Ruth|Esther|Deborah|Hannah|Leah|Rachel|Rebekah|Eve|Delilah|Bathsheba|Jezebel|Lydia|Phoebe|Priscilla|Anna|Elizabeth|Joanna|Susanna|Judith|Vashti|Bernice|Drusilla|Euodia|Syntyche|Chloe|Nympha|Tryphaena|Tryphosa|Julia|Claudia|Persis)/i.test(primaryName);
-        const pronoun = isFemale ? "Her" : "Him";
-        const whoPronoun = isFemale ? "She" : "He";
-
-        const response = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            messages: [
-              {
-                role: "user",
-                content: `You are Little Louis. Generate Bible study style notes for ${primaryName} from Scripture using the EXACT markdown structure below.
-
-CRITICAL RENDERING RULES (MANDATORY):
-- Use ONLY markdown
-- Use SINGLE # for all section headers
-- INSERT TWO FULL LINE BREAKS AFTER EVERY SECTION
-- INSERT TWO FULL LINE BREAKS AFTER EVERY PARAGRAPH GROUP
-- DO NOT use markdown bullet characters (*, -, â€¢)
-- Use EMOJIS as bullets instead
-- Emojis must start each bullet line
-- No hyphens anywhere
-- No compact spacing
-- Spacing matters more than word count
-
-The person's name is already shown in the UI. DO NOT include their name as a header.
-
----
-
-TEMPLATE (FOLLOW EXACTLY):
-
-# ðŸ‘¤ Who ${whoPronoun} Is
-
-Write two short paragraphs explaining who this person is.
-
-
-
-# ðŸ“– Their Role in the Story
-
-Write two to three short paragraphs explaining what role this person plays in the biblical narrative.
-
-
-
-# ðŸ”¥ Key Moments
-
-ðŸ”¥ Short sentence describing a key moment.
-
-ðŸ”¥ Short sentence describing a key moment.
-
-ðŸ”¥ Short sentence describing a key moment.
-
-ðŸ”¥ Short sentence describing a key moment.
-
-
-
-# ðŸ“ Where You Find ${pronoun}
-
-ðŸ“– Book Chapter range
-
-ðŸ“– Book Chapter range
-
-ðŸ“– Book Chapter range
-
-
-
-# ðŸŒ± Why This Person Matters
-
-Write two to three short paragraphs explaining why this person is important and what we learn from them.
-
-
-
-FINAL RULES:
-- Every section must be separated by TWO blank lines
-- Every paragraph block must be separated by TWO blank lines
-- Do not compress content
-- No lists without emojis
-- Keep it cinematic, Bible study focused, and clear`,
-              },
-            ],
-          }),
-        });
-
-        if (!response.ok) throw new Error(`Failed to generate notes: ${response.statusText}`);
-        const json = await response.json();
-        const generated = (json?.reply as string) ?? "";
-
-        const { data: existingCheck } = await supabase
-          .from("bible_people_notes")
-          .select("notes_text")
-          .eq("person_name", personNameKey)
-          .maybeSingle();
-
-        let notesText = "";
-        if (existingCheck?.notes_text?.trim()) {
-          notesText = existingCheck.notes_text;
-        } else {
-          await supabase
-            .from("bible_people_notes")
-            .upsert({ person_name: personNameKey, notes_text: generated }, { onConflict: "person_name" });
-
-          const { data: finalData } = await supabase
-            .from("bible_people_notes")
-            .select("notes_text")
-            .eq("person_name", personNameKey)
-            .single();
-          notesText = finalData?.notes_text || generated;
-        }
-
-        setPersonNotes(notesText);
+        setPersonNotes(await getPersonPopupNotes(primaryName));
       } catch (personError) {
         console.error("Error loading person notes:", personError);
       }
@@ -1965,80 +1850,14 @@ FINAL RULES:
           setViewedPlaces((prev) => new Set(prev).add(normalizedPlace));
         }
 
-        const { data: existing } = await supabase
-          .from("places_in_the_bible_notes")
-          .select("notes_text")
-          .eq("normalized_place", normalizedPlace)
-          .maybeSingle();
-
-        if (existing?.notes_text?.trim()) {
-          setPlaceNotes(existing.notes_text);
-          return;
+        if (userId && !isCompleted) {
+          const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlaceName, userId });
+          if (result.inserted) {
+            setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
+          }
         }
 
-        const response = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            messages: [
-              {
-                role: "user",
-                content: `You are Little Louis.
-
-Generate beginner friendly Bible notes about the PLACE: ${selectedPlaceName}.
-
-Follow this EXACT markdown template and rules.
-
-TEMPLATE:
-
-# Where is this place?
-
-One short paragraph explaining where ${selectedPlaceName} is located (region, country, significance) and why it matters in the Bible.
-
-
-
-# What happens at ${selectedPlaceName}?
-
-Include two or three specific Bible references where ${selectedPlaceName} appears. Each reference should include the book, chapter, and verse (e.g., "Genesis 12:1-9"). After each reference, write one sentence explaining what happens in that passage at ${selectedPlaceName}.
-
-
-
-# Why is ${selectedPlaceName} significant?
-
-List two or three key reasons why ${selectedPlaceName} matters in the Bible story. Each point should be one sentence. Keep it simple and beginner-friendly.
-
-
-
-# How does ${selectedPlaceName} connect to Jesus?
-
-One short paragraph connecting ${selectedPlaceName} to Jesus, prophecy, or the bigger story of redemption. Keep it simple and clear.
-
-
-
-# What can we learn from ${selectedPlaceName}?
-
-One short paragraph with a simple, practical life application related to place, journey, or God's presence.
-
-RULES
-DO NOT include a header like "${selectedPlaceName} Notes" or any title at the beginning. Start directly with "# Where is this place?".
-Keep emojis in headers if helpful, but focus on clarity.
-No images. No Greek or Hebrew words unless essential (and then explain simply).
-Keep it cinematic, warm, simple. Do not overwhelm beginners.
-Be accurate to Scripture.`,
-              },
-            ],
-          }),
-        });
-
-        if (!response.ok) throw new Error(`Failed to generate notes: ${response.statusText}`);
-        const json = await response.json();
-        const generated = (json?.reply as string) ?? "";
-
-        await supabase
-          .from("places_in_the_bible_notes")
-          .upsert({ place: selectedPlaceName, normalized_place: normalizedPlace, notes_text: generated }, { onConflict: "normalized_place" });
-
-        setPlaceNotes(generated);
+        setPlaceNotes(await getPlacePopupNotes(selectedPlaceName));
       } catch (placeError) {
         console.error("Error loading place notes:", placeError);
       }
@@ -2078,115 +1897,14 @@ Be accurate to Scripture.`,
           setViewedKeywords((prev) => new Set(prev).add(keywordKey));
         }
 
-        const { data: existingCheck, error: existingError } = await supabase
-          .from("keywords_in_the_bible")
-          .select("notes_text")
-          .eq("keyword", keywordKey)
-          .maybeSingle();
-
-        if (existingError && existingError.code !== "PGRST116") {
-          console.error("[keywords_in_the_bible] Error checking keywords_in_the_bible:", existingError);
+        if (userId && !isCompleted) {
+          const result = await ensureBibleEntityLearned({ kind: "keywords", name: selectedKeywordName, userId });
+          if (result.inserted) {
+            setCompletedKeywords((prev) => new Set(prev).add(result.normalizedKey));
+          }
         }
 
-        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
-          setKeywordNotes(existingCheck.notes_text);
-          return;
-        }
-
-        const response = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            messages: [
-              {
-                role: "user",
-                content: `You are Little Louis.
-
-Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeywordName}.
-
-Follow this EXACT markdown template and rules.
-
-TEMPLATE:
-
-# ðŸ“– What This Keyword Means
-
-(two short paragraphs)
-
-
-
-
-
-# ðŸ” Where It Appears in Scripture
-
-(two to three short paragraphs)
-
-
-
-
-
-# ðŸ”‘ Key Verses Using This Keyword
-
-ðŸ”¥ sentence  
-
-ðŸ”¥ sentence  
-
-ðŸ”¥ sentence  
-
-ðŸ”¥ sentence  
-
-
-
-
-
-# ðŸ“š Where You Find It in the Bible
-
-ðŸ“– Book Chapterâ€“Chapter  
-
-ðŸ“– Book Chapterâ€“Chapter  
-
-ðŸ“– Book Chapterâ€“Chapter  
-
-
-
-
-
-# ðŸŒ± Why This Keyword Matters
-
-(two to three short paragraphs)
-
-
-
-RULES:
-- Use # for all section headers
-- Double line breaks between sections
-- No hyphens anywhere
-- Use emoji bullets only
-- No lists with dashes
-- No meta commentary
-- No deep theology
-- Cinematic but simple
-- Total length about 200â€“300 words
-- Do NOT include the keyword name as a header`,
-              },
-            ],
-          }),
-        });
-
-        if (!response.ok) throw new Error(`Failed to generate notes: ${response.statusText}`);
-        const json = await response.json();
-        const generated = (json?.reply as string) ?? "";
-
-        await supabase
-          .from("keywords_in_the_bible")
-          .upsert({ keyword: selectedKeywordName, notes_text: generated }, { onConflict: "keyword" });
-
-        const { data: finalData } = await supabase
-          .from("keywords_in_the_bible")
-          .select("notes_text")
-          .eq("keyword", keywordKey)
-          .single();
-
-        setKeywordNotes(finalData?.notes_text || generated);
+        setKeywordNotes(await getKeywordPopupNotes(selectedKeywordName));
       } catch (keywordError) {
         console.error("Error loading keyword notes:", keywordError);
       }
@@ -3306,7 +3024,7 @@ RULES:
     }
     setPosts(sortPinnedPostsFirst(rows.map((p) => ({
       ...p,
-      like_count: likeCountMap[p.id] || 0,
+      like_count: Math.max(p.like_count || 0, likeCountMap[p.id] || 0),
       comment_count: rootCommentCountMap[p.id] || 0,
       role: roleMap[p.user_id] || "member",
       liked: likedSet.has(p.id),
@@ -3450,7 +3168,7 @@ RULES:
 
     const hydratedPost: Post = {
       ...postRow,
-      like_count: likeRows?.length || 0,
+      like_count: Math.max(postRow.like_count || 0, likeRows?.length || 0),
       comment_count: (directCommentCount ?? 0) + replyCount,
       role: membership?.role || "member",
       liked,
