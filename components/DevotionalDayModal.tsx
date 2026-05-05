@@ -11,7 +11,6 @@ import { consumeCreditAction } from "../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
 import CreditLimitModal from "./CreditLimitModal";
 import { LouisAvatar } from "./LouisAvatar";
-import { triggerPoints } from "./PointsPop";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -270,21 +269,6 @@ export default function DevotionalDayModal({
             return next;
           });
 
-          triggerPoints(1);
-          if (typeof window !== "undefined") {
-            const stamp = String(Date.now());
-            const progressEvent = new CustomEvent("bb:study-progress-changed", {
-              detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
-            });
-            window.dispatchEvent(progressEvent);
-            if (typeof document !== "undefined") {
-              document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
-                detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
-              }));
-            }
-            window.localStorage.setItem("bb:last-study-progress-change", stamp);
-          }
-
           if (!isCompleted) {
             const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId, username });
             if (result.inserted) {
@@ -425,21 +409,6 @@ FINAL RULES:
             if (!creditResult.ok) {
               setPlaceCreditBlocked(true);
               return;
-            }
-
-            triggerPoints(1);
-            if (typeof window !== "undefined") {
-              const stamp = String(Date.now());
-              const progressEvent = new CustomEvent("bb:study-progress-changed", {
-                detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
-              });
-              window.dispatchEvent(progressEvent);
-              if (typeof document !== "undefined") {
-                document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
-                  detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
-                }));
-              }
-              window.localStorage.setItem("bb:last-study-progress-change", stamp);
             }
 
             if (!completedPlaces.has(normalizedPlace)) {

@@ -12,7 +12,7 @@ import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { consumeCreditAction } from "../../lib/creditClient";
 import { findPlaceNotes } from "../../lib/bibleNotes";
-import { triggerPoints } from "../../components/PointsPop";
+import { ensureBibleEntityLearned } from "../../lib/bibleEntityProgress";
 import CreditLimitModal from "../../components/CreditLimitModal";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -112,6 +112,7 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [selectedPlace, setSelectedPlace] = useState<BiblePlace | null>(null);
   const selectedPlaceNameRef = useRef<string | null>(null);
+  const placePopupCacheRef = useRef<Map<string, string>>(new Map());
   const [placeNotes, setPlaceNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
   const [generationProgress] = useState(0);
@@ -147,6 +148,15 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
 
   // Handle place selection with study view limit check
   const handlePlaceClick = async (place: BiblePlace) => {
+    const placeKey = place.name.toLowerCase().trim().replace(/\s+/g, "_");
+    const cachedNotes = placePopupCacheRef.current.get(placeKey);
+
+    if (cachedNotes) {
+      setPlaceNotes(cachedNotes);
+      setNotesError(null);
+      setLoadingNotes(false);
+    }
+
     if (!userId) {
       setSelectedPlace(place);
       return;
@@ -276,20 +286,18 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
     }
 
     if (userId && loadingProgress) {
-      setLoadingNotes(true);
+      const cachedNotes = placePopupCacheRef.current.get(selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_"));
+      setLoadingNotes(!cachedNotes);
       setNotesError(null);
-      setPlaceNotes(null);
+      if (!cachedNotes) {
+        setPlaceNotes(null);
+      }
       setPlaceCreditBlocked(false);
       return;
     }
 
     async function generateNotes() {
       try {
-        setLoadingNotes(true);
-        setNotesError(null);
-        setPlaceNotes(null);
-        setPlaceCreditBlocked(false);
-
         const place = selectedPlace;
         if (!place) {
           return;
@@ -300,6 +308,14 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
           .toLowerCase()
           .trim()
           .replace(/\s+/g, "_");
+        const cachedNotes = placePopupCacheRef.current.get(normalizedPlace);
+
+        setLoadingNotes(!cachedNotes);
+        setNotesError(null);
+        if (!cachedNotes) {
+          setPlaceNotes(null);
+        }
+        setPlaceCreditBlocked(false);
 
         if (userId) {
           const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
@@ -312,21 +328,13 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
             return;
           }
 
-          triggerPoints(1);
-          if (typeof window !== "undefined") {
-            const stamp = String(Date.now());
-            const progressEvent = new CustomEvent("bb:study-progress-changed", {
-              detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace.name, at: stamp },
-            });
-            window.dispatchEvent(progressEvent);
-            if (typeof document !== "undefined") {
-              document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
-                detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace.name, at: stamp },
-              }));
-            }
-            window.localStorage.setItem("bb:last-study-progress-change", stamp);
-          }
           void incrementPlaceViewProfileStats(userId);
+        }
+
+        if (cachedNotes) {
+          setPlaceNotes(cachedNotes);
+          setLoadingNotes(false);
+          return;
         }
 
         const loadedNotes = await findPlaceNotes(selectedPlace.name);
@@ -341,9 +349,27 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
           return;
         }
 
-        setPlaceNotes(normalizePlaceMarkdown(loadedNotes));
+        const normalizedNotes = normalizePlaceMarkdown(loadedNotes);
+        placePopupCacheRef.current.set(normalizedPlace, normalizedNotes);
+        setPlaceNotes(normalizedNotes);
         setNotesError(null);
         setLoadingNotes(false);
+
+        if (userId && !completedPlaces.has(normalizedPlace)) {
+          const result = await ensureBibleEntityLearned({
+            kind: "places",
+            name: selectedPlace.name,
+            userId,
+            username,
+          });
+          if (result.inserted) {
+            setCompletedPlaces((prev) => {
+              const next = new Set(prev);
+              next.add(result.normalizedKey);
+              return next;
+            });
+          }
+        }
         return;
 
         /*
@@ -637,6 +663,15 @@ RULES:
       {/* HEADER */}
       <header className="w-full pt-4 pb-4 border-b border-gray-200 bg-white/60 backdrop-blur">
         <div className="max-w-5xl mx-auto px-4">
+          <nav className="mb-3 text-sm text-gray-500">
+            <a href="/dashboard" className="hover:text-gray-700 transition">Dashboard</a>
+            <span className="mx-2">&gt;</span>
+            <a href="/guided-studies" className="hover:text-gray-700 transition">Bible Study Tools</a>
+            <span className="mx-2">&gt;</span>
+            <a href="/bible-references" className="hover:text-gray-700 transition">Bible References</a>
+            <span className="mx-2">&gt;</span>
+            <span className="text-gray-800 font-medium">Places</span>
+          </nav>
           <h1 className="text-2xl sm:text-3xl font-bold">Places in the Bible</h1>
           <p className="text-gray-600 text-xs sm:text-sm mt-1">
             Explore the important places of Scripture

@@ -13,7 +13,6 @@ import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes
 import CreditLimitModal from "./CreditLimitModal";
 import { LouisAvatar } from "./LouisAvatar";
 import { isChapterCompleted, markChapterDone } from "../lib/readingProgress";
-import { triggerPoints } from "./PointsPop";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -426,21 +425,6 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
             return next;
           });
 
-          triggerPoints(1);
-          if (typeof window !== "undefined") {
-            const stamp = String(Date.now());
-            const progressEvent = new CustomEvent("bb:study-progress-changed", {
-              detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
-            });
-            window.dispatchEvent(progressEvent);
-            if (typeof document !== "undefined") {
-              document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
-                detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
-              }));
-            }
-            window.localStorage.setItem("bb:last-study-progress-change", stamp);
-          }
-
           if (!isCompleted) {
             const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId });
             if (result.inserted) {
@@ -591,21 +575,6 @@ FINAL RULES:
               return;
             }
 
-            triggerPoints(1);
-            if (typeof window !== "undefined") {
-              const stamp = String(Date.now());
-              const progressEvent = new CustomEvent("bb:study-progress-changed", {
-                detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
-              });
-              window.dispatchEvent(progressEvent);
-              if (typeof document !== "undefined") {
-                document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
-                  detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
-                }));
-              }
-              window.localStorage.setItem("bb:last-study-progress-change", stamp);
-            }
-
             if (!completedPlaces.has(normalizedPlace)) {
               const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId });
               if (result.inserted) {
@@ -739,7 +708,6 @@ Be accurate to Scripture.`;
                 return next;
               });
 
-              triggerPoints(1);
             }
           }
 

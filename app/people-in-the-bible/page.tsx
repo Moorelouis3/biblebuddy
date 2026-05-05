@@ -13,8 +13,8 @@ import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { consumeCreditAction } from "../../lib/creditClient";
 import { findPersonNotes } from "../../lib/bibleNotes";
+import { ensureBibleEntityLearned } from "../../lib/bibleEntityProgress";
 import { requestLouisNotes } from "../../lib/requestLouisNotes";
-import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
 import CreditEducationModal from "../../components/CreditEducationModal";
 // Utility to get/set session flag for education modal
@@ -754,26 +754,32 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
     }
 
     if (userId && loadingProgress) {
-      setLoadingNotes(true);
+      const cachedNotes = personPopupCacheRef.current.get(selectedPerson.name.toLowerCase().trim());
+      setLoadingNotes(!cachedNotes);
       setNotesError(null);
-      setPersonNotes(null);
+      if (!cachedNotes) {
+        setPersonNotes(null);
+      }
       setPersonCreditBlocked(false);
       return;
     }
 
     async function generateNotes() {
       try {
-        setLoadingNotes(true);
-        setNotesError(null);
-        setPersonNotes(null);
-        setPersonCreditBlocked(false);
-
         const person = selectedPerson;
         if (!person) {
           return;
         }
 
         const personNameKey = person.name.toLowerCase().trim();
+        const cachedNotes = personPopupCacheRef.current.get(personNameKey);
+
+        setLoadingNotes(!cachedNotes);
+        setNotesError(null);
+        if (!cachedNotes) {
+          setPersonNotes(null);
+        }
+        setPersonCreditBlocked(false);
 
         if (userId) {
           const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
@@ -791,24 +797,9 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
             return next;
           });
 
-          triggerPoints(1);
-          if (typeof window !== "undefined") {
-            const stamp = String(Date.now());
-            const progressEvent = new CustomEvent("bb:study-progress-changed", {
-              detail: { actionType: ACTION_TYPE.person_viewed, person: person.name, at: stamp },
-            });
-            window.dispatchEvent(progressEvent);
-            if (typeof document !== "undefined") {
-              document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
-                detail: { actionType: ACTION_TYPE.person_viewed, person: person.name, at: stamp },
-              }));
-            }
-            window.localStorage.setItem("bb:last-study-progress-change", stamp);
-          }
           void incrementPersonViewProfileStats(userId);
         }
 
-        const cachedNotes = personPopupCacheRef.current.get(personNameKey);
         if (cachedNotes) {
           setPersonNotes(cachedNotes);
           setLoadingNotes(false);
@@ -828,6 +819,22 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
         setPersonNotes(normalizedNotes);
         setNotesError(null);
         setLoadingNotes(false);
+
+        if (userId && !completedPeople.has(personNameKey)) {
+          const result = await ensureBibleEntityLearned({
+            kind: "people",
+            name: person.name,
+            userId,
+            username,
+          });
+          if (result.inserted) {
+            setCompletedPeople((prev) => {
+              const next = new Set(prev);
+              next.add(result.normalizedKey);
+              return next;
+            });
+          }
+        }
         return;
 
         /*
@@ -1168,6 +1175,15 @@ FINAL RULES:
       {/* HEADER */}
       <header className="w-full pt-4 pb-4 border-b border-gray-200 bg-white/60 backdrop-blur">
         <div className="max-w-5xl mx-auto px-4">
+          <nav className="mb-3 text-sm text-gray-500">
+            <a href="/dashboard" className="hover:text-gray-700 transition">Dashboard</a>
+            <span className="mx-2">&gt;</span>
+            <a href="/guided-studies" className="hover:text-gray-700 transition">Bible Study Tools</a>
+            <span className="mx-2">&gt;</span>
+            <a href="/bible-references" className="hover:text-gray-700 transition">Bible References</a>
+            <span className="mx-2">&gt;</span>
+            <span className="text-gray-800 font-medium">People</span>
+          </nav>
           <h1 className="text-2xl sm:text-3xl font-bold">People in the Bible</h1>
           <p className="text-gray-600 text-xs sm:text-sm mt-1">
             Meet the real people of the Bible

@@ -15,6 +15,32 @@ type BibleEntityProgressResult = {
   normalizedKey: string;
 };
 
+function dispatchEntityPointAward(actionType: string, label: string) {
+  if (typeof document !== "undefined") {
+    document.dispatchEvent(
+      new CustomEvent("bb:points", {
+        detail: { delta: 1, label },
+      })
+    );
+
+    document.dispatchEvent(
+      new CustomEvent("bb:study-progress-changed", {
+        detail: { actionType, label, at: String(Date.now()) },
+      })
+    );
+  }
+
+  if (typeof window !== "undefined") {
+    const stamp = String(Date.now());
+    window.dispatchEvent(
+      new CustomEvent("bb:study-progress-changed", {
+        detail: { actionType, label, at: stamp },
+      })
+    );
+    window.localStorage.setItem("bb:last-study-progress-change", stamp);
+  }
+}
+
 function normalizeEntityKey(kind: BibleEntityKind, name: string) {
   const trimmed = name.trim();
 
@@ -153,6 +179,8 @@ export async function ensureBibleEntityLearned({
     },
     { onConflict: "user_id" }
   );
+
+  dispatchEntityPointAward(config.actionType, label);
 
   return { inserted: true, normalizedKey };
 }

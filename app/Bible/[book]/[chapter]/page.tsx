@@ -19,6 +19,7 @@ import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes
 import { requestLouisNotes } from "../../../../lib/requestLouisNotes";
 import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
 import { triggerPoints } from "../../../../components/PointsPop";
+import { ensureBibleEntityLearned } from "../../../../lib/bibleEntityProgress";
 import { dispatchLouisMoment } from "../../../../lib/louisMoments";
 import CreditLimitModal from "../../../../components/CreditLimitModal";
 import CommentSection from "../../../../components/comments/CommentSection";
@@ -388,21 +389,11 @@ export default function BibleChapterPage() {
               return next;
             });
 
-            triggerPoints(1);
-            if (typeof window !== "undefined") {
-              const stamp = String(Date.now());
-              const progressEvent = new CustomEvent("bb:study-progress-changed", {
-                detail: { actionType: ACTION_TYPE.person_viewed, person: personName, at: stamp },
-              });
-              window.dispatchEvent(progressEvent);
-              if (typeof document !== "undefined") {
-                document.dispatchEvent(
-                  new CustomEvent("bb:study-progress-changed", {
-                    detail: { actionType: ACTION_TYPE.person_viewed, person: personName, at: stamp },
-                  })
-                );
+            if (!completedPeople.has(personNameKey)) {
+              const result = await ensureBibleEntityLearned({ kind: "people", name: personName, userId });
+              if (result.inserted) {
+                setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
               }
-              window.localStorage.setItem("bb:last-study-progress-change", stamp);
             }
           })();
         }
@@ -445,21 +436,11 @@ export default function BibleChapterPage() {
               return;
             }
 
-            triggerPoints(1);
-            if (typeof window !== "undefined") {
-              const stamp = String(Date.now());
-              const progressEvent = new CustomEvent("bb:study-progress-changed", {
-                detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
-              });
-              window.dispatchEvent(progressEvent);
-              if (typeof document !== "undefined") {
-                document.dispatchEvent(
-                  new CustomEvent("bb:study-progress-changed", {
-                    detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
-                  })
-                );
+            if (!completedPlaces.has(normalizedPlace)) {
+              const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId });
+              if (result.inserted) {
+                setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
               }
-              window.localStorage.setItem("bb:last-study-progress-change", stamp);
             }
           })();
         }
@@ -592,7 +573,10 @@ RULES:
                 return next;
               });
 
-              triggerPoints(1);
+              const result = await ensureBibleEntityLearned({ kind: "keywords", name: selectedKeyword!.name, userId });
+              if (result.inserted) {
+                setCompletedKeywords((prev) => new Set(prev).add(result.normalizedKey));
+              }
             }
           }
         }

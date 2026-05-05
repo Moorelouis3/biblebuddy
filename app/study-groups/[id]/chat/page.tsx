@@ -1788,9 +1788,8 @@ export default function GroupChatPage() {
         const primaryName = resolveBibleReference("people", selectedPersonName);
         const personNameKey = primaryName.toLowerCase().trim();
         const isCompleted = completedPeople.has(personNameKey);
-        const isViewed = viewedPeople.has(personNameKey);
 
-        if (userId && !isCompleted && !isViewed) {
+        if (userId) {
           const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
             userId,
             actionLabel: selectedPersonName,
@@ -1817,7 +1816,7 @@ export default function GroupChatPage() {
     }
 
     void loadPersonNotes();
-  }, [selectedPerson, userId, completedPeople, viewedPeople]);
+  }, [selectedPerson, userId]);
 
   useEffect(() => {
     if (!selectedPlace) {

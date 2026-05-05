@@ -16,7 +16,6 @@ import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "@
 import { consumeCreditAction } from "@/lib/creditClient";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
-import { triggerPoints } from "@/components/PointsPop";
 import UserBadge from "@/components/UserBadge";
 import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
 
@@ -1974,20 +1973,6 @@ export default function WeekLessonPage({
           });
           if (!creditResult.ok) { setPersonCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
           setViewedPeople((p) => { const n = new Set(p); n.add(key); return n; });
-          triggerPoints(1);
-          if (typeof window !== "undefined") {
-            const stamp = String(Date.now());
-            const progressEvent = new CustomEvent("bb:study-progress-changed", {
-              detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
-            });
-            window.dispatchEvent(progressEvent);
-            if (typeof document !== "undefined") {
-              document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
-                detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
-              }));
-            }
-            window.localStorage.setItem("bb:last-study-progress-change", stamp);
-          }
         }
         if (userId && !completedPeople.has(key)) {
           const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId, username: displayName });
@@ -2030,20 +2015,6 @@ export default function WeekLessonPage({
               actionLabel: selectedPlace!.name,
             });
             if (!creditResult.ok) { setPlaceCreditBlocked(true); setShowCreditLimitModal(true); setLoadingNotes(false); return; }
-            triggerPoints(1);
-            if (typeof window !== "undefined") {
-              const stamp = String(Date.now());
-              const progressEvent = new CustomEvent("bb:study-progress-changed", {
-                detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
-              });
-              window.dispatchEvent(progressEvent);
-              if (typeof document !== "undefined") {
-                document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
-                  detail: { actionType: ACTION_TYPE.place_viewed, place: selectedPlace!.name, at: stamp },
-                }));
-              }
-              window.localStorage.setItem("bb:last-study-progress-change", stamp);
-            }
             if (!completedPlaces.has(key)) {
               const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId, username: displayName });
               if (result.inserted) {

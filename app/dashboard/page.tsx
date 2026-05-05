@@ -1105,6 +1105,9 @@ export default function DashboardPage() {
           groupPostsResult,
           groupLikeGivenResult,
           feedPostsResult,
+          peopleProgressResult,
+          placesProgressResult,
+          keywordsProgressResult,
         ] = await Promise.all([
           supabase
             .from("master_actions")
@@ -1121,6 +1124,18 @@ export default function DashboardPage() {
           supabase
             .from("feed_posts")
             .select("reaction_counts")
+            .eq("user_id", userId),
+          supabase
+            .from("people_progress")
+            .select("person_name", { count: "exact", head: true })
+            .eq("user_id", userId),
+          supabase
+            .from("places_progress")
+            .select("place_name", { count: "exact", head: true })
+            .eq("user_id", userId),
+          supabase
+            .from("keywords_progress")
+            .select("keyword_name", { count: "exact", head: true })
             .eq("user_id", userId),
         ]);
 
@@ -1145,14 +1160,29 @@ export default function DashboardPage() {
           return total + (match ? Number(match[1]) || 0 : 0);
         }, 0);
 
+        const entityPointActionTypes = new Set<string>([
+          ACTION_TYPE.person_viewed,
+          ACTION_TYPE.person_learned,
+          ACTION_TYPE.place_viewed,
+          ACTION_TYPE.place_discovered,
+          ACTION_TYPE.keyword_viewed,
+          ACTION_TYPE.keyword_mastered,
+        ]);
+
         const actionTypes = (actionsResult.data || [])
           .filter((row) => row?.action_label !== JESSICA_BONUS_ACTION_LABEL)
+          .filter((row) => !entityPointActionTypes.has(row?.action_type || ""))
           .filter((row) => {
             if (row?.action_type !== ACTION_TYPE.scrambled_word_answered) return true;
             return typeof row?.action_label === "string" ? !row.action_label.includes("[no-point]") : true;
           })
           .map((row) => row.action_type)
           .filter((actionType): actionType is string => typeof actionType === "string" && actionType !== "group_message_sent");
+
+        const uniqueEntityPoints =
+          (peopleProgressResult.count || 0) +
+          (placesProgressResult.count || 0) +
+          (keywordsProgressResult.count || 0);
 
         const groupPosts = groupPostsResult.data || [];
         const groupRootPostCount = groupPosts.filter((post) => !post.parent_post_id).length;
@@ -1176,7 +1206,7 @@ export default function DashboardPage() {
           manualBonusPoints,
         });
 
-        const levelData = getLevelInfoFromPoints(weightedPoints.totalPoints);
+        const levelData = getLevelInfoFromPoints(weightedPoints.totalPoints + uniqueEntityPoints);
         const { level, levelName, identityText, encouragementText, levelStart, levelEnd, progressPercent, totalPoints, pointsToNextLevel } = levelData;
 
         // Select random motivational message for this level

@@ -12,7 +12,7 @@ import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { consumeCreditAction } from "../../lib/creditClient";
 import { findKeywordNotes } from "../../lib/bibleNotes";
-import { triggerPoints } from "../../components/PointsPop";
+import { ensureBibleEntityLearned } from "../../lib/bibleEntityProgress";
 import CreditLimitModal from "../../components/CreditLimitModal";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -284,20 +284,6 @@ function KeywordsInTheBiblePageContent() {
             return;
           }
 
-          triggerPoints(1);
-          if (typeof window !== "undefined") {
-            const stamp = String(Date.now());
-            const progressEvent = new CustomEvent("bb:study-progress-changed", {
-              detail: { actionType: ACTION_TYPE.keyword_viewed, keyword: keyword.name, at: stamp },
-            });
-            window.dispatchEvent(progressEvent);
-            if (typeof document !== "undefined") {
-              document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
-                detail: { actionType: ACTION_TYPE.keyword_viewed, keyword: keyword.name, at: stamp },
-              }));
-            }
-            window.localStorage.setItem("bb:last-study-progress-change", stamp);
-          }
           void incrementKeywordViewProfileStats(userId);
         }
 
@@ -325,6 +311,22 @@ function KeywordsInTheBiblePageContent() {
         keywordPopupCacheRef.current.set(keywordKey, normalizedNotes);
         setKeywordNotes(normalizedNotes);
         setNotesError(null);
+
+        if (userId && !completedKeywords.has(keywordKey)) {
+          const result = await ensureBibleEntityLearned({
+            kind: "keywords",
+            name: keyword.name,
+            userId,
+            username,
+          });
+          if (result.inserted) {
+            setCompletedKeywords((prev) => {
+              const next = new Set(prev);
+              next.add(result.normalizedKey);
+              return next;
+            });
+          }
+        }
       } catch (err: any) {
         console.error("Error loading keyword notes:", err);
         if (selectedKeywordNameRef.current === keywordKey) {
@@ -441,6 +443,15 @@ function KeywordsInTheBiblePageContent() {
       {/* HEADER */}
       <header className="w-full pt-4 pb-4 border-b border-gray-200 bg-white/60 backdrop-blur">
         <div className="max-w-5xl mx-auto px-4">
+          <nav className="mb-3 text-sm text-gray-500">
+            <a href="/dashboard" className="hover:text-gray-700 transition">Dashboard</a>
+            <span className="mx-2">&gt;</span>
+            <a href="/guided-studies" className="hover:text-gray-700 transition">Bible Study Tools</a>
+            <span className="mx-2">&gt;</span>
+            <a href="/bible-references" className="hover:text-gray-700 transition">Bible References</a>
+            <span className="mx-2">&gt;</span>
+            <span className="text-gray-800 font-medium">Keywords</span>
+          </nav>
           <h1 className="text-2xl sm:text-3xl font-bold">Keywords in the Bible</h1>
           <p className="text-gray-600 text-xs sm:text-sm mt-1">
             Important words and ideas to understand while reading Scripture
