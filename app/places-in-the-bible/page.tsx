@@ -799,32 +799,29 @@ RULES:
             <h2 className="mb-4 text-center text-3xl font-bold">{selectedPlace.name}</h2>
 
             {placeCreditBlocked ? null : loadingNotes && !placeNotes ? (
-              <div className="py-10">
-                <div className="flex flex-col items-center text-center">
-                  <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-amber-50 text-4xl shadow-sm ring-1 ring-amber-100">
-                    🤔
-                  </div>
-                  <div className="text-lg font-semibold text-gray-900">Louis is checking this one for you</div>
-                  <p className="mt-2 max-w-md text-sm leading-relaxed text-gray-600">
-                    <span className="font-semibold text-gray-900">{selectedPlace.name}</span> has never been opened before.
-                    Please allow up to 20 seconds while Louis generates a short explanation.
-                  </p>
-                  <div className="mt-5 w-full max-w-md">
-                    <div className="h-3 overflow-hidden rounded-full bg-gray-100 ring-1 ring-gray-200">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-blue-500 via-sky-400 to-emerald-400 transition-all duration-500"
-                        style={{ width: `${generationProgress}%` }}
-                      />
-                    </div>
-                    <div className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-                      {Math.min(generationProgress, 100)}%
-                    </div>
-                  </div>
+              <div className="py-8">
+                <div className="space-y-4">
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-3/4 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-2/3 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
                 </div>
+                <LoadingDots />
               </div>
             ) : notesError ? (
-              <div className="text-center py-12 text-red-600">
-                {notesError}
+              <div className="py-8 text-center">
+                <p className="mb-4 text-sm text-gray-500">{notesError}</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPlaceNotes(null);
+                    setNotesError(null);
+                    setSelectedPlace({ ...selectedPlace });
+                  }}
+                  className="inline-flex items-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+                >
+                  Retry
+                </button>
               </div>
             ) : placeNotes ? (
               <div>

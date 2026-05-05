@@ -6,11 +6,13 @@ import { Suspense, useState, useEffect, useMemo, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { type BiblePerson } from "../../lib/biblePeople";
 import ReactMarkdown from "react-markdown";
+import { LouisAvatar } from "../../components/LouisAvatar";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_PEOPLE_LIST } from "../../lib/biblePeopleList";
 import { logStudyView } from "../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { consumeCreditAction } from "../../lib/creditClient";
+import { findPersonNotes } from "../../lib/bibleNotes";
 import { requestLouisNotes } from "../../lib/requestLouisNotes";
 import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
@@ -420,8 +422,34 @@ function normalizePersonMarkdown(markdown: string): string {
 }
 
 function PeopleInTheBiblePageContent() {
+    function stripLouisIntro(markdown: string): string {
+      return markdown
+        .replace(/^Hey friend,\s*Little Louis here\s*[—-]\s*/i, "")
+        .replace(/^Hey friend,\s*/i, "")
+        .replace(/^Little Louis here\s*[—-]\s*/i, "")
+        .trim();
+    }
+
+    function LoadingDots() {
+      const [dotCount, setDotCount] = useState(0);
+
+      useEffect(() => {
+        const interval = setInterval(() => {
+          setDotCount((prev) => (prev + 1) % 4);
+        }, 400);
+
+        return () => clearInterval(interval);
+      }, []);
+
+      return (
+        <p className="mt-6 text-center text-sm font-medium text-gray-500">
+          Loading{".".repeat(dotCount)}
+        </p>
+      );
+    }
+
     function extractCompactPersonMeaning(markdown: string): string {
-      const normalized = normalizePersonMarkdown(markdown);
+      const normalized = normalizePersonMarkdown(stripLouisIntro(markdown));
       const sections = normalized.split(/\n(?=# )/).map((section) => section.trim()).filter(Boolean);
       const preferred =
         sections.find((section) => /^# .*who .* is/i.test(section)) ||
@@ -532,6 +560,7 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [selectedPerson, setSelectedPerson] = useState<BiblePerson | null>(null);
   const selectedPersonNameRef = useRef<string | null>(null);
+  const personPopupCacheRef = useRef<Map<string, string>>(new Map());
   const generatingPersonNotesRef = useRef<Set<string>>(new Set());
   const [personNotes, setPersonNotes] = useState<string | null>(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
@@ -544,6 +573,29 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
   const [username, setUsername] = useState<string | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [viewedPeople, setViewedPeople] = useState<Set<string>>(new Set());
+
+  const incrementPersonViewProfileStats = async (resolvedUserId: string) => {
+    try {
+      const { data: currentStats } = await supabase
+        .from("profile_stats")
+        .select("username, total_actions, last_active_date")
+        .eq("user_id", resolvedUserId)
+        .maybeSingle();
+
+      const today = new Date().toISOString().slice(0, 10);
+      const finalUsername = currentStats?.username || username || "User";
+
+      await supabase.from("profile_stats").upsert({
+        user_id: resolvedUserId,
+        username: finalUsername,
+        total_actions: (currentStats?.total_actions || 0) + 1,
+        last_active_date: today,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: "user_id" });
+    } catch (err) {
+      console.error("Error updating person view profile stats:", err);
+    }
+  };
 
   // Filter and sort people
   const filteredPeople = useMemo(() => {
@@ -632,8 +684,16 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
 
   // Handle person selection with study view limit check
   const handlePersonClick = async (person: BiblePerson) => {
+    const personKey = person.name.toLowerCase().trim();
+    const cachedNotes = personPopupCacheRef.current.get(personKey);
+
+    if (cachedNotes) {
+      setPersonNotes(cachedNotes);
+      setNotesError(null);
+      setLoadingNotes(false);
+    }
+
     if (!userId) {
-      // Not logged in - allow access (they'll need to log in to see notes anyway)
       setSelectedPerson(person);
       return;
     }
@@ -646,7 +706,6 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
       console.error("[PEOPLE_PAGE] Failed to log study_view, but allowing access anyway");
     }
 
-    // Allow access
     setSelectedPerson(person);
   };
 
@@ -717,6 +776,62 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
         const personNameKey = person.name.toLowerCase().trim();
 
         if (userId) {
+          const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
+            userId,
+            actionLabel: person.name,
+          });
+          if (!creditResult.ok) {
+            setPersonCreditBlocked(true);
+            return;
+          }
+
+          setViewedPeople((prev) => {
+            const next = new Set(prev);
+            next.add(personNameKey);
+            return next;
+          });
+
+          triggerPoints(1);
+          if (typeof window !== "undefined") {
+            const stamp = String(Date.now());
+            const progressEvent = new CustomEvent("bb:study-progress-changed", {
+              detail: { actionType: ACTION_TYPE.person_viewed, person: person.name, at: stamp },
+            });
+            window.dispatchEvent(progressEvent);
+            if (typeof document !== "undefined") {
+              document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
+                detail: { actionType: ACTION_TYPE.person_viewed, person: person.name, at: stamp },
+              }));
+            }
+            window.localStorage.setItem("bb:last-study-progress-change", stamp);
+          }
+          void incrementPersonViewProfileStats(userId);
+        }
+
+        const cachedNotes = personPopupCacheRef.current.get(personNameKey);
+        if (cachedNotes) {
+          setPersonNotes(cachedNotes);
+          setLoadingNotes(false);
+          return;
+        }
+
+        const loadedNotes = await findPersonNotes(person.name);
+        if (!loadedNotes?.trim()) {
+          setPersonNotes(null);
+          setNotesError("Couldn't load this person yet.");
+          setLoadingNotes(false);
+          return;
+        }
+
+        const normalizedNotes = normalizePersonMarkdown(stripLouisIntro(loadedNotes));
+        personPopupCacheRef.current.set(personNameKey, normalizedNotes);
+        setPersonNotes(normalizedNotes);
+        setNotesError(null);
+        setLoadingNotes(false);
+        return;
+
+        /*
+        if (userId) {
           const isCompleted = completedPeople.has(personNameKey);
 
           if (!isCompleted) {
@@ -725,7 +840,7 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
             if (!isViewed) {
               const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
                 userId,
-                actionLabel: selectedPerson.name,
+                actionLabel: selectedPerson?.name ?? "this person",
               });
               if (!creditResult.ok) {
                 setPersonCreditBlocked(true);
@@ -750,7 +865,7 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
           .eq("person_name", personNameKey)
           .maybeSingle();
 
-        if (existingError && existingError.code !== 'PGRST116') {
+        if (existingError?.code !== 'PGRST116' && existingError) {
           console.error("[bible_people_notes] Error checking bible_people_notes:", existingError);
         }
 
@@ -759,7 +874,7 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
           generatingPersonNotesRef.current.add(personNameKey);
 
           try {
-            const generated = await requestLouisNotes(buildPersonPrompt(selectedPerson.name));
+            const generated = await requestLouisNotes(buildPersonPrompt(selectedPerson?.name ?? "this person"));
             const compactGenerated = extractCompactPersonMeaning(generated);
 
             const { error: upsertError } = await supabase
@@ -924,7 +1039,7 @@ FINAL RULES:
                 .eq("person_name", personNameKey)
                 .maybeSingle();
 
-              if (checkError && checkError.code !== 'PGRST116') {
+              if (checkError?.code !== 'PGRST116' && checkError) {
                 console.error("[bible_people_notes] Error checking for duplicates:", checkError);
               }
 
@@ -975,6 +1090,7 @@ FINAL RULES:
             }
           })();
         }
+        */
       } catch (err: any) {
         console.error("Error loading or generating notes:", err);
         setNotesError(err?.message || "Failed to load notes");
@@ -984,7 +1100,7 @@ FINAL RULES:
     }
 
     generateNotes();
-  }, [selectedPerson, userId, loadingProgress, completedPeople, viewedPeople]);
+  }, [selectedPerson, userId, loadingProgress]);
 
   // Mark person as complete (called automatically when notes load)
   const markPersonAsComplete = async () => {
@@ -1193,7 +1309,7 @@ FINAL RULES:
       {/* PERSON PROFILE MODAL */}
       {selectedPerson && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
-          <div className="relative w-full max-w-2xl min-h-[300px] max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+          <div className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
             <button
               type="button"
               onClick={() => {
@@ -1203,39 +1319,23 @@ FINAL RULES:
               }}
               className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
             >
-              ✕
+              &times;
             </button>
 
-            <h2 className="text-3xl font-bold mb-2">{selectedPerson.name}</h2>
-            {selectedPerson.testament && (
-              <p className="text-sm text-gray-600 mb-6">
-                {selectedPerson.testament} Testament
-              </p>
-            )}
+            <div className="mb-4 flex justify-center">
+              <LouisAvatar mood="wave" size={64} />
+            </div>
+            <h2 className="mb-4 text-center text-3xl font-bold">{selectedPerson.name}</h2>
 
-            {personCreditBlocked ? null : (loadingNotes || (!notesError && !personNotes)) ? (
-              <div className="py-10">
-                <div className="flex flex-col items-center text-center">
-                  <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-amber-50 text-4xl shadow-sm ring-1 ring-amber-100">
-                    🤔
-                  </div>
-                  <div className="text-lg font-semibold text-gray-900">Louis is checking this one for you</div>
-                  <p className="mt-2 max-w-md text-sm leading-relaxed text-gray-600">
-                    <span className="font-semibold text-gray-900">{selectedPerson.name}</span> has never been opened before.
-                    Please allow up to 20 seconds while Louis generates a short explanation.
-                  </p>
-                  <div className="mt-5 w-full max-w-md">
-                    <div className="h-3 overflow-hidden rounded-full bg-gray-100 ring-1 ring-gray-200">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-blue-500 via-sky-400 to-emerald-400 transition-all duration-500"
-                        style={{ width: `${generationProgress}%` }}
-                      />
-                    </div>
-                    <div className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-                      {Math.min(generationProgress, 100)}%
-                    </div>
-                  </div>
+            {personCreditBlocked ? null : loadingNotes && !personNotes ? (
+              <div className="py-8">
+                <div className="space-y-4">
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-3/4 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-2/3 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
                 </div>
+                <LoadingDots />
               </div>
             ) : notesError ? (
               <div className="text-center py-12 text-red-600">
@@ -1256,7 +1356,7 @@ FINAL RULES:
                     ),
                   }}
                 >
-                  {extractCompactPersonMeaning(personNotes)}
+                  {normalizePersonMarkdown(stripLouisIntro(personNotes))}
                 </ReactMarkdown>
               </div>
             ) : null}
