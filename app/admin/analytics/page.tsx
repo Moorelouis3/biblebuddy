@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { isSeriesWeekNotesActionEvent, SERIES_WEEK_NOTES_FALLBACK_PREFIX } from "@/lib/seriesWeekNotesTracking";
 
 type TimeFilter = "24h" | "7d" | "30d" | "1y" | "all";
 
@@ -644,10 +645,18 @@ export default function AnalyticsPage() {
           .lte("created_at", bucketEnd);
 
         // Weekly Notes Opened
-        const { count: weeklyNotesOpened } = await supabase
+        const { count: weeklyNotesOpenedPrimary } = await supabase
           .from("master_actions")
           .select("id", { count: "exact", head: true })
           .eq("action_type", "series_week_notes_opened")
+          .gte("created_at", bucketStart)
+          .lte("created_at", bucketEnd);
+
+        const { count: weeklyNotesOpenedFallback } = await supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "study_group_article_opened")
+          .ilike("action_label", `${SERIES_WEEK_NOTES_FALLBACK_PREFIX}%`)
           .gte("created_at", bucketStart)
           .lte("created_at", bucketEnd);
 
@@ -796,7 +805,7 @@ export default function AnalyticsPage() {
           totalActions: totalActions || 0,
           videosWatched: videosWatched || 0,
           chaptersRead: chaptersRead || 0,
-          weeklyNotesOpened: weeklyNotesOpened || 0,
+          weeklyNotesOpened: (weeklyNotesOpenedPrimary || 0) + (weeklyNotesOpenedFallback || 0),
           notesCreated: notesCreated || 0,
           peopleLearned: peopleLearned || 0,
           placesDiscovered: placesDiscovered || 0,
@@ -923,6 +932,14 @@ export default function AnalyticsPage() {
           .eq("action_type", "series_week_notes_opened")
       );
 
+      const weeklyNotesOpenedFallbackPromise = applyDateFilter(
+        supabase
+          .from("master_actions")
+          .select("id", { count: "exact", head: true })
+          .eq("action_type", "study_group_article_opened")
+          .ilike("action_label", `${SERIES_WEEK_NOTES_FALLBACK_PREFIX}%`)
+      );
+
       // Notes created (from actions)
       const notesPromise = applyDateFilter(
         supabase
@@ -1039,6 +1056,7 @@ export default function AnalyticsPage() {
         dashboardCardBreakdownResult,
         chaptersResult,
         weeklyNotesOpenedResult,
+        weeklyNotesOpenedFallbackResult,
         notesResult,
         peopleResult,
         placesResult,
@@ -1071,6 +1089,7 @@ export default function AnalyticsPage() {
         dashboardCardBreakdownPromise,
         chaptersPromise,
         weeklyNotesOpenedPromise,
+        weeklyNotesOpenedFallbackPromise,
         notesPromise,
         peoplePromise,
         placesPromise,
@@ -1114,8 +1133,8 @@ export default function AnalyticsPage() {
       const videosWatchedError = videosWatchedResult.error;
       const chaptersCount = chaptersResult.count ?? 0;
       const chaptersError = chaptersResult.error;
-      const weeklyNotesOpenedCount = weeklyNotesOpenedResult.count ?? 0;
-      const weeklyNotesOpenedError = weeklyNotesOpenedResult.error;
+      const weeklyNotesOpenedCount = (weeklyNotesOpenedResult.count ?? 0) + (weeklyNotesOpenedFallbackResult.count ?? 0);
+      const weeklyNotesOpenedError = weeklyNotesOpenedResult.error || weeklyNotesOpenedFallbackResult.error;
       const notesCount = notesResult.count ?? 0;
       const notesError = notesResult.error;
       const peopleCount = peopleResult.count ?? 0;
@@ -1337,6 +1356,8 @@ export default function AnalyticsPage() {
         query = query.in("action_type", [...VIDEO_WATCH_ACTION_TYPES]);
       } else if (actionTypeFilter === "daily_bible_tasks_completed") {
         query = query.in("action_type", [...DAILY_BIBLE_TASK_ACTION_TYPES]);
+      } else if (actionTypeFilter === "series_week_notes_opened") {
+        query = query.in("action_type", ["series_week_notes_opened", "study_group_article_opened"]);
       } else if (actionTypeFilter) {
         query = query.eq("action_type", actionTypeFilter);
       }
@@ -1980,7 +2001,7 @@ export default function AnalyticsPage() {
             ? `On ${formattedDate} at ${formattedTime}, ${username} started ${action.action_label}.${counterText}`
             : `On ${formattedDate} at ${formattedTime}, ${username} started a Bible series week.${counterText}`;
           actions.push({ date: formattedDate, text, userId, username, sortKey: actionDate.getTime(), actionType: "series_week_started", url: "/groups" });
-        } else if (action.action_type === "series_week_notes_opened") {
+        } else if (isSeriesWeekNotesActionEvent(action.action_type, action.action_label)) {
           const text = action.action_label
             ? `On ${formattedDate} at ${formattedTime}, ${username} opened ${action.action_label}.${counterText}`
             : `On ${formattedDate} at ${formattedTime}, ${username} opened weekly Bible study notes.${counterText}`;

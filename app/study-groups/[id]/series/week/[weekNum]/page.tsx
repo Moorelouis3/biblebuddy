@@ -18,6 +18,12 @@ import CreditLimitModal from "@/components/CreditLimitModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import UserBadge from "@/components/UserBadge";
 import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
+import {
+  getSeriesWeekNotesFallbackLabel,
+  getSeriesWeekNotesLabel,
+  isSeriesWeekNotesActionEvent,
+  matchesSeriesWeekNotesActionLabel,
+} from "@/lib/seriesWeekNotesTracking";
 
 interface WeekLessonPageProps {
   embeddedGroupId?: string;
@@ -255,6 +261,7 @@ function NotesSection({
   lesson,
   seriesTitle,
   isPaid,
+  done,
   onUnlock,
   onComplete,
   userId,
@@ -263,6 +270,7 @@ function NotesSection({
   lesson: SeriesWeekLesson;
   seriesTitle?: string | null;
   isPaid: boolean;
+  done: boolean;
   onUnlock: () => void;
   onComplete?: () => void;
   userId?: string | null;
@@ -315,18 +323,36 @@ function NotesSection({
 
   async function recordNotesOpen() {
     if (!userId) return;
+    const primaryLabel = getSeriesWeekNotesLabel(seriesTitle, lesson.weekNumber);
+    const fallbackLabel = getSeriesWeekNotesFallbackLabel(seriesTitle, lesson.weekNumber);
     try {
-      await Promise.all([
-        supabase.from("master_actions").insert({
+      const { error: actionError } = await supabase.from("master_actions").insert({
+        user_id: userId,
+        username: displayName || null,
+        action_type: ACTION_TYPE.series_week_notes_opened,
+        action_label: primaryLabel,
+      });
+
+      if (actionError) {
+        const { error: fallbackError } = await supabase.from("master_actions").insert({
           user_id: userId,
           username: displayName || null,
-          action_type: ACTION_TYPE.series_week_notes_opened,
-          action_label: `${seriesTitle || "Bible Series"} Week ${lesson.weekNumber} Notes`,
-        }),
-        onComplete?.(),
-      ]);
+          action_type: ACTION_TYPE.study_group_article_opened,
+          action_label: fallbackLabel,
+        });
+
+        if (fallbackError) {
+          console.warn("[SERIES_NOTES] Failed to insert weekly notes action", {
+            primary: actionError,
+            fallback: fallbackError,
+          });
+        }
+      }
+
+      await onComplete?.();
     } catch (error) {
-      console.error("[SERIES_NOTES] Failed to record notes open", error);
+      console.warn("[SERIES_NOTES] Failed to record notes open", error);
+      await onComplete?.();
     }
   }
 
@@ -384,21 +410,33 @@ function NotesSection({
               Want to understand {lesson.readingReference} better?
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-gray-700">
-              Check out the Chapter Notes.
+              {done ? "Completed. You can open the notes again anytime." : "Check out the Chapter Notes."}
             </p>
-            <p className="mt-2 text-sm leading-relaxed text-gray-700">
-              They include Hebrew and Greek word meanings, cultural and historical context, and verse-by-verse breakdowns.
-            </p>
+            {!done && (
+              <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                They include Hebrew and Greek word meanings, cultural and historical context, and verse-by-verse breakdowns.
+              </p>
+            )}
             <div className="mt-4 flex justify-center">
-              <button
-                type="button"
-                onClick={handleOpenNotes}
-                disabled={!hasNotesAvailable}
-                className="inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-bold text-white transition hover:opacity-90"
-                style={!hasNotesAvailable ? { backgroundColor: "#94a3b8", cursor: "not-allowed" } : { backgroundColor: "#4a9b6f" }}
-              >
-                {hasNotesAvailable ? "Click Here to Open" : "Notes Coming Soon"}
-              </button>
+              {done ? (
+                <button
+                  type="button"
+                  onClick={handleOpenNotes}
+                  className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-xs font-bold text-green-700 transition hover:bg-green-200"
+                >
+                  ✓ Reading Notes Completed
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleOpenNotes}
+                  disabled={!hasNotesAvailable}
+                  className="inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-bold text-white transition hover:opacity-90"
+                  style={!hasNotesAvailable ? { backgroundColor: "#94a3b8", cursor: "not-allowed" } : { backgroundColor: "#4a9b6f" }}
+                >
+                  {hasNotesAvailable ? "Click Here to Open" : "Notes Coming Soon"}
+                </button>
+              )}
             </div>
           </div>
         )}
@@ -480,6 +518,7 @@ function NotesSection({
 const MemoNotesSection = memo(NotesSection, (prev, next) => {
   return (
     prev.isPaid === next.isPaid &&
+    prev.done === next.done &&
     prev.userId === next.userId &&
     prev.displayName === next.displayName &&
     prev.seriesTitle === next.seriesTitle &&
@@ -528,7 +567,6 @@ function ReadingModal({
   const [verses, setVerses] = useState<BibleVerse[]>([]);
   const [loadingVerses, setLoadingVerses] = useState(true);
   const [highlighted, setHighlighted] = useState<Set<number>>(new Set());
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     fetch(`https://bible-api.com/${lesson.readingApiQuery}`)
@@ -563,14 +601,6 @@ function ReadingModal({
     setHighlighted(next);
   }
 
-  function handleShare() {
-    const text = `${lesson.readingReference}\n\n${verses.map((v) => `[${v.verse}] ${v.text.trim()}`).join("\n")}`;
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  }
-
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
@@ -586,7 +616,7 @@ function ReadingModal({
             <p className="text-xs text-orange-600 font-semibold uppercase tracking-wide">Selected Reading</p>
             <p className="text-base font-bold text-gray-900 mt-0.5">{lesson.readingReference}</p>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition text-xl leading-none">âœ•</button>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition text-xl leading-none">&times;</button>
         </div>
 
         {/* Verses */}
@@ -616,12 +646,6 @@ function ReadingModal({
 
         {/* Footer */}
         <div className="px-5 py-4 border-t border-gray-100 flex flex-col gap-2 flex-shrink-0">
-          <button
-            onClick={handleShare}
-            className="w-full py-2.5 rounded-xl text-sm font-semibold border border-gray-200 text-gray-700 hover:bg-gray-50 transition"
-          >
-            {copied ? "Copied!" : "Share Passage"}
-          </button>
           <button
             onClick={() => { onComplete(); onClose(); }}
             className="w-full py-2.5 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
@@ -660,6 +684,23 @@ function TriviaQuiz({
   const [revealed, setRevealed] = useState(false);
   const [score, setScore] = useState(alreadyDone && savedScore !== null ? savedScore : 0);
   const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    if (alreadyDone || savedScore !== null) {
+      setPhase("done");
+      setCurrent(0);
+      setSelected(null);
+      setRevealed(false);
+      setScore(savedScore ?? 0);
+      return;
+    }
+
+    setPhase("start");
+    setCurrent(0);
+    setSelected(null);
+    setRevealed(false);
+    setScore(0);
+  }, [alreadyDone, savedScore]);
 
   async function saveScore(finalScore: number) {
     setSaving(true);
@@ -755,8 +796,8 @@ function TriviaQuiz({
           >
             <span className="font-semibold mr-2">{opt.label}.</span>
             {opt.text}
-            {revealed && opt.label === q.correctAnswer && <span className="ml-2 text-green-600">âœ“</span>}
-            {revealed && opt.label === selected && opt.label !== q.correctAnswer && <span className="ml-2 text-red-500">âœ—</span>}
+            {revealed && opt.label === q.correctAnswer && <span className="ml-2 text-green-600">✓</span>}
+            {revealed && opt.label === selected && opt.label !== q.correctAnswer && <span className="ml-2 text-red-500">✕</span>}
           </button>
         ))}
       </div>
@@ -772,7 +813,7 @@ function TriviaQuiz({
             className="w-full mt-3 py-2.5 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
             style={{ backgroundColor: "#4a9b6f" }}
           >
-            {saving ? "Saving..." : current + 1 >= questions.length ? "Finish & See Score" : "Next Question â†’"}
+            {saving ? "Saving..." : current + 1 >= questions.length ? "Finish & See Score" : "Next Question →"}
           </button>
         </div>
       )}
@@ -1741,23 +1782,64 @@ export default function WeekLessonPage({
   async function loadWeekFinishers(currentSeriesId: string) {
     setLoadingWeekFinishers(true);
     try {
-      const { data: progressRows, error: progressError } = await supabase
-        .from("series_week_progress")
-        .select("user_id")
-        .eq("series_id", currentSeriesId)
-        .eq("week_number", weekNum)
-        .eq("reading_completed", true)
-        .eq("notes_completed", true)
-        .eq("trivia_completed", true)
-        .eq("reflection_posted", true);
+      const [progressRes, triviaRes, notesRes, reflectionsRes] = await Promise.all([
+        supabase
+          .from("series_week_progress")
+          .select("user_id, reading_completed, notes_completed, trivia_completed, reflection_posted")
+          .eq("series_id", currentSeriesId)
+          .eq("week_number", weekNum),
+        supabase
+          .from("series_trivia_scores")
+          .select("user_id")
+          .eq("series_id", currentSeriesId)
+          .eq("week_number", weekNum),
+        supabase
+          .from("master_actions")
+          .select("user_id, action_type, action_label")
+          .in("action_type", [ACTION_TYPE.series_week_notes_opened, ACTION_TYPE.study_group_article_opened]),
+        supabase
+          .from("series_reflections")
+          .select("user_id")
+          .eq("series_id", currentSeriesId)
+          .eq("week_number", weekNum),
+      ]);
 
-      if (progressError) {
-        console.error("[WEEK_FINISHERS] Error loading progress:", progressError);
+      if (progressRes.error) {
+        console.error("[WEEK_FINISHERS] Error loading progress:", progressRes.error);
         setWeekFinishers([]);
         return;
       }
 
-      const finisherIds = [...new Set((progressRows || []).map((row) => row.user_id).filter(Boolean))];
+      const progressMap = new Map<string, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }>();
+      (progressRes.data || []).forEach((row) => {
+        if (!row.user_id) return;
+        progressMap.set(row.user_id, toSeriesWeekProgressState(row));
+      });
+
+      (triviaRes.data || []).forEach((row) => {
+        if (!row.user_id) return;
+        const existing = progressMap.get(row.user_id) ?? toSeriesWeekProgressState();
+        progressMap.set(row.user_id, { ...existing, trivia: true });
+      });
+
+      (notesRes.data || []).forEach((row) => {
+        if (!row.user_id) return;
+        if (!isSeriesWeekNotesActionEvent(row.action_type, row.action_label)) return;
+        if (!matchesSeriesWeekNotesActionLabel(row.action_label, seriesTitle, weekNum)) return;
+        const existing = progressMap.get(row.user_id) ?? toSeriesWeekProgressState();
+        progressMap.set(row.user_id, { ...existing, notes: true });
+      });
+
+      (reflectionsRes.data || []).forEach((row) => {
+        if (!row.user_id) return;
+        const existing = progressMap.get(row.user_id) ?? toSeriesWeekProgressState();
+        progressMap.set(row.user_id, { ...existing, reflection: true });
+      });
+
+      const finisherIds = Array.from(progressMap.entries())
+        .filter(([, progress]) => isSeriesWeekComplete(progress))
+        .map(([userId]) => userId);
+
       if (finisherIds.length === 0) {
         setWeekFinishers([]);
         return;
@@ -1858,7 +1940,7 @@ export default function WeekLessonPage({
       if (seriesRes.data?.id && !isEmbeddedPreviewSeries) {
         const sid = seriesRes.data.id;
         void loadWeekFinishers(sid);
-        const [scheduleRes, progressRowsRes, scoreRes] = await Promise.all([
+        const [scheduleRes, progressRowsRes, scoreRes, notesActionRes] = await Promise.all([
           supabase.from("series_schedules").select("start_date, start_at").eq("series_id", sid).maybeSingle(),
           supabase
             .from("series_week_progress")
@@ -1872,6 +1954,11 @@ export default function WeekLessonPage({
             .eq("series_id", sid)
             .eq("week_number", weekNum)
             .maybeSingle(),
+          supabase
+            .from("master_actions")
+            .select("id, action_type, action_label")
+            .eq("user_id", user.id)
+            .in("action_type", [ACTION_TYPE.series_week_notes_opened, ACTION_TYPE.study_group_article_opened]),
         ]);
 
         const progressMap: Record<number, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }> = {};
@@ -1898,6 +1985,40 @@ export default function WeekLessonPage({
         }
         if (scoreRes.data) {
           setSavedTriviaScore(scoreRes.data.score);
+          if (!currentWeek?.trivia && user.id && sid) {
+            setTriviaDone(true);
+            void supabase
+              .from("series_week_progress")
+              .upsert(
+                {
+                  user_id: user.id,
+                  series_id: sid,
+                  week_number: weekNum,
+                  trivia_completed: true,
+                },
+                { onConflict: "user_id,series_id,week_number" }
+            );
+          }
+        }
+        const hasNotesAction = (notesActionRes.data || []).some((row) =>
+          isSeriesWeekNotesActionEvent(row.action_type, row.action_label)
+          && matchesSeriesWeekNotesActionLabel(row.action_label, seriesRes.data?.title, weekNum)
+        );
+        if (hasNotesAction) {
+          if (!currentWeek?.notes && user.id && sid) {
+            setNotesDone(true);
+            void supabase
+              .from("series_week_progress")
+              .upsert(
+                {
+                  user_id: user.id,
+                  series_id: sid,
+                  week_number: weekNum,
+                  notes_completed: true,
+                },
+                { onConflict: "user_id,series_id,week_number" }
+              );
+          }
         }
 
         const isArchivedEmbeddedSeries = embedded === true && embeddedSeriesIsCurrent === false;
@@ -2123,11 +2244,11 @@ export default function WeekLessonPage({
     updateProgress("reading_completed");
   }
 
-  const handleTriviaComplete = useCallback((score: number) => {
+  function handleTriviaComplete(score: number) {
     setSavedTriviaScore(score);
     setTriviaDone(true);
     void updateProgress("trivia_completed");
-  }, []);
+  }
 
   const handleNotesComplete = useCallback(() => {
     if (notesDone) return Promise.resolve();
@@ -2327,14 +2448,31 @@ export default function WeekLessonPage({
               <p className="text-sm text-gray-600 mb-1">
                 <span className="font-semibold text-gray-900">{lesson.readingReference}</span>
               </p>
-              <p className="text-sm text-gray-500 mb-4">Take a moment to read the passage before continuing.</p>
-              <button
-                onClick={() => setShowReadingModal(true)}
-                className="px-6 py-2.5 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
-                style={{ backgroundColor: "#4a9b6f" }}
-              >
-                {readingDone ? "Re-read Reading" : "Read Reading"}
-              </button>
+              <p className="text-sm text-gray-500 mb-4">
+                {readingDone
+                  ? "Completed. You can open it again anytime."
+                  : "Take a moment to read the passage before continuing."}
+              </p>
+              {readingDone && (
+                <div className="mb-4 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setShowReadingModal(true)}
+                    className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-xs font-bold text-green-700 transition hover:bg-green-200"
+                  >
+                    ✓ Reading Completed
+                  </button>
+                </div>
+              )}
+              {!readingDone && (
+                <button
+                  onClick={() => setShowReadingModal(true)}
+                  className="px-6 py-2.5 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
+                  style={{ backgroundColor: "#4a9b6f" }}
+                >
+                  Read Reading
+                </button>
+              )}
             </div>
           </SectionCard>
 
@@ -2342,6 +2480,7 @@ export default function WeekLessonPage({
             lesson={lesson}
             seriesTitle={seriesTitle}
             isPaid={isPaid}
+            done={notesDone}
             onUnlock={handleUnlockNotes}
             onComplete={handleNotesComplete}
             userId={userId}
@@ -2494,7 +2633,7 @@ export default function WeekLessonPage({
         ) : (
           <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
             <div className="relative w-full max-w-xl max-h-[82vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-5 sm:p-6 my-8">
-              <button type="button" onClick={() => { setSelectedPerson(null); setPersonNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
+              <button type="button" onClick={() => { setSelectedPerson(null); setPersonNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
               <h2 className="text-2xl font-bold mb-4">{selectedPerson.name}</h2>
               {personCreditBlocked || !personNotes ? null : (
               <div>
@@ -2572,7 +2711,7 @@ export default function WeekLessonPage({
         ) : (
           <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
             <div className="relative w-full max-w-xl max-h-[82vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-5 sm:p-6 my-8">
-              <button type="button" onClick={() => { setSelectedKeyword(null); setKeywordNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">âœ•</button>
+              <button type="button" onClick={() => { setSelectedKeyword(null); setKeywordNotes(null); }} className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
               <h2 className="text-2xl font-bold mb-4">{selectedKeyword.name}</h2>
               {keywordCreditBlocked || !keywordNotes ? null : (
               <div>

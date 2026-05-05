@@ -7,7 +7,7 @@ import { triggerToast } from "@/components/AppToast";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import ReactMarkdown from "react-markdown";
-import { useEffect, useMemo, useState, useRef, type MouseEvent } from "react";
+import { useEffect, useMemo, useState, useRef, useCallback, type MouseEvent } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../../lib/supabaseClient";
@@ -24,13 +24,16 @@ import { LouisAvatar } from "@/components/LouisAvatar";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
 import LevelBadge from "@/components/LevelBadge";
 import MentionText from "@/components/MentionText";
+import BibleStudiesSeriesList from "@/components/BibleStudiesSeriesList";
 import { enrichBibleVerses } from "@/lib/bibleHighlighting";
+import { BIBLE_STUDY_SERIES_CATALOG, getBibleStudySeriesCover } from "@/lib/bibleStudiesCatalog";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { ensureBibleEntityLearned } from "@/lib/bibleEntityProgress";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "@/lib/bibleNotes";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
 import { consumeCreditAction } from "@/lib/creditClient";
 import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
+import { isSeriesWeekNotesActionEvent, parseSeriesWeekNotesWeekNumber } from "@/lib/seriesWeekNotesTracking";
 import {
   extractMentionedItemsFromText,
   linkMentionItemsInHtml,
@@ -256,12 +259,6 @@ interface WeekAnalytics {
   reflectors: AnalyticsUser[];
 }
 
-const PLANNED_BIBLE_STUDY_SERIES = [
-  { key: "testing_of_joseph", title: "The Testing of Joseph", subtitle: "14-week group study" },
-  { key: "temptation_of_jesus", title: "The Temptation of Jesus", subtitle: "5-week group study" },
-  { key: "wisdom_of_proverbs", title: "The Wisdom of Proverbs", subtitle: "31-week group study" },
-] as const;
-
 function getWeekUnlockDate(startDate: string, weekNum: number): string {
   const d = new Date(startDate);
   d.setDate(d.getDate() + (weekNum - 1) * 7);
@@ -336,19 +333,6 @@ function getSeriesPromoDescription(title: string | null | undefined, fallback?: 
   }
 
   return fallback || "A guided Bible Buddy study through Scripture with notes, trivia, reflection, and group discussion.";
-}
-
-function getSeriesCardCover(title: string | null | undefined): string | null {
-  const normalizedTitle = normalizeSeriesTitle(title);
-
-  if (normalizedTitle === "the temptation of jesus") return "/TheTemptingofjesusstudy.png";
-  if (normalizedTitle === "the testing of joseph") return "/testingofjoseph.png";
-  if (normalizedTitle === "the wisdom of proverbs") return "/WisdomofProverbs.png";
-  if (normalizedTitle === "the calling of moses") return "/callingofmosesdevotional.png";
-  if (normalizedTitle === "the faith of job") return "/faithofjob.png";
-  if (normalizedTitle === "the heart of david") return "/heartofdaviddevotional.png";
-
-  return null;
 }
 
 function selectFeaturedSeriesPreview(
@@ -442,6 +426,7 @@ function normalizeHubCategoryName(name: string): string {
 
 function getCurrentSeriesCardState(
   startAt: string | null,
+  seriesTitle: string,
   totalWeeks: number,
   nowTs: number
 ): { headline: string; detail: string; cta: string } {
@@ -465,17 +450,16 @@ function getCurrentSeriesCardState(
   const weeksSinceStart = Math.floor((nowTs - startTs) / (7 * 24 * 60 * 60 * 1000));
   const liveWeek = Math.min(totalWeeks, weeksSinceStart + 1);
   if (liveWeek < totalWeeks) {
-    const nextUnlockTs = startTs + liveWeek * 7 * 24 * 60 * 60 * 1000;
     return {
-      headline: `Week ${liveWeek + 1} unlocks in ${formatCountdown(nextUnlockTs, nowTs)}`,
-      detail: `Week ${liveWeek} is live — tap here to start it`,
+      headline: "",
+      detail: `Click here to complete Week ${liveWeek}.`,
       cta: "Open Week Lessons",
     };
   }
 
   return {
-    headline: "All weeks are now live",
-    detail: `Week ${liveWeek} is live — tap here to start it`,
+    headline: "",
+    detail: `Click here to complete Week ${liveWeek}.`,
     cta: "Open Week Lessons",
   };
 }
@@ -2674,6 +2658,74 @@ export default function GroupChatPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [group, posts, activeTab, hubCategories, searchParams]);
 
+  const loadSelectedSeriesWeekProgress = useCallback(async (seriesParam = selectedSeries) => {
+    if (!seriesParam || !userId) return;
+
+    const [progressRes, triviaRes, notesActionsRes] = await Promise.all([
+      supabase.from("series_week_progress")
+        .select("week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
+        .eq("user_id", userId).eq("series_id", seriesParam.id),
+      supabase.from("series_trivia_scores")
+        .select("week_number, score")
+        .eq("user_id", userId).eq("series_id", seriesParam.id),
+      supabase.from("master_actions")
+        .select("action_type, action_label")
+        .eq("user_id", userId)
+        .in("action_type", [ACTION_TYPE.series_week_notes_opened, ACTION_TYPE.study_group_article_opened]),
+    ]);
+
+    const map: Record<number, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }> = {};
+    (progressRes.data || []).forEach((p) => { map[p.week_number] = toSeriesWeekProgressState(p); });
+
+    const triviaRepairWeeks = new Set<number>();
+    const notesRepairWeeks = new Set<number>();
+    (triviaRes.data || []).forEach((row) => {
+      const existing = map[row.week_number] ?? toSeriesWeekProgressState();
+      if (!existing.trivia) {
+        triviaRepairWeeks.add(row.week_number);
+      }
+      map[row.week_number] = {
+        ...existing,
+        trivia: true,
+      };
+    });
+
+    (notesActionsRes.data || []).forEach((row) => {
+      if (!isSeriesWeekNotesActionEvent(row.action_type, row.action_label)) return;
+      const weekNumber = parseSeriesWeekNotesWeekNumber(row.action_label, seriesParam.title);
+      if (!weekNumber) return;
+      const existing = map[weekNumber] ?? toSeriesWeekProgressState();
+      if (!existing.notes) {
+        notesRepairWeeks.add(weekNumber);
+      }
+      map[weekNumber] = {
+        ...existing,
+        notes: true,
+      };
+    });
+
+    setSeriesWeekProgress(map);
+
+    const repairWeeks = new Set<number>([...triviaRepairWeeks, ...notesRepairWeeks]);
+    if (repairWeeks.size > 0) {
+      const repairRows = Array.from(repairWeeks).map((week_number) => ({
+        user_id: userId,
+        series_id: seriesParam.id,
+        week_number,
+        ...(triviaRepairWeeks.has(week_number) ? { trivia_completed: true } : {}),
+        ...(notesRepairWeeks.has(week_number) ? { notes_completed: true } : {}),
+      }));
+
+      const { error } = await supabase
+        .from("series_week_progress")
+        .upsert(repairRows, { onConflict: "user_id,series_id,week_number" });
+
+      if (error) {
+        console.error("[GROUP_SERIES] Failed to repair week completion flags", error);
+      }
+    }
+  }, [selectedSeries, userId]);
+
   // â”€â”€ Load series posts + schedule + progress when series is selected â”€â”€â”€â”€â”€
   useEffect(() => {
     if (!selectedSeries) return;
@@ -2686,19 +2738,9 @@ export default function GroupChatPage() {
         setSeriesStartDateInput(resolvedStart ? toDateTimeLocalValue(resolvedStart) : "");
         setEditingSeriesStart(!resolvedStart);
       });
-    // Load week progress for current user
-    if (userId) {
-      supabase.from("series_week_progress")
-        .select("week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
-        .eq("user_id", userId).eq("series_id", selectedSeries.id)
-        .then(({ data }) => {
-          const map: Record<number, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }> = {};
-          (data || []).forEach((p) => { map[p.week_number] = toSeriesWeekProgressState(p); });
-          setSeriesWeekProgress(map);
-        });
-    }
+    void loadSelectedSeriesWeekProgress(selectedSeries);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedSeries]);
+  }, [selectedSeries, loadSelectedSeriesWeekProgress]);
 
   useEffect(() => {
   }, [selectedSeries?.id, activeTab]);
@@ -4562,7 +4604,12 @@ export default function GroupChatPage() {
         {!selectedHubItem && <div className="max-w-2xl mx-auto px-4 py-4">
 
           {activeTab === "home" && homeFeedSeriesPreview && (() => {
-            const cardState = getCurrentSeriesCardState(homeFeedSeriesStartAt, homeFeedSeriesPreview.total_weeks, nowTs);
+            const cardState = getCurrentSeriesCardState(
+              homeFeedSeriesStartAt,
+              homeFeedSeriesPreview.title,
+              homeFeedSeriesPreview.total_weeks,
+              nowTs,
+            );
             const bannerMeta = getSeriesBannerMeta(homeFeedSeriesPreview.title);
             return (
               <>
@@ -4606,12 +4653,14 @@ export default function GroupChatPage() {
                         <p className="text-xs text-gray-600 text-right whitespace-nowrap">{formatDateTimeLabel(homeFeedSeriesStartAt)}</p>
                       </div>
                     ) : (
-                      <p
-                        className="mt-2 text-lg font-bold"
-                        style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
-                      >
-                        {cardState.headline}
-                      </p>
+                      cardState.headline ? (
+                        <p
+                          className="mt-2 text-lg font-bold"
+                          style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
+                        >
+                          {cardState.headline}
+                        </p>
+                      ) : null
                     )}
                     {!homeFeedSeriesStartAt || new Date(homeFeedSeriesStartAt).getTime() <= nowTs ? (
                       <p className="text-sm text-gray-600 mt-1">{cardState.detail}</p>
@@ -5060,7 +5109,10 @@ export default function GroupChatPage() {
               embeddedSeriesId={selectedSeries.id}
               embeddedSeriesTitle={selectedSeries.title}
               embeddedSeriesIsCurrent={selectedSeries.is_current}
-              onBack={() => setSelectedSeriesWeek(null)}
+              onBack={() => {
+                setSelectedSeriesWeek(null);
+                void loadSelectedSeriesWeekProgress(selectedSeries);
+              }}
             />
           ) : activeTab === "bible_studies" && selectedSeries ? (
             <div className="flex flex-col gap-4">
@@ -5592,178 +5644,106 @@ export default function GroupChatPage() {
           /* â”€â”€ BIBLE STUDIES â€” SERIES LIST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
           ) : activeTab === "bible_studies" ? (
             <div className="flex flex-col gap-4">
-              {loadingSeries ? (
-                <p className="text-sm text-gray-400 text-center py-8">Loading...</p>
-              ) : (
-                <div className="flex flex-col gap-5">
-                  {PLANNED_BIBLE_STUDY_SERIES.map((planned) => {
-                    const matchingSeries =
-                      seriesList.find((series) => normalizeSeriesTitle(series.title) === normalizeSeriesTitle(planned.title)) ??
-                      null;
-                    const isLive = normalizeSeriesTitle(currentSeriesPreview?.title) === normalizeSeriesTitle(planned.title);
-                    const liveSeries = isLive ? matchingSeries : null;
-                    const previewSeries = matchingSeries ?? (isLeader ? buildSeriesPreviewRecord(planned.title) : liveSeries);
-                    const isJosephSeries = normalizeSeriesTitle(planned.title) === "the testing of joseph";
-                    const isTemptationSeries = normalizeSeriesTitle(planned.title) === "the temptation of jesus";
-                    const isWisdomSeries = normalizeSeriesTitle(planned.title) === "the wisdom of proverbs";
-                    const isPastStudy = isTemptationSeries;
-                    const canOpenPastStudy = isPastStudy && (userIsPaid || isLeader);
-                    const canOpen = isLive || isLeader || canOpenPastStudy;
-                    const startLabel = isLive && currentSeriesStartAt ? formatDateTimeLabel(currentSeriesStartAt) : null;
-                    const startCountdown =
-                      isLive && currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs
-                        ? formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)
-                        : null;
-                    const coverSrc = getSeriesCardCover(planned.title);
-                    const josephStartLabel = formatDateTimeLabel(homeFeedSeriesStartAt);
-                    const josephCountdown =
-                      isJosephSeries && new Date(homeFeedSeriesStartAt).getTime() > nowTs
-                        ? formatCountdown(new Date(homeFeedSeriesStartAt).getTime(), nowTs)
-                        : null;
-                    const statusLabel = isPastStudy
-                      ? userIsPaid || isLeader
-                        ? "Past Study"
-                        : "Pro Only"
-                      : isWisdomSeries
-                        ? "Next Bible Study"
-                      : isLive
-                      ? "Current Study"
-                      : isJosephSeries
-                        ? "Starts Saturday"
-                      : canOpen
-                          ? "Preview"
-                          : "Locked";
-                    return (
-                      <button
-                        key={planned.key}
-                        type="button"
-                        onClick={() => {
+              <BibleStudiesSeriesList
+                loading={loadingSeries}
+                items={BIBLE_STUDY_SERIES_CATALOG.map((planned) => {
+                  const matchingSeries =
+                    seriesList.find((series) => normalizeSeriesTitle(series.title) === normalizeSeriesTitle(planned.title)) ??
+                    null;
+                  const isLive = normalizeSeriesTitle(currentSeriesPreview?.title) === normalizeSeriesTitle(planned.title);
+                  const liveSeries = isLive ? matchingSeries : null;
+                  const previewSeries = matchingSeries ?? (isLeader ? buildSeriesPreviewRecord(planned.title) : liveSeries);
+                  const isJosephSeries = normalizeSeriesTitle(planned.title) === "the testing of joseph";
+                  const isTemptationSeries = normalizeSeriesTitle(planned.title) === "the temptation of jesus";
+                  const isWisdomSeries = normalizeSeriesTitle(planned.title) === "the wisdom of proverbs";
+                  const isPastStudy = isTemptationSeries;
+                  const canOpenPastStudy = isPastStudy && (userIsPaid || isLeader);
+                  const canOpen = isLive || isLeader || canOpenPastStudy;
+                  const startLabel = isLive && currentSeriesStartAt ? formatDateTimeLabel(currentSeriesStartAt) : null;
+                  const startCountdown =
+                    isLive && currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() > nowTs
+                      ? formatCountdown(new Date(currentSeriesStartAt).getTime(), nowTs)
+                      : null;
+                  const josephStartLabel = formatDateTimeLabel(homeFeedSeriesStartAt);
+                  const josephCountdown =
+                    isJosephSeries && new Date(homeFeedSeriesStartAt).getTime() > nowTs
+                      ? formatCountdown(new Date(homeFeedSeriesStartAt).getTime(), nowTs)
+                      : null;
+
+                  let statusLabel = "Locked";
+                  let statusTone: "current" | "upcoming" | "past" | "pro" | "preview" | "locked" = "locked";
+                  let detail: string | null = null;
+                  let footerLeft: string | null = null;
+                  let footerRight: string | null = null;
+
+                  if (isPastStudy) {
+                    statusLabel = userIsPaid || isLeader ? "Past Study" : "Pro Only";
+                    statusTone = userIsPaid || isLeader ? "past" : "pro";
+                    footerLeft = canOpenPastStudy ? "Replay the finished study anytime" : "Past studies are unlocked with Pro";
+                    footerRight = canOpenPastStudy ? "Open Past Study" : "Pro Locked";
+                  } else if (isWisdomSeries) {
+                    statusLabel = "Next Bible Study";
+                    statusTone = "upcoming";
+                    footerLeft = "Coming next in the lineup";
+                    footerRight = "Coming Next";
+                  } else if (isLive) {
+                    statusLabel = "Current Study";
+                    statusTone = "current";
+
+                    if (currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() <= nowTs) {
+                      const startTs = new Date(currentSeriesStartAt).getTime();
+                      const totalWeeks = liveSeries?.total_weeks ?? 1;
+                      const weeksSinceStart = Math.floor((nowTs - startTs) / (7 * 24 * 60 * 60 * 1000));
+                      const liveWeek = Math.min(totalWeeks, weeksSinceStart + 1);
+                      detail = `${planned.title} Week ${liveWeek} Now Live. Click here to complete this week's Bible study.`;
+                    } else if (startCountdown) {
+                      detail = `Study starts in ${startCountdown}${startLabel ? ` · ${startLabel}` : ""}`;
+                    } else {
+                      detail = "Start date coming soon";
+                    }
+                  } else if (isJosephSeries && josephCountdown) {
+                    statusLabel = "Starts Saturday";
+                    statusTone = "upcoming";
+                    detail = `Week 1 starts in ${josephCountdown} · ${josephStartLabel}`;
+                  } else if (canOpen) {
+                    statusLabel = "Preview";
+                    statusTone = "preview";
+                    detail = "Preview unlocked for leaders";
+                    footerRight = "Open Study";
+                  } else {
+                    statusLabel = "Locked";
+                    statusTone = "locked";
+                    detail = "Locked until this series is released";
+                    footerRight = "Locked";
+                  }
+
+                  return {
+                    key: planned.key,
+                    title: planned.title,
+                    subtitle: planned.subtitle,
+                    coverSrc: getBibleStudySeriesCover(planned.title),
+                    statusLabel,
+                    statusTone,
+                    detail,
+                    footerLeft,
+                    footerRight,
+                    disabled: !canOpen,
+                    onClick: canOpen
+                      ? () => {
                           if (isPastStudy && !canOpenPastStudy) {
                             setShowPastStudyProModal(true);
                             return;
                           }
-                          if (canOpen && previewSeries) setSelectedSeries(previewSeries);
-                        }}
-                        className={`w-full rounded-2xl border text-left transition-all duration-200 overflow-hidden ${
-                          canOpen
-                            ? "bg-white border-gray-200 shadow-sm hover:shadow-xl hover:scale-[1.01]"
-                            : isPastStudy
-                              ? "bg-white border-gray-200 shadow-sm hover:shadow-lg"
-                              : "bg-white border-gray-200 shadow-sm opacity-80 cursor-not-allowed"
-                        }`}
-                      >
-                        <div className="p-2 sm:p-3">
-                          <div className="relative rounded-xl overflow-hidden border border-gray-200 bg-gray-100">
-                            {coverSrc ? (
-                              <>
-                                <img
-                                  src={coverSrc}
-                                  alt={`${planned.title} cover`}
-                                  className={`w-full h-40 sm:h-48 object-cover transition ${
-                                    isJosephSeries || isTemptationSeries ? "" : isWisdomSeries ? "" : "grayscale"
-                                  }`}
-                                  style={{
-                                    objectPosition: isJosephSeries ? "center 30%" : isTemptationSeries ? "center 42%" : "center center",
-                                  }}
-                                />
-                              </>
-                            ) : (
-                              <div className="h-40 sm:h-48 bg-gradient-to-br from-gray-100 to-gray-200" />
-                            )}
-                          </div>
-                        </div>
-                        <div className="px-4 pb-4 pt-1">
-                          <div className="flex items-center justify-between gap-3">
-                            <p className="text-lg font-semibold text-gray-900 leading-tight">{planned.title}</p>
-                            <span
-                              className={`text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ${
-                                isPastStudy
-                                  ? canOpenPastStudy
-                                    ? "bg-[#efe0ff] text-[#7d4ab3]"
-                                    : "bg-[#fff1f1] text-[#d62828]"
-                                  : isLive
-                                  ? "bg-[#d4ecd4] text-[#4f7e54]"
-                                  : isJosephSeries
-                                    ? "bg-[#fff1f1] text-[#d62828]"
-                                    : canOpen
-                                      ? "bg-amber-100 text-amber-700"
-                                      : "bg-gray-100 text-gray-500"
-                              }`}
-                            >
-                              {statusLabel}
-                            </span>
-                          </div>
-                          <p className="mt-1 text-sm text-gray-500">{planned.subtitle}</p>
-                          {isJosephSeries && josephCountdown ? (
-                            <div className="mt-3">
-                              <p className="text-base font-bold" style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}>
-                                Week 1 starts in {josephCountdown}
-                              </p>
-                              <p className="text-xs text-gray-500 mt-1">{josephStartLabel}</p>
-                            </div>
-                          ) : isLive ? (
-                            <p className="text-sm mt-3 text-gray-600">
-                              {startCountdown ? (
-                                <>
-                                  <span>Study starts in </span>
-                                  <span className="font-bold" style={{ color: "#d62828" }}>{startCountdown}</span>
-                                  {startLabel ? <span className="text-gray-500"> · {startLabel}</span> : null}
-                                </>
-                              ) : currentSeriesStartAt && new Date(currentSeriesStartAt).getTime() <= nowTs ? (
-                                (() => {
-                                  const startTs = new Date(currentSeriesStartAt).getTime();
-                                  const totalWeeks = liveSeries?.total_weeks ?? 1;
-                                  const weeksSinceStart = Math.floor((nowTs - startTs) / (7 * 24 * 60 * 60 * 1000));
-                                  const liveWeek = Math.min(totalWeeks, weeksSinceStart + 1);
-                                  if (liveWeek < totalWeeks) {
-                                    const nextUnlockTs = startTs + liveWeek * 7 * 24 * 60 * 60 * 1000;
-                                    return (
-                                      <>
-                                        <span className="font-semibold" style={{ color: "#4f7e54" }}>Week {liveWeek} Active</span>
-                                        <span> · Week {liveWeek + 1} live in </span>
-                                        <span className="font-bold" style={{ color: "#d62828" }}>{formatCountdown(nextUnlockTs, nowTs)}</span>
-                                      </>
-                                    );
-                                  }
-                                  return <span className="font-semibold" style={{ color: "#4f7e54" }}>Week {liveWeek} Active · Final week</span>;
-                                })()
-                              ) : (
-                                <span className="text-gray-400">Start date coming soon</span>
-                              )}
-                            </p>
-                          ) : !isPastStudy && !isWisdomSeries && canOpen ? (
-                            <p className="mt-3 text-sm text-amber-600">Preview unlocked for leaders</p>
-                          ) : !isPastStudy && !isWisdomSeries && !canOpen ? (
-                            <p className="mt-3 text-sm text-gray-400">Locked until this series is released</p>
-                          ) : null}
-                          {!(isTemptationSeries || isJosephSeries || isWisdomSeries) && (
-                            <div className="mt-4 flex items-center justify-between text-sm">
-                              <span className="font-medium text-gray-500">
-                                {isPastStudy
-                                  ? canOpenPastStudy
-                                    ? "Replay the finished study anytime"
-                                    : "Past studies are unlocked with Pro"
-                                  : planned.title === "The Testing of Joseph"
-                                    ? "Current featured study"
-                                    : "Coming next in the lineup"}
-                              </span>
-                              <span className={`font-semibold ${canOpen ? "text-[#8d5d38]" : "text-gray-400"}`}>
-                                {isPastStudy
-                                  ? canOpenPastStudy
-                                    ? "Open Past Study"
-                                    : "Pro Locked"
-                                  : canOpen
-                                    ? "Open Study"
-                                    : "Locked"}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
+                          if (previewSeries) setSelectedSeries(previewSeries);
+                        }
+                      : isPastStudy
+                        ? () => {
+                            setShowPastStudyProModal(true);
+                          }
+                        : null,
+                  };
+                })}
+              />
             </div>
 
           /* â”€â”€ HUB TABS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */

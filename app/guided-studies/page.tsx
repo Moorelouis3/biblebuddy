@@ -1,5 +1,5 @@
-// app/guided-studies/page.tsx
 "use client";
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ACTION_TYPE } from "../../lib/actionTypes";
@@ -13,6 +13,13 @@ const tools = [
     emoji: "🌅",
     title: "Devotionals",
     desc: "Guided daily Bible reading and reflection",
+  },
+  {
+    href: "/bible-studies",
+    bg: "bg-emerald-100 border-emerald-200",
+    emoji: "📖",
+    title: "Bible Studies",
+    desc: "Weekly Bible study series through Joseph, Jesus, and Proverbs",
   },
   {
     href: "/reading-plans",
@@ -82,7 +89,7 @@ export default function GuidedStudiesPage() {
       <div className="flex flex-col gap-4">
         {tools.map((t) => (
           <Link
-            key={t.href}
+            key={`${t.href}:${t.title}`}
             href={t.href}
             onClick={() => {
               if (!userId) return;

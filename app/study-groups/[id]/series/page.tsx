@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
+import { ACTION_TYPE } from "@/lib/actionTypes";
 import { getSeriesTotalWeeks, getSeriesWeekLesson } from "@/lib/seriesContent";
 import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
+import { isSeriesWeekNotesActionEvent, parseSeriesWeekNotesWeekNumber } from "@/lib/seriesWeekNotesTracking";
 
 interface AnalyticsUser {
   user_id: string;
@@ -162,11 +164,18 @@ export default function SeriesOverviewPage() {
 
       const sid = seriesRes.data.id;
 
-      const [scheduleRes, progressRes] = await Promise.all([
+      const [scheduleRes, progressRes, triviaRes, notesActionsRes] = await Promise.all([
         supabase.from("series_schedules").select("start_date, start_at").eq("series_id", sid).maybeSingle(),
         supabase.from("series_week_progress")
           .select("week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
           .eq("user_id", user.id).eq("series_id", sid),
+        supabase.from("series_trivia_scores")
+          .select("week_number, score")
+          .eq("user_id", user.id).eq("series_id", sid),
+        supabase.from("master_actions")
+          .select("action_type, action_label")
+          .eq("user_id", user.id)
+          .in("action_type", [ACTION_TYPE.series_week_notes_opened, ACTION_TYPE.study_group_article_opened]),
       ]);
 
       const sd = resolveSeriesStart(scheduleRes.data);
@@ -178,6 +187,52 @@ export default function SeriesOverviewPage() {
       (progressRes.data || []).forEach((p) => {
         progMap[p.week_number] = toSeriesWeekProgressState(p);
       });
+
+      const triviaRepairWeeks = new Set<number>();
+      const notesRepairWeeks = new Set<number>();
+      (triviaRes.data || []).forEach((row) => {
+        const existing = progMap[row.week_number] ?? toSeriesWeekProgressState();
+        if (!existing.trivia) {
+          triviaRepairWeeks.add(row.week_number);
+        }
+        progMap[row.week_number] = {
+          ...existing,
+          trivia: true,
+        };
+      });
+
+      (notesActionsRes.data || []).forEach((row) => {
+        if (!isSeriesWeekNotesActionEvent(row.action_type, row.action_label)) return;
+        const weekNumber = parseSeriesWeekNotesWeekNumber(row.action_label, seriesRes.data?.title);
+        if (!weekNumber) return;
+        const existing = progMap[weekNumber] ?? toSeriesWeekProgressState();
+        if (!existing.notes) {
+          notesRepairWeeks.add(weekNumber);
+        }
+        progMap[weekNumber] = {
+          ...existing,
+          notes: true,
+        };
+      });
+
+      const repairWeeks = new Set<number>([...triviaRepairWeeks, ...notesRepairWeeks]);
+      if (repairWeeks.size > 0) {
+        const repairRows = Array.from(repairWeeks).map((week_number) => ({
+          user_id: user.id,
+          series_id: sid,
+          week_number,
+          ...(triviaRepairWeeks.has(week_number) ? { trivia_completed: true } : {}),
+          ...(notesRepairWeeks.has(week_number) ? { notes_completed: true } : {}),
+        }));
+
+        const { error: repairError } = await supabase
+          .from("series_week_progress")
+          .upsert(repairRows, { onConflict: "user_id,series_id,week_number" });
+
+        if (repairError) {
+          console.error("[SERIES_OVERVIEW] Failed to repair week completion flags", repairError);
+        }
+      }
 
       const isLeader = memberRes.data?.role === "leader";
       const totalWeeks = getSeriesTotalWeeks(seriesRes.data.title);
