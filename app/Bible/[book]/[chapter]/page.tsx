@@ -392,6 +392,7 @@ export default function BibleChapterPage() {
             if (!completedPeople.has(personNameKey)) {
               const result = await ensureBibleEntityLearned({ kind: "people", name: personName, userId });
               if (result.inserted) {
+                triggerPoints(1);
                 setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
               }
             }
@@ -439,6 +440,7 @@ export default function BibleChapterPage() {
             if (!completedPlaces.has(normalizedPlace)) {
               const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId });
               if (result.inserted) {
+                triggerPoints(1);
                 setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
               }
             }
@@ -575,6 +577,7 @@ RULES:
 
               const result = await ensureBibleEntityLearned({ kind: "keywords", name: selectedKeyword!.name, userId });
               if (result.inserted) {
+                triggerPoints(1);
                 setCompletedKeywords((prev) => new Set(prev).add(result.normalizedKey));
               }
             }

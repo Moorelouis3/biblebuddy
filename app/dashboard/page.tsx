@@ -1160,18 +1160,15 @@ export default function DashboardPage() {
           return total + (match ? Number(match[1]) || 0 : 0);
         }, 0);
 
-        const entityPointActionTypes = new Set<string>([
+        const duplicateEntityViewActionTypes = new Set<string>([
           ACTION_TYPE.person_viewed,
-          ACTION_TYPE.person_learned,
           ACTION_TYPE.place_viewed,
-          ACTION_TYPE.place_discovered,
           ACTION_TYPE.keyword_viewed,
-          ACTION_TYPE.keyword_mastered,
         ]);
 
         const actionTypes = (actionsResult.data || [])
           .filter((row) => row?.action_label !== JESSICA_BONUS_ACTION_LABEL)
-          .filter((row) => !entityPointActionTypes.has(row?.action_type || ""))
+          .filter((row) => !duplicateEntityViewActionTypes.has(row?.action_type || ""))
           .filter((row) => {
             if (row?.action_type !== ACTION_TYPE.scrambled_word_answered) return true;
             return typeof row?.action_label === "string" ? !row.action_label.includes("[no-point]") : true;

@@ -428,6 +428,7 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
           if (!isCompleted) {
             const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId });
             if (result.inserted) {
+              triggerPoints(1);
               setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
             }
           }
@@ -578,6 +579,7 @@ FINAL RULES:
             if (!completedPlaces.has(normalizedPlace)) {
               const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId });
               if (result.inserted) {
+                triggerPoints(1);
                 setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
               }
             }
@@ -714,6 +716,7 @@ Be accurate to Scripture.`;
           if (!isCompleted) {
             const result = await ensureBibleEntityLearned({ kind: "keywords", name: selectedKeyword!.name, userId });
             if (result.inserted) {
+              triggerPoints(1);
               setCompletedKeywords((prev) => new Set(prev).add(result.normalizedKey));
             }
           }
@@ -1127,3 +1130,4 @@ Be accurate to Scripture.`;
   );
 }
 
+import { triggerPoints } from "./PointsPop";

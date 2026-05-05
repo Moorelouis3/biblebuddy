@@ -278,6 +278,7 @@ export default function BibleBuddyTvEpisodeModal({
           if (userId && !completedPeople.has(key)) {
             const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId });
             if (result.inserted) {
+              triggerPoints(1);
               setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
             }
           }
@@ -297,6 +298,7 @@ export default function BibleBuddyTvEpisodeModal({
               if (!completedPlaces.has(normalizedPlace)) {
                 const result = await ensureBibleEntityLearned({ kind: "places", name: currentTarget.name, userId });
                 if (result.inserted) {
+                  triggerPoints(1);
                   setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
                 }
               }
@@ -317,6 +319,7 @@ export default function BibleBuddyTvEpisodeModal({
           if (userId && !completedKeywords.has(key)) {
             const result = await ensureBibleEntityLearned({ kind: "keywords", name: currentTarget.name, userId });
             if (result.inserted) {
+              triggerPoints(1);
               setCompletedKeywords((prev) => new Set(prev).add(result.normalizedKey));
             }
           }
@@ -657,3 +660,4 @@ export default function BibleBuddyTvEpisodeModal({
   );
 }
 
+import { triggerPoints } from "./PointsPop";

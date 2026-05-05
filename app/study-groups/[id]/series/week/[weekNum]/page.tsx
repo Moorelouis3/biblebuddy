@@ -1977,6 +1977,7 @@ export default function WeekLessonPage({
         if (userId && !completedPeople.has(key)) {
           const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId, username: displayName });
           if (result.inserted) {
+            triggerPoints(1);
             setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
           }
         }
@@ -2018,6 +2019,7 @@ export default function WeekLessonPage({
             if (!completedPlaces.has(key)) {
               const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId, username: displayName });
               if (result.inserted) {
+                triggerPoints(1);
                 setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
               }
             }
@@ -2058,6 +2060,7 @@ export default function WeekLessonPage({
         if (userId && !completedKeywords.has(key)) {
           const result = await ensureBibleEntityLearned({ kind: "keywords", name: selectedKeyword!.name, userId, username: displayName });
           if (result.inserted) {
+            triggerPoints(1);
             setCompletedKeywords((prev) => new Set(prev).add(result.normalizedKey));
           }
         }
@@ -2621,3 +2624,4 @@ export default function WeekLessonPage({
     </div>
   );
 }
+import { triggerPoints } from "@/components/PointsPop";

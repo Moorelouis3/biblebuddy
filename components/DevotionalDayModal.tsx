@@ -272,6 +272,7 @@ export default function DevotionalDayModal({
           if (!isCompleted) {
             const result = await ensureBibleEntityLearned({ kind: "people", name: primaryName, userId, username });
             if (result.inserted) {
+              triggerPoints(1);
               setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
             }
           }
@@ -414,6 +415,7 @@ FINAL RULES:
             if (!completedPlaces.has(normalizedPlace)) {
               const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId, username });
               if (result.inserted) {
+                triggerPoints(1);
                 setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
               }
             }
@@ -524,6 +526,7 @@ Be accurate to Scripture.`;
           if (!isCompleted) {
             const result = await ensureBibleEntityLearned({ kind: "keywords", name: selectedKeyword!.name, userId, username });
             if (result.inserted) {
+              triggerPoints(1);
               setCompletedKeywords((prev) => new Set(prev).add(result.normalizedKey));
             }
           }
@@ -985,3 +988,4 @@ Be accurate to Scripture.`;
   );
 }
 
+import { triggerPoints } from "./PointsPop";

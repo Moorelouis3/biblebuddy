@@ -15,6 +15,7 @@ import { consumeCreditAction } from "../../lib/creditClient";
 import { findPersonNotes } from "../../lib/bibleNotes";
 import { ensureBibleEntityLearned } from "../../lib/bibleEntityProgress";
 import { requestLouisNotes } from "../../lib/requestLouisNotes";
+import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
 import CreditEducationModal from "../../components/CreditEducationModal";
 // Utility to get/set session flag for education modal
@@ -828,6 +829,7 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
             username,
           });
           if (result.inserted) {
+            triggerPoints(1);
             setCompletedPeople((prev) => {
               const next = new Set(prev);
               next.add(result.normalizedKey);

@@ -13,6 +13,7 @@ import { ACTION_TYPE } from "../../lib/actionTypes";
 import { consumeCreditAction } from "../../lib/creditClient";
 import { findKeywordNotes } from "../../lib/bibleNotes";
 import { ensureBibleEntityLearned } from "../../lib/bibleEntityProgress";
+import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -320,6 +321,7 @@ function KeywordsInTheBiblePageContent() {
             username,
           });
           if (result.inserted) {
+            triggerPoints(1);
             setCompletedKeywords((prev) => {
               const next = new Set(prev);
               next.add(result.normalizedKey);

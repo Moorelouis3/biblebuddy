@@ -18,12 +18,6 @@ type BibleEntityProgressResult = {
 function dispatchEntityPointAward(actionType: string, label: string) {
   if (typeof document !== "undefined") {
     document.dispatchEvent(
-      new CustomEvent("bb:points", {
-        detail: { delta: 1, label },
-      })
-    );
-
-    document.dispatchEvent(
       new CustomEvent("bb:study-progress-changed", {
         detail: { actionType, label, at: String(Date.now()) },
       })

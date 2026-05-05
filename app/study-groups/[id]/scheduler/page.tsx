@@ -9,6 +9,7 @@ import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
+import { triggerPoints } from "@/components/PointsPop";
 import PostMentionSuggestions from "@/components/PostMentionSuggestions";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import {
@@ -1599,10 +1600,8 @@ export default function StudyGroupSchedulerPage() {
         const primaryName = resolveBibleReference("people", selectedPersonName);
 
         const personNameKey = primaryName.toLowerCase().trim();
-        const isCompleted = completedPeople.has(personNameKey);
-        const isViewed = viewedPeople.has(personNameKey);
 
-        if (adminUserId && !isCompleted && !isViewed) {
+        if (adminUserId) {
           const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
             userId: adminUserId,
             actionLabel: selectedPersonName,
@@ -1613,6 +1612,20 @@ export default function StudyGroupSchedulerPage() {
           }
 
           setViewedPeople((prev) => new Set(prev).add(personNameKey));
+          triggerPoints(1);
+          if (typeof window !== "undefined") {
+            const stamp = String(Date.now());
+            const progressEvent = new CustomEvent("bb:study-progress-changed", {
+              detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
+            });
+            window.dispatchEvent(progressEvent);
+            if (typeof document !== "undefined") {
+              document.dispatchEvent(new CustomEvent("bb:study-progress-changed", {
+                detail: { actionType: ACTION_TYPE.person_viewed, person: primaryName, at: stamp },
+              }));
+            }
+            window.localStorage.setItem("bb:last-study-progress-change", stamp);
+          }
         }
 
         const { data: existing, error: existingError } = await supabase
@@ -1745,7 +1758,7 @@ FINAL RULES:
     }
 
     void loadPersonNotes();
-  }, [selectedPerson, adminUserId, completedPeople, viewedPeople]);
+  }, [selectedPerson, adminUserId]);
 
   useEffect(() => {
     if (!selectedPlace) {

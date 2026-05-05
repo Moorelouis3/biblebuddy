@@ -13,6 +13,7 @@ import { ACTION_TYPE } from "../../lib/actionTypes";
 import { consumeCreditAction } from "../../lib/creditClient";
 import { findPlaceNotes } from "../../lib/bibleNotes";
 import { ensureBibleEntityLearned } from "../../lib/bibleEntityProgress";
+import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -363,6 +364,7 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
             username,
           });
           if (result.inserted) {
+            triggerPoints(1);
             setCompletedPlaces((prev) => {
               const next = new Set(prev);
               next.add(result.normalizedKey);
