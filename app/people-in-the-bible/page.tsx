@@ -804,6 +804,27 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
         if (cachedNotes) {
           setPersonNotes(cachedNotes);
           setLoadingNotes(false);
+
+          if (userId && !completedPeople.has(personNameKey)) {
+            try {
+              const result = await ensureBibleEntityLearned({
+                kind: "people",
+                name: person.name,
+                userId,
+                username,
+              });
+              if (result.inserted) {
+                triggerPoints(1);
+                setCompletedPeople((prev) => {
+                  const next = new Set(prev);
+                  next.add(result.normalizedKey);
+                  return next;
+                });
+              }
+            } catch (progressErr) {
+              console.error("Error saving person progress:", progressErr);
+            }
+          }
           return;
         }
 
@@ -822,19 +843,23 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
         setLoadingNotes(false);
 
         if (userId && !completedPeople.has(personNameKey)) {
-          const result = await ensureBibleEntityLearned({
-            kind: "people",
-            name: person.name,
-            userId,
-            username,
-          });
-          if (result.inserted) {
-            triggerPoints(1);
-            setCompletedPeople((prev) => {
-              const next = new Set(prev);
-              next.add(result.normalizedKey);
-              return next;
+          try {
+            const result = await ensureBibleEntityLearned({
+              kind: "people",
+              name: person.name,
+              userId,
+              username,
             });
+            if (result.inserted) {
+              triggerPoints(1);
+              setCompletedPeople((prev) => {
+                const next = new Set(prev);
+                next.add(result.normalizedKey);
+                return next;
+              });
+            }
+          } catch (progressErr) {
+            console.error("Error saving person progress:", progressErr);
           }
         }
         return;
@@ -1110,43 +1135,6 @@ FINAL RULES:
 
     generateNotes();
   }, [selectedPerson, userId, loadingProgress]);
-
-  // Mark person as complete (called automatically when notes load)
-  const markPersonAsComplete = async () => {
-    if (!userId || !selectedPerson) return;
-    const personNameKey = selectedPerson.name.toLowerCase().trim();
-    if (completedPeople.has(personNameKey)) return;
-
-    try {
-      const { error } = await supabase
-        .from("people_progress")
-        .upsert({ user_id: userId, person_name: personNameKey }, { onConflict: "user_id,person_name" });
-      if (error) { console.error("Error auto-marking person:", error); return; }
-
-      const { data: { user: authUser } } = await supabase.auth.getUser();
-      let actionUsername = "User";
-      if (authUser) {
-        const meta: any = authUser.user_metadata || {};
-        actionUsername = meta.firstName || meta.first_name || (authUser.email ? authUser.email.split("@")[0] : null) || "User";
-      }
-      const personDisplayName = selectedPerson.name.split(" ").map((w: string) => /^\d+$/.test(w) ? w : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(" ");
-      await supabase.from("master_actions").insert({ user_id: userId, username: actionUsername, action_type: ACTION_TYPE.person_learned, action_label: personDisplayName });
-
-      const { count } = await supabase.from("people_progress").select("*", { count: "exact", head: true }).eq("user_id", userId);
-      const { data: currentStats } = await supabase.from("profile_stats").select("username, chapters_completed_count, notes_created_count, places_discovered_count, keywords_mastered_count").eq("user_id", userId).maybeSingle();
-      const finalUsername = currentStats?.username || username || "User";
-      const totalActions = (currentStats?.chapters_completed_count || 0) + (currentStats?.notes_created_count || 0) + (count || 0) + (currentStats?.places_discovered_count || 0) + (currentStats?.keywords_mastered_count || 0);
-      await supabase.from("profile_stats").upsert({ user_id: userId, username: finalUsername, people_learned_count: count || 0, total_actions: totalActions, updated_at: new Date().toISOString() }, { onConflict: "user_id" });
-
-      setCompletedPeople((prev) => { const next = new Set(prev); next.add(personNameKey); return next; });
-    } catch (err) {
-      console.error("Error auto-marking person:", err);
-    }
-  };
-
-  // Auto-mark person as complete when notes finish loading
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => { if (personNotes && userId && selectedPerson) { markPersonAsComplete(); } }, [personNotes]);
 
   // Scroll to letter section
   const scrollToLetter = (letter: string) => {

@@ -335,6 +335,27 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
         if (cachedNotes) {
           setPlaceNotes(cachedNotes);
           setLoadingNotes(false);
+
+          if (userId && !completedPlaces.has(normalizedPlace)) {
+            try {
+              const result = await ensureBibleEntityLearned({
+                kind: "places",
+                name: selectedPlace.name,
+                userId,
+                username,
+              });
+              if (result.inserted) {
+                triggerPoints(1);
+                setCompletedPlaces((prev) => {
+                  const next = new Set(prev);
+                  next.add(result.normalizedKey);
+                  return next;
+                });
+              }
+            } catch (progressErr) {
+              console.error("Error saving place progress:", progressErr);
+            }
+          }
           return;
         }
 
@@ -357,19 +378,23 @@ ${place} is a Bible place, and Louis is still getting the full explanation ready
         setLoadingNotes(false);
 
         if (userId && !completedPlaces.has(normalizedPlace)) {
-          const result = await ensureBibleEntityLearned({
-            kind: "places",
-            name: selectedPlace.name,
-            userId,
-            username,
-          });
-          if (result.inserted) {
-            triggerPoints(1);
-            setCompletedPlaces((prev) => {
-              const next = new Set(prev);
-              next.add(result.normalizedKey);
-              return next;
+          try {
+            const result = await ensureBibleEntityLearned({
+              kind: "places",
+              name: selectedPlace.name,
+              userId,
+              username,
             });
+            if (result.inserted) {
+              triggerPoints(1);
+              setCompletedPlaces((prev) => {
+                const next = new Set(prev);
+                next.add(result.normalizedKey);
+                return next;
+              });
+            }
+          } catch (progressErr) {
+            console.error("Error saving place progress:", progressErr);
           }
         }
         return;
@@ -606,43 +631,6 @@ RULES:
 
     generateNotes();
   }, [selectedPlace, userId, loadingProgress, completedPlaces]);
-
-  // Mark place as complete (called automatically when notes load)
-  const markPlaceAsComplete = async () => {
-    if (!userId || !selectedPlace) return;
-    const placeNameKey = selectedPlace.name.toLowerCase().trim().replace(/\s+/g, "_");
-    if (completedPlaces.has(placeNameKey)) return;
-
-    try {
-      const { error } = await supabase
-        .from("places_progress")
-        .upsert({ user_id: userId, place_name: placeNameKey }, { onConflict: "user_id,place_name" });
-      if (error) { console.error("Error auto-marking place:", error); return; }
-
-      const { data: { user: authUser } } = await supabase.auth.getUser();
-      let actionUsername = "User";
-      if (authUser) {
-        const meta: any = authUser.user_metadata || {};
-        actionUsername = meta.firstName || meta.first_name || (authUser.email ? authUser.email.split("@")[0] : null) || "User";
-      }
-      const placeDisplayName = selectedPlace.name.split(" ").map((w: string) => /^\d+$/.test(w) ? w : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(" ");
-      await supabase.from("master_actions").insert({ user_id: userId, username: actionUsername, action_type: ACTION_TYPE.place_discovered, action_label: placeDisplayName });
-
-      const { count } = await supabase.from("places_progress").select("*", { count: "exact", head: true }).eq("user_id", userId);
-      const { data: currentStats } = await supabase.from("profile_stats").select("username, chapters_completed_count, notes_created_count, people_learned_count, keywords_mastered_count").eq("user_id", userId).maybeSingle();
-      const finalUsername = currentStats?.username || username || "User";
-      const totalActions = (currentStats?.chapters_completed_count || 0) + (currentStats?.notes_created_count || 0) + (currentStats?.people_learned_count || 0) + (count || 0) + (currentStats?.keywords_mastered_count || 0);
-      await supabase.from("profile_stats").upsert({ user_id: userId, username: finalUsername, places_discovered_count: count || 0, total_actions: totalActions, updated_at: new Date().toISOString() }, { onConflict: "user_id" });
-
-      setCompletedPlaces((prev) => { const next = new Set(prev); next.add(placeNameKey); return next; });
-    } catch (err) {
-      console.error("Error auto-marking place:", err);
-    }
-  };
-
-  // Auto-mark place as complete when notes finish loading
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => { if (placeNotes && userId && selectedPlace) { markPlaceAsComplete(); } }, [placeNotes]);
 
   // Scroll to letter section
   const scrollToLetter = (letter: string) => {

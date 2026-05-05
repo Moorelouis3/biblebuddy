@@ -112,12 +112,20 @@ export async function ensureBibleEntityLearned({
     return { inserted: false, normalizedKey };
   }
 
-  const { error: upsertError } = await supabase
+  const { error: insertError } = await supabase
     .from(config.table)
-    .upsert({ user_id: userId, [config.column]: normalizedKey }, { onConflict: `user_id,${config.column}` });
+    .insert({ user_id: userId, [config.column]: normalizedKey });
 
-  if (upsertError) {
-    throw upsertError;
+  if (insertError) {
+    const isDuplicate =
+      insertError.code === "23505" ||
+      /duplicate key value/i.test(insertError.message || "");
+
+    if (!isDuplicate) {
+      throw insertError;
+    }
+
+    return { inserted: false, normalizedKey };
   }
 
   const { count, error: countError } = await supabase

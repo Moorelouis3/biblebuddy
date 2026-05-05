@@ -292,6 +292,27 @@ function KeywordsInTheBiblePageContent() {
         if (cachedNotes) {
           setKeywordNotes(cachedNotes);
           setLoadingNotes(false);
+
+          if (userId && !completedKeywords.has(keywordKey)) {
+            try {
+              const result = await ensureBibleEntityLearned({
+                kind: "keywords",
+                name: keyword.name,
+                userId,
+                username,
+              });
+              if (result.inserted) {
+                triggerPoints(1);
+                setCompletedKeywords((prev) => {
+                  const next = new Set(prev);
+                  next.add(result.normalizedKey);
+                  return next;
+                });
+              }
+            } catch (progressErr) {
+              console.error("Error saving keyword progress:", progressErr);
+            }
+          }
           return;
         }
 
@@ -314,19 +335,23 @@ function KeywordsInTheBiblePageContent() {
         setNotesError(null);
 
         if (userId && !completedKeywords.has(keywordKey)) {
-          const result = await ensureBibleEntityLearned({
-            kind: "keywords",
-            name: keyword.name,
-            userId,
-            username,
-          });
-          if (result.inserted) {
-            triggerPoints(1);
-            setCompletedKeywords((prev) => {
-              const next = new Set(prev);
-              next.add(result.normalizedKey);
-              return next;
+          try {
+            const result = await ensureBibleEntityLearned({
+              kind: "keywords",
+              name: keyword.name,
+              userId,
+              username,
             });
+            if (result.inserted) {
+              triggerPoints(1);
+              setCompletedKeywords((prev) => {
+                const next = new Set(prev);
+                next.add(result.normalizedKey);
+                return next;
+              });
+            }
+          } catch (progressErr) {
+            console.error("Error saving keyword progress:", progressErr);
           }
         }
       } catch (err: any) {
@@ -344,85 +369,6 @@ function KeywordsInTheBiblePageContent() {
 
     void loadNotes();
   }, [selectedKeyword, userId, loadingProgress]);
-
-  // Mark keyword as complete (called automatically when notes load)
-  const markKeywordAsComplete = async () => {
-    if (!userId || !selectedKeyword) return;
-    const keywordNameKey = selectedKeyword.name.toLowerCase().trim();
-    if (completedKeywords.has(keywordNameKey)) return;
-
-    try {
-      const { error } = await supabase
-        .from("keywords_progress")
-        .upsert({ user_id: userId, keyword_name: keywordNameKey }, { onConflict: "user_id,keyword_name" });
-      if (error) {
-        console.error("Error auto-marking keyword:", error);
-        return;
-      }
-
-      const { data: { user: authUser } } = await supabase.auth.getUser();
-      let actionUsername = "User";
-      if (authUser) {
-        const meta: any = authUser.user_metadata || {};
-        actionUsername = meta.firstName || meta.first_name || (authUser.email ? authUser.email.split("@")[0] : null) || "User";
-      }
-
-      const keywordDisplayName = selectedKeyword.name
-        .split(" ")
-        .map((w: string) => /^\d+$/.test(w) ? w : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-        .join(" ");
-
-      await supabase.from("master_actions").insert({
-        user_id: userId,
-        username: actionUsername,
-        action_type: ACTION_TYPE.keyword_mastered,
-        action_label: keywordDisplayName,
-      });
-
-      const { count } = await supabase
-        .from("keywords_progress")
-        .select("*", { count: "exact", head: true })
-        .eq("user_id", userId);
-
-      const { data: currentStats } = await supabase
-        .from("profile_stats")
-        .select("username, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count")
-        .eq("user_id", userId)
-        .maybeSingle();
-
-      const finalUsername = currentStats?.username || username || "User";
-      const totalActions =
-        (currentStats?.chapters_completed_count || 0) +
-        (currentStats?.notes_created_count || 0) +
-        (currentStats?.people_learned_count || 0) +
-        (currentStats?.places_discovered_count || 0) +
-        (count || 0);
-
-      await supabase.from("profile_stats").upsert({
-        user_id: userId,
-        username: finalUsername,
-        keywords_mastered_count: count || 0,
-        total_actions: totalActions,
-        updated_at: new Date().toISOString(),
-      }, { onConflict: "user_id" });
-
-      setCompletedKeywords((prev) => {
-        const next = new Set(prev);
-        next.add(keywordNameKey);
-        return next;
-      });
-    } catch (err) {
-      console.error("Error auto-marking keyword:", err);
-    }
-  };
-
-  // Auto-mark keyword as complete when notes finish loading
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    if (keywordNotes && userId && selectedKeyword) {
-      markKeywordAsComplete();
-    }
-  }, [keywordNotes]);
 
   // Scroll to letter section
   const scrollToLetter = (letter: string) => {
