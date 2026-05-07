@@ -5,6 +5,7 @@ import {
   type RecurringQuestionOverridePayload,
 } from "./groupRecurringOverrides";
 import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
+import { insertGroupPostWithRetry } from "./groupPostInsert";
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 
 async function resolveDisplayName(supabaseAdmin: SupabaseClient, userId: string) {
@@ -179,28 +180,22 @@ export async function ensureWeeklyGroupQuestionPost(
     `<p>${resolvedQuestion.intro}</p>` +
     `<p>${resolvedQuestion.commentPrompt}</p>`;
 
-  const { data: post, error: postError } = await supabaseAdmin
-    .from("group_posts")
-    .insert({
-      group_id: groupId,
-      user_id: postOwnerUserId,
-      display_name: displayName,
-      title: resolvedQuestion.prompt,
-      category: "weekly_question",
-      content,
-    })
-    .select("id")
-    .single();
-
-  if (postError || !post) {
-    throw new Error(postError?.message || "Could not create weekly question post.");
-  }
+  const postId = await insertGroupPostWithRetry(supabaseAdmin, {
+    group_id: groupId,
+    user_id: postOwnerUserId,
+    display_name: displayName,
+    title: resolvedQuestion.prompt,
+    category: "weekly_question",
+    content,
+  }, {
+    skipInsertNotifications: true,
+  });
 
   const { error: questionError } = await supabaseAdmin
     .from("weekly_group_questions")
     .insert({
       group_id: groupId,
-      post_id: post.id,
+      post_id: postId,
       week_key: resolvedQuestion.weekKey,
       prompt_key: resolvedQuestion.promptKey,
       subject_title: resolvedQuestion.subjectTitle,
@@ -211,9 +206,9 @@ export async function ensureWeeklyGroupQuestionPost(
     });
 
   if (questionError) {
-    await supabaseAdmin.from("group_posts").delete().eq("id", post.id);
+    await supabaseAdmin.from("group_posts").delete().eq("id", postId);
     throw new Error(questionError.message || "Could not save weekly question.");
   }
 
-  return { ok: true, skipped: false as const, postId: post.id, weekKey: resolvedQuestion.weekKey };
+  return { ok: true, skipped: false as const, postId, weekKey: resolvedQuestion.weekKey };
 }

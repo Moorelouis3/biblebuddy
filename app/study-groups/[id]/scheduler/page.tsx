@@ -104,9 +104,18 @@ function stripHtml(html: string) {
 }
 
 function getErrorMessage(error: unknown, fallback: string) {
-  if (error instanceof Error && error.message) return error.message;
-  if (error && typeof error === "object" && "message" in error && typeof (error as { message?: unknown }).message === "string") {
-    return (error as { message: string }).message;
+  const rawMessage =
+    error instanceof Error && error.message
+      ? error.message
+      : error && typeof error === "object" && "message" in error && typeof (error as { message?: unknown }).message === "string"
+        ? (error as { message: string }).message
+        : null;
+
+  if (rawMessage) {
+    if (rawMessage.toLowerCase().includes("statement timeout")) {
+      return "Posting is taking longer than usual right now. Please try again in a moment.";
+    }
+    return rawMessage;
   }
   return fallback;
 }
@@ -161,6 +170,13 @@ function getBerlinDateParts(date = new Date()) {
 
 function getBerlinDateWithOffset(offsetDays: number) {
   const berlin = getBerlinDateParts();
+  const date = new Date(Date.UTC(berlin.year, berlin.month - 1, berlin.day, 12, 0, 0));
+  date.setUTCDate(date.getUTCDate() + offsetDays);
+  return date;
+}
+
+function getBerlinDateWithOffsetFrom(baseDate: Date, offsetDays: number) {
+  const berlin = getBerlinDateParts(baseDate);
   const date = new Date(Date.UTC(berlin.year, berlin.month - 1, berlin.day, 12, 0, 0));
   date.setUTCDate(date.getUTCDate() + offsetDays);
   return date;
@@ -231,13 +247,6 @@ function convertBerlinLocalInputToIso(value: string) {
   return finalDate.toISOString();
 }
 
-function formatIsoForBerlinInput(iso: string | null | undefined) {
-  if (!iso) return "";
-  const parts = getBerlinDateTimeParts(new Date(iso));
-  const pad = (value: number) => String(value).padStart(2, "0");
-  return `${parts.year}-${pad(parts.month)}-${pad(parts.day)}T${pad(parts.hour)}:${pad(parts.minute)}`;
-}
-
 function formatQueueDateTime(iso: string | null | undefined) {
   if (!iso) return "Not scheduled";
   return new Intl.DateTimeFormat("en-US", {
@@ -247,6 +256,56 @@ function formatQueueDateTime(iso: string | null | undefined) {
     hour: "numeric",
     minute: "2-digit",
   }).format(new Date(iso));
+}
+
+function formatBerlinLocalInputFromDate(date: Date, hour: number, minute: number) {
+  const parts = getBerlinDateTimeParts(date);
+  const pad = (value: number) => String(value).padStart(2, "0");
+  return `${parts.year}-${pad(parts.month)}-${pad(parts.day)}T${pad(hour)}:${pad(minute)}`;
+}
+
+function getNextBaseQueueAutoScheduleIso(now = new Date()) {
+  let candidateDate = getBerlinDateWithOffsetFrom(now, 0);
+  let candidateIso = convertBerlinLocalInputToIso(formatBerlinLocalInputFromDate(candidateDate, 2, 0));
+
+  if (!candidateIso || new Date(candidateIso).getTime() <= now.getTime()) {
+    candidateDate = getBerlinDateWithOffsetFrom(now, 1);
+    candidateIso = convertBerlinLocalInputToIso(formatBerlinLocalInputFromDate(candidateDate, 2, 0));
+  }
+
+  return candidateIso;
+}
+
+function getNextDayBerlin2amIso(afterIso: string) {
+  return convertBerlinLocalInputToIso(
+    formatBerlinLocalInputFromDate(getBerlinDateWithOffsetFrom(new Date(afterIso), 1), 2, 0),
+  );
+}
+
+function getNextQueueAutoScheduleIso(
+  queueItems: QueueItem[],
+  editingQueueItemId?: string | null,
+  existingScheduledFor?: string | null,
+) {
+  if (existingScheduledFor) return existingScheduledFor;
+
+  const candidateIso = getNextBaseQueueAutoScheduleIso();
+
+  const latestScheduledIso = queueItems
+    .filter((item) => item.id !== editingQueueItemId && item.status !== "published" && item.scheduled_for)
+    .map((item) => item.scheduled_for as string)
+    .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
+    .at(-1);
+
+  if (!latestScheduledIso) return candidateIso;
+
+  const latestPlusOneIso = getNextDayBerlin2amIso(latestScheduledIso);
+  if (!latestPlusOneIso) return candidateIso;
+  if (!candidateIso) return latestPlusOneIso;
+
+  return new Date(latestPlusOneIso).getTime() > new Date(candidateIso).getTime()
+    ? latestPlusOneIso
+    : candidateIso;
 }
 
 function parseBibleReference(reference: string) {
@@ -637,7 +696,6 @@ export default function StudyGroupSchedulerPage() {
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
 
   const [newPostTitle, setNewPostTitle] = useState("");
-  const [queueScheduledFor, setQueueScheduledFor] = useState("");
   const [composerMode, setComposerMode] = useState<"text" | "photo" | "video">("text");
   const [composerPhotoFile, setComposerPhotoFile] = useState<File | null>(null);
   const [composerPhotoPreview, setComposerPhotoPreview] = useState<string | null>(null);
@@ -825,6 +883,10 @@ export default function StudyGroupSchedulerPage() {
     });
   }, [carouselQueue, recurringFeedItems]);
   const activeCalendarDayKey = expandedCalendarDayKey ?? schedulerCalendarDays[0]?.dateKey ?? null;
+  const nextQueueAutoScheduleIso = useMemo(
+    () => getNextQueueAutoScheduleIso(carouselQueue, editingQueueItemId, editingQueueItem?.scheduled_for ?? null),
+    [carouselQueue, editingQueueItemId, editingQueueItem?.scheduled_for],
+  );
 
   async function loadCarouselQueue(currentUserId: string) {
     setQueueLoading(true);
@@ -835,11 +897,45 @@ export default function StudyGroupSchedulerPage() {
         .select("id, group_id, created_by, post_style, title, caption, cover_image_url, scheduled_for, status, published_post_id, published_at, created_at")
         .eq("group_id", groupId)
         .eq("created_by", currentUserId)
-        .order("created_at", { ascending: false });
+        .order("scheduled_for", { ascending: true })
+        .order("created_at", { ascending: true });
 
       if (loadError) throw loadError;
 
       const rows = (data || []) as QueueItem[];
+      const activeRows = rows.filter((item) => item.status !== "published");
+      const unscheduledRows = activeRows
+        .filter((item) => !item.scheduled_for)
+        .sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
+
+      if (unscheduledRows.length > 0) {
+        let latestScheduledIso = activeRows
+          .filter((item) => item.scheduled_for)
+          .map((item) => item.scheduled_for as string)
+          .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
+          .at(-1) ?? getNextBaseQueueAutoScheduleIso();
+
+        for (const item of unscheduledRows) {
+          const scheduledFor = latestScheduledIso;
+          if (!scheduledFor) continue;
+
+          const { error: normalizeError } = await supabase
+            .from("group_feed_carousel_queue")
+            .update({
+              scheduled_for: scheduledFor,
+              status: "scheduled",
+              updated_at: new Date().toISOString(),
+            })
+            .eq("id", item.id);
+
+          if (normalizeError) throw normalizeError;
+
+          item.scheduled_for = scheduledFor;
+          item.status = "scheduled";
+          latestScheduledIso = getNextDayBerlin2amIso(scheduledFor) ?? scheduledFor;
+        }
+      }
+
       const publishedIds = rows
         .filter((item) => item.status === "published" && item.published_post_id)
         .map((item) => item.published_post_id as string);
@@ -887,7 +983,7 @@ export default function StudyGroupSchedulerPage() {
         }
       }
 
-      setCarouselQueue(rows);
+      setCarouselQueue(rows.filter((item) => item.status !== "published"));
     } catch (err) {
       setQueueError(getErrorMessage(err, "Could not load your private feed."));
     } finally {
@@ -992,7 +1088,6 @@ export default function StudyGroupSchedulerPage() {
     setEditingQueueItemId(null);
     setShowPostComposerModal(false);
     setNewPostTitle("");
-    setQueueScheduledFor("");
     postEditor?.commands.clearContent();
     setComposerPhotoFile(null);
     setComposerPhotoPreview(null);
@@ -1009,7 +1104,6 @@ export default function StudyGroupSchedulerPage() {
     setEditingQueueItemId(item.id);
     setShowPostComposerModal(true);
     setNewPostTitle(item.title || "");
-    setQueueScheduledFor(formatIsoForBerlinInput(item.scheduled_for));
     postEditor?.commands.setContent(item.caption || "");
     setComposerPhotoFile(null);
     setComposerVideoFile(null);
@@ -1083,6 +1177,15 @@ export default function StudyGroupSchedulerPage() {
         mediaUrl = data.publicUrl;
       }
 
+      const resolvedScheduledFor =
+        editingQueueItemId && editingQueueItem?.scheduled_for
+          ? editingQueueItem.scheduled_for
+          : nextQueueAutoScheduleIso;
+
+      if (!resolvedScheduledFor) {
+        throw new Error("Could not find the next 2:00 AM Berlin slot.");
+      }
+
       const payload = {
         group_id: groupId,
         created_by: adminUserId,
@@ -1090,8 +1193,8 @@ export default function StudyGroupSchedulerPage() {
         title: newPostTitle.trim() || null,
         caption: normalizedContent || null,
         cover_image_url: mediaUrl,
-        scheduled_for: convertBerlinLocalInputToIso(queueScheduledFor),
-        status: queueScheduledFor ? ("scheduled" as const) : ("draft" as const),
+        scheduled_for: resolvedScheduledFor,
+        status: "scheduled" as const,
       };
 
       if (editingQueueItemId) {
@@ -1110,7 +1213,7 @@ export default function StudyGroupSchedulerPage() {
       resetPostComposer();
       await loadCarouselQueue(adminUserId);
     } catch (err) {
-      setQueueError(getErrorMessage(err, "Could not save this draft."));
+      setQueueError(getErrorMessage(err, "Could not save this scheduled post."));
     } finally {
       setSavingQueueItem(false);
     }
@@ -2246,9 +2349,9 @@ RULES:
             <div className="mx-auto flex w-fit rounded-full bg-[#f7f2ff] p-2 shadow-sm">
               <LouisAvatar mood="think" size={54} />
             </div>
-            <p className="mt-4 text-lg font-bold text-gray-900">No drafts yet</p>
+            <p className="mt-4 text-lg font-bold text-gray-900">No scheduled posts yet</p>
             <p className="mt-2 text-sm leading-relaxed text-gray-500">
-              Louis is ready when you are. Save a post here and it will show up with your other queued posts before it goes live on the real feed.
+              Louis is ready when you are. Save a post here and it will automatically take the next 2:00 AM Berlin slot before it goes live on the real feed.
             </p>
           </div>
         ) : (
@@ -2359,15 +2462,12 @@ RULES:
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-2">Schedule in Berlin time</label>
-                <input
-                  type="datetime-local"
-                  value={queueScheduledFor}
-                  onChange={(event) => setQueueScheduledFor(event.target.value)}
-                  className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#d6b18b]"
-                />
+                <label className="block text-sm font-semibold text-gray-800 mb-2">Auto-scheduled in Berlin time</label>
+                <div className="w-full rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3 text-sm font-semibold text-gray-900">
+                  {formatQueueDateTime(nextQueueAutoScheduleIso)}
+                </div>
                 <p className="mt-2 text-xs text-gray-500">
-                  Leave this empty to keep it as a draft. Add a Berlin date and time if you want it to post automatically.
+                  Every post in this queue takes the next available 2:00 AM Berlin slot in order.
                 </p>
               </div>
 
@@ -2502,7 +2602,7 @@ RULES:
                   disabled={savingQueueItem || (!stripHtml(postEditor?.getHTML() ?? "").length && !composerPhotoFile && !composerVideoFile && !editingQueueItem?.cover_image_url)}
                   className="px-5 py-2.5 rounded-xl text-sm font-semibold text-white disabled:opacity-50 transition bg-[#4a9b6f]"
                 >
-                  {savingQueueItem ? "Saving..." : editingQueueItem ? "Save Changes" : "Save Draft"}
+                  {savingQueueItem ? "Saving..." : editingQueueItem ? "Save Changes" : "Add to Queue"}
                 </button>
               </div>
             </div>

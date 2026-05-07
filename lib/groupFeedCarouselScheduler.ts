@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { insertGroupPostWithRetry } from "./groupPostInsert";
 
 export const HOME_FEED_COVER_MARKER = "<!--home-feed-cover-->";
 
@@ -107,44 +108,44 @@ export async function publishGroupFeedCarouselItem(
   const displayName = await resolveDisplayName(supabaseAdmin, item.created_by);
   const hasMedia = Boolean(item.cover_image_url);
   const contentHtml = `${item.post_style === "cover" ? HOME_FEED_COVER_MARKER : ""}${captionToHtml(item.caption)}`;
-
-  const { data: insertedPost, error: postError } = await supabaseAdmin
-    .from("group_posts")
-    .insert({
-      group_id: item.group_id,
-      user_id: item.created_by,
-      display_name: displayName,
-      title: item.title?.trim() || null,
-      category: "general",
-      content: contentHtml,
-      media_url: hasMedia ? item.cover_image_url : null,
-      link_url: null,
-    })
-    .select("id")
-    .single();
-
-  if (postError || !insertedPost) {
-    throw new Error(postError?.message || "Could not publish queued carousel post.");
-  }
+  const insertedPostId = await insertGroupPostWithRetry(supabaseAdmin, {
+    group_id: item.group_id,
+    user_id: item.created_by,
+    display_name: displayName,
+    title: item.title?.trim() || null,
+    category: "general",
+    content: contentHtml,
+    media_url: hasMedia ? item.cover_image_url : null,
+    link_url: null,
+  }, {
+    skipInsertNotifications: true,
+  });
 
   const publishedAt = new Date().toISOString();
-  const { error: updateError } = await supabaseAdmin
+  const { error: deleteError } = await supabaseAdmin
     .from("group_feed_carousel_queue")
-    .update({
-      status: "published",
-      published_post_id: insertedPost.id,
-      published_at: publishedAt,
-      updated_at: publishedAt,
-    })
+    .delete()
     .eq("id", item.id);
 
-  if (updateError) {
-    throw new Error(updateError.message || "Could not update queued carousel post after publishing.");
+  if (deleteError) {
+    const { error: updateError } = await supabaseAdmin
+      .from("group_feed_carousel_queue")
+      .update({
+        status: "published",
+        published_post_id: insertedPostId,
+        published_at: publishedAt,
+        updated_at: publishedAt,
+      })
+      .eq("id", item.id);
+
+    if (updateError) {
+      throw new Error(updateError.message || deleteError.message || "Could not update queued carousel post after publishing.");
+    }
   }
 
   return {
     alreadyPublished: false,
-    postId: insertedPost.id,
+    postId: insertedPostId,
     publishedAt,
   };
 }

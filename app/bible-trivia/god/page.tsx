@@ -5,6 +5,7 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
+import { triggerPoints } from "@/components/PointsPop";
 
 interface Question {
   id: string;
@@ -149,6 +150,7 @@ export default function GodTriviaPage() {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isFlipped, setIsFlipped] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
+  const [earnedCorrectCount, setEarnedCorrectCount] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [loadingVerseText, setLoadingVerseText] = useState(false);
@@ -235,6 +237,10 @@ const meta: any = user.user_metadata || {};
           const errorText = await response.text();
           console.error('Failed to record trivia answer:', response.status, errorText);
         } else {
+          const payload = (await response.json().catch(() => ({}))) as { awardedPoint?: boolean };
+          if (payload.awardedPoint) {
+            setEarnedCorrectCount((current) => current + 1);
+          }
           console.log('Successfully recorded trivia answer');
         }
 
@@ -271,6 +277,11 @@ const meta: any = user.user_metadata || {};
       setShowResults(true);
     }
   };
+
+  useEffect(() => {
+    if (!showResults || earnedCorrectCount <= 0) return;
+    triggerPoints(earnedCorrectCount);
+  }, [showResults, earnedCorrectCount]);
 
   const getEncouragementMessage = (score: number) => {
     if (score === 10) return "Perfect! You're a God expert!";
@@ -449,7 +460,6 @@ const meta: any = user.user_metadata || {};
     </div>
   );
 }
-
 
 
 

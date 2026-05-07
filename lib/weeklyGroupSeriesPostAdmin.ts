@@ -12,6 +12,7 @@ import {
   type RecurringSeriesOverridePayload,
 } from "./groupRecurringOverrides";
 import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
+import { insertGroupPostWithRetry } from "./groupPostInsert";
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 
 export type WeeklySeriesKey =
@@ -310,28 +311,22 @@ export async function ensureWeeklyGroupSeriesPost(
     }
   }
 
-  const { data: post, error: postError } = await supabaseAdmin
-    .from("group_posts")
-    .insert({
-      group_id: groupId,
-      user_id: postOwnerUserId,
-      display_name: displayName,
-      title: resolvedSeries.title,
-      category: seriesKey,
-      content: resolvedSeries.contentHtml,
-    })
-    .select("id")
-    .single();
-
-  if (postError || !post) {
-    throw new Error(postError?.message || "Could not create recurring group post.");
-  }
+  const postId = await insertGroupPostWithRetry(supabaseAdmin, {
+    group_id: groupId,
+    user_id: postOwnerUserId,
+    display_name: displayName,
+    title: resolvedSeries.title,
+    category: seriesKey,
+    content: resolvedSeries.contentHtml,
+  }, {
+    skipInsertNotifications: true,
+  });
 
   const { error: seriesError } = await supabaseAdmin
     .from("weekly_group_series_posts")
     .insert({
       group_id: groupId,
-      post_id: post.id,
+      post_id: postId,
       week_key: weekKey,
       series_key: seriesKey,
       subject_title: SERIES_CONFIG[seriesKey].label,
@@ -342,9 +337,9 @@ export async function ensureWeeklyGroupSeriesPost(
     });
 
   if (seriesError) {
-    await supabaseAdmin.from("group_posts").delete().eq("id", post.id);
+    await supabaseAdmin.from("group_posts").delete().eq("id", postId);
     throw new Error(seriesError.message || "Could not save recurring group post.");
   }
 
-  return { ok: true, skipped: false as const, postId: post.id, weekKey };
+  return { ok: true, skipped: false as const, postId, weekKey };
 }

@@ -5,6 +5,7 @@ import {
   type RecurringTriviaOverridePayload,
 } from "./groupRecurringOverrides";
 import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
+import { insertGroupPostWithRetry } from "./groupPostInsert";
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 
 async function resolveDisplayName(supabaseAdmin: SupabaseClient, userId: string) {
@@ -182,28 +183,22 @@ export async function ensureWeeklyGroupTriviaPost(
     `<p>${resolvedTrivia.intro}</p>` +
     `<p>Tap into this week's 10-question Bible trivia, see your score, and compare with the group board below.</p>`;
 
-  const { data: post, error: postError } = await supabaseAdmin
-    .from("group_posts")
-    .insert({
-      group_id: groupId,
-      user_id: postOwnerUserId,
-      display_name: displayName,
-      title: `Weekly Bible Trivia: ${resolvedTrivia.subjectTitle}`,
-      category: "weekly_trivia",
-      content,
-    })
-    .select("id")
-    .single();
-
-  if (postError || !post) {
-    throw new Error(postError?.message || "Could not create weekly trivia post.");
-  }
+  const postId = await insertGroupPostWithRetry(supabaseAdmin, {
+    group_id: groupId,
+    user_id: postOwnerUserId,
+    display_name: displayName,
+    title: `Weekly Bible Trivia: ${resolvedTrivia.subjectTitle}`,
+    category: "weekly_trivia",
+    content,
+  }, {
+    skipInsertNotifications: true,
+  });
 
   const { error: setError } = await supabaseAdmin
     .from("weekly_group_trivia_sets")
     .insert({
       group_id: groupId,
-      post_id: post.id,
+      post_id: postId,
       week_key: resolvedTrivia.weekKey,
       subject_key: resolvedTrivia.subjectKey,
       subject_title: resolvedTrivia.subjectTitle,
@@ -213,9 +208,9 @@ export async function ensureWeeklyGroupTriviaPost(
     });
 
   if (setError) {
-    await supabaseAdmin.from("group_posts").delete().eq("id", post.id);
+    await supabaseAdmin.from("group_posts").delete().eq("id", postId);
     throw new Error(setError.message || "Could not save weekly trivia.");
   }
 
-  return { ok: true, skipped: false as const, postId: post.id, weekKey: resolvedTrivia.weekKey };
+  return { ok: true, skipped: false as const, postId, weekKey: resolvedTrivia.weekKey };
 }

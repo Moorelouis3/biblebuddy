@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
+function isStatementTimeoutError(message: string | null | undefined) {
+  return typeof message === "string" && message.toLowerCase().includes("statement timeout");
+}
+
+function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ groupId: string }> },
@@ -74,23 +82,53 @@ export async function POST(
 
   const postId = crypto.randomUUID();
   const createdAt = new Date().toISOString();
+  let insertErrorMessage: string | null = null;
 
-  const { error: insertError } = await supabaseAdmin
-    .from("group_posts")
-    .insert({
-      id: postId,
-      group_id: groupId,
-      user_id: requester.id,
-      display_name: displayName,
-      title: title || null,
-      category,
-      content,
-      media_url: mediaUrl,
-      link_url: linkUrl,
-    });
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    const { error: insertError } = await supabaseAdmin
+      .from("group_posts")
+      .insert({
+        id: postId,
+        group_id: groupId,
+        user_id: requester.id,
+        display_name: displayName,
+        title: title || null,
+        category,
+        content,
+        media_url: mediaUrl,
+        link_url: linkUrl,
+      });
 
-  if (insertError) {
-    return NextResponse.json({ error: insertError?.message || "Post failed to publish." }, { status: 500 });
+    if (!insertError) {
+      insertErrorMessage = null;
+      break;
+    }
+
+    insertErrorMessage = insertError.message || "Post failed to publish.";
+
+    const { data: existingPost } = await supabaseAdmin
+      .from("group_posts")
+      .select("id")
+      .eq("id", postId)
+      .maybeSingle();
+
+    if (existingPost?.id) {
+      insertErrorMessage = null;
+      break;
+    }
+
+    if (!isStatementTimeoutError(insertErrorMessage) || attempt === 2) {
+      break;
+    }
+
+    await delay(250 * (attempt + 1));
+  }
+
+  if (insertErrorMessage) {
+    const friendlyMessage = isStatementTimeoutError(insertErrorMessage)
+      ? "Posting is taking longer than usual right now. Please try again in a moment."
+      : insertErrorMessage;
+    return NextResponse.json({ error: friendlyMessage }, { status: 500 });
   }
 
   return NextResponse.json({

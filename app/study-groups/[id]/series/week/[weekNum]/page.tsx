@@ -684,6 +684,7 @@ function TriviaQuiz({
   const [revealed, setRevealed] = useState(false);
   const [score, setScore] = useState(alreadyDone && savedScore !== null ? savedScore : 0);
   const [saving, setSaving] = useState(false);
+  const [earnedCorrectCount, setEarnedCorrectCount] = useState(0);
 
   useEffect(() => {
     if (alreadyDone || savedScore !== null) {
@@ -692,6 +693,7 @@ function TriviaQuiz({
       setSelected(null);
       setRevealed(false);
       setScore(savedScore ?? 0);
+      setEarnedCorrectCount(0);
       return;
     }
 
@@ -700,6 +702,7 @@ function TriviaQuiz({
     setSelected(null);
     setRevealed(false);
     setScore(0);
+    setEarnedCorrectCount(0);
   }, [alreadyDone, savedScore]);
 
   async function saveScore(finalScore: number) {
@@ -709,15 +712,54 @@ function TriviaQuiz({
       { onConflict: "user_id,series_id,week_number" }
     );
     setSaving(false);
+    if (earnedCorrectCount > 0) {
+      const { triggerPoints } = await import("@/components/PointsPop");
+      triggerPoints(earnedCorrectCount);
+    }
     onComplete(finalScore);
   }
 
-  function handleSelect(label: string) {
+  async function handleSelect(label: string) {
     if (revealed) return;
+    const currentQuestion = questions[current];
+    const isCorrect = label === currentQuestion.correctAnswer;
     setSelected(label);
     setRevealed(true);
-    if (label === questions[current].correctAnswer) {
+    if (isCorrect) {
       setScore((s) => s + 1);
+    }
+
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      const meta = (user?.user_metadata ?? {}) as Record<string, string | undefined>;
+      const username =
+        meta.firstName || meta.first_name || (user?.email ? user.email.split("@")[0] : null) || "User";
+
+      const response = await fetch("/api/trivia-answer", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId,
+          questionId: currentQuestion.id,
+          username,
+          isCorrect,
+          book: `series_${seriesId}_week_${weekNumber}`,
+        }),
+      });
+
+      const payload = (await response.json().catch(() => ({}))) as { awardedPoint?: boolean };
+      if (!response.ok) {
+        console.error("[SERIES TRIVIA] Failed to record trivia answer:", payload);
+      } else if (payload.awardedPoint) {
+        setEarnedCorrectCount((value) => value + 1);
+      }
+    } catch (error) {
+      console.error("[SERIES TRIVIA] Error recording trivia answer:", error);
     }
   }
 

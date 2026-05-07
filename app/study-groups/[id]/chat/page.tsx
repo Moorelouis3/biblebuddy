@@ -131,6 +131,21 @@ interface TopBuddy {
   score: number;
 }
 
+function getFriendlyPostErrorMessage(error: unknown, fallback: string) {
+  const rawMessage =
+    error instanceof Error && error.message
+      ? error.message
+      : error && typeof error === "object" && "message" in error && typeof (error as { message?: unknown }).message === "string"
+        ? (error as { message: string }).message
+        : null;
+
+  if (rawMessage?.toLowerCase().includes("statement timeout")) {
+    return "Posting is taking longer than usual right now. Please try again in a moment.";
+  }
+
+  return rawMessage || fallback;
+}
+
 interface WeeklyGroupTriviaFeedSet {
   id: string;
   post_id: string;
@@ -1572,6 +1587,9 @@ export default function GroupChatPage() {
   const [weeklyTriviaByPostId, setWeeklyTriviaByPostId] = useState<Record<string, WeeklyGroupTriviaFeedSet>>({});
   const [weeklyQuestionByPostId, setWeeklyQuestionByPostId] = useState<Record<string, WeeklyGroupQuestionFeedSet>>({});
   const [loadingPosts, setLoadingPosts] = useState(true);
+  const [loadingMorePosts, setLoadingMorePosts] = useState(false);
+  const [postsHasMore, setPostsHasMore] = useState(false);
+  const [postsOffset, setPostsOffset] = useState(0);
   const [showPostComposerModal, setShowPostComposerModal] = useState(false);
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostContent, setNewPostContent] = useState("");
@@ -1595,6 +1613,8 @@ export default function GroupChatPage() {
   const [composerVideoPreview, setComposerVideoPreview] = useState<string | null>(null);
   const [composerVideoDurationError, setComposerVideoDurationError] = useState(false);
   const [composerUploadError, setComposerUploadError] = useState<string | null>(null);
+  const feedLoadMoreRef = useRef<HTMLDivElement | null>(null);
+  const FEED_PAGE_SIZE = 5;
   const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
   const groupPhotoInputRef = useRef<HTMLInputElement>(null);
   const groupVideoInputRef = useRef<HTMLInputElement>(null);
@@ -2637,7 +2657,11 @@ export default function GroupChatPage() {
     } else if (hubCategories.some((c) => c.id === activeTab)) {
       // items come from static HUB_CONTENT â€” no fetch needed
     } else {
-      loadPosts();
+      setPosts([]);
+      setWeeklyPollByPostId({});
+      setWeeklyTriviaByPostId({});
+      setWeeklyQuestionByPostId({});
+      void loadPosts(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [group, activeTab, hubCategories]);
@@ -2829,84 +2853,7 @@ export default function GroupChatPage() {
   }, [selectedPost]);
 
   // â”€â”€ Chat posts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-  async function loadPosts() {
-    if (!group) return;
-    setLoadingPosts(true);
-    const postCategory = getGroupPostCategory(activeTab);
-
-    if (activeTab === "home") {
-      try {
-        const { data: sessionData } = await supabase.auth.getSession();
-        const accessToken = sessionData.session?.access_token;
-        if (accessToken) {
-          await Promise.all([
-            fetch(`/api/groups/${group.id}/update-monday/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-            fetch(`/api/groups/${group.id}/weekly-trivia/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-            fetch(`/api/groups/${group.id}/weekly-question/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-            fetch(`/api/groups/${group.id}/who-was-this-friday/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-            fetch(`/api/groups/${group.id}/bible-study-saturday/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-            fetch(`/api/groups/${group.id}/prayer-request-sunday/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-            fetch(`/api/groups/${group.id}/weekly-poll/ensure`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-              },
-            }),
-          ]);
-        }
-      } catch (error) {
-        console.error("[GROUP_WEEKLY_AUTOMATIONS] Ensure failed:", error);
-      }
-    }
-
-    const postQuery = supabase
-      .from("group_posts")
-      .select("id, user_id, display_name, title, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
-      .eq("group_id", group.id)
-      .is("parent_post_id", null);
-
-    const categorizedPostQuery =
-      activeTab === "home"
-        ? postQuery.in("category", [...HOME_FEED_CATEGORIES])
-        : postQuery.eq("category", postCategory);
-
-    const { data: postRows, error } = await categorizedPostQuery
-      .order("is_pinned", { ascending: false })
-      .order("created_at", { ascending: false });
-
-    if (error) { setLoadingPosts(false); return; }
-
-    const rows = postRows || [];
+  async function hydrateFeedPosts(rows: any[]) {
     const nextWeeklyPollByPostId: Record<string, WeeklyGroupPollFeedSet> = {};
     const nextWeeklyTriviaByPostId: Record<string, WeeklyGroupTriviaFeedSet> = {};
     const nextWeeklyQuestionByPostId: Record<string, WeeklyGroupQuestionFeedSet> = {};
@@ -3032,15 +2979,16 @@ export default function GroupChatPage() {
     }
 
     const authorIds = [...new Set(rows.map((p) => p.user_id))];
-    let roleMap: Record<string, string> = {};
-    let imageMap: Record<string, string | null> = {};
+    const roleMap: Record<string, string> = {};
+    const imageMap: Record<string, string | null> = {};
     const badgeMap: Record<string, { is_paid: boolean; member_badge: string | null; current_streak: number | null; current_level: number | null }> = {};
 
-    let likedSet = new Set<string>();
+    const likedSet = new Set<string>();
     const likeCountMap: Record<string, number> = {};
     rows.forEach((row) => {
       likeCountMap[row.id] = 0;
     });
+
     if (rows.length > 0) {
       const { data: likes } = await supabase
         .from("group_post_likes").select("post_id, user_id")
@@ -3050,7 +2998,8 @@ export default function GroupChatPage() {
         if (userId && like.user_id === userId) likedSet.add(like.post_id);
       });
     }
-    if (authorIds.length > 0) {
+
+    if (authorIds.length > 0 && group) {
       const [{ data: mems }, { data: pics }] = await Promise.all([
         supabase.from("group_members").select("user_id, role").eq("group_id", group.id).in("user_id", authorIds),
         supabase.from("profile_stats").select("user_id, profile_image_url, is_paid, member_badge, current_streak, current_level").in("user_id", authorIds),
@@ -3066,22 +3015,137 @@ export default function GroupChatPage() {
         };
       });
     }
-    setPosts(sortPinnedPostsFirst(rows.map((p) => ({
-      ...p,
-      like_count: Math.max(p.like_count || 0, likeCountMap[p.id] || 0),
-      comment_count: rootCommentCountMap[p.id] || 0,
-      role: roleMap[p.user_id] || "member",
-      liked: likedSet.has(p.id),
-      profile_image_url: imageMap[p.user_id] ?? null,
-      is_paid: badgeMap[p.user_id]?.is_paid ?? false,
-      member_badge: badgeMap[p.user_id]?.member_badge ?? null,
-      current_streak: badgeMap[p.user_id]?.current_streak ?? null,
-      current_level: badgeMap[p.user_id]?.current_level ?? null,
-    }))));
-    setWeeklyPollByPostId(nextWeeklyPollByPostId);
-    setWeeklyTriviaByPostId(nextWeeklyTriviaByPostId);
-    setWeeklyQuestionByPostId(nextWeeklyQuestionByPostId);
+
+    return {
+      posts: rows.map((p) => ({
+        ...p,
+        like_count: Math.max(p.like_count || 0, likeCountMap[p.id] || 0),
+        comment_count: rootCommentCountMap[p.id] || 0,
+        role: roleMap[p.user_id] || "member",
+        liked: likedSet.has(p.id),
+        profile_image_url: imageMap[p.user_id] ?? null,
+        is_paid: badgeMap[p.user_id]?.is_paid ?? false,
+        member_badge: badgeMap[p.user_id]?.member_badge ?? null,
+        current_streak: badgeMap[p.user_id]?.current_streak ?? null,
+        current_level: badgeMap[p.user_id]?.current_level ?? null,
+      })),
+      weeklyPollByPostId: nextWeeklyPollByPostId,
+      weeklyTriviaByPostId: nextWeeklyTriviaByPostId,
+      weeklyQuestionByPostId: nextWeeklyQuestionByPostId,
+    };
+  }
+
+  async function loadPosts(reset = true) {
+    if (!group) return;
+    if (reset) {
+      setLoadingPosts(true);
+      setPostsOffset(0);
+      setPostsHasMore(false);
+    } else {
+      setLoadingMorePosts(true);
+    }
+    const postCategory = getGroupPostCategory(activeTab);
+
+    if (activeTab === "home") {
+      try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const accessToken = sessionData.session?.access_token;
+        if (accessToken) {
+          await Promise.all([
+            fetch(`/api/groups/${group.id}/update-monday/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/weekly-trivia/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/weekly-question/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/who-was-this-friday/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/bible-study-saturday/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/prayer-request-sunday/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+            fetch(`/api/groups/${group.id}/weekly-poll/ensure`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }),
+          ]);
+        }
+      } catch (error) {
+        console.error("[GROUP_WEEKLY_AUTOMATIONS] Ensure failed:", error);
+      }
+    }
+
+    const postQuery = supabase
+      .from("group_posts")
+      .select("id, user_id, display_name, title, category, content, like_count, is_pinned, created_at, parent_post_id, media_url, link_url")
+      .eq("group_id", group.id)
+      .is("parent_post_id", null);
+
+    const categorizedPostQuery =
+      activeTab === "home"
+        ? postQuery.in("category", [...HOME_FEED_CATEGORIES])
+        : postQuery.eq("category", postCategory);
+
+    const rangeStart = reset ? 0 : postsOffset;
+    const { data: postRows, error } = await categorizedPostQuery
+      .order("is_pinned", { ascending: false })
+      .order("created_at", { ascending: false })
+      .range(rangeStart, rangeStart + FEED_PAGE_SIZE - 1);
+
+    if (error) {
+      setLoadingPosts(false);
+      setLoadingMorePosts(false);
+      return;
+    }
+
+    const rows = postRows || [];
+    const hydrated = await hydrateFeedPosts(rows);
+
+    if (reset) {
+      setPosts(sortPinnedPostsFirst(hydrated.posts));
+      setWeeklyPollByPostId(hydrated.weeklyPollByPostId);
+      setWeeklyTriviaByPostId(hydrated.weeklyTriviaByPostId);
+      setWeeklyQuestionByPostId(hydrated.weeklyQuestionByPostId);
+    } else {
+      setPosts((prev) => sortPinnedPostsFirst([
+        ...prev,
+        ...hydrated.posts.filter((nextPost) => !prev.some((prevPost) => prevPost.id === nextPost.id)),
+      ]));
+      setWeeklyPollByPostId((prev) => ({ ...prev, ...hydrated.weeklyPollByPostId }));
+      setWeeklyTriviaByPostId((prev) => ({ ...prev, ...hydrated.weeklyTriviaByPostId }));
+      setWeeklyQuestionByPostId((prev) => ({ ...prev, ...hydrated.weeklyQuestionByPostId }));
+    }
+
+    setPostsOffset(rangeStart + rows.length);
+    setPostsHasMore(rows.length === FEED_PAGE_SIZE);
     setLoadingPosts(false);
+    setLoadingMorePosts(false);
   }
 
   async function openFeedPostById(postId: string) {
@@ -3427,7 +3491,7 @@ export default function GroupChatPage() {
         resetPostComposer();
         setShowPostComposerModal(false);
       } catch (error) {
-        setComposerUploadError(error instanceof Error ? error.message : "Could not save your post changes.");
+        setComposerUploadError(getFriendlyPostErrorMessage(error, "Could not save your post changes."));
       }
 
       setSubmitting(false);
@@ -3466,7 +3530,7 @@ export default function GroupChatPage() {
       }
     } catch (error) {
       console.error("Group post create failed:", error);
-      setComposerUploadError(error instanceof Error ? error.message : "Post failed to publish. Please try again.");
+      setComposerUploadError(getFriendlyPostErrorMessage(error, "Post failed to publish. Please try again."));
       setSubmitting(false);
       return;
     }
@@ -3747,7 +3811,7 @@ export default function GroupChatPage() {
           filter: `group_id=eq.${group.id}`,
         },
         () => {
-          void loadPosts();
+          void loadPosts(true);
         },
       )
       .subscribe();
@@ -3756,6 +3820,28 @@ export default function GroupChatPage() {
       void supabase.removeChannel(channel);
     };
   }, [group, activeTab, hubCategories]);
+
+  useEffect(() => {
+    if (!group) return;
+    if (activeTab === "members" || activeTab === "bible_studies" || hubCategories.some((c) => c.id === activeTab)) return;
+    if (!postsHasMore || loadingPosts || loadingMorePosts || selectedFeedPost) return;
+
+    const target = feedLoadMoreRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const firstEntry = entries[0];
+        if (firstEntry?.isIntersecting) {
+          void loadPosts(false);
+        }
+      },
+      { rootMargin: "300px 0px" },
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [activeTab, group, hubCategories, loadingMorePosts, loadingPosts, postsHasMore, selectedFeedPost, postsOffset]);
 
   // â”€â”€ Series â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function loadSeries() {
@@ -7128,6 +7214,18 @@ export default function GroupChatPage() {
             </div>
           </div>
         )})}
+        {postsHasMore ? (
+          <div ref={feedLoadMoreRef} className="flex justify-center pt-2">
+            <button
+              type="button"
+              onClick={() => void loadPosts(false)}
+              disabled={loadingMorePosts}
+              className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-600 shadow-sm transition hover:bg-gray-50 disabled:opacity-60"
+            >
+              {loadingMorePosts ? "Loading more..." : "Load more posts"}
+            </button>
+          </div>
+        ) : null}
       </div>
     );
   }
