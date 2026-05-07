@@ -1824,114 +1824,33 @@ export default function WeekLessonPage({
   async function loadWeekFinishers(currentSeriesId: string) {
     setLoadingWeekFinishers(true);
     try {
-      const [progressRes, triviaRes, notesRes, reflectionsRes] = await Promise.all([
-        supabase
-          .from("series_week_progress")
-          .select("user_id, reading_completed, notes_completed, trivia_completed, reflection_posted")
-          .eq("series_id", currentSeriesId)
-          .eq("week_number", weekNum),
-        supabase
-          .from("series_trivia_scores")
-          .select("user_id")
-          .eq("series_id", currentSeriesId)
-          .eq("week_number", weekNum),
-        supabase
-          .from("master_actions")
-          .select("user_id, action_type, action_label")
-          .in("action_type", [ACTION_TYPE.series_week_notes_opened, ACTION_TYPE.study_group_article_opened]),
-        supabase
-          .from("series_reflections")
-          .select("user_id")
-          .eq("series_id", currentSeriesId)
-          .eq("week_number", weekNum),
-      ]);
-
-      if (progressRes.error) {
-        console.error("[WEEK_FINISHERS] Error loading progress:", progressRes.error);
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+      if (!accessToken) {
         setWeekFinishers([]);
         return;
       }
 
-      const progressMap = new Map<string, { reading: boolean; notes: boolean; trivia: boolean; reflection: boolean }>();
-      (progressRes.data || []).forEach((row) => {
-        if (!row.user_id) return;
-        progressMap.set(row.user_id, toSeriesWeekProgressState(row));
-      });
+      const response = await fetch(
+        `/api/groups/${groupId}/series/${currentSeriesId}/weeks/${weekNum}/finishers`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          cache: "no-store",
+        }
+      );
 
-      (triviaRes.data || []).forEach((row) => {
-        if (!row.user_id) return;
-        const existing = progressMap.get(row.user_id) ?? toSeriesWeekProgressState();
-        progressMap.set(row.user_id, { ...existing, trivia: true });
-      });
-
-      (notesRes.data || []).forEach((row) => {
-        if (!row.user_id) return;
-        if (!isSeriesWeekNotesActionEvent(row.action_type, row.action_label)) return;
-        if (!matchesSeriesWeekNotesActionLabel(row.action_label, seriesTitle, weekNum)) return;
-        const existing = progressMap.get(row.user_id) ?? toSeriesWeekProgressState();
-        progressMap.set(row.user_id, { ...existing, notes: true });
-      });
-
-      (reflectionsRes.data || []).forEach((row) => {
-        if (!row.user_id) return;
-        const existing = progressMap.get(row.user_id) ?? toSeriesWeekProgressState();
-        progressMap.set(row.user_id, { ...existing, reflection: true });
-      });
-
-      const finisherIds = Array.from(progressMap.entries())
-        .filter(([, progress]) => isSeriesWeekComplete(progress))
-        .map(([userId]) => userId);
-
-      if (finisherIds.length === 0) {
+      const payload = await response.json().catch(() => null);
+      if (!response.ok) {
+        console.warn("[WEEK_FINISHERS] Error loading finishers:", payload?.error || response.statusText);
         setWeekFinishers([]);
         return;
       }
 
-      const [profilesRes, rolesRes] = await Promise.all([
-        supabase
-          .from("profile_stats")
-          .select("user_id, display_name, username, profile_image_url, is_paid, member_badge")
-          .in("user_id", finisherIds),
-        supabase
-          .from("group_members")
-          .select("user_id, role")
-          .eq("group_id", groupId)
-          .in("user_id", finisherIds),
-      ]);
-
-      const roleMap = new Map<string, string | null>();
-      (rolesRes.data || []).forEach((row) => {
-        roleMap.set(row.user_id, row.role || null);
-      });
-
-      const profileMap = new Map<string, WeekFinisher>();
-      (profilesRes.data || []).forEach((row) => {
-        profileMap.set(row.user_id, {
-          user_id: row.user_id,
-          display_name: row.display_name || row.username || "Bible Buddy",
-          profile_image_url: row.profile_image_url || null,
-          member_badge: row.member_badge || null,
-          is_paid: row.is_paid === true,
-          group_role: roleMap.get(row.user_id) ?? null,
-        });
-      });
-
-      const orderedFinishers = finisherIds.map((id) => {
-        return (
-          profileMap.get(id) || {
-            user_id: id,
-            display_name: "Bible Buddy",
-            profile_image_url: null,
-            member_badge: null,
-            is_paid: false,
-            group_role: roleMap.get(id) ?? null,
-          }
-        );
-      });
-
-      setWeekFinishers(orderedFinishers);
+      setWeekFinishers(Array.isArray(payload?.finishers) ? payload.finishers as WeekFinisher[] : []);
     } catch (error) {
-      console.error("[WEEK_FINISHERS] Unexpected error:", error);
+      console.warn("[WEEK_FINISHERS] Unexpected error:", error);
       setWeekFinishers([]);
     } finally {
       setLoadingWeekFinishers(false);
@@ -2438,10 +2357,9 @@ export default function WeekLessonPage({
             ) : visibleFinishers.length > 0 ? (
               <div className="flex items-center flex-wrap gap-2">
                 {visibleFinishers.map((finisher) => (
-                  <button
+                  <Link
                     key={finisher.user_id}
-                    type="button"
-                    onClick={() => setShowWeekFinishersModal(true)}
+                    href={`/profile/${finisher.user_id}`}
                     className="group flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 pr-3 hover:bg-gray-100 transition"
                   >
                     {finisher.profile_image_url ? (
@@ -2458,7 +2376,7 @@ export default function WeekLessonPage({
                     <span className="text-xs font-semibold text-gray-700 max-w-[110px] truncate group-hover:text-gray-900">
                       {finisher.display_name}
                     </span>
-                  </button>
+                  </Link>
                 ))}
                 {weekFinishers.length > visibleFinishers.length && (
                   <button
@@ -2621,9 +2539,10 @@ export default function WeekLessonPage({
             ) : (
               <div className="space-y-3">
                 {weekFinishers.map((finisher) => (
-                  <div
+                  <Link
                     key={finisher.user_id}
-                    className="flex items-center gap-3 rounded-2xl border border-gray-100 bg-gray-50 px-3 py-3"
+                    href={`/profile/${finisher.user_id}`}
+                    className="flex items-center gap-3 rounded-2xl border border-gray-100 bg-gray-50 px-3 py-3 hover:bg-gray-100 transition"
                   >
                     {finisher.profile_image_url ? (
                       <img
@@ -2647,7 +2566,7 @@ export default function WeekLessonPage({
                       </div>
                       <p className="text-xs text-gray-500">Finished all 4 parts</p>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             )}
