@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import BibleStudiesSeriesList from "@/components/BibleStudiesSeriesList";
 import {
@@ -55,6 +56,7 @@ function formatCountdown(targetTs: number, nowTs: number) {
 }
 
 export default function BibleStudiesPage() {
+  const router = useRouter();
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [loadingSeries, setLoadingSeries] = useState(true);
@@ -193,9 +195,14 @@ export default function BibleStudiesPage() {
         detail,
         footerLeft,
         footerRight,
+        onClick: () => {
+          router.push(
+            `/study-groups/${BIBLE_STUDY_GROUP_ID}/chat?tab=bible_studies&series=${encodeURIComponent(series.key)}`,
+          );
+        },
       };
     });
-  }, [currentSeriesStartAt, currentSeriesTitle, nowTs, seriesList]);
+  }, [currentSeriesStartAt, currentSeriesTitle, nowTs, router, seriesList]);
 
   return (
     <div className="min-h-screen bg-gray-50">

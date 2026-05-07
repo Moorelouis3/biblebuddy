@@ -2321,9 +2321,23 @@ export default function GroupChatPage() {
       setCurrentSeriesPreview(featuredPreview.preview);
       setCurrentSeriesStartAt(featuredPreview.startAt);
 
-      // Handle ?tab=bible_studies from detail page link
+      // Handle ?tab=bible_studies and optional ?series=... deep link
       const tabParam = searchParams.get("tab");
-      if (tabParam === "bible_studies") setActiveTab("bible_studies");
+      const seriesParam = searchParams.get("series");
+      if (tabParam === "bible_studies") {
+        setActiveTab("bible_studies");
+
+        if (seriesParam) {
+          const catalogMatch = BIBLE_STUDY_SERIES_CATALOG.find((item) => item.key === seriesParam) ?? null;
+          const targetTitle = catalogMatch?.title ?? seriesParam;
+          const matchedSeries =
+            previewRows.find((series) => normalizeSeriesTitle(series.title) === normalizeSeriesTitle(targetTitle)) ??
+            buildSeriesPreviewRecord(targetTitle);
+
+          setSelectedSeries(matchedSeries);
+          setSelectedSeriesWeek(null);
+        }
+      }
     }
 
     checkAccessAndLoad();
