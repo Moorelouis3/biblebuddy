@@ -383,6 +383,7 @@ export default function DashboardJourneyExperience({
   const [selectedDevotionalId, setSelectedDevotionalId] = useState("");
   const [isLoadingDevotionalOptions, setIsLoadingDevotionalOptions] = useState(false);
   const [isSavingDevotional, setIsSavingDevotional] = useState(false);
+  const [isResettingDevotional, setIsResettingDevotional] = useState(false);
   const [devotionalSettingsMessage, setDevotionalSettingsMessage] = useState<string | null>(null);
 
   const totalTasks = checklistData?.tasks.length ?? 5;
@@ -572,6 +573,39 @@ export default function DashboardJourneyExperience({
       setDevotionalSettingsMessage("Louis could not save that devotional. Try again in a moment.");
     } finally {
       setIsSavingDevotional(false);
+    }
+  }
+
+  async function handleResetCurrentDevotional() {
+    if (!userId || !currentDevotionalId || isResettingDevotional) return;
+
+    setIsResettingDevotional(true);
+    setDevotionalSettingsMessage(null);
+
+    try {
+      const { error } = await supabase
+        .from("devotional_progress")
+        .delete()
+        .eq("user_id", userId)
+        .eq("devotional_id", currentDevotionalId);
+
+      if (error) throw error;
+
+      if (cycleStartedAt) {
+        rememberLouisDailyTaskTarget(userId, cycleStartedAt, {
+          devotionalId: currentDevotionalId,
+          dayNumber: 1,
+        });
+      }
+
+      setSelectedDevotionalId(currentDevotionalId);
+      setDevotionalSettingsMessage("Louis reset this devotional back to Day 1.");
+      onDevotionalChanged();
+    } catch (error) {
+      console.error("[DASHBOARD] Could not reset devotional:", error);
+      setDevotionalSettingsMessage("Louis could not reset this devotional. Try again in a moment.");
+    } finally {
+      setIsResettingDevotional(false);
     }
   }
 
@@ -782,7 +816,7 @@ export default function DashboardJourneyExperience({
                     </div>
 
                     <div className="mt-2.5 text-[13px] sm:text-sm">
-                      <p className="min-w-0 font-medium text-gray-600">
+                      <p className="min-w-0 text-center font-bold text-gray-800">
                         {dailyStudySummaryLine}
                       </p>
                     </div>
@@ -845,11 +879,25 @@ export default function DashboardJourneyExperience({
                       <button
                         type="button"
                         onClick={handleSaveDevotionalSetting}
-                        disabled={!selectedDevotionalId || isSavingDevotional || isLoadingDevotionalOptions}
+                        disabled={!selectedDevotionalId || isSavingDevotional || isLoadingDevotionalOptions || isResettingDevotional}
                         className="w-full rounded-full bg-[#7BAFD4] px-4 py-2.5 text-sm font-bold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc] disabled:cursor-not-allowed disabled:opacity-60"
                       >
                         {isSavingDevotional ? "Saving..." : "Set devotional"}
                       </button>
+                      <div className="rounded-2xl border border-gray-200 bg-gray-50 p-3">
+                        <p className="text-xs font-bold text-gray-900">Reset current devotional</p>
+                        <p className="mt-1 text-xs leading-5 text-gray-500">
+                          Start the devotional you are on back at Day 1. This clears devotional day progress for this study.
+                        </p>
+                        <button
+                          type="button"
+                          onClick={handleResetCurrentDevotional}
+                          disabled={!currentDevotionalId || isSavingDevotional || isResettingDevotional}
+                          className="mt-3 w-full rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-bold text-gray-800 shadow-sm transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
+                        >
+                          {isResettingDevotional ? "Resetting..." : "Reset current devotional"}
+                        </button>
+                      </div>
                     </div>
                   ) : (
                     <div className="mt-4 rounded-2xl border border-[#f0d7b3] bg-[#fff8ef] p-4">
@@ -863,6 +911,25 @@ export default function DashboardJourneyExperience({
                       >
                         Upgrade for full access
                       </Link>
+                      <div className="mt-4 rounded-2xl border border-[#ead7bd] bg-white/70 p-3">
+                        <p className="text-xs font-bold text-gray-900">Reset current devotional</p>
+                        <p className="mt-1 text-xs leading-5 text-gray-600">
+                          Start the devotional you are on back at Day 1. This clears devotional day progress for this study.
+                        </p>
+                        {devotionalSettingsMessage ? (
+                          <p className="mt-3 rounded-xl bg-[#f4f9fd] px-3 py-2 text-xs font-medium text-[#315f7d]">
+                            {devotionalSettingsMessage}
+                          </p>
+                        ) : null}
+                        <button
+                          type="button"
+                          onClick={handleResetCurrentDevotional}
+                          disabled={!currentDevotionalId || isResettingDevotional}
+                          className="mt-3 w-full rounded-full border border-gray-300 bg-white px-4 py-2 text-xs font-bold text-gray-800 shadow-sm transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
+                        >
+                          {isResettingDevotional ? "Resetting..." : "Reset current devotional"}
+                        </button>
+                      </div>
                     </div>
                   )}
                 </div>
