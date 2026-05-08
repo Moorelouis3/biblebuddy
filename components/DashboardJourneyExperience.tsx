@@ -287,57 +287,57 @@ function getChapterFocusSummary(task: TaskState | null) {
   const chapterLabel = task?.chapterLabel || (task?.book && task?.chapter ? `${task.book} ${task.chapter}` : "today's chapter");
 
   if (book === "genesis") {
-    if (chapter === 37) return "Genesis 37 follows Joseph's dreams, his brothers' jealousy, and the betrayal that sends him toward Egypt.";
-    if (chapter === 38) return "Genesis 38 pauses on Judah's family, showing broken choices and God's mercy inside a messy story.";
-    if (chapter === 39) return "Genesis 39 follows Joseph in Potiphar's house, where faithfulness is tested by temptation and injustice.";
-    if (chapter === 40) return "Genesis 40 follows Joseph in prison as he serves the cupbearer and baker while still waiting on God.";
-    if (chapter === 41) return "Genesis 41 shows Joseph brought from prison to Pharaoh, where God turns hidden preparation into public purpose.";
-    if (chapter === 42) return "Genesis 42 brings Joseph's brothers to Egypt, where guilt, famine, and God's long plan begin to surface.";
-    if (chapter === 43) return "Genesis 43 follows the brothers' return with Benjamin and the tension of mercy they do not yet understand.";
-    if (chapter === 44) return "Genesis 44 tests the brothers' hearts, especially Judah's willingness to sacrifice himself for Benjamin.";
-    if (chapter === 45) return "Genesis 45 reveals Joseph's identity and shows forgiveness breaking into a story full of pain.";
-    if (chapter === 46) return "Genesis 46 follows Jacob's move to Egypt and God's reassurance that He is still guiding the family.";
-    if (chapter === 47) return "Genesis 47 shows Joseph's leadership in famine and Israel settling in Egypt under God's provision.";
-    if (chapter === 48) return "Genesis 48 shows Jacob blessing Joseph's sons and trusting God's promise across generations.";
-    if (chapter === 49) return "Genesis 49 gathers Jacob's final words over his sons and points toward the future of Israel.";
-    if (chapter === 50) return "Genesis 50 closes Joseph's story with grief, forgiveness, and confidence that God meant it for good.";
+    if (chapter === 37) return "Joseph's dreams, his brothers' jealousy, and the betrayal that sends him toward Egypt.";
+    if (chapter === 38) return "Judah's family story, broken choices, and God's mercy in the middle of the mess.";
+    if (chapter === 39) return "Joseph in Potiphar's house, where faithfulness is tested by temptation and injustice.";
+    if (chapter === 40) return "Joseph in prison with the cupbearer and baker while he is still waiting on God.";
+    if (chapter === 41) return "Joseph going from prison to Pharaoh as God turns hidden preparation into public purpose.";
+    if (chapter === 42) return "Joseph's brothers coming to Egypt as guilt, famine, and God's long plan begin to surface.";
+    if (chapter === 43) return "the brothers returning with Benjamin and facing mercy they do not yet understand.";
+    if (chapter === 44) return "Judah being tested and offering himself in Benjamin's place.";
+    if (chapter === 45) return "Joseph revealing who he is and forgiveness breaking into a painful family story.";
+    if (chapter === 46) return "Jacob moving to Egypt and hearing God promise to stay with him.";
+    if (chapter === 47) return "Joseph leading through famine and Israel settling in Egypt under God's provision.";
+    if (chapter === 48) return "Jacob blessing Joseph's sons and trusting God's promise for the next generation.";
+    if (chapter === 49) return "Jacob's final words over his sons and the future God is shaping for Israel.";
+    if (chapter === 50) return "grief, forgiveness, and Joseph's confidence that God meant it for good.";
   }
 
   if (book === "proverbs") {
-    if (chapter === 1) return "Proverbs 1 introduces the purpose of wisdom and shows that the fear of the Lord is where knowledge begins.";
-    if (chapter === 2) return "Proverbs 2 calls you to search for wisdom like treasure because God's wisdom guards your path.";
-    if (chapter === 3) return "Proverbs 3 teaches trust in the Lord, humble obedience, and the value of wisdom above riches.";
-    if (chapter === 4) return "Proverbs 4 focuses on getting wisdom, staying on the right path, and guarding your heart.";
-    if (chapter === 5) return "Proverbs 5 warns against destructive desire and calls you toward faithfulness and self-control.";
-    if (chapter === 6) return "Proverbs 6 deals with diligence, reckless promises, pride, destructive speech, and moral danger.";
-    if (chapter === 7) return "Proverbs 7 shows how temptation works when a person drifts too close to danger.";
-    if (chapter === 8) return "Proverbs 8 pictures Wisdom calling openly and shows her value before creation itself.";
-    if (chapter === 9) return "Proverbs 9 contrasts the invitations of Wisdom and Folly and asks which table you will sit at.";
-    if (chapter === 10) return "Proverbs 10 begins Solomon's short sayings, contrasting righteous and foolish patterns in daily life.";
-    if (chapter === 11) return "Proverbs 11 focuses on integrity, honest measures, humility, generosity, and righteousness.";
-    if (chapter === 12) return "Proverbs 12 teaches wisdom in correction, work, truth-telling, and words that heal.";
-    if (chapter === 13) return "Proverbs 13 connects discipline, teachability, careful speech, and long-term wisdom.";
-    if (chapter === 14) return "Proverbs 14 warns that a way can seem right while still leading away from life.";
-    if (chapter === 15) return "Proverbs 15 focuses on gentle answers, teachable hearts, prayer, and wise speech.";
-    if (chapter === 16) return "Proverbs 16 holds your plans under God's rule and shows that the Lord weighs motives.";
-    if (chapter === 17) return "Proverbs 17 teaches wisdom in family, friendship, conflict, restraint, and justice.";
-    if (chapter === 18) return "Proverbs 18 highlights listening, humility, friendship, and the life-or-death power of words.";
-    if (chapter === 19) return "Proverbs 19 points toward patience, generosity, discipline, and the Lord's purpose over human plans.";
-    if (chapter === 20) return "Proverbs 20 brings wisdom into work, conflict, counsel, honesty, and self-control.";
-    if (chapter === 21) return "Proverbs 21 shows that God weighs the heart and values justice over empty religious appearance.";
-    if (chapter === 22) return "Proverbs 22 values a good name, humility, training, generosity, and wise boundaries.";
-    if (chapter === 23) return "Proverbs 23 warns about appetite, envy, drunkenness, and desires that need wisdom's guardrails.";
-    if (chapter === 24) return "Proverbs 24 calls you away from envying evil and toward counsel, courage, and faithful work.";
-    if (chapter === 25) return "Proverbs 25 teaches humility, patience, restraint, and the beauty of words spoken at the right time.";
-    if (chapter === 26) return "Proverbs 26 exposes folly, laziness, meddling, gossip, and the need for discernment.";
-    if (chapter === 27) return "Proverbs 27 teaches humility about tomorrow, faithful friendship, correction, and careful stewardship.";
-    if (chapter === 28) return "Proverbs 28 contrasts wickedness and righteousness through confession, justice, generosity, and courage.";
-    if (chapter === 29) return "Proverbs 29 warns against rejecting correction and exposes the trap of fearing people more than God.";
-    if (chapter === 30) return "Proverbs 30 gives Agur's humble wisdom, his prayer for daily bread, and lessons from creation.";
-    if (chapter === 31) return "Proverbs 31 closes with wisdom that serves, speaks for the vulnerable, works faithfully, and fears the Lord.";
+    if (chapter === 1) return "the start of wisdom and why the fear of the Lord comes first.";
+    if (chapter === 2) return "searching for wisdom like treasure and letting God guard your path.";
+    if (chapter === 3) return "trusting the Lord, walking humbly, and valuing wisdom more than riches.";
+    if (chapter === 4) return "getting wisdom, staying on the right path, and guarding your heart.";
+    if (chapter === 5) return "staying faithful and seeing where destructive desire really leads.";
+    if (chapter === 6) return "diligence, pride, reckless choices, and the habits that can quietly hurt a life.";
+    if (chapter === 7) return "how temptation pulls people in when they drift too close to danger.";
+    if (chapter === 8) return "Wisdom calling out in the open and showing why she is worth seeking.";
+    if (chapter === 9) return "the two invitations of Wisdom and Folly and which table you choose.";
+    if (chapter === 10) return "the daily patterns that separate wisdom from foolishness.";
+    if (chapter === 11) return "integrity, humility, generosity, and living honestly before God.";
+    if (chapter === 12) return "correction, steady work, truth-telling, and words that heal.";
+    if (chapter === 13) return "discipline, teachability, careful speech, and long-term wisdom.";
+    if (chapter === 14) return "the way that seems right and why wisdom looks deeper than first impressions.";
+    if (chapter === 15) return "gentle answers, teachable hearts, prayer, and wise speech.";
+    if (chapter === 16) return "making plans while trusting that the Lord weighs motives and directs steps.";
+    if (chapter === 17) return "family, friendship, conflict, restraint, and the wisdom relationships need.";
+    if (chapter === 18) return "listening well, choosing humility, and using words that give life.";
+    if (chapter === 19) return "patience, generosity, discipline, and God's purpose over human plans.";
+    if (chapter === 20) return "work, conflict, counsel, honesty, and self-control in everyday life.";
+    if (chapter === 21) return "the heart God weighs and the justice He values more than appearances.";
+    if (chapter === 22) return "a good name, humility, training, generosity, and wise boundaries.";
+    if (chapter === 23) return "appetite, envy, drunkenness, and desires that need wisdom's guardrails.";
+    if (chapter === 24) return "refusing to envy evil and choosing counsel, courage, and faithful work.";
+    if (chapter === 25) return "humility, patience, restraint, and words spoken at the right time.";
+    if (chapter === 26) return "folly, laziness, meddling, gossip, and the discernment to know what to avoid.";
+    if (chapter === 27) return "tomorrow, faithful friendship, correction, and careful stewardship.";
+    if (chapter === 28) return "confession, justice, generosity, courage, and the difference between wickedness and righteousness.";
+    if (chapter === 29) return "receiving correction and escaping the trap of fearing people more than God.";
+    if (chapter === 30) return "Agur's humility, daily bread, and the wisdom God teaches through creation.";
+    if (chapter === 31) return "wisdom that serves, speaks for the vulnerable, works faithfully, and fears the Lord.";
   }
 
-  return `${chapterLabel} is the focus for today's devotional, reading, notes, trivia, Scrambled, and reflection.`;
+  return `what God is showing you in ${chapterLabel}.`;
 }
 
 function buildTaskOpenerLine(task: TaskState | null) {
@@ -357,28 +357,26 @@ function buildTaskFocusLine(task: TaskState | null, remainingTasks: number) {
     return "Your next Bible step is ready whenever you are.";
   }
 
-  const taskNumber = getTaskNumberLabel(task);
   const chapterLabel = task.chapterLabel || "today's chapter";
-  const remainingLabel = remainingTasks === 1 ? "1 task" : `${remainingTasks} tasks`;
   const chapterSummary = getChapterFocusSummary(task);
 
   if (task.kind === "devotional") {
-    return `${chapterSummary} Start here so the rest of today's study has a clear direction.`;
+    return `Today's Bible study is built around ${chapterLabel}. This chapter is about ${chapterSummary}`;
   }
 
   if (task.kind === "reading") {
-    return `${chapterSummary} You have ${remainingLabel} left, and ${taskNumber} keeps the whole day grounded in Scripture.`;
+    return `Nice, the devotional is done. Now read ${chapterLabel} and stay with ${chapterSummary}`;
   }
 
   if (task.kind === "notes") {
-    return `${chapterSummary} Now use the notes for ${chapterLabel} so the details and meaning settle in.`;
+    return `Good work getting the chapter read. Now review the notes so ${chapterSummary} starts to click.`;
   }
 
   if (task.kind === "trivia") {
-    return `${chapterSummary} Now take ${taskNumber} and check what is sticking with a quick round of trivia.`;
+    return `You have the reading and notes down. Play trivia for ${chapterLabel} and see what you remember.`;
   }
 
-  return `${chapterSummary} One more task to go: test your word knowledge with Scrambled for ${chapterLabel}.`;
+  return `One more task to go. Play Scrambled for ${chapterLabel} and finish today's Bible study.`;
 }
 
 function getShortTaskName(task: TaskState | null) {
