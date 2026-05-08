@@ -245,11 +245,13 @@ export async function fetchLouisDailyChecklistData(
   }
 
   const storedTarget = getLouisDailyTaskTarget(userId, cycleStartedAt);
+  const selectedDevotional =
+    freeDevotionalId ? devotionals.find((devotional) => devotional.id === freeDevotionalId) ?? null : null;
   const activeDevotional =
+    selectedDevotional ??
     (storedTarget
       ? devotionals.find((devotional) => devotional.id === storedTarget.devotionalId) ?? null
       : null) ??
-    (freeDevotionalId ? devotionals.find((devotional) => devotional.id === freeDevotionalId) ?? null : null) ??
     recommendedDevotional;
 
   const activeTotalDays = Math.max(1, activeDevotional.total_days || 1);
