@@ -924,13 +924,700 @@ function buildCinematicDevotionalText(chapter: number) {
     .trim()}`;
 }
 
+type StudyIntroDetail = {
+  opening: string;
+  beginsWith: string[];
+  matters: string;
+  givesUs: string[];
+  watchFor: string[];
+  takeaway: string;
+};
+
+const studyIntroDetailsByChapter: Record<number, StudyIntroDetail> = {
+  2: {
+    opening:
+      "Proverbs 2 opens like Solomon is taking his son on a search before the city wakes up. Wisdom is not treated like something lying on the ground. It is treasure that has to be wanted, pursued, and stored in the heart before pressure arrives.",
+    beginsWith: [
+      "a son being told to receive and treasure wise words",
+      "wisdom pictured as something to seek like hidden treasure",
+      "God as the giver of understanding",
+      "the first hints that wisdom protects a person's path",
+    ],
+    matters:
+      "This chapter helps readers understand that wisdom does not usually become part of a person by accident. Solomon is preparing his son to search before temptation speaks, before crooked people persuade him, and before desire starts pulling him toward the wrong road.",
+    givesUs: ["🔍 pursuit", "💎 treasure", "🛡️ protection", "🚶 two paths", "👂 a heart trained to listen"],
+    watchFor: [
+      "how often Solomon uses active words like receive, cry out, seek, and search",
+      "how wisdom is connected to God, not just good advice",
+      "how the chapter shows protection before it shows danger in full",
+      "how the son is being trained before the real test arrives",
+    ],
+    takeaway:
+      "Proverbs 2 is about wanting wisdom enough to go after it. Before the chapter warns you about dangerous paths, it asks whether wisdom has become valuable enough for you to seek.",
+  },
+  3: {
+    opening:
+      "Proverbs 3 feels like Solomon standing beside his son at the edge of real responsibility. The young heir will have choices to make, people to answer, money to handle, pressure to carry, and moments where his own understanding will feel strong enough to trust.",
+    beginsWith: [
+      "a call to remember teaching and keep mercy close",
+      "the famous invitation to trust the Lord with the whole heart",
+      "wisdom brought into money, correction, peace, and neighbor-love",
+      "a picture of wisdom as more valuable than silver or gold",
+    ],
+    matters:
+      "This chapter introduces one of the clearest truths in the whole book: wisdom begins when a person stops trying to be their own god. Solomon is not telling his son to stop thinking. He is teaching him where his thinking belongs: under the Lord.",
+    givesUs: ["🙏 trust", "🧭 direction", "💰 stewardship", "🛠️ correction", "🌳 wisdom pictured as life-giving"],
+    watchFor: [
+      "how many ordinary parts of life Solomon brings under God's direction",
+      "how trust is connected to decisions, not only feelings",
+      "how correction is presented as love, not rejection",
+      "how wisdom is described as something better than wealth",
+    ],
+    takeaway:
+      "Proverbs 3 is about learning to trust God before you trust your own instincts. It prepares you to read the chapter as an invitation to bring every road, not just religious roads, before the Lord.",
+  },
+  4: {
+    opening:
+      "Proverbs 4 sounds like wisdom being handed from one generation to the next. Solomon remembers being a son before he became a father, and the chapter feels like a torch being passed from David to Solomon and from Solomon to the next heir.",
+    beginsWith: [
+      "a father asking his children to listen",
+      "Solomon remembering instruction he received when he was young",
+      "wisdom described as something to get, hold, and keep",
+      "a strong warning about the path a person chooses",
+    ],
+    matters:
+      "This chapter helps readers see that wisdom is not just information. It is inheritance. Solomon is showing that what shapes the heart will eventually shape the feet, the mouth, the eyes, and the direction of a life.",
+    givesUs: ["👨‍👦 generational wisdom", "🔥 urgency", "❤️ the heart", "👣 a path", "👀 focused direction"],
+    watchFor: [
+      "how often Solomon tells his son to hold on to wisdom",
+      "how the chapter contrasts the way of wisdom with the way of the wicked",
+      "why guarding the heart becomes the center of the chapter",
+      "how eyes, mouth, heart, and feet are all connected",
+    ],
+    takeaway:
+      "Proverbs 4 is about guarding the source before the stream gets polluted. It prepares you to read the chapter as a father pleading for his son to protect the direction of his life early.",
+  },
+  5: {
+    opening:
+      "Proverbs 5 moves into a more dangerous room. Solomon is still speaking as a father, but now the warning is about desire, temptation, and the kind of path that can look sweet at the beginning while carrying bitterness at the end.",
+    beginsWith: [
+      "a son being told to pay attention to wisdom",
+      "temptation described as smooth and appealing",
+      "a warning that desire can hide the true end of a path",
+      "a call toward faithfulness instead of secret destruction",
+    ],
+    matters:
+      "This chapter matters because Solomon knew the danger of divided desire. Ancient kings often used marriages and concubines for alliance, status, and pleasure, but Solomon's own life showed how a heart can drift when desire is not ruled by obedience.",
+    givesUs: ["⚠️ temptation", "🍯 sweetness", "💔 regret", "🔒 faithfulness", "👀 seeing the end of a road"],
+    watchFor: [
+      "how temptation is described before its consequences are shown",
+      "how Solomon teaches his son to look past the first impression",
+      "how private choices are shown to have public weight",
+      "how faithfulness is presented as wisdom, not restriction",
+    ],
+    takeaway:
+      "Proverbs 5 is about learning to see the end before you take the first step. It is not trying to kill desire; it is teaching desire to stay under wisdom.",
+  },
+  6: {
+    opening:
+      "Proverbs 6 feels like Solomon walking his son through a list of dangers that can quietly ruin a life. These are not distant theological ideas. They are everyday traps: reckless promises, laziness, lying, pride, conflict, and adultery.",
+    beginsWith: [
+      "a warning about becoming trapped by your own words",
+      "the ant as a picture of diligence",
+      "a portrait of a person who spreads trouble",
+      "a serious warning about what God hates and what destroys a household",
+    ],
+    matters:
+      "This chapter shows that wisdom belongs in ordinary life. Solomon is teaching his son that small patterns are not small when they become a direction. A lazy habit, a lying tongue, or a careless promise can create consequences long before a person sees them.",
+    givesUs: ["⏰ urgency", "🐜 diligence", "🗣️ speech", "🔥 danger", "🧱 practical wisdom"],
+    watchFor: [
+      "how Solomon keeps moving from one ordinary danger to another",
+      "how laziness is treated as more serious than people often think",
+      "how speech can either protect or destroy trust",
+      "how desire is compared to fire that should not be handled casually",
+    ],
+    takeaway:
+      "Proverbs 6 is about waking up before patterns harden. It prepares you to notice the everyday habits that are shaping your future.",
+  },
+  7: {
+    opening:
+      "Proverbs 7 reads like a night scene. Solomon looks through a window and sees a young man drifting toward danger. The chapter is written like a warning story, showing how temptation often works through setting, timing, words, and desire.",
+    beginsWith: [
+      "a father telling his son to keep wisdom close",
+      "a young man without direction near the wrong corner",
+      "temptation given a voice and a setting",
+      "a slow walk toward danger before the trap is obvious",
+    ],
+    matters:
+      "This chapter helps readers understand that falling usually begins before the final decision. Solomon is not only warning about one kind of sin. He is teaching his son to recognize the setup before the trap closes.",
+    givesUs: ["🌙 nighttime imagery", "🚶 drift", "🗣️ persuasion", "🪤 a trap", "🛑 warning before damage"],
+    watchFor: [
+      "how the young man is described before temptation speaks",
+      "how location and timing matter in the story",
+      "how temptation sounds confident and prepared",
+      "how Solomon uses a story to teach wisdom before experience teaches pain",
+    ],
+    takeaway:
+      "Proverbs 7 is about not wandering toward what can destroy you. It prepares you to read the chapter as a scene, not just a warning.",
+  },
+  8: {
+    opening:
+      "Proverbs 8 moves from the dark street into the open city. Wisdom is pictured like a woman standing in public places, lifting her voice where decisions are made and where everyday life is happening.",
+    beginsWith: [
+      "Wisdom calling in the open",
+      "the city gates and crossroads as places of decision",
+      "wisdom described as truthful, noble, and valuable",
+      "a wider view of wisdom's place in God's created order",
+    ],
+    matters:
+      "This chapter matters because wisdom is not hidden in a private room for only a few people. Solomon places Wisdom in the public square to show that God's wisdom belongs in business, leadership, family, speech, justice, and daily choices.",
+    givesUs: ["📢 public calling", "🏙️ city gates", "💎 value", "👑 leadership", "🌍 creation-wide wisdom"],
+    watchFor: [
+      "where Wisdom is standing when she speaks",
+      "how Wisdom describes the kind of words she gives",
+      "how kings and rulers are connected to wisdom",
+      "how the chapter lifts your eyes from daily decisions to creation itself",
+    ],
+    takeaway:
+      "Proverbs 8 is about wisdom calling where life actually happens. It prepares you to listen for God's wisdom in the middle of ordinary decisions.",
+  },
+  9: {
+    opening:
+      "Proverbs 9 sets two invitations side by side. Wisdom has a house and a prepared table. Folly also has a voice and an invitation. The chapter helps readers see that the simple are often standing between competing calls.",
+    beginsWith: [
+      "Wisdom preparing a table and sending out a call",
+      "an invitation for the simple to come and learn",
+      "the importance of correction and teachability",
+      "Folly offering a different kind of invitation",
+    ],
+    matters:
+      "This chapter matters because foolishness often imitates invitation. It can sound exciting, secret, and freeing. Solomon is teaching his son that every table has a host, and every invitation is forming the person who answers it.",
+    givesUs: ["🍽️ two tables", "📣 two voices", "🧠 teachability", "🚪 invitation", "⚖️ a choice"],
+    watchFor: [
+      "how Wisdom and Folly both call to the simple",
+      "how correction reveals whether someone is wise or foolish",
+      "how the two invitations sound different",
+      "how the chapter closes the opening section of Proverbs",
+    ],
+    takeaway:
+      "Proverbs 9 is about choosing which voice gets to host your life. It prepares you to notice the invitations behind your decisions.",
+  },
+  10: {
+    opening:
+      "Proverbs 10 begins a new part of the book. After nine chapters of longer father-to-son teaching, Solomon starts giving the shorter sayings most people think of when they hear the word proverb.",
+    beginsWith: [
+      "a wise son and a foolish son",
+      "contrasts between righteousness and wickedness",
+      "work, speech, memory, blessing, and trouble",
+      "quick snapshots of everyday wisdom",
+    ],
+    matters:
+      "This chapter matters because it trains readers to see life in contrasts. Solomon is showing that wisdom is not one dramatic decision. It is a thousand small choices that become character over time.",
+    givesUs: ["⚖️ contrasts", "👨‍👦 family impact", "🛠️ work", "🗣️ words", "🌱 character over time"],
+    watchFor: [
+      "how many verses compare two different kinds of people",
+      "how speech becomes a major theme",
+      "how diligence and laziness are placed side by side",
+      "how short sayings can still tell a larger story about a life",
+    ],
+    takeaway:
+      "Proverbs 10 is about noticing what kind of person repeated choices are building. It prepares you to read short sayings as snapshots of a whole life.",
+  },
+  11: {
+    opening:
+      "Proverbs 11 feels like Solomon watching the marketplace, the courtroom, and the community all at once. It brings wisdom into honesty, humility, generosity, reputation, and the hidden weight of integrity.",
+    beginsWith: [
+      "honest and dishonest scales",
+      "humility contrasted with pride",
+      "integrity as something that guides a person",
+      "generosity and righteousness affecting more than one person",
+    ],
+    matters:
+      "This chapter matters because wisdom is social. Dishonest choices do not stay private. They hurt trust, weaken communities, and reveal what a person values when they think gain is possible.",
+    givesUs: ["⚖️ honest scales", "🧎 humility", "💎 integrity", "🤲 generosity", "🏘️ community impact"],
+    watchFor: [
+      "how often righteousness affects other people",
+      "how pride and humility lead in different directions",
+      "how money and honesty are connected",
+      "how generosity is shown as strength, not loss",
+    ],
+    takeaway:
+      "Proverbs 11 is about living straight when crooked would be easier. It prepares you to read integrity as something God sees before people notice it.",
+  },
+  12: {
+    opening:
+      "Proverbs 12 brings wisdom into correction, work, truth, anxiety, and speech. The chapter feels like Solomon asking his son to prove wisdom in daily reactions, not just admire it in theory.",
+    beginsWith: [
+      "the difference between loving and hating correction",
+      "truthful speech and lying lips",
+      "diligent work and lazy habits",
+      "words that can either wound or heal",
+    ],
+    matters:
+      "This chapter matters because teachability is one of the clearest signs of wisdom. A person who cannot receive correction is hard to guide, and a person who uses words carelessly can damage more than they realize.",
+    givesUs: ["📚 correction", "🛠️ diligence", "🗣️ truthful words", "💬 healing speech", "❤️ revealed character"],
+    watchFor: [
+      "how correction is connected to knowledge",
+      "how work habits reveal wisdom or foolishness",
+      "how often the mouth shows what is happening inside",
+      "how truth is presented as something with lasting weight",
+    ],
+    takeaway:
+      "Proverbs 12 is about visible wisdom. It prepares you to notice how correction, work, and words reveal the condition of the heart.",
+  },
+  13: {
+    opening:
+      "Proverbs 13 sounds like Solomon thinking about the future his son is building. The chapter keeps returning to discipline, speech, hope, money, friendship, and the long-term shape of a life.",
+    beginsWith: [
+      "a wise son listening to instruction",
+      "the mouth as something that can protect or ruin",
+      "diligence compared with empty desire",
+      "companions who shape where a person ends up",
+    ],
+    matters:
+      "This chapter matters because wisdom thinks beyond the immediate moment. Solomon is teaching that today's habits are quietly growing into tomorrow's life.",
+    givesUs: ["⏳ long-term wisdom", "👂 instruction", "🗣️ guarded speech", "💰 honest gain", "👥 influence"],
+    watchFor: [
+      "how discipline and desire are contrasted",
+      "how speech affects the direction of a life",
+      "how hope and delay are treated honestly",
+      "how friendship is shown as formative",
+    ],
+    takeaway:
+      "Proverbs 13 is about choosing what your life is becoming. It prepares you to read each saying with the future in mind.",
+  },
+  14: {
+    opening:
+      "Proverbs 14 opens the door to one of wisdom's most sobering lessons: a way can seem right and still be dangerous. Solomon is teaching his son to look past appearances and test the direction of a path.",
+    beginsWith: [
+      "a wise woman building and foolishness tearing down",
+      "truth and lies in witness",
+      "prudence, anger, compassion, and fear of the Lord",
+      "the difference between what seems right and what truly leads to life",
+    ],
+    matters:
+      "This chapter matters because foolishness does not always look foolish at first. Some paths feel natural, some people sound confident, and some homes look strong while being weakened from within.",
+    givesUs: ["🏠 building or tearing down", "👀 discernment", "🔥 anger", "🤲 compassion", "🛣️ the path that seems right"],
+    watchFor: [
+      "how appearance and reality are contrasted",
+      "how prudence pays attention to steps",
+      "how anger and patience reveal different kinds of hearts",
+      "how the fear of the Lord brings stability",
+    ],
+    takeaway:
+      "Proverbs 14 is about learning not to trust a path just because it feels right. It prepares you to ask where a road is really leading.",
+  },
+  15: {
+    opening:
+      "Proverbs 15 begins in the middle of tension. A harsh word can stir anger, but a gentle answer can change the atmosphere. Solomon brings wisdom into speech, correction, prayer, joy, and the heart.",
+    beginsWith: [
+      "a soft answer and a harsh word",
+      "the tongue of the wise and the mouth of fools",
+      "the Lord seeing what people miss",
+      "correction, joy, prayer, and peace in ordinary life",
+    ],
+    matters:
+      "This chapter matters because words can change a room. Solomon is not teaching weakness. He is showing controlled strength: the ability to speak in a way that serves truth without feeding destruction.",
+    givesUs: ["🗣️ speech", "🕊️ gentleness", "👀 God's sight", "🙂 joy", "🙏 prayer"],
+    watchFor: [
+      "how many sayings focus on the mouth",
+      "how correction separates the wise from the foolish",
+      "how God sees both outward actions and hidden hearts",
+      "how peace is valued above abundance with trouble",
+    ],
+    takeaway:
+      "Proverbs 15 is about the atmosphere wisdom creates. It prepares you to read your words as part of your spiritual life.",
+  },
+  16: {
+    opening:
+      "Proverbs 16 stands between human planning and God's rule. Solomon knows plans matter, but he also knows motives are weighed by the Lord and outcomes are not controlled by human pride.",
+    beginsWith: [
+      "plans in the heart and answers under God's authority",
+      "motives being weighed by the Lord",
+      "pride, leadership, speech, and patience",
+      "the Lord directing steps even when people make plans",
+    ],
+    matters:
+      "This chapter matters because wisdom does not cancel planning; it humbles it. Solomon is teaching his son to work carefully without pretending he controls the whole story.",
+    givesUs: ["🗺️ plans", "⚖️ motives", "👑 leadership", "⚠️ pride", "🚶 steps directed by God"],
+    watchFor: [
+      "how often God is shown as active over human plans",
+      "how pride is connected to destruction",
+      "how leadership requires righteousness and restraint",
+      "how self-control is treated as greater than outward strength",
+    ],
+    takeaway:
+      "Proverbs 16 is about planning under God's rule. It prepares you to bring both your strategy and your motives before the Lord.",
+  },
+  17: {
+    opening:
+      "Proverbs 17 brings wisdom into the rooms where life is personal: the table, the family, the friendship, the argument, the quiet grief, and the moment where restraint may matter more than winning.",
+    beginsWith: [
+      "peace valued above a house full of conflict",
+      "hearts being tested like precious metal",
+      "friendship, family, justice, and restraint",
+      "the power of silence and a cheerful heart",
+    ],
+    matters:
+      "This chapter matters because a full house can still be miserable. Solomon is teaching that wisdom is not measured by noise, wealth, or appearance, but by the health of relationships and the character carried into them.",
+    givesUs: ["🍞 peace at the table", "🔥 tested hearts", "🤝 friendship", "⚖️ justice", "🤐 restraint"],
+    watchFor: [
+      "how family and friendship show the need for wisdom",
+      "how conflict can be fueled or restrained",
+      "how justice and partiality are treated seriously",
+      "how silence can sometimes look like wisdom",
+    ],
+    takeaway:
+      "Proverbs 17 is about wisdom up close. It prepares you to ask what kind of presence you bring into the rooms where people actually know you.",
+  },
+  18: {
+    opening:
+      "Proverbs 18 asks the reader to listen before speaking. It touches isolation, answering too quickly, humility, friendship, refuge in the Lord, and the power of the tongue.",
+    beginsWith: [
+      "the isolated person seeking their own desire",
+      "fools speaking before they understand",
+      "words pictured as powerful enough to affect life",
+      "the Lord's name as a place of safety",
+    ],
+    matters:
+      "This chapter matters because words are never weightless. Solomon is teaching that speech often reveals whether the heart has listened to wisdom or rushed ahead in pride.",
+    givesUs: ["👂 listening", "🗣️ the tongue", "🏰 refuge", "🧎 humility", "🤝 friendship"],
+    watchFor: [
+      "how isolation affects judgment",
+      "how answering before hearing is described",
+      "how speech can harm or help",
+      "how humility and friendship sit inside the same chapter",
+    ],
+    takeaway:
+      "Proverbs 18 is about slowing the mouth down long enough for wisdom to speak first. It prepares you to read words as powerful and spiritual.",
+  },
+  19: {
+    opening:
+      "Proverbs 19 moves slowly through everyday life. Solomon points to integrity, poverty, anger, generosity, discipline, plans, correction, and the fear of the Lord.",
+    beginsWith: [
+      "integrity valued above twisted gain",
+      "the danger of acting without knowledge",
+      "anger, blame, poverty, and generosity",
+      "human plans placed beneath the Lord's purpose",
+    ],
+    matters:
+      "This chapter matters because foolishness often looks like rushing, blaming, refusing correction, or ignoring people without status. Wisdom often looks steadier: patient, teachable, generous, and grounded.",
+    givesUs: ["🧭 integrity", "⏸️ patience", "🤲 generosity", "📚 correction", "🙏 fear of the Lord"],
+    watchFor: [
+      "how often the chapter slows down quick reactions",
+      "how poverty and generosity are treated with moral seriousness",
+      "how plans are compared with the Lord's purpose",
+      "how correction appears as a doorway to wisdom",
+    ],
+    takeaway:
+      "Proverbs 19 is about steadiness. It prepares you to notice where wisdom may be asking you to slow down, listen, and choose integrity.",
+  },
+  20: {
+    opening:
+      "Proverbs 20 feels like a walk through public life. Solomon points out appetite, conflict, work, buying, selling, promises, counsel, hidden motives, and the Lord's searching light.",
+    beginsWith: [
+      "warnings about wine and loss of self-control",
+      "conflict a wise person avoids",
+      "work and harvest",
+      "honesty in business and motives before God",
+    ],
+    matters:
+      "This chapter matters because ordinary life reveals a person. Anyone can sound wise for a moment, but work, conflict, appetite, money, and private motives tell a fuller story.",
+    givesUs: ["🍷 appetite", "🕊️ avoiding conflict", "🌾 harvest", "⚖️ honest measures", "🕯️ God's searching light"],
+    watchFor: [
+      "how practical the chapter is",
+      "how self-control affects more than one area of life",
+      "how honesty is shown in public and private places",
+      "how the Lord sees deeper than a person's claims",
+    ],
+    takeaway:
+      "Proverbs 20 is about letting wisdom enter ordinary decisions. It prepares you to see daily habits as places where character is revealed.",
+  },
+  21: {
+    opening:
+      "Proverbs 21 begins with a king's heart in the hand of the Lord. That opening matters because it reminds every reader, especially anyone with power, that no human authority stands above God.",
+    beginsWith: [
+      "God directing even the heart of a king",
+      "the Lord weighing hearts",
+      "justice and righteousness valued above empty religion",
+      "diligence, pride, generosity, conflict, and victory",
+    ],
+    matters:
+      "This chapter matters because it confronts the illusion of control. Solomon is teaching that religious appearance cannot replace obedience, and power cannot hide a heart from the Lord.",
+    givesUs: ["👑 kingship", "⚖️ justice", "❤️ motives", "🧎 humility", "🐎 victory under God"],
+    watchFor: [
+      "how God's authority frames the whole chapter",
+      "how sacrifice is compared with righteousness and justice",
+      "how pride and violence are exposed",
+      "how human preparation is placed beneath the Lord's deliverance",
+    ],
+    takeaway:
+      "Proverbs 21 is about living under God's authority. It prepares you to read obedience as more important than religious appearance.",
+  },
+  22: {
+    opening:
+      "Proverbs 22 turns toward reputation, humility, training, generosity, boundaries, and the words of the wise. It feels like Solomon teaching his son about the kind of name a life builds over time.",
+    beginsWith: [
+      "a good name valued above riches",
+      "rich and poor standing before the same Maker",
+      "training, humility, generosity, and careful listening",
+      "the beginning of a collected section of wise sayings",
+    ],
+    matters:
+      "This chapter matters because legacy is not only built by achievement. It is built by repeated character. A name becomes trustworthy or unstable through ordinary choices made over time.",
+    givesUs: ["🏷️ a good name", "🧎 humility", "👶 training", "🤲 generosity", "📜 wise sayings"],
+    watchFor: [
+      "how character is valued above wealth",
+      "how the poor and rich are placed before God",
+      "how boundaries and old landmarks matter",
+      "how listening prepares the heart for wisdom",
+    ],
+    takeaway:
+      "Proverbs 22 is about the name your life is building. It prepares you to read reputation as the echo of character, not image management.",
+  },
+  23: {
+    opening:
+      "Proverbs 23 warns about appetite. The chapter begins at a table, but the issue is bigger than food. It is about desire, wealth, envy, pleasure, wine, lust, and what the heart keeps reaching for.",
+    beginsWith: [
+      "a table where desire must be watched",
+      "warnings about chasing wealth",
+      "a father pleading for his son's heart",
+      "desire and self-control in several forms",
+    ],
+    matters:
+      "This chapter matters because appetite can disciple a person. Solomon is teaching that what you keep wanting without wisdom can eventually start ruling you.",
+    givesUs: ["🍽️ the table", "💰 wealth", "❤️ the heart", "🍷 wine", "🚦 self-control"],
+    watchFor: [
+      "how the chapter moves from food to deeper desires",
+      "how envy and wealth are treated carefully",
+      "how a father's plea becomes personal",
+      "how desire is shown as something that needs wisdom",
+    ],
+    takeaway:
+      "Proverbs 23 is about desire under wisdom. It prepares you to read appetite as more than what you eat; it is what your heart is learning to chase.",
+  },
+  24: {
+    opening:
+      "Proverbs 24 teaches readers not to be impressed by the wrong kind of success. Solomon points to envy, building, counsel, rescue, enemies, wisdom, and the field of the lazy person.",
+    beginsWith: [
+      "a warning not to envy evil people",
+      "a house built by wisdom and understanding",
+      "the importance of counsel and strength in trouble",
+      "a field that teaches through neglect",
+    ],
+    matters:
+      "This chapter matters because the surface can lie. Evil can look successful for a while, and laziness can look harmless for a while. Wisdom looks at what a path is producing over time.",
+    givesUs: ["👀 envy exposed", "🏠 building", "🧠 counsel", "🛟 rescue", "🌿 a neglected field"],
+    watchFor: [
+      "how Solomon warns against admiring the wrong people",
+      "how wisdom is connected to building something stable",
+      "how responsibility includes helping those in danger",
+      "how neglect becomes visible in the field",
+    ],
+    takeaway:
+      "Proverbs 24 is about building what lasts instead of admiring what only looks successful. It prepares you to watch both envy and neglect.",
+  },
+  25: {
+    opening:
+      "Proverbs 25 begins with a note that these are Solomon's sayings copied by men of King Hezekiah. That gives the chapter the feel of wisdom being preserved and recovered for a later generation.",
+    beginsWith: [
+      "wisdom preserved beyond Solomon's lifetime",
+      "kings, humility, and searching out matters",
+      "conflict, timing, and words fitly spoken",
+      "self-control pictured like a city with walls",
+    ],
+    matters:
+      "This chapter matters because timing changes how wisdom lands. A true word can still be badly placed. Solomon's wisdom is training readers to value humility, patience, restraint, and speech that fits the moment.",
+    givesUs: ["📜 preserved wisdom", "👑 royal imagery", "🗣️ fitting words", "⏳ timing", "🏙️ self-control"],
+    watchFor: [
+      "how the Hezekiah note frames the chapter",
+      "how kingship and humility appear together",
+      "how words are compared to beautiful things when rightly spoken",
+      "how self-control is pictured as protection",
+    ],
+    takeaway:
+      "Proverbs 25 is about wisdom with timing. It prepares you to read not only what is true, but when and how truth should be spoken.",
+  },
+  26: {
+    opening:
+      "Proverbs 26 is direct and sharp. Solomon studies patterns of foolishness, laziness, meddling, gossip, and deception so readers can recognize them before they spread damage.",
+    beginsWith: [
+      "the fool and how folly repeats itself",
+      "the sluggard and his excuses",
+      "the danger of grabbing conflict that is not yours",
+      "gossip and deception hidden behind words",
+    ],
+    matters:
+      "This chapter matters because wisdom is not naive. Some patterns need to be named clearly. Solomon is teaching discernment, not cruelty, so the reader can know when to answer, when to stay silent, and when to step away.",
+    givesUs: ["🧢 folly", "🛌 laziness", "🔥 meddling", "🗣️ gossip", "👀 discernment"],
+    watchFor: [
+      "how repeated images expose repeated foolishness",
+      "how the sluggard uses excuses",
+      "how conflict can pull in people who do not belong there",
+      "how words can hide harm",
+    ],
+    takeaway:
+      "Proverbs 26 is about recognizing destructive patterns. It prepares you to read the chapter as wisdom for discernment, not just insults against fools.",
+  },
+  27: {
+    opening:
+      "Proverbs 27 brings wisdom into humility, friendship, correction, responsibility, and stewardship. It feels like Solomon reminding his son that real wisdom needs honest people and careful attention.",
+    beginsWith: [
+      "a warning not to boast about tomorrow",
+      "the value of faithful wounds over flattering kisses",
+      "iron sharpening iron",
+      "careful attention to flocks and responsibilities",
+    ],
+    matters:
+      "This chapter matters because no one becomes wise alone. Solomon is teaching his son to receive correction, avoid self-praise, and pay attention to what has been entrusted to him.",
+    givesUs: ["📅 tomorrow", "🤝 friendship", "🛠️ sharpening", "🐑 stewardship", "🧎 humility"],
+    watchFor: [
+      "how humility frames the chapter",
+      "how friendship includes truth, not just comfort",
+      "how correction can be faithful",
+      "how stewardship requires attention before things fall apart",
+    ],
+    takeaway:
+      "Proverbs 27 is about letting wisdom sharpen you and help you tend what God has placed in your hands.",
+  },
+  28: {
+    opening:
+      "Proverbs 28 contrasts hidden sin with bold righteousness. The chapter touches justice, confession, greed, poverty, integrity, generosity, and the courage that comes from walking in the light.",
+    beginsWith: [
+      "the wicked fleeing and the righteous standing bold",
+      "justice and law affecting a people",
+      "the danger of covering sin",
+      "generosity, greed, and integrity",
+    ],
+    matters:
+      "This chapter matters because confidence can be fake, but righteousness gives a different kind of steadiness. Solomon is showing that concealment weakens a person, while confession opens the door to mercy.",
+    givesUs: ["🦁 boldness", "⚖️ justice", "💡 confession", "💰 greed", "🧭 integrity"],
+    watchFor: [
+      "how hidden sin affects courage",
+      "how justice is connected to leadership and community",
+      "how confession is contrasted with covering",
+      "how money reveals what a person trusts",
+    ],
+    takeaway:
+      "Proverbs 28 is about stepping into the light. It prepares you to read confession and integrity as strength, not weakness.",
+  },
+  29: {
+    opening:
+      "Proverbs 29 has the feel of a final strong warning. Solomon speaks about correction, leadership, anger, discipline, vision, fear of man, and trust in the Lord.",
+    beginsWith: [
+      "a person repeatedly corrected but still hardening their neck",
+      "righteous and wicked leadership",
+      "anger, discipline, and justice",
+      "the fear of man as a trap",
+    ],
+    matters:
+      "This chapter matters because correction has weight. The longer a heart refuses truth, the harder it can become. Solomon is teaching that leadership magnifies whatever is already inside a person.",
+    givesUs: ["⚠️ correction", "👑 leadership", "🔥 anger", "👁️ vision", "🪤 fear of man"],
+    watchFor: [
+      "how correction appears at the beginning of the chapter",
+      "how leadership affects the people under it",
+      "how anger and discipline are handled",
+      "how fear of people competes with trust in the Lord",
+    ],
+    takeaway:
+      "Proverbs 29 is about receiving correction before collapse. It prepares you to read wisdom as mercy that arrives before consequences do.",
+  },
+  30: {
+    opening:
+      "Proverbs 30 introduces the words of Agur, a different voice with a humble posture. After many sayings of Solomon, this chapter slows down and looks at God, creation, limits, and the kind of prayer that protects the heart.",
+    beginsWith: [
+      "Agur confessing his limits",
+      "God's words as pure",
+      "a prayer for neither poverty nor riches",
+      "wisdom learned by observing creation",
+    ],
+    matters:
+      "This chapter matters because wisdom includes humility. Agur does not pretend to have mastered life. He knows he is small before God, and that awareness becomes part of his wisdom.",
+    givesUs: ["🧎 humility", "📖 pure words", "🙏 a guarded prayer", "🐜 creation lessons", "👀 wonder"],
+    watchFor: [
+      "how different Agur's voice feels",
+      "how he talks about his limits before God",
+      "how his prayer asks for what will keep him faithful",
+      "how creation becomes a classroom",
+    ],
+    takeaway:
+      "Proverbs 30 is about humble wisdom. It prepares you to read the chapter with awe, not pride.",
+  },
+  31: {
+    opening:
+      "Proverbs 31 closes the book with wisdom from a mother to King Lemuel. After so much father-to-son instruction, the final chapter honors a mother's voice and then shows wisdom embodied in a life.",
+    beginsWith: [
+      "a mother warning a king about what can weaken him",
+      "a call to speak for those who need justice",
+      "a portrait of wisdom lived through strength and service",
+      "the fear of the Lord as the final measure of a life",
+    ],
+    matters:
+      "This chapter matters because Proverbs does not end with wisdom as an idea. It ends with wisdom in action: speaking, serving, planning, giving, working, protecting, and fearing the Lord.",
+    givesUs: ["👑 royal warning", "⚖️ justice", "💪 strength", "🏠 household wisdom", "🙏 fear of the Lord"],
+    watchFor: [
+      "how a mother's instruction shapes the closing chapter",
+      "how leadership is tied to justice for the vulnerable",
+      "how the virtuous woman embodies wisdom in action",
+      "how the fear of the Lord becomes the final praise",
+    ],
+    takeaway:
+      "Proverbs 31 is about wisdom becoming visible. It prepares you to finish the book asking whether wisdom is only admired or actually lived.",
+  },
+};
+
+function buildProverbsStudyIntro(day: ChapterPlan) {
+  if (day.chapter === 1) {
+    return cinematicDevotionalTextByChapter[1];
+  }
+
+  const detail = studyIntroDetailsByChapter[day.chapter];
+  if (!detail) return buildCinematicDevotionalText(day.chapter);
+
+  return `${detail.opening}
+
+This is not meant to explain every verse before you read it.
+
+It is meant to help you know what kind of chapter you are stepping into.
+
+# 📍 Where This Chapter Begins
+
+This chapter begins with:
+
+${detail.beginsWith.map((item) => `* ${item}`).join("\n")}
+
+---
+
+# Why This Chapter Matters
+
+${detail.matters}
+
+This chapter gives us:
+
+${detail.givesUs.map((item) => `* ${item}`).join("\n")}
+
+---
+
+# What To Watch For
+
+As you read, pay attention to:
+
+${detail.watchFor.map((item) => `* ${item}`).join("\n")}
+
+---
+
+# The Bigger Takeaway
+
+${detail.takeaway}`;
+}
+
 const devotionalDays: DevotionalDay[] = chapterPlans.map((day) => ({
   day_number: day.chapter,
   day_title: day.title,
   bible_reading_book: "Proverbs",
   bible_reading_chapter: day.chapter,
   reflection_question: day.reflection,
-  devotional_text: buildCinematicDevotionalText(day.chapter),
+  devotional_text: buildProverbsStudyIntro(day),
 }));
 
 async function main() {
