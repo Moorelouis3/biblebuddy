@@ -172,6 +172,8 @@ export default function DashboardPage() {
   const [dailyTaskSummaryLine, setDailyTaskSummaryLine] = useState<string | null>(null);
   const [selectedDashboardTask, setSelectedDashboardTask] = useState<TaskState | null>(null);
   const dailyTaskPopupOpenRef = useRef(false);
+  const dailyTaskSummaryLoadedKeyRef = useRef<string | null>(null);
+  const dailyTaskSummaryInFlightRef = useRef<{ key: string; promise: Promise<void> } | null>(null);
   const [dailyTaskTimeLeftLabel, setDailyTaskTimeLeftLabel] = useState<string | null>(null);
   const [motivationalMessage, setMotivationalMessage] = useState<string>("");
   const [proExpiresAt, setProExpiresAt] = useState<string | null>(null);
@@ -1576,8 +1578,11 @@ export default function DashboardPage() {
     setShowDailyTaskCelebrationModal(true);
   }, [pendingDailyTaskCelebrationModal, selectedDashboardTask, showLouisDailyTasksModal, userId, louisDailyTaskCycleStartedAt]);
 
-  const loadDailyTaskSummary = useCallback(async () => {
-    if (!userId || !profile || !louisDailyTaskCycleStartedAt) {
+  const currentStreak = profile?.current_streak ?? 0;
+  const hasProfileLoaded = Boolean(profile);
+
+  const loadDailyTaskSummary = useCallback(async (options: { force?: boolean } = {}) => {
+    if (!userId || !hasProfileLoaded || !louisDailyTaskCycleStartedAt) {
       setIsLoadingDailyTaskSummary(false);
       setDailyChecklistData(null);
       setDailyTaskCompletedCount(0);
@@ -1587,12 +1592,22 @@ export default function DashboardPage() {
       return;
     }
 
+    const loadKey = `${userId}:${louisDailyTaskCycleStartedAt}:${currentStreak}`;
+
+    if (dailyTaskSummaryInFlightRef.current?.key === loadKey) {
+      return dailyTaskSummaryInFlightRef.current.promise;
+    }
+
+    if (!options.force && dailyTaskSummaryLoadedKeyRef.current === loadKey) {
+      return;
+    }
+
     setIsLoadingDailyTaskSummary(true);
 
-    try {
+    const loadPromise = (async () => {
       const checklistData = await fetchLouisDailyChecklistData(
         userId,
-        profile.current_streak ?? 0,
+        currentStreak,
         louisDailyTaskCycleStartedAt,
       );
       setDailyChecklistData(checklistData);
@@ -1616,6 +1631,13 @@ export default function DashboardPage() {
           setShowDailyTaskCelebrationModal(true);
         }
       }
+      dailyTaskSummaryLoadedKeyRef.current = loadKey;
+    })();
+
+    dailyTaskSummaryInFlightRef.current = { key: loadKey, promise: loadPromise };
+
+    try {
+      await loadPromise;
     } catch (error) {
       console.error("[DASHBOARD] Could not load daily task summary:", error);
       setDailyChecklistData(null);
@@ -1624,9 +1646,12 @@ export default function DashboardPage() {
       setDailyTaskNextTitle(null);
       setDailyTaskSummaryLine(null);
     } finally {
+      if (dailyTaskSummaryInFlightRef.current?.key === loadKey) {
+        dailyTaskSummaryInFlightRef.current = null;
+      }
       setIsLoadingDailyTaskSummary(false);
     }
-  }, [louisDailyTaskCycleStartedAt, profile, userId]);
+  }, [currentStreak, hasProfileLoaded, louisDailyTaskCycleStartedAt, userId]);
 
   useEffect(() => {
     void loadDailyTaskSummary();
@@ -1639,7 +1664,7 @@ export default function DashboardPage() {
 
     function handleVisibilityChange() {
       if (document.visibilityState === "visible") {
-        void loadDailyTaskSummary();
+        void loadDailyTaskSummary({ force: true });
       }
     }
 
@@ -1910,7 +1935,7 @@ export default function DashboardPage() {
           onTaskClick={handleDailyJourneyTaskClick}
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           onDevotionalChanged={() => {
-            void loadDailyTaskSummary();
+            void loadDailyTaskSummary({ force: true });
           }}
         />
         </div>
@@ -1954,7 +1979,7 @@ export default function DashboardPage() {
           onTaskClick={handleDailyJourneyTaskClick}
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           onDevotionalChanged={() => {
-            void loadDailyTaskSummary();
+            void loadDailyTaskSummary({ force: true });
           }}
         />
       </div>
@@ -2077,7 +2102,7 @@ export default function DashboardPage() {
         open={showLouisDailyTasksModal && !showVerseOfTheDayModal && !showStreakMotivationModal}
         onClose={() => {
           setShowLouisDailyTasksModal(false);
-          void loadDailyTaskSummary();
+          void loadDailyTaskSummary({ force: true });
         }}
         userId={userId}
         currentStreak={profile?.current_streak ?? 0}
@@ -2089,7 +2114,7 @@ export default function DashboardPage() {
         userId={userId}
         onClose={() => setSelectedDashboardTask(null)}
         onProgressUpdated={() => {
-          void loadDailyTaskSummary();
+          void loadDailyTaskSummary({ force: true });
         }}
       />
 
