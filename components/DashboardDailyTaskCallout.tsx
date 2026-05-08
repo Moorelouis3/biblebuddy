@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import ReactMarkdown from "react-markdown";
 import BibleReadingModal from "./BibleReadingModal";
+import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import DevotionalDayModal from "./DevotionalDayModal";
 import { ModalShell } from "./ModalShell";
 import ScrambledGamePlayer from "./ScrambledGamePlayer";
@@ -388,8 +388,8 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
             ) : notesError ? (
               <p className="py-10 text-center text-sm text-red-500">{notesError}</p>
             ) : (
-              <div className="max-w-none space-y-5 text-gray-800">
-                <ReactMarkdown>{notesText}</ReactMarkdown>
+              <div className="max-w-none text-gray-800">
+                <ChapterNotesMarkdown>{notesText}</ChapterNotesMarkdown>
               </div>
             )}
           </div>

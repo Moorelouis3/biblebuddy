@@ -10,6 +10,7 @@ import { getFeaturedCharactersForMatthew, FeaturedCharacter } from "../../../../
 import { FeaturedCharacterModal } from "../../../../components/FeaturedCharacterModal";
 import { useFeaturedCharacters } from "../../../../hooks/useFeaturedCharacters";
 import ReactMarkdown from "react-markdown";
+import ChapterNotesMarkdown from "../../../../components/ChapterNotesMarkdown";
 import { BIBLE_HIGHLIGHTING_VERSION_MARKER, enrichBibleVerses } from "../../../../lib/bibleHighlighting";
 import { logStudyView } from "../../../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../../../lib/actionTypes";
@@ -2758,28 +2759,8 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                   </button>
                 </div>
               ) : (
-                <div className="max-w-none space-y-5 text-gray-800">
-                  <ReactMarkdown
-                    components={{
-                      h1: ({ children }) => (
-                        <h1 className="mt-6 mb-2 text-xl font-bold text-gray-900 first:mt-0">{children}</h1>
-                      ),
-                      h2: ({ children }) => (
-                        <h2 className="mt-5 mb-2 text-lg font-bold text-gray-900">{children}</h2>
-                      ),
-                      p: ({ children }) => (
-                        <p className="text-[15px] leading-relaxed text-gray-700">{children}</p>
-                      ),
-                      strong: ({ children }) => (
-                        <strong className="font-semibold text-gray-900">{children}</strong>
-                      ),
-                      li: ({ children }) => (
-                        <li className="ml-4 list-disc text-[15px] leading-relaxed text-gray-700">{children}</li>
-                      ),
-                    }}
-                  >
-                    {reviewNotesText}
-                  </ReactMarkdown>
+                <div className="max-w-none text-gray-800">
+                  <ChapterNotesMarkdown>{reviewNotesText}</ChapterNotesMarkdown>
                 </div>
               )}
             </div>

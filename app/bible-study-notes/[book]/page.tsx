@@ -5,7 +5,7 @@ import { useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { getCompletedChapters, getBookTotalChapters } from "@/lib/readingProgress";
 import { supabase } from "@/lib/supabaseClient";
-import ReactMarkdown from "react-markdown";
+import ChapterNotesMarkdown from "../../../components/ChapterNotesMarkdown";
 
 const CHAPTERS_PER_PAGE = 12;
 
@@ -159,29 +159,7 @@ export default function BookBibleStudyNotesPage() {
               <div className="bg-blue-50 rounded-3xl px-4 md:px-6 py-5 md:py-7">
                 <section className="mb-8 md:mb-10">
                   <div className="bg-white border border-blue-100 rounded-2xl shadow-sm p-4 md:p-6 max-h-[60vh] overflow-y-auto text-sm md:text-base leading-relaxed text-gray-800 space-y-4">
-                    <div className="prose prose-sm md:prose-base max-w-none">
-                      <ReactMarkdown
-                        components={{
-                          h1: ({ node, ...props }) => (
-                            <h1 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-gray-900" {...props} />
-                          ),
-                          p: ({ node, ...props }) => (
-                            <p className="mb-4 leading-relaxed" {...props} />
-                          ),
-                          strong: ({ node, ...props }) => (
-                            <strong className="font-bold" {...props} />
-                          ),
-                          ul: ({ node, ...props }) => (
-                            <ul className="list-disc list-inside mb-4 space-y-2" {...props} />
-                          ),
-                          li: ({ node, ...props }) => (
-                            <li className="ml-4" {...props} />
-                          ),
-                        }}
-                      >
-                        {notesText}
-                      </ReactMarkdown>
-                    </div>
+                    <ChapterNotesMarkdown>{notesText}</ChapterNotesMarkdown>
                   </div>
                 </section>
 
@@ -299,4 +277,3 @@ export default function BookBibleStudyNotesPage() {
     </div>
   );
 }
-
