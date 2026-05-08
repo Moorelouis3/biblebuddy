@@ -681,13 +681,93 @@ Charm can deceive. Beauty can fade. Public attention can rise and fall. But the 
 As you read Proverbs 31, let it gather the whole journey. Wisdom is not only for kings, courts, markets, and arguments. It is for homes, work, service, leadership, speech, generosity, and worship. The final question is not whether you admire wisdom. It is whether wisdom is becoming visible in the way you live.`,
 };
 
+const cinematicDepthByChapter: Record<number, string> = {
+  1: `Hold that picture for a moment: Solomon is speaking from a life full of glory and warning. He asked God for wisdom, and God gave it. People would travel to hear him. Yet Solomon's own story also proves why wisdom must become obedience. He would later be pulled by divided loves, foreign alliances, and a heart that drifted. That makes Proverbs 1 feel less like a lecture and more like a plea. A wise father is trying to teach his son before the streets teach him in a harsher way.`,
+
+  2: `There is also a hidden tenderness in this chapter. Solomon knows his son will not always recognize danger by sight. Some people will sound reasonable while leading him toward crookedness. Some pleasures will appear safe while pulling him away from covenant faithfulness. So he tells him to seek wisdom before the pressure comes. The treasure must be stored in the heart early, because when the wrong invitation arrives, a person usually reaches for whatever has already been planted inside them.`,
+
+  3: `Solomon is not asking his son to turn off his mind. He is teaching him where his mind belongs. A king needs strategy, counsel, courage, and skill, but none of those can replace trust in the Lord. David had learned that on battlefields and in caves. Solomon learned it in the quiet weight of governing. Proverbs 3 brings that inheritance into one command: acknowledge God in all your ways. Not some ways. Not ceremonial ways. All the roads where decisions are actually made.`,
+
+  4: `You can almost hear three generations in this chapter. David's lessons echo through Solomon, and Solomon passes them to his son. That is how wisdom often travels: not as a cold list, but as memory with urgency. David knew the cost of unguarded desire. Solomon would know it too. So when the chapter says to guard your heart, it is not decorative language. It is a warning from a family line that had seen how one unguarded place can spill into a whole kingdom.`,
+
+  5: `This chapter also carries the sorrow of Solomon's own weakness. He had extraordinary wisdom, but wisdom did not make him immune to compromise. His many marriages were not only romantic failure; they were political, spiritual, and national danger. Ancient kings often used marriage alliances to secure peace or power, and concubines were secondary wives without the same full status. But what looked strategic could still become spiritually destructive. Proverbs 5 warns that desire and advantage can both become chains when they pull the heart from God.`,
+
+  6: `Notice how grounded this chapter is. Solomon does not separate spiritual life from practical life. A foolish promise can trap you. A lazy morning can become a ruined harvest. A lying tongue can fracture trust. An unguarded look can become adultery. He is teaching his son to respect beginnings. Most breakdowns do not begin loudly. They begin as small permissions, repeated excuses, and habits no one confronts until the damage is already visible.`,
+
+  7: `The young man in this chapter is called simple, not because he is hopeless, but because he is unformed. He has not yet learned how quickly a path can shape him. That is why the scene is so cinematic: evening, shadow, corner, voice, invitation. Solomon wants his son to feel the danger before he meets it. Wisdom sometimes saves us by helping us imagine consequences before we experience them. The son does not need to become the story if he is willing to learn from the story.`,
+
+  8: `This is one of the grandest scenes in Proverbs. Wisdom stands where business, justice, travel, and leadership all pass by. The city gate was not just an entrance; it was a place of decisions. Cases were heard, agreements were made, leaders were seen, and families passed in and out. By placing Wisdom there, Solomon is saying she belongs at the center of public and private life. Wisdom is not a side room for religious moments. She is calling from the place where life is actually happening.`,
+
+  9: `The two houses are important because they show that foolishness often imitates invitation. Folly also has a door. Folly also has a voice. Folly also knows how to make a person feel wanted. That is why the simple are vulnerable. They are not choosing between obvious life and obvious death. They are choosing between two invitations that both promise something. Solomon wants his son to learn that every table has a host, and every host is forming the people who sit there.`,
+
+  10: `This shift can feel sudden, but it is intentional. The first nine chapters prepare the heart; now the short sayings begin training the eye. Solomon starts showing his son what wisdom looks like in fragments of ordinary life. This is how people often learn wisdom in real time: one sentence remembered before an angry reply, one warning recalled before a lazy choice, one image that comes back when temptation appears. The proverbs are short because daily decisions often happen quickly.`,
+
+  11: `A king had to care about scales because dishonest trade did not stay private. It hurt families, weakened trust, and taught the powerful to take advantage of the vulnerable. Solomon is showing that righteousness is social. It affects how grain is weighed, how money is handled, how secrets are kept, how beauty is carried, and how generosity moves through a community. Wisdom is not only personal improvement. It is the kind of life that makes the people around you safer.`,
+
+  12: `For a future ruler, teachability might be the difference between justice and disaster. If he only listens to praise, he will become fragile. If he hates correction, he will surround himself with people who tell him what he wants to hear. Solomon knows this danger. So Proverbs 12 brings correction down to the level of daily character. The person who loves instruction is not weak. That person is strong enough to grow, humble enough to listen, and wise enough to change before pain becomes the teacher.`,
+
+  13: `Solomon's own world was full of inherited privilege, but Proverbs 13 refuses to let inheritance replace discipline. A prince may receive a palace, but he cannot inherit self-control. He may inherit servants, but not diligence. He may inherit a name, but not character. This chapter teaches that wisdom builds slowly in places no ceremony can create. It is formed in the mouth, the friendships, the work, the willingness to hear, and the small choices that do not look dramatic until years have passed.`,
+
+  14: `This chapter is especially needed because foolishness is not always ugly at first glance. Some roads appear successful. Some people sound confident. Some laughter covers grief. Some homes look strong while being torn down from within. Solomon wants his son to become a person who can discern what is beneath the surface. In leadership, family, money, anger, and compassion, the wise person learns to ask a better question than, "How does this look?" Wisdom asks, "Where does this lead?"`,
+
+  15: `A palace court could be changed by one answer. A harsh word could escalate a dispute. A gentle word could preserve peace. Solomon is not teaching weakness; he is teaching controlled strength. Anyone can release anger. It takes wisdom to answer in a way that serves truth without feeding destruction. This chapter also reminds us that God sees the room differently than we do. He sees the eyes, the heart, the motive, the prayer, and the quiet ache behind a person's words.`,
+
+  16: `Solomon knew what it meant to plan on a massive scale. He organized labor, built the temple, managed wealth, received foreign visitors, and governed a growing kingdom. Planning was not optional. But Proverbs 16 keeps pulling every plan under the rule of God. This is where pride becomes so dangerous. Pride does not always refuse to plan; sometimes it plans as if God is irrelevant. Wisdom plans carefully while remembering that motives are weighed in heaven before outcomes are seen on earth.`,
+
+  17: `This chapter also quietly challenges the dream of a perfect-looking life. A full house can still be miserable. A rich table can still be tense. A family can have resources and still lack peace. Solomon is teaching his son not to confuse abundance with health. The wise person learns to value the hidden things that make life livable: peace, loyalty, restraint, justice, forgiveness, and a heart that can still laugh without cruelty. Wisdom is often most visible in how a home feels.`,
+
+  18: `In a royal setting, words could decide cases, start conflicts, save lives, or ruin reputations. But Solomon's warning reaches far beyond the court. People still answer too quickly, isolate too easily, and use speech to defend themselves instead of seek truth. Proverbs 18 slows the reader down. Before the tongue speaks life or death, the heart has already chosen whether it will listen. That is why humility is connected to honor. A person who can listen is still reachable by wisdom.`,
+
+  19: `There is a pastoral feel to this chapter. Solomon is not only warning against dramatic sin; he is naming the everyday ways people drift. Blame God for the road they chose. Mistreat the poor because they lack status. Rush in anger and then live with the damage. Refuse instruction because pride feels safer than change. Proverbs 19 teaches that wisdom often looks like steadiness. It is the ability to be corrected, to be generous, to wait, and to remember that God's purpose is larger than our plans.`,
+
+  20: `The chapter almost feels like Solomon walking through the city with his son and pointing things out. Here is the man made foolish by wine. Here is the quarrel a wise person refuses. Here is the worker who did not prepare. Here is the merchant using dishonest measures. Here is the person loudly claiming loyalty. Every scene teaches discernment. A future king must judge more than appearances, and every believer must learn the same. Wisdom notices the fruit because the fruit tells on the root.`,
+
+  21: `Solomon's son would need this chapter because kings can start believing they are the final authority. Proverbs 21 begins by breaking that illusion. Even the king's heart is not beyond the Lord. That truth is both comforting and sobering. It means no human power is ultimate, and no religious image can hide a crooked heart. The chapter presses righteousness and justice because God is not impressed by worship that leaves obedience untouched. Wisdom asks whether our lives agree with the prayers we pray.`,
+
+  22: `A good name would matter deeply in a royal household, but Solomon is not talking about popularity. A good name is the public echo of private character. It is what remains after repeated choices have had time to speak. In this chapter, Solomon connects that name to humility, generosity, boundaries, training, and listening. He wants his son to know that legacy is not built only by monuments or victories. It is built by the kind of person others learn they can trust.`,
+
+  23: `The table scene is powerful because rulers often learned politics around tables. Meals could be places of friendship, manipulation, luxury, and temptation. Solomon tells his son to pay attention because appetite can cloud discernment. That includes the appetite for food, but also for wealth, influence, romance, pleasure, and escape. The heart can be trained by what it keeps reaching for. Proverbs 23 is not trying to drain joy from life. It is trying to keep desire from becoming a throne.`,
+
+  24: `This chapter also teaches the son how to read outcomes with patience. The wicked may seem to rise quickly, but quick success is not the same as a secure foundation. The lazy field may not collapse in one day, but neglect is still working. Wisdom learns from both images. It refuses envy, and it refuses passivity. Solomon is showing that a life is built or broken over time. You are always cultivating something, even when you think you are doing nothing.`,
+
+  25: `The Hezekiah detail gives this chapter a sense of rediscovery. Imagine scribes preserving Solomon's words because a later generation still needed them. That is how wisdom works: it keeps speaking after the original moment has passed. Proverbs 25 carries lessons for courts, conflict, friendship, self-control, and timing. A king needed those lessons, but so does anyone with a phone, a family, a workplace, or a mouth. The right word can be beautiful. The wrong timing can turn even truth into a burden.`,
+
+  26: `Solomon is also teaching that wisdom is not the same as being endlessly agreeable. Some behavior must be named. Some patterns must be recognized. Some conversations must be refused. The fool, the sluggard, the gossip, and the deceiver all create damage in different ways, and pretending not to see it is not love. Proverbs 26 gives the reader categories. It helps you stop treating every conflict, excuse, and flattering word as innocent. Clear-eyed discernment can protect a home, a community, and a soul.`,
+
+  27: `There is a humility running through this chapter. You do not control tomorrow. You should not be the loudest voice praising yourself. You need people who can sharpen you. You need to pay attention to what has been entrusted to you. For a prince, that means flocks and fields, but also people, influence, decisions, and the future of a nation. For us, it means the relationships and responsibilities God has actually placed in our hands. Wisdom does not only dream; it tends.`,
+
+  28: `The boldness in this chapter is not personality. It is the steadiness that comes from walking in the light. Solomon contrasts that with the anxious life of hidden sin, injustice, greed, and refusal to confess. A person can look strong while constantly running inside. A ruler can appear secure while corruption makes him unstable. Proverbs 28 invites a different kind of strength: confession, integrity, generosity, and reverence. Mercy is not found by covering sin better. It is found by bringing sin honestly before God.`,
+
+  29: `This chapter is heavy because correction has a clock on it. Not because God is impatient, but because a heart can become harder the longer it refuses truth. Solomon wants his son to understand that leadership magnifies whatever is inside a person. Anger becomes policy. Fear of man becomes compromise. Lack of vision becomes disorder. Justice becomes relief for the people. Wisdom must be received before authority exposes what has been ignored. The safest leader is still humble enough to be corrected.`,
+
+  30: `Agur's voice is a gift because it interrupts any pride we may have picked up while studying wisdom. After chapters of instruction, he reminds us that we are still small before God. He looks at creation like a student: ants, lizards, eagles, serpents, ships, and things too wonderful for him. That posture matters. Wisdom is not only knowing what to do. It is living with awe. Agur teaches us to ask for the kind of provision that protects our hearts, not just the kind that impresses people.`,
+
+  31: `The closing portrait is bigger than household productivity. It is a picture of wisdom matured into faithful action. This woman is strong, generous, prepared, trusted, and unafraid of the future because her life has been shaped by reverence for the Lord. Placing her at the end of Proverbs is powerful. The book does not end with wisdom as an idea floating above life. It ends with wisdom working, speaking, giving, planning, protecting, and worshiping in the middle of ordinary responsibilities.`,
+};
+
+function buildCinematicDevotionalText(chapter: number) {
+  const baseText = cinematicDevotionalTextByChapter[chapter];
+  const depthText = cinematicDepthByChapter[chapter];
+
+  if (!baseText || !depthText) return baseText || "";
+
+  const finalPromptIndex = baseText.lastIndexOf("As you read Proverbs");
+  if (finalPromptIndex === -1) {
+    return `${baseText}\n\n${depthText}`;
+  }
+
+  return `${baseText.slice(0, finalPromptIndex).trim()}\n\n${depthText}\n\n${baseText
+    .slice(finalPromptIndex)
+    .trim()}`;
+}
+
 const devotionalDays: DevotionalDay[] = chapterPlans.map((day) => ({
   day_number: day.chapter,
   day_title: day.title,
   bible_reading_book: "Proverbs",
   bible_reading_chapter: day.chapter,
   reflection_question: day.reflection,
-  devotional_text: cinematicDevotionalTextByChapter[day.chapter],
+  devotional_text: buildCinematicDevotionalText(day.chapter),
 }));
 
 async function main() {
