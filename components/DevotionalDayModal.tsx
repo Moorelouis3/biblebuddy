@@ -171,6 +171,10 @@ export default function DevotionalDayModal({
   const [viewedPlaces, setViewedPlaces] = useState<Set<string>>(new Set());
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
   const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
+  const primaryDayLabel =
+    day.bible_reading_book && day.bible_reading_chapter
+      ? `${day.bible_reading_book} ${day.bible_reading_chapter}`
+      : `Day ${day.day_number}`;
 
   // Load user + existing progress so devotional popups share the same completion state as other pages
   useEffect(() => {
@@ -703,7 +707,7 @@ Be accurate to Scripture.`;
           
           <div className="flex items-center gap-3 mb-2">
             <span className="text-2xl">⭐</span>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Day {day.day_number}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">{primaryDayLabel}</h1>
           </div>
           <h2 className="text-xl md:text-2xl font-semibold text-gray-700 ml-11">{day.day_title}</h2>
         </div>

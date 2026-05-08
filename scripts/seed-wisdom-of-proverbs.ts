@@ -306,11 +306,7 @@ const chapterPlans: ChapterPlan[] = [
 ];
 
 const cinematicDevotionalTextByChapter: Record<number, string> = {
-  1: `# DAY 1 INTRO
-
-# The Voice of Wisdom Begins
-
-Before Proverbs becomes a book of short sayings, picture the throne room of Israel.
+  1: `Before Proverbs becomes a book of short sayings, picture the throne room of Israel.
 
 This is not just random advice floating through history.
 
