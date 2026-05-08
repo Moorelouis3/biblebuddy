@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { LouisAvatar } from "./LouisAvatar";
+import { ModalShell } from "./ModalShell";
 import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
@@ -430,6 +431,7 @@ export default function DashboardJourneyExperience({
   const [celebratingTasks, setCelebratingTasks] = useState<Record<string, number>>({});
   const [progressCelebrationKey, setProgressCelebrationKey] = useState(0);
   const [showDevotionalSettings, setShowDevotionalSettings] = useState(false);
+  const [showJourneyHelp, setShowJourneyHelp] = useState(false);
   const [devotionalOptions, setDevotionalOptions] = useState<DevotionalOption[]>([]);
   const [selectedDevotionalId, setSelectedDevotionalId] = useState("");
   const [isLoadingDevotionalOptions, setIsLoadingDevotionalOptions] = useState(false);
@@ -805,10 +807,25 @@ export default function DashboardJourneyExperience({
                   ⚙
                 </button>
               ) : null}
+              {!isLoadingChecklist ? (
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setShowDevotionalSettings(false);
+                    setShowJourneyHelp(true);
+                  }}
+                  className="absolute bottom-3 right-3 z-20 flex h-7 w-7 items-center justify-center rounded-full bg-transparent text-sm font-black text-gray-950 transition hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]/35"
+                  aria-label="How Daily Bible Study tasks work"
+                  title="How Daily Bible Study tasks work"
+                >
+                  ?
+                </button>
+              ) : null}
               <button
                 type="button"
                 onClick={onOpenDailyTasks}
-                className="w-full rounded-[26px] px-4 py-4 text-left"
+                className="w-full rounded-[26px] px-4 pb-9 pt-4 text-left"
               >
               {isLoadingChecklist ? (
                 <>
@@ -1120,6 +1137,119 @@ export default function DashboardJourneyExperience({
           </button>
         </div>
       </div>
+
+      <ModalShell
+        isOpen={showJourneyHelp}
+        onClose={() => setShowJourneyHelp(false)}
+        backdropColor="bg-black/55"
+        scrollable={true}
+        zIndex="z-[70]"
+      >
+        <div className="w-full max-w-2xl rounded-2xl bg-white shadow-2xl">
+          <div className="p-6">
+            <div className="mb-6 flex items-start justify-between gap-4">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-950">How Bible Journeys Work</h2>
+                <p className="mt-2 text-sm leading-6 text-gray-600">
+                  Bible Buddy is built for steady Bible study, not rushing through a timer.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowJourneyHelp(false)}
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-2xl font-bold text-gray-500 transition hover:bg-gray-100 hover:text-gray-800"
+                aria-label="Close Bible journey help"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="space-y-6 text-gray-800">
+              <div className="rounded-2xl border border-[#b8d9ef] bg-gradient-to-br from-[#f6fbff] via-white to-[#edf7ff] p-4 shadow-sm">
+                <div className="flex items-start gap-3">
+                  <div className="rounded-full border border-white bg-white p-1 shadow-sm">
+                    <LouisAvatar mood="wave" size={44} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#4d88ad]">
+                      The Big Idea
+                    </p>
+                    <h3 className="mt-1 text-xl font-bold text-gray-950">
+                      Your streak and your chapter progress are connected, but they are not the same thing.
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-gray-700">
+                      Show up each day to keep your streak alive. Finish the chapter journey when you are ready to move forward.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <section>
+                <h3 className="text-lg font-bold text-gray-950">🔥 Your Daily Streak</h3>
+                <p className="mt-2 leading-7">
+                  To keep your streak going, complete at least one meaningful Bible action each day. That can be reading the Bible Study intro, reading the chapter, opening the notes, finishing trivia, playing Scrambled, or writing a reflection when it is available.
+                </p>
+                <p className="mt-2 leading-7">
+                  You do not have to finish all 5 chapter tasks in one day. The streak is about returning to Scripture daily.
+                </p>
+              </section>
+
+              <section>
+                <h3 className="text-lg font-bold text-gray-950">📖 Your Chapter Journey</h3>
+                <p className="mt-2 leading-7">
+                  Your current chapter stays active until the chapter tasks are complete. If Proverbs 1 takes one day, great. If it takes a few days, or even a week, that is okay too.
+                </p>
+                <p className="mt-2 leading-7">
+                  When you come back, Bible Buddy helps you continue where you left off instead of making you feel behind.
+                </p>
+              </section>
+
+              <section>
+                <h3 className="text-lg font-bold text-gray-950">The 5 Chapter Tasks</h3>
+                <div className="mt-3 space-y-3">
+                  <div className="rounded-xl border border-gray-200 bg-white p-3">
+                    <p className="font-bold text-gray-950">1. 📕 Bible Study Intro</p>
+                    <p className="mt-1 text-sm leading-6 text-gray-700">
+                      This sets the scene for the chapter so you understand what you are about to read.
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-gray-200 bg-white p-3">
+                    <p className="font-bold text-gray-950">2. ✝️ Read The Chapter</p>
+                    <p className="mt-1 text-sm leading-6 text-gray-700">
+                      This is the Scripture itself. Read slowly and let the chapter be the center of the journey.
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-gray-200 bg-white p-3">
+                    <p className="font-bold text-gray-950">3. 📝 Chapter Notes</p>
+                    <p className="mt-1 text-sm leading-6 text-gray-700">
+                      Notes help you understand the chapter more deeply, verse by verse and section by section.
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-gray-200 bg-white p-3">
+                    <p className="font-bold text-gray-950">4. 🧠 Trivia</p>
+                    <p className="mt-1 text-sm leading-6 text-gray-700">
+                      Trivia checks what is sticking from the chapter and helps you remember the story and details.
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-gray-200 bg-white p-3">
+                    <p className="font-bold text-gray-950">5. 🔤 Scrambled</p>
+                    <p className="mt-1 text-sm leading-6 text-gray-700">
+                      Scrambled reviews important words from the chapter in a quick, playful way.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section className="rounded-2xl border border-green-200 bg-green-50 p-4">
+                <h3 className="text-lg font-bold text-gray-950">✅ When A Chapter Is Complete</h3>
+                <p className="mt-2 leading-7">
+                  Once the chapter journey is finished, Bible Buddy celebrates the completion and moves you to the next chapter. The goal is simple: keep showing up, keep learning, and keep moving forward at a healthy pace.
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </ModalShell>
     </div>
   );
 }
