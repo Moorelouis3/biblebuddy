@@ -314,9 +314,9 @@ This is a father speaking to a son.
 
 And not just any father.
 
-👑 Solomon is the son of David.
+### 👑 Solomon is the son of David.
 
-The same David who:
+**The same David who:**
 
 * 🪨 fought Goliath
 * 🎶 wrote songs in the wilderness
@@ -327,12 +327,29 @@ The same David who:
 
 Solomon grew up watching all of it.
 
-He inherited:
+**He inherited:**
 
 * a throne
 * a kingdom
 * a legacy
 * the pressure of leading God's people
+
+God gave Solomon incredible wisdom. People traveled from nations away just to hear him speak.
+
+And yet Solomon's own heart would later drift.
+
+**He would be pulled away by:**
+
+* divided loves
+* compromise
+* foreign alliances
+* spiritual drift
+
+That makes Proverbs feel heavier.
+
+This is not just advice from a perfect man sitting above everyone else.
+
+It is wisdom from a king who knew the beauty of God's truth and would also learn how painful it is when the heart stops listening.
 
 So when Proverbs opens, it does not sound like a philosopher writing quotes for strangers.
 
@@ -350,23 +367,23 @@ It is wisdom.
 
 That matters.
 
-The book teaches:
+**The book teaches:**
 
 * 🌱 patterns
 * 🛣️ paths
 * ⚖️ consequences
 * 👀 discernment
 
-It shows:
+**It shows:**
 
 * the kind of life that usually leads toward wisdom
 * the kind of life that slowly destroys people
 
-This is not:
+**This is not:**
 
 > "Do this once and God owes you success."
 
-This is:
+**This is:**
 
 > "Walk this road long enough and it shapes who you become."
 
@@ -376,7 +393,7 @@ This is:
 
 Solomon opens the book by explaining why wisdom exists.
 
-Wisdom is meant to:
+**Wisdom is meant to:**
 
 * 📚 train the simple
 * 🗡️ sharpen the wise
@@ -403,7 +420,7 @@ One voice says:
 
 > "Come with us."
 
-It offers:
+**It offers:**
 
 * 🤝 belonging
 * 💰 quick gain
@@ -420,48 +437,15 @@ The other voice is Wisdom herself.
 
 📢 She calls people while there is still time to listen.
 
-The chapter asks a simple question:
+The chapter presses the first big decision:
 
 # Which voice will you follow?
 
 ---
 
-# 👀 What Makes This Chapter Hit Harder
-
-Solomon is not speaking as someone who knows nothing about failure.
-
-That is what makes Proverbs powerful.
-
-God gave Solomon incredible wisdom. People traveled from nations away just to hear him speak.
-
-And yet...
-
-⚠️ Solomon's own heart would later drift.
-
-He would be pulled away by:
-
-* divided loves
-* compromise
-* foreign alliances
-* spiritual drift
-
-That changes how Proverbs feels.
-
-This is not just a lecture from a perfect man.
-
-It feels more like:
-
-* 💔 a warning
-* 💔 a plea
-* 💔 a father trying to help his son avoid painful roads
-
-Before the streets teach him the hard way.
-
----
-
 # 🔍 What To Watch For In Proverbs 1
 
-As you read, pay attention to:
+**As you read, pay attention to:**
 
 * 👂 how often wisdom calls before judgment comes
 * 🚶 the contrast between the path of wisdom and the path of sinners
