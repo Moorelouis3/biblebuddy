@@ -306,19 +306,186 @@ const chapterPlans: ChapterPlan[] = [
 ];
 
 const cinematicDevotionalTextByChapter: Record<number, string> = {
-  1: `Before Proverbs becomes a book of short sayings, picture the throne room of Israel.
+  1: `# DAY 1 INTRO
 
-Solomon is not just a wise man with clever lines. He is the son of David, the king who fought giants, wrote songs, sinned deeply, repented honestly, and carried Israel through war, worship, victory, and failure. Solomon grew up in the shadow of that kind of father. He inherited a throne, a nation, a history, and the weight of leading people who belonged to God.
+# The Voice of Wisdom Begins
 
-So when Proverbs opens, it is not random advice. It sounds like a king leaning toward his son, the future heir, saying, "Before you learn how to rule people, you need to learn how to rule yourself."
+Before Proverbs becomes a book of short sayings, picture the throne room of Israel.
 
-That matters because Proverbs is not a promise book where every sentence is a guaranteed outcome. It is wisdom. It teaches patterns, not contracts. It shows the paths that usually lead to life and the paths that usually lead to ruin.
+This is not just random advice floating through history.
 
-Proverbs 1 sets the whole scene. Solomon tells his son why this wisdom exists: to train the simple, sharpen the wise, protect the young, and teach people how to see. Then he lays the foundation: the fear of the Lord is where knowledge begins.
+This is a father speaking to a son.
 
-This chapter also introduces the first major choice. One voice says, "Come with us." It offers belonging, gain, and excitement, but the road leads to destruction. Another voice is Wisdom, crying in the streets, calling people before consequences arrive.
+And not just any father.
 
-As you read Proverbs 1, imagine Solomon trying to save his son from learning everything the hard way. The question under the whole chapter is simple: when wisdom calls, will you listen?`,
+👑 Solomon is the son of David.
+
+The same David who:
+
+* 🪨 fought Goliath
+* 🎶 wrote songs in the wilderness
+* 👑 ruled Israel
+* 💔 fell deeply into sin
+* 🙏 cried out in repentance
+* ⚔️ led through war, victory, failure, and worship
+
+Solomon grew up watching all of it.
+
+He inherited:
+
+* a throne
+* a kingdom
+* a legacy
+* the pressure of leading God's people
+
+So when Proverbs opens, it does not sound like a philosopher writing quotes for strangers.
+
+It sounds like a king leaning toward his son saying:
+
+> "Before you learn how to lead others, you need to learn how to lead yourself."
+
+---
+
+# 📖 What Proverbs Really Is
+
+Proverbs is not a book of guaranteed promises.
+
+It is wisdom.
+
+That matters.
+
+The book teaches:
+
+* 🌱 patterns
+* 🛣️ paths
+* ⚖️ consequences
+* 👀 discernment
+
+It shows:
+
+* the kind of life that usually leads toward wisdom
+* the kind of life that slowly destroys people
+
+This is not:
+
+> "Do this once and God owes you success."
+
+This is:
+
+> "Walk this road long enough and it shapes who you become."
+
+---
+
+# 🧠 What Proverbs 1 Is Trying To Do
+
+Solomon opens the book by explaining why wisdom exists.
+
+Wisdom is meant to:
+
+* 📚 train the simple
+* 🗡️ sharpen the wise
+* 🛡️ protect the young
+* 👀 teach people how to truly see
+
+Then he gives the foundation underneath the entire book:
+
+> "The fear of the Lord is the beginning of knowledge."
+
+Everything in Proverbs grows out of that sentence.
+
+Not intelligence. Not talent. Not success.
+
+Reverence for God.
+
+---
+
+# 🚪 The First Big Choice
+
+Proverbs 1 introduces two competing voices.
+
+One voice says:
+
+> "Come with us."
+
+It offers:
+
+* 🤝 belonging
+* 💰 quick gain
+* ⚡ excitement
+* 😈 temptation
+
+But the road ends in destruction.
+
+The other voice is Wisdom herself.
+
+📢 She cries out in the streets.
+
+📢 She warns before consequences arrive.
+
+📢 She calls people while there is still time to listen.
+
+The chapter asks a simple question:
+
+# Which voice will you follow?
+
+---
+
+# 👀 What Makes This Chapter Hit Harder
+
+Solomon is not speaking as someone who knows nothing about failure.
+
+That is what makes Proverbs powerful.
+
+God gave Solomon incredible wisdom. People traveled from nations away just to hear him speak.
+
+And yet...
+
+⚠️ Solomon's own heart would later drift.
+
+He would be pulled away by:
+
+* divided loves
+* compromise
+* foreign alliances
+* spiritual drift
+
+That changes how Proverbs feels.
+
+This is not just a lecture from a perfect man.
+
+It feels more like:
+
+* 💔 a warning
+* 💔 a plea
+* 💔 a father trying to help his son avoid painful roads
+
+Before the streets teach him the hard way.
+
+---
+
+# 🔍 What To Watch For In Proverbs 1
+
+As you read, pay attention to:
+
+* 👂 how often wisdom calls before judgment comes
+* 🚶 the contrast between the path of wisdom and the path of sinners
+* 🧠 how "the fear of the Lord" becomes the foundation for everything else
+* ⚠️ how temptation often sounds exciting before it becomes destructive
+* 📢 how wisdom is not hidden, but ignored
+
+---
+
+# 💡 The Bigger Takeaway
+
+Proverbs 1 is really about a decision.
+
+Will you listen when wisdom speaks?
+
+Or will you wait until consequences force you to?
+
+Solomon is trying to teach his son something early: wisdom is not just knowing what is right.
+
+Wisdom is choosing it before life humbles you into it.`,
 
   2: `Imagine Solomon walking with his son before the city is fully awake.
 
@@ -682,7 +849,7 @@ As you read Proverbs 31, let it gather the whole journey. Wisdom is not only for
 };
 
 const cinematicDepthByChapter: Record<number, string> = {
-  1: `Hold that picture for a moment: Solomon is speaking from a life full of glory and warning. He asked God for wisdom, and God gave it. People would travel to hear him. Yet Solomon's own story also proves why wisdom must become obedience. He would later be pulled by divided loves, foreign alliances, and a heart that drifted. That makes Proverbs 1 feel less like a lecture and more like a plea. A wise father is trying to teach his son before the streets teach him in a harsher way.`,
+  1: "",
 
   2: `There is also a hidden tenderness in this chapter. Solomon knows his son will not always recognize danger by sight. Some people will sound reasonable while leading him toward crookedness. Some pleasures will appear safe while pulling him away from covenant faithfulness. So he tells him to seek wisdom before the pressure comes. The treasure must be stored in the heart early, because when the wrong invitation arrives, a person usually reaches for whatever has already been planted inside them.`,
 

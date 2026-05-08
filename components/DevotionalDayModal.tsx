@@ -44,6 +44,71 @@ interface DevotionalDayModalProps {
   onDayComplete: (reflectionText: string, readingCompleted: boolean) => void; // Called with current modal state values
 }
 
+type DevotionalContentBlock =
+  | { kind: "heading"; key: string; level: 1 | 2; html: string }
+  | { kind: "paragraph"; key: string; html: string }
+  | { kind: "quote"; key: string; html: string }
+  | { kind: "list"; key: string; items: string[] }
+  | { kind: "divider"; key: string };
+
+function stripInlineMarkdown(text: string) {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, "$1")
+    .replace(/\*(.*?)\*/g, "$1")
+    .replace(/^#+\s*/, "")
+    .trim();
+}
+
+function parseDevotionalContent(text: string, dayNumber: number): DevotionalContentBlock[] {
+  if (!text) return [];
+
+  return text
+    .split(/\n\s*\n/)
+    .map((rawBlock, idx): DevotionalContentBlock | null => {
+      const block = rawBlock.trim();
+      if (!block) return null;
+      const key = `${dayNumber}-${idx}`;
+
+      if (/^-{3,}$/.test(block)) return { kind: "divider", key };
+
+      const headingMatch = block.match(/^(#{1,2})\s+(.+)$/);
+      if (headingMatch) {
+        return {
+          kind: "heading",
+          key,
+          level: headingMatch[1].length === 1 ? 1 : 2,
+          html: enrichPlainText(stripInlineMarkdown(headingMatch[2])),
+        };
+      }
+
+      const lines = block.split("\n").map((line) => line.trim()).filter(Boolean);
+      const isList = lines.length > 0 && lines.every((line) => /^[-*]\s+/.test(line));
+      if (isList) {
+        return {
+          kind: "list",
+          key,
+          items: lines.map((line) => enrichPlainText(stripInlineMarkdown(line.replace(/^[-*]\s+/, "")))),
+        };
+      }
+
+      const isQuote = lines.length > 0 && lines.every((line) => line.startsWith(">"));
+      if (isQuote) {
+        return {
+          kind: "quote",
+          key,
+          html: enrichPlainText(stripInlineMarkdown(lines.map((line) => line.replace(/^>\s?/, "")).join(" "))),
+        };
+      }
+
+      return {
+        kind: "paragraph",
+        key,
+        html: enrichPlainText(stripInlineMarkdown(block.replace(/\n/g, " "))),
+      };
+    })
+    .filter((block): block is DevotionalContentBlock => Boolean(block));
+}
+
 // Helper functions for normalizing markdown (same as Bible chapter page)
 function normalizePersonMarkdown(markdown: string): string {
   return markdown
@@ -181,14 +246,8 @@ export default function DevotionalDayModal({
     setHasUnsavedChanges(false);
   }, [dayProgress]);
 
-  const devotionalParagraphs = useMemo(
-    () =>
-      day.devotional_text
-        ? day.devotional_text.split(/\n\s*\n/).map((para, idx) => ({
-            key: `${day.day_number}-${idx}`,
-            html: enrichPlainText(para),
-          }))
-        : [],
+  const devotionalBlocks = useMemo(
+    () => parseDevotionalContent(day.devotional_text || "", day.day_number),
     [day.day_number, day.devotional_text]
   );
 
@@ -656,13 +715,54 @@ Be accurate to Scripture.`;
               {/* DEVOTIONAL CONTENT SECTION */}
               <div className="mb-8" ref={devotionalTextRef}>
                 <div className="text-gray-700" style={{ fontSize: '1rem' }}>
-                  {devotionalParagraphs.map((para) => (
-                    <p
-                      key={para.key}
-                      className="mb-4 leading-relaxed"
-                      dangerouslySetInnerHTML={{ __html: para.html }}
-                    />
-                  ))}
+                  {devotionalBlocks.map((block) => {
+                    if (block.kind === "divider") {
+                      return <hr key={block.key} className="my-6 border-gray-200" />;
+                    }
+
+                    if (block.kind === "heading") {
+                      const className =
+                        block.level === 1
+                          ? "mb-3 mt-6 text-2xl font-black leading-tight tracking-normal text-gray-950 first:mt-0"
+                          : "mb-3 mt-7 border-b border-gray-200 pb-2 text-xl font-black leading-tight tracking-normal text-gray-950";
+                      const HeadingTag = block.level === 1 ? "h2" : "h3";
+                      return (
+                        <HeadingTag
+                          key={block.key}
+                          className={className}
+                          dangerouslySetInnerHTML={{ __html: block.html }}
+                        />
+                      );
+                    }
+
+                    if (block.kind === "quote") {
+                      return (
+                        <blockquote
+                          key={block.key}
+                          className="my-5 rounded-xl border-l-4 border-[#7BAFD4] bg-[#eef6fd] px-4 py-3 text-base font-semibold leading-relaxed text-gray-900"
+                          dangerouslySetInnerHTML={{ __html: block.html }}
+                        />
+                      );
+                    }
+
+                    if (block.kind === "list") {
+                      return (
+                        <ul key={block.key} className="mb-5 ml-5 list-disc space-y-2 leading-relaxed text-gray-800">
+                          {block.items.map((item, index) => (
+                            <li key={`${block.key}-${index}`} dangerouslySetInnerHTML={{ __html: item }} />
+                          ))}
+                        </ul>
+                      );
+                    }
+
+                    return (
+                      <p
+                        key={block.key}
+                        className="mb-4 leading-relaxed text-gray-800"
+                        dangerouslySetInnerHTML={{ __html: block.html }}
+                      />
+                    );
+                  })}
                 </div>
               </div>
 
