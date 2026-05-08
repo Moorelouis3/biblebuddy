@@ -309,12 +309,48 @@ function buildTaskFocusLine(task: TaskState | null, remainingTasks: number) {
   return `One more task to go: test your word knowledge with Scrambled for ${chapterLabel}.`;
 }
 
-function expandTimeLeftLabel(label: string | null) {
-  if (!label) return null;
+function getShortTaskName(task: TaskState | null) {
+  if (!task) return "today's last Bible study task";
+  if (task.kind === "devotional") return "today's devotional";
+  if (task.kind === "reading") return task.chapterLabel ? `reading ${task.chapterLabel}` : "today's chapter";
+  if (task.kind === "notes") return task.chapterLabel ? `${task.chapterLabel} notes` : "today's notes";
+  if (task.kind === "trivia") return "trivia";
+  if (task.kind === "scrambled") return "Scrambled";
+  return task.title;
+}
 
-  return label
-    .replace(/\b(\d+)h\b/g, (_, value) => `${value} ${Number(value) === 1 ? "hour" : "hours"}`)
-    .replace(/\b(\d+)m\b/g, (_, value) => `${value} ${Number(value) === 1 ? "minute" : "minutes"}`);
+function buildDailyStudySummaryLine({
+  allDone,
+  completedTasks,
+  remainingTasks,
+  totalTasks,
+  timeLeftLabel,
+  nextTask,
+}: {
+  allDone: boolean;
+  completedTasks: number;
+  remainingTasks: number;
+  totalTasks: number;
+  timeLeftLabel: string | null;
+  nextTask: TaskState | null;
+}) {
+  if (allDone) {
+    return timeLeftLabel
+      ? `All ${totalTasks} tasks done. New tasks in ${timeLeftLabel}.`
+      : `All ${totalTasks} tasks done.`;
+  }
+
+  const timePrefix = timeLeftLabel ? `You have ${timeLeftLabel}` : "You have time";
+
+  if (remainingTasks <= 1) {
+    return `${completedTasks} done. ${timePrefix} to finish ${getShortTaskName(nextTask)} today.`;
+  }
+
+  if (completedTasks === 0) {
+    return `${timePrefix} for today's ${totalTasks} tasks.`;
+  }
+
+  return `${completedTasks} done. ${timePrefix} for the last ${remainingTasks} tasks today.`;
 }
 
 export default function DashboardJourneyExperience({
@@ -358,14 +394,14 @@ export default function DashboardJourneyExperience({
   const currentDevotionalId = currentDevotionalTask?.devotionalId || "";
   const isPaidUser = profile?.is_paid === true;
   const remainingTasks = Math.max(totalTasks - completedTasks, 0);
-  const dailyTaskTimeLeftText = expandTimeLeftLabel(dailyTaskTimeLeftLabel);
-  const dailyStudySummaryLine = allDone
-    ? dailyTaskTimeLeftText
-      ? `All ${totalTasks} Bible study tasks are done. New tasks start in ${dailyTaskTimeLeftText}.`
-      : `All ${totalTasks} Bible study tasks are done.`
-    : dailyTaskTimeLeftText
-      ? `${completedTasks} done, ${remainingTasks} left. You have ${dailyTaskTimeLeftText} to finish today's ${totalTasks} Bible study tasks.`
-      : `${completedTasks} done, ${remainingTasks} left to go.`;
+  const dailyStudySummaryLine = buildDailyStudySummaryLine({
+    allDone,
+    completedTasks,
+    remainingTasks,
+    totalTasks,
+    timeLeftLabel: dailyTaskTimeLeftLabel,
+    nextTask,
+  });
   const streak = profile?.current_streak ?? 0;
   const devotionalTask = checklistData?.tasks.find((task) => task.kind === "devotional") ?? null;
   const readingTask = checklistData?.tasks.find((task) => task.kind === "reading") ?? null;
@@ -668,7 +704,7 @@ export default function DashboardJourneyExperience({
         className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         <section className={`w-full shrink-0 snap-start px-1 ${activePage === 0 ? "" : "h-0 overflow-hidden"}`}>
-          <div className="mx-auto flex max-w-xl flex-col gap-4">
+          <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
             <div
               className={`relative w-full overflow-visible rounded-[26px] border text-left shadow-sm transition hover:shadow-md ${getDailyStudyCardClasses(allDone)}`}
             >
