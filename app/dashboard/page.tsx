@@ -880,7 +880,7 @@ export default function DashboardPage() {
       return (
         <div className="mb-4">
           <Link href="/admin/analytics" className="block">
-            <div className="mx-auto grid max-w-xl grid-cols-2 gap-3 rounded-2xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md sm:grid-cols-4">
+            <div className="mx-auto grid max-w-xl grid-cols-4 gap-2 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm transition hover:shadow-md sm:gap-3 sm:p-3">
               {[
                 { label: "Signups 24h", value: ownerQuickStats.signups24h, tones: "bg-gray-100 border-gray-200" },
                 { label: "Active 24h", value: ownerQuickStats.activeUsers24h, tones: "bg-blue-100 border-blue-200" },
@@ -889,12 +889,12 @@ export default function DashboardPage() {
               ].map((card) => (
                 <div
                   key={card.label}
-                  className={`rounded-xl border px-2 py-3 text-center sm:px-3 sm:py-4 ${card.tones}`}
+                  className={`rounded-xl border px-1.5 py-2 text-center sm:px-3 sm:py-4 ${card.tones}`}
                 >
-                  <p className="text-xl font-bold text-gray-900 sm:text-2xl">
+                  <p className="text-lg font-bold text-gray-900 sm:text-2xl">
                     {loadingOwnerQuickStats ? "..." : card.value}
                   </p>
-                  <p className="mt-1 text-[10px] font-medium leading-tight text-gray-700 sm:text-xs">
+                  <p className="mt-1 text-[9px] font-medium leading-tight text-gray-700 sm:text-xs">
                     {card.label}
                   </p>
                 </div>
