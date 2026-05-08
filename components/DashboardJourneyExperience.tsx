@@ -842,8 +842,8 @@ export default function DashboardJourneyExperience({
                       <div className="rounded-full border border-white/90 bg-white/80 p-1.5 shadow-sm">
                         <LouisAvatar mood={allDone ? "stareyes" : "wave"} size={46} />
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <p className="text-sm font-semibold leading-6 text-gray-800">{louisMessage.focusLine}</p>
+                      <div className="min-w-0 flex-1 pr-8">
+                        <p className="text-sm font-normal leading-6 text-gray-800">{louisMessage.focusLine}</p>
                       </div>
                     </div>
 
