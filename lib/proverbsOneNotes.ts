@@ -130,8 +130,6 @@ Not theory.
 
 Now we meet King Solomon.
 
-> **Proverbs 1:1**
->
 > **1** The proverbs of Solomon, son of David, king of Israel.
 
 This verse is simple.
@@ -275,8 +273,6 @@ This is intentional.
 
 Solomon is telling you exactly what you gain if you actually listen.
 
-> **Proverbs 1:2**
->
 > **2** To know wisdom and instruction, to perceive the words of understanding.
 
 This verse introduces three core ideas:
@@ -355,8 +351,6 @@ Put together, this means you are not just reading words.
 
 You are learning how to think, how to move, and how to see clearly.
 
-> **Proverbs 1:3**
->
 > **3** To receive the instruction of wisdom, justice, and judgment, and equity.
 
 Now it moves from knowing to receiving.
@@ -431,8 +425,6 @@ This is not just about being smart.
 
 This is about living right.
 
-> **Proverbs 1:4**
->
 > **4** To give subtlety to the simple, to the young man knowledge and discretion.
 
 Now Solomon shows who this is for.
@@ -472,8 +464,6 @@ Discretion is knowing how to apply it in real situations.
 
 This is for people early in life who are still building how they think and live.
 
-> **Proverbs 1:5**
->
 > **5** A wise man will hear and will increase learning, and a man of understanding shall attain unto wise counsel.
 
 This is important.
@@ -502,8 +492,6 @@ So this is for:
 
 Everyone.
 
-> **Proverbs 1:6**
->
 > **6** To understand a proverb and the interpretation, the words of the wise and their dark sayings.
 
 This explains how Proverbs works.
@@ -556,8 +544,6 @@ If you actually listen, it will change how you think, how you decide, and how yo
 
 ## 🙏 Proverbs 1:7
 
-> **Proverbs 1:7**
->
 > **7** The fear of the Lord is the beginning of knowledge, but fools despise wisdom and instruction.
 
 This verse is the foundation.
@@ -657,8 +643,6 @@ They reject it.
 
 ## 📖 Proverbs 1:8-9
 
-> **Proverbs 1:8-9**
->
 > **8** My son, hear the instruction of thy father, and forsake not the law of thy mother.
 >
 > **9** For they shall be an ornament of grace unto thy head, and chains about thy neck.
@@ -751,8 +735,6 @@ People will be able to see it.
 
 ## 📍 Walking in the Way of Sinners
 
-> **Proverbs 1:10**
->
 > **10** My son, if sinners entice thee, consent thou not.
 
 ### 👨‍👦 A Direct Warning
@@ -809,8 +791,6 @@ Even if:
 
 If you know it is wrong, do not say yes.
 
-> **Proverbs 1:11-14**
->
 > **11** If they say, Come with us, let us lay wait for blood, let us lurk privily for the innocent without cause:
 >
 > **12** Let us swallow them up alive as the grave; and whole, as those that go down into the pit:
@@ -857,8 +837,6 @@ They are offering:
 
 All built on doing what is wrong.
 
-> **Proverbs 1:15-16**
->
 > **15** My son, walk not thou in the way with them; refrain thy foot from their path.
 >
 > **16** For their feet run to evil, and make haste to shed blood.
@@ -888,8 +866,6 @@ Without thinking twice.
 
 ### 🪤 The Trap
 
-> **Proverbs 1:17-19**
->
 > **17** Surely in vain the net is spread in the sight of any bird.
 >
 > **18** And they lay wait for their own blood; they lurk privily for their own lives.
@@ -986,8 +962,6 @@ This helps you picture it.
 
 Instead of wisdom being just an idea, you can see it as someone calling out, trying to get your attention.
 
-> **Proverbs 1:20-21**
->
 > **20** Wisdom crieth without; she uttereth her voice in the streets.
 >
 > **21** She crieth in the chief place of concourse, in the openings of the gates: in the city she uttereth her words, saying,
@@ -1074,8 +1048,6 @@ The question is:
 
 **Are people listening?**
 
-> **Proverbs 1:22-23**
->
 > **22** How long, ye simple ones, will ye love simplicity? and the scorners delight in their scorning, and fools hate knowledge?
 >
 > **23** Turn you at my reproof: behold, I will pour out my spirit unto you, I will make known my words unto you.
@@ -1143,8 +1115,6 @@ The problem is that people ignore, mock, and reject it.
 
 ## ⚠️ When Wisdom Is Ignored
 
-> **Proverbs 1:24-27**
->
 > **24** Because I have called, and ye refused; I have stretched out my hand, and no man regarded;
 >
 > **25** But ye have set at nought all my counsel, and would none of my reproof:
@@ -1194,8 +1164,6 @@ The path was chosen anyway.
 
 And now the consequences come.
 
-> **Proverbs 1:28-31**
->
 > **28** Then shall they call upon me, but I will not answer; they shall seek me early, but they shall not find me:
 >
 > **29** For that they hated knowledge, and did not choose the fear of the Lord:
@@ -1235,8 +1203,6 @@ This is the outcome of their choices.
 
 ## 📖 Proverbs 1:32-33
 
-> **Proverbs 1:32-33**
->
 > **32** For the turning away of the simple shall slay them, and the prosperity of fools shall destroy them.
 >
 > **33** But whoso hearkeneth unto me shall dwell safely, and shall be quiet from fear of evil.

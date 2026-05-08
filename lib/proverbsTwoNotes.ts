@@ -81,8 +81,6 @@ Wisdom helps you recognize danger before danger becomes your story.
 
 ## 📖 Proverbs 2:1-4
 
-> **Proverbs 2:1-4**
->
 > **1** My son, if thou wilt receive my words, and hide my commandments with thee;
 >
 > **2** So that thou incline thine ear unto wisdom, and apply thine heart to understanding;
@@ -308,8 +306,6 @@ Wanted.
 
 ## 🙏 Proverbs 2:5-8
 
-> **Proverbs 2:5-8**
->
 > **5** Then shalt thou understand the fear of the Lord, and find the knowledge of God.
 >
 > **6** For the Lord giveth wisdom: out of his mouth cometh knowledge and understanding.
@@ -472,8 +468,6 @@ Trust God as the giver.
 
 ## 🧠 Proverbs 2:9-11
 
-> **Proverbs 2:9-11**
->
 > **9** Then shalt thou understand righteousness, and judgment, and equity; yea, every good path.
 >
 > **10** When wisdom entereth into thine heart, and knowledge is pleasant unto thy soul;
@@ -563,8 +557,6 @@ Wisdom guards you from things you may not even realize were dangerous at first.
 
 ## ⚠️ Proverbs 2:12-15
 
-> **Proverbs 2:12-15**
->
 > **12** To deliver thee from the way of the evil man, from the man that speaketh froward things;
 >
 > **13** Who leave the paths of uprightness, to walk in the ways of darkness;
@@ -675,8 +667,6 @@ But do not let crooked voices lead your life.
 
 ## 🚪 Proverbs 2:16-19
 
-> **Proverbs 2:16-19**
->
 > **16** To deliver thee from the strange woman, even from the stranger which flattereth with her words;
 >
 > **17** Which forsaketh the guide of her youth, and forgetteth the covenant of her God.
@@ -791,8 +781,6 @@ It is about any path that uses desire to pull you away from God.
 
 ## 🛣️ Proverbs 2:20-22
 
-> **Proverbs 2:20-22**
->
 > **20** That thou mayest walk in the way of good men, and keep the paths of the righteous.
 >
 > **21** For the upright shall dwell in the land, and the perfect shall remain in it.
