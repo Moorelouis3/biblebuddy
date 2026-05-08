@@ -340,18 +340,6 @@ function getChapterFocusSummary(task: TaskState | null) {
   return `what God is showing you in ${chapterLabel}.`;
 }
 
-function buildTaskOpenerLine(task: TaskState | null) {
-  if (!task) return "Your next Bible step is ready.";
-  const chapterLabel = task.chapterLabel || "today's chapter";
-
-  if (task.kind === "devotional") return `Let's start with ${task.title}.`;
-  if (task.kind === "reading") return `Next up: read ${chapterLabel}.`;
-  if (task.kind === "notes") return `Next up: review ${chapterLabel} notes.`;
-  if (task.kind === "trivia") return `Next up: play trivia for ${chapterLabel}.`;
-  if (task.kind === "scrambled") return `Last step: play Scrambled for ${chapterLabel}.`;
-  return task.title;
-}
-
 function buildTaskFocusLine(task: TaskState | null, remainingTasks: number) {
   if (!task) {
     return "Your next Bible step is ready whenever you are.";
@@ -533,7 +521,6 @@ export default function DashboardJourneyExperience({
   function buildLouisNextStepMessage() {
     if (allDone) {
       return {
-        openerLine: "You finished all 5 of today's Bible tasks.",
         focusLine: dailyTaskTimeLeftLabel
           ? `Great job showing up. Your next Bible study tasks start in ${dailyTaskTimeLeftLabel}.`
           : "Great job showing up. Your next Bible study tasks will unlock with the next daily cycle.",
@@ -542,13 +529,11 @@ export default function DashboardJourneyExperience({
 
     if (!nextTask) {
       return {
-        openerLine: "Your next Bible step is ready.",
         focusLine: "Your next Bible step is ready whenever you are.",
       };
     }
 
     return {
-      openerLine: buildTaskOpenerLine(nextTask),
       focusLine: buildTaskFocusLine(nextTask, remainingTasks),
     };
   }
@@ -858,8 +843,7 @@ export default function DashboardJourneyExperience({
                         <LouisAvatar mood={allDone ? "stareyes" : "wave"} size={46} />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="text-sm font-semibold leading-6 text-gray-900">{louisMessage.openerLine}</p>
-                        <p className="mt-1 text-sm leading-6 text-gray-600">{louisMessage.focusLine}</p>
+                        <p className="text-sm font-semibold leading-6 text-gray-800">{louisMessage.focusLine}</p>
                       </div>
                     </div>
 
