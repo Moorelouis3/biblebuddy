@@ -349,7 +349,7 @@ function buildTaskFocusLine(task: TaskState | null, remainingTasks: number) {
   const chapterSummary = getChapterFocusSummary(task);
 
   if (task.kind === "devotional") {
-    return `Today's Bible study is built around ${chapterLabel}. This chapter is about ${chapterSummary}`;
+    return `Continue ${chapterLabel}. This chapter is about ${chapterSummary}`;
   }
 
   if (task.kind === "reading") {
@@ -364,7 +364,7 @@ function buildTaskFocusLine(task: TaskState | null, remainingTasks: number) {
     return `You have the reading and notes down. Play trivia for ${chapterLabel} and see what you remember.`;
   }
 
-  return `One more task to go. Play Scrambled for ${chapterLabel} and finish today's Bible study.`;
+  return `One more task to go. Play Scrambled for ${chapterLabel} and complete this chapter journey.`;
 }
 
 function getShortTaskName(task: TaskState | null) {
@@ -382,33 +382,27 @@ function buildDailyStudySummaryLine({
   completedTasks,
   remainingTasks,
   totalTasks,
-  timeLeftLabel,
   nextTask,
 }: {
   allDone: boolean;
   completedTasks: number;
   remainingTasks: number;
   totalTasks: number;
-  timeLeftLabel: string | null;
   nextTask: TaskState | null;
 }) {
   if (allDone) {
-    return timeLeftLabel
-      ? `All ${totalTasks} tasks done. New tasks in ${timeLeftLabel}.`
-      : `All ${totalTasks} tasks done.`;
+    return `Chapter journey complete. The next chapter is ready.`;
   }
 
-  const timePrefix = timeLeftLabel ? `You have ${timeLeftLabel}` : "You have time";
-
   if (remainingTasks <= 1) {
-    return `${completedTasks} done. ${timePrefix} to finish ${getShortTaskName(nextTask)} today.`;
+    return `${completedTasks} done. One step remains: ${getShortTaskName(nextTask)}.`;
   }
 
   if (completedTasks === 0) {
-    return `${timePrefix} for today's ${totalTasks} tasks.`;
+    return `Start this chapter journey when you are ready.`;
   }
 
-  return `${completedTasks} done. ${timePrefix} for the last ${remainingTasks} tasks today.`;
+  return `${completedTasks} done. ${remainingTasks} steps left in this chapter journey.`;
 }
 
 export default function DashboardJourneyExperience({
@@ -419,7 +413,6 @@ export default function DashboardJourneyExperience({
   primaryRecommendation,
   checklistData,
   isLoadingChecklist,
-  dailyTaskTimeLeftLabel,
   membershipStatus,
   daysRemaining,
   exploreLinks,
@@ -458,7 +451,6 @@ export default function DashboardJourneyExperience({
     completedTasks,
     remainingTasks,
     totalTasks,
-    timeLeftLabel: dailyTaskTimeLeftLabel,
     nextTask,
   });
   const streak = profile?.current_streak ?? 0;
@@ -521,9 +513,7 @@ export default function DashboardJourneyExperience({
   function buildLouisNextStepMessage() {
     if (allDone) {
       return {
-        focusLine: dailyTaskTimeLeftLabel
-          ? `Great job showing up. Your next Bible study tasks start in ${dailyTaskTimeLeftLabel}.`
-          : "Great job showing up. Your next Bible study tasks will unlock with the next daily cycle.",
+        focusLine: "Chapter journey complete. The next chapter is ready when you are.",
       };
     }
 

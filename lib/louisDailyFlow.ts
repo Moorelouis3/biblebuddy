@@ -42,6 +42,14 @@ function getDailyTaskCelebrationSeenKey(userId: string, cycleStartedAt: string) 
   return `bb:louis:daily-task-celebration:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:${cycleStartedAt}`;
 }
 
+function getChapterJourneyBonusAwardedKey(userId: string, journeyKey: string) {
+  return `bb:louis:chapter-journey-bonus:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:${journeyKey}`;
+}
+
+function getChapterJourneyCelebrationSeenKey(userId: string, journeyKey: string) {
+  return `bb:louis:chapter-journey-celebration:${LOUIS_DAILY_TASK_FLOW_VERSION}:${userId}:${journeyKey}`;
+}
+
 function clearDailyTaskScopedKeys(userId: string) {
   if (typeof window === "undefined") return;
   const prefixes = [
@@ -141,6 +149,26 @@ export function hasSeenLouisDailyTaskCelebration(userId: string, cycleStartedAt:
 export function rememberLouisDailyTaskCelebrationSeen(userId: string, cycleStartedAt: string) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(getDailyTaskCelebrationSeenKey(userId, cycleStartedAt), "1");
+}
+
+export function hasLouisChapterJourneyBonusAwarded(userId: string, journeyKey: string | null | undefined) {
+  if (typeof window === "undefined" || !journeyKey) return false;
+  return window.localStorage.getItem(getChapterJourneyBonusAwardedKey(userId, journeyKey)) === "1";
+}
+
+export function rememberLouisChapterJourneyBonusAwarded(userId: string, journeyKey: string | null | undefined) {
+  if (typeof window === "undefined" || !journeyKey) return;
+  window.localStorage.setItem(getChapterJourneyBonusAwardedKey(userId, journeyKey), "1");
+}
+
+export function hasSeenLouisChapterJourneyCelebration(userId: string, journeyKey: string | null | undefined) {
+  if (typeof window === "undefined" || !journeyKey) return false;
+  return window.localStorage.getItem(getChapterJourneyCelebrationSeenKey(userId, journeyKey)) === "1";
+}
+
+export function rememberLouisChapterJourneyCelebrationSeen(userId: string, journeyKey: string | null | undefined) {
+  if (typeof window === "undefined" || !journeyKey) return;
+  window.localStorage.setItem(getChapterJourneyCelebrationSeenKey(userId, journeyKey), "1");
 }
 
 export function hasSeenLouisSecondRecommendation(userId: string) {

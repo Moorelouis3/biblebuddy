@@ -237,15 +237,17 @@ export interface StreakData {
 }
 
 // Valid action types that count toward streak
-// Logging in counts as an active day, as do all Bible study actions
+// A streak day requires meaningful engagement, not just opening the app.
 const STREAK_ACTION_TYPES = [
-  ACTION_TYPE.user_login,
   ACTION_TYPE.chapter_completed,
+  ACTION_TYPE.bible_chapter_viewed,
   ACTION_TYPE.book_completed,
   ACTION_TYPE.bible_in_one_year_day_viewed,
   ACTION_TYPE.devotional_day_completed,
   ACTION_TYPE.devotional_day_started,
   ACTION_TYPE.devotional_day_viewed,
+  ACTION_TYPE.devotional_bible_reading_opened,
+  ACTION_TYPE.devotional_reflection_saved,
   ACTION_TYPE.person_learned,
   ACTION_TYPE.person_viewed,
   ACTION_TYPE.place_discovered,
@@ -256,9 +258,12 @@ const STREAK_ACTION_TYPES = [
   ACTION_TYPE.note_started,
   ACTION_TYPE.reading_plan_chapter_completed,
   ACTION_TYPE.scrambled_word_answered,
+  ACTION_TYPE.scrambled_chapter_completed,
   ACTION_TYPE.trivia_question_answered,
+  ACTION_TYPE.trivia_chapter_completed,
   ACTION_TYPE.trivia_started,
   ACTION_TYPE.chapter_notes_viewed,
+  ACTION_TYPE.chapter_notes_reviewed,
   ACTION_TYPE.verse_highlighted,
   ACTION_TYPE.understand_verse_of_the_day,
   ACTION_TYPE.feed_post_thought,
@@ -368,7 +373,6 @@ async function getUserActivitySummary(
     const current = ensureDay(dateStr);
     current.actions += 1;
     current.loginCount += 1;
-    completedDates.add(dateStr);
   });
 
   return { byDate, completedDates };
@@ -380,33 +384,21 @@ export async function calculateStreakFromActions(
   try {
     console.log(`[STREAK] Fetching actions for user_id: ${userId}`);
 
-    const [actionsResponse, appLoginsResponse] = await Promise.all([
-      supabase
-        .from("master_actions")
-        .select("created_at, action_type")
-        .eq("user_id", userId)
-        .in("action_type", STREAK_ACTION_TYPES)
-        .order("created_at", { ascending: false }),
-      supabase
-        .from("app_logins")
-        .select("created_at")
-        .eq("user_id", userId)
-        .order("created_at", { ascending: false }),
-    ]);
+    const actionsResponse = await supabase
+      .from("master_actions")
+      .select("created_at, action_type")
+      .eq("user_id", userId)
+      .in("action_type", STREAK_ACTION_TYPES)
+      .order("created_at", { ascending: false });
 
     const { data, error } = actionsResponse;
-    const { data: appLogins, error: appLoginsError } = appLoginsResponse;
 
     if (error) {
       console.error("[STREAK] Error fetching master_actions for streak:", error);
       return { currentStreak: 0, last7Days: [] };
     }
 
-    if (appLoginsError) {
-      console.error("[STREAK] Error fetching app_logins for streak:", appLoginsError);
-    }
-
-    console.log(`[STREAK] Found ${data?.length || 0} valid streak actions and ${appLogins?.length || 0} app logins`);
+    console.log(`[STREAK] Found ${data?.length || 0} valid streak actions`);
 
     // Helper function to get YYYY-MM-DD from a Date in local timezone
     const getLocalDateString = (date: Date): string => {
@@ -425,15 +417,6 @@ export async function calculateStreakFromActions(
       const dateStr = getLocalDateString(actionDate);
       completedDates.add(dateStr);
       console.log(`[STREAK] Action on ${dateStr} (${action.action_type}) - UTC was: ${action.created_at}`);
-    });
-
-    appLogins?.forEach((login) => {
-      const loginDate = new Date(login.created_at);
-      const dateStr = getLocalDateString(loginDate);
-      if (!completedDates.has(dateStr)) {
-        console.log(`[STREAK] App login on ${dateStr} - UTC was: ${login.created_at}`);
-      }
-      completedDates.add(dateStr);
     });
 
     console.log(`[STREAK] Active dates:`, Array.from(completedDates).sort());

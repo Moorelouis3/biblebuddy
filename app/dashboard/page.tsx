@@ -18,12 +18,12 @@ import {
   ensureLouisDailyTaskCycle,
   getBibleBuddyLocalDayKey,
   getLouisDailyTaskCycleStartedAt,
-  getLouisDailyTaskTimeLeftMs,
-  hasLouisDailyTaskBonusAwarded,
-  hasSeenLouisDailyTaskCelebration,
+  hasLouisChapterJourneyBonusAwarded,
+  hasSeenLouisChapterJourneyCelebration,
   hasActiveLouisDailyTaskCycle,
-  rememberLouisDailyTaskBonusAwarded,
-  rememberLouisDailyTaskCelebrationSeen,
+  rememberLouisChapterJourneyBonusAwarded,
+  rememberLouisChapterJourneyCelebrationSeen,
+  rememberLouisDailyTaskTarget,
 } from "../../lib/louisDailyFlow";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import { ModalShell } from "../../components/ModalShell";
@@ -217,7 +217,7 @@ export default function DashboardPage() {
       return {
         headline: `${safeStreak} day streak`,
         body: "Ten years of showing up is wild. This is no longer a phase. This is part of who you are now.",
-         followUp: "Do you want to start your Daily Bible Tasks?",
+         followUp: "Do you want to continue your Bible journey?",
       };
     }
 
@@ -225,7 +225,7 @@ export default function DashboardPage() {
       return {
         headline: "You earned the fire badge",
         body: "Congrats, you hit 30 days in a row and unlocked the fire badge. Great job showing up and staying consistent.",
-         followUp: "Do you want to start your Daily Bible Tasks?",
+         followUp: "Do you want to continue your Bible journey?",
       };
     }
 
@@ -233,7 +233,7 @@ export default function DashboardPage() {
       return {
         headline: "A fresh start",
         body: "Today is a perfect day to start a new Bible reading streak. One honest day with the Word can become something strong.",
-         followUp: "Do you want to start your Daily Bible Tasks?",
+         followUp: "Do you want to continue your Bible journey?",
       };
     }
 
@@ -254,7 +254,7 @@ export default function DashboardPage() {
       return {
         headline: `${safeStreak} day streak`,
         body: exactDayMessages[safeStreak],
-         followUp: "Do you want to start your Daily Bible Tasks?",
+         followUp: "Do you want to continue your Bible journey?",
       };
     }
 
@@ -298,7 +298,7 @@ export default function DashboardPage() {
     return {
       headline: `${safeStreak} day streak`,
       body: phaseTemplates[dayMod % phaseTemplates.length],
-       followUp: "Do you want to start your Daily Bible Tasks?",
+         followUp: "Do you want to continue your Bible journey?",
     };
   }
 
@@ -329,7 +329,7 @@ export default function DashboardPage() {
       return "This chapter gives practical wisdom for walking with God, making better choices, and guarding your heart.";
     }
 
-    return `This chapter is the focus for the devotional, reading, notes, trivia, and Scrambled today.`;
+    return `This chapter is the focus for your Bible Study, reading, notes, trivia, and Scrambled.`;
   }
 
   function buildDailyStreakTaskIntro(checklistData: ChecklistData | null) {
@@ -341,16 +341,16 @@ export default function DashboardPage() {
 
     if (checklistData?.allDone) {
       return {
-        focusLine: "You already finished today's Bible study journey.",
-        previewLine: "The next set of Bible tasks will unlock when the new daily cycle begins.",
-        closingLine: "Nice work showing up and finishing the whole flow.",
+        focusLine: "You finished this chapter journey.",
+        previewLine: "The next chapter is ready when you are. Your streak keeps growing when you meaningfully engage each day.",
+        closingLine: "Nice work studying with patience instead of rushing.",
       };
     }
 
     return {
-      focusLine: `Today we are continuing ${devotionalTitle} with ${chapterText}.`,
+      focusLine: `Welcome back. You are continuing ${devotionalTitle} with ${chapterText}.`,
       previewLine: getChapterPreviewLine(readingTask),
-      closingLine: "So let's start today's Bible tasks.",
+      closingLine: "Keep going at a steady pace.",
     };
   }
 
@@ -1535,28 +1535,8 @@ export default function DashboardPage() {
   }, [userId]);
 
   useEffect(() => {
-    if (!userId || !louisDailyTaskCycleStartedAt) {
-      setDailyTaskTimeLeftLabel(null);
-      return;
-    }
-    const currentUserId = userId;
-
-    function formatTimeLeft(ms: number) {
-      const totalMinutes = Math.max(0, Math.floor(ms / 60000));
-      const hours = Math.floor(totalMinutes / 60);
-      const minutes = totalMinutes % 60;
-      if (hours <= 0) return `${minutes}m`;
-      return `${hours}h ${minutes}m`;
-    }
-
-    function updateTimeLeft() {
-      setDailyTaskTimeLeftLabel(formatTimeLeft(getLouisDailyTaskTimeLeftMs(currentUserId)));
-    }
-
-    updateTimeLeft();
-    const interval = window.setInterval(updateTimeLeft, 30000);
-    return () => window.clearInterval(interval);
-  }, [userId, louisDailyTaskCycleStartedAt]);
+    setDailyTaskTimeLeftLabel(null);
+  }, []);
 
   useEffect(() => {
     dailyTaskPopupOpenRef.current = Boolean(selectedDashboardTask) || showLouisDailyTasksModal;
@@ -1567,16 +1547,16 @@ export default function DashboardPage() {
       !pendingDailyTaskCelebrationModal ||
       dailyTaskPopupOpenRef.current ||
       !userId ||
-      !louisDailyTaskCycleStartedAt ||
-      hasSeenLouisDailyTaskCelebration(userId, louisDailyTaskCycleStartedAt)
+      !dailyChecklistData?.journeyKey ||
+      hasSeenLouisChapterJourneyCelebration(userId, dailyChecklistData.journeyKey)
     ) {
       return;
     }
 
-    rememberLouisDailyTaskCelebrationSeen(userId, louisDailyTaskCycleStartedAt);
+    rememberLouisChapterJourneyCelebrationSeen(userId, dailyChecklistData.journeyKey);
     setPendingDailyTaskCelebrationModal(false);
     setShowDailyTaskCelebrationModal(true);
-  }, [pendingDailyTaskCelebrationModal, selectedDashboardTask, showLouisDailyTasksModal, userId, louisDailyTaskCycleStartedAt]);
+  }, [pendingDailyTaskCelebrationModal, selectedDashboardTask, showLouisDailyTasksModal, userId, dailyChecklistData?.journeyKey]);
 
   const currentStreak = profile?.current_streak ?? 0;
   const hasProfileLoaded = Boolean(profile);
@@ -1617,19 +1597,22 @@ export default function DashboardPage() {
       setDailyTaskSummaryLine(checklistData.summaryLine);
       if (
         checklistData.allDone &&
-        louisDailyTaskCycleStartedAt &&
-        !hasSeenLouisDailyTaskCelebration(userId, louisDailyTaskCycleStartedAt)
+        checklistData.journeyKey &&
+        !hasSeenLouisChapterJourneyCelebration(userId, checklistData.journeyKey)
       ) {
-        if (!hasLouisDailyTaskBonusAwarded(userId, louisDailyTaskCycleStartedAt)) {
-          rememberLouisDailyTaskBonusAwarded(userId, louisDailyTaskCycleStartedAt);
+        if (!hasLouisChapterJourneyBonusAwarded(userId, checklistData.journeyKey)) {
+          rememberLouisChapterJourneyBonusAwarded(userId, checklistData.journeyKey);
           triggerPoints(10);
         }
         if (dailyTaskPopupOpenRef.current) {
           setPendingDailyTaskCelebrationModal(true);
         } else {
-          rememberLouisDailyTaskCelebrationSeen(userId, louisDailyTaskCycleStartedAt);
+          rememberLouisChapterJourneyCelebrationSeen(userId, checklistData.journeyKey);
           setShowDailyTaskCelebrationModal(true);
         }
+      }
+      if (checklistData.allDone && checklistData.nextJourneyTarget && louisDailyTaskCycleStartedAt) {
+        rememberLouisDailyTaskTarget(userId, louisDailyTaskCycleStartedAt, checklistData.nextJourneyTarget);
       }
       dailyTaskSummaryLoadedKeyRef.current = loadKey;
     })();
@@ -2130,10 +2113,10 @@ export default function DashboardPage() {
             </div>
             <h2 className="mt-4 text-3xl font-bold text-[#21304f]">Congrats!</h2>
             <p className="mt-3 text-base font-semibold text-[#355487]">
-              You completed today&apos;s Bible task.
+              You completed this chapter journey.
             </p>
               <p className="mt-2 text-sm leading-6 text-[#58709d]">
-               All 5 tasks are done and your +10 bonus is locked in for this 24-hour cycle.
+               The next chapter is ready when you are. Keep showing up one meaningful step at a time.
               </p>
             <button
               type="button"

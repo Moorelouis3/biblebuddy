@@ -11,11 +11,10 @@ import { getScrambledChapter } from "../lib/scrambledGameData";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import {
   getLouisDailyTaskTarget,
-  getLouisDailyTaskTimeLeftMs,
-  hasLouisDailyTaskBonusAwarded,
-  hasSeenLouisDailyTaskCelebration,
-  rememberLouisDailyTaskBonusAwarded,
-  rememberLouisDailyTaskCelebrationSeen,
+  hasLouisChapterJourneyBonusAwarded,
+  hasSeenLouisChapterJourneyCelebration,
+  rememberLouisChapterJourneyBonusAwarded,
+  rememberLouisChapterJourneyCelebrationSeen,
   rememberLouisDailyTaskTarget,
 } from "../lib/louisDailyFlow";
 import { LouisAvatar } from "./LouisAvatar";
@@ -76,6 +75,8 @@ export type ChecklistData = {
   completedCount: number;
   allDone: boolean;
   bonusAwarded: boolean;
+  journeyKey: string | null;
+  nextJourneyTarget: { devotionalId: string; dayNumber: number } | null;
 };
 
 const PREFERRED_DEVOTIONAL_MATCHERS = [/tempt/i, /joseph/i, /proverbs/i, /job/i, /moses/i];
@@ -89,13 +90,6 @@ function pickRecommendedDevotional(devotionals: DevotionalRow[]): DevotionalRow 
   }
 
   return devotionals[0] ?? null;
-}
-
-function formatCountdown(ms: number) {
-  const totalSeconds = Math.max(0, Math.floor(ms / 1000));
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  return `${hours}h ${minutes}m`;
 }
 
 function normalizeBookKey(book: string) {
@@ -120,27 +114,27 @@ function formatCompletedAtLabel(iso: string | null | undefined) {
   return `Done ${date.toLocaleDateString("en-US", { month: "short", day: "numeric" })}`;
 }
 
-function buildChooseDevotionalChecklistData(userId: string): ChecklistData {
+function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
   return {
-    title: "Daily Bible Task",
+    title: "Bible Journey",
     streakLine: "Today still counts. Let’s build momentum again.",
-    contextLine: "Choose a devotional first so I can build your daily Bible tasks.",
-    timeLeftLabel: formatCountdown(getLouisDailyTaskTimeLeftMs(userId)),
+    contextLine: "Choose a Bible Study first so Louis can build your chapter journey.",
+    timeLeftLabel: "",
     progressLabel: "0 out of 5 completed",
-    summaryLine: "Choose a devotional first to unlock today’s full checklist.",
-    bonusLine: "Pick a devotional to get your 5 daily Bible tasks.",
-    nextTaskTitle: "Choose a Devotional",
+    summaryLine: "Choose a Bible Study first to unlock your chapter journey.",
+    bonusLine: "Your streak grows when you meaningfully engage today.",
+    nextTaskTitle: "Choose a Bible Study",
     tasks: [
       {
         kind: "devotional",
-        title: "Choose a Devotional",
+        title: "Choose a Bible Study",
         pointsLabel: "Start here",
         href: "/devotionals",
         done: false,
       },
       {
         kind: "reading",
-        title: "Read today’s chapter",
+        title: "Read your chapter",
         pointsLabel: "+5 pts",
         href: null,
         done: false,
@@ -148,7 +142,7 @@ function buildChooseDevotionalChecklistData(userId: string): ChecklistData {
       },
       {
         kind: "notes",
-        title: "Review today’s notes",
+        title: "Review chapter notes",
         pointsLabel: "+5 pts",
         href: null,
         done: false,
@@ -156,7 +150,7 @@ function buildChooseDevotionalChecklistData(userId: string): ChecklistData {
       },
       {
         kind: "trivia",
-        title: "Play today’s trivia",
+        title: "Play chapter trivia",
         pointsLabel: "Up to +5",
         href: null,
         done: false,
@@ -164,7 +158,7 @@ function buildChooseDevotionalChecklistData(userId: string): ChecklistData {
       },
       {
         kind: "scrambled",
-        title: "Play today’s scrambled",
+        title: "Play chapter Scrambled",
         pointsLabel: "Up to +5",
         href: null,
         done: false,
@@ -174,6 +168,8 @@ function buildChooseDevotionalChecklistData(userId: string): ChecklistData {
     completedCount: 0,
     allDone: false,
     bonusAwarded: false,
+    journeyKey: null,
+    nextJourneyTarget: null,
   };
 }
 
@@ -303,7 +299,13 @@ export async function fetchLouisDailyChecklistData(
       .from("master_actions")
       .select("action_type, action_label, created_at")
       .eq("user_id", userId)
-      .gte("created_at", cycleStartedAt)
+      .in("action_type", [
+        ACTION_TYPE.devotional_bible_reading_opened,
+        ACTION_TYPE.chapter_completed,
+        ACTION_TYPE.bible_chapter_viewed,
+        ACTION_TYPE.trivia_chapter_completed,
+        ACTION_TYPE.scrambled_chapter_completed,
+      ])
       .order("created_at", { ascending: false }),
     supabase
       .from("completed_chapters")
@@ -440,31 +442,38 @@ export async function fetchLouisDailyChecklistData(
   const completedCount = tasks.filter((task) => task.done).length;
   const allDone = completedCount === tasks.length;
   const nextTaskTitle = tasks.find((task) => !task.done)?.title ?? null;
-  const bonusAwarded = allDone || hasLouisDailyTaskBonusAwarded(userId, cycleStartedAt);
+  const journeyKey = `${activeDevotional.id}:${nextDayNumber}`;
+  const bonusAwarded = allDone || hasLouisChapterJourneyBonusAwarded(userId, journeyKey);
+  const nextJourneyTarget =
+    allDone && nextDayNumber < activeTotalDays
+      ? { devotionalId: activeDevotional.id, dayNumber: nextDayNumber + 1 }
+      : null;
 
   return {
-    title: "Daily Bible Task",
+    title: "Bible Journey",
     streakLine:
       currentStreak > 0
         ? `You are on a ${currentStreak} day streak right now.`
         : "Today still counts. Let’s build momentum again.",
     contextLine: `${chapterLabel} is your focus right now.`,
-    timeLeftLabel: formatCountdown(getLouisDailyTaskTimeLeftMs(userId)),
+    timeLeftLabel: "",
     progressLabel: `${completedCount} out of ${tasks.length} completed`,
     summaryLine:
       allDone
-        ? "You completed all five tasks today."
+        ? `You completed the ${chapterLabel} chapter journey.`
         : completedCount === 0
-          ? "You have 5 tasks waiting for you today."
-          : `${completedCount} done, ${tasks.length - completedCount} left to go.`,
+          ? `Start ${chapterLabel} when you are ready.`
+          : `${completedCount} done, ${tasks.length - completedCount} to go for ${chapterLabel}.`,
     bonusLine: bonusAwarded
-      ? "Bonus locked in: +10 points."
-      : "Complete all 5 for a +10 bonus.",
+      ? "Chapter completion reward locked in."
+      : "Finish this chapter journey to unlock the next step.",
     nextTaskTitle,
     tasks,
     completedCount,
     allDone,
     bonusAwarded,
+    journeyKey,
+    nextJourneyTarget,
   };
 }
 
@@ -487,7 +496,6 @@ export default function LouisDailyTasksModal({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<ChecklistData | null>(null);
-  const [timeLeftMs, setTimeLeftMs] = useState(0);
   const [showHelp, setShowHelp] = useState(false);
   const [animatedDoneKinds, setAnimatedDoneKinds] = useState<Record<string, boolean>>({});
   const [showCelebration, setShowCelebration] = useState(false);
@@ -496,17 +504,6 @@ export default function LouisDailyTasksModal({
   const [notesText, setNotesText] = useState("");
   const [notesError, setNotesError] = useState<string | null>(null);
   const [notesMarkedComplete, setNotesMarkedComplete] = useState(false);
-
-  useEffect(() => {
-    if (!open || !userId) return;
-
-    setTimeLeftMs(getLouisDailyTaskTimeLeftMs(userId));
-    const interval = window.setInterval(() => {
-      setTimeLeftMs(getLouisDailyTaskTimeLeftMs(userId));
-    }, 30000);
-
-    return () => window.clearInterval(interval);
-  }, [open, userId]);
 
   useEffect(() => {
     let cancelled = false;
@@ -555,18 +552,22 @@ export default function LouisDailyTasksModal({
   }, [data]);
 
   useEffect(() => {
-    if (!open || !userId || !cycleStartedAt || !data?.allDone) return;
+    if (!open || !userId || !data?.allDone || !data.journeyKey) return;
 
-    if (!hasLouisDailyTaskBonusAwarded(userId, cycleStartedAt)) {
-      rememberLouisDailyTaskBonusAwarded(userId, cycleStartedAt);
+    if (!hasLouisChapterJourneyBonusAwarded(userId, data.journeyKey)) {
+      rememberLouisChapterJourneyBonusAwarded(userId, data.journeyKey);
       triggerPoints(10);
     }
 
-    if (!hasSeenLouisDailyTaskCelebration(userId, cycleStartedAt)) {
-      rememberLouisDailyTaskCelebrationSeen(userId, cycleStartedAt);
+    if (!hasSeenLouisChapterJourneyCelebration(userId, data.journeyKey)) {
+      rememberLouisChapterJourneyCelebrationSeen(userId, data.journeyKey);
       setShowCelebration(true);
     }
-  }, [open, userId, cycleStartedAt, data]);
+
+    if (cycleStartedAt && data.nextJourneyTarget) {
+      rememberLouisDailyTaskTarget(userId, cycleStartedAt, data.nextJourneyTarget);
+    }
+  }, [open, userId, data]);
 
   function handleOpenTask(task: TaskState) {
     if (!task.href || task.disabled) return;
@@ -725,11 +726,11 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         nextTaskTitle: updatedTasks.find((existingTask) => !existingTask.done)?.title ?? null,
         progressLabel: `${completedCount} out of ${updatedTasks.length} completed`,
         summaryLine: allDone
-          ? "You completed all five tasks today."
+          ? "Chapter journey complete."
           : completedCount === 0
-            ? "You have 5 tasks waiting for you today."
-            : `${completedCount} done, ${updatedTasks.length - completedCount} left to go.`,
-        bonusLine: allDone || prev.bonusAwarded ? "Bonus locked in: +10 points." : prev.bonusLine,
+            ? "Start this chapter journey when you are ready."
+            : `${completedCount} done, ${updatedTasks.length - completedCount} to go for this chapter.`,
+        bonusLine: allDone || prev.bonusAwarded ? "Chapter completion reward locked in." : prev.bonusLine,
         bonusAwarded: allDone || prev.bonusAwarded,
       };
     });
@@ -762,10 +763,10 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               </div>
               <h3 className="mt-4 text-3xl font-bold text-[#21304f]">Congrats!</h3>
               <p className="mt-3 text-base font-semibold text-[#355487]">
-                You completed today&apos;s Bible task.
+                You completed this chapter journey.
               </p>
               <p className="mt-2 text-sm leading-6 text-[#58709d]">
-                All 5 tasks are complete and your +10 bonus is locked in for this 24-hour cycle.
+                Louis will keep your progress here and open the next chapter when you are ready.
               </p>
               <button
                 type="button"
@@ -798,26 +799,24 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           <div className="flex flex-col items-center text-center">
             <LouisAvatar mood="wave" size={56} />
             <h2 className="mt-3 text-[1.8rem] font-bold text-[#21304f]">
-              {data?.title || "Daily Bible Task"}
+              {data?.title || "Bible Journey"}
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-6 text-[#6a7da8]">
-              {data?.contextLine || "Today’s chapter is ready for you."}
+              {data?.contextLine || "Your chapter journey is ready for you."}
             </p>
           </div>
 
           {showHelp ? (
             <div className="mt-4 rounded-[22px] border border-[#d7e4f7] bg-white/95 px-4 py-3 text-left shadow-sm">
               <p className="text-sm leading-6 text-[#51627f]">
-                This is your 24-hour Bible checklist. Finish the five tasks anytime before the timer runs out. If you complete all five, you earn a +10 bonus.
+                Your streak grows when you meaningfully engage each day. Your chapter journey stays open until you finish it, so you can study without rushing.
               </p>
             </div>
           ) : null}
 
           <div className="mt-4 rounded-[22px] border border-[#d7e4f7] bg-white/95 px-4 py-3 shadow-sm">
             <p className="text-center text-base font-semibold text-[#21304f]">
-              {loading
-                ? `You have ${formatCountdown(timeLeftMs)} to complete all tasks.`
-                : `You have ${data?.timeLeftLabel || formatCountdown(timeLeftMs)} to complete all tasks.`}
+              {loading ? "Preparing your chapter journey..." : data?.progressLabel || "Your chapter progress is loading..."}
             </p>
 
             <div className="mt-4 h-3 overflow-hidden rounded-full bg-[#dbe7fa]">
@@ -831,7 +830,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                 {loading ? "Building your checklist..." : data?.summaryLine || "Loading your progress..."}
               </p>
               <p className={`mt-1 font-semibold ${data?.bonusAwarded ? "text-emerald-700" : "text-[#5a76af]"}`}>
-                {loading ? "Complete all 5 for a +10 bonus." : data?.bonusLine || "Complete all 5 for a +10 bonus."}
+                {loading ? "Take your time. Progress stays saved." : data?.bonusLine || "Take your time. Progress stays saved."}
               </p>
             </div>
           </div>
