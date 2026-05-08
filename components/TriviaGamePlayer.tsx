@@ -57,8 +57,9 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
 
   const isFreeBook = FREE_TRIVIA_BOOK_KEYS.has(bookKey);
 
-  const currentQuestion = chapter.questions[currentQuestionIndex];
-  const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+  const questions = chapter?.questions ?? [];
+  const currentQuestion = questions[currentQuestionIndex] ?? null;
+  const isCorrect = Boolean(currentQuestion && selectedAnswer === currentQuestion.correctAnswer);
 
   useEffect(() => {
     let cancelled = false;
@@ -155,7 +156,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
   }
 
   async function handleAnswerSelect(answer: string) {
-    if (selectedAnswer) {
+    if (selectedAnswer || !currentQuestion) {
       return;
     }
 
@@ -206,7 +207,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
   }
 
   function handleNext() {
-    if (currentQuestionIndex < chapter.questions.length - 1) {
+    if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((current) => current + 1);
       setSelectedAnswer(null);
       setVerseText("");
@@ -222,7 +223,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
     void trackNavigationActionOnce({
       userId,
       actionType: ACTION_TYPE.trivia_chapter_completed,
-      actionLabel: `${bookName} ${chapter.chapter} - ${correctCount}/${chapter.questions.length}`,
+      actionLabel: `${bookName} ${chapter.chapter} - ${correctCount}/${questions.length}`,
       dedupeKey: `trivia-chapter-completed:${bookKey}:${chapter.chapter}`,
     })
       .then((logged) => {
@@ -233,7 +234,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
       .catch((error) => {
         console.error("[NAV] Failed to track Trivia chapter completion:", error);
       });
-  }, [showResults, userId, bookName, chapter.chapter, chapter.questions.length, earnedCorrectCount, bookKey]);
+  }, [showResults, userId, bookName, chapter.chapter, questions.length, earnedCorrectCount, bookKey]);
 
   useEffect(() => {
     if (!showResults) return;
@@ -243,9 +244,9 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
 
     dispatchLouisMoment({
       message:
-        correctCount === chapter.questions.length
+        correctCount === questions.length
           ? `Nice work. You just finished trivia for ${bookName} ${chapter.chapter} and got a perfect score.\n\nIf you want to lock this chapter in even more, Scrambled is the best next move.\n\nDo you want to play it now?`
-          : `Nice work. You just finished trivia for ${bookName} ${chapter.chapter} and got ${correctCount} out of ${chapter.questions.length}.\n\nIf you want to keep the momentum going, Scrambled is the best next move.\n\nDo you want to play it now?`,
+          : `Nice work. You just finished trivia for ${bookName} ${chapter.chapter} and got ${correctCount} out of ${questions.length}.\n\nIf you want to keep the momentum going, Scrambled is the best next move.\n\nDo you want to play it now?`,
       replies: [
         {
           id: `trivia-scrambled-${bookKey}-${chapter.chapter}`,
@@ -259,7 +260,27 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
         },
       ],
     });
-  }, [showResults, correctCount, chapter.questions.length, chapter.chapter, bookName, bookKey, bookSlug]);
+  }, [showResults, correctCount, questions.length, chapter.chapter, bookName, bookKey, bookSlug]);
+
+  if (!currentQuestion && !showResults) {
+    return (
+      <div className="bg-gray-50 px-4 py-8">
+        <div className="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
+          <h1 className="text-2xl font-bold text-gray-900">Trivia unavailable</h1>
+          <p className="mt-3 text-gray-700">
+            Louis could not find the questions for this chapter yet.
+          </p>
+          <button
+            type="button"
+            onClick={() => onClose ? onClose() : router.back()}
+            className="mt-8 block w-full rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (showResults) {
     const scrambledHref = `/bible-study-games/scrambled/${bookKey}/${chapter.chapter}`;
@@ -268,7 +289,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
         <div className="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
           <h1 className="text-3xl font-bold text-gray-900">Chapter Complete</h1>
           <p className="mt-3 text-5xl font-bold text-blue-600">
-            {correctCount}/{chapter.questions.length}
+            {correctCount}/{questions.length}
           </p>
           <p className="mt-3 text-gray-700">
             {bookName} {chapter.chapter} finished.
@@ -336,7 +357,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
             </Link>
           )}
           <p className="text-sm text-gray-600">
-            Question {currentQuestionIndex + 1} of {chapter.questions.length}
+            Question {currentQuestionIndex + 1} of {questions.length}
           </p>
         </div>
 
@@ -398,7 +419,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
                 onClick={handleNext}
                 className="mt-5 rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700"
               >
-                {currentQuestionIndex < chapter.questions.length - 1 ? "Next question" : "See results"}
+                {currentQuestionIndex < questions.length - 1 ? "Next question" : "See results"}
               </button>
             </div>
           ) : null}

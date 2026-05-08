@@ -31,6 +31,8 @@ export type TaskState = {
   done: boolean;
   disabled?: boolean;
   completedAtLabel?: string | null;
+  devotionalId?: string | null;
+  devotionalDayNumber?: number | null;
   book?: string | null;
   chapter?: number | null;
   chapterLabel?: string | null;
@@ -372,6 +374,8 @@ export async function fetchLouisDailyChecklistData(
       pointsLabel: "+5 pts",
       href: `/devotionals/${activeDevotional.id}?day=${nextDayNumber}&from=louis-daily-task`,
       done: devotionalDone,
+      devotionalId: activeDevotional.id,
+      devotionalDayNumber: nextDayNumber,
       completedAtLabel: devotionalDone ? formatCompletedAtLabel(todayProgress?.completed_at) : null,
     },
     {

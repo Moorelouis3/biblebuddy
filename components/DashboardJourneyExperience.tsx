@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { LouisAvatar } from "./LouisAvatar";
 import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
+import { supabase } from "../lib/supabaseClient";
+import { rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 
 type LevelInfo = {
   level: number;
@@ -41,6 +43,7 @@ type ExploreLink = {
 };
 
 type Props = {
+  userId: string | null;
   userName: string;
   profile: ProfileShape;
   levelInfo: LevelInfo | null;
@@ -55,6 +58,14 @@ type Props = {
   onOpenStreakInfo: () => void;
   onOpenDailyTasks: () => void;
   onTaskClick: (task: TaskState) => void;
+  cycleStartedAt: string | null;
+  onDevotionalChanged: () => void;
+};
+
+type DevotionalOption = {
+  id: string;
+  title: string;
+  total_days: number | null;
 };
 
 function getTaskStatusCopy(task: TaskState) {
@@ -299,6 +310,7 @@ function buildTaskFocusLine(task: TaskState | null, remainingTasks: number) {
 }
 
 export default function DashboardJourneyExperience({
+  userId,
   userName,
   profile,
   levelInfo,
@@ -313,6 +325,8 @@ export default function DashboardJourneyExperience({
   onOpenStreakInfo,
   onOpenDailyTasks,
   onTaskClick,
+  cycleStartedAt,
+  onDevotionalChanged,
 }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const previousDoneByKindRef = useRef<Record<string, boolean> | null>(null);
@@ -321,11 +335,21 @@ export default function DashboardJourneyExperience({
   const [celebratingTasks, setCelebratingTasks] = useState<Record<string, number>>({});
   const [progressCelebrationKey, setProgressCelebrationKey] = useState(0);
   const [showDoneCountdownLine, setShowDoneCountdownLine] = useState(false);
+  const [showDevotionalSettings, setShowDevotionalSettings] = useState(false);
+  const [devotionalOptions, setDevotionalOptions] = useState<DevotionalOption[]>([]);
+  const [selectedDevotionalId, setSelectedDevotionalId] = useState("");
+  const [isLoadingDevotionalOptions, setIsLoadingDevotionalOptions] = useState(false);
+  const [isSavingDevotional, setIsSavingDevotional] = useState(false);
+  const [devotionalSettingsMessage, setDevotionalSettingsMessage] = useState<string | null>(null);
 
   const totalTasks = checklistData?.tasks.length ?? 5;
   const completedTasks = checklistData?.completedCount ?? 0;
   const allDone = checklistData?.allDone ?? false;
   const nextTask = checklistData?.tasks.find((task) => !task.done) ?? null;
+  const nextActionTaskKind = checklistData?.tasks.find((task) => !task.done && !task.disabled)?.kind ?? null;
+  const currentDevotionalTask = checklistData?.tasks.find((task) => task.kind === "devotional") ?? null;
+  const currentDevotionalId = currentDevotionalTask?.devotionalId || "";
+  const isPaidUser = profile?.is_paid === true;
   const streak = profile?.current_streak ?? 0;
   const devotionalTask = checklistData?.tasks.find((task) => task.kind === "devotional") ?? null;
   const readingTask = checklistData?.tasks.find((task) => task.kind === "reading") ?? null;
@@ -423,6 +447,88 @@ export default function DashboardJourneyExperience({
   }
 
   const louisMessage = buildLouisNextStepMessage();
+
+  useEffect(() => {
+    if (!showDevotionalSettings || !isPaidUser) return;
+
+    let cancelled = false;
+
+    async function loadDevotionalOptions() {
+      setIsLoadingDevotionalOptions(true);
+      setDevotionalSettingsMessage(null);
+
+      const { data, error } = await supabase
+        .from("devotionals")
+        .select("id, title, total_days")
+        .order("title", { ascending: true })
+        .limit(100);
+
+      if (cancelled) return;
+
+      if (error) {
+        console.error("[DASHBOARD] Could not load devotionals:", error);
+        setDevotionalSettingsMessage("Louis could not load the devotional list. Try again in a moment.");
+        setDevotionalOptions([]);
+      } else {
+        const options = (data || []) as DevotionalOption[];
+        setDevotionalOptions(options);
+        setSelectedDevotionalId(currentDevotionalId || options[0]?.id || "");
+      }
+
+      setIsLoadingDevotionalOptions(false);
+    }
+
+    void loadDevotionalOptions();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [showDevotionalSettings, isPaidUser, currentDevotionalId]);
+
+  async function handleSaveDevotionalSetting() {
+    if (!userId || !cycleStartedAt || !selectedDevotionalId || !isPaidUser) return;
+
+    const selected = devotionalOptions.find((devotional) => devotional.id === selectedDevotionalId);
+    setIsSavingDevotional(true);
+    setDevotionalSettingsMessage(null);
+
+    try {
+      const [{ data: progressRows, error: progressError }, { error: profileError }] = await Promise.all([
+        supabase
+          .from("devotional_progress")
+          .select("day_number, is_completed")
+          .eq("user_id", userId)
+          .eq("devotional_id", selectedDevotionalId),
+        supabase
+          .from("profile_stats")
+          .upsert({ user_id: userId, free_devotional_id: selectedDevotionalId }, { onConflict: "user_id" }),
+      ]);
+
+      if (progressError) throw progressError;
+      if (profileError) throw profileError;
+
+      const completedDays = (progressRows || [])
+        .filter((row: { is_completed: boolean | null }) => row.is_completed === true)
+        .map((row: { day_number: number }) => row.day_number);
+      const maxCompletedDay = completedDays.length ? Math.max(...completedDays) : 0;
+      const totalDays = Math.max(1, selected?.total_days || 1);
+      const nextDay = Math.min(maxCompletedDay + 1, totalDays);
+
+      rememberLouisDailyTaskTarget(userId, cycleStartedAt, {
+        devotionalId: selectedDevotionalId,
+        dayNumber: nextDay,
+      });
+
+      setDevotionalSettingsMessage(`${selected?.title || "Your devotional"} is set for your daily tasks.`);
+      onDevotionalChanged();
+      window.setTimeout(() => setShowDevotionalSettings(false), 650);
+    } catch (error) {
+      console.error("[DASHBOARD] Could not save devotional setting:", error);
+      setDevotionalSettingsMessage("Louis could not save that devotional. Try again in a moment.");
+    } finally {
+      setIsSavingDevotional(false);
+    }
+  }
 
   useEffect(() => {
     if (!checklistData?.tasks.length || isLoadingChecklist) return;
@@ -535,12 +641,26 @@ export default function DashboardJourneyExperience({
           100% { box-shadow: 0 0 0 rgba(159, 206, 133, 0); }
         }
 
+        @keyframes next-task-pulse {
+          0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 0 0 0 rgba(123, 175, 212, 0.42);
+            border-color: #b8d9ef;
+          }
+          50% {
+            transform: scale(1.012);
+            box-shadow: 0 12px 28px rgba(75, 156, 211, 0.2), 0 0 0 6px rgba(123, 175, 212, 0.16);
+            border-color: #7BAFD4;
+          }
+        }
+
         .task-complete-pop { animation: task-complete-pop 850ms ease-out; }
         .task-firework span { animation: task-firework 900ms ease-out forwards; }
         .done-sparkle span { animation: done-sparkle 1.8s ease-in-out infinite; }
         .done-sparkle span:nth-child(2) { animation-delay: 0.45s; }
         .done-sparkle span:nth-child(3) { animation-delay: 0.9s; }
         .progress-glow { animation: progress-glow 950ms ease-out; }
+        .next-task-pulse { animation: next-task-pulse 2.2s ease-in-out infinite; }
         .spark-a { --spark-x: -42px; --spark-y: -42px; }
         .spark-b { --spark-x: 18px; --spark-y: -56px; }
         .spark-c { --spark-x: 68px; --spark-y: -20px; }
@@ -559,11 +679,28 @@ export default function DashboardJourneyExperience({
               </p>
             ) : null}
 
-            <button
-              type="button"
-              onClick={onOpenDailyTasks}
-              className={`w-full overflow-hidden rounded-[26px] border px-4 py-4 text-left shadow-sm transition hover:shadow-md ${getDailyStudyCardClasses(allDone)}`}
+            <div
+              className={`relative w-full overflow-visible rounded-[26px] border text-left shadow-sm transition hover:shadow-md ${getDailyStudyCardClasses(allDone)}`}
             >
+              {!isLoadingChecklist ? (
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setShowDevotionalSettings((current) => !current);
+                  }}
+                  className="absolute right-3 top-3 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-white/80 bg-white/90 text-base shadow-sm transition hover:bg-[#eaf5fc]"
+                  aria-label="Daily Bible Study settings"
+                  title="Daily Bible Study settings"
+                >
+                  ⚙
+                </button>
+              ) : null}
+              <button
+                type="button"
+                onClick={onOpenDailyTasks}
+                className="w-full rounded-[26px] px-4 py-4 text-left"
+              >
               {isLoadingChecklist ? (
                 <>
                   <div className="mb-2 flex items-center gap-2">
@@ -613,7 +750,85 @@ export default function DashboardJourneyExperience({
                   </div>
                 </div>
               )}
-            </button>
+              </button>
+
+              {showDevotionalSettings ? (
+                <div
+                  className="absolute right-3 top-14 z-30 w-[min(22rem,calc(100vw-3rem))] rounded-2xl border border-[#cfe4f3] bg-white p-4 text-left shadow-xl"
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-sm font-bold text-gray-950">Daily devotional</p>
+                      <p className="mt-1 text-xs leading-5 text-gray-500">
+                        Choose which devotional Louis uses for your daily task flow.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setShowDevotionalSettings(false)}
+                      className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 text-sm font-bold text-gray-500 transition hover:bg-gray-200"
+                      aria-label="Close devotional settings"
+                    >
+                      ×
+                    </button>
+                  </div>
+
+                  {isPaidUser ? (
+                    <div className="mt-4 space-y-3">
+                      <label className="block text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
+                        Devotional
+                      </label>
+                      <select
+                        value={selectedDevotionalId}
+                        onChange={(event) => setSelectedDevotionalId(event.target.value)}
+                        disabled={isLoadingDevotionalOptions || isSavingDevotional}
+                        className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm font-medium text-gray-900 outline-none transition focus:border-[#7BAFD4] focus:ring-2 focus:ring-[#7BAFD4]/25 disabled:opacity-60"
+                      >
+                        {isLoadingDevotionalOptions ? (
+                          <option>Loading devotionals...</option>
+                        ) : (
+                          devotionalOptions.map((devotional) => (
+                            <option key={devotional.id} value={devotional.id}>
+                              {devotional.title}
+                            </option>
+                          ))
+                        )}
+                      </select>
+                      <p className="text-xs leading-5 text-gray-500">
+                        Louis will continue from your next unfinished day in the devotional you choose.
+                      </p>
+                      {devotionalSettingsMessage ? (
+                        <p className="rounded-xl bg-[#f4f9fd] px-3 py-2 text-xs font-medium text-[#315f7d]">
+                          {devotionalSettingsMessage}
+                        </p>
+                      ) : null}
+                      <button
+                        type="button"
+                        onClick={handleSaveDevotionalSetting}
+                        disabled={!selectedDevotionalId || isSavingDevotional || isLoadingDevotionalOptions}
+                        className="w-full rounded-full bg-[#7BAFD4] px-4 py-2.5 text-sm font-bold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc] disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        {isSavingDevotional ? "Saving..." : "Set devotional"}
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="mt-4 rounded-2xl border border-[#f0d7b3] bg-[#fff8ef] p-4">
+                      <p className="text-sm font-bold text-gray-950">Free devotional access</p>
+                      <p className="mt-2 text-sm leading-6 text-gray-700">
+                        As a free user, you can use one devotional at a time. Upgrade to Pro to switch between every Bible Buddy devotional and keep exploring different studies.
+                      </p>
+                      <Link
+                        href="/upgrade"
+                        className="mt-4 inline-flex w-full justify-center rounded-full bg-[#7BAFD4] px-4 py-2.5 text-sm font-bold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+                      >
+                        Upgrade for full access
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              ) : null}
+            </div>
 
             {isLoadingChecklist ? (
               Array.from({ length: 5 }).map((_, index) => (
@@ -631,6 +846,7 @@ export default function DashboardJourneyExperience({
               checklistData?.tasks.map((task, index) => {
                 const taskCopy = getTaskCardCopy(task, index);
                 const isCelebrating = Boolean(celebratingTasks[task.kind]);
+                const isNextActionTask = task.kind === nextActionTaskKind;
 
                 return (
                 <button
@@ -640,6 +856,8 @@ export default function DashboardJourneyExperience({
                   disabled={task.disabled}
                   className={`relative w-full overflow-hidden rounded-xl border px-3.5 py-3.5 text-left shadow-sm transition sm:px-4 ${
                     isCelebrating ? "task-complete-pop" : ""
+                  } ${
+                    isNextActionTask ? "next-task-pulse" : ""
                   } ${
                     task.done
                       ? "border-green-200 bg-gradient-to-r from-green-50 via-white to-green-50 hover:bg-green-50"

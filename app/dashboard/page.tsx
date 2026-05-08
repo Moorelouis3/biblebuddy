@@ -1890,6 +1890,7 @@ export default function DashboardPage() {
         {renderOwnerQuickStatsRow()}
 
         <DashboardJourneyExperience
+          userId={userId}
           userName={userName}
           profile={profile}
           levelInfo={levelInfo}
@@ -1907,6 +1908,10 @@ export default function DashboardPage() {
           }}
           onOpenDailyTasks={handleOpenDailyTasksModal}
           onTaskClick={handleDailyJourneyTaskClick}
+          cycleStartedAt={louisDailyTaskCycleStartedAt}
+          onDevotionalChanged={() => {
+            void loadDailyTaskSummary();
+          }}
         />
         </div>
 
@@ -1929,6 +1934,7 @@ export default function DashboardPage() {
         {renderOwnerQuickStatsRow()}
 
         <DashboardJourneyExperience
+          userId={userId}
           userName={userName}
           profile={profile}
           levelInfo={levelInfo}
@@ -1946,6 +1952,10 @@ export default function DashboardPage() {
           }}
           onOpenDailyTasks={handleOpenDailyTasksModal}
           onTaskClick={handleDailyJourneyTaskClick}
+          cycleStartedAt={louisDailyTaskCycleStartedAt}
+          onDevotionalChanged={() => {
+            void loadDailyTaskSummary();
+          }}
         />
       </div>
 
