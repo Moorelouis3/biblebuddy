@@ -378,6 +378,9 @@ export async function fetchLouisDailyChecklistData(
       done: devotionalDone,
       devotionalId: activeDevotional.id,
       devotionalDayNumber: nextDayNumber,
+      book: day.bible_reading_book,
+      chapter: day.bible_reading_chapter,
+      chapterLabel,
       completedAtLabel: devotionalDone ? formatCompletedAtLabel(todayProgress?.completed_at) : null,
     },
     {
