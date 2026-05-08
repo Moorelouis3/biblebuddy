@@ -1,7 +1,5 @@
 export const PROVERBS_ONE_NOTES = `# 🧠 What Is a Proverb?
 
-![Open Bible on Proverbs](/WisdomofProverbs.png)
-
 A lot of people read Proverbs the wrong way.
 
 They read it like:
@@ -659,9 +657,11 @@ They reject it.
 
 ## 📖 Proverbs 1:8-9
 
-> **Proverbs 1:8-9**
+> **Proverbs 1:8**
 >
 > My son, hear the instruction of thy father, and forsake not the law of thy mother.
+
+> **Proverbs 1:9**
 >
 > For they shall be an ornament of grace unto thy head, and chains about thy neck.
 
@@ -811,9 +811,21 @@ Even if:
 
 If you know it is wrong, do not say yes.
 
-> **Proverbs 1:11-14**
+> **Proverbs 1:11**
 >
-> If they say, Come with us... let us all have one purse.
+> If they say, Come with us, let us lay wait for blood, let us lurk privily for the innocent without cause:
+
+> **Proverbs 1:12**
+>
+> Let us swallow them up alive as the grave; and whole, as those that go down into the pit:
+
+> **Proverbs 1:13**
+>
+> We shall find all precious substance, we shall fill our houses with spoil:
+
+> **Proverbs 1:14**
+>
+> Cast in thy lot among us; let us all have one purse:
 
 ### 🗣️ Come With Us
 
@@ -853,9 +865,13 @@ They are offering:
 
 All built on doing what is wrong.
 
-> **Proverbs 1:15-16**
+> **Proverbs 1:15**
 >
 > My son, walk not thou in the way with them; refrain thy foot from their path.
+
+> **Proverbs 1:16**
+>
+> For their feet run to evil, and make haste to shed blood.
 
 ### 👣 Do Not Walk With Them
 
@@ -882,9 +898,17 @@ Without thinking twice.
 
 ### 🪤 The Trap
 
-> **Proverbs 1:17-19**
+> **Proverbs 1:17**
 >
 > Surely in vain the net is spread in the sight of any bird.
+
+> **Proverbs 1:18**
+>
+> And they lay wait for their own blood; they lurk privily for their own lives.
+
+> **Proverbs 1:19**
+>
+> So are the ways of every one that is greedy of gain; which taketh away the life of the owners thereof.
 
 If a bird sees a net being set, it will not walk into it.
 
@@ -976,9 +1000,13 @@ This helps you picture it.
 
 Instead of wisdom being just an idea, you can see it as someone calling out, trying to get your attention.
 
-> **Proverbs 1:20-21**
+> **Proverbs 1:20**
 >
 > Wisdom crieth without; she uttereth her voice in the streets.
+
+> **Proverbs 1:21**
+>
+> She crieth in the chief place of concourse, in the openings of the gates: in the city she uttereth her words, saying,
 
 ### 📣 Wisdom Is Calling Out
 
@@ -1062,9 +1090,13 @@ The question is:
 
 **Are people listening?**
 
-> **Proverbs 1:22-23**
+> **Proverbs 1:22**
 >
-> How long, ye simple ones, will ye love simplicity?
+> How long, ye simple ones, will ye love simplicity? and the scorners delight in their scorning, and fools hate knowledge?
+
+> **Proverbs 1:23**
+>
+> Turn you at my reproof: behold, I will pour out my spirit unto you, I will make known my words unto you.
 
 ### 📣 Wisdom Speaks Directly
 
@@ -1129,9 +1161,21 @@ The problem is that people ignore, mock, and reject it.
 
 ## ⚠️ When Wisdom Is Ignored
 
-> **Proverbs 1:24-27**
+> **Proverbs 1:24**
 >
-> Because I have called, and ye refused...
+> Because I have called, and ye refused; I have stretched out my hand, and no man regarded;
+
+> **Proverbs 1:25**
+>
+> But ye have set at nought all my counsel, and would none of my reproof:
+
+> **Proverbs 1:26**
+>
+> I also will laugh at your calamity; I will mock when your fear cometh;
+
+> **Proverbs 1:27**
+>
+> When your fear cometh as desolation, and your destruction cometh as a whirlwind; when distress and anguish cometh upon you.
 
 This is wisdom speaking after being ignored.
 
@@ -1174,9 +1218,21 @@ The path was chosen anyway.
 
 And now the consequences come.
 
-> **Proverbs 1:28-31**
+> **Proverbs 1:28**
 >
-> Then shall they call upon me, but I will not answer...
+> Then shall they call upon me, but I will not answer; they shall seek me early, but they shall not find me:
+
+> **Proverbs 1:29**
+>
+> For that they hated knowledge, and did not choose the fear of the Lord:
+
+> **Proverbs 1:30**
+>
+> They would none of my counsel: they despised all my reproof.
+
+> **Proverbs 1:31**
+>
+> Therefore shall they eat of the fruit of their own way, and be filled with their own devices.
 
 Now they are calling.
 
@@ -1209,9 +1265,11 @@ This is the outcome of their choices.
 
 ## 📖 Proverbs 1:32-33
 
-> **Proverbs 1:32-33**
+> **Proverbs 1:32**
 >
 > For the turning away of the simple shall slay them, and the prosperity of fools shall destroy them.
+
+> **Proverbs 1:33**
 >
 > But whoso hearkeneth unto me shall dwell safely, and shall be quiet from fear of evil.
 
