@@ -309,6 +309,14 @@ function buildTaskFocusLine(task: TaskState | null, remainingTasks: number) {
   return `One more task to go: test your word knowledge with Scrambled for ${chapterLabel}.`;
 }
 
+function expandTimeLeftLabel(label: string | null) {
+  if (!label) return null;
+
+  return label
+    .replace(/\b(\d+)h\b/g, (_, value) => `${value} ${Number(value) === 1 ? "hour" : "hours"}`)
+    .replace(/\b(\d+)m\b/g, (_, value) => `${value} ${Number(value) === 1 ? "minute" : "minutes"}`);
+}
+
 export default function DashboardJourneyExperience({
   userId,
   userName,
@@ -334,7 +342,6 @@ export default function DashboardJourneyExperience({
   const [activePage, setActivePage] = useState(0);
   const [celebratingTasks, setCelebratingTasks] = useState<Record<string, number>>({});
   const [progressCelebrationKey, setProgressCelebrationKey] = useState(0);
-  const [showDoneCountdownLine, setShowDoneCountdownLine] = useState(false);
   const [showDevotionalSettings, setShowDevotionalSettings] = useState(false);
   const [devotionalOptions, setDevotionalOptions] = useState<DevotionalOption[]>([]);
   const [selectedDevotionalId, setSelectedDevotionalId] = useState("");
@@ -350,16 +357,19 @@ export default function DashboardJourneyExperience({
   const currentDevotionalTask = checklistData?.tasks.find((task) => task.kind === "devotional") ?? null;
   const currentDevotionalId = currentDevotionalTask?.devotionalId || "";
   const isPaidUser = profile?.is_paid === true;
+  const remainingTasks = Math.max(totalTasks - completedTasks, 0);
+  const dailyTaskTimeLeftText = expandTimeLeftLabel(dailyTaskTimeLeftLabel);
+  const dailyStudySummaryLine = allDone
+    ? dailyTaskTimeLeftText
+      ? `All ${totalTasks} Bible study tasks are done. New tasks start in ${dailyTaskTimeLeftText}.`
+      : `All ${totalTasks} Bible study tasks are done.`
+    : dailyTaskTimeLeftText
+      ? `${completedTasks} done, ${remainingTasks} left. You have ${dailyTaskTimeLeftText} to finish today's ${totalTasks} Bible study tasks.`
+      : `${completedTasks} done, ${remainingTasks} left to go.`;
   const streak = profile?.current_streak ?? 0;
   const devotionalTask = checklistData?.tasks.find((task) => task.kind === "devotional") ?? null;
   const readingTask = checklistData?.tasks.find((task) => task.kind === "reading") ?? null;
   const greetingName = userName && userName !== "buddy" ? userName : "buddy";
-  const dailyStudyHeaderLine = allDone
-    ? showDoneCountdownLine
-      ? `Your next Bible study tasks start in ${dailyTaskTimeLeftLabel || "24h 0m"}.`
-      : "All Bible study tasks are done."
-    : `${dailyTaskTimeLeftLabel || "24h"} left to finish today's Bible study tasks`;
-
   function buildLouisMessage() {
     const streakLine = `Hey ${greetingName}, you are on a ${streak} day streak.`;
 
@@ -414,7 +424,6 @@ export default function DashboardJourneyExperience({
   }
 
   function buildLouisNextStepMessage() {
-    const remainingTasks = Math.max(totalTasks - completedTasks, 0);
     const seed = [
       userName,
       completedTasks,
@@ -578,19 +587,6 @@ export default function DashboardJourneyExperience({
   }, [checklistData, isLoadingChecklist]);
 
   useEffect(() => {
-    if (!allDone) {
-      setShowDoneCountdownLine(false);
-      return;
-    }
-
-    const interval = window.setInterval(() => {
-      setShowDoneCountdownLine((current) => !current);
-    }, 4000);
-
-    return () => window.clearInterval(interval);
-  }, [allDone]);
-
-  useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
@@ -673,12 +669,6 @@ export default function DashboardJourneyExperience({
       >
         <section className={`w-full shrink-0 snap-start px-1 ${activePage === 0 ? "" : "h-0 overflow-hidden"}`}>
           <div className="mx-auto flex max-w-xl flex-col gap-4">
-            {!isLoadingChecklist ? (
-              <p className="text-center text-sm font-bold text-gray-900">
-                {dailyStudyHeaderLine}
-              </p>
-            ) : null}
-
             <div
               className={`relative w-full overflow-visible rounded-[26px] border text-left shadow-sm transition hover:shadow-md ${getDailyStudyCardClasses(allDone)}`}
             >
@@ -689,10 +679,23 @@ export default function DashboardJourneyExperience({
                     event.stopPropagation();
                     setShowDevotionalSettings((current) => !current);
                   }}
-                  className="absolute right-3 top-3 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-white/80 bg-white/90 text-base shadow-sm transition hover:bg-[#eaf5fc]"
+                  className="absolute right-3 top-3 z-20 flex h-7 w-7 items-center justify-center rounded-full bg-transparent text-[0px] text-gray-950 transition hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]/35"
                   aria-label="Daily Bible Study settings"
                   title="Daily Bible Study settings"
                 >
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    className="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 15.5A3.5 3.5 0 1 0 12 8a3.5 3.5 0 0 0 0 7.5Z" />
+                    <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.05.05a2 2 0 1 1-2.83 2.83l-.05-.05a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.56V21a2 2 0 1 1-4 0v-.08a1.7 1.7 0 0 0-1.04-1.56 1.7 1.7 0 0 0-1.87.34l-.05.05a2 2 0 1 1-2.83-2.83l.05-.05A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.04H3a2 2 0 1 1 0-4h.08A1.7 1.7 0 0 0 4.6 8a1.7 1.7 0 0 0-.34-1.87l-.05-.05a2 2 0 1 1 2.83-2.83l.05.05A1.7 1.7 0 0 0 8.96 3.6 1.7 1.7 0 0 0 10 2.04V2a2 2 0 1 1 4 0v.08a1.7 1.7 0 0 0 1.04 1.56 1.7 1.7 0 0 0 1.87-.34l.05-.05a2 2 0 1 1 2.83 2.83l-.05.05A1.7 1.7 0 0 0 19.4 8c.17.6.78 1.04 1.56 1.04H21a2 2 0 1 1 0 4h-.08A1.7 1.7 0 0 0 19.4 15Z" />
+                  </svg>
                   ⚙
                 </button>
               ) : null}
@@ -744,7 +747,7 @@ export default function DashboardJourneyExperience({
 
                     <div className="mt-2.5 text-[13px] sm:text-sm">
                       <p className="min-w-0 font-medium text-gray-600">
-                        {checklistData?.summaryLine || `${completedTasks} done, ${Math.max(totalTasks - completedTasks, 0)} left to go.`}
+                        {dailyStudySummaryLine}
                       </p>
                     </div>
                   </div>
