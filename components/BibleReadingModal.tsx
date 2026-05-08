@@ -188,23 +188,43 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
     loadUserAndProgress();
   }, [book, chapter]);
 
-  async function handleMarkChapterComplete() {
-    if (!userId || chapterCompleted || markingChapterComplete) return;
+  async function getActiveUserId() {
+    if (userId) return userId;
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return null;
+
+    setUserId(user.id);
+    return user.id;
+  }
+
+  async function handleMarkChapterComplete(options: { showError?: boolean } = {}) {
+    if (chapterCompleted || markingChapterComplete) return true;
 
     try {
+      const activeUserId = await getActiveUserId();
+      if (!activeUserId) return false;
+
       setMarkingChapterComplete(true);
-      await markChapterDone(userId, book, chapter);
+      await markChapterDone(activeUserId, book, chapter);
       setChapterCompleted(true);
       onMarkComplete?.();
+      return true;
     } catch (err) {
       console.error("[BIBLE_READING_MODAL] Error marking chapter complete:", err);
-      alert("Failed to mark chapter complete. Please try again.");
+      if (options.showError) alert("Failed to mark chapter complete. Please try again.");
+      return false;
     } finally {
       setMarkingChapterComplete(false);
     }
   }
 
-  const chapterNotesHref = `/bible-study-notes/${encodeURIComponent(book.toLowerCase())}?chapter=${chapter}`;
+  async function handleClose() {
+    if (!loading && !error) {
+      await handleMarkChapterComplete();
+    }
+    onClose();
+  }
 
   useEffect(() => {
     async function loadChapter() {
@@ -792,7 +812,7 @@ Be accurate to Scripture.`;
   }, [selectedKeyword, userId, completedKeywords, viewedKeywords]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-3 py-4 overflow-y-auto" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-3 py-4 overflow-y-auto">
       <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold">
@@ -800,7 +820,7 @@ Be accurate to Scripture.`;
           </h2>
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleClose}
             className="text-gray-500 hover:text-gray-800 text-2xl font-bold"
           >
             ✕
@@ -857,47 +877,13 @@ Be accurate to Scripture.`;
           </div>
         )}
 
-        {!loading && !error && (
-          <div className="border-t border-gray-200 pt-5 flex flex-col sm:flex-row gap-3">
-            <button
-              type="button"
-              onClick={handleMarkChapterComplete}
-              disabled={!userId || chapterCompleted || markingChapterComplete}
-              className={`flex-1 rounded-xl px-5 py-3 text-sm font-semibold transition ${
-                chapterCompleted
-                  ? "bg-green-100 text-green-700 cursor-not-allowed"
-                  : !userId || markingChapterComplete
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "bg-blue-600 text-white hover:bg-blue-700"
-              }`}
-            >
-              {chapterCompleted
-                ? "Chapter Completed"
-                : markingChapterComplete
-                ? "Marking Complete..."
-                : "Mark Complete"}
-            </button>
-
-            <Link
-              href={chapterNotesHref}
-              onClick={onClose}
-              className="flex-1 rounded-xl border border-gray-300 bg-white px-5 py-3 text-center text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
-            >
-              View Chapter Notes
-            </Link>
-          </div>
-        )}
       </div>
 
       {/* PERSON OVERLAY MODAL (nested, higher z-index) */}
       {selectedPerson && (
         <div 
           className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
-          onClick={(e) => {
-            e.stopPropagation();
-            setSelectedPerson(null);
-            setPersonNotes(null);
-          }}
+          onClick={(e) => e.stopPropagation()}
         >
           <div 
             className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8"
@@ -952,11 +938,7 @@ Be accurate to Scripture.`;
       {selectedPlace && (
         <div 
           className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
-          onClick={(e) => {
-            e.stopPropagation();
-            setSelectedPlace(null);
-            setPlaceNotes(null);
-          }}
+          onClick={(e) => e.stopPropagation()}
         >
           <div 
             className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8"
@@ -1018,12 +1000,7 @@ Be accurate to Scripture.`;
       {selectedKeyword && (
         <div 
           className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
-          onClick={(e) => {
-            e.stopPropagation();
-            setSelectedKeyword(null);
-            setKeywordNotes(null);
-            setKeywordNotesError(null);
-          }}
+          onClick={(e) => e.stopPropagation()}
         >
           <div 
             className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8"

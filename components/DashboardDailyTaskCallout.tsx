@@ -361,7 +361,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
     }
 
     return (
-      <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/45">
+      <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/45" closeOnBackdrop={false}>
         <div className="mx-4 w-full max-w-md rounded-3xl bg-white p-6 text-center shadow-2xl">
           <p className="text-sm font-semibold text-gray-900">{devotionalLoading ? "Loading devotional day..." : devotionalError || "Could not open this task."}</p>
         </div>
@@ -371,7 +371,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
   if (task.kind === "notes") {
     return (
-      <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/55" scrollable>
+      <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
         <div className="relative my-6 w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
           <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
             <div>
@@ -412,7 +412,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
   if (task.kind === "trivia" && triviaPack) {
     return (
-      <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/55" scrollable>
+      <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
         <div className="my-6 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
           <TriviaGamePlayer bookName={triviaPack.book.name} bookSlug={triviaPack.book.routeSlug} chapter={triviaPack.chapter} onClose={closeAndRefresh} />
         </div>
@@ -422,7 +422,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
   if (task.kind === "scrambled" && scrambledPack) {
     return (
-      <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/55" scrollable>
+      <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
         <div className="my-6 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
           <ScrambledGamePlayer bookName={scrambledPack.book.name} bookSlug={scrambledPack.book.slug} chapter={scrambledPack.chapter} onClose={closeAndRefresh} />
         </div>
@@ -431,7 +431,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   }
 
   return (
-    <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/45">
+    <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/45" closeOnBackdrop={false}>
       <div className="mx-4 w-full max-w-md rounded-3xl bg-white p-6 text-center shadow-2xl">
         <p className="text-sm font-semibold text-gray-900">This task could not be opened here.</p>
       </div>

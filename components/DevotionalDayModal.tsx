@@ -626,7 +626,6 @@ Be accurate to Scripture.`;
   return (
     <div 
       className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto" 
-      onClick={handleClose}
     >
       <div 
         className="relative w-full max-w-2xl max-h-[90vh] rounded-3xl bg-white border border-gray-200 shadow-2xl overflow-hidden flex flex-col" 
@@ -756,12 +755,7 @@ Be accurate to Scripture.`;
       {selectedPerson && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
-          onClick={(e) => {
-            // Only close this popup, not the parent devotional day modal
-            e.stopPropagation();
-            setSelectedPerson(null);
-            setPersonNotes(null);
-          }}
+          onClick={(e) => e.stopPropagation()}
         >
           <div 
             className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8"
@@ -818,12 +812,7 @@ Be accurate to Scripture.`;
       {selectedPlace && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
-          onClick={(e) => {
-            // Only close this popup, not the parent devotional day modal
-            e.stopPropagation();
-            setSelectedPlace(null);
-            setPlaceNotes(null);
-          }}
+          onClick={(e) => e.stopPropagation()}
         >
           <div 
             className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8"
@@ -878,12 +867,7 @@ Be accurate to Scripture.`;
       {selectedKeyword && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
-          onClick={(e) => {
-            // Only close this popup, not the parent devotional day modal
-            e.stopPropagation();
-            setSelectedKeyword(null);
-            setKeywordNotes(null);
-          }}
+          onClick={(e) => e.stopPropagation()}
         >
           <div 
             className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8"

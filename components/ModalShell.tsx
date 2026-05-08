@@ -17,6 +17,8 @@ interface ModalShellProps {
   backdropColor?: string;
   /** Placement for non-scrollable modals. Default: "center" */
   placement?: "center" | "bottom";
+  /** When false, only explicit close controls close the modal. Default: true */
+  closeOnBackdrop?: boolean;
 }
 
 /**
@@ -32,6 +34,7 @@ export function ModalShell({
   scrollable = false,
   backdropColor = "bg-black/60",
   placement = "center",
+  closeOnBackdrop = true,
 }: ModalShellProps) {
   const [mounted, setMounted] = useState(isOpen);
   const [closing, setClosing] = useState(false);
@@ -74,7 +77,7 @@ export function ModalShell({
       className={`fixed inset-0 ${zIndex} ${backdropColor} flex ${
         scrollable ? "items-start overflow-y-auto py-10" : placement === "bottom" ? "items-end pb-6 sm:pb-8" : "items-center"
       } justify-center p-4 ${closing ? "modal-backdrop-out" : "modal-backdrop-in"}`}
-      onClick={onClose}
+      onClick={closeOnBackdrop ? onClose : undefined}
     >
       <div
         className={closing ? "modal-panel-out" : "modal-panel-in"}
