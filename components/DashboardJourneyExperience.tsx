@@ -448,6 +448,9 @@ export default function DashboardJourneyExperience({
   const currentDevotionalId = currentDevotionalTask?.devotionalId || "";
   const isPaidUser = profile?.is_paid === true;
   const remainingTasks = Math.max(totalTasks - completedTasks, 0);
+  const completedStudyActionLabel = checklistData?.nextJourneyTarget
+    ? "Click to start next chapter"
+    : "Pick a new Bible Study";
   const dailyStudySummaryLine = buildDailyStudySummaryLine({
     allDone,
     completedTasks,
@@ -647,6 +650,20 @@ export default function DashboardJourneyExperience({
     }
   }
 
+  function handleCompletedStudyAction() {
+    if (!allDone) return;
+
+    if (userId && cycleStartedAt && checklistData?.nextJourneyTarget) {
+      rememberLouisDailyTaskTarget(userId, cycleStartedAt, checklistData.nextJourneyTarget);
+      setShowDevotionalSettings(false);
+      onDevotionalChanged();
+      return;
+    }
+
+    setShowJourneyHelp(false);
+    setShowDevotionalSettings(true);
+  }
+
   useEffect(() => {
     if (!checklistData?.tasks.length || isLoadingChecklist) return;
 
@@ -825,7 +842,7 @@ export default function DashboardJourneyExperience({
               <button
                 type="button"
                 onClick={onOpenDailyTasks}
-                className="w-full rounded-[26px] px-4 pb-9 pt-4 text-left"
+                className={`w-full rounded-[26px] px-4 pt-4 text-left ${allDone ? "pb-16" : "pb-9"}`}
               >
               {isLoadingChecklist ? (
                 <>
@@ -876,6 +893,18 @@ export default function DashboardJourneyExperience({
                 </div>
               )}
               </button>
+              {allDone && !isLoadingChecklist ? (
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    handleCompletedStudyAction();
+                  }}
+                  className="absolute bottom-3 left-4 right-12 z-20 rounded-full bg-[#7BAFD4] px-4 py-2 text-center text-sm font-bold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc] focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]/35"
+                >
+                  {completedStudyActionLabel}
+                </button>
+              ) : null}
 
               {showDevotionalSettings ? (
                 <div
