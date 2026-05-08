@@ -2,12 +2,11 @@
 "use client";
 export const dynamic = 'force-dynamic';
 
-import { useCallback, useEffect, useState, type MouseEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import "../../styles/pulse.css";
-import DashboardCards from "../../components/DashboardCards";
 import DashboardDailyWelcomeModal from "../../components/DashboardDailyWelcomeModal";
-import LouisDailyTasksModal, { fetchLouisDailyChecklistData } from "../../components/LouisDailyTasksModal";
+import LouisDailyTasksModal, { fetchLouisDailyChecklistData, type ChecklistData, type TaskState } from "../../components/LouisDailyTasksModal";
 import { FeatureTourModal } from "../../components/FeatureTourModal";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
@@ -20,6 +19,7 @@ import {
   getBibleBuddyLocalDayKey,
   getLouisDailyTaskCycleStartedAt,
   getLouisDailyTaskTimeLeftMs,
+  hasLouisDailyTaskBonusAwarded,
   hasSeenLouisDailyTaskCelebration,
   hasActiveLouisDailyTaskCycle,
   rememberLouisDailyTaskBonusAwarded,
@@ -32,6 +32,8 @@ import { triggerPoints } from "../../components/PointsPop";
 import AdSlot from "../../components/AdSlot";
 import { useFeatureRenderPriority } from "../../components/FeatureRenderPriorityContext";
 import { ACTION_TYPE } from "../../lib/actionTypes";
+import DashboardJourneyExperience from "../../components/DashboardJourneyExperience";
+import DashboardDailyTaskCallout from "../../components/DashboardDailyTaskCallout";
 import {
   buildPersistedFeatureTours,
   DEFAULT_FEATURE_TOURS,
@@ -45,6 +47,7 @@ import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
 const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
 const JESSICA_BONUS_POPUP_KEY = "bb:bonus-popup:jessica-1000:v1";
+const ENABLE_DAILY_DASHBOARD_WELCOME_FLOW = true;
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -158,13 +161,17 @@ export default function DashboardPage() {
   const [showLouisDailyTasksModal, setShowLouisDailyTasksModal] = useState(false);
   const [louisDailyTaskCycleStartedAt, setLouisDailyTaskCycleStartedAt] = useState<string | null>(null);
   const [showDailyTaskCelebrationModal, setShowDailyTaskCelebrationModal] = useState(false);
+  const [pendingDailyTaskCelebrationModal, setPendingDailyTaskCelebrationModal] = useState(false);
   const [showJessicaBonusModal, setShowJessicaBonusModal] = useState(false);
   const [hasJessicaBonusAward, setHasJessicaBonusAward] = useState(false);
   const [isLoadingDailyTaskSummary, setIsLoadingDailyTaskSummary] = useState(true);
+  const [dailyChecklistData, setDailyChecklistData] = useState<ChecklistData | null>(null);
   const [dailyTaskCompletedCount, setDailyTaskCompletedCount] = useState(0);
   const [dailyTaskTotalCount, setDailyTaskTotalCount] = useState(5);
   const [dailyTaskNextTitle, setDailyTaskNextTitle] = useState<string | null>(null);
   const [dailyTaskSummaryLine, setDailyTaskSummaryLine] = useState<string | null>(null);
+  const [selectedDashboardTask, setSelectedDashboardTask] = useState<TaskState | null>(null);
+  const dailyTaskPopupOpenRef = useRef(false);
   const [dailyTaskTimeLeftLabel, setDailyTaskTimeLeftLabel] = useState<string | null>(null);
   const [motivationalMessage, setMotivationalMessage] = useState<string>("");
   const [proExpiresAt, setProExpiresAt] = useState<string | null>(null);
@@ -290,6 +297,58 @@ export default function DashboardPage() {
       headline: `${safeStreak} day streak`,
       body: phaseTemplates[dayMod % phaseTemplates.length],
        followUp: "Do you want to start your Daily Bible Tasks?",
+    };
+  }
+
+  function formatChapterForSpeech(chapterLabel: string | null | undefined) {
+    if (!chapterLabel) return "today's chapter";
+    const match = chapterLabel.match(/^(.+)\s+(\d+)$/);
+    if (!match) return chapterLabel;
+    return `${match[1]} chapter ${match[2]}`;
+  }
+
+  function getChapterPreviewLine(task: TaskState | null) {
+    const book = String(task?.book || "").toLowerCase();
+    const chapter = task?.chapter ?? null;
+
+    if (book === "genesis" && chapter === 39) {
+      return "Joseph serves faithfully in Potiphar's house, refuses temptation, and stays faithful even after being falsely accused.";
+    }
+
+    if (book === "genesis" && chapter === 40) {
+      return "Joseph listens to two troubled prisoners, interprets their dreams, and keeps trusting God while he is still waiting.";
+    }
+
+    if (book === "genesis" && chapter === 41) {
+      return "Joseph is brought before Pharaoh, explains the dreams, and God lifts him from prison into leadership.";
+    }
+
+    if (book === "proverbs") {
+      return "This chapter gives practical wisdom for walking with God, making better choices, and guarding your heart.";
+    }
+
+    return `This chapter is the focus for the devotional, reading, notes, trivia, and Scrambled today.`;
+  }
+
+  function buildDailyStreakTaskIntro(checklistData: ChecklistData | null) {
+    const devotionalTask = checklistData?.tasks.find((task) => task.kind === "devotional") ?? null;
+    const readingTask = checklistData?.tasks.find((task) => task.kind === "reading") ?? null;
+    const devotionalMatch = devotionalTask?.title.match(/^Do Day\s+(\d+)\s+of\s+(.+)$/i);
+    const devotionalTitle = devotionalMatch?.[2]?.trim() || "your Bible study";
+    const chapterText = formatChapterForSpeech(readingTask?.chapterLabel);
+
+    if (checklistData?.allDone) {
+      return {
+        focusLine: "You already finished today's Bible study journey.",
+        previewLine: "The next set of Bible tasks will unlock when the new daily cycle begins.",
+        closingLine: "Nice work showing up and finishing the whole flow.",
+      };
+    }
+
+    return {
+      focusLine: `Today we are continuing ${devotionalTitle} with ${chapterText}.`,
+      previewLine: getChapterPreviewLine(readingTask),
+      closingLine: "So let's start today's Bible tasks.",
     };
   }
 
@@ -817,34 +876,61 @@ export default function DashboardPage() {
   }, [isOwnerDashboard]);
 
   function renderOwnerQuickStatsRow() {
-    if (!isOwnerDashboard) return null;
+    if (isOwnerDashboard) {
+      return (
+        <div className="mb-4">
+          <Link href="/admin/analytics" className="block">
+            <div className="mx-auto grid max-w-xl grid-cols-2 gap-3 rounded-2xl border border-gray-200 bg-white p-3 shadow-sm transition hover:shadow-md sm:grid-cols-4">
+              {[
+                { label: "Signups 24h", value: ownerQuickStats.signups24h, tones: "bg-gray-100 border-gray-200" },
+                { label: "Active 24h", value: ownerQuickStats.activeUsers24h, tones: "bg-blue-100 border-blue-200" },
+                { label: "Upgrades", value: ownerQuickStats.upgrades24h, tones: "bg-emerald-100 border-emerald-200" },
+                { label: "Total Users", value: ownerQuickStats.totalUsers, tones: "bg-red-100 border-red-200" },
+              ].map((card) => (
+                <div
+                  key={card.label}
+                  className={`rounded-xl border px-2 py-3 text-center sm:px-3 sm:py-4 ${card.tones}`}
+                >
+                  <p className="text-xl font-bold text-gray-900 sm:text-2xl">
+                    {loadingOwnerQuickStats ? "..." : card.value}
+                  </p>
+                  <p className="mt-1 text-[10px] font-medium leading-tight text-gray-700 sm:text-xs">
+                    {card.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Link>
+        </div>
+      );
+    }
 
-    return (
-      <div className="mb-4">
-        <Link href="/admin/analytics" className="block">
-          <div className="grid grid-cols-4 gap-2 rounded-2xl border border-gray-200 bg-white p-2.5 shadow-sm transition hover:shadow-md sm:gap-3 sm:p-3">
-            {[
-              { label: "Signups 24h", value: ownerQuickStats.signups24h, tones: "bg-gray-100 border-gray-200" },
-              { label: "Active 24h", value: ownerQuickStats.activeUsers24h, tones: "bg-blue-100 border-blue-200" },
-              { label: "Upgrades", value: ownerQuickStats.upgrades24h, tones: "bg-emerald-100 border-emerald-200" },
-              { label: "Total Users", value: ownerQuickStats.totalUsers, tones: "bg-red-100 border-red-200" },
-            ].map((card) => (
-              <div
-                key={card.label}
-                className={`rounded-xl border px-2 py-3 text-center sm:px-3 sm:py-4 ${card.tones}`}
-              >
-                <p className="text-xl font-bold text-gray-900 sm:text-2xl">
-                  {loadingOwnerQuickStats ? "..." : card.value}
-                </p>
-                <p className="mt-1 text-[10px] font-medium leading-tight text-gray-700 sm:text-xs">
-                  {card.label}
-                </p>
+    if (membershipStatus !== "pro" && profile?.is_paid !== true) {
+      return (
+        <div className="mb-4">
+          <div className="mx-auto max-w-xl">
+            <Link href="/upgrade" className="block">
+              <div className="relative cursor-pointer rounded-2xl border border-[#f0d7b3] bg-[#fff8ef] px-4 py-3 shadow-sm transition hover:scale-[1.01] hover:shadow-md">
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-base text-[#b7791f]" aria-hidden="true">
+                  ↑
+                </span>
+                <div className="flex items-center gap-3 pr-7">
+                  <div className="text-xl leading-none">👑</div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-[#8a4b14]">Go Deeper With Pro</p>
+                    <p className="text-xs leading-relaxed text-gray-600">
+                      Unlock the full devotional library and remove the daily credit wall.
+                    </p>
+                  </div>
+                </div>
               </div>
-            ))}
+            </Link>
           </div>
-        </Link>
-      </div>
-    );
+        </div>
+      );
+    }
+
+    return null;
   }
 
   useEffect(() => {
@@ -1359,12 +1445,17 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!userId || !profile) return;
-    const today = getBibleBuddyLocalDayKey();
-    const shouldShowVerse = profile.verse_of_the_day_shown !== today;
-    setShowVerseOfTheDayModal(shouldShowVerse);
-    if (!shouldShowVerse) {
+    if (!ENABLE_DAILY_DASHBOARD_WELCOME_FLOW) {
+      setShowVerseOfTheDayModal(false);
       setPendingDailyStreakSequence(false);
+      return;
     }
+    const today = getBibleBuddyLocalDayKey();
+    const dailySequenceSeenKey = getDashboardDailySequenceSeenKey(userId, today);
+    setShowVerseOfTheDayModal(false);
+    setPendingDailyStreakSequence(
+      typeof window !== "undefined" && window.localStorage.getItem(dailySequenceSeenKey) !== "1",
+    );
   }, [userId, profile]);
 
   useEffect(() => {
@@ -1386,6 +1477,7 @@ export default function DashboardPage() {
   }, [showVerseOfTheDayModal]);
 
   useEffect(() => {
+    if (!ENABLE_DAILY_DASHBOARD_WELCOME_FLOW) return;
     if (
       !userId ||
       !profile ||
@@ -1464,9 +1556,30 @@ export default function DashboardPage() {
     return () => window.clearInterval(interval);
   }, [userId, louisDailyTaskCycleStartedAt]);
 
+  useEffect(() => {
+    dailyTaskPopupOpenRef.current = Boolean(selectedDashboardTask) || showLouisDailyTasksModal;
+  }, [selectedDashboardTask, showLouisDailyTasksModal]);
+
+  useEffect(() => {
+    if (
+      !pendingDailyTaskCelebrationModal ||
+      dailyTaskPopupOpenRef.current ||
+      !userId ||
+      !louisDailyTaskCycleStartedAt ||
+      hasSeenLouisDailyTaskCelebration(userId, louisDailyTaskCycleStartedAt)
+    ) {
+      return;
+    }
+
+    rememberLouisDailyTaskCelebrationSeen(userId, louisDailyTaskCycleStartedAt);
+    setPendingDailyTaskCelebrationModal(false);
+    setShowDailyTaskCelebrationModal(true);
+  }, [pendingDailyTaskCelebrationModal, selectedDashboardTask, showLouisDailyTasksModal, userId, louisDailyTaskCycleStartedAt]);
+
   const loadDailyTaskSummary = useCallback(async () => {
     if (!userId || !profile || !louisDailyTaskCycleStartedAt) {
       setIsLoadingDailyTaskSummary(false);
+      setDailyChecklistData(null);
       setDailyTaskCompletedCount(0);
       setDailyTaskTotalCount(5);
       setDailyTaskNextTitle(null);
@@ -1482,6 +1595,7 @@ export default function DashboardPage() {
         profile.current_streak ?? 0,
         louisDailyTaskCycleStartedAt,
       );
+      setDailyChecklistData(checklistData);
       setDailyTaskCompletedCount(checklistData.completedCount);
       setDailyTaskTotalCount(checklistData.tasks.length || 5);
       setDailyTaskNextTitle(checklistData.nextTaskTitle);
@@ -1491,13 +1605,20 @@ export default function DashboardPage() {
         louisDailyTaskCycleStartedAt &&
         !hasSeenLouisDailyTaskCelebration(userId, louisDailyTaskCycleStartedAt)
       ) {
-        rememberLouisDailyTaskBonusAwarded(userId, louisDailyTaskCycleStartedAt);
-        rememberLouisDailyTaskCelebrationSeen(userId, louisDailyTaskCycleStartedAt);
-        triggerPoints(10);
-        setShowDailyTaskCelebrationModal(true);
+        if (!hasLouisDailyTaskBonusAwarded(userId, louisDailyTaskCycleStartedAt)) {
+          rememberLouisDailyTaskBonusAwarded(userId, louisDailyTaskCycleStartedAt);
+          triggerPoints(10);
+        }
+        if (dailyTaskPopupOpenRef.current) {
+          setPendingDailyTaskCelebrationModal(true);
+        } else {
+          rememberLouisDailyTaskCelebrationSeen(userId, louisDailyTaskCycleStartedAt);
+          setShowDailyTaskCelebrationModal(true);
+        }
       }
     } catch (error) {
       console.error("[DASHBOARD] Could not load daily task summary:", error);
+      setDailyChecklistData(null);
       setDailyTaskCompletedCount(0);
       setDailyTaskTotalCount(5);
       setDailyTaskNextTitle(null);
@@ -1662,11 +1783,93 @@ export default function DashboardPage() {
     }
   }
 
+  function handleOpenDailyTasksModal() {
+    const cycleStartedAt = userId
+      ? getLouisDailyTaskCycleStartedAt(userId) ?? ensureLouisDailyTaskCycle(userId)
+      : null;
+    if (cycleStartedAt) {
+      setLouisDailyTaskCycleStartedAt(cycleStartedAt);
+    }
+    setShowLouisDailyTasksModal(true);
+  }
+
+  function handleDailyJourneyTaskClick(task: TaskState) {
+    if (task.disabled) return;
+    setSelectedDashboardTask(task);
+  }
+
+  const exploreLinks = [
+    {
+      key: "bible",
+      title: "The Bible",
+      subtitle: "Read the complete Bible here",
+      href: "/reading",
+      eyebrow: "Scripture",
+      emoji: "📖",
+      accent: "border-blue-200 bg-blue-100",
+      onClick: (event: MouseEvent<HTMLAnchorElement>) => void handleCardClick(event, "bible", "/reading"),
+    },
+    {
+      key: "group",
+      title: "Bible Study Group",
+      subtitle: "Study the Bible with us",
+      href: "/study-groups",
+      eyebrow: "Community",
+      emoji: "👥",
+      accent: "border-[#b8ddb8] bg-[#d4ecd4]",
+      onClick: (event: MouseEvent<HTMLAnchorElement>) => void handleCardClick(event, "bible_study_hub", "/study-groups"),
+    },
+    {
+      key: "tools",
+      title: "Bible Study Tools",
+      subtitle: "A collection of Bible study tools",
+      href: "/guided-studies",
+      eyebrow: "Study Tools",
+      emoji: "🛠️",
+      accent: "border-[#e8aeb5] bg-[#f6d6d9]",
+      onClick: (event: MouseEvent<HTMLAnchorElement>) => void handleCardClick(event, "guided_studies", "/guided-studies"),
+    },
+    {
+      key: "tv",
+      title: "Bible Buddy TV",
+      subtitle: "Stream Bible shows, movies, sermons, and more",
+      href: "/biblebuddy-tv",
+      eyebrow: "Watch",
+      emoji: "📺",
+      accent: "border-violet-200 bg-[#efe7ff]",
+      onClick: (event: MouseEvent<HTMLAnchorElement>) => void handleCardClick(event, "bible_buddy_tv", "/biblebuddy-tv"),
+    },
+    {
+      key: "games",
+      title: "Bible Study Games",
+      subtitle: "Play our Bible-based games",
+      href: "/bible-study-games",
+      eyebrow: "Play",
+      emoji: "🎮",
+      accent: "border-emerald-200 bg-emerald-100",
+      onClick: (event: MouseEvent<HTMLAnchorElement>) => void handleCardClick(event, "bible_trivia", "/bible-study-games"),
+    },
+    {
+      key: "share",
+      title: "Share Bible Buddy",
+      subtitle: "Share by text, WhatsApp, or copy link.",
+      href: "#share-bible-buddy",
+      eyebrow: "Invite",
+      emoji: "↗",
+      accent: "border-gray-300 bg-gray-100",
+      onClick: (event: MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault();
+        void handleInviteBuddy();
+      },
+    },
+  ];
+
   const streakMotivation = getStreakMotivation(profile?.current_streak ?? 0);
+  const dailyStreakTaskIntro = buildDailyStreakTaskIntro(dailyChecklistData);
 
   return (
     <>
-      <div className="min-h-screen bg-gray-50 pb-12">
+      <div className="min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12">
       {/* DESKTOP LAYOUT: Left Ad | Content | Right Ad */}
       <div className="hidden lg:flex max-w-7xl mx-auto px-4 mt-8 gap-6">
         {/* LEFT AD SLOT (Desktop Only) */}
@@ -1683,32 +1886,27 @@ export default function DashboardPage() {
         )}
 
         {/* MAIN CONTENT â€“ CENTERED COLUMN */}
-        <div className="flex-1 max-w-lg mx-auto">
+        <div className="flex-1 max-w-2xl mx-auto">
         {renderOwnerQuickStatsRow()}
 
-        {/* DASHBOARD CARDS */}
-        <DashboardCards
+        <DashboardJourneyExperience
+          userName={userName}
           profile={profile}
-          membershipStatus={membershipStatus ?? ""}
-          daysRemaining={daysRemaining}
-          isLoadingDailyTasks={isLoadingDailyTaskSummary}
-          dailyTaskCompletedCount={dailyTaskCompletedCount}
-          dailyTaskTotalCount={dailyTaskTotalCount}
-          dailyTaskNextTitle={dailyTaskNextTitle}
-          dailyTaskSummaryLine={dailyTaskSummaryLine}
+          levelInfo={levelInfo}
+          primaryRecommendation={primaryRecommendation}
+          checklistData={dailyChecklistData}
+          isLoadingChecklist={isLoadingDailyTaskSummary}
           dailyTaskTimeLeftLabel={dailyTaskTimeLeftLabel}
-          handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
-          onOpenDailyTasks={() => {
-            const cycleStartedAt = userId
-              ? getLouisDailyTaskCycleStartedAt(userId) ?? ensureLouisDailyTaskCycle(userId)
-              : null;
-            if (cycleStartedAt) {
-              setLouisDailyTaskCycleStartedAt(cycleStartedAt);
-            }
-            setShowLouisDailyTasksModal(true);
+          membershipStatus={membershipStatus}
+          daysRemaining={daysRemaining}
+          exploreLinks={exploreLinks}
+          onOpenLevelInfo={openLevelInfoModal}
+          onOpenStreakInfo={() => {
+            setShowStreakMotivationTaskPrompt(false);
+            setShowStreakMotivationModal(true);
           }}
-          onInviteBuddy={handleInviteBuddy}
-          dashboardTourSpotlight={null}
+          onOpenDailyTasks={handleOpenDailyTasksModal}
+          onTaskClick={handleDailyJourneyTaskClick}
         />
         </div>
 
@@ -1727,32 +1925,27 @@ export default function DashboardPage() {
       </div>
 
       {/* MOBILE LAYOUT: Content Only (Ads shown at bottom) */}
-      <div className="lg:hidden max-w-lg mx-auto px-4 mt-8">
+      <div className="lg:hidden max-w-2xl mx-auto px-4 mt-8">
         {renderOwnerQuickStatsRow()}
 
-        {/* DASHBOARD CARDS */}
-        <DashboardCards
+        <DashboardJourneyExperience
+          userName={userName}
           profile={profile}
-          membershipStatus={membershipStatus ?? ""}
-          daysRemaining={daysRemaining}
-          isLoadingDailyTasks={isLoadingDailyTaskSummary}
-          dailyTaskCompletedCount={dailyTaskCompletedCount}
-          dailyTaskTotalCount={dailyTaskTotalCount}
-          dailyTaskNextTitle={dailyTaskNextTitle}
-          dailyTaskSummaryLine={dailyTaskSummaryLine}
+          levelInfo={levelInfo}
+          primaryRecommendation={primaryRecommendation}
+          checklistData={dailyChecklistData}
+          isLoadingChecklist={isLoadingDailyTaskSummary}
           dailyTaskTimeLeftLabel={dailyTaskTimeLeftLabel}
-          handleCardClick={(event, card, href) => handleCardClick(event, card as any, href)}
-          onOpenDailyTasks={() => {
-            const cycleStartedAt = userId
-              ? getLouisDailyTaskCycleStartedAt(userId) ?? ensureLouisDailyTaskCycle(userId)
-              : null;
-            if (cycleStartedAt) {
-              setLouisDailyTaskCycleStartedAt(cycleStartedAt);
-            }
-            setShowLouisDailyTasksModal(true);
+          membershipStatus={membershipStatus}
+          daysRemaining={daysRemaining}
+          exploreLinks={exploreLinks}
+          onOpenLevelInfo={openLevelInfoModal}
+          onOpenStreakInfo={() => {
+            setShowStreakMotivationTaskPrompt(false);
+            setShowStreakMotivationModal(true);
           }}
-          onInviteBuddy={handleInviteBuddy}
-          dashboardTourSpotlight={null}
+          onOpenDailyTasks={handleOpenDailyTasksModal}
+          onTaskClick={handleDailyJourneyTaskClick}
         />
       </div>
 
@@ -1802,7 +1995,7 @@ export default function DashboardPage() {
 
       {/* Level Info Modal */}
         <DashboardDailyWelcomeModal
-          open={showVerseOfTheDayModal}
+          open={ENABLE_DAILY_DASHBOARD_WELCOME_FLOW && showVerseOfTheDayModal}
           onClose={() => {
             const today = getBibleBuddyLocalDayKey();
             setShowVerseOfTheDayModal(false);
@@ -1814,7 +2007,7 @@ export default function DashboardPage() {
       />
 
         <ModalShell
-          isOpen={showStreakMotivationModal && !showVerseOfTheDayModal}
+          isOpen={ENABLE_DAILY_DASHBOARD_WELCOME_FLOW && showStreakMotivationModal && !showVerseOfTheDayModal}
           onClose={() => {
             setShowStreakMotivationModal(false);
             setShowStreakMotivationTaskPrompt(false);
@@ -1843,30 +2036,25 @@ export default function DashboardPage() {
             </p>
               {showStreakMotivationTaskPrompt && (
                 <>
-                  <p className="mt-4 text-sm font-semibold text-[#355487]">
-                    {streakMotivation.followUp}
+                  <p className="mt-4 text-sm font-semibold leading-6 text-[#355487]">
+                    {dailyStreakTaskIntro.focusLine}
                   </p>
-                  <div className="mt-6 flex items-center justify-center gap-3">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setShowStreakMotivationModal(false);
-                        setShowStreakMotivationTaskPrompt(false);
-                        setShowLouisDailyTasksModal(true);
-                      }}
-                      className="inline-flex min-w-[120px] justify-center rounded-full bg-[#6fb48b] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5ea27a]"
-                    >
-                      Yes
-                    </button>
+                  <p className="mt-2 text-sm leading-6 text-[#4f678e]">
+                    {dailyStreakTaskIntro.previewLine}
+                  </p>
+                  <p className="mt-3 text-sm font-semibold text-[#355487]">
+                    {dailyStreakTaskIntro.closingLine}
+                  </p>
+                  <div className="mt-6 flex items-center justify-center">
                     <button
                       type="button"
                       onClick={() => {
                         setShowStreakMotivationModal(false);
                         setShowStreakMotivationTaskPrompt(false);
                       }}
-                      className="inline-flex min-w-[120px] justify-center rounded-full bg-[#e98585] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#d96d6d]"
+                      className="inline-flex min-w-[140px] justify-center rounded-full bg-[#7BAFD4] px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
                     >
-                      No
+                      OK
                     </button>
                   </div>
                 </>
@@ -1884,6 +2072,15 @@ export default function DashboardPage() {
         userId={userId}
         currentStreak={profile?.current_streak ?? 0}
         cycleStartedAt={louisDailyTaskCycleStartedAt}
+      />
+
+      <DashboardDailyTaskCallout
+        task={selectedDashboardTask}
+        userId={userId}
+        onClose={() => setSelectedDashboardTask(null)}
+        onProgressUpdated={() => {
+          void loadDailyTaskSummary();
+        }}
       />
 
       <ModalShell

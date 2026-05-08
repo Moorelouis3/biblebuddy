@@ -44,6 +44,72 @@ interface WeekFinisher {
   group_role: string | null;
 }
 
+interface WeekBreakdownUser extends WeekFinisher {}
+
+interface WeekBreakdownTriviaUser extends WeekBreakdownUser {
+  score: number;
+  total: number;
+}
+
+interface WeekStarterStatus extends WeekBreakdownUser {
+  reading: boolean;
+  notes: boolean;
+  trivia: boolean;
+  reflection: boolean;
+}
+
+interface WeekBreakdown {
+  readers: WeekBreakdownUser[];
+  noteReaders: WeekBreakdownUser[];
+  triviaScores: WeekBreakdownTriviaUser[];
+  reflectors: WeekBreakdownUser[];
+}
+
+function mergeWeekBreakdownIdentity(
+  breakdown: WeekBreakdown,
+  profileMap: Map<string, { display_name: string; profile_image_url: string | null }>
+): WeekBreakdown {
+  const mergeUser = <T extends WeekBreakdownUser>(user: T): T => {
+    const profile = profileMap.get(user.user_id);
+    if (!profile) return user;
+    return {
+      ...user,
+      display_name: profile.display_name || user.display_name,
+      profile_image_url: profile.profile_image_url || user.profile_image_url,
+    };
+  };
+
+  return {
+    readers: breakdown.readers.map(mergeUser),
+    noteReaders: breakdown.noteReaders.map(mergeUser),
+    triviaScores: breakdown.triviaScores.map(mergeUser),
+    reflectors: breakdown.reflectors.map(mergeUser),
+  };
+}
+
+function mergeWeekStarterIdentity(
+  starters: WeekStarterStatus[],
+  profileMap: Map<string, { display_name: string; profile_image_url: string | null }>
+) {
+  return starters.map((starter) => {
+    const profile = profileMap.get(starter.user_id);
+    return {
+      ...starter,
+      display_name: profile?.display_name || starter.display_name,
+      profile_image_url: profile?.profile_image_url || starter.profile_image_url,
+    };
+  });
+}
+
+function isJosephSeriesTitle(title: string | null | undefined) {
+  return (title || "").toLowerCase().includes("testing of joseph");
+}
+
+function getSeriesWeekDisplayLabel(seriesTitle: string | null | undefined, weekNum: number, readingReference?: string | null) {
+  if (isJosephSeriesTitle(seriesTitle)) return readingReference?.trim() || `Genesis ${36 + weekNum}`;
+  return `Week ${weekNum}`;
+}
+
 function getWeekUnlockDate(startDate: string, weekNum: number): string {
   const d = new Date(startDate);
   d.setDate(d.getDate() + (weekNum - 1) * 7);
@@ -471,7 +537,7 @@ function NotesSection({
       {notesLoading && (
         <SmallLouisLoadingModal
           title="Loading Study Notes"
-          subtitle={`Getting your Week ${lesson.weekNumber} notes ready...`}
+          subtitle={`Getting your ${getSeriesWeekDisplayLabel(seriesTitle, lesson.weekNumber, lesson.readingReference)} notes ready...`}
         />
       )}
 
@@ -1659,7 +1725,7 @@ function ReflectionSection({
 }
 
 // â”€â”€ Completion Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-function CompletionModal({ weekNumber, groupId, onClose }: { weekNumber: number; groupId: string; onClose: () => void }) {
+function CompletionModal({ label, groupId, onClose }: { label: string; groupId: string; onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4" onClick={onClose}>
       <div
@@ -1684,9 +1750,9 @@ function CompletionModal({ weekNumber, groupId, onClose }: { weekNumber: number;
         ))}
 
         <div className="text-6xl mb-4 animate-bounce">🙏</div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Week {weekNumber} Complete!</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">{label} Complete!</h2>
         <p className="text-sm text-gray-500 mb-6">
-          You've finished the reading, notes, trivia, and reflection for this week. Keep it up!
+          You've finished the reading, notes, trivia, and reflection for this chapter. Keep it up!
         </p>
 
         <Link
@@ -1789,8 +1855,13 @@ export default function WeekLessonPage({
   const [showReadingModal, setShowReadingModal] = useState(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
   const [weekFinishers, setWeekFinishers] = useState<WeekFinisher[]>([]);
+  const [weekBreakdown, setWeekBreakdown] = useState<WeekBreakdown>({ readers: [], noteReaders: [], triviaScores: [], reflectors: [] });
+  const [weekStarters, setWeekStarters] = useState<WeekStarterStatus[]>([]);
   const [loadingWeekFinishers, setLoadingWeekFinishers] = useState(false);
   const [showWeekFinishersModal, setShowWeekFinishersModal] = useState(false);
+  const [showLeaderBreakdown, setShowLeaderBreakdown] = useState(false);
+  const [nudgeSendingUserId, setNudgeSendingUserId] = useState<string | null>(null);
+  const [nudgedUserIds, setNudgedUserIds] = useState<Set<string>>(new Set());
   const completionShownRef = useRef(false);
 
   // â”€â”€ Bible term overlay state (same as Bible chapter page) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -1817,6 +1888,15 @@ export default function WeekLessonPage({
   const [learnedToast, setLearnedToast] = useState<string | null>(null);
 
   const lesson = useMemo(() => getSeriesWeekLesson(weekNum, seriesTitle), [weekNum, seriesTitle]);
+  const hasNotesRequirement = useMemo(
+    () => hasLazySeriesNotes(seriesTitle, weekNum) || Boolean(lesson?.notes?.trim()),
+    [lesson?.notes, seriesTitle, weekNum]
+  );
+  const weekDisplayLabel = useMemo(
+    () => getSeriesWeekDisplayLabel(seriesTitle, weekNum, lesson?.readingReference),
+    [lesson?.readingReference, seriesTitle, weekNum],
+  );
+  const usesChapterLanguage = useMemo(() => isJosephSeriesTitle(seriesTitle), [seriesTitle]);
   const handleUnlockNotes = useCallback(() => {
     router.push("/upgrade");
   }, [router]);
@@ -1828,6 +1908,8 @@ export default function WeekLessonPage({
       const accessToken = sessionData.session?.access_token;
       if (!accessToken) {
         setWeekFinishers([]);
+        setWeekBreakdown({ readers: [], noteReaders: [], triviaScores: [], reflectors: [] });
+        setWeekStarters([]);
         return;
       }
 
@@ -1845,13 +1927,61 @@ export default function WeekLessonPage({
       if (!response.ok) {
         console.warn("[WEEK_FINISHERS] Error loading finishers:", payload?.error || response.statusText);
         setWeekFinishers([]);
+        setWeekBreakdown({ readers: [], noteReaders: [], triviaScores: [], reflectors: [] });
+        setWeekStarters([]);
         return;
       }
+      const finishers = Array.isArray(payload?.finishers) ? payload.finishers as WeekFinisher[] : [];
+      const starters = Array.isArray(payload?.starters) ? payload.starters as WeekStarterStatus[] : [];
+      const breakdown: WeekBreakdown = {
+        readers: Array.isArray(payload?.breakdown?.readers) ? payload.breakdown.readers as WeekBreakdownUser[] : [],
+        noteReaders: Array.isArray(payload?.breakdown?.noteReaders) ? payload.breakdown.noteReaders as WeekBreakdownUser[] : [],
+        triviaScores: Array.isArray(payload?.breakdown?.triviaScores) ? payload.breakdown.triviaScores as WeekBreakdownTriviaUser[] : [],
+        reflectors: Array.isArray(payload?.breakdown?.reflectors) ? payload.breakdown.reflectors as WeekBreakdownUser[] : [],
+      };
 
-      setWeekFinishers(Array.isArray(payload?.finishers) ? payload.finishers as WeekFinisher[] : []);
+      const involvedUserIds = Array.from(new Set([
+        ...finishers.map((u) => u.user_id),
+        ...starters.map((u) => u.user_id),
+        ...breakdown.readers.map((u) => u.user_id),
+        ...breakdown.noteReaders.map((u) => u.user_id),
+        ...breakdown.triviaScores.map((u) => u.user_id),
+        ...breakdown.reflectors.map((u) => u.user_id),
+      ].filter(Boolean)));
+
+      const profileMap = new Map<string, { display_name: string; profile_image_url: string | null }>();
+      if (involvedUserIds.length > 0) {
+        const { data: profiles } = await supabase
+          .from("profile_stats")
+          .select("user_id, display_name, username, profile_image_url")
+          .in("user_id", involvedUserIds);
+
+        (profiles || []).forEach((profile) => {
+          if (!profile.user_id) return;
+          profileMap.set(profile.user_id, {
+            display_name: profile.display_name || profile.username || "",
+            profile_image_url: profile.profile_image_url || null,
+          });
+        });
+      }
+
+      setWeekFinishers(
+        finishers.map((finisher) => {
+          const profile = profileMap.get(finisher.user_id);
+          return {
+            ...finisher,
+            display_name: profile?.display_name || finisher.display_name,
+            profile_image_url: profile?.profile_image_url || finisher.profile_image_url,
+          };
+        })
+      );
+      setWeekStarters(mergeWeekStarterIdentity(starters, profileMap));
+      setWeekBreakdown(mergeWeekBreakdownIdentity(breakdown, profileMap));
     } catch (error) {
       console.warn("[WEEK_FINISHERS] Unexpected error:", error);
       setWeekFinishers([]);
+      setWeekBreakdown({ readers: [], noteReaders: [], triviaScores: [], reflectors: [] });
+      setWeekStarters([]);
     } finally {
       setLoadingWeekFinishers(false);
     }
@@ -2268,6 +2398,62 @@ export default function WeekLessonPage({
   });
   const visibleFinishers = weekFinishers.slice(0, 6);
 
+  function getMissingSections(starter: WeekStarterStatus) {
+    const missing: string[] = [];
+    if (!starter.reading) missing.push("Read the Reading");
+    if (hasNotesRequirement && !starter.notes) missing.push("Read the Notes");
+    if (!starter.trivia) missing.push("Take the Quiz");
+    if (!starter.reflection) missing.push("Post a Reflection");
+    return missing;
+  }
+
+  const startersNeedingFollowUp = weekStarters.filter((starter) => getMissingSections(starter).length > 0);
+
+  async function handleSendCompletionNudge(starter: WeekStarterStatus) {
+    if (!seriesId) return;
+    const { data: sessionData } = await supabase.auth.getSession();
+    const accessToken = sessionData.session?.access_token;
+    if (!accessToken) return;
+
+    const missingSections = getMissingSections(starter);
+    if (missingSections.length === 0) return;
+
+    setNudgeSendingUserId(starter.user_id);
+    try {
+      const response = await fetch(
+        `/api/groups/${groupId}/series/${seriesId}/weeks/${weekNum}/nudge`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify({
+            targetUserId: starter.user_id,
+            chapterLabel: weekDisplayLabel,
+            missingSections,
+          }),
+        }
+      );
+
+      const payload = await response.json().catch(() => null);
+      if (!response.ok) {
+        console.warn("[WEEK_NUDGE] Could not send nudge:", payload?.error || response.statusText);
+        return;
+      }
+
+      setNudgedUserIds((prev) => {
+        const next = new Set(prev);
+        next.add(starter.user_id);
+        return next;
+      });
+    } catch (error) {
+      console.warn("[WEEK_NUDGE] Unexpected send error:", error);
+    } finally {
+      setNudgeSendingUserId(null);
+    }
+  }
+
   return (
     <div className={embedded ? "" : "min-h-screen bg-gray-50 pb-20"}>
       <div className="max-w-2xl mx-auto px-4 py-8">
@@ -2293,12 +2479,12 @@ export default function WeekLessonPage({
           <span className="mx-2">/</span>
           <Link href={`/study-groups/${groupId}/series`} className="hover:text-gray-700 transition">{seriesTitle}</Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-800 font-medium">Week {weekNum}</span>
+          <span className="text-gray-800 font-medium">{weekDisplayLabel}</span>
         </nav>}
 
         {/* Week header */}
         <div className="mb-5">
-          <p className="text-xs font-semibold text-orange-600 uppercase tracking-wide mb-1">Week {weekNum}</p>
+          <p className="text-xs font-semibold text-orange-600 uppercase tracking-wide mb-1">{weekDisplayLabel}</p>
           <h1 className="text-2xl font-bold text-gray-900">{lesson.title}</h1>
           <p className="text-sm text-gray-500 mt-1">{lesson.subtitle}</p>
         </div>
@@ -2306,7 +2492,7 @@ export default function WeekLessonPage({
         {/* Progress bar */}
         <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm mb-6">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs font-semibold text-gray-500">This Week's Progress</p>
+            <p className="text-xs font-semibold text-gray-500">{usesChapterLanguage ? "This Chapter's Progress" : "This Week's Progress"}</p>
             <p className="text-xs font-bold text-gray-700">{totalDone}/{SERIES_WEEK_TOTAL_SECTIONS} complete</p>
           </div>
           <div className="flex gap-1.5">
@@ -2329,7 +2515,7 @@ export default function WeekLessonPage({
             <div>
               <p className="text-xs font-semibold text-gray-500">Week Finishers</p>
               <p className="text-sm font-bold text-gray-900 mt-1">
-                {weekFinishers.length} {weekFinishers.length === 1 ? "buddy has" : "buddies have"} finished all 4 parts of Week {weekNum}
+                {weekFinishers.length} {weekFinishers.length === 1 ? "buddy has" : "buddies have"} finished all 4 parts of {weekDisplayLabel}
               </p>
               <p className="text-xs text-gray-500 mt-1">
                 Reading, notes, trivia, and reflection all completed.
@@ -2394,6 +2580,117 @@ export default function WeekLessonPage({
               </p>
             )}
           </div>
+
+          {currentGroupRole === "leader" && (
+            <div className="mt-4 border-t border-gray-100 pt-4">
+              <button
+                type="button"
+                onClick={() => setShowLeaderBreakdown((prev) => !prev)}
+                className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-600 hover:text-indigo-700"
+              >
+                {showLeaderBreakdown ? "Hide section breakdown" : "Show section breakdown"}
+                <span>{showLeaderBreakdown ? "−" : "+"}</span>
+              </button>
+
+              {showLeaderBreakdown && (
+                <div className="mt-4 space-y-4">
+                  <div>
+                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Read the Reading ({weekBreakdown.readers.length})</p>
+                    <div className="flex flex-wrap gap-2">
+                      {weekBreakdown.readers.map((u) => (
+                        <Link key={`reader-${u.user_id}`} href={`/profile/${u.user_id}`} className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-full px-2.5 py-1 hover:bg-indigo-50 hover:border-indigo-200 transition">
+                          {u.profile_image_url ? <img src={u.profile_image_url} alt={u.display_name} className="w-5 h-5 rounded-full object-cover" /> : <div className="w-5 h-5 rounded-full bg-indigo-200 flex items-center justify-center text-xs font-bold text-indigo-700">{u.display_name.charAt(0).toUpperCase()}</div>}
+                          <span className="text-xs font-medium text-gray-700">{u.display_name}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Read the Notes ({weekBreakdown.noteReaders.length})</p>
+                    <div className="flex flex-wrap gap-2">
+                      {weekBreakdown.noteReaders.map((u) => (
+                        <Link key={`notes-${u.user_id}`} href={`/profile/${u.user_id}`} className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-full px-2.5 py-1 hover:bg-indigo-50 hover:border-indigo-200 transition">
+                          {u.profile_image_url ? <img src={u.profile_image_url} alt={u.display_name} className="w-5 h-5 rounded-full object-cover" /> : <div className="w-5 h-5 rounded-full bg-amber-200 flex items-center justify-center text-xs font-bold text-amber-700">{u.display_name.charAt(0).toUpperCase()}</div>}
+                          <span className="text-xs font-medium text-gray-700">{u.display_name}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Took the Quiz ({weekBreakdown.triviaScores.length})</p>
+                    <div className="flex flex-wrap gap-2">
+                      {weekBreakdown.triviaScores.map((u) => (
+                        <Link key={`trivia-${u.user_id}`} href={`/profile/${u.user_id}`} className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-full px-2.5 py-1 hover:bg-indigo-50 hover:border-indigo-200 transition">
+                          {u.profile_image_url ? <img src={u.profile_image_url} alt={u.display_name} className="w-5 h-5 rounded-full object-cover" /> : <div className="w-5 h-5 rounded-full bg-purple-200 flex items-center justify-center text-xs font-bold text-purple-700">{u.display_name.charAt(0).toUpperCase()}</div>}
+                          <span className="text-xs font-medium text-gray-700">{u.display_name}</span>
+                          <span className="text-xs font-bold text-green-600 ml-0.5">{u.score}/{u.total}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Posted a Reflection ({weekBreakdown.reflectors.length})</p>
+                    <div className="flex flex-wrap gap-2">
+                      {weekBreakdown.reflectors.map((u) => (
+                        <Link key={`reflect-${u.user_id}`} href={`/profile/${u.user_id}`} className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-full px-2.5 py-1 hover:bg-indigo-50 hover:border-indigo-200 transition">
+                          {u.profile_image_url ? <img src={u.profile_image_url} alt={u.display_name} className="w-5 h-5 rounded-full object-cover" /> : <div className="w-5 h-5 rounded-full bg-green-200 flex items-center justify-center text-xs font-bold text-green-700">{u.display_name.charAt(0).toUpperCase()}</div>}
+                          <span className="text-xs font-medium text-gray-700">{u.display_name}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="border-t border-gray-100 pt-4">
+                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">
+                      Started But Still Missing Parts ({startersNeedingFollowUp.length})
+                    </p>
+                    {startersNeedingFollowUp.length === 0 ? (
+                      <p className="text-xs text-gray-400">Everyone who started has finished all required parts.</p>
+                    ) : (
+                      <div className="space-y-2">
+                        {startersNeedingFollowUp.map((starter) => {
+                          const missingSections = getMissingSections(starter);
+                          const dmAlreadySent = nudgedUserIds.has(starter.user_id);
+                          return (
+                            <div key={`nudge-${starter.user_id}`} className="rounded-2xl border border-gray-200 bg-gray-50 px-3 py-3">
+                              <div className="flex items-center justify-between gap-3">
+                                <Link href={`/profile/${starter.user_id}`} className="flex items-center gap-2 min-w-0 hover:opacity-90 transition">
+                                  {starter.profile_image_url ? (
+                                    <img src={starter.profile_image_url} alt={starter.display_name} className="w-8 h-8 rounded-full object-cover flex-shrink-0" />
+                                  ) : (
+                                    <div className="w-8 h-8 rounded-full bg-rose-200 flex items-center justify-center text-xs font-bold text-rose-700 flex-shrink-0">
+                                      {starter.display_name.charAt(0).toUpperCase()}
+                                    </div>
+                                  )}
+                                  <div className="min-w-0">
+                                    <p className="text-xs font-semibold text-gray-900 truncate">{starter.display_name}</p>
+                                    <p className="text-[11px] text-gray-500 truncate">
+                                      Still needs: {missingSections.join(", ")}
+                                    </p>
+                                  </div>
+                                </Link>
+                                <button
+                                  type="button"
+                                  onClick={() => void handleSendCompletionNudge(starter)}
+                                  disabled={nudgeSendingUserId === starter.user_id || dmAlreadySent}
+                                  className="px-3 py-1.5 rounded-full bg-[#4a9b6f] text-white text-[11px] font-bold hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed flex-shrink-0"
+                                >
+                                  {nudgeSendingUserId === starter.user_id ? "Sending..." : dmAlreadySent ? "DM Sent" : "Send DM"}
+                                </button>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Sections */}
@@ -2464,7 +2761,7 @@ export default function WeekLessonPage({
           {(triviaDone || savedTriviaScore !== null) && seriesId && (
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
               <div className="px-5 py-3 bg-gray-50 border-b border-gray-100">
-                <p className="text-sm font-bold text-gray-800">🏆 Trivia Leaderboard — Week {weekNum}</p>
+                <p className="text-sm font-bold text-gray-800">🏆 Trivia Leaderboard — {weekDisplayLabel}</p>
               </div>
               <div className="px-5 py-4">
                 <LeaderboardView seriesId={seriesId} weekNumber={weekNum} userId={userId!} />
@@ -2506,7 +2803,7 @@ export default function WeekLessonPage({
       {/* Completion Modal */}
       {showCompletionModal && (
         <CompletionModal
-          weekNumber={weekNum}
+          label={weekDisplayLabel}
           groupId={groupId}
           onClose={() => setShowCompletionModal(false)}
         />
@@ -2529,7 +2826,7 @@ export default function WeekLessonPage({
               ×
             </button>
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Week Finishers</p>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Week {weekNum}</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">{weekDisplayLabel}</h2>
             <p className="text-sm text-gray-500 mb-5">
               {weekFinishers.length} {weekFinishers.length === 1 ? "buddy has" : "buddies have"} completed reading, notes, trivia, and reflection.
             </p>

@@ -34,6 +34,7 @@ import { resolveBibleReference } from "@/lib/bibleTermResolver";
 import { consumeCreditAction } from "@/lib/creditClient";
 import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
 import { isSeriesWeekNotesActionEvent, parseSeriesWeekNotesWeekNumber } from "@/lib/seriesWeekNotesTracking";
+import { hasLazySeriesNotes } from "@/lib/seriesNotes";
 import {
   extractMentionedItemsFromText,
   linkMentionItemsInHtml,
@@ -270,8 +271,20 @@ interface TriviaScore extends AnalyticsUser {
 interface WeekAnalytics {
   starters: number;
   readers: AnalyticsUser[];
+  noteReaders: AnalyticsUser[];
   triviaScores: TriviaScore[];
   reflectors: AnalyticsUser[];
+}
+
+function isJosephSeriesTitle(title: string | null | undefined) {
+  return (title || "").trim().toLowerCase() === "the testing of joseph";
+}
+
+function getSeriesWeekDisplayLabel(seriesTitle: string | null | undefined, weekNum: number, readingReference?: string | null) {
+  if (isJosephSeriesTitle(seriesTitle)) {
+    return readingReference?.trim() || `Genesis ${36 + weekNum}`;
+  }
+  return `Week ${weekNum}`;
 }
 
 function getWeekUnlockDate(startDate: string, weekNum: number): string {
@@ -3887,7 +3900,7 @@ export default function GroupChatPage() {
   async function loadSeriesAnalytics(seriesId: string, seriesTitle?: string) {
     setLoadingAnalytics(true);
 
-    const [progressRes, triviaRes, reflectionsRes] = await Promise.all([
+    const [progressRes, triviaRes, reflectionsRes, notesActionsRes] = await Promise.all([
       supabase
         .from("series_week_progress")
         .select("user_id, week_number, reading_completed, notes_completed, trivia_completed, reflection_posted")
@@ -3900,17 +3913,23 @@ export default function GroupChatPage() {
         .from("series_reflections")
         .select("user_id, week_number, display_name, profile_image_url")
         .eq("series_id", seriesId),
+      supabase
+        .from("master_actions")
+        .select("user_id, action_type, action_label")
+        .in("action_type", [ACTION_TYPE.series_week_notes_opened, ACTION_TYPE.study_group_article_opened]),
     ]);
 
     const progressRows = progressRes.data || [];
     const triviaRows = triviaRes.data || [];
     const reflectionRows = reflectionsRes.data || [];
+    const notesActionRows = notesActionsRes.data || [];
 
     const allUserIds = [
       ...new Set([
         ...progressRows.map((r) => r.user_id),
         ...triviaRows.map((r) => r.user_id),
         ...reflectionRows.map((r) => r.user_id),
+        ...notesActionRows.map((r) => r.user_id),
       ].filter(Boolean)),
     ];
 
@@ -3937,9 +3956,21 @@ export default function GroupChatPage() {
     const totalWeeks = getSeriesTotalWeeks(seriesTitle);
     for (let wn = 1; wn <= totalWeeks; wn++) {
       const weekProgress = progressRows.filter((r) => r.week_number === wn);
+      const noteReadersMap = new Map<string, AnalyticsUser>();
+      weekProgress
+        .filter((r) => r.notes_completed)
+        .forEach((r) => noteReadersMap.set(r.user_id, resolveUser(r.user_id)));
+      notesActionRows.forEach((row) => {
+        if (!row.user_id || !isSeriesWeekNotesActionEvent(row.action_type, row.action_label)) return;
+        const actionWeekNumber = parseSeriesWeekNotesWeekNumber(row.action_label, seriesTitle);
+        if (actionWeekNumber !== wn) return;
+        noteReadersMap.set(row.user_id, resolveUser(row.user_id));
+      });
+
       analyticsMap.set(wn, {
         starters: weekProgress.length,
         readers: weekProgress.filter((r) => r.reading_completed).map((r) => resolveUser(r.user_id)),
+        noteReaders: Array.from(noteReadersMap.values()),
         triviaScores: triviaRows.filter((r) => r.week_number === wn).map((r) => ({ ...resolveUser(r.user_id), score: r.score, total: r.total_questions })),
         reflectors: reflectionRows.filter((r) => r.week_number === wn).map((r) => resolveUser(r.user_id, r.display_name, r.profile_image_url)),
       });
@@ -5502,128 +5533,6 @@ export default function GroupChatPage() {
                 </div>
               )}
 
-              {/* Series Analytics (leader only) */}
-              {isLeader && selectedSeries.is_current && (
-                <div>
-                  <button
-                    type="button"
-                    onClick={async () => {
-                      const next = !showAnalytics;
-                      setShowAnalytics(next);
-                      if (next && !analyticsLoaded) await loadSeriesAnalytics(selectedSeries.id, selectedSeries.title);
-                    }}
-                    className="w-full rounded-2xl border border-indigo-200 bg-indigo-50 px-4 py-3 text-left transition hover:bg-indigo-100"
-                  >
-                    <div className="flex items-center justify-between gap-3">
-                      <div>
-                        <p className="text-xs font-bold uppercase tracking-wide text-indigo-700">Series Analytics</p>
-                        <p className="text-sm text-indigo-900 mt-0.5">See who&apos;s engaging with each week.</p>
-                      </div>
-                      <span className="text-indigo-700 text-lg font-bold">{showAnalytics ? "−" : "+"}</span>
-                    </div>
-                  </button>
-
-                  {showAnalytics && (
-                    <div className="mt-3 space-y-3">
-                      {analyticsPopupUser && (
-                        <div
-                          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
-                          onClick={() => setAnalyticsPopupUser(null)}
-                        >
-                          <div
-                            className="bg-white rounded-2xl shadow-xl p-6 max-w-xs w-full text-center"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            {analyticsPopupUser.avatar_url ? (
-                              <img src={analyticsPopupUser.avatar_url} alt={analyticsPopupUser.username} className="w-20 h-20 rounded-full object-cover mx-auto mb-3 border-2 border-gray-200" />
-                            ) : (
-                              <div className="w-20 h-20 rounded-full bg-indigo-100 flex items-center justify-center mx-auto mb-3 text-2xl font-bold text-indigo-600">
-                                {analyticsPopupUser.username.charAt(0).toUpperCase()}
-                              </div>
-                            )}
-                            <p className="text-lg font-bold text-gray-900">{analyticsPopupUser.username}</p>
-                            <button onClick={() => setAnalyticsPopupUser(null)} className="mt-4 text-sm text-gray-400 hover:text-gray-600 transition">Close</button>
-                          </div>
-                        </div>
-                      )}
-                      {loadingAnalytics ? (
-                        <div className="text-center text-sm text-gray-400 py-6">Loading analytics...</div>
-                      ) : (
-                        Array.from({ length: getSeriesTotalWeeks(selectedSeries.title) }, (_, i) => i + 1).map((wn) => {
-                          const lesson = getSeriesWeekLesson(wn, selectedSeries.title);
-                          const data = weekAnalytics.get(wn);
-                          if (!data) return null;
-                          const hasAny = data.starters > 0;
-                          return (
-                            <div key={wn} className="border border-indigo-100 rounded-xl bg-white overflow-hidden">
-                              <div className="bg-indigo-50 px-4 py-3 flex items-center justify-between">
-                                <div>
-                                  <p className="text-xs font-bold text-indigo-700 uppercase tracking-wide">Week {wn}</p>
-                                  {lesson && <p className="text-sm font-semibold text-gray-800 mt-0.5">{lesson.title}</p>}
-                                </div>
-                                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-700">{data.starters} started</span>
-                              </div>
-                              {!hasAny ? (
-                                <p className="text-xs text-gray-400 px-4 py-3">No activity yet.</p>
-                              ) : (
-                                <div className="px-4 py-3 space-y-4">
-                                  <div>
-                                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Read the Reading ({data.readers.length})</p>
-                                    {data.readers.length === 0 ? <p className="text-xs text-gray-400">No one yet.</p> : (
-                                      <div className="flex flex-wrap gap-2">
-                                        {data.readers.map((u) => (
-                                          <button key={u.user_id} onClick={() => setAnalyticsPopupUser(u)} className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-full px-2.5 py-1 hover:bg-indigo-50 hover:border-indigo-200 transition">
-                                            {u.avatar_url ? <img src={u.avatar_url} alt={u.username} className="w-5 h-5 rounded-full object-cover" /> : <div className="w-5 h-5 rounded-full bg-indigo-200 flex items-center justify-center text-xs font-bold text-indigo-700">{u.username.charAt(0).toUpperCase()}</div>}
-                                            <span className="text-xs font-medium text-gray-700">{u.username}</span>
-                                          </button>
-                                        ))}
-                                      </div>
-                                    )}
-                                  </div>
-                                  <div>
-                                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Took the Quiz ({data.triviaScores.length})</p>
-                                    {data.triviaScores.length === 0 ? <p className="text-xs text-gray-400">No one yet.</p> : (
-                                      <div className="flex flex-wrap gap-2">
-                                        {data.triviaScores.map((u) => (
-                                          <button key={u.user_id} onClick={() => setAnalyticsPopupUser(u)} className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-full px-2.5 py-1 hover:bg-indigo-50 hover:border-indigo-200 transition">
-                                            {u.avatar_url ? <img src={u.avatar_url} alt={u.username} className="w-5 h-5 rounded-full object-cover" /> : <div className="w-5 h-5 rounded-full bg-purple-200 flex items-center justify-center text-xs font-bold text-purple-700">{u.username.charAt(0).toUpperCase()}</div>}
-                                            <span className="text-xs font-medium text-gray-700">{u.username}</span>
-                                            <span className="text-xs font-bold text-green-600 ml-0.5">{u.score}/{u.total}</span>
-                                          </button>
-                                        ))}
-                                      </div>
-                                    )}
-                                  </div>
-                                  <div>
-                                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Posted a Reflection ({data.reflectors.length})</p>
-                                    {data.reflectors.length === 0 ? <p className="text-xs text-gray-400">No one yet.</p> : (
-                                      <div className="flex flex-wrap gap-2">
-                                        {data.reflectors.map((u) => (
-                                          <button key={u.user_id} onClick={() => setAnalyticsPopupUser(u)} className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-full px-2.5 py-1 hover:bg-indigo-50 hover:border-indigo-200 transition">
-                                            {u.avatar_url ? <img src={u.avatar_url} alt={u.username} className="w-5 h-5 rounded-full object-cover" /> : <div className="w-5 h-5 rounded-full bg-green-200 flex items-center justify-center text-xs font-bold text-green-700">{u.username.charAt(0).toUpperCase()}</div>}
-                                            <span className="text-xs font-medium text-gray-700">{u.username}</span>
-                                          </button>
-                                        ))}
-                                      </div>
-                                    )}
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-                          );
-                        })
-                      )}
-                      <button
-                        onClick={() => { setAnalyticsLoaded(false); void loadSeriesAnalytics(selectedSeries.id, selectedSeries.title); }}
-                        className="text-xs text-indigo-600 hover:text-indigo-800 transition font-semibold"
-                      >
-                        ↻ Refresh
-                      </button>
-                    </div>
-                  )}
-                </div>
-              )}
-
               {(selectedSeries.is_current || isLeader || (userIsPaid && !selectedSeries.id.startsWith("preview-"))) && (() => {
                 const sd = seriesStartDate;
                 const isPreviewSeries = selectedSeries.id.startsWith("preview-");
@@ -5636,6 +5545,7 @@ export default function GroupChatPage() {
                       const prog = seriesWeekProgress[wn] ?? toSeriesWeekProgressState();
                       const done = countCompletedSeriesWeekSections(prog);
                       const complete = isSeriesWeekComplete(prog);
+                      const weekLabel = getSeriesWeekDisplayLabel(selectedSeries.title, wn, lesson?.readingReference);
                       const previousWeek = seriesWeekProgress[wn - 1] ?? toSeriesWeekProgressState();
                       const previousWeekComplete = wn === 1 ? true : isSeriesWeekComplete(previousWeek);
                       const lockState = getWeekLockState(sd, wn, isLeader, previousWeekComplete);
@@ -5650,9 +5560,8 @@ export default function GroupChatPage() {
                           <div className={`px-4 py-3 ${complete ? "bg-green-50" : ""}`}>
                             <div className="flex items-center justify-between gap-3">
                               <div className="flex-1 min-w-0">
-                                <p className="text-xs text-gray-400 font-medium">Week {wn}</p>
+                                <p className="text-xs text-gray-400 font-medium">{weekLabel}</p>
                                 <p className="text-sm font-semibold text-gray-900 mt-0.5">{lesson ? lesson.title : "Coming Soon"}</p>
-                                {lesson && <p className="text-xs text-gray-400 mt-0.5">{lesson.readingReference}</p>}
                               </div>
                               {complete ? (
                                 <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-green-100 text-green-700 flex-shrink-0">✓ Done</span>
@@ -5688,7 +5597,7 @@ export default function GroupChatPage() {
                               >
                                 {wn === 1 && sd
                                   ? `Starting Soon · ${formatCountdown(getWeekUnlockTimestamp(sd, 1), nowTs)}`
-                                  : `🔒 Week ${wn} Locked`}
+                                  : `🔒 ${weekLabel} Locked`}
                               </button>
                             )}
                           </div>

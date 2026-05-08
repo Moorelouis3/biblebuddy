@@ -23,7 +23,7 @@ import { triggerPoints } from "./PointsPop";
 
 type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled";
 
-type TaskState = {
+export type TaskState = {
   kind: TaskKind;
   title: string;
   pointsLabel: string;

@@ -44,6 +44,9 @@ const tools = [
   },
 ];
 
+const hiddenToolTitles = new Set(["Bible Studies", "Bible Reading Plans"]);
+const visibleTools = tools.filter((tool) => !hiddenToolTitles.has(tool.title));
+
 export default function GuidedStudiesPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
@@ -87,7 +90,7 @@ export default function GuidedStudiesPage() {
       </div>
 
       <div className="flex flex-col gap-4">
-        {tools.map((t) => (
+        {visibleTools.map((t) => (
           <Link
             key={`${t.href}:${t.title}`}
             href={t.href}

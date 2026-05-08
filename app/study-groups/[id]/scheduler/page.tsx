@@ -853,6 +853,29 @@ export default function StudyGroupSchedulerPage() {
   const selectedRecurringOverride = selectedRecurringItem
     ? recurringOverridesByScheduleId[selectedRecurringItem.scheduleId] || null
     : null;
+  const mixedFeedItems = useMemo(() => {
+    const recurring = recurringFeedItems.map((item) => ({
+      kind: "recurring" as const,
+      id: item.scheduleId,
+      releaseIso: item.releaseIso,
+      recurringItem: item,
+      queueItem: null as QueueItem | null,
+    }));
+
+    const custom = carouselQueue
+      .filter((item) => item.status === "scheduled" && item.scheduled_for)
+      .map((item) => ({
+        kind: "custom" as const,
+        id: item.id,
+        releaseIso: item.scheduled_for as string,
+        recurringItem: null as RecurringPreviewItem | null,
+        queueItem: item,
+      }));
+
+    return [...recurring, ...custom].sort(
+      (a, b) => new Date(a.releaseIso).getTime() - new Date(b.releaseIso).getTime(),
+    );
+  }, [carouselQueue, recurringFeedItems]);
   const schedulerCalendarDays = useMemo(() => {
     return Array.from({ length: 14 }, (_, offset) => {
       const date = getBerlinDateWithOffset(offset);
@@ -2170,7 +2193,9 @@ RULES:
           </div>
         </button>
 
-        <div className="flex flex-col gap-3">
+        {false && (
+          <>
+          <div className="flex flex-col gap-3">
           {(recurringExpanded ? recurringFeedItems : recurringFeedItems.slice(0, 2)).map((item) => (
             <div
               key={item.key}
@@ -2339,12 +2364,14 @@ RULES:
             </div>
           </div>
         </div>
+          </>
+        )}
 
         {queueLoading ? (
           <div className="rounded-3xl border border-gray-200 bg-white px-6 py-12 text-center text-sm text-gray-500 shadow-sm">
             Loading your post queue...
           </div>
-        ) : schedulerFeed.length === 0 ? (
+        ) : mixedFeedItems.length === 0 ? (
           <div className="rounded-3xl border border-dashed border-gray-200 bg-white px-6 py-12 text-center shadow-sm">
             <div className="mx-auto flex w-fit rounded-full bg-[#f7f2ff] p-2 shadow-sm">
               <LouisAvatar mood="think" size={54} />
@@ -2356,11 +2383,89 @@ RULES:
           </div>
         ) : (
           <div className="flex flex-col gap-3">
-            {schedulerFeed.map((item) => {
+            {mixedFeedItems.map((feedItem) => {
+              if (feedItem.kind === "recurring" && feedItem.recurringItem) {
+                const item = feedItem.recurringItem;
+                return (
+                  <div
+                    key={feedItem.id}
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setSelectedRecurringItemKey(item.scheduleId)}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        setSelectedRecurringItemKey(item.scheduleId);
+                      }
+                    }}
+                    className="w-full text-left transition cursor-pointer bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md"
+                  >
+                    <div className="flex items-start gap-3">
+                      {profileImageUrl ? (
+                        <img src={profileImageUrl} alt={displayName} className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
+                      ) : (
+                        <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style={{ backgroundColor: avatarColor(adminUserId || displayName) }}>
+                          {getInitial(displayName)}
+                        </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <p className="font-semibold text-gray-900 text-sm">{displayName}</p>
+                          <span
+                            className="rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white"
+                            style={{ backgroundColor: item.isPublished ? "#94a3b8" : item.accent }}
+                          >
+                            {item.isPublished ? "Posted" : "Scheduled"}
+                          </span>
+                          <span className="text-xs text-gray-400">
+                            {new Date(item.releaseIso).toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" })}
+                          </span>
+                          {!item.isPublished && (
+                            <span className="text-xs font-semibold" style={{ color: item.accent }}>
+                              {formatCountdown(item.releaseIso, schedulerNow)}
+                            </span>
+                          )}
+                          {item.isPublished ? (
+                            <button
+                              type="button"
+                              onClick={(event) => {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                handleDismissRecurringItem(item.scheduleId);
+                              }}
+                              className="ml-auto rounded-full border border-gray-200 bg-white px-3 py-1 text-[11px] font-semibold text-gray-600 transition hover:bg-gray-50"
+                            >
+                              Delete
+                            </button>
+                          ) : null}
+                        </div>
+                        <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.14em]" style={{ color: item.accent }}>
+                          {item.label}
+                        </p>
+                        <p className="mt-1 text-lg font-bold text-gray-900 leading-snug">{item.title}</p>
+                        <p className="text-sm text-gray-700 mt-3 leading-relaxed whitespace-pre-line line-clamp-2">
+                          {getPostPreviewText(item.contentHtml || item.description || "")}
+                        </p>
+                        {item.pollOptions && item.pollOptions.length > 0 && (
+                          <div className="mt-3 flex flex-col gap-1.5">
+                            {item.pollOptions.map((option, idx) => (
+                              <div key={idx} className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-700">
+                                {option}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              const item = feedItem.queueItem!;
               const hasImagePost = Boolean(item.cover_image_url && !isUploadedVideo(item.cover_image_url));
               return (
                 <div
-                  key={item.id}
+                  key={feedItem.id}
                   role="button"
                   tabIndex={0}
                   onClick={() => setSelectedQueueItemId(item.id)}
@@ -2387,11 +2492,9 @@ RULES:
                           {queueStatusLabel(item)}
                         </span>
                         <span className="text-xs text-gray-400">
-                          {item.status === "published" && item.published_at
-                            ? `Posted ${timeAgo(item.published_at)}`
-                            : item.status === "scheduled" && item.scheduled_for
-                              ? `Posts ${formatQueueDateTime(item.scheduled_for)}`
-                              : timeAgo(item.created_at)}
+                          {item.status === "scheduled" && item.scheduled_for
+                            ? `Posts ${formatQueueDateTime(item.scheduled_for)}`
+                            : timeAgo(item.created_at)}
                         </span>
                       </div>
                     </div>
@@ -2428,6 +2531,7 @@ RULES:
             })}
           </div>
         )}
+
       </div>
 
       {showPostComposerModal && (

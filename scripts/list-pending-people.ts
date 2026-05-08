@@ -5,7 +5,7 @@ loadEnv({ path: ".env.local", override: true });
 
 import { createClient } from "@supabase/supabase-js";
 import { BIBLE_PEOPLE_LIST } from "../lib/biblePeopleList";
-import { extractCompactPopupMeaning, isLegacyPopupNotes } from "../lib/biblePopupContent";
+import { isLegacyPopupNotes } from "../lib/biblePopupContent";
 
 function parseArg(name: string): string | null {
   const index = process.argv.indexOf(name);
@@ -86,8 +86,7 @@ async function main() {
     if (!existing?.trim()) {
       pending.push({ term: name, reason: "missing" });
     } else {
-      const compact = extractCompactPopupMeaning("people", existing);
-      if (isLegacyPopupNotes("people", compact)) {
+      if (isLegacyPopupNotes("people", existing)) {
         pending.push({ term: name, reason: "legacy" });
       }
     }
