@@ -32,10 +32,10 @@ export default function UpdatesPage() {
         <h2 className="text-xl font-semibold mt-10 mb-3">Version 3.0 - March 2026</h2>
         <p className="text-gray-600 italic mb-4">New devotional: The Testing of Joseph</p>
         <p className="text-gray-700 leading-relaxed mb-4">
-          Bible Buddy's second devotional series is now a 16-day chapter journey through Joseph's story in Genesis.
+          Bible Buddy's second devotional series is now a 14-day chapter journey through Joseph's story in Genesis.
         </p>
         <ul className="list-disc ml-6 space-y-2 text-gray-700 leading-relaxed mb-4">
-          <li>The Testing of Joseph - 16 chapter-based days covering Genesis 29-50</li>
+          <li>The Testing of Joseph - 14 chapter-based days covering Genesis 37-50</li>
           <li>Daily devotional text, full chapter reading, notes, games, and reflection alignment</li>
           <li>Explores themes of favor, betrayal, faithfulness, and redemption</li>
           <li>Progress tracked day-by-day alongside The Tempting of Jesus</li>

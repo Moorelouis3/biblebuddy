@@ -6,23 +6,21 @@
 -- Use this script instead:
 --   npx tsx scripts/restructure-testing-of-joseph-chapter-journey.ts
 --
--- That script updates The Testing of Joseph into a 16-day chapter-based journey:
---   Day 1  Genesis 29
---   Day 2  Genesis 30
---   Day 3  Genesis 31
---   Day 4  Genesis 32
---   Day 5  Genesis 35
---   Day 6  Genesis 37
---   Day 7  Genesis 38
---   Day 8  Genesis 39
---   Day 9  Genesis 40
---   Day 10 Genesis 41
---   Day 11 Genesis 42
---   Day 12 Genesis 43
---   Day 13 Genesis 44
---   Day 14 Genesis 45
---   Day 15 Genesis 46
---   Day 16 Genesis 50
+-- That script updates The Testing of Joseph into a 14-day chapter-based journey:
+--   Day 1  Genesis 37
+--   Day 2  Genesis 38
+--   Day 3  Genesis 39
+--   Day 4  Genesis 40
+--   Day 5  Genesis 41
+--   Day 6  Genesis 42
+--   Day 7  Genesis 43
+--   Day 8  Genesis 44
+--   Day 9  Genesis 45
+--   Day 10 Genesis 46
+--   Day 11 Genesis 47
+--   Day 12 Genesis 48
+--   Day 13 Genesis 49
+--   Day 14 Genesis 50
 --
 -- This file intentionally performs no database writes.
 SELECT 'Use scripts/restructure-testing-of-joseph-chapter-journey.ts for the current chapter-based Joseph devotional.' AS notice;
