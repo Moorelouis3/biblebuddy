@@ -151,21 +151,21 @@ const louisProgressOpeners: Record<number, string[]> = {
   0: [
     "Let's start today with a steady first step.",
     "This is a good place to begin today's Bible rhythm.",
-    "Start here and let the rest of the journey build from this.",
+    "Start here and let the rest of the Bible study build from this.",
     "Let's open the day by slowing down with the devotional.",
     "First step for today: get your heart settled in the story.",
     "Let's begin clean and simple with today's devotional.",
     "This first task sets the tone for the whole Bible study flow.",
     "Start with the devotional and let the chapter come into focus.",
-    "Let's ease into the Word with the first part of today's journey.",
+    "Let's ease into the Word with the first part of today's Bible study.",
     "A good day of study starts with one honest beginning.",
-    "Let's get today's chapter journey moving with the devotional.",
+    "Let's get today's Bible study moving with the devotional.",
     "Start here, take your time, and let the story breathe a little.",
     "The first task is ready, and this is where momentum starts.",
     "Let's begin with the devotional before we move into the chapter.",
     "Today's Bible study starts with preparing your heart.",
     "Open with the devotional and let it frame the rest of the tasks.",
-    "Let's make the first move and start today's journey well.",
+    "Let's make the first move and start today's Bible study well.",
     "Begin here, then we will keep walking through the chapter together.",
     "This is the doorway into today's Bible study flow.",
     "Let's start with the devotional and build from there.",
@@ -222,7 +222,7 @@ const louisProgressOpeners: Record<number, string[]> = {
     "This is the fun review step.",
     "You're three tasks in, and now it is time to lock it in.",
     "Nice work. A few questions will help the chapter stick.",
-    "You're close to finishing today's journey.",
+    "You're close to finishing today's Bible study.",
     "The reading and notes are done. Now let's practice recall.",
     "Good job staying with the flow.",
     "You're almost there. Let's turn study into memory.",
@@ -241,7 +241,7 @@ const louisProgressOpeners: Record<number, string[]> = {
     "Final step for today.",
     "You're right at the finish line.",
     "Almost done. Let's finish strong.",
-    "Last task, and today's Bible journey is complete.",
+    "Last task, and today's Bible study is complete.",
     "You're one step away from finishing all five.",
     "Great work. Let's close the loop.",
     "This is the final piece for today's chapter.",
@@ -251,7 +251,7 @@ const louisProgressOpeners: Record<number, string[]> = {
     "Let's land the plane with the final task.",
     "Last move. Keep the momentum for a few more minutes.",
     "You have one task left, and this is the fun one.",
-    "Almost there. Let's wrap today's chapter journey.",
+    "Almost there. Let's wrap today's chapter study.",
     "The hard part is behind you. One final step remains.",
     "You're nearly done. Let's finish with Scrambled.",
     "One more task, then the full daily flow is complete.",
@@ -365,7 +365,7 @@ function buildTaskFocusLine(task: TaskState | null, remainingTasks: number) {
     return `You have the reading and notes down. Play trivia for ${chapterLabel} and see what you remember.`;
   }
 
-  return `One more task to go. Play Scrambled for ${chapterLabel} and complete this chapter journey.`;
+  return `One more task to go. Play Scrambled for ${chapterLabel} and complete this chapter study.`;
 }
 
 function getShortTaskName(task: TaskState | null) {
@@ -392,7 +392,7 @@ function buildDailyStudySummaryLine({
   nextTask: TaskState | null;
 }) {
   if (allDone) {
-    return `Chapter journey complete. The next chapter is ready.`;
+    return `Chapter study complete. The next chapter is ready.`;
   }
 
   if (remainingTasks <= 1) {
@@ -400,10 +400,10 @@ function buildDailyStudySummaryLine({
   }
 
   if (completedTasks === 0) {
-    return `Start this chapter journey when you are ready.`;
+    return `Start this chapter study when you are ready.`;
   }
 
-  return `${completedTasks} done. ${remainingTasks} steps left in this chapter journey.`;
+  return `${completedTasks} done. ${remainingTasks} steps left in this chapter study.`;
 }
 
 export default function DashboardJourneyExperience({
@@ -508,14 +508,14 @@ export default function DashboardJourneyExperience({
 
     return {
       streakLine,
-      nextLine: `You are almost done. Finish ${nextTask.title} to complete today’s journey.`,
+      nextLine: `You are almost done. Finish ${nextTask.title} to complete today’s Bible study.`,
     };
   }
 
   function buildLouisNextStepMessage() {
     if (allDone) {
       return {
-        focusLine: "Chapter journey complete. The next chapter is ready when you are.",
+        focusLine: "Chapter study complete. The next chapter is ready when you are.",
       };
     }
 
@@ -1149,7 +1149,7 @@ export default function DashboardJourneyExperience({
           <div className="p-6">
             <div className="mb-6 flex items-start justify-between gap-4">
               <div>
-                <h2 className="text-2xl font-bold text-gray-950">How Bible Journeys Work</h2>
+                <h2 className="text-2xl font-bold text-gray-950">How Bible Study Works</h2>
                 <p className="mt-2 text-sm leading-6 text-gray-600">
                   Bible Buddy is built for steady Bible study, not rushing through a timer.
                 </p>
@@ -1158,7 +1158,7 @@ export default function DashboardJourneyExperience({
                 type="button"
                 onClick={() => setShowJourneyHelp(false)}
                 className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-2xl font-bold text-gray-500 transition hover:bg-gray-100 hover:text-gray-800"
-                aria-label="Close Bible journey help"
+                aria-label="Close Bible study help"
               >
                 ×
               </button>
@@ -1175,10 +1175,10 @@ export default function DashboardJourneyExperience({
                       The Big Idea
                     </p>
                     <h3 className="mt-1 text-xl font-bold text-gray-950">
-                      Your streak and your chapter progress are connected, but they are not the same thing.
+                      Your streak and your Bible study progress are connected, but they are not the same thing.
                     </h3>
                     <p className="mt-2 text-sm leading-6 text-gray-700">
-                      Show up each day to keep your streak alive. Finish the chapter journey when you are ready to move forward.
+                      Show up each day to keep your streak alive. Finish the chapter study when you are ready to move forward.
                     </p>
                   </div>
                 </div>
@@ -1195,7 +1195,7 @@ export default function DashboardJourneyExperience({
               </section>
 
               <section>
-                <h3 className="text-lg font-bold text-gray-950">📖 Your Chapter Journey</h3>
+                <h3 className="text-lg font-bold text-gray-950">📖 Your Chapter Study</h3>
                 <p className="mt-2 leading-7">
                   Your current chapter stays active until the chapter tasks are complete. If Proverbs 1 takes one day, great. If it takes a few days, or even a week, that is okay too.
                 </p>
@@ -1216,7 +1216,7 @@ export default function DashboardJourneyExperience({
                   <div className="rounded-xl border border-gray-200 bg-white p-3">
                     <p className="font-bold text-gray-950">2. ✝️ Read The Chapter</p>
                     <p className="mt-1 text-sm leading-6 text-gray-700">
-                      This is the Scripture itself. Read slowly and let the chapter be the center of the journey.
+                      This is the Scripture itself. Read slowly and let the chapter be the center of the study.
                     </p>
                   </div>
                   <div className="rounded-xl border border-gray-200 bg-white p-3">
@@ -1243,7 +1243,7 @@ export default function DashboardJourneyExperience({
               <section className="rounded-2xl border border-green-200 bg-green-50 p-4">
                 <h3 className="text-lg font-bold text-gray-950">✅ When A Chapter Is Complete</h3>
                 <p className="mt-2 leading-7">
-                  Once the chapter journey is finished, Bible Buddy celebrates the completion and moves you to the next chapter. The goal is simple: keep showing up, keep learning, and keep moving forward at a healthy pace.
+                  Once the chapter study is finished, Bible Buddy celebrates the completion and moves you to the next chapter. The goal is simple: keep showing up, keep learning, and keep moving forward at a healthy pace.
                 </p>
               </section>
             </div>
