@@ -337,6 +337,8 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
       return (
         <>
           <DevotionalDayModal
+            devotionalId={devotional.id}
+            devotionalTitle={devotional.title}
             day={devotionalDay}
             dayProgress={dayProgress}
             showCreditBlocked={false}

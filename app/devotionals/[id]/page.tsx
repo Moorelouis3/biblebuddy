@@ -956,6 +956,8 @@ export default function DevotionalDetailPage() {
       {/* DAY MODAL */}
       {selectedDay && (
         <DevotionalDayModal
+          devotionalId={devotional.id}
+          devotionalTitle={devotional.title}
           day={selectedDay}
           dayProgress={progress.get(selectedDay.day_number)}
           showCreditBlocked={showCreditBlocked}

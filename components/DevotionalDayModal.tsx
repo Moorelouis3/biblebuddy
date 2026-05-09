@@ -11,6 +11,7 @@ import { consumeCreditAction } from "../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
 import CreditLimitModal from "./CreditLimitModal";
 import { LouisAvatar } from "./LouisAvatar";
+import CommentSection from "./comments/CommentSection";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -34,6 +35,8 @@ interface DayProgress {
 }
 
 interface DevotionalDayModalProps {
+  devotionalId?: string | null;
+  devotionalTitle?: string | null;
   day: DevotionalDay;
   dayProgress: DayProgress | undefined;
   showCreditBlocked: boolean;
@@ -132,6 +135,8 @@ function normalizeKeywordMarkdown(markdown: string): string {
 }
 
 export default function DevotionalDayModal({
+  devotionalId,
+  devotionalTitle,
   day,
   dayProgress,
   showCreditBlocked,
@@ -175,6 +180,13 @@ export default function DevotionalDayModal({
     day.bible_reading_book && day.bible_reading_chapter
       ? `${day.bible_reading_book} ${day.bible_reading_chapter}`
       : `Day ${day.day_number}`;
+  const isWisdomOfProverbs =
+    (devotionalTitle || "").toLowerCase().includes("wisdom of proverbs") ||
+    (devotionalId || "").toLowerCase().includes("wisdom-of-proverbs");
+  const chapterDiscussionSlug =
+    day.bible_reading_book && day.bible_reading_chapter
+      ? `bible-chapter-${day.bible_reading_book.toLowerCase().replace(/\s+/g, "-")}-${day.bible_reading_chapter}`
+      : `devotional-${devotionalId || "study"}-day-${day.day_number}`;
 
   // Load user + existing progress so devotional popups share the same completion state as other pages
   useEffect(() => {
@@ -812,7 +824,32 @@ Be accurate to Scripture.`;
               </div>
 
               {/* REFLECTION SECTION */}
-              {day.reflection_question && (
+              {isWisdomOfProverbs ? (
+                <div className="mb-6">
+                  <div className="mx-auto mb-4 max-w-2xl rounded-2xl border border-blue-100 bg-gradient-to-br from-white via-blue-50 to-sky-50 p-5 shadow-sm">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
+                      Chapter Reflection
+                    </p>
+                    <h3 className="mt-2 text-xl font-bold text-gray-900">
+                      Answer this question
+                    </h3>
+                    {day.reflection_question ? (
+                      <p className="mt-3 text-base font-semibold leading-relaxed text-gray-900">
+                        {day.reflection_question}
+                      </p>
+                    ) : null}
+                    <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                      Share your answer below and join the reflection for {primaryDayLabel}.
+                    </p>
+                  </div>
+                  <CommentSection
+                    articleSlug={chapterDiscussionSlug}
+                    headingText={`${primaryDayLabel} Reflection Answers`}
+                    placeholderText={`Answer the reflection question for ${primaryDayLabel}...`}
+                    submitButtonText="Post Reflection"
+                  />
+                </div>
+              ) : day.reflection_question ? (
                 <div className="mb-6">
                   <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3">
                     ✍️ Reflection
@@ -831,7 +868,7 @@ Be accurate to Scripture.`;
                     <p className="text-xs text-gray-500 mt-2">Changes will be saved when you mark the day complete.</p>
                   )}
                 </div>
-              )}
+              ) : null}
             </>
           )}
         </div>
