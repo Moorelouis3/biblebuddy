@@ -6,7 +6,6 @@ import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
-import { ACTION_TYPE } from "../lib/actionTypes";
 import { supabase } from "../lib/supabaseClient";
 import { rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 
@@ -68,14 +67,6 @@ type DevotionalOption = {
   id: string;
   title: string;
   total_days: number | null;
-};
-
-type ResetDevotionalRow = {
-  title: string;
-};
-
-type ResetDevotionalDayRow = {
-  day_number: number;
 };
 
 function getTaskStatusCopy(task: TaskState) {
@@ -634,63 +625,26 @@ export default function DashboardJourneyExperience({
     setDevotionalSettingsMessage(null);
 
     try {
-      const selectedOption = devotionalOptions.find((devotional) => devotional.id === resetDevotionalId);
-      let devotionalTitle = selectedOption?.title || "";
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
 
-      if (!devotionalTitle) {
-        const { data: devotionalData, error: devotionalError } = await supabase
-          .from("devotionals")
-          .select("title")
-          .eq("id", resetDevotionalId)
-          .maybeSingle();
-
-        if (devotionalError) throw devotionalError;
-        devotionalTitle = ((devotionalData as ResetDevotionalRow | null)?.title || "").trim();
+      if (!accessToken) {
+        throw new Error("You need to be signed in to reset a Bible Study.");
       }
 
-      const { data: dayRows, error: daysError } = await supabase
-        .from("devotional_days")
-        .select("day_number")
-        .eq("devotional_id", resetDevotionalId)
-        .order("day_number", { ascending: true });
+      const response = await fetch("/api/devotionals/reset-progress", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({ devotionalId: resetDevotionalId }),
+      });
+      const result = await response.json().catch(() => null);
 
-      if (daysError) throw daysError;
-
-      const dayNumbers = ((dayRows || []) as ResetDevotionalDayRow[])
-        .map((day) => day.day_number)
-        .filter((dayNumber) => Number.isFinite(dayNumber));
-      const devotionalActionTypes = [
-        ACTION_TYPE.devotional_day_opened,
-        ACTION_TYPE.devotional_bible_reading_opened,
-        ACTION_TYPE.devotional_reflection_saved,
-        ACTION_TYPE.devotional_day_completed,
-        ACTION_TYPE.devotional_day_started,
-        ACTION_TYPE.devotional_day_viewed,
-      ];
-
-      const progressDelete = supabase
-        .from("devotional_progress")
-        .delete()
-        .eq("user_id", userId)
-        .eq("devotional_id", resetDevotionalId);
-
-      const actionDeletes =
-        devotionalTitle && dayNumbers.length > 0
-          ? dayNumbers.map((dayNumber) =>
-              supabase
-                .from("master_actions")
-                .delete()
-                .eq("user_id", userId)
-                .in("action_type", devotionalActionTypes)
-                .ilike("action_label", `${devotionalTitle} - Day ${dayNumber}%`),
-            )
-          : [];
-
-      const [{ error }, ...actionResults] = await Promise.all([progressDelete, ...actionDeletes]);
-
-      if (error) throw error;
-      const actionError = actionResults.find((result) => result.error)?.error;
-      if (actionError) throw actionError;
+      if (!response.ok) {
+        throw new Error(result?.error || "Could not reset this Bible Study.");
+      }
 
       if (cycleStartedAt) {
         rememberLouisDailyTaskTarget(userId, cycleStartedAt, {
@@ -700,7 +654,7 @@ export default function DashboardJourneyExperience({
       }
 
       setSelectedDevotionalId(resetDevotionalId);
-      setDevotionalSettingsMessage(`${devotionalTitle || "This Bible Study"} was reset back to the beginning.`);
+      setDevotionalSettingsMessage(`${result?.title || "This Bible Study"} was reset back to the beginning.`);
       onDevotionalChanged();
     } catch (error) {
       console.error("[DASHBOARD] Could not reset devotional:", error);
