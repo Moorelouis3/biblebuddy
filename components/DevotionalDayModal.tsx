@@ -182,7 +182,8 @@ export default function DevotionalDayModal({
       : `Day ${day.day_number}`;
   const isWisdomOfProverbs =
     (devotionalTitle || "").toLowerCase().includes("wisdom of proverbs") ||
-    (devotionalId || "").toLowerCase().includes("wisdom-of-proverbs");
+    (devotionalId || "").toLowerCase().includes("wisdom-of-proverbs") ||
+    (day.bible_reading_book || "").toLowerCase().trim() === "proverbs";
   const chapterDiscussionSlug =
     day.bible_reading_book && day.bible_reading_chapter
       ? `bible-chapter-${day.bible_reading_book.toLowerCase().replace(/\s+/g, "-")}-${day.bible_reading_chapter}`
