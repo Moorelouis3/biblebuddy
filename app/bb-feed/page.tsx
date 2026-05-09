@@ -274,7 +274,7 @@ function rankCommunityFeed(
 }
 
 const ACTIVITY_LABELS: Record<string, (data: Record<string, string | number | null>) => string> = {
-  devotional_day_completed: (d) => `completed Day ${d.day_number} of "${d.title}"`,
+  devotional_day_completed: (d) => `completed Bible Study task ${d.day_number} of "${d.title}"`,
   study_group_joined: (d) => `joined the group "${d.group_name}"`,
   buddy_added: (d) => `became Buddies with ${d.buddy_name || "someone"}`,
   verse_shared: (d) => `shared ${d.verse_ref || "a verse"}`,
@@ -1685,7 +1685,7 @@ function ActivityCard({ activity }: { activity: FeedActivity }) {
 // ── Activity Post Card ────────────────────────────────────────────────────────
 
 const ACTIVITY_TYPE_BADGE: Record<string, string> = {
-  devotional_day_completed: "📖 Devotional",
+  devotional_day_completed: "📖 Bible Study",
   study_group_joined:       "👥 Joined Group",
   buddy_added:              "🤝 New Buddy",
   verse_shared:             "📖 Verse",
@@ -1747,11 +1747,11 @@ function FeedUpgradeCard({ compact = false }: { compact?: boolean }) {
         <div className="min-w-0">
           <p className="text-sm font-semibold text-gray-900">Go deeper with Bible Buddy Pro</p>
           <p className="text-sm text-gray-600 mt-1 leading-relaxed">
-            Unlock unlimited study, open every devotional, and keep going when God is already meeting you here.
+            Unlock unlimited study, open every Bible study, and keep going when God is already meeting you here.
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Unlimited study access</span>
-            <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Full devotional library</span>
+            <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Full Bible study library</span>
             <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">No daily credit wall</span>
           </div>
         </div>

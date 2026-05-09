@@ -83,7 +83,7 @@ export default function DevotionalsPage() {
       userId,
       username,
       actionType: ACTION_TYPE.devotionals_viewed,
-      actionLabel: "Devotionals",
+      actionLabel: "Bible Studies",
       dedupeKey: "devotionals-viewed",
     }).catch((error) => console.error("[NAV] Failed to track devotionals view:", error));
   }, [userId, username]);
@@ -162,7 +162,7 @@ export default function DevotionalsPage() {
           {devotional.title}
         </div>
         <div className="mt-2 text-xs md:text-sm text-gray-600">
-          {devotional.total_days} day devotional
+          {devotional.total_days} chapter Bible study
         </div>
       </div>
     );
@@ -173,8 +173,8 @@ export default function DevotionalsPage() {
     return (
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 py-8">
-          <h1 className="text-3xl font-bold mb-8">Devotionals</h1>
-          <div className="text-gray-500">Loading devotionals...</div>
+          <h1 className="text-3xl font-bold mb-8">Bible Studies</h1>
+          <div className="text-gray-500">Loading Bible studies...</div>
         </div>
       </div>
     );
@@ -183,7 +183,7 @@ export default function DevotionalsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-5xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">Devotionals</h1>
+        <h1 className="text-3xl font-bold mb-8">Bible Studies</h1>
 
         {/* INSTRUCTIONS CALLOUT */}
         <div className="bg-blue-50 border border-blue-200 rounded-xl shadow-sm mb-6">
@@ -193,7 +193,7 @@ export default function DevotionalsPage() {
             onClick={handleToggleInstructions}
             className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-blue-100/50 transition rounded-t-xl"
           >
-            <h2 className="text-lg font-semibold text-gray-900">📖 About Our Devotionals</h2>
+            <h2 className="text-lg font-semibold text-gray-900">📖 About Our Bible Studies</h2>
             <svg
               className={`w-5 h-5 text-gray-600 transition-transform ${isInstructionsExpanded ? '' : 'transform -rotate-90'}`}
               fill="none"
@@ -213,15 +213,15 @@ export default function DevotionalsPage() {
           {isInstructionsExpanded && (
             <div className="px-6 pb-6 border-t border-blue-200/50">
               <div className="pt-4 space-y-4">
-                <h3 className="text-base font-semibold text-gray-900">📖 How to Use These Devotionals</h3>
+                <h3 className="text-base font-semibold text-gray-900">📖 How to Use These Bible Studies</h3>
                 
                 <p className="text-gray-700 leading-relaxed">
-                  Each devotional is meant to be done daily, at a slow and intentional pace.
+                  Each Bible study is meant to be done at a slow and intentional pace.
                 </p>
 
                 <div className="space-y-3">
                   <div>
-                    <p className="font-semibold text-gray-900 mb-1">Step 1: Read the Devotional</p>
+                    <p className="font-semibold text-gray-900 mb-1">Step 1: Read the Bible Study Intro</p>
                     <p className="text-gray-700 leading-relaxed text-sm">
                       Start by reading the daily narrative. This sets the theme and helps you understand what's happening and why it matters.
                     </p>
@@ -247,7 +247,7 @@ export default function DevotionalsPage() {
                 </p>
 
                 <p className="text-gray-700 leading-relaxed text-sm">
-                  If you stay consistent, you won't just finish a devotional — you'll walk away stronger, wiser, and closer to God than when you started.
+                  If you stay consistent, you won't just finish a Bible study — you'll walk away stronger, wiser, and closer to God than when you started.
                 </p>
 
                 {/* FOOTER CONTROLS */}
@@ -277,7 +277,7 @@ export default function DevotionalsPage() {
 
         {devotionals.filter((devotional) => !HIDDEN_DEVOTIONAL_TITLES.has(devotional.title)).length === 0 ? (
           <div className="text-gray-500">
-            No devotionals available yet. Check back soon!
+            No Bible studies available yet. Check back soon!
           </div>
         ) : (
           <div className="grid grid-cols-3 gap-3 md:gap-8">

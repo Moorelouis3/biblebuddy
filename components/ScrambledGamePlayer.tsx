@@ -567,6 +567,50 @@ export default function ScrambledGamePlayer({
   if (showResults) {
     const triviaRouteSlug =
       CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.key === bookSlug)?.routeSlug ?? bookSlug;
+
+    if (onClose) {
+      return (
+        <div className="bg-white px-4 py-6">
+          <div className="relative mx-auto max-w-xl rounded-3xl border border-[#b9daf0] bg-white p-8 text-center shadow-sm">
+            <button
+              type="button"
+              onClick={onClose}
+              className="absolute right-5 top-5 text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950"
+              aria-label="Close Scrambled results"
+            >
+              ×
+            </button>
+
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#4f8fb7]">Scrambled Results</p>
+            <h1 className="mt-3 text-3xl font-black text-gray-900">Chapter Complete</h1>
+            <p className="mt-3 text-sm font-semibold text-gray-700">{bookName} {chapter.chapter}</p>
+            <p className="mt-3 text-sm leading-7 text-gray-600">
+              You finished all {chapter.questions.length} scrambled prompts from this chapter.
+            </p>
+
+            <div className="mt-6 rounded-3xl border border-[#b9daf0] bg-white px-6 py-5">
+              <p className="text-sm font-black uppercase tracking-[0.16em] text-[#4f8fb7]">Words Correct</p>
+              <p className="mt-2 text-5xl font-black text-[#4f8fb7]">{scoredSolveCount} / {chapter.questions.length}</p>
+              <p className="mt-3 text-sm text-gray-700">{encouragement}</p>
+              {earnedSolveCount > 0 ? (
+                <p className="mt-3 text-sm font-semibold text-emerald-700">
+                  You earned +{earnedSolveCount} points for new solved words.
+                </p>
+              ) : completedSolveCount > scoredSolveCount ? (
+                <p className="mt-3 text-sm text-gray-600">
+                  Hints helped on this round, so those words counted for progress but not for points.
+                </p>
+              ) : (
+                <p className="mt-3 text-sm text-gray-600">
+                  No new points this run (you already earned points for these words before).
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="min-h-screen bg-[#f5f7fb] px-4 py-10">
         <div className="mx-auto max-w-xl rounded-[32px] border border-[#d8e4fb] bg-white p-8 text-center shadow-sm">

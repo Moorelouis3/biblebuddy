@@ -284,11 +284,23 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
 
   if (showResults) {
     const scrambledHref = `/bible-study-games/scrambled/${bookKey}/${chapter.chapter}`;
+    const isEmbedded = Boolean(onClose);
     return (
-      <div className="min-h-screen bg-gray-50 px-4 py-8">
-        <div className="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
-          <h1 className="text-3xl font-bold text-gray-900">Chapter Complete</h1>
-          <p className="mt-3 text-5xl font-bold text-blue-600">
+      <div className={`${isEmbedded ? "bg-white px-4 py-6" : "min-h-screen bg-gray-50 px-4 py-8"}`}>
+        <div className="relative mx-auto max-w-xl rounded-3xl border border-[#b9daf0] bg-white p-8 text-center shadow-sm">
+          {onClose ? (
+            <button
+              type="button"
+              onClick={onClose}
+              className="absolute right-5 top-5 text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950"
+              aria-label="Close trivia results"
+            >
+              ×
+            </button>
+          ) : null}
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-[#4f8fb7]">Trivia Results</p>
+          <h1 className="mt-3 text-3xl font-black text-gray-900">Chapter Complete</h1>
+          <p className="mt-3 text-5xl font-black text-[#4f8fb7]">
             {correctCount}/{questions.length}
           </p>
           <p className="mt-3 text-gray-700">
@@ -306,38 +318,28 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
               No new points this run (you already earned points for these questions before).
             </p>
           )}
-          <div className="mt-8 space-y-3">
-            {!onClose && (
+          {!onClose ? (
+            <div className="mt-8 space-y-3">
               <Link
                 href={scrambledHref}
                 className="block rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700"
               >
                 Play Scrambled
               </Link>
-            )}
-            {onClose ? (
-              <button
-                type="button"
-                onClick={onClose}
-                className="block w-full rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"
-              >
-                Close
-              </button>
-            ) : (
               <Link
                 href={`/bible-trivia/${bookSlug}`}
                 className="block rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"
               >
                 Back to chapters
               </Link>
-            )}
-            <Link
-              href={`/bible-trivia/${bookSlug}/${chapter.chapter}`}
-              className="block rounded-xl border border-gray-200 bg-white px-4 py-3 font-semibold text-gray-700 transition hover:bg-gray-50"
-            >
-              Play trivia again
-            </Link>
-          </div>
+              <Link
+                href={`/bible-trivia/${bookSlug}/${chapter.chapter}`}
+                className="block rounded-xl border border-gray-200 bg-white px-4 py-3 font-semibold text-gray-700 transition hover:bg-gray-50"
+              >
+                Play trivia again
+              </Link>
+            </div>
+          ) : null}
         </div>
       </div>
     );

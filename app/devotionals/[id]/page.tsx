@@ -19,29 +19,29 @@ function getCoverImage(title: string): string | null {
 function getPreviewDescription(title: string, fallback: string): string {
   const descriptions: Record<string, string> = {
     "The Tempting of Jesus":
-      "Jesus walks into the wilderness alone, hungry, and led by the Spirit. What follows is not a small private struggle, but a direct showdown between the Son of God and the voice of temptation. This devotional follows that tension closely, showing how Jesus answered pressure with truth instead of impulse. You will see the enemy's strategy, the power of Scripture, and the strength of obedience when no one else is watching. If you have ever felt tired, tempted, or spiritually stretched, this story will hit close to home.",
+      "Jesus walks into the wilderness alone, hungry, and led by the Spirit. What follows is not a small private struggle, but a direct showdown between the Son of God and the voice of temptation. This Bible study follows that tension closely, showing how Jesus answered pressure with truth instead of impulse. You will see the enemy's strategy, the power of Scripture, and the strength of obedience when no one else is watching. If you have ever felt tired, tempted, or spiritually stretched, this story will hit close to home.",
     "The Testing of Joseph":
-      "Joseph's life turns from favored son to betrayed brother, from slave to prisoner, and from forgotten man to ruler in Egypt. Every chapter feels like another sharp turn in a story that should have broken him. This devotional lets you walk through the loneliness, injustice, waiting, and unexpected mercy that shaped Joseph's life. It is about dreams that seem delayed, suffering that makes no sense, and the quiet faithfulness that God still uses. If you have ever wondered what God is doing in a long painful season, Joseph's story speaks right into that question.",
+      "Joseph's life turns from favored son to betrayed brother, from slave to prisoner, and from forgotten man to ruler in Egypt. Every chapter feels like another sharp turn in a story that should have broken him. This Bible study lets you walk through the loneliness, injustice, waiting, and unexpected mercy that shaped Joseph's life. It is about dreams that seem delayed, suffering that makes no sense, and the quiet faithfulness that God still uses. If you have ever wondered what God is doing in a long painful season, Joseph's story speaks right into that question.",
     "The Disciples of Jesus":
-      "These men were not polished heroes when Jesus called them. They were ordinary, rough, unsure, and often slower to understand than they should have been. This devotional follows their lives as Jesus teaches, corrects, stretches, and changes them from the inside out. You will watch fear turn into faith, confusion turn into conviction, and ordinary people become the foundation of a movement that changed the world. It is a story about calling, failure, growth, and what happens when people stay close to Jesus long enough to be transformed.",
+      "These men were not polished heroes when Jesus called them. They were ordinary, rough, unsure, and often slower to understand than they should have been. This Bible study follows their lives as Jesus teaches, corrects, stretches, and changes them from the inside out. You will watch fear turn into faith, confusion turn into conviction, and ordinary people become the foundation of a movement that changed the world. It is a story about calling, failure, growth, and what happens when people stay close to Jesus long enough to be transformed.",
     "Women of the Bible":
-      "This devotional follows the lives of women who stood in pain, pressure, courage, grief, wisdom, and faith across the whole Bible story. Some were queens, some were mothers, some were outsiders, and some were nearly forgotten by the people around them. But every one of them reveals something important about how God works through real lives, not perfect ones. Their stories hold heartbreak, bravery, loss, loyalty, and redemption. As you move through each day, you begin to see that these women were never side notes in Scripture. They carried moments that shaped the story of God's people in lasting ways.",
+      "This Bible study follows the lives of women who stood in pain, pressure, courage, grief, wisdom, and faith across the whole Bible story. Some were queens, some were mothers, some were outsiders, and some were nearly forgotten by the people around them. But every one of them reveals something important about how God works through real lives, not perfect ones. Their stories hold heartbreak, bravery, loss, loyalty, and redemption. As you move through each day, you begin to see that these women were never side notes in Scripture. They carried moments that shaped the story of God's people in lasting ways.",
     "The Wisdom of Proverbs":
-      "Proverbs is not just a book of random one-liners. It is a 31-chapter guide for walking through real life with wisdom when emotions, pressure, money, pride, relationships, and temptation all pull at once. This devotional now follows one full chapter per day, so the devotional, Bible reading, notes, trivia, Scrambled, and reflection all stay centered on the same passage. It shows the difference between what looks smart for a moment and what is actually wise before God. If you want clearer thinking, steadier decisions, and a stronger grip on everyday faithfulness, this chapter journey gives you that path.",
+      "Proverbs is not just a book of random one-liners. It is a 31-chapter guide for walking through real life with wisdom when emotions, pressure, money, pride, relationships, and temptation all pull at once. This Bible study now follows one full chapter per day, so the Bible study intro, Bible reading, notes, trivia, Scrambled, and reflection all stay centered on the same passage. It shows the difference between what looks smart for a moment and what is actually wise before God. If you want clearer thinking, steadier decisions, and a stronger grip on everyday faithfulness, this chapter journey gives you that path.",
     "The Faith of Job":
-      "Job's story begins with blessing and stability, then everything breaks almost at once. Family, health, security, and peace are ripped away, and what remains is a man trying to understand God in the middle of pain that feels far beyond explanation. This devotional walks you through the grief, questions, arguments, silence, and eventual awe that shape Job's life. It is not a shallow lesson about staying positive. It is a serious story about suffering, faith, and what it means to keep bringing your pain back to God when answers feel far away. If you have ever wrestled with why hard things happen, Job's story goes straight there.",
+      "Job's story begins with blessing and stability, then everything breaks almost at once. Family, health, security, and peace are ripped away, and what remains is a man trying to understand God in the middle of pain that feels far beyond explanation. This Bible study walks you through the grief, questions, arguments, silence, and eventual awe that shape Job's life. It is not a shallow lesson about staying positive. It is a serious story about suffering, faith, and what it means to keep bringing your pain back to God when answers feel far away. If you have ever wrestled with why hard things happen, Job's story goes straight there.",
     "The Calling of Moses":
-      "Moses' life begins under a death order and unfolds through exile, failure, fire, confrontation, wilderness, and the presence of God. He is raised in Pharaoh's world, broken in the desert, and then called back to the very place he once ran from. This devotional follows the full arc of his life so you can feel the fear, the pressure, the miracles, and the long cost of carrying a calling. It is a story about hearing God when you feel unqualified, obeying while things still look impossible, and staying faithful through years that feel heavy. By the end, Moses does not look like a perfect hero. He looks like a man who kept walking with God anyway.",
+      "Moses' life begins under a death order and unfolds through exile, failure, fire, confrontation, wilderness, and the presence of God. He is raised in Pharaoh's world, broken in the desert, and then called back to the very place he once ran from. This Bible study follows the full arc of his life so you can feel the fear, the pressure, the miracles, and the long cost of carrying a calling. It is a story about hearing God when you feel unqualified, obeying while things still look impossible, and staying faithful through years that feel heavy. By the end, Moses does not look like a perfect hero. He looks like a man who kept walking with God anyway.",
     "The Heart of David":
-      "David's story moves from hidden fields to public battles, from worship to warfare, from caves to kingship, and from failure to repentance. He is brave, gifted, loved, hunted, crowned, broken, and restored across a life that never feels flat or simple. This devotional follows the rise and fall of David with all the emotion that makes his life unforgettable. It shows why his heart mattered, where it drifted, and how it kept getting pulled back toward God. If you want a story full of courage, weakness, worship, and return, David's life carries all of it.",
+      "David's story moves from hidden fields to public battles, from worship to warfare, from caves to kingship, and from failure to repentance. He is brave, gifted, loved, hunted, crowned, broken, and restored across a life that never feels flat or simple. This Bible study follows the rise and fall of David with all the emotion that makes his life unforgettable. It shows why his heart mattered, where it drifted, and how it kept getting pulled back toward God. If you want a story full of courage, weakness, worship, and return, David's life carries all of it.",
     "The Obedience of Abraham":
-      "Abraham's story starts with a voice telling him to leave everything familiar and walk toward a future he cannot see yet. From there his life becomes a journey of altars, promises, failures, waiting, covenant, and costly surrender. This devotional follows that road closely so you can feel both the wonder and the strain of obeying God over a long stretch of life. Abraham is not a flawless man, but he is a man who keeps moving when God speaks. His story is about trusting before you understand, waiting when the promise feels delayed, and placing even your deepest gifts back into God's hands.",
+      "Abraham's story starts with a voice telling him to leave everything familiar and walk toward a future he cannot see yet. From there his life becomes a journey of altars, promises, failures, waiting, covenant, and costly surrender. This Bible study follows that road closely so you can feel both the wonder and the strain of obeying God over a long stretch of life. Abraham is not a flawless man, but he is a man who keeps moving when God speaks. His story is about trusting before you understand, waiting when the promise feels delayed, and placing even your deepest gifts back into God's hands.",
     "The Transforming of Paul":
-      "Paul's story begins with violence, certainty, and religious zeal aimed in the wrong direction. Then Jesus meets him, blinds him, remakes him, and sends him into a life of preaching, suffering, prison, endurance, and deep spiritual fire. This devotional follows the whole arc, from Saul the persecutor to Paul the apostle who finished his race still holding to Christ. You will walk through the road to Damascus, the missionary journeys, the beatings, the prison songs, the shipwrecks, and the final steady faith that marked his end. It is a story about how radically Jesus can change a life and keep changing it through every next season.",
+      "Paul's story begins with violence, certainty, and religious zeal aimed in the wrong direction. Then Jesus meets him, blinds him, remakes him, and sends him into a life of preaching, suffering, prison, endurance, and deep spiritual fire. This Bible study follows the whole arc, from Saul the persecutor to Paul the apostle who finished his race still holding to Christ. You will walk through the road to Damascus, the missionary journeys, the beatings, the prison songs, the shipwrecks, and the final steady faith that marked his end. It is a story about how radically Jesus can change a life and keep changing it through every next season.",
     "The Courage of Daniel":
-      "Most people know Daniel for the lions' den, but that was only one scene in a lifetime of faith under pressure. This devotional follows him from exile and identity testing to royal courts, impossible dreams, jealous enemies, and visions that reach all the way into the future. Daniel's life shows what it looks like to stay loyal to God inside a foreign system that keeps trying to reshape you. His courage is not built in one dramatic moment. It is built over years of prayer, wisdom, pressure, and unwavering devotion. If you want to see what steady faith looks like in a hostile world, Daniel's life gives that picture in full.",
+      "Most people know Daniel for the lions' den, but that was only one scene in a lifetime of faith under pressure. This Bible study follows him from exile and identity testing to royal courts, impossible dreams, jealous enemies, and visions that reach all the way into the future. Daniel's life shows what it looks like to stay loyal to God inside a foreign system that keeps trying to reshape you. His courage is not built in one dramatic moment. It is built over years of prayer, wisdom, pressure, and unwavering devotion. If you want to see what steady faith looks like in a hostile world, Daniel's life gives that picture in full.",
     "The Rise of Esther":
-      "Esther's story begins in exile, in loss, and in a world where powerful men make decisions that can crush whole peoples at once. She rises from hiddenness into the palace, but her real story begins when favor turns into responsibility and silence becomes dangerous. This devotional follows the tension, timing, fear, strategy, and courage that shaped her rise from orphan girl to the woman who stood for her people. It is full of reversals, sleepless nights, political danger, and providence moving in ways no one in the room can fully see. Esther's life proves that sometimes the place God gives you becomes holy the moment you finally use it with courage.",
+      "Esther's story begins in exile, in loss, and in a world where powerful men make decisions that can crush whole peoples at once. She rises from hiddenness into the palace, but her real story begins when favor turns into responsibility and silence becomes dangerous. This Bible study follows the tension, timing, fear, strategy, and courage that shaped her rise from orphan girl to the woman who stood for her people. It is full of reversals, sleepless nights, political danger, and providence moving in ways no one in the room can fully see. Esther's life proves that sometimes the place God gives you becomes holy the moment you finally use it with courage.",
   };
 
   return descriptions[title] ?? fallback;
@@ -91,6 +91,21 @@ interface DayProgress {
   reflection_text: string | null;
 }
 
+type ChapterTaskProgress = {
+  completed: number;
+  total: number;
+};
+
+const WISDOM_TASK_TOTAL = 6;
+
+function chapterSlug(book: string, chapter: number) {
+  return `bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${chapter}`;
+}
+
+function notesActionLabel(book: string, chapter: number) {
+  return `${book} ${chapter} Review Opened`;
+}
+
 function getLouisDayTopic(day: DevotionalDay) {
   const title = day.day_title?.trim();
   if (title) return title;
@@ -114,7 +129,7 @@ function buildLouisDayStartMessage(devotional: Devotional, day: DevotionalDay) {
   const snippet = getLouisDaySnippet(day);
 
   return [
-    "this is your devotional for today",
+    "this is your Bible study for today",
     `Day ${day.day_number} of ${devotional.title} is about ${topic}.`,
     snippet,
     "take your time reading through it and really think about what it means",
@@ -146,6 +161,7 @@ export default function DevotionalDetailPage() {
   const [devotional, setDevotional] = useState<Devotional | null>(null);
   const [days, setDays] = useState<DevotionalDay[]>([]);
   const [progress, setProgress] = useState<Map<number, DayProgress>>(new Map());
+  const [chapterTaskProgress, setChapterTaskProgress] = useState<Map<number, ChapterTaskProgress>>(new Map());
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
@@ -273,6 +289,7 @@ export default function DevotionalDetailPage() {
 
         // Load progress if user is logged in
         if (userId) {
+          const progressMap = new Map<number, DayProgress>();
           const { data: progressData, error: progressError } = await supabase
             .from("devotional_progress")
             .select("*")
@@ -280,7 +297,6 @@ export default function DevotionalDetailPage() {
             .eq("devotional_id", devotionalId);
 
           if (!progressError && progressData) {
-            const progressMap = new Map<number, DayProgress>();
             progressData.forEach((p) => {
               progressMap.set(p.day_number, {
                 day_number: p.day_number,
@@ -290,6 +306,69 @@ export default function DevotionalDetailPage() {
               });
             });
             setProgress(progressMap);
+          }
+
+          if (devotionalData.title === "The Wisdom of Proverbs") {
+            const loadedDays = daysData || [];
+            const reflectionSlugs = loadedDays.map((day) => chapterSlug(day.bible_reading_book, day.bible_reading_chapter));
+            const [actionsRes, reflectionsRes] = await Promise.all([
+              supabase
+                .from("master_actions")
+                .select("action_type, action_label")
+                .eq("user_id", userId)
+                .in("action_type", [
+                  ACTION_TYPE.chapter_notes_reviewed,
+                  ACTION_TYPE.chapter_notes_viewed,
+                  ACTION_TYPE.trivia_chapter_completed,
+                  ACTION_TYPE.scrambled_chapter_completed,
+                ]),
+              reflectionSlugs.length > 0
+                ? supabase
+                    .from("article_comments")
+                    .select("article_slug")
+                    .eq("user_id", userId)
+                    .eq("is_deleted", false)
+                    .in("article_slug", reflectionSlugs)
+                : Promise.resolve({ data: [], error: null } as any),
+            ]);
+
+            const actions = actionsRes.data || [];
+            const reflectionSet = new Set((reflectionsRes.data || []).map((row: any) => row.article_slug));
+            const taskProgressMap = new Map<number, ChapterTaskProgress>();
+
+            loadedDays.forEach((day) => {
+              const dayProgress = progressMap.get(day.day_number);
+              const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
+              const chapterLabelLower = chapterLabel.toLowerCase();
+              const noteLabel = notesActionLabel(day.bible_reading_book, day.bible_reading_chapter);
+              const hasNotes = actions.some((row: any) =>
+                (row.action_type === ACTION_TYPE.chapter_notes_reviewed || row.action_type === ACTION_TYPE.chapter_notes_viewed) &&
+                row.action_label === noteLabel
+              );
+              const hasTrivia = actions.some((row: any) =>
+                row.action_type === ACTION_TYPE.trivia_chapter_completed &&
+                String(row.action_label || "").toLowerCase().startsWith(chapterLabelLower)
+              );
+              const hasScrambled = actions.some((row: any) =>
+                row.action_type === ACTION_TYPE.scrambled_chapter_completed &&
+                String(row.action_label || "").toLowerCase().startsWith(chapterLabelLower)
+              );
+              const hasReflection = reflectionSet.has(chapterSlug(day.bible_reading_book, day.bible_reading_chapter));
+              const completed = [
+                dayProgress?.is_completed === true,
+                dayProgress?.reading_completed === true,
+                hasNotes,
+                hasTrivia,
+                hasScrambled,
+                hasReflection,
+              ].filter(Boolean).length;
+
+              taskProgressMap.set(day.day_number, { completed, total: WISDOM_TASK_TOTAL });
+            });
+
+            setChapterTaskProgress(taskProgressMap);
+          } else {
+            setChapterTaskProgress(new Map());
           }
         }
       } catch (err) {
@@ -306,6 +385,17 @@ export default function DevotionalDetailPage() {
 
   // Calculate current day and progress
   const getCurrentDay = () => {
+    if (devotional?.title === "The Wisdom of Proverbs") {
+      for (let i = 1; i <= (devotional?.total_days || 31); i++) {
+        const chapterProgress = chapterTaskProgress.get(i);
+        if (!chapterProgress || chapterProgress.completed < chapterProgress.total) {
+          return i;
+        }
+      }
+
+      return devotional?.total_days || 31;
+    }
+
     if (!userId || progress.size === 0) {
       return 1; // Start with day 1
     }
@@ -323,8 +413,19 @@ export default function DevotionalDetailPage() {
   };
 
   const currentDay = getCurrentDay();
-  const completedDays = Array.from(progress.values()).filter((p) => p.is_completed).length;
-  const progressPercent = devotional ? (completedDays / devotional.total_days) * 100 : 0;
+  const isWisdomOfProverbs = devotional?.title === "The Wisdom of Proverbs";
+  const completedDays = isWisdomOfProverbs
+    ? Array.from(chapterTaskProgress.values()).filter((p) => p.completed >= p.total).length
+    : Array.from(progress.values()).filter((p) => p.is_completed).length;
+  const totalChapterTasks = isWisdomOfProverbs ? (devotional?.total_days || 0) * WISDOM_TASK_TOTAL : devotional?.total_days || 0;
+  const completedChapterTasks = isWisdomOfProverbs
+    ? Array.from(chapterTaskProgress.values()).reduce((sum, p) => sum + p.completed, 0)
+    : completedDays;
+  const progressPercent = devotional
+    ? isWisdomOfProverbs
+      ? (completedChapterTasks / Math.max(totalChapterTasks, 1)) * 100
+      : (completedDays / devotional.total_days) * 100
+    : 0;
   const previewDescription = devotional
     ? getPreviewDescription(devotional.title, devotional.description)
     : "";
@@ -332,6 +433,10 @@ export default function DevotionalDetailPage() {
   const isDayUnlocked = (dayNumber: number) => {
     if (userEmail === "moorelouis3@gmail.com") return true;
     if (dayNumber === 1) return true;
+    if (isWisdomOfProverbs) {
+      const prevChapterProgress = chapterTaskProgress.get(dayNumber - 1);
+      return prevChapterProgress?.completed === prevChapterProgress?.total;
+    }
     const prevDayProgress = progress.get(dayNumber - 1);
     return prevDayProgress?.is_completed === true;
   };
@@ -360,13 +465,21 @@ export default function DevotionalDetailPage() {
     }
 
     const isFreeUser = profileStats?.is_paid !== true && userEmail !== "moorelouis3@gmail.com";
+    const shouldOpenFullPage = devotional?.title === "The Wisdom of Proverbs";
+    const openDay = () => {
+      if (shouldOpenFullPage) {
+        router.push(`/devotionals/${devotionalId}/day/${day.day_number}`);
+        return;
+      }
+      setSelectedDay(day);
+    };
 
     // Free user logic — wait until freeDevotionalId is loaded
     if (isFreeUser && freeDevotionalId !== undefined) {
       if (freeDevotionalId === devotionalId) {
         // This IS their free devotional — open freely
         setShowCreditBlocked(false);
-        setSelectedDay(day);
+        openDay();
       } else if (freeDevotionalId === null) {
         // No free devotional chosen yet — ask them
         setPendingDayClick(day);
@@ -380,23 +493,26 @@ export default function DevotionalDetailPage() {
 
     // Paid user (or owner) — existing consume-credit logic
     const dayProgress = progress.get(day.day_number);
-    const isCompleted = dayProgress?.is_completed === true;
+    const dayTaskProgress = chapterTaskProgress.get(day.day_number);
+    const isCompleted = shouldOpenFullPage
+      ? dayTaskProgress?.completed === dayTaskProgress?.total
+      : dayProgress?.is_completed === true;
 
     if (isCompleted) {
       setShowCreditBlocked(false);
-      setSelectedDay(day);
+      openDay();
       return;
     }
 
     const creditResult = await consumeCreditAction(ACTION_TYPE.devotional_day_viewed, { userId });
     if (creditResult.ok === false) {
       setShowCreditBlocked(true);
-      setSelectedDay(day);
+      openDay();
       return;
     }
 
     setShowCreditBlocked(false);
-    setSelectedDay(day);
+    openDay();
   };
 
   useEffect(() => {
@@ -450,7 +566,11 @@ export default function DevotionalDetailPage() {
     setShowChooseFreeModal(false);
     if (pendingDayClick) {
       setShowCreditBlocked(false);
-      setSelectedDay(pendingDayClick);
+      if (devotional?.title === "The Wisdom of Proverbs") {
+        router.push(`/devotionals/${devotionalId}/day/${pendingDayClick.day_number}`);
+      } else {
+        setSelectedDay(pendingDayClick);
+      }
       setPendingDayClick(null);
     }
   };
@@ -719,6 +839,71 @@ export default function DevotionalDetailPage() {
     }
   };
 
+  const handleIntroComplete = async (dayNumber: number) => {
+    if (!userId || !devotional) return;
+
+    try {
+      const { data: existingProgressData } = await supabase
+        .from("devotional_progress")
+        .select("is_completed")
+        .eq("user_id", userId)
+        .eq("devotional_id", devotionalId)
+        .eq("day_number", dayNumber)
+        .maybeSingle();
+
+      const wasAlreadyCompleted = existingProgressData?.is_completed === true;
+
+      const { error } = await supabase
+        .from("devotional_progress")
+        .upsert(
+          {
+            user_id: userId,
+            devotional_id: devotionalId,
+            day_number: dayNumber,
+            is_completed: true,
+            completed_at: new Date().toISOString(),
+          },
+          { onConflict: "user_id,devotional_id,day_number" }
+        );
+
+      if (error) {
+        console.error("Error completing intro:", error);
+        return;
+      }
+
+      setProgress((prev) => {
+        const next = new Map(prev);
+        const existing = next.get(dayNumber) || {
+          day_number: dayNumber,
+          is_completed: false,
+          reading_completed: false,
+          reflection_text: null,
+        };
+        next.set(dayNumber, { ...existing, is_completed: true });
+        return next;
+      });
+
+      if (!wasAlreadyCompleted) {
+        const { data: { user: authUser } } = await supabase.auth.getUser();
+        const meta: any = authUser?.user_metadata || {};
+        const actionUsername =
+          meta.firstName ||
+          meta.first_name ||
+          (authUser?.email ? authUser.email.split("@")[0] : null) ||
+          "User";
+
+        await supabase.from("master_actions").insert({
+          user_id: userId,
+          username: actionUsername ?? null,
+          action_type: ACTION_TYPE.devotional_day_completed,
+          action_label: `${devotional.title} - Day ${dayNumber}`,
+        });
+      }
+    } catch (error) {
+      console.error("Error marking intro complete:", error);
+    }
+  };
+
   const handleReadingComplete = async (dayNumber: number) => {
     if (!userId) return;
 
@@ -813,7 +998,7 @@ export default function DevotionalDetailPage() {
     return (
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 py-8">
-          <div className="text-gray-500">Loading devotional...</div>
+          <div className="text-gray-500">Loading Bible study...</div>
         </div>
       </div>
     );
@@ -825,7 +1010,7 @@ export default function DevotionalDetailPage() {
         dayNumber={null}
         devotionalTitle={null}
         customTitle="You Need Bible Buddy Pro"
-        customBody={"This devotional is part of the Bible Buddy Pro library. Upgrade to unlock full access to all devotionals, deeper studies, and future releases."}
+        customBody={"This Bible study is part of the Bible Buddy Pro library. Upgrade to unlock full access to all Bible studies, deeper studies, and future releases."}
         primaryButtonText="Upgrade to Pro"
         secondaryButtonText="Maybe Later"
         onPrimary={() => router.push('/upgrade')}
@@ -841,9 +1026,9 @@ export default function DevotionalDetailPage() {
     return (
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 py-8">
-          <div className="text-gray-500">Devotional not found.</div>
+          <div className="text-gray-500">Bible study not found.</div>
           <Link href="/devotionals" className="text-blue-600 hover:underline mt-4 inline-block">
-            ← Back to Devotionals
+            ← Back to Bible Studies
           </Link>
         </div>
       </div>
@@ -855,7 +1040,7 @@ export default function DevotionalDetailPage() {
       <div className="max-w-5xl mx-auto px-4 py-8">
         {/* HEADER */}
         <Link href="/devotionals" className="text-blue-600 hover:underline mb-4 inline-block">
-          ← Back to Devotionals
+          ← Back to Bible Studies
         </Link>
 
         <h1 className="text-3xl font-bold mb-2">{devotional.title}</h1>
@@ -878,9 +1063,11 @@ export default function DevotionalDetailPage() {
         <div className="bg-white border border-gray-200 rounded-xl p-4 mb-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-700">
-              Day {currentDay} of {devotional.total_days}
+              {isWisdomOfProverbs ? `Proverbs ${currentDay} of ${devotional.total_days}` : `Day ${currentDay} of ${devotional.total_days}`}
             </span>
-            <span className="text-sm text-gray-500">{completedDays} completed</span>
+            <span className="text-sm text-gray-500">
+              {isWisdomOfProverbs ? `${completedDays} chapters complete` : `${completedDays} completed`}
+            </span>
           </div>
           <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
             <div
@@ -899,12 +1086,15 @@ export default function DevotionalDetailPage() {
 
         {/* DAYS LIST */}
         <div className="bg-white border border-gray-200 rounded-xl p-6">
-          <h2 className="text-xl font-bold mb-4">Days</h2>
+          <h2 className="text-xl font-bold mb-4">{isWisdomOfProverbs ? "Chapters" : "Days"}</h2>
           <div className="space-y-2">
             {days.map((day) => {
               const dayProgress = progress.get(day.day_number);
+              const taskProgress = chapterTaskProgress.get(day.day_number) || { completed: 0, total: WISDOM_TASK_TOTAL };
               const isUnlocked = isDayUnlocked(day.day_number);
-              const isCompleted = dayProgress?.is_completed === true;
+              const isCompleted = isWisdomOfProverbs ? taskProgress.completed >= taskProgress.total : dayProgress?.is_completed === true;
+              const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
+              const remainingTasks = Math.max(taskProgress.total - taskProgress.completed, 0);
 
               return (
                 <button
@@ -922,7 +1112,9 @@ export default function DevotionalDetailPage() {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <span className="font-semibold text-gray-700">Day {day.day_number}</span>
+                      <span className="font-semibold text-gray-700">
+                        {isWisdomOfProverbs ? chapterLabel : `Day ${day.day_number}`}
+                      </span>
                       <span className="text-gray-700">{day.day_title}</span>
                     </div>
                     <div className="flex items-center gap-2">
@@ -941,7 +1133,15 @@ export default function DevotionalDetailPage() {
                           />
                         </svg>
                       )}
-                      {isCompleted && (
+                      {isWisdomOfProverbs && isCompleted ? (
+                        <span className="text-green-600 font-semibold">✓ Complete</span>
+                      ) : isWisdomOfProverbs && isUnlocked ? (
+                        <span className="text-sm font-semibold text-gray-600">
+                          {taskProgress.completed}/{taskProgress.total} complete
+                          {remainingTasks > 0 ? `, ${remainingTasks} task${remainingTasks === 1 ? "" : "s"} left` : ""}
+                        </span>
+                      ) : null}
+                      {isCompleted && !isWisdomOfProverbs && (
                         <span className="text-green-600 font-semibold">✓ Complete</span>
                       )}
                     </div>
@@ -965,6 +1165,7 @@ export default function DevotionalDetailPage() {
           onBibleReadingClick={handleBibleReadingClick}
           onReadingComplete={() => handleReadingComplete(selectedDay.day_number)}
           onReflectionSave={(text) => handleReflectionSave(selectedDay.day_number, text)}
+          onIntroComplete={() => handleIntroComplete(selectedDay.day_number)}
           onDayComplete={(reflectionText, readingCompleted) => handleDayComplete(selectedDay.day_number, reflectionText, readingCompleted)}
         />
       )}
@@ -1026,11 +1227,11 @@ export default function DevotionalDetailPage() {
             className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl p-6"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-xl font-bold text-gray-900 mb-3">🎁 You have one free devotional</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-3">🎁 You have one free Bible study</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              As a free user, you're gifted <strong>one complete devotional</strong> — all {devotional.total_days} days, fully unlocked.
+              As a free user, you're gifted <strong>one complete Bible study</strong> — all {devotional.total_days} days, fully unlocked.
               <br /><br />
-              Once you choose, this will be your free devotional. Is <strong>{devotional.title}</strong> the one you want to start?
+              Once you choose, this will be your free Bible study. Is <strong>{devotional.title}</strong> the one you want to start?
             </p>
             <div className="flex flex-col gap-3">
               <button
@@ -1069,9 +1270,9 @@ export default function DevotionalDetailPage() {
             >
               ✕
             </button>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">Unlock All Devotionals</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-3">Unlock All Bible Studies</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              You've already started your free devotional. Upgrade to Bible Buddy Pro to unlock every devotional — including this one — plus all future releases.
+              You've already started your free Bible study. Upgrade to Bible Buddy Pro to unlock every Bible study — including this one — plus all future releases.
             </p>
             <div className="flex flex-col gap-3">
               <button

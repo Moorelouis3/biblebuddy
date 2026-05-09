@@ -4,6 +4,7 @@ export const dynamic = 'force-dynamic';
 
 import { useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
 import Link from "next/link";
+import confetti from "canvas-confetti";
 import "../../styles/pulse.css";
 import DashboardDailyWelcomeModal from "../../components/DashboardDailyWelcomeModal";
 import LouisDailyTasksModal, { fetchLouisDailyChecklistData, type ChecklistData, type TaskState } from "../../components/LouisDailyTasksModal";
@@ -458,7 +459,7 @@ export default function DashboardPage() {
         <section className="space-y-2">
           <h2 className="text-lg md:text-xl font-semibold text-gray-900">🛠️ Bible Study Tools</h2>
           <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-            This is where you can access all our Bible study tools, including devotionals, reading plans, and keyword databases.
+            This is where you can access all our Bible study tools, including Bible studies, reading plans, and keyword databases.
           </p>
         </section>
 
@@ -596,11 +597,11 @@ export default function DashboardPage() {
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸŒ… Devotionals</h2>
+        <h2 className="text-lg md:text-xl font-semibold text-gray-900">ðŸŒ… Bible Studies</h2>
         <p className="text-sm md:text-[15px] text-gray-600 leading-7">
-          Devotionals are short, focused daily readings.
+          Bible Studies are guided chapter-based studies.
         </p>
-        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Each devotional includes:</p>
+        <p className="text-sm md:text-[15px] text-gray-600 leading-7">Each Bible study includes:</p>
         <ul className="space-y-1 text-sm md:text-[15px] text-gray-600 leading-7">
           <li>â€¢ A selected passage</li>
           <li>â€¢ Reflection or explanation</li>
@@ -921,7 +922,7 @@ export default function DashboardPage() {
                   <div className="min-w-0">
                     <p className="text-sm font-semibold text-[#8a4b14]">Go Deeper With Pro</p>
                     <p className="text-xs leading-relaxed text-gray-600">
-                      Unlock the full devotional library and remove the daily credit wall.
+                      Unlock the full Bible study library and remove the daily credit wall.
                     </p>
                   </div>
                 </div>
@@ -1559,7 +1560,31 @@ export default function DashboardPage() {
   }, [pendingDailyTaskCelebrationModal, selectedDashboardTask, showLouisDailyTasksModal, userId, dailyChecklistData?.journeyKey]);
 
   const currentStreak = profile?.current_streak ?? 0;
+  const completedChapterLabel =
+    dailyChecklistData?.tasks.find((task) => task.kind === "reading")?.chapterLabel ||
+    dailyChecklistData?.tasks.find((task) => task.chapterLabel)?.chapterLabel ||
+    "this chapter";
+  const nextChapterLabel = (() => {
+    const chapterTask = dailyChecklistData?.tasks.find((task) => task.book && task.chapter);
+    if (!chapterTask?.book || !chapterTask.chapter || !dailyChecklistData?.nextJourneyTarget) return "the next chapter";
+    return `${chapterTask.book} ${chapterTask.chapter + 1}`;
+  })();
   const hasProfileLoaded = Boolean(profile);
+
+  useEffect(() => {
+    if (!showDailyTaskCelebrationModal) return;
+
+    const timer = window.setTimeout(() => {
+      confetti({
+        particleCount: 80,
+        spread: 65,
+        origin: { y: 0.62 },
+        colors: ["#7BAFD4", "#9fce85", "#f6d365", "#ffffff"],
+      });
+    }, 120);
+
+    return () => window.clearTimeout(timer);
+  }, [showDailyTaskCelebrationModal]);
 
   const loadDailyTaskSummary = useCallback(async (options: { force?: boolean } = {}) => {
     if (!userId || !hasProfileLoaded || !louisDailyTaskCycleStartedAt) {
@@ -1610,9 +1635,6 @@ export default function DashboardPage() {
           rememberLouisChapterJourneyCelebrationSeen(userId, checklistData.journeyKey);
           setShowDailyTaskCelebrationModal(true);
         }
-      }
-      if (checklistData.allDone && checklistData.nextJourneyTarget && louisDailyTaskCycleStartedAt) {
-        rememberLouisDailyTaskTarget(userId, louisDailyTaskCycleStartedAt, checklistData.nextJourneyTarget);
       }
       dailyTaskSummaryLoadedKeyRef.current = loadKey;
     })();
@@ -2109,14 +2131,14 @@ export default function DashboardPage() {
         <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
           <div className="bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-6 py-8 text-center">
             <div className="flex justify-center">
-              <LouisAvatar mood="wave" size={68} />
+              <LouisAvatar mood="stareyes" size={72} />
             </div>
-            <h2 className="mt-4 text-3xl font-bold text-[#21304f]">Congrats!</h2>
+            <h2 className="mt-4 text-3xl font-bold text-[#21304f]">Chapter Complete!</h2>
             <p className="mt-3 text-base font-semibold text-[#355487]">
-              You completed this chapter journey.
+              You completed {completedChapterLabel}.
             </p>
               <p className="mt-2 text-sm leading-6 text-[#58709d]">
-               The next chapter is ready when you are. Keep showing up one meaningful step at a time.
+               Great work. Louis saved your progress, and {nextChapterLabel} is ready when you are.
               </p>
             <button
               type="button"
@@ -2234,7 +2256,7 @@ export default function DashboardPage() {
                   <h3 className="text-lg font-semibold mb-3 text-gray-900">What Counts as Progress?</h3>
                   <p className="mb-2">You earn weighted points across Bible Buddy, such as:</p>
                   <ul className="list-none space-y-2 ml-4">
-                    <li>📖 Finishing a Bible chapter, devotional day, or reading plan chapter</li>
+                    <li>📖 Finishing a Bible chapter, Bible study task, or reading plan chapter</li>
                     <li>🧠 Learning people, places, keywords, and taking notes</li>
                     <li>👥 Posting in the group, commenting, and joining community activity</li>
                     <li>❤️ Liking posts or comments, and earning likes from other Buddies</li>
@@ -2249,7 +2271,7 @@ export default function DashboardPage() {
                   <div className="space-y-3 text-sm text-gray-700">
                     <div className="bg-gray-50 p-3 rounded-lg">
                       <p className="font-semibold text-gray-900">Higher-point actions</p>
-                      <p>Finishing chapters, completing devotionals, reading plans, learning references, and creating notes carry the most weight.</p>
+                      <p>Finishing chapters, completing Bible studies, reading plans, learning references, and creating notes carry the most weight.</p>
                     </div>
                     <div className="bg-gray-50 p-3 rounded-lg">
                       <p className="font-semibold text-gray-900">Mid-point actions</p>
@@ -2257,7 +2279,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="bg-gray-50 p-3 rounded-lg">
                       <p className="font-semibold text-gray-900">Lower-point actions</p>
-                      <p>Likes still count, but they are worth less than finishing a real study action like a chapter or devotional day.</p>
+                      <p>Likes still count, but they are worth less than finishing a real study action like a chapter or Bible study task.</p>
                     </div>
                     <div className="bg-gray-50 p-3 rounded-lg">
                       <p className="font-semibold text-gray-900">Earned engagement counts too</p>

@@ -11,8 +11,8 @@ const tools = [
     href: "/devotionals",
     bg: "bg-teal-100 border-teal-200",
     emoji: "🌅",
-    title: "Devotionals",
-    desc: "Guided daily Bible reading and reflection",
+    title: "Bible Studies",
+    desc: "Guided Bible studies with chapter intros, reading, notes, games, and reflection",
   },
   {
     href: "/bible-studies",
@@ -44,8 +44,8 @@ const tools = [
   },
 ];
 
-const hiddenToolTitles = new Set(["Bible Studies", "Bible Reading Plans"]);
-const visibleTools = tools.filter((tool) => !hiddenToolTitles.has(tool.title));
+const hiddenToolHrefs = new Set(["/bible-studies", "/reading-plans"]);
+const visibleTools = tools.filter((tool) => !hiddenToolHrefs.has(tool.href));
 
 export default function GuidedStudiesPage() {
   const [userId, setUserId] = useState<string | null>(null);

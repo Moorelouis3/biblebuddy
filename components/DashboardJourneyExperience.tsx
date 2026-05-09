@@ -86,8 +86,8 @@ function getTaskCardCopy(task: TaskState, index: number) {
 
   if (task.kind === "devotional") {
     return {
-      title: `${number}. ${task.title}`,
-      subtitle: "Read today's devotional and prepare your heart.",
+      title: `${number}. Read Chapter Intro`,
+      subtitle: "Understand what you are about to read before you begin the chapter.",
       emoji: "📕",
       doneAccent: "from-[#4fc877] to-[#34b866]",
       idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
@@ -124,6 +124,16 @@ function getTaskCardCopy(task: TaskState, index: number) {
     };
   }
 
+  if (task.kind === "reflection") {
+    return {
+      title: `${number}. Answer The Reflection Question`,
+      subtitle: "Share what this chapter is stirring in you.",
+      emoji: "âœï¸",
+      doneAccent: "from-[#4fc877] to-[#34b866]",
+      idleAccent: "from-[#dbeafe] to-[#bfdbfe]",
+    };
+  }
+
   return {
     title: `${number}. ${task.title}`,
     subtitle: "Unscramble words from today's chapter.",
@@ -139,6 +149,15 @@ function getTaskStatusLine(task: TaskState) {
   return "Not started";
 }
 
+function getTaskEmoji(task: TaskState) {
+  if (task.kind === "devotional") return "\uD83D\uDCD5";
+  if (task.kind === "reading") return "\u271D\uFE0F";
+  if (task.kind === "notes") return "\uD83D\uDCDD";
+  if (task.kind === "trivia") return "\uD83E\uDDE0";
+  if (task.kind === "reflection") return "\u270D\uFE0F";
+  return "\uD83D\uDD24";
+}
+
 function getDailyStudyCardClasses(allDone: boolean) {
   if (allDone) {
     return "border-green-200 bg-gradient-to-br from-[#ecfff2] via-[#f8fffb] to-[#e7f8ee]";
@@ -152,23 +171,23 @@ const louisProgressOpeners: Record<number, string[]> = {
     "Let's start today with a steady first step.",
     "This is a good place to begin today's Bible rhythm.",
     "Start here and let the rest of the Bible study build from this.",
-    "Let's open the day by slowing down with the devotional.",
+    "Let's open the day by slowing down with the Bible study intro.",
     "First step for today: get your heart settled in the story.",
-    "Let's begin clean and simple with today's devotional.",
+    "Let's begin clean and simple with today's Bible study intro.",
     "This first task sets the tone for the whole Bible study flow.",
-    "Start with the devotional and let the chapter come into focus.",
+    "Start with the Bible study intro and let the chapter come into focus.",
     "Let's ease into the Word with the first part of today's Bible study.",
     "A good day of study starts with one honest beginning.",
-    "Let's get today's Bible study moving with the devotional.",
+    "Let's get today's Bible study moving with the intro.",
     "Start here, take your time, and let the story breathe a little.",
     "The first task is ready, and this is where momentum starts.",
-    "Let's begin with the devotional before we move into the chapter.",
+    "Let's begin with the Bible study intro before we move into the chapter.",
     "Today's Bible study starts with preparing your heart.",
-    "Open with the devotional and let it frame the rest of the tasks.",
+    "Open with the Bible study intro and let it frame the rest of the tasks.",
     "Let's make the first move and start today's Bible study well.",
     "Begin here, then we will keep walking through the chapter together.",
     "This is the doorway into today's Bible study flow.",
-    "Let's start with the devotional and build from there.",
+    "Let's start with the Bible study intro and build from there.",
   ],
   1: [
     "Great job getting started.",
@@ -180,14 +199,14 @@ const louisProgressOpeners: Record<number, string[]> = {
     "Good momentum. Now let's take the chapter itself.",
     "That's the opening step finished.",
     "You're not just thinking about studying today, you're doing it.",
-    "The devotional is behind you, and the chapter is ready.",
+    "The Bible study intro is behind you, and the chapter is ready.",
     "Strong start. Let's stay with the story.",
     "You have the setup now, so let's read the text.",
     "Good work. The next step brings you straight into Scripture.",
-    "You started with the devotional, and now we keep going.",
+    "You started with the Bible study intro, and now we keep going.",
     "Nice first move. Let's continue while the story is fresh.",
     "You have one task down and the day is taking shape.",
-    "Good pace. Now let's move from devotional into the chapter.",
+    "Good pace. Now let's move from the intro into the chapter.",
     "That's one completed step. Let's keep it simple and steady.",
     "You opened the door. Now let's walk into the chapter.",
     "Great start. The next task keeps today's focus grounded in Scripture.",
@@ -195,7 +214,7 @@ const louisProgressOpeners: Record<number, string[]> = {
   2: [
     "Wow, you're on a roll.",
     "Nice work. The foundation is set now.",
-    "You have the devotional and reading done, so let's go deeper.",
+    "You have the intro and reading done, so let's go deeper.",
     "Good rhythm today. Now we slow down and understand more.",
     "You're halfway through the main study flow.",
     "Strong progress. The notes will help the chapter settle in.",
@@ -242,7 +261,7 @@ const louisProgressOpeners: Record<number, string[]> = {
     "You're right at the finish line.",
     "Almost done. Let's finish strong.",
     "Last task, and today's Bible study is complete.",
-    "You're one step away from finishing all five.",
+    "You're one step away from the final reflection.",
     "Great work. Let's close the loop.",
     "This is the final piece for today's chapter.",
     "You have done the study work. Now let's finish with the word game.",
@@ -258,6 +277,27 @@ const louisProgressOpeners: Record<number, string[]> = {
     "This is the closing step for today's study.",
     "Finish strong with the final round.",
   ],
+  5: [
+    "One more task to go.",
+    "Final step for this chapter study.",
+    "You're right at the finish line.",
+    "Almost done. Let's finish with reflection.",
+    "Last task, and this chapter study is complete.",
+    "You're one step away from finishing all six.",
+    "Great work. Let's close the loop with your reflection.",
+    "This is the final piece for today's chapter.",
+    "One reflection and the chapter study is complete.",
+    "You're close enough to see the finish.",
+    "Let's land this chapter with an honest thought.",
+    "Last move. Take a minute and write what stood out.",
+    "You have one task left, and this is where the study becomes personal.",
+    "Almost there. Let's wrap today's chapter study.",
+    "The hard part is behind you. One thoughtful response remains.",
+    "You're nearly done. Let's finish with reflection.",
+    "One more task, then the full chapter flow is complete.",
+    "This is the closing step for the study.",
+    "Finish strong with your reflection.",
+  ],
 };
 
 function stableHash(value: string) {
@@ -269,7 +309,7 @@ function stableHash(value: string) {
 }
 
 function pickLouisProgressOpener(completedCount: number, seed: string) {
-  const bucket = louisProgressOpeners[Math.max(0, Math.min(4, completedCount))] ?? louisProgressOpeners[0];
+  const bucket = louisProgressOpeners[Math.max(0, Math.min(5, completedCount))] ?? louisProgressOpeners[0];
   return bucket[stableHash(seed) % bucket.length];
 }
 
@@ -279,7 +319,8 @@ function getTaskNumberLabel(task: TaskState | null) {
   if (task.kind === "reading") return "task 2";
   if (task.kind === "notes") return "task 3";
   if (task.kind === "trivia") return "task 4";
-  return "task 5";
+  if (task.kind === "scrambled") return "task 5";
+  return "task 6";
 }
 
 function getChapterFocusSummary(task: TaskState | null) {
@@ -354,7 +395,7 @@ function buildTaskFocusLine(task: TaskState | null, remainingTasks: number) {
   }
 
   if (task.kind === "reading") {
-    return `Nice, the devotional is done. Now read ${chapterLabel} and stay with ${chapterSummary}`;
+    return `You've read the ${chapterLabel} intro. Now continue with ${chapterLabel} and stay with ${chapterSummary}`;
   }
 
   if (task.kind === "notes") {
@@ -365,16 +406,21 @@ function buildTaskFocusLine(task: TaskState | null, remainingTasks: number) {
     return `You have the reading and notes down. Play trivia for ${chapterLabel} and see what you remember.`;
   }
 
-  return `One more task to go. Play Scrambled for ${chapterLabel} and complete this chapter study.`;
+  if (task.kind === "scrambled") {
+    return `You are almost done. Play Scrambled for ${chapterLabel} and let the chapter words stick.`;
+  }
+
+  return `One more task to go. Share your reflection for ${chapterLabel} and complete this chapter study.`;
 }
 
 function getShortTaskName(task: TaskState | null) {
   if (!task) return "today's last Bible study task";
-  if (task.kind === "devotional") return "today's devotional";
+  if (task.kind === "devotional") return "today's chapter intro";
   if (task.kind === "reading") return task.chapterLabel ? `reading ${task.chapterLabel}` : "today's chapter";
   if (task.kind === "notes") return task.chapterLabel ? `${task.chapterLabel} notes` : "today's notes";
   if (task.kind === "trivia") return "trivia";
   if (task.kind === "scrambled") return "Scrambled";
+  if (task.kind === "reflection") return task.chapterLabel ? `the ${task.chapterLabel} reflection` : "the reflection";
   return task.title;
 }
 
@@ -448,8 +494,17 @@ export default function DashboardJourneyExperience({
   const currentDevotionalId = currentDevotionalTask?.devotionalId || "";
   const isPaidUser = profile?.is_paid === true;
   const remainingTasks = Math.max(totalTasks - completedTasks, 0);
+  const completedChapterLabel =
+    checklistData?.tasks.find((task) => task.kind === "reading")?.chapterLabel ||
+    checklistData?.tasks.find((task) => task.chapterLabel)?.chapterLabel ||
+    "this chapter";
+  const nextChapterLabel = (() => {
+    const chapterTask = checklistData?.tasks.find((task) => task.book && task.chapter);
+    if (!chapterTask?.book || !chapterTask.chapter || !checklistData?.nextJourneyTarget) return "the next chapter";
+    return `${chapterTask.book} ${chapterTask.chapter + 1}`;
+  })();
   const completedStudyActionLabel = checklistData?.nextJourneyTarget
-    ? "Click to start next chapter"
+    ? "Start next chapter"
     : "Pick a new Bible Study";
   const dailyStudySummaryLine = buildDailyStudySummaryLine({
     allDone,
@@ -468,7 +523,7 @@ export default function DashboardJourneyExperience({
     if (allDone) {
       return {
         streakLine,
-        nextLine: "You finished all 5 of today’s Bible tasks. Great job showing up.",
+        nextLine: "You finished every chapter task. Great job showing up.",
       };
     }
 
@@ -482,7 +537,7 @@ export default function DashboardJourneyExperience({
     if (nextTask.kind === "devotional") {
       return {
         streakLine,
-        nextLine: `Let’s continue today with ${nextTask.title}.`,
+        nextLine: `Let's begin with the chapter intro so ${nextTask.chapterLabel || "today's chapter"} has context before you read.`,
       };
     }
 
@@ -490,7 +545,7 @@ export default function DashboardJourneyExperience({
       return {
         streakLine,
         nextLine: devotionalTask?.done
-          ? `Congrats on finishing ${devotionalTask.title}. Keep going and read ${readingTask?.chapterLabel || nextTask.title}.`
+          ? `You've read the ${readingTask?.chapterLabel || nextTask.chapterLabel || "chapter"} intro. Now keep going and read ${readingTask?.chapterLabel || nextTask.title}.`
           : `Keep going and read ${readingTask?.chapterLabel || nextTask.title}.`,
       };
     }
@@ -518,7 +573,7 @@ export default function DashboardJourneyExperience({
   function buildLouisNextStepMessage() {
     if (allDone) {
       return {
-        focusLine: "Chapter study complete. The next chapter is ready when you are.",
+        focusLine: `You finished ${completedChapterLabel}. Are you ready to start ${nextChapterLabel}?`,
       };
     }
 
@@ -554,7 +609,7 @@ export default function DashboardJourneyExperience({
 
       if (error) {
         console.error("[DASHBOARD] Could not load devotionals:", error);
-        setDevotionalSettingsMessage("Louis could not load the devotional list. Try again in a moment.");
+        setDevotionalSettingsMessage("Louis could not load the Bible study list. Try again in a moment.");
         setDevotionalOptions([]);
       } else {
         const options = (data || []) as DevotionalOption[];
@@ -606,12 +661,12 @@ export default function DashboardJourneyExperience({
         dayNumber: nextDay,
       });
 
-      setDevotionalSettingsMessage(`${selected?.title || "Your devotional"} is set for your daily tasks.`);
+      setDevotionalSettingsMessage(`${selected?.title || "Your Bible study"} is set for your daily tasks.`);
       onDevotionalChanged();
       window.setTimeout(() => setShowDevotionalSettings(false), 650);
     } catch (error) {
       console.error("[DASHBOARD] Could not save devotional setting:", error);
-      setDevotionalSettingsMessage("Louis could not save that devotional. Try again in a moment.");
+      setDevotionalSettingsMessage("Louis could not save that Bible study. Try again in a moment.");
     } finally {
       setIsSavingDevotional(false);
     }
@@ -658,7 +713,7 @@ export default function DashboardJourneyExperience({
       onDevotionalChanged();
     } catch (error) {
       console.error("[DASHBOARD] Could not reset devotional:", error);
-      setDevotionalSettingsMessage("Louis could not reset this devotional. Try again in a moment.");
+      setDevotionalSettingsMessage("Louis could not reset this Bible study. Try again in a moment.");
     } finally {
       setIsResettingDevotional(false);
     }
@@ -846,7 +901,7 @@ export default function DashboardJourneyExperience({
                     setShowDevotionalSettings(false);
                     setShowJourneyHelp(true);
                   }}
-                  className="absolute bottom-3 right-3 z-20 flex h-7 w-7 items-center justify-center rounded-full bg-transparent text-sm font-black text-gray-950 transition hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]/35"
+                  className="absolute bottom-3.5 right-4 z-20 flex h-7 w-7 items-center justify-center bg-transparent text-sm font-black text-gray-950 transition hover:text-[#4f8fb7] focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]/35"
                   aria-label="How Daily Bible Study tasks work"
                   title="How Daily Bible Study tasks work"
                 >
@@ -856,7 +911,7 @@ export default function DashboardJourneyExperience({
               <button
                 type="button"
                 onClick={onOpenDailyTasks}
-                className={`w-full rounded-[26px] px-4 pt-4 text-left ${allDone ? "pb-16" : "pb-9"}`}
+                className={`w-full rounded-[26px] px-4 pt-4 text-left ${allDone ? "pb-16" : "pb-4"}`}
               >
               {isLoadingChecklist ? (
                 <>
@@ -898,7 +953,7 @@ export default function DashboardJourneyExperience({
                       />
                     </div>
 
-                    <div className="mt-2.5 text-[13px] sm:text-sm">
+                    <div className="mt-2.5 pr-9 text-[13px] sm:text-sm">
                       <p className="min-w-0 text-center font-bold text-gray-800">
                         {dailyStudySummaryLine}
                       </p>
@@ -927,9 +982,9 @@ export default function DashboardJourneyExperience({
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="text-sm font-bold text-gray-950">Daily devotional</p>
+                      <p className="text-sm font-bold text-gray-950">Daily Bible Study</p>
                       <p className="mt-1 text-xs leading-5 text-gray-500">
-                        Choose which devotional Louis uses for your daily task flow.
+                        Choose which Bible study Louis uses for your daily task flow.
                       </p>
                     </div>
                     <button
@@ -945,7 +1000,7 @@ export default function DashboardJourneyExperience({
                   {isPaidUser ? (
                     <div className="mt-4 space-y-3">
                       <label className="block text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
-                        Devotional
+                        Bible Study
                       </label>
                       <select
                         value={selectedDevotionalId}
@@ -954,7 +1009,7 @@ export default function DashboardJourneyExperience({
                         className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2.5 text-sm font-medium text-gray-900 outline-none transition focus:border-[#7BAFD4] focus:ring-2 focus:ring-[#7BAFD4]/25 disabled:opacity-60"
                       >
                         {isLoadingDevotionalOptions ? (
-                          <option>Loading devotionals...</option>
+                          <option>Loading Bible studies...</option>
                         ) : (
                           devotionalOptions.map((devotional) => (
                             <option key={devotional.id} value={devotional.id}>
@@ -964,7 +1019,7 @@ export default function DashboardJourneyExperience({
                         )}
                       </select>
                       <p className="text-xs leading-5 text-gray-500">
-                        Louis will continue from your next unfinished day in the devotional you choose.
+                        Louis will continue from your next unfinished chapter in the Bible study you choose.
                       </p>
                       {devotionalSettingsMessage ? (
                         <p className="rounded-xl bg-[#f4f9fd] px-3 py-2 text-xs font-medium text-[#315f7d]">
@@ -977,12 +1032,12 @@ export default function DashboardJourneyExperience({
                         disabled={!selectedDevotionalId || isSavingDevotional || isLoadingDevotionalOptions || isResettingDevotional}
                         className="w-full rounded-full bg-[#7BAFD4] px-4 py-2.5 text-sm font-bold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc] disabled:cursor-not-allowed disabled:opacity-60"
                       >
-                        {isSavingDevotional ? "Saving..." : "Set devotional"}
+                        {isSavingDevotional ? "Saving..." : "Set Bible Study"}
                       </button>
                       <div className="rounded-2xl border border-gray-200 bg-gray-50 p-3">
                         <p className="text-xs font-bold text-gray-900">Reset selected Bible Study</p>
                         <p className="mt-1 text-xs leading-5 text-gray-500">
-                          Restart this Bible Study from the beginning. This only clears this study's devotional progress.
+                          Restart this Bible Study from the beginning. This only clears this study's progress.
                         </p>
                         <button
                           type="button"
@@ -996,9 +1051,9 @@ export default function DashboardJourneyExperience({
                     </div>
                   ) : (
                     <div className="mt-4 rounded-2xl border border-[#f0d7b3] bg-[#fff8ef] p-4">
-                      <p className="text-sm font-bold text-gray-950">Free devotional access</p>
+                      <p className="text-sm font-bold text-gray-950">Free Bible Study access</p>
                       <p className="mt-2 text-sm leading-6 text-gray-700">
-                        As a free user, you can use one devotional at a time. Upgrade to Pro to switch between every Bible Buddy devotional and keep exploring different studies.
+                        As a free user, you can use one Bible study at a time. Upgrade to Pro to switch between every Bible Buddy Bible study and keep exploring different studies.
                       </p>
                       <Link
                         href="/upgrade"
@@ -1009,7 +1064,7 @@ export default function DashboardJourneyExperience({
                       <div className="mt-4 rounded-2xl border border-[#ead7bd] bg-white/70 p-3">
                         <p className="text-xs font-bold text-gray-900">Reset current Bible Study</p>
                         <p className="mt-1 text-xs leading-5 text-gray-600">
-                          Restart this Bible Study from the beginning. This only clears this study's devotional progress.
+                          Restart this Bible Study from the beginning. This only clears this study's progress.
                         </p>
                         {devotionalSettingsMessage ? (
                           <p className="mt-3 rounded-xl bg-[#f4f9fd] px-3 py-2 text-xs font-medium text-[#315f7d]">
@@ -1073,7 +1128,7 @@ export default function DashboardJourneyExperience({
                         task.done ? taskCopy.doneAccent : taskCopy.idleAccent
                       }`}
                     >
-                      <span className="drop-shadow-sm" aria-hidden="true">{taskCopy.emoji}</span>
+                      <span className="drop-shadow-sm" aria-hidden="true">{getTaskEmoji(task)}</span>
                       {task.done ? (
                         <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#22b95f] text-xs font-black text-white ring-2 ring-white">
                           ✓
@@ -1233,7 +1288,7 @@ export default function DashboardJourneyExperience({
                   To keep your streak going, complete at least one meaningful Bible action each day. That can be reading the Bible Study intro, reading the chapter, opening the notes, finishing trivia, playing Scrambled, or writing a reflection when it is available.
                 </p>
                 <p className="mt-2 leading-7">
-                  You do not have to finish all 5 chapter tasks in one day. The streak is about returning to Scripture daily.
+                  You do not have to finish every chapter task in one day. The streak is about returning to Scripture daily.
                 </p>
               </section>
 
@@ -1248,7 +1303,7 @@ export default function DashboardJourneyExperience({
               </section>
 
               <section>
-                <h3 className="text-lg font-bold text-gray-950">The 5 Chapter Tasks</h3>
+                <h3 className="text-lg font-bold text-gray-950">The 6 Chapter Tasks</h3>
                 <div className="mt-3 space-y-3">
                   <div className="rounded-xl border border-gray-200 bg-white p-3">
                     <p className="font-bold text-gray-950">1. 📕 Bible Study Intro</p>
@@ -1280,6 +1335,12 @@ export default function DashboardJourneyExperience({
                       Scrambled reviews important words from the chapter in a quick, playful way.
                     </p>
                   </div>
+                  <div className="rounded-xl border border-gray-200 bg-white p-3">
+                    <p className="font-bold text-gray-950">6. Reflection</p>
+                    <p className="mt-1 text-sm leading-6 text-gray-700">
+                      Reflection gives you a place to answer the question and share what the chapter is doing in you.
+                    </p>
+                  </div>
                 </div>
               </section>
 
@@ -1296,3 +1357,4 @@ export default function DashboardJourneyExperience({
     </div>
   );
 }
+

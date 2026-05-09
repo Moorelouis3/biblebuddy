@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef, useMemo, type ReactNode } from "react";
 import { createClient } from "@supabase/supabase-js";
 import ReactMarkdown from "react-markdown";
 import { enrichPlainText } from "../lib/bibleHighlighting";
@@ -9,9 +9,14 @@ import { ensureBibleEntityLearned } from "../lib/bibleEntityProgress";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { consumeCreditAction } from "../lib/creditClient";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
+import { getTriviaBook, getTriviaChapter } from "../lib/triviaGameData";
+import { getScrambledBook, getScrambledChapter } from "../lib/scrambledGameData";
 import CreditLimitModal from "./CreditLimitModal";
+import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import { LouisAvatar } from "./LouisAvatar";
 import CommentSection from "./comments/CommentSection";
+import TriviaGamePlayer from "./TriviaGamePlayer";
+import ScrambledGamePlayer from "./ScrambledGamePlayer";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -44,6 +49,7 @@ interface DevotionalDayModalProps {
   onBibleReadingClick: (book: string, chapter: number) => void;
   onReadingComplete: () => void;
   onReflectionSave: (text: string) => void;
+  onIntroComplete?: () => void;
   onDayComplete: (reflectionText: string, readingCompleted: boolean) => void; // Called with current modal state values
 }
 
@@ -60,6 +66,33 @@ function stripInlineMarkdown(text: string) {
     .replace(/\*(.*?)\*/g, "$1")
     .replace(/^#+\s*/, "")
     .trim();
+}
+
+function normalizeBookKey(book: string) {
+  const rawBookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
+  return rawBookKey === "songofsolomon" ? "songofsongs" : rawBookKey;
+}
+
+function StudySectionCard({
+  title,
+  eyebrow,
+  children,
+}: {
+  title: string;
+  eyebrow?: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+      <div className="border-b border-gray-100 bg-gray-50 px-5 py-4 text-left">
+        {eyebrow ? (
+          <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#4f8fb7]">{eyebrow}</p>
+        ) : null}
+        <h3 className="text-lg font-bold text-gray-900">{title}</h3>
+      </div>
+      <div className="px-5 py-5">{children}</div>
+    </section>
+  );
 }
 
 function parseDevotionalContent(text: string, dayNumber: number): DevotionalContentBlock[] {
@@ -144,6 +177,7 @@ export default function DevotionalDayModal({
   onBibleReadingClick,
   onReadingComplete,
   onReflectionSave,
+  onIntroComplete,
   onDayComplete,
 }: DevotionalDayModalProps) {
   // User + progress state for “Mark as finished” buttons
@@ -158,8 +192,15 @@ export default function DevotionalDayModal({
   const [learnedToast, setLearnedToast] = useState<string | null>(null);
 
   const [readingChecked, setReadingChecked] = useState(dayProgress?.reading_completed || false);
+  const [introCompleted, setIntroCompleted] = useState(dayProgress?.is_completed || false);
   const [reflectionText, setReflectionText] = useState(dayProgress?.reflection_text || "");
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [showChapterNotesModal, setShowChapterNotesModal] = useState(false);
+  const [chapterNotesText, setChapterNotesText] = useState("");
+  const [chapterNotesLoading, setChapterNotesLoading] = useState(false);
+  const [chapterNotesError, setChapterNotesError] = useState<string | null>(null);
+  const [showTriviaModal, setShowTriviaModal] = useState(false);
+  const [showScrambledModal, setShowScrambledModal] = useState(false);
   const devotionalTextRef = useRef<HTMLDivElement>(null);
   
   // Modal states for people/places/keywords (same as Bible chapter page)
@@ -184,6 +225,19 @@ export default function DevotionalDayModal({
     (devotionalTitle || "").toLowerCase().includes("wisdom of proverbs") ||
     (devotionalId || "").toLowerCase().includes("wisdom-of-proverbs") ||
     (day.bible_reading_book || "").toLowerCase().trim() === "proverbs";
+  const useSeriesLikeProverbsLayout = isWisdomOfProverbs && day.day_number === 1;
+  const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
+  const bookKey = normalizeBookKey(day.bible_reading_book || "");
+  const triviaBook = useMemo(() => getTriviaBook(bookKey), [bookKey]);
+  const triviaChapter = useMemo(
+    () => getTriviaChapter(bookKey, day.bible_reading_chapter),
+    [bookKey, day.bible_reading_chapter]
+  );
+  const scrambledBook = useMemo(() => getScrambledBook(bookKey), [bookKey]);
+  const scrambledChapter = useMemo(
+    () => getScrambledChapter(bookKey, day.bible_reading_chapter),
+    [bookKey, day.bible_reading_chapter]
+  );
   const chapterDiscussionSlug =
     day.bible_reading_book && day.bible_reading_chapter
       ? `bible-chapter-${day.bible_reading_book.toLowerCase().replace(/\s+/g, "-")}-${day.bible_reading_chapter}`
@@ -259,6 +313,7 @@ export default function DevotionalDayModal({
 
   useEffect(() => {
     setReadingChecked(dayProgress?.reading_completed || false);
+    setIntroCompleted(dayProgress?.is_completed || false);
     setReflectionText(dayProgress?.reflection_text || "");
     setHasUnsavedChanges(false);
   }, [dayProgress]);
@@ -691,6 +746,66 @@ Be accurate to Scripture.`;
     onDayComplete(reflectionText.trim(), readingChecked);
   };
 
+  const handleIntroComplete = () => {
+    setIntroCompleted(true);
+    if (onIntroComplete) {
+      onIntroComplete();
+    }
+  };
+
+  async function handleOpenChapterNotes() {
+    if (!day.bible_reading_book || !day.bible_reading_chapter) return;
+
+    setShowChapterNotesModal(true);
+    setChapterNotesLoading(true);
+    setChapterNotesError(null);
+
+    const reviewOpenedLabel = `${chapterLabel} Review Opened`;
+
+    try {
+      if (userId) {
+        await supabase.from("master_actions").insert({
+          user_id: userId,
+          username,
+          action_type: ACTION_TYPE.chapter_notes_viewed,
+          action_label: reviewOpenedLabel,
+        });
+
+        const { data: existingReviewed } = await supabase
+          .from("master_actions")
+          .select("id")
+          .eq("user_id", userId)
+          .eq("action_type", ACTION_TYPE.chapter_notes_reviewed)
+          .eq("action_label", reviewOpenedLabel)
+          .limit(1)
+          .maybeSingle();
+
+        if (!existingReviewed) {
+          await supabase.from("master_actions").insert({
+            user_id: userId,
+            username,
+            action_type: ACTION_TYPE.chapter_notes_reviewed,
+            action_label: reviewOpenedLabel,
+          });
+        }
+      }
+
+      const { data, error } = await supabase
+        .from("bible_notes")
+        .select("notes_text")
+        .eq("book", day.bible_reading_book.toLowerCase().trim())
+        .eq("chapter", day.bible_reading_chapter)
+        .maybeSingle();
+
+      if (error) throw error;
+      setChapterNotesText(data?.notes_text || "No notes are available for this chapter yet.");
+    } catch (error: any) {
+      setChapterNotesError(error?.message || "Could not load the chapter notes.");
+    } finally {
+      setChapterNotesLoading(false);
+    }
+  }
+
   const handleClose = () => {
     // Close without saving - just discard any unsaved changes
     setReadingChecked(dayProgress?.reading_completed || false);
@@ -722,13 +837,176 @@ Be accurate to Scripture.`;
             <span className="text-2xl">⭐</span>
             <h1 className="text-2xl md:text-3xl font-bold text-gray-900">{primaryDayLabel}</h1>
           </div>
-          <h2 className="text-xl md:text-2xl font-semibold text-gray-700 ml-11">{day.day_title}</h2>
+          {!useSeriesLikeProverbsLayout ? (
+            <h2 className="text-xl md:text-2xl font-semibold text-gray-700 ml-11">{day.day_title}</h2>
+          ) : null}
         </div>
 
         {/* SCROLLABLE CONTENT AREA */}
         <div className="flex-1 overflow-y-auto px-6 sm:px-8 py-6">
           {showCreditBlocked ? null : (
             <>
+              {useSeriesLikeProverbsLayout ? (
+                <>
+                  <StudySectionCard title="Bible Study Intro" eyebrow="Task 1">
+                    <h2 className="mb-5 text-2xl font-black leading-tight text-gray-950">{day.day_title}</h2>
+                    <div ref={devotionalTextRef} className="text-gray-700" style={{ fontSize: "1rem" }}>
+                      {devotionalBlocks.map((block) => {
+                        if (block.kind === "divider") {
+                          return <hr key={block.key} className="my-6 border-gray-200" />;
+                        }
+
+                        if (block.kind === "heading") {
+                          const className =
+                            block.level === 1
+                              ? "mb-3 mt-6 text-2xl font-black leading-tight tracking-normal text-gray-950 first:mt-0"
+                              : "mb-3 mt-7 border-b border-gray-200 pb-2 text-xl font-black leading-tight tracking-normal text-gray-950";
+                          const HeadingTag = block.level === 1 ? "h2" : "h3";
+                          return (
+                            <HeadingTag
+                              key={block.key}
+                              className={className}
+                              dangerouslySetInnerHTML={{ __html: block.html }}
+                            />
+                          );
+                        }
+
+                        if (block.kind === "quote") {
+                          return (
+                            <blockquote
+                              key={block.key}
+                              className="my-5 rounded-xl border-l-4 border-[#7BAFD4] bg-[#eef6fd] px-4 py-3 text-base font-semibold leading-relaxed text-gray-900"
+                              dangerouslySetInnerHTML={{ __html: block.html }}
+                            />
+                          );
+                        }
+
+                        if (block.kind === "list") {
+                          return (
+                            <ul key={block.key} className="mb-5 ml-5 list-disc space-y-2 leading-relaxed text-gray-800">
+                              {block.items.map((item, index) => (
+                                <li key={`${block.key}-${index}`} dangerouslySetInnerHTML={{ __html: item }} />
+                              ))}
+                            </ul>
+                          );
+                        }
+
+                        return (
+                          <p
+                            key={block.key}
+                            className="mb-4 leading-relaxed text-gray-800"
+                            dangerouslySetInnerHTML={{ __html: block.html }}
+                          />
+                        );
+                      })}
+                    </div>
+                    <div className="mt-6 flex justify-center border-t border-gray-100 pt-5">
+                      <button
+                        type="button"
+                        onClick={handleIntroComplete}
+                        disabled={introCompleted}
+                        className={`w-full max-w-sm rounded-xl px-6 py-3 text-sm font-bold transition shadow-sm ${
+                          introCompleted
+                            ? "bg-emerald-100 text-emerald-700"
+                            : "text-slate-950 hover:opacity-90"
+                        }`}
+                        style={introCompleted ? undefined : { backgroundColor: "#7BAFD4" }}
+                      >
+                        {introCompleted ? "✓ Completed" : "Mark as Completed"}
+                      </button>
+                    </div>
+                  </StudySectionCard>
+
+                  <StudySectionCard title={`Read "${chapterLabel}"`} eyebrow="Task 2">
+                    <div className="text-center">
+                      <button
+                        type="button"
+                        onClick={() => onBibleReadingClick(day.bible_reading_book, day.bible_reading_chapter)}
+                        className={`rounded-xl px-6 py-3 text-sm font-bold transition shadow-sm hover:opacity-90 ${
+                          readingChecked ? "bg-emerald-100 text-emerald-700" : "text-slate-950"
+                        }`}
+                        style={readingChecked ? undefined : { backgroundColor: "#7BAFD4" }}
+                      >
+                        {readingChecked ? `✓ Read ${chapterLabel}` : `Read ${chapterLabel}`}
+                      </button>
+                    </div>
+                  </StudySectionCard>
+
+                  <StudySectionCard title="Chapter Notes" eyebrow="Task 3">
+                    <div className="text-center">
+                      <p className="mx-auto mb-4 max-w-md text-sm leading-relaxed text-gray-600">
+                        Open the Proverbs 1 notes when you are ready to go deeper into the chapter.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => void handleOpenChapterNotes()}
+                        className="rounded-xl px-6 py-3 text-sm font-bold text-slate-950 transition hover:opacity-90"
+                        style={{ backgroundColor: "#7BAFD4" }}
+                      >
+                        Open Chapter Notes
+                      </button>
+                    </div>
+                  </StudySectionCard>
+
+                  <StudySectionCard title="Trivia" eyebrow="Task 4">
+                    <div className="text-center">
+                      <p className="mx-auto mb-4 max-w-md text-sm leading-relaxed text-gray-600">
+                        Test what is sticking from Proverbs 1 with a short trivia round.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setShowTriviaModal(true)}
+                        disabled={!triviaBook || !triviaChapter}
+                        className="rounded-xl px-6 py-3 text-sm font-bold text-slate-950 transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                        style={{ backgroundColor: triviaBook && triviaChapter ? "#7BAFD4" : "#cbd5e1" }}
+                      >
+                        {triviaBook && triviaChapter ? "Start Trivia" : "Trivia Coming Soon"}
+                      </button>
+                    </div>
+                  </StudySectionCard>
+
+                  <StudySectionCard title="Scrambled" eyebrow="Task 5">
+                    <div className="text-center">
+                      <p className="mx-auto mb-4 max-w-md text-sm leading-relaxed text-gray-600">
+                        Slow down with key words from Proverbs 1 and lock them into memory.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setShowScrambledModal(true)}
+                        disabled={!scrambledBook || !scrambledChapter}
+                        className="rounded-xl px-6 py-3 text-sm font-bold text-slate-950 transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                        style={{ backgroundColor: scrambledBook && scrambledChapter ? "#7BAFD4" : "#cbd5e1" }}
+                      >
+                        {scrambledBook && scrambledChapter ? "Play Scrambled" : "Scrambled Coming Soon"}
+                      </button>
+                    </div>
+                  </StudySectionCard>
+
+                  <StudySectionCard title="Reflection" eyebrow="Task 6">
+                    <div className="mb-4 flex items-start gap-3">
+                      <div className="shrink-0 rounded-full border border-gray-200 bg-white p-1 shadow-sm">
+                        <LouisAvatar mood="think" size={44} />
+                      </div>
+                      <div className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm leading-relaxed text-gray-800 shadow-sm">
+                        <span>
+                          Now that you have read {primaryDayLabel}, answer this question:
+                        </span>{" "}
+                        <span className="font-semibold text-gray-950">
+                          {day.reflection_question || `What stood out to you most in ${primaryDayLabel}?`}
+                        </span>
+                      </div>
+                    </div>
+                    <CommentSection
+                      articleSlug={chapterDiscussionSlug}
+                      headingText=""
+                      placeholderText={`Answer the reflection question for ${primaryDayLabel}...`}
+                      submitButtonText="Post Reflection"
+                      variant="plain"
+                    />
+                  </StudySectionCard>
+                </>
+              ) : (
+                <>
               {/* DEVOTIONAL CONTENT SECTION */}
               <div className="mb-8" ref={devotionalTextRef}>
                 <div className="text-gray-700" style={{ fontSize: '1rem' }}>
@@ -785,7 +1063,7 @@ Be accurate to Scripture.`;
 
               {/* BIBLE READING SECTION */}
               <div className="mb-8 pb-6 border-b border-gray-200">
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4">
+                <h3 className={`${isWisdomOfProverbs ? "text-2xl md:text-3xl" : "text-lg md:text-xl"} font-bold text-gray-900 mb-4`}>
                   📖 Bible Reading
                 </h3>
                 
@@ -827,27 +1105,25 @@ Be accurate to Scripture.`;
               {/* REFLECTION SECTION */}
               {isWisdomOfProverbs ? (
                 <div className="mb-6">
-                  <div className="mx-auto mb-4 max-w-2xl rounded-2xl border border-blue-100 bg-gradient-to-br from-white via-blue-50 to-sky-50 p-5 shadow-sm">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
-                      Chapter Reflection
-                    </p>
-                    <h3 className="mt-2 text-xl font-bold text-gray-900">
-                      Answer this question
-                    </h3>
-                    {day.reflection_question ? (
-                      <p className="mt-3 text-base font-semibold leading-relaxed text-gray-900">
-                        {day.reflection_question}
-                      </p>
-                    ) : null}
-                    <p className="mt-2 text-sm leading-relaxed text-gray-700">
-                      Share your answer below and join the reflection for {primaryDayLabel}.
-                    </p>
+                  <div className="mb-4 flex items-start gap-3">
+                    <div className="shrink-0 rounded-full border border-gray-200 bg-white p-1 shadow-sm">
+                      <LouisAvatar mood="think" size={44} />
+                    </div>
+                    <div className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm leading-relaxed text-gray-800 shadow-sm">
+                      <span>
+                        Now that you have read {primaryDayLabel}, answer this question:
+                      </span>{" "}
+                      <span className="font-semibold text-gray-950">
+                        {day.reflection_question || `What stood out to you most in ${primaryDayLabel}?`}
+                      </span>
+                    </div>
                   </div>
                   <CommentSection
                     articleSlug={chapterDiscussionSlug}
-                    headingText={`${primaryDayLabel} Reflection Answers`}
+                    headingText=""
                     placeholderText={`Answer the reflection question for ${primaryDayLabel}...`}
                     submitButtonText="Post Reflection"
+                    variant="plain"
                   />
                 </div>
               ) : day.reflection_question ? (
@@ -870,28 +1146,88 @@ Be accurate to Scripture.`;
                   )}
                 </div>
               ) : null}
+                </>
+              )}
             </>
           )}
         </div>
 
         {/* ACTION BUTTONS - Fixed at bottom */}
-        <div className="flex-shrink-0 px-6 sm:px-8 py-4 border-t border-gray-200 bg-gray-50 flex gap-3">
-          <button
-            type="button"
-            onClick={handleClose}
-            className="flex-1 px-6 py-3 bg-white text-gray-700 rounded-lg font-medium hover:bg-gray-100 border border-gray-300 transition"
-          >
-            Close
-          </button>
+        {!useSeriesLikeProverbsLayout ? (
+        <div className="flex-shrink-0 px-6 sm:px-8 py-4 border-t border-gray-200 bg-gray-50 flex justify-center">
           <button
             type="button"
             onClick={handleMarkComplete}
-            className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition shadow-sm"
+            className="w-full max-w-sm px-6 py-3 rounded-lg font-semibold text-slate-950 transition shadow-sm"
+            style={{ backgroundColor: "#7BAFD4" }}
           >
             ✓ Mark Day as Complete
           </button>
         </div>
+        ) : null}
       </div>
+
+      {showChapterNotesModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4"
+          onClick={() => setShowChapterNotesModal(false)}
+        >
+          <div
+            className="relative w-full max-w-2xl max-h-[86vh] overflow-hidden rounded-3xl bg-white shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white px-6 py-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#4f8fb7]">Chapter Notes</p>
+                <h2 className="text-lg font-bold text-gray-900">{chapterLabel} Study Notes</h2>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowChapterNotesModal(false)}
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200"
+                aria-label="Close notes"
+              >
+                x
+              </button>
+            </div>
+            <div className="max-h-[74vh] overflow-y-auto px-6 py-5">
+              {chapterNotesLoading ? (
+                <p className="py-10 text-center text-sm text-gray-500">Loading notes...</p>
+              ) : chapterNotesError ? (
+                <p className="py-10 text-center text-sm text-red-500">{chapterNotesError}</p>
+              ) : (
+                <ChapterNotesMarkdown>{chapterNotesText}</ChapterNotesMarkdown>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showTriviaModal && triviaBook && triviaChapter && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4">
+          <div className="my-6 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
+            <TriviaGamePlayer
+              bookName={triviaBook.name}
+              bookSlug={triviaBook.routeSlug}
+              chapter={triviaChapter}
+              onClose={() => setShowTriviaModal(false)}
+            />
+          </div>
+        </div>
+      )}
+
+      {showScrambledModal && scrambledBook && scrambledChapter && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-3 py-4">
+          <div className="my-6 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
+            <ScrambledGamePlayer
+              bookName={scrambledBook.name}
+              bookSlug={scrambledBook.slug}
+              chapter={scrambledChapter}
+              onClose={() => setShowScrambledModal(false)}
+            />
+          </div>
+        </div>
+      )}
 
       {/* PERSON OVERLAY MODAL (nested, higher z-index) */}
       {selectedPerson && (

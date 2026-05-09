@@ -61,7 +61,7 @@ const chapterPlans: ChapterPlan[] = [
     summary: "Proverbs opens by telling you what the whole book is for: wisdom, instruction, justice, judgment, and discretion. It also makes the foundation plain: the fear of the Lord is the beginning of knowledge.",
     heart: "Before Proverbs gives you hundreds of wise sayings, it asks you where your life is centered. Wisdom does not begin with technique. It begins with seeing God clearly and letting His authority reorder your choices.",
     practice: "Pay attention today to the voices asking for your attention. Some voices invite you into wisdom, and some invite you into shortcuts that look easy but cost more later.",
-    reflection: "Where do you most need to let the fear of the Lord, not pressure or impulse, become the starting point for your next decision?",
+    reflection: "What does the Fear of the Lord mean to you?",
   },
   {
     chapter: 2,
@@ -439,7 +439,7 @@ The other voice is Wisdom herself.
 
 The chapter presses the first big decision:
 
-# Which voice will you follow?
+***Which voice will you follow?***
 
 ---
 

@@ -71,7 +71,7 @@ export default function CreditEducationModal({ open, onClose, userId, ignoreCred
               As a <span className="font-bold">FREE user</span>, you get <span className="font-bold">5 credits</span> each day.
             </p>
             <p className="mb-2">
-              Each time you explore a Person, Place, Keyword, devotional, or chapter review, one credit is used.<br />
+              Each time you explore a Person, Place, Keyword, Bible study, or chapter review, one credit is used.<br />
               Your credits reset daily.
             </p>
             <p className="mb-1">

@@ -64,7 +64,7 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   books: "Books",
   "study-groups": "Bible Study Group",
   "guided-studies": "Bible Study Tools",
-  devotionals: "Devotionals",
+  devotionals: "Bible Studies",
   "reading-plans": "Bible Reading Plans",
   "bible-study-games": "Bible Study Games",
   "bible-trivia": "Trivia",

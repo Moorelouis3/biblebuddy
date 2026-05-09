@@ -483,7 +483,7 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
   const simpleRoutes: Array<{ match: RegExp; href: string; reply: string }> = [
     { match: /\b(dashboard|home)\b/, href: "/dashboard", reply: "Okay.\n\nI’m taking you to the dashboard now." },
     { match: /\b(the )?bible( reader)?\b/, href: "/reading", reply: "Okay.\n\nI’m opening the Bible reader now." },
-    { match: /\bdevotionals?\b/, href: "/devotionals", reply: "Okay.\n\nI’m taking you to the devotionals page now." },
+    { match: /\b(devotionals?|bible studies?)\b/, href: "/devotionals", reply: "Okay.\n\nI’m taking you to the Bible Studies page now." },
     { match: /\b(reading plans?|plans?)\b/, href: "/reading-plans", reply: "Okay.\n\nI’m opening the reading plans now." },
     { match: /\b(group|bible study group|the group)\b/, href: "/study-groups", reply: "Okay.\n\nI’m taking you to The Bible Study Group now." },
     { match: /\b(tv|sermons?|bible buddy tv)\b/, href: "/biblebuddy-tv", reply: "Okay.\n\nI’m opening Bible Buddy TV now." },
@@ -742,6 +742,7 @@ function normalizeOnboardingGoal(value: string | null | undefined) {
   }
   if (
     normalized === "stay_consistent" ||
+    normalized === "stay consistent with bible studies and study plans" ||
     normalized === "stay consistent with devotionals and study plans"
   ) {
     return "stay_consistent";
@@ -786,7 +787,7 @@ function formatOnboardingGoal(goal: string | null | undefined) {
     case "build_bible_habit":
       return "build a habit of reading the Bible";
     case "stay_consistent":
-      return "stay consistent with devotionals and study plans";
+      return "stay consistent with Bible studies and study plans";
     case "study_with_buddies":
       return "study with other Bible Buddies";
     default:
@@ -1016,14 +1017,14 @@ function buildFallbackTarget(goal: string | null, currentStreak: number): LouisD
     key: "fallback-devotional",
     kind: "devotional",
     category: "devotional",
-    summaryLines: ["Your best move today is to start a devotional."],
+    summaryLines: ["Your best move today is to start a Bible study."],
     whyLine:
       currentStreak > 0
         ? "That keeps your streak moving and gives your Bible time some structure."
         : `${toGoalHelpLine(goal)} and gives you one clear place to start.`,
     question: "Ready to jump in?",
     href: "/devotionals",
-    yesFollowUp: "Let's get you into a devotional and keep this moving.",
+    yesFollowUp: "Let's get you into a Bible study and keep this moving.",
   };
 }
 
@@ -1255,7 +1256,7 @@ function buildHabitNudgeFromCards(openedCards: string[]): LouisHabitNudge | null
     return {
       key: "notes",
       summary:
-        "You haven't opened the study tools yet. That's where devotionals, reading plans, and the deeper study side of Bible Buddy really opens up.",
+        "You haven't opened the study tools yet. That's where Bible studies, reading plans, and the deeper study side of Bible Buddy really opens up.",
       label: "Open study tools",
       href: "/guided-studies",
     };
@@ -1300,8 +1301,8 @@ function summarizeLastMasterAction(action: {
   if (action.action_type === "devotional_day_completed" && label) {
     return {
       summary: `Last time you were in ${label}.`,
-      followUp: "Do you want to keep going with that devotional?",
-      continueLabel: "Open devotionals",
+      followUp: "Do you want to keep going with that Bible study?",
+      continueLabel: "Open Bible Studies",
       continueHref: "/devotionals",
     };
   }
@@ -1439,11 +1440,11 @@ function buildLouisJourneyRecommendation({
         ? `You told me you want to ${formattedGoal}.`
         : "The best way to get real traction in Bible Buddy is to start with one structured habit.",
       recommendationLine:
-        "Pick one devotional and let me walk you through it day by day. You do one thing a day, and I will help with the rest.",
-      primaryButtonText: "Start a devotional",
+        "Pick one Bible study and let me walk you through it chapter by chapter. You do one task at a time, and I will help with the rest.",
+      primaryButtonText: "Start a Bible study",
       primaryButtonHref: "/devotionals",
       level: 1,
-      cardTitle: "Start With A Devotional",
+      cardTitle: "Start With A Bible Study",
       cardSubtitle: "One daily track is the easiest way to build real momentum.",
       cardEyebrow: "Louis Recommends",
       cardTheme: "blue",
@@ -1484,7 +1485,7 @@ function buildLouisJourneyRecommendation({
       primaryButtonHref: isJoseph ? "/bible-trivia/joseph" : "/bible-trivia",
       level: 1,
       cardTitle: "Reinforce What You Just Learned",
-      cardSubtitle: "Trivia is a strong next step after devotional day 3.",
+      cardSubtitle: "Trivia is a strong next step after Bible study task 3.",
       cardEyebrow: "Day 3",
       cardTheme: "gold",
       recommendationKey: `louis-journey-day3-trivia:${primaryDevotional.id}:${primaryDevotional.dayNumber}`,
@@ -2481,7 +2482,7 @@ export function ChatLouis() {
 
   function isDailyLouisMessage(content: string) {
     return (
-      content.includes("Would you like to start a devotional?") ||
+      content.includes("Would you like to start a Bible study?") ||
       content.includes("Today is your first day") ||
       content.includes("Today is a new start") ||
       content.includes("You have not been here in") ||
@@ -2754,10 +2755,10 @@ export function ChatLouis() {
         "Let’s start your streak",
         onboardingGoal ? `You said you want to ${formatOnboardingGoal(onboardingGoal)}` : "",
         onboardingGoal ? "The best way to do that is to stay consistent daily" : "",
-        "I recommend starting with a devotional",
+        "I recommend starting with a Bible study",
         "It is a short daily reading",
         "that helps you stay structured and build a habit",
-        "Would you like to start a devotional?",
+        "Would you like to start a Bible study?",
       ].filter(Boolean).join("\n\n");
     }
 
@@ -2941,7 +2942,7 @@ export function ChatLouis() {
       case "daily_yes":
         if (dailyFlowType === "new_user") {
           markRolloutSeenLocal("devotionals_intro_seen");
-          appendAssistantMessage("Perfect\n\nI’m sending you to the devotional page now");
+          appendAssistantMessage("Perfect\n\nI’m sending you to the Bible Studies page now");
           clearLouisInputPrompt();
           setIsOpen(false);
           router.push("/devotionals");
@@ -2975,7 +2976,7 @@ export function ChatLouis() {
               : dailyFlowType === "second_layer"
                 ? "All good\n\nThat can wait for later\n\nI will be here if you want another push."
               : dailyFlowType === "devotional_start"
-                ? "No problem\n\nPick another devotional if you want\n\nI will be here"
+                ? "No problem\n\nPick another Bible study if you want\n\nI will be here"
                 : "No problem\n\nCome back when you are ready\n\nI will be here",
         );
         clearLouisInputPrompt();
@@ -3021,7 +3022,7 @@ export function ChatLouis() {
           );
           seedQuickReplies([
             pathname === "/dashboard"
-              ? { id: "guide-start-devotional", label: "Let's start with a devotional", action: "open_devotionals" }
+              ? { id: "guide-start-devotional", label: "Let's start with a Bible study", action: "open_devotionals" }
               : { id: "guide-follow-up", label: "I have a question", action: "guide_question" },
             pathname === "/dashboard"
               ? { id: "guide-follow-up-question", label: "I have a question", action: "guide_question" }

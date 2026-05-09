@@ -511,11 +511,11 @@ function parseVideoEmbed(url: string): { platform: VideoPlatform; embedUrl: stri
   return { platform: "unknown", embedUrl: null, portrait: false };
 }
 const VIDEO_META: Record<VideoPlatform, { icon: string; label: string }> = {
-  youtube:       { icon: "▶️", label: "YouTube" },
-  youtube_short: { icon: "▶️", label: "YouTube Shorts" },
-  tiktok:        { icon: "🎵", label: "TikTok" },
-  instagram:     { icon: "📸", label: "Instagram Reel" },
-  unknown:       { icon: "🎬", label: "Video" },
+  youtube:       { icon: "??", label: "YouTube" },
+  youtube_short: { icon: "??", label: "YouTube Shorts" },
+  tiktok:        { icon: "??", label: "TikTok" },
+  instagram:     { icon: "??", label: "Instagram Reel" },
+  unknown:       { icon: "??", label: "Video" },
 };
 
 function isUploadedVideo(url: string): boolean {
@@ -538,13 +538,13 @@ interface HubCategory {
 type TabKey = "home" | "general" | "bible_studies" | "updates" | "prayer" | "qa" | "members";
 
 const TABS: { key: TabKey; label: string }[] = [
-  { key: "home",          label: "🏠 Home" },
-  { key: "general",       label: "💬 General" },
-  { key: "bible_studies", label: "📚 Bible Studies" },
-  { key: "updates",       label: "📢 Updates" },
-  { key: "prayer",        label: "🙏 Prayer" },
-  { key: "qa",            label: "❓ Q&A" },
-  { key: "members",       label: "👥 Buddies" },
+  { key: "home",          label: "?? Home" },
+  { key: "general",       label: "?? General" },
+  { key: "bible_studies", label: "?? Bible Studies" },
+  { key: "updates",       label: "?? Updates" },
+  { key: "prayer",        label: "?? Prayer" },
+  { key: "qa",            label: "? Q&A" },
+  { key: "members",       label: "?? Buddies" },
 ];
 
 function getGroupPostCategory(activeTab: string): string {
@@ -600,7 +600,7 @@ function parseBibleBuddyTvSharePath(linkUrl: string | null | undefined) {
 }
 
 function isBibleBuddyTvSharePost(post: Pick<Post, "link_url" | "title">) {
-  return Boolean(parseBibleBuddyTvSharePath(post.link_url) && (post.title || "").toLowerCase().includes("📺"));
+  return Boolean(parseBibleBuddyTvSharePath(post.link_url) && (post.title || "").toLowerCase().includes("??"));
 }
 
 function parseScrambledSharePath(linkUrl: string | null | undefined) {
@@ -3571,7 +3571,7 @@ export default function GroupChatPage() {
       resetPostComposer();
       setShowPostComposerModal(false);
       triggerPostSuccess();
-      triggerToast("Posted to the group! 🙌");
+      triggerToast("Posted to the group! ??");
       void logActionToMasterActions(userId, "group_message_sent", group?.name || "Group");
     }
     setSubmitting(false);
@@ -4554,7 +4554,7 @@ export default function GroupChatPage() {
             )}
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-xl">{group.cover_emoji || "🤝"}</span>
+            <span className="text-xl">{group.cover_emoji || "??"}</span>
             <div className="flex-1 min-w-0">
               <h1 className="text-lg font-bold text-gray-900 truncate">{displayGroupName}</h1>
               <div className="flex items-center gap-3 flex-wrap">
@@ -4570,7 +4570,7 @@ export default function GroupChatPage() {
                 }}
                 className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
               >
-                👥 See All Buddies
+                ?? See All Buddies
               </button>
               {isLouisAdmin && (
                 <>
@@ -4578,13 +4578,13 @@ export default function GroupChatPage() {
                     href={`/study-groups/${group.id}/analytics`}
                     className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
                   >
-                    📊 Group Analytics
+                    ?? Group Analytics
                   </Link>
                   <Link
                     href={`/study-groups/${group.id}/scheduler`}
                     className="text-xs text-gray-600 hover:text-gray-900 transition font-medium"
                   >
-                    🗓️ Scheduler
+                    ??? Scheduler
                   </Link>
                 </>
               )}
@@ -4601,8 +4601,8 @@ export default function GroupChatPage() {
               { key: "bible_studies", label: "Bible Studies" },
             ];
             const moreItems = [
-              { key: "prayer", label: "🤲 Prayer Request", isHub: false },
-              { key: "qa", label: "❓ Q&A", isHub: false },
+              { key: "prayer", label: "?? Prayer Request", isHub: false },
+              { key: "qa", label: "? Q&A", isHub: false },
               ...hubCategories.map((cat) => ({
                 key: cat.id,
                 label: `${cat.emoji} ${cat.name}`,
@@ -4621,9 +4621,8 @@ export default function GroupChatPage() {
                         type="button"
                         onClick={() => {
                           if (tab.key === "bible_studies") {
-                            setSelectedSeries(null);
-                            setSelectedSeriesWeek(null);
-                            setSelectedPost(null);
+                            router.push("/devotionals");
+                            return;
                           }
                           setSelectedHubItem(null);
                           setActiveTab(tab.key);
@@ -4682,8 +4681,8 @@ export default function GroupChatPage() {
             style={{ top: moreMenuPosition.top, left: moreMenuPosition.left }}
           >
             {[
-              { key: "prayer", label: "🤲 Prayer Request", isHub: false },
-              { key: "qa", label: "❓ Q&A", isHub: false },
+              { key: "prayer", label: "?? Prayer Request", isHub: false },
+              { key: "qa", label: "? Q&A", isHub: false },
               ...hubCategories.map((cat) => ({
                 key: cat.id,
                 label: `${cat.emoji} ${cat.name}`,
@@ -4734,78 +4733,11 @@ export default function GroupChatPage() {
 
         {!selectedHubItem && <div className="max-w-2xl mx-auto px-4 py-4">
 
-          {activeTab === "home" && homeFeedSeriesPreview && (() => {
-            const cardState = getCurrentSeriesCardState(
-              homeFeedSeriesStartAt,
-              homeFeedSeriesPreview.title,
-              homeFeedSeriesPreview.total_weeks,
-              nowTs,
-            );
-            const bannerMeta = getSeriesBannerMeta(homeFeedSeriesPreview.title);
-            return (
-              <>
-                <button
-                  type="button"
-                  onClick={() => void handleOpenBibleStudyCard()}
-                  className="w-full mb-4 text-left rounded-2xl border shadow-sm hover:shadow-md transition overflow-hidden"
-                  style={{ backgroundColor: "#f4e2d2", borderColor: "#d9b896" }}
-                  >
-                    <div
-                      className="px-4 pt-4 pb-3"
-                      style={{ borderBottom: "1px solid #d9b896" }}
-                    >
-                      <div className="rounded-2xl overflow-hidden border shadow-sm" style={{ borderColor: "rgba(116, 74, 45, 0.16)" }}>
-                        {bannerMeta ? (
-                          <div className="relative h-32 sm:h-40" style={{ backgroundColor: bannerMeta.bg }}>
-                            <img
-                              src={bannerMeta.src}
-                              alt={bannerMeta.alt}
-                              className="w-full h-full object-cover"
-                              style={{ objectPosition: bannerMeta.objectPosition }}
-                            />
-                          </div>
-                        ) : (
-                          <div className="relative h-32 sm:h-40 bg-[#ead4c0]" />
-                        )}
-                    </div>
-                  </div>
-                  <div className="px-5 py-4">
-                    <p className="text-lg font-semibold text-gray-900">
-                      {homeFeedSeriesPreview.title}
-                    </p>
-                    {homeFeedSeriesStartAt && new Date(homeFeedSeriesStartAt).getTime() > nowTs ? (
-                      <div className="mt-2 flex items-center justify-between gap-3">
-                        <p
-                          className="text-base font-bold whitespace-nowrap"
-                          style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
-                        >
-                          Week 1 starts in {formatCountdown(new Date(homeFeedSeriesStartAt).getTime(), nowTs)}
-                        </p>
-                        <p className="text-xs text-gray-600 text-right whitespace-nowrap">{formatDateTimeLabel(homeFeedSeriesStartAt)}</p>
-                      </div>
-                    ) : (
-                      cardState.headline ? (
-                        <p
-                          className="mt-2 text-lg font-bold"
-                          style={{ color: "#d62828", WebkitTextFillColor: "#d62828" }}
-                        >
-                          {cardState.headline}
-                        </p>
-                      ) : null
-                    )}
-                    {!homeFeedSeriesStartAt || new Date(homeFeedSeriesStartAt).getTime() <= nowTs ? (
-                      <p className="text-sm text-gray-600 mt-1">{cardState.detail}</p>
-                    ) : null}
-                  </div>
-                </button>
-
-                <div className="mb-4">
-                  {renderUpdateCard()}
-                </div>
-
-              </>
-            );
-          })()}
+          {activeTab === "home" ? (
+            <div className="mb-4">
+              {renderUpdateCard()}
+            </div>
+          ) : null}
 
           {/* â”€â”€ MEMBERS TAB â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
           {activeTab === "members" && !selectedSeries && !selectedPost ? (
@@ -4869,7 +4801,7 @@ export default function GroupChatPage() {
                       className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#4a9b6f]"
                     >
                       See full ranking
-                      <span aria-hidden="true">→</span>
+                      <span aria-hidden="true">?</span>
                     </button>
                   </div>
                 </div>
@@ -5347,7 +5279,7 @@ export default function GroupChatPage() {
                           className="mt-3 w-full flex items-center justify-between py-3 text-left transition"
                         >
                           <div>
-                            <h4 className="text-base font-semibold text-gray-900">📖 About This Series</h4>
+                            <h4 className="text-base font-semibold text-gray-900">?? About This Series</h4>
                             <p className="text-xs text-gray-500 mt-0.5">What to expect, how it works, and what we will cover</p>
                           </div>
                           <svg
@@ -5363,7 +5295,7 @@ export default function GroupChatPage() {
                         {showSeriesOverviewDetails && (
                           <div className="pt-3 border-t" style={{ borderColor: seriesAccent.softBorder }}>
                             <div className="space-y-3">
-                              <h5 className="text-base font-semibold text-gray-900">📚 What We Are Studying</h5>
+                              <h5 className="text-base font-semibold text-gray-900">?? What We Are Studying</h5>
 
                               {isTemptationSeries ? (
                                 <>
@@ -5373,21 +5305,21 @@ export default function GroupChatPage() {
 
                                   <div className="space-y-2.5">
                                     <div>
-                                      <p className="font-semibold text-gray-900 mb-1">🔥 What we will cover</p>
+                                      <p className="font-semibold text-gray-900 mb-1">?? What we will cover</p>
                                       <p className="text-sm text-gray-700 leading-relaxed">
                                         We will study the temptation of Jesus directly, but we will also cover important background from Luke's Gospel like Jesus as a child, John the Baptist, and the spiritual buildup that leads into the wilderness story.
                                       </p>
                                     </div>
 
                                     <div>
-                                      <p className="font-semibold text-gray-900 mb-1">💬 How this group study works</p>
+                                      <p className="font-semibold text-gray-900 mb-1">?? How this group study works</p>
                                       <p className="text-sm text-gray-700 leading-relaxed">
                                         Each week includes guided reading, detailed notes to explain the verses, trivia questions, reflection prompts, and group discussion so we can all talk through what we are seeing in Scripture together.
                                       </p>
                                     </div>
 
                                     <div>
-                                      <p className="font-semibold text-gray-900 mb-1">🗓️ Weekly release rhythm</p>
+                                      <p className="font-semibold text-gray-900 mb-1">??? Weekly release rhythm</p>
                                       <p className="text-sm text-gray-700 leading-relaxed">
                                         Once the series starts, a new Bible study will release each week. The goal is for all of us to move through the same study together, reflect on the same reading, and discuss what we are learning as a group.
                                       </p>
@@ -5396,10 +5328,10 @@ export default function GroupChatPage() {
 
                                   <div className="space-y-1.5 pt-1">
                                     {[
-                                      "📖 Main focus: Luke 4:1-30",
-                                      "📝 Includes detailed notes and verse explanation",
-                                      "🎯 Trivia questions and reflection prompts each week",
-                                      "🤝 Built for shared discussion and group study",
+                                      "?? Main focus: Luke 4:1-30",
+                                      "?? Includes detailed notes and verse explanation",
+                                      "?? Trivia questions and reflection prompts each week",
+                                      "?? Built for shared discussion and group study",
                                     ].map((item) => (
                                       <p key={item} className="text-sm text-gray-700 leading-relaxed">{item}</p>
                                     ))}
@@ -5413,21 +5345,21 @@ export default function GroupChatPage() {
 
                                   <div className="space-y-2.5">
                                     <div>
-                                      <p className="font-semibold text-gray-900 mb-1">🔥 What we will cover</p>
+                                      <p className="font-semibold text-gray-900 mb-1">?? What we will cover</p>
                                       <p className="text-sm text-gray-700 leading-relaxed">
                                         We will cover Joseph's dreams, the pit, slavery, prison, Pharaoh's court, the famine, the brothers returning, Judah's growth, Joseph's forgiveness, and the final hope that points beyond Egypt.
                                       </p>
                                     </div>
 
                                     <div>
-                                      <p className="font-semibold text-gray-900 mb-1">💬 How this group study works</p>
+                                      <p className="font-semibold text-gray-900 mb-1">?? How this group study works</p>
                                       <p className="text-sm text-gray-700 leading-relaxed">
                                         Each week includes the chapter reading, detailed notes, trivia questions, reflection prompts, and group discussion so we can slow down and really understand the story instead of rushing past it.
                                       </p>
                                     </div>
 
                                     <div>
-                                      <p className="font-semibold text-gray-900 mb-1">🗓️ Weekly release rhythm</p>
+                                      <p className="font-semibold text-gray-900 mb-1">??? Weekly release rhythm</p>
                                       <p className="text-sm text-gray-700 leading-relaxed">
                                         Once the series starts, one chapter unlocks each week. The goal is for the group to move together, reflect together, and watch the testing of Joseph unfold in order.
                                       </p>
@@ -5436,10 +5368,10 @@ export default function GroupChatPage() {
 
                                   <div className="space-y-1.5 pt-1">
                                     {[
-                                      "📖 Main focus: Genesis 37-50",
-                                      "📝 Includes detailed notes and verse explanation",
-                                      "🎯 Trivia questions and reflection prompts each week",
-                                      "🤝 Built for shared discussion and group study",
+                                      "?? Main focus: Genesis 37-50",
+                                      "?? Includes detailed notes and verse explanation",
+                                      "?? Trivia questions and reflection prompts each week",
+                                      "?? Built for shared discussion and group study",
                                     ].map((item) => (
                                       <p key={item} className="text-sm text-gray-700 leading-relaxed">{item}</p>
                                     ))}
@@ -5452,10 +5384,10 @@ export default function GroupChatPage() {
                                   </p>
                                   <div className="space-y-1.5 pt-1">
                                     {[
-                                      "📖 Weekly Bible reading",
-                                      "📝 Detailed study notes",
-                                      "🎯 Trivia and reflection prompts",
-                                      "🤝 Shared group discussion",
+                                      "?? Weekly Bible reading",
+                                      "?? Detailed study notes",
+                                      "?? Trivia and reflection prompts",
+                                      "?? Shared group discussion",
                                     ].map((item) => (
                                       <p key={item} className="text-sm text-gray-700 leading-relaxed">{item}</p>
                                     ))}
@@ -5564,12 +5496,12 @@ export default function GroupChatPage() {
                                 <p className="text-sm font-semibold text-gray-900 mt-0.5">{lesson ? lesson.title : "Coming Soon"}</p>
                               </div>
                               {complete ? (
-                                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-green-100 text-green-700 flex-shrink-0">✓ Done</span>
+                                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-green-100 text-green-700 flex-shrink-0">? Done</span>
                               ) : unlocked && lesson ? (
                                 done > 0 ? <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-600 flex-shrink-0">{done}/{SERIES_WEEK_TOTAL_SECTIONS}</span>
                                 : <span className="text-xs text-gray-400 flex-shrink-0">Not started</span>
                               ) : (
-                                <span className="text-xs text-gray-400 flex-shrink-0">🔒</span>
+                                <span className="text-xs text-gray-400 flex-shrink-0">??</span>
                               )}
                             </div>
                             {isPreviewSeries ? (
@@ -5597,7 +5529,7 @@ export default function GroupChatPage() {
                               >
                                 {wn === 1 && sd
                                   ? `Starting Soon · ${formatCountdown(getWeekUnlockTimestamp(sd, 1), nowTs)}`
-                                  : `🔒 ${weekLabel} Locked`}
+                                  : `?? ${weekLabel} Locked`}
                               </button>
                             )}
                           </div>
@@ -5628,8 +5560,8 @@ export default function GroupChatPage() {
                           <p className="text-xs text-gray-400 mb-1">Week {post.week_number}</p>
                           <p className="text-sm font-semibold text-gray-900 truncate">{post.title}</p>
                           <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
-                            <span>❤️ {post.like_count}</span>
-                            <span>💬 {post.comment_count}</span>
+                            <span>?? {post.like_count}</span>
+                            <span>?? {post.comment_count}</span>
                           </div>
                         </div>
                         <div className="flex flex-col items-end gap-2 flex-shrink-0">
@@ -6935,7 +6867,7 @@ export default function GroupChatPage() {
             style={{ animationDelay: `${Math.min(index * 0.045, 0.45)}s` }}
           >
             <div>
-            {post.is_pinned && <div className="flex items-center gap-1 text-xs text-amber-600 font-medium mb-2">📌 Pinned</div>}
+            {post.is_pinned && <div className="flex items-center gap-1 text-xs text-amber-600 font-medium mb-2">?? Pinned</div>}
             <div className="flex items-start gap-3">
               {post.profile_image_url ? (
                 <img src={post.profile_image_url} alt={post.display_name || ""} className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
@@ -7310,7 +7242,7 @@ export default function GroupChatPage() {
                 A few quick things help your profile feel real and make sure you do not miss replies, likes, and important Bible Buddy updates.
               </p>
             </div>
-            <div className="h-11 w-11 rounded-2xl bg-[#eef8ef] flex items-center justify-center text-xl flex-shrink-0">✨</div>
+            <div className="h-11 w-11 rounded-2xl bg-[#eef8ef] flex items-center justify-center text-xl flex-shrink-0">?</div>
           </div>
         ) : null}
 
@@ -7356,7 +7288,7 @@ export default function GroupChatPage() {
                     Get real-time Bible Buddy notifications when someone likes your post, replies, or sends something important.
                   </p>
                 </div>
-                <div className="text-xl flex-shrink-0">🔔</div>
+                <div className="text-xl flex-shrink-0">??</div>
               </div>
               <div className="mt-3 flex items-center gap-3">
                 <button
@@ -7391,7 +7323,7 @@ export default function GroupChatPage() {
                     Save it to your home screen so you can continue studying the Bible with one tap on the Bible Buddy icon.
                   </p>
                 </div>
-                <div className="text-xl flex-shrink-0">📲</div>
+                <div className="text-xl flex-shrink-0">??</div>
               </div>
 
               {isIosDevice ? (
@@ -7460,15 +7392,15 @@ export default function GroupChatPage() {
                 <div className="min-w-0">
                   <p className="text-sm font-semibold text-gray-900">Go deeper with Bible Buddy Pro</p>
                   <p className="text-sm text-gray-600 mt-1">
-                    Unlock unlimited study, open every devotional, and keep going without credit limits when you are in the middle of a real breakthrough.
+                    Unlock unlimited study, open every Bible study, and keep going without credit limits when you are in the middle of a real breakthrough.
                   </p>
                   <div className="mt-2 flex flex-wrap gap-2">
                     <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Unlimited study access</span>
-                    <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Full devotional library</span>
+                    <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Full Bible study library</span>
                     <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">No daily credit wall</span>
                   </div>
                 </div>
-                <div className="text-xl flex-shrink-0">👑</div>
+                <div className="text-xl flex-shrink-0">??</div>
               </div>
               <div className="mt-3 flex items-center gap-3">
                 <Link

@@ -51,6 +51,8 @@ interface CommentSectionProps {
   headingText?: string;
   placeholderText?: string;
   submitButtonText?: string;
+  variant?: "default" | "plain";
+  onPosted?: () => void;
 }
 
 function groupComments(comments: Comment[]): Comment[] {
@@ -93,6 +95,8 @@ export default function CommentSection({
   headingText = "Comments",
   placeholderText = "Write a comment...",
   submitButtonText = "Post Comment",
+  variant = "default",
+  onPosted,
 }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [user, setUser] = useState<{ id: string; name: string } | null>(null);
@@ -342,6 +346,7 @@ export default function CommentSection({
       setReplyTo(null);
       await notifyMentionedUsers(postedCommentId, trimmedContent);
       triggerToast("Comment posted!");
+      onPosted?.();
     }
   };
 
@@ -489,7 +494,11 @@ export default function CommentSection({
               )}
             </Link>
             <div className="min-w-0 flex-1">
-              <div className="rounded-2xl border border-[#efe5d9] bg-[#faf7f2] px-3 py-2.5">
+              <div
+                className={`rounded-2xl border px-3 py-2.5 ${
+                  variant === "plain" ? "border-gray-200 bg-white" : "border-[#efe5d9] bg-[#faf7f2]"
+                }`}
+              >
                 <div className="flex items-start gap-2">
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-2">
@@ -619,14 +628,25 @@ export default function CommentSection({
         {headingText ? <h2 className="mb-2 text-xl font-bold text-gray-900">{headingText}</h2> : null}
         {error && <div className="mb-3 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">{error}</div>}
         {user && !replyTo && (
-          <form onSubmit={handlePost} className="flex items-end gap-3">
+          <form
+            onSubmit={handlePost}
+            className={
+              variant === "plain"
+                ? "flex items-center gap-3 rounded-2xl border border-green-200 bg-white px-4 py-4 shadow-sm"
+                : "flex items-end gap-3"
+            }
+          >
             {user && (
               <Link href={`/profile/${user.id}`} className="flex-shrink-0">
                 {currentUserProfileImage ? (
-                  <img src={currentUserProfileImage} alt={user.name} className="h-9 w-9 rounded-full object-cover" />
+                  <img
+                    src={currentUserProfileImage}
+                    alt={user.name}
+                    className={`${variant === "plain" ? "h-12 w-12" : "h-9 w-9"} rounded-full object-cover`}
+                  />
                 ) : (
                   <div
-                    className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-white"
+                    className={`flex ${variant === "plain" ? "h-12 w-12" : "h-9 w-9"} items-center justify-center rounded-full text-sm font-bold text-white`}
                     style={{ backgroundColor: avatarColor(user.id) }}
                   >
                     {user.name.charAt(0).toUpperCase()}
@@ -634,9 +654,17 @@ export default function CommentSection({
                 )}
               </Link>
             )}
-            <div className="flex flex-1 items-end gap-2 rounded-2xl bg-gray-100 px-4 py-3">
+            <div
+              className={`flex flex-1 items-center gap-2 ${
+                variant === "plain" ? "min-h-[44px] bg-white px-0 py-0" : "rounded-2xl bg-gray-100 px-4 py-3"
+              }`}
+            >
               <TextareaMentionInput
-                className="max-h-28 flex-1 resize-none bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none"
+                className={
+                  variant === "plain"
+                    ? "h-6 max-h-6 min-h-0 flex-1 resize-none overflow-hidden bg-transparent text-base font-semibold leading-6 text-gray-900 placeholder-gray-900 outline-none"
+                    : "max-h-28 flex-1 resize-none overflow-hidden bg-transparent text-sm text-gray-900 placeholder-gray-400 outline-none"
+                }
                 rows={1}
                 value={content}
                 onChange={setContent}
@@ -647,12 +675,12 @@ export default function CommentSection({
               />
               <button
                 type="submit"
-                className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full transition disabled:opacity-40"
+                className={`${variant === "plain" ? "h-3.5 w-3.5" : "h-9 w-9"} flex flex-shrink-0 items-center justify-center rounded-full transition disabled:opacity-40`}
                 style={{ backgroundColor: "#4a9b6f" }}
                 disabled={loading || !content.trim()}
                 aria-label={submitButtonText}
               >
-                <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className={`${variant === "plain" ? "hidden" : "h-4 w-4"} text-white`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                 </svg>
               </button>
@@ -661,7 +689,11 @@ export default function CommentSection({
         )}
         <div>
           {comments.length === 0 ? (
-            <div className="mt-4 rounded-xl border border-dashed border-[#ead8c4] bg-[#fffaf4] px-5 py-10 text-center text-sm text-gray-500">
+            <div
+              className={`mt-4 rounded-xl border px-5 py-10 text-center text-sm text-gray-500 ${
+                variant === "plain" ? "border-gray-200 bg-white" : "border-dashed border-[#ead8c4] bg-[#fffaf4]"
+              }`}
+            >
               No comments yet. Be the first to share your reflection.
             </div>
           ) : (

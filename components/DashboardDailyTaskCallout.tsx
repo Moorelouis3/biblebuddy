@@ -3,10 +3,10 @@
 import { useEffect, useMemo, useState } from "react";
 import BibleReadingModal from "./BibleReadingModal";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
-import DevotionalDayModal from "./DevotionalDayModal";
 import { ModalShell } from "./ModalShell";
 import ScrambledGamePlayer from "./ScrambledGamePlayer";
 import TriviaGamePlayer from "./TriviaGamePlayer";
+import CommentSection from "./comments/CommentSection";
 import type { TaskState } from "./LouisDailyTasksModal";
 import { triggerPoints } from "./PointsPop";
 import { ACTION_TYPE } from "../lib/actionTypes";
@@ -14,7 +14,6 @@ import { supabase } from "../lib/supabaseClient";
 import { getScrambledBook, getScrambledChapter } from "../lib/scrambledGameData";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../lib/triviaCatalog";
 import { getTriviaBook, getTriviaChapter } from "../lib/triviaGameData";
-import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
 
 type Props = {
   task: TaskState | null;
@@ -46,13 +45,23 @@ type DayProgressRow = {
 };
 
 function parseDevotionalTask(task: TaskState) {
+  if (task.devotionalId && task.devotionalDayNumber) {
+    return {
+      devotionalId: task.devotionalId,
+      dayNumber: task.devotionalDayNumber,
+    };
+  }
   if (!task.href) return null;
-  const match = task.href.match(/\/devotionals\/([^?]+)\?day=(\d+)/);
+  const match = task.href.match(/\/devotionals\/([^/?]+)(?:\/day\/(\d+)|\?day=(\d+))/);
   if (!match) return null;
   return {
     devotionalId: decodeURIComponent(match[1]),
-    dayNumber: Number(match[2]),
+    dayNumber: Number(match[2] || match[3]),
   };
+}
+
+function chapterSlug(book: string, chapter: number) {
+  return `bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${chapter}`;
 }
 
 function getTriviaSlugFromTask(task: TaskState) {
@@ -85,9 +94,11 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   const [notesLoading, setNotesLoading] = useState(false);
   const [notesError, setNotesError] = useState<string | null>(null);
   const [notesMarkedComplete, setNotesMarkedComplete] = useState(false);
-  const [selectedDevotionalReading, setSelectedDevotionalReading] = useState<{ book: string; chapter: number } | null>(null);
 
-  const devotionalTarget = useMemo(() => (task?.kind === "devotional" ? parseDevotionalTask(task) : null), [task]);
+  const devotionalTarget = useMemo(
+    () => (task?.kind === "devotional" || task?.kind === "reflection" ? parseDevotionalTask(task) : null),
+    [task],
+  );
   const triviaTarget = useMemo(() => (task?.kind === "trivia" ? getTriviaSlugFromTask(task) : null), [task]);
   const scrambledTarget = useMemo(() => (task?.kind === "scrambled" ? getScrambledSlugFromTask(task) : null), [task]);
 
@@ -233,61 +244,33 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   }
 
   async function handleReadingMarkedComplete() {
-    // The dashboard refresh happens when the reading popup closes, so the user can see the card flip.
+    if (!userId || !task?.book || !task.chapter) return;
+
+    if (task.devotionalId && task.devotionalDayNumber) {
+      await supabase.from("devotional_progress").upsert(
+        {
+          user_id: userId,
+          devotional_id: task.devotionalId,
+          day_number: task.devotionalDayNumber,
+          reading_completed: true,
+        },
+        { onConflict: "user_id,devotional_id,day_number" },
+      );
+    }
   }
 
-  async function handleDevotionalReadingClick(book: string, chapter: number) {
-    if (!userId || !devotional || !devotionalTarget) return;
-    const { data } = await supabase.auth.getUser();
-    const meta: any = data.user?.user_metadata || {};
-    const username = meta.firstName || meta.first_name || (data.user?.email ? data.user.email.split("@")[0] : null) || null;
-
-    void trackNavigationActionOnce({
-      userId,
-      username,
-      actionType: ACTION_TYPE.devotional_bible_reading_opened,
-      actionLabel: `${devotional.title} - Day ${devotionalTarget.dayNumber} - ${book} ${chapter}`,
-      dedupeKey: `dashboard-devotional-reading:${devotionalTarget.devotionalId}:${devotionalTarget.dayNumber}:${book.toLowerCase()}:${chapter}`,
-    });
-    setSelectedDevotionalReading({ book, chapter });
+  async function closeReadingAndRefresh() {
+    await handleReadingMarkedComplete();
+    closeAndRefresh();
   }
 
-  async function handleDevotionalReadingComplete() {
-    if (!userId || !devotionalTarget) return;
-    await supabase.from("devotional_progress").upsert(
-      {
-        user_id: userId,
-        devotional_id: devotionalTarget.devotionalId,
-        day_number: devotionalTarget.dayNumber,
-        reading_completed: true,
-      },
-      { onConflict: "user_id,devotional_id,day_number" },
-    );
-
-    setDayProgress((prev) => ({
-      day_number: devotionalTarget.dayNumber,
-      is_completed: prev?.is_completed ?? false,
-      reading_completed: true,
-      reflection_text: prev?.reflection_text ?? null,
-    }));
+  async function closeNotesAndRefresh() {
+    await markNotesComplete();
+    closeAndRefresh();
   }
 
-  async function handleDevotionalReflectionSave(text: string) {
-    if (!userId || !devotionalTarget || !text.trim()) return;
-    await supabase.from("devotional_progress").upsert(
-      {
-        user_id: userId,
-        devotional_id: devotionalTarget.devotionalId,
-        day_number: devotionalTarget.dayNumber,
-        reflection_text: text.trim(),
-      },
-      { onConflict: "user_id,devotional_id,day_number" },
-    );
-  }
-
-  async function handleDevotionalDayComplete(reflectionText: string, readingCompleted: boolean) {
+  async function handleDevotionalIntroComplete() {
     if (!userId || !devotionalTarget || !devotional) return;
-    if (!readingCompleted) return;
 
     const { data: existingProgressData } = await supabase
       .from("devotional_progress")
@@ -304,12 +287,17 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
         devotional_id: devotionalTarget.devotionalId,
         day_number: devotionalTarget.dayNumber,
         is_completed: true,
-        reading_completed: readingCompleted,
-        reflection_text: reflectionText || null,
         completed_at: new Date().toISOString(),
       },
       { onConflict: "user_id,devotional_id,day_number" },
     );
+
+    setDayProgress((prev) => ({
+      day_number: devotionalTarget.dayNumber,
+      is_completed: true,
+      reading_completed: prev?.reading_completed ?? false,
+      reflection_text: prev?.reflection_text ?? null,
+    }));
 
     if (!wasAlreadyCompleted) {
       const { data } = await supabase.auth.getUser();
@@ -323,49 +311,95 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
       });
     }
 
+    onProgressUpdated();
+  }
+
+  async function closeIntroAndRefresh() {
+    await handleDevotionalIntroComplete();
     closeAndRefresh();
   }
 
   if (!task) return null;
 
   if (task.kind === "reading" && task.book && task.chapter) {
-    return <BibleReadingModal book={task.book} chapter={task.chapter} onClose={closeAndRefresh} onMarkComplete={handleReadingMarkedComplete} />;
+    return <BibleReadingModal book={task.book} chapter={task.chapter} onClose={() => void closeReadingAndRefresh()} onMarkComplete={handleReadingMarkedComplete} />;
   }
 
-  if (task.kind === "devotional") {
+  if (task.kind === "devotional" || task.kind === "reflection") {
     if (devotionalDay && devotional) {
+      const chapterLabel = `${devotionalDay.bible_reading_book} ${devotionalDay.bible_reading_chapter}`;
+
+      if (task.kind === "reflection") {
+        return (
+          <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
+            <div className="relative my-6 w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
+              <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-[#4f8fb7]">Task 6</p>
+                  <h2 className="text-lg font-bold text-gray-900">Answer The Reflection Question</h2>
+                  <p className="mt-1 text-sm text-gray-600">{chapterLabel}</p>
+                </div>
+                <button type="button" onClick={closeAndRefresh} className="text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950" aria-label="Close reflection">
+                  ×
+                </button>
+              </div>
+              <div className="max-h-[75vh] overflow-y-auto px-6 py-5">
+                <div className="mb-5 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 text-gray-800 shadow-sm">
+                  Now that you have read {chapterLabel}, answer this question:{" "}
+                  <span className="font-black text-gray-950">{devotionalDay.reflection_question || "What stood out to you from this chapter?"}</span>
+                </div>
+                <CommentSection
+                  articleSlug={chapterSlug(devotionalDay.bible_reading_book, devotionalDay.bible_reading_chapter)}
+                  headingText=""
+                  placeholderText={`Answer the reflection question for ${chapterLabel}...`}
+                  submitButtonText="Post Reflection"
+                  variant="plain"
+                  onPosted={closeAndRefresh}
+                />
+              </div>
+            </div>
+          </ModalShell>
+        );
+      }
+
       return (
-        <>
-          <DevotionalDayModal
-            devotionalId={devotional.id}
-            devotionalTitle={devotional.title}
-            day={devotionalDay}
-            dayProgress={dayProgress}
-            showCreditBlocked={false}
-            onClose={closeAndRefresh}
-            onBibleReadingClick={handleDevotionalReadingClick}
-            onReadingComplete={handleDevotionalReadingComplete}
-            onReflectionSave={handleDevotionalReflectionSave}
-            onDayComplete={handleDevotionalDayComplete}
-          />
-          {selectedDevotionalReading ? (
-            <BibleReadingModal
-              book={selectedDevotionalReading.book}
-              chapter={selectedDevotionalReading.chapter}
-              onClose={() => setSelectedDevotionalReading(null)}
-              onMarkComplete={() => {
-                void handleDevotionalReadingComplete();
-              }}
-            />
-          ) : null}
-        </>
+        <ModalShell isOpen={true} onClose={() => void closeIntroAndRefresh()} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
+          <div className="relative my-6 w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
+            <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-[#4f8fb7]">Task 1</p>
+                <h2 className="text-lg font-bold text-gray-900">Read Chapter Intro</h2>
+                <p className="mt-1 text-sm font-semibold text-gray-700">
+                  {chapterLabel}: {devotionalDay.day_title}
+                </p>
+              </div>
+              <button type="button" onClick={() => void closeIntroAndRefresh()} className="text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950" aria-label="Close intro">
+                ×
+              </button>
+            </div>
+            <div className="max-h-[75vh] overflow-y-auto px-6 py-5">
+              <ChapterNotesMarkdown>{devotionalDay.devotional_text}</ChapterNotesMarkdown>
+            </div>
+            <div className="border-t border-gray-100 px-6 py-4">
+              <button
+                type="button"
+                onClick={() => void closeIntroAndRefresh()}
+                className={`mx-auto block rounded-full px-8 py-3 text-sm font-black shadow-sm transition ${
+                  dayProgress?.is_completed ? "bg-emerald-100 text-emerald-700" : "bg-[#7BAFD4] text-slate-950 hover:bg-[#6aa3ca]"
+                }`}
+              >
+                {dayProgress?.is_completed ? "Intro Reading Completed" : "Mark as Read"}
+              </button>
+            </div>
+          </div>
+        </ModalShell>
       );
     }
 
     return (
       <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/45" closeOnBackdrop={false}>
         <div className="mx-4 w-full max-w-md rounded-3xl bg-white p-6 text-center shadow-2xl">
-          <p className="text-sm font-semibold text-gray-900">{devotionalLoading ? "Loading devotional day..." : devotionalError || "Could not open this task."}</p>
+          <p className="text-sm font-semibold text-gray-900">{devotionalLoading ? "Loading Bible Study..." : devotionalError || "Could not open this task."}</p>
         </div>
       </ModalShell>
     );
@@ -373,15 +407,15 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
   if (task.kind === "notes") {
     return (
-      <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
+      <ModalShell isOpen={true} onClose={() => void closeNotesAndRefresh()} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
         <div className="relative my-6 w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
           <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-blue-600">Chapter Notes</p>
               <h2 className="text-base font-bold text-gray-900">{task.chapterLabel || task.title}</h2>
             </div>
-            <button type="button" onClick={closeAndRefresh} className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200" aria-label="Close notes">
-              x
+            <button type="button" onClick={() => void closeNotesAndRefresh()} className="text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950" aria-label="Close notes">
+              ×
             </button>
           </div>
           <div className="max-h-[75vh] overflow-y-auto px-6 py-5">
@@ -398,7 +432,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
           <div className="border-t border-gray-100 px-6 py-4">
             <button
               type="button"
-              onClick={markNotesComplete}
+              onClick={() => void closeNotesAndRefresh()}
               disabled={notesMarkedComplete}
               className={`w-full rounded-full px-5 py-3 text-sm font-semibold transition ${
                 notesMarkedComplete ? "bg-emerald-100 text-emerald-700" : "bg-[#24457b] text-white hover:bg-[#1f3b69]"

@@ -273,20 +273,20 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
             if (content && content.verses) {
               const verses = content.verses as BibleApiVerse[];
               setSections(convertToSections(verses, bookDisplay));
-              
-              // Generate enriched_content and save it
-              const enriched = await enrichBibleVerses(verses);
-              setEnrichedContent(enriched);
-              
-              // Update database with enriched_content
-              await supabase
-                .from("bible_chapters")
-                .update({ enriched_content: enriched })
-                .eq("book", bookParam)
-                .eq("chapter", chapter);
-              
               setLoading(false);
               loadingRef.current = false;
+
+              // Generate enriched_content in the background so the chapter opens immediately.
+              enrichBibleVerses(verses)
+                .then(async (enriched) => {
+                  setEnrichedContent(enriched);
+                  await supabase
+                    .from("bible_chapters")
+                    .update({ enriched_content: enriched })
+                    .eq("book", bookParam)
+                    .eq("chapter", chapter);
+                })
+                .catch((error) => console.error("[BIBLE_READING_MODAL] Background enrichment failed:", error));
               return;
             }
           }
@@ -303,11 +303,11 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
 
         const apiData: BibleApiResponse = await response.json();
 
-        // Step E: Generate enriched_content from verses
-        const enriched = await enrichBibleVerses(apiData.verses);
-        setEnrichedContent(enriched);
+        setSections(convertToSections(apiData.verses, bookDisplay));
+        setLoading(false);
+        loadingRef.current = false;
 
-        // Step F: Save to Supabase (check first to prevent duplicates)
+        // Step E: Save raw chapter first so the reading popup can open quickly next time.
         const { data: existingCheck } = await supabase
           .from("bible_chapters")
           .select("id")
@@ -323,12 +323,22 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
                 book: bookParam,
                 chapter: chapter,
                 content_json: apiData,
-                enriched_content: enriched,
               },
             ]);
         }
 
-        setSections(convertToSections(apiData.verses, bookDisplay));
+        // Step F: Generate enriched_content in the background.
+        enrichBibleVerses(apiData.verses)
+          .then(async (enriched) => {
+            setEnrichedContent(enriched);
+            await supabase
+              .from("bible_chapters")
+              .update({ enriched_content: enriched })
+              .eq("book", bookParam)
+              .eq("chapter", chapter);
+          })
+          .catch((error) => console.error("[BIBLE_READING_MODAL] Background enrichment failed:", error));
+        return;
       } catch (err) {
         console.error("Error loading chapter:", err);
         setError(err instanceof Error ? err.message : "Failed to load chapter");

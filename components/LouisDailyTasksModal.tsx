@@ -20,7 +20,7 @@ import {
 import { LouisAvatar } from "./LouisAvatar";
 import { triggerPoints } from "./PointsPop";
 
-type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled";
+type TaskKind = "devotional" | "reading" | "notes" | "trivia" | "scrambled" | "reflection";
 
 export type TaskState = {
   kind: TaskKind;
@@ -116,7 +116,7 @@ function formatCompletedAtLabel(iso: string | null | undefined) {
 
 function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
   return {
-    title: "Bible Journey",
+    title: "Bible Study",
     streakLine: "Today still counts. Let’s build momentum again.",
     contextLine: "Choose a Bible Study first so Louis can build your chapter journey.",
     timeLeftLabel: "",
@@ -194,21 +194,11 @@ export async function fetchLouisDailyChecklistData(
   if (progressError) throw progressError;
   if (profileStatsError) throw profileStatsError;
 
-  const completedRows = (progressRows || []).filter((row: DevotionalProgressRow) => row.is_completed === true);
-
   const maxStartedByDevotional = new Map<string, number>();
   (progressRows || []).forEach((row: DevotionalProgressRow) => {
     const current = maxStartedByDevotional.get(row.devotional_id) ?? 0;
     if (row.day_number > current) {
       maxStartedByDevotional.set(row.devotional_id, row.day_number);
-    }
-  });
-
-  const maxByDevotional = new Map<string, number>();
-  completedRows.forEach((row: DevotionalProgressRow) => {
-    const current = maxByDevotional.get(row.devotional_id) ?? 0;
-    if (row.day_number > current) {
-      maxByDevotional.set(row.devotional_id, row.day_number);
     }
   });
 
@@ -230,7 +220,7 @@ export async function fetchLouisDailyChecklistData(
 
   const recommendedDevotional =
     devotionals.find((devotional) => {
-      const maxDay = maxByDevotional.get(devotional.id) ?? 0;
+      const maxDay = maxStartedByDevotional.get(devotional.id) ?? 0;
       return maxDay < (devotional.total_days || 0);
     }) ??
     (freeDevotionalId ? devotionals.find((devotional) => devotional.id === freeDevotionalId) ?? null : null) ??
@@ -251,7 +241,7 @@ export async function fetchLouisDailyChecklistData(
     recommendedDevotional;
 
   const activeTotalDays = Math.max(1, activeDevotional.total_days || 1);
-  const computedNextDay = Math.min((maxByDevotional.get(activeDevotional.id) ?? 0) + 1, activeTotalDays);
+  const computedNextDay = Math.min(Math.max(maxStartedByDevotional.get(activeDevotional.id) ?? 1, 1), activeTotalDays);
   const nextDayNumber =
     storedTarget?.devotionalId === activeDevotional.id &&
     storedTarget.dayNumber >= 1 &&
@@ -287,7 +277,9 @@ export async function fetchLouisDailyChecklistData(
   const hasTrivia = Boolean(getTriviaChapter(resolvedBookKey, day.bible_reading_chapter));
   const hasScrambled = Boolean(getScrambledChapter(resolvedBookKey, day.bible_reading_chapter));
 
-  const [todayProgressRes, actionsRes, completedChapterRes, notesHistoryRes] = await Promise.all([
+  const reflectionSlug = `bible-chapter-${day.bible_reading_book.toLowerCase().replace(/\s+/g, "-")}-${day.bible_reading_chapter}`;
+
+  const [todayProgressRes, actionsRes, completedChapterRes, notesHistoryRes, reflectionRes] = await Promise.all([
     supabase
       .from("devotional_progress")
       .select("devotional_id, day_number, is_completed, reading_completed, completed_at")
@@ -324,12 +316,22 @@ export async function fetchLouisDailyChecklistData(
       .order("created_at", { ascending: false })
       .limit(1)
       .maybeSingle(),
+    supabase
+      .from("article_comments")
+      .select("id, created_at")
+      .eq("user_id", userId)
+      .eq("article_slug", reflectionSlug)
+      .eq("is_deleted", false)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle(),
   ]);
 
   if (todayProgressRes.error) throw todayProgressRes.error;
   if (actionsRes.error) throw actionsRes.error;
   if (completedChapterRes.error) throw completedChapterRes.error;
   if (notesHistoryRes.error) throw notesHistoryRes.error;
+  if (reflectionRes.error) throw reflectionRes.error;
 
   const actionRows = actionsRes.data || [];
   const todayProgress = todayProgressRes.data as DevotionalProgressRow | null;
@@ -359,7 +361,6 @@ export async function fetchLouisDailyChecklistData(
   const devotionalDone = todayProgress?.is_completed === true;
   const readingDone =
     todayProgress?.reading_completed === true ||
-    devotionalDone ||
     Boolean(completedChapterRes.data) ||
     actionRows.some((row) =>
       (row.action_type === ACTION_TYPE.devotional_bible_reading_opened &&
@@ -370,11 +371,12 @@ export async function fetchLouisDailyChecklistData(
   const notesDone = Boolean(notesAction);
   const triviaDone = Boolean(triviaAction);
   const scrambledDone = Boolean(scrambledAction);
+  const reflectionDone = Boolean(reflectionRes.data);
 
   const tasks: TaskState[] = [
     {
       kind: "devotional",
-      title: `Do Day ${nextDayNumber} of ${activeDevotional.title}`,
+      title: `Read Chapter Intro for ${chapterLabel}`,
       pointsLabel: "+5 pts",
       href: `/devotionals/${activeDevotional.id}?day=${nextDayNumber}&from=louis-daily-task`,
       done: devotionalDone,
@@ -391,6 +393,8 @@ export async function fetchLouisDailyChecklistData(
       pointsLabel: "+5 pts",
       href: `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?from=louis-daily-task`,
       done: readingDone,
+      devotionalId: activeDevotional.id,
+      devotionalDayNumber: nextDayNumber,
       book: day.bible_reading_book,
       chapter: day.bible_reading_chapter,
       chapterLabel,
@@ -404,6 +408,8 @@ export async function fetchLouisDailyChecklistData(
       pointsLabel: "+5 pts",
       href: `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?notes=1&from=louis-daily-task`,
       done: notesDone,
+      devotionalId: activeDevotional.id,
+      devotionalDayNumber: nextDayNumber,
       book: day.bible_reading_book,
       chapter: day.bible_reading_chapter,
       chapterLabel,
@@ -418,6 +424,11 @@ export async function fetchLouisDailyChecklistData(
         : `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?notes=1&from=louis-daily-task`,
       done: hasTrivia ? triviaDone : notesDone,
       disabled: false,
+      devotionalId: activeDevotional.id,
+      devotionalDayNumber: nextDayNumber,
+      book: day.bible_reading_book,
+      chapter: day.bible_reading_chapter,
+      chapterLabel,
       completedAtLabel: hasTrivia
         ? (triviaDone ? formatCompletedAtLabel(triviaAction?.created_at) : null)
         : (notesDone ? formatCompletedAtLabel(notesAction?.created_at) : null),
@@ -431,11 +442,29 @@ export async function fetchLouisDailyChecklistData(
         : `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?from=louis-daily-task`,
       done: hasScrambled ? scrambledDone : readingDone,
       disabled: false,
+      devotionalId: activeDevotional.id,
+      devotionalDayNumber: nextDayNumber,
+      book: day.bible_reading_book,
+      chapter: day.bible_reading_chapter,
+      chapterLabel,
       completedAtLabel: hasScrambled
         ? (scrambledDone ? formatCompletedAtLabel(scrambledAction?.created_at) : null)
         : (readingDone
             ? formatCompletedAtLabel(todayProgress?.completed_at || (completedChapterRes.data as { completed_at?: string | null } | null)?.completed_at)
             : null),
+    },
+    {
+      kind: "reflection",
+      title: "Answer The Reflection Question",
+      pointsLabel: "+5 pts",
+      href: `/devotionals/${activeDevotional.id}?day=${nextDayNumber}&from=louis-daily-task-reflection`,
+      done: reflectionDone,
+      devotionalId: activeDevotional.id,
+      devotionalDayNumber: nextDayNumber,
+      book: day.bible_reading_book,
+      chapter: day.bible_reading_chapter,
+      chapterLabel,
+      completedAtLabel: reflectionDone ? formatCompletedAtLabel(reflectionRes.data?.created_at) : null,
     },
   ];
 
@@ -450,7 +479,7 @@ export async function fetchLouisDailyChecklistData(
       : null;
 
   return {
-    title: "Bible Journey",
+    title: "Bible Study",
     streakLine:
       currentStreak > 0
         ? `You are on a ${currentStreak} day streak right now.`
@@ -564,13 +593,19 @@ export default function LouisDailyTasksModal({
       setShowCelebration(true);
     }
 
-    if (cycleStartedAt && data.nextJourneyTarget) {
-      rememberLouisDailyTaskTarget(userId, cycleStartedAt, data.nextJourneyTarget);
-    }
   }, [open, userId, data]);
 
   function handleOpenTask(task: TaskState) {
     if (!task.href || task.disabled) return;
+    if (
+      task.devotionalId &&
+      task.devotionalDayNumber &&
+      String(task.book || "").toLowerCase().trim() === "proverbs"
+    ) {
+      onClose();
+      router.push(`/devotionals/${task.devotionalId}/day/${task.devotionalDayNumber}`);
+      return;
+    }
     if (task.kind === "notes" && task.book && task.chapter) {
       setSelectedNotesTask(task);
       setNotesText("");
