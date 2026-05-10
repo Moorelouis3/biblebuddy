@@ -12,9 +12,7 @@ import { ACTION_TYPE } from "../lib/actionTypes";
 import {
   getLouisDailyTaskTarget,
   hasLouisChapterJourneyBonusAwarded,
-  hasSeenLouisChapterJourneyCelebration,
   rememberLouisChapterJourneyBonusAwarded,
-  rememberLouisChapterJourneyCelebrationSeen,
   rememberLouisDailyTaskTarget,
 } from "../lib/louisDailyFlow";
 import { LouisAvatar } from "./LouisAvatar";
@@ -31,6 +29,7 @@ export type TaskState = {
   disabled?: boolean;
   completedAtLabel?: string | null;
   devotionalId?: string | null;
+  devotionalTitle?: string | null;
   devotionalDayNumber?: number | null;
   book?: string | null;
   chapter?: number | null;
@@ -45,6 +44,8 @@ type DevotionalRow = {
 
 type ProfileStatsDevotionalRow = {
   free_devotional_id?: string | null;
+  louis_primary_devotional_id?: string | null;
+  louis_primary_devotional_day?: number | null;
 };
 
 type DevotionalDayRow = {
@@ -186,7 +187,7 @@ export async function fetchLouisDailyChecklistData(
       .order("completed_at", { ascending: false }),
     supabase
       .from("profile_stats")
-      .select("free_devotional_id")
+      .select("free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day")
       .eq("user_id", userId)
       .maybeSingle(),
   ]);
@@ -203,6 +204,12 @@ export async function fetchLouisDailyChecklistData(
   });
 
   const freeDevotionalId = (profileStatsRow as ProfileStatsDevotionalRow | null)?.free_devotional_id ?? null;
+  const dbTargetDevotionalId = (profileStatsRow as ProfileStatsDevotionalRow | null)?.louis_primary_devotional_id ?? null;
+  const dbTargetDayNumber = (profileStatsRow as ProfileStatsDevotionalRow | null)?.louis_primary_devotional_day ?? null;
+  const dbTarget =
+    dbTargetDevotionalId && typeof dbTargetDayNumber === "number" && dbTargetDayNumber >= 1
+      ? { devotionalId: dbTargetDevotionalId, dayNumber: dbTargetDayNumber }
+      : null;
 
   const { data: allDevotionals, error: allDevotionalsError } = await supabase
     .from("devotionals")
@@ -212,7 +219,8 @@ export async function fetchLouisDailyChecklistData(
   if (allDevotionalsError) throw allDevotionalsError;
 
   const devotionals = (allDevotionals || []) as DevotionalRow[];
-  const hasChosenOrStartedDevotional = Boolean(freeDevotionalId) || (progressRows || []).length > 0;
+  const hasChosenOrStartedDevotional =
+    Boolean(freeDevotionalId) || Boolean(dbTargetDevotionalId) || (progressRows || []).length > 0;
 
   if (!hasChosenOrStartedDevotional) {
     return buildChooseDevotionalChecklistData(userId);
@@ -235,6 +243,9 @@ export async function fetchLouisDailyChecklistData(
     freeDevotionalId ? devotionals.find((devotional) => devotional.id === freeDevotionalId) ?? null : null;
   const activeDevotional =
     selectedDevotional ??
+    (dbTarget
+      ? devotionals.find((devotional) => devotional.id === dbTarget.devotionalId) ?? null
+      : null) ??
     (storedTarget
       ? devotionals.find((devotional) => devotional.id === storedTarget.devotionalId) ?? null
       : null) ??
@@ -243,9 +254,13 @@ export async function fetchLouisDailyChecklistData(
   const activeTotalDays = Math.max(1, activeDevotional.total_days || 1);
   const computedNextDay = Math.min(Math.max(maxStartedByDevotional.get(activeDevotional.id) ?? 1, 1), activeTotalDays);
   const nextDayNumber =
-    storedTarget?.devotionalId === activeDevotional.id &&
-    storedTarget.dayNumber >= 1 &&
-    storedTarget.dayNumber <= activeTotalDays
+    dbTarget?.devotionalId === activeDevotional.id &&
+    dbTarget.dayNumber >= 1 &&
+    dbTarget.dayNumber <= activeTotalDays
+      ? dbTarget.dayNumber
+      : storedTarget?.devotionalId === activeDevotional.id &&
+          storedTarget.dayNumber >= 1 &&
+          storedTarget.dayNumber <= activeTotalDays
       ? storedTarget.dayNumber
       : computedNextDay;
 
@@ -254,6 +269,24 @@ export async function fetchLouisDailyChecklistData(
       devotionalId: activeDevotional.id,
       dayNumber: nextDayNumber,
     });
+  }
+
+  if (!dbTarget || dbTarget.devotionalId !== activeDevotional.id || dbTarget.dayNumber !== nextDayNumber) {
+    void supabase
+      .from("profile_stats")
+      .upsert(
+        {
+          user_id: userId,
+          louis_primary_devotional_id: activeDevotional.id,
+          louis_primary_devotional_day: nextDayNumber,
+        },
+        { onConflict: "user_id" },
+      )
+      .then(({ error }) => {
+        if (error) {
+          console.error("[LOUIS DAILY TASKS] Could not sync Bible Study target:", error);
+        }
+      });
   }
 
   const { data: dayRow, error: dayError } = await supabase
@@ -381,6 +414,7 @@ export async function fetchLouisDailyChecklistData(
       href: `/devotionals/${activeDevotional.id}?day=${nextDayNumber}&from=louis-daily-task`,
       done: devotionalDone,
       devotionalId: activeDevotional.id,
+      devotionalTitle: activeDevotional.title,
       devotionalDayNumber: nextDayNumber,
       book: day.bible_reading_book,
       chapter: day.bible_reading_chapter,
@@ -394,6 +428,7 @@ export async function fetchLouisDailyChecklistData(
       href: `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?from=louis-daily-task`,
       done: readingDone,
       devotionalId: activeDevotional.id,
+      devotionalTitle: activeDevotional.title,
       devotionalDayNumber: nextDayNumber,
       book: day.bible_reading_book,
       chapter: day.bible_reading_chapter,
@@ -409,6 +444,7 @@ export async function fetchLouisDailyChecklistData(
       href: `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?notes=1&from=louis-daily-task`,
       done: notesDone,
       devotionalId: activeDevotional.id,
+      devotionalTitle: activeDevotional.title,
       devotionalDayNumber: nextDayNumber,
       book: day.bible_reading_book,
       chapter: day.bible_reading_chapter,
@@ -425,6 +461,7 @@ export async function fetchLouisDailyChecklistData(
       done: hasTrivia ? triviaDone : notesDone,
       disabled: false,
       devotionalId: activeDevotional.id,
+      devotionalTitle: activeDevotional.title,
       devotionalDayNumber: nextDayNumber,
       book: day.bible_reading_book,
       chapter: day.bible_reading_chapter,
@@ -443,6 +480,7 @@ export async function fetchLouisDailyChecklistData(
       done: hasScrambled ? scrambledDone : readingDone,
       disabled: false,
       devotionalId: activeDevotional.id,
+      devotionalTitle: activeDevotional.title,
       devotionalDayNumber: nextDayNumber,
       book: day.bible_reading_book,
       chapter: day.bible_reading_chapter,
@@ -460,6 +498,7 @@ export async function fetchLouisDailyChecklistData(
       href: `/devotionals/${activeDevotional.id}?day=${nextDayNumber}&from=louis-daily-task-reflection`,
       done: reflectionDone,
       devotionalId: activeDevotional.id,
+      devotionalTitle: activeDevotional.title,
       devotionalDayNumber: nextDayNumber,
       book: day.bible_reading_book,
       chapter: day.bible_reading_chapter,
@@ -586,11 +625,6 @@ export default function LouisDailyTasksModal({
     if (!hasLouisChapterJourneyBonusAwarded(userId, data.journeyKey)) {
       rememberLouisChapterJourneyBonusAwarded(userId, data.journeyKey);
       triggerPoints(10);
-    }
-
-    if (!hasSeenLouisChapterJourneyCelebration(userId, data.journeyKey)) {
-      rememberLouisChapterJourneyCelebrationSeen(userId, data.journeyKey);
-      setShowCelebration(true);
     }
 
   }, [open, userId, data]);

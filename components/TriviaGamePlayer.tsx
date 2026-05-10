@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
@@ -19,6 +19,7 @@ type TriviaGamePlayerProps = {
   bookSlug: string;
   chapter: TriviaChapterPack;
   onClose?: () => void;
+  onComplete?: () => void;
 };
 
 async function fetchVerseText(reference: string) {
@@ -38,7 +39,7 @@ async function fetchVerseText(reference: string) {
   }
 }
 
-export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose }: TriviaGamePlayerProps) {
+export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose, onComplete }: TriviaGamePlayerProps) {
   const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -50,6 +51,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
   const [userId, setUserId] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState<boolean | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const completionNotifiedRef = useRef(false);
 
   const bookKey = useMemo(() => {
     return CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.routeSlug === bookSlug)?.key ?? bookSlug;
@@ -235,6 +237,12 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose 
         console.error("[NAV] Failed to track Trivia chapter completion:", error);
       });
   }, [showResults, userId, bookName, chapter.chapter, questions.length, earnedCorrectCount, bookKey]);
+
+  useEffect(() => {
+    if (!showResults || completionNotifiedRef.current) return;
+    completionNotifiedRef.current = true;
+    onComplete?.();
+  }, [showResults, onComplete]);
 
   useEffect(() => {
     if (!showResults) return;

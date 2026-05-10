@@ -173,8 +173,11 @@ export default function DashboardPage() {
   const [dailyTaskSummaryLine, setDailyTaskSummaryLine] = useState<string | null>(null);
   const [selectedDashboardTask, setSelectedDashboardTask] = useState<TaskState | null>(null);
   const dailyTaskPopupOpenRef = useRef(false);
+  const dailyChecklistDataRef = useRef<ChecklistData | null>(null);
   const dailyTaskSummaryLoadedKeyRef = useRef<string | null>(null);
   const dailyTaskSummaryInFlightRef = useRef<{ key: string; promise: Promise<void> } | null>(null);
+  const chapterCelebrationTimerRef = useRef<number | null>(null);
+  const dailyStreakSequenceCheckRef = useRef<string | null>(null);
   const [dailyTaskTimeLeftLabel, setDailyTaskTimeLeftLabel] = useState<string | null>(null);
   const [motivationalMessage, setMotivationalMessage] = useState<string>("");
   const [proExpiresAt, setProExpiresAt] = useState<string | null>(null);
@@ -210,6 +213,10 @@ export default function DashboardPage() {
     return `bb:streak-points-shown:${currentUserId}:${dayKey}`;
   }
 
+  function getDailyStreakPopupActionLabel(dayKey: string) {
+    return `daily_streak_popup_shown:${dayKey}`;
+  }
+
   function getStreakMotivation(streak: number) {
     const safeStreak = Math.max(0, Math.floor(streak));
     const toFire = Math.max(0, 30 - safeStreak);
@@ -217,45 +224,45 @@ export default function DashboardPage() {
     if (safeStreak >= 3650) {
       return {
         headline: `${safeStreak} day streak`,
-        body: "Ten years of showing up is wild. This is no longer a phase. This is part of who you are now.",
-         followUp: "Do you want to continue your Bible journey?",
+        body: `You have logged in to Bible Buddy for ${safeStreak} days straight. Ten years of showing up is not a phase anymore. It is a life rhythm.`,
+         followUp: "Do you want to continue your Bible Study?",
       };
     }
 
     if (safeStreak === 30) {
       return {
         headline: "You earned the fire badge",
-        body: "Congrats, you hit 30 days in a row and unlocked the fire badge. Great job showing up and staying consistent.",
-         followUp: "Do you want to continue your Bible journey?",
+        body: "You have logged in to Bible Buddy for 30 days straight. The consistency flame is yours now. Let’s keep that fire pointed toward God’s Word.",
+         followUp: "Do you want to continue your Bible Study?",
       };
     }
 
     if (safeStreak === 0) {
       return {
         headline: "A fresh start",
-        body: "Today is a perfect day to start a new Bible reading streak. One honest day with the Word can become something strong.",
-         followUp: "Do you want to continue your Bible journey?",
+        body: "You have logged in to Bible Buddy today. Every major thing starts with a Day 1, and this is a beautiful place to begin.",
+         followUp: "Do you want to continue your Bible Study?",
       };
     }
 
     const exactDayMessages: Record<number, string> = {
-      1: "Today is a perfect day to start a new Bible reading streak. Day 1 always matters because it means you showed up.",
-      2: "Hey, this makes 2 days in a row. You are heating up now, and the habit is already starting to form.",
-      3: "Wow, now you're cooking. Three days in a row of taking in the Word is a strong start.",
-      4: "Okay, now you're just showing off. Four days in a row is the kind of momentum that changes people.",
-      5: "Did you know if you hit 30 days logging in to Bible Buddy you earn the fire badge? You're already 5 days into the climb.",
-      6: "Six days in a row is not random anymore. You're building rhythm now.",
-      7: "One full week. That's how real consistency starts to look.",
-      14: "Two full weeks in a row is strong. Your habit is getting roots now.",
-      21: "Three weeks in. At this point you're proving you can live with this kind of consistency.",
-      29: "You're right there. One more day and that fire badge is yours.",
+      1: "Every major thing starts with a Day 1. Let’s make today count and start digging into God’s Word.",
+      2: "Two days means you came back. That matters because habits are built by returning.",
+      3: "Three days in a row is a real start. Keep giving Scripture a place in your day.",
+      4: "Four days is momentum. Keep showing up before the habit has to feel easy.",
+      5: "Five straight days is strong. You are already building the kind of rhythm that can carry you.",
+      6: "Six days in a row is not random anymore. Let’s keep the pattern alive today.",
+      7: "One full week. That is how consistency begins to feel real.",
+      14: "Two full weeks in a row is strong. Your Bible habit is starting to grow roots.",
+      21: "Three weeks in. This is the kind of steady showing up that starts reshaping ordinary days.",
+      29: "You are one day away from the consistency flame. Stay with it today.",
     };
 
     if (exactDayMessages[safeStreak]) {
       return {
         headline: `${safeStreak} day streak`,
-        body: exactDayMessages[safeStreak],
-         followUp: "Do you want to continue your Bible journey?",
+        body: `You have logged in to Bible Buddy for ${safeStreak} days straight. ${exactDayMessages[safeStreak]}`,
+         followUp: "Do you want to continue your Bible Study?",
       };
     }
 
@@ -264,42 +271,42 @@ export default function DashboardPage() {
       if (safeStreak < 10) {
         return [
           `You're on day ${safeStreak}, and that early momentum matters more than people think. Keep protecting it.`,
-          `${safeStreak} days in a row is a real start. The streak is young, but it's alive now.`,
-          `Day ${safeStreak} means you're stacking days now, not just having random good moments.`,
+          `${safeStreak} days in a row is a real start. The habit is young, but it is alive now.`,
+          `Day ${safeStreak} means you are stacking days now, not just having random good moments.`,
         ];
       }
       if (safeStreak < 30) {
         return [
-          `${safeStreak} days in a row is serious progress. Keep going, because you're only ${toFire} day${toFire === 1 ? "" : "s"} from the fire badge.`,
-          `This is day ${safeStreak}, and your consistency is getting harder to ignore. The fire badge is coming into view now.`,
-          `${safeStreak} days deep means this habit is starting to feel real. Stay with it and the fire badge gets closer fast.`,
+          `${safeStreak} days in a row is serious progress. You are only ${toFire} day${toFire === 1 ? "" : "s"} from the consistency flame.`,
+          `This is day ${safeStreak}, and your consistency is getting harder to ignore. The flame is coming into view now.`,
+          `${safeStreak} days deep means this habit is starting to feel real. Stay with it and the consistency flame gets closer fast.`,
         ];
       }
       if (safeStreak < 100) {
         return [
-          `${safeStreak} days in a row is strong. You already earned the fire, and now you're building beyond the badge.`,
-          `You are ${safeStreak} days into this streak now. That's the kind of consistency that starts shaping a life.`,
+          `${safeStreak} days in a row is strong. You already earned the flame, and now you are building beyond the badge.`,
+          `This is the kind of consistency that starts shaping a life slowly and deeply.`,
           `At ${safeStreak} days, this is bigger than motivation. This is discipline turning into identity.`,
         ];
       }
       if (safeStreak < 365) {
         return [
-          `${safeStreak} days in a row is powerful. You're not just visiting the Word now. You're living near it.`,
-          `${safeStreak} days deep and still going. That's the kind of faithfulness that keeps changing a person slowly and for real.`,
+          `${safeStreak} days in a row is powerful. You are not just visiting the Word now. You are living near it.`,
+          `${safeStreak} days deep and still going. That kind of faithfulness changes a person slowly and for real.`,
           `This streak is at ${safeStreak} days now. You have built something steady, and steady is strong.`,
         ];
       }
       return [
-        `${safeStreak} days in a row is rare. You've built a long obedience kind of rhythm here.`,
-        `You're sitting at ${safeStreak} straight days now. This is what faithfulness looks like over time.`,
-        `${safeStreak} days deep means the habit is no longer fragile. It's part of your life now.`,
+        `${safeStreak} days in a row is rare. You have built a long obedience kind of rhythm here.`,
+        `This is what faithfulness looks like over time.`,
+        `${safeStreak} days deep means the habit is no longer fragile. It is part of your life now.`,
       ];
     })();
 
     return {
       headline: `${safeStreak} day streak`,
-      body: phaseTemplates[dayMod % phaseTemplates.length],
-         followUp: "Do you want to continue your Bible journey?",
+      body: `You have logged in to Bible Buddy for ${safeStreak} days straight. ${phaseTemplates[dayMod % phaseTemplates.length]}`,
+         followUp: "Do you want to continue your Bible Study?",
     };
   }
 
@@ -334,24 +341,41 @@ export default function DashboardPage() {
   }
 
   function buildDailyStreakTaskIntro(checklistData: ChecklistData | null) {
-    const devotionalTask = checklistData?.tasks.find((task) => task.kind === "devotional") ?? null;
     const readingTask = checklistData?.tasks.find((task) => task.kind === "reading") ?? null;
-    const devotionalMatch = devotionalTask?.title.match(/^Do Day\s+(\d+)\s+of\s+(.+)$/i);
-    const devotionalTitle = devotionalMatch?.[2]?.trim() || "your Bible study";
-    const chapterText = formatChapterForSpeech(readingTask?.chapterLabel);
+    const chapterLabel = readingTask?.chapterLabel || "today's chapter";
+    const chapterText = formatChapterForSpeech(chapterLabel);
+    const totalTasks = checklistData?.tasks.length || 6;
+    const completedCount = checklistData?.completedCount ?? 0;
+    const remainingCount = Math.max(totalTasks - completedCount, 0);
 
     if (checklistData?.allDone) {
       return {
-        focusLine: "You finished this chapter journey.",
-        previewLine: "The next chapter is ready when you are. Your streak keeps growing when you meaningfully engage each day.",
-        closingLine: "Nice work studying with patience instead of rushing.",
+        focusLine: `You finished ${chapterLabel}. When you are ready, start the next Bible Study chapter and keep building from here.`,
+        previewLine: "",
+        closingLine: "",
+      };
+    }
+
+    if (completedCount === 0) {
+      return {
+        focusLine: `Let's dig into ${chapterText} today.`,
+        previewLine: getChapterPreviewLine(readingTask),
+        closingLine: "",
+      };
+    }
+
+    if (remainingCount <= 2) {
+      return {
+        focusLine: `Let's finish the last ${remainingCount} task${remainingCount === 1 ? "" : "s"} for ${chapterLabel}.`,
+        previewLine: getChapterPreviewLine(readingTask),
+        closingLine: "",
       };
     }
 
     return {
-      focusLine: `Welcome back. You are continuing ${devotionalTitle} with ${chapterText}.`,
+      focusLine: `Let's continue with ${chapterText}. You have ${remainingCount} tasks left in this Bible Study chapter.`,
       previewLine: getChapterPreviewLine(readingTask),
-      closingLine: "Keep going at a steady pace.",
+      closingLine: "",
     };
   }
 
@@ -1147,16 +1171,26 @@ export default function DashboardPage() {
 
       setIsLoadingLevel(true);
       try {
-        // 1. Call API route to reset daily credits if needed
-        const resetRes = await fetch("/api/reset-daily-credits", {
+        const resetCreditsPromise = fetch("/api/reset-daily-credits", {
           method: "POST",
-        });
-        let resetJson: { ok: boolean; reset?: boolean; daily_credits?: number } = { ok: false };
-        try {
-          resetJson = await resetRes.json();
-        } catch {}
+        })
+          .then(async (resetRes) => {
+            try {
+              return (await resetRes.json()) as { ok: boolean; reset?: boolean; daily_credits?: number };
+            } catch {
+              return { ok: false } as { ok: boolean; reset?: boolean; daily_credits?: number };
+            }
+          })
+          .catch((error) => {
+            console.error("[DASHBOARD] Failed to reset daily credits:", error);
+            return { ok: false } as { ok: boolean; reset?: boolean; daily_credits?: number };
+          });
 
-        // 2. Fetch profile_stats for dashboard display
+        const streakPromise = syncCurrentStreakToProfileStats(userId).catch((error) => {
+          console.error("[DASHBOARD] Failed to sync streak:", error);
+          return null;
+        });
+
         const { data, error } = await supabase
           .from("profile_stats")
           .select("total_actions, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, profile_image_url, display_name, username")
@@ -1168,26 +1202,34 @@ export default function DashboardPage() {
         }
 
         const profileData = data;
-        const streakData = await syncCurrentStreakToProfileStats(userId).catch((error) => {
-          console.error("[DASHBOARD] Failed to sync streak:", error);
-          return null;
-        });
+        if (!didCancel) {
+          setProfile({
+            is_paid: profileData?.is_paid === true,
+            daily_credits: typeof profileData?.daily_credits === "number" ? profileData.daily_credits : 0,
+            last_active_date: profileData?.last_active_date ?? null,
+            verse_of_the_day_shown: profileData?.verse_of_the_day_shown ?? null,
+            current_streak: profileData?.current_streak ?? 0,
+            profile_image_url: profileData?.profile_image_url ?? null,
+            display_name: profileData?.display_name ?? null,
+            username: profileData?.username ?? null,
+          });
+        }
+
+        const [resetJson, streakData] = await Promise.all([resetCreditsPromise, streakPromise]);
         const resolvedCurrentStreak = streakData?.currentStreak ?? profileData?.current_streak ?? 0;
-        setProfile({
-          is_paid: profileData?.is_paid === true,
-          daily_credits:
-            typeof resetJson.daily_credits === "number"
-              ? resetJson.daily_credits
-              : typeof profileData?.daily_credits === "number"
-                ? profileData.daily_credits
-                : 0,
-          last_active_date: profileData?.last_active_date ?? null,
-          verse_of_the_day_shown: profileData?.verse_of_the_day_shown ?? null,
-          current_streak: resolvedCurrentStreak,
-          profile_image_url: profileData?.profile_image_url ?? null,
-          display_name: profileData?.display_name ?? null,
-          username: profileData?.username ?? null,
-        });
+        if (!didCancel) {
+          setProfile((current) => current ? {
+            ...current,
+            daily_credits:
+              typeof resetJson.daily_credits === "number"
+                ? resetJson.daily_credits
+                : current.daily_credits,
+            current_streak: resolvedCurrentStreak,
+          } : current);
+        }
+
+        await new Promise((resolve) => window.setTimeout(resolve, 350));
+        if (didCancel) return;
 
         const [
           actionsResult,
@@ -1399,16 +1441,6 @@ export default function DashboardPage() {
       refreshLevelData();
     }
 
-    function handleVisibilityChange() {
-      if (typeof document !== "undefined" && document.visibilityState === "visible") {
-        refreshLevelData();
-      }
-    }
-
-    function handleWindowFocus() {
-      refreshLevelData();
-    }
-
     function handleStorage(event: StorageEvent) {
       if (event.key === "bb:last-study-progress-change") {
         refreshLevelData();
@@ -1418,11 +1450,9 @@ export default function DashboardPage() {
     if (typeof document !== "undefined") {
       document.addEventListener("bb:points", handlePointsChange as EventListener);
       document.addEventListener("bb:study-progress-changed", handleStudyProgressChange as EventListener);
-      document.addEventListener("visibilitychange", handleVisibilityChange);
     }
     if (typeof window !== "undefined") {
       window.addEventListener("bb:study-progress-changed", handleStudyProgressChange as EventListener);
-      window.addEventListener("focus", handleWindowFocus);
       window.addEventListener("storage", handleStorage);
     }
 
@@ -1430,11 +1460,9 @@ export default function DashboardPage() {
       if (typeof document !== "undefined") {
         document.removeEventListener("bb:points", handlePointsChange as EventListener);
         document.removeEventListener("bb:study-progress-changed", handleStudyProgressChange as EventListener);
-        document.removeEventListener("visibilitychange", handleVisibilityChange);
       }
       if (typeof window !== "undefined") {
         window.removeEventListener("bb:study-progress-changed", handleStudyProgressChange as EventListener);
-        window.removeEventListener("focus", handleWindowFocus);
         window.removeEventListener("storage", handleStorage);
       }
     };
@@ -1497,35 +1525,89 @@ export default function DashboardPage() {
     }
 
     const dayKey = getBibleBuddyLocalDayKey();
+    const currentUserId = userId;
+    const currentStreakForPopup = profile.current_streak ?? 0;
+    const checkKey = `${userId}:${dayKey}`;
+    if (dailyStreakSequenceCheckRef.current === checkKey) return;
+    dailyStreakSequenceCheckRef.current = checkKey;
+
+    let cancelled = false;
     const seenKey = getStreakMotivationSeenKey(userId, dayKey);
     const dailySequenceSeenKey = getDashboardDailySequenceSeenKey(userId, dayKey);
     if (window.localStorage.getItem(dailySequenceSeenKey) === "1") {
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
       setPendingDailyStreakSequence(false);
+      dailyStreakSequenceCheckRef.current = null;
       return;
     }
     if (window.localStorage.getItem(seenKey) === "1") {
       window.localStorage.setItem(dailySequenceSeenKey, "1");
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
       setPendingDailyStreakSequence(false);
+      dailyStreakSequenceCheckRef.current = null;
       return;
     }
 
-    setLouisDailyTaskCycleStartedAt(cycleStartedAt);
-    setShowStreakMotivationTaskPrompt(true);
-    setShowStreakMotivationModal(true);
-    const streakPointsShownKey = getStreakPointsShownKey(userId, dayKey);
-    if (window.localStorage.getItem(streakPointsShownKey) !== "1") {
-      const streakPoints = Math.min(30, Math.max(0, profile.current_streak ?? 0));
-      if (streakPoints > 0) {
-        triggerPoints(streakPoints);
+    async function openDailyStreakPopupIfNeeded() {
+      const popupActionLabel = getDailyStreakPopupActionLabel(dayKey);
+      const { data: existingPopup, error: existingPopupError } = await supabase
+        .from("master_actions")
+        .select("id")
+        .eq("user_id", currentUserId)
+        .eq("action_type", ACTION_TYPE.louis_daily_message_shown)
+        .eq("action_label", popupActionLabel)
+        .limit(1)
+        .maybeSingle();
+
+      if (cancelled) return;
+
+      if (!existingPopupError && existingPopup?.id) {
+        window.localStorage.setItem(seenKey, "1");
+        window.localStorage.setItem(dailySequenceSeenKey, "1");
+        setLouisDailyTaskCycleStartedAt(cycleStartedAt);
+        setPendingDailyStreakSequence(false);
+        dailyStreakSequenceCheckRef.current = null;
+        return;
       }
-      window.localStorage.setItem(streakPointsShownKey, "1");
+
+      const { error: insertPopupError } = await supabase
+        .from("master_actions")
+        .insert({
+          user_id: currentUserId,
+          action_type: ACTION_TYPE.louis_daily_message_shown,
+          action_label: popupActionLabel,
+          username: userName ?? null,
+        });
+
+      if (insertPopupError) {
+        console.error("[DASHBOARD] Could not save daily streak popup state:", insertPopupError);
+      }
+
+      if (cancelled) return;
+
+      setLouisDailyTaskCycleStartedAt(cycleStartedAt);
+      setShowStreakMotivationTaskPrompt(true);
+      setShowStreakMotivationModal(true);
+      const streakPointsShownKey = getStreakPointsShownKey(currentUserId, dayKey);
+      if (window.localStorage.getItem(streakPointsShownKey) !== "1") {
+        const streakPoints = Math.min(30, Math.max(0, currentStreakForPopup));
+        if (streakPoints > 0) {
+          triggerPoints(streakPoints);
+        }
+        window.localStorage.setItem(streakPointsShownKey, "1");
+      }
+      window.localStorage.setItem(seenKey, "1");
+      window.localStorage.setItem(dailySequenceSeenKey, "1");
+      setPendingDailyStreakSequence(false);
+      dailyStreakSequenceCheckRef.current = null;
     }
-    window.localStorage.setItem(seenKey, "1");
-    window.localStorage.setItem(dailySequenceSeenKey, "1");
-    setPendingDailyStreakSequence(false);
-  }, [userId, profile, pendingDailyStreakSequence, showVerseOfTheDayModal]);
+
+    void openDailyStreakPopupIfNeeded();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId, userName, profile, pendingDailyStreakSequence, showVerseOfTheDayModal]);
 
   useEffect(() => {
     if (!userId || typeof window === "undefined") return;
@@ -1547,6 +1629,8 @@ export default function DashboardPage() {
     if (
       !pendingDailyTaskCelebrationModal ||
       dailyTaskPopupOpenRef.current ||
+      showStreakMotivationModal ||
+      showVerseOfTheDayModal ||
       !userId ||
       !dailyChecklistData?.journeyKey ||
       hasSeenLouisChapterJourneyCelebration(userId, dailyChecklistData.journeyKey)
@@ -1557,7 +1641,15 @@ export default function DashboardPage() {
     rememberLouisChapterJourneyCelebrationSeen(userId, dailyChecklistData.journeyKey);
     setPendingDailyTaskCelebrationModal(false);
     setShowDailyTaskCelebrationModal(true);
-  }, [pendingDailyTaskCelebrationModal, selectedDashboardTask, showLouisDailyTasksModal, userId, dailyChecklistData?.journeyKey]);
+  }, [
+    pendingDailyTaskCelebrationModal,
+    selectedDashboardTask,
+    showLouisDailyTasksModal,
+    showStreakMotivationModal,
+    showVerseOfTheDayModal,
+    userId,
+    dailyChecklistData?.journeyKey,
+  ]);
 
   const currentStreak = profile?.current_streak ?? 0;
   const completedChapterLabel =
@@ -1586,10 +1678,11 @@ export default function DashboardPage() {
     return () => window.clearTimeout(timer);
   }, [showDailyTaskCelebrationModal]);
 
-  const loadDailyTaskSummary = useCallback(async (options: { force?: boolean } = {}) => {
+  const loadDailyTaskSummary = useCallback(async (options: { force?: boolean; silent?: boolean } = {}) => {
     if (!userId || !hasProfileLoaded || !louisDailyTaskCycleStartedAt) {
       setIsLoadingDailyTaskSummary(false);
       setDailyChecklistData(null);
+      dailyChecklistDataRef.current = null;
       setDailyTaskCompletedCount(0);
       setDailyTaskTotalCount(5);
       setDailyTaskNextTitle(null);
@@ -1607,7 +1700,10 @@ export default function DashboardPage() {
       return;
     }
 
-    setIsLoadingDailyTaskSummary(true);
+    const hasExistingChecklist = Boolean(dailyChecklistDataRef.current);
+    if (!options.silent && !hasExistingChecklist) {
+      setIsLoadingDailyTaskSummary(true);
+    }
 
     const loadPromise = (async () => {
       const checklistData = await fetchLouisDailyChecklistData(
@@ -1616,26 +1712,11 @@ export default function DashboardPage() {
         louisDailyTaskCycleStartedAt,
       );
       setDailyChecklistData(checklistData);
+      dailyChecklistDataRef.current = checklistData;
       setDailyTaskCompletedCount(checklistData.completedCount);
       setDailyTaskTotalCount(checklistData.tasks.length || 5);
       setDailyTaskNextTitle(checklistData.nextTaskTitle);
       setDailyTaskSummaryLine(checklistData.summaryLine);
-      if (
-        checklistData.allDone &&
-        checklistData.journeyKey &&
-        !hasSeenLouisChapterJourneyCelebration(userId, checklistData.journeyKey)
-      ) {
-        if (!hasLouisChapterJourneyBonusAwarded(userId, checklistData.journeyKey)) {
-          rememberLouisChapterJourneyBonusAwarded(userId, checklistData.journeyKey);
-          triggerPoints(10);
-        }
-        if (dailyTaskPopupOpenRef.current) {
-          setPendingDailyTaskCelebrationModal(true);
-        } else {
-          rememberLouisChapterJourneyCelebrationSeen(userId, checklistData.journeyKey);
-          setShowDailyTaskCelebrationModal(true);
-        }
-      }
       dailyTaskSummaryLoadedKeyRef.current = loadKey;
     })();
 
@@ -1646,6 +1727,7 @@ export default function DashboardPage() {
     } catch (error) {
       console.error("[DASHBOARD] Could not load daily task summary:", error);
       setDailyChecklistData(null);
+      dailyChecklistDataRef.current = null;
       setDailyTaskCompletedCount(0);
       setDailyTaskTotalCount(5);
       setDailyTaskNextTitle(null);
@@ -1664,12 +1746,12 @@ export default function DashboardPage() {
 
   useEffect(() => {
     function refreshDailyTaskSummary() {
-      void loadDailyTaskSummary();
+      void loadDailyTaskSummary({ force: true, silent: true });
     }
 
     function handleVisibilityChange() {
       if (document.visibilityState === "visible") {
-        void loadDailyTaskSummary({ force: true });
+        refreshDailyTaskSummary();
       }
     }
 
@@ -1897,6 +1979,105 @@ export default function DashboardPage() {
   const streakMotivation = getStreakMotivation(profile?.current_streak ?? 0);
   const dailyStreakTaskIntro = buildDailyStreakTaskIntro(dailyChecklistData);
 
+  function scheduleChapterCompleteCelebration(journeyKey: string | null | undefined) {
+    if (!userId || !journeyKey || hasSeenLouisChapterJourneyCelebration(userId, journeyKey)) return;
+
+    if (!hasLouisChapterJourneyBonusAwarded(userId, journeyKey)) {
+      rememberLouisChapterJourneyBonusAwarded(userId, journeyKey);
+      triggerPoints(10);
+    }
+
+    if (chapterCelebrationTimerRef.current !== null) {
+      window.clearTimeout(chapterCelebrationTimerRef.current);
+    }
+
+    chapterCelebrationTimerRef.current = window.setTimeout(() => {
+      chapterCelebrationTimerRef.current = null;
+
+      if (
+        dailyTaskPopupOpenRef.current ||
+        showStreakMotivationModal ||
+        showVerseOfTheDayModal
+      ) {
+        setPendingDailyTaskCelebrationModal(true);
+        return;
+      }
+
+      if (!hasSeenLouisChapterJourneyCelebration(userId, journeyKey)) {
+        rememberLouisChapterJourneyCelebrationSeen(userId, journeyKey);
+        setShowDailyTaskCelebrationModal(true);
+      }
+    }, 1500);
+  }
+
+  function handleDashboardTaskProgressUpdated(completedTask?: TaskState) {
+    if (completedTask?.kind) {
+      let completedJourneyKey: string | null | undefined = null;
+      setDailyChecklistData((current) => {
+        if (!current?.tasks.length) return current;
+        const wasAllDone = current.allDone === true;
+
+        let changed = false;
+        const tasks = current.tasks.map((task) => {
+          if (task.kind !== completedTask.kind || task.done) return task;
+          changed = true;
+          return {
+            ...task,
+            done: true,
+            completedAtLabel: task.completedAtLabel || "Done today",
+          };
+        });
+
+        if (!changed) return current;
+
+        const completedCount = tasks.filter((task) => task.done).length;
+        const nextTask = tasks.find((task) => !task.done && !task.disabled) ?? null;
+        const nextTaskTitle = nextTask?.title ?? null;
+        const summaryLine = `${completedCount} done. ${Math.max(tasks.length - completedCount, 0)} steps left in this chapter study.`;
+        const nextChecklistData = {
+          ...current,
+          tasks,
+          completedCount,
+          allDone: completedCount >= tasks.length,
+          nextTaskTitle,
+          summaryLine,
+        };
+
+        dailyChecklistDataRef.current = nextChecklistData;
+        setDailyTaskCompletedCount(completedCount);
+        setDailyTaskTotalCount(tasks.length || 5);
+        setDailyTaskNextTitle(nextTaskTitle);
+        setDailyTaskSummaryLine(summaryLine);
+
+        if (!wasAllDone && nextChecklistData.allDone) {
+          completedJourneyKey = nextChecklistData.journeyKey;
+        }
+
+        return nextChecklistData;
+      });
+
+      if (completedJourneyKey) {
+        scheduleChapterCompleteCelebration(completedJourneyKey);
+      }
+    }
+
+    if (typeof window !== "undefined") {
+      window.setTimeout(() => {
+        void loadDailyTaskSummary({ force: true, silent: true });
+      }, completedTask ? 650 : 150);
+    } else {
+      void loadDailyTaskSummary({ force: true, silent: true });
+    }
+  }
+
+  useEffect(() => {
+    return () => {
+      if (chapterCelebrationTimerRef.current !== null) {
+        window.clearTimeout(chapterCelebrationTimerRef.current);
+      }
+    };
+  }, []);
+
   return (
     <>
       <div className="min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12">
@@ -1940,7 +2121,7 @@ export default function DashboardPage() {
           onTaskClick={handleDailyJourneyTaskClick}
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           onDevotionalChanged={() => {
-            void loadDailyTaskSummary({ force: true });
+            void loadDailyTaskSummary({ force: true, silent: true });
           }}
         />
         </div>
@@ -1984,7 +2165,7 @@ export default function DashboardPage() {
           onTaskClick={handleDailyJourneyTaskClick}
           cycleStartedAt={louisDailyTaskCycleStartedAt}
           onDevotionalChanged={() => {
-            void loadDailyTaskSummary({ force: true });
+            void loadDailyTaskSummary({ force: true, silent: true });
           }}
         />
       </div>
@@ -2054,8 +2235,8 @@ export default function DashboardPage() {
           }}
           backdropColor="bg-black/45"
         >
-        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
-          <div className="bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-6 py-7 text-center">
+        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[26px] border border-[#d7e4f7] bg-white shadow-2xl">
+          <div className="bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-6 py-6 text-center">
             <div className="flex justify-center">
               <LouisAvatar mood={(profile?.current_streak ?? 0) >= 30 ? "stareyes" : "wave"} size={66} />
             </div>
@@ -2071,7 +2252,7 @@ export default function DashboardPage() {
                 </span>
                 <span>{streakMotivation.headline}</span>
               </h2>
-            <p className="mt-3 text-sm leading-7 text-[#4f678e]">
+            <p className="mt-3 text-sm leading-6 text-[#4f678e]">
               {streakMotivation.body}
             </p>
               {showStreakMotivationTaskPrompt && (
@@ -2079,13 +2260,17 @@ export default function DashboardPage() {
                   <p className="mt-4 text-sm font-semibold leading-6 text-[#355487]">
                     {dailyStreakTaskIntro.focusLine}
                   </p>
-                  <p className="mt-2 text-sm leading-6 text-[#4f678e]">
-                    {dailyStreakTaskIntro.previewLine}
-                  </p>
-                  <p className="mt-3 text-sm font-semibold text-[#355487]">
-                    {dailyStreakTaskIntro.closingLine}
-                  </p>
-                  <div className="mt-6 flex items-center justify-center">
+                  {dailyStreakTaskIntro.previewLine ? (
+                    <p className="mt-2 text-sm leading-6 text-[#4f678e]">
+                      {dailyStreakTaskIntro.previewLine}
+                    </p>
+                  ) : null}
+                  {dailyStreakTaskIntro.closingLine ? (
+                    <p className="mt-3 text-sm font-semibold text-[#355487]">
+                      {dailyStreakTaskIntro.closingLine}
+                    </p>
+                  ) : null}
+                  <div className="mt-5 flex items-center justify-center">
                     <button
                       type="button"
                       onClick={() => {
@@ -2107,7 +2292,7 @@ export default function DashboardPage() {
         open={showLouisDailyTasksModal && !showVerseOfTheDayModal && !showStreakMotivationModal}
         onClose={() => {
           setShowLouisDailyTasksModal(false);
-          void loadDailyTaskSummary({ force: true });
+          void loadDailyTaskSummary({ force: true, silent: true });
         }}
         userId={userId}
         currentStreak={profile?.current_streak ?? 0}
@@ -2118,9 +2303,7 @@ export default function DashboardPage() {
         task={selectedDashboardTask}
         userId={userId}
         onClose={() => setSelectedDashboardTask(null)}
-        onProgressUpdated={() => {
-          void loadDailyTaskSummary({ force: true });
-        }}
+        onProgressUpdated={handleDashboardTaskProgressUpdated}
       />
 
       <ModalShell

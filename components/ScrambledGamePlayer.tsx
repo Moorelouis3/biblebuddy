@@ -72,11 +72,13 @@ export default function ScrambledGamePlayer({
   bookSlug,
   chapter,
   onClose,
+  onComplete,
 }: {
   bookName: string;
   bookSlug: string;
   chapter: ScrambledChapterPack;
   onClose?: () => void;
+  onComplete?: () => void;
 }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [bankLetters, setBankLetters] = useState<LetterTile[]>([]);
@@ -102,6 +104,7 @@ export default function ScrambledGamePlayer({
   const [loadingBuddyRounds, setLoadingBuddyRounds] = useState(false);
   const [showBuddyRoundsModal, setShowBuddyRoundsModal] = useState(false);
   const trackedQuestionIdsRef = useRef<Set<string>>(new Set());
+  const completionNotifiedRef = useRef(false);
 
   const question = chapter.questions[currentQuestionIndex];
   const nextChapterPack = useMemo(() => {
@@ -248,6 +251,12 @@ export default function ScrambledGamePlayer({
         console.error("[NAV] Failed to track Scrambled chapter completion:", error);
       });
   }, [showResults, userId, username, bookName, bookSlug, chapter.chapter, chapter.questions.length, scoredSolveCount, earnedSolveCount]);
+
+  useEffect(() => {
+    if (!showResults || completionNotifiedRef.current) return;
+    completionNotifiedRef.current = true;
+    onComplete?.();
+  }, [showResults, onComplete]);
 
   useEffect(() => {
     if (!showResults) return;

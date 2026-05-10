@@ -19,7 +19,7 @@ type Props = {
   task: TaskState | null;
   userId: string | null;
   onClose: () => void;
-  onProgressUpdated: () => void;
+  onProgressUpdated: (completedTask?: TaskState) => void;
 };
 
 type DevotionalRow = {
@@ -94,6 +94,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   const [notesLoading, setNotesLoading] = useState(false);
   const [notesError, setNotesError] = useState<string | null>(null);
   const [notesMarkedComplete, setNotesMarkedComplete] = useState(false);
+  const [interactiveTaskCompleted, setInteractiveTaskCompleted] = useState(false);
 
   const devotionalTarget = useMemo(
     () => (task?.kind === "devotional" || task?.kind === "reflection" ? parseDevotionalTask(task) : null),
@@ -117,12 +118,18 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
     return book && chapter ? { book, chapter } : null;
   }, [scrambledTarget]);
 
-  function closeAndRefresh() {
+  useEffect(() => {
+    setInteractiveTaskCompleted(false);
+  }, [task?.kind, task?.href, task?.chapterLabel]);
+
+  function closeOnly() {
     onClose();
-    onProgressUpdated();
-    if (typeof window !== "undefined") {
-      window.dispatchEvent(new CustomEvent("bb:daily-task-progress-updated"));
-    }
+  }
+
+  function closeAndRefresh(completed = false) {
+    const completedTask = task ?? undefined;
+    onClose();
+    onProgressUpdated(completed ? completedTask : undefined);
   }
 
   useEffect(() => {
@@ -261,12 +268,12 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
   async function closeReadingAndRefresh() {
     await handleReadingMarkedComplete();
-    closeAndRefresh();
+    closeAndRefresh(true);
   }
 
   async function closeNotesAndRefresh() {
     await markNotesComplete();
-    closeAndRefresh();
+    closeAndRefresh(true);
   }
 
   async function handleDevotionalIntroComplete() {
@@ -311,12 +318,11 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
       });
     }
 
-    onProgressUpdated();
   }
 
   async function closeIntroAndRefresh() {
     await handleDevotionalIntroComplete();
-    closeAndRefresh();
+    closeAndRefresh(true);
   }
 
   if (!task) return null;
@@ -331,7 +337,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
       if (task.kind === "reflection") {
         return (
-          <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
+          <ModalShell isOpen={true} onClose={closeOnly} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
             <div className="relative my-6 w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
               <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-gray-100 bg-white/95 px-6 py-4 backdrop-blur">
                 <div>
@@ -339,7 +345,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
                   <h2 className="text-lg font-bold text-gray-900">Answer The Reflection Question</h2>
                   <p className="mt-1 text-sm text-gray-600">{chapterLabel}</p>
                 </div>
-                <button type="button" onClick={closeAndRefresh} className="text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950" aria-label="Close reflection">
+                <button type="button" onClick={closeOnly} className="text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950" aria-label="Close reflection">
                   ×
                 </button>
               </div>
@@ -354,7 +360,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
                   placeholderText={`Answer the reflection question for ${chapterLabel}...`}
                   submitButtonText="Post Reflection"
                   variant="plain"
-                  onPosted={closeAndRefresh}
+                  onPosted={() => closeAndRefresh(true)}
                 />
               </div>
             </div>
@@ -397,7 +403,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
     }
 
     return (
-      <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/45" closeOnBackdrop={false}>
+      <ModalShell isOpen={true} onClose={closeOnly} backdropColor="bg-black/45" closeOnBackdrop={false}>
         <div className="mx-4 w-full max-w-md rounded-3xl bg-white p-6 text-center shadow-2xl">
           <p className="text-sm font-semibold text-gray-900">{devotionalLoading ? "Loading Bible Study..." : devotionalError || "Could not open this task."}</p>
         </div>
@@ -448,9 +454,15 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
   if (task.kind === "trivia" && triviaPack) {
     return (
-      <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
+      <ModalShell isOpen={true} onClose={closeOnly} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
         <div className="my-6 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
-          <TriviaGamePlayer bookName={triviaPack.book.name} bookSlug={triviaPack.book.routeSlug} chapter={triviaPack.chapter} onClose={closeAndRefresh} />
+          <TriviaGamePlayer
+            bookName={triviaPack.book.name}
+            bookSlug={triviaPack.book.routeSlug}
+            chapter={triviaPack.chapter}
+            onClose={() => closeAndRefresh(interactiveTaskCompleted)}
+            onComplete={() => setInteractiveTaskCompleted(true)}
+          />
         </div>
       </ModalShell>
     );
@@ -458,16 +470,22 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
   if (task.kind === "scrambled" && scrambledPack) {
     return (
-      <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
+      <ModalShell isOpen={true} onClose={closeOnly} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
         <div className="my-6 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
-          <ScrambledGamePlayer bookName={scrambledPack.book.name} bookSlug={scrambledPack.book.slug} chapter={scrambledPack.chapter} onClose={closeAndRefresh} />
+          <ScrambledGamePlayer
+            bookName={scrambledPack.book.name}
+            bookSlug={scrambledPack.book.slug}
+            chapter={scrambledPack.chapter}
+            onClose={() => closeAndRefresh(interactiveTaskCompleted)}
+            onComplete={() => setInteractiveTaskCompleted(true)}
+          />
         </div>
       </ModalShell>
     );
   }
 
   return (
-    <ModalShell isOpen={true} onClose={closeAndRefresh} backdropColor="bg-black/45" closeOnBackdrop={false}>
+    <ModalShell isOpen={true} onClose={closeOnly} backdropColor="bg-black/45" closeOnBackdrop={false}>
       <div className="mx-4 w-full max-w-md rounded-3xl bg-white p-6 text-center shadow-2xl">
         <p className="text-sm font-semibold text-gray-900">This task could not be opened here.</p>
       </div>

@@ -413,6 +413,403 @@ function buildTaskFocusLine(task: TaskState | null, remainingTasks: number) {
   return `One more task to go. Share your reflection for ${chapterLabel} and complete this chapter study.`;
 }
 
+const bibleStudyThemeMaps: Record<string, string[]> = {
+  "the obedience of abraham": [
+    "Abraham's family before the call",
+    "God calling Abraham to leave what was familiar",
+    "trusting God enough to let go",
+    "courage for family",
+    "God's promise under the stars",
+    "waiting when impatience gets dangerous",
+    "covenant, new names, and belonging to God",
+    "the God who draws near",
+    "mercy, judgment, and intercession",
+    "old fears returning after real faith",
+    "Isaac arriving after years of waiting",
+    "Abraham's deepest test",
+    "the Lord providing",
+    "grief in the land of promise",
+    "preparing for the next generation",
+    "a life full of years",
+    "faith that obeys without seeing the whole map",
+    "believing the God who gives life",
+    "faith that moves into action",
+    "blessing beyond Abraham's lifetime",
+    "a life marked by obedience",
+  ],
+  "the calling of moses": [
+    "Moses' birth under threat",
+    "Moses between Egypt and Israel",
+    "Moses in the wilderness after failure",
+    "God at the burning bush",
+    "fear meeting God's call",
+    "Moses returning to Egypt",
+    "Pharaoh resisting God",
+    "the plagues exposing false power",
+    "Passover and rescue",
+    "Israel leaving Egypt",
+    "the Red Sea deliverance",
+    "trust growing in the wilderness",
+    "daily provision through manna",
+    "water from the rock",
+    "Sinai and covenant",
+    "the golden calf and intercession",
+    "God's presence going with His people",
+    "leadership and shared burden",
+    "obedience under pressure",
+    "seeing the promised land",
+    "Moses' life as a servant shaped by God's call",
+  ],
+  "the disciples of jesus": [
+    "Jesus calling ordinary people",
+    "Peter leaving the nets",
+    "Andrew bringing others to Jesus",
+    "James and John learning kingdom ambition",
+    "Matthew leaving the tax booth",
+    "Thomas bringing honest questions",
+    "Philip learning to trust Jesus",
+    "Nathanael being seen",
+    "Simon laying down old loyalties",
+    "Judas and the divided heart",
+    "disciples in the storm",
+    "Jesus feeding the crowds",
+    "Peter confessing Christ",
+    "a glimpse of glory",
+    "the Last Supper and servant leadership",
+    "Gethsemane and weakness",
+    "Peter's denial",
+    "restoration after failure",
+    "the Great Commission",
+    "the Spirit empowering witnesses",
+    "following Jesus for a lifetime",
+  ],
+  "the faith of job": [
+    "Job's faith before suffering",
+    "loss without explanation",
+    "honest grief before God",
+    "friends who misunderstand pain",
+    "wrestling with righteous suffering",
+    "refusing shallow answers",
+    "feeling unseen by God",
+    "wisdom that cannot be bought",
+    "remembering former days",
+    "defending integrity",
+    "Elihu entering the conversation",
+    "God speaking from the whirlwind",
+    "creation humbling certainty",
+    "reverence beyond answers",
+    "God confronting false comfort",
+    "restoration after suffering",
+    "faith through unanswered questions",
+    "lament as real trust",
+    "the limits of human wisdom",
+    "God's greatness in suffering",
+    "endurance that still worships",
+  ],
+  "the heart of david": [
+    "David being chosen while overlooked",
+    "the shepherd learning trust",
+    "Goliath and courage rooted in God",
+    "jealousy after victory",
+    "David hunted but not abandoned",
+    "Jonathan's friendship",
+    "David in the wilderness",
+    "strengthening himself in the Lord",
+    "refusing revenge",
+    "Abigail and wisdom in conflict",
+    "trusting God's timing again",
+    "David becoming king over Judah",
+    "uniting the kingdom",
+    "worship with abandon",
+    "God's covenant promise",
+    "David's fall",
+    "repentance after sin",
+    "mercy and consequences",
+    "David fleeing Absalom",
+    "praise after deliverance",
+    "David's final charge and legacy",
+  ],
+  "the courage of daniel": [
+    "Jerusalem falling and exile beginning",
+    "faithfulness in a new world",
+    "God revealing secrets",
+    "faith inside the fire",
+    "a proud king humbled",
+    "the writing on the wall",
+    "prayer above survival",
+    "beasts and God's throne",
+    "history under God's rule",
+    "Daniel's prayer reaching heaven",
+    "the unseen battle",
+    "wars under God's sovereignty",
+    "resurrection hope",
+    "why exile came",
+    "living faithfully in Babylon",
+    "Daniel remembered as righteous",
+    "the spirit behind proud thrones",
+    "staying rooted by water",
+    "refusing to conform",
+    "testing that produces endurance",
+    "windows open toward heaven",
+  ],
+  "the rise of esther": [
+    "exile before Esther",
+    "God's people away from home",
+    "return and rebuilding",
+    "a royal feast and a queen removed",
+    "Esther entering the palace",
+    "Mordecai and hidden faithfulness",
+    "Haman's pride rising",
+    "a decree against God's people",
+    "Esther facing her moment",
+    "fasting before courage",
+    "Esther entering the court",
+    "Haman's plot turning",
+    "the sleepless night",
+    "honor coming to Mordecai",
+    "Esther exposing Haman",
+    "deliverance taking shape",
+    "God's reversal of evil plans",
+    "Purim and remembered rescue",
+    "courage for such a time as this",
+    "hidden providence",
+    "Esther's rise and God's unseen hand",
+  ],
+  "the transforming of paul": [
+    "Saul at Stephen's death",
+    "Saul breathing threats",
+    "Jesus meeting Saul on the road",
+    "three days in the dark",
+    "a changed man received by the church",
+    "Paul set apart for the work",
+    "driven out but still moving",
+    "the fight for grace",
+    "singing in prison",
+    "reasoning in Athens",
+    "the Lord saying do not be afraid",
+    "revival and resistance in Ephesus",
+    "Paul's farewell",
+    "bound for Jerusalem",
+    "Paul telling his story",
+    "taking courage in custody",
+    "two years waiting",
+    "almost persuaded",
+    "storm and shipwreck",
+    "preaching in chains",
+    "finishing the race",
+  ],
+  "women of the bible": [
+    "women shaping God's story",
+    "women before Jesus",
+    "Jesus honoring and restoring women",
+    "Eve and the first promise",
+    "Sarah laughing at the impossible",
+    "Hagar and the God who sees",
+    "Rebekah choosing into God's story",
+    "Rachel and Leah's pain",
+    "Miriam leading worship",
+    "Rahab's unlikely faith",
+    "Deborah leading with courage",
+    "Ruth's loyalty beyond loss",
+    "Hannah praying through pain",
+    "Bathsheba and grace beyond tragedy",
+    "Esther stepping into courage",
+    "Mary saying yes",
+    "Mary Magdalene as first witness",
+    "the woman at the well",
+    "the woman who touched Jesus' robe",
+    "Priscilla teaching with clarity",
+    "what these women's lives mean",
+  ],
+  "the tempting of jesus": [
+    "the enemy's tricks and Jesus' victory",
+    "Jesus entering the wilderness",
+    "why fighting temptation is hard",
+    "the steps temptation takes",
+    "Jesus at twelve",
+    "hidden preparation",
+    "John preparing the way",
+    "Jesus' baptism",
+    "the Trinity revealed",
+    "the Spirit leading Jesus into wilderness",
+    "stones into bread",
+    "living by God's Word",
+    "Israel's wilderness story",
+    "how Jesus answers temptation",
+    "all the kingdoms",
+    "worshiping God only",
+    "the pride of life",
+    "refusing to test God",
+    "power surrendered to purpose",
+    "the armor of God",
+    "never being alone in temptation",
+  ],
+  "the testing of joseph": [
+    "Joseph's dreams and family jealousy",
+    "Judah, Tamar, and the family line",
+    "Joseph's faithfulness under temptation",
+    "Joseph waiting in prison",
+    "Joseph interpreting Pharaoh's dreams",
+    "the brothers facing famine and guilt",
+    "Benjamin and family pressure",
+    "Judah offering himself",
+    "Joseph revealing himself",
+    "Jacob moving to Egypt",
+    "Joseph leading through famine",
+    "Jacob blessing Joseph's sons",
+    "Jacob's final words",
+    "Joseph forgiving what was meant for evil",
+  ],
+  "the wisdom of proverbs": [],
+  "the gospel of luke": [
+    "Luke's careful account of Jesus",
+    "announcements of hope",
+    "Jesus' birth and good news for the lowly",
+    "Jesus growing in wisdom",
+    "John preparing the way",
+    "Jesus beginning His mission",
+    "calling disciples and healing the broken",
+    "the kingdom reversing expectations",
+    "faith, forgiveness, and following Jesus",
+    "Jesus sending His followers",
+    "mercy like the Good Samaritan",
+    "prayer, trust, and hearing Jesus",
+    "repentance and readiness",
+    "the lost being found",
+    "costly discipleship",
+    "the rich, the poor, and the kingdom",
+    "Jesus on the road to Jerusalem",
+    "Zacchaeus and salvation coming home",
+    "Jesus entering Jerusalem",
+    "the cross drawing near",
+    "the risen Jesus opening eyes and Scripture",
+  ],
+  "ruth": [
+    "loss in Bethlehem and Moab",
+    "Ruth's loyal choice",
+    "returning empty but not abandoned",
+    "gleaning under God's providence",
+    "Boaz noticing Ruth with kindness",
+    "refuge under God's wings",
+    "Naomi beginning to hope",
+    "the threshing floor and courageous trust",
+    "Boaz acting as redeemer",
+    "a family line restored",
+    "Ruth in David's story",
+    "ordinary faithfulness becoming redemption",
+  ],
+};
+
+function normalizeStudyTitle(value: string | null | undefined) {
+  return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function getStudyTheme(task: TaskState | null, offset = 0) {
+  const studyKey = normalizeStudyTitle(task?.devotionalTitle || task?.devotionalId);
+  const exactKey = Object.keys(bibleStudyThemeMaps).find((key) => studyKey === key || studyKey.includes(key) || key.includes(studyKey));
+  if (!exactKey) return null;
+  const themes = bibleStudyThemeMaps[exactKey];
+  if (!themes.length) return null;
+  const rawNumber = task?.devotionalDayNumber || task?.chapter || 1;
+  const index = Math.max(0, Math.min(themes.length - 1, rawNumber - 1 + offset));
+  return themes[index] || null;
+}
+
+function getChapterStudyTheme(task: TaskState | null) {
+  const studyTheme = getStudyTheme(task);
+  if (studyTheme) return studyTheme;
+
+  const book = (task?.book || "").toLowerCase().trim();
+  const chapter = task?.chapter ?? null;
+
+  if (book === "proverbs") {
+    if (chapter === 1) return "where wisdom begins and why reverence for the Lord comes first";
+    if (chapter === 2) return "searching for wisdom like treasure";
+    if (chapter === 3) return "trusting the Lord with your whole path";
+    if (chapter === 4) return "guarding your heart and staying on wisdom's road";
+    if (chapter === 5) return "faithfulness and the danger of destructive desire";
+    if (chapter === 6) return "habits, warnings, and the small choices that shape a life";
+    if (chapter === 7) return "recognizing temptation before it pulls you in";
+    if (chapter === 8) return "Wisdom calling out in the open";
+    if (chapter === 9) return "the two invitations every heart has to choose between";
+    if (chapter === 10) return "the everyday difference between wisdom and foolishness";
+    if (chapter === 11) return "integrity, humility, and generous living";
+    if (chapter === 12) return "truthful words, teachability, and steady work";
+    if (chapter === 13) return "discipline, patience, and long-term wisdom";
+    if (chapter === 14) return "seeing beneath what only looks right";
+    if (chapter === 15) return "gentle answers and a teachable heart";
+    if (chapter === 16) return "planning with humility before the Lord";
+    if (chapter === 17) return "wisdom inside family, friendship, and conflict";
+    if (chapter === 18) return "the weight of words and the power of listening";
+    if (chapter === 19) return "patience, generosity, and God's purpose";
+    if (chapter === 20) return "self-control, counsel, and honest work";
+    if (chapter === 21) return "the heart God weighs and the justice He loves";
+    if (chapter === 22) return "a good name, humility, and wise boundaries";
+    if (chapter === 23) return "desire, appetite, and the guardrails wisdom gives";
+    if (chapter === 24) return "courage, counsel, and refusing to envy evil";
+    if (chapter === 25) return "humility, restraint, and words spoken at the right time";
+    if (chapter === 26) return "spotting folly before it spreads";
+    if (chapter === 27) return "faithful friendship, correction, and careful stewardship";
+    if (chapter === 28) return "confession, justice, courage, and righteousness";
+    if (chapter === 29) return "receiving correction and fearing God more than people";
+    if (chapter === 30) return "humility, daily bread, and wisdom in creation";
+    if (chapter === 31) return "wisdom lived with strength, service, and fear of the Lord";
+    return "wisdom for real life";
+  }
+
+  if (book === "genesis") {
+    if (chapter === 37) return "Joseph's dreams and the family wound that begins his testing";
+    if (chapter === 38) return "Judah, Tamar, and God's work inside a broken family line";
+    if (chapter === 39) return "Joseph's faithfulness under temptation and injustice";
+    if (chapter === 40) return "Joseph waiting faithfully in prison";
+    if (chapter === 41) return "God lifting Joseph from prison into purpose";
+    if (chapter === 42) return "the brothers facing famine, guilt, and Joseph without knowing it";
+    if (chapter === 43) return "Benjamin, mercy, and the pressure building in Joseph's family";
+    if (chapter === 44) return "Judah stepping forward when Benjamin is tested";
+    if (chapter === 45) return "Joseph revealing himself and forgiveness breaking through";
+    if (chapter === 46) return "Jacob moving toward Egypt with God's promise over him";
+    if (chapter === 47) return "Joseph leading through famine while Israel settles in Egypt";
+    if (chapter === 48) return "Jacob blessing the next generation";
+    if (chapter === 49) return "Jacob's final words and the future of Israel";
+    if (chapter === 50) return "forgiveness, grief, and God meaning it for good";
+    return "God's faithful work through the Joseph story";
+  }
+
+  return task?.chapterLabel ? `what ${task.chapterLabel} is teaching` : "the next part of this Bible study";
+}
+
+function buildCompletedChapterMessage({
+  completedChapterLabel,
+  nextChapterLabel,
+  chapterTask,
+}: {
+  completedChapterLabel: string;
+  nextChapterLabel: string;
+  chapterTask: TaskState | null;
+}) {
+  const currentTheme = getChapterStudyTheme(chapterTask);
+  const nextTask =
+    chapterTask
+      ? ({
+          ...chapterTask,
+          chapter: chapterTask.chapter ? chapterTask.chapter + 1 : chapterTask.chapter,
+          devotionalDayNumber: chapterTask.devotionalDayNumber ? chapterTask.devotionalDayNumber + 1 : chapterTask.devotionalDayNumber,
+          chapterLabel: nextChapterLabel,
+        } as TaskState)
+      : null;
+  const nextTheme = getChapterStudyTheme(nextTask);
+  const variants = [
+    `Congrats on finishing ${completedChapterLabel}. Are you ready to step into ${nextChapterLabel} and keep following ${nextTheme}?`,
+    `You finished ${completedChapterLabel}, and that is real progress. When you are ready, ${nextChapterLabel} will keep building on ${nextTheme}.`,
+    `Great work finishing ${completedChapterLabel}. The next chapter opens the door to ${nextTheme}, so start ${nextChapterLabel} when you are ready.`,
+    `${completedChapterLabel} is complete. Nice work staying with ${currentTheme}; now ${nextChapterLabel} is ready to take you into ${nextTheme}.`,
+    `That chapter study is finished. You walked through ${completedChapterLabel}, and ${nextChapterLabel} is ready when you want to keep going with ${nextTheme}.`,
+    `Well done. ${completedChapterLabel} is behind you now, and ${nextChapterLabel} is waiting with more of ${nextTheme}.`,
+  ];
+
+  return variants[stableHash(`${completedChapterLabel}:${nextChapterLabel}`) % variants.length];
+}
+
 function getShortTaskName(task: TaskState | null) {
   if (!task) return "today's last Bible study task";
   if (task.kind === "devotional") return "today's chapter intro";
@@ -438,7 +835,7 @@ function buildDailyStudySummaryLine({
   nextTask: TaskState | null;
 }) {
   if (allDone) {
-    return `Chapter study complete. The next chapter is ready.`;
+    return `Click the button below to start the next Chapter study.`;
   }
 
   if (remainingTasks <= 1) {
@@ -514,8 +911,17 @@ export default function DashboardJourneyExperience({
     nextTask,
   });
   const streak = profile?.current_streak ?? 0;
+  const skeletonTasks = [
+    { emoji: "📕", title: "Read Chapter Intro", subtitleWidth: "w-52" },
+    { emoji: "✝️", title: "Read Chapter", subtitleWidth: "w-44" },
+    { emoji: "📝", title: "Review Notes", subtitleWidth: "w-56" },
+    { emoji: "🧠", title: "Play Trivia", subtitleWidth: "w-48" },
+    { emoji: "🔤", title: "Play Scrambled", subtitleWidth: "w-52" },
+    { emoji: "✍️", title: "Answer Reflection", subtitleWidth: "w-40" },
+  ];
   const devotionalTask = checklistData?.tasks.find((task) => task.kind === "devotional") ?? null;
   const readingTask = checklistData?.tasks.find((task) => task.kind === "reading") ?? null;
+  const chapterTask = readingTask || checklistData?.tasks.find((task) => task.book && task.chapter) || null;
   const greetingName = userName && userName !== "buddy" ? userName : "buddy";
   function buildLouisMessage() {
     const streakLine = `Hey ${greetingName}, you are on a ${streak} day streak.`;
@@ -573,7 +979,11 @@ export default function DashboardJourneyExperience({
   function buildLouisNextStepMessage() {
     if (allDone) {
       return {
-        focusLine: `You finished ${completedChapterLabel}. Are you ready to start ${nextChapterLabel}?`,
+        focusLine: buildCompletedChapterMessage({
+          completedChapterLabel,
+          nextChapterLabel,
+          chapterTask,
+        }),
       };
     }
 
@@ -635,19 +1045,13 @@ export default function DashboardJourneyExperience({
     setDevotionalSettingsMessage(null);
 
     try {
-      const [{ data: progressRows, error: progressError }, { error: profileError }] = await Promise.all([
-        supabase
-          .from("devotional_progress")
-          .select("day_number, is_completed")
-          .eq("user_id", userId)
-          .eq("devotional_id", selectedDevotionalId),
-        supabase
-          .from("profile_stats")
-          .upsert({ user_id: userId, free_devotional_id: selectedDevotionalId }, { onConflict: "user_id" }),
-      ]);
+      const { data: progressRows, error: progressError } = await supabase
+        .from("devotional_progress")
+        .select("day_number, is_completed")
+        .eq("user_id", userId)
+        .eq("devotional_id", selectedDevotionalId);
 
       if (progressError) throw progressError;
-      if (profileError) throw profileError;
 
       const completedDays = (progressRows || [])
         .filter((row: { is_completed: boolean | null }) => row.is_completed === true)
@@ -655,6 +1059,20 @@ export default function DashboardJourneyExperience({
       const maxCompletedDay = completedDays.length ? Math.max(...completedDays) : 0;
       const totalDays = Math.max(1, selected?.total_days || 1);
       const nextDay = Math.min(maxCompletedDay + 1, totalDays);
+
+      const { error: targetError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            free_devotional_id: selectedDevotionalId,
+            louis_primary_devotional_id: selectedDevotionalId,
+            louis_primary_devotional_day: nextDay,
+          },
+          { onConflict: "user_id" },
+        );
+
+      if (targetError) throw targetError;
 
       rememberLouisDailyTaskTarget(userId, cycleStartedAt, {
         devotionalId: selectedDevotionalId,
@@ -708,6 +1126,20 @@ export default function DashboardJourneyExperience({
         });
       }
 
+      const { error: targetError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            free_devotional_id: resetDevotionalId,
+            louis_primary_devotional_id: resetDevotionalId,
+            louis_primary_devotional_day: 1,
+          },
+          { onConflict: "user_id" },
+        );
+
+      if (targetError) throw targetError;
+
       setSelectedDevotionalId(resetDevotionalId);
       setDevotionalSettingsMessage(`${result?.title || "This Bible Study"} was reset back to the beginning.`);
       onDevotionalChanged();
@@ -719,10 +1151,27 @@ export default function DashboardJourneyExperience({
     }
   }
 
-  function handleCompletedStudyAction() {
+  async function handleCompletedStudyAction() {
     if (!allDone) return;
 
     if (userId && cycleStartedAt && checklistData?.nextJourneyTarget) {
+      const { error } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            free_devotional_id: checklistData.nextJourneyTarget.devotionalId,
+            louis_primary_devotional_id: checklistData.nextJourneyTarget.devotionalId,
+            louis_primary_devotional_day: checklistData.nextJourneyTarget.dayNumber,
+          },
+          { onConflict: "user_id" },
+        );
+
+      if (error) {
+        console.error("[DASHBOARD] Could not sync next Bible Study chapter:", error);
+        return;
+      }
+
       rememberLouisDailyTaskTarget(userId, cycleStartedAt, checklistData.nextJourneyTarget);
       setShowDevotionalSettings(false);
       onDevotionalChanged();
@@ -831,6 +1280,12 @@ export default function DashboardJourneyExperience({
           100% { box-shadow: 0 0 0 rgba(159, 206, 133, 0); }
         }
 
+        @keyframes chapter-complete-fill {
+          0% { width: 0%; filter: brightness(1); }
+          72% { width: 100%; filter: brightness(1.12); }
+          100% { width: 100%; filter: brightness(1); }
+        }
+
         @keyframes next-task-pulse {
           0%, 100% {
             transform: scale(1);
@@ -850,6 +1305,7 @@ export default function DashboardJourneyExperience({
         .done-sparkle span:nth-child(2) { animation-delay: 0.45s; }
         .done-sparkle span:nth-child(3) { animation-delay: 0.9s; }
         .progress-glow { animation: progress-glow 950ms ease-out; }
+        .chapter-complete-fill { animation: chapter-complete-fill 900ms ease-out; }
         .next-task-pulse { animation: next-task-pulse 2.2s ease-in-out infinite; }
         .spark-a { --spark-x: -42px; --spark-y: -42px; }
         .spark-b { --spark-x: 18px; --spark-y: -56px; }
@@ -893,41 +1349,36 @@ export default function DashboardJourneyExperience({
                   ⚙
                 </button>
               ) : null}
-              {!isLoadingChecklist ? (
-                <button
-                  type="button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    setShowDevotionalSettings(false);
-                    setShowJourneyHelp(true);
-                  }}
-                  className="absolute bottom-3.5 right-4 z-20 flex h-7 w-7 items-center justify-center bg-transparent text-sm font-black text-gray-950 transition hover:text-[#4f8fb7] focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]/35"
-                  aria-label="How Daily Bible Study tasks work"
-                  title="How Daily Bible Study tasks work"
-                >
-                  ?
-                </button>
-              ) : null}
               <button
                 type="button"
-                onClick={onOpenDailyTasks}
+                onClick={() => {
+                  if (isLoadingChecklist) return;
+                  setShowDevotionalSettings(false);
+                  setShowJourneyHelp(true);
+                }}
                 className={`w-full rounded-[26px] px-4 pt-4 text-left ${allDone ? "pb-16" : "pb-4"}`}
               >
               {isLoadingChecklist ? (
-                <>
-                  <div className="mb-2 flex items-center gap-2">
-                    <h2 className="text-xl font-semibold text-gray-900">Daily Bible Study</h2>
-                    <div className="flex h-6 items-center gap-1">
-                      <span className="animate-[bounce_1.4s_ease-in-out_infinite] text-2xl text-gray-500">.</span>
-                      <span className="animate-[bounce_1.4s_ease-in-out_0.2s_infinite] text-2xl text-gray-500">.</span>
-                      <span className="animate-[bounce_1.4s_ease-in-out_0.4s_infinite] text-2xl text-gray-500">.</span>
+                <div className="animate-pulse">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-[58px] w-[58px] shrink-0 items-center justify-center rounded-full border border-white/90 bg-white/80 shadow-sm">
+                      <div className="h-11 w-11 rounded-full bg-[#d7eaf7]" />
                     </div>
+                    <div className="min-w-0 flex-1 pr-8">
+                      <div className="mt-1 h-4 w-4/5 rounded-full bg-[#e7dcc8]" />
+                      <div className="mt-3 h-4 w-3/5 rounded-full bg-[#e7dcc8]" />
+                    </div>
+                    <div className="h-5 w-5 rounded-full bg-[#eadfce]" />
                   </div>
-                  <div className="mb-3 h-3 overflow-hidden rounded-full bg-gray-200">
-                    <div className="h-full w-1/3 animate-pulse rounded-full bg-[#9dc1ee]" />
+
+                  <div className="mt-3 overflow-hidden rounded-full bg-gray-200">
+                    <div className="h-2.5 w-1/4 rounded-full bg-[#d8aa57]" />
                   </div>
-                  <div className="h-4 w-48 rounded bg-gray-200" />
-                </>
+
+                  <div className="mt-3 flex justify-center">
+                    <div className="h-4 w-64 max-w-full rounded-full bg-[#e7dcc8]" />
+                  </div>
+                </div>
               ) : (
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0 flex-1">
@@ -943,7 +1394,7 @@ export default function DashboardJourneyExperience({
                     <div className="mt-3 overflow-hidden rounded-full bg-gray-200">
                       <div
                         key={progressCelebrationKey}
-                        className={`h-2.5 rounded-full transition-all duration-700 ${progressCelebrationKey > 0 ? "progress-glow" : ""} ${allDone ? "bg-[#9fce85]" : "bg-[#d8aa57]"}`}
+                        className={`h-2.5 rounded-full transition-all duration-700 ${progressCelebrationKey > 0 ? "progress-glow" : ""} ${allDone ? "chapter-complete-fill bg-[#9fce85]" : "bg-[#d8aa57]"}`}
                         style={{
                           width: `${Math.max(
                             0,
@@ -953,7 +1404,7 @@ export default function DashboardJourneyExperience({
                       />
                     </div>
 
-                    <div className="mt-2.5 pr-9 text-[13px] sm:text-sm">
+                    <div className="mt-2.5 text-[13px] sm:text-sm">
                       <p className="min-w-0 text-center font-bold text-gray-800">
                         {dailyStudySummaryLine}
                       </p>
@@ -1087,14 +1538,26 @@ export default function DashboardJourneyExperience({
             </div>
 
             {isLoadingChecklist ? (
-              Array.from({ length: 5 }).map((_, index) => (
+              skeletonTasks.map((task, index) => (
                 <div
-                  key={index}
-                  className="animate-pulse rounded-xl border border-gray-200 bg-white px-4 py-4 shadow-sm"
+                  key={task.title}
+                  className="rounded-xl border border-[#d8e4f6] bg-gradient-to-r from-white via-white to-[#f7fbff] px-3.5 py-3.5 shadow-sm sm:px-4"
                 >
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="h-4 w-44 rounded bg-[#d9e4f7]" />
-                    <div className="h-7 w-16 rounded-full bg-[#e7eefb]" />
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#d7eaff] to-[#eef6ff] text-2xl opacity-80 shadow-sm">
+                      <span aria-hidden="true">{task.emoji}</span>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="h-4 w-48 max-w-full rounded-full bg-[#d9e7f6]" />
+                      <div className={`mt-2 h-3 max-w-full rounded-full bg-[#e8eef7] ${task.subtitleWidth}`} />
+                    </div>
+                    <div className="flex shrink-0 items-center gap-2">
+                      <div className="flex flex-col items-end gap-2">
+                        <div className="h-7 w-16 rounded-full bg-[#dfeafe]" />
+                        <div className="h-3 w-16 rounded-full bg-[#edf1f7]" />
+                      </div>
+                      <span className="text-xl leading-none text-gray-300" aria-hidden="true">›</span>
+                    </div>
                   </div>
                 </div>
               ))
