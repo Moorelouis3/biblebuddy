@@ -29,8 +29,23 @@ function cleanVerseText(text: string) {
   return text.replace(/\s+/g, " ").trim();
 }
 
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function fetchKjvVerses(chapter: number) {
-  const response = await fetch(`https://bible-api.com/proverbs%20${chapter}?translation=kjv`);
+  const url = `https://bible-api.com/proverbs%20${chapter}?translation=kjv`;
+  let response: Response | null = null;
+
+  for (let attempt = 1; attempt <= 4; attempt += 1) {
+    response = await fetch(url);
+    if (response.ok || response.status !== 429) break;
+    await sleep(1500 * attempt);
+  }
+
+  if (!response) {
+    throw new Error(`Failed to fetch Proverbs ${chapter} KJV text: no response`);
+  }
 
   if (!response.ok) {
     throw new Error(`Failed to fetch Proverbs ${chapter} KJV text: ${response.status} ${response.statusText}`);
@@ -58,6 +73,7 @@ async function main() {
       chapter,
       notes_text: renderProverbsNotes(chapter, verses),
     });
+    await sleep(350);
   }
 
   const { error } = await supabase.from("bible_notes").upsert(rows, { onConflict: "book,chapter" });

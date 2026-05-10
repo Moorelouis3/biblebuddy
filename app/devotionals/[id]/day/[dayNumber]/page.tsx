@@ -293,7 +293,7 @@ export default function ProverbsStudyDayPage() {
     const noteLabel = notesActionLabel(dayRow.bible_reading_book, dayRow.bible_reading_chapter);
     const reflectionSlug = chapterSlug(dayRow.bible_reading_book, dayRow.bible_reading_chapter);
 
-    const [introRes, actionsRes, commentsRes] = await Promise.all([
+    const [introRes, notesActionsRes, triviaActionsRes, scrambledActionsRes, commentsRes] = await Promise.all([
       supabase
         .from("devotional_progress")
         .select("user_id, is_completed, reading_completed, completed_at")
@@ -305,15 +305,48 @@ export default function ProverbsStudyDayPage() {
         .in("action_type", [
           ACTION_TYPE.chapter_notes_reviewed,
           ACTION_TYPE.chapter_notes_viewed,
-          ACTION_TYPE.trivia_chapter_completed,
-          ACTION_TYPE.scrambled_chapter_completed,
-        ]),
+        ])
+        .eq("action_label", noteLabel)
+        .order("created_at", { ascending: false })
+        .limit(1000),
+      supabase
+        .from("master_actions")
+        .select("user_id, action_type, action_label, created_at")
+        .eq("action_type", ACTION_TYPE.trivia_chapter_completed)
+        .ilike("action_label", `${label}%`)
+        .order("created_at", { ascending: false })
+        .limit(1000),
+      supabase
+        .from("master_actions")
+        .select("user_id, action_type, action_label, created_at")
+        .eq("action_type", ACTION_TYPE.scrambled_chapter_completed)
+        .ilike("action_label", `${label}%`)
+        .order("created_at", { ascending: false })
+        .limit(1000),
       supabase
         .from("article_comments")
         .select("user_id, created_at")
         .eq("article_slug", reflectionSlug)
-        .eq("is_deleted", false),
+        .eq("is_deleted", false)
+        .order("created_at", { ascending: false })
+        .limit(1000),
     ]);
+
+    if (introRes.error) {
+      console.error("[PROVERBS_FINISHERS] Could not load intro/reading progress:", introRes.error);
+    }
+    if (notesActionsRes.error) {
+      console.error("[PROVERBS_FINISHERS] Could not load notes finishers:", notesActionsRes.error);
+    }
+    if (triviaActionsRes.error) {
+      console.error("[PROVERBS_FINISHERS] Could not load trivia finishers:", triviaActionsRes.error);
+    }
+    if (scrambledActionsRes.error) {
+      console.error("[PROVERBS_FINISHERS] Could not load Scrambled finishers:", scrambledActionsRes.error);
+    }
+    if (commentsRes.error) {
+      console.error("[PROVERBS_FINISHERS] Could not load reflection finishers:", commentsRes.error);
+    }
 
     const introDates = new Map<string, string | null>();
     const readingDates = new Map<string, string | null>();
@@ -341,23 +374,27 @@ export default function ProverbsStudyDayPage() {
     const noteIds = new Set<string>();
     const triviaIds = new Set<string>();
     const scrambledIds = new Set<string>();
-    (actionsRes.data || []).forEach((row: any) => {
-      const actionLabel = String(row.action_label || "");
-      if ((row.action_type === ACTION_TYPE.chapter_notes_reviewed || row.action_type === ACTION_TYPE.chapter_notes_viewed) && actionLabel === noteLabel) {
-        noteIds.add(row.user_id);
-        if (!notesDates.has(row.user_id)) notesDates.set(row.user_id, row.created_at || null);
-      }
-      if (row.action_type === ACTION_TYPE.trivia_chapter_completed && actionLabel.toLowerCase().startsWith(label.toLowerCase())) {
-        triviaIds.add(row.user_id);
-        if (!triviaDates.has(row.user_id)) triviaDates.set(row.user_id, row.created_at || null);
-      }
-      if (row.action_type === ACTION_TYPE.scrambled_chapter_completed && actionLabel.toLowerCase().startsWith(label.toLowerCase())) {
-        scrambledIds.add(row.user_id);
-        if (!scrambledDates.has(row.user_id)) scrambledDates.set(row.user_id, row.created_at || null);
-      }
+
+    (notesActionsRes.data || []).forEach((row: any) => {
+      if (!row.user_id) return;
+      noteIds.add(row.user_id);
+      if (!notesDates.has(row.user_id)) notesDates.set(row.user_id, row.created_at || null);
     });
+
+    (triviaActionsRes.data || []).forEach((row: any) => {
+      if (!row.user_id) return;
+      triviaIds.add(row.user_id);
+      if (!triviaDates.has(row.user_id)) triviaDates.set(row.user_id, row.created_at || null);
+    });
+
+    (scrambledActionsRes.data || []).forEach((row: any) => {
+      if (!row.user_id) return;
+      scrambledIds.add(row.user_id);
+      if (!scrambledDates.has(row.user_id)) scrambledDates.set(row.user_id, row.created_at || null);
+    });
+
     const reflectionIds = new Set(
-      (commentsRes.data || []).map((row: any) => {
+      (commentsRes.data || []).filter((row: any) => Boolean(row.user_id)).map((row: any) => {
         if (!reflectionDates.has(row.user_id)) reflectionDates.set(row.user_id, row.created_at || null);
         return row.user_id;
       }),
@@ -759,7 +796,16 @@ export default function ProverbsStudyDayPage() {
       {showTrivia && triviaBook && triviaChapter ? (
         <ModalShell isOpen={showTrivia} onClose={() => { setShowTrivia(false); void loadAll(); }} scrollable backdropColor="bg-black/55">
           <div className="my-6 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
-            <TriviaGamePlayer bookName={triviaBook.name} bookSlug={triviaBook.routeSlug} chapter={triviaChapter} onClose={() => { setShowTrivia(false); void loadAll(); }} />
+            <TriviaGamePlayer
+              bookName={triviaBook.name}
+              bookSlug={triviaBook.routeSlug}
+              chapter={triviaChapter}
+              onComplete={() => {
+                setTriviaDone(true);
+                window.setTimeout(() => void loadFinishers(day), 500);
+              }}
+              onClose={() => { setShowTrivia(false); void loadAll(); }}
+            />
           </div>
         </ModalShell>
       ) : null}
@@ -767,7 +813,16 @@ export default function ProverbsStudyDayPage() {
       {showScrambled && scrambledBook && scrambledChapter ? (
         <ModalShell isOpen={showScrambled} onClose={() => { setShowScrambled(false); void loadAll(); }} scrollable backdropColor="bg-black/55">
           <div className="my-6 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
-            <ScrambledGamePlayer bookName={scrambledBook.name} bookSlug={scrambledBook.slug} chapter={scrambledChapter} onClose={() => { setShowScrambled(false); void loadAll(); }} />
+            <ScrambledGamePlayer
+              bookName={scrambledBook.name}
+              bookSlug={scrambledBook.slug}
+              chapter={scrambledChapter}
+              onComplete={() => {
+                setScrambledDone(true);
+                window.setTimeout(() => void loadFinishers(day), 500);
+              }}
+              onClose={() => { setShowScrambled(false); void loadAll(); }}
+            />
           </div>
         </ModalShell>
       ) : null}

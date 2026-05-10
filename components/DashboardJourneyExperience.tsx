@@ -1757,10 +1757,10 @@ export default function DashboardJourneyExperience({
               <section>
                 <h3 className="text-lg font-bold text-gray-950">🔥 Your Daily Streak</h3>
                 <p className="mt-2 leading-7">
-                  To keep your streak going, complete at least one meaningful Bible action each day. That can be reading the Bible Study intro, reading the chapter, opening the notes, finishing trivia, playing Scrambled, or writing a reflection when it is available.
+                  To keep your streak going, log in to Bible Buddy each day. The streak is about showing up consistently.
                 </p>
                 <p className="mt-2 leading-7">
-                  You do not have to finish every chapter task in one day. The streak is about returning to Scripture daily.
+                  You do not have to finish every chapter task in one day. The chapter study is where your Bible actions, task progress, points, and level growth happen.
                 </p>
               </section>
 

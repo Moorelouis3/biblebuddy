@@ -66,7 +66,9 @@ export async function POST(_req: NextRequest) {
       );
     }
 
-    const currentStreak = liveStreakMap.get(targetUserId) ?? 0;
+    const liveCurrentStreak = liveStreakMap.get(targetUserId) ?? 0;
+    const storedCurrentStreak = Math.max(0, Number(existingProfile?.current_streak || 0));
+    const currentStreak = Math.max(liveCurrentStreak, storedCurrentStreak);
     const nowIso = new Date().toISOString();
     const hasFireStreakBadge =
       Boolean(existingProfile?.has_fire_streak_badge) ||

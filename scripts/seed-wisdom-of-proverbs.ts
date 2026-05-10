@@ -917,6 +917,15 @@ type StudyIntroDetail = {
   takeaway: string;
 };
 
+function formatTrailerParagraphs(text: string) {
+  const sentences = text.trim().match(/[^.!?]+[.!?]+(?:["']?)/g);
+  if (!sentences || sentences.length <= 1) return text.trim();
+
+  const firstSentence = sentences[0].trim();
+  const remaining = text.trim().slice(firstSentence.length).trim();
+  return remaining ? `${firstSentence}\n\n${remaining}` : firstSentence;
+}
+
 const studyIntroDetailsByChapter: Record<number, StudyIntroDetail> = {
   2: {
     opening:
@@ -1557,40 +1566,43 @@ function buildProverbsStudyIntro(day: ChapterPlan) {
 
   const detail = studyIntroDetailsByChapter[day.chapter];
   if (!detail) return buildCinematicDevotionalText(day.chapter);
+  const cinematicDepth = cinematicDepthByChapter[day.chapter]?.trim();
+  const openingText = [
+    formatTrailerParagraphs(detail.opening),
+    cinematicDepth ? formatTrailerParagraphs(cinematicDepth) : "",
+  ]
+    .filter(Boolean)
+    .join("\n\n");
 
-  return `${detail.opening}
+  return `${openingText}
 
-This is not meant to explain every verse before you read it.
+# ${"\u{1F4CD}"} Where This Chapter Begins
 
-It is meant to help you know what kind of chapter you are stepping into.
-
-# 📍 Where This Chapter Begins
-
-This chapter begins with:
+**The scene opens with:**
 
 ${detail.beginsWith.map((item) => `* ${item}`).join("\n")}
 
 ---
 
-# Why This Chapter Matters
+# ${"\u{1F4A1}"} Why This Chapter Matters
 
 ${detail.matters}
 
-This chapter gives us:
+**This chapter gives us:**
 
 ${detail.givesUs.map((item) => `* ${item}`).join("\n")}
 
 ---
 
-# What To Watch For
+# ${"\u{1F50D}"} What To Watch For
 
-As you read, pay attention to:
+**As you read, pay attention to:**
 
 ${detail.watchFor.map((item) => `* ${item}`).join("\n")}
 
 ---
 
-# The Bigger Takeaway
+# ${"\u{1F3AC}"} The Bigger Takeaway
 
 ${detail.takeaway}`;
 }

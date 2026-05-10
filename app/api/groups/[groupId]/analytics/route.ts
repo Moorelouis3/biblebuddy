@@ -233,7 +233,7 @@ export async function GET(
     supabaseAdmin
       .from("profile_stats")
       .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, last_active_date, has_fire_streak_badge, fire_streak_awarded_at"),
-    getLiveStreakMapForRecentUsers(supabaseAdmin, 60),
+    getLiveStreakMapForRecentUsers(supabaseAdmin, 400),
   ]);
 
   if (fireProfilesError) {

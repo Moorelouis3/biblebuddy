@@ -1,5 +1,3 @@
-import { renderProverbsSectionDepth } from "./proverbsNoteEnhancements";
-
 type Verse = {
   verse: number;
   text: string;
@@ -55,14 +53,7 @@ ${renderVerseBlock(sectionVerses)}
 
 ## ${section.heading}
 
-${section.body.join("\n\n")}
-
-${renderProverbsSectionDepth({
-  chapter,
-  range: section.range,
-  heading: section.heading,
-  verses: sectionVerses.map((verse) => ({ number: verse.verse, text: verse.text })),
-})}`;
+${section.body.join("\n\n")}`;
   })
   .join("\n\n")}
 

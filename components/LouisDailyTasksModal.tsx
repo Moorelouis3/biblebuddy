@@ -123,7 +123,7 @@ function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
     timeLeftLabel: "",
     progressLabel: "0 out of 5 completed",
     summaryLine: "Choose a Bible Study first to unlock your chapter journey.",
-    bonusLine: "Your streak grows when you meaningfully engage today.",
+    bonusLine: "Your streak grows when you log in each day.",
     nextTaskTitle: "Choose a Bible Study",
     tasks: [
       {
@@ -878,7 +878,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
           {showHelp ? (
             <div className="mt-4 rounded-[22px] border border-[#d7e4f7] bg-white/95 px-4 py-3 text-left shadow-sm">
               <p className="text-sm leading-6 text-[#51627f]">
-                Your streak grows when you meaningfully engage each day. Your chapter journey stays open until you finish it, so you can study without rushing.
+                Your streak grows when you log in each day. Your chapter study stays open until you finish it, so you can study without rushing.
               </p>
             </div>
           ) : null}

@@ -7,11 +7,17 @@
 
 import { supabase } from "./supabaseClient";
 import { ACTION_TYPE } from "./actionTypes";
-import { syncCurrentStreakToProfileStats } from "./profileStats";
 import { getBibleBuddyLocalDayKey } from "./louisDailyFlow";
 
 // In-memory lock to prevent concurrent calls racing past the localStorage check
 const inFlight = new Set<string>();
+
+function shiftDayKey(dayKey: string, days: number) {
+  const [year, month, day] = dayKey.split("-").map(Number);
+  const date = new Date(year, month - 1, day, 12, 0, 0);
+  date.setDate(date.getDate() + days);
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+}
 
 /**
  * Track user activity (login/refresh)
@@ -46,7 +52,7 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
     // Get current profile stats to check last_active_date
     const { data: currentStats } = await supabase
       .from("profile_stats")
-      .select("last_active_date, username")
+      .select("last_active_date, username, current_streak")
       .eq("user_id", userId)
       .maybeSingle();
 
@@ -59,6 +65,15 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
       inFlight.delete(userId);
       return false;
     }
+
+    const yesterday = shiftDayKey(today, -1);
+    const currentStoredStreak = Math.max(0, Number(currentStats?.current_streak || 0));
+    const nextCurrentStreak =
+      lastActiveDate === yesterday
+        ? currentStoredStreak + 1
+        : lastActiveDate === today
+          ? currentStoredStreak
+          : 1;
 
     // Get username from auth
     const { data: { user } } = await supabase.auth.getUser();
@@ -90,10 +105,8 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
       // Continue anyway - we still want to update last_active_date
     }
 
-    const streakData = await syncCurrentStreakToProfileStats(userId);
-
     if (insertedAction?.id) {
-      const streakBonusPoints = Math.min(30, Math.max(0, streakData.currentStreak));
+      const streakBonusPoints = Math.min(30, Math.max(0, nextCurrentStreak));
       const streakBonusLabel = `streak_day:${streakBonusPoints}:${today}`;
       const { error: labelUpdateError } = await supabase
         .from("master_actions")
@@ -113,7 +126,7 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
           user_id: userId,
           last_active_date: today,
           username: username,
-          current_streak: streakData.currentStreak,
+          current_streak: nextCurrentStreak,
           updated_at: new Date().toISOString(),
         },
         {

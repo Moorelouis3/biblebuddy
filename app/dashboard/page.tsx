@@ -1817,6 +1817,7 @@ export default function DashboardPage() {
     }
 
     const loadPromise = (async () => {
+      const previousChecklistData = dailyChecklistDataRef.current;
       const checklistData = await fetchLouisDailyChecklistData(
         userId,
         currentStreak,
@@ -1829,6 +1830,15 @@ export default function DashboardPage() {
       setDailyTaskNextTitle(checklistData.nextTaskTitle);
       setDailyTaskSummaryLine(checklistData.summaryLine);
       dailyTaskSummaryLoadedKeyRef.current = loadKey;
+
+      if (
+        previousChecklistData?.journeyKey &&
+        previousChecklistData.journeyKey === checklistData.journeyKey &&
+        !previousChecklistData.allDone &&
+        checklistData.allDone
+      ) {
+        scheduleChapterCompleteCelebration(checklistData.journeyKey);
+      }
     })();
 
     dailyTaskSummaryInFlightRef.current = { key: loadKey, promise: loadPromise };
@@ -2512,7 +2522,7 @@ export default function DashboardPage() {
               You completed {completedChapterLabel}.
             </p>
               <p className="mt-2 text-sm leading-6 text-[#58709d]">
-               Great work. Louis saved your progress, and {nextChapterLabel} is ready when you are.
+                Great work. {nextChapterLabel} is ready when you are.
               </p>
             <button
               type="button"

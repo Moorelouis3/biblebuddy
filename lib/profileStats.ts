@@ -218,69 +218,13 @@ export async function getHeatMapData(
  * Calculate current streak from master_actions table
  * Returns streak data including last 7 days
  * 
- * Streak Definition: A user earns a streak for a day if they perform
- * AT LEAST ONE meaningful Bible action that day.
- * 
- * Valid streak-triggering actions:
- * - chapter_completed
- * - book_completed
- * - person_learned
- * - place_discovered
- * - keyword_mastered
- * 
- * NOT streak-triggering:
- * - user_login
+ * Streak Definition: a user earns a streak day by opening/logging in to
+ * Bible Buddy that day. Bible Study actions grow levels and points.
  */
 export interface StreakData {
   currentStreak: number;
   last7Days: Array<{ date: string; completed: boolean }>;
 }
-
-// Valid action types that count toward streak
-// A streak day requires meaningful engagement, not just opening the app.
-const STREAK_ACTION_TYPES = [
-  ACTION_TYPE.chapter_completed,
-  ACTION_TYPE.bible_chapter_viewed,
-  ACTION_TYPE.book_completed,
-  ACTION_TYPE.bible_in_one_year_day_viewed,
-  ACTION_TYPE.devotional_day_completed,
-  ACTION_TYPE.devotional_day_started,
-  ACTION_TYPE.devotional_day_viewed,
-  ACTION_TYPE.devotional_bible_reading_opened,
-  ACTION_TYPE.devotional_reflection_saved,
-  ACTION_TYPE.person_learned,
-  ACTION_TYPE.person_viewed,
-  ACTION_TYPE.place_discovered,
-  ACTION_TYPE.place_viewed,
-  ACTION_TYPE.keyword_mastered,
-  ACTION_TYPE.keyword_viewed,
-  ACTION_TYPE.note_created,
-  ACTION_TYPE.note_started,
-  ACTION_TYPE.reading_plan_chapter_completed,
-  ACTION_TYPE.scrambled_word_answered,
-  ACTION_TYPE.scrambled_chapter_completed,
-  ACTION_TYPE.trivia_question_answered,
-  ACTION_TYPE.trivia_chapter_completed,
-  ACTION_TYPE.trivia_started,
-  ACTION_TYPE.chapter_notes_viewed,
-  ACTION_TYPE.chapter_notes_reviewed,
-  ACTION_TYPE.verse_highlighted,
-  ACTION_TYPE.understand_verse_of_the_day,
-  ACTION_TYPE.feed_post_thought,
-  ACTION_TYPE.feed_post_prayer,
-  ACTION_TYPE.feed_post_prayer_request,
-  ACTION_TYPE.feed_post_photo,
-  ACTION_TYPE.feed_post_video,
-  ACTION_TYPE.feed_post_liked,
-  ACTION_TYPE.feed_post_commented,
-  ACTION_TYPE.feed_post_replied,
-  ACTION_TYPE.buddy_added,
-  ACTION_TYPE.group_message_sent,
-  ACTION_TYPE.series_week_started,
-  ACTION_TYPE.study_group_feed_viewed,
-  ACTION_TYPE.study_group_article_opened,
-  ACTION_TYPE.study_group_bible_study_card_opened,
-];
 
 async function getUserActivitySummary(
   userId: string,
@@ -360,7 +304,7 @@ async function getUserActivitySummary(
     if (action.action_type === ACTION_TYPE.user_login) {
       current.loginCount += 1;
     }
-    if (STREAK_ACTION_TYPES.includes(action.action_type as (typeof STREAK_ACTION_TYPES)[number])) {
+    if (action.action_type === ACTION_TYPE.user_login) {
       completedDates.add(dateStr);
     }
     if (isMeaningfulActionType(action.action_type)) {
@@ -373,6 +317,7 @@ async function getUserActivitySummary(
     const current = ensureDay(dateStr);
     current.actions += 1;
     current.loginCount += 1;
+    completedDates.add(dateStr);
   });
 
   return { byDate, completedDates };
@@ -388,7 +333,7 @@ export async function calculateStreakFromActions(
       .from("master_actions")
       .select("created_at, action_type")
       .eq("user_id", userId)
-      .in("action_type", STREAK_ACTION_TYPES)
+      .eq("action_type", ACTION_TYPE.user_login)
       .order("created_at", { ascending: false });
 
     const { data, error } = actionsResponse;
