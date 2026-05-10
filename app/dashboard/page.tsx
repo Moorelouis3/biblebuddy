@@ -192,6 +192,9 @@ export default function DashboardPage() {
   const [activeTourKey, setActiveTourKey] = useState<FeatureTourKey | null>(null);
   const [pendingTourNavigation, setPendingTourNavigation] = useState<string | null>(null);
   const [isSavingFeatureTour, setIsSavingFeatureTour] = useState(false);
+  const [showSwipeHintOverlay, setShowSwipeHintOverlay] = useState(false);
+  const [isSavingSwipeHint, setIsSavingSwipeHint] = useState(false);
+  const swipeHintTouchStartXRef = useRef<number | null>(null);
   const [isOwnerDashboard, setIsOwnerDashboard] = useState(false);
   const [ownerQuickStats, setOwnerQuickStats] = useState({
     signups24h: 0,
@@ -215,6 +218,10 @@ export default function DashboardPage() {
 
   function getDailyStreakPopupActionLabel(dayKey: string) {
     return `daily_streak_popup_shown:${dayKey}`;
+  }
+
+  function getSwipeHintSeenKey(currentUserId: string) {
+    return `bb:dashboard-swipe-hint-seen:${currentUserId}`;
   }
 
   function getStreakMotivation(streak: number) {
@@ -1079,6 +1086,110 @@ export default function DashboardPage() {
       router.push(nextPath);
     }
   }
+
+  const hasBlockingDashboardOverlay =
+    showLevelInfoModal ||
+    showStreakBadgeModal ||
+    showCommunityModal ||
+    showVerseOfTheDayModal ||
+    showStreakMotivationModal ||
+    showLouisDailyTasksModal ||
+    showDailyTaskCelebrationModal ||
+    showJessicaBonusModal ||
+    Boolean(selectedDashboardTask) ||
+    Boolean(activeTourKey) ||
+    pendingDailyStreakSequence ||
+    pendingDailyTaskCelebrationModal;
+
+  async function completeSwipeHint(options: { openExplore?: boolean } = {}) {
+    if (isSavingSwipeHint) return;
+
+    if (!userId) {
+      setShowSwipeHintOverlay(false);
+      return;
+    }
+
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(getSwipeHintSeenKey(userId), "1");
+    }
+
+    setShowSwipeHintOverlay(false);
+    setIsSavingSwipeHint(true);
+
+    const mergedFeatureTours = {
+      ...featureTours,
+      dashboard_swipe_hint: true,
+    };
+    setFeatureTours(mergedFeatureTours);
+
+    const { error: updateError } = await supabase
+      .from("profile_stats")
+      .update({
+        feature_tours: buildPersistedFeatureTours(mergedFeatureTours),
+      })
+      .eq("user_id", userId);
+
+    if (updateError) {
+      console.error("[SWIPE_HINT] Error updating feature_tours:", updateError);
+      const { error: upsertError } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            feature_tours: buildPersistedFeatureTours(mergedFeatureTours),
+          },
+          { onConflict: "user_id" },
+        );
+
+      if (upsertError) {
+        console.error("[SWIPE_HINT] Error upserting feature_tours:", upsertError);
+      }
+    }
+
+    setIsSavingSwipeHint(false);
+
+    if (options.openExplore && typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("bb:dashboard-open-explore-page"));
+    }
+  }
+
+  useEffect(() => {
+    if (
+      !userId ||
+      !featureToursLoaded ||
+      featureTours.dashboard_swipe_hint === true ||
+      showSwipeHintOverlay ||
+      hasBlockingDashboardOverlay ||
+      isLoadingDailyTaskSummary ||
+      typeof window === "undefined"
+    ) {
+      return;
+    }
+
+    if (window.localStorage.getItem(getSwipeHintSeenKey(userId)) === "1") {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      if (window.localStorage.getItem(getSwipeHintSeenKey(userId)) === "1") return;
+      setShowSwipeHintOverlay(true);
+    }, 850);
+
+    return () => window.clearTimeout(timer);
+  }, [
+    userId,
+    featureToursLoaded,
+    featureTours.dashboard_swipe_hint,
+    showSwipeHintOverlay,
+    hasBlockingDashboardOverlay,
+    isLoadingDailyTaskSummary,
+  ]);
+
+  useEffect(() => {
+    if (showSwipeHintOverlay && hasBlockingDashboardOverlay) {
+      setShowSwipeHintOverlay(false);
+    }
+  }, [showSwipeHintOverlay, hasBlockingDashboardOverlay]);
 
   async function handleCardClick(
     event: MouseEvent<HTMLAnchorElement>,
@@ -2212,6 +2323,86 @@ export default function DashboardPage() {
       {/* Add bottom padding to mobile content when ad is shown (prevents content from being hidden behind ad) */}
       {shouldShowAds && !mobileAdDismissed && (
         <div className="lg:hidden h-20" />
+      )}
+
+      {showSwipeHintOverlay && (
+        <div
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/62 px-6 text-white backdrop-blur-[2px]"
+          role="button"
+          tabIndex={0}
+          aria-label="Swipe left to explore Bible Buddy features"
+          onClick={() => void completeSwipeHint()}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              void completeSwipeHint();
+            }
+          }}
+          onTouchStart={(event) => {
+            swipeHintTouchStartXRef.current = event.touches[0]?.clientX ?? null;
+          }}
+          onTouchEnd={(event) => {
+            const startX = swipeHintTouchStartXRef.current;
+            swipeHintTouchStartXRef.current = null;
+            const endX = event.changedTouches[0]?.clientX ?? null;
+            if (startX !== null && endX !== null && endX - startX < -35) {
+              void completeSwipeHint({ openExplore: true });
+            }
+          }}
+        >
+          <style>{`
+            @keyframes swipe-hint-hand-left {
+              0% { opacity: 0; transform: translateX(34px) translateY(0) rotate(-8deg) scale(0.96); }
+              14% { opacity: 1; }
+              58% { opacity: 1; transform: translateX(-44px) translateY(0) rotate(-8deg) scale(1); }
+              78%, 100% { opacity: 0; transform: translateX(-58px) translateY(0) rotate(-8deg) scale(0.98); }
+            }
+
+            @keyframes swipe-hint-arrow-left {
+              0%, 100% { opacity: 0.55; transform: translateX(8px); filter: drop-shadow(0 0 8px rgba(123, 175, 212, 0.75)); }
+              50% { opacity: 1; transform: translateX(-8px); filter: drop-shadow(0 0 16px rgba(123, 175, 212, 1)); }
+            }
+
+            @keyframes swipe-hint-fade {
+              0% { opacity: 0; transform: translateY(8px) scale(0.98); }
+              100% { opacity: 1; transform: translateY(0) scale(1); }
+            }
+          `}</style>
+          <div
+            className="pointer-events-none flex w-full max-w-sm flex-col items-center text-center"
+            style={{ animation: "swipe-hint-fade 420ms ease-out both" }}
+          >
+            <div className="mb-2 text-[15px] font-extrabold tracking-tight sm:text-lg">
+              <span className="text-[#ffd84d]">Swipe</span> to explore
+            </div>
+            <p className="max-w-[17rem] text-xs font-medium leading-5 text-white/90 sm:text-sm">
+              Swipe left to see all the other Bible Buddy features.
+            </p>
+
+            <div className="relative mt-5 h-24 w-56">
+              <div
+                className="absolute left-1/2 top-2 -translate-x-1/2 text-6xl font-black leading-none text-[#7BAFD4]"
+                style={{ animation: "swipe-hint-arrow-left 1.15s ease-in-out 4" }}
+                aria-hidden="true"
+              >
+                ←
+              </div>
+              <div
+                className="absolute left-1/2 top-10 -translate-x-1/2 text-5xl leading-none drop-shadow-[0_12px_18px_rgba(0,0,0,0.35)]"
+                style={{ animation: "swipe-hint-hand-left 1.15s ease-in-out 4" }}
+                aria-hidden="true"
+              >
+                👆
+              </div>
+            </div>
+
+            <div className="mt-2 flex items-center justify-center gap-2" aria-hidden="true">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#7BAFD4] shadow-[0_0_12px_rgba(123,175,212,0.95)]" />
+              <span className="h-2 w-2 rounded-full bg-white/55" />
+              <span className="h-2 w-2 rounded-full bg-white/55" />
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Level Info Modal */}

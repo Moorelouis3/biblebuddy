@@ -1244,6 +1244,15 @@ export default function DashboardJourneyExperience({
     return () => container.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    function handleOpenExplorePage() {
+      snapToPage(1);
+    }
+
+    window.addEventListener("bb:dashboard-open-explore-page", handleOpenExplorePage);
+    return () => window.removeEventListener("bb:dashboard-open-explore-page", handleOpenExplorePage);
+  }, []);
+
   function snapToPage(index: number) {
     const container = containerRef.current;
     if (!container) return;
