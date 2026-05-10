@@ -313,6 +313,9 @@ export function OnboardingModal({
   const [showStudyDescription, setShowStudyDescription] = useState(true);
   const [studies, setStudies] = useState<StudyOption[]>(STARTER_STUDIES);
   const avatarInputRef = useRef<HTMLInputElement>(null);
+  const studyDragStartX = useRef<number | null>(null);
+  const studyDraggedRef = useRef(false);
+  const [studyDragX, setStudyDragX] = useState(0);
 
   const selectedStudy = studies[selectedStudyIndex] ?? studies[0];
 
@@ -520,6 +523,34 @@ export function OnboardingModal({
     } finally {
       setIsSaving(false);
     }
+  }
+
+  function beginStudyDrag(clientX: number) {
+    studyDragStartX.current = clientX;
+    studyDraggedRef.current = false;
+    setStudyDragX(0);
+  }
+
+  function moveStudyDrag(clientX: number) {
+    if (studyDragStartX.current === null) return;
+    const delta = Math.max(-90, Math.min(90, clientX - studyDragStartX.current));
+    if (Math.abs(delta) > 8) studyDraggedRef.current = true;
+    setStudyDragX(delta);
+  }
+
+  function finishStudyDrag() {
+    if (studyDragStartX.current === null) return;
+    const delta = studyDragX;
+    if (delta < -36) {
+      setSelectedStudyIndex((current) => Math.min(studies.length - 1, current + 1));
+    } else if (delta > 36) {
+      setSelectedStudyIndex((current) => Math.max(0, current - 1));
+    }
+    studyDragStartX.current = null;
+    setStudyDragX(0);
+    window.setTimeout(() => {
+      studyDraggedRef.current = false;
+    }, 0);
   }
 
   const slides = useMemo(
@@ -809,8 +840,17 @@ export function OnboardingModal({
           choose which Bible study you wanna start with first.
         </Subtitle>
 
-        <div className="relative mt-8 h-48 overflow-hidden">
-          <div className="absolute left-1/2 top-2 flex -translate-x-1/2 items-end justify-center gap-0">
+        <div
+          className="relative mx-[-22px] mt-8 h-60 cursor-grab touch-pan-y overflow-hidden active:cursor-grabbing"
+          onPointerDown={(event) => {
+            beginStudyDrag(event.clientX);
+            event.currentTarget.setPointerCapture(event.pointerId);
+          }}
+          onPointerMove={(event) => moveStudyDrag(event.clientX)}
+          onPointerUp={finishStudyDrag}
+          onPointerCancel={finishStudyDrag}
+        >
+          <div className="absolute left-1/2 top-3 flex -translate-x-1/2 items-end justify-center gap-0">
             {studies.map((study, index) => {
               const offset = index - selectedStudyIndex;
               const isSelected = index === selectedStudyIndex;
@@ -819,10 +859,13 @@ export function OnboardingModal({
                 <button
                   key={study.title}
                   type="button"
-                  onClick={() => setSelectedStudyIndex(index)}
-                  className="relative -mx-2 transition-all duration-300"
+                  onClick={() => {
+                    if (studyDraggedRef.current) return;
+                    setSelectedStudyIndex(index);
+                  }}
+                  className="relative -mx-2 select-none transition-all duration-300"
                   style={{
-                    transform: `translateX(${offset * 8}px) rotate(${offset * 6}deg) scale(${isSelected ? 1 : 0.78})`,
+                    transform: `translateX(${offset * 28 + (isSelected ? studyDragX : studyDragX * 0.25)}px) rotate(${offset * 6}deg) scale(${isSelected ? 1 : 0.78})`,
                     zIndex: isSelected ? 20 : 10 - Math.abs(offset),
                     opacity: Math.abs(offset) === 2 ? 0.86 : 1,
                   }}
@@ -830,9 +873,10 @@ export function OnboardingModal({
                   <Image
                     src={study.cover}
                     alt={`${study.title} cover`}
-                    width={126}
-                    height={176}
-                    className={`h-44 w-[126px] rounded-md object-cover shadow-xl ${isSelected ? "ring-2 ring-white" : ""}`}
+                    width={148}
+                    height={218}
+                    draggable={false}
+                    className={`h-[218px] w-[148px] rounded-md object-contain shadow-xl ${isSelected ? "ring-2 ring-white" : ""}`}
                   />
                 </button>
               );
@@ -879,6 +923,7 @@ export function OnboardingModal({
       selectedPlan,
       selectedStudy,
       selectedStudyIndex,
+      studyDragX,
       showStudyDescription,
       source,
       studies,
