@@ -31,7 +31,7 @@ type ChoiceOption = {
 
 type LouisMood = "wave" | "stareyes" | "think" | "pray" | "sheesh" | "bible" | "smile" | "cool" | "hands" | "salute" | "sideeye";
 
-const TOTAL_SLIDES = 10;
+const TOTAL_SLIDES = 11;
 
 const SOURCE_OPTIONS: ChoiceOption[] = [
   { label: "Instagram", icon: "📸" },
@@ -74,16 +74,16 @@ const GOAL_OPTIONS: ChoiceOption[] = [
 
 const STARTER_STUDIES: StudyOption[] = [
   {
-    title: "The Testing of Joseph",
-    cover: "/newtesting.png",
-    description:
-      "Walk through Joseph’s story of betrayal, waiting, testing, forgiveness, and God’s faithfulness through every chapter.",
-  },
-  {
     title: "The Wisdom of Proverbs",
     cover: "/WisdomofProverbs.png",
     description:
       "Study Proverbs chapter by chapter and learn how wisdom shapes speech, decisions, relationships, money, discipline, and daily life.",
+  },
+  {
+    title: "The Testing of Joseph",
+    cover: "/newtesting.png",
+    description:
+      "Walk through Joseph’s story of betrayal, waiting, testing, forgiveness, and God’s faithfulness through every chapter.",
   },
   {
     title: "The Heart of David",
@@ -110,6 +110,47 @@ const STARTER_STUDIES: StudyOption[] = [
       "Follow Paul from opposition to transformation and mission, seeing how grace can redirect a life completely.",
   },
 ];
+
+const COVER_BY_STUDY_TITLE: Record<string, string> = {
+  "The Tempting of Jesus": "/newtempting.png",
+  "The Testing of Joseph": "/newtesting.png",
+  "The Disciples of Jesus": "/disciplesofjesusdevotional.png",
+  "Women of the Bible": "/womenofthebible.png",
+  "The Wisdom of Proverbs": "/WisdomofProverbs.png",
+  "The Faith of Job": "/faithofjob.png",
+  "The Calling of Moses": "/callingofmosesdevotional.png",
+  "The Heart of David": "/heartofdaviddevotional.png",
+  "The Obedience of Abraham": "/obedienceofabraham.png",
+  "The Transforming of Paul": "/transformingofpauldevotional.png",
+  "The Courage of Daniel": "/courageofdaniel.png",
+  "The Rise of Esther": "/RiseofEsther.png",
+};
+
+const ONBOARDING_STUDY_DESCRIPTION_BY_TITLE: Record<string, string> = {
+  "The Wisdom of Proverbs": "A deep dive through Proverbs. Understand the wisdom of the Bible, chapter by chapter.",
+  "The Testing of Joseph":
+    "A chapter by chapter journey through Joseph's life, from betrayal and waiting to forgiveness, family healing, and God's faithfulness.",
+  "The Heart of David":
+    "A chapter by chapter journey through the life of David, from the shepherd fields to the throne, from Goliath to Bathsheba, from worship to repentance, and from youthful courage to a life that kept returning to God.",
+  "The Disciples of Jesus":
+    "A chapter by chapter journey through the men Jesus called, shaped, corrected, and sent to carry the message of the kingdom.",
+  "Women of the Bible":
+    "A chapter by chapter journey through the lives of women in Scripture and how God worked through their courage, pain, faith, and obedience.",
+  "The Transforming of Paul":
+    "A chapter by chapter journey through Paul's transformation, from opposing Jesus to becoming one of the boldest voices for the gospel.",
+  "The Tempting of Jesus":
+    "A chapter by chapter journey through Jesus in the wilderness and how truth, obedience, and identity stand firm under pressure.",
+  "The Faith of Job":
+    "A chapter by chapter journey through suffering, questions, endurance, and what it means to trust God when life does not make sense.",
+  "The Calling of Moses":
+    "A chapter by chapter journey through Moses' calling, fear, obedience, leadership, and the God who delivers His people.",
+  "The Obedience of Abraham":
+    "A chapter by chapter journey through Abraham's faith, waiting, obedience, mistakes, and the promises of God.",
+  "The Courage of Daniel":
+    "A chapter by chapter journey through Daniel's life in exile and the courage to stay faithful when culture pushes against God.",
+  "The Rise of Esther":
+    "A chapter by chapter journey through Esther's story of courage, timing, identity, and God working even when His name is hidden.",
+};
 
 function normalizeGoalValue(goal: string | null | undefined) {
   if (!goal) return null;
@@ -147,15 +188,48 @@ function goalFromStored(value: string | null | undefined) {
   }
 }
 
-function ProgressPills({ activeIndex }: { activeIndex: number }) {
+function getStudyCover(title: string) {
+  return COVER_BY_STUDY_TITLE[title] ?? "/newtesting.png";
+}
+
+function shortenStudyDescription(description: string) {
+  const trimmed = description.trim();
+  const sentences = trimmed.match(/[^.!?]+[.!?]+/g);
+  if (sentences?.length) {
+    return sentences.slice(0, 2).join(" ").replace(/\s+/g, " ").trim();
+  }
+  return trimmed.length > 190 ? `${trimmed.slice(0, 187).trim()}...` : trimmed;
+}
+
+function getOnboardingStudyDescription(study: StudyOption) {
+  return ONBOARDING_STUDY_DESCRIPTION_BY_TITLE[study.title] ?? shortenStudyDescription(study.description);
+}
+
+function wait(ms: number) {
+  return new Promise((resolve) => window.setTimeout(resolve, ms));
+}
+
+function ProgressPills({
+  activeIndex,
+  maxVisitedIndex,
+  onGoToSlide,
+}: {
+  activeIndex: number;
+  maxVisitedIndex: number;
+  onGoToSlide: (index: number) => void;
+}) {
   return (
     <div className="mt-6 flex items-center justify-center gap-2" aria-label={`Onboarding step ${activeIndex + 1} of ${TOTAL_SLIDES}`}>
       {Array.from({ length: TOTAL_SLIDES }).map((_, index) => (
-        <span
+        <button
           key={index}
+          type="button"
+          aria-label={`Go to onboarding step ${index + 1}`}
+          disabled={index > maxVisitedIndex}
+          onClick={() => onGoToSlide(index)}
           className={`h-1.5 rounded-full transition-all ${
             index === activeIndex ? "w-8 bg-[#2f80ed]" : "w-5 bg-[#e3e6ee]"
-          }`}
+          } ${index <= maxVisitedIndex ? "cursor-pointer hover:bg-[#9fc8ff]" : "cursor-not-allowed opacity-60"}`}
         />
       ))}
     </div>
@@ -202,16 +276,20 @@ function PrimaryButton({
 function OnboardingShell({
   children,
   activeIndex,
+  maxVisitedIndex,
+  onGoToSlide,
 }: {
   children: ReactNode;
   activeIndex: number;
+  maxVisitedIndex: number;
+  onGoToSlide: (index: number) => void;
 }) {
   return (
     <div className="fixed inset-0 z-[260] overflow-y-auto bg-white">
       <div className="flex min-h-screen items-center justify-center px-4 py-6 md:bg-[#f7f9ff]">
         <div className="flex min-h-[calc(100vh-48px)] w-full max-w-[390px] flex-col justify-center rounded-none bg-white px-2 py-4 md:min-h-[760px] md:rounded-[34px] md:border md:border-[#e6ebf4] md:px-8 md:shadow-2xl">
           {children}
-          <ProgressPills activeIndex={activeIndex} />
+          <ProgressPills activeIndex={activeIndex} maxVisitedIndex={maxVisitedIndex} onGoToSlide={onGoToSlide} />
         </div>
       </div>
     </div>
@@ -300,7 +378,9 @@ export function OnboardingModal({
   onFinished,
 }: OnboardingModalProps) {
   const [slide, setSlide] = useState(0);
+  const [maxVisitedSlide, setMaxVisitedSlide] = useState(0);
   const [isSaving, setIsSaving] = useState(false);
+  const [isCheckingUpgrade, setIsCheckingUpgrade] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [source, setSource] = useState<string | null>(null);
   const [experience, setExperience] = useState<string | null>(null);
@@ -309,15 +389,55 @@ export function OnboardingModal({
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<"monthly" | "yearly">("yearly");
-  const [selectedStudyIndex, setSelectedStudyIndex] = useState(2);
-  const [showStudyDescription, setShowStudyDescription] = useState(true);
+  const [selectedStudyIndex, setSelectedStudyIndex] = useState(0);
   const [studies, setStudies] = useState<StudyOption[]>(STARTER_STUDIES);
   const avatarInputRef = useRef<HTMLInputElement>(null);
-  const studyDragStartX = useRef<number | null>(null);
-  const studyDraggedRef = useRef(false);
-  const [studyDragX, setStudyDragX] = useState(0);
+  const onboardingSwipeStartX = useRef<number | null>(null);
+  const onboardingSwipeStartY = useRef<number | null>(null);
 
   const selectedStudy = studies[selectedStudyIndex] ?? studies[0];
+
+  function goToSlide(nextSlide: number) {
+    setError(null);
+    setSlide(nextSlide);
+    setMaxVisitedSlide((current) => Math.max(current, nextSlide));
+  }
+
+  async function loadStudyOptions(isPaid: boolean, currentStudyId?: string | null) {
+    const devotionalQuery = supabase.from("devotionals").select("id, title, description").order("created_at", {
+      ascending: false,
+    });
+    const { data: devotionalRows } = isPaid
+      ? await devotionalQuery
+      : await devotionalQuery.in("title", STARTER_STUDIES.map((study) => study.title));
+
+    if (!devotionalRows?.length) return;
+
+    const merged = (isPaid
+      ? devotionalRows.map((row) => ({
+          title: row.title,
+          cover: getStudyCover(row.title),
+          description: row.description?.trim() || `${row.title} is a guided Bible Study inside Bible Buddy.`,
+          id: row.id,
+        }))
+      : STARTER_STUDIES.map((study) => {
+          const row = devotionalRows.find((item) => item.title === study.title);
+          return {
+            ...study,
+            id: row?.id,
+            description: row?.description?.trim() || study.description,
+          };
+        })
+    ).sort((a, b) => {
+      if (a.title === "The Wisdom of Proverbs") return -1;
+      if (b.title === "The Wisdom of Proverbs") return 1;
+      return 0;
+    });
+
+    setStudies(merged);
+    const currentIndex = merged.findIndex((study) => study.id && study.id === currentStudyId);
+    setSelectedStudyIndex(currentIndex >= 0 ? currentIndex : 0);
+  }
 
   useEffect(() => {
     if (!isOpen) return;
@@ -327,7 +447,7 @@ export function OnboardingModal({
       setError(null);
       const { data } = await supabase
         .from("profile_stats")
-        .select("traffic_source, bible_experience_level, onboarding_goal, display_name, profile_image_url, free_devotional_id")
+        .select("traffic_source, bible_experience_level, onboarding_goal, display_name, profile_image_url, free_devotional_id, is_paid")
         .eq("user_id", userId)
         .maybeSingle();
 
@@ -343,25 +463,9 @@ export function OnboardingModal({
       setAvatarPreview(data?.profile_image_url?.trim() || null);
       setAvatarFile(null);
 
-      const { data: devotionalRows } = await supabase
-        .from("devotionals")
-        .select("id, title, description")
-        .in("title", STARTER_STUDIES.map((study) => study.title));
-
-      if (cancelled || !devotionalRows?.length) return;
-
-      const merged = STARTER_STUDIES.map((study) => {
-        const row = devotionalRows.find((item) => item.title === study.title);
-        return {
-          ...study,
-          id: row?.id,
-          description: row?.description?.trim() || study.description,
-        };
-      });
-      setStudies(merged);
-
-      const currentIndex = merged.findIndex((study) => study.id && study.id === data?.free_devotional_id);
-      if (currentIndex >= 0) setSelectedStudyIndex(currentIndex);
+      if (!cancelled) {
+        await loadStudyOptions(data?.is_paid === true, data?.free_devotional_id);
+      }
     }
 
     void hydrate();
@@ -394,7 +498,7 @@ export function OnboardingModal({
       if (field === "traffic_source") setSource(value);
       if (field === "bible_experience_level") setExperience(value);
       if (field === "onboarding_goal") setGoal(value);
-      window.setTimeout(() => setSlide(nextSlide), 180);
+      window.setTimeout(() => goToSlide(nextSlide), 180);
     } catch (saveError: any) {
       setError(saveError?.message || "Could not save that answer.");
     } finally {
@@ -442,13 +546,61 @@ export function OnboardingModal({
         display_name: normalizedName,
         ...(publicUrl ? { profile_image_url: publicUrl } : {}),
       });
-      setSlide(8);
+      goToSlide(8);
     } catch (saveError: any) {
       setError(saveError?.message || "Could not save your profile.");
     } finally {
       setIsSaving(false);
     }
   }
+
+  async function watchCheckoutWindow(checkoutWindow: Window | null) {
+    setIsCheckingUpgrade(true);
+    setError(null);
+    for (let attempt = 0; attempt < 48; attempt += 1) {
+      await wait(2500);
+      const { data } = await supabase.from("profile_stats").select("is_paid, free_devotional_id").eq("user_id", userId).maybeSingle();
+      if (data?.is_paid === true) {
+        await loadStudyOptions(true, data.free_devotional_id);
+        goToSlide(9);
+        setIsCheckingUpgrade(false);
+        return;
+      }
+      if (checkoutWindow?.closed && attempt >= 2) break;
+    }
+    setIsCheckingUpgrade(false);
+    setError("Checkout closed before the upgrade was confirmed. You can try again or continue for free.");
+  }
+
+  async function checkUpgradeOnReturn() {
+    if (!isOpen || slide !== 8) return;
+    setIsCheckingUpgrade(true);
+    try {
+      const { data } = await supabase.from("profile_stats").select("is_paid, free_devotional_id").eq("user_id", userId).maybeSingle();
+      if (data?.is_paid === true) {
+        await loadStudyOptions(true, data.free_devotional_id);
+        goToSlide(9);
+      }
+    } finally {
+      setIsCheckingUpgrade(false);
+    }
+  }
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleFocus = () => {
+      void checkUpgradeOnReturn();
+    };
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") void checkUpgradeOnReturn();
+    };
+    window.addEventListener("focus", handleFocus);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      window.removeEventListener("focus", handleFocus);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [isOpen, slide, userId]);
 
   async function startCheckout(plan: "monthly" | "yearly") {
     setSelectedPlan(plan);
@@ -464,7 +616,14 @@ export function OnboardingModal({
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Could not start checkout.");
       if (data.url) {
-        window.location.href = data.url;
+        const checkoutWindow = window.open(data.url, "bible-buddy-upgrade", "width=520,height=760");
+        if (!checkoutWindow) {
+          window.location.href = data.url;
+          return;
+        }
+        checkoutWindow.focus();
+        setIsSaving(false);
+        void watchCheckoutWindow(checkoutWindow);
         return;
       }
       throw new Error("No checkout URL returned.");
@@ -525,37 +684,27 @@ export function OnboardingModal({
     }
   }
 
-  function beginStudyDrag(clientX: number) {
-    studyDragStartX.current = clientX;
-    studyDraggedRef.current = false;
-    setStudyDragX(0);
+  function beginOnboardingSwipe(clientX: number, clientY: number) {
+    onboardingSwipeStartX.current = clientX;
+    onboardingSwipeStartY.current = clientY;
   }
 
-  function moveStudyDrag(clientX: number) {
-    if (studyDragStartX.current === null) return;
-    const delta = Math.max(-90, Math.min(90, clientX - studyDragStartX.current));
-    if (Math.abs(delta) > 8) studyDraggedRef.current = true;
-    setStudyDragX(delta);
-  }
+  function finishOnboardingSwipe(clientX: number, clientY: number) {
+    if (onboardingSwipeStartX.current === null || onboardingSwipeStartY.current === null) return;
+    const deltaX = clientX - onboardingSwipeStartX.current;
+    const deltaY = clientY - onboardingSwipeStartY.current;
+    onboardingSwipeStartX.current = null;
+    onboardingSwipeStartY.current = null;
 
-  function finishStudyDrag() {
-    if (studyDragStartX.current === null) return;
-    const delta = studyDragX;
-    if (delta < -36) {
-      setSelectedStudyIndex((current) => Math.min(studies.length - 1, current + 1));
-    } else if (delta > 36) {
-      setSelectedStudyIndex((current) => Math.max(0, current - 1));
+    if (deltaX > 70 && Math.abs(deltaY) < 70) {
+      setError(null);
+      setSlide((current) => Math.max(0, current - 1));
     }
-    studyDragStartX.current = null;
-    setStudyDragX(0);
-    window.setTimeout(() => {
-      studyDraggedRef.current = false;
-    }, 0);
   }
 
   const slides = useMemo(
     () => [
-      <OnboardingShell key="welcome" activeIndex={0}>
+      <OnboardingShell key="welcome" activeIndex={0} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
         <LouisHero mood="wave" />
         <Headline>
           Welcome to
@@ -567,10 +716,10 @@ export function OnboardingModal({
           <br />
           Let’s grow together.
         </Subtitle>
-        <PrimaryButton onClick={() => setSlide(1)}>Next&nbsp;›</PrimaryButton>
+        <PrimaryButton onClick={() => goToSlide(1)}>Next&nbsp;›</PrimaryButton>
       </OnboardingShell>,
 
-      <OnboardingShell key="problem" activeIndex={1}>
+      <OnboardingShell key="problem" activeIndex={1} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
         <LouisHero mood="think" />
         <Headline>The real problem.</Headline>
         <Subtitle>The real problem with starting to read the Bible is:</Subtitle>
@@ -598,10 +747,10 @@ export function OnboardingModal({
           <br />
           not like homework.
         </p>
-        <PrimaryButton onClick={() => setSlide(2)}>Next&nbsp;›</PrimaryButton>
+        <PrimaryButton onClick={() => goToSlide(2)}>Next&nbsp;›</PrimaryButton>
       </OnboardingShell>,
 
-      <OnboardingShell key="solution" activeIndex={2}>
+      <OnboardingShell key="solution" activeIndex={2} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
         <LouisHero mood="bible" />
         <Headline>
           Bible Buddy
@@ -638,10 +787,10 @@ export function OnboardingModal({
           <br />
           the Bible easier.
         </p>
-        <PrimaryButton onClick={() => setSlide(3)}>Next&nbsp;›</PrimaryButton>
+        <PrimaryButton onClick={() => goToSlide(3)}>Next&nbsp;›</PrimaryButton>
       </OnboardingShell>,
 
-      <OnboardingShell key="transition" activeIndex={3}>
+      <OnboardingShell key="transition" activeIndex={3} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
         <LouisHero mood="smile" />
         <Headline>
           But before we can
@@ -654,10 +803,10 @@ export function OnboardingModal({
           I need to ask you
           <br />a few questions.
         </Subtitle>
-        <PrimaryButton onClick={() => setSlide(4)}>Next&nbsp;›</PrimaryButton>
+        <PrimaryButton onClick={() => goToSlide(4)}>Next&nbsp;›</PrimaryButton>
       </OnboardingShell>,
 
-      <OnboardingShell key="source" activeIndex={4}>
+      <OnboardingShell key="source" activeIndex={4} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
         <LouisHero mood="think" />
         <Headline>
           How did you learn
@@ -677,7 +826,7 @@ export function OnboardingModal({
         />
       </OnboardingShell>,
 
-      <OnboardingShell key="experience" activeIndex={5}>
+      <OnboardingShell key="experience" activeIndex={5} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
         <LouisHero mood="bible" />
         <Headline>
           How long have you
@@ -697,7 +846,7 @@ export function OnboardingModal({
         />
       </OnboardingShell>,
 
-      <OnboardingShell key="goal" activeIndex={6}>
+      <OnboardingShell key="goal" activeIndex={6} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
         <LouisHero mood="bible" />
         <Headline>
           What would you say is
@@ -713,7 +862,7 @@ export function OnboardingModal({
         />
       </OnboardingShell>,
 
-      <OnboardingShell key="profile" activeIndex={7}>
+      <OnboardingShell key="profile" activeIndex={7} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
         <LouisHero mood="smile" />
         <Headline>
           Let’s set up
@@ -759,7 +908,7 @@ export function OnboardingModal({
         </PrimaryButton>
       </OnboardingShell>,
 
-      <OnboardingShell key="upgrade" activeIndex={8}>
+      <OnboardingShell key="upgrade" activeIndex={8} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
         <LouisHero mood="smile" />
         <Headline>
           Upgrade to Bible Buddy
@@ -815,19 +964,43 @@ export function OnboardingModal({
         </div>
         <button
           type="button"
-          disabled={isSaving}
+          disabled={isSaving || isCheckingUpgrade}
           onClick={() => void startCheckout(selectedPlan)}
           className="mt-4 w-full rounded-2xl border border-[#d4e4fb] bg-white px-5 py-3 text-sm font-extrabold text-[#2f80ed] transition hover:bg-[#f4f9ff] disabled:opacity-60"
         >
-          Upgrade with {selectedPlan === "yearly" ? "$50 / year" : "$4.99 / month"}
+          {isCheckingUpgrade ? "Checking upgrade..." : `Upgrade with ${selectedPlan === "yearly" ? "$50 / year" : "$4.99 / month"}`}
         </button>
-        <PrimaryButton onClick={() => setSlide(9)} disabled={isSaving}>
+        <PrimaryButton onClick={() => goToSlide(10)} disabled={isSaving || isCheckingUpgrade}>
           Continue for Free
         </PrimaryButton>
         <p className="mt-3 text-center text-xs font-semibold text-[#8b94a8]">You can upgrade anytime in settings.</p>
       </OnboardingShell>,
 
-      <OnboardingShell key="study" activeIndex={9}>
+      <OnboardingShell key="upgrade-success" activeIndex={9} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
+        <LouisHero mood="stareyes" />
+        <Headline>
+          You’re upgraded
+          <br />
+          to Pro
+        </Headline>
+        <Subtitle>
+          You now have full access to every Bible Study inside Bible Buddy.
+          <br />
+          Let’s pick where you want to start.
+        </Subtitle>
+        <div className="mx-auto mt-7 max-w-[330px] rounded-3xl border border-[#cce7d5] bg-[#f0fff5] px-5 py-5 text-center shadow-[0_14px_32px_rgba(39,174,96,0.12)]">
+          <p className="text-4xl">🎉</p>
+          <p className="mt-3 text-lg font-black text-[#17213d]">Bible Buddy Pro is ready.</p>
+          <p className="mt-2 text-sm font-semibold leading-6 text-[#536079]">
+            Your study library is unlocked, and your first Bible Study is waiting.
+          </p>
+        </div>
+        <PrimaryButton onClick={() => goToSlide(10)}>
+          Pick my Bible Study
+        </PrimaryButton>
+      </OnboardingShell>,
+
+      <OnboardingShell key="study" activeIndex={10} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
         <LouisHero mood="smile" />
         <Headline>
           Pick your first
@@ -840,80 +1013,37 @@ export function OnboardingModal({
           choose which Bible study you wanna start with first.
         </Subtitle>
 
-        <div
-          className="relative mx-[-28px] mt-8 h-[292px] cursor-grab touch-pan-y overflow-hidden active:cursor-grabbing"
-          onPointerDown={(event) => {
-            beginStudyDrag(event.clientX);
-            event.currentTarget.setPointerCapture(event.pointerId);
-          }}
-          onPointerMove={(event) => moveStudyDrag(event.clientX)}
-          onPointerUp={finishStudyDrag}
-          onPointerCancel={finishStudyDrag}
-        >
-          <div className="absolute left-1/2 top-2 flex -translate-x-1/2 items-end justify-center gap-0">
-            {studies.map((study, index) => {
-              const offset = index - selectedStudyIndex;
-              const isSelected = index === selectedStudyIndex;
-              if (Math.abs(offset) > 2) return null;
-              return (
-                <button
-                  key={study.title}
-                  type="button"
-                  onClick={() => {
-                    if (studyDraggedRef.current) return;
-                    setSelectedStudyIndex(index);
-                  }}
-                  className="relative -mx-1 select-none transition-all duration-300"
-                  style={{
-                    transform: `translateX(${offset * 42 + (isSelected ? studyDragX : studyDragX * 0.25)}px) rotate(${offset * 5}deg) scale(${isSelected ? 1.02 : 0.8})`,
-                    zIndex: isSelected ? 20 : 10 - Math.abs(offset),
-                    opacity: Math.abs(offset) === 2 ? 0.86 : 1,
-                  }}
-                >
-                  <span
-                    className={`relative block h-[260px] w-[174px] overflow-hidden rounded-md bg-[#172033] shadow-xl ${
-                      isSelected ? "ring-2 ring-white" : ""
-                    }`}
-                  >
-                    <Image
-                      src={study.cover}
-                      alt={`${study.title} cover`}
-                      fill
-                      sizes="174px"
-                      draggable={false}
-                      className="select-none object-cover scale-[2.35]"
-                    />
-                  </span>
-                </button>
-              );
-            })}
+        <div className="mt-4">
+          <select
+            id="first-bible-study"
+            value={selectedStudyIndex}
+            onChange={(event) => setSelectedStudyIndex(Number(event.target.value))}
+            className="w-full rounded-2xl border border-[#d8e3f1] bg-white px-4 py-3 text-base font-extrabold text-[#18213a] shadow-sm outline-none transition focus:border-[#2f80ed] focus:ring-4 focus:ring-[#2f80ed]/15"
+          >
+            {studies.map((study, index) => (
+              <option key={`${study.id ?? study.title}-${index}`} value={index}>
+                {study.title}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="mt-4 flex justify-center">
+          <div className="rounded-xl bg-white p-2 shadow-xl ring-1 ring-[#e6ebf3]">
+            <Image
+              src={selectedStudy.cover}
+              alt={`${selectedStudy.title} cover`}
+              width={190}
+              height={285}
+              className="h-[232px] w-auto rounded-lg object-contain"
+              priority
+            />
           </div>
         </div>
 
-        <div className="mt-2 flex justify-center gap-2">
-          {studies.map((study, index) => (
-            <button
-              key={study.title}
-              type="button"
-              aria-label={`Select ${study.title}`}
-              onClick={() => setSelectedStudyIndex(index)}
-              className={`h-2 rounded-full transition-all ${index === selectedStudyIndex ? "w-7 bg-[#2f80ed]" : "w-4 bg-[#dfe3ec]"}`}
-            />
-          ))}
-        </div>
-
-        <button
-          type="button"
-          onClick={() => setShowStudyDescription((current) => !current)}
-          className="mx-auto mt-6 block text-sm font-bold text-[#18213a] underline"
-        >
-          What is this Bible study about?
-        </button>
-        {showStudyDescription ? (
-          <p className="mx-auto mt-3 max-w-[300px] text-center text-sm font-medium leading-6 text-[#3d465c]">
-            {selectedStudy.description}
-          </p>
-        ) : null}
+        <p className="mx-auto mt-4 max-w-[330px] text-center text-sm font-semibold leading-6 text-[#3d465c]">
+          {getOnboardingStudyDescription(selectedStudy)}
+        </p>
 
         <PrimaryButton onClick={() => void finishWithStudy()} disabled={isSaving}>
           Pick this Bible study
@@ -925,12 +1055,12 @@ export function OnboardingModal({
       experience,
       fullName,
       goal,
+      isCheckingUpgrade,
       isSaving,
+      maxVisitedSlide,
       selectedPlan,
       selectedStudy,
       selectedStudyIndex,
-      studyDragX,
-      showStudyDescription,
       source,
       studies,
     ],
@@ -939,15 +1069,23 @@ export function OnboardingModal({
   if (!isOpen) return null;
 
   return (
-    <>
+    <div
+      onPointerDown={(event) => beginOnboardingSwipe(event.clientX, event.clientY)}
+      onPointerUp={(event) => finishOnboardingSwipe(event.clientX, event.clientY)}
+      onPointerCancel={() => {
+        onboardingSwipeStartX.current = null;
+        onboardingSwipeStartY.current = null;
+      }}
+    >
       {slides[slide]}
       {error ? (
         <div className="fixed bottom-5 left-1/2 z-[280] w-[calc(100%-32px)] max-w-sm -translate-x-1/2 rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-center text-sm font-semibold text-red-700 shadow-xl">
           {error}
         </div>
       ) : null}
-    </>
+    </div>
   );
 }
 
 export default OnboardingModal;
+
