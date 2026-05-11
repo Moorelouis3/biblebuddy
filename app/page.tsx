@@ -9,40 +9,34 @@ import { ACTION_TYPE } from "@/lib/actionTypes";
 
 const taskSteps = [
   {
-    task: "Task 1",
     icon: "📕",
     title: "Read Chapter Intro",
-    copy: "Start with a clear, cinematic intro so you understand what you are about to read before you open the chapter.",
+    copy: "Begin with a clear intro that shows what the chapter is about before you start reading.",
   },
   {
-    task: "Task 2",
     icon: "✝️",
     title: "Read the Chapter",
-    copy: "Read Scripture in a focused Bible reader built for progress, highlighting, saving, and returning without losing your place.",
+    copy: "Read Scripture in a focused Bible reader built for highlighting, saving, and keeping your place.",
   },
   {
-    task: "Task 3",
     icon: "📝",
     title: "Review Study Notes",
-    copy: "Go deeper with notes that explain the story, themes, history, meaning, and the parts that usually make people stop reading.",
+    copy: "Go deeper with study notes that explain the story, themes, history, and meaning.",
   },
   {
-    task: "Task 4",
     icon: "🧠",
     title: "Play Trivia",
-    copy: "Check what is sticking with a short chapter quiz that helps you remember the people, events, and main ideas.",
+    copy: "Check what is sticking with a short chapter quiz that helps you remember the main ideas.",
   },
   {
-    task: "Task 5",
     icon: "🔤",
     title: "Play Scrambled",
-    copy: "Lock key words into memory with a quick word game connected to the chapter you just studied.",
+    copy: "Lock key words into memory with a quick word game connected to the chapter.",
   },
   {
-    task: "Task 6",
     icon: "✍️",
     title: "Answer Reflection",
-    copy: "Slow down and write what the chapter is stirring in you, then keep the conversation going with other Bible Buddies.",
+    copy: "Slow down and write what the chapter is stirring in you.",
   },
 ];
 
@@ -349,7 +343,6 @@ export default function LandingPage() {
               {taskSteps.map((step) => (
                 <div key={step.title} className="rounded-2xl border border-[#dbe7f6] bg-white p-5 shadow-[0_14px_34px_rgba(42,88,125,0.1)] md:rounded-3xl md:p-6 md:shadow-[0_18px_46px_rgba(42,88,125,0.12)]">
                   <div className="flex items-center justify-between">
-                    <span className="rounded-full bg-[#e3f2ff] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#4f85ad] md:text-xs md:tracking-[0.18em]">{step.task}</span>
                     <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-2xl md:h-12 md:w-12">{step.icon}</span>
                   </div>
                   <h3 className="mt-4 text-xl font-black text-slate-950 md:mt-5 md:text-2xl">{step.title}</h3>

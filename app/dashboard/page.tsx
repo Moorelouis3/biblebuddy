@@ -64,6 +64,7 @@ type BadgeProgress = {
   current: number;
   target: number;
   tone: BadgeTone;
+  category: string;
 };
 
 type BadgeProgressInput = {
@@ -130,147 +131,253 @@ function clampBadgeProgress(current: number, target: number) {
 }
 
 function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
+  const totalBibleStudyTasks =
+    input.bibleStudyIntroCompletions +
+    input.chapterCompletions +
+    input.notesReviewed +
+    input.triviaCompletions +
+    input.scrambledCompletions;
+
+  const makeLeveledBadges = ({
+    id,
+    title,
+    category,
+    emoji,
+    tone,
+    current,
+    targets,
+    descriptions,
+  }: {
+    id: string;
+    title: string;
+    category: string;
+    emoji: string;
+    tone: BadgeTone;
+    current: number;
+    targets: number[];
+    descriptions: string[];
+  }) =>
+    targets.map((target, index) => ({
+      id: `${id}-level-${index + 1}`,
+      title,
+      description: descriptions[index] || descriptions[descriptions.length - 1],
+      emoji,
+      levelLabel: `Level ${index + 1}`,
+      current,
+      target,
+      tone,
+      category,
+    }));
+
   const badges: BadgeProgress[] = [
-    {
-      id: "first-light",
-      title: "First Light",
-      description: "Finish your first Bible Study task.",
-      emoji: "🌅",
-      levelLabel: "Level 1",
-      current: input.bibleStudyIntroCompletions + input.chapterCompletions + input.notesReviewed + input.triviaCompletions + input.scrambledCompletions,
-      target: 1,
-      tone: "gold",
-    },
-    {
-      id: "three-day-flame",
-      title: "Three Day Flame",
-      description: "Log in 3 days in a row.",
+    ...makeLeveledBadges({
+      id: "daily-flame",
+      title: "Daily Flame",
+      category: "Streak",
       emoji: "🔥",
-      levelLabel: "Level 1",
-      current: input.currentStreak,
-      target: 3,
       tone: "red",
-    },
-    {
-      id: "ten-day-rooted",
-      title: "Rooted Rhythm",
-      description: "Log in 10 days in a row.",
-      emoji: "🌱",
-      levelLabel: "Level 2",
       current: input.currentStreak,
-      target: 10,
-      tone: "green",
-    },
-    {
-      id: "consistency-flame",
-      title: "Consistency Flame",
-      description: "Log in 25 days in a row.",
-      emoji: "💎",
-      levelLabel: "Level 3",
-      current: input.currentStreak,
-      target: 25,
-      tone: "blue",
-    },
-    {
-      id: "chapter-starter",
-      title: "Chapter Starter",
-      description: "Complete your first Bible chapter.",
+      targets: [3, 7, 14, 30, 60],
+      descriptions: [
+        "Log in 3 days in a row and start your Bible Buddy rhythm.",
+        "Keep your streak alive for a full week.",
+        "Show up for two straight weeks.",
+        "Reach the 30 day consistency flame.",
+        "Stay connected for 60 days straight.",
+      ],
+    }),
+    ...makeLeveledBadges({
+      id: "chapter-climber",
+      title: "Chapter Climber",
+      category: "Reading",
       emoji: "📖",
-      levelLabel: "Level 1",
-      current: input.chapterCompletions,
-      target: 1,
       tone: "blue",
-    },
-    {
-      id: "study-finisher",
-      title: "Study Finisher",
-      description: "Finish 7 Bible Study task days.",
+      current: input.chapterCompletions,
+      targets: [1, 5, 15, 30, 60],
+      descriptions: [
+        "Complete your first Bible chapter.",
+        "Finish 5 Bible chapters.",
+        "Finish 15 Bible chapters.",
+        "Finish 30 Bible chapters.",
+        "Finish 60 Bible chapters.",
+      ],
+    }),
+    ...makeLeveledBadges({
+      id: "study-path",
+      title: "Study Path",
+      category: "Bible Study",
       emoji: "✅",
-      levelLabel: "Level 2",
-      current: input.bibleStudyDayCompletions,
-      target: 7,
       tone: "green",
-    },
-    {
-      id: "notes-seeker",
-      title: "Notes Seeker",
-      description: "Review chapter notes 3 times.",
+      current: input.bibleStudyDayCompletions,
+      targets: [1, 5, 10, 20, 31],
+      descriptions: [
+        "Complete every task for your first chapter study.",
+        "Complete 5 full chapter studies.",
+        "Complete 10 full chapter studies.",
+        "Complete 20 full chapter studies.",
+        "Complete 31 full chapter studies.",
+      ],
+    }),
+    ...makeLeveledBadges({
+      id: "intro-scout",
+      title: "Intro Scout",
+      category: "Bible Study",
+      emoji: "🌅",
+      tone: "gold",
+      current: input.bibleStudyIntroCompletions,
+      targets: [1, 7, 15, 31, 60],
+      descriptions: [
+        "Read your first chapter intro.",
+        "Read 7 chapter intros.",
+        "Read 15 chapter intros.",
+        "Read 31 chapter intros.",
+        "Read 60 chapter intros.",
+      ],
+    }),
+    ...makeLeveledBadges({
+      id: "notes-digger",
+      title: "Notes Digger",
+      category: "Notes",
       emoji: "📝",
-      levelLabel: "Level 1",
-      current: input.notesReviewed,
-      target: 3,
       tone: "teal",
-    },
-    {
-      id: "trivia-spark",
-      title: "Trivia Spark",
-      description: "Finish your first trivia round.",
+      current: input.notesReviewed,
+      targets: [1, 10, 25, 50, 100],
+      descriptions: [
+        "Review your first set of chapter notes.",
+        "Review 10 chapter note sections.",
+        "Review 25 chapter note sections.",
+        "Review 50 chapter note sections.",
+        "Review 100 chapter note sections.",
+      ],
+    }),
+    ...makeLeveledBadges({
+      id: "trivia-brain",
+      title: "Trivia Brain",
+      category: "Trivia",
       emoji: "🧠",
-      levelLabel: "Level 1",
-      current: input.triviaCompletions,
-      target: 1,
       tone: "pink",
-    },
-    {
+      current: input.triviaCompletions,
+      targets: [1, 10, 25, 50, 100],
+      descriptions: [
+        "Finish your first trivia round.",
+        "Finish 10 trivia rounds.",
+        "Finish 25 trivia rounds.",
+        "Finish 50 trivia rounds.",
+        "Finish 100 trivia rounds.",
+      ],
+    }),
+    ...makeLeveledBadges({
       id: "word-builder",
       title: "Word Builder",
-      description: "Finish your first Scrambled round.",
+      category: "Scrambled",
       emoji: "🔤",
-      levelLabel: "Level 1",
-      current: input.scrambledCompletions,
-      target: 1,
       tone: "purple",
-    },
-    {
+      current: input.scrambledCompletions,
+      targets: [1, 10, 25, 50, 100],
+      descriptions: [
+        "Finish your first Scrambled round.",
+        "Finish 10 Scrambled rounds.",
+        "Finish 25 Scrambled rounds.",
+        "Finish 50 Scrambled rounds.",
+        "Finish 100 Scrambled rounds.",
+      ],
+    }),
+    ...makeLeveledBadges({
       id: "group-voice",
       title: "Group Voice",
-      description: "Post your first Bible Buddy group comment.",
+      category: "Community",
       emoji: "💬",
-      levelLabel: "Level 1",
-      current: input.commentsPosted,
-      target: 1,
       tone: "teal",
-    },
-    {
+      current: input.commentsPosted,
+      targets: [1, 5, 15, 30, 75],
+      descriptions: [
+        "Post your first comment or reply.",
+        "Post 5 comments or replies.",
+        "Post 15 comments or replies.",
+        "Post 30 comments or replies.",
+        "Post 75 comments or replies.",
+      ],
+    }),
+    ...makeLeveledBadges({
       id: "encourager",
       title: "Encourager",
-      description: "Like 3 posts or comments.",
+      category: "Community",
       emoji: "💙",
-      levelLabel: "Level 2",
-      current: input.likesGiven,
-      target: 3,
       tone: "blue",
-    },
-    {
-      id: "bible-tv-starter",
-      title: "Bible Buddy TV Starter",
-      description: "Watch your first Bible Buddy TV video.",
+      current: input.likesGiven,
+      targets: [3, 10, 25, 50, 100],
+      descriptions: [
+        "Like 3 posts or comments.",
+        "Like 10 posts or comments.",
+        "Like 25 posts or comments.",
+        "Like 50 posts or comments.",
+        "Like 100 posts or comments.",
+      ],
+    }),
+    ...makeLeveledBadges({
+      id: "tv-watcher",
+      title: "Bible TV Watcher",
+      category: "Bible Buddy TV",
       emoji: "📺",
-      levelLabel: "Level 1",
-      current: input.tvVideosStarted,
-      target: 1,
       tone: "purple",
-    },
-    {
+      current: input.tvVideosStarted,
+      targets: [1, 5, 15, 30, 60],
+      descriptions: [
+        "Watch your first Bible Buddy TV video.",
+        "Start 5 Bible Buddy TV videos.",
+        "Start 15 Bible Buddy TV videos.",
+        "Start 30 Bible Buddy TV videos.",
+        "Start 60 Bible Buddy TV videos.",
+      ],
+    }),
+    ...makeLeveledBadges({
       id: "book-finisher",
       title: "Book Finisher",
-      description: "Finish your first Bible book.",
+      category: "Reading",
       emoji: "🏅",
-      levelLabel: "Level 3",
-      current: input.booksCompleted,
-      target: 1,
       tone: "gold",
-    },
-    {
-      id: "xp-builder",
-      title: "XP Builder",
-      description: "Earn 1,000 Bible Buddy points.",
+      current: input.booksCompleted,
+      targets: [1, 2, 5, 10, 20],
+      descriptions: [
+        "Finish your first Bible book.",
+        "Finish 2 Bible books.",
+        "Finish 5 Bible books.",
+        "Finish 10 Bible books.",
+        "Finish 20 Bible books.",
+      ],
+    }),
+    ...makeLeveledBadges({
+      id: "xp-shield",
+      title: "XP Shield",
+      category: "Progress",
       emoji: "🛡️",
-      levelLabel: "Level 2",
-      current: input.totalPoints,
-      target: 1000,
       tone: "slate",
-    },
+      current: input.totalPoints,
+      targets: [250, 1000, 2500, 5000, 10000],
+      descriptions: [
+        "Earn 250 Bible Buddy points.",
+        "Earn 1,000 Bible Buddy points.",
+        "Earn 2,500 Bible Buddy points.",
+        "Earn 5,000 Bible Buddy points.",
+        "Earn 10,000 Bible Buddy points.",
+      ],
+    }),
+    ...makeLeveledBadges({
+      id: "task-spark",
+      title: "Task Spark",
+      category: "Bible Study",
+      emoji: "✨",
+      tone: "green",
+      current: totalBibleStudyTasks,
+      targets: [5, 25, 75, 150, 300],
+      descriptions: [
+        "Complete 5 Bible Study tasks.",
+        "Complete 25 Bible Study tasks.",
+        "Complete 75 Bible Study tasks.",
+        "Complete 150 Bible Study tasks.",
+        "Complete 300 Bible Study tasks.",
+      ],
+    }),
   ];
 
   return badges.map((badge) => ({
@@ -380,7 +487,9 @@ export default function DashboardPage() {
   } | null>(null);
   const [showLevelInfoModal, setShowLevelInfoModal] = useState(false);
   const [showBadgesModal, setShowBadgesModal] = useState(false);
+  const [showGraceDaysInfoModal, setShowGraceDaysInfoModal] = useState(false);
   const [badgeProgress, setBadgeProgress] = useState<BadgeProgress[]>([]);
+  const [selectedBadge, setSelectedBadge] = useState<BadgeProgress | null>(null);
   const [showStreakBadgeModal, setShowStreakBadgeModal] = useState(false);
   const [showCommunityModal, setShowCommunityModal] = useState(false);
   const [showVerseOfTheDayModal, setShowVerseOfTheDayModal] = useState(false);
@@ -1152,6 +1261,7 @@ export default function DashboardPage() {
         label: "💎 Grace Days",
         value: Math.max(0, Math.min(5, Number(profile?.grace_days_count ?? 0))),
         tones: "bg-blue-100 border-blue-200",
+        onClick: () => setShowGraceDaysInfoModal(true),
       },
       {
         key: "level",
@@ -1247,23 +1357,6 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className="mt-2 flex items-center justify-center gap-2" aria-label="Dashboard stats pages">
-          <button
-            type="button"
-            onClick={() => setDashboardStatsPane(0)}
-            className={`h-2 rounded-full transition-all ${dashboardStatsPane === 0 ? "w-8 bg-[#7BAFD4]" : "w-2 bg-[#c8ddf4]"}`}
-            aria-label="Show personal stats"
-          />
-          <button
-            type="button"
-            onClick={() => setDashboardStatsPane(1)}
-            className={`h-2 rounded-full transition-all ${dashboardStatsPane === 1 ? "w-8 bg-[#7BAFD4]" : "w-2 bg-[#c8ddf4]"}`}
-            aria-label="Show analytics stats"
-          />
-        </div>
-        <p className="mt-1 text-center text-[10px] font-semibold text-slate-400">
-          Swipe for {dashboardStatsPane === 0 ? "analytics" : "your stats"}
-        </p>
       </div>
     );
   }
@@ -2952,11 +3045,65 @@ export default function DashboardPage() {
       />
 
       <ModalShell
-        isOpen={showBadgesModal}
-        onClose={() => setShowBadgesModal(false)}
+        isOpen={showGraceDaysInfoModal}
+        onClose={() => setShowGraceDaysInfoModal(false)}
         backdropColor="bg-black/45"
       >
-        <div className="mx-3 my-5 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
+        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#cfe3f5] bg-white shadow-2xl">
+          <div className="bg-gradient-to-br from-[#eef7ff] via-white to-[#edf8ff] px-6 py-7 text-center">
+            <div className="flex justify-center">
+              <div className="relative rounded-full bg-[#e7f4ff] p-2 shadow-sm">
+                <LouisAvatar mood="stareyes" size={72} />
+                <span
+                  className="absolute -right-1 -top-1 flex h-10 w-10 items-center justify-center rounded-full bg-white text-2xl shadow-md"
+                  aria-hidden="true"
+                >
+                  💎
+                </span>
+              </div>
+            </div>
+            <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[#5f86bd]">
+              Streak Protection
+            </p>
+            <h2 className="mt-2 text-3xl font-black text-[#21304f]">Grace Days</h2>
+            <div className="mt-5 space-y-4 text-left text-sm leading-6 text-[#4f678e]">
+              <p>
+                Grace Days are designed to give you grace while building your Bible habit.
+              </p>
+              <p>
+                Life is not always predictable. Some days get busy. Emergencies happen. Schedules change.
+              </p>
+              <p>
+                Instead of losing your streak instantly, Bible Buddy allows you to earn up to{" "}
+                <span className="font-bold text-[#21304f]">5 Grace Days</span>.
+              </p>
+              <p>
+                If you miss a day, a Grace Day can be used to continue your streak and keep your progress going.
+              </p>
+            </div>
+            <div className="mt-6 rounded-2xl border border-[#d7e8f8] bg-white/80 px-4 py-4 text-sm font-semibold leading-6 text-[#21304f] shadow-sm">
+              The goal is not perfection. The goal is helping you build a long term relationship with God through consistency and grace.
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowGraceDaysInfoModal(false)}
+              className="mt-6 inline-flex min-w-[140px] justify-center rounded-full bg-[#7BAFD4] px-5 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+            >
+              Got it
+            </button>
+          </div>
+        </div>
+      </ModalShell>
+
+      <ModalShell
+        isOpen={showBadgesModal}
+        onClose={() => {
+          setSelectedBadge(null);
+          setShowBadgesModal(false);
+        }}
+        backdropColor="bg-black/45"
+      >
+        <div className="relative mx-3 my-5 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
           <div className="border-b border-[#dbe7f6] bg-gradient-to-br from-[#edf5ff] via-white to-[#f4fbff] px-5 py-5 sm:px-7">
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-3">
@@ -2975,7 +3122,10 @@ export default function DashboardPage() {
               </div>
               <button
                 type="button"
-                onClick={() => setShowBadgesModal(false)}
+                onClick={() => {
+                  setSelectedBadge(null);
+                  setShowBadgesModal(false);
+                }}
                 className="rounded-full px-2 py-1 text-2xl font-bold leading-none text-[#1f2a44] transition hover:bg-white"
                 aria-label="Close badges"
               >
@@ -2988,59 +3138,106 @@ export default function DashboardPage() {
           </div>
 
           <div className="overflow-y-auto px-3 py-3 sm:px-5 sm:py-4">
-            <div className="overflow-hidden rounded-3xl border border-[#dbe7f6] bg-[#f8fbff]">
-              {badgeProgress.map((badge, index) => {
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+              {badgeProgress.map((badge) => {
                 const isEarned = badge.current >= badge.target;
-                const progressPercent = Math.max(0, Math.min(100, Math.round((badge.current / badge.target) * 100)));
                 const tone = BADGE_TONE_CLASSES[badge.tone];
 
                 return (
-                  <div
+                  <button
                     key={badge.id}
-                    className={`grid grid-cols-[76px_1fr] gap-3 border-[#dbe7f6] px-3 py-4 sm:grid-cols-[96px_1fr] sm:gap-4 sm:px-5 sm:py-5 ${index === badgeProgress.length - 1 ? "" : "border-b"}`}
+                    type="button"
+                    onClick={() => setSelectedBadge(badge)}
+                    className={`group relative flex min-h-[132px] flex-col items-center justify-between rounded-3xl border p-2.5 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:min-h-[150px] sm:p-3 ${
+                      isEarned
+                        ? "border-[#cbe6f7] bg-white"
+                        : "border-slate-200 bg-slate-50 opacity-80"
+                    }`}
                   >
                     <div
-                      className={`flex h-20 w-16 flex-col items-center justify-center rounded-2xl border text-center sm:h-24 sm:w-20 ${isEarned ? `${tone.tile} ${tone.glow}` : "border-slate-200 bg-slate-100 text-slate-400 grayscale"}`}
+                      className={`flex h-16 w-16 flex-col items-center justify-center rounded-2xl border text-center sm:h-20 sm:w-20 ${
+                        isEarned ? `${tone.tile} ${tone.glow}` : "border-slate-200 bg-slate-100 text-slate-400 grayscale"
+                      }`}
                     >
-                      <span className="text-3xl sm:text-4xl" aria-hidden="true">{badge.emoji}</span>
-                      <span className="mt-2 text-[9px] font-black uppercase leading-none">{badge.levelLabel}</span>
+                      <span className="text-3xl sm:text-4xl" aria-hidden="true">
+                        {badge.emoji}
+                      </span>
+                      <span className="mt-1 text-[8px] font-black uppercase leading-none">
+                        {badge.levelLabel}
+                      </span>
                     </div>
-
-                    <div className="min-w-0 py-1">
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <h3 className="text-lg font-bold leading-tight text-[#1f2a44] sm:text-xl">{badge.title}</h3>
-                          {isEarned ? (
-                            <span className="mt-1 inline-flex rounded-full bg-[#dff8e9] px-2.5 py-1 text-[11px] font-bold text-[#177a42]">
-                              Earned
-                            </span>
-                          ) : (
-                            <span className="mt-1 inline-flex rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[#71829f]">
-                              Locked
-                            </span>
-                          )}
-                        </div>
-                        <p className="shrink-0 text-sm font-bold text-[#5f789c]">
-                          {badge.current}/{badge.target}
-                        </p>
-                      </div>
-
-                      <div className="mt-3 h-3 overflow-hidden rounded-full bg-[#d6e0ea]">
-                        <div
-                          className={`h-full rounded-full transition-all duration-700 ${isEarned ? tone.progress : "bg-[#8ea0b2]"}`}
-                          style={{ width: `${progressPercent}%` }}
-                        />
-                      </div>
-
-                      <p className="mt-3 text-sm font-semibold leading-5 text-[#24324b]">
-                        {badge.description}
+                    <div className="mt-2 min-w-0">
+                      <p className={`truncate text-sm font-black leading-tight sm:text-base ${isEarned ? "text-[#1f2a44]" : "text-slate-500"}`}>
+                        {badge.title}
+                      </p>
+                      <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#6b7f9f]">
+                        {isEarned ? "Unlocked" : "Locked"}
                       </p>
                     </div>
-                  </div>
+                    <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-[#d6e0ea]">
+                      <div
+                        className={`h-full rounded-full transition-all duration-700 ${isEarned ? tone.progress : "bg-[#8ea0b2]"}`}
+                        style={{ width: `${Math.max(0, Math.min(100, Math.round((badge.current / badge.target) * 100)))}%` }}
+                      />
+                    </div>
+                  </button>
                 );
               })}
             </div>
           </div>
+
+          {selectedBadge ? (() => {
+            const isEarned = selectedBadge.current >= selectedBadge.target;
+            const tone = BADGE_TONE_CLASSES[selectedBadge.tone];
+            const progressPercent = Math.max(0, Math.min(100, Math.round((selectedBadge.current / selectedBadge.target) * 100)));
+
+            return (
+              <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#172033]/35 px-4 backdrop-blur-sm">
+                <div className="w-full max-w-sm rounded-[30px] border border-[#d7e4f7] bg-white p-5 text-center shadow-2xl">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedBadge(null)}
+                    className="ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-lg font-black text-slate-700 transition hover:bg-slate-200"
+                    aria-label="Close badge detail"
+                  >
+                    ×
+                  </button>
+                  <div className="mt-1 flex justify-center">
+                    <div
+                      className={`flex h-28 w-28 flex-col items-center justify-center rounded-[28px] border text-center ${
+                        isEarned ? `${tone.tile} ${tone.glow}` : "border-slate-200 bg-slate-100 text-slate-400 grayscale"
+                      }`}
+                    >
+                      <span className="text-6xl" aria-hidden="true">{selectedBadge.emoji}</span>
+                      <span className="mt-2 text-[10px] font-black uppercase tracking-[0.12em]">{selectedBadge.levelLabel}</span>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[#5f86bd]">{selectedBadge.category}</p>
+                  <h3 className="mt-1 text-3xl font-black leading-tight text-[#1f2a44]">{selectedBadge.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-[#536a8f]">{selectedBadge.description}</p>
+                  <div className="mt-5 rounded-2xl bg-[#f4f8ff] p-4">
+                    <div className="flex items-center justify-between text-sm font-black text-[#24324b]">
+                      <span>{isEarned ? "Badge unlocked" : "Progress"}</span>
+                      <span>{selectedBadge.current}/{selectedBadge.target}</span>
+                    </div>
+                    <div className="mt-3 h-3 overflow-hidden rounded-full bg-[#d6e0ea]">
+                      <div
+                        className={`h-full rounded-full transition-all duration-700 ${isEarned ? tone.progress : "bg-[#8ea0b2]"}`}
+                        style={{ width: `${progressPercent}%` }}
+                      />
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedBadge(null)}
+                    className="mt-5 w-full rounded-full bg-[#7BAFD4] px-4 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+                  >
+                    Nice
+                  </button>
+                </div>
+              </div>
+            );
+          })() : null}
         </div>
       </ModalShell>
 

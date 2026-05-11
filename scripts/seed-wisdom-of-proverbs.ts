@@ -837,7 +837,17 @@ const cinematicDepthByChapter: Record<number, string> = {
 
   4: `You can almost hear three generations in this chapter. David's lessons echo through Solomon, and Solomon passes them to his son. That is how wisdom often travels: not as a cold list, but as memory with urgency. David knew the cost of unguarded desire. Solomon would know it too. So when the chapter says to guard your heart, it is not decorative language. It is a warning from a family line that had seen how one unguarded place can spill into a whole kingdom.`,
 
-  5: `This chapter also carries the sorrow of Solomon's own weakness. He had extraordinary wisdom, but wisdom did not make him immune to compromise. His many marriages were not only romantic failure; they were political, spiritual, and national danger. Ancient kings often used marriage alliances to secure peace or power, and concubines were secondary wives without the same full status. But what looked strategic could still become spiritually destructive. Proverbs 5 warns that desire and advantage can both become chains when they pull the heart from God.`,
+  5: `This chapter also carries the sorrow of Solomon's own weakness.
+
+He had extraordinary wisdom, but wisdom did not make him immune to compromise.
+
+His many marriages were not only romantic failure. They were political, spiritual, and national danger.
+
+Ancient kings often used marriage alliances to secure peace or power, and concubines were secondary wives without the same full status.
+
+But what looked strategic could still become spiritually destructive.
+
+Proverbs 5 warns that desire and advantage can both become chains when they pull the heart from God.`,
 
   6: `Notice how grounded this chapter is. Solomon does not separate spiritual life from practical life. A foolish promise can trap you. A lazy morning can become a ruined harvest. A lying tongue can fracture trust. An unguarded look can become adultery. He is teaching his son to respect beginnings. Most breakdowns do not begin loudly. They begin as small permissions, repeated excuses, and habits no one confronts until the damage is already visible.`,
 
@@ -918,13 +928,131 @@ type StudyIntroDetail = {
 };
 
 function formatTrailerParagraphs(text: string) {
-  const sentences = text.trim().match(/[^.!?]+[.!?]+(?:["']?)/g);
-  if (!sentences || sentences.length <= 1) return text.trim();
+  const blocks = text
+    .trim()
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .filter(Boolean);
 
-  const firstSentence = sentences[0].trim();
-  const remaining = text.trim().slice(firstSentence.length).trim();
-  return remaining ? `${firstSentence}\n\n${remaining}` : firstSentence;
+  return blocks
+    .map((block) => {
+      const normalized = block.replace(/\s+/g, " ").trim();
+      const sentences = normalized.match(/[^.!?]+[.!?]+(?:["']?)/g);
+      if (!sentences || sentences.length <= 1) return normalized;
+
+      const chunks: string[] = [];
+      let current = "";
+
+      sentences.forEach((sentence) => {
+        const cleanSentence = sentence.trim();
+        const nextChunk = current ? `${current} ${cleanSentence}` : cleanSentence;
+        const shouldGroup = current && nextChunk.length <= 150 && !/[;:]/.test(current);
+
+        if (shouldGroup) {
+          current = nextChunk;
+          return;
+        }
+
+        if (current) chunks.push(current);
+        current = cleanSentence;
+      });
+
+      if (current) chunks.push(current);
+      return chunks.join("\n\n");
+    })
+    .join("\n\n");
 }
+
+function formatIntroList(items: string[], icons: string[]) {
+  return items.map((item, index) => `* ${icons[index % icons.length]} ${item}`).join("\n\n");
+}
+
+function formatTakeawayCallout(text: string) {
+  const formatted = formatTrailerParagraphs(text);
+  return formatted
+    .split("\n\n")
+    .map((paragraph) => `> **_${paragraph}_**`)
+    .join("\n>\n");
+}
+
+const beginsWithIcons = ["\u{1F3AC}", "\u{1F442}", "\u{26A0}\u{FE0F}", "\u{1F6E3}\u{FE0F}", "\u{1F50E}"];
+const watchForIcons = ["\u{26A0}\u{FE0F}", "\u{1F440}", "\u{1F3DB}\u{FE0F}", "\u{1F512}", "\u{1F50D}"];
+
+const customStudyIntroByChapter: Record<number, string> = {
+  5: `# 📖 Proverbs 5 Introduction
+
+In Proverbs 4, Solomon warned his son about the path he walks on.
+
+He talked about:
+
+* 🛤️ the path of the just
+
+* 🌑 the path of the wicked
+
+* 👀 guarding your eyes
+
+* 🧠 guarding your heart
+
+* 👣 watching your steps
+
+The focus was direction.
+
+Solomon was teaching his son that the life you build is shaped by the path you keep walking on.
+
+Now in Proverbs 5, Solomon becomes much more specific.
+
+He moves from speaking generally about wisdom and paths to warning directly about temptation, lust, and destructive desire.
+
+This chapter is one of the clearest warnings in Proverbs about sexual temptation and the danger of letting desire lead instead of wisdom.
+
+But this chapter is deeper than just "do not commit adultery."
+
+Solomon is teaching his son:
+
+* ⚠️ how temptation sounds
+
+* 🍯 why it feels sweet at first
+
+* ⚔️ where it eventually leads
+
+* 🧠 why wisdom must speak before desire does
+
+Throughout this chapter, Solomon contrasts:
+
+* 🧭 wisdom versus impulse
+
+* 💍 faithfulness versus forbidden desire
+
+* 🛡️ discipline versus destruction
+
+This chapter matters because Solomon himself understood both wisdom and compromise.
+
+He was one of the wisest men to ever live.
+
+But later in life, his many wives and relationships pulled his heart away from God.
+
+That gives extra weight to this warning.
+
+Solomon is not speaking as someone who knows nothing about temptation.
+
+He is speaking as someone who understands how dangerous unchecked desire can become.
+
+As you read Proverbs 5, pay attention to:
+
+* 👀 how temptation is described before consequences appear
+
+* ⚠️ how sweet beginnings can hide bitter endings
+
+* 🧠 how wisdom looks past the moment and sees the future
+
+* 👣 how repeated compromise slowly becomes a path
+
+The main lesson of Proverbs 5 is this:
+
+> **_Do not judge temptation by how it begins._**
+>
+> **_Judge it by where it leads._**`,
+};
 
 const studyIntroDetailsByChapter: Record<number, StudyIntroDetail> = {
   2: {
@@ -1000,7 +1128,7 @@ const studyIntroDetailsByChapter: Record<number, StudyIntroDetail> = {
       "a call toward faithfulness instead of secret destruction",
     ],
     matters:
-      "This chapter matters because Solomon knew the danger of divided desire. Ancient kings often used marriages and concubines for alliance, status, and pleasure, but Solomon's own life showed how a heart can drift when desire is not ruled by obedience.",
+      "This chapter matters because Solomon knew the danger of divided desire. Ancient kings often used marriages and concubines for alliance, status, and pleasure. But Solomon's own life showed how a heart can drift when desire is not ruled by obedience.",
     givesUs: ["⚠️ temptation", "🍯 sweetness", "💔 regret", "🔒 faithfulness", "👀 seeing the end of a road"],
     watchFor: [
       "how temptation is described before its consequences are shown",
@@ -1564,6 +1692,9 @@ function buildProverbsStudyIntro(day: ChapterPlan) {
     return cinematicDevotionalTextByChapter[1];
   }
 
+  const customIntro = customStudyIntroByChapter[day.chapter];
+  if (customIntro) return customIntro;
+
   const detail = studyIntroDetailsByChapter[day.chapter];
   if (!detail) return buildCinematicDevotionalText(day.chapter);
   const cinematicDepth = cinematicDepthByChapter[day.chapter]?.trim();
@@ -1580,17 +1711,17 @@ function buildProverbsStudyIntro(day: ChapterPlan) {
 
 **The scene opens with:**
 
-${detail.beginsWith.map((item) => `* ${item}`).join("\n")}
+${formatIntroList(detail.beginsWith, beginsWithIcons)}
 
 ---
 
 # ${"\u{1F4A1}"} Why This Chapter Matters
 
-${detail.matters}
+${formatTrailerParagraphs(detail.matters)}
 
 **This chapter gives us:**
 
-${detail.givesUs.map((item) => `* ${item}`).join("\n")}
+${detail.givesUs.map((item) => `* ${item}`).join("\n\n")}
 
 ---
 
@@ -1598,13 +1729,13 @@ ${detail.givesUs.map((item) => `* ${item}`).join("\n")}
 
 **As you read, pay attention to:**
 
-${detail.watchFor.map((item) => `* ${item}`).join("\n")}
+${formatIntroList(detail.watchFor, watchForIcons)}
 
 ---
 
 # ${"\u{1F3AC}"} The Bigger Takeaway
 
-${detail.takeaway}`;
+${formatTakeawayCallout(detail.takeaway)}`;
 }
 
 const devotionalDays: DevotionalDay[] = chapterPlans.map((day) => ({
