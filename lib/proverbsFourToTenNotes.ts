@@ -349,6 +349,913 @@ const PROVERBS_FIVE: ChapterNotes = {
   ],
 };
 
+const PROVERBS_FIVE_NOTES_TEXT = `# Proverbs 5 Study Notes
+
+## 📍 Wisdom Before Desire Speaks
+
+> **1** My son, attend unto my wisdom, and bow thine ear to my understanding:
+>
+> **2** That thou mayest regard discretion, and that thy lips may keep knowledge.
+
+Solomon starts this chapter the same way he has been speaking through Proverbs.
+
+He says:
+
+**My son.**
+
+This is not random advice.
+
+This is a father warning his son before temptation shows up.
+
+He is not waiting until his son is already trapped.
+
+He is trying to teach him before the trap looks attractive.
+
+## 👂 Attend Unto My Wisdom
+
+To attend means to pay attention.
+
+It means:
+
+👂 Listen closely  
+🧠 Focus your mind  
+⚠️ Do not treat this lightly
+
+Solomon is saying:
+
+Do not casually hear this.
+
+Lean in.
+
+Pay attention.
+
+Because what he is about to teach is not small.
+
+This is about desire.
+
+This is about temptation.
+
+This is about how something can look sweet in the beginning and destroy you in the end.
+
+## 🙇 Bow Thine Ear
+
+"Bow thine ear" means to bend your ear toward something.
+
+It is the picture of someone leaning in to listen carefully.
+
+Solomon is saying:
+
+👉 Do not be distracted  
+👉 Do not be proud  
+👉 Do not think you already know enough
+
+This matters because temptation often wins when wisdom is ignored first.
+
+Before the strange woman ever speaks, Solomon is telling his son:
+
+Listen to wisdom now.
+
+Because if you do not listen to wisdom first, you may listen to temptation later.
+
+## 🧠 Regard Discretion
+
+Discretion means the ability to make wise choices before emotion takes over.
+
+It is not just knowing right from wrong.
+
+It is being able to slow down and think clearly when something looks appealing.
+
+Discretion helps you ask:
+
+👀 Where is this going?  
+⚠️ What will this cost me?  
+🧭 Is this wise or just attractive?  
+🙏 Does this pull me closer to God or away from Him?
+
+That is why Solomon says to regard discretion.
+
+Because temptation does not usually look dangerous at first.
+
+It looks sweet.
+
+It looks exciting.
+
+It looks harmless.
+
+Discretion helps you see past the beginning and look toward the end.
+
+## 🗣️ That Thy Lips May Keep Knowledge
+
+This phrase means wisdom should not just stay in your head.
+
+It should shape what comes out of your mouth.
+
+Your lips keeping knowledge means:
+
+🗣️ You speak with wisdom  
+🤐 You know when to be quiet  
+🧠 You do not let temptation talk you into foolishness  
+🙏 You hold on to what God has taught you
+
+When desire starts speaking, your mouth can either agree with it or resist it.
+
+Solomon wants his son to be so full of wisdom that even his words are guarded.
+
+Because when a person starts justifying sin with their mouth, they are usually already losing the battle in their heart.
+
+## 📍 The Strange Woman
+
+> **3** For the lips of a strange woman drop as an honeycomb, and her mouth is smoother than oil:
+>
+> **4** But her end is bitter as wormwood, sharp as a twoedged sword.
+
+Now Solomon introduces the strange woman.
+
+This is one of the main warnings in Proverbs.
+
+The strange woman is not just a random woman.
+
+She represents forbidden desire.
+
+She represents temptation that pulls a person away from wisdom, purity, covenant, and obedience.
+
+In Proverbs, the strange woman can represent:
+
+🔥 Lust  
+💔 Sexual temptation  
+🚪 Forbidden relationships  
+🧠 Deception  
+⚠️ Desire outside of God's wisdom
+
+This is not just about women.
+
+This is about temptation.
+
+Solomon is warning his son about the kind of desire that looks sweet but leads somewhere destructive.
+
+## 🍯 Her Lips Drop As An Honeycomb
+
+Honey was sweet.
+
+It was desirable.
+
+It was pleasant.
+
+So when Solomon says her lips drop as honeycomb, he is saying temptation sounds sweet at first.
+
+It does not come ugly.
+
+It does not come obvious.
+
+It comes with words that sound good.
+
+It may sound like:
+
+👉 Nobody will know  
+👉 You deserve this  
+👉 It is not that serious  
+👉 Just this one time  
+👉 This will make you feel better
+
+That is how temptation works.
+
+It speaks to desire.
+
+It offers sweetness.
+
+It promises pleasure before it reveals the cost.
+
+## 🫒 Her Mouth Is Smoother Than Oil
+
+Oil in the ancient world was valuable.
+
+It was used for:
+
+🫒 Anointing  
+🫒 Healing  
+🫒 Refreshing  
+🫒 Beauty  
+🫒 Hospitality
+
+So when Solomon says her mouth is smoother than oil, he means her words are persuasive.
+
+They slide in easily.
+
+They do not feel rough.
+
+They do not sound dangerous.
+
+Temptation often speaks smoothly.
+
+It does not start with:
+
+"I am going to destroy your life."
+
+It starts with:
+
+"This will feel good."
+
+That is why wisdom matters.
+
+Because if you only listen to how temptation sounds, you may miss where temptation leads.
+
+## 🌿 Bitter As Wormwood
+
+> **4** But her end is bitter as wormwood, sharp as a twoedged sword.
+
+This is the turn.
+
+Solomon says the beginning is sweet.
+
+But the end is bitter.
+
+Wormwood was a bitter plant.
+
+In the Bible, wormwood is often connected with bitterness, sorrow, judgment, and pain.
+
+So Solomon is saying:
+
+What starts like honey ends like bitterness.
+
+That is how sin works.
+
+It gives pleasure first.
+
+Then pain later.
+
+It gives excitement first.
+
+Then regret later.
+
+It gives a moment first.
+
+Then consequences later.
+
+## ⚔️ Sharp As A Twoedged Sword
+
+A twoedged sword cuts on both sides.
+
+It is dangerous from every angle.
+
+Solomon is saying the end of this path does not just disappoint you.
+
+It wounds you.
+
+It cuts deeply.
+
+It damages:
+
+💔 Your heart  
+🧠 Your mind  
+🙏 Your relationship with God  
+👥 Your relationships with others  
+🧭 Your future choices
+
+This is why Solomon is so serious.
+
+He is not trying to kill desire.
+
+He is trying to protect his son from desire that has no wisdom over it.
+
+## 📍 Where The Path Leads
+
+> **5** Her feet go down to death; her steps take hold on hell.
+>
+> **6** Lest thou shouldest ponder the path of life, her ways are moveable, that thou canst not know them.
+
+Solomon now moves from her words to her path.
+
+This is important.
+
+Temptation has a voice.
+
+But it also has a direction.
+
+It is not just what she says.
+
+It is where she is going.
+
+## 👣 Her Feet Go Down To Death
+
+Feet represent direction.
+
+Steps represent movement.
+
+Solomon is saying:
+
+This is not just a bad moment.
+
+This is a path.
+
+And the path goes downward.
+
+That is how temptation works.
+
+It rarely feels like destruction at first.
+
+It feels like one step.
+
+Then another.
+
+Then another.
+
+But if the path is wrong, every step is taking you somewhere.
+
+## 🔥 Her Steps Take Hold On Hell
+
+The word "hell" here carries the idea of Sheol, the place of death.
+
+Solomon is showing the seriousness of the path.
+
+This is not harmless.
+
+This is not just private pleasure.
+
+This path leads toward death.
+
+Not always instant physical death.
+
+But death in the sense of:
+
+💔 spiritual dullness  
+🧠 loss of wisdom  
+🙏 distance from God  
+👥 broken trust  
+🔥 destruction of peace
+
+Sin always promises life.
+
+But it leads away from it.
+
+## 🌀 Her Ways Are Moveable
+
+Solomon says her ways are moveable.
+
+That means unstable.
+
+Unpredictable.
+
+Shifting.
+
+You cannot trust them.
+
+Temptation does not stay honest.
+
+It changes shape.
+
+One day it looks harmless.
+
+The next day it owns you.
+
+One day it feels like freedom.
+
+The next day it feels like bondage.
+
+That is why Solomon says:
+
+"that thou canst not know them."
+
+You cannot safely follow something unstable.
+
+## 📍 Do Not Go Near The Door
+
+> **7** Hear me now therefore, O ye children, and depart not from the words of my mouth.
+>
+> **8** Remove thy way far from her, and come not nigh the door of her house:
+
+Now Solomon widens the warning.
+
+He is not just speaking to one son now.
+
+He says:
+
+**O ye children.**
+
+This is for everyone who needs wisdom.
+
+## 🚪 Do Not Come Near The Door
+
+This is one of the strongest parts of Proverbs 5.
+
+Solomon does not say:
+
+Go near the door and be strong.
+
+He does not say:
+
+Stand outside and prove you can handle it.
+
+He says:
+
+Remove thy way far from her.
+
+Do not even go near the door.
+
+That is wisdom.
+
+A lot of people fall because they try to manage temptation instead of flee from it.
+
+They say:
+
+👉 I can handle it  
+👉 I will not go too far  
+👉 I just want to look  
+👉 I just want to talk  
+👉 I know my limits
+
+But Solomon says:
+
+Stay far away.
+
+Because the closer you get to the door, the easier it becomes to walk inside.
+
+## 🧠 Wisdom Creates Distance
+
+Sometimes wisdom is not fighting temptation face to face.
+
+Sometimes wisdom is creating distance before the fight starts.
+
+That may mean:
+
+📱 Delete the app  
+🚫 Stop texting the person  
+👀 Stop watching the content  
+🧍 Stop going to the place  
+🗣️ Stop entertaining the conversation
+
+This is not weakness.
+
+This is wisdom.
+
+If you already know something pulls you away from God, do not build your life beside the door.
+
+## 📍 The Cost Of Ignoring Wisdom
+
+> **9** Lest thou give thine honour unto others, and thy years unto the cruel:
+>
+> **10** Lest strangers be filled with thy wealth; and thy labours be in the house of a stranger;
+>
+> **11** And thou mourn at the last, when thy flesh and thy body are consumed,
+>
+> **12** And say, How have I hated instruction, and my heart despised reproof;
+>
+> **13** And have not obeyed the voice of my teachers, nor inclined mine ear to them that instructed me!
+>
+> **14** I was almost in all evil in the midst of the congregation and assembly.
+
+Now Solomon explains the cost.
+
+This is what happens when a person ignores wisdom and follows forbidden desire.
+
+## 👑 Losing Honour
+
+"Lest thou give thine honour unto others."
+
+Honour is value.
+
+Dignity.
+
+Respect.
+
+The weight of your life.
+
+Solomon is saying sin can make you hand over what should have been protected.
+
+You can give away:
+
+👑 your reputation  
+💔 your peace  
+🙏 your spiritual strength  
+👥 your trust  
+🧭 your future
+
+Temptation always asks for more than it first shows you.
+
+## ⏳ Thy Years Unto The Cruel
+
+This is a painful line.
+
+Sin does not just take a moment.
+
+It can take years.
+
+Years of regret.
+
+Years of consequences.
+
+Years of rebuilding.
+
+Years of emotional damage.
+
+Years of spiritual distance.
+
+Solomon is saying:
+
+Do not trade your future for a moment.
+
+Because some choices cost more than you expected to pay.
+
+## 💰 Strangers Filled With Thy Wealth
+
+Solomon says strangers can be filled with your wealth and your labor can end up in another person's house.
+
+This shows that sin can cost materially too.
+
+It can affect:
+
+💰 money  
+🏠 home life  
+👥 family  
+📉 stability  
+⚖️ legal consequences  
+🧾 responsibilities
+
+Forbidden desire is not just emotional.
+
+It can touch everything.
+
+Your body.
+
+Your money.
+
+Your relationships.
+
+Your name.
+
+Your future.
+
+## 😔 Mourning At The Last
+
+Solomon says the person mourns at the end.
+
+That phrase matters.
+
+At the beginning, there was honey.
+
+At the end, there is mourning.
+
+At the beginning, there was smooth speech.
+
+At the end, there is regret.
+
+This is the pattern Solomon is showing:
+
+🍯 Sweet beginning  
+⚠️ Hidden danger  
+🔥 Downward path  
+😔 Bitter ending
+
+That is why wisdom tries to speak before the damage happens.
+
+## 💔 I Hated Instruction
+
+> **12** And say, How have I hated instruction, and my heart despised reproof;
+
+This is the regret of someone who finally sees clearly.
+
+They realize the problem was not that wisdom was unavailable.
+
+The problem was that they rejected it.
+
+Instruction was there.
+
+Correction was there.
+
+Teachers were there.
+
+Warnings were there.
+
+But the heart despised reproof.
+
+## ⚠️ Reproof
+
+Reproof means correction.
+
+It is when someone tells you the truth about where you are wrong.
+
+Most people say they want wisdom.
+
+But they hate correction.
+
+That is dangerous.
+
+Because wisdom often comes through correction.
+
+If you hate being corrected, you will eventually reject the very thing that could save you from pain.
+
+## 👂 I Did Not Obey The Voice Of My Teachers
+
+> **13** And have not obeyed the voice of my teachers, nor inclined mine ear to them that instructed me!
+
+This connects back to verse 1.
+
+At the beginning Solomon said:
+
+Bow thine ear.
+
+Now the regretful person says:
+
+I did not incline mine ear.
+
+That is the tragedy.
+
+Wisdom told him to listen early.
+
+But he only understood after consequences came.
+
+This is why Proverbs keeps saying:
+
+Listen now.
+
+Do not wait until pain becomes your teacher.
+
+## 📍 Drink From Your Own Cistern
+
+> **15** Drink waters out of thine own cistern, and running waters out of thine own well.
+>
+> **16** Let thy fountains be dispersed abroad, and rivers of waters in the streets.
+>
+> **17** Let them be only thine own, and not strangers' with thee.
+>
+> **18** Let thy fountain be blessed: and rejoice with the wife of thy youth.
+
+Now Solomon shifts from warning to wisdom.
+
+He is not only saying:
+
+Do not go after forbidden desire.
+
+He is also saying:
+
+Enjoy what God has given you rightly.
+
+## 💧 Drink Waters Out Of Thine Own Cistern
+
+A cistern was a place where water was collected and stored.
+
+Water was life.
+
+You needed it to survive.
+
+So when Solomon says drink from your own cistern, he is using a picture of faithfulness.
+
+He is talking about finding satisfaction in the covenant relationship God has given.
+
+In this context, he is talking about marriage.
+
+He is saying:
+
+Do not chase forbidden water.
+
+Drink from your own well.
+
+## 🏠 Your Own Well
+
+A well was personal.
+
+It belonged to a household.
+
+It provided water for that home.
+
+Solomon is using this image to say:
+
+Faithfulness is not empty.
+
+Faithfulness is not boring.
+
+Faithfulness is where blessing is supposed to flow.
+
+The world often makes sin look exciting and obedience look dull.
+
+But Solomon flips that.
+
+He says real joy is found in what God has blessed, not in what God has forbidden.
+
+## ❤️ Rejoice With The Wife Of Thy Youth
+
+This is important.
+
+Solomon is not anti desire.
+
+He is not saying desire is evil.
+
+He is saying desire needs to stay inside wisdom.
+
+Rejoice means delight.
+
+Enjoy.
+
+Be glad.
+
+This shows that God is not against joy, intimacy, or pleasure.
+
+He is against desire becoming destructive.
+
+In marriage, desire is protected.
+
+Outside of wisdom, desire becomes dangerous.
+
+## 📍 Desire Under Wisdom
+
+> **19** Let her be as the loving hind and pleasant roe; let her breasts satisfy thee at all times; and be thou ravished always with her love.
+>
+> **20** And why wilt thou, my son, be ravished with a strange woman, and embrace the bosom of a stranger?
+
+Solomon continues talking about marital love.
+
+This section is direct.
+
+It shows that the Bible is not afraid to speak about desire.
+
+But it puts desire in the right place.
+
+## 🦌 Loving Hind And Pleasant Roe
+
+A hind and roe were graceful animals.
+
+The picture is beauty, delight, and affection.
+
+Solomon is telling his son to delight in his own wife.
+
+This is not cold obedience.
+
+This is joyful faithfulness.
+
+He is showing that the answer to lust is not just:
+
+Do not desire.
+
+It is:
+
+Let desire be rightly ordered.
+
+## 🔥 Ravished Always With Her Love
+
+Ravished means deeply captivated.
+
+Overcome with affection.
+
+Drawn in.
+
+Solomon is saying:
+
+Be captivated by the love that belongs to you rightly.
+
+Do not let your heart be captured by what God has not given you.
+
+That is the contrast.
+
+Wisdom is not trying to destroy passion.
+
+Wisdom is teaching passion where to live.
+
+## ❓ Why Be Ravished With A Strange Woman?
+
+Solomon asks a question.
+
+Why?
+
+Why would you abandon what is blessed for what is forbidden?
+
+Why would you trade covenant for compromise?
+
+Why would you embrace someone who leads you away from wisdom?
+
+This is how wisdom works.
+
+It does not only command.
+
+It makes you think.
+
+Because sin often survives when you stop asking good questions.
+
+## 📍 God Sees The Path
+
+> **21** For the ways of man are before the eyes of the Lord, and he pondereth all his goings.
+>
+> **22** His own iniquities shall take the wicked himself, and he shall be holden with the cords of his sins.
+>
+> **23** He shall die without instruction; and in the greatness of his folly he shall go astray.
+
+Now Solomon brings God into the warning.
+
+This is not just about consequences people can see.
+
+This is about the Lord seeing the whole path.
+
+## 👀 Before The Eyes Of The Lord
+
+God sees the ways of man.
+
+That means nothing is hidden from Him.
+
+Not the path.
+
+Not the motive.
+
+Not the secret.
+
+Not the desire.
+
+Not the compromise.
+
+God sees what people do not see.
+
+He sees the direction of your life.
+
+## 🧭 He Pondereth All His Goings
+
+To ponder means to weigh.
+
+God weighs the path.
+
+He sees where it leads.
+
+He understands the full picture.
+
+People may only see the moment.
+
+God sees the road.
+
+That is why His wisdom matters.
+
+He is not trying to keep you from life.
+
+He is trying to keep you from destruction.
+
+## 🪢 Held With The Cords Of His Sins
+
+> **22** His own iniquities shall take the wicked himself, and he shall be holden with the cords of his sins.
+
+This is a powerful image.
+
+Sin becomes cords.
+
+What a person thought they could control starts controlling them.
+
+At first, they choose it.
+
+Later, it holds them.
+
+That is how bondage works.
+
+Sin promises freedom.
+
+Then it ties you up.
+
+## ⚰️ He Shall Die Without Instruction
+
+This is the final warning.
+
+The person dies without instruction.
+
+Not because instruction was unavailable.
+
+But because they refused it.
+
+They would not listen.
+
+They would not receive correction.
+
+They would not turn.
+
+So their folly leads them astray.
+
+## 🧠 The Big Lesson Of Proverbs 5
+
+Proverbs 5 is not just about avoiding sexual sin.
+
+It is about learning to see where desire leads before you follow it.
+
+Solomon is teaching his son that temptation has a pattern.
+
+🍯 It starts sweet  
+🫒 It speaks smoothly  
+🌿 It ends bitter  
+⚔️ It cuts deeply  
+👣 It leads downward  
+🪢 It eventually binds
+
+That is why wisdom speaks first.
+
+Not to shame you.
+
+Not to kill desire.
+
+But to protect your life from being ruled by desire without God.
+
+The main lesson is this:
+
+**Do not judge temptation by how it starts.  
+Judge it by where it leads.**
+
+That is wisdom.
+
+Because sin always shows you the honey first.
+
+But wisdom shows you the end.
+`;
+
 const PROVERBS_SIX: ChapterNotes = {
   title: "🧯 Wisdom For Everyday Danger",
   intro: [
@@ -1046,7 +1953,7 @@ const PROVERBS_TEN: ChapterNotes = {
 
 export const PROVERBS_FOUR_TO_TEN_NOTES: Record<number, string> = {
   4: renderNotes(4, PROVERBS_FOUR),
-  5: renderNotes(5, PROVERBS_FIVE),
+  5: PROVERBS_FIVE_NOTES_TEXT,
   6: renderNotes(6, PROVERBS_SIX),
   7: renderNotes(7, PROVERBS_SEVEN),
   8: renderNotes(8, PROVERBS_EIGHT),
