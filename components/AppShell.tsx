@@ -179,9 +179,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [pushPromptClosing, setPushPromptClosing] = useState(false);
   const [headerCurrentLevel, setHeaderCurrentLevel] = useState<number>(1);
   const [headerCurrentStreak, setHeaderCurrentStreak] = useState<number>(0);
+  const [headerGraceDays, setHeaderGraceDays] = useState<number>(0);
   const [headerProfileImageUrl, setHeaderProfileImageUrl] = useState<string | null>(null);
   const [headerProfileName, setHeaderProfileName] = useState<string>("You");
   const [headerProfileImageFailed, setHeaderProfileImageFailed] = useState(false);
+  const [graceReward, setGraceReward] = useState<{ streak: number; graceDays: number; earnedGraceDays?: number; isBackfill?: boolean } | null>(null);
+  const [graceUsePrompt, setGraceUsePrompt] = useState<{
+    lastActiveDate: string;
+    today: string;
+    currentStreak: number;
+    graceDays: number;
+    missedDays?: number;
+  } | null>(null);
+  const [graceActionLoading, setGraceActionLoading] = useState(false);
 
   const visibleUnreadNotificationCount = notifications.filter(
     (notification) => notification.type !== "direct_message" && !notification.is_read,
@@ -303,11 +313,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }
 
   async function loadHeaderDashboardStats(currentUserId: string) {
-    const { data, error } = await supabase
+    let { data, error }: { data: any; error: any } = await supabase
       .from("profile_stats")
-      .select("current_level, current_streak, profile_image_url, display_name, username")
+      .select("current_level, current_streak, grace_days_count, last_grace_day_earned_at, profile_image_url, display_name, username")
       .eq("user_id", currentUserId)
       .maybeSingle();
+
+    if (error && /grace_days_count|last_grace_day_earned_at/i.test(error.message || "")) {
+      const fallback = await supabase
+        .from("profile_stats")
+        .select("current_level, current_streak, profile_image_url, display_name, username")
+        .eq("user_id", currentUserId)
+        .maybeSingle();
+      data = fallback.data;
+      error = fallback.error;
+    }
 
     if (error) {
       console.warn("[APPSHELL] Could not load header dashboard stats:", error);
@@ -315,7 +335,30 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
 
     setHeaderCurrentLevel(typeof data?.current_level === "number" && data.current_level > 0 ? data.current_level : 1);
-    setHeaderCurrentStreak(typeof data?.current_streak === "number" && data.current_streak > 0 ? data.current_streak : 0);
+    const loadedStreak = typeof data?.current_streak === "number" && data.current_streak > 0 ? data.current_streak : 0;
+    const loadedGraceDays = Math.max(0, Math.min(5, Number(data?.grace_days_count || 0)));
+    setHeaderCurrentStreak(loadedStreak);
+    setHeaderGraceDays(loadedGraceDays);
+    if (typeof window !== "undefined" && loadedGraceDays > 0 && typeof data?.last_grace_day_earned_at === "string") {
+      const today = new Date();
+      const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+      const dbRewardSeenKey = `bb:grace-days:db-reward:${todayKey}:${currentUserId}`;
+      const localEarnedSeenKey = `bb:grace-days:earned:${todayKey}:${currentUserId}:shown`;
+      if (
+        data.last_grace_day_earned_at === todayKey &&
+        window.localStorage.getItem(dbRewardSeenKey) !== "1" &&
+        window.localStorage.getItem(localEarnedSeenKey) !== "1"
+      ) {
+        setGraceReward({
+          streak: loadedStreak,
+          graceDays: loadedGraceDays,
+          earnedGraceDays: loadedGraceDays,
+          isBackfill: true,
+        });
+        window.localStorage.setItem(dbRewardSeenKey, "1");
+        window.localStorage.setItem(`bb:grace-days:reward-active:${currentUserId}`, "1");
+      }
+    }
     setHeaderProfileImageUrl(typeof data?.profile_image_url === "string" && data.profile_image_url.trim() ? data.profile_image_url : null);
     setHeaderProfileImageFailed(false);
     setHeaderProfileName(
@@ -1170,12 +1213,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     function handleDashboardStatsSync(event: Event) {
-      const customEvent = event as CustomEvent<{ level?: number; streak?: number }>;
+      const customEvent = event as CustomEvent<{ level?: number; streak?: number; graceDays?: number }>;
       if (typeof customEvent.detail?.level === "number" && customEvent.detail.level > 0) {
         setHeaderCurrentLevel(customEvent.detail.level);
       }
       if (typeof customEvent.detail?.streak === "number" && customEvent.detail.streak >= 0) {
         setHeaderCurrentStreak(customEvent.detail.streak);
+      }
+      if (typeof customEvent.detail?.graceDays === "number" && customEvent.detail.graceDays >= 0) {
+        setHeaderGraceDays(Math.max(0, Math.min(5, customEvent.detail.graceDays)));
       }
     }
 
@@ -1184,6 +1230,44 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.removeEventListener("bb:dashboard-stats-sync", handleDashboardStatsSync as EventListener);
     };
   }, []);
+
+  useEffect(() => {
+    if (!userId || !isLoggedIn || typeof window === "undefined") return;
+
+    function readGraceEvents() {
+      const today = new Date();
+      const dayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+      const pendingRaw = window.localStorage.getItem(`bb:grace-days:pending-use:${userId}`);
+      if (pendingRaw) {
+        try {
+          setGraceUsePrompt(JSON.parse(pendingRaw));
+        } catch {
+          window.localStorage.removeItem(`bb:grace-days:pending-use:${userId}`);
+        }
+      }
+
+      const earnedKey = `bb:grace-days:earned:${dayKey}:${userId}`;
+      const earnedSeenKey = `${earnedKey}:shown`;
+      const earnedRaw = window.localStorage.getItem(earnedKey);
+      if (earnedRaw && window.localStorage.getItem(earnedSeenKey) !== "1") {
+        try {
+          const parsed = JSON.parse(earnedRaw);
+          setGraceReward(parsed);
+          setHeaderGraceDays(Math.max(0, Math.min(5, Number(parsed.graceDays || 0))));
+          window.localStorage.setItem(earnedSeenKey, "1");
+          window.localStorage.setItem(`bb:grace-days:reward-active:${userId}`, "1");
+        } catch {
+          window.localStorage.removeItem(earnedKey);
+        }
+      }
+    }
+
+    readGraceEvents();
+    window.addEventListener("bb:grace-days-updated", readGraceEvents);
+    return () => {
+      window.removeEventListener("bb:grace-days-updated", readGraceEvents);
+    };
+  }, [userId, isLoggedIn]);
 
   // Treat iframe-embedded pages the same as bare pages (no shell/nav)
   const isBarePage = HIDDEN_ROUTES.includes(pathname ?? "/") || isEmbedded;
@@ -1194,6 +1278,86 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const breadcrumbItems = buildBreadcrumbs(pathname);
   const shouldShowBreadcrumbs = isLoggedIn && !isBarePage && breadcrumbItems.length > 0;
   const showDashboardStatusButtons = Boolean(isLoggedIn && pathname === "/dashboard");
+
+  function diffLocalDayKeys(fromDayKey: string, toDayKey: string) {
+    const [fromYear, fromMonth, fromDay] = fromDayKey.split("-").map(Number);
+    const [toYear, toMonth, toDay] = toDayKey.split("-").map(Number);
+    return Math.max(1, Math.round((Date.UTC(toYear, toMonth - 1, toDay) - Date.UTC(fromYear, fromMonth - 1, fromDay)) / 86400000));
+  }
+
+  function getGraceMissedDays(prompt: NonNullable<typeof graceUsePrompt>) {
+    if (typeof prompt.missedDays === "number" && prompt.missedDays > 0) {
+      return Math.max(1, Math.round(prompt.missedDays));
+    }
+    return Math.max(1, diffLocalDayKeys(prompt.lastActiveDate, prompt.today) - 1);
+  }
+
+  async function handleUseGraceDay() {
+    if (!userId || !graceUsePrompt) return;
+    setGraceActionLoading(true);
+    try {
+      const daysSinceLastActive = diffLocalDayKeys(graceUsePrompt.lastActiveDate, graceUsePrompt.today);
+      const missedDays = getGraceMissedDays(graceUsePrompt);
+      const graceDaysToUse = Math.min(graceUsePrompt.graceDays, missedDays);
+      const nextGraceDays = Math.max(0, graceUsePrompt.graceDays - graceDaysToUse);
+      const nextStreak = Math.max(1, graceUsePrompt.currentStreak + daysSinceLastActive);
+
+      const { error } = await supabase
+        .from("profile_stats")
+        .update({
+          last_active_date: graceUsePrompt.today,
+          current_streak: nextStreak,
+          grace_days_count: nextGraceDays,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("user_id", userId);
+      if (error) throw error;
+
+      await supabase.from("app_logins").insert({ user_id: userId });
+      await supabase.from("master_actions").insert({
+        user_id: userId,
+        username,
+        action_type: "user_login",
+        action_label: `grace_day_used:${graceDaysToUse}:${graceUsePrompt.today}`,
+      });
+
+      window.localStorage.removeItem(`bb:grace-days:pending-use:${userId}`);
+      setGraceUsePrompt(null);
+      setHeaderCurrentStreak(nextStreak);
+      setHeaderGraceDays(nextGraceDays);
+      window.dispatchEvent(new CustomEvent("bb:dashboard-stats-sync", { detail: { streak: nextStreak, graceDays: nextGraceDays } }));
+    } catch (error) {
+      console.error("[GRACE_DAYS] Could not use Grace Day:", error);
+    } finally {
+      setGraceActionLoading(false);
+    }
+  }
+
+  async function handleEndGraceStreak() {
+    if (!userId || !graceUsePrompt) return;
+    setGraceActionLoading(true);
+    try {
+      const { error } = await supabase
+        .from("profile_stats")
+        .update({
+          last_active_date: graceUsePrompt.today,
+          current_streak: 1,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("user_id", userId);
+      if (error) throw error;
+
+      await supabase.from("app_logins").insert({ user_id: userId });
+      window.localStorage.removeItem(`bb:grace-days:pending-use:${userId}`);
+      setGraceUsePrompt(null);
+      setHeaderCurrentStreak(1);
+      window.dispatchEvent(new CustomEvent("bb:dashboard-stats-sync", { detail: { streak: 1, graceDays: graceUsePrompt.graceDays } }));
+    } catch (error) {
+      console.error("[GRACE_DAYS] Could not end streak:", error);
+    } finally {
+      setGraceActionLoading(false);
+    }
+  }
 
   async function handleLogout() {
     await supabase.auth.signOut();
@@ -1478,6 +1642,78 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         />
       )}
 
+      {isLoggedIn && userId && graceReward && !showOnboardingModal && (
+        <div className="fixed inset-0 z-[260] flex items-center justify-center bg-black/45 px-4">
+          <div className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-2xl">
+            <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-blue-50">
+              <LouisAvatar mood="stareyes" size={82} />
+            </div>
+            <div className="mx-auto mt-4 flex h-16 w-16 animate-bounce items-center justify-center rounded-2xl bg-blue-100 text-4xl shadow-[0_0_28px_rgba(59,130,246,0.35)]">
+              💎
+            </div>
+            <h2 className="mt-4 text-2xl font-black text-gray-900">You earned a Grace Day!</h2>
+            <p className="mt-3 text-sm leading-6 text-gray-600">
+              {graceReward.isBackfill || (graceReward.earnedGraceDays || 1) > 1
+                ? `Your ${graceReward.streak} day streak has earned you ${graceReward.earnedGraceDays || graceReward.graceDays} Grace Days to protect your streak when life gets busy.`
+                : `You’ve stayed active for ${graceReward.streak} days in a row. You received 1 Grace Day to protect your streak when life gets busy.`}
+            </p>
+            <p className="mt-3 rounded-2xl bg-blue-50 px-4 py-3 text-sm font-bold text-blue-700">
+              Grace Days Available: {Math.max(0, Math.min(5, graceReward.graceDays))}
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                window.localStorage.removeItem(`bb:grace-days:reward-active:${userId}`);
+                setGraceReward(null);
+              }}
+              className="mt-5 w-full rounded-2xl bg-[#2878f0] px-5 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-[#1f6ee3]"
+            >
+              Awesome!
+            </button>
+          </div>
+        </div>
+      )}
+
+      {isLoggedIn && userId && graceUsePrompt && !showOnboardingModal && (
+        <div className="fixed inset-0 z-[260] flex items-center justify-center bg-black/45 px-4">
+          <div className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-2xl">
+            <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-blue-50">
+              <LouisAvatar mood="think" size={82} />
+            </div>
+            <div className="mx-auto mt-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-3xl shadow-[0_0_22px_rgba(59,130,246,0.25)]">
+              💎
+            </div>
+            <h2 className="mt-4 text-2xl font-black text-gray-900">Use a Grace Day?</h2>
+            <p className="mt-3 text-sm leading-6 text-gray-600">
+              You missed {getGraceMissedDays(graceUsePrompt) === 1 ? "yesterday" : `${getGraceMissedDays(graceUsePrompt)} days`}, but you can use{" "}
+              {getGraceMissedDays(graceUsePrompt) === 1 ? "1 Grace Day" : `${getGraceMissedDays(graceUsePrompt)} Grace Days`} to continue your streak.
+            </p>
+            <div className="mt-4 grid gap-2 rounded-2xl bg-gray-50 px-4 py-3 text-left text-sm font-bold text-gray-700">
+              <p>🔥 Current streak: {graceUsePrompt.currentStreak} days</p>
+              <p>💎 Grace Days remaining: {Math.max(0, Math.min(5, graceUsePrompt.graceDays))}</p>
+            </div>
+            <div className="mt-5 grid gap-3">
+              <button
+                type="button"
+                disabled={graceActionLoading}
+                onClick={() => void handleUseGraceDay()}
+                className="w-full rounded-2xl bg-[#2878f0] px-5 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-[#1f6ee3] disabled:opacity-60"
+              >
+                {getGraceMissedDays(graceUsePrompt) === 1 ? "Use Grace Day" : "Use Grace Days"}
+              </button>
+              <button
+                type="button"
+                disabled={graceActionLoading}
+                onClick={() => void handleEndGraceStreak()}
+                className="w-full rounded-2xl border border-gray-200 bg-white px-5 py-3 text-sm font-bold text-gray-700 transition hover:bg-gray-50 disabled:opacity-60"
+              >
+                End Streak
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* CONTACT US MODAL */}
       {isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && (
         <ContactUsModal
@@ -1572,16 +1808,30 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     </span>
                   </button>
 
+                  <div
+                    className="relative flex h-9 items-center gap-1.5 rounded-full bg-gray-200 px-3 text-gray-700"
+                    aria-label={`${headerGraceDays} Grace Days available`}
+                    title={`${headerGraceDays} Grace Days available`}
+                  >
+                    <span className="text-base leading-none" aria-hidden="true">💎</span>
+                    <span className="text-xs font-semibold leading-none text-gray-700">
+                      {Math.max(0, Math.min(5, headerGraceDays))}
+                    </span>
+                  </div>
+
                   <button
                     type="button"
                     onClick={() => {
                       window.dispatchEvent(new CustomEvent("bb:dashboard-open-level-info"));
                     }}
-                    className="relative flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-sm font-semibold text-gray-700 transition-colors"
+                    className="relative flex h-9 items-center gap-1.5 rounded-full bg-gray-200 px-3 text-gray-700 transition-colors hover:bg-gray-300"
                     aria-label={`Open level details for level ${headerCurrentLevel}`}
                     title={`Level ${headerCurrentLevel}`}
                   >
-                    {headerCurrentLevel}
+                    <span className="text-base leading-none" aria-hidden="true">🛡️</span>
+                    <span className="text-xs font-semibold leading-none text-gray-700">
+                      {headerCurrentLevel}
+                    </span>
                   </button>
                 </>
               )}

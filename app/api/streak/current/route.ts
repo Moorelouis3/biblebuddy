@@ -50,14 +50,26 @@ export async function POST(_req: NextRequest) {
         ? body.timeZone.trim()
         : undefined;
 
-    const [{ data: existingProfile, error: existingProfileError }, liveStreakMap] = await Promise.all([
-      supabaseAdmin
+    let existingProfileResponse = await supabaseAdmin
+      .from("profile_stats")
+      .select("current_streak, has_fire_streak_badge, fire_streak_awarded_at, grace_days_count, last_grace_day_earned_at")
+      .eq("user_id", targetUserId)
+      .maybeSingle();
+    if (
+      existingProfileResponse.error &&
+      /grace_days_count|last_grace_day_earned_at/i.test(existingProfileResponse.error.message || "")
+    ) {
+      existingProfileResponse = await supabaseAdmin
         .from("profile_stats")
         .select("current_streak, has_fire_streak_badge, fire_streak_awarded_at")
         .eq("user_id", targetUserId)
-        .maybeSingle(),
+        .maybeSingle();
+    }
+
+    const [liveStreakMap] = await Promise.all([
       getLiveStreakMapForUsers(supabaseAdmin, [targetUserId], 400, targetTimeZone),
     ]);
+    const { data: existingProfile, error: existingProfileError } = existingProfileResponse;
 
     if (existingProfileError) {
       return NextResponse.json(
@@ -70,13 +82,28 @@ export async function POST(_req: NextRequest) {
     const storedCurrentStreak = Math.max(0, Number(existingProfile?.current_streak || 0));
     const currentStreak = Math.max(liveCurrentStreak, storedCurrentStreak);
     const nowIso = new Date().toISOString();
+    const todayKey = new Intl.DateTimeFormat("en-CA", {
+      timeZone: targetTimeZone || "America/New_York",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(new Date());
     const hasFireStreakBadge =
       Boolean(existingProfile?.has_fire_streak_badge) ||
       currentStreak >= 30;
+    const currentGraceDays = Math.max(0, Math.min(5, Number(existingProfile?.grace_days_count || 0)));
+    const shouldEarnGraceDay =
+      currentStreak > 0 &&
+      currentStreak % 7 === 0 &&
+      currentGraceDays < 5 &&
+      existingProfile?.last_grace_day_earned_at !== todayKey;
+    const graceDaysCount = shouldEarnGraceDay ? Math.min(5, currentGraceDays + 1) : currentGraceDays;
 
     const payload = {
       user_id: targetUserId,
       current_streak: currentStreak,
+      grace_days_count: graceDaysCount,
+      ...(shouldEarnGraceDay ? { last_grace_day_earned_at: todayKey } : {}),
       has_fire_streak_badge: hasFireStreakBadge,
       fire_streak_awarded_at: hasFireStreakBadge
         ? existingProfile?.fire_streak_awarded_at || nowIso
@@ -91,7 +118,7 @@ export async function POST(_req: NextRequest) {
 
     if (
       updateError &&
-      /has_fire_streak_badge|fire_streak_awarded_at|fire_streak_last_checked_at/i.test(updateError.message || "")
+      /has_fire_streak_badge|fire_streak_awarded_at|fire_streak_last_checked_at|grace_days_count|last_grace_day_earned_at/i.test(updateError.message || "")
     ) {
       const legacyResponse = await supabaseAdmin
         .from("profile_stats")
@@ -117,6 +144,8 @@ export async function POST(_req: NextRequest) {
       ok: true,
       streakData: {
         currentStreak,
+        graceDaysCount,
+        graceDayEarned: shouldEarnGraceDay,
         last7Days: [],
       },
     });

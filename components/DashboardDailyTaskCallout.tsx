@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import BibleReadingModal from "./BibleReadingModal";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import { ModalShell } from "./ModalShell";
@@ -95,6 +95,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   const [notesError, setNotesError] = useState<string | null>(null);
   const [notesMarkedComplete, setNotesMarkedComplete] = useState(false);
   const [interactiveTaskCompleted, setInteractiveTaskCompleted] = useState(false);
+  const interactiveTaskCompletedRef = useRef(false);
 
   const devotionalTarget = useMemo(
     () => (task?.kind === "devotional" || task?.kind === "reflection" ? parseDevotionalTask(task) : null),
@@ -120,7 +121,13 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
   useEffect(() => {
     setInteractiveTaskCompleted(false);
+    interactiveTaskCompletedRef.current = false;
   }, [task?.kind, task?.href, task?.chapterLabel]);
+
+  function markInteractiveTaskComplete() {
+    interactiveTaskCompletedRef.current = true;
+    setInteractiveTaskCompleted(true);
+  }
 
   function closeOnly() {
     onClose();
@@ -129,7 +136,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   function closeAndRefresh(completed = false) {
     const completedTask = task ?? undefined;
     onClose();
-    onProgressUpdated(completed ? completedTask : undefined);
+    onProgressUpdated(completed || interactiveTaskCompletedRef.current || interactiveTaskCompleted ? completedTask : undefined);
   }
 
   useEffect(() => {
@@ -461,7 +468,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
             bookSlug={triviaPack.book.routeSlug}
             chapter={triviaPack.chapter}
             onClose={() => closeAndRefresh(interactiveTaskCompleted)}
-            onComplete={() => setInteractiveTaskCompleted(true)}
+            onComplete={markInteractiveTaskComplete}
           />
         </div>
       </ModalShell>
@@ -477,7 +484,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
             bookSlug={scrambledPack.book.slug}
             chapter={scrambledPack.chapter}
             onClose={() => closeAndRefresh(interactiveTaskCompleted)}
-            onComplete={() => setInteractiveTaskCompleted(true)}
+            onComplete={markInteractiveTaskComplete}
           />
         </div>
       </ModalShell>

@@ -19,6 +19,20 @@ function shiftDayKey(dayKey: string, days: number) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 }
 
+function diffDayKeys(fromDayKey: string, toDayKey: string) {
+  const [fromYear, fromMonth, fromDay] = fromDayKey.split("-").map(Number);
+  const [toYear, toMonth, toDay] = toDayKey.split("-").map(Number);
+  const fromDate = Date.UTC(fromYear, fromMonth - 1, fromDay);
+  const toDate = Date.UTC(toYear, toMonth - 1, toDay);
+  return Math.round((toDate - fromDate) / 86400000);
+}
+
+function setGraceDayLocalEvent(userId: string, key: string, value: unknown) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(`bb:grace-days:${key}:${userId}`, JSON.stringify(value));
+  window.dispatchEvent(new CustomEvent("bb:grace-days-updated"));
+}
+
 /**
  * Track user activity (login/refresh)
  * Only logs once per 24 hours per user
@@ -50,11 +64,31 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
     }
 
     // Get current profile stats to check last_active_date
-    const { data: currentStats } = await supabase
+    let { data: currentStats, error: currentStatsError }: { data: any; error: any } = await supabase
       .from("profile_stats")
-      .select("last_active_date, username, current_streak")
+      .select("last_active_date, username, current_streak, grace_days_count, last_grace_day_earned_at")
       .eq("user_id", userId)
       .maybeSingle();
+
+    const graceColumnsMissing =
+      currentStatsError &&
+      /grace_days_count|last_grace_day_earned_at/i.test(currentStatsError.message || "");
+
+    if (graceColumnsMissing) {
+      const fallback = await supabase
+        .from("profile_stats")
+        .select("last_active_date, username, current_streak")
+        .eq("user_id", userId)
+        .maybeSingle();
+      currentStats = fallback.data;
+      currentStatsError = fallback.error;
+    }
+
+    if (currentStatsError) {
+      console.error("[TRACK_ACTIVITY] Error loading profile stats:", currentStatsError);
+      inFlight.delete(userId);
+      return false;
+    }
 
     const lastActiveDate = currentStats?.last_active_date;
 
@@ -68,6 +102,23 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
 
     const yesterday = shiftDayKey(today, -1);
     const currentStoredStreak = Math.max(0, Number(currentStats?.current_streak || 0));
+    const currentGraceDays = Math.max(0, Math.min(5, Number(currentStats?.grace_days_count || 0)));
+
+    if (lastActiveDate && lastActiveDate !== today && lastActiveDate !== yesterday) {
+      const missedDays = Math.max(1, diffDayKeys(lastActiveDate, today) - 1);
+      if (currentGraceDays >= missedDays && currentStoredStreak > 0) {
+        setGraceDayLocalEvent(userId, "pending-use", {
+          lastActiveDate,
+          today,
+          currentStreak: currentStoredStreak,
+          graceDays: currentGraceDays,
+          missedDays,
+        });
+        inFlight.delete(userId);
+        return false;
+      }
+    }
+
     const nextCurrentStreak =
       lastActiveDate === yesterday
         ? currentStoredStreak + 1
@@ -118,8 +169,15 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
       }
     }
 
+    const shouldEarnGraceDay =
+      nextCurrentStreak > 0 &&
+      nextCurrentStreak % 7 === 0 &&
+      currentGraceDays < 5 &&
+      currentStats?.last_grace_day_earned_at !== today;
+    const nextGraceDays = shouldEarnGraceDay ? Math.min(5, currentGraceDays + 1) : currentGraceDays;
+
     // Update profile_stats with last_active_date
-    const { error: statsError } = await supabase
+    let { error: statsError } = await supabase
       .from("profile_stats")
       .upsert(
         {
@@ -127,6 +185,8 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
           last_active_date: today,
           username: username,
           current_streak: nextCurrentStreak,
+          grace_days_count: nextGraceDays,
+          ...(shouldEarnGraceDay ? { last_grace_day_earned_at: today } : {}),
           updated_at: new Date().toISOString(),
         },
         {
@@ -134,10 +194,36 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
         }
       );
 
+    if (statsError && /grace_days_count|last_grace_day_earned_at/i.test(statsError.message || "")) {
+      const fallbackUpdate = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            last_active_date: today,
+            username: username,
+            current_streak: nextCurrentStreak,
+            updated_at: new Date().toISOString(),
+          },
+          {
+            onConflict: "user_id",
+          }
+        );
+      statsError = fallbackUpdate.error;
+    }
+
     if (statsError) {
       console.error("[TRACK_ACTIVITY] Error updating profile_stats:", statsError);
       inFlight.delete(userId);
       return false;
+    }
+
+    if (shouldEarnGraceDay) {
+      setGraceDayLocalEvent(userId, `earned:${today}`, {
+        streak: nextCurrentStreak,
+        graceDays: nextGraceDays,
+        earnedGraceDays: 1,
+      });
     }
 
     inFlight.delete(userId);

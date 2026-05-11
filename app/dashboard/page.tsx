@@ -1645,6 +1645,12 @@ export default function DashboardPage() {
     let cancelled = false;
     const seenKey = getStreakMotivationSeenKey(userId, dayKey);
     const dailySequenceSeenKey = getDashboardDailySequenceSeenKey(userId, dayKey);
+    if (window.localStorage.getItem(`bb:grace-days:reward-active:${userId}`) === "1") {
+      setLouisDailyTaskCycleStartedAt(cycleStartedAt);
+      setPendingDailyStreakSequence(false);
+      dailyStreakSequenceCheckRef.current = null;
+      return;
+    }
     if (window.localStorage.getItem(dailySequenceSeenKey) === "1") {
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
       setPendingDailyStreakSequence(false);
@@ -2128,7 +2134,7 @@ export default function DashboardPage() {
         rememberLouisChapterJourneyCelebrationSeen(userId, journeyKey);
         setShowDailyTaskCelebrationModal(true);
       }
-    }, 1500);
+    }, 2600);
   }
 
   function handleDashboardTaskProgressUpdated(completedTask?: TaskState) {
