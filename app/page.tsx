@@ -182,22 +182,22 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#f3f7fd] text-slate-950">
-      <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 md:py-7">
+      <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 py-4 md:px-5 md:py-7">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-[#d9ecff] ring-1 ring-white/15">
+          <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-[#d9ecff] ring-1 ring-white/15 md:h-10 md:w-10">
             <Image src="/louis/louis-wave.png" alt="Bible Buddy Logo" width={36} height={36} className="h-9 w-9 object-contain" />
           </div>
-          <div className="text-xl font-black tracking-tight text-slate-950 md:text-2xl">BibleBuddy</div>
+          <div className="text-lg font-black tracking-tight text-slate-950 md:text-2xl">BibleBuddy</div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-4">
           <Link href="/login" className="text-sm font-bold text-slate-700 transition hover:text-slate-950 md:text-base">
             Log In
           </Link>
           <button
             type="button"
             onClick={() => setShowSignupModal(true)}
-            className="inline-flex items-center gap-2 rounded-full bg-[#7BAFD4] px-5 py-2.5 text-sm font-black text-[#05111f] shadow-[0_14px_36px_rgba(123,175,212,0.35)] transition hover:bg-[#91c2df] md:px-7 md:text-base"
+            className="inline-flex items-center gap-2 rounded-full bg-[#7BAFD4] px-4 py-2 text-sm font-black text-[#05111f] shadow-[0_14px_36px_rgba(123,175,212,0.28)] transition hover:bg-[#91c2df] md:px-7 md:py-2.5 md:text-base"
           >
             Start free <span aria-hidden="true">→</span>
           </button>
@@ -205,24 +205,24 @@ export default function LandingPage() {
       </header>
 
       <main>
-        <section className="mx-auto grid min-h-[760px] w-full max-w-7xl grid-cols-1 items-center gap-10 px-5 pb-20 pt-12 lg:grid-cols-[0.86fr_1.14fr] lg:pt-20">
-          <div className="max-w-2xl">
-            <p className="mb-5 inline-flex rounded-full border border-[#7BAFD4]/30 bg-[#7BAFD4]/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-[#b7dbf0]">
+        <section className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-4 pb-14 pt-8 sm:px-5 md:pb-20 md:pt-12 lg:min-h-[760px] lg:grid-cols-[0.86fr_1.14fr] lg:gap-10 lg:pt-20">
+          <div className="mx-auto max-w-2xl text-center lg:mx-0 lg:text-left">
+            <p className="mb-4 inline-flex rounded-full border border-[#7BAFD4]/30 bg-[#7BAFD4]/10 px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[#5f95bd] sm:text-xs sm:tracking-[0.22em]">
               Guided Bible Study
             </p>
-            <h1 className="text-5xl font-black leading-[0.96] tracking-tight text-slate-950 md:text-7xl">
+            <h1 className="text-[42px] font-black leading-[0.98] tracking-tight text-slate-950 sm:text-5xl md:text-7xl">
               Understand the Bible.
               <span className="block text-[#7BAFD4]">Build a rhythm.</span>
             </h1>
-            <p className="mt-7 max-w-xl text-lg leading-8 text-slate-600 md:text-xl">
+            <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-slate-600 md:mt-7 md:text-xl md:leading-8 lg:mx-0">
               Bible Buddy gives you a daily Bible Study system that helps you know where to start,
               understand what you read, and keep coming back without feeling rushed.
             </p>
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center md:mt-9 lg:justify-start">
               <button
                 type="button"
                 onClick={() => setShowSignupModal(true)}
-                className="inline-flex justify-center rounded-2xl bg-[#7BAFD4] px-8 py-4 text-base font-black text-[#05111f] shadow-[0_16px_44px_rgba(123,175,212,0.36)] transition hover:-translate-y-0.5 hover:bg-[#91c2df]"
+                className="inline-flex justify-center rounded-2xl bg-[#7BAFD4] px-7 py-3.5 text-base font-black text-[#05111f] shadow-[0_16px_44px_rgba(123,175,212,0.3)] transition hover:-translate-y-0.5 hover:bg-[#91c2df] md:px-8 md:py-4"
               >
                 Get started free <span className="ml-2" aria-hidden="true">→</span>
               </button>
@@ -233,22 +233,22 @@ export default function LandingPage() {
           <button
             type="button"
             onClick={() => setHeroFocus((current) => (current + 1) % 4)}
-            className="group relative mx-auto w-full max-w-3xl text-left outline-none"
+            className="group relative mx-auto w-full max-w-[420px] text-left outline-none sm:max-w-2xl lg:max-w-3xl"
             aria-label="Animate Bible Buddy dashboard preview"
           >
-            <div className="absolute -inset-4 rounded-[34px] border border-[#b7d6ef] bg-[#e8f4ff] opacity-80 transition group-hover:opacity-100" />
-            <div className="relative overflow-hidden rounded-[28px] border border-[#d9e4f2] bg-white shadow-[0_30px_90px_rgba(42,88,125,0.18)] transition duration-300 group-hover:-translate-y-1">
-              <div className="flex items-center justify-between border-b border-[#dbe7f6] bg-[#f8fbff] px-5 py-3">
-                <div className="flex gap-2">
+            <div className="absolute -inset-2 rounded-[28px] border border-[#b7d6ef] bg-[#e8f4ff] opacity-80 transition group-hover:opacity-100 sm:-inset-4 sm:rounded-[34px]" />
+            <div className="relative overflow-hidden rounded-[24px] border border-[#d9e4f2] bg-white shadow-[0_22px_60px_rgba(42,88,125,0.16)] transition duration-300 group-hover:-translate-y-1 sm:rounded-[28px]">
+              <div className="flex items-center justify-between border-b border-[#dbe7f6] bg-[#f8fbff] px-3 py-2.5 sm:px-5 sm:py-3">
+                <div className="hidden gap-2 sm:flex">
                   <span className="h-3 w-3 rounded-full bg-red-500" />
                   <span className="h-3 w-3 rounded-full bg-yellow-400" />
                   <span className="h-3 w-3 rounded-full bg-emerald-400" />
                 </div>
-                <div className="rounded-lg bg-[#e9f3ff] px-4 py-1 text-xs font-bold text-slate-600">biblebuddy.app/dashboard</div>
+                <div className="mx-auto rounded-lg bg-[#e9f3ff] px-3 py-1 text-[10px] font-bold text-slate-600 sm:mx-0 sm:px-4 sm:text-xs">biblebuddy.app/dashboard</div>
               </div>
 
-              <div className="p-4 sm:p-6">
-                <div className="grid grid-cols-4 gap-3">
+              <div className="p-3 sm:p-6">
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
                   {[
                     ["1", "🔥 Streak", "bg-slate-100"],
                     ["0", "💎 Grace Days", "bg-[#d7eaff]"],
@@ -257,26 +257,26 @@ export default function LandingPage() {
                   ].map((card, index) => (
                     <div
                       key={card[1]}
-                      className={`rounded-xl px-2 py-4 text-center text-slate-950 transition ${card[2]} ${heroFocus === index ? "scale-[1.04] ring-4 ring-[#7BAFD4]/55" : ""}`}
+                      className={`rounded-xl px-2 py-3 text-center text-slate-950 transition sm:py-4 ${card[2]} ${heroFocus === index ? "scale-[1.03] ring-4 ring-[#7BAFD4]/45" : ""}`}
                     >
-                      <p className="text-2xl font-black">{card[0]}</p>
-                      <p className="mt-1 text-[10px] font-bold sm:text-xs">{card[1]}</p>
+                      <p className="text-xl font-black sm:text-2xl">{card[0]}</p>
+                      <p className="mt-1 text-[10px] font-bold leading-tight sm:text-xs">{card[1]}</p>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-5 rounded-3xl border border-emerald-300/60 bg-[#effdf4] p-5 text-slate-950 shadow-lg">
-                  <div className="flex gap-4">
-                    <Image src="/louis/louis-stareyes.png" alt="Louis" width={58} height={58} className="h-14 w-14 rounded-full bg-white object-contain" />
+                <div className="mt-3 rounded-2xl border border-emerald-300/60 bg-[#effdf4] p-4 text-slate-950 shadow-sm sm:mt-5 sm:rounded-3xl sm:p-5">
+                  <div className="flex gap-3 sm:gap-4">
+                    <Image src="/louis/louis-stareyes.png" alt="Louis" width={58} height={58} className="h-11 w-11 rounded-full bg-white object-contain sm:h-14 sm:w-14" />
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-semibold leading-6 sm:text-base">
+                      <p className="text-xs font-semibold leading-5 sm:text-base sm:leading-6">
                         Well done. Esther 1 is behind you now, and Esther 2 is waiting with more of Esther entering the palace.
                       </p>
-                      <div className="mt-5 h-3 overflow-hidden rounded-full bg-emerald-100">
+                      <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-emerald-100 sm:mt-5 sm:h-3">
                         <div className="h-full w-full rounded-full bg-[#8bc97d] transition-all duration-700" />
                       </div>
-                      <p className="mt-4 text-center text-sm font-black">Click the button below to start the next Chapter study.</p>
-                      <div className="mt-4 rounded-full bg-[#7BAFD4] py-3 text-center text-sm font-black shadow-md">Start next chapter</div>
+                      <p className="mt-3 text-center text-xs font-black sm:mt-4 sm:text-sm">Start the next Chapter study.</p>
+                      <div className="mt-3 rounded-full bg-[#7BAFD4] py-2.5 text-center text-xs font-black shadow-sm sm:mt-4 sm:py-3 sm:text-sm">Start next chapter</div>
                     </div>
                   </div>
                 </div>
@@ -285,11 +285,11 @@ export default function LandingPage() {
                   {taskSteps.slice(0, 4).map((step, index) => (
                     <div
                       key={step.title}
-                      className={`flex items-center gap-3 rounded-2xl border bg-white p-3 text-slate-950 transition ${heroFocus === index ? "border-[#7BAFD4] shadow-[0_0_0_6px_rgba(123,175,212,0.18)]" : "border-emerald-200"}`}
+                      className={`items-center gap-3 rounded-2xl border bg-white p-3 text-slate-950 transition ${index >= 2 ? "hidden sm:flex" : "flex"} ${heroFocus === index ? "border-[#7BAFD4] shadow-[0_0_0_5px_rgba(123,175,212,0.16)]" : "border-emerald-200"}`}
                     >
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-400 text-2xl">{step.icon}</div>
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-400 text-xl sm:h-12 sm:w-12 sm:text-2xl">{step.icon}</div>
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-base font-black">{index + 1}. {index === 1 ? "Read Esther 1" : step.title}</p>
+                        <p className="truncate text-sm font-black sm:text-base">{index + 1}. {index === 1 ? "Read Esther 1" : step.title}</p>
                         <p className="line-clamp-2 text-xs font-semibold text-slate-600">{step.copy}</p>
                       </div>
                       <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black">+5 pts</span>
@@ -301,29 +301,29 @@ export default function LandingPage() {
           </button>
         </section>
 
-        <section className="border-y border-[#dbe7f6] bg-white px-5 py-24">
+        <section className="border-y border-[#dbe7f6] bg-white px-4 py-16 sm:px-5 md:py-24">
           <div className="mx-auto max-w-5xl text-center">
-            <p className="text-sm font-black uppercase tracking-[0.22em] text-[#5f95bd]">The real problem</p>
-            <h2 className="mt-6 text-4xl font-black leading-tight text-slate-950 md:text-6xl">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#5f95bd] sm:text-sm sm:tracking-[0.22em]">The real problem</p>
+            <h2 className="mt-4 text-3xl font-black leading-tight text-slate-950 sm:text-4xl md:mt-6 md:text-6xl">
               You do not lack motivation.
               <span className="block text-slate-400">You lack a system that guides you.</span>
             </h2>
-            <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-600">
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-600 md:mt-8 md:text-lg md:leading-8">
               You have tried reading plans. You have tried starting over in Genesis. You have tried willpower.
               But it is hard to stay consistent when you do not know where to start or what you are reading.
             </p>
 
-            <div className="mt-14 space-y-5">
+            <div className="mt-9 space-y-4 md:mt-14 md:space-y-5">
               {problemRows.map((row) => (
-                <div key={row.pain} className="grid gap-4 rounded-3xl border border-[#dbe7f6] bg-[#f8fbff] p-5 text-left shadow-sm md:grid-cols-[1fr_auto_1fr] md:items-center md:p-7">
-                  <div className="flex items-center gap-4 text-slate-700">
+                <div key={row.pain} className="grid gap-3 rounded-2xl border border-[#dbe7f6] bg-[#f8fbff] p-4 text-left shadow-sm md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-4 md:rounded-3xl md:p-7">
+                  <div className="flex items-center gap-3 text-slate-700 md:gap-4">
                     <span className="flex h-9 w-9 items-center justify-center rounded-full bg-red-100 text-red-500">×</span>
-                    <span className="text-lg font-bold">{row.pain}</span>
+                    <span className="text-base font-bold md:text-lg">{row.pain}</span>
                   </div>
                   <span className="hidden text-slate-400 md:block">→</span>
-                  <div className="flex items-center gap-4 text-slate-950">
+                  <div className="flex items-center gap-3 text-slate-950 md:gap-4">
                     <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">✓</span>
-                    <span className="text-lg font-black">{row.fix}</span>
+                    <span className="text-base font-black leading-6 md:text-lg">{row.fix}</span>
                   </div>
                 </div>
               ))}
@@ -331,61 +331,61 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="bg-[#eef6ff] px-5 py-24">
+        <section className="bg-[#eef6ff] px-4 py-16 sm:px-5 md:py-24">
           <div className="mx-auto max-w-7xl">
             <div className="mx-auto max-w-4xl text-center">
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#5f95bd]">The Bible Study system</p>
-              <h2 className="mt-6 text-4xl font-black leading-tight text-slate-950 md:text-6xl">
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#5f95bd] sm:text-sm sm:tracking-[0.22em]">The Bible Study system</p>
+              <h2 className="mt-4 text-3xl font-black leading-tight text-slate-950 sm:text-4xl md:mt-6 md:text-6xl">
                 One chapter.
                 <span className="block text-[#7BAFD4]">Six guided tasks.</span>
               </h2>
-              <p className="mx-auto mt-7 max-w-3xl text-lg leading-8 text-slate-600">
+              <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-600 md:mt-7 md:text-lg md:leading-8">
                 Bible Buddy turns Bible reading into a clear rhythm: preview the chapter, read it, study it,
                 test what you learned, remember key words, and reflect on what God is showing you.
               </p>
             </div>
 
-            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-9 grid gap-4 md:mt-14 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
               {taskSteps.map((step) => (
-                <div key={step.title} className="rounded-3xl border border-[#dbe7f6] bg-white p-6 shadow-[0_18px_46px_rgba(42,88,125,0.12)]">
+                <div key={step.title} className="rounded-2xl border border-[#dbe7f6] bg-white p-5 shadow-[0_14px_34px_rgba(42,88,125,0.1)] md:rounded-3xl md:p-6 md:shadow-[0_18px_46px_rgba(42,88,125,0.12)]">
                   <div className="flex items-center justify-between">
-                    <span className="rounded-full bg-[#e3f2ff] px-3 py-1.5 text-xs font-black uppercase tracking-[0.18em] text-[#4f85ad]">{step.task}</span>
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-2xl">{step.icon}</span>
+                    <span className="rounded-full bg-[#e3f2ff] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#4f85ad] md:text-xs md:tracking-[0.18em]">{step.task}</span>
+                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-2xl md:h-12 md:w-12">{step.icon}</span>
                   </div>
-                  <h3 className="mt-5 text-2xl font-black text-slate-950">{step.title}</h3>
-                  <p className="mt-4 text-base leading-7 text-slate-600">{step.copy}</p>
+                  <h3 className="mt-4 text-xl font-black text-slate-950 md:mt-5 md:text-2xl">{step.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-600 md:mt-4 md:text-base md:leading-7">{step.copy}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="bg-white px-5 py-24">
-          <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
-            <div>
-              <p className="mb-5 inline-flex rounded-full bg-[#e9f3ff] px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-[#5f95bd]">
+        <section className="bg-white px-4 py-16 sm:px-5 md:py-24">
+          <div className="mx-auto grid max-w-7xl gap-9 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-12">
+            <div className="text-center lg:text-left">
+              <p className="mb-4 inline-flex rounded-full bg-[#e9f3ff] px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#5f95bd] md:mb-5 md:tracking-[0.22em]">
                 Why people keep going
               </p>
-              <h2 className="text-4xl font-black leading-tight text-slate-950 md:text-6xl">Bible study should feel alive, not like homework.</h2>
-              <p className="mt-6 text-lg leading-8 text-slate-600">
+              <h2 className="text-3xl font-black leading-tight text-slate-950 sm:text-4xl md:text-6xl">Bible study should feel alive, not like homework.</h2>
+              <p className="mt-5 text-base leading-7 text-slate-600 md:mt-6 md:text-lg md:leading-8">
                 Bible Buddy keeps the serious part serious, but makes progress visible. You see your streak,
                 protect it with Grace Days, earn badges, level up, and always know the next chapter waiting for you.
               </p>
               <button
                 type="button"
                 onClick={() => setShowSignupModal(true)}
-                className="mt-9 rounded-2xl bg-[#7BAFD4] px-8 py-4 text-base font-black text-[#05111f] shadow-[0_16px_44px_rgba(123,175,212,0.34)] transition hover:-translate-y-0.5 hover:bg-[#91c2df]"
+                className="mt-7 w-full rounded-2xl bg-[#7BAFD4] px-7 py-3.5 text-base font-black text-[#05111f] shadow-[0_16px_44px_rgba(123,175,212,0.28)] transition hover:-translate-y-0.5 hover:bg-[#91c2df] sm:w-auto md:mt-9 md:px-8 md:py-4"
               >
                 Start Your Bible Study <span className="ml-2" aria-hidden="true">→</span>
               </button>
             </div>
 
-            <div className="overflow-hidden rounded-[30px] border border-[#dbe7f6] bg-white shadow-[0_30px_90px_rgba(42,88,125,0.14)]">
+            <div className="overflow-hidden rounded-3xl border border-[#dbe7f6] bg-white shadow-[0_22px_60px_rgba(42,88,125,0.12)] md:rounded-[30px] md:shadow-[0_30px_90px_rgba(42,88,125,0.14)]">
               <div className="border-b border-[#dbe7f6] bg-[#f8fbff] px-5 py-3">
                 <div className="rounded-lg bg-[#e9f3ff] px-4 py-1 text-center text-xs font-bold text-slate-600">biblebuddy.app/progress</div>
               </div>
-              <div className="p-6">
-                <div className="grid grid-cols-3 gap-4">
+              <div className="p-4 md:p-6">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 md:gap-4">
                   {[
                     ["🔥", "62", "day streak"],
                     ["💎", "5", "Grace Days"],
@@ -393,22 +393,22 @@ export default function LandingPage() {
                   ].map((stat) => (
                     <div key={stat[2]} className="rounded-2xl border border-[#dbe7f6] bg-[#f8fbff] p-4 text-center">
                       <p className="text-2xl">{stat[0]}</p>
-                      <p className="mt-2 text-3xl font-black text-slate-950">{stat[1]}</p>
+                      <p className="mt-2 text-2xl font-black text-slate-950 md:text-3xl">{stat[1]}</p>
                       <p className="mt-1 text-xs font-bold text-slate-500">{stat[2]}</p>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-6 space-y-4">
+                <div className="mt-5 space-y-3 md:mt-6 md:space-y-4">
                   {[
                     ["Compete with yourself", "Your progress bar moves as you finish each chapter study."],
                     ["Celebrate small wins", "Task animations, badges, and chapter completion keep momentum visible."],
                     ["Never lose the thread", "If a chapter takes more than one day, Bible Buddy keeps you right there."],
                   ].map((item, index) => (
-                    <div key={item[0]} className="flex gap-4 rounded-2xl border border-[#dbe7f6] bg-[#f8fbff] p-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#7BAFD4] text-xl font-black text-[#05111f]">{index + 1}</div>
+                    <div key={item[0]} className="flex gap-3 rounded-2xl border border-[#dbe7f6] bg-[#f8fbff] p-4 md:gap-4">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#7BAFD4] text-lg font-black text-[#05111f] md:h-12 md:w-12 md:text-xl">{index + 1}</div>
                       <div>
-                        <h3 className="text-lg font-black text-slate-950">{item[0]}</h3>
+                        <h3 className="text-base font-black text-slate-950 md:text-lg">{item[0]}</h3>
                         <p className="mt-1 text-sm leading-6 text-slate-600">{item[1]}</p>
                       </div>
                     </div>
