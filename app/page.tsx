@@ -2,10 +2,64 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect, FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
+
+const taskSteps = [
+  {
+    task: "Task 1",
+    icon: "📕",
+    title: "Read Chapter Intro",
+    copy: "Start with a clear, cinematic intro so you understand what you are about to read before you open the chapter.",
+  },
+  {
+    task: "Task 2",
+    icon: "✝️",
+    title: "Read the Chapter",
+    copy: "Read Scripture in a focused Bible reader built for progress, highlighting, saving, and returning without losing your place.",
+  },
+  {
+    task: "Task 3",
+    icon: "📝",
+    title: "Review Study Notes",
+    copy: "Go deeper with notes that explain the story, themes, history, meaning, and the parts that usually make people stop reading.",
+  },
+  {
+    task: "Task 4",
+    icon: "🧠",
+    title: "Play Trivia",
+    copy: "Check what is sticking with a short chapter quiz that helps you remember the people, events, and main ideas.",
+  },
+  {
+    task: "Task 5",
+    icon: "🔤",
+    title: "Play Scrambled",
+    copy: "Lock key words into memory with a quick word game connected to the chapter you just studied.",
+  },
+  {
+    task: "Task 6",
+    icon: "✍️",
+    title: "Answer Reflection",
+    copy: "Slow down and write what the chapter is stirring in you, then keep the conversation going with other Bible Buddies.",
+  },
+];
+
+const problemRows = [
+  {
+    pain: "You do not know where to start",
+    fix: "Bible Buddy gives you a clear first step and keeps the next one ready.",
+  },
+  {
+    pain: "You are not fully understanding what you read",
+    fix: "Chapter intros and study notes help the Bible make sense before and after you read.",
+  },
+  {
+    pain: "You are not staying consistent",
+    fix: "Streaks, Grace Days, levels, badges, and chapter progress make returning feel rewarding.",
+  },
+];
 
 export default function LandingPage() {
   const router = useRouter();
@@ -18,6 +72,7 @@ export default function LandingPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [heroFocus, setHeroFocus] = useState(0);
 
   useEffect(() => {
     const checkSession = async () => {
@@ -78,32 +133,23 @@ export default function LandingPage() {
     }
 
     try {
-      const { error: insertError } = await supabase.from("user_signups").insert({
+      await supabase.from("user_signups").insert({
         user_id: user.id,
         email: user.email,
       });
-
-      if (insertError) {
-        console.error("Analytics insert failed (non-blocking):", insertError);
-      }
     } catch (analyticsError) {
       console.error("Analytics insert error (non-blocking):", analyticsError);
     }
 
     try {
       const username = firstName.trim() || user.email?.split("@")[0] || "New User";
-
-      const { error: actionError } = await supabase.from("master_actions").insert({
+      await supabase.from("master_actions").insert({
         user_id: user.id,
         username,
         action_type: ACTION_TYPE.user_signup,
         action_label: "Signed up for Bible Buddy",
         created_at: new Date().toISOString(),
       });
-
-      if (actionError) {
-        console.error("Signup action tracking failed (non-blocking):", actionError);
-      }
     } catch (actionTrackingError) {
       console.error("Signup action tracking error (non-blocking):", actionTrackingError);
     }
@@ -128,349 +174,304 @@ export default function LandingPage() {
 
   if (isChecking) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="text-gray-500">Loading...</div>
+      <div className="flex min-h-screen items-center justify-center bg-[#f3f7fd]">
+        <div className="text-slate-400">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:py-6">
+    <div className="min-h-screen overflow-hidden bg-[#f3f7fd] text-slate-950">
+      <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 md:py-7">
         <div className="flex items-center gap-3">
-          <Image
-            src="/louis/louis-wave.png"
-            alt="Bible Buddy Logo"
-            width={32}
-            height={32}
-            className="h-8 w-8"
-          />
-          <div className="text-lg font-bold tracking-tight text-gray-900 md:text-xl">Bible Buddy</div>
+          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-[#d9ecff] ring-1 ring-white/15">
+            <Image src="/louis/louis-wave.png" alt="Bible Buddy Logo" width={36} height={36} className="h-9 w-9 object-contain" />
+          </div>
+          <div className="text-xl font-black tracking-tight text-slate-950 md:text-2xl">BibleBuddy</div>
         </div>
 
         <div className="flex items-center gap-4">
-          <Link
-            href="/login"
-            className="text-sm font-medium text-gray-700 transition hover:text-gray-900 md:text-base"
-          >
+          <Link href="/login" className="text-sm font-bold text-slate-700 transition hover:text-slate-950 md:text-base">
             Log In
           </Link>
           <button
             type="button"
             onClick={() => setShowSignupModal(true)}
-            className="inline-block rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 md:px-6 md:py-2.5 md:text-base"
+            className="inline-flex items-center gap-2 rounded-full bg-[#7BAFD4] px-5 py-2.5 text-sm font-black text-[#05111f] shadow-[0_14px_36px_rgba(123,175,212,0.35)] transition hover:bg-[#91c2df] md:px-7 md:text-base"
           >
-            Sign Up →
+            Start free <span aria-hidden="true">→</span>
           </button>
         </div>
       </header>
 
-      <main className="flex w-full justify-center px-4 pb-4 pt-8 md:pb-6 md:pt-10">
-        <div className="mx-auto w-full max-w-5xl">
-          <div className="mb-8 text-center md:mb-10">
-            <h1 className="mb-3 text-3xl font-bold leading-tight text-gray-900 md:mb-4 md:text-4xl lg:text-5xl">
-              Understand the Bible with Bible Buddy
-            </h1>
-            <p className="mx-auto max-w-2xl text-base text-gray-600 md:text-lg">
-              Read Scripture, understand hard chapters, learn the people and places behind the story,
-              and grow with guided tools, weekly Bible Study Group lessons, and real support that
-              help the Bible finally make sense.
+      <main>
+        <section className="mx-auto grid min-h-[760px] w-full max-w-7xl grid-cols-1 items-center gap-10 px-5 pb-20 pt-12 lg:grid-cols-[0.86fr_1.14fr] lg:pt-20">
+          <div className="max-w-2xl">
+            <p className="mb-5 inline-flex rounded-full border border-[#7BAFD4]/30 bg-[#7BAFD4]/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-[#b7dbf0]">
+              Guided Bible Study
             </p>
+            <h1 className="text-5xl font-black leading-[0.96] tracking-tight text-slate-950 md:text-7xl">
+              Understand the Bible.
+              <span className="block text-[#7BAFD4]">Build a rhythm.</span>
+            </h1>
+            <p className="mt-7 max-w-xl text-lg leading-8 text-slate-600 md:text-xl">
+              Bible Buddy gives you a daily Bible Study system that helps you know where to start,
+              understand what you read, and keep coming back without feeling rushed.
+            </p>
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <button
+                type="button"
+                onClick={() => setShowSignupModal(true)}
+                className="inline-flex justify-center rounded-2xl bg-[#7BAFD4] px-8 py-4 text-base font-black text-[#05111f] shadow-[0_16px_44px_rgba(123,175,212,0.36)] transition hover:-translate-y-0.5 hover:bg-[#91c2df]"
+              >
+                Get started free <span className="ml-2" aria-hidden="true">→</span>
+              </button>
+              <p className="text-sm font-semibold text-slate-500">No credit card required.</p>
+            </div>
           </div>
 
-          <div className="mb-2 md:mb-2">
-            <div className="relative mx-auto max-w-4xl">
-              <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-blue-50/50 to-gray-50/50 blur-2xl" />
+          <button
+            type="button"
+            onClick={() => setHeroFocus((current) => (current + 1) % 4)}
+            className="group relative mx-auto w-full max-w-3xl text-left outline-none"
+            aria-label="Animate Bible Buddy dashboard preview"
+          >
+            <div className="absolute -inset-4 rounded-[34px] border border-[#b7d6ef] bg-[#e8f4ff] opacity-80 transition group-hover:opacity-100" />
+            <div className="relative overflow-hidden rounded-[28px] border border-[#d9e4f2] bg-white shadow-[0_30px_90px_rgba(42,88,125,0.18)] transition duration-300 group-hover:-translate-y-1">
+              <div className="flex items-center justify-between border-b border-[#dbe7f6] bg-[#f8fbff] px-5 py-3">
+                <div className="flex gap-2">
+                  <span className="h-3 w-3 rounded-full bg-red-500" />
+                  <span className="h-3 w-3 rounded-full bg-yellow-400" />
+                  <span className="h-3 w-3 rounded-full bg-emerald-400" />
+                </div>
+                <div className="rounded-lg bg-[#e9f3ff] px-4 py-1 text-xs font-bold text-slate-600">biblebuddy.app/dashboard</div>
+              </div>
 
-              <div className="p-2 md:p-3">
-                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                  <Image
-                    src="/LandingPage1.png"
-                    alt="Bible Buddy preview"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 900px"
-                    className="absolute left-0 top-0 h-full w-full object-contain"
-                    style={{
-                      WebkitMaskImage: "radial-gradient(120% 120% at 50% 40%, #000 70%, transparent 100%)",
-                      maskImage: "radial-gradient(120% 120% at 50% 40%, #000 70%, transparent 100%)",
-                    }}
-                    priority
-                  />
+              <div className="p-4 sm:p-6">
+                <div className="grid grid-cols-4 gap-3">
+                  {[
+                    ["1", "🔥 Streak", "bg-slate-100"],
+                    ["0", "💎 Grace Days", "bg-[#d7eaff]"],
+                    ["5", "🛡️ Level", "bg-[#d5f8e4]"],
+                    ["7", "🏅 Badges", "bg-[#ffdede]"],
+                  ].map((card, index) => (
+                    <div
+                      key={card[1]}
+                      className={`rounded-xl px-2 py-4 text-center text-slate-950 transition ${card[2]} ${heroFocus === index ? "scale-[1.04] ring-4 ring-[#7BAFD4]/55" : ""}`}
+                    >
+                      <p className="text-2xl font-black">{card[0]}</p>
+                      <p className="mt-1 text-[10px] font-bold sm:text-xs">{card[1]}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-5 rounded-3xl border border-emerald-300/60 bg-[#effdf4] p-5 text-slate-950 shadow-lg">
+                  <div className="flex gap-4">
+                    <Image src="/louis/louis-stareyes.png" alt="Louis" width={58} height={58} className="h-14 w-14 rounded-full bg-white object-contain" />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-semibold leading-6 sm:text-base">
+                        Well done. Esther 1 is behind you now, and Esther 2 is waiting with more of Esther entering the palace.
+                      </p>
+                      <div className="mt-5 h-3 overflow-hidden rounded-full bg-emerald-100">
+                        <div className="h-full w-full rounded-full bg-[#8bc97d] transition-all duration-700" />
+                      </div>
+                      <p className="mt-4 text-center text-sm font-black">Click the button below to start the next Chapter study.</p>
+                      <div className="mt-4 rounded-full bg-[#7BAFD4] py-3 text-center text-sm font-black shadow-md">Start next chapter</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-5 space-y-3">
+                  {taskSteps.slice(0, 4).map((step, index) => (
+                    <div
+                      key={step.title}
+                      className={`flex items-center gap-3 rounded-2xl border bg-white p-3 text-slate-950 transition ${heroFocus === index ? "border-[#7BAFD4] shadow-[0_0_0_6px_rgba(123,175,212,0.18)]" : "border-emerald-200"}`}
+                    >
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-400 text-2xl">{step.icon}</div>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-base font-black">{index + 1}. {index === 1 ? "Read Esther 1" : step.title}</p>
+                        <p className="line-clamp-2 text-xs font-semibold text-slate-600">{step.copy}</p>
+                      </div>
+                      <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black">+5 pts</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </button>
+        </section>
+
+        <section className="border-y border-[#dbe7f6] bg-white px-5 py-24">
+          <div className="mx-auto max-w-5xl text-center">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-[#5f95bd]">The real problem</p>
+            <h2 className="mt-6 text-4xl font-black leading-tight text-slate-950 md:text-6xl">
+              You do not lack motivation.
+              <span className="block text-slate-400">You lack a system that guides you.</span>
+            </h2>
+            <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-600">
+              You have tried reading plans. You have tried starting over in Genesis. You have tried willpower.
+              But it is hard to stay consistent when you do not know where to start or what you are reading.
+            </p>
+
+            <div className="mt-14 space-y-5">
+              {problemRows.map((row) => (
+                <div key={row.pain} className="grid gap-4 rounded-3xl border border-[#dbe7f6] bg-[#f8fbff] p-5 text-left shadow-sm md:grid-cols-[1fr_auto_1fr] md:items-center md:p-7">
+                  <div className="flex items-center gap-4 text-slate-700">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-red-100 text-red-500">×</span>
+                    <span className="text-lg font-bold">{row.pain}</span>
+                  </div>
+                  <span className="hidden text-slate-400 md:block">→</span>
+                  <div className="flex items-center gap-4 text-slate-950">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">✓</span>
+                    <span className="text-lg font-black">{row.fix}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#eef6ff] px-5 py-24">
+          <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-4xl text-center">
+              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#5f95bd]">The Bible Study system</p>
+              <h2 className="mt-6 text-4xl font-black leading-tight text-slate-950 md:text-6xl">
+                One chapter.
+                <span className="block text-[#7BAFD4]">Six guided tasks.</span>
+              </h2>
+              <p className="mx-auto mt-7 max-w-3xl text-lg leading-8 text-slate-600">
+                Bible Buddy turns Bible reading into a clear rhythm: preview the chapter, read it, study it,
+                test what you learned, remember key words, and reflect on what God is showing you.
+              </p>
+            </div>
+
+            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {taskSteps.map((step) => (
+                <div key={step.title} className="rounded-3xl border border-[#dbe7f6] bg-white p-6 shadow-[0_18px_46px_rgba(42,88,125,0.12)]">
+                  <div className="flex items-center justify-between">
+                    <span className="rounded-full bg-[#e3f2ff] px-3 py-1.5 text-xs font-black uppercase tracking-[0.18em] text-[#4f85ad]">{step.task}</span>
+                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-2xl">{step.icon}</span>
+                  </div>
+                  <h3 className="mt-5 text-2xl font-black text-slate-950">{step.title}</h3>
+                  <p className="mt-4 text-base leading-7 text-slate-600">{step.copy}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white px-5 py-24">
+          <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
+            <div>
+              <p className="mb-5 inline-flex rounded-full bg-[#e9f3ff] px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-[#5f95bd]">
+                Why people keep going
+              </p>
+              <h2 className="text-4xl font-black leading-tight text-slate-950 md:text-6xl">Bible study should feel alive, not like homework.</h2>
+              <p className="mt-6 text-lg leading-8 text-slate-600">
+                Bible Buddy keeps the serious part serious, but makes progress visible. You see your streak,
+                protect it with Grace Days, earn badges, level up, and always know the next chapter waiting for you.
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowSignupModal(true)}
+                className="mt-9 rounded-2xl bg-[#7BAFD4] px-8 py-4 text-base font-black text-[#05111f] shadow-[0_16px_44px_rgba(123,175,212,0.34)] transition hover:-translate-y-0.5 hover:bg-[#91c2df]"
+              >
+                Start Your Bible Study <span className="ml-2" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <div className="overflow-hidden rounded-[30px] border border-[#dbe7f6] bg-white shadow-[0_30px_90px_rgba(42,88,125,0.14)]">
+              <div className="border-b border-[#dbe7f6] bg-[#f8fbff] px-5 py-3">
+                <div className="rounded-lg bg-[#e9f3ff] px-4 py-1 text-center text-xs font-bold text-slate-600">biblebuddy.app/progress</div>
+              </div>
+              <div className="p-6">
+                <div className="grid grid-cols-3 gap-4">
+                  {[
+                    ["🔥", "62", "day streak"],
+                    ["💎", "5", "Grace Days"],
+                    ["🏅", "14", "badges"],
+                  ].map((stat) => (
+                    <div key={stat[2]} className="rounded-2xl border border-[#dbe7f6] bg-[#f8fbff] p-4 text-center">
+                      <p className="text-2xl">{stat[0]}</p>
+                      <p className="mt-2 text-3xl font-black text-slate-950">{stat[1]}</p>
+                      <p className="mt-1 text-xs font-bold text-slate-500">{stat[2]}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 space-y-4">
+                  {[
+                    ["Compete with yourself", "Your progress bar moves as you finish each chapter study."],
+                    ["Celebrate small wins", "Task animations, badges, and chapter completion keep momentum visible."],
+                    ["Never lose the thread", "If a chapter takes more than one day, Bible Buddy keeps you right there."],
+                  ].map((item, index) => (
+                    <div key={item[0]} className="flex gap-4 rounded-2xl border border-[#dbe7f6] bg-[#f8fbff] p-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#7BAFD4] text-xl font-black text-[#05111f]">{index + 1}</div>
+                      <div>
+                        <h3 className="text-lg font-black text-slate-950">{item[0]}</h3>
+                        <p className="mt-1 text-sm leading-6 text-slate-600">{item[1]}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="mb-3 text-center md:mb-4">
-            <button
-              type="button"
-              onClick={() => setShowSignupModal(true)}
-              className="inline-block rounded-lg bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg transition hover:scale-105 hover:bg-blue-700 md:px-10 md:py-4 md:text-lg"
-            >
-              Start Studying Free →
-            </button>
-            <p className="mt-2 text-xs text-gray-500 md:text-sm">Create your Bible Buddy account now</p>
-          </div>
-        </div>
+        </section>
       </main>
 
-      <section className="w-full bg-white">
-        <div className="mx-auto max-w-6xl px-4 pb-12 pt-0 md:pb-16">
-          <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-3 md:gap-12">
-            <div className="space-y-3">
-              <svg
-                viewBox="0 0 24 24"
-                className="mx-auto h-8 w-8 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M2 6.5C2 5.12 3.12 4 4.5 4H12a3 3 0 0 1 3 3v13H4.5A2.5 2.5 0 0 0 2 22Z" />
-                <path d="M12 4h7.5A2.5 2.5 0 0 1 22 6.5V22H15" />
-              </svg>
-              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Interactive Bible</h3>
-              <p className="text-sm text-gray-600 md:text-base">
-                Read the Bible in a clean, focused way, save your place, and keep moving chapter by
-                chapter without losing your flow.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              <svg
-                viewBox="0 0 24 24"
-                className="mx-auto h-8 w-8 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <circle cx="12" cy="12" r="3" />
-                <path d="M19.4 15a8 8 0 1 0-14.8 0" />
-                <path d="M12 2v2" />
-              </svg>
-              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Guided Studies</h3>
-              <p className="text-sm text-gray-600 md:text-base">
-                Follow devotionals, reading plans, and weekly Bible Study Group lessons with
-                reading, trivia, and reflection so you always know what to study next.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              <svg
-                viewBox="0 0 24 24"
-                className="mx-auto h-8 w-8 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 16v-4" />
-                <path d="M12 8h.01" />
-              </svg>
-              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Bible Help</h3>
-              <p className="text-sm text-gray-600 md:text-base">
-                Tap people, places, and key Bible words to get fast context right inside your
-                reading, so hard passages start becoming clear.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              <svg
-                viewBox="0 0 24 24"
-                className="mx-auto h-8 w-8 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <rect x="6" y="4" width="12" height="16" rx="2" />
-                <path d="M9 8h6" />
-                <path d="M9 12h6" />
-                <path d="M9 16h4" />
-              </svg>
-              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Chapter Reviews</h3>
-              <p className="text-sm text-gray-600 md:text-base">
-                Get a plain-language review of what happened in the chapter, why it matters, and how
-                it fits into the larger story of Scripture.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              <svg
-                viewBox="0 0 24 24"
-                className="mx-auto h-8 w-8 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M9 12l2 2 4-4" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Bible Study Games</h3>
-              <p className="text-sm text-gray-600 md:text-base">
-                Lock in what you are learning with Scripture-based games that help you remember the
-                people, chapters, and stories you just studied.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              <svg
-                viewBox="0 0 24 24"
-                className="mx-auto h-8 w-8 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M12 2c1.8 3.6 1.5 6.1 0 8.5 2.7-.2 4.5-2.1 4.5-4.8 3.3 3 3.7 8.1.6 11.6-2.9 3.3-8.2 3.4-11.1.3C2.1 14 2.6 8.9 6 6c0 2.7 1.9 4.6 4.6 4.8" />
-              </svg>
-              <h3 className="text-base font-semibold text-gray-900 md:text-lg">Streak Tracker</h3>
-              <p className="text-sm text-gray-600 md:text-base">
-                Stay consistent, build a real habit, and keep your momentum going as you spend time
-                in the Bible day after day.
-              </p>
-            </div>
-          </div>
-
-          <div className="mx-auto mt-12 max-w-4xl rounded-2xl border border-blue-100 bg-blue-50/60 px-6 py-7 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">Study with the Bible Study Group each week</h2>
-            <p className="mx-auto mt-3 max-w-3xl text-sm leading-7 text-gray-600 md:text-base">
-              Bible Buddy is not just for solo reading. Join the Bible Study Group for weekly lessons
-              that guide you through a live series with chapter reading, trivia, reflection, and
-              discussion, so you can study the Bible with structure and with other people.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <footer className="mt-4 border-t border-gray-200 bg-white text-gray-700">
+      <footer className="border-t border-[#dbe7f6] bg-[#f8fbff] text-slate-600">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-10 md:grid-cols-3 md:py-12">
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-900">
-              Connect with me
-            </h3>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-950">Connect with me</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <a
-                  href="https://www.youtube.com/@BibleStudyWithLouis"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-blue-600"
-                >
-                  YouTube
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/biblestudywithlouis"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-blue-600"
-                >
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.threads.net/@biblestudywithlouis"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-blue-600"
-                >
-                  Threads
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.tiktok.com/@biblestudywithlouis"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-blue-600"
-                >
-                  TikTok
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.facebook.com/profile.php?id=100085924826685"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-blue-600"
-                >
-                  Facebook
-                </a>
-              </li>
+              {[
+                ["YouTube", "https://www.youtube.com/@BibleStudyWithLouis"],
+                ["Instagram", "https://www.instagram.com/biblestudywithlouis"],
+                ["Threads", "https://www.threads.net/@biblestudywithlouis"],
+                ["TikTok", "https://www.tiktok.com/@biblestudywithlouis"],
+                ["Facebook", "https://www.facebook.com/profile.php?id=100085924826685"],
+              ].map((item) => (
+                <li key={item[0]}>
+                  <a href={item[1]} target="_blank" rel="noreferrer" className="transition-colors hover:text-[#7BAFD4]">
+                    {item[0]}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-gray-900">
-              Resources
-            </h3>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-950">Resources</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/contact" className="transition-colors hover:text-blue-600">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy" className="transition-colors hover:text-blue-600">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="transition-colors hover:text-blue-600">
-                  Terms of Service
-                </Link>
-              </li>
+              <li><Link href="/contact" className="transition-colors hover:text-[#7BAFD4]">Contact</Link></li>
+              <li><Link href="/privacy" className="transition-colors hover:text-[#7BAFD4]">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="transition-colors hover:text-[#7BAFD4]">Terms of Service</Link></li>
             </ul>
           </div>
 
           <div className="text-sm md:text-base">
-            <h3 className="mb-3 text-lg font-semibold text-gray-900">Bible Buddy</h3>
-            <p className="max-w-sm leading-relaxed text-gray-600">
+            <h3 className="mb-3 text-lg font-semibold text-slate-950">Bible Buddy</h3>
+            <p className="max-w-sm leading-relaxed text-slate-600">
               A Bible study app built to help you read Scripture with more clarity, better context,
-              and a stronger daily study habit.
+              and a stronger daily study rhythm.
             </p>
           </div>
         </div>
 
-        <div className="border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-4 py-4 text-center text-xs text-gray-500 md:text-right md:text-sm">
-            © 2026 Bible Buddy
-          </div>
+        <div className="border-t border-[#dbe7f6]">
+          <div className="mx-auto max-w-7xl px-4 py-4 text-center text-xs text-slate-500 md:text-right md:text-sm">© 2026 Bible Buddy</div>
         </div>
       </footer>
 
       {showSignupModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
-          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl md:p-7">
-            <button
-              type="button"
-              onClick={() => setShowSignupModal(false)}
-              className="absolute right-4 top-3 text-sm text-gray-400 hover:text-gray-700"
-            >
-              ✕
+          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 text-slate-950 shadow-2xl md:p-7">
+            <button type="button" onClick={() => setShowSignupModal(false)} className="absolute right-4 top-3 text-sm text-gray-400 hover:text-gray-700">
+              ×
             </button>
 
-            <h2 className="mb-1 text-center text-xl font-bold text-gray-900 md:text-2xl">
-              Create your free Bible Buddy account
-            </h2>
+            <h2 className="mb-1 text-center text-xl font-bold text-gray-900 md:text-2xl">Create your free Bible Buddy account</h2>
             <p className="mb-4 text-center text-xs text-gray-500">Free to use. No credit card required.</p>
 
             <form onSubmit={handleSubmit} className="mt-2 space-y-3">
@@ -480,7 +481,7 @@ export default function LandingPage() {
                   <input
                     type="text"
                     required
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     placeholder="First name"
@@ -491,7 +492,7 @@ export default function LandingPage() {
                   <input
                     type="text"
                     required
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder="Last name"
@@ -504,7 +505,7 @@ export default function LandingPage() {
                 <input
                   type="email"
                   required
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
@@ -517,37 +518,24 @@ export default function LandingPage() {
                   type="password"
                   required
                   minLength={6}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Create a password"
                 />
               </div>
 
-              {error && (
-                <p className="rounded-lg border border-red-100 bg-red-50 px-3 py-2 text-xs text-red-600">
-                  {error}
-                </p>
-              )}
+              {error && <p className="rounded-lg border border-red-100 bg-red-50 px-3 py-2 text-xs text-red-600">{error}</p>}
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="mt-1 w-full rounded-lg bg-blue-600 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 disabled:opacity-60"
-              >
+              <button type="submit" disabled={loading} className="mt-1 w-full rounded-lg bg-[#7BAFD4] py-2.5 text-sm font-black text-[#05111f] shadow-md transition hover:bg-[#91c2df] disabled:opacity-60">
                 {loading ? "Creating account..." : "Create Free Account"}
               </button>
 
               <p className="mt-1.5 text-center text-[10px] text-gray-500">
                 By creating an account, you agree to the{" "}
-                <Link href="/terms" className="underline underline-offset-2 hover:text-blue-600">
-                  terms of service
-                </Link>{" "}
+                <Link href="/terms" className="underline underline-offset-2 hover:text-[#7BAFD4]">terms of service</Link>{" "}
                 and{" "}
-                <Link href="/privacy" className="underline underline-offset-2 hover:text-blue-600">
-                  privacy policy
-                </Link>
-                .
+                <Link href="/privacy" className="underline underline-offset-2 hover:text-[#7BAFD4]">privacy policy</Link>.
               </p>
             </form>
           </div>
@@ -556,31 +544,21 @@ export default function LandingPage() {
 
       {showSuccessModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
-          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 text-slate-950 shadow-xl">
             <div className="text-center">
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-                <svg
-                  className="h-6 w-6 text-green-600"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="h-6 w-6 text-green-600" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M5 13l4 4L19 7" />
                 </svg>
               </div>
               <h2 className="mb-2 text-2xl font-bold text-gray-900">Account created successfully!</h2>
-              <p className="mb-6 text-sm text-gray-600">
-                Please check your email to confirm your account before logging in.
-              </p>
+              <p className="mb-6 text-sm text-gray-600">Please check your email to confirm your account before logging in.</p>
               <button
                 onClick={() => {
                   setShowSuccessModal(false);
                   setShowSignupModal(false);
                 }}
-                className="w-full rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
+                className="w-full rounded-xl bg-[#7BAFD4] px-6 py-3 font-black text-[#05111f] transition hover:bg-[#91c2df]"
               >
                 Got it
               </button>

@@ -1306,7 +1306,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const shouldShowNavMenu = isLoggedIn && !isBarePage && pathname && !pathname.startsWith("/dashboard");
   const breadcrumbItems = buildBreadcrumbs(pathname);
   const shouldShowBreadcrumbs = isLoggedIn && !isBarePage && breadcrumbItems.length > 0;
-  const showDashboardStatusButtons = Boolean(isLoggedIn && pathname === "/dashboard");
+  const showDashboardStatusButtons = false;
 
   function diffLocalDayKeys(fromDayKey: string, toDayKey: string) {
     const [fromYear, fromMonth, fromDay] = fromDayKey.split("-").map(Number);

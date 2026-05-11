@@ -20,6 +20,7 @@ type TriviaGamePlayerProps = {
   chapter: TriviaChapterPack;
   onClose?: () => void;
   onComplete?: () => void;
+  skipUpgradeGate?: boolean;
 };
 
 async function fetchVerseText(reference: string) {
@@ -39,7 +40,7 @@ async function fetchVerseText(reference: string) {
   }
 }
 
-export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose, onComplete }: TriviaGamePlayerProps) {
+export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose, onComplete, skipUpgradeGate = false }: TriviaGamePlayerProps) {
   const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -58,6 +59,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
   }, [bookSlug]);
 
   const isFreeBook = FREE_TRIVIA_BOOK_KEYS.has(bookKey);
+  const shouldGateUpgrade = !skipUpgradeGate && !isFreeBook;
 
   const questions = chapter?.questions ?? [];
   const currentQuestion = questions[currentQuestionIndex] ?? null;
@@ -77,7 +79,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
 
       if (!user) {
         setIsPaid(false);
-        if (!isFreeBook) {
+        if (shouldGateUpgrade) {
           setShowUpgradeModal(true);
         }
         return;
@@ -94,7 +96,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
       const paid = profileStats?.is_paid === true;
       setIsPaid(paid);
 
-      if (!paid && !isFreeBook) {
+      if (!paid && shouldGateUpgrade) {
         setShowUpgradeModal(true);
         return;
       }
@@ -124,9 +126,9 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
     return () => {
       cancelled = true;
     };
-  }, [isFreeBook]);
+  }, [shouldGateUpgrade]);
 
-  if (isPaid === false && !isFreeBook) {
+  if (isPaid === false && shouldGateUpgrade) {
     return (
       <div className="min-h-screen bg-gray-50 px-4 py-10">
         <div className="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">

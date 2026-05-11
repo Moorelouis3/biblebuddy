@@ -53,6 +53,232 @@ const ENABLE_DAILY_DASHBOARD_WELCOME_FLOW = true;
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
 
+type BadgeTone = "blue" | "gold" | "green" | "pink" | "purple" | "red" | "teal" | "slate";
+
+type BadgeProgress = {
+  id: string;
+  title: string;
+  description: string;
+  emoji: string;
+  levelLabel: string;
+  current: number;
+  target: number;
+  tone: BadgeTone;
+};
+
+type BadgeProgressInput = {
+  currentStreak: number;
+  totalPoints: number;
+  chapterCompletions: number;
+  bibleStudyIntroCompletions: number;
+  bibleStudyDayCompletions: number;
+  triviaCompletions: number;
+  scrambledCompletions: number;
+  notesReviewed: number;
+  commentsPosted: number;
+  likesGiven: number;
+  tvVideosStarted: number;
+  booksCompleted: number;
+};
+
+const BADGE_TONE_CLASSES: Record<BadgeTone, { tile: string; progress: string; glow: string }> = {
+  blue: {
+    tile: "border-[#8fc7ee] bg-gradient-to-br from-[#bfe5ff] to-[#5eaee6] text-[#123c63]",
+    progress: "bg-[#7BAFD4]",
+    glow: "shadow-[0_10px_28px_rgba(123,175,212,0.32)]",
+  },
+  gold: {
+    tile: "border-[#ffd36a] bg-gradient-to-br from-[#fff3ae] to-[#f2b233] text-[#4c3100]",
+    progress: "bg-[#f3bd3e]",
+    glow: "shadow-[0_10px_28px_rgba(242,178,51,0.3)]",
+  },
+  green: {
+    tile: "border-[#9fe6b8] bg-gradient-to-br from-[#c9f7d8] to-[#34c36f] text-[#0e4829]",
+    progress: "bg-[#35c46f]",
+    glow: "shadow-[0_10px_28px_rgba(52,195,111,0.28)]",
+  },
+  pink: {
+    tile: "border-[#ffc0d6] bg-gradient-to-br from-[#ffdce9] to-[#f46fa0] text-[#651536]",
+    progress: "bg-[#f46fa0]",
+    glow: "shadow-[0_10px_28px_rgba(244,111,160,0.28)]",
+  },
+  purple: {
+    tile: "border-[#d8c1ff] bg-gradient-to-br from-[#ede0ff] to-[#9b6cf4] text-[#35156d]",
+    progress: "bg-[#9b6cf4]",
+    glow: "shadow-[0_10px_28px_rgba(155,108,244,0.28)]",
+  },
+  red: {
+    tile: "border-[#ffb2a7] bg-gradient-to-br from-[#ffd7d2] to-[#f45b4c] text-[#651a14]",
+    progress: "bg-[#f45b4c]",
+    glow: "shadow-[0_10px_28px_rgba(244,91,76,0.26)]",
+  },
+  teal: {
+    tile: "border-[#99eadc] bg-gradient-to-br from-[#c9fff4] to-[#26bca5] text-[#0c4d44]",
+    progress: "bg-[#26bca5]",
+    glow: "shadow-[0_10px_28px_rgba(38,188,165,0.26)]",
+  },
+  slate: {
+    tile: "border-[#cbd5e1] bg-gradient-to-br from-[#f1f5f9] to-[#94a3b8] text-[#1f2937]",
+    progress: "bg-[#64748b]",
+    glow: "shadow-[0_10px_28px_rgba(100,116,139,0.2)]",
+  },
+};
+
+function clampBadgeProgress(current: number, target: number) {
+  if (!Number.isFinite(current)) return 0;
+  return Math.max(0, Math.min(target, Math.floor(current)));
+}
+
+function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
+  const badges: BadgeProgress[] = [
+    {
+      id: "first-light",
+      title: "First Light",
+      description: "Finish your first Bible Study task.",
+      emoji: "🌅",
+      levelLabel: "Level 1",
+      current: input.bibleStudyIntroCompletions + input.chapterCompletions + input.notesReviewed + input.triviaCompletions + input.scrambledCompletions,
+      target: 1,
+      tone: "gold",
+    },
+    {
+      id: "three-day-flame",
+      title: "Three Day Flame",
+      description: "Log in 3 days in a row.",
+      emoji: "🔥",
+      levelLabel: "Level 1",
+      current: input.currentStreak,
+      target: 3,
+      tone: "red",
+    },
+    {
+      id: "ten-day-rooted",
+      title: "Rooted Rhythm",
+      description: "Log in 10 days in a row.",
+      emoji: "🌱",
+      levelLabel: "Level 2",
+      current: input.currentStreak,
+      target: 10,
+      tone: "green",
+    },
+    {
+      id: "consistency-flame",
+      title: "Consistency Flame",
+      description: "Log in 25 days in a row.",
+      emoji: "💎",
+      levelLabel: "Level 3",
+      current: input.currentStreak,
+      target: 25,
+      tone: "blue",
+    },
+    {
+      id: "chapter-starter",
+      title: "Chapter Starter",
+      description: "Complete your first Bible chapter.",
+      emoji: "📖",
+      levelLabel: "Level 1",
+      current: input.chapterCompletions,
+      target: 1,
+      tone: "blue",
+    },
+    {
+      id: "study-finisher",
+      title: "Study Finisher",
+      description: "Finish 7 Bible Study task days.",
+      emoji: "✅",
+      levelLabel: "Level 2",
+      current: input.bibleStudyDayCompletions,
+      target: 7,
+      tone: "green",
+    },
+    {
+      id: "notes-seeker",
+      title: "Notes Seeker",
+      description: "Review chapter notes 3 times.",
+      emoji: "📝",
+      levelLabel: "Level 1",
+      current: input.notesReviewed,
+      target: 3,
+      tone: "teal",
+    },
+    {
+      id: "trivia-spark",
+      title: "Trivia Spark",
+      description: "Finish your first trivia round.",
+      emoji: "🧠",
+      levelLabel: "Level 1",
+      current: input.triviaCompletions,
+      target: 1,
+      tone: "pink",
+    },
+    {
+      id: "word-builder",
+      title: "Word Builder",
+      description: "Finish your first Scrambled round.",
+      emoji: "🔤",
+      levelLabel: "Level 1",
+      current: input.scrambledCompletions,
+      target: 1,
+      tone: "purple",
+    },
+    {
+      id: "group-voice",
+      title: "Group Voice",
+      description: "Post your first Bible Buddy group comment.",
+      emoji: "💬",
+      levelLabel: "Level 1",
+      current: input.commentsPosted,
+      target: 1,
+      tone: "teal",
+    },
+    {
+      id: "encourager",
+      title: "Encourager",
+      description: "Like 3 posts or comments.",
+      emoji: "💙",
+      levelLabel: "Level 2",
+      current: input.likesGiven,
+      target: 3,
+      tone: "blue",
+    },
+    {
+      id: "bible-tv-starter",
+      title: "Bible Buddy TV Starter",
+      description: "Watch your first Bible Buddy TV video.",
+      emoji: "📺",
+      levelLabel: "Level 1",
+      current: input.tvVideosStarted,
+      target: 1,
+      tone: "purple",
+    },
+    {
+      id: "book-finisher",
+      title: "Book Finisher",
+      description: "Finish your first Bible book.",
+      emoji: "🏅",
+      levelLabel: "Level 3",
+      current: input.booksCompleted,
+      target: 1,
+      tone: "gold",
+    },
+    {
+      id: "xp-builder",
+      title: "XP Builder",
+      description: "Earn 1,000 Bible Buddy points.",
+      emoji: "🛡️",
+      levelLabel: "Level 2",
+      current: input.totalPoints,
+      target: 1000,
+      tone: "slate",
+    },
+  ];
+
+  return badges.map((badge) => ({
+    ...badge,
+    current: clampBadgeProgress(badge.current, badge.target),
+  }));
+}
+
 const BOOKS = [
   // Gospels & Acts
   "Matthew",
@@ -153,6 +379,8 @@ export default function DashboardPage() {
     progressPercent: number;
   } | null>(null);
   const [showLevelInfoModal, setShowLevelInfoModal] = useState(false);
+  const [showBadgesModal, setShowBadgesModal] = useState(false);
+  const [badgeProgress, setBadgeProgress] = useState<BadgeProgress[]>([]);
   const [showStreakBadgeModal, setShowStreakBadgeModal] = useState(false);
   const [showCommunityModal, setShowCommunityModal] = useState(false);
   const [showVerseOfTheDayModal, setShowVerseOfTheDayModal] = useState(false);
@@ -188,7 +416,7 @@ export default function DashboardPage() {
   const [daysRemaining, setDaysRemaining] = useState<number | null>(null);
   const [mobileAdDismissed, setMobileAdDismissed] = useState<boolean>(false);
   const [levelRefreshTick, setLevelRefreshTick] = useState(0);
-  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
+  const [profile, setProfile] = useState<{ is_paid: boolean | null; daily_credits: number | null; last_active_date: string | null; verse_of_the_day_shown?: string | null; current_streak?: number | null; grace_days_count?: number | null; profile_image_url?: string | null; display_name?: string | null; username?: string | null } | null>(null);
   const [primaryRecommendation, setPrimaryRecommendation] = useState<DailyRecommendation | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
   const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
@@ -912,7 +1140,7 @@ export default function DashboardPage() {
     void loadOwnerQuickStats();
   }, [isOwnerDashboard]);
 
-  function renderOwnerQuickStatsRow() {
+  function renderDashboardStatsRow() {
     if (isOwnerDashboard) {
       return (
         <div className="mb-4">
@@ -942,32 +1170,65 @@ export default function DashboardPage() {
       );
     }
 
-    if (membershipStatus !== "pro" && profile?.is_paid !== true) {
-      return (
-        <div className="mb-4">
-          <div className="mx-auto max-w-xl">
-            <Link href="/upgrade" className="block">
-              <div className="relative cursor-pointer rounded-2xl border border-[#f0d7b3] bg-[#fff8ef] px-4 py-3 shadow-sm transition hover:scale-[1.01] hover:shadow-md">
-                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-base text-[#b7791f]" aria-hidden="true">
-                  ↑
-                </span>
-                <div className="flex items-center gap-3 pr-7">
-                  <div className="text-xl leading-none">👑</div>
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold text-[#8a4b14]">Go Deeper With Pro</p>
-                    <p className="text-xs leading-relaxed text-gray-600">
-                      Unlock the full Bible study library and remove the daily credit wall.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Link>
+    const earnedBadgeCount = badgeProgress.filter((badge) => badge.current >= badge.target).length;
+
+    const personalStats = [
+      {
+        key: "streak",
+        label: "🔥 Streak",
+        value: profile?.current_streak ?? 0,
+        tones: "bg-gray-100 border-gray-200",
+        onClick: () => {
+          setShowStreakMotivationTaskPrompt(false);
+          setShowStreakMotivationModal(true);
+        },
+      },
+      {
+        key: "grace",
+        label: "💎 Grace Days",
+        value: Math.max(0, Math.min(5, Number(profile?.grace_days_count ?? 0))),
+        tones: "bg-blue-100 border-blue-200",
+      },
+      {
+        key: "level",
+        label: "🛡️ Level",
+        value: levelInfo?.level ?? 1,
+        tones: "bg-emerald-100 border-emerald-200",
+        onClick: openLevelInfoModal,
+      },
+      {
+        key: "badges",
+        label: "🏅 Badges",
+        value: earnedBadgeCount,
+        tones: "bg-red-100 border-red-200",
+        onClick: () => setShowBadgesModal(true),
+      },
+    ];
+
+    return (
+      <div className="mb-4">
+        <div className="mx-auto grid max-w-xl grid-cols-4 gap-2 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm sm:gap-3 sm:p-3">
+          {personalStats.map((card) => {
+            const CardTag = card.onClick ? "button" : "div";
+            return (
+              <CardTag
+                key={card.key}
+                type={card.onClick ? "button" : undefined}
+                onClick={card.onClick}
+                className={`rounded-xl border px-1.5 py-2 text-center transition sm:px-3 sm:py-4 ${card.onClick ? "hover:shadow-sm" : ""} ${card.tones}`}
+              >
+                <p className="text-lg font-bold text-gray-900 sm:text-2xl">
+                  {card.value}
+                </p>
+                <p className="mt-1 text-[9px] font-medium leading-tight text-gray-700 sm:text-xs">
+                  {card.label}
+                </p>
+              </CardTag>
+            );
+          })}
           </div>
         </div>
-      );
-    }
-
-    return null;
+    );
   }
 
   useEffect(() => {
@@ -1307,7 +1568,7 @@ export default function DashboardPage() {
 
         const { data, error } = await supabase
           .from("profile_stats")
-          .select("total_actions, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, profile_image_url, display_name, username")
+          .select("total_actions, is_paid, daily_credits, last_active_date, verse_of_the_day_shown, current_streak, grace_days_count, profile_image_url, display_name, username")
           .eq("user_id", userId)
           .maybeSingle();
 
@@ -1323,6 +1584,7 @@ export default function DashboardPage() {
             last_active_date: profileData?.last_active_date ?? null,
             verse_of_the_day_shown: profileData?.verse_of_the_day_shown ?? null,
             current_streak: profileData?.current_streak ?? 0,
+            grace_days_count: Math.max(0, Math.min(5, Number(profileData?.grace_days_count ?? 0))),
             profile_image_url: profileData?.profile_image_url ?? null,
             display_name: profileData?.display_name ?? null,
             username: profileData?.username ?? null,
@@ -1339,6 +1601,7 @@ export default function DashboardPage() {
                 ? resetJson.daily_credits
                 : current.daily_credits,
             current_streak: resolvedCurrentStreak,
+            grace_days_count: current.grace_days_count ?? 0,
           } : current);
         }
 
@@ -1384,7 +1647,11 @@ export default function DashboardPage() {
             .eq("user_id", userId),
         ]);
 
-        const adminBonusActionRows = (actionsResult.data || []).filter((row) =>
+        const actionRows = actionsResult.data || [];
+        const countActions = (...types: string[]) =>
+          actionRows.filter((row) => types.includes(row?.action_type || "")).length;
+
+        const adminBonusActionRows = actionRows.filter((row) =>
           row?.action_label === JESSICA_BONUS_ACTION_LABEL,
         );
         if (!didCancel) {
@@ -1398,7 +1665,7 @@ export default function DashboardPage() {
           return total + (match ? Number(match[1]) || 0 : 0);
         }, 0);
 
-        const streakAwardedPoints = (actionsResult.data || []).reduce((total, row) => {
+        const streakAwardedPoints = actionRows.reduce((total, row) => {
           const match = typeof row?.action_label === "string"
             ? row.action_label.match(/^streak_day:(\d+):\d{4}-\d{2}-\d{2}$/)
             : null;
@@ -1411,7 +1678,7 @@ export default function DashboardPage() {
           ACTION_TYPE.keyword_viewed,
         ]);
 
-        const actionTypes = (actionsResult.data || [])
+        const actionTypes = actionRows
           .filter((row) => row?.action_label !== JESSICA_BONUS_ACTION_LABEL)
           .filter((row) => !duplicateEntityViewActionTypes.has(row?.action_type || ""))
           .filter((row) => {
@@ -1437,6 +1704,16 @@ export default function DashboardPage() {
             : {};
           return total + Object.values(reactionCounts).reduce((sum, count) => sum + (Number(count) || 0), 0);
         }, 0);
+
+        const feedLikesGivenCount = countActions(ACTION_TYPE.feed_post_liked);
+        const feedCommentCount = countActions(ACTION_TYPE.feed_post_commented, ACTION_TYPE.feed_post_replied);
+        const bibleStudyIntroCompletions = countActions(ACTION_TYPE.devotional_day_completed);
+        const chapterCompletions = countActions(ACTION_TYPE.chapter_completed, ACTION_TYPE.reading_plan_chapter_completed);
+        const notesReviewed = countActions(ACTION_TYPE.chapter_notes_reviewed, ACTION_TYPE.chapter_notes_viewed);
+        const triviaCompletions = countActions(ACTION_TYPE.trivia_chapter_completed);
+        const scrambledCompletions = countActions(ACTION_TYPE.scrambled_chapter_completed);
+        const tvVideosStarted = countActions(ACTION_TYPE.bible_buddy_tv_video_started, ACTION_TYPE.bible_buddy_tv_title_opened);
+        const booksCompleted = countActions(ACTION_TYPE.book_completed);
 
         const weightedPoints = calculateWeightedPoints({
           actionTypes,
@@ -1523,6 +1800,20 @@ export default function DashboardPage() {
         if (!didCancel) {
           setLevelInfo(levelInfoData);
           setMotivationalMessage(randomMessage);
+          setBadgeProgress(buildBadgeProgress({
+            currentStreak: resolvedCurrentStreak,
+            totalPoints,
+            chapterCompletions,
+            bibleStudyIntroCompletions,
+            bibleStudyDayCompletions: bibleStudyIntroCompletions,
+            triviaCompletions,
+            scrambledCompletions,
+            notesReviewed,
+            commentsPosted: groupCommentCount + feedCommentCount,
+            likesGiven: groupLikeGivenCount + feedLikesGivenCount,
+            tvVideosStarted,
+            booksCompleted,
+          }));
         }
 
         // Write current_level back to profile_stats so other components can read it
@@ -1964,10 +2255,43 @@ export default function DashboardPage() {
         detail: {
           level: levelInfo?.level ?? 1,
           streak: profile?.current_streak ?? 0,
+          graceDays: profile?.grace_days_count ?? 0,
         },
       }),
     );
-  }, [levelInfo?.level, profile?.current_streak]);
+  }, [levelInfo?.level, profile?.current_streak, profile?.grace_days_count]);
+
+  useEffect(() => {
+    function handleDashboardStatsSync(event: Event) {
+      const customEvent = event as CustomEvent<{ streak?: number; graceDays?: number }>;
+      const nextStreak = customEvent.detail?.streak;
+      const nextGraceDays = customEvent.detail?.graceDays;
+      if (typeof nextStreak !== "number" && typeof nextGraceDays !== "number") return;
+
+      setProfile((current) => {
+        if (!current) return current;
+        const resolvedStreak =
+          typeof nextStreak === "number" && nextStreak >= 0 ? nextStreak : current.current_streak;
+        const resolvedGraceDays =
+          typeof nextGraceDays === "number" && nextGraceDays >= 0
+            ? Math.max(0, Math.min(5, nextGraceDays))
+            : current.grace_days_count;
+
+        if (resolvedStreak === current.current_streak && resolvedGraceDays === current.grace_days_count) {
+          return current;
+        }
+
+        return {
+          ...current,
+          current_streak: resolvedStreak,
+          grace_days_count: resolvedGraceDays,
+        };
+      });
+    }
+
+    window.addEventListener("bb:dashboard-stats-sync", handleDashboardStatsSync as EventListener);
+    return () => window.removeEventListener("bb:dashboard-stats-sync", handleDashboardStatsSync as EventListener);
+  }, []);
 
   // Load other dashboard data (separate, non-blocking)
   useEffect(() => {
@@ -2276,7 +2600,7 @@ export default function DashboardPage() {
 
         {/* MAIN CONTENT â€“ CENTERED COLUMN */}
         <div className="flex-1 max-w-2xl mx-auto">
-        {renderOwnerQuickStatsRow()}
+        {renderDashboardStatsRow()}
 
         <DashboardJourneyExperience
           userId={userId}
@@ -2320,7 +2644,7 @@ export default function DashboardPage() {
 
       {/* MOBILE LAYOUT: Content Only (Ads shown at bottom) */}
       <div className="lg:hidden max-w-2xl mx-auto px-4 mt-8">
-        {renderOwnerQuickStatsRow()}
+        {renderDashboardStatsRow()}
 
         <DashboardJourneyExperience
           userId={userId}
@@ -2563,6 +2887,99 @@ export default function DashboardPage() {
         onClose={() => setSelectedDashboardTask(null)}
         onProgressUpdated={handleDashboardTaskProgressUpdated}
       />
+
+      <ModalShell
+        isOpen={showBadgesModal}
+        onClose={() => setShowBadgesModal(false)}
+        backdropColor="bg-black/45"
+      >
+        <div className="mx-3 my-5 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
+          <div className="border-b border-[#dbe7f6] bg-gradient-to-br from-[#edf5ff] via-white to-[#f4fbff] px-5 py-5 sm:px-7">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="rounded-full bg-[#e8f4ff] p-1 shadow-sm">
+                  <LouisAvatar mood="stareyes" size={58} />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#5f86bd]">
+                    Bible Buddy Badges
+                  </p>
+                  <h2 className="mt-1 text-2xl font-bold text-[#1f2a44]">All achievements</h2>
+                  <p className="mt-1 text-sm leading-5 text-[#5b6f92]">
+                    {badgeProgress.filter((badge) => badge.current >= badge.target).length} of {badgeProgress.length} earned
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowBadgesModal(false)}
+                className="rounded-full px-2 py-1 text-2xl font-bold leading-none text-[#1f2a44] transition hover:bg-white"
+                aria-label="Close badges"
+              >
+                ×
+              </button>
+            </div>
+            <p className="mt-4 text-sm leading-6 text-[#4f678e]">
+              Badges celebrate the habits that help you keep coming back: streaks, Bible Study progress, group activity, and learning moments.
+            </p>
+          </div>
+
+          <div className="overflow-y-auto px-3 py-3 sm:px-5 sm:py-4">
+            <div className="overflow-hidden rounded-3xl border border-[#dbe7f6] bg-[#f8fbff]">
+              {badgeProgress.map((badge, index) => {
+                const isEarned = badge.current >= badge.target;
+                const progressPercent = Math.max(0, Math.min(100, Math.round((badge.current / badge.target) * 100)));
+                const tone = BADGE_TONE_CLASSES[badge.tone];
+
+                return (
+                  <div
+                    key={badge.id}
+                    className={`grid grid-cols-[76px_1fr] gap-3 border-[#dbe7f6] px-3 py-4 sm:grid-cols-[96px_1fr] sm:gap-4 sm:px-5 sm:py-5 ${index === badgeProgress.length - 1 ? "" : "border-b"}`}
+                  >
+                    <div
+                      className={`flex h-20 w-16 flex-col items-center justify-center rounded-2xl border text-center sm:h-24 sm:w-20 ${isEarned ? `${tone.tile} ${tone.glow}` : "border-slate-200 bg-slate-100 text-slate-400 grayscale"}`}
+                    >
+                      <span className="text-3xl sm:text-4xl" aria-hidden="true">{badge.emoji}</span>
+                      <span className="mt-2 text-[9px] font-black uppercase leading-none">{badge.levelLabel}</span>
+                    </div>
+
+                    <div className="min-w-0 py-1">
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <h3 className="text-lg font-bold leading-tight text-[#1f2a44] sm:text-xl">{badge.title}</h3>
+                          {isEarned ? (
+                            <span className="mt-1 inline-flex rounded-full bg-[#dff8e9] px-2.5 py-1 text-[11px] font-bold text-[#177a42]">
+                              Earned
+                            </span>
+                          ) : (
+                            <span className="mt-1 inline-flex rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[#71829f]">
+                              Locked
+                            </span>
+                          )}
+                        </div>
+                        <p className="shrink-0 text-sm font-bold text-[#5f789c]">
+                          {badge.current}/{badge.target}
+                        </p>
+                      </div>
+
+                      <div className="mt-3 h-3 overflow-hidden rounded-full bg-[#d6e0ea]">
+                        <div
+                          className={`h-full rounded-full transition-all duration-700 ${isEarned ? tone.progress : "bg-[#8ea0b2]"}`}
+                          style={{ width: `${progressPercent}%` }}
+                        />
+                      </div>
+
+                      <p className="mt-3 text-sm font-semibold leading-5 text-[#24324b]">
+                        {badge.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </ModalShell>
 
       <ModalShell
         isOpen={showDailyTaskCelebrationModal}

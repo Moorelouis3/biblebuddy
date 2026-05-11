@@ -491,9 +491,17 @@ export async function syncCurrentStreakToProfileStats(
         return payload.streakData as StreakData;
       }
 
-      console.error("[STREAK] Server sync failed, falling back to local calculation:", payload);
+      if (process.env.NODE_ENV !== "development") {
+        console.warn("[STREAK] Server sync failed, falling back to local calculation.");
+      } else if (payload?.error || payload?.message) {
+        console.warn("[STREAK] Server sync failed, falling back to local calculation:", payload);
+      }
     } catch (error) {
-      console.error("[STREAK] Server sync request failed, falling back to local calculation:", error);
+      if (process.env.NODE_ENV !== "development") {
+        console.warn("[STREAK] Server sync request failed, falling back to local calculation.");
+      } else {
+        console.warn("[STREAK] Server sync request failed, falling back to local calculation:", error);
+      }
     }
   }
 

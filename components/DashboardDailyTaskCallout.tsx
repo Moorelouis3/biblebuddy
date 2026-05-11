@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Component, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import BibleReadingModal from "./BibleReadingModal";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import { ModalShell } from "./ModalShell";
@@ -43,6 +43,49 @@ type DayProgressRow = {
   reading_completed: boolean;
   reflection_text: string | null;
 };
+
+class TaskPlayerErrorBoundary extends Component<
+  { taskKey: string; onClose: () => void; children: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: unknown) {
+    console.error("[DASHBOARD TASK] Embedded task crashed:", error);
+  }
+
+  componentDidUpdate(previousProps: { taskKey: string }) {
+    if (previousProps.taskKey !== this.props.taskKey && this.state.hasError) {
+      this.setState({ hasError: false });
+    }
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="bg-white px-5 py-8 text-center">
+          <h2 className="text-2xl font-black text-gray-900">This task needs a quick refresh</h2>
+          <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-gray-600">
+            Bible Buddy could not open this task cleanly. Close this and try again from the dashboard.
+          </p>
+          <button
+            type="button"
+            onClick={this.props.onClose}
+            className="mt-6 rounded-full bg-[#7BAFD4] px-6 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3ca]"
+          >
+            Close
+          </button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
 
 function parseDevotionalTask(task: TaskState) {
   if (task.devotionalId && task.devotionalDayNumber) {
@@ -463,13 +506,16 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
     return (
       <ModalShell isOpen={true} onClose={closeOnly} backdropColor="bg-black/55" scrollable closeOnBackdrop={false}>
         <div className="my-6 w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
-          <TriviaGamePlayer
-            bookName={triviaPack.book.name}
-            bookSlug={triviaPack.book.routeSlug}
-            chapter={triviaPack.chapter}
-            onClose={() => closeAndRefresh(interactiveTaskCompleted)}
-            onComplete={markInteractiveTaskComplete}
-          />
+          <TaskPlayerErrorBoundary taskKey={`${task.kind}:${task.href || task.chapterLabel || task.title}`} onClose={closeOnly}>
+            <TriviaGamePlayer
+              bookName={triviaPack.book.name}
+              bookSlug={triviaPack.book.routeSlug}
+              chapter={triviaPack.chapter}
+              onClose={() => closeAndRefresh(interactiveTaskCompleted)}
+              onComplete={markInteractiveTaskComplete}
+              skipUpgradeGate
+            />
+          </TaskPlayerErrorBoundary>
         </div>
       </ModalShell>
     );
