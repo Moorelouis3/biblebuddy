@@ -835,7 +835,7 @@ function buildDailyStudySummaryLine({
   nextTask: TaskState | null;
 }) {
   if (allDone) {
-    return `Click the button below to start the next Chapter study.`;
+    return `Chapter study complete.`;
   }
 
   if (remainingTasks <= 1) {
@@ -900,9 +900,6 @@ export default function DashboardJourneyExperience({
     if (!chapterTask?.book || !chapterTask.chapter || !checklistData?.nextJourneyTarget) return "the next chapter";
     return `${chapterTask.book} ${chapterTask.chapter + 1}`;
   })();
-  const completedStudyActionLabel = checklistData?.nextJourneyTarget
-    ? "Start next chapter"
-    : "Pick a new Bible Study";
   const dailyStudySummaryLine = buildDailyStudySummaryLine({
     allDone,
     completedTasks,
@@ -1365,7 +1362,7 @@ export default function DashboardJourneyExperience({
                   setShowDevotionalSettings(false);
                   setShowJourneyHelp(true);
                 }}
-                className={`w-full rounded-[26px] px-4 pt-4 text-left ${allDone ? "pb-16" : "pb-4"}`}
+                className="w-full rounded-[26px] px-4 py-4 text-left"
               >
               {isLoadingChecklist ? (
                 <div className="animate-pulse">
@@ -1422,19 +1419,6 @@ export default function DashboardJourneyExperience({
                 </div>
               )}
               </button>
-              {allDone && !isLoadingChecklist ? (
-                <button
-                  type="button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    handleCompletedStudyAction();
-                  }}
-                  className="absolute bottom-3 left-4 right-12 z-20 rounded-full bg-[#7BAFD4] px-4 py-2 text-center text-sm font-bold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc] focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]/35"
-                >
-                  {completedStudyActionLabel}
-                </button>
-              ) : null}
-
               {showDevotionalSettings ? (
                 <div
                   className="absolute right-3 top-14 z-30 w-[min(22rem,calc(100vw-3rem))] rounded-2xl border border-[#cfe4f3] bg-white p-4 text-left shadow-xl"

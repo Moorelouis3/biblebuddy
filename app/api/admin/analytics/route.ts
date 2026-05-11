@@ -23,7 +23,9 @@ export async function GET() {
 
   try {
 
-    // Active Users = distinct users who logged in within each time window
+    // Active Users = distinct users who did anything tracked in master_actions
+    // within each time window. Login-only undercounts users who still have an
+    // active session and return without seeing the login page.
     const now = new Date();
     const nowISO = now.toISOString();
 
@@ -31,7 +33,6 @@ export async function GET() {
       const { data, error } = await supabase
         .from("master_actions")
         .select("user_id")
-        .eq("action_type", "user_login")
         .gte("created_at", startISO)
         .lte("created_at", nowISO);
       if (error) throw error;
@@ -89,6 +90,5 @@ export async function GET() {
     );
   }
 }
-
 
 

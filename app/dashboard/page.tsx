@@ -427,6 +427,8 @@ export default function DashboardPage() {
   const [isSavingSwipeHint, setIsSavingSwipeHint] = useState(false);
   const swipeHintTouchStartXRef = useRef<number | null>(null);
   const [isOwnerDashboard, setIsOwnerDashboard] = useState(false);
+  const [dashboardStatsPane, setDashboardStatsPane] = useState<0 | 1>(0);
+  const dashboardStatsTouchStartXRef = useRef<number | null>(null);
   const [ownerQuickStats, setOwnerQuickStats] = useState({
     signups24h: 0,
     activeUsers24h: 0,
@@ -1087,15 +1089,12 @@ export default function DashboardPage() {
       try {
         const fromDate = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
 
-        const [signupsResult, actionsResult, upgradesResult, totalUsersResponse] = await Promise.all([
+        const [signupsResult, retentionResponse, upgradesResult, totalUsersResponse] = await Promise.all([
           supabase
             .from("user_signups")
             .select("id", { count: "exact", head: true })
             .gte("created_at", fromDate),
-          supabase
-            .from("master_actions")
-            .select("user_id")
-            .gte("created_at", fromDate),
+          fetch("/api/admin/retention"),
           supabase
             .from("master_actions")
             .select("id", { count: "exact", head: true })
@@ -1104,10 +1103,10 @@ export default function DashboardPage() {
           fetch("/api/admin/total-users"),
         ]);
 
-        if (signupsResult.error || actionsResult.error || upgradesResult.error || !totalUsersResponse.ok) {
+        if (signupsResult.error || !retentionResponse.ok || upgradesResult.error || !totalUsersResponse.ok) {
           console.error("[DASHBOARD_OWNER_STATS] Error loading quick stats:", {
             signupsError: signupsResult.error,
-            actionsError: actionsResult.error,
+            retentionError: retentionResponse.ok ? null : retentionResponse.statusText,
             upgradesError: upgradesResult.error,
             totalUsersError: totalUsersResponse.ok ? null : totalUsersResponse.statusText,
           });
@@ -1117,16 +1116,11 @@ export default function DashboardPage() {
         }
 
         const totalUsersPayload = await totalUsersResponse.json();
-
-        const activeUsers24h = new Set(
-          (actionsResult.data || [])
-            .map((row) => row.user_id)
-            .filter((value): value is string => typeof value === "string" && value.length > 0)
-        ).size;
+        const retentionPayload = await retentionResponse.json();
 
         setOwnerQuickStats({
           signups24h: signupsResult.count ?? 0,
-          activeUsers24h,
+          activeUsers24h: retentionPayload.active24h ?? 0,
           totalUsers: totalUsersPayload.totalUsers ?? 0,
           upgrades24h: upgradesResult.count ?? 0,
         });
@@ -1141,37 +1135,7 @@ export default function DashboardPage() {
   }, [isOwnerDashboard]);
 
   function renderDashboardStatsRow() {
-    if (isOwnerDashboard) {
-      return (
-        <div className="mb-4">
-          <Link href="/admin/analytics" className="block">
-            <div className="mx-auto grid max-w-xl grid-cols-4 gap-2 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm transition hover:shadow-md sm:gap-3 sm:p-3">
-              {[
-                { label: "Signups 24h", value: ownerQuickStats.signups24h, tones: "bg-gray-100 border-gray-200" },
-                { label: "Active 24h", value: ownerQuickStats.activeUsers24h, tones: "bg-blue-100 border-blue-200" },
-                { label: "Upgrades", value: ownerQuickStats.upgrades24h, tones: "bg-emerald-100 border-emerald-200" },
-                { label: "Total Users", value: ownerQuickStats.totalUsers, tones: "bg-red-100 border-red-200" },
-              ].map((card) => (
-                <div
-                  key={card.label}
-                  className={`rounded-xl border px-1.5 py-2 text-center sm:px-3 sm:py-4 ${card.tones}`}
-                >
-                  <p className="text-lg font-bold text-gray-900 sm:text-2xl">
-                    {loadingOwnerQuickStats ? "..." : card.value}
-                  </p>
-                  <p className="mt-1 text-[9px] font-medium leading-tight text-gray-700 sm:text-xs">
-                    {card.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </Link>
-        </div>
-      );
-    }
-
     const earnedBadgeCount = badgeProgress.filter((badge) => badge.current >= badge.target).length;
-
     const personalStats = [
       {
         key: "streak",
@@ -1205,29 +1169,102 @@ export default function DashboardPage() {
       },
     ];
 
+    const renderStatCards = (
+      cards: Array<{
+        key?: string;
+        label: string;
+        value: number | string;
+        tones: string;
+        onClick?: () => void;
+      }>
+    ) => (
+      <div className="mx-auto grid max-w-xl grid-cols-4 gap-2 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm sm:gap-3 sm:p-3">
+        {cards.map((card) => {
+          const CardTag = card.onClick ? "button" : "div";
+          return (
+            <CardTag
+              key={card.key ?? card.label}
+              type={card.onClick ? "button" : undefined}
+              onClick={card.onClick}
+              className={`rounded-xl border px-1.5 py-2 text-center transition sm:px-3 sm:py-4 ${card.onClick ? "hover:shadow-sm" : ""} ${card.tones}`}
+            >
+              <p className="text-lg font-bold text-gray-900 sm:text-2xl">
+                {card.value}
+              </p>
+              <p className="mt-1 text-[9px] font-medium leading-tight text-gray-700 sm:text-xs">
+                {card.label}
+              </p>
+            </CardTag>
+          );
+        })}
+      </div>
+    );
+
+    const ownerAnalyticsStats = [
+      { key: "signups", label: "Signups 24h", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.signups24h, tones: "bg-gray-100 border-gray-200" },
+      { key: "active", label: "Active 24h", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.activeUsers24h, tones: "bg-blue-100 border-blue-200" },
+      { key: "upgrades", label: "Upgrades", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.upgrades24h, tones: "bg-emerald-100 border-emerald-200" },
+      { key: "total", label: "Total Users", value: loadingOwnerQuickStats ? "..." : ownerQuickStats.totalUsers, tones: "bg-red-100 border-red-200" },
+    ];
+
+    if (!isOwnerDashboard) {
+      return (
+        <div className="mb-4">
+          {renderStatCards(personalStats)}
+        </div>
+      );
+    }
+
     return (
-      <div className="mb-4">
-        <div className="mx-auto grid max-w-xl grid-cols-4 gap-2 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm sm:gap-3 sm:p-3">
-          {personalStats.map((card) => {
-            const CardTag = card.onClick ? "button" : "div";
-            return (
-              <CardTag
-                key={card.key}
-                type={card.onClick ? "button" : undefined}
-                onClick={card.onClick}
-                className={`rounded-xl border px-1.5 py-2 text-center transition sm:px-3 sm:py-4 ${card.onClick ? "hover:shadow-sm" : ""} ${card.tones}`}
-              >
-                <p className="text-lg font-bold text-gray-900 sm:text-2xl">
-                  {card.value}
-                </p>
-                <p className="mt-1 text-[9px] font-medium leading-tight text-gray-700 sm:text-xs">
-                  {card.label}
-                </p>
-              </CardTag>
-            );
-          })}
+      <div
+        className="mb-4"
+        onTouchStart={(event) => {
+          dashboardStatsTouchStartXRef.current = event.touches[0]?.clientX ?? null;
+        }}
+        onTouchEnd={(event) => {
+          const startX = dashboardStatsTouchStartXRef.current;
+          dashboardStatsTouchStartXRef.current = null;
+          if (startX === null) return;
+          const endX = event.changedTouches[0]?.clientX ?? startX;
+          const deltaX = endX - startX;
+          if (Math.abs(deltaX) < 35) return;
+          setDashboardStatsPane(deltaX < 0 ? 1 : 0);
+        }}
+      >
+        <div className="mx-auto max-w-xl overflow-hidden">
+          <div
+            className="flex transition-transform duration-300 ease-out"
+            style={{ transform: `translateX(-${dashboardStatsPane * 100}%)` }}
+          >
+            <div className="w-full shrink-0 px-0.5">
+              {renderStatCards(personalStats)}
+            </div>
+            <div className="w-full shrink-0 px-0.5">
+              <Link href="/admin/analytics" className="block">
+                {renderStatCards(ownerAnalyticsStats)}
+              </Link>
+            </div>
           </div>
         </div>
+
+        <div className="mt-2 flex items-center justify-center gap-2" aria-label="Dashboard stats pages">
+          <button
+            type="button"
+            onClick={() => setDashboardStatsPane(0)}
+            className={`h-2 rounded-full transition-all ${dashboardStatsPane === 0 ? "w-8 bg-[#7BAFD4]" : "w-2 bg-[#c8ddf4]"}`}
+            aria-label="Show personal stats"
+          />
+          <button
+            type="button"
+            onClick={() => setDashboardStatsPane(1)}
+            className={`h-2 rounded-full transition-all ${dashboardStatsPane === 1 ? "w-8 bg-[#7BAFD4]" : "w-2 bg-[#c8ddf4]"}`}
+            aria-label="Show analytics stats"
+          />
+        </div>
+        <p className="mt-1 text-center text-[10px] font-semibold text-slate-400">
+          Swipe for {dashboardStatsPane === 0 ? "analytics" : "your stats"}
+        </p>
+      </div>
     );
   }
 
@@ -2501,7 +2538,9 @@ export default function DashboardPage() {
     }, 2600);
   }
 
-  function closeDailyTaskCelebrationModal() {
+  async function closeDailyTaskCelebrationModal(options?: { advanceToNextChapter?: boolean }) {
+    const nextJourneyTarget = dailyChecklistDataRef.current?.nextJourneyTarget || dailyChecklistData?.nextJourneyTarget || null;
+
     if (userId && dailyTaskCelebrationJourneyKey) {
       rememberLouisChapterJourneyCelebrationSeen(userId, dailyTaskCelebrationJourneyKey);
     }
@@ -2510,6 +2549,30 @@ export default function DashboardPage() {
     setShowDailyTaskCelebrationModal(false);
     setDailyTaskCelebrationJourneyKey(null);
     chapterCelebrationScheduledKeyRef.current = null;
+
+    if (!options?.advanceToNextChapter || !userId || !louisDailyTaskCycleStartedAt || !nextJourneyTarget) {
+      return;
+    }
+
+    const { error } = await supabase
+      .from("profile_stats")
+      .upsert(
+        {
+          user_id: userId,
+          free_devotional_id: nextJourneyTarget.devotionalId,
+          louis_primary_devotional_id: nextJourneyTarget.devotionalId,
+          louis_primary_devotional_day: nextJourneyTarget.dayNumber,
+        },
+        { onConflict: "user_id" },
+      );
+
+    if (error) {
+      console.error("[DASHBOARD] Could not load next chapter after chapter completion:", error);
+      return;
+    }
+
+    rememberLouisDailyTaskTarget(userId, louisDailyTaskCycleStartedAt, nextJourneyTarget);
+    void loadDailyTaskSummary({ force: true, silent: true });
   }
 
   function handleDashboardTaskProgressUpdated(completedTask?: TaskState) {
@@ -2983,7 +3046,7 @@ export default function DashboardPage() {
 
       <ModalShell
         isOpen={showDailyTaskCelebrationModal}
-        onClose={closeDailyTaskCelebrationModal}
+        onClose={() => void closeDailyTaskCelebrationModal()}
         backdropColor="bg-black/45"
       >
         <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
@@ -3000,7 +3063,7 @@ export default function DashboardPage() {
               </p>
             <button
               type="button"
-              onClick={closeDailyTaskCelebrationModal}
+              onClick={() => void closeDailyTaskCelebrationModal({ advanceToNextChapter: true })}
               className="mt-5 inline-flex rounded-full bg-[#7aa7df] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5f93d3]"
             >
               OK

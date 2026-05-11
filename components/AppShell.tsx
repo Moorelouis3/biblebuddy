@@ -21,6 +21,8 @@ import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavi
 import type { BuddyCelebrationUser } from "./BuddyCelebrationModal";
 import UserBadge from "./UserBadge";
 import StreakFlameBadge from "./StreakFlameBadge";
+import { ACTION_TYPE } from "../lib/actionTypes";
+import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
 const ConversationPage = dynamic(() => import("../app/messages/[conversationId]/page"), { ssr: false });
 
 const ChatLouis = dynamic(() => import("./ChatLouis").then((mod) => mod.ChatLouis), {
@@ -580,6 +582,20 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (userId) void fetchNotifications(userId);
   }, [pathname, userId]);
+
+  useEffect(() => {
+    if (!userId || !isLoggedIn || !pathname || HIDDEN_ROUTES.includes(pathname)) return;
+
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.dashboard_viewed,
+      actionLabel: `page_view:${pathname}`,
+      dedupeKey: `page_view:${pathname}`,
+    }).catch((error) => {
+      console.warn("[ACTIVITY] Page view tracking skipped:", error);
+    });
+  }, [isLoggedIn, pathname, userId, username]);
 
   useEffect(() => {
     if (!userId) return;
