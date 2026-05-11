@@ -841,7 +841,7 @@ export function OnboardingModal({
         </Subtitle>
 
         <div
-          className="relative mx-[-22px] mt-8 h-60 cursor-grab touch-pan-y overflow-hidden active:cursor-grabbing"
+          className="relative mx-[-28px] mt-8 h-[292px] cursor-grab touch-pan-y overflow-hidden active:cursor-grabbing"
           onPointerDown={(event) => {
             beginStudyDrag(event.clientX);
             event.currentTarget.setPointerCapture(event.pointerId);
@@ -850,7 +850,7 @@ export function OnboardingModal({
           onPointerUp={finishStudyDrag}
           onPointerCancel={finishStudyDrag}
         >
-          <div className="absolute left-1/2 top-3 flex -translate-x-1/2 items-end justify-center gap-0">
+          <div className="absolute left-1/2 top-2 flex -translate-x-1/2 items-end justify-center gap-0">
             {studies.map((study, index) => {
               const offset = index - selectedStudyIndex;
               const isSelected = index === selectedStudyIndex;
@@ -863,21 +863,27 @@ export function OnboardingModal({
                     if (studyDraggedRef.current) return;
                     setSelectedStudyIndex(index);
                   }}
-                  className="relative -mx-2 select-none transition-all duration-300"
+                  className="relative -mx-1 select-none transition-all duration-300"
                   style={{
-                    transform: `translateX(${offset * 28 + (isSelected ? studyDragX : studyDragX * 0.25)}px) rotate(${offset * 6}deg) scale(${isSelected ? 1 : 0.78})`,
+                    transform: `translateX(${offset * 42 + (isSelected ? studyDragX : studyDragX * 0.25)}px) rotate(${offset * 5}deg) scale(${isSelected ? 1.02 : 0.8})`,
                     zIndex: isSelected ? 20 : 10 - Math.abs(offset),
                     opacity: Math.abs(offset) === 2 ? 0.86 : 1,
                   }}
                 >
-                  <Image
-                    src={study.cover}
-                    alt={`${study.title} cover`}
-                    width={148}
-                    height={218}
-                    draggable={false}
-                    className={`h-[218px] w-[148px] rounded-md object-contain shadow-xl ${isSelected ? "ring-2 ring-white" : ""}`}
-                  />
+                  <span
+                    className={`relative block h-[260px] w-[174px] overflow-hidden rounded-md bg-[#172033] shadow-xl ${
+                      isSelected ? "ring-2 ring-white" : ""
+                    }`}
+                  >
+                    <Image
+                      src={study.cover}
+                      alt={`${study.title} cover`}
+                      fill
+                      sizes="174px"
+                      draggable={false}
+                      className="select-none object-cover scale-[2.35]"
+                    />
+                  </span>
                 </button>
               );
             })}
