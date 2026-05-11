@@ -163,6 +163,7 @@ export default function DashboardPage() {
   const [louisDailyTaskCycleStartedAt, setLouisDailyTaskCycleStartedAt] = useState<string | null>(null);
   const [showDailyTaskCelebrationModal, setShowDailyTaskCelebrationModal] = useState(false);
   const [pendingDailyTaskCelebrationModal, setPendingDailyTaskCelebrationModal] = useState(false);
+  const [dailyTaskCelebrationJourneyKey, setDailyTaskCelebrationJourneyKey] = useState<string | null>(null);
   const [showJessicaBonusModal, setShowJessicaBonusModal] = useState(false);
   const [hasJessicaBonusAward, setHasJessicaBonusAward] = useState(false);
   const [isLoadingDailyTaskSummary, setIsLoadingDailyTaskSummary] = useState(true);
@@ -177,6 +178,8 @@ export default function DashboardPage() {
   const dailyTaskSummaryLoadedKeyRef = useRef<string | null>(null);
   const dailyTaskSummaryInFlightRef = useRef<{ key: string; promise: Promise<void> } | null>(null);
   const chapterCelebrationTimerRef = useRef<number | null>(null);
+  const chapterCelebrationScheduledKeyRef = useRef<string | null>(null);
+  const pendingChapterCelebrationForceRef = useRef(false);
   const dailyStreakSequenceCheckRef = useRef<string | null>(null);
   const [dailyTaskTimeLeftLabel, setDailyTaskTimeLeftLabel] = useState<string | null>(null);
   const [motivationalMessage, setMotivationalMessage] = useState<string>("");
@@ -1756,13 +1759,15 @@ export default function DashboardPage() {
       showVerseOfTheDayModal ||
       !userId ||
       !dailyChecklistData?.journeyKey ||
-      hasSeenLouisChapterJourneyCelebration(userId, dailyChecklistData.journeyKey)
+      (!pendingChapterCelebrationForceRef.current &&
+        hasSeenLouisChapterJourneyCelebration(userId, dailyChecklistData.journeyKey))
     ) {
       return;
     }
 
-    rememberLouisChapterJourneyCelebrationSeen(userId, dailyChecklistData.journeyKey);
     setPendingDailyTaskCelebrationModal(false);
+    pendingChapterCelebrationForceRef.current = false;
+    setDailyTaskCelebrationJourneyKey(dailyChecklistData.journeyKey);
     setShowDailyTaskCelebrationModal(true);
   }, [
     pendingDailyTaskCelebrationModal,
@@ -1772,6 +1777,29 @@ export default function DashboardPage() {
     showVerseOfTheDayModal,
     userId,
     dailyChecklistData?.journeyKey,
+  ]);
+
+  useEffect(() => {
+    const journeyKey = dailyChecklistData?.journeyKey;
+    if (
+      !userId ||
+      !journeyKey ||
+      !dailyChecklistData?.allDone ||
+      showDailyTaskCelebrationModal ||
+      pendingDailyTaskCelebrationModal ||
+      hasSeenLouisChapterJourneyCelebration(userId, journeyKey) ||
+      chapterCelebrationScheduledKeyRef.current === journeyKey
+    ) {
+      return;
+    }
+
+    scheduleChapterCompleteCelebration(journeyKey);
+  }, [
+    userId,
+    dailyChecklistData?.allDone,
+    dailyChecklistData?.journeyKey,
+    showDailyTaskCelebrationModal,
+    pendingDailyTaskCelebrationModal,
   ]);
 
   const currentStreak = profile?.current_streak ?? 0;
@@ -1849,7 +1877,7 @@ export default function DashboardPage() {
         !previousChecklistData.allDone &&
         checklistData.allDone
       ) {
-        scheduleChapterCompleteCelebration(checklistData.journeyKey);
+        scheduleChapterCompleteCelebration(checklistData.journeyKey, { force: true });
       }
     })();
 
@@ -2112,8 +2140,11 @@ export default function DashboardPage() {
   const streakMotivation = getStreakMotivation(profile?.current_streak ?? 0);
   const dailyStreakTaskIntro = buildDailyStreakTaskIntro(dailyChecklistData);
 
-  function scheduleChapterCompleteCelebration(journeyKey: string | null | undefined) {
-    if (!userId || !journeyKey || hasSeenLouisChapterJourneyCelebration(userId, journeyKey)) return;
+  function scheduleChapterCompleteCelebration(journeyKey: string | null | undefined, options?: { force?: boolean }) {
+    if (!userId || !journeyKey) return;
+    if (!options?.force && hasSeenLouisChapterJourneyCelebration(userId, journeyKey)) return;
+    if (chapterCelebrationScheduledKeyRef.current === journeyKey) return;
+    chapterCelebrationScheduledKeyRef.current = journeyKey;
 
     if (!hasLouisChapterJourneyBonusAwarded(userId, journeyKey)) {
       rememberLouisChapterJourneyBonusAwarded(userId, journeyKey);
@@ -2132,15 +2163,29 @@ export default function DashboardPage() {
         showStreakMotivationModal ||
         showVerseOfTheDayModal
       ) {
+        pendingChapterCelebrationForceRef.current = Boolean(options?.force);
         setPendingDailyTaskCelebrationModal(true);
+        chapterCelebrationScheduledKeyRef.current = null;
         return;
       }
 
-      if (!hasSeenLouisChapterJourneyCelebration(userId, journeyKey)) {
-        rememberLouisChapterJourneyCelebrationSeen(userId, journeyKey);
+      if (options?.force || !hasSeenLouisChapterJourneyCelebration(userId, journeyKey)) {
+        setDailyTaskCelebrationJourneyKey(journeyKey);
         setShowDailyTaskCelebrationModal(true);
       }
+      chapterCelebrationScheduledKeyRef.current = null;
     }, 2600);
+  }
+
+  function closeDailyTaskCelebrationModal() {
+    if (userId && dailyTaskCelebrationJourneyKey) {
+      rememberLouisChapterJourneyCelebrationSeen(userId, dailyTaskCelebrationJourneyKey);
+    }
+    pendingChapterCelebrationForceRef.current = false;
+    setPendingDailyTaskCelebrationModal(false);
+    setShowDailyTaskCelebrationModal(false);
+    setDailyTaskCelebrationJourneyKey(null);
+    chapterCelebrationScheduledKeyRef.current = null;
   }
 
   function handleDashboardTaskProgressUpdated(completedTask?: TaskState) {
@@ -2190,7 +2235,7 @@ export default function DashboardPage() {
       });
 
       if (completedJourneyKey) {
-        scheduleChapterCompleteCelebration(completedJourneyKey);
+        scheduleChapterCompleteCelebration(completedJourneyKey, { force: true });
       }
     }
 
@@ -2521,7 +2566,7 @@ export default function DashboardPage() {
 
       <ModalShell
         isOpen={showDailyTaskCelebrationModal}
-        onClose={() => setShowDailyTaskCelebrationModal(false)}
+        onClose={closeDailyTaskCelebrationModal}
         backdropColor="bg-black/45"
       >
         <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
@@ -2538,7 +2583,7 @@ export default function DashboardPage() {
               </p>
             <button
               type="button"
-              onClick={() => setShowDailyTaskCelebrationModal(false)}
+              onClick={closeDailyTaskCelebrationModal}
               className="mt-5 inline-flex rounded-full bg-[#7aa7df] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5f93d3]"
             >
               OK
