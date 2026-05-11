@@ -211,11 +211,11 @@ function wait(ms: number) {
 
 function ProgressPills({
   activeIndex,
-  maxVisitedIndex,
+  visitedSlides,
   onGoToSlide,
 }: {
   activeIndex: number;
-  maxVisitedIndex: number;
+  visitedSlides: Set<number>;
   onGoToSlide: (index: number) => void;
 }) {
   return (
@@ -225,11 +225,11 @@ function ProgressPills({
           key={index}
           type="button"
           aria-label={`Go to onboarding step ${index + 1}`}
-          disabled={index > maxVisitedIndex}
+          disabled={!visitedSlides.has(index)}
           onClick={() => onGoToSlide(index)}
           className={`h-1.5 rounded-full transition-all ${
             index === activeIndex ? "w-8 bg-[#2f80ed]" : "w-5 bg-[#e3e6ee]"
-          } ${index <= maxVisitedIndex ? "cursor-pointer hover:bg-[#9fc8ff]" : "cursor-not-allowed opacity-60"}`}
+          } ${visitedSlides.has(index) ? "cursor-pointer hover:bg-[#9fc8ff]" : "cursor-not-allowed opacity-60"}`}
         />
       ))}
     </div>
@@ -276,12 +276,12 @@ function PrimaryButton({
 function OnboardingShell({
   children,
   activeIndex,
-  maxVisitedIndex,
+  visitedSlides,
   onGoToSlide,
 }: {
   children: ReactNode;
   activeIndex: number;
-  maxVisitedIndex: number;
+  visitedSlides: Set<number>;
   onGoToSlide: (index: number) => void;
 }) {
   return (
@@ -289,7 +289,7 @@ function OnboardingShell({
       <div className="flex min-h-screen items-center justify-center px-4 py-6 md:bg-[#f7f9ff]">
         <div className="flex min-h-[calc(100vh-48px)] w-full max-w-[390px] flex-col justify-center rounded-none bg-white px-2 py-4 md:min-h-[760px] md:rounded-[34px] md:border md:border-[#e6ebf4] md:px-8 md:shadow-2xl">
           {children}
-          <ProgressPills activeIndex={activeIndex} maxVisitedIndex={maxVisitedIndex} onGoToSlide={onGoToSlide} />
+          <ProgressPills activeIndex={activeIndex} visitedSlides={visitedSlides} onGoToSlide={onGoToSlide} />
         </div>
       </div>
     </div>
@@ -378,7 +378,7 @@ export function OnboardingModal({
   onFinished,
 }: OnboardingModalProps) {
   const [slide, setSlide] = useState(0);
-  const [maxVisitedSlide, setMaxVisitedSlide] = useState(0);
+  const [visitedSlides, setVisitedSlides] = useState<Set<number>>(() => new Set([0]));
   const [isSaving, setIsSaving] = useState(false);
   const [isCheckingUpgrade, setIsCheckingUpgrade] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -394,13 +394,30 @@ export function OnboardingModal({
   const avatarInputRef = useRef<HTMLInputElement>(null);
   const onboardingSwipeStartX = useRef<number | null>(null);
   const onboardingSwipeStartY = useRef<number | null>(null);
+  const isPaidRef = useRef(false);
+  const checkoutInProgressRef = useRef(false);
+  const checkoutStartedPaidRef = useRef(false);
 
   const selectedStudy = studies[selectedStudyIndex] ?? studies[0];
 
   function goToSlide(nextSlide: number) {
     setError(null);
     setSlide(nextSlide);
-    setMaxVisitedSlide((current) => Math.max(current, nextSlide));
+    setVisitedSlides((current) => {
+      const next = new Set(current);
+      next.add(nextSlide);
+      return next;
+    });
+  }
+
+  function goToPreviousVisitedSlide() {
+    setError(null);
+    setSlide((currentSlide) => {
+      const previous = Array.from(visitedSlides)
+        .filter((index) => index < currentSlide)
+        .sort((a, b) => b - a)[0];
+      return previous ?? Math.max(0, currentSlide - 1);
+    });
   }
 
   async function loadStudyOptions(isPaid: boolean, currentStudyId?: string | null) {
@@ -462,6 +479,7 @@ export function OnboardingModal({
       setFullName(data?.display_name?.trim() ?? "");
       setAvatarPreview(data?.profile_image_url?.trim() || null);
       setAvatarFile(null);
+      isPaidRef.current = data?.is_paid === true;
 
       if (!cancelled) {
         await loadStudyOptions(data?.is_paid === true, data?.free_devotional_id);
@@ -560,7 +578,10 @@ export function OnboardingModal({
     for (let attempt = 0; attempt < 48; attempt += 1) {
       await wait(2500);
       const { data } = await supabase.from("profile_stats").select("is_paid, free_devotional_id").eq("user_id", userId).maybeSingle();
-      if (data?.is_paid === true) {
+      const becamePaidFromCheckout = data?.is_paid === true && checkoutInProgressRef.current && checkoutStartedPaidRef.current === false;
+      if (becamePaidFromCheckout) {
+        isPaidRef.current = true;
+        checkoutInProgressRef.current = false;
         await loadStudyOptions(true, data.free_devotional_id);
         goToSlide(9);
         setIsCheckingUpgrade(false);
@@ -568,16 +589,20 @@ export function OnboardingModal({
       }
       if (checkoutWindow?.closed && attempt >= 2) break;
     }
+    checkoutInProgressRef.current = false;
     setIsCheckingUpgrade(false);
-    setError("Checkout closed before the upgrade was confirmed. You can try again or continue for free.");
+    goToSlide(10);
   }
 
   async function checkUpgradeOnReturn() {
-    if (!isOpen || slide !== 8) return;
+    if (!isOpen || slide !== 8 || !checkoutInProgressRef.current) return;
     setIsCheckingUpgrade(true);
     try {
       const { data } = await supabase.from("profile_stats").select("is_paid, free_devotional_id").eq("user_id", userId).maybeSingle();
-      if (data?.is_paid === true) {
+      const becamePaidFromCheckout = data?.is_paid === true && checkoutStartedPaidRef.current === false;
+      if (becamePaidFromCheckout) {
+        isPaidRef.current = true;
+        checkoutInProgressRef.current = false;
         await loadStudyOptions(true, data.free_devotional_id);
         goToSlide(9);
       }
@@ -616,6 +641,8 @@ export function OnboardingModal({
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Could not start checkout.");
       if (data.url) {
+        checkoutInProgressRef.current = true;
+        checkoutStartedPaidRef.current = isPaidRef.current;
         const checkoutWindow = window.open(data.url, "bible-buddy-upgrade", "width=520,height=760");
         if (!checkoutWindow) {
           window.location.href = data.url;
@@ -697,14 +724,13 @@ export function OnboardingModal({
     onboardingSwipeStartY.current = null;
 
     if (deltaX > 70 && Math.abs(deltaY) < 70) {
-      setError(null);
-      setSlide((current) => Math.max(0, current - 1));
+      goToPreviousVisitedSlide();
     }
   }
 
   const slides = useMemo(
     () => [
-      <OnboardingShell key="welcome" activeIndex={0} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
+      <OnboardingShell key="welcome" activeIndex={0} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <LouisHero mood="wave" />
         <Headline>
           Welcome to
@@ -719,7 +745,7 @@ export function OnboardingModal({
         <PrimaryButton onClick={() => goToSlide(1)}>Next&nbsp;›</PrimaryButton>
       </OnboardingShell>,
 
-      <OnboardingShell key="problem" activeIndex={1} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
+      <OnboardingShell key="problem" activeIndex={1} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <LouisHero mood="think" />
         <Headline>The real problem.</Headline>
         <Subtitle>The real problem with starting to read the Bible is:</Subtitle>
@@ -750,7 +776,7 @@ export function OnboardingModal({
         <PrimaryButton onClick={() => goToSlide(2)}>Next&nbsp;›</PrimaryButton>
       </OnboardingShell>,
 
-      <OnboardingShell key="solution" activeIndex={2} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
+      <OnboardingShell key="solution" activeIndex={2} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <LouisHero mood="bible" />
         <Headline>
           Bible Buddy
@@ -790,7 +816,7 @@ export function OnboardingModal({
         <PrimaryButton onClick={() => goToSlide(3)}>Next&nbsp;›</PrimaryButton>
       </OnboardingShell>,
 
-      <OnboardingShell key="transition" activeIndex={3} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
+      <OnboardingShell key="transition" activeIndex={3} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <LouisHero mood="smile" />
         <Headline>
           But before we can
@@ -806,7 +832,7 @@ export function OnboardingModal({
         <PrimaryButton onClick={() => goToSlide(4)}>Next&nbsp;›</PrimaryButton>
       </OnboardingShell>,
 
-      <OnboardingShell key="source" activeIndex={4} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
+      <OnboardingShell key="source" activeIndex={4} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <LouisHero mood="think" />
         <Headline>
           How did you learn
@@ -826,7 +852,7 @@ export function OnboardingModal({
         />
       </OnboardingShell>,
 
-      <OnboardingShell key="experience" activeIndex={5} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
+      <OnboardingShell key="experience" activeIndex={5} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <LouisHero mood="bible" />
         <Headline>
           How long have you
@@ -846,7 +872,7 @@ export function OnboardingModal({
         />
       </OnboardingShell>,
 
-      <OnboardingShell key="goal" activeIndex={6} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
+      <OnboardingShell key="goal" activeIndex={6} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <LouisHero mood="bible" />
         <Headline>
           What would you say is
@@ -862,7 +888,7 @@ export function OnboardingModal({
         />
       </OnboardingShell>,
 
-      <OnboardingShell key="profile" activeIndex={7} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
+      <OnboardingShell key="profile" activeIndex={7} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <LouisHero mood="smile" />
         <Headline>
           Let’s set up
@@ -908,7 +934,7 @@ export function OnboardingModal({
         </PrimaryButton>
       </OnboardingShell>,
 
-      <OnboardingShell key="upgrade" activeIndex={8} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
+      <OnboardingShell key="upgrade" activeIndex={8} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <LouisHero mood="smile" />
         <Headline>
           Upgrade to Bible Buddy
@@ -957,16 +983,11 @@ export function OnboardingModal({
             </button>
           ))}
         </div>
-        <div className="mt-4 rounded-2xl bg-[#eef6ff] px-4 py-3 text-center text-xs font-semibold leading-5 text-[#60708f]">
-          🔐 All purchases are secure and cancel anytime.
-          <br />
-          Your support helps us keep improving Bible Buddy!
-        </div>
         <button
           type="button"
           disabled={isSaving || isCheckingUpgrade}
           onClick={() => void startCheckout(selectedPlan)}
-          className="mt-4 w-full rounded-2xl border border-[#d4e4fb] bg-white px-5 py-3 text-sm font-extrabold text-[#2f80ed] transition hover:bg-[#f4f9ff] disabled:opacity-60"
+          className="mt-5 w-full rounded-2xl border border-[#d4e4fb] bg-white px-5 py-3 text-sm font-extrabold text-[#2f80ed] transition hover:bg-[#f4f9ff] disabled:opacity-60"
         >
           {isCheckingUpgrade ? "Checking upgrade..." : `Upgrade with ${selectedPlan === "yearly" ? "$50 / year" : "$4.99 / month"}`}
         </button>
@@ -976,7 +997,7 @@ export function OnboardingModal({
         <p className="mt-3 text-center text-xs font-semibold text-[#8b94a8]">You can upgrade anytime in settings.</p>
       </OnboardingShell>,
 
-      <OnboardingShell key="upgrade-success" activeIndex={9} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
+      <OnboardingShell key="upgrade-success" activeIndex={9} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <LouisHero mood="stareyes" />
         <Headline>
           You’re upgraded
@@ -1000,7 +1021,7 @@ export function OnboardingModal({
         </PrimaryButton>
       </OnboardingShell>,
 
-      <OnboardingShell key="study" activeIndex={10} maxVisitedIndex={maxVisitedSlide} onGoToSlide={goToSlide}>
+      <OnboardingShell key="study" activeIndex={10} visitedSlides={visitedSlides} onGoToSlide={goToSlide}>
         <LouisHero mood="smile" />
         <Headline>
           Pick your first
@@ -1057,7 +1078,7 @@ export function OnboardingModal({
       goal,
       isCheckingUpgrade,
       isSaving,
-      maxVisitedSlide,
+      visitedSlides,
       selectedPlan,
       selectedStudy,
       selectedStudyIndex,
@@ -1088,4 +1109,6 @@ export function OnboardingModal({
 }
 
 export default OnboardingModal;
+
+
 

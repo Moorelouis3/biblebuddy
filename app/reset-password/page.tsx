@@ -48,6 +48,8 @@ function ResetPasswordForm() {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [isValidToken, setIsValidToken] = useState<boolean | null>(null);
+  const [resetEmail, setResetEmail] = useState("");
+  const [resetRequestSent, setResetRequestSent] = useState(false);
 
   useEffect(() => {
     // Check if we have a valid password reset token in the URL
@@ -74,6 +76,31 @@ function ResetPasswordForm() {
 
     checkToken();
   }, [searchParams]);
+
+  async function handleRequestReset(e: FormEvent) {
+    e.preventDefault();
+    setError(null);
+    setResetRequestSent(false);
+
+    const email = resetEmail.trim();
+    if (!email) {
+      setError("Please enter your email address.");
+      return;
+    }
+
+    setLoading(true);
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    setLoading(false);
+
+    if (resetError) {
+      setError(resetError.message);
+      return;
+    }
+
+    setResetRequestSent(true);
+  }
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -141,21 +168,58 @@ function ResetPasswordForm() {
   }
 
   if (isValidToken === false) {
-    // Invalid or missing token
+    // No token yet: let the user request a reset link.
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col">
         <LogoHeader />
         <div className="flex-1 flex items-center justify-center px-4">
           <div className="w-full max-w-md bg-white rounded-3xl shadow-md border border-gray-200 px-6 py-8">
-            <h1 className="text-2xl font-bold mb-2 text-center">Invalid Reset Link</h1>
+            <h1 className="text-2xl font-bold mb-2 text-center">Reset Your Password</h1>
             <p className="text-sm text-gray-600 mb-6 text-center">
-              This password reset link is invalid or has expired.
+              Enter your email and we’ll send you a link to create a new password.
             </p>
+
+            <form onSubmit={handleRequestReset} className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={resetEmail}
+                  onChange={(e) => setResetEmail(e.target.value)}
+                  className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="you@example.com"
+                />
+              </div>
+
+              {error && (
+                <p className="text-xs text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
+                  {error}
+                </p>
+              )}
+
+              {resetRequestSent && (
+                <p className="text-xs text-green-700 bg-green-50 border border-green-100 rounded-lg px-3 py-2">
+                  Check your email for a password reset link.
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full rounded-full bg-blue-600 text-white text-sm font-semibold py-2.5 shadow-sm hover:bg-blue-700 disabled:opacity-60"
+              >
+                {loading ? "Sending..." : "Send reset link"}
+              </button>
+            </form>
+
             <Link
               href="/login"
-              className="block w-full text-center rounded-full bg-blue-600 text-white text-sm font-semibold py-2.5 shadow-sm hover:bg-blue-700"
+              className="mt-4 block text-center text-xs font-semibold text-blue-600 hover:underline"
             >
-              Back to Login
+              Back to login
             </Link>
           </div>
         </div>
