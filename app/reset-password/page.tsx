@@ -39,6 +39,15 @@ const LogoHeader = () => (
   </header>
 );
 
+function getPasswordResetRedirectUrl() {
+  if (typeof window === "undefined") return "https://www.mybiblebuddy.net/reset-password";
+  const origin = window.location.origin;
+  if (origin.includes("localhost") || origin.includes("127.0.0.1")) {
+    return `${origin}/reset-password`;
+  }
+  return "https://www.mybiblebuddy.net/reset-password";
+}
+
 function ResetPasswordForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -48,33 +57,100 @@ function ResetPasswordForm() {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [isValidToken, setIsValidToken] = useState<boolean | null>(null);
-  const [resetEmail, setResetEmail] = useState("");
+  const [resetEmail, setResetEmail] = useState(() => searchParams.get("email") || "");
   const [resetRequestSent, setResetRequestSent] = useState(false);
+  const [hasRecoverySession, setHasRecoverySession] = useState(false);
 
   useEffect(() => {
-    // Check if we have a valid password reset token in the URL
+    // Supabase recovery links can arrive as:
+    // 1. PKCE query code: /reset-password?code=...
+    // 2. Implicit hash tokens: /reset-password#access_token=...&refresh_token=...&type=recovery
+    // 3. Email template token_hash: /reset-password?token_hash=...&type=recovery
     const checkToken = async () => {
-      // Supabase password reset tokens come in the URL hash
+      setError(null);
       const hashParams = new URLSearchParams(window.location.hash.substring(1));
       const accessToken = hashParams.get("access_token");
+      const refreshToken = hashParams.get("refresh_token");
       const type = hashParams.get("type");
+      const code = searchParams.get("code");
+      const tokenHash = searchParams.get("token_hash");
+      const typeQuery = searchParams.get("type");
 
-      if (accessToken && type === "recovery") {
-        setIsValidToken(true);
-      } else {
-        // Also check query params (some email clients strip hash)
-        const accessTokenQuery = searchParams.get("access_token");
-        const typeQuery = searchParams.get("type");
-        
-        if (accessTokenQuery && typeQuery === "recovery") {
-          setIsValidToken(true);
-        } else {
+      if (code) {
+        const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
+        if (exchangeError) {
+          setError("This reset link is invalid or expired. Please request a new one.");
           setIsValidToken(false);
+          return;
         }
+        setHasRecoverySession(true);
+        setIsValidToken(true);
+        window.history.replaceState({}, document.title, window.location.pathname);
+        return;
       }
+
+      if (accessToken && refreshToken && type === "recovery") {
+        const { error: sessionError } = await supabase.auth.setSession({
+          access_token: accessToken,
+          refresh_token: refreshToken,
+        });
+        if (sessionError) {
+          setError("This reset link is invalid or expired. Please request a new one.");
+          setIsValidToken(false);
+          return;
+        }
+        setHasRecoverySession(true);
+        setIsValidToken(true);
+        window.history.replaceState({}, document.title, window.location.pathname);
+        return;
+      }
+
+      if (tokenHash && typeQuery === "recovery") {
+        const { error: verifyError } = await supabase.auth.verifyOtp({
+          token_hash: tokenHash,
+          type: "recovery",
+        });
+        if (verifyError) {
+          setError("This reset link is invalid or expired. Please request a new one.");
+          setIsValidToken(false);
+          return;
+        }
+        setHasRecoverySession(true);
+        setIsValidToken(true);
+        window.history.replaceState({}, document.title, window.location.pathname);
+        return;
+      }
+
+      // Some email clients can rewrite hash params into query params.
+      const accessTokenQuery = searchParams.get("access_token");
+      const refreshTokenQuery = searchParams.get("refresh_token");
+      if (accessTokenQuery && refreshTokenQuery && typeQuery === "recovery") {
+        const { error: sessionError } = await supabase.auth.setSession({
+          access_token: accessTokenQuery,
+          refresh_token: refreshTokenQuery,
+        });
+        if (sessionError) {
+          setError("This reset link is invalid or expired. Please request a new one.");
+          setIsValidToken(false);
+          return;
+        }
+        setHasRecoverySession(true);
+        setIsValidToken(true);
+        window.history.replaceState({}, document.title, window.location.pathname);
+        return;
+      }
+
+      const { data } = await supabase.auth.getSession();
+      if (data.session) {
+          setIsValidToken(true);
+          setHasRecoverySession(true);
+          return;
+      }
+
+      setIsValidToken(false);
     };
 
-    checkToken();
+    void checkToken();
   }, [searchParams]);
 
   async function handleRequestReset(e: FormEvent) {
@@ -90,7 +166,7 @@ function ResetPasswordForm() {
 
     setLoading(true);
     const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/reset-password`,
+      redirectTo: getPasswordResetRedirectUrl(),
     });
     setLoading(false);
 
@@ -124,12 +200,7 @@ function ResetPasswordForm() {
 
     setLoading(true);
 
-    // Get the access token from URL hash or query params
-    const hashParams = new URLSearchParams(window.location.hash.substring(1));
-    const accessToken = hashParams.get("access_token") || searchParams.get("access_token");
-    const type = hashParams.get("type") || searchParams.get("type");
-
-    if (!accessToken || type !== "recovery") {
+    if (!hasRecoverySession) {
       setError("Invalid or expired reset link. Please request a new one.");
       setLoading(false);
       return;

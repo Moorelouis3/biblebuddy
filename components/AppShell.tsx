@@ -108,6 +108,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   
   // Onboarding state
   const [showOnboardingModal, setShowOnboardingModal] = useState(false);
+  const [onboardingStudySelectionOnly, setOnboardingStudySelectionOnly] = useState(false);
   const [initialTrafficSource, setInitialTrafficSource] = useState<string | null>(null);
   const [initialBibleExperienceLevel, setInitialBibleExperienceLevel] = useState<string | null>(null);
   const [featureToursEnabled, setFeatureToursEnabled] = useState(false);
@@ -374,13 +375,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     try {
       const { data: profileStats, error: profileStatsError } = await supabase
         .from("profile_stats")
-        .select("onboarding_completed, traffic_source, bible_experience_level")
+        .select("onboarding_completed, traffic_source, bible_experience_level, free_devotional_id, louis_primary_devotional_id")
         .eq("user_id", currentUserId)
         .maybeSingle();
 
       if (profileStatsError) {
         console.error("[ONBOARDING] Error loading onboarding status:", profileStatsError);
         setShowOnboardingModal(true);
+        setOnboardingStudySelectionOnly(false);
         setFeatureToursEnabled(false);
         setInitialTrafficSource(null);
         setInitialBibleExperienceLevel(null);
@@ -403,6 +405,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         }
 
         setShowOnboardingModal(true);
+        setOnboardingStudySelectionOnly(false);
         setFeatureToursEnabled(false);
         setInitialTrafficSource(null);
         setInitialBibleExperienceLevel(null);
@@ -412,11 +415,22 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       setInitialTrafficSource(profileStats.traffic_source ?? null);
       setInitialBibleExperienceLevel(profileStats.bible_experience_level ?? null);
       const onboardingCompleted = profileStats.onboarding_completed === true;
+      const hasBibleStudySelected = Boolean(profileStats.free_devotional_id || profileStats.louis_primary_devotional_id);
+
+      if (onboardingCompleted && !hasBibleStudySelected) {
+        setOnboardingStudySelectionOnly(true);
+        setShowOnboardingModal(true);
+        setFeatureToursEnabled(false);
+        return;
+      }
+
+      setOnboardingStudySelectionOnly(false);
       setShowOnboardingModal(!onboardingCompleted);
-      setFeatureToursEnabled(onboardingCompleted);
+      setFeatureToursEnabled(onboardingCompleted && hasBibleStudySelected);
     } catch (_err) {
       console.error("[ONBOARDING] Unexpected onboarding status error:", _err);
       setShowOnboardingModal(true);
+      setOnboardingStudySelectionOnly(false);
       setFeatureToursEnabled(false);
       setInitialTrafficSource(null);
       setInitialBibleExperienceLevel(null);
@@ -1120,6 +1134,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setUserId(null);
         setUsername("");
         setShowOnboardingModal(false);
+        setOnboardingStudySelectionOnly(false);
         setFeatureToursEnabled(false);
         setInitialTrafficSource(null);
         setInitialBibleExperienceLevel(null);
@@ -1168,6 +1183,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           setUserId(null);
           setUsername("");
           setShowOnboardingModal(false);
+          setOnboardingStudySelectionOnly(false);
           setFeatureToursEnabled(false);
           setInitialTrafficSource(null);
           setInitialBibleExperienceLevel(null);
@@ -1268,6 +1284,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.removeEventListener("bb:grace-days-updated", readGraceEvents);
     };
   }, [userId, isLoggedIn]);
+
+  useEffect(() => {
+    if (!userId || typeof window === "undefined") return;
+    const requiredStudyKey = `bb:required-study-selection-active:${userId}`;
+    if (showOnboardingModal && onboardingStudySelectionOnly) {
+      window.localStorage.setItem(requiredStudyKey, "1");
+    } else {
+      window.localStorage.removeItem(requiredStudyKey);
+    }
+    return () => {
+      window.localStorage.removeItem(requiredStudyKey);
+    };
+  }, [userId, showOnboardingModal, onboardingStudySelectionOnly]);
 
   // Treat iframe-embedded pages the same as bare pages (no shell/nav)
   const isBarePage = HIDDEN_ROUTES.includes(pathname ?? "/") || isEmbedded;
@@ -1537,10 +1566,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           userId={userId}
           initialTrafficSource={initialTrafficSource}
           initialBibleExperienceLevel={initialBibleExperienceLevel}
+          studySelectionOnly={onboardingStudySelectionOnly}
           canInstall={canInstall}
           onInstallPrompt={handleInstallPrompt}
           onFinished={(upgrade) => {
             setShowOnboardingModal(false);
+            setOnboardingStudySelectionOnly(false);
             setFeatureToursEnabled(true);
             if (upgrade) {
               router.push("/upgrade");

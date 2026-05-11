@@ -209,7 +209,11 @@ export default function ScrambledGamePlayer({
 
         const payload = await response.json().catch(() => ({}));
         if (!response.ok) {
-          throw new Error(payload?.error || "Could not load buddies for this chapter.");
+          if (mounted) {
+            setBuddyRounds([]);
+            setLoadingBuddyRounds(false);
+          }
+          return;
         }
 
         if (mounted) {
@@ -217,7 +221,7 @@ export default function ScrambledGamePlayer({
           setLoadingBuddyRounds(false);
         }
       } catch (error) {
-        console.error("Failed to load scrambled buddy rounds", error);
+        console.warn("[SCRAMBLED] Buddy rounds unavailable for this chapter.");
         if (mounted) {
           setBuddyRounds([]);
           setLoadingBuddyRounds(false);

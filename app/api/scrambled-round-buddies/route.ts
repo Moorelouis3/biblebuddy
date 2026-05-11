@@ -70,7 +70,8 @@ export async function GET(request: NextRequest) {
     .or(`user_id_1.eq.${currentUserId},user_id_2.eq.${currentUserId}`);
 
   if (buddiesError) {
-    return NextResponse.json({ error: buddiesError.message || "Could not load buddies." }, { status: 500 });
+    console.warn("[SCRAMBLED_ROUND_BUDDIES] Could not load buddies:", buddiesError.message);
+    return NextResponse.json({ ok: true, buddies: [] satisfies BuddyRoundEntry[] });
   }
 
   const buddyIds = Array.from(
@@ -94,7 +95,8 @@ export async function GET(request: NextRequest) {
     .order("created_at", { ascending: false });
 
   if (actionsError) {
-    return NextResponse.json({ error: actionsError.message || "Could not load buddy chapter progress." }, { status: 500 });
+    console.warn("[SCRAMBLED_ROUND_BUDDIES] Could not load buddy chapter progress:", actionsError.message);
+    return NextResponse.json({ ok: true, buddies: [] satisfies BuddyRoundEntry[] });
   }
 
   const byUser = new Map<string, { solvedIds: Set<string>; completedAt: string | null }>();
@@ -128,7 +130,8 @@ export async function GET(request: NextRequest) {
     .in("user_id", completedBuddyIds);
 
   if (profileError) {
-    return NextResponse.json({ error: profileError.message || "Could not load buddy profiles." }, { status: 500 });
+    console.warn("[SCRAMBLED_ROUND_BUDDIES] Could not load buddy profiles:", profileError.message);
+    return NextResponse.json({ ok: true, buddies: [] satisfies BuddyRoundEntry[] });
   }
 
   const profileMap = new Map((profileRows || []).map((row) => [row.user_id, row]));

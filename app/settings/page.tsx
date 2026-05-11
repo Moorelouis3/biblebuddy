@@ -4,6 +4,15 @@ import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "next/navigation";
 
+function getPasswordResetRedirectUrl() {
+  if (typeof window === "undefined") return "https://www.mybiblebuddy.net/reset-password";
+  const origin = window.location.origin;
+  if (origin.includes("localhost") || origin.includes("127.0.0.1")) {
+    return `${origin}/reset-password`;
+  }
+  return "https://www.mybiblebuddy.net/reset-password";
+}
+
 export default function SettingsPage() {
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
@@ -81,7 +90,7 @@ export default function SettingsPage() {
     
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(user.email, {
-        redirectTo: `${window.location.origin}/reset-password`,
+        redirectTo: getPasswordResetRedirectUrl(),
       });
 
       if (error) throw error;
@@ -386,4 +395,3 @@ export default function SettingsPage() {
     </div>
   );
 }
-

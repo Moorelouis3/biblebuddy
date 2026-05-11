@@ -150,7 +150,10 @@ export default function LoginPage() {
               className="w-full rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <div className="mt-2 text-right">
-              <Link href="/reset-password" className="text-xs font-semibold text-blue-600 hover:underline">
+              <Link
+                href={email.trim() ? `/reset-password?email=${encodeURIComponent(email.trim())}` : "/reset-password"}
+                className="text-xs font-semibold text-blue-600 hover:underline"
+              >
                 Reset password
               </Link>
             </div>

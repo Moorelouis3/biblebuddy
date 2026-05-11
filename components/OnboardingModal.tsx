@@ -11,6 +11,7 @@ type OnboardingModalProps = {
   userId: string;
   initialTrafficSource?: string | null;
   initialBibleExperienceLevel?: string | null;
+  studySelectionOnly?: boolean;
   canInstall?: boolean;
   onInstallPrompt?: () => Promise<void>;
   onFinished: (upgrade: boolean) => void;
@@ -375,10 +376,11 @@ export function OnboardingModal({
   userId,
   initialTrafficSource,
   initialBibleExperienceLevel,
+  studySelectionOnly = false,
   onFinished,
 }: OnboardingModalProps) {
-  const [slide, setSlide] = useState(0);
-  const [visitedSlides, setVisitedSlides] = useState<Set<number>>(() => new Set([0]));
+  const [slide, setSlide] = useState(studySelectionOnly ? 10 : 0);
+  const [visitedSlides, setVisitedSlides] = useState<Set<number>>(() => new Set([studySelectionOnly ? 10 : 0]));
   const [isSaving, setIsSaving] = useState(false);
   const [isCheckingUpgrade, setIsCheckingUpgrade] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -400,6 +402,14 @@ export function OnboardingModal({
 
   const selectedStudy = studies[selectedStudyIndex] ?? studies[0];
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const initialSlide = studySelectionOnly ? 10 : 0;
+    setSlide(initialSlide);
+    setVisitedSlides(new Set([initialSlide]));
+    setError(null);
+  }, [isOpen, studySelectionOnly]);
+
   function goToSlide(nextSlide: number) {
     setError(null);
     setSlide(nextSlide);
@@ -411,6 +421,7 @@ export function OnboardingModal({
   }
 
   function goToPreviousVisitedSlide() {
+    if (studySelectionOnly) return;
     setError(null);
     setSlide((currentSlide) => {
       const previous = Array.from(visitedSlides)
@@ -712,11 +723,13 @@ export function OnboardingModal({
   }
 
   function beginOnboardingSwipe(clientX: number, clientY: number) {
+    if (studySelectionOnly) return;
     onboardingSwipeStartX.current = clientX;
     onboardingSwipeStartY.current = clientY;
   }
 
   function finishOnboardingSwipe(clientX: number, clientY: number) {
+    if (studySelectionOnly) return;
     if (onboardingSwipeStartX.current === null || onboardingSwipeStartY.current === null) return;
     const deltaX = clientX - onboardingSwipeStartX.current;
     const deltaY = clientY - onboardingSwipeStartY.current;
