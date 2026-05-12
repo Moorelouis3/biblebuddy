@@ -138,245 +138,328 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
     input.triviaCompletions +
     input.scrambledCompletions;
 
-  const makeLeveledBadges = ({
+  const makeBadge = ({
     id,
     title,
     category,
     emoji,
+    label = "Badge",
     tone,
     current,
-    targets,
-    descriptions,
+    target,
+    description,
   }: {
     id: string;
     title: string;
     category: string;
     emoji: string;
+    label?: string;
     tone: BadgeTone;
     current: number;
-    targets: number[];
-    descriptions: string[];
-  }) =>
-    targets.map((target, index) => ({
-      id: `${id}-level-${index + 1}`,
-      title,
-      description: descriptions[index] || descriptions[descriptions.length - 1],
-      emoji,
-      levelLabel: `Level ${index + 1}`,
-      current,
-      target,
-      tone,
-      category,
-    }));
+    target: number;
+    description: string;
+  }): BadgeProgress => ({
+    id,
+    title,
+    description,
+    emoji,
+    levelLabel: label,
+    current,
+    target,
+    tone,
+    category,
+  });
 
   const badges: BadgeProgress[] = [
-    ...makeLeveledBadges({
-      id: "daily-flame",
-      title: "Daily Flame",
-      category: "Streak",
-      emoji: "🔥",
-      tone: "red",
-      current: input.currentStreak,
-      targets: [3, 7, 14, 30, 60],
-      descriptions: [
-        "Log in 3 days in a row and start your Bible Buddy rhythm.",
-        "Keep your streak alive for a full week.",
-        "Show up for two straight weeks.",
-        "Reach the 30 day consistency flame.",
-        "Stay connected for 60 days straight.",
-      ],
+    makeBadge({
+      id: "first-light",
+      title: "First Light",
+      category: "Bible Study",
+      emoji: "🌅",
+      tone: "gold",
+      current: totalBibleStudyTasks,
+      target: 1,
+      description: "Complete your first Bible Study task and light the first spark.",
     }),
-    ...makeLeveledBadges({
-      id: "chapter-climber",
-      title: "Chapter Climber",
+    makeBadge({
+      id: "chapter-door",
+      title: "Chapter Door",
+      category: "Bible Study",
+      emoji: "🚪",
+      tone: "blue",
+      current: input.bibleStudyIntroCompletions,
+      target: 1,
+      description: "Read your first chapter intro before stepping into the Scripture.",
+    }),
+    makeBadge({
+      id: "open-scroll",
+      title: "Open Scroll",
       category: "Reading",
       emoji: "📖",
       tone: "blue",
       current: input.chapterCompletions,
-      targets: [1, 5, 15, 30, 60],
-      descriptions: [
-        "Complete your first Bible chapter.",
-        "Finish 5 Bible chapters.",
-        "Finish 15 Bible chapters.",
-        "Finish 30 Bible chapters.",
-        "Finish 60 Bible chapters.",
-      ],
+      target: 1,
+      description: "Finish your first Bible chapter inside Bible Buddy.",
     }),
-    ...makeLeveledBadges({
-      id: "study-path",
-      title: "Study Path",
-      category: "Bible Study",
-      emoji: "✅",
-      tone: "green",
-      current: input.bibleStudyDayCompletions,
-      targets: [1, 5, 10, 20, 31],
-      descriptions: [
-        "Complete every task for your first chapter study.",
-        "Complete 5 full chapter studies.",
-        "Complete 10 full chapter studies.",
-        "Complete 20 full chapter studies.",
-        "Complete 31 full chapter studies.",
-      ],
-    }),
-    ...makeLeveledBadges({
-      id: "intro-scout",
-      title: "Intro Scout",
-      category: "Bible Study",
-      emoji: "🌅",
-      tone: "gold",
-      current: input.bibleStudyIntroCompletions,
-      targets: [1, 7, 15, 31, 60],
-      descriptions: [
-        "Read your first chapter intro.",
-        "Read 7 chapter intros.",
-        "Read 15 chapter intros.",
-        "Read 31 chapter intros.",
-        "Read 60 chapter intros.",
-      ],
-    }),
-    ...makeLeveledBadges({
-      id: "notes-digger",
-      title: "Notes Digger",
+    makeBadge({
+      id: "notes-lamp",
+      title: "Notes Lamp",
       category: "Notes",
-      emoji: "📝",
+      emoji: "🪔",
       tone: "teal",
       current: input.notesReviewed,
-      targets: [1, 10, 25, 50, 100],
-      descriptions: [
-        "Review your first set of chapter notes.",
-        "Review 10 chapter note sections.",
-        "Review 25 chapter note sections.",
-        "Review 50 chapter note sections.",
-        "Review 100 chapter note sections.",
-      ],
+      target: 1,
+      description: "Review chapter notes for the first time and let the chapter get clearer.",
     }),
-    ...makeLeveledBadges({
-      id: "trivia-brain",
-      title: "Trivia Brain",
+    makeBadge({
+      id: "quick-recall",
+      title: "Quick Recall",
       category: "Trivia",
       emoji: "🧠",
       tone: "pink",
       current: input.triviaCompletions,
-      targets: [1, 10, 25, 50, 100],
-      descriptions: [
-        "Finish your first trivia round.",
-        "Finish 10 trivia rounds.",
-        "Finish 25 trivia rounds.",
-        "Finish 50 trivia rounds.",
-        "Finish 100 trivia rounds.",
-      ],
+      target: 1,
+      description: "Finish your first trivia round and check what is sticking.",
     }),
-    ...makeLeveledBadges({
-      id: "word-builder",
-      title: "Word Builder",
+    makeBadge({
+      id: "word-lock",
+      title: "Word Lock",
       category: "Scrambled",
-      emoji: "🔤",
+      emoji: "🔐",
       tone: "purple",
       current: input.scrambledCompletions,
-      targets: [1, 10, 25, 50, 100],
-      descriptions: [
-        "Finish your first Scrambled round.",
-        "Finish 10 Scrambled rounds.",
-        "Finish 25 Scrambled rounds.",
-        "Finish 50 Scrambled rounds.",
-        "Finish 100 Scrambled rounds.",
-      ],
+      target: 1,
+      description: "Finish your first Scrambled round and lock a chapter word into memory.",
     }),
-    ...makeLeveledBadges({
-      id: "group-voice",
-      title: "Group Voice",
-      category: "Community",
-      emoji: "💬",
-      tone: "teal",
+    makeBadge({
+      id: "ink-and-heart",
+      title: "Ink & Heart",
+      category: "Reflection",
+      emoji: "✍️",
+      tone: "gold",
       current: input.commentsPosted,
-      targets: [1, 5, 15, 30, 75],
-      descriptions: [
-        "Post your first comment or reply.",
-        "Post 5 comments or replies.",
-        "Post 15 comments or replies.",
-        "Post 30 comments or replies.",
-        "Post 75 comments or replies.",
-      ],
+      target: 1,
+      description: "Post your first reflection or comment and put thought into words.",
     }),
-    ...makeLeveledBadges({
+    makeBadge({
+      id: "whole-chapter",
+      title: "Whole Chapter",
+      category: "Bible Study",
+      emoji: "✅",
+      tone: "green",
+      current: input.bibleStudyDayCompletions,
+      target: 1,
+      description: "Complete every task for one chapter study from intro to reflection.",
+    }),
+    makeBadge({
+      id: "steady-seven",
+      title: "Steady Seven",
+      category: "Streak",
+      emoji: "🗓️",
+      tone: "green",
+      current: input.currentStreak,
+      target: 7,
+      description: "Show up to Bible Buddy for seven days straight.",
+    }),
+    makeBadge({
+      id: "two-week-table",
+      title: "Two Week Table",
+      category: "Streak",
+      emoji: "🍞",
+      tone: "gold",
+      current: input.currentStreak,
+      target: 14,
+      description: "Return for two straight weeks and build a steady place at the table.",
+    }),
+    makeBadge({
+      id: "consistency-flame",
+      title: "Consistency Flame",
+      category: "Streak",
+      emoji: "🔥",
+      tone: "red",
+      current: input.currentStreak,
+      target: 30,
+      description: "Reach a 30 day streak and prove the rhythm is becoming real.",
+    }),
+    makeBadge({
+      id: "long-obedience",
+      title: "Long Obedience",
+      category: "Streak",
+      emoji: "🛤️",
+      tone: "slate",
+      current: input.currentStreak,
+      target: 60,
+      description: "Stay connected for 60 days straight. This is the kind of steady that shapes a life.",
+    }),
+    makeBadge({
+      id: "five-chapter-path",
+      title: "Five Chapter Path",
+      category: "Reading",
+      emoji: "🧭",
+      tone: "blue",
+      current: input.chapterCompletions,
+      target: 5,
+      description: "Finish five Bible chapters and start seeing Scripture as a path, not a one-time stop.",
+    }),
+    makeBadge({
+      id: "ten-chapter-builder",
+      title: "Chapter Builder",
+      category: "Reading",
+      emoji: "🏗️",
+      tone: "teal",
+      current: input.chapterCompletions,
+      target: 10,
+      description: "Finish ten Bible chapters and build real reading momentum.",
+    }),
+    makeBadge({
+      id: "proverbs-pathfinder",
+      title: "Pathfinder",
+      category: "Bible Study",
+      emoji: "🥾",
+      tone: "green",
+      current: input.bibleStudyDayCompletions,
+      target: 5,
+      description: "Complete five full chapter studies and keep moving through the Bible Study path.",
+    }),
+    makeBadge({
+      id: "study-arch",
+      title: "Study Arch",
+      category: "Bible Study",
+      emoji: "🌉",
+      tone: "purple",
+      current: input.bibleStudyDayCompletions,
+      target: 15,
+      description: "Complete 15 full chapter studies and cross from starting into staying.",
+    }),
+    makeBadge({
+      id: "deep-well",
+      title: "Deep Well",
+      category: "Notes",
+      emoji: "💧",
+      tone: "teal",
+      current: input.notesReviewed,
+      target: 10,
+      description: "Review ten chapter note sections and keep drawing deeper understanding.",
+    }),
+    makeBadge({
+      id: "margin-notes",
+      title: "Margin Notes",
+      category: "Notes",
+      emoji: "📓",
+      tone: "gold",
+      current: input.notesReviewed,
+      target: 25,
+      description: "Review 25 chapter note sections and become someone who studies slowly.",
+    }),
+    makeBadge({
+      id: "quiz-crown",
+      title: "Quiz Crown",
+      category: "Trivia",
+      emoji: "👑",
+      tone: "purple",
+      current: input.triviaCompletions,
+      target: 10,
+      description: "Finish ten trivia rounds and sharpen your chapter recall.",
+    }),
+    makeBadge({
+      id: "memory-keeper",
+      title: "Memory Keeper",
+      category: "Scrambled",
+      emoji: "🧩",
+      tone: "pink",
+      current: input.scrambledCompletions,
+      target: 10,
+      description: "Finish ten Scrambled rounds and keep chapter words close.",
+    }),
+    makeBadge({
+      id: "game-night",
+      title: "Game Night",
+      category: "Games",
+      emoji: "🎮",
+      tone: "green",
+      current: input.triviaCompletions + input.scrambledCompletions,
+      target: 25,
+      description: "Complete 25 Bible game rounds across Trivia and Scrambled.",
+    }),
+    makeBadge({
       id: "encourager",
       title: "Encourager",
       category: "Community",
       emoji: "💙",
       tone: "blue",
       current: input.likesGiven,
-      targets: [3, 10, 25, 50, 100],
-      descriptions: [
-        "Like 3 posts or comments.",
-        "Like 10 posts or comments.",
-        "Like 25 posts or comments.",
-        "Like 50 posts or comments.",
-        "Like 100 posts or comments.",
-      ],
+      target: 3,
+      description: "Like three posts or comments and help another Bible Buddy feel seen.",
     }),
-    ...makeLeveledBadges({
-      id: "tv-watcher",
-      title: "Bible TV Watcher",
+    makeBadge({
+      id: "table-talk",
+      title: "Table Talk",
+      category: "Community",
+      emoji: "🗣️",
+      tone: "purple",
+      current: input.commentsPosted,
+      target: 5,
+      description: "Post five comments or replies and join the Bible Buddy conversation.",
+    }),
+    makeBadge({
+      id: "watchtower",
+      title: "Watchtower",
       category: "Bible Buddy TV",
       emoji: "📺",
-      tone: "purple",
+      tone: "red",
       current: input.tvVideosStarted,
-      targets: [1, 5, 15, 30, 60],
-      descriptions: [
-        "Watch your first Bible Buddy TV video.",
-        "Start 5 Bible Buddy TV videos.",
-        "Start 15 Bible Buddy TV videos.",
-        "Start 30 Bible Buddy TV videos.",
-        "Start 60 Bible Buddy TV videos.",
-      ],
+      target: 1,
+      description: "Start your first Bible Buddy TV video and learn through story, teaching, or sermon.",
     }),
-    ...makeLeveledBadges({
-      id: "book-finisher",
-      title: "Book Finisher",
+    makeBadge({
+      id: "first-book-seal",
+      title: "Book Seal",
       category: "Reading",
       emoji: "🏅",
       tone: "gold",
       current: input.booksCompleted,
-      targets: [1, 2, 5, 10, 20],
-      descriptions: [
-        "Finish your first Bible book.",
-        "Finish 2 Bible books.",
-        "Finish 5 Bible books.",
-        "Finish 10 Bible books.",
-        "Finish 20 Bible books.",
-      ],
+      target: 1,
+      description: "Finish your first complete Bible book and seal that milestone.",
     }),
-    ...makeLeveledBadges({
-      id: "xp-shield",
-      title: "XP Shield",
+    makeBadge({
+      id: "three-book-shelf",
+      title: "Three Book Shelf",
+      category: "Reading",
+      emoji: "📚",
+      tone: "teal",
+      current: input.booksCompleted,
+      target: 3,
+      description: "Finish three Bible books and start building a real Scripture shelf.",
+    }),
+    makeBadge({
+      id: "small-but-steady",
+      title: "Small But Steady",
       category: "Progress",
-      emoji: "🛡️",
+      emoji: "🌱",
+      tone: "green",
+      current: input.totalPoints,
+      target: 250,
+      description: "Earn 250 points through small faithful actions.",
+    }),
+    makeBadge({
+      id: "thousand-stones",
+      title: "Thousand Stones",
+      category: "Progress",
+      emoji: "🪨",
       tone: "slate",
       current: input.totalPoints,
-      targets: [250, 1000, 2500, 5000, 10000],
-      descriptions: [
-        "Earn 250 Bible Buddy points.",
-        "Earn 1,000 Bible Buddy points.",
-        "Earn 2,500 Bible Buddy points.",
-        "Earn 5,000 Bible Buddy points.",
-        "Earn 10,000 Bible Buddy points.",
-      ],
+      target: 1000,
+      description: "Earn 1,000 Bible Buddy points, one study action at a time.",
     }),
-    ...makeLeveledBadges({
-      id: "task-spark",
-      title: "Task Spark",
+    makeBadge({
+      id: "full-rhythm",
+      title: "Full Rhythm",
       category: "Bible Study",
-      emoji: "✨",
-      tone: "green",
+      emoji: "🎵",
+      tone: "blue",
       current: totalBibleStudyTasks,
-      targets: [5, 25, 75, 150, 300],
-      descriptions: [
-        "Complete 5 Bible Study tasks.",
-        "Complete 25 Bible Study tasks.",
-        "Complete 75 Bible Study tasks.",
-        "Complete 150 Bible Study tasks.",
-        "Complete 300 Bible Study tasks.",
-      ],
+      target: 50,
+      description: "Complete 50 Bible Study tasks and let the rhythm settle in.",
     }),
   ];
 
@@ -2664,6 +2747,17 @@ export default function DashboardPage() {
       return;
     }
 
+    await supabase.from("devotional_progress").upsert(
+      {
+        user_id: userId,
+        devotional_id: nextJourneyTarget.devotionalId,
+        day_number: nextJourneyTarget.dayNumber,
+        is_completed: false,
+        reading_completed: false,
+      },
+      { onConflict: "user_id,devotional_id,day_number" },
+    );
+
     rememberLouisDailyTaskTarget(userId, louisDailyTaskCycleStartedAt, nextJourneyTarget);
     void loadDailyTaskSummary({ force: true, silent: true });
   }
@@ -3103,7 +3197,7 @@ export default function DashboardPage() {
         }}
         backdropColor="bg-black/45"
       >
-        <div className="relative mx-3 my-5 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
+        <div className="relative mx-3 my-5 flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
           <div className="border-b border-[#dbe7f6] bg-gradient-to-br from-[#edf5ff] via-white to-[#f4fbff] px-5 py-5 sm:px-7">
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-3">
@@ -3114,7 +3208,7 @@ export default function DashboardPage() {
                   <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#5f86bd]">
                     Bible Buddy Badges
                   </p>
-                  <h2 className="mt-1 text-2xl font-bold text-[#1f2a44]">All achievements</h2>
+                  <h2 className="mt-1 text-2xl font-bold text-[#1f2a44]">Badge collection</h2>
                   <p className="mt-1 text-sm leading-5 text-[#5b6f92]">
                     {badgeProgress.filter((badge) => badge.current >= badge.target).length} of {badgeProgress.length} earned
                   </p>
@@ -3133,53 +3227,78 @@ export default function DashboardPage() {
               </button>
             </div>
             <p className="mt-4 text-sm leading-6 text-[#4f678e]">
-              Badges celebrate the habits that help you keep coming back: streaks, Bible Study progress, group activity, and learning moments.
+              Each badge marks a real Bible Buddy moment: showing up, opening Scripture, finishing chapter studies, encouraging others, and growing one step at a time.
             </p>
           </div>
 
-          <div className="overflow-y-auto px-3 py-3 sm:px-5 sm:py-4">
-            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+          <div className="overflow-y-auto px-4 py-4 sm:px-6 sm:py-5">
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
               {badgeProgress.map((badge) => {
                 const isEarned = badge.current >= badge.target;
                 const tone = BADGE_TONE_CLASSES[badge.tone];
+                const progressPercent = Math.max(0, Math.min(100, Math.round((badge.current / badge.target) * 100)));
 
                 return (
                   <button
                     key={badge.id}
                     type="button"
                     onClick={() => setSelectedBadge(badge)}
-                    className={`group relative flex min-h-[132px] flex-col items-center justify-between rounded-3xl border p-2.5 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:min-h-[150px] sm:p-3 ${
+                    className={`group relative flex min-h-[198px] flex-col items-center rounded-[28px] border px-3 py-4 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg sm:min-h-[220px] sm:px-4 ${
                       isEarned
-                        ? "border-[#cbe6f7] bg-white"
-                        : "border-slate-200 bg-slate-50 opacity-80"
+                        ? "border-[#b9ddf4] bg-gradient-to-br from-white via-[#fbfdff] to-[#eef7ff]"
+                        : "border-slate-200 bg-gradient-to-br from-white to-slate-50 opacity-90"
                     }`}
                   >
+                    <span
+                      className={`absolute right-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
+                        isEarned ? "bg-[#dff8e8] text-[#116b35]" : "bg-slate-100 text-slate-500"
+                      }`}
+                    >
+                      {isEarned ? "Earned" : "Locked"}
+                    </span>
                     <div
-                      className={`flex h-16 w-16 flex-col items-center justify-center rounded-2xl border text-center sm:h-20 sm:w-20 ${
+                      className={`relative mt-3 flex h-24 w-24 items-center justify-center rounded-[30px] border-2 text-center sm:h-28 sm:w-28 ${
                         isEarned ? `${tone.tile} ${tone.glow}` : "border-slate-200 bg-slate-100 text-slate-400 grayscale"
                       }`}
                     >
-                      <span className="text-3xl sm:text-4xl" aria-hidden="true">
+                      <span className="text-5xl sm:text-6xl" aria-hidden="true">
                         {badge.emoji}
                       </span>
-                      <span className="mt-1 text-[8px] font-black uppercase leading-none">
-                        {badge.levelLabel}
-                      </span>
+                      {isEarned ? (
+                        <span className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-[#19c463] text-sm font-black text-white shadow-md">
+                          ✓
+                        </span>
+                      ) : (
+                        <span className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-slate-300 text-sm font-black text-white shadow-md">
+                          ?
+                        </span>
+                      )}
                     </div>
-                    <div className="mt-2 min-w-0">
-                      <p className={`truncate text-sm font-black leading-tight sm:text-base ${isEarned ? "text-[#1f2a44]" : "text-slate-500"}`}>
+                    <div className="mt-4 min-w-0">
+                      <p className={`text-base font-black leading-tight sm:text-lg ${isEarned ? "text-[#1f2a44]" : "text-slate-500"}`}>
                         {badge.title}
                       </p>
-                      <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[#6b7f9f]">
-                        {isEarned ? "Unlocked" : "Locked"}
+                      <p className="mx-auto mt-2 inline-flex rounded-full bg-[#edf5ff] px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[#5f86bd]">
+                        {badge.category}
                       </p>
                     </div>
-                    <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-[#d6e0ea]">
-                      <div
-                        className={`h-full rounded-full transition-all duration-700 ${isEarned ? tone.progress : "bg-[#8ea0b2]"}`}
-                        style={{ width: `${Math.max(0, Math.min(100, Math.round((badge.current / badge.target) * 100)))}%` }}
-                      />
+                    <div className="mt-auto w-full pt-4">
+                      <div className="mb-1 flex items-center justify-between text-[11px] font-black text-[#536a8f]">
+                        <span>{isEarned ? "Unlocked" : "Progress"}</span>
+                        <span>{badge.current}/{badge.target}</span>
+                      </div>
+                      <div className="h-2 w-full overflow-hidden rounded-full bg-[#d6e0ea]">
+                        <div
+                          className={`h-full rounded-full transition-all duration-700 ${isEarned ? tone.progress : "bg-[#8ea0b2]"}`}
+                          style={{ width: `${progressPercent}%` }}
+                        />
+                      </div>
                     </div>
+                    {isEarned ? (
+                      <div
+                        className="pointer-events-none absolute inset-x-5 top-4 h-px bg-gradient-to-r from-transparent via-white/90 to-transparent opacity-80"
+                      />
+                    ) : null}
                   </button>
                 );
               })}
@@ -3204,12 +3323,14 @@ export default function DashboardPage() {
                   </button>
                   <div className="mt-1 flex justify-center">
                     <div
-                      className={`flex h-28 w-28 flex-col items-center justify-center rounded-[28px] border text-center ${
+                      className={`relative flex h-32 w-32 items-center justify-center rounded-[34px] border-2 text-center ${
                         isEarned ? `${tone.tile} ${tone.glow}` : "border-slate-200 bg-slate-100 text-slate-400 grayscale"
                       }`}
                     >
-                      <span className="text-6xl" aria-hidden="true">{selectedBadge.emoji}</span>
-                      <span className="mt-2 text-[10px] font-black uppercase tracking-[0.12em]">{selectedBadge.levelLabel}</span>
+                      <span className="text-7xl" aria-hidden="true">{selectedBadge.emoji}</span>
+                      <span className={`absolute -right-2 -top-2 flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-sm font-black text-white shadow-md ${isEarned ? "bg-[#19c463]" : "bg-slate-300"}`}>
+                        {isEarned ? "✓" : "?"}
+                      </span>
                     </div>
                   </div>
                   <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[#5f86bd]">{selectedBadge.category}</p>

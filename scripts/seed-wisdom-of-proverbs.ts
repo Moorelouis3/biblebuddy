@@ -306,9 +306,34 @@ const chapterPlans: ChapterPlan[] = [
 ];
 
 const cinematicDevotionalTextByChapter: Record<number, string> = {
-  1: `Before Proverbs becomes a book of short sayings, picture the throne room of Israel.
+  1: `You have probably heard people say Proverbs is a book of wisdom.
 
-This is not just random advice floating through history.
+That is true.
+
+But a lot of people still read Proverbs the wrong way.
+
+They read it like a book of promises.
+
+Like if Proverbs says honesty usually leads to blessing, they treat it like a contract that says every honest person will always have an easy life.
+
+That is not how Proverbs works.
+
+A proverb is a short saying about life that teaches a general truth.
+
+It shows the kind of path that usually leads somewhere wise,
+and the kind of path that usually leads somewhere painful.
+
+Proverbs teaches patterns, not guarantees.
+
+It is the difference between saying:
+
+> "Do this once and God owes you success."
+
+and saying:
+
+> "Walk this road long enough and it will shape who you become."
+
+So before Proverbs gives you hundreds of wise sayings, it teaches you how to listen.
 
 This is a father speaking to a son.
 
@@ -379,17 +404,17 @@ That matters.
 * the kind of life that usually leads toward wisdom
 * the kind of life that slowly destroys people
 
-**This is not:**
+This is wisdom for real life.
 
-> "Do this once and God owes you success."
+Not a formula.
 
-**This is:**
+Not a shortcut.
 
-> "Walk this road long enough and it shapes who you become."
+Not a way to control every outcome.
 
 ---
 
-# 🧠 What Proverbs 1 Is Trying To Do
+# 🧠 The Point of Proverbs 1 Is This
 
 Solomon opens the book by explaining why wisdom exists.
 
@@ -439,7 +464,7 @@ The other voice is Wisdom herself.
 
 The chapter presses the first big decision:
 
-***Which voice will you follow?***
+***Will you listen when wisdom speaks?***
 
 ---
 

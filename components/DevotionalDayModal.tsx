@@ -807,6 +807,10 @@ Be accurate to Scripture.`;
   }
 
   const handleClose = () => {
+    if (useSeriesLikeProverbsLayout && !introCompleted) {
+      handleIntroComplete();
+    }
+
     // Close without saving - just discard any unsaved changes
     setReadingChecked(dayProgress?.reading_completed || false);
     setReflectionText(dayProgress?.reflection_text || "");
@@ -828,7 +832,7 @@ Be accurate to Scripture.`;
             type="button"
             onClick={handleClose}
             className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl font-semibold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
-            title="Close (don't save)"
+            title="Close"
           >
             ✕
           </button>
@@ -900,7 +904,7 @@ Be accurate to Scripture.`;
                         );
                       })}
                     </div>
-                    <div className="mt-6 flex justify-center border-t border-gray-100 pt-5">
+                    <div className="hidden">
                       <button
                         type="button"
                         onClick={handleIntroComplete}

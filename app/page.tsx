@@ -57,7 +57,7 @@ const problemRows = [
 
 export default function LandingPage() {
   const router = useRouter();
-  const [isChecking, setIsChecking] = useState(false);
+  const [isChecking, setIsChecking] = useState(true);
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

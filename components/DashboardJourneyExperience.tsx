@@ -1169,6 +1169,17 @@ export default function DashboardJourneyExperience({
         return;
       }
 
+      await supabase.from("devotional_progress").upsert(
+        {
+          user_id: userId,
+          devotional_id: checklistData.nextJourneyTarget.devotionalId,
+          day_number: checklistData.nextJourneyTarget.dayNumber,
+          is_completed: false,
+          reading_completed: false,
+        },
+        { onConflict: "user_id,devotional_id,day_number" },
+      );
+
       rememberLouisDailyTaskTarget(userId, cycleStartedAt, checklistData.nextJourneyTarget);
       setShowDevotionalSettings(false);
       onDevotionalChanged();
@@ -1265,14 +1276,15 @@ export default function DashboardJourneyExperience({
       <style>{`
         @keyframes task-complete-pop {
           0% { transform: scale(1); box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08); }
-          28% { transform: scale(1.025); box-shadow: 0 16px 34px rgba(34, 185, 95, 0.22); }
+          30% { transform: scale(1.035); box-shadow: 0 20px 42px rgba(34, 185, 95, 0.3); }
+          58% { transform: scale(0.992); box-shadow: 0 10px 26px rgba(34, 185, 95, 0.18); }
           100% { transform: scale(1); box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08); }
         }
 
         @keyframes task-firework {
           0% { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
           18% { opacity: 1; }
-          100% { opacity: 0; transform: translate(var(--spark-x), var(--spark-y)) scale(1); }
+          100% { opacity: 0; transform: translate(var(--spark-x), var(--spark-y)) scale(1.18); }
         }
 
         @keyframes done-sparkle {
@@ -1299,25 +1311,25 @@ export default function DashboardJourneyExperience({
             border-color: #b8d9ef;
           }
           50% {
-            transform: scale(1.012);
-            box-shadow: 0 12px 28px rgba(75, 156, 211, 0.2), 0 0 0 6px rgba(123, 175, 212, 0.16);
+            transform: scale(1.02);
+            box-shadow: 0 16px 36px rgba(75, 156, 211, 0.28), 0 0 0 8px rgba(123, 175, 212, 0.2);
             border-color: #7BAFD4;
           }
         }
 
-        .task-complete-pop { animation: task-complete-pop 850ms ease-out; }
-        .task-firework span { animation: task-firework 900ms ease-out forwards; }
+        .task-complete-pop { animation: task-complete-pop 980ms cubic-bezier(0.2, 0.85, 0.25, 1); }
+        .task-firework span { animation: task-firework 1050ms ease-out forwards; }
         .done-sparkle span { animation: done-sparkle 1.8s ease-in-out infinite; }
         .done-sparkle span:nth-child(2) { animation-delay: 0.45s; }
         .done-sparkle span:nth-child(3) { animation-delay: 0.9s; }
         .progress-glow { animation: progress-glow 950ms ease-out; }
         .chapter-complete-fill { animation: chapter-complete-fill 900ms ease-out; }
-        .next-task-pulse { animation: next-task-pulse 2.2s ease-in-out infinite; }
-        .spark-a { --spark-x: -42px; --spark-y: -42px; }
-        .spark-b { --spark-x: 18px; --spark-y: -56px; }
-        .spark-c { --spark-x: 68px; --spark-y: -20px; }
-        .spark-d { --spark-x: 42px; --spark-y: 34px; }
-        .spark-e { --spark-x: -28px; --spark-y: 30px; }
+        .next-task-pulse { animation: next-task-pulse 1.9s ease-in-out infinite; }
+        .spark-a { --spark-x: -53px; --spark-y: -53px; }
+        .spark-b { --spark-x: 23px; --spark-y: -70px; }
+        .spark-c { --spark-x: 85px; --spark-y: -25px; }
+        .spark-d { --spark-x: 53px; --spark-y: 43px; }
+        .spark-e { --spark-x: -35px; --spark-y: 38px; }
       `}</style>
       <div
         ref={containerRef}
@@ -1614,7 +1626,13 @@ export default function DashboardJourneyExperience({
                         <span className={`rounded-full px-3 py-1 text-xs font-bold ${getTaskPillClasses(task)}`}>
                           {task.pointsLabel}
                         </span>
-                        <span className={`relative flex items-center gap-1 text-[11px] font-medium ${task.done ? "text-green-700" : "text-gray-500"}`}>
+                        <span className={`relative flex items-center gap-1 text-[11px] font-medium ${
+                          task.done
+                            ? "text-green-700"
+                            : isNextActionTask
+                              ? "animate-pulse text-[#315f7d] font-black"
+                              : "text-gray-500"
+                        }`}>
                           <span aria-hidden="true">{task.done ? "▣" : "○"}</span>
                           {task.done ? (
                             <span className="done-sparkle pointer-events-none absolute -inset-x-2 -top-3 flex justify-between text-[10px] text-amber-400" aria-hidden="true">
@@ -1623,7 +1641,7 @@ export default function DashboardJourneyExperience({
                               <span>✦</span>
                             </span>
                           ) : null}
-                          {getTaskStatusLine(task)}
+                          {!task.done && isNextActionTask ? "Start here" : getTaskStatusLine(task)}
                         </span>
                       </div>
                       <span className="text-xl leading-none text-gray-400" aria-hidden="true">›</span>
