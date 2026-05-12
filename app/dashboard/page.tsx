@@ -61,6 +61,7 @@ type BadgeProgress = {
   description: string;
   emoji: string;
   levelLabel: string;
+  xp: number;
   current: number;
   target: number;
   tone: BadgeTone;
@@ -125,6 +126,21 @@ const BADGE_TONE_CLASSES: Record<BadgeTone, { tile: string; progress: string; gl
   },
 };
 
+function getBadgeAwardLabel(badge: Pick<BadgeProgress, "id" | "xp">) {
+  return `badge_earned:${badge.id}:${badge.xp}`;
+}
+
+function getAwardedBadgeId(actionLabel: unknown) {
+  if (typeof actionLabel !== "string") return null;
+  return actionLabel.match(/^badge_earned:([^:]+):\d+$/)?.[1] ?? null;
+}
+
+function getBadgeBonusPoints(actionLabel: unknown) {
+  if (typeof actionLabel !== "string") return 0;
+  const match = actionLabel.match(/^badge_earned:[^:]+:(\d+)$/);
+  return match ? Number(match[1]) || 0 : 0;
+}
+
 function clampBadgeProgress(current: number, target: number) {
   if (!Number.isFinite(current)) return 0;
   return Math.max(0, Math.min(target, Math.floor(current)));
@@ -144,6 +160,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
     category,
     emoji,
     label = "Badge",
+    xp = 10,
     tone,
     current,
     target,
@@ -154,6 +171,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
     category: string;
     emoji: string;
     label?: string;
+    xp?: number;
     tone: BadgeTone;
     current: number;
     target: number;
@@ -164,6 +182,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
     description,
     emoji,
     levelLabel: label,
+    xp,
     current,
     target,
     tone,
@@ -247,6 +266,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Bible Study",
       emoji: "✅",
       tone: "green",
+      xp: 15,
       current: input.bibleStudyDayCompletions,
       target: 1,
       description: "Complete every task for one chapter study from intro to reflection.",
@@ -257,6 +277,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Streak",
       emoji: "🗓️",
       tone: "green",
+      xp: 12,
       current: input.currentStreak,
       target: 7,
       description: "Show up to Bible Buddy for seven days straight.",
@@ -267,6 +288,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Streak",
       emoji: "🍞",
       tone: "gold",
+      xp: 15,
       current: input.currentStreak,
       target: 14,
       description: "Return for two straight weeks and build a steady place at the table.",
@@ -277,6 +299,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Streak",
       emoji: "🔥",
       tone: "red",
+      xp: 20,
       current: input.currentStreak,
       target: 30,
       description: "Reach a 30 day streak and prove the rhythm is becoming real.",
@@ -287,6 +310,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Streak",
       emoji: "🛤️",
       tone: "slate",
+      xp: 20,
       current: input.currentStreak,
       target: 60,
       description: "Stay connected for 60 days straight. This is the kind of steady that shapes a life.",
@@ -327,6 +351,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Bible Study",
       emoji: "🌉",
       tone: "purple",
+      xp: 20,
       current: input.bibleStudyDayCompletions,
       target: 15,
       description: "Complete 15 full chapter studies and cross from starting into staying.",
@@ -347,6 +372,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Notes",
       emoji: "📓",
       tone: "gold",
+      xp: 15,
       current: input.notesReviewed,
       target: 25,
       description: "Review 25 chapter note sections and become someone who studies slowly.",
@@ -357,6 +383,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Trivia",
       emoji: "👑",
       tone: "purple",
+      xp: 15,
       current: input.triviaCompletions,
       target: 10,
       description: "Finish ten trivia rounds and sharpen your chapter recall.",
@@ -367,6 +394,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Scrambled",
       emoji: "🧩",
       tone: "pink",
+      xp: 15,
       current: input.scrambledCompletions,
       target: 10,
       description: "Finish ten Scrambled rounds and keep chapter words close.",
@@ -377,6 +405,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Games",
       emoji: "🎮",
       tone: "green",
+      xp: 20,
       current: input.triviaCompletions + input.scrambledCompletions,
       target: 25,
       description: "Complete 25 Bible game rounds across Trivia and Scrambled.",
@@ -417,6 +446,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Reading",
       emoji: "🏅",
       tone: "gold",
+      xp: 20,
       current: input.booksCompleted,
       target: 1,
       description: "Finish your first complete Bible book and seal that milestone.",
@@ -427,6 +457,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Reading",
       emoji: "📚",
       tone: "teal",
+      xp: 20,
       current: input.booksCompleted,
       target: 3,
       description: "Finish three Bible books and start building a real Scripture shelf.",
@@ -447,6 +478,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Progress",
       emoji: "🪨",
       tone: "slate",
+      xp: 15,
       current: input.totalPoints,
       target: 1000,
       description: "Earn 1,000 Bible Buddy points, one study action at a time.",
@@ -457,6 +489,7 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Bible Study",
       emoji: "🎵",
       tone: "blue",
+      xp: 20,
       current: totalBibleStudyTasks,
       target: 50,
       description: "Complete 50 Bible Study tasks and let the rhythm settle in.",
@@ -573,6 +606,8 @@ export default function DashboardPage() {
   const [showGraceDaysInfoModal, setShowGraceDaysInfoModal] = useState(false);
   const [badgeProgress, setBadgeProgress] = useState<BadgeProgress[]>([]);
   const [selectedBadge, setSelectedBadge] = useState<BadgeProgress | null>(null);
+  const [earnedBadgeQueue, setEarnedBadgeQueue] = useState<BadgeProgress[]>([]);
+  const [activeEarnedBadge, setActiveEarnedBadge] = useState<BadgeProgress | null>(null);
   const [showStreakBadgeModal, setShowStreakBadgeModal] = useState(false);
   const [showCommunityModal, setShowCommunityModal] = useState(false);
   const [showVerseOfTheDayModal, setShowVerseOfTheDayModal] = useState(false);
@@ -1567,6 +1602,8 @@ export default function DashboardPage() {
   const hasBlockingDashboardOverlay =
     showLevelInfoModal ||
     showStreakBadgeModal ||
+    showBadgesModal ||
+    Boolean(activeEarnedBadge) ||
     showCommunityModal ||
     showVerseOfTheDayModal ||
     showStreakMotivationModal ||
@@ -1577,6 +1614,23 @@ export default function DashboardPage() {
     Boolean(activeTourKey) ||
     pendingDailyStreakSequence ||
     pendingDailyTaskCelebrationModal;
+
+  useEffect(() => {
+    if (hasBlockingDashboardOverlay || activeEarnedBadge || earnedBadgeQueue.length === 0) return;
+
+    const [nextBadge, ...remainingBadges] = earnedBadgeQueue;
+    setEarnedBadgeQueue(remainingBadges);
+    setActiveEarnedBadge(nextBadge);
+
+    window.setTimeout(() => {
+      confetti({
+        particleCount: 120,
+        spread: 78,
+        origin: { y: 0.42 },
+        colors: ["#7BAFD4", "#f7c948", "#22c55e", "#ffffff"],
+      });
+    }, 240);
+  }, [activeEarnedBadge, earnedBadgeQueue, hasBlockingDashboardOverlay]);
 
   async function completeSwipeHint(options: { openExplore?: boolean } = {}) {
     if (isSavingSwipeHint) return;
@@ -1871,11 +1925,11 @@ export default function DashboardPage() {
           setHasJessicaBonusAward(adminBonusActionRows.length > 0);
         }
 
-        const manualBonusPoints = adminBonusActionRows.reduce((total, row) => {
-          const match = typeof row?.action_label === "string"
+        const manualBonusPoints = actionRows.reduce((total, row) => {
+          const adminMatch = typeof row?.action_label === "string"
             ? row.action_label.match(/^admin_bonus_points:(\d+):/)
             : null;
-          return total + (match ? Number(match[1]) || 0 : 0);
+          return total + (adminMatch ? Number(adminMatch[1]) || 0 : 0) + getBadgeBonusPoints(row?.action_label);
         }, 0);
 
         const streakAwardedPoints = actionRows.reduce((total, row) => {
@@ -2013,7 +2067,7 @@ export default function DashboardPage() {
         if (!didCancel) {
           setLevelInfo(levelInfoData);
           setMotivationalMessage(randomMessage);
-          setBadgeProgress(buildBadgeProgress({
+          const nextBadgeProgress = buildBadgeProgress({
             currentStreak: resolvedCurrentStreak,
             totalPoints,
             chapterCompletions,
@@ -2026,7 +2080,44 @@ export default function DashboardPage() {
             likesGiven: groupLikeGivenCount + feedLikesGivenCount,
             tvVideosStarted,
             booksCompleted,
-          }));
+          });
+          setBadgeProgress(nextBadgeProgress);
+
+          const alreadyAwardedBadgeIds = new Set(
+            actionRows
+              .map((row) => getAwardedBadgeId(row?.action_label))
+              .filter((badgeId): badgeId is string => Boolean(badgeId))
+          );
+          const newlyEarnedBadges = nextBadgeProgress.filter(
+            (badge) => badge.current >= badge.target && !alreadyAwardedBadgeIds.has(badge.id)
+          );
+
+          if (newlyEarnedBadges.length > 0) {
+            supabase
+              .from("master_actions")
+              .insert(newlyEarnedBadges.map((badge) => ({
+                user_id: userId,
+                action_type: ACTION_TYPE.badge_earned,
+                action_label: getBadgeAwardLabel(badge),
+              })))
+              .then(({ error: badgeAwardError }) => {
+                if (didCancel) return;
+                if (badgeAwardError) {
+                  console.error("[BADGES] Could not award earned badges:", badgeAwardError);
+                  return;
+                }
+
+                setEarnedBadgeQueue((current) => {
+                  const existingIds = new Set(current.map((badge) => badge.id));
+                  const activeId = activeEarnedBadge?.id ?? null;
+                  const freshBadges = newlyEarnedBadges.filter(
+                    (badge) => badge.id !== activeId && !existingIds.has(badge.id)
+                  );
+                  return freshBadges.length ? [...current, ...freshBadges] : current;
+                });
+                document.dispatchEvent(new CustomEvent("bb:points"));
+              });
+          }
         }
 
         // Write current_level back to profile_stats so other components can read it
@@ -3190,6 +3281,83 @@ export default function DashboardPage() {
       </ModalShell>
 
       <ModalShell
+        isOpen={Boolean(activeEarnedBadge)}
+        onClose={() => setActiveEarnedBadge(null)}
+        backdropColor="bg-black/45"
+      >
+        {activeEarnedBadge ? (() => {
+          const tone = BADGE_TONE_CLASSES[activeEarnedBadge.tone];
+
+          return (
+            <div className="mx-4 w-full max-w-md overflow-hidden rounded-[32px] border border-[#d7e4f7] bg-white shadow-2xl">
+              <style>{`
+                @keyframes badge-color-pop {
+                  0% { filter: grayscale(1); transform: scale(0.82) rotate(-4deg); opacity: 0.75; }
+                  55% { filter: grayscale(0.25); transform: scale(1.1) rotate(2deg); opacity: 1; }
+                  100% { filter: grayscale(0); transform: scale(1) rotate(0deg); opacity: 1; }
+                }
+                @keyframes badge-earned-shine {
+                  0% { transform: translateX(-130%) rotate(18deg); opacity: 0; }
+                  35% { opacity: 0.75; }
+                  100% { transform: translateX(150%) rotate(18deg); opacity: 0; }
+                }
+                @keyframes badge-float-spark {
+                  0%, 100% { transform: translateY(0) scale(1); opacity: 0.55; }
+                  50% { transform: translateY(-8px) scale(1.16); opacity: 1; }
+                }
+                .badge-color-pop { animation: badge-color-pop 900ms cubic-bezier(0.2, 0.9, 0.25, 1.15) both; }
+                .badge-earned-shine { animation: badge-earned-shine 1150ms ease-out 280ms both; }
+                .badge-float-spark { animation: badge-float-spark 1.7s ease-in-out infinite; }
+              `}</style>
+              <div className="relative overflow-hidden bg-gradient-to-br from-[#edf7ff] via-white to-[#f8fbff] px-6 py-7 text-center">
+                <div className="pointer-events-none absolute left-8 top-9 text-xl badge-float-spark">✦</div>
+                <div className="pointer-events-none absolute right-10 top-16 text-lg badge-float-spark" style={{ animationDelay: "0.35s" }}>✧</div>
+                <div className="pointer-events-none absolute bottom-16 left-12 text-lg badge-float-spark" style={{ animationDelay: "0.7s" }}>✦</div>
+
+                <div className="flex items-center justify-center gap-3">
+                  <LouisAvatar mood="hands" size={76} />
+                  <div className="rounded-full bg-[#eaf6ff] px-3 py-2 text-3xl shadow-sm" aria-hidden="true">
+                    👍
+                  </div>
+                </div>
+
+                <p className="mt-4 text-xs font-black uppercase tracking-[0.24em] text-[#5f86bd]">Badge unlocked</p>
+                <h2 className="mt-2 text-3xl font-black leading-tight text-[#1f2a44]">You earned a new badge!</h2>
+
+                <div className="mt-6 flex justify-center">
+                  <div className={`badge-color-pop relative flex h-36 w-36 items-center justify-center overflow-hidden rounded-[36px] border-2 text-center ${tone.tile} ${tone.glow}`}>
+                    <span className="text-7xl" aria-hidden="true">{activeEarnedBadge.emoji}</span>
+                    <span className="badge-earned-shine pointer-events-none absolute inset-y-0 left-0 w-12 bg-white/70 blur-sm" />
+                    <span className="absolute -right-2 -top-2 flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-[#19c463] text-base font-black text-white shadow-md">
+                      ✓
+                    </span>
+                  </div>
+                </div>
+
+                <h3 className="mt-5 text-2xl font-black text-[#1f2a44]">{activeEarnedBadge.title}</h3>
+                <p className="mt-2 rounded-full bg-[#eaf7ff] px-4 py-2 text-sm font-black text-[#315f7d]">
+                  +{activeEarnedBadge.xp} XP
+                </p>
+                <p className="mx-auto mt-4 max-w-sm text-sm leading-6 text-[#536a8f]">
+                  {activeEarnedBadge.description}
+                </p>
+              </div>
+
+              <div className="px-6 pb-6 pt-4">
+                <button
+                  type="button"
+                  onClick={() => setActiveEarnedBadge(null)}
+                  className="w-full rounded-full bg-[#7BAFD4] px-5 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+                >
+                  Let’s go
+                </button>
+              </div>
+            </div>
+          );
+        })() : null}
+      </ModalShell>
+
+      <ModalShell
         isOpen={showBadgesModal}
         onClose={() => {
           setSelectedBadge(null);
@@ -3281,6 +3449,11 @@ export default function DashboardPage() {
                       <p className="mx-auto mt-2 inline-flex rounded-full bg-[#edf5ff] px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[#5f86bd]">
                         {badge.category}
                       </p>
+                      <p className={`mx-auto mt-2 inline-flex rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
+                        isEarned ? "bg-[#e3f8ec] text-[#12723b]" : "bg-slate-100 text-slate-500"
+                      }`}>
+                        +{badge.xp} XP
+                      </p>
                     </div>
                     <div className="mt-auto w-full pt-4">
                       <div className="mb-1 flex items-center justify-between text-[11px] font-black text-[#536a8f]">
@@ -3335,6 +3508,9 @@ export default function DashboardPage() {
                   </div>
                   <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[#5f86bd]">{selectedBadge.category}</p>
                   <h3 className="mt-1 text-3xl font-black leading-tight text-[#1f2a44]">{selectedBadge.title}</h3>
+                  <p className="mx-auto mt-3 inline-flex rounded-full bg-[#eaf7ff] px-4 py-2 text-sm font-black text-[#315f7d]">
+                    +{selectedBadge.xp} XP
+                  </p>
                   <p className="mt-3 text-sm leading-6 text-[#536a8f]">{selectedBadge.description}</p>
                   <div className="mt-5 rounded-2xl bg-[#f4f8ff] p-4">
                     <div className="flex items-center justify-between text-sm font-black text-[#24324b]">

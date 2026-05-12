@@ -58,6 +58,7 @@ export const ACTION_POINT_WEIGHTS: Partial<Record<ActionType, number>> = {
   study_group_article_opened: 2,
   study_group_bible_study_card_opened: 2,
   louis_daily_task_bonus: 10,
+  badge_earned: 0,
 };
 
 export const SOCIAL_POINT_WEIGHTS = {
