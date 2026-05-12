@@ -54,6 +54,10 @@ const BuddyCelebrationModal = dynamic(
 const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password"];
 const DAILY_RECOMMENDATIONS_ENABLED = false;
 
+function isSupabaseEmailConfirmed(user: { email_confirmed_at?: string | null; confirmed_at?: string | null } | null | undefined) {
+  return Boolean(user?.email_confirmed_at || user?.confirmed_at);
+}
+
 function urlBase64ToUint8Array(base64String: string) {
   const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
@@ -93,6 +97,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [isEmailConfirmed, setIsEmailConfirmed] = useState(true);
+  const [showEmailConfirmationGate, setShowEmailConfirmationGate] = useState(false);
+  const [resendConfirmationLoading, setResendConfirmationLoading] = useState(false);
+  const [resendConfirmationMessage, setResendConfirmationMessage] = useState<string | null>(null);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const profileMenuRef = useRef<HTMLDivElement>(null);
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
@@ -462,6 +470,30 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.warn("[FULL_NAME] Check skipped due to transient issue.", error);
     }
+  }
+
+  async function handleResendConfirmationEmail() {
+    if (!userEmail) {
+      setResendConfirmationMessage("We could not find an email address for this session. Please log out and sign back in.");
+      return;
+    }
+
+    setResendConfirmationLoading(true);
+    setResendConfirmationMessage(null);
+    const redirectTo = typeof window !== "undefined" ? `${window.location.origin}/dashboard` : undefined;
+    const { error } = await supabase.auth.resend({
+      type: "signup",
+      email: userEmail,
+      options: redirectTo ? { emailRedirectTo: redirectTo } : undefined,
+    });
+    setResendConfirmationLoading(false);
+
+    if (error) {
+      setResendConfirmationMessage(error.message || "We could not resend the confirmation email. Try again in a minute.");
+      return;
+    }
+
+    setResendConfirmationMessage("Confirmation email sent. Check your inbox and spam folder.");
   }
 
   async function handleSaveRequiredFullName() {
@@ -1127,6 +1159,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       setIsLoggedIn(!!session);
       setUserEmail(session?.user?.email ?? null);
+      setIsEmailConfirmed(session?.user ? isSupabaseEmailConfirmed(session.user) : true);
       
       // Set userId and username for feedback system
       if (session?.user?.id) {
@@ -1149,6 +1182,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       } else {
         setUserId(null);
         setUsername("");
+        setIsEmailConfirmed(true);
+        setShowEmailConfirmationGate(false);
+        setResendConfirmationMessage(null);
         setShowOnboardingModal(false);
         setOnboardingStudySelectionOnly(false);
         setFeatureToursEnabled(false);
@@ -1179,6 +1215,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       async (_event, session) => {
         setIsLoggedIn(!!session);
         setUserEmail(session?.user?.email ?? null);
+        setIsEmailConfirmed(session?.user ? isSupabaseEmailConfirmed(session.user) : true);
         
         // Set userId and username for feedback system
         if (session?.user?.id) {
@@ -1198,6 +1235,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         } else {
           setUserId(null);
           setUsername("");
+          setIsEmailConfirmed(true);
+          setShowEmailConfirmationGate(false);
+          setResendConfirmationMessage(null);
           setShowOnboardingModal(false);
           setOnboardingStudySelectionOnly(false);
           setFeatureToursEnabled(false);
@@ -1572,6 +1612,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     router.replace("/dashboard");
   }, [isLoggedIn, userId, showOnboardingModal, pathname, router]);
 
+  useEffect(() => {
+    if (!isLoggedIn || !userId || isEmailConfirmed || showOnboardingModal) return;
+    if (!pathname) return;
+    if (pathname === "/dashboard") return;
+    if (HIDDEN_ROUTES.includes(pathname)) return;
+    setShowEmailConfirmationGate(true);
+    router.replace("/dashboard");
+  }, [isLoggedIn, userId, isEmailConfirmed, showOnboardingModal, pathname, router]);
+
   return (
     <FeatureRenderPriorityProvider value={{ featureToursEnabled }}>
 
@@ -1646,9 +1695,57 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
+      {isLoggedIn && userId && !showOnboardingModal && showEmailConfirmationGate && !isEmailConfirmed && (
+        <div className="fixed inset-0 z-[260] flex items-center justify-center bg-black/45 px-4">
+          <div className="w-full max-w-md rounded-3xl border border-[#d8e7f2] bg-white p-6 text-center shadow-2xl">
+            <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-[#edf7ff]">
+              <LouisAvatar mood="think" size={82} />
+            </div>
+            <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-[#5f93b8]">
+              Confirm your email
+            </p>
+            <h2 className="mt-2 text-2xl font-black text-gray-950">One quick step before exploring</h2>
+            <p className="mt-3 text-sm leading-6 text-gray-600">
+              You can start your first Bible study on the dashboard, but you need to confirm your email before using the rest of Bible Buddy.
+            </p>
+            {userEmail ? (
+              <p className="mt-3 rounded-2xl bg-[#f5f9fc] px-4 py-3 text-sm font-bold text-gray-800">
+                We sent the confirmation link to {userEmail}.
+              </p>
+            ) : null}
+            {resendConfirmationMessage ? (
+              <p className="mt-3 rounded-2xl bg-[#eef7ff] px-4 py-3 text-sm font-semibold text-[#315f7d]">
+                {resendConfirmationMessage}
+              </p>
+            ) : null}
+            <div className="mt-5 grid gap-3">
+              <button
+                type="button"
+                onClick={() => void handleResendConfirmationEmail()}
+                disabled={resendConfirmationLoading}
+                className="w-full rounded-2xl bg-[#7BAFD4] px-5 py-3 text-sm font-black text-[#05111f] shadow-lg transition hover:bg-[#91c2df] disabled:opacity-60"
+              >
+                {resendConfirmationLoading ? "Sending..." : "Resend confirmation email"}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowEmailConfirmationGate(false);
+                  setResendConfirmationMessage(null);
+                  router.replace("/dashboard");
+                }}
+                className="w-full rounded-2xl border border-gray-200 bg-white px-5 py-3 text-sm font-bold text-gray-700 transition hover:bg-gray-50"
+              >
+                Back to dashboard
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
 
       {/* FEEDBACK MODAL */}
-      {isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && (
+      {isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && !showEmailConfirmationGate && (
         <FeedbackModal
           userId={userId}
           username={username}
@@ -1669,7 +1766,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* GLOBAL UPDATE MODAL */}
-      {isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && (
+      {isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && !showEmailConfirmationGate && (
         <GlobalUpdateModal
           isOpen={showUpdateModal}
           onDismiss={handleDismissUpdateModal}
@@ -1677,7 +1774,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* DAILY RECOMMENDATION MODAL */}
-      {DAILY_RECOMMENDATIONS_ENABLED && isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && !showUpdateModal && showDailyRecommendation && dailyRecommendation && (
+      {DAILY_RECOMMENDATIONS_ENABLED && isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && !showEmailConfirmationGate && !showUpdateModal && showDailyRecommendation && dailyRecommendation && (
         <DailyRecommendationModal
           greeting={dailyRecommendation.greeting}
           contextLine={dailyRecommendation.contextLine}
@@ -1689,7 +1786,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         />
       )}
 
-      {isLoggedIn && userId && graceReward && !showOnboardingModal && (
+      {isLoggedIn && userId && graceReward && !showOnboardingModal && !showEmailConfirmationGate && (
         <div className="fixed inset-0 z-[260] flex items-center justify-center bg-black/45 px-4">
           <div className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-2xl">
             <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-blue-50">
@@ -1721,7 +1818,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
-      {isLoggedIn && userId && graceUsePrompt && !showOnboardingModal && (
+      {isLoggedIn && userId && graceUsePrompt && !showOnboardingModal && !showEmailConfirmationGate && (
         <div className="fixed inset-0 z-[260] flex items-center justify-center bg-black/45 px-4">
           <div className="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-2xl">
             <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-blue-50">
@@ -1762,7 +1859,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* CONTACT US MODAL */}
-      {isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && (
+      {isLoggedIn && userId && !showOnboardingModal && !showFullNameModal && !showEmailConfirmationGate && (
         <ContactUsModal
           userId={userId}
           username={username}

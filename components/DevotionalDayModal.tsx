@@ -904,21 +904,6 @@ Be accurate to Scripture.`;
                         );
                       })}
                     </div>
-                    <div className="hidden">
-                      <button
-                        type="button"
-                        onClick={handleIntroComplete}
-                        disabled={introCompleted}
-                        className={`w-full max-w-sm rounded-xl px-6 py-3 text-sm font-bold transition shadow-sm ${
-                          introCompleted
-                            ? "bg-emerald-100 text-emerald-700"
-                            : "text-slate-950 hover:opacity-90"
-                        }`}
-                        style={introCompleted ? undefined : { backgroundColor: "#7BAFD4" }}
-                      >
-                        {introCompleted ? "✓ Completed" : "Mark as Completed"}
-                      </button>
-                    </div>
                   </StudySectionCard>
 
                   <StudySectionCard title={`Read "${chapterLabel}"`} eyebrow="Task 2">

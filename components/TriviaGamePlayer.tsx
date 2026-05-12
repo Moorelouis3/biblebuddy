@@ -314,10 +314,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
             {correctCount}/{questions.length}
           </p>
           <p className="mt-3 text-gray-700">
-            {bookName} {chapter.chapter} finished.
-          </p>
-          <p className="mt-3 text-sm text-gray-600">
-            Now try Scrambled for this chapter to lock key words into memory.
+            {bookName} {chapter.chapter} trivia finished.
           </p>
           {earnedCorrectCount > 0 ? (
             <p className="mt-3 text-sm font-semibold text-emerald-700">

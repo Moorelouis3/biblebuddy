@@ -106,6 +106,7 @@ export default function LandingPage() {
       email: email.trim(),
       password: password.trim(),
       options: {
+        emailRedirectTo: typeof window !== "undefined" ? `${window.location.origin}/dashboard` : undefined,
         data: {
           first_name: firstName,
           last_name: lastName,
@@ -163,6 +164,12 @@ export default function LandingPage() {
     setLastName("");
     setEmail("");
     setPassword("");
+
+    if (data.session) {
+      router.push("/dashboard");
+      return;
+    }
+
     setShowSuccessModal(true);
   }
 
@@ -608,7 +615,9 @@ export default function LandingPage() {
                 </svg>
               </div>
               <h2 className="mb-2 text-2xl font-bold text-gray-900">Account created successfully!</h2>
-              <p className="mb-6 text-sm text-gray-600">Please check your email to confirm your account before logging in.</p>
+              <p className="mb-6 text-sm leading-6 text-gray-600">
+                Check your email to confirm your account. If Bible Buddy does not open automatically, confirm first and then log in.
+              </p>
               <button
                 onClick={() => {
                   setShowSuccessModal(false);

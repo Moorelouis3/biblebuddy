@@ -436,17 +436,6 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
             <div className="max-h-[75vh] overflow-y-auto px-6 py-5">
               <ChapterNotesMarkdown>{devotionalDay.devotional_text}</ChapterNotesMarkdown>
             </div>
-            <div className="border-t border-gray-100 px-6 py-4">
-              <button
-                type="button"
-                onClick={() => void closeIntroAndRefresh()}
-                className={`mx-auto block rounded-full px-8 py-3 text-sm font-black shadow-sm transition ${
-                  dayProgress?.is_completed ? "bg-emerald-100 text-emerald-700" : "bg-[#7BAFD4] text-slate-950 hover:bg-[#6aa3ca]"
-                }`}
-              >
-                {dayProgress?.is_completed ? "Intro Reading Completed" : "Mark as Read"}
-              </button>
-            </div>
           </div>
         </ModalShell>
       );
@@ -484,18 +473,6 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
                 <ChapterNotesMarkdown>{notesText}</ChapterNotesMarkdown>
               </div>
             )}
-          </div>
-          <div className="border-t border-gray-100 px-6 py-4">
-            <button
-              type="button"
-              onClick={() => void closeNotesAndRefresh()}
-              disabled={notesMarkedComplete}
-              className={`w-full rounded-full px-5 py-3 text-sm font-semibold transition ${
-                notesMarkedComplete ? "bg-emerald-100 text-emerald-700" : "bg-[#24457b] text-white hover:bg-[#1f3b69]"
-              }`}
-            >
-              {notesMarkedComplete ? "Notes Complete" : "Mark Notes Complete"}
-            </button>
           </div>
         </div>
       </ModalShell>
