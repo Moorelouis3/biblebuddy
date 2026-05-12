@@ -1419,6 +1419,20 @@ export default function DashboardJourneyExperience({
                 </div>
               )}
               </button>
+              {!isLoadingChecklist && allDone ? (
+                <div className="px-4 pb-4">
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      void handleCompletedStudyAction();
+                    }}
+                    className="w-full rounded-full bg-[#7BAFD4] px-4 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc] focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]/35"
+                  >
+                    {checklistData?.nextJourneyTarget ? "Start next chapter" : "Pick a new Bible Study"}
+                  </button>
+                </div>
+              ) : null}
               {showDevotionalSettings ? (
                 <div
                   className="absolute right-3 top-14 z-30 w-[min(22rem,calc(100vw-3rem))] rounded-2xl border border-[#cfe4f3] bg-white p-4 text-left shadow-xl"

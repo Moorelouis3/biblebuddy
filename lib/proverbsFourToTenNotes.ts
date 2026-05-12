@@ -349,6 +349,962 @@ const PROVERBS_FIVE: ChapterNotes = {
   ],
 };
 
+const PROVERBS_FOUR_NOTES_TEXT = `# Proverbs 4 Study Notes
+
+## 📍 Wisdom Handed Down
+
+> **1** Hear, ye children, the instruction of a father, and attend to know understanding.
+>
+> **2** For I give you good doctrine, forsake ye not my law.
+>
+> **3** For I was my father's son, tender and only beloved in the sight of my mother.
+>
+> **4** He taught me also, and said unto me, Let thine heart retain my words: keep my commandments, and live.
+
+Proverbs 4 begins with a family picture.
+
+Solomon is not just standing as a king giving commands.
+
+He is speaking as a son who remembers being taught.
+
+And now he is a father trying to pass that same wisdom forward.
+
+That matters.
+
+Wisdom is not treated like random advice.
+
+It is something received, guarded, and handed down.
+
+Solomon is showing his son:
+
+👨‍👦 wisdom can be taught  
+📖 instruction can be inherited  
+❤️ the heart must hold what the ears hear  
+👣 life is shaped by what you keep walking in
+
+## 👂 Hear, Ye Children
+
+Solomon says:
+
+**Hear.**
+
+That word is important.
+
+In Proverbs, hearing is not just sound entering your ears.
+
+It means listening with the intention to receive.
+
+It means:
+
+👂 pay attention  
+🧠 take it seriously  
+❤️ let it shape you  
+👣 be ready to walk differently
+
+A lot of people hear wisdom but do not receive it.
+
+They hear correction.
+
+They hear warning.
+
+They hear truth.
+
+But they do not let it change them.
+
+Solomon is teaching that wisdom starts with a posture.
+
+Before you can walk wisely, you have to become teachable.
+
+## 👨‍👦 The Instruction Of A Father
+
+This chapter has a strong father-to-child tone.
+
+Solomon is saying:
+
+This is not control.
+
+This is protection.
+
+A father who loves his child does not stay silent while the child walks toward danger.
+
+He speaks.
+
+He warns.
+
+He teaches.
+
+He says what needs to be said before pain becomes the teacher.
+
+That is the heart of Proverbs 4.
+
+Solomon is not trying to make wisdom sound fancy.
+
+He is trying to keep his son alive.
+
+## 📚 Good Doctrine
+
+In verse 2 Solomon says:
+
+"For I give you good doctrine."
+
+Doctrine means teaching.
+
+But this is not just information.
+
+This is teaching that gives structure to life.
+
+Good doctrine helps a person know:
+
+🧭 what path to take  
+⚠️ what path to avoid  
+❤️ what to guard  
+🗣️ what to say  
+👀 what to look at  
+👣 where to walk
+
+Solomon is saying:
+
+What I am giving you is good.
+
+Do not throw it away.
+
+Do not treat it like something old and useless.
+
+Do not forsake it just because temptation sounds louder.
+
+## 👶 I Was My Father's Son
+
+This part is powerful.
+
+Solomon says:
+
+"For I was my father's son..."
+
+Before Solomon was a teacher, he was a learner.
+
+Before he gave instruction, he received instruction.
+
+Before he became famous for wisdom, he was a child being shaped.
+
+This reminds us that nobody starts mature.
+
+Wisdom has to be received.
+
+Solomon is remembering David.
+
+David was:
+
+🪨 the one who fought Goliath  
+🎶 the worshiper who wrote psalms  
+👑 the king of Israel  
+💔 a man who knew both victory and failure  
+🙏 a man who understood repentance
+
+So when Solomon teaches his son, there is history behind it.
+
+There is legacy behind it.
+
+There is pain behind it.
+
+There is worship behind it.
+
+Wisdom is being passed through a family line that has seen what happens when the heart is guarded and what happens when it is not.
+
+## ❤️ Let Thine Heart Retain My Words
+
+David taught Solomon:
+
+"Let thine heart retain my words."
+
+That means wisdom cannot just sit in your memory.
+
+It has to be held in your heart.
+
+The heart in Proverbs is not only emotion.
+
+It is the inner control center of a person.
+
+It includes:
+
+🧠 thinking  
+❤️ desire  
+🧭 direction  
+🙏 devotion  
+👣 choices
+
+So when wisdom reaches the heart, it starts shaping the whole life.
+
+This is why Solomon says:
+
+Keep my commandments, and live.
+
+Wisdom is connected to life.
+
+Not because wisdom is magic.
+
+But because wisdom trains you to walk in the path that leads toward life instead of destruction.
+
+## 📍 Get Wisdom
+
+> **5** Get wisdom, get understanding: forget it not; neither decline from the words of my mouth.
+>
+> **6** Forsake her not, and she shall preserve thee: love her, and she shall keep thee.
+>
+> **7** Wisdom is the principal thing; therefore get wisdom: and with all thy getting get understanding.
+>
+> **8** Exalt her, and she shall promote thee: she shall bring thee to honour, when thou dost embrace her.
+>
+> **9** She shall give to thine head an ornament of grace: a crown of glory shall she deliver to thee.
+
+Now Solomon gives one of the clearest commands in the chapter:
+
+**Get wisdom.**
+
+He says it again:
+
+**Get understanding.**
+
+The repetition matters.
+
+Solomon is showing urgency.
+
+He is not saying wisdom is a nice extra.
+
+He is saying wisdom is necessary.
+
+## 💎 Wisdom Is The Principal Thing
+
+Verse 7 says:
+
+"Wisdom is the principal thing."
+
+Principal means first.
+
+Chief.
+
+Highest.
+
+The thing that gives shape to everything else.
+
+Solomon is saying:
+
+Before you chase success, get wisdom.
+
+Before you chase money, get wisdom.
+
+Before you chase influence, get wisdom.
+
+Before you chase pleasure, get wisdom.
+
+Because if you get everything else without wisdom, you may not know how to carry it.
+
+You can have:
+
+💰 money and still be foolish  
+👑 power and still be destructive  
+🗣️ influence and still mislead people  
+🔥 desire and still ruin your life  
+📚 information and still lack discernment
+
+Wisdom teaches you how to live with what you have.
+
+## 🧠 Get Understanding
+
+Understanding is connected to wisdom, but it has its own emphasis.
+
+Understanding means you can see what something really means.
+
+It helps you connect the dots.
+
+It helps you ask:
+
+👀 What is really happening here?  
+🧭 Where is this going?  
+⚠️ What is under the surface?  
+🙏 What does God say about this?
+
+Wisdom helps you choose rightly.
+
+Understanding helps you see clearly.
+
+That is why Solomon says to get both.
+
+You need wisdom for direction.
+
+You need understanding for discernment.
+
+## 🛡️ She Shall Preserve Thee
+
+Solomon describes wisdom like someone who protects.
+
+He says:
+
+"Forsake her not, and she shall preserve thee."
+
+To preserve means to guard, protect, and keep from ruin.
+
+Wisdom protects you by showing you danger before you step into it.
+
+Wisdom protects you from:
+
+🔥 temptation that looks harmless  
+🗣️ words that cause damage  
+👥 friendships that pull you away  
+👣 paths that lead downward  
+❤️ desires that do not belong in control
+
+This does not mean wise people never suffer.
+
+It means wisdom keeps you from a lot of avoidable destruction.
+
+There is pain in life that comes from living in a broken world.
+
+But there is also pain that comes from ignoring wisdom.
+
+Proverbs is trying to protect you from the second kind.
+
+## ❤️ Love Her
+
+Solomon does not only say learn wisdom.
+
+He says love her.
+
+That is deeper.
+
+You can learn something and still not value it.
+
+You can know what is right and still not love what is right.
+
+Solomon wants wisdom to become precious.
+
+He wants his son to treat wisdom like something worth holding close.
+
+Because what you love, you return to.
+
+What you love, you protect.
+
+What you love, you make room for.
+
+If you only respect wisdom when life is calm, temptation may pull you away when life gets loud.
+
+But if you love wisdom, you will cling to it when pressure comes.
+
+## 👑 Wisdom Brings Honour
+
+Solomon says wisdom will promote, honor, and crown the one who embraces her.
+
+This does not mean every wise person becomes famous.
+
+It means wisdom gives weight to a life.
+
+There is a kind of honor that comes from living with:
+
+🧠 discernment  
+❤️ integrity  
+🗣️ careful speech  
+👣 steady obedience  
+🙏 reverence for God
+
+A wise life becomes beautiful in a way foolishness cannot produce.
+
+That is why Solomon uses crown language.
+
+Wisdom does not just help you avoid destruction.
+
+Wisdom forms you into someone who carries life with grace.
+
+## 📍 The Path Wisdom Gives
+
+> **10** Hear, O my son, and receive my sayings; and the years of thy life shall be many.
+>
+> **11** I have taught thee in the way of wisdom; I have led thee in right paths.
+>
+> **12** When thou goest, thy steps shall not be straitened; and when thou runnest, thou shalt not stumble.
+>
+> **13** Take fast hold of instruction; let her not go: keep her; for she is thy life.
+
+Now Solomon connects wisdom to a path.
+
+This is one of the biggest ideas in Proverbs.
+
+Life is not only about isolated decisions.
+
+Life is about direction.
+
+A path is made by repeated steps.
+
+One step may not feel huge.
+
+But repeated steps create a road.
+
+That road eventually leads somewhere.
+
+## 🛤️ The Way Of Wisdom
+
+Solomon says:
+
+"I have taught thee in the way of wisdom."
+
+Wisdom is a way.
+
+It is not just a thought.
+
+It is not just a quote.
+
+It is not just something you agree with.
+
+It is a road you walk.
+
+That means wisdom has to become visible in real life.
+
+It shows up in:
+
+🗣️ how you speak  
+👀 what you look at  
+👥 who you listen to  
+💰 how you handle money  
+❤️ what you desire  
+⚠️ what you avoid  
+🙏 how you respond to God
+
+Wisdom becomes a way of life.
+
+## 👣 Right Paths
+
+Solomon says he has led his son in right paths.
+
+The word path matters because it shows movement.
+
+You are always walking somewhere.
+
+Even when you feel stuck, your choices are forming a direction.
+
+Right paths are not always easy paths.
+
+But they are straight paths.
+
+They are paths that line up with truth.
+
+They are paths that do not require you to hide, lie, compromise, or keep looking over your shoulder.
+
+## 🏃 When Thou Runnest, Thou Shalt Not Stumble
+
+Verse 12 shows the benefit of wisdom.
+
+When you walk, your steps are not trapped.
+
+When you run, you do not stumble.
+
+This is a picture of stability.
+
+Wisdom does not remove every challenge.
+
+But wisdom gives your life room to move without constant self-created traps.
+
+Foolishness makes life narrow.
+
+Sin promises freedom but creates bondage.
+
+Wisdom may feel restrictive at first, but it actually protects freedom.
+
+It keeps your steps from being tangled.
+
+## ✊ Take Fast Hold Of Instruction
+
+Solomon says:
+
+"Take fast hold of instruction; let her not go."
+
+This means grip it.
+
+Hold it tightly.
+
+Do not treat instruction loosely.
+
+Why?
+
+Because life will try to pull it from your hands.
+
+Temptation will pull.
+
+Pride will pull.
+
+People will pull.
+
+Pain will pull.
+
+Desire will pull.
+
+So Solomon says:
+
+Hold on.
+
+Keep her.
+
+For she is thy life.
+
+That is not small language.
+
+Instruction is connected to life because it keeps you walking where life is found.
+
+## 📍 Avoid The Path Of The Wicked
+
+> **14** Enter not into the path of the wicked, and go not in the way of evil men.
+>
+> **15** Avoid it, pass not by it, turn from it, and pass away.
+>
+> **16** For they sleep not, except they have done mischief; and their sleep is taken away, unless they cause some to fall.
+>
+> **17** For they eat the bread of wickedness, and drink the wine of violence.
+
+Now the tone gets stronger.
+
+Solomon does not only tell his son to walk in wisdom.
+
+He tells him what path to avoid.
+
+This is important because wisdom is not only about saying yes to what is right.
+
+Wisdom also says no to what destroys.
+
+## 🚫 Enter Not
+
+Solomon says:
+
+"Enter not into the path of the wicked."
+
+That means do not start.
+
+Do not step onto it.
+
+Do not test it.
+
+Do not see how close you can get.
+
+This is the same kind of wisdom we see in Proverbs 5 when Solomon says not to go near the door.
+
+Some paths are not meant to be explored.
+
+They are meant to be avoided.
+
+## 🛑 Avoid It, Pass Not By It
+
+Verse 15 stacks commands:
+
+Avoid it.
+
+Pass not by it.
+
+Turn from it.
+
+Pass away.
+
+Solomon keeps repeating the idea because people often underestimate proximity.
+
+They think:
+
+👉 I can be close and still be fine  
+👉 I can watch and not want it  
+👉 I can listen and not be shaped  
+👉 I can walk near it and not enter
+
+But Solomon says do not even pass by it.
+
+That is wisdom.
+
+Not because you are weak in a shameful way.
+
+But because you are human.
+
+And wisdom knows that direction is shaped by proximity.
+
+## 🌑 The Path Of Evil Men
+
+Solomon describes evil men as people who cannot rest unless they do mischief.
+
+This is a picture of a heart trained in the wrong direction.
+
+At first, wickedness may be a choice.
+
+Over time, it becomes an appetite.
+
+They sleep not unless they have done wrong.
+
+That means evil has become normal to them.
+
+Their conscience has been dulled.
+
+Their desires have been trained.
+
+Their habits have hardened.
+
+That is why Solomon warns his son before he joins them.
+
+Because the path does not only take you somewhere.
+
+It changes you while you walk.
+
+## 🍞 Bread Of Wickedness
+
+Verse 17 says:
+
+"For they eat the bread of wickedness, and drink the wine of violence."
+
+Bread and wine are daily images.
+
+They represent what sustains a person.
+
+Solomon is saying wickedness has become their food.
+
+Violence has become their drink.
+
+This is not occasional failure.
+
+This is a lifestyle.
+
+That matters because sin can become familiar.
+
+What shocked you once can become normal if you keep feeding on it.
+
+Wisdom tells you to walk away before darkness becomes your diet.
+
+## 📍 Two Different Roads
+
+> **18** But the path of the just is as the shining light, that shineth more and more unto the perfect day.
+>
+> **19** The way of the wicked is as darkness: they know not at what they stumble.
+
+Now Solomon gives one of the clearest contrasts in the chapter.
+
+There are two roads.
+
+One road gets brighter.
+
+The other road gets darker.
+
+This is the picture of wisdom versus wickedness.
+
+## ☀️ The Path Of The Just
+
+The path of the just is like shining light.
+
+It gets brighter and brighter.
+
+This does not mean the wise person understands everything immediately.
+
+It means the path of righteousness has increasing clarity.
+
+As you walk with wisdom, things become clearer.
+
+You begin to see:
+
+🧠 what matters  
+👀 what is dangerous  
+🧭 where choices lead  
+🙏 why God’s way is good  
+❤️ what needs to change in you
+
+Wisdom often grows like morning light.
+
+Not all at once.
+
+But steadily.
+
+More and more.
+
+## 🌑 The Way Of The Wicked
+
+The wicked path is darkness.
+
+And Solomon says:
+
+"they know not at what they stumble."
+
+That means they are falling but cannot even clearly see why.
+
+This is one of the dangers of foolishness.
+
+It blinds you.
+
+A person can keep stumbling and still blame everything except the path they are on.
+
+They blame people.
+
+They blame circumstances.
+
+They blame God.
+
+They blame bad luck.
+
+But wisdom asks:
+
+What road am I walking?
+
+Because if the path is darkness, stumbling should not surprise you.
+
+## 📍 Guard Your Heart
+
+> **20** My son, attend to my words; incline thine ear unto my sayings.
+>
+> **21** Let them not depart from thine eyes; keep them in the midst of thine heart.
+>
+> **22** For they are life unto those that find them, and health to all their flesh.
+>
+> **23** Keep thy heart with all diligence; for out of it are the issues of life.
+
+This is the center of the chapter.
+
+Solomon returns to the same command:
+
+Listen.
+
+Pay attention.
+
+Keep wisdom close.
+
+But then he gives one of the most important verses in Proverbs:
+
+**Keep thy heart with all diligence; for out of it are the issues of life.**
+
+## 👀 Let Them Not Depart From Thine Eyes
+
+Solomon says wisdom should stay in front of your eyes.
+
+That means wisdom needs to remain visible in how you think.
+
+Do not put it away after reading.
+
+Do not treat it like something for one quiet moment and then forget it.
+
+Keep it before you.
+
+Because what stays in front of your eyes affects where your feet go.
+
+## ❤️ Keep Them In The Midst Of Thine Heart
+
+Again, Solomon brings wisdom to the heart.
+
+Not the edge of the heart.
+
+The middle.
+
+The center.
+
+This means wisdom should not be a side influence.
+
+It should be central.
+
+It should shape what you love, what you choose, what you avoid, and what you return to.
+
+## 🩺 Life And Health
+
+Verse 22 says wisdom is life and health.
+
+This does not mean wisdom guarantees a trouble-free life.
+
+Proverbs is wisdom literature, not a vending machine.
+
+It teaches patterns.
+
+And the pattern is this:
+
+Wisdom tends toward life.
+
+Foolishness tends toward destruction.
+
+Wisdom brings health to the way a person thinks, speaks, chooses, and walks.
+
+## 🛡️ Keep Thy Heart
+
+To keep means to guard.
+
+Protect.
+
+Watch over.
+
+The heart must be guarded because it is the source of direction.
+
+Solomon says:
+
+"for out of it are the issues of life."
+
+The heart is like a spring.
+
+What flows out of it affects everything downstream.
+
+If the heart is polluted, the life will show it.
+
+If the heart is guarded by wisdom, the life will show that too.
+
+## 🧠 Why The Heart Matters
+
+A lot of people try to fix only the outside.
+
+They try to change behavior without dealing with desire.
+
+They try to control words without dealing with bitterness.
+
+They try to avoid sin without asking what the heart is loving.
+
+But Proverbs goes deeper.
+
+Solomon says guard the heart because life flows from it.
+
+Your heart affects:
+
+🗣️ your speech  
+👀 your eyes  
+👣 your steps  
+👥 your relationships  
+🙏 your obedience  
+🔥 your desires
+
+That is why the next verses move from heart to mouth, eyes, and feet.
+
+The outside follows the inside.
+
+## 📍 Watch Your Mouth, Eyes, And Steps
+
+> **24** Put away from thee a froward mouth, and perverse lips put far from thee.
+>
+> **25** Let thine eyes look right on, and let thine eyelids look straight before thee.
+>
+> **26** Ponder the path of thy feet, and let all thy ways be established.
+>
+> **27** Turn not to the right hand nor to the left: remove thy foot from evil.
+
+The chapter ends with the whole person being brought under wisdom.
+
+The heart has to be guarded.
+
+Then the mouth, eyes, and feet have to follow.
+
+This is practical.
+
+Solomon is showing that wisdom is not only spiritual language.
+
+Wisdom touches the body.
+
+## 🗣️ Put Away A Froward Mouth
+
+A froward mouth means a crooked mouth.
+
+Speech that twists.
+
+Speech that deceives.
+
+Speech that stirs trouble.
+
+Speech that does not line up with truth.
+
+Solomon says put it away.
+
+Not manage it.
+
+Not excuse it.
+
+Put it away.
+
+Because speech reveals and shapes the heart.
+
+If your mouth keeps defending foolishness, your heart will become more comfortable with it.
+
+## 👀 Let Thine Eyes Look Right On
+
+Eyes represent focus.
+
+What you keep looking at shapes what you keep wanting.
+
+Solomon says look straight ahead.
+
+Do not let your eyes wander toward every invitation.
+
+Do not keep turning your attention toward what pulls you from wisdom.
+
+Focus matters.
+
+Distraction is not always harmless.
+
+Sometimes distraction becomes direction.
+
+## 👣 Ponder The Path Of Thy Feet
+
+To ponder means to weigh.
+
+Think carefully.
+
+Examine.
+
+Solomon says to think about where your feet are taking you.
+
+Ask:
+
+🧭 Where is this habit leading?  
+⚠️ What is this relationship producing?  
+👀 What is this desire training in me?  
+🙏 Is this path pulling me closer to God or away from Him?
+
+Wisdom does not sleepwalk through life.
+
+Wisdom pays attention to direction.
+
+## 🚫 Remove Thy Foot From Evil
+
+The final command is simple:
+
+Remove your foot from evil.
+
+Do not keep one foot in wisdom and one foot in destruction.
+
+Do not flirt with the path you know is wrong.
+
+Do not keep walking beside what God told you to leave.
+
+Remove your foot.
+
+That means make a move.
+
+Change direction.
+
+Step away.
+
+Wisdom is not only knowing the path is wrong.
+
+Wisdom is leaving it.
+
+## 🧠 The Big Lesson Of Proverbs 4
+
+Proverbs 4 is about direction.
+
+Solomon is teaching his son that life is shaped by what you keep receiving, guarding, and walking in.
+
+The chapter moves like this:
+
+👂 listen to wisdom  
+💎 get wisdom  
+🛤️ walk in right paths  
+🚫 avoid the wicked path  
+☀️ choose the road that gets brighter  
+❤️ guard your heart  
+🗣️ watch your mouth  
+👀 focus your eyes  
+👣 weigh your steps
+
+The center of the chapter is the heart.
+
+Because the path you walk is connected to the heart you guard.
+
+The main lesson is this:
+
+**Guard the heart, because the life follows what the heart keeps.**
+
+That is wisdom.
+
+If the heart is guarded, the path becomes clearer.
+
+But if the heart is left unguarded, the feet will eventually follow whatever has been allowed to grow inside.
+`;
+
 const PROVERBS_FIVE_NOTES_TEXT = `# Proverbs 5 Study Notes
 
 ## 📍 Wisdom Before Desire Speaks
@@ -1952,7 +2908,7 @@ const PROVERBS_TEN: ChapterNotes = {
 };
 
 export const PROVERBS_FOUR_TO_TEN_NOTES: Record<number, string> = {
-  4: renderNotes(4, PROVERBS_FOUR),
+  4: PROVERBS_FOUR_NOTES_TEXT,
   5: PROVERBS_FIVE_NOTES_TEXT,
   6: renderNotes(6, PROVERBS_SIX),
   7: renderNotes(7, PROVERBS_SEVEN),
