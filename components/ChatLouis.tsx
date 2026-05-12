@@ -2319,8 +2319,6 @@ export function ChatLouis() {
           .from("profile_stats")
           .update({
             louis_journey_stage: nextJourneyStage,
-            louis_primary_devotional_id: nextPrimaryDevotional?.id ?? null,
-            louis_primary_devotional_day: nextPrimaryDevotional?.dayNumber ?? 0,
             louis_last_feature_nudge: nextHabitNudge?.key ?? null,
             louis_feature_rollout: desiredRollout,
           })

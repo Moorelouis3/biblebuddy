@@ -78,7 +78,7 @@ function getTaskStatusCopy(task: TaskState) {
 function getTaskPillClasses(task: TaskState) {
   if (task.done) return "bg-green-100 text-green-700";
   if (task.disabled) return "bg-gray-200 text-gray-500";
-  return "bg-[#dde8fb] text-[#5570a3]";
+  return "bg-gray-200 text-gray-600";
 }
 
 function getTaskCardCopy(task: TaskState, index: number) {
@@ -1307,14 +1307,19 @@ export default function DashboardJourneyExperience({
         @keyframes next-task-pulse {
           0%, 100% {
             transform: scale(1);
-            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 0 0 0 rgba(123, 175, 212, 0.42);
-            border-color: #b8d9ef;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 0 0 0 rgba(15, 23, 42, 0.16);
+            border-color: #d1d5db;
           }
           50% {
             transform: scale(1.02);
-            box-shadow: 0 16px 36px rgba(75, 156, 211, 0.28), 0 0 0 8px rgba(123, 175, 212, 0.2);
-            border-color: #7BAFD4;
+            box-shadow: 0 16px 36px rgba(15, 23, 42, 0.16), 0 0 0 8px rgba(15, 23, 42, 0.08);
+            border-color: #9ca3af;
           }
+        }
+
+        @keyframes start-here-flash {
+          0%, 100% { opacity: 1; transform: translateY(0); }
+          50% { opacity: 0.45; transform: translateY(-1px); }
         }
 
         .task-complete-pop { animation: task-complete-pop 980ms cubic-bezier(0.2, 0.85, 0.25, 1); }
@@ -1325,6 +1330,7 @@ export default function DashboardJourneyExperience({
         .progress-glow { animation: progress-glow 950ms ease-out; }
         .chapter-complete-fill { animation: chapter-complete-fill 900ms ease-out; }
         .next-task-pulse { animation: next-task-pulse 1.9s ease-in-out infinite; }
+        .start-here-flash { animation: start-here-flash 1s ease-in-out infinite; }
         .spark-a { --spark-x: -53px; --spark-y: -53px; }
         .spark-b { --spark-x: 23px; --spark-y: -70px; }
         .spark-c { --spark-x: 85px; --spark-y: -25px; }
@@ -1601,16 +1607,16 @@ export default function DashboardJourneyExperience({
                       ? "border-green-200 bg-gradient-to-r from-green-50 via-white to-green-50 hover:bg-green-50"
                       : task.disabled
                         ? "border-gray-200 bg-gray-100 text-gray-400"
-                        : "border-[#d8e4f6] bg-gradient-to-r from-white via-white to-[#f7fbff] hover:shadow-md"
+                        : "border-gray-200 bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100 text-gray-500 hover:shadow-md"
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div
                       className={`relative flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-2xl shadow-sm ${
-                        task.done ? taskCopy.doneAccent : taskCopy.idleAccent
+                        task.done ? taskCopy.doneAccent : "from-gray-200 to-gray-300"
                       }`}
                     >
-                      <span className="drop-shadow-sm" aria-hidden="true">{getTaskEmoji(task)}</span>
+                      <span className={`drop-shadow-sm ${task.done ? "" : "grayscale opacity-45"}`} aria-hidden="true">{getTaskEmoji(task)}</span>
                       {task.done ? (
                         <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#22b95f] text-xs font-black text-white ring-2 ring-white">
                           ✓
@@ -1618,20 +1624,20 @@ export default function DashboardJourneyExperience({
                       ) : null}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-[15px] font-bold leading-tight text-gray-950 sm:text-base">{taskCopy.title}</p>
-                      <p className="mt-1 max-w-[18rem] text-xs leading-5 text-gray-700 sm:text-sm">{taskCopy.subtitle}</p>
+                      <p className={`text-[15px] font-bold leading-tight sm:text-base ${task.done ? "text-gray-950" : "text-gray-600"}`}>{taskCopy.title}</p>
+                      <p className={`mt-1 max-w-[18rem] text-xs leading-5 sm:text-sm ${task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
                     </div>
                     <div className="flex shrink-0 items-center gap-2">
                       <div className="flex flex-col items-end gap-2">
                         <span className={`rounded-full px-3 py-1 text-xs font-bold ${getTaskPillClasses(task)}`}>
                           {task.pointsLabel}
                         </span>
-                        <span className={`relative flex items-center gap-1 text-[11px] font-medium ${
+                        <span className={`relative flex items-center gap-1 text-[11px] ${
                           task.done
-                            ? "text-green-700"
+                            ? "font-medium text-green-700"
                             : isNextActionTask
-                              ? "animate-pulse text-[#315f7d] font-black"
-                              : "text-gray-500"
+                              ? "start-here-flash text-gray-950 font-black tracking-wide"
+                              : "font-medium text-gray-500"
                         }`}>
                           <span aria-hidden="true">{task.done ? "▣" : "○"}</span>
                           {task.done ? (

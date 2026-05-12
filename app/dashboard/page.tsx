@@ -49,6 +49,7 @@ const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
 const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
 const JESSICA_BONUS_POPUP_KEY = "bb:bonus-popup:jessica-1000:v1";
 const ENABLE_DAILY_DASHBOARD_WELCOME_FLOW = true;
+const DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS = 2 * 60 * 60 * 1000;
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -613,6 +614,7 @@ export default function DashboardPage() {
   const [showVerseOfTheDayModal, setShowVerseOfTheDayModal] = useState(false);
   const [showStreakMotivationModal, setShowStreakMotivationModal] = useState(false);
   const [showStreakMotivationTaskPrompt, setShowStreakMotivationTaskPrompt] = useState(false);
+  const [louisCheckInContextLine, setLouisCheckInContextLine] = useState<string | null>(null);
   const [pendingDailyStreakSequence, setPendingDailyStreakSequence] = useState(false);
   const [showLouisDailyTasksModal, setShowLouisDailyTasksModal] = useState(false);
   const [louisDailyTaskCycleStartedAt, setLouisDailyTaskCycleStartedAt] = useState<string | null>(null);
@@ -670,6 +672,14 @@ export default function DashboardPage() {
 
   function getDashboardDailySequenceSeenKey(currentUserId: string, dayKey: string) {
     return `bb:dashboard-daily-sequence-seen:${currentUserId}:${dayKey}`;
+  }
+
+  function getDashboardLouisCheckInLastShownKey(currentUserId: string) {
+    return `bb:louis-dashboard-checkin-last-shown:${currentUserId}`;
+  }
+
+  function getDashboardLouisCheckInCountKey(currentUserId: string, dayKey: string) {
+    return `bb:louis-dashboard-checkin-count:${currentUserId}:${dayKey}`;
   }
 
   function getStreakPointsShownKey(currentUserId: string, dayKey: string) {
@@ -844,6 +854,60 @@ export default function DashboardPage() {
       previewLine: getChapterPreviewLine(readingTask),
       closingLine: "",
     };
+  }
+
+  function getRecentActivityLabel(actionType?: string | null, actionLabel?: string | null) {
+    const label = String(actionLabel || "").trim();
+    switch (actionType) {
+      case ACTION_TYPE.devotional_day_completed:
+        return "read a chapter intro";
+      case ACTION_TYPE.chapter_completed:
+      case ACTION_TYPE.reading_plan_chapter_completed:
+      case ACTION_TYPE.bible_chapter_viewed:
+        return label ? `read ${label.replace(/^Read\s+/i, "")}` : "read a Bible chapter";
+      case ACTION_TYPE.chapter_notes_viewed:
+      case ACTION_TYPE.chapter_notes_reviewed:
+        return label ? `opened notes for ${label.replace(/\s+Review Opened$/i, "")}` : "opened chapter notes";
+      case ACTION_TYPE.trivia_chapter_completed:
+        return "finished a trivia round";
+      case ACTION_TYPE.scrambled_chapter_completed:
+        return "finished a Scrambled round";
+      case ACTION_TYPE.feed_post_commented:
+      case ACTION_TYPE.devotional_reflection_saved:
+        return "shared a reflection";
+      default:
+        return label || null;
+    }
+  }
+
+  function buildLouisCheckInContextLine(
+    recentActions: Array<{ action_type?: string | null; action_label?: string | null }> | null,
+    checklistData: ChecklistData | null,
+    currentUserName: string,
+  ) {
+    const firstName = currentUserName?.trim()?.split(/\s+/)[0] || "friend";
+    const recentLabels = (recentActions || [])
+      .map((action) => getRecentActivityLabel(action.action_type, action.action_label))
+      .filter(Boolean) as string[];
+    const nextTask = checklistData?.tasks.find((task) => !task.done && !task.disabled) ?? null;
+    const chapterLabel =
+      checklistData?.tasks.find((task) => task.kind === "reading")?.chapterLabel ||
+      nextTask?.chapterLabel ||
+      "this chapter";
+
+    if (recentLabels.length > 0 && nextTask) {
+      return `Hey ${firstName}, last time you ${recentLabels[0]}. Let’s keep going with ${chapterLabel} and do ${nextTask.title}.`;
+    }
+
+    if (nextTask) {
+      return `Hey ${firstName}, ${chapterLabel} is still waiting for you. Let’s take the next step and do ${nextTask.title}.`;
+    }
+
+    if (checklistData?.allDone) {
+      return `Hey ${firstName}, you finished this chapter study. Start the next chapter when you are ready to keep moving.`;
+    }
+
+    return `Hey ${firstName}, welcome back. Let’s open Bible Buddy and keep building your Bible study rhythm.`;
   }
 
   useEffect(() => {
@@ -1363,11 +1427,19 @@ export default function DashboardPage() {
 
   function renderDashboardStatsRow() {
     const earnedBadgeCount = badgeProgress.filter((badge) => badge.current >= badge.target).length;
+    const streakValue = profile?.current_streak ?? 0;
+    const streakFlameDuration = Math.max(0.85, 7 - Math.min(29, Math.max(0, streakValue)) * 0.2);
+    const streakFlameClass =
+      streakValue >= 30
+        ? "streak-flame-earned"
+        : streakValue <= 1
+          ? "streak-flame-locked"
+          : "streak-flame-building";
     const personalStats = [
       {
         key: "streak",
-        label: "🔥 Streak",
-        value: profile?.current_streak ?? 0,
+        label: "Streak",
+        value: streakValue,
         tones: "bg-gray-100 border-gray-200",
         onClick: () => {
           setShowStreakMotivationTaskPrompt(false);
@@ -1420,7 +1492,20 @@ export default function DashboardPage() {
                 {card.value}
               </p>
               <p className="mt-1 text-[9px] font-medium leading-tight text-gray-700 sm:text-xs">
-                {card.label}
+                {card.key === "streak" ? (
+                  <>
+                    <span
+                      className={`mr-1 inline-block ${streakFlameClass}`}
+                      style={{ animationDuration: `${streakFlameDuration}s` }}
+                      aria-hidden="true"
+                    >
+                      🔥
+                    </span>
+                    {card.label}
+                  </>
+                ) : (
+                  card.label
+                )}
               </p>
             </CardTag>
           );
@@ -2191,11 +2276,11 @@ export default function DashboardPage() {
       return;
     }
     const today = getBibleBuddyLocalDayKey();
-    const dailySequenceSeenKey = getDashboardDailySequenceSeenKey(userId, today);
+    const lastShownKey = getDashboardLouisCheckInLastShownKey(userId);
+    const lastShownAt = Number(window.localStorage.getItem(lastShownKey) || "0");
+    const checkInReady = !lastShownAt || Date.now() - lastShownAt >= DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS;
     setShowVerseOfTheDayModal(false);
-    setPendingDailyStreakSequence(
-      typeof window !== "undefined" && window.localStorage.getItem(dailySequenceSeenKey) !== "1",
-    );
+    setPendingDailyStreakSequence(checkInReady);
   }, [userId, profile]);
 
   useEffect(() => {
@@ -2236,7 +2321,16 @@ export default function DashboardPage() {
     const dayKey = getBibleBuddyLocalDayKey();
     const currentUserId = userId;
     const currentStreakForPopup = profile.current_streak ?? 0;
-    const checkKey = `${userId}:${dayKey}`;
+    const nowMs = Date.now();
+    const lastShownKey = getDashboardLouisCheckInLastShownKey(userId);
+    const lastShownAt = Number(window.localStorage.getItem(lastShownKey) || "0");
+    if (lastShownAt && nowMs - lastShownAt < DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS) {
+      setLouisDailyTaskCycleStartedAt(cycleStartedAt);
+      setPendingDailyStreakSequence(false);
+      dailyStreakSequenceCheckRef.current = null;
+      return;
+    }
+    const checkKey = `${userId}:${Math.floor(nowMs / DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS)}`;
     if (dailyStreakSequenceCheckRef.current === checkKey) return;
     dailyStreakSequenceCheckRef.current = checkKey;
 
@@ -2250,19 +2344,6 @@ export default function DashboardPage() {
       return;
     }
     if (window.localStorage.getItem(`bb:grace-days:reward-active:${userId}`) === "1") {
-      setLouisDailyTaskCycleStartedAt(cycleStartedAt);
-      setPendingDailyStreakSequence(false);
-      dailyStreakSequenceCheckRef.current = null;
-      return;
-    }
-    if (window.localStorage.getItem(dailySequenceSeenKey) === "1") {
-      setLouisDailyTaskCycleStartedAt(cycleStartedAt);
-      setPendingDailyStreakSequence(false);
-      dailyStreakSequenceCheckRef.current = null;
-      return;
-    }
-    if (window.localStorage.getItem(seenKey) === "1") {
-      window.localStorage.setItem(dailySequenceSeenKey, "1");
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
       setPendingDailyStreakSequence(false);
       dailyStreakSequenceCheckRef.current = null;
@@ -2282,26 +2363,37 @@ export default function DashboardPage() {
 
       if (cancelled) return;
 
-      if (!existingPopupError && existingPopup?.id) {
-        window.localStorage.setItem(seenKey, "1");
-        window.localStorage.setItem(dailySequenceSeenKey, "1");
-        setLouisDailyTaskCycleStartedAt(cycleStartedAt);
-        setPendingDailyStreakSequence(false);
-        dailyStreakSequenceCheckRef.current = null;
-        return;
+      const alreadyAwardedDailyStreakPopup = !existingPopupError && Boolean(existingPopup?.id);
+      const recentActivitiesResult = await supabase
+        .from("master_actions")
+        .select("action_type, action_label, created_at")
+        .eq("user_id", currentUserId)
+        .order("created_at", { ascending: false })
+        .limit(3);
+
+      if (!cancelled) {
+        setLouisCheckInContextLine(
+          buildLouisCheckInContextLine(
+            (recentActivitiesResult.data || []) as Array<{ action_type?: string | null; action_label?: string | null }>,
+            dailyChecklistDataRef.current || dailyChecklistData,
+            userName,
+          ),
+        );
       }
 
-      const { error: insertPopupError } = await supabase
-        .from("master_actions")
-        .insert({
-          user_id: currentUserId,
-          action_type: ACTION_TYPE.louis_daily_message_shown,
-          action_label: popupActionLabel,
-          username: userName ?? null,
-        });
+      if (!alreadyAwardedDailyStreakPopup) {
+        const { error: insertPopupError } = await supabase
+          .from("master_actions")
+          .insert({
+            user_id: currentUserId,
+            action_type: ACTION_TYPE.louis_daily_message_shown,
+            action_label: popupActionLabel,
+            username: userName ?? null,
+          });
 
-      if (insertPopupError) {
-        console.error("[DASHBOARD] Could not save daily streak popup state:", insertPopupError);
+        if (insertPopupError) {
+          console.error("[DASHBOARD] Could not save daily streak popup state:", insertPopupError);
+        }
       }
 
       if (cancelled) return;
@@ -2310,7 +2402,7 @@ export default function DashboardPage() {
       setShowStreakMotivationTaskPrompt(true);
       setShowStreakMotivationModal(true);
       const streakPointsShownKey = getStreakPointsShownKey(currentUserId, dayKey);
-      if (window.localStorage.getItem(streakPointsShownKey) !== "1") {
+      if (!alreadyAwardedDailyStreakPopup && window.localStorage.getItem(streakPointsShownKey) !== "1") {
         const streakPoints = Math.min(30, Math.max(0, currentStreakForPopup));
         if (streakPoints > 0) {
           triggerPoints(streakPoints);
@@ -2319,6 +2411,10 @@ export default function DashboardPage() {
       }
       window.localStorage.setItem(seenKey, "1");
       window.localStorage.setItem(dailySequenceSeenKey, "1");
+      window.localStorage.setItem(lastShownKey, String(Date.now()));
+      const countKey = getDashboardLouisCheckInCountKey(currentUserId, dayKey);
+      const nextCount = Number(window.localStorage.getItem(countKey) || "0") + 1;
+      window.localStorage.setItem(countKey, String(nextCount));
       setPendingDailyStreakSequence(false);
       dailyStreakSequenceCheckRef.current = null;
     }
@@ -2328,7 +2424,7 @@ export default function DashboardPage() {
     return () => {
       cancelled = true;
     };
-  }, [userId, userName, profile, pendingDailyStreakSequence, showVerseOfTheDayModal]);
+  }, [userId, userName, profile, pendingDailyStreakSequence, showVerseOfTheDayModal, dailyChecklistData]);
 
   useEffect(() => {
     if (!userId || typeof window === "undefined") return;
@@ -2923,6 +3019,32 @@ export default function DashboardPage() {
 
   return (
     <>
+      <style>{`
+        @keyframes streak-flame-build {
+          0%, 72%, 100% {
+            filter: grayscale(1);
+            opacity: 0.45;
+          }
+          82%, 92% {
+            filter: grayscale(0);
+            opacity: 1;
+          }
+        }
+        .streak-flame-locked {
+          filter: grayscale(1);
+          opacity: 0.45;
+        }
+        .streak-flame-building {
+          animation-name: streak-flame-build;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          filter: grayscale(1);
+        }
+        .streak-flame-earned {
+          filter: grayscale(0);
+          opacity: 1;
+        }
+      `}</style>
       <div className="min-h-screen bg-[linear-gradient(180deg,#f5f8ff_0%,#eef4ff_45%,#fbf8ef_100%)] pb-12">
       {/* DESKTOP LAYOUT: Left Ad | Content | Right Ad */}
       <div className="hidden lg:flex max-w-7xl mx-auto px-4 mt-8 gap-6">
@@ -3155,6 +3277,7 @@ export default function DashboardPage() {
           onClose={() => {
             setShowStreakMotivationModal(false);
             setShowStreakMotivationTaskPrompt(false);
+            setLouisCheckInContextLine(null);
           }}
           backdropColor="bg-black/45"
         >
@@ -3168,7 +3291,16 @@ export default function DashboardPage() {
             </p>
               <h2 className="mt-2 flex items-center justify-center gap-2 text-3xl font-bold text-[#21304f]">
                 <span
-                  className={`leading-none ${(profile?.current_streak ?? 0) >= 30 ? "" : "grayscale opacity-60"}`}
+                  className={`leading-none ${
+                    (profile?.current_streak ?? 0) >= 30
+                      ? "streak-flame-earned"
+                      : (profile?.current_streak ?? 0) <= 1
+                        ? "streak-flame-locked"
+                        : "streak-flame-building"
+                  }`}
+                  style={{
+                    animationDuration: `${Math.max(0.85, 7 - Math.min(29, Math.max(0, profile?.current_streak ?? 0)) * 0.2)}s`,
+                  }}
                   aria-hidden="true"
                 >
                   🔥
@@ -3178,6 +3310,11 @@ export default function DashboardPage() {
             <p className="mt-3 text-sm leading-6 text-[#4f678e]">
               {streakMotivation.body}
             </p>
+              {louisCheckInContextLine ? (
+                <p className="mt-4 rounded-2xl border border-[#d7e4f7] bg-white/80 px-4 py-3 text-sm font-semibold leading-6 text-[#355487]">
+                  {louisCheckInContextLine}
+                </p>
+              ) : null}
               {showStreakMotivationTaskPrompt && (
                 <>
                   <p className="mt-4 text-sm font-semibold leading-6 text-[#355487]">
@@ -3199,6 +3336,7 @@ export default function DashboardPage() {
                       onClick={() => {
                         setShowStreakMotivationModal(false);
                         setShowStreakMotivationTaskPrompt(false);
+                        setLouisCheckInContextLine(null);
                       }}
                       className="inline-flex min-w-[140px] justify-center rounded-full bg-[#7BAFD4] px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
                     >
