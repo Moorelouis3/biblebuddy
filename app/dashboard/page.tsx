@@ -131,6 +131,10 @@ function getBadgeAwardLabel(badge: Pick<BadgeProgress, "id" | "xp">) {
   return `badge_earned:${badge.id}:${badge.xp}`;
 }
 
+function getLocalBadgeAwardKey(userId: string, badgeId: string) {
+  return `bb:badge-awarded:${userId}:${badgeId}`;
+}
+
 function getAwardedBadgeId(actionLabel: unknown) {
   if (typeof actionLabel !== "string") return null;
   return actionLabel.match(/^badge_earned:([^:]+):\d+$/)?.[1] ?? null;
@@ -2168,39 +2172,55 @@ export default function DashboardPage() {
           });
           setBadgeProgress(nextBadgeProgress);
 
-          const alreadyAwardedBadgeIds = new Set(
+          const alreadyAwardedBadgeIds = new Set<string>(
             actionRows
               .map((row) => getAwardedBadgeId(row?.action_label))
               .filter((badgeId): badgeId is string => Boolean(badgeId))
           );
+          if (typeof window !== "undefined") {
+            nextBadgeProgress.forEach((badge) => {
+              if (window.localStorage.getItem(getLocalBadgeAwardKey(userId, badge.id)) === "1") {
+                alreadyAwardedBadgeIds.add(badge.id);
+              }
+            });
+          }
           const newlyEarnedBadges = nextBadgeProgress.filter(
             (badge) => badge.current >= badge.target && !alreadyAwardedBadgeIds.has(badge.id)
           );
 
           if (newlyEarnedBadges.length > 0) {
+            const queueEarnedBadges = () => {
+              if (typeof window !== "undefined") {
+                newlyEarnedBadges.forEach((badge) => {
+                  window.localStorage.setItem(getLocalBadgeAwardKey(userId, badge.id), "1");
+                });
+              }
+
+              setEarnedBadgeQueue((current) => {
+                const existingIds = new Set(current.map((badge) => badge.id));
+                const activeId = activeEarnedBadge?.id ?? null;
+                const freshBadges = newlyEarnedBadges.filter(
+                  (badge) => badge.id !== activeId && !existingIds.has(badge.id)
+                );
+                return freshBadges.length ? [...current, ...freshBadges] : current;
+              });
+              document.dispatchEvent(new CustomEvent("bb:points"));
+            };
+
             supabase
               .from("master_actions")
               .insert(newlyEarnedBadges.map((badge) => ({
                 user_id: userId,
-                action_type: ACTION_TYPE.badge_earned,
+                action_type: ACTION_TYPE.louis_daily_task_bonus,
                 action_label: getBadgeAwardLabel(badge),
               })))
               .then(({ error: badgeAwardError }) => {
                 if (didCancel) return;
                 if (badgeAwardError) {
-                  console.error("[BADGES] Could not award earned badges:", badgeAwardError);
-                  return;
+                  console.warn("[BADGES] Could not persist earned badges; showing local celebration instead.", badgeAwardError);
                 }
 
-                setEarnedBadgeQueue((current) => {
-                  const existingIds = new Set(current.map((badge) => badge.id));
-                  const activeId = activeEarnedBadge?.id ?? null;
-                  const freshBadges = newlyEarnedBadges.filter(
-                    (badge) => badge.id !== activeId && !existingIds.has(badge.id)
-                  );
-                  return freshBadges.length ? [...current, ...freshBadges] : current;
-                });
-                document.dispatchEvent(new CustomEvent("bb:points"));
+                queueEarnedBadges();
               });
           }
         }

@@ -886,7 +886,11 @@ export default function DashboardJourneyExperience({
   const completedTasks = checklistData?.completedCount ?? 0;
   const allDone = checklistData?.allDone ?? false;
   const nextTask = checklistData?.tasks.find((task) => !task.done) ?? null;
-  const nextActionTaskKind = checklistData?.tasks.find((task) => !task.done && !task.disabled)?.kind ?? null;
+  const nextActionTaskIndex = checklistData?.tasks.findIndex((task) => !task.done) ?? -1;
+  const nextActionTaskKind =
+    nextActionTaskIndex >= 0 && checklistData?.tasks[nextActionTaskIndex] && !checklistData.tasks[nextActionTaskIndex].disabled
+      ? checklistData.tasks[nextActionTaskIndex].kind
+      : null;
   const currentDevotionalTask = checklistData?.tasks.find((task) => task.kind === "devotional") ?? null;
   const currentDevotionalId = currentDevotionalTask?.devotionalId || "";
   const isPaidUser = profile?.is_paid === true;
@@ -1590,14 +1594,21 @@ export default function DashboardJourneyExperience({
               checklistData?.tasks.map((task, index) => {
                 const taskCopy = getTaskCardCopy(task, index);
                 const isCelebrating = Boolean(celebratingTasks[task.kind]);
-                const isNextActionTask = task.kind === nextActionTaskKind;
+                const isLockedByOrder = !task.done && nextActionTaskIndex >= 0 && index > nextActionTaskIndex;
+                const isCardDisabled = Boolean(task.disabled || isLockedByOrder);
+                const isNextActionTask = task.kind === nextActionTaskKind && !isCardDisabled;
+                const pointsPillLabel = isCardDisabled ? "Locked" : task.pointsLabel;
+                const taskStatusLabel = !task.done && isNextActionTask ? "Start here" : isCardDisabled ? "Locked" : getTaskStatusLine(task);
 
                 return (
                 <button
                   key={task.kind}
                   type="button"
-                  onClick={() => onTaskClick(task)}
-                  disabled={task.disabled}
+                  onClick={() => {
+                    if (isCardDisabled) return;
+                    onTaskClick(task);
+                  }}
+                  disabled={isCardDisabled}
                   className={`relative w-full overflow-hidden rounded-xl border px-3.5 py-3.5 text-left shadow-sm transition sm:px-4 ${
                     isCelebrating ? "task-complete-pop" : ""
                   } ${
@@ -1605,11 +1616,20 @@ export default function DashboardJourneyExperience({
                   } ${
                     task.done
                       ? "border-green-200 bg-gradient-to-r from-green-50 via-white to-green-50 hover:bg-green-50"
-                      : task.disabled
-                        ? "border-gray-200 bg-gray-100 text-gray-400"
+                      : isCardDisabled
+                        ? "cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400 opacity-75"
                         : "border-gray-200 bg-gradient-to-r from-gray-100 via-gray-50 to-gray-100 text-gray-500 hover:shadow-md"
                   }`}
                 >
+                  {isCardDisabled ? (
+                    <span
+                      className="absolute right-3 top-3 text-base opacity-70"
+                      aria-label="Locked"
+                      title="Complete the task above to unlock this."
+                    >
+                      {"\uD83D\uDD12"}
+                    </span>
+                  ) : null}
                   <div className="flex items-center gap-3">
                     <div
                       className={`relative flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-2xl shadow-sm ${
@@ -1630,7 +1650,7 @@ export default function DashboardJourneyExperience({
                     <div className="flex shrink-0 items-center gap-2">
                       <div className="flex flex-col items-end gap-2">
                         <span className={`rounded-full px-3 py-1 text-xs font-bold ${getTaskPillClasses(task)}`}>
-                          {task.pointsLabel}
+                          {pointsPillLabel}
                         </span>
                         <span className={`relative flex items-center gap-1 text-[11px] ${
                           task.done
@@ -1647,7 +1667,7 @@ export default function DashboardJourneyExperience({
                               <span>✦</span>
                             </span>
                           ) : null}
-                          {!task.done && isNextActionTask ? "Start here" : getTaskStatusLine(task)}
+                          {taskStatusLabel}
                         </span>
                       </div>
                       <span className="text-xl leading-none text-gray-400" aria-hidden="true">›</span>
