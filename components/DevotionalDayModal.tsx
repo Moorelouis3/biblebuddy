@@ -972,23 +972,13 @@ Be accurate to Scripture.`;
                   </StudySectionCard>
 
                   <StudySectionCard title="Reflection" eyebrow="Task 6">
-                    <div className="mb-4 flex items-start gap-3">
-                      <div className="shrink-0 rounded-full border border-gray-200 bg-white p-1 shadow-sm">
-                        <LouisAvatar mood="think" size={44} />
-                      </div>
-                      <div className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm leading-relaxed text-gray-800 shadow-sm">
-                        <span>
-                          Now that you have read {primaryDayLabel}, answer this question:
-                        </span>{" "}
-                        <span className="font-semibold text-gray-950">
-                          {day.reflection_question || `What stood out to you most in ${primaryDayLabel}?`}
-                        </span>
-                      </div>
-                    </div>
+                    <p className="mb-4 text-xl font-black leading-snug text-gray-950">
+                      {day.reflection_question || `What stood out to you most in ${primaryDayLabel}?`}
+                    </p>
                     <CommentSection
                       articleSlug={chapterDiscussionSlug}
                       headingText=""
-                      placeholderText={`Answer the reflection question for ${primaryDayLabel}...`}
+                      placeholderText="Start Typing Here"
                       submitButtonText="Post Reflection"
                       variant="plain"
                     />
@@ -1094,23 +1084,13 @@ Be accurate to Scripture.`;
               {/* REFLECTION SECTION */}
               {isWisdomOfProverbs ? (
                 <div className="mb-6">
-                  <div className="mb-4 flex items-start gap-3">
-                    <div className="shrink-0 rounded-full border border-gray-200 bg-white p-1 shadow-sm">
-                      <LouisAvatar mood="think" size={44} />
-                    </div>
-                    <div className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm leading-relaxed text-gray-800 shadow-sm">
-                      <span>
-                        Now that you have read {primaryDayLabel}, answer this question:
-                      </span>{" "}
-                      <span className="font-semibold text-gray-950">
-                        {day.reflection_question || `What stood out to you most in ${primaryDayLabel}?`}
-                      </span>
-                    </div>
-                  </div>
+                  <p className="mb-4 text-xl font-black leading-snug text-gray-950">
+                    {day.reflection_question || `What stood out to you most in ${primaryDayLabel}?`}
+                  </p>
                   <CommentSection
                     articleSlug={chapterDiscussionSlug}
                     headingText=""
-                    placeholderText={`Answer the reflection question for ${primaryDayLabel}...`}
+                    placeholderText="Start Typing Here"
                     submitButtonText="Post Reflection"
                     variant="plain"
                   />

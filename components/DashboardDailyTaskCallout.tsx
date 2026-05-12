@@ -400,14 +400,13 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
                 </button>
               </div>
               <div className="max-h-[75vh] overflow-y-auto px-6 py-5">
-                <div className="mb-5 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 text-gray-800 shadow-sm">
-                  Now that you have read {chapterLabel}, answer this question:{" "}
-                  <span className="font-black text-gray-950">{devotionalDay.reflection_question || "What stood out to you from this chapter?"}</span>
-                </div>
+                <p className="mb-5 text-xl font-black leading-snug text-gray-950">
+                  {devotionalDay.reflection_question || "What stood out to you from this chapter?"}
+                </p>
                 <CommentSection
                   articleSlug={chapterSlug(devotionalDay.bible_reading_book, devotionalDay.bible_reading_chapter)}
                   headingText=""
-                  placeholderText={`Answer the reflection question for ${chapterLabel}...`}
+                  placeholderText="Start Typing Here"
                   submitButtonText="Post Reflection"
                   variant="plain"
                   onPosted={() => closeAndRefresh(true)}

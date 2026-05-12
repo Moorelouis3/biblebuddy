@@ -3,6 +3,7 @@
 // SOURCE OF TRUTH: completed_chapters table (filtered by user_id)
 
 import { supabase } from "./supabaseClient";
+import { ACTION_TYPE } from "./actionTypes";
 
 /**
  * Get total chapters for a book
@@ -319,6 +320,7 @@ export async function isChapterUnlocked(userId: string, book: string, chapter: n
 export async function markChapterDone(userId: string, book: string, chapter: number): Promise<void> {
   try {
     const bookKey = book.toLowerCase().trim();
+    const actionLabel = `${book} ${chapter}`;
 
     // UPSERT into completed_chapters (the ONLY source of truth)
     const { error } = await supabase
@@ -338,6 +340,28 @@ export async function markChapterDone(userId: string, book: string, chapter: num
     }
 
     console.log(`[READING_PROGRESS] ✅ Marked ${bookKey} chapter ${chapter} as completed for user ${userId}`);
+    const { data: existingAction, error: existingActionError } = await supabase
+      .from("master_actions")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("action_type", ACTION_TYPE.chapter_completed)
+      .ilike("action_label", `${actionLabel}%`)
+      .limit(1)
+      .maybeSingle();
+
+    if (existingActionError) {
+      console.error("[READING_PROGRESS] Error checking chapter completion action:", existingActionError);
+    } else if (!existingAction) {
+      const { error: actionError } = await supabase.from("master_actions").insert({
+        user_id: userId,
+        action_type: ACTION_TYPE.chapter_completed,
+        action_label: actionLabel,
+      });
+
+      if (actionError) {
+        console.error("[READING_PROGRESS] Error logging chapter completion action:", actionError);
+      }
+    }
   } catch (err) {
     console.error("[READING_PROGRESS] Error in markChapterDone:", err);
     throw err;

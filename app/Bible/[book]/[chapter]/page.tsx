@@ -2684,14 +2684,8 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
               Chapter Reflection
             </p>
-            <h2 className="mt-2 text-2xl font-bold text-gray-900">
-              Answer this question
-            </h2>
-            <p className="mt-3 text-base font-semibold leading-relaxed text-gray-900">
+            <p className="mt-3 text-xl font-black leading-snug text-gray-950">
               {chapterReflectionQuestion}
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-gray-700">
-              Share your answer below and join the reflection for {bookDisplayName} {chapter}.
             </p>
           </div>
 
@@ -2701,7 +2695,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
             <CommentSection
               articleSlug={chapterDiscussionSlug}
               headingText={`${bookDisplayName} ${chapter} Reflection Answers`}
-              placeholderText={`Answer the reflection question for ${bookDisplayName} ${chapter}...`}
+              placeholderText="Start Typing Here"
               submitButtonText="Post Reflection"
             />
           </div>

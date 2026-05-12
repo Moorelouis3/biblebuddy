@@ -9,6 +9,7 @@ import UserBadge from "@/components/UserBadge";
 import LevelBadge from "@/components/LevelBadge";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
 import { triggerToast } from "@/components/AppToast";
+import { ModalShell } from "@/components/ModalShell";
 import TextareaMentionInput from "@/components/TextareaMentionInput";
 import MentionText from "@/components/MentionText";
 import { requestAutoReplyDraft } from "@/lib/requestAutoReplyDraft";
@@ -43,7 +44,16 @@ interface Comment {
   is_paid?: boolean | null;
   current_level?: number | null;
   current_streak?: number | null;
+  like_count?: number;
+  liked?: boolean;
   replies?: Comment[];
+}
+
+interface CommentLiker {
+  user_id: string;
+  display_name: string;
+  username: string | null;
+  profile_image_url: string | null;
 }
 
 interface CommentSectionProps {
@@ -112,6 +122,11 @@ export default function CommentSection({
   const [savingCommentId, setSavingCommentId] = useState<string | null>(null);
   const [mentionItems, setMentionItems] = useState<MentionCatalogItem[]>([]);
   const [autoReplyLoadingId, setAutoReplyLoadingId] = useState<string | null>(null);
+  const [likeLoadingIds, setLikeLoadingIds] = useState<Set<string>>(new Set());
+  const [likersOpen, setLikersOpen] = useState(false);
+  const [likersLoading, setLikersLoading] = useState(false);
+  const [likers, setLikers] = useState<CommentLiker[]>([]);
+  const [likersTitle, setLikersTitle] = useState("Likes");
 
   const hydrateUser = useCallback(async (userId?: string | null, email?: string | null) => {
     if (!userId) {
@@ -172,7 +187,40 @@ export default function CommentSection({
       return;
     }
 
-    const rows = (data || []) as Comment[];
+    const rows = ((data || []) as Comment[]).map((row) => ({
+      ...row,
+      like_count: 0,
+      liked: false,
+    }));
+    const commentIds = rows.map((row) => row.id);
+
+    if (commentIds.length > 0) {
+      try {
+        const { data: likeRows, error: likeError } = await supabase
+          .from("article_comment_likes")
+          .select("comment_id, user_id")
+          .in("comment_id", commentIds);
+
+        if (!likeError && likeRows) {
+          const countMap = new Map<string, number>();
+          const likedSet = new Set<string>();
+          likeRows.forEach((like: { comment_id: string; user_id: string }) => {
+            countMap.set(like.comment_id, (countMap.get(like.comment_id) || 0) + 1);
+            if (user?.id && like.user_id === user.id) likedSet.add(like.comment_id);
+          });
+
+          rows.forEach((row) => {
+            row.like_count = countMap.get(row.id) || 0;
+            row.liked = likedSet.has(row.id);
+          });
+        } else if (likeError) {
+          console.error("[CommentSection] Could not load article comment likes:", likeError);
+        }
+      } catch (likeError) {
+        console.error("[CommentSection] Could not load article comment likes:", likeError);
+      }
+    }
+
     setComments(rows);
 
     const userIds = [...new Set(rows.map((c) => c.user_id))];
@@ -206,7 +254,7 @@ export default function CommentSection({
     } catch {
       // Profile enrichment failed; comments still render.
     }
-  }, [articleSlug]);
+  }, [articleSlug, user?.id]);
 
   useEffect(() => {
     if (typeof window === "undefined" || comments.length === 0) return;
@@ -472,6 +520,106 @@ export default function CommentSection({
     setAutoReplyLoadingId(null);
   };
 
+  async function handleToggleLike(comment: Comment) {
+    if (!user || likeLoadingIds.has(comment.id)) return;
+
+    const wasLiked = comment.liked === true;
+    setLikeLoadingIds((prev) => new Set(prev).add(comment.id));
+    setComments((prev) =>
+      prev.map((item) =>
+        item.id === comment.id
+          ? {
+              ...item,
+              liked: !wasLiked,
+              like_count: Math.max(0, (item.like_count || 0) + (wasLiked ? -1 : 1)),
+            }
+          : item,
+      ),
+    );
+
+    try {
+      const result = wasLiked
+        ? await supabase.from("article_comment_likes").delete().eq("comment_id", comment.id).eq("user_id", user.id)
+        : await supabase.from("article_comment_likes").insert({ comment_id: comment.id, user_id: user.id });
+
+      if (result.error) throw result.error;
+    } catch (err) {
+      setComments((prev) =>
+        prev.map((item) =>
+          item.id === comment.id
+            ? {
+                ...item,
+                liked: wasLiked,
+                like_count: Math.max(0, (item.like_count || 0) + (wasLiked ? 1 : -1)),
+              }
+            : item,
+        ),
+      );
+      triggerToast(err instanceof Error ? err.message : "Could not update like.");
+    } finally {
+      setLikeLoadingIds((prev) => {
+        const next = new Set(prev);
+        next.delete(comment.id);
+        return next;
+      });
+    }
+  }
+
+  async function openLikers(comment: Comment) {
+    if (!comment.like_count) return;
+
+    setLikersOpen(true);
+    setLikersLoading(true);
+    setLikers([]);
+    setLikersTitle(`${comment.like_count} ${comment.like_count === 1 ? "Like" : "Likes"}`);
+
+    try {
+      const { data: likeRows, error: likeError } = await supabase
+        .from("article_comment_likes")
+        .select("user_id")
+        .eq("comment_id", comment.id);
+
+      if (likeError) throw likeError;
+
+      const userIds = [...new Set((likeRows || []).map((row: { user_id: string }) => row.user_id))];
+      if (userIds.length === 0) {
+        setLikers([]);
+        return;
+      }
+
+      const { data: profiles, error: profileError } = await supabase
+        .from("profile_stats")
+        .select("user_id, username, profile_image_url")
+        .in("user_id", userIds);
+
+      if (profileError) throw profileError;
+
+      const profileMap = new Map<string, { username: string | null; profile_image_url: string | null }>();
+      (profiles || []).forEach((profile: { user_id: string; username: string | null; profile_image_url: string | null }) => {
+        profileMap.set(profile.user_id, {
+          username: profile.username,
+          profile_image_url: profile.profile_image_url,
+        });
+      });
+
+      setLikers(
+        userIds.map((userId) => {
+          const profile = profileMap.get(userId);
+          return {
+            user_id: userId,
+            username: profile?.username ?? null,
+            display_name: profile?.username || "Bible Buddy",
+            profile_image_url: profile?.profile_image_url ?? null,
+          };
+        }),
+      );
+    } catch (err) {
+      triggerToast(err instanceof Error ? err.message : "Could not load likes.");
+    } finally {
+      setLikersLoading(false);
+    }
+  }
+
   const renderComments = (items: Comment[], depth = 0) =>
     items.length === 0
       ? null
@@ -555,6 +703,25 @@ export default function CommentSection({
               </div>
               <div className="mt-1 flex items-center gap-4 px-1">
                 <button
+                  type="button"
+                  onClick={() => void handleToggleLike(c)}
+                  disabled={!user || likeLoadingIds.has(c.id)}
+                  className={`text-xs font-semibold transition disabled:opacity-50 ${
+                    c.liked ? "text-red-500" : "text-gray-400 hover:text-red-500"
+                  }`}
+                >
+                  {c.liked ? "Liked" : "Like"}
+                </button>
+                {(c.like_count || 0) > 0 ? (
+                  <button
+                    type="button"
+                    onClick={() => void openLikers(c)}
+                    className="text-xs font-semibold text-gray-400 transition hover:text-gray-700"
+                  >
+                    {c.like_count} {(c.like_count || 0) === 1 ? "like" : "likes"}
+                  </button>
+                ) : null}
+                <button
                   className="text-xs font-semibold text-gray-400 transition hover:text-[#b7794d]"
                   onClick={() => {
                     setReplyTo(replyTo === c.id ? null : c.id);
@@ -563,14 +730,16 @@ export default function CommentSection({
                 >
                   Reply
                 </button>
-                <button
-                  type="button"
-                  onClick={() => void handleAutoReply(c)}
-                  disabled={autoReplyLoadingId === c.id}
-                  className="text-xs font-semibold text-gray-400 transition hover:text-[#4a9b6f] disabled:opacity-50"
-                >
-                  {autoReplyLoadingId === c.id ? "Writing..." : "Auto Reply"}
-                </button>
+                {currentUserIsAdmin && (
+                  <button
+                    type="button"
+                    onClick={() => void handleAutoReply(c)}
+                    disabled={autoReplyLoadingId === c.id}
+                    className="text-xs font-semibold text-gray-400 transition hover:text-[#4a9b6f] disabled:opacity-50"
+                  >
+                    {autoReplyLoadingId === c.id ? "Writing..." : "Auto Reply"}
+                  </button>
+                )}
                 {canEditComment(c) && editingCommentId !== c.id && (
                   <button
                     type="button"
@@ -702,6 +871,39 @@ export default function CommentSection({
         </div>
         {!user && <div className="mt-4 text-center text-sm text-gray-500">Sign in to comment.</div>}
       </div>
+      <ModalShell isOpen={likersOpen} onClose={() => setLikersOpen(false)} zIndex="z-[110]" backdropColor="bg-black/50">
+        <div className="mx-4 w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl">
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <h3 className="text-xl font-black text-gray-950">{likersTitle}</h3>
+            <button type="button" onClick={() => setLikersOpen(false)} className="text-2xl leading-none text-gray-500 hover:text-gray-900" aria-label="Close likes">
+              ×
+            </button>
+          </div>
+          {likersLoading ? (
+            <p className="py-6 text-center text-sm text-gray-500">Loading likes...</p>
+          ) : likers.length === 0 ? (
+            <p className="py-6 text-center text-sm text-gray-500">No likes yet.</p>
+          ) : (
+            <div className="space-y-3">
+              {likers.map((liker) => (
+                <Link key={liker.user_id} href={`/profile/${liker.user_id}`} className="flex items-center gap-3 rounded-2xl border border-gray-100 bg-white px-3 py-2 transition hover:bg-gray-50">
+                  {liker.profile_image_url ? (
+                    <img src={liker.profile_image_url} alt={liker.display_name} className="h-10 w-10 rounded-full object-cover" />
+                  ) : (
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white" style={{ backgroundColor: avatarColor(liker.user_id) }}>
+                      {liker.display_name.charAt(0).toUpperCase()}
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-bold text-gray-900">{liker.display_name}</p>
+                    {liker.username ? <p className="truncate text-xs text-gray-500">@{liker.username}</p> : null}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </ModalShell>
     </section>
   );
 }

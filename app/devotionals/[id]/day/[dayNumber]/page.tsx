@@ -284,21 +284,55 @@ export default function ProverbsStudyDayPage() {
     setScrambledDone(actions.some((row) => row.action_type === ACTION_TYPE.scrambled_chapter_completed && String(row.action_label || "").toLowerCase().startsWith(label.toLowerCase())));
     setReflectionDone(Boolean(commentsRes.data?.length));
 
-    await loadFinishers(dayRow);
+    await loadFinishers(dayRow, devotionalRow);
     setLoading(false);
   }
 
-  async function loadFinishers(dayRow: DevotionalDay) {
+  async function loadFinishers(dayRow: DevotionalDay, devotionalRow: Devotional | null = devotional) {
     const label = `${dayRow.bible_reading_book} ${dayRow.bible_reading_chapter}`;
     const noteLabel = notesActionLabel(dayRow.bible_reading_book, dayRow.bible_reading_chapter);
     const reflectionSlug = chapterSlug(dayRow.bible_reading_book, dayRow.bible_reading_chapter);
+    const devotionalActionPrefix = devotionalRow?.title ? `${devotionalRow.title} - Day ${dayNumber}` : null;
+    const normalizedBook = dayRow.bible_reading_book.toLowerCase().trim();
 
-    const [introRes, notesActionsRes, triviaActionsRes, scrambledActionsRes, commentsRes] = await Promise.all([
+    const [
+      introRes,
+      introActionsRes,
+      readingChaptersRes,
+      readingActionsRes,
+      notesActionsRes,
+      triviaActionsRes,
+      scrambledActionsRes,
+      commentsRes,
+    ] = await Promise.all([
       supabase
         .from("devotional_progress")
         .select("user_id, is_completed, reading_completed, completed_at")
         .eq("devotional_id", devotionalId)
         .eq("day_number", dayNumber),
+      devotionalActionPrefix
+        ? supabase
+            .from("master_actions")
+            .select("user_id, created_at, action_label")
+            .eq("action_type", ACTION_TYPE.devotional_day_completed)
+            .ilike("action_label", `${devotionalActionPrefix}%`)
+            .order("created_at", { ascending: false })
+            .limit(1000)
+        : Promise.resolve({ data: [], error: null }),
+      supabase
+        .from("completed_chapters")
+        .select("user_id, completed_at")
+        .eq("book", normalizedBook)
+        .eq("chapter", dayRow.bible_reading_chapter)
+        .order("completed_at", { ascending: false })
+        .limit(1000),
+      supabase
+        .from("master_actions")
+        .select("user_id, action_type, action_label, created_at")
+        .eq("action_type", ACTION_TYPE.chapter_completed)
+        .ilike("action_label", `${label}%`)
+        .order("created_at", { ascending: false })
+        .limit(1000),
       supabase
         .from("master_actions")
         .select("user_id, action_type, action_label, created_at")
@@ -335,6 +369,15 @@ export default function ProverbsStudyDayPage() {
     if (introRes.error) {
       console.error("[PROVERBS_FINISHERS] Could not load intro/reading progress:", introRes.error);
     }
+    if (introActionsRes.error) {
+      console.error("[PROVERBS_FINISHERS] Could not load intro actions:", introActionsRes.error);
+    }
+    if (readingChaptersRes.error) {
+      console.error("[PROVERBS_FINISHERS] Could not load completed chapter readers:", readingChaptersRes.error);
+    }
+    if (readingActionsRes.error) {
+      console.error("[PROVERBS_FINISHERS] Could not load reading actions:", readingActionsRes.error);
+    }
     if (notesActionsRes.error) {
       console.error("[PROVERBS_FINISHERS] Could not load notes finishers:", notesActionsRes.error);
     }
@@ -363,6 +406,12 @@ export default function ProverbsStudyDayPage() {
           return row.user_id;
         }),
     );
+    (introActionsRes.data || []).forEach((row: any) => {
+      if (!row.user_id) return;
+      introIds.add(row.user_id);
+      if (!introDates.has(row.user_id)) introDates.set(row.user_id, row.created_at || null);
+    });
+
     const readingIds = new Set(
       (introRes.data || [])
         .filter((row: any) => row.reading_completed)
@@ -371,6 +420,17 @@ export default function ProverbsStudyDayPage() {
           return row.user_id;
         }),
     );
+    (readingChaptersRes.data || []).forEach((row: any) => {
+      if (!row.user_id) return;
+      readingIds.add(row.user_id);
+      if (!readingDates.has(row.user_id)) readingDates.set(row.user_id, row.completed_at || null);
+    });
+    (readingActionsRes.data || []).forEach((row: any) => {
+      if (!row.user_id) return;
+      readingIds.add(row.user_id);
+      if (!readingDates.has(row.user_id)) readingDates.set(row.user_id, row.created_at || null);
+    });
+
     const noteIds = new Set<string>();
     const triviaIds = new Set<string>();
     const scrambledIds = new Set<string>();
@@ -399,6 +459,33 @@ export default function ProverbsStudyDayPage() {
         return row.user_id;
       }),
     );
+
+    const inferDate = (id: string) =>
+      notesDates.get(id) ||
+      triviaDates.get(id) ||
+      scrambledDates.get(id) ||
+      reflectionDates.get(id) ||
+      readingDates.get(id) ||
+      null;
+
+    // The chapter tasks are ordered. If a buddy has completed a later section,
+    // they necessarily passed through the intro and reading even if older/private
+    // progress rows are not visible to this viewer.
+    const downstreamIds = new Set<string>([...readingIds, ...noteIds, ...triviaIds, ...scrambledIds, ...reflectionIds]);
+    downstreamIds.forEach((id) => {
+      if (!introIds.has(id)) {
+        introIds.add(id);
+        introDates.set(id, inferDate(id));
+      }
+    });
+    const afterReadingIds = new Set<string>([...noteIds, ...triviaIds, ...scrambledIds, ...reflectionIds]);
+    afterReadingIds.forEach((id) => {
+      if (!readingIds.has(id)) {
+        readingIds.add(id);
+        readingDates.set(id, inferDate(id));
+      }
+    });
+
     const allUserIds = Array.from(new Set([...introIds, ...readingIds, ...noteIds, ...triviaIds, ...scrambledIds, ...reflectionIds].filter(Boolean)));
     if (allUserIds.length === 0) {
       setFinishers([]);
@@ -748,13 +835,11 @@ export default function ProverbsStudyDayPage() {
           </CollapsibleTask>
 
           <CollapsibleTask taskNumber={6} title="Answer The Reflection Question" done={reflectionDone} open={openTask === 6} onToggle={() => setOpenTask(openTask === 6 ? null : 6)}>
-            <div className="mb-4 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 text-gray-800 shadow-sm">
-              Now that you have read {chapterLabel}, answer this question: <span className="font-black text-gray-950">{day.reflection_question}</span>
-            </div>
+            <p className="mb-4 text-xl font-black leading-snug text-gray-950">{day.reflection_question}</p>
             <CommentSection
               articleSlug={chapterSlug(day.bible_reading_book, day.bible_reading_chapter)}
               headingText=""
-              placeholderText={`Answer the reflection question for ${chapterLabel}...`}
+              placeholderText="Start Typing Here"
               submitButtonText="Post Reflection"
               variant="plain"
               onPosted={() => {

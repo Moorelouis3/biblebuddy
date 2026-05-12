@@ -175,14 +175,14 @@ export default function LandingPage() {
 
   if (isChecking) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#f8f5ee]">
+      <div className="flex min-h-screen items-center justify-center bg-[#eef4ff]">
         <div className="text-slate-400">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#f8f5ee] text-slate-950">
+    <div className="min-h-screen overflow-hidden bg-[#eef4ff] text-slate-950">
       <style>{`
         @keyframes landing-fire-flicker {
           0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 0 rgba(255, 145, 0, 0)); }
@@ -222,7 +222,7 @@ export default function LandingPage() {
           <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-[#d9ecff] ring-1 ring-white/15 md:h-10 md:w-10">
             <Image src="/louis/louis-wave.png" alt="Bible Buddy Logo" width={36} height={36} className="h-9 w-9 object-contain" />
           </div>
-          <div className="text-lg font-black tracking-tight text-slate-950 md:text-2xl">BibleBuddy</div>
+          <div className="text-lg font-black tracking-tight text-slate-950 md:text-2xl">Bible buddy</div>
         </div>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-4">
@@ -276,9 +276,6 @@ export default function LandingPage() {
                   <span className="text-sm font-black text-slate-950">Bible Buddy</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-xs font-black sm:gap-2">
-                  <span><span className="landing-fire">🔥</span> 1</span>
-                  <span><span className="landing-diamond">💎</span> 5</span>
-                  <span>🛡 5</span>
                   <span>🔔</span>
                   <span>💬</span>
                   <Image src="/louis/louis-cool.png" alt="Profile" width={26} height={26} className="rounded-full" />
@@ -347,7 +344,7 @@ export default function LandingPage() {
           </button>
         </section>
 
-        <section className="border-y border-[#e6dccb] bg-[#f8f5ee] px-4 py-16 sm:px-5 md:py-24">
+        <section className="px-4 py-16 sm:px-5 md:py-24">
           <div className="mx-auto max-w-5xl text-center">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#5f95bd] sm:text-sm sm:tracking-[0.22em]">The real problem</p>
             <h2 className="mt-4 text-3xl font-black leading-tight text-slate-950 sm:text-4xl md:mt-6 md:text-6xl">
@@ -377,7 +374,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="bg-[#f8f5ee] px-4 py-16 sm:px-5 md:py-24">
+        <section className="bg-transparent px-4 py-16 sm:px-5 md:py-24">
           <div className="mx-auto max-w-7xl">
             <div className="mx-auto max-w-4xl text-center">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-[#5f95bd] sm:text-sm sm:tracking-[0.22em]">The secret sauce</p>
@@ -394,10 +391,10 @@ export default function LandingPage() {
             <div className="mt-9 grid gap-4 md:mt-14 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
               {taskSteps.map((step) => (
                 <div key={step.title} className="rounded-2xl border border-[#dbe7f6] bg-white p-5 shadow-[0_14px_34px_rgba(42,88,125,0.1)] md:rounded-3xl md:p-6 md:shadow-[0_18px_46px_rgba(42,88,125,0.12)]">
-                  <div className="flex items-center justify-between">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-2xl md:h-12 md:w-12">{step.icon}</span>
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#eef6ff] text-2xl md:h-12 md:w-12">{step.icon}</span>
+                    <h3 className="text-xl font-black leading-tight text-slate-950 md:text-2xl">{step.title}</h3>
                   </div>
-                  <h3 className="mt-4 text-xl font-black text-slate-950 md:mt-5 md:text-2xl">{step.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-slate-600 md:mt-4 md:text-base md:leading-7">{step.copy}</p>
                 </div>
               ))}
@@ -405,7 +402,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="bg-[#f8f5ee] px-4 py-16 sm:px-5 md:py-24">
+        <section className="bg-transparent px-4 py-16 sm:px-5 md:py-24">
           <div className="mx-auto grid max-w-7xl gap-9 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-12">
             <div className="text-center lg:text-left">
               <h2 className="text-3xl font-black leading-tight text-slate-950 sm:text-4xl md:text-6xl">Bible study should feel alive, not like homework.</h2>
@@ -431,11 +428,9 @@ export default function LandingPage() {
                   <span className="text-sm font-black text-slate-950">Bible Buddy</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-xs font-black text-slate-800 sm:gap-2">
-                  <span><span className="landing-fire">🔥</span> 62</span>
-                  <span><span className="landing-diamond">💎</span> 5</span>
-                  <span>🛡 12</span>
                   <span>🔔</span>
                   <span>💬</span>
+                  <Image src="/louis/louis-cool.png" alt="Profile" width={26} height={26} className="rounded-full" />
                 </div>
               </div>
               <div className="p-4 md:p-6">
@@ -483,7 +478,7 @@ export default function LandingPage() {
         </section>
       </main>
 
-      <footer className="border-t border-[#e6dccb] bg-[#f8f5ee] text-slate-600">
+      <footer className="border-t border-[#dbe7f6] bg-transparent text-slate-600">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-10 md:grid-cols-3 md:py-12">
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-950">Connect with me</h3>
