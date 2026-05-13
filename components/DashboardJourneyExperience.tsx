@@ -204,28 +204,28 @@ const activeTaskPrompts: ActiveTaskPrompt[] = [
 
 const finalStretchTaskPrompts: Record<number, ActiveTaskPrompt[]> = {
   3: [
-    { lineOne: "3 left", lineTwo: "Let's finish strong" },
-    { lineOne: "3 left", lineTwo: "You are close now" },
-    { lineOne: "3 to go", lineTwo: "Keep the flow moving" },
-    { lineOne: "Final 3", lineTwo: "Let's knock this out" },
-    { lineOne: "3 steps left", lineTwo: "Stay locked in" },
-    { lineOne: "Only 3 left", lineTwo: "This is the next one" },
+    { lineOne: "Finish strong", lineTwo: "" },
+    { lineOne: "Keep going", lineTwo: "" },
+    { lineOne: "Stay steady", lineTwo: "" },
+    { lineOne: "Knock it out", lineTwo: "" },
+    { lineOne: "Stay locked in", lineTwo: "" },
+    { lineOne: "Next win", lineTwo: "" },
   ],
   2: [
-    { lineOne: "2 left", lineTwo: "Almost there" },
-    { lineOne: "2 to go", lineTwo: "Keep pushing" },
-    { lineOne: "Final 2", lineTwo: "Do this one now" },
-    { lineOne: "Only 2 left", lineTwo: "You are nearly done" },
-    { lineOne: "2 steps left", lineTwo: "Stay with it" },
-    { lineOne: "2 left", lineTwo: "Let's close the gap" },
+    { lineOne: "Almost there", lineTwo: "" },
+    { lineOne: "Keep pushing", lineTwo: "" },
+    { lineOne: "Do this now", lineTwo: "" },
+    { lineOne: "Nearly done", lineTwo: "" },
+    { lineOne: "Stay with it", lineTwo: "" },
+    { lineOne: "Close the gap", lineTwo: "" },
   ],
   1: [
-    { lineOne: "Last one", lineTwo: "Finish the flow" },
-    { lineOne: "Final task", lineTwo: "Bring it home" },
-    { lineOne: "1 left", lineTwo: "Let's finish" },
-    { lineOne: "Last step", lineTwo: "Close it out" },
-    { lineOne: "One more", lineTwo: "You got this" },
-    { lineOne: "Finish line", lineTwo: "Last task now" },
+    { lineOne: "Finish strong", lineTwo: "" },
+    { lineOne: "Bring it home", lineTwo: "" },
+    { lineOne: "Let's finish", lineTwo: "" },
+    { lineOne: "Close it out", lineTwo: "" },
+    { lineOne: "You got this", lineTwo: "" },
+    { lineOne: "Last move", lineTwo: "" },
   ],
 };
 
@@ -1737,8 +1737,8 @@ export default function DashboardJourneyExperience({
                       <p className={`text-[15px] font-bold leading-tight sm:text-base ${task.done ? "text-gray-950" : "text-gray-600"}`}>{taskCopy.title}</p>
                       <p className={`mt-1 max-w-[18rem] text-xs leading-5 sm:text-sm ${task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
                       {task.timeEstimateLabel ? (
-                        <p className="mt-2 inline-flex rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-black text-[#4f6f9a] ring-1 ring-[#d8e4f6]">
-                          {task.timeEstimateLabel} - {task.timeEstimateDetail || "Estimated time"}
+                        <p className="mt-2 text-[11px] font-black text-gray-950">
+                          Takes about {task.timeEstimateLabel}
                         </p>
                       ) : null}
                     </div>
@@ -1765,7 +1765,9 @@ export default function DashboardJourneyExperience({
                           {activeTaskPrompt ? (
                             <span className="flex flex-col items-end leading-tight">
                               <span>{activeTaskPrompt.lineOne}</span>
-                              <span className="text-[10px] font-extrabold opacity-75">{activeTaskPrompt.lineTwo}</span>
+                              {activeTaskPrompt.lineTwo ? (
+                                <span className="text-[10px] font-extrabold opacity-75">{activeTaskPrompt.lineTwo}</span>
+                              ) : null}
                             </span>
                           ) : (
                             taskStatusLabel

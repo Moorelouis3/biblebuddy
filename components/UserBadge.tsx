@@ -9,14 +9,16 @@ export default function UserBadge({
   customBadge,
   isPaid,
   groupRole,
+  proExpiresAt,
   className = "",
 }: {
   customBadge?: string | null;
   isPaid?: boolean | null;
   groupRole?: string | null;
+  proExpiresAt?: string | null;
   className?: string;
 }) {
-  const badge = resolveUserBadge({ customBadge, isPaid, groupRole });
+  const badge = resolveUserBadge({ customBadge, isPaid, groupRole, proExpiresAt });
   const [open, setOpen] = useState(false);
 
   if (!badge) return null;

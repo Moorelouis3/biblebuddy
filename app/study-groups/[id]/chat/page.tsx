@@ -1968,6 +1968,7 @@ export default function GroupChatPage() {
   const [topBuddiesTab, setTopBuddiesTab] = useState<"week" | "allTime">("week");
   const [topBuddiesExpanded, setTopBuddiesExpanded] = useState(false);
   const [topBuddiesEngagement, setTopBuddiesEngagement] = useState<TopBuddiesEngagement | null>(null);
+  const [hasOpenedTopBuddiesCard, setHasOpenedTopBuddiesCard] = useState(false);
   const [loadingTopBuddies, setLoadingTopBuddies] = useState(false);
   const MEMBERS_PAGE = 20;
 
@@ -2691,6 +2692,11 @@ export default function GroupChatPage() {
     }
   }
 
+  useEffect(() => {
+    if (!group?.id) return;
+    setHasOpenedTopBuddiesCard(localStorage.getItem(`top-buddies-opened:${group.id}`) === "true");
+  }, [group?.id]);
+
   async function trackTopBuddiesClick(action: "open" | "tab_week" | "tab_all_time" | "modal") {
     if (!userId || !group) return;
     const actionLabel = `top_buddies_card_opened:${group.id}:${action}`;
@@ -2712,7 +2718,11 @@ export default function GroupChatPage() {
   function toggleTopBuddiesCard() {
     setTopBuddiesExpanded((current) => {
       const next = !current;
-      if (next) void trackTopBuddiesClick("open");
+      if (next) {
+        setHasOpenedTopBuddiesCard(true);
+        if (group?.id) localStorage.setItem(`top-buddies-opened:${group.id}`, "true");
+        void trackTopBuddiesClick("open");
+      }
       return next;
     });
   }
@@ -2752,7 +2762,7 @@ export default function GroupChatPage() {
       : "0 clicks";
 
     return (
-      <div className="mb-4 overflow-hidden rounded-[24px] border border-[#d8e7d7] bg-white shadow-sm">
+      <div className={`mb-4 overflow-hidden rounded-[24px] border border-[#d8e7d7] bg-white shadow-sm ${!hasOpenedTopBuddiesCard && !topBuddiesExpanded ? "animate-pulse ring-2 ring-[#ffd95d]/60" : ""}`}>
         <button
           type="button"
           onClick={toggleTopBuddiesCard}

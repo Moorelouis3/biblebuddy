@@ -84,6 +84,8 @@ export async function POST(req: NextRequest) {
       supabase,
       userId,
       source: "stripe",
+      membershipStatus: "pro",
+      proExpiresAt: null,
       actionLabel: amountTotal
         ? `Stripe checkout completed (${amountTotal})`
         : "Stripe checkout completed",

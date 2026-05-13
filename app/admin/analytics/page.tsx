@@ -338,6 +338,31 @@ export default function AnalyticsPage() {
   const [ambassadors, setAmbassadors] = useState<AmbassadorEntry[]>([]);
   const [loadingAmbassadors, setLoadingAmbassadors] = useState(true);
   const [expandedAmbassador, setExpandedAmbassador] = useState<string | null>(null);
+  type ProTrialEntry = {
+    userId: string;
+    username: string;
+    displayName: string;
+    profileImageUrl: string | null;
+    isPaid: boolean;
+    membershipStatus: string;
+    upgraded: boolean;
+    status: "active" | "expired" | "upgraded";
+    proExpiresAt: string | null;
+    timeLeft: string;
+    xpPoints: number;
+    currentLevel: number;
+    currentStreak: number;
+    loginCount: number;
+    commentCount: number;
+    reflectionCount: number;
+    chaptersRead: number;
+    notesCreated: number;
+    triviaAnswered: number;
+    lastActiveAt: string | null;
+  };
+  const [proTrials, setProTrials] = useState<ProTrialEntry[]>([]);
+  const [proTrialSummary, setProTrialSummary] = useState({ total: 0, active: 0, expired: 0, upgraded: 0 });
+  const [loadingProTrials, setLoadingProTrials] = useState(true);
 
   useEffect(() => {
     async function fetchActiveUsers() {
@@ -390,6 +415,7 @@ export default function AnalyticsPage() {
     loadDevotionalStats();
     loadReadingPlanStats();
     loadAmbassadors();
+    loadProTrials();
   }, [timeFilter, selectedActionType, selectedActionLabel]);
 
   useEffect(() => {
@@ -478,6 +504,23 @@ export default function AnalyticsPage() {
       console.error("[AMBASSADORS] Error loading ambassadors:", err);
     }
     setLoadingAmbassadors(false);
+  }
+
+  async function loadProTrials() {
+    setLoadingProTrials(true);
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const token = session?.access_token ?? "";
+      const res = await fetch("/api/admin/pro-trials", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const data = await res.json();
+      if (data.trials) setProTrials(data.trials);
+      if (data.summary) setProTrialSummary(data.summary);
+    } catch (err) {
+      console.error("[PRO_TRIALS] Error loading Pro trials:", err);
+    }
+    setLoadingProTrials(false);
   }
 
   async function loadReadingPlanStats() {
@@ -3876,6 +3919,91 @@ export default function AnalyticsPage() {
                   </div>
                 ))
               )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* PRO TRIALS SECTION */}
+      <div className="mt-4 mb-4">
+        <div className="bg-white border border-violet-200 rounded-xl overflow-hidden shadow-sm">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-violet-100 bg-violet-50">
+            <div>
+              <span className="text-xl font-bold text-violet-800">Pro Trial Tracker</span>
+              <p className="text-xs text-violet-600 mt-0.5">
+                {proTrialSummary.active} active · {proTrialSummary.upgraded} upgraded · {proTrialSummary.expired} expired
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => loadProTrials()}
+              className="rounded-full bg-[#7BAFD4] px-3 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-[#65a2cc]"
+            >
+              Refresh
+            </button>
+          </div>
+
+          {loadingProTrials ? (
+            <p className="text-sm text-gray-400 px-5 py-4">Loading Pro trials...</p>
+          ) : proTrials.length === 0 ? (
+            <p className="text-sm text-gray-400 px-5 py-4">No Pro Trial badges assigned yet.</p>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="min-w-full text-sm">
+                <thead className="bg-white text-xs uppercase tracking-wide text-gray-400">
+                  <tr>
+                    <th className="px-5 py-3 text-left">Buddy</th>
+                    <th className="px-4 py-3 text-left">Status</th>
+                    <th className="px-4 py-3 text-left">Time Left</th>
+                    <th className="px-4 py-3 text-left">XP / Level</th>
+                    <th className="px-4 py-3 text-left">Streak</th>
+                    <th className="px-4 py-3 text-left">Logins</th>
+                    <th className="px-4 py-3 text-left">Activity</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {proTrials.map((trial) => (
+                    <tr key={trial.userId} className="hover:bg-violet-50/40">
+                      <td className="px-5 py-3">
+                        <a href={`/profile/${trial.userId}`} className="flex items-center gap-3 font-semibold text-gray-900 hover:text-violet-700">
+                          {trial.profileImageUrl ? (
+                            <img src={trial.profileImageUrl} alt={trial.displayName} className="h-9 w-9 rounded-full object-cover" />
+                          ) : (
+                            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-violet-100 text-xs font-black text-violet-700">
+                              {(trial.displayName || trial.username).charAt(0).toUpperCase()}
+                            </span>
+                          )}
+                          <span className="min-w-0">
+                            <span className="block truncate">{trial.displayName}</span>
+                            <span className="block truncate text-xs font-medium text-gray-400">@{trial.username}</span>
+                          </span>
+                        </a>
+                      </td>
+                      <td className="px-4 py-3">
+                        <span className={`inline-flex rounded-full px-2 py-1 text-xs font-bold ${
+                          trial.status === "upgraded"
+                            ? "bg-green-100 text-green-700"
+                            : trial.status === "active"
+                              ? "bg-violet-100 text-violet-700"
+                              : "bg-gray-100 text-gray-500"
+                        }`}>
+                          {trial.status === "upgraded" ? "Upgraded" : trial.status === "active" ? "Trial active" : "Expired"}
+                        </span>
+                      </td>
+                      <td className="px-4 py-3 font-semibold text-gray-700">{trial.timeLeft}</td>
+                      <td className="px-4 py-3 text-gray-700">
+                        <span className="font-bold">{trial.xpPoints}</span>
+                        <span className="text-gray-400"> XP · L{trial.currentLevel}</span>
+                      </td>
+                      <td className="px-4 py-3 text-gray-700">{trial.currentStreak} days</td>
+                      <td className="px-4 py-3 text-gray-700">{trial.loginCount}</td>
+                      <td className="px-4 py-3 text-xs text-gray-500">
+                        {trial.chaptersRead} chapters · {trial.triviaAnswered} trivia · {trial.commentCount} comments
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </div>

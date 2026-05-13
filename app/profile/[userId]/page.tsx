@@ -52,6 +52,21 @@ function formatJoined(dateStr: string | null | undefined): string {
   return `${months[date.getMonth()]} ${date.getFullYear()}`;
 }
 
+function getProTrialTimeLeft(expiresAt: string | null | undefined) {
+  if (!expiresAt) return null;
+  const ms = new Date(expiresAt).getTime() - Date.now();
+  if (ms <= 0) return null;
+  const totalMinutes = Math.floor(ms / 60000);
+  const days = Math.floor(totalMinutes / 1440);
+  const hours = Math.floor((totalMinutes % 1440) / 60);
+  const minutes = totalMinutes % 60;
+  return { days, hours, minutes };
+}
+
+function formatProTrialTimeLeft(timeLeft: { days: number; hours: number; minutes: number }) {
+  return `${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m left`;
+}
+
 type BuddyState = "none" | "pending_sent" | "pending_received" | "buddies";
 
 const HEATMAP_MONTH_FORMATTER = new Intl.DateTimeFormat("en-US", { month: "short" });
@@ -180,6 +195,7 @@ export default function PublicProfilePage() {
   const [savingBadge, setSavingBadge] = useState(false);
   const [badgeSaveMessage, setBadgeSaveMessage] = useState<string | null>(null);
   const [editProfileError, setEditProfileError] = useState<string | null>(null);
+  const [trialClockTick, setTrialClockTick] = useState(0);
 
   // ── Recent posts ───────────────────────────────────────────────────────────
   const [recentPosts, setRecentPosts] = useState<Array<{
@@ -204,6 +220,11 @@ export default function PublicProfilePage() {
     loadProfileData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profileUserId]);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setTrialClockTick((tick) => tick + 1), 60000);
+    return () => window.clearInterval(timer);
+  }, []);
 
   async function loadProfileData() {
     try {
@@ -460,7 +481,7 @@ export default function PublicProfilePage() {
       } else {
         setReferralState("valid");
         setReferralTrialEnds(json.trialEndsAt ?? null);
-        setStats((prev) => prev ? { ...prev, is_paid: true } : prev);
+        setStats((prev) => prev ? { ...prev, is_paid: true, membership_status: "pro", pro_expires_at: json.trialEndsAt ?? prev.pro_expires_at } : prev);
       }
     } catch {
       setReferralError("Something went wrong. Please try again.");
@@ -616,6 +637,8 @@ export default function PublicProfilePage() {
               ...prev,
               member_badge: payload.memberBadge || null,
               is_paid: payload.isPaid === true ? true : prev.is_paid,
+              membership_status: payload.memberBadge === "pro_trial" ? "pro" : prev.membership_status,
+              pro_expires_at: payload.proExpiresAt ?? prev.pro_expires_at,
             }
           : prev
       ));
@@ -874,6 +897,9 @@ export default function PublicProfilePage() {
     stats?.username === "moorelouis3";
   const initials = displayName.split(" ").map((w: string) => w[0]).join("").slice(0, 2).toUpperCase();
   const color = avatarColor(profileUserId);
+  const proTrialTimeLeft = getProTrialTimeLeft(stats?.pro_expires_at);
+  const showProTrialBanner = Boolean(stats?.member_badge === "pro_trial" && stats?.is_paid && proTrialTimeLeft);
+  void trialClockTick;
 
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
@@ -889,6 +915,27 @@ export default function PublicProfilePage() {
         </nav>
 
         {/* ── PROFILE HEADER ─────────────────────────────────────────────── */}
+        {showProTrialBanner && proTrialTimeLeft && (
+          <div className="mb-6 overflow-hidden rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 via-white to-emerald-50 shadow-sm">
+            <div className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="min-w-0">
+                <p className="text-xs font-black uppercase tracking-wide text-violet-600">Pro Trial Active</p>
+                <p className="mt-1 text-sm font-semibold text-gray-900">
+                  {isOwner ? "You have" : `${displayName} has`} Bible Buddy Pro for {formatProTrialTimeLeft(proTrialTimeLeft)}.
+                </p>
+              </div>
+              {isOwner && (
+                <Link
+                  href="/upgrade"
+                  className="inline-flex items-center justify-center rounded-xl bg-violet-600 px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-violet-700"
+                >
+                  Upgrade
+                </Link>
+              )}
+            </div>
+          </div>
+        )}
+
         <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
           <div className="flex items-start gap-5">
 
@@ -920,6 +967,7 @@ export default function PublicProfilePage() {
                     <UserBadge
                       customBadge={stats?.member_badge}
                       isPaid={stats?.is_paid}
+                      proExpiresAt={stats?.pro_expires_at}
                       groupRole={shouldForceTeacherBadge ? "leader" : undefined}
                     />
                   </div>

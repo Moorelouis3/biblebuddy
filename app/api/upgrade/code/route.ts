@@ -72,6 +72,8 @@ export async function POST(req: NextRequest) {
       supabase: supabaseAdmin,
       userId: user.id,
       source: "lifetime_code",
+      membershipStatus: "pro",
+      proExpiresAt: null,
       actionLabel: "Lifetime upgrade code applied",
     });
 

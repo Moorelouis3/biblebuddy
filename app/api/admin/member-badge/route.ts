@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { normalizeCustomMemberBadge } from "@/lib/userBadges";
+import { markUserAsPaidAndTrackUpgrade } from "@/lib/server/upgradeTracking";
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 
@@ -44,6 +45,35 @@ export async function POST(request: NextRequest) {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
+  const now = new Date();
+  const trialExpiresAt = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+
+  if (normalizedBadge === "pro_trial") {
+    try {
+      await markUserAsPaidAndTrackUpgrade({
+        supabase: supabaseAdmin,
+        userId: targetUserId,
+        source: "admin_pro_trial",
+        membershipStatus: "pro",
+        proExpiresAt: trialExpiresAt.toISOString(),
+        actionLabel: "Admin 30-day Pro trial assigned",
+      });
+
+      const { error: badgeError } = await supabaseAdmin
+        .from("profile_stats")
+        .update({
+          member_badge: "pro_trial",
+          updated_at: now.toISOString(),
+        })
+        .eq("user_id", targetUserId);
+
+      if (badgeError) {
+        return NextResponse.json({ error: badgeError.message || "Could not save badge." }, { status: 500 });
+      }
+    } catch (error: any) {
+      return NextResponse.json({ error: error?.message || "Could not start Pro trial." }, { status: 500 });
+    }
+  } else {
   const { error } = await supabaseAdmin
     .from("profile_stats")
     .upsert(
@@ -51,6 +81,8 @@ export async function POST(request: NextRequest) {
         user_id: targetUserId,
         member_badge: normalizedBadge,
         is_paid: shouldForcePaid ? true : undefined,
+        membership_status: shouldForcePaid ? "pro" : undefined,
+        pro_expires_at: shouldForcePaid ? null : undefined,
         updated_at: new Date().toISOString(),
       },
       { onConflict: "user_id" },
@@ -58,6 +90,7 @@ export async function POST(request: NextRequest) {
 
   if (error) {
     return NextResponse.json({ error: error.message || "Could not save badge." }, { status: 500 });
+  }
   }
 
   // If assigning buddy_partner, auto-create ambassador_profile if needed
@@ -105,5 +138,6 @@ export async function POST(request: NextRequest) {
     ok: true,
     memberBadge: normalizedBadge,
     isPaid: shouldForcePaid ? true : null,
+    proExpiresAt: normalizedBadge === "pro_trial" ? trialExpiresAt.toISOString() : null,
   });
 }

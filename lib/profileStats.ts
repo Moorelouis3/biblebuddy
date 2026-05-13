@@ -22,6 +22,8 @@ export interface ProfileStats {
   display_name?: string;
   hide_credit_info_modal?: boolean;
   is_paid?: boolean;
+  membership_status?: string | null;
+  pro_expires_at?: string | null;
   member_badge?: string | null;
   daily_credits?: number;
   last_seen_update_version?: string | null;

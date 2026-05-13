@@ -790,16 +790,15 @@ export default function DashboardPage() {
   }
 
   function buildDashboardLouisNudgePool(): DashboardLouisNudge[] {
-    const nextTaskTitle = dailyTaskNextTitle || null;
     const pool: DashboardLouisNudge[] = [
       {
-        id: "daily-task",
-        eyebrow: "Next Step",
-        title: nextTaskTitle ? "Keep the chapter moving" : "Open today’s tasks",
-        lineOne: nextTaskTitle ? `Your next task is ${nextTaskTitle}.` : "Your daily tasks keep Bible study simple.",
-        lineTwo: "Knock out one small step and your level keeps growing.",
-        buttonText: nextTaskTitle ? "Do this one now" : "View Daily Tasks",
-        action: "daily-tasks",
+        id: "bible-stat-consistency",
+        eyebrow: "Bible Study Stat",
+        title: "Small rhythms add up",
+        lineOne: "People who engage Scripture several days a week report more peace and spiritual clarity.",
+        lineTwo: "One short, focused moment can still move your faith forward today.",
+        buttonText: "Got it",
+        action: "dismiss",
       },
       {
         id: "study-tip-slow",
@@ -2317,9 +2316,7 @@ export default function DashboardPage() {
         });
 
         const baseTotalPoints = weightedPoints.totalPoints + uniqueEntityPoints;
-        const creatorPointMultiplier = isOwnerDashboard ? 2 : 1;
-        const adjustedTotalPoints = baseTotalPoints * creatorPointMultiplier;
-        const levelData = getLevelInfoFromPoints(adjustedTotalPoints);
+        const levelData = getLevelInfoFromPoints(baseTotalPoints);
         const { level, levelName, identityText, encouragementText, levelStart, levelEnd, progressPercent, totalPoints, pointsToNextLevel } = levelData;
 
         // Select random motivational message for this level

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { getLiveStreakMapForUsers } from "@/lib/serverStreaks";
-import { ACTION_POINT_WEIGHTS } from "@/lib/levelSystem";
+import { ACTION_POINT_WEIGHTS, getLevelInfoFromPoints } from "@/lib/levelSystem";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -23,6 +23,15 @@ type ProfileRow = {
   is_paid: boolean | null;
   current_streak: number | null;
   current_level: number | null;
+  chapters_completed_count: number | null;
+  notes_created_count: number | null;
+  people_learned_count: number | null;
+  places_discovered_count: number | null;
+  keywords_mastered_count: number | null;
+  trivia_questions_answered: number | null;
+  last_active_at: string | null;
+  last_active_date: string | null;
+  created_at: string | null;
 };
 
 type ActionRow = {
@@ -43,6 +52,48 @@ type GroupLikeRow = {
   user_id: string | null;
   created_at: string | null;
 };
+
+type CompletedChapterRow = {
+  user_id: string | null;
+  completed_at: string | null;
+};
+
+type ArticleCommentRow = {
+  user_id: string | null;
+  article_slug: string | null;
+  created_at: string | null;
+};
+
+const TASK_ACTIONS = new Set([
+  "devotional_day_completed",
+  "chapter_completed",
+  "chapter_notes_reviewed",
+  "reading_plan_chapter_completed",
+  "trivia_chapter_completed",
+  "scrambled_chapter_completed",
+  "louis_daily_task_bonus",
+]);
+
+const BIBLE_READING_ACTIONS = new Set([
+  "chapter_completed",
+  "reading_plan_chapter_completed",
+]);
+
+const COMMUNITY_ACTIONS = new Set([
+  "feed_post_thought",
+  "feed_post_prayer",
+  "feed_post_prayer_request",
+  "feed_post_photo",
+  "feed_post_video",
+  "feed_post_liked",
+  "feed_post_commented",
+  "feed_post_replied",
+  "buddy_added",
+  "study_group_feed_viewed",
+  "study_group_article_opened",
+  "study_group_bible_study_card_opened",
+  "series_week_started",
+]);
 
 async function fetchPaged<T>(
   queryBuilder: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: any }>,
@@ -78,10 +129,15 @@ function getWindowStart(scope: "week" | "allTime") {
   return new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
 }
 
+function safeNumber(value: unknown) {
+  return typeof value === "number" && Number.isFinite(value) ? value : 0;
+}
+
 function buildLeaderboard(options: {
-  memberIds: string[];
   profiles: ProfileRow[];
   actions: ActionRow[];
+  completedChapters: CompletedChapterRow[];
+  articleComments: ArticleCommentRow[];
   groupPosts: GroupPostRow[];
   groupLikes: GroupLikeRow[];
   louisId: string | null;
@@ -89,22 +145,59 @@ function buildLeaderboard(options: {
   liveStreakMap: Map<string, number>;
 }) {
   const sinceIso = getWindowStart(options.scope);
-  const memberSet = new Set(options.memberIds);
-  const stats = new Map<string, { points: number; appXp: number; posts: number; comments: number; likes: number; actions: number }>();
+  const stats = new Map<string, {
+    points: number;
+    appXp: number;
+    posts: number;
+    comments: number;
+    likes: number;
+    actions: number;
+    taskActions: number;
+    bibleActions: number;
+    notesReviewed: number;
+    triviaAnswered: number;
+    triviaCorrect: number;
+    triviaCompleted: number;
+    scrambledWords: number;
+    scrambledCompleted: number;
+    reflections: number;
+    communityActions: number;
+    articleComments: number;
+  }>();
 
   function ensure(userId: string) {
     let current = stats.get(userId);
     if (!current) {
-      current = { points: 0, appXp: 0, posts: 0, comments: 0, likes: 0, actions: 0 };
+      current = {
+        points: 0,
+        appXp: 0,
+        posts: 0,
+        comments: 0,
+        likes: 0,
+        actions: 0,
+        taskActions: 0,
+        bibleActions: 0,
+        notesReviewed: 0,
+        triviaAnswered: 0,
+        triviaCorrect: 0,
+        triviaCompleted: 0,
+        scrambledWords: 0,
+        scrambledCompleted: 0,
+        reflections: 0,
+        communityActions: 0,
+        articleComments: 0,
+      };
       stats.set(userId, current);
     }
     return current;
   }
 
-  options.memberIds.forEach((userId) => ensure(userId));
+  options.profiles.forEach((profile) => {
+    if (profile.user_id) ensure(profile.user_id);
+  });
 
   options.actions.forEach((action) => {
-    if (!action.user_id || !memberSet.has(action.user_id)) return;
+    if (!action.user_id || !action.action_type) return;
     if (sinceIso && (!action.created_at || action.created_at < sinceIso)) return;
     if (action.action_type === "study_group_feed_viewed" && action.action_label?.startsWith("top_buddies_")) return;
     const current = ensure(action.user_id);
@@ -112,10 +205,35 @@ function buildLeaderboard(options: {
     current.points += points;
     current.appXp += points;
     current.actions += 1;
+    if (TASK_ACTIONS.has(action.action_type)) current.taskActions += 1;
+    if (BIBLE_READING_ACTIONS.has(action.action_type)) current.bibleActions += 1;
+    if (COMMUNITY_ACTIONS.has(action.action_type)) current.communityActions += 1;
+    if (action.action_type === "chapter_notes_reviewed") current.notesReviewed += 1;
+    if (action.action_type === "trivia_question_answered") current.triviaAnswered += 1;
+    if (action.action_type === "trivia_question_correct") current.triviaCorrect += 1;
+    if (action.action_type === "trivia_chapter_completed") current.triviaCompleted += 1;
+    if (action.action_type === "scrambled_word_answered") current.scrambledWords += 1;
+    if (action.action_type === "scrambled_chapter_completed") current.scrambledCompleted += 1;
+    if (action.action_type === "devotional_reflection_saved") current.reflections += 1;
+  });
+
+  options.completedChapters.forEach((row) => {
+    if (!row.user_id) return;
+    if (sinceIso && (!row.completed_at || row.completed_at < sinceIso)) return;
+    ensure(row.user_id).bibleActions += 1;
+  });
+
+  options.articleComments.forEach((comment) => {
+    if (!comment.user_id) return;
+    if (sinceIso && (!comment.created_at || comment.created_at < sinceIso)) return;
+    const current = ensure(comment.user_id);
+    current.articleComments += 1;
+    current.communityActions += 1;
+    if ((comment.article_slug || "").startsWith("bible-chapter-")) current.reflections += 1;
   });
 
   options.groupPosts.forEach((post) => {
-    if (!post.user_id || !memberSet.has(post.user_id)) return;
+    if (!post.user_id) return;
     if (sinceIso && (!post.created_at || post.created_at < sinceIso)) return;
     const current = ensure(post.user_id);
     if (post.parent_post_id) {
@@ -128,7 +246,7 @@ function buildLeaderboard(options: {
   });
 
   options.groupLikes.forEach((like) => {
-    if (!like.user_id || !memberSet.has(like.user_id)) return;
+    if (!like.user_id) return;
     if (sinceIso && (!like.created_at || like.created_at < sinceIso)) return;
     const current = ensure(like.user_id);
     current.likes += 1;
@@ -141,20 +259,44 @@ function buildLeaderboard(options: {
     .filter(([userId]) => userId !== options.louisId)
     .map(([userId, entry]) => {
       const profile = profileMap.get(userId);
+      const fallbackLevel = getLevelInfoFromPoints(entry.appXp).level;
+      const currentLevel = Math.max(1, profile?.current_level || fallbackLevel);
+      const chaptersRead = Math.max(entry.bibleActions, safeNumber(profile?.chapters_completed_count));
+      const triviaAnswered = Math.max(entry.triviaAnswered, safeNumber(profile?.trivia_questions_answered));
+      const notesReviewed = entry.notesReviewed + safeNumber(profile?.notes_created_count);
+      const communityScore = entry.communityActions + entry.posts * 2 + entry.comments + entry.articleComments;
+      const taskScore = entry.taskActions + entry.triviaCompleted + entry.scrambledCompleted;
+      const learningScore =
+        chaptersRead * 8 +
+        notesReviewed * 5 +
+        triviaAnswered +
+        entry.triviaCorrect * 2 +
+        entry.scrambledWords * 2 +
+        entry.reflections * 8;
+      const score = Math.round(
+        entry.appXp +
+          currentLevel * 75 +
+          taskScore * 10 +
+          learningScore +
+          communityScore * 4 +
+          safeNumber(profile?.current_streak) * 5,
+      );
+
       return {
         userId,
         displayName: profile?.display_name || profile?.username || "Buddy",
+        username: profile?.username || null,
         profileImageUrl: profile?.profile_image_url ?? null,
         memberBadge: profile?.member_badge ?? null,
         isPaid: !!profile?.is_paid,
         currentStreak: options.liveStreakMap.get(userId) ?? profile?.current_streak ?? null,
-        currentLevel: profile?.current_level ?? null,
+        currentLevel,
         posts: entry.posts,
         comments: entry.comments,
         likes: entry.likes,
         appXp: entry.appXp,
         actions: entry.actions,
-        score: Math.max(0, Math.round(entry.points)),
+        score: Math.max(0, score),
       };
     })
     .filter((buddy) => buddy.score > 0 || buddy.posts > 0 || buddy.comments > 0 || buddy.likes > 0)
@@ -212,69 +354,47 @@ export async function GET(
   }
 
   try {
-    const memberRows = await fetchPaged<GroupMemberRow>((from, to) =>
-      supabaseAdmin
-        .from("group_members")
-        .select("user_id, status")
-        .eq("group_id", groupId)
-        .eq("status", "approved")
-        .range(from, to),
-    );
-
-    const memberIds = Array.from(new Set(memberRows.map((row) => row.user_id).filter((id): id is string => Boolean(id))));
-    if (!memberIds.length) {
-      return NextResponse.json({
-        buddies: [],
-        weeklyBuddies: [],
-        allTimeBuddies: [],
-        engagement: { totalClicks: 0, uniqueClickers: 0 },
-      });
-    }
-
-    const [profilesResult, actions, postRows] = await Promise.all([
-      supabaseAdmin
-        .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level")
-        .in("user_id", memberIds),
+    const [profiles, actions, completedChapters, articleComments, postRows, likeRows] = await Promise.all([
+      fetchPaged<ProfileRow>((from, to) =>
+        supabaseAdmin
+          .from("profile_stats")
+          .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, trivia_questions_answered, last_active_at, last_active_date, created_at")
+          .order("last_active_at", { ascending: false, nullsFirst: false })
+          .range(from, to),
+      ),
       fetchPaged<ActionRow>((from, to) => {
         const query = supabaseAdmin
           .from("master_actions")
           .select("user_id, action_type, action_label, created_at")
-          .in("user_id", memberIds)
           .order("created_at", { ascending: false })
           .range(from, to);
         return query;
       }),
+      fetchPaged<CompletedChapterRow>((from, to) =>
+        supabaseAdmin.from("completed_chapters").select("user_id, completed_at").range(from, to),
+      ),
+      fetchPaged<ArticleCommentRow>((from, to) =>
+        supabaseAdmin.from("article_comments").select("user_id, article_slug, created_at").eq("is_deleted", false).range(from, to),
+      ),
       fetchPaged<GroupPostRow>((from, to) => {
         const query = supabaseAdmin
           .from("group_posts")
           .select("id, user_id, created_at, parent_post_id")
-          .eq("group_id", groupId)
           .range(from, to);
         return query;
       }),
+      fetchPaged<GroupLikeRow>((from, to) =>
+        supabaseAdmin.from("group_post_likes").select("user_id, created_at").range(from, to),
+      ),
     ]);
 
-    if (profilesResult.error) throw profilesResult.error;
-
-    const groupPostIds = postRows.map((row) => row.id);
-    const likeRows = groupPostIds.length
-        ? await fetchPaged<GroupLikeRow>((from, to) => {
-          const query = supabaseAdmin
-            .from("group_post_likes")
-            .select("user_id, created_at")
-            .in("post_id", groupPostIds)
-            .range(from, to);
-          return query;
-        })
-      : [];
-
-    const liveStreakMap = await getLiveStreakMapForUsers(supabaseAdmin, memberIds);
-    const profiles = (profilesResult.data || []) as ProfileRow[];
+    const userIds = Array.from(new Set(profiles.map((profile) => profile.user_id).filter(Boolean)));
+    const liveStreakMap = await getLiveStreakMapForUsers(supabaseAdmin, userIds);
     const weeklyBuddies = buildLeaderboard({
-      memberIds,
       profiles,
       actions,
+      completedChapters,
+      articleComments,
       groupPosts: postRows,
       groupLikes: likeRows,
       louisId,
@@ -282,9 +402,10 @@ export async function GET(
       liveStreakMap,
     });
     const allTimeBuddies = buildLeaderboard({
-      memberIds,
       profiles,
       actions,
+      completedChapters,
+      articleComments,
       groupPosts: postRows,
       groupLikes: likeRows,
       louisId,

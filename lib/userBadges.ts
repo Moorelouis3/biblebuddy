@@ -1,7 +1,7 @@
-export type CustomMemberBadge = "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "buddy_partner";
+export type CustomMemberBadge = "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "buddy_partner" | "pro_trial";
 
 export type ResolvedUserBadge = {
-  key: "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "pro_buddy" | "buddy_partner";
+  key: "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "pro_buddy" | "buddy_partner" | "pro_trial";
   label: string;
   emoji: string;
   className: string;
@@ -20,6 +20,7 @@ export const CUSTOM_MEMBER_BADGE_OPTIONS: Array<{
   { value: "top_buddy", label: "Top Buddy" },
   { value: "founder_buddy", label: "Founder Buddy" },
   { value: "buddy_partner", label: "Buddy Partner" },
+  { value: "pro_trial", label: "Pro Trial" },
 ];
 
 export function normalizeCustomMemberBadge(value: string | null | undefined): CustomMemberBadge | null {
@@ -28,19 +29,38 @@ export function normalizeCustomMemberBadge(value: string | null | undefined): Cu
     value === "moderator" ||
     value === "top_buddy" ||
     value === "founder_buddy" ||
-    value === "buddy_partner"
+    value === "buddy_partner" ||
+    value === "pro_trial"
   ) {
     return value;
   }
   return null;
 }
 
+export function isProTrialActive(expiresAt?: string | null): boolean {
+  if (!expiresAt) return false;
+  return new Date(expiresAt).getTime() > Date.now();
+}
+
 export function resolveUserBadge(input: {
   customBadge?: string | null;
   isPaid?: boolean | null;
   groupRole?: string | null;
+  proExpiresAt?: string | null;
 }): ResolvedUserBadge | null {
   const customBadge = normalizeCustomMemberBadge(input.customBadge);
+
+  if (customBadge === "pro_trial" && (!input.proExpiresAt || isProTrialActive(input.proExpiresAt))) {
+    return {
+      key: "pro_trial",
+      label: "Pro Trial",
+      emoji: "ðŸ™",
+      className: "bg-violet-100 text-violet-700",
+      title: "Pro Trial",
+      description: "This buddy has a 30-day Bible Buddy Pro trial. They get the Pro badge while their trial is active.",
+      louisMood: "pray",
+    };
+  }
 
   if (customBadge === "buddy_partner") {
     return {

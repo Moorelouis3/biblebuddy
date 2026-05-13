@@ -22,7 +22,7 @@ export async function checkProExpiration(userId: string): Promise<void> {
     // Get current membership status and expiration
     const { data: profileStats, error: fetchError } = await supabaseAdmin
       .from("profile_stats")
-      .select("membership_status, pro_expires_at")
+      .select("membership_status, pro_expires_at, member_badge")
       .eq("user_id", userId)
       .maybeSingle();
 
@@ -52,12 +52,19 @@ export async function checkProExpiration(userId: string): Promise<void> {
       // Expiration has passed, revert to Free
       console.log(`[PRO_EXPIRATION] Pro access expired for user ${userId}, reverting to Free`);
       
+      const updatePayload: Record<string, string | boolean | null> = {
+        membership_status: "free",
+        is_paid: false,
+        pro_expires_at: null,
+      };
+
+      if (profileStats.member_badge === "pro_trial") {
+        updatePayload.member_badge = null;
+      }
+
       const { error: updateError } = await supabaseAdmin
         .from("profile_stats")
-        .update({
-          membership_status: "free",
-          pro_expires_at: null, // Clear expiration since it's no longer relevant
-        })
+        .update(updatePayload)
         .eq("user_id", userId);
 
       if (updateError) {
