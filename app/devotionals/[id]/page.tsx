@@ -99,6 +99,16 @@ type ChapterTaskProgress = {
 
 const WISDOM_TASK_TOTAL = 6;
 
+function isChapterJourneyStudyTitle(title: string | null | undefined) {
+  return title === "The Wisdom of Proverbs" || title === "The Testing of Joseph";
+}
+
+function getChapterJourneyProgressLabel(title: string | null | undefined, currentDay: number, totalDays: number) {
+  if (title === "The Wisdom of Proverbs") return `Proverbs ${currentDay} of ${totalDays}`;
+  if (title === "The Testing of Joseph") return `Genesis ${currentDay + 36} of 50`;
+  return `Day ${currentDay} of ${totalDays}`;
+}
+
 function chapterSlug(book: string, chapter: number) {
   return `bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${chapter}`;
 }
@@ -309,7 +319,7 @@ export default function DevotionalDetailPage() {
             setProgress(progressMap);
           }
 
-          if (devotionalData.title === "The Wisdom of Proverbs") {
+          if (isChapterJourneyStudyTitle(devotionalData.title)) {
             const loadedDays = daysData || [];
             const reflectionSlugs = loadedDays.map((day) => chapterSlug(day.bible_reading_book, day.bible_reading_chapter));
             const [actionsRes, reflectionsRes] = await Promise.all([
@@ -386,7 +396,7 @@ export default function DevotionalDetailPage() {
 
   // Calculate current day and progress
   const getCurrentDay = () => {
-    if (devotional?.title === "The Wisdom of Proverbs") {
+    if (isChapterJourneyStudyTitle(devotional?.title)) {
       for (let i = 1; i <= (devotional?.total_days || 31); i++) {
         const chapterProgress = chapterTaskProgress.get(i);
         if (!chapterProgress || chapterProgress.completed < chapterProgress.total) {
@@ -414,16 +424,16 @@ export default function DevotionalDetailPage() {
   };
 
   const currentDay = getCurrentDay();
-  const isWisdomOfProverbs = devotional?.title === "The Wisdom of Proverbs";
-  const completedDays = isWisdomOfProverbs
+  const isChapterJourneyStudy = isChapterJourneyStudyTitle(devotional?.title);
+  const completedDays = isChapterJourneyStudy
     ? Array.from(chapterTaskProgress.values()).filter((p) => p.completed >= p.total).length
     : Array.from(progress.values()).filter((p) => p.is_completed).length;
-  const totalChapterTasks = isWisdomOfProverbs ? (devotional?.total_days || 0) * WISDOM_TASK_TOTAL : devotional?.total_days || 0;
-  const completedChapterTasks = isWisdomOfProverbs
+  const totalChapterTasks = isChapterJourneyStudy ? (devotional?.total_days || 0) * WISDOM_TASK_TOTAL : devotional?.total_days || 0;
+  const completedChapterTasks = isChapterJourneyStudy
     ? Array.from(chapterTaskProgress.values()).reduce((sum, p) => sum + p.completed, 0)
     : completedDays;
   const progressPercent = devotional
-    ? isWisdomOfProverbs
+    ? isChapterJourneyStudy
       ? (completedChapterTasks / Math.max(totalChapterTasks, 1)) * 100
       : (completedDays / devotional.total_days) * 100
     : 0;
@@ -434,7 +444,7 @@ export default function DevotionalDetailPage() {
   const isDayUnlocked = (dayNumber: number) => {
     if (userEmail === "moorelouis3@gmail.com") return true;
     if (dayNumber === 1) return true;
-    if (isWisdomOfProverbs) {
+    if (isChapterJourneyStudy) {
       const prevChapterProgress = chapterTaskProgress.get(dayNumber - 1);
       return prevChapterProgress?.completed === prevChapterProgress?.total;
     }
@@ -466,7 +476,7 @@ export default function DevotionalDetailPage() {
     }
 
     const isFreeUser = profileStats?.is_paid !== true && userEmail !== "moorelouis3@gmail.com";
-    const shouldOpenFullPage = devotional?.title === "The Wisdom of Proverbs";
+    const shouldOpenFullPage = isChapterJourneyStudyTitle(devotional?.title);
     const openDay = () => {
       if (shouldOpenFullPage) {
         router.push(`/devotionals/${devotionalId}/day/${day.day_number}`);
@@ -567,7 +577,7 @@ export default function DevotionalDetailPage() {
     setShowChooseFreeModal(false);
     if (pendingDayClick) {
       setShowCreditBlocked(false);
-      if (devotional?.title === "The Wisdom of Proverbs") {
+      if (isChapterJourneyStudyTitle(devotional?.title)) {
         router.push(`/devotionals/${devotionalId}/day/${pendingDayClick.day_number}`);
       } else {
         setSelectedDay(pendingDayClick);
@@ -1069,10 +1079,10 @@ export default function DevotionalDetailPage() {
         <div className="bg-white border border-gray-200 rounded-xl p-4 mb-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-700">
-              {isWisdomOfProverbs ? `Proverbs ${currentDay} of ${devotional.total_days}` : `Day ${currentDay} of ${devotional.total_days}`}
+              {isChapterJourneyStudy ? getChapterJourneyProgressLabel(devotional.title, currentDay, devotional.total_days) : `Day ${currentDay} of ${devotional.total_days}`}
             </span>
             <span className="text-sm text-gray-500">
-              {isWisdomOfProverbs ? `${completedDays} chapters complete` : `${completedDays} completed`}
+              {isChapterJourneyStudy ? `${completedDays} chapters complete` : `${completedDays} completed`}
             </span>
           </div>
           <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -1092,13 +1102,13 @@ export default function DevotionalDetailPage() {
 
         {/* DAYS LIST */}
         <div className="bg-white border border-gray-200 rounded-xl p-6">
-          <h2 className="text-xl font-bold mb-4">{isWisdomOfProverbs ? "Chapters" : "Days"}</h2>
+          <h2 className="text-xl font-bold mb-4">{isChapterJourneyStudy ? "Chapters" : "Days"}</h2>
           <div className="space-y-2">
             {days.map((day) => {
               const dayProgress = progress.get(day.day_number);
               const taskProgress = chapterTaskProgress.get(day.day_number) || { completed: 0, total: WISDOM_TASK_TOTAL };
               const isUnlocked = isDayUnlocked(day.day_number);
-              const isCompleted = isWisdomOfProverbs ? taskProgress.completed >= taskProgress.total : dayProgress?.is_completed === true;
+              const isCompleted = isChapterJourneyStudy ? taskProgress.completed >= taskProgress.total : dayProgress?.is_completed === true;
               const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
               const remainingTasks = Math.max(taskProgress.total - taskProgress.completed, 0);
 
@@ -1119,7 +1129,7 @@ export default function DevotionalDetailPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <span className="font-semibold text-gray-700">
-                        {isWisdomOfProverbs ? chapterLabel : `Day ${day.day_number}`}
+                        {isChapterJourneyStudy ? chapterLabel : `Day ${day.day_number}`}
                       </span>
                       <span className="text-gray-700">{day.day_title}</span>
                     </div>
@@ -1139,15 +1149,15 @@ export default function DevotionalDetailPage() {
                           />
                         </svg>
                       )}
-                      {isWisdomOfProverbs && isCompleted ? (
+                      {isChapterJourneyStudy && isCompleted ? (
                         <span className="text-green-600 font-semibold">✓ Complete</span>
-                      ) : isWisdomOfProverbs && isUnlocked ? (
+                      ) : isChapterJourneyStudy && isUnlocked ? (
                         <span className="text-sm font-semibold text-gray-600">
                           {taskProgress.completed}/{taskProgress.total} complete
                           {remainingTasks > 0 ? `, ${remainingTasks} task${remainingTasks === 1 ? "" : "s"} left` : ""}
                         </span>
                       ) : null}
-                      {isCompleted && !isWisdomOfProverbs && (
+                      {isCompleted && !isChapterJourneyStudy && (
                         <span className="text-green-600 font-semibold">✓ Complete</span>
                       )}
                     </div>

@@ -17,6 +17,8 @@ type AdminComment = {
   source: string;
   sourceLabel: string;
   href: string;
+  contextTitle: string;
+  contextContent: string;
   userId: string | null;
   userName: string;
   content: string;
@@ -26,6 +28,7 @@ type AdminComment = {
   isReply: boolean;
   replyCount: number;
   hasMyReply: boolean;
+  isMine?: boolean;
 };
 
 function getServerClients(request: NextRequest) {
@@ -88,6 +91,17 @@ function slugToTitle(slug: string) {
   return last.split("-").map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(" ");
 }
 
+function bibleChapterSlugToTitle(slug: string) {
+  const match = slug.match(/^bible-chapter-(.+)-(\d+)$/);
+  if (!match) return slugToTitle(slug);
+  return `${slugToTitle(match[1])} ${match[2]}`;
+}
+
+function clipText(value: unknown, max = 700) {
+  const normalized = typeof value === "string" ? value.replace(/\s+/g, " ").trim() : "";
+  return normalized.length > max ? `${normalized.slice(0, max).trim()}...` : normalized;
+}
+
 function addReplyMetadata(rows: AdminComment[], requesterId: string) {
   const replyMap = new Map<string, number>();
   const myReplyParentIds = new Set<string>();
@@ -102,6 +116,7 @@ function addReplyMetadata(rows: AdminComment[], requesterId: string) {
     ...row,
     replyCount: replyMap.get(row.id) || 0,
     hasMyReply: myReplyParentIds.has(row.id),
+    isMine: row.userId === requesterId,
   }));
 }
 
@@ -133,7 +148,7 @@ export async function GET(request: NextRequest) {
   if ("error" in auth) return auth.error;
 
   const { admin, requester } = auth;
-  const limit = Math.min(Number(request.nextUrl.searchParams.get("limit") || 300), 600);
+  const limit = Math.min(Number(request.nextUrl.searchParams.get("limit") || 30), 100);
 
   const [
     articleRes,
@@ -153,12 +168,18 @@ export async function GET(request: NextRequest) {
 
   (articleRes.data || []).forEach((row: any) => {
     const slug = row.article_slug || "";
+    const isBibleChapter = slug.startsWith("bible-chapter-");
+    const sourceLabel = isBibleChapter ? bibleChapterSlugToTitle(slug) : slugToTitle(slug);
     comments.push({
       id: row.id,
       kind: "article_comment",
-      source: "Articles",
-      sourceLabel: slugToTitle(slug),
-      href: slug || "/bible-study-hub",
+      source: isBibleChapter ? "Bible Chapters" : "Articles",
+      sourceLabel,
+      href: isBibleChapter ? slug.replace(/^bible-chapter-/, "/Bible/").replace(/-(\d+)$/, "/$1") : slug || "/bible-study-hub",
+      contextTitle: isBibleChapter ? `${sourceLabel} reflection` : sourceLabel,
+      contextContent: isBibleChapter
+        ? `This comment was posted under the Bible chapter reflection for ${sourceLabel}.`
+        : `This comment was posted under the article or discussion page: ${sourceLabel}.`,
       userId: row.user_id,
       userName: row.user_name || "Anonymous",
       content: row.content || "",
@@ -175,9 +196,11 @@ export async function GET(request: NextRequest) {
     comments.push({
       id: row.id,
       kind: "feed_post_comment",
-      source: "Community Feed",
+      source: "Group Feed",
       sourceLabel: "Bible Buddy Feed",
       href: `/bb-feed?post=${row.post_id}&comment=${row.id}`,
+      contextTitle: "Bible Buddy Feed post",
+      contextContent: "",
       userId: row.user_id,
       userName: "Buddy",
       content: row.content || "",
@@ -197,6 +220,8 @@ export async function GET(request: NextRequest) {
       source: "Group Feed",
       sourceLabel: row.category || "Group conversation",
       href: `/study-groups/${row.group_id}/chat?post=${row.parent_post_id}&comment=${row.id}`,
+      contextTitle: row.category || "Group conversation",
+      contextContent: "",
       userId: row.user_id,
       userName: row.display_name || "Buddy",
       content: row.content || "",
@@ -213,9 +238,11 @@ export async function GET(request: NextRequest) {
     comments.push({
       id: row.id,
       kind: "series_post_comment",
-      source: "Bible Study Series",
+      source: "Group Feed",
       sourceLabel: "Series post",
       href: `/study-groups/${row.group_id}/chat?seriesPost=${row.post_id}&comment=${row.id}`,
+      contextTitle: "Bible study series post",
+      contextContent: "",
       userId: row.user_id,
       userName: row.display_name || "Buddy",
       content: row.content || "",
@@ -232,9 +259,11 @@ export async function GET(request: NextRequest) {
     comments.push({
       id: row.id,
       kind: "series_reflection",
-      source: "Chapter Reflections",
+      source: "Bible Chapters",
       sourceLabel: `Week ${row.week_number || 1} reflection`,
       href: `/study-groups?comment=${row.id}`,
+      contextTitle: `Bible study reflection, week ${row.week_number || 1}`,
+      contextContent: "This comment was posted as a Bible study reflection.",
       userId: row.user_id,
       userName: row.display_name || "Buddy",
       content: row.content || "",
@@ -251,8 +280,62 @@ export async function GET(request: NextRequest) {
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
 
+  const visibleComments = enriched.slice(0, limit);
+  const feedPostIds = [...new Set(visibleComments.filter((comment) => comment.kind === "feed_post_comment" && comment.rootId).map((comment) => comment.rootId as string))];
+  const groupParentIds = [...new Set(visibleComments.filter((comment) => comment.kind === "group_feed_comment" && comment.parentId).map((comment) => comment.parentId as string))];
+  const seriesPostIds = [...new Set(visibleComments.filter((comment) => comment.kind === "series_post_comment" && comment.rootId).map((comment) => comment.rootId as string))];
+
+  const [feedPostContext, groupPostContext, seriesPostContext] = await Promise.all([
+    feedPostIds.length
+      ? admin.from("feed_posts").select("id, title, content, post_type").in("id", feedPostIds)
+      : Promise.resolve({ data: [] as any[] }),
+    groupParentIds.length
+      ? admin.from("group_posts").select("id, category, title, content").in("id", groupParentIds)
+      : Promise.resolve({ data: [] as any[] }),
+    seriesPostIds.length
+      ? admin.from("group_series_posts").select("id, title, content").in("id", seriesPostIds)
+      : Promise.resolve({ data: [] as any[] }),
+  ]);
+
+  const feedMap = new Map((feedPostContext.data || []).map((row: any) => [row.id, row]));
+  const groupMap = new Map((groupPostContext.data || []).map((row: any) => [row.id, row]));
+  const seriesMap = new Map((seriesPostContext.data || []).map((row: any) => [row.id, row]));
+  const withContext = visibleComments.map((comment) => {
+    if (comment.kind === "feed_post_comment" && comment.rootId) {
+      const post = feedMap.get(comment.rootId);
+      return {
+        ...comment,
+        sourceLabel: post?.title || comment.sourceLabel,
+        contextTitle: post?.title || post?.post_type || "Bible Buddy Feed post",
+        contextContent: clipText(post?.content),
+      };
+    }
+
+    if (comment.kind === "group_feed_comment" && comment.parentId) {
+      const post = groupMap.get(comment.parentId);
+      return {
+        ...comment,
+        sourceLabel: post?.title || post?.category || comment.sourceLabel,
+        contextTitle: post?.title || post?.category || "Group Feed post",
+        contextContent: clipText(post?.content),
+      };
+    }
+
+    if (comment.kind === "series_post_comment" && comment.rootId) {
+      const post = seriesMap.get(comment.rootId);
+      return {
+        ...comment,
+        sourceLabel: post?.title || comment.sourceLabel,
+        contextTitle: post?.title || "Bible study series post",
+        contextContent: clipText(post?.content),
+      };
+    }
+
+    return comment;
+  });
+
   return NextResponse.json({
-    comments: enriched.slice(0, limit),
+    comments: withContext,
     stats: buildStats(enriched, requester.id),
   });
 }

@@ -5,3 +5,4 @@
 // Buddy daily task flow. Keep this entrypoint so old docs/commands do not seed
 // the former placeholder/40-day version.
 import "./restructure-testing-of-joseph-chapter-journey";
+import "./seed-joseph-series-notes";

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
+import { requestAutoReplyDraft } from "../../lib/requestAutoReplyDraft";
 
 type CommentKind =
   | "article_comment"
@@ -17,6 +17,8 @@ type AdminComment = {
   source: string;
   sourceLabel: string;
   href: string;
+  contextTitle: string;
+  contextContent: string;
   userId: string | null;
   userName: string;
   content: string;
@@ -26,6 +28,7 @@ type AdminComment = {
   isReply: boolean;
   replyCount: number;
   hasMyReply: boolean;
+  isMine?: boolean;
 };
 
 type CommentStats = {
@@ -37,12 +40,11 @@ type CommentStats = {
 };
 
 const SOURCE_STYLES: Record<string, { dot: string; bg: string; label: string }> = {
-  "Articles": { dot: "bg-blue-500", bg: "bg-blue-50 text-blue-700 border-blue-100", label: "Articles" },
-  "Community Feed": { dot: "bg-emerald-500", bg: "bg-emerald-50 text-emerald-700 border-emerald-100", label: "Community" },
-  "Group Feed": { dot: "bg-amber-500", bg: "bg-amber-50 text-amber-800 border-amber-100", label: "Group Feed" },
-  "Bible Study Series": { dot: "bg-violet-500", bg: "bg-violet-50 text-violet-700 border-violet-100", label: "Bible Studies" },
-  "Chapter Reflections": { dot: "bg-rose-500", bg: "bg-rose-50 text-rose-700 border-rose-100", label: "Reflections" },
+  "Group Feed": { dot: "bg-emerald-500", bg: "bg-emerald-50 text-emerald-700 border-emerald-100", label: "Group Feed" },
+  "Bible Chapters": { dot: "bg-sky-500", bg: "bg-sky-50 text-sky-700 border-sky-100", label: "Bible Chapters" },
+  "Articles": { dot: "bg-violet-500", bg: "bg-violet-50 text-violet-700 border-violet-100", label: "Articles" },
 };
+const SOURCE_ORDER = ["Group Feed", "Bible Chapters", "Articles"];
 
 function formatTime(value: string) {
   const date = new Date(value);
@@ -78,13 +80,16 @@ export default function CommentsAdminPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedSource, setSelectedSource] = useState("All");
-  const [selectedQueue, setSelectedQueue] = useState<"all" | "needsReply" | "mine" | "replies">("all");
+  const [selectedQueue, setSelectedQueue] = useState<"all" | "today" | "needsReply" | "mine" | "replies">("all");
+  const [hideMyComments, setHideMyComments] = useState(true);
   const [search, setSearch] = useState("");
   const [selectedComment, setSelectedComment] = useState<AdminComment | null>(null);
   const [replyText, setReplyText] = useState("");
   const [postingReply, setPostingReply] = useState(false);
+  const [draftingReply, setDraftingReply] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [openPreviewComment, setOpenPreviewComment] = useState<AdminComment | null>(null);
 
   async function getToken() {
     const { data } = await supabase.auth.getSession();
@@ -102,7 +107,7 @@ export default function CommentsAdminPage() {
       return;
     }
 
-    const response = await fetch("/api/comments/admin?limit=500", {
+    const response = await fetch("/api/comments/admin?limit=30", {
       headers: { Authorization: `Bearer ${token}` },
     });
     const payload = await response.json().catch(() => null);
@@ -124,25 +129,47 @@ export default function CommentsAdminPage() {
 
   const sources = useMemo(() => {
     const names = new Set(comments.map((comment) => comment.source));
-    return ["All", ...Array.from(names)];
+    return ["All", ...SOURCE_ORDER.filter((source) => names.has(source))];
   }, [comments]);
 
   const filteredComments = useMemo(() => {
     const needle = search.trim().toLowerCase();
     return comments.filter((comment) => {
       if (selectedSource !== "All" && comment.source !== selectedSource) return false;
+      if (hideMyComments && comment.isMine) return false;
+      if (selectedQueue === "today" && comment.createdAt?.slice(0, 10) !== new Date().toISOString().slice(0, 10)) return false;
       if (selectedQueue === "needsReply" && (comment.hasMyReply || comment.userId === null)) return false;
-      if (selectedQueue === "mine" && !comment.hasMyReply) return false;
+      if (selectedQueue === "mine" && !comment.isMine && !comment.hasMyReply) return false;
       if (selectedQueue === "replies" && !comment.isReply) return false;
       if (!needle) return true;
-      return [comment.userName, comment.content, comment.source, comment.sourceLabel]
+      return [comment.userName, comment.content, comment.source, comment.sourceLabel, comment.contextTitle, comment.contextContent]
         .join(" ")
         .toLowerCase()
         .includes(needle);
     });
-  }, [comments, search, selectedQueue, selectedSource]);
+  }, [comments, hideMyComments, search, selectedQueue, selectedSource]);
 
   const sourceCards = sources.filter((source) => source !== "All");
+
+  async function draftAutoReply(comment = selectedComment) {
+    if (!comment) return;
+    setDraftingReply(true);
+    setStatusMessage(null);
+    try {
+      const draft = await requestAutoReplyDraft({
+        originalPostTitle: comment.contextTitle || comment.sourceLabel,
+        originalPostContent: comment.contextContent || `${comment.source}: ${comment.sourceLabel}`,
+        targetCommentContent: comment.content,
+        targetDisplayName: comment.userName,
+      });
+      setReplyText(draft);
+      setStatusMessage("Auto reply drafted. Review it before posting.");
+    } catch (error) {
+      setStatusMessage(error instanceof Error ? error.message : "Could not draft an auto reply.");
+    } finally {
+      setDraftingReply(false);
+    }
+  }
 
   async function submitReply() {
     if (!selectedComment || !replyText.trim()) return;
@@ -201,10 +228,10 @@ export default function CommentsAdminPage() {
   }
 
   const metricCards = [
-    { label: "All comments", value: stats?.total ?? 0, tone: "bg-white" },
-    { label: "Today", value: stats?.today ?? 0, tone: "bg-[#f4faf5]" },
-    { label: "I replied today", value: stats?.myRepliesToday ?? 0, tone: "bg-[#f7f5ff]" },
-    { label: "Needs reply", value: stats?.needsReply ?? 0, tone: "bg-[#fff8ed]" },
+    { label: "All comments", value: stats?.total ?? 0, tone: "bg-white", queue: "all" as const },
+    { label: "Today", value: stats?.today ?? 0, tone: "bg-[#f4faf5]", queue: "today" as const },
+    { label: "I replied today", value: stats?.myRepliesToday ?? 0, tone: "bg-[#f7f5ff]", queue: "mine" as const },
+    { label: "Needs reply", value: stats?.needsReply ?? 0, tone: "bg-[#fff8ed]", queue: "needsReply" as const },
   ];
 
   return (
@@ -221,7 +248,7 @@ export default function CommentsAdminPage() {
           <button
             type="button"
             onClick={() => void loadComments()}
-            className="h-11 rounded-full bg-gray-950 px-5 text-sm font-black text-white shadow-sm transition hover:bg-gray-800"
+            className="h-11 rounded-full bg-[#7BAFD4] px-5 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
           >
             Refresh
           </button>
@@ -229,10 +256,17 @@ export default function CommentsAdminPage() {
 
         <section className="mb-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {metricCards.map((card) => (
-            <div key={card.label} className={`rounded-2xl border border-black/5 p-4 shadow-sm ${card.tone}`}>
+            <button
+              key={card.label}
+              type="button"
+              onClick={() => setSelectedQueue(card.queue)}
+              className={`rounded-2xl border p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
+                selectedQueue === card.queue ? "border-[#7BAFD4] ring-2 ring-[#d8edf8]" : "border-black/5"
+              } ${card.tone}`}
+            >
               <p className="text-xs font-bold uppercase tracking-[0.14em] text-gray-500">{card.label}</p>
               <p className="mt-2 text-3xl font-black">{card.value}</p>
-            </div>
+            </button>
           ))}
         </section>
 
@@ -263,9 +297,18 @@ export default function CommentsAdminPage() {
               <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
                 <div>
                   <h2 className="text-xl font-black">All Comments</h2>
-                  <p className="text-xs text-gray-500">{filteredComments.length} in the current queue</p>
+                  <p className="text-xs text-gray-500">Newest {filteredComments.length} comments loaded for speed</p>
                 </div>
-                <div className="flex flex-col gap-2 sm:flex-row">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                  <label className="flex h-10 items-center gap-2 rounded-full border border-gray-200 bg-white px-4 text-sm font-bold text-gray-700">
+                    <input
+                      type="checkbox"
+                      checked={hideMyComments}
+                      onChange={(event) => setHideMyComments(event.target.checked)}
+                      className="h-4 w-4 rounded border-gray-300 accent-[#7BAFD4]"
+                    />
+                    Hide my comments
+                  </label>
                   <input
                     value={search}
                     onChange={(event) => setSearch(event.target.value)}
@@ -278,6 +321,7 @@ export default function CommentsAdminPage() {
                     className="h-10 rounded-full border border-gray-200 px-4 text-sm font-bold outline-none focus:border-[#6d8f57] focus:ring-2 focus:ring-[#dbead1]"
                   >
                     <option value="all">All comments</option>
+                    <option value="today">Today</option>
                     <option value="needsReply">Needs reply</option>
                     <option value="mine">Replied by me</option>
                     <option value="replies">Replies only</option>
@@ -331,6 +375,11 @@ export default function CommentsAdminPage() {
                             {comment.source} · {comment.sourceLabel} · {formatTime(comment.createdAt)}
                           </p>
                           <p className="mt-2 line-clamp-2 text-sm leading-6 text-gray-700">{comment.content || "No comment text"}</p>
+                          {comment.contextContent ? (
+                            <p className="mt-2 line-clamp-1 text-xs font-semibold text-gray-500">
+                              Context: {comment.contextContent}
+                            </p>
+                          ) : null}
                         </div>
                         <div className="hidden text-right text-xs font-bold text-gray-400 sm:block">
                           {comment.replyCount} replies
@@ -380,16 +429,25 @@ export default function CommentsAdminPage() {
                       {selectedComment.sourceLabel}
                     </span>
                   </div>
+                  <div className="mb-4 rounded-2xl border border-white bg-white/85 p-3">
+                    <p className="text-xs font-black uppercase tracking-[0.14em] text-gray-500">What they commented on</p>
+                    <p className="mt-1 text-sm font-black text-gray-950">{selectedComment.contextTitle || selectedComment.sourceLabel}</p>
+                    <p className="mt-2 text-xs leading-5 text-gray-600">
+                      {selectedComment.contextContent || "No extra source context was found for this comment."}
+                    </p>
+                  </div>
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-gray-500">Comment</p>
                   <p className="whitespace-pre-wrap text-sm leading-7 text-gray-800">{selectedComment.content || "No comment text"}</p>
                 </div>
 
                 <div className="mt-4 grid grid-cols-2 gap-2">
-                  <Link
-                    href={selectedComment.href || "/comments-admin"}
+                  <button
+                    type="button"
+                    onClick={() => setOpenPreviewComment(selectedComment)}
                     className="rounded-full border border-gray-200 px-4 py-2 text-center text-sm font-black text-gray-700 hover:bg-gray-50"
                   >
                     Open
-                  </Link>
+                  </button>
                   <button
                     type="button"
                     onClick={() => void deleteComment(selectedComment)}
@@ -401,7 +459,17 @@ export default function CommentsAdminPage() {
                 </div>
 
                 <div className="mt-5">
-                  <label className="text-sm font-black text-gray-900">Reply</label>
+                  <div className="flex items-center justify-between gap-3">
+                    <label className="text-sm font-black text-gray-900">Reply</label>
+                    <button
+                      type="button"
+                      onClick={() => void draftAutoReply()}
+                      disabled={draftingReply}
+                      className="rounded-full bg-[#eaf4fa] px-3 py-1.5 text-xs font-black text-[#2f6685] transition hover:bg-[#d8edf8] disabled:opacity-60"
+                    >
+                      {draftingReply ? "Drafting..." : "Auto reply to this"}
+                    </button>
+                  </div>
                   <textarea
                     value={replyText}
                     onChange={(event) => setReplyText(event.target.value)}
@@ -425,6 +493,45 @@ export default function CommentsAdminPage() {
           </aside>
         </div>
       </div>
+      {openPreviewComment ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4"
+          onClick={() => setOpenPreviewComment(null)}
+        >
+          <div
+            className="w-full max-w-2xl overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4 border-b border-gray-100 bg-[#f7fbfd] px-5 py-4">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#4f8fb7]">Comment Preview</p>
+                <h2 className="mt-1 text-xl font-black text-gray-950">{openPreviewComment.contextTitle || openPreviewComment.sourceLabel}</h2>
+                <p className="mt-1 text-xs font-semibold text-gray-500">{openPreviewComment.source} - {formatTime(openPreviewComment.createdAt)}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setOpenPreviewComment(null)}
+                className="grid h-9 w-9 place-items-center rounded-full bg-white text-lg font-black text-gray-600 shadow-sm hover:bg-gray-50"
+                aria-label="Close preview"
+              >
+                x
+              </button>
+            </div>
+            <div className="max-h-[70vh] overflow-y-auto p-5">
+              <div className="rounded-2xl border border-gray-100 bg-gray-50 p-4">
+                <p className="text-xs font-black uppercase tracking-[0.14em] text-gray-500">Original post or source</p>
+                <p className="mt-2 text-sm leading-7 text-gray-700">
+                  {openPreviewComment.contextContent || "No extra source context was found for this comment."}
+                </p>
+              </div>
+              <div className="mt-4 rounded-2xl border border-[#d9e7ff] bg-white p-4">
+                <p className="text-sm font-black text-gray-950">{openPreviewComment.userName || "Buddy"}</p>
+                <p className="mt-2 whitespace-pre-wrap text-sm leading-7 text-gray-800">{openPreviewComment.content || "No comment text"}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </main>
   );
 }

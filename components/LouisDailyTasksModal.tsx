@@ -115,6 +115,10 @@ function formatCompletedAtLabel(iso: string | null | undefined) {
   return `Done ${date.toLocaleDateString("en-US", { month: "short", day: "numeric" })}`;
 }
 
+function isChapterJourneyStudyTitle(title: string | null | undefined) {
+  return title === "The Wisdom of Proverbs" || title === "The Testing of Joseph";
+}
+
 function parseCompletedScore(actionLabel: string | null | undefined) {
   const match = String(actionLabel || "").match(/-\s*(\d+)\s*\/\s*(\d+)/);
   if (!match) return null;
@@ -653,11 +657,7 @@ export default function LouisDailyTasksModal({
 
   function handleOpenTask(task: TaskState) {
     if (!task.href || task.disabled) return;
-    if (
-      task.devotionalId &&
-      task.devotionalDayNumber &&
-      String(task.book || "").toLowerCase().trim() === "proverbs"
-    ) {
+    if (task.devotionalId && task.devotionalDayNumber && isChapterJourneyStudyTitle(task.devotionalTitle)) {
       onClose();
       router.push(`/devotionals/${task.devotionalId}/day/${task.devotionalDayNumber}`);
       return;

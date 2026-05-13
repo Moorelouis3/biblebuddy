@@ -34,92 +34,91 @@ function normalizeNotes(value: string | string[]): string {
   return Array.isArray(value) ? value.join("\n\n") : value;
 }
 
-const rows = [
+const weekNotes = [
   {
-    series_key: "testing_of_joseph",
     week_number: 1,
+    chapter: 37,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_ONE_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_ONE_NOTES)),
   },
   {
-    series_key: "testing_of_joseph",
     week_number: 2,
+    chapter: 38,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_TWO_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_TWO_NOTES)),
   },
   {
-    series_key: "testing_of_joseph",
     week_number: 3,
+    chapter: 39,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_THREE_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_THREE_NOTES)),
   },
   {
-    series_key: "testing_of_joseph",
     week_number: 4,
+    chapter: 40,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_FOUR_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_FOUR_NOTES)),
   },
   {
-    series_key: "testing_of_joseph",
     week_number: 5,
+    chapter: 41,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_FIVE_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_FIVE_NOTES)),
   },
   {
-    series_key: "testing_of_joseph",
     week_number: 6,
+    chapter: 42,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_SIX_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_SIX_NOTES)),
   },
   {
-    series_key: "testing_of_joseph",
     week_number: 7,
+    chapter: 43,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_SEVEN_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_SEVEN_NOTES)),
   },
   {
-    series_key: "testing_of_joseph",
     week_number: 8,
+    chapter: 44,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_EIGHT_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_EIGHT_NOTES)),
   },
   {
-    series_key: "testing_of_joseph",
     week_number: 9,
+    chapter: 45,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_NINE_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_NINE_NOTES)),
   },
   {
-    series_key: "testing_of_joseph",
     week_number: 10,
+    chapter: 46,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_TEN_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_TEN_NOTES)),
   },
   {
-    series_key: "testing_of_joseph",
     week_number: 11,
+    chapter: 47,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_ELEVEN_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_ELEVEN_NOTES)),
   },
   {
-    series_key: "testing_of_joseph",
     week_number: 12,
+    chapter: 48,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_TWELVE_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_TWELVE_NOTES)),
   },
   {
-    series_key: "testing_of_joseph",
     week_number: 13,
+    chapter: 49,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_THIRTEEN_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_THIRTEEN_NOTES)),
   },
   {
-    series_key: "testing_of_joseph",
     week_number: 14,
+    chapter: 50,
     notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_FOURTEEN_NOTES),
-    notes_html: parseSeriesNotesToHTML(normalizeNotes(TESTING_OF_JOSEPH_WEEK_FOURTEEN_NOTES)),
   },
 ];
+
+const rows = weekNotes.map((note) => ({
+  series_key: "testing_of_joseph",
+  week_number: note.week_number,
+  notes_text: note.notes_text,
+  notes_html: parseSeriesNotesToHTML(note.notes_text),
+}));
+
+const bibleNoteRows = weekNotes.map((note) => ({
+  book: "genesis",
+  chapter: note.chapter,
+  notes_text: note.notes_text,
+}));
 
 async function main() {
   const { error } = await supabase
@@ -131,7 +130,16 @@ async function main() {
     process.exit(1);
   }
 
-  console.log("Seeded Testing of Joseph week notes 1-14 into series_week_notes.");
+  const { error: bibleNotesError } = await supabase
+    .from("bible_notes")
+    .upsert(bibleNoteRows, { onConflict: "book,chapter" });
+
+  if (bibleNotesError) {
+    console.error("Failed to upsert Joseph chapter notes:", bibleNotesError);
+    process.exit(1);
+  }
+
+  console.log("Seeded Testing of Joseph week notes 1-14 into series_week_notes and Genesis 37-50 into bible_notes.");
 }
 
 main().catch((error) => {

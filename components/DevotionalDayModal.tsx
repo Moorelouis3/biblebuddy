@@ -225,7 +225,10 @@ export default function DevotionalDayModal({
     (devotionalTitle || "").toLowerCase().includes("wisdom of proverbs") ||
     (devotionalId || "").toLowerCase().includes("wisdom-of-proverbs") ||
     (day.bible_reading_book || "").toLowerCase().trim() === "proverbs";
-  const useSeriesLikeProverbsLayout = isWisdomOfProverbs && day.day_number === 1;
+  const isTestingOfJoseph =
+    (devotionalTitle || "").toLowerCase().includes("testing of joseph") ||
+    (devotionalId || "").toLowerCase().includes("testing-of-joseph");
+  const useSeriesLikeProverbsLayout = isWisdomOfProverbs || isTestingOfJoseph;
   const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
   const bookKey = normalizeBookKey(day.bible_reading_book || "");
   const triviaBook = useMemo(() => getTriviaBook(bookKey), [bookKey]);
@@ -925,7 +928,7 @@ Be accurate to Scripture.`;
                   <StudySectionCard title="Chapter Notes" eyebrow="Task 3">
                     <div className="text-center">
                       <p className="mx-auto mb-4 max-w-md text-sm leading-relaxed text-gray-600">
-                        Open the Proverbs 1 notes when you are ready to go deeper into the chapter.
+                        Open the {chapterLabel} notes when you are ready to go deeper into the chapter.
                       </p>
                       <button
                         type="button"
@@ -941,7 +944,7 @@ Be accurate to Scripture.`;
                   <StudySectionCard title="Trivia" eyebrow="Task 4">
                     <div className="text-center">
                       <p className="mx-auto mb-4 max-w-md text-sm leading-relaxed text-gray-600">
-                        Test what is sticking from Proverbs 1 with a short trivia round.
+                        Test what is sticking from {chapterLabel} with a short trivia round.
                       </p>
                       <button
                         type="button"
@@ -958,7 +961,7 @@ Be accurate to Scripture.`;
                   <StudySectionCard title="Scrambled" eyebrow="Task 5">
                     <div className="text-center">
                       <p className="mx-auto mb-4 max-w-md text-sm leading-relaxed text-gray-600">
-                        Slow down with key words from Proverbs 1 and lock them into memory.
+                        Slow down with key words from {chapterLabel} and lock them into memory.
                       </p>
                       <button
                         type="button"

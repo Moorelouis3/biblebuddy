@@ -199,9 +199,9 @@ async function restructureTestingOfJoseph() {
   const { error: updateDevotionalError } = await supabase
     .from("devotionals")
     .update({
-      subtitle: "A 14 Day Chapter Journey",
+      subtitle: "A 14-Day Chapter Journey",
       description:
-        "A chapter-by-chapter journey through Joseph's testing, wisdom, reconciliation, and God's providence.",
+        "A 14-chapter Bible study through Genesis 37-50. Each chapter follows the full Bible Buddy flow: intro, Bible reading, notes, trivia, Scrambled, and reflection, so Joseph's testing, waiting, wisdom, reconciliation, and God's providence stay centered on the same passage.",
       total_days: josephDays.length,
     })
     .eq("id", devotionalId);
