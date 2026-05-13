@@ -195,48 +195,28 @@ export default function DevotionalsPage() {
     return null;
   };
 
-  const getDevotionalVisual = (devotional: Devotional, progress: StudyProgressSummary) => {
+  const getDevotionalVisual = (devotional: Devotional) => {
     const coverImage = getCoverImage(devotional.title);
-    const badgeText = progress.isComplete ? "Completed" : `${progress.percent}% done`;
-    const badgeClasses = progress.isComplete
-      ? "bg-emerald-600 text-white shadow-lg shadow-emerald-900/20"
-      : "bg-white/95 text-gray-900 shadow-sm";
     if (coverImage) {
       return (
-        <div className="relative overflow-hidden rounded-xl border border-white/70 bg-gray-100 shadow-sm">
+        <div className="overflow-hidden rounded-xl border border-white/70 bg-gray-100 shadow-sm">
           <img
             src={coverImage}
             alt={`${devotional.title} cover`}
-            className={`aspect-[3/4] w-full object-cover transition duration-300 ${progress.isComplete ? "brightness-[0.9] saturate-[0.9]" : ""}`}
+            className="aspect-[3/4] w-full object-cover transition duration-300"
             style={{
               objectPosition:
                 devotional.title === "The Testing of Joseph"
                   ? "center 30%"
                   : "center center",
-            }}
+              }}
           />
-          <div className="absolute left-2 top-2">
-            <span className={`rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-wide ${badgeClasses}`}>
-              {badgeText}
-            </span>
-          </div>
-          {progress.isComplete ? (
-            <div className="absolute inset-0 flex items-center justify-center bg-emerald-950/25">
-              <div className="rounded-2xl bg-white/95 px-4 py-3 text-center shadow-xl">
-                <p className="text-3xl leading-none">{"\u2713"}</p>
-                <p className="mt-1 text-xs font-black uppercase tracking-[0.18em] text-emerald-700">Completed</p>
-              </div>
-            </div>
-          ) : null}
         </div>
       );
     }
 
     return (
-      <div className="relative flex aspect-[3/4] w-full flex-col items-center justify-center rounded-xl border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-sky-50 px-4 py-6 text-center shadow-sm">
-        <span className={`absolute left-2 top-2 rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-wide ${badgeClasses}`}>
-          {badgeText}
-        </span>
+      <div className="flex aspect-[3/4] w-full flex-col items-center justify-center rounded-xl border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-sky-50 px-4 py-6 text-center shadow-sm">
         <div className="text-3xl md:text-5xl mb-3">📖</div>
         <div className="text-sm md:text-base font-semibold text-gray-900 leading-tight">
           {devotional.title}
@@ -565,7 +545,7 @@ export default function DevotionalsPage() {
             <div className="mb-4 flex items-center justify-between px-1">
               <div>
                 <p className="text-lg font-black text-gray-950">Your Study Shelf</p>
-                <p className="text-sm font-semibold text-gray-500">Completed studies turn green and get marked on the cover.</p>
+                <p className="text-sm font-semibold text-gray-500">Completed studies turn green while the covers stay clean.</p>
               </div>
               <span className="hidden rounded-full bg-[#eaf6ff] px-4 py-2 text-xs font-black text-[#3f6f91] sm:inline-flex">
                 Keep building your shelf
@@ -580,7 +560,7 @@ export default function DevotionalsPage() {
                   isComplete ? "border-emerald-200 bg-[#effdf4]" : "border-gray-200 bg-white"
                 }`}>
                   <div className="grid grid-cols-[92px_1fr] gap-3 sm:grid-cols-1">
-                    <div>{getDevotionalVisual(devotional, progress)}</div>
+                    <div>{getDevotionalVisual(devotional)}</div>
                     <div className="flex min-w-0 flex-col justify-between">
                       <div>
                         <div className="flex items-start justify-between gap-2">

@@ -590,40 +590,37 @@ export default function ScrambledGamePlayer({
     if (onClose) {
       return (
         <div className="bg-white px-4 py-6">
-          <div className="relative mx-auto max-w-xl overflow-hidden rounded-[32px] border border-[#d8e8dc] bg-gradient-to-br from-white via-[#f8fcf9] to-[#eef9f2] p-6 text-center shadow-xl shadow-[#d8e8dc]/45 sm:p-8">
+          <div className="relative mx-auto max-w-xl px-2 py-2 text-center">
             <button
               type="button"
               onClick={onClose}
-              className="absolute right-5 top-5 z-10 grid h-9 w-9 place-items-center rounded-full border border-[#d8e8dc] bg-white/95 text-2xl font-light leading-none text-gray-700 shadow-sm transition hover:bg-[#f5fbf7] hover:text-gray-950"
+              className="absolute right-1 top-1 z-10 grid h-9 w-9 place-items-center rounded-full border border-gray-200 bg-white text-2xl font-light leading-none text-gray-700 shadow-sm transition hover:bg-gray-50 hover:text-gray-950 sm:right-3 sm:top-3"
               aria-label="Close Scrambled results"
             >
               ×
             </button>
 
-            <div className="mx-auto flex w-fit items-center gap-3 rounded-full border border-[#d8e8dc] bg-white px-4 py-2 shadow-sm">
-              <LouisAvatar mood={scoredSolveCount === chapter.questions.length ? "stareyes" : "wave"} size={52} />
-              <div className="text-left">
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#4a9b6f]">Bible Buddy</p>
-                <p className="text-sm font-black text-gray-950">You finished Scrambled.</p>
-              </div>
+            <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-gray-200 bg-white shadow-lg shadow-gray-200/80">
+              <LouisAvatar mood="stareyes" size={78} />
             </div>
-            <p className="mt-6 text-xs font-black uppercase tracking-[0.2em] text-[#4a9b6f]">Scrambled Results</p>
-            <h1 className="mt-3 text-3xl font-black text-gray-950">{bookName} {chapter.chapter}</h1>
-            <div className="mt-6 rounded-[26px] border border-[#d8e8dc] bg-white px-6 py-5 shadow-sm">
-              <p className="text-sm font-black uppercase tracking-[0.16em] text-[#4a9b6f]">Words Correct</p>
-              <p className="mt-2 text-5xl font-black text-[#2f7a52]">{scoredSolveCount}/{chapter.questions.length}</p>
-              <p className="mt-3 text-sm font-semibold leading-6 text-gray-700">{encouragement}</p>
-            </div>
+            <p className="mt-4 text-xs font-black uppercase tracking-[0.22em] text-gray-950">Bible Buddy</p>
+            <p className="mt-1 text-base font-black text-gray-950">You finished Scrambled.</p>
+            <h1 className="mx-auto mt-8 max-w-md text-3xl font-black leading-tight text-gray-950">
+              Scrambled Results for {bookName} {chapter.chapter}
+            </h1>
+            <p className="mt-8 text-sm font-black uppercase tracking-[0.16em] text-gray-950">Words Correct</p>
+            <p className="mt-2 text-6xl font-black leading-none text-gray-950">{scoredSolveCount}/{chapter.questions.length}</p>
+            <p className="mx-auto mt-4 max-w-md text-base font-bold leading-7 text-gray-950">{encouragement}</p>
             {earnedSolveCount > 0 ? (
-              <p className="mt-4 rounded-2xl bg-[#eaf7ee] px-4 py-3 text-sm font-black text-[#2f7a52]">
+              <p className="mt-5 text-base font-black leading-7 text-gray-950">
                 You earned +{earnedSolveCount} points for new solved words.
               </p>
             ) : completedSolveCount > scoredSolveCount ? (
-              <p className="mt-4 rounded-2xl bg-white/80 px-4 py-3 text-sm font-semibold leading-6 text-gray-600">
+              <p className="mt-5 text-base font-bold leading-7 text-gray-950">
                 Hints helped on this round, so those words counted for progress but not for points.
               </p>
             ) : (
-              <p className="mt-4 rounded-2xl bg-white/80 px-4 py-3 text-sm font-semibold leading-6 text-gray-600">
+              <p className="mt-5 text-base font-bold leading-7 text-gray-950">
                 No new points this run (you already earned points for these words before).
               </p>
             )}

@@ -9,11 +9,6 @@ export const dynamic = "force-dynamic";
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 const PAGE_SIZE = 1000;
 
-type GroupMemberRow = {
-  user_id: string | null;
-  status: string | null;
-};
-
 type ProfileRow = {
   user_id: string;
   display_name: string | null;
@@ -341,16 +336,18 @@ export async function GET(
   const louisId =
     louisUser?.users?.find((user) => (user.email || "").toLowerCase() === ADMIN_EMAIL)?.id || null;
 
-  const { data: membership } = await supabaseAdmin
-    .from("group_members")
-    .select("user_id")
-    .eq("group_id", groupId)
-    .eq("user_id", userData.user.id)
-    .eq("status", "approved")
+  const { data: groupRow, error: groupError } = await supabaseAdmin
+    .from("study_groups")
+    .select("id")
+    .eq("id", groupId)
     .maybeSingle();
 
-  if (!membership) {
-    return NextResponse.json({ error: "Forbidden." }, { status: 403 });
+  if (groupError) {
+    console.error("[GROUP_TOP_BUDDIES] Could not verify group:", groupError);
+    return NextResponse.json({ error: "Could not verify group." }, { status: 500 });
+  }
+  if (!groupRow) {
+    return NextResponse.json({ error: "Group not found." }, { status: 404 });
   }
 
   try {
