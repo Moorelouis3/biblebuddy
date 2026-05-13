@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { ACTION_TYPE } from "../../lib/actionTypes";
@@ -13,11 +13,63 @@ interface Devotional {
   total_days: number;
 }
 
+type DevotionalDayRow = {
+  devotional_id: string;
+  day_number: number;
+  bible_reading_book: string | null;
+  bible_reading_chapter: number | null;
+};
+
+type StudyProgressSummary = {
+  completedSteps: number;
+  totalSteps: number;
+  completedDays: number;
+  totalDays: number;
+  percent: number;
+  isComplete: boolean;
+  label: string;
+};
+
 const HIDDEN_DEVOTIONAL_TITLES = new Set([
   "The Calling of Moses",
 ]);
 
 const FEATURED_DEVOTIONAL_TITLE = "The Wisdom of Proverbs";
+const CHAPTER_JOURNEY_TITLES = new Set(["The Wisdom of Proverbs", "The Testing of Joseph"]);
+const CHAPTER_JOURNEY_TASK_TOTAL = 6;
+
+function isChapterJourney(title: string) {
+  return CHAPTER_JOURNEY_TITLES.has(title);
+}
+
+function chapterSlug(book: string, chapter: number) {
+  return `bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${chapter}`;
+}
+
+function notesActionLabel(book: string, chapter: number) {
+  return `${book} ${chapter} Review Opened`;
+}
+
+function buildEmptyProgress(devotional: Devotional): StudyProgressSummary {
+  const totalSteps = isChapterJourney(devotional.title)
+    ? Math.max(1, devotional.total_days * CHAPTER_JOURNEY_TASK_TOTAL)
+    : Math.max(1, devotional.total_days);
+
+  return {
+    completedSteps: 0,
+    totalSteps,
+    completedDays: 0,
+    totalDays: devotional.total_days,
+    percent: 0,
+    isComplete: false,
+    label: `0/${devotional.total_days} ${isChapterJourney(devotional.title) ? "chapters" : "days"}`,
+  };
+}
+
+function clampPercent(value: number) {
+  if (!Number.isFinite(value)) return 0;
+  return Math.min(100, Math.max(0, Math.round(value)));
+}
 
 export default function DevotionalsPage() {
   const router = useRouter();
@@ -28,6 +80,7 @@ export default function DevotionalsPage() {
   const [tempDontShowAgain, setTempDontShowAgain] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
+  const [progressByDevotional, setProgressByDevotional] = useState<Record<string, StudyProgressSummary>>({});
 
   // Load "Don't show again" preference from localStorage
   useEffect(() => {
@@ -142,20 +195,48 @@ export default function DevotionalsPage() {
     return null;
   };
 
-  const getDevotionalVisual = (devotional: Devotional) => {
+  const getDevotionalVisual = (devotional: Devotional, progress: StudyProgressSummary) => {
     const coverImage = getCoverImage(devotional.title);
+    const badgeText = progress.isComplete ? "Completed" : `${progress.percent}% done`;
+    const badgeClasses = progress.isComplete
+      ? "bg-emerald-600 text-white shadow-lg shadow-emerald-900/20"
+      : "bg-white/95 text-gray-900 shadow-sm";
     if (coverImage) {
       return (
-        <img
-          src={coverImage}
-          alt={`${devotional.title} cover`}
-          className="w-full h-auto rounded-lg object-contain"
-        />
+        <div className="relative overflow-hidden rounded-xl border border-white/70 bg-gray-100 shadow-sm">
+          <img
+            src={coverImage}
+            alt={`${devotional.title} cover`}
+            className={`aspect-[3/4] w-full object-cover transition duration-300 ${progress.isComplete ? "brightness-[0.9] saturate-[0.9]" : ""}`}
+            style={{
+              objectPosition:
+                devotional.title === "The Testing of Joseph"
+                  ? "center 30%"
+                  : "center center",
+            }}
+          />
+          <div className="absolute left-2 top-2">
+            <span className={`rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-wide ${badgeClasses}`}>
+              {badgeText}
+            </span>
+          </div>
+          {progress.isComplete ? (
+            <div className="absolute inset-0 flex items-center justify-center bg-emerald-950/25">
+              <div className="rounded-2xl bg-white/95 px-4 py-3 text-center shadow-xl">
+                <p className="text-3xl leading-none">{"\u2713"}</p>
+                <p className="mt-1 text-xs font-black uppercase tracking-[0.18em] text-emerald-700">Completed</p>
+              </div>
+            </div>
+          ) : null}
+        </div>
       );
     }
 
     return (
-      <div className="w-full min-h-[150px] md:min-h-[260px] rounded-lg bg-gradient-to-br from-amber-50 via-white to-emerald-50 border border-amber-100 flex flex-col items-center justify-center px-4 py-6 text-center">
+      <div className="relative flex aspect-[3/4] w-full flex-col items-center justify-center rounded-xl border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-sky-50 px-4 py-6 text-center shadow-sm">
+        <span className={`absolute left-2 top-2 rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-wide ${badgeClasses}`}>
+          {badgeText}
+        </span>
         <div className="text-3xl md:text-5xl mb-3">📖</div>
         <div className="text-sm md:text-base font-semibold text-gray-900 leading-tight">
           {devotional.title}
@@ -167,13 +248,177 @@ export default function DevotionalsPage() {
     );
   };
 
-  const visibleDevotionals = devotionals
+  const visibleDevotionals = useMemo(() => devotionals
     .filter((devotional) => !HIDDEN_DEVOTIONAL_TITLES.has(devotional.title))
     .sort((a, b) => {
       if (a.title === FEATURED_DEVOTIONAL_TITLE) return -1;
       if (b.title === FEATURED_DEVOTIONAL_TITLE) return 1;
       return 0;
-    });
+    }), [devotionals]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadStudyProgress() {
+      const baseProgress = Object.fromEntries(
+        visibleDevotionals.map((devotional) => [devotional.id, buildEmptyProgress(devotional)])
+      );
+
+      if (!userId || visibleDevotionals.length === 0) {
+        setProgressByDevotional(baseProgress);
+        return;
+      }
+
+      const devotionalIds = visibleDevotionals.map((devotional) => devotional.id);
+
+      try {
+        const [daysRes, progressRes] = await Promise.all([
+          supabase
+            .from("devotional_days")
+            .select("devotional_id, day_number, bible_reading_book, bible_reading_chapter")
+            .in("devotional_id", devotionalIds),
+          supabase
+            .from("devotional_progress")
+            .select("devotional_id, day_number, is_completed, reading_completed")
+            .eq("user_id", userId)
+            .in("devotional_id", devotionalIds),
+        ]);
+
+        if (daysRes.error) throw daysRes.error;
+        if (progressRes.error) throw progressRes.error;
+
+        const days = (daysRes.data || []) as DevotionalDayRow[];
+        const progressRows = progressRes.data || [];
+        const progressLookup = new Map<string, any>();
+
+        progressRows.forEach((row: any) => {
+          progressLookup.set(`${row.devotional_id}:${row.day_number}`, row);
+        });
+
+        const chapterJourneyDays = days.filter((day) => {
+          const devotional = visibleDevotionals.find((item) => item.id === day.devotional_id);
+          return devotional && isChapterJourney(devotional.title) && day.bible_reading_book && day.bible_reading_chapter;
+        });
+
+        let actionRows: any[] = [];
+        let reflectionSlugs = new Set<string>();
+
+        if (chapterJourneyDays.length > 0) {
+          const chapterSlugs = chapterJourneyDays.map((day) => chapterSlug(day.bible_reading_book || "", Number(day.bible_reading_chapter)));
+          const [actionsRes, commentsRes] = await Promise.all([
+            supabase
+              .from("master_actions")
+              .select("action_type, action_label")
+              .eq("user_id", userId)
+              .in("action_type", [
+                ACTION_TYPE.chapter_notes_reviewed,
+                ACTION_TYPE.chapter_notes_viewed,
+                ACTION_TYPE.trivia_chapter_completed,
+                ACTION_TYPE.scrambled_chapter_completed,
+              ])
+              .limit(5000),
+            supabase
+              .from("article_comments")
+              .select("article_slug")
+              .eq("user_id", userId)
+              .eq("is_deleted", false)
+              .in("article_slug", chapterSlugs)
+              .limit(5000),
+          ]);
+
+          actionRows = actionsRes.data || [];
+          reflectionSlugs = new Set((commentsRes.data || []).map((row: any) => row.article_slug));
+        }
+
+        const nextProgress: Record<string, StudyProgressSummary> = {};
+
+        visibleDevotionals.forEach((devotional) => {
+          const devotionalDays = days.filter((day) => day.devotional_id === devotional.id);
+
+          if (isChapterJourney(devotional.title)) {
+            let completedSteps = 0;
+            let completedDays = 0;
+
+            devotionalDays.forEach((day) => {
+              const book = day.bible_reading_book || "";
+              const chapter = Number(day.bible_reading_chapter);
+              const progress = progressLookup.get(`${devotional.id}:${day.day_number}`);
+              const chapterLabel = `${book} ${chapter}`;
+              const chapterLabelLower = chapterLabel.toLowerCase();
+              const noteLabel = notesActionLabel(book, chapter);
+
+              const hasNotes = actionRows.some((row) =>
+                (row.action_type === ACTION_TYPE.chapter_notes_reviewed || row.action_type === ACTION_TYPE.chapter_notes_viewed) &&
+                row.action_label === noteLabel
+              );
+              const hasTrivia = actionRows.some((row) =>
+                row.action_type === ACTION_TYPE.trivia_chapter_completed &&
+                String(row.action_label || "").toLowerCase().startsWith(chapterLabelLower)
+              );
+              const hasScrambled = actionRows.some((row) =>
+                row.action_type === ACTION_TYPE.scrambled_chapter_completed &&
+                String(row.action_label || "").toLowerCase().startsWith(chapterLabelLower)
+              );
+              const hasReflection = reflectionSlugs.has(chapterSlug(book, chapter));
+              const daySteps = [
+                progress?.is_completed === true,
+                progress?.reading_completed === true,
+                hasNotes,
+                hasTrivia,
+                hasScrambled,
+                hasReflection,
+              ].filter(Boolean).length;
+
+              completedSteps += daySteps;
+              if (daySteps >= CHAPTER_JOURNEY_TASK_TOTAL) completedDays += 1;
+            });
+
+            const totalSteps = Math.max(1, devotional.total_days * CHAPTER_JOURNEY_TASK_TOTAL);
+            const percent = clampPercent((completedSteps / totalSteps) * 100);
+
+            nextProgress[devotional.id] = {
+              completedSteps,
+              totalSteps,
+              completedDays,
+              totalDays: devotional.total_days,
+              percent,
+              isComplete: completedSteps >= totalSteps,
+              label: `${completedDays}/${devotional.total_days} chapters`,
+            };
+            return;
+          }
+
+          const completedDays = devotionalDays.filter((day) => {
+            const progress = progressLookup.get(`${devotional.id}:${day.day_number}`);
+            return progress?.is_completed === true;
+          }).length;
+          const totalDays = Math.max(1, devotional.total_days);
+          const percent = clampPercent((completedDays / totalDays) * 100);
+
+          nextProgress[devotional.id] = {
+            completedSteps: completedDays,
+            totalSteps: totalDays,
+            completedDays,
+            totalDays: devotional.total_days,
+            percent,
+            isComplete: completedDays >= devotional.total_days,
+            label: `${completedDays}/${devotional.total_days} days`,
+          };
+        });
+
+        if (!cancelled) setProgressByDevotional({ ...baseProgress, ...nextProgress });
+      } catch (error) {
+        console.error("[BIBLE_STUDIES] Error loading study progress:", error);
+        if (!cancelled) setProgressByDevotional(baseProgress);
+      }
+    }
+
+    void loadStudyProgress();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId, visibleDevotionals]);
 
 
   if (loading) {
@@ -188,17 +433,46 @@ export default function DevotionalsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-5xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">Bible Studies</h1>
+    <div className="min-h-screen bg-[#f4f8ff]">
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="mb-6 rounded-3xl border border-white bg-white/90 px-5 py-5 shadow-sm md:px-7">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.28em] text-[#5b8fb8]">Bible Buddy Library</p>
+              <h1 className="mt-2 text-3xl font-black text-gray-950 md:text-4xl">Bible Studies</h1>
+              <p className="mt-2 max-w-2xl text-sm font-semibold leading-relaxed text-gray-600">
+                Pick a study, finish each chapter step by step, and watch your shelf fill up as completed.
+              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-2 text-center">
+              <div className="rounded-2xl bg-[#eaf6ff] px-4 py-3">
+                <p className="text-xl font-black text-gray-950">{visibleDevotionals.length}</p>
+                <p className="text-[11px] font-bold text-gray-600">Studies</p>
+              </div>
+              <div className="rounded-2xl bg-[#eafff2] px-4 py-3">
+                <p className="text-xl font-black text-gray-950">{visibleDevotionals.filter((study) => progressByDevotional[study.id]?.isComplete).length}</p>
+                <p className="text-[11px] font-bold text-gray-600">Done</p>
+              </div>
+              <div className="rounded-2xl bg-[#fff5df] px-4 py-3">
+                <p className="text-xl font-black text-gray-950">
+                  {visibleDevotionals.filter((study) => {
+                    const progress = progressByDevotional[study.id];
+                    return progress && progress.percent > 0 && !progress.isComplete;
+                  }).length}
+                </p>
+                <p className="text-[11px] font-bold text-gray-600">Started</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* INSTRUCTIONS CALLOUT */}
-        <div className="bg-blue-50 border border-blue-200 rounded-xl shadow-sm mb-6">
+        <div className="bg-white border border-[#cfe5f6] rounded-2xl shadow-sm mb-6 overflow-hidden">
           {/* HEADER - Clickable */}
           <button
             type="button"
             onClick={handleToggleInstructions}
-            className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-blue-100/50 transition rounded-t-xl"
+            className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-[#f3f9ff] transition"
           >
             <h2 className="text-lg font-semibold text-gray-900">📖 About Our Bible Studies</h2>
             <svg
@@ -287,14 +561,60 @@ export default function DevotionalsPage() {
             No Bible studies available yet. Check back soon!
           </div>
         ) : (
-          <div className="grid grid-cols-3 gap-3 md:gap-8">
+          <div className="rounded-[2rem] border border-white bg-white/80 p-3 shadow-sm md:p-5">
+            <div className="mb-4 flex items-center justify-between px-1">
+              <div>
+                <p className="text-lg font-black text-gray-950">Your Study Shelf</p>
+                <p className="text-sm font-semibold text-gray-500">Completed studies turn green and get marked on the cover.</p>
+              </div>
+              <span className="hidden rounded-full bg-[#eaf6ff] px-4 py-2 text-xs font-black text-[#3f6f91] sm:inline-flex">
+                Keep building your shelf
+              </span>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {visibleDevotionals.map((devotional) => {
+              const progress = progressByDevotional[devotional.id] ?? buildEmptyProgress(devotional);
+              const isComplete = progress.isComplete;
               const card = (
-                <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-2 md:p-5 hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer">
-                  {getDevotionalVisual(devotional)}
-                  <div className="mt-2 text-xs md:text-lg font-semibold text-gray-900 text-center leading-tight">
-                    {devotional.title}
+                <div className={`group h-full rounded-3xl border p-3 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl ${
+                  isComplete ? "border-emerald-200 bg-[#effdf4]" : "border-gray-200 bg-white"
+                }`}>
+                  <div className="grid grid-cols-[92px_1fr] gap-3 sm:grid-cols-1">
+                    <div>{getDevotionalVisual(devotional, progress)}</div>
+                    <div className="flex min-w-0 flex-col justify-between">
+                      <div>
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="text-base font-black leading-tight text-gray-950 md:text-lg">
+                            {devotional.title}
+                          </div>
+                          {isComplete ? (
+                            <span className="rounded-full bg-emerald-600 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-white">
+                              Done
+                            </span>
+                          ) : null}
+                        </div>
+                        <p className="mt-1 text-xs font-bold text-gray-500">
+                          {isChapterJourney(devotional.title) ? `${devotional.total_days} chapter journey` : `${devotional.total_days} day study`}
+                        </p>
+                      </div>
+                      <div className="mt-4">
+                        <div className="flex items-center justify-between text-xs font-black text-gray-700">
+                          <span>{progress.label}</span>
+                          <span>{progress.percent}%</span>
+                        </div>
+                        <div className="mt-2 h-3 overflow-hidden rounded-full bg-gray-100">
+                          <div
+                            className={`h-full rounded-full transition-all duration-500 ${isComplete ? "bg-emerald-500" : "bg-[#7BAFD4]"}`}
+                            style={{ width: `${progress.percent}%` }}
+                          />
+                        </div>
+                        <p className="mt-3 text-sm font-black text-gray-950">
+                          {isComplete ? "Completed study" : progress.percent > 0 ? "Continue study" : "Start study"}
+                        </p>
+                      </div>
+                    </div>
                   </div>
+                  <div className={`mt-3 h-2 rounded-full ${isComplete ? "bg-emerald-300" : "bg-[#d7e8f5]"}`} />
                 </div>
               );
               return (
@@ -335,6 +655,7 @@ export default function DevotionalsPage() {
                 </div>
               );
             })}
+            </div>
           </div>
         )}
       </div>
