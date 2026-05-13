@@ -87,6 +87,17 @@ type BadgeProgressInput = {
   booksCompleted: number;
 };
 
+type DashboardLouisNudge = {
+  id: string;
+  eyebrow: string;
+  title: string;
+  lineOne: string;
+  lineTwo: string;
+  buttonText: string;
+  action: "daily-tasks" | "route" | "dismiss";
+  href?: string;
+};
+
 const BADGE_TONE_CLASSES: Record<BadgeTone, { tile: string; progress: string; glow: string }> = {
   blue: {
     tile: "border-[#8fc7ee] bg-gradient-to-br from-[#bfe5ff] to-[#5eaee6] text-[#123c63]",
@@ -668,6 +679,7 @@ export default function DashboardPage() {
   const [showStreakMotivationTaskPrompt, setShowStreakMotivationTaskPrompt] = useState(false);
   const [streakMotivationModalMode, setStreakMotivationModalMode] = useState<"daily" | "checkin">("daily");
   const [louisCheckInContextLine, setLouisCheckInContextLine] = useState<string | null>(null);
+  const [louisDashboardNudge, setLouisDashboardNudge] = useState<DashboardLouisNudge | null>(null);
   const [pendingDailyStreakSequence, setPendingDailyStreakSequence] = useState(false);
   const [showLouisDailyTasksModal, setShowLouisDailyTasksModal] = useState(false);
   const [louisDailyTaskCycleStartedAt, setLouisDailyTaskCycleStartedAt] = useState<string | null>(null);
@@ -739,6 +751,10 @@ export default function DashboardPage() {
     return `bb:louis-dashboard-badge-last-shown:${currentUserId}`;
   }
 
+  function getDashboardLouisNudgeRotationKey(currentUserId: string, dayKey: string) {
+    return `bb:louis-dashboard-nudge-rotation:${currentUserId}:${dayKey}`;
+  }
+
   function getStreakPointsShownKey(currentUserId: string, dayKey: string) {
     return `bb:streak-points-shown:${currentUserId}:${dayKey}`;
   }
@@ -761,6 +777,133 @@ export default function DashboardPage() {
       "Steady Bible reading helps people feel closer to God.",
     ];
     return stats[Math.abs(Math.floor(streak)) % stats.length];
+  }
+
+  function isRunningStandaloneApp() {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia?.("(display-mode: standalone)")?.matches || (window.navigator as Navigator & { standalone?: boolean }).standalone === true;
+  }
+
+  function buildDashboardLouisNudgePool(): DashboardLouisNudge[] {
+    const nextTaskTitle = dailyTaskNextTitle || null;
+    const pool: DashboardLouisNudge[] = [
+      {
+        id: "daily-task",
+        eyebrow: "Next Step",
+        title: nextTaskTitle ? "Keep the chapter moving" : "Open today’s tasks",
+        lineOne: nextTaskTitle ? `Your next task is ${nextTaskTitle}.` : "Your daily tasks keep Bible study simple.",
+        lineTwo: "Knock out one small step and your level keeps growing.",
+        buttonText: nextTaskTitle ? "Do this one now" : "View Daily Tasks",
+        action: "daily-tasks",
+      },
+      {
+        id: "study-tip-slow",
+        eyebrow: "Bible Study Tip",
+        title: "Read slower for one verse",
+        lineOne: "Before you move on, ask what the verse shows about God, people, or wisdom.",
+        lineTwo: "One clear sentence remembered is better than a whole chapter rushed.",
+        buttonText: "Got it",
+        action: "dismiss",
+      },
+      {
+        id: "study-tip-reflect",
+        eyebrow: "Bible Study Tip",
+        title: "Write the one thing",
+        lineOne: "After a chapter, write one thing that stood out and one thing you can practice today.",
+        lineTwo: "Reflection turns reading into something you can actually carry.",
+        buttonText: "Got it",
+        action: "dismiss",
+      },
+      {
+        id: "bible-fact-proverbs",
+        eyebrow: "Bible Study Fact",
+        title: "Proverbs trains decisions",
+        lineOne: "Proverbs is not just clever sayings. It trains the heart to choose a wiser path.",
+        lineTwo: "That is why small daily choices matter so much in this book.",
+        buttonText: "Nice",
+        action: "dismiss",
+      },
+      {
+        id: "feature-change-buddy",
+        eyebrow: "Feature Tip",
+        title: "Choose your Buddy",
+        lineOne: "You can unlock different Bible Buddy guides as your level grows.",
+        lineTwo: "Pick the one that feels most encouraging for your study rhythm.",
+        buttonText: "Change Buddy",
+        action: "route",
+        href: "/change-buddy",
+      },
+      {
+        id: "feature-tv",
+        eyebrow: "Feature Tip",
+        title: "Try Bible Buddy TV",
+        lineOne: "When you need a different kind of study moment, Bible Buddy TV has teaching and story content.",
+        lineTwo: "It is a good way to keep learning when reading feels heavy.",
+        buttonText: "Open TV",
+        action: "route",
+        href: "/biblebuddy-tv",
+      },
+      {
+        id: "feature-community",
+        eyebrow: "Feature Tip",
+        title: "Join the conversation",
+        lineOne: "The group feed is where Bible Buddies share thoughts, questions, and encouragement.",
+        lineTwo: "A simple comment can help someone else keep going today.",
+        buttonText: "Open Feed",
+        action: "route",
+        href: "/bb-feed",
+      },
+    ];
+
+    if (typeof window !== "undefined" && "Notification" in window && Notification.permission !== "granted") {
+      pool.push({
+        id: "enable-notifications",
+        eyebrow: "App Tip",
+        title: "Turn on notifications",
+        lineOne: "Notifications can remind you when there is a new message, nudge, or study moment.",
+        lineTwo: "Tap the bell at the top of the app and enable alerts for this device.",
+        buttonText: "Got it",
+        action: "dismiss",
+      });
+    }
+
+    if (!isRunningStandaloneApp()) {
+      pool.push({
+        id: "install-app",
+        eyebrow: "App Tip",
+        title: "Add Bible Buddy to your phone",
+        lineOne: "Bible Buddy works best when it is saved like an app on your home screen.",
+        lineTwo: "Use your browser menu and choose Add to Home Screen or Install App.",
+        buttonText: "Got it",
+        action: "dismiss",
+      });
+    }
+
+    const isFreeUser = membershipStatus !== "pro" && profile?.is_paid !== true;
+    if (isFreeUser) {
+      pool.push({
+        id: "upgrade-profile",
+        eyebrow: "Upgrade Tip",
+        title: "Unlock the full Bible Buddy experience",
+        lineOne: "Pro removes ads and gives your profile the Pro Buddy badge.",
+        lineTwo: "It also helps you keep more study momentum across Bible tasks, games, and notes.",
+        buttonText: "See Upgrade",
+        action: "route",
+        href: "/upgrade",
+      });
+    }
+
+    return pool;
+  }
+
+  function pickDashboardLouisNudge(currentUserId: string, dayKey: string) {
+    const pool = buildDashboardLouisNudgePool();
+    if (pool.length === 0) return null;
+    const key = getDashboardLouisNudgeRotationKey(currentUserId, dayKey);
+    const currentIndex = Number(window.localStorage.getItem(key) || "0");
+    const selected = pool[Math.abs(currentIndex) % pool.length] ?? pool[0];
+    window.localStorage.setItem(key, String(currentIndex + 1));
+    return selected;
   }
 
   function getSwipeHintSeenKey(currentUserId: string) {
@@ -2515,6 +2658,7 @@ export default function DashboardPage() {
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
       setStreakMotivationModalMode(alreadyAwardedDailyStreakPopup ? "checkin" : "daily");
       setShowStreakMotivationTaskPrompt(!alreadyAwardedDailyStreakPopup);
+      setLouisDashboardNudge(alreadyAwardedDailyStreakPopup ? pickDashboardLouisNudge(currentUserId, dayKey) : null);
       setShowStreakMotivationModal(true);
       const streakPointsShownKey = getStreakPointsShownKey(currentUserId, dayKey);
       if (!alreadyAwardedDailyStreakPopup && window.localStorage.getItem(streakPointsShownKey) !== "1") {
@@ -2981,6 +3125,36 @@ export default function DashboardPage() {
   const dailyStreakButtonText = getDailyStreakButtonText(profile?.current_streak ?? 0);
   const dailyStreakTaskIntro = buildDailyStreakTaskIntro(dailyChecklistData);
   const compactDashboardCheckIn = buildCompactDashboardCheckIn(dailyChecklistData, userName);
+  const displayedDashboardNudge = louisDashboardNudge ?? {
+    id: "fallback-checkin",
+    eyebrow: "Bible Study Check-In",
+    title: compactDashboardCheckIn.greeting,
+    lineOne: compactDashboardCheckIn.mainLine,
+    lineTwo: compactDashboardCheckIn.helperLine,
+    buttonText: "OK",
+    action: "dismiss" as const,
+  };
+
+  function closeDashboardNudge() {
+    setShowStreakMotivationModal(false);
+    setShowStreakMotivationTaskPrompt(false);
+    setLouisCheckInContextLine(null);
+    setLouisDashboardNudge(null);
+  }
+
+  function handleDashboardNudgeAction() {
+    const nudge = displayedDashboardNudge;
+    closeDashboardNudge();
+
+    if (nudge.action === "daily-tasks") {
+      setShowLouisDailyTasksModal(true);
+      return;
+    }
+
+    if (nudge.action === "route" && nudge.href) {
+      router.push(nudge.href);
+    }
+  }
 
   function scheduleChapterCompleteCelebration(journeyKey: string | null | undefined, options?: { force?: boolean }) {
     if (!userId || !journeyKey) return;
@@ -3398,6 +3572,7 @@ export default function DashboardPage() {
             setShowStreakMotivationModal(false);
             setShowStreakMotivationTaskPrompt(false);
             setLouisCheckInContextLine(null);
+            setLouisDashboardNudge(null);
           }}
           backdropColor="bg-black/45"
         >
@@ -3407,32 +3582,28 @@ export default function DashboardPage() {
               <LouisAvatar mood={(profile?.current_streak ?? 0) >= 30 ? "stareyes" : "wave"} size={66} />
             </div>
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#5f86bd]">
-              {streakMotivationModalMode === "daily" ? "Daily Streak" : "Bible Study Check-In"}
+              {streakMotivationModalMode === "daily" ? "Daily Streak" : displayedDashboardNudge.eyebrow}
             </p>
             {streakMotivationModalMode === "checkin" ? (
               <>
                 <h2 className="mt-3 text-3xl font-bold text-[#21304f]">
-                  {compactDashboardCheckIn.greeting}
+                  {displayedDashboardNudge.title}
                 </h2>
                 <div className="mx-auto mt-4 max-w-sm space-y-2 text-center">
                   <p className="text-base font-semibold leading-7 text-[#355487]">
-                    {compactDashboardCheckIn.mainLine}
+                    {displayedDashboardNudge.lineOne}
                   </p>
                   <p className="text-sm leading-6 text-[#4f678e]">
-                    {compactDashboardCheckIn.helperLine}
+                    {displayedDashboardNudge.lineTwo}
                   </p>
                 </div>
                 <div className="mt-6 flex items-center justify-center">
                   <button
                     type="button"
-                    onClick={() => {
-                      setShowStreakMotivationModal(false);
-                      setShowStreakMotivationTaskPrompt(false);
-                      setLouisCheckInContextLine(null);
-                    }}
+                    onClick={handleDashboardNudgeAction}
                     className="inline-flex min-w-[140px] justify-center rounded-full bg-[#7BAFD4] px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
                   >
-                    OK
+                    {displayedDashboardNudge.buttonText}
                   </button>
                 </div>
               </>
@@ -3471,6 +3642,7 @@ export default function DashboardPage() {
                         setShowStreakMotivationModal(false);
                         setShowStreakMotivationTaskPrompt(false);
                         setLouisCheckInContextLine(null);
+                        setLouisDashboardNudge(null);
                       }}
                       className="inline-flex min-w-[140px] justify-center rounded-full bg-[#7BAFD4] px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
                     >
