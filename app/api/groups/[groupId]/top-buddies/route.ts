@@ -1,13 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { getLiveStreakMapForUsers } from "@/lib/serverStreaks";
 import { ACTION_POINT_WEIGHTS, getLevelInfoFromPoints } from "@/lib/levelSystem";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const ADMIN_EMAIL = "moorelouis3@gmail.com";
 const PAGE_SIZE = 1000;
+const LEADERBOARD_CACHE_MS = 10 * 60 * 1000;
+
+let leaderboardCache: {
+  expiresAt: number;
+  weeklyBuddies: ReturnType<typeof buildLeaderboard>;
+  allTimeBuddies: ReturnType<typeof buildLeaderboard>;
+} | null = null;
 
 type ProfileRow = {
   user_id: string;
@@ -135,9 +140,7 @@ function buildLeaderboard(options: {
   articleComments: ArticleCommentRow[];
   groupPosts: GroupPostRow[];
   groupLikes: GroupLikeRow[];
-  louisId: string | null;
   scope: "week" | "allTime";
-  liveStreakMap: Map<string, number>;
 }) {
   const sinceIso = getWindowStart(options.scope);
   const stats = new Map<string, {
@@ -251,7 +254,6 @@ function buildLeaderboard(options: {
   const profileMap = new Map(options.profiles.map((profile) => [profile.user_id, profile]));
 
   return Array.from(stats.entries())
-    .filter(([userId]) => userId !== options.louisId)
     .map(([userId, entry]) => {
       const profile = profileMap.get(userId);
       const fallbackLevel = getLevelInfoFromPoints(entry.appXp).level;
@@ -284,7 +286,7 @@ function buildLeaderboard(options: {
         profileImageUrl: profile?.profile_image_url ?? null,
         memberBadge: profile?.member_badge ?? null,
         isPaid: !!profile?.is_paid,
-        currentStreak: options.liveStreakMap.get(userId) ?? profile?.current_streak ?? null,
+        currentStreak: profile?.current_streak ?? null,
         currentLevel,
         posts: entry.posts,
         comments: entry.comments,
@@ -332,10 +334,6 @@ export async function GET(
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  const { data: louisUser } = await supabaseAdmin.auth.admin.listUsers();
-  const louisId =
-    louisUser?.users?.find((user) => (user.email || "").toLowerCase() === ADMIN_EMAIL)?.id || null;
-
   const { data: groupRow, error: groupError } = await supabaseAdmin
     .from("study_groups")
     .select("id")
@@ -351,64 +349,73 @@ export async function GET(
   }
 
   try {
-    const [profiles, actions, completedChapters, articleComments, postRows, likeRows] = await Promise.all([
-      fetchPaged<ProfileRow>((from, to) =>
-        supabaseAdmin
-          .from("profile_stats")
-          .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, trivia_questions_answered, last_active_at, last_active_date, created_at")
-          .order("last_active_at", { ascending: false, nullsFirst: false })
-          .range(from, to),
-      ),
-      fetchPaged<ActionRow>((from, to) => {
-        const query = supabaseAdmin
-          .from("master_actions")
-          .select("user_id, action_type, action_label, created_at")
-          .order("created_at", { ascending: false })
-          .range(from, to);
-        return query;
-      }),
-      fetchPaged<CompletedChapterRow>((from, to) =>
-        supabaseAdmin.from("completed_chapters").select("user_id, completed_at").range(from, to),
-      ),
-      fetchPaged<ArticleCommentRow>((from, to) =>
-        supabaseAdmin.from("article_comments").select("user_id, article_slug, created_at").eq("is_deleted", false).range(from, to),
-      ),
-      fetchPaged<GroupPostRow>((from, to) => {
-        const query = supabaseAdmin
-          .from("group_posts")
-          .select("id, user_id, created_at, parent_post_id")
-          .range(from, to);
-        return query;
-      }),
-      fetchPaged<GroupLikeRow>((from, to) =>
-        supabaseAdmin.from("group_post_likes").select("user_id, created_at").range(from, to),
-      ),
-    ]);
+    let weeklyBuddies = leaderboardCache?.weeklyBuddies || null;
+    let allTimeBuddies = leaderboardCache?.allTimeBuddies || null;
 
-    const userIds = Array.from(new Set(profiles.map((profile) => profile.user_id).filter(Boolean)));
-    const liveStreakMap = await getLiveStreakMapForUsers(supabaseAdmin, userIds);
-    const weeklyBuddies = buildLeaderboard({
-      profiles,
-      actions,
-      completedChapters,
-      articleComments,
-      groupPosts: postRows,
-      groupLikes: likeRows,
-      louisId,
-      scope: "week",
-      liveStreakMap,
-    });
-    const allTimeBuddies = buildLeaderboard({
-      profiles,
-      actions,
-      completedChapters,
-      articleComments,
-      groupPosts: postRows,
-      groupLikes: likeRows,
-      louisId,
-      scope: "allTime",
-      liveStreakMap,
-    });
+    if (!leaderboardCache || leaderboardCache.expiresAt <= Date.now()) {
+      const [profiles, actions, completedChapters, articleComments, postRows, likeRows] = await Promise.all([
+        fetchPaged<ProfileRow>((from, to) =>
+          supabaseAdmin
+            .from("profile_stats")
+            .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, trivia_questions_answered, last_active_at, last_active_date, created_at")
+            .order("last_active_at", { ascending: false, nullsFirst: false })
+            .range(from, to),
+        ),
+        fetchPaged<ActionRow>((from, to) =>
+          supabaseAdmin
+            .from("master_actions")
+            .select("user_id, action_type, action_label, created_at")
+            .order("created_at", { ascending: false })
+            .range(from, to),
+        ),
+        fetchPaged<CompletedChapterRow>((from, to) =>
+          supabaseAdmin.from("completed_chapters").select("user_id, completed_at").range(from, to),
+        ),
+        fetchPaged<ArticleCommentRow>((from, to) =>
+          supabaseAdmin.from("article_comments").select("user_id, article_slug, created_at").eq("is_deleted", false).range(from, to),
+        ),
+        fetchPaged<GroupPostRow>((from, to) =>
+          supabaseAdmin
+            .from("group_posts")
+            .select("id, user_id, created_at, parent_post_id")
+            .range(from, to),
+        ),
+        fetchPaged<GroupLikeRow>((from, to) =>
+          supabaseAdmin.from("group_post_likes").select("user_id, created_at").range(from, to),
+        ),
+      ]);
+
+      weeklyBuddies = buildLeaderboard({
+        profiles,
+        actions,
+        completedChapters,
+        articleComments,
+        groupPosts: postRows,
+        groupLikes: likeRows,
+        scope: "week",
+      });
+      allTimeBuddies = buildLeaderboard({
+        profiles,
+        actions,
+        completedChapters,
+        articleComments,
+        groupPosts: postRows,
+        groupLikes: likeRows,
+        scope: "allTime",
+      });
+
+      leaderboardCache = {
+        expiresAt: Date.now() + LEADERBOARD_CACHE_MS,
+        weeklyBuddies,
+        allTimeBuddies,
+      };
+    }
+
+    weeklyBuddies = weeklyBuddies || [];
+    allTimeBuddies = allTimeBuddies || [];
+    if (weeklyBuddies.length === 0 && allTimeBuddies.length > 0) {
+      weeklyBuddies = allTimeBuddies;
+    }
 
     const clickLabelPrefix = `top_buddies_card_opened:${groupId}`;
     const { data: clickRows, error: clickError } = await supabaseAdmin

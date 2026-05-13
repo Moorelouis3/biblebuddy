@@ -146,7 +146,7 @@ const ONBOARDING_STUDY_DESCRIPTION_BY_TITLE: Record<string, string> = {
   "The Calling of Moses":
     "A chapter by chapter journey through Moses' calling, fear, obedience, leadership, and the God who delivers His people.",
   "The Obedience of Abraham":
-    "A chapter by chapter journey through Abraham's faith, waiting, obedience, mistakes, and the promises of God.",
+    "A 15-chapter journey through Genesis 11-25, following Abraham's call, waiting, covenant, testing, and legacy.",
   "The Courage of Daniel":
     "A chapter by chapter journey through Daniel's life in exile and the courage to stay faithful when culture pushes against God.",
   "The Rise of Esther":
