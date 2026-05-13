@@ -244,6 +244,70 @@ function getTaskEmoji(task: TaskState) {
   return "\uD83D\uDD24";
 }
 
+function buildFallbackDashboardTasks(): TaskState[] {
+  return [
+    {
+      kind: "devotional",
+      title: "Read Chapter Intro",
+      pointsLabel: "+5 pts",
+      timeEstimateLabel: "3 min",
+      timeEstimateDetail: "Intro read",
+      href: "/devotionals",
+      done: false,
+    },
+    {
+      kind: "reading",
+      title: "Read Chapter",
+      pointsLabel: "+5 pts",
+      timeEstimateLabel: "4 min",
+      timeEstimateDetail: "Chapter reading",
+      href: null,
+      done: false,
+      disabled: true,
+    },
+    {
+      kind: "notes",
+      title: "Review Chapter Notes",
+      pointsLabel: "+5 pts",
+      timeEstimateLabel: "10 min",
+      timeEstimateDetail: "Study notes",
+      href: null,
+      done: false,
+      disabled: true,
+    },
+    {
+      kind: "trivia",
+      title: "Play Chapter Trivia",
+      pointsLabel: "Up to +5",
+      timeEstimateLabel: "4 min",
+      timeEstimateDetail: "Quick quiz",
+      href: null,
+      done: false,
+      disabled: true,
+    },
+    {
+      kind: "scrambled",
+      title: "Play Chapter Scrambled",
+      pointsLabel: "Up to +5",
+      timeEstimateLabel: "4 min",
+      timeEstimateDetail: "Word puzzle",
+      href: null,
+      done: false,
+      disabled: true,
+    },
+    {
+      kind: "reflection",
+      title: "Answer The Reflection Question",
+      pointsLabel: "+5 pts",
+      timeEstimateLabel: "3 min",
+      timeEstimateDetail: "Write your response",
+      href: null,
+      done: false,
+      disabled: true,
+    },
+  ];
+}
+
 function getDailyStudyCardClasses(allDone: boolean) {
   if (allDone) {
     return "border-green-200 bg-gradient-to-br from-[#ecfff2] via-[#f8fffb] to-[#e7f8ee]";
@@ -968,25 +1032,27 @@ export default function DashboardJourneyExperience({
   const [isResettingDevotional, setIsResettingDevotional] = useState(false);
   const [devotionalSettingsMessage, setDevotionalSettingsMessage] = useState<string | null>(null);
 
-  const totalTasks = checklistData?.tasks.length ?? 5;
+  const fallbackTasks = !isLoadingChecklist && !checklistData ? buildFallbackDashboardTasks() : [];
+  const visibleTasks = checklistData?.tasks ?? fallbackTasks;
+  const totalTasks = visibleTasks.length || 5;
   const completedTasks = checklistData?.completedCount ?? 0;
   const allDone = checklistData?.allDone ?? false;
-  const nextTask = checklistData?.tasks.find((task) => !task.done) ?? null;
-  const nextActionTaskIndex = checklistData?.tasks.findIndex((task) => !task.done) ?? -1;
+  const nextTask = visibleTasks.find((task) => !task.done) ?? null;
+  const nextActionTaskIndex = visibleTasks.findIndex((task) => !task.done);
   const nextActionTaskKind =
-    nextActionTaskIndex >= 0 && checklistData?.tasks[nextActionTaskIndex] && !checklistData.tasks[nextActionTaskIndex].disabled
-      ? checklistData.tasks[nextActionTaskIndex].kind
+    nextActionTaskIndex >= 0 && visibleTasks[nextActionTaskIndex] && !visibleTasks[nextActionTaskIndex].disabled
+      ? visibleTasks[nextActionTaskIndex].kind
       : null;
-  const currentDevotionalTask = checklistData?.tasks.find((task) => task.kind === "devotional") ?? null;
+  const currentDevotionalTask = visibleTasks.find((task) => task.kind === "devotional") ?? null;
   const currentDevotionalId = currentDevotionalTask?.devotionalId || "";
   const isPaidUser = profile?.is_paid === true;
   const remainingTasks = Math.max(totalTasks - completedTasks, 0);
   const completedChapterLabel =
-    checklistData?.tasks.find((task) => task.kind === "reading")?.chapterLabel ||
-    checklistData?.tasks.find((task) => task.chapterLabel)?.chapterLabel ||
+    visibleTasks.find((task) => task.kind === "reading")?.chapterLabel ||
+    visibleTasks.find((task) => task.chapterLabel)?.chapterLabel ||
     "this chapter";
   const nextChapterLabel = (() => {
-    const chapterTask = checklistData?.tasks.find((task) => task.book && task.chapter);
+    const chapterTask = visibleTasks.find((task) => task.book && task.chapter);
     if (!chapterTask?.book || !chapterTask.chapter || !checklistData?.nextJourneyTarget) return "the next chapter";
     return `${chapterTask.book} ${chapterTask.chapter + 1}`;
   })();
@@ -1006,9 +1072,9 @@ export default function DashboardJourneyExperience({
     { emoji: "🔤", title: "Play Scrambled", subtitleWidth: "w-52" },
     { emoji: "✍️", title: "Answer Reflection", subtitleWidth: "w-40" },
   ];
-  const devotionalTask = checklistData?.tasks.find((task) => task.kind === "devotional") ?? null;
-  const readingTask = checklistData?.tasks.find((task) => task.kind === "reading") ?? null;
-  const chapterTask = readingTask || checklistData?.tasks.find((task) => task.book && task.chapter) || null;
+  const devotionalTask = visibleTasks.find((task) => task.kind === "devotional") ?? null;
+  const readingTask = visibleTasks.find((task) => task.kind === "reading") ?? null;
+  const chapterTask = readingTask || visibleTasks.find((task) => task.book && task.chapter) || null;
   const greetingName = userName && userName !== "buddy" ? userName : "buddy";
   function buildLouisMessage() {
     const streakLine = `Hey ${greetingName}, you are on a ${streak} day streak.`;
@@ -1677,13 +1743,13 @@ export default function DashboardJourneyExperience({
                 </div>
               ))
             ) : (
-              checklistData?.tasks.map((task, index) => {
+              visibleTasks.map((task, index) => {
                 const taskCopy = getTaskCardCopy(task, index);
                 const isCelebrating = Boolean(celebratingTasks[task.kind]);
                 const isLockedByOrder = !task.done && nextActionTaskIndex >= 0 && index > nextActionTaskIndex;
                 const isCardDisabled = Boolean(task.disabled || isLockedByOrder);
                 const isNextActionTask = task.kind === nextActionTaskKind && !isCardDisabled;
-                const remainingTaskCount = checklistData.tasks.filter((dailyTask) => !dailyTask.done).length;
+                const remainingTaskCount = visibleTasks.filter((dailyTask) => !dailyTask.done).length;
                 const activeTaskPrompt = isNextActionTask
                   ? getActiveTaskPrompt(task, remainingTaskCount, `${userId || "guest"}:${cycleStartedAt || "today"}:${index}`)
                   : null;
