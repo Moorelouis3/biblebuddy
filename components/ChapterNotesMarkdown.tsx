@@ -1,10 +1,23 @@
 "use client";
 
+import type { ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 
 type ChapterNotesMarkdownProps = {
   children: string;
 };
+
+const leadingEmojiPattern = /^[\s]*(?:[\p{Extended_Pictographic}\p{Emoji_Presentation}]|\d\uFE0F?\u20E3)/u;
+
+function getTextFromNode(node: ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(getTextFromNode).join("");
+  if (node && typeof node === "object" && "props" in node) {
+    const element = node as { props?: { children?: ReactNode } };
+    return getTextFromNode(element.props?.children);
+  }
+  return "";
+}
 
 export default function ChapterNotesMarkdown({ children }: ChapterNotesMarkdownProps) {
   return (
@@ -28,7 +41,20 @@ export default function ChapterNotesMarkdown({ children }: ChapterNotesMarkdownP
           ul: ({ ...props }) => (
             <ul className="mb-5 ml-0 list-none space-y-1.5 text-[15px] leading-relaxed text-gray-800 md:text-base" {...props} />
           ),
-          li: ({ ...props }) => <li className="leading-relaxed" {...props} />,
+          li: ({ children, ...props }) => {
+            const alreadyStartsWithEmoji = leadingEmojiPattern.test(getTextFromNode(children));
+
+            return (
+              <li className="flex gap-2 leading-relaxed" {...props}>
+                {alreadyStartsWithEmoji ? null : (
+                  <span className="mt-0.5 shrink-0 leading-relaxed" aria-hidden="true">
+                    ✨
+                  </span>
+                )}
+                <span className="min-w-0">{children}</span>
+              </li>
+            );
+          },
           blockquote: ({ ...props }) => (
             <blockquote
               className="my-6 rounded-xl border-l-4 border-amber-400 bg-amber-100/75 px-5 py-4 text-gray-950 shadow-sm [&_p]:mb-0 [&_p]:font-medium [&_p]:text-gray-950"

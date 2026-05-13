@@ -2,6 +2,7 @@ import {
   deepenProverbsIntro,
   deepenProverbsSection,
   deepenProverbsTakeaway,
+  formatProverbsStudySection,
 } from "./proverbsDeepStudyRenderer";
 
 type Verse = {
@@ -31,6 +32,23 @@ function renderVerseBlock(verses: Verse[]) {
 function renderNotes(chapter: number, notes: ChapterNotes) {
   const intro = deepenProverbsIntro(chapter, notes.title, notes.intro);
   const takeaway = deepenProverbsTakeaway(chapter, notes.takeaway);
+  const renderSectionBody = (section: NotesSection) => {
+    const deepenedBody = deepenProverbsSection({
+      chapter,
+      title: notes.title,
+      range: section.range,
+      heading: section.heading,
+      body: section.body,
+    });
+
+    return formatProverbsStudySection({
+      chapter,
+      title: notes.title,
+      range: section.range,
+      heading: section.heading,
+      body: deepenedBody,
+    }).join("\n\n");
+  };
 
   return `# ${notes.title}
 
@@ -48,13 +66,7 @@ ${renderVerseBlock(section.verses)}
 
 ## ${section.heading}
 
-${deepenProverbsSection({
-  chapter,
-  title: notes.title,
-  range: section.range,
-  heading: section.heading,
-  body: section.body,
-}).join("\n\n")}`,
+${renderSectionBody(section)}`,
   )
   .join("\n\n")}
 

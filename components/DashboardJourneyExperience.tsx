@@ -149,6 +149,92 @@ function getTaskStatusLine(task: TaskState) {
   return "Not started";
 }
 
+type ActiveTaskPrompt = {
+  lineOne: string;
+  lineTwo: string;
+};
+
+const activeTaskPrompts: ActiveTaskPrompt[] = [
+  { lineOne: "Do this one now", lineTwo: "Keep the rhythm moving" },
+  { lineOne: "Finish this one", lineTwo: "You already started strong" },
+  { lineOne: "Knock this one out", lineTwo: "One clean step forward" },
+  { lineOne: "This one is ready", lineTwo: "Tap in and keep going" },
+  { lineOne: "Keep going here", lineTwo: "Momentum is on your side" },
+  { lineOne: "Take this next", lineTwo: "Stay with today's chapter" },
+  { lineOne: "Your next move", lineTwo: "A few minutes well spent" },
+  { lineOne: "Step into this one", lineTwo: "Let the study keep building" },
+  { lineOne: "Hit this next", lineTwo: "You are already in motion" },
+  { lineOne: "Stay in the flow", lineTwo: "This is the next step" },
+  { lineOne: "Keep the streak alive", lineTwo: "Do this task next" },
+  { lineOne: "Build on that start", lineTwo: "This one keeps it going" },
+  { lineOne: "One task at a time", lineTwo: "This is the next one" },
+  { lineOne: "Keep walking", lineTwo: "This step is waiting" },
+  { lineOne: "Do this next", lineTwo: "Small step, real progress" },
+  { lineOne: "Stay locked in", lineTwo: "This task is up now" },
+  { lineOne: "Grab this one", lineTwo: "Keep today's study moving" },
+  { lineOne: "Next up", lineTwo: "Take a steady step" },
+  { lineOne: "Make the next move", lineTwo: "You are not starting over" },
+  { lineOne: "Press into this one", lineTwo: "The chapter is still fresh" },
+  { lineOne: "Keep the pace", lineTwo: "This is your next win" },
+  { lineOne: "Take this step", lineTwo: "Do not lose the flow" },
+  { lineOne: "This one matters", lineTwo: "Keep building the habit" },
+  { lineOne: "Stay with it", lineTwo: "The next task is open" },
+  { lineOne: "Move here next", lineTwo: "Let the chapter sink in" },
+  { lineOne: "Get this one done", lineTwo: "You are making progress" },
+  { lineOne: "Keep showing up", lineTwo: "This task is yours now" },
+  { lineOne: "Do the next thing", lineTwo: "Simple and steady" },
+  { lineOne: "Keep it rolling", lineTwo: "This one is unlocked" },
+  { lineOne: "Take the open step", lineTwo: "Today's flow is working" },
+  { lineOne: "This is the move", lineTwo: "Keep the chapter moving" },
+  { lineOne: "Finish this step", lineTwo: "You are closer now" },
+  { lineOne: "Lean into this one", lineTwo: "A little progress counts" },
+  { lineOne: "Tap this task", lineTwo: "Keep your study alive" },
+  { lineOne: "Keep building", lineTwo: "This one comes next" },
+  { lineOne: "Make it count", lineTwo: "This task is ready" },
+  { lineOne: "Go after this one", lineTwo: "Stay steady today" },
+  { lineOne: "Your next win", lineTwo: "Do this one now" },
+  { lineOne: "Stay on track", lineTwo: "This is the next task" },
+  { lineOne: "Take the next bite", lineTwo: "Small steps finish studies" },
+  { lineOne: "Pick this up", lineTwo: "You know where to go" },
+  { lineOne: "Keep the chain going", lineTwo: "One more step forward" },
+  { lineOne: "Do this with focus", lineTwo: "The task is ready" },
+  { lineOne: "Finish the next piece", lineTwo: "Today's study is moving" },
+  { lineOne: "Open this one", lineTwo: "Let the momentum carry" },
+];
+
+const finalStretchTaskPrompts: Record<number, ActiveTaskPrompt[]> = {
+  3: [
+    { lineOne: "3 left", lineTwo: "Let's finish strong" },
+    { lineOne: "3 left", lineTwo: "You are close now" },
+    { lineOne: "3 to go", lineTwo: "Keep the flow moving" },
+    { lineOne: "Final 3", lineTwo: "Let's knock this out" },
+    { lineOne: "3 steps left", lineTwo: "Stay locked in" },
+    { lineOne: "Only 3 left", lineTwo: "This is the next one" },
+  ],
+  2: [
+    { lineOne: "2 left", lineTwo: "Almost there" },
+    { lineOne: "2 to go", lineTwo: "Keep pushing" },
+    { lineOne: "Final 2", lineTwo: "Do this one now" },
+    { lineOne: "Only 2 left", lineTwo: "You are nearly done" },
+    { lineOne: "2 steps left", lineTwo: "Stay with it" },
+    { lineOne: "2 left", lineTwo: "Let's close the gap" },
+  ],
+  1: [
+    { lineOne: "Last one", lineTwo: "Finish the flow" },
+    { lineOne: "Final task", lineTwo: "Bring it home" },
+    { lineOne: "1 left", lineTwo: "Let's finish" },
+    { lineOne: "Last step", lineTwo: "Close it out" },
+    { lineOne: "One more", lineTwo: "You got this" },
+    { lineOne: "Finish line", lineTwo: "Last task now" },
+  ],
+};
+
+function getActiveTaskPrompt(task: TaskState, remainingTasks: number, seed: string) {
+  const finalStretchPrompts = remainingTasks <= 3 ? finalStretchTaskPrompts[remainingTasks] : null;
+  const bucket = finalStretchPrompts?.length ? finalStretchPrompts : activeTaskPrompts;
+  return bucket[stableHash(`${seed}:${task.kind}:${remainingTasks}`) % bucket.length];
+}
+
 function getTaskEmoji(task: TaskState) {
   if (task.kind === "devotional") return "\uD83D\uDCD5";
   if (task.kind === "reading") return "\u271D\uFE0F";
@@ -1597,8 +1683,12 @@ export default function DashboardJourneyExperience({
                 const isLockedByOrder = !task.done && nextActionTaskIndex >= 0 && index > nextActionTaskIndex;
                 const isCardDisabled = Boolean(task.disabled || isLockedByOrder);
                 const isNextActionTask = task.kind === nextActionTaskKind && !isCardDisabled;
+                const remainingTaskCount = checklistData.tasks.filter((dailyTask) => !dailyTask.done).length;
+                const activeTaskPrompt = isNextActionTask
+                  ? getActiveTaskPrompt(task, remainingTaskCount, `${userId || "guest"}:${cycleStartedAt || "today"}:${index}`)
+                  : null;
                 const pointsPillLabel = isCardDisabled ? "Locked" : task.pointsLabel;
-                const taskStatusLabel = !task.done && isNextActionTask ? "Start here" : isCardDisabled ? "Locked" : getTaskStatusLine(task);
+                const taskStatusLabel = isCardDisabled ? "Locked" : getTaskStatusLine(task);
 
                 return (
                 <button
@@ -1667,7 +1757,14 @@ export default function DashboardJourneyExperience({
                               <span>✦</span>
                             </span>
                           ) : null}
-                          {taskStatusLabel}
+                          {activeTaskPrompt ? (
+                            <span className="flex flex-col items-end leading-tight">
+                              <span>{activeTaskPrompt.lineOne}</span>
+                              <span className="text-[10px] font-extrabold opacity-75">{activeTaskPrompt.lineTwo}</span>
+                            </span>
+                          ) : (
+                            taskStatusLabel
+                          )}
                         </span>
                       </div>
                       <span className="text-xl leading-none text-gray-400" aria-hidden="true">›</span>

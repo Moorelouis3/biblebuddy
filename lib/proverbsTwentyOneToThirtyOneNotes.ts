@@ -2,6 +2,7 @@ import {
   deepenProverbsIntro,
   deepenProverbsSection,
   deepenProverbsTakeaway,
+  formatProverbsStudySection,
 } from "./proverbsDeepStudyRenderer";
 
 type Verse = {
@@ -59,12 +60,18 @@ ${renderVerseBlock(versesForRange(verses, section.range))}
 
 ## ${section.heading}
 
-${deepenProverbsSection({
+${formatProverbsStudySection({
   chapter,
   title: template.title,
   range: section.range,
   heading: section.heading,
-  body: section.body,
+  body: deepenProverbsSection({
+    chapter,
+    title: template.title,
+    range: section.range,
+    heading: section.heading,
+    body: section.body,
+  }),
 }).join("\n\n")}
 `)
   .join("\n\n")}

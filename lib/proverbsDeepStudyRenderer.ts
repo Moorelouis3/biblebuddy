@@ -7,6 +7,7 @@ type DeepStudyOptions = {
 };
 
 const MIN_DEEP_CHAPTER = 8;
+const MIN_FORMATTED_CHAPTER = 4;
 
 function cleanHeading(heading: string) {
   return heading
@@ -19,6 +20,93 @@ function cleanHeading(heading: string) {
 function includesAny(text: string, words: string[]) {
   const lower = text.toLowerCase();
   return words.some((word) => lower.includes(word));
+}
+
+const themeLabels: Record<string, { icon: string; label: string; bullets: string[] }> = {
+  speech: {
+    icon: "🗣️",
+    label: "Words Reveal Direction",
+    bullets: ["what is being spoken", "what the words are building", "what the heart is revealing"],
+  },
+  money: {
+    icon: "💰",
+    label: "Money Tests The Heart",
+    bullets: ["what money promises", "what money exposes", "how wisdom handles provision"],
+  },
+  correction: {
+    icon: "🧭",
+    label: "Correction Is A Mercy",
+    bullets: ["what needs to be heard", "what pride wants to avoid", "how wisdom receives help"],
+  },
+  path: {
+    icon: "🛤️",
+    label: "The Path Is The Point",
+    bullets: ["where the choice begins", "where the road is leading", "what kind of person the path is forming"],
+  },
+  heart: {
+    icon: "❤️",
+    label: "The Heart Comes First",
+    bullets: ["what desire is doing", "what motive is underneath", "what eventually flows outward"],
+  },
+  home: {
+    icon: "🏠",
+    label: "Wisdom At Home",
+    bullets: ["what happens in close relationships", "what strengthens the house", "what quietly tears peace down"],
+  },
+  leadership: {
+    icon: "👑",
+    label: "Influence Needs Wisdom",
+    bullets: ["how power is used", "who is protected", "whether justice or pride is leading"],
+  },
+  justice: {
+    icon: "⚖️",
+    label: "God Cares About What Is Right",
+    bullets: ["how people handle advantage", "whether the vulnerable are protected", "what honesty looks like when it costs"],
+  },
+  appetite: {
+    icon: "🍽️",
+    label: "Desire Needs Guardrails",
+    bullets: ["what the craving promises", "what it may cost", "how wisdom keeps desire in order"],
+  },
+  laziness: {
+    icon: "🌾",
+    label: "Faithfulness Is Built Daily",
+    bullets: ["what delay is costing", "what excuse sounds reasonable", "what steady obedience looks like"],
+  },
+  friendship: {
+    icon: "🤝",
+    label: "Closeness Shapes You",
+    bullets: ["who is influencing the heart", "who brings clarity", "who makes foolishness feel normal"],
+  },
+  humility: {
+    icon: "🙇",
+    label: "Pride Blocks Wisdom",
+    bullets: ["where pride is defending itself", "where humility can listen", "how honor is safely received"],
+  },
+  fear: {
+    icon: "🙏",
+    label: "Life Happens Before God",
+    bullets: ["what the Lord sees", "what obedience requires", "how reverence changes ordinary choices"],
+  },
+  folly: {
+    icon: "⚠️",
+    label: "Folly Has A Pattern",
+    bullets: ["what foolishness repeats", "what warning is being ignored", "where the ending is headed"],
+  },
+};
+
+function paragraphChunks(lines: string[]) {
+  const midpoint = Math.max(2, Math.ceil(lines.length / 2));
+  return {
+    first: lines.slice(0, midpoint),
+    second: lines.slice(midpoint),
+  };
+}
+
+const listIcons = ["🔎", "🧭", "✅", "⚠️"];
+
+function emojiList(items: string[]) {
+  return items.map((item, index) => `- ${listIcons[index % listIcons.length]} ${item}`);
 }
 
 function themeParagraphs(theme: string, chapter: number) {
@@ -149,24 +237,64 @@ export function deepenProverbsSection(options: DeepStudyOptions) {
   ];
 }
 
+export function formatProverbsStudySection(options: DeepStudyOptions) {
+  const { chapter, range, heading, body } = options;
+
+  if (chapter === 7 || body.some((line) => line.trim().startsWith("### "))) {
+    return body;
+  }
+
+  const selectedThemes = themesFor(heading, body);
+  const primaryTheme = themeLabels[selectedThemes[0]] ?? themeLabels.heart;
+  const secondaryTheme = themeLabels[selectedThemes[1]] ?? themeLabels.path;
+  const finalTheme = themeLabels[selectedThemes[2]] ?? themeLabels.fear;
+  const { first, second } = paragraphChunks(body);
+
+  return [
+    `### ${primaryTheme.icon} ${primaryTheme.label}`,
+    ...first,
+    "**Watch the movement in this section:**",
+    ...emojiList(primaryTheme.bullets),
+    `### ${secondaryTheme.icon} How This Works In Real Life`,
+    ...second,
+    "**This is the wisdom pressure point:**",
+    ...emojiList(secondaryTheme.bullets),
+    `### ${finalTheme.icon} Carry This Into The Day`,
+    `Proverbs ${chapter}:${range} is not meant to stay on the page. It is meant to train the reader to notice what is happening in the heart, in the path, and in the ordinary decisions that shape a life.`,
+    "**Ask it plainly:**",
+    ...emojiList(finalTheme.bullets),
+  ];
+}
+
 export function deepenProverbsIntro(chapter: number, title: string, intro: string[]) {
-  if (chapter < MIN_DEEP_CHAPTER) return intro;
+  if (chapter < MIN_FORMATTED_CHAPTER || chapter === 7) return intro;
 
   const cleanTitle = cleanHeading(title);
 
   return [
     ...intro,
+    "### 🧩 How To Read This Chapter",
     `For this Bible study, Proverbs ${chapter} should be read slowly, not skimmed. The chapter may contain short sayings, but short does not mean shallow. Each proverb is like a window into how wisdom works in real life.`,
+    "**As you read, keep watching for:**",
+    "- 🔎 what wisdom builds",
+    "- ⚠️ what foolishness breaks",
+    "- ❤️ what the heart reveals",
+    "- 🛤️ where each path is leading",
+    "### 🧭 The Thread Holding It Together",
     `The chapter title, **${cleanTitle}**, gives the reader a lens for the whole chapter. Even when the sayings move from speech to money to correction to relationships, they are still training the same kind of heart: one that fears the Lord and can recognize the difference between wisdom and folly before consequences become loud.`,
     "The goal is not only to understand individual verses. The goal is to see the patterns: what wisdom builds, what foolishness breaks, what the heart reveals, and how ordinary choices slowly shape a life.",
   ];
 }
 
 export function deepenProverbsTakeaway(chapter: number, takeaway: string[]) {
-  if (chapter < MIN_DEEP_CHAPTER) return takeaway;
+  if (chapter < MIN_FORMATTED_CHAPTER || chapter === 7) return takeaway;
 
   return [
     ...takeaway,
+    "**Hold on to the main movement:**",
+    "- 📍 wisdom reaches ordinary life",
+    "- ❤️ the heart shows up in choices",
+    "- 🛤️ small paths become real futures",
     `The deeper lesson of Proverbs ${chapter} is that wisdom is not abstract. It moves into the mouth, the home, the workplace, the wallet, the private desire, the public decision, and the hidden motive.`,
     "The chapter teaches the reader to slow down and ask better questions: What is this forming in me? Where does this path lead? What does this reveal about my heart? What would wisdom look like before the damage is done?",
     "That is why Proverbs is so practical and so serious at the same time. It is not trying to decorate life with religious thoughts. It is trying to protect the whole direction of life with truth.",
