@@ -68,6 +68,22 @@ type ArticleCommentRow = {
 
 type LeaderboardBuddy = ReturnType<typeof buildLeaderboard>[number];
 
+async function fetchProfilesForUserIds(supabaseAdmin: any, userIds: string[]) {
+  const ids = Array.from(new Set(userIds.filter(Boolean)));
+  if (ids.length === 0) return [] as ProfileRow[];
+  const rows: ProfileRow[] = [];
+  for (let index = 0; index < ids.length; index += 500) {
+    const chunk = ids.slice(index, index + 500);
+    const { data, error } = await supabaseAdmin
+      .from("profile_stats")
+      .select(PROFILE_SELECT)
+      .in("user_id", chunk);
+    if (error) throw error;
+    rows.push(...((data || []) as ProfileRow[]));
+  }
+  return rows;
+}
+
 const TASK_ACTIONS = new Set([
   "devotional_day_completed",
   "chapter_completed",
@@ -157,33 +173,6 @@ function scoreProfileSnapshot(profile: ProfileRow) {
       keywordsMastered * 4 +
       streak * 5,
   );
-}
-
-function buildQuickLeaderboard(profiles: ProfileRow[]): LeaderboardBuddy[] {
-  return profiles
-    .map((profile) => {
-      const score = scoreProfileSnapshot(profile);
-      return {
-        userId: profile.user_id,
-        displayName: profile.display_name || profile.username || "Buddy",
-        username: profile.username || null,
-        profileImageUrl: profile.profile_image_url ?? null,
-        memberBadge: profile.member_badge ?? null,
-        isPaid: !!profile.is_paid,
-        currentStreak: profile.current_streak ?? null,
-        currentLevel: Math.max(1, profile.current_level || 1),
-        posts: 0,
-        comments: 0,
-        likes: 0,
-        appXp: 0,
-        actions: 0,
-        score,
-      };
-    })
-    .filter((buddy) => buddy.score > 0)
-    .sort((a, b) => b.score - a.score || (b.currentLevel || 0) - (a.currentLevel || 0))
-    .slice(0, 10)
-    .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
 }
 
 function buildLeaderboard(options: {
@@ -311,26 +300,7 @@ function buildLeaderboard(options: {
       const profile = profileMap.get(userId);
       const fallbackLevel = getLevelInfoFromPoints(entry.appXp).level;
       const currentLevel = Math.max(1, profile?.current_level || fallbackLevel);
-      const chaptersRead = Math.max(entry.bibleActions, safeNumber(profile?.chapters_completed_count));
-      const triviaAnswered = Math.max(entry.triviaAnswered, safeNumber(profile?.trivia_questions_answered));
-      const notesReviewed = entry.notesReviewed + safeNumber(profile?.notes_created_count);
-      const communityScore = entry.communityActions + entry.posts * 2 + entry.comments + entry.articleComments;
-      const taskScore = entry.taskActions + entry.triviaCompleted + entry.scrambledCompleted;
-      const learningScore =
-        chaptersRead * 8 +
-        notesReviewed * 5 +
-        triviaAnswered +
-        entry.triviaCorrect * 2 +
-        entry.scrambledWords * 2 +
-        entry.reflections * 8;
-      const score = Math.round(
-        entry.appXp +
-          currentLevel * 75 +
-          taskScore * 10 +
-          learningScore +
-          communityScore * 4 +
-          safeNumber(profile?.current_streak) * 5,
-      );
+      const score = Math.round(entry.appXp);
 
       return {
         userId,
@@ -349,8 +319,8 @@ function buildLeaderboard(options: {
         score: Math.max(0, score),
       };
     })
-    .filter((buddy) => buddy.score > 0 || buddy.posts > 0 || buddy.comments > 0 || buddy.likes > 0)
-    .sort((a, b) => b.score - a.score || b.appXp - a.appXp || b.posts - a.posts || b.comments - a.comments || b.likes - a.likes)
+    .filter((buddy) => buddy.score > 0 || buddy.actions > 0)
+    .sort((a, b) => b.score - a.score || b.actions - a.actions || (b.currentLevel || 0) - (a.currentLevel || 0))
     .slice(0, 10)
     .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
 }
@@ -414,27 +384,43 @@ export async function GET(
       allTimeBuddies = leaderboardCache.allTimeBuddies;
     } else if (useFastMode) {
       const weekStart = getWindowStart("week");
-      const [weeklyProfilesRes, allTimeProfilesRes] = await Promise.all([
+      const weeklyActions = await fetchPaged<ActionRow>((from, to) =>
         supabaseAdmin
-          .from("profile_stats")
-          .select(PROFILE_SELECT)
-          .gte("last_active_at", weekStart || new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString())
-          .order("current_level", { ascending: false, nullsFirst: false })
-          .order("current_streak", { ascending: false, nullsFirst: false })
-          .limit(80),
-        supabaseAdmin
-          .from("profile_stats")
-          .select(PROFILE_SELECT)
-          .order("current_level", { ascending: false, nullsFirst: false })
-          .order("chapters_completed_count", { ascending: false, nullsFirst: false })
-          .limit(80),
-      ]);
+          .from("master_actions")
+          .select("user_id, action_type, action_label, created_at")
+          .gte("created_at", weekStart || new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString())
+          .order("created_at", { ascending: false })
+          .range(from, to),
+      );
+      const weeklyUserIds = weeklyActions.map((action) => action.user_id || "").filter(Boolean);
+      const weeklyProfiles = await fetchProfilesForUserIds(supabaseAdmin, weeklyUserIds);
+      const allTimeProfilesRes = await supabaseAdmin
+        .from("profile_stats")
+        .select(PROFILE_SELECT)
+        .order("current_level", { ascending: false, nullsFirst: false })
+        .order("chapters_completed_count", { ascending: false, nullsFirst: false })
+        .limit(80);
 
-      if (weeklyProfilesRes.error) throw weeklyProfilesRes.error;
       if (allTimeProfilesRes.error) throw allTimeProfilesRes.error;
 
-      weeklyBuddies = buildQuickLeaderboard((weeklyProfilesRes.data || []) as ProfileRow[]);
-      allTimeBuddies = buildQuickLeaderboard((allTimeProfilesRes.data || []) as ProfileRow[]);
+      weeklyBuddies = buildLeaderboard({
+        profiles: weeklyProfiles,
+        actions: weeklyActions,
+        completedChapters: [],
+        articleComments: [],
+        groupPosts: [],
+        groupLikes: [],
+        scope: "week",
+      });
+      allTimeBuddies = buildLeaderboard({
+        profiles: (allTimeProfilesRes.data || []) as ProfileRow[],
+        actions: [],
+        completedChapters: [],
+        articleComments: [],
+        groupPosts: [],
+        groupLikes: [],
+        scope: "allTime",
+      });
     } else if (forceRefresh || !leaderboardCache || leaderboardCache.expiresAt <= Date.now()) {
       const [profiles, actions, completedChapters, articleComments, postRows, likeRows] = await Promise.all([
         fetchPaged<ProfileRow>((from, to) =>
@@ -498,6 +484,9 @@ export async function GET(
     allTimeBuddies = allTimeBuddies || [];
     if (weeklyBuddies.length === 0 && allTimeBuddies.length > 0) {
       weeklyBuddies = allTimeBuddies;
+    }
+    if (allTimeBuddies.length === 0 && weeklyBuddies.length > 0) {
+      allTimeBuddies = weeklyBuddies;
     }
 
     const clickLabelPrefix = `top_buddies_card_opened:${groupId}`;

@@ -175,13 +175,13 @@ export default function TopBuddiesAdminPage() {
 
   const buddies = useMemo(() => {
     const rows = data?.buddies || [];
-    if (filter === "tasks") return [...rows].sort((a, b) => b.tasksDone - a.tasksDone || b.score - a.score);
-    if (filter === "community") return [...rows].sort((a, b) => b.communityEngagement - a.communityEngagement || b.score - a.score);
+    if (filter === "tasks") return [...rows].sort((a, b) => b.totalActions - a.totalActions || b.weightedXp - a.weightedXp);
+    if (filter === "community") return [...rows].sort((a, b) => b.communityEngagement - a.communityEngagement || b.weightedXp - a.weightedXp);
     if (filter === "games") {
       return [...rows].sort(
         (a, b) =>
           b.triviaCorrect + b.scrambledWords - (a.triviaCorrect + a.scrambledWords) ||
-          b.score - a.score,
+          b.weightedXp - a.weightedXp,
       );
     }
     return rows;
@@ -209,7 +209,7 @@ export default function TopBuddiesAdminPage() {
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#4f8fb7]">Owner Analytics</p>
             <h1 className="mt-2 text-3xl font-black text-gray-950 md:text-4xl">Top Buddies</h1>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-gray-600">
-              Ranked by the custom Bible Buddy Score across XP, level, tasks, Bible reading, trivia, Scrambled, reflections, streak, and community engagement.
+              Ranked by XP earned in the selected window, with Bible tasks/actions shown beside each buddy.
             </p>
           </div>
 
@@ -231,7 +231,7 @@ export default function TopBuddiesAdminPage() {
 
         <div className="mb-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <MetricCard label="Ranked Users" value={formatNumber(data?.totals.usersRanked)} hint="Users with tracked activity" active={filter === "all"} onClick={() => setFilter("all")} />
-          <MetricCard label="Top Score" value={formatNumber(data?.totals.topScore)} hint="Highest Bible Buddy Score" active={false} onClick={() => setFilter("all")} />
+          <MetricCard label="Top XP" value={formatNumber(data?.totals.topScore)} hint="Highest XP in this view" active={false} onClick={() => setFilter("all")} />
           <MetricCard label="Tasks Done" value={formatNumber(data?.totals.totalTasks)} hint="Task-heavy ranking view" active={filter === "tasks"} onClick={() => setFilter("tasks")} />
           <MetricCard label="Community" value={formatNumber(data?.totals.totalCommunity)} hint="Comments, posts, likes, replies" active={filter === "community"} onClick={() => setFilter("community")} />
         </div>
@@ -277,7 +277,7 @@ export default function TopBuddiesAdminPage() {
                   <tr className="text-xs font-black uppercase tracking-[0.16em] text-gray-500">
                     <th className="px-4 py-4">Rank</th>
                     <th className="px-4 py-4">Buddy</th>
-                    <th className="px-4 py-4">Score</th>
+                    <th className="px-4 py-4">XP</th>
                     <th className="px-4 py-4">Level</th>
                     <th className="px-4 py-4">XP</th>
                     <th className="px-4 py-4">Tasks</th>
@@ -316,8 +316,8 @@ export default function TopBuddiesAdminPage() {
                         </Link>
                       </td>
                       <td className="px-4 py-4">
-                        <p className="text-lg font-black text-gray-950">{formatNumber(buddy.score)}</p>
-                        <p className="text-xs font-semibold text-gray-500">{formatNumber(buddy.totalActions)} actions</p>
+                        <p className="text-lg font-black text-gray-950">{formatNumber(buddy.weightedXp)}</p>
+                        <p className="text-xs font-semibold text-gray-500">{formatNumber(buddy.totalActions)} Bible tasks</p>
                       </td>
                       <td className="px-4 py-4">
                         <p className="text-sm font-black text-gray-950">Level {buddy.currentLevel}</p>

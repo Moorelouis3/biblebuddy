@@ -296,22 +296,7 @@ export async function GET(request: NextRequest) {
         const notesReviewed = stats.notesReviewed + safeNumber(profile?.notes_created_count);
         const communityScore = stats.communityActions + stats.groupPosts * 2 + stats.groupComments + stats.articleComments;
         const taskScore = stats.taskActions + stats.triviaCompleted + stats.scrambledCompleted;
-        const learningScore =
-          chaptersRead * 8 +
-          notesReviewed * 5 +
-          triviaAnswered +
-          stats.triviaCorrect * 2 +
-          stats.scrambledWords * 2 +
-          stats.reflections * 8;
-        const score =
-          Math.round(
-            stats.weightedXp +
-              currentLevel * 75 +
-              taskScore * 10 +
-              learningScore +
-              communityScore * 4 +
-              safeNumber(profile?.current_streak) * 5,
-          );
+        const score = Math.round(stats.weightedXp);
 
         return {
           userId: stats.userId,
@@ -325,7 +310,7 @@ export async function GET(request: NextRequest) {
           weightedXp: stats.weightedXp,
           score,
           totalActions: stats.totalActions,
-          tasksDone: taskScore,
+          tasksDone: stats.totalActions,
           chaptersRead,
           notesReviewed,
           triviaAnswered,
@@ -346,17 +331,17 @@ export async function GET(request: NextRequest) {
           joinedAt: profile?.created_at || null,
         };
       })
-      .filter((buddy) => buddy.totalActions > 0 || buddy.score > 0)
-      .sort((a, b) => b.score - a.score || b.weightedXp - a.weightedXp || b.currentLevel - a.currentLevel)
+      .filter((buddy) => buddy.totalActions > 0 || buddy.weightedXp > 0)
+      .sort((a, b) => b.weightedXp - a.weightedXp || b.totalActions - a.totalActions || b.currentLevel - a.currentLevel)
       .slice(0, limit)
       .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
 
     const totals = {
       usersRanked: statsMap.size,
       totalActions: buddies.reduce((sum, buddy) => sum + buddy.totalActions, 0),
-      totalTasks: buddies.reduce((sum, buddy) => sum + buddy.tasksDone, 0),
+      totalTasks: buddies.reduce((sum, buddy) => sum + buddy.totalActions, 0),
       totalCommunity: buddies.reduce((sum, buddy) => sum + buddy.communityEngagement, 0),
-      topScore: buddies[0]?.score || 0,
+      topScore: buddies[0]?.weightedXp || 0,
     };
 
     return NextResponse.json({
@@ -364,17 +349,9 @@ export async function GET(request: NextRequest) {
       totals,
       scoring: {
         summary:
-          "Bible Buddy Score = weighted XP + level momentum + completed tasks + Bible reading depth + game learning + reflections + community engagement + streak consistency.",
+          "Top Buddies are ranked by XP earned in the selected window. Bible tasks/actions are shown as the supporting activity count.",
         weights: {
-          level: 75,
-          taskDone: 10,
-          chapterRead: 8,
-          noteReviewed: 5,
-          triviaCorrect: 2,
-          scrambledWord: 2,
-          reflection: 8,
-          community: 4,
-          streakDay: 5,
+          xpEarned: 1,
         },
       },
     });

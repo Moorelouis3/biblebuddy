@@ -139,6 +139,18 @@ interface TopBuddiesEngagement {
   uniqueClickers: number;
 }
 
+function getWeeklyBoardRangeLabel() {
+  const now = new Date();
+  const day = now.getDay();
+  const daysSinceThursday = (day + 3) % 7;
+  const start = new Date(now);
+  start.setDate(now.getDate() - daysSinceThursday);
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+  const format = (date: Date) => date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  return `Week of ${format(start)} - ${format(end)}`;
+}
+
 function getFriendlyPostErrorMessage(error: unknown, fallback: string) {
   const rawMessage =
     error instanceof Error && error.message
@@ -2793,6 +2805,7 @@ export default function GroupChatPage() {
   function renderTopBuddiesLeaderboardCard() {
     const currentBuddies = topBuddiesTab === "week" ? topBuddies : allTimeTopBuddies;
     const topThree = currentBuddies.slice(0, 3);
+    const weekRangeLabel = getWeeklyBoardRangeLabel();
     const clickLabel = topBuddiesEngagement
       ? `${topBuddiesEngagement.totalClicks} click${topBuddiesEngagement.totalClicks === 1 ? "" : "s"}`
       : "0 clicks";
@@ -2812,12 +2825,11 @@ export default function GroupChatPage() {
                 🏆
               </div>
               <div className="min-w-0">
-                <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#709166]">Weekly Award Board</p>
                 <h3 className="mt-1 truncate text-lg font-black text-[#1f2a44]">
                   Top 10 Bible Buddies
                 </h3>
-                <p className="mt-0.5 text-xs font-semibold text-[#64748b]">
-                  {topThree.length ? `${topThree[0]?.displayName || "Buddy"} is leading this week` : "Weekly leaders load here"}
+                <p className="mt-0.5 animate-pulse text-xs font-black text-[#64748b]">
+                  {topBuddiesTab === "week" ? weekRangeLabel : "All-time XP leaders"}
                 </p>
               </div>
             </div>
@@ -2890,12 +2902,12 @@ export default function GroupChatPage() {
                           <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                         </div>
                         <p className="mt-0.5 text-[11px] font-semibold text-[#718096]">
-                          {buddy.actions || 0} actions / {buddy.posts} posts / {buddy.comments} comments / {buddy.likes} likes
+                          {buddy.actions || 0} Bible tasks
                         </p>
                       </div>
                       <div className="text-right">
                         <p className="text-lg font-black text-[#1f2a44]">{buddy.score}</p>
-                        <p className="text-[11px] font-bold text-[#718096]">{topBuddiesTab === "week" ? "pts week" : "pts all"}</p>
+                        <p className="text-[11px] font-bold text-[#718096]">{topBuddiesTab === "week" ? "XP week" : "XP all"}</p>
                       </div>
                     </div>
                   );
@@ -5042,11 +5054,11 @@ export default function GroupChatPage() {
                                 </div>
                                 <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                               </div>
-                              <p className="mt-0.5 text-xs text-gray-500">{buddy.actions || 0} actions / {buddy.posts} posts / {buddy.comments} comments / {buddy.likes} likes</p>
+                              <p className="mt-0.5 text-xs text-gray-500">{buddy.actions || 0} Bible tasks</p>
                             </div>
                             <div className="text-right">
                               <p className="text-base font-bold text-gray-900">{buddy.score}</p>
-                              <p className="text-[11px] text-gray-500">pts week</p>
+                              <p className="text-[11px] text-gray-500">XP week</p>
                             </div>
                           </div>
                         ))
@@ -6995,12 +7007,12 @@ export default function GroupChatPage() {
                             <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                           </div>
                           <p className="mt-1 text-xs text-gray-500">
-                            {buddy.actions || 0} actions / {buddy.posts} posts / {buddy.comments} comments / {buddy.likes} likes
+                            {buddy.actions || 0} Bible tasks
                           </p>
                         </div>
                         <div className="text-right">
                           <p className="text-lg font-bold text-gray-900">{buddy.score}</p>
-                          <p className="text-xs text-gray-500">{topBuddiesTab === "week" ? "pts week" : "pts all"}</p>
+                          <p className="text-xs text-gray-500">{topBuddiesTab === "week" ? "XP week" : "XP all"}</p>
                         </div>
                       </div>
                     </div>
