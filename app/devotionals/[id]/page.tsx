@@ -59,6 +59,7 @@ import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker"
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../../../lib/triviaCatalog";
 import { getTriviaChapter } from "../../../lib/triviaGameData";
 import { getScrambledChapter } from "../../../lib/scrambledGameData";
+import { triggerPoints } from "../../../components/PointsPop";
 import {
   buildPersistedFeatureTours,
   DEFAULT_FEATURE_TOURS,
@@ -720,6 +721,7 @@ export default function DevotionalDetailPage() {
               console.error("[MASTER_ACTIONS] Full error details:", JSON.stringify(actionError, null, 2));
             } else {
               console.log("[MASTER_ACTIONS] Successfully inserted devotional_day_completed action:", actionData);
+              triggerPoints(5);
             }
 
             // STEP 2: UPDATE profile_stats: Count from devotional_progress table
@@ -953,7 +955,11 @@ export default function DevotionalDetailPage() {
         actionType: ACTION_TYPE.devotional_reflection_saved,
         actionLabel: `${devotional.title} - Day ${dayNumber}`,
         dedupeKey: `devotional-reflection:${devotionalId}:${dayNumber}`,
-      }).catch((error) => console.error("[NAV] Failed to track devotional reflection save:", error));
+      })
+        .then((logged) => {
+          if (logged) triggerPoints(5);
+        })
+        .catch((error) => console.error("[NAV] Failed to track devotional reflection save:", error));
     }
 
     try {

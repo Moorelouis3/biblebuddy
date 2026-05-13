@@ -115,6 +115,24 @@ function formatCompletedAtLabel(iso: string | null | undefined) {
   return `Done ${date.toLocaleDateString("en-US", { month: "short", day: "numeric" })}`;
 }
 
+function parseCompletedScore(actionLabel: string | null | undefined) {
+  const match = String(actionLabel || "").match(/-\s*(\d+)\s*\/\s*(\d+)/);
+  if (!match) return null;
+  return {
+    score: Number(match[1]),
+    total: Number(match[2]),
+  };
+}
+
+function formatGamePointsLabel(done: boolean, actionLabel: string | null | undefined, total: number) {
+  if (done) {
+    const completedScore = parseCompletedScore(actionLabel);
+    if (completedScore) return `+${completedScore.score} pts`;
+  }
+
+  return `Up to +${total}`;
+}
+
 function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
   return {
     title: "Bible Study",
@@ -307,8 +325,12 @@ export async function fetchLouisDailyChecklistData(
   const resolvedBookKey = normalizeBookKey(day.bible_reading_book);
   const triviaRouteSlug =
     CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.key === resolvedBookKey)?.routeSlug ?? resolvedBookKey;
-  const hasTrivia = Boolean(getTriviaChapter(resolvedBookKey, day.bible_reading_chapter));
-  const hasScrambled = Boolean(getScrambledChapter(resolvedBookKey, day.bible_reading_chapter));
+  const triviaChapter = getTriviaChapter(resolvedBookKey, day.bible_reading_chapter);
+  const scrambledChapter = getScrambledChapter(resolvedBookKey, day.bible_reading_chapter);
+  const hasTrivia = Boolean(triviaChapter);
+  const hasScrambled = Boolean(scrambledChapter);
+  const triviaQuestionCount = triviaChapter?.questions.length ?? 5;
+  const scrambledQuestionCount = scrambledChapter?.questions.length ?? 5;
 
   const reflectionSlug = `bible-chapter-${day.bible_reading_book.toLowerCase().replace(/\s+/g, "-")}-${day.bible_reading_chapter}`;
 
@@ -454,7 +476,7 @@ export async function fetchLouisDailyChecklistData(
     {
       kind: "trivia",
       title: hasTrivia ? `Play Trivia for ${chapterLabel}` : `Review ${chapterLabel} Notes Again`,
-      pointsLabel: hasTrivia ? "Up to +5" : "+5 pts",
+      pointsLabel: hasTrivia ? formatGamePointsLabel(triviaDone, triviaAction?.action_label, triviaQuestionCount) : "+5 pts",
       href: hasTrivia
         ? `/bible-trivia/${triviaRouteSlug}/${day.bible_reading_chapter}?from=louis-daily-task`
         : `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?notes=1&from=louis-daily-task`,
@@ -473,7 +495,7 @@ export async function fetchLouisDailyChecklistData(
     {
       kind: "scrambled",
       title: hasScrambled ? `Play Scrambled for ${chapterLabel}` : `Open ${chapterLabel} Again`,
-      pointsLabel: hasScrambled ? "Up to +5" : "+5 pts",
+      pointsLabel: hasScrambled ? formatGamePointsLabel(scrambledDone, scrambledAction?.action_label, scrambledQuestionCount) : "+5 pts",
       href: hasScrambled
         ? `/bible-study-games/scrambled/${resolvedBookKey}/${day.bible_reading_chapter}?from=louis-daily-task`
         : `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?from=louis-daily-task`,
@@ -773,7 +795,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
         action_type: ACTION_TYPE.chapter_notes_reviewed,
         action_label: reviewOpenedLabel,
       });
-      if (!insertErr) triggerPoints(2);
+      if (!insertErr) triggerPoints(5);
     }
 
     setNotesMarkedComplete(true);

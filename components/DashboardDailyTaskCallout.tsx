@@ -294,7 +294,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
         action_type: ACTION_TYPE.chapter_notes_reviewed,
         action_label: reviewOpenedLabel,
       });
-      if (!error) triggerPoints(2);
+      if (!error) triggerPoints(5);
     }
 
     setNotesMarkedComplete(true);
@@ -360,14 +360,44 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
       const { data } = await supabase.auth.getUser();
       const meta: any = data.user?.user_metadata || {};
       const username = meta.firstName || meta.first_name || (data.user?.email ? data.user.email.split("@")[0] : null) || "User";
-      await supabase.from("master_actions").insert({
+      const { error } = await supabase.from("master_actions").insert({
         user_id: userId,
         username,
         action_type: ACTION_TYPE.devotional_day_completed,
         action_label: `${devotional.title} - Day ${devotionalTarget.dayNumber}`,
       });
+      if (!error) triggerPoints(5);
     }
 
+  }
+
+  async function markReflectionComplete() {
+    if (!userId || !devotionalTarget || !devotional) return;
+
+    const actionLabel = `${devotional.title} - Day ${devotionalTarget.dayNumber}`;
+    const { data: existing } = await supabase
+      .from("master_actions")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("action_type", ACTION_TYPE.devotional_reflection_saved)
+      .eq("action_label", actionLabel)
+      .limit(1)
+      .maybeSingle();
+
+    if (existing) return;
+
+    const { data } = await supabase.auth.getUser();
+    const meta: any = data.user?.user_metadata || {};
+    const username = meta.firstName || meta.first_name || (data.user?.email ? data.user.email.split("@")[0] : null) || "User";
+
+    const { error } = await supabase.from("master_actions").insert({
+      user_id: userId,
+      username,
+      action_type: ACTION_TYPE.devotional_reflection_saved,
+      action_label: actionLabel,
+    });
+
+    if (!error) triggerPoints(5);
   }
 
   async function closeIntroAndRefresh() {
@@ -409,7 +439,10 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
                   placeholderText="Start Typing Here"
                   submitButtonText="Post Reflection"
                   variant="plain"
-                  onPosted={() => closeAndRefresh(true)}
+                  onPosted={() => {
+                    void markReflectionComplete();
+                    closeAndRefresh(true);
+                  }}
                 />
               </div>
             </div>

@@ -15,7 +15,7 @@ const supabase = createClient(
 
 export async function POST(request: NextRequest) {
   try {
-    const { userId, bookName, bookSlug, chapter, questionId, answer, reference, username, hintCountUsed } = await request.json();
+    const { userId, bookName, bookSlug, chapter, questionId, answer, reference, username, hintCountUsed, revealCountUsed } = await request.json();
 
     if (!userId || !bookName || !bookSlug || !chapter || !questionId || !answer) {
       return NextResponse.json(
@@ -28,7 +28,11 @@ export async function POST(request: NextRequest) {
       typeof hintCountUsed === "number" && Number.isFinite(hintCountUsed)
         ? Math.max(0, Math.floor(hintCountUsed))
         : 0;
-    const awardedPoint = hintCount === 0;
+    const revealCount =
+      typeof revealCountUsed === "number" && Number.isFinite(revealCountUsed)
+        ? Math.max(0, Math.floor(revealCountUsed))
+        : hintCount;
+    const awardedPoint = revealCount < 2;
 
     const actionLabelBase = `${bookName} ${chapter} - ${questionId} - ${answer.toLowerCase()}${reference ? ` (${reference})` : ""}`;
     const actionLabel = awardedPoint ? actionLabelBase : `${actionLabelBase} [no-point]`;

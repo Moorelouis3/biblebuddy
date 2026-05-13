@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
@@ -18,7 +17,7 @@ const HIDDEN_DEVOTIONAL_TITLES = new Set([
   "The Calling of Moses",
 ]);
 
-const NEXT_BIBLE_STUDY_TITLE = "The Wisdom of Proverbs";
+const FEATURED_DEVOTIONAL_TITLE = "The Wisdom of Proverbs";
 
 export default function DevotionalsPage() {
   const router = useRouter();
@@ -168,6 +167,14 @@ export default function DevotionalsPage() {
     );
   };
 
+  const visibleDevotionals = devotionals
+    .filter((devotional) => !HIDDEN_DEVOTIONAL_TITLES.has(devotional.title))
+    .sort((a, b) => {
+      if (a.title === FEATURED_DEVOTIONAL_TITLE) return -1;
+      if (b.title === FEATURED_DEVOTIONAL_TITLE) return 1;
+      return 0;
+    });
+
 
   if (loading) {
     return (
@@ -275,25 +282,15 @@ export default function DevotionalsPage() {
           )}
         </div>
 
-        {devotionals.filter((devotional) => !HIDDEN_DEVOTIONAL_TITLES.has(devotional.title)).length === 0 ? (
+        {visibleDevotionals.length === 0 ? (
           <div className="text-gray-500">
             No Bible studies available yet. Check back soon!
           </div>
         ) : (
           <div className="grid grid-cols-3 gap-3 md:gap-8">
-            {devotionals
-              .filter((devotional) => !HIDDEN_DEVOTIONAL_TITLES.has(devotional.title))
-              .map((devotional) => {
-              const isNextBibleStudy = devotional.title === NEXT_BIBLE_STUDY_TITLE;
+            {visibleDevotionals.map((devotional) => {
               const card = (
                 <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-2 md:p-5 hover:shadow-xl hover:scale-[1.02] transition-all duration-200 cursor-pointer">
-                  {isNextBibleStudy && (
-                    <div className="mb-2 text-center">
-                      <span className="inline-flex rounded-full bg-amber-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-amber-800 md:text-xs">
-                        Next Bible Study
-                      </span>
-                    </div>
-                  )}
                   {getDevotionalVisual(devotional)}
                   <div className="mt-2 text-xs md:text-lg font-semibold text-gray-900 text-center leading-tight">
                     {devotional.title}

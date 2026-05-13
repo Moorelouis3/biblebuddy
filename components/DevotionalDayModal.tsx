@@ -781,12 +781,13 @@ Be accurate to Scripture.`;
           .maybeSingle();
 
         if (!existingReviewed) {
-          await supabase.from("master_actions").insert({
+          const { error: reviewedError } = await supabase.from("master_actions").insert({
             user_id: userId,
             username,
             action_type: ACTION_TYPE.chapter_notes_reviewed,
             action_label: reviewOpenedLabel,
           });
+          if (!reviewedError) triggerPoints(5);
         }
       }
 

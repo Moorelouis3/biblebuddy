@@ -14,6 +14,7 @@ import { enrichPlainText } from "@/lib/bibleHighlighting";
 import { supabase } from "@/lib/supabaseClient";
 import { getScrambledBook, getScrambledChapter } from "@/lib/scrambledGameData";
 import { getTriviaBook, getTriviaChapter } from "@/lib/triviaGameData";
+import { triggerPoints } from "@/components/PointsPop";
 
 type Devotional = {
   id: string;
@@ -559,11 +560,12 @@ export default function ProverbsStudyDayPage() {
     );
 
     if (!wasAlreadyCompleted) {
-      await supabase.from("master_actions").insert({
+      const { error } = await supabase.from("master_actions").insert({
         user_id: userId,
         action_type: ACTION_TYPE.devotional_day_completed,
         action_label: `${devotional.title} - Day ${dayNumber} Intro Reading Completed`,
       });
+      if (!error) triggerPoints(5);
     }
 
     setProgress((prev) => ({
@@ -585,11 +587,23 @@ export default function ProverbsStudyDayPage() {
       action_type: ACTION_TYPE.chapter_notes_viewed,
       action_label: label,
     });
-    await supabase.from("master_actions").insert({
-      user_id: userId,
-      action_type: ACTION_TYPE.chapter_notes_reviewed,
-      action_label: label,
-    });
+    const { data: existingReviewed } = await supabase
+      .from("master_actions")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("action_type", ACTION_TYPE.chapter_notes_reviewed)
+      .eq("action_label", label)
+      .limit(1)
+      .maybeSingle();
+
+    if (!existingReviewed) {
+      const { error } = await supabase.from("master_actions").insert({
+        user_id: userId,
+        action_type: ACTION_TYPE.chapter_notes_reviewed,
+        action_label: label,
+      });
+      if (!error) triggerPoints(5);
+    }
     const { data } = await supabase
       .from("bible_notes")
       .select("notes_text")
@@ -600,6 +614,30 @@ export default function ProverbsStudyDayPage() {
     setNotesLoading(false);
     setNotesDone(true);
     await loadFinishers(day);
+  }
+
+  async function markReflectionComplete() {
+    if (!userId || !devotional) return;
+
+    const actionLabel = `${devotional.title} - Day ${dayNumber}`;
+    const { data: existing } = await supabase
+      .from("master_actions")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("action_type", ACTION_TYPE.devotional_reflection_saved)
+      .eq("action_label", actionLabel)
+      .limit(1)
+      .maybeSingle();
+
+    if (existing) return;
+
+    const { error } = await supabase.from("master_actions").insert({
+      user_id: userId,
+      action_type: ACTION_TYPE.devotional_reflection_saved,
+      action_label: actionLabel,
+    });
+
+    if (!error) triggerPoints(5);
   }
 
   async function markReadingComplete() {
@@ -844,6 +882,7 @@ export default function ProverbsStudyDayPage() {
               variant="plain"
               onPosted={() => {
                 setReflectionDone(true);
+                void markReflectionComplete();
                 void loadFinishers(day);
               }}
             />

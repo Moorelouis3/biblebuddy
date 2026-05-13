@@ -107,6 +107,11 @@ export default function ScrambledGamePlayer({
   const completionNotifiedRef = useRef(false);
 
   const question = chapter.questions[currentQuestionIndex];
+  const isEmbedded = Boolean(onClose);
+  const maxAnswerLength = useMemo(
+    () => Math.max(...chapter.questions.map((entry) => entry.answer.length)),
+    [chapter.questions],
+  );
   const nextChapterPack = useMemo(() => {
     const bookPack = getScrambledBook(bookSlug);
     if (!bookPack) return null;
@@ -366,8 +371,8 @@ export default function ScrambledGamePlayer({
     setCurrentQuestionIndex((value) => value + 1);
   };
 
-  const markCorrect = () => {
-    const scoredWord = hintCount === 0;
+  const markCorrect = (revealedCount = revealedLetters) => {
+    const scoredWord = revealedCount < 2;
     setCompletedSolveCount((value) => value + 1);
     if (scoredWord) {
       setScoredSolveCount((value) => value + 1);
@@ -375,10 +380,10 @@ export default function ScrambledGamePlayer({
     setStatus("correct");
     setCelebrateKey((value) => value + 1);
     setLouieLine(`Nice work. ${question.answer} is right.`);
-    void trackSolvedWord();
+    void trackSolvedWord(revealedCount);
   };
 
-  const trackSolvedWord = async () => {
+  const trackSolvedWord = async (revealedCount: number) => {
     if (trackedQuestionIdsRef.current.has(question.id)) {
       return;
     }
@@ -427,6 +432,7 @@ export default function ScrambledGamePlayer({
         answer: question.answer,
         reference: question.reference,
         hintCountUsed: hintCount,
+        revealCountUsed: revealedCount,
       }),
     });
 
@@ -447,7 +453,7 @@ export default function ScrambledGamePlayer({
 
     const guess = slots.map((slot) => slot?.value ?? "").join("").toLowerCase();
     if (guess === question.answer.toLowerCase()) {
-      markCorrect();
+      markCorrect(revealedLetters);
       return;
     }
 
@@ -503,7 +509,7 @@ export default function ScrambledGamePlayer({
     if (hintCount === 0) {
       setHintCount(1);
       setLouieLine(question.clue);
-      setPointNotice("You can still solve this word, but it will count for progress only now.");
+      setPointNotice("Hint shown. You can still earn the point if you solve it.");
       return;
     }
 
@@ -521,9 +527,9 @@ export default function ScrambledGamePlayer({
     setStatus("idle");
     setLouieLine(question.clue);
     setPointNotice(
-      hintCount + 1 >= 1
-        ? "You can still solve this word, but it will count for progress only now."
-        : null
+      nextRevealCount >= 2
+        ? "Two letters revealed, so this word counts for progress only now."
+        : "One letter revealed. You can still earn the point if you solve it."
     );
     setRecentReveal((current) => ({
       index: revealedIndex,
@@ -536,7 +542,7 @@ export default function ScrambledGamePlayer({
     }, 900);
 
     if (nextRevealCount === answerLetters.length) {
-      markCorrect();
+      markCorrect(nextRevealCount);
     }
   };
 
@@ -790,7 +796,7 @@ export default function ScrambledGamePlayer({
 
   return (
     <>
-      <div className="min-h-screen bg-[#f5f7fb] pb-14">
+      <div className={`${isEmbedded ? "h-[82vh] min-h-[620px] overflow-y-auto" : "min-h-screen"} bg-[#f5f7fb] pb-14`}>
         <div className="mx-auto flex max-w-3xl flex-col gap-5 px-4 pt-6 sm:px-6">
           <div className="flex items-center justify-between gap-4">
             {onClose ? (
@@ -881,47 +887,64 @@ export default function ScrambledGamePlayer({
               ) : null}
 
               <div className="grid grid-cols-5 gap-2 sm:grid-cols-10">
-                {answerSlots.map((tile, index) => (
-                  <div key={`${question.id}-slot-${index}`} className="relative">
-                    {recentReveal?.index === index ? (
-                      <span
-                        key={`reveal-${recentReveal.key}`}
-                        className="pointer-events-none absolute left-1/2 top-0 z-10 -translate-x-1/2 rounded-full bg-[#edf4ff] px-2 py-0.5 text-xs font-bold text-[#4768af] shadow-sm animate-[reveal-pop_850ms_ease-out_forwards]"
+                {Array.from({ length: maxAnswerLength }).map((_, index) => {
+                  const tile = answerSlots[index] ?? null;
+                  const isUnusedSlot = index >= answerSlots.length;
+
+                  if (isUnusedSlot) {
+                    return <div key={`${question.id}-slot-spacer-${index}`} aria-hidden="true" className="h-12 opacity-0" />;
+                  }
+
+                  return (
+                    <div key={`${question.id}-slot-${index}`} className="relative">
+                      {recentReveal?.index === index ? (
+                        <span
+                          key={`reveal-${recentReveal.key}`}
+                          className="pointer-events-none absolute left-1/2 top-0 z-10 -translate-x-1/2 rounded-full bg-[#edf4ff] px-2 py-0.5 text-xs font-bold text-[#4768af] shadow-sm animate-[reveal-pop_850ms_ease-out_forwards]"
+                        >
+                          +{recentReveal.letter}
+                        </span>
+                      ) : null}
+                      <button
+                        type="button"
+                        onClick={() => handleAnswerLetterClick(index)}
+                        className={`flex h-12 w-full items-center justify-center rounded-2xl border text-lg font-bold uppercase transition ${
+                          tile
+                            ? tile.locked
+                              ? recentReveal?.index === index
+                                ? "border-[#95b5ef] bg-[#edf4ff] text-[#31528d] animate-[slot-pop_360ms_ease-out]"
+                                : "border-[#bfd3f5] bg-[#edf4ff] text-[#31528d]"
+                              : "border-[#d5dbe5] bg-white text-gray-900 shadow-sm"
+                            : "border-[#e4e8ef] bg-[#f4f6f9] text-gray-300"
+                        }`}
                       >
-                        +{recentReveal.letter}
-                      </span>
-                    ) : null}
-                    <button
-                      type="button"
-                      onClick={() => handleAnswerLetterClick(index)}
-                      className={`flex h-12 w-full items-center justify-center rounded-2xl border text-lg font-bold uppercase transition ${
-                        tile
-                          ? tile.locked
-                            ? recentReveal?.index === index
-                              ? "border-[#95b5ef] bg-[#edf4ff] text-[#31528d] animate-[slot-pop_360ms_ease-out]"
-                              : "border-[#bfd3f5] bg-[#edf4ff] text-[#31528d]"
-                            : "border-[#d5dbe5] bg-white text-gray-900 shadow-sm"
-                          : "border-[#e4e8ef] bg-[#f4f6f9] text-gray-300"
-                      }`}
-                    >
-                      {tile?.value ?? ""}
-                    </button>
-                  </div>
-                ))}
+                        {tile?.value ?? ""}
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
-            <div className="mt-5 flex flex-wrap gap-3">
-              {bankLetters.map((tile) => (
-                <button
-                  key={tile.id}
-                  type="button"
-                  onClick={() => handleBankLetterClick(tile)}
-                  className="flex h-12 min-w-12 items-center justify-center rounded-2xl border border-[#d8e2ee] bg-[#f7fbff] px-4 text-lg font-bold uppercase text-[#2f4b6a] shadow-sm transition hover:-translate-y-0.5 hover:bg-white"
-                >
-                  {tile.value}
-                </button>
-              ))}
+            <div className="mt-5 grid grid-cols-5 gap-2 sm:grid-cols-10">
+              {Array.from({ length: maxAnswerLength }).map((_, index) => {
+                const tile = bankLetters[index] ?? null;
+
+                if (!tile) {
+                  return <div key={`${question.id}-bank-spacer-${index}`} aria-hidden="true" className="h-12 opacity-0" />;
+                }
+
+                return (
+                  <button
+                    key={tile.id}
+                    type="button"
+                    onClick={() => handleBankLetterClick(tile)}
+                    className="flex h-12 w-full items-center justify-center rounded-2xl border border-[#d8e2ee] bg-[#f7fbff] text-lg font-bold uppercase text-[#2f4b6a] shadow-sm transition hover:-translate-y-0.5 hover:bg-white"
+                  >
+                    {tile.value}
+                  </button>
+                );
+              })}
             </div>
 
             <div className="mt-5 flex flex-wrap items-center gap-3">
@@ -952,7 +975,7 @@ export default function ScrambledGamePlayer({
               ) : null}
             </div>
 
-            <div className="mt-4 min-h-10 text-sm leading-7">
+            <div className="mt-4 min-h-[104px] text-sm leading-7">
               {status === "correct" ? (
                 <div className="rounded-[24px] border border-[#d8e4fb] bg-[#f6f9ff] px-4 py-4">
                   <p className="text-sm font-semibold text-gray-900">{question.reference}</p>

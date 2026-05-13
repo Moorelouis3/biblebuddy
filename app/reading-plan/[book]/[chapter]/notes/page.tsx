@@ -252,7 +252,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           if (insertReviewedError) {
             console.error("[CHAPTER_NOTES] Error logging chapter_notes_reviewed:", insertReviewedError);
           } else {
-            triggerPoints(2);
+            triggerPoints(5);
           }
         }
       }

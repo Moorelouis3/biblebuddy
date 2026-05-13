@@ -65,6 +65,40 @@ type BibleApiResponse = {
   translation_note: string;
 };
 
+const WISDOM_OF_PROVERBS_REFLECTION_QUESTIONS: Record<number, string> = {
+  1: "What does the Fear of the Lord mean to you?",
+  2: "What would change in your habits if you treated wisdom like treasure instead of background information?",
+  3: "What part of your life is hardest to entrust to God, and what would acknowledging Him there actually look like today?",
+  4: "What has been shaping your heart lately, and is it leading you toward life or away from it?",
+  5: "Where do you need wisdom to help you see the end of a path, not just the appeal of the first step?",
+  6: "Which warning in Proverbs 6 feels most personally relevant right now, and why?",
+  7: "Where are you walking too close to something you already know can pull you away from God?",
+  8: "What is wisdom already saying to you that you have been slow to receive?",
+  9: "Which invitation has been louder in your life lately: wisdom's call or folly's shortcut?",
+  10: "Which contrast in Proverbs 10 best describes a choice in front of you right now?",
+  11: "Where is God inviting you to become more honest, generous, or humble?",
+  12: "What do your recent words reveal about the condition of your heart?",
+  13: "Where are you choosing short-term ease over long-term wisdom?",
+  14: "What is one area where you need God's wisdom to challenge what simply seems right to you?",
+  15: "Where would a gentle answer change the atmosphere around you today?",
+  16: "What plan do you need to hold with open hands before the Lord?",
+  17: "Which relationship needs more wisdom from you right now: patience, honesty, restraint, or courage?",
+  18: "Are your words lately giving life, taking life, or simply escaping without wisdom?",
+  19: "Where would slowing down help you obey God more clearly?",
+  20: "Where do you need the Lord's lamp to search your motives or habits?",
+  21: "Where might God be asking for obedience instead of religious appearance?",
+  22: "What kind of name are your repeated choices building?",
+  23: "What desire has been discipling you more than wisdom has?",
+  24: "Where are you tempted to admire a path that Scripture warns you not to follow?",
+  25: "Where do you need more restraint or better timing in how you speak?",
+  26: "Where do you need discernment to know whether to speak, stay silent, engage, or walk away?",
+  27: "Who has permission to sharpen you, and how do you usually respond when they do?",
+  28: "What would it look like to stop covering and start walking in mercy?",
+  29: "Where has fear of people been stronger than trust in the Lord?",
+  30: "Do you know your weaknesses well enough to ask God for the kind of provision that protects your soul?",
+  31: "After walking through Proverbs, what kind of wise life is God calling you to practice, not just admire?",
+};
+
 const ALL_BIBLE_BOOKS_SORTED = [
   "1 Chronicles","1 Corinthians","1 John","1 Kings","1 Peter",
   "1 Samuel","1 Thessalonians","1 Timothy","2 Chronicles",
@@ -1137,6 +1171,15 @@ RULES:
     return `What stands out to you most about ${normalizedTopic}?`;
   }
 
+  function getBibleStudyReflectionQuestion(bookName: string, chapterNum: number): string | null {
+    const normalizedBook = bookName.toLowerCase().trim();
+    if (normalizedBook === "proverbs") {
+      return WISDOM_OF_PROVERBS_REFLECTION_QUESTIONS[chapterNum] ?? null;
+    }
+
+    return null;
+  }
+
   // Get chapter summary from notes (generate if needed)
   async function getChapterSummary(bookName: string, chapterNum: number): Promise<string> {
     if (summaryLoadingRef.current) {
@@ -1390,7 +1433,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           window.dispatchEvent(new CustomEvent("bb:daily-task-progress-updated"));
         }
 
-        // Award +2 points first time only (chapter_notes_reviewed)
+        // Award points first time only (chapter_notes_reviewed)
         const { data: existingReviewed } = await supabase
           .from("master_actions")
           .select("id")
@@ -1407,7 +1450,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
             action_label: reviewOpenedLabel,
           });
           if (!insertErr) {
-            triggerPoints(2);
+            triggerPoints(5);
             setReviewDone(true);
             if (typeof window !== "undefined") {
               window.dispatchEvent(new CustomEvent("bb:daily-task-progress-updated"));
@@ -1563,7 +1606,9 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
     .join(" ");
 
   const chapterReflectionQuestion = useMemo(
-    () => buildChapterReflectionQuestion(bookDisplayName, chapter, chapterSummary),
+    () =>
+      getBibleStudyReflectionQuestion(bookDisplayName, chapter) ||
+      buildChapterReflectionQuestion(bookDisplayName, chapter, chapterSummary),
     [bookDisplayName, chapter, chapterSummary]
   );
 
@@ -1930,7 +1975,7 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
       console.log(`[MARK_FINISHED] Successfully marked ${book} chapter ${chapter} as done`);
 
       setIsCompleted(true);
-      triggerPoints(10);
+      triggerPoints(5);
       setIsSaving(false);
 
       // Trigger confetti animation
