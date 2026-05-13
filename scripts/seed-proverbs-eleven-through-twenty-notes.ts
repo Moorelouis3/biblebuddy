@@ -37,10 +37,10 @@ async function fetchKjvVerses(chapter: number) {
   const url = `https://bible-api.com/proverbs%20${chapter}?translation=kjv`;
   let response: Response | null = null;
 
-  for (let attempt = 1; attempt <= 4; attempt += 1) {
+  for (let attempt = 1; attempt <= 8; attempt += 1) {
     response = await fetch(url);
     if (response.ok || response.status !== 429) break;
-    await sleep(1500 * attempt);
+    await sleep(3000 * attempt);
   }
 
   if (!response) {
@@ -73,7 +73,7 @@ async function main() {
       chapter,
       notes_text: renderProverbsNotes(chapter, verses),
     });
-    await sleep(350);
+    await sleep(1200);
   }
 
   const { error } = await supabase.from("bible_notes").upsert(rows, { onConflict: "book,chapter" });

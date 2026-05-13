@@ -50,10 +50,11 @@ ${renderVerseBlock(versesForRange(verses, section.range))}
 
 ## ${section.heading}
 
-${section.body.join("\n\n")}`)
+${section.body.join("\n\n")}
+`)
   .join("\n\n")}
 
-## 💡 The Bigger Takeaway
+## 💡 The Big Lesson of Proverbs ${chapter}
 
 ${template.takeaway.join("\n\n")}
 `;
@@ -893,3 +894,4 @@ export const PROVERBS_TWENTY_ONE_TO_THIRTY_ONE_TEMPLATES: Record<number, Chapter
     ],
   },
 };
+
