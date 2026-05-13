@@ -1067,6 +1067,7 @@ type ReflectionRowProps = {
   setReplyText: (text: string) => void;
   submitting: boolean;
   autoReplyLoadingId: string | null;
+  canAutoReply: boolean;
   onDeleteReflection: (reflection: ReflectionEntry) => Promise<void>;
   onSaveEdit: (reflection: ReflectionEntry) => Promise<void>;
   onToggleLike: (reflection: ReflectionEntry) => Promise<void>;
@@ -1096,6 +1097,7 @@ function ReflectionRow({
   setReplyText,
   submitting,
   autoReplyLoadingId,
+  canAutoReply,
   onDeleteReflection,
   onSaveEdit,
   onToggleLike,
@@ -1132,6 +1134,7 @@ function ReflectionRow({
     setReplyText,
     submitting,
     autoReplyLoadingId,
+    canAutoReply,
     onDeleteReflection,
     onSaveEdit,
     onToggleLike,
@@ -1237,14 +1240,16 @@ function ReflectionRow({
             >
               Reply
             </button>
-          <button
-            type="button"
-            onClick={() => void onAutoReply(reflection)}
-            disabled={autoReplyLoadingId === reflection.id}
-            className="text-xs text-gray-400 hover:text-[#4a9b6f] font-semibold transition disabled:opacity-50"
-          >
-            {autoReplyLoadingId === reflection.id ? "Writing..." : "Auto Reply"}
-          </button>
+          {canAutoReply && (
+            <button
+              type="button"
+              onClick={() => void onAutoReply(reflection)}
+              disabled={autoReplyLoadingId === reflection.id}
+              className="text-xs text-gray-400 hover:text-[#4a9b6f] font-semibold transition disabled:opacity-50"
+            >
+              {autoReplyLoadingId === reflection.id ? "Writing..." : "Auto Reply"}
+            </button>
+          )}
           {canEditReflection && editingId !== reflection.id && (
             <button
               type="button"
@@ -1314,6 +1319,7 @@ function ReflectionSection({
   currentUserIsPaid,
   currentUserGroupRole,
   targetCommentId,
+  canAutoReply = false,
 }: {
   lesson: SeriesWeekLesson;
   userId: string;
@@ -1328,6 +1334,7 @@ function ReflectionSection({
   currentUserIsPaid: boolean;
   currentUserGroupRole: string | null;
   targetCommentId?: string | null;
+  canAutoReply?: boolean;
 }) {
   const [text, setText] = useState("");
   const [replyText, setReplyText] = useState("");
@@ -1606,6 +1613,7 @@ function ReflectionSection({
   }
 
   async function handleAutoReply(reflection: ReflectionEntry) {
+    if (!canAutoReply) return;
     if (autoReplyLoadingId) return;
     setAutoReplyLoadingId(reflection.id);
     setReplyingToId(reflection.id);
@@ -1648,6 +1656,7 @@ function ReflectionSection({
     setReplyText,
     submitting,
     autoReplyLoadingId,
+    canAutoReply,
     onDeleteReflection: handleDeleteReflection,
     onSaveEdit: handleSaveReflectionEdit,
     onToggleLike: handleToggleLike,
@@ -1836,6 +1845,7 @@ export default function WeekLessonPage({
 
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const [displayName, setDisplayName] = useState("");
   const [profileImageUrl, setProfileImageUrl] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState(false);
@@ -2000,6 +2010,7 @@ export default function WeekLessonPage({
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) { router.push("/login"); return; }
       setUserId(user.id);
+      setUserEmail(user.email ?? null);
 
       const [memberRes, groupRes, seriesRes, profileRes] = await Promise.all([
         supabase.from("group_members").select("role").eq("group_id", groupId).eq("user_id", user.id).maybeSingle(),
@@ -2785,6 +2796,7 @@ export default function WeekLessonPage({
               currentUserIsPaid={isPaid}
               currentUserGroupRole={currentGroupRole}
               targetCommentId={targetCommentId}
+              canAutoReply={(userEmail || "").toLowerCase() === "moorelouis3@gmail.com"}
             />
           </SectionCard>
         </div>

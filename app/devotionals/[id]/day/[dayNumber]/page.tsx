@@ -11,6 +11,7 @@ import ScrambledGamePlayer from "@/components/ScrambledGamePlayer";
 import TriviaGamePlayer from "@/components/TriviaGamePlayer";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { enrichPlainText } from "@/lib/bibleHighlighting";
+import { getProverbsChapterNotesFallback, withNotesTimeout } from "@/lib/proverbsChapterNotesFallback";
 import { supabase } from "@/lib/supabaseClient";
 import { getScrambledBook, getScrambledChapter } from "@/lib/scrambledGameData";
 import { getTriviaBook, getTriviaChapter } from "@/lib/triviaGameData";
@@ -578,42 +579,64 @@ export default function ProverbsStudyDayPage() {
   }
 
   async function openNotes() {
-    if (!userId || !day) return;
+    if (!day) return;
     setShowNotes(true);
     setNotesLoading(true);
-    const label = notesActionLabel(day.bible_reading_book, day.bible_reading_chapter);
-    await supabase.from("master_actions").insert({
-      user_id: userId,
-      action_type: ACTION_TYPE.chapter_notes_viewed,
-      action_label: label,
-    });
-    const { data: existingReviewed } = await supabase
-      .from("master_actions")
-      .select("id")
-      .eq("user_id", userId)
-      .eq("action_type", ACTION_TYPE.chapter_notes_reviewed)
-      .eq("action_label", label)
-      .limit(1)
-      .maybeSingle();
+    const fallbackNotes = getProverbsChapterNotesFallback(day.bible_reading_book, day.bible_reading_chapter);
+    if (fallbackNotes) setNotesText(fallbackNotes);
 
-    if (!existingReviewed) {
-      const { error } = await supabase.from("master_actions").insert({
+    try {
+      const { data, error } = await withNotesTimeout(
+        supabase
+          .from("bible_notes")
+          .select("notes_text")
+          .eq("book", day.bible_reading_book.toLowerCase().trim())
+          .eq("chapter", day.bible_reading_chapter)
+          .maybeSingle(),
+      );
+
+      if (error) throw error;
+      setNotesText(data?.notes_text || fallbackNotes || "No notes are available for this chapter yet.");
+    } catch (error) {
+      console.error("[DEVOTIONAL_DAY] Could not load chapter notes:", error);
+      setNotesText(fallbackNotes || "No notes are available for this chapter yet.");
+    } finally {
+      setNotesLoading(false);
+    }
+
+    if (!userId) return;
+    const label = notesActionLabel(day.bible_reading_book, day.bible_reading_chapter);
+
+    try {
+      await supabase.from("master_actions").insert({
         user_id: userId,
-        action_type: ACTION_TYPE.chapter_notes_reviewed,
+        action_type: ACTION_TYPE.chapter_notes_viewed,
         action_label: label,
       });
-      if (!error) triggerPoints(5);
+
+      const { data: existingReviewed } = await supabase
+        .from("master_actions")
+        .select("id")
+        .eq("user_id", userId)
+        .eq("action_type", ACTION_TYPE.chapter_notes_reviewed)
+        .eq("action_label", label)
+        .limit(1)
+        .maybeSingle();
+
+      if (!existingReviewed) {
+        const { error } = await supabase.from("master_actions").insert({
+          user_id: userId,
+          action_type: ACTION_TYPE.chapter_notes_reviewed,
+          action_label: label,
+        });
+        if (!error) triggerPoints(5);
+      }
+
+      setNotesDone(true);
+      await loadFinishers(day);
+    } catch (error) {
+      console.error("[DEVOTIONAL_DAY] Could not record notes progress:", error);
     }
-    const { data } = await supabase
-      .from("bible_notes")
-      .select("notes_text")
-      .eq("book", day.bible_reading_book.toLowerCase().trim())
-      .eq("chapter", day.bible_reading_chapter)
-      .maybeSingle();
-    setNotesText(data?.notes_text || "No notes are available for this chapter yet.");
-    setNotesLoading(false);
-    setNotesDone(true);
-    await loadFinishers(day);
   }
 
   async function markReflectionComplete() {

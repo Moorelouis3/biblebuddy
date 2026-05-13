@@ -5,6 +5,8 @@ import { createClient } from "@supabase/supabase-js";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const ADMIN_EMAIL = "moorelouis3@gmail.com";
+
 function stripHtml(html: string) {
   return html
     .replace(/<br\s*\/?>/gi, "\n")
@@ -53,6 +55,9 @@ export async function POST(request: NextRequest) {
   if (userError || !userData.user) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
+  if ((userData.user.email || "").toLowerCase() !== ADMIN_EMAIL) {
+    return NextResponse.json({ error: "Auto replies are only available to Louis." }, { status: 403 });
+  }
 
   const openai = new OpenAI({ apiKey: openAiKey });
 
@@ -68,6 +73,7 @@ export async function POST(request: NextRequest) {
             "Reply directly to the person's comment while staying aligned with the original topic when context is provided. " +
             "Keep it warm, specific, thoughtful, and human. " +
             "Use 1 to 3 short sentences. " +
+            "Do not start with the person's name. Avoid using their name unless it is truly needed for clarity. " +
             "Do not mention AI. Do not use hashtags. Do not sound robotic, preachy, or overly formal. " +
             "Return only the reply text.",
         },
@@ -93,4 +99,3 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Could not generate a reply draft right now." }, { status: 500 });
   }
 }
-

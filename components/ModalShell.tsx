@@ -80,7 +80,7 @@ export function ModalShell({
       onClick={closeOnBackdrop ? onClose : undefined}
     >
       <div
-        className={closing ? "modal-panel-out" : "modal-panel-in"}
+        className={`flex w-full justify-center ${closing ? "modal-panel-out" : "modal-panel-in"}`}
         onClick={(e) => e.stopPropagation()}
       >
         {children}

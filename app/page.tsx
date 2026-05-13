@@ -222,7 +222,7 @@ export default function LandingPage() {
           <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-[#d9ecff] ring-1 ring-white/15 md:h-10 md:w-10">
             <Image src="/louis/louis-wave.png" alt="Bible Buddy Logo" width={36} height={36} className="h-9 w-9 object-contain" />
           </div>
-          <div className="text-lg font-black tracking-tight text-slate-950 md:text-2xl">Bible buddy</div>
+          <div className="text-lg font-black tracking-tight text-slate-950 md:text-2xl">Bible Buddy</div>
         </div>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-4">
@@ -240,7 +240,7 @@ export default function LandingPage() {
       </header>
 
       <main>
-        <section className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-7 px-4 pb-12 pt-3 sm:px-5 md:pb-16 md:pt-8 lg:min-h-[720px] lg:grid-cols-[0.86fr_1.14fr] lg:gap-10 lg:pt-12">
+        <section className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-6 px-4 pb-6 pt-3 sm:px-5 md:pb-8 md:pt-4 lg:min-h-[560px] lg:grid-cols-[0.86fr_1.14fr] lg:gap-8 lg:pt-6">
           <div className="mx-auto max-w-2xl text-center lg:mx-0 lg:text-left">
             <h1 className="text-[42px] font-black leading-[0.98] tracking-tight text-slate-950 sm:text-5xl md:text-7xl">
               Making Bible reading easier.
@@ -344,19 +344,19 @@ export default function LandingPage() {
           </button>
         </section>
 
-        <section className="px-4 py-16 sm:px-5 md:py-24">
+        <section className="px-4 py-8 sm:px-5 md:py-12">
           <div className="mx-auto max-w-5xl text-center">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#5f95bd] sm:text-sm sm:tracking-[0.22em]">The real problem</p>
-            <h2 className="mt-4 text-3xl font-black leading-tight text-slate-950 sm:text-4xl md:mt-6 md:text-6xl">
+            <h2 className="mt-3 text-3xl font-black leading-tight text-slate-950 sm:text-4xl md:mt-4 md:text-6xl">
               You want to read and understand the Bible,
               <span className="block text-slate-400">but you do not know how.</span>
             </h2>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-600 md:mt-8 md:text-lg md:leading-8">
+            <p className="mx-auto mt-3 max-w-3xl text-base leading-7 text-slate-600 md:mt-4 md:text-lg md:leading-8">
               You have tried reading plans. You have tried devotionals. You have tried willpower.
               But it is hard to stay consistent with the Bible when you do not know where to start or what you are reading.
             </p>
 
-            <div className="mt-9 space-y-4 md:mt-14 md:space-y-5">
+            <div className="mt-5 space-y-3 md:mt-7 md:space-y-4">
               {problemRows.map((row) => (
                 <div key={row.pain} className="grid gap-3 rounded-2xl border border-[#dbe7f6] bg-[#f8fbff] p-4 text-left shadow-sm md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-4 md:rounded-3xl md:p-7">
                   <div className="flex items-center gap-3 text-slate-700 md:gap-4">
@@ -374,21 +374,21 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="bg-transparent px-4 py-16 sm:px-5 md:py-24">
+        <section className="bg-transparent px-4 py-8 sm:px-5 md:py-12">
           <div className="mx-auto max-w-7xl">
             <div className="mx-auto max-w-4xl text-center">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-[#5f95bd] sm:text-sm sm:tracking-[0.22em]">The secret sauce</p>
-              <h2 className="mt-4 text-3xl font-black leading-tight text-slate-950 sm:text-4xl md:mt-6 md:text-6xl">
+              <h2 className="mt-3 text-3xl font-black leading-tight text-slate-950 sm:text-4xl md:mt-4 md:text-6xl">
                 Studying the Bible
                 <span className="block text-[#7BAFD4]">chapter by chapter.</span>
               </h2>
-              <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-600 md:mt-7 md:text-lg md:leading-8">
+              <p className="mx-auto mt-3 max-w-3xl text-base leading-7 text-slate-600 md:mt-4 md:text-lg md:leading-8">
                 Bible Buddy turns Bible reading into a clear rhythm that helps you understand Scripture and build consistency in God&apos;s Word:
                 preview the chapter, read it, study it, test what you learned, remember key words, and reflect on what God is showing you.
               </p>
             </div>
 
-            <div className="mt-9 grid gap-4 md:mt-14 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
+            <div className="mt-5 grid gap-4 md:mt-7 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
               {taskSteps.map((step) => (
                 <div key={step.title} className="rounded-2xl border border-[#dbe7f6] bg-white p-5 shadow-[0_14px_34px_rgba(42,88,125,0.1)] md:rounded-3xl md:p-6 md:shadow-[0_18px_46px_rgba(42,88,125,0.12)]">
                   <div className="flex items-center gap-3">
@@ -402,18 +402,18 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="bg-transparent px-4 py-16 sm:px-5 md:py-24">
-          <div className="mx-auto grid max-w-7xl gap-9 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-12">
+        <section className="bg-transparent px-4 py-8 sm:px-5 md:py-12">
+          <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-6">
             <div className="text-center lg:text-left">
               <h2 className="text-3xl font-black leading-tight text-slate-950 sm:text-4xl md:text-6xl">Bible study should feel alive, not like homework.</h2>
-              <p className="mt-5 text-base leading-7 text-slate-600 md:mt-6 md:text-lg md:leading-8">
+              <p className="mt-3 text-base leading-7 text-slate-600 md:mt-4 md:text-lg md:leading-8">
                 Bible Buddy keeps the serious part serious, but makes progress visible. You see your streak,
                 protect it with Grace Days, earn badges, level up, and always know the next chapter waiting for you.
               </p>
               <button
                 type="button"
                 onClick={() => setShowSignupModal(true)}
-                className="mt-7 w-full rounded-2xl bg-[#7BAFD4] px-7 py-3.5 text-base font-black text-[#05111f] shadow-[0_16px_44px_rgba(123,175,212,0.28)] transition hover:-translate-y-0.5 hover:bg-[#91c2df] sm:w-auto md:mt-9 md:px-8 md:py-4"
+                className="mt-4 w-full rounded-2xl bg-[#7BAFD4] px-7 py-3.5 text-base font-black text-[#05111f] shadow-[0_16px_44px_rgba(123,175,212,0.28)] transition hover:-translate-y-0.5 hover:bg-[#91c2df] sm:w-auto md:mt-5 md:px-8 md:py-4"
               >
                 Start Your Bible Study <span className="ml-2" aria-hidden="true">→</span>
               </button>
@@ -457,7 +457,7 @@ export default function LandingPage() {
                   })}
                 </div>
 
-                <div className="mt-5 space-y-3 md:mt-6 md:space-y-4">
+                <div className="mt-4 space-y-3 md:mt-4 md:space-y-4">
                   {[
                     ["Compete with yourself", "Your progress bar moves as you finish each chapter study."],
                     ["Celebrate small wins", "Task animations, badges, and chapter completion keep momentum visible."],

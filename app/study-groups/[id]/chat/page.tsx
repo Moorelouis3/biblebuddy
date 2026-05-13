@@ -769,6 +769,7 @@ function GroupCommentSection({
   userProfileImage,
   currentUserRole,
   currentUserBadge,
+  canAutoReply = false,
   onCountChange,
   targetCommentId,
   mentionItems = [],
@@ -780,6 +781,7 @@ function GroupCommentSection({
   userProfileImage: string | null;
   currentUserRole: string | null;
   currentUserBadge: string | null;
+  canAutoReply?: boolean;
   onCountChange: (delta: number) => void;
   targetCommentId?: string | null;
   mentionItems?: MentionCatalogItem[];
@@ -1060,6 +1062,7 @@ function GroupCommentSection({
   }
 
   async function handleAutoReply(comment: GroupFeedComment) {
+    if (!canAutoReply) return;
     if (autoReplyLoadingId) return;
     setAutoReplyLoadingId(comment.id);
     setSubmitError(null);
@@ -1082,6 +1085,7 @@ function GroupCommentSection({
   }
 
   async function handleAutoComment() {
+    if (!canAutoReply) return;
     if (autoCommentLoading || post.user_id === userId) return;
     setAutoCommentLoading(true);
     setSubmitError(null);
@@ -1310,14 +1314,16 @@ function GroupCommentSection({
             >
               Reply
             </button>
-            <button
-              type="button"
-              onClick={() => void handleAutoReply(comment)}
-              disabled={autoReplyLoadingId === comment.id}
-              className="text-[10px] text-gray-400 hover:text-[#4a9b6f] font-semibold transition disabled:opacity-50"
-            >
-              {autoReplyLoadingId === comment.id ? "Writing..." : "Auto Reply"}
-            </button>
+            {canAutoReply && (
+              <button
+                type="button"
+                onClick={() => void handleAutoReply(comment)}
+                disabled={autoReplyLoadingId === comment.id}
+                className="text-[10px] text-gray-400 hover:text-[#4a9b6f] font-semibold transition disabled:opacity-50"
+              >
+                {autoReplyLoadingId === comment.id ? "Writing..." : "Auto Reply"}
+              </button>
+            )}
             {canEditComment(comment) && editingCommentId !== comment.id && (
               <button
                 type="button"
@@ -1402,7 +1408,7 @@ function GroupCommentSection({
           rows={1}
           className="flex-1 text-xs px-3 py-2 border border-[#eadfce] rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[#d6b18b] bg-white"
         />
-        {post.user_id !== userId && (
+        {canAutoReply && post.user_id !== userId && (
           <button
             type="button"
             onClick={() => void handleAutoComment()}
@@ -4325,6 +4331,7 @@ export default function GroupChatPage() {
   }
 
   async function handleSeriesAutoReply(comment: SeriesComment) {
+    if (!isLouisAdmin) return;
     if (!group || !selectedPost || seriesAutoReplyLoadingId) return;
     setSeriesAutoReplyLoadingId(comment.id);
     setReplyingToId(comment.id);
@@ -4346,6 +4353,7 @@ export default function GroupChatPage() {
   }
 
   async function handleSeriesAutoComment() {
+    if (!isLouisAdmin) return;
     if (!group || !selectedPost || seriesAutoCommentLoading) return;
     setSeriesAutoCommentLoading(true);
 
@@ -4994,14 +5002,16 @@ export default function GroupChatPage() {
                               >
                                 Reply
                               </button>
-                              <button
-                                type="button"
-                                onClick={() => void handleSeriesAutoReply(comment)}
-                                disabled={seriesAutoReplyLoadingId === comment.id}
-                                className="text-xs text-gray-400 hover:text-[#4a9b6f] transition disabled:opacity-50"
-                              >
-                                {seriesAutoReplyLoadingId === comment.id ? "Writing..." : "Auto Reply"}
-                              </button>
+                              {isLouisAdmin && (
+                                <button
+                                  type="button"
+                                  onClick={() => void handleSeriesAutoReply(comment)}
+                                  disabled={seriesAutoReplyLoadingId === comment.id}
+                                  className="text-xs text-gray-400 hover:text-[#4a9b6f] transition disabled:opacity-50"
+                                >
+                                  {seriesAutoReplyLoadingId === comment.id ? "Writing..." : "Auto Reply"}
+                                </button>
+                              )}
                               {canEditSeriesComment(comment) && editingSeriesCommentId !== comment.id && (
                                 <button
                                   type="button"
@@ -6017,6 +6027,7 @@ export default function GroupChatPage() {
                     userProfileImage={userProfileImage}
                     currentUserRole={userRole}
                     currentUserBadge={userMemberBadge}
+                    canAutoReply={isLouisAdmin}
                     targetCommentId={deepLinkedCommentId}
                     mentionItems={mentionItems}
                     onCountChange={(delta) => {
@@ -6501,14 +6512,16 @@ export default function GroupChatPage() {
                 onChange={(e) => setNewCommentText(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleAddComment(null); } }}
               />
-              <button
-                type="button"
-                onClick={() => void handleSeriesAutoComment()}
-                disabled={seriesAutoCommentLoading}
-                className="flex-shrink-0 px-3 h-8 rounded-xl border border-gray-200 text-xs font-semibold text-gray-500 transition hover:text-[#4a9b6f] hover:border-[#cfe4d8] disabled:opacity-50 bg-white"
-              >
-                {seriesAutoCommentLoading ? "Writing..." : "Auto Comment"}
-              </button>
+              {isLouisAdmin && (
+                <button
+                  type="button"
+                  onClick={() => void handleSeriesAutoComment()}
+                  disabled={seriesAutoCommentLoading}
+                  className="flex-shrink-0 px-3 h-8 rounded-xl border border-gray-200 text-xs font-semibold text-gray-500 transition hover:text-[#4a9b6f] hover:border-[#cfe4d8] disabled:opacity-50 bg-white"
+                >
+                  {seriesAutoCommentLoading ? "Writing..." : "Auto Comment"}
+                </button>
+              )}
               <button
                 onClick={() => handleAddComment(null)}
                 disabled={!newCommentText.trim() || submittingComment}

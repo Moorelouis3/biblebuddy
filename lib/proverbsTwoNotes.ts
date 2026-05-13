@@ -1,7 +1,5 @@
 export const PROVERBS_TWO_NOTES = `# 🔍 Searching for Wisdom Like Treasure
 
-![Open Bible on Proverbs](/WisdomofProverbs.png)
-
 Proverbs 2 is about pursuit.
 
 Proverbs 1 introduced wisdom.

@@ -9,8 +9,10 @@ import { supabase } from "./supabaseClient";
 import { ACTION_TYPE } from "./actionTypes";
 import { getBibleBuddyLocalDayKey } from "./louisDailyFlow";
 
-// In-memory lock to prevent concurrent calls racing past the localStorage check
-const inFlight = new Set<string>();
+// In-memory lock to prevent concurrent calls racing past the localStorage check.
+// Concurrent callers share the same promise so streak syncs can wait for today's
+// login write instead of reading yesterday's streak.
+const inFlight = new Map<string, Promise<boolean>>();
 
 function shiftDayKey(dayKey: string, days: number) {
   const [year, month, day] = dayKey.split("-").map(Number);
@@ -40,7 +42,13 @@ function setGraceDayLocalEvent(userId: string, key: string, value: unknown) {
  * @returns true if activity was logged, false if it was already logged today
  */
 export async function trackUserActivity(userId: string): Promise<boolean> {
-  try {
+  const existingRun = inFlight.get(userId);
+  if (existingRun) {
+    return existingRun;
+  }
+
+  const run = (async (): Promise<boolean> => {
+    try {
     // Check if we've already logged activity for this user in this session
     const sessionKey = `activity_logged_${userId}`;
     const today = getBibleBuddyLocalDayKey();
@@ -51,12 +59,6 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
         return false;
       }
     }
-
-    // Prevent concurrent calls from both passing the check above
-    if (inFlight.has(userId)) {
-      return false;
-    }
-    inFlight.add(userId);
 
     // Claim the slot in localStorage immediately before any await
     if (typeof window !== "undefined") {
@@ -86,7 +88,6 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
 
     if (currentStatsError) {
       console.error("[TRACK_ACTIVITY] Error loading profile stats:", currentStatsError);
-      inFlight.delete(userId);
       return false;
     }
 
@@ -96,7 +97,6 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
     const shouldLog = !lastActiveDate || lastActiveDate !== today;
 
     if (!shouldLog) {
-      inFlight.delete(userId);
       return false;
     }
 
@@ -114,7 +114,6 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
           graceDays: currentGraceDays,
           missedDays,
         });
-        inFlight.delete(userId);
         return false;
       }
     }
@@ -214,7 +213,6 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
 
     if (statsError) {
       console.error("[TRACK_ACTIVITY] Error updating profile_stats:", statsError);
-      inFlight.delete(userId);
       return false;
     }
 
@@ -226,13 +224,17 @@ export async function trackUserActivity(userId: string): Promise<boolean> {
       });
     }
 
-    inFlight.delete(userId);
     console.log(`[TRACK_ACTIVITY] Successfully tracked activity for user ${userId} on ${today}`);
     return true;
-  } catch (err) {
-    console.error("[TRACK_ACTIVITY] Error in trackUserActivity:", err);
-    inFlight.delete(userId);
-    return false;
-  }
+    } catch (err) {
+      console.error("[TRACK_ACTIVITY] Error in trackUserActivity:", err);
+      return false;
+    } finally {
+      inFlight.delete(userId);
+    }
+  })();
+
+  inFlight.set(userId, run);
+  return run;
 }
 

@@ -66,8 +66,9 @@ function urlBase64ToUint8Array(base64String: string) {
 }
 
 async function runBackgroundSessionSync(currentUserId: string) {
+  await trackUserActivity(currentUserId);
+
   const tasks: Promise<unknown>[] = [
-    trackUserActivity(currentUserId),
     recalculateTotalActions(currentUserId),
     syncCurrentStreakToProfileStats(currentUserId),
   ];

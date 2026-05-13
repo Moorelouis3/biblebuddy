@@ -909,6 +909,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
   }
 
   async function handleAutoReply(comment: FeedComment) {
+    if (!currentUserIsAdmin) return;
     if (autoReplyLoadingId) return;
     setAutoReplyLoadingId(comment.id);
     setReplyingTo(comment.id);
@@ -929,6 +930,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
   }
 
   async function handleAutoComment() {
+    if (!currentUserIsAdmin) return;
     if (autoCommentLoading || postUserId === myId) return;
     setAutoCommentLoading(true);
 
@@ -1021,7 +1023,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
                 Reply
               </button>
             )}
-            {!indent && (
+            {!indent && currentUserIsAdmin && (
               <button
                 type="button"
                 onClick={() => void handleAutoReply(comment)}
@@ -1117,7 +1119,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
             }
           }}
         />
-        {postUserId !== myId && (
+        {currentUserIsAdmin && postUserId !== myId && (
           <button
             type="button"
             onClick={() => void handleAutoComment()}

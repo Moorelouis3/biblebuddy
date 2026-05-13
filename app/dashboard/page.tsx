@@ -44,12 +44,13 @@ import {
 } from "../../lib/featureTours";
 import { LEVEL_DEFINITIONS, calculateWeightedPoints, getLevelInfoFromPoints } from "../../lib/levelSystem";
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
+import { trackUserActivity } from "../../lib/trackUserActivity";
 
 const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
 const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
 const JESSICA_BONUS_POPUP_KEY = "bb:bonus-popup:jessica-1000:v1";
 const ENABLE_DAILY_DASHBOARD_WELCOME_FLOW = true;
-const DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS = 2 * 60 * 60 * 1000;
+const DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS = 4 * 60 * 60 * 1000;
 
 const MATTHEW_CHAPTERS = 28;
 const TOTAL_ITEMS = MATTHEW_CHAPTERS + 1; // overview + 28 chapters
@@ -135,6 +136,25 @@ function getLocalBadgeAwardKey(userId: string, badgeId: string) {
   return `bb:badge-awarded:${userId}:${badgeId}`;
 }
 
+function getPendingBadgeQueueKey(userId: string) {
+  return `bb:pending-badge-queue:${userId}`;
+}
+
+function readPendingBadgeQueue(userId: string): BadgeProgress[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(getPendingBadgeQueueKey(userId)) || "[]");
+    return Array.isArray(parsed) ? parsed.filter((badge) => badge?.id && badge?.title) as BadgeProgress[] : [];
+  } catch {
+    return [];
+  }
+}
+
+function writePendingBadgeQueue(userId: string, badges: BadgeProgress[]) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(getPendingBadgeQueueKey(userId), JSON.stringify(badges));
+}
+
 function getAwardedBadgeId(actionLabel: unknown) {
   if (typeof actionLabel !== "string") return null;
   return actionLabel.match(/^badge_earned:([^:]+):\d+$/)?.[1] ?? null;
@@ -144,6 +164,32 @@ function getBadgeBonusPoints(actionLabel: unknown) {
   if (typeof actionLabel !== "string") return 0;
   const match = actionLabel.match(/^badge_earned:[^:]+:(\d+)$/);
   return match ? Number(match[1]) || 0 : 0;
+}
+
+function getBadgeCompletionLine(description: string) {
+  const trimmed = description.trim().replace(/\.$/, "");
+  const replacements: Array<[RegExp, string]> = [
+    [/^Complete\s+/i, "You completed "],
+    [/^Read\s+/i, "You read "],
+    [/^Finish\s+/i, "You finished "],
+    [/^Review\s+/i, "You reviewed "],
+    [/^Post\s+/i, "You posted "],
+    [/^Show up\s+/i, "You showed up "],
+    [/^Return\s+/i, "You returned "],
+    [/^Reach\s+/i, "You reached "],
+    [/^Stay connected\s+/i, "You stayed connected "],
+    [/^Like\s+/i, "You liked "],
+    [/^Start\s+/i, "You started "],
+    [/^Earn\s+/i, "You earned "],
+  ];
+
+  for (const [pattern, replacement] of replacements) {
+    if (pattern.test(trimmed)) {
+      return `${trimmed.replace(pattern, replacement)}.`;
+    }
+  }
+
+  return trimmed ? `${trimmed}.` : "You completed this badge task.";
 }
 
 function clampBadgeProgress(current: number, target: number) {
@@ -618,6 +664,7 @@ export default function DashboardPage() {
   const [showVerseOfTheDayModal, setShowVerseOfTheDayModal] = useState(false);
   const [showStreakMotivationModal, setShowStreakMotivationModal] = useState(false);
   const [showStreakMotivationTaskPrompt, setShowStreakMotivationTaskPrompt] = useState(false);
+  const [streakMotivationModalMode, setStreakMotivationModalMode] = useState<"daily" | "checkin">("daily");
   const [louisCheckInContextLine, setLouisCheckInContextLine] = useState<string | null>(null);
   const [pendingDailyStreakSequence, setPendingDailyStreakSequence] = useState(false);
   const [showLouisDailyTasksModal, setShowLouisDailyTasksModal] = useState(false);
@@ -686,6 +733,10 @@ export default function DashboardPage() {
     return `bb:louis-dashboard-checkin-count:${currentUserId}:${dayKey}`;
   }
 
+  function getDashboardBadgeLastShownKey(currentUserId: string) {
+    return `bb:louis-dashboard-badge-last-shown:${currentUserId}`;
+  }
+
   function getStreakPointsShownKey(currentUserId: string, dayKey: string) {
     return `bb:streak-points-shown:${currentUserId}:${dayKey}`;
   }
@@ -694,100 +745,70 @@ export default function DashboardPage() {
     return `daily_streak_popup_shown:${dayKey}`;
   }
 
+  function getDailyStreakButtonText(streak: number) {
+    const options = ["Let's go", "I'm ready", "Keep going", "Let's do it"];
+    return options[Math.abs(Math.floor(streak)) % options.length];
+  }
+
+  function getBibleHabitStat(streak: number) {
+    const stats = [
+      "People who read Scripture weekly report lower stress and higher hope.",
+      "Bible engagement is linked with lower anxiety and loneliness.",
+      "Daily Bible readers are more likely to say God cares about their suffering.",
+      "Reading Scripture four or more days a week is linked with less loneliness.",
+      "Steady Bible reading helps people feel closer to God.",
+    ];
+    return stats[Math.abs(Math.floor(streak)) % stats.length];
+  }
+
   function getSwipeHintSeenKey(currentUserId: string) {
     return `bb:dashboard-swipe-hint-seen:${currentUserId}`;
   }
 
   function getStreakMotivation(streak: number) {
     const safeStreak = Math.max(0, Math.floor(streak));
-    const toFire = Math.max(0, 30 - safeStreak);
-
-    if (safeStreak >= 3650) {
-      return {
-        headline: `${safeStreak} day streak`,
-        body: `You have logged in to Bible Buddy for ${safeStreak} days straight. Ten years of showing up is not a phase anymore. It is a life rhythm.`,
-         followUp: "Do you want to continue your Bible Study?",
-      };
-    }
 
     if (safeStreak === 30) {
       return {
         headline: "You earned the fire badge",
-        body: "You have logged in to Bible Buddy for 30 days straight. The consistency flame is yours now. Let’s keep that fire pointed toward God’s Word.",
-         followUp: "Do you want to continue your Bible Study?",
+        body: getBibleHabitStat(safeStreak),
+        followUp: "Let's keep going.",
       };
     }
 
     if (safeStreak === 0) {
       return {
         headline: "A fresh start",
-        body: "You have logged in to Bible Buddy today. Every major thing starts with a Day 1, and this is a beautiful place to begin.",
-         followUp: "Do you want to continue your Bible Study?",
+        body: "You showed up today. That is the win.",
+        followUp: "Let's keep going.",
       };
     }
 
     const exactDayMessages: Record<number, string> = {
-      1: "Every major thing starts with a Day 1. Let’s make today count and start digging into God’s Word.",
-      2: "Two days means you came back. That matters because habits are built by returning.",
-      3: "Three days in a row is a real start. Keep giving Scripture a place in your day.",
-      4: "Four days is momentum. Keep showing up before the habit has to feel easy.",
-      5: "Five straight days is strong. You are already building the kind of rhythm that can carry you.",
-      6: "Six days in a row is not random anymore. Let’s keep the pattern alive today.",
-      7: "One full week. That is how consistency begins to feel real.",
-      14: "Two full weeks in a row is strong. Your Bible habit is starting to grow roots.",
-      21: "Three weeks in. This is the kind of steady showing up that starts reshaping ordinary days.",
-      29: "You are one day away from the consistency flame. Stay with it today.",
+      1: "Nice start. Day 1 counts.",
+      2: "You came back. That matters.",
+      3: "Three days in a row is a real start.",
+      4: "Four days is momentum.",
+      5: "Five days is strong. Keep it simple today.",
+      6: "Six days. You are almost at a full week.",
+      7: "One full week. Great job.",
+      14: "Two full weeks. That is steady.",
+      21: "Three weeks. You are building a real habit.",
+      29: "One more day until the fire badge.",
     };
 
     if (exactDayMessages[safeStreak]) {
       return {
         headline: `${safeStreak} day streak`,
-        body: `You have logged in to Bible Buddy for ${safeStreak} days straight. ${exactDayMessages[safeStreak]}`,
-         followUp: "Do you want to continue your Bible Study?",
+        body: exactDayMessages[safeStreak],
+        followUp: "Let's keep going.",
       };
     }
 
-    const dayMod = safeStreak % 6;
-    const phaseTemplates = (() => {
-      if (safeStreak < 10) {
-        return [
-          `You're on day ${safeStreak}, and that early momentum matters more than people think. Keep protecting it.`,
-          `${safeStreak} days in a row is a real start. The habit is young, but it is alive now.`,
-          `Day ${safeStreak} means you are stacking days now, not just having random good moments.`,
-        ];
-      }
-      if (safeStreak < 30) {
-        return [
-          `${safeStreak} days in a row is serious progress. You are only ${toFire} day${toFire === 1 ? "" : "s"} from the consistency flame.`,
-          `This is day ${safeStreak}, and your consistency is getting harder to ignore. The flame is coming into view now.`,
-          `${safeStreak} days deep means this habit is starting to feel real. Stay with it and the consistency flame gets closer fast.`,
-        ];
-      }
-      if (safeStreak < 100) {
-        return [
-          `${safeStreak} days in a row is strong. You already earned the flame, and now you are building beyond the badge.`,
-          `This is the kind of consistency that starts shaping a life slowly and deeply.`,
-          `At ${safeStreak} days, this is bigger than motivation. This is discipline turning into identity.`,
-        ];
-      }
-      if (safeStreak < 365) {
-        return [
-          `${safeStreak} days in a row is powerful. You are not just visiting the Word now. You are living near it.`,
-          `${safeStreak} days deep and still going. That kind of faithfulness changes a person slowly and for real.`,
-          `This streak is at ${safeStreak} days now. You have built something steady, and steady is strong.`,
-        ];
-      }
-      return [
-        `${safeStreak} days in a row is rare. You have built a long obedience kind of rhythm here.`,
-        `This is what faithfulness looks like over time.`,
-        `${safeStreak} days deep means the habit is no longer fragile. It is part of your life now.`,
-      ];
-    })();
-
     return {
       headline: `${safeStreak} day streak`,
-      body: `You have logged in to Bible Buddy for ${safeStreak} days straight. ${phaseTemplates[dayMod % phaseTemplates.length]}`,
-         followUp: "Do you want to continue your Bible Study?",
+      body: getBibleHabitStat(safeStreak),
+      followUp: "Let's keep going.",
     };
   }
 
@@ -857,6 +878,32 @@ export default function DashboardPage() {
       focusLine: `Let's continue with ${chapterText}. You have ${remainingCount} tasks left in this Bible Study chapter.`,
       previewLine: getChapterPreviewLine(readingTask),
       closingLine: "",
+    };
+  }
+
+  function buildCompactDashboardCheckIn(checklistData: ChecklistData | null, currentUserName: string) {
+    const firstName = currentUserName?.trim()?.split(/\s+/)[0] || "friend";
+    const readingTask = checklistData?.tasks.find((task) => task.kind === "reading") ?? null;
+    const nextTask = checklistData?.tasks.find((task) => !task.done && !task.disabled) ?? null;
+    const chapterLabel = readingTask?.chapterLabel || nextTask?.chapterLabel || "your Bible Study chapter";
+    const totalTasks = checklistData?.tasks.length || 6;
+    const completedCount = checklistData?.completedCount ?? 0;
+    const remainingCount = Math.max(totalTasks - completedCount, 0);
+
+    if (checklistData?.allDone || remainingCount === 0) {
+      return {
+        greeting: `Hey ${firstName},`,
+        mainLine: `${chapterLabel} is complete.`,
+        helperLine: "Start the next Bible Study chapter when you are ready.",
+      };
+    }
+
+    return {
+      greeting: `Hey ${firstName},`,
+      mainLine: `Let's continue with ${chapterLabel}.`,
+      helperLine: `You still have ${remainingCount} task${remainingCount === 1 ? "" : "s"} to finish this chapter.${
+        nextTask ? ` Next up: ${nextTask.title}.` : ""
+      }`,
     };
   }
 
@@ -1446,6 +1493,7 @@ export default function DashboardPage() {
         value: streakValue,
         tones: "bg-gray-100 border-gray-200",
         onClick: () => {
+          setStreakMotivationModalMode("daily");
           setShowStreakMotivationTaskPrompt(false);
           setShowStreakMotivationModal(true);
         },
@@ -1705,11 +1753,35 @@ export default function DashboardPage() {
     pendingDailyTaskCelebrationModal;
 
   useEffect(() => {
+    if (!userId || typeof window === "undefined") return;
+    const pendingBadges = readPendingBadgeQueue(userId);
+    if (pendingBadges.length > 0) {
+      setEarnedBadgeQueue((current) => {
+        const existingIds = new Set(current.map((badge) => badge.id));
+        const fresh = pendingBadges.filter((badge) => !existingIds.has(badge.id));
+        return fresh.length ? [...current, ...fresh] : current;
+      });
+    }
+  }, [userId]);
+
+  useEffect(() => {
     if (hasBlockingDashboardOverlay || activeEarnedBadge || earnedBadgeQueue.length === 0) return;
+    if (typeof window !== "undefined" && userId) {
+      const lastCheckInShownAt = Number(window.localStorage.getItem(getDashboardLouisCheckInLastShownKey(userId)) || "0");
+      const lastBadgeShownAt = Number(window.localStorage.getItem(getDashboardBadgeLastShownKey(userId)) || "0");
+      const lastPopupShownAt = Math.max(lastCheckInShownAt, lastBadgeShownAt);
+      if (lastPopupShownAt && Date.now() - lastPopupShownAt < DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS) {
+        return;
+      }
+    }
 
     const [nextBadge, ...remainingBadges] = earnedBadgeQueue;
     setEarnedBadgeQueue(remainingBadges);
     setActiveEarnedBadge(nextBadge);
+    if (typeof window !== "undefined" && userId) {
+      writePendingBadgeQueue(userId, remainingBadges);
+      window.localStorage.setItem(getDashboardBadgeLastShownKey(userId), String(Date.now()));
+    }
 
     window.setTimeout(() => {
       confetti({
@@ -1719,7 +1791,7 @@ export default function DashboardPage() {
         colors: ["#7BAFD4", "#f7c948", "#22c55e", "#ffffff"],
       });
     }, 240);
-  }, [activeEarnedBadge, earnedBadgeQueue, hasBlockingDashboardOverlay]);
+  }, [activeEarnedBadge, earnedBadgeQueue, hasBlockingDashboardOverlay, userId]);
 
   async function completeSwipeHint(options: { openExplore?: boolean } = {}) {
     if (isSavingSwipeHint) return;
@@ -1917,10 +1989,16 @@ export default function DashboardPage() {
             return { ok: false } as { ok: boolean; reset?: boolean; daily_credits?: number };
           });
 
-        const streakPromise = syncCurrentStreakToProfileStats(userId).catch((error) => {
-          console.error("[DASHBOARD] Failed to sync streak:", error);
-          return null;
-        });
+        const streakPromise = trackUserActivity(userId)
+          .catch((error) => {
+            console.error("[DASHBOARD] Failed to track daily login before streak sync:", error);
+            return false;
+          })
+          .then(() => syncCurrentStreakToProfileStats(userId))
+          .catch((error) => {
+            console.error("[DASHBOARD] Failed to sync streak:", error);
+            return null;
+          });
 
         const { data, error } = await supabase
           .from("profile_stats")
@@ -2081,7 +2159,10 @@ export default function DashboardPage() {
           manualBonusPoints,
         });
 
-        const levelData = getLevelInfoFromPoints(weightedPoints.totalPoints + uniqueEntityPoints);
+        const baseTotalPoints = weightedPoints.totalPoints + uniqueEntityPoints;
+        const creatorPointMultiplier = isOwnerDashboard ? 2 : 1;
+        const adjustedTotalPoints = baseTotalPoints * creatorPointMultiplier;
+        const levelData = getLevelInfoFromPoints(adjustedTotalPoints);
         const { level, levelName, identityText, encouragementText, levelStart, levelEnd, progressPercent, totalPoints, pointsToNextLevel } = levelData;
 
         // Select random motivational message for this level
@@ -2197,12 +2278,16 @@ export default function DashboardPage() {
               }
 
               setEarnedBadgeQueue((current) => {
-                const existingIds = new Set(current.map((badge) => badge.id));
+                const pendingBadges = readPendingBadgeQueue(userId);
+                const existingIds = new Set([...current, ...pendingBadges].map((badge) => badge.id));
                 const activeId = activeEarnedBadge?.id ?? null;
                 const freshBadges = newlyEarnedBadges.filter(
                   (badge) => badge.id !== activeId && !existingIds.has(badge.id)
                 );
-                return freshBadges.length ? [...current, ...freshBadges] : current;
+                if (!freshBadges.length) return current;
+                const nextPendingBadges = [...pendingBadges, ...freshBadges];
+                writePendingBadgeQueue(userId, nextPendingBadges);
+                return [...current, ...freshBadges];
               });
               document.dispatchEvent(new CustomEvent("bb:points"));
             };
@@ -2244,7 +2329,7 @@ export default function DashboardPage() {
     return () => {
       didCancel = true;
     };
-  }, [userId, levelRefreshTick]);
+  }, [userId, levelRefreshTick, isOwnerDashboard]);
 
   useEffect(() => {
     function handlePointsChange() {
@@ -2342,9 +2427,14 @@ export default function DashboardPage() {
     const currentUserId = userId;
     const currentStreakForPopup = profile.current_streak ?? 0;
     const nowMs = Date.now();
+    const seenKey = getStreakMotivationSeenKey(userId, dayKey);
+    const dailySequenceSeenKey = getDashboardDailySequenceSeenKey(userId, dayKey);
+    const dailyStreakAlreadySeenLocally =
+      window.localStorage.getItem(seenKey) === "1" ||
+      window.localStorage.getItem(dailySequenceSeenKey) === "1";
     const lastShownKey = getDashboardLouisCheckInLastShownKey(userId);
     const lastShownAt = Number(window.localStorage.getItem(lastShownKey) || "0");
-    if (lastShownAt && nowMs - lastShownAt < DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS) {
+    if (dailyStreakAlreadySeenLocally && lastShownAt && nowMs - lastShownAt < DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS) {
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
       setPendingDailyStreakSequence(false);
       dailyStreakSequenceCheckRef.current = null;
@@ -2355,8 +2445,6 @@ export default function DashboardPage() {
     dailyStreakSequenceCheckRef.current = checkKey;
 
     let cancelled = false;
-    const seenKey = getStreakMotivationSeenKey(userId, dayKey);
-    const dailySequenceSeenKey = getDashboardDailySequenceSeenKey(userId, dayKey);
     if (window.localStorage.getItem(`bb:required-study-selection-active:${userId}`) === "1") {
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
       setPendingDailyStreakSequence(false);
@@ -2419,7 +2507,8 @@ export default function DashboardPage() {
       if (cancelled) return;
 
       setLouisDailyTaskCycleStartedAt(cycleStartedAt);
-      setShowStreakMotivationTaskPrompt(true);
+      setStreakMotivationModalMode(alreadyAwardedDailyStreakPopup ? "checkin" : "daily");
+      setShowStreakMotivationTaskPrompt(!alreadyAwardedDailyStreakPopup);
       setShowStreakMotivationModal(true);
       const streakPointsShownKey = getStreakPointsShownKey(currentUserId, dayKey);
       if (!alreadyAwardedDailyStreakPopup && window.localStorage.getItem(streakPointsShownKey) !== "1") {
@@ -2644,6 +2733,7 @@ export default function DashboardPage() {
     }
 
     function handleOpenStreakInfo() {
+      setStreakMotivationModalMode("daily");
       setShowStreakMotivationTaskPrompt(false);
       setShowStreakMotivationModal(true);
     }
@@ -2882,7 +2972,9 @@ export default function DashboardPage() {
   ];
 
   const streakMotivation = getStreakMotivation(profile?.current_streak ?? 0);
+  const dailyStreakButtonText = getDailyStreakButtonText(profile?.current_streak ?? 0);
   const dailyStreakTaskIntro = buildDailyStreakTaskIntro(dailyChecklistData);
+  const compactDashboardCheckIn = buildCompactDashboardCheckIn(dailyChecklistData, userName);
 
   function scheduleChapterCompleteCelebration(journeyKey: string | null | undefined, options?: { force?: boolean }) {
     if (!userId || !journeyKey) return;
@@ -3099,6 +3191,7 @@ export default function DashboardPage() {
           exploreLinks={exploreLinks}
           onOpenLevelInfo={openLevelInfoModal}
           onOpenStreakInfo={() => {
+            setStreakMotivationModalMode("daily");
             setShowStreakMotivationTaskPrompt(false);
             setShowStreakMotivationModal(true);
           }}
@@ -3143,6 +3236,7 @@ export default function DashboardPage() {
           exploreLinks={exploreLinks}
           onOpenLevelInfo={openLevelInfoModal}
           onOpenStreakInfo={() => {
+            setStreakMotivationModalMode("daily");
             setShowStreakMotivationTaskPrompt(false);
             setShowStreakMotivationModal(true);
           }}
@@ -3301,14 +3395,43 @@ export default function DashboardPage() {
           }}
           backdropColor="bg-black/45"
         >
-        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[26px] border border-[#d7e4f7] bg-white shadow-2xl">
-          <div className="bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-6 py-6 text-center">
+        <div className="mx-4 w-full max-w-sm overflow-hidden rounded-[24px] border border-[#d7e4f7] bg-white shadow-2xl">
+          <div className="bg-gradient-to-br from-[#edf5ff] via-[#f8fbff] to-[#eef7ff] px-5 py-5 text-center">
             <div className="flex justify-center">
               <LouisAvatar mood={(profile?.current_streak ?? 0) >= 30 ? "stareyes" : "wave"} size={66} />
             </div>
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#5f86bd]">
-              Daily Streak
+              {streakMotivationModalMode === "daily" ? "Daily Streak" : "Bible Study Check-In"}
             </p>
+            {streakMotivationModalMode === "checkin" ? (
+              <>
+                <h2 className="mt-3 text-3xl font-bold text-[#21304f]">
+                  {compactDashboardCheckIn.greeting}
+                </h2>
+                <div className="mx-auto mt-4 max-w-sm space-y-2 text-center">
+                  <p className="text-base font-semibold leading-7 text-[#355487]">
+                    {compactDashboardCheckIn.mainLine}
+                  </p>
+                  <p className="text-sm leading-6 text-[#4f678e]">
+                    {compactDashboardCheckIn.helperLine}
+                  </p>
+                </div>
+                <div className="mt-6 flex items-center justify-center">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowStreakMotivationModal(false);
+                      setShowStreakMotivationTaskPrompt(false);
+                      setLouisCheckInContextLine(null);
+                    }}
+                    className="inline-flex min-w-[140px] justify-center rounded-full bg-[#7BAFD4] px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+                  >
+                    OK
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
               <h2 className="mt-2 flex items-center justify-center gap-2 text-3xl font-bold text-[#21304f]">
                 <span
                   className={`leading-none ${
@@ -3327,29 +3450,14 @@ export default function DashboardPage() {
                 </span>
                 <span>{streakMotivation.headline}</span>
               </h2>
-            <p className="mt-3 text-sm leading-6 text-[#4f678e]">
+            <p className="mt-3 text-sm font-semibold leading-6 text-[#4f678e]">
               {streakMotivation.body}
             </p>
-              {louisCheckInContextLine ? (
-                <p className="mt-4 rounded-2xl border border-[#d7e4f7] bg-white/80 px-4 py-3 text-sm font-semibold leading-6 text-[#355487]">
-                  {louisCheckInContextLine}
-                </p>
-              ) : null}
               {showStreakMotivationTaskPrompt && (
                 <>
-                  <p className="mt-4 text-sm font-semibold leading-6 text-[#355487]">
-                    {dailyStreakTaskIntro.focusLine}
+                  <p className="mx-auto mt-4 max-w-[17rem] text-sm font-black leading-6 text-[#355487]">
+                      {dailyStreakTaskIntro.focusLine}
                   </p>
-                  {dailyStreakTaskIntro.previewLine ? (
-                    <p className="mt-2 text-sm leading-6 text-[#4f678e]">
-                      {dailyStreakTaskIntro.previewLine}
-                    </p>
-                  ) : null}
-                  {dailyStreakTaskIntro.closingLine ? (
-                    <p className="mt-3 text-sm font-semibold text-[#355487]">
-                      {dailyStreakTaskIntro.closingLine}
-                    </p>
-                  ) : null}
                   <div className="mt-5 flex items-center justify-center">
                     <button
                       type="button"
@@ -3360,11 +3468,13 @@ export default function DashboardPage() {
                       }}
                       className="inline-flex min-w-[140px] justify-center rounded-full bg-[#7BAFD4] px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
                     >
-                      OK
+                      {dailyStreakButtonText}
                     </button>
                   </div>
                 </>
               )}
+              </>
+            )}
             </div>
           </div>
         </ModalShell>
@@ -3445,9 +3555,10 @@ export default function DashboardPage() {
       >
         {activeEarnedBadge ? (() => {
           const tone = BADGE_TONE_CLASSES[activeEarnedBadge.tone];
+          const completionLine = getBadgeCompletionLine(activeEarnedBadge.description);
 
           return (
-            <div className="mx-4 w-full max-w-md overflow-hidden rounded-[32px] border border-[#d7e4f7] bg-white shadow-2xl">
+            <div className="w-full max-w-md overflow-hidden rounded-[32px] border border-[#d7e4f7] bg-white shadow-2xl">
               <style>{`
                 @keyframes badge-color-pop {
                   0% { filter: grayscale(1); transform: scale(0.82) rotate(-4deg); opacity: 0.75; }
@@ -3472,15 +3583,11 @@ export default function DashboardPage() {
                 <div className="pointer-events-none absolute right-10 top-16 text-lg badge-float-spark" style={{ animationDelay: "0.35s" }}>✧</div>
                 <div className="pointer-events-none absolute bottom-16 left-12 text-lg badge-float-spark" style={{ animationDelay: "0.7s" }}>✦</div>
 
-                <div className="flex items-center justify-center gap-3">
+                <div className="flex items-center justify-center">
                   <LouisAvatar mood="hands" size={76} />
-                  <div className="rounded-full bg-[#eaf6ff] px-3 py-2 text-3xl shadow-sm" aria-hidden="true">
-                    👍
-                  </div>
                 </div>
 
-                <p className="mt-4 text-xs font-black uppercase tracking-[0.24em] text-[#5f86bd]">Badge unlocked</p>
-                <h2 className="mt-2 text-3xl font-black leading-tight text-[#1f2a44]">You earned a new badge!</h2>
+                <h2 className="mt-4 text-3xl font-black leading-tight text-[#1f2a44]">You earned a new badge!</h2>
 
                 <div className="mt-6 flex justify-center">
                   <div className={`badge-color-pop relative flex h-36 w-36 items-center justify-center overflow-hidden rounded-[36px] border-2 text-center ${tone.tile} ${tone.glow}`}>
@@ -3493,12 +3600,14 @@ export default function DashboardPage() {
                 </div>
 
                 <h3 className="mt-5 text-2xl font-black text-[#1f2a44]">{activeEarnedBadge.title}</h3>
-                <p className="mt-2 rounded-full bg-[#eaf7ff] px-4 py-2 text-sm font-black text-[#315f7d]">
-                  +{activeEarnedBadge.xp} XP
-                </p>
-                <p className="mx-auto mt-4 max-w-sm text-sm leading-6 text-[#536a8f]">
-                  {activeEarnedBadge.description}
-                </p>
+                <div className="mx-auto mt-4 flex max-w-sm items-start gap-3 rounded-2xl border border-emerald-100 bg-white/80 px-4 py-3 text-left shadow-sm">
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#19c463] text-xs font-black text-white">
+                    ✓
+                  </span>
+                  <p className="text-sm font-semibold leading-6 text-[#536a8f]">
+                    {completionLine}
+                  </p>
+                </div>
               </div>
 
               <div className="px-6 pb-6 pt-4">

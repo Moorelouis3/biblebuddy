@@ -164,11 +164,11 @@ export default function CommentSection({
         .maybeSingle();
       setCurrentUserBadge(profileRow?.member_badge ?? null);
       setCurrentUserProfileImage(profileRow?.profile_image_url ?? null);
-      setCurrentUserIsAdmin(email === ADMIN_EMAIL);
+      setCurrentUserIsAdmin((email || "").toLowerCase() === ADMIN_EMAIL);
     } catch {
       setCurrentUserBadge(null);
       setCurrentUserProfileImage(null);
-      setCurrentUserIsAdmin(email === ADMIN_EMAIL);
+      setCurrentUserIsAdmin((email || "").toLowerCase() === ADMIN_EMAIL);
     }
 
     setUser({ id: userId, name: displayName });
@@ -500,6 +500,7 @@ export default function CommentSection({
   };
 
   const handleAutoReply = async (comment: Comment) => {
+    if (!currentUserIsAdmin) return;
     if (autoReplyLoadingId) return;
     setAutoReplyLoadingId(comment.id);
     setError(null);

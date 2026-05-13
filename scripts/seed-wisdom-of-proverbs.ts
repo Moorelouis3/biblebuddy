@@ -996,7 +996,7 @@ function formatTakeawayCallout(text: string) {
   const formatted = formatTrailerParagraphs(text);
   return formatted
     .split("\n\n")
-    .map((paragraph) => `> **_${paragraph}_**`)
+    .map((paragraph) => `> **${paragraph}**`)
     .join("\n>\n");
 }
 
@@ -1074,12 +1074,35 @@ As you read Proverbs 5, pay attention to:
 
 The main lesson of Proverbs 5 is this:
 
-> **_Do not judge temptation by how it begins._**
+> **Do not judge temptation by how it begins.**
 >
-> **_Judge it by where it leads._**`,
+> **Judge it by where it leads.**`,
 };
 
 const studyIntroDetailsByChapter: Record<number, StudyIntroDetail> = {
+  1: {
+    opening:
+      "Proverbs 1 opens by helping you understand what kind of book you are stepping into. A lot of people have heard Proverbs called a book of wisdom, and that is true, but it is not a book of magic promises or guaranteed outcomes. A proverb is a short saying about life that teaches a pattern: the kind of road that usually leads toward wisdom, and the kind of road that usually leads toward pain.",
+    beginsWith: [
+      "Solomon introducing Proverbs as wisdom for real life",
+      "a reminder that Solomon was the son of David",
+      "the purpose of the book: wisdom, instruction, justice, judgment, and understanding",
+      "the foundation sentence: the fear of the Lord is the beginning of knowledge",
+      "two competing voices calling for the son's attention",
+    ],
+    matters:
+      "This chapter matters because it teaches you how to read the rest of Proverbs. Solomon is not handing his son fortune-cookie sayings. He is teaching him how to listen, how to fear the Lord, and how to recognize the voices that will try to shape his life before he knows what they are costing him.",
+    givesUs: ["🧠 wisdom", "👑 Solomon's voice", "🙏 fear of the Lord", "🚪 two paths", "📣 Wisdom calling in the streets"],
+    watchFor: [
+      "how Proverbs explains its purpose before giving short sayings",
+      "how the fear of the Lord becomes the foundation for the whole book",
+      "how sinners make the wrong path sound like belonging and gain",
+      "how Wisdom calls before consequences arrive",
+      "how the chapter asks whether a person will listen before life humbles them",
+    ],
+    takeaway:
+      "Proverbs 1 is about learning how to listen. It prepares you to read the book as wisdom from a father, a king, and a man who knew both the beauty of God's truth and the danger of a heart that stops listening.",
+  },
   2: {
     opening:
       "Proverbs 2 opens like Solomon is taking his son on a search before the city wakes up. Wisdom is not treated like something lying on the ground. It is treasure that has to be wanted, pursued, and stored in the heart before pressure arrives.",
@@ -1713,13 +1736,6 @@ const studyIntroDetailsByChapter: Record<number, StudyIntroDetail> = {
 };
 
 function buildProverbsStudyIntro(day: ChapterPlan) {
-  if (day.chapter === 1) {
-    return cinematicDevotionalTextByChapter[1];
-  }
-
-  const customIntro = customStudyIntroByChapter[day.chapter];
-  if (customIntro) return customIntro;
-
   const detail = studyIntroDetailsByChapter[day.chapter];
   if (!detail) return buildCinematicDevotionalText(day.chapter);
   const cinematicDepth = cinematicDepthByChapter[day.chapter]?.trim();
