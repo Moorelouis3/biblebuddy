@@ -5,20 +5,7 @@ dotenv.config({ path: resolve(process.cwd(), ".env.local") });
 
 import { createClient } from "@supabase/supabase-js";
 import { parseSeriesNotesToHTML } from "../lib/seriesNotesHtml";
-import { TESTING_OF_JOSEPH_WEEK_ONE_NOTES } from "../lib/testingOfJosephWeekOneNotes";
-import { TESTING_OF_JOSEPH_WEEK_TWO_NOTES } from "../lib/testingOfJosephWeekTwoNotes";
-import { TESTING_OF_JOSEPH_WEEK_THREE_NOTES } from "../lib/testingOfJosephWeekThreeNotes";
-import { TESTING_OF_JOSEPH_WEEK_FOUR_NOTES } from "../lib/testingOfJosephWeekFourNotes";
-import { TESTING_OF_JOSEPH_WEEK_FIVE_NOTES } from "../lib/testingOfJosephWeekFiveNotes";
-import { TESTING_OF_JOSEPH_WEEK_SIX_NOTES } from "../lib/testingOfJosephWeekSixNotes";
-import { TESTING_OF_JOSEPH_WEEK_SEVEN_NOTES } from "../lib/testingOfJosephWeekSevenNotes";
-import { TESTING_OF_JOSEPH_WEEK_EIGHT_NOTES } from "../lib/testingOfJosephWeekEightNotes";
-import { TESTING_OF_JOSEPH_WEEK_NINE_NOTES } from "../lib/testingOfJosephWeekNineNotes";
-import { TESTING_OF_JOSEPH_WEEK_TEN_NOTES } from "../lib/testingOfJosephWeekTenNotes";
-import { TESTING_OF_JOSEPH_WEEK_ELEVEN_NOTES } from "../lib/testingOfJosephWeekElevenNotes";
-import { TESTING_OF_JOSEPH_WEEK_TWELVE_NOTES } from "../lib/testingOfJosephWeekTwelveNotes";
-import { TESTING_OF_JOSEPH_WEEK_THIRTEEN_NOTES } from "../lib/testingOfJosephWeekThirteenNotes";
-import { TESTING_OF_JOSEPH_WEEK_FOURTEEN_NOTES } from "../lib/testingOfJosephWeekFourteenNotes";
+import { TESTING_OF_JOSEPH_DEEP_NOTES } from "../lib/testingOfJosephDeepNotes";
 
 const SUPABASE_URL = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -30,80 +17,76 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
-function normalizeNotes(value: string | string[]): string {
-  return Array.isArray(value) ? value.join("\n\n") : value;
-}
-
 const weekNotes = [
   {
     week_number: 1,
     chapter: 37,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_ONE_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[0],
   },
   {
     week_number: 2,
     chapter: 38,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_TWO_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[1],
   },
   {
     week_number: 3,
     chapter: 39,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_THREE_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[2],
   },
   {
     week_number: 4,
     chapter: 40,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_FOUR_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[3],
   },
   {
     week_number: 5,
     chapter: 41,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_FIVE_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[4],
   },
   {
     week_number: 6,
     chapter: 42,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_SIX_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[5],
   },
   {
     week_number: 7,
     chapter: 43,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_SEVEN_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[6],
   },
   {
     week_number: 8,
     chapter: 44,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_EIGHT_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[7],
   },
   {
     week_number: 9,
     chapter: 45,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_NINE_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[8],
   },
   {
     week_number: 10,
     chapter: 46,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_TEN_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[9],
   },
   {
     week_number: 11,
     chapter: 47,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_ELEVEN_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[10],
   },
   {
     week_number: 12,
     chapter: 48,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_TWELVE_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[11],
   },
   {
     week_number: 13,
     chapter: 49,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_THIRTEEN_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[12],
   },
   {
     week_number: 14,
     chapter: 50,
-    notes_text: normalizeNotes(TESTING_OF_JOSEPH_WEEK_FOURTEEN_NOTES),
+    notes_text: TESTING_OF_JOSEPH_DEEP_NOTES[13],
   },
 ];
 
