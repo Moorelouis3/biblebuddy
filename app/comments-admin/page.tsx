@@ -1,260 +1,430 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+
+import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 
-const SUBJECTS = [
-  { name: "Bible Insights", slug: "bible-insights", color: "bg-blue-50 border-l-4 border-blue-500", cardColor: "bg-blue-50", countColor: "text-blue-700" },
-  { name: "Bible Study Tips", slug: "bible-study-tips", color: "bg-green-50 border-l-4 border-green-500", cardColor: "bg-green-50", countColor: "text-green-700" },
-  { name: "Christian Foundations", slug: "christian-foundations", color: "bg-purple-50 border-l-4 border-purple-500", cardColor: "bg-purple-50", countColor: "text-purple-700" },
-  { name: "Verse Breakdowns", slug: "verse-breakdowns", color: "bg-yellow-50 border-l-4 border-yellow-500", cardColor: "bg-yellow-50", countColor: "text-yellow-700" },
-  { name: "Character Studies", slug: "character-studies", color: "bg-pink-50 border-l-4 border-pink-500", cardColor: "bg-pink-50", countColor: "text-pink-700" },
-  { name: "Christian History", slug: "christian-history", color: "bg-orange-50 border-l-4 border-orange-500", cardColor: "bg-orange-50", countColor: "text-orange-700" },
-];
+type CommentKind =
+  | "article_comment"
+  | "feed_post_comment"
+  | "group_feed_comment"
+  | "series_post_comment"
+  | "series_reflection";
 
-// Convert an article slug like "bible-insights/what-is-faith" into a readable title "What Is Faith"
-function slugToTitle(slug: string): string {
-  const parts = slug.split("/");
-  const last = parts[parts.length - 1];
-  return last
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+type AdminComment = {
+  id: string;
+  kind: CommentKind;
+  source: string;
+  sourceLabel: string;
+  href: string;
+  userId: string | null;
+  userName: string;
+  content: string;
+  createdAt: string;
+  parentId: string | null;
+  rootId: string | null;
+  isReply: boolean;
+  replyCount: number;
+  hasMyReply: boolean;
+};
+
+type CommentStats = {
+  total: number;
+  today: number;
+  myRepliesToday: number;
+  needsReply: number;
+  bySource: Record<string, number>;
+};
+
+const SOURCE_STYLES: Record<string, { dot: string; bg: string; label: string }> = {
+  "Articles": { dot: "bg-blue-500", bg: "bg-blue-50 text-blue-700 border-blue-100", label: "Articles" },
+  "Community Feed": { dot: "bg-emerald-500", bg: "bg-emerald-50 text-emerald-700 border-emerald-100", label: "Community" },
+  "Group Feed": { dot: "bg-amber-500", bg: "bg-amber-50 text-amber-800 border-amber-100", label: "Group Feed" },
+  "Bible Study Series": { dot: "bg-violet-500", bg: "bg-violet-50 text-violet-700 border-violet-100", label: "Bible Studies" },
+  "Chapter Reflections": { dot: "bg-rose-500", bg: "bg-rose-50 text-rose-700 border-rose-100", label: "Reflections" },
+};
+
+function formatTime(value: string) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return date.toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
 }
 
-// The slug is already the full path (e.g. "/bible-study-hub/bible-insights/what-is-faith")
-function slugToUrl(slug: string): string {
-  return slug;
-}
-
-// Get subject color class for a comment row
-function getCommentColor(slug: string): string {
-  const subject = SUBJECTS.find((s) => typeof slug === "string" && slug.includes(s.slug));
-  return subject ? subject.color : "bg-gray-50 border-l-4 border-gray-400";
+function kindLabel(kind: CommentKind) {
+  switch (kind) {
+    case "article_comment":
+      return "Article";
+    case "feed_post_comment":
+      return "Feed";
+    case "group_feed_comment":
+      return "Group";
+    case "series_post_comment":
+      return "Study";
+    case "series_reflection":
+      return "Reflection";
+    default:
+      return "Comment";
+  }
 }
 
 export default function CommentsAdminPage() {
-  const router = useRouter();
-  const [comments, setComments] = useState<any[]>([]);
-  const [counts, setCounts] = useState<{ [key: string]: number }>({});
+  const [comments, setComments] = useState<AdminComment[]>([]);
+  const [stats, setStats] = useState<CommentStats | null>(null);
   const [loading, setLoading] = useState(true);
-  const [selectedComment, setSelectedComment] = useState<any | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedSource, setSelectedSource] = useState("All");
+  const [selectedQueue, setSelectedQueue] = useState<"all" | "needsReply" | "mine" | "replies">("all");
+  const [search, setSearch] = useState("");
+  const [selectedComment, setSelectedComment] = useState<AdminComment | null>(null);
   const [replyText, setReplyText] = useState("");
-  const replyUsername = "Louis";
-  const [submittingReply, setSubmittingReply] = useState(false);
-  const [replySuccess, setReplySuccess] = useState(false);
-  const [selectedSubject, setSelectedSubject] = useState<string | null>(null);
-  const [adminUserId, setAdminUserId] = useState<string | null>(null);
+  const [postingReply, setPostingReply] = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchComments();
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (user) setAdminUserId(user.id);
-    });
-  }, []);
+  async function getToken() {
+    const { data } = await supabase.auth.getSession();
+    return data.session?.access_token || "";
+  }
 
-  async function fetchComments() {
+  async function loadComments() {
     setLoading(true);
-    const { data, error } = await supabase
-      .from("article_comments")
-      .select("*")
-      .order("created_at", { ascending: false });
+    setError(null);
+    const token = await getToken();
 
-    if (!error && data) {
-      setComments(data);
-      const grouped: { [key: string]: number } = {};
-      SUBJECTS.forEach((s) => (grouped[s.slug] = 0));
-      data.forEach((c: any) => {
-        SUBJECTS.forEach((s) => {
-          if (typeof c.article_slug === "string" && c.article_slug.includes(s.slug)) {
-            grouped[s.slug]++;
-          }
-        });
-      });
-      setCounts(grouped);
+    if (!token) {
+      setError("Sign in as an admin or moderator to view comments.");
+      setLoading(false);
+      return;
     }
+
+    const response = await fetch("/api/comments/admin?limit=500", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const payload = await response.json().catch(() => null);
+
+    if (!response.ok) {
+      setError(payload?.error || "Could not load comments.");
+      setLoading(false);
+      return;
+    }
+
+    setComments(payload.comments || []);
+    setStats(payload.stats || null);
     setLoading(false);
   }
 
-  async function submitReply() {
-    if (!replyText.trim() || !selectedComment) return;
-    setSubmittingReply(true);
-    const { error } = await supabase.from("article_comments").insert({
-      article_slug: selectedComment.article_slug,
-      user_id: adminUserId,
-      user_name: replyUsername,
-      content: replyText.trim(),
-      parent_id: selectedComment.id ?? null,
+  useEffect(() => {
+    void loadComments();
+  }, []);
+
+  const sources = useMemo(() => {
+    const names = new Set(comments.map((comment) => comment.source));
+    return ["All", ...Array.from(names)];
+  }, [comments]);
+
+  const filteredComments = useMemo(() => {
+    const needle = search.trim().toLowerCase();
+    return comments.filter((comment) => {
+      if (selectedSource !== "All" && comment.source !== selectedSource) return false;
+      if (selectedQueue === "needsReply" && (comment.hasMyReply || comment.userId === null)) return false;
+      if (selectedQueue === "mine" && !comment.hasMyReply) return false;
+      if (selectedQueue === "replies" && !comment.isReply) return false;
+      if (!needle) return true;
+      return [comment.userName, comment.content, comment.source, comment.sourceLabel]
+        .join(" ")
+        .toLowerCase()
+        .includes(needle);
     });
-    setSubmittingReply(false);
-    if (!error) {
-      setReplySuccess(true);
-      setReplyText("");
-      fetchComments();
-      setTimeout(() => setReplySuccess(false), 3000);
+  }, [comments, search, selectedQueue, selectedSource]);
+
+  const sourceCards = sources.filter((source) => source !== "All");
+
+  async function submitReply() {
+    if (!selectedComment || !replyText.trim()) return;
+    setPostingReply(true);
+    setStatusMessage(null);
+    const token = await getToken();
+    const response = await fetch("/api/comments/admin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        kind: selectedComment.kind,
+        targetId: selectedComment.id,
+        content: replyText.trim(),
+      }),
+    });
+    const payload = await response.json().catch(() => null);
+    setPostingReply(false);
+
+    if (!response.ok) {
+      setStatusMessage(payload?.error || "Could not post reply.");
+      return;
     }
+
+    setReplyText("");
+    setStatusMessage("Reply posted.");
+    await loadComments();
   }
 
-  const filteredComments = selectedSubject
-    ? comments.filter((c) => typeof c.article_slug === "string" && c.article_slug.includes(selectedSubject))
-    : comments;
+  async function deleteComment(comment: AdminComment) {
+    if (!window.confirm("Delete this comment and its replies?")) return;
+    setDeletingId(comment.id);
+    setStatusMessage(null);
+    const token = await getToken();
+    const response = await fetch("/api/comments/delete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ kind: comment.kind, commentId: comment.id }),
+    });
+    const payload = await response.json().catch(() => null);
+    setDeletingId(null);
+
+    if (!response.ok) {
+      setStatusMessage(payload?.error || "Could not delete comment.");
+      return;
+    }
+
+    setSelectedComment(null);
+    setStatusMessage("Comment deleted.");
+    await loadComments();
+  }
+
+  const metricCards = [
+    { label: "All comments", value: stats?.total ?? 0, tone: "bg-white" },
+    { label: "Today", value: stats?.today ?? 0, tone: "bg-[#f4faf5]" },
+    { label: "I replied today", value: stats?.myRepliesToday ?? 0, tone: "bg-[#f7f5ff]" },
+    { label: "Needs reply", value: stats?.needsReply ?? 0, tone: "bg-[#fff8ed]" },
+  ];
 
   return (
-    <div className="max-w-3xl mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-2">Comments Admin</h1>
-      <p className="text-gray-500 mb-8">All reader comments across Bible study articles.</p>
-
-      {/* Subject Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10">
-        {SUBJECTS.map((s) => (
+    <main className="min-h-screen bg-[#f6f8f3] px-4 py-6 text-gray-950 sm:px-6">
+      <div className="mx-auto max-w-7xl">
+        <header className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#6d8f57]">Moderator dashboard</p>
+            <h1 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">Comments Admin</h1>
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-gray-600">
+              Track public comments, replies, reflections, and study discussions from one action list.
+            </p>
+          </div>
           <button
-            key={s.slug}
             type="button"
-            onClick={() => setSelectedSubject(selectedSubject === s.slug ? null : s.slug)}
-            className={`rounded-xl p-4 text-left shadow-sm ring-1 transition-all ${s.cardColor} ${
-              selectedSubject === s.slug
-                ? "ring-2 ring-blue-500 shadow-md"
-                : "ring-black/5 hover:ring-black/10"
-            }`}
+            onClick={() => void loadComments()}
+            className="h-11 rounded-full bg-gray-950 px-5 text-sm font-black text-white shadow-sm transition hover:bg-gray-800"
           >
-            <div className={`text-3xl font-bold mb-1 ${s.countColor}`}>
-              {counts[s.slug] || 0}
+            Refresh
+          </button>
+        </header>
+
+        <section className="mb-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {metricCards.map((card) => (
+            <div key={card.label} className={`rounded-2xl border border-black/5 p-4 shadow-sm ${card.tone}`}>
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-gray-500">{card.label}</p>
+              <p className="mt-2 text-3xl font-black">{card.value}</p>
             </div>
-            <div className="text-sm font-medium text-gray-700">{s.name}</div>
-          </button>
-        ))}
-      </div>
+          ))}
+        </section>
 
-      {/* Comment List */}
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-bold">
-          {selectedSubject
-            ? SUBJECTS.find((s) => s.slug === selectedSubject)?.name ?? "Comments"
-            : "All Comments"}
-        </h2>
-        {selectedSubject && (
-          <button
-            onClick={() => setSelectedSubject(null)}
-            className="text-sm text-blue-600 hover:text-blue-700 font-medium"
-          >
-            Clear Filter
-          </button>
-        )}
-      </div>
-
-      {loading ? (
-        <div className="bg-white p-4 rounded-xl shadow text-center">
-          <p className="text-gray-500 text-sm">Loading comments...</p>
-        </div>
-      ) : filteredComments.length === 0 ? (
-        <div className="bg-white p-4 rounded-xl shadow text-center">
-          <p className="text-gray-500 text-sm">No comments yet.</p>
-        </div>
-      ) : (
-        <div className="bg-white border border-gray-200 rounded-xl shadow-sm">
-          <div className="max-h-[500px] overflow-y-auto p-4 space-y-2">
-            {filteredComments.map((c, i) => (
+        <section className="mb-5 grid gap-3 md:grid-cols-5">
+          {sourceCards.map((source) => {
+            const style = SOURCE_STYLES[source] || SOURCE_STYLES.Articles;
+            const active = selectedSource === source;
+            return (
               <button
-                key={i}
+                key={source}
                 type="button"
-                onClick={() => { setSelectedComment(c); setReplySuccess(false); setReplyText(""); }}
-                className={`w-full text-left p-3 rounded transition-opacity hover:opacity-90 ${getCommentColor(c.article_slug)}`}
+                onClick={() => setSelectedSource(active ? "All" : source)}
+                className={`rounded-2xl border p-4 text-left shadow-sm transition ${
+                  active ? "border-[#6d8f57] bg-white ring-2 ring-[#dbead1]" : "border-black/5 bg-white hover:border-[#c8d9bd]"
+                }`}
               >
-                <div className="flex items-start justify-between gap-2">
-                  <div className="flex-1 min-w-0">
-                    <span className="font-semibold text-sm text-gray-900">{c.user_name || "Anonymous"}</span>
-                    <span className="text-gray-500 text-sm"> on </span>
-                    <span className="font-medium text-sm text-blue-700">
-                      {slugToTitle(c.article_slug || "")}
-                    </span>
-                    {c.content && (
-                      <p className="text-sm text-gray-600 mt-1 truncate">{c.content}</p>
-                    )}
-                  </div>
-                  <span className="text-xs text-gray-400 whitespace-nowrap shrink-0">
-                    {new Date(c.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
-                  </span>
-                </div>
+                <span className={`inline-flex h-2.5 w-2.5 rounded-full ${style.dot}`} />
+                <p className="mt-3 text-lg font-black">{stats?.bySource?.[source] ?? 0}</p>
+                <p className="text-xs font-bold text-gray-500">{style.label}</p>
               </button>
-            ))}
-          </div>
-        </div>
-      )}
+            );
+          })}
+        </section>
 
-      {/* Comment Detail Modal */}
-      {selectedComment && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[85vh] overflow-y-auto">
-            <div className="p-6">
-              {/* Header */}
-              <div className="flex items-start justify-between mb-4">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_390px]">
+          <section className="rounded-3xl border border-black/5 bg-white shadow-sm">
+            <div className="border-b border-gray-100 p-4">
+              <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">
-                    {slugToTitle(selectedComment.article_slug || "")}
-                  </h3>
-                  <button
-                    onClick={() => router.push(slugToUrl(selectedComment.article_slug))}
-                    className="text-xs text-blue-600 hover:underline mt-0.5"
-                  >
-                    View article →
-                  </button>
+                  <h2 className="text-xl font-black">All Comments</h2>
+                  <p className="text-xs text-gray-500">{filteredComments.length} in the current queue</p>
                 </div>
-                <button
-                  onClick={() => setSelectedComment(null)}
-                  className="text-gray-400 hover:text-gray-600 text-2xl leading-none ml-4"
-                >
-                  ×
-                </button>
-              </div>
-
-              {/* Comment */}
-              <div className={`p-4 rounded-xl mb-5 ${getCommentColor(selectedComment.article_slug)}`}>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-sm text-gray-900">{selectedComment.user_name || "Anonymous"}</span>
-                  <span className="text-xs text-gray-500">
-                    {new Date(selectedComment.created_at).toLocaleString("en-US", {
-                      month: "short", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit",
-                    })}
-                  </span>
-                </div>
-                <p className="text-sm text-gray-800 leading-relaxed">
-                  {selectedComment.content || <span className="italic text-gray-400">No comment text</span>}
-                </p>
-              </div>
-
-              {/* Reply Box */}
-              <div>
-                <h4 className="text-sm font-semibold text-gray-700 mb-2">Reply as admin</h4>
-                <textarea
-                  value={replyText}
-                  onChange={(e) => setReplyText(e.target.value)}
-                  placeholder="Write a reply..."
-                  rows={3}
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
-                {replySuccess && (
-                  <p className="text-green-600 text-sm mt-1">Reply posted!</p>
-                )}
-                <div className="flex gap-3 mt-3">
-                  <button
-                    onClick={submitReply}
-                    disabled={submittingReply || !replyText.trim()}
-                    className="flex-1 bg-blue-600 text-white text-sm font-semibold py-2 rounded-xl hover:bg-blue-700 transition disabled:opacity-50"
+                <div className="flex flex-col gap-2 sm:flex-row">
+                  <input
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)}
+                    placeholder="Search comments"
+                    className="h-10 rounded-full border border-gray-200 px-4 text-sm outline-none focus:border-[#6d8f57] focus:ring-2 focus:ring-[#dbead1]"
+                  />
+                  <select
+                    value={selectedQueue}
+                    onChange={(event) => setSelectedQueue(event.target.value as typeof selectedQueue)}
+                    className="h-10 rounded-full border border-gray-200 px-4 text-sm font-bold outline-none focus:border-[#6d8f57] focus:ring-2 focus:ring-[#dbead1]"
                   >
-                    {submittingReply ? "Posting..." : "Post Reply"}
-                  </button>
-                  <button
-                    onClick={() => setSelectedComment(null)}
-                    className="flex-1 bg-gray-100 text-gray-600 text-sm font-medium py-2 rounded-xl hover:bg-gray-200 transition"
-                  >
-                    Close
-                  </button>
+                    <option value="all">All comments</option>
+                    <option value="needsReply">Needs reply</option>
+                    <option value="mine">Replied by me</option>
+                    <option value="replies">Replies only</option>
+                  </select>
                 </div>
               </div>
             </div>
-          </div>
+
+            {loading ? (
+              <div className="p-10 text-center text-sm font-semibold text-gray-500">Loading comments...</div>
+            ) : error ? (
+              <div className="p-10 text-center text-sm font-semibold text-red-600">{error}</div>
+            ) : filteredComments.length === 0 ? (
+              <div className="p-10 text-center text-sm font-semibold text-gray-500">No comments found.</div>
+            ) : (
+              <div className="max-h-[680px] overflow-y-auto">
+                {filteredComments.map((comment) => {
+                  const style = SOURCE_STYLES[comment.source] || SOURCE_STYLES.Articles;
+                  const selected = selectedComment?.id === comment.id && selectedComment.kind === comment.kind;
+                  return (
+                    <button
+                      key={`${comment.kind}-${comment.id}`}
+                      type="button"
+                      onClick={() => {
+                        setSelectedComment(comment);
+                        setReplyText("");
+                        setStatusMessage(null);
+                      }}
+                      className={`w-full border-b border-gray-100 p-4 text-left transition hover:bg-[#fbfcf8] ${
+                        selected ? "bg-[#f4faf0]" : "bg-white"
+                      }`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <span className={`mt-1 h-2.5 w-2.5 flex-none rounded-full ${style.dot}`} />
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="font-black text-gray-950">{comment.userName || "Buddy"}</span>
+                            <span className={`rounded-full border px-2 py-0.5 text-[11px] font-black ${style.bg}`}>
+                              {kindLabel(comment.kind)}
+                            </span>
+                            {comment.isReply && (
+                              <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-bold text-gray-500">Reply</span>
+                            )}
+                            {comment.hasMyReply ? (
+                              <span className="rounded-full bg-green-50 px-2 py-0.5 text-[11px] font-bold text-green-700">Answered</span>
+                            ) : (
+                              <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-bold text-amber-700">Open</span>
+                            )}
+                          </div>
+                          <p className="mt-1 text-xs font-semibold text-gray-500">
+                            {comment.source} · {comment.sourceLabel} · {formatTime(comment.createdAt)}
+                          </p>
+                          <p className="mt-2 line-clamp-2 text-sm leading-6 text-gray-700">{comment.content || "No comment text"}</p>
+                        </div>
+                        <div className="hidden text-right text-xs font-bold text-gray-400 sm:block">
+                          {comment.replyCount} replies
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </section>
+
+          <aside className="rounded-3xl border border-black/5 bg-white shadow-sm lg:sticky lg:top-4 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto">
+            {!selectedComment ? (
+              <div className="p-6">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#6d8f57]">Action panel</p>
+                <h2 className="mt-2 text-2xl font-black">Pick a comment</h2>
+                <p className="mt-2 text-sm leading-6 text-gray-600">
+                  Select any row to reply, open its source, or remove it from the public conversation.
+                </p>
+                {statusMessage && <p className="mt-4 rounded-2xl bg-gray-50 p-3 text-sm font-semibold text-gray-700">{statusMessage}</p>}
+              </div>
+            ) : (
+              <div className="p-5">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.18em] text-[#6d8f57]">Selected comment</p>
+                    <h2 className="mt-2 text-xl font-black">{selectedComment.userName || "Buddy"}</h2>
+                    <p className="mt-1 text-xs font-semibold text-gray-500">{formatTime(selectedComment.createdAt)}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedComment(null)}
+                    className="h-9 w-9 rounded-full bg-gray-100 text-lg font-black text-gray-500 hover:bg-gray-200"
+                    aria-label="Close selected comment"
+                  >
+                    x
+                  </button>
+                </div>
+
+                <div className="mt-4 rounded-2xl border border-gray-100 bg-[#fbfcf8] p-4">
+                  <div className="mb-3 flex flex-wrap gap-2">
+                    <span className={`rounded-full border px-2 py-0.5 text-[11px] font-black ${(SOURCE_STYLES[selectedComment.source] || SOURCE_STYLES.Articles).bg}`}>
+                      {selectedComment.source}
+                    </span>
+                    <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-bold text-gray-600">
+                      {selectedComment.sourceLabel}
+                    </span>
+                  </div>
+                  <p className="whitespace-pre-wrap text-sm leading-7 text-gray-800">{selectedComment.content || "No comment text"}</p>
+                </div>
+
+                <div className="mt-4 grid grid-cols-2 gap-2">
+                  <Link
+                    href={selectedComment.href || "/comments-admin"}
+                    className="rounded-full border border-gray-200 px-4 py-2 text-center text-sm font-black text-gray-700 hover:bg-gray-50"
+                  >
+                    Open
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => void deleteComment(selectedComment)}
+                    disabled={deletingId === selectedComment.id}
+                    className="rounded-full bg-red-50 px-4 py-2 text-sm font-black text-red-700 hover:bg-red-100 disabled:opacity-60"
+                  >
+                    {deletingId === selectedComment.id ? "Deleting..." : "Delete"}
+                  </button>
+                </div>
+
+                <div className="mt-5">
+                  <label className="text-sm font-black text-gray-900">Reply</label>
+                  <textarea
+                    value={replyText}
+                    onChange={(event) => setReplyText(event.target.value)}
+                    rows={6}
+                    placeholder="Write a moderator reply..."
+                    className="mt-2 w-full resize-none rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm leading-6 outline-none focus:border-[#6d8f57] focus:ring-2 focus:ring-[#dbead1]"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => void submitReply()}
+                    disabled={postingReply || !replyText.trim()}
+                    className="mt-3 w-full rounded-full bg-[#6d8f57] px-5 py-3 text-sm font-black text-white shadow-sm hover:bg-[#5f804b] disabled:opacity-60"
+                  >
+                    {postingReply ? "Posting..." : "Post Reply"}
+                  </button>
+                </div>
+
+                {statusMessage && <p className="mt-4 rounded-2xl bg-gray-50 p-3 text-sm font-semibold text-gray-700">{statusMessage}</p>}
+              </div>
+            )}
+          </aside>
         </div>
-      )}
-    </div>
+      </div>
+    </main>
   );
 }

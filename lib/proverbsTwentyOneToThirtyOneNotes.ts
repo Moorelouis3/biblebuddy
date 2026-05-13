@@ -1,3 +1,9 @@
+import {
+  deepenProverbsIntro,
+  deepenProverbsSection,
+  deepenProverbsTakeaway,
+} from "./proverbsDeepStudyRenderer";
+
 type Verse = {
   verse: number;
   text: string;
@@ -35,9 +41,12 @@ export function renderProverbsTwentyOneToThirtyOneNotes(chapter: number, verses:
     throw new Error(`Missing Proverbs notes template for chapter ${chapter}.`);
   }
 
+  const intro = deepenProverbsIntro(chapter, template.title, template.intro);
+  const takeaway = deepenProverbsTakeaway(chapter, template.takeaway);
+
   return `# ${template.title}
 
-${template.intro.join("\n\n")}
+${intro.join("\n\n")}
 
 ## 📍 The Chapter Flow
 
@@ -50,13 +59,19 @@ ${renderVerseBlock(versesForRange(verses, section.range))}
 
 ## ${section.heading}
 
-${section.body.join("\n\n")}
+${deepenProverbsSection({
+  chapter,
+  title: template.title,
+  range: section.range,
+  heading: section.heading,
+  body: section.body,
+}).join("\n\n")}
 `)
   .join("\n\n")}
 
 ## 💡 The Big Lesson of Proverbs ${chapter}
 
-${template.takeaway.join("\n\n")}
+${takeaway.join("\n\n")}
 `;
 }
 

@@ -116,7 +116,7 @@ export default function DevotionalsPage() {
       return "/womenofthebible.png";
     }
     if (title === "The Wisdom of Proverbs") {
-      return "/WisdomofProverbs.png";
+      return "/Wisdomofproverbsnewcover.png";
     }
     if (title === "The Faith of Job") {
       return "/faithofjob.png";

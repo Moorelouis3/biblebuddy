@@ -76,7 +76,7 @@ const GOAL_OPTIONS: ChoiceOption[] = [
 const STARTER_STUDIES: StudyOption[] = [
   {
     title: "The Wisdom of Proverbs",
-    cover: "/WisdomofProverbs.png",
+    cover: "/Wisdomofproverbsnewcover.png",
     description:
       "Study Proverbs chapter by chapter and learn how wisdom shapes speech, decisions, relationships, money, discipline, and daily life.",
   },
@@ -117,7 +117,7 @@ const COVER_BY_STUDY_TITLE: Record<string, string> = {
   "The Testing of Joseph": "/newtesting.png",
   "The Disciples of Jesus": "/disciplesofjesusdevotional.png",
   "Women of the Bible": "/womenofthebible.png",
-  "The Wisdom of Proverbs": "/WisdomofProverbs.png",
+  "The Wisdom of Proverbs": "/Wisdomofproverbsnewcover.png",
   "The Faith of Job": "/faithofjob.png",
   "The Calling of Moses": "/callingofmosesdevotional.png",
   "The Heart of David": "/heartofdaviddevotional.png",

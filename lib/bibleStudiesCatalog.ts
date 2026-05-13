@@ -33,7 +33,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     title: "The Wisdom of Proverbs",
     subtitle: "31-week group study",
     totalWeeks: 31,
-    image: "/WisdomofProverbs.png",
+    image: "/Wisdomofproverbsnewcover.png",
     description:
       "A practical weekly Bible study through Proverbs focused on wisdom, speech, relationships, self-control, money, and daily decision making.",
   },
