@@ -590,32 +590,40 @@ export default function ScrambledGamePlayer({
     if (onClose) {
       return (
         <div className="bg-white px-4 py-6">
-          <div className="relative mx-auto max-w-xl rounded-3xl border border-[#b9daf0] bg-white p-8 text-center shadow-sm">
+          <div className="relative mx-auto max-w-xl overflow-hidden rounded-[32px] border border-[#d8e8dc] bg-gradient-to-br from-white via-[#f8fcf9] to-[#eef9f2] p-6 text-center shadow-xl shadow-[#d8e8dc]/45 sm:p-8">
             <button
               type="button"
               onClick={onClose}
-              className="absolute right-5 top-5 text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950"
+              className="absolute right-5 top-5 z-10 grid h-9 w-9 place-items-center rounded-full border border-[#d8e8dc] bg-white/95 text-2xl font-light leading-none text-gray-700 shadow-sm transition hover:bg-[#f5fbf7] hover:text-gray-950"
               aria-label="Close Scrambled results"
             >
               ×
             </button>
 
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#4f8fb7]">Scrambled Results</p>
-            <h1 className="mt-3 text-3xl font-black text-gray-900">Chapter Complete</h1>
-            <p className="mt-3 text-5xl font-black text-[#4f8fb7]">{scoredSolveCount}/{chapter.questions.length}</p>
-            <p className="mt-3 text-gray-700">
-              {bookName} {chapter.chapter} Scrambled finished.
-            </p>
+            <div className="mx-auto flex w-fit items-center gap-3 rounded-full border border-[#d8e8dc] bg-white px-4 py-2 shadow-sm">
+              <LouisAvatar mood={scoredSolveCount === chapter.questions.length ? "stareyes" : "wave"} size={52} />
+              <div className="text-left">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#4a9b6f]">Bible Buddy</p>
+                <p className="text-sm font-black text-gray-950">You finished Scrambled.</p>
+              </div>
+            </div>
+            <p className="mt-6 text-xs font-black uppercase tracking-[0.2em] text-[#4a9b6f]">Scrambled Results</p>
+            <h1 className="mt-3 text-3xl font-black text-gray-950">{bookName} {chapter.chapter}</h1>
+            <div className="mt-6 rounded-[26px] border border-[#d8e8dc] bg-white px-6 py-5 shadow-sm">
+              <p className="text-sm font-black uppercase tracking-[0.16em] text-[#4a9b6f]">Words Correct</p>
+              <p className="mt-2 text-5xl font-black text-[#2f7a52]">{scoredSolveCount}/{chapter.questions.length}</p>
+              <p className="mt-3 text-sm font-semibold leading-6 text-gray-700">{encouragement}</p>
+            </div>
             {earnedSolveCount > 0 ? (
-              <p className="mt-3 text-sm font-semibold text-emerald-700">
+              <p className="mt-4 rounded-2xl bg-[#eaf7ee] px-4 py-3 text-sm font-black text-[#2f7a52]">
                 You earned +{earnedSolveCount} points for new solved words.
               </p>
             ) : completedSolveCount > scoredSolveCount ? (
-              <p className="mt-3 text-sm text-gray-600">
+              <p className="mt-4 rounded-2xl bg-white/80 px-4 py-3 text-sm font-semibold leading-6 text-gray-600">
                 Hints helped on this round, so those words counted for progress but not for points.
               </p>
             ) : (
-              <p className="mt-3 text-sm text-gray-600">
+              <p className="mt-4 rounded-2xl bg-white/80 px-4 py-3 text-sm font-semibold leading-6 text-gray-600">
                 No new points this run (you already earned points for these words before).
               </p>
             )}
@@ -626,32 +634,32 @@ export default function ScrambledGamePlayer({
 
     return (
       <div className="min-h-screen bg-[#f5f7fb] px-4 py-10">
-        <div className="mx-auto max-w-xl rounded-[32px] border border-[#d8e4fb] bg-white p-8 text-center shadow-sm">
-          <div className="mx-auto flex w-fit items-center gap-3 rounded-full bg-[#eef4ff] px-4 py-2">
-            <LouisAvatar mood="stareyes" size={46} />
-            <p className="text-sm font-semibold text-[#335ea8]">Louis says you finished this chapter.</p>
+        <div className="mx-auto max-w-xl overflow-hidden rounded-[32px] border border-[#d8e8dc] bg-gradient-to-br from-white via-[#f8fcf9] to-[#eef9f2] p-8 text-center shadow-xl shadow-[#d8e8dc]/40">
+          <div className="mx-auto flex w-fit items-center gap-3 rounded-full border border-[#d8e8dc] bg-white px-4 py-2 shadow-sm">
+            <LouisAvatar mood={scoredSolveCount === chapter.questions.length ? "stareyes" : "wave"} size={46} />
+            <p className="text-sm font-semibold text-[#2f7a52]">Bible Buddy says you finished this chapter.</p>
           </div>
 
-          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-[#5d7fc0]">Chapter Complete</p>
-          <h1 className="mt-3 text-3xl font-bold text-gray-900">{bookName} {chapter.chapter}</h1>
+          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-[#4a9b6f]">Chapter Complete</p>
+          <h1 className="mt-3 text-3xl font-bold text-gray-950">{bookName} {chapter.chapter}</h1>
           <p className="mt-3 text-sm leading-7 text-gray-600">
             You finished all {chapter.questions.length} scrambled prompts from this chapter.
           </p>
 
-          <div className="mt-8 rounded-[24px] border border-[#d8e4fb] bg-[#f6f9ff] px-6 py-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#426ab2]">Words correct</p>
-            <p className="mt-2 text-5xl font-bold text-[#1f4f9e]">{scoredSolveCount} / {chapter.questions.length}</p>
-            <p className="mt-3 text-sm text-[#496a9b]">{encouragement}</p>
+          <div className="mt-8 rounded-[24px] border border-[#d8e8dc] bg-white px-6 py-5 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#4a9b6f]">Words correct</p>
+            <p className="mt-2 text-5xl font-bold text-[#2f7a52]">{scoredSolveCount} / {chapter.questions.length}</p>
+            <p className="mt-3 text-sm font-semibold leading-6 text-gray-700">{encouragement}</p>
             {earnedSolveCount > 0 ? (
-              <p className="mt-3 text-sm font-semibold text-emerald-700">
+              <p className="mt-3 rounded-2xl bg-[#eaf7ee] px-4 py-3 text-sm font-black text-[#2f7a52]">
                 You earned +{earnedSolveCount} points for new solved words.
               </p>
             ) : completedSolveCount > scoredSolveCount ? (
-              <p className="mt-3 text-sm text-[#496a9b]">
+              <p className="mt-3 rounded-2xl bg-[#f6fbf8] px-4 py-3 text-sm font-semibold leading-6 text-gray-600">
                 Hints helped on this round, so those words counted for progress but not for points.
               </p>
             ) : (
-              <p className="mt-3 text-sm text-[#496a9b]">
+              <p className="mt-3 rounded-2xl bg-[#f6fbf8] px-4 py-3 text-sm font-semibold leading-6 text-gray-600">
                 No new points this run (you already earned points for these words before).
               </p>
             )}
@@ -873,7 +881,7 @@ export default function ScrambledGamePlayer({
               <p className="mt-3 text-sm font-medium text-[#c85252]">{pointNotice}</p>
             ) : null}
 
-            <div className="relative mt-5">
+            <div className="relative mt-4">
               {status === "correct" ? (
                 <div key={celebrateKey} className="pointer-events-none absolute inset-x-0 -top-5 z-10 h-24 overflow-hidden">
                   {confettiPieces.map((piece) => (
@@ -926,7 +934,7 @@ export default function ScrambledGamePlayer({
               </div>
             </div>
 
-            <div className="mt-5 grid grid-cols-5 gap-2 sm:grid-cols-10">
+            <div className="mt-3 grid grid-cols-5 gap-2 sm:grid-cols-10">
               {Array.from({ length: maxAnswerLength }).map((_, index) => {
                 const tile = bankLetters[index] ?? null;
 
@@ -947,7 +955,18 @@ export default function ScrambledGamePlayer({
               })}
             </div>
 
-            <div className="mt-5 flex flex-wrap items-center gap-3">
+            <div className="mt-3 text-sm leading-7">
+              {status === "correct" ? (
+                <div className="rounded-[24px] border border-[#d8e4fb] bg-[#f6f9ff] px-4 py-4">
+                  <p className="text-sm font-semibold text-gray-900">{question.reference}</p>
+                  <p className="mt-1 text-sm leading-7 text-gray-700">"{highlightedSourceLine}"</p>
+                </div>
+              ) : status === "incorrect" ? (
+                <p className="font-semibold text-[#9a4d4d]">Not quite. Try a different order, or let Louis reveal the next letter.</p>
+              ) : null}
+            </div>
+
+            <div className="mt-4 flex flex-wrap items-center gap-3">
               <button
                 type="button"
                 onClick={resetAttempt}
@@ -975,16 +994,6 @@ export default function ScrambledGamePlayer({
               ) : null}
             </div>
 
-            <div className="mt-4 min-h-[104px] text-sm leading-7">
-              {status === "correct" ? (
-                <div className="rounded-[24px] border border-[#d8e4fb] bg-[#f6f9ff] px-4 py-4">
-                  <p className="text-sm font-semibold text-gray-900">{question.reference}</p>
-                  <p className="mt-1 text-sm leading-7 text-gray-700">"{highlightedSourceLine}"</p>
-                </div>
-              ) : status === "incorrect" ? (
-                <p className="font-semibold text-[#9a4d4d]">Not quite. Try a different order, or let Louis reveal the next letter.</p>
-              ) : null}
-            </div>
           </div>
         </div>
       </div>

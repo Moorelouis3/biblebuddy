@@ -295,33 +295,50 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
   if (showResults) {
     const scrambledHref = `/bible-study-games/scrambled/${bookKey}/${chapter.chapter}`;
     const isEmbedded = Boolean(onClose);
+    const perfectScore = correctCount === questions.length;
+    const strongScore = correctCount >= Math.max(4, questions.length - 1);
+    const encouragement = perfectScore
+      ? "That was clean. You really paid attention to this chapter."
+      : strongScore
+        ? "Strong work. The chapter is starting to stick."
+        : correctCount >= Math.ceil(questions.length / 2)
+          ? "Good progress. Keep going and this chapter will get clearer."
+          : "You finished the round, and that still counts. Review it once more and the chapter will land better.";
     return (
-      <div className={`${isEmbedded ? "bg-white px-4 py-6" : "min-h-screen bg-gray-50 px-4 py-8"}`}>
-        <div className="relative mx-auto max-w-xl rounded-3xl border border-[#b9daf0] bg-white p-8 text-center shadow-sm">
+      <div className={`${isEmbedded ? "bg-white px-4 py-6" : "min-h-screen bg-[#f5f7fb] px-4 py-8"}`}>
+        <div className="relative mx-auto max-w-xl overflow-hidden rounded-[32px] border border-[#d8e8dc] bg-gradient-to-br from-white via-[#f8fcf9] to-[#eef9f2] p-6 text-center shadow-xl shadow-[#d8e8dc]/45 sm:p-8">
           {onClose ? (
             <button
               type="button"
               onClick={onClose}
-              className="absolute right-5 top-5 text-3xl font-light leading-none text-gray-700 transition hover:text-gray-950"
+              className="absolute right-5 top-5 z-10 grid h-9 w-9 place-items-center rounded-full border border-[#d8e8dc] bg-white/95 text-2xl font-light leading-none text-gray-700 shadow-sm transition hover:bg-[#f5fbf7] hover:text-gray-950"
               aria-label="Close trivia results"
             >
               ×
             </button>
           ) : null}
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-[#4f8fb7]">Trivia Results</p>
-          <h1 className="mt-3 text-3xl font-black text-gray-900">Chapter Complete</h1>
-          <p className="mt-3 text-5xl font-black text-[#4f8fb7]">
-            {correctCount}/{questions.length}
-          </p>
-          <p className="mt-3 text-gray-700">
-            {bookName} {chapter.chapter} trivia finished.
-          </p>
+          <div className="mx-auto flex w-fit items-center gap-3 rounded-full border border-[#d8e8dc] bg-white px-4 py-2 shadow-sm">
+            <LouisAvatar mood={perfectScore ? "stareyes" : "wave"} size={52} />
+            <div className="text-left">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#4a9b6f]">Bible Buddy</p>
+              <p className="text-sm font-black text-gray-950">{perfectScore ? "Perfect round." : "Nice work finishing."}</p>
+            </div>
+          </div>
+          <p className="mt-6 text-xs font-black uppercase tracking-[0.2em] text-[#4a9b6f]">Trivia Results</p>
+          <h1 className="mt-3 text-3xl font-black text-gray-950">{bookName} {chapter.chapter}</h1>
+          <div className="mt-6 rounded-[26px] border border-[#d8e8dc] bg-white px-6 py-5 shadow-sm">
+            <p className="text-sm font-black uppercase tracking-[0.16em] text-[#4a9b6f]">Score</p>
+            <p className="mt-2 text-5xl font-black text-[#2f7a52]">
+              {correctCount}/{questions.length}
+            </p>
+            <p className="mt-3 text-sm font-semibold leading-6 text-gray-700">{encouragement}</p>
+          </div>
           {earnedCorrectCount > 0 ? (
-            <p className="mt-3 text-sm font-semibold text-emerald-700">
+            <p className="mt-4 rounded-2xl bg-[#eaf7ee] px-4 py-3 text-sm font-black text-[#2f7a52]">
               You earned +{earnedCorrectCount} points for new correct answers.
             </p>
           ) : (
-            <p className="mt-3 text-sm text-gray-600">
+            <p className="mt-4 rounded-2xl bg-white/80 px-4 py-3 text-sm font-semibold leading-6 text-gray-600">
               No new points this run (you already earned points for these questions before).
             </p>
           )}

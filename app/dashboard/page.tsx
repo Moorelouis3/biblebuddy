@@ -76,7 +76,9 @@ type BadgeProgressInput = {
   chapterCompletions: number;
   bibleStudyIntroCompletions: number;
   bibleStudyDayCompletions: number;
+  triviaAnswers: number;
   triviaCompletions: number;
+  scrambledWordsAnswered: number;
   scrambledCompletions: number;
   notesReviewed: number;
   commentsPosted: number;
@@ -287,9 +289,9 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Trivia",
       emoji: "🧠",
       tone: "pink",
-      current: input.triviaCompletions,
+      current: input.triviaAnswers,
       target: 1,
-      description: "Finish your first trivia round and check what is sticking.",
+      description: "Answer your first trivia question and check what is sticking.",
     }),
     makeBadge({
       id: "word-lock",
@@ -297,9 +299,9 @@ function buildBadgeProgress(input: BadgeProgressInput): BadgeProgress[] {
       category: "Scrambled",
       emoji: "🔐",
       tone: "purple",
-      current: input.scrambledCompletions,
+      current: input.scrambledWordsAnswered,
       target: 1,
-      description: "Finish your first Scrambled round and lock a chapter word into memory.",
+      description: "Solve your first Scrambled word and lock a chapter word into memory.",
     }),
     makeBadge({
       id: "ink-and-heart",
@@ -2144,7 +2146,9 @@ export default function DashboardPage() {
         const bibleStudyIntroCompletions = countActions(ACTION_TYPE.devotional_day_completed);
         const chapterCompletions = countActions(ACTION_TYPE.chapter_completed, ACTION_TYPE.reading_plan_chapter_completed);
         const notesReviewed = countActions(ACTION_TYPE.chapter_notes_reviewed, ACTION_TYPE.chapter_notes_viewed);
+        const triviaAnswers = countActions(ACTION_TYPE.trivia_question_answered, ACTION_TYPE.trivia_question_correct);
         const triviaCompletions = countActions(ACTION_TYPE.trivia_chapter_completed);
+        const scrambledWordsAnswered = countActions(ACTION_TYPE.scrambled_word_answered);
         const scrambledCompletions = countActions(ACTION_TYPE.scrambled_chapter_completed);
         const tvVideosStarted = countActions(ACTION_TYPE.bible_buddy_tv_video_started, ACTION_TYPE.bible_buddy_tv_title_opened);
         const booksCompleted = countActions(ACTION_TYPE.book_completed);
@@ -2243,7 +2247,9 @@ export default function DashboardPage() {
             chapterCompletions,
             bibleStudyIntroCompletions,
             bibleStudyDayCompletions: bibleStudyIntroCompletions,
+            triviaAnswers,
             triviaCompletions,
+            scrambledWordsAnswered,
             scrambledCompletions,
             notesReviewed,
             commentsPosted: groupCommentCount + feedCommentCount,
@@ -3680,7 +3686,7 @@ export default function DashboardPage() {
                     onClick={() => setSelectedBadge(badge)}
                     className={`group relative flex min-h-[198px] flex-col items-center rounded-[28px] border px-3 py-4 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg sm:min-h-[220px] sm:px-4 ${
                       isEarned
-                        ? "border-[#b9ddf4] bg-gradient-to-br from-white via-[#fbfdff] to-[#eef7ff]"
+                        ? "border-[#9fe6b8] bg-gradient-to-br from-[#f3fff7] via-[#e9fbef] to-[#d7f7e1]"
                         : "border-slate-200 bg-gradient-to-br from-white to-slate-50 opacity-90"
                     }`}
                   >
@@ -3713,7 +3719,9 @@ export default function DashboardPage() {
                       <p className={`text-base font-black leading-tight sm:text-lg ${isEarned ? "text-[#1f2a44]" : "text-slate-500"}`}>
                         {badge.title}
                       </p>
-                      <p className="mx-auto mt-2 inline-flex rounded-full bg-[#edf5ff] px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[#5f86bd]">
+                      <p className={`mx-auto mt-2 inline-flex rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
+                        isEarned ? "bg-white/80 text-[#12723b]" : "bg-[#edf5ff] text-[#5f86bd]"
+                      }`}>
                         {badge.category}
                       </p>
                       <p className={`mx-auto mt-2 inline-flex rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] ${
@@ -3727,7 +3735,7 @@ export default function DashboardPage() {
                         <span>{isEarned ? "Unlocked" : "Progress"}</span>
                         <span>{badge.current}/{badge.target}</span>
                       </div>
-                      <div className="h-2 w-full overflow-hidden rounded-full bg-[#d6e0ea]">
+                      <div className={`h-2 w-full overflow-hidden rounded-full ${isEarned ? "bg-[#c9efd5]" : "bg-[#d6e0ea]"}`}>
                         <div
                           className={`h-full rounded-full transition-all duration-700 ${isEarned ? tone.progress : "bg-[#8ea0b2]"}`}
                           style={{ width: `${progressPercent}%` }}
@@ -3752,7 +3760,11 @@ export default function DashboardPage() {
 
             return (
               <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#172033]/35 px-4 backdrop-blur-sm">
-                <div className="w-full max-w-sm rounded-[30px] border border-[#d7e4f7] bg-white p-5 text-center shadow-2xl">
+                <div className={`w-full max-w-sm rounded-[30px] border p-5 text-center shadow-2xl ${
+                  isEarned
+                    ? "border-[#9fe6b8] bg-gradient-to-br from-[#f3fff7] via-white to-[#e6f9ed]"
+                    : "border-[#d7e4f7] bg-white"
+                }`}>
                   <button
                     type="button"
                     onClick={() => setSelectedBadge(null)}
@@ -3775,11 +3787,13 @@ export default function DashboardPage() {
                   </div>
                   <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-[#5f86bd]">{selectedBadge.category}</p>
                   <h3 className="mt-1 text-3xl font-black leading-tight text-[#1f2a44]">{selectedBadge.title}</h3>
-                  <p className="mx-auto mt-3 inline-flex rounded-full bg-[#eaf7ff] px-4 py-2 text-sm font-black text-[#315f7d]">
+                  <p className={`mx-auto mt-3 inline-flex rounded-full px-4 py-2 text-sm font-black ${
+                    isEarned ? "bg-[#dff8e8] text-[#12723b]" : "bg-[#eaf7ff] text-[#315f7d]"
+                  }`}>
                     +{selectedBadge.xp} XP
                   </p>
                   <p className="mt-3 text-sm leading-6 text-[#536a8f]">{selectedBadge.description}</p>
-                  <div className="mt-5 rounded-2xl bg-[#f4f8ff] p-4">
+                  <div className={`mt-5 rounded-2xl p-4 ${isEarned ? "bg-white/80" : "bg-[#f4f8ff]"}`}>
                     <div className="flex items-center justify-between text-sm font-black text-[#24324b]">
                       <span>{isEarned ? "Badge unlocked" : "Progress"}</span>
                       <span>{selectedBadge.current}/{selectedBadge.target}</span>
