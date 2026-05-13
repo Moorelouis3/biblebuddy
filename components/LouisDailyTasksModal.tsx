@@ -24,6 +24,8 @@ export type TaskState = {
   kind: TaskKind;
   title: string;
   pointsLabel: string;
+  timeEstimateLabel?: string | null;
+  timeEstimateDetail?: string | null;
   href: string | null;
   done: boolean;
   disabled?: boolean;
@@ -51,6 +53,7 @@ type ProfileStatsDevotionalRow = {
 type DevotionalDayRow = {
   devotional_id: string;
   day_number: number;
+  devotional_text?: string | null;
   bible_reading_book: string;
   bible_reading_chapter: number;
 };
@@ -137,6 +140,30 @@ function formatGamePointsLabel(done: boolean, actionLabel: string | null | undef
   return `Up to +${total}`;
 }
 
+function countWords(value: string | null | undefined) {
+  return String(value || "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[#>*_`~\-[\]()!]/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length;
+}
+
+function estimateMinutesFromWords(words: number, wordsPerMinute: number, min = 1, max = 30) {
+  if (!words) return min;
+  return Math.min(max, Math.max(min, Math.ceil(words / wordsPerMinute)));
+}
+
+function formatEstimate(minutes: number) {
+  return `${minutes} min`;
+}
+
+function getBibleChapterWordCount(content: unknown) {
+  const verses = (content as { verses?: Array<{ text?: string }> } | null)?.verses;
+  if (!Array.isArray(verses)) return 0;
+  return verses.reduce((total, verse) => total + countWords(verse?.text), 0);
+}
+
 function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
   return {
     title: "Bible Study",
@@ -152,6 +179,8 @@ function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
         kind: "devotional",
         title: "Choose a Bible Study",
         pointsLabel: "Start here",
+        timeEstimateLabel: "1 min",
+        timeEstimateDetail: "Pick your study",
         href: "/devotionals",
         done: false,
       },
@@ -159,6 +188,8 @@ function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
         kind: "reading",
         title: "Read your chapter",
         pointsLabel: "+5 pts",
+        timeEstimateLabel: "4 min",
+        timeEstimateDetail: "Chapter reading",
         href: null,
         done: false,
         disabled: true,
@@ -167,6 +198,8 @@ function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
         kind: "notes",
         title: "Review chapter notes",
         pointsLabel: "+5 pts",
+        timeEstimateLabel: "10 min",
+        timeEstimateDetail: "Study notes",
         href: null,
         done: false,
         disabled: true,
@@ -175,6 +208,8 @@ function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
         kind: "trivia",
         title: "Play chapter trivia",
         pointsLabel: "Up to +5",
+        timeEstimateLabel: "4 min",
+        timeEstimateDetail: "Quick quiz",
         href: null,
         done: false,
         disabled: true,
@@ -183,6 +218,8 @@ function buildChooseDevotionalChecklistData(_userId: string): ChecklistData {
         kind: "scrambled",
         title: "Play chapter Scrambled",
         pointsLabel: "Up to +5",
+        timeEstimateLabel: "4 min",
+        timeEstimateDetail: "Word puzzle",
         href: null,
         done: false,
         disabled: true,
@@ -313,7 +350,7 @@ export async function fetchLouisDailyChecklistData(
 
   const { data: dayRow, error: dayError } = await supabase
     .from("devotional_days")
-    .select("devotional_id, day_number, bible_reading_book, bible_reading_chapter")
+    .select("devotional_id, day_number, devotional_text, bible_reading_book, bible_reading_chapter")
     .eq("devotional_id", activeDevotional.id)
     .eq("day_number", nextDayNumber)
     .maybeSingle();
@@ -335,10 +372,11 @@ export async function fetchLouisDailyChecklistData(
   const hasScrambled = Boolean(scrambledChapter);
   const triviaQuestionCount = triviaChapter?.questions.length ?? 5;
   const scrambledQuestionCount = scrambledChapter?.questions.length ?? 5;
+  const introMinutes = estimateMinutesFromWords(countWords((day as any).devotional_text), 180, 2, 8);
 
   const reflectionSlug = `bible-chapter-${day.bible_reading_book.toLowerCase().replace(/\s+/g, "-")}-${day.bible_reading_chapter}`;
 
-  const [todayProgressRes, actionsRes, completedChapterRes, notesHistoryRes, reflectionRes] = await Promise.all([
+  const [todayProgressRes, actionsRes, completedChapterRes, notesHistoryRes, reflectionRes, chapterContentRes, notesContentRes] = await Promise.all([
     supabase
       .from("devotional_progress")
       .select("devotional_id, day_number, is_completed, reading_completed, completed_at")
@@ -384,6 +422,18 @@ export async function fetchLouisDailyChecklistData(
       .order("created_at", { ascending: false })
       .limit(1)
       .maybeSingle(),
+    supabase
+      .from("bible_chapters")
+      .select("content_json")
+      .eq("book", day.bible_reading_book.toLowerCase().trim())
+      .eq("chapter", day.bible_reading_chapter)
+      .maybeSingle(),
+    supabase
+      .from("bible_notes")
+      .select("notes_text")
+      .eq("book", day.bible_reading_book.toLowerCase().trim())
+      .eq("chapter", day.bible_reading_chapter)
+      .maybeSingle(),
   ]);
 
   if (todayProgressRes.error) throw todayProgressRes.error;
@@ -391,6 +441,13 @@ export async function fetchLouisDailyChecklistData(
   if (completedChapterRes.error) throw completedChapterRes.error;
   if (notesHistoryRes.error) throw notesHistoryRes.error;
   if (reflectionRes.error) throw reflectionRes.error;
+  if (chapterContentRes.error) console.error("[LOUIS DAILY TASKS] Could not load chapter estimate:", chapterContentRes.error);
+  if (notesContentRes.error) console.error("[LOUIS DAILY TASKS] Could not load notes estimate:", notesContentRes.error);
+
+  const readingMinutes = estimateMinutesFromWords(getBibleChapterWordCount((chapterContentRes.data as any)?.content_json) || 650, 160, 2, 12);
+  const notesMinutes = estimateMinutesFromWords(countWords((notesContentRes.data as any)?.notes_text), 220, 5, 24);
+  const triviaMinutes = Math.max(3, Math.ceil((triviaQuestionCount * 45) / 60));
+  const scrambledMinutes = Math.max(3, Math.ceil((scrambledQuestionCount * 50) / 60));
 
   const actionRows = actionsRes.data || [];
   const todayProgress = todayProgressRes.data as DevotionalProgressRow | null;
@@ -437,6 +494,8 @@ export async function fetchLouisDailyChecklistData(
       kind: "devotional",
       title: `Read Chapter Intro for ${chapterLabel}`,
       pointsLabel: "+5 pts",
+      timeEstimateLabel: formatEstimate(introMinutes),
+      timeEstimateDetail: "Intro read",
       href: `/devotionals/${activeDevotional.id}?day=${nextDayNumber}&from=louis-daily-task`,
       done: devotionalDone,
       devotionalId: activeDevotional.id,
@@ -451,6 +510,8 @@ export async function fetchLouisDailyChecklistData(
       kind: "reading",
       title: `Read ${chapterLabel}`,
       pointsLabel: "+5 pts",
+      timeEstimateLabel: formatEstimate(readingMinutes),
+      timeEstimateDetail: `${chapterLabel} reading`,
       href: `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?from=louis-daily-task`,
       done: readingDone,
       devotionalId: activeDevotional.id,
@@ -467,6 +528,8 @@ export async function fetchLouisDailyChecklistData(
       kind: "notes",
       title: `Review ${chapterLabel} Notes`,
       pointsLabel: "+5 pts",
+      timeEstimateLabel: formatEstimate(notesMinutes),
+      timeEstimateDetail: "Study notes",
       href: `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?notes=1&from=louis-daily-task`,
       done: notesDone,
       devotionalId: activeDevotional.id,
@@ -481,6 +544,8 @@ export async function fetchLouisDailyChecklistData(
       kind: "trivia",
       title: hasTrivia ? `Play Trivia for ${chapterLabel}` : `Review ${chapterLabel} Notes Again`,
       pointsLabel: hasTrivia ? formatGamePointsLabel(triviaDone, triviaAction?.action_label, triviaQuestionCount) : "+5 pts",
+      timeEstimateLabel: hasTrivia ? formatEstimate(triviaMinutes) : formatEstimate(notesMinutes),
+      timeEstimateDetail: hasTrivia ? `${triviaQuestionCount} questions` : "Study notes",
       href: hasTrivia
         ? `/bible-trivia/${triviaRouteSlug}/${day.bible_reading_chapter}?from=louis-daily-task`
         : `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?notes=1&from=louis-daily-task`,
@@ -500,6 +565,8 @@ export async function fetchLouisDailyChecklistData(
       kind: "scrambled",
       title: hasScrambled ? `Play Scrambled for ${chapterLabel}` : `Open ${chapterLabel} Again`,
       pointsLabel: hasScrambled ? formatGamePointsLabel(scrambledDone, scrambledAction?.action_label, scrambledQuestionCount) : "+5 pts",
+      timeEstimateLabel: hasScrambled ? formatEstimate(scrambledMinutes) : formatEstimate(readingMinutes),
+      timeEstimateDetail: hasScrambled ? `${scrambledQuestionCount} words` : "Chapter reading",
       href: hasScrambled
         ? `/bible-study-games/scrambled/${resolvedBookKey}/${day.bible_reading_chapter}?from=louis-daily-task`
         : `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?from=louis-daily-task`,
@@ -521,6 +588,8 @@ export async function fetchLouisDailyChecklistData(
       kind: "reflection",
       title: "Answer The Reflection Question",
       pointsLabel: "+5 pts",
+      timeEstimateLabel: "3 min",
+      timeEstimateDetail: "Write your response",
       href: `/devotionals/${activeDevotional.id}?day=${nextDayNumber}&from=louis-daily-task-reflection`,
       done: reflectionDone,
       devotionalId: activeDevotional.id,
@@ -973,6 +1042,11 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
                         {task.done ? "✓" : "•"}
                       </div>
                       <p className="truncate text-base font-bold text-[#21304f]">{task.title}</p>
+                      {task.timeEstimateLabel ? (
+                        <p className="mt-1 text-xs font-black text-[#5a76af]">
+                          {task.timeEstimateLabel} - {task.timeEstimateDetail || "Estimated time"}
+                        </p>
+                      ) : null}
                     </div>
 
                     <span

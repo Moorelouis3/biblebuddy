@@ -129,7 +129,14 @@ interface TopBuddy {
   posts: number;
   comments: number;
   likes: number;
+  appXp?: number;
+  actions?: number;
   score: number;
+}
+
+interface TopBuddiesEngagement {
+  totalClicks: number;
+  uniqueClickers: number;
 }
 
 function getFriendlyPostErrorMessage(error: unknown, fallback: string) {
@@ -1957,6 +1964,10 @@ export default function GroupChatPage() {
   const [membersSearch, setMembersSearch] = useState("");
   const [showTopBuddiesModal, setShowTopBuddiesModal] = useState(false);
   const [topBuddies, setTopBuddies] = useState<TopBuddy[]>([]);
+  const [allTimeTopBuddies, setAllTimeTopBuddies] = useState<TopBuddy[]>([]);
+  const [topBuddiesTab, setTopBuddiesTab] = useState<"week" | "allTime">("week");
+  const [topBuddiesExpanded, setTopBuddiesExpanded] = useState(false);
+  const [topBuddiesEngagement, setTopBuddiesEngagement] = useState<TopBuddiesEngagement | null>(null);
   const [loadingTopBuddies, setLoadingTopBuddies] = useState(false);
   const MEMBERS_PAGE = 20;
 
@@ -2667,13 +2678,202 @@ export default function GroupChatPage() {
         throw new Error(payload.error || "Could not load top members.");
       }
 
-      setTopBuddies(payload.buddies || []);
+      setTopBuddies(payload.weeklyBuddies || payload.buddies || []);
+      setAllTimeTopBuddies(payload.allTimeBuddies || []);
+      setTopBuddiesEngagement(payload.engagement || null);
     } catch (error) {
       console.error("[TOP_BUDDIES] Failed to load:", error);
       setTopBuddies([]);
+      setAllTimeTopBuddies([]);
+      setTopBuddiesEngagement(null);
     } finally {
       setLoadingTopBuddies(false);
     }
+  }
+
+  async function trackTopBuddiesClick(action: "open" | "tab_week" | "tab_all_time" | "modal") {
+    if (!userId || !group) return;
+    const actionLabel = `top_buddies_card_opened:${group.id}:${action}`;
+    setTopBuddiesEngagement((current) =>
+      current
+        ? {
+            totalClicks: current.totalClicks + 1,
+            uniqueClickers: current.uniqueClickers,
+          }
+        : { totalClicks: 1, uniqueClickers: 1 },
+    );
+    try {
+      await logActionToMasterActions(userId, ACTION_TYPE.study_group_feed_viewed, actionLabel, displayName || null);
+    } catch (error) {
+      console.error("[TOP_BUDDIES] Could not track leaderboard click:", error);
+    }
+  }
+
+  function toggleTopBuddiesCard() {
+    setTopBuddiesExpanded((current) => {
+      const next = !current;
+      if (next) void trackTopBuddiesClick("open");
+      return next;
+    });
+  }
+
+  function changeTopBuddiesTab(tab: "week" | "allTime") {
+    setTopBuddiesTab(tab);
+    void trackTopBuddiesClick(tab === "week" ? "tab_week" : "tab_all_time");
+  }
+
+  function getTopBuddyMedal(rank: number) {
+    if (rank === 1) return { label: "1", icon: "🏆", classes: "bg-[#fff4bd] text-[#8a5a00] border-[#f4d067]" };
+    if (rank === 2) return { label: "2", icon: "🥈", classes: "bg-[#eef2f7] text-[#536174] border-[#cbd5e1]" };
+    if (rank === 3) return { label: "3", icon: "🥉", classes: "bg-[#ffe2ca] text-[#8b4a1f] border-[#f4b27c]" };
+    return { label: String(rank), icon: null, classes: "bg-[#eef7ed] text-[#4a7c57] border-[#cfe7d2]" };
+  }
+
+  function renderTopBuddyAvatar(buddy: TopBuddy, sizeClass = "h-10 w-10") {
+    if (buddy.profileImageUrl) {
+      return <img src={buddy.profileImageUrl} alt={buddy.displayName} className={`${sizeClass} rounded-full object-cover ring-2 ring-white shadow-sm`} />;
+    }
+
+    return (
+      <div
+        className={`${sizeClass} flex items-center justify-center rounded-full text-sm font-bold text-white ring-2 ring-white shadow-sm`}
+        style={{ backgroundColor: avatarColor(buddy.userId) }}
+      >
+        {getInitial(buddy.displayName)}
+      </div>
+    );
+  }
+
+  function renderTopBuddiesLeaderboardCard() {
+    const currentBuddies = topBuddiesTab === "week" ? topBuddies : allTimeTopBuddies;
+    const topThree = currentBuddies.slice(0, 3);
+    const clickLabel = topBuddiesEngagement
+      ? `${topBuddiesEngagement.totalClicks} click${topBuddiesEngagement.totalClicks === 1 ? "" : "s"}`
+      : "0 clicks";
+
+    return (
+      <div className="mb-4 overflow-hidden rounded-[24px] border border-[#d8e7d7] bg-white shadow-sm">
+        <button
+          type="button"
+          onClick={toggleTopBuddiesCard}
+          className="group relative w-full overflow-hidden bg-gradient-to-br from-[#fff8d7] via-[#f7fbff] to-[#e9f7ea] px-4 py-4 text-left"
+        >
+          <div className="pointer-events-none absolute -right-8 -top-10 h-28 w-28 rounded-full bg-[#ffd95d]/30 blur-2xl transition group-hover:scale-110" />
+          <div className="pointer-events-none absolute -left-8 bottom-0 h-24 w-24 rounded-full bg-[#7BAFD4]/20 blur-2xl transition group-hover:scale-110" />
+          <div className="relative flex items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-3">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#f3d77a] bg-white text-2xl shadow-sm transition group-hover:-rotate-3 group-hover:scale-105">
+                🏆
+              </div>
+              <div className="min-w-0">
+                <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#709166]">Weekly Award Board</p>
+                <h3 className="mt-1 truncate text-lg font-black text-[#1f2a44]">
+                  Top 10 Bible Buddies
+                </h3>
+                <p className="mt-0.5 text-xs font-semibold text-[#64748b]">
+                  {topThree.length ? `${topThree[0]?.displayName || "Buddy"} is leading this week` : "Weekly leaders load here"}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex shrink-0 items-center gap-2">
+              <div className="hidden -space-x-2 sm:flex">
+                {topThree.map((buddy) => (
+                  <div key={buddy.userId}>
+                    {renderTopBuddyAvatar(buddy, "h-8 w-8")}
+                  </div>
+                ))}
+              </div>
+              <span className="rounded-full bg-white/85 px-3 py-1 text-xs font-black text-[#47677c] ring-1 ring-[#d7e6ef]">
+                {topBuddiesExpanded ? "Hide" : "Open"}
+              </span>
+            </div>
+          </div>
+        </button>
+
+        {topBuddiesExpanded && (
+          <div className="border-t border-[#e3edf3] bg-[#fbfdff] px-4 pb-4 pt-3">
+            <div className="mb-3 flex rounded-full bg-white p-1 shadow-inner ring-1 ring-[#dbe7f0]">
+              <button
+                type="button"
+                onClick={() => changeTopBuddiesTab("week")}
+                className={`flex-1 rounded-full px-3 py-2 text-xs font-black transition ${
+                  topBuddiesTab === "week" ? "bg-[#7BAFD4] text-slate-950 shadow-sm" : "text-[#64748b] hover:bg-[#f1f6fb]"
+                }`}
+              >
+                This Week
+              </button>
+              <button
+                type="button"
+                onClick={() => changeTopBuddiesTab("allTime")}
+                className={`flex-1 rounded-full px-3 py-2 text-xs font-black transition ${
+                  topBuddiesTab === "allTime" ? "bg-[#7BAFD4] text-slate-950 shadow-sm" : "text-[#64748b] hover:bg-[#f1f6fb]"
+                }`}
+              >
+                All Time
+              </button>
+            </div>
+
+            {loadingTopBuddies ? (
+              <div className="rounded-2xl border border-dashed border-[#cfe1ee] bg-white px-4 py-5 text-center text-sm font-semibold text-[#64748b]">
+                Loading the award board...
+              </div>
+            ) : currentBuddies.length === 0 ? (
+              <div className="rounded-2xl border border-dashed border-[#cfe1ee] bg-white px-4 py-5 text-center text-sm font-semibold text-[#64748b]">
+                No leaderboard points yet. First Buddy to show up gets the spotlight.
+              </div>
+            ) : (
+              <div className="space-y-2">
+                {currentBuddies.map((buddy) => {
+                  const medal = getTopBuddyMedal(buddy.rank);
+                  return (
+                    <div key={`${topBuddiesTab}-${buddy.userId}`} className="flex items-center gap-3 rounded-2xl border border-[#e1ebf2] bg-white px-3 py-3 shadow-sm">
+                      <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-sm font-black ${medal.classes}`}>
+                        {medal.icon || medal.label}
+                      </div>
+                      <Link href={`/profile/${buddy.userId}`} className="shrink-0">
+                        {renderTopBuddyAvatar(buddy, "h-11 w-11")}
+                      </Link>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex min-w-0 flex-wrap items-center gap-1.5">
+                          <Link href={`/profile/${buddy.userId}`} className="truncate text-sm font-black text-[#1f2a44] hover:underline">
+                            {buddy.displayName}
+                          </Link>
+                          <StreakFlameBadge currentStreak={buddy.currentStreak} />
+                          <LevelBadge currentLevel={buddy.currentLevel} />
+                          <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
+                        </div>
+                        <p className="mt-0.5 text-[11px] font-semibold text-[#718096]">
+                          {buddy.actions || 0} actions / {buddy.posts} posts / {buddy.comments} comments / {buddy.likes} likes
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-lg font-black text-[#1f2a44]">{buddy.score}</p>
+                        <p className="text-[11px] font-bold text-[#718096]">{topBuddiesTab === "week" ? "pts week" : "pts all"}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            <div className="mt-3 flex items-center justify-between rounded-2xl border border-[#e1ebf2] bg-white px-3 py-2 text-xs font-bold text-[#64748b]">
+              <span>{clickLabel} opened this board</span>
+              <button
+                type="button"
+                onClick={() => {
+                  void trackTopBuddiesClick("modal");
+                  setShowTopBuddiesModal(true);
+                }}
+                className="font-black text-[#4a9b6f]"
+              >
+                Full view
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
   }
 
   // â”€â”€ Load content when tab or group changes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -3825,7 +4025,7 @@ export default function GroupChatPage() {
   }
 
   useEffect(() => {
-    if (!group || activeTab !== "members") return;
+    if (!group || (activeTab !== "members" && activeTab !== "home")) return;
     void loadTopBuddies();
   }, [activeTab, group?.id]);
 
@@ -4511,6 +4711,7 @@ export default function GroupChatPage() {
   const activeFeedScrambledShare = activeFeedPost ? isScrambledScoreShare(activeFeedPost) : false;
   const activeFeedScrambledPromo = activeFeedPost ? isScrambledPromoPost(activeFeedPost) : false;
   const activeFeedBibleBuddyTvShare = activeFeedPost ? isBibleBuddyTvSharePost(activeFeedPost) : false;
+  const modalTopBuddies = topBuddiesTab === "week" ? topBuddies : allTimeTopBuddies;
   const isLeader = userRole === "leader";
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
   const isLouisAdmin = userEmail === "moorelouis3@gmail.com";
@@ -4742,9 +4943,12 @@ export default function GroupChatPage() {
         {!selectedHubItem && <div className="max-w-2xl mx-auto px-4 py-4">
 
           {activeTab === "home" ? (
-            <div className="mb-4">
-              {renderUpdateCard()}
-            </div>
+            <>
+              {renderTopBuddiesLeaderboardCard()}
+              <div className="mb-4">
+                {renderUpdateCard()}
+              </div>
+            </>
           ) : null}
 
           {/* â”€â”€ MEMBERS TAB â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
@@ -4760,7 +4964,7 @@ export default function GroupChatPage() {
                       <div>
                         <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#6f8d6c]">Top Members</p>
                         <h3 className="mt-2 text-lg font-bold text-gray-900">Buddies showing up the most</h3>
-                        <p className="mt-1 text-sm text-gray-600">Top 5 over the last 30 days based on posts, comments, and likes.</p>
+                        <p className="mt-1 text-sm text-gray-600">Top 5 this week based on Bible Buddy points, posts, comments, and likes.</p>
                       </div>
                       <span className="rounded-full bg-[#edf7ed] px-3 py-1 text-xs font-semibold text-[#4a9b6f]">Top 10</span>
                     </div>
@@ -4792,11 +4996,11 @@ export default function GroupChatPage() {
                                 </div>
                                 <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                               </div>
-                              <p className="mt-0.5 text-xs text-gray-500">{buddy.posts} posts / {buddy.comments} comments / {buddy.likes} likes</p>
+                              <p className="mt-0.5 text-xs text-gray-500">{buddy.actions || 0} actions / {buddy.posts} posts / {buddy.comments} comments / {buddy.likes} likes</p>
                             </div>
                             <div className="text-right">
                               <p className="text-base font-bold text-gray-900">{buddy.score}</p>
-                              <p className="text-[11px] text-gray-500">score</p>
+                              <p className="text-[11px] text-gray-500">pts week</p>
                             </div>
                           </div>
                         ))
@@ -6686,7 +6890,23 @@ export default function GroupChatPage() {
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Bible Study Group</p>
                   <h2 className="text-2xl font-bold text-gray-900 mt-2">Top Members</h2>
-                  <p className="text-sm text-gray-500 mt-1">Top 10 over the last 30 days based on posts, comments, and likes.</p>
+                  <p className="text-sm text-gray-500 mt-1">Top 10 based on Bible Buddy points, posts, comments, and likes.</p>
+                  <div className="mt-3 flex rounded-full bg-gray-100 p-1">
+                    <button
+                      type="button"
+                      onClick={() => changeTopBuddiesTab("week")}
+                      className={`flex-1 rounded-full px-3 py-2 text-xs font-black transition ${topBuddiesTab === "week" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500"}`}
+                    >
+                      This Week
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => changeTopBuddiesTab("allTime")}
+                      className={`flex-1 rounded-full px-3 py-2 text-xs font-black transition ${topBuddiesTab === "allTime" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500"}`}
+                    >
+                      All Time
+                    </button>
+                  </div>
                 </div>
                 <button
                   onClick={() => setShowTopBuddiesModal(false)}
@@ -6700,11 +6920,11 @@ export default function GroupChatPage() {
             <div className="px-5 py-4">
               {loadingTopBuddies ? (
                 <p className="text-sm text-gray-400 text-center py-8">Loading top members...</p>
-              ) : topBuddies.length === 0 ? (
+              ) : modalTopBuddies.length === 0 ? (
                 <p className="text-sm text-gray-500 text-center py-8">No top member activity yet.</p>
               ) : (
                 <div className="space-y-3">
-                  {topBuddies.map((buddy) => (
+                  {modalTopBuddies.map((buddy) => (
                     <div key={buddy.userId} className="rounded-2xl border border-gray-200 bg-white px-4 py-4">
                       <div className="flex items-center gap-3">
                         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f2e7dc] text-xs font-bold text-[#8d5d38]">
@@ -6729,12 +6949,12 @@ export default function GroupChatPage() {
                             <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                           </div>
                           <p className="mt-1 text-xs text-gray-500">
-                            {buddy.posts} posts / {buddy.comments} comments / {buddy.likes} likes
+                            {buddy.actions || 0} actions / {buddy.posts} posts / {buddy.comments} comments / {buddy.likes} likes
                           </p>
                         </div>
                         <div className="text-right">
                           <p className="text-lg font-bold text-gray-900">{buddy.score}</p>
-                          <p className="text-xs text-gray-500">score</p>
+                          <p className="text-xs text-gray-500">{topBuddiesTab === "week" ? "pts week" : "pts all"}</p>
                         </div>
                       </div>
                     </div>

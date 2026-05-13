@@ -49,6 +49,9 @@ import { trackUserActivity } from "../../lib/trackUserActivity";
 const JESSICA_BONUS_USER_ID = "66c16399-092a-43c0-96c0-e4de78c0debc";
 const JESSICA_BONUS_ACTION_LABEL = "admin_bonus_points:1000:jessica-april-2026";
 const JESSICA_BONUS_POPUP_KEY = "bb:bonus-popup:jessica-1000:v1";
+const ZORIAN_USER_ID = "6ffe9dd2-884b-4a6b-8096-e9418dd56232";
+const ZORIAN_RESTORATION_ACTION_LABEL = "admin_bonus_points:1000:zorian-login-restoration-may-2026";
+const ZORIAN_RESTORATION_POPUP_KEY = "bb:bonus-popup:zorian-login-restoration-1000:v1";
 const ENABLE_DAILY_DASHBOARD_WELCOME_FLOW = true;
 const DASHBOARD_LOUIS_CHECKIN_COOLDOWN_MS = 4 * 60 * 60 * 1000;
 
@@ -688,6 +691,8 @@ export default function DashboardPage() {
   const [dailyTaskCelebrationJourneyKey, setDailyTaskCelebrationJourneyKey] = useState<string | null>(null);
   const [showJessicaBonusModal, setShowJessicaBonusModal] = useState(false);
   const [hasJessicaBonusAward, setHasJessicaBonusAward] = useState(false);
+  const [showZorianRestorationModal, setShowZorianRestorationModal] = useState(false);
+  const [hasZorianRestorationAward, setHasZorianRestorationAward] = useState(false);
   const [isLoadingDailyTaskSummary, setIsLoadingDailyTaskSummary] = useState(true);
   const [dailyChecklistData, setDailyChecklistData] = useState<ChecklistData | null>(null);
   const [dailyTaskCompletedCount, setDailyTaskCompletedCount] = useState(0);
@@ -1892,6 +1897,7 @@ export default function DashboardPage() {
     showLouisDailyTasksModal ||
     showDailyTaskCelebrationModal ||
     showJessicaBonusModal ||
+    showZorianRestorationModal ||
     Boolean(selectedDashboardTask) ||
     Boolean(activeTourKey) ||
     pendingDailyStreakSequence ||
@@ -2233,8 +2239,12 @@ export default function DashboardPage() {
         const adminBonusActionRows = actionRows.filter((row) =>
           row?.action_label === JESSICA_BONUS_ACTION_LABEL,
         );
+        const zorianRestorationActionRows = actionRows.filter((row) =>
+          row?.action_label === ZORIAN_RESTORATION_ACTION_LABEL,
+        );
         if (!didCancel) {
           setHasJessicaBonusAward(adminBonusActionRows.length > 0);
+          setHasZorianRestorationAward(zorianRestorationActionRows.length > 0);
         }
 
         const manualBonusPoints = actionRows.reduce((total, row) => {
@@ -2521,6 +2531,12 @@ export default function DashboardPage() {
     if (window.localStorage.getItem(JESSICA_BONUS_POPUP_KEY) === "1") return;
     setShowJessicaBonusModal(true);
   }, [hasJessicaBonusAward, userId]);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || userId !== ZORIAN_USER_ID || !hasZorianRestorationAward) return;
+    if (window.localStorage.getItem(ZORIAN_RESTORATION_POPUP_KEY) === "1") return;
+    setShowZorianRestorationModal(true);
+  }, [hasZorianRestorationAward, userId]);
 
   useEffect(() => {
     if (!userId || !profile) return;
@@ -4049,6 +4065,49 @@ export default function DashboardPage() {
               className="mt-6 inline-flex rounded-full bg-[#7aa7df] px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5f93d3]"
             >
               Close
+            </button>
+          </div>
+        </div>
+      </ModalShell>
+
+      <ModalShell
+        isOpen={showZorianRestorationModal}
+        onClose={() => {
+          if (typeof window !== "undefined") {
+            window.localStorage.setItem(ZORIAN_RESTORATION_POPUP_KEY, "1");
+          }
+          setShowZorianRestorationModal(false);
+        }}
+        backdropColor="bg-black/50"
+      >
+        <div className="mx-4 w-full max-w-md overflow-hidden rounded-[30px] border border-[#d7e4f7] bg-white shadow-2xl">
+          <div className="bg-gradient-to-br from-[#eef7ff] via-[#fffdf4] to-[#e8f5ec] px-6 py-8 text-center">
+            <div className="flex justify-center">
+              <LouisAvatar mood="hands" size={76} />
+            </div>
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#5f86bd]">
+              Account Restored
+            </p>
+            <h2 className="mt-3 text-3xl font-bold text-[#2b3550]">Hey Zorian</h2>
+            <p className="mt-3 text-base font-semibold leading-7 text-[#355487]">
+              We are sorry you had trouble logging in.
+            </p>
+            <p className="mt-2 text-sm leading-6 text-[#5b6480]">
+              Your streak has been restored, and we added{" "}
+              <span className="font-black text-[#1f2937]">1000 bonus XP</span>{" "}
+              to thank you for hanging in there with us.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.localStorage.setItem(ZORIAN_RESTORATION_POPUP_KEY, "1");
+                }
+                setShowZorianRestorationModal(false);
+              }}
+              className="mt-6 inline-flex rounded-full bg-[#7aa7df] px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#5f93d3]"
+            >
+              Thank you
             </button>
           </div>
         </div>

@@ -1736,6 +1736,11 @@ export default function DashboardJourneyExperience({
                     <div className="min-w-0 flex-1">
                       <p className={`text-[15px] font-bold leading-tight sm:text-base ${task.done ? "text-gray-950" : "text-gray-600"}`}>{taskCopy.title}</p>
                       <p className={`mt-1 max-w-[18rem] text-xs leading-5 sm:text-sm ${task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
+                      {task.timeEstimateLabel ? (
+                        <p className="mt-2 inline-flex rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-black text-[#4f6f9a] ring-1 ring-[#d8e4f6]">
+                          {task.timeEstimateLabel} - {task.timeEstimateDetail || "Estimated time"}
+                        </p>
+                      ) : null}
                     </div>
                     <div className="flex shrink-0 items-center gap-2">
                       <div className="flex flex-col items-end gap-2">
