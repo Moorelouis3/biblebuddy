@@ -7,6 +7,8 @@ export const dynamic = "force-dynamic";
 
 const PAGE_SIZE = 1000;
 const LEADERBOARD_CACHE_MS = 10 * 60 * 1000;
+const PROFILE_SELECT =
+  "user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, trivia_questions_answered, last_active_at, last_active_date, created_at";
 
 let leaderboardCache: {
   expiresAt: number;
@@ -63,6 +65,8 @@ type ArticleCommentRow = {
   article_slug: string | null;
   created_at: string | null;
 };
+
+type LeaderboardBuddy = ReturnType<typeof buildLeaderboard>[number];
 
 const TASK_ACTIONS = new Set([
   "devotional_day_completed",
@@ -131,6 +135,55 @@ function getWindowStart(scope: "week" | "allTime") {
 
 function safeNumber(value: unknown) {
   return typeof value === "number" && Number.isFinite(value) ? value : 0;
+}
+
+function scoreProfileSnapshot(profile: ProfileRow) {
+  const currentLevel = Math.max(1, safeNumber(profile.current_level));
+  const chaptersRead = safeNumber(profile.chapters_completed_count);
+  const notesReviewed = safeNumber(profile.notes_created_count);
+  const triviaAnswered = safeNumber(profile.trivia_questions_answered);
+  const peopleLearned = safeNumber(profile.people_learned_count);
+  const placesDiscovered = safeNumber(profile.places_discovered_count);
+  const keywordsMastered = safeNumber(profile.keywords_mastered_count);
+  const streak = safeNumber(profile.current_streak);
+
+  return Math.round(
+    currentLevel * 75 +
+      chaptersRead * 8 +
+      notesReviewed * 5 +
+      triviaAnswered +
+      peopleLearned * 4 +
+      placesDiscovered * 4 +
+      keywordsMastered * 4 +
+      streak * 5,
+  );
+}
+
+function buildQuickLeaderboard(profiles: ProfileRow[]): LeaderboardBuddy[] {
+  return profiles
+    .map((profile) => {
+      const score = scoreProfileSnapshot(profile);
+      return {
+        userId: profile.user_id,
+        displayName: profile.display_name || profile.username || "Buddy",
+        username: profile.username || null,
+        profileImageUrl: profile.profile_image_url ?? null,
+        memberBadge: profile.member_badge ?? null,
+        isPaid: !!profile.is_paid,
+        currentStreak: profile.current_streak ?? null,
+        currentLevel: Math.max(1, profile.current_level || 1),
+        posts: 0,
+        comments: 0,
+        likes: 0,
+        appXp: 0,
+        actions: 0,
+        score,
+      };
+    })
+    .filter((buddy) => buddy.score > 0)
+    .sort((a, b) => b.score - a.score || (b.currentLevel || 0) - (a.currentLevel || 0))
+    .slice(0, 10)
+    .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
 }
 
 function buildLeaderboard(options: {
@@ -349,15 +402,45 @@ export async function GET(
   }
 
   try {
+    const url = new URL(request.url);
+    const mode = url.searchParams.get("mode");
+    const useFastMode = mode === "fast";
+    const forceRefresh = mode === "refresh";
     let weeklyBuddies = leaderboardCache?.weeklyBuddies || null;
     let allTimeBuddies = leaderboardCache?.allTimeBuddies || null;
 
-    if (!leaderboardCache || leaderboardCache.expiresAt <= Date.now()) {
+    if (useFastMode && leaderboardCache && leaderboardCache.expiresAt > Date.now()) {
+      weeklyBuddies = leaderboardCache.weeklyBuddies;
+      allTimeBuddies = leaderboardCache.allTimeBuddies;
+    } else if (useFastMode) {
+      const weekStart = getWindowStart("week");
+      const [weeklyProfilesRes, allTimeProfilesRes] = await Promise.all([
+        supabaseAdmin
+          .from("profile_stats")
+          .select(PROFILE_SELECT)
+          .gte("last_active_at", weekStart || new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString())
+          .order("current_level", { ascending: false, nullsFirst: false })
+          .order("current_streak", { ascending: false, nullsFirst: false })
+          .limit(80),
+        supabaseAdmin
+          .from("profile_stats")
+          .select(PROFILE_SELECT)
+          .order("current_level", { ascending: false, nullsFirst: false })
+          .order("chapters_completed_count", { ascending: false, nullsFirst: false })
+          .limit(80),
+      ]);
+
+      if (weeklyProfilesRes.error) throw weeklyProfilesRes.error;
+      if (allTimeProfilesRes.error) throw allTimeProfilesRes.error;
+
+      weeklyBuddies = buildQuickLeaderboard((weeklyProfilesRes.data || []) as ProfileRow[]);
+      allTimeBuddies = buildQuickLeaderboard((allTimeProfilesRes.data || []) as ProfileRow[]);
+    } else if (forceRefresh || !leaderboardCache || leaderboardCache.expiresAt <= Date.now()) {
       const [profiles, actions, completedChapters, articleComments, postRows, likeRows] = await Promise.all([
         fetchPaged<ProfileRow>((from, to) =>
           supabaseAdmin
             .from("profile_stats")
-            .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, trivia_questions_answered, last_active_at, last_active_date, created_at")
+            .select(PROFILE_SELECT)
             .order("last_active_at", { ascending: false, nullsFirst: false })
             .range(from, to),
         ),
@@ -434,6 +517,8 @@ export async function GET(
       buddies: weeklyBuddies,
       weeklyBuddies,
       allTimeBuddies,
+      source: useFastMode ? "fast" : "full",
+      cachedUntil: leaderboardCache?.expiresAt || null,
       engagement: {
         totalClicks: clickRows?.length || 0,
         uniqueClickers: uniqueClickers.size,

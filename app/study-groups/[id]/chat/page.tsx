@@ -2658,7 +2658,23 @@ export default function GroupChatPage() {
 
   async function loadTopBuddies() {
     if (!group) return;
-    setLoadingTopBuddies(true);
+    const cacheKey = `top-buddies-cache:${group.id}`;
+    let showedCachedBoard = false;
+
+    try {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        const payload = JSON.parse(cached);
+        setTopBuddies(payload.weeklyBuddies || payload.buddies || []);
+        setAllTimeTopBuddies(payload.allTimeBuddies || []);
+        setTopBuddiesEngagement(payload.engagement || null);
+        showedCachedBoard = true;
+      }
+    } catch {
+      localStorage.removeItem(cacheKey);
+    }
+
+    setLoadingTopBuddies(!showedCachedBoard);
 
     try {
       const { data: sessionData } = await supabase.auth.getSession();
@@ -2668,25 +2684,45 @@ export default function GroupChatPage() {
         throw new Error("Could not verify your session.");
       }
 
-      const response = await fetch(`/api/groups/${group.id}/top-buddies`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
+      const loadBoard = async (mode: "fast" | "refresh") => {
+        const response = await fetch(`/api/groups/${group.id}/top-buddies?mode=${mode}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        const payload = await response.json();
+        if (!response.ok) {
+          throw new Error(payload.error || "Could not load top members.");
+        }
+
+        setTopBuddies(payload.weeklyBuddies || payload.buddies || []);
+        setAllTimeTopBuddies(payload.allTimeBuddies || []);
+        setTopBuddiesEngagement(payload.engagement || null);
+        localStorage.setItem(
+          cacheKey,
+          JSON.stringify({
+            weeklyBuddies: payload.weeklyBuddies || payload.buddies || [],
+            allTimeBuddies: payload.allTimeBuddies || [],
+            engagement: payload.engagement || null,
+            cachedAt: Date.now(),
+          }),
+        );
+      };
+
+      await loadBoard("fast");
+      setLoadingTopBuddies(false);
+
+      void loadBoard("refresh").catch((error) => {
+        console.error("[TOP_BUDDIES] Background refresh failed:", error);
       });
-
-      const payload = await response.json();
-      if (!response.ok) {
-        throw new Error(payload.error || "Could not load top members.");
-      }
-
-      setTopBuddies(payload.weeklyBuddies || payload.buddies || []);
-      setAllTimeTopBuddies(payload.allTimeBuddies || []);
-      setTopBuddiesEngagement(payload.engagement || null);
     } catch (error) {
       console.error("[TOP_BUDDIES] Failed to load:", error);
-      setTopBuddies([]);
-      setAllTimeTopBuddies([]);
-      setTopBuddiesEngagement(null);
+      if (!showedCachedBoard) {
+        setTopBuddies([]);
+        setAllTimeTopBuddies([]);
+        setTopBuddiesEngagement(null);
+      }
     } finally {
       setLoadingTopBuddies(false);
     }
