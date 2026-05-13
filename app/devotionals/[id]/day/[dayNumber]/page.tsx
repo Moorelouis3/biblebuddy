@@ -63,6 +63,58 @@ type DevotionalContentBlock =
   | { kind: "list"; key: string; items: string[] }
   | { kind: "divider"; key: string };
 
+type TaskTimeEstimate = {
+  label: string;
+  detail: string;
+};
+
+type ChapterTaskTimeEstimates = {
+  intro: TaskTimeEstimate;
+  reading: TaskTimeEstimate;
+  notes: TaskTimeEstimate;
+  trivia: TaskTimeEstimate;
+  scrambled: TaskTimeEstimate;
+  reflection: TaskTimeEstimate;
+};
+
+const DEFAULT_TASK_ESTIMATES: ChapterTaskTimeEstimates = {
+  intro: { label: "3 min", detail: "Short intro read" },
+  reading: { label: "4 min", detail: "Chapter reading" },
+  notes: { label: "10 min", detail: "Study notes" },
+  trivia: { label: "4 min", detail: "Quick quiz round" },
+  scrambled: { label: "4 min", detail: "Word puzzle round" },
+  reflection: { label: "3 min", detail: "Reflection response" },
+};
+
+function countWords(value: string | null | undefined) {
+  return String(value || "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[#>*_`~\-[\]()!]/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length;
+}
+
+function estimateMinutesFromWords(words: number, wordsPerMinute: number, min = 1, max = 30) {
+  if (!words) return min;
+  return Math.min(max, Math.max(min, Math.ceil(words / wordsPerMinute)));
+}
+
+function formatEstimate(minutes: number) {
+  return `${minutes} min`;
+}
+
+function getBibleChapterWordCount(content: unknown) {
+  const verses = (content as { verses?: Array<{ text?: string }> } | null)?.verses;
+  if (!Array.isArray(verses)) return 0;
+  return verses.reduce((total, verse) => total + countWords(verse?.text), 0);
+}
+
+function getQuestionCount(chapter: unknown) {
+  const questions = (chapter as { questions?: unknown[] } | null)?.questions;
+  return Array.isArray(questions) ? questions.length : 5;
+}
+
 function stripHeadingMarkdown(text: string) {
   return text.replace(/^#+\s*/, "").trim();
 }
@@ -146,6 +198,7 @@ function formatCompletedDate(iso: string | null | undefined) {
 function CollapsibleTask({
   taskNumber,
   title,
+  estimate,
   done,
   open,
   onToggle,
@@ -153,6 +206,7 @@ function CollapsibleTask({
 }: {
   taskNumber: number;
   title: string;
+  estimate?: TaskTimeEstimate;
   done: boolean;
   open: boolean;
   onToggle: () => void;
@@ -168,6 +222,11 @@ function CollapsibleTask({
         <div>
           <p className="text-xs font-black uppercase tracking-[0.24em] text-gray-700">Task {taskNumber}</p>
           <h2 className="mt-1 text-xl font-black text-gray-950">{title}</h2>
+          {estimate ? (
+            <p className="mt-2 inline-flex rounded-full bg-[#eef6fd] px-3 py-1 text-xs font-black text-[#3f6f91]">
+              {estimate.label} - {estimate.detail}
+            </p>
+          ) : null}
         </div>
         <div className="flex items-center gap-3">
           {done ? (
@@ -210,6 +269,7 @@ export default function ProverbsStudyDayPage() {
   const [finishers, setFinishers] = useState<Finisher[]>([]);
   const [breakdown, setBreakdown] = useState<Breakdown>({ intro: [], reading: [], notes: [], trivia: [], scrambled: [], reflection: [] });
   const [showBreakdown, setShowBreakdown] = useState(false);
+  const [taskEstimates, setTaskEstimates] = useState<ChapterTaskTimeEstimates>(DEFAULT_TASK_ESTIMATES);
 
   const chapterLabel = day ? `${day.bible_reading_book} ${day.bible_reading_chapter}` : "";
   const devotionalBlocks = useMemo(
@@ -221,6 +281,77 @@ export default function ProverbsStudyDayPage() {
   const triviaChapter = useMemo(() => (day && bookKey ? getTriviaChapter(bookKey, day.bible_reading_chapter) : null), [bookKey, day]);
   const scrambledBook = useMemo(() => (bookKey ? getScrambledBook(bookKey) : null), [bookKey]);
   const scrambledChapter = useMemo(() => (day && bookKey ? getScrambledChapter(bookKey, day.bible_reading_chapter) : null), [bookKey, day]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadTaskEstimates() {
+      if (!day) {
+        setTaskEstimates(DEFAULT_TASK_ESTIMATES);
+        return;
+      }
+
+      const introMinutes = estimateMinutesFromWords(countWords(day.devotional_text), 180, 2, 8);
+      const triviaQuestionCount = getQuestionCount(triviaChapter);
+      const scrambledQuestionCount = getQuestionCount(scrambledChapter);
+
+      let bibleWords = 0;
+      let notesWords = 0;
+
+      try {
+        const [{ data: chapterData }, { data: notesData }] = await Promise.all([
+          supabase
+            .from("bible_chapters")
+            .select("content_json")
+            .eq("book", day.bible_reading_book.toLowerCase().trim())
+            .eq("chapter", day.bible_reading_chapter)
+            .maybeSingle(),
+          supabase
+            .from("bible_notes")
+            .select("notes_text")
+            .eq("book", day.bible_reading_book.toLowerCase().trim())
+            .eq("chapter", day.bible_reading_chapter)
+            .maybeSingle(),
+        ]);
+
+        bibleWords = getBibleChapterWordCount((chapterData as any)?.content_json);
+        notesWords = countWords((notesData as any)?.notes_text);
+      } catch (error) {
+        console.error("[DEVOTIONAL_DAY] Could not load task time estimates:", error);
+      }
+
+      if (!notesWords) {
+        notesWords = countWords(getProverbsChapterNotesFallback(day.bible_reading_book, day.bible_reading_chapter));
+      }
+
+      const readingMinutes = estimateMinutesFromWords(
+        bibleWords || 650,
+        160,
+        2,
+        12,
+      );
+      const notesMinutes = estimateMinutesFromWords(notesWords, 220, 5, 24);
+      const triviaMinutes = Math.max(3, Math.ceil((triviaQuestionCount * 45) / 60));
+      const scrambledMinutes = Math.max(3, Math.ceil((scrambledQuestionCount * 50) / 60));
+
+      if (!cancelled) {
+        setTaskEstimates({
+          intro: { label: formatEstimate(introMinutes), detail: "Intro read" },
+          reading: { label: formatEstimate(readingMinutes), detail: `${chapterLabel} reading` },
+          notes: { label: formatEstimate(notesMinutes), detail: "Study notes" },
+          trivia: { label: formatEstimate(triviaMinutes), detail: `${triviaQuestionCount} questions` },
+          scrambled: { label: formatEstimate(scrambledMinutes), detail: `${scrambledQuestionCount} words` },
+          reflection: { label: "3 min", detail: "Write your response" },
+        });
+      }
+    }
+
+    void loadTaskEstimates();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [chapterLabel, day, scrambledChapter, triviaChapter]);
 
   async function loadAll() {
     setLoading(true);
@@ -788,7 +919,7 @@ export default function ProverbsStudyDayPage() {
         </div>
 
         <div className="flex flex-col gap-4">
-          <CollapsibleTask taskNumber={1} title="Bible Study Intro" done={introDone} open={openTask === 1} onToggle={() => setOpenTask(openTask === 1 ? null : 1)}>
+          <CollapsibleTask taskNumber={1} title="Bible Study Intro" estimate={taskEstimates.intro} done={introDone} open={openTask === 1} onToggle={() => setOpenTask(openTask === 1 ? null : 1)}>
             <h2 className="mb-5 text-2xl font-black leading-tight text-gray-950">{day.day_title}</h2>
             <div className="text-gray-700" style={{ fontSize: "1rem" }}>
               {devotionalBlocks.map((block) => {
@@ -855,7 +986,7 @@ export default function ProverbsStudyDayPage() {
             </div>
           </CollapsibleTask>
 
-          <CollapsibleTask taskNumber={2} title={`Read "${chapterLabel}"`} done={readingDone} open={openTask === 2} onToggle={() => setOpenTask(openTask === 2 ? null : 2)}>
+          <CollapsibleTask taskNumber={2} title={`Read "${chapterLabel}"`} estimate={taskEstimates.reading} done={readingDone} open={openTask === 2} onToggle={() => setOpenTask(openTask === 2 ? null : 2)}>
             <div className="text-center">
               <button
                 type="button"
@@ -868,7 +999,7 @@ export default function ProverbsStudyDayPage() {
             </div>
           </CollapsibleTask>
 
-          <CollapsibleTask taskNumber={3} title="Chapter Notes" done={notesDone} open={openTask === 3} onToggle={() => setOpenTask(openTask === 3 ? null : 3)}>
+          <CollapsibleTask taskNumber={3} title="Chapter Notes" estimate={taskEstimates.notes} done={notesDone} open={openTask === 3} onToggle={() => setOpenTask(openTask === 3 ? null : 3)}>
             <div className="text-center">
               <p className="mx-auto mb-4 max-w-md text-sm leading-6 text-gray-600">Open the {chapterLabel} notes when you are ready to go deeper.</p>
               <button type="button" onClick={() => void openNotes()} className={`rounded-xl px-6 py-3 text-sm font-black shadow-sm ${notesDone ? "bg-emerald-100 text-emerald-700" : "text-slate-950"}`} style={notesDone ? undefined : { backgroundColor: TASK_BLUE }}>
@@ -877,7 +1008,7 @@ export default function ProverbsStudyDayPage() {
             </div>
           </CollapsibleTask>
 
-          <CollapsibleTask taskNumber={4} title="Trivia" done={triviaDone} open={openTask === 4} onToggle={() => setOpenTask(openTask === 4 ? null : 4)}>
+          <CollapsibleTask taskNumber={4} title="Trivia" estimate={taskEstimates.trivia} done={triviaDone} open={openTask === 4} onToggle={() => setOpenTask(openTask === 4 ? null : 4)}>
             <div className="text-center">
               <p className="mx-auto mb-4 max-w-md text-sm leading-6 text-gray-600">Test what is sticking from {chapterLabel} with a short trivia round.</p>
               <button type="button" onClick={() => setShowTrivia(true)} disabled={!triviaBook || !triviaChapter} className="rounded-xl px-6 py-3 text-sm font-black text-slate-950 shadow-sm disabled:opacity-60" style={{ backgroundColor: triviaBook && triviaChapter ? TASK_BLUE : "#cbd5e1" }}>
@@ -886,7 +1017,7 @@ export default function ProverbsStudyDayPage() {
             </div>
           </CollapsibleTask>
 
-          <CollapsibleTask taskNumber={5} title="Scrambled" done={scrambledDone} open={openTask === 5} onToggle={() => setOpenTask(openTask === 5 ? null : 5)}>
+          <CollapsibleTask taskNumber={5} title="Scrambled" estimate={taskEstimates.scrambled} done={scrambledDone} open={openTask === 5} onToggle={() => setOpenTask(openTask === 5 ? null : 5)}>
             <div className="text-center">
               <p className="mx-auto mb-4 max-w-md text-sm leading-6 text-gray-600">Slow down with key words from {chapterLabel} and lock them into memory.</p>
               <button type="button" onClick={() => setShowScrambled(true)} disabled={!scrambledBook || !scrambledChapter} className="rounded-xl px-6 py-3 text-sm font-black text-slate-950 shadow-sm disabled:opacity-60" style={{ backgroundColor: scrambledBook && scrambledChapter ? TASK_BLUE : "#cbd5e1" }}>
@@ -895,7 +1026,7 @@ export default function ProverbsStudyDayPage() {
             </div>
           </CollapsibleTask>
 
-          <CollapsibleTask taskNumber={6} title="Answer The Reflection Question" done={reflectionDone} open={openTask === 6} onToggle={() => setOpenTask(openTask === 6 ? null : 6)}>
+          <CollapsibleTask taskNumber={6} title="Answer The Reflection Question" estimate={taskEstimates.reflection} done={reflectionDone} open={openTask === 6} onToggle={() => setOpenTask(openTask === 6 ? null : 6)}>
             <p className="mb-4 text-xl font-black leading-snug text-gray-950">{day.reflection_question}</p>
             <CommentSection
               articleSlug={chapterSlug(day.bible_reading_book, day.bible_reading_chapter)}
