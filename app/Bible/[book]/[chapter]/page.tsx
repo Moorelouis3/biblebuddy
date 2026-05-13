@@ -171,6 +171,7 @@ export default function BibleChapterPage() {
   const bookParam = decodeURIComponent(String(params.book));
   const book = bookParam;
   const chapter = Number(params.chapter);
+  const isChapterTextEmbed = searchParams.get("embedded") === "chapter-text";
 
   const [sections, setSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
@@ -2197,6 +2198,57 @@ No hyphens anywhere. No deep theology. Keep it cinematic, warm, simple.`;
               ← Back to {bookDisplayName}
             </Link>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isChapterTextEmbed) {
+    return (
+      <div className="h-screen overflow-y-auto bg-white px-4 py-5 sm:px-6 sm:py-6">
+        <div
+          ref={verseContainerRef}
+          className={`mx-auto max-w-3xl bg-white pb-8 pr-10 ${plainTextMode ? "plain-text-mode" : ""}`}
+        >
+          {sections.map((section) => (
+            <div key={section.id} className="mb-8 last:mb-0">
+              <h2 className="mb-4 flex items-center gap-2 text-xl font-semibold">
+                <span className="text-2xl">{section.emoji}</span>
+                <span>{section.title}</span>
+              </h2>
+              <div className="space-y-5">
+                {section.verses && section.verses.length > 0 ? (
+                  <>
+                    {(() => {
+                      const VerseHighlighter = require("../../../../components/VerseHighlighter").VerseHighlighter;
+                      let enrichedPerVerse: Record<number, string> = {};
+                      if (enrichedContent) {
+                        const html = enrichedContent.replace(/<!--.*?-->/, "").trim();
+                        const verseBlocks = Array.from(html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g));
+                        verseBlocks.forEach((block, idx) => {
+                          const badgeMatch = block[1].match(/<span[^>]*>(\d+)<\/span>/);
+                          const verseNum = badgeMatch ? parseInt(badgeMatch[1], 10) : idx + 1;
+                          enrichedPerVerse[verseNum] = `<p>${block[1]}</p>`;
+                        });
+                      }
+                      return (
+                        <VerseHighlighter
+                          book={book}
+                          chapter={chapter}
+                          plainTextMode={plainTextMode}
+                          verses={section.verses.map((v) => ({
+                            number: v.num,
+                            text: v.text,
+                            enrichedHtml: enrichedPerVerse[v.num],
+                          }))}
+                        />
+                      );
+                    })()}
+                  </>
+                ) : null}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     );

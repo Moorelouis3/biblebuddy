@@ -421,25 +421,19 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
 
   if (task.kind === "reading" && task.book && task.chapter) {
     const chapterLabel = task.chapterLabel || `${task.book} ${task.chapter}`;
-    const readerPath = `/Bible/${encodeURIComponent(task.book)}/${task.chapter}?from=louis-daily-task&embedded=1`;
+    const readerPath = `/Bible/${encodeURIComponent(task.book)}/${task.chapter}?from=louis-daily-task&embedded=chapter-text`;
 
     return (
       <ModalShell isOpen={true} onClose={() => void closeReadingAndRefresh()} backdropColor="bg-black/65" closeOnBackdrop={false}>
-        <div className="mx-2 flex h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-[26px] border border-[#d7e4f7] bg-white shadow-2xl sm:mx-4">
-          <div className="flex shrink-0 items-center justify-between gap-4 border-b border-[#d7e4f7] bg-white px-4 py-3 sm:px-6">
-            <div className="min-w-0">
-              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#4f8fb7]">Bible Reader</p>
-              <h2 className="truncate text-lg font-black text-gray-950 sm:text-xl">{chapterLabel}</h2>
-            </div>
+        <div className="relative mx-2 flex h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-[26px] border border-[#d7e4f7] bg-white shadow-2xl sm:mx-4">
             <button
               type="button"
               onClick={() => void closeReadingAndRefresh()}
-              className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gray-200 bg-white text-2xl font-light leading-none text-gray-700 shadow-sm transition hover:border-gray-300 hover:bg-gray-50 hover:text-gray-950"
+              className="absolute right-3 top-3 z-20 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gray-200 bg-white/95 text-2xl font-light leading-none text-gray-700 shadow-lg backdrop-blur transition hover:border-gray-300 hover:bg-gray-50 hover:text-gray-950"
               aria-label="Close Bible reader"
             >
               x
             </button>
-          </div>
           <iframe
             src={readerPath}
             title={`${chapterLabel} Bible reader`}
