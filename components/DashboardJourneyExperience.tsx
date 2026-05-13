@@ -244,70 +244,6 @@ function getTaskEmoji(task: TaskState) {
   return "\uD83D\uDD24";
 }
 
-function buildFallbackDashboardTasks(): TaskState[] {
-  return [
-    {
-      kind: "devotional",
-      title: "Read Chapter Intro",
-      pointsLabel: "+5 pts",
-      timeEstimateLabel: "3 min",
-      timeEstimateDetail: "Intro read",
-      href: "/devotionals",
-      done: false,
-    },
-    {
-      kind: "reading",
-      title: "Read Chapter",
-      pointsLabel: "+5 pts",
-      timeEstimateLabel: "4 min",
-      timeEstimateDetail: "Chapter reading",
-      href: null,
-      done: false,
-      disabled: true,
-    },
-    {
-      kind: "notes",
-      title: "Review Chapter Notes",
-      pointsLabel: "+5 pts",
-      timeEstimateLabel: "10 min",
-      timeEstimateDetail: "Study notes",
-      href: null,
-      done: false,
-      disabled: true,
-    },
-    {
-      kind: "trivia",
-      title: "Play Chapter Trivia",
-      pointsLabel: "Up to +5",
-      timeEstimateLabel: "4 min",
-      timeEstimateDetail: "Quick quiz",
-      href: null,
-      done: false,
-      disabled: true,
-    },
-    {
-      kind: "scrambled",
-      title: "Play Chapter Scrambled",
-      pointsLabel: "Up to +5",
-      timeEstimateLabel: "4 min",
-      timeEstimateDetail: "Word puzzle",
-      href: null,
-      done: false,
-      disabled: true,
-    },
-    {
-      kind: "reflection",
-      title: "Answer The Reflection Question",
-      pointsLabel: "+5 pts",
-      timeEstimateLabel: "3 min",
-      timeEstimateDetail: "Write your response",
-      href: null,
-      done: false,
-      disabled: true,
-    },
-  ];
-}
-
 function getDailyStudyCardClasses(allDone: boolean) {
   if (allDone) {
     return "border-green-200 bg-gradient-to-br from-[#ecfff2] via-[#f8fffb] to-[#e7f8ee]";
@@ -1032,8 +968,8 @@ export default function DashboardJourneyExperience({
   const [isResettingDevotional, setIsResettingDevotional] = useState(false);
   const [devotionalSettingsMessage, setDevotionalSettingsMessage] = useState<string | null>(null);
 
-  const fallbackTasks = !isLoadingChecklist && !checklistData ? buildFallbackDashboardTasks() : [];
-  const visibleTasks = checklistData?.tasks ?? fallbackTasks;
+  const isChecklistSyncing = isLoadingChecklist || !checklistData;
+  const visibleTasks = checklistData?.tasks ?? [];
   const totalTasks = visibleTasks.length || 5;
   const completedTasks = checklistData?.completedCount ?? 0;
   const allDone = checklistData?.allDone ?? false;
@@ -1502,7 +1438,7 @@ export default function DashboardJourneyExperience({
             <div
               className={`relative w-full overflow-visible rounded-[26px] border text-left shadow-sm transition hover:shadow-md ${getDailyStudyCardClasses(allDone)}`}
             >
-              {!isLoadingChecklist ? (
+              {!isChecklistSyncing ? (
                 <button
                   type="button"
                   onClick={(event) => {
@@ -1532,13 +1468,13 @@ export default function DashboardJourneyExperience({
               <button
                 type="button"
                 onClick={() => {
-                  if (isLoadingChecklist) return;
+                  if (isChecklistSyncing) return;
                   setShowDevotionalSettings(false);
                   setShowJourneyHelp(true);
                 }}
                 className="w-full rounded-[26px] px-4 py-4 text-left"
               >
-              {isLoadingChecklist ? (
+              {isChecklistSyncing ? (
                 <div className="animate-pulse">
                   <div className="flex items-start gap-3">
                     <div className="flex h-[58px] w-[58px] shrink-0 items-center justify-center rounded-full border border-white/90 bg-white/80 shadow-sm">
@@ -1593,7 +1529,7 @@ export default function DashboardJourneyExperience({
                 </div>
               )}
               </button>
-              {!isLoadingChecklist && allDone ? (
+              {!isChecklistSyncing && allDone ? (
                 <div className="px-4 pb-4">
                   <button
                     type="button"
@@ -1718,7 +1654,7 @@ export default function DashboardJourneyExperience({
               ) : null}
             </div>
 
-            {isLoadingChecklist ? (
+            {isChecklistSyncing ? (
               skeletonTasks.map((task, index) => (
                 <div
                   key={task.title}
