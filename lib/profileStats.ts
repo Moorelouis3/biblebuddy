@@ -35,6 +35,7 @@ export interface ProfileStats {
   has_fire_streak_badge?: boolean;
   fire_streak_awarded_at?: string | null;
   fire_streak_last_checked_at?: string | null;
+  selected_buddy_avatar?: string | null;
 }
 
 export interface HeatMapDay {

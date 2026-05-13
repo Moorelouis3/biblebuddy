@@ -83,6 +83,7 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   messages: "Messages",
   profile: "Profile",
   settings: "Settings",
+  "change-buddy": "Change Buddy",
   "bb-feed": "Community Feed",
   ambassador: "Partner Dashboard",
   "verse-of-the-day": "Verse of the Day",

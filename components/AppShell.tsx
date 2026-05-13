@@ -14,6 +14,7 @@ import { FeatureRenderPriorityProvider } from "./FeatureRenderPriorityContext";
 import { CURRENT_UPDATE_VERSION } from "../lib/globalUpdateConfig";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
 import { LouisAvatar } from "./LouisAvatar";
+import { SELECTED_BUDDY_STORAGE_KEY, normalizeBuddyAvatarId } from "../lib/buddyAvatars";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../lib/profileName";
 import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
@@ -327,11 +328,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   async function loadHeaderDashboardStats(currentUserId: string) {
     let { data, error }: { data: any; error: any } = await supabase
       .from("profile_stats")
-      .select("current_level, current_streak, grace_days_count, last_grace_day_earned_at, profile_image_url, display_name, username")
+      .select("current_level, current_streak, grace_days_count, last_grace_day_earned_at, profile_image_url, display_name, username, selected_buddy_avatar")
       .eq("user_id", currentUserId)
       .maybeSingle();
 
-    if (error && /grace_days_count|last_grace_day_earned_at/i.test(error.message || "")) {
+    if (error && /grace_days_count|last_grace_day_earned_at|selected_buddy_avatar/i.test(error.message || "")) {
       const fallback = await supabase
         .from("profile_stats")
         .select("current_level, current_streak, profile_image_url, display_name, username")
@@ -344,6 +345,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (error) {
       console.warn("[APPSHELL] Could not load header dashboard stats:", error);
       return;
+    }
+
+    if (typeof window !== "undefined" && typeof data?.selected_buddy_avatar === "string") {
+      window.localStorage.setItem(SELECTED_BUDDY_STORAGE_KEY, normalizeBuddyAvatarId(data.selected_buddy_avatar));
+      window.dispatchEvent(new CustomEvent("bb:selected-buddy-avatar-changed"));
     }
 
     setHeaderCurrentLevel(typeof data?.current_level === "number" && data.current_level > 0 ? data.current_level : 1);
@@ -2375,6 +2381,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       }`}
                     >
                       Settings
+                    </Link>
+
+                    {/* CHANGE BUDDY */}
+                    <Link
+                      href="/change-buddy"
+                      onClick={() => setIsProfileMenuOpen(false)}
+                      className={`block px-4 py-2 text-sm ${
+                        pathname?.startsWith("/change-buddy")
+                          ? "bg-sky-100 text-black font-medium"
+                          : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      ☺ Change Buddy
                     </Link>
 
                     {/* CONTACT US */}
