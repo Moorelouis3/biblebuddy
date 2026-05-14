@@ -2701,9 +2701,9 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!userId || typeof window === "undefined") return;
-    const existingCycle = getLouisDailyTaskCycleStartedAt(userId);
-    if (existingCycle) {
-      setLouisDailyTaskCycleStartedAt(existingCycle);
+    const cycleStartedAt = getLouisDailyTaskCycleStartedAt(userId) ?? ensureLouisDailyTaskCycle(userId);
+    if (cycleStartedAt) {
+      setLouisDailyTaskCycleStartedAt(cycleStartedAt);
     }
   }, [userId]);
 
