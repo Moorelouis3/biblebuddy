@@ -144,11 +144,7 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
     title === "The Wisdom of Proverbs" ||
     title === "The Testing of Joseph" ||
     title === "The Obedience of Abraham" ||
-    title === "The Rise of Esther" ||
-    title === "The Courage of Daniel" ||
-    title === "The Faith of Job" ||
-    title === "The Heart of David" ||
-    title === "The Transforming of Paul"
+    title === "The Rise of Esther"
   );
 }
 

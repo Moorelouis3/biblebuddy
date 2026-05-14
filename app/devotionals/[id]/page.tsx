@@ -103,10 +103,6 @@ const CHAPTER_JOURNEY_STUDY_TITLES = new Set([
   "The Testing of Joseph",
   "The Obedience of Abraham",
   "The Rise of Esther",
-  "The Courage of Daniel",
-  "The Faith of Job",
-  "The Heart of David",
-  "The Transforming of Paul",
 ]);
 
 function isChapterJourneyStudyTitle(title: string | null | undefined) {

@@ -58,9 +58,6 @@ type StudyCommunityModal = {
 
 const HIDDEN_DEVOTIONAL_TITLES = new Set([
   "The Calling of Moses",
-  "The Tempting of Jesus",
-  "The Disciples of Jesus",
-  "Women of the Bible",
 ]);
 
 const FEATURED_STUDY_ORDER = [
@@ -68,10 +65,6 @@ const FEATURED_STUDY_ORDER = [
   "The Testing of Joseph",
   "The Wisdom of Proverbs",
   "The Rise of Esther",
-  "The Courage of Daniel",
-  "The Faith of Job",
-  "The Heart of David",
-  "The Transforming of Paul",
 ];
 const FEATURED_STUDY_ORDER_INDEX = new Map(
   FEATURED_STUDY_ORDER.map((title, index) => [title, index]),

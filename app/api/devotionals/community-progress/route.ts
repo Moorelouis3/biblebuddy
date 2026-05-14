@@ -7,11 +7,6 @@ const CHAPTER_JOURNEY_TITLES = new Set([
   "The Obedience of Abraham",
   "The Testing of Joseph",
   "The Wisdom of Proverbs",
-  "The Rise of Esther",
-  "The Courage of Daniel",
-  "The Faith of Job",
-  "The Heart of David",
-  "The Transforming of Paul",
 ]);
 
 type DevotionalRow = {
