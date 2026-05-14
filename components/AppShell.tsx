@@ -2489,7 +2489,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               : "text-gray-700 hover:bg-gray-100"
                           }`}
                         >
-                          <span>Comments Admin</span>
+                          <span>Moderator Dashboard</span>
                           <span className="rounded-full bg-red-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-white shadow-sm animate-pulse">
                             New
                           </span>

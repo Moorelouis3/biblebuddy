@@ -21,6 +21,8 @@ type AdminComment = {
   contextContent: string;
   userId: string | null;
   userName: string;
+  userImage: string | null;
+  userProfileHref: string | null;
   content: string;
   createdAt: string;
   parentId: string | null;
@@ -29,6 +31,13 @@ type AdminComment = {
   replyCount: number;
   hasMyReply: boolean;
   isMine?: boolean;
+};
+
+type ProfileLite = {
+  user_id: string;
+  display_name: string | null;
+  username: string | null;
+  profile_image_url: string | null;
 };
 
 function getServerClients(request: NextRequest) {
@@ -106,6 +115,32 @@ function bibleChapterReflectionContext(slug: string) {
   };
 }
 
+const ARTICLE_PATH_BY_SLUG: Record<string, string> = {
+  "favorite-book-of-the-bible": "/bible-study-hub/bible-insights/favorite-book-of-the-bible",
+  "how-to-defend-the-bible": "/bible-study-hub/bible-insights/how-to-defend-the-bible",
+  "what-is-the-bible": "/bible-study-hub/bible-insights/what-is-the-bible",
+  "which-bible-character-relates": "/bible-study-hub/bible-insights/which-bible-character-relates",
+  "why-so-many-bible-translations": "/bible-study-hub/bible-insights/why-so-many-bible-translations",
+  "how-do-you-take-notes": "/bible-study-hub/bible-study-tips/how-do-you-take-notes",
+  "what-keeps-you-consistent": "/bible-study-hub/bible-study-tips/what-keeps-you-consistent",
+  "whats-your-best-study-tip": "/bible-study-hub/bible-study-tips/whats-your-best-study-tip",
+  "favorite-bible-character": "/bible-study-hub/character-studies/favorite-bible-character",
+  "most-misunderstood-character": "/bible-study-hub/character-studies/most-misunderstood-character",
+  "who-do-you-relate-to": "/bible-study-hub/character-studies/who-do-you-relate-to",
+  "what-does-being-christian-mean": "/bible-study-hub/christian-foundations/what-does-being-christian-mean",
+  "what-does-following-jesus-look-like": "/bible-study-hub/christian-foundations/what-does-following-jesus-look-like",
+  "what-is-heaven": "/bible-study-hub/christian-foundations/what-is-heaven",
+  "what-is-hell": "/bible-study-hub/christian-foundations/what-is-hell",
+  "what-is-your-testimony": "/bible-study-hub/christian-foundations/what-is-your-testimony",
+  "why-so-many-denominations": "/bible-study-hub/christian-foundations/why-so-many-denominations",
+};
+
+function articleHrefFromSlug(slug: string) {
+  if (!slug) return "/bible-study-hub";
+  if (slug.startsWith("/")) return slug;
+  return ARTICLE_PATH_BY_SLUG[slug] || `/bible-study-hub/${slug}`;
+}
+
 function clipText(value: unknown, max = 700) {
   const normalized = typeof value === "string" ? value.replace(/\s+/g, " ").trim() : "";
   return normalized.length > max ? `${normalized.slice(0, max).trim()}...` : normalized;
@@ -129,14 +164,41 @@ function addReplyMetadata(rows: AdminComment[], requesterId: string) {
   }));
 }
 
-function todayKey(date = new Date()) {
-  return date.toISOString().slice(0, 10);
+function todayKey(date = new Date(), timezoneOffsetMinutes = 0) {
+  return new Date(date.getTime() - timezoneOffsetMinutes * 60000).toISOString().slice(0, 10);
 }
 
-function buildStats(comments: AdminComment[], requesterId: string, allCommentsForReplyStats = comments) {
-  const today = todayKey();
-  const todayComments = comments.filter((comment) => comment.createdAt?.slice(0, 10) === today);
-  const myRepliesToday = allCommentsForReplyStats.filter((comment) => comment.createdAt?.slice(0, 10) === today && comment.userId === requesterId && comment.isReply);
+function localDayUtcRange(timezoneOffsetMinutes = 0) {
+  const localKey = todayKey(new Date(), timezoneOffsetMinutes);
+  const [year, month, day] = localKey.split("-").map(Number);
+  const start = new Date(Date.UTC(year, month - 1, day) + timezoneOffsetMinutes * 60000);
+  const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
+  return { startIso: start.toISOString(), endIso: end.toISOString() };
+}
+
+function displayName(profile: Partial<ProfileLite> | null | undefined, fallback = "Bible Buddy") {
+  return profile?.display_name || profile?.username || fallback;
+}
+
+function describeAction(actionType: string, actionLabel: string | null | undefined) {
+  const label = actionLabel || "";
+  const prettyLabel = label.replace(/^chapter:/i, "").replace(/^post:/i, "").replace(/_/g, " ").trim();
+
+  if (actionType.includes("trivia")) return prettyLabel ? `finished trivia for ${prettyLabel}` : "finished a trivia round";
+  if (actionType.includes("scrambled")) return prettyLabel ? `played Scrambled for ${prettyLabel}` : "played Scrambled";
+  if (actionType.includes("chapter") && actionType.includes("completed")) return prettyLabel ? `finished ${prettyLabel}` : "finished a Bible chapter";
+  if (actionType.includes("notes")) return prettyLabel ? `reviewed notes for ${prettyLabel}` : "reviewed Bible notes";
+  if (actionType.includes("reflection")) return prettyLabel ? `posted a reflection for ${prettyLabel}` : "posted a reflection";
+  if (actionType.includes("comment")) return prettyLabel ? `commented on ${prettyLabel}` : "posted a comment";
+  if (actionType.includes("like")) return prettyLabel ? `liked ${prettyLabel}` : "liked something";
+  if (actionType.includes("login")) return "opened Bible Buddy";
+  return prettyLabel ? `${actionType.replace(/_/g, " ")}: ${prettyLabel}` : actionType.replace(/_/g, " ");
+}
+
+function buildStats(comments: AdminComment[], requesterId: string, allCommentsForReplyStats = comments, timezoneOffsetMinutes = 0) {
+  const today = todayKey(new Date(), timezoneOffsetMinutes);
+  const todayComments = comments.filter((comment) => todayKey(new Date(comment.createdAt), timezoneOffsetMinutes) === today);
+  const myRepliesToday = allCommentsForReplyStats.filter((comment) => todayKey(new Date(comment.createdAt), timezoneOffsetMinutes) === today && comment.userId === requesterId && comment.isReply);
   const needsReply = comments.filter((comment) => !comment.isReply && comment.userId !== requesterId && !comment.hasMyReply);
   const bySource = comments.reduce<Record<string, number>>((acc, comment) => {
     acc[comment.source] = (acc[comment.source] || 0) + 1;
@@ -158,6 +220,12 @@ export async function GET(request: NextRequest) {
 
   const { admin, requester } = auth;
   const limit = Math.min(Number(request.nextUrl.searchParams.get("limit") || 30), 100);
+  const timezoneOffsetMinutes = Number(request.nextUrl.searchParams.get("tzOffset") || 0);
+  const buddyPage = Math.max(0, Number(request.nextUrl.searchParams.get("buddyPage") || 0));
+  const buddyLimit = Math.min(Math.max(10, Number(request.nextUrl.searchParams.get("buddyLimit") || 20)), 50);
+  const buddyFrom = buddyPage * buddyLimit;
+  const buddyTo = buddyFrom + buddyLimit - 1;
+  const todayRange = localDayUtcRange(timezoneOffsetMinutes);
 
   const [
     articleTopRes,
@@ -193,11 +261,13 @@ export async function GET(request: NextRequest) {
       kind: "article_comment",
       source: isBibleChapter ? "Bible Chapters" : "Articles",
       sourceLabel,
-      href: isBibleChapter ? slug.replace(/^bible-chapter-/, "/Bible/").replace(/-(\d+)$/, "/$1") : slug || "/bible-study-hub",
+      href: isBibleChapter ? slug.replace(/^bible-chapter-/, "/Bible/").replace(/-(\d+)$/, "/$1") : articleHrefFromSlug(slug),
       contextTitle: bibleContext?.contextTitle ?? sourceLabel,
       contextContent: bibleContext?.contextContent ?? `This comment was posted under the article or discussion page: ${sourceLabel}.`,
       userId: row.user_id,
       userName: row.user_name || "Anonymous",
+      userImage: null,
+      userProfileHref: row.user_id ? `/profile/${row.user_id}` : null,
       content: row.content || "",
       createdAt: row.created_at,
       parentId: row.parent_id,
@@ -219,6 +289,8 @@ export async function GET(request: NextRequest) {
       contextContent: "",
       userId: row.user_id,
       userName: "Buddy",
+      userImage: null,
+      userProfileHref: row.user_id ? `/profile/${row.user_id}` : null,
       content: row.content || "",
       createdAt: row.created_at,
       parentId: row.parent_comment_id,
@@ -240,6 +312,8 @@ export async function GET(request: NextRequest) {
       contextContent: "",
       userId: row.user_id,
       userName: row.display_name || "Buddy",
+      userImage: null,
+      userProfileHref: row.user_id ? `/profile/${row.user_id}` : null,
       content: row.content || "",
       createdAt: row.created_at,
       parentId: row.parent_post_id,
@@ -261,6 +335,8 @@ export async function GET(request: NextRequest) {
       contextContent: "",
       userId: row.user_id,
       userName: row.display_name || "Buddy",
+      userImage: null,
+      userProfileHref: row.user_id ? `/profile/${row.user_id}` : null,
       content: row.content || "",
       createdAt: row.created_at,
       parentId: row.parent_comment_id,
@@ -282,6 +358,8 @@ export async function GET(request: NextRequest) {
       contextContent: "This comment was posted as a Bible study reflection.",
       userId: row.user_id,
       userName: row.display_name || "Buddy",
+      userImage: null,
+      userProfileHref: row.user_id ? `/profile/${row.user_id}` : null,
       content: row.content || "",
       createdAt: row.created_at,
       parentId: row.parent_reflection_id,
@@ -357,20 +435,131 @@ export async function GET(request: NextRequest) {
     return comment;
   });
 
+  const visibleUserIds = [...new Set(withContext.map((comment) => comment.userId).filter(Boolean) as string[])];
+  const { data: profileRows } = visibleUserIds.length
+    ? await admin
+        .from("profile_stats")
+        .select("user_id, display_name, username, profile_image_url")
+        .in("user_id", visibleUserIds)
+    : { data: [] as any[] };
+  const profileMap = new Map((profileRows || []).map((profile: any) => [profile.user_id, profile]));
+  const enrichedWithProfiles = withContext.map((comment) => {
+    const profile = comment.userId ? profileMap.get(comment.userId) : null;
+    return {
+      ...comment,
+      userName: profile?.display_name || profile?.username || comment.userName,
+      userImage: profile?.profile_image_url || null,
+      userProfileHref: comment.userId ? `/profile/${comment.userId}` : null,
+    };
+  });
+
   const normalizedForStats = enrichedWithReplies.map((comment) => {
     if (comment.kind !== "group_feed_comment" || !comment.parentId) return comment;
     const parent = groupMap.get(comment.parentId);
     return { ...comment, isReply: Boolean(parent?.parent_post_id) };
   });
 
+  const [signupRes, actionRes, activeRes] = await Promise.all([
+    admin
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url, created_at")
+      .order("created_at", { ascending: false })
+      .limit(12),
+    admin
+      .from("master_actions")
+      .select("id, user_id, username, action_type, action_label, created_at")
+      .gte("created_at", todayRange.startIso)
+      .lt("created_at", todayRange.endIso)
+      .order("created_at", { ascending: false })
+      .limit(60),
+    admin
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url, current_level, current_streak, total_actions, last_active_at, last_active_date", { count: "exact" })
+      .order("total_actions", { ascending: false, nullsFirst: false })
+      .range(buddyFrom, buddyTo),
+  ]);
+
+  const dashboardUserIds = [
+    ...(signupRes.data || []).map((row: any) => row.user_id),
+    ...(actionRes.data || []).map((row: any) => row.user_id),
+    ...(activeRes.data || []).map((row: any) => row.user_id),
+  ].filter(Boolean);
+  const missingProfileIds = [...new Set(dashboardUserIds)].filter((id) => !profileMap.has(id));
+
+  if (missingProfileIds.length > 0) {
+    const { data: dashboardProfiles } = await admin
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url")
+      .in("user_id", missingProfileIds);
+
+    (dashboardProfiles || []).forEach((profile: any) => profileMap.set(profile.user_id, profile));
+  }
+
+  const hourlyActionCounts = Array.from({ length: 24 }, (_, hour) => ({
+    hour,
+    count: 0,
+  }));
+
+  (actionRes.data || []).forEach((action: any) => {
+    const actionDate = new Date(action.created_at);
+    if (Number.isNaN(actionDate.getTime())) return;
+    const localActionDate = new Date(actionDate.getTime() - timezoneOffsetMinutes * 60000);
+    const hour = localActionDate.getUTCHours();
+    if (hourlyActionCounts[hour]) hourlyActionCounts[hour].count += 1;
+  });
+
   return NextResponse.json({
-    comments: withContext,
+    moderator: {
+      id: requester.id,
+      name: auth.requesterName,
+      image: auth.requesterImage,
+    },
+    comments: enrichedWithProfiles,
+    recentSignups: (signupRes.data || []).map((row: any) => ({
+      userId: row.user_id,
+      name: displayName(row, "New Buddy"),
+      image: row.profile_image_url || null,
+      profileHref: `/profile/${row.user_id}`,
+      createdAt: row.created_at,
+    })),
+    activityFeed: (actionRes.data || []).slice(0, 25).map((row: any) => {
+      const profile = row.user_id ? profileMap.get(row.user_id) : null;
+      const name = displayName(profile, row.username || "Bible Buddy");
+      return {
+        id: row.id,
+        userId: row.user_id,
+        name,
+        image: profile?.profile_image_url || null,
+        profileHref: row.user_id ? `/profile/${row.user_id}` : null,
+        actionType: row.action_type,
+        actionLabel: row.action_label,
+        text: `${name} ${describeAction(row.action_type || "", row.action_label)}.`,
+        createdAt: row.created_at,
+      };
+    }),
+    hourlyActionCounts,
+    activeBuddies: {
+      page: buddyPage,
+      pageSize: buddyLimit,
+      total: activeRes.count ?? 0,
+      rows: (activeRes.data || []).map((row: any, index: number) => ({
+        rank: buddyFrom + index + 1,
+        userId: row.user_id,
+        name: displayName(row, "Bible Buddy"),
+        image: row.profile_image_url || null,
+        profileHref: `/profile/${row.user_id}`,
+        level: row.current_level ?? 1,
+        streak: row.current_streak ?? 0,
+        totalActions: row.total_actions ?? 0,
+        lastActiveAt: row.last_active_at || row.last_active_date || null,
+      })),
+    },
     stats: buildStats(normalizedForStats.filter((comment) => {
       if (comment.isReply) return false;
       if (comment.kind !== "group_feed_comment" || !comment.parentId) return true;
       const parent = groupMap.get(comment.parentId);
       return !parent?.parent_post_id;
-    }), requester.id, normalizedForStats),
+    }), requester.id, normalizedForStats, timezoneOffsetMinutes),
   });
 }
 

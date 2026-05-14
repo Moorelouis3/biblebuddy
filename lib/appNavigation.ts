@@ -98,7 +98,7 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   "little-louis": "Little Louis",
   scheduler: "Scheduler",
   lessons: "How to Use",
-  "comments-admin": "Comments Admin",
+  "comments-admin": "Moderator Dashboard",
 };
 
 function titleCase(value: string) {
