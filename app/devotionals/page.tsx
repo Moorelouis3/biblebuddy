@@ -30,6 +30,32 @@ type StudyProgressSummary = {
   label: string;
 };
 
+type StudyBuddyProgress = {
+  rank: number;
+  userId: string;
+  name: string;
+  image: string | null;
+  profileHref: string;
+  level: number;
+  completedTasks: number;
+  completedChapters: number;
+  totalChapters: number;
+  percent: number;
+  label: string;
+};
+
+type StudyCommunitySummary = {
+  total: number;
+  avatars: StudyBuddyProgress[];
+};
+
+type StudyCommunityModal = {
+  devotional: Devotional;
+  page: number;
+  total: number;
+  rows: StudyBuddyProgress[];
+};
+
 const HIDDEN_DEVOTIONAL_TITLES = new Set([
   "The Calling of Moses",
 ]);
@@ -88,6 +114,9 @@ export default function DevotionalsPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [progressByDevotional, setProgressByDevotional] = useState<Record<string, StudyProgressSummary>>({});
+  const [communityByDevotional, setCommunityByDevotional] = useState<Record<string, StudyCommunitySummary>>({});
+  const [communityModal, setCommunityModal] = useState<StudyCommunityModal | null>(null);
+  const [communityLoading, setCommunityLoading] = useState(false);
 
   // Load "Don't show again" preference from localStorage
   useEffect(() => {
@@ -247,6 +276,57 @@ export default function DevotionalsPage() {
 
       return 0;
     }), [devotionals]);
+
+  useEffect(() => {
+    if (visibleDevotionals.length === 0) {
+      setCommunityByDevotional({});
+      return;
+    }
+
+    let cancelled = false;
+
+    async function loadCommunityPreview() {
+      try {
+        const ids = visibleDevotionals.map((devotional) => devotional.id).join(",");
+        const response = await fetch(`/api/devotionals/community-progress?ids=${encodeURIComponent(ids)}`);
+        const payload = await response.json().catch(() => null);
+        if (!response.ok) throw new Error(payload?.error || "Could not load study community.");
+        if (!cancelled) setCommunityByDevotional(payload?.summaries || {});
+      } catch (error) {
+        console.error("[BIBLE_STUDIES] Error loading community progress:", error);
+        if (!cancelled) setCommunityByDevotional({});
+      }
+    }
+
+    void loadCommunityPreview();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [visibleDevotionals]);
+
+  async function openCommunityModal(devotional: Devotional, page = 0) {
+    setCommunityLoading(true);
+    try {
+      const response = await fetch(
+        `/api/devotionals/community-progress?devotionalId=${encodeURIComponent(devotional.id)}&page=${page}&pageSize=10`,
+      );
+      const payload = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(payload?.error || "Could not load study Buddies.");
+      const selected = payload?.selected;
+      setCommunityModal({
+        devotional,
+        page: selected?.page ?? page,
+        total: selected?.total ?? 0,
+        rows: selected?.rows ?? [],
+      });
+    } catch (error) {
+      console.error("[BIBLE_STUDIES] Error loading community list:", error);
+      setCommunityModal({ devotional, page, total: 0, rows: [] });
+    } finally {
+      setCommunityLoading(false);
+    }
+  }
 
   useEffect(() => {
     let cancelled = false;
@@ -564,6 +644,7 @@ export default function DevotionalsPage() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {visibleDevotionals.map((devotional) => {
               const progress = progressByDevotional[devotional.id] ?? buildEmptyProgress(devotional);
+              const community = communityByDevotional[devotional.id];
               const isComplete = progress.isComplete;
               const card = (
                 <div className={`group h-full rounded-3xl border p-3 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl ${
@@ -605,6 +686,43 @@ export default function DevotionalsPage() {
                     </div>
                   </div>
                   <div className={`mt-3 h-2 rounded-full ${isComplete ? "bg-emerald-300" : "bg-[#d7e8f5]"}`} />
+                  {community && community.total > 0 ? (
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        void openCommunityModal(devotional, 0);
+                      }}
+                      className="mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-gray-100 bg-white/85 px-3 py-2 text-left transition hover:border-[#7BAFD4] hover:bg-[#f7fbfd]"
+                    >
+                      <span className="flex min-w-0 items-center">
+                        {community.avatars.slice(0, 5).map((buddy, index) => (
+                          <span
+                            key={buddy.userId}
+                            className="-ml-2 grid h-8 w-8 place-items-center overflow-hidden rounded-full border-2 border-white bg-[#eaf6ff] text-xs font-black text-[#2f6685] first:ml-0"
+                            style={{ zIndex: 10 - index }}
+                            title={buddy.name}
+                          >
+                            {buddy.image ? (
+                              <img src={buddy.image} alt="" className="h-full w-full object-cover" />
+                            ) : (
+                              buddy.name.charAt(0).toUpperCase()
+                            )}
+                          </span>
+                        ))}
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="block truncate text-xs font-black text-gray-900">
+                          {community.total} {community.total === 1 ? "Buddy is" : "Buddies are"} studying this
+                        </span>
+                        <span className="text-[11px] font-bold text-gray-500">Tap to see progress</span>
+                      </span>
+                    </button>
+                  ) : (
+                    <div className="mt-3 rounded-2xl border border-gray-100 bg-white/70 px-3 py-2 text-xs font-bold text-gray-400">
+                      Be the first Buddy to start this study.
+                    </div>
+                  )}
                 </div>
               );
               return (
@@ -649,6 +767,105 @@ export default function DevotionalsPage() {
           </div>
         )}
       </div>
+      {communityModal ? (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 py-6"
+          onClick={() => setCommunityModal(null)}
+        >
+          <div
+            className="flex max-h-[82vh] w-full max-w-xl flex-col overflow-hidden rounded-[28px] border border-gray-200 bg-white shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="border-b border-gray-100 bg-[#f7fbfd] px-5 py-4">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#4f8fb7]">Study Buddies</p>
+                  <h2 className="mt-1 text-2xl font-black text-gray-950">{communityModal.devotional.title}</h2>
+                  <p className="mt-1 text-sm font-semibold text-gray-500">
+                    Ranked by chapters completed, then total tasks finished.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setCommunityModal(null)}
+                  className="grid h-9 w-9 place-items-center rounded-full bg-white text-lg font-black text-gray-600 shadow-sm hover:bg-gray-50"
+                  aria-label="Close study buddies"
+                >
+                  x
+                </button>
+              </div>
+            </div>
+
+            <div className="min-h-0 flex-1 overflow-y-auto p-4">
+              {communityLoading ? (
+                <div className="py-10 text-center text-sm font-bold text-gray-500">Loading Buddies...</div>
+              ) : communityModal.rows.length === 0 ? (
+                <div className="rounded-3xl border border-gray-100 bg-[#fbfcf8] p-6 text-center">
+                  <p className="text-lg font-black text-gray-900">No Buddies yet</p>
+                  <p className="mt-2 text-sm font-semibold text-gray-500">The first person to finish a task will show up here.</p>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {communityModal.rows.map((buddy) => (
+                    <a
+                      key={buddy.userId}
+                      href={buddy.profileHref}
+                      className="flex items-center gap-3 rounded-2xl border border-gray-100 bg-[#fbfcf8] p-3 transition hover:border-[#7BAFD4]"
+                    >
+                      <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-[#fef3c7] text-sm font-black text-[#9a6115]">
+                        {buddy.rank}
+                      </span>
+                      <span className="grid h-12 w-12 flex-none place-items-center overflow-hidden rounded-full bg-[#eaf6ff] text-sm font-black text-[#2f6685]">
+                        {buddy.image ? (
+                          <img src={buddy.image} alt="" className="h-full w-full object-cover" />
+                        ) : (
+                          buddy.name.charAt(0).toUpperCase()
+                        )}
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="block truncate text-base font-black text-gray-950">{buddy.name}</span>
+                        <span className="block text-xs font-bold text-gray-500">L{buddy.level} - {buddy.label}</span>
+                        <span className="mt-1 block h-2 overflow-hidden rounded-full bg-white">
+                          <span className="block h-full rounded-full bg-[#7BAFD4]" style={{ width: `${buddy.percent}%` }} />
+                        </span>
+                      </span>
+                      <span className="text-right text-xs font-black text-gray-500">
+                        {buddy.completedTasks} tasks
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="flex items-center justify-between gap-3 border-t border-gray-100 px-5 py-4">
+              <p className="text-xs font-bold text-gray-500">
+                {communityModal.total > 0
+                  ? `Showing ${communityModal.page * 10 + 1}-${Math.min((communityModal.page + 1) * 10, communityModal.total)} of ${communityModal.total}`
+                  : "No Buddies yet"}
+              </p>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => void openCommunityModal(communityModal.devotional, Math.max(0, communityModal.page - 1))}
+                  disabled={communityModal.page === 0 || communityLoading}
+                  className="rounded-full border border-gray-200 px-4 py-2 text-sm font-black text-gray-700 disabled:opacity-40"
+                >
+                  Previous
+                </button>
+                <button
+                  type="button"
+                  onClick={() => void openCommunityModal(communityModal.devotional, communityModal.page + 1)}
+                  disabled={communityLoading || (communityModal.page + 1) * 10 >= communityModal.total}
+                  className="rounded-full bg-[#7BAFD4] px-4 py-2 text-sm font-black text-slate-950 disabled:opacity-40"
+                >
+                  Next 10
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
