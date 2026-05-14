@@ -131,12 +131,28 @@ interface TopBuddy {
   likes: number;
   appXp?: number;
   actions?: number;
+  scoreBreakdown?: {
+    bibleTasks?: number;
+    community?: number;
+    xpTieBreaker?: number;
+  };
   score: number;
 }
 
 interface TopBuddiesEngagement {
   totalClicks: number;
   uniqueClickers: number;
+  clickers?: Array<{
+    userId: string;
+    displayName: string;
+    username: string | null;
+    profileImageUrl: string | null;
+    memberBadge: string | null;
+    isPaid: boolean;
+    currentStreak?: number | null;
+    currentLevel?: number | null;
+    openedAt: string | null;
+  }>;
 }
 
 function getWeeklyBoardRangeLabel() {
@@ -1976,10 +1992,9 @@ export default function GroupChatPage() {
   const [membersSearch, setMembersSearch] = useState("");
   const [showTopBuddiesModal, setShowTopBuddiesModal] = useState(false);
   const [topBuddies, setTopBuddies] = useState<TopBuddy[]>([]);
-  const [allTimeTopBuddies, setAllTimeTopBuddies] = useState<TopBuddy[]>([]);
-  const [topBuddiesTab, setTopBuddiesTab] = useState<"week" | "allTime">("week");
   const [topBuddiesExpanded, setTopBuddiesExpanded] = useState(false);
   const [topBuddiesEngagement, setTopBuddiesEngagement] = useState<TopBuddiesEngagement | null>(null);
+  const [topBuddiesClickersExpanded, setTopBuddiesClickersExpanded] = useState(false);
   const [hasOpenedTopBuddiesCard, setHasOpenedTopBuddiesCard] = useState(false);
   const [loadingTopBuddies, setLoadingTopBuddies] = useState(false);
   const MEMBERS_PAGE = 20;
@@ -2678,7 +2693,6 @@ export default function GroupChatPage() {
       if (cached) {
         const payload = JSON.parse(cached);
         setTopBuddies(payload.weeklyBuddies || payload.buddies || []);
-        setAllTimeTopBuddies(payload.allTimeBuddies || []);
         setTopBuddiesEngagement(payload.engagement || null);
         showedCachedBoard = true;
       }
@@ -2709,13 +2723,12 @@ export default function GroupChatPage() {
         }
 
         setTopBuddies(payload.weeklyBuddies || payload.buddies || []);
-        setAllTimeTopBuddies(payload.allTimeBuddies || []);
         setTopBuddiesEngagement(payload.engagement || null);
         localStorage.setItem(
           cacheKey,
           JSON.stringify({
             weeklyBuddies: payload.weeklyBuddies || payload.buddies || [],
-            allTimeBuddies: payload.allTimeBuddies || [],
+            allTimeBuddies: [],
             engagement: payload.engagement || null,
             cachedAt: Date.now(),
           }),
@@ -2732,7 +2745,6 @@ export default function GroupChatPage() {
       console.error("[TOP_BUDDIES] Failed to load:", error);
       if (!showedCachedBoard) {
         setTopBuddies([]);
-        setAllTimeTopBuddies([]);
         setTopBuddiesEngagement(null);
       }
     } finally {
@@ -2745,7 +2757,7 @@ export default function GroupChatPage() {
     setHasOpenedTopBuddiesCard(localStorage.getItem(`top-buddies-opened:${group.id}`) === "true");
   }, [group?.id]);
 
-  async function trackTopBuddiesClick(action: "open" | "tab_week" | "tab_all_time" | "modal") {
+  async function trackTopBuddiesClick(action: "open" | "modal") {
     if (!userId || !group) return;
     const actionLabel = `top_buddies_card_opened:${group.id}:${action}`;
     setTopBuddiesEngagement((current) =>
@@ -2753,6 +2765,7 @@ export default function GroupChatPage() {
         ? {
             totalClicks: current.totalClicks + 1,
             uniqueClickers: current.uniqueClickers,
+            clickers: current.clickers,
           }
         : { totalClicks: 1, uniqueClickers: 1 },
     );
@@ -2773,11 +2786,6 @@ export default function GroupChatPage() {
       }
       return next;
     });
-  }
-
-  function changeTopBuddiesTab(tab: "week" | "allTime") {
-    setTopBuddiesTab(tab);
-    void trackTopBuddiesClick(tab === "week" ? "tab_week" : "tab_all_time");
   }
 
   function getTopBuddyMedal(rank: number) {
@@ -2803,11 +2811,12 @@ export default function GroupChatPage() {
   }
 
   function renderTopBuddiesLeaderboardCard() {
-    const currentBuddies = topBuddiesTab === "week" ? topBuddies : allTimeTopBuddies;
+    const currentBuddies = topBuddies;
     const topThree = currentBuddies.slice(0, 3);
     const weekRangeLabel = getWeeklyBoardRangeLabel();
+    const boardClickers = topBuddiesEngagement?.clickers || [];
     const clickLabel = topBuddiesEngagement
-      ? `${topBuddiesEngagement.totalClicks} click${topBuddiesEngagement.totalClicks === 1 ? "" : "s"}`
+      ? `${topBuddiesEngagement.uniqueClickers} ${topBuddiesEngagement.uniqueClickers === 1 ? "buddy" : "buddies"} opened this board`
       : "0 clicks";
 
     return (
@@ -2829,7 +2838,7 @@ export default function GroupChatPage() {
                   Top 10 Bible Buddies
                 </h3>
                 <p className="mt-0.5 animate-pulse text-xs font-black text-[#64748b]">
-                  {topBuddiesTab === "week" ? weekRangeLabel : "All-time XP leaders"}
+                  {weekRangeLabel}
                 </p>
               </div>
             </div>
@@ -2851,25 +2860,11 @@ export default function GroupChatPage() {
 
         {topBuddiesExpanded && (
           <div className="border-t border-[#e3edf3] bg-[#fbfdff] px-4 pb-4 pt-3">
-            <div className="mb-3 flex rounded-full bg-white p-1 shadow-inner ring-1 ring-[#dbe7f0]">
-              <button
-                type="button"
-                onClick={() => changeTopBuddiesTab("week")}
-                className={`flex-1 rounded-full px-3 py-2 text-xs font-black transition ${
-                  topBuddiesTab === "week" ? "bg-[#7BAFD4] text-slate-950 shadow-sm" : "text-[#64748b] hover:bg-[#f1f6fb]"
-                }`}
-              >
-                This Week
-              </button>
-              <button
-                type="button"
-                onClick={() => changeTopBuddiesTab("allTime")}
-                className={`flex-1 rounded-full px-3 py-2 text-xs font-black transition ${
-                  topBuddiesTab === "allTime" ? "bg-[#7BAFD4] text-slate-950 shadow-sm" : "text-[#64748b] hover:bg-[#f1f6fb]"
-                }`}
-              >
-                All Time
-              </button>
+            <div className="mb-3 rounded-2xl border border-[#dbe7f0] bg-white px-3 py-3">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#4f8fb7]">How weekly Top Buddies are calculated</p>
+              <p className="mt-1 text-xs font-semibold leading-5 text-[#516173]">
+                Real Bible work counts most: readings, notes, trivia rounds, Scrambled rounds, and reflections. Group replies and posts count with caps. Opens, board views, and random clicks do not count. XP only breaks ties.
+              </p>
             </div>
 
             {loadingTopBuddies ? (
@@ -2885,7 +2880,7 @@ export default function GroupChatPage() {
                 {currentBuddies.map((buddy) => {
                   const medal = getTopBuddyMedal(buddy.rank);
                   return (
-                    <div key={`${topBuddiesTab}-${buddy.userId}`} className="flex items-center gap-3 rounded-2xl border border-[#e1ebf2] bg-white px-3 py-3 shadow-sm">
+                    <div key={`week-${buddy.userId}`} className="flex items-center gap-3 rounded-2xl border border-[#e1ebf2] bg-white px-3 py-3 shadow-sm">
                       <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-sm font-black ${medal.classes}`}>
                         {medal.icon || medal.label}
                       </div>
@@ -2902,12 +2897,12 @@ export default function GroupChatPage() {
                           <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                         </div>
                         <p className="mt-0.5 text-[11px] font-semibold text-[#718096]">
-                          {buddy.actions || 0} Bible tasks
+                          {buddy.actions || 0} actions · {buddy.scoreBreakdown?.community || 0} community pts · {buddy.appXp || 0} XP tie-breaker
                         </p>
                       </div>
                       <div className="text-right">
                         <p className="text-lg font-black text-[#1f2a44]">{buddy.score}</p>
-                        <p className="text-[11px] font-bold text-[#718096]">{topBuddiesTab === "week" ? "XP week" : "XP all"}</p>
+                        <p className="text-[11px] font-bold text-[#718096]">buddy score</p>
                       </div>
                     </div>
                   );
@@ -2915,8 +2910,14 @@ export default function GroupChatPage() {
               </div>
             )}
 
-            <div className="mt-3 flex items-center justify-between rounded-2xl border border-[#e1ebf2] bg-white px-3 py-2 text-xs font-bold text-[#64748b]">
-              <span>{clickLabel} opened this board</span>
+            <div className="mt-3 flex items-center justify-between gap-2 rounded-2xl border border-[#e1ebf2] bg-white px-3 py-2 text-xs font-bold text-[#64748b]">
+              <button
+                type="button"
+                onClick={() => setTopBuddiesClickersExpanded((current) => !current)}
+                className="text-left font-black text-[#47677c]"
+              >
+                {clickLabel} {boardClickers.length ? (topBuddiesClickersExpanded ? "▲" : "▼") : ""}
+              </button>
               <button
                 type="button"
                 onClick={() => {
@@ -2928,6 +2929,35 @@ export default function GroupChatPage() {
                 Full view
               </button>
             </div>
+            {topBuddiesClickersExpanded && (
+              <div className="mt-2 rounded-2xl border border-[#e1ebf2] bg-white p-3">
+                {boardClickers.length === 0 ? (
+                  <p className="text-xs font-bold text-[#64748b]">No opens tracked yet.</p>
+                ) : (
+                  <div className="space-y-2">
+                    {boardClickers.map((clicker) => (
+                      <Link key={clicker.userId} href={`/profile/${clicker.userId}`} className="flex items-center gap-3 rounded-xl px-2 py-2 hover:bg-[#f5f9fc]">
+                        {clicker.profileImageUrl ? (
+                          <img src={clicker.profileImageUrl} alt={clicker.displayName} className="h-9 w-9 rounded-full object-cover ring-2 ring-white shadow-sm" />
+                        ) : (
+                          <div className="flex h-9 w-9 items-center justify-center rounded-full text-xs font-black text-white ring-2 ring-white shadow-sm" style={{ backgroundColor: avatarColor(clicker.userId) }}>
+                            {getInitial(clicker.displayName)}
+                          </div>
+                        )}
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-sm font-black text-[#1f2a44]">{clicker.displayName}</p>
+                          <p className="text-[11px] font-bold text-[#718096]">
+                            {clicker.openedAt ? new Date(clicker.openedAt).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "Opened board"}
+                          </p>
+                        </div>
+                        <StreakFlameBadge currentStreak={clicker.currentStreak} />
+                        <LevelBadge currentLevel={clicker.currentLevel} />
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -4769,7 +4799,7 @@ export default function GroupChatPage() {
   const activeFeedScrambledShare = activeFeedPost ? isScrambledScoreShare(activeFeedPost) : false;
   const activeFeedScrambledPromo = activeFeedPost ? isScrambledPromoPost(activeFeedPost) : false;
   const activeFeedBibleBuddyTvShare = activeFeedPost ? isBibleBuddyTvSharePost(activeFeedPost) : false;
-  const modalTopBuddies = topBuddiesTab === "week" ? topBuddies : allTimeTopBuddies;
+  const modalTopBuddies = topBuddies;
   const isLeader = userRole === "leader";
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
   const isLouisAdmin = userEmail === "moorelouis3@gmail.com";
@@ -5022,7 +5052,7 @@ export default function GroupChatPage() {
                       <div>
                         <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#6f8d6c]">Top Members</p>
                         <h3 className="mt-2 text-lg font-bold text-gray-900">Buddies showing up the most</h3>
-                        <p className="mt-1 text-sm text-gray-600">Top 5 this week based on Bible Buddy points, posts, comments, and likes.</p>
+                        <p className="mt-1 text-sm text-gray-600">Top 5 this week based on Bible tasks.</p>
                       </div>
                       <span className="rounded-full bg-[#edf7ed] px-3 py-1 text-xs font-semibold text-[#4a9b6f]">Top 10</span>
                     </div>
@@ -5058,7 +5088,7 @@ export default function GroupChatPage() {
                             </div>
                             <div className="text-right">
                               <p className="text-base font-bold text-gray-900">{buddy.score}</p>
-                              <p className="text-[11px] text-gray-500">XP week</p>
+                              <p className="text-[11px] text-gray-500">tasks week</p>
                             </div>
                           </div>
                         ))
@@ -6948,22 +6978,9 @@ export default function GroupChatPage() {
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Bible Study Group</p>
                   <h2 className="text-2xl font-bold text-gray-900 mt-2">Top Members</h2>
-                  <p className="text-sm text-gray-500 mt-1">Top 10 based on Bible Buddy points, posts, comments, and likes.</p>
-                  <div className="mt-3 flex rounded-full bg-gray-100 p-1">
-                    <button
-                      type="button"
-                      onClick={() => changeTopBuddiesTab("week")}
-                      className={`flex-1 rounded-full px-3 py-2 text-xs font-black transition ${topBuddiesTab === "week" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500"}`}
-                    >
-                      This Week
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => changeTopBuddiesTab("allTime")}
-                      className={`flex-1 rounded-full px-3 py-2 text-xs font-black transition ${topBuddiesTab === "allTime" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500"}`}
-                    >
-                      All Time
-                    </button>
+                  <p className="text-sm text-gray-500 mt-1">Top 10 this week by completed Bible work.</p>
+                  <div className="mt-3 rounded-2xl border border-gray-100 bg-gray-50 px-3 py-2 text-xs font-semibold leading-5 text-gray-600">
+                    Readings, notes, trivia rounds, Scrambled rounds, and reflections count most. Community replies count with caps. Random opens and clicks do not count.
                   </div>
                 </div>
                 <button
@@ -7007,12 +7024,12 @@ export default function GroupChatPage() {
                             <UserBadge customBadge={buddy.memberBadge} isPaid={buddy.isPaid} />
                           </div>
                           <p className="mt-1 text-xs text-gray-500">
-                            {buddy.actions || 0} Bible tasks
+                            {buddy.actions || 0} actions · {buddy.appXp || 0} XP tie-breaker
                           </p>
                         </div>
                         <div className="text-right">
                           <p className="text-lg font-bold text-gray-900">{buddy.score}</p>
-                          <p className="text-xs text-gray-500">{topBuddiesTab === "week" ? "XP week" : "XP all"}</p>
+                          <p className="text-xs text-gray-500">buddy score</p>
                         </div>
                       </div>
                     </div>

@@ -62,6 +62,7 @@ type ProfileRow = {
 type ActionRow = {
   user_id: string | null;
   action_type: string | null;
+  action_label: string | null;
   created_at: string | null;
 };
 
@@ -84,6 +85,7 @@ type MutableStats = {
   groupLikes: number;
   articleComments: number;
   lastActionAt: string | null;
+  buddyScore: number;
 };
 
 function createStats(userId: string): MutableStats {
@@ -106,8 +108,30 @@ function createStats(userId: string): MutableStats {
     groupLikes: 0,
     articleComments: 0,
     lastActionAt: null,
+    buddyScore: 0,
   };
 }
+
+const BUDDY_SCORE_WEIGHTS: Record<string, number> = {
+  devotional_day_completed: 5,
+  chapter_completed: 10,
+  reading_plan_chapter_completed: 10,
+  chapter_notes_reviewed: 10,
+  trivia_chapter_completed: 8,
+  scrambled_chapter_completed: 8,
+  devotional_reflection_saved: 12,
+};
+
+const COMMUNITY_SCORE_WEIGHTS = {
+  post: 5,
+  comment: 3,
+  articleComment: 3,
+  like: 1,
+  maxPosts: 20,
+  maxComments: 30,
+  maxArticleComments: 30,
+  maxLikes: 10,
+};
 
 function getStats(map: Map<string, MutableStats>, userId: string) {
   let stats = map.get(userId);
@@ -199,7 +223,7 @@ export async function GET(request: NextRequest) {
       fetchPaged<ActionRow>((from, to) => {
         let query = supabaseAdmin
           .from("master_actions")
-          .select("user_id, action_type, created_at")
+          .select("user_id, action_type, action_label, created_at")
           .order("created_at", { ascending: false })
           .range(from, to);
         if (sinceIso) query = query.gte("created_at", sinceIso);
@@ -242,6 +266,7 @@ export async function GET(request: NextRequest) {
       const stats = getStats(statsMap, action.user_id);
       stats.totalActions += 1;
       stats.weightedXp += ACTION_POINT_WEIGHTS[action.action_type as keyof typeof ACTION_POINT_WEIGHTS] ?? 0;
+      stats.buddyScore += BUDDY_SCORE_WEIGHTS[action.action_type] || 0;
       if (TASK_ACTIONS.has(action.action_type)) stats.taskActions += 1;
       if (BIBLE_READING_ACTIONS.has(action.action_type)) stats.bibleActions += 1;
       if (COMMUNITY_ACTIONS.has(action.action_type)) stats.communityActions += 1;
@@ -294,9 +319,13 @@ export async function GET(request: NextRequest) {
         const chaptersRead = Math.max(stats.bibleActions, safeNumber(profile?.chapters_completed_count));
         const triviaAnswered = Math.max(stats.triviaAnswered, safeNumber(profile?.trivia_questions_answered));
         const notesReviewed = stats.notesReviewed + safeNumber(profile?.notes_created_count);
-        const communityScore = stats.communityActions + stats.groupPosts * 2 + stats.groupComments + stats.articleComments;
+        const communityScore =
+          Math.min(stats.groupPosts, COMMUNITY_SCORE_WEIGHTS.maxPosts) * COMMUNITY_SCORE_WEIGHTS.post +
+          Math.min(stats.groupComments, COMMUNITY_SCORE_WEIGHTS.maxComments) * COMMUNITY_SCORE_WEIGHTS.comment +
+          Math.min(stats.articleComments, COMMUNITY_SCORE_WEIGHTS.maxArticleComments) * COMMUNITY_SCORE_WEIGHTS.articleComment +
+          Math.min(stats.groupLikes, COMMUNITY_SCORE_WEIGHTS.maxLikes) * COMMUNITY_SCORE_WEIGHTS.like;
         const taskScore = stats.taskActions + stats.triviaCompleted + stats.scrambledCompleted;
-        const score = Math.round(stats.weightedXp);
+        const score = Math.round(stats.buddyScore + communityScore);
 
         return {
           userId: stats.userId,
@@ -320,6 +349,11 @@ export async function GET(request: NextRequest) {
           scrambledCompleted: stats.scrambledCompleted,
           reflections: stats.reflections,
           communityEngagement: communityScore,
+          scoreBreakdown: {
+            bibleTasks: stats.buddyScore,
+            community: communityScore,
+            xpTieBreaker: stats.weightedXp,
+          },
           groupPosts: stats.groupPosts,
           groupComments: stats.groupComments,
           groupLikes: stats.groupLikes,
@@ -332,7 +366,7 @@ export async function GET(request: NextRequest) {
         };
       })
       .filter((buddy) => buddy.totalActions > 0 || buddy.weightedXp > 0)
-      .sort((a, b) => b.weightedXp - a.weightedXp || b.totalActions - a.totalActions || b.currentLevel - a.currentLevel)
+      .sort((a, b) => b.score - a.score || b.weightedXp - a.weightedXp || b.totalActions - a.totalActions || b.currentLevel - a.currentLevel)
       .slice(0, limit)
       .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
 
@@ -341,7 +375,7 @@ export async function GET(request: NextRequest) {
       totalActions: buddies.reduce((sum, buddy) => sum + buddy.totalActions, 0),
       totalTasks: buddies.reduce((sum, buddy) => sum + buddy.totalActions, 0),
       totalCommunity: buddies.reduce((sum, buddy) => sum + buddy.communityEngagement, 0),
-      topScore: buddies[0]?.weightedXp || 0,
+      topScore: buddies[0]?.score || 0,
     };
 
     return NextResponse.json({
@@ -349,9 +383,19 @@ export async function GET(request: NextRequest) {
       totals,
       scoring: {
         summary:
-          "Top Buddies are ranked by XP earned in the selected window. Bible tasks/actions are shown as the supporting activity count.",
+          "Top Buddies are ranked by a weekly Buddy Score: completed Bible readings, notes, trivia rounds, Scrambled rounds, reflections, and capped community replies/posts. Opens and random clicks do not count. XP is only a tie-breaker.",
         weights: {
-          xpEarned: 1,
+          introCompleted: 5,
+          chapterRead: 10,
+          notesCompleted: 10,
+          triviaCompleted: 8,
+          scrambledCompleted: 8,
+          reflection: 12,
+          post: 5,
+          comment: 3,
+          like: 1,
+          maxCommunityComments: COMMUNITY_SCORE_WEIGHTS.maxComments,
+          maxCommunityLikes: COMMUNITY_SCORE_WEIGHTS.maxLikes,
         },
       },
     });

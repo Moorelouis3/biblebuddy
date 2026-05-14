@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
 type LimitOption = 10 | 20 | 50 | 100;
-type WindowOption = "all" | "90d" | "30d" | "7d";
+type WindowOption = "90d" | "30d" | "7d";
 
 type TopBuddy = {
   rank: number;
@@ -59,10 +59,9 @@ type ApiResponse = {
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 const LIMITS: LimitOption[] = [10, 20, 50, 100];
 const WINDOWS: Array<{ value: WindowOption; label: string }> = [
-  { value: "all", label: "All time" },
-  { value: "90d", label: "90 days" },
+  { value: "7d", label: "This week" },
   { value: "30d", label: "30 days" },
-  { value: "7d", label: "7 days" },
+  { value: "90d", label: "90 days" },
 ];
 
 function formatNumber(value: number | null | undefined) {
@@ -118,7 +117,7 @@ function MetricCard({ label, value, hint, active, onClick }: { label: string; va
 
 export default function TopBuddiesAdminPage() {
   const [limit, setLimit] = useState<LimitOption>(20);
-  const [windowValue, setWindowValue] = useState<WindowOption>("all");
+  const [windowValue, setWindowValue] = useState<WindowOption>("7d");
   const [filter, setFilter] = useState<"all" | "tasks" | "community" | "games">("all");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -181,7 +180,7 @@ export default function TopBuddiesAdminPage() {
       return [...rows].sort(
         (a, b) =>
           b.triviaCorrect + b.scrambledWords - (a.triviaCorrect + a.scrambledWords) ||
-          b.weightedXp - a.weightedXp,
+          b.totalActions - a.totalActions,
       );
     }
     return rows;
@@ -209,7 +208,7 @@ export default function TopBuddiesAdminPage() {
             <p className="text-xs font-black uppercase tracking-[0.22em] text-[#4f8fb7]">Owner Analytics</p>
             <h1 className="mt-2 text-3xl font-black text-gray-950 md:text-4xl">Top Buddies</h1>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-gray-600">
-              Ranked by XP earned in the selected window, with Bible tasks/actions shown beside each buddy.
+              Ranked by real completed Bible work first, with XP used only as a tie-breaker.
             </p>
           </div>
 
@@ -231,14 +230,17 @@ export default function TopBuddiesAdminPage() {
 
         <div className="mb-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <MetricCard label="Ranked Users" value={formatNumber(data?.totals.usersRanked)} hint="Users with tracked activity" active={filter === "all"} onClick={() => setFilter("all")} />
-          <MetricCard label="Top XP" value={formatNumber(data?.totals.topScore)} hint="Highest XP in this view" active={false} onClick={() => setFilter("all")} />
+          <MetricCard label="Top Score" value={formatNumber(data?.totals.topScore)} hint="Highest Buddy Score in this view" active={false} onClick={() => setFilter("all")} />
           <MetricCard label="Tasks Done" value={formatNumber(data?.totals.totalTasks)} hint="Task-heavy ranking view" active={filter === "tasks"} onClick={() => setFilter("tasks")} />
           <MetricCard label="Community" value={formatNumber(data?.totals.totalCommunity)} hint="Comments, posts, likes, replies" active={filter === "community"} onClick={() => setFilter("community")} />
         </div>
 
         <section className="mb-5 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <p className="text-sm leading-6 text-gray-600">{data?.scoring.summary || "Loading the Bible Buddy scoring formula..."}</p>
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#4f8fb7]">How weekly Top Buddies are calculated</p>
+              <p className="mt-1 text-sm leading-6 text-gray-600">{data?.scoring.summary || "Loading the Bible Buddy scoring formula..."}</p>
+            </div>
             <div className="flex flex-wrap gap-2">
               {LIMITS.map((option) => (
                 <button
@@ -277,7 +279,7 @@ export default function TopBuddiesAdminPage() {
                   <tr className="text-xs font-black uppercase tracking-[0.16em] text-gray-500">
                     <th className="px-4 py-4">Rank</th>
                     <th className="px-4 py-4">Buddy</th>
-                    <th className="px-4 py-4">XP</th>
+                    <th className="px-4 py-4">Buddy Score</th>
                     <th className="px-4 py-4">Level</th>
                     <th className="px-4 py-4">XP</th>
                     <th className="px-4 py-4">Tasks</th>
@@ -316,8 +318,8 @@ export default function TopBuddiesAdminPage() {
                         </Link>
                       </td>
                       <td className="px-4 py-4">
-                        <p className="text-lg font-black text-gray-950">{formatNumber(buddy.weightedXp)}</p>
-                        <p className="text-xs font-semibold text-gray-500">{formatNumber(buddy.totalActions)} Bible tasks</p>
+                        <p className="text-lg font-black text-gray-950">{formatNumber(buddy.score)}</p>
+                        <p className="text-xs font-semibold text-gray-500">{formatNumber(buddy.totalActions)} actions · {formatNumber(buddy.weightedXp)} XP</p>
                       </td>
                       <td className="px-4 py-4">
                         <p className="text-sm font-black text-gray-950">Level {buddy.currentLevel}</p>

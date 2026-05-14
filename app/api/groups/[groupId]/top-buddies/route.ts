@@ -8,12 +8,11 @@ export const dynamic = "force-dynamic";
 const PAGE_SIZE = 1000;
 const LEADERBOARD_CACHE_MS = 10 * 60 * 1000;
 const PROFILE_SELECT =
-  "user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, trivia_questions_answered, last_active_at, last_active_date, created_at";
+  "user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, current_level, total_actions, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count, trivia_questions_answered, last_active_at, last_active_date, created_at";
 
 let leaderboardCache: {
   expiresAt: number;
   weeklyBuddies: ReturnType<typeof buildLeaderboard>;
-  allTimeBuddies: ReturnType<typeof buildLeaderboard>;
 } | null = null;
 
 type ProfileRow = {
@@ -25,6 +24,7 @@ type ProfileRow = {
   is_paid: boolean | null;
   current_streak: number | null;
   current_level: number | null;
+  total_actions: number | null;
   chapters_completed_count: number | null;
   notes_created_count: number | null;
   people_learned_count: number | null;
@@ -115,6 +115,27 @@ const COMMUNITY_ACTIONS = new Set([
   "series_week_started",
 ]);
 
+const BUDDY_SCORE_WEIGHTS: Record<string, number> = {
+  devotional_day_completed: 5,
+  chapter_completed: 10,
+  reading_plan_chapter_completed: 10,
+  chapter_notes_reviewed: 10,
+  trivia_chapter_completed: 8,
+  scrambled_chapter_completed: 8,
+  devotional_reflection_saved: 12,
+};
+
+const COMMUNITY_SCORE_WEIGHTS = {
+  post: 5,
+  comment: 3,
+  articleComment: 3,
+  like: 1,
+  maxPosts: 20,
+  maxComments: 30,
+  maxArticleComments: 30,
+  maxLikes: 10,
+};
+
 async function fetchPaged<T>(
   queryBuilder: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: any }>,
 ) {
@@ -175,6 +196,39 @@ function scoreProfileSnapshot(profile: ProfileRow) {
   );
 }
 
+function buildProfileActionLeaderboard(profiles: ProfileRow[]): LeaderboardBuddy[] {
+  return profiles
+    .map((profile) => {
+      const actions = safeNumber(profile.total_actions);
+      return {
+        userId: profile.user_id,
+        displayName: profile.display_name || profile.username || "Buddy",
+        username: profile.username || null,
+        profileImageUrl: profile.profile_image_url ?? null,
+        memberBadge: profile.member_badge ?? null,
+        isPaid: !!profile.is_paid,
+        currentStreak: profile.current_streak ?? null,
+        currentLevel: Math.max(1, profile.current_level || 1),
+        posts: 0,
+        comments: 0,
+        likes: 0,
+        appXp: 0,
+        actions,
+        score: actions,
+        buddyScore: actions,
+        scoreBreakdown: {
+          bibleTasks: actions,
+          community: 0,
+          xpTieBreaker: 0,
+        },
+      };
+    })
+    .filter((buddy) => buddy.actions > 0)
+    .sort((a, b) => b.actions - a.actions || (b.currentLevel || 0) - (a.currentLevel || 0))
+    .slice(0, 10)
+    .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
+}
+
 function buildLeaderboard(options: {
   profiles: ProfileRow[];
   actions: ActionRow[];
@@ -203,6 +257,7 @@ function buildLeaderboard(options: {
     reflections: number;
     communityActions: number;
     articleComments: number;
+    buddyScore: number;
   }>();
 
   function ensure(userId: string) {
@@ -226,6 +281,7 @@ function buildLeaderboard(options: {
         reflections: 0,
         communityActions: 0,
         articleComments: 0,
+        buddyScore: 0,
       };
       stats.set(userId, current);
     }
@@ -245,6 +301,7 @@ function buildLeaderboard(options: {
     current.points += points;
     current.appXp += points;
     current.actions += 1;
+    current.buddyScore += BUDDY_SCORE_WEIGHTS[action.action_type] || 0;
     if (TASK_ACTIONS.has(action.action_type)) current.taskActions += 1;
     if (BIBLE_READING_ACTIONS.has(action.action_type)) current.bibleActions += 1;
     if (COMMUNITY_ACTIONS.has(action.action_type)) current.communityActions += 1;
@@ -278,10 +335,8 @@ function buildLeaderboard(options: {
     const current = ensure(post.user_id);
     if (post.parent_post_id) {
       current.comments += 1;
-      current.points += 3;
     } else {
       current.posts += 1;
-      current.points += 5;
     }
   });
 
@@ -290,7 +345,6 @@ function buildLeaderboard(options: {
     if (sinceIso && (!like.created_at || like.created_at < sinceIso)) return;
     const current = ensure(like.user_id);
     current.likes += 1;
-    current.points += 1;
   });
 
   const profileMap = new Map(options.profiles.map((profile) => [profile.user_id, profile]));
@@ -300,7 +354,12 @@ function buildLeaderboard(options: {
       const profile = profileMap.get(userId);
       const fallbackLevel = getLevelInfoFromPoints(entry.appXp).level;
       const currentLevel = Math.max(1, profile?.current_level || fallbackLevel);
-      const score = Math.round(entry.appXp);
+      const communityScore =
+        Math.min(entry.posts, COMMUNITY_SCORE_WEIGHTS.maxPosts) * COMMUNITY_SCORE_WEIGHTS.post +
+        Math.min(entry.comments, COMMUNITY_SCORE_WEIGHTS.maxComments) * COMMUNITY_SCORE_WEIGHTS.comment +
+        Math.min(entry.articleComments, COMMUNITY_SCORE_WEIGHTS.maxArticleComments) * COMMUNITY_SCORE_WEIGHTS.articleComment +
+        Math.min(entry.likes, COMMUNITY_SCORE_WEIGHTS.maxLikes) * COMMUNITY_SCORE_WEIGHTS.like;
+      const score = Math.round(entry.buddyScore + communityScore);
 
       return {
         userId,
@@ -316,11 +375,17 @@ function buildLeaderboard(options: {
         likes: entry.likes,
         appXp: entry.appXp,
         actions: entry.actions,
+        buddyScore: score,
         score: Math.max(0, score),
+        scoreBreakdown: {
+          bibleTasks: entry.buddyScore,
+          community: communityScore,
+          xpTieBreaker: entry.appXp,
+        },
       };
     })
-    .filter((buddy) => buddy.score > 0 || buddy.actions > 0)
-    .sort((a, b) => b.score - a.score || b.actions - a.actions || (b.currentLevel || 0) - (a.currentLevel || 0))
+    .filter((buddy) => buddy.score > 0 || buddy.actions > 0 || buddy.appXp > 0)
+    .sort((a, b) => b.score - a.score || b.appXp - a.appXp || b.actions - a.actions || (b.currentLevel || 0) - (a.currentLevel || 0))
     .slice(0, 10)
     .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
 }
@@ -377,11 +442,9 @@ export async function GET(
     const useFastMode = mode === "fast";
     const forceRefresh = mode === "refresh";
     let weeklyBuddies = leaderboardCache?.weeklyBuddies || null;
-    let allTimeBuddies = leaderboardCache?.allTimeBuddies || null;
 
     if (useFastMode && leaderboardCache && leaderboardCache.expiresAt > Date.now()) {
       weeklyBuddies = leaderboardCache.weeklyBuddies;
-      allTimeBuddies = leaderboardCache.allTimeBuddies;
     } else if (useFastMode) {
       const weekStart = getWindowStart("week");
       const weeklyActions = await fetchPaged<ActionRow>((from, to) =>
@@ -394,15 +457,6 @@ export async function GET(
       );
       const weeklyUserIds = weeklyActions.map((action) => action.user_id || "").filter(Boolean);
       const weeklyProfiles = await fetchProfilesForUserIds(supabaseAdmin, weeklyUserIds);
-      const allTimeProfilesRes = await supabaseAdmin
-        .from("profile_stats")
-        .select(PROFILE_SELECT)
-        .order("current_level", { ascending: false, nullsFirst: false })
-        .order("chapters_completed_count", { ascending: false, nullsFirst: false })
-        .limit(80);
-
-      if (allTimeProfilesRes.error) throw allTimeProfilesRes.error;
-
       weeklyBuddies = buildLeaderboard({
         profiles: weeklyProfiles,
         actions: weeklyActions,
@@ -411,15 +465,6 @@ export async function GET(
         groupPosts: [],
         groupLikes: [],
         scope: "week",
-      });
-      allTimeBuddies = buildLeaderboard({
-        profiles: (allTimeProfilesRes.data || []) as ProfileRow[],
-        actions: [],
-        completedChapters: [],
-        articleComments: [],
-        groupPosts: [],
-        groupLikes: [],
-        scope: "allTime",
       });
     } else if (forceRefresh || !leaderboardCache || leaderboardCache.expiresAt <= Date.now()) {
       const [profiles, actions, completedChapters, articleComments, postRows, likeRows] = await Promise.all([
@@ -463,31 +508,13 @@ export async function GET(
         groupLikes: likeRows,
         scope: "week",
       });
-      allTimeBuddies = buildLeaderboard({
-        profiles,
-        actions,
-        completedChapters,
-        articleComments,
-        groupPosts: postRows,
-        groupLikes: likeRows,
-        scope: "allTime",
-      });
-
       leaderboardCache = {
         expiresAt: Date.now() + LEADERBOARD_CACHE_MS,
         weeklyBuddies,
-        allTimeBuddies,
       };
     }
 
     weeklyBuddies = weeklyBuddies || [];
-    allTimeBuddies = allTimeBuddies || [];
-    if (weeklyBuddies.length === 0 && allTimeBuddies.length > 0) {
-      weeklyBuddies = allTimeBuddies;
-    }
-    if (allTimeBuddies.length === 0 && weeklyBuddies.length > 0) {
-      allTimeBuddies = weeklyBuddies;
-    }
 
     const clickLabelPrefix = `top_buddies_card_opened:${groupId}`;
     const { data: clickRows, error: clickError } = await supabaseAdmin
@@ -500,24 +527,59 @@ export async function GET(
 
     if (clickError) throw clickError;
 
-    const uniqueClickers = new Set((clickRows || []).map((row) => row.user_id).filter(Boolean));
+    const clickerMap = new Map<string, { userId: string; openedAt: string | null; username: string | null }>();
+    (clickRows || []).forEach((row) => {
+      if (!row.user_id || clickerMap.has(row.user_id)) return;
+      clickerMap.set(row.user_id, {
+        userId: row.user_id,
+        openedAt: row.created_at || null,
+        username: row.username || null,
+      });
+    });
+    const clickerProfiles = await fetchProfilesForUserIds(supabaseAdmin, Array.from(clickerMap.keys()));
+    const clickerProfileMap = new Map(clickerProfiles.map((profile) => [profile.user_id, profile]));
+    const clickers = Array.from(clickerMap.values()).map((clicker) => {
+      const profile = clickerProfileMap.get(clicker.userId);
+      return {
+        userId: clicker.userId,
+        displayName: profile?.display_name || profile?.username || clicker.username || "Bible Buddy",
+        username: profile?.username || clicker.username || null,
+        profileImageUrl: profile?.profile_image_url || null,
+        memberBadge: profile?.member_badge || null,
+        isPaid: !!profile?.is_paid,
+        currentStreak: profile?.current_streak || null,
+        currentLevel: profile?.current_level || null,
+        openedAt: clicker.openedAt,
+      };
+    });
 
     return NextResponse.json({
       buddies: weeklyBuddies,
       weeklyBuddies,
-      allTimeBuddies,
+      allTimeBuddies: [],
       source: useFastMode ? "fast" : "full",
       cachedUntil: leaderboardCache?.expiresAt || null,
       engagement: {
         totalClicks: clickRows?.length || 0,
-        uniqueClickers: uniqueClickers.size,
+        uniqueClickers: clickers.length,
+        clickers,
       },
       scoring: {
-        appXp: "Bible Buddy level XP earned from tracked actions",
-        groupPost: 5,
-        groupComment: 3,
-        groupLike: 1,
+        summary: "Weekly Top Buddies are ranked by completed Bible work first: readings, notes, trivia rounds, Scrambled rounds, reflections, and capped community replies. Opens and random clicks do not count. XP is only a tie-breaker.",
         periodDays: 7,
+        weights: {
+          introCompleted: 5,
+          chapterRead: 10,
+          notesCompleted: 10,
+          triviaCompleted: 8,
+          scrambledCompleted: 8,
+          reflection: 12,
+          post: 5,
+          comment: 3,
+          like: 1,
+          maxCommunityComments: COMMUNITY_SCORE_WEIGHTS.maxComments,
+          maxCommunityLikes: COMMUNITY_SCORE_WEIGHTS.maxLikes,
+        },
       },
     });
   } catch (error: any) {

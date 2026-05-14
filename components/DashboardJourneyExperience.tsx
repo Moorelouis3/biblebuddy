@@ -155,77 +155,77 @@ type ActiveTaskPrompt = {
 };
 
 const activeTaskPrompts: ActiveTaskPrompt[] = [
-  { lineOne: "Do this one now", lineTwo: "Keep the rhythm moving" },
-  { lineOne: "Finish this one", lineTwo: "You already started strong" },
-  { lineOne: "Knock this one out", lineTwo: "One clean step forward" },
-  { lineOne: "This one is ready", lineTwo: "Tap in and keep going" },
-  { lineOne: "Keep going here", lineTwo: "Momentum is on your side" },
-  { lineOne: "Take this next", lineTwo: "Stay with today's chapter" },
-  { lineOne: "Your next move", lineTwo: "A few minutes well spent" },
-  { lineOne: "Step into this one", lineTwo: "Let the study keep building" },
-  { lineOne: "Hit this next", lineTwo: "You are already in motion" },
-  { lineOne: "Stay in the flow", lineTwo: "This is the next step" },
-  { lineOne: "Keep the streak alive", lineTwo: "Do this task next" },
-  { lineOne: "Build on that start", lineTwo: "This one keeps it going" },
-  { lineOne: "One task at a time", lineTwo: "This is the next one" },
-  { lineOne: "Keep walking", lineTwo: "This step is waiting" },
-  { lineOne: "Do this next", lineTwo: "Small step, real progress" },
-  { lineOne: "Stay locked in", lineTwo: "This task is up now" },
-  { lineOne: "Grab this one", lineTwo: "Keep today's study moving" },
-  { lineOne: "Next up", lineTwo: "Take a steady step" },
-  { lineOne: "Make the next move", lineTwo: "You are not starting over" },
-  { lineOne: "Press into this one", lineTwo: "The chapter is still fresh" },
-  { lineOne: "Keep the pace", lineTwo: "This is your next win" },
-  { lineOne: "Take this step", lineTwo: "Do not lose the flow" },
-  { lineOne: "This one matters", lineTwo: "Keep building the habit" },
-  { lineOne: "Stay with it", lineTwo: "The next task is open" },
-  { lineOne: "Move here next", lineTwo: "Let the chapter sink in" },
-  { lineOne: "Get this one done", lineTwo: "You are making progress" },
-  { lineOne: "Keep showing up", lineTwo: "This task is yours now" },
-  { lineOne: "Do the next thing", lineTwo: "Simple and steady" },
-  { lineOne: "Keep it rolling", lineTwo: "This one is unlocked" },
-  { lineOne: "Take the open step", lineTwo: "Today's flow is working" },
-  { lineOne: "This is the move", lineTwo: "Keep the chapter moving" },
-  { lineOne: "Finish this step", lineTwo: "You are closer now" },
-  { lineOne: "Lean into this one", lineTwo: "A little progress counts" },
-  { lineOne: "Tap this task", lineTwo: "Keep your study alive" },
-  { lineOne: "Keep building", lineTwo: "This one comes next" },
-  { lineOne: "Make it count", lineTwo: "This task is ready" },
-  { lineOne: "Go after this one", lineTwo: "Stay steady today" },
-  { lineOne: "Your next win", lineTwo: "Do this one now" },
-  { lineOne: "Stay on track", lineTwo: "This is the next task" },
-  { lineOne: "Take the next bite", lineTwo: "Small steps finish studies" },
-  { lineOne: "Pick this up", lineTwo: "You know where to go" },
-  { lineOne: "Keep the chain going", lineTwo: "One more step forward" },
-  { lineOne: "Do this with focus", lineTwo: "The task is ready" },
-  { lineOne: "Finish the next piece", lineTwo: "Today's study is moving" },
-  { lineOne: "Open this one", lineTwo: "Let the momentum carry" },
+  { lineOne: "This is next", lineTwo: "Open this task" },
+  { lineOne: "Do this now", lineTwo: "Next task ready" },
+  { lineOne: "Finish this one", lineTwo: "This task is open" },
+  { lineOne: "Knock this out", lineTwo: "Start here next" },
+  { lineOne: "This one now", lineTwo: "Your next task" },
+  { lineOne: "Open this task", lineTwo: "Do this one next" },
+  { lineOne: "Next task", lineTwo: "Start this one" },
+  { lineOne: "Do this next", lineTwo: "This is the task" },
+  { lineOne: "Start this one", lineTwo: "Next step ready" },
+  { lineOne: "This is the one", lineTwo: "Tap to begin" },
+  { lineOne: "Go here next", lineTwo: "This task is ready" },
+  { lineOne: "Next step", lineTwo: "Do this task" },
+  { lineOne: "Open next", lineTwo: "This task is active" },
+  { lineOne: "Start here", lineTwo: "This one is next" },
+  { lineOne: "Task ready", lineTwo: "Do this next" },
+  { lineOne: "Take this one", lineTwo: "Next task open" },
+  { lineOne: "Use this card", lineTwo: "This is next" },
+  { lineOne: "Finish this task", lineTwo: "Open it now" },
+  { lineOne: "Tap this one", lineTwo: "Next task ready" },
+  { lineOne: "This card next", lineTwo: "Open to continue" },
+  { lineOne: "Go to this", lineTwo: "Your next task" },
+  { lineOne: "This task now", lineTwo: "Tap to start" },
+  { lineOne: "Continue here", lineTwo: "This is next" },
+  { lineOne: "Open and finish", lineTwo: "Current task" },
+  { lineOne: "Do this card", lineTwo: "Next task active" },
+  { lineOne: "Next one up", lineTwo: "Open this task" },
+  { lineOne: "Start this task", lineTwo: "This is the one" },
+  { lineOne: "Finish this step", lineTwo: "Next task ready" },
+  { lineOne: "Move here next", lineTwo: "This task is open" },
+  { lineOne: "Pick this one", lineTwo: "Current task" },
+  { lineOne: "Do this step", lineTwo: "Open it now" },
+  { lineOne: "Your next card", lineTwo: "Tap this one" },
+  { lineOne: "Task is ready", lineTwo: "Start it now" },
+  { lineOne: "Open this now", lineTwo: "Next task" },
+  { lineOne: "This comes next", lineTwo: "Tap to continue" },
+  { lineOne: "Current task", lineTwo: "Open this card" },
+  { lineOne: "Next focus", lineTwo: "Do this one" },
+  { lineOne: "Go in order", lineTwo: "This one is next" },
+  { lineOne: "Finish next", lineTwo: "This task is ready" },
+  { lineOne: "Open this step", lineTwo: "Do this next" },
+  { lineOne: "This one first", lineTwo: "Next task active" },
+  { lineOne: "Do this piece", lineTwo: "Current step" },
+  { lineOne: "Tap to finish", lineTwo: "This task now" },
+  { lineOne: "Begin this task", lineTwo: "Next step" },
+  { lineOne: "Work this card", lineTwo: "This is next" },
 ];
 
 const finalStretchTaskPrompts: Record<number, ActiveTaskPrompt[]> = {
   3: [
-    { lineOne: "Finish strong", lineTwo: "" },
-    { lineOne: "Keep going", lineTwo: "" },
-    { lineOne: "Stay steady", lineTwo: "" },
-    { lineOne: "Knock it out", lineTwo: "" },
-    { lineOne: "Stay locked in", lineTwo: "" },
-    { lineOne: "Next win", lineTwo: "" },
+    { lineOne: "3 left", lineTwo: "This one next" },
+    { lineOne: "3 tasks left", lineTwo: "Open this one" },
+    { lineOne: "Final 3", lineTwo: "Do this task" },
+    { lineOne: "3 to go", lineTwo: "Start here" },
+    { lineOne: "Only 3 left", lineTwo: "This one now" },
+    { lineOne: "3 remain", lineTwo: "Take this one" },
   ],
   2: [
-    { lineOne: "Almost there", lineTwo: "" },
-    { lineOne: "Keep pushing", lineTwo: "" },
-    { lineOne: "Do this now", lineTwo: "" },
-    { lineOne: "Nearly done", lineTwo: "" },
-    { lineOne: "Stay with it", lineTwo: "" },
-    { lineOne: "Close the gap", lineTwo: "" },
+    { lineOne: "2 left", lineTwo: "Do this one" },
+    { lineOne: "Final 2", lineTwo: "Open this task" },
+    { lineOne: "2 tasks left", lineTwo: "This one next" },
+    { lineOne: "Only 2 left", lineTwo: "Start here" },
+    { lineOne: "2 to go", lineTwo: "Take this one" },
+    { lineOne: "Almost done", lineTwo: "This task now" },
   ],
   1: [
-    { lineOne: "Finish strong", lineTwo: "" },
-    { lineOne: "Bring it home", lineTwo: "" },
-    { lineOne: "Let's finish", lineTwo: "" },
-    { lineOne: "Close it out", lineTwo: "" },
-    { lineOne: "You got this", lineTwo: "" },
-    { lineOne: "Last move", lineTwo: "" },
+    { lineOne: "Last one", lineTwo: "Open this task" },
+    { lineOne: "Final task", lineTwo: "Do this one" },
+    { lineOne: "One left", lineTwo: "Finish this task" },
+    { lineOne: "Last task", lineTwo: "Start here" },
+    { lineOne: "Complete this", lineTwo: "Final step" },
+    { lineOne: "Finish here", lineTwo: "Last one" },
   ],
 };
 
@@ -1040,28 +1040,28 @@ export default function DashboardJourneyExperience({
       return {
         streakLine,
         nextLine: devotionalTask?.done
-          ? `You've read the ${readingTask?.chapterLabel || nextTask.chapterLabel || "chapter"} intro. Now keep going and read ${readingTask?.chapterLabel || nextTask.title}.`
-          : `Keep going and read ${readingTask?.chapterLabel || nextTask.title}.`,
+          ? `The intro is done. Your next task is to read ${readingTask?.chapterLabel || nextTask.title}.`
+          : `Your next task is to read ${readingTask?.chapterLabel || nextTask.title}.`,
       };
     }
 
     if (nextTask.kind === "notes") {
       return {
         streakLine,
-        nextLine: `Great job reading ${readingTask?.chapterLabel || "today’s chapter"}. Keep going and review the notes next.`,
+        nextLine: `Reading is done. Your next task is to review the notes for ${readingTask?.chapterLabel || "today's chapter"}.`,
       };
     }
 
     if (nextTask.kind === "trivia") {
       return {
         streakLine,
-        nextLine: `Nice work on the reading and notes. Keep going and finish the trivia for ${readingTask?.chapterLabel || "today’s chapter"}.`,
+        nextLine: `Notes are done. Your next task is trivia for ${readingTask?.chapterLabel || "today's chapter"}.`,
       };
     }
 
     return {
       streakLine,
-      nextLine: `You are almost done. Finish ${nextTask.title} to complete today’s Bible study.`,
+      nextLine: `This is your next task: finish ${nextTask.title} to complete today's Bible study.`,
     };
   }
 
@@ -1701,7 +1701,7 @@ export default function DashboardJourneyExperience({
                     onTaskClick(task);
                   }}
                   disabled={isCardDisabled}
-                  className={`relative w-full overflow-hidden rounded-xl border px-3.5 py-3.5 text-left shadow-sm transition sm:px-4 ${
+                  className={`relative w-full overflow-hidden rounded-xl border px-3.5 py-3 text-left shadow-sm transition sm:px-4 ${
                     isCelebrating ? "task-complete-pop" : ""
                   } ${
                     isNextActionTask ? "next-task-pulse" : ""
@@ -1724,7 +1724,7 @@ export default function DashboardJourneyExperience({
                   ) : null}
                   <div className="flex items-center gap-3">
                     <div
-                      className={`relative flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-2xl shadow-sm ${
+                      className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-2xl shadow-sm ${
                         task.done ? taskCopy.doneAccent : "from-gray-200 to-gray-300"
                       }`}
                     >
@@ -1736,20 +1736,13 @@ export default function DashboardJourneyExperience({
                       ) : null}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className={`text-[15px] font-bold leading-tight sm:text-base ${task.done ? "text-gray-950" : "text-gray-600"}`}>{taskCopy.title}</p>
-                      <p className={`mt-1 max-w-[18rem] text-xs leading-5 sm:text-sm ${task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
-                      {task.timeEstimateLabel ? (
-                        <p className="mt-2 text-[11px] font-black text-gray-950">
-                          Takes about {task.timeEstimateLabel}
-                        </p>
-                      ) : null}
-                    </div>
-                    <div className="flex shrink-0 items-center gap-2">
-                      <div className="flex flex-col items-end gap-2">
+                      <div className="flex items-start justify-between gap-2">
+                        <p className={`min-w-0 flex-1 text-[15px] font-bold leading-tight sm:text-base ${task.done ? "text-gray-950" : "text-gray-600"}`}>{taskCopy.title}</p>
+                        <div className="flex shrink-0 flex-col items-end gap-1">
                         <span className={`rounded-full px-3 py-1 text-xs font-bold ${getTaskPillClasses(task)}`}>
                           {pointsPillLabel}
                         </span>
-                        <span className={`relative flex items-center gap-1 text-[11px] ${
+                        <span className={`relative flex items-center gap-1 text-[10px] ${
                           task.done
                             ? "font-medium text-green-700"
                             : isNextActionTask
@@ -1775,9 +1768,18 @@ export default function DashboardJourneyExperience({
                             taskStatusLabel
                           )}
                         </span>
+                        </div>
                       </div>
-                      <span className="text-xl leading-none text-gray-400" aria-hidden="true">›</span>
+                      <div className="mt-1.5 flex items-end justify-between gap-3">
+                        <p className={`min-w-0 flex-1 text-xs leading-5 sm:text-sm ${task.done ? "text-gray-700" : "text-gray-500"}`}>{taskCopy.subtitle}</p>
+                        {task.timeEstimateLabel ? (
+                          <p className="shrink-0 whitespace-nowrap text-right text-[11px] font-black text-gray-950">
+                            Takes about {task.timeEstimateLabel}
+                          </p>
+                        ) : null}
+                      </div>
                     </div>
+                    <span className="shrink-0 text-xl leading-none text-gray-400" aria-hidden="true">›</span>
                   </div>
                   {isCelebrating ? (
                     <div className="task-firework pointer-events-none absolute left-[52px] top-[48px]" aria-hidden="true">
