@@ -228,7 +228,10 @@ export default function DevotionalDayModal({
   const isTestingOfJoseph =
     (devotionalTitle || "").toLowerCase().includes("testing of joseph") ||
     (devotionalId || "").toLowerCase().includes("testing-of-joseph");
-  const useSeriesLikeProverbsLayout = isWisdomOfProverbs || isTestingOfJoseph;
+  const isObedienceOfAbraham =
+    (devotionalTitle || "").toLowerCase().includes("obedience of abraham") ||
+    (devotionalId || "").toLowerCase().includes("obedience-of-abraham");
+  const useSeriesLikeProverbsLayout = isWisdomOfProverbs || isTestingOfJoseph || isObedienceOfAbraham;
   const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
   const bookKey = normalizeBookKey(day.bible_reading_book || "");
   const triviaBook = useMemo(() => getTriviaBook(bookKey), [bookKey]);

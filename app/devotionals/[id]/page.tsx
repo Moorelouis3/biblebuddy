@@ -100,12 +100,13 @@ type ChapterTaskProgress = {
 const WISDOM_TASK_TOTAL = 6;
 
 function isChapterJourneyStudyTitle(title: string | null | undefined) {
-  return title === "The Wisdom of Proverbs" || title === "The Testing of Joseph";
+  return title === "The Wisdom of Proverbs" || title === "The Testing of Joseph" || title === "The Obedience of Abraham";
 }
 
 function getChapterJourneyProgressLabel(title: string | null | undefined, currentDay: number, totalDays: number) {
   if (title === "The Wisdom of Proverbs") return `Proverbs ${currentDay} of ${totalDays}`;
   if (title === "The Testing of Joseph") return `Genesis ${currentDay + 36} of 50`;
+  if (title === "The Obedience of Abraham") return `Genesis ${currentDay + 10} of 25`;
   return `Day ${currentDay} of ${totalDays}`;
 }
 
